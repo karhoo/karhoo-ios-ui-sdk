@@ -1,0 +1,31 @@
+name: CI-Development
+
+on:
+  push:
+    branches-ignore:
+      - '**'
+    #branches:
+      #- '*'
+      #- '!master'
+
+jobs:
+  Unit_tests:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Bundle install
+      run: bundle install
+    - name: Run Unit Tests
+      run:
+        xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDKTests' -destination 'platform=iOS Simulator,name=iPhone 11' test -UseModernBuildSystem=NO | xcpretty --test --color
+    - name: Fastlane Xcov report
+      run: fastlane ios XcovReport
+
+  Build_project:
+    runs-on: macos-latest
+    needs: [Unit_tests]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build SDK
+      run:
+        xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDK' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO -UseModernBuildSystem=NO | xcpretty

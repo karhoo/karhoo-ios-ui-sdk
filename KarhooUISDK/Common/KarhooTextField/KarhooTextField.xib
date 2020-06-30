@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooTextField" customModule="KarhooUISDK">
+            <connections>
+                <outlet property="inputField" destination="pFi-K6-w23" id="G37-7D-fLk"/>
+                <outlet property="invalidIcon" destination="aw7-oT-pCe" id="1wt-Ud-gpn"/>
+                <outlet property="placeholderLabel" destination="PMf-vV-Iqb" id="MZU-NZ-HJ8"/>
+                <outlet property="resizingSwitcher" destination="v4Z-6m-K70" id="1rU-UN-793"/>
+                <outlet property="validIcon" destination="GqC-BU-1Hc" id="J36-BI-TSk"/>
+                <outletCollection property="errorBorders" destination="Yqt-dT-ytZ" collectionClass="NSMutableArray" id="hqv-3s-UzX"/>
+                <outletCollection property="errorBorders" destination="zH7-oi-qMN" collectionClass="NSMutableArray" id="epO-PR-1J8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U3X-9R-ywb" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="medGreyFontColour" destination="PMf-vV-Iqb" collectionClass="NSMutableArray" id="HO9-ad-NBe"/>
+                        <outletCollection property="bodyRegular" destination="PMf-vV-Iqb" collectionClass="NSMutableArray" id="vY0-HT-ffM"/>
+                        <outletCollection property="secondaryImageTint" destination="GqC-BU-1Hc" collectionClass="NSMutableArray" id="9GG-7g-Fkj"/>
+                    </connections>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMf-vV-Iqb">
+                    <rect key="frame" x="15" y="18" width="0.0" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="not-valid-text"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="0OM-9i-SEa"/>
+                        <constraint firstAttribute="height" constant="12" id="8jf-CY-uWE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8jf-CY-uWE"/>
+                        </mask>
+                    </variation>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFi-K6-w23">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                    <accessibility key="accessibilityConfiguration" identifier="text-field">
+                        <accessibilityTraits key="traits" none="YES"/>
+                    </accessibility>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                    <connections>
+                        <action selector="changedText" destination="-1" eventType="editingChanged" id="NA5-fX-Ywj"/>
+                        <action selector="onFocus" destination="-1" eventType="editingDidBegin" id="4u2-za-M6M"/>
+                        <action selector="onUnFocus" destination="-1" eventType="editingDidEnd" id="ubo-yL-gEA"/>
+                    </connections>
+                </textField>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqt-dT-ytZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                    <color key="backgroundColor" red="1" green="0.10543860300000001" blue="0.3820440383" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="9nm-C6-bRv"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zH7-oi-qMN">
+                    <rect key="frame" x="0.0" y="53.5" width="375" height="0.5"/>
+                    <color key="backgroundColor" red="1" green="0.10543860300000001" blue="0.3820440383" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="JEu-o2-FNa"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field_error" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-oT-pCe">
+                    <rect key="frame" x="343" y="19" width="16" height="16"/>
+                    <accessibility key="accessibilityConfiguration" identifier="invalid-icon">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="TGk-Ye-NcG"/>
+                        <constraint firstAttribute="height" constant="16" id="u6l-9m-Quh"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field_success" translatesAutoresizingMaskIntoConstraints="NO" id="GqC-BU-1Hc">
+                    <rect key="frame" x="343" y="18.5" width="16" height="16"/>
+                    <accessibility key="accessibilityConfiguration" identifier="valid-icon">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="FGw-Au-eI0"/>
+                        <constraint firstAttribute="height" constant="16" id="Vep-nZ-hmY"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PMf-vV-Iqb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="08k-IE-L7Q"/>
+                <constraint firstAttribute="trailing" secondItem="zH7-oi-qMN" secondAttribute="trailing" id="6G4-EP-12P"/>
+                <constraint firstItem="pFi-K6-w23" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9hC-Q7-HYw"/>
+                <constraint firstAttribute="trailing" secondItem="Yqt-dT-ytZ" secondAttribute="trailing" id="D6s-jp-yPb"/>
+                <constraint firstItem="PMf-vV-Iqb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="FXy-IO-9b9"/>
+                <constraint firstItem="aw7-oT-pCe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="KP6-Kr-i8c"/>
+                <constraint firstItem="Yqt-dT-ytZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LJJ-Ha-d0n"/>
+                <constraint firstAttribute="trailing" secondItem="aw7-oT-pCe" secondAttribute="trailing" constant="16" id="O5A-FG-Wbu"/>
+                <constraint firstAttribute="trailing" secondItem="GqC-BU-1Hc" secondAttribute="trailing" constant="16" id="OIw-bH-e2O"/>
+                <constraint firstItem="zH7-oi-qMN" firstAttribute="top" secondItem="pFi-K6-w23" secondAttribute="bottom" id="QS6-8J-a9A"/>
+                <constraint firstItem="zH7-oi-qMN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Wvp-qI-UBG"/>
+                <constraint firstItem="GqC-BU-1Hc" firstAttribute="top" secondItem="Yqt-dT-ytZ" secondAttribute="bottom" constant="18" id="cVS-U9-yQ7"/>
+                <constraint firstItem="Yqt-dT-ytZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ijr-Dp-VKq"/>
+                <constraint firstItem="PMf-vV-Iqb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kJM-F4-U6y"/>
+                <constraint firstAttribute="trailing" secondItem="pFi-K6-w23" secondAttribute="trailing" id="lcl-5o-VPv"/>
+                <constraint firstItem="zH7-oi-qMN" firstAttribute="top" secondItem="GqC-BU-1Hc" secondAttribute="bottom" constant="19" id="oXT-J8-dKs"/>
+                <constraint firstAttribute="bottom" secondItem="zH7-oi-qMN" secondAttribute="bottom" id="rK8-Cw-bxn"/>
+                <constraint firstItem="pFi-K6-w23" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tTv-fF-LEU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="kJM-F4-U6y"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="31" y="137"/>
+        </view>
+        <customObject id="v4Z-6m-K70" customClass="ResizingSwitcher" customModule="KarhooUISDK">
+            <connections>
+                <outletCollection property="expandedConstraints" destination="0OM-9i-SEa" collectionClass="NSMutableArray" id="fPn-f9-9pJ"/>
+                <outletCollection property="contractedConstraints" destination="kJM-F4-U6y" collectionClass="NSMutableArray" id="kNW-Jb-52X"/>
+                <outletCollection property="contractedConstraints" destination="8jf-CY-uWE" collectionClass="NSMutableArray" id="lJj-gX-0aF"/>
+                <outletCollection property="expandedConstraints" destination="08k-IE-L7Q" collectionClass="NSMutableArray" id="mkY-CG-uHK"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="field_error" width="16" height="16"/>
+        <image name="field_success" width="32" height="32"/>
+    </resources>
+</document>

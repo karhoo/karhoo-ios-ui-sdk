@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PrebookField" customModule="KarhooUISDK" customModuleProvider="target">
+            <connections>
+                <outlet property="dateLabel" destination="FzH-D5-eFN" id="xlV-f6-bP3"/>
+                <outlet property="defaultView" destination="oJI-hC-aRV" id="tn5-o6-mcC"/>
+                <outlet property="timeDateView" destination="kFv-SR-CGp" id="ceh-uP-m9p"/>
+                <outlet property="timeLabel" destination="ttI-LU-3q6" id="BBA-9H-e6Y"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-jV-Ehu" customClass="Attributes" customModule="KarhooUISDK" customModuleProvider="target">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="bodyBold" destination="ttI-LU-3q6" collectionClass="NSMutableArray" id="qqL-16-ZDn"/>
+                        <outletCollection property="footnoteRegular" destination="FzH-D5-eFN" collectionClass="NSMutableArray" id="wrz-KH-HR7"/>
+                        <outletCollection property="primaryImageTint" destination="mkj-g0-rDw" collectionClass="NSMutableArray" id="CeB-hJ-hCV"/>
+                        <outletCollection property="bodyRegular" destination="Xg3-fG-D45" collectionClass="NSMutableArray" id="Zck-l6-Xsd"/>
+                        <outletCollection property="darkGreyFontColour" destination="Xg3-fG-D45" collectionClass="NSMutableArray" id="pv1-19-UWX"/>
+                        <outletCollection property="darkGreyFontColour" destination="ttI-LU-3q6" collectionClass="NSMutableArray" id="QbY-y5-dfm"/>
+                        <outletCollection property="darkGreyFontColour" destination="FzH-D5-eFN" collectionClass="NSMutableArray" id="B3c-w3-Toz"/>
+                        <outletCollection property="secondaryImageTint" destination="cR5-ZV-1Gq" collectionClass="NSMutableArray" id="VX9-F9-frg"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-54-i7e" customClass="NibStrings" customModule="KarhooUISDK" customModuleProvider="target">
+                    <rect key="frame" x="-69" y="-43" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="addressBarPrebookLabel" destination="Xg3-fG-D45" collectionClass="NSMutableArray" id="wbv-Ua-ENr"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-SR-CGp">
+                    <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ttI-LU-3q6">
+                            <rect key="frame" x="8" y="4" width="63" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="cR5-ZV-1Gq">
+                            <rect key="frame" x="79" y="16" width="12" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thm-LB-Www">
+                            <rect key="frame" x="74" y="0.0" width="29" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="clearPressed:" destination="-1" eventType="touchUpInside" id="YyJ-St-ovF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KM-wa-HE3">
+                            <rect key="frame" x="0.0" y="0.0" width="71" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="prebookPressed:" destination="-1" eventType="touchUpInside" id="ESw-xf-fnP"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Jul 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-D5-eFN">
+                            <rect key="frame" x="8" y="24" width="63" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJI-hC-aRV">
+                    <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xg3-fG-D45">
+                            <rect key="frame" x="36" y="12" width="60" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="mkj-g0-rDw">
+                            <rect key="frame" x="13.5" y="13.5" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALi-BK-Gie">
+                            <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="prebookPressed:" destination="-1" eventType="touchUpInside" id="we2-hX-nAC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-30.5" y="377.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar" width="38" height="38"/>
+        <image name="cross" width="24" height="24"/>
+    </resources>
+</document>

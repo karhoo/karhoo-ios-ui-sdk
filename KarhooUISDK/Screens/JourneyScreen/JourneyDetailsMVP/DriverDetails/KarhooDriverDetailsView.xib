@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooDriverDetailsView" customModule="KarhooUISDK">
+            <connections>
+                <outlet property="driverImageView" destination="0s3-pB-5kH" id="lhL-8T-pZf"/>
+                <outlet property="driverImageViewShadow" destination="qSh-Tj-Jug" id="Stj-LQ-z6K"/>
+                <outlet property="driverNameLabel" destination="N82-5Y-FXa" id="FQ7-Bk-bAu"/>
+                <outlet property="driverNameLabelTopLC" destination="GhU-Va-GYO" id="iJV-U6-H59"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N82-5Y-FXa">
+                    <rect key="frame" x="166.5" y="403.5" width="42" height="21"/>
+                    <accessibility key="accessibilityConfiguration" identifier="details-name-label"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSh-Tj-Jug">
+                    <rect key="frame" x="97.5" y="253.5" width="180" height="180"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="8wX-MG-tC2"/>
+                        <constraint firstAttribute="height" constant="180" id="d3M-Ag-SlY"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-pB-5kH">
+                    <rect key="frame" x="97.5" y="253.5" width="180" height="180"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration" identifier="details-driver-photo">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="2mO-ex-G0X"/>
+                        <constraint firstAttribute="width" constant="180" id="keJ-rq-4kh"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yv3-Xf-OXY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <accessibility key="accessibilityConfiguration" identifier="details-close-button"/>
+                    <connections>
+                        <action selector="overlayTapped" destination="-1" eventType="touchUpInside" id="aVo-ej-Ecv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qSh-Tj-Jug" firstAttribute="centerY" secondItem="0s3-pB-5kH" secondAttribute="centerY" id="12r-jD-MVd"/>
+                <constraint firstItem="Yv3-Xf-OXY" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AK9-48-b9t"/>
+                <constraint firstItem="qSh-Tj-Jug" firstAttribute="centerX" secondItem="0s3-pB-5kH" secondAttribute="centerX" id="CK1-XF-wma"/>
+                <constraint firstItem="N82-5Y-FXa" firstAttribute="top" secondItem="qSh-Tj-Jug" secondAttribute="bottom" constant="-30" id="GhU-Va-GYO"/>
+                <constraint firstItem="Yv3-Xf-OXY" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="HcH-XI-DRx"/>
+                <constraint firstItem="0s3-pB-5kH" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="HoH-Td-lH6"/>
+                <constraint firstItem="0s3-pB-5kH" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="HxM-rs-wi2"/>
+                <constraint firstItem="Yv3-Xf-OXY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TFH-Wh-WO2"/>
+                <constraint firstItem="N82-5Y-FXa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="kpk-ho-0FG"/>
+                <constraint firstItem="Yv3-Xf-OXY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="y8n-Ad-ZJR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="130.40000000000001" y="152.47376311844079"/>
+        </view>
+        <customObject id="5Qt-UO-BZs" customClass="Attributes" customModule="KarhooUISDK">
+            <connections>
+                <outletCollection property="standardRoundedCorners" destination="0s3-pB-5kH" collectionClass="NSMutableArray" id="ZSX-v0-hbD"/>
+                <outletCollection property="standardShadow" destination="qSh-Tj-Jug" collectionClass="NSMutableArray" id="GCt-uB-QL4"/>
+                <outletCollection property="standardShadow" destination="N82-5Y-FXa" collectionClass="NSMutableArray" id="xeo-ve-QQf"/>
+                <outletCollection property="captionBold" destination="N82-5Y-FXa" collectionClass="NSMutableArray" id="tdk-YJ-Vrx"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

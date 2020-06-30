@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupDialogViewController" customModule="KarhooUISDK" customModuleProvider="target">
+            <connections>
+                <outlet property="blurView" destination="rcs-7a-6w4" id="KcP-z8-WgZ"/>
+                <outlet property="formButton" destination="FUq-5h-uCd" id="upL-Pt-wnQ"/>
+                <outlet property="messageLabel" destination="GO7-VP-gCJ" id="rmi-4T-mys"/>
+                <outlet property="tapGestureRecognizer" destination="HKk-1d-ZNW" id="new-YF-qMd"/>
+                <outlet property="titleLabel" destination="UNg-wM-OUE" id="w1D-Dr-r6o"/>
+                <outlet property="view" destination="ZAM-1Z-C69" id="eyN-H0-DR6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ZAM-1Z-C69">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcs-7a-6w4">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xOx-Ja-sGg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9B-yt-17m">
+                                <rect key="frame" x="37.5" y="96" width="300" height="475"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-5h-uCd" customClass="FormButton" customModule="KarhooUISDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="431" width="300" height="44"/>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="5uD-Wz-xAQ"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base Fares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNg-wM-OUE">
+                                        <rect key="frame" x="100" y="30" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseFairDialogMap" translatesAutoresizingMaskIntoConstraints="NO" id="KWL-6B-To2">
+                                        <rect key="frame" x="40" y="83" width="220" height="222"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="21D-LH-3aU"/>
+                                            <constraint firstAttribute="height" constant="222" id="R3u-OK-WAG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GO7-VP-gCJ">
+                                        <rect key="frame" x="35" y="343" width="230" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="PTe-wy-wnQ"/>
+                                        </constraints>
+                                        <string key="text">Your final fare might be affected by tips, 
+tolls, taxes, and other charges.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254774310000003" green="0.97317165800000005" blue="0.97254774310000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UNg-wM-OUE" firstAttribute="centerX" secondItem="z9B-yt-17m" secondAttribute="centerX" id="4uW-Ns-jSx"/>
+                                    <constraint firstAttribute="trailing" secondItem="FUq-5h-uCd" secondAttribute="trailing" id="55c-ch-xCJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="FUq-5h-uCd" secondAttribute="bottom" id="CdU-l9-g24"/>
+                                    <constraint firstItem="FUq-5h-uCd" firstAttribute="leading" secondItem="z9B-yt-17m" secondAttribute="leading" id="MzB-Gn-T0l"/>
+                                    <constraint firstItem="GO7-VP-gCJ" firstAttribute="top" secondItem="KWL-6B-To2" secondAttribute="bottom" constant="38" id="Uen-vQ-TRu"/>
+                                    <constraint firstAttribute="height" constant="475" id="jd2-XS-Fcq"/>
+                                    <constraint firstItem="UNg-wM-OUE" firstAttribute="top" secondItem="z9B-yt-17m" secondAttribute="top" constant="30" id="lY0-05-YeG"/>
+                                    <constraint firstItem="KWL-6B-To2" firstAttribute="top" secondItem="UNg-wM-OUE" secondAttribute="bottom" constant="29" id="rjO-Iw-Tda"/>
+                                    <constraint firstAttribute="width" constant="300" id="uhE-4F-E63"/>
+                                    <constraint firstItem="KWL-6B-To2" firstAttribute="centerX" secondItem="z9B-yt-17m" secondAttribute="centerX" id="vow-Dt-P3g"/>
+                                    <constraint firstItem="GO7-VP-gCJ" firstAttribute="centerX" secondItem="z9B-yt-17m" secondAttribute="centerX" id="wFi-4h-EcD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="z9B-yt-17m" firstAttribute="centerY" secondItem="xOx-Ja-sGg" secondAttribute="centerY" id="HQw-d0-vcZ"/>
+                            <constraint firstItem="z9B-yt-17m" firstAttribute="centerX" secondItem="xOx-Ja-sGg" secondAttribute="centerX" id="pVj-MJ-lb2"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HKk-1d-ZNW" appends="YES" id="DbV-I0-X2v"/>
+                        </connections>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLl-QE-9rF" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="standardRoundedCorners" destination="z9B-yt-17m" collectionClass="NSMutableArray" id="6sY-aI-0aa"/>
+                        <outletCollection property="subtitleRegular" destination="UNg-wM-OUE" collectionClass="NSMutableArray" id="80e-cQ-OjV"/>
+                        <outletCollection property="medGreyFontColour" destination="GO7-VP-gCJ" collectionClass="NSMutableArray" id="cZM-79-hOP"/>
+                        <outletCollection property="captionRegular" destination="GO7-VP-gCJ" collectionClass="NSMutableArray" id="7lZ-ay-zZx"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rcs-7a-6w4" firstAttribute="leading" secondItem="ZPM-tm-KeW" secondAttribute="leading" id="Bjc-CW-ypl"/>
+                <constraint firstItem="rcs-7a-6w4" firstAttribute="trailing" secondItem="ZPM-tm-KeW" secondAttribute="trailing" id="TxI-RV-uM3"/>
+                <constraint firstItem="rcs-7a-6w4" firstAttribute="top" secondItem="ZAM-1Z-C69" secondAttribute="top" id="kaV-aL-wnn"/>
+                <constraint firstItem="rcs-7a-6w4" firstAttribute="bottom" secondItem="ZAM-1Z-C69" secondAttribute="bottom" id="q5f-mT-fDe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZPM-tm-KeW"/>
+        </view>
+        <tapGestureRecognizer id="HKk-1d-ZNW">
+            <connections>
+                <action selector="didTapBackground:" destination="-1" id="ySR-bI-fWl"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="baseFairDialogMap" width="220" height="222"/>
+    </resources>
+</document>

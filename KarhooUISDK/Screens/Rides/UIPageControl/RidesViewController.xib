@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RidesViewController" customModule="KarhooUISDK">
+            <connections>
+                <outlet property="childPageView" destination="bOE-gI-AXs" id="uRw-DU-GQ2"/>
+                <outlet property="formButton" destination="M22-tZ-BcT" id="yes-Q5-ndk"/>
+                <outlet property="pastTabLabel" destination="xJm-se-0v8" id="2si-kD-9Z6"/>
+                <outlet property="tabConstraintSwitcher" destination="NXg-ZJ-d5a" id="7Kk-Lu-ZR1"/>
+                <outlet property="tabView" destination="u8q-r4-fPh" id="AhD-UD-wO1"/>
+                <outlet property="upcomingTabLabel" destination="dYh-2F-gBC" id="5Nk-jw-OQZ"/>
+                <outlet property="view" destination="93J-v6-Kog" id="5Uv-Nc-fxu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="93J-v6-Kog">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOE-gI-AXs">
+                    <rect key="frame" x="0.0" y="49" width="375" height="618"/>
+                </containerView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4s-wU-eza" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="primaryBackgroundColor" destination="u8q-r4-fPh" collectionClass="NSMutableArray" id="wmn-Zs-t4S"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpQ-7b-Bg6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKp-ix-RuX">
+                            <rect key="frame" x="0.0" y="45" width="375" height="4"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="d8j-Kd-b0X"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8q-r4-fPh">
+                            <rect key="frame" x="0.0" y="45" width="187" height="4"/>
+                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiL-I4-z3N">
+                            <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYh-2F-gBC">
+                                    <rect key="frame" x="58.5" y="14" width="70.5" height="18"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="ride-list-upcoming"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-nl-WRa">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                                    <connections>
+                                        <action selector="upcomingBookingsPressed" destination="-1" eventType="touchUpInside" id="cnv-hS-1pn"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="JPQ-nl-WRa" firstAttribute="top" secondItem="PiL-I4-z3N" secondAttribute="top" id="33e-ys-gZN"/>
+                                <constraint firstItem="JPQ-nl-WRa" firstAttribute="leading" secondItem="PiL-I4-z3N" secondAttribute="leading" id="8ii-ga-3FL"/>
+                                <constraint firstAttribute="trailing" secondItem="JPQ-nl-WRa" secondAttribute="trailing" id="a0K-AP-PwO"/>
+                                <constraint firstItem="dYh-2F-gBC" firstAttribute="centerX" secondItem="PiL-I4-z3N" secondAttribute="centerX" id="coj-9Y-ZCx"/>
+                                <constraint firstItem="dYh-2F-gBC" firstAttribute="centerY" secondItem="PiL-I4-z3N" secondAttribute="centerY" id="oZd-Vw-37w"/>
+                                <constraint firstAttribute="bottom" secondItem="JPQ-nl-WRa" secondAttribute="bottom" id="rAb-kX-MVe"/>
+                            </constraints>
+                        </view>
+                        <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-Ct-hRQ">
+                            <rect key="frame" x="188" y="0.0" width="187" height="46"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJm-se-0v8">
+                                    <rect key="frame" x="78.5" y="14" width="30" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="ride-list-past"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3he-PU-GsQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="past-rides-button"/>
+                                    <connections>
+                                        <action selector="pastBookingsPressed" destination="-1" eventType="touchUpInside" id="wBa-AV-CFF"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="3he-PU-GsQ" secondAttribute="bottom" id="0k2-qi-JTU"/>
+                                <constraint firstItem="xJm-se-0v8" firstAttribute="centerX" secondItem="Xr5-Ct-hRQ" secondAttribute="centerX" id="9hd-8h-oy8"/>
+                                <constraint firstAttribute="trailing" secondItem="3he-PU-GsQ" secondAttribute="trailing" id="HvE-Hb-8da"/>
+                                <constraint firstItem="xJm-se-0v8" firstAttribute="centerY" secondItem="Xr5-Ct-hRQ" secondAttribute="centerY" id="Z9Q-5j-whR"/>
+                                <constraint firstItem="3he-PU-GsQ" firstAttribute="top" secondItem="Xr5-Ct-hRQ" secondAttribute="top" id="gU0-9g-Sce"/>
+                                <constraint firstAttribute="height" constant="46" id="q3l-Ug-jvP"/>
+                                <constraint firstItem="3he-PU-GsQ" firstAttribute="leading" secondItem="Xr5-Ct-hRQ" secondAttribute="leading" id="uGO-Xn-x2P"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="u8q-r4-fPh" firstAttribute="width" secondItem="PiL-I4-z3N" secondAttribute="width" id="09A-ee-ctZ"/>
+                        <constraint firstItem="Xr5-Ct-hRQ" firstAttribute="leading" secondItem="PiL-I4-z3N" secondAttribute="trailing" constant="1" id="3ce-en-fYT"/>
+                        <constraint firstAttribute="bottom" secondItem="PiL-I4-z3N" secondAttribute="bottom" constant="3" id="71j-KM-hVy"/>
+                        <constraint firstItem="dKp-ix-RuX" firstAttribute="leading" secondItem="dpQ-7b-Bg6" secondAttribute="leading" id="JjD-cI-PXj"/>
+                        <constraint firstItem="PiL-I4-z3N" firstAttribute="leading" secondItem="dpQ-7b-Bg6" secondAttribute="leading" id="Lto-55-QaB"/>
+                        <constraint firstAttribute="trailing" secondItem="u8q-r4-fPh" secondAttribute="trailing" id="UON-9N-flv"/>
+                        <constraint firstItem="Xr5-Ct-hRQ" firstAttribute="top" secondItem="dpQ-7b-Bg6" secondAttribute="top" id="VJE-o6-G0k"/>
+                        <constraint firstAttribute="bottom" secondItem="Xr5-Ct-hRQ" secondAttribute="bottom" constant="3" id="WFf-MB-U5d"/>
+                        <constraint firstAttribute="trailing" secondItem="Xr5-Ct-hRQ" secondAttribute="trailing" id="XwA-qt-9xt"/>
+                        <constraint firstItem="Xr5-Ct-hRQ" firstAttribute="width" secondItem="PiL-I4-z3N" secondAttribute="width" id="ZSX-d1-1Rf"/>
+                        <constraint firstAttribute="bottom" secondItem="dKp-ix-RuX" secondAttribute="bottom" id="eme-qM-Qkh"/>
+                        <constraint firstAttribute="bottom" secondItem="u8q-r4-fPh" secondAttribute="bottom" id="gfX-UD-B5W"/>
+                        <constraint firstAttribute="height" constant="49" id="isA-5W-VO4"/>
+                        <constraint firstAttribute="trailing" secondItem="dKp-ix-RuX" secondAttribute="trailing" id="oim-7h-Z40"/>
+                        <constraint firstItem="u8q-r4-fPh" firstAttribute="leading" secondItem="dpQ-7b-Bg6" secondAttribute="leading" id="pya-jp-DqC"/>
+                        <constraint firstItem="u8q-r4-fPh" firstAttribute="top" secondItem="PiL-I4-z3N" secondAttribute="bottom" constant="-1" id="qyy-3V-hqX"/>
+                        <constraint firstItem="PiL-I4-z3N" firstAttribute="top" secondItem="dpQ-7b-Bg6" secondAttribute="top" id="tti-rg-twk"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="UON-9N-flv"/>
+                        </mask>
+                    </variation>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M22-tZ-BcT" customClass="FormButton" customModule="KarhooUISDK" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="joD-uj-mAF"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b05-nz-r1W">
+                    <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                    <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-sc-2Ys" customClass="NibStrings" customModule="KarhooUISDK" customModuleProvider="target">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outletCollection property="bookingsListPastString" destination="xJm-se-0v8" collectionClass="NSMutableArray" id="kQk-Kp-PSD"/>
+                        <outletCollection property="bookingsListUpcomingString" destination="dYh-2F-gBC" collectionClass="NSMutableArray" id="DeP-xq-cFs"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="M22-tZ-BcT" firstAttribute="leading" secondItem="aLq-7g-3Go" secondAttribute="leading" id="A7X-oY-61k"/>
+                <constraint firstItem="dpQ-7b-Bg6" firstAttribute="trailing" secondItem="aLq-7g-3Go" secondAttribute="trailing" id="EVr-f1-xHb"/>
+                <constraint firstItem="bOE-gI-AXs" firstAttribute="trailing" secondItem="aLq-7g-3Go" secondAttribute="trailing" id="ISd-Ho-iB6"/>
+                <constraint firstItem="b05-nz-r1W" firstAttribute="top" secondItem="M22-tZ-BcT" secondAttribute="bottom" id="IYE-Yd-9rO"/>
+                <constraint firstItem="bOE-gI-AXs" firstAttribute="top" secondItem="dpQ-7b-Bg6" secondAttribute="bottom" id="LCM-qC-dZ7"/>
+                <constraint firstItem="b05-nz-r1W" firstAttribute="trailing" secondItem="aLq-7g-3Go" secondAttribute="trailing" id="Tad-6z-Vif"/>
+                <constraint firstItem="dpQ-7b-Bg6" firstAttribute="leading" secondItem="aLq-7g-3Go" secondAttribute="leading" id="WUi-Hg-mFK"/>
+                <constraint firstItem="bOE-gI-AXs" firstAttribute="leading" secondItem="aLq-7g-3Go" secondAttribute="leading" id="Xpp-Y8-OLp"/>
+                <constraint firstItem="dpQ-7b-Bg6" firstAttribute="trailing" secondItem="aLq-7g-3Go" secondAttribute="trailing" id="diB-sq-zT1"/>
+                <constraint firstItem="bOE-gI-AXs" firstAttribute="bottom" secondItem="aLq-7g-3Go" secondAttribute="bottom" id="eOj-ZQ-nGH"/>
+                <constraint firstItem="b05-nz-r1W" firstAttribute="bottom" secondItem="93J-v6-Kog" secondAttribute="bottom" id="pCX-f8-bcE"/>
+                <constraint firstItem="b05-nz-r1W" firstAttribute="leading" secondItem="aLq-7g-3Go" secondAttribute="leading" id="rZT-wS-un8"/>
+                <constraint firstItem="M22-tZ-BcT" firstAttribute="trailing" secondItem="aLq-7g-3Go" secondAttribute="trailing" id="sJ3-hZ-9lO"/>
+                <constraint firstItem="M22-tZ-BcT" firstAttribute="bottom" secondItem="aLq-7g-3Go" secondAttribute="bottom" id="upP-as-g0D"/>
+                <constraint firstItem="dpQ-7b-Bg6" firstAttribute="top" secondItem="aLq-7g-3Go" secondAttribute="top" id="xrr-6p-G7s"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="aLq-7g-3Go"/>
+            <point key="canvasLocation" x="56.799999999999997" y="46.326836581709152"/>
+        </view>
+        <customObject id="NXg-ZJ-d5a" customClass="ResizingSwitcher" customModule="KarhooUISDK">
+            <connections>
+                <outletCollection property="contractedConstraints" destination="pya-jp-DqC" collectionClass="NSMutableArray" id="f7z-JL-Ed2"/>
+                <outletCollection property="expandedConstraints" destination="UON-9N-flv" collectionClass="NSMutableArray" id="own-Ae-FJz"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideMenuViewController" customModule="Karhoo" customModuleProvider="target">
+            <connections>
+                <outlet property="contentContainer" destination="DyY-va-1Ke" id="4vx-AR-mgl"/>
+                <outlet property="menuContainer" destination="OeQ-Xi-xfE" id="tO3-em-ixl"/>
+                <outlet property="menuStartConstraint" destination="BTm-Ke-gP2" id="QOh-LE-zUK"/>
+                <outlet property="overlay" destination="TM9-ly-yfv" id="S5V-2P-dFx"/>
+                <outlet property="view" destination="iN0-l3-epB" id="sNT-uQ-PZI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-va-1Ke" userLabel="ContentContainer">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TM9-ly-yfv" userLabel="Overlay">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="vBn-kl-FSE" appends="YES" id="dOD-SL-K6O"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeQ-Xi-xfE" userLabel="MenuContainer">
+                    <rect key="frame" x="0.0" y="0.0" width="281" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="281" id="APT-qh-I3m"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="TM9-ly-yfv" secondAttribute="bottom" id="B5I-Lq-eqX"/>
+                <constraint firstItem="OeQ-Xi-xfE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BTm-Ke-gP2"/>
+                <constraint firstItem="TM9-ly-yfv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DX1-um-VRk"/>
+                <constraint firstAttribute="trailing" secondItem="DyY-va-1Ke" secondAttribute="trailing" id="EcC-Y9-xZo"/>
+                <constraint firstItem="DyY-va-1Ke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FTp-Vz-AAz"/>
+                <constraint firstAttribute="bottom" secondItem="DyY-va-1Ke" secondAttribute="bottom" id="KOy-Rx-FGE"/>
+                <constraint firstAttribute="bottom" secondItem="OeQ-Xi-xfE" secondAttribute="bottom" id="Yuj-EA-28G"/>
+                <constraint firstAttribute="trailing" secondItem="TM9-ly-yfv" secondAttribute="trailing" id="hvI-2H-Jev"/>
+                <constraint firstItem="TM9-ly-yfv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nox-jM-eW9"/>
+                <constraint firstItem="DyY-va-1Ke" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vNg-hd-BtY"/>
+                <constraint firstItem="OeQ-Xi-xfE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xrQ-Bw-yUE"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="58.5"/>
+        </view>
+        <tapGestureRecognizer id="vBn-kl-FSE">
+            <connections>
+                <action selector="hideMenu" destination="-1" id="xfL-po-kh0"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

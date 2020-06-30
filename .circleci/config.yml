@@ -1,0 +1,44 @@
+# For a detailed guide to building and testing on iOS, read the docs:
+# https://circleci.com/docs/2.0/testing-ios/
+
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/code
+    macos:
+      xcode: 11.3.1 # Specify the Xcode version to use
+
+    steps:
+      - checkout
+      - run: echo "ruby-2.5" > ~/.ruby-version
+      - run: 
+          name: Bundle install
+          command: bundle install
+#       - run:
+#           name: Fetch CocoaPods Specs
+#           command: |
+#             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: bundle exec pod install --verbose
+      - run:
+          name: Build with fastlane
+          command: bundle exec fastlane update_plugins
+      - run: 
+          name: Run Unit Tests
+          command: xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDKTests' -destination 'platform=iOS Simulator,name=iPhone 11' test -UseModernBuildSystem=YES | xcpretty --test --color
+      - run:
+          name: Fastlane Xcov report
+          command: fastlane ios XcovReport
+      - run:
+          name: Build SDK
+          command: xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDK' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO -UseModernBuildSystem=YES | xcpretty
+
+      # Collect XML test results data to show in the UI, and save the same XML
+      # files under test-results folder in the Artifacts tab
+      - store_test_results:
+          path: test_output
+      - store_artifacts:
+          path: test_output
+          destination: scan-output

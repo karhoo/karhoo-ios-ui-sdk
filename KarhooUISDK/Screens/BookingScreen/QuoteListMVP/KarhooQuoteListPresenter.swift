@@ -1,0 +1,162 @@
+//
+//  KarhooQuoteListPresenter.swift
+//  Karhoo
+//
+//
+//  Copyright © 2020 Karhoo. All rights reserved.
+//
+
+import KarhooSDK
+
+final class KarhooQuoteListPresenter: QuoteListPresenter {
+
+    private let bookingStatus: BookingStatus
+    private let quoteService: QuoteService
+    private weak var quoteListView: QuoteListView?
+    private var fetchedQuotes: Quotes?
+    private var quotesObserver: Observer<Quotes>?
+    private var quoteSearchObservable: Observable<Quotes>?
+    private var selectedQuoteCategory: QuoteCategory?
+    private var selectedQuoteOrder: QuoteSortOrder = .qta
+    private let quoteSorter: QuoteSorter
+    private let dateFormatter: DateFormatterType
+
+    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+         quoteService: QuoteService = Karhoo.getQuoteService(),
+         quoteListView: QuoteListView,
+         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
+         dateFormatter: DateFormatterType = KarhooDateFormatter()) {
+        self.bookingStatus = bookingStatus
+        self.quoteService = quoteService
+        self.quoteListView = quoteListView
+        self.quoteSorter = quoteSorter
+        self.dateFormatter = dateFormatter
+        bookingStatus.add(observer: self)
+    }
+
+    deinit {
+        bookingStatus.remove(observer: self)
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+    }
+
+    func selectedQuoteCategory(_ category: QuoteCategory) {
+        self.selectedQuoteCategory = category
+        updateViewQuotes(animated: true)
+    }
+
+    func didSelectQuoteOrder(_ order: QuoteSortOrder) {
+        self.selectedQuoteOrder = order
+        updateViewQuotes(animated: true)
+    }
+
+    private func quoteSearchSuccessResult(_ quotes: Quotes) {
+        self.fetchedQuotes = quotes
+        quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
+                                         quoteListId: quotes.quoteListId)
+
+        updateViewQuotes(animated: false)
+    }
+
+    private func quoteSearchErrorResult(_ error: KarhooError?) {
+        guard let error = error else {
+            return
+        }
+
+        switch error.type {
+        case .noAvailabilityInRequestedArea:
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            quoteListView?.showNoAvailabilityBar()
+            quoteListView?.hideLoadingView()
+        case .originAndDestinationAreTheSame:
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
+            quoteListView?.hideLoadingView()
+        default: break
+        }
+    }
+
+    private func updateViewQuotes(animated: Bool) {
+        guard let fetchedQuotes = self.fetchedQuotes,
+              let selectedCategory = self.selectedQuoteCategory else {
+            return
+        }
+
+        let quotesToShow: [Quote]
+
+        if selectedQuoteCategory?.categoryName == UITexts.Availability.allCategory {
+            quotesToShow = fetchedQuotes.all
+        } else {
+            quotesToShow = fetchedQuotes.quoteCategories
+                .filter { $0.categoryName == selectedCategory.categoryName }.first?.quotes ?? []
+        }
+
+        if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false {
+            quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesInSelectedCategory)
+        } else {
+            let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
+            quoteListView?.showQuotes(sortedQuotes, animated: animated)
+        }
+
+    }
+}
+
+extension KarhooQuoteListPresenter: BookingDetailsObserver {
+
+    func bookingStateChanged(details: BookingDetails?) {
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+
+        guard let details = details else {
+            return
+        }
+
+        if details.destinationLocationDetails != nil, details.isScheduled {
+            quoteListView?.hideQuoteSorter()
+        } else {
+            quoteListView?.showQuoteSorter()
+        }
+
+        quoteListView?.hideQuotesTitle()
+
+        guard let destination = details.destinationLocationDetails,
+            let origin = details.originLocationDetails else {
+            quoteListView?.hideLoadingView()
+            return
+        }
+        
+        quoteListView?.showQuotes([], animated: true)
+        quoteListView?.showLoadingView()
+        let quoteSearch = QuoteSearch(origin: origin,
+                                      destination: destination,
+                                      dateScheduled: details.scheduledDate)
+
+        quotesObserver = Observer<Quotes> { [weak self] result in
+
+            if result.successValue()?.all.isEmpty == false {
+                self?.quoteListView?.hideLoadingView()
+            }
+
+            switch result {
+            case .success(let quotes):
+                self?.quoteSearchSuccessResult(quotes)
+                if details.destinationLocationDetails != nil,
+                    let scheduled = details.scheduledDate,
+                    let originTimeZone = details.originLocationDetails?.timezone() {
+                    self?.quoteListView?.hideQuoteSorter()
+
+                    self?.dateFormatter.set(timeZone: originTimeZone)
+                    let dateString = self?.dateFormatter.display(detailStyleDate: scheduled) ?? ""
+                    self?.quoteListView?.showQuotesTitle(dateString)
+                }
+
+                if quotes.all.isEmpty {
+                    self?.quoteListView?.showLoadingView()
+                }
+
+            case .failure(let error):
+                self?.quoteSearchErrorResult(error)
+            }
+        }
+        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
+        quoteSearchObservable?.subscribe(observer: quotesObserver)
+    }
+}

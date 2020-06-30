@@ -1,0 +1,621 @@
+
+/*Localizable.strings
+ Karhoo
+
+ Copyright © 2020 Karhoo. All rights reserved.
+ Generics*/
+"Text.Generic.Cancel" = "Cancelar";
+"Text.Generic.Ok" = "OK";
+"Text.Generic.Close" = "Cerrar";
+"Text.Generic.Done" = "Hecho";
+"Text.Generic.Back" = "Volver";
+"Text.Generic.Error" = "Error";
+"Text.Generic.Register" = "Registrarse";
+"Text.Generic.Logout" = "Salir";
+"Text.Generic.Contact" = "Contacto";
+"Text.Generic.Bookings" = "Reservas";
+"Text.Generic.Destination" = "Destino";
+"Text.Generic.Pickup" = "Punto de partida";
+"Text.Generic.Add" = "Adjuntar";
+"Text.Generic.Change" = "Cambiar";
+"Text.Generic.Submit" = "Enviar";
+"Text.Generic.Success" = "El éxito";
+"Text.Generic.ETALong" = "Hora de llegada estimada";
+"Text.Generic.EPrice" = "Precio estimado";
+"Text.Generic.ETA" = "Tiempo estimado";
+"Text.Generic.Price" = "Precio";
+"Text.Generic.Prebook" = "Reservar";
+"Text.Generic.Name" = "Nombre";
+"Text.Generic.Surname" = "Apellido";
+"Text.Generic.Email" = "Email";
+"Text.Generic.PhoneNumber" = "Número de teléfono";
+"Text.Generic.Comment" = "Comentario";
+"Text.Generic.Optional" = "Opcional";
+"Text.Generic.ErrorMessage" = "¡Hubo un problema!";
+
+/*Fuzzy*/
+"Text.Generic.ETA" = "Proximidad";
+"Text.Generic.Price" = "Tarifa";
+"Text.Generic.Prebook" = "Reserva";
+
+/*english: "creating your Karhoo account". Used in terms conditions construction*/
+"Text.Generic.RegisterAccountAction" = "crear una cuenta de Karhoo";
+
+/*english "making a booking". Used in terms conditions construction*/
+"Text.Generic.MakingBookingAction" = "reservar";
+"Text.Generic.TermsConditions" = "condiciones generales";
+"Text.Generic.PrivacyPolicy" = "política de privacidad";
+"Text.Generic.Minutes" = "min";
+"Text.Generic.Continue" = "Continuar";
+
+/*Address Bar*/
+"Text.AddressBar.AddDestination" = "Añadir destino";
+"Text.AddressBar.AddPickup" = "Agregar recogida";
+"Text.AddressBar.EnterPickupLocation" = "¿Dónde estás?";
+"Text.AddressSearch.EnterDestinationLocation" = "¿Dónde vas?";
+
+/*User (register / login / user attributes)*/
+"Text.User.FirstName" = "Nombre";
+"Text.User.LastName" = "Apellidos";
+"Text.User.Email" = "Email";
+"Text.User.PhoneCountryCode" = "Prefijo";
+"Text.User.MobilePhoneNumber" = "Número de teléfono";
+"Text.User.Password" = "Contraseña";
+"Text.User.EmailSubscription" = "No deseo recibir viajes gratuitos, promociones ni ofertas";
+
+/*Errors*/
+"Text.Error.EmailValidationError" = "Comprueba que tu email está escrito correctamente";
+"Text.Error.Booking.EnterDestinationToProceed" = "Introduce tu destino para solicitar un viaje";
+"Text.Error.NotLoggedIn" = "No estás conectado";
+
+/*Terms Condition full string
+ 1:Making a booking / Registering an account, 2: Supplier name "Terms and Conditions","Privacy Policy"*/
+"Text.TermsConditions.FullString" = "Al %1$@, aceptas las %3$@ y la %4$@ de %2$@";
+
+/*Side Menu*/
+"Text.SideMenu.Login" = "Acceder";
+"Text.SideMenu.SignIn" = "Acceder";
+"Text.SideMenu.Signup" = "Registrarse";
+"Text.SideMenu.Help" = "Ayuda";
+"Text.SideMenu.Feedback" = "Sugerencias";
+
+/*In app email to customer support / feedback*/
+/*Fuzzy*/
+"Text.SupportMailMessage.Feedback" = "Por favor, no modifiques esta información ya que nos ayuda a identificar problemas.";
+
+/*Prebook*/
+"Text.Prebook.PrebookPickupTime" = "Día y hora de partida";
+"Text.Prebook.SetPrebook" = "Seleccionar";
+
+/*Booking*/
+"Text.Booking.RequestCar" = "Solicitar";
+"Text.Booking.RequestingCar" = "Solicitar";
+"Text.Booking.RequestReceived" = "Solicitud recibida";
+"Text.Bookings.eta" = "Proximidad";
+"Text.Bookings.price" = "Tarifa";
+"Text.Booking.guestCheckout" = "Check-out as Guest";
+
+/*Journey*/
+/*Fuzzy*/
+"Text.Journey.CancelRide" = "Cancelar reserva";
+"Text.Journey.MessageDriver" = "Enviar SMS";
+"Text.Journey.CallDriver" = "Llamar conductor";
+
+/*Trip Statuses*/
+/*Fuzzy*/
+"Text.Trip.Unknown" = "Procesando tu solicitud";
+"Text.Trip.Initialised" = "Procesando tu solicitud";
+"Text.Trip.Requested" = "Esto puede demorarse unos instantes";
+"Text.Trip.Confirmed" = "Tu solicitud ha sido aceptada. \nSe te está asignando un conductor.";
+"Text.Trip.DriverAllocated" = "Conductor asignado";
+"Text.Trip.DriverEnRoute" = "Tu conductor está de camino";
+
+/*1) driver first name: 2) license plate 3) make and model*/
+"Text.Trip.DriverApproaching" = "Tu conductor %1$@: %2$@, %3$@ llegará pronto.";
+"Text.Trip.DriverArrived" = "¡Tu conductor ha llegado!";
+"Text.Trip.PassengerOnBoard" = "Ya estás de camino ¡Buen viaje!";
+"Text.Trip.Completed" = "Llegaste a tu destino";
+"Text.Trip.CancelledByUser" = "Has cancelado la reserva";
+"Text.Trip.CancelledByDispatch" = "Lo sentimos, la flota canceló tu reserva.";
+"Text.Trip.CancelledByKarhoo" = "Tu reserva ha sido cancelada. Por favor ponte en contacto con nosotros.";
+"Text.Trip.Failed" = "Hubo un problema con tu solicitud. Inténtalo de nuevo o ponte en contacto con nosotros.";
+"Text.Journey.Completed" = "Has llegado a tu destino. Cuéntanos qué te ha parecido el viaje.";
+
+/*English: "Pickup Time" in booking request screen*/
+/*Fuzzy*/
+"Text.Generic.PickupTime" = "Proximidad";
+
+/*Reference to fixed pricing.. English equivalent: "Fixed"*/
+/*Fuzzy*/
+"Text.Generic.Fixed" = "Fijo";
+
+/*Register on the side menu*/
+"Text.SideMenu.Register" = "Registrarse";
+
+/*Sign Out on the side menu*/
+"Text.SideMenu.SignOut" = "Salir";
+
+/*"Cancelled"*/
+"Text.Generic.Cancelled" = "Cancelado";
+
+/*"Completed"*/
+"Text.Generic.Completed" = "Completado";
+
+/*english: "status"*/
+"Text.Generic.Status" = "Estado";
+
+/*english: "price"*/
+"Text.Generic.Price" = "Tarifa";
+
+/*english "Card" (referring to payment card)*/
+"Text.Generic.Card" = "Tarjeta";
+
+/*English: "Report Issue" */
+/*Fuzzy*/
+"Text.Generic.ReportIssue" = "Reportar problema";
+
+/*english: "Please use the space below to report a specific issue with your trip" used when reporting issue with trip*/
+/*Fuzzy*/
+"Text.SupportMailMessage.Trip" = "Utiliza este espacio para informarnos de cualquier problema.";
+
+/*English: "No Trips" used if the booking list screen is empty*/
+/*Fuzzy*/
+"Text.Bookings.NoTrips" = "Sin reservas";
+
+/*used as a message on the booking screen if the user has no trips. English: "You have no booked trips yet. We can help you get from A to B"*/
+/*Fuzzy*/
+"Text.Bookings.NoTripsBookedMessage" = "Aún no has reservado ningún viaje. Podemos ayudarte a ir de un lugar a otro.";
+
+/*used as a call to action on a button in the empty bookings screen: English: "Book A Trip"*/
+"Text.Bookings.BookATrip" = "Solicitar viaje";
+
+/*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
+"Text.Payment.AddPaymentMethod" = "Añada su metodo de pago";
+"Text.Payment.PaymentMethod" = "Tarjeta finalizada en";
+
+/*"Edit" used as a button (call to action) */
+"Text.Generic.Edit" = "Editar";
+
+/*"Save" used as a button (call to action) */
+"Text.Generic.Save" = "Salvar";
+
+/*"Payment" used as a button in the side menu to reach all your payment methods*/
+"Text.Generic.Payment" = "Pago";
+
+/*"Payments" used as the title of the payment method screen*/
+"Text.Generic.Payments" = "Pagos";
+
+/*in english: "Requested"*/
+"Text.GenericTripStatus.Initialised" = "Solicitado";
+
+/*english: requested*/
+"Text.GenericTripStatus.Requested" = "Solicitado";
+
+/*Confirmed*/
+"Text.GenericTripStatus.Confirmed" = "Confirmado";
+
+/*"Allocated" when a driver has been allocated*/
+"Text.GenericTripStatus.Allocated" = "Asignado";
+
+/*"Driver En Route" when a driver is en route*/
+"Text.GenericTripStatus.EnRoute" = "Conductor de camino";
+
+/*or "El conductor se acerca"*/
+/*"Driver Approaching"*/
+/*Fuzzy*/
+"Text.GenericTripStatus.Approaching" = "Conductor cerca";
+
+/*Driver Arrived*/
+"Text.GenericTripStatus.Arrived" = "El conductor ha llegado";
+
+/*"On Board"*/
+"Text.GenericTripStatus.PassengerOnBoard" = "Viaje en curso";
+
+/*"Completed" (trip completed)*/
+"Text.GenericTripStatus.Completed" = "Completado";
+
+/*"Cancelled" */
+"Text.GenericTripStatus.Cancelled" = "Cancelado";
+
+/*"Failed" */
+"Text.GenericTripStatus.Failed" = "Error";
+
+/*"Pending"*/
+/*Fuzzy*/
+"Text.GenericTripStatus.Unknown" = "Pendiente";
+
+/*"Incomplete"*/
+"Text.GenericTripStatus.Incomplete" = "Estado pendiente";
+
+/*"Track Driver"*/
+"Text.Bookings.TrackDriver" = "Localizar conductor";
+
+/*"Contact Driver" (button action)*/
+"Text.Bookings.ContactDriver" = "Llamar conductor";
+
+/*"Contact Fleet"*/
+"Text.Bookings.ContactFleet" = "Llamar a la flota";
+
+/*"Track Trip"*/
+"Text.Bookings.TrackTrip" = "Seguir viaje";
+
+/*"Cancel Ride" button action*/
+"Text.Bookings.CancelRide" = "Cancelar viaje";
+
+/*"Report Issue" Button*/
+"Text.Bookings.ReportIssue" = "Reportar problema";
+
+/*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
+"Text.Bookings.AsapBooking" = "Reserva inmediata";
+"Text.Journey.CancelBookingFailed" = "Cancelación no confirmada. Llama a la flota.";
+
+/*Used as a button in the journey screen. English: "Ride Options"*/
+"Text.Journey.RideOptions" = "Opciones";
+"Text.Journey.CancelBookingFailed.AlertTitle" = "Cancelación fallida";
+"Text.Journey.CancelBookingFailed.AlertMessage" = "Hubo un problema cancelando tu solicitud. Llama a la flota.";
+"Text.Journey.CancelBookingFailed.AlertCallFleetButton" = "Llamar a la flota";
+"Text.Generic.Yes" = "Si";
+"Text.Generic.No" = "No";
+"Text.Generic.Dismiss" = "Descartar";
+"Text.Journey.CancelBookingConfirmation.Alert.Title" = "¿Cancelar tu viaje?";
+"Text.Journey.CancelBookingConfirmation.Alert.Message" = "Puede que se te cobre una tarifa de cancelación";
+
+/*Call fleet button in journey screen (English: Call Fleet)*/
+"Text.Journey.CallFleet" = "Llamar flota";
+"Text.Journey.ActivityIndicator.Cancelling" = "Cancelando";
+
+/*The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device"*/
+"Text.Generic.NoEmailSetupError" = "Configura una cuenta de correo en tu dispositivo";
+"Text.Journey.CancelledByDispatch.AlertMessage" = "Lo sentimos, la flota canceló tu reserva. Inténtalo de nuevo.";
+"Text.Journey.CancelledByDispatch.AlertTitle" = "Cancelado por la flota";
+"Text.Generic.NoCarsAvailable" = "No hay taxis disponibles en este momento. Inténtalo de nuevo mas tarde.";
+
+/*English: "Estimated"*/
+"Text.Generic.Estimated" = "Estimado";
+
+/*"Unkown"*/
+/*Fuzzy*/
+"Text.Generic.Unknown" = "Desconocido";
+
+/*"Something went wrong" used as a title for error alert*/
+"Text.Error.SomethingWentWrong" = "Hubo un problema";
+
+/*Used to explain an unknown error. ie "Oops, something went wrong. Please try again"*/
+"Text.Error.NoDetails" = "¡Hubo un problema! Inténtalo de nuevo.";
+"Text.Error.Payment.Alert.Title" = "Problemas con el pago";
+"Text.Error.Payment.Alert.Message" = "No pudimos autorizar tu tarjeta de crédito/débito.";
+"Text.Error.Payment.Alert.ButtonUpdateCard" = "Actualizar Pago";
+"Text.Error.Alert.CantSendEmail" = "Email no enviado. Configura tu correo primero.";
+"Text.Journey.DriverLicense" = "Licencia: %1$@";
+
+/*Metered fare type displayed in quotes list: English: "Metered"*/
+"Text.Generic.Metered" = "taxímetro";
+
+/*English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking*/
+"Text.Generic.CancellationPolicy" = "política de cancelación";
+
+/*The title of the alert when user is forced to update ie "App Update Required"*/
+"Text.Error.Alert.ForceUpdateTitle" = "Nueva versión disponible";
+
+/*The message when the user needs to update the app. ie. "Please update Karhoo to the latest version."*/
+"Text.Error.Alert.ForceUpdateMessage" = "Actualiza la app para continuar";
+
+/*The action button on the force update alert. ie "Update" (this button takes the user to the app store)*/
+"Text.Error.Alert.ForceUpdateButton" = "Actualizar";
+
+/*String for when journey is initially loaded and no trip state has yet come through. "Requesting"*/
+"Text.Generic.Requesting" = "Solicitando";
+"Text.Booking.EnterDestination" = "Introduce un destino para ver las flotas disponibles";
+
+/*Fuzzy*/
+"Text.Bookings.Quote" = "Cuota";
+"Text.Bookings.Price" = "Tarifa";
+
+/*used in side menu "Rides"*/
+"Text.Generic.Rides" = "Viajes";
+
+/*Generic fallback message for trip load failure*/
+"Text.Bookings.CouldNotLoadTrips" = "Imposible cargar viajes.";
+"Text.Error.NoInternetConnectionBannerText" = "Sin conexión a internet";
+"Text.Bookings.Price.Cancelled" = "Cancelado";
+"Text.Bookings.Alert.CancellationSuccess.Title" = "Viaje cancelado con éxito";
+"Text.Bookings.Alert.CancellationSuccess.Message" = "Tu viaje fue cancelado con éxito.";
+
+/*When fetching the user profile fails*/
+"Text.Error.GetUserFails" = "Hubo un problema cargando tu perfil.";
+
+/*"Profile" button on the side menu*/
+"Text.SideMenu.Profile" = "Perfil";
+
+/*"Payment Card" placeholder label used on profile screen*/
+"Text.User.PaymentCard" = "Tarjeta de pago";
+
+/*Button for rebooking a ride*/
+"Text.Bookings.RebookRide" = "Volver a reservar";
+
+/*"Got It" (generally used on alert buttons)*/
+"Text.Generic.GotIt" = "Entendido";
+
+/*"Your final fare might be affected by tips, tolls, taxes, and other charges."*/
+"Text.Booking.BaseFareExplanation" = "La tarifa final puede verse afectada por propinas, peajes, impuestos u otros cargos.";
+
+/*"Additional information" used as placeholder on airport details screen*/
+"Text.Generic.AdditionalInformation" = "Información adicional";
+
+/*"Airport Pickup" used on screen for airport bookinga*/
+"Text.Airport.Pickup" = "Recogida en aeropuerto";
+
+/*Message on airport screen for encouraging user to enter as much info about airport booking as possible*/
+"Text.Airport.HelpfulMessage" = "Por favor ingrese un número de vuelo válido";
+
+/*"Flight number" used as the flight number field placeholder*/
+"Text.Airport.FlightNumber" = "Número de vuelo";
+
+/*"Add Flight Details" used on booking airport ride*/
+"Text.Airport.AddFlightDetails" = "Agregar información de vuelo";
+
+/*"Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes*/
+"Text.Prebook.TimezoneMessage" = "Zona horaria (%1$@)";
+
+/*"Thanks for your interest"*/
+"Text.Generic.Thanks" = "Muchas gracias for tu interés";
+
+/*"We will notify you via email once your request has been processed."*/
+"Text.User.SignupPendingMessage" = "Te notificaremos por email una vez tu solicitud haya sido aceptada.";
+
+/*Side Menu "About" section title*/
+"Text.SideMenu.About" = "Información";
+
+/*"Version"*/
+"Text.About.Version" = "Versión";
+
+/*"Terms and conditions"*/
+"Text.About.TermsAndConditions" = "Condiciones Generales";
+
+/*"Privacy policy"*/
+"Text.About.PrivacyPolicy" = "Política de Privacidad";
+
+/*Error message when user tries to prebook within the current hour of local time*/
+"Text.Error.PrebookingWithinTheHour" = "Reserva realizada para la misma hora";
+
+/*No availability in requested area*/
+/*Fuzzy*/
+"Text.KarhooError.K3002" = "Sin disponibilidad en la zona";
+"Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
+/*For when demand is too high and there are no drivers available*/
+"Text.Trip.NoDriversAvailable" = "No hay conductores disponibles";
+
+/*Booker cancelled*/
+"Text.Generic.TripStatus.BookerCancelled" = "El agente ha cancelado ";
+
+/*Driver Cancelled*/
+"Text.Generic.TripStatus.DriverCancelled" = "El conductor ha cancelado";
+
+/*Driver Cancelled*/
+"Text.Trip.DriverCancelled" = "El conductor ha cancelado";
+
+/*Booker Cancelled*/
+"Text.Trip.BookerCancelled" = "El agente ha cancelado";
+
+/*No drivers available*/
+"Text.Trip.NoDriversAvailable" = "No hay conductores disponibles";
+
+/*No drivers available*/
+"Text.Generic.TripStatus.NoDriversAvailable" = "No hay conductores disponibles";
+
+/*"Trip Summary" header used on screen*/
+"Text.TripSummary.TripSummary" = "Resumen del viaje";
+
+/*"Payment Summary" header used on Trip Summary Screen*/
+"Text.TripSummary.PaymentSummary" = "Recibo";
+
+/*Used for the "Book Return Ride" button on the trip summary screen*/
+"Text.TripSummary.BookReturnRide" = "Reservar viaje de vuelta";
+
+/*"Date"*/
+"Text.TripSummary.Date" = "Fecha";
+
+/*Fleet*/
+"Text.TripSummary.Fleet" = "Flota";
+"Text.TripSummary.Vehicle" = "Vehículo";
+
+/*Total Fare*/
+"Text.TripSummary.TotalFare" = "Tarifa total";
+
+/*Popup title message when dispatch cancels due to no drivers*/
+"Text.Journey.NoDriversAvailable.AlertTitle" = "No hay conductores disponibles";
+
+/*Alert message in popup when dispatch cancels due to no drivers*/
+"Text.Journey.NoDriversAvailable.AlertMessage" = "No hay conductores disponibles";
+
+/*Password Entry Button*/
+/*Fuzzy*/
+"Text.Generic.Hide" = "Ocultar";
+
+/*Password Entry Button*/
+"Text.Generic.Show" = "Mostrar";
+
+/*"Quoted Price": used in trip summary screen when the fare is not available*/
+"Text.TripSummary.QuotedPrice" = "Tarifa estimada";
+
+/*Base fare title*/
+"Text.Booking.BaseFare" = "Tarifa Básica";
+
+/*Guest checkout*/
+"Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Detalles del pasajero";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Detalles del pago";
+"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Su conductor esperará por usted";
+
+/*Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked*/
+"Text.Booking.PrebookConfirmation" = "Tu viaje de %1$@\na %2$@\nel %3$@ ha sido confirmado.";
+
+/*Prebook Done*/
+"Text.Booking.PrebookConfirmed" = "Viaje confirmado";
+
+/*Ride Details*/
+"Text.Booking.PrebookConfirmed.RideDetails" = "Detalles del viaje";
+
+/*"Past" used on past tabs on bookings list*/
+"Text.Bookings.Past" = "Anteriores";
+
+/*Upcoming: used on upcoming tabs for rides*/
+/*Fuzzy*/
+"Text.Bookings.Upcoming" = "Próximos";
+
+/* We’re not live here yet! */
+"Text.Booking.NoAvailabilityHeader" = "¡Todavía no estamos operativos aquí!";
+
+/* %1$@ if you have suggestions for local fleets. */
+"Text.Booking.NoAvailabilityBody" = "Ponte en %1$@ si conoces flotas locales.";
+
+/* Get in touch */
+"Text.Booking.NoAvailabilityLink" = "contacto";
+
+/* Finding your ride... */
+"Text.TripAllocation.FindingYourRide" = "Cargando tu viaje..";
+
+/* Please wait whilst you\'re allocated a driver */
+"Text.TripAllocation.AllocatingTripOne" = "Espera hasta que se te asigne un conductor";
+
+/* This may take a moment or two */
+"Text.TripAllocation.AllocatingTripTwo" = "Esto puede llevar unos minutos";
+
+/* cancelling */
+"Text.TripAllocation.Cancelling" = "Cancelando";
+
+/* cancel instructions (tap and hold to cancel) prompt on allocation screen */
+"Text.TripAllocation.CancelInstruction" = "Mantenga pulsado para cancelar";
+
+/*"All" used for all categories filter on category list. Write normally as the app will uppercase the string*/
+"Text.Availability.AllCategory" = "Todo";
+"SALOON" = "Salón";
+"MPV" = "MPV";
+"EXEC" = "Ejecutivo";
+"TAXI" = "Taxi";
+"ELECTRIC" = "Eléctrico";
+
+/*Cancelled by Karhoo*/
+"Text.GenericTripStatus.CancelledByKarhoo" = "Cancelado por Karhoo";
+
+/*alert title when karhoo cancel the trip-supposedly happens for preauth failure*/
+"\"Text.Journey.KarhooCancelled.AlertTitle\"" = "Cancelación";
+
+/*alert message when karhoo cancel the trip-supposedly happens for preauth failure*/
+"Text.Journey.KarhooCancelled.AlertMessage" = "Karhoo canceló tu reserva";
+
+/*When the user enters an invalid flight number*/
+/*Fuzzy*/
+"Text.Error.FlightNumberValidationHint" = "Número de vuelo";
+
+/*"Arrival" displayed on arrival box in journey*/
+"Text.Journey.Arrival" = "Llegada";
+
+/*Theoretical edge case where the braintree token is missing*/
+"Text.Errors.failedToInitialisePaymentSetup" = "Error al iniciar la configuración del pago";
+
+/*Text used on button to trigger password reset... English: Forgotten Password? */
+"Text.User.ForgottenPassword" = "¿Olvidaste tu contraseña?";
+
+/* empty table view result */
+"Text.Errors.NoResultsFound" = "Sin resultados";
+
+"Text.Availability.NoQuotesInSelectedCategory" = "No hay disponibilidad en la categoría solicitada.\n Por favor seleccione otra categoría.";
+
+"Text.Address.NoRecentAddress" = "No hay resultados recientes";
+
+"Text.SupportMailMessage.NoCoverageSubject" = "Flota recomendada";
+"Text.SupportMailMessage.NoCoverageBody" = "Gracias por recomendarnos una flota en tu zona. Para poder llegar a tu zona lo antes posible, indícanos el nombre de tu zona y de la flota.\n Zona:\n Flota:";
+
+/* General errors, K0xxx */
+"K0001" = "Error general";
+"K0002" = "Petición de solicitud no válida";
+"K0003" = "Imposible leer el token de autorización";
+"K0004" = "La autenticación es necesaria para esta ruta";
+"K0005" = "Falta el rol requerido para esta solicitud";
+"K0006" = "Límite excedido";
+"K0007" = "Error generalizado";
+
+/* User errors, K1xxx */
+"K1001" = "Imposible registrar usuario";
+"K1002" = "Imposible registrar usuario (el usuario ya existe)";
+"K1003" = "Imposible registrar usuario";
+"K1004" = "Imposible registrar usuario (número de teléfono no válido)";
+"K1005" = "Imposible obtener los datos del usuario (token no válido)";
+"K1006" = "Imposible obtener los datos del usuario (el usuario ya existe)";
+
+/* Locations errors, K2xxx */
+"K2001" = "Imposible obtener dirección";
+
+/* Quotes errors, K3xxx */
+"K3001" = "Imposible obtener estimaciones";
+"K3002" = "Imposible obtener estimaciones (no se encontró disponibilidad en el área solicitada)";
+"K3003" = "Imposible obtener estimaciones (no se encontró la tarifa específica)";
+
+/* Bookings errors, K4xxx */
+"K4001" = "Imposible reservar";
+"K4002" = "Imposible reservar - solicitud inválida (se requiere al menos un valor para detalles de pasajero 'passenger-details')";
+"K4003" = "Imposible reservar (no se encontró la cotización especificada)";
+"K4004" = "Imposible reservar (intento de reserva de cotización caducada)";
+"K4005" = "Imposible reservar (Permiso denegado)";
+"K4006" = "Imposible reservar (Pre-autorización de pago fallida)";
+"K4007" = "Cancelación fallida";
+"K4008" = "Cancelación fallida (No se ha encontrado la reserva)";
+"K4009" = "Cancelación fallida (Permiso denegado)";
+"K4010" = "Cancelación fallida (Este viaje ya ha sido cancelado)";
+"K4011" = "No se pudo obtener la reserva";
+"K4012" = "No se pudo obtener la reserva (No se ha encontrado la reserva)";
+"K4013" = "No se pudo obtener la reserva (Permiso denegado)";
+"K4014" = "No pudo completarse la reserva como agente (Agent)";
+"K4015" = "No pudo completarse la reserva como pasajero (Traveller)";
+"K4018" = "No pudo realizarse la reserva al no estar ya disponible la cotización";
+
+/* Availability errors, K5xxx */
+"K5001" = "No se pudo obtener estimaciones";
+"K5002" = "Sin disponibilidad (no se encontró disponibilidad en el área solicitada)";
+"K5003" = "Sin disponibilidad (no se encontraron categorías en el área solicitada)";
+
+/* Authentication errors K6xxx */
+"K6001" = "No se puede autenticar";
+
+/* KPOI errors, K7xxx */
+"K7001" = "Imposible procesar la solicitud del PDIK";
+"K7002" = "No se pudo encontrar el PDI de Karhoo con el ID correspondiente";
+"K7003" = "No se pudo leer el PDI de Karhoo";
+"K7004" = "No se pudo añadir el PDI de Karhoo";
+"K7005" = "No se pudo eliminar el PDI de Karhoo";
+/* Qxxxx errors */
+"Q0001" = "La recogida y el destino no pueden ser iguales.";
+
+/* KSDKxxx Internal SDK */
+"KSDK01" = "Se ha producido un error. Inténtelo de nuevo.";
+"KSDK02" = "Falta una función de usuario requerida para esta solicitud";
+"KSDK03" = "Usuario ya ha iniciado sesión";
+
+/* automatic logout message */
+"Text.User.AutomaticLogoutMessage" = "Se te desconectó automáticamente. Es posible que hayas iniciado una sesión en otro dispositivo. Reinicia la sesión para continuar.";
+
+/* PickUp Type */
+"DEFAULT" = "Default";
+"MEET_AND_GREET" = "Dar la bienvenida";
+"CURBSIDE" = "Recoger afuera";
+"STAND_BY" = "Llamar conductor";
+
+/* Trip Rating */
+"Text.TripRating.Confirmation" = "Gracias por enviar tu calificación.";
+"Text.TripRating.Title" = "¿Como clasifica usted este viaje?";
+"Text.TripRating.ExtraFeedback" = "Cuentanos más";
+
+/* FeedBackView */
+"Text.FeedbackView.quote" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
+"Text.FeedbackView.pre_pob" = "How was your experience with finding the pick-up location and meeting your driver?";
+"Text.FeedbackView.pob" = "How was your experience whilst in the taxi (e.g. taxi cleanliness, routing and driver)? How easy did you find using the app?";
+"Text.FeedbackView.app" = "How easy did you find using the app?";
+"Text.FeedbackView.addComment" = "Additional comments";
+"Text.FeedbackView.confirmation" = "Gracias por enviar sus comentarios";
+
+/* ProfileView */
+"Text.ProfileView.editProfileFail" = "No logramos acuatizar la información de su perfil";
+"Text.ProfileView.editProfileSuccess" = "Información de perfil actualizado";
+
+"Text.Address.SetOnMap" = "Establecer en el mapa";
+"Text.Address.CurrentLocation" = "Posición actual";

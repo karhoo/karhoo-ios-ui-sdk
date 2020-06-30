@@ -1,0 +1,18 @@
+disabled_rules:
+  - identifier_name
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: true
+excluded:
+  - Pods
+line_length: 200
+# they can set both implicitly with an array
+type_body_length:
+  - 500 # warning
+  - 501 # error
+file_length:
+  warning: 500
+  error: 501
+function_body_length:
+  warning: 80
+  error: 100

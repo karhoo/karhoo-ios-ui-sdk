@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooPrebookFieldView" customModule="KarhooUISDK" customModuleProvider="target">
+            <connections>
+                <outlet property="defaultView" destination="oJI-hC-aRV" id="tn5-o6-mcC"/>
+                <outlet property="timeDateView" destination="kFv-SR-CGp" id="ceh-uP-m9p"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="146" height="43"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-jV-Ehu" customClass="Attributes" customModule="KarhooUISDK" customModuleProvider="target">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="secondaryImageTint" destination="cR5-ZV-1Gq" collectionClass="NSMutableArray" id="qsR-EH-9xe"/>
+                        <outletCollection property="secondaryImageTint" destination="mkj-g0-rDw" collectionClass="NSMutableArray" id="Rxh-FF-Mck"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-54-i7e" customClass="NibStrings" customModule="KarhooUISDK" customModuleProvider="target">
+                    <rect key="frame" x="-69" y="-43" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReO-Pj-hB9">
+                    <rect key="frame" x="0.0" y="0.0" width="146" height="43"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-SR-CGp">
+                            <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtW-Qm-Swm">
+                                    <rect key="frame" x="0.0" y="0.0" width="103" height="43"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGN-pJ-v5o">
+                                            <rect key="frame" x="0.0" y="0.0" width="74" height="43"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pIk-gS-gSH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="43"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ttI-LU-3q6">
+                                                            <rect key="frame" x="4" y="6" width="66" height="18"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="preebook-time-label"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="4 Jul 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-D5-eFN">
+                                                            <rect key="frame" x="4" y="28" width="66" height="9"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="preebook-date-label"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <edgeInsets key="layoutMargins" top="6" left="4" bottom="6" right="4"/>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KM-wa-HE3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="43"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="prebook-date-time-view-button"/>
+                                                    <connections>
+                                                        <action selector="prebookPressed:" destination="-1" eventType="touchUpInside" id="ESw-xf-fnP"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="pIk-gS-gSH" secondAttribute="trailing" id="cdt-8R-2XX"/>
+                                                <constraint firstItem="pIk-gS-gSH" firstAttribute="leading" secondItem="yGN-pJ-v5o" secondAttribute="leading" id="frK-i1-LV5"/>
+                                                <constraint firstAttribute="bottom" secondItem="pIk-gS-gSH" secondAttribute="bottom" id="fyh-WJ-O8U"/>
+                                                <constraint firstAttribute="trailing" secondItem="6KM-wa-HE3" secondAttribute="trailing" id="j67-fO-gnE"/>
+                                                <constraint firstItem="6KM-wa-HE3" firstAttribute="leading" secondItem="yGN-pJ-v5o" secondAttribute="leading" id="pCD-ms-V1E"/>
+                                                <constraint firstItem="pIk-gS-gSH" firstAttribute="top" secondItem="yGN-pJ-v5o" secondAttribute="top" id="pQO-ND-io5"/>
+                                                <constraint firstItem="6KM-wa-HE3" firstAttribute="top" secondItem="yGN-pJ-v5o" secondAttribute="top" id="sSs-Zp-eT2"/>
+                                                <constraint firstAttribute="bottom" secondItem="6KM-wa-HE3" secondAttribute="bottom" id="tve-pe-JBz"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2O1-Nz-fbu">
+                                            <rect key="frame" x="74" y="0.0" width="29" height="43"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="cR5-ZV-1Gq">
+                                                    <rect key="frame" x="8.5" y="15.5" width="12" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="12" id="0iI-C7-15h"/>
+                                                        <constraint firstAttribute="height" constant="12" id="3cT-Dw-LXv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thm-LB-Www">
+                                                    <rect key="frame" x="0.0" y="0.0" width="29" height="43"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="prebook-dismiss-button"/>
+                                                    <connections>
+                                                        <action selector="clearPressed:" destination="-1" eventType="touchUpInside" id="YyJ-St-ovF"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Thm-LB-Www" firstAttribute="leading" secondItem="2O1-Nz-fbu" secondAttribute="leading" id="0EG-LK-6td"/>
+                                                <constraint firstItem="cR5-ZV-1Gq" firstAttribute="centerY" secondItem="2O1-Nz-fbu" secondAttribute="centerY" id="9ut-xy-A1d"/>
+                                                <constraint firstAttribute="width" constant="29" id="MdM-E5-zFH"/>
+                                                <constraint firstAttribute="trailing" secondItem="Thm-LB-Www" secondAttribute="trailing" id="Y0g-Rd-CDB"/>
+                                                <constraint firstItem="Thm-LB-Www" firstAttribute="top" secondItem="2O1-Nz-fbu" secondAttribute="top" id="amf-66-GDs"/>
+                                                <constraint firstAttribute="bottom" secondItem="Thm-LB-Www" secondAttribute="bottom" id="fKC-lZ-GzP"/>
+                                                <constraint firstItem="cR5-ZV-1Gq" firstAttribute="centerX" secondItem="2O1-Nz-fbu" secondAttribute="centerX" id="xWH-dc-3BB"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="BtW-Qm-Swm" secondAttribute="trailing" id="DuI-xo-EWc"/>
+                                <constraint firstItem="BtW-Qm-Swm" firstAttribute="top" secondItem="kFv-SR-CGp" secondAttribute="top" id="WbZ-Qx-jPC"/>
+                                <constraint firstItem="BtW-Qm-Swm" firstAttribute="leading" secondItem="kFv-SR-CGp" secondAttribute="leading" id="deT-op-lt9"/>
+                                <constraint firstAttribute="bottom" secondItem="BtW-Qm-Swm" secondAttribute="bottom" id="lPP-iF-7hh"/>
+                                <constraint firstAttribute="width" constant="103" id="xDy-ON-pz8"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJI-hC-aRV">
+                            <rect key="frame" x="103" y="0.0" width="43" height="43"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prebook" translatesAutoresizingMaskIntoConstraints="NO" id="mkj-g0-rDw">
+                                    <rect key="frame" x="13.5" y="13.5" width="16" height="16"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="prebook-default-image">
+                                        <bool key="isElement" value="YES"/>
+                                    </accessibility>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="0si-1z-0XD"/>
+                                        <constraint firstAttribute="width" constant="16" id="EG3-sQ-qwp"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALi-BK-Gie">
+                                    <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
+                                    <connections>
+                                        <action selector="prebookPressed:" destination="-1" eventType="touchUpInside" id="we2-hX-nAC"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="ALi-BK-Gie" secondAttribute="trailing" id="5Zc-Ec-ALh"/>
+                                <constraint firstItem="mkj-g0-rDw" firstAttribute="centerX" secondItem="oJI-hC-aRV" secondAttribute="centerX" id="L86-NB-b0v"/>
+                                <constraint firstItem="ALi-BK-Gie" firstAttribute="top" secondItem="oJI-hC-aRV" secondAttribute="top" id="TWl-me-drc"/>
+                                <constraint firstAttribute="width" constant="43" id="VFv-B8-5Gu"/>
+                                <constraint firstItem="ALi-BK-Gie" firstAttribute="leading" secondItem="oJI-hC-aRV" secondAttribute="leading" id="YpV-IE-Mco"/>
+                                <constraint firstItem="mkj-g0-rDw" firstAttribute="centerY" secondItem="oJI-hC-aRV" secondAttribute="centerY" id="iwK-Ng-Tpz"/>
+                                <constraint firstAttribute="bottom" secondItem="ALi-BK-Gie" secondAttribute="bottom" id="tSo-3h-sga"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="uby-NR-jn1"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ReO-Pj-hB9" secondAttribute="bottom" id="1Qs-Jk-rkq"/>
+                <constraint firstItem="ReO-Pj-hB9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UxL-tR-4gz"/>
+                <constraint firstItem="ReO-Pj-hB9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hgn-dN-BcE"/>
+                <constraint firstAttribute="trailing" secondItem="ReO-Pj-hB9" secondAttribute="trailing" id="lXm-FJ-AKi"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-32" y="377.36131934032989"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cross" width="24" height="24"/>
+        <image name="prebook" width="32" height="32"/>
+    </resources>
+</document>

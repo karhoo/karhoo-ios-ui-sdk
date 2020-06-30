@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JourneySummaryViewController" customModule="KarhooUISDK" customModuleProvider="target">
+            <connections>
+                <outlet property="tripSummaryInfoView" destination="yVa-u7-ri9" id="9YA-sX-DQn"/>
+                <outlet property="view" destination="YMP-g0-f7r" id="WIB-C7-bQg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="YMP-g0-f7r">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdh-hd-3S7" customClass="NibStrings" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="tripSummaryBookReturnRideString" destination="rea-hM-xgc" collectionClass="NSMutableArray" id="FVN-1g-zjg"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbz-vE-Gab" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="standardShadow" destination="GV0-B9-5Ga" collectionClass="NSMutableArray" id="AAX-Vd-Mjm"/>
+                        <outletCollection property="standardShadow" destination="BA8-1R-IhZ" collectionClass="NSMutableArray" id="hTR-8J-4Ls"/>
+                        <outletCollection property="standardRoundedCorners" destination="BA8-1R-IhZ" collectionClass="NSMutableArray" id="rZH-O9-JcM"/>
+                        <outletCollection property="standardRoundedCorners" destination="yVa-u7-ri9" collectionClass="NSMutableArray" id="6fx-Ly-tSd"/>
+                        <outletCollection property="standardRoundedCorners" destination="rg9-5e-qxT" collectionClass="NSMutableArray" id="haS-0z-dpg"/>
+                        <outletCollection property="subtitleBold" destination="rea-hM-xgc" collectionClass="NSMutableArray" id="CaA-zB-rx0"/>
+                        <outletCollection property="primaryBackgroundColor" destination="GV0-B9-5Ga" collectionClass="NSMutableArray" id="6Ie-8l-Wat"/>
+                    </connections>
+                </view>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzX-3C-Ckw">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bry-bc-ybJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-1R-IhZ" userLabel="Host">
+                                <rect key="frame" x="8" y="173.5" width="359" height="320"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVa-u7-ri9" customClass="KarhooJourneySummaryInfoView" customModule="KarhooUISDK">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="320"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yVa-u7-ri9" secondAttribute="bottom" id="QDI-OL-IGu"/>
+                                    <constraint firstItem="yVa-u7-ri9" firstAttribute="leading" secondItem="BA8-1R-IhZ" secondAttribute="leading" id="nzf-Hk-SgK"/>
+                                    <constraint firstItem="yVa-u7-ri9" firstAttribute="top" secondItem="BA8-1R-IhZ" secondAttribute="top" id="rQq-Hq-Jta"/>
+                                    <constraint firstAttribute="trailing" secondItem="yVa-u7-ri9" secondAttribute="trailing" id="tPS-Zx-NUb"/>
+                                    <constraint firstAttribute="height" constant="320" id="ulK-F0-BRR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-B9-5Ga" userLabel="Book Return Ride Holder">
+                                <rect key="frame" x="8" y="501.5" width="359" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rg9-5e-qxT">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapRebookRide" destination="-1" eventType="touchUpInside" id="Ril-7y-6f7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rea-hM-xgc">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rg9-5e-qxT" secondAttribute="trailing" id="1ma-2q-3SQ"/>
+                                    <constraint firstItem="rea-hM-xgc" firstAttribute="leading" secondItem="GV0-B9-5Ga" secondAttribute="leading" id="KOi-ml-5mk"/>
+                                    <constraint firstItem="rea-hM-xgc" firstAttribute="top" secondItem="GV0-B9-5Ga" secondAttribute="top" id="Kps-Ie-ibh"/>
+                                    <constraint firstAttribute="height" constant="44" id="LEa-Sq-djO"/>
+                                    <constraint firstAttribute="trailing" secondItem="rea-hM-xgc" secondAttribute="trailing" id="RMz-kY-JkQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="rea-hM-xgc" secondAttribute="bottom" id="ehe-xI-8av"/>
+                                    <constraint firstAttribute="bottom" secondItem="rg9-5e-qxT" secondAttribute="bottom" id="hAZ-yf-IAj"/>
+                                    <constraint firstItem="rg9-5e-qxT" firstAttribute="top" secondItem="GV0-B9-5Ga" secondAttribute="top" id="rj1-5M-fpr"/>
+                                    <constraint firstItem="rg9-5e-qxT" firstAttribute="leading" secondItem="GV0-B9-5Ga" secondAttribute="leading" id="xHB-xW-Iy2"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtk-vM-ouF" userLabel="Exit Button">
+                                <rect key="frame" x="15" y="35" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="UFc-fz-j7D"/>
+                                    <constraint firstAttribute="height" constant="16" id="UfL-wG-w2J"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="tripHide"/>
+                                <connections>
+                                    <action selector="didTapExitButton" destination="-1" eventType="touchUpInside" id="6tD-47-EDh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKL-bS-uZp">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="VX6-CB-CL7"/>
+                                    <constraint firstAttribute="height" constant="83" id="vdw-gr-uBD"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didTapExitButton" destination="-1" eventType="touchUpInside" id="Vm7-Rb-jHP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GV0-B9-5Ga" secondAttribute="trailing" constant="8" id="AnA-kE-HiZ"/>
+                            <constraint firstItem="pKL-bS-uZp" firstAttribute="leading" secondItem="Bry-bc-ybJ" secondAttribute="leading" id="BJU-TU-3Wz"/>
+                            <constraint firstItem="BA8-1R-IhZ" firstAttribute="centerY" secondItem="Bry-bc-ybJ" secondAttribute="centerY" id="EdP-3J-PoX"/>
+                            <constraint firstItem="GV0-B9-5Ga" firstAttribute="leading" secondItem="Bry-bc-ybJ" secondAttribute="leading" constant="8" id="FOA-da-wsG"/>
+                            <constraint firstAttribute="trailing" secondItem="BA8-1R-IhZ" secondAttribute="trailing" constant="8" id="FOG-3B-BVX"/>
+                            <constraint firstItem="GV0-B9-5Ga" firstAttribute="top" secondItem="BA8-1R-IhZ" secondAttribute="bottom" constant="8" id="Trv-R8-I5E"/>
+                            <constraint firstItem="wtk-vM-ouF" firstAttribute="leading" secondItem="Bry-bc-ybJ" secondAttribute="leading" constant="15" id="YZf-MC-5SM"/>
+                            <constraint firstItem="BA8-1R-IhZ" firstAttribute="leading" secondItem="Bry-bc-ybJ" secondAttribute="leading" constant="8" id="ge3-yP-Pol"/>
+                            <constraint firstItem="pKL-bS-uZp" firstAttribute="top" secondItem="Bry-bc-ybJ" secondAttribute="top" id="qdc-ig-rAi"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wtk-vM-ouF" firstAttribute="top" secondItem="zRo-QO-VwD" secondAttribute="top" constant="15" id="2UI-Na-uQ8"/>
+                <constraint firstItem="RzX-3C-Ckw" firstAttribute="bottom" secondItem="YMP-g0-f7r" secondAttribute="bottom" id="2cI-NF-CDQ"/>
+                <constraint firstItem="RzX-3C-Ckw" firstAttribute="leading" secondItem="zRo-QO-VwD" secondAttribute="leading" id="5lA-ph-Gyu"/>
+                <constraint firstItem="RzX-3C-Ckw" firstAttribute="trailing" secondItem="zRo-QO-VwD" secondAttribute="trailing" id="Iqc-RK-ddI"/>
+                <constraint firstItem="RzX-3C-Ckw" firstAttribute="top" secondItem="YMP-g0-f7r" secondAttribute="top" id="wHp-Pn-ngp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="zRo-QO-VwD"/>
+            <point key="canvasLocation" x="42" y="18"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tripHide" width="13" height="12.5"/>
+    </resources>
+</document>
