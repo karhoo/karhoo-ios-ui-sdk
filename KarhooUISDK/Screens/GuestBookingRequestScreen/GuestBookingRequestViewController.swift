@@ -16,12 +16,6 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private var headerView: GuestCheckoutHeaderView!
     private var passengerDetailsTitle: UILabel!
     private var paymentDetailsTitle: UILabel!
-    private var addPaymentView: KarhooAddCardView!
-    private var termsConditionsView: TermsConditionsView!
-    private var errorBannerView: ErrorBannerView!
-    private var errorBannerTopConstraint: NSLayoutConstraint!
-    private var timer: Timer?
-    private var baseStackView: BaseStackView!
     private var nameInputText: KarhooTextInputView!
     private var surnameInputText: KarhooTextInputView!
     private var emailInputText: KarhooTextInputView!
@@ -30,6 +24,13 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private var poiDetailsInputText: KarhooTextInputView!
     private var inputViews: [KarhooInputView] = []
     private var validSet = Set<String>()
+
+    private var addPaymentView: KarhooAddCardView!
+    private var termsConditionsView: TermsConditionsView!
+    private var errorBannerView: ErrorBannerView!
+    private var errorBannerTopConstraint: NSLayoutConstraint!
+    private var timer: Timer?
+    private var baseStackView: BaseStackView!
     private var footerView: UIView!
     private var footerStack: UIStackView!
     private var separatorLine: LineView!
@@ -37,6 +38,12 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private var containerBottomConstraint: NSLayoutConstraint!
     private var presenter: BookingRequestPresenter
     private let drawAnimationTime: Double = 0.45
+
+    private lazy var passengerDetailsView: PassengerDetailsView = {
+        let passengerDetailsView = PassengerDetailsView()
+        passengerDetailsView.accessibilityIdentifier = "passengerDetailsView"
+        return passengerDetailsView
+    }()
 
     var paymentNonce: String?
   
@@ -86,7 +93,10 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         passengerDetailsTitle.textColor = KarhooUI.colors.guestCheckoutDarkGrey
         passengerDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: passengerDetailsTitle)
-        
+
+        baseStackView.addViewToStack(view: passengerDetailsView)
+        setUpFields()
+
         paymentDetailsTitle = UILabel()
         paymentDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
         paymentDetailsTitle.accessibilityIdentifier = "payment_details_title_label"
@@ -94,8 +104,6 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         paymentDetailsTitle.textColor = KarhooUI.colors.guestCheckoutDarkGrey
         paymentDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: paymentDetailsTitle)
-
-        setUpFields()
 
         addPaymentView = KarhooAddCardView()
         addPaymentView.baseViewController = self
@@ -165,19 +173,19 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         baseStackView.addViewToStack(view: phoneInputText)
         inputViews.append(phoneInputText)
 
-        poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
-                                                  isOptional: true,
-                                                  accessibilityIdentifier: "poi_input_view")
-        poiDetailsInputText.delegate = self
-        poiDetailsInputText.isHidden = true
-        baseStackView.addViewToStack(view: poiDetailsInputText)
-
         commentsInputText = KarhooTextInputView(contentType: .comment,
                                                 isOptional: true,
                                                 accessibilityIdentifier: "comment_input_view")
         commentsInputText.delegate = self
         baseStackView.addViewToStack(view: commentsInputText)
         inputViews.append(commentsInputText)
+
+        poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
+                                                  isOptional: true,
+                                                  accessibilityIdentifier: "poi_input_view")
+        poiDetailsInputText.delegate = self
+        poiDetailsInputText.isHidden = true
+        baseStackView.addViewToStack(view: poiDetailsInputText)
     }
     
     override func updateViewConstraints() {
@@ -213,7 +221,10 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
                                                                 constant: titleInset),
                  passengerDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
                                                                  constant: -titleInset)].map { $0.isActive = true }
-            
+
+
+            passengerDetailsView.pinLeftRightEdegs(to: baseStackView)
+
             let textInputInset: CGFloat = 30.0
             _ = [nameInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
                                                         constant: textInputInset),

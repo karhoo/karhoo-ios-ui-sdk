@@ -166,8 +166,11 @@ class KarhooPhoneInputView: UIView, KarhooInputView {
         }
     }
 
-    func set(text: String) {
-        textField.text = text
+    func set(text: String? = nil) {
+        guard let value = text else {
+            return
+        }
+        textField.text = value
     }
 
     func dismissKeyboard() {
