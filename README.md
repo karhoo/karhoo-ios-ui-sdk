@@ -18,7 +18,8 @@ In order to setup the UI SDK, you can follow these steps below:
 Right now we support Cocoapods, so to add the UISDK to your project you can add the KarhooUISDK to your Podfile:
 
 ```
-pod KarhooUISDK
+pod 'KarhooUISDK', :git => 'https://github.com/Karhoo/karhoo-ios-ui-sdk.git', :tag => '1.2.5'
+
 ```
 
 We are working towards supporting Carthage, Swift Package Manager and we provide downloadable distributions on request for static integrations. Please do get in touch by raising an issue to get support for alternative dependency management systems. We are trying to build an open marketplace that is accessible to as many people as possible! :-) 
