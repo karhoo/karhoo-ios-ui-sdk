@@ -16,14 +16,8 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private var headerView: GuestCheckoutHeaderView!
     private var passengerDetailsTitle: UILabel!
     private var paymentDetailsTitle: UILabel!
-    private var nameInputText: KarhooTextInputView!
-    private var surnameInputText: KarhooTextInputView!
-    private var emailInputText: KarhooTextInputView!
-    private var phoneInputText: KarhooTextInputView!
     private var commentsInputText: KarhooTextInputView!
     private var poiDetailsInputText: KarhooTextInputView!
-    private var inputViews: [KarhooInputView] = []
-    private var validSet = Set<String>()
     private var passengerDetailsValid: Bool?
 
     private var addPaymentView: KarhooAddCardView!
@@ -144,36 +138,11 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     }
 
     private func setUpFields() {
-        nameInputText = KarhooTextInputView(accessibilityIdentifier: "name_input_view")
-        nameInputText.delegate = self
-        baseStackView.addViewToStack(view: nameInputText)
-        inputViews.append(nameInputText)
-
-        surnameInputText = KarhooTextInputView(contentType: .surname,
-                                               accessibilityIdentifier: "surname_input_view")
-
-        surnameInputText.delegate = self
-        baseStackView.addViewToStack(view: surnameInputText)
-        inputViews.append(surnameInputText)
-
-        emailInputText = KarhooTextInputView(contentType: .email,
-                                             accessibilityIdentifier: "email_input_view")
-        emailInputText.delegate = self
-        baseStackView.addViewToStack(view: emailInputText)
-        inputViews.append(emailInputText)
-
-        phoneInputText = KarhooTextInputView(contentType: .phone,
-                                             accessibilityIdentifier: "phone_input_view")
-        phoneInputText.delegate = self
-        baseStackView.addViewToStack(view: phoneInputText)
-        inputViews.append(phoneInputText)
-
         commentsInputText = KarhooTextInputView(contentType: .comment,
                                                 isOptional: true,
                                                 accessibilityIdentifier: "comment_input_view")
         commentsInputText.delegate = self
         baseStackView.addViewToStack(view: commentsInputText)
-        inputViews.append(commentsInputText)
 
         poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
                                                   isOptional: true,
@@ -221,26 +190,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
             passengerDetailsView.pinLeftRightEdegs(to: baseStackView)
 
             let textInputInset: CGFloat = 30.0
-            _ = [nameInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                        constant: textInputInset),
-                 nameInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                         constant: -textInputInset)].map { $0.isActive = true }
-            
-            _ = [surnameInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                           constant: textInputInset),
-                 surnameInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                            constant: -textInputInset)].map { $0.isActive = true }
-            
-            _ = [emailInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                         constant: textInputInset),
-                 emailInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                          constant: -textInputInset)].map { $0.isActive = true }
-            
-            _ = [phoneInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                         constant: textInputInset),
-                 phoneInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                          constant: -textInputInset)].map { $0.isActive = true }
-            
+
             _ = [poiDetailsInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
                                                               constant: textInputInset),
                  poiDetailsInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
@@ -336,7 +286,6 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     func setAddFlightDetailsState() {
         enableUserInteraction()
         poiDetailsInputText.isHidden = false
-        inputViews.insert(poiDetailsInputText, at: inputViews.count - 1)
     }
     
     func set(quote: Quote) {
@@ -427,18 +376,6 @@ extension GuestBookingRequestViewController: PassengerDetailsActions {
 
 extension GuestBookingRequestViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
-        for (index, inputView) in inputViews.enumerated() {
-            if inputView.isValid() {
-                validSet.insert(inputView.accessibilityIdentifier!)
-			} else {
-				validSet.remove(inputView.accessibilityIdentifier!)
-			}
-            if inputView.accessibilityIdentifier == identifier {
-                if index != inputViews.count - 1 {
-                    inputViews[index + 1].setActive()
-                }
-            }
-        }
 		enableBookingButton()
     }
     
