@@ -17,6 +17,7 @@ public protocol ScreenBuilders {
     var bookingScreenBuilder: BookingScreenBuilder { get }
     var flightDetailsScreenBuilder: FlightDetailsScreenBuilder { get }
     var journeyScreenBuilder: TripScreenBuilder { get }
+    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
@@ -24,7 +25,6 @@ internal protocol InternalScreenBuilders {
     var paymentScreenBuilder: PaymentScreenBuilder { get }
     var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }
     var sideMenuBuilder: SideMenuBuilder { get }
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder { get }

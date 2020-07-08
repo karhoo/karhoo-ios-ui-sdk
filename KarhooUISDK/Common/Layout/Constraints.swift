@@ -29,10 +29,6 @@ extension UIView {
     }
 }
 
-
-
-
-
 final class Constraints {
     class func pinEdges(of view: UIView, to template: UIView) {
         Constraints.pinVerticalEdges(of: view, to: template)
