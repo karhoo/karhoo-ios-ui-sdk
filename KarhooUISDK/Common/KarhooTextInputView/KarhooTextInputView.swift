@@ -190,9 +190,10 @@ class KarhooTextInputView: UIView, KarhooInputView {
     }
 
     func set(text: String? = nil) {
-        guard let value = text else {
+        guard let value = text, text?.isEmpty == true else {
             return
         }
+        
         textView.text = value
         textView.textColor = KarhooUI.colors.guestCheckoutDarkGrey
     }

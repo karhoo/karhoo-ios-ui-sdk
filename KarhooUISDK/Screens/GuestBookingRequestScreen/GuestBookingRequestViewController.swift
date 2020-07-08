@@ -24,12 +24,10 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private var poiDetailsInputText: KarhooTextInputView!
     private var inputViews: [KarhooInputView] = []
     private var validSet = Set<String>()
+    private var passengerDetailsValid: Bool?
 
     private var addPaymentView: KarhooAddCardView!
     private var termsConditionsView: TermsConditionsView!
-    private var errorBannerView: ErrorBannerView!
-    private var errorBannerTopConstraint: NSLayoutConstraint!
-    private var timer: Timer?
     private var baseStackView: BaseStackView!
     private var footerView: UIView!
     private var footerStack: UIStackView!
@@ -42,6 +40,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     private lazy var passengerDetailsView: PassengerDetailsView = {
         let passengerDetailsView = PassengerDetailsView()
         passengerDetailsView.accessibilityIdentifier = "passengerDetailsView"
+        passengerDetailsView.actions = self
         return passengerDetailsView
     }()
 
@@ -135,11 +134,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         
         termsConditionsView = TermsConditionsView()
         baseStackView.addViewToStack(view: termsConditionsView)
-        
-        errorBannerView = ErrorBannerView()
-        errorBannerView.delegate = self
-        view.addSubview(errorBannerView)
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         container.addGestureRecognizer(tapGesture)
         
@@ -211,17 +206,17 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
                  baseStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
                  baseStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
                  baseStackView.bottomAnchor.constraint(equalTo: container.bottomAnchor)].map { $0.isActive = true }
-            
-            _ = [headerView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor, constant: 20.0),
-                 headerView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                      constant: -20.0)].map { $0.isActive = true }
-            
+
             let titleInset: CGFloat = 15.0
+
+            _ = [headerView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor, constant: titleInset),
+                 headerView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                      constant: -titleInset)].map { $0.isActive = true }
+            
             _ = [passengerDetailsTitle.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
                                                                 constant: titleInset),
                  passengerDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
                                                                  constant: -titleInset)].map { $0.isActive = true }
-
 
             passengerDetailsView.pinLeftRightEdegs(to: baseStackView)
 
@@ -284,11 +279,6 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
                  separatorLine.trailingAnchor.constraint(equalTo: footerStack.trailingAnchor)]
                 .map { $0.isActive = true }
             
-            _ = [errorBannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                 errorBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
-            errorBannerTopConstraint = errorBannerView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100)
-            errorBannerTopConstraint.isActive = true
-            
             didSetupConstraints = true
         }
         
@@ -298,25 +288,16 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showBookingRequestView(true)
-
-        guard let passengerData = PassengerInfo.shared.passengerDetails else {
-            return
-        }
-
-        nameInputText.set(text: passengerData.firstName)
-        surnameInputText.set(text: passengerData.lastName)
-        emailInputText.set(text: passengerData.email)
-        phoneInputText.set(text: passengerData.phoneNumber)
-
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        passengerDetailsView.details = PassengerInfo.shared.passengerDetails
+    }
+
     @objc
     private func didTapView() {
-        for (inputView) in inputViews.enumerated() {
-            if inputView.element.isFirstResponder() {
-                inputView.element.dismissKeyboard()
-            }
-        }
+        view.endEditing(true)
     }
     
     @objc
@@ -392,30 +373,6 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         addPaymentView.isUserInteractionEnabled = false
     }
     
-    private func showError(_ show: Bool) {
-        errorBannerTopConstraint.constant = show ? 0.0 : -100
-        
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.view.layoutIfNeeded()
-        }
-        
-        if show {
-            timer = Timer.scheduledTimer(timeInterval: errorBannerView.bannerViewDuration(),
-                                         target: self,
-                                         selector: #selector(hideBanner),
-                                         userInfo: nil,
-                                         repeats: false)
-        } else {
-            timer?.invalidate()
-            timer = nil
-        }
-    }
-    
-    @objc
-    private func hideBanner() {
-        showError(false)
-    }
-    
     final class GuestBookingRequestScreenBuilder: BookingRequestScreenBuilder {
         func buildBookingRequestScreen(quote: Quote,
                                        bookingDetails: BookingDetails,
@@ -427,12 +384,8 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         }
     }
 
-    func getPassengerDetails() -> PassengerDetails {
-        return PassengerDetails(firstName: nameInputText.getIntput(),
-                                lastName: surnameInputText.getIntput(),
-                                email: emailInputText.getIntput(),
-                                phoneNumber: phoneInputText.getIntput(),
-                                locale: "en-GB")
+    func getPassengerDetails() -> PassengerDetails? {
+        return passengerDetailsView.getPassengerDetails()
     }
 
     func getPaymentNonce() -> String? {
@@ -464,6 +417,14 @@ extension GuestBookingRequestViewController: BookingButtonActions {
     }
 }
 
+extension GuestBookingRequestViewController: PassengerDetailsActions {
+
+    func passengerDetailsValid(_ valid: Bool) {
+        passengerDetailsValid = valid
+        enableBookingButton()
+    }
+}
+
 extension GuestBookingRequestViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
         for (index, inputView) in inputViews.enumerated() {
@@ -479,11 +440,10 @@ extension GuestBookingRequestViewController: KarhooInputViewDelegate {
             }
         }
 		enableBookingButton()
-
     }
     
     private func enableBookingButton() {
-        if validSet.count == inputViews.count {
+        if passengerDetailsValid == true {
             if addPaymentView.validPayment() {
                 bookingButton.setRequestMode()
             } else {
@@ -492,12 +452,6 @@ extension GuestBookingRequestViewController: KarhooInputViewDelegate {
 		} else {
 			bookingButton.setDisabledMode()
 		}
-    }
-}
-
-extension GuestBookingRequestViewController: ErrorBannerViewDelegate {
-    func didTapOnDismiss(_ view: ErrorBannerView) {
-        showError(false)
     }
 }
 

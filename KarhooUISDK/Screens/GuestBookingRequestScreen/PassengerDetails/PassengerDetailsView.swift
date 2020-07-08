@@ -7,25 +7,21 @@
 //
 
 import Foundation
+import KarhooSDK
 
-protocol PassengerDetailsViewP: UIView {
-
-}
-
-protocol PassengerDetailsPresenter {
-
-}
-
-final class PassengerDetailsView: UIView, KarhooInputViewDelegate {
+final class PassengerDetailsView: UIView {
 
     private let textFieldInset: CGFloat = 30.0
+    private var inputViews: [KarhooInputView] = []
+    private var validSet = Set<String>()
+    weak var actions: PassengerDetailsActions?
 
-    var details: PassengerInfo? {
+    var details: PassengerDetails? {
         willSet {
-            firstNameTextField.set(text: newValue?.passengerDetails?.firstName)
-            surnameTextField.set(text: newValue?.passengerDetails?.lastName)
-            emailTextField.set(text: newValue?.passengerDetails?.email)
-            commentsTextField.set(text: newValue?.passengerDetails?.phoneNumber)
+            firstNameTextField.set(text: newValue?.firstName)
+            surnameTextField.set(text: newValue?.lastName)
+            emailTextField.set(text: newValue?.email)
+            phoneTextField.set(text: newValue?.phoneNumber)
         }
     }
 
@@ -34,6 +30,7 @@ final class PassengerDetailsView: UIView, KarhooInputViewDelegate {
                                             isOptional: false,
                                             accessibilityIdentifier: "firstNameField")
         firstNameTextField.delegate = self
+        self.inputViews.append(firstNameTextField)
         return firstNameTextField
     }()
 
@@ -43,6 +40,7 @@ final class PassengerDetailsView: UIView, KarhooInputViewDelegate {
                                                    accessibilityIdentifier: "surnameTextField")
 
         surnameTextField.delegate = self
+        inputViews.append(surnameTextField)
         return surnameTextField
     }()
 
@@ -52,25 +50,18 @@ final class PassengerDetailsView: UIView, KarhooInputViewDelegate {
                                                  accessibilityIdentifier: "emailTextField")
 
         emailTextField.delegate = self
+        inputViews.append(emailTextField)
         return emailTextField
     }()
 
     private lazy var phoneTextField: KarhooTextInputView = {
-        let phoneText = KarhooTextInputView(contentType: .phone,
+        let phoneTextField = KarhooTextInputView(contentType: .phone,
                                                  isOptional: false,
                                                  accessibilityIdentifier: "phoneTextField")
 
-        phoneText.delegate = self
-        return phoneText
-    }()
-
-    private lazy var commentsTextField: KarhooTextInputView = {
-        let commentsTextField = KarhooTextInputView(contentType: .comment,
-                                                    isOptional: true,
-                                                    accessibilityIdentifier: "commentsTextField")
-
-        commentsTextField.delegate = self
-        return commentsTextField
+        phoneTextField.delegate = self
+        inputViews.append(phoneTextField)
+        return phoneTextField
     }()
 
     private lazy var textFieldStackView: UIStackView = {
@@ -107,11 +98,36 @@ final class PassengerDetailsView: UIView, KarhooInputViewDelegate {
          surnameTextField,
          emailTextField,
          phoneTextField].forEach { view in
-            view.pinLeftRightEdegs(to:  self,
+            view.pinLeftRightEdegs(to: self,
                                    leading: textFieldInset,
                                    trailing: -textFieldInset)
         }
     }
 
-    func didBecomeInactive(identifier: String) {}
+    func getPassengerDetails() -> PassengerDetails {
+        return PassengerDetails(firstName: firstNameTextField.getIntput(),
+                                lastName: surnameTextField.getIntput(),
+                                email: emailTextField.getIntput(),
+                                phoneNumber: phoneTextField.getIntput(),
+                                locale: "en-GB")
+    }
+}
+
+extension PassengerDetailsView: KarhooInputViewDelegate {
+    func didBecomeInactive(identifier: String) {
+        for (index, inputView) in inputViews.enumerated() {
+            if inputView.isValid() {
+                validSet.insert(inputView.accessibilityIdentifier!)
+            } else {
+                validSet.remove(inputView.accessibilityIdentifier!)
+            }
+            if inputView.accessibilityIdentifier == identifier {
+                if index != inputViews.count - 1 {
+                    inputViews[index + 1].setActive()
+                }
+            }
+        }
+        
+        actions?.passengerDetailsValid(validSet.count == inputViews.count)
+    }
 }
