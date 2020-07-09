@@ -35,7 +35,7 @@ final class KarhooBookingPresenter {
          journeyScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         bookingRequestScreenBuilder: BookingRequestScreenBuilder = UISDKScreenRouting.default.bookinRequest(),
+         bookingRequestScreenBuilder: BookingRequestScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),

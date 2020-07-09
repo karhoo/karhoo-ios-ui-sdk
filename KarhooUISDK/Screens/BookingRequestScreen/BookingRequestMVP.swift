@@ -49,7 +49,7 @@ protocol BookingRequestView: BaseViewController {
 
     func getPaymentNonce() -> String?
 
-    func getPassengerDetails() -> PassengerDetails
+    func getPassengerDetails() -> PassengerDetails?
     
     func getComments() -> String?
     
@@ -57,8 +57,8 @@ protocol BookingRequestView: BaseViewController {
 }
 
 extension BookingRequestView {
-    func getPassengerDetails() -> PassengerDetails {
-        return PassengerDetails()
+    func getPassengerDetails() -> PassengerDetails? {
+        return nil
     }
 
     func getPaymentNonce() -> String? {

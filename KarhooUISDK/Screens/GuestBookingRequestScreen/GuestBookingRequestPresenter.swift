@@ -73,7 +73,7 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
     }
 
     private func book(threeDSecureNonce: String, passenger: PassengerDetails) {
-        var flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
+        let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
         let tripBooking = TripBooking(quoteId: quote.quoteId,
                                       passengers: Passengers(additionalPassengers: 0,
                                                              passengerDetails: [passenger]),
