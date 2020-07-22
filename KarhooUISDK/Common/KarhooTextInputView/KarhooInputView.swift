@@ -16,6 +16,6 @@ protocol KarhooInputView: UIView {
     func getIntput() -> String
     func isValid() -> Bool
     func isFirstResponder() -> Bool
-    func set(text: String)
+    func set(text: String?)
     func dismissKeyboard()
 }

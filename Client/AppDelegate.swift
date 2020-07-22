@@ -33,6 +33,8 @@ class KarhooConfig: KarhooUISDKConfiguration {
     }
 
     func authenticationMethod() -> AuthenticationMethod {
-        return .karhooUser
+        return .guest(settings: GuestSettings(identifier: "",
+                                              referer: "",
+                                              organisationId: ""))
     }
 }

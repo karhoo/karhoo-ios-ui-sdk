@@ -16,6 +16,7 @@ public protocol Routing {
     func booking() -> BookingScreenBuilder
     func flightDetails() -> FlightDetailsScreenBuilder
     func tripScreen() -> TripScreenBuilder
+    func bookingRequest() -> BookingRequestScreenBuilder
 }
 
 public final class UISDKScreenRouting: Routing {
@@ -58,6 +59,10 @@ public final class UISDKScreenRouting: Routing {
         return routing.journeyScreenBuilder
     }
 
+    public func bookingRequest() -> BookingRequestScreenBuilder {
+        return routing.bookingRequestScreenBuilder
+    }
+
     public func paymentScreen() -> PaymentScreenBuilder {
         return internalRouting.paymentScreenBuilder
     }
@@ -80,10 +85,6 @@ public final class UISDKScreenRouting: Routing {
 
     internal func popUpDialog() -> PopupDialogScreenBuilder {
         return internalRouting.popupDialogScreenBuilder
-    }
-
-    internal func bookinRequest() -> BookingRequestScreenBuilder {
-        return internalRouting.bookingRequestScreenBuilder
     }
 
     internal func tripFeedbackScreen() -> TripFeedbackScreenBuilder {

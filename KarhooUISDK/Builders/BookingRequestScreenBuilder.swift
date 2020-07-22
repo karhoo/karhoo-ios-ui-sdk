@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-internal protocol BookingRequestScreenBuilder {
+public protocol BookingRequestScreenBuilder {
 
     func buildBookingRequestScreen(quote: Quote,
                                    bookingDetails: BookingDetails,
