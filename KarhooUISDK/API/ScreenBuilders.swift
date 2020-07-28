@@ -41,11 +41,10 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
     }
 
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        if Karhoo.configuration.authenticationMethod().guestSettings != nil {
-            return GuestBookingRequestViewController.GuestBookingRequestScreenBuilder()
+        switch Karhoo.configuration.authenticationMethod() {
+        case .guest(settings: _), .tokenExchange: return GuestBookingRequestViewController.GuestBookingRequestScreenBuilder()
+        case .karhooUser: return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
         }
-
-        return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
     }
 
     var datePickerScreenBuilder: DatePickerScreenBuilder {
@@ -102,5 +101,12 @@ public extension ScreenBuilders {
 
     var journeyScreenBuilder: TripScreenBuilder {
         return KarhooJourneyViewController.KarhooJourneyScreenBuilder()
+    }
+
+    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .guest(settings: _), .tokenExchange: return GuestBookingRequestViewController.GuestBookingRequestScreenBuilder()
+        case .karhooUser: return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
+        }
     }
 }
