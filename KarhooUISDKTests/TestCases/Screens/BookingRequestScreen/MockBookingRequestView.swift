@@ -81,7 +81,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     }
 
     var passengerDetailsToReturn: PassengerDetails?
-    func getPassengerDetails() -> PassengerDetails {
+    func getPassengerDetails() -> PassengerDetails? {
         return passengerDetailsToReturn!
     }
 
