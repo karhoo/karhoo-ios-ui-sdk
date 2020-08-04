@@ -30,7 +30,7 @@ class TestUtil: PrimitiveUtil {
                              fare: TripFare = TripFare(),
                              quote: TripQuote = getRandomTripQuote(quoteType: .estimated),
                              fleetInfo: FleetInfo = getRandomFleetInfo(),
-                             meetingPoint: MeetingPoint = getRandomMeetingPoint()) -> TripInfo {
+                             meetingPoint: MeetingPoint? = getRandomMeetingPoint()) -> TripInfo {
         let trip = TripInfo(tripId: tripId,
                             displayId: TestUtil.getRandomString(),
                             origin: getRandomTripLocationDetails(),
