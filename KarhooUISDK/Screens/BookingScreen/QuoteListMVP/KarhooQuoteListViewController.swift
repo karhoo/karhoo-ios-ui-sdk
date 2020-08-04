@@ -209,7 +209,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     }
     
     func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
-        quoteListActions?.categoriesChanged(categories: categories, quoteListId: quoteListId)
+        quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
     }
     
     func hideLoadingView() {
@@ -225,13 +225,9 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }
-    
-    func showNoAvailabilityBar() {
-        quoteListActions?.showNoAvailabilityBar()
-    }
-    
-    func hideNoAvailabilityBar() {
-        quoteListActions?.hideNoAvailabilityBar()
+
+    func availability(_ availability: Bool) {
+        quoteListActions?.availability(availability)
     }
     
     func showQuoteSorter() {

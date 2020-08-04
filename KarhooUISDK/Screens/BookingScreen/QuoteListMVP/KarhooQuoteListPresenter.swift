@@ -65,7 +65,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            quoteListView?.showNoAvailabilityBar()
+            quoteListView?.availability(false)
             quoteListView?.hideLoadingView()
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)

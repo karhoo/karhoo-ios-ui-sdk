@@ -10,10 +10,10 @@ import UIKit
 
 extension UIView {
 
-    func pinEdges(to view: UIView) {
+    func pinEdges(to view: UIView, spacing: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
-        pinLeftRightEdegs(to: view)
-        pinTopBottomEdegs(to: view)
+        pinLeftRightEdegs(to: view, leading: spacing, trailing: -spacing)
+        pinTopBottomEdegs(to: view, top: spacing, bottom: -spacing)
     }
 
     func pinLeftRightEdegs(to view: UIView, leading: CGFloat = 0, trailing: CGFloat = 0) {

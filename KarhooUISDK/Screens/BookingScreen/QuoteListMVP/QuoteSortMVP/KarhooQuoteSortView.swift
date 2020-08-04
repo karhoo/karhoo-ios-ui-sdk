@@ -11,9 +11,19 @@ import UIKit
 final class KarhooQuoteSortView: UIView, QuoteSortView {
     
     private weak var actions: QuoteSortViewActions?
-    private var segmentedControl: UISegmentedControl!
     private var didSetupConstraints: Bool = false
-    
+
+    private lazy var segmentedControl: UISegmentedControl = {
+        let items = [UITexts.Bookings.sortEta, UITexts.Bookings.sortPrice]
+        let control = UISegmentedControl(items: items)
+        control.accessibilityIdentifier = "segment_control"
+        control.tintColor = KarhooUI.colors.primary
+        control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(segmentControlChanged), for: .valueChanged)
+
+        return control
+    }()
+
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -32,34 +42,12 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = "quote_sort_view"
         backgroundColor = .white
-        
-        let items = [UITexts.Bookings.sortEta, UITexts.Bookings.sortPrice]
-        segmentedControl = UISegmentedControl(items: items)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.accessibilityIdentifier = "segment_control"
-        segmentedControl.tintColor = KarhooUI.colors.primary
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: #selector(segmentControlChanged), for: .valueChanged)
-        
+
         addSubview(segmentedControl)
-        
-        updateConstraints()
+
+        segmentedControl.pinEdges(to: self, spacing: 8)
     }
-    
-    override func updateConstraints() {
-        if !didSetupConstraints {
-            let constraints: [NSLayoutConstraint] = [segmentedControl.topAnchor.constraint(equalTo: topAnchor),
-                 segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0),
-                 segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0),
-                 segmentedControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0)]
-            
-            _ = constraints.map { $0.isActive = true }
-            
-            didSetupConstraints = true
-        }
-        super.updateConstraints()
-    }
-    
+
     func set(actions: QuoteSortViewActions) {
         self.actions = actions
     }

@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-protocol QuoteListView: AnyObject {
+public protocol QuoteListView: AnyObject {
 
     func showQuotes(_ quotes: [Quote], animated: Bool)
 
@@ -34,11 +34,11 @@ protocol QuoteListView: AnyObject {
 
     func hideQuotesTitle()
 
-    func showNoAvailabilityBar()
-
-    func hideNoAvailabilityBar()
+    func availability(_ availability: Bool)
     
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
+
+    var tableView: UITableView! { get }
 }
 
 protocol QuoteListPresenter {
@@ -48,13 +48,9 @@ protocol QuoteListPresenter {
     func didSelectQuoteOrder(_ order: QuoteSortOrder)
 }
 
-protocol QuoteListActions: AnyObject {
+public protocol QuoteListActions: AnyObject {
 
     func didSelectQuote(_ quote: Quote)
 
-    func categoriesChanged(categories: [QuoteCategory], quoteListId: String?)
-
-    func showNoAvailabilityBar()
-
-    func hideNoAvailabilityBar()
+    func availability(_ availability: Bool)
 }

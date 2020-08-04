@@ -27,4 +27,9 @@ public class KarhooComponents: BookingScreenComponents {
 
         return addressBarView
     }
+
+    public func quoteList() -> QuoteListView {
+        let view = KarhooQuoteListViewController()
+        return view
+    }
 }
