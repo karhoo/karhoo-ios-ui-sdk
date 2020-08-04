@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-public protocol QuoteListView: AnyObject {
+public protocol QuoteListView: UIViewController {
 
     func showQuotes(_ quotes: [Quote], animated: Bool)
 

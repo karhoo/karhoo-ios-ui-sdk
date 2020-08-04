@@ -130,11 +130,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mainPanelVC.surfaceView.shadowHidden = false
         mainPanelVC.surfaceView.backgroundColor = .clear
 
-        guard let quoteListAsViewController = quoteListView as? UIViewController else {
-            return
-        }
-
-        mainPanelVC.set(contentViewController: quoteListAsViewController)
+        mainPanelVC.set(contentViewController: quoteListView)
         mainPanelVC.track(scrollView: quoteListView.tableView)
         setupGrabberHandle(forVC: mainPanelVC)
         quoteListPanelVC = mainPanelVC

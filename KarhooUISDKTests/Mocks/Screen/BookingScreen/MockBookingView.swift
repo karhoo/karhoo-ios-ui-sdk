@@ -89,8 +89,7 @@ extension MockBookingView: BookingScreen {
 
 extension MockBookingView: QuoteListActions {
 
-    func didSelectQuote(_ quote: Quote) {
-    }
+    func didSelectQuote(_ quote: Quote) {}
 
     func quotesAvailabilityDidUpdate(availability: Bool) {
         availabilityValueSet = availability
