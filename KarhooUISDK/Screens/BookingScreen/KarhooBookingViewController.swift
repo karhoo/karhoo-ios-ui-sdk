@@ -302,7 +302,7 @@ extension KarhooBookingViewController: QuoteListActions {
         presenter.didSelectQuote(quote: quote)
     }
 
-    func availability(_ availability: Bool) {
+    func quotesAvailabilityDidUpdate(availability: Bool) {
         if availability == false {
             hideQuoteList()
         }

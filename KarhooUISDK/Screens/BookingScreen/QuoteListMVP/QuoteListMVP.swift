@@ -34,7 +34,7 @@ public protocol QuoteListView: AnyObject {
 
     func hideQuotesTitle()
 
-    func availability(_ availability: Bool)
+    func quotesAvailabilityDidUpdate(availability: Bool)
     
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
 
@@ -52,5 +52,5 @@ public protocol QuoteListActions: AnyObject {
 
     func didSelectQuote(_ quote: Quote)
 
-    func availability(_ availability: Bool)
+    func quotesAvailabilityDidUpdate(availability: Bool)
 }

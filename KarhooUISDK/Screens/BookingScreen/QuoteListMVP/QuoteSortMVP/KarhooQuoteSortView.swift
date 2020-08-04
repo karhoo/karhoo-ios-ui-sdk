@@ -44,7 +44,6 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
         backgroundColor = .white
 
         addSubview(segmentedControl)
-
         segmentedControl.pinEdges(to: self, spacing: 8)
     }
 

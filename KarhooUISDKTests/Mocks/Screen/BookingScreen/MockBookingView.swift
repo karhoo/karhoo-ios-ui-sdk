@@ -11,7 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockBookingView: MockBaseViewController, BookingView {
-    
+
     private(set) var leftNavigationButtonSet: NavigationBarItemIcon?
     func set(leftNavigationButton: NavigationBarItemIcon) {
         leftNavigationButtonSet = leftNavigationButton
@@ -64,16 +64,6 @@ final class MockBookingView: MockBaseViewController, BookingView {
         hideQuoteListCalled = true
     }
 
-    private(set) var showNoAvailabilityBarCalled = false
-    func showNoAvailabilityBar() {
-        showNoAvailabilityBarCalled = true
-    }
-
-    private(set) var hideNoAvailabilityBarCalled = false
-    func hideNoAvailabilityBar() {
-        hideNoAvailabilityBarCalled = true
-    }
-
     private(set) var setMapPaddingCalled = false
     private(set) var mapPaddingBottomPaddingEnabled: Bool?
     func setMapPadding(bottomPaddingEnabled: Bool) {
@@ -83,6 +73,7 @@ final class MockBookingView: MockBaseViewController, BookingView {
 
     private(set) var tripToOpen: TripInfo?
     private(set) var openRidesListCalled = false
+    private(set) var availabilityValueSet: Bool!
 }
 
 extension MockBookingView: BookingScreen {
@@ -94,4 +85,15 @@ extension MockBookingView: BookingScreen {
     func openRidesList(presentationStyle: UIModalPresentationStyle?) {
         openRidesListCalled = true
     }
+}
+
+extension MockBookingView: QuoteListActions {
+
+    func didSelectQuote(_ quote: Quote) {
+    }
+
+    func quotesAvailabilityDidUpdate(availability: Bool) {
+        availabilityValueSet = availability
+    }
+
 }

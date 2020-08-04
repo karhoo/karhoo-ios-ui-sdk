@@ -74,8 +74,8 @@ final class MockQuoteListView: QuoteListView {
     }
 
     private(set) var availabilityCalled = false
-    private(set) var availabilityValue: Bool?
-    func availability(_ availability: Bool) {
+    private(set) var availabilityValue: Bool!
+    func quotesAvailabilityDidUpdate(availability: Bool) {
         availabilityCalled = true
         availabilityValue = availability
     }
@@ -83,5 +83,9 @@ final class MockQuoteListView: QuoteListView {
     private(set) var categoriesDidChangeCalled = false
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?) {
         categoriesDidChangeCalled = true
+    }
+
+    var tableView: UITableView! {
+        return UITableView()
     }
 }

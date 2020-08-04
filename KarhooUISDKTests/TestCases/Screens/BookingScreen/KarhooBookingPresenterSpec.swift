@@ -98,7 +98,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         mockBookingStatus.triggerCallback(bookingDetails: nil)
         XCTAssertTrue(mockBookingView.hideQuoteListCalled)
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
-        XCTAssertTrue(mockBookingView.hideNoAvailabilityBarCalled)
+        XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
 
     /**
@@ -113,7 +113,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let mockBookingDetails = TestUtil.getRandomBookingDetails()
         mockBookingStatus.triggerCallback(bookingDetails: mockBookingDetails)
         XCTAssertTrue(mockBookingView.showQuoteListCalled)
-        XCTAssertTrue(mockBookingView.hideNoAvailabilityBarCalled)
+        XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
 
     /**
@@ -135,7 +135,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     func testHideQuoteCategories() {
         let mockBookingDetails = TestUtil.getRandomBookingDetails()
         mockBookingStatus.triggerCallback(bookingDetails: mockBookingDetails)
-        XCTAssertTrue(mockBookingView.hideNoAvailabilityBarCalled)
+        XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
 
     /**

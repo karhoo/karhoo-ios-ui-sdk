@@ -102,10 +102,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     override func updateViewConstraints() {
         if !didSetupConstraints {
-            
-            _ = [view.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width),
-                 view.heightAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.height)]
-                .map { $0.isActive = true }
+
             
             let stackConstraints: [NSLayoutConstraint] = [stackView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                                          constant: 16.0),
@@ -125,7 +122,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
             
             _ = [tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
                  tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)].map { $0.isActive = true }
-            
+
             let loadingConstraints: [NSLayoutConstraint] = [loadingView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                                              constant: 15.0),
                  loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -226,10 +223,10 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         view.setNeedsLayout()
     }
 
-    func availability(_ availability: Bool) {
-        quoteListActions?.availability(availability)
+    func quotesAvailabilityDidUpdate(availability: Bool) {
+        quoteListActions?.quotesAvailabilityDidUpdate(availability: availability)
     }
-    
+
     func showQuoteSorter() {
         quoteSortView.isHidden = false
     }
