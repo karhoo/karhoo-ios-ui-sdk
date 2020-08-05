@@ -34,7 +34,7 @@ final class TripDetailsViewModel {
         }
         
         let meetingPointType = trip.meetingPoint?.type
-        self.showMeetingPoint = meetingPointType != .default && meetingPointType != .notSet
+        self.showMeetingPoint = meetingPointType != nil && meetingPointType != .default && meetingPointType != .notSet
 
         switch meetingPointType {
         case .meetAndGreet?: meetingPointText = UITexts.Bookings.meetAndGreetPickup
