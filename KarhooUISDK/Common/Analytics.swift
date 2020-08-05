@@ -80,8 +80,8 @@ final class KarhooAnalytics: Analytics {
     func bookingRequested(destination: LocationInfo,
                           dateScheduled: Date?,
                           quote: Quote) {
-        let payload: [String: Any] = [AnalyticsConstants.Keys.price.rawValue: (round(quote.highPrice * 100))/100,
-                                      AnalyticsConstants.Keys.priceCurrency.rawValue: quote.currencyCode,
+        let payload: [String: Any] = [AnalyticsConstants.Keys.price.rawValue: quote.price.highPrice,
+                                      AnalyticsConstants.Keys.priceCurrency.rawValue: quote.price.currencyCode,
                                       AnalyticsConstants.Keys.destinationLatitude.rawValue:
                                         destination.position.latitude,
                                       AnalyticsConstants.Keys.destinationLongitude.rawValue:

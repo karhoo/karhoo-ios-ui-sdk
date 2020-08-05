@@ -223,8 +223,8 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
     func set(quote: Quote) {
         let viewModel = QuoteViewModel(quote: quote)
         supplierView.set(viewModel: viewModel)
-        termsConditionsView.setBookingTerms(supplier: quote.fleetName,
-                                            termsStringURL: quote.termsConditionsUrl)
+        termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
+                                            termsStringURL: quote.fleet.termsConditionsUrl)
     }
 
     func set(price: String?) {

@@ -50,8 +50,8 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
 
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
         threeDSecureProvider.threeDSecureCheck(nonce: nonce,
-                                               currencyCode: quote.currencyCode,
-                                               paymentAmout: NSDecimalNumber(value: quote.highPrice),
+                                               currencyCode: quote.price.currencyCode,
+                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
                                                callback: { [weak self] result in
                                                 switch result {
                                                 case .completed(let result): handleThreeDSecureCheck(result)
@@ -74,7 +74,7 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
 
     private func book(threeDSecureNonce: String, passenger: PassengerDetails) {
         let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
-        let tripBooking = TripBooking(quoteId: quote.quoteId,
+        let tripBooking = TripBooking(quoteId: quote.id,
                                       passengers: Passengers(additionalPassengers: 0,
                                                              passengerDetails: [passenger]),
                                       flightNumber: flightNumber,

@@ -291,8 +291,8 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     func set(quote: Quote) {
         let viewModel = QuoteViewModel(quote: quote)
         headerView.set(viewModel: viewModel)
-        termsConditionsView.setBookingTerms(supplier: quote.fleetName,
-                                            termsStringURL: quote.termsConditionsUrl)
+        termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
+                                            termsStringURL: quote.fleet.termsConditionsUrl)
         addPaymentView.quote = quote
     }
     

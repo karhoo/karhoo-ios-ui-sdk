@@ -145,10 +145,7 @@ private extension RideCell {
     
     func addContainerOuterShadow() {
         if containerView.layer.shadowPath == nil {
-            containerView.addOuterShadow(opacity: 0.5,
-                                         radious: 5,
-                                         rasterize: true,
-                                         color: .black)
+            containerView.addOuterShadow()
         }
     }
     

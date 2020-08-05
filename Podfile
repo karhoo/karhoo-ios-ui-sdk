@@ -18,7 +18,9 @@ def uisdkPods
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
   pod 'PhoneNumberKit', '2.1.0'
-  pod 'KarhooSDK', '1.1.1'
+  # pod 'KarhooSDK', '1.1.1'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+
 end
 
 target 'Client' do

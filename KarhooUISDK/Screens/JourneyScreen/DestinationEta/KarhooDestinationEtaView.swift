@@ -34,10 +34,7 @@ final class KarhooDestinationEtaView: UIView, DestinationEtaView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        addOuterShadow(opacity: 0.5,
-                       radious: 5,
-                       rasterize: true,
-                       color: .black)
+        addOuterShadow()
     }
     
     private func setUpView() {

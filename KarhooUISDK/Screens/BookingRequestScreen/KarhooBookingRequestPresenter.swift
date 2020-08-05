@@ -147,8 +147,8 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
     }
 
     private func configureForAsapState() {
-        view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.qtaLowMinutes,
-                                                                 max: quote.qtaHighMinutes))
+        view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
+                                                                 max: quote.vehicle.qta.highMinutes))
     }
 
     private func setUpBookingButtonState() {
@@ -197,7 +197,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
     }
 
     private func bookTrip(withPaymentNonce nonce: Nonce, user: UserInfo) {
-        var tripBooking = TripBooking(quoteId: quote.quoteId,
+        var tripBooking = TripBooking(quoteId: quote.id,
                                       passengers: Passengers(additionalPassengers: 0,
                                                              passengerDetails: [PassengerDetails(user: user)]),
                                       flightNumber: flightNumber)

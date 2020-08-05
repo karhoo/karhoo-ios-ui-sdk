@@ -47,7 +47,10 @@ extension UIView {
         layer.add(animation, forKey: "position")
     }
     
-    func  addOuterShadow(opacity: Float, radious: CGFloat, rasterize: Bool, color: UIColor) {
+    func  addOuterShadow(opacity: Float = 0.5,
+                         radious: CGFloat = 5,
+                         rasterize: Bool = true,
+                         color: UIColor = .black) {
         if layer.shadowPath == nil {
             layer.shadowColor = color.cgColor
             layer.shadowOpacity = opacity
