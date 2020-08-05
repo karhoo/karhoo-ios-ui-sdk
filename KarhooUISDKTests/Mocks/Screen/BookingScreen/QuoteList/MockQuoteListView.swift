@@ -73,18 +73,19 @@ final class MockQuoteListView: QuoteListView {
         hideQuotesTitleCalled = true
     }
 
-    private(set) var showNoAvailabilityBarCalled = false
-    func showNoAvailabilityBar() {
-        showNoAvailabilityBarCalled = true
-    }
-
-    private(set) var hideNoAvailabilityBarCalled = false
-    func hideNoAvailabilityBar() {
-        hideNoAvailabilityBarCalled = true
+    private(set) var availabilityCalled = false
+    private(set) var availabilityValue: Bool!
+    func quotesAvailabilityDidUpdate(availability: Bool) {
+        availabilityCalled = true
+        availabilityValue = availability
     }
     
     private(set) var categoriesDidChangeCalled = false
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?) {
         categoriesDidChangeCalled = true
+    }
+
+    var tableView: UITableView! {
+        return UITableView()
     }
 }

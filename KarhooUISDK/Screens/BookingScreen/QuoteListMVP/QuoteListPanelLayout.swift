@@ -30,6 +30,9 @@ final class QuoteListPanelLayout: FloatingPanelLayout {
     }
 
     func backdropAlphaFor(position: FloatingPanelPosition) -> CGFloat {
-        return 0
+        switch position {
+        case .full: return 0.5
+        default: return 0
+        }
     }
 }

@@ -235,7 +235,7 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
         simulateDestinationSetInBookingDetails()
         mockQuoteService.quotesPollCall.triggerPollFailure(TestUtil.getRandomError(code: "K3002"))
 
-        XCTAssertTrue(mockQuoteListView.showNoAvailabilityBarCalled)
+        XCTAssertFalse(mockQuoteListView.availabilityValue)
         XCTAssertFalse(mockQuoteService.quotesPollCall.hasObserver)
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
     }

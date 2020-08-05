@@ -23,7 +23,7 @@ public protocol BookingScreen: BaseViewController {
 }
 
 /* internal interface for controlling booking screen */
-internal protocol BookingView: BookingScreen {
+internal protocol BookingView: BookingScreen, QuoteListActions {
 
     func reset()
 
@@ -38,10 +38,6 @@ internal protocol BookingView: BookingScreen {
     func showQuoteList()
 
     func hideQuoteList()
-    
-    func showNoAvailabilityBar()
-
-    func hideNoAvailabilityBar()
 
     func setMapPadding(bottomPaddingEnabled: Bool)
 
