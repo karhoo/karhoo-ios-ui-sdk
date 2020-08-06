@@ -58,7 +58,6 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
             searchBias = bookingStatus.getBookingDetails()?.originLocationDetails?.position.toCLLocation()
         }
         
-
         let addressSearchScreen = addressScreenBuilder.buildAddressScreen(locationBias: searchBias,
                                                                           addressType: typeSelected,
                                                                           callback: { [weak self] result in

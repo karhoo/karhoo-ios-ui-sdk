@@ -12,7 +12,7 @@ import KarhooSDK
 class CurrencyCodeConverter {
 
     class func toPriceString(quote: Quote) -> String {
-        return toPriceString(price: quote.highPrice, currencyCode: quote.currencyCode)
+        return toPriceString(price: quote.price.highPrice, currencyCode: quote.price.currencyCode)
     }
 
     class func toPriceString(price: Double, currencyCode: String) -> String {
@@ -26,8 +26,8 @@ class CurrencyCodeConverter {
     }
 
     class func quoteRangePrice(quote: Quote) -> String {
-        let highPrice = toPriceString(price: quote.highPrice, currencyCode: quote.currencyCode)
-        let lowPrice = toPriceString(price: quote.lowPrice, currencyCode: quote.currencyCode)
+        let highPrice = toPriceString(price: quote.price.highPrice, currencyCode: quote.price.currencyCode)
+        let lowPrice = toPriceString(price: quote.price.lowPrice, currencyCode: quote.price.currencyCode)
 
         return "\(lowPrice) - \(highPrice)"
     }

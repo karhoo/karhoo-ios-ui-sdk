@@ -103,7 +103,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     override func updateViewConstraints() {
         if !didSetupConstraints {
 
-            
             let stackConstraints: [NSLayoutConstraint] = [stackView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                                          constant: 16.0),
                  stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

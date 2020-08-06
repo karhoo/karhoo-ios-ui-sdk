@@ -17,4 +17,9 @@ final class MockQuoteService: QuoteService {
         quoteSearchSet = quoteSearch
         return quotesPollCall
     }
+
+    func quotesV2(quoteSearch: QuoteSearch) -> PollCall<Quotes> {
+        quoteSearchSet = quoteSearch
+        return quotesPollCall
+    }
 }

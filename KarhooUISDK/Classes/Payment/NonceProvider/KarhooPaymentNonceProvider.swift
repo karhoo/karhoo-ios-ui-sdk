@@ -41,7 +41,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
         self.quoteToBook = quote
 
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisation.id,
-                                                     currency: quote.currencyCode)
+                                                     currency: quote.price.currencyCode)
 
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute {[weak self] result in
             switch result {
@@ -60,7 +60,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
         let nonceRequestPayload = NonceRequestPayload(payer: payer,
                                                       organisationId: organisation.id)
 
-        getNonce(payload: nonceRequestPayload, currencyCode: quote.currencyCode)
+        getNonce(payload: nonceRequestPayload, currencyCode: quote.price.currencyCode)
     }
 
     private func getNonce(payload: NonceRequestPayload, currencyCode: String) {
@@ -107,8 +107,8 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
         }
 
         threeDSecureProvider.threeDSecureCheck(nonce: nonce.nonce,
-                                               currencyCode: quote.currencyCode,
-                                               paymentAmout: NSDecimalNumber(value: quote.highPrice),
+                                               currencyCode: quote.price.currencyCode,
+                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
                                                callback: { [weak self] result in
                                                 switch result {
                                                 case .completed(let result): handleThreeDSecureCheck(result)
@@ -121,7 +121,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
             case .failedToInitialisePaymentService:
                 self.callbackResult?(.completed(value: .failedToInitialisePaymentService))
             case .threeDSecureAuthenticationFailed:
-                triggerAddCardFlow(currencyCode: quote.currencyCode)
+                triggerAddCardFlow(currencyCode: quote.price.currencyCode)
             case .success(let threeDSecureNonce):
                 self.callbackResult?(.completed(value: .nonce(nonce: Nonce(nonce: threeDSecureNonce))))
             }

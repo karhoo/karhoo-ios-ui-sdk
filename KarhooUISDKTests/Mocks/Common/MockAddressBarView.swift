@@ -11,7 +11,6 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-
 class MockBaseView: UIView, BaseView {
 
     var parentViewController: UIViewController? {

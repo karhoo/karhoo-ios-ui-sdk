@@ -97,14 +97,8 @@ final class JourneyActionsView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        cancelRideButton.addOuterShadow(opacity: 0.5,
-                               radious: 5,
-                               rasterize: true,
-                               color: .black)
-        contactDriverButton.addOuterShadow(opacity: 0.5,
-                               radious: 5,
-                               rasterize: true,
-                               color: .black)
+        cancelRideButton.addOuterShadow()
+        contactDriverButton.addOuterShadow()
     }
     
     @objc

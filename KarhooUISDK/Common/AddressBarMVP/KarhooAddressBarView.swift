@@ -195,10 +195,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
         if dropShadow {
-            addOuterShadow(opacity: 0.5,
-                           radious: 5,
-                           rasterize: true,
-                           color: .black)
+            addOuterShadow()
         }
     }
     

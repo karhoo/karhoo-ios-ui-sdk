@@ -29,23 +29,22 @@ final class KarhooQuoteSorter: QuoteSorter {
 
     private func sortQuotesByPrice(_ quotes: [Quote]) -> [Quote] {
         return quotes.sorted(by: {(quoteA: Quote, quoteB: Quote) in
-            guard quoteA.highPrice == quoteB.highPrice else {
-                return quoteA.highPrice < quoteB.highPrice
+            guard quoteA.price.highPrice == quoteB.price.highPrice else {
+                return quoteA.price.highPrice < quoteB.price.highPrice
             }
 
-            return quoteA.qtaHighMinutes < quoteB.qtaHighMinutes
+            return quoteA.vehicle.qta.highMinutes < quoteB.vehicle.qta.highMinutes
 
         })
     }
 
     private func sortQuotesByQta(_ quotes: [Quote]) -> [Quote] {
         return quotes.sorted(by: { (quoteA: Quote, quoteB: Quote) in
-            guard quoteA.qtaHighMinutes == quoteB.qtaHighMinutes else {
-                return quoteA.qtaHighMinutes < quoteB.qtaHighMinutes
+            guard quoteA.vehicle.qta.highMinutes == quoteB.vehicle.qta.highMinutes else {
+                return quoteA.vehicle.qta.highMinutes < quoteB.vehicle.qta.highMinutes
             }
 
-            return quoteA.highPrice < quoteB.highPrice
-
+            return quoteA.vehicle.qta.highMinutes < quoteB.vehicle.qta.highMinutes
         })
     }
 }

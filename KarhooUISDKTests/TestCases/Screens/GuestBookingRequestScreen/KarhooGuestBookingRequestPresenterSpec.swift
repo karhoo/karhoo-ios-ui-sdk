@@ -34,7 +34,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
         XCTAssertTrue(mockView.setRequestingStateCalled)
         XCTAssertTrue(mockThreeDSecureProvider.setBaseViewControllerCalled)
-        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.price.highPrice))
     }
 
     /** When: 3D secure provider succeeds

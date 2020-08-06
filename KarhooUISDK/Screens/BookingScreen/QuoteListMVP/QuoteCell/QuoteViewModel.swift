@@ -26,16 +26,17 @@ final class QuoteViewModel {
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
         self.passengerCapacity = "\(quote.vehicleAttributes.passengerCapacity)"
         self.baggageCapacity = "\(quote.vehicleAttributes.luggageCapacity)"
-        self.fleetName = quote.fleetName
-        self.eta = QtaStringFormatter().qtaString(min: quote.qtaLowMinutes, max: quote.qtaHighMinutes)
-        self.carType = quote.categoryName
+        self.fleetName = quote.fleet.name
+        self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
+                                                  max: quote.vehicle.qta.highMinutes)
+        self.carType = quote.vehicle.vehicleClass
 
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
         case .fleet: fare = CurrencyCodeConverter.toPriceString(quote: quote)
         }
 
-        self.logoImageURL = quote.supplierLogoUrl
+        self.logoImageURL = quote.fleet.logoUrl
         self.fareType = quote.quoteType.description
         let origin = bookingStatus.getBookingDetails()?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport

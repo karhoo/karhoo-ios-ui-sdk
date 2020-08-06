@@ -33,7 +33,7 @@ final class KarhooPaymentPresenter: CardDetailPresenter {
         self.cardRegistrationFlow.setBaseView(view.baseViewController)
         analyticsService.send(eventName: .changePaymentDetailsPressed, payload: [String: Any]())
 
-        let currencyCode = view.quote?.currencyCode ?? "GBP"
+        let currencyCode = view.quote?.price.currencyCode ?? "GBP"
         cardRegistrationFlow.start(cardCurrency: currencyCode,
                                    showUpdateCardAlert: showRetryAlert,
                                    callback: { [weak self] result in
