@@ -19,7 +19,7 @@ class CurrencyCodeConverterSpec: XCTestCase {
      *  Then:   The string should have the correct currency code and price value
      */
     func testConvertingQuoteToPrice() {
-        let quote = TestUtil.getRandomQuote(highPrice: 9000, currencyCode: "GBP")
+        let quote = TestUtil.getRandomQuote(highPrice: 90, currencyCode: "GBP")
         let priceString = CurrencyCodeConverter.toPriceString(quote: quote)
 
         XCTAssertEqual("£90.00", priceString)
@@ -56,7 +56,7 @@ class CurrencyCodeConverterSpec: XCTestCase {
      *  Then:   Currency code should be set infront of price anyway
      */
     func testInvlalidCurrencyCode() {
-        let quote = TestUtil.getRandomQuote(highPrice: 9000, currencyCode: "XXX")
+        let quote = TestUtil.getRandomQuote(highPrice: 90, currencyCode: "XXX")
         let priceString = CurrencyCodeConverter.toPriceString(quote: quote)
 
         XCTAssertEqual("XXX90.00", priceString)
@@ -67,7 +67,7 @@ class CurrencyCodeConverterSpec: XCTestCase {
      *  Then:   Expected price should show
      */
     func testQuoteRange() {
-        let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, currencyCode: "GBP")
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, currencyCode: "GBP")
         let priceString = CurrencyCodeConverter.quoteRangePrice(quote: quote)
 
         XCTAssertEqual("£10.00 - £50.00", priceString)

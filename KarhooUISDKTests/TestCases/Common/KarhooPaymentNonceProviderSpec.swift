@@ -120,8 +120,8 @@ final class KarhooPaymentNonceProviderSpec: XCTestCase {
         let paymentAdded = TestUtil.getRandomBraintreePaymentMethod(nonce: "some_nonce")
         mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(method: paymentAdded)))
 
-        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.currencyCode)
-        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.price.currencyCode)
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.price.highPrice))
         XCTAssertEqual(mockThreeDSecureProvider.nonceSet, "some_nonce")
     }
 
@@ -159,8 +159,8 @@ final class KarhooPaymentNonceProviderSpec: XCTestCase {
         mockPaymentService.paymentSDKTokenCall.triggerSuccess(PaymentSDKToken(token: "someToken"))
         mockPaymentService.getNonceCall.triggerSuccess(Nonce(nonce: "some_nonce"))
 
-        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.currencyCode)
-        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.price.currencyCode)
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.price.highPrice))
         XCTAssertEqual(mockThreeDSecureProvider.nonceSet, "some_nonce")
     }
 
@@ -178,7 +178,7 @@ final class KarhooPaymentNonceProviderSpec: XCTestCase {
         mockThreeDSecureProvider.triggerResult(OperationResult.completed(value: .threeDSecureAuthenticationFailed))
         mockBaseView.selectUpdateCardOnAddCardAlert()
 
-        XCTAssertEqual(mockCardRegistrationFlow.currencyCodeSet, mockQuote.currencyCode)
+        XCTAssertEqual(mockCardRegistrationFlow.currencyCodeSet, mockQuote.price.currencyCode)
         XCTAssertTrue(mockCardRegistrationFlow.startCalled)
         XCTAssertTrue(mockCardRegistrationFlow.showUpdateCardAlertSet!)
     }

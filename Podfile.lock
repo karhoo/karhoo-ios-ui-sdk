@@ -1,36 +1,36 @@
 PODS:
-  - Braintree/Card (4.33.0):
+  - Braintree/Card (4.34.0):
     - Braintree/Core
-  - Braintree/Core (4.33.0)
-  - Braintree/PaymentFlow (4.33.0):
+  - Braintree/Core (4.34.0)
+  - Braintree/PaymentFlow (4.34.0):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.33.0):
+  - Braintree/PayPal (4.34.0):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.33.0):
+  - Braintree/PayPalDataCollector (4.34.0):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.33.0):
+  - Braintree/PayPalOneTouch (4.34.0):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.33.0)
-  - Braintree/UnionPay (4.33.0):
+  - Braintree/PayPalUtils (4.34.0)
+  - Braintree/UnionPay (4.34.0):
     - Braintree/Card
     - Braintree/Core
-  - BraintreeDropIn (8.1.0):
-    - BraintreeDropIn/DropIn (= 8.1.0)
-  - BraintreeDropIn/DropIn (8.1.0):
+  - BraintreeDropIn (8.1.1):
+    - BraintreeDropIn/DropIn (= 8.1.1)
+  - BraintreeDropIn/DropIn (8.1.1):
     - Braintree/Card (~> 4.32)
     - Braintree/Core (~> 4.32)
     - Braintree/PaymentFlow (~> 4.32)
     - Braintree/PayPal (~> 4.32)
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
-  - BraintreeDropIn/UIKit (8.1.0)
-  - FloatingPanel (1.7.4)
+  - BraintreeDropIn/UIKit (8.1.1)
+  - FloatingPanel (1.7.5)
   - KarhooSDK (1.1.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
@@ -82,9 +82,9 @@ CHECKOUT OPTIONS:
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
-  Braintree: 586e4d274398fabe9d70ab790eefca41660b8a17
-  BraintreeDropIn: fc3e96a8a2b5416e5e3a3beba119f0089713bc1e
-  FloatingPanel: 3c9d0e30fe350e1613157557769d2ec97f76b96b
+  Braintree: 48154e70306eb3e6c81eaa87bbc5c5988c0d2784
+  BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
+  FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
   KarhooSDK: 19335b8016480ec70a45a2e8735717945177ac8d
   KarhooUISDK: 0c4b864fbd47b5f37944cc9d4691098d7b910fa4
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a

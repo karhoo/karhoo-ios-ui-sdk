@@ -234,7 +234,8 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     func testAsapSetup() {
         testBookingDetails.scheduledDate = nil
         loadTestObject()
-        let qta = QtaStringFormatter().qtaString(min: testQuote.qtaLowMinutes, max: testQuote.qtaHighMinutes)
+        let qta = QtaStringFormatter().qtaString(min: testQuote.vehicle.qta.lowMinutes,
+                                                 max: testQuote.vehicle.qta.highMinutes)
         XCTAssertEqual(qta, mockView.asapQtaString)
         XCTAssertEqual(UITexts.Generic.fixed.lowercased(), mockView.quoteType?.lowercased())
     }

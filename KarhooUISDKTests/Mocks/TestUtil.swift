@@ -63,8 +63,7 @@ class TestUtil: PrimitiveUtil {
                          description: description,
                          phoneNumber: phoneNumber,
                          termsConditionsUrl: termsConditionsUrl,
-                         logoUrl: logoUrl,
-                         email: email)
+                         logoUrl: logoUrl)
     }
 
     class func getRandomTripLocationDetails() -> TripLocationDetails {
@@ -121,24 +120,20 @@ class TestUtil: PrimitiveUtil {
                               source: QuoteSource = .market,
                               pickUpType: PickUpType = .default,
                               vehicleAttributes: VehicleAttributes = VehicleAttributes()) -> Quote {
-        return Quote(quoteId: quoteId,
-                     fleetId: getRandomString(),
-                     availabilityId: availabilityId,
-                     fleetName: fleetName,
-                     phoneNumber: getRandomString(),
-                     supplierLogoUrl: "http://www.google.com",
-                     vehicleClass: getRandomString(),
+        let price = QuotePrice(highPrice: Double(highPrice),
+                               lowPrice: Double(lowPrice),
+                               currencyCode: currencyCode)
+        let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
+        let fleet = FleetInfo(name: fleetName)
+        return Quote(id: quoteId,
                      quoteType: quoteType,
-                     highPrice: highPrice,
-                     lowPrice: lowPrice,
-                     currencyCode: currencyCode,
-                     qtaHighMinutes: qtaHighMinutes,
-                     qtaLowMinutes: qtaLowMinutes,
-                     termsConditionsURL: "http://www.google.com",
-                     categoryName: categoryName,
                      source: source,
                      pickUpType: pickUpType,
-                     vehicleAttributes: vehicleAttributes)
+                     fleet: fleet,
+                     vehicleAttributes: vehicleAttributes,
+                     vehicle: QuoteVehicle(vehicleClass: categoryName, qta: qta),
+                     price: price,
+                     validity: 1)
     }
 
     class func getRandomUser(inOrganisation: Bool = true,

@@ -9,7 +9,7 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockQuoteListView: QuoteListView {
+final class MockQuoteListView: UIViewController, QuoteListView {
 
     private(set) var quotesSet: [Quote]?
     private(set) var showQuotesAnimated: Bool?
