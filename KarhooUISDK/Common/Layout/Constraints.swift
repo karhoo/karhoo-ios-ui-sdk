@@ -27,7 +27,6 @@ extension UIView {
         topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
         bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom).isActive = true
     }
-
 }
 
 final class Constraints {
