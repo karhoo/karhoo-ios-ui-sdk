@@ -62,8 +62,9 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         
         NSLayoutConstraint.activate([
             addressDisplayView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 10),
-            addressDisplayView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            addressDisplayView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            addressDisplayView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
+            addressDisplayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            addressDisplayView.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: -10)
         ])
         
         setLocationButton = UIButton(type: .custom)
