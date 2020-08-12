@@ -18,15 +18,13 @@ public struct KHAddressViewID {
 }
 
 final class AddressViewController: UIViewController, AddressView {
-       
+
     // new components
-    private var stackContainer: UIStackView!
+    private var stackView: UIStackView!
     private var searchBarView: KarhooAddressSearchBar!
     private var setOnMapView: BaseSelectionView!
     private var currentLocationView: BaseSelectionView!
-
     private var table: UITableView!
-
     private var emptyResultsView: KarhooEmptyDataSetView!
     private var googleLogoViewBottomConstraint: NSLayoutConstraint!
     private var googleLogoView: AddressGoogleLogoView!
@@ -37,6 +35,12 @@ final class AddressViewController: UIViewController, AddressView {
     private var tableDelegate: TableDelegate<AddressCellViewModel>? // swiftlint:disable:this weak_delegate
     private let presenter: AddressPresenter
     private var addressMapView: KarhooAddressMapView!
+
+    private lazy var masterContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     init(presenter: AddressPresenter) {
         self.presenter = presenter
@@ -50,7 +54,6 @@ final class AddressViewController: UIViewController, AddressView {
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSizeProvider.register(listener: self)
-
         setupBackButton()
     }
     
@@ -70,39 +73,45 @@ final class AddressViewController: UIViewController, AddressView {
     }
     
     private func setUpView() {
-        
         view.backgroundColor = KarhooUI.colors.offWhite
-        
-        stackContainer = UIStackView()
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
-        stackContainer.spacing = 5.0
-        stackContainer.axis = .vertical
+        view.addSubview(masterContainer)
 
-        view.addSubview(stackContainer)
-        
-        _ = [stackContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-             stackContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             stackContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
+        masterContainer.topAnchor.constraint(equalTo: view.topAnchor,
+                                             constant: navigationController!.navigationBar.frame.size.height).isActive = true
+        masterContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        masterContainer.pinLeftRightEdegs(to: view)
+
+        stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 5.0
+        stackView.axis = .vertical
+        masterContainer.addSubview(stackView)
+
+        _ = [stackView.topAnchor.constraint(equalTo: masterContainer.safeAreaLayoutGuide.topAnchor),
+             stackView.leadingAnchor.constraint(equalTo: masterContainer.leadingAnchor),
+             stackView.trailingAnchor.constraint(equalTo: masterContainer.trailingAnchor)].map { $0.isActive = true }
         
         searchBarView = KarhooAddressSearchBar()
+        searchBarView.translatesAutoresizingMaskIntoConstraints = false
         searchBarView.accessibilityIdentifier = KHAddressViewID.searchBarView
         searchBarView.set(actions: self,
                           addressMode: presenter.addressMode)
-        stackContainer.addArrangedSubview(searchBarView)
-        _ = [searchBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             searchBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
+        stackView.addArrangedSubview(searchBarView)
+        _ = [searchBarView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+             searchBarView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)].map { $0.isActive = true }
         
         setOnMapView = BaseSelectionView(type: .mapPickUp, identifier: "set_on_map_view")
         setOnMapView.delegate = self
-        stackContainer.addArrangedSubview(setOnMapView)
-        _ = [setOnMapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             setOnMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
+        stackView.addArrangedSubview(setOnMapView)
+        _ = [setOnMapView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+             setOnMapView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)].map { $0.isActive = true }
         
         currentLocationView = BaseSelectionView(type: .currentLocation, identifier: "current_location_view")
         currentLocationView.delegate = self
-        stackContainer.addArrangedSubview(currentLocationView)
-        _ = [currentLocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             currentLocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
+        currentLocationView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(currentLocationView)
+        _ = [currentLocationView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+             currentLocationView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)].map { $0.isActive = true }
         
         table = UITableView(frame: .zero)
         table.accessibilityIdentifier = "table_view"
@@ -114,18 +123,19 @@ final class AddressViewController: UIViewController, AddressView {
         table.estimatedRowHeight = 50.0
         table.separatorStyle = .none
         
-        view.addSubview(table)
-        _ = [table.topAnchor.constraint(equalTo: stackContainer.bottomAnchor, constant: 5.0),
+        masterContainer.addSubview(table)
+        _ = [table.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5.0),
              table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              table.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
         
         setupTable()
         
         googleLogoView = AddressGoogleLogoView()
+        googleLogoView.translatesAutoresizingMaskIntoConstraints = false
         googleLogoView.accessibilityIdentifier = KHAddressViewID.googleLogoView
         googleLogoView.backgroundColor = KarhooUI.colors.offWhite
             
-        view.addSubview(googleLogoView)
+        masterContainer.addSubview(googleLogoView)
         
         _ = [googleLogoView.topAnchor.constraint(equalTo: table.bottomAnchor),
              googleLogoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -136,9 +146,9 @@ final class AddressViewController: UIViewController, AddressView {
         emptyResultsView = KarhooEmptyDataSetView()
         emptyResultsView?.accessibilityIdentifier = KHAddressViewID.emptyResultsView
         emptyResultsView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emptyResultsView)
+        masterContainer.addSubview(emptyResultsView)
         
-        _ = [emptyResultsView.topAnchor.constraint(equalTo: stackContainer.bottomAnchor, constant: 5.0),
+        _ = [emptyResultsView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5.0),
              emptyResultsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              emptyResultsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              emptyResultsView.bottomAnchor.constraint(equalTo: googleLogoView.topAnchor)].map { $0.isActive = true }
@@ -157,9 +167,14 @@ final class AddressViewController: UIViewController, AddressView {
 
     private func buildAddressMapView() {
         addressMapView = KarhooAddressMapView()
+        addressMapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressMapView)
         addressMapView.isHidden = true
-        Constraints.pinEdges(of: addressMapView, to: self.view)
+
+        _ = [addressMapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+             addressMapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
+        addressMapView.pinLeftRightEdegs(to: view)
+
         addressMapView.set(actions: self,
                            addressType: presenter.addressMode)
     }
@@ -223,9 +238,8 @@ final class AddressViewController: UIViewController, AddressView {
     }
 
     func addressMapViewSelected(_ value: Bool) {
-        navigationController?.navigationBar.isHidden = value
+        navigationController?.setNavigationBarHidden(value, animated: true)
         addressMapView.isHidden = !value
-        
         _ = value ? unfocusInputField() : focusInputField()
     }
 
