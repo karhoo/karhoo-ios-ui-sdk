@@ -73,3 +73,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# access keys
+Client/Keys.swift
+
