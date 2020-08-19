@@ -43,8 +43,8 @@
 "Text.Generic.Continue" = "Continuer";
 
 /*Address Bar*/
-"Text.AddressBar.AddDestination" = "Ajouter destination";
-"Text.AddressBar.AddPickup" = "Ajouter un ramassage";
+"Text.AddressBar.AddDestination" = "Ajouter une destination";
+"Text.AddressBar.AddPickup" = "Ajouter une adresse de départ";
 "Text.AddressBar.EnterPickupLocation" = "Adresse de départ";
 "Text.AddressSearch.EnterDestinationLocation" = "Adresse de destination";
 
@@ -152,7 +152,7 @@
 "Text.Bookings.NoTripsBookedMessage" = "Vous n'avez aucune réservation. Nous pouvons vous aider pour votre prochain trajet.";
 
 /*used as a call to action on a button in the empty bookings screen: English: "Book A Trip"*/
-"Text.Bookings.BookATrip" = "Faire une réservation";
+"Text.Bookings.BookATrip" = "Réserver";
 
 /*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
 "Text.Payment.AddPaymentMethod" = "Ajouter une méthode de paiement";
@@ -410,10 +410,10 @@
 "Text.Journey.NoDriversAvailable.AlertMessage" = "La flotte a annulée votre course à cause d'un manque de chauffeurs disponibles. Veuillez réessayer plus tard.";
 
 /*Password Entry Button*/
-"Text.Generic.Hide" = "Cacher";
+"Text.Generic.Hide" = "Masquer";
 
 /*Password Entry Button*/
-"Text.Generic.Show" = "Montrer";
+"Text.Generic.Show" = "Afficher";
 
 /*"Quoted Price": used in trip summary screen when the fare is not available*/
 "Text.TripSummary.QuotedPrice" = "Prix devis";
