@@ -82,7 +82,6 @@ final class SupplierView: UIView {
              vehicleType.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.0)].map { $0.isActive = true }
         
         _ = [vehicleCapacityView.centerYAnchor.constraint(equalTo: vehicleType.centerYAnchor),
-             vehicleCapacityView.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: -17.0),
              vehicleCapacityView.leadingAnchor.constraint(equalTo: vehicleType.trailingAnchor,
                                                           constant: 13.0)].map { $0.isActive = true }
     }
