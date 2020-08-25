@@ -162,7 +162,7 @@
 "Text.Generic.Edit" = "Modifier";
 
 /*"Save" used as a button (call to action) */
-"Text.Generic.Save" = "Enregistrer";
+"Text.Generic.Save" = "Sauvegarder";
 
 /*"Payment" used as a button in the side menu to reach all your payment methods*/
 "Text.Generic.Payment" = "Paiement";
