@@ -11,7 +11,7 @@ protocol PaymentViewActions {
     func didGetNonce(nonce: String)
 }
 
-protocol CardDetailPresenter {
+protocol PaymentPresenter {
     func updateCardPressed(showRetryAlert: Bool)
 }
 

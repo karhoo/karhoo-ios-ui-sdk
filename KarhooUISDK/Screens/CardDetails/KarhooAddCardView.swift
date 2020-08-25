@@ -32,7 +32,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     
     var quote: Quote?
     var actions: PaymentViewActions?
-    private var presenter: CardDetailPresenter?
+    private var presenter: PaymentPresenter?
     
     init() {
         super.init(frame: .zero)

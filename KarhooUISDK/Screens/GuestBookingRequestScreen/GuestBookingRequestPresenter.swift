@@ -17,15 +17,18 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
     internal var passengerDetails: PassengerDetails!
     private let threeDSecureProvider: ThreeDSecureProvider
     private let tripService: TripService
+    private let userService: UserService
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
+         userService: UserService = Karhoo.getUserService(),
          callback: @escaping ScreenResultCallback<TripInfo>) {
         self.threeDSecureProvider = threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
+        self.userService = userService
         self.quote = quote
         self.bookingDetails = bookingDetails
     }
@@ -40,12 +43,21 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
     func bookTripPressed() {
         view?.setRequestingState()
 
-        guard let passengerDetails = view?.getPassengerDetails(), let nonce = view?.getPaymentNonce() else {
+        guard let passengerDetails = view?.getPassengerDetails(), let nonce = getPaymentNonceAccordingToAuthState() else {
             view?.setDefaultState()
             return
         }
 
-        threeDSecureNonceThenBook(nonce: nonce, passengerDetails: passengerDetails)
+        threeDSecureNonceThenBook(nonce: nonce,
+                                  passengerDetails: passengerDetails)
+    }
+
+    private func getPaymentNonceAccordingToAuthState() -> String? {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return view?.getPaymentNonce()
+        }
+
+        return userService.getCurrentUser()?.nonce?.nonce
     }
 
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
