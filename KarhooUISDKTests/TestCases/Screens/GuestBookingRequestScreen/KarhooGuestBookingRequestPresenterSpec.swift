@@ -18,10 +18,12 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
     private var mockThreeDSecureProvider = MockThreeDSecureProvider()
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
+    private var mockUserService = MockUserService()
 
     override func setUp() {
         super.setUp()
         loadTestObject()
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
     }
 
     /** Given: A user has added details and a nonce
@@ -79,6 +81,30 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
+    /** When: Trip service booking succceeds
+     *  Then: View should be updated and callback is called with trip
+     */
+    func testCorrectPaymentNonceIsUsed() {
+        KarhooTestConfiguration.authenticationMethod = .karhooUser
+
+        let expectedNonce = Nonce(nonce: "mock_nonce")
+        mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
+
+        testObject.bookTripPressed()
+        mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+
     /** When: Trip service booking fails
      *  Then: View should be updated and error propogated
      */
@@ -108,6 +134,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
                                                   bookingDetails: mockBookingDetails,
                                                   threeDSecureProvider: mockThreeDSecureProvider,
                                                   tripService: mockTripService,
+                                                  userService: mockUserService,
                                                   callback: guestBookingRequestTrip)
         testObject.load(view: mockView)
     }

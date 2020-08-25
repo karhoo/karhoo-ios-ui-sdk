@@ -1469,7 +1469,7 @@
 		0991065C21B8291900BD7E6F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				403E907722C527EE00F39B91 /* CardDetails */,
+				403E907722C527EE00F39B91 /* PaymentView */,
 				FC0465A02215A962004E76FE /* UINavigation.swift */,
 				092005D5225B91C1001038ED /* SideMenu */,
 				FC83E24B221DB4C9008FE26D /* JourneyScreen */,
@@ -2040,15 +2040,15 @@
 			path = GuestBookingRequestScreen;
 			sourceTree = "<group>";
 		};
-		403E907722C527EE00F39B91 /* CardDetails */ = {
+		403E907722C527EE00F39B91 /* PaymentView */ = {
 			isa = PBXGroup;
 			children = (
-				403E907822C5287F00F39B91 /* KarhooPaymentView.swift */,
 				5C3C66B624468B7800C736E9 /* KarhooPaymentMVP.swift */,
-				400BE99122CF4D27002942CC /* KarhooPaymentPresenter.swift */,
+				403E907822C5287F00F39B91 /* KarhooPaymentView.swift */,
 				40E54AC32460DF9D00D13E10 /* KarhooAddCardView.swift */,
+				400BE99122CF4D27002942CC /* KarhooPaymentPresenter.swift */,
 			);
-			path = CardDetails;
+			path = PaymentView;
 			sourceTree = "<group>";
 		};
 		403F448522F1EC97008147FC /* TripFeedbackScreen */ = {

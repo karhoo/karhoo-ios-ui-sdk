@@ -33,6 +33,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
 
     private lazy var passengerDetailsView: PassengerDetailsView = {
         let passengerDetailsView = PassengerDetailsView()
+        passengerDetailsView.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsView.accessibilityIdentifier = "passengerDetailsView"
         passengerDetailsView.actions = self
         return passengerDetailsView
@@ -305,7 +306,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     func set(baseFareExplanationHidden: Bool) {}
     
     func retryAddPaymentMethod() {
-        addPaymentView.retryAddPaymentMethod()
+        addPaymentView.startRegisterCardFlow()
     }
     
     func setAsapState(qta: String?) {}

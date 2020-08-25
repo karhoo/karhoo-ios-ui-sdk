@@ -115,7 +115,7 @@ public final class KarhooPaymentView: UIView, PaymentView {
         updateButton.setTitle(UITexts.Generic.add, for: .normal)
     }
 
-    func retryAddPaymentMethod() {
+    func startRegisterCardFlow() {
         presenter?.updateCardPressed(showRetryAlert: true)
     }
 }

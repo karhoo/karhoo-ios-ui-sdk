@@ -15,11 +15,12 @@ protocol PaymentPresenter {
     func updateCardPressed(showRetryAlert: Bool)
 }
 
-protocol PaymentView {
+protocol PaymentView: BaseView {
     func set(paymentMethod: PaymentMethod)
     func set(nonce: Nonce)
     func noPaymentMethod()
-    var baseViewController: BaseViewController? { get }
+    func startRegisterCardFlow()
+    var baseViewController: BaseViewController? { get set }
     var quote: Quote? { get }
     var actions: PaymentViewActions? { get }
 }

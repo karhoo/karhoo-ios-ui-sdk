@@ -116,8 +116,6 @@ final class GuestBookingRequestPresenter: BookingRequestPresenter {
     func screenHasFadedOut() {
         callback(ScreenResult.cancelled(byUser: true))
     }
-
-    func setPaymentDetails() {}
     
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
