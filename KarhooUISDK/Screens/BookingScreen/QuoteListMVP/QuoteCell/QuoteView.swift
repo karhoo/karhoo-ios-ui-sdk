@@ -29,7 +29,7 @@ class QuoteView: UIView {
     private var pickUpType: RoundedLabel!
     private var pickUpTypeContainer: UIView!
     private var vehicleCapacityView: VehicleCapacityView!
-    private var capacityContainer: UIView!
+    private var capacityAndPickupTypeContainer: UIStackView!
     
     private var priceDetailsStack: UIStackView!
     private var eta: UILabel!
@@ -58,11 +58,6 @@ class QuoteView: UIView {
         self.setUpView()
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        pickUpType.cornerRadious = true
-    }
-    
     private func setUpView() {
         backgroundColor = KarhooUI.colors.white
         translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +75,7 @@ class QuoteView: UIView {
         rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
         rideDetailStackView.accessibilityIdentifier = KHQuoteViewID.rideDetailsContainer
         rideDetailStackView.axis = .vertical
+        rideDetailStackView.alignment = .leading
         rideDetailStackView.spacing = 8.0
         addSubview(rideDetailStackView)
         
@@ -98,29 +94,26 @@ class QuoteView: UIView {
         carType.textColor = KarhooUI.colors.darkGrey
         rideDetailStackView.addArrangedSubview(carType)
         
-        capacityContainer = UIView()
-        capacityContainer.translatesAutoresizingMaskIntoConstraints = false
-        capacityContainer.accessibilityIdentifier = "capacity_container_view"
-        rideDetailStackView.addArrangedSubview(capacityContainer)
-        
-        vehicleCapacityView = VehicleCapacityView()
-        capacityContainer.addSubview(vehicleCapacityView)
-        
-        pickUpTypeContainer = UIView()
-        pickUpTypeContainer.translatesAutoresizingMaskIntoConstraints = false
-        pickUpTypeContainer.accessibilityIdentifier = "pickUpType_container_view"
-        rideDetailStackView.addArrangedSubview(pickUpTypeContainer)
+        capacityAndPickupTypeContainer = UIStackView()
+        capacityAndPickupTypeContainer.translatesAutoresizingMaskIntoConstraints = false
+        capacityAndPickupTypeContainer.accessibilityIdentifier = "capacity_container_view"
+        capacityAndPickupTypeContainer.axis = .horizontal
+        capacityAndPickupTypeContainer.alignment = .leading
+        capacityAndPickupTypeContainer.spacing = 10.0
+        rideDetailStackView.addArrangedSubview(capacityAndPickupTypeContainer)
         
         pickUpType = RoundedLabel()
         pickUpType.textInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         pickUpType.translatesAutoresizingMaskIntoConstraints = false
         pickUpType.accessibilityIdentifier = KHQuoteViewID.pickUpType
-        pickUpType.maskToBounds = true
         pickUpType.textColor = KarhooUI.colors.white
         pickUpType.font = KarhooUI.fonts.captionRegular()
         pickUpType.backgroundColor = KarhooUI.colors.darkGrey
         pickUpType.isHidden = true
-        pickUpTypeContainer.addSubview(pickUpType)
+        
+        vehicleCapacityView = VehicleCapacityView()
+        capacityAndPickupTypeContainer.addArrangedSubview(pickUpType)
+        capacityAndPickupTypeContainer.addArrangedSubview(vehicleCapacityView)
         
         priceDetailsStack = UIStackView()
         priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +154,7 @@ class QuoteView: UIView {
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            _ = [logoLoadingImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0),
+            _ = [logoLoadingImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
                  logoLoadingImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0),
                  logoLoadingImageView.heightAnchor.constraint(equalToConstant: 35.0),
                  logoLoadingImageView.widthAnchor.constraint(equalToConstant: 35.0)].map { $0.isActive = true }
@@ -172,7 +165,7 @@ class QuoteView: UIView {
                  rideDetailStackView.trailingAnchor.constraint(equalTo: priceDetailsStack.leadingAnchor,
                                                                constant: -10.0),
                  rideDetailStackView.bottomAnchor.constraint(equalTo: bottomLine.topAnchor,
-                                                             constant: -20.0)].map { $0.isActive = true }
+                                                             constant: -15.0)].map { $0.isActive = true }
             
             _ = [priceDetailsStack.centerYAnchor.constraint(equalTo: centerYAnchor),
                  priceDetailsStack.trailingAnchor.constraint(equalTo: trailingAnchor,
