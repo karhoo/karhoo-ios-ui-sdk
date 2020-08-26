@@ -20,13 +20,13 @@ public final class KarhooPaymentView: UIView, PaymentView {
     public var baseViewController: BaseViewController?
     var quote: Quote?
     var actions: PaymentViewActions?
-
+    var nonce: String?
     // UI Components
     private var cardIcon: UIImageView!
     private var cardDigits: UILabel!
     private var updateButton: UIButton!
     private var didSetupConstraints: Bool = false
-    private var presenter: CardDetailPresenter?
+    private var presenter: PaymentPresenter?
 
     init() {
         super.init(frame: .zero)
@@ -102,6 +102,7 @@ public final class KarhooPaymentView: UIView, PaymentView {
         cardIcon.image = UIImage.uisdkImage(paymentMethod.nonceType)
         updateButton.setTitle(UITexts.Generic.change, for: .normal)
         actions?.didGetNonce(nonce: paymentMethod.nonce)
+        self.nonce = paymentMethod.nonce
     }
 
     func set(nonce: Nonce) {
@@ -114,7 +115,7 @@ public final class KarhooPaymentView: UIView, PaymentView {
         updateButton.setTitle(UITexts.Generic.add, for: .normal)
     }
 
-    func retryAddPaymentMethod() {
+    func startRegisterCardFlow() {
         presenter?.updateCardPressed(showRetryAlert: true)
     }
 }

@@ -32,7 +32,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     
     var quote: Quote?
     var actions: PaymentViewActions?
-    private var presenter: CardDetailPresenter?
+    private var presenter: PaymentPresenter?
     
     init() {
         super.init(frame: .zero)
@@ -55,9 +55,7 @@ final class KarhooAddCardView: UIView, PaymentView {
             dotBorderLayer.fillColor = nil
             dotBorderLayer.path = UIBezierPath(rect: bounds).cgPath
             layer.addSublayer(dotBorderLayer)
-        } else {
-            dotBorderLayer.removeFromSuperlayer()
-        }
+        } 
     }
     
     private func setUpView() {
@@ -157,7 +155,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         resetViewState()
     }
 
-    func retryAddPaymentMethod() {
+    func startRegisterCardFlow() {
         presenter?.updateCardPressed(showRetryAlert: true)
     }
     

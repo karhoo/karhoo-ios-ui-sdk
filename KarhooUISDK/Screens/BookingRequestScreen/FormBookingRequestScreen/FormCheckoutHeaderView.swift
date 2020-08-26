@@ -8,7 +8,7 @@
 import UIKit
 import KarhooSDK
 
-public struct KHGuestCheckoutHeaderViewID {
+public struct KHFormCheckoutHeaderViewID {
     public static let view = "guest_checkout_header_view"
     public static let logo = "logo_image"
     public static let rideDetailsContainer = "ride_details_stack_view"
@@ -21,7 +21,7 @@ public struct KHGuestCheckoutHeaderViewID {
     public static let carType = "car_type_label"
 }
 
-final class GuestCheckoutHeaderView: UIView {
+final class FormCheckoutHeaderView: UIView {
     
     private var didSetupConstraints: Bool = false
     
@@ -53,10 +53,10 @@ final class GuestCheckoutHeaderView: UIView {
     
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
-        accessibilityIdentifier = KHGuestCheckoutHeaderViewID.view
+        accessibilityIdentifier = KHFormCheckoutHeaderViewID.view
         
         logoLoadingImageView = LoadingImageView()
-        logoLoadingImageView.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.logo
+        logoLoadingImageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
         logoLoadingImageView.layer.cornerRadius = 5.0
         logoLoadingImageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         logoLoadingImageView.layer.borderWidth = 0.5
@@ -65,14 +65,14 @@ final class GuestCheckoutHeaderView: UIView {
         
         rideDetailStackView = UIStackView()
         rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
-        rideDetailStackView.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.rideDetailsContainer
+        rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
         rideDetailStackView.axis = .vertical
         rideDetailStackView.spacing = 8.0
         addSubview(rideDetailStackView)
         
         name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
-        name.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.name
+        name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
         name.textColor = KarhooUI.colors.black
         name.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         name.numberOfLines = 0
@@ -80,7 +80,7 @@ final class GuestCheckoutHeaderView: UIView {
         
         carType = UILabel()
         carType.translatesAutoresizingMaskIntoConstraints = false
-        carType.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.carType
+        carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
         carType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
         rideDetailStackView.addArrangedSubview(carType)
@@ -90,7 +90,7 @@ final class GuestCheckoutHeaderView: UIView {
         
         rideInfoView = UIView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
-        rideInfoView.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.rideInfoView
+        rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
         rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
@@ -98,7 +98,7 @@ final class GuestCheckoutHeaderView: UIView {
         
         etaTitle = UILabel()
         etaTitle.translatesAutoresizingMaskIntoConstraints = false
-        etaTitle.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.etaTitle
+        etaTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
         etaTitle.textColor = KarhooUI.colors.white
         etaTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         etaTitle.text = UITexts.Generic.etaLong.uppercased()
@@ -106,14 +106,14 @@ final class GuestCheckoutHeaderView: UIView {
         
         etaText = UILabel()
         etaText.translatesAutoresizingMaskIntoConstraints = false
-        etaText.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.etaText
+        etaText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
         etaText.textColor = KarhooUI.colors.white
         etaText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
         rideInfoView.addSubview(etaText)
 
         priceTitle = UILabel()
         priceTitle.translatesAutoresizingMaskIntoConstraints = false
-        priceTitle.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.estimatedPrice
+        priceTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.estimatedPrice
         priceTitle.textColor = KarhooUI.colors.white
         priceTitle.textAlignment = .right
         priceTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
@@ -122,7 +122,7 @@ final class GuestCheckoutHeaderView: UIView {
         
         priceText = UILabel()
         priceText.translatesAutoresizingMaskIntoConstraints = false
-        priceText.accessibilityIdentifier = KHGuestCheckoutHeaderViewID.priceText
+        priceText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.priceText
         priceText.textColor = KarhooUI.colors.white
         priceText.textAlignment = .right
         priceText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)

@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-final class KarhooPaymentPresenter: CardDetailPresenter {
+final class KarhooPaymentPresenter: PaymentPresenter {
 
     private let analyticsService: AnalyticsService
     private let userService: UserService

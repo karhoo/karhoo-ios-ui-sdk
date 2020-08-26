@@ -358,16 +358,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertFalse(mockTripService.bookCall.executed)
         XCTAssertTrue(mockFlightScreenBuilder.returnViewController!.dismissCalled)
     }
-        
-    /**
-     * When: The booking screen is shown
-     * And: The user has not inserted a payment card
-     * Then: The card details should be visible
-     */
-    func testCardDetailsNotPresent() {
-        XCTAssertNil(mockView.setPaymentDetails)
-    }
-
+    
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
         testObject.bookTripPressed()

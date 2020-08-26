@@ -63,12 +63,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     func set(quote: Quote) {
         theQuoteSet = quote
     }
-    
-    var setPaymentDetails: Nonce?
-    func setPaymentDetails(nonce: Nonce?) {
-        setPaymentDetails = nonce
-    }
-    
+
     var isBookingRequestViewVisible = false
     func showBookingRequestView(_ show: Bool) {
     

@@ -29,7 +29,12 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
     private var exitButton: UIButton!
     
     private var timePriceView: KarhooTimePriceView!
-    private var cardDetailsView: KarhooPaymentView!
+
+    private lazy var paymentView: PaymentView = {
+        let view = KarhooPaymentView()
+        return view
+    }()
+
     private var termsConditionsView: TermsConditionsView!
     private var separatorLine: LineView!
     private var bookingButton: KarhooBookingButtonView!
@@ -103,9 +108,8 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
         timePriceView.set(actions: self)
         mainStackContainer.addArrangedSubview(timePriceView)
         
-        cardDetailsView = KarhooPaymentView()
-        mainStackContainer.addArrangedSubview(cardDetailsView)
-        cardDetailsView.baseViewController = self
+        mainStackContainer.addArrangedSubview(paymentView)
+        paymentView.baseViewController = self
         
         termsConditionsView = TermsConditionsView()
         mainStackContainer.addArrangedSubview(termsConditionsView)
@@ -248,7 +252,7 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
     }
 
     func retryAddPaymentMethod() {
-        cardDetailsView.retryAddPaymentMethod()
+        paymentView.startRegisterCardFlow()
     }
 
     private func enableUserInteraction() {
@@ -256,7 +260,7 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
         exitButton.tintColor = KarhooUI.colors.secondary
         exitBackgroundButton?.isUserInteractionEnabled = true
         
-        cardDetailsView.isUserInteractionEnabled = true
+        paymentView.isUserInteractionEnabled = true
     }
 
     private func disableUserInteraction() {
@@ -264,7 +268,7 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
         exitButton.tintColor = KarhooUI.colors.medGrey
         exitBackgroundButton?.isUserInteractionEnabled = false
     
-        cardDetailsView.isUserInteractionEnabled = false
+        paymentView.isUserInteractionEnabled = false
     }
 
     final class KarhooBookingRequestScreenBuilder: BookingRequestScreenBuilder {
