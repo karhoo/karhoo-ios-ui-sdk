@@ -1,5 +1,5 @@
 //
-//  GuestBookingRequestViewController.swift
+//  FormBookingRequestViewController.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -8,12 +8,12 @@
 import UIKit
 import KarhooSDK
 
-final class GuestBookingRequestViewController: UIViewController, BookingRequestView {
+final class FormBookingRequestViewController: UIViewController, BookingRequestView {
 
     private var didSetupConstraints = false
     private var container: UIView!
     private var exitButton: UIButton!
-    private var headerView: GuestCheckoutHeaderView!
+    private var headerView: FormCheckoutHeaderView!
     private var passengerDetailsTitle: UILabel!
     private var paymentDetailsTitle: UILabel!
     private var commentsInputText: KarhooTextInputView!
@@ -77,7 +77,7 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         baseStackView.viewSpacing(15.0)
         container.addSubview(baseStackView)
         
-        headerView = GuestCheckoutHeaderView()
+        headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         
         passengerDetailsTitle = UILabel()
@@ -323,14 +323,14 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
         addPaymentView.isUserInteractionEnabled = false
     }
     
-    final class GuestBookingRequestScreenBuilder: BookingRequestScreenBuilder {
+    final class Builder: BookingRequestScreenBuilder {
         func buildBookingRequestScreen(quote: Quote,
                                        bookingDetails: BookingDetails,
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
-            let presenter = GuestBookingRequestPresenter(quote: quote,
-                                                         bookingDetails: bookingDetails,
-                                                         callback: callback)
-            return GuestBookingRequestViewController(presenter: presenter)
+            let presenter = FormBookingRequestPresenter(quote: quote,
+                                                        bookingDetails: bookingDetails,
+                                                        callback: callback)
+            return FormBookingRequestViewController(presenter: presenter)
         }
     }
 
@@ -351,13 +351,13 @@ final class GuestBookingRequestViewController: UIViewController, BookingRequestV
     }
 }
 
-extension GuestBookingRequestViewController: TimePriceViewActions {
+extension FormBookingRequestViewController: TimePriceViewActions {
     func didPressFareExplanation() {
         presenter.didPressFareExplanation()
     }
 }
 
-extension GuestBookingRequestViewController: BookingButtonActions {
+extension FormBookingRequestViewController: BookingButtonActions {
     func requestPressed() {
         presenter.bookTripPressed()
     }
@@ -367,7 +367,7 @@ extension GuestBookingRequestViewController: BookingButtonActions {
     }
 }
 
-extension GuestBookingRequestViewController: PassengerDetailsActions {
+extension FormBookingRequestViewController: PassengerDetailsActions {
 
     func passengerDetailsValid(_ valid: Bool) {
         passengerDetailsValid = valid
@@ -375,7 +375,7 @@ extension GuestBookingRequestViewController: PassengerDetailsActions {
     }
 }
 
-extension GuestBookingRequestViewController: KarhooInputViewDelegate {
+extension FormBookingRequestViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
 		enableBookingButton()
     }
@@ -393,7 +393,7 @@ extension GuestBookingRequestViewController: KarhooInputViewDelegate {
     }
 }
 
-extension GuestBookingRequestViewController: PaymentViewActions {
+extension FormBookingRequestViewController: PaymentViewActions {
     func didGetNonce(nonce: String) {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)

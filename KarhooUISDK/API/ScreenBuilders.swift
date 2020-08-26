@@ -106,7 +106,7 @@ public extension ScreenBuilders {
 
     func bookingRequestBuilder() -> BookingRequestScreenBuilder {
         switch Karhoo.configuration.authenticationMethod() {
-        case .guest(settings: _), .tokenExchange: return GuestBookingRequestViewController.GuestBookingRequestScreenBuilder()
+        case .guest(settings: _), .tokenExchange: return FormBookingRequestViewController.Builder()
         case .karhooUser: return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
         }
     }

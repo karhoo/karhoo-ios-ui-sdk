@@ -1,5 +1,5 @@
 //
-//  GuestBookingRequestPresenter.swift
+//  PassengerFormBookingRequestPresenter.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import KarhooSDK
 
-final class GuestBookingRequestPresenter: BookingRequestPresenter {
+final class FormBookingRequestPresenter: BookingRequestPresenter {
 
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: BookingRequestView?
