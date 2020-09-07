@@ -130,7 +130,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
 
-        testObject = GuestBookingRequestPresenter(quote: testQuote,
+        testObject = FormBookingRequestPresenter(quote: testQuote,
                                                   bookingDetails: mockBookingDetails,
                                                   threeDSecureProvider: mockThreeDSecureProvider,
                                                   tripService: mockTripService,

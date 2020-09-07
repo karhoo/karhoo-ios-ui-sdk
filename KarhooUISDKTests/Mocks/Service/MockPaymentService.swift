@@ -37,4 +37,24 @@ class MockPaymentService: PaymentService {
         paymentSDKTokenPayloadSet = paymentSDKTokenPayload
         return paymentSDKTokenCall
     }
+
+    let paymentProviderCall = MockCall<PaymentProvider>()
+    func getPaymentProvider() -> Call<PaymentProvider> {
+        return paymentProviderCall
+    }
+
+    let adyenPaymentMethods = MockCall<AdyenPaymentMethods>()
+    func getAdyenPaymentMethods() -> Call<AdyenPaymentMethods> {
+        return adyenPaymentMethods
+    }
+
+    let adyenPayment = MockCall<AdyenTransaction>()
+    func getAdyenPayment() -> Call<AdyenTransaction> {
+        return adyenPayment
+    }
+
+    let adyenPaymentDetails = MockCall<AdyenPaymentsDetails>()
+    func getAdyenPaymentDetails(paymentDetails: PaymentsDetailsRequestPayload) -> Call<AdyenPaymentsDetails> {
+        return adyenPaymentDetails
+    }
 }
