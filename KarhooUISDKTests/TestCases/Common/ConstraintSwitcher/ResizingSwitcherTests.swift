@@ -55,8 +55,7 @@ class ResizingSwitcherTests: XCTestCase {
             loadConstraintsTestPassed = self.areCorrectConstraintsLoaded(argumentTuple)
         }
 
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             let isCorrectTag = ResizingSwitcher.ResizeTag.expanded.rawValue == argumentTuple.tag
             let isCorrectAnimationFlag = argumentTuple.animated == true
 
@@ -78,8 +77,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testExpandNonAnimated() {
         var animationCorrect = false
 
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             animationCorrect = argumentTuple.animated == false
         }
 
@@ -104,8 +102,7 @@ class ResizingSwitcherTests: XCTestCase {
             loadConstraintsTestPassed = self.areCorrectConstraintsLoaded(argumentTuple)
         }
 
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             let isCorrectTag = ResizingSwitcher.ResizeTag.contracted.rawValue == argumentTuple.tag
             let isCorrectAnimationFlag = argumentTuple.animated == true
 
@@ -127,8 +124,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testContractNonAnimated() {
         var animationCorrect = false
 
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             animationCorrect = argumentTuple.animated == false
         }
 
@@ -186,8 +182,7 @@ class ResizingSwitcherTests: XCTestCase {
         }
 
         var correctTagSet = false
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             correctTagSet = argumentTuple.tag == ResizingSwitcher.ResizeTag.contracted.rawValue
         }
 
@@ -208,8 +203,7 @@ class ResizingSwitcherTests: XCTestCase {
         }
 
         var correctTagSet = false
-        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {
-            (argumentTuple: ActivateConstraintWithTagArgumentTuple) in
+        self.testTuple?.constraintSwitcher.activateConstraintWithTagClosure = {(argumentTuple: ActivateConstraintWithTagArgumentTuple) in
             correctTagSet = argumentTuple.tag == ResizingSwitcher.ResizeTag.expanded.rawValue
         }
 

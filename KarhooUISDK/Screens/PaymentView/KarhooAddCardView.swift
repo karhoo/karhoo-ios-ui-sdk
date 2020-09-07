@@ -55,7 +55,7 @@ final class KarhooAddCardView: UIView, PaymentView {
             dotBorderLayer.fillColor = nil
             dotBorderLayer.path = UIBezierPath(rect: bounds).cgPath
             layer.addSublayer(dotBorderLayer)
-        } 
+        }
     }
     
     private func setUpView() {

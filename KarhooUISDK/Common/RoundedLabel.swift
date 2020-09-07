@@ -34,37 +34,37 @@ class RoundedLabel: UILabel {
 extension RoundedLabel {
     @IBInspectable
     var left_TextInset: CGFloat {
-        set { textInsets.left = newValue }
         get { return textInsets.left }
+        set { textInsets.left = newValue }
     }
     
     @IBInspectable
     var right_TextInset: CGFloat {
-        set { textInsets.right = newValue }
         get { return textInsets.right }
+        set { textInsets.right = newValue }
     }
     
     @IBInspectable
     var top_TextInset: CGFloat {
-        set { textInsets.top = newValue }
         get { return textInsets.top }
+        set { textInsets.top = newValue }
     }
     
     @IBInspectable
     var bottom_TextInset: CGFloat {
-        set { textInsets.bottom = newValue }
         get { return textInsets.bottom }
+        set { textInsets.bottom = newValue }
     }
     
     @IBInspectable
     var cornerRadious: Bool {
-        set { layer.cornerRadius = newValue ? min(frame.size.width, frame.size.height) / 2 : 0}
         get { return layer.cornerRadius != 0 }
+        set { layer.cornerRadius = newValue ? min(frame.size.width, frame.size.height) / 2 : 0}
     }
     
     @IBInspectable
     var maskToBounds: Bool {
-        set { layer.masksToBounds = newValue }
         get { return layer.masksToBounds }
+        set { layer.masksToBounds = newValue }
     }
 }

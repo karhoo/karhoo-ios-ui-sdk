@@ -4213,7 +4213,6 @@
 			baseConfigurationReference = 48C826A36A512C224BE6FF04 /* Pods-KarhooUISDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				INFOPLIST_FILE = KarhooUISDKTests/Info.plist;
@@ -4235,7 +4234,6 @@
 			baseConfigurationReference = CF782E66244B40C9C2E9B178 /* Pods-KarhooUISDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				INFOPLIST_FILE = KarhooUISDKTests/Info.plist;

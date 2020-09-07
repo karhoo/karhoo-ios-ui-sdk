@@ -27,11 +27,12 @@ public class BaseSelectionView: UIView {
     public weak var delegate: BaseSelectionViewDelegate?
 
     @IBInspectable var typeAdapter: String {
+        get { return self.viewType.rawValue }
+        
         set {
             viewType = BaseSelectionViewType(rawValue: newValue) ?? .none
             updateViewType()
         }
-        get { return self.viewType.rawValue }
      }
     
     init(type: BaseSelectionViewType, identifier: String = "") {
