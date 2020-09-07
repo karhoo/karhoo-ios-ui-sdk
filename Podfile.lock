@@ -1,23 +1,23 @@
 PODS:
-  - Braintree/Card (4.34.0):
+  - Braintree/Card (4.35.0):
     - Braintree/Core
-  - Braintree/Core (4.34.0)
-  - Braintree/PaymentFlow (4.34.0):
+  - Braintree/Core (4.35.0)
+  - Braintree/PaymentFlow (4.35.0):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.34.0):
+  - Braintree/PayPal (4.35.0):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.34.0):
+  - Braintree/PayPalDataCollector (4.35.0):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.34.0):
+  - Braintree/PayPalOneTouch (4.35.0):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.34.0)
-  - Braintree/UnionPay (4.34.0):
+  - Braintree/PayPalUtils (4.35.0)
+  - Braintree/UnionPay (4.35.0):
     - Braintree/Card
     - Braintree/Core
   - BraintreeDropIn (8.1.1):
@@ -48,7 +48,7 @@ PODS:
   - PhoneNumberKit/UIKit (2.1.0):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.39.2)
+  - SwiftLint (0.40.1)
 
 DEPENDENCIES:
   - Braintree/PaymentFlow
@@ -78,19 +78,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 8bd9e3a71cebd000084006e19832069b49987b41
+    :commit: 37e6d66200819d754c6d502e4e473520ccf14c34
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
-  Braintree: 48154e70306eb3e6c81eaa87bbc5c5988c0d2784
+  Braintree: 7ff6755ba50506e403dc03779ae68c5ccf6b9808
   BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
   FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
-  KarhooSDK: 19335b8016480ec70a45a2e8735717945177ac8d
+  KarhooSDK: 49b14317cf5851e70f99b05d1a4e85261452a8bb
   KarhooUISDK: 0c4b864fbd47b5f37944cc9d4691098d7b910fa4
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
 
 PODFILE CHECKSUM: fb108cf1124ccec43a0e9702326412c35ced71c0
 

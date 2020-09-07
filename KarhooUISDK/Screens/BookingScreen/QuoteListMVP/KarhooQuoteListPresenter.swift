@@ -156,7 +156,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                 self?.quoteSearchErrorResult(error)
             }
         }
-        quoteSearchObservable = quoteService.quotesV2(quoteSearch: quoteSearch).observable()
+        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
         quoteSearchObservable?.subscribe(observer: quotesObserver)
     }
 }

@@ -11,7 +11,7 @@ import KarhooSDK
 
 class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
-    private var testObject: GuestBookingRequestPresenter!
+    private var testObject: FormBookingRequestPresenter!
     private var mockView: MockBookingRequestView = MockBookingRequestView()
     private var testQuote: Quote = TestUtil.getRandomQuote(highPrice: 10)
     private var testCallbackResult: ScreenResult<TripInfo>?

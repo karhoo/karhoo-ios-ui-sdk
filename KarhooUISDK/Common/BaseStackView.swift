@@ -16,15 +16,15 @@ class BaseStackView: UIView {
     private var viewList = [String]()
     private var keyboardListener: KeyboardSizeProviderProtocol = KeyboardSizeProvider()
     public var isScrollEnabled: Bool {
-        set {
-            if newValue != scrollView.isScrollEnabled {
-                didSetupConstraints = false
-                setNeedsUpdateConstraints()
-            }
-            scrollView.isScrollEnabled = newValue
-        }
         get {
-            return scrollView.isScrollEnabled
+        return scrollView.isScrollEnabled
+        }
+        set {
+        if newValue != scrollView.isScrollEnabled {
+            didSetupConstraints = false
+            setNeedsUpdateConstraints()
+        }
+        scrollView.isScrollEnabled = newValue
         }
     }
     
