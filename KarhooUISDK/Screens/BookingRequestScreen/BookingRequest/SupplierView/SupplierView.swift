@@ -51,6 +51,8 @@ final class SupplierView: UIView {
         supplierName.accessibilityIdentifier = KHSupplierViewID.supplierName
         supplierName.textColor = KarhooUI.colors.darkGrey
         supplierName.font = KarhooUI.fonts.headerRegular()
+        supplierName.numberOfLines = 2
+        supplierName.lineBreakMode = .byWordWrapping
         addSubview(supplierName)
         
         vehicleType = UILabel()
@@ -74,8 +76,8 @@ final class SupplierView: UIView {
         
         _ = [supplierName.leadingAnchor.constraint(equalTo: supplierImage.trailingAnchor, constant: 17.0),
              supplierName.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
-             supplierName.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor,
-                                                    constant: -17.0)].map { $0.isActive = true }
+             supplierName.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                    constant: 0)].map { $0.isActive = true }
         
         _ = [vehicleType.leadingAnchor.constraint(equalTo: supplierName.leadingAnchor),
              vehicleType.topAnchor.constraint(equalTo: supplierName.bottomAnchor, constant: 3.0),
