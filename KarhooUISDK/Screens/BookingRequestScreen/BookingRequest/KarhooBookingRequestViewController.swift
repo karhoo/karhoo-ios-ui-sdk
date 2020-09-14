@@ -134,7 +134,6 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
                  view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)].map { $0.isActive = true }
             
             _ = [exitBackgroundButton.topAnchor.constraint(equalTo: view.topAnchor),
-                 exitBackgroundButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                  exitBackgroundButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                  exitBackgroundButton.bottomAnchor.constraint(equalTo: container.topAnchor)].map { $0.isActive = true }
             
@@ -148,7 +147,8 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
             containerBottomConstraint.isActive = true
             
             _ = [supplierView.topAnchor.constraint(equalTo: supplierStackContainer.topAnchor),
-                 supplierView.bottomAnchor.constraint(equalTo: supplierStackContainer.bottomAnchor)]
+                 supplierView.bottomAnchor.constraint(equalTo: supplierStackContainer.bottomAnchor),
+                 supplierView.trailingAnchor.constraint(equalTo: exitButton.leadingAnchor, constant: 10)]
                 .map { $0.isActive = true }
             
             _ = [exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
