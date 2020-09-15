@@ -20,7 +20,7 @@ def uisdkPods
   pod 'Adyen'
   pod 'PhoneNumberKit', '2.1.0'
   # pod 'KarhooSDK', '1.1.1'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'patch'
 
 end
 
