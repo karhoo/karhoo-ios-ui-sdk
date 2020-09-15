@@ -40,7 +40,3 @@ target 'KarhooUISDK' do
     end
 
 end
-
-
-
-

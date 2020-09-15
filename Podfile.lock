@@ -61,7 +61,7 @@ PODS:
   - PhoneNumberKit/UIKit (2.1.0):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.40.1)
+  - SwiftLint (0.40.2)
 
 DEPENDENCIES:
   - Adyen
@@ -94,7 +94,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 37e6d66200819d754c6d502e4e473520ccf14c34
+    :commit: 354bd6aeb227e080ddddfe07d48630ed43da75f6
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
@@ -108,8 +108,8 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
+  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: e031a0256915b8fd9b6ce98a6e08b1e76aa2ec63
+PODFILE CHECKSUM: 65af6251275337c4c95309dcaa7280a166c23f30
 
 COCOAPODS: 1.9.1
