@@ -35,13 +35,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             self?.baseViewController?.showLoadingOverlay(false)
             switch result {
             case .success(let result):
-                self?.startDropIn(data: result.data)
+                self?.startDropIn(data: result.data, currency: cardCurrency)
             case .failure(let error): callback(.completed(value: .didFailWithError(error)))
             }
         })
     }
 
-    private func startDropIn(data: Data) {
+    private func startDropIn(data: Data, currency: String) {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
         let configuration = DropInComponent.PaymentMethodsConfiguration()
         configuration.card.publicKey = "..."
@@ -57,7 +57,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         dropInComponent.environment = .test
 
         dropInComponent.payment = Payment(amount: Payment.Amount(value: 0,
-                                                                 currencyCode: "EUR"))
+                                                                 currencyCode: currency))
 
         baseViewController?.present(dropInComponent.viewController, animated: true)
     }
