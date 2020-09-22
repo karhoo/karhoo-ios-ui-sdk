@@ -9,19 +9,6 @@
 import Foundation
 import KarhooSDK
 
-public protocol CardRegistrationFlow {
-    func setBaseView(_ baseViewController: BaseViewController?)
-    func start(cardCurrency: String,
-               showUpdateCardAlert: Bool,
-               callback: @escaping (OperationResult<CardFlowResult>) -> Void)
-}
-
-public enum CardFlowResult {
-    case didAddPaymentMethod(method: PaymentMethod)
-    case didFailWithError(_ error: KarhooError?)
-    case cancelledByUser
-}
-
 public final class KarhooCardRegistrationFlow: CardRegistrationFlow {
 
     private let paymentScreenBuilder: PaymentScreenBuilder
