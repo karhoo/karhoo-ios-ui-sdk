@@ -14,18 +14,18 @@ final class KarhooPaymentPresenter: PaymentPresenter {
     private let analyticsService: AnalyticsService
     private let userService: UserService
     private let view: PaymentView
-    private let cardRegistrationFlow: CardRegistrationFlow
+    private var cardRegistrationFlow: CardRegistrationFlow
 
      init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
           userService: UserService = Karhoo.getUserService(),
-          cardRegistrationFlow: CardRegistrationFlow = KarhooCardRegistrationFlow(),
+          cardRegistrationFlow: CardRegistrationFlow = CardRegistrationFlowProvider().getCardFlow(),
           view: PaymentView = KarhooPaymentView()) {
         self.analyticsService = analyticsService
         self.userService = userService
         self.view = view
         self.cardRegistrationFlow = cardRegistrationFlow
         self.userService.add(observer: self)
-
+        self.cardRegistrationFlow = cardRegistrationFlow
         displayAvailablePaymentMethod()
     }
 

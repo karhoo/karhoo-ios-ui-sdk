@@ -20,19 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         let mainView = ViewController()
+        mainView.view.backgroundColor = .red
         window?.rootViewController = mainView
         window?.makeKeyAndVisible()
         return true
     }
 }
 
-class KarhooConfig: KarhooUISDKConfiguration {
-
-    func environment() -> KarhooEnvironment {
-        return .sandbox
-    }
-
-    func authenticationMethod() -> AuthenticationMethod {
-        return .guest(settings: guestSettings)
-    }
-}

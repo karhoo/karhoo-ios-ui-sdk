@@ -35,16 +35,30 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             self?.baseViewController?.showLoadingOverlay(false)
             switch result {
             case .success(let result):
-                self?.startDropIn(data: result.data, currency: cardCurrency)
-            case .failure(let error): callback(.completed(value: .didFailWithError(error)))
+                self?.getAdyenKey(dropInData: result.data, currency: cardCurrency)
+            case .failure(let error):
+                self?.finish(result: .completed(value: .didFailWithError(error)))
             }
         })
     }
 
-    private func startDropIn(data: Data, currency: String) {
+    private func getAdyenKey(dropInData: Data, currency: String) {
+        paymentService.getAdyenPublicKey().execute(callback: { [weak self] result in
+            switch result {
+            case .success(let result):
+                self?.startDropIn(data: dropInData,
+                                  currency: currency,
+                                  adyenKey: result.key)
+            case .failure(let error):
+                self?.finish(result: .completed(value: .didFailWithError(error)))
+            }
+        })
+    }
+
+    private func startDropIn(data: Data, currency: String, adyenKey: String) {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
         let configuration = DropInComponent.PaymentMethodsConfiguration()
-        configuration.card.publicKey = "..."
+        configuration.card.publicKey = adyenKey
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
