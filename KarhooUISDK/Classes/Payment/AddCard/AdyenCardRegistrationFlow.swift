@@ -16,6 +16,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private weak var baseViewController: BaseViewController?
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
     private let paymentService: PaymentService
+    private var adyenDropIn: DropInComponent?
 
     init(paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.paymentService = paymentService
@@ -65,31 +66,35 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             return
         }
 
-        let dropInComponent = DropInComponent(paymentMethods: methods,
-                                              paymentMethodsConfiguration: configuration)
-        dropInComponent.delegate = self
-        dropInComponent.environment = .test
+        adyenDropIn = DropInComponent(paymentMethods: methods,
+                                      paymentMethodsConfiguration: configuration)
+        adyenDropIn?.delegate = self
+        adyenDropIn?.environment = .test
 
-        dropInComponent.payment = Payment(amount: Payment.Amount(value: 0,
+        adyenDropIn?.payment = Payment(amount: Payment.Amount(value: 0,
                                                                  currencyCode: currency))
-
-        baseViewController?.present(dropInComponent.viewController, animated: true)
+        if let dropIn = adyenDropIn?.viewController {
+            baseViewController?.present(dropIn, animated: true)
+        }
     }
 
     private func finish(result: OperationResult<CardFlowResult>) {
-
+        self.callback?(result)
     }
 }
 
 extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
     func didSubmit(_ data: PaymentComponentData, from component: DropInComponent) {
+        print("adyen didSubmit ", data, component)
     }
 
     func didProvide(_ data: ActionComponentData, from component: DropInComponent) {
+        print("adyen didProvide", data, component)
     }
 
     func didFail(with error: Error, from component: DropInComponent) {
+        print("didFail", error, component)
+        adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
     }
-
 }
