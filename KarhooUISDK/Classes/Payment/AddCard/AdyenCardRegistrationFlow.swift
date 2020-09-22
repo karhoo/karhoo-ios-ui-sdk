@@ -10,7 +10,6 @@ import Foundation
 import Adyen
 import KarhooSDK
 
-//TODO: verify if we can register a card without invoking a payment
 final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
     private weak var baseViewController: BaseViewController?
@@ -70,9 +69,8 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                                       paymentMethodsConfiguration: configuration)
         adyenDropIn?.delegate = self
         adyenDropIn?.environment = .test
-
         adyenDropIn?.payment = Payment(amount: Payment.Amount(value: 0,
-                                                                 currencyCode: currency))
+                                                              currencyCode: currency))
         if let dropIn = adyenDropIn?.viewController {
             baseViewController?.present(dropIn, animated: true)
         }
@@ -87,10 +85,12 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
     func didSubmit(_ data: PaymentComponentData, from component: DropInComponent) {
         print("adyen didSubmit ", data, component)
+        // forward data to /payments
     }
 
     func didProvide(_ data: ActionComponentData, from component: DropInComponent) {
         print("adyen didProvide", data, component)
+        // forward to /payment-details
     }
 
     func didFail(with error: Error, from component: DropInComponent) {

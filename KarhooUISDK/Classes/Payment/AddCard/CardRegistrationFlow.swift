@@ -22,7 +22,7 @@ public enum CardFlowResult {
     case cancelledByUser
 }
 
-struct CardRegistrationFlowProvider {
+final class CardRegistrationFlowProvider {
 
     private let userService: UserService
 

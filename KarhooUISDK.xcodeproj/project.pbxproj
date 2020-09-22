@@ -494,7 +494,6 @@
 		FC83E30B221F1839008FE26D /* MockTripScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */; };
 		FC83E30D221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30C221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift */; };
 		FC8CDD3D2208956E001F201B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 090F08E821C94BB6000C7E50 /* Localizable.strings */; };
-		FC8F471E21539E24007841FB /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; };
 		FC8F472521539E24007841FB /* KarhooUISDK.h in Headers */ = {isa = PBXBuildFile; fileRef = FC8F471721539E24007841FB /* KarhooUISDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F47382153DBDE007841FB /* KarhooUI.swift */; };
 		FC8F474D2153E770007841FB /* Bundle+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F474C2153E770007841FB /* Bundle+Utils.swift */; };
@@ -1073,7 +1072,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC8F471E21539E24007841FB /* KarhooUISDK.framework in Frameworks */,
 				134BF3205F6D0BAAE1AF641F /* Pods_KarhooUISDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3251,7 +3249,6 @@
 					FC8F471C21539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
-						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 				};
 			};
@@ -4234,11 +4231,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/Client";
 			};
 			name = Debug;
 		};
@@ -4255,11 +4252,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/Client";
 			};
 			name = Release;
 		};
