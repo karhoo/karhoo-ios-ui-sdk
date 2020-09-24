@@ -54,6 +54,7 @@ final class KarhooNavigationBarView: UIView, NavigationBarView {
         leftButton.accessibilityIdentifier = KHNavigationBarID.leftButton
         leftButton.tintColor = KarhooUI.colors.secondary
         leftButton.imageView?.contentMode = .scaleAspectFit
+        leftButton.touchAreaEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         leftButton.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)
         addSubview(leftButton)
         
@@ -87,8 +88,10 @@ final class KarhooNavigationBarView: UIView, NavigationBarView {
         case .menuIcon:
             leftImage = UIImage.uisdkImage("menu").withRenderingMode(.alwaysTemplate)
             
+            
         case .exitIcon:
             leftImage = UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate)
+            leftButton.contentEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         }
         
         leftButton.setImage(leftImage, for: .normal)
