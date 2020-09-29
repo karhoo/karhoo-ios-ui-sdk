@@ -43,7 +43,6 @@ final class TableDataSource<T>: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        
         cell.contentView.isUserInteractionEnabled = false
 
         if let item = tableData.getItem(indexPath: indexPath) {
