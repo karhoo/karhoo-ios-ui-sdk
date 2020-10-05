@@ -84,36 +84,35 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
     func didSubmit(_ data: PaymentComponentData, from component: DropInComponent) {
-        print("adyen didSubmit ", data, component)
-
         let encoder = JSONEncoder()
         do {
             let jsonData = try encoder.encode(data.paymentMethod.encodable)
-            guard var payload = convertToDictionary(data: jsonData) else {
-                throw UISDKErrorFactory.unexpectedError()
+            guard let adyenData = convertToDictionary(data: jsonData) else {
+                return
             }
-
-            submitPayments(payload: &payload)
+            submitPayments(dropInJson: adyenData)
         } catch let error {
             adyenDropIn?.stopLoading()
             didFail(with: error, from: component)
         }
     }
 
-    private func convertToDictionary(data: Data) -> [String: String]? {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
-            } catch {
-                print(error.localizedDescription)
-            }
+    private func convertToDictionary(data: Data) -> [String: Any]? {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
 
         return ["":""]
     }
 
-    private func submitPayments( payload: inout [String: String]) {
-        payload["channel"] = "iOS"
+    private func submitPayments(dropInJson: [String: Any]) {
+        var adyenPayload = AdyenDropInPayload()
+        adyenPayload.paymentMethod = dropInJson
+        adyenPayload.amount = AdyenAmount(currency: "GBP", value: 0)
 
-        let request = AdyenPaymentsRequest(paymentsPayload: payload, returnUrlSuffix: "")
+        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, returnUrlSuffix: "")
         paymentService.adyenPayments(request: request).execute { result in
             switch result {
             case .success(let result): print(result)
@@ -121,9 +120,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             }
         }
 
-        func handle(_ data: Data) {
-            adyenDropIn?.handle(Acti)
-        }
+        func handle(_ data: Data) {}
     }
 
     func didProvide(_ data: ActionComponentData, from component: DropInComponent) {
