@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc          = true
 
   s.dependency    'KarhooSDK'
-  s.dependency 	  'FloatingPanel'
+  s.dependency 	  'FloatingPanel', '1.7.6'
   s.dependency    'BraintreeDropIn'
   s.dependency    'Braintree/PaymentFlow'
   s.dependency    'PhoneNumberKit'
