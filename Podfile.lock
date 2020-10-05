@@ -50,7 +50,7 @@ PODS:
     - Adyen
     - Braintree/PaymentFlow
     - BraintreeDropIn
-    - FloatingPanel
+    - FloatingPanel (= 1.7.6)
     - KarhooSDK
     - PhoneNumberKit
   - KeychainSwift (12.0.0)
@@ -67,7 +67,7 @@ DEPENDENCIES:
   - Adyen
   - Braintree/PaymentFlow
   - BraintreeDropIn
-  - FloatingPanel
+  - FloatingPanel (= 1.7.6)
   - KarhooSDK
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 2.1.0)
@@ -97,12 +97,12 @@ SPEC CHECKSUMS:
   BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
   FloatingPanel: 9016eac88f21ca9fce53f5709e1f49485c0c355e
   KarhooSDK: d536de981e74aa976848e60f5f64dca245e291ea
-  KarhooUISDK: f9c6c4744fa384a184bd08896ead2c9979e93e23
+  KarhooUISDK: 22167e1e36e0fc0db3041b228e68e4d925009c11
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: d49b378de6fbe78cd45b9509b8abb6db4a5fbf69
+PODFILE CHECKSUM: 2ba4e365f8c64bd5ad35bb452f15a10ccd422b26
 
 COCOAPODS: 1.9.3
