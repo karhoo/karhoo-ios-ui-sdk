@@ -34,7 +34,15 @@ final class CardRegistrationFlowProvider {
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
             return AdyenCardRegistrationFlow()
         } else {
-            return KarhooCardRegistrationFlow()
+            return BraintreeCardRegistrationFlow()
         }
+    }
+
+    func nonceProvider() -> PaymentNonceProvider {
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+            return AdyenPaymentNonceProvider()
+        }
+
+        return BraintreePaymentNonceProvider()
     }
 }
