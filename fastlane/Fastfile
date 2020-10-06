@@ -1,0 +1,78 @@
+FASTLANE_HIDE_CHANGELOG = true
+FASTLANE_SKIP_UPDATE_CHECK = true
+fastlane_require 'dotenv'
+
+
+default_platform(:ios)
+
+
+platform :ios do
+  before_all do
+    ENV["SLACK_URL"] = ENV["SLACK_WEBHOOK_URL"]
+    setup_circle_ci
+end
+
+ desc "Danger PR Validation"
+  lane :DangerPRValidation do
+    danger(
+      danger_id: "PR_VALIDATION",
+      dangerfile: "./DangerfilePRMetaValidation"
+     )
+ end
+
+ desc "Danger publish test results"
+  lane :iosDangerPostCI do
+    danger(
+      danger_id: "POST_CI",
+     )
+ end
+
+
+  desc "Description of what the lane does"
+  lane :UISDK_unit_tests do
+	scan(
+	    workspace: "KarhooUISDK.xcworkspace",
+	    scheme: "KarhooUISDKTests",
+	    device: "iPhone 11",
+            deployment_target_version: "14.0",
+	    code_coverage: true,
+	    clean: true,
+	    output_types: "junit",
+            output_files: "UISDKTests.xml"
+    )
+  end
+
+  desc "Xcov Report"
+  lane :XcovReport do
+    xcov(
+      workspace: "KarhooUISDK.xcworkspace",
+      scheme: "KarhooUISDKTests",
+      output_directory: "fastlane/test_output",
+      ignore_file_path: "./*view.swift",
+      slack_message: "KarhooUISDK test coverage report:"
+    )
+  end
+
+################
+# Success/Error:
+################
+
+after_all do |lane|
+  # This block is called, only if the executed lane was successful
+    slack(
+      channel: "#mobile_circleci_results",
+      message: nil,
+      default_payloads: [:test_result, :git_branch]
+    )
+    clean_build_artifacts
+ end
+
+error do |lane, exception|
+    slack(
+      channel: "#mobile_circleci_results",
+      message: exception.to_s,
+      success: false
+    )
+  end
+
+end
