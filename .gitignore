@@ -72,7 +72,8 @@ Dependencies/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
-fastlane/test_output			
+fastlane/test_output
+fastlane/.env
 
 # access keys
 Client/Keys.swift
