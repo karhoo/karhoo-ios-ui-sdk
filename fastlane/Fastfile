@@ -43,7 +43,7 @@ end
   end
 
   desc "Xcov Report"
-  lane:XcovReport do
+  lane :XcovReport do
     xcov(
       workspace: "KarhooUISDK.xcworkspace",
       scheme: "KarhooUISDK",
