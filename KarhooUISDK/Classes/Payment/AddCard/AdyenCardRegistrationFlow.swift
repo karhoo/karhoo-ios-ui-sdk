@@ -16,6 +16,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
     private let paymentService: PaymentService
     private var adyenDropIn: DropInComponent?
+    private var transactionId: String = ""
 
     init(paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.paymentService = paymentService
@@ -69,7 +70,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                                       paymentMethodsConfiguration: configuration)
         adyenDropIn?.delegate = self
         adyenDropIn?.environment = .test
-        adyenDropIn?.payment = Payment(amount: Payment.Amount(value: 0,
+        adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
                                                               currencyCode: currency))
         if let dropIn = adyenDropIn?.viewController {
             baseViewController?.present(dropIn, animated: true)
@@ -110,7 +111,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
     private func submitPayments(dropInJson: [String: Any]) {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
-        adyenPayload.amount = AdyenAmount(currency: "GBP", value: 0)
+        adyenPayload.amount = AdyenAmount(currency: "GBP", value: self.amount)
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, returnUrlSuffix: "")
         paymentService.adyenPayments(request: request).execute { result in
@@ -119,14 +120,15 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             case .failure(let error): print("/payments error", error)
             }
         }
-
-        func handle(_ data: Data) {}
     }
 
     func didProvide(_ data: ActionComponentData, from component: DropInComponent) {
         print("adyen didProvide", data, component)
-        // forward to /payment-details
+        let request = PaymentsDetailsRequestPayload(transactionID: self.transactionId, paymentsPayload: DecodableData(data: Data()))
 
+        paymentService.getAdyenPaymentDetails(paymentDetails:  request).execute(callback: { result in
+            print("payment details response ", result)
+        })
     }
 
     func didFail(with error: Error, from component: DropInComponent) {
@@ -134,4 +136,3 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
     }
 }
-

@@ -14,35 +14,20 @@ public protocol CardRegistrationFlow {
     func start(cardCurrency: String,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void)
+    var amount: Int { get set }
+}
+
+public extension CardRegistrationFlow {
+    var amount: Int {
+        get {
+            return 0
+        }
+        set {}
+    }
 }
 
 public enum CardFlowResult {
     case didAddPaymentMethod(method: PaymentMethod)
     case didFailWithError(_ error: KarhooError?)
     case cancelledByUser
-}
-
-final class CardRegistrationFlowProvider {
-
-    private let userService: UserService
-
-    init(userService: UserService = Karhoo.getUserService()) {
-        self.userService = userService
-    }
-
-    func getCardFlow() -> CardRegistrationFlow {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenCardRegistrationFlow()
-        } else {
-            return BraintreeCardRegistrationFlow()
-        }
-    }
-
-    func nonceProvider() -> PaymentNonceProvider {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenPaymentNonceProvider()
-        }
-
-        return BraintreePaymentNonceProvider()
-    }
 }
