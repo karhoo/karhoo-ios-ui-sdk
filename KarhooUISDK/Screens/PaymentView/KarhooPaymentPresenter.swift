@@ -20,12 +20,11 @@ final class KarhooPaymentPresenter: PaymentPresenter {
           userService: UserService = Karhoo.getUserService(),
           cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
           view: PaymentView = KarhooPaymentView()) {
+        self.cardRegistrationFlow = cardRegistrationFlow
         self.analyticsService = analyticsService
         self.userService = userService
         self.view = view
-        self.cardRegistrationFlow = cardRegistrationFlow
         self.userService.add(observer: self)
-        self.cardRegistrationFlow = cardRegistrationFlow
         displayAvailablePaymentMethod()
     }
 
@@ -34,7 +33,9 @@ final class KarhooPaymentPresenter: PaymentPresenter {
         analyticsService.send(eventName: .changePaymentDetailsPressed, payload: [String: Any]())
 
         let currencyCode = view.quote?.price.currencyCode ?? "GBP"
-        cardRegistrationFlow.start(cardCurrency: currencyCode,
+        let amount = view.quote?.price.intHighPrice ?? 0
+
+        cardRegistrationFlow.start(cardCurrency: currencyCode, amount: amount,
                                    showUpdateCardAlert: showRetryAlert,
                                    callback: { [weak self] result in
                                     guard let cardFlowResult = result.completedValue() else {

@@ -24,9 +24,10 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
 
         cardFlow.start(cardCurrency: quote.price.currencyCode,
+                       amount: quote.price.intHighPrice,
                        showUpdateCardAlert: false,
                        callback: { result in
-                        print("ADYEN")
+                        print("card result: ", result)
                        })
     }
 

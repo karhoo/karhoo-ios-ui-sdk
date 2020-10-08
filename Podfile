@@ -12,15 +12,15 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def uisdkPods
-  pod 'FloatingPanel'
+  pod 'FloatingPanel', '1.7.6'
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
-  pod 'Adyen'
+  pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '2.1.0'
- # pod 'KarhooSDK'
- #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  #pod 'KarhooSDK'
+  #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-2792-quoteIntPrice'
 
 end
 
@@ -38,5 +38,4 @@ target 'KarhooUISDK' do
       inherit! :search_paths
       uisdkPods
     end
-
 end

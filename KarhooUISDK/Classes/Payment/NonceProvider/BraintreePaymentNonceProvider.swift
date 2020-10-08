@@ -74,6 +74,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
     private func triggerAddCardFlow(currencyCode: String) {
         self.cardRegistrationFlow.start(cardCurrency: currencyCode,
+                                        amount: 0,
                                         showUpdateCardAlert: true,
                                         callback: { [weak self] result in
             switch result {

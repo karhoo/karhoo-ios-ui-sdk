@@ -21,6 +21,6 @@ protocol PaymentView: BaseView {
     func noPaymentMethod()
     func startRegisterCardFlow()
     var baseViewController: BaseViewController? { get set }
-    var quote: Quote? { get }
+    var quote: Quote? { get set }
     var actions: PaymentViewActions? { get }
 }

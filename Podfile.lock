@@ -11,25 +11,25 @@ PODS:
     - Adyen/Card
     - Adyen/Core
   - Adyen3DS2 (2.2.0)
-  - Braintree/Card (4.35.0):
+  - Braintree/Card (4.36.0):
     - Braintree/Core
-  - Braintree/Core (4.35.0)
-  - Braintree/PaymentFlow (4.35.0):
+  - Braintree/Core (4.36.0)
+  - Braintree/PaymentFlow (4.36.0):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.35.0):
+  - Braintree/PayPal (4.36.0):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.35.0):
+  - Braintree/PayPalDataCollector (4.36.0):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.35.0):
+  - Braintree/PayPalOneTouch (4.36.0):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.35.0)
-  - Braintree/UnionPay (4.35.0):
+  - Braintree/PayPalUtils (4.36.0)
+  - Braintree/UnionPay (4.36.0):
     - Braintree/Card
     - Braintree/Core
   - BraintreeDropIn (8.1.1):
@@ -61,14 +61,14 @@ PODS:
   - PhoneNumberKit/UIKit (2.1.0):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.40.2)
+  - SwiftLint (0.40.3)
 
 DEPENDENCIES:
-  - Adyen
+  - Adyen (= 3.6.0)
   - Braintree/PaymentFlow
   - BraintreeDropIn
-  - FloatingPanel
-  - KarhooSDK (from `../karhoo-ios-sdk`)
+  - FloatingPanel (= 1.7.6)
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `MOB-2792-quoteIntPrice`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 2.1.0)
   - SwiftLint
@@ -87,14 +87,20 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :path: "../karhoo-ios-sdk"
+    :branch: MOB-2792-quoteIntPrice
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: 4f3ac3a3134debce1174b41cedc708b00dead12a
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
   Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
   Adyen3DS2: 075c85aa3469d60c0ea7ba62b1f6137bec4b1088
-  Braintree: 7ff6755ba50506e403dc03779ae68c5ccf6b9808
+  Braintree: dadfa168eb8541fa522b347662fb3d05b2ea4141
   BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
   FloatingPanel: 9016eac88f21ca9fce53f5709e1f49485c0c355e
   KarhooSDK: dcccd5e7a6a22949f38a2cb0ca5db83271bf28fb
@@ -102,8 +108,8 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 21d09f5775167ed1ad37b43c92841ca89eeaca73
+PODFILE CHECKSUM: 893a8b903e246b5d016fe5401f9c08b60d40deba
 
 COCOAPODS: 1.9.3

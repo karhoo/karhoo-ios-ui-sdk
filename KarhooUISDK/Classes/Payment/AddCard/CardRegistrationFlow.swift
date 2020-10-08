@@ -12,18 +12,9 @@ import KarhooSDK
 public protocol CardRegistrationFlow {
     func setBaseView(_ baseViewController: BaseViewController?)
     func start(cardCurrency: String,
+               amount: Int,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void)
-    var amount: Int { get set }
-}
-
-public extension CardRegistrationFlow {
-    var amount: Int {
-        get {
-            return 0
-        }
-        set {}
-    }
 }
 
 public enum CardFlowResult {
