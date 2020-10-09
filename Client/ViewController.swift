@@ -13,6 +13,8 @@ import KarhooUISDK
 
 class ViewController: UIViewController {
 
+    private var booking: BookingScreen?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,11 +39,21 @@ class ViewController: UIViewController {
                                                })
 
         func showKarhoo() {
-            let booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil, passengerDetails: nil, callback: { result in
+             booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
+                                                                         passengerDetails: nil,
+                                                                         callback: { [weak self] result in
                 print("booking screen result: \(result)")
-            })
+                switch result {
+                case .completed(let result):
+                    switch result {
+                    case .tripAllocated(let trip): self?.booking?.openTrip(trip)
+                    default: break
+                    }
+                default: break
+                }
+             }) as? BookingScreen
 
-            self.present(booking,
+            self.present(booking!,
                          animated: true,
                          completion: nil)
         }

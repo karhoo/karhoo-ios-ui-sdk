@@ -256,6 +256,10 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
         paymentView.startRegisterCardFlow()
     }
 
+    func paymentView(hidden: Bool) {
+        paymentView.isHidden = hidden
+    }
+
     private func enableUserInteraction() {
         exitButton.isUserInteractionEnabled = true
         exitButton.tintColor = KarhooUI.colors.secondary

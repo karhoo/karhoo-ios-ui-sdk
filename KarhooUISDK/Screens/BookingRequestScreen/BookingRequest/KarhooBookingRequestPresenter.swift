@@ -66,6 +66,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
         paymentNonceProvider.set(baseViewController: view)
         configureQuoteView()
+        view.paymentView(hidden: userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen)
     }
 
     func bookTripPressed() {
@@ -175,14 +176,17 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
                                       dateScheduled: bookingDetails.scheduledDate,
                                       quote: quote)
         }
-        
-        paymentNonceProvider.getPaymentNonce(user: currentUser,
-                                             organisation: currentOrg,
-                                             quote: quote) { [weak self] result in
 
-            switch result {
-            case .completed(let result): handlePaymentNonceProviderResult(result)
-            case .cancelledByUser: self?.view?.setDefaultState()
+        if let nonce = view?.getPaymentNonce() {
+            bookTrip(withPaymentNonce: Nonce(nonce: nonce), user: currentUser)
+        } else {
+            paymentNonceProvider.getPaymentNonce(user: currentUser,
+                                                 organisation: currentOrg,
+                                                 quote: quote) { [weak self] result in
+                switch result {
+                case .completed(let result): handlePaymentNonceProviderResult(result)
+                case .cancelledByUser: self?.view?.setDefaultState()
+                }
             }
         }
 
