@@ -17,8 +17,7 @@ extension UIButton {
                 var edgeInsets: UIEdgeInsets = .zero
                 value.getValue(&edgeInsets)
                 return edgeInsets
-            }
-            else {
+            } else {
                 return .zero
             }
         }
@@ -31,7 +30,7 @@ extension UIButton {
     }
 
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if UIEdgeInsetsEqualToEdgeInsets(self.touchAreaEdgeInsets, .zero) || !self.isEnabled || self.isHidden {
+        if self.touchAreaEdgeInsets == .zero || !self.isEnabled || self.isHidden {
             return super.point(inside: point, with: event)
         }
 

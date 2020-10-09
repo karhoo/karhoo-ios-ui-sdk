@@ -12,7 +12,6 @@ import XCTest
 
 @testable import KarhooUISDK
 
-//TODO: verify if we can register a card without invoking a payment
 final class AdyenCardRegistrationFlowSpec: XCTestCase {
 
     private var testObject: AdyenCardRegistrationFlow!
