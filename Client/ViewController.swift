@@ -9,7 +9,6 @@ import UIKit
 import KarhooUISDK
 import CoreLocation
 import KarhooSDK
-import KarhooUISDK
 
 class ViewController: UIViewController {
 

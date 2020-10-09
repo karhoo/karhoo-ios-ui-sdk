@@ -26,7 +26,7 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
     private func loadTestObject(user: UserInfo? = nil,
                                 quote: Quote? = TestUtil.getRandomQuote()) {
         mockUserService.currentUserToReturn = user
-        mockView.quoteToReturn = TestUtil.getRandomQuote()
+        mockView.quote = TestUtil.getRandomQuote()
 
         testObject = KarhooPaymentPresenter(analyticsService: mockAnalyticsService,
                                           userService: mockUserService,

@@ -94,4 +94,9 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     func getFlightNumber() -> String? {
         return flightNumberToReturn
     }
+
+    private(set) var paymentViewHiddenSet: Bool?
+    func paymentView(hidden: Bool) {
+        paymentViewHiddenSet = hidden
+    }
 }

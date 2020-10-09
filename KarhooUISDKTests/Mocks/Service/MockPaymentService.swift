@@ -43,18 +43,23 @@ class MockPaymentService: PaymentService {
         return paymentProviderCall
     }
 
-    let adyenPaymentMethods = MockCall<AdyenPaymentMethods>()
-    func getAdyenPaymentMethods() -> Call<AdyenPaymentMethods> {
-        return adyenPaymentMethods
-    }
-
-    let adyenPayment = MockCall<AdyenTransaction>()
-    func getAdyenPayment() -> Call<AdyenTransaction> {
+    let adyenPayment = MockCall<AdyenPayments>()
+    func adyenPayments(request: AdyenPaymentsRequest) -> Call<AdyenPayments> {
         return adyenPayment
     }
 
-    let adyenPaymentDetails = MockCall<AdyenPaymentsDetails>()
-    func getAdyenPaymentDetails(paymentDetails: PaymentsDetailsRequestPayload) -> Call<AdyenPaymentsDetails> {
+    let adyenPaymentDetails = MockCall<DecodableData>()
+    func getAdyenPaymentDetails(paymentDetails: PaymentsDetailsRequestPayload) -> Call<DecodableData> {
         return adyenPaymentDetails
+    }
+
+    let adyenPublicKey = MockCall<AdyenPublicKey>()
+    func getAdyenPublicKey() -> Call<AdyenPublicKey> {
+        return adyenPublicKey
+    }
+
+    let adyenPaymentMethodsCall = MockCall<DecodableData>()
+    func adyenPaymentMethods(request: AdyenPaymentMethodsRequest) -> Call<DecodableData> {
+        return adyenPaymentMethodsCall
     }
 }

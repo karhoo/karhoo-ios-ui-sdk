@@ -14,7 +14,7 @@ import XCTest
 
 final class CardRegistrationFlowSpec: XCTestCase {
 
-    private var testObject: KarhooCardRegistrationFlow!
+    private var testObject: BraintreeCardRegistrationFlow!
     private var mockPaymentScreensBuilder: MockPaymentScreenBuilder!
     private var mockPaymentService: MockPaymentService!
     private var testAnalytics: MockAnalyticsService!
@@ -32,7 +32,7 @@ final class CardRegistrationFlowSpec: XCTestCase {
         testAnalytics = MockAnalyticsService()
         mockBaseViewController = MockBaseViewController()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(inOrganisation: true)
-        testObject = KarhooCardRegistrationFlow(paymentScreenBuilder: mockPaymentScreensBuilder,
+        testObject = BraintreeCardRegistrationFlow(paymentScreenBuilder: mockPaymentScreensBuilder,
                                                 paymentService: mockPaymentService,
                                                 userService: mockUserService,
                                                 analytics: testAnalytics)
@@ -68,6 +68,7 @@ final class CardRegistrationFlowSpec: XCTestCase {
      */
     func testFlowStartUserCancels() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
+                         amount: 0,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectCancelOnUpdateCardAlert()
@@ -89,6 +90,7 @@ final class CardRegistrationFlowSpec: XCTestCase {
      */
     func testFlowStartsWithoutShowingUpdateCardAlert() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
+                         amount: 0,
                          showUpdateCardAlert: false,
                          callback: cardRegistrationFlowCompletion)
 
@@ -110,6 +112,7 @@ final class CardRegistrationFlowSpec: XCTestCase {
      */
     func testFlowStartFailsToCreateBraintreeUI() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
+                         amount: 0,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
@@ -240,6 +243,7 @@ final class CardRegistrationFlowSpec: XCTestCase {
 
     private func simulateShowingAddCardScreen() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
+                         amount: 0,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectUpdateCardOnAddCardAlert()

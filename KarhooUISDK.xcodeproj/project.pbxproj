@@ -47,7 +47,7 @@
 		094AE85F21C9145D0046EC3C /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094AE85921C9145D0046EC3C /* DatePickerViewController.xib */; };
 		094AE86021C9145D0046EC3C /* TimeSinceNowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094AE85B21C9145D0046EC3C /* TimeSinceNowProvider.swift */; };
 		094AE86121C9145D0046EC3C /* KarhooDatePickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094AE85C21C9145D0046EC3C /* KarhooDatePickerPresenter.swift */; };
-		094B764022CE729400326CE1 /* KarhooPaymentNonceProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B763D22CE729300326CE1 /* KarhooPaymentNonceProviderSpec.swift */; };
+		094B764022CE729400326CE1 /* BraintreePaymentNonceProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B763D22CE729300326CE1 /* BraintreePaymentNonceProviderSpec.swift */; };
 		094B764222CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B763F22CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift */; };
 		094B764422CE731200326CE1 /* TripStatesGetterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B764322CE731200326CE1 /* TripStatesGetterSpec.swift */; };
 		094B764622CE734D00326CE1 /* MockThreeDSecureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094B764522CE734D00326CE1 /* MockThreeDSecureProvider.swift */; };
@@ -568,7 +568,7 @@
 		094AE85921C9145D0046EC3C /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		094AE85B21C9145D0046EC3C /* TimeSinceNowProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSinceNowProvider.swift; sourceTree = "<group>"; };
 		094AE85C21C9145D0046EC3C /* KarhooDatePickerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooDatePickerPresenter.swift; sourceTree = "<group>"; };
-		094B763D22CE729300326CE1 /* KarhooPaymentNonceProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooPaymentNonceProviderSpec.swift; sourceTree = "<group>"; };
+		094B763D22CE729300326CE1 /* BraintreePaymentNonceProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BraintreePaymentNonceProviderSpec.swift; sourceTree = "<group>"; };
 		094B763F22CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BraintreeThreeDSecureProviderSpec.swift; sourceTree = "<group>"; };
 		094B764322CE731200326CE1 /* TripStatesGetterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStatesGetterSpec.swift; sourceTree = "<group>"; };
 		094B764522CE734D00326CE1 /* MockThreeDSecureProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockThreeDSecureProvider.swift; sourceTree = "<group>"; };
@@ -2536,7 +2536,7 @@
 				094B764322CE731200326CE1 /* TripStatesGetterSpec.swift */,
 				094B763F22CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift */,
 				095D7457231827B4002253C0 /* KarhooTripRatingCacheSpec.swift */,
-				094B763D22CE729300326CE1 /* KarhooPaymentNonceProviderSpec.swift */,
+				094B763D22CE729300326CE1 /* BraintreePaymentNonceProviderSpec.swift */,
 				09D293C522C651C10051C455 /* CurrencyCodeConverterSpec.swift */,
 				09D293C422C651C10051C455 /* KarhooDateFormatterSpec.swift */,
 				09D293C322C651C10051C455 /* QtaStringFormatterSpec.swift */,
@@ -3892,7 +3892,7 @@
 				FC83E2F5221EEDF6008FE26D /* MockMapViewActions.swift in Sources */,
 				090F08E121C934EB000C7E50 /* MockTimeSinceNowProvider.swift in Sources */,
 				FC435F722211D7F500FB6BB5 /* MockFeedbackMailComposter.swift in Sources */,
-				094B764022CE729400326CE1 /* KarhooPaymentNonceProviderSpec.swift in Sources */,
+				094B764022CE729400326CE1 /* BraintreePaymentNonceProviderSpec.swift in Sources */,
 				FC435F7A2211DDB400FB6BB5 /* RideCellViewModelSpec.swift in Sources */,
 				09E35D5C21E5117C003E840C /* MockPickupOnlyStrategyDelegate.swift in Sources */,
 				FC658F4B2216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift in Sources */,
@@ -4234,9 +4234,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 725130EBF620CEDEAD6D018A /* Pods-KarhooUISDKTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				EXCLUDED_ARCHS = "x86_64-apple-ios-simulator";
 				INFOPLIST_FILE = KarhooUISDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4247,7 +4250,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4255,20 +4258,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8016A8F9EDF87017A51DBAA /* Pods-KarhooUISDKTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				EXCLUDED_ARCHS = "x86_64-apple-ios-simulator";
 				INFOPLIST_FILE = KarhooUISDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
