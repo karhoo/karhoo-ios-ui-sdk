@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import Adyen
 
 final class PaymentFactory {
 
@@ -31,5 +32,9 @@ final class PaymentFactory {
         }
 
         return BraintreePaymentNonceProvider()
+    }
+
+    func adyenEnvironment() -> Adyen.Environment {
+        return .test
     }
 }

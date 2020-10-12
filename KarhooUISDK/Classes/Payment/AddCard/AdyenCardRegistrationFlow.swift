@@ -19,13 +19,19 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var transactionId: String = ""
     private var amount: Int = 0
     private var currencyCode: String = ""
+    private let adyenResponseHandler: AdyenResponseHandler
+    private let paymentFactory: PaymentFactory
 
     private var adyenAmout: AdyenAmount {
         return AdyenAmount(currency: self.currencyCode, value: self.amount)
     }
 
-    init(paymentService: PaymentService = Karhoo.getPaymentService()) {
+    init(paymentService: PaymentService = Karhoo.getPaymentService(),
+         adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
+         paymentFactory: PaymentFactory = PaymentFactory()) {
         self.paymentService = paymentService
+        self.adyenResponseHandler = adyenResponseHandler
+        self.paymentFactory = paymentFactory
     }
 
     func setBaseView(_ baseViewController: BaseViewController?) {
@@ -78,7 +84,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         adyenDropIn = DropInComponent(paymentMethods: methods,
                                       paymentMethodsConfiguration: configuration)
         adyenDropIn?.delegate = self
-        adyenDropIn?.environment = .test
+        adyenDropIn?.environment = paymentFactory.adyenEnvironment()
         adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
                                                               currencyCode: self.currencyCode))
         if let dropIn = adyenDropIn?.viewController {
@@ -87,6 +93,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func finish(result: OperationResult<CardFlowResult>) {
+        adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
         self.callback?(result)
     }
 }
@@ -98,6 +105,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         do {
             let jsonData = try encoder.encode(data.paymentMethod.encodable)
             guard let adyenData = Utils.convertToDictionary(data: jsonData) else {
+                finish(result: .completed(value: .didFailWithError(nil)))
                 return
             }
             submitPayments(dropInJson: adyenData)
@@ -112,14 +120,20 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.paymentMethod = dropInJson
         adyenPayload.amount = adyenAmout
 
-        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, returnUrlSuffix: "")
+        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,
+                                           returnUrlSuffix: "")
         paymentService.adyenPayments(request: request).execute { [weak self] result in
+            guard let self = self else { return }
+
             switch result {
             case .success(let result):
-                self?.transactionId = result.transactionID
-                self?.handle(event: AdyenResponseHandler().nextStepFor(data: result.payload,
-                                                                      transactionId: result.transactionID))
-            case .failure(let error): print("/payments error", error)
+                self.transactionId = result.transactionID
+                let event = self.adyenResponseHandler.nextStepFor(data: result.payload,
+                                                                  transactionId: result.transactionID)
+                self.handle(event: event)
+            case .failure(let error):
+                self.finish(result: .completed(value: .didFailWithError(error)))
+                print("/payments error", error)
             }
         }
     }
@@ -145,45 +159,44 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         let request = PaymentsDetailsRequestPayload(transactionID: self.transactionId,
                                                     paymentsPayload: payload)
 
-        print("adyen 3ds requ: ", request)
-
         paymentService.getAdyenPaymentDetails(paymentDetails: request).execute(callback: { [weak self] result in
+            guard let self = self else { return }
+
             switch result {
             case .success(let result):
                 guard let detailsRespone = Utils.convertToDictionary(data: result.data) else {
+                    self.finish(result: .completed(value: .didFailWithError(nil)))
                     return
                 }
 
-                self?.handle(event: AdyenResponseHandler().nextStepFor(data: detailsRespone,
-                                                                      transactionId: self?.transactionId ?? ""))
+                let event = self.adyenResponseHandler.nextStepFor(data: detailsRespone,
+                                                                   transactionId: self.transactionId)
+                self.handle(event: event)
             case .failure(let error):
-                print("/payments error", error)
+                self.finish(result: .completed(value: .didFailWithError(error)))
             }
         })
     }
 
     func didFail(with error: Error, from component: DropInComponent) {
-        print("didFail", error, component)
-
         if let error = error as? ComponentError, error == .cancelled {
-            callback?(OperationResult.completed(value: .cancelledByUser))
+            finish(result: .completed(value: .cancelledByUser))
         } else {
-            callback?(OperationResult.completed(value: .didFailWithError(error as? KarhooError)))
+            finish(result: .completed(value: .didFailWithError(error as? KarhooError)))
         }
-
-        adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
     }
 
     private func handle(event: AdyenResponseHandler.AdyenEvent) {
         switch event {
-        case .failure: print("payment failure!")
+        case .failure:
+            finish(result: .completed(value: .didFailWithError(nil)))
         case .paymentAuthorised(let transactionId):
-            adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
             let method = PaymentMethod(nonce: transactionId)
-            callback?(.completed(value: .didAddPaymentMethod(method: method)))
+            finish(result: .completed(value: .didAddPaymentMethod(method: method)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
-        case .handleResult(let code): print("adyen haldner result: \(code)")
+        case .handleResult(let code):
+            print("adyen haldner result: \(code)")
         }
     }
 }
