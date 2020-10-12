@@ -68,7 +68,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow
   - BraintreeDropIn
   - FloatingPanel (= 1.7.6)
-  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `MOB-2792-quoteIntPrice`)"
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 2.1.0)
   - SwiftLint
@@ -87,14 +87,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: MOB-2792-quoteIntPrice
+    :branch: develop
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 4f3ac3a3134debce1174b41cedc708b00dead12a
+    :commit: 2f0f597108385fac636f2e029d96a77a1b09b290
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
@@ -110,6 +110,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 893a8b903e246b5d016fe5401f9c08b60d40deba
+PODFILE CHECKSUM: 54f29c861fa95a3ceb5aa7d0e63f315f74f5ff32
 
 COCOAPODS: 1.9.3
