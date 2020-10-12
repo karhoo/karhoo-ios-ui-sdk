@@ -1,7 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
  
-
 # Standard cocoapods specs source
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -20,7 +19,7 @@ def uisdkPods
   pod 'PhoneNumberKit', '2.1.0'
   #pod 'KarhooSDK'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-2729-3'
 
 end
 

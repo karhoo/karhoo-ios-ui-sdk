@@ -335,6 +335,7 @@
 		5C626861252DFC0A00AB6CD2 /* AdyenResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C626860252DFC0A00AB6CD2 /* AdyenResponseHandler.swift */; };
 		5C7233C0226510B9001078B6 /* KarhooUISDKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7233BF226510B9001078B6 /* KarhooUISDKError.swift */; };
 		5C7B185225310E170001CFE6 /* TouchAreaEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B185125310E170001CFE6 /* TouchAreaEdgeInsets.swift */; };
+		5C7B191C2534B2120001CFE6 /* FlightDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09BDD18E21C2CAD00074421C /* FlightDetailsViewController.xib */; };
 		5C7F6EF1233A375F0039F3E2 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F6EF0233A375F0039F3E2 /* BaseView.swift */; };
 		5C831686246218E700BAA926 /* KarhooComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C831685246218E700BAA926 /* KarhooComponents.swift */; };
 		5C8316BB246A0B6200BAA926 /* EmptyMapBookingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8316BA246A0B6200BAA926 /* EmptyMapBookingStrategy.swift */; };
@@ -3309,6 +3310,7 @@
 				0991530221BFDC3000B46D9F /* Assets.xcassets in Resources */,
 				FCAD1BF922087BD800C3AD1D /* KarhooPrebookConfirmationViewController.xib in Resources */,
 				FC705B1B221322550001036E /* PopupDialogViewController.xib in Resources */,
+				5C7B191C2534B2120001CFE6 /* FlightDetailsViewController.xib in Resources */,
 				094AE85F21C9145D0046EC3C /* DatePickerViewController.xib in Resources */,
 				FC83E2A6221ECC52008FE26D /* JourneySummaryHeaderView.xib in Resources */,
 				092005E0225B91C1001038ED /* SideMenuViewController.xib in Resources */,

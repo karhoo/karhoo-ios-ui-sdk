@@ -113,24 +113,64 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.amount = adyenAmout
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, returnUrlSuffix: "")
-        paymentService.adyenPayments(request: request).execute { result in
+        paymentService.adyenPayments(request: request).execute { [weak self] result in
             switch result {
-            case .success(let result): self.handle(event: AdyenResponseHandler().nextStepFor(data: result.payload, transactionId: result.transactionID))
+            case .success(let result):
+                self?.transactionId = result.transactionID
+                self?.handle(event: AdyenResponseHandler().nextStepFor(data: result.payload,
+                                                                      transactionId: result.transactionID))
             case .failure(let error): print("/payments error", error)
             }
         }
     }
 
     func didProvide(_ data: ActionComponentData, from component: DropInComponent) {
-        let request = PaymentsDetailsRequestPayload(transactionID: self.transactionId, paymentsPayload: [:])
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(data.details.encodable)
+            guard var adyenData = Utils.convertToDictionary(data: jsonData) else {
+                return
+            }
 
-        paymentService.getAdyenPaymentDetails(paymentDetails: request).execute(callback: { result in
-            print("payment details response ", result)
+            adyenData["paymentData"] = data.paymentData
+            adyenData["details"] = adyenData
+            submitAdyenPaymentDetails(payload: adyenData)
+        } catch let error {
+            adyenDropIn?.stopLoading()
+            didFail(with: error, from: component)
+        }
+    }
+
+    private func submitAdyenPaymentDetails(payload: [String: Any]) {
+        let request = PaymentsDetailsRequestPayload(transactionID: self.transactionId,
+                                                    paymentsPayload: payload)
+
+        print("adyen 3ds requ: ", request)
+
+        paymentService.getAdyenPaymentDetails(paymentDetails: request).execute(callback: { [weak self] result in
+            switch result {
+            case .success(let result):
+                guard let detailsRespone = Utils.convertToDictionary(data: result.data) else {
+                    return
+                }
+
+                self?.handle(event: AdyenResponseHandler().nextStepFor(data: detailsRespone,
+                                                                      transactionId: self?.transactionId ?? ""))
+            case .failure(let error):
+                print("/payments error", error)
+            }
         })
     }
 
     func didFail(with error: Error, from component: DropInComponent) {
         print("didFail", error, component)
+
+        if let error = error as? ComponentError, error == .cancelled {
+            callback?(OperationResult.completed(value: .cancelledByUser))
+        } else {
+            callback?(OperationResult.completed(value: .didFailWithError(error as? KarhooError)))
+        }
+
         adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
     }
 
