@@ -1,5 +1,5 @@
 //
-//  CardRegistrationFlowSpec.swift
+//  BraintreeCardRegistrationFlowSpec.swift
 //  KarhooTests
 //
 //
@@ -9,10 +9,9 @@
 import Foundation
 import XCTest
 @testable import KarhooSDK
-
 @testable import KarhooUISDK
 
-final class CardRegistrationFlowSpec: XCTestCase {
+final class BraintreeCardRegistrationFlowSpec: XCTestCase {
 
     private var testObject: BraintreeCardRegistrationFlow!
     private var mockPaymentScreensBuilder: MockPaymentScreenBuilder!

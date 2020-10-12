@@ -29,13 +29,12 @@ class ViewController: UIViewController {
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
-        userService.login(userLogin: UserLogin(username: Keys.userServiceEmailAdyen,
-                                               password: Keys.userServicePasswordAdyen)).execute(callback: { result in
+        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
                                                     showKarhoo()
                                                 }
-                                               })
+        })
 
         func showKarhoo() {
              booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
