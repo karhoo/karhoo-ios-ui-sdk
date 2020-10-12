@@ -14,6 +14,7 @@ enum PaymentNonceProviderResult {
     case threeDSecureCheckFailed
     case failedToInitialisePaymentService
     case failedToAddCard(error: KarhooError?)
+    case cancelledByUser
 }
 
 protocol PaymentNonceProvider {

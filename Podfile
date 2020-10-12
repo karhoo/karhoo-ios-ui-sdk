@@ -4,7 +4,6 @@ platform :ios, '11.0'
 
 # Standard cocoapods specs source
 source 'https://github.com/CocoaPods/Specs.git'
- 
 
 use_frameworks!
 
@@ -17,10 +16,11 @@ def uisdkPods
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
-  pod 'Adyen'
+  pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '2.1.0'
-  pod 'KarhooSDK'
-  # pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  #pod 'KarhooSDK'
+  #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
 
 end
 
@@ -38,5 +38,4 @@ target 'KarhooUISDK' do
       inherit! :search_paths
       uisdkPods
     end
-
 end

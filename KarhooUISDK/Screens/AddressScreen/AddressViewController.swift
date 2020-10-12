@@ -250,8 +250,8 @@ final class AddressViewController: UIViewController, AddressView {
                                           tableData: tableData)
 
         let configuration = { [weak self] (address: AddressCellViewModel,
-            cell: UITableViewCell,
-            indexPath: IndexPath) -> Void in
+                                           cell: UITableViewCell,
+                                           indexPath: IndexPath) -> Void in
             self?.configure(cell: cell, with: address)
         }
 

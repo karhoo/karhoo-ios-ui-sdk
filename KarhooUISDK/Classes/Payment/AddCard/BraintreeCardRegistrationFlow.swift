@@ -1,5 +1,5 @@
 //
-//  KarhooCardRegistrationFlow.swift
+//  BraintreeCardRegistrationFlow.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-public final class KarhooCardRegistrationFlow: CardRegistrationFlow {
+public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
     private let paymentScreenBuilder: PaymentScreenBuilder
     private let paymentService: PaymentService
@@ -33,6 +33,7 @@ public final class KarhooCardRegistrationFlow: CardRegistrationFlow {
     }
 
    public func start(cardCurrency: String,
+                     amount: Int,
                      showUpdateCardAlert: Bool,
                      callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         self.callback = callback

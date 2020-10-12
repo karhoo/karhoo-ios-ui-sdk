@@ -21,13 +21,16 @@ final class MockCardRegistrationFlow: CardRegistrationFlow {
     private(set) var startCalled = false
     private(set) var currencyCodeSet: String?
     private(set) var showUpdateCardAlertSet: Bool?
+    private(set) var amountSet: Int?
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
     func start(cardCurrency: String,
+               amount: Int,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         startCalled = true
         currencyCodeSet = cardCurrency
         showUpdateCardAlertSet = showUpdateCardAlert
+        amountSet = amount
         self.callback = callback
     }
 

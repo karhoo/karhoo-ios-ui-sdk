@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-final class KarhooPaymentNonceProvider: PaymentNonceProvider {
+final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
     private let paymentService: PaymentService
     private let threeDSecureProvider: ThreeDSecureProvider
@@ -21,7 +21,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
 
     init(paymentService: PaymentService = Karhoo.getPaymentService(),
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
-         cardRegistrationFlow: CardRegistrationFlow = KarhooCardRegistrationFlow()) {
+         cardRegistrationFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()) {
         self.paymentService = paymentService
         self.threeDSecureProvider = threeDSecureProvider
         self.cardRegistrationFlow = cardRegistrationFlow
@@ -74,6 +74,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
 
     private func triggerAddCardFlow(currencyCode: String) {
         self.cardRegistrationFlow.start(cardCurrency: currencyCode,
+                                        amount: 0,
                                         showUpdateCardAlert: true,
                                         callback: { [weak self] result in
             switch result {
@@ -129,7 +130,7 @@ final class KarhooPaymentNonceProvider: PaymentNonceProvider {
     }
 }
 
-extension KarhooPaymentNonceProvider {
+extension BraintreePaymentNonceProvider {
     func runningBookingUITest() -> Bool {
         return ProcessInfo().arguments.contains("booking-test")
     }

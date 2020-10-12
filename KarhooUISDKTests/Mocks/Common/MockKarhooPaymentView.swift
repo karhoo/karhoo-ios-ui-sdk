@@ -10,14 +10,12 @@ import Foundation
 import KarhooSDK
 
 final class MockKarhooPaymentView: MockBaseView, PaymentView {
+
     var baseViewController: BaseViewController?
 
     var actions: PaymentViewActions?
 
-    var quoteToReturn: Quote?
-    var quote: Quote? {
-        return quoteToReturn
-    }
+    var quote: Quote?
 
     private(set) var paymentMethodSet: PaymentMethod?
     func set(paymentMethod: PaymentMethod) {

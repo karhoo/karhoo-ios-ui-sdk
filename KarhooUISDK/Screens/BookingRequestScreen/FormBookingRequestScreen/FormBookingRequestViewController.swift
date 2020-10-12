@@ -349,6 +349,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func getFlightNumber() -> String? {
         return poiDetailsInputText.getIntput()
     }
+
+    func paymentView(hidden: Bool) {
+        addPaymentView.isHidden = hidden
+    }
 }
 
 extension FormBookingRequestViewController: TimePriceViewActions {

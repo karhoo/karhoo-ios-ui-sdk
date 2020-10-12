@@ -11,9 +11,9 @@ import XCTest
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
-final class KarhooPaymentNonceProviderSpec: XCTestCase {
+final class BraintreePaymentNonceProviderSpec: XCTestCase {
 
-    private var testObject: KarhooPaymentNonceProvider!
+    private var testObject: BraintreePaymentNonceProvider!
 
     private let mockUserService = MockUserService()
     private let mockTripService = MockTripService()
@@ -32,9 +32,9 @@ final class KarhooPaymentNonceProviderSpec: XCTestCase {
         super.setUp()
 
         mockUserService.currentUserToReturn = userInAnOrg
-        testObject = KarhooPaymentNonceProvider(paymentService: mockPaymentService,
-                                                threeDSecureProvider: mockThreeDSecureProvider,
-                                                cardRegistrationFlow: mockCardRegistrationFlow)
+        testObject = BraintreePaymentNonceProvider(paymentService: mockPaymentService,
+                                                   threeDSecureProvider: mockThreeDSecureProvider,
+                                                   cardRegistrationFlow: mockCardRegistrationFlow)
         testObject.set(baseViewController: mockBaseView)
     }
 

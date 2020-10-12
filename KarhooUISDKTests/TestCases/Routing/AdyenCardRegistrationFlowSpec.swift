@@ -12,10 +12,9 @@ import XCTest
 
 @testable import KarhooUISDK
 
-//TODO: verify if we can register a card without invoking a payment
 final class AdyenCardRegistrationFlowSpec: XCTestCase {
 
-    private var testObject: KarhooCardRegistrationFlow!
+    private var testObject: AdyenCardRegistrationFlow!
     private var mockPaymentScreensBuilder: MockPaymentScreenBuilder!
     private var mockPaymentService: MockPaymentService!
     private var testAnalytics: MockAnalyticsService!
@@ -32,10 +31,7 @@ final class AdyenCardRegistrationFlowSpec: XCTestCase {
         testAnalytics = MockAnalyticsService()
         mockBaseViewController = MockBaseViewController()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(inOrganisation: true)
-        testObject = KarhooCardRegistrationFlow(paymentScreenBuilder: mockPaymentScreensBuilder,
-                                                paymentService: mockPaymentService,
-                                                userService: mockUserService,
-                                                analytics: testAnalytics)
+        testObject = AdyenCardRegistrationFlow(paymentService: mockPaymentService)
 
         testObject.setBaseView(mockBaseViewController)
     }
