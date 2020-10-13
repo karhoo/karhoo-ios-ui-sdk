@@ -32,7 +32,7 @@ end
   lane :UISDK_unit_tests do
 	scan(
 	    workspace: "KarhooUISDK.xcworkspace",
-	    scheme: "KarhooUISDK",
+	    scheme: "KarhooUISDKTests",
 	    device: "iPhone 11",
             deployment_target_version: "14.0",
 	    code_coverage: true,
