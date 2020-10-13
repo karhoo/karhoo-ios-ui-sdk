@@ -1,7 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
  
-
 # Standard cocoapods specs source
 source 'https://github.com/CocoaPods/Specs.git'
 
