@@ -26,6 +26,7 @@ final class KarhooBookingPresenter {
     private let ridesScreenBuilder: RidesScreenBuilder
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
+    private let paymentService: PaymentService
 
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
@@ -40,7 +41,8 @@ final class KarhooBookingPresenter {
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
-         urlOpener: URLOpener = KarhooURLOpener()) {
+         urlOpener: URLOpener = KarhooURLOpener(),
+         paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
         self.analyticsProvider = analyticsProvider
         self.bookingStatus = bookingStatus
@@ -55,6 +57,7 @@ final class KarhooBookingPresenter {
         self.ridesScreenBuilder = ridesScreenBuilder
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
+        self.paymentService = paymentService
         userService.add(observer: self)
         bookingStatus.add(observer: self)
     }
@@ -159,6 +162,15 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func load(view: BookingView?) {
         self.view = view
+        fetchPaymentProvider()
+    }
+
+    private func fetchPaymentProvider() {
+        if !Karhoo.configuration.authenticationMethod().isGuest(){
+            return
+        }
+
+        paymentService.getPaymentProvider().execute(callback: { _ in})
     }
 
     func resetBookingStatus() {
