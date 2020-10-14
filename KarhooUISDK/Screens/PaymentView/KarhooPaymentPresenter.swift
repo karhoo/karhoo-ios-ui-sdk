@@ -61,7 +61,7 @@ final class KarhooPaymentPresenter: PaymentPresenter {
 
         switch result {
         case .didAddPaymentMethod(let method): view.set(paymentMethod: method)
-        case .didFailWithError: updateCardPressed(showRetryAlert: true)
+        case .didFailWithError(let error): (view.parentViewController as? BaseViewController)?.show(error: error)
         default: break
         }
     }
