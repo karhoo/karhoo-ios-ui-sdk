@@ -166,7 +166,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     private func fetchPaymentProvider() {
-        if !Karhoo.configuration.authenticationMethod().isGuest(){
+        if !Karhoo.configuration.authenticationMethod().isGuest() {
             return
         }
 

@@ -120,7 +120,6 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
     }
 
-
     /** Whem: Adyen is the payment provider
      *  Then: Correct flow executes
      */

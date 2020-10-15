@@ -53,12 +53,12 @@ class ViewController: UIViewController {
                                                         constant: -100).isActive = true
     }
 
-    @objc func guestBookingTapped(sender : UIButton) {
+    @objc func guestBookingTapped(sender: UIButton) {
         Karhoo.set(configuration: KarhooGuestConfig())
         showKarhoo()
     }
 
-    @objc func authenticatedBookingTapped(sender : UIButton) {
+    @objc func authenticatedBookingTapped(sender: UIButton) {
         Karhoo.set(configuration: KarhooConfig())
         loginAndShowKarhoo()
     }
