@@ -15,7 +15,7 @@ def uisdkPods
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
-  pod 'Adyen', '3.7.0'
+  pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '3.3.1'
   #pod 'KarhooSDK'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
@@ -37,12 +37,4 @@ target 'KarhooUISDK' do
       inherit! :search_paths
       uisdkPods
     end
-end
-
-post_install do |pi|
-  pi.pods_project.targets.each do |t|
-    t.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
-    end
-  end
 end
