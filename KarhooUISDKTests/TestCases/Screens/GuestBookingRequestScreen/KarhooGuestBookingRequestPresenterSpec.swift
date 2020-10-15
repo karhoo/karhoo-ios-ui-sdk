@@ -120,6 +120,28 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
     }
 
+    /** Whem: Adyen is the payment provider
+     *  Then: Correct flow executes
+     */
+    func testAdyenPaymentFlow() {
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
+                                                                     paymentProvider: "adyen")
+        testObject.bookTripPressed()
+
+        XCTAssertFalse(mockThreeDSecureProvider.threeDSecureCalled)
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+        
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual("123", mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+
     private func guestBookingRequestTrip(result: ScreenResult<TripInfo>) {
         testCallbackResult = result
     }
@@ -129,7 +151,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
-
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
         testObject = FormBookingRequestPresenter(quote: testQuote,
                                                   bookingDetails: mockBookingDetails,
                                                   threeDSecureProvider: mockThreeDSecureProvider,

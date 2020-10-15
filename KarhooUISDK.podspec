@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.dependency 	  'FloatingPanel', '1.7.6'
   s.dependency    'BraintreeDropIn'
   s.dependency    'Braintree/PaymentFlow'
-  s.dependency    'PhoneNumberKit'
-  s.dependency    'Adyen'
+  s.dependency    'PhoneNumberKit', '3.3.1'
+  s.dependency    'Adyen', '3.6.0'
 
 end

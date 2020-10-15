@@ -14,14 +14,52 @@ class ViewController: UIViewController {
 
     private var booking: BookingScreen?
 
+    private lazy var guestBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Guest Booking Flow", for: .normal)
+        button.tintColor = .blue
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var authenticatedBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Authenticated Booking Flow", for: .normal)
+        button.tintColor = .blue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
+        guestBookingButton.addTarget(self, action: #selector(guestBookingTapped),
+                                     for: .touchUpInside)
+        authenticatedBookingButton.addTarget(self, action: #selector(authenticatedBookingTapped),
+                                       for: .touchUpInside)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("booking screen result: \("result")")
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(guestBookingButton)
+        self.view.addSubview(authenticatedBookingButton)
 
+        guestBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        guestBookingButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        authenticatedBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        authenticatedBookingButton.topAnchor.constraint(equalTo: guestBookingButton.bottomAnchor,
+                                                        constant: -100).isActive = true
+    }
+
+    @objc func guestBookingTapped(sender: UIButton) {
+        Karhoo.set(configuration: KarhooGuestConfig())
+        showKarhoo()
+    }
+
+    @objc func authenticatedBookingTapped(sender: UIButton) {
+        Karhoo.set(configuration: KarhooConfig())
         loginAndShowKarhoo()
     }
 
@@ -32,28 +70,36 @@ class ViewController: UIViewController {
         userService.login(userLogin: Keys.userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
-                                                    showKarhoo()
+                                                    self.showKarhoo()
                                                 }
         })
+    }
 
-        func showKarhoo() {
-             booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
-                                                                         passengerDetails: nil,
-                                                                         callback: { [weak self] result in
-                print("booking screen result: \(result)")
-                switch result {
-                case .completed(let result):
-                    switch result {
-                    case .tripAllocated(let trip): self?.booking?.openTrip(trip)
-                    default: break
-                    }
-                default: break
-                }
-             }) as? BookingScreen
+    func showKarhoo() {
+        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
+                                                                    passengerDetails: nil,
+                                                                    callback: { [weak self] result in
+                                                                        self?.logout()
+                                                                        switch result {
+                                                                        case .completed(let result):
+                                                                            switch result {
+                                                                            case .tripAllocated(let trip): self?.booking?.openTrip(trip)
+                                                                            default: break
+                                                                            }
+                                                                        default: break
+                                                                        }
+                                                                    }) as? BookingScreen
 
-            self.present(booking!,
-                         animated: true,
-                         completion: nil)
+        self.present(booking!,
+                     animated: true,
+                     completion: nil)
+    }
+
+    private func logout() {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return
         }
+
+        Karhoo.getUserService().logout().execute(callback: { _ in})
     }
 }

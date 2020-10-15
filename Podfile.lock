@@ -47,18 +47,18 @@ PODS:
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
   - KarhooUISDK (1.2.6):
-    - Adyen
+    - Adyen (= 3.6.0)
     - Braintree/PaymentFlow
     - BraintreeDropIn
     - FloatingPanel (= 1.7.6)
     - KarhooSDK
-    - PhoneNumberKit
+    - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
-  - PhoneNumberKit (2.1.0):
-    - PhoneNumberKit/PhoneNumberKitCore (= 2.1.0)
-    - PhoneNumberKit/UIKit (= 2.1.0)
-  - PhoneNumberKit/PhoneNumberKitCore (2.1.0)
-  - PhoneNumberKit/UIKit (2.1.0):
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
   - SwiftLint (0.40.3)
@@ -70,7 +70,7 @@ DEPENDENCIES:
   - FloatingPanel (= 1.7.6)
   - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
   - KarhooUISDK (from `./`)
-  - PhoneNumberKit (= 2.1.0)
+  - PhoneNumberKit (= 3.3.1)
   - SwiftLint
 
 SPEC REPOS:
@@ -94,7 +94,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 38fa42c54d5d7d3822ad12cb5496267e441ec794
+    :commit: 6ddb832e56b544a155d9b0609f580ac0b8d302e9
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
@@ -104,12 +104,12 @@ SPEC CHECKSUMS:
   BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
   FloatingPanel: 9016eac88f21ca9fce53f5709e1f49485c0c355e
   KarhooSDK: dcccd5e7a6a22949f38a2cb0ca5db83271bf28fb
-  KarhooUISDK: 22167e1e36e0fc0db3041b228e68e4d925009c11
+  KarhooUISDK: 6d68da76d3c84316d5d3705e22ae8730a529aab7
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
-  PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 9f2746047963ab7e38806e144b0ea7c8488a1285
+PODFILE CHECKSUM: ee7dc5e1105f79b90d90b3a60c3822942c20ebe3
 
 COCOAPODS: 1.9.3

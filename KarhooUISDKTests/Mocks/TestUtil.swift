@@ -137,15 +137,19 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getRandomUser(inOrganisation: Bool = true,
-                             nonce: Nonce? = Nonce()) -> UserInfo {
+                             nonce: Nonce? = Nonce(),
+                             paymentProvider: String = "braintree") -> UserInfo {
         let org = Organisation(id: "some", name: "company", roles: ["bread"])
-        return UserInfo(userId: getRandomString(),
-                    firstName: getRandomString(),
-                    lastName: getRandomString(),
-                    email: getRandomString(),
-                    mobileNumber: getRandomString(),
-                    organisations: inOrganisation ? [org] : [],
-                    nonce: nonce)
+        var user = UserInfo(userId: getRandomString(),
+                            firstName: getRandomString(),
+                            lastName: getRandomString(),
+                            email: getRandomString(),
+                            mobileNumber: getRandomString(),
+                            organisations: inOrganisation ? [org] : [],
+                            nonce: nonce)
+        user.paymentProvider = PaymentProvider(provider: Provider(id: paymentProvider),
+                                               loyaltyProgammes: [])
+        return user
     }
 
     class func getRandomUserRegistration() -> UserRegistration {

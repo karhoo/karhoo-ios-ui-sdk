@@ -5,6 +5,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
+//swiftlint:disable closure_parameter_position
 
 import UIKit
 import KarhooSDK

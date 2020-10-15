@@ -48,8 +48,12 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             return
         }
 
-        threeDSecureNonceThenBook(nonce: nonce,
-                                  passengerDetails: passengerDetails)
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+            threeDSecureNonceThenBook(nonce: nonce,
+                                      passengerDetails: passengerDetails)
+        } else {
+            book(threeDSecureNonce: nonce, passenger: passengerDetails)
+        }
     }
 
     private func getPaymentNonceAccordingToAuthState() -> String? {
