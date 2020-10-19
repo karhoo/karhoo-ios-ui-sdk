@@ -26,7 +26,13 @@ class ViewController: UIViewController {
     private lazy var authenticatedBookingButton: UIButton = {
         let button = UIButton()
         button.setTitle("Authenticated Booking Flow", for: .normal)
-        button.tintColor = .blue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var tokenExchangeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Token Exchange Booking Flow", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -38,12 +44,16 @@ class ViewController: UIViewController {
                                      for: .touchUpInside)
         authenticatedBookingButton.addTarget(self, action: #selector(authenticatedBookingTapped),
                                        for: .touchUpInside)
+        tokenExchangeBookingButton.addTarget(self, action: #selector(tokenExchangeBookingTapped),
+                                             for: .touchUpInside)
     }
 
     override func loadView() {
         super.loadView()
-        self.view.addSubview(guestBookingButton)
-        self.view.addSubview(authenticatedBookingButton)
+
+        [guestBookingButton, authenticatedBookingButton, tokenExchangeBookingButton].forEach { button in
+            self.view.addSubview(button)
+        }
 
         guestBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         guestBookingButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -51,19 +61,28 @@ class ViewController: UIViewController {
         authenticatedBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         authenticatedBookingButton.topAnchor.constraint(equalTo: guestBookingButton.bottomAnchor,
                                                         constant: -100).isActive = true
+
+        tokenExchangeBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tokenExchangeBookingButton.topAnchor.constraint(equalTo: authenticatedBookingButton.bottomAnchor,
+                                                        constant: -100).isActive = true
     }
 
     @objc func guestBookingTapped(sender: UIButton) {
-        Karhoo.set(configuration: KarhooGuestConfig())
+        KarhooConfig.auth = .guest(settings: guestSettings)
         showKarhoo()
     }
 
     @objc func authenticatedBookingTapped(sender: UIButton) {
-        Karhoo.set(configuration: KarhooConfig())
-        loginAndShowKarhoo()
+        KarhooConfig.auth = .karhooUser
+        usernamePasswordLoginAndShowKarhoo()
     }
 
-    private func loginAndShowKarhoo() {
+    @objc func tokenExchangeBookingTapped(sender: UIButton) {
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        tokenLoginAndShowKarhoo()
+    }
+
+    private func usernamePasswordLoginAndShowKarhoo() {
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
@@ -73,6 +92,17 @@ class ViewController: UIViewController {
                                                     self.showKarhoo()
                                                 }
         })
+    }
+
+    private func tokenLoginAndShowKarhoo() {
+        let authService = Karhoo.getAuthService()
+
+        authService.login(token: Keys.authToken).execute { result in
+            print("token login: \(result)")
+            if result.isSuccess() {
+                self.showKarhoo()
+            }
+        }
     }
 
     func showKarhoo() {

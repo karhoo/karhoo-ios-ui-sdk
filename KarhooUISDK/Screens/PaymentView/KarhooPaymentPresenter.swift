@@ -55,13 +55,11 @@ final class KarhooPaymentPresenter: PaymentPresenter {
     }
 
     private func handleAddCardFlow(result: CardFlowResult) {
-        guard Karhoo.configuration.authenticationMethod().guestSettings != nil else {
-            return
-        }
-
         switch result {
-        case .didAddPaymentMethod(let method): view.set(paymentMethod: method)
-        case .didFailWithError(let error): (view.parentViewController as? BaseViewController)?.show(error: error)
+        case .didAddPaymentMethod(let method):
+            view.set(paymentMethod: method)
+        case .didFailWithError(let error):
+            (view.parentViewController as? BaseViewController)?.show(error: error)
         default: break
         }
     }
