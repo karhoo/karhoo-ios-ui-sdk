@@ -95,7 +95,6 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
     /**
      When: I've added a card as a user
      And: User nonce is updated
-     Then: View should not set payment method (guests)
      And: user service should update nonce and view updates nonce
      */
     func testCardRegistrationFlowFinishedAsUser() {
@@ -103,8 +102,6 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         let paymentMethodAdded = TestUtil.getRandomBraintreePaymentMethod()
         mockCardRegistrationFlow.triggerAddCardResult(
             .completed(value: .didAddPaymentMethod(method: paymentMethodAdded)))
-
-        XCTAssertNil(mockView.paymentMethodSet)
 
         let updatedUser = TestUtil.getRandomUser(nonce: Nonce(nonce: "some_nonce"))
         mockUserService.currentUserToReturn = updatedUser

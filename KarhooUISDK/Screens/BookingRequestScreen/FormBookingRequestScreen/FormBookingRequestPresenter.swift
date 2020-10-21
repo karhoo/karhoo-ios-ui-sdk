@@ -42,7 +42,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
 
     func bookTripPressed() {
         view?.setRequestingState()
-
+        
         guard let passengerDetails = view?.getPassengerDetails(), let nonce = getPaymentNonceAccordingToAuthState() else {
             view?.setDefaultState()
             return
@@ -57,11 +57,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
 
     private func getPaymentNonceAccordingToAuthState() -> String? {
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            return view?.getPaymentNonce()
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser: return userService.getCurrentUser()?.nonce?.nonce
+        default: return view?.getPaymentNonce()
         }
-
-        return userService.getCurrentUser()?.nonce?.nonce
     }
 
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {

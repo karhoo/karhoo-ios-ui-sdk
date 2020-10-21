@@ -17,4 +17,16 @@ class PassengerInfo {
     func set(details: PassengerDetails?) {
         passengerDetails = details
     }
+
+    func currentUserAsPassenger() -> PassengerDetails? {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return nil
+        }
+
+        guard let currentUser = Karhoo.getUserService().getCurrentUser() else {
+            return nil
+        }
+
+        return PassengerDetails(user: currentUser)
+    }
 }

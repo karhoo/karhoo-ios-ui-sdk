@@ -15,5 +15,5 @@ protocol PassengerDetailsActions: class {
 
 protocol PassengerDetailsViewP: UIView {
 
-    func getPassengerDetails() -> PassengerDetails
+    var details: PassengerDetails? { get set }
 }

@@ -13,6 +13,7 @@ struct AdyenResponseHandler {
     enum AdyenEvent {
         case requiresAction(_ action: Action)
         case paymentAuthorised(_ transactionId: String)
+        case refused(_ reason: String)
         case handleResult(code: String?)
         case failure
     }
@@ -38,6 +39,10 @@ struct AdyenResponseHandler {
 
         if result == "Authorised" {
             return .paymentAuthorised(transactionId)
+        }
+
+        if result == "Refused" {
+            return .refused("")
         }
 
         return .handleResult(code: result)

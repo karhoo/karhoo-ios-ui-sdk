@@ -31,11 +31,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private var presenter: BookingRequestPresenter
     private let drawAnimationTime: Double = 0.45
 
-    private lazy var passengerDetailsView: PassengerDetailsView = {
+    private var passengerDetailsView: PassengerDetailsView = {
         let passengerDetailsView = PassengerDetailsView()
         passengerDetailsView.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsView.accessibilityIdentifier = "passengerDetailsView"
-        passengerDetailsView.actions = self
         return passengerDetailsView
     }()
 
@@ -134,7 +133,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         container.addGestureRecognizer(tapGesture)
         
         view.setNeedsUpdateConstraints()
-        
+        passengerDetailsView.actions = self
+
         presenter.load(view: self)
     }
 
@@ -239,11 +239,12 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showBookingRequestView(true)
+        passengerDetailsView.details = PassengerInfo.shared.currentUserAsPassenger()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsView.details = PassengerInfo.shared.passengerDetails
+        //passengerDetailsView.details = PassengerInfo.shared.passengerDetails
     }
 
     @objc
@@ -335,7 +336,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
 
     func getPassengerDetails() -> PassengerDetails? {
-        return passengerDetailsView.getPassengerDetails()
+        return passengerDetailsView.details
     }
 
     func getPaymentNonce() -> String? {
