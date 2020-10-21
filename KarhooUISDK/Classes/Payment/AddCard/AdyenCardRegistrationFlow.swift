@@ -73,10 +73,12 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
     private func startDropIn(data: Data, adyenKey: String) {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
-        let showSaveCardToggle = !Karhoo.configuration.authenticationMethod().isGuest()
+        let showsStorePaymentMethodField = (!Karhoo.configuration.authenticationMethod().isGuest() || Karhoo.configuration.authenticationMethod().tokenExchangeSettings != nil)
+
         let configuration = DropInComponent.PaymentMethodsConfiguration()
         configuration.card.publicKey = adyenKey
-        configuration.card.showsStorePaymentMethodField = showSaveCardToggle
+        configuration.card.showsStorePaymentMethodField = showsStorePaymentMethodField
+
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
             return
@@ -197,6 +199,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             finish(result: .completed(value: .didAddPaymentMethod(method: method)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
+        case .refused(let reason):
+            finish(result: .completed(value: .didFailWithError(nil)))
         case .handleResult(let code):
             print("adyen haldner result: \(code)")
         }

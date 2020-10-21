@@ -69,6 +69,7 @@ final class PassengerDetailsView: UIView {
         textFieldStackView.accessibilityIdentifier = "base_stack_view"
         textFieldStackView.spacing = 15
         textFieldStackView.axis = .vertical
+        textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
     }()
 

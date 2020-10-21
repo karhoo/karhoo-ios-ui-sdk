@@ -335,7 +335,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
 
     func getPassengerDetails() -> PassengerDetails? {
-        return passengerDetailsView.getPassengerDetails()
+        return passengerDetailsView.details
     }
 
     func getPaymentNonce() -> String? {
