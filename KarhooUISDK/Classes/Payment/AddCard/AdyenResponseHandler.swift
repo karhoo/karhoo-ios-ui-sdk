@@ -2,14 +2,12 @@
 //  AdyenResponseHandler.swift
 //  KarhooUISDK
 //
-//  Created by Jeevan Thandi on 07/10/2020.
 //  Copyright © 2020 Flit Technologies Ltd. All rights reserved.
 //
 
-/**
-  * this class transforms adyen backend data into an event to progress the users payment journey *
-  * https://docs.adyen.com/checkout/ios/drop-in#step-4-additional-client-app
- */
+/*** this class transforms adyen backend data into an event to progress the users payment journey *
+   * https://docs.adyen.com/checkout/ios/drop-in#step-4-additional-client-app
+*/
 import Adyen
 
 struct AdyenResponseHandler {
@@ -21,7 +19,8 @@ struct AdyenResponseHandler {
     let additionalData = "additionalData"
     let paymentMethod = "paymentMethod"
     let cardSummary = "cardSummary"
-    
+    let refusalReason = "refusalReason"
+
     enum AdyenEvent {
         case requiresAction(_ action: Action)
         case paymentAuthorised(_ method: PaymentMethod)
@@ -48,7 +47,6 @@ struct AdyenResponseHandler {
 
     private func resolve(data: [String: Any], transactionId: String) -> AdyenEvent {
         let result = data[resultCode] as? String ?? ""
-        print("result data: \(data)")
 
         if result == authorised {
             let paymentData = data[additionalData] as? [String: Any]
@@ -58,14 +56,11 @@ struct AdyenResponseHandler {
             let method = PaymentMethod(nonce: transactionId,
                                        nonceType: icon,
                                        paymentDescription: lastFour)
-
-            print("Adding method: \(method)")
-            
             return .paymentAuthorised(method)
         }
 
         if result == refused {
-            return .refused("")
+            return .refused((data[refusalReason] as? String) ?? UITexts.Errors.noDetailsAvailable)
         }
 
         return .handleResult(code: result)

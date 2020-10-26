@@ -208,7 +208,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         case .refused(let reason):
             finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason))))
         case .handleResult(let code):
-            print("adyen haldner result: \(code)")
+            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable))))
         }
     }
 }
