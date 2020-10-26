@@ -17,11 +17,17 @@ final class PassengerDetailsView: UIView {
     weak var actions: PassengerDetailsActions?
 
     var details: PassengerDetails? {
-        willSet {
+        set {
             firstNameTextField.set(text: newValue?.firstName)
             surnameTextField.set(text: newValue?.lastName)
             emailTextField.set(text: newValue?.email)
             phoneTextField.set(text: newValue?.phoneNumber)
+        } get {
+            return PassengerDetails(firstName: firstNameTextField.getIntput(),
+                                    lastName: surnameTextField.getIntput(),
+                                    email: emailTextField.getIntput(),
+                                    phoneNumber: phoneTextField.getIntput(),
+                                    locale: "en-gb")
         }
     }
 
@@ -103,14 +109,6 @@ final class PassengerDetailsView: UIView {
                                    leading: textFieldInset,
                                    trailing: -textFieldInset)
         }
-    }
-
-    func getPassengerDetails() -> PassengerDetails {
-        return PassengerDetails(firstName: firstNameTextField.getIntput(),
-                                lastName: surnameTextField.getIntput(),
-                                email: emailTextField.getIntput(),
-                                phoneNumber: phoneTextField.getIntput(),
-                                locale: "en-GB")
     }
 }
 
