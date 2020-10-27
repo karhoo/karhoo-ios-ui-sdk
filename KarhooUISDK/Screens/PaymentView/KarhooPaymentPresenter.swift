@@ -59,7 +59,8 @@ final class KarhooPaymentPresenter: PaymentPresenter {
         case .didAddPaymentMethod(let method):
             view.set(paymentMethod: method)
         case .didFailWithError(let error):
-            (view.parentViewController as? BaseViewController)?.show(error: error)
+            (view.parentViewController as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
+                                                                          message: error?.message ?? "")
         default: break
         }
     }

@@ -71,13 +71,20 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         })
     }
 
+    private var showStorePaymentMethod: Bool {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .guest: return false
+        case .tokenExchange: return false
+        case .karhooUser: return true
+        }
+    }
+
     private func startDropIn(data: Data, adyenKey: String) {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
-        let showsStorePaymentMethodField = (!Karhoo.configuration.authenticationMethod().isGuest() || Karhoo.configuration.authenticationMethod().tokenExchangeSettings != nil)
 
         let configuration = DropInComponent.PaymentMethodsConfiguration()
         configuration.card.publicKey = adyenKey
-        configuration.card.showsStorePaymentMethodField = showsStorePaymentMethodField
+        configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
@@ -194,15 +201,14 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         switch event {
         case .failure:
             finish(result: .completed(value: .didFailWithError(nil)))
-        case .paymentAuthorised(let transactionId):
-            let method = PaymentMethod(nonce: transactionId)
+        case .paymentAuthorised(let method):
             finish(result: .completed(value: .didAddPaymentMethod(method: method)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
         case .refused(let reason):
-            finish(result: .completed(value: .didFailWithError(nil)))
+            finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason))))
         case .handleResult(let code):
-            print("adyen haldner result: \(code)")
+            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable))))
         }
     }
 }
