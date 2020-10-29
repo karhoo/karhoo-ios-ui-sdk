@@ -153,11 +153,64 @@ authService.login(token: "user-jwt").execute { result in
 
 ## Features
 
+Once the SDK is authenticated you can use it to show pre-built but customisable UIViewControllers and UIViews. Consider this framework like a UI API. You feed certain parameters into the view controllers and views, and your end users interactions with the views triggers actionable output.  
+
 ### Screens
 
-### Components
+Within ```KarhooUI().screens()``` are a selection of UIViewControllers. The full list of available screens are listed [**here in our developer portal**](https://developer.karhoo.com/reference#uk-sdk-address-screen). The SDK uses the builder pattern to generate UIViewcontrollers and UIViews, inside the builders the sdk initialises and binds business logic to the UI so interactions are handled, Here's an example of how to build the main booking screen:
 
-### Customisation
+
+```swift
+
+private var bookingScreen: BookingScreen?
+
+bookingScreen = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil, // prefill origin / drop off / date data
+                                                                  passengerDetails: nil, //prefill booking details with customer info
+                                                                  callback: { [weak self] result in
+                                                                        switch result {
+                                                                        case .completed(let bookingScreenResult):
+                                                                            switch bookingScreenResult {
+                                                                            case .tripAllocated(let trip): print("did book trip: ", trip)
+                                                                            default: break
+                                                                            }
+                                                                        default: break
+                                                                        }
+                                                                    }) as? BookingScreen
+self.present(bookingScreen!, animated: true, completion: nil)
+
+```
+
+### View Components
+
+As well as UIViewControllers the SDK offers the UIViews that make up its UIViewControllers. This can be helpful if you want to have more control over your end users experience, or integrate very specific features into your app, such as choosing addresses or booking an existing quote. Avialable components are found in ```karhooUI.components```. Here's an example of the address bar from the booking screen.  
+
+```swift
+
+import KarhooUISDK
+
+private var addressBar: AddressBarView!
+
+addressBar = KarhooUI.components.addressBar(journeyInfo: nil) //prefill component with data. eg a pickup address
+view.addSubview(addressBar)
+
+// setup constraints on the component
+_ = [addressBar.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+     addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, 
+                                         constant: 10.0),
+     addressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                          constant: -10.0)].map { $0.isActive = true }
+
+```
+
+## Customisation
+You can override aspects of the screens and components to align the UI SDK more towards your own brand. This includes the colour scheme, font, translations and custom routing within screens. 
+
+### Translations / text copies
+
+### Colour and assets
+
+### Injectable routing
+
 
 ## Issues
 
