@@ -180,6 +180,15 @@ bookingScreen = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: n
 self.present(bookingScreen!, animated: true, completion: nil)
 
 ```
+<div align="center">
+<a href="https://karhoo.com">
+<img
+alt="Karhoo booking screen"
+width="400px"
+src="https://i.ibb.co/hX6MSqm/Simulator-Screen-Shot-i-Phone-8-Plus-2020-11-03-at-14-47-27.png"
+/>
+</a>
+</div>
 
 ### View Components
 
