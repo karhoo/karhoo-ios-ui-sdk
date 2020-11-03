@@ -12,8 +12,9 @@ src="https://cdn.karhoo.com/s/images/logos/karhoo_logo.png"
 
 The UI SDK extends on our [**Network SDK**](https://github.com/karhoo/karhoo-ios-sdk) with ready to use screens and views for your end users to book rides with [**Karhoo**](https://karhoo.com/) in your application.
 
-For more generl information about the SDKs, chechout [**the karhoo developer portl**](https://developer.karhoo.com/docs/build-apps-using-sdks)
+For more general information about the SDKs, chechout [**the karhoo developer portal**](https://developer.karhoo.com/docs/build-apps-using-sdks)
 
+<a href="https://gph.is/g/aQqR1p2" target="_blank">Visual Demo</a>
 
 ## Installation
 
