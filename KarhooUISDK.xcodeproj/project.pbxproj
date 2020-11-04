@@ -2340,10 +2340,10 @@
 		5C1CD09F241A5D88004AFF7D /* TripDetailsMVP */ = {
 			isa = PBXGroup;
 			children = (
-				5C1CD0A0241A5D88004AFF7D /* JourneyActionsView */,
+				5C1CD0A0241A5D88004AFF7D /* TripActionsView */,
 				5C1CD0A6241A5D88004AFF7D /* DriverDetails */,
 				5C1CD0AB241A5D88004AFF7D /* JourneyDetailsMVP.swift */,
-				5C1CD0AC241A5D88004AFF7D /* JourneyInfoView */,
+				5C1CD0AC241A5D88004AFF7D /* TripInfoView */,
 				5C1CD0AE241A5D88004AFF7D /* KarhooJourneyDetailsPresenter.swift */,
 				5C1CD0BE241A8DB8004AFF7D /* KarhooJourneyDetailsView.swift */,
 				5C1CD0AF241A5D88004AFF7D /* JourneyDetailsViewModel.swift */,
@@ -2351,14 +2351,14 @@
 			path = TripDetailsMVP;
 			sourceTree = "<group>";
 		};
-		5C1CD0A0241A5D88004AFF7D /* JourneyActionsView */ = {
+		5C1CD0A0241A5D88004AFF7D /* TripActionsView */ = {
 			isa = PBXGroup;
 			children = (
 				5C1CD0A1241A5D88004AFF7D /* JourneyOptionsViewModel.swift */,
 				5C1CD0A2241A5D88004AFF7D /* Presenter */,
 				5C1CD0A5241A5D88004AFF7D /* JourneyActionsView.swift */,
 			);
-			path = JourneyActionsView;
+			path = TripActionsView;
 			sourceTree = "<group>";
 		};
 		5C1CD0A2241A5D88004AFF7D /* Presenter */ = {
@@ -2380,12 +2380,12 @@
 			path = DriverDetails;
 			sourceTree = "<group>";
 		};
-		5C1CD0AC241A5D88004AFF7D /* JourneyInfoView */ = {
+		5C1CD0AC241A5D88004AFF7D /* TripInfoView */ = {
 			isa = PBXGroup;
 			children = (
 				5C1CD0AD241A5D88004AFF7D /* JourneyInfoView.swift */,
 			);
-			path = JourneyInfoView;
+			path = TripInfoView;
 			sourceTree = "<group>";
 		};
 		5C2E260E2420F8AC00B1FF0C /* Client */ = {
