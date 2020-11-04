@@ -1294,13 +1294,6 @@
 			path = TripRatingCache;
 			sourceTree = "<group>";
 		};
-		0968D81F22F82B5E00047FCF /* TripFeedbaclkScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TripFeedbaclkScreen;
-			sourceTree = "<group>";
-		};
 		0968D82322F82F7C00047FCF /* TripFeedbackScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1339,8 +1332,8 @@
 			children = (
 				0968D82622F8648200047FCF /* TripFeedback */,
 				093D2E6C2224345700D5F031 /* PopupDialog */,
-				FC83E2E0221EED43008FE26D /* Journey */,
-				FC83E2EC221EEDA3008FE26D /* JourneySummary */,
+				FC83E2E0221EED43008FE26D /* Trip */,
+				FC83E2EC221EEDA3008FE26D /* TripSummary */,
 				FC435F522211D34400FB6BB5 /* Rides */,
 				FCAD1C0C220884B900C3AD1D /* PrebookConfirmation */,
 				09E35D4721E5117C003E840C /* BookingScreen */,
@@ -1450,8 +1443,8 @@
 				403E907722C527EE00F39B91 /* PaymentView */,
 				FC0465A02215A962004E76FE /* UINavigation.swift */,
 				092005D5225B91C1001038ED /* SideMenu */,
-				FC83E24B221DB4C9008FE26D /* JourneyScreen */,
-				FC83E282221DB549008FE26D /* JourneySummaryScreen */,
+				FC83E24B221DB4C9008FE26D /* TripScreen */,
+				FC83E282221DB549008FE26D /* TripSummaryScreen */,
 				09DE8D44221C658B00451B3C /* PaymentScreen */,
 				5CBA2A5F24F5D8CC0091D783 /* BookingRequestScreen */,
 				09C7655F21DE688000CD81AB /* BookingScreen */,
@@ -1770,9 +1763,8 @@
 			isa = PBXGroup;
 			children = (
 				0968D82322F82F7C00047FCF /* TripFeedbackScreen */,
-				0968D81F22F82B5E00047FCF /* TripFeedbaclkScreen */,
-				FC83E2E1221EED4F008FE26D /* JourneySummaryScreen */,
-				FC83E2B5221EEBE2008FE26D /* JourneyScreen */,
+				FC83E2E1221EED4F008FE26D /* TripSummaryScreen */,
+				FC83E2B5221EEBE2008FE26D /* TripScreen */,
 				FC435F452211D30700FB6BB5 /* Rides */,
 				09E35D5F21E5118A003E840C /* BookingScreen */,
 				FC13584521D64F2D005054AE /* BookingRequestScreen */,
@@ -2811,7 +2803,7 @@
 			path = PopupDialog;
 			sourceTree = "<group>";
 		};
-		FC83E24B221DB4C9008FE26D /* JourneyScreen */ = {
+		FC83E24B221DB4C9008FE26D /* TripScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E24D221DB4F4008FE26D /* JourneyMVP.swift */,
@@ -2823,7 +2815,7 @@
 				FC83E268221DB516008FE26D /* AddressBar */,
 				FC83E26B221DB517008FE26D /* Map */,
 			);
-			path = JourneyScreen;
+			path = TripScreen;
 			sourceTree = "<group>";
 		};
 		FC83E268221DB516008FE26D /* AddressBar */ = {
@@ -2884,7 +2876,7 @@
 			path = JourneySummaryInfo;
 			sourceTree = "<group>";
 		};
-		FC83E282221DB549008FE26D /* JourneySummaryScreen */ = {
+		FC83E282221DB549008FE26D /* TripSummaryScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E276221DB549008FE26D /* JourneySummaryMVP.swift */,
@@ -2894,7 +2886,7 @@
 				FC83E27C221DB549008FE26D /* Header */,
 				FC83E281221DB549008FE26D /* JourneySummaryInfo */,
 			);
-			path = JourneySummaryScreen;
+			path = TripSummaryScreen;
 			sourceTree = "<group>";
 		};
 		FC83E2B0221EE909008FE26D /* Logger */ = {
@@ -2908,7 +2900,7 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
-		FC83E2B5221EEBE2008FE26D /* JourneyScreen */ = {
+		FC83E2B5221EEBE2008FE26D /* TripScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E2D0221EEC51008FE26D /* DestinationEta */,
@@ -2916,7 +2908,7 @@
 				FC83E2CE221EEC42008FE26D /* OriginEta */,
 				FC83E2CD221EEC39008FE26D /* UI */,
 			);
-			path = JourneyScreen;
+			path = TripScreen;
 			sourceTree = "<group>";
 		};
 		FC83E2CD221EEC39008FE26D /* UI */ = {
@@ -2962,42 +2954,42 @@
 			path = JourneyOptions;
 			sourceTree = "<group>";
 		};
-		FC83E2E0221EED43008FE26D /* Journey */ = {
+		FC83E2E0221EED43008FE26D /* Trip */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E2F9221EEE53008FE26D /* JourneyDetails */,
+				FC83E2F9221EEE53008FE26D /* TripDetails */,
 				FC83E2F8221EEE4D008FE26D /* DestinationEta */,
 				FC83E2F7221EEE45008FE26D /* OriginEta */,
 				FC83E2F1221EEDF6008FE26D /* MockJourneyView.swift */,
 				FC83E2F2221EEDF6008FE26D /* MockMapViewActions.swift */,
 			);
-			path = Journey;
+			path = Trip;
 			sourceTree = "<group>";
 		};
-		FC83E2E1221EED4F008FE26D /* JourneySummaryScreen */ = {
+		FC83E2E1221EED4F008FE26D /* TripSummaryScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E2EA221EED94008FE26D /* KarhooJourneySummaryPresenterSpec.swift */,
-				FC83E2E7221EED80008FE26D /* JourneySummaryInfo */,
+				FC83E2E7221EED80008FE26D /* TripSummaryInfo */,
 			);
-			path = JourneySummaryScreen;
+			path = TripSummaryScreen;
 			sourceTree = "<group>";
 		};
-		FC83E2E7221EED80008FE26D /* JourneySummaryInfo */ = {
+		FC83E2E7221EED80008FE26D /* TripSummaryInfo */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E2E8221EED8F008FE26D /* JourneySummaryInfoViewModelSpec.swift */,
 			);
-			path = JourneySummaryInfo;
+			path = TripSummaryInfo;
 			sourceTree = "<group>";
 		};
-		FC83E2EC221EEDA3008FE26D /* JourneySummary */ = {
+		FC83E2EC221EEDA3008FE26D /* TripSummary */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E2EE221EEDDE008FE26D /* MockJourneySummaryView.swift */,
 				FC83E2ED221EEDDE008FE26D /* MockTripSummaryView.swift */,
 			);
-			path = JourneySummary;
+			path = TripSummary;
 			sourceTree = "<group>";
 		};
 		FC83E2F7221EEE45008FE26D /* OriginEta */ = {
@@ -3016,12 +3008,12 @@
 			path = DestinationEta;
 			sourceTree = "<group>";
 		};
-		FC83E2F9221EEE53008FE26D /* JourneyDetails */ = {
+		FC83E2F9221EEE53008FE26D /* TripDetails */ = {
 			isa = PBXGroup;
 			children = (
 				FC83E2FC221EEE8A008FE26D /* MockJourneyDetailsView.swift */,
 			);
-			path = JourneyDetails;
+			path = TripDetails;
 			sourceTree = "<group>";
 		};
 		FC8F470A21539E24007841FB = {
