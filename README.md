@@ -161,6 +161,16 @@ Once the SDK is authenticated you can use it to show pre-built but customisable 
 Within ```KarhooUI().screens()``` are a selection of UIViewControllers. The full list of available screens are listed [**here in our developer portal**](https://developer.karhoo.com/reference#uk-sdk-address-screen). The SDK uses the builder pattern to generate UIViewcontrollers and UIViews, inside the builders the sdk initialises and binds business logic to the UI so interactions are handled, Here's an example of how to build the main booking screen:
 
 
+<div align="center">
+<a href="https://karhoo.com">
+<img
+alt="Karhoo booking screen"
+width="400px"
+src="https://i.ibb.co/hX6MSqm/Simulator-Screen-Shot-i-Phone-8-Plus-2020-11-03-at-14-47-27.png"
+/>
+</a>
+</div>
+
 ```swift
 
 private var bookingScreen: BookingScreen?
@@ -180,15 +190,6 @@ bookingScreen = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: n
 self.present(bookingScreen!, animated: true, completion: nil)
 
 ```
-<div align="center">
-<a href="https://karhoo.com">
-<img
-alt="Karhoo booking screen"
-width="400px"
-src="https://i.ibb.co/hX6MSqm/Simulator-Screen-Shot-i-Phone-8-Plus-2020-11-03-at-14-47-27.png"
-/>
-</a>
-</div>
 
 ### View Components
 
@@ -216,8 +217,43 @@ _ = [addressBar.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
 You can override aspects of the screens and components to align the UI SDK more towards your own brand. This includes the colour scheme, font, translations and custom routing within screens. 
 
 ### Translations / text copies
+You can set any label text in any language by overriding the key / value pair in your apps localisation files. A full list of strings is available in 'KarhooUISDK/Translations' directory.  
 
-### Colour and assets
+```
+"Text.GenericTripStatus.Arrived" = "Your Driver has arrived.";
+```
+
+### Colours, Fonts and Assets
+
+#### Color
+The UI in this SDK conforms to a colour scheme, which is overridable by creating your own 'KarhooColors' implementation and injecting it to the SDK.
+
+```swift
+struct MyCompanyKarhooColors: KarhooColors { 
+    
+    var primary: UIColor {
+        return .red
+    }
+}
+
+// in your App/SceneDelegate, inject the colors:
+
+KarhooUI.colors = MyCompanyKarhooColors()
+```
+
+
+#### Fonts
+Also you can use a custom FontFamily struct to inject your application font to provide a consistent user experience.
+
+```swift
+// full font list: https://gist.github.com/tadija/cb4ec0cbf0a89886d488d1d8b595d0e9
+
+let myAppFontFamily = FontFamily(boldFont: String = "TrebuchetMS-Bold",
+                                 regularFont: String = "TrebuchetMS",
+                                 lightFont: String = "TrebuchetMS-Italic")
+                                 
+KarhooUI.fontFamily = myAppFontFamily
+```
 
 ### Injectable routing
 
