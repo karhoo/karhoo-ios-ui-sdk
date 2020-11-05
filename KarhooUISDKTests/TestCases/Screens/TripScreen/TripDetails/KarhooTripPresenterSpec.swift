@@ -14,7 +14,7 @@ import CoreLocation
 final class KarhooJourneyPresenterSpec: XCTestCase {
 
     private var mockInitialTrip: TripInfo!
-    private var mockJourneyView: MockJourneyView!
+    private var mockJourneyView: MockTripView!
     private var mockTripService: MockTripService!
     private var mockDriverTrackingService: MockDriverTrackingService!
     private var mockCancelRide: MockCancelRideBehaviour!
@@ -36,7 +36,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
 
     private func simulateShowingScreen(tripState: TripState) {
         mockInitialTrip = TestUtil.getRandomTrip(state: tripState)
-        mockJourneyView = MockJourneyView()
+        mockJourneyView = MockTripView()
         mockTripService = MockTripService()
         mockCancelRide = MockCancelRideBehaviour()
         mockAnalytics = MockAnalytics()

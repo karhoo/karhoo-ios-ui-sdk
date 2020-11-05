@@ -1,5 +1,5 @@
 //
-//  JourneyMapPresenterSpec.swift
+//  TripMapPresenterSpec.swift
 //  KarhooTests
 //
 //
@@ -12,11 +12,11 @@ import CoreLocation
 
 @testable import KarhooUISDK
 
-class JourneyMapPresenterSpec: XCTestCase {
+class TripMapPresenterSpec: XCTestCase {
 
     private var mockMapView: MockKarhooMapView = MockKarhooMapView()
-    private var testObject: JourneyMapPresenter!
-    private var mockScreen: MockJourneyView!
+    private var testObject: TripMapPresenter!
+    private var mockScreen: MockTripView!
     private var mockPickupPoint: TripLocationDetails!
     private var mockDestinationPoint: TripLocationDetails!
     private var mockMapViewActions: MockMapViewActions!
@@ -24,10 +24,10 @@ class JourneyMapPresenterSpec: XCTestCase {
     override func setUp() {
         super.setUp()
         mockPickupPoint = TestUtil.getRandomTripLocationDetails()
-        mockScreen = MockJourneyView()
+        mockScreen = MockTripView()
         mockDestinationPoint = TestUtil.getRandomTripLocationDetails()
         mockMapViewActions = MockMapViewActions()
-        testObject = KarhooJourneyMapPresenter(originAddress: mockPickupPoint,
+        testObject = KarhooTripMapPresenter(originAddress: mockPickupPoint,
                                                destinationAddress: mockDestinationPoint)
 
         testObject.load(map: mockMapView)

@@ -1,5 +1,5 @@
 //
-//  MockJourneyScreen.swift
+//  MockTripScreen.swift
 //  KarhooTests
 //
 //
@@ -11,7 +11,7 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-final class MockJourneyView: MockBaseViewController, JourneyView {
+final class MockTripView: MockBaseViewController, TripView {
 
     func currentTrip() -> TripInfo {
         return trip!

@@ -1,5 +1,5 @@
 //
-//  JourneyAddressBarPresenterSpec.swift
+//  TripAddressBarPresenterSpec.swift
 //  Karhoo
 //
 //
@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class JourneyAddressBarPresenterSpec: XCTestCase {
+class TripAddressBarPresenterSpec: XCTestCase {
 
     /**
      *  When:   The screen is loaded
@@ -20,7 +20,7 @@ class JourneyAddressBarPresenterSpec: XCTestCase {
      */
     func testScreenLoaded() {
         let testTrip = TestUtil.getRandomTrip()
-        let testObject = KarhooJourneyAddressBarPresenter(trip: testTrip)
+        let testObject = KarhooTripAddressBarPresenter(trip: testTrip)
 
         let testAddressBarView = MockAddressBarView()
         testObject.load(view: testAddressBarView)

@@ -1,5 +1,5 @@
 //
-//  MockTripSummaryView.swift
+//  MockTripSummaryScreen.swift
 //  KarhooTests
 //
 //
@@ -10,10 +10,15 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockJourneySummaryInfoView: JourneySummaryInfoView {
+final class MockTripSummaryView: TripSummaryView {
 
-    private(set) var viewModelSet: JourneySummaryInfoViewModel?
-    func set(viewModel: JourneySummaryInfoViewModel) {
-        viewModelSet = viewModel
+    private(set) var tripSet: TripInfo?
+    func set(trip: TripInfo) {
+        tripSet = trip
+    }
+
+    private(set) var dismissViewCalled = false
+    func dismissView() {
+        dismissViewCalled = true
     }
 }

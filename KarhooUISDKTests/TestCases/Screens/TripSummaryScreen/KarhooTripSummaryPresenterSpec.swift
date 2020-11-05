@@ -1,5 +1,5 @@
 //
-//  KarhooJourneySummaryInfoPresenterSpec.swift
+//  KarhooTripSummaryInfoPresenterSpec.swift
 //  KarhooTests
 //
 //
@@ -12,18 +12,18 @@ import KarhooSDK
 import KarhooUISDK
 @testable import KarhooUISDK
 
-class KarhooJourneySummaryPresenterSpec: XCTestCase {
+class KarhooTripSummaryPresenterSpec: XCTestCase {
 
     private var mockAnalytics: MockAnalytics!
     private var mockCallback: ScreenResult<TripSummaryResult>?
     private var mockTrip: TripInfo!
-    private var mockJourneySummaryScreen: MockJourneySummaryView!
+    private var mockTripSummaryScreen: MockJourneySummaryView!
     private var testObject: KarhooTripSummaryPresenter!
 
     override func setUp() {
         mockAnalytics = MockAnalytics()
         mockTrip = TestUtil.getRandomTrip()
-        mockJourneySummaryScreen = MockJourneySummaryView()
+        mockTripSummaryScreen = MockJourneySummaryView()
         testObject = KarhooTripSummaryPresenter(trip: mockTrip,
                                                    callback: tripSummaryCallback, analytics: mockAnalytics)
     }
@@ -53,8 +53,8 @@ class KarhooJourneySummaryPresenterSpec: XCTestCase {
       * Then: View model should be set
       */
     func testScreenLoading() {
-        testObject.viewLoaded(view: mockJourneySummaryScreen)
-        XCTAssertNotNil(mockJourneySummaryScreen.tripSet)
+        testObject.viewLoaded(view: mockTripSummaryScreen)
+        XCTAssertNotNil(mockTripSummaryScreen.tripSet)
     }
 
     /**

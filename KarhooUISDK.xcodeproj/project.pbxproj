@@ -487,12 +487,12 @@
 		FC83E2DF221EECB0008FE26D /* TripMapPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2DD221EECB0008FE26D /* TripMapPresenterSpec.swift */; };
 		FC83E2E9221EED8F008FE26D /* TripSummaryInfoViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2E8221EED8F008FE26D /* TripSummaryInfoViewModelSpec.swift */; };
 		FC83E2EB221EED94008FE26D /* KarhooTripSummaryPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2EA221EED94008FE26D /* KarhooTripSummaryPresenterSpec.swift */; };
-		FC83E2EF221EEDDE008FE26D /* MockTripSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2ED221EEDDE008FE26D /* MockTripSummaryView.swift */; };
-		FC83E2F0221EEDDE008FE26D /* MockJourneySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2EE221EEDDE008FE26D /* MockJourneySummaryView.swift */; };
-		FC83E2F4221EEDF6008FE26D /* MockJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2F1221EEDF6008FE26D /* MockJourneyView.swift */; };
+		FC83E2EF221EEDDE008FE26D /* MockTripSummaryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2ED221EEDDE008FE26D /* MockTripSummaryInfoView.swift */; };
+		FC83E2F0221EEDDE008FE26D /* MockTripSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2EE221EEDDE008FE26D /* MockTripSummaryView.swift */; };
+		FC83E2F4221EEDF6008FE26D /* MockTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2F1221EEDF6008FE26D /* MockTripView.swift */; };
 		FC83E2F5221EEDF6008FE26D /* MockMapViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2F2221EEDF6008FE26D /* MockMapViewActions.swift */; };
 		FC83E2FB221EEE82008FE26D /* MockDestinationEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FA221EEE82008FE26D /* MockDestinationEtaView.swift */; };
-		FC83E2FD221EEE8A008FE26D /* MockJourneyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FC221EEE8A008FE26D /* MockJourneyDetailsView.swift */; };
+		FC83E2FD221EEE8A008FE26D /* MockTripScreenDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FC221EEE8A008FE26D /* MockTripScreenDetailsView.swift */; };
 		FC83E2FF221EEE94008FE26D /* MockOriginEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FE221EEE94008FE26D /* MockOriginEtaView.swift */; };
 		FC83E301221EF042008FE26D /* MockDriverTrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E300221EF042008FE26D /* MockDriverTrackingService.swift */; };
 		FC83E303221EF0B9008FE26D /* MockTimeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E302221EF0B9008FE26D /* MockTimeFetcher.swift */; };
@@ -1026,12 +1026,12 @@
 		FC83E2DD221EECB0008FE26D /* TripMapPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMapPresenterSpec.swift; sourceTree = "<group>"; };
 		FC83E2E8221EED8F008FE26D /* TripSummaryInfoViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSummaryInfoViewModelSpec.swift; sourceTree = "<group>"; };
 		FC83E2EA221EED94008FE26D /* KarhooTripSummaryPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTripSummaryPresenterSpec.swift; sourceTree = "<group>"; };
-		FC83E2ED221EEDDE008FE26D /* MockTripSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripSummaryView.swift; sourceTree = "<group>"; };
-		FC83E2EE221EEDDE008FE26D /* MockJourneySummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockJourneySummaryView.swift; sourceTree = "<group>"; };
-		FC83E2F1221EEDF6008FE26D /* MockJourneyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockJourneyView.swift; sourceTree = "<group>"; };
+		FC83E2ED221EEDDE008FE26D /* MockTripSummaryInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripSummaryInfoView.swift; sourceTree = "<group>"; };
+		FC83E2EE221EEDDE008FE26D /* MockTripSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripSummaryView.swift; sourceTree = "<group>"; };
+		FC83E2F1221EEDF6008FE26D /* MockTripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripView.swift; sourceTree = "<group>"; };
 		FC83E2F2221EEDF6008FE26D /* MockMapViewActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMapViewActions.swift; sourceTree = "<group>"; };
 		FC83E2FA221EEE82008FE26D /* MockDestinationEtaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDestinationEtaView.swift; sourceTree = "<group>"; };
-		FC83E2FC221EEE8A008FE26D /* MockJourneyDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockJourneyDetailsView.swift; sourceTree = "<group>"; };
+		FC83E2FC221EEE8A008FE26D /* MockTripScreenDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripScreenDetailsView.swift; sourceTree = "<group>"; };
 		FC83E2FE221EEE94008FE26D /* MockOriginEtaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOriginEtaView.swift; sourceTree = "<group>"; };
 		FC83E300221EF042008FE26D /* MockDriverTrackingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDriverTrackingService.swift; sourceTree = "<group>"; };
 		FC83E302221EF0B9008FE26D /* MockTimeFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTimeFetcher.swift; sourceTree = "<group>"; };
@@ -2950,7 +2950,7 @@
 				FC83E2F9221EEE53008FE26D /* TripDetails */,
 				FC83E2F8221EEE4D008FE26D /* DestinationEta */,
 				FC83E2F7221EEE45008FE26D /* OriginEta */,
-				FC83E2F1221EEDF6008FE26D /* MockJourneyView.swift */,
+				FC83E2F1221EEDF6008FE26D /* MockTripView.swift */,
 				FC83E2F2221EEDF6008FE26D /* MockMapViewActions.swift */,
 			);
 			path = Trip;
@@ -2976,8 +2976,8 @@
 		FC83E2EC221EEDA3008FE26D /* TripSummary */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E2EE221EEDDE008FE26D /* MockJourneySummaryView.swift */,
-				FC83E2ED221EEDDE008FE26D /* MockTripSummaryView.swift */,
+				FC83E2EE221EEDDE008FE26D /* MockTripSummaryView.swift */,
+				FC83E2ED221EEDDE008FE26D /* MockTripSummaryInfoView.swift */,
 			);
 			path = TripSummary;
 			sourceTree = "<group>";
@@ -3001,7 +3001,7 @@
 		FC83E2F9221EEE53008FE26D /* TripDetails */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E2FC221EEE8A008FE26D /* MockJourneyDetailsView.swift */,
+				FC83E2FC221EEE8A008FE26D /* MockTripScreenDetailsView.swift */,
 			);
 			path = TripDetails;
 			sourceTree = "<group>";
@@ -3807,7 +3807,7 @@
 				09ED7B1C21C2A7E000CF6D73 /* KarhooRecentAddressProviderSpec.swift in Sources */,
 				FC13583F21D64E18005054AE /* BookingDetailsSpec.swift in Sources */,
 				0966BDBC225DFFE60032C76C /* TripExtSpec.swift in Sources */,
-				FC83E2F4221EEDF6008FE26D /* MockJourneyView.swift in Sources */,
+				FC83E2F4221EEDF6008FE26D /* MockTripView.swift in Sources */,
 				FC658F492216D0BB006C48F2 /* MockFlightDetailsScreenBuilder.swift in Sources */,
 				09E68326237972C000BFF5B9 /* KarhooAddressMapPresenterSpec.swift in Sources */,
 				0968F10021BE850F00745370 /* MockPollCall.swift in Sources */,
@@ -3875,7 +3875,7 @@
 				09DCC7F521BE7CE000DF02B9 /* KarhooAddressPresenterSpec.swift in Sources */,
 				FCAD1C0422087CA700C3AD1D /* PrebookConfirmationViewModelSpec.swift in Sources */,
 				09BDD19821C2CBD00074421C /* FlightDetailsPresenterSpec.swift in Sources */,
-				FC83E2EF221EEDDE008FE26D /* MockTripSummaryView.swift in Sources */,
+				FC83E2EF221EEDDE008FE26D /* MockTripSummaryInfoView.swift in Sources */,
 				FC435F642211D3D700FB6BB5 /* MockRideCellStackButtonActions.swift in Sources */,
 				FC83E2F5221EEDF6008FE26D /* MockMapViewActions.swift in Sources */,
 				090F08E121C934EB000C7E50 /* MockTimeSinceNowProvider.swift in Sources */,
@@ -3898,7 +3898,7 @@
 				FC435F562211D38F00FB6BB5 /* MockRidesView.swift in Sources */,
 				09E35D7321E5118A003E840C /* KarhooQuoteListPresenterSpec.swift in Sources */,
 				0968D82522F82F8C00047FCF /* TripFeedbackPresenterSpec.swift in Sources */,
-				FC83E2F0221EEDDE008FE26D /* MockJourneySummaryView.swift in Sources */,
+				FC83E2F0221EEDDE008FE26D /* MockTripSummaryView.swift in Sources */,
 				FC83E2D3221EEC93008FE26D /* KarhooDestinationEtaPresenterSpec.swift in Sources */,
 				FC658F712216F8B7006C48F2 /* MockPaymentScreenBuilder.swift in Sources */,
 				FC435F4D2211D34100FB6BB5 /* RideCellStackButtonPresenterSpec.swift in Sources */,
@@ -3922,7 +3922,7 @@
 				FC435F782211DC5600FB6BB5 /* TripMetaDataViewModelSpec.swift in Sources */,
 				FC04659822148912004E76FE /* PopupDialogPresenterSpec.swift in Sources */,
 				09DCC7F621BE7CE000DF02B9 /* KarhooAddressSearchProviderSpec.swift in Sources */,
-				FC83E2FD221EEE8A008FE26D /* MockJourneyDetailsView.swift in Sources */,
+				FC83E2FD221EEE8A008FE26D /* MockTripScreenDetailsView.swift in Sources */,
 				0968F0EB21BE7FF100745370 /* MockAddressSearchBar.swift in Sources */,
 				FC658F4D2216D0BB006C48F2 /* MockAddressScreenBuilder.swift in Sources */,
 				FC83E2D9221EEC9E008FE26D /* KarhooTripPresenterSpec.swift in Sources */,

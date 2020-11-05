@@ -1,5 +1,5 @@
 //
-//  JourneySummaryInfoViewModelSpec.swift
+//  TripSummaryInfoViewModelSpec.swift
 //  KarhooTests
 //
 //
@@ -11,7 +11,7 @@ import KarhooSDK
 import KarhooUISDK
 @testable import KarhooUISDK
 
-final class JourneySummaryInfoViewModelSpec: XCTestCase {
+final class TripSummaryInfoViewModelSpec: XCTestCase {
 
     private var testObject: TripSummaryInfoViewModel!
 
