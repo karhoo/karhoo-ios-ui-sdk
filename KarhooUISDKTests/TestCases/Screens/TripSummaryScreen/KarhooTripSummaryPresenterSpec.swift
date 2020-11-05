@@ -15,7 +15,7 @@ import KarhooUISDK
 class KarhooJourneySummaryPresenterSpec: XCTestCase {
 
     private var mockAnalytics: MockAnalytics!
-    private var mockCallback: ScreenResult<JourneySummaryResult>?
+    private var mockCallback: ScreenResult<TripSummaryResult>?
     private var mockTrip: TripInfo!
     private var mockJourneySummaryScreen: MockJourneySummaryView!
     private var testObject: KarhooJourneySummaryPresenter!
@@ -28,7 +28,7 @@ class KarhooJourneySummaryPresenterSpec: XCTestCase {
                                                    callback: tripSummaryCallback, analytics: mockAnalytics)
     }
 
-    private func tripSummaryCallback(result: ScreenResult<JourneySummaryResult>?) {
+    private func tripSummaryCallback(result: ScreenResult<TripSummaryResult>?) {
         mockCallback = result
     }
 

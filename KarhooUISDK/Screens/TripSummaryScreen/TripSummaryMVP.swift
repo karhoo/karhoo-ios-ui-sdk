@@ -1,5 +1,5 @@
 //
-//  JourneySummaryMVP.swift
+//  TripSummaryMVP.swift
 //  Karhoo
 //
 //
@@ -9,17 +9,17 @@
 import Foundation
 import KarhooSDK
 
-protocol JourneySummaryPresenter {
-    func viewLoaded(view: JourneySummaryView)
+protocol TripSummaryPresenter {
+    func viewLoaded(view: TripSummaryView)
     func bookReturnRidePressed()
     func exitPressed()
 }
 
-protocol JourneySummaryView: AnyObject {
+protocol TripSummaryView: AnyObject {
     func set(trip: TripInfo)
 }
 
-public enum JourneySummaryResult {
+public enum TripSummaryResult {
     case rebookWithBookingDetails(_: BookingDetails)
     case closed
 }

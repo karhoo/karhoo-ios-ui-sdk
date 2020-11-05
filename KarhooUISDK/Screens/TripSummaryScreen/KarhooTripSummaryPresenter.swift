@@ -1,5 +1,5 @@
 //
-//  KarhooJourneySummaryPresenter.swift
+//  KarhooTripSummaryPresenter.swift
 //  Karhoo
 //
 //
@@ -8,22 +8,22 @@
 
 import KarhooSDK
 
-final class KarhooJourneySummaryPresenter: JourneySummaryPresenter {
+final class KarhooJourneySummaryPresenter: TripSummaryPresenter {
 
-    private var journeySummaryView: JourneySummaryView?
-    private let callback: ScreenResultCallback<JourneySummaryResult>
+    private var journeySummaryView: TripSummaryView?
+    private let callback: ScreenResultCallback<TripSummaryResult>
     private let analytics: Analytics
     private let trip: TripInfo
 
     init(trip: TripInfo,
-         callback: @escaping ScreenResultCallback<JourneySummaryResult>,
+         callback: @escaping ScreenResultCallback<TripSummaryResult>,
          analytics: Analytics = KarhooAnalytics()) {
         self.trip = trip
         self.callback = callback
         self.analytics = analytics
     }
 
-    func viewLoaded(view: JourneySummaryView) {
+    func viewLoaded(view: TripSummaryView) {
         self.journeySummaryView = view
         setViewContent()
     }
@@ -45,7 +45,7 @@ final class KarhooJourneySummaryPresenter: JourneySummaryPresenter {
         finishWithResult(.completed(result: .closed))
     }
 
-    private func finishWithResult(_ result: ScreenResult<JourneySummaryResult>) {
+    private func finishWithResult(_ result: ScreenResult<TripSummaryResult>) {
         callback(result)
     }
 
