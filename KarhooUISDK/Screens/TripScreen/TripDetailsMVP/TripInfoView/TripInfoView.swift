@@ -1,6 +1,6 @@
 //
-//  JourneyInfoView.swift
-//  JourneyVIew
+//  TripInfoView.swift
+//  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct KHJourneyInfoViewID {
+public struct KHTripInfoViewID {
     public static let driverImage = "driver_image"
     public static let driverName = "driver_name_label"
     public static let vehicleDetails = "vehicle_details_label"
@@ -16,12 +16,12 @@ public struct KHJourneyInfoViewID {
     public static let vehicleLicense = "vehicle_license_view"
 }
 
-public protocol JourneyInfoViewDelegate: class {
+public protocol TripInfoViewDelegate: class {
     func rideOptionsTapped(_ value: Bool)
     func driverImageTapped(_ image: UIImage)
 }
 
-final class JourneyInfoView: UIView {
+final class TripInfoView: UIView {
     
     private var container: UIView!
     private var driverImage: LoadingImageView!
@@ -32,7 +32,7 @@ final class JourneyInfoView: UIView {
     private var dropDownButton: DropDownButton!
     private var isActionViewVisible: Bool!
     
-    public weak var delegate: JourneyInfoViewDelegate?
+    public weak var delegate: TripInfoViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -65,7 +65,7 @@ final class JourneyInfoView: UIView {
         
         driverImage = LoadingImageView()
         driverImage.isAccessibilityElement = true
-        driverImage.accessibilityIdentifier = KHJourneyInfoViewID.driverImage
+        driverImage.accessibilityIdentifier = KHTripInfoViewID.driverImage
         driverImage.translatesAutoresizingMaskIntoConstraints = false
         let imageTapGesture = UITapGestureRecognizer(target: self,
                                                      action: #selector(driverImageTapped))
@@ -74,7 +74,7 @@ final class JourneyInfoView: UIView {
         container.addSubview(driverImage)
         
         vehicleLicense = BordedLabel(title: "")
-        vehicleLicense.accessibilityIdentifier = KHJourneyInfoViewID.vehicleLicense
+        vehicleLicense.accessibilityIdentifier = KHTripInfoViewID.vehicleLicense
         container.addSubview(vehicleLicense)
         
         dropDownButton = DropDownButton()
@@ -83,7 +83,7 @@ final class JourneyInfoView: UIView {
         container.addSubview(dropDownButton)
         
         driverName = UILabel()
-        driverName.accessibilityIdentifier = KHJourneyInfoViewID.driverName
+        driverName.accessibilityIdentifier = KHTripInfoViewID.driverName
         driverName.isAccessibilityElement = true
         driverName.translatesAutoresizingMaskIntoConstraints = false
         driverName.font = UIFont.systemFont(ofSize: 12.0, weight: .semibold)
@@ -94,7 +94,7 @@ final class JourneyInfoView: UIView {
         container.addSubview(driverName)
 
         vehicleDetails = UILabel()
-        vehicleDetails.accessibilityIdentifier = KHJourneyInfoViewID.vehicleDetails
+        vehicleDetails.accessibilityIdentifier = KHTripInfoViewID.vehicleDetails
         vehicleDetails.isAccessibilityElement = true
         vehicleDetails.translatesAutoresizingMaskIntoConstraints = false
         vehicleDetails.font = UIFont.systemFont(ofSize: 10.0, weight: .semibold)
@@ -104,7 +104,7 @@ final class JourneyInfoView: UIView {
         container.addSubview(vehicleDetails)
         
         driverLicenseNumber = UILabel()
-        driverLicenseNumber.accessibilityIdentifier = KHJourneyInfoViewID.driverLicenseNumber
+        driverLicenseNumber.accessibilityIdentifier = KHTripInfoViewID.driverLicenseNumber
         driverLicenseNumber.isAccessibilityElement = true
         driverLicenseNumber.translatesAutoresizingMaskIntoConstraints = false
         driverLicenseNumber.font = UIFont.systemFont(ofSize: 10.0)
@@ -153,7 +153,7 @@ final class JourneyInfoView: UIView {
 }
 
 // MARK: Setters
-extension JourneyInfoView {
+extension TripInfoView {
     
     public func setDriverName(_ name: String) {
         driverName.text = name
@@ -185,7 +185,7 @@ extension JourneyInfoView {
 }
 
 // MARK: Getters
-extension JourneyInfoView {
+extension TripInfoView {
     
     public func getDriverImage() -> UIImage? {
         return driverImage.image
@@ -196,7 +196,7 @@ extension JourneyInfoView {
        }
 }
 
-extension JourneyInfoView: DropDownButtonDelegate {
+extension TripInfoView: DropDownButtonDelegate {
     func buttonTapped(_ value: Bool) {
         delegate?.rideOptionsTapped(value)
     }

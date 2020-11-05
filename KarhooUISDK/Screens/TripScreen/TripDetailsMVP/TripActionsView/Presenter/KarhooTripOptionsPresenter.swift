@@ -1,5 +1,5 @@
 //
-//  KarhooJourneyOptionsPresenter.swift
+//  KarhooTripOptionsPresenter.swift
 //  Karhoo
 //
 //
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class KarhooJourneyOptionsPresenter: JourneyOptionsPresenter {
+final class KarhooTripOptionsPresenter: TripOptionsPresenter {
 
     private let phoneNumberCaller: PhoneNumberCallerProtocol
 

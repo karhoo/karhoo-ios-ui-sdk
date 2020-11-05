@@ -1,5 +1,5 @@
 //
-//  JourneyDetailsViewModel.swift
+//  TripScreenDetailsViewModel.swift
 //  Karhoo
 //
 //
@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-struct JourneyDetailsViewModel {
+struct TripScreenDetailsViewModel {
 
     let driverName: String
     let vehicleDescription: String

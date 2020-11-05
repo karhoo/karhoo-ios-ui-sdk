@@ -1,5 +1,5 @@
 //
-//  JourneyOptionsMVP.swift
+//  TripOptionsMVP.swift
 //  Karhoo
 //
 //
@@ -8,19 +8,19 @@
 
 import Foundation
 
-protocol JourneyOptionsView {
+protocol TripOptionsView {
 
-    func set(actions: JourneyOptionsActions)
+    func set(actions: TripOptionsActions)
 
-    func set(viewModel: JourneyOptionsViewModel)
+    func set(viewModel: TripOptionsViewModel)
 }
 
-protocol JourneyOptionsPresenter {
+protocol TripOptionsPresenter {
 
     func call(phoneNumber: String)
 }
 
-protocol JourneyOptionsActions: AnyObject {
+protocol TripOptionsActions: AnyObject {
 
     func cancelSelected()
 }

@@ -1,5 +1,5 @@
 //
-//  JourneyDetails.swift
+//  TripScreenDetails.swift
 //  Karhoo
 //
 //
@@ -8,26 +8,27 @@
 
 import UIKit
 
-protocol JourneyDetailsView: UIView {
+//TODO: Rename this to Trip and sort old TripDetails to RideDetails (Ride details are currently called TripDetails)
+protocol TripScreenDetailsView: UIView {
 
-    func set(actions: JourneyDetailsActions,
+    func set(actions: TripScreenDetailsActions,
              detailsSuperview: UIView)
 
     func start(tripId: String)
 
     func stop()
 
-    func updateViewModel(journeyDetailsViewModel: JourneyDetailsViewModel)
+    func updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel)
 }
 
-protocol JourneyDetailsPresenter {
+protocol TripScreenDetailsPresenter {
 
     func startMonitoringTrip(tripId: String)
 
     func stopMonitoringTrip()
 }
 
-protocol JourneyDetailsActions: AnyObject {
+protocol TripScreenDetailsActions: AnyObject {
 
     func cancelTrip()
     

@@ -1,5 +1,5 @@
 //
-//  JourneyOptionsViewModel.swift
+//  TripOptionsViewModel.swift
 //  Karhoo
 //
 //
@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-struct JourneyOptionsViewModel {
+struct TripOptionsViewModel {
 
     let tripContactInfo: String
     let tripContactNumber: String

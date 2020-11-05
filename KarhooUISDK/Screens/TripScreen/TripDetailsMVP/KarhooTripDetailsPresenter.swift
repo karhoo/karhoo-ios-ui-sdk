@@ -1,5 +1,5 @@
 //
-//  KarhooJourneyDetailsPresenter.swift
+//  KarhooTripScreenDetailsPresenter.swift
 //  Karhoo
 //
 //
@@ -8,16 +8,16 @@
 
 import KarhooSDK
 
-final class KahrooJourneyDetailsPresenter: JourneyDetailsPresenter {
+final class KahrooTripScreenDetailsPresenter: TripScreenDetailsPresenter {
 
     private let tripService: TripService
-    private let view: JourneyDetailsView?
+    private let view: TripScreenDetailsView?
     private var trip: TripInfo?
     private var tripObservable: Observable<TripInfo>?
     private var tripObserver: Observer<TripInfo>?
 
     init(tripService: TripService = Karhoo.getTripService(),
-         view: JourneyDetailsView) {
+         view: TripScreenDetailsView) {
         self.tripService = tripService
         self.view = view
     }
@@ -42,7 +42,7 @@ final class KahrooJourneyDetailsPresenter: JourneyDetailsPresenter {
 
     private func handleTripUpdate(trip: TripInfo) {
         self.trip = trip
-        view?.updateViewModel(journeyDetailsViewModel: JourneyDetailsViewModel(trip: trip))
+        view?.updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
     }
 
     private func tripUpdateFailed(error: KarhooError?) {}

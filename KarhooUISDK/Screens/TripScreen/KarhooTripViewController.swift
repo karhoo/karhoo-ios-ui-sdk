@@ -23,7 +23,7 @@ final class KarhooTripViewController: UIViewController, TripView {
     private var closeButton: UIButton!
     private var gradientView: GradientView!
     private var notificationView: KarhooNotificationView!
-    private var tripDetailsView: JourneyDetailsView!
+    private var tripDetailsView: TripScreenDetailsView!
     private var originEtaView: KarhooOriginEtaView!
     private var destinationEtaView: KarhooDestinationEtaView!
     private var locateButton: UIButton!
@@ -96,7 +96,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         map.set(focusButtonHidden: true)
         view.insertSubview(map, at: 0)
         
-        tripDetailsView = KarhooJourneyDetailsView()
+        tripDetailsView = KarhooTripScreenDetailsView()
         view.addSubview(tripDetailsView)
         
         locateButton = UIButton(type: .custom)
@@ -221,7 +221,7 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     func set(trip: TripInfo) {
         notificationView.change(title: TripInfoUtility.longDescription(trip: trip))
-        tripDetailsView.updateViewModel(journeyDetailsViewModel: JourneyDetailsViewModel(trip: trip))
+        tripDetailsView.updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
     }
 
     func update(driverLocation: CLLocation) {
@@ -321,7 +321,7 @@ final class KarhooTripViewController: UIViewController, TripView {
     }
 }
 
-extension KarhooTripViewController: JourneyDetailsActions {
+extension KarhooTripViewController: TripScreenDetailsActions {
     func cancelTrip() {
         presenter.cancelBookingPressed()
     }

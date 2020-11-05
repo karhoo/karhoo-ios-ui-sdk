@@ -1,6 +1,6 @@
 //
-//  JourneyActionsView.swift
-//  JourneyVIew
+//  TripActionsView.swift
+//  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-public struct KHJourneyActionsViewID {
+public struct KHTripActionsViewID {
     public static let cancelRideButton = "cancel_ride_button"
     public static let contactDriverButton = "contact_driver_button"
 }
 
-final class JourneyActionsView: UIView {
+final class TripActionsView: UIView {
     
     private var cancelRideButton: UIButton!
     private var contactDriverButton: UIButton!
     private var container: UIView!
     private var buttonContainer: UIStackView!
     
-    private weak var actions: JourneyOptionsActions?
-    private var presenter: JourneyOptionsPresenter?
-    private var viewModel: JourneyOptionsViewModel?
+    private weak var actions: TripOptionsActions?
+    private var presenter: TripOptionsPresenter?
+    private var viewModel: TripOptionsViewModel?
     
     public init() {
         super.init(frame: .zero)
@@ -38,7 +38,7 @@ final class JourneyActionsView: UIView {
         accessibilityIdentifier = "journey_actions_view"
         translatesAutoresizingMaskIntoConstraints = false
         
-        presenter = KarhooJourneyOptionsPresenter()
+        presenter = KarhooTripOptionsPresenter()
         
         container = UIView()
         container.accessibilityIdentifier = "container"
@@ -67,7 +67,7 @@ final class JourneyActionsView: UIView {
         
         cancelRideButton = UIButton(type: .custom)
         cancelRideButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelRideButton.accessibilityIdentifier = KHJourneyActionsViewID.cancelRideButton
+        cancelRideButton.accessibilityIdentifier = KHTripActionsViewID.cancelRideButton
         cancelRideButton.setTitle(UITexts.Journey.journeyCancelRide, for: .normal)
         cancelRideButton.backgroundColor = .white
         cancelRideButton.setTitleColor(KarhooUI.colors.neonRed, for: .normal)
@@ -81,7 +81,7 @@ final class JourneyActionsView: UIView {
         
         contactDriverButton = UIButton(type: .custom)
         contactDriverButton.translatesAutoresizingMaskIntoConstraints = false
-        contactDriverButton.accessibilityIdentifier = KHJourneyActionsViewID.contactDriverButton
+        contactDriverButton.accessibilityIdentifier = KHTripActionsViewID.contactDriverButton
         contactDriverButton.setTitle(UITexts.Journey.journeyContactDriver, for: .normal)
         contactDriverButton.backgroundColor = .white
         contactDriverButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0,
@@ -114,7 +114,7 @@ final class JourneyActionsView: UIView {
         presenter?.call(phoneNumber: number)
     }
     
-    public func set(viewModel: JourneyOptionsViewModel) {
+    public func set(viewModel: TripOptionsViewModel) {
         self.viewModel = viewModel
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.cancelRideButton.isHidden = !viewModel.cancelEnabled
@@ -122,7 +122,7 @@ final class JourneyActionsView: UIView {
         })
     }
     
-    public func set(actions: JourneyOptionsActions) {
+    public func set(actions: TripOptionsActions) {
         self.actions = actions
     }
 }
