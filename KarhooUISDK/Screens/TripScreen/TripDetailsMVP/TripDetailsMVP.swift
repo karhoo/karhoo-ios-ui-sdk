@@ -18,7 +18,7 @@ protocol TripScreenDetailsView: UIView {
 
     func stop()
 
-    func updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel)
+    func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel)
 }
 
 protocol TripScreenDetailsPresenter {
@@ -32,6 +32,6 @@ protocol TripScreenDetailsActions: AnyObject {
 
     func cancelTrip()
     
-    func journeyDetailViewDidChangeSize()
+    func tripDetailViewDidChangeSize()
     
 }

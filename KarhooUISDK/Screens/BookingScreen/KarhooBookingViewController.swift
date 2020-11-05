@@ -23,7 +23,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
     private let grabberTopPadding: CGFloat = 6.0
-    private var journeyInfo: TripLocationInfo?
+    private var tripInfo: TripLocationInfo?
     private let presenter: BookingPresenter
     private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
@@ -35,13 +35,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackMailComposer = KarhooFeedbackMailComposer(),
          analyticsProvider: Analytics = KarhooAnalytics(),
-         journeyInfo: TripLocationInfo? = nil) {
+         tripInfo: TripLocationInfo? = nil) {
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
-        self.journeyInfo = journeyInfo
+        self.tripInfo = tripInfo
         
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
@@ -76,7 +76,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
              navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
 
-        addressBar = KarhooUI.components.addressBar(journeyInfo: journeyInfo)
+        addressBar = KarhooUI.components.addressBar(tripInfo: tripInfo)
 
         view.insertSubview(addressBar, aboveSubview: mapView)
 
@@ -111,15 +111,15 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let injectedJourney = journeyInfo {
-            addressBarPresenter.setJourneyInfo(injectedJourney)
+        if let injectedTrip = tripInfo {
+            addressBarPresenter.setTripInfo(injectedTrip)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mapPresenter.load(map: mapView, reverseGeolocate: journeyInfo != nil)
+        mapPresenter.load(map: mapView, reverseGeolocate: tripInfo != nil)
         mapView.set(presenter: mapPresenter)
     }
 
@@ -225,7 +225,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
         let location = trip.origin.position.toCLLocation()
         mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
-        mapView.removeJourneyLine()
+        mapView.removeTripLine()
     }
 
     func hideAllocationScreen() {
@@ -336,7 +336,7 @@ extension KarhooBookingViewController: BookingScreen {
     }
 
     func openTrip(_ trip: TripInfo) {
-        presenter.goToJourneyView(trip: trip)
+        presenter.goToTripView(trip: trip)
     }
 }
 
@@ -349,23 +349,23 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         self.locationService = locationService
     }
 
-    public func buildBookingScreen(journeyInfo: TripLocationInfo? = nil,
+    public func buildBookingScreen(tripInfo: TripLocationInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
         PassengerInfo.shared.passengerDetails = passengerDetails
 
-        var validatedJourneyInfo: TripLocationInfo?
+        var validatedTripInfo: TripLocationInfo?
 
-        if let date = journeyInfo?.date {
-            validatedJourneyInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==
-                .orderedDescending ? nil : journeyInfo
+        if let date = tripInfo?.date {
+            validatedTripInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==
+                .orderedDescending ? nil : tripInfo
         } else {
-            validatedJourneyInfo = journeyInfo
+            validatedTripInfo = tripInfo
         }
 
         let bookingPresenter = KarhooBookingPresenter(callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter,
-                                                                journeyInfo: validatedJourneyInfo)
+                                                                tripInfo: validatedTripInfo)
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting

@@ -54,7 +54,7 @@ final class KarhooDestinationEtaView: UIView, DestinationEtaView {
         arrivalLabel.accessibilityIdentifier = KHDestinationEtaViewID.arrivalLabel
         arrivalLabel.font = KarhooUI.fonts.captionRegular()
         arrivalLabel.textColor = KarhooUI.colors.medGrey
-        arrivalLabel.text = UITexts.Journey.arrival
+        arrivalLabel.text = UITexts.Trip.arrival
         arrivalLabel.textAlignment = .center
         containerView.addSubview(arrivalLabel)
         

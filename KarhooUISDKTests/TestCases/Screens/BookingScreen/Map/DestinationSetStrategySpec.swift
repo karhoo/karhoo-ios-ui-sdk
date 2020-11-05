@@ -73,7 +73,7 @@ class DestinationSetStrategySpec: XCTestCase {
         XCTAssert(mockMap.removedPins.count == 2)
         XCTAssert(mockMap.removedPins.contains(pickupPinTag))
         XCTAssert(mockMap.removedPins.contains(destinationPinTag))
-        XCTAssertFalse(mockMap.addJourneyLineCalled)
+        XCTAssertFalse(mockMap.addTripLineCalled)
     }
 
     /**
@@ -99,7 +99,7 @@ class DestinationSetStrategySpec: XCTestCase {
         XCTAssertEqual(mockMap.addedPins[destinationPinTag]?.coordinate,
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
-        XCTAssertTrue(mockMap.addJourneyLineCalled)
+        XCTAssertTrue(mockMap.addTripLineCalled)
     }
 
     /**
@@ -133,7 +133,7 @@ class DestinationSetStrategySpec: XCTestCase {
         XCTAssertEqual(mockMap.addedPins[destinationPinTag]?.coordinate,
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
-        XCTAssertTrue(mockMap.addJourneyLineCalled)
+        XCTAssertTrue(mockMap.addTripLineCalled)
     }
 
     /**

@@ -16,12 +16,12 @@ public protocol ScreenBuilders {
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
     var flightDetailsScreenBuilder: FlightDetailsScreenBuilder { get }
-    var journeyScreenBuilder: TripScreenBuilder { get }
+    var tripScreenBuilder: TripScreenBuilder { get }
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
-    var journeySummaryScreenBuilder: JourneySummaryScreenBuilder { get }
+    var tripSummaryScreenBuilder: TripSummaryScreenBuilder { get }
     var paymentScreenBuilder: PaymentScreenBuilder { get }
     var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
@@ -56,8 +56,8 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
         return BraintreePaymentScreenBuilder()
     }
 
-    var journeySummaryScreenBuilder: JourneySummaryScreenBuilder {
-        return TripSummaryViewController.KarhooJourneySummaryScreenBuilder()
+    var tripSummaryScreenBuilder: TripSummaryScreenBuilder {
+        return TripSummaryViewController.KarhooTripSummaryScreenBuilder()
     }
 
     var sideMenuBuilder: SideMenuBuilder {
@@ -96,8 +96,8 @@ public extension ScreenBuilders {
         return FlightDetailsViewController.KarhooFlightDetailsScreenBuilder()
     }
 
-    var journeyScreenBuilder: TripScreenBuilder {
-        return KarhooTripViewController.KarhooJourneyScreenBuilder()
+    var tripScreenBuilder: TripScreenBuilder {
+        return KarhooTripViewController.KarhooTripScreenBuilder()
     }
 
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder {

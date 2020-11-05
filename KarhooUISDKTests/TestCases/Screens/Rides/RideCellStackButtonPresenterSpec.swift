@@ -46,7 +46,7 @@ class RideCellStackButtonPresenterSpec: XCTestCase {
      * Given: An upcoming trip where the driver is not yet en route or allocated
      * Then: The presenter should set up one button with correct text and contact supplier option
      */
-    func testPreJourneyTrip() {
+    func testPreTripTrip() {
         let preDriverAllocatedTrip = TestUtil.getRandomTrip(state: .confirmed)
         testObject = RideCellStackButtonPresenter(stackButton: mockStackButtonView,
                                                   trip: preDriverAllocatedTrip,

@@ -116,17 +116,17 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
         presenter?.stopMonitoringTrip()
     }
 
-    func updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel) {
-        self.tripScreenDetailsViewModel = journeyDetailsViewModel
-        tripInfoView.setDriverName(journeyDetailsViewModel.driverName)
-        tripInfoView.setVehicleDetails(journeyDetailsViewModel.vehicleDescription)
-        tripInfoView.setDriverLicenseNumber(journeyDetailsViewModel.driverRegulatoryLicenseNumber)
-        tripInfoView.setLicensePlateNumber(journeyDetailsViewModel.vehicleLicensePlate)
-        tripInfoView.setDriverImage(journeyDetailsViewModel.driverPhotoUrl,
+    func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
+        self.tripScreenDetailsViewModel = tripDetailsViewModel
+        tripInfoView.setDriverName(tripDetailsViewModel.driverName)
+        tripInfoView.setVehicleDetails(tripDetailsViewModel.vehicleDescription)
+        tripInfoView.setDriverLicenseNumber(tripDetailsViewModel.driverRegulatoryLicenseNumber)
+        tripInfoView.setLicensePlateNumber(tripDetailsViewModel.vehicleLicensePlate)
+        tripInfoView.setDriverImage(tripDetailsViewModel.driverPhotoUrl,
                                        placeholder: "driverImagePlaceholder")
 
-        let journeyOptionsViewModel = TripOptionsViewModel(trip: journeyDetailsViewModel.trip)
-        tripActionsView.set(viewModel: journeyOptionsViewModel)
+        let tripOptionsViewModel = TripOptionsViewModel(trip: tripDetailsViewModel.trip)
+        tripActionsView.set(viewModel: tripOptionsViewModel)
     }
 }
 

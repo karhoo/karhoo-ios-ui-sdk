@@ -44,19 +44,19 @@ class EmptyBookingMapStrategySpec: XCTestCase {
     /**
      * Given: User has location
      * When: focusing map
-     * Then: booking status journey info must be updated with new potential origin
+     * Then: booking status trip info must be updated with new potential origin
      */
     func testFocusMap() {
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
 
         testObject.start(bookingDetails: nil)
 
-        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockBookingStatus.tripInfoSet?.origin)
     }
 
     /**
      * When: focusing map as guest
-     * Then: Journey info should be nil (reverse geo not supported)
+     * Then: Trip info should be nil (reverse geo not supported)
      */
     func testFocusMapGuest() {
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
@@ -64,7 +64,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
 
         testObject.start(bookingDetails: nil)
 
-        XCTAssertNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNil(mockBookingStatus.tripInfoSet?.origin)
     }
 
     /**

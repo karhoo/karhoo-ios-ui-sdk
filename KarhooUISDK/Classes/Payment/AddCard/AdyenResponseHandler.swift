@@ -5,7 +5,7 @@
 //  Copyright © 2020 Flit Technologies Ltd. All rights reserved.
 //
 
-/*** this class transforms adyen backend data into an event to progress the users payment journey *
+/*** this class transforms adyen backend data into an event to progress the users payment trip *
    * https://docs.adyen.com/checkout/ios/drop-in#step-4-additional-client-app
 */
 import Adyen

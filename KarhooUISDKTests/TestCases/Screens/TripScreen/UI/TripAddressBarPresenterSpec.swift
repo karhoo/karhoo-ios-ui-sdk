@@ -25,7 +25,7 @@ class TripAddressBarPresenterSpec: XCTestCase {
         let testAddressBarView = MockAddressBarView()
         testObject.load(view: testAddressBarView)
 
-        XCTAssertTrue(testAddressBarView.setDisplayJourneyStateCalled)
+        XCTAssertTrue(testAddressBarView.setDisplayTripStateCalled)
         XCTAssertEqual(testAddressBarView.pickupDisplayAddressSet, testTrip.origin.displayAddress)
         XCTAssertEqual(testAddressBarView.destinationDisplayAddressSet!, testTrip.destination?.displayAddress)
     }

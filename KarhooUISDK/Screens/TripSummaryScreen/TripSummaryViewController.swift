@@ -17,7 +17,7 @@ class TripSummaryViewController: UIViewController, TripSummaryView {
 
     init(presenter: TripSummaryPresenter) {
         self.presenter = presenter
-        super.init(nibName: "JourneySummaryViewController", bundle: .current)
+        super.init(nibName: "TripSummaryViewController", bundle: .current)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,14 +41,14 @@ class TripSummaryViewController: UIViewController, TripSummaryView {
         presenter.bookReturnRidePressed()
     }
 
-    final class KarhooJourneySummaryScreenBuilder: JourneySummaryScreenBuilder {
-        func buildJourneySummaryScreen(trip: TripInfo,
+    final class KarhooTripSummaryScreenBuilder: TripSummaryScreenBuilder {
+        func buildTripSummaryScreen(trip: TripInfo,
                                        callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
-            let journeySummaryPresenter = KarhooTripSummaryPresenter(trip: trip,
+            let tripSummaryPresenter = KarhooTripSummaryPresenter(trip: trip,
                                                                         callback: callback)
-            let journeySummaryViewController = TripSummaryViewController(presenter: journeySummaryPresenter)
+            let tripSummaryViewController = TripSummaryViewController(presenter: tripSummaryPresenter)
 
-            return journeySummaryViewController
+            return tripSummaryViewController
         }
     }
 }

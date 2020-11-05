@@ -1,5 +1,5 @@
 //
-//  KarhooJourneyDetailsPresenterSpec.swift
+//  KarhooTripDetailsPresenterSpec.swift
 //  KarhooTests
 //
 //
@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class KarhooJourneyDetailsPresenterSpec: XCTestCase {
+final class KarhooTripDetailsPresenterSpec: XCTestCase {
 
     private var testObject: KahrooTripScreenDetailsPresenter!
     private var mockTripService: MockTripService!

@@ -1,5 +1,5 @@
 //
-//  KarhooJourneyPresenterSpec.swift
+//  KarhooTripPresenterSpec.swift
 //  Karhoo
 //
 //
@@ -11,10 +11,10 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-final class KarhooJourneyPresenterSpec: XCTestCase {
+final class KarhooTripPresenterSpec: XCTestCase {
 
     private var mockInitialTrip: TripInfo!
-    private var mockJourneyView: MockTripView!
+    private var mockTripView: MockTripView!
     private var mockTripService: MockTripService!
     private var mockDriverTrackingService: MockDriverTrackingService!
     private var mockCancelRide: MockCancelRideBehaviour!
@@ -30,13 +30,13 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         simulateShowingScreen(tripState: .confirmed)
     }
 
-    private func journeyScreenCallback(result: ScreenResult<TripScreenResult>) {
+    private func tripScreenCallback(result: ScreenResult<TripScreenResult>) {
         self.screenResult = result
     }
 
     private func simulateShowingScreen(tripState: TripState) {
         mockInitialTrip = TestUtil.getRandomTrip(state: tripState)
-        mockJourneyView = MockTripView()
+        mockTripView = MockTripView()
         mockTripService = MockTripService()
         mockCancelRide = MockCancelRideBehaviour()
         mockAnalytics = MockAnalytics()
@@ -49,9 +49,9 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
                                             phoneNumberCaller: mockPhoneNumberCaller,
                                             analytics: mockAnalytics,
                                             rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
-                                            callback: journeyScreenCallback)
+                                            callback: tripScreenCallback)
         
-        testObject.load(view: mockJourneyView)
+        testObject.load(view: mockTripView)
         testObject.screenAppeared()
     }
     
@@ -65,7 +65,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         XCTAssertFalse(mockDriverTrackingService.trackDriverCall.hasObserver)
 
         XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
-        XCTAssertTrue(mockJourneyView.theLocateButtonHidden!)
+        XCTAssertTrue(mockTripView.theLocateButtonHidden!)
     }
     
     /**
@@ -85,7 +85,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
             
             XCTAssertTrue(mockDriverTrackingService.trackDriverCall.hasObserver)
             XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
-            XCTAssertTrue(mockJourneyView.theLocateButtonHidden!)
+            XCTAssertTrue(mockTripView.theLocateButtonHidden!)
         }
     }
 
@@ -114,13 +114,13 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
      *  Given:  Cancel trip fails
      *  Then:   Alert handler should not show
      */
-    func testCancelRequestFailureNotDismissingJourney() {
+    func testCancelRequestFailureNotDismissingTrip() {
         testObject.sendCancelRideNetworkRequest(callback: { _ in })
 
         mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
 
-        XCTAssertNil(mockJourneyView.actionAlertTitle)
-        XCTAssertNil(mockJourneyView.actionAlertMessage)
+        XCTAssertNil(mockTripView.actionAlertTitle)
+        XCTAssertNil(mockTripView.actionAlertMessage)
         XCTAssertNil(screenResult)
     }
 
@@ -133,10 +133,10 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
                                           state: .driverCancelled)
         mockTripService.trackTripCall.triggerPollSuccess(trip)
 
-        XCTAssertEqual(mockJourneyView.actionAlertTitle, UITexts.Journey.journeyCancelledByDispatchAlertTitle)
-        XCTAssertEqual(mockJourneyView.actionAlertMessage, UITexts.Journey.journeyCancelledByDispatchAlertMessage)
+        XCTAssertEqual(mockTripView.actionAlertTitle, UITexts.Trip.tripCancelledByDispatchAlertTitle)
+        XCTAssertEqual(mockTripView.actionAlertMessage, UITexts.Trip.tripCancelledByDispatchAlertMessage)
 
-        mockJourneyView.triggerAlertAction(atIndex: 0)
+        mockTripView.triggerAlertAction(atIndex: 0)
 
         if case .closed? = screenResult!.completedValue() {
             XCTAssertTrue(true)
@@ -155,10 +155,10 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
 
         mockTripService.trackTripCall.triggerPollSuccess(trip)
 
-        XCTAssertEqual(mockJourneyView.actionAlertTitle, UITexts.Bookings.cancellationSuccessAlertTitle)
-        XCTAssertEqual(mockJourneyView.actionAlertMessage, UITexts.Bookings.cancellationSuccessAlertMessage)
+        XCTAssertEqual(mockTripView.actionAlertTitle, UITexts.Bookings.cancellationSuccessAlertTitle)
+        XCTAssertEqual(mockTripView.actionAlertMessage, UITexts.Bookings.cancellationSuccessAlertMessage)
 
-        mockJourneyView.triggerAlertAction(atIndex: 0)
+        mockTripView.triggerAlertAction(atIndex: 0)
 
         guard case .closed? = screenResult!.completedValue() else {
             XCTFail("Routing not notified (with cancelByUser != true)")
@@ -223,10 +223,10 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
 
-        XCTAssertTrue(mockJourneyView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertTrue(mockTripView.focusMapOnRouteCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
         XCTAssertTrue(mockAnalytics.tripStateChangedCalled)
     }
 
@@ -241,10 +241,10 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
 
-        XCTAssertTrue(mockJourneyView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
+        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
     }
     
     /**
@@ -258,10 +258,10 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
         
-        XCTAssertTrue(mockJourneyView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
+        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
     }
 
     /**
@@ -295,14 +295,14 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
     }
 
     private func assetOnlyFocusMapOnDriverAndDestinationCalled() {
-        XCTAssertTrue(mockJourneyView.focusMapOnDriverAndDestinationCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverCalled)
+        XCTAssertTrue(mockTripView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
+        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
     }
 
     /**
-     *  Given:  Journey has been updated with trip in POB
+     *  Given:  Trip has been updated with trip in POB
      *   When:  Another trip POB update happens
      *   Then:  TripStateChanged analytics event should NOT be fired
      */
@@ -329,11 +329,11 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         let driverTrackingInfo = TestUtil.getRandomDriverTrackingInfo()
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(driverTrackingInfo)
 
-        XCTAssertFalse(mockJourneyView.theLocateButtonHidden!)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndDestinationCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockJourneyView.focusMapOnDriverAndPickupCalled)
+        XCTAssertFalse(mockTripView.theLocateButtonHidden!)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
     }
 
     /**
@@ -343,7 +343,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
     func testShowLoadingOverlay() {
         testObject.showLoadingOverlay()
 
-        XCTAssertTrue(mockJourneyView.showLoadingCalled)
+        XCTAssertTrue(mockTripView.showLoadingCalled)
     }
 
     /**
@@ -353,7 +353,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
     func testHideLoadingOverlay() {
         testObject.hideLoadingOverlay()
 
-        XCTAssertTrue(mockJourneyView.hideLoadingCalled)
+        XCTAssertTrue(mockTripView.hideLoadingCalled)
     }
 
     /**
@@ -367,7 +367,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
 
         XCTAssertEqual(trip.tripId, mockRideDetailsScreenBuilder.overlayTripSet?.tripId)
-        XCTAssertEqual(mockRideDetailsScreenBuilder.overlayReturnViewController, mockJourneyView.presentedView)
+        XCTAssertEqual(mockRideDetailsScreenBuilder.overlayReturnViewController, mockTripView.presentedView)
     }
 
     /**
@@ -421,7 +421,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         userLocationVisibleStates.forEach { state in
             simulateShowingScreen(tripState: state)
             mockTripService.trackTripCall.triggerPollSuccess(mockInitialTrip)
-            XCTAssertTrue(mockJourneyView.userMarkerVisibleSet)
+            XCTAssertTrue(mockTripView.userMarkerVisibleSet)
         }
     }
 
@@ -441,7 +441,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         userLocationNotVisibleStates.forEach { state in
             simulateShowingScreen(tripState: state)
             mockTripService.trackTripCall.triggerPollSuccess(mockInitialTrip)
-            XCTAssertFalse(mockJourneyView.userMarkerVisibleSet)
+            XCTAssertFalse(mockTripView.userMarkerVisibleSet)
         }
     }
 }

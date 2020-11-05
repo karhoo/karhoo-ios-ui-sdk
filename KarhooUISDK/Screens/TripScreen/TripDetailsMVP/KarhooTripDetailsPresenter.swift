@@ -42,7 +42,7 @@ final class KahrooTripScreenDetailsPresenter: TripScreenDetailsPresenter {
 
     private func handleTripUpdate(trip: TripInfo) {
         self.trip = trip
-        view?.updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
+        view?.updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
     }
 
     private func tripUpdateFailed(error: KarhooError?) {}

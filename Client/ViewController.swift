@@ -106,7 +106,7 @@ class ViewController: UIViewController {
     }
 
     func showKarhoo() {
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
+        booking = KarhooUI().screens().booking().buildBookingScreen(tripInfo: nil,
                                                                     passengerDetails: nil,
                                                                     callback: { [weak self] result in
                                                                         self?.logout()

@@ -19,8 +19,8 @@ final class MockTripScreenDetailsView: UIView, TripScreenDetailsView {
     func stop() {}
 
     private(set) var viewModelSet: TripScreenDetailsViewModel?
-    func updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel) {
-        self.viewModelSet = journeyDetailsViewModel
+    func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
+        self.viewModelSet = tripDetailsViewModel
     }
 
 }

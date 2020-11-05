@@ -155,7 +155,7 @@ final class KarhooTripPresenter: TripPresenter,
         tripView?.hideLoading()
     }
 
-    func userDidCloseJourney() {
+    func userDidCloseTrip() {
         finishWithResult(.completed(result: .closed))
     }
 
@@ -212,13 +212,13 @@ final class KarhooTripPresenter: TripPresenter,
             showAlertThenCloseView(title: UITexts.Bookings.cancellationSuccessAlertTitle,
                                    message: UITexts.Bookings.cancellationSuccessAlertMessage)
         case .driverCancelled:
-            showAlertThenCloseView(title: UITexts.Journey.journeyCancelledByDispatchAlertTitle,
-                                   message: UITexts.Journey.journeyCancelledByDispatchAlertMessage)
+            showAlertThenCloseView(title: UITexts.Trip.tripCancelledByDispatchAlertTitle,
+                                   message: UITexts.Trip.tripCancelledByDispatchAlertMessage)
         case .karhooCancelled:
             finishWithResult(.completed(result: .closed))
         case .noDriversAvailable:
-            showAlertThenCloseView(title: UITexts.Journey.noDriversAvailableTitle,
-                                   message: String(format: UITexts.Journey.noDriversAvailableMessage,
+            showAlertThenCloseView(title: UITexts.Trip.noDriversAvailableTitle,
+                                   message: String(format: UITexts.Trip.noDriversAvailableMessage,
                                                    trip.fleetInfo.name))
         default:
             break

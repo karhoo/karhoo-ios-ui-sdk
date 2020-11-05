@@ -30,7 +30,7 @@ protocol TripPresenter {
 
     func userMovedMap()
 
-    func userDidCloseJourney()
+    func userDidCloseTrip()
 }
 
 protocol TripView: BaseViewController {

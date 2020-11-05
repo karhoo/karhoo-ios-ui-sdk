@@ -20,6 +20,6 @@ final class KarhooTripAddressBarPresenter: TripAddressBarPresenter {
     func load(view: AddressBarView?) {
         view?.set(pickupDisplayAddress: trip.origin.displayAddress)
         view?.set(destinationDisplayAddress: trip.destination?.displayAddress)
-        view?.setDisplayJourneyState()
+        view?.setDisplayTripState()
     }
 }

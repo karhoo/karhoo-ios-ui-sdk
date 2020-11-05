@@ -266,7 +266,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         pickupField.hideSpinner()
     }
 
-    public func setDisplayJourneyState() {
+    public func setDisplayTripState() {
         prebook(isHidden: true)
         pickupField?.disable()
         destinationField?.disableClear(true)

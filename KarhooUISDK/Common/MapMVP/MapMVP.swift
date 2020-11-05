@@ -47,7 +47,7 @@ protocol MapView: UIView {
 
     func set(centerIcon: String)
 
-    func addJourneyLine(pickup: CLLocation, dropoff: CLLocation)
+    func addTripLine(pickup: CLLocation, dropoff: CLLocation)
 
     func draw(polyline: String)
 
@@ -55,7 +55,7 @@ protocol MapView: UIView {
 
     func zoom(toPolyline: String)
 
-    func removeJourneyLine()
+    func removeTripLine()
 
     func set(minimumZoom: Float, maximumZoom: Float)
 
@@ -69,7 +69,7 @@ extension MapView {
         addPin(location: location, asset: asset, tag: tag, zIndex: zIndex)
     }
 
-    func addJourneyLine(pickup: CLLocation, dropoff: CLLocation) {}
+    func addTripLine(pickup: CLLocation, dropoff: CLLocation) {}
     
     func draw(polyline: String) {}
 
@@ -77,7 +77,7 @@ extension MapView {
 
     func zoom(toPolyline: String) {}
 
-    func removeJourneyLine() {}
+    func removeTripLine() {}
 
     func set(minimumZoom: Float, maximumZoom: Float) {}
 }

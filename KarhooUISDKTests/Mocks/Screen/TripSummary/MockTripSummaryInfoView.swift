@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockJourneySummaryInfoView: TripSummaryInfoView {
+final class MockTripSummaryInfoView: TripSummaryInfoView {
 
     private(set) var viewModelSet: TripSummaryInfoViewModel?
     func set(viewModel: TripSummaryInfoViewModel) {

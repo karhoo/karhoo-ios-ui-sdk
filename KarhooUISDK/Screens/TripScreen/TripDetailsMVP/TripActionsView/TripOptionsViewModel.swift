@@ -18,16 +18,16 @@ struct TripOptionsViewModel {
         cancelEnabled = TripInfoUtility.canCancel(trip: trip)
 
         if trip.state == .passengerOnBoard {
-            tripContactInfo = UITexts.Journey.journeyContactFleet
+            tripContactInfo = UITexts.Trip.tripContactFleet
             tripContactNumber = trip.fleetInfo.phoneNumber
             return
         }
 
         if TripInfoUtility.canContactDriver(trip: trip) {
-            tripContactInfo = UITexts.Journey.journeyContactDriver
+            tripContactInfo = UITexts.Trip.tripContactDriver
             tripContactNumber = trip.vehicle.driver.phoneNumber
         } else {
-            tripContactInfo = UITexts.Journey.journeyContactFleet
+            tripContactInfo = UITexts.Trip.tripContactFleet
             tripContactNumber = trip.fleetInfo.phoneNumber
         }
     }

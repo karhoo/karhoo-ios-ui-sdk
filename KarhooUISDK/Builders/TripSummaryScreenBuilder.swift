@@ -1,5 +1,5 @@
 //
-//  JourneySummaryScreenFactory.swift
+//  TripSummaryScreenFactory.swift
 //  KarhooUISDK
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-internal protocol JourneySummaryScreenBuilder {
-    func buildJourneySummaryScreen(trip: TripInfo,
+internal protocol TripSummaryScreenBuilder {
+    func buildTripSummaryScreen(trip: TripInfo,
                                    callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen
 }

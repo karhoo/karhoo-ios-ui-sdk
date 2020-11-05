@@ -283,17 +283,17 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
-    * Then: JourneyInfo object's component for pickUp is reverse geolocated successfully
+    * Given: A TripInfor is injected
+    * Then: TripInfo object's component for pickUp is reverse geolocated successfully
     * And: The pickupState is updated
     * And: The prebookTime is updated
     */
-    func testReverseGeocodeJourneyInfoSuccessPickUp() {
-        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+    func testReverseGeocodeTripInfoSuccessPickUp() {
+        let tripInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: Date(timeIntervalSince1970: 1576518267))
         
-        testObject.reverseGeocodeLocation(journeyInfo.origin, type: .pickup)
+        testObject.reverseGeocodeLocation(tripInfo.origin, type: .pickup)
         let locationInfo = TestUtil.getRandomLocationInfo()
         mockAddressService.reverseGeocodeCall.triggerSuccess(locationInfo)
     
@@ -302,17 +302,17 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
-    * Then: JourneyInfo object's component for dropOff is reverse geolocated successfully
+    * Given: A TripInfor is injected
+    * Then: TripInfo object's component for dropOff is reverse geolocated successfully
     * And: The pickupState is updated
     * And: The Destination state is updated
     */
-    func testReverseGeocodeJourneyInfoSuccessDropOff() {
-        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+    func testReverseGeocodeTripInfoSuccessDropOff() {
+        let tripInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: Date(timeIntervalSince1970: 1576518267))
         
-        testObject.reverseGeocodeLocation(journeyInfo.destination!, type: .destination)
+        testObject.reverseGeocodeLocation(tripInfo.destination!, type: .destination)
 
         let locationInfo = TestUtil.getRandomLocationInfo()
         mockAddressService.reverseGeocodeCall.triggerSuccess(locationInfo)
@@ -321,17 +321,17 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
-    * Then: JourneyInfo object's components are NOT reverse geolocated
+    * Given: A TripInfor is injected
+    * Then: TripInfo object's components are NOT reverse geolocated
     * And: The pickupState is not updated
     * And: The Destination state is not updated
     */
-    func testReverseGeocodeJourneyInfoFailure() {
-        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+    func testReverseGeocodeTripInfoFailure() {
+        let tripInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: nil)
         
-        testObject.setJourneyInfo(journeyInfo)
+        testObject.setTripInfo(tripInfo)
         let error = TestUtil.getRandomError()
         mockAddressService.reverseGeocodeCall.triggerFailure(error)
 

@@ -265,7 +265,7 @@ class TestUtil: PrimitiveUtil {
                                  passengerCapacity: Int.random(in: 0...7))
     }
     
-    class func getRandomJourneyInfo() -> TripLocationInfo {
+    class func getRandomTripInfo() -> TripLocationInfo {
         return TripLocationInfo(origin: CLLocation(latitude: 2000.0, longitude: -454.53),
                            destination: CLLocation(latitude: 900.65, longitude: 874.53),
                            date: Date())

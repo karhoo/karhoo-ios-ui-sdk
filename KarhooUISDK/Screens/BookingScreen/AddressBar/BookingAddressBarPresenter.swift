@@ -12,7 +12,7 @@ import CoreLocation
 final class BookingAddressBarPresenter: AddressBarPresenter {
 
     private let bookingStatus: BookingStatus
-    private var journeyInfo: TripLocationInfo?
+    private var tripInfo: TripLocationInfo?
     private let addressService: AddressService
     private weak var view: AddressBarView?
     private let userLocationProvider: UserLocationProvider
@@ -20,13 +20,13 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     private let datePickerScreenBuilder: DatePickerScreenBuilder
 
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
-         journeyInfo: TripLocationInfo? = nil,
+         tripInfo: TripLocationInfo? = nil,
          addressService: AddressService = Karhoo.getAddressService(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressScreenBuilder: AddressScreenBuilder = KarhooUI().screens().address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker()) {
         self.bookingStatus = bookingStatus
-        self.journeyInfo = journeyInfo
+        self.tripInfo = tripInfo
         self.addressService = addressService
         self.userLocationProvider = userLocationProvider
         self.addressScreenBuilder = addressScreenBuilder
@@ -182,14 +182,14 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
                   prebookTime: prebookFormatter.display(shortStyleTime: date))
     }
     
-    public func setJourneyInfo(_ journeyInfo: TripLocationInfo) {
-        self.journeyInfo = journeyInfo
+    public func setTripInfo(_ tripInfo: TripLocationInfo) {
+        self.tripInfo = tripInfo
         
-        if let pickUpLocation = self.journeyInfo?.origin {
+        if let pickUpLocation = self.tripInfo?.origin {
             reverseGeocodeLocation(pickUpLocation, type: .pickup)
         }
 
-        if let dropOffLocation = self.journeyInfo?.destination {
+        if let dropOffLocation = self.tripInfo?.destination {
             reverseGeocodeLocation(dropOffLocation, type: .destination)
         }
     }
@@ -198,7 +198,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         let position = Position(latitude: location.coordinate.latitude,
                                 longitude: location.coordinate.longitude)
         addressService.reverseGeocode(position: position).execute { [weak self] response in
-            self?.bookingStatus.set(prebookDate: self?.journeyInfo?.date)
+            self?.bookingStatus.set(prebookDate: self?.tripInfo?.date)
 
             switch response {
             case .success(let location):

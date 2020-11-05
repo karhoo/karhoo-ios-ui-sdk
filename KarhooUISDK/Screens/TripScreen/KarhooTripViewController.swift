@@ -86,7 +86,7 @@ final class KarhooTripViewController: UIViewController, TripView {
 
         loadingOverlayView = LoadingView()
         loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
-        loadingOverlayView.set(loadingText: UITexts.Journey.journeyCancellingActivityIndicatorText)
+        loadingOverlayView.set(loadingText: UITexts.Trip.tripCancellingActivityIndicatorText)
         loadingOverlayView.set(backgroundColor: KarhooUI.colors.darkGrey, alpha: overlayAlphaValue)
         view.addSubview(loadingOverlayView)
         
@@ -221,7 +221,7 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     func set(trip: TripInfo) {
         notificationView.change(title: TripInfoUtility.longDescription(trip: trip))
-        tripDetailsView.updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
+        tripDetailsView.updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel(trip: trip))
     }
 
     func update(driverLocation: CLLocation) {
@@ -288,14 +288,14 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     @objc
     private func backButtonTapped() {
-        presenter.userDidCloseJourney()
+        presenter.userDidCloseTrip()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    final class KarhooJourneyScreenBuilder: TripScreenBuilder {
+    final class KarhooTripScreenBuilder: TripScreenBuilder {
         func buildTripScreen(trip: TripInfo, callback: @escaping ScreenResultCallback<TripScreenResult>) -> Screen {
             let alertHandler = AlertHandler()
 
@@ -306,13 +306,13 @@ final class KarhooTripViewController: UIViewController, TripView {
 
             let addressBarPresenter = KarhooTripAddressBarPresenter(trip: trip)
 
-            let journeyMapPresenter = KarhooTripMapPresenter(originAddress: trip.origin,
+            let tripMapPresenter = KarhooTripMapPresenter(originAddress: trip.origin,
                                                                 destinationAddress: trip.destination)
 
             let item = KarhooTripViewController(trip: trip,
                                                    presenter: presenter,
                                                    addressBarPresenter: addressBarPresenter,
-                                                   mapPresenter: journeyMapPresenter)
+                                                   mapPresenter: tripMapPresenter)
 
             alertHandler.set(viewController: item)
 
@@ -326,7 +326,7 @@ extension KarhooTripViewController: TripScreenDetailsActions {
         presenter.cancelBookingPressed()
     }
     
-    func journeyDetailViewDidChangeSize() {
+    func tripDetailViewDidChangeSize() {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.setMapPadding()
         })

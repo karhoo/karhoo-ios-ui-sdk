@@ -72,7 +72,7 @@ protocol BookingPresenter {
 
     func exitPressed()
 
-    func goToJourneyView(trip: TripInfo)
+    func goToTripView(trip: TripInfo)
 }
 
 public enum BookingScreenResult {

@@ -68,7 +68,7 @@ final class TripActionsView: UIView {
         cancelRideButton = UIButton(type: .custom)
         cancelRideButton.translatesAutoresizingMaskIntoConstraints = false
         cancelRideButton.accessibilityIdentifier = KHTripActionsViewID.cancelRideButton
-        cancelRideButton.setTitle(UITexts.Journey.journeyCancelRide, for: .normal)
+        cancelRideButton.setTitle(UITexts.Trip.tripCancelRide, for: .normal)
         cancelRideButton.backgroundColor = .white
         cancelRideButton.setTitleColor(KarhooUI.colors.neonRed, for: .normal)
         cancelRideButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0,
@@ -82,7 +82,7 @@ final class TripActionsView: UIView {
         contactDriverButton = UIButton(type: .custom)
         contactDriverButton.translatesAutoresizingMaskIntoConstraints = false
         contactDriverButton.accessibilityIdentifier = KHTripActionsViewID.contactDriverButton
-        contactDriverButton.setTitle(UITexts.Journey.journeyContactDriver, for: .normal)
+        contactDriverButton.setTitle(UITexts.Trip.tripContactDriver, for: .normal)
         contactDriverButton.backgroundColor = .white
         contactDriverButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0,
                                                      weight: .semibold)

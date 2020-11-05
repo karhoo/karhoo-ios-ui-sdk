@@ -86,11 +86,11 @@
 "Text.Bookings.price" = "Prix";
 "Text.Booking.guestCheckout" = "Check-out as Guest";
 
-/*Journey*/
+/*Trip*/
 /*Fuzzy*/
-"Text.Journey.CancelRide" = "Annuler";
-"Text.Journey.MessageDriver" = "Envoyer un SMS";
-"Text.Journey.CallDriver" = "Appeler le chauffeur";
+"Text.Trip.CancelRide" = "Annuler";
+"Text.Trip.MessageDriver" = "Envoyer un SMS";
+"Text.Trip.CallDriver" = "Appeler le chauffeur";
 
 /*Trip Statuses*/
 /*Fuzzy*/
@@ -108,7 +108,7 @@
 "Text.Trip.CancelledByDispatch" = "Nous sommes désolés, votre course a été annulée par le fournisseur. Veuillez nous excuser et utiliser l'application pour voir les taxis disponibles.";
 "Text.Trip.CancelledByKarhoo" = "Votre course a été annulée. Veuillez nous contacter pour plus d'informations.";
 "Text.Trip.Failed" = "Il y a eu un problème avec la demande de réservation. Veuillez réessayez ou nous contacter.";
-"Text.Journey.Completed" = "Vous avez atteint votre destination. Prenez un moment pour nous laisser vos commentaires sur votre course.";
+"Text.Trip.Completed" = "Vous avez atteint votre destination. Prenez un moment pour nous laisser vos commentaires sur votre course.";
 
 /*English: "Pickup Time" in booking request screen*/
 "Text.Generic.PickupTime" = "Temps d'attente";
@@ -230,27 +230,27 @@
 
 /*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
 "Text.Bookings.AsapBooking" = "Reservation immédiate";
-"Text.Journey.CancelBookingFailed" = "Annulation non confirmée. Veuillez appeler le fournisseur.";
+"Text.Trip.CancelBookingFailed" = "Annulation non confirmée. Veuillez appeler le fournisseur.";
 
-/*Used as a button in the journey screen. English: "Ride Options"*/
-"Text.Journey.RideOptions" = "Options";
-"Text.Journey.CancelBookingFailed.AlertTitle" = "Problème lors de l'annulation";
-"Text.Journey.CancelBookingFailed.AlertMessage" = "Nous n'arrivons pas à annuler votre course. Veuillez contacter le fournisseur.";
-"Text.Journey.CancelBookingFailed.AlertCallFleetButton" = "Appeler le fournisseur";
+/*Used as a button in the trip screen. English: "Ride Options"*/
+"Text.Trip.RideOptions" = "Options";
+"Text.Trip.CancelBookingFailed.AlertTitle" = "Problème lors de l'annulation";
+"Text.Trip.CancelBookingFailed.AlertMessage" = "Nous n'arrivons pas à annuler votre course. Veuillez contacter le fournisseur.";
+"Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Appeler le fournisseur";
 "Text.Generic.Yes" = "Oui";
 "Text.Generic.No" = "Non";
 "Text.Generic.Dismiss" = "Fermer";
-"Text.Journey.CancelBookingConfirmation.Alert.Title" = "Confirmer l'annulation?";
-"Text.Journey.CancelBookingConfirmation.Alert.Message" = "Des frais d'annulation pourraient être facturés par le fournisseur.";
+"Text.Trip.CancelBookingConfirmation.Alert.Title" = "Confirmer l'annulation?";
+"Text.Trip.CancelBookingConfirmation.Alert.Message" = "Des frais d'annulation pourraient être facturés par le fournisseur.";
 
-/*Call fleet button in journey screen (English: Call Fleet)*/
-"Text.Journey.CallFleet" = "Appeler le fournisseur";
-"Text.Journey.ActivityIndicator.Cancelling" = "Annulation en cours";
+/*Call fleet button in trip screen (English: Call Fleet)*/
+"Text.Trip.CallFleet" = "Appeler le fournisseur";
+"Text.Trip.ActivityIndicator.Cancelling" = "Annulation en cours";
 
 /*The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device"*/
 "Text.Generic.NoEmailSetupError" = "Veuillez configurer votre compte email sur votre téléphone";
-"Text.Journey.CancelledByDispatch.AlertMessage" = "Votre course a été annulée par le fournisseur. Veuillez réessayer ou nous contacter pour plus d'informations.";
-"Text.Journey.CancelledByDispatch.AlertTitle" = "Course annulée par le fournisseur";
+"Text.Trip.CancelledByDispatch.AlertMessage" = "Votre course a été annulée par le fournisseur. Veuillez réessayer ou nous contacter pour plus d'informations.";
+"Text.Trip.CancelledByDispatch.AlertTitle" = "Course annulée par le fournisseur";
 "Text.Generic.NoCarsAvailable" = "Il n'y a aucune voiture disponible pour votre course en ce moment. Veuillez réessayer plus tard";
 
 /*English: "Estimated"*/
@@ -268,7 +268,7 @@
 "Text.Error.Payment.Alert.Message" = "Nous n'avons pas pu obtenir l'autorisation pour ce paiement.";
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Modifier carte";
 "Text.Error.Alert.CantSendEmail" = "Le message ne peut être envoyé. Veuillez configurer votre compte email sur votre téléphone.";
-"Text.Journey.DriverLicense" = "Licence";
+"Text.Trip.DriverLicense" = "Licence";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
 "Text.Generic.Metered" = "Prix compteur";
@@ -285,7 +285,7 @@
 /*The action button on the force update alert. ie "Update" (this button takes the user to the app store)*/
 "Text.Error.Alert.ForceUpdateButton" = "Mise à jour";
 
-/*String for when journey is initially loaded and no trip state has yet come through. "Requesting"*/
+/*String for when trip is initially loaded and no trip state has yet come through. "Requesting"*/
 "Text.Generic.Requesting" = "Demande en cours";
 "Text.Booking.EnterDestination" = "Ajoutez une destination pour voir les véhicules disponibles";
 "Text.Bookings.Quote" = "Devis";
@@ -404,10 +404,10 @@
 "Text.TripSummary.TotalFare" = "Prix total";
 
 /*Popup title message when dispatch cancels due to no drivers*/
-"Text.Journey.NoDriversAvailable.AlertTitle" = "Course annulée";
+"Text.Trip.NoDriversAvailable.AlertTitle" = "Course annulée";
 
 /*Alert message in popup when dispatch cancels due to no drivers*/
-"Text.Journey.NoDriversAvailable.AlertMessage" = "La flotte a annulée votre course à cause d'un manque de chauffeurs disponibles. Veuillez réessayer plus tard.";
+"Text.Trip.NoDriversAvailable.AlertMessage" = "La flotte a annulée votre course à cause d'un manque de chauffeurs disponibles. Veuillez réessayer plus tard.";
 
 /*Password Entry Button*/
 "Text.Generic.Hide" = "Masquer";
@@ -463,16 +463,16 @@
 "Text.GenericTripStatus.CancelledByKarhoo" = "Annulée par Karhoo";
 
 /*alert title when karhoo cancel the trip-supposedly happens for preauth failure*/
-"\"Text.Journey.KarhooCancelled.AlertTitle\"" = "Annulation par Karhoo";
+"\"Text.Trip.KarhooCancelled.AlertTitle\"" = "Annulation par Karhoo";
 
 /*alert message when karhoo cancel the trip-supposedly happens for preauth failure*/
-"Text.Journey.KarhooCancelled.AlertMessage" = "Votre course a été annulée par Karhoo. Veuillez réessayer ou nous contacter.";
+"Text.Trip.KarhooCancelled.AlertMessage" = "Votre course a été annulée par Karhoo. Veuillez réessayer ou nous contacter.";
 
 /*When the user enters an invalid flight number*/
 "Text.Error.FlightNumberValidationHint" = "Numéro de vol";
 
-/*"Arrival" displayed on arrival box in journey*/
-"Text.Journey.Arrival" = "Arrivée";
+/*"Arrival" displayed on arrival box in trip*/
+"Text.Trip.Arrival" = "Arrivée";
 
 /*Theoretical edge case where the braintree token is missing*/
 "Text.Errors.failedToInitialisePaymentSetup" = "Erreur d'initialisation du processus de paiement. Veuillez réessayer.";

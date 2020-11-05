@@ -497,7 +497,7 @@
 		FC83E301221EF042008FE26D /* MockDriverTrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E300221EF042008FE26D /* MockDriverTrackingService.swift */; };
 		FC83E303221EF0B9008FE26D /* MockTimeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E302221EF0B9008FE26D /* MockTimeFetcher.swift */; };
 		FC83E30B221F1839008FE26D /* MockTripScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */; };
-		FC83E30D221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30C221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift */; };
+		FC83E30D221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */; };
 		FC8CDD3D2208956E001F201B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 090F08E821C94BB6000C7E50 /* Localizable.strings */; };
 		FC8F472521539E24007841FB /* KarhooUISDK.h in Headers */ = {isa = PBXBuildFile; fileRef = FC8F471721539E24007841FB /* KarhooUISDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F47382153DBDE007841FB /* KarhooUI.swift */; };
@@ -1036,7 +1036,7 @@
 		FC83E300221EF042008FE26D /* MockDriverTrackingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDriverTrackingService.swift; sourceTree = "<group>"; };
 		FC83E302221EF0B9008FE26D /* MockTimeFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTimeFetcher.swift; sourceTree = "<group>"; };
 		FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripScreenBuilder.swift; sourceTree = "<group>"; };
-		FC83E30C221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJourneySummaryScreenBuilder.swift; sourceTree = "<group>"; };
+		FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripSummaryScreenBuilder.swift; sourceTree = "<group>"; };
 		FC8F471421539E24007841FB /* KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC8F471721539E24007841FB /* KarhooUISDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KarhooUISDK.h; sourceTree = "<group>"; };
 		FC8F471821539E24007841FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2763,7 +2763,7 @@
 				FC658F452216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift */,
 				FC658F702216F8B7006C48F2 /* MockPaymentScreenBuilder.swift */,
 				FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */,
-				FC83E30C221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift */,
+				FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */,
 				FC4B92EC222E982400FE33B4 /* MockRideDetailsScreenBuilder.swift */,
 				5C4397CF22615F37006BC6C4 /* MockRidesScreenBuilder.swift */,
 			);
@@ -3885,7 +3885,7 @@
 				09E35D5C21E5117C003E840C /* MockPickupOnlyStrategyDelegate.swift in Sources */,
 				FC658F4B2216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift in Sources */,
 				09F86F81222D60AC008C86DE /* TestBroadcaster.swift in Sources */,
-				FC83E30D221F18F3008FE26D /* MockJourneySummaryScreenBuilder.swift in Sources */,
+				FC83E30D221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift in Sources */,
 				09AAEF9621C4270900A04EEC /* FlightNumberValidatorSpec.swift in Sources */,
 				FC4B92ED222E982400FE33B4 /* MockRideDetailsScreenBuilder.swift in Sources */,
 				FC83E2DB221EECA9008FE26D /* KarhooOriginEtaPresenterSpec.swift in Sources */,
