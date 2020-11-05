@@ -11,7 +11,7 @@ import KarhooSDK
 
 class JourneySummaryViewController: UIViewController, TripSummaryView {
 
-    @IBOutlet private weak var tripSummaryInfoView: KarhooJourneySummaryInfoView?
+    @IBOutlet private weak var tripSummaryInfoView: KarhooTripSummaryInfoView?
 
     private let presenter: TripSummaryPresenter
 
@@ -30,7 +30,7 @@ class JourneySummaryViewController: UIViewController, TripSummaryView {
     }
 
     func set(trip: TripInfo) {
-        tripSummaryInfoView?.set(viewModel: JourneySummaryInfoViewModel(trip: trip))
+        tripSummaryInfoView?.set(viewModel: TripSummaryInfoViewModel(trip: trip))
     }
 
     @IBAction private func didTapExitButton() {

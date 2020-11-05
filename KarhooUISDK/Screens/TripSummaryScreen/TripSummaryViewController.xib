@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +48,7 @@
                             <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-1R-IhZ" userLabel="Host">
                                 <rect key="frame" x="8" y="173.5" width="359" height="320"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVa-u7-ri9" customClass="KarhooJourneySummaryInfoView" customModule="KarhooUISDK">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVa-u7-ri9" customClass="KarhooTripSummaryInfoView" customModule="KarhooUISDK">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="320"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -67,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-B9-5Ga" userLabel="Book Return Ride Holder">
                                 <rect key="frame" x="8" y="501.5" width="359" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rg9-5e-qxT">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rg9-5e-qxT">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
@@ -98,7 +96,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtk-vM-ouF" userLabel="Exit Button">
-                                <rect key="frame" x="15" y="35" width="16" height="16"/>
+                                <rect key="frame" x="15" y="15" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="UFc-fz-j7D"/>
                                     <constraint firstAttribute="height" constant="16" id="UfL-wG-w2J"/>
@@ -109,7 +107,7 @@
                                     <action selector="didTapExitButton" destination="-1" eventType="touchUpInside" id="6tD-47-EDh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKL-bS-uZp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKL-bS-uZp">
                                 <rect key="frame" x="0.0" y="0.0" width="75" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="VX6-CB-CL7"/>
@@ -135,6 +133,7 @@
                     <blurEffect style="dark"/>
                 </visualEffectView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="zRo-QO-VwD"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="wtk-vM-ouF" firstAttribute="top" secondItem="zRo-QO-VwD" secondAttribute="top" constant="15" id="2UI-Na-uQ8"/>
@@ -143,7 +142,6 @@
                 <constraint firstItem="RzX-3C-Ckw" firstAttribute="trailing" secondItem="zRo-QO-VwD" secondAttribute="trailing" id="Iqc-RK-ddI"/>
                 <constraint firstItem="RzX-3C-Ckw" firstAttribute="top" secondItem="YMP-g0-f7r" secondAttribute="top" id="wHp-Pn-ngp"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="zRo-QO-VwD"/>
             <point key="canvasLocation" x="42" y="18"/>
         </view>
     </objects>

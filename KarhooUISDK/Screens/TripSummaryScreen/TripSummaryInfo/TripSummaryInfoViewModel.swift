@@ -1,5 +1,5 @@
 //
-//  JourneySummaryInfoViewModel.swift
+//  TripSummaryInfoViewModel.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
   
-final class JourneySummaryInfoViewModel {
+final class TripSummaryInfoViewModel {
 
     public let pickup: String
     public let destination: String

@@ -1,5 +1,5 @@
 //
-//  JourneySummaryInfoMVP.swift
+//  TripSummaryInfoMVP.swift
 //  Karhoo
 //
 //
@@ -9,6 +9,6 @@
 import Foundation
 import KarhooSDK
 
-protocol JourneySummaryInfoView: AnyObject {
-    func set(viewModel: JourneySummaryInfoViewModel)
+protocol TripSummaryInfoView: AnyObject {
+    func set(viewModel: TripSummaryInfoViewModel)
 }

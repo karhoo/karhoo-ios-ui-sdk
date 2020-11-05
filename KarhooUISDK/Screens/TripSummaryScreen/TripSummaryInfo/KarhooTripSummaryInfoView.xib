@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooJourneySummaryInfoView" customModule="KarhooUISDK">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooTripSummaryInfoView" customModule="KarhooUISDK">
             <connections>
                 <outlet property="clientLogo" destination="aTa-Qo-xeT" id="o2y-hm-tTn"/>
                 <outlet property="destinationLabel" destination="uCa-O2-IWD" id="DRi-cl-naS"/>
@@ -39,8 +35,8 @@
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JkP-KB-hkw" customClass="Attributes" customModule="KarhooUISDK">
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <viewLayoutGuide key="safeArea" id="gjc-c6-W03"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outletCollection property="standardRoundedCorners" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="xCw-tk-R4v"/>
                         <outletCollection property="bodyRegular" destination="Shl-R4-rWZ" collectionClass="NSMutableArray" id="BHd-IF-3YL"/>
@@ -80,7 +76,7 @@
                         <constraint firstAttribute="width" constant="8" id="MuM-9U-bOR"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-1y-INF" customClass="JourneySummaryHeaderView" customModule="KarhooUISDK">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-1y-INF" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
                     <rect key="frame" x="10" y="89" width="286" height="15"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -135,7 +131,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-6q-Hrk" customClass="JourneySummaryHeaderView" customModule="KarhooUISDK">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-6q-Hrk" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
                     <rect key="frame" x="10" y="233" width="286" height="15"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -143,7 +139,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-wn-aTI">
-                    <rect key="frame" x="34" y="279" width="75" height="21"/>
+                    <rect key="frame" x="34" y="279" width="74" height="21"/>
                     <accessibility key="accessibilityConfiguration" identifier="fare-summary"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -167,6 +163,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="QAa-ff-vbI" firstAttribute="top" secondItem="uCa-O2-IWD" secondAttribute="bottom" constant="8" id="0Cg-kM-0Ge"/>
@@ -208,7 +205,6 @@
                 <constraint firstItem="8WF-1y-INF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="zpz-6e-Jdm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-361" y="-217"/>
         </view>
     </objects>

@@ -1,5 +1,5 @@
 //
-//  JourneySummaryHeaderView.swift
+//  TripSummaryHeaderView.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class JourneySummaryHeaderView: NibLoadableView {
+final class TripSummaryHeaderView: NibLoadableView {
 
     @IBOutlet private weak var headerLabel: UILabel?
 

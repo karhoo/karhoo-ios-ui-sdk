@@ -13,7 +13,7 @@ import KarhooUISDK
 
 final class JourneySummaryInfoViewModelSpec: XCTestCase {
 
-    private var testObject: JourneySummaryInfoViewModel!
+    private var testObject: TripSummaryInfoViewModel!
 
     /**
      * When: passed a trip
@@ -23,7 +23,7 @@ final class JourneySummaryInfoViewModelSpec: XCTestCase {
         let testTrip = TestUtil.getRandomTrip(dateSet: true,
                                               state: .completed,
                                               fare: TestUtil.getRandomTripFare())
-        testObject = JourneySummaryInfoViewModel(trip: testTrip)
+        testObject = TripSummaryInfoViewModel(trip: testTrip)
 
         XCTAssertEqual(testObject.pickup, testTrip.origin.displayAddress)
         XCTAssertEqual(testObject.destination, testTrip.destination!.displayAddress)
@@ -49,7 +49,7 @@ final class JourneySummaryInfoViewModelSpec: XCTestCase {
         let vehicleWithNoClass = TestUtil.getRandomVehicle(vehicleClass: "")
         let testTrip = TestUtil.getRandomTrip(vehicle: vehicleWithNoClass)
 
-        testObject = JourneySummaryInfoViewModel(trip: testTrip)
+        testObject = TripSummaryInfoViewModel(trip: testTrip)
 
         XCTAssertEqual(testObject.vehicleInformation,
                        "\(testTrip.vehicle.description): \(testTrip.vehicle.vehicleLicensePlate)")
@@ -61,7 +61,7 @@ final class JourneySummaryInfoViewModelSpec: XCTestCase {
      */
     func testNoFareShowsQuote() {
         let testTrip = TestUtil.getRandomTrip(fare: TripFare())
-        testObject = JourneySummaryInfoViewModel(trip: testTrip)
+        testObject = TripSummaryInfoViewModel(trip: testTrip)
 
         XCTAssertEqual(testObject.price, testTrip.quotePrice())
         XCTAssertEqual(testObject.priceDescription, UITexts.TripSummary.quotedPrice)
@@ -74,7 +74,7 @@ final class JourneySummaryInfoViewModelSpec: XCTestCase {
     func testZeroFareShowsQuote() {
         let fare = TripFare(total: 0, currency: "EUR", gratuityPercent: 0)
         let testTrip = TestUtil.getRandomTrip(fare: fare)
-        testObject = JourneySummaryInfoViewModel(trip: testTrip)
+        testObject = TripSummaryInfoViewModel(trip: testTrip)
 
         XCTAssertEqual(testObject.price, testTrip.quotePrice())
         XCTAssertEqual(testObject.priceDescription, UITexts.TripSummary.quotedPrice)

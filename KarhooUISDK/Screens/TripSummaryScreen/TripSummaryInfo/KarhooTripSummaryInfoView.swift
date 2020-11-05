@@ -1,5 +1,5 @@
 //
-//  KarhooJourneySummaryInfoView.swift
+//  KarhooTripSummaryInfoView.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-final class KarhooJourneySummaryInfoView: NibLoadableView, JourneySummaryInfoView {
+final class KarhooTripSummaryInfoView: NibLoadableView, TripSummaryInfoView {
 
     @IBOutlet private weak var clientLogo: UIImageView?
     @IBOutlet private weak var originLabel: UILabel?
@@ -19,14 +19,14 @@ final class KarhooJourneySummaryInfoView: NibLoadableView, JourneySummaryInfoVie
     @IBOutlet private weak var vehicleDescriptionLabel: UILabel?
     @IBOutlet private weak var tripPriceLabel: UILabel?
     @IBOutlet private weak var priceDescriptionLabel: UILabel?
-    @IBOutlet private weak var tripSummaryHeader: JourneySummaryHeaderView?
-    @IBOutlet private weak var paymentSummaryHeader: JourneySummaryHeaderView?
+    @IBOutlet private weak var tripSummaryHeader: TripSummaryHeaderView?
+    @IBOutlet private weak var paymentSummaryHeader: TripSummaryHeaderView?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    func set(viewModel: JourneySummaryInfoViewModel) {
+    func set(viewModel: TripSummaryInfoViewModel) {
         originLabel?.text = viewModel.pickup
         destinationLabel?.text = viewModel.destination
         supplierNameLabel?.text = viewModel.supplierName
