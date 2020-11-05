@@ -1,5 +1,5 @@
 //
-//  JourneyAddressBarMVP.swift
+//  TripAddressBarMVP.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-protocol JourneyAddressBarPresenter {
+protocol TripAddressBarPresenter {
     init(trip: TripInfo)
     func load(view: AddressBarView?)
 }

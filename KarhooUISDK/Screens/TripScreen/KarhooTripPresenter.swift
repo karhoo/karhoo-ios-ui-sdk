@@ -1,5 +1,5 @@
 //
-//  JourneyViewPresenter.swift
+//  TripViewPresenter.swift
 //  Karhoo
 //
 //
@@ -8,11 +8,11 @@
 
 import KarhooSDK
 
-final class KarhooJourneyPresenter: JourneyPresenter,
+final class KarhooTripPresenter: TripPresenter,
                                     CancelRideDelegate {
     
     private let logger: Logger
-    private weak var journeyView: JourneyView?
+    private weak var tripView: TripView?
     private var trip: TripInfo
     private let analytics: Analytics
     private var previousState: TripState = .unknown
@@ -56,19 +56,19 @@ final class KarhooJourneyPresenter: JourneyPresenter,
         stopListeningForDriverLocationUpdates()
     }
 
-    func load(view: JourneyView?) {
-        journeyView = view
-        journeyView?.set(locateButtonHidden: true)
+    func load(view: TripView?) {
+        tripView = view
+        tripView?.set(locateButtonHidden: true)
     }
 
     func userMovedMap() {
-        journeyView?.set(locateButtonHidden: false)
+        tripView?.set(locateButtonHidden: false)
         cameraShouldFollowCar = false
     }
 
     func screenDidLayoutSubviews() {
-        journeyView?.plotPinsOnMap()
-        journeyView?.focusMapOnRoute()
+        tripView?.plotPinsOnMap()
+        tripView?.focusMapOnRoute()
         forceSetStatusAccordingToTrip()
     }
 
@@ -130,7 +130,7 @@ final class KarhooJourneyPresenter: JourneyPresenter,
     }
 
     func updated(info: DriverTrackingInfo) {
-        journeyView?.update(driverLocation: info.position.toCLLocation())
+        tripView?.update(driverLocation: info.position.toCLLocation())
 
         if cameraShouldFollowCar == true {
             focusMap()
@@ -148,11 +148,11 @@ final class KarhooJourneyPresenter: JourneyPresenter,
     }
 
     func showLoadingOverlay() {
-        journeyView?.showLoading()
+        tripView?.showLoading()
     }
 
     func hideLoadingOverlay() {
-        journeyView?.hideLoading()
+        tripView?.hideLoading()
     }
 
     func userDidCloseJourney() {
@@ -177,16 +177,16 @@ final class KarhooJourneyPresenter: JourneyPresenter,
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
-            journeyView?.focusMapOnDriverAndPickup()
+            tripView?.focusMapOnDriverAndPickup()
             return
         }
 
         if trip.state == .passengerOnBoard {
-            journeyView?.focusMapOnDriverAndDestination()
+            tripView?.focusMapOnDriverAndDestination()
             return
         }
 
-        journeyView?.focusMapOnRoute()
+        tripView?.focusMapOnRoute()
     }
 
     private func forceSetStatusAccordingToTrip() {
@@ -203,7 +203,7 @@ final class KarhooJourneyPresenter: JourneyPresenter,
         analytics.tripStateChanged(to: trip.state.rawValue)
 
         let userMarkerVisible = TripInfoUtility.canCancel(trip: trip)
-        journeyView?.set(userMarkerVisible: userMarkerVisible)
+        tripView?.set(userMarkerVisible: userMarkerVisible)
 
         switch trip.state {
         case .completed:
@@ -224,13 +224,13 @@ final class KarhooJourneyPresenter: JourneyPresenter,
             break
         }
 
-        journeyView?.set(trip: trip)
+        tripView?.set(trip: trip)
 
         previousState = trip.state
     }
 
     private func updateBookingDetails() {
-        journeyView?.setAddressBar(with: trip)
+        tripView?.setAddressBar(with: trip)
     }
 
     private func tripCompleted(_ trip: TripInfo) {
@@ -251,7 +251,7 @@ final class KarhooJourneyPresenter: JourneyPresenter,
             }
         })
 
-        journeyView?.present(rideDetails, animated: true, completion: nil)
+        tripView?.present(rideDetails, animated: true, completion: nil)
     }
 
     private func showAlertThenCloseView(title: String, message: String) {
@@ -259,7 +259,7 @@ final class KarhooJourneyPresenter: JourneyPresenter,
             self?.finishWithResult(ScreenResult.completed(result: .closed))
         })
 
-        journeyView?.showAlert(title: title, message: message, actions: [action])
+        tripView?.showAlert(title: title, message: message, actions: [action])
     }
 
     private func finishWithResult(_ result: ScreenResult<TripScreenResult>) {

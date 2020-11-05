@@ -1,5 +1,5 @@
 //
-//  KarhooJourneyViewController.swift
+//  KarhooTripViewController.swift
 //  Karhoo
 //
 //
@@ -10,12 +10,12 @@ import UIKit
 import CoreLocation
 import KarhooSDK
 
-public struct KHKarhooJourneyViewID {
+public struct KHKarhooTripViewID {
     public static let closeButton = "close_button"
     public static let locateButton = "locate_button"
 }
 
-final class KarhooJourneyViewController: UIViewController, JourneyView {
+final class KarhooTripViewController: UIViewController, TripView {
 
     private var didSetupConstraints: Bool = false
     private var addressBar: KarhooAddressBarView!
@@ -23,7 +23,7 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
     private var closeButton: UIButton!
     private var gradientView: GradientView!
     private var notificationView: KarhooNotificationView!
-    private var journeyDetailsView: JourneyDetailsView!
+    private var tripDetailsView: JourneyDetailsView!
     private var originEtaView: KarhooOriginEtaView!
     private var destinationEtaView: KarhooDestinationEtaView!
     private var locateButton: UIButton!
@@ -34,18 +34,18 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
     private let overlayAlphaValue: CGFloat = 0.6
 
     private let trip: TripInfo
-    private let presenter: JourneyPresenter
-    private let addressBarPresenter: JourneyAddressBarPresenter
-    private let journeyMapPresenter: JourneyMapPresenter
+    private let presenter: TripPresenter
+    private let addressBarPresenter: TripAddressBarPresenter
+    private let tripMapPresenter: TripMapPresenter
 
     init(trip: TripInfo,
-         presenter: JourneyPresenter,
-         addressBarPresenter: JourneyAddressBarPresenter,
-         mapPresenter: JourneyMapPresenter) {
+         presenter: TripPresenter,
+         addressBarPresenter: TripAddressBarPresenter,
+         mapPresenter: TripMapPresenter) {
         self.trip = trip
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter
-        self.journeyMapPresenter = mapPresenter
+        self.tripMapPresenter = mapPresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,7 +73,7 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
         
         closeButton = UIButton(type: .custom)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.accessibilityIdentifier = KHKarhooJourneyViewID.closeButton
+        closeButton.accessibilityIdentifier = KHKarhooTripViewID.closeButton
         closeButton.setImage(UIImage.uisdkImage("drop_down_arrow").withRenderingMode(.alwaysTemplate), for: .normal)
         closeButton.tintColor = KarhooUI.colors.darkGrey
         closeButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -96,12 +96,12 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
         map.set(focusButtonHidden: true)
         view.insertSubview(map, at: 0)
         
-        journeyDetailsView = KarhooJourneyDetailsView()
-        view.addSubview(journeyDetailsView)
+        tripDetailsView = KarhooJourneyDetailsView()
+        view.addSubview(tripDetailsView)
         
         locateButton = UIButton(type: .custom)
         locateButton.translatesAutoresizingMaskIntoConstraints = false
-        locateButton.accessibilityIdentifier = KHKarhooJourneyViewID.locateButton
+        locateButton.accessibilityIdentifier = KHKarhooTripViewID.locateButton
         locateButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
         locateButton.setImage(UIImage.uisdkImage("locate"), for: .normal)
         view.addSubview(locateButton)
@@ -156,21 +156,21 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
             _ = [locateButton.widthAnchor.constraint(equalToConstant: locateButtonSize),
                  locateButton.heightAnchor.constraint(equalToConstant: locateButtonSize),
                  locateButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10.0),
-                 locateButton.bottomAnchor.constraint(equalTo: journeyDetailsView.topAnchor,
+                 locateButton.bottomAnchor.constraint(equalTo: tripDetailsView.topAnchor,
                                                       constant: -20.0)].map { $0.isActive = true }
             
             _ = [originEtaView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
-                 originEtaView.bottomAnchor.constraint(equalTo: journeyDetailsView.topAnchor,
+                 originEtaView.bottomAnchor.constraint(equalTo: tripDetailsView.topAnchor,
                                                        constant: -20.0)].map { $0.isActive = true }
             
             _ = [destinationEtaView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
-                 destinationEtaView.bottomAnchor.constraint(equalTo: journeyDetailsView.topAnchor,
+                 destinationEtaView.bottomAnchor.constraint(equalTo: tripDetailsView.topAnchor,
                                                             constant: -20.0)].map { $0.isActive = true }
             
-            _ = [journeyDetailsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            _ = [tripDetailsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                             constant: -10),
-                 journeyDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-                 journeyDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                 tripDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+                 tripDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                              constant: 10)].map { $0.isActive = true }
             
             didSetupConstraints = true
@@ -181,14 +181,14 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.load(view: self)
-        journeyDetailsView.set(actions: self,
+        tripDetailsView.set(actions: self,
                                detailsSuperview: self.view)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        journeyMapPresenter.load(map: map)
+        tripMapPresenter.load(map: map)
         presenter.screenAppeared()
         originEtaView?.start(tripId: trip.tripId)
         destinationEtaView?.start(tripId: trip.tripId)
@@ -221,11 +221,11 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
 
     func set(trip: TripInfo) {
         notificationView.change(title: TripInfoUtility.longDescription(trip: trip))
-        journeyDetailsView.updateViewModel(journeyDetailsViewModel: JourneyDetailsViewModel(trip: trip))
+        tripDetailsView.updateViewModel(journeyDetailsViewModel: JourneyDetailsViewModel(trip: trip))
     }
 
     func update(driverLocation: CLLocation) {
-        journeyMapPresenter.updateDriver(location: driverLocation)
+        tripMapPresenter.updateDriver(location: driverLocation)
     }
 
     func showLoading() {
@@ -237,19 +237,19 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
     }
 
     func plotPinsOnMap() {
-        journeyMapPresenter.plotPins()
+        tripMapPresenter.plotPins()
     }
 
     func focusMapOnRoute() {
-        journeyMapPresenter.focusOnRoute()
+        tripMapPresenter.focusOnRoute()
     }
 
     func focusMapOnDriverAndPickup() {
-        journeyMapPresenter.focusOnPickupAndDriver()
+        tripMapPresenter.focusOnPickupAndDriver()
     }
 
     func focusMapOnDriverAndDestination() {
-        journeyMapPresenter.focusOnDestinationAndDriver()
+        tripMapPresenter.focusOnDestinationAndDriver()
     }
 
     func setAddressBar(with trip: TripInfo) {
@@ -275,7 +275,7 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
         let topPadding = CGFloat(30)
         let sideMargin = CGFloat(15)
         let addressBarBottom = addressBar.frame.maxY
-        let bottomPadding = journeyDetailsView.frame.height
+        let bottomPadding = tripDetailsView.frame.height
             + destinationEtaView!.frame.height
             + (topPadding + sideMargin)
 
@@ -300,16 +300,16 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
             let alertHandler = AlertHandler()
 
             let cancelRideBehaviour = CancelRideBehaviour(trip: trip, alertHandler: alertHandler)
-            let presenter = KarhooJourneyPresenter(initialTrip: trip,
+            let presenter = KarhooTripPresenter(initialTrip: trip,
                                                    cancelRideBehaviour: cancelRideBehaviour,
                                                    callback: callback)
 
-            let addressBarPresenter = KarhooJourneyAddressBarPresenter(trip: trip)
+            let addressBarPresenter = KarhooTripAddressBarPresenter(trip: trip)
 
-            let journeyMapPresenter = KarhooJourneyMapPresenter(originAddress: trip.origin,
+            let journeyMapPresenter = KarhooTripMapPresenter(originAddress: trip.origin,
                                                                 destinationAddress: trip.destination)
 
-            let item = KarhooJourneyViewController(trip: trip,
+            let item = KarhooTripViewController(trip: trip,
                                                    presenter: presenter,
                                                    addressBarPresenter: addressBarPresenter,
                                                    mapPresenter: journeyMapPresenter)
@@ -321,7 +321,7 @@ final class KarhooJourneyViewController: UIViewController, JourneyView {
     }
 }
 
-extension KarhooJourneyViewController: JourneyDetailsActions {
+extension KarhooTripViewController: JourneyDetailsActions {
     func cancelTrip() {
         presenter.cancelBookingPressed()
     }
@@ -333,7 +333,7 @@ extension KarhooJourneyViewController: JourneyDetailsActions {
     }
 }
 
-extension KarhooJourneyViewController: MapViewActions {
+extension KarhooTripViewController: MapViewActions {
 	func mapGestureDetected() {
         presenter.userMovedMap()
 	}

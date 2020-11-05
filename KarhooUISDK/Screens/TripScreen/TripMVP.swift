@@ -1,5 +1,5 @@
 //
-//  JourneyMVP.swift
+//  TripMVP.swift
 //  Karhoo
 //
 //
@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 import KarhooSDK
 
-protocol JourneyPresenter {
+protocol TripPresenter {
 
-    func load(view: JourneyView?)
+    func load(view: TripView?)
 
     func screenDidLayoutSubviews()
 
@@ -33,7 +33,7 @@ protocol JourneyPresenter {
     func userDidCloseJourney()
 }
 
-protocol JourneyView: BaseViewController {
+protocol TripView: BaseViewController {
 
     func currentTrip() -> TripInfo
 

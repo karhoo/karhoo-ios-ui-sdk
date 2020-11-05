@@ -97,7 +97,7 @@ public extension ScreenBuilders {
     }
 
     var journeyScreenBuilder: TripScreenBuilder {
-        return KarhooJourneyViewController.KarhooJourneyScreenBuilder()
+        return KarhooTripViewController.KarhooJourneyScreenBuilder()
     }
 
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder {

@@ -1,5 +1,5 @@
 //
-//  JourneyAddressBarPresenter.swift
+//  TripAddressBarPresenter.swift
 //  Karhoo
 //
 //
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-final class KarhooJourneyAddressBarPresenter: JourneyAddressBarPresenter {
+final class KarhooTripAddressBarPresenter: TripAddressBarPresenter {
 
     private let trip: TripInfo
 

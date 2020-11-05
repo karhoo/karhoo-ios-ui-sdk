@@ -1,5 +1,5 @@
 //
-//  JourneyMapPresenter.swift
+//  TripMapPresenter.swift
 //  Karhoo
 //
 //
@@ -9,16 +9,16 @@
 import CoreLocation
 import KarhooSDK
 
-private enum JourneyPinTags: Int {
+private enum TripPinTags: Int {
     case pickup = 1
     case destination = 2
     case driverLocation = 3
 }
 
-final class KarhooJourneyMapPresenter: JourneyMapPresenter {
+final class KarhooTripMapPresenter: TripMapPresenter {
 
     private weak var mapView: MapView?
-    private weak var journeyView: JourneyView?
+    private weak var tripView: TripView?
     private let originAddress: TripLocationDetails
     private let destinationAddress: TripLocationDetails?
     private var previousDriverLocation: CLLocation?
@@ -29,8 +29,8 @@ final class KarhooJourneyMapPresenter: JourneyMapPresenter {
         self.destinationAddress = destinationAddress
     }
 
-    func set(view: JourneyView?) {
-        self.journeyView = view
+    func set(view: TripView?) {
+        self.tripView = view
     }
 
     func load(map: MapView?) {
@@ -72,7 +72,7 @@ final class KarhooJourneyMapPresenter: JourneyMapPresenter {
     }
 
     func updateDriver(location: CLLocation) {
-        let tag = JourneyPinTags.driverLocation.rawValue
+        let tag = TripPinTags.driverLocation.rawValue
         if previousDriverLocation == nil {
             mapView?.addPin(location: location, asset: "car_icon", tag: tag)
         } else {
@@ -84,7 +84,7 @@ final class KarhooJourneyMapPresenter: JourneyMapPresenter {
     func plotPins() {
         mapView?.addPin(location: originAddress.position.toCLLocation(),
                         asset: "pickup_pin",
-                        tag: JourneyPinTags.pickup.rawValue)
+                        tag: TripPinTags.pickup.rawValue)
 
         guard let destination = destinationAddress else {
             return
@@ -92,6 +92,6 @@ final class KarhooJourneyMapPresenter: JourneyMapPresenter {
 
         mapView?.addPin(location: destination.position.toCLLocation(),
                         asset: "dropoff_pin",
-                        tag: JourneyPinTags.destination.rawValue)
+                        tag: TripPinTags.destination.rawValue)
     }
 }

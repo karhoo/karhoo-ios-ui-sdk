@@ -113,7 +113,7 @@ protocol BookingMapPresenter: MapPresenter {
     func load(map: MapView?, reverseGeolocate: Bool)
 }
 
-protocol JourneyMapPresenter: MapPresenter {
+protocol TripMapPresenter: MapPresenter {
     func load(map: MapView?)
     func focusOnRoute()
     func focusOnPickupAndDriver()
