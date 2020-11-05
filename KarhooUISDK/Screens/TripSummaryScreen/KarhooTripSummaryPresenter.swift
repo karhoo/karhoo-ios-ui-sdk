@@ -8,9 +8,9 @@
 
 import KarhooSDK
 
-final class KarhooJourneySummaryPresenter: TripSummaryPresenter {
+final class KarhooTripSummaryPresenter: TripSummaryPresenter {
 
-    private var journeySummaryView: TripSummaryView?
+    private var tripSummaryView: TripSummaryView?
     private let callback: ScreenResultCallback<TripSummaryResult>
     private let analytics: Analytics
     private let trip: TripInfo
@@ -24,7 +24,7 @@ final class KarhooJourneySummaryPresenter: TripSummaryPresenter {
     }
 
     func viewLoaded(view: TripSummaryView) {
-        self.journeySummaryView = view
+        self.tripSummaryView = view
         setViewContent()
     }
 
@@ -50,6 +50,6 @@ final class KarhooJourneySummaryPresenter: TripSummaryPresenter {
     }
 
     private func setViewContent() {
-        journeySummaryView?.set(trip: trip)
+        tripSummaryView?.set(trip: trip)
     }
 }

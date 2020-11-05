@@ -57,7 +57,7 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
     }
 
     var journeySummaryScreenBuilder: JourneySummaryScreenBuilder {
-        return JourneySummaryViewController.KarhooJourneySummaryScreenBuilder()
+        return TripSummaryViewController.KarhooJourneySummaryScreenBuilder()
     }
 
     var sideMenuBuilder: SideMenuBuilder {

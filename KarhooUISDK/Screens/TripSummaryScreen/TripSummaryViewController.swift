@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-class JourneySummaryViewController: UIViewController, TripSummaryView {
+class TripSummaryViewController: UIViewController, TripSummaryView {
 
     @IBOutlet private weak var tripSummaryInfoView: KarhooTripSummaryInfoView?
 
@@ -44,9 +44,9 @@ class JourneySummaryViewController: UIViewController, TripSummaryView {
     final class KarhooJourneySummaryScreenBuilder: JourneySummaryScreenBuilder {
         func buildJourneySummaryScreen(trip: TripInfo,
                                        callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
-            let journeySummaryPresenter = KarhooJourneySummaryPresenter(trip: trip,
+            let journeySummaryPresenter = KarhooTripSummaryPresenter(trip: trip,
                                                                         callback: callback)
-            let journeySummaryViewController = JourneySummaryViewController(presenter: journeySummaryPresenter)
+            let journeySummaryViewController = TripSummaryViewController(presenter: journeySummaryPresenter)
 
             return journeySummaryViewController
         }

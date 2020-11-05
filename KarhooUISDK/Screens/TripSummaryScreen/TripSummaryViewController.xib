@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JourneySummaryViewController" customModule="KarhooUISDK" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TripSummaryViewController" customModule="KarhooUISDK" customModuleProvider="target">
             <connections>
                 <outlet property="tripSummaryInfoView" destination="yVa-u7-ri9" id="9YA-sX-DQn"/>
                 <outlet property="view" destination="YMP-g0-f7r" id="WIB-C7-bQg"/>
