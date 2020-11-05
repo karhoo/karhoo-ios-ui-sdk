@@ -17,13 +17,13 @@ class KarhooTripSummaryPresenterSpec: XCTestCase {
     private var mockAnalytics: MockAnalytics!
     private var mockCallback: ScreenResult<TripSummaryResult>?
     private var mockTrip: TripInfo!
-    private var mockTripSummaryScreen: MockJourneySummaryView!
+    private var mockTripSummaryScreen: MockTripSummaryView!
     private var testObject: KarhooTripSummaryPresenter!
 
     override func setUp() {
         mockAnalytics = MockAnalytics()
         mockTrip = TestUtil.getRandomTrip()
-        mockTripSummaryScreen = MockJourneySummaryView()
+        mockTripSummaryScreen = MockTripSummaryView()
         testObject = KarhooTripSummaryPresenter(trip: mockTrip,
                                                    callback: tripSummaryCallback, analytics: mockAnalytics)
     }

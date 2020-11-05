@@ -21,7 +21,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
     private var mockPhoneNumberCaller = MockPhoneNumberCaller()
     private var mockAnalytics: MockAnalytics!
     private var mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
-    private var testObject: KarhooJourneyPresenter!
+    private var testObject: KarhooTripPresenter!
     private var screenResult: ScreenResult<TripScreenResult>?
 
     override func setUp() {
@@ -42,7 +42,7 @@ final class KarhooJourneyPresenterSpec: XCTestCase {
         mockAnalytics = MockAnalytics()
         mockDriverTrackingService = MockDriverTrackingService()
 
-        testObject = KarhooJourneyPresenter(initialTrip: mockInitialTrip,
+        testObject = KarhooTripPresenter(initialTrip: mockInitialTrip,
                                             service: mockTripService,
                                             driverTrackingService: mockDriverTrackingService,
                                             cancelRideBehaviour: mockCancelRide,

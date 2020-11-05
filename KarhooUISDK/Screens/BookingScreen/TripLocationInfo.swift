@@ -1,0 +1,26 @@
+//
+//  TripInfo.swift
+//  KarhooUISDK
+//
+//
+//  Copyright © 2020 Karhoo. All rights reserved.
+//
+
+import Foundation
+import CoreLocation
+import KarhooSDK
+
+public struct JourneyInfo: Equatable {
+    
+    public let origin: CLLocation
+    public let destination: CLLocation?
+    public let date: Date?
+    
+    public init(origin: CLLocation,
+                destination: CLLocation? = nil,
+                date: Date? = nil) {
+        self.origin = origin
+        self.destination = destination
+        self.date = date
+    }
+}

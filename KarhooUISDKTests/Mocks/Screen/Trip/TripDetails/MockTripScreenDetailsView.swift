@@ -11,7 +11,7 @@ import UIKit
 
 final class MockTripScreenDetailsView: UIView, TripScreenDetailsView {
 
-    func set(actions: TripDetailsActions,
+    func set(actions: TripScreenDetailsActions,
              detailsSuperview: UIView) {}
 
     func start(tripId: String) {}
@@ -19,8 +19,8 @@ final class MockTripScreenDetailsView: UIView, TripScreenDetailsView {
     func stop() {}
 
     private(set) var viewModelSet: TripScreenDetailsViewModel?
-    func updateViewModel(tripScreenDetailsViewModel: TripScreenDetailsViewModel) {
-        self.viewModelSet = tripScreenDetailsViewModel
+    func updateViewModel(journeyDetailsViewModel: TripScreenDetailsViewModel) {
+        self.viewModelSet = journeyDetailsViewModel
     }
 
 }

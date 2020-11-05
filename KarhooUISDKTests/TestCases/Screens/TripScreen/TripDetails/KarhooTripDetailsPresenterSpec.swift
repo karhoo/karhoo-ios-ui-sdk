@@ -12,17 +12,17 @@ import KarhooSDK
 
 final class KarhooJourneyDetailsPresenterSpec: XCTestCase {
 
-    private var testObject: KahrooJourneyDetailsPresenter!
+    private var testObject: KahrooTripScreenDetailsPresenter!
     private var mockTripService: MockTripService!
-    private var mockView: MockJourneyDetailsView!
+    private var mockView: MockTripScreenDetailsView!
     private let mockTrip: TripInfo = TestUtil.getRandomTrip()
 
     override func setUp() {
         super.setUp()
 
         mockTripService = MockTripService()
-        mockView = MockJourneyDetailsView()
-        testObject = KahrooJourneyDetailsPresenter(tripService: mockTripService,
+        mockView = MockTripScreenDetailsView()
+        testObject = KahrooTripScreenDetailsPresenter(tripService: mockTripService,
                                                    view: mockView)
     }
 
