@@ -49,5 +49,5 @@ protocol AddressBarPresenter: BookingDetailsObserver {
 
     func addressSwapSelected()
     
-    func setJourneyInfo(_ journeyInfo: JourneyInfo)
+    func setJourneyInfo(_ journeyInfo: TripLocationInfo)
 }

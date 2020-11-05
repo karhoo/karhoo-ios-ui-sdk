@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import KarhooSDK
 
-public struct JourneyInfo: Equatable {
+public struct TripLocationInfo: Equatable {
     
     public let origin: CLLocation
     public let destination: CLLocation?

@@ -12,7 +12,7 @@ public class KarhooComponents: BookingScreenComponents {
 
     public static let shared = KarhooComponents()
 
-    public func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView {
+    public func addressBar(journeyInfo: TripLocationInfo?) -> AddressBarView {
         let presenter = BookingAddressBarPresenter()
 
         let addressBarView = KarhooAddressBarView(cornerRadious: 3.0,

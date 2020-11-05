@@ -11,13 +11,13 @@ import CoreLocation
 import KarhooSDK
 
 public protocol BookingScreenBuilder {
-    func buildBookingScreen(journeyInfo: JourneyInfo?,
+    func buildBookingScreen(journeyInfo: TripLocationInfo?,
                             passengerDetails: PassengerDetails?,
                             callback: ScreenResultCallback<BookingScreenResult>?) -> Screen
 }
 
 public extension BookingScreenBuilder {
-    func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
+    func buildBookingScreen(journeyInfo: TripLocationInfo? = nil,
                             passengerDetails: PassengerDetails? = nil,
                             callback: ScreenResultCallback<BookingScreenResult>? = nil) -> Screen {
         return buildBookingScreen(journeyInfo: journeyInfo,
@@ -27,5 +27,5 @@ public extension BookingScreenBuilder {
 }
 
 public protocol BookingScreenComponents {
-    func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView
+    func addressBar(journeyInfo: TripLocationInfo?) -> AddressBarView
 }

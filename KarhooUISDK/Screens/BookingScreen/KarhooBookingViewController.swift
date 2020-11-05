@@ -23,7 +23,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
     private let grabberTopPadding: CGFloat = 6.0
-    private var journeyInfo: JourneyInfo?
+    private var journeyInfo: TripLocationInfo?
     private let presenter: BookingPresenter
     private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
@@ -35,7 +35,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackMailComposer = KarhooFeedbackMailComposer(),
          analyticsProvider: Analytics = KarhooAnalytics(),
-         journeyInfo: JourneyInfo? = nil) {
+         journeyInfo: TripLocationInfo? = nil) {
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
@@ -349,12 +349,12 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         self.locationService = locationService
     }
 
-    public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
+    public func buildBookingScreen(journeyInfo: TripLocationInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
         PassengerInfo.shared.passengerDetails = passengerDetails
 
-        var validatedJourneyInfo: JourneyInfo?
+        var validatedJourneyInfo: TripLocationInfo?
 
         if let date = journeyInfo?.date {
             validatedJourneyInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==

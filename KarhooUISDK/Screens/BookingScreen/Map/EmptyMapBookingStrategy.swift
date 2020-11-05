@@ -47,7 +47,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
         }
 
         if let location = userLocationProvider.getLastKnownLocation() {
-            bookingStatus.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
+            bookingStatus.setJourneyInfo(journeyInfo: TripLocationInfo(origin: location))
         } else {
             locationManager.requestWhenInUseAuthorization()
          }

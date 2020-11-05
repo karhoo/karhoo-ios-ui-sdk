@@ -12,7 +12,7 @@ import CoreLocation
 final class BookingAddressBarPresenter: AddressBarPresenter {
 
     private let bookingStatus: BookingStatus
-    private var journeyInfo: JourneyInfo?
+    private var journeyInfo: TripLocationInfo?
     private let addressService: AddressService
     private weak var view: AddressBarView?
     private let userLocationProvider: UserLocationProvider
@@ -20,7 +20,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     private let datePickerScreenBuilder: DatePickerScreenBuilder
 
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
-         journeyInfo: JourneyInfo? = nil,
+         journeyInfo: TripLocationInfo? = nil,
          addressService: AddressService = Karhoo.getAddressService(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressScreenBuilder: AddressScreenBuilder = KarhooUI().screens().address(),
@@ -182,7 +182,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
                   prebookTime: prebookFormatter.display(shortStyleTime: date))
     }
     
-    public func setJourneyInfo(_ journeyInfo: JourneyInfo) {
+    public func setJourneyInfo(_ journeyInfo: TripLocationInfo) {
         self.journeyInfo = journeyInfo
         
         if let pickUpLocation = self.journeyInfo?.origin {

@@ -289,7 +289,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     * And: The prebookTime is updated
     */
     func testReverseGeocodeJourneyInfoSuccessPickUp() {
-        let journeyInfo = JourneyInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: Date(timeIntervalSince1970: 1576518267))
         
@@ -308,7 +308,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     * And: The Destination state is updated
     */
     func testReverseGeocodeJourneyInfoSuccessDropOff() {
-        let journeyInfo = JourneyInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: Date(timeIntervalSince1970: 1576518267))
         
@@ -327,7 +327,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     * And: The Destination state is not updated
     */
     func testReverseGeocodeJourneyInfoFailure() {
-        let journeyInfo = JourneyInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
+        let journeyInfo = TripLocationInfo(origin: CLLocation(latitude: 51.421360, longitude: -0.207590),
                                       destination: CLLocation(latitude: 51.438240, longitude: -0.156670),
                                       date: nil)
         

@@ -11,8 +11,8 @@ import KarhooSDK
 
 final class MockBookingStatus: BookingStatus {
 
-    var journeyInfoSet: JourneyInfo?
-    func setJourneyInfo(journeyInfo: JourneyInfo?) {
+    var journeyInfoSet: TripLocationInfo?
+    func setJourneyInfo(journeyInfo: TripLocationInfo?) {
         journeyInfoSet = journeyInfo
     }
 
