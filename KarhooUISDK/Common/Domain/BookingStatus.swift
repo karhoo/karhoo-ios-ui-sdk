@@ -22,6 +22,6 @@ public protocol BookingStatus {
     func set(prebookDate: Date?)
     func reset(with bookingDetails: BookingDetails)
     func reset()
-    func setTripInfo(tripInfo: TripLocationInfo?)
+    func setJourneyInfo(journeyInfo: JourneyInfo?)
     func getBookingDetails() -> BookingDetails?
 }

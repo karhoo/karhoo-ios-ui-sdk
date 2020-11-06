@@ -28,7 +28,7 @@ final class BookingViewControllerBuilderSpec: XCTestCase {
     func testSideMenuSet() {
         KarhooUI.sideMenuHandler = MockSideMenuHandler()
 
-        let output = testObject.buildBookingScreen(tripInfo: TestUtil.getRandomTripInfo(),
+        let output = testObject.buildBookingScreen(journeyInfo: TestUtil.getRandomJourneyInfo(),
                                                    callback: { _ in})
         let expectedNavigationControllerOutput = (output as? UINavigationController)!
 
@@ -41,7 +41,7 @@ final class BookingViewControllerBuilderSpec: XCTestCase {
       * Then: Booking View should be congigured as expected
       */
     func testNoSideMenu() {
-        let output = testObject.buildBookingScreen(tripInfo: nil,
+        let output = testObject.buildBookingScreen(journeyInfo: nil,
                                                    callback: { _ in})
         XCTAssertNil(output as? UINavigationController)
     }

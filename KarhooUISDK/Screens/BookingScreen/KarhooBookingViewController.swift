@@ -23,7 +23,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
     private let grabberTopPadding: CGFloat = 6.0
-    private var tripInfo: TripLocationInfo?
+    private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
     private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
@@ -35,13 +35,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackMailComposer = KarhooFeedbackMailComposer(),
          analyticsProvider: Analytics = KarhooAnalytics(),
-         tripInfo: TripLocationInfo? = nil) {
+         journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
-        self.tripInfo = tripInfo
+        self.journeyInfo = journeyInfo
         
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
@@ -76,7 +76,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
              navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
 
-        addressBar = KarhooUI.components.addressBar(tripInfo: tripInfo)
+        addressBar = KarhooUI.components.addressBar(journeyInfo: journeyInfo)
 
         view.insertSubview(addressBar, aboveSubview: mapView)
 
@@ -111,15 +111,15 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let injectedTrip = tripInfo {
-            addressBarPresenter.setTripInfo(injectedTrip)
+        if let injectedTrip = journeyInfo {
+            addressBarPresenter.setJourneyInfo(injectedTrip)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mapPresenter.load(map: mapView, reverseGeolocate: tripInfo != nil)
+        mapPresenter.load(map: mapView, reverseGeolocate: journeyInfo != nil)
         mapView.set(presenter: mapPresenter)
     }
 
@@ -349,23 +349,23 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         self.locationService = locationService
     }
 
-    public func buildBookingScreen(tripInfo: TripLocationInfo? = nil,
+    public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
         PassengerInfo.shared.passengerDetails = passengerDetails
 
-        var validatedTripInfo: TripLocationInfo?
+        var validatedJourneyInfo: JourneyInfo?
 
-        if let date = tripInfo?.date {
-            validatedTripInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==
-                .orderedDescending ? nil : tripInfo
+        if let date = journeyInfo?.date {
+            validatedJourneyInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==
+                .orderedDescending ? nil : journeyInfo
         } else {
-            validatedTripInfo = tripInfo
+            validatedJourneyInfo = journeyInfo
         }
 
         let bookingPresenter = KarhooBookingPresenter(callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter,
-                                                                tripInfo: validatedTripInfo)
+                                                                journeyInfo: validatedJourneyInfo)
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
