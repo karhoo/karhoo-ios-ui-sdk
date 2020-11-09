@@ -95,11 +95,11 @@
 "Text.Bookings.price" = "Tarifa";
 "Text.Booking.guestCheckout" = "Check-out as Guest";
 
-/*Journey*/
+/*Trips*/
 /*Fuzzy*/
-"Text.Journey.CancelRide" = "Cancelar reserva";
-"Text.Journey.MessageDriver" = "Enviar SMS";
-"Text.Journey.CallDriver" = "Llamar conductor";
+"Text.Trip.CancelRide" = "Cancelar reserva";
+"Text.Trip.MessageDriver" = "Enviar SMS";
+"Text.Trip.CallDriver" = "Llamar conductor";
 
 /*Trip Statuses*/
 /*Fuzzy*/
@@ -119,7 +119,7 @@
 "Text.Trip.CancelledByDispatch" = "Lo sentimos, la flota canceló tu reserva.";
 "Text.Trip.CancelledByKarhoo" = "Tu reserva ha sido cancelada. Por favor ponte en contacto con nosotros.";
 "Text.Trip.Failed" = "Hubo un problema con tu solicitud. Inténtalo de nuevo o ponte en contacto con nosotros.";
-"Text.Journey.Completed" = "Has llegado a tu destino. Cuéntanos qué te ha parecido el viaje.";
+"Text.Trip.Completed" = "Has llegado a tu destino. Cuéntanos qué te ha parecido el viaje.";
 
 /*English: "Pickup Time" in booking request screen*/
 /*Fuzzy*/
@@ -247,27 +247,27 @@
 
 /*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
 "Text.Bookings.AsapBooking" = "Reserva inmediata";
-"Text.Journey.CancelBookingFailed" = "Cancelación no confirmada. Llama a la flota.";
+"Text.Trip.CancelBookingFailed" = "Cancelación no confirmada. Llama a la flota.";
 
-/*Used as a button in the journey screen. English: "Ride Options"*/
-"Text.Journey.RideOptions" = "Opciones";
-"Text.Journey.CancelBookingFailed.AlertTitle" = "Cancelación fallida";
-"Text.Journey.CancelBookingFailed.AlertMessage" = "Hubo un problema cancelando tu solicitud. Llama a la flota.";
-"Text.Journey.CancelBookingFailed.AlertCallFleetButton" = "Llamar a la flota";
+/*Used as a button in the trip screen. English: "Ride Options"*/
+"Text.Trip.RideOptions" = "Opciones";
+"Text.Trip.CancelBookingFailed.AlertTitle" = "Cancelación fallida";
+"Text.Trip.CancelBookingFailed.AlertMessage" = "Hubo un problema cancelando tu solicitud. Llama a la flota.";
+"Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Llamar a la flota";
 "Text.Generic.Yes" = "Si";
 "Text.Generic.No" = "No";
 "Text.Generic.Dismiss" = "Descartar";
-"Text.Journey.CancelBookingConfirmation.Alert.Title" = "¿Cancelar tu viaje?";
-"Text.Journey.CancelBookingConfirmation.Alert.Message" = "Puede que se te cobre una tarifa de cancelación";
+"Text.Trip.CancelBookingConfirmation.Alert.Title" = "¿Cancelar tu viaje?";
+"Text.Trip.CancelBookingConfirmation.Alert.Message" = "Puede que se te cobre una tarifa de cancelación";
 
-/*Call fleet button in journey screen (English: Call Fleet)*/
-"Text.Journey.CallFleet" = "Llamar flota";
-"Text.Journey.ActivityIndicator.Cancelling" = "Cancelando";
+/*Call fleet button in trip screen (English: Call Fleet)*/
+"Text.Trip.CallFleet" = "Llamar flota";
+"Text.Trip.ActivityIndicator.Cancelling" = "Cancelando";
 
 /*The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device"*/
 "Text.Generic.NoEmailSetupError" = "Configura una cuenta de correo en tu dispositivo";
-"Text.Journey.CancelledByDispatch.AlertMessage" = "Lo sentimos, la flota canceló tu reserva. Inténtalo de nuevo.";
-"Text.Journey.CancelledByDispatch.AlertTitle" = "Cancelado por la flota";
+"Text.Trip.CancelledByDispatch.AlertMessage" = "Lo sentimos, la flota canceló tu reserva. Inténtalo de nuevo.";
+"Text.Trip.CancelledByDispatch.AlertTitle" = "Cancelado por la flota";
 "Text.Generic.NoCarsAvailable" = "No hay taxis disponibles en este momento. Inténtalo de nuevo mas tarde.";
 
 /*English: "Estimated"*/
@@ -286,7 +286,7 @@
 "Text.Error.Payment.Alert.Message" = "No pudimos autorizar tu tarjeta de crédito/débito.";
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Actualizar Pago";
 "Text.Error.Alert.CantSendEmail" = "Email no enviado. Configura tu correo primero.";
-"Text.Journey.DriverLicense" = "Licencia: %1$@";
+"Text.Trip.DriverLicense" = "Licencia: %1$@";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
 "Text.Generic.Metered" = "taxímetro";
@@ -303,7 +303,7 @@
 /*The action button on the force update alert. ie "Update" (this button takes the user to the app store)*/
 "Text.Error.Alert.ForceUpdateButton" = "Actualizar";
 
-/*String for when journey is initially loaded and no trip state has yet come through. "Requesting"*/
+/*String for when trip is initially loaded and no trip state has yet come through. "Requesting"*/
 "Text.Generic.Requesting" = "Solicitando";
 "Text.Booking.EnterDestination" = "Introduce un destino para ver las flotas disponibles";
 
@@ -423,10 +423,10 @@
 "Text.TripSummary.TotalFare" = "Tarifa total";
 
 /*Popup title message when dispatch cancels due to no drivers*/
-"Text.Journey.NoDriversAvailable.AlertTitle" = "No hay conductores disponibles";
+"Text.Trip.NoDriversAvailable.AlertTitle" = "No hay conductores disponibles";
 
 /*Alert message in popup when dispatch cancels due to no drivers*/
-"Text.Journey.NoDriversAvailable.AlertMessage" = "No hay conductores disponibles";
+"Text.Trip.NoDriversAvailable.AlertMessage" = "No hay conductores disponibles";
 
 /*Password Entry Button*/
 /*Fuzzy*/
@@ -498,17 +498,17 @@
 "Text.GenericTripStatus.CancelledByKarhoo" = "Cancelado por Karhoo";
 
 /*alert title when karhoo cancel the trip-supposedly happens for preauth failure*/
-"\"Text.Journey.KarhooCancelled.AlertTitle\"" = "Cancelación";
+"\"Text.Trip.KarhooCancelled.AlertTitle\"" = "Cancelación";
 
 /*alert message when karhoo cancel the trip-supposedly happens for preauth failure*/
-"Text.Journey.KarhooCancelled.AlertMessage" = "Karhoo canceló tu reserva";
+"Text.Trip.KarhooCancelled.AlertMessage" = "Karhoo canceló tu reserva";
 
 /*When the user enters an invalid flight number*/
 /*Fuzzy*/
 "Text.Error.FlightNumberValidationHint" = "Número de vuelo";
 
-/*"Arrival" displayed on arrival box in journey*/
-"Text.Journey.Arrival" = "Llegada";
+/*"Arrival" displayed on arrival box in trip*/
+"Text.Trip.Arrival" = "Llegada";
 
 /*Theoretical edge case where the braintree token is missing*/
 "Text.Errors.failedToInitialisePaymentSetup" = "Error al iniciar la configuración del pago";

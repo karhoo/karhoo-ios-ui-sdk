@@ -1,5 +1,5 @@
 //
-//  MockJourneyScreenBuilder.swift
+//  MockTripScreenBuilder.swift
 //  KarhooUISDKTests
 //
 //

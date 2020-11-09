@@ -57,8 +57,8 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     }
 
     private func showConfirmCancelRideAlert() {
-        _ = alertHandler.show(title: UITexts.Journey.journeyCancelBookingConfirmationAlertTitle,
-                              message: UITexts.Journey.journeyCancelBookingConfirmationAlertMessage,
+        _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
+                              message: UITexts.Trip.tripCancelBookingConfirmationAlertMessage,
                               actions: [
                                 AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
                                 AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
@@ -68,10 +68,10 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     }
 
     private func showCancellationFailedAlert() {
-        let callFleet = UITexts.Journey.journeyCancelBookingFailedAlertCallFleetButton
+        let callFleet = UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton
 
-        _ = alertHandler.show(title: UITexts.Journey.journeyCancelBookingFailedAlertTitle,
-                              message: UITexts.Journey.journeyCancelBookingFailedAlertMessage,
+        _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingFailedAlertTitle,
+                              message: UITexts.Trip.tripCancelBookingFailedAlertMessage,
                               actions: [
                                 AlertAction(title: UITexts.Generic.cancel, style: .default, handler: nil),
                                 AlertAction(title: callFleet, style: .default, handler: { [weak self] _ in

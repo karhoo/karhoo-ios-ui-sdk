@@ -1,6 +1,6 @@
 //
 //  BordedLabel.swift
-//  JourneyVIew
+//  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.

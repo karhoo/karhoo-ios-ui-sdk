@@ -40,12 +40,12 @@ final class NibStrings: UIView {
     @IBOutlet var tripAllocationCancelInstructionLabel: [UILabel]?
     @IBOutlet var tripAllocationCancellingLabel: [UILabel]?
 
-    @IBOutlet var journeyCancelRide: [UILabel]?
-    @IBOutlet var journeyContactDriver: [UILabel]?
-    @IBOutlet var journeyRideOptions: [UILabel]?
-    @IBOutlet var journeyContactFleet: [UILabel]?
-    @IBOutlet var journeyInitialRequestingString: [UILabel]?
-    @IBOutlet var journeyArrivalString: [UILabel]?
+    @IBOutlet var tripCancelRide: [UILabel]?
+    @IBOutlet var tripContactDriver: [UILabel]?
+    @IBOutlet var tripRideOptions: [UILabel]?
+    @IBOutlet var tripContactFleet: [UILabel]?
+    @IBOutlet var tripInitialRequestingString: [UILabel]?
+    @IBOutlet var tripArrivalString: [UILabel]?
     @IBOutlet var bookingDetailStatusString: [UILabel]?
     @IBOutlet var bookingDetailPriceSrtring: [UILabel]?
     @IBOutlet var bookingDetailCardString: [UILabel]?
@@ -72,7 +72,7 @@ final class NibStrings: UIView {
 
     @IBOutlet var loginScreenForgottenPasswordString: [UILabel]?
 
-    @IBOutlet var journeyCancelRideButton: [UIButton]?
+    @IBOutlet var tripCancelRideButton: [UIButton]?
 
     @IBOutlet var addressViewSetOnMapString: [UILabel]?
 
@@ -81,8 +81,8 @@ final class NibStrings: UIView {
     }
 
     func setup() {
-        journeyCancelRideButton?.forEach({ button in
-            button.setTitle(UITexts.Journey.journeyCancelRide, for: .normal)
+        tripCancelRideButton?.forEach({ button in
+            button.setTitle(UITexts.Trip.tripCancelRide, for: .normal)
         })
 
         setValue(UITexts.SideMenu.signIn, forKeyPath: "sideMenuSignInString.text")
@@ -108,12 +108,12 @@ final class NibStrings: UIView {
         setValue(UITexts.Prebook.setPrebookTime, forKeyPath: "datePickerSetTime.text")
         setValue(UITexts.Generic.fixed, forKeyPath: "bookingRequestFixed.text")
 
-        setValue(UITexts.Journey.journeyRideOptions, forKeyPath: "journeyRideOptions.text")
-        setValue(UITexts.Journey.journeyCancelRide, forKeyPath: "journeyCancelRide.text")
-        setValue(UITexts.Journey.journeyContactFleet, forKeyPath: "journeyContactFleet.text")
-        setValue(UITexts.Journey.journeyContactDriver, forKeyPath: "journeyContactDriver.text")
-        setValue(UITexts.Journey.arrival, forKeyPath: "journeyArrivalString.text")
-        setValue(UITexts.Generic.requesting, forKeyPath: "journeyInitialRequestingString.text")
+        setValue(UITexts.Trip.tripRideOptions, forKeyPath: "tripRideOptions.text")
+        setValue(UITexts.Trip.tripCancelRide, forKeyPath: "tripCancelRide.text")
+        setValue(UITexts.Trip.tripContactFleet, forKeyPath: "tripContactFleet.text")
+        setValue(UITexts.Trip.tripContactDriver, forKeyPath: "tripContactDriver.text")
+        setValue(UITexts.Trip.arrival, forKeyPath: "tripArrivalString.text")
+        setValue(UITexts.Generic.requesting, forKeyPath: "tripInitialRequestingString.text")
         setValue(UITexts.Generic.status, forKeyPath: "bookingDetailStatusString.text")
         setValue(UITexts.Generic.price, forKeyPath: "bookingDetailPriceSrtring.text")
         setValue(UITexts.Generic.card, forKeyPath: "bookingDetailCardString.text")

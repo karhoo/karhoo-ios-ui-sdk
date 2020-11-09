@@ -111,8 +111,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let injectedJourney = journeyInfo {
-            addressBarPresenter.setJourneyInfo(injectedJourney)
+        if let injectedTrip = journeyInfo {
+            addressBarPresenter.setJourneyInfo(injectedTrip)
         }
     }
     
@@ -225,7 +225,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
         let location = trip.origin.position.toCLLocation()
         mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
-        mapView.removeJourneyLine()
+        mapView.removeTripLine()
     }
 
     func hideAllocationScreen() {
@@ -336,7 +336,7 @@ extension KarhooBookingViewController: BookingScreen {
     }
 
     func openTrip(_ trip: TripInfo) {
-        presenter.goToJourneyView(trip: trip)
+        presenter.goToTripView(trip: trip)
     }
 }
 

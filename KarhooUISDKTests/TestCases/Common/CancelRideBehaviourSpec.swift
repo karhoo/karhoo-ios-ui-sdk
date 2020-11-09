@@ -40,7 +40,7 @@ class CancelRideBehaviourSpec: XCTestCase {
         XCTAssert(mockAlertHandler.alertMessage?.isEmpty == false)
         XCTAssert(mockAlertHandler.alertTitle?.isEmpty == false)
         XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
-        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Journey.journeyCancelBookingConfirmationAlertTitle)
+        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingConfirmationAlertTitle)
         XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle, UITexts.Generic.yes)
     }
 
@@ -56,9 +56,9 @@ class CancelRideBehaviourSpec: XCTestCase {
         XCTAssert(mockAlertHandler.alertMessage?.isEmpty == false)
         XCTAssert(mockAlertHandler.alertTitle?.isEmpty == false)
         XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
-        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Journey.journeyCancelBookingFailedAlertTitle)
+        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingFailedAlertTitle)
         XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle,
-                       UITexts.Journey.journeyCancelBookingFailedAlertCallFleetButton)
+                       UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton)
     }
 
     /** 

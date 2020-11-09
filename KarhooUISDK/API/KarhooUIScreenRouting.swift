@@ -56,7 +56,7 @@ public final class UISDKScreenRouting: Routing {
     }
 
     public func tripScreen() -> TripScreenBuilder {
-        return routing.journeyScreenBuilder
+        return routing.tripScreenBuilder
     }
 
     public func bookingRequest() -> BookingRequestScreenBuilder {
@@ -75,8 +75,8 @@ public final class UISDKScreenRouting: Routing {
         return internalRouting.prebookConfirmationScreenBuilder
     }
 
-    internal func journeySummary() -> JourneySummaryScreenBuilder {
-        return internalRouting.journeySummaryScreenBuilder
+    internal func tripSummary() -> TripSummaryScreenBuilder {
+        return internalRouting.tripSummaryScreenBuilder
     }
 
     internal func sideMenu() -> SideMenuBuilder {

@@ -72,7 +72,7 @@ final class KarhooCancelButtonView: UIView, CancelButtonView {
         progressLabel.accessibilityIdentifier = KHCancelButtonViewID.progressLabel
         progressLabel.font = KarhooUI.fonts.bodyRegular()
         progressLabel.textColor = .white
-        progressLabel.text = UITexts.Journey.journeyCancellingActivityIndicatorText
+        progressLabel.text = UITexts.Trip.tripCancellingActivityIndicatorText
         cancelProgressBarContainer.addSubview(progressLabel)
         
         cancelButton = UIButton(type: .custom)
