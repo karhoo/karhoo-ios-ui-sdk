@@ -223,9 +223,10 @@ You can set any label text in any language by overriding the key / value pair in
 "Text.GenericTripStatus.Arrived" = "Your Driver has arrived.";
 ```
 
-### Colours, Fonts and Assets
+### Assets
+When populating UIImageViews the UISDK checks the main application bundle first for an image with the desired name. If it can't find an asset in the main bundle it will default to its own bundle. So to override any asset or image in the UISDK you can place the image with the right name in your asset bundle. A full list of assets can be found in ```/KarhooUISDK/Assets/Assets.xcassets```
 
-#### Color
+### Color
 The UI in this SDK conforms to a colour scheme, which is overridable by creating your own 'KarhooColors' implementation and injecting it to the SDK.
 
 ```swift
@@ -242,7 +243,7 @@ KarhooUI.colors = MyCompanyKarhooColors()
 ```
 
 
-#### Fonts
+### Fonts
 Also you can use a custom FontFamily struct to inject your application font to provide a consistent user experience.
 
 ```swift
@@ -257,6 +258,36 @@ KarhooUI.fontFamily = myAppFontFamily
 
 ### Injectable routing
 
+Each screen in the UISDK automatically routes to the next. You may want to only use particular screens in the UISDK and custom screens for others. For example you may want to book a trip with the UISDK but use your own address search screen. You can inject a routing implementation to override the navigation flow in the UISDK. To do this you would create your own screen builder and inject it into the SDK.
+
+Create your own version of a screen e.g AddressScreen. (full list of screens are avialable in ```protocol ScreenBuilders```
+
+
+```swift
+// create your own screen
+class MyCustomAddressScreenBuilder: AddressScreenBuilder {
+
+        func buildAddressScreen(locationBias: CLLocation?,
+                                addressType: AddressType,
+                                callback: @escaping ScreenResultCallback<LocationInfo>) -> Screen {
+            return MyCustomAddressViewController()                        
+                                
+        }
+    
+}
+
+struct MyAppRouting: ScreenBuilders {
+
+     var addressBuilder: AddressScreenBuilder {
+        return MyAppAddressScreenBuilder()
+    } 
+}
+
+// AppDelegate / SceneDelegate (setup custom routing)
+KarhooUI.setRouting(routing: MyAppRouting())
+```
+
+Now whenever the user opens the address screen within the UISDK, it will open your address screen implementation when the user comes to enter a pickup or drop off point. 
 
 ## Issues
 
