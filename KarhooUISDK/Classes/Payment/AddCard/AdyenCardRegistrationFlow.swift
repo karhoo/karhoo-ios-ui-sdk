@@ -131,7 +131,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
         adyenPayload.amount = adyenAmout
-        adyenPayload.additionalData = ["allow3DS2": true]
+        adyenPayload.additionalData = ["allow3DS2": "true"]
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,
                                            returnUrlSuffix: "")
