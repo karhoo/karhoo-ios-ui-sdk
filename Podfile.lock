@@ -10,26 +10,26 @@ PODS:
   - Adyen/DropIn (3.6.0):
     - Adyen/Card
     - Adyen/Core
-  - Adyen3DS2 (2.2.0)
-  - Braintree/Card (4.36.0):
+  - Adyen3DS2 (2.2.1)
+  - Braintree/Card (4.36.1):
     - Braintree/Core
-  - Braintree/Core (4.36.0)
-  - Braintree/PaymentFlow (4.36.0):
+  - Braintree/Core (4.36.1)
+  - Braintree/PaymentFlow (4.36.1):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.36.0):
+  - Braintree/PayPal (4.36.1):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.36.0):
+  - Braintree/PayPalDataCollector (4.36.1):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.36.0):
+  - Braintree/PayPalOneTouch (4.36.1):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.36.0)
-  - Braintree/UnionPay (4.36.0):
+  - Braintree/PayPalUtils (4.36.1)
+  - Braintree/UnionPay (4.36.1):
     - Braintree/Card
     - Braintree/Core
   - BraintreeDropIn (8.1.1):
@@ -61,7 +61,7 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.40.3)
+  - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - Adyen (= 3.6.0)
@@ -94,13 +94,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 0d85562ab1e4c87937a0418527b371b4acb8ea16
+    :commit: e026ed951b88e724c5450f2062def72bedca2a65
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
   Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
-  Adyen3DS2: 075c85aa3469d60c0ea7ba62b1f6137bec4b1088
-  Braintree: dadfa168eb8541fa522b347662fb3d05b2ea4141
+  Adyen3DS2: d99e5dea8524fc860751804dd760f6bad032de01
+  Braintree: f7e0e9a5030e22b8ad77e617f27ac9327d7bc004
   BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
   FloatingPanel: 9016eac88f21ca9fce53f5709e1f49485c0c355e
   KarhooSDK: dcccd5e7a6a22949f38a2cb0ca5db83271bf28fb
@@ -108,8 +108,8 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
 PODFILE CHECKSUM: ee7dc5e1105f79b90d90b3a60c3822942c20ebe3
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
