@@ -125,9 +125,21 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     private func setupQuoteListPanel() {
         let mainPanelVC = FloatingPanelController()
+        
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 8.0
+        appearance.backgroundColor = .clear
+        
+        let shadow = SurfaceAppearance.Shadow()
+        shadow.color = .black
+        shadow.offset = CGSize(width: 0, height: 16)
+        shadow.radius = 16
+        shadow.spread = 8
+        appearance.shadows = [shadow]
+        
         mainPanelVC.delegate = self
         mainPanelVC.isRemovalInteractionEnabled = false
-        mainPanelVC.surfaceView.shadowHidden = false
+        mainPanelVC.surfaceView.appearance = appearance
         mainPanelVC.surfaceView.backgroundColor = .clear
 
         mainPanelVC.set(contentViewController: quoteListView)
@@ -159,7 +171,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     @objc
     func floatingViewGrabberHandleTapped(_ sender: UITapGestureRecognizer) {
-        let moveTo: FloatingPanelPosition = quoteListPanelVC?.position == .full ?  .half : .full
+        let moveTo: FloatingPanelState = quoteListPanelVC?.state == .full ?  .half : .full
         self.quoteListPanelVC?.move(to: moveTo, animated: true)
     }
     
@@ -190,7 +202,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func showQuoteList() {
-        quoteListPanelVC?.addPanel(toParent: self, belowView: nil, animated: true)
+        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
         setMapPadding(bottomPaddingEnabled: true)
     }
 
@@ -259,7 +271,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 extension KarhooBookingViewController: FloatingPanelControllerDelegate {
 
     func floatingPanel(_ vc: FloatingPanelController,
-                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
         return QuoteListPanelLayout()
     }
 }
