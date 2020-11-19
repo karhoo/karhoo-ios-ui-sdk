@@ -67,7 +67,7 @@ DEPENDENCIES:
   - Adyen (= 3.6.0)
   - Braintree/PaymentFlow
   - BraintreeDropIn
-  - FloatingPanel (= 1.7.6)
+  - FloatingPanel
   - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
@@ -110,6 +110,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: ee7dc5e1105f79b90d90b3a60c3822942c20ebe3
+PODFILE CHECKSUM: dd0260b91020b82ced7f267b287819e1353e049b
 
 COCOAPODS: 1.10.0
