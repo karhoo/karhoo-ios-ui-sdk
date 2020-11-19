@@ -11,7 +11,7 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def uisdkPods
-  pod 'FloatingPanel'
+  pod 'FloatingPanel', '2.0.1'
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'

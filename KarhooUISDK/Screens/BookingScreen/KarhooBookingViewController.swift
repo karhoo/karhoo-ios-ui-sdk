@@ -125,9 +125,9 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     private func setupQuoteListPanel() {
         let mainPanelVC = FloatingPanelController()
+        
         mainPanelVC.delegate = self
         mainPanelVC.isRemovalInteractionEnabled = false
-        mainPanelVC.surfaceView.shadowHidden = false
         mainPanelVC.surfaceView.backgroundColor = .clear
 
         mainPanelVC.set(contentViewController: quoteListView)
@@ -159,7 +159,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     @objc
     func floatingViewGrabberHandleTapped(_ sender: UITapGestureRecognizer) {
-        let moveTo: FloatingPanelPosition = quoteListPanelVC?.position == .full ?  .half : .full
+        let moveTo: FloatingPanelState = quoteListPanelVC?.state == .full ?  .half : .full
         self.quoteListPanelVC?.move(to: moveTo, animated: true)
     }
     
@@ -190,7 +190,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func showQuoteList() {
-        quoteListPanelVC?.addPanel(toParent: self, belowView: nil, animated: true)
+        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
         setMapPadding(bottomPaddingEnabled: true)
     }
 
@@ -259,7 +259,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 extension KarhooBookingViewController: FloatingPanelControllerDelegate {
 
     func floatingPanel(_ vc: FloatingPanelController,
-                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
         return QuoteListPanelLayout()
     }
 }
