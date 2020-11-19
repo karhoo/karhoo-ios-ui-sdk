@@ -126,8 +126,20 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private func setupQuoteListPanel() {
         let mainPanelVC = FloatingPanelController()
         
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 8.0
+        appearance.backgroundColor = .clear
+        
+        let shadow = SurfaceAppearance.Shadow()
+        shadow.color = .black
+        shadow.offset = CGSize(width: 0, height: 16)
+        shadow.radius = 16
+        shadow.spread = 8
+        appearance.shadows = [shadow]
+        
         mainPanelVC.delegate = self
         mainPanelVC.isRemovalInteractionEnabled = false
+        mainPanelVC.surfaceView.appearance = appearance
         mainPanelVC.surfaceView.backgroundColor = .clear
 
         mainPanelVC.set(contentViewController: quoteListView)
