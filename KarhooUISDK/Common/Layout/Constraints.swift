@@ -8,6 +8,27 @@
 
 import UIKit
 
+extension UIView {
+
+    func pinEdges(to view: UIView, spacing: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        pinLeftRightEdegs(to: view, leading: spacing, trailing: -spacing)
+        pinTopBottomEdegs(to: view, top: spacing, bottom: -spacing)
+    }
+
+    func pinLeftRightEdegs(to view: UIView, leading: CGFloat = 0, trailing: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading).isActive = true
+        trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing).isActive = true
+    }
+
+    func pinTopBottomEdegs(to view: UIView, top: CGFloat = 0, bottom: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom).isActive = true
+    }
+}
+
 final class Constraints {
     class func pinEdges(of view: UIView, to template: UIView) {
         Constraints.pinVerticalEdges(of: view, to: template)

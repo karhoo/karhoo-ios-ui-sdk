@@ -16,15 +16,15 @@ public protocol ScreenBuilders {
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
     var flightDetailsScreenBuilder: FlightDetailsScreenBuilder { get }
-    var journeyScreenBuilder: TripScreenBuilder { get }
+    var tripScreenBuilder: TripScreenBuilder { get }
+    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
-    var journeySummaryScreenBuilder: JourneySummaryScreenBuilder { get }
+    var tripSummaryScreenBuilder: TripSummaryScreenBuilder { get }
     var paymentScreenBuilder: PaymentScreenBuilder { get }
     var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }
     var sideMenuBuilder: SideMenuBuilder { get }
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder { get }
@@ -41,11 +41,7 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
     }
 
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        if Karhoo.configuration.authenticationMethod().guestSettings != nil {
-            return GuestBookingRequestViewController.GuestBookingRequestScreenBuilder()
-        }
-
-        return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
+        return bookingRequestBuilder()
     }
 
     var datePickerScreenBuilder: DatePickerScreenBuilder {
@@ -60,8 +56,8 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
         return BraintreePaymentScreenBuilder()
     }
 
-    var journeySummaryScreenBuilder: JourneySummaryScreenBuilder {
-        return JourneySummaryViewController.KarhooJourneySummaryScreenBuilder()
+    var tripSummaryScreenBuilder: TripSummaryScreenBuilder {
+        return TripSummaryViewController.KarhooTripSummaryScreenBuilder()
     }
 
     var sideMenuBuilder: SideMenuBuilder {
@@ -100,7 +96,18 @@ public extension ScreenBuilders {
         return FlightDetailsViewController.KarhooFlightDetailsScreenBuilder()
     }
 
-    var journeyScreenBuilder: TripScreenBuilder {
-        return KarhooJourneyViewController.KarhooJourneyScreenBuilder()
+    var tripScreenBuilder: TripScreenBuilder {
+        return KarhooTripViewController.KarhooTripScreenBuilder()
+    }
+
+    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
+        return bookingRequestBuilder()
+    }
+
+    func bookingRequestBuilder() -> BookingRequestScreenBuilder {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .guest(settings: _), .tokenExchange: return FormBookingRequestViewController.Builder()
+        case .karhooUser: return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
+        }
     }
 }

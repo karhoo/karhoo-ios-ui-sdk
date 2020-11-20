@@ -1,6 +1,6 @@
 //
 //  BordedLabel.swift
-//  JourneyVIew
+//  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
@@ -25,10 +25,7 @@ final class BordedLabel: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        addOuterShadow(opacity: 0.5,
-                       radious: 5,
-                       rasterize: true,
-                       color: .black)
+        addOuterShadow()
     }
     
     required init?(coder: NSCoder) {

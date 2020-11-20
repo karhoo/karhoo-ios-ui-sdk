@@ -47,8 +47,9 @@ final class VehicleCapacityView: UIView {
         stackContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.accessibilityIdentifier = "stack_container"
         stackContainer.axis = .horizontal
-        stackContainer.spacing = 5.0
-        stackContainer.distribution = .fillEqually
+        stackContainer.spacing = 8.0
+        stackContainer.alignment = .leading
+        stackContainer.distribution = .equalSpacing
         addSubview(stackContainer)
         
         baggageInfoView = UIView()

@@ -33,7 +33,12 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
     private weak var actions: QuoteCategoryBarActions?
     private var categories: [QuoteCategory] = []
     private var labels: [RoundedLabel] = []
-    
+
+    private lazy var hapticGenerator: UIImpactFeedbackGenerator = {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        return generator
+    }()
+
     init() {
         super.init(frame: .zero)
         setUpView()
@@ -184,6 +189,7 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
     }
     
     func didSelectCategory(_ category: QuoteCategory) {
+        hapticGenerator.impactOccurred()
         actions?.didSelectCategory(category)
     }
     

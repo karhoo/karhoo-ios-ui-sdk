@@ -26,27 +26,29 @@ final class KarhooBookingPresenter {
     private let ridesScreenBuilder: RidesScreenBuilder
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
+    private let paymentService: PaymentService
 
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
          analyticsProvider: Analytics = KarhooAnalytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          callback: ScreenResultCallback<BookingScreenResult>? = nil,
-         journeyScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
+         tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         bookingRequestScreenBuilder: BookingRequestScreenBuilder = UISDKScreenRouting.default.bookinRequest(),
+         bookingRequestScreenBuilder: BookingRequestScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
-         urlOpener: URLOpener = KarhooURLOpener()) {
+         urlOpener: URLOpener = KarhooURLOpener(),
+         paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
         self.analyticsProvider = analyticsProvider
         self.bookingStatus = bookingStatus
         self.phoneNumberCaller = phoneNumberCaller
         self.callback = callback
-        self.tripScreenBuilder = journeyScreenBuilder
+        self.tripScreenBuilder = tripScreenBuilder
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
         self.bookingRequestScreenBuilder = bookingRequestScreenBuilder
         self.prebookConfirmationScreenBuilder = prebookConfirmationScreenBuilder
@@ -55,6 +57,7 @@ final class KarhooBookingPresenter {
         self.ridesScreenBuilder = ridesScreenBuilder
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
+        self.paymentService = paymentService
         userService.add(observer: self)
         bookingStatus.add(observer: self)
     }
@@ -109,14 +112,14 @@ final class KarhooBookingPresenter {
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
-            view?.showAlert(title: UITexts.Journey.noDriversAvailableTitle,
-                            message: String(format: UITexts.Journey.noDriversAvailableMessage,
+            view?.showAlert(title: UITexts.Trip.noDriversAvailableTitle,
+                            message: String(format: UITexts.Trip.noDriversAvailableMessage,
                                             trip.fleetInfo.name))
 
         case .karhooCancelled:
             view?.reset()
-            view?.showAlert(title: UITexts.Journey.karhooCancelledAlertTitle,
-                            message: UITexts.Journey.karhooCancelledAlertMessage)
+            view?.showAlert(title: UITexts.Trip.karhooCancelledAlertTitle,
+                            message: UITexts.Trip.karhooCancelledAlertMessage)
 
         default:
             if bookingDetails.isScheduled {
@@ -140,7 +143,8 @@ extension KarhooBookingPresenter: BookingDetailsObserver {
             view?.hideQuoteList()
             view?.setMapPadding(bottomPaddingEnabled: false)
         }
-        view?.hideNoAvailabilityBar()
+
+        view?.quotesAvailabilityDidUpdate(availability: true)
     }
 }
 
@@ -158,6 +162,15 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func load(view: BookingView?) {
         self.view = view
+        fetchPaymentProvider()
+    }
+
+    private func fetchPaymentProvider() {
+        if !Karhoo.configuration.authenticationMethod().isGuest() {
+            return
+        }
+
+        paymentService.getPaymentProvider().execute(callback: { _ in})
     }
 
     func resetBookingStatus() {
@@ -177,11 +190,11 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         switch trip.state {
         case .karhooCancelled:
-            view?.showAlert(title: UITexts.Journey.karhooCancelledAlertTitle,
-                            message: UITexts.Journey.karhooCancelledAlertMessage)
+            view?.showAlert(title: UITexts.Trip.karhooCancelledAlertTitle,
+                            message: UITexts.Trip.karhooCancelledAlertMessage)
         default:
-            view?.showAlert(title: UITexts.Journey.noDriversAvailableTitle,
-                            message: String(format: UITexts.Journey.noDriversAvailableMessage, trip.fleetInfo.name))
+            view?.showAlert(title: UITexts.Trip.noDriversAvailableTitle,
+                            message: String(format: UITexts.Trip.noDriversAvailableMessage, trip.fleetInfo.name))
         }
 
         view?.hideAllocationScreen()
@@ -192,10 +205,10 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func tripCancellationFailed(trip: TripInfo) {
-        let callFleet = UITexts.Journey.journeyCancelBookingFailedAlertCallFleetButton
+        let callFleet = UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton
 
-        view?.showAlert(title: UITexts.Journey.journeyCancelBookingFailedAlertTitle,
-                        message: UITexts.Journey.journeyCancelBookingFailedAlertMessage,
+        view?.showAlert(title: UITexts.Trip.tripCancelBookingFailedAlertTitle,
+                        message: UITexts.Trip.tripCancelBookingFailedAlertMessage,
                         actions: [
                             AlertAction(title: UITexts.Generic.cancel, style: .default, handler: nil),
                             AlertAction(title: callFleet, style: .default, handler: { [weak self] _ in
@@ -241,7 +254,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
             switch action {
             case .trackTrip(let trip):
-                goToJourneyView(trip: trip)
+                goToTripView(trip: trip)
             case .bookNewTrip:
                 view?.resetAndLocate()
             case .rebookTrip(let trip):
@@ -267,13 +280,13 @@ extension KarhooBookingPresenter: BookingPresenter {
         })
     }
 
-    func goToJourneyView(trip: TripInfo) {
+    func goToTripView(trip: TripInfo) {
         if Karhoo.configuration.authenticationMethod().isGuest() {
             urlOpener.openAgentPortalTracker(followCode: trip.followCode)
         } else {
-            let journeyView = tripScreenBuilder.buildTripScreen(trip: trip,
-                                                                callback: journeyViewCallback)
-            view?.present(journeyView, animated: true, completion: nil)
+            let tripView = tripScreenBuilder.buildTripScreen(trip: trip,
+                                                                callback: tripViewCallback)
+            view?.present(tripView, animated: true, completion: nil)
         }
     }
 
@@ -302,7 +315,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         guard let callback = self.callback else {
             switch result.completedValue() {
             case .tripAllocated(let trip)?:
-                goToJourneyView(trip: trip)
+                goToTripView(trip: trip)
             case .prebookConfirmed(let trip, let action)?:
                 if case .rideDetails = action {
                     showRideDetails(trip: trip)
@@ -335,13 +348,13 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         switch action {
         case .trackTrip(let trip):
-            goToJourneyView(trip: trip)
+            goToTripView(trip: trip)
         case .rebookTrip(let trip):
             rebookTrip(trip)
         }
     }
 
-    func journeyViewCallback(result: ScreenResult<TripScreenResult>) {
+    func tripViewCallback(result: ScreenResult<TripScreenResult>) {
         view?.dismiss(animated: true, completion: nil)
         switch result.completedValue() {
         case .some(.rebookTrip(let details)):

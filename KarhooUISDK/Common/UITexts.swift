@@ -212,27 +212,6 @@ public enum UITexts {
         public static let cancelInstruction = "Text.TripAllocation.CancelInstruction".localized
     }
 
-    /* Journey */
-    public enum Journey {
-        public static let journeyCancelRide = "Text.Journey.CancelRide".localized
-        public static let journeyCancelledByDispatchAlertTitle = "Text.Journey.CancelledByDispatch.AlertTitle".localized
-        public static let journeyCancelledByDispatchAlertMessage = "Text.Journey.CancelledByDispatch.AlertMessage".localized
-        public static let journeyCancelBookingConfirmationAlertTitle = "Text.Journey.CancelBookingConfirmation.Alert.Title".localized
-        public static let journeyCancelBookingConfirmationAlertMessage = "Text.Journey.CancelBookingConfirmation.Alert.Message".localized
-        public static let journeyCancelBookingFailedAlertTitle = "Text.Journey.CancelBookingFailed.AlertTitle".localized
-        public static let journeyCancelBookingFailedAlertMessage = "Text.Journey.CancelBookingFailed.AlertMessage".localized
-        public static let journeyCancelBookingFailedAlertCallFleetButton = "Text.Journey.CancelBookingFailed.AlertCallFleetButton".localized
-        public static let journeyCancellingActivityIndicatorText = "Text.Journey.ActivityIndicator.Cancelling".localized
-        public static let journeyContactDriver = "Text.Journey.CallDriver".localized
-        public static let journeyContactFleet = "Text.Journey.CallFleet".localized
-        public static let journeyRideOptions = "Text.Journey.RideOptions".localized
-        public static let noDriversAvailableTitle = "Text.Journey.NoDriversAvailable.AlertTitle".localized
-        public static let noDriversAvailableMessage = "Text.Journey.NoDriversAvailable.AlertMessage".localized
-        public static let arrival = "Text.Journey.Arrival".localized
-        public static let karhooCancelledAlertTitle = "Text.Journey.KarhooCancelled.AlertTitle".localized
-        public static let karhooCancelledAlertMessage = "Text.Journey.KarhooCancelled.AlertMessage".localized
-    }
-
     /* Trip */
     public enum Trip {
         public static let tripStatusUnkown = "Text.Trip.Unkown".localized
@@ -245,6 +224,24 @@ public enum UITexts {
         public static let tripStatusCompleted = "Text.Trip.Completed".localized
         public static let tripStatusCancelledByUser = "Text.Trip.CancelledByUser".localized
         public static let tripStatusCancelledByDispatch = "Text.Trip.CancelledByDispatch".localized
+        
+        public static let tripCancelRide = "Text.Trip.CancelRide".localized
+        public static let tripCancelledByDispatchAlertTitle = "Text.Trip.CancelledByDispatch.AlertTitle".localized
+        public static let tripCancelledByDispatchAlertMessage = "Text.Trip.CancelledByDispatch.AlertMessage".localized
+        public static let tripCancelBookingConfirmationAlertTitle = "Text.Trip.CancelBookingConfirmation.Alert.Title".localized
+        public static let tripCancelBookingConfirmationAlertMessage = "Text.Trip.CancelBookingConfirmation.Alert.Message".localized
+        public static let tripCancelBookingFailedAlertTitle = "Text.Trip.CancelBookingFailed.AlertTitle".localized
+        public static let tripCancelBookingFailedAlertMessage = "Text.Trip.CancelBookingFailed.AlertMessage".localized
+        public static let tripCancelBookingFailedAlertCallFleetButton = "Text.Trip.CancelBookingFailed.AlertCallFleetButton".localized
+        public static let tripCancellingActivityIndicatorText = "Text.Trip.ActivityIndicator.Cancelling".localized
+        public static let tripContactDriver = "Text.Trip.CallDriver".localized
+        public static let tripContactFleet = "Text.Trip.CallFleet".localized
+        public static let tripRideOptions = "Text.Trip.RideOptions".localized
+        public static let noDriversAvailableTitle = "Text.Trip.NoDriversAvailable.AlertTitle".localized
+        public static let noDriversAvailableMessage = "Text.Trip.NoDriversAvailable.AlertMessage".localized
+        public static let arrival = "Text.Trip.Arrival".localized
+        public static let karhooCancelledAlertTitle = "Text.Trip.KarhooCancelled.AlertTitle".localized
+        public static let karhooCancelledAlertMessage = "Text.Trip.KarhooCancelled.AlertMessage".localized
     }
 
     public enum TripSummary {

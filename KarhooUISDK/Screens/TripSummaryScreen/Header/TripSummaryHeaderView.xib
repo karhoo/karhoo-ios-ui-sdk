@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TripSummaryHeaderView" customModule="KarhooUISDK" customModuleProvider="target">
+            <connections>
+                <outlet property="headerLabel" destination="Z2d-cW-YCf" id="Avv-Hz-wcH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2d-cW-YCf">
+                    <rect key="frame" x="187.5" y="10.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQB-GH-76f">
+                    <rect key="frame" x="191.5" y="10.5" width="183.5" height="0.5"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="aGX-ev-Bv6"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKb-cJ-CeT">
+                    <rect key="frame" x="0.0" y="10.5" width="183.5" height="0.5"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="HTA-Cf-bM8"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSY-gP-jPz" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="medGreyFontColour" destination="Z2d-cW-YCf" collectionClass="NSMutableArray" id="1hR-IK-RKi"/>
+                        <outletCollection property="captionRegular" destination="Z2d-cW-YCf" collectionClass="NSMutableArray" id="s5d-r6-keD"/>
+                        <outletCollection property="white95BackgroundColor" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="fPD-9V-tZa"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iKb-cJ-CeT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="K36-gm-fdI"/>
+                <constraint firstAttribute="trailing" secondItem="OQB-GH-76f" secondAttribute="trailing" id="LVm-Jd-YXc"/>
+                <constraint firstItem="iKb-cJ-CeT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RU9-dD-TDe"/>
+                <constraint firstItem="Z2d-cW-YCf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dml-cR-ubk"/>
+                <constraint firstItem="Z2d-cW-YCf" firstAttribute="leading" secondItem="iKb-cJ-CeT" secondAttribute="trailing" constant="4" id="ibt-Ha-ZQi"/>
+                <constraint firstItem="OQB-GH-76f" firstAttribute="leading" secondItem="Z2d-cW-YCf" secondAttribute="trailing" constant="4" id="jKA-r6-PM1"/>
+                <constraint firstItem="Z2d-cW-YCf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nZ0-2M-Ka9"/>
+                <constraint firstItem="OQB-GH-76f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xzm-b9-GPi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-183.5" y="43.5"/>
+        </view>
+    </objects>
+</document>

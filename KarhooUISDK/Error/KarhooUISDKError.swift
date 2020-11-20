@@ -29,3 +29,12 @@ extension KarhooUIError {
         return KarhooUIErrorType(error: self)
     }
 }
+
+struct ErrorModel: KarhooError {
+
+    let message: String
+
+    init(message: String) {
+        self.message = message
+    }
+}

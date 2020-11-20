@@ -11,7 +11,6 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-
 class MockBaseView: UIView, BaseView {
 
     var parentViewController: UIViewController? {
@@ -77,8 +76,8 @@ final class MockAddressBarView: MockBaseView, AddressBarView {
         setDestinationCalled = true
     }
 
-    var setDisplayJourneyStateCalled = false
-    func setDisplayJourneyState() {
-        setDisplayJourneyStateCalled = true
+    var setDisplayTripStateCalled = false
+    func setDisplayTripState() {
+        setDisplayTripStateCalled = true
     }
 }

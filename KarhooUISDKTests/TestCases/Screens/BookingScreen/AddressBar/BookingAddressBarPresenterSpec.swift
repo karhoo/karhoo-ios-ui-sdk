@@ -283,7 +283,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
+    * Given: A JourneyInfo is injected
     * Then: JourneyInfo object's component for pickUp is reverse geolocated successfully
     * And: The pickupState is updated
     * And: The prebookTime is updated
@@ -302,7 +302,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
+    * Given: A JourneyInfo is injected
     * Then: JourneyInfo object's component for dropOff is reverse geolocated successfully
     * And: The pickupState is updated
     * And: The Destination state is updated
@@ -321,7 +321,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     }
     
     /**
-    * Given: A JourneyInfor is injected
+    * Given: A JourneyInfo is injected
     * Then: JourneyInfo object's components are NOT reverse geolocated
     * And: The pickupState is not updated
     * And: The Destination state is not updated

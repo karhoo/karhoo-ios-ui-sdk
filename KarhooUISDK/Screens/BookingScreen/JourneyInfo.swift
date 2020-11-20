@@ -1,5 +1,5 @@
 //
-//  JourneyInfo.swift
+//  TripInfo.swift
 //  KarhooUISDK
 //
 //

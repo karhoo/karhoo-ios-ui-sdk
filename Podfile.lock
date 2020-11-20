@@ -1,90 +1,115 @@
 PODS:
-  - Braintree/Card (4.33.0):
+  - Adyen (3.6.0):
+    - Adyen/Card (= 3.6.0)
+    - Adyen/Core (= 3.6.0)
+    - Adyen/DropIn (= 3.6.0)
+  - Adyen/Card (3.6.0):
+    - Adyen/Core
+    - Adyen3DS2 (>= 2.1.0-rc.5)
+  - Adyen/Core (3.6.0)
+  - Adyen/DropIn (3.6.0):
+    - Adyen/Card
+    - Adyen/Core
+  - Adyen3DS2 (2.2.1)
+  - Braintree/Card (4.36.1):
     - Braintree/Core
-  - Braintree/Core (4.33.0)
-  - Braintree/PaymentFlow (4.33.0):
+  - Braintree/Core (4.36.1)
+  - Braintree/PaymentFlow (4.36.1):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.33.0):
+  - Braintree/PayPal (4.36.1):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.33.0):
+  - Braintree/PayPalDataCollector (4.36.1):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.33.0):
+  - Braintree/PayPalOneTouch (4.36.1):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.33.0)
-  - Braintree/UnionPay (4.33.0):
+  - Braintree/PayPalUtils (4.36.1)
+  - Braintree/UnionPay (4.36.1):
     - Braintree/Card
     - Braintree/Core
-  - BraintreeDropIn (8.1.0):
-    - BraintreeDropIn/DropIn (= 8.1.0)
-  - BraintreeDropIn/DropIn (8.1.0):
+  - BraintreeDropIn (8.1.1):
+    - BraintreeDropIn/DropIn (= 8.1.1)
+  - BraintreeDropIn/DropIn (8.1.1):
     - Braintree/Card (~> 4.32)
     - Braintree/Core (~> 4.32)
     - Braintree/PaymentFlow (~> 4.32)
     - Braintree/PayPal (~> 4.32)
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
-  - BraintreeDropIn/UIKit (8.1.0)
-  - FloatingPanel (1.7.4)
-  - KarhooSDK (1.1.1):
+  - BraintreeDropIn/UIKit (8.1.1)
+  - FloatingPanel (2.0.1)
+  - KarhooSDK (1.2.2):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.2.5):
+  - KarhooUISDK (1.2.6):
+    - Adyen (= 3.6.0)
     - Braintree/PaymentFlow
     - BraintreeDropIn
-    - FloatingPanel
+    - FloatingPanel (= 2.0.1)
     - KarhooSDK
-    - PhoneNumberKit
+    - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
-  - PhoneNumberKit (2.1.0):
-    - PhoneNumberKit/PhoneNumberKitCore (= 2.1.0)
-    - PhoneNumberKit/UIKit (= 2.1.0)
-  - PhoneNumberKit/PhoneNumberKitCore (2.1.0)
-  - PhoneNumberKit/UIKit (2.1.0):
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.39.2)
+  - SwiftLint (0.41.0)
 
 DEPENDENCIES:
+  - Adyen (= 3.6.0)
   - Braintree/PaymentFlow
   - BraintreeDropIn
-  - FloatingPanel
-  - KarhooSDK (= 1.1.1)
+  - FloatingPanel (= 2.0.1)
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
   - KarhooUISDK (from `./`)
-  - PhoneNumberKit (= 2.1.0)
+  - PhoneNumberKit (= 3.3.1)
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Adyen
+    - Adyen3DS2
     - Braintree
     - BraintreeDropIn
     - FloatingPanel
-    - KarhooSDK
     - KeychainSwift
     - PhoneNumberKit
     - ReachabilitySwift
     - SwiftLint
 
 EXTERNAL SOURCES:
+  KarhooSDK:
+    :branch: develop
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
 
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: e026ed951b88e724c5450f2062def72bedca2a65
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
+
 SPEC CHECKSUMS:
-  Braintree: 586e4d274398fabe9d70ab790eefca41660b8a17
-  BraintreeDropIn: fc3e96a8a2b5416e5e3a3beba119f0089713bc1e
-  FloatingPanel: 3c9d0e30fe350e1613157557769d2ec97f76b96b
-  KarhooSDK: 19335b8016480ec70a45a2e8735717945177ac8d
-  KarhooUISDK: 0c4b864fbd47b5f37944cc9d4691098d7b910fa4
+  Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
+  Adyen3DS2: d99e5dea8524fc860751804dd760f6bad032de01
+  Braintree: f7e0e9a5030e22b8ad77e617f27ac9327d7bc004
+  BraintreeDropIn: 2cf07a9041df45ff671586042dbaf7b5d2767347
+  FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
+  KarhooSDK: dcccd5e7a6a22949f38a2cb0ca5db83271bf28fb
+  KarhooUISDK: cd7e54c23cd48f991e0df215d1e9af36b537d1e9
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
-  PhoneNumberKit: 62003f40ff75315fd3738286558bc365365ac222
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 944f0d5013a068a5c2555458def41e4c5200c256
+PODFILE CHECKSUM: 016d6596e64d801abddb58a523a586c186adf5f2
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

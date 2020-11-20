@@ -104,13 +104,13 @@ final class MockKarhooMapView: UIView, MapView {
         centerPinHidden = hidden
     }
 
-    var addJourneyLineCalled = false
-    func addJourneyLine(pickup: CLLocation, dropoff: CLLocation) {
-        addJourneyLineCalled = true
+    var addTripLineCalled = false
+    func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
+        addTripLineCalled = true
     }
 
-    var removeJourneyLineCalled = false
-    func removeJourneyLine() {
-        removeJourneyLineCalled = true
+    var removeTripLineCalled = false
+    func removeTripLine() {
+        removeTripLineCalled = true
     }
 }

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooTripSummaryInfoView" customModule="KarhooUISDK">
+            <connections>
+                <outlet property="clientLogo" destination="aTa-Qo-xeT" id="o2y-hm-tTn"/>
+                <outlet property="destinationLabel" destination="uCa-O2-IWD" id="DRi-cl-naS"/>
+                <outlet property="originLabel" destination="Shl-R4-rWZ" id="s6K-ls-tiR"/>
+                <outlet property="paymentSummaryHeader" destination="kvg-6q-Hrk" id="Gwd-t2-gzZ"/>
+                <outlet property="priceDescriptionLabel" destination="rEG-wn-aTI" id="3WO-ln-UzE"/>
+                <outlet property="supplierNameLabel" destination="QAa-ff-vbI" id="aIB-VD-UXg"/>
+                <outlet property="tripDateLabel" destination="Dbk-cX-F58" id="mWa-g0-nUy"/>
+                <outlet property="tripPriceLabel" destination="JyY-oc-bSH" id="fFI-cI-CIX"/>
+                <outlet property="tripSummaryHeader" destination="8WF-1y-INF" id="2AD-gu-VM2"/>
+                <outlet property="vehicleDescriptionLabel" destination="FPe-IP-Tuf" id="cFI-Ji-hPW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="306" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufv-d8-p8Q" customClass="NibStrings" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="tripSummaryVehicleString" destination="Or6-rC-l4t" collectionClass="NSMutableArray" id="55d-Xc-77y"/>
+                        <outletCollection property="tripSummaryFleetString" destination="Z82-Kc-mYx" collectionClass="NSMutableArray" id="Vz4-Xz-bPd"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JkP-KB-hkw" customClass="Attributes" customModule="KarhooUISDK">
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="gjc-c6-W03"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="standardRoundedCorners" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="xCw-tk-R4v"/>
+                        <outletCollection property="bodyRegular" destination="Shl-R4-rWZ" collectionClass="NSMutableArray" id="BHd-IF-3YL"/>
+                        <outletCollection property="bodyRegular" destination="uCa-O2-IWD" collectionClass="NSMutableArray" id="g7x-eo-hi3"/>
+                        <outletCollection property="bodyRegular" destination="QAa-ff-vbI" collectionClass="NSMutableArray" id="Zem-gb-hog"/>
+                        <outletCollection property="bodyRegular" destination="FPe-IP-Tuf" collectionClass="NSMutableArray" id="6zx-vZ-9sR"/>
+                        <outletCollection property="darkGreyFontColour" destination="Shl-R4-rWZ" collectionClass="NSMutableArray" id="etm-HG-Lcf"/>
+                        <outletCollection property="darkGreyFontColour" destination="uCa-O2-IWD" collectionClass="NSMutableArray" id="rRY-UU-ld4"/>
+                        <outletCollection property="darkGreyFontColour" destination="QAa-ff-vbI" collectionClass="NSMutableArray" id="WLw-Wu-stB"/>
+                        <outletCollection property="darkGreyFontColour" destination="FPe-IP-Tuf" collectionClass="NSMutableArray" id="EPE-uZ-Sja"/>
+                        <outletCollection property="medGreyFontColour" destination="Z82-Kc-mYx" collectionClass="NSMutableArray" id="oYH-F3-PeV"/>
+                        <outletCollection property="medGreyFontColour" destination="Or6-rC-l4t" collectionClass="NSMutableArray" id="UDs-1N-Xkw"/>
+                        <outletCollection property="bodyRegular" destination="Z82-Kc-mYx" collectionClass="NSMutableArray" id="aDr-rz-afo"/>
+                        <outletCollection property="bodyRegular" destination="Or6-rC-l4t" collectionClass="NSMutableArray" id="pKP-uD-OxE"/>
+                        <outletCollection property="headerBold" destination="rEG-wn-aTI" collectionClass="NSMutableArray" id="OhS-Qr-OXg"/>
+                        <outletCollection property="darkGreyFontColour" destination="rEG-wn-aTI" collectionClass="NSMutableArray" id="Vs9-IM-bqN"/>
+                        <outletCollection property="headerBold" destination="JyY-oc-bSH" collectionClass="NSMutableArray" id="xIT-XO-qZ0"/>
+                        <outletCollection property="darkGreyFontColour" destination="JyY-oc-bSH" collectionClass="NSMutableArray" id="Gom-Yh-JB2"/>
+                        <outletCollection property="white95BackgroundColor" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="XNt-Md-N5q"/>
+                        <outletCollection property="medGreyFontColour" destination="Dbk-cX-F58" collectionClass="NSMutableArray" id="m7Z-Ed-x1i"/>
+                    </connections>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-Qo-xeT">
+                    <rect key="frame" x="74" y="21" width="158" height="23"/>
+                    <accessibility key="accessibilityConfiguration" identifier="summary-logo">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="158" id="DaV-Ad-JFL"/>
+                        <constraint firstAttribute="height" constant="23" id="Sf2-uP-C6Z"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3G-aI-eWF" customClass="PinView" customModule="KarhooUISDK">
+                    <rect key="frame" x="10" y="127.5" width="8" height="26"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="MuM-9U-bOR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-1y-INF" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
+                    <rect key="frame" x="10" y="89" width="286" height="15"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="mrm-eE-tJp"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some origin some origin some origin some origin some origin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shl-R4-rWZ">
+                    <rect key="frame" x="34" y="119" width="267" height="17"/>
+                    <accessibility key="accessibilityConfiguration" identifier="origin-summary"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="YuQ-ds-fr6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some destination" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-O2-IWD">
+                    <rect key="frame" x="34" y="145" width="267" height="17"/>
+                    <accessibility key="accessibilityConfiguration" identifier="destination-summary"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="gIF-1x-2xV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAa-ff-vbI">
+                    <rect key="frame" x="87" y="170" width="185" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="supplier-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fleet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z82-Kc-mYx">
+                    <rect key="frame" x="34" y="170" width="34" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="fleet-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-IP-Tuf">
+                    <rect key="frame" x="92" y="196" width="180" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="vehicle-description-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Or6-rC-l4t">
+                    <rect key="frame" x="34" y="196" width="50" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="vehicle-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-6q-Hrk" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
+                    <rect key="frame" x="10" y="233" width="286" height="15"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="1EO-zX-3Mh"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEG-wn-aTI">
+                    <rect key="frame" x="34" y="279" width="74" height="21"/>
+                    <accessibility key="accessibilityConfiguration" identifier="fare-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyY-oc-bSH">
+                    <rect key="frame" x="272" y="289.5" width="0.0" height="0.0"/>
+                    <accessibility key="accessibilityConfiguration" identifier="price-summary"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Fri 2 May 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-cX-F58" userLabel="Date Label">
+                    <rect key="frame" x="102.5" y="51" width="101" height="23"/>
+                    <accessibility key="accessibilityConfiguration" identifier="date-summary"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="AfX-aa-hmF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="QAa-ff-vbI" firstAttribute="top" secondItem="uCa-O2-IWD" secondAttribute="bottom" constant="8" id="0Cg-kM-0Ge"/>
+                <constraint firstItem="QAa-ff-vbI" firstAttribute="centerY" secondItem="Z82-Kc-mYx" secondAttribute="centerY" id="0iX-bY-ly8"/>
+                <constraint firstItem="uCa-O2-IWD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="34" id="0r5-gQ-CuA"/>
+                <constraint firstItem="U3G-aI-eWF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="3Af-vS-5XR"/>
+                <constraint firstItem="FPe-IP-Tuf" firstAttribute="leading" secondItem="Or6-rC-l4t" secondAttribute="trailing" constant="8" id="4Nn-qG-Ynp"/>
+                <constraint firstItem="aTa-Qo-xeT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4Ya-oh-HhB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rEG-wn-aTI" secondAttribute="bottom" constant="20" id="50O-vd-HZs"/>
+                <constraint firstItem="Z82-Kc-mYx" firstAttribute="top" secondItem="uCa-O2-IWD" secondAttribute="bottom" constant="8" id="B5I-mJ-EfN"/>
+                <constraint firstItem="Or6-rC-l4t" firstAttribute="top" secondItem="Z82-Kc-mYx" secondAttribute="bottom" constant="8" id="CXv-KS-Smm"/>
+                <constraint firstItem="kvg-6q-Hrk" firstAttribute="top" secondItem="FPe-IP-Tuf" secondAttribute="bottom" constant="19" id="DHW-L9-WTS"/>
+                <constraint firstItem="kvg-6q-Hrk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="KTx-BT-LRi"/>
+                <constraint firstItem="Shl-R4-rWZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="34" id="LAp-Wt-bSW"/>
+                <constraint firstItem="Z82-Kc-mYx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="34" id="OFu-ip-YOp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="JyY-oc-bSH" secondAttribute="trailing" constant="34" id="OoU-IS-hw0"/>
+                <constraint firstItem="8WF-1y-INF" firstAttribute="top" secondItem="Dbk-cX-F58" secondAttribute="bottom" constant="15" id="SMp-Aa-sZM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uCa-O2-IWD" secondAttribute="trailing" constant="5" id="SvQ-k8-oJk"/>
+                <constraint firstItem="U3G-aI-eWF" firstAttribute="bottom" secondItem="uCa-O2-IWD" secondAttribute="centerY" id="THR-Hy-6jq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8WF-1y-INF" secondAttribute="trailing" constant="10" id="Tjg-U4-2F6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FPe-IP-Tuf" secondAttribute="trailing" constant="34" id="TkL-SP-oqV"/>
+                <constraint firstItem="Dbk-cX-F58" firstAttribute="centerX" secondItem="aTa-Qo-xeT" secondAttribute="centerX" id="Vlc-Zm-Ww0"/>
+                <constraint firstItem="Or6-rC-l4t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="34" id="XIA-2R-1ep"/>
+                <constraint firstItem="FPe-IP-Tuf" firstAttribute="centerY" secondItem="Or6-rC-l4t" secondAttribute="centerY" id="YHg-Hx-wUW"/>
+                <constraint firstItem="Dbk-cX-F58" firstAttribute="top" secondItem="aTa-Qo-xeT" secondAttribute="bottom" constant="7" id="cBR-x7-6MQ"/>
+                <constraint firstItem="U3G-aI-eWF" firstAttribute="firstBaseline" secondItem="Shl-R4-rWZ" secondAttribute="centerY" id="cOs-1Z-Q8R"/>
+                <constraint firstItem="JyY-oc-bSH" firstAttribute="centerY" secondItem="rEG-wn-aTI" secondAttribute="centerY" id="doY-nd-MxV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kvg-6q-Hrk" secondAttribute="trailing" constant="10" id="fMC-Av-Vjq"/>
+                <constraint firstItem="uCa-O2-IWD" firstAttribute="top" secondItem="Shl-R4-rWZ" secondAttribute="bottom" constant="9" id="m9F-La-VyM"/>
+                <constraint firstItem="QAa-ff-vbI" firstAttribute="leading" secondItem="Z82-Kc-mYx" secondAttribute="trailing" constant="19" id="nFv-z2-3jg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QAa-ff-vbI" secondAttribute="trailing" constant="34" id="o54-lY-xAk"/>
+                <constraint firstItem="QAa-ff-vbI" firstAttribute="centerY" secondItem="Z82-Kc-mYx" secondAttribute="centerY" id="oFD-zU-f09"/>
+                <constraint firstItem="rEG-wn-aTI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="34" id="pCX-4Y-yfv"/>
+                <constraint firstItem="FPe-IP-Tuf" firstAttribute="top" secondItem="QAa-ff-vbI" secondAttribute="bottom" constant="8" id="pE7-bM-iwn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Shl-R4-rWZ" secondAttribute="trailing" constant="5" id="plU-Rr-36V"/>
+                <constraint firstItem="aTa-Qo-xeT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="21" id="sAb-vz-URe"/>
+                <constraint firstItem="Shl-R4-rWZ" firstAttribute="top" secondItem="8WF-1y-INF" secondAttribute="bottom" constant="15" id="uip-Zh-QPr"/>
+                <constraint firstItem="rEG-wn-aTI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kvg-6q-Hrk" secondAttribute="bottom" constant="15" id="zOP-8E-Cjg"/>
+                <constraint firstItem="8WF-1y-INF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="zpz-6e-Jdm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-361" y="-217"/>
+        </view>
+    </objects>
+</document>

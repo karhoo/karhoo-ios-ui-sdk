@@ -63,12 +63,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     func set(quote: Quote) {
         theQuoteSet = quote
     }
-    
-    var setPaymentDetails: Nonce?
-    func setPaymentDetails(nonce: Nonce?) {
-        setPaymentDetails = nonce
-    }
-    
+
     var isBookingRequestViewVisible = false
     func showBookingRequestView(_ show: Bool) {
     
@@ -81,7 +76,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     }
 
     var passengerDetailsToReturn: PassengerDetails?
-    func getPassengerDetails() -> PassengerDetails {
+    func getPassengerDetails() -> PassengerDetails? {
         return passengerDetailsToReturn!
     }
 
@@ -98,5 +93,10 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     var flightNumberToReturn: String?
     func getFlightNumber() -> String? {
         return flightNumberToReturn
+    }
+
+    private(set) var paymentViewHiddenSet: Bool?
+    func paymentView(hidden: Bool) {
+        paymentViewHiddenSet = hidden
     }
 }

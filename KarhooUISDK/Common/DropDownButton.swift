@@ -1,6 +1,6 @@
 //
 //  DropDownButton.swift
-//  JourneyVIew
+//  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
@@ -47,7 +47,7 @@ final class DropDownButton: UIView {
         buttonTitle.font = UIFont.systemFont(ofSize: 8, weight: .semibold)
         buttonTitle.textAlignment = .center
         buttonTitle.textColor = .darkGray
-        buttonTitle.text = UITexts.Journey.journeyRideOptions
+        buttonTitle.text = UITexts.Trip.tripRideOptions
         addSubview(buttonTitle)
         
         dropDownImage = UIImageView(image: UIImage.uisdkImage("drop_down_arrow"))

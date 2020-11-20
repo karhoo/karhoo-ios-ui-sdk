@@ -53,7 +53,7 @@ final class KarhooAddressDisplayView: UIView {
         
         NSLayoutConstraint.activate([
             addressDisplayLabel.leadingAnchor.constraint(equalTo: addressTypeImage.trailingAnchor, constant: 8),
-            addressDisplayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
+            addressDisplayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
             addressDisplayLabel.centerYAnchor.constraint(equalTo: addressTypeImage.centerYAnchor),
             addressDisplayLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 15),
             addressDisplayLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -15)

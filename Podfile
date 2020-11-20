@@ -1,10 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
  
-
 # Standard cocoapods specs source
 source 'https://github.com/CocoaPods/Specs.git'
- 
 
 use_frameworks!
 
@@ -13,12 +11,16 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def uisdkPods
-  pod 'FloatingPanel'
+  pod 'FloatingPanel', '2.0.1'
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
-  pod 'PhoneNumberKit', '2.1.0'
-  pod 'KarhooSDK', '1.1.1'
+  pod 'Adyen', '3.6.0'
+  pod 'PhoneNumberKit', '3.3.1'
+  #pod 'KarhooSDK'
+  #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+
 end
 
 target 'Client' do
@@ -35,9 +37,4 @@ target 'KarhooUISDK' do
       inherit! :search_paths
       uisdkPods
     end
-
 end
-
-
-
-

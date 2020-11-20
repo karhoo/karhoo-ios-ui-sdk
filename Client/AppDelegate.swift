@@ -7,16 +7,19 @@
 
 import KarhooUISDK
 import KarhooSDK
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let urlScheme = "com.karhooUISDK.Client.Payments"
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KarhooUI.set(configuration: KarhooConfig())
+        BTAppSwitch.setReturnURLScheme(urlScheme)
 
         window = UIWindow()
         let mainView = ViewController()
@@ -24,15 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-}
 
-class KarhooConfig: KarhooUISDKConfiguration {
-
-    func environment() -> KarhooEnvironment {
-        return .sandbox
-    }
-
-    func authenticationMethod() -> AuthenticationMethod {
-        return .karhooUser
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        if url.scheme?.localizedCaseInsensitiveCompare(urlScheme) == .orderedSame {
+            return BTAppSwitch.handleOpen(url, options: options)
+        }
+        return false
     }
 }

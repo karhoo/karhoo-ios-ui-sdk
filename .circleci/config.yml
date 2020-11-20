@@ -2,43 +2,103 @@
 # https://circleci.com/docs/2.0/testing-ios/
 
 version: 2.1
-
 jobs:
-  build:
-    working_directory: ~/code
+  build-and-test:
     macos:
-      xcode: 11.3.1 # Specify the Xcode version to use
-
+      xcode: 12.0.0
+    working_directory: /Users/distiller/project/KarhooUISDK.xcworkspace
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: UISDK_unit_tests
+    shell: /bin/bash --login -eo pipefail
+    resource_class: xlarge
     steps:
       - checkout
-      - run: echo "ruby-2.5" > ~/.ruby-version
-      - run: 
-          name: Bundle install
-          command: bundle install
-#       - run:
-#           name: Fetch CocoaPods Specs
-#           command: |
-#             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Set Ruby Version
+          command: echo 'chruby ruby-2.7.2' >> ~/.bash_profile
+      - restore_cache:
+          name: Restore cache - Load installed gems from cache if possible -
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}
+            - gem-cache-v1
+#      - run: bundle install
+      - run:
+          name: Install Gemfile for Fastlane
+          command: |
+           bundle config set --local path 'vendor/bundle'
+           bundle check || bundle install
+      - save_cache:
+          name: Save cache - Save installed gems from previous step -
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+              curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
           name: Install CocoaPods
-          command: bundle exec pod install --verbose
+          command: |
+           bundle check || bundle install
+           bundle exec pod install --repo-update --verbose
       - run:
-          name: Build with fastlane
-          command: bundle exec fastlane update_plugins
-      - run: 
-          name: Run Unit Tests
-          command: xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDKTests' -destination 'platform=iOS Simulator,name=iPhone 11' test -UseModernBuildSystem=YES | xcpretty --test --color
+          name: Create Keys.swift
+          command: |
+           echo "import KarhooSDK" > Client/Keys.swift
+           echo "import KarhooUISDK" >> Client/Keys.swift
+           echo "struct Keys {" >> Client/Keys.swift
+           echo "static let identifier = \"\"" >> Client/Keys.swift
+           echo "static let referer = \"\"" >> Client/Keys.swift
+           echo "static let organisationId = \"\"" >> Client/Keys.swift
+           echo "static let userServiceEmail = \"$ADYEN_TEST_USER\"" >> Client/Keys.swift
+           echo "static let userServicePassword = \"$USER_SERVICE_PASSWORD\"" >> Client/Keys.swift
+           echo "static func staging() -> KarhooEnvironment {" >> Client/Keys.swift
+           echo "return .custom(environment: KarhooEnvironmentDetails(host: \"$ADYEN_STG_HOST\", authHost: \"$ADYEN_STG_AUTHHOST\", guestHost: \"$ADYEN_STG_GUESTHOST\")) }}" >> Client/Keys.swift
+           echo "let guestSettings = GuestSettings(identifier: Keys.identifier, referer: Keys.referer, organisationId: Keys.organisationId)" >> Client/Keys.swift
+           echo "class KarhooConfig: KarhooUISDKConfiguration {" >> Client/Keys.swift
+           echo "func environment() -> KarhooEnvironment {" >> Client/Keys.swift
+           echo "return Keys.staging() }" >> Client/Keys.swift
+           echo "func authenticationMethod() -> AuthenticationMethod {" >> Client/Keys.swift
+           echo "return .karhooUser }}" >> Client/Keys.swift
+      - run:
+          name: fastlane
+          command: bundle exec fastlane UISDK_unit_tests
       - run:
           name: Fastlane Xcov report
           command: fastlane ios XcovReport
-      - run:
-          name: Build SDK
-          command: xcodebuild -workspace 'KarhooUISDK.xcworkspace' -scheme 'KarhooUISDK' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO -UseModernBuildSystem=YES | xcpretty
 
       # Collect XML test results data to show in the UI, and save the same XML
       # files under test-results folder in the Artifacts tab
-      - store_test_results:
-          path: test_output
       - store_artifacts:
           path: test_output
           destination: scan-output
+      - store_test_results:
+          path: test_output
+          
+  adhoc:
+    macos:
+      xcode: 12.0.0
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: adhoc
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane UISDK_unit_tests
+      - store_artifacts:
+          path: output
+
+workflows:
+  build-test-adhoc:
+    jobs:
+      - build-and-test
+      - adhoc:
+          filters:
+            branches:
+              only: development
+          requires:
+            - build-and-test

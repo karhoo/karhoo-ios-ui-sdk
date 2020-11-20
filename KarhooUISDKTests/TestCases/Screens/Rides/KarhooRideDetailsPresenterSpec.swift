@@ -229,8 +229,8 @@ class KarhooRideDetailsPresenterSpec: XCTestCase {
                                               state: .driverCancelled)
         mockTripService.trackTripCall.triggerPollSuccess(testTrip)
 
-        XCTAssertEqual(mockRideDetailsView.showAlertTitle, UITexts.Journey.journeyCancelledByDispatchAlertTitle)
-        XCTAssertEqual(mockRideDetailsView.showAlertMessage, UITexts.Journey.journeyCancelledByDispatchAlertMessage)
+        XCTAssertEqual(mockRideDetailsView.showAlertTitle, UITexts.Trip.tripCancelledByDispatchAlertTitle)
+        XCTAssertEqual(mockRideDetailsView.showAlertMessage, UITexts.Trip.tripCancelledByDispatchAlertMessage)
         XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
     }
 

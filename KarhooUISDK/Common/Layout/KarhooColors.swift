@@ -32,8 +32,8 @@ public protocol KarhooColors {
     var white95: UIColor { get }
     var neonRed: UIColor { get }
 
-    var mapJourneyPath: UIColor { get }
-    var mapJourneyPathBorder: UIColor { get }
+    var mapTripPath: UIColor { get }
+    var mapTripPathBorder: UIColor { get }
     
     var guestCheckoutLightGrey: UIColor { get }
 }
@@ -95,10 +95,10 @@ public extension KarhooColors {
         return #colorLiteral(red: 0.9803921569, green: 0, blue: 0.2745098039, alpha: 1) // #FA0046
     }
 
-    var mapJourneyPath: UIColor {
+    var mapTripPath: UIColor {
         return #colorLiteral(red: 0.4431372549, green: 0.7529411765, blue: 0.9764705882, alpha: 1) // #71C0F9
     }
-    var mapJourneyPathBorder: UIColor {
+    var mapTripPathBorder: UIColor {
         return #colorLiteral(red: 0.2705882353, green: 0.5882352941, blue: 0.7333333333, alpha: 1) // #4596BB
     }
     var guestCheckoutLightGrey: UIColor {

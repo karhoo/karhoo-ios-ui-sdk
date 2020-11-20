@@ -131,8 +131,8 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         rideDetailsView?.setUpWith(trip: trip, mailComposer: mailComposer)
 
         if trip.state == .driverCancelled {
-            rideDetailsView?.showAlert(title: UITexts.Journey.journeyCancelledByDispatchAlertTitle,
-                                       message: UITexts.Journey.journeyCancelledByDispatchAlertMessage)
+            rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelledByDispatchAlertTitle,
+                                       message: UITexts.Trip.tripCancelledByDispatchAlertMessage)
             unsubscribeTripListener()
         }
     }

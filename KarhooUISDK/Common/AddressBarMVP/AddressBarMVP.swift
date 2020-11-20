@@ -32,7 +32,7 @@ public protocol AddressBarView: BaseView {
 
     func hidePickupSpinner()
 
-    func setDisplayJourneyState()
+    func setDisplayTripState()
 }
 
 protocol AddressBarPresenter: BookingDetailsObserver {

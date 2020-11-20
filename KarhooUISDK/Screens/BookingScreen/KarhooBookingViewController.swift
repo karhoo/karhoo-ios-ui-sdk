@@ -18,7 +18,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
-    private var quoteListView = KarhooQuoteListViewController()
+    private var quoteListView = KarhooUI.components.quoteList()
     private var quoteListPanelVC: FloatingPanelController?
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
@@ -111,8 +111,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let injectedJourney = journeyInfo {
-            addressBarPresenter.setJourneyInfo(injectedJourney)
+        if let injectedTrip = journeyInfo {
+            addressBarPresenter.setJourneyInfo(injectedTrip)
         }
     }
     
@@ -125,14 +125,26 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     private func setupQuoteListPanel() {
         let mainPanelVC = FloatingPanelController()
+        
+        let appearance = SurfaceAppearance()
+        appearance.cornerRadius = 8.0
+        appearance.backgroundColor = .clear
+        
+        let shadow = SurfaceAppearance.Shadow()
+        shadow.color = .black
+        shadow.offset = CGSize(width: 0, height: 16)
+        shadow.radius = 16
+        shadow.spread = 8
+        appearance.shadows = [shadow]
+        
         mainPanelVC.delegate = self
         mainPanelVC.isRemovalInteractionEnabled = false
-        mainPanelVC.surfaceView.shadowHidden = false
+        mainPanelVC.surfaceView.appearance = appearance
         mainPanelVC.surfaceView.backgroundColor = .clear
+
         mainPanelVC.set(contentViewController: quoteListView)
         mainPanelVC.track(scrollView: quoteListView.tableView)
         setupGrabberHandle(forVC: mainPanelVC)
-        
         quoteListPanelVC = mainPanelVC
     }
 
@@ -159,7 +171,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     @objc
     func floatingViewGrabberHandleTapped(_ sender: UITapGestureRecognizer) {
-        let moveTo: FloatingPanelPosition = quoteListPanelVC?.position == .full ?  .half : .full
+        let moveTo: FloatingPanelState = quoteListPanelVC?.state == .full ?  .half : .full
         self.quoteListPanelVC?.move(to: moveTo, animated: true)
     }
     
@@ -190,7 +202,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func showQuoteList() {
-        quoteListPanelVC?.addPanel(toParent: self, belowView: nil, animated: true)
+        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
         setMapPadding(bottomPaddingEnabled: true)
     }
 
@@ -225,7 +237,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
         let location = trip.origin.position.toCLLocation()
         mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
-        mapView.removeJourneyLine()
+        mapView.removeTripLine()
     }
 
     func hideAllocationScreen() {
@@ -259,7 +271,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 extension KarhooBookingViewController: FloatingPanelControllerDelegate {
 
     func floatingPanel(_ vc: FloatingPanelController,
-                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
         return QuoteListPanelLayout()
     }
 }
@@ -298,17 +310,12 @@ extension KarhooBookingViewController: QuoteListActions {
         presenter.didSelectQuote(quote: quote)
     }
 
-    func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
-        quoteListView.categoriesDidChange(categories: categories, quoteListId: quoteListId)
-    }
+    func quotesAvailabilityDidUpdate(availability: Bool) {
+        if availability == false {
+            hideQuoteList()
+        }
 
-    func showNoAvailabilityBar() {
-        hideQuoteList()
-        showAvailabilityBar(true)
-    }
-
-    func hideNoAvailabilityBar() {
-        showAvailabilityBar(false)
+        showAvailabilityBar(!availability)
     }
     
     private func showAvailabilityBar(_ show: Bool) {
@@ -341,7 +348,7 @@ extension KarhooBookingViewController: BookingScreen {
     }
 
     func openTrip(_ trip: TripInfo) {
-        presenter.goToJourneyView(trip: trip)
+        presenter.goToTripView(trip: trip)
     }
 }
 
@@ -384,11 +391,12 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             navigationController.viewControllers.insert(sideMenu.getFlowItem(),
                     at: navigationController.viewControllers.endIndex)
             navigationController.setNavigationBarHidden(true, animated: false)
-
+            navigationController.modalPresentationStyle = .fullScreen
             return navigationController
 
         } else {
             bookingViewController.set(leftNavigationButton: .exitIcon)
+            bookingViewController.modalPresentationStyle = .fullScreen
             return bookingViewController
         }
     }

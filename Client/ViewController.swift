@@ -7,24 +7,129 @@
 
 import UIKit
 import KarhooUISDK
+import CoreLocation
+import KarhooSDK
 
 class ViewController: UIViewController {
 
+    private var booking: BookingScreen?
+
+    private lazy var guestBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Guest Booking Flow", for: .normal)
+        button.tintColor = .blue
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var authenticatedBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Authenticated Booking Flow", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var tokenExchangeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Token Exchange Booking Flow", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let addressBar = KarhooUI.components.addressBar(journeyInfo: nil)
+        view.backgroundColor = .black
+        guestBookingButton.addTarget(self, action: #selector(guestBookingTapped),
+                                     for: .touchUpInside)
+        authenticatedBookingButton.addTarget(self, action: #selector(authenticatedBookingTapped),
+                                       for: .touchUpInside)
+        tokenExchangeBookingButton.addTarget(self, action: #selector(tokenExchangeBookingTapped),
+                                             for: .touchUpInside)
+    }
 
-        view.backgroundColor = .white
+    override func loadView() {
+        super.loadView()
 
-        addressBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(addressBar)
+        [guestBookingButton, authenticatedBookingButton, tokenExchangeBookingButton].forEach { button in
+            self.view.addSubview(button)
+        }
 
-        NSLayoutConstraint.activate([
-            addressBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            addressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            addressBar.heightAnchor.constraint(equalToConstant: 120)
-        ])
+        guestBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        guestBookingButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        authenticatedBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        authenticatedBookingButton.topAnchor.constraint(equalTo: guestBookingButton.bottomAnchor,
+                                                        constant: -100).isActive = true
+
+        tokenExchangeBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tokenExchangeBookingButton.topAnchor.constraint(equalTo: authenticatedBookingButton.bottomAnchor,
+                                                        constant: -100).isActive = true
+    }
+
+    @objc func guestBookingTapped(sender: UIButton) {
+        KarhooConfig.auth = .guest(settings: guestSettings)
+        showKarhoo()
+    }
+
+    @objc func authenticatedBookingTapped(sender: UIButton) {
+        KarhooConfig.auth = .karhooUser
+        usernamePasswordLoginAndShowKarhoo()
+    }
+
+    @objc func tokenExchangeBookingTapped(sender: UIButton) {
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        tokenLoginAndShowKarhoo()
+    }
+
+    private func usernamePasswordLoginAndShowKarhoo() {
+        let userService = Karhoo.getUserService()
+        userService.logout().execute(callback: { _ in})
+        
+        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
+                                                print("login: \(result)")
+                                                if result.isSuccess() {
+                                                    self.showKarhoo()
+                                                }
+        })
+    }
+
+    private func tokenLoginAndShowKarhoo() {
+        let authService = Karhoo.getAuthService()
+
+        authService.login(token: Keys.authToken).execute { result in
+            print("token login: \(result)")
+            if result.isSuccess() {
+                self.showKarhoo()
+            }
+        }
+    }
+
+    func showKarhoo() {
+        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
+                                                                    passengerDetails: nil,
+                                                                    callback: { [weak self] result in
+                                                                        self?.logout()
+                                                                        switch result {
+                                                                        case .completed(let result):
+                                                                            switch result {
+                                                                            case .tripAllocated(let trip): self?.booking?.openTrip(trip)
+                                                                            default: break
+                                                                            }
+                                                                        default: break
+                                                                        }
+                                                                    }) as? BookingScreen
+
+        self.present(booking!,
+                     animated: true,
+                     completion: nil)
+    }
+
+    private func logout() {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return
+        }
+
+        Karhoo.getUserService().logout().execute(callback: { _ in})
     }
 }

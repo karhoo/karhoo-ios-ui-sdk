@@ -102,4 +102,15 @@ class TripDetailsViewModelSpec: XCTestCase {
         testObject = TripDetailsViewModel(trip: trip)
         XCTAssertFalse(testObject.showMeetingPoint)
     }
+    
+    /**
+     * When: The view model is initialised
+     * And: The meeting point type is nil
+     * Then: Show meeting point should be false
+     */
+    func testMeetingPointNil() {
+        let trip = TestUtil.getRandomTrip(dateSet: true, meetingPoint: nil)
+        testObject = TripDetailsViewModel(trip: trip)
+        XCTAssertFalse(testObject.showMeetingPoint)
+    }
 }

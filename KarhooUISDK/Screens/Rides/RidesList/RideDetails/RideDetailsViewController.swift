@@ -71,7 +71,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         presenter.bind(view: self)
         loadingView.initialLoadingState()
         loadingView.set(backgroundColor: KarhooUI.colors.darkGrey, alpha: loadingViewAlpha)
-        loadingView.set(loadingText: UITexts.Journey.journeyCancellingActivityIndicatorText)
+        loadingView.set(loadingText: UITexts.Trip.tripCancellingActivityIndicatorText)
         rideDetailsView.tripMetaDataView.delegate = self
     }
 

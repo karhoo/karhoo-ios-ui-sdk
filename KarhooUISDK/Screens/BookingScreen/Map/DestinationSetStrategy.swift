@@ -73,7 +73,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
             setNew(destination: destination)
         }
 
-        map?.addJourneyLine(pickup: pickup.position.toCLLocation(),
+        map?.addTripLine(pickup: pickup.position.toCLLocation(),
                             dropoff: destination.position.toCLLocation())
 
         if pickupChanged || destinationChanged {
@@ -113,6 +113,6 @@ final class DestinationSetStrategy: BookingMapStrategy {
     private func removePins() {
         map?.removePin(tag: pickupPinTag)
         map?.removePin(tag: destinationPinTag)
-        map?.removeJourneyLine()
+        map?.removeTripLine()
     }
 }

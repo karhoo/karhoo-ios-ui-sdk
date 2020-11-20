@@ -30,7 +30,7 @@ class TestUtil: PrimitiveUtil {
                              fare: TripFare = TripFare(),
                              quote: TripQuote = getRandomTripQuote(quoteType: .estimated),
                              fleetInfo: FleetInfo = getRandomFleetInfo(),
-                             meetingPoint: MeetingPoint = getRandomMeetingPoint()) -> TripInfo {
+                             meetingPoint: MeetingPoint? = getRandomMeetingPoint()) -> TripInfo {
         let trip = TripInfo(tripId: tripId,
                             displayId: TestUtil.getRandomString(),
                             origin: getRandomTripLocationDetails(),
@@ -63,8 +63,7 @@ class TestUtil: PrimitiveUtil {
                          description: description,
                          phoneNumber: phoneNumber,
                          termsConditionsUrl: termsConditionsUrl,
-                         logoUrl: logoUrl,
-                         email: email)
+                         logoUrl: logoUrl)
     }
 
     class func getRandomTripLocationDetails() -> TripLocationDetails {
@@ -121,36 +120,36 @@ class TestUtil: PrimitiveUtil {
                               source: QuoteSource = .market,
                               pickUpType: PickUpType = .default,
                               vehicleAttributes: VehicleAttributes = VehicleAttributes()) -> Quote {
-        return Quote(quoteId: quoteId,
-                     fleetId: getRandomString(),
-                     availabilityId: availabilityId,
-                     fleetName: fleetName,
-                     phoneNumber: getRandomString(),
-                     supplierLogoUrl: "http://www.google.com",
-                     vehicleClass: getRandomString(),
+        let price = QuotePrice(highPrice: Double(highPrice),
+                               lowPrice: Double(lowPrice),
+                               currencyCode: currencyCode)
+        let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
+        let fleet = FleetInfo(name: fleetName)
+        return Quote(id: quoteId,
                      quoteType: quoteType,
-                     highPrice: highPrice,
-                     lowPrice: lowPrice,
-                     currencyCode: currencyCode,
-                     qtaHighMinutes: qtaHighMinutes,
-                     qtaLowMinutes: qtaLowMinutes,
-                     termsConditionsURL: "http://www.google.com",
-                     categoryName: categoryName,
                      source: source,
                      pickUpType: pickUpType,
-                     vehicleAttributes: vehicleAttributes)
+                     fleet: fleet,
+                     vehicleAttributes: vehicleAttributes,
+                     vehicle: QuoteVehicle(vehicleClass: categoryName, qta: qta),
+                     price: price,
+                     validity: 1)
     }
 
     class func getRandomUser(inOrganisation: Bool = true,
-                             nonce: Nonce? = Nonce()) -> UserInfo {
+                             nonce: Nonce? = Nonce(),
+                             paymentProvider: String = "braintree") -> UserInfo {
         let org = Organisation(id: "some", name: "company", roles: ["bread"])
-        return UserInfo(userId: getRandomString(),
-                    firstName: getRandomString(),
-                    lastName: getRandomString(),
-                    email: getRandomString(),
-                    mobileNumber: getRandomString(),
-                    organisations: inOrganisation ? [org] : [],
-                    nonce: nonce)
+        var user = UserInfo(userId: getRandomString(),
+                            firstName: getRandomString(),
+                            lastName: getRandomString(),
+                            email: getRandomString(),
+                            mobileNumber: getRandomString(),
+                            organisations: inOrganisation ? [org] : [],
+                            nonce: nonce)
+        user.paymentProvider = PaymentProvider(provider: Provider(id: paymentProvider),
+                                               loyaltyProgammes: [])
+        return user
     }
 
     class func getRandomUserRegistration() -> UserRegistration {

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.2.5"
+  s.version               = "1.3.0"
 
   s.summary               = "UI SDK for the Karhoo platform"
   s.homepage              = "https://github.com/karhoo/Karhoo-iOS-UI-SDK.git"
@@ -23,9 +23,10 @@ Pod::Spec.new do |s|
   s.requires_arc          = true
 
   s.dependency    'KarhooSDK'
-  s.dependency 	  'FloatingPanel'
+  s.dependency 	  'FloatingPanel', '2.0.1'
   s.dependency    'BraintreeDropIn'
   s.dependency    'Braintree/PaymentFlow'
-  s.dependency    'PhoneNumberKit'
+  s.dependency    'PhoneNumberKit', '3.3.1'
+  s.dependency    'Adyen', '3.6.0'
 
 end

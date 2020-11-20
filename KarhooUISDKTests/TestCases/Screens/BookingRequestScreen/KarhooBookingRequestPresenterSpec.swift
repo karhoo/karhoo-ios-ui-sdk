@@ -234,7 +234,8 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     func testAsapSetup() {
         testBookingDetails.scheduledDate = nil
         loadTestObject()
-        let qta = QtaStringFormatter().qtaString(min: testQuote.qtaLowMinutes, max: testQuote.qtaHighMinutes)
+        let qta = QtaStringFormatter().qtaString(min: testQuote.vehicle.qta.lowMinutes,
+                                                 max: testQuote.vehicle.qta.highMinutes)
         XCTAssertEqual(qta, mockView.asapQtaString)
         XCTAssertEqual(UITexts.Generic.fixed.lowercased(), mockView.quoteType?.lowercased())
     }
@@ -357,16 +358,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertFalse(mockTripService.bookCall.executed)
         XCTAssertTrue(mockFlightScreenBuilder.returnViewController!.dismissCalled)
     }
-        
-    /**
-     * When: The booking screen is shown
-     * And: The user has not inserted a payment card
-     * Then: The card details should be visible
-     */
-    func testCardDetailsNotPresent() {
-        XCTAssertNil(mockView.setPaymentDetails)
-    }
-
+    
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
         testObject.bookTripPressed()

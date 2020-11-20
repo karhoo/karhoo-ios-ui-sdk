@@ -177,8 +177,8 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         centerIcon.isHidden = hidden
     }
 
-    func addJourneyLine(pickup: CLLocation, dropoff: CLLocation) {
-        removeJourneyLine()
+    func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
+        removeTripLine()
 
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: pickup.coordinate,
@@ -201,7 +201,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         
     }
 
-    func removeJourneyLine() {
+    func removeTripLine() {
         mapView.removeOverlays(mapView.overlays)
     }
 

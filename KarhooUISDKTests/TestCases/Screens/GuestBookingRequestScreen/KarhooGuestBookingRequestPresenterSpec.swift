@@ -11,17 +11,19 @@ import KarhooSDK
 
 class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
-    private var testObject: GuestBookingRequestPresenter!
+    private var testObject: FormBookingRequestPresenter!
     private var mockView: MockBookingRequestView = MockBookingRequestView()
     private var testQuote: Quote = TestUtil.getRandomQuote(highPrice: 10)
     private var testCallbackResult: ScreenResult<TripInfo>?
     private var mockThreeDSecureProvider = MockThreeDSecureProvider()
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
+    private var mockUserService = MockUserService()
 
     override func setUp() {
         super.setUp()
         loadTestObject()
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
     }
 
     /** Given: A user has added details and a nonce
@@ -34,7 +36,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
         XCTAssertTrue(mockView.setRequestingStateCalled)
         XCTAssertTrue(mockThreeDSecureProvider.setBaseViewControllerCalled)
-        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.price.highPrice))
     }
 
     /** When: 3D secure provider succeeds
@@ -79,6 +81,30 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
+    /** When: Trip service booking succceeds
+     *  Then: View should be updated and callback is called with trip
+     */
+    func testCorrectPaymentNonceIsUsed() {
+        KarhooTestConfiguration.authenticationMethod = .karhooUser
+
+        let expectedNonce = Nonce(nonce: "mock_nonce")
+        mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
+
+        testObject.bookTripPressed()
+        mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+
     /** When: Trip service booking fails
      *  Then: View should be updated and error propogated
      */
@@ -94,6 +120,28 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
     }
 
+    /** Whem: Adyen is the payment provider
+     *  Then: Correct flow executes
+     */
+    func testAdyenPaymentFlow() {
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
+                                                                     paymentProvider: "adyen")
+        testObject.bookTripPressed()
+
+        XCTAssertFalse(mockThreeDSecureProvider.threeDSecureCalled)
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+        
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual("123", mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+
     private func guestBookingRequestTrip(result: ScreenResult<TripInfo>) {
         testCallbackResult = result
     }
@@ -103,11 +151,12 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
-
-        testObject = GuestBookingRequestPresenter(quote: testQuote,
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
+        testObject = FormBookingRequestPresenter(quote: testQuote,
                                                   bookingDetails: mockBookingDetails,
                                                   threeDSecureProvider: mockThreeDSecureProvider,
                                                   tripService: mockTripService,
+                                                  userService: mockUserService,
                                                   callback: guestBookingRequestTrip)
         testObject.load(view: mockView)
     }
