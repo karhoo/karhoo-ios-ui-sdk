@@ -44,7 +44,8 @@
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC8F471C21539E24007841FB"
@@ -65,16 +66,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5C2E260C2420F8AC00B1FF0C"
-            BuildableName = "Client.app"
-            BlueprintName = "Client"
-            ReferencedContainer = "container:KarhooUISDK.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
