@@ -23,12 +23,14 @@ class QuoteCellViewModelSpec: XCTestCase {
         let highMin: Int = 20
         let lowMin: Int = 5
         let expectedEta = QtaStringFormatter().qtaString(min: lowMin, max: highMin)
+        let passengerCapacity: Int = 1
+        let luggageCapacity: Int = 2
         
         let quote = TestUtil.getRandomQuote(fleetName: "TestFleet",
                                             qtaHighMinutes: highMin,
                                             qtaLowMinutes: lowMin,
-                                            vehicleAttributes: VehicleAttributes(luggageCapacity: 2,
-                                                                                 passengerCapacity: 1))
+                                            passengerCapacity: passengerCapacity,
+                                            luggageCapacity: luggageCapacity)
         
         testObject = QuoteViewModel(quote: quote)
         
