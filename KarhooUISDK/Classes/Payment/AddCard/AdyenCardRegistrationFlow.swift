@@ -120,18 +120,19 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 finish(result: .completed(value: .didFailWithError(nil)))
                 return
             }
-            submitPayments(dropInJson: adyenData)
+            submitPayments(dropInJson: adyenData, storePaymentMethod: data.storePaymentMethod)
         } catch let error {
             adyenDropIn?.stopLoading()
             didFail(with: error, from: component)
         }
     }
 
-    private func submitPayments(dropInJson: [String: Any]) {
+    private func submitPayments(dropInJson: [String: Any], storePaymentMethod: Bool) {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
         adyenPayload.amount = adyenAmout
         adyenPayload.additionalData = ["allow3DS2": "true"]
+        adyenPayload.storePaymentMethod = storePaymentMethod
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,
                                            returnUrlSuffix: "")
