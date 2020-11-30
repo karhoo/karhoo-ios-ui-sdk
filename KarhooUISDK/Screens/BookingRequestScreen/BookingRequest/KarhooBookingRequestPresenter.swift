@@ -208,6 +208,10 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
 
         tripBooking.paymentNonce = nonce.nonce
         
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+            tripBooking.meta = ["trip_id": nonce.nonce]
+        }
+        
         tripService.book(tripBooking: tripBooking)
             .execute(callback: { [weak self] (result: Result<TripInfo>) in
                 self?.bookingRequestInProgress = false
