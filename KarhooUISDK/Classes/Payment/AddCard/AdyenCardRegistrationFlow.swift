@@ -83,7 +83,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
 
         let configuration = DropInComponent.PaymentMethodsConfiguration()
-        configuration.clientKey = adyenKey
+        configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
 
         guard let methods = paymentMethods else {
@@ -131,7 +131,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
         adyenPayload.amount = adyenAmout
-        adyenPayload.additionalData = ["allow3DS2": true]
+        adyenPayload.additionalData = ["allow3DS2": "true"]
         adyenPayload.storePaymentMethod = storePaymentMethod
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,

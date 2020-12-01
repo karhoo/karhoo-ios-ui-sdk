@@ -15,7 +15,7 @@ def uisdkPods
   pod 'BraintreeDropIn'
   pod 'Braintree/PaymentFlow'
   pod 'SwiftLint'
-  pod 'Adyen', '3.8.0'
+  pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '3.3.1'
   #pod 'KarhooSDK'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
