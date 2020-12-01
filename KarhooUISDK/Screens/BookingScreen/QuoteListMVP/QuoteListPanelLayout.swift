@@ -16,17 +16,20 @@ final class QuoteListPanelLayout: FloatingPanelLayout {
     var position: FloatingPanelPosition = .bottom
     var initialState: FloatingPanelState { .half }
     var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
-        return [.full: FloatingPanelLayoutAnchor(absoluteInset: 140, edge: .top, referenceGuide: .safeArea),
-                .half: FloatingPanelLayoutAnchor(absoluteInset: 230, edge: .bottom, referenceGuide: .superview),]
+        return [.full: FloatingPanelLayoutAnchor(absoluteInset: 140,
+                                                 edge: .top,
+                                                 referenceGuide: .safeArea),
+                .half: FloatingPanelLayoutAnchor(absoluteInset: 230,
+                                                 edge: .bottom,
+                                                 referenceGuide: .superview),]
     }
 
     var supportedPositions: Set<FloatingPanelState> {
         return [.full, .half]
     }
 
-    //TODO: backdropAlphaFor is now backdropAlpha(for: FloatingPanelState) -> CGFloat which does not work with the current switch statement
-    func backdropAlpha(position: FloatingPanelState) -> CGFloat {
-        switch position {
+    func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
+        switch state {
         case .full: return 0.5
         default: return 0
         }

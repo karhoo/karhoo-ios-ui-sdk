@@ -83,7 +83,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
 
         let configuration = DropInComponent.PaymentMethodsConfiguration()
-        configuration.card.publicKey = adyenKey
+        configuration.clientKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
 
         guard let methods = paymentMethods else {
@@ -131,7 +131,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
         adyenPayload.amount = adyenAmout
-        adyenPayload.additionalData = ["allow3DS2": "true"]
+        adyenPayload.additionalData = ["allow3DS2": true]
         adyenPayload.storePaymentMethod = storePaymentMethod
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,
@@ -147,6 +147,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 self.handle(event: event)
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
+            @unknown default:
+                break
             }
         }
     }
@@ -197,6 +199,10 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         } else {
             finish(result: .completed(value: .didFailWithError(error as? KarhooError)))
         }
+    }
+
+    func didCancel(component: PresentableComponent, from dropInComponent: DropInComponent) {
+        finish(result: .cancelledByUser)
     }
 
     private func handle(event: AdyenResponseHandler.AdyenEvent) {
