@@ -29,9 +29,9 @@ struct AdyenResponseHandler {
         case failure
     }
 
-    func nextStepFor(data: [String: Any], transactionId: String) -> AdyenEvent {
+    func nextStepFor(data: [String: Any], tripId: String) -> AdyenEvent {
         guard let adyenActionObject = data[action] as? [String: Any] else {
-            return resolve(data: data, transactionId: transactionId)
+            return resolve(data: data, tripId: tripId)
         }
 
         guard let jsonData = try? JSONSerialization.data(withJSONObject: adyenActionObject, options: []) else {
@@ -45,7 +45,7 @@ struct AdyenResponseHandler {
         return .requiresAction(adyenAction)
     }
 
-    private func resolve(data: [String: Any], transactionId: String) -> AdyenEvent {
+    private func resolve(data: [String: Any], tripId: String) -> AdyenEvent {
         let result = data[resultCode] as? String ?? ""
 
         if result == authorised {
@@ -53,7 +53,7 @@ struct AdyenResponseHandler {
             let lastFour = paymentData?[cardSummary] as? String ?? ""
             let icon = paymentIcon(adyenDescription: paymentData?[paymentMethod] as? String)
 
-            let method = PaymentMethod(nonce: transactionId,
+            let method = PaymentMethod(nonce: tripId,
                                        nonceType: icon,
                                        paymentDescription: lastFour)
             return .paymentAuthorised(method)

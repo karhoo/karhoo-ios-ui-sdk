@@ -49,9 +49,11 @@ class MockBaseViewController: UIViewController, BaseViewController {
 
     private(set) var showAlertTitle: String?
     private(set) var showAlertMessage: String?
+    private(set) var showAlertCalled = false
     func showAlert(title: String?, message: String) {
         showAlertTitle = title
         showAlertMessage = message
+        showAlertCalled = true
     }
 
     private(set) var pushViewController: UIViewController?
@@ -60,8 +62,10 @@ class MockBaseViewController: UIViewController, BaseViewController {
     }
 
     private(set) var errorToShow: KarhooError?
+    private(set) var showErrorCalled = false
     func show(error: KarhooError?) {
         errorToShow = error
+        showErrorCalled = true
     }
 
     private(set) var actionAlertTitle: String?
@@ -71,6 +75,7 @@ class MockBaseViewController: UIViewController, BaseViewController {
         alertActions.append(contentsOf: actions)
         actionAlertTitle = title
         actionAlertMessage = message
+        showAlertCalled = true
     }
 
     func triggerAlertAction(atIndex index: Int) {

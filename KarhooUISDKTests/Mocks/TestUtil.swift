@@ -119,19 +119,21 @@ class TestUtil: PrimitiveUtil {
                               currencyCode: String = "GBP",
                               source: QuoteSource = .market,
                               pickUpType: PickUpType = .default,
-                              vehicleAttributes: VehicleAttributes = VehicleAttributes()) -> Quote {
+                              passengerCapacity: Int = 1,
+                              luggageCapacity: Int = 2,
+                              type: String = getRandomString()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
                                currencyCode: currencyCode)
         let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
         let fleet = FleetInfo(name: fleetName)
+        let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
         return Quote(id: quoteId,
                      quoteType: quoteType,
                      source: source,
                      pickUpType: pickUpType,
                      fleet: fleet,
-                     vehicleAttributes: vehicleAttributes,
-                     vehicle: QuoteVehicle(vehicleClass: categoryName, qta: qta),
+                     vehicle: vehicle,
                      price: price,
                      validity: 1)
     }

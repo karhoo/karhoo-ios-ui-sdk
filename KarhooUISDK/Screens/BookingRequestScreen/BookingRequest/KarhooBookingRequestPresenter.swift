@@ -193,6 +193,11 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
             switch paymentNonceResult {
             case .nonce(let nonce): bookTrip(withPaymentNonce: nonce, user: currentUser)
+            case .cancelledByUser:
+                view?.setDefaultState()
+            case .failedToAddCard(let error):
+                self.view?.show(error: error)
+                view?.setDefaultState()
             default:
                 self.view?.showAlert(title: UITexts.Generic.error, message: UITexts.Errors.somethingWentWrong)
                 view?.setDefaultState()
@@ -207,6 +212,10 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
                                       flightNumber: flightNumber)
 
         tripBooking.paymentNonce = nonce.nonce
+        
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+            tripBooking.meta = ["trip_id": nonce.nonce]
+        }
         
         tripService.book(tripBooking: tripBooking)
             .execute(callback: { [weak self] (result: Result<TripInfo>) in

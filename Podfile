@@ -28,7 +28,6 @@ def uisdkPods
   #pod 'KarhooSDK'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
   pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
-
 end
 
 target 'Client' do

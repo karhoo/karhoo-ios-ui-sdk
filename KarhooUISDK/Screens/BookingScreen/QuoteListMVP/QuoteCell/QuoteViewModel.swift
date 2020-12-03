@@ -24,8 +24,8 @@ final class QuoteViewModel {
 
     init(quote: Quote,
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
-        self.passengerCapacity = "\(quote.vehicleAttributes.passengerCapacity)"
-        self.baggageCapacity = "\(quote.vehicleAttributes.luggageCapacity)"
+        self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
+        self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
         self.fleetName = quote.fleet.name
         self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                   max: quote.vehicle.qta.highMinutes)
