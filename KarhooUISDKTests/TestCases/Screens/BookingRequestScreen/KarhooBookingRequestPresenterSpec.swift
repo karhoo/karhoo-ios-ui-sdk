@@ -105,6 +105,20 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
     }
 
+
+    /**
+     * When: Adyen payment is cancelled
+     * Then: no alert should show
+     */
+    func testCancellingPaymentProviderFlow() {
+        mockView.paymentNonceToReturn = "nonce"
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        mockPaymentNonceProvider.triggerResult(.cancelledByUser)
+        XCTAssertFalse(mockView.showAlertCalled)
+        XCTAssertFalse(mockView.showErrorCalled)
+    }
+
     /**
      * When: The user presses "request car"
      * And: They are not authenticated

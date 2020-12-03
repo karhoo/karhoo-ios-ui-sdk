@@ -147,6 +147,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 self.handle(event: event)
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
+            @unknown default:
+                break
             }
         }
     }
@@ -197,6 +199,10 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         } else {
             finish(result: .completed(value: .didFailWithError(error as? KarhooError)))
         }
+    }
+
+    func didCancel(component: PresentableComponent, from dropInComponent: DropInComponent) {
+        finish(result: .cancelledByUser)
     }
 
     private func handle(event: AdyenResponseHandler.AdyenEvent) {

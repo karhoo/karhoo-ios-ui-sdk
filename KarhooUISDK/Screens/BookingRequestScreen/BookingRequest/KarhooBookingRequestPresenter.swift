@@ -193,6 +193,11 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
             switch paymentNonceResult {
             case .nonce(let nonce): bookTrip(withPaymentNonce: nonce, user: currentUser)
+            case .cancelledByUser:
+                view?.setDefaultState()
+            case .failedToAddCard(let error):
+                self.view?.show(error: error)
+                view?.setDefaultState()
             default:
                 self.view?.showAlert(title: UITexts.Generic.error, message: UITexts.Errors.somethingWentWrong)
                 view?.setDefaultState()
