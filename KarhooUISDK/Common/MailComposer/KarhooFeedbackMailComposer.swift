@@ -21,8 +21,6 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
 
     private weak var viewController: UIViewController?
 
-    private let feedbackEmailAddress = "support@karhoo.com"
-    private let noCoverageEmailAddress = "suppliers@karhoo.com"
     private let mailComposer = MailComposer()
 
     public func set(parent: UIViewController) {
@@ -35,8 +33,8 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
         }
 
         _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: UITexts.SideMenu.feedback,
-                                               recipients: [feedbackEmailAddress],
+                                               subject: UITexts.SupportMailMessage.feedbackEmailSubject,
+                                               recipients: [UITexts.SupportMailMessage.feedbackEmailAddress],
                                                body: mailMetaInfo())
         return true
     }
@@ -47,8 +45,8 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
         }
 
         _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: "\(UITexts.Generic.reportIssue) Trip: #\(trip.displayId)",
-                                               recipients: [feedbackEmailAddress],
+                                               subject: "\(UITexts.SupportMailMessage.reportIssueEmailSubject): #\(trip.displayId)",
+                                               recipients: [UITexts.SupportMailMessage.supportEmailAddress],
                                                body: tripReportBody(trip: trip))
         return true
     }
@@ -60,7 +58,7 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
 
         _ = mailComposer.presentMailController(from: viewController!,
                                                subject: UITexts.SupportMailMessage.noCoverageEmailSubject,
-                                               recipients: [noCoverageEmailAddress],
+                                               recipients: [UITexts.SupportMailMessage.noCoverageEmailAddress],
                                                body: UITexts.SupportMailMessage.noCoverageEmailBody)
         return true
     }
@@ -70,10 +68,11 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
     private func mailMetaInfo() -> String {
         let info = """
                    \n \n \n
-                   \(UITexts.SupportMailMessage.supportMailMessage)
+                   \(UITexts.SupportMailMessage.feedbackMailMessage)
                    ------------------
+                   Application: \(appName()) \(appVersion())
                    Device: \(platform())
-                   System: \(systemName()) \(systemVersion()))
+                   System: \(systemName()) \(systemVersion())
                    Locale: \(currentLocale())
                    User: \(userInfo())
                    ------------------
@@ -84,11 +83,10 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
     private func tripReportBody(trip: TripInfo) -> String {
         let info = """
                    \(UITexts.SupportMailMessage.supportMailReportTrip)
-                   \n \n \n
                    ------------------
-                   User: \n \(userInfo())
                    Trip: \(trip.displayId)
                    ------------------
+                   \(mailMetaInfo())
                    """
         return info
     }
@@ -108,6 +106,28 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
 }
 
 private extension KarhooFeedbackMailComposer {
+    func appName() -> String {
+        guard let dictionary = Bundle.main.infoDictionary else {
+                    return ""
+        }
+        if let version: String = dictionary["CFBundleDisplayName"] as? String {
+            return version
+        } else {
+            return ""
+        }
+    }
+    
+    func appVersion() -> String {
+        guard let dictionary = Bundle.main.infoDictionary else {
+                    return ""
+        }
+        if let version: String = dictionary["CFBundleShortVersionString"] as? String {
+            return version
+        } else {
+            return ""
+        }
+    }
+
     func systemName() -> String {
         return UIDevice.current.systemName
     }

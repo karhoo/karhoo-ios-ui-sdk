@@ -72,7 +72,13 @@
 "Text.SideMenu.Feedback" = "Feedback";
 
 /*In app email to customer support / feedback*/
-"Text.SupportMailMessage.Feedback" = "Please don't change the information below. It helps us to pin point issues and squash bugs.";
+"Text.SupportMailMessage.Feedback" = "Please do not delete this information as it helps us improve the app.";
+"Text.SupportMailMessage.ReportIssue" = "Please use the space below to report a specific issue with your ride.";
+"Text.SupportMailMessage.FeedbackEmail" = "support@karhoo.com";
+"Text.SupportMailMessage.SupportEmail" = "support@karhoo.com";
+"Text.SupportMailMessage.SupplierEmail" = "suppliers@karhoo.com";
+"Text.SupportMailMessage.FeedbackSubject" = "Feedback";
+"Text.SupportMailMessage.ReportIssueSubject" = "Report Issue";
 
 /*Prebook*/
 "Text.Prebook.PrebookPickupTime" = "Prebook Pickup Time";
@@ -137,9 +143,6 @@
 
 /*English: "Report Issue" */
 "Text.Generic.ReportIssue" = "Report issue";
-
-/*english: "Please use the space below to report a specific issue with your trip" used when reporting issue with trip*/
-"Text.SupportMailMessage.Trip" = "Please use the space below to report a specific issue with your ride.";
 
 /*English: "No Trips" used if the booking list screen is empty*/
 "Text.Bookings.NoTrips" = "No rides";
