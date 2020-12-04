@@ -255,16 +255,13 @@ class TestUtil: PrimitiveUtil {
                          qtaHighMinutes: 10,
                          qtaLowMinutes: 5,
                          type: quoteType,
-                         vehicleClass: "Saloon",
-                         vehicleAttributes: getRandomVehicleAttributes())
+                         vehicleClass: "Saloon")
     }
 
-    class func getRandomVehicleAttributes() -> VehicleAttributes {
-        return VehicleAttributes(childSeat: getRandomBool(),
-                                 electric: getRandomBool(),
-                                 hybrid: getRandomBool(),
-                                 luggageCapacity: Int.random(in: 0...5),
-                                 passengerCapacity: Int.random(in: 0...7))
+    class func getRandomVehicleAttributes() -> QuoteVehicle {
+        return QuoteVehicle(vehicleClass: "Saloon",
+                            passengerCapacity: Int.random(in: 0...5),
+                            luggageCapacity: Int.random(in: 0...7))
     }
     
     class func getRandomJourneyInfo() -> JourneyInfo {
