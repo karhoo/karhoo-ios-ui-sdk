@@ -16,7 +16,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
     private let paymentService: PaymentService
     private var adyenDropIn: DropInComponent?
-    private var transactionID: String = ""
+    private var tripId: String = ""
     private var amount: Int = 0
     private var currencyCode: String = ""
     private let adyenResponseHandler: AdyenResponseHandler
@@ -141,9 +141,9 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
             switch result {
             case .success(let result):
-                self.transactionID = result.transactionID
+                self.tripId = result.tripId
                 let event = self.adyenResponseHandler.nextStepFor(data: result.payload,
-                                                                  tripId: result.transactionID)
+                                                                  tripId: result.tripId)
                 self.handle(event: event)
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
@@ -171,7 +171,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
     }
 
     private func submitAdyenPaymentDetails(payload: [String: Any]) {
-        let request = PaymentsDetailsRequestPayload(transactionID: self.transactionID,
+        let request = PaymentsDetailsRequestPayload(tripId: self.tripId,
                                                     paymentsPayload: payload)
 
         paymentService.getAdyenPaymentDetails(paymentDetails: request).execute(callback: { [weak self] result in
@@ -185,7 +185,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 }
 
                 let event = self.adyenResponseHandler.nextStepFor(data: detailsRespone,
-                                                                  tripId: self.transactionID)
+                                                                  tripId: self.tripId)
                 self.handle(event: event)
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
