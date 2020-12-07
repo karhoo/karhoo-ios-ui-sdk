@@ -78,3 +78,4 @@ fastlane/.env
 # access keys
 Client/Keys.swift
 
+*.DS_Store

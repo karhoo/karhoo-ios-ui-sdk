@@ -34,12 +34,8 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
 
     func feedbackPressed() {
         if mailConstructor.showFeedbackMail() == false {
-            helpPressed()
+            aboutPressed()
         } //else: automatically opens MailComposer
-    }
-
-    func helpPressed() {
-        routing.showHelp(onViewController: unwrappedView.getFlowItem())
     }
 
     func bookingsPressed() {

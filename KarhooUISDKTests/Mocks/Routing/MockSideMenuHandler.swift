@@ -13,5 +13,4 @@ final class MockSideMenuHandler: SideMenuHandler {
     func showBookingsList(onViewController viewController: UIViewController) {}
     func showProfile(onViewController: UIViewController) {}
     func showAbout(onViewController: UIViewController) {}
-    func showHelp(onViewController: UIViewController) {}
 }

@@ -44,10 +44,6 @@ final class MenuContentViewController: UIViewController, MenuContentView {
         presenter.feedbackPressed()
     }
 
-    @IBAction private func helpPressed() {
-        presenter.helpPressed()
-    }
-
     @IBAction private func aboutPressed() {
         presenter.aboutPressed()
     }
