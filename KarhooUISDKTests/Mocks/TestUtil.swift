@@ -78,6 +78,11 @@ class TestUtil: PrimitiveUtil {
                                  longitude: Double = Double(TestUtil.getRandomInt())) -> Position {
         return Position(latitude: latitude, longitude: longitude)
     }
+    
+    class func getRandomDirection(kph: Int = Int(TestUtil.getRandomInt()),
+                                  heading: Int = Int(TestUtil.getRandomInt())) -> Direction {
+        return Direction(kph: kph, heading: heading)
+    }
 
     class func getRandomFare() -> Fare {
         return Fare(breakdown: FareComponent(total: 1000.0, currency: "GBP"))
@@ -242,6 +247,7 @@ class TestUtil: PrimitiveUtil {
     class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
         return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
+                                  direction:TestUtil.getRandomDirection(),
                                   originEta: etaToOrigin,
                                   destinationEta: etaToDestination)
     }
