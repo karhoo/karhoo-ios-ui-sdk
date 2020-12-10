@@ -136,7 +136,7 @@ private extension KarhooFeedbackEmailComposer {
         return UIDevice.current.systemVersion
     }
 
-    func currentLocale() -> String {
+func currentLocale() -> String {
         return NSLocale.current.identifier
     }
 
