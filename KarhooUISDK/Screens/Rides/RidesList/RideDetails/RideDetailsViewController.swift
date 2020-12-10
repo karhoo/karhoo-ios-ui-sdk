@@ -86,7 +86,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
     }
 
     public func setUpWith(trip: TripInfo,
-                          mailComposer: FeedbackMailComposer) {
+                          mailComposer: FeedbackEmailComposer) {
         self.trip = trip
 
         tripMetaDataPresenter = KarhooTripMetaDataPresenter(tripMetaDataActions: self,
@@ -116,7 +116,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         func buildRideDetailsScreen(trip: TripInfo,
                                     callback: @escaping ScreenResultCallback<RideDetailsAction>) -> Screen {
 
-            let mailComposer = KarhooFeedbackMailComposer()
+            let mailComposer = KarhooFeedbackEmailComposer()
             let rideDetailsPresenter = KarhooRideDetailsPresenter(trip: trip,
                                                                   mailComposer: mailComposer,
                                                                   callback: callback)

@@ -11,13 +11,13 @@ import KarhooSDK
 final class RideDetailsStackButtonPresenter {
 
     private let trip: TripInfo
-    private let mailComposer: FeedbackMailComposer
+    private let mailComposer: FeedbackEmailComposer
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
 
     init(trip: TripInfo,
          stackButton: StackButtonView?,
-         mailComposer: FeedbackMailComposer,
+         mailComposer: FeedbackEmailComposer,
          rideDetailsStackButtonActions: RideDetailsStackButtonActions) {
         self.trip = trip
         self.mailComposer = mailComposer

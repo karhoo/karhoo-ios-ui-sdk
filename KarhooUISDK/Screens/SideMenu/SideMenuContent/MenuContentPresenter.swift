@@ -11,7 +11,7 @@ import KarhooSDK
 final class MenuContentScreenPresenter: MenuContentPresenter {
 
     private let routing: SideMenuHandler
-    private let mailConstructor: KarhooFeedbackMailComposer
+    private let mailConstructor: KarhooFeedbackEmailComposer
     private weak var view: MenuContentView?
 
     private var unwrappedView: MenuContentView {
@@ -23,7 +23,7 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
     }
 
     init(routing: SideMenuHandler,
-         mailConstructor: KarhooFeedbackMailComposer) {
+         mailConstructor: KarhooFeedbackEmailComposer) {
         self.routing = routing
         self.mailConstructor = mailConstructor
     }

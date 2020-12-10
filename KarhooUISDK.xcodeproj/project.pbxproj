@@ -254,7 +254,7 @@
 		407EC7B222CF564E00F24CFC /* TermsConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74722CF564E00F24CFC /* TermsConditionsView.swift */; };
 		407EC7B322CF564E00F24CFC /* TermsConditionsStringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74822CF564E00F24CFC /* TermsConditionsStringBuilder.swift */; };
 		407EC7B522CF564E00F24CFC /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74B22CF564E00F24CFC /* MailComposer.swift */; };
-		407EC7B622CF564E00F24CFC /* KarhooFeedbackMailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74C22CF564E00F24CFC /* KarhooFeedbackMailComposer.swift */; };
+		407EC7B622CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */; };
 		407EC7B722CF564E00F24CFC /* KarhooTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407EC74E22CF564E00F24CFC /* KarhooTextField.xib */; };
 		407EC7B922CF564E00F24CFC /* KarhooTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75022CF564E00F24CFC /* KarhooTextField.swift */; };
 		407EC7BB22CF564E00F24CFC /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
@@ -785,7 +785,7 @@
 		407EC74722CF564E00F24CFC /* TermsConditionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsConditionsView.swift; sourceTree = "<group>"; };
 		407EC74822CF564E00F24CFC /* TermsConditionsStringBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsConditionsStringBuilder.swift; sourceTree = "<group>"; };
 		407EC74B22CF564E00F24CFC /* MailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
-		407EC74C22CF564E00F24CFC /* KarhooFeedbackMailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooFeedbackMailComposer.swift; sourceTree = "<group>"; };
+		407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooFeedbackEmailComposer.swift; sourceTree = "<group>"; };
 		407EC74E22CF564E00F24CFC /* KarhooTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KarhooTextField.xib; sourceTree = "<group>"; };
 		407EC75022CF564E00F24CFC /* KarhooTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextField.swift; sourceTree = "<group>"; };
 		407EC75222CF564E00F24CFC /* UITexts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITexts.swift; sourceTree = "<group>"; };
@@ -2166,7 +2166,7 @@
 			isa = PBXGroup;
 			children = (
 				407EC74B22CF564E00F24CFC /* MailComposer.swift */,
-				407EC74C22CF564E00F24CFC /* KarhooFeedbackMailComposer.swift */,
+				407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */,
 			);
 			path = MailComposer;
 			sourceTree = "<group>";
@@ -3473,7 +3473,7 @@
 				5C1CD0B9241A5D88004AFF7D /* TripInfoView.swift in Sources */,
 				5C6267EA252CC24500AB6CD2 /* PaymentFactory.swift in Sources */,
 				407EC7BC22CF564E00F24CFC /* ResizingSwitcher.swift in Sources */,
-				407EC7B622CF564E00F24CFC /* KarhooFeedbackMailComposer.swift in Sources */,
+				407EC7B622CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift in Sources */,
 				5CBA2A7624F5D8CC0091D783 /* FormBookingRequestPresenter.swift in Sources */,
 				09C765B721DE688100CD81AB /* KarhooBookingViewController.swift in Sources */,
 				FC0465A12215A962004E76FE /* UINavigation.swift in Sources */,

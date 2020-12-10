@@ -10,14 +10,14 @@ import UIKit
 import KarhooSDK
 import MessageUI
 
-public protocol FeedbackMailComposer: AnyObject {
+public protocol FeedbackEmailComposer: AnyObject {
     func showFeedbackMail() -> Bool
     func reportIssueWith(trip: TripInfo) -> Bool
     func set(parent: UIViewController)
     func showNoCoverageEmail() -> Bool
 }
 
-public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
+public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer {
 
     private weak var viewController: UIViewController?
 
@@ -105,7 +105,7 @@ public final class KarhooFeedbackMailComposer: NSObject, FeedbackMailComposer {
     }
 }
 
-private extension KarhooFeedbackMailComposer {
+private extension KarhooFeedbackEmailComposer {
     func appName() -> String {
         guard let dictionary = Bundle.main.infoDictionary else {
                     return ""
@@ -136,7 +136,7 @@ private extension KarhooFeedbackMailComposer {
         return UIDevice.current.systemVersion
     }
 
-    func currentLocale() -> String {
+func currentLocale() -> String {
         return NSLocale.current.identifier
     }
 
