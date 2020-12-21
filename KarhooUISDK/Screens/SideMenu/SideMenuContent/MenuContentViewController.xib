@@ -162,6 +162,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ol-om-rp9">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="side-menu-feedback-button"/>
                                     <connections>
                                         <action selector="feedbackPressed" destination="-1" eventType="touchUpInside" id="bFs-Mg-k53"/>
                                     </connections>
@@ -200,6 +201,7 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6K-J3-j9y">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="side-menu-about-button"/>
                                     <connections>
                                         <action selector="aboutPressed" destination="-1" eventType="touchUpInside" id="3kC-Ex-e8D"/>
                                     </connections>
