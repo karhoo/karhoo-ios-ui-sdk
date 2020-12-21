@@ -8,88 +8,88 @@
 
 import UIKit
 
-protocol Validator {
+public protocol Validator {
     func validate(text: String)
     func set(listener: ValidatorListener?)
 }
 
-protocol ValidatorListener: class {
+public protocol ValidatorListener: class {
     func valid()
     func invalid(reason: String?)
 }
 
-protocol PhoneNumberValidatorProtocol: Validator {
+public protocol PhoneNumberValidatorProtocol: Validator {
     func set(countryCode: String)
 }
 
-protocol KarhooTextFieldStateDelegate: class {
+public protocol KarhooTextFieldStateDelegate: class {
     func didChange(text: String, isValid: Bool, identifier: Int)
 }
 
-protocol KarhooTextFieldEvents: class {
+public protocol KarhooTextFieldEvents: class {
     func fieldDidFocus(identifier: Int)
     func fieldDidUnFocus(identifier: Int)
 }
 
-final class KarhooTextField: NibLoadableView, ValidatorListener {
+public final class KarhooTextField: NibLoadableView, ValidatorListener {
 
-    private weak var stateDelegate: KarhooTextFieldStateDelegate?
-    private weak var fieldEventsDelegate: KarhooTextFieldEvents?
+    public weak var stateDelegate: KarhooTextFieldStateDelegate?
+    public weak var fieldEventsDelegate: KarhooTextFieldEvents?
 
-    private var characterLimit: Int = Int.max
-    @IBOutlet private weak var placeholderLabel: UILabel?
-    @IBOutlet private weak var inputField: UITextField?
-    @IBOutlet private var resizingSwitcher: ResizingSwitcher?
-    @IBOutlet private var errorBorders: [UIView]?
-    @IBOutlet private weak var invalidIcon: UIImageView?
-    @IBOutlet private weak var validIcon: UIImageView?
+    public var characterLimit: Int = Int.max
+    @IBOutlet public weak var placeholderLabel: UILabel?
+    @IBOutlet public weak var inputField: UITextField?
+    @IBOutlet public var resizingSwitcher: ResizingSwitcher?
+    @IBOutlet public var errorBorders: [UIView]?
+    @IBOutlet public weak var invalidIcon: UIImageView?
+    @IBOutlet public weak var validIcon: UIImageView?
 
-    private var validator: Validator?
-    private var fieldIdentity: Int?
-    private var initialPlaceholder: String?
-    private var isValid: Bool = false
-    func set(validator: Validator) {
+    public var validator: Validator?
+    public var fieldIdentity: Int?
+    public var initialPlaceholder: String?
+    public var isValid: Bool = false
+    public func set(validator: Validator) {
         self.validator = validator
         self.validator?.set(listener: self)
     }
 
-    func set(animationTime: Double) {
+    public func set(animationTime: Double) {
         resizingSwitcher?.set(animationTime: animationTime)
     }
 
-    func set(characterLimit: Int) {
+    public func set(characterLimit: Int) {
         self.characterLimit = characterLimit
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         inputField?.layer.sublayerTransform = CATransform3DMakeTranslation(15, 10, 0)
     }
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         setDefaultState()
         inputField?.delegate = self
     }
 
-    func set(stateDelegate: KarhooTextFieldStateDelegate?) {
+    public func set(stateDelegate: KarhooTextFieldStateDelegate?) {
         self.stateDelegate = stateDelegate
     }
 
-    func set(fieldEventsDelegate: KarhooTextFieldEvents?) {
+    public func set(fieldEventsDelegate: KarhooTextFieldEvents?) {
         self.fieldEventsDelegate = fieldEventsDelegate
     }
 
-    func set(identifier: Int) {
+    public func set(identifier: Int) {
         self.fieldIdentity = identifier
     }
 
-    func set(defaultPlaceholder: String?) {
+    public func set(defaultPlaceholder: String?) {
         initialPlaceholder = defaultPlaceholder
         placeholderLabel?.text = defaultPlaceholder
     }
 
-    func set(text: String) {
+    public func set(text: String) {
         inputField?.text = text
         if text.isEmpty {
             resizingSwitcher?.expand()
@@ -97,8 +97,12 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
             resizingSwitcher?.contract()
         }
     }
+    
+    var text: String? {
+        return inputField?.text
+    }
 
-    func set(secureText: Bool) {
+    public func set(secureText: Bool) {
         guard let input = inputField else { return }
         input.isSecureTextEntry = secureText
 
@@ -109,7 +113,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         input.selectedTextRange = input.textRange(from: end, to: end)
     }
 
-    func setDefaultState() {
+    public func setDefaultState() {
         invalidIcon?.alpha = 0
         validIcon?.alpha = 0
         setValue(0.0, forKeyPath: "errorBorders.alpha")
@@ -117,23 +121,23 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         placeholderLabel?.textColor = KarhooUI.colors.medGrey
     }
 
-    func setFocus() {
+    public func setFocus() {
         inputField?.becomeFirstResponder()
     }
 
-    func setUnFocus() {
+    public func setUnFocus() {
         inputField?.resignFirstResponder()
     }
 
-    func set(autoCapitalisationType: UITextAutocapitalizationType) {
+    public func set(autoCapitalisationType: UITextAutocapitalizationType) {
         inputField?.autocapitalizationType = autoCapitalisationType
     }
 
-    func set(keyboardType: UIKeyboardType) {
+    public func set(keyboardType: UIKeyboardType) {
         inputField?.keyboardType = keyboardType
     }
 
-    func set(enabled: Bool) {
+    public func set(enabled: Bool) {
        inputField?.isEnabled = enabled
     }
 
@@ -142,7 +146,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         return resizingSwitcher.isExpanded()
     }
 
-    func setExpanded(_ expand: Bool, animated: Bool) {
+    public func setExpanded(_ expand: Bool, animated: Bool) {
         guard let resizingSwitcher = self.resizingSwitcher else { return }
 
         if expand {
@@ -152,7 +156,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         }
     }
 
-    func valid() {
+    public func valid() {
         isValid = true
         placeholderLabel?.textColor = KarhooUI.colors.medGrey
         inputField?.textColor = KarhooUI.colors.darkGrey
@@ -162,7 +166,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         validIcon?.alpha = 1
     }
 
-    func invalid(reason: String?) {
+    public func invalid(reason: String?) {
         isValid = false
         placeholderLabel?.textColor = KarhooUI.colors.darkGrey
         setValue(1.0, forKeyPath: "errorBorders.alpha")
@@ -173,7 +177,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         }
     }
 
-    func runValidator() {
+    public func runValidator() {
         if let validator = validator {
             validator.validate(text: inputField?.text ?? "")
         } else {
@@ -216,7 +220,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
 
 extension KarhooTextField: UITextFieldDelegate {
 
-    func textField(_ textField: UITextField,
+    public func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         guard let textFieldText = textField.text else {

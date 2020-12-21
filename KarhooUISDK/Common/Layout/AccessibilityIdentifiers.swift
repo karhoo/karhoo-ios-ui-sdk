@@ -16,6 +16,7 @@ final class AccessibilityIdentifiers: UIView {
     @IBOutlet var sideMenuLoginButtonId: [UIButton]?
     @IBOutlet var sideMenuSignupButtonId: [UIButton]?
     @IBOutlet var sideMenuProfileButtonId: [UIButton]?
+    @IBOutlet var sideMenuFeedbackButtonId: [UIButton]?
     @IBOutlet var rideOptionsId: [UIButton]?
     
     @IBOutlet var firstNameFieldId: [KarhooTextField]?
@@ -51,6 +52,7 @@ final class AccessibilityIdentifiers: UIView {
         setValue("side-menu-signup-button", forKeyPath: "sideMenuSignupButtonId.\(aI)")
         setValue("ride-options-button", forKeyPath: "rideOptionsId.\(aI)")
         setValue("side-menu-profile-button", forKeyPath: "sideMenuProfileButtonId.\(aI)")
+        setValue("side-menu-feedback-button", forKeyPath: "sideMenuFeedbackButtonId.\(aI)")
 
         setValue("signup-firstName-field", forKeyPath: "firstNameFieldId.\(aI)")
         setValue("signup-lastName-field", forKeyPath: "lastNameFieldId.\(aI)")
