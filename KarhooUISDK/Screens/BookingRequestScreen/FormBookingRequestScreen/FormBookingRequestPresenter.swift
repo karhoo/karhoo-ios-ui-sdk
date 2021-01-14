@@ -58,7 +58,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
 
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser: return userService.getCurrentUser()?.nonce?.nonce
+        case .karhooUser, .tokenExchange(settings: _): return userService.getCurrentUser()?.nonce?.nonce
         default: return view?.getPaymentNonce()
         }
     }
