@@ -58,8 +58,6 @@ final class KarhooOriginEtaPresenter: OriginEtaPresenter {
     func updated(info: DriverTrackingInfo) {
         let etaToOrigin = info.originEta
 
-        analytics.derEtaChanged(etaToOrigin)
-
         if etaToOrigin == 0 {
             etaView.hide()
         } else {

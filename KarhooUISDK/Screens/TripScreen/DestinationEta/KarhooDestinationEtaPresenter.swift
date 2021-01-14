@@ -16,7 +16,6 @@ final class KarhooDestinationEtaPresenter: DestinationEtaPresenter {
     private let etaView: DestinationEtaView
     private var tripId: String?
     private var currentlyListeningToDriverLocation: Bool = false
-    private let analytics: Analytics
     private let timeFetcher: TimeFetcher
     private let dateFormatterType: DateFormatterType
     private var driverTrackingObservable: Observable<DriverTrackingInfo>?
@@ -27,13 +26,11 @@ final class KarhooDestinationEtaPresenter: DestinationEtaPresenter {
 
     init(tripService: TripService = Karhoo.getTripService(),
          driverTrackingService: DriverTrackingService = Karhoo.getDriverTrackingService(),
-         analytics: Analytics = KarhooAnalytics(),
          timeFetcher: TimeFetcher = KarhooTimeFetcher(),
          etaView: DestinationEtaView,
          dateFormatterType: DateFormatterType = KarhooDateFormatter()) {
         self.tripService = tripService
         self.driverTrackingService = driverTrackingService
-        self.analytics = analytics
         self.etaView = etaView
         self.timeFetcher = timeFetcher
         self.dateFormatterType = dateFormatterType
@@ -57,7 +54,6 @@ final class KarhooDestinationEtaPresenter: DestinationEtaPresenter {
 
     func updated(info: DriverTrackingInfo) {
         let etaToDestination = info.destinationEta
-        analytics.pobEtaChanged(etaToDestination)
 
         if etaToDestination == 0 {
             etaView.hide()
