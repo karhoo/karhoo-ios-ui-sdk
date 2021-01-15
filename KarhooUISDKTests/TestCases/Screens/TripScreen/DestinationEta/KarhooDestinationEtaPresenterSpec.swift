@@ -19,7 +19,6 @@ final class KarhooDestinationEtaSpec: XCTestCase {
     private var mockDriverTrackingService: MockDriverTrackingService!
     private var testObject: KarhooDestinationEtaPresenter!
     private var mockDestinationEtaView: MockDestinationEtaView!
-    private var testAnalytics: MockAnalytics!
     private var testTimeFetcher: MockTimeFetcher!
     private lazy var testTrip = TestUtil.getRandomTrip(tripId: testTripId)
 
@@ -27,12 +26,10 @@ final class KarhooDestinationEtaSpec: XCTestCase {
         super.setUp()
         mockDestinationEtaView = MockDestinationEtaView()
         mockTripService = MockTripService()
-        testAnalytics = MockAnalytics()
         testTimeFetcher = MockTimeFetcher()
         mockDriverTrackingService = MockDriverTrackingService()
         testObject = KarhooDestinationEtaPresenter(tripService: mockTripService,
                                                                     driverTrackingService: mockDriverTrackingService,
-                                                                    analytics: testAnalytics,
                                                                     timeFetcher: testTimeFetcher,
                                                                     etaView: mockDestinationEtaView)
         
@@ -131,7 +128,6 @@ final class KarhooDestinationEtaSpec: XCTestCase {
      * Given: Driver location is updated
      * When: Passenger is on board
      * Then: The eta view should show eta with the correct eta
-     * And: Analytics event should be fired
      */
     func testDriverLocationUpdatedWhenPassengerOnBoard() {
         testObject.monitorTrip(tripId: testTripId)
@@ -145,7 +141,6 @@ final class KarhooDestinationEtaSpec: XCTestCase {
 
         XCTAssertEqual(testTripId, mockTripService.trackTripStatusIdSet)
         XCTAssertEqual("16:31", mockDestinationEtaView.showEtaSet)
-        XCTAssertEqual(testDriverTrackingInfo.destinationEta, testAnalytics.lastPobEtaValue)
     }
     
     /**

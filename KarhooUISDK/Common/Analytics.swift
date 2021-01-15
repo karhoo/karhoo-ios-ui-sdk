@@ -28,8 +28,6 @@ public protocol Analytics {
     func userTermsReviewed()
     func userCardRegistered()
     func cardRegistrationFailed()
-    func derEtaChanged(_: Int)
-    func pobEtaChanged(_: Int)
     func pickupAddressDisplayed(count: Int)
     func destinationAddressDisplayed(count: Int)
     func pickupAddressSelected(_: LocationInfo)
@@ -143,14 +141,6 @@ final class KarhooAnalytics: Analytics {
 
     func cardRegistrationFailed() {
         base.send(eventName: .userCardRegistrationFailed, payload: emptyPayload)
-    }
-
-    func derEtaChanged(_ eta: Int) {
-        base.send(eventName: .derEtaDisplayed, payload: [Keys.etaDisplayed: eta])
-    }
-
-    func pobEtaChanged(_ eta: Int) {
-        base.send(eventName: .pobEtaDisplayed, payload: [Keys.detaDisplayed: eta])
     }
 
     func pickupAddressDisplayed(count: Int) {
