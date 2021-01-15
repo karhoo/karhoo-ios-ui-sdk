@@ -16,7 +16,6 @@ final class KarhooOriginEtaPresenter: OriginEtaPresenter {
     private let etaView: OriginEtaView
     private var tripId: String?
     private var currentlyListeningToDriverLocation: Bool = false
-    private let analytics: Analytics
 
     private var driverTrackingObservable: Observable<DriverTrackingInfo>?
     private var driverTrackingObserver: Observer<DriverTrackingInfo>?
@@ -26,11 +25,9 @@ final class KarhooOriginEtaPresenter: OriginEtaPresenter {
 
     init(tripService: TripService = Karhoo.getTripService(),
          driverTrackingService: DriverTrackingService = Karhoo.getDriverTrackingService(),
-         analytics: Analytics = KarhooAnalytics(),
          etaView: OriginEtaView) {
         self.tripService = tripService
         self.driverTrackingService = driverTrackingService
-        self.analytics = analytics
         self.etaView = etaView
     }
 
