@@ -23,7 +23,6 @@ class KarhooOriginEtaPresenterSpec: XCTestCase {
         super.setUp()
         mockOriginEtaView = MockOriginEtaView()
         mockTripService = MockTripService()
-        testAnalytics = MockAnalytics()
         mockDriverTrackingService = MockDriverTrackingService()
         testObject = KarhooOriginEtaPresenter(tripService: mockTripService,
                                               driverTrackingService: mockDriverTrackingService,
@@ -159,7 +158,6 @@ class KarhooOriginEtaPresenterSpec: XCTestCase {
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(testDriverTrackingInfo)
 
         XCTAssertEqual("\(testDriverTrackingInfo.originEta)", mockOriginEtaView.showEtaSet)
-        XCTAssertEqual(testDriverTrackingInfo.originEta, testAnalytics.lastDerEtaValue)
     }
     
     /**
