@@ -28,12 +28,17 @@ public final class KarhooPaymentView: UIView, PaymentView {
     private var didSetupConstraints: Bool = false
     private var presenter: PaymentPresenter?
 
-    init() {
+    public init() {
         super.init(frame: .zero)
         self.setUpView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setUpView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setUpView()
     }
