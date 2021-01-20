@@ -27,7 +27,7 @@ final class PassengerDetailsView: UIView {
                                     lastName: surnameTextField.getIntput(),
                                     email: emailTextField.getIntput(),
                                     phoneNumber: phoneTextField.getIntput(),
-                                    locale: "en-gb")
+                                    locale: currentLocale())
         }
     }
 
@@ -78,6 +78,10 @@ final class PassengerDetailsView: UIView {
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
     }()
+    
+    private func currentLocale() -> String {
+            return NSLocale.current.identifier
+        }
 
     init() {
         super.init(frame: .zero)

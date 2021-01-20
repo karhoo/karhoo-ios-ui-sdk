@@ -11,7 +11,6 @@ import Foundation
 protocol MenuContentPresenter {
     func profilePressed()
     func feedbackPressed()
-    func helpPressed()
     func bookingsPressed()
     func aboutPressed()
 }

@@ -27,13 +27,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private let presenter: BookingPresenter
     private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
-    private let feedbackMailComposer: FeedbackMailComposer
+    private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
 
     init(presenter: BookingPresenter,
          addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
-         feedbackMailComposer: FeedbackMailComposer = KarhooFeedbackMailComposer(),
+         feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
          analyticsProvider: Analytics = KarhooAnalytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter

@@ -13,7 +13,7 @@ import KarhooSDK
 final class MockRideDetailsView: MockBaseViewController, RideDetailsView {
 
     var setTripCalled: TripInfo!
-    func setUpWith(trip: TripInfo, mailComposer: FeedbackMailComposer) {
+    func setUpWith(trip: TripInfo, mailComposer: FeedbackEmailComposer) {
         setTripCalled = trip
     }
 

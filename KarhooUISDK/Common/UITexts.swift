@@ -165,10 +165,15 @@ public enum UITexts {
 
     /* support mail */
     public enum SupportMailMessage {
-        public static let supportMailMessage = "Text.SupportMailMessage.Feedback".localized
-        public static let supportMailReportTrip = "Text.SupportMailMessage.Trip".localized
+        public static let feedbackMailMessage = "Text.SupportMailMessage.Feedback".localized
+        public static let supportMailReportTrip = "Text.SupportMailMessage.ReportIssue".localized
+        public static let feedbackEmailSubject = "Text.SupportMailMessage.FeedbackSubject".localized
+        public static let reportIssueEmailSubject = "Text.SupportMailMessage.ReportIssueSubject".localized
         public static let noCoverageEmailSubject = "Text.SupportMailMessage.NoCoverageSubject".localized
         public static let noCoverageEmailBody = "Text.SupportMailMessage.NoCoverageBody".localized
+        public static let noCoverageEmailAddress = "Text.SupportMailMessage.SupplierEmail".localized
+        public static let supportEmailAddress = "Text.SupportMailMessage.SupportEmail".localized
+        public static let feedbackEmailAddress = "Text.SupportMailMessage.FeedbackEmail".localized
     }
 
     /* Prebook */

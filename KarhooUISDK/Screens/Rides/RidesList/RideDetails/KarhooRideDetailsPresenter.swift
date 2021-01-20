@@ -11,7 +11,7 @@ import KarhooSDK
 final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
     internal var trip: TripInfo
-    private let mailComposer: FeedbackMailComposer
+    private let mailComposer: FeedbackEmailComposer
     private let tripService: TripService
     private var cancelRideBehaviour: CancelRideBehaviourProtocol?
     private weak var rideDetailsView: RideDetailsView?
@@ -24,7 +24,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
     private let tripRatingCache: TripRatingCache
 
     init(trip: TripInfo,
-         mailComposer: FeedbackMailComposer,
+         mailComposer: FeedbackEmailComposer,
          tripService: TripService = Karhoo.getTripService(),
          popupDialogScreenBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
          callback: @escaping ScreenResultCallback<RideDetailsAction>,

@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
- 
+
 # Standard cocoapods specs source
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -17,10 +17,9 @@ def uisdkPods
   pod 'SwiftLint'
   pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '3.3.1'
-  #pod 'KarhooSDK'
+  pod 'KarhooSDK', '1.3.0'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
-
+  #pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-2925_token_exchange_prefill'
 end
 
 target 'Client' do

@@ -11,7 +11,7 @@ import KarhooSDK
 final class MenuContentScreenPresenter: MenuContentPresenter {
 
     private let routing: SideMenuHandler
-    private let mailConstructor: KarhooFeedbackMailComposer
+    private let mailConstructor: KarhooFeedbackEmailComposer
     private weak var view: MenuContentView?
 
     private var unwrappedView: MenuContentView {
@@ -23,7 +23,7 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
     }
 
     init(routing: SideMenuHandler,
-         mailConstructor: KarhooFeedbackMailComposer) {
+         mailConstructor: KarhooFeedbackEmailComposer) {
         self.routing = routing
         self.mailConstructor = mailConstructor
     }
@@ -34,12 +34,8 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
 
     func feedbackPressed() {
         if mailConstructor.showFeedbackMail() == false {
-            helpPressed()
+            aboutPressed()
         } //else: automatically opens MailComposer
-    }
-
-    func helpPressed() {
-        routing.showHelp(onViewController: unwrappedView.getFlowItem())
     }
 
     func bookingsPressed() {

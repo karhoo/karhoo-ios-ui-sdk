@@ -29,7 +29,7 @@ protocol RideDetailsPresenter: AnyObject {
 
 protocol RideDetailsView: BaseViewController {
 
-    func setUpWith(trip: TripInfo, mailComposer: FeedbackMailComposer)
+    func setUpWith(trip: TripInfo, mailComposer: FeedbackEmailComposer)
 
     func set(navigationTitle: String)
 

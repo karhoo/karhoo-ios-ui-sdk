@@ -84,7 +84,39 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertTrue(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertNil(mockTripService.tripBookingSet?.meta)
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+    }
+    
+    /**
+     * When: The user presses "request car"
+     * And: They are using Adyen for payment
+     * Then: Then the screen should set to requesting state
+     * And: Get nonce endpoint should be called
+     * And: Analytics event should fire
+     */
+    func testAdyenRequestCarAuthenticated() {
+        mockView.paymentNonceToReturn = "nonce"
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+    }
+
+
+    /**
+     * When: Adyen payment is cancelled
+     * Then: no alert should show
+     */
+    func testCancellingPaymentProviderFlow() {
+        mockView.paymentNonceToReturn = "nonce"
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        mockPaymentNonceProvider.triggerResult(.cancelledByUser)
+        XCTAssertFalse(mockView.showAlertCalled)
+        XCTAssertFalse(mockView.showErrorCalled)
     }
 
     /**

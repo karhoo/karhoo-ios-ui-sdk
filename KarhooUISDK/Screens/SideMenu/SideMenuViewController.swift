@@ -95,7 +95,7 @@ final class SideMenuViewController: UIViewController, SideMenu {
         func buildSideMenu(hostViewController: UIViewController,
                            routing: SideMenuHandler) -> SideMenu {
 
-            let feedbackMailComposer = KarhooFeedbackMailComposer()
+            let feedbackMailComposer = KarhooFeedbackEmailComposer()
             let sideMenuPresenter = MenuContentScreenPresenter(routing: routing,
                                                                mailConstructor: feedbackMailComposer)
             let menuContentViewController = MenuContentViewController(presenter: sideMenuPresenter)
