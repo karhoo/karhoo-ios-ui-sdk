@@ -17,18 +17,15 @@ class KarhooOriginEtaPresenterSpec: XCTestCase {
     private var mockDriverTrackingService: MockDriverTrackingService!
     private var testObject: KarhooOriginEtaPresenter!
     private var mockOriginEtaView: MockOriginEtaView!
-    private var testAnalytics: MockAnalytics!
     private lazy var testTrip = TestUtil.getRandomTrip(tripId: testTripId)
 
     override func setUp() {
         super.setUp()
         mockOriginEtaView = MockOriginEtaView()
         mockTripService = MockTripService()
-        testAnalytics = MockAnalytics()
         mockDriverTrackingService = MockDriverTrackingService()
         testObject = KarhooOriginEtaPresenter(tripService: mockTripService,
                                               driverTrackingService: mockDriverTrackingService,
-                                              analytics: testAnalytics,
                                               etaView: mockOriginEtaView)
  
     }
@@ -161,7 +158,6 @@ class KarhooOriginEtaPresenterSpec: XCTestCase {
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(testDriverTrackingInfo)
 
         XCTAssertEqual("\(testDriverTrackingInfo.originEta)", mockOriginEtaView.showEtaSet)
-        XCTAssertEqual(testDriverTrackingInfo.originEta, testAnalytics.lastDerEtaValue)
     }
     
     /**

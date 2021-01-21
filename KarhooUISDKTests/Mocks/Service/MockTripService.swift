@@ -47,4 +47,11 @@ final class MockTripService: TripService {
         trackTripStatusIdSet = tripId
         return trackTripStatusCall
     }
+    
+    let cancellationFeeCall = MockCall<CancellationFee>()
+    var identifierSet: String?
+    func cancellationFee(identifier: String) -> Call<CancellationFee> {
+        identifierSet = identifier
+        return cancellationFeeCall
+    }
 }

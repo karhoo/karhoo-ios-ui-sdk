@@ -42,16 +42,6 @@ class MockAnalytics: Analytics {
         destinationAddressDisplayedCalled = true
     }
 
-    var lastDerEtaValue: Int?
-    func derEtaChanged(_ eta: Int) {
-        lastDerEtaValue = eta
-    }
-
-    var lastPobEtaValue: Int?
-    func pobEtaChanged(_ eta: Int) {
-        lastPobEtaValue = eta
-    }
-
     private(set) var prebookTimeSetCalled = false
     func prebookTimeSet(date: Date) {
         prebookTimeSetCalled = true

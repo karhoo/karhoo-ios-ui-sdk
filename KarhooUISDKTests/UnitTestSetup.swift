@@ -20,6 +20,7 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
     static var guestSettings = GuestSettings(identifier: "",
                                              referer: "", organisationId: "")
+    static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
 
     func logo() -> UIImage {

@@ -72,7 +72,15 @@
 
 /*In app email to customer support / feedback*/
 /*Fuzzy*/
-"Text.SupportMailMessage.Feedback" = "Veuillez laisser les informations ci-dessous. Cela nous aide à travailler sur une partie précise de l'application.";
+"Text.SupportMailMessage.Feedback" = "Veuillez ne pas supprimer ces informations car elles nous aident à améliorer l\'application.";
+/*english: "Please leave your comments regarding a specific issue in the space below." used when reporting issue with trip*/
+/*Fuzzy*/
+"Text.SupportMailMessage.ReportIssue" = "Veuillez laisser vos commentaires regardant un problème spécifique dans l'espace ci-dessous.";
+"Text.SupportMailMessage.FeedbackEmail" = "support@karhoo.com";
+"Text.SupportMailMessage.SupportEmail" = "support@karhoo.com";
+"Text.SupportMailMessage.SupplierEmail" = "suppliers@karhoo.com";
+"Text.SupportMailMessage.FeedbackSubject" = "Remarques";
+"Text.SupportMailMessage.ReportIssueSubject" = "Signaler un problème";
 
 /*Prebook*/
 "Text.Prebook.PrebookPickupTime" = "Date et heure du départ";
@@ -140,10 +148,6 @@
 
 /*English: "Report Issue" */
 "Text.Generic.ReportIssue" = "Signaler un problème";
-
-/*english: "Please use the space below to report a specific issue with your trip" used when reporting issue with trip*/
-/*Fuzzy*/
-"Text.SupportMailMessage.Trip" = "Veuillez laisser vos commentaires regardant un problème spécifique dans l'espace ci-dessous.";
 
 /*English: "No Trips" used if the booking list screen is empty*/
 "Text.Bookings.NoTrips" = "Aucune réservation";

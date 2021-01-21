@@ -78,6 +78,11 @@ class TestUtil: PrimitiveUtil {
                                  longitude: Double = Double(TestUtil.getRandomInt())) -> Position {
         return Position(latitude: latitude, longitude: longitude)
     }
+    
+    class func getRandomDirection(kph: Int = Int(TestUtil.getRandomInt()),
+                                  heading: Int = Int(TestUtil.getRandomInt())) -> Direction {
+        return Direction(kph: kph, heading: heading)
+    }
 
     class func getRandomFare() -> Fare {
         return Fare(breakdown: FareComponent(total: 1000.0, currency: "GBP"))
@@ -119,19 +124,21 @@ class TestUtil: PrimitiveUtil {
                               currencyCode: String = "GBP",
                               source: QuoteSource = .market,
                               pickUpType: PickUpType = .default,
-                              vehicleAttributes: VehicleAttributes = VehicleAttributes()) -> Quote {
+                              passengerCapacity: Int = 1,
+                              luggageCapacity: Int = 2,
+                              type: String = getRandomString()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
                                currencyCode: currencyCode)
         let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
         let fleet = FleetInfo(name: fleetName)
+        let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
         return Quote(id: quoteId,
                      quoteType: quoteType,
                      source: source,
                      pickUpType: pickUpType,
                      fleet: fleet,
-                     vehicleAttributes: vehicleAttributes,
-                     vehicle: QuoteVehicle(vehicleClass: categoryName, qta: qta),
+                     vehicle: vehicle,
                      price: price,
                      validity: 1)
     }
@@ -240,6 +247,7 @@ class TestUtil: PrimitiveUtil {
     class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
         return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
+                                  direction:TestUtil.getRandomDirection(),
                                   originEta: etaToOrigin,
                                   destinationEta: etaToDestination)
     }
@@ -253,16 +261,13 @@ class TestUtil: PrimitiveUtil {
                          qtaHighMinutes: 10,
                          qtaLowMinutes: 5,
                          type: quoteType,
-                         vehicleClass: "Saloon",
-                         vehicleAttributes: getRandomVehicleAttributes())
+                         vehicleClass: "Saloon")
     }
 
-    class func getRandomVehicleAttributes() -> VehicleAttributes {
-        return VehicleAttributes(childSeat: getRandomBool(),
-                                 electric: getRandomBool(),
-                                 hybrid: getRandomBool(),
-                                 luggageCapacity: Int.random(in: 0...5),
-                                 passengerCapacity: Int.random(in: 0...7))
+    class func getRandomVehicleAttributes() -> QuoteVehicle {
+        return QuoteVehicle(vehicleClass: "Saloon",
+                            passengerCapacity: Int.random(in: 0...5),
+                            luggageCapacity: Int.random(in: 0...7))
     }
     
     class func getRandomJourneyInfo() -> JourneyInfo {
