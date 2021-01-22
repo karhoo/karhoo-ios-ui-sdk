@@ -17,9 +17,9 @@ def uisdkPods
   pod 'SwiftLint'
   pod 'Adyen', '3.6.0'
   pod 'PhoneNumberKit', '3.3.1'
-  pod 'KarhooSDK', '1.3.0'
+  #pod 'KarhooSDK', '1.3.0'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  #pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-2925_token_exchange_prefill'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-2976_quote_update'
 end
 
 target 'Client' do

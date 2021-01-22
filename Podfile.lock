@@ -68,7 +68,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow
   - BraintreeDropIn
   - FloatingPanel (= 2.0.1)
-  - KarhooSDK (= 1.3.0)
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `MOB-2976_quote_update`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
   - SwiftLint
@@ -80,15 +80,22 @@ SPEC REPOS:
     - Braintree
     - BraintreeDropIn
     - FloatingPanel
-    - KarhooSDK
     - KeychainSwift
     - PhoneNumberKit
     - ReachabilitySwift
     - SwiftLint
 
 EXTERNAL SOURCES:
+  KarhooSDK:
+    :branch: MOB-2976_quote_update
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: 4f3476e2015bd5d0b6cf824a61ec9d85a4171c82
+    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
   Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
@@ -103,6 +110,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: 5bdb27459d529ffabc25deadeae0b99f1e68aa4f
+PODFILE CHECKSUM: 6eaf43ff7ccc6107b5c4c3c909f2d16efe99af0c
 
 COCOAPODS: 1.10.0
