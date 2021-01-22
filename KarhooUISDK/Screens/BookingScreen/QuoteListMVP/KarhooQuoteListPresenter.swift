@@ -96,6 +96,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
             quoteListView?.showQuotes(sortedQuotes, animated: animated)
         }
+        
+        if fetchedQuotes.status == .completed {
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        }
 
     }
 }
