@@ -74,6 +74,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         default: break
         }
     }
+    
+    private func handleQuotePolling() {
+        if fetchedQuotes!.validity >= 5 {
+            quoteSearchObservable?.subscribe(observer: quotesObserver)
+        }
+    }
 
     private func updateViewQuotes(animated: Bool) {
         guard let fetchedQuotes = self.fetchedQuotes,
@@ -99,6 +105,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         
         if fetchedQuotes.status == .completed {
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            handleQuotePolling()
         }
 
     }
