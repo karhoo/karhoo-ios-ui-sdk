@@ -76,7 +76,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        if fetchedQuotes!.validity <= 5 {
+        let timer = fetchedQuotes!.validity
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
+        
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [self] in
             quoteSearchObservable?.subscribe(observer: quotesObserver)
         }
     }
