@@ -76,7 +76,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        if fetchedQuotes!.validity >= 5 {
+        if fetchedQuotes!.validity <= 5 {
             quoteSearchObservable?.subscribe(observer: quotesObserver)
         }
     }
