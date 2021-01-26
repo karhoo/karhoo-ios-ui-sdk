@@ -83,6 +83,17 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteSearchObservable?.subscribe(observer: quotesObserver)
         }
     }
+    
+    private func handleQuoteStatus() {
+        guard let fetchedQuotes = self.fetchedQuotes else {
+            return
+        }
+        
+        if fetchedQuotes.status == .completed {
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            handleQuotePolling()
+        }
+    }
 
     private func updateViewQuotes(animated: Bool) {
         guard let fetchedQuotes = self.fetchedQuotes,
@@ -106,10 +117,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteListView?.showQuotes(sortedQuotes, animated: animated)
         }
         
-        if fetchedQuotes.status == .completed {
-            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            handleQuotePolling()
-        }
+        handleQuoteStatus()
 
     }
 }
