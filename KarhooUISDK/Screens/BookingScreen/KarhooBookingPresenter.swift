@@ -222,11 +222,15 @@ extension KarhooBookingPresenter: BookingPresenter {
                         message: UITexts.GenericTripStatus.driverAllocationDelayMessage,
                         actions: [
                             AlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] _ in
-                                self?.resetBookingStatus()
-                                self?.view?.hideAllocationScreen()
-                                self?.showRidesList(presentationStyle: nil)
+                                self?.tripWaitOnRideDetails(trip: trip)
                             })
                         ])
+    }
+    
+    func tripWaitOnRideDetails(trip: TripInfo) {
+        resetBookingStatus()
+        view?.hideAllocationScreen()
+        showRideDetails(trip: trip)
     }
 
     func tripSuccessfullyCancelled() {
