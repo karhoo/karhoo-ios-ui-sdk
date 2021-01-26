@@ -74,6 +74,26 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         default: break
         }
     }
+    
+    private func handleQuotePolling() {
+        let timer = fetchedQuotes!.validity
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
+        
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [self] in
+            quoteSearchObservable?.subscribe(observer: quotesObserver)
+        }
+    }
+    
+    private func handleQuoteStatus() {
+        guard let fetchedQuotes = self.fetchedQuotes else {
+            return
+        }
+        
+        if fetchedQuotes.status == .completed {
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            handleQuotePolling()
+        }
+    }
 
     private func updateViewQuotes(animated: Bool) {
         guard let fetchedQuotes = self.fetchedQuotes,
@@ -96,6 +116,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
             quoteListView?.showQuotes(sortedQuotes, animated: animated)
         }
+        
+        handleQuoteStatus()
 
     }
 }
