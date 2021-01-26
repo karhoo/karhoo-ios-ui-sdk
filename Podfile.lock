@@ -11,25 +11,25 @@ PODS:
     - Adyen/Card
     - Adyen/Core
   - Adyen3DS2 (2.2.1)
-  - Braintree/Card (4.36.1):
+  - Braintree/Card (4.37.0):
     - Braintree/Core
-  - Braintree/Core (4.36.1)
-  - Braintree/PaymentFlow (4.36.1):
+  - Braintree/Core (4.37.0)
+  - Braintree/PaymentFlow (4.37.0):
     - Braintree/Card
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.36.1):
+  - Braintree/PayPal (4.37.0):
     - Braintree/Core
     - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.36.1):
+  - Braintree/PayPalDataCollector (4.37.0):
     - Braintree/Core
     - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.36.1):
+  - Braintree/PayPalOneTouch (4.37.0):
     - Braintree/Core
     - Braintree/PayPalDataCollector
     - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.36.1)
-  - Braintree/UnionPay (4.36.1):
+  - Braintree/PayPalUtils (4.37.0)
+  - Braintree/UnionPay (4.37.0):
     - Braintree/Card
     - Braintree/Core
   - BraintreeDropIn (8.1.2):
@@ -93,7 +93,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
   Adyen3DS2: d99e5dea8524fc860751804dd760f6bad032de01
-  Braintree: f7e0e9a5030e22b8ad77e617f27ac9327d7bc004
+  Braintree: e1f291d24a909bfbed88e86a0c3db76f26af9697
   BraintreeDropIn: 50b79151c55f2ffbfbbf9157c2d07d8e85479588
   FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   KarhooSDK: a5c8b6b1696d9e2cb4f5241589fdabf3529d3b49

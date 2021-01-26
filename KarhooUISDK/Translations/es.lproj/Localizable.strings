@@ -229,6 +229,12 @@
 /*"Incomplete"*/
 "Text.GenericTripStatus.Incomplete" = "Estado pendiente";
 
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Retraso en asignación";
+
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "La flota está tardando más de lo habitual en asignar un conductor. Por favor espere, contacte con la flota o cancele y vuelva a reservar con una flota diferente.";
+
 /*"Track Driver"*/
 "Text.Bookings.TrackDriver" = "Localizar conductor";
 

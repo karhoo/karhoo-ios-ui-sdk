@@ -214,6 +214,12 @@
 /*"Incomplete"*/
 "Text.GenericTripStatus.Incomplete" = "En attente";
 
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Délai d’attribution";
+
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "L’attribution d’un véhicule prend plus de temps que prévu. Veuillez patienter, contacter la flotte partenaire, ou annuler la course et recommander avec une autre flotte.";
+
 /*"Track Driver"*/
 "Text.Bookings.TrackDriver" = "Suivre le chauffeur";
 

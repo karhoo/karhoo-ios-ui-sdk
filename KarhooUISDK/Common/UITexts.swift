@@ -89,6 +89,8 @@ public enum UITexts {
         public static let bookerCancelled = "Text.Generic.TripStatus.BookerCancelled".localized
         public static let driverCancelled = "Text.Generic.TripStatus.DriverCancelled".localized
         public static let noDriversAvailable = "Text.Generic.TripStatus.NoDriversAvailable".localized
+        public static let driverAllocationDelayTitle = "Text.Generic.TripStatus.DriverAllocationDelay.Title".localized
+        public static let driverAllocationDelayMessage = "Text.Generic.TripStatus.DriverAllocationDelay.Message".localized
     }
 
     /* Address Bar */
