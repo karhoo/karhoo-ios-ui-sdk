@@ -16,15 +16,17 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     private let view: TripAllocationView
     private var trip: TripInfo?
     private let analytics: Analytics
-    private let driverAllocationCheckDelay: Double = 2.0
+    private let driverAllocationCheckDelay: Double
     private var displayDriverAllocationAlert: Bool = false
 
     init(tripService: TripService = Karhoo.getTripService(),
          analytics: Analytics = KarhooAnalytics(),
-         view: TripAllocationView) {
+         view: TripAllocationView,
+         driverAllocationCheckDelay: Double = 60.0) {
         self.tripService = tripService
         self.analytics = analytics
         self.view = view
+        self.driverAllocationCheckDelay = driverAllocationCheckDelay
     }
 
     func startMonitoringTrip(trip: TripInfo) {
@@ -76,12 +78,12 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
         case .driverCancelled, .karhooCancelled, .noDriversAvailable:
             displayDriverAllocationAlert = false
             view.tripCancelledBySystem(trip: trip)
-            tripObservable?.unsubscribe(observer: tripObserver)
+            stopMonitoringTrip()
             view.resetCancelButtonProgress()
         case .driverEnRoute, .arrived, .passengerOnBoard, .completed:
             displayDriverAllocationAlert = false
             view.tripAllocated(trip: trip)
-            tripObservable?.unsubscribe(observer: tripObserver)
+            stopMonitoringTrip()
             view.resetCancelButtonProgress()
         default: break
         }
@@ -98,11 +100,8 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     }
     
     func handleDriverAllocationDelay() {
-        if displayDriverAllocationAlert == true {
-            if let trip = trip {
-                view.tripDriverAllocationDelayed(trip: trip)
-                tripObservable?.unsubscribe(observer: tripObserver)
-            }
+        if displayDriverAllocationAlert == true, let trip = trip {
+            view.tripDriverAllocationDelayed(trip: trip)
         }
     }
     

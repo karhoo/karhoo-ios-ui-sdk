@@ -228,7 +228,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func tripWaitOnRideDetails(trip: TripInfo) {
-        resetBookingStatus()
+        view?.resetAndLocate()
         view?.hideAllocationScreen()
         showRideDetails(trip: trip)
     }
