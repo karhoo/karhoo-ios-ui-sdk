@@ -86,7 +86,9 @@ class ViewController: UIViewController {
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
-        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
+        let userLogin = UserLogin(username: Keys.userServiceEmailBraintree,
+                                  password: Keys.userServicePasswordBraintree)
+        userService.login(userLogin: userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
                                                     self.showKarhoo()
