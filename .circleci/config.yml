@@ -66,12 +66,7 @@ jobs:
            echo "static let braintreeAuthToken = \"\"" >> Client/Keys.swift
            echo "static func staging() -> KarhooEnvironment {" >> Client/Keys.swift
            echo "return .custom(environment: KarhooEnvironmentDetails(host: \"$ADYEN_STG_HOST\", authHost: \"$ADYEN_STG_AUTHHOST\", guestHost: \"$ADYEN_STG_GUESTHOST\")) }}" >> Client/Keys.swift
-           echo "class KarhooConfig: KarhooUISDKConfiguration {" >> Client/Keys.swift
-           echo "static var auth: AuthenticationMethod = .karhooUser = \"\"" >> Client/Keys.swift
-           echo "func environment() -> KarhooEnvironment {" >> Client/Keys.swift
-           echo "return Keys.staging() }" >> Client/Keys.swift
-           echo "func authenticationMethod() -> AuthenticationMethod {" >> Client/Keys.swift
-           echo "return .karhooUser }}" >> Client/Keys.swift
+
       - run:
           name: fastlane
           command: bundle exec fastlane UISDK_unit_tests
