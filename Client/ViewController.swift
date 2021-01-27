@@ -87,6 +87,7 @@ class ViewController: UIViewController {
     }
 
     private func usernamePasswordLoginAndShowKarhoo() {
+        KarhooConfig.auth = .karhooUser
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
