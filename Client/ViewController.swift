@@ -68,6 +68,9 @@ class ViewController: UIViewController {
     }
 
     @objc func guestBookingTapped(sender: UIButton) {
+        let guestSettings = GuestSettings(identifier: Keys.adyenGuestIdentifier,
+                                          referer: Keys.referer,
+                                          organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         showKarhoo()
     }
@@ -78,6 +81,7 @@ class ViewController: UIViewController {
     }
 
     @objc func tokenExchangeBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.tokenClientId, scope: Keys.tokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         tokenLoginAndShowKarhoo()
     }
@@ -88,7 +92,7 @@ class ViewController: UIViewController {
         
         let userLogin = UserLogin(username: Keys.userServiceEmailBraintree,
                                   password: Keys.userServicePasswordBraintree)
-        userService.login(userLogin: userLogin).execute(callback: { result in
+        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
                                                     self.showKarhoo()
