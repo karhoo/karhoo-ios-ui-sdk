@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         
         let userLogin = UserLogin(username: Keys.userServiceEmailBraintree,
                                   password: Keys.userServicePasswordBraintree)
-        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
+        userService.login(userLogin: userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
                                                     self.showKarhoo()
