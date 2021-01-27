@@ -66,7 +66,6 @@ jobs:
            echo "static let braintreeAuthToken = \"\"" >> Client/Keys.swift
            echo "static func staging() -> KarhooEnvironment {" >> Client/Keys.swift
            echo "return .custom(environment: KarhooEnvironmentDetails(host: \"$ADYEN_STG_HOST\", authHost: \"$ADYEN_STG_AUTHHOST\", guestHost: \"$ADYEN_STG_GUESTHOST\")) }}" >> Client/Keys.swift
-           echo "let guestSettings = GuestSettings(identifier: Keys.identifier, referer: Keys.referer, organisationId: Keys.organisationId)" >> Client/Keys.swift
            echo "class KarhooConfig: KarhooUISDKConfiguration {" >> Client/Keys.swift
            echo "static var auth: AuthenticationMethod = .karhooUser = \"\"" >> Client/Keys.swift
            echo "func environment() -> KarhooEnvironment {" >> Client/Keys.swift
