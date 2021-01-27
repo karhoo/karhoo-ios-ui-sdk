@@ -200,7 +200,7 @@
 		09F86F86222D8553008C86DE /* MockBookingDetailsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */; };
 		11835BEF4BCC4A95D6F37450 /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F928AAF8C70E5FFDE416BC /* Pods_KarhooUISDK.framework */; };
 		14A5B93325C1823C00986616 /* KarhooConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B93225C1823C00986616 /* KarhooConfig.swift */; };
-		14A5B94F25C193B500986616 /* MockTripAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B94E25C193B500986616 /* MockTripAllocationView.swift */; };
+		14A5B95725C1941C00986616 /* MockTripAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B95625C1941C00986616 /* MockTripAllocationView.swift */; };
 		23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23391EAB22C65525007D704E /* AddressCellViewModel.swift */; };
 		2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */; };
 		2A9BC10FB50E39DBB73C43FF /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF975DAE636DFA8CA47C6F2 /* Pods_Client.framework */; };
@@ -732,7 +732,7 @@
 		09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingDetailsObserver.swift; sourceTree = "<group>"; };
 		1061B90ED3BAE79634610DAC /* Pods-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		14A5B93225C1823C00986616 /* KarhooConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooConfig.swift; sourceTree = "<group>"; };
-		14A5B94E25C193B500986616 /* MockTripAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripAllocationView.swift; sourceTree = "<group>"; };
+		14A5B95625C1941C00986616 /* MockTripAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripAllocationView.swift; sourceTree = "<group>"; };
 		23391EAB22C65525007D704E /* AddressCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCellViewModel.swift; sourceTree = "<group>"; };
 		2372675E70509D3779F8061D /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInfo.swift; sourceTree = "<group>"; };
@@ -1851,7 +1851,7 @@
 			isa = PBXGroup;
 			children = (
 				09E35D4921E5117C003E840C /* MockBookingAllocationSpinnerView.swift */,
-				14A5B94E25C193B500986616 /* MockTripAllocationView.swift */,
+				14A5B95625C1941C00986616 /* MockTripAllocationView.swift */,
 			);
 			path = TripAllocation;
 			sourceTree = "<group>";
@@ -3796,7 +3796,7 @@
 				FC435F702211D7AF00FB6BB5 /* MockStackButtonView.swift in Sources */,
 				094B764222CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift in Sources */,
 				5C8316BF246AE84900BAA926 /* EmptyBookingMapStrategySpec.swift in Sources */,
-				14A5B94F25C193B500986616 /* MockTripAllocationView.swift in Sources */,
+				14A5B95725C1941C00986616 /* MockTripAllocationView.swift in Sources */,
 				FC435F6E2211D76100FB6BB5 /* MockTripsProvider.swift in Sources */,
 				0968F0EA21BE7FF100745370 /* MockAddressView.swift in Sources */,
 				FC13584E21D6785C005054AE /* MockUserService.swift in Sources */,
