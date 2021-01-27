@@ -19,4 +19,3 @@ final class MockQuoteSorter: QuoteSorter {
         return quotesToReturn
     }
 }
-

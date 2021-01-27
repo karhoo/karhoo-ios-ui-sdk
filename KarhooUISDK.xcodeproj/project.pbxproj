@@ -201,8 +201,8 @@
 		14A5B96B25C19BEE00986616 /* CurrencyCodeConverterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */; };
 		14A5B97325C1AC7C00986616 /* MockAlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */; };
 		14A5B97B25C1AD4600986616 /* MockUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B97A25C1AD4600986616 /* MockUserService.swift */; };
-		14A5B98325C1B01B00986616 /* MockQuoteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B98225C1B01B00986616 /* MockQuoteSorter.swift */; };
 		14A5B98825C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B98725C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift */; };
+		14A5B99325C1B79B00986616 /* MockQuoteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B99225C1B79B00986616 /* MockQuoteSorter.swift */; };
 		23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23391EAB22C65525007D704E /* AddressCellViewModel.swift */; };
 		2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */; };
 		2A9BC10FB50E39DBB73C43FF /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF975DAE636DFA8CA47C6F2 /* Pods_Client.framework */; };
@@ -733,8 +733,8 @@
 		14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCodeConverterSpec.swift; sourceTree = "<group>"; };
 		14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAlertHandler.swift; sourceTree = "<group>"; };
 		14A5B97A25C1AD4600986616 /* MockUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserService.swift; sourceTree = "<group>"; };
-		14A5B98225C1B01B00986616 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
 		14A5B98725C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlowSpec.swift; sourceTree = "<group>"; };
+		14A5B99225C1B79B00986616 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
 		23391EAB22C65525007D704E /* AddressCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCellViewModel.swift; sourceTree = "<group>"; };
 		2372675E70509D3779F8061D /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInfo.swift; sourceTree = "<group>"; };
@@ -1885,7 +1885,7 @@
 		09E35D5321E5117C003E840C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				14A5B98225C1B01B00986616 /* MockQuoteSorter.swift */,
+				14A5B99225C1B79B00986616 /* MockQuoteSorter.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -3774,8 +3774,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				09022B242239133700C4A7EE /* MockViewController.swift in Sources */,
-				14A5B98325C1B01B00986616 /* MockQuoteSorter.swift in Sources */,
 				0949545321FF6FC800D930C0 /* MockAddressBarView.swift in Sources */,
+				14A5B99325C1B79B00986616 /* MockQuoteSorter.swift in Sources */,
 				09E683292379735B00BFF5B9 /* MockAddressMapView.swift in Sources */,
 				FC435F4F2211D34100FB6BB5 /* KarhooRideDetailsPresenterSpec.swift in Sources */,
 				0949545A2201C1ED00D930C0 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
