@@ -63,6 +63,8 @@ protocol BookingPresenter {
     func tripCancellationFailed(trip: TripInfo)
 
     func tripCancelledBySystem(trip: TripInfo)
+    
+    func tripDriverAllocationDelayed(trip: TripInfo)
 
     func didSelectQuote(quote: Quote)
 

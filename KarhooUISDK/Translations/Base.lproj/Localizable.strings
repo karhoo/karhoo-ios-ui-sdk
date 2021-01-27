@@ -383,6 +383,12 @@
 /*No drivers available*/
 "Text.Generic.TripStatus.NoDriversAvailable" = "No Drivers available";
 
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Allocation delay";
+
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "It is taking longer than usual for the fleet to allocate a driver. Please wait, contact the fleet, or cancel and rebook with a different fleet.";
+
 /*"Trip Summary" header used on screen*/
 "Text.TripSummary.TripSummary" = "Ride Summary";
 

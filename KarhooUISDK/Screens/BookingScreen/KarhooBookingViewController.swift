@@ -278,21 +278,25 @@ extension KarhooBookingViewController: FloatingPanelControllerDelegate {
 
 extension KarhooBookingViewController: TripAllocationActions {
 
-    func tripAllocated(trip: TripInfo) {
-        presenter.tripAllocated(trip: trip)
-    }
-
     func userSuccessfullyCancelledTrip() {
         presenter.tripSuccessfullyCancelled()
     }
 
-    func cancelTripFailed(error: KarhooError?,
-                          trip: TripInfo) {
-        presenter.tripCancellationFailed(trip: trip)
+    func tripAllocated(trip: TripInfo) {
+        presenter.tripAllocated(trip: trip)
     }
 
     func tripCancelledBySystem(trip: TripInfo) {
         presenter.tripCancelledBySystem(trip: trip)
+    }
+    
+    func tripDriverAllocationDelayed(trip: TripInfo) {
+        presenter.tripDriverAllocationDelayed(trip: trip)
+    }
+    
+    func cancelTripFailed(error: KarhooError?,
+                          trip: TripInfo) {
+        presenter.tripCancellationFailed(trip: trip)
     }
 }
 
