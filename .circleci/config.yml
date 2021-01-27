@@ -52,7 +52,6 @@ jobs:
            echo "static let identifier = \"\"" >> Client/Keys.swift
            echo "static let referer = \"\"" >> Client/Keys.swift
            echo "static let organisationId = \"\"" >> Client/Keys.swift
-           echo "static let userLogin = \"\"" >> Client/Keys.swift
            echo "static let userServiceEmail = \"$ADYEN_TEST_USER\"" >> Client/Keys.swift
            echo "static let userServicePassword = \"$USER_SERVICE_PASSWORD\"" >> Client/Keys.swift
            echo "static func staging() -> KarhooEnvironment {" >> Client/Keys.swift
