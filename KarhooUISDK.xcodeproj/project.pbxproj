@@ -183,7 +183,6 @@
 		09E683212374236100BFF5B9 /* KarhooAddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E683202374236100BFF5B9 /* KarhooAddressMapView.swift */; };
 		09E683232374522900BFF5B9 /* KarhooAddressMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E683222374522900BFF5B9 /* KarhooAddressMapPresenter.swift */; };
 		09E68326237972C000BFF5B9 /* KarhooAddressMapPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E68325237972C000BFF5B9 /* KarhooAddressMapPresenterSpec.swift */; };
-		09E683292379735B00BFF5B9 /* MockAddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E683282379735B00BFF5B9 /* MockAddressMapView.swift */; };
 		09ED7B1C21C2A7E000CF6D73 /* KarhooRecentAddressProviderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED7B1B21C2A7E000CF6D73 /* KarhooRecentAddressProviderSpec.swift */; };
 		09ED7B1E21C2A81200CF6D73 /* MockRecentAddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED7B1D21C2A81200CF6D73 /* MockRecentAddressProvider.swift */; };
 		09F12DC722313E300024D6E9 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F12DC622313E300024D6E9 /* MockBaseViewController.swift */; };
@@ -203,6 +202,7 @@
 		14A5B98825C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B98725C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift */; };
 		14A5B99C25C1BB3500986616 /* MockAddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B99B25C1BB3500986616 /* MockAddressBarView.swift */; };
 		14A5B9A725C1C20100986616 /* MockQuoteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B9A625C1C20100986616 /* MockQuoteSorter.swift */; };
+		14A5B9AF25C1C61000986616 /* MockAddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B9AE25C1C61000986616 /* MockAddressMapView.swift */; };
 		23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23391EAB22C65525007D704E /* AddressCellViewModel.swift */; };
 		2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */; };
 		2A9BC10FB50E39DBB73C43FF /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF975DAE636DFA8CA47C6F2 /* Pods_Client.framework */; };
@@ -714,7 +714,6 @@
 		09E683202374236100BFF5B9 /* KarhooAddressMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressMapView.swift; sourceTree = "<group>"; };
 		09E683222374522900BFF5B9 /* KarhooAddressMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressMapPresenter.swift; sourceTree = "<group>"; };
 		09E68325237972C000BFF5B9 /* KarhooAddressMapPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressMapPresenterSpec.swift; sourceTree = "<group>"; };
-		09E683282379735B00BFF5B9 /* MockAddressMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddressMapView.swift; sourceTree = "<group>"; };
 		09EBC66922D612C600F1177E /* KarhooSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KarhooSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ED7B1B21C2A7E000CF6D73 /* KarhooRecentAddressProviderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRecentAddressProviderSpec.swift; sourceTree = "<group>"; };
 		09ED7B1D21C2A81200CF6D73 /* MockRecentAddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecentAddressProvider.swift; sourceTree = "<group>"; };
@@ -735,6 +734,7 @@
 		14A5B98725C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlowSpec.swift; sourceTree = "<group>"; };
 		14A5B99B25C1BB3500986616 /* MockAddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddressBarView.swift; sourceTree = "<group>"; };
 		14A5B9A625C1C20100986616 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
+		14A5B9AE25C1C61000986616 /* MockAddressMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddressMapView.swift; sourceTree = "<group>"; };
 		23391EAB22C65525007D704E /* AddressCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCellViewModel.swift; sourceTree = "<group>"; };
 		2372675E70509D3779F8061D /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInfo.swift; sourceTree = "<group>"; };
@@ -1976,7 +1976,7 @@
 		09E683272379734F00BFF5B9 /* AddressMapView */ = {
 			isa = PBXGroup;
 			children = (
-				09E683282379735B00BFF5B9 /* MockAddressMapView.swift */,
+				14A5B9AE25C1C61000986616 /* MockAddressMapView.swift */,
 			);
 			path = AddressMapView;
 			sourceTree = "<group>";
@@ -3774,7 +3774,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09022B242239133700C4A7EE /* MockViewController.swift in Sources */,
-				09E683292379735B00BFF5B9 /* MockAddressMapView.swift in Sources */,
 				14A5B9A725C1C20100986616 /* MockQuoteSorter.swift in Sources */,
 				FC435F4F2211D34100FB6BB5 /* KarhooRideDetailsPresenterSpec.swift in Sources */,
 				0949545A2201C1ED00D930C0 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
@@ -3851,6 +3850,7 @@
 				097800A4226F1FE6008772E4 /* MockSideMenuHandler.swift in Sources */,
 				09ED7B1E21C2A81200CF6D73 /* MockRecentAddressProvider.swift in Sources */,
 				408AB683234F418B00B351B2 /* MockFareService.swift in Sources */,
+				14A5B9AF25C1C61000986616 /* MockAddressMapView.swift in Sources */,
 				0968F0ED21BE7FF100745370 /* MockAddressSearchProvider.swift in Sources */,
 				FC435F612211D3D700FB6BB5 /* MockRideDetailsStackButtonActions.swift in Sources */,
 				FC435F4C2211D34100FB6BB5 /* KarhooRidesPresenterSpec.swift in Sources */,
