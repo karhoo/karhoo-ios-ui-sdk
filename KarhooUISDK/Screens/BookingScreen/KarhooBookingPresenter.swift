@@ -216,6 +216,22 @@ extension KarhooBookingPresenter: BookingPresenter {
                             })
             ])
     }
+    
+    func tripDriverAllocationDelayed(trip: TripInfo) {
+        view?.showAlert(title: UITexts.GenericTripStatus.driverAllocationDelayTitle,
+                        message: UITexts.GenericTripStatus.driverAllocationDelayMessage,
+                        actions: [
+                            AlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] _ in
+                                self?.tripWaitOnRideDetails(trip: trip)
+                            })
+                        ])
+    }
+    
+    func tripWaitOnRideDetails(trip: TripInfo) {
+        view?.resetAndLocate()
+        view?.hideAllocationScreen()
+        showRideDetails(trip: trip)
+    }
 
     func tripSuccessfullyCancelled() {
         resetBookingStatus()

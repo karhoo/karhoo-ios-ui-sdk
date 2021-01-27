@@ -79,7 +79,12 @@ final class KarhooTripAllocationView: UIView, TripAllocationView {
     }
 
     func dismissScreen() {
+        presenter.stopMonitoringTrip()
         self.alpha = 0
+    }
+    
+    func tripDriverAllocationDelayed(trip: TripInfo) {
+        actions?.tripDriverAllocationDelayed(trip: trip)
     }
 
     func tripAllocated(trip: TripInfo) {

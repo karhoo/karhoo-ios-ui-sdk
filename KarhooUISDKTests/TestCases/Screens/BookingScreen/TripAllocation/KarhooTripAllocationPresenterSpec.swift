@@ -18,6 +18,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
     private var mockTripAllocationView: MockTripAllocationView!
     private let mockTrip: TripInfo = TestUtil.getRandomTrip()
     private var mockAnalytics: MockAnalytics!
+    private var driverAllocationCheckDelay = 0.1
 
     override func setUp() {
         super.setUp()
@@ -29,17 +30,50 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
 
         testObject = KarhooTripAllocationPresenter(tripService: mockTripService,
                                                    analytics: mockAnalytics,
-                                                   view: mockTripAllocationView)
+                                                   view: mockTripAllocationView,
+                                                   driverAllocationCheckDelay: driverAllocationCheckDelay)
     }
-
+    
     /**
-      * When: Monitor trip is called
-      * Then: Trip tracking observer should subscribe to trip service
-      */
-    func testStartMonitoringTrip() {
+     * When: Monitor trip is called for a guest booking
+     * Then: Trip tracking observer should subscribe to trip service
+     * And: An alert should not be shown if there is a delay in allocation a driver
+     */
+    func testStartMonitoringGuestUserTrip() {
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        
         testObject.startMonitoringTrip(trip: mockTrip)
+        
+        let expectation = XCTestExpectation()
+        
+        XCTAssertEqual(mockTrip.followCode, mockTripService.tripTrackingIdentifierSet)
+        XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+            XCTAssertFalse(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    /**
+      * When: Monitor trip is called for an authorised user booking
+      * Then: Trip tracking observer should subscribe to trip service
+      * And: An alert should be shown if there is a delay in allocation a driver
+      */
+    func testStartMonitoringAuthorisedUserTrip() {
+        testObject.startMonitoringTrip(trip: mockTrip)
+        
+        let expectation = XCTestExpectation()
+        
         XCTAssertEqual(mockTrip.tripId, mockTripService.tripTrackingIdentifierSet)
         XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+            XCTAssertTrue(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
     }
 
     /**
@@ -106,12 +140,13 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
     }
 
     /**
-      * Given: Trip updates
-      * When: Trip status implies the trip is allocated
-      * Then: View should be informed
-      * And: Trip observer should be removed
-      * And: Cancel button should reset
-      */
+     * Given: Trip updates
+     * When: Trip status implies the trip is allocated
+     * Then: View should be informed
+     * And: Trip observer should be removed
+     * And: Cancel button should reset
+     * And: Driver allocation delay alert should not be shown
+     */
     func testTripAllocated() {
         let allocatedStates: [TripState] = [.driverEnRoute,
                                             .arrived,
@@ -119,7 +154,14 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
                                             .completed]
 
         allocatedStates.forEach({ state in
+            let expectation = XCTestExpectation()
+            
             testObject.startMonitoringTrip(trip: mockTrip)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+                XCTAssertFalse(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
+                expectation.fulfill()
+            }
 
             let newTripUpdate = TestUtil.getRandomTrip(state: state)
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
@@ -127,6 +169,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             XCTAssertEqual(mockTripAllocationView.tripAllocatedCalled!.tripId, newTripUpdate.tripId)
             XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
+            wait(for: [expectation], timeout: 1)
 
             tearDown()
         })
@@ -138,14 +181,22 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
      * Then: View should be informed
      * And: Trip observer should be removed
      * And: Cancel button should reset
+     * And: Driver allocation delay alert should not be shown
      */
     func testTripCancelledBySystem() {
         let cancelledBySystemStates: [TripState] = [.karhooCancelled,
                                                     .driverCancelled,
                                                     .noDriversAvailable]
-
+        
         cancelledBySystemStates.forEach({ state in
+            let expectation = XCTestExpectation()
+            
             testObject.startMonitoringTrip(trip: mockTrip)
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+                XCTAssertFalse(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
+                expectation.fulfill()
+            }
 
             let newTripUpdate = TestUtil.getRandomTrip(state: state)
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
@@ -153,6 +204,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             XCTAssertTrue(mockTripAllocationView.tripCancelledBySystemCalled)
             XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
+            wait(for: [expectation], timeout: 1)
 
             tearDown()
         })
