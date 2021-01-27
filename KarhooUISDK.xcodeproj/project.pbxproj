@@ -73,7 +73,6 @@
 		0968F0FF21BE850F00745370 /* MockKarhooExecutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0F821BE850F00745370 /* MockKarhooExecutable.swift */; };
 		0968F10021BE850F00745370 /* MockPollCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0F921BE850F00745370 /* MockPollCall.swift */; };
 		0968F10221BE850F00745370 /* MockObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0FC21BE850F00745370 /* MockObservable.swift */; };
-		0968F10521BE859400745370 /* MockAlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F10421BE859400745370 /* MockAlertHandler.swift */; };
 		0968F10721BE885100745370 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F10621BE885100745370 /* MockError.swift */; };
 		097050A521FF0AF300E53AD2 /* MockBookingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097050A421FF0AF300E53AD2 /* MockBookingStatus.swift */; };
 		097050CF21FF27FF00E53AD2 /* KarhooUISDKConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097050CE21FF27FF00E53AD2 /* KarhooUISDKConfigurationProvider.swift */; };
@@ -201,6 +200,7 @@
 		14A5B95725C1941C00986616 /* MockTripAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B95625C1941C00986616 /* MockTripAllocationView.swift */; };
 		14A5B96025C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B95F25C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift */; };
 		14A5B96B25C19BEE00986616 /* CurrencyCodeConverterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */; };
+		14A5B97325C1AC7C00986616 /* MockAlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */; };
 		23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23391EAB22C65525007D704E /* AddressCellViewModel.swift */; };
 		2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */; };
 		2A9BC10FB50E39DBB73C43FF /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF975DAE636DFA8CA47C6F2 /* Pods_Client.framework */; };
@@ -600,7 +600,6 @@
 		0968F0F821BE850F00745370 /* MockKarhooExecutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKarhooExecutable.swift; sourceTree = "<group>"; };
 		0968F0F921BE850F00745370 /* MockPollCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPollCall.swift; sourceTree = "<group>"; };
 		0968F0FC21BE850F00745370 /* MockObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockObservable.swift; sourceTree = "<group>"; };
-		0968F10421BE859400745370 /* MockAlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAlertHandler.swift; sourceTree = "<group>"; };
 		0968F10621BE885100745370 /* MockError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		0968F11121BEA6B700745370 /* MockAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAnalytics.swift; sourceTree = "<group>"; };
 		097050A421FF0AF300E53AD2 /* MockBookingStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingStatus.swift; sourceTree = "<group>"; };
@@ -733,6 +732,7 @@
 		14A5B95625C1941C00986616 /* MockTripAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripAllocationView.swift; sourceTree = "<group>"; };
 		14A5B95F25C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressSearchBarPresenterSpec.swift; sourceTree = "<group>"; };
 		14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCodeConverterSpec.swift; sourceTree = "<group>"; };
+		14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAlertHandler.swift; sourceTree = "<group>"; };
 		23391EAB22C65525007D704E /* AddressCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCellViewModel.swift; sourceTree = "<group>"; };
 		2372675E70509D3779F8061D /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInfo.swift; sourceTree = "<group>"; };
@@ -1400,8 +1400,8 @@
 				FC435F692211D67200FB6BB5 /* MockCancelRideBehaviour.swift */,
 				097050A421FF0AF300E53AD2 /* MockBookingStatus.swift */,
 				09BDD18721C2C20A0074421C /* MockUserDefaults.swift */,
-				0968F10421BE859400745370 /* MockAlertHandler.swift */,
 				09AAEF9721C4283200A04EEC /* MockValidator.swift */,
+				14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -3774,7 +3774,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09022B242239133700C4A7EE /* MockViewController.swift in Sources */,
-				0968F10521BE859400745370 /* MockAlertHandler.swift in Sources */,
 				09E35D5D21E5117C003E840C /* MockQuoteSorter.swift in Sources */,
 				5C089DFA2507C9F000B3D4CA /* AdyenCardRegistrationFlowSpec.swift in Sources */,
 				0949545321FF6FC800D930C0 /* MockAddressBarView.swift in Sources */,
@@ -3798,6 +3797,7 @@
 				FC435F6E2211D76100FB6BB5 /* MockTripsProvider.swift in Sources */,
 				0968F0EA21BE7FF100745370 /* MockAddressView.swift in Sources */,
 				FC13584E21D6785C005054AE /* MockUserService.swift in Sources */,
+				14A5B97325C1AC7C00986616 /* MockAlertHandler.swift in Sources */,
 				FC435F882211E2C100FB6BB5 /* BookingStatusViewModelSpec.swift in Sources */,
 				FC83E2DE221EECB0008FE26D /* TripAddressBarPresenterSpec.swift in Sources */,
 				09E35D5E21E5117C003E840C /* MockQuoteSortView.swift in Sources */,
