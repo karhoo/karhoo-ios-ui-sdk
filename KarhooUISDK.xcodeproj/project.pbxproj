@@ -3762,10 +3762,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096192F621BEAB9C0052B71C /* UnitTestSetup.swift in Sources */,
 				09022B242239133700C4A7EE /* MockViewController.swift in Sources */,
 				0949545A2201C1ED00D930C0 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				14A5B98825C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift in Sources */,
-				096192F621BEAB9C0052B71C /* UnitTestSetup.swift in Sources */,
 				FC435F602211D3D700FB6BB5 /* MockRideDetailsView.swift in Sources */,
 				09E35D7021E5118A003E840C /* KarhooBookingPresenterSpec.swift in Sources */,
 				FC658F4C2216D0BB006C48F2 /* MockBookingRequestScreenBuilder.swift in Sources */,
