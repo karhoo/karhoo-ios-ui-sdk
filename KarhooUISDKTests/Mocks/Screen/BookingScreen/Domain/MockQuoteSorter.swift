@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-@testable import KarhooUISDK
 import KarhooSDK
+@testable import KarhooUISDK
 
 final class MockQuoteSorter: QuoteSorter {
 
