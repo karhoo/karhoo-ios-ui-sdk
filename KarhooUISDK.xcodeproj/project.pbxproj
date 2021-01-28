@@ -193,7 +193,7 @@
 		09F86F84222D84A8008C86DE /* MockAppStateNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86F83222D84A8008C86DE /* MockAppStateNotifier.swift */; };
 		09F86F86222D8553008C86DE /* MockBookingDetailsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */; };
 		11835BEF4BCC4A95D6F37450 /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F928AAF8C70E5FFDE416BC /* Pods_KarhooUISDK.framework */; };
-		140A484425C2A8DA00B5F422 /* MockQuoteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140A484325C2A8DA00B5F422 /* MockQuoteSorter.swift */; };
+		140A485625C2BADC00B5F422 /* MockQuoteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140A484325C2A8DA00B5F422 /* MockQuoteSorter.swift */; };
 		14A5B93325C1823C00986616 /* KarhooConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B93225C1823C00986616 /* KarhooConfig.swift */; };
 		14A5B95725C1941C00986616 /* MockTripAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B95625C1941C00986616 /* MockTripAllocationView.swift */; };
 		14A5B96025C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B95F25C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift */; };
@@ -3773,9 +3773,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140A485625C2BADC00B5F422 /* MockQuoteSorter.swift in Sources */,
 				09022B242239133700C4A7EE /* MockViewController.swift in Sources */,
 				0949545A2201C1ED00D930C0 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
-				140A484425C2A8DA00B5F422 /* MockQuoteSorter.swift in Sources */,
 				14A5B98825C1B3A300986616 /* AdyenCardRegistrationFlowSpec.swift in Sources */,
 				096192F621BEAB9C0052B71C /* UnitTestSetup.swift in Sources */,
 				FC435F602211D3D700FB6BB5 /* MockRideDetailsView.swift in Sources */,
