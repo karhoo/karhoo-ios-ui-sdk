@@ -52,6 +52,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
         centerIcon.translatesAutoresizingMaskIntoConstraints = false
+        centerIcon.isAccessibilityElement = true
         focusButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
 
         addSubview(mapView)
