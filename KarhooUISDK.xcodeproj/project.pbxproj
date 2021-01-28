@@ -725,7 +725,7 @@
 		09F86F83222D84A8008C86DE /* MockAppStateNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAppStateNotifier.swift; sourceTree = "<group>"; };
 		09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingDetailsObserver.swift; sourceTree = "<group>"; };
 		1061B90ED3BAE79634610DAC /* Pods-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		140A484325C2A8DA00B5F422 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
+		140A484325C2A8DA00B5F422 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
 		14A5B93225C1823C00986616 /* KarhooConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooConfig.swift; sourceTree = "<group>"; };
 		14A5B95625C1941C00986616 /* MockTripAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripAllocationView.swift; sourceTree = "<group>"; };
 		14A5B95F25C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressSearchBarPresenterSpec.swift; sourceTree = "<group>"; };
