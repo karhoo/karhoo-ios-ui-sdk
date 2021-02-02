@@ -44,29 +44,10 @@ jobs:
            bundle check || bundle install
            bundle exec pod install --repo-update --verbose
       - run:
-          name: Create Keys.swift
+          name: Decode Keys.swift
           command: |
-           echo "import KarhooSDK" > Client/Keys.swift
-           echo "import KarhooUISDK" >> Client/Keys.swift
-           echo "struct Keys {" >> Client/Keys.swift
-           echo "static let braintreeGuestIdentifier = \"\"" >> Client/Keys.swift
-           echo "static let referer = \"\"" >> Client/Keys.swift
-           echo "static let braintreeGuestOrganisationId = \"\"" >> Client/Keys.swift
-           echo "static let adyenGuestOrganisationId = \"\"" >> Client/Keys.swift
-           echo "static let adyenGuestIdentifier = \"\"" >> Client/Keys.swift
-           echo "static let userServiceEmailBraintree = \"$BRAINTREE_TEST_USER\"" >> Client/Keys.swift
-           echo "static let userServicePasswordBraintree = \"$USER_SERVICE_PASSWORD\"" >> Client/Keys.swift
-           echo "static let userServiceEmailAdyen = \"$ADYEN_TEST_USER\"" >> Client/Keys.swift
-           echo "static let userServicePasswordAdyen = \"$USER_SERVICE_PASSWORD\"" >> Client/Keys.swift
-           echo "static let adyenTokenClientId = \"\"" >> Client/Keys.swift
-           echo "static let adyenTokenScope = \"\"" >> Client/Keys.swift
-           echo "static let adyenAuthToken = \"\"" >> Client/Keys.swift
-           echo "static let braintreeTokenClientId = \"\"" >> Client/Keys.swift
-           echo "static let braintreeTokenScope = \"\"" >> Client/Keys.swift
-           echo "static let braintreeAuthToken = \"\"" >> Client/Keys.swift
-           echo "static func staging() -> KarhooEnvironment {" >> Client/Keys.swift
-           echo "return .custom(environment: KarhooEnvironmentDetails(host: \"$ADYEN_STG_HOST\", authHost: \"$ADYEN_STG_AUTHHOST\", guestHost: \"$ADYEN_STG_GUESTHOST\")) }}" >> Client/Keys.swift
-
+            echo 'export CLIENT_KEYS="$CLIENT_KEYS"' >> $BASH_ENV
+            echo $CLIENT_KEYS | base64 -di > Client/Keys.swift
       - run:
           name: fastlane
           command: bundle exec fastlane UISDK_unit_tests
