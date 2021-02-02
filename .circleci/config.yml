@@ -16,7 +16,9 @@ jobs:
       - checkout
       - run:
           name: Set Ruby Version
-          command: echo 'chruby ruby-2.7.2' >> ~/.bash_profile
+          command: |
+           echo 'chruby ruby-2.7.2' >> ~/.bash_profile
+           gem install bundler:2.2.7
       - restore_cache:
           name: Restore cache - Load installed gems from cache if possible -
           keys:
@@ -27,7 +29,6 @@ jobs:
       - run:
           name: Install Gemfile for Fastlane
           command: |
-           gem install bundler:2.2.7
            bundle config set --local path 'vendor/bundle'
            bundle check || bundle install
       - save_cache:
@@ -46,9 +47,8 @@ jobs:
            bundle exec pod install --repo-update --verbose
       - run:
           name: Decode Keys.swift
-          command: |
-           echo 'export CLIENT_KEYS="$CLIENT_KEYS"' >> $BASH_ENV
-           echo $CLIENT_KEYS | base64 -di > Client/Keys.swift
+          command:
+           echo "$CLIENT_KEYS" | base64 -di > Client/Keys.swift
       - run:
           name: fastlane
           command: bundle exec fastlane UISDK_unit_tests
