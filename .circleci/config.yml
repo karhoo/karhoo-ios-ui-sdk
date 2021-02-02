@@ -46,8 +46,8 @@ jobs:
       - run:
           name: Decode Keys.swift
           command: |
-            echo 'export CLIENT_KEYS="$CLIENT_KEYS"' >> $BASH_ENV
-            echo $CLIENT_KEYS | base64 -di > Client/Keys.swift
+           echo 'export CLIENT_KEYS="$CLIENT_KEYS"' >> $BASH_ENV
+           echo $CLIENT_KEYS | base64 -di > Client/Keys.swift
       - run:
           name: fastlane
           command: bundle exec fastlane UISDK_unit_tests
