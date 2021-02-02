@@ -48,7 +48,7 @@ jobs:
       - run:
           name: Decode Keys.swift
           command:
-           echo "$CLIENT_KEYS" | base64 -di > Client/Keys.swift
+           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
       - run:
           name: fastlane
           command: bundle exec fastlane UISDK_unit_tests
