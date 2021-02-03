@@ -50,7 +50,7 @@ jobs:
            echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
       - run:
           name: Run unit test
-          command: bundle exec fastlane $FASTLANE_LANE_TEST
+          command: fastlane scan
       - run:
           name: Fastlane Xcov report
           command: fastlane ios XcovReport
