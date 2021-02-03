@@ -68,6 +68,9 @@ class ViewController: UIViewController {
     }
 
     @objc func guestBookingTapped(sender: UIButton) {
+        let guestSettings = GuestSettings(identifier: Keys.adyenGuestIdentifier,
+                                          referer: Keys.referer,
+                                          organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         showKarhoo()
     }
@@ -78,15 +81,19 @@ class ViewController: UIViewController {
     }
 
     @objc func tokenExchangeBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         tokenLoginAndShowKarhoo()
     }
 
     private func usernamePasswordLoginAndShowKarhoo() {
+        KarhooConfig.auth = .karhooUser
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
-        userService.login(userLogin: Keys.userLogin).execute(callback: { result in
+        let userLogin = UserLogin(username: Keys.userServiceEmailAdyen,
+                                  password: Keys.userServicePasswordAdyen)
+        userService.login(userLogin: userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
                                                     self.showKarhoo()
@@ -97,7 +104,7 @@ class ViewController: UIViewController {
     private func tokenLoginAndShowKarhoo() {
         let authService = Karhoo.getAuthService()
 
-        authService.login(token: Keys.authToken).execute { result in
+        authService.login(token: Keys.braintreeAuthToken).execute { result in
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
