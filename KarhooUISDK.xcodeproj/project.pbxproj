@@ -4236,10 +4236,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2372675E70509D3779F8061D /* Pods-KarhooUISDKTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = "$(inherited)";
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				EXCLUDED_ARCHS = "x86_64-apple-ios-simulator";
 				INFOPLIST_FILE = KarhooUISDKTests/Info.plist;
