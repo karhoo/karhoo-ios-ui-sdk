@@ -30,10 +30,10 @@ end
 # UISDK framework
 target 'KarhooUISDK' do
     uisdkPods
+end
 
-     # UISDK unit tests
-    target 'KarhooUISDKTests' do
-      inherit! :search_paths
-      uisdkPods
-    end
+# UISDK unit tests
+target 'KarhooUISDKTests' do
+  inherit! :search_paths
+  uisdkPods
 end
