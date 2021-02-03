@@ -28,7 +28,7 @@ end
  end
 
 
-  desc "Description of what the lane does"
+  desc "Run UISDK unit tests"
   lane :UISDK_unit_tests do
 	scan(
 	    workspace: "KarhooUISDK.xcworkspace",
