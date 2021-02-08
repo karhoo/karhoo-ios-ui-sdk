@@ -40,14 +40,14 @@ jobs:
           command: |
               curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
+          name: Decode Keys.swift
+          command:
+           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
+      - run:
           name: Install CocoaPods
           command: |
            bundle check || bundle install
            bundle exec pod install --repo-update --verbose
-      - run:
-          name: Decode Keys.swift
-          command:
-           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
       - run:
           name: Run unit test
           command: bundle exec fastlane $FASTLANE_LANE_TEST 
