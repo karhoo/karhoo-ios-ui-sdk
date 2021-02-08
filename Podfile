@@ -33,7 +33,7 @@ target 'KarhooUISDK' do
 
      # UISDK unit tests
     target 'KarhooUISDKTests' do
-      inherit! :search_paths
+      inherit! :complete
       uisdkPods
     end
 end
