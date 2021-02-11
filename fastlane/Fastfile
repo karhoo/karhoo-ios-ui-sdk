@@ -33,7 +33,9 @@ end
 	scan(
 	    workspace: "KarhooUISDK.xcworkspace",
 	    scheme: "KarhooUISDKTests",
-	    clean: true,
+	    device: "iPhone 11",
+            deployment_target_version: "14.0",
+            clean: true,
 	    include_simulator_logs: false
     )
   end
