@@ -20,20 +20,6 @@
                ReferencedContainer = "container:KarhooUISDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5C2E260C2420F8AC00B1FF0C"
-               BuildableName = "Client.app"
-               BlueprintName = "Client"
-               ReferencedContainer = "container:KarhooUISDK.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -82,15 +68,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC8F471C21539E24007841FB"
-            BuildableName = "KarhooUISDKTests.xctest"
-            BlueprintName = "KarhooUISDKTests"
-            ReferencedContainer = "container:KarhooUISDK.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
