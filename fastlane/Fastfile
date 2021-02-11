@@ -38,14 +38,14 @@ end
       clean: true,
       include_simulator_logs: false,
       output_types: "junit",
-      output_files: "NetworkSDKTests.xml"
+      output_files: "UISDKTests.xml"
      )
   end
 
   desc "Xcov Report"
   lane :XcovReport do
     xcov(
-      project: "KarhooUISDK.xcodeproj",
+      workspace: "KarhooUISDK.workspace",
       scheme: "KarhooUISDK",
       output_directory: "fastlane/test_output",
       ignore_file_path: "./*view.swift",
