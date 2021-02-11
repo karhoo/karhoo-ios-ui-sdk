@@ -36,7 +36,9 @@ end
       device: "iPhone 11",
       deployment_target_version: "14.0",
       clean: true,
-      include_simulator_logs: false
+      include_simulator_logs: false,
+      output_types: "junit",
+      output_files: "NetworkSDKTests.xml"
      )
   end
 
