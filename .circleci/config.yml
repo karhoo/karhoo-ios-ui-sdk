@@ -50,7 +50,10 @@ jobs:
            bundle exec pod install --repo-update --verbose
       - run:
           name: Run unit test
-          command: bundle exec fastlane $FASTLANE_LANE_TEST 
+          command: bundle exec fastlane $FASTLANE_LANE_TEST
+          environment:
+            SCAN_DEVICE: iPhone 8
+            SCAN_SCHEME: KarhooUISDKTests
       - run:
           name: Fastlane Xcov report
           command: fastlane ios XcovReport
