@@ -30,7 +30,7 @@ Danger publish test results
 ```
 fastlane ios UISDK_unit_tests
 ```
-Description of what the lane does
+Run UISDK unit tests
 ### ios XcovReport
 ```
 fastlane ios XcovReport

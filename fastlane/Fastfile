@@ -28,24 +28,24 @@ end
  end
 
 
-  desc "Description of what the lane does"
+  desc "Run UISDK unit tests"
   lane :UISDK_unit_tests do
-	scan(
-	    workspace: "KarhooUISDK.xcworkspace",
-	    scheme: "KarhooUISDKTests",
-	    device: "iPhone 11",
-            deployment_target_version: "14.0",
-	    code_coverage: true,
-	    clean: true,
-	    output_types: "junit",
-            output_files: "UISDKTests.xml"
-    )
+    scan(
+      workspace: "KarhooUISDK.xcworkspace",
+      scheme: "KarhooUISDKTests",
+      device: "iPhone 11",
+      deployment_target_version: "14.0",
+      clean: true,
+      include_simulator_logs: false,
+      output_types: "junit",
+      output_files: "UISDKTests.xml"
+     )
   end
 
   desc "Xcov Report"
   lane :XcovReport do
     xcov(
-      workspace: "KarhooUISDK.xcworkspace",
+      workspace: "KarhooUISDK.workspace",
       scheme: "KarhooUISDK",
       output_directory: "fastlane/test_output",
       ignore_file_path: "./*view.swift",

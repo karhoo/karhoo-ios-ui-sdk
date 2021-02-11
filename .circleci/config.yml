@@ -8,8 +8,7 @@ jobs:
       xcode: 12.0.0
     working_directory: /Users/distiller/project/KarhooUISDK.xcworkspace
     environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: UISDK_unit_tests
+      FASTLANE_LANE_TEST: UISDK_unit_tests
     shell: /bin/bash --login -eo pipefail
     resource_class: xlarge
     steps:
@@ -41,20 +40,20 @@ jobs:
           command: |
               curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
+          name: Decode Keys.swift
+          command:
+           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
+      - run:
           name: Install CocoaPods
           command: |
            bundle check || bundle install
            bundle exec pod install --repo-update --verbose
       - run:
-          name: Decode Keys.swift
-          command:
-           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
-      - run:
-          name: fastlane
-          command: bundle exec fastlane UISDK_unit_tests
-      - run:
-          name: Fastlane Xcov report
-          command: fastlane ios XcovReport
+          name: Run unit test
+          command: bundle exec fastlane $FASTLANE_LANE_TEST
+      # - run:
+      #     name: Fastlane Xcov report
+      #     command: bundle exec fastlane ios XcovReport
 
       # Collect XML test results data to show in the UI, and save the same XML
       # files under test-results folder in the Artifacts tab
@@ -69,15 +68,15 @@ jobs:
       xcode: 12.0.0
     environment:
       FL_OUTPUT_DIR: output
-      FASTLANE_LANE: adhoc
+      FASTLANE_LANE_TEST: UISDK_unit_tests
     steps:
       - checkout
       - run: bundle install
       - run:
           name: Fastlane
-          command: bundle exec fastlane UISDK_unit_tests
+          command: bundle exec fastlane $FASTLANE_LANE_TEST
       - store_artifacts:
-          path: output
+          path: $FL_OUTPUT_DIR
 
 workflows:
   build-test-adhoc:
