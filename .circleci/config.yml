@@ -53,7 +53,7 @@ jobs:
           command: bundle exec fastlane $FASTLANE_LANE_TEST
       - run:
           name: Fastlane Xcov report
-          command: fastlane ios XcovReport
+          command: bundle exec fastlane ios XcovReport
 
       # Collect XML test results data to show in the UI, and save the same XML
       # files under test-results folder in the Artifacts tab
