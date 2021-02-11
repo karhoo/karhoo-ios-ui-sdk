@@ -36,7 +36,7 @@ end
 	    device: "iPhone 11",
             deployment_target_version: "14.0",
 	    code_coverage: true,
-	    clean: true,
+	    clean: true
 	    output_types: "junit",
             output_files: "UISDKTests.xml"
     )
