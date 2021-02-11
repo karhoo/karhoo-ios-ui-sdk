@@ -49,7 +49,7 @@ end
       scheme: "KarhooUISDK",
       output_directory: "fastlane/test_output",
       ignore_file_path: "./*view.swift",
-      slack_message: "KarhooSDK test coverage report:"
+      slack_message: "KarhooUISDK test coverage report:"
     )
   end
 
