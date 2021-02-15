@@ -259,7 +259,7 @@ final class KarhooTripPresenter: TripPresenter,
             self?.finishWithResult(ScreenResult.completed(result: .closed))
         })
 
-        tripView?.showAlert(title: title, message: message, actions: [action])
+        tripView?.showAlert(title: title, message: message, error: nil, actions: [action])
     }
 
     private func finishWithResult(_ result: ScreenResult<TripScreenResult>) {

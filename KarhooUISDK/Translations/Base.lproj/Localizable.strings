@@ -347,6 +347,9 @@
 /*Booker cancelled*/
 "Text.Generic.TripStatus.BookerCancelled" = "Cancelled";
 
+/*Driver Cancelled*/
+"Text.Generic.TripStatus.DriverCancelled" = "Cancelled by driver/dispatch";
+
 /*No drivers available*/
 "Text.Trip.NoDriversAvailable" = "There are no drivers available";
 

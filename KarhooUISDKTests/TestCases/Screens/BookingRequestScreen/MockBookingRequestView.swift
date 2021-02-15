@@ -11,6 +11,13 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
+    
+    var showBookingRequestView = false
+    var showBookingRequestViewValue = false
+    func showBookingRequestView(_ show: Bool) {
+        showBookingRequestView = true
+        showBookingRequestViewValue = show
+    }
 
     var fadeOutCalled = false
     func fadeOut() {
@@ -65,7 +72,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     }
 
     var isBookingRequestViewVisible = false
-    func showBookingRequestView(_ show: Bool) {
+    func BookingRequestView(_ show: Bool) {
     
         isBookingRequestViewVisible = show
     }

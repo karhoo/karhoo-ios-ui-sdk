@@ -50,9 +50,13 @@ class MockBaseViewController: UIViewController, BaseViewController {
     private(set) var showAlertTitle: String?
     private(set) var showAlertMessage: String?
     private(set) var showAlertCalled = false
-    func showAlert(title: String?, message: String) {
+    func showAlert(title: String?, message: String, error: KarhooError?) {
         showAlertTitle = title
-        showAlertMessage = message
+        var messageToShow = message
+        if let error = error {
+            messageToShow = "\(messageToShow) [\(error.code)]"
+        }
+        showAlertMessage = messageToShow
         showAlertCalled = true
     }
 
@@ -71,10 +75,14 @@ class MockBaseViewController: UIViewController, BaseViewController {
     private(set) var actionAlertTitle: String?
     private(set) var actionAlertMessage: String?
     private var alertActions: [AlertAction] = []
-    func showAlert(title: String?, message: String, actions: [AlertAction]) {
+    func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction]) {
         alertActions.append(contentsOf: actions)
         actionAlertTitle = title
-        actionAlertMessage = message
+        var messageToShow = message
+        if let error = error {
+            messageToShow = "\(messageToShow) [\(error.code)]"
+        }
+        actionAlertMessage = messageToShow
         showAlertCalled = true
     }
 
