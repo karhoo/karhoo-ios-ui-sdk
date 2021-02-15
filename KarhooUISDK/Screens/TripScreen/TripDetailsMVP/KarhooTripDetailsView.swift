@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import KarhooSDK
 
 final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
 
     private weak var actions: TripScreenDetailsActions?
     private weak var detailsSuperview: UIView?
     private var presenter: TripScreenDetailsPresenter?
+    private var stackButtonPresenter: RideCellStackButtonPresenter?
     private var tripScreenDetailsViewModel: TripScreenDetailsViewModel?
 
     // new components
     var tripInfoView: TripInfoView!
     var tripActionsView: TripActionsView!
     var stackContainer: UIStackView!
+//    var stackButtonView: KarhooStackButtonView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -56,48 +59,56 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
         _ = [tripInfoView.leadingAnchor.constraint(equalTo: stackContainer.leadingAnchor),
              tripInfoView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)]
             .map { $0.isActive = true }
+        
+//        stackButtonView = KarhooStackButtonView()
+//        addSubview(stackButtonView)
 
-        tripActionsView = TripActionsView()
-        tripActionsView.isHidden = true
-        tripActionsView.alpha = 0.0
-        stackContainer.addArrangedSubview(tripActionsView)
-
-        _ = [tripActionsView.leadingAnchor.constraint(equalTo: stackContainer.leadingAnchor),
-             tripActionsView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)]
-            .map { $0.isActive = true }
+//        stackButtonView = KarhooStackButtonView()
+//        stackContainer.addArrangedSubview(stackButtonView)
+//        _ = [stackButtonView.leadingAnchor.constraint(equalTo: stackContainer.leadingAnchor),
+//             stackButtonView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)].map { $0.isActive = true }
+        
+//        tripActionsView = TripActionsView()
+//        tripActionsView.isHidden = true
+//        tripActionsView.alpha = 0.0
+//        stackContainer.addArrangedSubview(tripActionsView)
+//
+//        _ = [tripActionsView.leadingAnchor.constraint(equalTo: stackContainer.leadingAnchor),
+//             tripActionsView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)]
+//            .map { $0.isActive = true }
 
         stackContainer.bringSubviewToFront(tripInfoView)
     }
 
     private func showAnimation() {
-         UIView.animate(withDuration: 0.2,
-                              delay: 0,
-                              options: .curveEaseInOut,
-                              animations: {
-            self.tripActionsView.isHidden = false
-            UIView.animate(withDuration: 0.2,
-                           delay: 0.05,
-                           options: .curveEaseInOut,
-                           animations: {
-                self.tripActionsView.alpha =  1
-            })
-        })
+//         UIView.animate(withDuration: 0.2,
+//                              delay: 0,
+//                              options: .curveEaseInOut,
+//                              animations: {
+//            self.tripActionsView.isHidden = false
+//            UIView.animate(withDuration: 0.2,
+//                           delay: 0.05,
+//                           options: .curveEaseInOut,
+//                           animations: {
+//                self.tripActionsView.alpha =  1
+//            })
+//        })
     }
 
     private func hideAnimation() {
 
-        UIView.animate(withDuration: 0.2,
-                       delay: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.tripActionsView.alpha =  0
-                        UIView.animate(withDuration: 0.2,
-                                       delay: 0.05,
-                                       options: .curveEaseInOut,
-                                       animations: {
-                            self.tripActionsView.isHidden = true
-                        })
-        })
+//        UIView.animate(withDuration: 0.2,
+//                       delay: 0,
+//                       options: .curveEaseInOut,
+//                       animations: {
+//                        self.tripActionsView.alpha =  0
+//                        UIView.animate(withDuration: 0.2,
+//                                       delay: 0.05,
+//                                       options: .curveEaseInOut,
+//                                       animations: {
+//                            self.tripActionsView.isHidden = true
+//                        })
+//        })
     }
 
     func set(actions: TripScreenDetailsActions,
@@ -105,7 +116,7 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
         self.actions = actions
         self.detailsSuperview = detailsSuperview
 
-        tripActionsView.set(actions: self)
+//        tripActionsView.set(actions: self)
     }
 
     func start(tripId: String) {
@@ -126,7 +137,10 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
                                        placeholder: "driverImagePlaceholder")
 
         let tripOptionsViewModel = TripOptionsViewModel(trip: tripDetailsViewModel.trip)
-        tripActionsView.set(viewModel: tripOptionsViewModel)
+//        tripActionsView.set(viewModel: tripOptionsViewModel)
+        stackButtonPresenter = RideCellStackButtonPresenter(stackButton: tripInfoView.stackButtonView,
+                                                 trip: tripDetailsViewModel.trip,
+                                                 rideCellStackButtonActions: self)
     }
 }
 
@@ -156,5 +170,35 @@ extension KarhooTripScreenDetailsView: TripInfoViewDelegate {
         superView.layoutIfNeeded()
 
         detailsVC.startAnimation(fromSmallImageView: tripInfoView.getDriverImageObject())
+    }
+}
+
+extension KarhooTripScreenDetailsView: RideCellStackButtonActions {
+
+    func track(_ trip: TripInfo) {
+//        trackTripCallback?(trip)
+    }
+}
+
+extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
+    func hideRideOptions() {
+//        tripInfoView.stackButtonView.isHidden = true
+    }
+
+    func cancelRide() {
+//        presenter.didPressCancelTrip()
+    }
+
+    func trackRide() {
+//        presenter.didPressTrackTrip()
+    }
+
+    func rebookRide() {
+//        presenter.didPressRebookTrip()
+    }
+
+    func reportIssueError() {
+//        showAlert(title: UITexts.Generic.error,
+//                  message: UITexts.Generic.noMailSetUpMessage)
     }
 }

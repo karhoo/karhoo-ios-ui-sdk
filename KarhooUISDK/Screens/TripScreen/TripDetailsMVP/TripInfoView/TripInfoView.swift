@@ -31,6 +31,7 @@ final class TripInfoView: UIView {
     private var vehicleLicense: BordedLabel!
     private var dropDownButton: DropDownButton!
     private var isActionViewVisible: Bool!
+    var stackButtonView: KarhooStackButtonView!
     
     public weak var delegate: TripInfoViewDelegate?
     
@@ -52,6 +53,7 @@ final class TripInfoView: UIView {
        }
     
     private func setUpView() {
+        
         accessibilityIdentifier = "journey_info_view"
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -113,6 +115,9 @@ final class TripInfoView: UIView {
         driverLicenseNumber.text = "Driver license not available" // localise default text
         container.addSubview(driverLicenseNumber)
         
+        stackButtonView = KarhooStackButtonView()
+        container.addSubview(stackButtonView)
+        
         setUpConstraints()
     }
     
@@ -147,8 +152,13 @@ final class TripInfoView: UIView {
         
         _ = [driverLicenseNumber.topAnchor.constraint(equalTo: vehicleDetails.bottomAnchor, constant: 3.0),
              driverLicenseNumber.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor, constant: 10.0),
-             driverLicenseNumber.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10.0),
+//             driverLicenseNumber.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10.0),
              driverLicenseNumber.widthAnchor.constraint(equalToConstant: 200.0)].map { $0.isActive = true }
+        
+        _ = [stackButtonView.topAnchor.constraint(equalTo: driverLicenseNumber.bottomAnchor, constant: 3.0),
+             stackButtonView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10.0),
+             stackButtonView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 10.0),
+             stackButtonView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10.0)].map { $0.isActive = true }
     }
 }
 
