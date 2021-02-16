@@ -78,7 +78,6 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
     }
 
     private func hideAnimation() {
-
         UIView.animate(withDuration: 0.2,
                        delay: 0,
                        options: .curveEaseInOut,
@@ -97,8 +96,6 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
              detailsSuperview: UIView) {
         self.actions = actions
         self.detailsSuperview = detailsSuperview
-
-//        tripActionsView.set(actions: self)
     }
 
     func start(tripId: String) {
@@ -119,10 +116,8 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
                                        placeholder: "driverImagePlaceholder")
 
         let tripOptionsViewModel = TripOptionsViewModel(trip: tripDetailsViewModel.trip)
-//        tripActionsView.set(viewModel: tripOptionsViewModel)
         stackButtonPresenter = RideDetailsStackButtonPresenter(trip: tripDetailsViewModel.trip,
                                                                  stackButton: tripInfoView.stackButtonView,
-//                                                                 mailComposer: mailComposer,
                                                                  mailComposer: nil,
                                                                  rideDetailsStackButtonActions: self)
     }

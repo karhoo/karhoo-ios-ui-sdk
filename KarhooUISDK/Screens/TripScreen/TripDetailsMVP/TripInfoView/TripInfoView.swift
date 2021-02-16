@@ -23,7 +23,7 @@ public protocol TripInfoViewDelegate: class {
 
 final class TripInfoView: UIView {
     
-    private var container: UIView!
+    private var container: UIStackView!
     private var driverImage: LoadingImageView!
     private var driverName: UILabel!
     private var vehicleDetails: UILabel!
@@ -31,6 +31,7 @@ final class TripInfoView: UIView {
     private var vehicleLicense: BordedLabel!
     private var dropDownButton: DropDownButton!
     private var isActionViewVisible: Bool!
+    private var driverDetailsContainer: UIView!
     var stackButtonView: KarhooStackButtonView!
     
     public weak var delegate: TripInfoViewDelegate?
@@ -53,17 +54,24 @@ final class TripInfoView: UIView {
        }
     
     private func setUpView() {
-        
         accessibilityIdentifier = "journey_info_view"
         translatesAutoresizingMaskIntoConstraints = false
         
-        container = UIView()
+        container = UIStackView()
         container.accessibilityIdentifier = "view_container"
         container.translatesAutoresizingMaskIntoConstraints = false
         container.backgroundColor = .white
+        container.axis = .vertical
         container.layer.cornerRadius = 5
-        container.layer.masksToBounds = true
+        container.distribution = .fillEqually
+//        container.spacing = 15.0
+//        container.layer.masksToBounds = true
         addSubview(container)
+        
+        driverDetailsContainer = UIView()
+        driverDetailsContainer.accessibilityIdentifier = "driver_details_container"
+        driverDetailsContainer.translatesAutoresizingMaskIntoConstraints = false
+        container.addArrangedSubview(driverDetailsContainer)
         
         driverImage = LoadingImageView()
         driverImage.isAccessibilityElement = true
@@ -73,17 +81,19 @@ final class TripInfoView: UIView {
                                                      action: #selector(driverImageTapped))
         driverImage.addGestureRecognizer(imageTapGesture)
         driverImage.isUserInteractionEnabled = true
-        container.addSubview(driverImage)
+        driverDetailsContainer.addSubview(driverImage)
         
         vehicleLicense = BordedLabel(title: "")
         vehicleLicense.accessibilityIdentifier = KHTripInfoViewID.vehicleLicense
-        container.addSubview(vehicleLicense)
-        
+        vehicleLicense.translatesAutoresizingMaskIntoConstraints = false
+        driverDetailsContainer.addSubview(vehicleLicense)
+
         dropDownButton = DropDownButton()
         dropDownButton.delegate = self
+        dropDownButton.translatesAutoresizingMaskIntoConstraints = false
         isActionViewVisible = dropDownButton.getButtonState()
-        container.addSubview(dropDownButton)
-        
+        driverDetailsContainer.addSubview(dropDownButton)
+
         driverName = UILabel()
         driverName.accessibilityIdentifier = KHTripInfoViewID.driverName
         driverName.isAccessibilityElement = true
@@ -92,8 +102,7 @@ final class TripInfoView: UIView {
         driverName.textColor = .black
         driverName.numberOfLines = 0
         driverName.text = "Driver name not available" // localise default text
-        
-        container.addSubview(driverName)
+        driverDetailsContainer.addSubview(driverName)
 
         vehicleDetails = UILabel()
         vehicleDetails.accessibilityIdentifier = KHTripInfoViewID.vehicleDetails
@@ -103,8 +112,8 @@ final class TripInfoView: UIView {
         vehicleDetails.numberOfLines = 0
         vehicleDetails.textColor = .black
         vehicleDetails.text = "Vehicle details not available" // localise default text
-        container.addSubview(vehicleDetails)
-        
+        driverDetailsContainer.addSubview(vehicleDetails)
+
         driverLicenseNumber = UILabel()
         driverLicenseNumber.accessibilityIdentifier = KHTripInfoViewID.driverLicenseNumber
         driverLicenseNumber.isAccessibilityElement = true
@@ -113,11 +122,13 @@ final class TripInfoView: UIView {
         driverLicenseNumber.numberOfLines = 0
         driverLicenseNumber.textColor = .black
         driverLicenseNumber.text = "Driver license not available" // localise default text
-        container.addSubview(driverLicenseNumber)
+        driverDetailsContainer.addSubview(driverLicenseNumber)
         
         stackButtonView = KarhooStackButtonView()
-        container.addSubview(stackButtonView)
-        
+        container.translatesAutoresizingMaskIntoConstraints = false
+//        stackButtonView.isHidden = true
+        container.addArrangedSubview(stackButtonView)
+
         setUpConstraints()
     }
     
@@ -127,37 +138,39 @@ final class TripInfoView: UIView {
              container.trailingAnchor.constraint(equalTo: self.trailingAnchor),
              container.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
         
+        _ = [driverDetailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+             driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)].map { $0.isActive = true }
+        
         let imageSize: CGFloat = 48.0
         _ = [driverImage.heightAnchor.constraint(equalToConstant: imageSize),
              driverImage.widthAnchor.constraint(equalToConstant: imageSize),
-             driverImage.topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0),
-             driverImage.leadingAnchor.constraint(equalTo: container.leadingAnchor,
+             driverImage.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
+             driverImage.leadingAnchor.constraint(equalTo: driverDetailsContainer.leadingAnchor,
                                                   constant: 10.0)].map { $0.isActive = true }
         
-        _ = [vehicleLicense.topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0),
-             vehicleLicense.trailingAnchor.constraint(equalTo: container.trailingAnchor,
+        _ = [vehicleLicense.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
+             vehicleLicense.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor,
                                                       constant: -10.0)].map { $0.isActive = true }
-        
-        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverImage.bottomAnchor, constant: -5.0),
-             dropDownButton.trailingAnchor.constraint(equalTo: vehicleLicense.trailingAnchor)]
+
+        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverDetailsContainer.bottomAnchor, constant: -5.0),
+             dropDownButton.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor)]
             .map { $0.isActive = true }
-        
-        _ = [driverName.topAnchor.constraint(equalTo: container.topAnchor, constant: 10.0),
+
+        _ = [driverName.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
              driverName.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor,
                                                  constant: 10.0)].map { $0.isActive = true }
-        
+
         _ = [vehicleDetails.topAnchor.constraint(equalTo: driverName.bottomAnchor, constant: 3.0),
              vehicleDetails.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor, constant: 10.0),
              vehicleDetails.widthAnchor.constraint(equalToConstant: 200.0)].map { $0.isActive = true }
-        
+
         _ = [driverLicenseNumber.topAnchor.constraint(equalTo: vehicleDetails.bottomAnchor, constant: 3.0),
              driverLicenseNumber.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor, constant: 10.0),
              driverLicenseNumber.widthAnchor.constraint(equalToConstant: 200.0)].map { $0.isActive = true }
         
-        _ = [stackButtonView.topAnchor.constraint(equalTo: driverImage.bottomAnchor, constant: 3.0),
-             stackButtonView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10.0),
+        _ = [stackButtonView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10.0),
              stackButtonView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 10.0),
-             stackButtonView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10.0)].map { $0.isActive = true }
+             stackButtonView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -40.0)].map { $0.isActive = true }
     }
 }
 
