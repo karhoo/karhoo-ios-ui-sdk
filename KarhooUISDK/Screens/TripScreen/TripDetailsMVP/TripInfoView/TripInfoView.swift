@@ -152,8 +152,8 @@ final class TripInfoView: UIView {
              vehicleLicense.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor,
                                                       constant: -10.0)].map { $0.isActive = true }
 
-        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverDetailsContainer.bottomAnchor, constant: -5.0),
-             dropDownButton.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor)]
+        _ = [dropDownButton.bottomAnchor.constraint(equalTo: vehicleLicense.bottomAnchor, constant: -5.0),
+             dropDownButton.trailingAnchor.constraint(equalTo: vehicleLicense.trailingAnchor)]
             .map { $0.isActive = true }
 
         _ = [driverName.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
