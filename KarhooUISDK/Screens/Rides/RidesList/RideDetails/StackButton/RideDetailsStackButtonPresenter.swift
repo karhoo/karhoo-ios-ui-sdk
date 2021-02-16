@@ -11,13 +11,13 @@ import KarhooSDK
 final class RideDetailsStackButtonPresenter {
 
     private let trip: TripInfo
-    private let mailComposer: FeedbackEmailComposer
+    private let mailComposer: FeedbackEmailComposer?
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
 
     init(trip: TripInfo,
          stackButton: StackButtonView?,
-         mailComposer: FeedbackEmailComposer,
+         mailComposer: FeedbackEmailComposer?,
          rideDetailsStackButtonActions: RideDetailsStackButtonActions) {
         self.trip = trip
         self.mailComposer = mailComposer
@@ -66,7 +66,7 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func reportIssue() {
-        if self.mailComposer.reportIssueWith(trip: self.trip) {
+        if ((self.mailComposer?.reportIssueWith(trip: self.trip)) != nil) {
             return
         }
 
