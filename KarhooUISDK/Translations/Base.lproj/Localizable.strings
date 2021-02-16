@@ -98,20 +98,14 @@
 "Text.Trip.CallDriver" = "Contact Driver";
 
 /*Trip Statuses*/
-"Text.Trip.Unknown" = "Processing your request";
-"Text.Trip.Initialised" = "Processing your request";
 "Text.Trip.Requested" = "%1$@ is allocating you a driver. This could take up to 5 minutes.";
 "Text.Trip.Confirmed" = "Your booking has been accepted.\nWaiting for a driver to be allocated.";
-"Text.Trip.DriverAllocated" = "A driver has been allocated";
 "Text.Trip.DriverEnRoute" = "Your driver is en route";
-"Text.Trip.DriverApproaching" = "Your driver, %1$@: %2$@, %3$@ is arriving soon.";
 "Text.Trip.DriverArrived" = "Your driver has arrived!";
 "Text.Trip.PassengerOnBoard" = "You're on your way. Have a safe ride!";
 "Text.Trip.Completed" = "You've reached your destination";
 "Text.Trip.CancelledByUser" = "You cancelled the booking";
 "Text.Trip.CancelledByDispatch" = "Your booking has been cancelled.";
-"Text.Trip.CancelledByKarhoo" = "Your booking has been cancelled. Please contact us for more information.";
-"Text.Trip.Failed" = "There was a problem with the booking request. Please try again or contact us.";
 "Text.Trip.Completed" = "You've reached your destination. Please take a moment to write some feedback about your ride.";
 
 /*English: "Pickup Time" in booking request screen*/
@@ -227,7 +221,6 @@
 "Text.Bookings.ReportIssue" = "Report Issue";
 
 /*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
-"Text.Bookings.AsapBooking" = "ASAP Booking";
 "Text.Trip.CancelBookingFailed" = "Cancellation not confirmed, please call supplier";
 
 /*Used as a button in the trip screen. English: "Ride Options"*/
@@ -266,7 +259,6 @@
 "Text.Error.Payment.Alert.Message" = "We were unable to authorise your credit/debit card.";
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Update Card";
 "Text.Error.Alert.CantSendEmail" = "Can't send email message. Configure Mail app first.";
-"Text.Trip.DriverLicense" = "Licence: %1$@";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
 "Text.Generic.Metered" = "Metered";
@@ -294,7 +286,6 @@
 
 /*Generic fallback message for trip load failure*/
 "Text.Bookings.CouldNotLoadTrips" = "Could not load trips.";
-"Text.Error.NoInternetConnectionBannerText" = "No Internet Connection";
 "Text.Bookings.Price.Cancelled" = "Cancelled";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Ride cancellation successful";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Your trip has been cancelled successfully.";
@@ -304,9 +295,6 @@
 
 /*"Profile" button on the side menu*/
 "Text.SideMenu.Profile" = "Profile";
-
-/*"Payment Card" placeholder label used on profile screen*/
-"Text.User.PaymentCard" = "Payment Card";
 
 /*Button for rebooking a ride*/
 "Text.Bookings.RebookRide" = "Rebook Ride";
@@ -345,15 +333,6 @@
 /*Fuzzy*/
 "Text.SideMenu.About" = "About";
 
-/*"Version"*/
-"Text.About.Version" = "Version";
-
-/*"Terms and conditions"*/
-"Text.About.TermsAndConditions" = "Terms and conditions";
-
-/*"Privacy policy"*/
-"Text.About.PrivacyPolicy" = "Privacy policy";
-
 /*Error message when user tries to prebook within the current hour of local time*/
 "Text.Error.PrebookingWithinTheHour" = "Prebook cannot be made within the current hour.";
 
@@ -370,12 +349,6 @@
 
 /*Driver Cancelled*/
 "Text.Generic.TripStatus.DriverCancelled" = "Cancelled by driver/dispatch";
-
-/*Driver Cancelled*/
-"Text.Trip.DriverCancelled" = "The driver has cancelled your booking";
-
-/*Booker Cancelled*/
-"Text.Trip.BookerCancelled" = "Your trip has been cancelled";
 
 /*No drivers available*/
 "Text.Trip.NoDriversAvailable" = "There are no drivers available";
@@ -478,7 +451,7 @@
 "Text.GenericTripStatus.CancelledByKarhoo" = "Cancelled by Karhoo";
 
 /*alert title when karhoo cancel the trip-supposedly happens for preauth failure*/
-"\"Text.Trip.KarhooCancelled.AlertTitle\"" = "Problem Booking";
+"Text.Trip.KarhooCancelled.AlertTitle" = "Problem Booking";
 
 /*alert message when karhoo cancel the trip-supposedly happens for preauth failure*/
 "Text.Trip.KarhooCancelled.AlertMessage" = "There was a problem making this booking. Please try again or contact support.";
@@ -571,9 +544,6 @@
 "KSDK02" = "Missing user permissions";
 "KSDK03" = "User already logged in";
 
-/* automatic logout message */
-"Text.User.AutomaticLogoutMessage" = "You were automatically signed out. This could be because you signed in on another device. Please sign in again to continue.";
-
 /* PickUp Type */
 "DEFAULT" = "Default";
 "MEET_AND_GREET" = "Meet and Greet";
@@ -592,10 +562,6 @@
 "Text.FeedbackView.app" = "How easy did you find using the app?";
 "Text.FeedbackView.addComment" = "Additional comments";
 "Text.FeedbackView.confirmation" = "Thank you for submitting your feedback";
-
-/* ProfileView */
-"Text.ProfileView.editProfileFail" = "We were unable to update your profile information";
-"Text.ProfileView.editProfileSuccess" = "Profile information updated";
 
 "Text.Address.SetOnMap" = "Set on map";
 "Text.Address.CurrentLocation" = "Current location";

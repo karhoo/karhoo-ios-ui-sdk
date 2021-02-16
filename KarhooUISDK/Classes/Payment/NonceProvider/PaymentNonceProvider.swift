@@ -12,7 +12,7 @@ import KarhooSDK
 enum PaymentNonceProviderResult {
     case nonce(nonce: Nonce)
     case threeDSecureCheckFailed
-    case failedToInitialisePaymentService
+    case failedToInitialisePaymentService(error: KarhooError?)
     case failedToAddCard(error: KarhooError?)
     case cancelledByUser
 }

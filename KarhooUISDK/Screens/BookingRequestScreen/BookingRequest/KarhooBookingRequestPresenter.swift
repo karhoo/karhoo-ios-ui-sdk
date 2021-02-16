@@ -167,7 +167,8 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         guard let currentUser = userService.getCurrentUser(),
               let currentOrg = userService.getCurrentUser()?.organisations.first else {
             view?.showAlert(title: UITexts.Errors.somethingWentWrong,
-                            message: UITexts.Errors.getUserFail)
+                            message: UITexts.Errors.getUserFail,
+                            error: nil)
             return
         }
 
@@ -199,7 +200,8 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
                 self.view?.show(error: error)
                 view?.setDefaultState()
             default:
-                self.view?.showAlert(title: UITexts.Generic.error, message: UITexts.Errors.somethingWentWrong)
+                self.view?.showAlert(title: UITexts.Generic.error, message: UITexts.Errors.somethingWentWrong,
+                                     error: nil)
                 view?.setDefaultState()
             }
         }

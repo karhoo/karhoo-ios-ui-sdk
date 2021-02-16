@@ -176,7 +176,8 @@ extension RideDetailsViewController: RideDetailsStackButtonActions {
 
     func reportIssueError() {
         showAlert(title: UITexts.Generic.error,
-                  message: UITexts.Generic.noMailSetUpMessage)
+                  message: UITexts.Generic.noMailSetUpMessage,
+                  error: nil)
     }
 }
 

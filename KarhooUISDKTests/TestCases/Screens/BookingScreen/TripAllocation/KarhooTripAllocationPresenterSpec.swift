@@ -167,7 +167,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertEqual(mockTripAllocationView.tripAllocatedCalled!.tripId, newTripUpdate.tripId)
-            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
+            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 
@@ -202,7 +202,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertTrue(mockTripAllocationView.tripCancelledBySystemCalled)
-            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
+            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 

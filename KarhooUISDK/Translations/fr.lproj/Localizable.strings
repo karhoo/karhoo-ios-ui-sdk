@@ -102,20 +102,14 @@
 
 /*Trip Statuses*/
 /*Fuzzy*/
-"Text.Trip.Unknown" = "Votre demande est en cours de traitement";
-"Text.Trip.Initialised" = "Traitement de votre demande";
 "Text.Trip.Requested" = "Ceci peut prendre quelques instants.";
 "Text.Trip.Confirmed" = "Votre commande a été acceptée. Attente d'attribution du chauffeur.";
-"Text.Trip.DriverAllocated" = "Un chauffeur a été attribué.";
 "Text.Trip.DriverEnRoute" = "Votre chauffeur est en route.";
-"Text.Trip.DriverApproaching" = "Votre chauffeur, %1$@: %2$@, %3$@ va bientôt arriver.";
 "Text.Trip.DriverArrived" = "Votre chauffeur est arrivé.";
 "Text.Trip.PassengerOnBoard" = "Vous êtes en route. Faites un bon voyage.";
 "Text.Trip.Completed" = "Vous avez atteint votre destination.";
 "Text.Trip.CancelledByUser" = "Vous avez annulé la course.";
 "Text.Trip.CancelledByDispatch" = "Nous sommes désolés, votre course a été annulée par le fournisseur. Veuillez nous excuser et utiliser l'application pour voir les taxis disponibles.";
-"Text.Trip.CancelledByKarhoo" = "Votre course a été annulée. Veuillez nous contacter pour plus d'informations.";
-"Text.Trip.Failed" = "Il y a eu un problème avec la demande de réservation. Veuillez réessayez ou nous contacter.";
 "Text.Trip.Completed" = "Vous avez atteint votre destination. Prenez un moment pour nous laisser vos commentaires sur votre course.";
 
 /*English: "Pickup Time" in booking request screen*/
@@ -239,7 +233,6 @@
 "Text.Bookings.ReportIssue" = "Signaler un problème";
 
 /*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
-"Text.Bookings.AsapBooking" = "Reservation immédiate";
 "Text.Trip.CancelBookingFailed" = "Annulation non confirmée. Veuillez appeler le fournisseur.";
 
 /*Used as a button in the trip screen. English: "Ride Options"*/
@@ -278,7 +271,6 @@
 "Text.Error.Payment.Alert.Message" = "Nous n'avons pas pu obtenir l'autorisation pour ce paiement.";
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Modifier carte";
 "Text.Error.Alert.CantSendEmail" = "Le message ne peut être envoyé. Veuillez configurer votre compte email sur votre téléphone.";
-"Text.Trip.DriverLicense" = "Licence";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
 "Text.Generic.Metered" = "Prix compteur";
@@ -306,7 +298,6 @@
 
 /*Generic fallback message for trip load failure*/
 "Text.Bookings.CouldNotLoadTrips" = "Impossible de charger les courses";
-"Text.Error.NoInternetConnectionBannerText" = "Pas de connection internet";
 "Text.Bookings.Price.Cancelled" = "Annulé";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Annulation confirmée";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Votre course a été annulée.";
@@ -316,9 +307,6 @@
 
 /*"Profile" button on the side menu*/
 "Text.SideMenu.Profile" = "Profil";
-
-/*"Payment Card" placeholder label used on profile screen*/
-"Text.User.PaymentCard" = "Carte de paiement";
 
 /*Button for rebooking a ride*/
 "Text.Bookings.RebookRide" = "Re-commander";
@@ -356,15 +344,6 @@
 /*Side Menu "About" section title*/
 "Text.SideMenu.About" = "À propos";
 
-/*"Version"*/
-"Text.About.Version" = "Version";
-
-/*"Terms and conditions"*/
-"Text.About.TermsAndConditions" = "Conditions générales d'utilisation";
-
-/*"Privacy policy"*/
-"Text.About.PrivacyPolicy" = "Règles de confidentialité";
-
 /*Error message when user tries to prebook within the current hour of local time*/
 "Text.Error.PrebookingWithinTheHour" = "L'heure et date de la commande doit être supérieure à une heure";
 
@@ -381,12 +360,6 @@
 
 /*Driver Cancelled*/
 "Text.Generic.TripStatus.DriverCancelled" = "Annulation chauffeur";
-
-/*Driver Cancelled*/
-"Text.Trip.DriverCancelled" = "Annulation chauffeur";
-
-/*Booker Cancelled*/
-"Text.Trip.BookerCancelled" = "Annulation utilisateur";
 
 /*No drivers available*/
 "Text.Trip.NoDriversAvailable" = "Aucun chauffeur disponible";
@@ -578,9 +551,6 @@
 "KSDK02" = "Permission(s) manquante(s) pour cette requête.";
 "KSDK03" = "Utilisateur déjà connecté";
 
-/* automatic logout message */
-"Text.User.AutomaticLogoutMessage" = "Nous vous avons déconnecté. Cela peut être dû à une connexion sur un autre appareil. Veuillez vous reconnecter.";
-
 /* PickUp Type */
 "DEFAULT" = "Default";
 "MEET_AND_GREET" = "Accueil pancarte";
@@ -600,10 +570,6 @@
 "Text.FeedbackView.app" = "Avez-vous trouvé l’application facile à utiliser?";
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 "Text.FeedbackView.confirmation" = "Merci d'avoir envoyé vos commentaires";
-
-/* ProfileView */
-"Text.ProfileView.editProfileFail" = "Nous n'avons pas pu mettre à jour les informations de votre profil";
-"Text.ProfileView.editProfileSuccess" = "Informations de profil mises à jour";
 
 "Text.Address.SetOnMap" = "Situer sur la carte";
 "Text.Address.CurrentLocation" = "Position actuelle";
