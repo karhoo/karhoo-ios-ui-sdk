@@ -132,7 +132,8 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
         if trip.state == .driverCancelled {
             rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelledByDispatchAlertTitle,
-                                       message: UITexts.Trip.tripCancelledByDispatchAlertMessage)
+                                       message: UITexts.Trip.tripCancelledByDispatchAlertMessage,
+                                       error: nil)
             unsubscribeTripListener()
         }
     }
@@ -178,7 +179,8 @@ extension KarhooRideDetailsPresenter: CancelRideDelegate {
 
                 if result.isSuccess() {
                     self.rideDetailsView?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                                                     message: UITexts.Bookings.cancellationSuccessAlertMessage)
+                                                     message: UITexts.Bookings.cancellationSuccessAlertMessage, 
+                                                     error: nil)
                 }
 
                 callback(result)

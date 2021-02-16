@@ -138,8 +138,9 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
         let bookingError = TestUtil.getRandomError()
         mockTripService.bookCall.triggerFailure(bookingError)
+        let expectedMessage = "\(bookingError.localizedMessage) [\(bookingError.code)]"
 
-        XCTAssertEqual(bookingError.localizedMessage, mockView.showAlertMessage)
+        XCTAssertEqual(expectedMessage, mockView.showAlertMessage)
         XCTAssertTrue(mockView.setDefaultStateCalled)
 
     }

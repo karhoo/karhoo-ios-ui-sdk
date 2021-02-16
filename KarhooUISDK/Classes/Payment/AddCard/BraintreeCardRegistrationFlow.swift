@@ -68,7 +68,8 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                 self?.buildBraintreeUI(paymentsToken: token)
             } else {
                 self?.baseViewController?.showAlert(title: UITexts.Generic.error,
-                                          message: UITexts.Errors.missingPaymentSDKToken)
+                                          message: UITexts.Errors.missingPaymentSDKToken,
+                                          error: result.errorValue())
                 self?.callback?(.completed(value: .didFailWithError(result.errorValue())))
             }
         }
@@ -87,7 +88,8 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private func didBuildBraintreeUIScreen(_ result: ScreenResult<Screen>) {
         guard let item = result.completedValue() else {
             baseViewController?.showAlert(title: UITexts.Generic.error,
-                                message: UITexts.Errors.missingPaymentSDKToken)
+                                          message: UITexts.Errors.missingPaymentSDKToken,
+                                          error: result.errorValue())
             return
         }
 

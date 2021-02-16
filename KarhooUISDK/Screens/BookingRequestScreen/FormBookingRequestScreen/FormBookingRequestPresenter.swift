@@ -103,7 +103,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                 PassengerInfo.shared.passengerDetails = self?.view?.getPassengerDetails()
                 self?.callback(.completed(result: trip))
             } else if let error = result.errorValue() {
-                self?.view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)")
+                self?.view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
             }
         })
     }
