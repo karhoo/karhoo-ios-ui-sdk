@@ -157,13 +157,6 @@ extension KarhooTripScreenDetailsView: TripInfoViewDelegate {
     }
 }
 
-extension KarhooTripScreenDetailsView: RideCellStackButtonActions {
-
-    func track(_ trip: TripInfo) {
-//        trackTripCallback?(trip)
-    }
-}
-
 extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
     func hideRideOptions() {
         tripInfoView.stackButtonView.isHidden = true
