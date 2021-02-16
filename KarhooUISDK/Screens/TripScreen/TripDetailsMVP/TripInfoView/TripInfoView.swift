@@ -152,7 +152,6 @@ final class TripInfoView: UIView {
         
         _ = [driverLicenseNumber.topAnchor.constraint(equalTo: vehicleDetails.bottomAnchor, constant: 3.0),
              driverLicenseNumber.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor, constant: 10.0),
-//             driverLicenseNumber.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10.0),
              driverLicenseNumber.widthAnchor.constraint(equalToConstant: 200.0)].map { $0.isActive = true }
         
         _ = [stackButtonView.topAnchor.constraint(equalTo: driverImage.bottomAnchor, constant: 3.0),
