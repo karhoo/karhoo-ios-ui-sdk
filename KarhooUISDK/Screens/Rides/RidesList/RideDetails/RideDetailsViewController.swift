@@ -13,6 +13,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
     private var scrollView: UIScrollView!
     private var rideDetailsView: RideDetailsViewContainer!
+
     private var loadingView: LoadingView!
     
     private let presenter: RideDetailsPresenter

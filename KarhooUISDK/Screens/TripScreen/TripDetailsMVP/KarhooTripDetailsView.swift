@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import KarhooSDK
 
 final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
 
     private weak var actions: TripScreenDetailsActions?
     private weak var detailsSuperview: UIView?
     private var presenter: TripScreenDetailsPresenter?
+    private var stackButtonPresenter: RideDetailsStackButtonPresenter?
     private var tripScreenDetailsViewModel: TripScreenDetailsViewModel?
 
     // new components
     var tripInfoView: TripInfoView!
-    var tripActionsView: TripActionsView!
     var stackContainer: UIStackView!
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +51,7 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
              stackContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
 
         tripInfoView = TripInfoView()
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
         tripInfoView.delegate = self
         stackContainer.addArrangedSubview(tripInfoView)
 
@@ -57,55 +59,21 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
              tripInfoView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)]
             .map { $0.isActive = true }
 
-        tripActionsView = TripActionsView()
-        tripActionsView.isHidden = true
-        tripActionsView.alpha = 0.0
-        stackContainer.addArrangedSubview(tripActionsView)
-
-        _ = [tripActionsView.leadingAnchor.constraint(equalTo: stackContainer.leadingAnchor),
-             tripActionsView.trailingAnchor.constraint(equalTo: stackContainer.trailingAnchor)]
-            .map { $0.isActive = true }
-
         stackContainer.bringSubviewToFront(tripInfoView)
     }
 
     private func showAnimation() {
-         UIView.animate(withDuration: 0.2,
-                              delay: 0,
-                              options: .curveEaseInOut,
-                              animations: {
-            self.tripActionsView.isHidden = false
-            UIView.animate(withDuration: 0.2,
-                           delay: 0.05,
-                           options: .curveEaseInOut,
-                           animations: {
-                self.tripActionsView.alpha =  1
-            })
-        })
+        self.tripInfoView.stackButtonView.isHidden = false
     }
 
     private func hideAnimation() {
-
-        UIView.animate(withDuration: 0.2,
-                       delay: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.tripActionsView.alpha =  0
-                        UIView.animate(withDuration: 0.2,
-                                       delay: 0.05,
-                                       options: .curveEaseInOut,
-                                       animations: {
-                            self.tripActionsView.isHidden = true
-                        })
-        })
+        self.tripInfoView.stackButtonView.isHidden = true
     }
 
     func set(actions: TripScreenDetailsActions,
              detailsSuperview: UIView) {
         self.actions = actions
         self.detailsSuperview = detailsSuperview
-
-        tripActionsView.set(actions: self)
     }
 
     func start(tripId: String) {
@@ -118,15 +86,16 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
 
     func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
         self.tripScreenDetailsViewModel = tripDetailsViewModel
+        stackButtonPresenter = RideDetailsStackButtonPresenter(trip: tripDetailsViewModel.trip,
+                                                                 stackButton: tripInfoView.stackButtonView,
+                                                                 mailComposer: nil,
+                                                                 rideDetailsStackButtonActions: self)
         tripInfoView.setDriverName(tripDetailsViewModel.driverName)
         tripInfoView.setVehicleDetails(tripDetailsViewModel.vehicleDescription)
         tripInfoView.setDriverLicenseNumber(tripDetailsViewModel.driverRegulatoryLicenseNumber)
         tripInfoView.setLicensePlateNumber(tripDetailsViewModel.vehicleLicensePlate)
         tripInfoView.setDriverImage(tripDetailsViewModel.driverPhotoUrl,
                                        placeholder: "driverImagePlaceholder")
-
-        let tripOptionsViewModel = TripOptionsViewModel(trip: tripDetailsViewModel.trip)
-        tripActionsView.set(viewModel: tripOptionsViewModel)
     }
 }
 
@@ -157,4 +126,20 @@ extension KarhooTripScreenDetailsView: TripInfoViewDelegate {
 
         detailsVC.startAnimation(fromSmallImageView: tripInfoView.getDriverImageObject())
     }
+}
+
+extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
+    func hideRideOptions() {
+        tripInfoView.stackButtonView.isHidden = true
+    }
+
+    func cancelRide() {
+        actions?.cancelTrip()
+    }
+
+    func trackRide() {}
+
+    func rebookRide() {}
+
+    func reportIssueError() {}
 }

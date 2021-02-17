@@ -44,7 +44,7 @@ final class DropDownButton: UIView {
         buttonTitle = UILabel()
         buttonTitle.accessibilityIdentifier = KHDropDownButtonID.buttonTitle
         buttonTitle.translatesAutoresizingMaskIntoConstraints = false
-        buttonTitle.font = UIFont.systemFont(ofSize: 8, weight: .semibold)
+        buttonTitle.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
         buttonTitle.textAlignment = .center
         buttonTitle.textColor = .darkGray
         buttonTitle.text = UITexts.Trip.tripRideOptions
