@@ -31,7 +31,7 @@ final class TripInfoView: UIView {
     private var vehicleLicense: BordedLabel!
     private var dropDownButton: DropDownButton!
     private var isActionViewVisible: Bool!
-    var driverDetailsContainer: UIView!
+    private var driverDetailsContainer: UIView!
     var stackButtonView: KarhooStackButtonView!
     
     public weak var delegate: TripInfoViewDelegate?
