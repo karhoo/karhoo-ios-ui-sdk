@@ -243,7 +243,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsView.details = PassengerInfo.shared.passengerDetails
+        passengerDetailsView.details = initialisePassengerDetails()
+    }
+    
+    private func initialisePassengerDetails() -> PassengerDetails? {
+        if let user = Karhoo.getUserService().getCurrentUser(), PassengerInfo.shared.passengerDetails == nil {
+            return PassengerDetails(user: user)
+        } else {
+            return PassengerInfo.shared.passengerDetails
+        }
     }
 
     @objc
