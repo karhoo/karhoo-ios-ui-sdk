@@ -125,7 +125,7 @@ final class TripInfoView: UIView {
         driverDetailsContainer.addSubview(driverLicenseNumber)
         
         stackButtonView = KarhooStackButtonView()
-        container.translatesAutoresizingMaskIntoConstraints = false
+        stackButtonView.translatesAutoresizingMaskIntoConstraints = false
 //        stackButtonView.isHidden = true
         container.addArrangedSubview(stackButtonView)
 
@@ -139,7 +139,8 @@ final class TripInfoView: UIView {
              container.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
         
         _ = [driverDetailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-             driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)].map { $0.isActive = true }
+             driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             driverDetailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -40.0)].map { $0.isActive = true }
         
         let imageSize: CGFloat = 48.0
         _ = [driverImage.heightAnchor.constraint(equalToConstant: imageSize),
@@ -152,7 +153,7 @@ final class TripInfoView: UIView {
              vehicleLicense.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor,
                                                       constant: -10.0)].map { $0.isActive = true }
 
-        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverDetailsContainer.bottomAnchor),
+        _ = [dropDownButton.topAnchor.constraint(equalTo: vehicleLicense.bottomAnchor, constant: 3.0),
              dropDownButton.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor)].map { $0.isActive = true }
 
         _ = [driverName.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
