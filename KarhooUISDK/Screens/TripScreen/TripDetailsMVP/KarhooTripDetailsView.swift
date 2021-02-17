@@ -19,7 +19,6 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
 
     // new components
     var tripInfoView: TripInfoView!
-    var tripActionsView: TripActionsView!
     var stackContainer: UIStackView!
 
     required init?(coder aDecoder: NSCoder) {
