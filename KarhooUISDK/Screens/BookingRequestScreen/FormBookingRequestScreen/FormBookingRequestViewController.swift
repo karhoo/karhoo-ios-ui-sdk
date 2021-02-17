@@ -247,8 +247,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
-        if let user = Karhoo.getUserService().getCurrentUser(), PassengerInfo.shared.passengerDetails == nil {
-            return PassengerDetails(user: user)
+        if PassengerInfo.shared.passengerDetails == nil {
+            return PassengerInfo.shared.currentUserAsPassenger()
         } else {
             return PassengerInfo.shared.passengerDetails
         }
