@@ -64,8 +64,8 @@ final class TripInfoView: UIView {
         container.axis = .vertical
         container.layer.cornerRadius = 5
         container.distribution = .fillEqually
-//        container.spacing = 15.0
-//        container.layer.masksToBounds = true
+        container.spacing = 15.0
+        container.layer.masksToBounds = true
         addSubview(container)
         
         driverDetailsContainer = UIView()
@@ -152,9 +152,8 @@ final class TripInfoView: UIView {
              vehicleLicense.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor,
                                                       constant: -10.0)].map { $0.isActive = true }
 
-        _ = [dropDownButton.bottomAnchor.constraint(equalTo: vehicleLicense.bottomAnchor, constant: -5.0),
-             dropDownButton.trailingAnchor.constraint(equalTo: vehicleLicense.trailingAnchor)]
-            .map { $0.isActive = true }
+        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverDetailsContainer.bottomAnchor),
+             dropDownButton.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor)].map { $0.isActive = true }
 
         _ = [driverName.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
              driverName.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor,

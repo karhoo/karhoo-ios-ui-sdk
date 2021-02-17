@@ -52,6 +52,7 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
              stackContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
 
         tripInfoView = TripInfoView()
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
         tripInfoView.delegate = self
         stackContainer.addArrangedSubview(tripInfoView)
 
@@ -108,18 +109,16 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
 
     func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
         self.tripScreenDetailsViewModel = tripDetailsViewModel
+        stackButtonPresenter = RideDetailsStackButtonPresenter(trip: tripDetailsViewModel.trip,
+                                                                 stackButton: tripInfoView.stackButtonView,
+                                                                 mailComposer: nil,
+                                                                 rideDetailsStackButtonActions: self)
         tripInfoView.setDriverName(tripDetailsViewModel.driverName)
         tripInfoView.setVehicleDetails(tripDetailsViewModel.vehicleDescription)
         tripInfoView.setDriverLicenseNumber(tripDetailsViewModel.driverRegulatoryLicenseNumber)
         tripInfoView.setLicensePlateNumber(tripDetailsViewModel.vehicleLicensePlate)
         tripInfoView.setDriverImage(tripDetailsViewModel.driverPhotoUrl,
                                        placeholder: "driverImagePlaceholder")
-
-        let tripOptionsViewModel = TripOptionsViewModel(trip: tripDetailsViewModel.trip)
-        stackButtonPresenter = RideDetailsStackButtonPresenter(trip: tripDetailsViewModel.trip,
-                                                                 stackButton: tripInfoView.stackButtonView,
-                                                                 mailComposer: nil,
-                                                                 rideDetailsStackButtonActions: self)
     }
 }
 
