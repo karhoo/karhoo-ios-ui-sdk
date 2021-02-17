@@ -31,7 +31,7 @@ final class TripInfoView: UIView {
     private var vehicleLicense: BordedLabel!
     private var dropDownButton: DropDownButton!
     private var isActionViewVisible: Bool!
-    private var driverDetailsContainer: UIView!
+    var driverDetailsContainer: UIView!
     var stackButtonView: KarhooStackButtonView!
     
     public weak var delegate: TripInfoViewDelegate?
@@ -63,7 +63,7 @@ final class TripInfoView: UIView {
         container.backgroundColor = .white
         container.axis = .vertical
         container.layer.cornerRadius = 5
-        container.distribution = .fillEqually
+        container.distribution = .fillProportionally
         container.spacing = 15.0
         container.layer.masksToBounds = true
         addSubview(container)
@@ -126,7 +126,7 @@ final class TripInfoView: UIView {
         
         stackButtonView = KarhooStackButtonView()
         stackButtonView.translatesAutoresizingMaskIntoConstraints = false
-//        stackButtonView.isHidden = true
+        stackButtonView.isHidden = true
         container.addArrangedSubview(stackButtonView)
 
         setUpConstraints()
@@ -139,8 +139,9 @@ final class TripInfoView: UIView {
              container.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
         
         _ = [driverDetailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-             driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-             driverDetailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -40.0)].map { $0.isActive = true }
+             driverDetailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
+//             driverDetailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -5.0),
+             driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)].map { $0.isActive = true }
         
         let imageSize: CGFloat = 48.0
         _ = [driverImage.heightAnchor.constraint(equalToConstant: imageSize),
@@ -153,7 +154,7 @@ final class TripInfoView: UIView {
              vehicleLicense.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor,
                                                       constant: -10.0)].map { $0.isActive = true }
 
-        _ = [dropDownButton.topAnchor.constraint(equalTo: vehicleLicense.bottomAnchor, constant: 3.0),
+        _ = [dropDownButton.bottomAnchor.constraint(equalTo: driverDetailsContainer.bottomAnchor, constant: -2.0),
              dropDownButton.trailingAnchor.constraint(equalTo: driverDetailsContainer.trailingAnchor)].map { $0.isActive = true }
 
         _ = [driverName.topAnchor.constraint(equalTo: driverDetailsContainer.topAnchor, constant: 10.0),
@@ -168,9 +169,9 @@ final class TripInfoView: UIView {
              driverLicenseNumber.leadingAnchor.constraint(equalTo: driverImage.trailingAnchor, constant: 10.0),
              driverLicenseNumber.widthAnchor.constraint(equalToConstant: 200.0)].map { $0.isActive = true }
         
-        _ = [stackButtonView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10.0),
-             stackButtonView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 10.0),
-             stackButtonView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -40.0)].map { $0.isActive = true }
+        _ = [stackButtonView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+             stackButtonView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             stackButtonView.bottomAnchor.constraint(equalTo: container.bottomAnchor)].map { $0.isActive = true }
     }
 }
 

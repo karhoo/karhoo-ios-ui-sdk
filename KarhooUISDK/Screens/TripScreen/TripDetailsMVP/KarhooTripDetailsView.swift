@@ -64,33 +64,11 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
     }
 
     private func showAnimation() {
-         UIView.animate(withDuration: 0.2,
-                              delay: 0,
-                              options: .curveEaseInOut,
-                              animations: {
-            self.tripInfoView.stackButtonView.isHidden = false
-            UIView.animate(withDuration: 0.2,
-                           delay: 0.05,
-                           options: .curveEaseInOut,
-                           animations: {
-                            self.tripInfoView.stackButtonView.alpha =  1
-            })
-        })
+        self.tripInfoView.stackButtonView.isHidden = false
     }
 
     private func hideAnimation() {
-        UIView.animate(withDuration: 0.2,
-                       delay: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        self.tripInfoView.stackButtonView.alpha =  0
-                        UIView.animate(withDuration: 0.2,
-                                       delay: 0.05,
-                                       options: .curveEaseInOut,
-                                       animations: {
-                                        self.tripInfoView.stackButtonView.isHidden = true
-                        })
-        })
+        self.tripInfoView.stackButtonView.isHidden = true
     }
 
     func set(actions: TripScreenDetailsActions,
