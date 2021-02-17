@@ -64,7 +64,6 @@ final class TripInfoView: UIView {
         container.axis = .vertical
         container.layer.cornerRadius = 5
         container.distribution = .fillProportionally
-        container.spacing = 15.0
         container.layer.masksToBounds = true
         addSubview(container)
         
@@ -139,8 +138,7 @@ final class TripInfoView: UIView {
              container.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
         
         _ = [driverDetailsContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-             driverDetailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
-//             driverDetailsContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -5.0),
+             driverDetailsContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 68),
              driverDetailsContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)].map { $0.isActive = true }
         
         let imageSize: CGFloat = 48.0
