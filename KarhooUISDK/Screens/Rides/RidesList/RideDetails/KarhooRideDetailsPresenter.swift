@@ -186,6 +186,30 @@ extension KarhooRideDetailsPresenter: CancelRideDelegate {
                 callback(result)
             })
     }
+    
+    public func getBookingCancellationFee(callback: @escaping CallbackClosure<CancellationFee>) {
+        tripService.cancellationFee(identifier: tripIdentifier())
+            .execute(callback: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                
+                if(result.isSuccess()) {
+                    guard let cancellationFee = result.successValue() else {
+                        self.rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
+                                                         message: UITexts.Bookings.cancellationFeeContinue,
+                                                         error: nil)
+                        return
+                    }
+                    let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.value), currencyCode: cancellationFee.fee.currency)
+                    self.rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
+                                                    message: String(format: UITexts.Bookings.cancellationFeeCharge, feeString),
+                                                    error: nil)
+                }
+                callback(result)
+            })
+    }
+    
 
     public func showLoadingOverlay() {
         rideDetailsView?.showLoading()
