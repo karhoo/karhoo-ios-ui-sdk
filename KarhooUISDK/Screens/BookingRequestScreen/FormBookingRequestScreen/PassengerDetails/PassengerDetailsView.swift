@@ -15,6 +15,7 @@ final class PassengerDetailsView: UIView {
     private var inputViews: [KarhooInputView] = []
     private var validSet = Set<String>()
     weak var actions: PassengerDetailsActions?
+    private var locale: String?
 
     var details: PassengerDetails? {
         set {
@@ -22,12 +23,13 @@ final class PassengerDetailsView: UIView {
             surnameTextField.set(text: newValue?.lastName)
             emailTextField.set(text: newValue?.email)
             phoneTextField.set(text: newValue?.phoneNumber)
+            locale = newValue?.locale ?? currentLocale()
         } get {
             return PassengerDetails(firstName: firstNameTextField.getIntput(),
                                     lastName: surnameTextField.getIntput(),
                                     email: emailTextField.getIntput(),
                                     phoneNumber: phoneTextField.getIntput(),
-                                    locale: currentLocale())
+                                    locale: locale?.isEmpty == false ? locale! : currentLocale())
         }
     }
 

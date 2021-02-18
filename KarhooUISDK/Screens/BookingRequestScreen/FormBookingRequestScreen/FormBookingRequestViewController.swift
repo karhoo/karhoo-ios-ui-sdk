@@ -243,7 +243,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsView.details = PassengerInfo.shared.passengerDetails
+        passengerDetailsView.details = initialisePassengerDetails()
+    }
+    
+    private func initialisePassengerDetails() -> PassengerDetails? {
+        if PassengerInfo.shared.passengerDetails == nil {
+            return PassengerInfo.shared.currentUserAsPassenger()
+        } else {
+            return PassengerInfo.shared.passengerDetails
+        }
     }
 
     @objc
