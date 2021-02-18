@@ -76,7 +76,7 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
                                     self?.delegate?.hideLoadingOverlay()
                                 }),
                                 AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
-                                 self?.triggerCancelRide()
+                                    self?.cancelBookingConfirmed()
                                 })
                             ])
     }
