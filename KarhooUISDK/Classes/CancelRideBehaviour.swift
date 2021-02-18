@@ -72,7 +72,9 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
         _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
                               message: message,
                               actions: [
-                                 AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
+                                 AlertAction(title: UITexts.Generic.no, style: .default, handler: { [weak self] _ in
+                                    self?.delegate?.hideLoadingOverlay()
+                                }),
                                 AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
                                  self?.triggerCancelRide()
                                 })
@@ -112,12 +114,14 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
         _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingFailedAlertTitle,
                               message: UITexts.Trip.tripCancelBookingFailedAlertMessage,
                               actions: [
-                                AlertAction(title: UITexts.Generic.cancel, style: .default, handler: { [weak self] _ in
-                                    self?.delegate?.hideLoadingOverlay()
-                                }),
+                                AlertAction(title: UITexts.Generic.cancel, style: .default, handler: nil),
                                 AlertAction(title: callFleet, style: .default, handler: { [weak self] _ in
                                     self?.callFleetPressed()
                                 })
                             ])
+    }
+    
+    private func hideOverlay() {
+        
     }
 }
