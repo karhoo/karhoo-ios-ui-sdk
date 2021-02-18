@@ -20,6 +20,7 @@ protocol CancelRideBehaviourProtocol: AnyObject {
     var delegate: CancelRideDelegate? { get set }
     func cancelPressed()
     func triggerCancelRide()
+    func showCancellationFeeAlert(cancellationFee: CancellationFee)
 }
 
 final class CancelRideBehaviour: CancelRideBehaviourProtocol {
@@ -57,6 +58,25 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
                 self?.showCancellationFailedAlert()
             }
         }
+    }
+    
+    public func showCancellationFeeAlert(cancellationFee: CancellationFee) {
+        let message: String
+        if(cancellationFee.fee.value > 0) {
+            let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.value), currencyCode: cancellationFee.fee.currency)
+            message = String(format: UITexts.Bookings.cancellationFeeCharge, feeString)
+        } else {
+            message = UITexts.Bookings.cancellationFeeContinue
+        }
+
+        _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
+                              message: message,
+                              actions: [
+                                 AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
+                                AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
+                                 self?.triggerCancelRide()
+                                })
+                            ])
     }
 
     private func cancelBookingConfirmed() {

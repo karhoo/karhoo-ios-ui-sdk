@@ -160,29 +160,15 @@ final class KarhooTripPresenter: TripPresenter,
     
     func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
         tripService.cancellationFee(identifier: trip.tripId)
-            .execute(callback: { result in
-            callback(result)
-        })
-//        tripService.cancellationFee(identifier: trip.tripId)
-//            .execute(callback: { result in
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                if(result.isSuccess()) {
-//                    guard let cancellationFee = result.successValue() else {
-//                        self.rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
-//                                                         message: UITexts.Bookings.cancellationFeeContinue,
-//                                                         error: nil)
-//                        return
-//                    }
-//                    let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.value), currencyCode: cancellationFee.fee.currency)
-//                    self.rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
-//                                                    message: String(format: UITexts.Bookings.cancellationFeeCharge, feeString),
-//                                                    error: nil)
-//                }
-//                callback(result)
-//            })
+            .execute(callback: { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                
+                if(result.isSuccess()) {
+                    self.cancelRide.showCancellationFeeAlert(cancellationFee: CancellationFee())
+                }
+            })
     }
 
     func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
@@ -193,10 +179,6 @@ final class KarhooTripPresenter: TripPresenter,
                     callback(result)
                 })
     }
-    
-//    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
-//        <#code#>
-//    }
 
     private func updateAccordingToTrip() {
         setStatusAccordingToTrip(animated: true)

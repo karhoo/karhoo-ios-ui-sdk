@@ -197,28 +197,8 @@ extension KarhooRideDetailsPresenter: CancelRideDelegate {
                 }
                 
                 if(result.isSuccess()) {
-                    guard let cancellationFee = result.successValue() else {
-                        self.alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
-                                                         message: UITexts.Bookings.cancellationFeeContinue,
-                                                         actions: [
-                                                           AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
-                                                           AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
-                                                            self?.cancelRideBehaviour?.triggerCancelRide()
-                                                           })
-                                                       ])
-                        return
-                    }
-                    let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.value), currencyCode: cancellationFee.fee.currency)
-                    self.alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
-                                                    message: String(format: UITexts.Bookings.cancellationFeeCharge, feeString),
-                                                    actions: [
-                                                      AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
-                                                      AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
-                                                        self?.cancelRideBehaviour?.triggerCancelRide()
-                                                      })
-                                                  ])
+                    self.cancelRideBehaviour?.showCancellationFeeAlert(cancellationFee: result.successValue() ?? CancellationFee())
                 }
-//                callback(result)
             })
     }
     
