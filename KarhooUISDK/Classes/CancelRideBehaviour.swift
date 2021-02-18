@@ -13,10 +13,12 @@ protocol CancelRideDelegate: AnyObject {
     func showLoadingOverlay()
     func hideLoadingOverlay()
     func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>)
+    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>)
 }
 
 protocol CancelRideBehaviourProtocol: AnyObject {
     var delegate: CancelRideDelegate? { get set }
+    func cancelPressed()
     func triggerCancelRide()
 }
 
@@ -37,7 +39,24 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     }
 
     public func triggerCancelRide() {
-        showConfirmCancelRideAlert()
+        cancelBookingConfirmed()
+    }
+    
+    public func cancelPressed() {
+        getBookingCancellationFee()
+    }
+    
+    public func getBookingCancellationFee() {
+        delegate?.showLoadingOverlay()
+
+        delegate?.sendCancellationFeeNetworkRequest { [weak self] result in
+            self?.delegate?.hideLoadingOverlay()
+
+            if result.errorValue() != nil {
+                //TODO Change this display
+                self?.showCancellationFailedAlert()
+            }
+        }
     }
 
     private func cancelBookingConfirmed() {
