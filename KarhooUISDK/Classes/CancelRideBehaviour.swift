@@ -17,8 +17,6 @@ protocol CancelRideDelegate: AnyObject {
 protocol CancelRideBehaviourProtocol: AnyObject {
     var delegate: CancelRideDelegate? { get set }
     func cancelPressed()
-    func triggerCancelRide()
-    func showCancellationFeeAlert(cancellationFee: CancellationFee)
 }
 
 final class CancelRideBehaviour: CancelRideBehaviourProtocol {
@@ -38,10 +36,6 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
         self.delegate = delegate
         self.alertHandler = alertHandler
         self.phoneNumberCaller = phoneNumberCaller
-    }
-
-    public func triggerCancelRide() {
-        cancelBookingConfirmed()
     }
     
     public func cancelPressed() {
@@ -74,7 +68,7 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
         }
     }
     
-    public func showCancellationFeeAlert(cancellationFee: CancellationFee) {
+    func showCancellationFeeAlert(cancellationFee: CancellationFee) {
         let message: String
         if(cancellationFee.fee.value > 0) {
             let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.value), currencyCode: cancellationFee.fee.currency)
