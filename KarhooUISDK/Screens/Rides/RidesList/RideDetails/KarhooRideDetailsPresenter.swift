@@ -22,7 +22,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
     private let analyticsService: AnalyticsService
     private let tripFeedbackScreenBuilder: TripFeedbackScreenBuilder
     private let tripRatingCache: TripRatingCache
-    private var alertHandler = AlertHandler()
+    private var alertHandler: AlertHandlerProtocol?
 
     init(trip: TripInfo,
          mailComposer: FeedbackEmailComposer,
@@ -57,7 +57,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         tripRatingCache.tripRated(tripId: trip.tripId) ? view.hideFeedbackOptions() : ()
     }
 
-    func set(cancelRideBehaviour: CancelRideBehaviourProtocol, alertHandler: AlertHandler) {
+    func set(cancelRideBehaviour: CancelRideBehaviourProtocol, alertHandler: AlertHandlerProtocol) {
         self.cancelRideBehaviour = cancelRideBehaviour
         self.cancelRideBehaviour?.delegate = self
         self.alertHandler = alertHandler

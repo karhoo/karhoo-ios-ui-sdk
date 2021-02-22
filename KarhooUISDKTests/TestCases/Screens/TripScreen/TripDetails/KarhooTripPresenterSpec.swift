@@ -107,22 +107,22 @@ final class KarhooTripPresenterSpec: XCTestCase {
      */
     func testCancelTripButton() {
         testObject.cancelBookingPressed()
-        XCTAssertTrue(mockCancelRide.triggerCancelRideCalled)
+        XCTAssertTrue(mockCancelRide.cancelPressedCalled)
     }
 
-    /**
-     *  Given:  Cancel trip fails
-     *  Then:   Alert handler should not show
-     */
-    func testCancelRequestFailureNotDismissingTrip() {
-        testObject.sendCancelRideNetworkRequest(callback: { _ in })
-
-        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
-
-        XCTAssertNil(mockTripView.actionAlertTitle)
-        XCTAssertNil(mockTripView.actionAlertMessage)
-        XCTAssertNil(screenResult)
-    }
+//    /**
+//     *  Given:  Cancel trip fails
+//     *  Then:   Alert handler should not show
+//     */
+//    func testCancelRequestFailureNotDismissingTrip() {
+//        testObject.sendCancelRideNetworkRequest(callback: { _ in })
+//
+//        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
+//
+//        XCTAssertNil(mockTripView.actionAlertTitle)
+//        XCTAssertNil(mockTripView.actionAlertMessage)
+//        XCTAssertNil(screenResult)
+//    }
 
     /** 
      *  When:   Trip update sends driverCancelled message
