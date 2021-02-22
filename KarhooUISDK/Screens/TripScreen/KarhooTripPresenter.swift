@@ -10,6 +10,7 @@ import KarhooSDK
 
 final class KarhooTripPresenter: TripPresenter,
                                  CancelRideDelegate {
+    
     private let logger: Logger
     private weak var tripView: TripView?
     private var trip: TripInfo
@@ -153,32 +154,14 @@ final class KarhooTripPresenter: TripPresenter,
     func hideLoadingOverlay() {
         tripView?.hideLoading()
     }
+    
+    func handleSuccessfulCancellation() {
+        finishWithResult(ScreenResult.completed(result: .closed))
+    }
 
     func userDidCloseTrip() {
         finishWithResult(.completed(result: .closed))
     }
-    
-//    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
-//        tripService.cancellationFee(identifier: trip.tripId)
-//            .execute(callback: { [weak self] result in
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                if(result.isSuccess()) {
-//                    self.cancelRide.showCancellationFeeAlert(cancellationFee: CancellationFee())
-//                }
-//            })
-//    }
-//
-//    func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
-//        let tripCancellation = TripCancellation(tripId: trip.tripId,
-//                                                cancelReason: .notNeededAnymore)
-//        tripService.cancel(tripCancellation: tripCancellation)
-//                .execute(callback: { result in
-//                    callback(result)
-//                })
-//    }
 
     private func updateAccordingToTrip() {
         setStatusAccordingToTrip(animated: true)
@@ -220,9 +203,6 @@ final class KarhooTripPresenter: TripPresenter,
         switch trip.state {
         case .completed:
             tripCompleted(trip)
-        case .bookerCancelled:
-            showAlertThenCloseView(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                                   message: UITexts.Bookings.cancellationSuccessAlertMessage)
         case .driverCancelled:
             showAlertThenCloseView(title: UITexts.Trip.tripCancelledByDispatchAlertTitle,
                                    message: UITexts.Trip.tripCancelledByDispatchAlertMessage)

@@ -177,4 +177,8 @@ extension KarhooRideDetailsPresenter: CancelRideDelegate {
     public func hideLoadingOverlay() {
         rideDetailsView?.hideLoading()
     }
+    
+    public func handleSuccessfulCancellation() {
+//        finishWithResult(ScreenResult.completed(result: .(trip)))
+    }
 }
