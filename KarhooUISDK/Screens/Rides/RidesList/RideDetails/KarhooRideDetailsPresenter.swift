@@ -170,39 +170,6 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
 extension KarhooRideDetailsPresenter: CancelRideDelegate {
 
-    public func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
-        let tripCancellation = TripCancellation(tripId: tripIdentifier(), cancelReason: .notNeededAnymore)
-
-        tripService.cancel(tripCancellation: tripCancellation)
-            .execute(callback: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-
-                if result.isSuccess() {
-                    self.rideDetailsView?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                                                     message: UITexts.Bookings.cancellationSuccessAlertMessage, 
-                                                     error: nil)
-                }
-
-                callback(result)
-            })
-    }
-    
-    public func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
-        tripService.cancellationFee(identifier: tripIdentifier())
-            .execute(callback: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                if(result.isSuccess()) {
-                    self.cancelRideBehaviour?.showCancellationFeeAlert(cancellationFee: result.successValue() ?? CancellationFee())
-                }
-            })
-    }
-    
-
     public func showLoadingOverlay() {
         rideDetailsView?.showLoading()
     }

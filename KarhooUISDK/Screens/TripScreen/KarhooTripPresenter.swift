@@ -158,27 +158,27 @@ final class KarhooTripPresenter: TripPresenter,
         finishWithResult(.completed(result: .closed))
     }
     
-    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
-        tripService.cancellationFee(identifier: trip.tripId)
-            .execute(callback: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                
-                if(result.isSuccess()) {
-                    self.cancelRide.showCancellationFeeAlert(cancellationFee: CancellationFee())
-                }
-            })
-    }
-
-    func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
-        let tripCancellation = TripCancellation(tripId: trip.tripId,
-                                                cancelReason: .notNeededAnymore)
-        tripService.cancel(tripCancellation: tripCancellation)
-                .execute(callback: { result in
-                    callback(result)
-                })
-    }
+//    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>) {
+//        tripService.cancellationFee(identifier: trip.tripId)
+//            .execute(callback: { [weak self] result in
+//                guard let self = self else {
+//                    return
+//                }
+//
+//                if(result.isSuccess()) {
+//                    self.cancelRide.showCancellationFeeAlert(cancellationFee: CancellationFee())
+//                }
+//            })
+//    }
+//
+//    func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
+//        let tripCancellation = TripCancellation(tripId: trip.tripId,
+//                                                cancelReason: .notNeededAnymore)
+//        tripService.cancel(tripCancellation: tripCancellation)
+//                .execute(callback: { result in
+//                    callback(result)
+//                })
+//    }
 
     private func updateAccordingToTrip() {
         setStatusAccordingToTrip(animated: true)

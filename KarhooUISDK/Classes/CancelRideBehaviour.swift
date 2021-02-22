@@ -12,8 +12,6 @@ import KarhooSDK
 protocol CancelRideDelegate: AnyObject {
     func showLoadingOverlay()
     func hideLoadingOverlay()
-    func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>)
-    func sendCancellationFeeNetworkRequest(callback: @escaping CallbackClosure<CancellationFee>)
 }
 
 protocol CancelRideBehaviourProtocol: AnyObject {
@@ -25,15 +23,18 @@ protocol CancelRideBehaviourProtocol: AnyObject {
 
 final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     private(set) var trip: TripInfo
+    private let tripService: TripService
     private let alertHandler: AlertHandlerProtocol
     private let phoneNumberCaller: PhoneNumberCallerProtocol
     public weak var delegate: CancelRideDelegate?
 
     public init(trip: TripInfo,
+                tripService: TripService = Karhoo.getTripService(),
                 delegate: CancelRideDelegate? = nil,
                 alertHandler: AlertHandlerProtocol,
                 phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller()) {
         self.trip = trip
+        self.tripService = tripService
         self.delegate = delegate
         self.alertHandler = alertHandler
         self.phoneNumberCaller = phoneNumberCaller
@@ -49,14 +50,27 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     
     public func getBookingCancellationFee() {
         delegate?.showLoadingOverlay()
-
-        delegate?.sendCancellationFeeNetworkRequest { [weak self] result in
-            self?.delegate?.hideLoadingOverlay()
-
-            if result.errorValue() != nil {
-                //TODO Change this display
-                self?.showCancellationFailedAlert()
-            }
+        
+        tripService.cancellationFee(identifier: getTripIdentifier())
+            .execute(callback: { [weak self] result in
+                self?.delegate?.hideLoadingOverlay()
+                guard let self = self else {
+                    return
+                }
+                
+                if(result.isSuccess()) {
+                    self.showCancellationFeeAlert(cancellationFee: result.successValue() ?? CancellationFee())
+                } else {
+                    self.showCancellationFailedAlert()
+                }
+            })
+    }
+    
+    private func getTripIdentifier() -> String {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return trip.followCode
+        } else {
+            return trip.tripId
         }
     }
     
@@ -84,13 +98,25 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     private func cancelBookingConfirmed() {
         delegate?.showLoadingOverlay()
 
-        delegate?.sendCancelRideNetworkRequest { [weak self] result in
-            self?.delegate?.hideLoadingOverlay()
+        let tripCancellation = TripCancellation(tripId: getTripIdentifier(), cancelReason: .notNeededAnymore)
 
-            if result.errorValue() != nil {
-                self?.showCancellationFailedAlert()
-            }
-        }
+        tripService.cancel(tripCancellation: tripCancellation)
+            .execute(callback: { [weak self] result in
+                self?.delegate?.hideLoadingOverlay()
+                guard let self = self else {
+                    return
+                }
+
+                if result.isSuccess() {
+                    _ = self.alertHandler.show(title: UITexts.Bookings.cancellationSuccessAlertTitle,
+                                          message: UITexts.Bookings.cancellationSuccessAlertMessage,
+                                          actions: [AlertAction(title: UITexts.Generic.ok, style: .default)])
+                } else {
+                    self.showCancellationFailedAlert()
+                }
+
+//                callback(result)
+            })
     }
 
     private func callFleetPressed() {
