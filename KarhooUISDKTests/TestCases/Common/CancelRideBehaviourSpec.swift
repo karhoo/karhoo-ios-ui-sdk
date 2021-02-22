@@ -30,38 +30,71 @@ class CancelRideBehaviourSpec: XCTestCase {
                                          delegate: testDelegateInstance,
                                          alertHandler: mockAlertHandler,
                                          phoneNumberCaller: mockPhoneNumberCaller)
+        
+        KarhooTestConfiguration.authenticationMethod = .karhooUser
     }
     
     /**
-     *  When:   Cancel pressed
-     *  Then:   A call is made to retrieve the cancellation fee
-     *  And:    The call fails
+     *  Given:      A call is made to retrieve the cancellation fee
+     *  When:      The call fails
+     *  Then:       A failure alert is shown
      */
     func testCancellationFeeRetrievalFailure() {
+        testObject.cancelPressed()
         
         mockTripService.cancellationFeeCall.triggerFailure(TestUtil.getRandomError())
         
-        testObject.cancelPressed()
+//        testObject.cancelPressed()
         
         XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
         XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
-        XCTAssertEqual(UITexts.Trip.tripCancelBookingFailedAlertTitle, mockAlertHandler.alertTitle)
-        XCTAssertEqual(UITexts.Trip.tripCancelBookingFailedAlertMessage, mockAlertHandler.alertMessage)
+        XCTAssertEqual(UITexts.Trip.tripCancelBookingFailedAlertTitle, mockAlertHandler?.alertTitle)
+        XCTAssertEqual(UITexts.Trip.tripCancelBookingFailedAlertMessage, mockAlertHandler?.alertMessage)
     }
 
     /**
-     *  When:   Cancel booking triggered
-     *  Then:   Confirmation alert should be presented
-     *  And:    Second button should be 'yes'
+     *  Given:      A call is made to retrieve the cancellation fee
+     *  When:      The call succeeds
+     *  And:         There is no cancellation fee
+     *  Then:       An alert is shown without the fee
      */
-    func testConfirmationAlert() {
-//        testObject.triggerCancelRide()
+    func testCancellationWithoutFeeAlert() {
+        testObject.cancelPressed()
+        
+        mockTripService.cancellationFeeCall.triggerSuccess(CancellationFee())
 
-        XCTAssert(mockAlertHandler.alertMessage?.isEmpty == false)
-        XCTAssert(mockAlertHandler.alertTitle?.isEmpty == false)
+        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
+        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
         XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
         XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingConfirmationAlertTitle)
+        XCTAssertEqual(mockAlertHandler.alertMessage, UITexts.Bookings.cancellationFeeContinue)
+        XCTAssertEqual(mockAlertHandler.firstAlertButtonTitle, UITexts.Generic.no)
         XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle, UITexts.Generic.yes)
+    }
+
+    /**
+     *  Given:      A call is made to retrieve the cancellation fee
+     *  When:      The call succeeds
+     *  And:         There is no cancellation fee
+     *  Then:       An alert is shown with the fee
+     */
+    func testCancellationWithFeeAlert() {
+        let fee = CancellationFeePrice(currency: "GBP", value: 1000)
+        let feeString = CurrencyCodeConverter.toPriceString(price: Double(fee.value), currencyCode: fee.currency)
+        let expectedMessage = String(format: UITexts.Bookings.cancellationFeeCharge, feeString)
+        
+        testObject.cancelPressed()
+        
+        mockTripService.cancellationFeeCall.triggerSuccess(CancellationFee(cancellationFee: true, fee: fee))
+
+        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
+        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
+        XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
+        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingConfirmationAlertTitle)
+        XCTAssertEqual(mockAlertHandler.alertMessage, expectedMessage)
+        XCTAssertEqual(mockAlertHandler.firstAlertButtonTitle, UITexts.Generic.no)
+        XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle, UITexts.Generic.yes)
+        
     }
 
     /** 
