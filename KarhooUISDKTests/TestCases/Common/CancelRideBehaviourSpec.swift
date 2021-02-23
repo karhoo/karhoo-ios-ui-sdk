@@ -94,106 +94,74 @@ class CancelRideBehaviourSpec: XCTestCase {
         XCTAssertEqual(mockAlertHandler.alertMessage, expectedMessage)
         XCTAssertEqual(mockAlertHandler.firstAlertButtonTitle, UITexts.Generic.no)
         XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle, UITexts.Generic.yes)
-        
     }
 
     /** 
      *  When:   Cancel booking request fails
-     *  Then:   Error alert should be presented
-     *  And:    Error alert positive action should be 'call...'
+     *  Then:    Error alert should be presented
+     *  And:      Error alert positive action should be 'Call...'
      */
-//    func testCancellationFailedAlert() {
-//        setCancelRequestMockToFail()
-//        triggerCancelRideAndPressYesInConfirmationAlert()
-//
-//        XCTAssert(mockAlertHandler.alertMessage?.isEmpty == false)
-//        XCTAssert(mockAlertHandler.alertTitle?.isEmpty == false)
-//        XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
-//        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingFailedAlertTitle)
-//        XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle,
-//                       UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton)
-//    }
+    func testCancellationWithFeeFailedAlert() {
+        setUpCancellationFailure()
+
+        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
+        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
+        XCTAssertEqual(mockAlertHandler.alertActions?.count, 2)
+        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Trip.tripCancelBookingFailedAlertTitle)
+        XCTAssertEqual(mockAlertHandler.secondAlertButtonTitle,
+                       UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton)
+    }
 
     /** 
      *  Given:  Cancel booking failed alert is presented
      *  When:   'Call' button is pressed
      *  Then:   Phone number to supplier should be called
      */
-//    func testCallOnCancellationAlert() {
-//        setCancelRequestMockToFail()
-//        triggerCancelRideAndPressYesInConfirmationAlert()
-//        mockAlertHandler.triggerSecondAlertAction()
-//
-//        XCTAssertEqual(mockPhoneNumberCaller.numberCalled, testTrip.fleetInfo.phoneNumber)
-//    }
+    func testCallOnCancellationAlert() {
+        setUpCancellationFailure()
+        
+        mockAlertHandler.triggerSecondAlertAction()
 
-    /**
-     *  Given:  Cancelling ride confirmed in an alert
-     *  When:   Sending network request
-     *  Then:   Loading indicator show be presented
-     */
-//    func testShowLoadingIndicator() {
-//        triggerCancelRideAndPressYesInConfirmationAlert()
-//
-//        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
-//        XCTAssertFalse(testDelegateInstance.hideLoadingOverlayCalled)
-//    }
-
-    /**
-     *  Given:  Sending cancel ride network request
-     *  When:   Request succeeds
-     *  Then:   Loading indicator should be dismissed
-     *   And:   Confirmation message alert should be presented
-     */
-//    func testDismissLoadingIndicatorOnSuccess() {
-//        setCancelRequestMockToSucceed()
-//        triggerCancelRideAndPressYesInConfirmationAlert()
-//
-//        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
-//        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
-//    }
-
-    /**
-     *  Given:  Sending cancel ride network reqeust
-     *  When:   Request fails
-     *  Then:   Loading indicoator should be dismissed
-     */
-//    func testDismissLoadingIndicatorOnFailure() {
-//        setCancelRequestMockToFail()
-//        triggerCancelRideAndPressYesInConfirmationAlert()
-//
-//        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
-//        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
-//    }
-
-    // MARK: Private helper methods
-
-    private func setCancelRequestMockToFail() {
-        testDelegateInstance.cancelReqeuestResultToReturn = Result.failure(error: TestUtil.getRandomError())
+        XCTAssertEqual(mockPhoneNumberCaller.numberCalled, testTrip.fleetInfo.phoneNumber)
     }
-
-    private func setCancelRequestMockToSucceed() {
-        testDelegateInstance.cancelReqeuestResultToReturn = Result.success(result: KarhooVoid())
-    }
-
-//    private func triggerCancelRideAndPressYesInConfirmationAlert() {
-//        testObject.triggerCancelRide()
-//        mockAlertHandler.triggerSecondAlertAction()
-//    }
     
     /**
-     *  Given:  Cancel trip fails
-     *  Then:   Alert handler should not show
+     *  When:   Cancel booking request succeeds
+     *  Then:    Success alert should be presented
+     *  And:      Success alert positive action should be 'Okay'
      */
-//    func testCancelRequestFailureNotDismissingTrip() {
-//        testObject.sendCancelRideNetworkRequest(callback: { _ in })
-//
-//        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
-//
-//        XCTAssertNil(mockTripView.actionAlertTitle)
-//        XCTAssertNil(mockTripView.actionAlertMessage)
-//        XCTAssertNil(screenResult)
-//    }
+    func testCancellationSuccess() {
+        setUpCancellationSuccess()
+
+        XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
+        XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
+        XCTAssertEqual(mockAlertHandler.alertActions?.count, 1)
+        XCTAssertEqual(mockAlertHandler.alertTitle, UITexts.Bookings.cancellationSuccessAlertTitle)
+        XCTAssertEqual(mockAlertHandler.firstAlertButtonTitle, UITexts.Generic.ok)
+        
+        mockAlertHandler.triggerFirstAlertAction()
+        
+        XCTAssertTrue(testDelegateInstance.handleSuccessfulCancellationCalled)
+    }
+    
+    func setUpCancellationFeeSuccess() {
+        let fee = CancellationFeePrice(currency: "GBP", value: 1000)
+        let cancellationFee = CancellationFee(cancellationFee: true, fee: fee)
+        testObject.cancelPressed()
+        mockTripService.cancellationFeeCall.triggerSuccess(cancellationFee)
+    }
+    
+    func setUpCancellationFailure() {
+        setUpCancellationFeeSuccess()
+        mockAlertHandler.triggerSecondAlertAction()
+        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
+    }
+    
+    func setUpCancellationSuccess() {
+        setUpCancellationFeeSuccess()
+        mockAlertHandler.triggerSecondAlertAction()
+        mockTripService.cancelCall.triggerSuccess(KarhooVoid())
+    }
 }
 
 class TestCancelRideDelegate: CancelRideDelegate {
