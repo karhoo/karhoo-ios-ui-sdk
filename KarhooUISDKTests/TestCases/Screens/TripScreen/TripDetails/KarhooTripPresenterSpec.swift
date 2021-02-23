@@ -132,27 +132,6 @@ final class KarhooTripPresenterSpec: XCTestCase {
     }
 
     /**
-     *  When:   Trip stream sends bookerCancelled message
-     *  Then:   Routing should be notified (with cancelByUser == true)
-     */
-    func testStreamCancelledByUser() {
-        let trip = TestUtil.getRandomTrip(tripId: mockInitialTrip.tripId,
-                                          state: .bookerCancelled)
-
-        mockTripService.trackTripCall.triggerPollSuccess(trip)
-
-        XCTAssertEqual(mockTripView.actionAlertTitle, UITexts.Bookings.cancellationSuccessAlertTitle)
-        XCTAssertEqual(mockTripView.actionAlertMessage, UITexts.Bookings.cancellationSuccessAlertMessage)
-
-        mockTripView.triggerAlertAction(atIndex: 0)
-
-        guard case .closed? = screenResult!.completedValue() else {
-            XCTFail("Routing not notified (with cancelByUser != true)")
-            return
-        }
-    }
-
-    /**
      *  When:   Trip stream sends karhooCancelled message
      *  Then:   Routing should be notified cancelledByKarhoo
      */
