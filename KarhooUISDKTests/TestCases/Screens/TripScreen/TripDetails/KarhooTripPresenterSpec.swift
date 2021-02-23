@@ -110,20 +110,6 @@ final class KarhooTripPresenterSpec: XCTestCase {
         XCTAssertTrue(mockCancelRide.cancelPressedCalled)
     }
 
-//    /**
-//     *  Given:  Cancel trip fails
-//     *  Then:   Alert handler should not show
-//     */
-//    func testCancelRequestFailureNotDismissingTrip() {
-//        testObject.sendCancelRideNetworkRequest(callback: { _ in })
-//
-//        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
-//
-//        XCTAssertNil(mockTripView.actionAlertTitle)
-//        XCTAssertNil(mockTripView.actionAlertMessage)
-//        XCTAssertNil(screenResult)
-//    }
-
     /** 
      *  When:   Trip update sends driverCancelled message
      *  Then:   Routing should be notified (with cancelByUser == false)
@@ -354,6 +340,15 @@ final class KarhooTripPresenterSpec: XCTestCase {
         testObject.hideLoadingOverlay()
 
         XCTAssertTrue(mockTripView.hideLoadingCalled)
+    }
+    
+    func testHandleSuccessfulCancellation() {
+        testObject.handleSuccessfulCancellation()
+        
+        guard case .closed? = screenResult?.completedValue()! else {
+            XCTFail("Wrong result")
+            return
+        }
     }
 
     /**

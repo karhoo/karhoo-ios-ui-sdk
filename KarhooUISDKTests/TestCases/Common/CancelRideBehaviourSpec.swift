@@ -36,6 +36,21 @@ class CancelRideBehaviourSpec: XCTestCase {
     
     /**
      *  Given:      A call is made to retrieve the cancellation fee
+     *  When:      It is a guest booking
+     *  Then:       Then the follow code is used
+     */
+    func test() {
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        
+        testObject.cancelPressed()
+        
+        mockTripService.cancellationFeeCall.triggerSuccess(CancellationFee())
+        
+        XCTAssertEqual(testTrip.followCode, mockTripService.identifierSet)
+    }
+    
+    /**
+     *  Given:      A call is made to retrieve the cancellation fee
      *  When:      The call fails
      *  Then:       A failure alert is shown
      */
@@ -44,8 +59,7 @@ class CancelRideBehaviourSpec: XCTestCase {
         
         mockTripService.cancellationFeeCall.triggerFailure(TestUtil.getRandomError())
         
-//        testObject.cancelPressed()
-        
+        XCTAssertEqual(testTrip.tripId, mockTripService.identifierSet)
         XCTAssertTrue(testDelegateInstance.showLoadingOverlayCalled)
         XCTAssertTrue(testDelegateInstance.hideLoadingOverlayCalled)
         XCTAssertEqual(UITexts.Trip.tripCancelBookingFailedAlertTitle, mockAlertHandler?.alertTitle)

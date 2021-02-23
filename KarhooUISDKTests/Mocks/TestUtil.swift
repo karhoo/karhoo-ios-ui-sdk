@@ -23,6 +23,7 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getRandomTrip(tripId: String = TestUtil.getRandomString(),
+                             followCode: String = TestUtil.getRandomString(),
                              dateSet: Bool = false,
                              dateScheduled: Date = getRandomDate(),
                              state: TripState = .completed,
@@ -33,6 +34,7 @@ class TestUtil: PrimitiveUtil {
                              meetingPoint: MeetingPoint? = getRandomMeetingPoint()) -> TripInfo {
         let trip = TripInfo(tripId: tripId,
                             displayId: TestUtil.getRandomString(),
+                            followCode: followCode,
                             origin: getRandomTripLocationDetails(),
                             destination: getRandomTripLocationDetails(),
                             dateScheduled: dateScheduled,

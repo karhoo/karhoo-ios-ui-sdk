@@ -172,52 +172,15 @@ class KarhooRideDetailsPresenterSpec: XCTestCase {
     /**
      *  When:   Trip cancelled successfully
      *  Then:   Screen overlay should hide
-     *   And:   ride details actions (did cancel trip) should be called
+     *  And:   ride details actions (did cancel trip) should be called
      */
-//    func testCancelSuccess() {
-//        testObject.bind(view: mockRideDetailsView)
-//
-//        let expectedCancelation = TripCancellation(tripId: testInitialTrip.tripId,
-//                                                   cancelReason: .notNeededAnymore)
-//
-//        testObject.didPressCancelTrip()
-//        mockCancelRideBehaviour.mockCancelRideBehaviour()
-//
-//        mockTripService.cancelCall.triggerSuccess(KarhooVoid())
-//
-//        XCTAssertTrue(mockRideDetailsView.didShowLoading)
-//        XCTAssertTrue(mockRideDetailsView.didHideLoading)
-//        XCTAssertEqual(expectedCancelation.tripId, mockTripService.tripCancellationSet?.tripId)
-//        XCTAssertEqual(expectedCancelation.cancelReason, mockTripService.tripCancellationSet?.cancelReason)
-//        XCTAssertEqual(UITexts.Bookings.cancellationSuccessAlertTitle, mockRideDetailsView.showAlertTitle)
-//        XCTAssertEqual(UITexts.Bookings.cancellationSuccessAlertMessage, mockRideDetailsView.showAlertMessage)
-//    }
+    func testCancelSuccess() {
+        testObject.bind(view: mockRideDetailsView)
 
-    /**
-     *  When:   Trip cancelled failure
-     *  Then:   Screen overlay should hide
-     *   And:   ride details actions (did cancel trip) should NOT be called
-     */
-//    func testCancelFailure() {
-//        testObject.bind(view: mockRideDetailsView)
-//
-//        let expectedCancelation = TripCancellation(tripId: testInitialTrip.tripId,
-//                                                   cancelReason: .notNeededAnymore)
-//
-//        testObject.didPressCancelTrip()
-//        mockCancelRideBehaviour.mockCancelRideBehaviour()
-//
-//        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
-//
-//        XCTAssertTrue(mockCancelRideBehaviour.triggerCancelRideCalled)
-//        XCTAssertTrue(mockRideDetailsView.didShowLoading)
-//        XCTAssertTrue(mockRideDetailsView.didHideLoading)
-//        XCTAssertEqual(expectedCancelation.tripId, mockTripService.tripCancellationSet?.tripId)
-//        XCTAssertEqual(expectedCancelation.cancelReason, mockTripService.tripCancellationSet?.cancelReason)
-//
-//        XCTAssertFalse(mockRideDetailsView.dismissCalled)
-//        XCTAssertNil(callbackResult)
-//    }
+        testObject.handleSuccessfulCancellation()
+
+        
+    }
     
     /**
       * When: TripInfo update is cancelled by driver (cancelled by dispatch)
@@ -292,20 +255,4 @@ class KarhooRideDetailsPresenterSpec: XCTestCase {
         XCTAssertTrue(mockRideDetailsView.popCalled)
         XCTAssertTrue(mockRideDetailsView.hideFeedbackOptionsCalled)
     }
-
-    /**
-      * Given: User is a guest
-      * When: User cancels or tracks a trip
-      * Then: Follow code should be used in request
-      */
-//    func testGuestAuthenticationUsesFollowCode() {
-//        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
-//        testInitilisingWith(state: .requested)
-//        XCTAssertEqual(testInitialTrip.followCode, mockTripService.tripTrackingIdentifierSet)
-//
-//        testObject.didPressCancelTrip()
-//        mockCancelRideBehaviour.mockCancelRideBehaviour()
-//
-//        XCTAssertEqual(testInitialTrip.followCode, mockTripService.tripCancellationSet?.tripId)
-//    }
 }
