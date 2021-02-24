@@ -93,17 +93,6 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
         phoneNumberCaller.call(number: trip.fleetInfo.phoneNumber)
     }
 
-    private func showConfirmCancelRideAlert(callback: @escaping CallbackClosure<KarhooVoid>) {
-        _ = alertHandler.show(title: UITexts.Trip.tripCancelBookingConfirmationAlertTitle,
-                              message: UITexts.Trip.tripCancelBookingConfirmationAlertMessage,
-                              actions: [
-                                AlertAction(title: UITexts.Generic.no, style: .default, handler: nil),
-                                AlertAction(title: UITexts.Generic.yes, style: .default, handler: { [weak self] _ in
-                                    self?.cancelBookingConfirmed()
-                                })
-                            ])
-    }
-
     private func showCancellationFailedAlert() {
         let callFleet = UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton
 
