@@ -19,8 +19,7 @@ def uisdkPods
   pod 'PhoneNumberKit', '3.3.1'
   #pod 'KarhooSDK', '1.3.0'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-3144_format_currency_price'
-#  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
 end
 
 target 'Client' do
