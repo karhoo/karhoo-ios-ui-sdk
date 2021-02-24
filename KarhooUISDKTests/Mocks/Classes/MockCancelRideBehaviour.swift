@@ -10,16 +10,9 @@
 
 final class MockCancelRideBehaviour: CancelRideBehaviourProtocol {
     weak var delegate: CancelRideDelegate?
-    private(set) var triggerCancelRideCalled = false
+    private(set) var cancelPressedCalled = false
 
-    func triggerCancelRide() {
-        triggerCancelRideCalled = true
-    }
-
-    func mockCancelRideBehaviour() {
-        delegate?.showLoadingOverlay()
-        delegate?.sendCancelRideNetworkRequest(callback: { [weak self] _ in
-            self?.delegate?.hideLoadingOverlay()
-        })
+    func cancelPressed() {
+        cancelPressedCalled = true
     }
 }

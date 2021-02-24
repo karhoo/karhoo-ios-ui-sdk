@@ -291,6 +291,8 @@ public enum UITexts {
         static let priceCancelled = "Text.Bookings.Price.Cancelled".localized
         public static let cancellationSuccessAlertTitle = "Text.Bookings.Alert.CancellationSuccess.Title".localized
         public static let cancellationSuccessAlertMessage = "Text.Bookings.Alert.CancellationSuccess.Message".localized
+        public static let cancellationFeeCharge = "Text.Bookings.Alert.CancellationFee.Charge".localized
+        public static let cancellationFeeContinue = "Text.Bookings.Alert.CancellationFee.Continue".localized
         static let past = "Text.Bookings.Past".localized
         static let upcoming = "Text.Bookings.Upcoming".localized
         static let sortEta = "Text.Bookings.eta".localized

@@ -128,7 +128,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
             let alertHandler = AlertHandler(viewController: rideDetailsViewController)
             let cancelRideBehaviour = CancelRideBehaviour(trip: trip,
                                                           alertHandler: alertHandler)
-            rideDetailsPresenter.set(cancelRideBehaviour: cancelRideBehaviour)
+            rideDetailsPresenter.set(cancelRideBehaviour: cancelRideBehaviour, alertHandler: alertHandler)
 
             return rideDetailsViewController
         }

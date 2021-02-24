@@ -301,6 +301,8 @@
 "Text.Bookings.Price.Cancelled" = "Annulé";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Annulation confirmée";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Votre course a été annulée.";
+"Text.Bookings.Alert.CancellationFee.Charge" = "Des frais d'annulation estimés à %1$@ vont s'appliquer.\n\nSouhaitez-vous continuer?";
+"Text.Bookings.Alert.CancellationFee.Continue" = "Souhaitez-vous continuer?";
 
 /*When fetching the user profile fails*/
 "Text.Error.GetUserFails" = "Impossible de charger le profil d'utilisateur";

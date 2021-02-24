@@ -319,6 +319,8 @@
 "Text.Bookings.Price.Cancelled" = "Cancelado";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Viaje cancelado con éxito";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Tu viaje fue cancelado con éxito.";
+"Text.Bookings.Alert.CancellationFee.Charge" = "Se le cargará una tasa de cancelación estimada en %1$@.\n\n¿Quiere continuar?";
+"Text.Bookings.Alert.CancellationFee.Continue" = "¿Quiere continuar?";
 
 /*When fetching the user profile fails*/
 "Text.Error.GetUserFails" = "Hubo un problema cargando tu perfil.";

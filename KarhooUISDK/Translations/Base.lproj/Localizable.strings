@@ -289,6 +289,8 @@
 "Text.Bookings.Price.Cancelled" = "Cancelled";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Ride cancellation successful";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Your trip has been cancelled successfully.";
+"Text.Bookings.Alert.CancellationFee.Charge" = "You will be charged a cancellation fee estimated at %1$@.\n\nWould you like to proceed?";
+"Text.Bookings.Alert.CancellationFee.Continue" = "Would you like to proceed?";
 
 /*When fetching the user profile fails*/
 "Text.Error.GetUserFails" = "There was a problem getting your profile.";

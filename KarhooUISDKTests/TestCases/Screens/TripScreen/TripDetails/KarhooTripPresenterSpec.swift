@@ -107,21 +107,7 @@ final class KarhooTripPresenterSpec: XCTestCase {
      */
     func testCancelTripButton() {
         testObject.cancelBookingPressed()
-        XCTAssertTrue(mockCancelRide.triggerCancelRideCalled)
-    }
-
-    /**
-     *  Given:  Cancel trip fails
-     *  Then:   Alert handler should not show
-     */
-    func testCancelRequestFailureNotDismissingTrip() {
-        testObject.sendCancelRideNetworkRequest(callback: { _ in })
-
-        mockTripService.cancelCall.triggerFailure(TestUtil.getRandomError())
-
-        XCTAssertNil(mockTripView.actionAlertTitle)
-        XCTAssertNil(mockTripView.actionAlertMessage)
-        XCTAssertNil(screenResult)
+        XCTAssertTrue(mockCancelRide.cancelPressedCalled)
     }
 
     /** 
@@ -142,27 +128,6 @@ final class KarhooTripPresenterSpec: XCTestCase {
             XCTAssertTrue(true)
         } else {
             XCTFail("Routing not notified (with cancelByUser != false)")
-        }
-    }
-
-    /**
-     *  When:   Trip stream sends bookerCancelled message
-     *  Then:   Routing should be notified (with cancelByUser == true)
-     */
-    func testStreamCancelledByUser() {
-        let trip = TestUtil.getRandomTrip(tripId: mockInitialTrip.tripId,
-                                          state: .bookerCancelled)
-
-        mockTripService.trackTripCall.triggerPollSuccess(trip)
-
-        XCTAssertEqual(mockTripView.actionAlertTitle, UITexts.Bookings.cancellationSuccessAlertTitle)
-        XCTAssertEqual(mockTripView.actionAlertMessage, UITexts.Bookings.cancellationSuccessAlertMessage)
-
-        mockTripView.triggerAlertAction(atIndex: 0)
-
-        guard case .closed? = screenResult!.completedValue() else {
-            XCTFail("Routing not notified (with cancelByUser != true)")
-            return
         }
     }
 
@@ -354,6 +319,15 @@ final class KarhooTripPresenterSpec: XCTestCase {
         testObject.hideLoadingOverlay()
 
         XCTAssertTrue(mockTripView.hideLoadingCalled)
+    }
+    
+    func testHandleSuccessfulCancellation() {
+        testObject.handleSuccessfulCancellation()
+        
+        guard case .closed? = screenResult?.completedValue()! else {
+            XCTFail("Wrong result")
+            return
+        }
     }
 
     /**
