@@ -94,7 +94,7 @@ class CancelRideBehaviourSpec: XCTestCase {
      */
     func testCancellationWithFeeAlert() {
         let fee = CancellationFeePrice(currency: "GBP", value: 1000)
-        let feeString = CurrencyCodeConverter.toPriceString(price: Double(fee.value), currencyCode: fee.currency)
+        let feeString = CurrencyCodeConverter.toPriceString(price: Double(fee.decimalValue), currencyCode: fee.currency)
         let expectedMessage = String(format: UITexts.Bookings.cancellationFeeCharge, feeString)
         
         testObject.cancelPressed()
