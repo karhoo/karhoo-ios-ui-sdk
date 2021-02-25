@@ -512,6 +512,9 @@
 "Text.SupportMailMessage.NoCoverageSubject" = "Flota recomendada";
 "Text.SupportMailMessage.NoCoverageBody" = "Gracias por recomendarnos una flota en tu zona. Para poder llegar a tu zona lo antes posible, indícanos el nombre de tu zona y de la flota.\n Zona:\n Flota:";
 
+/* Cancellation info on quotes */
+"Text.Quote.FreeCancellation" = "Cancelación gratuita hasta %1$@ minutos antes de la recogida";
+
 /* General errors, K0xxx */
 "K0001" = "Error general";
 "K0002" = "Petición de solicitud no válida";
