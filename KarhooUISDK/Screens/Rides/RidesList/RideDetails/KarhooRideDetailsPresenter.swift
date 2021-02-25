@@ -177,6 +177,6 @@ extension KarhooRideDetailsPresenter: CancelRideDelegate {
     }
     
     public func handleSuccessfulCancellation() {
-        //TODO Need to take the user back to the Booking Map screen
+        rideDetailsView?.pop()
     }
 }

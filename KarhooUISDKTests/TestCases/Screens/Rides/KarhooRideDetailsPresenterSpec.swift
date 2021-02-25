@@ -179,7 +179,7 @@ class KarhooRideDetailsPresenterSpec: XCTestCase {
 
         testObject.handleSuccessfulCancellation()
 
-        
+        XCTAssertTrue(mockRideDetailsView.popCalled)
     }
     
     /**
