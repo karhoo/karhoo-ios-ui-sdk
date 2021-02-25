@@ -128,7 +128,8 @@ class TestUtil: PrimitiveUtil {
                               pickUpType: PickUpType = .default,
                               passengerCapacity: Int = 1,
                               luggageCapacity: Int = 2,
-                              type: String = getRandomString()) -> Quote {
+                              type: String = getRandomString(),
+                              serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
                                currencyCode: currencyCode)
@@ -142,7 +143,8 @@ class TestUtil: PrimitiveUtil {
                      fleet: fleet,
                      vehicle: vehicle,
                      price: price,
-                     validity: 1)
+                     validity: 1,
+                     serviceLevelAgreements: serviceLevelAgreements ?? ServiceAgreements())
     }
 
     class func getRandomUser(inOrganisation: Bool = true,
