@@ -197,7 +197,7 @@ class QuoteView: UIView {
         carType.text = viewModel.carType
         fare.text = viewModel.fare
         cancellationInfo.text = String(format: UITexts.Quotes.freeCancellation, "\(viewModel.freeCancellationMinutes)")
-        cancellationInfo.isHidden = viewModel.showCancellationInfo
+        cancellationInfo.isHidden = !viewModel.showCancellationInfo
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
