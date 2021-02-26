@@ -17,6 +17,7 @@ public struct KHQuoteViewID {
     public static let carType = "car_type_label"
     public static let fare = "fare_label"
     public static let fareType = "fareType_label"
+    public static let cancellationInfo = "cancellationInfo_label"
 }
 
 class QuoteView: UIView {
@@ -35,6 +36,7 @@ class QuoteView: UIView {
     private var eta: UILabel!
     private var fare: UILabel!
     private var fareType: UILabel!
+    private var cancellationInfo: UILabel!
     
     private var bottomLine: LineView!
     
@@ -146,6 +148,13 @@ class QuoteView: UIView {
         fareType.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(fareType)
         
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        rideDetailStackView.addArrangedSubview(cancellationInfo)
+        
         bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
         addSubview(bottomLine)
         
@@ -187,6 +196,8 @@ class QuoteView: UIView {
         eta.text = viewModel.eta
         carType.text = viewModel.carType
         fare.text = viewModel.fare
+        cancellationInfo.text = String(format: UITexts.Quotes.freeCancellation, "\(viewModel.freeCancellationMinutes)")
+        cancellationInfo.isHidden = !viewModel.showCancellationInfo
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
@@ -204,6 +215,7 @@ class QuoteView: UIView {
         fare.text = nil
         fareType.text = nil
         pickUpType.text = nil
+        cancellationInfo.text = nil
         logoLoadingImageView.cancel()
     }
 }

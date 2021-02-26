@@ -38,6 +38,8 @@ class QuoteCellViewModelSpec: XCTestCase {
         XCTAssertEqual(testObject.eta, expectedEta)
         XCTAssertEqual("1", testObject.passengerCapacity)
         XCTAssertEqual("2", testObject.baggageCapacity)
+        XCTAssertEqual(0, testObject.freeCancellationMinutes)
+        XCTAssertFalse(testObject.showCancellationInfo)
     }
     
     /**
@@ -130,5 +132,34 @@ class QuoteCellViewModelSpec: XCTestCase {
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
         XCTAssertEqual(testObject.fare, "£50.00")
+    }
+    
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testFreeCancellationMinutesOnSLA() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "", minutes: 10))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertEqual(testObject.freeCancellationMinutes, 10)
+        XCTAssertTrue(testObject.showCancellationInfo)
+    }
+    
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has no free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testNoFreeCancellationMinutesOnSLA() {
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: ServiceAgreements())
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertEqual(testObject.freeCancellationMinutes, 0)
+        XCTAssertFalse(testObject.showCancellationInfo)
     }
 }

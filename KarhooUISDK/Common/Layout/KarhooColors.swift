@@ -119,6 +119,9 @@ public extension KarhooColors {
     var paymentLightGrey: UIColor {
         return #colorLiteral(red: 0.5176470588, green: 0.5960784314, blue: 0.6784313725, alpha: 1)
     }
+    var brightGreen: UIColor {
+        return #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    }
 }
 
 struct DefaultKarhooColors: KarhooColors { }

@@ -315,7 +315,10 @@ public enum UITexts {
         static let setOnMap = "Text.Address.SetOnMap".localized
         static let currentLocation = "Text.Address.CurrentLocation".localized
     }
-//swiftlint:enable line_length
+    
+    public enum Quotes {
+        static let freeCancellation = "Text.Quote.FreeCancellation".localized
+    }
 }
 
 extension KarhooError {

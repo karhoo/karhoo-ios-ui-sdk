@@ -21,6 +21,8 @@ final class QuoteViewModel {
     public let pickUpType: String
     public let passengerCapacity: String
     public let baggageCapacity: String
+    public let freeCancellationMinutes: Int
+    public let showCancellationInfo: Bool
 
     init(quote: Quote,
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
@@ -30,6 +32,8 @@ final class QuoteViewModel {
         self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                   max: quote.vehicle.qta.highMinutes)
         self.carType = quote.vehicle.vehicleClass
+        self.freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes ?? 0
+        self.showCancellationInfo = freeCancellationMinutes > 0
 
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
