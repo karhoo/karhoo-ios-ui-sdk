@@ -134,8 +134,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.additionalData = ["allow3DS2": "true"]
         adyenPayload.storePaymentMethod = storePaymentMethod
 
-        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload,
-                                           returnUrlSuffix: "")
+        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload)
         paymentService.adyenPayments(request: request).execute { [weak self] result in
             guard let self = self else { return }
 
