@@ -21,6 +21,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var currencyCode: String = ""
     private let adyenResponseHandler: AdyenResponseHandler
     private let paymentFactory: PaymentFactory
+    private let threeDSecureUtil: ThreeDSecureUtils
 
     private var adyenAmout: AdyenAmount {
         return AdyenAmount(currency: self.currencyCode, value: self.amount)
@@ -28,10 +29,12 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
     init(paymentService: PaymentService = Karhoo.getPaymentService(),
          adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
-         paymentFactory: PaymentFactory = PaymentFactory()) {
+         paymentFactory: PaymentFactory = PaymentFactory(),
+         threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()) {
         self.paymentService = paymentService
         self.adyenResponseHandler = adyenResponseHandler
         self.paymentFactory = paymentFactory
+        self.threeDSecureUtil = threeDSecureUtil
     }
 
     func setBaseView(_ baseViewController: BaseViewController?) {
@@ -133,6 +136,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.amount = adyenAmout
         adyenPayload.additionalData = ["allow3DS2": "true"]
         adyenPayload.storePaymentMethod = storePaymentMethod
+        adyenPayload.returnUrl = self.threeDSecureUtil.current3DSReturnUrl
+        adyenPayload.browserInfo = AdyenBrowserInfo(userAgent: self.threeDSecureUtil.userAgent, acceptHeader:self.threeDSecureUtil.acceptHeader)
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload)
         paymentService.adyenPayments(request: request).execute { [weak self] result in
