@@ -33,8 +33,10 @@ extension KarhooUIError {
 struct ErrorModel: KarhooError {
 
     let message: String
+    let code: String
 
-    init(message: String) {
+    init(message: String, code: String) {
         self.message = message
+        self.code = code
     }
 }

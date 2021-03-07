@@ -108,8 +108,19 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func finish(result: OperationResult<CardFlowResult>) {
-        adyenDropIn?.viewController.dismiss(animated: true, completion: nil)
-        self.callback?(result)
+        if let presentedViewController = adyenDropIn?.viewController.presentedViewController {
+            presentedViewController.dismiss(animated: true) {
+                self.closeAdyenDropIn(result: result)
+            }
+        } else {
+            self.closeAdyenDropIn(result: result)
+        }
+    }
+    
+    private func closeAdyenDropIn(result: OperationResult<CardFlowResult>){
+        adyenDropIn?.viewController.dismiss(animated: true) {
+            self.callback?(result)
+        }
     }
 }
 
@@ -217,10 +228,10 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             finish(result: .completed(value: .didAddPaymentMethod(method: method)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
-        case .refused(let reason):
-            finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason))))
+        case .refused(let reason, let code):
+            finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason, code: code))))
         case .handleResult(let code):
-            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable))))
+            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable, code: code ?? UITexts.Errors.noDetailsAvailable))))
         }
     }
 }

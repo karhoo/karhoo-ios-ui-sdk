@@ -24,7 +24,7 @@ struct AdyenResponseHandler {
     enum AdyenEvent {
         case requiresAction(_ action: Action)
         case paymentAuthorised(_ method: PaymentMethod)
-        case refused(_ reason: String)
+        case refused(reason: String, code: String)
         case handleResult(code: String?)
         case failure
     }
@@ -60,7 +60,7 @@ struct AdyenResponseHandler {
         }
 
         if result == refused {
-            return .refused((data[refusalReason] as? String) ?? UITexts.Errors.noDetailsAvailable)
+            return .refused(reason: (data[refusalReason] as? String) ?? UITexts.Errors.noDetailsAvailable, code: (data[resultCode] as? String) ?? UITexts.Errors.noDetailsAvailable)
         }
 
         return .handleResult(code: result)
