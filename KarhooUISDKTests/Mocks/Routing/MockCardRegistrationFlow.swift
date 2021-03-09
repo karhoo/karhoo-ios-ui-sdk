@@ -20,7 +20,7 @@ final class MockCardRegistrationFlow: CardRegistrationFlow {
 
     private(set) var startCalled = false
     private(set) var currencyCodeSet: String?
-    private(set) var currencySupplierPartnerIdSet: String?
+    private(set) var supplierPartnerIdSet: String?
     private(set) var showUpdateCardAlertSet: Bool?
     private(set) var amountSet: Int?
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
@@ -33,7 +33,7 @@ final class MockCardRegistrationFlow: CardRegistrationFlow {
         currencyCodeSet = cardCurrency
         showUpdateCardAlertSet = showUpdateCardAlert
         amountSet = amount
-        currencySupplierPartnerIdSet = supplierPartnerId
+        supplierPartnerIdSet = supplierPartnerId
         self.callback = callback
     }
 

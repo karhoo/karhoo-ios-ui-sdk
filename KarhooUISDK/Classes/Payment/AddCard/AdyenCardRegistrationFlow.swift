@@ -91,6 +91,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let configuration = DropInComponent.PaymentMethodsConfiguration()
         configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
+        configuration.card.showsHolderNameField = true
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))

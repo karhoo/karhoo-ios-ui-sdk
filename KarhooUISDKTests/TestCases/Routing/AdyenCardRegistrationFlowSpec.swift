@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 @testable import KarhooSDK
+@testable import Adyen
 
 @testable import KarhooUISDK
 
@@ -38,10 +39,6 @@ final class AdyenCardRegistrationFlowSpec: XCTestCase {
 
         testObject.setBaseView(mockBaseViewController)
     }
-
-    func testStartingDropIn() {
-        
-    }
     
     private func cardRegistrationFlowCompletion(result: OperationResult<CardFlowResult>) {
         switch result {
@@ -52,7 +49,7 @@ final class AdyenCardRegistrationFlowSpec: XCTestCase {
 
     /**
       * Given: The flow starts
-      * When: Currency and Amont is provided
+      * When: Currency and Amount is provided
       * Then: AdyenPaymentMethodsRequest is made with the correct payload
       */
     func testFlowStart() {
