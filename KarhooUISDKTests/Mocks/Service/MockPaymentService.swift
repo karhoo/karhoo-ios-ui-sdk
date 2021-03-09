@@ -59,7 +59,11 @@ class MockPaymentService: PaymentService {
     }
 
     let adyenPaymentMethodsCall = MockCall<DecodableData>()
+    private(set) var adyenPaymentMethodsCalled = false
+    private(set) var adyenPaymentMethodsRequest: AdyenPaymentMethodsRequest?
     func adyenPaymentMethods(request: AdyenPaymentMethodsRequest) -> Call<DecodableData> {
+        adyenPaymentMethodsCalled = true
+        adyenPaymentMethodsRequest = request
         return adyenPaymentMethodsCall
     }
 }

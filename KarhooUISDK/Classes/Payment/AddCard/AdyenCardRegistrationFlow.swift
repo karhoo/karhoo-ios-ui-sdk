@@ -19,6 +19,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var tripId: String = ""
     private var amount: Int = 0
     private var currencyCode: String = ""
+    private var supplierPartnerId: String = ""
     private let adyenResponseHandler: AdyenResponseHandler
     private let paymentFactory: PaymentFactory
     private let threeDSecureUtil: ThreeDSecureUtils
@@ -43,10 +44,12 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
     func start(cardCurrency: String,
                amount: Int,
+               supplierPartnerId: String,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         self.currencyCode = cardCurrency
         self.amount = amount
+        self.supplierPartnerId = supplierPartnerId
         self.callback = callback
         baseViewController?.showLoadingOverlay(true)
 
@@ -88,6 +91,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let configuration = DropInComponent.PaymentMethodsConfiguration()
         configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
+        configuration.card.showsHolderNameField = true
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
@@ -150,7 +154,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.returnUrl = self.threeDSecureUtil.current3DSReturnUrl
         adyenPayload.browserInfo = AdyenBrowserInfo(userAgent: self.threeDSecureUtil.userAgent, acceptHeader:self.threeDSecureUtil.acceptHeader)
 
-        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload)
+        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, supplyPartnerID: self.supplierPartnerId)
         paymentService.adyenPayments(request: request).execute { [weak self] result in
             guard let self = self else { return }
 

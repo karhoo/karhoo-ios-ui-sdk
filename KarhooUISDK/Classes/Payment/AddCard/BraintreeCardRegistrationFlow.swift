@@ -34,6 +34,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
    public func start(cardCurrency: String,
                      amount: Int,
+                     supplierPartnerId: String,
                      showUpdateCardAlert: Bool,
                      callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         self.callback = callback

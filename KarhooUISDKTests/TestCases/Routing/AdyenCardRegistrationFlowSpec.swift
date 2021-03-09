@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 @testable import KarhooSDK
+@testable import Adyen
 
 @testable import KarhooUISDK
 
@@ -20,9 +21,12 @@ final class AdyenCardRegistrationFlowSpec: XCTestCase {
     private var testAnalytics: MockAnalyticsService!
     private var mockBaseViewController = MockBaseViewController()
     private let mockUserService = MockUserService()
+    private let amount = 10
     private let mockCardCurrencyCode = "GBP"
+    private let mockSupplierPartnerId = "SPID"
 
-    private var capturedCardFlowResult: OperationResult<CardFlowResult>?
+    private var cardRegistrationFlowCompletionResult: CardFlowResult?
+    private var cardRegistrationCancelledByUser: Bool?
 
     override func setUp() {
         super.setUp()
@@ -35,12 +39,35 @@ final class AdyenCardRegistrationFlowSpec: XCTestCase {
 
         testObject.setBaseView(mockBaseViewController)
     }
-
+    
     private func cardRegistrationFlowCompletion(result: OperationResult<CardFlowResult>) {
-        self.capturedCardFlowResult = result
+        switch result {
+        case .completed(let result): cardRegistrationFlowCompletionResult = result
+        case .cancelledByUser: cardRegistrationCancelledByUser = true
+        }
     }
 
-    func testStartingDropIn() {
+    /**
+      * Given: The flow starts
+      * When: Currency and Amount is provided
+      * Then: AdyenPaymentMethodsRequest is made with the correct payload
+      */
+    func testFlowStart() {
+        simulateStartFlow()
+
+        XCTAssert(mockPaymentService.adyenPaymentMethodsCalled)
+        XCTAssertEqual(amount, mockPaymentService.adyenPaymentMethodsRequest?.amount?.value)
+        XCTAssertEqual(mockCardCurrencyCode, mockPaymentService.adyenPaymentMethodsRequest?.amount?.currency)
+    }
+
+    private func simulateStartFlow() {
+        testObject.start(cardCurrency: mockCardCurrencyCode,
+                         amount: amount,
+                         supplierPartnerId: mockSupplierPartnerId,
+                         showUpdateCardAlert: true,
+                         callback: cardRegistrationFlowCompletion)
         
+        let result = KarhooSDK.DecodableData(data: Data())
+        mockPaymentService.adyenPaymentMethodsCall.triggerResult(result: .success(result: result))
     }
 }

@@ -20,6 +20,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     private var mockBaseViewController = MockBaseViewController()
     private let mockUserService = MockUserService()
     private let mockCardCurrencyCode = "GBP"
+    private let mockSupplierPartnerId = "SPID"
 
     private var cardRegistrationFlowCompletionResult: CardFlowResult?
     private var cardRegistrationCancelledByUser: Bool?
@@ -68,6 +69,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     func testFlowStartUserCancels() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
                          amount: 0,
+                         supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectCancelOnUpdateCardAlert()
@@ -90,6 +92,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     func testFlowStartsWithoutShowingUpdateCardAlert() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
                          amount: 0,
+                         supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: false,
                          callback: cardRegistrationFlowCompletion)
 
@@ -112,6 +115,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     func testFlowStartFailsToCreateBraintreeUI() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
                          amount: 0,
+                         supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         let error = TestUtil.getRandomError()
@@ -246,6 +250,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     private func simulateShowingAddCardScreen() {
         testObject.start(cardCurrency: mockCardCurrencyCode,
                          amount: 0,
+                         supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
