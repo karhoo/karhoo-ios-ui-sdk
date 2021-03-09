@@ -26,10 +26,28 @@ final class RideDetailsStackButtonPresenterSpec: XCTestCase {
 
     /**
      * Given: A trip that can be cancelled
+     * And: The driver phone number is available
+     * Then: The presenter should set up two buttons, cancel ride and contact driver
+     */
+    func testUpComingTripButtonsWithDriverNumber() {
+        let tripThatCanBeCancelled = TestUtil.getRandomTrip(state: .requested)
+
+        testObject = RideDetailsStackButtonPresenter(trip: tripThatCanBeCancelled,
+                                                     stackButton: mockStackButtonView,
+                                                     mailComposer: mockFeedbackMailComposer,
+                                                     rideDetailsStackButtonActions: mockRideDetailsStackButtonActions)
+
+        XCTAssertEqual(mockStackButtonView.firstButtonTextCalled, UITexts.Bookings.cancelRide)
+        XCTAssertEqual(mockStackButtonView.secondButtonTextCalled, UITexts.Bookings.contactDriver)
+    }
+    
+    /**
+     * Given: A trip that can be cancelled
+     * And: The driver phone number is not available
      * Then: The presenter should set up two buttons, cancel ride and contact supplier
      */
-    func testUpComingTripButtons() {
-        let tripThatCanBeCancelled = TestUtil.getRandomTrip(state: .requested)
+    func testUpComingTripButtonsWithoutDriverNumber() {
+        let tripThatCanBeCancelled = TestUtil.getRandomTrip(state: .requested, vehicle: Vehicle())
 
         testObject = RideDetailsStackButtonPresenter(trip: tripThatCanBeCancelled,
                                                      stackButton: mockStackButtonView,
@@ -74,10 +92,10 @@ final class RideDetailsStackButtonPresenterSpec: XCTestCase {
                                                      mailComposer: mockFeedbackMailComposer,
                                                      rideDetailsStackButtonActions: mockRideDetailsStackButtonActions)
 
-        XCTAssertEqual(mockStackButtonView.singleButtonTextCalled, UITexts.Bookings.trackTrip)
+        XCTAssertEqual(mockStackButtonView.singleButtonTextCalled, UITexts.Bookings.contactFleet)
         mockStackButtonView.singleButtonAction?()
-        XCTAssertTrue(mockRideDetailsStackButtonActions.trackRideCalled)
-        XCTAssertFalse(mockRideDetailsStackButtonActions.rebookRideCalled)
+//        XCTAssertTrue(mockRideDetailsStackButtonActions.trackRideCalled)
+//        XCTAssertFalse(mockRideDetailsStackButtonActions.rebookRideCalled)
     }
 
     /**

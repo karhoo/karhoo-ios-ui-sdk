@@ -11,6 +11,7 @@ import KarhooSDK
 final class RideDetailsStackButtonPresenter {
 
     private let trip: TripInfo
+    private let isFleetCall: Bool
     private let mailComposer: FeedbackEmailComposer?
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
@@ -20,6 +21,7 @@ final class RideDetailsStackButtonPresenter {
          mailComposer: FeedbackEmailComposer?,
          rideDetailsStackButtonActions: RideDetailsStackButtonActions) {
         self.trip = trip
+        self.isFleetCall = trip.vehicle.driver.phoneNumber.isEmpty
         self.mailComposer = mailComposer
         self.view = stackButton
         self.rideDetailsStackButtonActions = rideDetailsStackButtonActions
@@ -44,16 +46,18 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func setupPassengerOnBoardState() {
-        view?.set(buttonText: UITexts.Bookings.trackTrip, action: { [weak self] in
-            self?.rideDetailsStackButtonActions?.trackRide()
+        view?.set(buttonText: UITexts.Bookings.contactFleet, action: {
+            PhoneNumberCaller().call(number: self.trip.fleetInfo.phoneNumber)
         })
     }
 
     private func setupUpAndComingTrip() {
+        let buttonText = isFleetCall ? UITexts.Bookings.contactFleet : UITexts.Bookings.contactDriver
+        let phoneNumber = isFleetCall ? self.trip.fleetInfo.phoneNumber : self.trip.vehicle.driver.phoneNumber
         view?.set(firstButtonText: UITexts.Bookings.cancelRide, firstButtonAction: { [weak self] in
             self?.rideDetailsStackButtonActions?.cancelRide()
-        }, secondButtonText: UITexts.Bookings.contactFleet, secondButtonAction: {
-            PhoneNumberCaller().call(number: self.trip.fleetInfo.phoneNumber)
+        }, secondButtonText: buttonText, secondButtonAction: {
+            PhoneNumberCaller().call(number: phoneNumber)
         })
     }
 
