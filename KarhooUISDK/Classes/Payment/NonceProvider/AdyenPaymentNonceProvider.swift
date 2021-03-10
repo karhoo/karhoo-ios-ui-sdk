@@ -24,6 +24,7 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         cardFlow.start(cardCurrency: quote.price.currencyCode,
                        amount: quote.price.intHighPrice,
+                       supplierPartnerId: quote.fleet.id,
                        showUpdateCardAlert: false,
                        callback: { [weak self] cardFlowResult in
                         switch cardFlowResult {
