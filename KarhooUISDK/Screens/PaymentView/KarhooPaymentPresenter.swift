@@ -34,7 +34,7 @@ final class KarhooPaymentPresenter: PaymentPresenter {
 
         let currencyCode = view.quote?.price.currencyCode ?? "GBP"
         let amount = view.quote?.price.intHighPrice ?? 0
-        let supplierPartnerId = view.quote?.fleet.fleetId ?? ""
+        let supplierPartnerId = view.quote?.fleet.id ?? ""
 
         cardRegistrationFlow.start(cardCurrency: currencyCode,
                                    amount: amount,
