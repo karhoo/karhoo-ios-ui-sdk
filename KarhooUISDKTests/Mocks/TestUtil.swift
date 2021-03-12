@@ -134,7 +134,7 @@ class TestUtil: PrimitiveUtil {
                                lowPrice: Double(lowPrice),
                                currencyCode: currencyCode)
         let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
-        let fleet = FleetInfo(name: fleetName)
+        let fleet = Fleet(name: fleetName)
         let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
         return Quote(id: quoteId,
                      quoteType: quoteType,
