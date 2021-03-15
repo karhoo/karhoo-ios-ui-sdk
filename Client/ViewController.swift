@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     }
 
     @objc func tokenExchangeBookingTapped(sender: UIButton) {
-        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         tokenLoginAndShowKarhoo()
     }
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
     private func tokenLoginAndShowKarhoo() {
         let authService = Karhoo.getAuthService()
 
-        authService.login(token: Keys.braintreeAuthToken).execute { result in
+        authService.login(token: Keys.adyenAuthToken).execute { result in
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
