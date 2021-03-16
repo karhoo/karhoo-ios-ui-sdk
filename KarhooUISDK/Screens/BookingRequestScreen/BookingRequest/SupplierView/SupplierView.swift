@@ -13,6 +13,7 @@ public struct KHSupplierViewID {
     public static let supplierImage = "supplier_image"
     public static let supplierName = "supplier_name_label"
     public static let vehicleType = "vehicle_type_label"
+    public static let cancellationInfo = "cancellationInfo_label"
 }
 
 final class SupplierView: UIView {
@@ -36,7 +37,6 @@ final class SupplierView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         accessibilityIdentifier = "supplier_view"
-        isAccessibilityElement = true
         
         supplierImage = LoadingImageView()
         supplierImage.accessibilityIdentifier = KHSupplierViewID.supplierImage
@@ -68,7 +68,7 @@ final class SupplierView: UIView {
 
         cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.accessibilityIdentifier = KHSupplierViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.brightGreen
         cancellationInfo.numberOfLines = 0
@@ -98,7 +98,7 @@ final class SupplierView: UIView {
         cancellationInfo.topAnchor.constraint(equalTo: vehicleType.bottomAnchor, constant: 3.0).isActive = true
         cancellationInfo.leadingAnchor.constraint(equalTo: vehicleType.leadingAnchor).isActive = true
         cancellationInfo.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        cancellationInfo.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 5.0).isActive = true
+        cancellationInfo.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.0).isActive = true
     }
     
     func set(viewModel: QuoteViewModel) {
