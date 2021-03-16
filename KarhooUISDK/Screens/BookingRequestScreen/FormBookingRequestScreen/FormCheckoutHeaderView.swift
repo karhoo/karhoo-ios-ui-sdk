@@ -9,6 +9,7 @@ import UIKit
 import KarhooSDK
 
 public struct KHFormCheckoutHeaderViewID {
+    public static let topInfoContainer = "ride_top_info_container"
     public static let view = "guest_checkout_header_view"
     public static let logo = "logo_image"
     public static let rideDetailsContainer = "ride_details_stack_view"
@@ -25,10 +26,12 @@ final class FormCheckoutHeaderView: UIView {
     
     private var didSetupConstraints: Bool = false
     
+    private var topStackView: UIStackView!
     private var logoLoadingImageView: LoadingImageView!
     private var rideDetailStackView: UIStackView!
     private var name: UILabel!
     private var carType: UILabel!
+    private var cancellationInfo: UILabel!
     private var vehicleCapacityView: VehicleCapacityView!
     
     private var rideInfoView: UIView!
@@ -54,6 +57,14 @@ final class FormCheckoutHeaderView: UIView {
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHFormCheckoutHeaderViewID.view
+
+        topStackView = UIStackView()
+        topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
+        topStackView.translatesAutoresizingMaskIntoConstraints = false
+        topStackView.alignment = .center
+        topStackView.distribution = .equalSpacing
+        topStackView.spacing = 10
+        addSubview(topStackView)
         
         logoLoadingImageView = LoadingImageView()
         logoLoadingImageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
@@ -61,14 +72,14 @@ final class FormCheckoutHeaderView: UIView {
         logoLoadingImageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         logoLoadingImageView.layer.borderWidth = 0.5
         logoLoadingImageView.layer.masksToBounds = true
-        addSubview(logoLoadingImageView)
+        topStackView.addArrangedSubview(logoLoadingImageView)
         
         rideDetailStackView = UIStackView()
         rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
         rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
         rideDetailStackView.axis = .vertical
         rideDetailStackView.spacing = 8.0
-        addSubview(rideDetailStackView)
+        topStackView.addArrangedSubview(rideDetailStackView)
         
         name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
@@ -84,9 +95,17 @@ final class FormCheckoutHeaderView: UIView {
         carType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
         rideDetailStackView.addArrangedSubview(carType)
+
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+        rideDetailStackView.addArrangedSubview(cancellationInfo)
         
         vehicleCapacityView = VehicleCapacityView()
-        addSubview(vehicleCapacityView)
+        topStackView.addArrangedSubview(vehicleCapacityView)
         
         rideInfoView = UIView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -132,45 +151,40 @@ final class FormCheckoutHeaderView: UIView {
     override func updateConstraints() {
         if !didSetupConstraints {
             let logoSize: CGFloat = 60.0
-            _ = [logoLoadingImageView.widthAnchor.constraint(equalToConstant: logoSize),
-                 logoLoadingImageView.heightAnchor.constraint(equalToConstant: logoSize),
-                 logoLoadingImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                 logoLoadingImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20.0)]
-                .map { $0.isActive = true }
+            [logoLoadingImageView.widthAnchor.constraint(equalToConstant: logoSize),
+             logoLoadingImageView.heightAnchor.constraint(equalToConstant: logoSize)]
+                .forEach { $0.isActive = true }
             
-            _ = [rideDetailStackView.centerYAnchor.constraint(equalTo: logoLoadingImageView.centerYAnchor),
-                 rideDetailStackView.leadingAnchor.constraint(equalTo: logoLoadingImageView.trailingAnchor,
-                                                              constant: 10.0),
-                 rideDetailStackView.trailingAnchor.constraint(lessThanOrEqualTo: vehicleCapacityView.leadingAnchor,
-                                                               constant: -10.0)].map { $0.isActive = true }
+            topStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20.0).isActive = true
+            topStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            topStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+
+            vehicleCapacityView.setContentHuggingPriority(.required, for: .horizontal)
             
-            _ = [vehicleCapacityView.centerYAnchor.constraint(equalTo: logoLoadingImageView.centerYAnchor),
-                 vehicleCapacityView.trailingAnchor.constraint(equalTo: trailingAnchor)].map { $0.isActive = true }
+            [rideInfoView.topAnchor.constraint(equalTo: topStackView.bottomAnchor, constant: 15.0),
+             rideInfoView.leadingAnchor.constraint(equalTo: topStackView.leadingAnchor, constant: 10.0),
+             rideInfoView.trailingAnchor.constraint(equalTo: topStackView.trailingAnchor, constant: -10.0),
+             rideInfoView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach { $0.isActive = true }
             
-            _ = [rideInfoView.topAnchor.constraint(equalTo: logoLoadingImageView.bottomAnchor, constant: 15.0),
-                 rideInfoView.leadingAnchor.constraint(equalTo: logoLoadingImageView.leadingAnchor, constant: 10.0),
-                 rideInfoView.trailingAnchor.constraint(equalTo: vehicleCapacityView.trailingAnchor, constant: -10.0),
-                 rideInfoView.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
+            [etaTitle.leadingAnchor.constraint(equalTo: rideInfoView.leadingAnchor, constant: 10.0),
+             etaTitle.topAnchor.constraint(equalTo: rideInfoView.topAnchor, constant: 10.0),
+             etaTitle.trailingAnchor.constraint(lessThanOrEqualTo: priceTitle.leadingAnchor,
+                                                constant: 20.0)].forEach { $0.isActive = true }
             
-            _ = [etaTitle.leadingAnchor.constraint(equalTo: rideInfoView.leadingAnchor, constant: 10.0),
-                 etaTitle.topAnchor.constraint(equalTo: rideInfoView.topAnchor, constant: 10.0),
-                 etaTitle.trailingAnchor.constraint(lessThanOrEqualTo: priceTitle.leadingAnchor,
-                                                    constant: 20.0)].map { $0.isActive = true }
+            [etaText.leadingAnchor.constraint(equalTo: etaTitle.leadingAnchor),
+             etaText.topAnchor.constraint(equalTo: etaTitle.bottomAnchor, constant: 5.0),
+             etaText.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0),
+             etaText.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor, constant: -10.0)]
+                .forEach { $0.isActive = true }
             
-            _ = [etaText.leadingAnchor.constraint(equalTo: etaTitle.leadingAnchor),
-                 etaText.topAnchor.constraint(equalTo: etaTitle.bottomAnchor, constant: 5.0),
-                 etaText.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0),
-                 etaText.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor, constant: -10.0)]
-                .map { $0.isActive = true }
+            [priceTitle.trailingAnchor.constraint(equalTo: rideInfoView.trailingAnchor, constant: -10.0),
+             priceTitle.topAnchor.constraint(equalTo: rideInfoView.topAnchor,
+                                             constant: 10.0)].forEach { $0.isActive = true }
             
-            _ = [priceTitle.trailingAnchor.constraint(equalTo: rideInfoView.trailingAnchor, constant: -10.0),
-                 priceTitle.topAnchor.constraint(equalTo: rideInfoView.topAnchor,
-                                                 constant: 10.0)].map { $0.isActive = true }
-            
-            _ = [priceText.trailingAnchor.constraint(equalTo: priceTitle.trailingAnchor),
-                 priceText.topAnchor.constraint(equalTo: priceTitle.bottomAnchor, constant: 5.0),
-                 priceText.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor,
-                                                   constant: -10.0)].map { $0.isActive = true }
+            [priceText.trailingAnchor.constraint(equalTo: priceTitle.trailingAnchor),
+             priceText.topAnchor.constraint(equalTo: priceTitle.bottomAnchor, constant: 5.0),
+             priceText.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor,
+                                               constant: -10.0)].forEach { $0.isActive = true }
             
             didSetupConstraints = true
         }
@@ -182,6 +196,8 @@ final class FormCheckoutHeaderView: UIView {
         name.text = viewModel.fleetName
         etaText.text = viewModel.eta
         carType.text = viewModel.carType
+        cancellationInfo.text = String(format: UITexts.Quotes.freeCancellation, "\(viewModel.freeCancellationMinutes)")
+        cancellationInfo.isHidden = !viewModel.showCancellationInfo
         priceText.text = viewModel.fare
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
