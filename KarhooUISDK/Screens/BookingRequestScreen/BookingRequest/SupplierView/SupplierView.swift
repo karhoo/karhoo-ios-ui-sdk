@@ -106,8 +106,8 @@ final class SupplierView: UIView {
         let vehicleTypeText = viewModel.showPickUpLabel ? viewModel.carType + " | " + viewModel.pickUpType :
                               viewModel.carType
         vehicleType.text = vehicleTypeText
-        cancellationInfo.text = String(format: UITexts.Quotes.freeCancellation, "\(viewModel.freeCancellationMinutes)")
-        cancellationInfo.isHidden = !viewModel.showCancellationInfo
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil
         supplierImage.load(imageURL: viewModel.logoImageURL,
                             placeholderImageName: "supplier_logo_placeholder")
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
