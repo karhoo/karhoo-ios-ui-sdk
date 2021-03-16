@@ -38,8 +38,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         XCTAssertEqual(testObject.eta, expectedEta)
         XCTAssertEqual("1", testObject.passengerCapacity)
         XCTAssertEqual("2", testObject.baggageCapacity)
-        XCTAssertEqual(0, testObject.freeCancellationMinutes)
-        XCTAssertFalse(testObject.showCancellationInfo)
+        XCTAssertNil(testObject.freeCancellationMessage)
     }
     
     /**
@@ -145,8 +144,7 @@ class QuoteCellViewModelSpec: XCTestCase {
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
-        XCTAssertEqual(testObject.freeCancellationMinutes, 10)
-        XCTAssertTrue(testObject.showCancellationInfo)
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
     }
     
     /**
@@ -159,7 +157,6 @@ class QuoteCellViewModelSpec: XCTestCase {
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
-        XCTAssertEqual(testObject.freeCancellationMinutes, 0)
-        XCTAssertFalse(testObject.showCancellationInfo)
+        XCTAssertNil(testObject.freeCancellationMessage)
     }
 }
