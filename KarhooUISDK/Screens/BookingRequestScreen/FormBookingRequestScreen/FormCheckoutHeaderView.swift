@@ -20,6 +20,7 @@ public struct KHFormCheckoutHeaderViewID {
     public static let estimatedPrice = "estimated_price_title_label"
     public static let priceText = "price_text_label"
     public static let carType = "car_type_label"
+    public static let cancellationInfo = "cancellationInfo_label"
 }
 
 final class FormCheckoutHeaderView: UIView {
@@ -98,7 +99,7 @@ final class FormCheckoutHeaderView: UIView {
 
         cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.brightGreen
         cancellationInfo.numberOfLines = 0
