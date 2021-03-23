@@ -31,7 +31,8 @@ class TestUtil: PrimitiveUtil {
                              fare: TripFare = TripFare(),
                              quote: TripQuote = getRandomTripQuote(quoteType: .estimated),
                              fleetInfo: FleetInfo = getRandomFleetInfo(),
-                             meetingPoint: MeetingPoint? = getRandomMeetingPoint()) -> TripInfo {
+                             meetingPoint: MeetingPoint? = getRandomMeetingPoint(),
+                             serviceAgreements: ServiceAgreements? = nil) -> TripInfo {
         let trip = TripInfo(tripId: tripId,
                             displayId: TestUtil.getRandomString(),
                             followCode: followCode,
@@ -43,7 +44,8 @@ class TestUtil: PrimitiveUtil {
                             vehicle: vehicle,
                             fleetInfo: fleetInfo,
                             meetingPoint: meetingPoint,
-                            fare: fare)
+                            fare: fare,
+                            serviceAgreements: serviceAgreements)
         return trip
     }
 
