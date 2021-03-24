@@ -22,6 +22,8 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
     private var tripIDMetadata: MetaDataView!
     private var ratingView: KarhooRatingView!
     private var ratingViewContainer: UIView!
+    private var cancellationInfo: UILabel!
+    private var cancellationInfoContainer: UIView!
     private var extraFeedbackView: FeedbackButtonView!
 
     private var presenter: TripMetaDataPresenter?
@@ -78,6 +80,9 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         
         ratingViewContainer = builRatingContainerView()
         stackContainer.addArrangedSubview(ratingViewContainer)
+
+        cancellationInfoContainer = buildCancellationInfoView()
+        stackContainer.addArrangedSubview(cancellationInfoContainer)
         
         extraFeedbackView = FeedbackButtonView()
         stackContainer.addArrangedSubview(extraFeedbackView)
@@ -107,6 +112,28 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         return view
     }
 
+    private func buildCancellationInfoView() -> UIView {
+        let cancellationInfoContainer = UIView()
+        cancellationInfoContainer.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = "cancellationInfo_label"
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+
+        cancellationInfoContainer.addSubview(cancellationInfo)
+        cancellationInfo.anchor(top: cancellationInfoContainer.topAnchor,
+                                leading: cancellationInfoContainer.leadingAnchor,
+                                bottom: cancellationInfoContainer.bottomAnchor,
+                                trailing: cancellationInfoContainer.trailingAnchor,
+                                paddingTop: 10,
+                                paddingLeft: 10,
+                                paddingBottom: 10,
+                                paddingRight: 10)
+        return cancellationInfoContainer
+    }
+
     func set(viewModel: TripMetaDataViewModel,
              presenter: TripMetaDataPresenter) {
     
@@ -130,6 +157,9 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         ratingViewContainer.isHidden = !viewModel.showRateTrip
         
         ratingView.delegate = self
+
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        cancellationInfoContainer.isHidden = viewModel.freeCancellationMessage == nil
         
         extraFeedbackView.actions = self
         

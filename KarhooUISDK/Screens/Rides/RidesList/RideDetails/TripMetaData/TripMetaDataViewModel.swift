@@ -10,15 +10,18 @@ import KarhooSDK
 
 final class TripMetaDataViewModel {
 
-    public let status: String
-    public let statusColor: UIColor
-    public let statusIconName: String
-    public var price: String
-    public let priceType: String
-    public let displayId: String
-    public let flightNumber: String
-    public let baseFareHidden: Bool
-    public let showRateTrip: Bool
+    let status: String
+    let statusColor: UIColor
+    let statusIconName: String
+    var price: String
+    let priceType: String
+    let displayId: String
+    let flightNumber: String
+    let baseFareHidden: Bool
+    let showRateTrip: Bool
+
+    /// If this message is not `nil`, it should be displayed
+    let freeCancellationMessage: String?
 
     init(trip: TripInfo) {
         displayId = trip.displayId
@@ -29,6 +32,13 @@ final class TripMetaDataViewModel {
         let bookingStatusViewModel = BookingStatusViewModel(trip: trip)
         statusColor = bookingStatusViewModel.statusColor
         statusIconName = bookingStatusViewModel.imageName
+
+        if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes,
+           freeCancellationMinutes > 0 {
+            freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+        } else {
+            freeCancellationMessage = nil
+        }
 
         if TripStatesGetter().getStatesForTripRequest(type: .upcoming).contains(trip.state) &&
            trip.tripQuote.type != .fixed {

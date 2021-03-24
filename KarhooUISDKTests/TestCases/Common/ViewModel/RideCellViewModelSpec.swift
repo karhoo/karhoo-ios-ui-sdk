@@ -111,4 +111,29 @@ class BookingItemViewModelSpec: XCTestCase {
         XCTAssertFalse(testObject.showActionButtons)
     }
 
+    /**
+     * When: The SLA has free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testFreeCancellationMinutesOnSLA() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "", minutes: 10))
+        let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = RideCellViewModel(trip: cancellableTrip)
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
+    }
+
+    /**
+     * When: The SLA has no free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testNoFreeCancellationMinutesOnSLA() {
+        let uncancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: ServiceAgreements())
+
+        testObject = RideCellViewModel(trip: uncancellableTrip)
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
 }
