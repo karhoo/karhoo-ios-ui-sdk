@@ -127,6 +127,7 @@ class QuoteView: UIView {
         eta = UILabel()
         eta.translatesAutoresizingMaskIntoConstraints = false
         eta.accessibilityIdentifier = KHQuoteViewID.eta
+        eta.setContentCompressionResistancePriority(.required, for: .horizontal)
         eta.textAlignment = .right
         eta.font = KarhooUI.fonts.bodyBold()
         eta.textColor = KarhooUI.colors.darkGrey
@@ -134,6 +135,7 @@ class QuoteView: UIView {
         
         fare = UILabel()
         fare.translatesAutoresizingMaskIntoConstraints = false
+        fare.setContentCompressionResistancePriority(.required, for: .horizontal)
         fare.accessibilityIdentifier = KHQuoteViewID.fare
         fare.textAlignment = .right
         fare.font = KarhooUI.fonts.bodyBold()
@@ -143,6 +145,7 @@ class QuoteView: UIView {
         fareType = UILabel()
         fareType.translatesAutoresizingMaskIntoConstraints = false
         fareType.accessibilityIdentifier = KHQuoteViewID.fareType
+        fareType.setContentCompressionResistancePriority(.required, for: .horizontal)
         fareType.textAlignment = .right
         fareType.font = KarhooUI.fonts.captionRegular()
         fareType.textColor = KarhooUI.colors.darkGrey
@@ -153,6 +156,7 @@ class QuoteView: UIView {
         cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
         rideDetailStackView.addArrangedSubview(cancellationInfo)
         
         bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
