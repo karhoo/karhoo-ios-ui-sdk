@@ -146,6 +146,20 @@ class QuoteCellViewModelSpec: XCTestCase {
 
         XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
     }
+
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "BeforeDriverEnRoute"))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation until the driver is en route")
+    }
     
     /**
      * Given: Quote comes from the fleet

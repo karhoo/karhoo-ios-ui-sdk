@@ -490,6 +490,7 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellation" = "Annulation gratuite jusqu’à %1$@ minutes avant la prise en charge";
+"Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Annulation sans frais jusqu'au départ du chauffeur";
 
 /* General errors, K0xxx */
 "K0001" = "Désolé! Une erreur s'est produite";

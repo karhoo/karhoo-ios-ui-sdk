@@ -145,6 +145,19 @@ class TripMetaDataViewModelSpec: XCTestCase {
     }
 
     /**
+     * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
+     * Then:  The correct free cancellation message is set
+     */
+    func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "BeforeDriverEnRoute"))
+        let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = TripMetaDataViewModel(trip: cancellableTrip)
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation until the driver is en route")
+    }
+
+    /**
      * When: The SLA has no free cancellation minutes
      * Then:  The correct free minutes and display cancellation info is set
      */

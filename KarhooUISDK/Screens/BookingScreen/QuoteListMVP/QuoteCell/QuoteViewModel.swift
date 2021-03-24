@@ -35,6 +35,8 @@ final class QuoteViewModel {
         self.carType = quote.vehicle.vehicleClass
         if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
             freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+        } else if quote.serviceLevelAgreements?.serviceCancellation.type == "BeforeDriverEnRoute" {
+            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
         } else {
             freeCancellationMessage = nil
         }
