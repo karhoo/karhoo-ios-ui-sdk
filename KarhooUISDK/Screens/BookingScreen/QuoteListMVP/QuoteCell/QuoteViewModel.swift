@@ -33,11 +33,17 @@ final class QuoteViewModel {
         self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                   max: quote.vehicle.qta.highMinutes)
         self.carType = quote.vehicle.vehicleClass
-        if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-            freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
-        } else if quote.serviceLevelAgreements?.serviceCancellation.type == "BeforeDriverEnRoute" {
+
+        switch quote.serviceLevelAgreements?.serviceCancellation.type {
+        case .timeBeforePickup:
+            if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+            } else {
+                freeCancellationMessage = nil
+            }
+        case .beforeDriverEnRoute:
             freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
-        } else {
+        default:
             freeCancellationMessage = nil
         }
 

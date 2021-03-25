@@ -47,12 +47,16 @@ final class RideCellViewModel {
         tripStateColor = bookingStatusViewModel.statusColor
         tripStateIconName = bookingStatusViewModel.imageName
 
-        if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes,
-           freeCancellationMinutes > 0 {
-            freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
-        } else if trip.serviceAgreements?.serviceCancellation.type == "BeforeDriverEnRoute" {
+        switch trip.serviceAgreements?.serviceCancellation.type {
+        case .timeBeforePickup:
+            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+            } else {
+                freeCancellationMessage = nil
+            }
+        case .beforeDriverEnRoute:
             freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
-        } else {
+        default:
             freeCancellationMessage = nil
         }
     }

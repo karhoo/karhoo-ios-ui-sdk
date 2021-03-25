@@ -139,7 +139,7 @@ class QuoteCellViewModelSpec: XCTestCase {
      * Then:  The correct free minutes and display cancellation info is set
      */
     func testFreeCancellationMinutesOnSLA() {
-        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "", minutes: 10))
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
@@ -149,11 +149,25 @@ class QuoteCellViewModelSpec: XCTestCase {
 
     /**
      * Given: Quote comes from the fleet
+     * When: The SLA has 0 free cancellation minutes
+     * Then:  Should not display the free cancellation message
+     */
+    func testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 0))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
+     * Given: Quote comes from the fleet
      * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
      * Then:  The correct free minutes and display cancellation info is set
      */
     func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
-        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "BeforeDriverEnRoute"))
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .beforeDriverEnRoute))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())

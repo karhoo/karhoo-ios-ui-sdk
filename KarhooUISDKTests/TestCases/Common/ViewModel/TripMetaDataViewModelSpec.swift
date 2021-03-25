@@ -136,7 +136,7 @@ class TripMetaDataViewModelSpec: XCTestCase {
      * Then:  The correct free minutes and display cancellation info is set
      */
     func testFreeCancellationMinutesOnSLA() {
-        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "", minutes: 10))
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
         let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
 
         testObject = TripMetaDataViewModel(trip: cancellableTrip)
@@ -145,11 +145,24 @@ class TripMetaDataViewModelSpec: XCTestCase {
     }
 
     /**
+     * When: The SLA has 0 free cancellation minutes
+     * Then:  Should not display the free cancellation message
+     */
+    func testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 0))
+        let uncancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = TripMetaDataViewModel(trip: uncancellableTrip)
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
      * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
      * Then:  The correct free cancellation message is set
      */
     func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
-        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: "BeforeDriverEnRoute"))
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .beforeDriverEnRoute))
         let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
 
         testObject = TripMetaDataViewModel(trip: cancellableTrip)
