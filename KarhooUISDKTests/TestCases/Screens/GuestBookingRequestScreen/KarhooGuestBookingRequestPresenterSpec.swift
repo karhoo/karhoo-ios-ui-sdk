@@ -108,11 +108,11 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
     /** When: Trip service booking succceeds for token exchange
      *  Then: View should be updated and callback is called with trip
      */
-    func testCorrectTokenExchangePaymentNonceIsUsed() {
+    func testCorrectTokenExchangePaymentNonceIsUsedForBraintreePayment() {
         KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
-
         let expectedNonce = Nonce(nonce: "mock_nonce")
-        mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: expectedNonce,
+                                                                     paymentProvider: "braintree")
 
         testObject.bookTripPressed()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
@@ -124,6 +124,28 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
         XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
         XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+    
+    /** When: Trip service booking succceeds for token exchange
+     *  Then: View should be updated and callback is called with trip
+     */
+    func testCorrectTokenExchangePaymentNonceIsUsedForAdyenPayment() {
+        KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
+                                                                     paymentProvider: "adyen")
+        
+        testObject.bookTripPressed()
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(mockView.paymentNonceToReturn, mockTripService.tripBookingSet?.paymentNonce)
 
         XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
         XCTAssertTrue(mockView.setDefaultStateCalled)
