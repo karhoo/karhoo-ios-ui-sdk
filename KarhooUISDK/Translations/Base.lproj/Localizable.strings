@@ -484,6 +484,7 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellation" = "Free cancellation up to %1$@ minutes before pickup";
+"Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
 
 /*English: Error codes */
 "K0001" = "General request error";

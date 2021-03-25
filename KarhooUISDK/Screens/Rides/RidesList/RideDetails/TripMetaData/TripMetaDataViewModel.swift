@@ -36,6 +36,8 @@ final class TripMetaDataViewModel {
         if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes,
            freeCancellationMinutes > 0 {
             freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+        } else if trip.serviceAgreements?.serviceCancellation.type == "BeforeDriverEnRoute" {
+            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
         } else {
             freeCancellationMessage = nil
         }
