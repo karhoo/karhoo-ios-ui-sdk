@@ -19,7 +19,7 @@ final class MockTripSummaryScreenBuilder: TripSummaryScreenBuilder {
     let returnViewController = UIViewController()
 
     func buildTripSummaryScreen(trip: TripInfo,
-                                   callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
+                                callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
         tripSet = trip
         callbackSet = callback
         return returnViewController

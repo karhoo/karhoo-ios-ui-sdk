@@ -253,7 +253,7 @@ class TestUtil: PrimitiveUtil {
     class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
         return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
-                                  direction:TestUtil.getRandomDirection(),
+                                  direction: TestUtil.getRandomDirection(),
                                   originEta: etaToOrigin,
                                   destinationEta: etaToDestination)
     }

@@ -15,13 +15,13 @@ final class QuoteListPanelLayout: FloatingPanelLayout {
     
     var position: FloatingPanelPosition = .bottom
     var initialState: FloatingPanelState { .half }
-    var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
+    var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         return [.full: FloatingPanelLayoutAnchor(absoluteInset: 140,
                                                  edge: .top,
                                                  referenceGuide: .safeArea),
                 .half: FloatingPanelLayoutAnchor(absoluteInset: 230,
                                                  edge: .bottom,
-                                                 referenceGuide: .superview),]
+                                                 referenceGuide: .superview)]
     }
 
     var supportedPositions: Set<FloatingPanelState> {

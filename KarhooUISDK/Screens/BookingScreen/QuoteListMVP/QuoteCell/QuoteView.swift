@@ -103,6 +103,14 @@ class QuoteView: UIView {
         capacityAndPickupTypeContainer.alignment = .leading
         capacityAndPickupTypeContainer.spacing = 10.0
         rideDetailStackView.addArrangedSubview(capacityAndPickupTypeContainer)
+
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+        rideDetailStackView.addArrangedSubview(cancellationInfo)
         
         pickUpType = RoundedLabel()
         pickUpType.textInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
@@ -117,13 +125,22 @@ class QuoteView: UIView {
         capacityAndPickupTypeContainer.addArrangedSubview(pickUpType)
         capacityAndPickupTypeContainer.addArrangedSubview(vehicleCapacityView)
         
+        makePriceDetailsStackView()
+        
+        bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
+        addSubview(bottomLine)
+        
+        updateConstraints()
+    }
+
+    private func makePriceDetailsStackView() {
         priceDetailsStack = UIStackView()
         priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
         priceDetailsStack.accessibilityIdentifier = "price_details_stack_view"
         priceDetailsStack.axis = .vertical
         priceDetailsStack.spacing = 8.0
         addSubview(priceDetailsStack)
-        
+
         eta = UILabel()
         eta.translatesAutoresizingMaskIntoConstraints = false
         eta.accessibilityIdentifier = KHQuoteViewID.eta
@@ -132,7 +149,7 @@ class QuoteView: UIView {
         eta.font = KarhooUI.fonts.bodyBold()
         eta.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(eta)
-        
+
         fare = UILabel()
         fare.translatesAutoresizingMaskIntoConstraints = false
         fare.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -141,7 +158,7 @@ class QuoteView: UIView {
         fare.font = KarhooUI.fonts.bodyBold()
         fare.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(fare)
-        
+
         fareType = UILabel()
         fareType.translatesAutoresizingMaskIntoConstraints = false
         fareType.accessibilityIdentifier = KHQuoteViewID.fareType
@@ -150,19 +167,6 @@ class QuoteView: UIView {
         fareType.font = KarhooUI.fonts.captionRegular()
         fareType.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(fareType)
-        
-        cancellationInfo = UILabel()
-        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
-        cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.brightGreen
-        cancellationInfo.numberOfLines = 0
-        rideDetailStackView.addArrangedSubview(cancellationInfo)
-        
-        bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
-        addSubview(bottomLine)
-        
-        updateConstraints()
     }
     
     override func updateConstraints() {

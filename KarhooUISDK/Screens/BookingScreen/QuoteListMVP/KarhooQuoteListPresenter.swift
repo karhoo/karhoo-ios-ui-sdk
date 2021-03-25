@@ -79,8 +79,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         let timer = fetchedQuotes!.validity
         let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
         
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [self] in
-            quoteSearchObservable?.subscribe(observer: quotesObserver)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
         }
     }
     

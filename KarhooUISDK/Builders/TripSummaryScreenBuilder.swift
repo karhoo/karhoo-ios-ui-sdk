@@ -11,5 +11,5 @@ import KarhooSDK
 
 internal protocol TripSummaryScreenBuilder {
     func buildTripSummaryScreen(trip: TripInfo,
-                                   callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen
+                                callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen
 }

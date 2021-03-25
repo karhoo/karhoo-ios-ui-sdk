@@ -67,17 +67,17 @@ extension UIView {
     }
     
     public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                left: NSLayoutXAxisAnchor? = nil,
-                leading:NSLayoutXAxisAnchor? = nil,
-                bottom: NSLayoutYAxisAnchor? = nil,
-                right: NSLayoutXAxisAnchor? = nil,
-                trailing: NSLayoutXAxisAnchor? = nil,
-                paddingTop: CGFloat = 0,
-                paddingLeft: CGFloat = 0,
-                paddingBottom: CGFloat = 0,
-                paddingRight: CGFloat = 0,
-                width: CGFloat? = nil,
-                height: CGFloat? = nil) {
+                       left: NSLayoutXAxisAnchor? = nil,
+                       leading: NSLayoutXAxisAnchor? = nil,
+                       bottom: NSLayoutYAxisAnchor? = nil,
+                       right: NSLayoutXAxisAnchor? = nil,
+                       trailing: NSLayoutXAxisAnchor? = nil,
+                       paddingTop: CGFloat = 0,
+                       paddingLeft: CGFloat = 0,
+                       paddingBottom: CGFloat = 0,
+                       paddingRight: CGFloat = 0,
+                       width: CGFloat? = nil,
+                       height: CGFloat? = nil) {
         translatesAutoresizingMaskIntoConstraints = false
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true

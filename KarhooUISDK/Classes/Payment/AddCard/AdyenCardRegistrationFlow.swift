@@ -121,7 +121,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         }
     }
     
-    private func closeAdyenDropIn(result: OperationResult<CardFlowResult>){
+    private func closeAdyenDropIn(result: OperationResult<CardFlowResult>) {
         adyenDropIn?.viewController.dismiss(animated: true) {
             self.callback?(result)
         }
@@ -152,7 +152,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         adyenPayload.additionalData = ["allow3DS2": "true"]
         adyenPayload.storePaymentMethod = storePaymentMethod
         adyenPayload.returnUrl = self.threeDSecureUtil.current3DSReturnUrl
-        adyenPayload.browserInfo = AdyenBrowserInfo(userAgent: self.threeDSecureUtil.userAgent, acceptHeader:self.threeDSecureUtil.acceptHeader)
+        adyenPayload.browserInfo = AdyenBrowserInfo(userAgent: self.threeDSecureUtil.userAgent, acceptHeader: self.threeDSecureUtil.acceptHeader)
 
         let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, supplyPartnerID: self.supplierPartnerId)
         paymentService.adyenPayments(request: request).execute { [weak self] result in
