@@ -3,6 +3,19 @@
 
 version: 2.1
 jobs:
+  ### Swift lint job
+  swiftlint:
+    docker:
+      - image: dantoml/swiftlint:latest
+    steps:
+      - checkout
+      - run: swiftlint lint --reporter junit | tee swiftlintResults.xml
+      - store_artifacts:
+          path: swiftlintResults.xml
+      - store_test_results:
+          path: swiftlintResults.xml
+
+  ### Build & test job
   build-and-test:
     macos:
       xcode: 12.0.0
@@ -13,11 +26,6 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
-      - run: swiftlint lint --reporter junit | tee swiftlintResults.xml
-      - store_artifacts:
-          path: swiftlintResults.xml
-      - store_test_results:
-          path: swiftlintResults.xml
       - run:
           name: Set Ruby Version
           command: |
@@ -86,6 +94,7 @@ jobs:
 workflows:
   build-test-adhoc:
     jobs:
+      - swiftlint
       - build-and-test
       - adhoc:
           filters:
