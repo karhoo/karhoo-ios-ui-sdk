@@ -19,7 +19,7 @@ final class RidesListViewController: UIViewController, RidesListView {
     private let reuseIdentifier = "bookinghistorycell"
     private var data: TableData<TripInfo>!
     private var source: TableDataSource<TripInfo>!
-    private var delegate: TableDelegate<TripInfo>! //swiftlint:disable:this weak_delegate
+    private var delegate: TableDelegate<TripInfo>! // swiftlint:disable:this weak_delegate
     internal var paginationEnabled: Bool
 
     private let bookButtonHeight: CGFloat = 64

@@ -208,7 +208,7 @@ class DatePickerPresenterSpec: XCTestCase {
         let returnedDate = simulateDateChangeAndSet(date: newDate)
         let expectedDate = mockView.maxDateSet
 
-        //granularity is 5 min and that's what we compare to
+        // granularity is 5 min and that's what we compare to
         XCTAssert(differenceBetween(firstDate: mockView.dateSet, secondDate: expectedDate) < 60 * 5)
         XCTAssert(differenceBetween(firstDate: returnedDate, secondDate: expectedDate) < 60 * 5)
     }

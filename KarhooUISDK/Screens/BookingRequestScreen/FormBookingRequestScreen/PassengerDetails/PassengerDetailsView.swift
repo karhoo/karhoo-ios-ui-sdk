@@ -18,18 +18,19 @@ final class PassengerDetailsView: UIView {
     private var locale: String?
 
     var details: PassengerDetails? {
+        get {
+            return PassengerDetails(firstName: firstNameTextField.getIntput(),
+                                    lastName: surnameTextField.getIntput(),
+                                    email: emailTextField.getIntput(),
+                                    phoneNumber: phoneTextField.getIntput(),
+                                    locale: locale?.isEmpty == false ? locale! : currentLocale())
+        }
         set {
             firstNameTextField.set(text: newValue?.firstName)
             surnameTextField.set(text: newValue?.lastName)
             emailTextField.set(text: newValue?.email)
             phoneTextField.set(text: newValue?.phoneNumber)
             locale = newValue?.locale ?? currentLocale()
-        } get {
-            return PassengerDetails(firstName: firstNameTextField.getIntput(),
-                                    lastName: surnameTextField.getIntput(),
-                                    email: emailTextField.getIntput(),
-                                    phoneNumber: phoneTextField.getIntput(),
-                                    locale: locale?.isEmpty == false ? locale! : currentLocale())
         }
     }
 

@@ -102,7 +102,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         guard let input = inputField else { return }
         input.isSecureTextEntry = secureText
 
-        //Workaround to refresh the position of the cursor as the secureTextEntry toggle misplaces it
+        // Workaround to refresh the position of the cursor as the secureTextEntry toggle misplaces it
         let beginning = input.beginningOfDocument
         let end = input.endOfDocument
         input.selectedTextRange = input.textRange(from: beginning, to: beginning)

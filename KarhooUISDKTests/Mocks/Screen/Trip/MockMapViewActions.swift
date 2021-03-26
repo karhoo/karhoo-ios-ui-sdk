@@ -7,9 +7,7 @@
 //
 
 import XCTest
-import KarhooUISDK
 import CoreLocation
-
 @testable import KarhooUISDK
 
 class MockMapViewActions: MapViewActions {

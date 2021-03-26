@@ -36,7 +36,7 @@ final class AddressViewController: UIViewController, AddressView {
     private let presenter: AddressPresenter
     private var addressMapView: KarhooAddressMapView!
 
-    private lazy var masterContainer: UIView = {
+    private lazy var mainContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -74,22 +74,22 @@ final class AddressViewController: UIViewController, AddressView {
     
     private func setUpView() {
         view.backgroundColor = KarhooUI.colors.offWhite
-        view.addSubview(masterContainer)
+        view.addSubview(mainContainer)
 
-        masterContainer.topAnchor.constraint(equalTo: view.topAnchor,
+        mainContainer.topAnchor.constraint(equalTo: view.topAnchor,
                                              constant: navigationController!.navigationBar.frame.size.height).isActive = true
-        masterContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        masterContainer.pinLeftRightEdegs(to: view)
+        mainContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mainContainer.pinLeftRightEdegs(to: view)
 
         stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 5.0
         stackView.axis = .vertical
-        masterContainer.addSubview(stackView)
+        mainContainer.addSubview(stackView)
 
-        _ = [stackView.topAnchor.constraint(equalTo: masterContainer.safeAreaLayoutGuide.topAnchor),
-             stackView.leadingAnchor.constraint(equalTo: masterContainer.leadingAnchor),
-             stackView.trailingAnchor.constraint(equalTo: masterContainer.trailingAnchor)].map { $0.isActive = true }
+        _ = [stackView.topAnchor.constraint(equalTo: mainContainer.safeAreaLayoutGuide.topAnchor),
+             stackView.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor),
+             stackView.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor)].map { $0.isActive = true }
         
         searchBarView = KarhooAddressSearchBar()
         searchBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -123,7 +123,7 @@ final class AddressViewController: UIViewController, AddressView {
         table.estimatedRowHeight = 50.0
         table.separatorStyle = .none
         
-        masterContainer.addSubview(table)
+        mainContainer.addSubview(table)
         _ = [table.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5.0),
              table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              table.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
@@ -135,7 +135,7 @@ final class AddressViewController: UIViewController, AddressView {
         googleLogoView.accessibilityIdentifier = KHAddressViewID.googleLogoView
         googleLogoView.backgroundColor = KarhooUI.colors.offWhite
             
-        masterContainer.addSubview(googleLogoView)
+        mainContainer.addSubview(googleLogoView)
         
         _ = [googleLogoView.topAnchor.constraint(equalTo: table.bottomAnchor),
              googleLogoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -146,7 +146,7 @@ final class AddressViewController: UIViewController, AddressView {
         emptyResultsView = KarhooEmptyDataSetView()
         emptyResultsView?.accessibilityIdentifier = KHAddressViewID.emptyResultsView
         emptyResultsView.translatesAutoresizingMaskIntoConstraints = false
-        masterContainer.addSubview(emptyResultsView)
+        mainContainer.addSubview(emptyResultsView)
         
         _ = [emptyResultsView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5.0),
              emptyResultsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -249,9 +249,7 @@ final class AddressViewController: UIViewController, AddressView {
         tableDataSource = TableDataSource(reuseIdentifier: reuseIdentifier,
                                           tableData: tableData)
 
-        let configuration = { [weak self] (address: AddressCellViewModel,
-                                           cell: UITableViewCell,
-                                           indexPath: IndexPath) -> Void in
+        let configuration = { [weak self] (address: AddressCellViewModel, cell: UITableViewCell, _: IndexPath) -> Void in
             self?.configure(cell: cell, with: address)
         }
 
