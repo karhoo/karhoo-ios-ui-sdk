@@ -64,8 +64,8 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         }
     }
     
-    private func tokenExchangeNonce() -> String?{
-        if(userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree) {
+    private func tokenExchangeNonce() -> String? {
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
             return userService.getCurrentUser()?.nonce?.nonce
         } else {
             return view?.getPaymentNonce()

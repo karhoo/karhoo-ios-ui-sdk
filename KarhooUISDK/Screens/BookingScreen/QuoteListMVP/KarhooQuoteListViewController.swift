@@ -29,7 +29,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     private let tableViewReuseIdentifier = KHQuoteListViewID.tableViewReuseIdentifier
     private var data: TableData<Quote>!
     private var source: TableDataSource<Quote>!
-    private var delegate: TableDelegate<Quote>! //swiftlint:disable:this weak_delegate
+    private var delegate: TableDelegate<Quote>! // swiftlint:disable:this weak_delegate
     private var presenter: QuoteListPresenter?
     
     init() {

@@ -29,7 +29,7 @@ public typealias ConstraintSwitcherCompletedClosure = () -> Void
 
 public final class DefaultConstraintSwitcher: ConstraintSwitcher {
 
-    //Configuration
+    // Configuration
     fileprivate var animationTime = 0.75
 
     fileprivate var primaryConstraints: [NSLayoutConstraint]?

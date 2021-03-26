@@ -105,7 +105,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
     }
 
-
     /**
      * When: Adyen payment is cancelled
      * Then: no alert should show

@@ -32,7 +32,7 @@ class PrimitiveUtil {
         return Bool(truncating: Int.random(in: 0...1) as NSNumber)
     }
 
-    class func getTestDate() -> Date { //Wednesday, 14 March 2018 16:20:44
+    class func getTestDate() -> Date { // Wednesday, 14 March 2018 16:20:44
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         formatter.timeZone = TimeZone.current

@@ -21,7 +21,7 @@ final class MockTripsProvider: TripsProvider {
         stopCalled = true
     }
 
-    var delegate: TripsProviderDelegate? //swiftlint:disable:this weak_delegate
+    var delegate: TripsProviderDelegate? // swiftlint:disable:this weak_delegate
 
     var theTripsToFetch: [TripInfo] = []
     func fetched(trips: [TripInfo]) {

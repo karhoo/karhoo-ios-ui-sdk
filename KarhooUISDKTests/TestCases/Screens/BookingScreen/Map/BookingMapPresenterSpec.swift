@@ -8,9 +8,7 @@
 
 import XCTest
 import KarhooSDK
-import KarhooUISDK
 import CoreLocation
-
 @testable import KarhooUISDK
 
 class BookingMapPresenterSpec: XCTestCase {

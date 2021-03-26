@@ -35,7 +35,7 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
     func feedbackPressed() {
         if mailConstructor.showFeedbackMail() == false {
             aboutPressed()
-        } //else: automatically opens MailComposer
+        } // else: automatically opens MailComposer
     }
 
     func bookingsPressed() {

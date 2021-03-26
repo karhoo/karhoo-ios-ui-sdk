@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AdyenThreeDSecureUtils : ThreeDSecureUtils {
+public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
     
     public var userAgent: String {

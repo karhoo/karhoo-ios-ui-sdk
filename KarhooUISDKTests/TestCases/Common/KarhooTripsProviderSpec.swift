@@ -15,7 +15,7 @@ class KarhooTripsProviderSpec: XCTestCase {
 
     private var testObject: KarhooTripsProvider!
     private var mockReachability: MockReachabilityProvider!
-    private var mockTripsProviderDelegate: MockTripsProviderDelegate! //swiftlint:disable:this weak_delegate
+    private var mockTripsProviderDelegate: MockTripsProviderDelegate! // swiftlint:disable:this weak_delegate
     private var mockTripService: MockTripService!
     private var mockTimeScheduler: MockTimeScheduler!
     private var mockTripInResponse: TripInfo!

@@ -9,8 +9,6 @@
 import XCTest
 import CoreLocation
 import KarhooSDK
-import KarhooUISDK
-
 @testable import KarhooUISDK
 
 class DestinationSetStrategySpec: XCTestCase {

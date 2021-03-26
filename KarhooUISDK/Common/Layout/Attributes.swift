@@ -115,7 +115,7 @@ public final class Attributes: UIView {
             view.layer.shadowOpacity = 0.3
             // Below line speeds up the drawing of the shadows massively. 
             // However, the bounds of the view is not properly set at this stage
-            //view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+            // view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
         })
 
         viewWithBorder?.forEach({ (view: UIView) in
@@ -152,17 +152,17 @@ public final class Attributes: UIView {
         setValue(KarhooUI.colors.medGrey, forKeyPath: "medGreyFontColour.textColor")
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryFontColour.textColor")
 
-        //UIButtons- font
+        // UIButtons- font
         setValue(KarhooUI.fonts.subtitleBold(), forKeyPath: "buttonFontSubtitleBold.font")
         setValue(KarhooUI.fonts.bodyRegular(), forKeyPath: "buttonFontBodyRegular.font")
         setValue(KarhooUI.fonts.headerRegular(), forKeyPath: "buttonFontHeaderRegular.font")
         setValue(KarhooUI.fonts.headerBold(), forKeyPath: "buttonFontHeaderBold.font")
         setValue(KarhooUI.fonts.bodyBold(), forKeyPath: "buttonFontBodyBold.font")
 
-        //UITextField palceholder color
+        // UITextField palceholder color
         setValue(KarhooUI.colors.medGrey, forKeyPath: "textfieldPlaceholderMedGrey.placeholderLabel.textColor")
 
-        //UISwitch onTint color
+        // UISwitch onTint color
         setValue(KarhooUI.colors.secondary, forKeyPath: "switchOnTintColorSecondary.onTintColor")
 
         // MARK: - UIActivityIndicator tint color

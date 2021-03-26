@@ -73,7 +73,7 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func reportIssue() {
-        if ((self.mailComposer?.reportIssueWith(trip: self.trip)) != nil) {
+        if self.mailComposer?.reportIssueWith(trip: self.trip) != nil {
             return
         }
 
