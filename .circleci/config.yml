@@ -13,6 +13,11 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
+      - run: swiftlint lint --reporter junit | tee swiftlintResults.xml
+      - store_artifacts:
+          path: swiftlintResults.xml
+      - store_test_results:
+          path: swiftlintResults.xml
       - run:
           name: Set Ruby Version
           command: |
