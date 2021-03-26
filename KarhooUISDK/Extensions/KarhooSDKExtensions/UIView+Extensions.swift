@@ -67,7 +67,7 @@ extension UIView {
     }
     
     public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                        left: NSLayoutXAxisAnchor? = nil,
+                       left: NSLayoutXAxisAnchor? = nil,
                        leading: NSLayoutXAxisAnchor? = nil,
                        bottom: NSLayoutYAxisAnchor? = nil,
                        right: NSLayoutXAxisAnchor? = nil,
