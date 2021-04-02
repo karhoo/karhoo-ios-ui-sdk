@@ -506,6 +506,7 @@
 "Text.Errors.NoResultsFound" = "Sin resultados";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "No hay disponibilidad en la categoría solicitada.\n Por favor seleccione otra categoría.";
+"Text.Availability.NoQuotesForSelectedParameters" = "No hay disponibilidad para la hora solicitada. Por favor, seleccione una hora diferente.";
 
 "Text.Address.NoRecentAddress" = "No hay resultados recientes";
 

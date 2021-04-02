@@ -67,10 +67,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleSortingFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleSortingFilteringControls(show: true)
         default: break
         }
     }
@@ -112,6 +114,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
         if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false {
             quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesInSelectedCategory)
+        } else if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == true && fetchedQuotes.status == .completed {
+            quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesForSelectedParameters)
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
             quoteListView?.showQuotes(sortedQuotes, animated: animated)
@@ -142,11 +146,13 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleSortingFilteringControls(show: true)
             return
         }
         
         quoteListView?.showQuotes([], animated: true)
         quoteListView?.showLoadingView()
+        quoteListView?.toggleSortingFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
@@ -170,8 +176,12 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                     self?.quoteListView?.showQuotesTitle(dateString)
                 }
 
-                if quotes.all.isEmpty {
+                if quotes.all.isEmpty && quotes.status != .completed {
                     self?.quoteListView?.showLoadingView()
+                    self?.quoteListView?.toggleSortingFilteringControls(show: false)
+                } else if quotes.status == .completed {
+                    self?.quoteListView?.hideLoadingView()
+                    self?.quoteListView?.toggleSortingFilteringControls(show: false)
                 }
 
             case .failure(let error):

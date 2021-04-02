@@ -209,6 +209,7 @@ public enum UITexts {
     public enum Availability {
         public static let allCategory = "Text.Availability.AllCategory".localized
         public static let noQuotesInSelectedCategory = "Text.Availability.NoQuotesInSelectedCategory".localized
+        public static let noQuotesForSelectedParameters = "Text.Availability.NoQuotesForSelectedParameters".localized
     }
 
     public enum TripAllocation {

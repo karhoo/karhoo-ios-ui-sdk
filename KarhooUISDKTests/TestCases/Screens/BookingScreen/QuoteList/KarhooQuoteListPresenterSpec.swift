@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class KarhooQuoteListPresenterSpec: XCTestCase {
+class KarhooQuoteListPresenterSpec: XCTestCase {
 
     private var testObject: KarhooQuoteListPresenter!
     private var mockBookingStatus: MockBookingStatus!
@@ -22,11 +22,18 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
     static let someQuote = TestUtil.getRandomQuote(categoryName: "Some")
     static let anotherQuote = TestUtil.getRandomQuote(categoryName: "anotherQuote")
 
-    let quoteServiceResponse = Quotes(quoteListId: "someQuoteListId",
-                                      quoteCategories: [QuoteCategory(name: "Some", quotes: [someQuote]),
-                                                        QuoteCategory(name: "anotherQuote", quotes: [anotherQuote]),
-                                                        QuoteCategory(name: "noQuotes", quotes: [])],
-                                      all: [someQuote, anotherQuote])
+    private let quoteServiceResponse = Quotes(quoteListId: "someQuoteListId",
+                                              quoteCategories: [QuoteCategory(name: "Some", quotes: [someQuote]),
+                                                                QuoteCategory(name: "anotherQuote", quotes: [anotherQuote]),
+                                                                QuoteCategory(name: "noQuotes", quotes: [])],
+                                              all: [someQuote, anotherQuote])
+
+    private let noQuotesAfterCompleted = Quotes(quoteListId: "someQuoteListId",
+                                                quoteCategories: [QuoteCategory(name: "Some", quotes: [someQuote]),
+                                                                  QuoteCategory(name: "anotherQuote", quotes: [anotherQuote]),
+                                                                  QuoteCategory(name: "noQuotes", quotes: [])],
+                                                all: [],
+                                                status: .completed)
 
     override func setUp() {
         super.setUp()
@@ -72,6 +79,7 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
         simulateDestinationSetInBookingDetails()
         XCTAssertTrue(mockQuoteListView.quotesSet!.isEmpty)
         XCTAssertTrue(mockQuoteListView.showLoadingViewCalled)
+        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
     }
 
     /**
@@ -82,9 +90,11 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
     func testLoadingViewHides() {
         simulateDestinationSetInBookingDetails()
         XCTAssertTrue(mockQuoteListView.showLoadingViewCalled)
+        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
 
         simulateSuccessfulQuoteFetch()
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
     }
 
     /**
@@ -127,11 +137,13 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
     func testLoadingViewShowsDuringQuoteSearchInProgress() {
         simulateDestinationSetInBookingDetails()
         XCTAssertTrue(mockQuoteListView.showLoadingViewCalled)
+        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
 
         mockQuoteService.quotesPollCall.triggerPollSuccess(Quotes(quoteListId: "some",
                                                                   quoteCategories: [],
                                                                   all: []))
         XCTAssertFalse(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
     }
 
     /**
@@ -212,15 +224,47 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
 
         mockQuoteListView.showLoadingViewCalled = false
         mockQuoteListView.hideLoadingViewCalled = false
+        mockQuoteListView.toggleSortingFilteringControlsShow = nil
 
         mockQuoteService.quotesPollCall.triggerPollSuccess(Quotes(quoteListId: "",
                                                                   quoteCategories: [],
                                                                   all: []))
         XCTAssertTrue(mockQuoteListView.showLoadingViewCalled)
+        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
         XCTAssertFalse(mockQuoteListView.hideLoadingViewCalled)
 
         mockQuoteService.quotesPollCall.triggerPollSuccess(quoteServiceResponse)
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
+
+    }
+
+    /**
+     * Given: Valid booking details
+     * When: Quote service receives quotes
+     * Then: Quote service receives 0 quotes
+     * And: LoadingView should appear
+     * Then: Quote service receives quotes
+     * And: LoadingView should hide
+     */
+    func testNoQuotesAfterCompletedResponse() {
+        simulateDestinationSetInBookingDetails(dateSet: true)
+
+        mockQuoteListView.showLoadingViewCalled = false
+        mockQuoteListView.hideLoadingViewCalled = false
+        mockQuoteListView.toggleSortingFilteringControlsShow = nil
+
+        mockQuoteService.quotesPollCall.triggerPollSuccess(Quotes(quoteListId: "",
+                                                                  quoteCategories: [],
+                                                                  all: [],
+                                                                  status: .progressing))
+        XCTAssertTrue(mockQuoteListView.showLoadingViewCalled)
+        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
+        XCTAssertFalse(mockQuoteListView.hideLoadingViewCalled)
+
+        mockQuoteService.quotesPollCall.triggerPollSuccess(noQuotesAfterCompleted)
+        XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
 
     }
 
@@ -238,6 +282,7 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
         XCTAssertFalse(mockQuoteListView.availabilityValue)
         XCTAssertFalse(mockQuoteService.quotesPollCall.hasObserver)
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
     }
 
     /**
@@ -254,6 +299,7 @@ final class KarhooQuoteListPresenterSpec: XCTestCase {
         XCTAssertEqual(mockQuoteListView.emptyDataSetMessageSet, UITexts.KarhooError.Q0001)
         XCTAssertFalse(mockQuoteService.quotesPollCall.hasObserver)
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
     }
 
     /**

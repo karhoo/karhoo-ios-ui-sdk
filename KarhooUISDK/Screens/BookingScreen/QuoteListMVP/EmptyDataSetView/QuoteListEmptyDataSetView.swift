@@ -37,6 +37,7 @@ final class QuoteListEmptyDataSetView: UIView, EmptyDataSetView {
         emptyMessageLabel.accessibilityIdentifier = KHQuoteListEmptyDataSetViewID.emptyMessageLabel
         emptyMessageLabel.textAlignment = .center
         emptyMessageLabel.textColor = KarhooUI.colors.medGrey
+        emptyMessageLabel.numberOfLines = 0
         addSubview(emptyMessageLabel)
     }
     

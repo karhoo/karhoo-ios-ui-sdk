@@ -475,6 +475,7 @@
 "Text.Errors.NoResultsFound" = "No results found";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "There are no quotes for this category. \n Please choose another category.";
+"Text.Availability.NoQuotesForSelectedParameters" = "No availability for the requested time. Please choose a different time.";
 
 "Text.Address.NoRecentAddress" = "No recent results";
 
