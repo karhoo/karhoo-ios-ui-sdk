@@ -31,6 +31,8 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     private var iconsConnectorLine: LineView!
     private var swapButton: UIButton!
     private var mainViewContainer: UIView!
+    private var destinationIconWidthConstraint: NSLayoutConstraint!
+    private var destinationIconHeightConstraint: NSLayoutConstraint!
     
     private var presenter: AddressBarPresenter?
     private let dropShadow: Bool
@@ -39,6 +41,9 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     private let verticalPadding: CGFloat
     private let horizontalPadding: CGFloat
     private let hidePickUpDestinationConnector: Bool
+    
+    private let destinationIconSize: CGFloat = 18.0
+
 
     init(cornerRadious: CGFloat = 5.0,
          borderLine: Bool = false,
@@ -173,13 +178,14 @@ public class KarhooAddressBarView: UIView, AddressBarView {
              destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor),
              destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor)].map { $0.isActive = true }
 
-        let destinationIconSize: CGFloat = 18.0
-        _ = [destinationIcon.widthAnchor.constraint(equalToConstant: destinationIconSize),
-             destinationIcon.heightAnchor.constraint(equalToConstant: destinationIconSize),
-             destinationIcon.centerXAnchor.constraint(equalTo: pickUpIcon.centerXAnchor),
+        destinationIconWidthConstraint = destinationIcon.widthAnchor.constraint(equalToConstant: destinationIconSize)
+        destinationIconHeightConstraint = destinationIcon.heightAnchor.constraint(equalToConstant: destinationIconSize)
+        destinationIconWidthConstraint.isActive = true
+        destinationIconHeightConstraint.isActive = true
+        _ = [destinationIcon.centerXAnchor.constraint(equalTo: pickUpIcon.centerXAnchor),
              destinationIcon.centerYAnchor.constraint(equalTo: destinationField.centerYAnchor)]
             .map { $0.isActive = true }
-        destinationIcon.layer.cornerRadius = iconSize / 2
+        destinationIcon.layer.cornerRadius = destinationIconSize / 2
 
         _ = [iconsConnectorLine.centerXAnchor.constraint(equalTo: pickUpIcon.centerXAnchor),
              iconsConnectorLine.topAnchor.constraint(equalTo: pickUpIcon.bottomAnchor),
@@ -225,7 +231,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         destinationField.set(text: destinationDisplayAddress)
         if destinationDisplayAddress != nil && destinationDisplayAddress != UITexts.AddressBar.addDestination {
             destinationIcon.image = nil
-            destinationIcon.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            toggleDestinationIconSize(big: false)
             destinationIcon.backgroundColor = KarhooUI.colors.primary
         }
     }
@@ -233,10 +239,17 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     public func destinationSetState(disableClearButton: Bool = false) {
         swapButton.isHidden = false
         destinationIcon.image = nil
-        destinationIcon.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        toggleDestinationIconSize(big: false)
         destinationIcon.backgroundColor = KarhooUI.colors.primary
         destinationField?.ordinaryTextColor()
         destinationField?.disableClear(disableClearButton)
+    }
+    
+    private func toggleDestinationIconSize(big: Bool) {
+        let ratio: CGFloat = big == true ? 1 : 2
+        destinationIconWidthConstraint.constant = destinationIconSize / ratio
+        destinationIconHeightConstraint.constant = destinationIconSize / ratio
+        destinationIcon.layer.cornerRadius = destinationIconSize / (ratio*2)
     }
 
     public func pickupNotSetState() {
@@ -251,6 +264,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
 
     public func destinationNotSetState() {
         swapButton.isHidden = true
+        toggleDestinationIconSize(big: true)
         destinationIcon.image = UIImage.uisdkImage("add_destination").withRenderingMode(.alwaysTemplate)
         destinationIcon.backgroundColor = .clear
         set(destinationDisplayAddress: UITexts.AddressBar.addDestination)
