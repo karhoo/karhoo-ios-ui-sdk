@@ -41,9 +41,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     private let verticalPadding: CGFloat
     private let horizontalPadding: CGFloat
     private let hidePickUpDestinationConnector: Bool
-    
     private let destinationIconSize: CGFloat = 18.0
-
 
     init(cornerRadious: CGFloat = 5.0,
          borderLine: Bool = false,
