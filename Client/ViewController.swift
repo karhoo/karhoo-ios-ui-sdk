@@ -68,9 +68,9 @@ class ViewController: UIViewController {
     }
 
     @objc func guestBookingTapped(sender: UIButton) {
-        let guestSettings = GuestSettings(identifier: Keys.adyenGuestIdentifier,
+        let guestSettings = GuestSettings(identifier: Keys.braintreeGuestIdentifier,
                                           referer: Keys.referer,
-                                          organisationId: Keys.adyenGuestOrganisationId)
+                                          organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         showKarhoo()
     }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     }
 
     @objc func tokenExchangeBookingTapped(sender: UIButton) {
-        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         tokenLoginAndShowKarhoo()
     }
@@ -91,8 +91,8 @@ class ViewController: UIViewController {
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
-        let userLogin = UserLogin(username: Keys.userServiceEmailAdyen,
-                                  password: Keys.userServicePasswordAdyen)
+        let userLogin = UserLogin(username: Keys.userServiceEmailBraintree,
+                                  password: Keys.userServicePasswordBraintree)
         userService.login(userLogin: userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
     private func tokenLoginAndShowKarhoo() {
         let authService = Karhoo.getAuthService()
 
-        authService.login(token: Keys.adyenAuthToken).execute { result in
+        authService.login(token: Keys.braintreeAuthToken).execute { result in
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
