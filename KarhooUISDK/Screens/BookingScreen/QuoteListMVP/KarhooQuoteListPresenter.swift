@@ -67,12 +67,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             quoteListView?.hideLoadingView()
-            quoteListView?.toggleSortingFilteringControls(show: true)
+            quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
             quoteListView?.hideLoadingView()
-            quoteListView?.toggleSortingFilteringControls(show: true)
+            quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
         }
     }
@@ -146,13 +146,13 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             quoteListView?.hideLoadingView()
-            quoteListView?.toggleSortingFilteringControls(show: true)
+            quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
         
         quoteListView?.showQuotes([], animated: true)
         quoteListView?.showLoadingView()
-        quoteListView?.toggleSortingFilteringControls(show: false)
+        quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
@@ -178,10 +178,10 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
                 if quotes.all.isEmpty && quotes.status != .completed {
                     self?.quoteListView?.showLoadingView()
-                    self?.quoteListView?.toggleSortingFilteringControls(show: false)
+                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 } else if quotes.status == .completed {
                     self?.quoteListView?.hideLoadingView()
-                    self?.quoteListView?.toggleSortingFilteringControls(show: false)
+                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
 
             case .failure(let error):
