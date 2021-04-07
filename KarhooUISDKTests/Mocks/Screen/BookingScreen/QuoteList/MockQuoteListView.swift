@@ -44,7 +44,7 @@ final class MockQuoteListView: UIViewController, QuoteListView {
     }
 
     var toggleSortingFilteringControlsShow: Bool?
-    func toggleSortingFilteringControls(show: Bool) {
+    func toggleCategoryFilteringControls(show: Bool) {
         toggleSortingFilteringControlsShow = show
     }
 
