@@ -207,17 +207,18 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
         quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
     }
+
+    func toggleCategoryFilteringControls(show: Bool) {
+        quoteSortView.alpha = show ? 1 : 0
+        quoteCategoryBarView.isHidden = !show
+    }
     
     func hideLoadingView() {
         loadingView.hide()
-        quoteSortView.alpha = 1
-        quoteCategoryBarView.alpha = 1
     }
     
     func showLoadingView() {
         loadingView.show()
-        quoteSortView.alpha = 0
-        quoteCategoryBarView.alpha = 0
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }

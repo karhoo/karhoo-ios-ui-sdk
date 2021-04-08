@@ -18,6 +18,8 @@ public protocol QuoteListView: UIViewController {
 
     func hideEmptyDataSetMessage()
 
+    func toggleCategoryFilteringControls(show: Bool)
+
     func showLoadingView()
 
     func hideLoadingView()

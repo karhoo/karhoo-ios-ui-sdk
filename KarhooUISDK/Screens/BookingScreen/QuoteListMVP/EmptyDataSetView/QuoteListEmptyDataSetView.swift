@@ -37,6 +37,7 @@ final class QuoteListEmptyDataSetView: UIView, EmptyDataSetView {
         emptyMessageLabel.accessibilityIdentifier = KHQuoteListEmptyDataSetViewID.emptyMessageLabel
         emptyMessageLabel.textAlignment = .center
         emptyMessageLabel.textColor = KarhooUI.colors.medGrey
+        emptyMessageLabel.numberOfLines = 0
         addSubview(emptyMessageLabel)
     }
     
@@ -45,8 +46,8 @@ final class QuoteListEmptyDataSetView: UIView, EmptyDataSetView {
             
             _ = [emptyMessageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30.0),
                  emptyMessageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30.0),
-                 emptyMessageLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-                 emptyMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor)].map { $0.isActive = true }
+                 emptyMessageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+                 emptyMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)].map { $0.isActive = true }
             
             didSetupConstraints = true
         }

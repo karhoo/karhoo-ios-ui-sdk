@@ -470,6 +470,7 @@
 
 
 "Text.Availability.NoQuotesInSelectedCategory" = "Aucun devis disponible pour cette catégorie. \n Veuillez choisir une autre catégorie.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Aucune course disponible à l\'horaire demandé. Veuillez modifier votre horaire.";
 
 /* Finding your ride... */
 "Text.TripAllocation.FindingYourRide" = "Création de votre course...";

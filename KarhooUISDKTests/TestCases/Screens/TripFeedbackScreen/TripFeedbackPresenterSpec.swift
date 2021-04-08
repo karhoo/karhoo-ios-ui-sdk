@@ -18,35 +18,26 @@ final class TripFeedbackPresenter: XCTestCase {
     private var mockTripFeedbackView = MockTripFeedbackView()
     private var mockTripRatingCache = MockTripRatingCache()
 
-    var lastCallbackResult: ScreenResult<Void>?
-    private func testCallback(result: ScreenResult<Void>) {
-        lastCallbackResult = result
-    }
-
-    override func setUp() {
-        super.setUp()
-
-        testObject = KarhooTripFeedbackPresenter(tripId: self.testTripId, analyticsService: mockAnalyticsService,
-                                                 callback: testCallback, tripRatingCache: mockTripRatingCache)
-        testObject.set(view: mockTripFeedbackView)
-    }
-
     /**
      * Given: A TripFeedback has been initilised
      * Then: Calling getTripId, the correct value is returned
      */
     func test_correct_tripId_returned() {
+        testObject = KarhooTripFeedbackPresenter(tripId: self.testTripId, analyticsService: mockAnalyticsService,
+                                                 callback: { _ in }, tripRatingCache: mockTripRatingCache)
         let expected_tripId = testObject.getTripId()
-        
+
         XCTAssertEqual(testTripId, expected_tripId)
     }
+
     /**
      * Given: A TripFeedback has been initilised
      * And: A new feedback is provided
      * Then: feedbackPayload should be updated containing the new element
      */
     func test_feedback_added_correctly() {
-        
+        testObject = KarhooTripFeedbackPresenter(tripId: self.testTripId, analyticsService: mockAnalyticsService,
+                                                 callback: { _ in }, tripRatingCache: mockTripRatingCache)
         XCTAssertEqual(testObject.feedbackPayload.count, 0)
         
         let newFeedback: [String: Any] = ["testkey": 2,
@@ -55,12 +46,20 @@ final class TripFeedbackPresenter: XCTestCase {
         
         XCTAssertEqual(testObject.feedbackPayload.count, 1)
     }
+    
     /**
      * Given: An array of feedback has been provided
      * And: Sumbit feedback is invoked
      * Then: feedbackPayload should be updated containig the new element
      */
     func test_additional_feedbacks_submitted() {
+
+        var lastCallbackResult: ScreenResult<Void>?
+        let testCallback = { lastCallbackResult = $0 }
+
+        testObject = KarhooTripFeedbackPresenter(tripId: self.testTripId, analyticsService: mockAnalyticsService,
+                                                 callback: testCallback, tripRatingCache: mockTripRatingCache)
+        testObject.set(view: mockTripFeedbackView)
         
         let newFeedback1: [String: Any] = ["testkey": 2,
                                           "testKey2": "hello"]
