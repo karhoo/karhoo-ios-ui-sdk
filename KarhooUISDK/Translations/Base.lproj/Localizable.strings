@@ -483,8 +483,9 @@
 "Text.SupportMailMessage.NoCoverageBody" = "Thank you for recommending a fleet in your area. To get coverage in your area as fast as possible, please provide us with area and the name of transportation company.\n Area:\n Fleet time: ";
 
 /* Cancellation info on quotes */
-"Text.Quote.FreeCancellation" = "Free cancellation up to %1$@ minutes before pickup";
+"Text.Quote.FreeCancellation" = "Free cancellation up to %1$@ before pickup";
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
+"Text.Quote.FreeCancellationAndKeyword" = "and";
 
 /*English: Error codes */
 "K0001" = "General request error";

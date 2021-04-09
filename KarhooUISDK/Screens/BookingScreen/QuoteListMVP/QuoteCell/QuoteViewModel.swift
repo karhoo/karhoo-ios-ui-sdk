@@ -21,6 +21,7 @@ final class QuoteViewModel {
     let pickUpType: String
     let passengerCapacity: String
     let baggageCapacity: String
+    
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -37,7 +38,8 @@ final class QuoteViewModel {
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
             if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }
