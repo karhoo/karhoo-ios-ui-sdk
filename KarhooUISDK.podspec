@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.resource_bundles = {
     'KarhooUISDK' => [
-        'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,bundle,lproj}'
+        'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,stringsdict,bundle,lproj}'
     ]
   }
 
