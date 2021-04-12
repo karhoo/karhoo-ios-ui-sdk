@@ -50,7 +50,8 @@ final class RideCellViewModel {
         switch trip.serviceAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
             if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }

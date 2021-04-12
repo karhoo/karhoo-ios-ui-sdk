@@ -13,14 +13,14 @@ struct TimeFormatter {
     private let minutesInHour = 60
 
     func minutesAndHours(timeInMinutes: Int) -> String {
-        let minutes : Int = timeInMinutes % minutesInHour
-        let hours : Int = timeInMinutes / minutesInHour
+        let minutes: Int = timeInMinutes % minutesInHour
+        let hours: Int = timeInMinutes / minutesInHour
         if hours == 0 {
-            return String.localizedStringWithFormat(NSLocalizedString("Text.Quote.FreeCancellationBeforePickupMinutes", comment: ""), minutes)
+            return String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes)
         } else if hours > 0 && minutes == 0 {
-            return String.localizedStringWithFormat(NSLocalizedString("Text.Quote.FreeCancellationBeforePickupHours", comment: ""), hours)
+            return String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)
         } else {
-            return "\(String.localizedStringWithFormat(NSLocalizedString("Text.Quote.FreeCancellationBeforePickupHours", comment: ""), hours)) \(UITexts.Quotes.freeCancellationAndKeyword) \(String.localizedStringWithFormat(NSLocalizedString("Text.Quote.FreeCancellationBeforePickupMinutes", comment: ""), minutes))"
+            return "\(String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)) \(UITexts.Quotes.freeCancellationAndKeyword) \(String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes))"
         }
     }
 }
