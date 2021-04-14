@@ -73,7 +73,7 @@ final class KarhooBookingPresenter {
             .buildBookingRequestScreen(quote: quote,
                                        bookingDetails: bookingDetails,
                                        callback: { [weak self] result in
-                                            self?.view?.dismiss(animated: false, completion: {
+                                        self?.view?.presentedViewController?.dismiss(animated: false, completion: {
                                                 self?.bookingRequestCompleted(result: result,
                                                                               quote: quote,
                                                                               details: bookingDetails)
