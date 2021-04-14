@@ -92,7 +92,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
 
         simulateSuccessfulQuoteFetch()
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
-        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
     }
 
     /**
@@ -234,7 +234,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
 
         mockQuoteService.quotesPollCall.triggerPollSuccess(quoteServiceResponse)
         XCTAssertTrue(mockQuoteListView.hideLoadingViewCalled)
-        XCTAssertFalse(mockQuoteListView.toggleSortingFilteringControlsShow ?? true)
+        XCTAssertTrue(mockQuoteListView.toggleSortingFilteringControlsShow ?? false)
 
     }
 

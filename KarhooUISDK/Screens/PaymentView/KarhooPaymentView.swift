@@ -17,7 +17,7 @@ public struct KHCardDetailsViewID {
 
 public final class KarhooPaymentView: UIView, PaymentView {
 
-    public var baseViewController: BaseViewController?
+    public weak var baseViewController: BaseViewController?
     var quote: Quote?
     var actions: PaymentViewActions?
     var nonce: String?
