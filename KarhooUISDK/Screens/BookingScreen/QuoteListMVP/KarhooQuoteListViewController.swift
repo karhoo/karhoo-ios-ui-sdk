@@ -72,7 +72,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         
         quoteCategoryBarView = KarhooQuoteCategoryBarView()
         quoteCategoryBarView?.set(actions: self)
-        quoteCategoryBarView.alpha = 0
+        quoteCategoryBarView.isHidden = true
         stackView.addArrangedSubview(quoteCategoryBarView)
         
         emptyDataSetView = QuoteListEmptyDataSetView()

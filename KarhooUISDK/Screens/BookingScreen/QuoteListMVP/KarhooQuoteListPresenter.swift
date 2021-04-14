@@ -161,6 +161,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             if result.successValue()?.all.isEmpty == false {
                 self?.quoteListView?.hideLoadingView()
+                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
             }
 
             switch result {
@@ -179,7 +180,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                 if quotes.all.isEmpty && quotes.status != .completed {
                     self?.quoteListView?.showLoadingView()
                     self?.quoteListView?.toggleCategoryFilteringControls(show: false)
-                } else if quotes.status == .completed {
+                } else if quotes.all.isEmpty && quotes.status == .completed {
                     self?.quoteListView?.hideLoadingView()
                     self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
