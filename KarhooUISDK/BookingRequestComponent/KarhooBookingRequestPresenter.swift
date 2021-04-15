@@ -34,9 +34,9 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
          tripService: TripService = Karhoo.getTripService(),
          analytics: Analytics = KarhooAnalytics(),
          appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
-         flightDetailsScreenBuilder: FlightDetailsScreenBuilder = KarhooUI().screens().flightDetails(),
+         flightDetailsScreenBuilder: FlightDetailsScreenBuilder = FlightDetailsViewController.KarhooFlightDetailsScreenBuilder(),
          paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
-         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
+         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = PopupDialogViewController.KarhooPopupDialogScreenBuilder(),
          callback: @escaping ScreenResultCallback<TripInfo>) {
         self.quote = quote
         self.bookingDetails = bookingDetails

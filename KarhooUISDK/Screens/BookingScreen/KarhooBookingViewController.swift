@@ -18,7 +18,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
-    private var quoteListView = KarhooUI.components.quoteList()
+    private var quoteListView = KarhooComponents.shared.quoteList()
     private var quoteListPanelVC: FloatingPanelController?
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
@@ -76,7 +76,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
              navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
 
-        addressBar = KarhooUI.components.addressBar(journeyInfo: journeyInfo)
+        addressBar = KarhooComponents.shared.addressBar(journeyInfo: journeyInfo)
 
         view.insertSubview(addressBar, aboveSubview: mapView)
 
@@ -383,25 +383,8 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter,
                                                                 journeyInfo: validatedJourneyInfo)
 
-        if let sideMenuRouting = KarhooUI.sideMenuHandler {
-            let sideMenu = UISDKScreenRouting
-                .default.sideMenu().buildSideMenu(hostViewController: bookingViewController,
-                                                  routing: sideMenuRouting)
-
-            bookingViewController.set(sideMenu: sideMenu)
-            bookingViewController.set(leftNavigationButton: .menuIcon)
-
-            let navigationController = UINavigationController(rootViewController: bookingViewController)
-            navigationController.viewControllers.insert(sideMenu.getFlowItem(),
-                    at: navigationController.viewControllers.endIndex)
-            navigationController.setNavigationBarHidden(true, animated: false)
-            navigationController.modalPresentationStyle = .fullScreen
-            return navigationController
-
-        } else {
-            bookingViewController.set(leftNavigationButton: .exitIcon)
-            bookingViewController.modalPresentationStyle = .fullScreen
-            return bookingViewController
-        }
+        bookingViewController.set(leftNavigationButton: .exitIcon)
+        bookingViewController.modalPresentationStyle = .fullScreen
+        return bookingViewController
     }
 }

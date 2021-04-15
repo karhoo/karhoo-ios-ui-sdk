@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     }
 
     func showKarhoo() {
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
+        booking = UISDKScreenRouting.default.booking().buildBookingScreen(journeyInfo: nil,
                                                                     passengerDetails: nil,
                                                                     callback: { [weak self] result in
                                                                         switch result {

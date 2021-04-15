@@ -11,8 +11,6 @@ import KarhooSDK
 public final class KarhooUI {
 
     public static var colors: KarhooColors = DefaultKarhooColors()
-    public static var sideMenuHandler: SideMenuHandler?
-    public static var components = KarhooComponents.shared
 
     public static var fontFamily: FontFamily = FontFamily() {
         willSet {
@@ -24,16 +22,8 @@ public final class KarhooUI {
 
     public init() {}
 
-    public static func setRouting(routing: ScreenBuilders) {
-        UISDKScreenRouting.default.set(routing: routing)
-    }
-
     public static func set(configuration: KarhooUISDKConfiguration) {
         Karhoo.set(configuration: configuration)
         KarhooUISDKConfigurationProvider.set(configuration)
-    }
-    
-    public func screens() -> Routing {
-        return UISDKScreenRouting.default
     }
 }

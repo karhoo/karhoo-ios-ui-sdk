@@ -23,7 +23,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
          journeyInfo: JourneyInfo? = nil,
          addressService: AddressService = Karhoo.getAddressService(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
-         addressScreenBuilder: AddressScreenBuilder = KarhooUI().screens().address(),
+         addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker()) {
         self.bookingStatus = bookingStatus
         self.journeyInfo = journeyInfo

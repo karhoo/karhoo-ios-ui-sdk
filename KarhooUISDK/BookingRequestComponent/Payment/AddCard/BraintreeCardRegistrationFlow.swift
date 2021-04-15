@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
+final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
     private let paymentScreenBuilder: PaymentScreenBuilder
     private let paymentService: PaymentService
@@ -18,7 +18,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private let userService: UserService
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
 
-    public init(paymentScreenBuilder: PaymentScreenBuilder = UISDKScreenRouting.default.paymentScreen(),
+    init(paymentScreenBuilder: PaymentScreenBuilder = BraintreePaymentScreenBuilder(),
                 paymentService: PaymentService = Karhoo.getPaymentService(),
                 userService: UserService = Karhoo.getUserService(),
                 analytics: AnalyticsService = Karhoo.getAnalyticsService()) {
@@ -28,11 +28,11 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         self.analyticsService = analytics
     }
 
-    public func setBaseView(_ baseViewController: BaseViewController?) {
+    func setBaseView(_ baseViewController: BaseViewController?) {
         self.baseViewController = baseViewController
     }
 
-   public func start(cardCurrency: String,
+    func start(cardCurrency: String,
                      amount: Int,
                      supplierPartnerId: String,
                      showUpdateCardAlert: Bool,
