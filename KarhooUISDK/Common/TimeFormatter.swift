@@ -20,7 +20,9 @@ struct TimeFormatter {
         } else if hours > 0 && minutes == 0 {
             return String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)
         } else {
-            return "\(String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)) \(UITexts.Quotes.freeCancellationAndKeyword) \(String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes))"
+            let hoursText = String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)
+            let minutesText = String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes)
+            return "\(hoursText) \(UITexts.Quotes.freeCancellationAndKeyword) \(minutesText)"
         }
     }
 }
