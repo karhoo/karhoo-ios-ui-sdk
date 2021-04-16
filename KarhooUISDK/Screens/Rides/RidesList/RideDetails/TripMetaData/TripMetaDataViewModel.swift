@@ -35,8 +35,10 @@ final class TripMetaDataViewModel {
 
         switch trip.serviceAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
-            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, "\(freeCancellationMinutes)")
+            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes,
+               freeCancellationMinutes > 0 {
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }

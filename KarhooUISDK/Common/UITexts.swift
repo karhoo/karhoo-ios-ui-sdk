@@ -319,6 +319,7 @@ public enum UITexts {
     
     public enum Quotes {
         static let freeCancellation = "Text.Quote.FreeCancellation".localized
+        static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
     }
 }
