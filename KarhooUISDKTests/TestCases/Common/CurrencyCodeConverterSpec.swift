@@ -122,4 +122,26 @@ class CurrencyCodeConverterSpec: XCTestCase {
 
         XCTAssertEqual("£10.00 - £50.00", priceString)
     }
+    
+    /**
+     *  When:   Showing a quote range for JPY
+     *  Then:   Expected price should show
+     */
+    func testQuoteRangeForJPY() {
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, currencyCode: "JPY")
+        let priceString = CurrencyCodeConverter.quoteRangePrice(quote: quote)
+
+        XCTAssertEqual("¥10 - ¥50", priceString)
+    }
+    
+    /**
+     *  When:   Showing a quote range for JOD
+     *  Then:   Expected price should show
+     */
+    func testQuoteRangeForJOD() {
+        let quote = TestUtil.getRandomQuote(highPrice: 5321, lowPrice: 1321, currencyCode: "JOD")
+        let priceString = CurrencyCodeConverter.quoteRangePrice(quote: quote)
+
+        XCTAssertEqual("JOD 1.321 - JOD 5.321", priceString)
+    }
 }
