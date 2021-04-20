@@ -12,7 +12,7 @@ import KarhooSDK
 extension Fare {
     
     func displayPrice() -> String {
-       return CurrencyCodeConverter.toPriceString(price: self.breakdown.total,
+       return CurrencyCodeConverter.toPriceString(price: Int(self.breakdown.total),
                                                   currencyCode: self.breakdown.currency)
     }
 }

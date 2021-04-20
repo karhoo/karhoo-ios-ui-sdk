@@ -109,7 +109,7 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
     func showCancellationFeeAlert(cancellationFee: CancellationFee) {
         let message: String
         if cancellationFee.fee.value > 0 {
-            let feeString = CurrencyCodeConverter.toPriceString(price: Double(cancellationFee.fee.decimalValue), currencyCode: cancellationFee.fee.currency)
+            let feeString = CurrencyCodeConverter.toPriceString(price: cancellationFee.fee.value, currencyCode: cancellationFee.fee.currency)
             message = String(format: UITexts.Bookings.cancellationFeeCharge, feeString)
         } else {
             message = UITexts.Bookings.cancellationFeeContinue
