@@ -25,7 +25,7 @@ final class BookingViewControllerBuilderSpec: XCTestCase {
       * When: Side menu handler is set
       * Then: Booking View should be configured as expected
       */
-    func skip_testSideMenuSet() {
+    func testSideMenuSet() {
         KarhooUI.sideMenuHandler = MockSideMenuHandler()
 
         let output = testObject.buildBookingScreen(journeyInfo: TestUtil.getRandomJourneyInfo(),
