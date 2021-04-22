@@ -45,7 +45,7 @@ end
   desc "Xcov Report"
   lane :XcovReport do
     xcov(
-      workspace: "KarhooUISDK.workspace",
+      workspace: "KarhooUISDK.xcworkspace",
       scheme: "KarhooUISDK",
       output_directory: "fastlane/test_output",
       ignore_file_path: "./*view.swift",
