@@ -134,7 +134,9 @@ class TestUtil: PrimitiveUtil {
                               serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
-                               currencyCode: currencyCode)
+                               currencyCode: currencyCode,
+                               intLowPrice: lowPrice,
+                               intHighPrice: highPrice)
         let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
         let fleet = Fleet(name: fleetName)
         let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)

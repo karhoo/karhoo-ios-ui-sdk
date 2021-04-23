@@ -114,7 +114,7 @@ class QuoteCellViewModelSpec: XCTestCase {
      * Then: Fare should be a range
      */
     func testMarketQuoteShowsRange() {
-        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .market)
+        let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .market)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
@@ -126,7 +126,7 @@ class QuoteCellViewModelSpec: XCTestCase {
      * Then: Fare should be a single price (high price)
      */
     func testFleetQuoteSingleFare() {
-        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet)
+        let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .fleet)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 

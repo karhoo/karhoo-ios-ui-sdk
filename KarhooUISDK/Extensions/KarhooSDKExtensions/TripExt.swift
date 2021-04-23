@@ -12,7 +12,7 @@ import KarhooSDK
 extension TripInfo {
 
     func quotePrice() -> String {
-        return CurrencyCodeConverter.toPriceString(price: self.tripQuote.denominateTotal,
+        return CurrencyCodeConverter.toPriceString(price: Int(self.tripQuote.total),
                                                    currencyCode: self.tripQuote.currency)
     }
 
@@ -20,7 +20,7 @@ extension TripInfo {
         if self.fare.total == 0 {
             return UITexts.Bookings.priceCancelled
         }
-        return CurrencyCodeConverter.toPriceString(price: fare.denominateTotal,
+        return CurrencyCodeConverter.toPriceString(price: fare.total,
                                                    currencyCode: fare.currency)
     }
 }
