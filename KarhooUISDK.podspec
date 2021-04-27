@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
 
   s.dependency    'KarhooSDK'
   s.dependency 	  'FloatingPanel', '2.0.1'
-  s.dependency    'BraintreeDropIn'
-  s.dependency    'Braintree/PaymentFlow'
+  s.dependency    'BraintreeDropIn', '~> 8.1'
+  s.dependency    'Braintree/PaymentFlow', '~> 4.37'
   s.dependency    'PhoneNumberKit', '3.3.1'
   s.dependency    'Adyen', '3.6.0'
 
