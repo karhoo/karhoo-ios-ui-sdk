@@ -12,7 +12,7 @@ import KarhooSDK
 
 class ViewController: UIViewController {
 
-    private var booking: BookingScreen?
+    private var booking: Screen?
 
     private lazy var guestBookingButton: UIButton = {
         let button = UIButton()
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
                                                                         switch result {
                                                                         case .completed(let result):
                                                                             switch result {
-                                                                            case .tripAllocated(let trip): self?.booking?.openTrip(trip)
+                                                                            case .tripAllocated(let trip): (self?.booking as? BookingScreen)?.openTrip(trip)
                                                                             default: break
                                                                             }
                                                                         default: break
