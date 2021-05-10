@@ -111,4 +111,55 @@ class BookingItemViewModelSpec: XCTestCase {
         XCTAssertFalse(testObject.showActionButtons)
     }
 
+    /**
+     * When: The SLA has free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testFreeCancellationMinutesOnSLA() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
+        let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = RideCellViewModel(trip: cancellableTrip)
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
+    }
+
+    /**
+     * When: The SLA has 0 free cancellation minutes
+     * Then:  Should not display the free cancellation message
+     */
+    func testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 0))
+        let uncancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = RideCellViewModel(trip: uncancellableTrip)
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
+     * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
+     * Then:  The correct free cancellation message is set
+     */
+    func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .beforeDriverEnRoute))
+        let cancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: sla)
+
+        testObject = RideCellViewModel(trip: cancellableTrip)
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation until the driver is en route")
+    }
+
+    /**
+     * When: The SLA has no free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testNoFreeCancellationMinutesOnSLA() {
+        let uncancellableTrip = TestUtil.getRandomTrip(state: .incomplete, serviceAgreements: ServiceAgreements())
+
+        testObject = RideCellViewModel(trip: uncancellableTrip)
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
 }

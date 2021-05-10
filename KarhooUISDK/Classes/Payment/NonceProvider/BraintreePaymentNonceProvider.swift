@@ -48,7 +48,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             case .success(let sdkToken):
                 self?.sdkToken = sdkToken
             case .failure:
-                self?.callbackResult?(.completed(value: .failedToInitialisePaymentService))
+                self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.errorValue())))
                 return
             }
         }
@@ -75,6 +75,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
     private func triggerAddCardFlow(currencyCode: String) {
         self.cardRegistrationFlow.start(cardCurrency: currencyCode,
                                         amount: 0,
+                                        supplierPartnerId: "",
                                         showUpdateCardAlert: true,
                                         callback: { [weak self] result in
             switch result {
@@ -99,7 +100,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         }
 
         guard self.sdkToken != nil else {
-            self.callbackResult?(.completed(value: .failedToInitialisePaymentService))
+            self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             return
         }
 
@@ -120,7 +121,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
             switch result {
             case .failedToInitialisePaymentService:
-                self.callbackResult?(.completed(value: .failedToInitialisePaymentService))
+                self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             case .threeDSecureAuthenticationFailed:
                 triggerAddCardFlow(currencyCode: quote.price.currencyCode)
             case .success(let threeDSecureNonce):

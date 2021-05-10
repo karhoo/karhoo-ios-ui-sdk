@@ -301,8 +301,8 @@ final class KarhooTripViewController: UIViewController, TripView {
 
             let cancelRideBehaviour = CancelRideBehaviour(trip: trip, alertHandler: alertHandler)
             let presenter = KarhooTripPresenter(initialTrip: trip,
-                                                   cancelRideBehaviour: cancelRideBehaviour,
-                                                   callback: callback)
+                                                cancelRideBehaviour: cancelRideBehaviour,
+                                                callback: callback)
 
             let addressBarPresenter = KarhooTripAddressBarPresenter(trip: trip)
 

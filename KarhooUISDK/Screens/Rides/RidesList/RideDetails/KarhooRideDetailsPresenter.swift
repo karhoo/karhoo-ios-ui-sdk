@@ -56,7 +56,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         tripRatingCache.tripRated(tripId: trip.tripId) ? view.hideFeedbackOptions() : ()
     }
 
-    func set(cancelRideBehaviour: CancelRideBehaviourProtocol) {
+    func set(cancelRideBehaviour: CancelRideBehaviourProtocol, alertHandler: AlertHandlerProtocol) {
         self.cancelRideBehaviour = cancelRideBehaviour
         self.cancelRideBehaviour?.delegate = self
     }
@@ -70,7 +70,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
     }
 
     func didPressCancelTrip() {
-        cancelRideBehaviour?.triggerCancelRide()
+        cancelRideBehaviour?.cancelPressed()
     }
 
     func didPresssReportIsssue() {
@@ -132,7 +132,8 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
         if trip.state == .driverCancelled {
             rideDetailsView?.showAlert(title: UITexts.Trip.tripCancelledByDispatchAlertTitle,
-                                       message: UITexts.Trip.tripCancelledByDispatchAlertMessage)
+                                       message: UITexts.Trip.tripCancelledByDispatchAlertMessage,
+                                       error: nil)
             unsubscribeTripListener()
         }
     }
@@ -167,29 +168,15 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
 extension KarhooRideDetailsPresenter: CancelRideDelegate {
 
-    public func sendCancelRideNetworkRequest(callback: @escaping CallbackClosure<KarhooVoid>) {
-        let tripCancellation = TripCancellation(tripId: tripIdentifier(), cancelReason: .notNeededAnymore)
-
-        tripService.cancel(tripCancellation: tripCancellation)
-            .execute(callback: { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-
-                if result.isSuccess() {
-                    self.rideDetailsView?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                                                     message: UITexts.Bookings.cancellationSuccessAlertMessage)
-                }
-
-                callback(result)
-            })
-    }
-
     public func showLoadingOverlay() {
         rideDetailsView?.showLoading()
     }
 
     public func hideLoadingOverlay() {
         rideDetailsView?.hideLoading()
+    }
+    
+    public func handleSuccessfulCancellation() {
+        rideDetailsView?.pop()
     }
 }

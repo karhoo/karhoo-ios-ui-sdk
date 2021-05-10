@@ -268,7 +268,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     /**
      *  When:   An asap booking has been confirmed
      *  Then:   The allocation screen should be showed
-     * And: Booking request presenter should be dismissed
+     *  And: Booking request presenter should be dismissed
      */
     func testBookingConfirmed() {
         mockBookingStatus.bookingDetailsToReturn = TestUtil.getRandomBookingDetails(dateSet: false)
@@ -386,7 +386,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
       * When: Prebook confimation is closed with result 'show ride details'
       * Then: View should show ride details for specified trip
       */
-    func testShowRideDetailsAfterPrebookConfrimation() {
+    func testShowRideDetailsAfterPrebookConfirmation() {
         let tripBooked = TestUtil.getRandomTrip(dateSet: true)
         let rideDetailsResult = ScreenResult<PrebookConfirmationAction>.completed(result: .rideDetails)
 
@@ -425,7 +425,28 @@ final class KarhooBookingPresenterSpec: XCTestCase {
             return
         }
     }
-
+    
+    /**
+      * When: User chooses to wait on the Ride Details screen for an unallocated trip
+      * Then: View should show ride details for specified trip
+      */
+    func testShowRideDetailsOnDriverAllocationDelayAlertDismissal() {
+        let tripBooked = TestUtil.getRandomTrip(dateSet: true)
+        
+        testObject.tripDriverAllocationDelayed(trip: tripBooked)
+        
+        XCTAssertTrue(mockBookingView.showAlertCalled)
+        XCTAssertEqual(UITexts.GenericTripStatus.driverAllocationDelayTitle, mockBookingView.actionAlertTitle)
+        XCTAssertEqual(UITexts.GenericTripStatus.driverAllocationDelayMessage, mockBookingView.actionAlertMessage)
+        
+        mockBookingView.triggerAlertAction(atIndex: 0)
+        
+        XCTAssertTrue(mockBookingView.resetAndLocateCalled)
+        XCTAssertTrue(mockBookingView.hideAllocationScreenCalled)
+        XCTAssertEqual(tripBooked.tripId, mockRideDetailsScreenBuilder.overlayTripSet?.tripId)
+        XCTAssertEqual(mockBookingView?.presentedView, mockRideDetailsScreenBuilder.overlayReturnViewController)
+    }
+    
     /**
       * When: trip is allocated
       * Then: View should hide allocation screen

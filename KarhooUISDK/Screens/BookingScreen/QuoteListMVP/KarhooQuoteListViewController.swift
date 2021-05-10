@@ -29,7 +29,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     private let tableViewReuseIdentifier = KHQuoteListViewID.tableViewReuseIdentifier
     private var data: TableData<Quote>!
     private var source: TableDataSource<Quote>!
-    private var delegate: TableDelegate<Quote>! //swiftlint:disable:this weak_delegate
+    private var delegate: TableDelegate<Quote>! // swiftlint:disable:this weak_delegate
     private var presenter: QuoteListPresenter?
     
     init() {
@@ -72,7 +72,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         
         quoteCategoryBarView = KarhooQuoteCategoryBarView()
         quoteCategoryBarView?.set(actions: self)
-        quoteCategoryBarView.alpha = 0
+        quoteCategoryBarView.isHidden = true
         stackView.addArrangedSubview(quoteCategoryBarView)
         
         emptyDataSetView = QuoteListEmptyDataSetView()
@@ -207,17 +207,18 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
         quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
     }
+
+    func toggleCategoryFilteringControls(show: Bool) {
+        quoteSortView.alpha = show ? 1 : 0
+        quoteCategoryBarView.isHidden = !show
+    }
     
     func hideLoadingView() {
         loadingView.hide()
-        quoteSortView.alpha = 1
-        quoteCategoryBarView.alpha = 1
     }
     
     func showLoadingView() {
         loadingView.show()
-        quoteSortView.alpha = 0
-        quoteCategoryBarView.alpha = 0
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }

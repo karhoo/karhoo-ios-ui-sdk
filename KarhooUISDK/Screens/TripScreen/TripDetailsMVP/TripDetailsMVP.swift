@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: Rename this to Trip and sort old TripDetails to RideDetails (Ride details are currently called TripDetails)
 protocol TripScreenDetailsView: UIView {
 
     func set(actions: TripScreenDetailsActions,

@@ -43,7 +43,7 @@ class TripSummaryViewController: UIViewController, TripSummaryView {
 
     final class KarhooTripSummaryScreenBuilder: TripSummaryScreenBuilder {
         func buildTripSummaryScreen(trip: TripInfo,
-                                       callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
+                                    callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
             let tripSummaryPresenter = KarhooTripSummaryPresenter(trip: trip,
                                                                         callback: callback)
             let tripSummaryViewController = TripSummaryViewController(presenter: tripSummaryPresenter)

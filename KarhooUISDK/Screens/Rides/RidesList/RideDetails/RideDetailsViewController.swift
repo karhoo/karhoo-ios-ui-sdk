@@ -13,6 +13,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
     private var scrollView: UIScrollView!
     private var rideDetailsView: RideDetailsViewContainer!
+
     private var loadingView: LoadingView!
     
     private let presenter: RideDetailsPresenter
@@ -127,7 +128,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
             let alertHandler = AlertHandler(viewController: rideDetailsViewController)
             let cancelRideBehaviour = CancelRideBehaviour(trip: trip,
                                                           alertHandler: alertHandler)
-            rideDetailsPresenter.set(cancelRideBehaviour: cancelRideBehaviour)
+            rideDetailsPresenter.set(cancelRideBehaviour: cancelRideBehaviour, alertHandler: alertHandler)
 
             return rideDetailsViewController
         }
@@ -176,7 +177,8 @@ extension RideDetailsViewController: RideDetailsStackButtonActions {
 
     func reportIssueError() {
         showAlert(title: UITexts.Generic.error,
-                  message: UITexts.Generic.noMailSetUpMessage)
+                  message: UITexts.Generic.noMailSetUpMessage,
+                  error: nil)
     }
 }
 

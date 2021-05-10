@@ -3,6 +3,8 @@ disabled_rules:
 trailing_whitespace:
   ignores_empty_lines: true
   ignores_comments: true
+included:
+  - KarhooUISDK
 excluded:
   - Pods
 line_length: 200

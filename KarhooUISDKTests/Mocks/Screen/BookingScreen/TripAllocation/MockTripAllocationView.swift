@@ -10,6 +10,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockTripAllocationView: TripAllocationView {
+    
+    private(set) var tripDriverAllocationDelayedCalled = false
 
     private(set) var actionsSet: TripAllocationActions?
     func set(actions: TripAllocationActions) {
@@ -48,5 +50,9 @@ final class MockTripAllocationView: TripAllocationView {
     private(set) var resetCancelButtonCalled = false
     func resetCancelButtonProgress() {
         resetCancelButtonCalled = true
+    }
+    
+    func tripDriverAllocationDelayed(trip: TripInfo) {
+        tripDriverAllocationDelayedCalled = true
     }
 }

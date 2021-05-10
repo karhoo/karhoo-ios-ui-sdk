@@ -16,13 +16,17 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     private let view: TripAllocationView
     private var trip: TripInfo?
     private let analytics: Analytics
+    private let driverAllocationCheckDelay: Double
+    private var displayDriverAllocationAlert: Bool = false
 
     init(tripService: TripService = Karhoo.getTripService(),
          analytics: Analytics = KarhooAnalytics(),
-         view: TripAllocationView) {
+         view: TripAllocationView,
+         driverAllocationCheckDelay: Double = 60.0) {
         self.tripService = tripService
         self.analytics = analytics
         self.view = view
+        self.driverAllocationCheckDelay = driverAllocationCheckDelay
     }
 
     func startMonitoringTrip(trip: TripInfo) {
@@ -37,6 +41,13 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
             }
         }
 
+        tripObservable?.subscribe(observer: tripObserver)
+        
+        displayDriverAllocationAlert = true
+        displayDriverAllocationDelayAlert()
+    }
+    
+    func stopMonitoringTrip() {
         tripObservable?.subscribe(observer: tripObserver)
     }
 
@@ -65,17 +76,35 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     private func tripUpdateReceived(trip: TripInfo) {
         switch trip.state {
         case .driverCancelled, .karhooCancelled, .noDriversAvailable:
+            displayDriverAllocationAlert = false
             view.tripCancelledBySystem(trip: trip)
-            tripObservable?.unsubscribe(observer: tripObserver)
+            stopMonitoringTrip()
             view.resetCancelButtonProgress()
         case .driverEnRoute, .arrived, .passengerOnBoard, .completed:
+            displayDriverAllocationAlert = false
             view.tripAllocated(trip: trip)
-            tripObservable?.unsubscribe(observer: tripObserver)
+            stopMonitoringTrip()
             view.resetCancelButtonProgress()
         default: break
         }
     }
-
+    
+    private func displayDriverAllocationDelayAlert() {
+        if !Karhoo.configuration.authenticationMethod().isGuest() {
+            DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay) { [weak self] in
+                DispatchQueue.main.async { [weak self] in
+                    self?.handleDriverAllocationDelay()
+                }
+            }
+        }
+    }
+    
+    func handleDriverAllocationDelay() {
+        if displayDriverAllocationAlert == true, let trip = trip {
+            view.tripDriverAllocationDelayed(trip: trip)
+        }
+    }
+    
     private func identifier(_ trip: TripInfo) -> String {
         if Karhoo.configuration.authenticationMethod().isGuest() {
             return trip.followCode

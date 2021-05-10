@@ -21,7 +21,7 @@ final class BaseViewControllerSpec: XCTestCase {
       * Then: Expected alert should show
       */
     func testShowAlert() {
-        testObject.showAlert(title: "title", message: "message")
+        testObject.showAlert(title: "title", message: "message", error: nil)
 
         let alert = testObject.presentedItem as? UIAlertController
 
@@ -39,9 +39,10 @@ final class BaseViewControllerSpec: XCTestCase {
         testObject.show(error: someError)
 
         let alert = testObject.presentedItem as? UIAlertController
+        let expectedMessage = "\(someError.userMessage) [\(someError.code)]"
 
         XCTAssertEqual(UITexts.Errors.somethingWentWrong, alert?.title)
-        XCTAssertEqual(someError.userMessage, alert?.message)
+        XCTAssertEqual(expectedMessage, alert?.message)
     }
 
     /**

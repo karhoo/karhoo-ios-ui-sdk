@@ -12,11 +12,13 @@ import KarhooSDK
 final class RideCell: UITableViewCell {
     
     var containerView: UIView!
+    var containerStackView: UIStackView!
     var tripDetailsView: TripDetailsView!
     var separatorLine: LineView!
     // Footer
-    var stackFooterContainer: UIStackView!
     var tripStatus: TripStatusView!
+    var cancellationInfo: UILabel!
+    var cancellationInfoContainer: UIView!
     var stackButtonView: KarhooStackButtonView!
     
     private var trip: TripInfo?
@@ -47,38 +49,46 @@ final class RideCell: UITableViewCell {
         widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         
         containerView = buildContainerView()
+        containerStackView = UIStackView()
+        containerStackView.axis = .vertical
+        containerStackView.translatesAutoresizingMaskIntoConstraints = true
+        containerView.addSubview(containerStackView)
+        containerStackView.anchor(top: containerView.topAnchor,
+                                  leading: containerView.leadingAnchor,
+                                  bottom: containerView.bottomAnchor,
+                                  trailing: containerView.trailingAnchor)
         
         tripDetailsView = TripDetailsView()
-        containerView.addSubview(tripDetailsView)
-        _ = [tripDetailsView.topAnchor.constraint(equalTo: containerView.topAnchor),
-             tripDetailsView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-             tripDetailsView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)]
-            .map { $0.isActive = true }
+        containerStackView.addArrangedSubview(tripDetailsView)
+
+        cancellationInfoContainer = UIView()
+        cancellationInfoContainer.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = "cancellationInfo_label"
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+
+        cancellationInfoContainer.addSubview(cancellationInfo)
+        cancellationInfo.anchor(top: cancellationInfoContainer.topAnchor,
+                                leading: cancellationInfoContainer.leadingAnchor,
+                                bottom: cancellationInfoContainer.bottomAnchor,
+                                trailing: cancellationInfoContainer.trailingAnchor,
+                                paddingTop: 10,
+                                paddingLeft: 10,
+                                paddingBottom: 10,
+                                paddingRight: 10)
+        containerStackView.addArrangedSubview(cancellationInfoContainer)
         
         separatorLine = LineView(color: .lightGray, accessibilityIdentifier: "separator_view")
-        containerView.addSubview(separatorLine)
-        _ = [separatorLine.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-             separatorLine.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-             separatorLine.topAnchor.constraint(equalTo: tripDetailsView.bottomAnchor),
-             separatorLine.heightAnchor.constraint(equalToConstant: 1.0)].map { $0.isActive = true }
-        
-        stackFooterContainer = UIStackView()
-        stackFooterContainer.accessibilityIdentifier = "stack_footer_container"
-        stackFooterContainer.translatesAutoresizingMaskIntoConstraints = false
-        stackFooterContainer.axis = .vertical
-        
-        containerView.addSubview(stackFooterContainer)
-        _ = [stackFooterContainer.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
-             stackFooterContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-             stackFooterContainer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-             stackFooterContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)]
-            .map { $0.isActive = true }
+        containerStackView.addArrangedSubview(separatorLine)
         
         tripStatus = TripStatusView()
-        stackFooterContainer.addArrangedSubview(tripStatus)
-        
+        containerStackView.addArrangedSubview(tripStatus)
+
         stackButtonView = KarhooStackButtonView()
-        stackFooterContainer.addArrangedSubview(stackButtonView)
+        containerStackView.addArrangedSubview(stackButtonView)
     }
 
     override func prepareForReuse() {
@@ -106,6 +116,8 @@ final class RideCell: UITableViewCell {
         tripStatus.setStatusIcon(UIImage.uisdkImage(viewModel.tripStateIconName))
         tripStatus.setStatusIconTintColor(viewModel.tripStateColor)
         tripDetailsView.set(viewModel: tripDetailsViewModel)
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        cancellationInfoContainer.isHidden = viewModel.freeCancellationMessage == nil
         
         if viewModel.showActionButtons == true {
             stackButtonView.isHidden = false
@@ -158,11 +170,11 @@ private extension RideCell {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
         
-        addSubview(view)
-        _ = [view.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
-             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20.0),
-             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.0),
-             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.0)].map { $0.isActive = true }
+        contentView.addSubview(view)
+        _ = [view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20.0),
+             view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20.0),
+             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0),
+             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.0)].map { $0.isActive = true }
         
         return view
     }

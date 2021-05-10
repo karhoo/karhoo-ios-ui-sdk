@@ -11,16 +11,20 @@ import KarhooSDK
 
 final class QuoteViewModel {
     
-    public let fleetName: String
-    public let eta: String
-    public let carType: String
-    public let fare: String
-    public let logoImageURL: String
-    public let fareType: String
-    public let showPickUpLabel: Bool
-    public let pickUpType: String
-    public let passengerCapacity: String
-    public let baggageCapacity: String
+    let fleetName: String
+    let eta: String
+    let carType: String
+    let fare: String
+    let logoImageURL: String
+    let fareType: String
+    let showPickUpLabel: Bool
+    let pickUpType: String
+    let passengerCapacity: String
+    let baggageCapacity: String
+    
+
+    /// If this message is not `nil`, it should be displayed
+    let freeCancellationMessage: String?
 
     init(quote: Quote,
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
@@ -30,6 +34,20 @@ final class QuoteViewModel {
         self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                   max: quote.vehicle.qta.highMinutes)
         self.carType = quote.vehicle.vehicleClass
+
+        switch quote.serviceLevelAgreements?.serviceCancellation.type {
+        case .timeBeforePickup:
+            if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
+            } else {
+                freeCancellationMessage = nil
+            }
+        case .beforeDriverEnRoute:
+            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
+        default:
+            freeCancellationMessage = nil
+        }
 
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)

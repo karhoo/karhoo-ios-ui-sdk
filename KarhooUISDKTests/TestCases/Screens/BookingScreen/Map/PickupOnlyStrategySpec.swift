@@ -9,8 +9,6 @@
 import XCTest
 import KarhooSDK
 import CoreLocation
-import KarhooUISDK
-
 @testable import KarhooUISDK
 
 class PickupOnlyStrategySpec: XCTestCase {
@@ -18,7 +16,7 @@ class PickupOnlyStrategySpec: XCTestCase {
     private var mockMapView: MockKarhooMapView!
     private var mockUserLocationProvider: MockUserLocationProvider!
     private var mockAddressService: MockAddressService!
-    private var mockPickupStrategyDelegate: MockPickupOnlyStrategyDelegate! //swiftlint:disable:this weak_delegate
+    private var mockPickupStrategyDelegate: MockPickupOnlyStrategyDelegate! // swiftlint:disable:this weak_delegate
     private var mockKarhooTime: MockTimeScheduler!
     private var testObject: PickupOnlyStrategy!
     private let mockBookingStatus = MockBookingStatus()

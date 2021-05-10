@@ -23,7 +23,7 @@ class TripExt: XCTestCase {
         let testTrip = TestUtil.getRandomTrip(fare: testFare)
 
         XCTAssertEqual(testTrip.farePrice(),
-                       CurrencyCodeConverter.toPriceString(price: testFare.denominateTotal,
+                       CurrencyCodeConverter.toPriceString(price: testFare.total,
                                                            currencyCode: testFare.currency))
     }
 
@@ -47,7 +47,7 @@ class TripExt: XCTestCase {
         let testTrip = TestUtil.getRandomTrip()
 
         XCTAssertEqual(testTrip.quotePrice(),
-                       CurrencyCodeConverter.toPriceString(price: testTrip.tripQuote.denominateTotal,
+                       CurrencyCodeConverter.toPriceString(price: testTrip.tripQuote.total,
                                                            currencyCode: testTrip.tripQuote.currency))
     }
 }

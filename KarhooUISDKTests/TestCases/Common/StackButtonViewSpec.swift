@@ -23,7 +23,7 @@ class StackButtonViewSpec: XCTestCase {
         super.setUp()
         testObject = KarhooStackButtonView()
 
-        testObject.resizingSwitcher = ResizingSwitcher() // normally loaded from xib
+//        testObject.resizingSwitcher = ResizingSwitcher() // normally loaded from xib
 
         actionOneCalled = false
         actionTwoCalled = false

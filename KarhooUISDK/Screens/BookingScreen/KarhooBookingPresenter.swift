@@ -73,7 +73,7 @@ final class KarhooBookingPresenter {
             .buildBookingRequestScreen(quote: quote,
                                        bookingDetails: bookingDetails,
                                        callback: { [weak self] result in
-                                            self?.view?.dismiss(animated: false, completion: {
+                                        self?.view?.presentedViewController?.dismiss(animated: false, completion: {
                                                 self?.bookingRequestCompleted(result: result,
                                                                               quote: quote,
                                                                               details: bookingDetails)
@@ -114,12 +114,14 @@ final class KarhooBookingPresenter {
             view?.reset()
             view?.showAlert(title: UITexts.Trip.noDriversAvailableTitle,
                             message: String(format: UITexts.Trip.noDriversAvailableMessage,
-                                            trip.fleetInfo.name))
+                                            trip.fleetInfo.name),
+                            error: nil)
 
         case .karhooCancelled:
             view?.reset()
             view?.showAlert(title: UITexts.Trip.karhooCancelledAlertTitle,
-                            message: UITexts.Trip.karhooCancelledAlertMessage)
+                            message: UITexts.Trip.karhooCancelledAlertMessage,
+                            error: nil)
 
         default:
             if bookingDetails.isScheduled {
@@ -191,10 +193,12 @@ extension KarhooBookingPresenter: BookingPresenter {
         switch trip.state {
         case .karhooCancelled:
             view?.showAlert(title: UITexts.Trip.karhooCancelledAlertTitle,
-                            message: UITexts.Trip.karhooCancelledAlertMessage)
+                            message: UITexts.Trip.karhooCancelledAlertMessage,
+                            error: nil)
         default:
             view?.showAlert(title: UITexts.Trip.noDriversAvailableTitle,
-                            message: String(format: UITexts.Trip.noDriversAvailableMessage, trip.fleetInfo.name))
+                            message: String(format: UITexts.Trip.noDriversAvailableMessage, trip.fleetInfo.name),
+                            error: nil)
         }
 
         view?.hideAllocationScreen()
@@ -209,6 +213,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         view?.showAlert(title: UITexts.Trip.tripCancelBookingFailedAlertTitle,
                         message: UITexts.Trip.tripCancelBookingFailedAlertMessage,
+                        error: nil,
                         actions: [
                             AlertAction(title: UITexts.Generic.cancel, style: .default, handler: nil),
                             AlertAction(title: callFleet, style: .default, handler: { [weak self] _ in
@@ -216,12 +221,30 @@ extension KarhooBookingPresenter: BookingPresenter {
                             })
             ])
     }
+    
+    func tripDriverAllocationDelayed(trip: TripInfo) {
+        view?.showAlert(title: UITexts.GenericTripStatus.driverAllocationDelayTitle,
+                        message: UITexts.GenericTripStatus.driverAllocationDelayMessage,
+                        error: nil,
+                        actions: [
+                            AlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] _ in
+                                self?.tripWaitOnRideDetails(trip: trip)
+                            })
+                        ])
+    }
+    
+    func tripWaitOnRideDetails(trip: TripInfo) {
+        view?.resetAndLocate()
+        view?.hideAllocationScreen()
+        showRideDetails(trip: trip)
+    }
 
     func tripSuccessfullyCancelled() {
         resetBookingStatus()
         view?.hideAllocationScreen()
         view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                        message: UITexts.Bookings.cancellationSuccessAlertMessage)
+                        message: UITexts.Bookings.cancellationSuccessAlertMessage,
+                        error: nil)
     }
 
     func didSelectQuote(quote: Quote) {

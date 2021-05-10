@@ -28,6 +28,16 @@
 				<string>com.karhooUISDK.Client.Payments</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.karhooUISDK.Client.Adyen</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.karhooUISDK.Client.Adyen</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

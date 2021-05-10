@@ -34,8 +34,11 @@ final class KarhooPaymentPresenter: PaymentPresenter {
 
         let currencyCode = view.quote?.price.currencyCode ?? "GBP"
         let amount = view.quote?.price.intHighPrice ?? 0
+        let supplierPartnerId = view.quote?.fleet.id ?? ""
 
-        cardRegistrationFlow.start(cardCurrency: currencyCode, amount: amount,
+        cardRegistrationFlow.start(cardCurrency: currencyCode,
+                                   amount: amount,
+                                   supplierPartnerId: supplierPartnerId,
                                    showUpdateCardAlert: showRetryAlert,
                                    callback: { [weak self] result in
                                     guard let cardFlowResult = result.completedValue() else {
@@ -60,7 +63,7 @@ final class KarhooPaymentPresenter: PaymentPresenter {
             view.set(paymentMethod: method)
         case .didFailWithError(let error):
             (view.parentViewController as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
-                                                                          message: error?.message ?? "")
+                                                                          message: error?.message ?? "", error: error)
         default: break
         }
     }

@@ -38,6 +38,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         XCTAssertEqual(testObject.eta, expectedEta)
         XCTAssertEqual("1", testObject.passengerCapacity)
         XCTAssertEqual("2", testObject.baggageCapacity)
+        XCTAssertNil(testObject.freeCancellationMessage)
     }
     
     /**
@@ -113,7 +114,7 @@ class QuoteCellViewModelSpec: XCTestCase {
      * Then: Fare should be a range
      */
     func testMarketQuoteShowsRange() {
-        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .market)
+        let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .market)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
@@ -125,10 +126,65 @@ class QuoteCellViewModelSpec: XCTestCase {
      * Then: Fare should be a single price (high price)
      */
     func testFleetQuoteSingleFare() {
-        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet)
+        let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .fleet)
 
         testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
 
         XCTAssertEqual(testObject.fare, "£50.00")
+    }
+    
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testFreeCancellationMinutesOnSLA() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
+    }
+
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has 0 free cancellation minutes
+     * Then:  Should not display the free cancellation message
+     */
+    func testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 0))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has free cancellation of type "BeforeDriverEnRoute"
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .beforeDriverEnRoute))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation until the driver is en route")
+    }
+    
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has no free cancellation minutes
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testNoFreeCancellationMinutesOnSLA() {
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: ServiceAgreements())
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+
+        XCTAssertNil(testObject.freeCancellationMessage)
     }
 }

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.4.0"
+  s.version               = "1.5.0"
 
   s.summary               = "UI SDK for the Karhoo platform"
   s.homepage              = "https://github.com/karhoo/Karhoo-iOS-UI-SDK.git"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.resource_bundles = {
     'KarhooUISDK' => [
-        'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,bundle,lproj}'
+        'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,stringsdict,bundle,lproj}'
     ]
   }
 
@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
 
   s.dependency    'KarhooSDK'
   s.dependency 	  'FloatingPanel', '2.0.1'
-  s.dependency    'BraintreeDropIn'
-  s.dependency    'Braintree/PaymentFlow'
+  s.dependency    'BraintreeDropIn', '~> 8.1'
+  s.dependency    'Braintree/PaymentFlow', '~> 4.37'
   s.dependency    'PhoneNumberKit', '3.3.1'
   s.dependency    'Adyen', '3.6.0'
 

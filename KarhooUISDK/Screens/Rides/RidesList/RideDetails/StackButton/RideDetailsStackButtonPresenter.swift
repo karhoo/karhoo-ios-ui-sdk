@@ -11,18 +11,23 @@ import KarhooSDK
 final class RideDetailsStackButtonPresenter {
 
     private let trip: TripInfo
-    private let mailComposer: FeedbackEmailComposer
+    private let isFleetCall: Bool
+    private let mailComposer: FeedbackEmailComposer?
+    private let phoneNumberCaller: PhoneNumberCallerProtocol?
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
 
     init(trip: TripInfo,
          stackButton: StackButtonView?,
-         mailComposer: FeedbackEmailComposer,
-         rideDetailsStackButtonActions: RideDetailsStackButtonActions) {
+         mailComposer: FeedbackEmailComposer?,
+         rideDetailsStackButtonActions: RideDetailsStackButtonActions,
+         phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller()) {
         self.trip = trip
+        self.isFleetCall = trip.vehicle.driver.phoneNumber.isEmpty
         self.mailComposer = mailComposer
         self.view = stackButton
         self.rideDetailsStackButtonActions = rideDetailsStackButtonActions
+        self.phoneNumberCaller = phoneNumberCaller
 
         if TripInfoUtility.canCancel(trip: trip) {
             setupUpAndComingTrip()
@@ -44,16 +49,18 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func setupPassengerOnBoardState() {
-        view?.set(buttonText: UITexts.Bookings.trackTrip, action: { [weak self] in
-            self?.rideDetailsStackButtonActions?.trackRide()
+        view?.set(buttonText: UITexts.Bookings.contactFleet, action: {
+            self.phoneNumberCaller?.call(number: self.trip.fleetInfo.phoneNumber)
         })
     }
 
     private func setupUpAndComingTrip() {
+        let buttonText = isFleetCall ? UITexts.Bookings.contactFleet : UITexts.Bookings.contactDriver
+        let phoneNumber = isFleetCall ? self.trip.fleetInfo.phoneNumber : self.trip.vehicle.driver.phoneNumber
         view?.set(firstButtonText: UITexts.Bookings.cancelRide, firstButtonAction: { [weak self] in
             self?.rideDetailsStackButtonActions?.cancelRide()
-        }, secondButtonText: UITexts.Bookings.contactFleet, secondButtonAction: {
-            PhoneNumberCaller().call(number: self.trip.fleetInfo.phoneNumber)
+        }, secondButtonText: buttonText, secondButtonAction: {
+            self.phoneNumberCaller?.call(number: phoneNumber)
         })
     }
 
@@ -66,7 +73,7 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func reportIssue() {
-        if self.mailComposer.reportIssueWith(trip: self.trip) {
+        if self.mailComposer?.reportIssueWith(trip: self.trip) != nil {
             return
         }
 

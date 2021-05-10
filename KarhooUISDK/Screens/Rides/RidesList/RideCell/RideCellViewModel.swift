@@ -19,6 +19,9 @@ final class RideCellViewModel {
     public let tripDetailsViewModel: TripDetailsViewModel
     public let showActionButtons: Bool
 
+    /// If this message is not `nil`, it should be displayed
+    let freeCancellationMessage: String?
+
     init(trip: TripInfo) {
         self.trip = trip
 
@@ -43,5 +46,19 @@ final class RideCellViewModel {
         let bookingStatusViewModel = BookingStatusViewModel(trip: trip)
         tripStateColor = bookingStatusViewModel.statusColor
         tripStateIconName = bookingStatusViewModel.imageName
+
+        switch trip.serviceAgreements?.serviceCancellation.type {
+        case .timeBeforePickup:
+            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
+            } else {
+                freeCancellationMessage = nil
+            }
+        case .beforeDriverEnRoute:
+            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
+        default:
+            freeCancellationMessage = nil
+        }
     }
 }

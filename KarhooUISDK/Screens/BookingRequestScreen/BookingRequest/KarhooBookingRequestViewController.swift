@@ -50,15 +50,13 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(code:) has not been implemented")
     }
-    
-    override func loadView() {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setUpView()
     }
     
     private func setUpView() {
-        view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         exitBackgroundButton = UIView()
         exitBackgroundButton.translatesAutoresizingMaskIntoConstraints = false
         exitBackgroundButton.accessibilityIdentifier = KHBookingRequestViewID.exitBackgroundButton
@@ -121,8 +119,6 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
         bookingButton = KarhooBookingButtonView()
         bookingButton.set(actions: self)
         mainStackContainer.addArrangedSubview(bookingButton)
-    
-        view.setNeedsUpdateConstraints()
         
         presenter.load(view: self)
     }

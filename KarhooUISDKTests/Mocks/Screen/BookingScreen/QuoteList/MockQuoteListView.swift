@@ -43,6 +43,11 @@ final class MockQuoteListView: UIViewController, QuoteListView {
         categoriesChangedCalled = categories
     }
 
+    var toggleSortingFilteringControlsShow: Bool?
+    func toggleCategoryFilteringControls(show: Bool) {
+        toggleSortingFilteringControlsShow = show
+    }
+
     var showLoadingViewCalled = false
     func showLoadingView() {
         showLoadingViewCalled = true

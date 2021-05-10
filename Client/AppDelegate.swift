@@ -8,6 +8,7 @@
 import KarhooUISDK
 import KarhooSDK
 import Braintree
+import Adyen
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if url.scheme?.localizedCaseInsensitiveCompare(urlScheme) == .orderedSame {
             return BTAppSwitch.handleOpen(url, options: options)
+        }
+        let adyenThreeDSecureUtils = AdyenThreeDSecureUtils()
+        if url.scheme?.localizedCaseInsensitiveCompare(adyenThreeDSecureUtils.current3DSReturnUrlScheme) == .orderedSame {
+            return RedirectComponent.applicationDidOpen(from: url)
         }
         return false
     }

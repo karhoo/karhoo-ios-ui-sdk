@@ -71,7 +71,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
 
     func setDate() {
         if attemptingPrebookWithinTheHour() {
-            view?.showAlert(title: nil, message: UITexts.Errors.prebookingWithinTheHour)
+            view?.showAlert(title: nil, message: UITexts.Errors.prebookingWithinTheHour, error: nil)
             now = Date()
             dateDidChange(newDate: calculateMinDate())
             return

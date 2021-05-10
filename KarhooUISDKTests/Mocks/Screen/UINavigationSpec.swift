@@ -13,7 +13,7 @@ import XCTest
 class UINavigationSpec: XCTestCase {
 
     private var testNavController: TestNavigationController!
-    private var testNavDelegate: NavigationItemDelegate! //swiftlint:disable:this weak_delegate
+    private var testNavDelegate: NavigationItemDelegate! // swiftlint:disable:this weak_delegate
     private var testObject: UINavigation!
 
     override func setUp() {

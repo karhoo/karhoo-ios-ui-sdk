@@ -12,8 +12,3 @@ import KarhooSDK
 protocol PassengerDetailsActions: class {
     func passengerDetailsValid(_ : Bool)
 }
-
-protocol PassengerDetailsViewP: UIView {
-
-    var details: PassengerDetails? { get set }
-}

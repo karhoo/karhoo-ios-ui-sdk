@@ -13,6 +13,7 @@ public protocol CardRegistrationFlow {
     func setBaseView(_ baseViewController: BaseViewController?)
     func start(cardCurrency: String,
                amount: Int,
+               supplierPartnerId: String,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void)
 }

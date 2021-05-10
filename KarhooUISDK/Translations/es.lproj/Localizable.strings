@@ -109,22 +109,16 @@
 
 /*Trip Statuses*/
 /*Fuzzy*/
-"Text.Trip.Unknown" = "Procesando tu solicitud";
-"Text.Trip.Initialised" = "Procesando tu solicitud";
 "Text.Trip.Requested" = "Esto puede demorarse unos instantes";
 "Text.Trip.Confirmed" = "Tu solicitud ha sido aceptada. \nSe te está asignando un conductor.";
-"Text.Trip.DriverAllocated" = "Conductor asignado";
 "Text.Trip.DriverEnRoute" = "Tu conductor está de camino";
 
 /*1) driver first name: 2) license plate 3) make and model*/
-"Text.Trip.DriverApproaching" = "Tu conductor %1$@: %2$@, %3$@ llegará pronto.";
 "Text.Trip.DriverArrived" = "¡Tu conductor ha llegado!";
 "Text.Trip.PassengerOnBoard" = "Ya estás de camino ¡Buen viaje!";
 "Text.Trip.Completed" = "Llegaste a tu destino";
 "Text.Trip.CancelledByUser" = "Has cancelado la reserva";
 "Text.Trip.CancelledByDispatch" = "Lo sentimos, la flota canceló tu reserva.";
-"Text.Trip.CancelledByKarhoo" = "Tu reserva ha sido cancelada. Por favor ponte en contacto con nosotros.";
-"Text.Trip.Failed" = "Hubo un problema con tu solicitud. Inténtalo de nuevo o ponte en contacto con nosotros.";
 "Text.Trip.Completed" = "Has llegado a tu destino. Cuéntanos qué te ha parecido el viaje.";
 
 /*English: "Pickup Time" in booking request screen*/
@@ -229,6 +223,12 @@
 /*"Incomplete"*/
 "Text.GenericTripStatus.Incomplete" = "Estado pendiente";
 
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Retraso en asignación";
+
+/*"Driver Allocation Delay Title"*/
+"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "La flota está tardando más de lo habitual en asignar un conductor. Por favor espere, contacte con la flota o cancele y vuelva a reservar con una flota diferente.";
+
 /*"Track Driver"*/
 "Text.Bookings.TrackDriver" = "Localizar conductor";
 
@@ -248,7 +248,6 @@
 "Text.Bookings.ReportIssue" = "Reportar problema";
 
 /*displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking"*/
-"Text.Bookings.AsapBooking" = "Reserva inmediata";
 "Text.Trip.CancelBookingFailed" = "Cancelación no confirmada. Llama a la flota.";
 
 /*Used as a button in the trip screen. English: "Ride Options"*/
@@ -288,7 +287,6 @@
 "Text.Error.Payment.Alert.Message" = "No pudimos autorizar tu tarjeta de crédito/débito.";
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Actualizar Pago";
 "Text.Error.Alert.CantSendEmail" = "Email no enviado. Configura tu correo primero.";
-"Text.Trip.DriverLicense" = "Licencia: %1$@";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
 "Text.Generic.Metered" = "taxímetro";
@@ -318,19 +316,17 @@
 
 /*Generic fallback message for trip load failure*/
 "Text.Bookings.CouldNotLoadTrips" = "Imposible cargar viajes.";
-"Text.Error.NoInternetConnectionBannerText" = "Sin conexión a internet";
 "Text.Bookings.Price.Cancelled" = "Cancelado";
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Viaje cancelado con éxito";
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Tu viaje fue cancelado con éxito.";
+"Text.Bookings.Alert.CancellationFee.Charge" = "Se le cargará una tasa de cancelación estimada en %1$@.\n\n¿Quiere continuar?";
+"Text.Bookings.Alert.CancellationFee.Continue" = "¿Quiere continuar?";
 
 /*When fetching the user profile fails*/
 "Text.Error.GetUserFails" = "Hubo un problema cargando tu perfil.";
 
 /*"Profile" button on the side menu*/
 "Text.SideMenu.Profile" = "Perfil";
-
-/*"Payment Card" placeholder label used on profile screen*/
-"Text.User.PaymentCard" = "Tarjeta de pago";
 
 /*Button for rebooking a ride*/
 "Text.Bookings.RebookRide" = "Volver a reservar";
@@ -371,12 +367,6 @@
 /*"Version"*/
 "Text.About.Version" = "Versión";
 
-/*"Terms and conditions"*/
-"Text.About.TermsAndConditions" = "Condiciones Generales";
-
-/*"Privacy policy"*/
-"Text.About.PrivacyPolicy" = "Política de Privacidad";
-
 /*Error message when user tries to prebook within the current hour of local time*/
 "Text.Error.PrebookingWithinTheHour" = "Reserva realizada para la misma hora";
 
@@ -392,12 +382,6 @@
 
 /*Driver Cancelled*/
 "Text.Generic.TripStatus.DriverCancelled" = "El conductor ha cancelado";
-
-/*Driver Cancelled*/
-"Text.Trip.DriverCancelled" = "El conductor ha cancelado";
-
-/*Booker Cancelled*/
-"Text.Trip.BookerCancelled" = "El agente ha cancelado";
 
 /*No drivers available*/
 "Text.Trip.NoDriversAvailable" = "No hay conductores disponibles";
@@ -522,11 +506,17 @@
 "Text.Errors.NoResultsFound" = "Sin resultados";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "No hay disponibilidad en la categoría solicitada.\n Por favor seleccione otra categoría.";
+"Text.Availability.NoQuotesForSelectedParameters" = "No hay disponibilidad para la hora solicitada. Por favor, seleccione una hora diferente.";
 
 "Text.Address.NoRecentAddress" = "No hay resultados recientes";
 
 "Text.SupportMailMessage.NoCoverageSubject" = "Flota recomendada";
 "Text.SupportMailMessage.NoCoverageBody" = "Gracias por recomendarnos una flota en tu zona. Para poder llegar a tu zona lo antes posible, indícanos el nombre de tu zona y de la flota.\n Zona:\n Flota:";
+
+/* Cancellation info on quotes */
+"Text.Quote.FreeCancellation" = "Cancelación gratuita hasta %1$@ antes de la recogida";
+"Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Cancelación gratuita hasta que el conductor esté en camino";
+"Text.Quote.FreeCancellationAndKeyword" = "y";
 
 /* General errors, K0xxx */
 "K0001" = "Error general";
@@ -593,9 +583,6 @@
 "KSDK02" = "Falta una función de usuario requerida para esta solicitud";
 "KSDK03" = "Usuario ya ha iniciado sesión";
 
-/* automatic logout message */
-"Text.User.AutomaticLogoutMessage" = "Se te desconectó automáticamente. Es posible que hayas iniciado una sesión en otro dispositivo. Reinicia la sesión para continuar.";
-
 /* PickUp Type */
 "DEFAULT" = "Default";
 "MEET_AND_GREET" = "Dar la bienvenida";
@@ -614,10 +601,6 @@
 "Text.FeedbackView.app" = "How easy did you find using the app?";
 "Text.FeedbackView.addComment" = "Additional comments";
 "Text.FeedbackView.confirmation" = "Gracias por enviar sus comentarios";
-
-/* ProfileView */
-"Text.ProfileView.editProfileFail" = "No logramos acuatizar la información de su perfil";
-"Text.ProfileView.editProfileSuccess" = "Información de perfil actualizado";
 
 "Text.Address.SetOnMap" = "Establecer en el mapa";
 "Text.Address.CurrentLocation" = "Posición actual";

@@ -23,6 +23,7 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getRandomTrip(tripId: String = TestUtil.getRandomString(),
+                             followCode: String = TestUtil.getRandomString(),
                              dateSet: Bool = false,
                              dateScheduled: Date = getRandomDate(),
                              state: TripState = .completed,
@@ -30,9 +31,11 @@ class TestUtil: PrimitiveUtil {
                              fare: TripFare = TripFare(),
                              quote: TripQuote = getRandomTripQuote(quoteType: .estimated),
                              fleetInfo: FleetInfo = getRandomFleetInfo(),
-                             meetingPoint: MeetingPoint? = getRandomMeetingPoint()) -> TripInfo {
+                             meetingPoint: MeetingPoint? = getRandomMeetingPoint(),
+                             serviceAgreements: ServiceAgreements? = nil) -> TripInfo {
         let trip = TripInfo(tripId: tripId,
                             displayId: TestUtil.getRandomString(),
+                            followCode: followCode,
                             origin: getRandomTripLocationDetails(),
                             destination: getRandomTripLocationDetails(),
                             dateScheduled: dateScheduled,
@@ -41,7 +44,8 @@ class TestUtil: PrimitiveUtil {
                             vehicle: vehicle,
                             fleetInfo: fleetInfo,
                             meetingPoint: meetingPoint,
-                            fare: fare)
+                            fare: fare,
+                            serviceAgreements: serviceAgreements)
         return trip
     }
 
@@ -126,12 +130,15 @@ class TestUtil: PrimitiveUtil {
                               pickUpType: PickUpType = .default,
                               passengerCapacity: Int = 1,
                               luggageCapacity: Int = 2,
-                              type: String = getRandomString()) -> Quote {
+                              type: String = getRandomString(),
+                              serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
-                               currencyCode: currencyCode)
+                               currencyCode: currencyCode,
+                               intLowPrice: lowPrice,
+                               intHighPrice: highPrice)
         let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
-        let fleet = FleetInfo(name: fleetName)
+        let fleet = Fleet(name: fleetName)
         let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
         return Quote(id: quoteId,
                      quoteType: quoteType,
@@ -140,7 +147,8 @@ class TestUtil: PrimitiveUtil {
                      fleet: fleet,
                      vehicle: vehicle,
                      price: price,
-                     validity: 1)
+                     validity: 1,
+                     serviceLevelAgreements: serviceLevelAgreements ?? ServiceAgreements())
     }
 
     class func getRandomUser(inOrganisation: Bool = true,
@@ -247,7 +255,7 @@ class TestUtil: PrimitiveUtil {
     class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
         return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
-                                  direction:TestUtil.getRandomDirection(),
+                                  direction: TestUtil.getRandomDirection(),
                                   originEta: etaToOrigin,
                                   destinationEta: etaToDestination)
     }

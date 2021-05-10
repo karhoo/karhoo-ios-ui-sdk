@@ -13,6 +13,7 @@ public struct KHSupplierViewID {
     public static let supplierImage = "supplier_image"
     public static let supplierName = "supplier_name_label"
     public static let vehicleType = "vehicle_type_label"
+    public static let cancellationInfo = "cancellationInfo_label"
 }
 
 final class SupplierView: UIView {
@@ -20,6 +21,7 @@ final class SupplierView: UIView {
     private var supplierImage: LoadingImageView!
     private var supplierName: UILabel!
     private var vehicleType: UILabel!
+    private var cancellationInfo: UILabel!
     private var vehicleCapacityView: VehicleCapacityView!
 
     init() {
@@ -35,7 +37,6 @@ final class SupplierView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         accessibilityIdentifier = "supplier_view"
-        isAccessibilityElement = true
         
         supplierImage = LoadingImageView()
         supplierImage.accessibilityIdentifier = KHSupplierViewID.supplierImage
@@ -61,10 +62,18 @@ final class SupplierView: UIView {
         vehicleType.textColor = KarhooUI.colors.darkGrey
         vehicleType.font = KarhooUI.fonts.bodyRegular()
         addSubview(vehicleType)
-        
+
         vehicleCapacityView = VehicleCapacityView()
         addSubview(vehicleCapacityView)
-        
+
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHSupplierViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+        addSubview(cancellationInfo)
+
         setUpConstraints()
     }
     
@@ -80,12 +89,16 @@ final class SupplierView: UIView {
                                                     constant: 0)].map { $0.isActive = true }
         
         _ = [vehicleType.leadingAnchor.constraint(equalTo: supplierName.leadingAnchor),
-             vehicleType.topAnchor.constraint(equalTo: supplierName.bottomAnchor, constant: 3.0),
-             vehicleType.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.0)].map { $0.isActive = true }
+             vehicleType.topAnchor.constraint(equalTo: supplierName.bottomAnchor, constant: 3.0)].map { $0.isActive = true }
         
         _ = [vehicleCapacityView.centerYAnchor.constraint(equalTo: vehicleType.centerYAnchor),
              vehicleCapacityView.leadingAnchor.constraint(equalTo: vehicleType.trailingAnchor,
                                                           constant: 13.0)].map { $0.isActive = true }
+
+        cancellationInfo.topAnchor.constraint(equalTo: vehicleType.bottomAnchor, constant: 3.0).isActive = true
+        cancellationInfo.leadingAnchor.constraint(equalTo: vehicleType.leadingAnchor).isActive = true
+        cancellationInfo.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        cancellationInfo.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.0).isActive = true
     }
     
     func set(viewModel: QuoteViewModel) {
@@ -93,6 +106,8 @@ final class SupplierView: UIView {
         let vehicleTypeText = viewModel.showPickUpLabel ? viewModel.carType + " | " + viewModel.pickUpType :
                               viewModel.carType
         vehicleType.text = vehicleTypeText
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil
         supplierImage.load(imageURL: viewModel.logoImageURL,
                             placeholderImageName: "supplier_logo_placeholder")
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)

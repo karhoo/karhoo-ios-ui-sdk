@@ -15,8 +15,8 @@ public protocol BaseViewController: UIViewController {
     func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)
     func push(_ viewController: UIViewController)
     func pop()
-    func showAlert(title: String?, message: String)
-    func showAlert(title: String?, message: String, actions: [AlertAction])
+    func showAlert(title: String?, message: String, error: KarhooError?)
+    func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction])
     func showUpdatePaymentCardAlert(updateCardSelected: @escaping () -> Void, cancelSelected: (() -> Void)?)
     func show(error: KarhooError?)
     func showLoadingOverlay(_ show: Bool)
@@ -50,12 +50,16 @@ public extension BaseViewController {
         }
     }
 
-    func showAlert(title: String?, message: String) {
-        showAlert(title: title, message: message, actions: [AlertAction(title: UITexts.Generic.ok, style: .default)])
+    func showAlert(title: String?, message: String, error: KarhooError?) {
+        showAlert(title: title, message: message, error: error, actions: [AlertAction(title: UITexts.Generic.ok, style: .default)])
     }
 
-    func showAlert(title: String?, message: String, actions: [AlertAction]) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction]) {
+        var messageToShow = message
+        if let error = error {
+            messageToShow = "\(messageToShow) [\(error.code)]"
+        }
+        let alert = UIAlertController(title: title, message: messageToShow, preferredStyle: .alert)
 
         actions.forEach { alert.addAction($0.action) }
         alert.view.tintColor = KarhooUI.colors.darkGrey
@@ -64,7 +68,12 @@ public extension BaseViewController {
     }
 
     func show(error: KarhooError?) {
-        let message = error?.localizedMessage ?? UITexts.Errors.noDetailsAvailable
+        var message = error?.localizedMessage
+        if let msg = message, let error = error, msg.isEmpty == false {
+            message = "\(msg) [\(error.code)]"
+        } else {
+            message = UITexts.Errors.noDetailsAvailable
+        }
         let alert = UIAlertController(title: UITexts.Errors.somethingWentWrong,
                                       message: message,
                                       preferredStyle: .alert)

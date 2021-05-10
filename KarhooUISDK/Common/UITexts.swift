@@ -89,6 +89,8 @@ public enum UITexts {
         public static let bookerCancelled = "Text.Generic.TripStatus.BookerCancelled".localized
         public static let driverCancelled = "Text.Generic.TripStatus.DriverCancelled".localized
         public static let noDriversAvailable = "Text.Generic.TripStatus.NoDriversAvailable".localized
+        public static let driverAllocationDelayTitle = "Text.Generic.TripStatus.DriverAllocationDelay.Title".localized
+        public static let driverAllocationDelayMessage = "Text.Generic.TripStatus.DriverAllocationDelay.Message".localized
     }
 
     /* Address Bar */
@@ -143,7 +145,7 @@ public enum UITexts {
     /* Demand API (Karhoo specific) errors */
     public enum KarhooError {
         public static let K3002 = "Text.KarhooError.K3002".localized // no availability in requested area
-        public static let Q0001 = "Text.KarhooError.Q0001".localized //origin
+        public static let Q0001 = "Text.KarhooError.Q0001".localized // origin
     }
 
     /* Side menu */
@@ -207,6 +209,7 @@ public enum UITexts {
     public enum Availability {
         public static let allCategory = "Text.Availability.AllCategory".localized
         public static let noQuotesInSelectedCategory = "Text.Availability.NoQuotesInSelectedCategory".localized
+        public static let noQuotesForSelectedParameters = "Text.Availability.NoQuotesForSelectedParameters".localized
     }
 
     public enum TripAllocation {
@@ -289,6 +292,8 @@ public enum UITexts {
         static let priceCancelled = "Text.Bookings.Price.Cancelled".localized
         public static let cancellationSuccessAlertTitle = "Text.Bookings.Alert.CancellationSuccess.Title".localized
         public static let cancellationSuccessAlertMessage = "Text.Bookings.Alert.CancellationSuccess.Message".localized
+        public static let cancellationFeeCharge = "Text.Bookings.Alert.CancellationFee.Charge".localized
+        public static let cancellationFeeContinue = "Text.Bookings.Alert.CancellationFee.Continue".localized
         static let past = "Text.Bookings.Past".localized
         static let upcoming = "Text.Bookings.Upcoming".localized
         static let sortEta = "Text.Bookings.eta".localized
@@ -311,7 +316,12 @@ public enum UITexts {
         static let setOnMap = "Text.Address.SetOnMap".localized
         static let currentLocation = "Text.Address.CurrentLocation".localized
     }
-//swiftlint:enable line_length
+    
+    public enum Quotes {
+        static let freeCancellation = "Text.Quote.FreeCancellation".localized
+        static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
+        static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
+    }
 }
 
 extension KarhooError {

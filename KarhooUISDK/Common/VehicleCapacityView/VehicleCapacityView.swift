@@ -98,18 +98,19 @@ final class VehicleCapacityView: UIView {
              stackContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
              stackContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
              stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
-        
+
         _ = [baggageIcon.topAnchor.constraint(equalTo: baggageInfoView.topAnchor),
              baggageIcon.leadingAnchor.constraint(equalTo: baggageInfoView.leadingAnchor),
              baggageIcon.bottomAnchor.constraint(equalTo: baggageInfoView.bottomAnchor),
              baggageIcon.widthAnchor.constraint(equalToConstant: 20.0),
              baggageIcon.heightAnchor.constraint(equalToConstant: 14.0)].map { $0.isActive = true }
-        
+
         _ = [baggageCapacityLabel.centerYAnchor.constraint(equalTo: baggageIcon.centerYAnchor),
              baggageCapacityLabel.leadingAnchor.constraint(equalTo: baggageIcon.trailingAnchor, constant: 4.0),
              baggageCapacityLabel.trailingAnchor.constraint(equalTo: baggageInfoView.trailingAnchor)]
             .map { $0.isActive = true }
-        
+        baggageCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+
         _ = [capacityIcon.topAnchor.constraint(equalTo: capacityInfoView.topAnchor),
              capacityIcon.leadingAnchor.constraint(equalTo: capacityInfoView.leadingAnchor),
              capacityIcon.bottomAnchor.constraint(equalTo: capacityInfoView.bottomAnchor),
@@ -120,6 +121,7 @@ final class VehicleCapacityView: UIView {
              passengerCapacityLabel.leadingAnchor.constraint(equalTo: capacityIcon.trailingAnchor, constant: 4.0),
              passengerCapacityLabel.trailingAnchor.constraint(equalTo: capacityInfoView.trailingAnchor)]
             .map { $0.isActive = true }
+        passengerCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
     public func setBaggageCapacity(_ value: String) {

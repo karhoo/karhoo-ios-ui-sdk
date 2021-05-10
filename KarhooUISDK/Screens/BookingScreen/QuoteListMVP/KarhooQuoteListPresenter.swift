@@ -67,11 +67,33 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
+        }
+    }
+    
+    private func handleQuotePolling() {
+        let timer = fetchedQuotes!.validity
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
+        
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
+        }
+    }
+    
+    private func handleQuoteStatus() {
+        guard let fetchedQuotes = self.fetchedQuotes else {
+            return
+        }
+        
+        if fetchedQuotes.status == .completed {
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            handleQuotePolling()
         }
     }
 
@@ -92,10 +114,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
         if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false {
             quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesInSelectedCategory)
+        } else if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == true && fetchedQuotes.status == .completed {
+            quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesForSelectedParameters)
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
             quoteListView?.showQuotes(sortedQuotes, animated: animated)
         }
+        
+        handleQuoteStatus()
 
     }
 }
@@ -120,11 +146,13 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             quoteListView?.hideLoadingView()
+            quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
         
         quoteListView?.showQuotes([], animated: true)
         quoteListView?.showLoadingView()
+        quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
@@ -133,6 +161,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             if result.successValue()?.all.isEmpty == false {
                 self?.quoteListView?.hideLoadingView()
+                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
             }
 
             switch result {
@@ -148,8 +177,12 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                     self?.quoteListView?.showQuotesTitle(dateString)
                 }
 
-                if quotes.all.isEmpty {
+                if quotes.all.isEmpty && quotes.status != .completed {
                     self?.quoteListView?.showLoadingView()
+                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
+                } else if quotes.all.isEmpty && quotes.status == .completed {
+                    self?.quoteListView?.hideLoadingView()
+                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
 
             case .failure(let error):

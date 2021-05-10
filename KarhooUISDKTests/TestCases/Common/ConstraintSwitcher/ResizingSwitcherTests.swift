@@ -143,7 +143,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testCheckIfActuallyExpanded() {
 
         let isExpanded = true
-        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { (tag: Int?) in
+        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { _ in
             return isExpanded
         }
 
@@ -159,7 +159,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testCheckIfNotExpanded() {
 
         let isExpanded = false
-        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { (tag: Int?) in
+        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { _ in
             return isExpanded
         }
 
@@ -177,7 +177,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testToggleWhenExpanded() {
 
         let isExpanded = true
-        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { (tag: Int?) in
+        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { _ in
             return isExpanded
         }
 
@@ -198,7 +198,7 @@ class ResizingSwitcherTests: XCTestCase {
     func testToggleWhenContracted() {
 
         let isExpanded = false
-        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { (tag: Int?) in
+        self.testTuple?.constraintSwitcher.isConstraintActiveClosure = { _ in
             return isExpanded
         }
 

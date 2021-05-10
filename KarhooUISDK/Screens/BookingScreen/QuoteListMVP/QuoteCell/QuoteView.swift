@@ -17,6 +17,7 @@ public struct KHQuoteViewID {
     public static let carType = "car_type_label"
     public static let fare = "fare_label"
     public static let fareType = "fareType_label"
+    public static let cancellationInfo = "cancellationInfo_label"
 }
 
 class QuoteView: UIView {
@@ -35,6 +36,7 @@ class QuoteView: UIView {
     private var eta: UILabel!
     private var fare: UILabel!
     private var fareType: UILabel!
+    private var cancellationInfo: UILabel!
     
     private var bottomLine: LineView!
     
@@ -101,6 +103,14 @@ class QuoteView: UIView {
         capacityAndPickupTypeContainer.alignment = .leading
         capacityAndPickupTypeContainer.spacing = 10.0
         rideDetailStackView.addArrangedSubview(capacityAndPickupTypeContainer)
+
+        cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.numberOfLines = 0
+        rideDetailStackView.addArrangedSubview(cancellationInfo)
         
         pickUpType = RoundedLabel()
         pickUpType.textInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
@@ -115,41 +125,48 @@ class QuoteView: UIView {
         capacityAndPickupTypeContainer.addArrangedSubview(pickUpType)
         capacityAndPickupTypeContainer.addArrangedSubview(vehicleCapacityView)
         
+        makePriceDetailsStackView()
+        
+        bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
+        addSubview(bottomLine)
+        
+        updateConstraints()
+    }
+
+    private func makePriceDetailsStackView() {
         priceDetailsStack = UIStackView()
         priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
         priceDetailsStack.accessibilityIdentifier = "price_details_stack_view"
         priceDetailsStack.axis = .vertical
         priceDetailsStack.spacing = 8.0
         addSubview(priceDetailsStack)
-        
+
         eta = UILabel()
         eta.translatesAutoresizingMaskIntoConstraints = false
         eta.accessibilityIdentifier = KHQuoteViewID.eta
+        eta.setContentCompressionResistancePriority(.required, for: .horizontal)
         eta.textAlignment = .right
         eta.font = KarhooUI.fonts.bodyBold()
         eta.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(eta)
-        
+
         fare = UILabel()
         fare.translatesAutoresizingMaskIntoConstraints = false
+        fare.setContentCompressionResistancePriority(.required, for: .horizontal)
         fare.accessibilityIdentifier = KHQuoteViewID.fare
         fare.textAlignment = .right
         fare.font = KarhooUI.fonts.bodyBold()
         fare.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(fare)
-        
+
         fareType = UILabel()
         fareType.translatesAutoresizingMaskIntoConstraints = false
         fareType.accessibilityIdentifier = KHQuoteViewID.fareType
+        fareType.setContentCompressionResistancePriority(.required, for: .horizontal)
         fareType.textAlignment = .right
         fareType.font = KarhooUI.fonts.captionRegular()
         fareType.textColor = KarhooUI.colors.darkGrey
         priceDetailsStack.addArrangedSubview(fareType)
-        
-        bottomLine = LineView(color: KarhooUI.colors.lightGrey, accessibilityIdentifier: "bottom_line")
-        addSubview(bottomLine)
-        
-        updateConstraints()
     }
     
     override func updateConstraints() {
@@ -187,6 +204,8 @@ class QuoteView: UIView {
         eta.text = viewModel.eta
         carType.text = viewModel.carType
         fare.text = viewModel.fare
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
@@ -204,6 +223,7 @@ class QuoteView: UIView {
         fare.text = nil
         fareType.text = nil
         pickUpType.text = nil
+        cancellationInfo.text = nil
         logoLoadingImageView.cancel()
     }
 }

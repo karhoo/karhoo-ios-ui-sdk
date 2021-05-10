@@ -17,7 +17,7 @@ public struct KHCardDetailsViewID {
 
 public final class KarhooPaymentView: UIView, PaymentView {
 
-    public var baseViewController: BaseViewController?
+    public weak var baseViewController: BaseViewController?
     var quote: Quote?
     var actions: PaymentViewActions?
     var nonce: String?
@@ -28,12 +28,17 @@ public final class KarhooPaymentView: UIView, PaymentView {
     private var didSetupConstraints: Bool = false
     private var presenter: PaymentPresenter?
 
-    init() {
+    public init() {
         super.init(frame: .zero)
         self.setUpView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setUpView()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setUpView()
     }

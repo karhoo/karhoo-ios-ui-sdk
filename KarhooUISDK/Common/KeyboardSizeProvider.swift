@@ -31,7 +31,7 @@ final class KeyboardSizeProvider: KeyboardSizeProviderProtocol {
         broadcaster.remove(listener: listener)
 
         if broadcaster.hasListeners() == false {
-            NotificationCenter.default.removeObserver(self) //swiftlint:disable:this notification_center_detachment
+            NotificationCenter.default.removeObserver(self) // swiftlint:disable:this notification_center_detachment
         }
     }
 
