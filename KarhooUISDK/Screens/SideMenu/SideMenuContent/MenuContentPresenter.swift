@@ -12,7 +12,7 @@ final class MenuContentScreenPresenter: MenuContentPresenter {
 
     private let routing: SideMenuHandler
     private let mailConstructor: KarhooFeedbackEmailComposer?
-    private var view: MenuContentView?
+    private weak var view: MenuContentView?
 
     private var unwrappedView: MenuContentView {
         
