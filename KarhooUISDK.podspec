@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.4.0"
+  s.version               = "1.5.0"
 
   s.summary               = "UI SDK for the Karhoo platform"
   s.homepage              = "https://github.com/karhoo/Karhoo-iOS-UI-SDK.git"
