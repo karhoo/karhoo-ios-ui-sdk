@@ -36,8 +36,8 @@ final class FormCheckoutHeaderView: UIView {
     private var vehicleCapacityView: VehicleCapacityView!
     
     private var rideInfoView: UIView!
-    private var etaTitle: UILabel!
-    private var etaText: UILabel!
+    private var scheduleCaption: UILabel!
+    private var scheduleMainValue: UILabel!
     private var priceTitle: UILabel!
     private var priceText: UILabel!
     
@@ -116,20 +116,20 @@ final class FormCheckoutHeaderView: UIView {
         rideInfoView.layer.cornerRadius = 8.0
         addSubview(rideInfoView)
         
-        etaTitle = UILabel()
-        etaTitle.translatesAutoresizingMaskIntoConstraints = false
-        etaTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
-        etaTitle.textColor = KarhooUI.colors.white
-        etaTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        etaTitle.text = UITexts.Generic.etaLong.uppercased()
-        rideInfoView.addSubview(etaTitle)
+        scheduleCaption = UILabel()
+        scheduleCaption.translatesAutoresizingMaskIntoConstraints = false
+        scheduleCaption.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
+        scheduleCaption.textColor = KarhooUI.colors.white
+        scheduleCaption.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        scheduleCaption.text = UITexts.Generic.etaLong.uppercased()
+        rideInfoView.addSubview(scheduleCaption)
         
-        etaText = UILabel()
-        etaText.translatesAutoresizingMaskIntoConstraints = false
-        etaText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
-        etaText.textColor = KarhooUI.colors.white
-        etaText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
-        rideInfoView.addSubview(etaText)
+        scheduleMainValue = UILabel()
+        scheduleMainValue.translatesAutoresizingMaskIntoConstraints = false
+        scheduleMainValue.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
+        scheduleMainValue.textColor = KarhooUI.colors.white
+        scheduleMainValue.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
+        rideInfoView.addSubview(scheduleMainValue)
 
         priceTitle = UILabel()
         priceTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -167,15 +167,15 @@ final class FormCheckoutHeaderView: UIView {
              rideInfoView.trailingAnchor.constraint(equalTo: topStackView.trailingAnchor, constant: -10.0),
              rideInfoView.bottomAnchor.constraint(equalTo: bottomAnchor)].forEach { $0.isActive = true }
             
-            [etaTitle.leadingAnchor.constraint(equalTo: rideInfoView.leadingAnchor, constant: 10.0),
-             etaTitle.topAnchor.constraint(equalTo: rideInfoView.topAnchor, constant: 10.0),
-             etaTitle.trailingAnchor.constraint(lessThanOrEqualTo: priceTitle.leadingAnchor,
+            [scheduleCaption.leadingAnchor.constraint(equalTo: rideInfoView.leadingAnchor, constant: 10.0),
+             scheduleCaption.topAnchor.constraint(equalTo: rideInfoView.topAnchor, constant: 10.0),
+             scheduleCaption.trailingAnchor.constraint(lessThanOrEqualTo: priceTitle.leadingAnchor,
                                                 constant: 20.0)].forEach { $0.isActive = true }
             
-            [etaText.leadingAnchor.constraint(equalTo: etaTitle.leadingAnchor),
-             etaText.topAnchor.constraint(equalTo: etaTitle.bottomAnchor, constant: 5.0),
-             etaText.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0),
-             etaText.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor, constant: -10.0)]
+            [scheduleMainValue.leadingAnchor.constraint(equalTo: scheduleCaption.leadingAnchor),
+             scheduleMainValue.topAnchor.constraint(equalTo: scheduleCaption.bottomAnchor, constant: 5.0),
+             scheduleMainValue.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0),
+             scheduleMainValue.bottomAnchor.constraint(equalTo: rideInfoView.bottomAnchor, constant: -10.0)]
                 .forEach { $0.isActive = true }
             
             [priceTitle.trailingAnchor.constraint(equalTo: rideInfoView.trailingAnchor, constant: -10.0),
@@ -195,7 +195,8 @@ final class FormCheckoutHeaderView: UIView {
     
     func set(viewModel: QuoteViewModel) {
         name.text = viewModel.fleetName
-        etaText.text = viewModel.eta
+        scheduleCaption.text = viewModel.scheduleCaption
+        scheduleMainValue.text = viewModel.scheduleMainValue
         carType.text = viewModel.carType
         cancellationInfo.text = viewModel.freeCancellationMessage
         cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil

@@ -12,7 +12,8 @@ import KarhooSDK
 final class QuoteViewModel {
     
     let fleetName: String
-    let eta: String
+    let scheduleCaption: String
+    let scheduleMainValue: String
     let carType: String
     let fare: String
     let logoImageURL: String
@@ -21,7 +22,6 @@ final class QuoteViewModel {
     let pickUpType: String
     let passengerCapacity: String
     let baggageCapacity: String
-    
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -31,8 +31,11 @@ final class QuoteViewModel {
         self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
         self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
         self.fleetName = quote.fleet.name
-        self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
-                                                  max: quote.vehicle.qta.highMinutes)
+
+        let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
+                                                         bookingDetails: bookingStatus.getBookingDetails())
+        self.scheduleCaption = scheduleTexts.caption
+        self.scheduleMainValue = scheduleTexts.value
         self.carType = quote.vehicle.vehicleClass
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
@@ -64,6 +67,24 @@ final class QuoteViewModel {
         case .curbside: pickUpType = UITexts.Bookings.cubsidePickup
         case .standyBy: pickUpType = UITexts.Bookings.standBy
         default: pickUpType = ""
+        }
+    }
+
+    private static func scheduleTexts(quote: Quote, bookingDetails: BookingDetails?) -> (caption: String, value: String) {
+        if let scheduledDate = bookingDetails?.scheduledDate,
+           let originTimeZone = bookingDetails?.originLocationDetails?.timezone() {
+            // If the booking is prebooked display only the date + time
+            let timeZone = originTimeZone
+            let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
+            let dateString = prebookFormatter.display(mediumStyleDate: scheduledDate)
+            let timeString = prebookFormatter.display(shortStyleTime: scheduledDate)
+            return (dateString, timeString)
+        } else {
+            // If the booking is ASAP display the ETA
+            let etaCaption = UITexts.Generic.etaLong.uppercased()
+            let etaMinutes = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
+                                                            max: quote.vehicle.qta.highMinutes)
+            return (etaCaption, etaMinutes)
         }
     }
 }
