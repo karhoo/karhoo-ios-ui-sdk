@@ -305,7 +305,14 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func goToTripView(trip: TripInfo) {
         if Karhoo.configuration.authenticationMethod().isGuest() {
-            urlOpener.openAgentPortalTracker(followCode: trip.followCode)
+            let dismissTrackingAction = AlertAction(title: UITexts.Trip.trackTripAlertDismissAction, style: .cancel)
+            let trackTripAction = AlertAction(title: UITexts.Trip.trackTripAlertAction, style: .default) { _ in
+                self.urlOpener.openAgentPortalTracker(followCode: trip.followCode)
+            }
+            view?.showAlert(title: UITexts.Trip.trackTripAlertTitle,
+                            message: UITexts.Trip.trackTripAlertMessage,
+                            error: .none,
+                            actions: [dismissTrackingAction, trackTripAction])
         } else {
             let tripView = tripScreenBuilder.buildTripScreen(trip: trip,
                                                                 callback: tripViewCallback)

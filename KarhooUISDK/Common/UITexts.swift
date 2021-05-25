@@ -250,6 +250,11 @@ public enum UITexts {
         public static let arrival = "Text.Trip.Arrival".localized
         public static let karhooCancelledAlertTitle = "Text.Trip.KarhooCancelled.AlertTitle".localized
         public static let karhooCancelledAlertMessage = "Text.Trip.KarhooCancelled.AlertMessage".localized
+
+        public static let trackTripAlertTitle = "Text.Bookings.TrackTrip.AlertTitle".localized
+        public static let trackTripAlertMessage = "Text.Bookings.TrackTrip.AlertMessage".localized
+        public static let trackTripAlertAction = "Text.Bookings.TrackTrip.TrackAction".localized
+        public static let trackTripAlertDismissAction = "Text.Bookings.TrackTrip.DismissAction".localized
     }
 
     public enum TripSummary {

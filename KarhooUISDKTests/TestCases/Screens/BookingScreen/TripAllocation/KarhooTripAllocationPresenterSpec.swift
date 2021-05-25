@@ -105,7 +105,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
       * Given: Cancelling a trip
       * When: Cancelling is successful
       * Then: View should be informed
-      * And: Trip trip tracking should stop
+      * And: Trip tracking should stop
       * And: Cancel button should reset
       */
     func testCancelTripSuccessful() {
@@ -167,7 +167,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertEqual(mockTripAllocationView.tripAllocatedCalled!.tripId, newTripUpdate.tripId)
-            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 
@@ -202,7 +202,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertTrue(mockTripAllocationView.tripCancelledBySystemCalled)
-            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 

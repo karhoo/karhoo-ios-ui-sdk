@@ -74,7 +74,7 @@ class MockBaseViewController: UIViewController, BaseViewController {
 
     private(set) var actionAlertTitle: String?
     private(set) var actionAlertMessage: String?
-    private var alertActions: [AlertAction] = []
+    private(set) var alertActions: [AlertAction] = []
     func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction]) {
         alertActions.append(contentsOf: actions)
         actionAlertTitle = title

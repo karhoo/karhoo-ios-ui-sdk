@@ -214,6 +214,11 @@
 /*"Track Trip"*/
 "Text.Bookings.TrackTrip" = "Track Ride";
 
+"Text.Bookings.TrackTrip.AlertTitle" = "Ride confirmed";
+"Text.Bookings.TrackTrip.AlertMessage" = "Would you like to track your trip?";
+"Text.Bookings.TrackTrip.TrackAction" = "Track driver";
+"Text.Bookings.TrackTrip.DismissAction" = "Dismiss";
+
 /*"Cancel Ride" button action*/
 "Text.Bookings.CancelRide" = "Cancel Ride";
 
