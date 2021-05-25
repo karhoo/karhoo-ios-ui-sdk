@@ -190,7 +190,7 @@ class PickupOnlyStrategySpec: XCTestCase {
 
         mockKarhooTime.fire()
 
-        XCTAssertFalse(mockAddressService.reverseGeocodeCall.executed)
+        XCTAssertTrue(mockAddressService.reverseGeocodeCall.executed)
         XCTAssertNil(mockMapView.locationsToZoomTo)
     }
 }

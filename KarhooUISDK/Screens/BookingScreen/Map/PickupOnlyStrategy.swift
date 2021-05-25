@@ -74,16 +74,9 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
 
         let pickupPosition = pickup.position.toCLLocation()
 
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            map?.centerPin(hidden: true)
-            map?.addPin(location: pickupPosition,
-                        asset: PinAsset.pickup, tag: BookingPinTags.pickup.rawValue)
-            map?.center(on: pickupPosition)
-        } else {
-            map?.centerPin(hidden: false)
-            map?.center(on: pickupPosition)
-        }
-
+        map?.centerPin(hidden: false)
+        map?.center(on: pickupPosition)
+        
     }
 
     func focusMap() {
@@ -102,11 +95,8 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
             }
         }
 
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            focousOnPickup()
-        } else {
-            focusOnCurrentLocation()
-        }
+        focusOnCurrentLocation()
+      
     }
 
     func changed(bookingDetails: BookingDetails?) {
@@ -139,16 +129,14 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     }
 
     private func didGetUserLocation(_ location: CLLocation) {
-        guard Karhoo.configuration.authenticationMethod().isGuest() else {
-            reverseGeoLocate(location: location)
-            userLocationProvider.set(locationChangedCallback: nil)
-            map?.center(on: location, zoomLevel: map?.standardZoom ?? 0)
-            return
-        }
+        reverseGeoLocate(location: location)
+        userLocationProvider.set(locationChangedCallback: nil)
+        map?.center(on: location, zoomLevel: map?.standardZoom ?? 0)
+        return
     }
 
     private func shouldReverseGeolocateOnMapDrag() -> Bool {
-        return Karhoo.configuration.authenticationMethod().isGuest() == false
+        return true
     }
 
     private func reverseGeoLocate(location: CLLocation?) {

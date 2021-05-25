@@ -157,12 +157,7 @@ final class AddressViewController: UIViewController, AddressView {
     }
 
     private func configureForAuthenticationMethod() {
-        if Karhoo.configuration.authenticationMethod().guestSettings == nil {
-            buildAddressMapView()
-        } else {
-            setOnMapView.isHidden = true
-            currentLocationView.isHidden = true
-        }
+        buildAddressMapView()
     }
 
     private func buildAddressMapView() {
