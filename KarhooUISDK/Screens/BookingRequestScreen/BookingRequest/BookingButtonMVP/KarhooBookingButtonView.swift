@@ -162,7 +162,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     func setRequestMode() {
         setSelectedState()
         currentMode = .request
-        set(buttonTitle: guestBooking ? UITexts.Booking.guestCheckoutRequest : UITexts.Booking.requestCar)
+        set(buttonTitle: UITexts.Booking.requestCar)
         tickImage.isHidden = true
         activityIndicator?.stopAnimating()
     }

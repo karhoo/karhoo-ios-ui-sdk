@@ -4,6 +4,7 @@
 
  Copyright © 2020 Karhoo. All rights reserved.
  Generics*/
+
 "Text.Generic.Cancel" = "Annuler";
 "Text.Generic.Ok" = "OK";
 "Text.Generic.Close" = "Fermer";
@@ -93,7 +94,6 @@
 "Text.Booking.RequestReceived" = "Commande reçue";
 "Text.Bookings.eta" = "Proximité";
 "Text.Bookings.price" = "Prix";
-"Text.Booking.guestCheckout" = "Réserver";
 
 /*Trip*/
 /*Fuzzy*/
@@ -582,4 +582,3 @@
 
 "Text.Address.SetOnMap" = "Situer sur la carte";
 "Text.Address.CurrentLocation" = "Position actuelle";
-
