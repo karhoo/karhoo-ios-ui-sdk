@@ -19,11 +19,13 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     private var mockQuoteSorter: MockQuoteSorter!
     private var mockDateFormatter: MockDateFormatterType!
 
-    static let someQuote = TestUtil.getRandomQuote(categoryName: "Some")
-    static let anotherQuote = TestUtil.getRandomQuote(categoryName: "anotherQuote")
-
+    static let someQuote = TestUtil.getRandomQuote(highPrice: 1000, lowPrice: 1000, categoryName: "Some")
+    static let anotherQuote = TestUtil.getRandomQuote(highPrice: 500, lowPrice: 500, categoryName: "anotherQuote")
+    static let allQuotesCategory = QuoteCategory(name: UITexts.Availability.allCategory,
+                                                 quotes: [someQuote, anotherQuote])
     private let quoteServiceResponse = Quotes(quoteListId: "someQuoteListId",
-                                              quoteCategories: [QuoteCategory(name: "Some", quotes: [someQuote]),
+                                              quoteCategories: [allQuotesCategory,
+                                                                QuoteCategory(name: "Some", quotes: [someQuote]),
                                                                 QuoteCategory(name: "anotherQuote", quotes: [anotherQuote]),
                                                                 QuoteCategory(name: "noQuotes", quotes: [])],
                                               all: [someQuote, anotherQuote])
@@ -154,6 +156,21 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         simulateSuccessfulQuoteFetch()
 
         XCTAssertFalse(mockQuoteListView.showQuotesAnimated!)
+    }
+
+    /**
+     * When: A receiving a prebooked quotes list
+     * Then: The quotes should be sorted by price
+     */
+    func testWhenReceivingAQuotesListForAPrebookedRideShouldSortQuotesByPrice() {
+        let expectedQuotes = [KarhooQuoteListPresenterSpec.someQuote, KarhooQuoteListPresenterSpec.anotherQuote]
+        testObject.selectedQuoteCategory(KarhooQuoteListPresenterSpec.allQuotesCategory)
+        mockQuoteSorter.quotesToReturn = [expectedQuotes.last!, expectedQuotes.first!]
+        simulateSuccessfulQuoteFetch()
+
+        XCTAssertEqual(mockQuoteSorter.orderSet, .price)
+        XCTAssertEqual(mockQuoteListView.quotesSet?.first, expectedQuotes.last)
+        XCTAssertEqual(mockQuoteListView.quotesSet?.last, expectedQuotes.first)
     }
 
     /**
