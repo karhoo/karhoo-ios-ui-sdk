@@ -24,6 +24,7 @@
 "Text.Generic.Add" = "Ajouter";
 "Text.Generic.Change" = "Modifier";
 "Text.Generic.Submit" = "Envoyer";
+"Text.Generic.Success" = "Réussite";
 "Text.Generic.Name" = "Prénom";
 "Text.Generic.Surname" = "Nom";
 "Text.Generic.Email" = "Adresse email";
@@ -92,7 +93,7 @@
 "Text.Booking.RequestReceived" = "Commande reçue";
 "Text.Bookings.eta" = "Proximité";
 "Text.Bookings.price" = "Prix";
-"Text.Booking.guestCheckout" = "Check-out as Guest";
+"Text.Booking.guestCheckout" = "Réserver";
 
 /*Trip*/
 /*Fuzzy*/
@@ -123,7 +124,7 @@
 "Text.SideMenu.Register" = "Inscription";
 
 /*Sign Out on the side menu*/
-"Text.SideMenu.SignOut" = "Déconnection";
+"Text.SideMenu.SignOut" = "Déconnexion";
 
 /*"Cancelled"*/
 "Text.Generic.Cancelled" = "Annulé";

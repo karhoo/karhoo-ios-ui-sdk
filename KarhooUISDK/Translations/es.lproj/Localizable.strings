@@ -99,7 +99,7 @@
 "Text.Booking.RequestReceived" = "Solicitud recibida";
 "Text.Bookings.eta" = "Proximidad";
 "Text.Bookings.price" = "Tarifa";
-"Text.Booking.guestCheckout" = "Check-out as Guest";
+"Text.Booking.guestCheckout" = "Solicitar";
 
 /*Trips*/
 /*Fuzzy*/
