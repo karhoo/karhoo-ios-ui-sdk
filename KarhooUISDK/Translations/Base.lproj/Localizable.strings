@@ -90,7 +90,6 @@
 "Text.Booking.RequestReceived" = "Booking Received";
 "Text.Bookings.eta" = "ETA";
 "Text.Bookings.price" = "Price";
-"Text.Booking.guestCheckout" = "Check-out as Guest";
 
 /*Trip*/
 "Text.Trip.CancelRide" = "Cancel Ride";
