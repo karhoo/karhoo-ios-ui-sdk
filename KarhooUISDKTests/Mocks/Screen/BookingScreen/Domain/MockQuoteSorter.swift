@@ -16,6 +16,8 @@ final class MockQuoteSorter: QuoteSorter {
 
     var quotesToReturn: [Quote] = []
     func sortQuotes(_ quotes: [Quote], by order: QuoteSortOrder) -> [Quote] {
+        sortQuotesSet = quotes
+        orderSet = order
         return quotesToReturn
     }
 }
