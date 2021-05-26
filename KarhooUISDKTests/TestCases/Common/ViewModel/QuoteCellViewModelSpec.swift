@@ -35,10 +35,37 @@ class QuoteCellViewModelSpec: XCTestCase {
         testObject = QuoteViewModel(quote: quote)
         
         XCTAssertEqual(testObject.fleetName, "TestFleet")
-        XCTAssertEqual(testObject.eta, expectedEta)
+        XCTAssertEqual(testObject.scheduleCaption, UITexts.Generic.etaLong.uppercased())
+        XCTAssertEqual(testObject.scheduleMainValue, expectedEta)
         XCTAssertEqual("1", testObject.passengerCapacity)
         XCTAssertEqual("2", testObject.baggageCapacity)
         XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
+     * Given: A quote and prebooked ride details
+     * Then: The view model should set correct schedule values
+     */
+    func testWhenTheRideIsPrebookedShouldDisplayCorrectScheduleValues() {
+
+        let quote = TestUtil.getRandomQuote(fleetName: "TestFleet",
+                                            qtaHighMinutes: 1,
+                                            qtaLowMinutes: 1,
+                                            passengerCapacity: 2,
+                                            luggageCapacity: 2)
+        let mockBookingStatus = MockBookingStatus()
+        let bookingDetails = TestUtil.getRandomBookingDetails()
+        mockBookingStatus.bookingDetailsToReturn = bookingDetails
+
+        let timezone = bookingDetails.originLocationDetails!.timezone()
+        let prebookFormatter = KarhooDateFormatter(timeZone: timezone)
+        let expectedCaption = prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate)
+        let expectedMainValue = prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+
+        XCTAssertEqual(testObject.scheduleCaption, expectedCaption)
+        XCTAssertEqual(testObject.scheduleMainValue, expectedMainValue)
     }
     
     /**

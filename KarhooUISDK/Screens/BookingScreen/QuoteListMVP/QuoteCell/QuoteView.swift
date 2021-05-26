@@ -201,7 +201,7 @@ class QuoteView: UIView {
     func set(viewModel: QuoteViewModel) {
         
         name.text = viewModel.fleetName
-        eta.text = viewModel.eta
+        eta.text = viewModel.scheduleMainValue
         carType.text = viewModel.carType
         fare.text = viewModel.fare
         cancellationInfo.text = viewModel.freeCancellationMessage
