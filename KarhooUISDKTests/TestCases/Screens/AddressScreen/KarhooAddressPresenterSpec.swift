@@ -371,4 +371,49 @@ class KarhooAddressPresenterSpec: XCTestCase {
         testObject.getCurrentLocation()
         XCTAssertNil(mockAddressService.reverseGeocodePositionSet)
     }
+
+    func testIfReverseGeocodingDidNotSendResponseShouldNotReverseGeocodeAnotherCurrentLocation() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location1.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location1.coordinate.latitude)
+    }
+
+    func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingFailureResponse() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let error = TestUtil.getRandomError()
+        mockAddressService.reverseGeocodeCall.triggerFailure(error)
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+    }
+
+    func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingSuccessfulResponse() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let locationInfo = TestUtil.getRandomLocationInfo()
+        mockAddressService.reverseGeocodeCall.triggerSuccess(locationInfo)
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+    }
 }

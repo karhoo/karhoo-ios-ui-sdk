@@ -24,6 +24,7 @@ final class KarhooAddressPresenter: AddressPresenter {
     private let searchDelay: Double
     private var currentSeachString: String = ""
     private static let sessionToken = UUID().uuidString
+    private var reverseGeocodingCurrentLocation = false
 
     init(preferredLocation: CLLocation?,
          addressMode: AddressType,
@@ -147,11 +148,14 @@ final class KarhooAddressPresenter: AddressPresenter {
     
     public func getCurrentLocation() {
         analytics.userPressedCurrentLocation(addressType: String(describing: addressMode))
-        guard let location = userLocationProvider.getLastKnownLocation()?.coordinate else { return }
+        guard let location = userLocationProvider.getLastKnownLocation()?.coordinate,
+              reverseGeocodingCurrentLocation == false else { return }
+        reverseGeocodingCurrentLocation = true
         addressService.reverseGeocode(position: Position(latitude: location.latitude,
                                                          longitude: location.longitude)).execute { [weak self] result in
                                                             
             self?.locationResponseHandler(result, saveLocation: false)
+            self?.reverseGeocodingCurrentLocation = false
         }
     }
 }
