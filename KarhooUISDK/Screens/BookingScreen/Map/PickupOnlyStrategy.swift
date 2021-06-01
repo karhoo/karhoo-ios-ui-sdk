@@ -92,6 +92,8 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
             if let currentLocation = userLocationProvider.getLastKnownLocation() {
                 map?.center(on: currentLocation, zoomLevel: map?.standardZoom ?? 0)
                 reverseGeoLocate(location: currentLocation)
+            } else {
+                focousOnPickup()
             }
         }
 
