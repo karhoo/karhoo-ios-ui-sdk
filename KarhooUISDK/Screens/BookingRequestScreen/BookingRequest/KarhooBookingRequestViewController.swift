@@ -276,10 +276,12 @@ final class KarhooBookingRequestViewController: UIViewController, BookingRequest
 
         func buildBookingRequestScreen(quote: Quote,
                                        bookingDetails: BookingDetails,
+                                       bookingMeta: [String: Any],
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
 
             let presenter = KarhooBookingRequestPresenter(quote: quote,
                                                           bookingDetails: bookingDetails,
+                                                          bookingMeta: bookingMeta,
                                                           callback: callback)
 
             let item = KarhooBookingRequestViewController(presenter: presenter)

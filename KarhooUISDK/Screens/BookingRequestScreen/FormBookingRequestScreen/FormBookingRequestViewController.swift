@@ -334,9 +334,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     final class Builder: BookingRequestScreenBuilder {
         func buildBookingRequestScreen(quote: Quote,
                                        bookingDetails: BookingDetails,
+                                       bookingMeta: [String: Any],
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             let presenter = FormBookingRequestPresenter(quote: quote,
                                                         bookingDetails: bookingDetails,
+                                                        bookingMeta: bookingMeta,
                                                         callback: callback)
             return FormBookingRequestViewController(presenter: presenter)
         }

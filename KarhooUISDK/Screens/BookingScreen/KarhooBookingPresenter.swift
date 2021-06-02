@@ -68,10 +68,13 @@ final class KarhooBookingPresenter {
         bookingStatus.remove(observer: self)
     }
 
-    private func showBookingRequestView(quote: Quote, bookingDetails: BookingDetails) {
+    private func showBookingRequestView(quote: Quote,
+                                        bookingDetails: BookingDetails,
+                                        bookingMeta: [String: Any] = KarhooUISDKConfigurationProvider.configuration.bookingMetadata()) {
         let bookingRequestView = bookingRequestScreenBuilder
             .buildBookingRequestScreen(quote: quote,
                                        bookingDetails: bookingDetails,
+                                       bookingMeta: bookingMeta,
                                        callback: { [weak self] result in
                                         self?.view?.presentedViewController?.dismiss(animated: false, completion: {
                                                 self?.bookingRequestCompleted(result: result,
