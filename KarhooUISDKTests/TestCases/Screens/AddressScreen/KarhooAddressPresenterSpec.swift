@@ -382,7 +382,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
         testObject.getCurrentLocation()
 
         XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location1.coordinate.latitude)
-        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location1.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location1.coordinate.longitude)
     }
 
     func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingFailureResponse() {
@@ -398,7 +398,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
         testObject.getCurrentLocation()
 
         XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
-        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location2.coordinate.longitude)
     }
 
     func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingSuccessfulResponse() {
@@ -414,6 +414,6 @@ class KarhooAddressPresenterSpec: XCTestCase {
         testObject.getCurrentLocation()
 
         XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
-        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location2.coordinate.longitude)
     }
 }
