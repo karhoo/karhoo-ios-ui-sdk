@@ -18,11 +18,11 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let threeDSecureProvider: ThreeDSecureProvider
     private let tripService: TripService
     private let userService: UserService
-    private let bookingMetadata: [String: Any]
+    private let bookingMetadata: [String: Any]?
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
-         bookingMetadata: [String: Any],
+         bookingMetadata: [String: Any]?,
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
          userService: UserService = Karhoo.getUserService(),
@@ -108,8 +108,11 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                                       paymentNonce: threeDSecureNonce,
                                       comments: view?.getComments())
         
-        tripBooking.meta = bookingMetadata
-        
+        var map: [String: Any] = [:]
+        if let metadata = bookingMetadata {
+            map = metadata
+        }
+        tripBooking.meta = map
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
             tripBooking.meta["trip_id"] = threeDSecureNonce
         }

@@ -19,7 +19,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
     private var mockUserService = MockUserService()
-    private var mockBookingMetadata: [String: Any] = [:]
+    private var mockBookingMetadata: [String: Any]? = [:]
 
     override func setUp() {
         super.setUp()
@@ -150,6 +150,39 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
         XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
         XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
+    
+    
+    /**
+     * When: The user presses "book ride"
+     * And: booking metadata injected into the Booking Request
+     * Then: Then the screen should set to requesting state
+     * And: Get nonce endpoint should be called
+     * And: View should be updated and callback is called with trip
+     * And: Injected metadata should be set on TripBooking request object
+     */
+    func testbookingMetadata() {
+        mockBookingMetadata = ["key":"value"]
+        loadTestObject()
+        KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
+                                                                     paymentProvider: "adyen")
+        
+        testObject.bookTripPressed()
+
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(mockView.paymentNonceToReturn, mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        let value: String = mockTripService.tripBookingSet?.meta["key"] as! String
+        XCTAssertEqual(value, "value")
     }
 
     /** When: Trip service booking fails

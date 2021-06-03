@@ -70,7 +70,7 @@ final class KarhooBookingPresenter {
 
     private func showBookingRequestView(quote: Quote,
                                         bookingDetails: BookingDetails,
-                                        bookingMetadata: [String: Any] = KarhooUISDKConfigurationProvider.configuration.bookingMetadata()) {
+                                        bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata()) {
         let bookingRequestView = bookingRequestScreenBuilder
             .buildBookingRequestScreen(quote: quote,
                                        bookingDetails: bookingDetails,

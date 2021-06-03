@@ -13,6 +13,6 @@ public protocol BookingRequestScreenBuilder {
 
     func buildBookingRequestScreen(quote: Quote,
                                    bookingDetails: BookingDetails,
-                                   bookingMetadata: [String: Any],
+                                   bookingMetadata: [String: Any]?,
                                    callback: @escaping ScreenResultCallback<TripInfo>) -> Screen
 }
