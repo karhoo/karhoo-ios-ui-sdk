@@ -19,6 +19,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
     private var mockUserService = MockUserService()
+    private var mockBookingMetadata: [String: Any] = [:]
 
     override func setUp() {
         super.setUp()
@@ -201,6 +202,7 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
         testObject = FormBookingRequestPresenter(quote: testQuote,
                                                   bookingDetails: mockBookingDetails,
+                                                  bookingMetadata: mockBookingMetadata,
                                                   threeDSecureProvider: mockThreeDSecureProvider,
                                                   tripService: mockTripService,
                                                   userService: mockUserService,

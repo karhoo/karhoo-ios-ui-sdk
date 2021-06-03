@@ -19,7 +19,7 @@ final class MockBookingRequestScreenBuilder: BookingRequestScreenBuilder {
 
     func buildBookingRequestScreen(quote: Quote,
                                    bookingDetails: BookingDetails,
-                                   bookingMeta: [String: Any],
+                                   bookingMetadata: [String: Any],
                                    callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
         bookingRequestQuote = quote
         bookingRequestCallback = callback

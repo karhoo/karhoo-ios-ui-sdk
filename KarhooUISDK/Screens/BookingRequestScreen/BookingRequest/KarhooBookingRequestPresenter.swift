@@ -27,11 +27,11 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
     private let flightDetailsScreenBuilder: FlightDetailsScreenBuilder
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
     private let paymentNonceProvider: PaymentNonceProvider
-    private let bookingMeta: [String: Any]
+    private let bookingMetadata: [String: Any]
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
-         bookingMeta: [String: Any],
+         bookingMetadata: [String: Any],
          userService: UserService = Karhoo.getUserService(),
          tripService: TripService = Karhoo.getTripService(),
          analytics: Analytics = KarhooAnalytics(),
@@ -50,7 +50,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         self.flightDetailsScreenBuilder = flightDetailsScreenBuilder
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.paymentNonceProvider = paymentNonceProvider
-        self.bookingMeta = bookingMeta
+        self.bookingMetadata = bookingMetadata
         appStateNotifier.register(listener: self)
     }
 
@@ -218,7 +218,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
 
         tripBooking.paymentNonce = nonce.nonce
         
-        tripBooking.meta = bookingMeta
+        tripBooking.meta = bookingMetadata
         
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
             tripBooking.meta["trip_id"] = nonce.nonce

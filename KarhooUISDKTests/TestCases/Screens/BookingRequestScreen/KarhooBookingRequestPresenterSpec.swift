@@ -26,6 +26,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     private var mockPopupDialogScreenBuilder: MockPopupDialogScreenBuilder!
     private let mockPaymentNonceProvider = MockPaymentNonceProvider()
     private let mockCardRegistrationFlow = MockCardRegistrationFlow()
+    private let mockBookingMetadata: [String: Any] = [:]
 
     override func setUp() {
         super.setUp()
@@ -280,6 +281,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
 
         let fixedFareRequestScreen = KarhooBookingRequestPresenter(quote: testQuote,
                                                                    bookingDetails: testBookingDetails,
+                                                                   bookingMetadata: mockBookingMetadata,
                                                                    userService: mockUserService,
                                                                    tripService: mockTripService,
                                                                    callback: bookingRequestTrip)
@@ -408,6 +410,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     private func loadTestObject() {
         testObject = KarhooBookingRequestPresenter(quote: testQuote,
                                                    bookingDetails: testBookingDetails,
+                                                   bookingMetadata: mockBookingMetadata,
                                                    userService: mockUserService,
                                                    tripService: mockTripService,
                                                    analytics: mockAnalytics,
