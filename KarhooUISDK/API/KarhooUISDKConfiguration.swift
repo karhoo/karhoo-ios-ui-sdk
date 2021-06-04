@@ -11,7 +11,7 @@ import KarhooSDK
 public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     func logo() -> UIImage
     
-    func bookingMetadata() -> [String: Any]?
+    var bookingMetadata:[String: Any]? { get }
 }
 
 public extension KarhooUISDKConfiguration {
@@ -20,7 +20,9 @@ public extension KarhooUISDKConfiguration {
         return UIImage(named: "")!
     }
     
-    func bookingMetadata() -> [String: Any]? {
-        return [:]
+    var bookingMetadata:[String: Any]? {
+        get {
+            return nil
+        }
     }
 }
