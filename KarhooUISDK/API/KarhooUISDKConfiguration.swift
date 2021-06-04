@@ -19,4 +19,8 @@ public extension KarhooUISDKConfiguration {
     func logo() -> UIImage {
         return UIImage(named: "")!
     }
+    
+    func bookingMetadata() -> [String: Any]? {
+        return [:]
+    }
 }
