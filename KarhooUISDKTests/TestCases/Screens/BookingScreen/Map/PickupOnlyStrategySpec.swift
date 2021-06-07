@@ -20,6 +20,7 @@ class PickupOnlyStrategySpec: XCTestCase {
     private var mockKarhooTime: MockTimeScheduler!
     private var testObject: PickupOnlyStrategy!
     private let mockBookingStatus = MockBookingStatus()
+    private let mockLocationService = MockLocationService()
 
     override func setUp() {
         super.setUp()
@@ -29,10 +30,12 @@ class PickupOnlyStrategySpec: XCTestCase {
         mockAddressService = MockAddressService()
         mockKarhooTime = MockTimeScheduler()
         mockPickupStrategyDelegate = MockPickupOnlyStrategyDelegate()
+        mockLocationService.setLocationAccessEnabled = true
         testObject = PickupOnlyStrategy(userLocationProvider: mockUserLocationProvider,
                                         addressService: mockAddressService,
                                         timer: mockKarhooTime,
-                                        bookingStatus: mockBookingStatus)
+                                        bookingStatus: mockBookingStatus,
+                                        locationService: mockLocationService)
         testObject.load(map: mockMapView)
         testObject.set(delegate: mockPickupStrategyDelegate)
     }
@@ -56,6 +59,23 @@ class PickupOnlyStrategySpec: XCTestCase {
         XCTAssertFalse(mockMapView.centerPinHidden!)
         XCTAssertEqual(mockMapView.locationToCenterOn?.coordinate, pickup.position.toCLLocation().coordinate)
      }
+    
+    /**
+     * Given:   A pickup location set
+     * When:    Started
+     * Then:    should focus on pick up pin if the location permissions are granted
+     */
+    func testStartWithPickupAndPermissions() {
+        mockLocationService.setLocationAccessEnabled = false
+        
+        let pickup = TestUtil.getRandomLocationInfo()
+        let details = BookingDetails(originLocationDetails: pickup)
+        testObject.start(bookingDetails: details)
+        XCTAssertFalse(mockMapView.focusButtonHiddenSet!)
+        XCTAssertTrue(mockMapView.centerPinHidden!)
+        XCTAssertEqual(mockMapView.locationToCenterOn?.coordinate, pickup.position.toCLLocation().coordinate)
+     }
+
 
     /**
      * Given:   A pickup location set
@@ -180,10 +200,27 @@ class PickupOnlyStrategySpec: XCTestCase {
     }
 
     /**
-     * When: SDK is in guest authentication mode
+     * When: User didn't grant location permissions
      * Then: reverse geocode should not be sent
      */
     func testGuestAuthenticationModeFocusMap() {
+        mockLocationService.setLocationAccessEnabled = false
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        let location = CLLocation(latitude: 0.23, longitude: 0.12)
+        testObject.userStoppedMovingTheMap(center: location)
+
+        mockKarhooTime.fire()
+
+        XCTAssertFalse(mockAddressService.reverseGeocodeCall.executed)
+        XCTAssertNil(mockMapView.locationsToZoomTo)
+    }
+    
+    /**
+     * When: User granted location permissions
+     * Then: reverse geocode should be sent
+     */
+    func testGuestAuthenticationModeFocusMapWithLocations() {
+        mockLocationService.setLocationAccessEnabled = true
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
         let location = CLLocation(latitude: 0.23, longitude: 0.12)
         testObject.userStoppedMovingTheMap(center: location)
@@ -191,6 +228,5 @@ class PickupOnlyStrategySpec: XCTestCase {
         mockKarhooTime.fire()
 
         XCTAssertTrue(mockAddressService.reverseGeocodeCall.executed)
-        XCTAssertNil(mockMapView.locationsToZoomTo)
     }
 }

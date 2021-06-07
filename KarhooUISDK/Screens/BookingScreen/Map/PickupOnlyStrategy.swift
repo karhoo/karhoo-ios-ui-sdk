@@ -30,15 +30,18 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     private var currentPickup: LocationInfo?
     private var lastLocation: CLLocation?
     private let bookingStatus: BookingStatus
+    private let locationService: LocationService
 
     init(userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressService: AddressService = Karhoo.getAddressService(),
          timer: TimeScheduler = KarhooTimeScheduler(),
-         bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
+         bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+         locationService: LocationService = KarhooLocationService()) {
         self.userLocationProvider = userLocationProvider
         self.addressService = addressService
         self.timer = timer
         self.bookingStatus = bookingStatus
+        self.locationService = locationService
     }
 
     func set(delegate: PickupOnlyStrategyDelegate?) {
@@ -74,9 +77,14 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
 
         let pickupPosition = pickup.position.toCLLocation()
 
-        map?.centerPin(hidden: false)
-        map?.center(on: pickupPosition)
+        if locationService.locationAccessEnabled() {
+            map?.centerPin(hidden: false)
+        } else {
+            map?.centerPin(hidden: true)
+            map?.addPin(location: pickupPosition, asset: PinAsset.pickup, tag: BookingPinTags.pickup.rawValue)
+        }
         
+        map?.center(on: pickupPosition)
     }
 
     func focusMap() {
@@ -138,7 +146,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     }
 
     private func shouldReverseGeolocateOnMapDrag() -> Bool {
-        return true
+        return locationService.locationAccessEnabled()
     }
 
     private func reverseGeoLocate(location: CLLocation?) {

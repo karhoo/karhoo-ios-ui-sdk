@@ -34,7 +34,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
      */
     func testStart() {
         testObject.start(bookingDetails: nil)
-        XCTAssertFalse(mockMapView.centerPinHidden!)
+        XCTAssertTrue(mockMapView.centerPinHidden!)
         XCTAssertNotNil(mockUserLocationProvider.locationChangedCallback)
 
         let expectedFocusButtonVisibility = KarhooTestConfiguration.authenticationMethod.isGuest()

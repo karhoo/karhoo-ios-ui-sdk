@@ -27,7 +27,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
     }
 
     func start(bookingDetails: BookingDetails?) {
-        mapView?.centerPin(hidden: false)
+        mapView?.centerPin(hidden: true)
         mapView?.set(focusButtonHidden: false)
 
         if let userLocation = userLocationProvider.getLastKnownLocation() {
