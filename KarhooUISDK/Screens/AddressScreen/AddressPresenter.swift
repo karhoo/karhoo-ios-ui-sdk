@@ -20,6 +20,7 @@ final class KarhooAddressPresenter: AddressPresenter {
     private let analytics: Analytics
     private let recentAddressProvider: RecentAddressProvider
     private weak var addressView: AddressView?
+    private let locationService: LocationService
 
     private let searchDelay: Double
     private var currentSeachString: String = ""
@@ -34,7 +35,8 @@ final class KarhooAddressPresenter: AddressPresenter {
          addressService: AddressService = Karhoo.getAddressService(),
          analytics: Analytics = KarhooAnalytics(),
          recentAddressProvider: RecentAddressProvider = KarhooRecentAddressProvider(),
-         searchDelay: Double = 0.5) {
+         searchDelay: Double = 0.5,
+         locationService: LocationService = KarhooLocationService()) {
         
         self.selectionCallback = selectionCallback
         self.searchProvider = searchProvider
@@ -45,6 +47,7 @@ final class KarhooAddressPresenter: AddressPresenter {
         self.recentAddressProvider = recentAddressProvider
         self.searchDelay = searchDelay
         self.searchProvider.sessionToken = KarhooAddressPresenter.sessionToken
+        self.locationService = locationService
         searchProvider.set(delegate: self)
         searchProvider.set(preferredLocation: preferredLocation)
     }
@@ -156,6 +159,14 @@ final class KarhooAddressPresenter: AddressPresenter {
                                                             
             self?.locationResponseHandler(result, saveLocation: false)
             self?.reverseGeocodingCurrentLocation = false
+        }
+    }
+    
+    public func checkLocationPermissions() {
+        if locationService.locationAccessEnabled() == true {
+            addressView?.buildAddressMapView()
+        } else {
+            addressView?.disableLocationOptions()
         }
     }
 }

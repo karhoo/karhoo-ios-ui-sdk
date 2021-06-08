@@ -64,7 +64,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
 
         testObject.start(bookingDetails: nil)
 
-        XCTAssertNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
     }
 
     /**

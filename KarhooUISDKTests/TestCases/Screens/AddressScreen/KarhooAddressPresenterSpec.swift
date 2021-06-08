@@ -20,6 +20,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
     private var mockAddressSearchProvider: MockAddressSearchProvider!
     private var mockAddressService: MockAddressService!
     private var mockAppAnalytics: MockAnalytics!
+    private var mockLocationService: MockLocationService!
     private var testObject: KarhooAddressPresenter!
     private var mockLocationInfoResult: ScreenResult<LocationInfo>?
     private var searchDelay = 0.1
@@ -94,7 +95,53 @@ class KarhooAddressPresenterSpec: XCTestCase {
         XCTAssertEqual(mockAddressView.mapPickerIconSet, .mapPickUp)
 
     }
+    
+    /**
+     *  When the presenter needs to check the location permissions
+     *  In case the permissions are denied
+     *  Then the view's disableLocationOptions method will be called
+     */
+    func testCheckingTheLocationPermissionsDenied() {
+        mockLocationService = MockLocationService()
+        mockLocationService.setLocationAccessEnabled = false
+        
+        let presenter = KarhooAddressPresenter(preferredLocation: mockLocation,
+                                                 addressMode: AddressType.pickup,
+                                                 selectionCallback: { self.mockLocationInfoResult = $0 },
+                                                 searchProvider: mockAddressSearchProvider,
+                                                 addressService: mockAddressService,
+                                                 locationService: mockLocationService)
 
+        presenter.set(view: mockAddressView)
+        presenter.checkLocationPermissions()
+        
+        XCTAssertFalse(mockAddressView.hasCalledTheBuildMapViewMethod)
+        XCTAssertTrue(mockAddressView.hasCalledDisableLocationOptionsMethod)
+    }
+    
+    /**
+     *  When the presenter needs to check the location permissions
+     *  In case the permissions are granted
+     *  Then the view's buildAddressMapView method will be called
+     */
+    func testCheckingTheLocationPermissionsGranted() {
+        mockLocationService = MockLocationService()
+        mockLocationService.setLocationAccessEnabled = true
+        
+        let presenter = KarhooAddressPresenter(preferredLocation: mockLocation,
+                                                 addressMode: AddressType.pickup,
+                                                 selectionCallback: { self.mockLocationInfoResult = $0 },
+                                                 searchProvider: mockAddressSearchProvider,
+                                                 addressService: mockAddressService,
+                                                 locationService: mockLocationService)
+
+        presenter.set(view: mockAddressView)
+        presenter.checkLocationPermissions()
+        
+        XCTAssertTrue(mockAddressView.hasCalledTheBuildMapViewMethod)
+        XCTAssertFalse(mockAddressView.hasCalledDisableLocationOptionsMethod)
+    }
+    
     /**
      *  When:   Close is pressed
      *  Then:   The callback should be called without an address
