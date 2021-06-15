@@ -31,9 +31,9 @@ final class QuoteViewModel {
         self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
         self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
         self.fleetName = quote.fleet.name
-
+        let bookingDetails = bookingStatus.getBookingDetails()
         let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
-                                                         bookingDetails: bookingStatus.getBookingDetails())
+                                                         bookingDetails: bookingDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
         self.carType = quote.vehicle.vehicleClass
@@ -42,7 +42,8 @@ final class QuoteViewModel {
         case .timeBeforePickup:
             if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
                 let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
+                let messageFormat = bookingDetails?.isScheduled == true ? UITexts.Quotes.freeCancellation : UITexts.Quotes.freeCancellationASAP
+                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }
@@ -59,7 +60,7 @@ final class QuoteViewModel {
 
         self.logoImageURL = quote.fleet.logoUrl
         self.fareType = quote.quoteType.description
-        let origin = bookingStatus.getBookingDetails()?.originLocationDetails?.details.type
+        let origin = bookingDetails?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport
 
         switch quote.pickUpType {

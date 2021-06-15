@@ -489,6 +489,7 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellation" = "Free cancellation up to %1$@ before pickup";
+"Text.Quote.FreeCancellationASAP" = "Free cancellation up to %1$@ after booking";
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
 "Text.Quote.FreeCancellationAndKeyword" = "and";
 

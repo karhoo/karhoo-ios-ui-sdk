@@ -497,6 +497,7 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellation" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
+"Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ minutes après la réservation";
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Annulation sans frais jusqu'au départ du chauffeur";
 "Text.Quote.FreeCancellationAndKeyword" = "et";
 
