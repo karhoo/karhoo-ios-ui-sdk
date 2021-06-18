@@ -42,7 +42,7 @@ final class QuoteViewModel {
         case .timeBeforePickup:
             if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
                 let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                let messageFormat = bookingDetails?.isScheduled == true ? UITexts.Quotes.freeCancellation : UITexts.Quotes.freeCancellationASAP
+                let messageFormat = bookingDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
                 freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil

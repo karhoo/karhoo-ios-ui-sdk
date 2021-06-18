@@ -518,7 +518,7 @@
 "Text.SupportMailMessage.NoCoverageBody" = "Gracias por recomendarnos una flota en tu zona. Para poder llegar a tu zona lo antes posible, indícanos el nombre de tu zona y de la flota.\n Zona:\n Flota:";
 
 /* Cancellation info on quotes */
-"Text.Quote.FreeCancellation" = "Cancelación gratuita hasta %1$@ antes de la recogida";
+"Text.Quote.FreeCancellationPrebook" = "Cancelación gratuita hasta %1$@ antes de la recogida";
 "Text.Quote.FreeCancellationASAP" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Cancelación gratuita hasta que el conductor esté en camino";
 "Text.Quote.FreeCancellationAndKeyword" = "y";
