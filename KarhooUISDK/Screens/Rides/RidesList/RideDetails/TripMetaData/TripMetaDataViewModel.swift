@@ -19,8 +19,7 @@ final class TripMetaDataViewModel {
     let flightNumber: String
     let baseFareHidden: Bool
     let showRateTrip: Bool
-    let isPrebook: Bool
-
+    
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
 
@@ -29,7 +28,7 @@ final class TripMetaDataViewModel {
         flightNumber = trip.flightNumber
         status = TripInfoUtility.short(tripState: trip.state)
         showRateTrip = trip.state == .completed
-        isPrebook = trip.dateBooked != trip.dateScheduled
+        let isPrebook = trip.dateBooked != trip.dateScheduled
 
         let bookingStatusViewModel = BookingStatusViewModel(trip: trip)
         statusColor = bookingStatusViewModel.statusColor

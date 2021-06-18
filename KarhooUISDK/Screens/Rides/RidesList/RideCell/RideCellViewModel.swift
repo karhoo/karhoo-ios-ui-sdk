@@ -18,7 +18,6 @@ final class RideCellViewModel {
     public let trip: TripInfo
     public let tripDetailsViewModel: TripDetailsViewModel
     public let showActionButtons: Bool
-    private let isPrebook: Bool
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -33,7 +32,7 @@ final class RideCellViewModel {
         } else {
             price = trip.quotePrice()
         }
-        isPrebook = trip.dateBooked != trip.dateScheduled
+        let isPrebook = trip.dateBooked != trip.dateScheduled
 
         tripDetailsViewModel = TripDetailsViewModel(trip: trip)
         tripState = TripInfoUtility.short(tripState: trip.state)
