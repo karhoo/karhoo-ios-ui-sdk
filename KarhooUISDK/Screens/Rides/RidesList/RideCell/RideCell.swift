@@ -170,11 +170,11 @@ private extension RideCell {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGray.cgColor
         
-        contentView.addSubview(view)
-        _ = [view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20.0),
-             view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20.0),
-             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20.0),
-             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20.0)].map { $0.isActive = true }
+        addSubview(view)
+        _ = [view.topAnchor.constraint(equalTo: topAnchor, constant: 20.0),
+             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20.0),
+             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.0),
+             view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.0)].map { $0.isActive = true }
         
         return view
     }
