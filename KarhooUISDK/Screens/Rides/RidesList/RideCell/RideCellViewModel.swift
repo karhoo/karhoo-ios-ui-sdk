@@ -18,6 +18,7 @@ final class RideCellViewModel {
     public let trip: TripInfo
     public let tripDetailsViewModel: TripDetailsViewModel
     public let showActionButtons: Bool
+    public let isPrebook: Bool
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -32,6 +33,7 @@ final class RideCellViewModel {
         } else {
             price = trip.quotePrice()
         }
+        isPrebook = trip.dateBooked != trip.dateScheduled
 
         tripDetailsViewModel = TripDetailsViewModel(trip: trip)
         tripState = TripInfoUtility.short(tripState: trip.state)
@@ -51,7 +53,8 @@ final class RideCellViewModel {
         case .timeBeforePickup:
             if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
                 let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
+                let messageFormat = isPrebook == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
+                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }
