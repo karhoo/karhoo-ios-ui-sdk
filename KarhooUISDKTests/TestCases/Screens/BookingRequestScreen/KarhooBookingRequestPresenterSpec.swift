@@ -26,6 +26,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     private var mockPopupDialogScreenBuilder: MockPopupDialogScreenBuilder!
     private let mockPaymentNonceProvider = MockPaymentNonceProvider()
     private let mockCardRegistrationFlow = MockCardRegistrationFlow()
+    private var mockBookingMetadata: [String: Any]? = [:]
 
     override func setUp() {
         super.setUp()
@@ -71,7 +72,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     }
 
     /**
-     * When: The user presses "request car"
+     * When: The user presses "book ride"
      * And: They are authenticated
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should be called
@@ -89,8 +90,9 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     }
     
     /**
-     * When: The user presses "request car"
+     * When: The user presses "book ride"
      * And: They are using Adyen for payment
+     * And: No booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should be called
      * And: Analytics event should fire
@@ -103,6 +105,29 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+        XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
+    }
+    
+    /**
+     * When: The user presses "book ride"
+     * And: booking metadata injected into the Booking Request
+     * Then: Then the screen should set to requesting state
+     * And: Get nonce endpoint should be called
+     * And: Analytics event should fire
+     * And: Injected metadata should be set on TripBooking request object
+     */
+    func testbookingMetadata() {
+        mockBookingMetadata = ["key":"value"]
+        loadTestObject()
+        mockView.paymentNonceToReturn = "nonce"
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+        let value: String = mockTripService.tripBookingSet?.meta["key"] as! String
+        XCTAssertEqual(value, "value")
     }
 
     /**
@@ -119,7 +144,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     }
 
     /**
-     * When: The user presses "request car"
+     * When: The user presses "book ride"
      * And: They are not authenticated
      * Then: An alert should show with failed to get user message
      * And: trip service should not be called
@@ -280,6 +305,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
 
         let fixedFareRequestScreen = KarhooBookingRequestPresenter(quote: testQuote,
                                                                    bookingDetails: testBookingDetails,
+                                                                   bookingMetadata: mockBookingMetadata,
                                                                    userService: mockUserService,
                                                                    tripService: mockTripService,
                                                                    callback: bookingRequestTrip)
@@ -408,6 +434,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     private func loadTestObject() {
         testObject = KarhooBookingRequestPresenter(quote: testQuote,
                                                    bookingDetails: testBookingDetails,
+                                                   bookingMetadata: mockBookingMetadata,
                                                    userService: mockUserService,
                                                    tripService: mockTripService,
                                                    analytics: mockAnalytics,

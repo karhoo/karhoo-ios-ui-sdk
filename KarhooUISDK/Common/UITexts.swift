@@ -203,7 +203,6 @@ public enum UITexts {
         public static let guestCheckoutPassengerDetailsTitle = "Text.Booking.GuestCheckoutPassengerDetailsTitle".localized
         public static let guestCheckoutPaymentDetailsTitle = "Text.Booking.GuestCheckoutPaymentDetailsTitle".localized
         public static let guestCheckoutFlightNumberPlaceholder = "Text.Booking.GuestCheckoutFlightNumberPlaceholder".localized
-        public static let guestCheckoutRequest = "Text.Booking.guestCheckout".localized
     }
 
     public enum Availability {
@@ -250,6 +249,11 @@ public enum UITexts {
         public static let arrival = "Text.Trip.Arrival".localized
         public static let karhooCancelledAlertTitle = "Text.Trip.KarhooCancelled.AlertTitle".localized
         public static let karhooCancelledAlertMessage = "Text.Trip.KarhooCancelled.AlertMessage".localized
+
+        public static let trackTripAlertTitle = "Text.Bookings.TrackTrip.AlertTitle".localized
+        public static let trackTripAlertMessage = "Text.Bookings.TrackTrip.AlertMessage".localized
+        public static let trackTripAlertAction = "Text.Bookings.TrackTrip.TrackAction".localized
+        public static let trackTripAlertDismissAction = "Text.Bookings.TrackTrip.DismissAction".localized
     }
 
     public enum TripSummary {
@@ -318,7 +322,8 @@ public enum UITexts {
     }
     
     public enum Quotes {
-        static let freeCancellation = "Text.Quote.FreeCancellation".localized
+        static let freeCancellationPrebook = "Text.Quote.FreeCancellationPrebook".localized
+        static let freeCancellationASAP = "Text.Quote.FreeCancellationASAP".localized
         static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
     }

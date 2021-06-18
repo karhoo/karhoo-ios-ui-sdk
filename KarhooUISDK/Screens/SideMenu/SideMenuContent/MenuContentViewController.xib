@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuContentViewController" customModule="KarhooUISDK" customModuleProvider="target">
             <connections>
                 <outlet property="logo" destination="fvL-gA-JVg" id="dFW-8Q-Fum"/>
+                <outlet property="profileView" destination="dxz-nr-BaL" id="IP9-XE-GR1"/>
+                <outlet property="ridesView" destination="997-MJ-ydk" id="7EV-hR-4vR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,10 +25,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outletCollection property="sideMenuFeedbackString" destination="4Db-TP-AYb" collectionClass="NSMutableArray" id="uWI-Xo-Mxx"/>
                         <outletCollection property="sideMenuRidesString" destination="veE-cr-Ad2" collectionClass="NSMutableArray" id="TzU-El-R2k"/>
                         <outletCollection property="sideMenuProfileString" destination="zDA-XN-WcR" collectionClass="NSMutableArray" id="0a7-qs-7nb"/>
-                        <outletCollection property="sideMenuAboutString" destination="D0p-4A-Urn" collectionClass="NSMutableArray" id="45k-9b-oQt"/>
+                        <outletCollection property="sideMenuHelpString" destination="D0p-4A-Urn" collectionClass="NSMutableArray" id="dhM-qG-Vx5"/>
+                        <outletCollection property="sideMenuAboutString" destination="4Db-TP-AYb" collectionClass="NSMutableArray" id="4iO-Fe-piQ"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SL4-uz-0P9" customClass="AccessibilityIdentifiers" customModule="KarhooUISDK">
@@ -144,56 +147,17 @@
                                 <constraint firstItem="XvP-sZ-DTP" firstAttribute="top" secondItem="dxz-nr-BaL" secondAttribute="top" priority="990" constant="1.5" id="tqy-BI-CCi"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xth-Qg-2vx" userLabel="FeedbackContainer">
-                            <rect key="frame" x="0.0" y="135" width="355" height="40"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedback" translatesAutoresizingMaskIntoConstraints="NO" id="Tni-rx-zrU">
-                                    <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="17" id="7DG-Ot-suc"/>
-                                        <constraint firstAttribute="width" constant="17" id="Jne-19-6b5"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Db-TP-AYb">
-                                    <rect key="frame" x="37" y="0.0" width="318" height="40"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ol-om-rp9">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
-                                    <accessibility key="accessibilityConfiguration" identifier="side-menu-feedback-button"/>
-                                    <connections>
-                                        <action selector="feedbackPressed" destination="-1" eventType="touchUpInside" id="bFs-Mg-k53"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="Tni-rx-zrU" firstAttribute="centerY" secondItem="xth-Qg-2vx" secondAttribute="centerY" id="C0U-FO-qFo"/>
-                                <constraint firstAttribute="trailing" secondItem="4Db-TP-AYb" secondAttribute="trailing" id="EB8-K1-9mF"/>
-                                <constraint firstItem="4Db-TP-AYb" firstAttribute="top" secondItem="xth-Qg-2vx" secondAttribute="top" id="K5l-i9-c4E"/>
-                                <constraint firstAttribute="bottom" secondItem="4Db-TP-AYb" secondAttribute="bottom" id="Rck-Ks-z9K"/>
-                                <constraint firstItem="4Db-TP-AYb" firstAttribute="leading" secondItem="Tni-rx-zrU" secondAttribute="trailing" constant="20" id="Tz2-oT-WcI"/>
-                                <constraint firstItem="7ol-om-rp9" firstAttribute="leading" secondItem="xth-Qg-2vx" secondAttribute="leading" id="YCx-ox-xHP"/>
-                                <constraint firstItem="Tni-rx-zrU" firstAttribute="leading" secondItem="xth-Qg-2vx" secondAttribute="leading" id="fvj-6H-dUS"/>
-                                <constraint firstAttribute="bottom" secondItem="7ol-om-rp9" secondAttribute="bottom" id="iqR-ge-zov"/>
-                                <constraint firstAttribute="height" constant="40" id="j4v-8J-FMj"/>
-                                <constraint firstAttribute="trailing" secondItem="7ol-om-rp9" secondAttribute="trailing" id="uSq-KO-Wf6"/>
-                                <constraint firstItem="7ol-om-rp9" firstAttribute="top" secondItem="xth-Qg-2vx" secondAttribute="top" id="zpa-G4-KOV"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or2-aq-fkt" userLabel="About Container">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or2-aq-fkt" userLabel="Help Container">
                             <rect key="frame" x="0.0" y="190" width="355" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="vfO-ew-4Cj">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fi_help-circle" translatesAutoresizingMaskIntoConstraints="NO" id="vfO-ew-4Cj">
                                     <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="Ztk-wG-XOu"/>
                                         <constraint firstAttribute="width" constant="17" id="dcp-BK-g3F"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0p-4A-Urn">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0p-4A-Urn">
                                     <rect key="frame" x="37" y="0.0" width="318" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -203,7 +167,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
                                     <accessibility key="accessibilityConfiguration" identifier="side-menu-about-button"/>
                                     <connections>
-                                        <action selector="aboutPressed" destination="-1" eventType="touchUpInside" id="3kC-Ex-e8D"/>
+                                        <action selector="helpPressed" destination="-1" eventType="touchUpInside" id="stT-hf-Mo4"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -220,6 +184,46 @@
                                 <constraint firstItem="l6K-J3-j9y" firstAttribute="leading" secondItem="Or2-aq-fkt" secondAttribute="leading" id="nXJ-BM-pS9"/>
                                 <constraint firstItem="D0p-4A-Urn" firstAttribute="leading" secondItem="vfO-ew-4Cj" secondAttribute="trailing" constant="20" id="twO-gE-YQ6"/>
                                 <constraint firstItem="D0p-4A-Urn" firstAttribute="top" secondItem="Or2-aq-fkt" secondAttribute="top" id="vnN-fU-7FC"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xth-Qg-2vx" userLabel="AboutContainer">
+                            <rect key="frame" x="0.0" y="135" width="355" height="40"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tni-rx-zrU">
+                                    <rect key="frame" x="0.0" y="12" width="17" height="16"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="17" id="7DG-Ot-suc"/>
+                                        <constraint firstAttribute="width" constant="17" id="Jne-19-6b5"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Db-TP-AYb">
+                                    <rect key="frame" x="37" y="0.0" width="318" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ol-om-rp9">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="40"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="side-menu-feedback-button"/>
+                                    <connections>
+                                        <action selector="aboutPressed" destination="-1" eventType="touchUpInside" id="xjH-MK-FQQ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Tni-rx-zrU" firstAttribute="centerY" secondItem="xth-Qg-2vx" secondAttribute="centerY" id="C0U-FO-qFo"/>
+                                <constraint firstAttribute="trailing" secondItem="4Db-TP-AYb" secondAttribute="trailing" id="EB8-K1-9mF"/>
+                                <constraint firstItem="4Db-TP-AYb" firstAttribute="top" secondItem="xth-Qg-2vx" secondAttribute="top" id="K5l-i9-c4E"/>
+                                <constraint firstAttribute="bottom" secondItem="4Db-TP-AYb" secondAttribute="bottom" id="Rck-Ks-z9K"/>
+                                <constraint firstItem="4Db-TP-AYb" firstAttribute="leading" secondItem="Tni-rx-zrU" secondAttribute="trailing" constant="20" id="Tz2-oT-WcI"/>
+                                <constraint firstItem="7ol-om-rp9" firstAttribute="leading" secondItem="xth-Qg-2vx" secondAttribute="leading" id="YCx-ox-xHP"/>
+                                <constraint firstItem="Tni-rx-zrU" firstAttribute="leading" secondItem="xth-Qg-2vx" secondAttribute="leading" id="fvj-6H-dUS"/>
+                                <constraint firstAttribute="bottom" secondItem="7ol-om-rp9" secondAttribute="bottom" id="iqR-ge-zov"/>
+                                <constraint firstAttribute="height" constant="40" id="j4v-8J-FMj"/>
+                                <constraint firstAttribute="trailing" secondItem="7ol-om-rp9" secondAttribute="trailing" id="uSq-KO-Wf6"/>
+                                <constraint firstItem="7ol-om-rp9" firstAttribute="top" secondItem="xth-Qg-2vx" secondAttribute="top" id="zpa-G4-KOV"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -254,9 +258,12 @@
         </view>
     </objects>
     <resources>
-        <image name="about" width="34" height="34"/>
-        <image name="feedback" width="34" height="34"/>
+        <image name="fi_help-circle" width="24" height="24"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="profile" width="34" height="34"/>
         <image name="rides" width="17" height="18"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

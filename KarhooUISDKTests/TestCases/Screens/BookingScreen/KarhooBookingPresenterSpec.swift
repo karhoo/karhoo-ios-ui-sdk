@@ -555,16 +555,47 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     }
 
     /**
-     *Given: Opening trip tracking screen
-     * When: User is a guest
+     * Given: The user is a guest user
+     * When: The user confirms that he/she wants to follow the trip
      * Then: URL opener should open agent portal and Trip screen should not open
      */
-    func testGuestTripTrackingFlow() {
+    func testWhenTheUserConfirmsToTrackShouldOpenTheTripTrackingURL() {
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        let testTrip = TestUtil.getRandomTrip()
+        testObject.goToTripView(trip: testTrip)
+        mockBookingView.triggerAlertAction(atIndex: 1)
+
+        XCTAssertEqual(testTrip.followCode, mockURLOpener.followCodeSet)
+        XCTAssertNil(mockTripScreenBuilder.tripSet)
+    }
+
+    /**
+     * Given: The user is a guest user
+     * When: The user dismisses trip tracking alert
+     * Then: URL opener should not open agent portal
+     */
+    func testWhenTheUserDismissesTripTrackingShouldNotOpenTheTripTrackingURL() {
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        let testTrip = TestUtil.getRandomTrip()
+        testObject.goToTripView(trip: testTrip)
+        mockBookingView.triggerAlertAction(atIndex: 0)
+
+        XCTAssertNil(mockURLOpener.followCodeSet)
+    }
+
+    /**
+     * Given: The user is a guest user
+     * When: The user is presented the trip tracking alert
+     * Then: The alert should have correct title, message and button titles
+     */
+    func testWhenTheUserIsPresentedTheTripTrackingAlertItShouldHaveCorrectContent() {
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
         let testTrip = TestUtil.getRandomTrip()
         testObject.goToTripView(trip: testTrip)
 
-        XCTAssertEqual(testTrip.followCode, mockURLOpener.followCodeSet)
-        XCTAssertNil(mockTripScreenBuilder.tripSet)
+        XCTAssertEqual(mockBookingView.actionAlertTitle, UITexts.Trip.trackTripAlertTitle)
+        XCTAssertEqual(mockBookingView.actionAlertMessage, UITexts.Trip.trackTripAlertMessage)
+        XCTAssertEqual(mockBookingView.alertActions[0].action.title, UITexts.Trip.trackTripAlertDismissAction)
+        XCTAssertEqual(mockBookingView.alertActions[1].action.title, UITexts.Trip.trackTripAlertAction)
     }
 }

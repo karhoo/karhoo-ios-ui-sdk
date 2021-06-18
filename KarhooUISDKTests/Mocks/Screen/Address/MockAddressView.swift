@@ -85,4 +85,14 @@ final class MockAddressView: MockBaseViewController, AddressView {
     func hideEmptyDataSet() {
         hideEmptyDataSetCalled = true
     }
+    
+    private(set) var hasCalledTheBuildMapViewMethod = false
+    func buildAddressMapView() {
+        hasCalledTheBuildMapViewMethod = true
+    }
+    
+    private(set) var hasCalledDisableLocationOptionsMethod = false
+    func disableLocationOptions() {
+        hasCalledDisableLocationOptionsMethod = true
+    }
 }

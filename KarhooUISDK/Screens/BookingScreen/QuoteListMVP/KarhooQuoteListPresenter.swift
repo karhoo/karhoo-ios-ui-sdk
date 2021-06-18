@@ -45,16 +45,23 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuoteOrder(_ order: QuoteSortOrder) {
-        self.selectedQuoteOrder = order
-        updateViewQuotes(animated: true)
+        self.didSelectQuoteOrder(order, animated: true)
     }
 
-    private func quoteSearchSuccessResult(_ quotes: Quotes) {
+    func didSelectQuoteOrder(_ order: QuoteSortOrder, animated: Bool) {
+        self.selectedQuoteOrder = order
+        updateViewQuotes(animated: animated)
+    }
+
+    private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: BookingDetails?) {
         self.fetchedQuotes = quotes
         quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
                                          quoteListId: quotes.quoteListId)
-
-        updateViewQuotes(animated: false)
+        if bookingDetails?.destinationLocationDetails != nil, bookingDetails?.isScheduled == true {
+            didSelectQuoteOrder(.price, animated: false)
+        } else {
+            updateViewQuotes(animated: false)
+        }
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {
@@ -166,7 +173,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             switch result {
             case .success(let quotes):
-                self?.quoteSearchSuccessResult(quotes)
+                self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
                 if details.destinationLocationDetails != nil,
                     let scheduled = details.scheduledDate,
                     let originTimeZone = details.originLocationDetails?.timezone() {

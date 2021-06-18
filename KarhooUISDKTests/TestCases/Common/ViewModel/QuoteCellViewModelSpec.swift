@@ -35,10 +35,37 @@ class QuoteCellViewModelSpec: XCTestCase {
         testObject = QuoteViewModel(quote: quote)
         
         XCTAssertEqual(testObject.fleetName, "TestFleet")
-        XCTAssertEqual(testObject.eta, expectedEta)
+        XCTAssertEqual(testObject.scheduleCaption, UITexts.Generic.etaLong.uppercased())
+        XCTAssertEqual(testObject.scheduleMainValue, expectedEta)
         XCTAssertEqual("1", testObject.passengerCapacity)
         XCTAssertEqual("2", testObject.baggageCapacity)
         XCTAssertNil(testObject.freeCancellationMessage)
+    }
+
+    /**
+     * Given: A quote and prebooked ride details
+     * Then: The view model should set correct schedule values
+     */
+    func testWhenTheRideIsPrebookedShouldDisplayCorrectScheduleValues() {
+
+        let quote = TestUtil.getRandomQuote(fleetName: "TestFleet",
+                                            qtaHighMinutes: 1,
+                                            qtaLowMinutes: 1,
+                                            passengerCapacity: 2,
+                                            luggageCapacity: 2)
+        let mockBookingStatus = MockBookingStatus()
+        let bookingDetails = TestUtil.getRandomBookingDetails()
+        mockBookingStatus.bookingDetailsToReturn = bookingDetails
+
+        let timezone = bookingDetails.originLocationDetails!.timezone()
+        let prebookFormatter = KarhooDateFormatter(timeZone: timezone)
+        let expectedCaption = prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate)
+        let expectedMainValue = prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate)
+
+        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+
+        XCTAssertEqual(testObject.scheduleCaption, expectedCaption)
+        XCTAssertEqual(testObject.scheduleMainValue, expectedMainValue)
     }
     
     /**
@@ -135,16 +162,36 @@ class QuoteCellViewModelSpec: XCTestCase {
     
     /**
      * Given: Quote comes from the fleet
-     * When: The SLA has free cancellation minutes
+     * When: The SLA has free cancellation minutes AND the booking is scheduled
      * Then:  The correct free minutes and display cancellation info is set
      */
     func testFreeCancellationMinutesOnSLA() {
         let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        let mockBookingStatus = MockBookingStatus()
+        let scheduledBookingDetails = TestUtil.getRandomBookingDetails(originSet: true, destinationSet: true, dateSet: true)
+        mockBookingStatus.bookingDetailsToReturn = scheduledBookingDetails
+        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
 
         XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
+    }
+
+    /**
+     * Given: Quote comes from the fleet
+     * When: The SLA has free cancellation minutes AND the booking is ASAP
+     * Then:  The correct free minutes and display cancellation info is set
+     */
+    func testWhenSLAHasFreeCancellationMinutesAndTheBookingIsASAPShowCorrectCancellationMessage() {
+        let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
+        let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
+
+        let mockBookingStatus = MockBookingStatus()
+        let asapBookingDetails = TestUtil.getRandomBookingDetails(originSet: true, destinationSet: true, dateSet: false)
+        mockBookingStatus.bookingDetailsToReturn = asapBookingDetails
+        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+
+        XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes after booking")
     }
 
     /**

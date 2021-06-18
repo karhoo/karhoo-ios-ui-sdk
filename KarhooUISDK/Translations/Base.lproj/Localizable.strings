@@ -90,7 +90,6 @@
 "Text.Booking.RequestReceived" = "Booking Received";
 "Text.Bookings.eta" = "ETA";
 "Text.Bookings.price" = "Price";
-"Text.Booking.guestCheckout" = "Check-out as Guest";
 
 /*Trip*/
 "Text.Trip.CancelRide" = "Cancel Ride";
@@ -213,6 +212,11 @@
 
 /*"Track Trip"*/
 "Text.Bookings.TrackTrip" = "Track Ride";
+
+"Text.Bookings.TrackTrip.AlertTitle" = "Ride confirmed";
+"Text.Bookings.TrackTrip.AlertMessage" = "Would you like to track your trip?";
+"Text.Bookings.TrackTrip.TrackAction" = "Track driver";
+"Text.Bookings.TrackTrip.DismissAction" = "Dismiss";
 
 /*"Cancel Ride" button action*/
 "Text.Bookings.CancelRide" = "Cancel Ride";
@@ -484,7 +488,8 @@
 "Text.SupportMailMessage.NoCoverageBody" = "Thank you for recommending a fleet in your area. To get coverage in your area as fast as possible, please provide us with area and the name of transportation company.\n Area:\n Fleet time: ";
 
 /* Cancellation info on quotes */
-"Text.Quote.FreeCancellation" = "Free cancellation up to %1$@ before pickup";
+"Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
+"Text.Quote.FreeCancellationASAP" = "Free cancellation up to %1$@ after booking";
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
 "Text.Quote.FreeCancellationAndKeyword" = "and";
 

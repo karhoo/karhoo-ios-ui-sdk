@@ -18,6 +18,7 @@ protocol AddressPresenter {
     func getCurrentLocation()
     func close()
     func clearSearch()
+    func checkLocationPermissions()
 }
 
 protocol AddressView: BaseViewController {
@@ -32,4 +33,6 @@ protocol AddressView: BaseViewController {
     func unfocusInputField()
     func show(emptyDataSetMessage: String)
     func hideEmptyDataSet()
+    func disableLocationOptions()
+    func buildAddressMapView()
 }

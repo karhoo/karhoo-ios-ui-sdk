@@ -48,7 +48,7 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     }
     
     func stopMonitoringTrip() {
-        tripObservable?.subscribe(observer: tripObserver)
+        tripObservable?.unsubscribe(observer: tripObserver)
     }
 
     func cancelTrip() {

@@ -28,7 +28,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
 
     func start(bookingDetails: BookingDetails?) {
         mapView?.centerPin(hidden: true)
-        mapView?.set(focusButtonHidden: Karhoo.configuration.authenticationMethod().isGuest())
+        mapView?.set(focusButtonHidden: false)
 
         if let userLocation = userLocationProvider.getLastKnownLocation() {
             mapView?.center(on: userLocation)
@@ -42,10 +42,6 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
     }
 
     func focusMap() {
-        guard Karhoo.configuration.authenticationMethod().isGuest() == false else {
-            return
-        }
-
         if let location = userLocationProvider.getLastKnownLocation() {
             bookingStatus.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
         } else {

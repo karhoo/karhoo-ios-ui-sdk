@@ -153,19 +153,15 @@ final class AddressViewController: UIViewController, AddressView {
              emptyResultsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              emptyResultsView.bottomAnchor.constraint(equalTo: googleLogoView.topAnchor)].map { $0.isActive = true }
 
-        configureForAuthenticationMethod()
+        presenter.checkLocationPermissions()
+    }
+    
+    func disableLocationOptions() {
+        setOnMapView.isHidden = true
+        currentLocationView.isHidden = true
     }
 
-    private func configureForAuthenticationMethod() {
-        if Karhoo.configuration.authenticationMethod().guestSettings == nil {
-            buildAddressMapView()
-        } else {
-            setOnMapView.isHidden = true
-            currentLocationView.isHidden = true
-        }
-    }
-
-    private func buildAddressMapView() {
+    func buildAddressMapView() {
         addressMapView = KarhooAddressMapView()
         addressMapView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addressMapView)

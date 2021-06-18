@@ -105,7 +105,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
       * Given: Cancelling a trip
       * When: Cancelling is successful
       * Then: View should be informed
-      * And: Trip trip tracking should stop
+      * And: Trip tracking should stop
       * And: Cancel button should reset
       */
     func testCancelTripSuccessful() {

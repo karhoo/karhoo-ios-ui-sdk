@@ -10,7 +10,21 @@ import Foundation
 import KarhooUISDK
 
 final class MockSideMenuHandler: SideMenuHandler {
-    func showBookingsList(onViewController viewController: UIViewController) {}
-    func showProfile(onViewController: UIViewController) {}
-    func showAbout(onViewController: UIViewController) {}
+    var pressedOnBookings = false
+    var pressedOnProfile = false
+    var pressedOnAbout = false
+    var pressedOnHelp = false
+    
+    func showBookingsList(onViewController viewController: UIViewController) {
+        self.pressedOnBookings = true
+    }
+    func showProfile(onViewController: UIViewController) {
+        self.pressedOnProfile = true
+    }
+    func showAbout(onViewController: UIViewController) {
+        self.pressedOnAbout = true
+    }
+    func showHelp(onViewController: UIViewController) {
+        self.pressedOnHelp = true
+    }
 }

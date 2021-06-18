@@ -12,7 +12,8 @@ import KarhooSDK
 final class QuoteViewModel {
     
     let fleetName: String
-    let eta: String
+    let scheduleCaption: String
+    let scheduleMainValue: String
     let carType: String
     let fare: String
     let logoImageURL: String
@@ -21,7 +22,6 @@ final class QuoteViewModel {
     let pickUpType: String
     let passengerCapacity: String
     let baggageCapacity: String
-    
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -31,15 +31,19 @@ final class QuoteViewModel {
         self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
         self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
         self.fleetName = quote.fleet.name
-        self.eta = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
-                                                  max: quote.vehicle.qta.highMinutes)
+        let bookingDetails = bookingStatus.getBookingDetails()
+        let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
+                                                         bookingDetails: bookingDetails)
+        self.scheduleCaption = scheduleTexts.caption
+        self.scheduleMainValue = scheduleTexts.value
         self.carType = quote.vehicle.vehicleClass
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
             if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
                 let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                freeCancellationMessage = String(format: UITexts.Quotes.freeCancellation, timeBeforeCancel)
+                let messageFormat = bookingDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
+                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
             }
@@ -56,7 +60,7 @@ final class QuoteViewModel {
 
         self.logoImageURL = quote.fleet.logoUrl
         self.fareType = quote.quoteType.description
-        let origin = bookingStatus.getBookingDetails()?.originLocationDetails?.details.type
+        let origin = bookingDetails?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport
 
         switch quote.pickUpType {
@@ -64,6 +68,24 @@ final class QuoteViewModel {
         case .curbside: pickUpType = UITexts.Bookings.cubsidePickup
         case .standyBy: pickUpType = UITexts.Bookings.standBy
         default: pickUpType = ""
+        }
+    }
+
+    private static func scheduleTexts(quote: Quote, bookingDetails: BookingDetails?) -> (caption: String, value: String) {
+        if let scheduledDate = bookingDetails?.scheduledDate,
+           let originTimeZone = bookingDetails?.originLocationDetails?.timezone() {
+            // If the booking is prebooked display only the date + time
+            let timeZone = originTimeZone
+            let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
+            let dateString = prebookFormatter.display(mediumStyleDate: scheduledDate)
+            let timeString = prebookFormatter.display(shortStyleTime: scheduledDate)
+            return (dateString, timeString)
+        } else {
+            // If the booking is ASAP display the ETA
+            let etaCaption = UITexts.Generic.etaLong.uppercased()
+            let etaMinutes = QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
+                                                            max: quote.vehicle.qta.highMinutes)
+            return (etaCaption, etaMinutes)
         }
     }
 }

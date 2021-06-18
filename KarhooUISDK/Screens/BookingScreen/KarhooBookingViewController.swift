@@ -397,7 +397,6 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             navigationController.setNavigationBarHidden(true, animated: false)
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
-
         } else {
             bookingViewController.set(leftNavigationButton: .exitIcon)
             bookingViewController.modalPresentationStyle = .fullScreen
