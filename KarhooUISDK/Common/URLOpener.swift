@@ -26,7 +26,7 @@ final public class KarhooURLOpener: URLOpener {
         switch Karhoo.configuration.environment() {
         case .custom:  open(URL(string: "https://agent-portal.stg.karhoo.net/follow/\(followCode)")!)
         case .production: open(URL(string: "https://agent-portal.karhoo.com/follow/\(followCode)")!)
-        case .sandbox: return open(URL(string: "https://agent-portal.karhoo.com/follow/\(followCode)")!)
+        case .sandbox: return open(URL(string: "https://agent-portal.sandbox.karhoo.com/follow/\(followCode)")!)
         }
     }
 }

@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import KarhooSDK
 
 final class MenuContentViewController: UIViewController, MenuContentView {
 
     private let presenter: MenuContentScreenPresenter
     @IBOutlet private weak var logo: UIImageView?
+    @IBOutlet private weak var profileView: UIView?
+    @IBOutlet private weak var ridesView: UIView?
 
     init(presenter: MenuContentScreenPresenter) {
         self.presenter = presenter
@@ -26,10 +29,16 @@ final class MenuContentViewController: UIViewController, MenuContentView {
         super.viewDidLoad()
 
         self.logo?.image = KarhooUISDKConfigurationProvider.configuration.logo()
+        presenter.checkGuestAuthentication()
     }
 
     func getFlowItem() -> Screen {
         return self
+    }
+    
+    func showGuestMenu() {
+        self.ridesView?.removeFromSuperview()
+        self.profileView?.removeFromSuperview()
     }
 
     @IBAction private func profilePressed() {
@@ -40,11 +49,11 @@ final class MenuContentViewController: UIViewController, MenuContentView {
         presenter.bookingsPressed()
     }
 
-    @IBAction private func feedbackPressed() {
-        presenter.feedbackPressed()
-    }
-
     @IBAction private func aboutPressed() {
         presenter.aboutPressed()
+    }
+
+    @IBAction private func helpPressed() {
+        presenter.helpPressed()
     }
 }

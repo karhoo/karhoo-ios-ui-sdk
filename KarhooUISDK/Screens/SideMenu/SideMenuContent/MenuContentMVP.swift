@@ -10,9 +10,12 @@ import Foundation
 
 protocol MenuContentPresenter {
     func profilePressed()
-    func feedbackPressed()
-    func bookingsPressed()
     func aboutPressed()
+    func bookingsPressed()
+    func helpPressed()
+    func checkGuestAuthentication()
 }
 
-protocol MenuContentView: AnyObject, FlowItemable {}
+@objc public protocol MenuContentView: AnyObject, FlowItemable {
+    func showGuestMenu()
+}

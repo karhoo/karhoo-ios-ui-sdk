@@ -20,6 +20,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
     private var mockAddressSearchProvider: MockAddressSearchProvider!
     private var mockAddressService: MockAddressService!
     private var mockAppAnalytics: MockAnalytics!
+    private var mockLocationService: MockLocationService!
     private var testObject: KarhooAddressPresenter!
     private var mockLocationInfoResult: ScreenResult<LocationInfo>?
     private var searchDelay = 0.1
@@ -94,7 +95,53 @@ class KarhooAddressPresenterSpec: XCTestCase {
         XCTAssertEqual(mockAddressView.mapPickerIconSet, .mapPickUp)
 
     }
+    
+    /**
+     *  When the presenter needs to check the location permissions
+     *  In case the permissions are denied
+     *  Then the view's disableLocationOptions method will be called
+     */
+    func testCheckingTheLocationPermissionsDenied() {
+        mockLocationService = MockLocationService()
+        mockLocationService.setLocationAccessEnabled = false
+        
+        let presenter = KarhooAddressPresenter(preferredLocation: mockLocation,
+                                                 addressMode: AddressType.pickup,
+                                                 selectionCallback: { self.mockLocationInfoResult = $0 },
+                                                 searchProvider: mockAddressSearchProvider,
+                                                 addressService: mockAddressService,
+                                                 locationService: mockLocationService)
 
+        presenter.set(view: mockAddressView)
+        presenter.checkLocationPermissions()
+        
+        XCTAssertFalse(mockAddressView.hasCalledTheBuildMapViewMethod)
+        XCTAssertTrue(mockAddressView.hasCalledDisableLocationOptionsMethod)
+    }
+    
+    /**
+     *  When the presenter needs to check the location permissions
+     *  In case the permissions are granted
+     *  Then the view's buildAddressMapView method will be called
+     */
+    func testCheckingTheLocationPermissionsGranted() {
+        mockLocationService = MockLocationService()
+        mockLocationService.setLocationAccessEnabled = true
+        
+        let presenter = KarhooAddressPresenter(preferredLocation: mockLocation,
+                                                 addressMode: AddressType.pickup,
+                                                 selectionCallback: { self.mockLocationInfoResult = $0 },
+                                                 searchProvider: mockAddressSearchProvider,
+                                                 addressService: mockAddressService,
+                                                 locationService: mockLocationService)
+
+        presenter.set(view: mockAddressView)
+        presenter.checkLocationPermissions()
+        
+        XCTAssertTrue(mockAddressView.hasCalledTheBuildMapViewMethod)
+        XCTAssertFalse(mockAddressView.hasCalledDisableLocationOptionsMethod)
+    }
+    
     /**
      *  When:   Close is pressed
      *  Then:   The callback should be called without an address
@@ -370,5 +417,50 @@ class KarhooAddressPresenterSpec: XCTestCase {
         mockUserLocationProvider.lastKnownLocation = nil
         testObject.getCurrentLocation()
         XCTAssertNil(mockAddressService.reverseGeocodePositionSet)
+    }
+
+    func testIfReverseGeocodingDidNotSendResponseShouldNotReverseGeocodeAnotherCurrentLocation() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location1.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location1.coordinate.longitude)
+    }
+
+    func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingFailureResponse() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let error = TestUtil.getRandomError()
+        mockAddressService.reverseGeocodeCall.triggerFailure(error)
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location2.coordinate.longitude)
+    }
+
+    func testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingSuccessfulResponse() {
+        let location1 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location1
+        testObject.getCurrentLocation()
+
+        let locationInfo = TestUtil.getRandomLocationInfo()
+        mockAddressService.reverseGeocodeCall.triggerSuccess(locationInfo)
+
+        let location2 = TestUtil.getRandomLocation()
+        mockUserLocationProvider.lastKnownLocation = location2
+        testObject.getCurrentLocation()
+
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.latitude, location2.coordinate.latitude)
+        XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location2.coordinate.longitude)
     }
 }

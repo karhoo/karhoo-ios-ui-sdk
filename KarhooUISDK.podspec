@@ -1,14 +1,13 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.5.0"
-
-  s.summary               = "UI SDK for the Karhoo platform"
-  s.homepage              = "https://github.com/karhoo/Karhoo-iOS-UI-SDK.git"
-  s.license               = 'MIT'
+  s.version               = "1.6.0"
+  s.summary               = "Karhoo UI SDK"
+  s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
+  s.license               = 'BSD 2-Clause'
   s.author                = { "Karhoo" => "ios@karhoo.com" }
 
-  s.source                = { :git => "git@github.com:karhoo/Karhoo-iOS-UI-SDK.git", :tag => s.version }
+  s.source                = { :git => "https://github.com/karhoo/karhoo-ios-ui-sdk.git", :tag => s.version }
   s.source_files          = 'KarhooUISDK/**/*.swift' 
 
   s.resource_bundles = {

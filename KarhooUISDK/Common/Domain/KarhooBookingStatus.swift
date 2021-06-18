@@ -82,10 +82,6 @@ public final class KarhooBookingStatus: BookingStatus {
     }
 
     public func setJourneyInfo(journeyInfo: JourneyInfo?) {
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            return
-        }
-
         guard let desiredPickup = journeyInfo?.origin else {
             return
         }
