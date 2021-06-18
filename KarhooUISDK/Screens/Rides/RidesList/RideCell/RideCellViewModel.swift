@@ -18,7 +18,7 @@ final class RideCellViewModel {
     public let trip: TripInfo
     public let tripDetailsViewModel: TripDetailsViewModel
     public let showActionButtons: Bool
-    public let isPrebook: Bool
+    private let isPrebook: Bool
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
