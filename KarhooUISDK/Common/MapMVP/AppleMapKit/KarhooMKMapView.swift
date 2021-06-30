@@ -246,7 +246,7 @@ extension KarhooMKMapView: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: (overlay as? MKPolyline)!)
-        renderer.strokeColor = KarhooUI.colors.secondary
+        renderer.strokeColor = KarhooUI.colors.primary
         renderer.lineWidth = 3
         return renderer
       }
