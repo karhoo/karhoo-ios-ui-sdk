@@ -109,9 +109,9 @@ final class KarhooAddressMapView: UIView, AddressMapView {
     private func setUpView(addressType: AddressType) {
         addressDisplayView.set(addressType: addressType)
         if addressType == .pickup {
-            map.set(centerIcon: "pickup_pin")
+            map.set(centerIcon: PinAsset.background.rawValue)
         } else {
-            map.set(centerIcon: "dropoff_pin")
+            map.set(centerIcon: PinAsset.background.rawValue)
         }
     }
     

@@ -9,9 +9,11 @@
 import CoreLocation
 import KarhooSDK
 
-enum PinAsset {
-    static let pickup = "pickup_pin"
-    static let destination = "dropoff_pin"
+enum PinAsset: String {
+    case background = "pin_background_icon"
+    case pickup = "pin_pickUp_icon"
+    case destination = "pin_destination_icon"
+    case driverLocation = "car_icon"
 }
 
 protocol BookingMapStrategy: AnyObject {

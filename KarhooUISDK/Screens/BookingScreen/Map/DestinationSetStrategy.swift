@@ -18,8 +18,8 @@ final class DestinationSetStrategy: BookingMapStrategy {
     private let destinationPinTag: Int
     private var currentDestinationAddress: LocationInfo?
 
-    init(pickupPinTag: Int = BookingPinTags.pickup.rawValue,
-         destinationPinTag: Int = BookingPinTags.destination.rawValue) {
+    init(pickupPinTag: Int = TripPinTags.pickup.rawValue,
+         destinationPinTag: Int = TripPinTags.destination.rawValue) {
         self.pickupPinTag = pickupPinTag
         self.destinationPinTag = destinationPinTag
     }
@@ -87,7 +87,8 @@ final class DestinationSetStrategy: BookingMapStrategy {
 
     private func setNew(pickup: LocationInfo) {
         map?.removePin(tag: pickupPinTag)
-        map?.addPin(location: pickup.position.toCLLocation(), asset: PinAsset.pickup, tag: pickupPinTag)
+        let annotation = KarhooMKAnnotation(coordinate: pickup.position.toCLLocation().coordinate, tag: .pickup)
+        map?.addPin(annotation: annotation, tag: pickupPinTag)
 
         currentPickupAddress = pickup
     }
@@ -97,16 +98,12 @@ final class DestinationSetStrategy: BookingMapStrategy {
     }
 
     private func setNew(destination: LocationInfo) {
-        if currentDestinationAddress == nil {
-            map?.addPin(location: destination.position.toCLLocation(),
-                        asset: PinAsset.destination,
-                        tag: destinationPinTag)
-        } else {
+        if currentDestinationAddress != nil {
             map?.removePin(tag: destinationPinTag)
-            map?.addPin(location: destination.position.toCLLocation(),
-                        asset: PinAsset.destination,
-                        tag: destinationPinTag)
         }
+        let annotation = KarhooMKAnnotation(coordinate: destination.position.toCLLocation().coordinate, tag: .destination)
+        map?.addPin(annotation: annotation,
+                    tag: destinationPinTag)
         currentDestinationAddress = destination
     }
 

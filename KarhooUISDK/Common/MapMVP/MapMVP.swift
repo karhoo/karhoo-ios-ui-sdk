@@ -37,7 +37,7 @@ protocol MapView: UIView {
 
     func zoom(toLevel: Float)
 
-    func addPin(location: CLLocation, asset: String?, tag: TagType, zIndex: Int32)
+    func addPin(annotation: KarhooMKAnnotation, tag: TagType)
 
     func removePin(tag: Int)
 
@@ -64,11 +64,6 @@ protocol MapView: UIView {
 
 /* optional MapView methods */
 extension MapView {
-
-    func addPin(location: CLLocation, asset: String?, tag: TagType, zIndex: Int32 = 1) {
-        addPin(location: location, asset: asset, tag: tag, zIndex: zIndex)
-    }
-
     func addTripLine(pickup: CLLocation, dropoff: CLLocation) {}
     
     func draw(polyline: String) {}

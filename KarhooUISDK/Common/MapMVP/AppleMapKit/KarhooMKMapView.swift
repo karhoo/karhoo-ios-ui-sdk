@@ -154,9 +154,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.setRegion(region, animated: true)
     }
 
-    func addPin(location: CLLocation, asset: String?, tag: MapView.TagType, zIndex: Int32) {
-        let annotation = KarhooMKAnnotation(coordinate: location.coordinate, icon: UIImage.uisdkImage(asset ?? ""))
-
+    func addPin(annotation: KarhooMKAnnotation, tag: MapView.TagType) {
         pins[tag] = annotation
         mapView.addAnnotation(annotation)
     }
@@ -238,10 +236,22 @@ extension KarhooMKMapView: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-       let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-       let customAnnotation = annotation as? KarhooMKAnnotation
-       view.image = customAnnotation?.icon
-       return view
+        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        let customAnnotation = annotation as? KarhooMKAnnotation
+        view.image = customAnnotation?.backgroundIcon
+        
+        if let iconImage = customAnnotation?.icon {
+            let icon = UIImageView(image: iconImage)
+            icon.translatesAutoresizingMaskIntoConstraints = false
+            icon.contentMode = .scaleAspectFit
+            view.addSubview(icon)
+            
+            icon.centerX(inView: view)
+            icon.centerY(inView: view, constant: -6)
+            icon.anchor(width: 16, height: 16)
+        }
+        
+        return view
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
