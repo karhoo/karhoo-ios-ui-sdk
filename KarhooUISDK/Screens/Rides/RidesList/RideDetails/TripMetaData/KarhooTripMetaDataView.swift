@@ -119,7 +119,7 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = "cancellationInfo_label"
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.textColor = KarhooUI.colors.accent
         cancellationInfo.numberOfLines = 0
 
         cancellationInfoContainer.addSubview(cancellationInfo)
