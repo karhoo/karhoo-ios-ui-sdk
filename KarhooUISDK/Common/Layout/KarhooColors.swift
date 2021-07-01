@@ -19,11 +19,11 @@ public protocol KarhooColors {
     var secondary: UIColor { get }
     var secondaryDark: UIColor { get }
 
-    /// The accent color is used for secondary category actions (links, filters…)
+    /// The accent color is used for secondary category actions (links, filters)
     var accent: UIColor { get }
 
-    /// Black is used for text
-    var black: UIColor { get }
+    /// Black is used for text or icons associated with informational texts (titles, body, captions, some icons)
+    var infoColor: UIColor { get }
     
     var medGrey: UIColor { get }
     
@@ -68,8 +68,8 @@ public extension KarhooColors {
         return UIColor(red: 100.0 / 255.0, green: 20.0 / 255.0, blue: 100.0 / 255.0, alpha: 1)
     }
 
-    var black: UIColor {
-        return UIColor(white: 0.0, alpha: 1.0)
+    var infoColor: UIColor {
+        return .darkGray
     }
     var medGrey: UIColor {
         return  UIColor(white: 153.0 / 255.0, alpha: 1.0)

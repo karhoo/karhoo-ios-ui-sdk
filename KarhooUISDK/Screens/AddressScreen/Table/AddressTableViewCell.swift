@@ -44,7 +44,7 @@ class AddressTableViewCell: UITableViewCell {
         icon = UIImageView(image: UIImage.uisdkImage("search_result"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.accessibilityLabel = KHAddressTableViewCellID.icon
-        icon.tintColor = KarhooUI.colors.secondary
+        icon.tintColor = KarhooUI.colors.infoColor
         contentView.addSubview(icon)
         
         stackView = UIStackView()
