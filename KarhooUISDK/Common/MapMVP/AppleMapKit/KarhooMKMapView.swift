@@ -24,7 +24,8 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return 0.075
     }
 
-    private let centerIcon = UIImageView(image: UIImage.uisdkImage("pickup_pin"))
+    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_background_icon"))
+    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
     private var pins: [MapView.TagType: KarhooMKAnnotation] = [:]
@@ -51,28 +52,36 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.isRotateEnabled = false
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        centerIcon.translatesAutoresizingMaskIntoConstraints = false
-        centerIcon.isAccessibilityElement = true
+        backgroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
+        backgroundCenterIcon.isAccessibilityElement = true
         focusButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
 
         addSubview(mapView)
-        mapView.addSubview(centerIcon)
+        mapView.addSubview(backgroundCenterIcon)
+        
+        foregroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
+        backgroundCenterIcon.addSubview(foregroundCenterIcon)
         addSubview(focusButton)
         NSLayoutConstraint.activate([
-              mapView.widthAnchor.constraint(equalTo: widthAnchor),
-              mapView.heightAnchor.constraint(equalTo: heightAnchor),
-              mapView.centerXAnchor.constraint(equalTo: centerXAnchor),
-              mapView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-              centerIcon.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: 95.0),
-              centerIcon.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
-              centerIcon.widthAnchor.constraint(equalToConstant: 35.0),
-              centerIcon.heightAnchor.constraint(equalToConstant: 45.0),
-
-              focusButton.heightAnchor.constraint(equalToConstant: 45),
-              focusButton.widthAnchor.constraint(equalToConstant: 45),
-              focusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
-          ])
+            mapView.widthAnchor.constraint(equalTo: widthAnchor),
+            mapView.heightAnchor.constraint(equalTo: heightAnchor),
+            mapView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mapView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            backgroundCenterIcon.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: 95.0),
+            backgroundCenterIcon.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            backgroundCenterIcon.widthAnchor.constraint(equalToConstant: 35.0),
+            backgroundCenterIcon.heightAnchor.constraint(equalToConstant: 45.0),
+            
+            focusButton.heightAnchor.constraint(equalToConstant: 45),
+            focusButton.widthAnchor.constraint(equalToConstant: 45),
+            focusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            
+            foregroundCenterIcon.centerXAnchor.constraint(equalTo: backgroundCenterIcon.centerXAnchor),
+            foregroundCenterIcon.centerYAnchor.constraint(equalTo: backgroundCenterIcon.centerYAnchor, constant: -4),
+            foregroundCenterIcon.widthAnchor.constraint(equalToConstant: 16),
+            foregroundCenterIcon.heightAnchor.constraint(equalToConstant: 16)
+        ])
 
         focusButtonBottomConstraint = focusButton.bottomAnchor.constraint(equalTo: bottomAnchor,
 																		  constant: -mapView.layoutMargins.bottom + focusButtonBottomSpace)
@@ -173,7 +182,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     }
 
     func centerPin(hidden: Bool) {
-        centerIcon.isHidden = hidden
+        backgroundCenterIcon.isHidden = hidden
     }
 
     func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
@@ -209,8 +218,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return true
     }
 
-    func set(centerIcon: String) {
-        self.centerIcon.image = UIImage.uisdkImage(centerIcon)
+    func set(centerIcon: String, tintColor: UIColor) {
+        foregroundCenterIcon.image = UIImage.uisdkImage(centerIcon)
+        backgroundCenterIcon.tintColor = tintColor
     }
 
     private var mapDragged = false
