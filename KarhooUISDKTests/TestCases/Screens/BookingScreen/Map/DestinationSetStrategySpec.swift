@@ -16,15 +16,11 @@ class DestinationSetStrategySpec: XCTestCase {
     var mockMap: MockKarhooMapView!
     var testObject: DestinationSetStrategy!
 
-    private let pickupPinTag = 1321
-    private let destinationPinTag = 12
-
     override func setUp() {
         super.setUp()
 
         mockMap = MockKarhooMapView()
-        testObject = DestinationSetStrategy(pickupPinTag: pickupPinTag,
-                                            destinationPinTag: destinationPinTag)
+        testObject = DestinationSetStrategy()
 
         testObject.load(map: mockMap)
     }
@@ -43,9 +39,9 @@ class DestinationSetStrategySpec: XCTestCase {
         
         assertLocationsToZoomOn(map: mockMap, details: details)
 
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.pickup],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.destination],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
     }
 
@@ -69,8 +65,8 @@ class DestinationSetStrategySpec: XCTestCase {
         testObject.stop()
 
         XCTAssert(mockMap.removedPins.count == 2)
-        XCTAssert(mockMap.removedPins.contains(pickupPinTag))
-        XCTAssert(mockMap.removedPins.contains(destinationPinTag))
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.pickup))
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.destination))
         XCTAssertFalse(mockMap.addTripLineCalled)
     }
 
@@ -89,12 +85,12 @@ class DestinationSetStrategySpec: XCTestCase {
         
         assertLocationsToZoomOn(map: mockMap, details: details)
         
-        XCTAssert(mockMap.removedPins.contains(pickupPinTag))
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.pickup))
 
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.pickup],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
         
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.destination],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
         XCTAssertTrue(mockMap.addTripLineCalled)
@@ -122,13 +118,13 @@ class DestinationSetStrategySpec: XCTestCase {
         
         assertLocationsToZoomOn(map: mockMap, details: details)
         
-        XCTAssert(mockMap.removedPins.contains(pickupPinTag))
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.pickup))
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.pickup],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
         
-        XCTAssert(mockMap.removedPins.contains(destinationPinTag))
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.destination))
         
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
+        XCTAssertEqual(mockMap.addedPins[TripPinTags.destination],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
         XCTAssertTrue(mockMap.addTripLineCalled)

@@ -74,7 +74,7 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     func updateDriver(location: CLLocation) {
         let tag = TripPinTags.driverLocation
         if previousDriverLocation == nil {
-            let annotation = KarhooMKAnnotation(coordinate: location.coordinate, tag: tag)
+            let annotation = MapAnnotationViewModel(coordinate: location.coordinate, tag: tag)
             mapView?.addPin(annotation: annotation, tag: tag)
         } else {
             mapView?.movePin(tag: tag, to: location)
@@ -83,7 +83,7 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     }
 
     func plotPins() {
-        let pickUpAnnotation = KarhooMKAnnotation(coordinate: originAddress.position.toCLLocation().coordinate, tag: .pickup)
+        let pickUpAnnotation = MapAnnotationViewModel(coordinate: originAddress.position.toCLLocation().coordinate, tag: .pickup)
         mapView?.addPin(annotation: pickUpAnnotation,
                         tag: TripPinTags.pickup)
 
@@ -91,7 +91,7 @@ final class KarhooTripMapPresenter: TripMapPresenter {
             return
         }
 
-        let destAnnotation = KarhooMKAnnotation(coordinate: destination.position.toCLLocation().coordinate, tag: .destination)
+        let destAnnotation = MapAnnotationViewModel(coordinate: destination.position.toCLLocation().coordinate, tag: .destination)
         mapView?.addPin(annotation: destAnnotation,
                         tag: TripPinTags.destination)
     }

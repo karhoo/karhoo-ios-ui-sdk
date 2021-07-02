@@ -81,7 +81,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
             map?.centerPin(hidden: false)
         } else {
             map?.centerPin(hidden: true)
-            let annotation = KarhooMKAnnotation(coordinate: pickupPosition.coordinate, tag: .pickup)
+            let annotation = MapAnnotationViewModel(coordinate: pickupPosition.coordinate, tag: .pickup)
             map?.addPin(annotation: annotation, tag: TripPinTags.pickup)
         }
         

@@ -28,7 +28,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
-    private var pins: [TripPinTags: KarhooMKAnnotation] = [:]
+    private var pins: [TripPinTags: MapAnnotationViewModel] = [:]
     private var presenter: MapPresenter?
     private let focusButtonBottomSpace: CGFloat = -20
     private var focusButtonBottomConstraint: NSLayoutConstraint!
@@ -164,7 +164,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.setRegion(region, animated: true)
     }
 
-    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags) {
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         pins[tag] = annotation
         mapView.addAnnotation(annotation)
     }
@@ -248,10 +248,10 @@ extension KarhooMKMapView: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        let customAnnotation = annotation as? KarhooMKAnnotation
+        let customAnnotation = annotation as? MapAnnotationViewModel
         view.image = customAnnotation?.backgroundIcon
         
-        if let iconImage = customAnnotation?.icon {
+        if let iconImage = customAnnotation?.foregroundIcon {
             let icon = UIImageView(image: iconImage)
             icon.translatesAutoresizingMaskIntoConstraints = false
             icon.contentMode = .scaleAspectFit

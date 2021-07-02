@@ -35,7 +35,7 @@ protocol MapView: UIView {
 
     func zoom(toLevel: Float)
 
-    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags)
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags)
 
     func removePin(tag: TripPinTags)
 

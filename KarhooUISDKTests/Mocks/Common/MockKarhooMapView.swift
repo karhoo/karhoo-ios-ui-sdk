@@ -85,7 +85,7 @@ final class MockKarhooMapView: UIView, MapView {
     }
 
     var addedPins: [TripPinTags: CLLocationCoordinate2D] = [:]
-    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags) {
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         addedPins[tag] = annotation.coordinate
     }
 

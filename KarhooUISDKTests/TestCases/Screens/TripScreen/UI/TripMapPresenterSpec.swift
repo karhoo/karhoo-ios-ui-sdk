@@ -52,14 +52,14 @@ class TripMapPresenterSpec: XCTestCase {
       */
     func testPlottingPins() {
         testObject.plotPins()
-        XCTAssertEqual(mockMapView.addedPins[1]?.latitude,
+        XCTAssertEqual(mockMapView.addedPins[TripPinTags.pickup]?.latitude,
                        mockPickupPoint.position.toCLLocation().coordinate.latitude)
-        XCTAssertEqual(mockMapView.addedPins[1]?.longitude,
+        XCTAssertEqual(mockMapView.addedPins[TripPinTags.pickup]?.longitude,
                        mockPickupPoint.position.toCLLocation().coordinate.longitude)
 
-        XCTAssertEqual(mockMapView.addedPins[2]?.latitude,
+        XCTAssertEqual(mockMapView.addedPins[TripPinTags.destination]?.latitude,
                        mockDestinationPoint.position.toCLLocation().coordinate.latitude)
-        XCTAssertEqual(mockMapView.addedPins[2]?.longitude,
+        XCTAssertEqual(mockMapView.addedPins[TripPinTags.destination]?.longitude,
                        mockDestinationPoint.position.toCLLocation().coordinate.longitude)
     }
 
@@ -71,7 +71,7 @@ class TripMapPresenterSpec: XCTestCase {
         testObject.plotPins()
         let randomLocation = TestUtil.getRandomLocation()
         testObject.updateDriver(location: randomLocation)
-        XCTAssert(mockMapView.addedPins[3] == randomLocation.coordinate)
+        XCTAssert(mockMapView.addedPins[TripPinTags.driverLocation] == randomLocation.coordinate)
     }
 
     /**
