@@ -43,9 +43,9 @@ class DestinationSetStrategySpec: XCTestCase {
         
         assertLocationsToZoomOn(map: mockMap, details: details)
 
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
     }
 
@@ -91,10 +91,10 @@ class DestinationSetStrategySpec: XCTestCase {
         
         XCTAssert(mockMap.removedPins.contains(pickupPinTag))
 
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
         
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
         XCTAssertTrue(mockMap.addTripLineCalled)
@@ -123,12 +123,12 @@ class DestinationSetStrategySpec: XCTestCase {
         assertLocationsToZoomOn(map: mockMap, details: details)
         
         XCTAssert(mockMap.removedPins.contains(pickupPinTag))
-        XCTAssertEqual(mockMap.addedPins[pickupPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[pickupPinTag],
                        details.originLocationDetails!.position.toCLLocation().coordinate)
         
         XCTAssert(mockMap.removedPins.contains(destinationPinTag))
         
-        XCTAssertEqual(mockMap.addedPins[destinationPinTag]?.coordinate,
+        XCTAssertEqual(mockMap.addedPins[destinationPinTag],
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
 
         XCTAssertTrue(mockMap.addTripLineCalled)
