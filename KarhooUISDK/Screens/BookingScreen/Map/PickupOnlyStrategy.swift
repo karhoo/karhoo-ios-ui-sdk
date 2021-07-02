@@ -72,7 +72,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         }
 
         map?.set(actions: self)
-        map?.removePin(tag: TripPinTags.pickup.rawValue)
+        map?.removePin(tag: TripPinTags.pickup)
         map?.set(focusButtonHidden: false)
 
         let pickupPosition = pickup.position.toCLLocation()
@@ -82,7 +82,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         } else {
             map?.centerPin(hidden: true)
             let annotation = KarhooMKAnnotation(coordinate: pickupPosition.coordinate, tag: .pickup)
-            map?.addPin(annotation: annotation, tag: TripPinTags.pickup.rawValue)
+            map?.addPin(annotation: annotation, tag: TripPinTags.pickup)
         }
         
         map?.center(on: pickupPosition)

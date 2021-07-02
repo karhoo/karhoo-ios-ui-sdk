@@ -28,7 +28,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
-    private var pins: [MapView.TagType: KarhooMKAnnotation] = [:]
+    private var pins: [TripPinTags: KarhooMKAnnotation] = [:]
     private var presenter: MapPresenter?
     private let focusButtonBottomSpace: CGFloat = -20
     private var focusButtonBottomConstraint: NSLayoutConstraint!
@@ -164,12 +164,12 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.setRegion(region, animated: true)
     }
 
-    func addPin(annotation: KarhooMKAnnotation, tag: MapView.TagType) {
+    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags) {
         pins[tag] = annotation
         mapView.addAnnotation(annotation)
     }
 
-    func removePin(tag: Int) {
+    func removePin(tag: TripPinTags) {
         guard let pinToRemove = pins[tag] else {
             return
         }
@@ -177,7 +177,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         pins.removeValue(forKey: tag)
     }
 
-    func movePin(tag: Int, to: CLLocation) {
+    func movePin(tag: TripPinTags, to: CLLocation) {
         let annotation = pins[tag]
         annotation?.coordinate = to.coordinate
     }

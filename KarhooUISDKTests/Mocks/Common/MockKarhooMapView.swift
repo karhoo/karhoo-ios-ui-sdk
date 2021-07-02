@@ -84,19 +84,18 @@ final class MockKarhooMapView: UIView, MapView {
         levelToZoomTo = toLevel
     }
 
-    var addedPins: [Int: CLLocationCoordinate2D] = [:]
-
-    func addPin(annotation: KarhooMKAnnotation, tag: TagType) {
+    var addedPins: [TripPinTags: CLLocationCoordinate2D] = [:]
+    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags) {
         addedPins[tag] = annotation.coordinate
     }
 
-    var removedPins: [Int] = []
-    func removePin(tag: Int) {
+    var removedPins: [TripPinTags] = []
+    func removePin(tag: TripPinTags) {
         removedPins.append(tag)
     }
 
-    var movedPins: [Int: CLLocation] = [:]
-    func movePin(tag: Int, to: CLLocation) {
+    var movedPins: [TripPinTags: CLLocation] = [:]
+    func movePin(tag: TripPinTags, to: CLLocation) {
         movedPins[tag] = to
     }
 

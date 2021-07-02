@@ -12,8 +12,6 @@ import KarhooSDK
 
 protocol MapView: UIView {
 
-    typealias TagType = Int
-
     var standardZoom: Float { get }
     var idealMaximumZoom: Float { get }
 
@@ -37,11 +35,11 @@ protocol MapView: UIView {
 
     func zoom(toLevel: Float)
 
-    func addPin(annotation: KarhooMKAnnotation, tag: TagType)
+    func addPin(annotation: KarhooMKAnnotation, tag: TripPinTags)
 
-    func removePin(tag: Int)
+    func removePin(tag: TripPinTags)
 
-    func movePin(tag: Int, to: CLLocation)
+    func movePin(tag: TripPinTags, to: CLLocation)
 
     func centerPin(hidden: Bool)
 
