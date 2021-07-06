@@ -389,6 +389,7 @@ extension FormBookingRequestViewController: PassengerDetailsActions {
     }
 }
 
+// Enable button after validation
 extension FormBookingRequestViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
 		enableBookingButton()

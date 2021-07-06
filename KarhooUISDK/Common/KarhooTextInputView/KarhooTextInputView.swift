@@ -262,6 +262,7 @@ extension KarhooTextInputView: UITextViewDelegate {
         }
     }
     
+    // Validation runs here for textViews
     func textViewDidEndEditing(_ textView: UITextView) {
 		tintView(.inactive)
 
