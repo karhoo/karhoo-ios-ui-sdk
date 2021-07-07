@@ -8,7 +8,7 @@ src="https://cdn.karhoo.com/s/images/logos/karhoo_logo.png"
 </a>
 </div>
 
-<h1>Karhoo iOS UI SDK</h1>
+# Karhoo iOS UI SDK
 
 The UI SDK extends on our [**Network SDK**](https://github.com/karhoo/karhoo-ios-sdk) with ready to use screens and views for your end users to book rides with [**Karhoo**](https://karhoo.com/) in your application.
 
@@ -24,7 +24,8 @@ You can use [CocoaPods](http://cocoapods.org/) to install `KarhooUISDK` by addin
 ```ruby
 
 use_frameworks!
-pod 'KarhooUISDK', :git => 'https://github.com/Karhoo/karhoo-ios-ui-sdk.git', :tag => '1.2.6'
+pod 'KarhooSDK', '1.5.0'
+pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.6.0'
 ```
 
 then import `KarhooUISDK` wherever you want to access Karhoo services
