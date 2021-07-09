@@ -8,6 +8,11 @@
 import UIKit
 import KarhooSDK
 
+public struct KHBookingRequestViewID {
+    public static let exitBackgroundButton = "exit_background_button"
+    public static let exitButton = "exit_button"
+}
+
 final class FormBookingRequestViewController: UIViewController, BookingRequestView {
 
     private var didSetupConstraints = false
