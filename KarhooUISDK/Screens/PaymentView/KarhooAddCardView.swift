@@ -144,6 +144,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         presenter?.updateCardPressed(showRetryAlert: false)
     }
     
+    // TODO: Could run text validation here for guest booking form.
     func set(nonce: Nonce) {
         titleLabel.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour.suffix(4)
 		imageView.image = UIImage.uisdkImage(nonce.cardType)
