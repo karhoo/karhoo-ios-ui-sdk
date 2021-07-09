@@ -108,7 +108,7 @@ class QuoteView: UIView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHQuoteViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.textColor = KarhooUI.colors.accent
         cancellationInfo.numberOfLines = 0
         rideDetailStackView.addArrangedSubview(cancellationInfo)
         

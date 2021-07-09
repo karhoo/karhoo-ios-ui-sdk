@@ -53,7 +53,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         termsTextView.isSelectable = true
         termsTextView.isEditable = false
         termsTextView.isScrollEnabled = false
-        termsTextView.tintColor = KarhooUI.colors.primary
+        termsTextView.tintColor = KarhooUI.colors.accent
         addSubview(termsTextView)
         
         heightAnchor.constraint(greaterThanOrEqualToConstant: 10.0).isActive = true

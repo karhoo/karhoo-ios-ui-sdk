@@ -195,7 +195,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         }
 
         textView.text = value
-        textView.textColor = KarhooUI.colors.guestCheckoutDarkGrey
+        textView.textColor = KarhooUI.colors.infoColor
     }
     
     private func validateField() -> Bool {
@@ -257,7 +257,7 @@ extension KarhooTextInputView: UITextViewDelegate {
 		tintView(.active)
 
         if textView.textColor == KarhooTextInputViewState.inactive.color {
-            textView.textColor = KarhooUI.colors.guestCheckoutDarkGrey
+            textView.textColor = KarhooUI.colors.infoColor
 			textView.text = nil
         }
     }

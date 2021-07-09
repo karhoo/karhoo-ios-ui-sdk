@@ -23,7 +23,7 @@ final class MockKarhooMapView: UIView, MapView {
     }
 
     private(set) var centerIconSet: String?
-    func set(centerIcon: String) {
+    func set(centerIcon: String, tintColor: UIColor) {
         centerIconSet = centerIcon
     }
 
@@ -84,18 +84,18 @@ final class MockKarhooMapView: UIView, MapView {
         levelToZoomTo = toLevel
     }
 
-    var addedPins: [Int: CLLocation] = [:]
-    func addPin(location: CLLocation, asset: String?, tag: MapView.TagType, zIndex: Int32) {
-        addedPins[tag] = location
+    var addedPins: [TripPinTags: CLLocationCoordinate2D] = [:]
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
+        addedPins[tag] = annotation.coordinate
     }
 
-    var removedPins: [Int] = []
-    func removePin(tag: Int) {
+    var removedPins: [TripPinTags] = []
+    func removePin(tag: TripPinTags) {
         removedPins.append(tag)
     }
 
-    var movedPins: [Int: CLLocation] = [:]
-    func movePin(tag: Int, to: CLLocation) {
+    var movedPins: [TripPinTags: CLLocation] = [:]
+    func movePin(tag: TripPinTags, to: CLLocation) {
         movedPins[tag] = to
     }
 

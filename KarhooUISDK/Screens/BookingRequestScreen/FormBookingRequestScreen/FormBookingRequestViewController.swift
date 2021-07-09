@@ -84,7 +84,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsTitle.accessibilityIdentifier = "passenger_details_title_label"
         passengerDetailsTitle.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
-        passengerDetailsTitle.textColor = KarhooUI.colors.guestCheckoutDarkGrey
+        passengerDetailsTitle.textColor = KarhooUI.colors.infoColor
         passengerDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: passengerDetailsTitle)
 
@@ -95,7 +95,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         paymentDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
         paymentDetailsTitle.accessibilityIdentifier = "payment_details_title_label"
         paymentDetailsTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
-        paymentDetailsTitle.textColor = KarhooUI.colors.guestCheckoutDarkGrey
+        paymentDetailsTitle.textColor = KarhooUI.colors.infoColor
         paymentDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: paymentDetailsTitle)
 

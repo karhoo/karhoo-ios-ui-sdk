@@ -68,7 +68,7 @@ final class KarhooNavigationBarView: UIView, NavigationBarView {
         rightButton.translatesAutoresizingMaskIntoConstraints = false
         rightButton.accessibilityIdentifier = KHNavigationBarID.rightButton
         rightButton.setTitle(UITexts.Generic.rides, for: .normal)
-        rightButton.setTitleColor(KarhooUI.colors.secondary, for: .normal)
+        rightButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
         rightButton.titleLabel?.font = KarhooUI.fonts.headerRegular()
         rightButton.addTarget(self, action: #selector(rightButtonPressed), for: .touchUpInside)
         addSubview(rightButton)

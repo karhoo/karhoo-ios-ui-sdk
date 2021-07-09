@@ -71,7 +71,9 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         setLocationButton.translatesAutoresizingMaskIntoConstraints = false
         setLocationButton.accessibilityIdentifier = "set_on_map_okay"
         setLocationButton.isAccessibilityElement = true
-        setLocationButton.setImage(UIImage.uisdkImage("confirm"), for: .normal)
+        let locationButtonImage = UIImage.uisdkImage("confirm").withRenderingMode(.alwaysTemplate)
+        setLocationButton.setImage(locationButtonImage, for: .normal)
+        setLocationButton.tintColor = KarhooUI.colors.secondary
         setLocationButton.addTarget(self, action: #selector(selectLocation), for: .touchUpInside)
         setLocationButton.imageView?.contentMode = .scaleAspectFit
         addSubview(setLocationButton)
@@ -107,9 +109,9 @@ final class KarhooAddressMapView: UIView, AddressMapView {
     private func setUpView(addressType: AddressType) {
         addressDisplayView.set(addressType: addressType)
         if addressType == .pickup {
-            map.set(centerIcon: "pickup_pin")
+            map.set(centerIcon: PinAsset.pickup.rawValue, tintColor: KarhooUI.colors.secondary)
         } else {
-            map.set(centerIcon: "dropoff_pin")
+            map.set(centerIcon: PinAsset.destination.rawValue, tintColor: KarhooUI.colors.primary)
         }
     }
     
