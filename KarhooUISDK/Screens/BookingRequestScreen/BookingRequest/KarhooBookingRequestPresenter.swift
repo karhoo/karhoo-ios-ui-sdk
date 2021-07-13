@@ -54,7 +54,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         appStateNotifier.register(listener: self)
     }
 
-    func load(view: BookingRequestView) {
+    func load(view: BookingRequestView, karhooUser: Bool = false) {
         self.view = view
         setUpBookingButtonState()
         view.set(quote: quote)

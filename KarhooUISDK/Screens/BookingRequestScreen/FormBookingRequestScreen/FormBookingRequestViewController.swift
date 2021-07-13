@@ -146,7 +146,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         bookingButton.set(actions: self)
         mainStackContainer.addArrangedSubview(bookingButton)
         
-        presenter.load(view: self)
+        presenter.load(view: self, karhooUser: true)
     }
     
     private func setUpView() {
@@ -230,7 +230,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         view.setNeedsUpdateConstraints()
         
-        presenter.load(view: self)
+        presenter.load(view: self, karhooUser: false)
     }
 
     private func setUpFields() {

@@ -39,12 +39,18 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.bookingMetadata = bookingMetadata
     }
 
-    func load(view: BookingRequestView) {
+    func load(view: BookingRequestView, karhooUser: Bool = false) {
         self.view = view
         view.set(quote: quote)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
         
+        if karhooUser {
+            finishLoad(view: view)
+        }
+    }
+    
+    private func finishLoad(view: BookingRequestView) {
         if quote.source == .market {
             view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
         } else {
