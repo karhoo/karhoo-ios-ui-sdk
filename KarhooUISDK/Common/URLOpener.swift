@@ -25,8 +25,8 @@ final public class KarhooURLOpener: URLOpener {
     public func openAgentPortalTracker(followCode: String) {
         switch Karhoo.configuration.environment() {
         case .custom:  open(URL(string: "https://agent-portal.stg.karhoo.net/follow/\(followCode)")!)
-        case .production: open(URL(string: "https://agent-portal.karhoo.com/follow/\(followCode)")!)
-        case .sandbox: return open(URL(string: "https://agent-portal.sandbox.karhoo.com/follow/\(followCode)")!)
+        case .production: open(URL(string: "\(UITexts.TrackingLinks.productionLink)\(followCode)")!)
+        case .sandbox: return open(URL(string: "\(UITexts.TrackingLinks.sandboxLink)\(followCode)")!)
         }
     }
 }
