@@ -310,6 +310,7 @@ public enum UITexts {
     public enum TrackingLinks {
         static let sandboxLink = "Text.TrackingLink.sandbox".localized
         static let productionLink = "Text.TrackingLink.production".localized
+        static let stagingLink = "Text.TrackingLink.staging".localized
     }
 
     public enum Airport {

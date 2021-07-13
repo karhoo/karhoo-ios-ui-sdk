@@ -582,3 +582,4 @@
 /* Trip Tracking Links */
 "Text.TrackingLink.sandbox" = "https://agent-portal.sandbox.karhoo.com/follow/";
 "Text.TrackingLink.production" = "https://agent-portal.karhoo.com/follow/";
+"Text.TrackingLink.staging" = "https://agent-portal.stg.karhoo.net/follow/";
