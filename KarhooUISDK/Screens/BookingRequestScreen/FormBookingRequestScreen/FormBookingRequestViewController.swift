@@ -459,7 +459,13 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         }
     }
     
-    func set(price: String?) {}
+    func set(price: String?) {
+        timePriceView.set(price: price)
+    }
+    
+    func setAsapState(qta: String?) {
+        timePriceView.setAsapMode(qta: qta)
+    }
     
     func setPrebookState(timeString: String?, dateString: String?) {}
     
@@ -470,8 +476,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func retryAddPaymentMethod() {
         addPaymentView.startRegisterCardFlow()
     }
-    
-    func setAsapState(qta: String?) {}
     
     private func enableUserInteraction() {
         exitButton.isUserInteractionEnabled = true
@@ -535,7 +539,12 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
 
     func paymentView(hidden: Bool) {
-        addPaymentView.isHidden = hidden
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser:
+            paymentView.isHidden = hidden
+        default:
+            addPaymentView.isHidden = hidden
+        }
     }
 }
 
