@@ -152,7 +152,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     func set(actions: BookingButtonActions) {
         self.actions = actions
     }
-        
+    
     func setDisabledMode() {
         currentMode = .disabled
         containerView.backgroundColor = KarhooUI.colors.primary.withAlphaComponent(0.5)
