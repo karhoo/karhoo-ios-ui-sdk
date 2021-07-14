@@ -306,6 +306,12 @@ public enum UITexts {
         static let cubsidePickup = PickUpType.curbside.rawValue.localized
         static let standBy = PickUpType.standyBy.rawValue.localized
     }
+    
+    public enum TrackingLinks {
+        static let sandboxLink = "Text.TrackingLink.sandbox".localized
+        static let productionLink = "Text.TrackingLink.production".localized
+        static let stagingLink = "Text.TrackingLink.staging".localized
+    }
 
     public enum Airport {
         static let flightNumber = "Text.Airport.FlightNumber".localized
