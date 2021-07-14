@@ -55,7 +55,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.accessibilityIdentifier = KHBookingButtonViewID.container
-        containerView.backgroundColor = KarhooUI.colors.primary
+        containerView.backgroundColor = KarhooUI.colors.secondary
         containerView.layer.cornerRadius = 8.0
         containerView.layer.masksToBounds = true
         addSubview(containerView)
@@ -155,7 +155,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     
     func setDisabledMode() {
         currentMode = .disabled
-        containerView.backgroundColor = KarhooUI.colors.primary.withAlphaComponent(0.5)
+        containerView.backgroundColor = KarhooUI.colors.secondary.withAlphaComponent(0.5)
         button.isEnabled = false
     }
 
@@ -170,7 +170,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     func setRequestingMode() {
         currentMode = .requesting
         button.isEnabled = false
-        containerView.backgroundColor = KarhooUI.colors.primary
+        containerView.backgroundColor = KarhooUI.colors.secondary
         set(buttonTitle: UITexts.Booking.requestingCar)
         tickImage.isHidden = true
         activityIndicator?.startAnimating()
@@ -193,7 +193,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     }
     
     private func setSelectedState() {
-        containerView.backgroundColor = KarhooUI.colors.primary
+        containerView.backgroundColor = KarhooUI.colors.secondary
         button.isEnabled = true
     }
 

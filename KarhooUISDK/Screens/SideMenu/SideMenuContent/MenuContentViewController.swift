@@ -15,6 +15,11 @@ final class MenuContentViewController: UIViewController, MenuContentView {
     @IBOutlet private weak var logo: UIImageView?
     @IBOutlet private weak var profileView: UIView?
     @IBOutlet private weak var ridesView: UIView?
+    
+    @IBOutlet private weak var ridesImage: UIImageView?
+    @IBOutlet private weak var profileImage: UIImageView?
+    @IBOutlet private weak var aboutImage: UIImageView?
+    @IBOutlet private weak var helpImage: UIImageView?
 
     init(presenter: MenuContentScreenPresenter) {
         self.presenter = presenter
@@ -55,5 +60,12 @@ final class MenuContentViewController: UIViewController, MenuContentView {
 
     @IBAction private func helpPressed() {
         presenter.helpPressed()
+    }
+    
+    private func configureColours() {
+        ridesImage?.tintColor = KarhooUI.colors.infoColor
+        profileImage?.tintColor = KarhooUI.colors.infoColor
+        aboutImage?.tintColor = KarhooUI.colors.infoColor
+        helpImage?.tintColor = KarhooUI.colors.infoColor
     }
 }
