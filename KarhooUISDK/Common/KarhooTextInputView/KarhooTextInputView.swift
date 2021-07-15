@@ -106,7 +106,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         titleLabel.accessibilityIdentifier = "title_label"
         titleLabel.text = contentType.titleText
         titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        titleLabel.textColor = KarhooTextInputViewState.inactive.color
+        titleLabel.tintColor = KarhooUI.colors.infoColor
         addSubview(titleLabel)
         
         updateConstraints()
