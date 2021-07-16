@@ -50,6 +50,7 @@ final class RidesViewController: UIViewController, RidesView {
         presenter.bind(view: self)
         
         tabView?.backgroundColor = KarhooUI.colors.accent
+        upcomingTabLabel?.textColor = KarhooUI.colors.accent
     }
 
     func set(title: String) {
