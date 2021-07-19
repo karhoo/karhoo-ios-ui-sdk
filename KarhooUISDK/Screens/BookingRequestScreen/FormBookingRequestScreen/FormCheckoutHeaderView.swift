@@ -85,7 +85,7 @@ final class FormCheckoutHeaderView: UIView {
         name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
-        name.textColor = KarhooUI.colors.black
+        name.textColor = KarhooUI.colors.infoColor
         name.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         name.numberOfLines = 0
         rideDetailStackView.addArrangedSubview(name)
@@ -101,7 +101,7 @@ final class FormCheckoutHeaderView: UIView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.textColor = KarhooUI.colors.accent
         cancellationInfo.numberOfLines = 0
         rideDetailStackView.addArrangedSubview(cancellationInfo)
         

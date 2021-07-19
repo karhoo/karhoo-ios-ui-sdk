@@ -9,8 +9,8 @@
 import Foundation
 
 public enum BaseSelectionViewType: String {
-    case mapPickUp = "pickup_pin"
-    case mapDropOff = "dropoff_pin"
+    case mapPickUp = "pin_pickUp_icon"
+    case mapDropOff = "pin_destination_icon"
     case currentLocation = "current_location_icon"
     case none = ""
     

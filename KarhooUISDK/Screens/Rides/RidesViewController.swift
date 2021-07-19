@@ -48,6 +48,9 @@ final class RidesViewController: UIViewController, RidesView {
         formButton?.setEnabledMode()
         tabConstraintSwitcher.set(animationTime: tabAnimationTime)
         presenter.bind(view: self)
+        
+        tabView?.backgroundColor = KarhooUI.colors.accent
+        upcomingTabLabel?.textColor = KarhooUI.colors.accent
     }
 
     func set(title: String) {
@@ -67,14 +70,14 @@ final class RidesViewController: UIViewController, RidesView {
 
     func moveTabToPastBookings() {
         tabConstraintSwitcher.expand(animated: true)
-        pastTabLabel?.textColor = KarhooUI.colors.primary
+        pastTabLabel?.textColor = KarhooUI.colors.accent
         upcomingTabLabel?.textColor = KarhooUI.colors.medGrey
     }
 
     func moveTabToUpcomingBookings() {
         tabConstraintSwitcher.contract(animated: true)
         pastTabLabel?.textColor = KarhooUI.colors.medGrey
-        upcomingTabLabel?.textColor = KarhooUI.colors.primary
+        upcomingTabLabel?.textColor = KarhooUI.colors.accent
     }
 
     func set(bookingButtonHidden: Bool) {

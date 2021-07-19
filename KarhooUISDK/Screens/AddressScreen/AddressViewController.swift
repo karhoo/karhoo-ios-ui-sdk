@@ -108,6 +108,7 @@ final class AddressViewController: UIViewController, AddressView {
         
         currentLocationView = BaseSelectionView(type: .currentLocation, identifier: "current_location_view")
         currentLocationView.delegate = self
+        currentLocationView.tintColor = KarhooUI.colors.infoColor
         currentLocationView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(currentLocationView)
         _ = [currentLocationView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),

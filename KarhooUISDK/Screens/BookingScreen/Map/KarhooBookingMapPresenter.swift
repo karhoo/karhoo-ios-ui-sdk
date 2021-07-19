@@ -9,11 +9,6 @@
 import CoreLocation
 import KarhooSDK
 
-enum BookingPinTags: Int {
-    case pickup = 1
-    case destination = 2
-}
-
 final class KarhooBookingMapPresenter: BookingMapPresenter {
 
     private let pickupOnlyStrategy: BookingMapStrategy

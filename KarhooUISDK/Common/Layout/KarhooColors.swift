@@ -11,22 +11,27 @@ import UIKit
 public protocol KarhooColors {
     var darkGrey: UIColor { get }
 
+    /// The primary color is used for display components without clickable interaction
     var primary: UIColor { get }
-
     var primaryDark: UIColor { get }
 
+    /// The secondary color is used for 1st-level actions that allows changing step and validating
     var secondary: UIColor { get }
     var secondaryDark: UIColor { get }
 
-    var tertiary: UIColor { get }
-    var tertiaryDark: UIColor { get }
+    /// The accent color is used for secondary category actions (links, filters)
+    var accent: UIColor { get }
 
-    var quaternaryDark: UIColor { get }
-    var quaternary: UIColor { get }
-
-    var black: UIColor { get }
+    /// Black is used for text or icons associated with informational texts (titles, body, captions, some icons)
+    var infoColor: UIColor { get }
+    
     var medGrey: UIColor { get }
+    
+    /// The light grey is used for text backgrounds
     var lightGrey: UIColor { get }
+    
+    /// The regular grey is used for borders for cards, line dividers and unselected and incomplete inputs
+    var regularGrey: UIColor { get }
     var offWhite: UIColor { get }
     var white: UIColor { get }
     var white95: UIColor { get }
@@ -59,28 +64,21 @@ public extension KarhooColors {
         return UIColor(red: 0.0, green: 153.0 / 255.0, blue: 77.0 / 255.0, alpha: 1.0)
     }
 
-    var tertiary: UIColor {
-        return UIColor(red: 67.0 / 255.0, green: 188.0 / 255.0, blue: 1.0, alpha: 1.0)
-    }
-    var tertiaryDark: UIColor {
-        return UIColor(red: 0.0, green: 147.0 / 255.0, blue: 191.0 / 255.0, alpha: 1.0)
+    var accent: UIColor {
+        return UIColor(red: 100.0 / 255.0, green: 20.0 / 255.0, blue: 100.0 / 255.0, alpha: 1)
     }
 
-    var quaternaryDark: UIColor {
-        return UIColor(red: 224.0 / 255.0, green: 147.0 / 255.0, blue: 35.0 / 255.0, alpha: 1.0)
-    }
-    var quaternary: UIColor {
-        return UIColor(red: 1.0, green: 188.0 / 255.0, blue: 67.0 / 255.0, alpha: 1.0)
-    }
-
-    var black: UIColor {
-        return UIColor(white: 0.0, alpha: 1.0)
+    var infoColor: UIColor {
+        return .darkGray
     }
     var medGrey: UIColor {
         return  UIColor(white: 153.0 / 255.0, alpha: 1.0)
     }
     var lightGrey: UIColor {
         return UIColor(white: 204.0 / 255.0, alpha: 1.0)
+    }
+    var regularGrey: UIColor {
+        return UIColor(white: 189.0 / 255.0, alpha: 1.0)
     }
     var offWhite: UIColor {
         return UIColor(white: 247.0 / 255.0, alpha: 1.0)

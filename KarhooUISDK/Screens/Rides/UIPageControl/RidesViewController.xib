@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,9 +30,6 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4s-wU-eza" customClass="Attributes" customModule="KarhooUISDK">
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outletCollection property="primaryBackgroundColor" destination="u8q-r4-fPh" collectionClass="NSMutableArray" id="wmn-Zs-t4S"/>
-                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpQ-7b-Bg6">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -58,7 +55,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-nl-WRa">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-nl-WRa">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
                                     <connections>
                                         <action selector="upcomingBookingsPressed" destination="-1" eventType="touchUpInside" id="cnv-hS-1pn"/>
@@ -87,7 +84,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="ride-list-past"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3he-PU-GsQ">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3he-PU-GsQ">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
                                     <accessibility key="accessibilityConfiguration" identifier="past-rides-button"/>
                                     <connections>
@@ -153,6 +150,7 @@
                     </connections>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="aLq-7g-3Go"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="M22-tZ-BcT" firstAttribute="leading" secondItem="aLq-7g-3Go" secondAttribute="leading" id="A7X-oY-61k"/>
@@ -171,7 +169,6 @@
                 <constraint firstItem="M22-tZ-BcT" firstAttribute="bottom" secondItem="aLq-7g-3Go" secondAttribute="bottom" id="upP-as-g0D"/>
                 <constraint firstItem="dpQ-7b-Bg6" firstAttribute="top" secondItem="aLq-7g-3Go" secondAttribute="top" id="xrr-6p-G7s"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="aLq-7g-3Go"/>
             <point key="canvasLocation" x="56.799999999999997" y="46.326836581709152"/>
         </view>
         <customObject id="NXg-ZJ-d5a" customClass="ResizingSwitcher" customModule="KarhooUISDK">

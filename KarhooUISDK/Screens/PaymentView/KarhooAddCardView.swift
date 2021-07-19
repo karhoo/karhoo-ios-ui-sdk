@@ -74,7 +74,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         
         imageView = UIImageView(image: UIImage.uisdkImage("add_destination").withRenderingMode(.alwaysTemplate))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = KarhooUI.colors.darkBlue
+        imageView.tintColor = KarhooUI.colors.accent
         imageView.accessibilityIdentifier = KHAddCardViewID.image
         stackContainer.addArrangedSubview(imageView)
         
@@ -83,7 +83,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         titleLabel.accessibilityIdentifier = KHAddCardViewID.title
         titleLabel.text = UITexts.Payment.addPaymentMethod
         titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
-        titleLabel.textColor = KarhooUI.colors.darkNavy
+        titleLabel.textColor = KarhooUI.colors.accent
         stackContainer.addArrangedSubview(titleLabel)
         
         button = UIButton(type: .custom)
