@@ -230,6 +230,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
             
             _ = [container.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                  container.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                 container.heightAnchor.constraint(equalToConstant: 400),
                  container.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
                 .map { $0.isActive = true }
             

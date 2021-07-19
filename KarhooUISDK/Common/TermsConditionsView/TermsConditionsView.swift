@@ -66,6 +66,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
             _ = [termsTextView.topAnchor.constraint(equalTo: topAnchor),
                  termsTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0),
                  termsTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0),
+                 termsTextView.heightAnchor.constraint(equalToConstant: 100),
                  termsTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
         }
         
