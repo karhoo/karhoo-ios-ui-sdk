@@ -16,25 +16,37 @@ public struct KHBookingRequestViewID {
 final class FormBookingRequestViewController: UIViewController, BookingRequestView {
     
     private var didSetupConstraints = false
-//    private var container: UIView!
-//    private var exitButton: UIButton!
     private var headerView: FormCheckoutHeaderView!
-//    private var passengerDetailsTitle: UILabel!
-//    private var paymentDetailsTitle: UILabel!
-    private var commentsInputText: KarhooTextInputView!
-    private var poiDetailsInputText: KarhooTextInputView!
     private var passengerDetailsValid: Bool?
-    
-//    private var addPaymentView: KarhooAddCardView!
     private var termsConditionsView: TermsConditionsView!
     private var baseStackView: BaseStackView!
     private var footerView: UIView!
     private var footerStack: UIStackView!
-    private var separatorLine: LineView!
-    private var bookingButton: KarhooBookingButtonView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private var presenter: BookingRequestPresenter
     private let drawAnimationTime: Double = 0.45
+    
+    private lazy var bookingButton: KarhooBookingButtonView = {
+        let bookingButton = KarhooBookingButtonView()
+        return bookingButton
+    }()
+    
+    private lazy var commentsInputText: KarhooTextInputView = {
+        let commentsInputText = KarhooTextInputView(contentType: .comment,
+                                                isOptional: true,
+                                                accessibilityIdentifier: "comment_input_view")
+        commentsInputText.delegate = self
+        return commentsInputText
+    }()
+    
+    private lazy var poiDetailsInputText: KarhooTextInputView = {
+        let poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
+                                                  isOptional: true,
+                                                  accessibilityIdentifier: "poi_input_view")
+        poiDetailsInputText.delegate = self
+        poiDetailsInputText.isHidden = true
+        return poiDetailsInputText
+    }()
     
     private lazy var passengerDetailsView: PassengerDetailsView = {
         let passengerDetailsView = PassengerDetailsView()
@@ -99,13 +111,34 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return container
     }()
     
-    private var mainStackContainer: UIStackView!
-    private var mainStackBottomPadding: NSLayoutConstraint!
+    private lazy var mainStackContainer: UIStackView = {
+        let mainStackContainer = UIStackView()
+        mainStackContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainStackContainer.accessibilityIdentifier = "main_stack_view"
+        mainStackContainer.axis = .vertical
+        mainStackContainer.spacing = 10.0
+        return mainStackContainer
+    }()
     
-    private var supplierStackContainer: UIStackView!
+    private lazy var supplierStackContainer: UIStackView = {
+        let supplierStackContainer = UIStackView()
+        supplierStackContainer.translatesAutoresizingMaskIntoConstraints = false
+        supplierStackContainer.accessibilityIdentifier = "supplier_stack_view"
+        supplierStackContainer.axis = .horizontal
+        supplierStackContainer.alignment = .fill
+        supplierStackContainer.distribution = .fill
+        return supplierStackContainer
+    }()
+    
+    private lazy var separatorLine: LineView = {
+        return LineView(color: KarhooUI.colors.lightGrey,
+                                accessibilityIdentifier: "booking_request_separator_line")
+    }()
+    
     private var supplierView: SupplierView!
     
     private var timePriceView: KarhooTimePriceView!
+    private var mainStackBottomPadding: NSLayoutConstraint!
     
     var paymentNonce: String?
     
@@ -123,36 +156,19 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
         
-        separatorLine = LineView(color: KarhooUI.colors.lightGrey,
-                                 accessibilityIdentifier: "booking_request_separator_line")
-        
-        bookingButton = KarhooBookingButtonView()
         bookingButton.set(actions: self)
-        
         termsConditionsView = TermsConditionsView()
         
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             setUpUserView()
-        default:
+        } else {
             setUpView()
         }
     }
     
     private func setUpUserView() {
-        mainStackContainer = UIStackView()
-        mainStackContainer.translatesAutoresizingMaskIntoConstraints = false
-        mainStackContainer.accessibilityIdentifier = "main_stack_view"
-        mainStackContainer.axis = .vertical
-        mainStackContainer.spacing = 10.0
+
         container.addSubview(mainStackContainer)
-        
-        supplierStackContainer = UIStackView()
-        supplierStackContainer.translatesAutoresizingMaskIntoConstraints = false
-        supplierStackContainer.accessibilityIdentifier = "supplier_stack_view"
-        supplierStackContainer.axis = .horizontal
-        supplierStackContainer.alignment = .fill
-        supplierStackContainer.distribution = .fill
         mainStackContainer.addArrangedSubview(supplierStackContainer)
         
         supplierView = SupplierView()
@@ -221,17 +237,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setUpFields() {
-        commentsInputText = KarhooTextInputView(contentType: .comment,
-                                                isOptional: true,
-                                                accessibilityIdentifier: "comment_input_view")
-        commentsInputText.delegate = self
         baseStackView.addViewToStack(view: commentsInputText)
-        
-        poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
-                                                  isOptional: true,
-                                                  accessibilityIdentifier: "poi_input_view")
-        poiDetailsInputText.delegate = self
-        poiDetailsInputText.isHidden = true
         baseStackView.addViewToStack(view: poiDetailsInputText)
     }
     
@@ -249,8 +255,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                  container.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
                 .map { $0.isActive = true }
             
-            switch Karhoo.configuration.authenticationMethod() {
-            case .karhooUser:
+            if presenter.isUserAuthenticated() {
                 containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                                                               constant: UIScreen.main.bounds.height/2)
                 containerBottomConstraint.isActive = true
@@ -279,7 +284,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                      separatorLine.leadingAnchor.constraint(equalTo: mainStackContainer.leadingAnchor),
                      separatorLine.trailingAnchor.constraint(equalTo: mainStackContainer.trailingAnchor)]
                     .map { $0.isActive = true }
-            default:
+            } else {
                 container.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
                 
                 containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
@@ -447,10 +452,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private func enableUserInteraction() {
         exitButton.isUserInteractionEnabled = true
         exitButton.tintColor = KarhooUI.colors.secondary
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             paymentView.isUserInteractionEnabled = true
-        default:
+        } else {
             addPaymentView.isUserInteractionEnabled = true
         }
     }
@@ -458,10 +462,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private func disableUserInteraction() {
         exitButton.isUserInteractionEnabled = false
         exitButton.tintColor = KarhooUI.colors.medGrey
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             paymentView.isUserInteractionEnabled = false
-        default:
+        } else {
             addPaymentView.isUserInteractionEnabled = false
         }
     }
@@ -488,28 +491,25 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getComments() -> String? {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             return nil
-        default:
+        } else {
             return commentsInputText.getIntput()
         }
     }
     
     func getFlightNumber() -> String? {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             return nil
-        default:
+        } else {
             return poiDetailsInputText.getIntput()
         }
     }
     
     func paymentView(hidden: Bool) {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        if presenter.isUserAuthenticated() {
             paymentView.isHidden = hidden
-        default:
+        } else {
             addPaymentView.isHidden = hidden
         }
     }

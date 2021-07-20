@@ -21,6 +21,8 @@ protocol BookingRequestPresenter {
     func didPressClose()
 
     func screenHasFadedOut()
+    
+    func isUserAuthenticated() -> Bool
 }
 
 protocol BookingRequestView: BaseViewController {

@@ -9,7 +9,6 @@ import Foundation
 import KarhooSDK
 
 final class FormBookingRequestPresenter: BookingRequestPresenter {
-
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: BookingRequestView?
     private let quote: Quote
@@ -20,6 +19,8 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
+    
+    private var karhooUser: Bool = false
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
@@ -41,13 +42,19 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
 
     func load(view: BookingRequestView, karhooUser: Bool = false) {
         self.view = view
+        self.karhooUser = karhooUser
         view.set(quote: quote)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
         
+        
         if karhooUser {
             finishLoad(view: view)
         }
+    }
+    
+    func isUserAuthenticated() -> Bool {
+        karhooUser
     }
     
     private func finishLoad(view: BookingRequestView) {
