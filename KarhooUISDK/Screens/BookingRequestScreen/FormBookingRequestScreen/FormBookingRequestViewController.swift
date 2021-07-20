@@ -95,7 +95,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         exitButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
         exitButton.tintColor = KarhooUI.colors.darkGrey
         exitButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
-        exitButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 17, bottom: 17, right: 17)
         exitButton.imageView?.contentMode = .scaleAspectFit
         
         return exitButton
@@ -250,9 +249,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
             _ = [view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
                  view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)].map { $0.isActive = true }
             
-            _ = [exitButton.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
-                 exitButton.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10)].map { $0.isActive = true }
-            
             _ = [container.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                  container.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                  container.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
@@ -278,7 +274,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
              supplierView.trailingAnchor.constraint(equalTo: exitButton.leadingAnchor, constant: 10)]
             .map { $0.isActive = true }
         
-        _ = [exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
+        exitButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 17, bottom: 17, right: 17)
+        _ = [exitButton.topAnchor.constraint(equalTo: container.topAnchor),
+             exitButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
         
         _ = [mainStackContainer.topAnchor.constraint(equalTo: container.topAnchor),
              mainStackContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
@@ -300,6 +299,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setupConstraintsForDefault() {
+        _ = [exitButton.topAnchor.constraint(equalTo: container.topAnchor, constant: view.safeAreaInsets.top),
+             exitButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
+        
         container.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
         
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
