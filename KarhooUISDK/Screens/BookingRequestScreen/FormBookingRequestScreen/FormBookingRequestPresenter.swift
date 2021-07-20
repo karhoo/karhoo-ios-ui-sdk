@@ -19,8 +19,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
-    
-    private var karhooUser: Bool = false
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
@@ -40,34 +38,33 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.bookingMetadata = bookingMetadata
     }
 
-    func load(view: BookingRequestView, karhooUser: Bool = false) {
+    func load(view: BookingRequestView) {
         self.view = view
-        self.karhooUser = karhooUser
-        if karhooUser {
-            finishLoad(view: view)
-        }
+//        if karhooUser {
+//            finishLoad(view: view)
+//        }
         view.set(quote: quote)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
     }
     
     func isUserAuthenticated() -> Bool {
-        karhooUser
+        false
     }
     
-    private func finishLoad(view: BookingRequestView) {
-        if quote.source == .market {
-            view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
-        } else {
-            view.set(price: CurrencyCodeConverter.toPriceString(quote: quote))
-        }
-
-        view.set(quoteType: quote.quoteType.description)
-        view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
-        paymentNonceProvider.set(baseViewController: view)
-        configureQuoteView()
-        view.paymentView(hidden: userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen)
-    }
+//    private func finishLoad(view: BookingRequestView) {
+//        if quote.source == .market {
+//            view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
+//        } else {
+//            view.set(price: CurrencyCodeConverter.toPriceString(quote: quote))
+//        }
+//
+//        view.set(quoteType: quote.quoteType.description)
+//        view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
+//        paymentNonceProvider.set(baseViewController: view)
+//        configureQuoteView()
+//        view.paymentView(hidden: userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen)
+//    }
 
     func bookTripPressed() {
         view?.setRequestingState()

@@ -159,10 +159,13 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         bookingButton.set(actions: self)
         termsConditionsView = TermsConditionsView()
         
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
+        finishLoadingView()
+    }
+    
+    private func finishLoadingView() {
+        if presenter.isUserAuthenticated() {
             setUpUserView()
-        default:
+        } else {
             setUpView()
         }
     }
@@ -187,7 +190,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         mainStackContainer.addArrangedSubview(separatorLine)
         mainStackContainer.addArrangedSubview(bookingButton)
         
-        presenter.load(view: self, karhooUser: true)
+        presenter.load(view: self)
     }
     
     private func setUpView() {
@@ -234,7 +237,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         view.setNeedsUpdateConstraints()
         
-        presenter.load(view: self, karhooUser: false)
+        presenter.load(view: self)
     }
     
     private func setUpFields() {
@@ -244,7 +247,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     override func updateViewConstraints() {
         if didSetupConstraints == false {
-            
             _ = [view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
                  view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)].map { $0.isActive = true }
             
@@ -257,101 +259,109 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                 .map { $0.isActive = true }
             
             if presenter.isUserAuthenticated() {
-                containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                                              constant: UIScreen.main.bounds.height/2)
-                containerBottomConstraint.isActive = true
-                
-                _ = [supplierView.topAnchor.constraint(equalTo: supplierStackContainer.topAnchor),
-                     supplierView.bottomAnchor.constraint(equalTo: supplierStackContainer.bottomAnchor),
-                     supplierView.trailingAnchor.constraint(equalTo: exitButton.leadingAnchor, constant: 10)]
-                    .map { $0.isActive = true }
-                
-                _ = [exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
-                
-                _ = [mainStackContainer.topAnchor.constraint(equalTo: container.topAnchor),
-                     mainStackContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                     mainStackContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)]
-                    .map { $0.isActive = true }
-                
-                mainStackBottomPadding = mainStackContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor,
-                                                                                    constant: -20.0)
-                mainStackBottomPadding.isActive = true
-                
-                _ = [termsConditionsView.leadingAnchor.constraint(equalTo: mainStackContainer.leadingAnchor),
-                     termsConditionsView.trailingAnchor.constraint(equalTo: mainStackContainer.trailingAnchor)]
-                    .map { $0.isActive = true }
-                
-                _ = [separatorLine.heightAnchor.constraint(equalToConstant: 1.0),
-                     separatorLine.leadingAnchor.constraint(equalTo: mainStackContainer.leadingAnchor),
-                     separatorLine.trailingAnchor.constraint(equalTo: mainStackContainer.trailingAnchor)]
-                    .map { $0.isActive = true }
+                setupConstraintsForKarhooUserView()
             } else {
-                container.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
-                
-                containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                                              constant: UIScreen.main.bounds.height)
-                containerBottomConstraint.isActive = true
-                _ = [baseStackView.topAnchor.constraint(equalTo: exitButton.bottomAnchor),
-                     baseStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                     baseStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-                     baseStackView.bottomAnchor.constraint(equalTo: container.bottomAnchor)].map { $0.isActive = true }
-                
-                let titleInset: CGFloat = 15.0
-                
-                _ = [headerView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor, constant: titleInset),
-                     headerView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                          constant: -titleInset)].map { $0.isActive = true }
-                
-                _ = [passengerDetailsTitle.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                                    constant: titleInset),
-                     passengerDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                                     constant: -titleInset)].map { $0.isActive = true }
-                
-                passengerDetailsView.pinLeftRightEdegs(to: baseStackView)
-                
-                let textInputInset: CGFloat = 30.0
-                
-                _ = [poiDetailsInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                                  constant: textInputInset),
-                     poiDetailsInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                                   constant: -textInputInset)].map { $0.isActive = true }
-                
-                _ = [commentsInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                                constant: textInputInset),
-                     commentsInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                                 constant: -textInputInset)].map { $0.isActive = true }
-                
-                _ = [paymentDetailsTitle.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                                  constant: titleInset),
-                     paymentDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                                   constant: -titleInset)].map { $0.isActive = true }
-                
-                _ = [addPaymentView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
-                                                             constant: textInputInset),
-                     addPaymentView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
-                                                              constant: -textInputInset)].map { $0.isActive = true }
-                
-                _ = [footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
-                     footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                          constant: -10.0)].map { $0.isActive = true }
-                
-                _ = [footerStack.topAnchor.constraint(equalTo: footerView.topAnchor),
-                     footerStack.leadingAnchor.constraint(equalTo: footerView.leadingAnchor),
-                     footerStack.trailingAnchor.constraint(equalTo: footerView.trailingAnchor),
-                     footerStack.bottomAnchor.constraint(equalTo: footerView.bottomAnchor)].map { $0.isActive = true }
-                
-                _ = [termsConditionsView.leadingAnchor.constraint(equalTo: footerStack.leadingAnchor),
-                     termsConditionsView.trailingAnchor.constraint(equalTo: footerStack.trailingAnchor)]
-                    .map { $0.isActive = true }
-                
-                _ = [separatorLine.heightAnchor.constraint(equalToConstant: 1.0),
-                     separatorLine.leadingAnchor.constraint(equalTo: footerStack.leadingAnchor),
-                     separatorLine.trailingAnchor.constraint(equalTo: footerStack.trailingAnchor)]
-                    .map { $0.isActive = true }
+                setupConstraintsForDefault()
             }
             didSetupConstraints = true
         }
         super.updateViewConstraints()
+    }
+    
+    private func setupConstraintsForKarhooUserView() {
+        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                                      constant: UIScreen.main.bounds.height/2)
+        containerBottomConstraint.isActive = true
+        
+        _ = [supplierView.topAnchor.constraint(equalTo: supplierStackContainer.topAnchor),
+             supplierView.bottomAnchor.constraint(equalTo: supplierStackContainer.bottomAnchor),
+             supplierView.trailingAnchor.constraint(equalTo: exitButton.leadingAnchor, constant: 10)]
+            .map { $0.isActive = true }
+        
+        _ = [exitButton.widthAnchor.constraint(equalToConstant: 50.0)].map { $0.isActive = true }
+        
+        _ = [mainStackContainer.topAnchor.constraint(equalTo: container.topAnchor),
+             mainStackContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+             mainStackContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor)]
+            .map { $0.isActive = true }
+        
+        mainStackBottomPadding = mainStackContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor,
+                                                                            constant: -20.0)
+        mainStackBottomPadding.isActive = true
+        
+        _ = [termsConditionsView.leadingAnchor.constraint(equalTo: mainStackContainer.leadingAnchor),
+             termsConditionsView.trailingAnchor.constraint(equalTo: mainStackContainer.trailingAnchor)]
+            .map { $0.isActive = true }
+        
+        _ = [separatorLine.heightAnchor.constraint(equalToConstant: 1.0),
+             separatorLine.leadingAnchor.constraint(equalTo: mainStackContainer.leadingAnchor),
+             separatorLine.trailingAnchor.constraint(equalTo: mainStackContainer.trailingAnchor)]
+            .map { $0.isActive = true }
+    }
+    
+    private func setupConstraintsForDefault() {
+        container.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height).isActive = true
+        
+        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                                      constant: UIScreen.main.bounds.height)
+        containerBottomConstraint.isActive = true
+        _ = [baseStackView.topAnchor.constraint(equalTo: exitButton.bottomAnchor),
+             baseStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+             baseStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             baseStackView.bottomAnchor.constraint(equalTo: container.bottomAnchor)].map { $0.isActive = true }
+        
+        let titleInset: CGFloat = 15.0
+        
+        _ = [headerView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor, constant: titleInset),
+             headerView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                  constant: -titleInset)].map { $0.isActive = true }
+        
+        _ = [passengerDetailsTitle.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
+                                                            constant: titleInset),
+             passengerDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                             constant: -titleInset)].map { $0.isActive = true }
+        
+        passengerDetailsView.pinLeftRightEdegs(to: baseStackView)
+        
+        let textInputInset: CGFloat = 30.0
+        
+        _ = [poiDetailsInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
+                                                          constant: textInputInset),
+             poiDetailsInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                           constant: -textInputInset)].map { $0.isActive = true }
+        
+        _ = [commentsInputText.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
+                                                        constant: textInputInset),
+             commentsInputText.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                         constant: -textInputInset)].map { $0.isActive = true }
+        
+        _ = [paymentDetailsTitle.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
+                                                          constant: titleInset),
+             paymentDetailsTitle.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                           constant: -titleInset)].map { $0.isActive = true }
+        
+        _ = [addPaymentView.leadingAnchor.constraint(equalTo: baseStackView.leadingAnchor,
+                                                     constant: textInputInset),
+             addPaymentView.trailingAnchor.constraint(equalTo: baseStackView.trailingAnchor,
+                                                      constant: -textInputInset)].map { $0.isActive = true }
+        
+        _ = [footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
+             footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                  constant: -10.0)].map { $0.isActive = true }
+        
+        _ = [footerStack.topAnchor.constraint(equalTo: footerView.topAnchor),
+             footerStack.leadingAnchor.constraint(equalTo: footerView.leadingAnchor),
+             footerStack.trailingAnchor.constraint(equalTo: footerView.trailingAnchor),
+             footerStack.bottomAnchor.constraint(equalTo: footerView.bottomAnchor)].map { $0.isActive = true }
+        
+        _ = [termsConditionsView.leadingAnchor.constraint(equalTo: footerStack.leadingAnchor),
+             termsConditionsView.trailingAnchor.constraint(equalTo: footerStack.trailingAnchor)]
+            .map { $0.isActive = true }
+        
+        _ = [separatorLine.heightAnchor.constraint(equalToConstant: 1.0),
+             separatorLine.leadingAnchor.constraint(equalTo: footerStack.leadingAnchor),
+             separatorLine.trailingAnchor.constraint(equalTo: footerStack.trailingAnchor)]
+            .map { $0.isActive = true }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -475,11 +485,21 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                        bookingDetails: BookingDetails,
                                        bookingMetadata: [String: Any]?,
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
-            let presenter = FormBookingRequestPresenter(quote: quote,
-                                                        bookingDetails: bookingDetails,
-                                                        bookingMetadata: bookingMetadata,
-                                                        callback: callback)
-            return FormBookingRequestViewController(presenter: presenter)
+            
+            switch Karhoo.configuration.authenticationMethod() {
+            case .karhooUser:
+                let presenter = KarhooBookingRequestPresenter(quote: quote,
+                                                              bookingDetails: bookingDetails,
+                                                              bookingMetadata: bookingMetadata,
+                                                              callback: callback)
+                return FormBookingRequestViewController(presenter: presenter)
+            default:
+                let presenter = FormBookingRequestPresenter(quote: quote,
+                                                            bookingDetails: bookingDetails,
+                                                            bookingMetadata: bookingMetadata,
+                                                            callback: callback)
+                return FormBookingRequestViewController(presenter: presenter)
+            }
         }
     }
     
@@ -492,19 +512,14 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getComments() -> String? {
-        if presenter.isUserAuthenticated() {
-            return nil
-        } else {
+//        if presenter.isUserAuthenticated() {
+//            return nil
+//        } else {
             return commentsInputText.getIntput()
-        }
     }
     
     func getFlightNumber() -> String? {
-        if presenter.isUserAuthenticated() {
-            return nil
-        } else {
             return poiDetailsInputText.getIntput()
-        }
     }
     
     func paymentView(hidden: Bool) {
