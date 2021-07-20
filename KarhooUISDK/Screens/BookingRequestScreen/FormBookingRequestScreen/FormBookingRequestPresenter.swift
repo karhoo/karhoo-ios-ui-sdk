@@ -18,14 +18,12 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let tripService: TripService
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
-    private let paymentNonceProvider: PaymentNonceProvider
 
     init(quote: Quote,
          bookingDetails: BookingDetails,
          bookingMetadata: [String: Any]?,
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
-         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
          userService: UserService = Karhoo.getUserService(),
          callback: @escaping ScreenResultCallback<TripInfo>) {
         self.threeDSecureProvider = threeDSecureProvider
@@ -34,15 +32,11 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.userService = userService
         self.quote = quote
         self.bookingDetails = bookingDetails
-        self.paymentNonceProvider = paymentNonceProvider
         self.bookingMetadata = bookingMetadata
     }
 
     func load(view: BookingRequestView) {
         self.view = view
-//        if karhooUser {
-//            finishLoad(view: view)
-//        }
         view.set(quote: quote)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
@@ -51,20 +45,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func isUserAuthenticated() -> Bool {
         false
     }
-    
-//    private func finishLoad(view: BookingRequestView) {
-//        if quote.source == .market {
-//            view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
-//        } else {
-//            view.set(price: CurrencyCodeConverter.toPriceString(quote: quote))
-//        }
-//
-//        view.set(quoteType: quote.quoteType.description)
-//        view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
-//        paymentNonceProvider.set(baseViewController: view)
-//        configureQuoteView()
-//        view.paymentView(hidden: userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen)
-//    }
 
     func bookTripPressed() {
         view?.setRequestingState()
@@ -96,30 +76,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         } else {
             return view?.getPaymentNonce()
         }
-    }
-    
-    private func configureQuoteView() {
-        if bookingDetails.isScheduled {
-            configurePrebookState()
-            return
-        }
-        configureForAsapState()
-    }
-    
-    private func configurePrebookState() {
-        guard let timeZone = bookingDetails.originLocationDetails?.timezone() else {
-            return
-        }
-
-        let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
-
-        view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate),
-                                dateString: prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate))
-    }
-
-    private func configureForAsapState() {
-        view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
-                                                                 max: quote.vehicle.qta.highMinutes))
     }
 
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {

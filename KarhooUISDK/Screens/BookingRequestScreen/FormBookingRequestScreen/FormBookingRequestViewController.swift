@@ -512,14 +512,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getComments() -> String? {
-//        if presenter.isUserAuthenticated() {
-//            return nil
-//        } else {
-            return commentsInputText.getIntput()
+        return commentsInputText.getIntput()
     }
     
     func getFlightNumber() -> String? {
-            return poiDetailsInputText.getIntput()
+        return poiDetailsInputText.getIntput()
     }
     
     func paymentView(hidden: Bool) {
