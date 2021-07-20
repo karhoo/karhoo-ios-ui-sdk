@@ -16,16 +16,16 @@ public struct KHBookingRequestViewID {
 final class FormBookingRequestViewController: UIViewController, BookingRequestView {
     
     private var didSetupConstraints = false
-    private var container: UIView!
-    private var exitButton: UIButton!
+//    private var container: UIView!
+//    private var exitButton: UIButton!
     private var headerView: FormCheckoutHeaderView!
-    private var passengerDetailsTitle: UILabel!
-    private var paymentDetailsTitle: UILabel!
+//    private var passengerDetailsTitle: UILabel!
+//    private var paymentDetailsTitle: UILabel!
     private var commentsInputText: KarhooTextInputView!
     private var poiDetailsInputText: KarhooTextInputView!
     private var passengerDetailsValid: Bool?
     
-    private var addPaymentView: KarhooAddCardView!
+//    private var addPaymentView: KarhooAddCardView!
     private var termsConditionsView: TermsConditionsView!
     private var baseStackView: BaseStackView!
     private var footerView: UIView!
@@ -47,6 +47,56 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private lazy var paymentView: PaymentView = {
         let view = KarhooPaymentView()
         return view
+    }()
+    
+    private lazy var passengerDetailsTitle: UILabel = {
+        let passengerDetailsTitle = UILabel()
+        passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
+        passengerDetailsTitle.accessibilityIdentifier = "passenger_details_title_label"
+        passengerDetailsTitle.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
+        passengerDetailsTitle.textColor = KarhooUI.colors.infoColor
+        passengerDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
+        return passengerDetailsTitle
+    }()
+    
+    private lazy var paymentDetailsTitle: UILabel = {
+        let paymentDetailsTitle = UILabel()
+        paymentDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
+        paymentDetailsTitle.accessibilityIdentifier = "payment_details_title_label"
+        paymentDetailsTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
+        paymentDetailsTitle.textColor = KarhooUI.colors.infoColor
+        paymentDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
+        return paymentDetailsTitle
+    }()
+    
+    private lazy var addPaymentView: KarhooAddCardView = {
+        let addPaymentView = KarhooAddCardView()
+        addPaymentView.baseViewController = self
+        addPaymentView.actions = self
+        return addPaymentView
+    }()
+    
+    private lazy var exitButton: UIButton = {
+        let exitButton = UIButton(type: .custom)
+        exitButton.translatesAutoresizingMaskIntoConstraints = false
+        exitButton.accessibilityIdentifier = KHBookingRequestViewID.exitButton
+        exitButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
+        exitButton.tintColor = KarhooUI.colors.darkGrey
+        exitButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+        exitButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 17, bottom: 17, right: 17)
+        exitButton.imageView?.contentMode = .scaleAspectFit
+        
+        return exitButton
+    }()
+    
+    private lazy var container: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.accessibilityIdentifier = "container_view"
+        container.layer.cornerRadius = 10.0
+        container.layer.masksToBounds = true
+        container.backgroundColor = .white
+        return container
     }()
     
     private var mainStackContainer: UIStackView!
@@ -71,23 +121,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     override func loadView() {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
-        container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.accessibilityIdentifier = "container_view"
-        container.layer.cornerRadius = 10.0
-        container.layer.masksToBounds = true
-        container.backgroundColor = .white
         view.addSubview(container)
-        
-        exitButton = UIButton(type: .custom)
-        exitButton.translatesAutoresizingMaskIntoConstraints = false
-        exitButton.accessibilityIdentifier = KHBookingRequestViewID.exitButton
-        exitButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
-        exitButton.tintColor = KarhooUI.colors.darkGrey
-        exitButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
-        exitButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 17, bottom: 17, right: 17)
-        exitButton.imageView?.contentMode = .scaleAspectFit
         
         separatorLine = LineView(color: KarhooUI.colors.lightGrey,
                                  accessibilityIdentifier: "booking_request_separator_line")
@@ -150,28 +184,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         
-        passengerDetailsTitle = UILabel()
-        passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
-        passengerDetailsTitle.accessibilityIdentifier = "passenger_details_title_label"
-        passengerDetailsTitle.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
-        passengerDetailsTitle.textColor = KarhooUI.colors.infoColor
-        passengerDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: passengerDetailsTitle)
-        
         baseStackView.addViewToStack(view: passengerDetailsView)
         setUpFields()
         
-        paymentDetailsTitle = UILabel()
-        paymentDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
-        paymentDetailsTitle.accessibilityIdentifier = "payment_details_title_label"
-        paymentDetailsTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
-        paymentDetailsTitle.textColor = KarhooUI.colors.infoColor
-        paymentDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
         baseStackView.addViewToStack(view: paymentDetailsTitle)
-        
-        addPaymentView = KarhooAddCardView()
-        addPaymentView.baseViewController = self
-        addPaymentView.actions = self
         baseStackView.addViewToStack(view: addPaymentView)
         
         // Footer view
@@ -224,13 +241,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
             _ = [view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
                  view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height)].map { $0.isActive = true }
             
-            _ = [exitButton.topAnchor.constraint(equalTo: view.topAnchor),
-                 exitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                 exitButton.bottomAnchor.constraint(equalTo: container.topAnchor)].map { $0.isActive = true }
+            _ = [exitButton.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
+                 exitButton.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10)].map { $0.isActive = true }
             
             _ = [container.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                  container.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                 container.heightAnchor.constraint(equalToConstant: 400),
                  container.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
                 .map { $0.isActive = true }
             
