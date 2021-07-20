@@ -43,14 +43,12 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func load(view: BookingRequestView, karhooUser: Bool = false) {
         self.view = view
         self.karhooUser = karhooUser
-        view.set(quote: quote)
-        setUpBookingButtonState()
-        threeDSecureProvider.set(baseViewController: view)
-        
-        
         if karhooUser {
             finishLoad(view: view)
         }
+        view.set(quote: quote)
+        setUpBookingButtonState()
+        threeDSecureProvider.set(baseViewController: view)
     }
     
     func isUserAuthenticated() -> Bool {

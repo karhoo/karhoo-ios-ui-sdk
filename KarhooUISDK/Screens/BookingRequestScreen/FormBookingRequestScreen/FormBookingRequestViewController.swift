@@ -159,9 +159,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         bookingButton.set(actions: self)
         termsConditionsView = TermsConditionsView()
         
-        if presenter.isUserAuthenticated() {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser:
             setUpUserView()
-        } else {
+        default:
             setUpView()
         }
     }
