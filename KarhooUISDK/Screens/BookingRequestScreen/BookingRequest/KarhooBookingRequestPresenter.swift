@@ -76,7 +76,7 @@ final class KarhooBookingRequestPresenter: BookingRequestPresenter {
         submitBooking()
     }
 
-    func isUserAuthenticated() -> Bool {
+    func isKarhooUser() -> Bool {
         true
     }
     

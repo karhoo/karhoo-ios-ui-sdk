@@ -163,7 +163,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func finishLoadingView() {
-        if presenter.isUserAuthenticated() {
+        if presenter.isKarhooUser() {
             setUpUserView()
         } else {
             setUpView()
@@ -258,7 +258,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                  container.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
                 .map { $0.isActive = true }
             
-            if presenter.isUserAuthenticated() {
+            if presenter.isKarhooUser() {
                 setupConstraintsForKarhooUserView()
             } else {
                 setupConstraintsForDefault()
@@ -463,7 +463,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private func enableUserInteraction() {
         exitButton.isUserInteractionEnabled = true
         exitButton.tintColor = KarhooUI.colors.secondary
-        if presenter.isUserAuthenticated() {
+        if presenter.isKarhooUser() {
             paymentView.isUserInteractionEnabled = true
         } else {
             addPaymentView.isUserInteractionEnabled = true
@@ -473,7 +473,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private func disableUserInteraction() {
         exitButton.isUserInteractionEnabled = false
         exitButton.tintColor = KarhooUI.colors.medGrey
-        if presenter.isUserAuthenticated() {
+        if presenter.isKarhooUser() {
             paymentView.isUserInteractionEnabled = false
         } else {
             addPaymentView.isUserInteractionEnabled = false
@@ -520,7 +520,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func paymentView(hidden: Bool) {
-        if presenter.isUserAuthenticated() {
+        if presenter.isKarhooUser() {
             paymentView.isHidden = hidden
         } else {
             addPaymentView.isHidden = hidden

@@ -42,7 +42,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         threeDSecureProvider.set(baseViewController: view)
     }
     
-    func isUserAuthenticated() -> Bool {
+    func isKarhooUser() -> Bool {
         false
     }
 

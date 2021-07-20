@@ -22,7 +22,7 @@ protocol BookingRequestPresenter {
 
     func screenHasFadedOut()
     
-    func isUserAuthenticated() -> Bool
+    func isKarhooUser() -> Bool
 }
 
 protocol BookingRequestView: BaseViewController {
