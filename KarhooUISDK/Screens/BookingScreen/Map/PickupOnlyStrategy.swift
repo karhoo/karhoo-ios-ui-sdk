@@ -72,7 +72,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         }
 
         map?.set(actions: self)
-        map?.removePin(tag: BookingPinTags.pickup.rawValue)
+        map?.removePin(tag: TripPinTags.pickup)
         map?.set(focusButtonHidden: false)
 
         let pickupPosition = pickup.position.toCLLocation()
@@ -81,7 +81,8 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
             map?.centerPin(hidden: false)
         } else {
             map?.centerPin(hidden: true)
-            map?.addPin(location: pickupPosition, asset: PinAsset.pickup, tag: BookingPinTags.pickup.rawValue)
+            let annotation = MapAnnotationViewModel(coordinate: pickupPosition.coordinate, tag: .pickup)
+            map?.addPin(annotation: annotation, tag: TripPinTags.pickup)
         }
         
         map?.center(on: pickupPosition)

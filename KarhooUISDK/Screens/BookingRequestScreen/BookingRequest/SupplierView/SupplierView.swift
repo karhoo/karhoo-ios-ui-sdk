@@ -70,7 +70,7 @@ final class SupplierView: UIView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHSupplierViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.brightGreen
+        cancellationInfo.textColor = KarhooUI.colors.accent
         cancellationInfo.numberOfLines = 0
         addSubview(cancellationInfo)
 

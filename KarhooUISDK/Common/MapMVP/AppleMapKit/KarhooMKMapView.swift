@@ -24,10 +24,11 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return 0.075
     }
 
-    private let centerIcon = UIImageView(image: UIImage.uisdkImage("pickup_pin"))
+    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_background_icon"))
+    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
-    private var pins: [MapView.TagType: KarhooMKAnnotation] = [:]
+    private var pins: [TripPinTags: MapAnnotationViewModel] = [:]
     private var presenter: MapPresenter?
     private let focusButtonBottomSpace: CGFloat = -20
     private var focusButtonBottomConstraint: NSLayoutConstraint!
@@ -51,28 +52,37 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.isRotateEnabled = false
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        centerIcon.translatesAutoresizingMaskIntoConstraints = false
-        centerIcon.isAccessibilityElement = true
+        backgroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
+        backgroundCenterIcon.isAccessibilityElement = true
+        backgroundCenterIcon.tintColor = KarhooUI.colors.secondary
         focusButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
 
         addSubview(mapView)
-        mapView.addSubview(centerIcon)
+        mapView.addSubview(backgroundCenterIcon)
+        
+        foregroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
+        backgroundCenterIcon.addSubview(foregroundCenterIcon)
         addSubview(focusButton)
         NSLayoutConstraint.activate([
-              mapView.widthAnchor.constraint(equalTo: widthAnchor),
-              mapView.heightAnchor.constraint(equalTo: heightAnchor),
-              mapView.centerXAnchor.constraint(equalTo: centerXAnchor),
-              mapView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-              centerIcon.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: 95.0),
-              centerIcon.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
-              centerIcon.widthAnchor.constraint(equalToConstant: 35.0),
-              centerIcon.heightAnchor.constraint(equalToConstant: 45.0),
-
-              focusButton.heightAnchor.constraint(equalToConstant: 45),
-              focusButton.widthAnchor.constraint(equalToConstant: 45),
-              focusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
-          ])
+            mapView.widthAnchor.constraint(equalTo: widthAnchor),
+            mapView.heightAnchor.constraint(equalTo: heightAnchor),
+            mapView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mapView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            backgroundCenterIcon.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: 95.0),
+            backgroundCenterIcon.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            backgroundCenterIcon.widthAnchor.constraint(equalToConstant: 35.0),
+            backgroundCenterIcon.heightAnchor.constraint(equalToConstant: 45.0),
+            
+            focusButton.heightAnchor.constraint(equalToConstant: 45),
+            focusButton.widthAnchor.constraint(equalToConstant: 45),
+            focusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            
+            foregroundCenterIcon.centerXAnchor.constraint(equalTo: backgroundCenterIcon.centerXAnchor),
+            foregroundCenterIcon.centerYAnchor.constraint(equalTo: backgroundCenterIcon.centerYAnchor, constant: -4),
+            foregroundCenterIcon.widthAnchor.constraint(equalToConstant: 16),
+            foregroundCenterIcon.heightAnchor.constraint(equalToConstant: 16)
+        ])
 
         focusButtonBottomConstraint = focusButton.bottomAnchor.constraint(equalTo: bottomAnchor,
 																		  constant: -mapView.layoutMargins.bottom + focusButtonBottomSpace)
@@ -154,14 +164,12 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.setRegion(region, animated: true)
     }
 
-    func addPin(location: CLLocation, asset: String?, tag: MapView.TagType, zIndex: Int32) {
-        let annotation = KarhooMKAnnotation(coordinate: location.coordinate, icon: UIImage.uisdkImage(asset ?? ""))
-
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         pins[tag] = annotation
         mapView.addAnnotation(annotation)
     }
 
-    func removePin(tag: Int) {
+    func removePin(tag: TripPinTags) {
         guard let pinToRemove = pins[tag] else {
             return
         }
@@ -169,13 +177,13 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         pins.removeValue(forKey: tag)
     }
 
-    func movePin(tag: Int, to: CLLocation) {
+    func movePin(tag: TripPinTags, to: CLLocation) {
         let annotation = pins[tag]
         annotation?.coordinate = to.coordinate
     }
 
     func centerPin(hidden: Bool) {
-        centerIcon.isHidden = hidden
+        backgroundCenterIcon.isHidden = hidden
     }
 
     func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
@@ -211,8 +219,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return true
     }
 
-    func set(centerIcon: String) {
-        self.centerIcon.image = UIImage.uisdkImage(centerIcon)
+    func set(centerIcon: String, tintColor: UIColor) {
+        foregroundCenterIcon.image = UIImage.uisdkImage(centerIcon)
+        backgroundCenterIcon.tintColor = tintColor
     }
 
     private var mapDragged = false
@@ -238,15 +247,27 @@ extension KarhooMKMapView: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-       let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-       let customAnnotation = annotation as? KarhooMKAnnotation
-       view.image = customAnnotation?.icon
-       return view
+        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        let customAnnotation = annotation as? MapAnnotationViewModel
+        view.image = customAnnotation?.backgroundIcon
+        
+        if let iconImage = customAnnotation?.foregroundIcon {
+            let icon = UIImageView(image: iconImage)
+            icon.translatesAutoresizingMaskIntoConstraints = false
+            icon.contentMode = .scaleAspectFit
+            view.addSubview(icon)
+            
+            icon.centerX(inView: view)
+            icon.centerY(inView: view, constant: -6)
+            icon.anchor(width: 16, height: 16)
+        }
+        
+        return view
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: (overlay as? MKPolyline)!)
-        renderer.strokeColor = KarhooUI.colors.secondary
+        renderer.strokeColor = KarhooUI.colors.primary
         renderer.lineWidth = 3
         return renderer
       }

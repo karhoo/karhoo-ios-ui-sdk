@@ -127,7 +127,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         swapButton.accessibilityIdentifier = KHAddressBarViewID.swapButton
         swapButton.translatesAutoresizingMaskIntoConstraints = false
         swapButton.setImage(UIImage.uisdkImage("address_swap").withRenderingMode(.alwaysTemplate), for: .normal)
-        swapButton.tintColor = KarhooUI.colors.darkGrey
+        swapButton.tintColor = KarhooUI.colors.accent
         swapButton.addTarget(self, action: #selector(addressSwapTapped), for: .touchUpInside)
         mainViewContainer.addSubview(swapButton)
 

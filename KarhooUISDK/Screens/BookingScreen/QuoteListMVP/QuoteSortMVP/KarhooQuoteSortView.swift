@@ -19,6 +19,10 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
         control.accessibilityIdentifier = "segment_control"
         control.tintColor = KarhooUI.colors.primary
         control.selectedSegmentIndex = 0
+        if #available(iOS 13.0, *) {
+            control.selectedSegmentTintColor = KarhooUI.colors.accent
+            control.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
+        }
         control.addTarget(self, action: #selector(segmentControlChanged), for: .valueChanged)
 
         return control

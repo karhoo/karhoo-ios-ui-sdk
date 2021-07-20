@@ -12,8 +12,6 @@ import KarhooSDK
 
 protocol MapView: UIView {
 
-    typealias TagType = Int
-
     var standardZoom: Float { get }
     var idealMaximumZoom: Float { get }
 
@@ -37,15 +35,15 @@ protocol MapView: UIView {
 
     func zoom(toLevel: Float)
 
-    func addPin(location: CLLocation, asset: String?, tag: TagType, zIndex: Int32)
+    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags)
 
-    func removePin(tag: Int)
+    func removePin(tag: TripPinTags)
 
-    func movePin(tag: Int, to: CLLocation)
+    func movePin(tag: TripPinTags, to: CLLocation)
 
     func centerPin(hidden: Bool)
 
-    func set(centerIcon: String)
+    func set(centerIcon: String, tintColor: UIColor)
 
     func addTripLine(pickup: CLLocation, dropoff: CLLocation)
 
@@ -64,11 +62,6 @@ protocol MapView: UIView {
 
 /* optional MapView methods */
 extension MapView {
-
-    func addPin(location: CLLocation, asset: String?, tag: TagType, zIndex: Int32 = 1) {
-        addPin(location: location, asset: asset, tag: tag, zIndex: zIndex)
-    }
-
     func addTripLine(pickup: CLLocation, dropoff: CLLocation) {}
     
     func draw(polyline: String) {}

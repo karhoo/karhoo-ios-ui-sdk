@@ -89,7 +89,7 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
         markerView = UIView()
         markerView.translatesAutoresizingMaskIntoConstraints = false
         markerView.accessibilityIdentifier = KHQuoteCategoryBarViewID.markerView
-        markerView.backgroundColor = KarhooUI.colors.secondary
+        markerView.backgroundColor = KarhooUI.colors.accent
         markerView.layer.cornerRadius = 10.0
         stackView.insertSubview(markerView, at: 0)
         

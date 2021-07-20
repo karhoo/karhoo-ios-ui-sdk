@@ -9,7 +9,7 @@
 import CoreLocation
 import KarhooSDK
 
-private enum TripPinTags: Int {
+enum TripPinTags: Int {
     case pickup = 1
     case destination = 2
     case driverLocation = 3
@@ -72,9 +72,10 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     }
 
     func updateDriver(location: CLLocation) {
-        let tag = TripPinTags.driverLocation.rawValue
+        let tag = TripPinTags.driverLocation
         if previousDriverLocation == nil {
-            mapView?.addPin(location: location, asset: "car_icon", tag: tag)
+            let annotation = MapAnnotationViewModel(coordinate: location.coordinate, tag: tag)
+            mapView?.addPin(annotation: annotation, tag: tag)
         } else {
             mapView?.movePin(tag: tag, to: location)
         }
@@ -82,16 +83,16 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     }
 
     func plotPins() {
-        mapView?.addPin(location: originAddress.position.toCLLocation(),
-                        asset: "pickup_pin",
-                        tag: TripPinTags.pickup.rawValue)
+        let pickUpAnnotation = MapAnnotationViewModel(coordinate: originAddress.position.toCLLocation().coordinate, tag: .pickup)
+        mapView?.addPin(annotation: pickUpAnnotation,
+                        tag: TripPinTags.pickup)
 
         guard let destination = destinationAddress else {
             return
         }
 
-        mapView?.addPin(location: destination.position.toCLLocation(),
-                        asset: "dropoff_pin",
-                        tag: TripPinTags.destination.rawValue)
+        let destAnnotation = MapAnnotationViewModel(coordinate: destination.position.toCLLocation().coordinate, tag: .destination)
+        mapView?.addPin(annotation: destAnnotation,
+                        tag: TripPinTags.destination)
     }
 }
