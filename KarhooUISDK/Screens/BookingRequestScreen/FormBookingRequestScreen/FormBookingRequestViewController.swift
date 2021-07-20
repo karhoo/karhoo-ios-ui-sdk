@@ -162,9 +162,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func finishLoadingView() {
-        if presenter.isKarhooUser() {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser:
             setUpUserView()
-        } else {
+        default:
             setUpView()
         }
     }
@@ -189,7 +190,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         mainStackContainer.addArrangedSubview(separatorLine)
         mainStackContainer.addArrangedSubview(bookingButton)
         
-        presenter.load(view: self)
+        presenter.load(view: self, karhooUser: true)
     }
     
     private func setUpView() {
@@ -236,7 +237,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         view.setNeedsUpdateConstraints()
         
-        presenter.load(view: self)
+        presenter.load(view: self, karhooUser: false)
     }
     
     private func setUpFields() {
@@ -397,7 +398,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     func showBookingRequestView(_ show: Bool) {
         if show {
-            containerBottomConstraint.constant = 0.0
+//            if presenter.isKarhooUser() {
+//                mainStackBottomPadding.constant = -20.0
+//                             containerBottomConstraint.constant = 0.0
+//                             if #available(iOS 11.0, *) {
+//                                 mainStackBottomPadding.constant = -view.safeAreaInsets.bottom - 20
+//                             }
+//            } else {
+                containerBottomConstraint.constant = 0.0
+//            }
         } else {
             containerBottomConstraint.constant = UIScreen.main.bounds.height
         }
@@ -425,7 +434,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     func setAddFlightDetailsState() {
         enableUserInteraction()
-        poiDetailsInputText.isHidden = false
+        if presenter.isKarhooUser() {
+            bookingButton.setAddFlightDetailsMode()
+        } else {
+            poiDetailsInputText.isHidden = false
+        }
     }
     
     func set(quote: Quote) {
@@ -453,14 +466,24 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         timePriceView.setAsapMode(qta: qta)
     }
     
-    func setPrebookState(timeString: String?, dateString: String?) {}
+    func setPrebookState(timeString: String?, dateString: String?) {
+        timePriceView.setPrebookMode(timeString: timeString, dateString: dateString)
+    }
     
-    func set(quoteType: String) {}
+    func set(quoteType: String) {
+        timePriceView.set(quoteType: quoteType)
+    }
     
-    func set(baseFareExplanationHidden: Bool) {}
+    func set(baseFareExplanationHidden: Bool) {
+        timePriceView.set(baseFareHidden: baseFareExplanationHidden)
+    }
     
     func retryAddPaymentMethod() {
-        addPaymentView.startRegisterCardFlow()
+        if presenter.isKarhooUser() {
+            paymentView.startRegisterCardFlow()
+        } else {
+            addPaymentView.startRegisterCardFlow()
+        }
     }
     
     private func enableUserInteraction() {
@@ -489,20 +512,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                        bookingMetadata: [String: Any]?,
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
-            switch Karhoo.configuration.authenticationMethod() {
-            case .karhooUser:
-                let presenter = KarhooBookingRequestPresenter(quote: quote,
-                                                              bookingDetails: bookingDetails,
-                                                              bookingMetadata: bookingMetadata,
-                                                              callback: callback)
-                return FormBookingRequestViewController(presenter: presenter)
-            default:
-                let presenter = FormBookingRequestPresenter(quote: quote,
-                                                            bookingDetails: bookingDetails,
-                                                            bookingMetadata: bookingMetadata,
-                                                            callback: callback)
-                return FormBookingRequestViewController(presenter: presenter)
-            }
+            let presenter = FormBookingRequestPresenter(quote: quote,
+                                                        bookingDetails: bookingDetails,
+                                                        bookingMetadata: bookingMetadata,
+                                                        callback: callback)
+            return FormBookingRequestViewController(presenter: presenter)
         }
     }
     

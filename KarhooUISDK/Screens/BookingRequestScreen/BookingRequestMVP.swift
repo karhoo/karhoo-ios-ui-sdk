@@ -10,7 +10,7 @@ import KarhooSDK
 
 protocol BookingRequestPresenter {
 
-    func load(view: BookingRequestView)
+    func load(view: BookingRequestView, karhooUser: Bool)
 
     func bookTripPressed()
 

@@ -434,7 +434,6 @@
 		6F4235BF2391800C00233C02 /* AddressGoogleLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */; };
 		6F89EA0D248E5CA300F47C1B /* KarhooAddressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */; };
 		799DC592268F66EC00A48589 /* MapAnnotationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */; };
-		79B1E66B26A6E1260043F590 /* KarhooBookingRequestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B1E66A26A6E1260043F590 /* KarhooBookingRequestPresenter.swift */; };
 		986578A0F928780978136BC5 /* RidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986573E003E549DB4C06EA7A /* RidesViewController.xib */; };
 		A1A0312626171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */; };
 		AE4AC8A425F12C28000F9E57 /* AdyenThreeDSecureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AC8A325F12C28000F9E57 /* AdyenThreeDSecureUtils.swift */; };
@@ -905,7 +904,6 @@
 		6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGoogleLogoView.swift; sourceTree = "<group>"; };
 		6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressDisplayView.swift; sourceTree = "<group>"; };
 		799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModelSpec.swift; sourceTree = "<group>"; };
-		79B1E66A26A6E1260043F590 /* KarhooBookingRequestPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingRequestPresenter.swift; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
 		9BA7A827B91FEFCA386D1C4A /* Pods-KarhooUISDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.debug.xcconfig"; sourceTree = "<group>"; };
 		9FF975DAE636DFA8CA47C6F2 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2459,7 +2457,6 @@
 		5CBA2A6824F5D8CC0091D783 /* BookingRequest */ = {
 			isa = PBXGroup;
 			children = (
-				79B1E66A26A6E1260043F590 /* KarhooBookingRequestPresenter.swift */,
 				5CBA2A6924F5D8CC0091D783 /* BookingButtonMVP */,
 				5CBA2A6D24F5D8CC0091D783 /* SupplierView */,
 				5CBA2A7024F5D8CC0091D783 /* TimePriceMVP */,
@@ -3657,7 +3654,6 @@
 				09E683232374522900BFF5B9 /* KarhooAddressMapPresenter.swift in Sources */,
 				5C089DF82507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift in Sources */,
 				094AE85421C913020046EC3C /* DatePickerScreenBuilder.swift in Sources */,
-				79B1E66B26A6E1260043F590 /* KarhooBookingRequestPresenter.swift in Sources */,
 				407EC7E122CF564E00F24CFC /* TripDetailsViewModel.swift in Sources */,
 				FC046595221484E2004E76FE /* RideDetailsScreenBuilder.swift in Sources */,
 				092A6D58226615EC00A8DA5D /* KarhooUISDKErrorFactory.swift in Sources */,
