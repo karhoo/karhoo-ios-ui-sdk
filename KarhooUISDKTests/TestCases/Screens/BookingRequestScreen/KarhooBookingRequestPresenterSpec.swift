@@ -12,7 +12,7 @@ import KarhooSDK
 
 class KarhooBookingRequestPresenterSpec: XCTestCase {
 
-    private var testObject: KarhooBookingRequestPresenter!
+    private var testObject: FormBookingRequestPresenter!
     private var mockView: MockBookingRequestView!
     private var testQuote: Quote!
     private var testBookingDetails: BookingDetails!
@@ -303,11 +303,11 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     func testFixedQuoteHidesBaseFare() {
         testQuote = TestUtil.getRandomQuote(highPrice: 10, quoteType: .fixed)
 
-        let fixedFareRequestScreen = KarhooBookingRequestPresenter(quote: testQuote,
+        let fixedFareRequestScreen = FormBookingRequestPresenter(quote: testQuote,
                                                                    bookingDetails: testBookingDetails,
                                                                    bookingMetadata: mockBookingMetadata,
-                                                                   userService: mockUserService,
                                                                    tripService: mockTripService,
+                                                                   userService: mockUserService,
                                                                    callback: bookingRequestTrip)
 
         fixedFareRequestScreen.load(view: mockView)
@@ -432,16 +432,16 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     }
 
     private func loadTestObject() {
-        testObject = KarhooBookingRequestPresenter(quote: testQuote,
+        testObject = FormBookingRequestPresenter(quote: testQuote,
                                                    bookingDetails: testBookingDetails,
                                                    bookingMetadata: mockBookingMetadata,
-                                                   userService: mockUserService,
                                                    tripService: mockTripService,
+                                                   userService: mockUserService,
                                                    analytics: mockAnalytics,
                                                    appStateNotifier: mockAppStateNotifier,
                                                    flightDetailsScreenBuilder: mockFlightScreenBuilder,
-                                                   paymentNonceProvider: mockPaymentNonceProvider,
                                                    baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
+                                                   paymentNonceProvider: mockPaymentNonceProvider,
                                                    callback: bookingRequestTrip)
         testObject.load(view: mockView)
     }
