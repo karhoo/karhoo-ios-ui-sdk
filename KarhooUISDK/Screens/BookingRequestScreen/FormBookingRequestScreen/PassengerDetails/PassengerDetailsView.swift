@@ -31,6 +31,10 @@ final class PassengerDetailsView: UIView {
             emailTextField.set(text: newValue?.email)
             phoneTextField.set(text: newValue?.phoneNumber)
             locale = newValue?.locale ?? currentLocale()
+            
+            //When setting the text programmatically, the textField delegate methods are not invoked automatically
+            //This trigers the validation process as if the user had modified the infomation through the UI
+            textFieldValuesChanged()
         }
     }
 
@@ -115,6 +119,14 @@ final class PassengerDetailsView: UIView {
             view.pinLeftRightEdegs(to: self,
                                    leading: textFieldInset,
                                    trailing: -textFieldInset)
+        }
+    }
+    
+    private func textFieldValuesChanged()
+    {
+        if let phoneNumberAccessibilityIdentifier = phoneTextField.accessibilityIdentifier {
+            //didBecomeInactive(:) checks all the mandatory fields, so calling it for every textField in particular isn't necessary
+            didBecomeInactive(identifier: phoneNumberAccessibilityIdentifier)
         }
     }
 }
