@@ -290,8 +290,50 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         })
     }
 
-    func didPressAddFlightDetails() {}
-    func didPressFareExplanation() {}
+    func didPressAddFlightDetails() {
+        if karhooUser {
+            var dismissCallback: (() -> Void)?
+            let flightDetailsScreen = flightDetailsScreenBuilder
+                .buildFlightDetailsScreen(completion: { [weak self] result in
+                    dismissCallback?()
+                    self?.flightDetailsScreenIsPresented = false
+                    
+                    guard let flightDetails = result.completedValue() else {
+                        return
+                    }
+                    
+                    self?.didAdd(flightDetails: flightDetails)
+                })
+            
+            dismissCallback = {
+                flightDetailsScreen.dismiss(animated: true, completion: nil)
+            }
+            
+            view?.present(flightDetailsScreen, animated: true, completion: nil)
+            self.flightDetailsScreenIsPresented = true
+        }
+    }
+    
+    private func didAdd(flightDetails: FlightDetails) {
+        self.flightDetailsScreenIsPresented = false
+        self.flightNumber = flightDetails.flightNumber
+        self.comments = flightDetails.comments
+        
+        submitBooking()
+    }
+    
+    func didPressFareExplanation() {
+        guard karhooUser, bookingRequestInProgress == false else {
+            return
+        }
+        
+        let popupDialog = baseFareDialogBuilder.buildPopupDialogScreen(callback: { [weak self] _ in
+            self?.view?.dismiss(animated: true, completion: nil)
+        })
+        
+        popupDialog.modalTransitionStyle = .crossDissolve
+        view?.showAsOverlay(item: popupDialog, animated: true)
+    }
 
     func didPressClose() {
         PassengerInfo.shared.passengerDetails = view?.getPassengerDetails()
@@ -299,13 +341,19 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
 
     func screenHasFadedOut() {
-        callback(ScreenResult.cancelled(byUser: true))
+        if let trip = self.trip {
+             callback(ScreenResult.completed(result: trip))
+         } else {
+             callback(ScreenResult.cancelled(byUser: false))
+         }
     }
     
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
-            view?.setAddFlightDetailsState()
-        }
+             view?.setAddFlightDetailsState()
+         } else {
+             view?.setDefaultState()
+         }
     }
     
     deinit {

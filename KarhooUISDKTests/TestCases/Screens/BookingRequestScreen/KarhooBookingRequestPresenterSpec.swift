@@ -126,7 +126,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
-        let value: String = mockTripService.tripBookingSet?.meta["key"] as! String
+        let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
         XCTAssertEqual(value, "value")
     }
 
@@ -443,6 +443,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
                                                    baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
                                                    paymentNonceProvider: mockPaymentNonceProvider,
                                                    callback: bookingRequestTrip)
-        testObject.load(view: mockView)
+        testObject.load(view: mockView, karhooUser: true)
     }
 }
