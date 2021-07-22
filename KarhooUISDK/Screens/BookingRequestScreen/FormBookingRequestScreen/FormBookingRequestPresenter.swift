@@ -60,18 +60,24 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         appStateNotifier.register(listener: self)
     }
 
-    func load(view: BookingRequestView, karhooUser: Bool = false) {
+    func load(view: BookingRequestView) {
         self.view = view
-        self.karhooUser = karhooUser
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser:
+            self.karhooUser = true
+        default:
+            self.karhooUser = false
+        }
+       
         if karhooUser {
-            finishLoad(view: view)
+            completeLoadingViewForKarhooUser(view: view)
         }
         view.set(quote: quote)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
     }
 
-     private func finishLoad(view: BookingRequestView) {
+     private func completeLoadingViewForKarhooUser(view: BookingRequestView) {
          if quote.source == .market {
              view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
          } else {
