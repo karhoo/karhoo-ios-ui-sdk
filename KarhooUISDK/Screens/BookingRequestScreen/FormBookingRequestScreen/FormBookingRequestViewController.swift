@@ -174,6 +174,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         baseStackView.addViewToStack(view: passengerDetailsTitle)
         baseStackView.addViewToStack(view: passengerDetailsView)
         setUpFields()
+        baseStackView.addViewToStack(view: paymentDetailsTitle)
         baseStackView.addViewToStack(view: addPaymentView)
         
         // Footer view
@@ -208,6 +209,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
             passengerDetailsView.isHidden = true
             passengerDetailsTitle.isHidden = true
             commentsInputText.isHidden = true
+            paymentDetailsTitle.isHidden = true
             addPaymentView.isHidden = true
         } else {
             paymentView.isHidden = true
@@ -252,6 +254,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
 
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
+        
+        paymentDetailsTitle.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
         
         addPaymentView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
         
