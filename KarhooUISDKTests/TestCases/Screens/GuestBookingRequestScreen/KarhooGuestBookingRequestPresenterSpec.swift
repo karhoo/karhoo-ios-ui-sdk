@@ -23,8 +23,8 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        loadTestObject()
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+        loadTestObject()
     }
 
     /** Given: A user has added details and a nonce
@@ -137,7 +137,6 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
                                                                      paymentProvider: "adyen")
-        
         testObject.bookTripPressed()
 
         let tripBooked = TestUtil.getRandomTrip()

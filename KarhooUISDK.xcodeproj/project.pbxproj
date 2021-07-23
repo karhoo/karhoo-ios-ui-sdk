@@ -422,9 +422,6 @@
 		5CBA2A7924F5D8CC0091D783 /* PassengerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6724F5D8CC0091D783 /* PassengerDetailsView.swift */; };
 		5CBA2A7A24F5D8CC0091D783 /* BookingButtonMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6A24F5D8CC0091D783 /* BookingButtonMVP.swift */; };
 		5CBA2A7B24F5D8CC0091D783 /* KarhooBookingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6B24F5D8CC0091D783 /* KarhooBookingButtonView.swift */; };
-		5CBA2A7C24F5D8CC0091D783 /* KarhooBookingRequestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6C24F5D8CC0091D783 /* KarhooBookingRequestPresenter.swift */; };
-		5CBA2A7D24F5D8CC0091D783 /* SupplierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6E24F5D8CC0091D783 /* SupplierView.swift */; };
-		5CBA2A7E24F5D8CC0091D783 /* KarhooBookingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A6F24F5D8CC0091D783 /* KarhooBookingRequestViewController.swift */; };
 		5CBA2A7F24F5D8CC0091D783 /* KarhooTimePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A7124F5D8CC0091D783 /* KarhooTimePriceView.swift */; };
 		5CBA2A8024F5D8CC0091D783 /* TimePriceMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA2A7224F5D8CC0091D783 /* TimePriceMVP.swift */; };
 		5CBA2A8124F5D8CC0091D783 /* KarhooTimePriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA2A7324F5D8CC0091D783 /* KarhooTimePriceView.xib */; };
@@ -894,9 +891,6 @@
 		5CBA2A6724F5D8CC0091D783 /* PassengerDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerDetailsView.swift; sourceTree = "<group>"; };
 		5CBA2A6A24F5D8CC0091D783 /* BookingButtonMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingButtonMVP.swift; sourceTree = "<group>"; };
 		5CBA2A6B24F5D8CC0091D783 /* KarhooBookingButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingButtonView.swift; sourceTree = "<group>"; };
-		5CBA2A6C24F5D8CC0091D783 /* KarhooBookingRequestPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingRequestPresenter.swift; sourceTree = "<group>"; };
-		5CBA2A6E24F5D8CC0091D783 /* SupplierView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierView.swift; sourceTree = "<group>"; };
-		5CBA2A6F24F5D8CC0091D783 /* KarhooBookingRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingRequestViewController.swift; sourceTree = "<group>"; };
 		5CBA2A7124F5D8CC0091D783 /* KarhooTimePriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTimePriceView.swift; sourceTree = "<group>"; };
 		5CBA2A7224F5D8CC0091D783 /* TimePriceMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePriceMVP.swift; sourceTree = "<group>"; };
 		5CBA2A7324F5D8CC0091D783 /* KarhooTimePriceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KarhooTimePriceView.xib; sourceTree = "<group>"; };
@@ -2461,10 +2455,7 @@
 		5CBA2A6824F5D8CC0091D783 /* BookingRequest */ = {
 			isa = PBXGroup;
 			children = (
-				5CBA2A6C24F5D8CC0091D783 /* KarhooBookingRequestPresenter.swift */,
-				5CBA2A6F24F5D8CC0091D783 /* KarhooBookingRequestViewController.swift */,
 				5CBA2A6924F5D8CC0091D783 /* BookingButtonMVP */,
-				5CBA2A6D24F5D8CC0091D783 /* SupplierView */,
 				5CBA2A7024F5D8CC0091D783 /* TimePriceMVP */,
 			);
 			path = BookingRequest;
@@ -2477,14 +2468,6 @@
 				5CBA2A6B24F5D8CC0091D783 /* KarhooBookingButtonView.swift */,
 			);
 			path = BookingButtonMVP;
-			sourceTree = "<group>";
-		};
-		5CBA2A6D24F5D8CC0091D783 /* SupplierView */ = {
-			isa = PBXGroup;
-			children = (
-				5CBA2A6E24F5D8CC0091D783 /* SupplierView.swift */,
-			);
-			path = SupplierView;
 			sourceTree = "<group>";
 		};
 		5CBA2A7024F5D8CC0091D783 /* TimePriceMVP */ = {
@@ -3515,7 +3498,6 @@
 				FC705B1D221322550001036E /* KarhooPopupDialogPresenter.swift in Sources */,
 				407EC7B222CF564E00F24CFC /* TermsConditionsView.swift in Sources */,
 				5C626861252DFC0A00AB6CD2 /* AdyenResponseHandler.swift in Sources */,
-				5CBA2A7E24F5D8CC0091D783 /* KarhooBookingRequestViewController.swift in Sources */,
 				5CC253712441FD4000603D84 /* PaymentMethod.swift in Sources */,
 				407EC7A722CF564E00F24CFC /* KarhooColors.swift in Sources */,
 				407EC79B22CF564E00F24CFC /* QtaStringFormatter.swift in Sources */,
@@ -3554,7 +3536,6 @@
 				FC83E284221DB6B8008FE26D /* TripScreenBuilder.swift in Sources */,
 				40E6693523D5B99E00DE63BA /* RideDetailsViewContainer.swift in Sources */,
 				095B20D622649CEC00119D11 /* ScreenResult.swift in Sources */,
-				5CBA2A7D24F5D8CC0091D783 /* SupplierView.swift in Sources */,
 				407EC7AF22CF564E00F24CFC /* Layout.swift in Sources */,
 				FC435F242211B49100FB6BB5 /* RideDetailsMVP.swift in Sources */,
 				5CD9CFAA22DCAB580086E7A0 /* RatingViewMVP.swift in Sources */,
@@ -3693,7 +3674,6 @@
 				5C1CD0B2241A5D88004AFF7D /* TripOptionsMVP.swift in Sources */,
 				092F281C22B25B0700AF8E0E /* ThreeDSecureProvider.swift in Sources */,
 				097BF283234F2A3E00BBE418 /* VehicleCapacityView.swift in Sources */,
-				5CBA2A7C24F5D8CC0091D783 /* KarhooBookingRequestPresenter.swift in Sources */,
 				0991070C21B83AF700BD7E6F /* LocationDetailsExt.swift in Sources */,
 				FC83E29E221ECC1C008FE26D /* DestinationEtaMVP.swift in Sources */,
 				FC0465A52215AA05004E76FE /* NavigationControllerDelegate.swift in Sources */,
