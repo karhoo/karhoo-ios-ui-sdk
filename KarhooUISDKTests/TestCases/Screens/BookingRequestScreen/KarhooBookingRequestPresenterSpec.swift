@@ -432,6 +432,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     }
 
     private func loadTestObject() {
+        KarhooTestConfiguration.authenticationMethod = .karhooUser
         testObject = FormBookingRequestPresenter(quote: testQuote,
                                                    bookingDetails: testBookingDetails,
                                                    bookingMetadata: mockBookingMetadata,
@@ -443,6 +444,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
                                                    baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
                                                    paymentNonceProvider: mockPaymentNonceProvider,
                                                    callback: bookingRequestTrip)
-        testObject.load(view: mockView, karhooUser: true)
+        testObject.load(view: mockView)
     }
 }
