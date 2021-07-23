@@ -431,8 +431,8 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         testCallbackResult = result
     }
 
-    private func loadTestObject() {
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+    private func loadTestObject(configuration: AuthenticationMethod = .karhooUser) {
+        KarhooTestConfiguration.authenticationMethod = configuration
         testObject = FormBookingRequestPresenter(quote: testQuote,
                                                    bookingDetails: testBookingDetails,
                                                    bookingMetadata: mockBookingMetadata,
