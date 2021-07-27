@@ -55,11 +55,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return passengerDetailsView
     }()
     
-    private lazy var paymentView: PaymentView = {
-        let view = KarhooPaymentView()
-        return view
-    }()
-    
     private lazy var passengerDetailsTitle: UILabel = {
         let passengerDetailsTitle = UILabel()
         passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false

@@ -110,7 +110,7 @@ class ViewController: UIViewController {
                                           referer: Keys.referer,
                                           organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
-        KarhooConfig.environment = .sandbox
+        KarhooConfig.environment = Keys.adyenGuestEnvironment
         showKarhoo()
     }
 
@@ -119,33 +119,33 @@ class ViewController: UIViewController {
                                           referer: Keys.referer,
                                           organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
-        KarhooConfig.environment = .sandbox
+        KarhooConfig.environment = Keys.braintreeGuestEnvironment
         showKarhoo()
     }
 
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
-        KarhooConfig.environment = .sandbox
-        usernamePasswordLoginAndShowKarhoo(username: Keys.userServiceEmailAdyen, password: Keys.userServicePasswordAdyen)
+        KarhooConfig.environment = Keys.adyenUserServiceEnvironment
+        usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
     
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
-        KarhooConfig.environment = .sandbox
-        usernamePasswordLoginAndShowKarhoo(username: Keys.userServiceEmailBraintree, password: Keys.userServicePasswordBraintree)
+        KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
+        usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
     }
 
     @objc func tokenExchangeBraintreeBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        KarhooConfig.environment = Keys.staging()
+        KarhooConfig.environment = Keys.braintreeTokenEnvironment
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
 
     @objc func tokenExchangeAdyenBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        KarhooConfig.environment = Keys.staging()
+        KarhooConfig.environment = Keys.adyenTokenEnvironment
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
     }
 
