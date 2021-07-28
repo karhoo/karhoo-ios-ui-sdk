@@ -164,6 +164,7 @@ final class KarhooAddCardView: UIView, PaymentView {
 		imageView.image = UIImage.uisdkImage(paymentMethod.nonceType)
         updateViewState()
         actions?.didGetNonce(nonce: paymentMethod.nonce)
+        //self.nonce = paymentMethod.nonce
     }
     
     private func updateViewState() {

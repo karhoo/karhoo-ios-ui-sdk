@@ -19,7 +19,7 @@ final class KarhooPaymentPresenter: PaymentPresenter {
      init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
           userService: UserService = Karhoo.getUserService(),
           cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
-          view: PaymentView = KarhooPaymentView()) {
+          view: PaymentView = KarhooAddCardView()) {
         self.cardRegistrationFlow = cardRegistrationFlow
         self.analyticsService = analyticsService
         self.userService = userService

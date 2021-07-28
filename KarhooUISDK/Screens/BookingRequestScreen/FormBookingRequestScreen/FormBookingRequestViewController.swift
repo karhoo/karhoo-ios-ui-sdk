@@ -55,11 +55,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return passengerDetailsView
     }()
     
-    private lazy var paymentView: PaymentView = {
-        let view = KarhooPaymentView()
-        return view
-    }()
-    
     private lazy var passengerDetailsTitle: UILabel = {
         let passengerDetailsTitle = UILabel()
         passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -170,7 +165,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         
-        baseStackView.addViewToStack(view: paymentView)
         baseStackView.addViewToStack(view: passengerDetailsTitle)
         baseStackView.addViewToStack(view: passengerDetailsView)
         setUpFields()
@@ -209,10 +203,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
             passengerDetailsView.isHidden = true
             passengerDetailsTitle.isHidden = true
             commentsInputText.isHidden = true
-            paymentDetailsTitle.isHidden = true
-            addPaymentView.isHidden = true
-        } else {
-            paymentView.isHidden = true
         }
     }
     
@@ -337,12 +327,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.set(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
                                             termsStringURL: quote.fleet.termsConditionsUrl)
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
-            paymentView.quote = quote
-        default:
-            addPaymentView.quote = quote
-        }
+        addPaymentView.quote = quote
     }
     
     func set(price: String?) {
@@ -366,31 +351,19 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func retryAddPaymentMethod() {
-        if presenter.isKarhooUser() {
-            paymentView.startRegisterCardFlow()
-        } else {
-            addPaymentView.startRegisterCardFlow()
-        }
+        addPaymentView.startRegisterCardFlow()
     }
     
     private func enableUserInteraction() {
         exitButton.isUserInteractionEnabled = true
         exitButton.tintColor = KarhooUI.colors.secondary
-        if presenter.isKarhooUser() {
-            paymentView.isUserInteractionEnabled = true
-        } else {
-            addPaymentView.isUserInteractionEnabled = true
-        }
+        addPaymentView.isUserInteractionEnabled = true
     }
     
     private func disableUserInteraction() {
         exitButton.isUserInteractionEnabled = false
         exitButton.tintColor = KarhooUI.colors.medGrey
-        if presenter.isKarhooUser() {
-            paymentView.isUserInteractionEnabled = false
-        } else {
-            addPaymentView.isUserInteractionEnabled = false
-        }
+        addPaymentView.isUserInteractionEnabled = false
     }
     
     final class Builder: BookingRequestScreenBuilder {
@@ -424,11 +397,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func paymentView(hidden: Bool) {
-        if presenter.isKarhooUser() {
-            paymentView.isHidden = hidden
-        } else {
-            addPaymentView.isHidden = hidden
-        }
+        addPaymentView.isHidden = hidden
+        paymentDetailsTitle.isHidden = hidden
     }
 }
 
