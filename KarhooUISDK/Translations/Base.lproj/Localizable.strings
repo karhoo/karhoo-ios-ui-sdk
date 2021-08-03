@@ -18,6 +18,7 @@
 "Text.Generic.Pickup" = "Pickup";
 "Text.Generic.ETA" = "ETA";
 "Text.Generic.ETALong" = "Estimated arrival time";
+"Text.Generic.MeetGreet" = "Meet and greet";
 "Text.Generic.EPrice" = "Estimated Price";
 "Text.Generic.Price" = "Price";
 "Text.Generic.Prebook" = "Prebook";

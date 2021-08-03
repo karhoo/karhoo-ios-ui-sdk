@@ -8,11 +8,6 @@
 import UIKit
 import KarhooSDK
 
-// swiftlint:disable file_length
-public struct KHBookingRequestViewID {
-    public static let exitButton = "exit_button"
-}
-
 final class FormBookingRequestViewController: UIViewController, BookingRequestView {
     
     private var didSetupConstraints = false
@@ -82,16 +77,16 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return addPaymentView
     }()
     
-    private lazy var exitButton: UIButton = {
-        let exitButton = UIButton(type: .custom)
-        exitButton.translatesAutoresizingMaskIntoConstraints = false
-        exitButton.accessibilityIdentifier = KHBookingRequestViewID.exitButton
-        exitButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
-        exitButton.tintColor = KarhooUI.colors.darkGrey
-        exitButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
-        exitButton.imageView?.contentMode = .scaleAspectFit
+    private lazy var backButton: UIButton = {
+        let backButton = UIButton(type: .custom)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.accessibilityIdentifier = "back_button"
+        backButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.tintColor = KarhooUI.colors.darkGrey
+        backButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+        backButton.imageView?.contentMode = .scaleAspectFit
         
-        return exitButton
+        return backButton
     }()
     
     private lazy var container: UIView = {
@@ -158,8 +153,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setUpView() {
-        container.addSubview(exitButton)
-        
+        container.addSubview(backButton)
         container.addSubview(baseStackView)
         
         headerView = FormCheckoutHeaderView()
@@ -223,7 +217,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width)
         
-        exitButton.anchor(top: container.topAnchor, trailing: container.trailingAnchor, paddingTop: view.safeAreaInsets.top, width: 50.0)
+        backButton.anchor(top: container.topAnchor, trailing: container.trailingAnchor, paddingTop: view.safeAreaInsets.top, width: 50.0)
         
         container.anchor(height: UIScreen.main.bounds.height)
         
@@ -231,7 +225,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                                                       constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
         
-        baseStackView.anchor(top: exitButton.bottomAnchor, leading: container.leadingAnchor, bottom: container.bottomAnchor, trailing: container.trailingAnchor)
+        baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: container.bottomAnchor, trailing: container.trailingAnchor)
         
         let titleInset: CGFloat = 15.0
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
@@ -355,14 +349,14 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func enableUserInteraction() {
-        exitButton.isUserInteractionEnabled = true
-        exitButton.tintColor = KarhooUI.colors.secondary
+        backButton.isUserInteractionEnabled = true
+        backButton.tintColor = KarhooUI.colors.secondary
         addPaymentView.isUserInteractionEnabled = true
     }
     
     private func disableUserInteraction() {
-        exitButton.isUserInteractionEnabled = false
-        exitButton.tintColor = KarhooUI.colors.medGrey
+        backButton.isUserInteractionEnabled = false
+        backButton.tintColor = KarhooUI.colors.medGrey
         addPaymentView.isUserInteractionEnabled = false
     }
     
@@ -389,11 +383,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getComments() -> String? {
-        return commentsInputText.getIntput()
+        return commentsInputText.getInput()
     }
     
     func getFlightNumber() -> String? {
-        return poiDetailsInputText.getIntput()
+        return poiDetailsInputText.getInput()
     }
     
     func paymentView(hidden: Bool) {

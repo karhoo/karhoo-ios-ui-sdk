@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol KarhooInputViewDelegate: class {
+public protocol KarhooInputViewDelegate: AnyObject {
     func didBecomeInactive(identifier: String)
 }
 
@@ -20,6 +20,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
     private var iconContainer: UIView!
     private var titleLabel: UILabel!
     private var textView: UITextView!
+    private var underlineView: UIView!
     private var isOptional: Bool = false
     
     private var iconImage: UIImage?
@@ -75,10 +76,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         textView.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         textView.returnKeyType = .done
         textView.textColor = KarhooTextInputViewState.inactive.color
-        textView.layer.borderWidth = 1.0
-        textView.layer.cornerRadius = 3.0
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
-        textView.layer.borderColor = KarhooTextInputViewState.inactive.color.cgColor
 		textView.autocorrectionType = .no
 
         switch contentType {
@@ -101,13 +99,10 @@ class KarhooTextInputView: UIView, KarhooInputView {
         textView.isScrollEnabled = false
         stackContainer.addArrangedSubview(textView)
         
-        titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.accessibilityIdentifier = "title_label"
-        titleLabel.text = contentType.titleText
-        titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        titleLabel.tintColor = KarhooUI.colors.infoColor
-        addSubview(titleLabel)
+        underlineView = UIView()
+        underlineView.translatesAutoresizingMaskIntoConstraints = false
+        underlineView.backgroundColor = KarhooUI.colors.lightGrey
+        addSubview(underlineView)
         
         updateConstraints()
     }
@@ -115,19 +110,9 @@ class KarhooTextInputView: UIView, KarhooInputView {
     override func updateConstraints() {
         if !didSetUpConstraints {
             
-            _ = [icon.widthAnchor.constraint(equalToConstant: 30.0),
-                 icon.heightAnchor.constraint(equalToConstant: 30.0),
-                 icon.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor),
-                 icon.topAnchor.constraint(equalTo: iconContainer.topAnchor),
-                 icon.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor)].map { $0.isActive = true }
-            
-            _ = [titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0.0),
-                 titleLabel.topAnchor.constraint(equalTo: topAnchor)].map { $0.isActive = true }
-            
-            _ = [stackContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5.0),
-                 stackContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-                 stackContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-                 stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
+            icon.anchor(top: iconContainer.topAnchor, leading: iconContainer.leadingAnchor, trailing: iconContainer.trailingAnchor, width: 30.0, height: 30.0)
+            underlineView.anchor(leading: leadingAnchor, bottom: stackContainer.bottomAnchor, trailing: trailingAnchor, height: 1.0)
+            stackContainer.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 5.0)
             
             didSetUpConstraints = true
         }
@@ -209,7 +194,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         }
     }
     
-    public func getIntput() -> String {
+    public func getInput() -> String {
         if textView.text == contentType.placeholderText {
             return ""
         }

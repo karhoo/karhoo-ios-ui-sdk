@@ -19,6 +19,7 @@
 "Text.Generic.Pickup" = "Départ";
 "Text.Generic.ETA" = "Proximité";
 "Text.Generic.ETALong" = "Proximité";
+"Text.Generic.MeetGreet" = "Accueil pancarte";
 "Text.Generic.EPrice" = "Prix estimé";
 "Text.Generic.Price" = "Prix";
 "Text.Generic.Prebook" = "Réserver";

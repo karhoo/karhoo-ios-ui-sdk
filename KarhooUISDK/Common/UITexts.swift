@@ -61,6 +61,7 @@ public enum UITexts {
         public static let change = "Text.Generic.Change".localized
         public static let submit = "Text.Generic.Submit".localized
         public static let etaLong = "Text.Generic.ETALong".localized
+        public static let meetGreet = "Text.Generic.MeetGreet".localized
         public static let estimatedPrice = "Text.Generic.EPrice".localized
         public static let name = "Text.Generic.Name".localized
         public static let surname = "Text.Generic.Surname".localized

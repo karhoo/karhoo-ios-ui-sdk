@@ -218,7 +218,7 @@ class KarhooPhoneInputView: UIView, KarhooInputView {
         tintView(.error)
     }
     
-    public func getIntput() -> String {
+    public func getInput() -> String {
         _ = validatePhoneNumber()
         return phoneNumber
     }

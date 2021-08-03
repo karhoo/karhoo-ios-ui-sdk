@@ -13,7 +13,7 @@ protocol KarhooInputView: UIView {
     func setInactive()
     func showIcon(_ show: Bool)
     func showError()
-    func getIntput() -> String
+    func getInput() -> String
     func isValid() -> Bool
     func isFirstResponder() -> Bool
     func set(text: String?)

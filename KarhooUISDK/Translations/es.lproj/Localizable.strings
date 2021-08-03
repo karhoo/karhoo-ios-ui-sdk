@@ -21,6 +21,7 @@
 "Text.Generic.Submit" = "Enviar";
 "Text.Generic.Success" = "El éxito";
 "Text.Generic.ETALong" = "Hora de llegada estimada";
+"Text.Generic.MeetGreet" = "Dar la bienvenida";
 "Text.Generic.EPrice" = "Precio estimado";
 "Text.Generic.ETA" = "Tiempo estimado";
 "Text.Generic.Price" = "Precio";
