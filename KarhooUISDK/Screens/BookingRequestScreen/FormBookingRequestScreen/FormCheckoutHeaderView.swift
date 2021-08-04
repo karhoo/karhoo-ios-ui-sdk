@@ -257,7 +257,9 @@ final class FormCheckoutHeaderView: UIView {
         scheduleMainValue.text = viewModel.scheduleMainValue
         carType.text = viewModel.carType
         cancellationInfo.text = viewModel.freeCancellationMessage
-        cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil
+        if viewModel.freeCancellationMessage == nil {
+            middleStackView.isHidden = true
+        }
         priceText.text = viewModel.fare
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")

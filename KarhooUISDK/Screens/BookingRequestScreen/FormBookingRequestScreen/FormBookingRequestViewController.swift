@@ -22,6 +22,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
+        bookingButton.anchor(height: 55.0)
         return bookingButton
     }()
     
@@ -228,7 +229,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
 
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 15.0, paddingRight: 10.0)
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 20.0, paddingRight: 10.0)
         footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
