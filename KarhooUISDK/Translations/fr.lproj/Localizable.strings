@@ -90,7 +90,7 @@
 "Text.Prebook.SetPrebook" = "Choisir";
 
 /*Booking*/
-"Text.Booking.RequestCar" = "Commander";
+"Text.Booking.RequestCar" = "RÉSERVER";
 "Text.Booking.RequestingCar" = "Commande en cours";
 "Text.Booking.RequestReceived" = "Commande reçue";
 "Text.Bookings.eta" = "Proximité";

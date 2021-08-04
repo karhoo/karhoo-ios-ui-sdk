@@ -86,7 +86,7 @@
 "Text.Prebook.SetPrebook" = "Set Pickup Time";
 
 /*Booking*/
-"Text.Booking.RequestCar" = "Book Ride";
+"Text.Booking.RequestCar" = "Book";
 "Text.Booking.RequestingCar" = "Booking Ride";
 "Text.Booking.RequestReceived" = "Booking Received";
 "Text.Bookings.eta" = "ETA";
