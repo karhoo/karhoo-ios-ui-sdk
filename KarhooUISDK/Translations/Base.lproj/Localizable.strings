@@ -30,7 +30,7 @@
 "Text.Generic.Surname" = "Surname";
 "Text.Generic.Email" = "Email address";
 "Text.Generic.PhoneNumber" = "Phone number";
-"Text.Generic.Comment" = "Comment for the driver";
+"Text.Generic.Comment" = "Comment";
 "Text.Generic.Optional" = "Optional";
 "Text.Generic.ErrorMessage" = "Oops something went wrong";
 
