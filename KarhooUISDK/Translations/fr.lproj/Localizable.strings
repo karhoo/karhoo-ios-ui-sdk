@@ -41,7 +41,7 @@
 /*english "making a booking". Used in terms conditions construction*/
 "Text.Generic.MakingBookingAction" = "confirmant la commande";
 "Text.Generic.TermsConditions" = "Conditions générales d'utilisation";
-"Text.Generic.PrivacyPolicy" = "Règles de confidentialité";
+"Text.Generic.PrivacyPolicy" = "Conditions d'annulation";
 "Text.Generic.Minutes" = "min";
 "Text.Generic.Continue" = "Continuer";
 
@@ -64,7 +64,7 @@
 "Text.Error.EmailValidationError" = "Vérifiez que votre adresse Email est écrite correctement";
 "Text.Error.Booking.EnterDestinationToProceed" = "Entrez une destination pour procéder à la réservation";
 "Text.Error.NotLoggedIn" = "Vous n'êtes pas identifié.";
-"Text.TermsConditions.FullString" = "En %1$@, vous acceptez les %3$@ et %4$@ de %2$@";
+"Text.TermsConditions.FullString" = "En %1$@, vous acceptez les %3$@ et la %4$@ de %2$@";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "S'identifier";
@@ -119,7 +119,7 @@
 
 /*Reference to fixed pricing.. English equivalent: "Fixed"*/
 /*Fuzzy*/
-"Text.Generic.Fixed" = "Fixe";
+"Text.Generic.Fixed" = "Prix fixe";
 
 /*Register on the side menu*/
 "Text.SideMenu.Register" = "Inscription";
@@ -264,7 +264,7 @@
 "Text.Generic.NoCarsAvailable" = "Il n'y a aucune voiture disponible pour votre course en ce moment. Veuillez réessayer plus tard";
 
 /*English: "Estimated"*/
-"Text.Generic.Estimated" = "Estimé";
+"Text.Generic.Estimated" = "Prix estimé";
 
 /*"Unkown"*/
 "Text.Generic.Unknown" = "Inconnu";

@@ -38,7 +38,7 @@ public struct TermsConditionsStringBuilder {
     func registrationTermsCopy() -> NSAttributedString {
         return attributedTermsString(context: "Karhoo",
                                      action: UITexts.Generic.registeringAccountAction,
-                                     policyType: UITexts.Generic.privacyPolicy,
+                                     policyType: UITexts.Generic.cancellationPolicy,
                                      termsURL: TermsConditionsStringBuilder.karhooTermsURL(),
                                      policyURL: TermsConditionsStringBuilder.karhooPrivacyPolicy())
     }
@@ -71,10 +71,14 @@ public struct TermsConditionsStringBuilder {
 
         let policyAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
                                                                .link: policyURL,
-                                                               .foregroundColor: KarhooUI.colors.primary]
+                                                               .foregroundColor: KarhooUI.colors.primary,
+                                                               .underlineColor: KarhooUI.colors.accent,
+                                                               .underlineStyle: NSUnderlineStyle.single.rawValue]
 
         let termsAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
                                                               .foregroundColor: KarhooUI.colors.primary,
+                                                              .underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                              .underlineColor: KarhooUI.colors.accent,
                                                               .link: termsURL]
 
         let termsText = NSMutableAttributedString()

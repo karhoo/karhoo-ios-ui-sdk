@@ -175,8 +175,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         footerStack.spacing = 15.0
         footerView.addSubview(footerStack)
         
-//        footerStack.addArrangedSubview(separatorLine)
-        
         bookingButton.setDisabledMode()
         footerStack.addArrangedSubview(bookingButton)
         
@@ -187,14 +185,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         presenter.load(view: self)
         
-        if presenter.isKarhooUser() {
-            passengerDetailsView.isHidden = true
-            passengerDetailsTitle.isHidden = true
-            commentsInputText.isHidden = true
-        }
+        commentsInputText.isHidden = presenter.isKarhooUser()
     }
     
     private func setUpFields() {
+//        baseStackView.addViewToStack(view: passengerDetailsTitle)
+//        baseStackView.addViewToStack(view: passengerDetailsView)
+//        baseStackView.addViewToStack(view: paymentDetailsTitle)
+//        baseStackView.addViewToStack(view: addPaymentView)
+        
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: poiDetailsInputText)
     }
@@ -242,7 +241,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsView.details = initialisePassengerDetails()
+//        passengerDetailsView.details = initialisePassengerDetails()
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
@@ -305,7 +304,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.set(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
                                             termsStringURL: quote.fleet.termsConditionsUrl)
-        addPaymentView.quote = quote
+//        addPaymentView.quote = quote
     }
     
     func set(price: String?) {
@@ -329,19 +328,19 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func retryAddPaymentMethod() {
-        addPaymentView.startRegisterCardFlow()
+//        addPaymentView.startRegisterCardFlow()
     }
     
     private func enableUserInteraction() {
         backButton.isUserInteractionEnabled = true
         backButton.tintColor = KarhooUI.colors.secondary
-        addPaymentView.isUserInteractionEnabled = true
+//        addPaymentView.isUserInteractionEnabled = true
     }
     
     private func disableUserInteraction() {
         backButton.isUserInteractionEnabled = false
         backButton.tintColor = KarhooUI.colors.medGrey
-        addPaymentView.isUserInteractionEnabled = false
+//        addPaymentView.isUserInteractionEnabled = false
     }
     
     final class Builder: BookingRequestScreenBuilder {
@@ -359,7 +358,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getPassengerDetails() -> PassengerDetails? {
-        return passengerDetailsView.details
+//        return passengerDetailsView.details
+        return nil
     }
     
     func getPaymentNonce() -> String? {
@@ -375,8 +375,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func paymentView(hidden: Bool) {
-        addPaymentView.isHidden = hidden
-        paymentDetailsTitle.isHidden = hidden
+//        addPaymentView.isHidden = hidden
+//        paymentDetailsTitle.isHidden = hidden
     }
 }
 
@@ -410,11 +410,11 @@ extension FormBookingRequestViewController: KarhooInputViewDelegate {
     
     private func enableBookingButton() {
         if passengerDetailsValid == true {
-            if addPaymentView.validPayment() {
-                bookingButton.setRequestMode()
-            } else {
-                addPaymentView.showError()
-            }
+//            if addPaymentView.validPayment() {
+//                bookingButton.setRequestMode()
+//            } else {
+//                addPaymentView.showError()
+//            }
         } else {
             bookingButton.setDisabledMode()
         }

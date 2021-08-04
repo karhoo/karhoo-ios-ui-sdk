@@ -51,9 +51,20 @@ final class FormCheckoutHeaderView: UIView {
         let learnMoreButton = UIButton(frame: .zero)
         learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
         learnMoreButton.setTitle("Learn more", for: .normal)
-        learnMoreButton.backgroundColor = .purple
-        learnMoreButton.tintColor = .systemPink
+        learnMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
+        learnMoreButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
+        learnMoreButton.anchor(width: 80)
         return learnMoreButton
+    }()
+    
+    private lazy var dropdownIconImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.uisdkImage("dropdownIcon")
+        imageView.tintColor = KarhooUI.colors.accent
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.anchor(width: 16)
+        return imageView
     }()
     
     init() {
@@ -86,7 +97,7 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.alignment = .center
-        topStackView.distribution = .equalSpacing
+        topStackView.distribution = .fill
         topStackView.spacing = 10
         verticalTopStackView.addArrangedSubview(topStackView)
         
@@ -131,9 +142,11 @@ final class FormCheckoutHeaderView: UIView {
         middleStackView.translatesAutoresizingMaskIntoConstraints = false
         middleStackView.axis = .horizontal
         middleStackView.spacing = 8
+        middleStackView.distribution = .fillProportionally
         
         middleStackView.addArrangedSubview(cancellationInfo)
         middleStackView.addArrangedSubview(learnMoreButton)
+        middleStackView.addArrangedSubview(dropdownIconImage)
         
         verticalTopStackView.addArrangedSubview(middleStackView)
         

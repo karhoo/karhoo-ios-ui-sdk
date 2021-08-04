@@ -43,9 +43,9 @@
 "Text.Generic.RegisterAccountAction" = "crear una cuenta de Karhoo";
 
 /*english "making a booking". Used in terms conditions construction*/
-"Text.Generic.MakingBookingAction" = "reservar";
-"Text.Generic.TermsConditions" = "condiciones generales";
-"Text.Generic.PrivacyPolicy" = "política de privacidad";
+"Text.Generic.MakingBookingAction" = "realizar una reserva";
+"Text.Generic.TermsConditions" = "Condiciones Generales";
+"Text.Generic.PrivacyPolicy" = "su Política de Cancelación";
 "Text.Generic.Minutes" = "min";
 "Text.Generic.Continue" = "Continuar";
 
@@ -127,7 +127,7 @@
 
 /*Reference to fixed pricing.. English equivalent: "Fixed"*/
 /*Fuzzy*/
-"Text.Generic.Fixed" = "Fijo";
+"Text.Generic.Fixed" = "Precio fijo";
 
 /*Register on the side menu*/
 "Text.SideMenu.Register" = "Registrarse";
@@ -277,7 +277,7 @@
 "Text.Generic.NoCarsAvailable" = "No hay taxis disponibles en este momento. Inténtalo de nuevo mas tarde.";
 
 /*English: "Estimated"*/
-"Text.Generic.Estimated" = "Estimado";
+"Text.Generic.Estimated" = "Precio estimado";
 
 /*"Unkown"*/
 /*Fuzzy*/
@@ -294,10 +294,10 @@
 "Text.Error.Alert.CantSendEmail" = "Email no enviado. Configura tu correo primero.";
 
 /*Metered fare type displayed in quotes list: English: "Metered"*/
-"Text.Generic.Metered" = "taxímetro";
+"Text.Generic.Metered" = "Precio taxímetro";
 
 /*English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking*/
-"Text.Generic.CancellationPolicy" = "política de cancelación";
+"Text.Generic.CancellationPolicy" = "su Política de Cancelación";
 
 /*The title of the alert when user is forced to update ie "App Update Required"*/
 "Text.Error.Alert.ForceUpdateTitle" = "Nueva versión disponible";

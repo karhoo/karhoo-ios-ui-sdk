@@ -26,7 +26,7 @@ enum KarhooTextInputViewContentType {
         case .phone:
             return "e.g. +447891011123"
         case .comment:
-            return UITexts.Generic.optional
+            return UITexts.Generic.comment
         case .poiDetails:
             return UITexts.Booking.guestCheckoutFlightNumberPlaceholder
         }
