@@ -39,7 +39,7 @@
 "Text.Generic.RegisterAccountAction" = "créant un compte Karhoo";
 
 /*english "making a booking". Used in terms conditions construction*/
-"Text.Generic.MakingBookingAction" = "confirmant la commande";
+"Text.Generic.MakingBookingAction" = "effectuant une réservation avec";
 "Text.Generic.TermsConditions" = "Conditions générales d'utilisation";
 "Text.Generic.PrivacyPolicy" = "Conditions d'annulation";
 "Text.Generic.Minutes" = "min";
@@ -64,7 +64,7 @@
 "Text.Error.EmailValidationError" = "Vérifiez que votre adresse Email est écrite correctement";
 "Text.Error.Booking.EnterDestinationToProceed" = "Entrez une destination pour procéder à la réservation";
 "Text.Error.NotLoggedIn" = "Vous n'êtes pas identifié.";
-"Text.TermsConditions.FullString" = "En %1$@, vous acceptez les %3$@ et la %4$@ de %2$@";
+"Text.TermsConditions.FullString" = "En %1$@ %2$@, vous acceptez les \n %3$@  |  %4$@";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "S'identifier";

@@ -71,7 +71,7 @@
 
 /*Terms Condition full string
  1:Making a booking / Registering an account, 2: Supplier name "Terms and Conditions","Privacy Policy"*/
-"Text.TermsConditions.FullString" = "Al %1$@, aceptas las %3$@ y la %4$@ de %2$@";
+"Text.TermsConditions.FullString" = "Al %1$@ con %2$@, aceptas las \n %3$@  |   %4$@";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "Acceder";
