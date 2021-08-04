@@ -29,23 +29,168 @@ final class FormCheckoutHeaderView: UIView {
     
     private var didSetupConstraints: Bool = false
     
-    private var verticalTopStackView: UIStackView!
-    private var middleStackView: UIStackView!
-    private var topStackView: UIStackView!
-    private var logoLoadingImageView: LoadingImageView!
-    private var rideDetailStackView: UIStackView!
-    private var name: UILabel!
-    private var carType: UILabel!
-    private var cancellationInfo: UILabel!
+    private lazy var verticalTopStackView: UIStackView = {
+        let verticalTopStackView = UIStackView()
+        verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
+        verticalTopStackView.alignment = .center
+        verticalTopStackView.axis = .vertical
+        verticalTopStackView.distribution = .equalSpacing
+        verticalTopStackView.spacing = 10
+        
+        return verticalTopStackView
+    }()
+    
+    private var middleStackView: UIStackView = {
+        let middleStackView = UIStackView()
+        middleStackView.translatesAutoresizingMaskIntoConstraints = false
+        middleStackView.axis = .horizontal
+        middleStackView.spacing = 8
+        middleStackView.distribution = .fillProportionally
+        
+        return middleStackView
+    }()
+    
+    private var topStackView: UIStackView = {
+        let topStackView = UIStackView()
+        topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
+        topStackView.translatesAutoresizingMaskIntoConstraints = false
+        topStackView.alignment = .center
+        topStackView.distribution = .fill
+        topStackView.spacing = 10
+        
+        return topStackView
+    }()
+    
+    private lazy var rideDetailStackView: UIStackView = {
+        let rideDetailStackView = UIStackView()
+        rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
+        rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
+        rideDetailStackView.axis = .vertical
+        rideDetailStackView.spacing = 8.0
+        
+        return rideDetailStackView
+    }()
+    
+    private lazy var logoLoadingImageView: LoadingImageView = {
+        let logoLoadingImageView = LoadingImageView()
+        logoLoadingImageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
+        logoLoadingImageView.layer.cornerRadius = 5.0
+        logoLoadingImageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        logoLoadingImageView.layer.borderWidth = 0.5
+        logoLoadingImageView.layer.masksToBounds = true
+        
+        return logoLoadingImageView
+    }()
+    
+    private lazy var name: UILabel = {
+        let name = UILabel()
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
+        name.textColor = KarhooUI.colors.infoColor
+        name.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
+        name.numberOfLines = 0
+        
+        return name
+    }()
+    
+    private lazy var carType: UILabel = {
+        let carType = UILabel()
+        carType.translatesAutoresizingMaskIntoConstraints = false
+        carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
+        carType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
+        carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        
+        return carType
+    }()
+    
+    private var cancellationInfo: UILabel = {
+        let cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.accent
+        cancellationInfo.numberOfLines = 0
+        
+        return cancellationInfo
+    }()
+    
     private var vehicleCapacityView: VehicleCapacityView!
     
-    private var rideInfoView: UIView!
-    private var scheduleCaption: UILabel!
-    private var scheduleMainValue: UILabel!
-    private var rideTypeLabel: UILabel!
-    private var priceTitle: UILabel!
-    private var priceText: UILabel!
-    private var ridePriceType: UILabel!
+    private lazy var rideInfoView: UIView = {
+        let rideInfoView = UIView()
+        rideInfoView.translatesAutoresizingMaskIntoConstraints = false
+        rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
+        rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
+        rideInfoView.layer.masksToBounds = true
+        rideInfoView.layer.cornerRadius = 8.0
+        
+        return rideInfoView
+    }()
+    
+    private lazy var scheduleCaption: UILabel = {
+        let scheduleCaption = UILabel()
+        scheduleCaption.translatesAutoresizingMaskIntoConstraints = false
+        scheduleCaption.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
+        scheduleCaption.textColor = KarhooUI.colors.infoColor
+        scheduleCaption.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
+        scheduleCaption.text = UITexts.Generic.etaLong
+        
+        return scheduleCaption
+    }()
+    
+    private lazy var scheduleMainValue: UILabel = {
+        let scheduleMainValue = UILabel()
+        scheduleMainValue.translatesAutoresizingMaskIntoConstraints = false
+        scheduleMainValue.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
+        scheduleMainValue.textColor = KarhooUI.colors.infoColor
+        scheduleMainValue.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
+        
+        return scheduleMainValue
+    }()
+    private lazy var rideTypeLabel: UILabel = {
+        let rideTypeLabel = UILabel()
+        rideTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        rideTypeLabel.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideType
+        rideTypeLabel.textColor = KarhooUI.colors.infoColor
+        rideTypeLabel.text = UITexts.Generic.meetGreet
+        rideTypeLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        
+        return rideTypeLabel
+    }()
+    
+    private lazy var priceTitle: UILabel = {
+        let priceTitle = UILabel()
+        priceTitle.translatesAutoresizingMaskIntoConstraints = false
+        priceTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.estimatedPrice
+        priceTitle.textColor = KarhooUI.colors.infoColor
+        priceTitle.textAlignment = .right
+        priceTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        priceTitle.text = UITexts.Generic.estimatedPrice.uppercased()
+        
+        return priceTitle
+    }()
+    
+    private lazy var priceText: UILabel = {
+        let priceText = UILabel()
+        priceText.translatesAutoresizingMaskIntoConstraints = false
+        priceText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.priceText
+        priceText.textColor = KarhooUI.colors.infoColor
+        priceText.textAlignment = .right
+        priceText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
+        
+        return priceText
+    }()
+    
+    private lazy var ridePriceType: UILabel = {
+        let ridePriceType = UILabel()
+        ridePriceType.translatesAutoresizingMaskIntoConstraints = false
+        ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
+        ridePriceType.textColor = KarhooUI.colors.accent
+        ridePriceType.textAlignment = .right
+        ridePriceType.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        
+        return ridePriceType
+    }()
     
     private lazy var learnMoreButton: UIButton = {
         let learnMoreButton = UIButton(frame: .zero)
@@ -84,65 +229,15 @@ final class FormCheckoutHeaderView: UIView {
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHFormCheckoutHeaderViewID.view
-
-        verticalTopStackView = UIStackView()
-        verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalTopStackView.alignment = .center
-        verticalTopStackView.axis = .vertical
-        verticalTopStackView.distribution = .equalSpacing
-        verticalTopStackView.spacing = 10
-        addSubview(verticalTopStackView)
         
-        topStackView = UIStackView()
-        topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
-        topStackView.translatesAutoresizingMaskIntoConstraints = false
-        topStackView.alignment = .center
-        topStackView.distribution = .fill
-        topStackView.spacing = 10
+        addSubview(verticalTopStackView)
         verticalTopStackView.addArrangedSubview(topStackView)
         
-        logoLoadingImageView = LoadingImageView()
-        logoLoadingImageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
-        logoLoadingImageView.layer.cornerRadius = 5.0
-        logoLoadingImageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-        logoLoadingImageView.layer.borderWidth = 0.5
-        logoLoadingImageView.layer.masksToBounds = true
         topStackView.addArrangedSubview(logoLoadingImageView)
-        
-        rideDetailStackView = UIStackView()
-        rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
-        rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
-        rideDetailStackView.axis = .vertical
-        rideDetailStackView.spacing = 8.0
         topStackView.addArrangedSubview(rideDetailStackView)
         
-        name = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
-        name.textColor = KarhooUI.colors.infoColor
-        name.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
-        name.numberOfLines = 0
         rideDetailStackView.addArrangedSubview(name)
-
-        carType = UILabel()
-        carType.translatesAutoresizingMaskIntoConstraints = false
-        carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
-        carType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
-        carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
         rideDetailStackView.addArrangedSubview(carType)
-
-        cancellationInfo = UILabel()
-        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
-        cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.accent
-        cancellationInfo.numberOfLines = 0
-        
-        middleStackView = UIStackView()
-        middleStackView.translatesAutoresizingMaskIntoConstraints = false
-        middleStackView.axis = .horizontal
-        middleStackView.spacing = 8
-        middleStackView.distribution = .fillProportionally
         
         middleStackView.addArrangedSubview(cancellationInfo)
         middleStackView.addArrangedSubview(learnMoreButton)
@@ -153,61 +248,13 @@ final class FormCheckoutHeaderView: UIView {
         vehicleCapacityView = VehicleCapacityView()
         topStackView.addArrangedSubview(vehicleCapacityView)
         
-        rideInfoView = UIView()
-        rideInfoView.translatesAutoresizingMaskIntoConstraints = false
-        rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
-        rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
-        rideInfoView.layer.masksToBounds = true
-        rideInfoView.layer.cornerRadius = 8.0
         addSubview(rideInfoView)
-        
-        scheduleCaption = UILabel()
-        scheduleCaption.translatesAutoresizingMaskIntoConstraints = false
-        scheduleCaption.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
-        scheduleCaption.textColor = KarhooUI.colors.infoColor
-        scheduleCaption.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
-        scheduleCaption.text = UITexts.Generic.etaLong
-        rideInfoView.addSubview(scheduleCaption)
-        
-        scheduleMainValue = UILabel()
-        scheduleMainValue.translatesAutoresizingMaskIntoConstraints = false
-        scheduleMainValue.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
-        scheduleMainValue.textColor = KarhooUI.colors.infoColor
-        scheduleMainValue.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
-        rideInfoView.addSubview(scheduleMainValue)
-        
-        rideTypeLabel = UILabel()
-        rideTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        rideTypeLabel.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideType
-        rideTypeLabel.textColor = KarhooUI.colors.infoColor
-        rideTypeLabel.text = UITexts.Generic.meetGreet
-        rideTypeLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        rideInfoView.addSubview(rideTypeLabel)
 
-        priceTitle = UILabel()
-        priceTitle.translatesAutoresizingMaskIntoConstraints = false
-        priceTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.estimatedPrice
-        priceTitle.textColor = KarhooUI.colors.infoColor
-        priceTitle.textAlignment = .right
-        priceTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        priceTitle.text = UITexts.Generic.estimatedPrice.uppercased()
+        rideInfoView.addSubview(scheduleCaption)
+        rideInfoView.addSubview(scheduleMainValue)
+        rideInfoView.addSubview(rideTypeLabel)
         rideInfoView.addSubview(priceTitle)
-        
-        priceText = UILabel()
-        priceText.translatesAutoresizingMaskIntoConstraints = false
-        priceText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.priceText
-        priceText.textColor = KarhooUI.colors.infoColor
-        priceText.textAlignment = .right
-        priceText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
         rideInfoView.addSubview(priceText)
-        
-        ridePriceType = UILabel()
-        ridePriceType.translatesAutoresizingMaskIntoConstraints = false
-        ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
-        ridePriceType.textColor = KarhooUI.colors.accent
-        ridePriceType.textAlignment = .right
-        ridePriceType.text = "Metered"
-        ridePriceType.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         rideInfoView.addSubview(ridePriceType)
     }
     
@@ -256,6 +303,7 @@ final class FormCheckoutHeaderView: UIView {
         scheduleCaption.text = viewModel.scheduleCaption
         scheduleMainValue.text = viewModel.scheduleMainValue
         carType.text = viewModel.carType
+        ridePriceType.text = viewModel.fareType
         cancellationInfo.text = viewModel.freeCancellationMessage
         middleStackView.isHidden = viewModel.freeCancellationMessage == nil
         priceText.text = viewModel.fare
