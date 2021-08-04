@@ -85,12 +85,24 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let backButton = UIButton(type: .custom)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.accessibilityIdentifier = "back_button"
-        backButton.setImage(UIImage.uisdkImage("close_button").withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
         backButton.tintColor = KarhooUI.colors.darkGrey
-        backButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.imageView?.contentMode = .scaleAspectFit
         
         return backButton
+    }()
+    
+    private lazy var backTitleButton: UIButton = {
+        let backTitleButton = UIButton()
+        backTitleButton.translatesAutoresizingMaskIntoConstraints = false
+        backTitleButton.accessibilityIdentifier = "back_title_button"
+        backTitleButton.setTitle("Back to quote", for: .normal)
+        backTitleButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
+        backTitleButton.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        backTitleButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        
+        return backTitleButton
     }()
     
     private lazy var container: UIView = {
@@ -153,6 +165,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private func setUpView() {
         container.addSubview(backButton)
+        container.addSubview(backTitleButton)
         container.addSubview(baseStackView)
         
         headerView = FormCheckoutHeaderView()
@@ -211,7 +224,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width)
         
-        backButton.anchor(top: container.topAnchor, trailing: container.trailingAnchor, paddingTop: view.safeAreaInsets.top, width: 50.0)
+        backButton.anchor(top: container.topAnchor, leading: container.leadingAnchor, paddingTop: view.safeAreaInsets.top, paddingLeft: 20.0)
+        _ = [backTitleButton.topAnchor.constraint(equalTo: backButton.topAnchor),
+             backTitleButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 10.0),
+             backTitleButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)].map { $0.isActive = true }
+//        backTitleLabel.anchor(top: backButton.topAnchor, leading: backButton.trailingAnchor, paddingLeft: 10.0)
         
         container.anchor(height: UIScreen.main.bounds.height)
         
@@ -259,7 +276,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     @objc
-    func closePressed() {
+    func backButtonPressed() {
         presenter.didPressClose()
     }
     
