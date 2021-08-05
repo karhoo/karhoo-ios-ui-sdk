@@ -48,7 +48,7 @@ final class VehicleCapacityView: UIView {
         stackContainer.accessibilityIdentifier = "stack_container"
         stackContainer.axis = .horizontal
         stackContainer.spacing = 8.0
-        stackContainer.alignment = .leading
+        stackContainer.alignment = .center
         stackContainer.distribution = .equalSpacing
         addSubview(stackContainer)
         

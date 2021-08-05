@@ -18,9 +18,10 @@
 "Text.Generic.Pickup" = "Pickup";
 "Text.Generic.ETA" = "ETA";
 "Text.Generic.ETALong" = "Estimated arrival time";
+"Text.Generic.MeetGreet" = "Meet and greet";
 "Text.Generic.EPrice" = "Estimated Price";
 "Text.Generic.Price" = "Price";
-"Text.Generic.Prebook" = "Prebook";
+"Text.Generic.Prebook" = "Book";
 "Text.Generic.Add" = "Add";
 "Text.Generic.Change" = "Change";
 "Text.Generic.Submit" = "Submit";
@@ -62,7 +63,7 @@
 "Text.Error.EmailValidationError" = "Check your email address is spelt correctly";
 "Text.Error.Booking.EnterDestinationToProceed" = "Enter destination to book a ride";
 "Text.Error.NotLoggedIn" = "You're not signed in";
-"Text.TermsConditions.FullString" = "By %1$@, you're agreeing to %2$@'s %3$@ and %4$@";
+"Text.TermsConditions.FullString" = "By %1$@, you're agreeing to %2$@'s \n %3$@   |   %4$@";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "Sign in";
@@ -85,7 +86,7 @@
 "Text.Prebook.SetPrebook" = "Set Pickup Time";
 
 /*Booking*/
-"Text.Booking.RequestCar" = "Book Ride";
+"Text.Booking.RequestCar" = "Book";
 "Text.Booking.RequestingCar" = "Booking Ride";
 "Text.Booking.RequestReceived" = "Booking Received";
 "Text.Bookings.eta" = "ETA";
@@ -408,7 +409,7 @@
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Details";
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Your driver will wait for you";
+"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number";
 
 /*Prebook Done*/
 /*Fuzzy*/

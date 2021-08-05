@@ -19,10 +19,10 @@ final class PassengerDetailsView: UIView {
 
     var details: PassengerDetails? {
         get {
-            return PassengerDetails(firstName: firstNameTextField.getIntput(),
-                                    lastName: surnameTextField.getIntput(),
-                                    email: emailTextField.getIntput(),
-                                    phoneNumber: phoneTextField.getIntput(),
+            return PassengerDetails(firstName: firstNameTextField.getInput(),
+                                    lastName: surnameTextField.getInput(),
+                                    email: emailTextField.getInput(),
+                                    phoneNumber: phoneTextField.getInput(),
                                     locale: locale?.isEmpty == false ? locale! : currentLocale())
         }
         set {
