@@ -15,13 +15,14 @@ class KarhooBookingStatusSpec: XCTestCase {
     private var testBroadcaster: TestBroadcaster!
     private var testObserver: MockBookingDetailsObserver!
     private var testObject: KarhooBookingStatus!
+    private var mockAddressService = MockAddressService()
 
     override func setUp() {
         super.setUp()
 
         testObserver = MockBookingDetailsObserver()
         testBroadcaster = TestBroadcaster()
-        testObject = KarhooBookingStatus(broadcaster: testBroadcaster)
+        testObject = KarhooBookingStatus(broadcaster: testBroadcaster, addressService: mockAddressService)
 
         testObject.add(observer: testObserver)
     }
@@ -214,6 +215,27 @@ class KarhooBookingStatusSpec: XCTestCase {
 
         XCTAssertNil(testObject.getBookingDetails())
         XCTAssertNil(testObserver.lastBookingState)
+    }
+
+    /**
+     *  When:   Setting a JourneyInfo
+     *  Then:   The correct data should be set AND the observers should be notified
+     */
+    func testSetJourney() {
+        let journeyInfo: JourneyInfo = TestUtil.getRandomJourneyInfo()
+        testObject.setJourneyInfo(journeyInfo: journeyInfo)
+
+        let pickup = TestUtil.getRandomLocationInfo()
+        let destination = TestUtil.getRandomLocationInfo()
+        mockAddressService.reverseGeocodeCall.triggerSuccess(pickup)
+        mockAddressService.reverseGeocodeCall.triggerSuccess(destination)
+
+        assert(bookingDetails: testObject.getBookingDetails(),
+               originLocationDetails: pickup,
+               destination: destination,
+               date: journeyInfo.date)
+        XCTAssertTrue(testObserver.bookingStateChangedCalled)
+
     }
 
     private func assert(bookingDetails: BookingDetails?,

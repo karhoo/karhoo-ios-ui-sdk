@@ -78,7 +78,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
     }
 
     private func setNew(pickup: LocationInfo) {
-        map?.removePin(tag: TripPinTags.destination)
+        map?.removePin(tag: TripPinTags.pickup)
         let annotation = MapAnnotationViewModel(coordinate: pickup.position.toCLLocation().coordinate, tag: .pickup)
         map?.addPin(annotation: annotation, tag: TripPinTags.pickup)
 
