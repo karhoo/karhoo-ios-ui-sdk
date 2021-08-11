@@ -20,14 +20,91 @@ public struct KHVehicleCapacityViewID {
 
 final class VehicleCapacityView: UIView {
 
-    private var stackContainer: UIStackView!
-    private var baggageInfoView: UIView!
-    private var capacityInfoView: UIView!
+    private lazy var stackContainer: UIStackView = {
+        let stackContainer = UIStackView()
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
+        stackContainer.accessibilityIdentifier = "stack_container"
+        stackContainer.axis = .horizontal
+        stackContainer.spacing = 5.0
+        stackContainer.alignment = .center
+        stackContainer.distribution = .equalSpacing
+        
+        return stackContainer
+    }()
     
-    private var baggageIcon: UIImageView!
-    private var baggageCapacityLabel: UILabel!
-    private var capacityIcon: UIImageView!
-    private var passengerCapacityLabel: UILabel!
+    private lazy var baggageInfoView: UIView = {
+        let baggageInfoView = UIView()
+        baggageInfoView.translatesAutoresizingMaskIntoConstraints = false
+        baggageInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
+        
+        return baggageInfoView
+    }()
+    
+    private lazy var capacityInfoView: UIView = {
+        let capacityInfoView = UIView()
+        capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
+        capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
+        
+        return capacityInfoView
+    }()
+    
+    private var baggageIcon: UIImageView = {
+        let baggageIcon = UIImageView(image: UIImage.uisdkImage("luggage_icon"))
+        baggageIcon.translatesAutoresizingMaskIntoConstraints = false
+        baggageIcon.contentMode = .scaleAspectFill
+        baggageIcon.accessibilityIdentifier = KHVehicleCapacityViewID.baggageIcon
+        
+        return baggageIcon
+    }()
+    
+    private lazy var baggageCapacityLabel: UILabel = {
+        let baggageCapacityLabel = UILabel()
+        baggageCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
+        baggageCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.baggageCapacityLabel
+        baggageCapacityLabel.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        baggageCapacityLabel.font = UIFont.systemFont(ofSize: 9.0)
+        
+        return baggageCapacityLabel
+    }()
+    
+    private lazy var capacityIcon: UIImageView = {
+        let capacityIcon = UIImageView(image: UIImage.uisdkImage("passenger_capacity_icon"))
+        capacityIcon.translatesAutoresizingMaskIntoConstraints = false
+        capacityIcon.contentMode = .scaleAspectFill
+        capacityIcon.accessibilityIdentifier = KHVehicleCapacityViewID.capacityIcon
+        
+        return capacityIcon
+    }()
+    
+    private lazy var passengerCapacityLabel: UILabel = {
+        let passengerCapacityLabel = UILabel()
+        passengerCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
+        passengerCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
+        passengerCapacityLabel.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        passengerCapacityLabel.font = UIFont.systemFont(ofSize: 9.0)
+//        passengerCapacityLabel.text = "0"
+        
+        return passengerCapacityLabel
+    }()
+    
+    private lazy var baggageCapacityNumberCircleView: UIView = {
+        let circleView = UIView()
+        circleView.backgroundColor = .systemRed
+        circleView.anchor(width: 14.0, height: 14.0)
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+        
+        return circleView
+    }()
+    
+    private lazy var passengerCapacityCircleView: UIView = {
+        let circleView = UIView()
+        circleView.backgroundColor = .systemRed
+        circleView.anchor(width: 14.0, height: 14.0)
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+        circleView.layer.masksToBounds = true
+        
+        return circleView
+    }()
     
     init() {
         super.init(frame: .zero)
@@ -43,92 +120,44 @@ final class VehicleCapacityView: UIView {
         accessibilityIdentifier = "vehicle_capacity_view"
         backgroundColor = .clear
         
-        stackContainer = UIStackView()
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
-        stackContainer.accessibilityIdentifier = "stack_container"
-        stackContainer.axis = .horizontal
-        stackContainer.spacing = 8.0
-        stackContainer.alignment = .center
-        stackContainer.distribution = .equalSpacing
         addSubview(stackContainer)
-        
-        baggageInfoView = UIView()
-        baggageInfoView.translatesAutoresizingMaskIntoConstraints = false
-        baggageInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
-        stackContainer.addArrangedSubview(baggageInfoView)
-        
-        baggageIcon = UIImageView(image: UIImage.uisdkImage("luggage_icon"))
-        baggageIcon.translatesAutoresizingMaskIntoConstraints = false
-        baggageIcon.contentMode = .scaleAspectFill
-        baggageIcon.accessibilityIdentifier = KHVehicleCapacityViewID.baggageIcon
         baggageInfoView.addSubview(baggageIcon)
+        stackContainer.addArrangedSubview(baggageInfoView)
+        baggageInfoView.addSubview(baggageCapacityNumberCircleView)
+        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
         
-        baggageCapacityLabel = UILabel()
-        baggageCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
-        baggageCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.baggageCapacityLabel
-        baggageCapacityLabel.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        baggageCapacityLabel.font = UIFont.systemFont(ofSize: 13.0)
-        baggageCapacityLabel.text = "x0"
-        baggageInfoView.addSubview(baggageCapacityLabel)
-        
-        capacityInfoView = UIView()
-        capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
-        capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
-        stackContainer.addArrangedSubview(capacityInfoView)
-
-        capacityIcon = UIImageView(image: UIImage.uisdkImage("passenger_capacity_icon"))
-        capacityIcon.translatesAutoresizingMaskIntoConstraints = false
-        capacityIcon.contentMode = .scaleAspectFill
-        capacityIcon.accessibilityIdentifier = KHVehicleCapacityViewID.capacityIcon
         capacityInfoView.addSubview(capacityIcon)
-
-        passengerCapacityLabel = UILabel()
-        passengerCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
-        passengerCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
-        passengerCapacityLabel.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        passengerCapacityLabel.font = UIFont.systemFont(ofSize: 13.0)
-        passengerCapacityLabel.text = "x0"
-        capacityInfoView.addSubview(passengerCapacityLabel)
+        stackContainer.addArrangedSubview(capacityInfoView)
+        capacityInfoView.addSubview(passengerCapacityCircleView)
+        passengerCapacityCircleView.addSubview(passengerCapacityLabel)
         
         setUpConstraints()
+        
+        layoutIfNeeded()
     }
     
     private func setUpConstraints() {
-        _ = [stackContainer.topAnchor.constraint(equalTo: topAnchor),
-             stackContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-             stackContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-             stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
-
-        _ = [baggageIcon.topAnchor.constraint(equalTo: baggageInfoView.topAnchor),
-             baggageIcon.leadingAnchor.constraint(equalTo: baggageInfoView.leadingAnchor),
-             baggageIcon.bottomAnchor.constraint(equalTo: baggageInfoView.bottomAnchor),
-             baggageIcon.widthAnchor.constraint(equalToConstant: 20.0),
-             baggageIcon.heightAnchor.constraint(equalToConstant: 14.0)].map { $0.isActive = true }
-
-        _ = [baggageCapacityLabel.centerYAnchor.constraint(equalTo: baggageIcon.centerYAnchor),
-             baggageCapacityLabel.leadingAnchor.constraint(equalTo: baggageIcon.trailingAnchor, constant: 4.0),
-             baggageCapacityLabel.trailingAnchor.constraint(equalTo: baggageInfoView.trailingAnchor)]
-            .map { $0.isActive = true }
+        stackContainer.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+        
+        baggageIcon.anchor(top: baggageInfoView.topAnchor, leading: baggageInfoView.leadingAnchor, bottom: baggageInfoView.bottomAnchor, paddingTop: 7.0, width: 20.0, height: 14.0)
+        baggageCapacityNumberCircleView.anchor(top: baggageInfoView.topAnchor, trailing: baggageInfoView.trailingAnchor)
+        baggageCapacityLabel.centerY(inView: baggageCapacityNumberCircleView)
+        baggageCapacityLabel.anchor(leading: baggageCapacityNumberCircleView.trailingAnchor, trailing: baggageCapacityNumberCircleView.trailingAnchor)
         baggageCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
-        _ = [capacityIcon.topAnchor.constraint(equalTo: capacityInfoView.topAnchor),
-             capacityIcon.leadingAnchor.constraint(equalTo: capacityInfoView.leadingAnchor),
-             capacityIcon.bottomAnchor.constraint(equalTo: capacityInfoView.bottomAnchor),
-             capacityIcon.widthAnchor.constraint(equalToConstant: 20.0),
-             capacityIcon.heightAnchor.constraint(equalToConstant: 14.0)].map { $0.isActive = true }
-
-        _ = [passengerCapacityLabel.centerYAnchor.constraint(equalTo: capacityIcon.centerYAnchor),
-             passengerCapacityLabel.leadingAnchor.constraint(equalTo: capacityIcon.trailingAnchor, constant: 4.0),
-             passengerCapacityLabel.trailingAnchor.constraint(equalTo: capacityInfoView.trailingAnchor)]
-            .map { $0.isActive = true }
+        capacityIcon.anchor(top: capacityInfoView.topAnchor, leading: capacityInfoView.leadingAnchor, bottom: capacityInfoView.bottomAnchor, paddingTop: 7.0, width: 20.0, height: 14.0)
+//        passengerCapacityCircleView.anchor(top: capacityInfoView.topAnchor, trailing: capacityInfoView.trailingAnchor)
+        passengerCapacityCircleView.centerX(inView: capacityInfoView, constant: 5.0)
+        passengerCapacityLabel.centerY(inView: passengerCapacityCircleView)
+        passengerCapacityLabel.anchor(leading: passengerCapacityCircleView.trailingAnchor, trailing: passengerCapacityCircleView.trailingAnchor)
         passengerCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
     public func setBaggageCapacity(_ value: String) {
-        baggageCapacityLabel.text = "x" + value
+        baggageCapacityLabel.text = value
     }
     
     public func setPassengerCapacity(_ value: String) {
-        passengerCapacityLabel.text = "x" + value
+        passengerCapacityLabel.text = value
     }
 }

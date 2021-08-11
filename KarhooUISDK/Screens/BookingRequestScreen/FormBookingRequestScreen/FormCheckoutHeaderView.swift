@@ -22,6 +22,7 @@ public struct KHFormCheckoutHeaderViewID {
     public static let priceText = "price_text_label"
     public static let ridePriceType = "ride_price_type_label"
     public static let carType = "car_type_label"
+    public static let fleetCapabilities = "fleet_capabilties_stack_view"
     public static let cancellationInfo = "cancellationInfo_label"
 }
 
@@ -34,7 +35,7 @@ final class FormCheckoutHeaderView: UIView {
         verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
         verticalTopStackView.alignment = .center
         verticalTopStackView.axis = .vertical
-        verticalTopStackView.distribution = .equalSpacing
+//        verticalTopStackView.distribution = .fillProportionally
         verticalTopStackView.spacing = 10
         
         return verticalTopStackView
@@ -55,10 +56,21 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.alignment = .center
-        topStackView.distribution = .fill
+//        topStackView.distribution = .fillProportionally
         topStackView.spacing = 10
         
         return topStackView
+    }()
+    
+    private var fleetCapabilitiesStackView: UIStackView = {
+        let fleetCapabilitiesStackView = UIStackView()
+        fleetCapabilitiesStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetCapabilities
+        fleetCapabilitiesStackView.translatesAutoresizingMaskIntoConstraints = false
+        fleetCapabilitiesStackView.alignment = .leading
+        fleetCapabilitiesStackView.distribution = .fillProportionally
+        fleetCapabilitiesStackView.spacing = 5
+        
+        return fleetCapabilitiesStackView
     }()
     
     private lazy var rideDetailStackView: UIStackView = {
@@ -97,7 +109,7 @@ final class FormCheckoutHeaderView: UIView {
         let carType = UILabel()
         carType.translatesAutoresizingMaskIntoConstraints = false
         carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
-        carType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
+        carType.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
         carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
         
         return carType
@@ -236,17 +248,18 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.addArrangedSubview(logoLoadingImageView)
         topStackView.addArrangedSubview(rideDetailStackView)
         
+        vehicleCapacityView = VehicleCapacityView()
+        topStackView.addArrangedSubview(vehicleCapacityView)
+        
         rideDetailStackView.addArrangedSubview(name)
         rideDetailStackView.addArrangedSubview(carType)
+        rideDetailStackView.addArrangedSubview(fleetCapabilitiesStackView)
         
         middleStackView.addArrangedSubview(cancellationInfo)
         middleStackView.addArrangedSubview(learnMoreButton)
         middleStackView.addArrangedSubview(dropdownIconImage)
         
         verticalTopStackView.addArrangedSubview(middleStackView)
-        
-        vehicleCapacityView = VehicleCapacityView()
-        topStackView.addArrangedSubview(vehicleCapacityView)
         
         addSubview(rideInfoView)
 
@@ -263,7 +276,7 @@ final class FormCheckoutHeaderView: UIView {
             let logoSize: CGFloat = 60.0
             logoLoadingImageView.anchor(width: logoSize, height: logoSize)
 
-            verticalTopStackView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 20.0)
+            verticalTopStackView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 20.0, paddingLeft: 10.0, paddingRight: 10.0)
 
             middleStackView.anchor(leading: verticalTopStackView.leadingAnchor, trailing: verticalTopStackView.trailingAnchor)
             
@@ -271,7 +284,7 @@ final class FormCheckoutHeaderView: UIView {
 
             vehicleCapacityView.setContentHuggingPriority(.required, for: .horizontal)
             
-            rideInfoView.anchor(top: verticalTopStackView.bottomAnchor, leading: verticalTopStackView.leadingAnchor, bottom: bottomAnchor, trailing: verticalTopStackView.trailingAnchor, paddingTop: 15.0, paddingLeft: 10.0, paddingRight: 10.0)
+            rideInfoView.anchor(top: verticalTopStackView.bottomAnchor, leading: verticalTopStackView.leadingAnchor, bottom: bottomAnchor, trailing: verticalTopStackView.trailingAnchor, paddingTop: 15.0)
             
             [scheduleCaption.leadingAnchor.constraint(equalTo: rideInfoView.leadingAnchor, constant: 10.0),
              scheduleCaption.topAnchor.constraint(equalTo: rideInfoView.topAnchor, constant: 10.0),
@@ -298,6 +311,33 @@ final class FormCheckoutHeaderView: UIView {
         super.updateConstraints()
     }
     
+    private func setCarTags(viewModel: QuoteViewModel) {
+        if viewModel.carTags.count >= 2 {
+            let firstTwoCarTags = viewModel.carTags.prefix(2)
+            firstTwoCarTags.forEach {
+                let image = UIImageView()
+                image.image = $0.image
+                image.contentMode = .scaleAspectFit
+                image.anchor(width: 9.0, height: 9.0)
+                image.tintColor = KarhooUI.colors.darkGrey
+                
+                let label = UILabel()
+                label.text = $0.title
+                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
+                label.textColor = KarhooUI.colors.darkGrey
+                fleetCapabilitiesStackView.addArrangedSubview(image)
+                fleetCapabilitiesStackView.addArrangedSubview(label)
+            }
+            if viewModel.carTags.count > 2 {
+                let label = UILabel()
+                label.text = "+\(viewModel.carTags.count - 2)"
+                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
+                label.textColor = KarhooUI.colors.darkGrey
+                fleetCapabilitiesStackView.addArrangedSubview(label)
+            }
+        }
+    }
+    
     func set(viewModel: QuoteViewModel) {
         name.text = viewModel.fleetName
         scheduleCaption.text = viewModel.scheduleCaption
@@ -312,6 +352,7 @@ final class FormCheckoutHeaderView: UIView {
         logoLoadingImageView.setStandardBorder()
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+        setCarTags(viewModel: viewModel)
         
         updateConstraints()
     }

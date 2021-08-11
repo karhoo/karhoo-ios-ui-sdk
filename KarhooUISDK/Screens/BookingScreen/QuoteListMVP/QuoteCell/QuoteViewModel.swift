@@ -9,12 +9,83 @@
 import UIKit
 import KarhooSDK
 
+enum CarClassTags: String {
+    case electric, hybrid, wheelchair, childSeat, taxi, executive
+    
+    enum CodingKeys: String, CodingKey {
+        case childSeat = "child-seat"
+    }
+    
+    var title: String {
+        switch self {
+        case .electric:
+            return "Electric"
+        case .hybrid:
+            return "Hybrid"
+        case .wheelchair:
+            return "Wheelchair"
+        case .childSeat:
+            return "Child seat"
+        case .taxi:
+            return "Taxi"
+        case .executive:
+            return "Executive"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .electric:
+            return UIImage.uisdkImage("electric")
+        case .hybrid:
+            return UIImage.uisdkImage("circle")
+        case .wheelchair:
+            return UIImage.uisdkImage("wheelchair")
+        case .childSeat:
+            return UIImage.uisdkImage("childseat")
+        case .taxi:
+            return UIImage.uisdkImage("circle")
+        case .executive:
+            return UIImage.uisdkImage("star")
+        }
+    }
+}
+
+enum FleetCapabilities: String {
+    case gpsTracking, flightTracking, trainTracking, driverDetails, vehicleDetails
+    
+    enum CodingKeys: String, CodingKey {
+        case gpsTracking = "gps_tracking"
+        case flightTracking = "flight_tracking"
+        case trainTracking = "train_tracking"
+        case driverDetails = "driver_details"
+        case vehicleDetails = "vehicle_details"
+    }
+    
+    var title: String {
+        switch self {
+        case .gpsTracking:
+            return "GPS tracking"
+        case .flightTracking:
+            return "Flight tracking"
+        case .trainTracking:
+            return "Train tracking"
+        case .driverDetails:
+            return "Driver details"
+        case .vehicleDetails:
+            return "Vehicle details"
+        }
+    }
+}
+
 final class QuoteViewModel {
     
     let fleetName: String
     let scheduleCaption: String
     let scheduleMainValue: String
     let carType: String
+    let carTags: [CarClassTags]
+    let fleetCapabilities: [FleetCapabilities]
     let fare: String
     let logoImageURL: String
     let fareType: String
@@ -37,6 +108,8 @@ final class QuoteViewModel {
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
         self.carType = quote.vehicle.vehicleClass
+        self.carTags = quote.vehicle.tags.compactMap { CarClassTags(rawValue: $0) }
+        self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
