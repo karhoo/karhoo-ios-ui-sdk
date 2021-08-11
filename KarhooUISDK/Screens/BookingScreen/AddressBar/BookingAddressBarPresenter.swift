@@ -71,9 +71,13 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     private func addressScreenCompleted(result: ScreenResult<LocationInfo>, addressType: AddressType) {
         switch addressType {
         case .pickup:
-            bookingStatus.set(pickup: result.completedValue())
+            if let newOrigin = result.completedValue() {
+                bookingStatus.set(pickup: newOrigin)
+            }
         case .destination:
-            bookingStatus.set(destination: result.completedValue())
+            if let newDestination = result.completedValue() {
+                bookingStatus.set(destination: newDestination)
+            }
         }
 
         self.view?.parentViewController?.dismiss(animated: true, completion: nil)
@@ -180,39 +184,5 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
         view?.set(prebookDate: prebookFormatter.display(mediumStyleDate: date),
                   prebookTime: prebookFormatter.display(shortStyleTime: date))
-    }
-    
-    public func setJourneyInfo(_ journeyInfo: JourneyInfo) {
-        self.journeyInfo = journeyInfo
-        
-        if let pickUpLocation = self.journeyInfo?.origin {
-            reverseGeocodeLocation(pickUpLocation, type: .pickup)
-        }
-
-        if let dropOffLocation = self.journeyInfo?.destination {
-            reverseGeocodeLocation(dropOffLocation, type: .destination)
-        }
-    }
-    
-    internal func reverseGeocodeLocation(_ location: CLLocation, type: AddressType) {
-        let position = Position(latitude: location.coordinate.latitude,
-                                longitude: location.coordinate.longitude)
-        addressService.reverseGeocode(position: position).execute { [weak self] response in
-            self?.bookingStatus.set(prebookDate: self?.journeyInfo?.date)
-
-            switch response {
-            case .success(let location):
-                switch type {
-                case .pickup:
-                    self?.pickupSet(locationInfo: location)
-                case .destination:
-                    self?.destinationSet(locationInfo: location)
-                }
-            case .failure:
-                [.pickup, .destination].forEach { [weak self ] type in
-                    self?.addressCleared(type: type)
-                }
-            }
-        }
     }
 }

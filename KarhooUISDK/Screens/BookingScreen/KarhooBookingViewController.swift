@@ -110,10 +110,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if let injectedTrip = journeyInfo {
-            addressBarPresenter.setJourneyInfo(injectedTrip)
-        }
     }
     
     override func viewDidLoad() {

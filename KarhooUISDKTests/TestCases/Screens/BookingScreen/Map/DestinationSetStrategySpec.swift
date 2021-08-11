@@ -85,7 +85,7 @@ class DestinationSetStrategySpec: XCTestCase {
         
         assertLocationsToZoomOn(map: mockMap, details: details)
         
-        XCTAssert(mockMap.removedPins.contains(TripPinTags.destination))
+        XCTAssert(mockMap.removedPins.contains(TripPinTags.pickup))
 
         XCTAssertEqual(mockMap.addedPins[TripPinTags.pickup],
                        details.originLocationDetails!.position.toCLLocation().coordinate)

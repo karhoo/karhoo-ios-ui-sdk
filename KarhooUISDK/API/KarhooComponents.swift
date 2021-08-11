@@ -25,6 +25,10 @@ public class KarhooComponents: BookingScreenComponents {
         addressBarView.set(presenter: presenter)
         presenter.load(view: addressBarView)
 
+        if let journey = journeyInfo {
+            KarhooBookingStatus.shared.setJourneyInfo(journeyInfo: journey)
+        }
+
         return addressBarView
     }
 
