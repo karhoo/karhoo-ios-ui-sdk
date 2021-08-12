@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-enum CarClassTags: String {
+enum VehicleTag: String {
     case electric, hybrid, wheelchair, childSeat, taxi, executive
     
     enum CodingKeys: String, CodingKey {
@@ -84,7 +84,7 @@ final class QuoteViewModel {
     let scheduleCaption: String
     let scheduleMainValue: String
     let carType: String
-    let carTags: [CarClassTags]
+    let vehicleTags: [VehicleTag]
     let fleetCapabilities: [FleetCapabilities]
     let fare: String
     let logoImageURL: String
@@ -108,7 +108,7 @@ final class QuoteViewModel {
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
         self.carType = quote.vehicle.vehicleClass
-        self.carTags = quote.vehicle.tags.compactMap { CarClassTags(rawValue: $0) }
+        self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {

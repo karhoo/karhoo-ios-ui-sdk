@@ -21,6 +21,7 @@ public struct KHFormCheckoutHeaderViewID {
     public static let estimatedPrice = "estimated_price_title_label"
     public static let priceText = "price_text_label"
     public static let ridePriceType = "ride_price_type_label"
+    public static let ridePriceTypeIcon = "ride_price_type_icon"
     public static let carType = "car_type_label"
     public static let fleetCapabilities = "fleet_capabilties_stack_view"
     public static let cancellationInfo = "cancellationInfo_label"
@@ -35,7 +36,7 @@ final class FormCheckoutHeaderView: UIView {
         verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
         verticalTopStackView.alignment = .center
         verticalTopStackView.axis = .vertical
-//        verticalTopStackView.distribution = .fillProportionally
+        verticalTopStackView.distribution = .fillProportionally
         verticalTopStackView.spacing = 10
         
         return verticalTopStackView
@@ -56,7 +57,7 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.alignment = .center
-//        topStackView.distribution = .fillProportionally
+        topStackView.distribution = .fillProportionally
         topStackView.spacing = 10
         
         return topStackView
@@ -204,6 +205,17 @@ final class FormCheckoutHeaderView: UIView {
         return ridePriceType
     }()
     
+    private lazy var rideTypeInfoImage: UIImageView = {
+        let infoIcon = UIImageView()
+        infoIcon.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
+        infoIcon.translatesAutoresizingMaskIntoConstraints = false
+        infoIcon.image = UIImage.uisdkImage("info_icon")
+        infoIcon.tintColor = KarhooUI.colors.accent
+        infoIcon.contentMode = .scaleAspectFit
+        
+        return infoIcon
+    }()
+    
     private lazy var learnMoreButton: UIButton = {
         let learnMoreButton = UIButton(frame: .zero)
         learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
@@ -261,6 +273,8 @@ final class FormCheckoutHeaderView: UIView {
         
         verticalTopStackView.addArrangedSubview(middleStackView)
         
+        
+        // TODO: move this rideInfoView in a separate custom view
         addSubview(rideInfoView)
 
         rideInfoView.addSubview(scheduleCaption)
@@ -268,6 +282,7 @@ final class FormCheckoutHeaderView: UIView {
         rideInfoView.addSubview(rideTypeLabel)
         rideInfoView.addSubview(priceTitle)
         rideInfoView.addSubview(priceText)
+        rideInfoView.addSubview(rideTypeInfoImage)
         rideInfoView.addSubview(ridePriceType)
     }
     
@@ -304,6 +319,7 @@ final class FormCheckoutHeaderView: UIView {
             priceText.anchor(top: priceTitle.bottomAnchor, bottom: ridePriceType.topAnchor, trailing: priceTitle.trailingAnchor, paddingTop: 5.0, paddingBottom: 10.0)
             
             ridePriceType.anchor(bottom: rideInfoView.bottomAnchor, trailing: rideInfoView.trailingAnchor, paddingBottom: 10.0, paddingRight: 10.0)
+            rideTypeInfoImage.anchor(bottom: ridePriceType.bottomAnchor, trailing: ridePriceType.leadingAnchor, paddingRight: 3.0, width: 12.0, height: 12.0)
             
             didSetupConstraints = true
         }
