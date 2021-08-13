@@ -16,7 +16,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
     private var currentPickupAddress: LocationInfo?
     private var currentDestinationAddress: LocationInfo?
     
-    func load(map: MapView?) {
+    func load(map: MapView?, reverseGeolocate: Bool = true) {
         self.map = map
     }
 

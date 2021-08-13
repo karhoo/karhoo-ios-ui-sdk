@@ -17,7 +17,7 @@ enum PinAsset: String {
 }
 
 protocol BookingMapStrategy: AnyObject {
-    func load(map: MapView?)
+    func load(map: MapView?, reverseGeolocate: Bool)
     func start(bookingDetails: BookingDetails?)
     func focusMap()
     func changed(bookingDetails: BookingDetails?)
