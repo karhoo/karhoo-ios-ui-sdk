@@ -19,7 +19,7 @@ final class KarhooAddressMapPresenter: AddressMapPresenter {
          mapStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy()) {
         self.view = view
         self.mapStrategy = mapStrategy
-        mapStrategy.load(map: view.mapView())
+        mapStrategy.load(map: view.mapView(), reverseGeolocate: true)
         mapStrategy.set(delegate: self)
 
         mapStrategy.focusMap()
