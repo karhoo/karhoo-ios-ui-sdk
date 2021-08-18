@@ -140,7 +140,6 @@ final class FormCheckoutHeaderView: UIView {
                                 paddingTop: 20.0,
                                 paddingLeft: 10.0,
                                 paddingRight: 10.0)
-            rideDetailStackView.anchor(width: 150.0)
             didSetupConstraints = true
         }
         

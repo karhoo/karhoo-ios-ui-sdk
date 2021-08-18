@@ -27,7 +27,7 @@ final class VehicleCapacityView: UIView {
         stackContainer.axis = .horizontal
         stackContainer.spacing = 5.0
         stackContainer.alignment = .center
-        stackContainer.distribution = .equalSpacing
+        stackContainer.distribution = .fillProportionally
         
         return stackContainer
     }()
@@ -42,7 +42,7 @@ final class VehicleCapacityView: UIView {
         return baggageInfoView
     }()
     
-    private lazy var capacityInfoView: UIView = {
+    private lazy var passengerCapacityInfoView: UIView = {
         let capacityInfoView = UIView()
         capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
         capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
@@ -55,6 +55,8 @@ final class VehicleCapacityView: UIView {
         baggageIcon.translatesAutoresizingMaskIntoConstraints = false
         baggageIcon.contentMode = .scaleAspectFill
         baggageIcon.accessibilityIdentifier = KHVehicleCapacityViewID.baggageIcon
+        baggageIcon.anchor(width: 14.0,
+                           height: 14.0)
         
         return baggageIcon
     }()
@@ -69,11 +71,13 @@ final class VehicleCapacityView: UIView {
         return baggageCapacityLabel
     }()
     
-    private lazy var capacityIcon: UIImageView = {
+    private lazy var passengerCapacityIcon: UIImageView = {
         let capacityIcon = UIImageView(image: UIImage.uisdkImage("passenger_capacity_icon"))
         capacityIcon.translatesAutoresizingMaskIntoConstraints = false
         capacityIcon.contentMode = .scaleAspectFill
         capacityIcon.accessibilityIdentifier = KHVehicleCapacityViewID.capacityIcon
+        capacityIcon.anchor(width: 14.0,
+                            height: 14.0)
         
         return capacityIcon
     }()
@@ -128,8 +132,8 @@ final class VehicleCapacityView: UIView {
 //        baggageInfoView.addSubview(baggageCapacityNumberCircleView)
 //        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
         
-        capacityInfoView.addSubview(capacityIcon)
-        stackContainer.addArrangedSubview(capacityInfoView)
+        passengerCapacityInfoView.addSubview(passengerCapacityIcon)
+        stackContainer.addArrangedSubview(passengerCapacityInfoView)
 //        capacityInfoView.addSubview(passengerCapacityCircleView)
 //        passengerCapacityCircleView.addSubview(passengerCapacityLabel)
         
@@ -144,23 +148,19 @@ final class VehicleCapacityView: UIView {
                               bottom: bottomAnchor,
                               trailing: trailingAnchor)
         
-        baggageInfoView.anchor(top: baggageIcon.topAnchor,
-                           leading: baggageIcon.leadingAnchor,
-                           bottom: baggageIcon.bottomAnchor,
-                           paddingTop: 7.0,
-                           width: 20.0,
-                           height: 14.0)
+        baggageIcon.centerX(inView: baggageInfoView)
+        baggageIcon.centerY(inView: baggageInfoView)
+        baggageInfoView.anchor(width: 26.0,
+                               height: 24.0)
 //        baggageCapacityNumberCircleView.anchor(top: baggageInfoView.topAnchor, trailing: baggageInfoView.trailingAnchor)
 //        baggageCapacityLabel.centerY(inView: baggageCapacityNumberCircleView)
 //        baggageCapacityLabel.anchor(leading: baggageCapacityNumberCircleView.trailingAnchor, trailing: baggageCapacityNumberCircleView.trailingAnchor)
         baggageCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
-        capacityInfoView.anchor(top: capacityIcon.topAnchor,
-                            leading: capacityIcon.leadingAnchor,
-                            bottom: capacityIcon.bottomAnchor,
-                            paddingTop: 7.0,
-                            width: 20.0,
-                            height: 14.0)
+        passengerCapacityIcon.centerX(inView: passengerCapacityInfoView)
+        passengerCapacityIcon.centerY(inView: passengerCapacityInfoView)
+        passengerCapacityInfoView.anchor(width: 26.0,
+                                         height: 24.0)
 //        passengerCapacityCircleView.anchor(top: capacityInfoView.topAnchor, trailing: capacityInfoView.trailingAnchor)
 //        passengerCapacityCircleView.centerX(inView: capacityInfoView, constant: 5.0)
 //        passengerCapacityLabel.centerY(inView: passengerCapacityCircleView)
