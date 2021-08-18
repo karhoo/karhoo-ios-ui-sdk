@@ -20,11 +20,8 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
     private var priceMetadata: MetaDataView!
     private var flightMetadata: MetaDataView!
     private var tripIDMetadata: MetaDataView!
-    private var ratingView: KarhooRatingView!
-    private var ratingViewContainer: UIView!
     private var cancellationInfo: UILabel!
     private var cancellationInfoContainer: UIView!
-    private var extraFeedbackView: FeedbackButtonView!
 
     private var presenter: TripMetaDataPresenter?
     weak var delegate: TripMetaDataViewDelegate?
@@ -77,39 +74,9 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
                                       accessibilityIdentifier: "tripID_metadata")
         tripIDMetadata.isBottomLineHidden(true)
         stackContainer.addArrangedSubview(tripIDMetadata)
-        
-        ratingViewContainer = builRatingContainerView()
-        stackContainer.addArrangedSubview(ratingViewContainer)
 
         cancellationInfoContainer = buildCancellationInfoView()
         stackContainer.addArrangedSubview(cancellationInfoContainer)
-        
-        extraFeedbackView = FeedbackButtonView()
-        stackContainer.addArrangedSubview(extraFeedbackView)
-    }
-    
-    private func builRatingContainerView() -> UIView {
-        let view = UIView()
-        view.accessibilityIdentifier = "raiting_container_view"
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        
-        let topSeparatorLine = LineView(color: .lightGray,
-                                        accessibilityIdentifier: "rating_view_container_top_separator")
-        view.addSubview(topSeparatorLine)
-        _ = [topSeparatorLine.topAnchor.constraint(equalTo: view.topAnchor),
-             topSeparatorLine.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             topSeparatorLine.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             topSeparatorLine.heightAnchor.constraint(equalToConstant: 1.0)].map { $0.isActive = true }
-        
-        ratingView = KarhooRatingView()
-        view.addSubview(ratingView)
-        _ = [ratingView.topAnchor.constraint(equalTo: topSeparatorLine.bottomAnchor),
-             ratingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             ratingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             ratingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
-        
-        return view
     }
 
     private func buildCancellationInfoView() -> UIView {
@@ -153,17 +120,9 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         
         flightMetadata.setValue(viewModel.flightNumber)
         flightMetadata.isHidden = viewModel.flightNumber.isEmpty
-        
-        ratingViewContainer.isHidden = !viewModel.showRateTrip
-        
-        ratingView.delegate = self
 
         cancellationInfo.text = viewModel.freeCancellationMessage
         cancellationInfoContainer.isHidden = viewModel.freeCancellationMessage == nil
-        
-        extraFeedbackView.actions = self
-        
-        extraFeedbackView.isHidden = true
     }
     
     @objc
@@ -172,16 +131,12 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
     }
 
     func hideRatingOptions() {
-        ratingView.hideStars()
-        ratingView.showConfirmation(UITexts.TripRating.thankYouConfirmation)
-        extraFeedbackView.isHidden = true
     }
 }
 
 extension KarhooTripMetaDataView: RatingViewDelegate {
     
     func didRate(_ rate: Int) {
-        extraFeedbackView.configure()
         delegate?.didRateTrip(rate)
     }
 }

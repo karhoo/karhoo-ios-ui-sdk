@@ -17,7 +17,7 @@ class MockBookingMapStrategy: BookingMapStrategy {
 
     var loadMapCalled = false
     var mapLoaded: MapView?
-    func load(map: MapView?) {
+    func load(map: MapView?, reverseGeolocate: Bool) {
         loadMapCalled = true
         mapLoaded = map
     }

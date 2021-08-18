@@ -16,7 +16,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
     private var currentPickupAddress: LocationInfo?
     private var currentDestinationAddress: LocationInfo?
     
-    func load(map: MapView?) {
+    func load(map: MapView?, reverseGeolocate: Bool = true) {
         self.map = map
     }
 
@@ -78,7 +78,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
     }
 
     private func setNew(pickup: LocationInfo) {
-        map?.removePin(tag: TripPinTags.destination)
+        map?.removePin(tag: TripPinTags.pickup)
         let annotation = MapAnnotationViewModel(coordinate: pickup.position.toCLLocation().coordinate, tag: .pickup)
         map?.addPin(annotation: annotation, tag: TripPinTags.pickup)
 

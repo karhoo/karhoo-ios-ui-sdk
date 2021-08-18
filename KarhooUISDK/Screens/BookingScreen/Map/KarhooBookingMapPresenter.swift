@@ -34,10 +34,10 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         bookingStatus.remove(observer: self)
     }
 
-    func load(map: MapView?, reverseGeolocate: Bool = false) {
-        pickupOnlyStrategy.load(map: map)
-        destinationSetStrategy.load(map: map)
-        emptyBookingStrategy.load(map: map)
+    func load(map: MapView?, reverseGeolocate: Bool = true) {
+        pickupOnlyStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
+        destinationSetStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
+        emptyBookingStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
         currentStrategy?.start(bookingDetails: bookingStatus.getBookingDetails())
     }
 
