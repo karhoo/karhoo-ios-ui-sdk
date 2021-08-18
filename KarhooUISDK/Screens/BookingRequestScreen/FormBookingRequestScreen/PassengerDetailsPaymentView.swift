@@ -32,8 +32,8 @@ final class PassengerDetailsPaymentView: UIView {
         stackView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsPaymentStackView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16.0
         
         return stackView
     }()
@@ -51,7 +51,7 @@ final class PassengerDetailsPaymentView: UIView {
     
     private lazy var passengerPaymentContainer: UIView = {
         let passengerPaymentView = UIView()
-        passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsContainer
+        passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentContainer
         passengerPaymentView.layer.cornerRadius = 5.0
         passengerPaymentView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         passengerPaymentView.layer.borderWidth = 0.5
@@ -64,7 +64,6 @@ final class PassengerDetailsPaymentView: UIView {
         let passengerDetailsStackView = UIStackView()
         passengerDetailsStackView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsStackView
         passengerDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         passengerDetailsStackView.alignment = .center
         passengerDetailsStackView.axis = .vertical
         passengerDetailsStackView.distribution = .fill
@@ -187,28 +186,44 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsContainer.addSubview(passengerDetailsStackView)
         passengerPaymentContainer.addSubview(passengerPaymentStackView)
         
-        stackView.addSubview(passengerDetailsContainer)
-        stackView.addSubview(passengerPaymentContainer)
+        stackView.addArrangedSubview(passengerDetailsContainer)
+        stackView.addArrangedSubview(passengerPaymentContainer)
     }
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            stackView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 10.0, paddingLeft: 10.0, paddingRight: 10.0)
+            stackView.anchor(top: topAnchor,
+                             leading: leadingAnchor,
+                             trailing: trailingAnchor,
+                             height: 92.0)
             
-//            passengerDetailsStackView.anchor(height: 136.0)
-//            passengerPaymentStackView.anchor(height: 136.0)
+            passengerDetailsStackView.anchor(top: passengerDetailsContainer.topAnchor,
+                                             leading: passengerDetailsContainer.leadingAnchor,
+                                             bottom: passengerDetailsContainer.bottomAnchor,
+                                             trailing: passengerDetailsContainer.trailingAnchor,
+                                             paddingTop: 16.0,
+                                             paddingBottom: 16.0)
             
-            passengerDetailsContainer.anchor(top: passengerDetailsStackView.topAnchor, leading: passengerDetailsStackView.leadingAnchor, bottom: passengerDetailsStackView.bottomAnchor, trailing: passengerDetailsStackView.trailingAnchor)
-            passengerPaymentContainer.anchor(top: passengerPaymentStackView.topAnchor, leading: passengerPaymentStackView.leadingAnchor, bottom: passengerPaymentStackView.bottomAnchor, trailing: passengerPaymentStackView.trailingAnchor)
+            passengerPaymentStackView.anchor(top: passengerPaymentContainer.topAnchor,
+                                             leading: passengerPaymentContainer.leadingAnchor,
+                                             bottom: passengerPaymentContainer.bottomAnchor,
+                                             trailing: passengerPaymentContainer.trailingAnchor,
+                                             paddingTop: 16.0,
+                                             paddingBottom: 16.0)
             
-            passengerDetailsStackView.anchor(leading: stackView.leadingAnchor)
-            passengerPaymentStackView.anchor(trailing: stackView.trailingAnchor)
+            passengerDetailsImage.anchor(leading: passengerDetailsStackView.leadingAnchor,
+                                         trailing: passengerDetailsStackView.trailingAnchor,
+                                         paddingLeft: 56.0,
+                                         paddingRight: 56.0,
+                                         width: 24.0,
+                                         height: 24.0)
             
-            passengerDetailsContainer.addDashedBorder()
-            passengerPaymentContainer.addDashedBorder()
-            
-            passengerDetailsImage.anchor(width: 24.0, height: 24.0)
-            passengerPaymentImage.anchor(width: 24.0, height: 24.0)
+            passengerPaymentImage.anchor(leading: passengerPaymentStackView.leadingAnchor,
+                                         trailing: passengerPaymentStackView.trailingAnchor,
+                                         paddingLeft: 56.0,
+                                         paddingRight: 56.0,
+                                         width: 24.0,
+                                         height: 24.0)
             
             didSetupConstraints = true
         }

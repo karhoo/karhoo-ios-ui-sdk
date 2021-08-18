@@ -83,7 +83,6 @@ class BaseStackView: UIView {
     
     private func buildStackView() -> UIStackView {
         let stackView = UIStackView()
-        stackView.accessibilityIdentifier = "cacatcuperje"
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fill
         stackView.alignment = .center

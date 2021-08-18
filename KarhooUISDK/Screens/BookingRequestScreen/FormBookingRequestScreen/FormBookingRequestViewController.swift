@@ -160,6 +160,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.accent
+        cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         
         return cancellationInfo
@@ -300,13 +301,16 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor,
                           trailing: baseStackView.trailingAnchor,
                           paddingLeft: titleInset,
+                          paddingBottom: titleInset,
                           paddingRight: titleInset,
                           height: 100.0)
 
         if !middleStackView.isHidden {
             middleStackView.anchor(top: headerView.bottomAnchor,
                                    leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor)
+                                   trailing: baseStackView.trailingAnchor,
+                                   paddingLeft: titleInset,
+                                   paddingRight: titleInset)
             rideInfoView.anchor(top: middleStackView.bottomAnchor)
         } else {
             rideInfoView.anchor(top: headerView.bottomAnchor)
@@ -314,7 +318,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
 
         rideInfoView.anchor(leading: baseStackView.leadingAnchor,
                             trailing: baseStackView.trailingAnchor,
-                            paddingTop: titleInset,
                             paddingLeft: titleInset,
                             paddingRight: titleInset)
         passengerDetailsAndPaymentView.anchor(top: rideInfoView.bottomAnchor,
