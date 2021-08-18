@@ -31,17 +31,6 @@ final class FormCheckoutHeaderView: UIView {
     
     private var didSetupConstraints: Bool = false
     
-//    private lazy var verticalTopStackView: UIStackView = {
-//        let verticalTopStackView = UIStackView()
-//        verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
-//        verticalTopStackView.alignment = .center
-//        verticalTopStackView.axis = .vertical
-//        verticalTopStackView.distribution = .fillProportionally
-//        verticalTopStackView.spacing = 10
-//
-//        return verticalTopStackView
-//    }()
-    
     private var topStackView: UIStackView = {
         let topStackView = UIStackView()
         topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
@@ -108,33 +97,6 @@ final class FormCheckoutHeaderView: UIView {
     
     private var vehicleCapacityView: VehicleCapacityView!
     
-//    private lazy var learnMoreButton: UIButton = {
-//        let learnMoreButton = UIButton(frame: .zero)
-//        learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
-//        learnMoreButton.setTitle("Learn more", for: .normal)
-//        learnMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
-//        learnMoreButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
-//        learnMoreButton.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
-//        learnMoreButton.anchor(width: 80)
-//        return learnMoreButton
-//    }()
-//    
-//    private lazy var dropdownIconImage: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage.uisdkImage("dropdownIcon")
-//        imageView.tintColor = KarhooUI.colors.accent
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.anchor(width: 16)
-//        return imageView
-//    }()
-//    
-//    private lazy var moreDetailsView: MoreDetailsView = {
-//        let view = MoreDetailsView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -164,14 +126,6 @@ final class FormCheckoutHeaderView: UIView {
         rideDetailStackView.addArrangedSubview(name)
         rideDetailStackView.addArrangedSubview(carType)
         rideDetailStackView.addArrangedSubview(fleetCapabilitiesStackView)
-        
-//        middleStackView.addArrangedSubview(cancellationInfo)
-//        middleStackView.addArrangedSubview(learnMoreButton)
-//        middleStackView.addArrangedSubview(dropdownIconImage)
-        
-//        verticalTopStackView.addArrangedSubview(middleStackView)
-//        verticalTopStackView.addArrangedSubview(passengerDetailsAndPaymentView)
-        
     }
     
     override func updateConstraints() {
@@ -191,12 +145,6 @@ final class FormCheckoutHeaderView: UIView {
         }
         
         super.updateConstraints()
-    }
-    
-    @objc private func learnMorePressed(sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
-//            self.verticalTopStackView.addArrangedSubview(self.moreDetailsView)
-        })
     }
     
     private func setVehicleTags(viewModel: QuoteViewModel) {

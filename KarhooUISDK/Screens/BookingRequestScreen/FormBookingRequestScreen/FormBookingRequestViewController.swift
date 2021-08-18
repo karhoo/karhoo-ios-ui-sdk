@@ -138,6 +138,22 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return baseStackView
     }()
     
+    private lazy var moreDetailsStackView: UIStackView = {
+        let moreDetailsStackView = UIStackView()
+        moreDetailsStackView.accessibilityIdentifier = "more_details_base_stack_view"
+        moreDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
+        moreDetailsStackView.axis = .vertical
+        moreDetailsStackView.spacing = 8
+        moreDetailsStackView.distribution = .fill
+        
+        return moreDetailsStackView
+    }()
+    
+    private lazy var moreDetailsView: MoreDetailsView = {
+        let view = MoreDetailsView()
+        return view
+    }()
+    
     private var learnMoreStackView: UIStackView = {
         let learnMoreStackView = UIStackView()
         learnMoreStackView.accessibilityIdentifier = "learn_more_stack_view"
@@ -151,6 +167,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private lazy var learnMoreButton: RevealMoreInfoButton = {
         let button = RevealMoreInfoButton()
+        button.set(actions: self)
         return button
     }()
     
@@ -225,7 +242,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         
-        baseStackView.addViewToStack(view: learnMoreStackView)
+        baseStackView.addViewToStack(view: moreDetailsStackView)
+        moreDetailsStackView.addArrangedSubview(learnMoreStackView)
         learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
         learnMoreStackView.addArrangedSubview(learnMoreButton)
         
@@ -306,13 +324,13 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                           paddingRight: titleInset,
                           height: 110.0)
 
-        if !learnMoreStackView.isHidden {
-            learnMoreStackView.anchor(top: headerView.bottomAnchor,
+        if !moreDetailsStackView.isHidden {
+            moreDetailsStackView.anchor(top: headerView.bottomAnchor,
                                    leading: baseStackView.leadingAnchor,
                                    trailing: baseStackView.trailingAnchor,
-                                   paddingLeft: titleInset,
-                                   paddingRight: titleInset)
-            rideInfoView.anchor(top: learnMoreStackView.bottomAnchor)
+                                   paddingLeft: 20.0,
+                                   paddingRight: 20.0)
+            rideInfoView.anchor(top: moreDetailsStackView.bottomAnchor)
         } else {
             rideInfoView.anchor(top: headerView.bottomAnchor)
         }
@@ -427,7 +445,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                             termsStringURL: quote.fleet.termsConditionsUrl)
         
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
-        learnMoreStackView.isHidden = viewModel.freeCancellationMessage == nil
+        moreDetailsStackView.isHidden = viewModel.freeCancellationMessage == nil
 //        addPaymentView.quote = quote
     }
     
@@ -553,5 +571,25 @@ extension FormBookingRequestViewController: PaymentViewActions {
     func didGetNonce(nonce: String) {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+    }
+}
+
+extension FormBookingRequestViewController: RevealMoreButtonActions {
+    func learnMorePressed() {
+//        guard let identifier = moreDetailsStackView.accessibilityIdentifier,
+//              let index = baseStackView.retrieveIndexFor(viewIdentifier: identifier) else {
+//            return
+//        }
+        moreDetailsStackView.addArrangedSubview(moreDetailsView)
+        
+        moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
+                               trailing: moreDetailsStackView.trailingAnchor)
+        
+        moreDetailsStackView.setNeedsLayout()
+        baseStackView.layoutIfNeeded()
+    }
+    
+    func learnLessPressed() {
+        moreDetailsView.removeFromSuperview()
     }
 }

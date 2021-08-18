@@ -2442,11 +2442,7 @@
 			children = (
 				5CBA2A6224F5D8CC0091D783 /* FormBookingRequestViewController.swift */,
 				5CBA2A6324F5D8CC0091D783 /* FormBookingRequestPresenter.swift */,
-				5CBA2A6424F5D8CC0091D783 /* FormCheckoutHeaderView.swift */,
-				791A9CDD26C4EC2A00B52DA1 /* PassengerDetailsPaymentView.swift */,
-				79ACDCE326CCB3A9008820B5 /* RevealMoreInfoButton.swift */,
-				79ACDCE726CCBAA9008820B5 /* RideInfoView.swift */,
-				79ACDCE526CCB5FB008820B5 /* MoreDetailsView.swift */,
+				79ACDCE926CD2F45008820B5 /* CheckoutViews */,
 				5CBA2A6524F5D8CC0091D783 /* PassengerDetails */,
 			);
 			path = FormBookingRequestScreen;
@@ -2496,6 +2492,18 @@
 				5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */,
 			);
 			path = AppleMapKit;
+			sourceTree = "<group>";
+		};
+		79ACDCE926CD2F45008820B5 /* CheckoutViews */ = {
+			isa = PBXGroup;
+			children = (
+				5CBA2A6424F5D8CC0091D783 /* FormCheckoutHeaderView.swift */,
+				791A9CDD26C4EC2A00B52DA1 /* PassengerDetailsPaymentView.swift */,
+				79ACDCE326CCB3A9008820B5 /* RevealMoreInfoButton.swift */,
+				79ACDCE726CCBAA9008820B5 /* RideInfoView.swift */,
+				79ACDCE526CCB5FB008820B5 /* MoreDetailsView.swift */,
+			);
+			path = CheckoutViews;
 			sourceTree = "<group>";
 		};
 		79C4CC0320274ACDA240783A /* Pods */ = {

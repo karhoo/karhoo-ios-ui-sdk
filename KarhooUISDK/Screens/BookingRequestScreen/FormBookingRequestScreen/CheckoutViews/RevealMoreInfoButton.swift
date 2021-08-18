@@ -8,9 +8,32 @@
 
 import UIKit
 
+protocol RevealMoreButtonActions: AnyObject {
+    func learnMorePressed()
+    func learnLessPressed()
+}
+
 private enum ButtonMode {
     case learnMore
     case learnLess
+    
+    var image: UIImage {
+        switch self {
+        case .learnLess:
+            return UIImage.uisdkImage("dropdownIcon")
+        case .learnMore:
+            return UIImage.uisdkImage("dropupIcon")
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .learnLess:
+            return "Learn less"
+        case .learnMore:
+            return "Learn more"
+        }
+    }
 }
 
 public struct KHRevealMoreButtonViewID {
@@ -21,15 +44,21 @@ public struct KHRevealMoreButtonViewID {
 }
 
 final class RevealMoreInfoButton: UIButton {
-    private weak var actions: BookingButtonActions?
+    private weak var actions: RevealMoreButtonActions?
     private var containerView: UIView!
     private var button: UIButton!
-    private var dropdownImage: UIImageView!
     private var buttonLabel: UILabel!
-    private var currentMode: ButtonMode?
+    private var currentMode: ButtonMode
     private var didSetupConstraints = false
 
+    private lazy var dropdownImage: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
     init() {
+        currentMode = .learnMore
+        
         super.init(frame: .zero)
         self.setupView()
     }
@@ -52,12 +81,12 @@ final class RevealMoreInfoButton: UIButton {
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
         buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
-        buttonLabel.text = "Learn more"
+        buttonLabel.text = currentMode.title
         buttonLabel.textColor = KarhooUI.colors.accent
         buttonLabel.textAlignment = .center
         containerView.addSubview(buttonLabel)
         
-        dropdownImage = UIImageView(image: UIImage.uisdkImage("dropdownIcon").withRenderingMode(.alwaysTemplate))
+        dropdownImage.image = currentMode.image
         dropdownImage.accessibilityIdentifier = KHRevealMoreButtonViewID.image
         dropdownImage.translatesAutoresizingMaskIntoConstraints = false
         dropdownImage.tintColor = KarhooUI.colors.accent
@@ -69,7 +98,6 @@ final class RevealMoreInfoButton: UIButton {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
         containerView.addSubview(button)
-        
     }
     
     override func awakeFromNib() {
@@ -112,17 +140,20 @@ final class RevealMoreInfoButton: UIButton {
     }
 
     @objc private func learnMorePressed() {
-        guard let mode = currentMode else {
-            return
+        switch currentMode {
+        case .learnMore:
+            currentMode = .learnLess
+            actions?.learnMorePressed()
+        case .learnLess:
+            currentMode = .learnMore
+            actions?.learnLessPressed()
         }
-
-        switch mode {
-        case .learnMore: actions?.requestPressed()
-        case .learnLess: actions?.addFlightDetailsPressed()
-        }
+        
+        dropdownImage.image = currentMode.image
+        buttonLabel.text = currentMode.title
     }
 
-    func set(actions: BookingButtonActions) {
+    func set(actions: RevealMoreButtonActions) {
         self.actions = actions
     }
 }
