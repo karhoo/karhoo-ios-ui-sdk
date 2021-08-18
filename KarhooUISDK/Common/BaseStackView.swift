@@ -51,16 +51,15 @@ class BaseStackView: UIView {
                 bottomInset = safeAreaInsets.bottom
             }
             
-            _ = [scrollView.topAnchor.constraint(equalTo: self.topAnchor),
-                 scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                 scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                 scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor,
-                                                    constant: -bottomInset)].map { $0.isActive = true }
+            scrollView.anchor(top: topAnchor,
+                              leading: leadingAnchor,
+                              bottom: bottomAnchor,
+                              trailing: trailingAnchor,
+                              paddingBottom: bottomInset)
             
-            _ = [stackContainer.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-                 stackContainer.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                 stackContainer.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor)]
-                .map { $0.isActive = true }
+            stackContainer.centerX(inView: scrollView)
+            stackContainer.anchor(top: scrollView.topAnchor,
+                                  bottom: scrollView.bottomAnchor)
             
             didSetupConstraints = true
         }
@@ -84,6 +83,7 @@ class BaseStackView: UIView {
     
     private func buildStackView() -> UIStackView {
         let stackView = UIStackView()
+        stackView.accessibilityIdentifier = "cacatcuperje"
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fill
         stackView.alignment = .center

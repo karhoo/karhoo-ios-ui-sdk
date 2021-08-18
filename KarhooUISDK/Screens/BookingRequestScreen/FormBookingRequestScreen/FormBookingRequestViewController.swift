@@ -54,6 +54,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private lazy var passengerDetailsAndPaymentView: PassengerDetailsPaymentView = {
         let passengerDetailsAndPaymentView = PassengerDetailsPaymentView()
+        passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
         return passengerDetailsAndPaymentView
     }()
@@ -137,6 +138,17 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return baseStackView
     }()
     
+    private lazy var rideInfoView: RideInfoView = {
+        let rideInfoView = RideInfoView()
+        rideInfoView.translatesAutoresizingMaskIntoConstraints = false
+        rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
+        rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
+        rideInfoView.layer.masksToBounds = true
+        rideInfoView.layer.cornerRadius = 8.0
+        
+        return rideInfoView
+    }()
+    
     private lazy var supplierStackContainer: UIStackView = {
         let supplierStackContainer = UIStackView()
         supplierStackContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -184,6 +196,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
+        baseStackView.addViewToStack(view: rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         
         setUpFields()
@@ -226,10 +239,16 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setupConstraintsForDefault() {
-        view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width)
+        view.anchor(width: UIScreen.main.bounds.width,
+                    height: UIScreen.main.bounds.height)
+        container.anchor(leading: view.leadingAnchor,
+                         trailing: view.trailingAnchor,
+                         width: UIScreen.main.bounds.width)
         
-        backButton.anchor(top: container.topAnchor, leading: container.leadingAnchor, paddingTop: view.safeAreaInsets.top, paddingLeft: 20.0)
+        backButton.anchor(top: container.topAnchor,
+                          leading: container.leadingAnchor,
+                          paddingTop: view.safeAreaInsets.top,
+                          paddingLeft: 20.0)
         _ = [backTitleButton.topAnchor.constraint(equalTo: backButton.topAnchor),
              backTitleButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 10.0),
              backTitleButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)].map { $0.isActive = true }
@@ -240,21 +259,57 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                                                       constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
         
-        baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
+        baseStackView.anchor(top: backButton.bottomAnchor,
+                             leading: container.leadingAnchor,
+                             bottom: footerView.topAnchor,
+                             trailing: container.trailingAnchor)
         
         let titleInset: CGFloat = 15.0
-        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
-        passengerDetailsAndPaymentView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset, height: 150.0)
+        headerView.anchor(leading: baseStackView.leadingAnchor,
+                          trailing: baseStackView.trailingAnchor,
+                          paddingLeft: titleInset,
+                          paddingRight: titleInset)
+        
+//        rideInfoView.anchor(top: verticalTopStackView.bottomAnchor, leading: verticalTopStackView.leadingAnchor, bottom: bottomAnchor, trailing: verticalTopStackView.trailingAnchor, paddingTop: 15.0)
+
+        rideInfoView.anchor(top: headerView.bottomAnchor,
+                            leading: baseStackView.leadingAnchor,
+                            trailing: baseStackView.trailingAnchor,
+                            paddingTop: titleInset,
+                            paddingLeft: titleInset,
+                            paddingRight: titleInset)
+
+        passengerDetailsAndPaymentView.anchor(top: rideInfoView.bottomAnchor,
+                                              leading: baseStackView.leadingAnchor,
+                                              trailing: baseStackView.trailingAnchor,
+                                              paddingTop: titleInset,
+                                              paddingLeft: titleInset,
+                                              paddingRight: titleInset,
+                                              height: 92.0)
 
         let textInputInset: CGFloat = 30.0
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
+        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor,
+                                   trailing: baseStackView.trailingAnchor,
+                                   paddingLeft: textInputInset,
+                                   paddingRight: textInputInset)
 
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
+        commentsInputText.anchor(leading: baseStackView.leadingAnchor,
+                                 trailing: baseStackView.trailingAnchor,
+                                 paddingLeft: textInputInset,
+                                 paddingRight: textInputInset)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 20.0, paddingRight: 10.0)
-        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        footerView.anchor(leading: view.leadingAnchor,
+                          bottom: container.bottomAnchor,
+                          trailing: view.trailingAnchor,
+                          paddingBottom: 20.0,
+                          paddingRight: 10.0)
+        footerStack.anchor(top: footerView.topAnchor,
+                           leading: footerView.leadingAnchor,
+                           bottom: footerView.bottomAnchor,
+                           trailing: footerView.trailingAnchor)
         
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
+        termsConditionsView.anchor(leading: baseStackView.leadingAnchor,
+                                   trailing: baseStackView.trailingAnchor)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -325,6 +380,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func set(quote: Quote) {
         let viewModel = QuoteViewModel(quote: quote)
         headerView.set(viewModel: viewModel)
+        rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
                                             termsStringURL: quote.fleet.termsConditionsUrl)
 //        addPaymentView.quote = quote

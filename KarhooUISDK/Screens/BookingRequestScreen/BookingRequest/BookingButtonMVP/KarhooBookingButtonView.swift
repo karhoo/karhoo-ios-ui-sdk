@@ -100,36 +100,38 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     override func updateConstraints() {
         if !didSetupConstraints {
             
-            _ = [containerView.topAnchor.constraint(equalTo: topAnchor),
-                 containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                 containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.0),
-                 containerView.trailingAnchor.constraint(equalTo: trailingAnchor,
-                                                         constant: -20.0)].map { $0.isActive = true }
-            
-            _ = [buttonLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-                 buttonLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                 buttonLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-                 buttonLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)].map { $0.isActive = true }
+            containerView.anchor(top: topAnchor,
+                                 leading: leadingAnchor,
+                                 bottom: bottomAnchor,
+                                 trailing: trailingAnchor,
+                                 paddingLeft: 20.0,
+                                 paddingRight: 20.0)
+
+            buttonLabel.centerX(inView: self)
+            buttonLabel.centerY(inView: self)
+            buttonLabel.anchor(top: topAnchor,
+                               bottom: bottomAnchor,
+                               paddingTop: 10.0,
+                               paddingBottom: 10.0)
             
             let activitySize: CGFloat = 20.0
-            _ = [activityIndicator.widthAnchor.constraint(equalToConstant: activitySize),
-                 activityIndicator.heightAnchor.constraint(equalToConstant: activitySize),
-                 activityIndicator.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
-                 activityIndicator.trailingAnchor.constraint(equalTo: buttonLabel.leadingAnchor,
-                                                             constant: -12.0)].map { $0.isActive = true }
-            
+            activityIndicator.anchor(trailing: buttonLabel.leadingAnchor,
+                                     paddingRight: 12.0,
+                                     width: activitySize,
+                                     height: activitySize)
+            activityIndicator.centerY(inView: buttonLabel)
+
             let imageSize: CGFloat = 20.0
-            _ = [tickImage.widthAnchor.constraint(equalToConstant: imageSize),
-                 tickImage.heightAnchor.constraint(equalToConstant: imageSize),
-                 tickImage.centerYAnchor.constraint(equalTo: activityIndicator.centerYAnchor),
-                 tickImage.centerXAnchor.constraint(equalTo: activityIndicator.centerXAnchor)]
-                .map { $0.isActive = true }
-            
-            _ = [button.topAnchor.constraint(equalTo: topAnchor),
-                 button.leadingAnchor.constraint(equalTo: leadingAnchor),
-                 button.trailingAnchor.constraint(equalTo: trailingAnchor),
-                 button.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
-            
+            tickImage.centerX(inView: activityIndicator)
+            tickImage.centerY(inView: activityIndicator)
+            tickImage.anchor(width: imageSize,
+                             height: imageSize)
+
+            button.anchor(top: topAnchor,
+                          leading: leadingAnchor,
+                          bottom: bottomAnchor,
+                          trailing: trailingAnchor)
+
             didSetupConstraints = true
         }
         
