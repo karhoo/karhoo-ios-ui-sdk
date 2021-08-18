@@ -272,7 +272,7 @@ final class FormCheckoutHeaderView: UIView {
         middleStackView.addArrangedSubview(dropdownIconImage)
         
         verticalTopStackView.addArrangedSubview(middleStackView)
-        
+//        verticalTopStackView.addArrangedSubview(passengerDetailsAndPaymentView)
         
         // TODO: move this rideInfoView in a separate custom view
         addSubview(rideInfoView)
@@ -294,6 +294,7 @@ final class FormCheckoutHeaderView: UIView {
             verticalTopStackView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 20.0, paddingLeft: 10.0, paddingRight: 10.0)
 
             middleStackView.anchor(leading: verticalTopStackView.leadingAnchor, trailing: verticalTopStackView.trailingAnchor)
+//            passengerDetailsAndPaymentView.anchor(leading: verticalTopStackView.leadingAnchor, trailing: verticalTopStackView.trailingAnchor)
             
             topStackView.anchor(top: verticalTopStackView.topAnchor, leading: verticalTopStackView.leadingAnchor, trailing: verticalTopStackView.trailingAnchor)
 
@@ -328,8 +329,8 @@ final class FormCheckoutHeaderView: UIView {
     }
     
     private func setCarTags(viewModel: QuoteViewModel) {
-        if viewModel.carTags.count >= 2 {
-            let firstTwoCarTags = viewModel.carTags.prefix(2)
+        if viewModel.vehicleTags.count >= 2 {
+            let firstTwoCarTags = viewModel.vehicleTags.prefix(2)
             firstTwoCarTags.forEach {
                 let image = UIImageView()
                 image.image = $0.image
@@ -344,9 +345,9 @@ final class FormCheckoutHeaderView: UIView {
                 fleetCapabilitiesStackView.addArrangedSubview(image)
                 fleetCapabilitiesStackView.addArrangedSubview(label)
             }
-            if viewModel.carTags.count > 2 {
+            if viewModel.vehicleTags.count > 2 {
                 let label = UILabel()
-                label.text = "+\(viewModel.carTags.count - 2)"
+                label.text = "+\(viewModel.vehicleTags.count - 2)"
                 label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
                 label.textColor = KarhooUI.colors.darkGrey
                 fleetCapabilitiesStackView.addArrangedSubview(label)

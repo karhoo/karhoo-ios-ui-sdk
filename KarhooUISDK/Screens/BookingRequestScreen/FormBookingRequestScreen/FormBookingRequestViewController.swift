@@ -15,10 +15,19 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private var passengerDetailsValid: Bool?
     private var termsConditionsView: TermsConditionsView!
     private var footerView: UIView!
-    private var footerStack: UIStackView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private var presenter: BookingRequestPresenter
     private let drawAnimationTime: Double = 0.45
+    
+    private lazy var footerStack: UIStackView = {
+        let footerStack = UIStackView()
+        footerStack.translatesAutoresizingMaskIntoConstraints = false
+        footerStack.accessibilityIdentifier = "footer_stack_view"
+        footerStack.axis = .vertical
+        footerStack.spacing = 15.0
+        
+        return footerStack
+    }()
     
     private lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
@@ -43,6 +52,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return poiDetailsInputText
     }()
     
+    private lazy var passengerDetailsAndPaymentView: PassengerDetailsPaymentView = {
+        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView()
+        passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
+        return passengerDetailsAndPaymentView
+    }()
     // TODO: leave these lines commented here until next related story (will be moved in a different place,
     // the code can be referenced from here
     
@@ -170,6 +184,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
+        baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         
         setUpFields()
         
@@ -182,11 +197,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         footerView.backgroundColor = .white
         container.addSubview(footerView)
         
-        footerStack = UIStackView()
-        footerStack.translatesAutoresizingMaskIntoConstraints = false
-        footerStack.accessibilityIdentifier = "footer_stack_view"
-        footerStack.axis = .vertical
-        footerStack.spacing = 15.0
         footerView.addSubview(footerStack)
         
         bookingButton.setDisabledMode()
@@ -203,11 +213,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setUpFields() {
-//        baseStackView.addViewToStack(view: passengerDetailsTitle)
-//        baseStackView.addViewToStack(view: passengerDetailsView)
-//        baseStackView.addViewToStack(view: paymentDetailsTitle)
-//        baseStackView.addViewToStack(view: addPaymentView)
-        
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: poiDetailsInputText)
     }
@@ -228,7 +233,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         _ = [backTitleButton.topAnchor.constraint(equalTo: backButton.topAnchor),
              backTitleButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 10.0),
              backTitleButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)].map { $0.isActive = true }
-//        backTitleLabel.anchor(top: backButton.topAnchor, leading: backButton.trailingAnchor, paddingLeft: 10.0)
         
         container.anchor(height: UIScreen.main.bounds.height)
         
@@ -240,6 +244,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         let titleInset: CGFloat = 15.0
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
+        passengerDetailsAndPaymentView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset, height: 150.0)
 
         let textInputInset: CGFloat = 30.0
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: textInputInset, paddingRight: textInputInset)
