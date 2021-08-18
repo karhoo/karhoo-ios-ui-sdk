@@ -31,26 +31,16 @@ final class FormCheckoutHeaderView: UIView {
     
     private var didSetupConstraints: Bool = false
     
-    private lazy var verticalTopStackView: UIStackView = {
-        let verticalTopStackView = UIStackView()
-        verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalTopStackView.alignment = .center
-        verticalTopStackView.axis = .vertical
-        verticalTopStackView.distribution = .fillProportionally
-        verticalTopStackView.spacing = 10
-        
-        return verticalTopStackView
-    }()
-    
-    private var middleStackView: UIStackView = {
-        let middleStackView = UIStackView()
-        middleStackView.translatesAutoresizingMaskIntoConstraints = false
-        middleStackView.axis = .horizontal
-        middleStackView.spacing = 8
-        middleStackView.distribution = .fillProportionally
-        
-        return middleStackView
-    }()
+//    private lazy var verticalTopStackView: UIStackView = {
+//        let verticalTopStackView = UIStackView()
+//        verticalTopStackView.translatesAutoresizingMaskIntoConstraints = false
+//        verticalTopStackView.alignment = .center
+//        verticalTopStackView.axis = .vertical
+//        verticalTopStackView.distribution = .fillProportionally
+//        verticalTopStackView.spacing = 10
+//
+//        return verticalTopStackView
+//    }()
     
     private var topStackView: UIStackView = {
         let topStackView = UIStackView()
@@ -116,39 +106,34 @@ final class FormCheckoutHeaderView: UIView {
         return carType
     }()
     
-    private var cancellationInfo: UILabel = {
-        let cancellationInfo = UILabel()
-        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
-        cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.accent
-        cancellationInfo.numberOfLines = 0
-        
-        return cancellationInfo
-    }()
-    
     private var vehicleCapacityView: VehicleCapacityView!
     
-    private lazy var learnMoreButton: UIButton = {
-        let learnMoreButton = UIButton(frame: .zero)
-        learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
-        learnMoreButton.setTitle("Learn more", for: .normal)
-        learnMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
-        learnMoreButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
-        learnMoreButton.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
-        learnMoreButton.anchor(width: 80)
-        return learnMoreButton
-    }()
-    
-    private lazy var dropdownIconImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage.uisdkImage("dropdownIcon")
-        imageView.tintColor = KarhooUI.colors.accent
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.anchor(width: 16)
-        return imageView
-    }()
+//    private lazy var learnMoreButton: UIButton = {
+//        let learnMoreButton = UIButton(frame: .zero)
+//        learnMoreButton.translatesAutoresizingMaskIntoConstraints = false
+//        learnMoreButton.setTitle("Learn more", for: .normal)
+//        learnMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
+//        learnMoreButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
+//        learnMoreButton.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
+//        learnMoreButton.anchor(width: 80)
+//        return learnMoreButton
+//    }()
+//    
+//    private lazy var dropdownIconImage: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage.uisdkImage("dropdownIcon")
+//        imageView.tintColor = KarhooUI.colors.accent
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.anchor(width: 16)
+//        return imageView
+//    }()
+//    
+//    private lazy var moreDetailsView: MoreDetailsView = {
+//        let view = MoreDetailsView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     init() {
         super.init(frame: .zero)
@@ -168,8 +153,7 @@ final class FormCheckoutHeaderView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHFormCheckoutHeaderViewID.view
         
-        addSubview(verticalTopStackView)
-        verticalTopStackView.addArrangedSubview(topStackView)
+        addSubview(topStackView)
         
         topStackView.addArrangedSubview(logoLoadingImageView)
         topStackView.addArrangedSubview(rideDetailStackView)
@@ -181,11 +165,11 @@ final class FormCheckoutHeaderView: UIView {
         rideDetailStackView.addArrangedSubview(carType)
         rideDetailStackView.addArrangedSubview(fleetCapabilitiesStackView)
         
-        middleStackView.addArrangedSubview(cancellationInfo)
-        middleStackView.addArrangedSubview(learnMoreButton)
-        middleStackView.addArrangedSubview(dropdownIconImage)
+//        middleStackView.addArrangedSubview(cancellationInfo)
+//        middleStackView.addArrangedSubview(learnMoreButton)
+//        middleStackView.addArrangedSubview(dropdownIconImage)
         
-        verticalTopStackView.addArrangedSubview(middleStackView)
+//        verticalTopStackView.addArrangedSubview(middleStackView)
 //        verticalTopStackView.addArrangedSubview(passengerDetailsAndPaymentView)
         
     }
@@ -195,21 +179,13 @@ final class FormCheckoutHeaderView: UIView {
             let logoSize: CGFloat = 60.0
             logoLoadingImageView.anchor(width: logoSize,
                                         height: logoSize)
-
-            verticalTopStackView.anchor(top: topAnchor,
-                                        leading: leadingAnchor,
-                                        trailing: trailingAnchor,
-                                        paddingTop: 20.0,
-                                        paddingLeft: 10.0,
-                                        paddingRight: 10.0)
-
-            middleStackView.anchor(leading: verticalTopStackView.leadingAnchor,
-                                   bottom: bottomAnchor,
-                                   trailing: verticalTopStackView.trailingAnchor)
             
-            topStackView.anchor(top: verticalTopStackView.topAnchor,
-                                leading: verticalTopStackView.leadingAnchor,
-                                trailing: verticalTopStackView.trailingAnchor)
+            topStackView.anchor(top: topAnchor,
+                                leading: leadingAnchor,
+                                trailing: trailingAnchor,
+                                paddingTop: 20.0,
+                                paddingLeft: 10.0,
+                                paddingRight: 10.0)
 
             vehicleCapacityView.setContentHuggingPriority(.required, for: .horizontal)
             
@@ -220,8 +196,8 @@ final class FormCheckoutHeaderView: UIView {
     }
     
     @objc private func learnMorePressed(sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
-            
+        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
+//            self.verticalTopStackView.addArrangedSubview(self.moreDetailsView)
         })
     }
     
@@ -255,8 +231,6 @@ final class FormCheckoutHeaderView: UIView {
     func set(viewModel: QuoteViewModel) {
         name.text = viewModel.fleetName
         carType.text = viewModel.carType
-        cancellationInfo.text = viewModel.freeCancellationMessage
-        middleStackView.isHidden = viewModel.freeCancellationMessage == nil
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()

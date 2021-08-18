@@ -138,6 +138,33 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return baseStackView
     }()
     
+    private var middleStackView: UIStackView = {
+        let middleStackView = UIStackView()
+        middleStackView.accessibilityIdentifier = "learn_more_stack_view"
+        middleStackView.translatesAutoresizingMaskIntoConstraints = false
+        middleStackView.axis = .horizontal
+        middleStackView.spacing = 8
+        middleStackView.distribution = .fillProportionally
+        
+        return middleStackView
+    }()
+    
+    private lazy var learnMoreButton: RevealMoreInfoButton = {
+        let button = RevealMoreInfoButton()
+        return button
+    }()
+    
+    private var cancellationInfo: UILabel = {
+        let cancellationInfo = UILabel()
+        cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
+        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
+        cancellationInfo.font = KarhooUI.fonts.captionRegular()
+        cancellationInfo.textColor = KarhooUI.colors.accent
+        cancellationInfo.numberOfLines = 0
+        
+        return cancellationInfo
+    }()
+    
     private lazy var rideInfoView: RideInfoView = {
         let rideInfoView = RideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -196,6 +223,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
+        
+        baseStackView.addViewToStack(view: middleStackView)
+        middleStackView.addArrangedSubview(cancellationInfo)
+        middleStackView.addArrangedSubview(learnMoreButton)
+        
         baseStackView.addViewToStack(view: rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         
@@ -268,17 +300,23 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor,
                           trailing: baseStackView.trailingAnchor,
                           paddingLeft: titleInset,
-                          paddingRight: titleInset)
-        
-//        rideInfoView.anchor(top: verticalTopStackView.bottomAnchor, leading: verticalTopStackView.leadingAnchor, bottom: bottomAnchor, trailing: verticalTopStackView.trailingAnchor, paddingTop: 15.0)
+                          paddingRight: titleInset,
+                          height: 100.0)
 
-        rideInfoView.anchor(top: headerView.bottomAnchor,
-                            leading: baseStackView.leadingAnchor,
+        if !middleStackView.isHidden {
+            middleStackView.anchor(top: headerView.bottomAnchor,
+                                   leading: baseStackView.leadingAnchor,
+                                   trailing: baseStackView.trailingAnchor)
+            rideInfoView.anchor(top: middleStackView.bottomAnchor)
+        } else {
+            rideInfoView.anchor(top: headerView.bottomAnchor)
+        }
+
+        rideInfoView.anchor(leading: baseStackView.leadingAnchor,
                             trailing: baseStackView.trailingAnchor,
                             paddingTop: titleInset,
                             paddingLeft: titleInset,
                             paddingRight: titleInset)
-
         passengerDetailsAndPaymentView.anchor(top: rideInfoView.bottomAnchor,
                                               leading: baseStackView.leadingAnchor,
                                               trailing: baseStackView.trailingAnchor,
@@ -383,6 +421,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
                                             termsStringURL: quote.fleet.termsConditionsUrl)
+        
+        cancellationInfo.text = viewModel.freeCancellationMessage
+        middleStackView.isHidden = viewModel.freeCancellationMessage == nil
 //        addPaymentView.quote = quote
     }
     
