@@ -48,7 +48,7 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.alignment = .center
         topStackView.distribution = .fillProportionally
-        topStackView.spacing = 10
+        topStackView.spacing = 5
         
         return topStackView
     }()
@@ -186,9 +186,7 @@ final class FormCheckoutHeaderView: UIView {
                                 paddingTop: 20.0,
                                 paddingLeft: 10.0,
                                 paddingRight: 10.0)
-
-            vehicleCapacityView.setContentHuggingPriority(.required, for: .horizontal)
-            
+            rideDetailStackView.anchor(width: 150.0)
             didSetupConstraints = true
         }
         
@@ -223,6 +221,21 @@ final class FormCheckoutHeaderView: UIView {
                 label.text = "+\(viewModel.vehicleTags.count - 2)"
                 label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
                 label.textColor = KarhooUI.colors.darkGrey
+                fleetCapabilitiesStackView.addArrangedSubview(label)
+            }
+        } else {
+            viewModel.vehicleTags.forEach {
+                let image = UIImageView()
+                image.image = $0.image
+                image.contentMode = .scaleAspectFit
+                image.anchor(width: 9.0, height: 9.0)
+                image.tintColor = KarhooUI.colors.darkGrey
+                
+                let label = UILabel()
+                label.text = $0.title
+                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
+                label.textColor = KarhooUI.colors.darkGrey
+                fleetCapabilitiesStackView.addArrangedSubview(image)
                 fleetCapabilitiesStackView.addArrangedSubview(label)
             }
         }

@@ -138,15 +138,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return baseStackView
     }()
     
-    private var middleStackView: UIStackView = {
-        let middleStackView = UIStackView()
-        middleStackView.accessibilityIdentifier = "learn_more_stack_view"
-        middleStackView.translatesAutoresizingMaskIntoConstraints = false
-        middleStackView.axis = .horizontal
-        middleStackView.spacing = 8
-        middleStackView.distribution = .fillProportionally
+    private var learnMoreStackView: UIStackView = {
+        let learnMoreStackView = UIStackView()
+        learnMoreStackView.accessibilityIdentifier = "learn_more_stack_view"
+        learnMoreStackView.translatesAutoresizingMaskIntoConstraints = false
+        learnMoreStackView.axis = .horizontal
+        learnMoreStackView.spacing = 8
+        learnMoreStackView.distribution = .fill
         
-        return middleStackView
+        return learnMoreStackView
     }()
     
     private lazy var learnMoreButton: RevealMoreInfoButton = {
@@ -154,7 +154,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return button
     }()
     
-    private var cancellationInfo: UILabel = {
+    private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
@@ -225,9 +225,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         
-        baseStackView.addViewToStack(view: middleStackView)
-        middleStackView.addArrangedSubview(cancellationInfo)
-        middleStackView.addArrangedSubview(learnMoreButton)
+        baseStackView.addViewToStack(view: learnMoreStackView)
+        learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
+        learnMoreStackView.addArrangedSubview(learnMoreButton)
         
         baseStackView.addViewToStack(view: rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
@@ -282,9 +282,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                           leading: container.leadingAnchor,
                           paddingTop: view.safeAreaInsets.top,
                           paddingLeft: 20.0)
-        _ = [backTitleButton.topAnchor.constraint(equalTo: backButton.topAnchor),
-             backTitleButton.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 10.0),
-             backTitleButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor)].map { $0.isActive = true }
+        backTitleButton.centerY(inView: backButton)
+        backTitleButton.anchor(top: backButton.topAnchor,
+                               leading: backButton.trailingAnchor,
+                               paddingRight: 10.0)
         
         container.anchor(height: UIScreen.main.bounds.height)
         
@@ -303,15 +304,15 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                           paddingLeft: titleInset,
                           paddingBottom: titleInset,
                           paddingRight: titleInset,
-                          height: 100.0)
+                          height: 110.0)
 
-        if !middleStackView.isHidden {
-            middleStackView.anchor(top: headerView.bottomAnchor,
+        if !learnMoreStackView.isHidden {
+            learnMoreStackView.anchor(top: headerView.bottomAnchor,
                                    leading: baseStackView.leadingAnchor,
                                    trailing: baseStackView.trailingAnchor,
                                    paddingLeft: titleInset,
                                    paddingRight: titleInset)
-            rideInfoView.anchor(top: middleStackView.bottomAnchor)
+            rideInfoView.anchor(top: learnMoreStackView.bottomAnchor)
         } else {
             rideInfoView.anchor(top: headerView.bottomAnchor)
         }
@@ -425,8 +426,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
                                             termsStringURL: quote.fleet.termsConditionsUrl)
         
-        cancellationInfo.text = viewModel.freeCancellationMessage
-        middleStackView.isHidden = viewModel.freeCancellationMessage == nil
+        cancellationInfoLabel.text = viewModel.freeCancellationMessage
+        learnMoreStackView.isHidden = viewModel.freeCancellationMessage == nil
 //        addPaymentView.quote = quote
     }
     

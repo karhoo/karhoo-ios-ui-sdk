@@ -27,7 +27,6 @@ final class RevealMoreInfoButton: UIButton {
     private var dropdownImage: UIImageView!
     private var buttonLabel: UILabel!
     private var currentMode: ButtonMode?
-    private let textTransitionTime = 0.25
     private var didSetupConstraints = false
 
     init() {
@@ -53,6 +52,7 @@ final class RevealMoreInfoButton: UIButton {
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
         buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+        buttonLabel.text = "Learn more"
         buttonLabel.textColor = KarhooUI.colors.accent
         buttonLabel.textAlignment = .center
         containerView.addSubview(buttonLabel)
@@ -96,13 +96,14 @@ final class RevealMoreInfoButton: UIButton {
             
             let imageSize: CGFloat = 16.0
             dropdownImage.centerY(inView: self)
-            dropdownImage.anchor(width: imageSize,
+            dropdownImage.anchor(trailing: containerView.trailingAnchor,
+                                 width: imageSize,
                                  height: imageSize)
             
-            button.anchor(top: topAnchor,
-                          leading: leadingAnchor,
-                          bottom: bottomAnchor,
-                          trailing: trailingAnchor)
+            button.anchor(top: containerView.topAnchor,
+                          leading: buttonLabel.leadingAnchor,
+                          bottom: containerView.bottomAnchor,
+                          trailing: containerView.trailingAnchor)
 
             didSetupConstraints = true
         }

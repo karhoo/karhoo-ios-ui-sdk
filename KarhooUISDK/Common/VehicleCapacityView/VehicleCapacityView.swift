@@ -36,6 +36,8 @@ final class VehicleCapacityView: UIView {
         let baggageInfoView = UIView()
         baggageInfoView.translatesAutoresizingMaskIntoConstraints = false
         baggageInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
+        baggageInfoView.backgroundColor = KarhooUI.colors.lightGrey
+//        baggageInfoView.applyRoundCorners(corners: .allCorners, radius: 2.0)
         
         return baggageInfoView
     }()
@@ -87,24 +89,24 @@ final class VehicleCapacityView: UIView {
         return passengerCapacityLabel
     }()
     
-    private lazy var baggageCapacityNumberCircleView: UIView = {
-        let circleView = UIView()
-        circleView.backgroundColor = .systemRed
-        circleView.anchor(width: 14.0, height: 14.0)
-        circleView.layer.cornerRadius = circleView.frame.width / 2
-        
-        return circleView
-    }()
-    
-    private lazy var passengerCapacityCircleView: UIView = {
-        let circleView = UIView()
-        circleView.backgroundColor = .systemRed
-        circleView.anchor(width: 14.0, height: 14.0)
-        circleView.layer.cornerRadius = circleView.frame.width / 2
-        circleView.layer.masksToBounds = true
-        
-        return circleView
-    }()
+//    private lazy var baggageCapacityNumberCircleView: UIView = {
+//        let circleView = UIView()
+//        circleView.backgroundColor = .systemRed
+//        circleView.anchor(width: 14.0, height: 14.0)
+//        circleView.layer.cornerRadius = circleView.frame.width / 2
+//
+//        return circleView
+//    }()
+//
+//    private lazy var passengerCapacityCircleView: UIView = {
+//        let circleView = UIView()
+//        circleView.backgroundColor = .systemRed
+//        circleView.anchor(width: 14.0, height: 14.0)
+//        circleView.layer.cornerRadius = circleView.frame.width / 2
+//        circleView.layer.masksToBounds = true
+//
+//        return circleView
+//    }()
     
     init() {
         super.init(frame: .zero)
@@ -123,13 +125,13 @@ final class VehicleCapacityView: UIView {
         addSubview(stackContainer)
         baggageInfoView.addSubview(baggageIcon)
         stackContainer.addArrangedSubview(baggageInfoView)
-        baggageInfoView.addSubview(baggageCapacityNumberCircleView)
-        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
+//        baggageInfoView.addSubview(baggageCapacityNumberCircleView)
+//        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
         
         capacityInfoView.addSubview(capacityIcon)
         stackContainer.addArrangedSubview(capacityInfoView)
-        capacityInfoView.addSubview(passengerCapacityCircleView)
-        passengerCapacityCircleView.addSubview(passengerCapacityLabel)
+//        capacityInfoView.addSubview(passengerCapacityCircleView)
+//        passengerCapacityCircleView.addSubview(passengerCapacityLabel)
         
         setUpConstraints()
         
@@ -137,19 +139,32 @@ final class VehicleCapacityView: UIView {
     }
     
     private func setUpConstraints() {
-        stackContainer.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+        stackContainer.anchor(top: topAnchor,
+                              leading: leadingAnchor,
+                              bottom: bottomAnchor,
+                              trailing: trailingAnchor)
         
-        baggageIcon.anchor(top: baggageInfoView.topAnchor, leading: baggageInfoView.leadingAnchor, bottom: baggageInfoView.bottomAnchor, paddingTop: 7.0, width: 20.0, height: 14.0)
-        baggageCapacityNumberCircleView.anchor(top: baggageInfoView.topAnchor, trailing: baggageInfoView.trailingAnchor)
-        baggageCapacityLabel.centerY(inView: baggageCapacityNumberCircleView)
-        baggageCapacityLabel.anchor(leading: baggageCapacityNumberCircleView.trailingAnchor, trailing: baggageCapacityNumberCircleView.trailingAnchor)
+        baggageInfoView.anchor(top: baggageIcon.topAnchor,
+                           leading: baggageIcon.leadingAnchor,
+                           bottom: baggageIcon.bottomAnchor,
+                           paddingTop: 7.0,
+                           width: 20.0,
+                           height: 14.0)
+//        baggageCapacityNumberCircleView.anchor(top: baggageInfoView.topAnchor, trailing: baggageInfoView.trailingAnchor)
+//        baggageCapacityLabel.centerY(inView: baggageCapacityNumberCircleView)
+//        baggageCapacityLabel.anchor(leading: baggageCapacityNumberCircleView.trailingAnchor, trailing: baggageCapacityNumberCircleView.trailingAnchor)
         baggageCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
-        capacityIcon.anchor(top: capacityInfoView.topAnchor, leading: capacityInfoView.leadingAnchor, bottom: capacityInfoView.bottomAnchor, paddingTop: 7.0, width: 20.0, height: 14.0)
+        capacityInfoView.anchor(top: capacityIcon.topAnchor,
+                            leading: capacityIcon.leadingAnchor,
+                            bottom: capacityIcon.bottomAnchor,
+                            paddingTop: 7.0,
+                            width: 20.0,
+                            height: 14.0)
 //        passengerCapacityCircleView.anchor(top: capacityInfoView.topAnchor, trailing: capacityInfoView.trailingAnchor)
-        passengerCapacityCircleView.centerX(inView: capacityInfoView, constant: 5.0)
-        passengerCapacityLabel.centerY(inView: passengerCapacityCircleView)
-        passengerCapacityLabel.anchor(leading: passengerCapacityCircleView.trailingAnchor, trailing: passengerCapacityCircleView.trailingAnchor)
+//        passengerCapacityCircleView.centerX(inView: capacityInfoView, constant: 5.0)
+//        passengerCapacityLabel.centerY(inView: passengerCapacityCircleView)
+//        passengerCapacityLabel.anchor(leading: passengerCapacityCircleView.trailingAnchor, trailing: passengerCapacityCircleView.trailingAnchor)
         passengerCapacityLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
     
