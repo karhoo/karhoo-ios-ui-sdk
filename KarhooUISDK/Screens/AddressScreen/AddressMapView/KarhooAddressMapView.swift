@@ -49,23 +49,13 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         closeButton.tintColor = .black
         addSubview(closeButton)
         
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            closeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            closeButton.widthAnchor.constraint(equalToConstant: 60),
-            closeButton.heightAnchor.constraint(equalToConstant: 60)
-        ])
+        closeButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, width: 60, height: 60)
         
         addressDisplayView.translatesAutoresizingMaskIntoConstraints = false
         addressDisplayView.layer.cornerRadius = Attributes.standardCornerRadius
         addSubview(addressDisplayView)
         
-        NSLayoutConstraint.activate([
-            addressDisplayView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 10),
-            addressDisplayView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
-            addressDisplayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            addressDisplayView.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: -10)
-        ])
+        addressDisplayView.anchor(top: closeButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10, height: 60)
         
         setLocationButton = UIButton(type: .custom)
         setLocationButton.translatesAutoresizingMaskIntoConstraints = false
@@ -78,12 +68,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         setLocationButton.imageView?.contentMode = .scaleAspectFit
         addSubview(setLocationButton)
         
-        NSLayoutConstraint.activate([
-            setLocationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -26),
-            setLocationButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            setLocationButton.widthAnchor.constraint(equalToConstant: 60),
-            setLocationButton.heightAnchor.constraint(equalToConstant: 60)
-        ])
+        setLocationButton.anchor(bottom: safeAreaLayoutGuide.bottomAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingBottom: 26, paddingRight: 15, width: 60, height: 60)
 
         map.centerPin(hidden: false)
         

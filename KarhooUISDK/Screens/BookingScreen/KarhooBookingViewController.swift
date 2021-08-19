@@ -110,16 +110,15 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if let injectedTrip = journeyInfo {
-            addressBarPresenter.setJourneyInfo(injectedTrip)
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMapView(reverseGeolocate: journeyInfo == nil)
+    }
 
-        mapPresenter.load(map: mapView, reverseGeolocate: journeyInfo != nil)
+    private func setupMapView(reverseGeolocate: Bool) {
+        mapPresenter.load(map: mapView, reverseGeolocate: reverseGeolocate)
         mapView.set(presenter: mapPresenter)
     }
 
@@ -280,23 +279,28 @@ extension KarhooBookingViewController: TripAllocationActions {
 
     func userSuccessfullyCancelledTrip() {
         presenter.tripSuccessfullyCancelled()
+        setupMapView(reverseGeolocate: true)
     }
 
     func tripAllocated(trip: TripInfo) {
         presenter.tripAllocated(trip: trip)
+        setupMapView(reverseGeolocate: true)
     }
 
     func tripCancelledBySystem(trip: TripInfo) {
         presenter.tripCancelledBySystem(trip: trip)
+        setupMapView(reverseGeolocate: true)
     }
     
     func tripDriverAllocationDelayed(trip: TripInfo) {
         presenter.tripDriverAllocationDelayed(trip: trip)
+        setupMapView(reverseGeolocate: true)
     }
     
     func cancelTripFailed(error: KarhooError?,
                           trip: TripInfo) {
         presenter.tripCancellationFailed(trip: trip)
+        setupMapView(reverseGeolocate: true)
     }
 }
 

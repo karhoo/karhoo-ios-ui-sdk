@@ -10,6 +10,7 @@ import Foundation
 
 final class KarhooAddressDisplayView: UIView {
 
+    private var stackContainer: UIStackView!
     private var addressTypeImage: UIImageView!
     private var addressDisplayLabel: UILabel!
 
@@ -30,34 +31,36 @@ final class KarhooAddressDisplayView: UIView {
     private func setUpView() {
         backgroundColor = .white
 
+        stackContainer = UIStackView()
+        stackContainer.accessibilityIdentifier = "stackView"
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
+        stackContainer.axis = .horizontal
+        stackContainer.distribution = .fillProportionally
+        addSubview(stackContainer)
+
+        stackContainer.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingLeft: 8, paddingRight: 8)
+        stackContainer.centerY(inView: self)
+
         addressTypeImage = UIImageView()
         addressTypeImage.translatesAutoresizingMaskIntoConstraints = false
         addressTypeImage.accessibilityIdentifier = "address_display_dot"
         addressTypeImage.isAccessibilityElement = true
-        addSubview(addressTypeImage)
-        
-        NSLayoutConstraint.activate([
-            addressTypeImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            addressTypeImage.heightAnchor.constraint(equalToConstant: 15),
-            addressTypeImage.widthAnchor.constraint(equalToConstant: 15),
-            addressTypeImage.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
-        
+        stackContainer.addSubview(addressTypeImage)
+
         addressDisplayLabel = UILabel()
         addressDisplayLabel.translatesAutoresizingMaskIntoConstraints = false
         addressDisplayLabel.accessibilityIdentifier = "addressDisplayLabel"
-        addressDisplayLabel.numberOfLines = 2
+        addressDisplayLabel.numberOfLines = 3
+        addressDisplayLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         addressDisplayLabel.font = KarhooUI.fonts.bodyRegular()
         addressDisplayLabel.textColor = KarhooUI.colors.darkGrey
-        addSubview(addressDisplayLabel)
-        
-        NSLayoutConstraint.activate([
-            addressDisplayLabel.leadingAnchor.constraint(equalTo: addressTypeImage.trailingAnchor, constant: 8),
-            addressDisplayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
-            addressDisplayLabel.centerYAnchor.constraint(equalTo: addressTypeImage.centerYAnchor),
-            addressDisplayLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 15),
-            addressDisplayLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -15)
-        ])
+        stackContainer.addSubview(addressDisplayLabel)
+
+        addressTypeImage.anchor(leading: stackContainer.leadingAnchor, paddingLeft: 8, width: 15, height: 15)
+        addressTypeImage.centerY(inView: stackContainer)
+
+        addressDisplayLabel.anchor(leading: addressTypeImage.trailingAnchor, trailing: stackContainer.trailingAnchor, paddingTop: 8, paddingLeft: 10, paddingBottom: 8, paddingRight: 4)
+        addressDisplayLabel.centerY(inView: stackContainer)
     }
     
     func set(addressType: AddressType) {
