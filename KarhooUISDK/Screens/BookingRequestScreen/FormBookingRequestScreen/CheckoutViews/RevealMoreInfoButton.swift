@@ -20,9 +20,9 @@ private enum ButtonMode {
     var image: UIImage {
         switch self {
         case .learnLess:
-            return UIImage.uisdkImage("dropdownIcon")
-        case .learnMore:
             return UIImage.uisdkImage("dropupIcon")
+        case .learnMore:
+            return UIImage.uisdkImage("dropdownIcon")
         }
     }
     
