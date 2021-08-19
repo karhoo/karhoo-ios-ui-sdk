@@ -89,6 +89,15 @@ public final class KarhooBookingStatus: BookingStatus {
         addressService.reverseGeocode(position: desiredPickup.toPosition()).execute(callback: { [weak self] result in
             if let newPickup = result.successValue() {
                 self?.set(pickup: newPickup)
+                self?.set(prebookDate: journeyInfo?.date)
+
+                if let destination = journeyInfo?.destination {
+                    self?.addressService.reverseGeocode(position: destination.toPosition()).execute(callback: { [weak self] result in
+                        if let newDestination = result.successValue() {
+                            self?.set(destination: newDestination)
+                        }
+                    })
+                }
             }
         })
     }

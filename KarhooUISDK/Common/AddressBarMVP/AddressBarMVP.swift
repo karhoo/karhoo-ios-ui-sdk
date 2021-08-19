@@ -48,6 +48,4 @@ protocol AddressBarPresenter: BookingDetailsObserver {
     func prebookCleared()
 
     func addressSwapSelected()
-    
-    func setJourneyInfo(_ journeyInfo: JourneyInfo)
 }

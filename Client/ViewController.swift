@@ -175,18 +175,35 @@ class ViewController: UIViewController {
     }
 
     func showKarhoo() {
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: nil,
-                                                                    passengerDetails: nil,
-                                                                    callback: { [weak self] result in
-                                                                        switch result {
-                                                                        case .completed(let result):
-                                                                            switch result {
-                                                                            case .tripAllocated(let trip): (self?.booking as? BookingScreen)?.openTrip(trip)
-                                                                            default: break
-                                                                            }
-                                                                        default: break
-                                                                        }
-                                                                    }) as? BookingScreen
+        var journeyInfo: JourneyInfo? = nil
+        var passangerDetails: PassengerDetails? = nil
+
+//        let originLat = CLLocationDegrees(Double(51.500869))
+//        let originLon = CLLocationDegrees(Double(-0.124979))
+//        let destLat = CLLocationDegrees(Double(51.502159))
+//        let destLon = CLLocationDegrees(Double(-0.142040))
+//
+//        journeyInfo = JourneyInfo(origin: CLLocation(latitude: originLat, longitude: originLon),
+//                                                     destination: CLLocation(latitude: destLat, longitude: destLon))
+//
+//        passangerDetails = PassengerDetails(firstName: "Name",
+//                            lastName: "Lastname",
+//                            email: "test@karhoo.com",
+//                            phoneNumber: "+15005550006",
+//                            locale: "en")
+
+        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
+                                         passengerDetails: passangerDetails,
+                                         callback: { [weak self] result in
+                                          switch result {
+                                          case .completed(let bookingScreenResult):
+                                            switch bookingScreenResult {
+                                            case .tripAllocated(let trip): (self?.booking as? BookingScreen)?.openTrip(trip)
+                                            default: break
+                                            }
+                                          default: break
+                                          }
+                                         }) as? BookingScreen
 
         self.present(booking!,
                      animated: true,
