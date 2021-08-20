@@ -320,21 +320,18 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor,
                           trailing: baseStackView.trailingAnchor,
                           paddingLeft: titleInset,
-                          paddingRight: titleInset,
-                          height: 110.0)
-
-        if !moreDetailsStackView.isHidden {
-            moreDetailsStackView.anchor(top: headerView.bottomAnchor,
-                                   leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor,
-                                   paddingLeft: 20.0,
-                                   paddingRight: 20.0)
-            rideInfoView.anchor(top: moreDetailsStackView.bottomAnchor)
-        } else {
-            rideInfoView.anchor(top: headerView.bottomAnchor)
-        }
-
-        rideInfoView.anchor(leading: baseStackView.leadingAnchor,
+                          paddingRight: titleInset)
+        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0).isActive = true
+        
+        moreDetailsStackView.anchor(top: headerView.bottomAnchor,
+                                    leading: baseStackView.leadingAnchor,
+                                    trailing: baseStackView.trailingAnchor,
+                                    paddingLeft: 22.0,
+                                    paddingBottom: 10.0,
+                                    paddingRight: 22.0)
+        
+        rideInfoView.anchor(top: moreDetailsStackView.bottomAnchor,
+                            leading: baseStackView.leadingAnchor,
                             trailing: baseStackView.trailingAnchor,
                             paddingLeft: titleInset,
                             paddingRight: titleInset)
@@ -444,7 +441,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                             termsStringURL: quote.fleet.termsConditionsUrl)
         
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
-        moreDetailsStackView.isHidden = viewModel.freeCancellationMessage == nil
         moreDetailsView.set(viewModel: viewModel)
     }
     
@@ -580,7 +576,8 @@ extension FormBookingRequestViewController: RevealMoreButtonActions {
         moreDetailsStackView.addArrangedSubview(moreDetailsView)
         moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
                                     trailing: moreDetailsStackView.trailingAnchor)
-        moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0).isActive = true
+        moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
+        
         UIView.animate(withDuration: 0.25, animations: { [unowned self] in
             self.headerView.hideVehicleCapacityView()
             self.moreDetailsView.alpha = 1.0

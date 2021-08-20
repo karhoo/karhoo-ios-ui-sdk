@@ -124,7 +124,12 @@ final class RideInfoView: UIView {
              scheduleCaption.trailingAnchor.constraint(lessThanOrEqualTo: priceTitle.leadingAnchor,
                                                 constant: 20.0)].forEach { $0.isActive = true }
             
-            rideTypeLabel.anchor(leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 10.0, paddingLeft: 10.0, paddingBottom: 10.0)
+            rideTypeLabel.anchor(leading: leadingAnchor,
+                                 bottom: bottomAnchor,
+                                 trailing: trailingAnchor,
+                                 paddingTop: 10.0,
+                                 paddingLeft: 10.0,
+                                 paddingBottom: 10.0)
             
             [scheduleMainValue.leadingAnchor.constraint(equalTo: scheduleCaption.leadingAnchor),
              scheduleMainValue.topAnchor.constraint(equalTo: scheduleCaption.bottomAnchor, constant: 5.0),
@@ -132,12 +137,26 @@ final class RideInfoView: UIView {
              scheduleMainValue.bottomAnchor.constraint(equalTo: rideTypeLabel.topAnchor, constant: -10.0)]
                 .forEach { $0.isActive = true }
             
-            priceTitle.anchor(top: topAnchor, trailing: trailingAnchor, paddingTop: 10.0, paddingRight: 10.0)
+            priceTitle.anchor(top: topAnchor,
+                              trailing: trailingAnchor,
+                              paddingTop: 10.0,
+                              paddingRight: 10.0)
             
-            priceText.anchor(top: priceTitle.bottomAnchor, bottom: ridePriceType.topAnchor, trailing: priceTitle.trailingAnchor, paddingTop: 5.0, paddingBottom: 10.0)
+            priceText.anchor(top: priceTitle.bottomAnchor,
+                             bottom: ridePriceType.topAnchor,
+                             trailing: priceTitle.trailingAnchor,
+                             paddingTop: 5.0,
+                             paddingBottom: 10.0)
             
-            ridePriceType.anchor(bottom: bottomAnchor, trailing: trailingAnchor, paddingBottom: 10.0, paddingRight: 10.0)
-            rideTypeInfoImage.anchor(bottom: ridePriceType.bottomAnchor, trailing: ridePriceType.leadingAnchor, paddingRight: 3.0, width: 12.0, height: 12.0)
+            ridePriceType.anchor(bottom: bottomAnchor,
+                                 trailing: trailingAnchor,
+                                 paddingBottom: 10.0,
+                                 paddingRight: 10.0)
+            rideTypeInfoImage.anchor(bottom: ridePriceType.bottomAnchor,
+                                     trailing: ridePriceType.leadingAnchor,
+                                     paddingRight: 3.0,
+                                     width: 12.0,
+                                     height: 12.0)
             
             didSetupConstraints = true
         }
@@ -150,5 +169,6 @@ final class RideInfoView: UIView {
         scheduleMainValue.text = viewModel.scheduleMainValue
         ridePriceType.text = viewModel.fareType
         priceText.text = viewModel.fare
+        rideTypeLabel.text = viewModel.pickUpType
     }
 }

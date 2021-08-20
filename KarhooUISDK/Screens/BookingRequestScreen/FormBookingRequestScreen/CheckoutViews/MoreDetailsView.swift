@@ -75,9 +75,7 @@ final class MoreDetailsView: UIView {
             
             stackView.anchor(top: topAnchor,
                              leading: leadingAnchor,
-                             trailing: trailingAnchor,
-                             paddingLeft: 10.0,
-                             paddingRight: 10.0)
+                             trailing: trailingAnchor)
             fleetCapabilitiesStackView.anchor(top: stackView.topAnchor,
                                               leading: stackView.leadingAnchor,
                                               trailing: stackView.trailingAnchor)
@@ -95,7 +93,7 @@ final class MoreDetailsView: UIView {
         }
         
         if viewModel.baggageCapacity > 0 {
-            setupCapacityView(forPassenger: false, maxNumber: viewModel.passengerCapacity)
+            setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
         }
         
         viewModel.fleetCapabilities.forEach { capability in
