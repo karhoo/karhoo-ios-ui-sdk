@@ -150,18 +150,7 @@ final class FormCheckoutHeaderView: UIView {
         if viewModel.vehicleTags.count >= 2 {
             let firstTwoCarTags = viewModel.vehicleTags.prefix(2)
             firstTwoCarTags.forEach {
-                let image = UIImageView()
-                image.image = $0.image
-                image.contentMode = .scaleAspectFit
-                image.anchor(width: 9.0, height: 9.0)
-                image.tintColor = KarhooUI.colors.darkGrey
-                
-                let label = UILabel()
-                label.text = $0.title
-                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
-                label.textColor = KarhooUI.colors.darkGrey
-                fleetCapabilitiesStackView.addArrangedSubview(image)
-                fleetCapabilitiesStackView.addArrangedSubview(label)
+                setupView(for: $0)
             }
             if viewModel.vehicleTags.count > 2 {
                 let label = UILabel()
@@ -172,20 +161,24 @@ final class FormCheckoutHeaderView: UIView {
             }
         } else {
             viewModel.vehicleTags.forEach {
-                let image = UIImageView()
-                image.image = $0.image
-                image.contentMode = .scaleAspectFit
-                image.anchor(width: 9.0, height: 9.0)
-                image.tintColor = KarhooUI.colors.darkGrey
-                
-                let label = UILabel()
-                label.text = $0.title
-                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
-                label.textColor = KarhooUI.colors.darkGrey
-                fleetCapabilitiesStackView.addArrangedSubview(image)
-                fleetCapabilitiesStackView.addArrangedSubview(label)
+                setupView(for: $0)
             }
         }
+    }
+    
+    private func setupView(for vehicleTag: VehicleTag) {
+        let image = UIImageView()
+        image.image = vehicleTag.image
+        image.contentMode = .scaleAspectFit
+        image.anchor(width: 9.0, height: 9.0)
+        image.tintColor = KarhooUI.colors.darkGrey
+        
+        let label = UILabel()
+        label.text = vehicleTag.title
+        label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
+        label.textColor = KarhooUI.colors.darkGrey
+        fleetCapabilitiesStackView.addArrangedSubview(image)
+        fleetCapabilitiesStackView.addArrangedSubview(label)
     }
     
     func set(viewModel: QuoteViewModel) {
