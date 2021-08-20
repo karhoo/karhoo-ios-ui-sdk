@@ -47,7 +47,7 @@ final class MoreDetailsView: UIView {
         label.textColor = KarhooUI.colors.infoColor
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = "Uber is a private-hired vehicles fleet providing e-hailing services in more than 10,000 cities. It has transparent pricing with upfront pricing in real time."
+        label.text = "Alpha Taxi is a private-hired vehicles fleet providing e-hailing services in more than 10,000 cities. It has transparent pricing with upfront pricing in real time."
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         
         return label
@@ -115,10 +115,12 @@ final class MoreDetailsView: UIView {
         
         let iconView = UIImageView()
         iconView.image = capability.image
-        iconView.setDimensions(height: 20.0,
-                               width: 20.0)
+        iconView.setDimensions(height: 14.0,
+                               width: 14.0)
         iconView.tintColor = KarhooUI.colors.infoColor
         circleBackgroundView.addSubview(iconView)
+        iconView.centerX(inView: circleBackgroundView)
+        iconView.centerY(inView: circleBackgroundView)
         
         let titleLabel = UILabel()
         titleLabel.text = capability.title
@@ -146,10 +148,12 @@ final class MoreDetailsView: UIView {
         
         let iconView = UIImageView()
         iconView.image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
-        iconView.setDimensions(height: 20.0,
-                               width: 20.0)
+        iconView.setDimensions(height: 14.0,
+                               width: 14.0)
         iconView.tintColor = KarhooUI.colors.infoColor
         circleBackgroundView.addSubview(iconView)
+        iconView.centerX(inView: circleBackgroundView)
+        iconView.centerY(inView: circleBackgroundView)
         
         let titleLabel = UILabel()
         titleLabel.text = "\(maxNumber) \(passenger ? "passengers" : "luggages") max"

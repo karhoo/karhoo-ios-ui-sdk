@@ -194,4 +194,12 @@ final class FormCheckoutHeaderView: UIView {
         
         updateConstraints()
     }
+    
+    func hideVehicleCapacityView() {
+        vehicleCapacityView.alpha = 0.0
+    }
+    
+    func displayVehicleCapacityView() {
+        vehicleCapacityView.alpha = 1.0
+    }
 }
