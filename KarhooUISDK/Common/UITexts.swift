@@ -204,6 +204,9 @@ public enum UITexts {
         public static let guestCheckoutPassengerDetailsTitle = "Text.Booking.GuestCheckoutPassengerDetailsTitle".localized
         public static let guestCheckoutPaymentDetailsTitle = "Text.Booking.GuestCheckoutPaymentDetailsTitle".localized
         public static let guestCheckoutFlightNumberPlaceholder = "Text.Booking.GuestCheckoutFlightNumberPlaceholder".localized
+        public static let estimatedInfoBox = "Text.Booking.EstimatedInfoBox".localized
+        public static let meteredInfoBox = "Text.Booking.MeteredInfoBox".localized
+        public static let fixedInfoBox = "Text.Booking.FixedInfoBox".localized
     }
 
     public enum Availability {

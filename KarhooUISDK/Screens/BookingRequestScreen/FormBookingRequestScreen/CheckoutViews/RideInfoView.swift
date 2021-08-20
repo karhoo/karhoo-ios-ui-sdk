@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol InfoButtonActions: AnyObject {
+    func infoButtonPressed()
+}
+
 final class RideInfoView: UIView {
+    private weak var actions: InfoButtonActions?
     private var didSetupConstraints: Bool = false
     
     private lazy var scheduleCaption: UILabel = {
@@ -77,15 +82,16 @@ final class RideInfoView: UIView {
         return ridePriceType
     }()
     
-    private lazy var rideTypeInfoImage: UIImageView = {
-        let infoIcon = UIImageView()
-        infoIcon.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
-        infoIcon.translatesAutoresizingMaskIntoConstraints = false
-        infoIcon.image = UIImage.uisdkImage("info_icon")
-        infoIcon.tintColor = KarhooUI.colors.accent
-        infoIcon.contentMode = .scaleAspectFit
+    private lazy var rideTypeInfoButton: UIButton = {
+        let infoButton = UIButton(type: .custom)
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        infoButton.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
+        infoButton.setImage(UIImage.uisdkImage("info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
+        infoButton.tintColor = KarhooUI.colors.accent
+        infoButton.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
+        infoButton.imageView?.contentMode = .scaleAspectFit
         
-        return infoIcon
+        return infoButton
     }()
     
     init() {
@@ -111,9 +117,8 @@ final class RideInfoView: UIView {
         addSubview(rideTypeLabel)
         addSubview(priceTitle)
         addSubview(priceText)
-        addSubview(rideTypeInfoImage)
+        addSubview(rideTypeInfoButton)
         addSubview(ridePriceType)
-        
     }
     
     override func updateConstraints() {
@@ -152,7 +157,7 @@ final class RideInfoView: UIView {
                                  trailing: trailingAnchor,
                                  paddingBottom: 10.0,
                                  paddingRight: 10.0)
-            rideTypeInfoImage.anchor(bottom: ridePriceType.bottomAnchor,
+            rideTypeInfoButton.anchor(bottom: ridePriceType.bottomAnchor,
                                      trailing: ridePriceType.leadingAnchor,
                                      paddingRight: 3.0,
                                      width: 12.0,
@@ -170,5 +175,13 @@ final class RideInfoView: UIView {
         ridePriceType.text = viewModel.fareType
         priceText.text = viewModel.fare
         rideTypeLabel.text = viewModel.pickUpType
+    }
+     
+    public func setActions(_ actions: InfoButtonActions) {
+        self.actions = actions
+    }
+    
+    @objc private func infoButtonPressed() {
+        actions?.infoButtonPressed()
     }
 }

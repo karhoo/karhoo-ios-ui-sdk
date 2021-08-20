@@ -58,44 +58,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
         return passengerDetailsAndPaymentView
     }()
-    // TODO: leave these lines commented here until next related story (will be moved in a different place,
-    // the code can be referenced from here
-    
-//    private lazy var passengerDetailsView: PassengerDetailsView = {
-//        let passengerDetailsView = PassengerDetailsView()
-//        passengerDetailsView.translatesAutoresizingMaskIntoConstraints = false
-//        passengerDetailsView.accessibilityIdentifier = "passengerDetailsView"
-//        passengerDetailsView.actions = self
-//        return passengerDetailsView
-//    }()
-//
-//    private lazy var passengerDetailsTitle: UILabel = {
-//        let passengerDetailsTitle = UILabel()
-//        passengerDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
-//        passengerDetailsTitle.accessibilityIdentifier = "passenger_details_title_label"
-//        passengerDetailsTitle.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
-//        passengerDetailsTitle.textColor = KarhooUI.colors.infoColor
-//        passengerDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
-//        return passengerDetailsTitle
-//    }()
-//
-//    private lazy var paymentDetailsTitle: UILabel = {
-//        let paymentDetailsTitle = UILabel()
-//        paymentDetailsTitle.translatesAutoresizingMaskIntoConstraints = false
-//        paymentDetailsTitle.accessibilityIdentifier = "payment_details_title_label"
-//        paymentDetailsTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
-//        paymentDetailsTitle.textColor = KarhooUI.colors.infoColor
-//        paymentDetailsTitle.font = KarhooUI.fonts.getBoldFont(withSize: 20.0)
-//        return paymentDetailsTitle
-//    }()
-//
-//    private lazy var addPaymentView: KarhooAddCardView = {
-//        let addPaymentView = KarhooAddCardView()
-//        addPaymentView.baseViewController = self
-//        addPaymentView.actions = self
-//        return addPaymentView
-//    }()
-    
+
     private lazy var backButton: UIButton = {
         let backButton = UIButton(type: .custom)
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -183,6 +146,17 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return cancellationInfo
     }()
     
+    private lazy var rideInfoStackView: UIStackView = {
+        let rideInfoStackView = UIStackView()
+        rideInfoStackView.accessibilityIdentifier = "ride_info_stack_view"
+        rideInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+        rideInfoStackView.axis = .vertical
+        rideInfoStackView.spacing = 8
+        rideInfoStackView.distribution = .fill
+        
+        return rideInfoStackView
+    }()
+    
     private lazy var rideInfoView: RideInfoView = {
         let rideInfoView = RideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -190,8 +164,20 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
+        rideInfoView.setActions(self)
         
         return rideInfoView
+    }()
+    
+    private lazy var farePriceInfoView: FarePriceInfoView = {
+        let farePriceInfoView = FarePriceInfoView()
+        farePriceInfoView.translatesAutoresizingMaskIntoConstraints = false
+        farePriceInfoView.accessibilityIdentifier = "fare_price_info_view"
+        farePriceInfoView.backgroundColor = KarhooUI.colors.accent
+        farePriceInfoView.layer.masksToBounds = true
+        farePriceInfoView.layer.cornerRadius = 8.0
+        
+        return farePriceInfoView
     }()
     
     private lazy var supplierStackContainer: UIStackView = {
@@ -247,7 +233,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
         learnMoreStackView.addArrangedSubview(learnMoreButton)
         
-        baseStackView.addViewToStack(view: rideInfoView)
+        baseStackView.addViewToStack(view: rideInfoStackView)
+        rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         
         setUpFields()
@@ -330,12 +317,12 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                     paddingBottom: 10.0,
                                     paddingRight: 22.0)
         
-        rideInfoView.anchor(top: moreDetailsStackView.bottomAnchor,
-                            leading: baseStackView.leadingAnchor,
-                            trailing: baseStackView.trailingAnchor,
-                            paddingLeft: titleInset,
-                            paddingRight: titleInset)
-        passengerDetailsAndPaymentView.anchor(top: rideInfoView.bottomAnchor,
+        rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor,
+                                 leading: baseStackView.leadingAnchor,
+                                 trailing: baseStackView.trailingAnchor,
+                                 paddingLeft: titleInset,
+                                 paddingRight: titleInset)
+        passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor,
                                               leading: baseStackView.leadingAnchor,
                                               trailing: baseStackView.trailingAnchor,
                                               paddingTop: titleInset,
@@ -442,6 +429,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         moreDetailsView.set(viewModel: viewModel)
+        farePriceInfoView.setInfoText(for: quote.quoteType)
     }
     
     func set(price: String?) {
@@ -590,5 +578,12 @@ extension FormBookingRequestViewController: RevealMoreButtonActions {
             self.moreDetailsView.removeFromSuperview()
             self.headerView.displayVehicleCapacityView()
         })
+    }
+}
+
+extension FormBookingRequestViewController: InfoButtonActions {
+    func infoButtonPressed() {
+        rideInfoStackView.addArrangedSubview(farePriceInfoView)
+        farePriceInfoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
     }
 }

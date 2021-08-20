@@ -7,21 +7,19 @@
 //
 
 import UIKit
-
-enum FareTypeInfo: String {
-    
-}
+import KarhooSDK
 
 final class FarePriceInfoView: UIView {
     private lazy var fareTypeInfoLabel: UILabel = {
-        let scheduleCaption = UILabel()
-        scheduleCaption.translatesAutoresizingMaskIntoConstraints = false
-        scheduleCaption.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
-        scheduleCaption.textColor = KarhooUI.colors.infoColor
-        scheduleCaption.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
-        scheduleCaption.text = "This fleet charges a flat fare. The final fare may be affected by extras (tolls, delay, etc), please refer to the fleet's Terms and Conditions."
+        let fareTypeInfo = UILabel()
+        fareTypeInfo.translatesAutoresizingMaskIntoConstraints = false
+        fareTypeInfo.accessibilityIdentifier = "fare_type_info_label"
+        fareTypeInfo.textColor = KarhooUI.colors.white
+        fareTypeInfo.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        fareTypeInfo.text = "This fleet is a non-regulated taxi."
+        fareTypeInfo.numberOfLines = 0
         
-        return scheduleCaption
+        return fareTypeInfo
     }()
 
     private lazy var infoIcon: UIImageView = {
@@ -40,17 +38,43 @@ final class FarePriceInfoView: UIView {
         setupView()
     }
     
-    convenience init(fareTypeInfo: String) {
-        self.init()
-        fareTypeInfoLabel.text = fareTypeInfo
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func updateConstraints() {
-        
+    private func setupView() {
+        addSubview(infoIcon)
+        addSubview(fareTypeInfoLabel)
     }
+    
+    private func setupConstraints() {
+        infoIcon.centerY(inView: self)
+        infoIcon.anchor(leading: leadingAnchor,
+                        trailing: fareTypeInfoLabel.leadingAnchor,
+                        paddingLeft: 10.0,
+                        paddingRight: 10.0)
+        fareTypeInfoLabel.centerY(inView: self)
+        fareTypeInfoLabel.anchor(trailing: trailingAnchor,
+                                 paddingRight: 10.0)
+    }
+    
+    private func retrieveTextBasedOn(fareType: QuoteType) -> String {
+        switch fareType {
+        case .estimated:
+            return UITexts.Booking.estimatedInfoBox
+        case .fixed:
+            return UITexts.Booking.fixedInfoBox
+        case .metered:
+            return UITexts.Booking.meteredInfoBox
+        @unknown default:
+            fatalError()
+        }
+    }
+    
+    func setInfoText(for fareType: QuoteType) {
+        fareTypeInfoLabel.text = retrieveTextBasedOn(fareType: fareType)
+        setupConstraints()
+    }
+
 }
     

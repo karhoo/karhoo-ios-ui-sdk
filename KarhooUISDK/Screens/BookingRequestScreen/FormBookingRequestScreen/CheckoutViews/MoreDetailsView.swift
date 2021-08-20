@@ -105,39 +105,19 @@ final class MoreDetailsView: UIView {
     }
     
     private func setupCapabilityView(for capability: FleetCapabilities) {
-        let circleBackgroundView = UIView()
-        circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
-        circleBackgroundView.setDimensions(height: 20.0,
-                                           width: 20.0)
-        circleBackgroundView.layer.cornerRadius = 10.0
-        
-        let iconView = UIImageView()
-        iconView.image = capability.image
-        iconView.setDimensions(height: 14.0,
-                               width: 14.0)
-        iconView.tintColor = KarhooUI.colors.infoColor
-        circleBackgroundView.addSubview(iconView)
-        iconView.centerX(inView: circleBackgroundView)
-        iconView.centerY(inView: circleBackgroundView)
-        
-        let titleLabel = UILabel()
-        titleLabel.text = capability.title
-        titleLabel.textColor = KarhooUI.colors.infoColor
-        titleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
-        
-        let stackView = UIStackView()
-        stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 5
-        stackView.addArrangedSubview(circleBackgroundView)
-        stackView.addArrangedSubview(titleLabel)
-        
-        fleetCapabilitiesStackView.addArrangedSubview(stackView)
+        let image = capability.image
+        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
+        setupView(for: capability.title, with: image, accessibilityId: accessibilityId)
     }
     
     private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) {
+        let title = "\(maxNumber) \(passenger ? "passengers" : "luggages") max"
+        let image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
+        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
+        setupView(for: title, with: image, accessibilityId: accessibilityId)
+    }
+    
+    private func setupView(for title: String, with image: UIImage, accessibilityId: String) {
         let circleBackgroundView = UIView()
         circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
         circleBackgroundView.setDimensions(height: 20.0,
@@ -145,7 +125,7 @@ final class MoreDetailsView: UIView {
         circleBackgroundView.layer.cornerRadius = 10.0
         
         let iconView = UIImageView()
-        iconView.image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
+        iconView.image = image
         iconView.setDimensions(height: 14.0,
                                width: 14.0)
         iconView.tintColor = KarhooUI.colors.infoColor
@@ -154,12 +134,12 @@ final class MoreDetailsView: UIView {
         iconView.centerY(inView: circleBackgroundView)
         
         let titleLabel = UILabel()
-        titleLabel.text = "\(maxNumber) \(passenger ? "passengers" : "luggages") max"
+        titleLabel.text = title
         titleLabel.textColor = KarhooUI.colors.infoColor
         titleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         
         let stackView = UIStackView()
-        stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
+        stackView.accessibilityIdentifier = accessibilityId
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fill
