@@ -149,7 +149,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerPaymentSubtitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
         passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerPaymentSubtitleLabel.textAlignment = .center
-        passengerPaymentSubtitleLabel.text = "Add payment mean"
+        passengerPaymentSubtitleLabel.text = UITexts.Generic.add
         passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
         
         return passengerPaymentSubtitleLabel
