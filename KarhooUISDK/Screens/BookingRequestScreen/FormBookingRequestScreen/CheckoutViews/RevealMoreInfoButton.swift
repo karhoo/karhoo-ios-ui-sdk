@@ -45,20 +45,50 @@ public struct KHRevealMoreButtonViewID {
 
 final class RevealMoreInfoButton: UIButton {
     private weak var actions: RevealMoreButtonActions?
-    private var containerView: UIView!
-    private var button: UIButton!
-    private var buttonLabel: UILabel!
-    private var currentMode: ButtonMode
+    private var currentMode: ButtonMode = .learnMore
     private var didSetupConstraints = false
+    
+    private var containerView: UIView = {
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.accessibilityIdentifier = KHRevealMoreButtonViewID.container
+        containerView.backgroundColor = .clear
+        
+        return containerView
+    }()
+    
+    private lazy var button: UIButton = {
+        let button = UIButton(type: .custom)
+        button.accessibilityIdentifier = KHBookingButtonViewID.button
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var buttonLabel: UILabel = {
+        let buttonLabel = UILabel()
+        buttonLabel.translatesAutoresizingMaskIntoConstraints = false
+        buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
+        buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+        buttonLabel.text = currentMode.title
+        buttonLabel.textColor = KarhooUI.colors.accent
+        buttonLabel.textAlignment = .center
+        
+        return buttonLabel
+    }()
 
     private lazy var dropdownImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = currentMode.image
+        imageView.accessibilityIdentifier = KHRevealMoreButtonViewID.image
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = KarhooUI.colors.accent
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     init() {
-        currentMode = .learnMore
-        
         super.init(frame: .zero)
         self.setupView()
     }
@@ -71,32 +101,10 @@ final class RevealMoreInfoButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHRevealMoreButtonViewID.button
         
-        containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.accessibilityIdentifier = KHRevealMoreButtonViewID.container
-        containerView.backgroundColor = .clear
         addSubview(containerView)
         
-        buttonLabel = UILabel()
-        buttonLabel.translatesAutoresizingMaskIntoConstraints = false
-        buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
-        buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
-        buttonLabel.text = currentMode.title
-        buttonLabel.textColor = KarhooUI.colors.accent
-        buttonLabel.textAlignment = .center
         containerView.addSubview(buttonLabel)
-        
-        dropdownImage.image = currentMode.image
-        dropdownImage.accessibilityIdentifier = KHRevealMoreButtonViewID.image
-        dropdownImage.translatesAutoresizingMaskIntoConstraints = false
-        dropdownImage.tintColor = KarhooUI.colors.accent
-        dropdownImage.contentMode = .scaleAspectFill
         containerView.addSubview(dropdownImage)
-        
-        button = UIButton(type: .custom)
-        button.accessibilityIdentifier = KHBookingButtonViewID.button
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
         containerView.addSubview(button)
     }
     

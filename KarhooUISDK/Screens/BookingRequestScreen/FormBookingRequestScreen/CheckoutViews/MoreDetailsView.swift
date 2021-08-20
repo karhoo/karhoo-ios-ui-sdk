@@ -68,11 +68,9 @@ final class MoreDetailsView: UIView {
         
         addSubview(stackView)
         stackView.addArrangedSubview(fleetCapabilitiesStackView)
-        stackView.addArrangedSubview(detailsLabel)
-        
     }
     
-    override func updateConstraints() {
+    private func setupConstraints() {
         if !didSetupConstraints {
             
             stackView.anchor(top: topAnchor,
@@ -82,11 +80,7 @@ final class MoreDetailsView: UIView {
                              paddingRight: 10.0)
             fleetCapabilitiesStackView.anchor(top: stackView.topAnchor,
                                               leading: stackView.leadingAnchor,
-                                              bottom: detailsLabel.topAnchor,
                                               trailing: stackView.trailingAnchor)
-            detailsLabel.anchor(leading: stackView.leadingAnchor,
-                                trailing: stackView.trailingAnchor)
-            
             didSetupConstraints = true
         }
         
@@ -96,34 +90,81 @@ final class MoreDetailsView: UIView {
     func set(viewModel: QuoteViewModel) {
         detailsLabel.text = viewModel.fleetDescription
         
-        [FleetCapabilities.driverDetails, FleetCapabilities.gpsTracking, FleetCapabilities.flightTracking].forEach { capability in
-            let circleBackgroundView = UIView()
-            circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
-            circleBackgroundView.setDimensions(height: 20.0,
-                                               width: 20.0)
-            circleBackgroundView.layer.cornerRadius = 10.0
-            
-            let iconView = UIImageView()
-            iconView.image = capability.image
-            iconView.setDimensions(height: 20.0,
-                                   width: 20.0)
-            iconView.tintColor = KarhooUI.colors.infoColor
-            circleBackgroundView.addSubview(iconView)
-            
-            let titleLabel = UILabel()
-            titleLabel.text = capability.title
-            
-            let stackView = UIStackView()
-            stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.axis = .horizontal
-            stackView.distribution = .equalSpacing
-            stackView.spacing = 5
-            stackView.backgroundColor = .systemPink
-            stackView.addArrangedSubview(circleBackgroundView)
-            stackView.addArrangedSubview(titleLabel)
-            
-            fleetCapabilitiesStackView.addArrangedSubview(stackView)
+        if viewModel.passengerCapacity > 0 {
+            setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
         }
+        
+        if viewModel.baggageCapacity > 0 {
+            setupCapacityView(forPassenger: false, maxNumber: viewModel.passengerCapacity)
+        }
+        
+        viewModel.fleetCapabilities.forEach { capability in
+            setupCapabilityView(for: capability)
+        }
+        fleetCapabilitiesStackView.addArrangedSubview(detailsLabel)
+        
+        setupConstraints()
+    }
+    
+    private func setupCapabilityView(for capability: FleetCapabilities) {
+        let circleBackgroundView = UIView()
+        circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
+        circleBackgroundView.setDimensions(height: 20.0,
+                                           width: 20.0)
+        circleBackgroundView.layer.cornerRadius = 10.0
+        
+        let iconView = UIImageView()
+        iconView.image = capability.image
+        iconView.setDimensions(height: 20.0,
+                               width: 20.0)
+        iconView.tintColor = KarhooUI.colors.infoColor
+        circleBackgroundView.addSubview(iconView)
+        
+        let titleLabel = UILabel()
+        titleLabel.text = capability.title
+        titleLabel.textColor = KarhooUI.colors.infoColor
+        titleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
+        
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 5
+        stackView.addArrangedSubview(circleBackgroundView)
+        stackView.addArrangedSubview(titleLabel)
+        
+        fleetCapabilitiesStackView.addArrangedSubview(stackView)
+    }
+    
+    private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) {
+        let circleBackgroundView = UIView()
+        circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
+        circleBackgroundView.setDimensions(height: 20.0,
+                                           width: 20.0)
+        circleBackgroundView.layer.cornerRadius = 10.0
+        
+        let iconView = UIImageView()
+        iconView.image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
+        iconView.setDimensions(height: 20.0,
+                               width: 20.0)
+        iconView.tintColor = KarhooUI.colors.infoColor
+        circleBackgroundView.addSubview(iconView)
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "\(maxNumber) \(passenger ? "passengers" : "luggages") max"
+        titleLabel.textColor = KarhooUI.colors.infoColor
+        titleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
+        
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 5
+        stackView.addArrangedSubview(circleBackgroundView)
+        stackView.addArrangedSubview(titleLabel)
+        
+        fleetCapabilitiesStackView.addArrangedSubview(stackView)
     }
 }

@@ -579,8 +579,8 @@ extension FormBookingRequestViewController: RevealMoreButtonActions {
         moreDetailsView.alpha = 0.0
         moreDetailsStackView.addArrangedSubview(moreDetailsView)
         moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
-                                    trailing: moreDetailsStackView.trailingAnchor,
-                                    height: 130.0)
+                                    trailing: moreDetailsStackView.trailingAnchor)
+        moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0).isActive = true
         UIView.animate(withDuration: 0.25, animations: { [unowned self] in
             self.moreDetailsView.alpha = 1.0
         })

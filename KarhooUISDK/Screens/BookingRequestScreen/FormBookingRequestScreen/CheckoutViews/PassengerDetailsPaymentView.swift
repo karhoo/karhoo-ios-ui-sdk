@@ -100,7 +100,7 @@ final class PassengerDetailsPaymentView: UIView {
         let passengerPaymentIcon = UIImageView()
         passengerPaymentIcon.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentImage
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentIcon.image = UIImage.uisdkImage("info_icon")
+        passengerPaymentIcon.image = UIImage.uisdkImage("visaIcon")
         passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
