@@ -9,12 +9,10 @@ import UIKit
 import KarhooSDK
 
 final class FormBookingRequestViewController: UIViewController, BookingRequestView {
-    
     private var didSetupConstraints = false
     private var headerView: FormCheckoutHeaderView!
     private var passengerDetailsValid: Bool?
     private var termsConditionsView: TermsConditionsView!
-    private var footerView: UIView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private var presenter: BookingRequestPresenter
     private let drawAnimationTime: Double = 0.45
@@ -25,28 +23,32 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         footerStack.accessibilityIdentifier = "footer_stack_view"
         footerStack.axis = .vertical
         footerStack.spacing = 15.0
-        
         return footerStack
     }()
     
     private lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
         bookingButton.anchor(height: 55.0)
+        bookingButton.set(actions: self)
         return bookingButton
     }()
     
+    private lazy var footerView: UIView = {
+        let footerView = UIView()
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        footerView.accessibilityIdentifier = "footer_view"
+        footerView.backgroundColor = .white
+        return footerView
+    }()
+    
     private lazy var commentsInputText: KarhooTextInputView = {
-        let commentsInputText = KarhooTextInputView(contentType: .comment,
-                                                isOptional: true,
-                                                accessibilityIdentifier: "comment_input_view")
+        let commentsInputText = KarhooTextInputView(contentType: .comment, isOptional: true, accessibilityIdentifier: "comment_input_view")
         commentsInputText.delegate = self
         return commentsInputText
     }()
     
     private lazy var poiDetailsInputText: KarhooTextInputView = {
-        let poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails,
-                                                  isOptional: true,
-                                                  accessibilityIdentifier: "poi_input_view")
+        let poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails, isOptional: true, accessibilityIdentifier: "poi_input_view")
         poiDetailsInputText.delegate = self
         poiDetailsInputText.isHidden = true
         return poiDetailsInputText
@@ -67,7 +69,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backButton.tintColor = KarhooUI.colors.darkGrey
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.imageView?.contentMode = .scaleAspectFit
-        
         return backButton
     }()
     
@@ -79,7 +80,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backTitleButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         backTitleButton.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
         backTitleButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        
         return backTitleButton
     }()
     
@@ -108,7 +108,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         moreDetailsStackView.axis = .vertical
         moreDetailsStackView.spacing = 8
         moreDetailsStackView.distribution = .fill
-        
         return moreDetailsStackView
     }()
     
@@ -124,7 +123,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         learnMoreStackView.axis = .horizontal
         learnMoreStackView.spacing = 8
         learnMoreStackView.distribution = .fill
-        
         return learnMoreStackView
     }()
     
@@ -142,7 +140,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         cancellationInfo.textColor = KarhooUI.colors.accent
         cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
-        
         return cancellationInfo
     }()
     
@@ -153,7 +150,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoStackView.axis = .vertical
         rideInfoStackView.spacing = 8
         rideInfoStackView.distribution = .fill
-        
         return rideInfoStackView
     }()
     
@@ -165,7 +161,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
         rideInfoView.setActions(self)
-        
         return rideInfoView
     }()
     
@@ -176,7 +171,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         farePriceInfoView.backgroundColor = KarhooUI.colors.accent
         farePriceInfoView.layer.masksToBounds = true
         farePriceInfoView.layer.cornerRadius = 8.0
-        
         return farePriceInfoView
     }()
     
@@ -213,10 +207,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
-        
-        bookingButton.set(actions: self)
         termsConditionsView = TermsConditionsView()
-        
         setUpView()
     }
     
@@ -232,40 +223,24 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         moreDetailsStackView.addArrangedSubview(learnMoreStackView)
         learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
         learnMoreStackView.addArrangedSubview(learnMoreButton)
-        
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
-        
-        setUpFields()
-        
+        baseStackView.addViewToStack(view: commentsInputText)
+        baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
         
-        // Footer view
-        footerView = UIView()
-        footerView.translatesAutoresizingMaskIntoConstraints = false
-        footerView.accessibilityIdentifier = "footer_view"
-        footerView.backgroundColor = .white
         container.addSubview(footerView)
-        
         footerView.addSubview(footerStack)
-        
         bookingButton.setDisabledMode()
         footerStack.addArrangedSubview(bookingButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         container.addGestureRecognizer(tapGesture)
-        
         view.setNeedsUpdateConstraints()
         
         presenter.load(view: self)
-        
         commentsInputText.isHidden = presenter.isKarhooUser()
-    }
-    
-    private func setUpFields() {
-        baseStackView.addViewToStack(view: commentsInputText)
-        baseStackView.addViewToStack(view: poiDetailsInputText)
     }
     
     override func updateViewConstraints() {
@@ -277,83 +252,32 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func setupConstraintsForDefault() {
-        view.anchor(width: UIScreen.main.bounds.width,
-                    height: UIScreen.main.bounds.height)
-        container.anchor(leading: view.leadingAnchor,
-                         trailing: view.trailingAnchor,
-                         width: UIScreen.main.bounds.width)
+        view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
-        backButton.anchor(top: container.topAnchor,
-                          leading: container.leadingAnchor,
-                          paddingTop: view.safeAreaInsets.top,
-                          paddingLeft: 20.0)
+        backButton.anchor(top: container.topAnchor, leading: container.leadingAnchor, paddingTop: view.safeAreaInsets.top, paddingLeft: 20.0)
         backTitleButton.centerY(inView: backButton)
-        backTitleButton.anchor(top: backButton.topAnchor,
-                               leading: backButton.trailingAnchor,
-                               paddingRight: 10.0)
+        backTitleButton.anchor(top: backButton.topAnchor, leading: backButton.trailingAnchor, paddingRight: 10.0)
         
-        container.anchor(height: UIScreen.main.bounds.height)
-        
-        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor,
-                                                                      constant: UIScreen.main.bounds.height)
+        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
-        
-        baseStackView.anchor(top: backButton.bottomAnchor,
-                             leading: container.leadingAnchor,
-                             bottom: footerView.topAnchor,
-                             trailing: container.trailingAnchor)
+        baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
         
         let titleInset: CGFloat = 15.0
-        headerView.anchor(leading: baseStackView.leadingAnchor,
-                          trailing: baseStackView.trailingAnchor,
-                          paddingLeft: titleInset,
-                          paddingRight: titleInset)
+        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
         
-        moreDetailsStackView.anchor(top: headerView.bottomAnchor,
-                                    leading: baseStackView.leadingAnchor,
-                                    trailing: baseStackView.trailingAnchor,
-                                    paddingTop: 8.0,
-                                    paddingLeft: 22.0,
-                                    paddingRight: 22.0)
+        moreDetailsStackView.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: 22.0, paddingRight: 22.0)
         
-        rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor,
-                                 leading: baseStackView.leadingAnchor,
-                                 trailing: baseStackView.trailingAnchor,
-                                 paddingTop: 8.0,
-                                 paddingLeft: titleInset,
-                                 paddingRight: titleInset)
-        passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor,
-                                              leading: baseStackView.leadingAnchor,
-                                              trailing: baseStackView.trailingAnchor,
-                                              paddingTop: titleInset,
-                                              paddingLeft: titleInset,
-                                              paddingRight: titleInset,
-                                              height: 92.0)
+        rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
+        passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
-        let textInputInset: CGFloat = 30.0
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor,
-                                   paddingLeft: textInputInset,
-                                   paddingRight: textInputInset)
-
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor,
-                                 trailing: baseStackView.trailingAnchor,
-                                 paddingLeft: textInputInset,
-                                 paddingRight: textInputInset)
+        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: 30.0, paddingRight: 30.0)
+        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: 30.0, paddingRight: 30.0)
         
-        footerView.anchor(leading: view.leadingAnchor,
-                          bottom: container.bottomAnchor,
-                          trailing: view.trailingAnchor,
-                          paddingBottom: 20.0,
-                          paddingRight: 10.0)
-        footerStack.anchor(top: footerView.topAnchor,
-                           leading: footerView.leadingAnchor,
-                           bottom: footerView.bottomAnchor,
-                           trailing: footerView.trailingAnchor)
-        
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor)
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 20.0, paddingRight: 10.0)
+        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -374,23 +298,16 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         }
     }
     
-    @objc
-    private func didTapView() {
+    @objc private func didTapView() {
         view.endEditing(true)
     }
     
-    @objc
-    func backButtonPressed() {
+    @objc func backButtonPressed() {
         presenter.didPressClose()
     }
     
     func showBookingRequestView(_ show: Bool) {
-        if show {
-            containerBottomConstraint.constant = 0.0
-        } else {
-            containerBottomConstraint.constant = UIScreen.main.bounds.height
-        }
-        
+        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
         UIView.animate(withDuration: drawAnimationTime,
                        animations: { [weak self] in
                         self?.view.layoutIfNeeded()
@@ -425,9 +342,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let viewModel = QuoteViewModel(quote: quote)
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
-        termsConditionsView.setBookingTerms(supplier: quote.fleet.name,
-                                            termsStringURL: quote.fleet.termsConditionsUrl)
-        
+        termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         moreDetailsView.set(viewModel: viewModel)
         farePriceInfoView.setInfoText(for: quote.quoteType)
@@ -539,13 +454,7 @@ extension FormBookingRequestViewController: KarhooInputViewDelegate {
     }
     
     private func enableBookingButton() {
-        if passengerDetailsValid == true {
-//            if addPaymentView.validPayment() {
-//                bookingButton.setRequestMode()
-//            } else {
-//                addPaymentView.showError()
-//            }
-        } else {
+        if passengerDetailsValid != true {
             bookingButton.setDisabledMode()
         }
     }
@@ -559,14 +468,12 @@ extension FormBookingRequestViewController: PaymentViewActions {
 }
 
 extension FormBookingRequestViewController: RevealMoreButtonActions {
-    
     func learnMorePressed() {
         moreDetailsView.alpha = 0.0
         moreDetailsStackView.addArrangedSubview(moreDetailsView)
         moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
                                     trailing: moreDetailsStackView.trailingAnchor)
         moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
-        
         UIView.animate(withDuration: 0.25, animations: { [unowned self] in
             self.headerView.hideVehicleCapacityView()
             self.moreDetailsView.alpha = 1.0
