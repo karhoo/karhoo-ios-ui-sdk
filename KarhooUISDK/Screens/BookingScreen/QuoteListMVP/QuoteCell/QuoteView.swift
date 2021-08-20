@@ -78,7 +78,6 @@ class QuoteView: UIView {
         rideDetailStackView.accessibilityIdentifier = KHQuoteViewID.rideDetailsContainer
         rideDetailStackView.axis = .vertical
         rideDetailStackView.alignment = .leading
-        // (AF TOOD): change distribution / appearence of this stack view to make it look properly
         rideDetailStackView.spacing = 8.0
         addSubview(rideDetailStackView)
         

@@ -308,18 +308,19 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                           trailing: baseStackView.trailingAnchor,
                           paddingLeft: titleInset,
                           paddingRight: titleInset)
-        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100.0).isActive = true
+        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
         
         moreDetailsStackView.anchor(top: headerView.bottomAnchor,
                                     leading: baseStackView.leadingAnchor,
                                     trailing: baseStackView.trailingAnchor,
+                                    paddingTop: 8.0,
                                     paddingLeft: 22.0,
-                                    paddingBottom: 10.0,
                                     paddingRight: 22.0)
         
         rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor,
                                  leading: baseStackView.leadingAnchor,
                                  trailing: baseStackView.trailingAnchor,
+                                 paddingTop: 8.0,
                                  paddingLeft: titleInset,
                                  paddingRight: titleInset)
         passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor,
