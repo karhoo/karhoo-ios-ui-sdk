@@ -320,7 +320,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor,
                           trailing: baseStackView.trailingAnchor,
                           paddingLeft: titleInset,
-                          paddingBottom: titleInset,
                           paddingRight: titleInset,
                           height: 110.0)
 
@@ -446,7 +445,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         moreDetailsStackView.isHidden = viewModel.freeCancellationMessage == nil
-//        addPaymentView.quote = quote
+        moreDetailsView.set(viewModel: viewModel)
     }
     
     func set(price: String?) {
@@ -575,21 +574,22 @@ extension FormBookingRequestViewController: PaymentViewActions {
 }
 
 extension FormBookingRequestViewController: RevealMoreButtonActions {
+    
     func learnMorePressed() {
-//        guard let identifier = moreDetailsStackView.accessibilityIdentifier,
-//              let index = baseStackView.retrieveIndexFor(viewIdentifier: identifier) else {
-//            return
-//        }
+        moreDetailsView.alpha = 0.0
         moreDetailsStackView.addArrangedSubview(moreDetailsView)
-        
         moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
-                               trailing: moreDetailsStackView.trailingAnchor)
-        
-        moreDetailsStackView.setNeedsLayout()
-        baseStackView.layoutIfNeeded()
+                                    trailing: moreDetailsStackView.trailingAnchor,
+                                    height: 130.0)
+        UIView.animate(withDuration: 0.25, animations: { [unowned self] in
+            self.moreDetailsView.alpha = 1.0
+        })
     }
     
     func learnLessPressed() {
-        moreDetailsView.removeFromSuperview()
+        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
+            self.moreDetailsView.alpha = 0.0
+            self.moreDetailsView.removeFromSuperview()
+        })
     }
 }

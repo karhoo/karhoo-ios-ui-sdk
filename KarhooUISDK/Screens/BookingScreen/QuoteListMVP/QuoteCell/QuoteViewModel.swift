@@ -76,11 +76,27 @@ enum FleetCapabilities: String {
             return "Vehicle details"
         }
     }
+    
+    var image: UIImage {
+        switch self {
+        case .gpsTracking:
+            return UIImage.uisdkImage("gpsTrackingIcon")
+        case .flightTracking:
+            return UIImage.uisdkImage("flightTrackingIcon")
+        case .trainTracking:
+            return UIImage.uisdkImage("trainTrackingIcon")
+        case .driverDetails:
+            return UIImage.uisdkImage("passenger_capacity_icon")
+        case .vehicleDetails:
+            return UIImage.uisdkImage("luggage_icon")
+        }
+    }
 }
 
 final class QuoteViewModel {
     
     let fleetName: String
+    let fleetDescription: String
     let scheduleCaption: String
     let scheduleMainValue: String
     let carType: String
@@ -91,17 +107,18 @@ final class QuoteViewModel {
     let fareType: String
     let showPickUpLabel: Bool
     let pickUpType: String
-    let passengerCapacity: String
-    let baggageCapacity: String
+    let passengerCapacity: Int
+    let baggageCapacity: Int
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
 
     init(quote: Quote,
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
-        self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
-        self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
+        self.passengerCapacity = quote.vehicle.passengerCapacity
+        self.baggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
+        self.fleetDescription = quote.fleet.description
         let bookingDetails = bookingStatus.getBookingDetails()
         let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
                                                          bookingDetails: bookingDetails)

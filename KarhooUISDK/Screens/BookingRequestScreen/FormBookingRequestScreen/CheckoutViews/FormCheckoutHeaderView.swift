@@ -58,7 +58,7 @@ final class FormCheckoutHeaderView: UIView {
         rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
         rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
         rideDetailStackView.axis = .vertical
-        rideDetailStackView.spacing = 8.0
+        rideDetailStackView.spacing = 4.0
         
         return rideDetailStackView
     }()
@@ -196,6 +196,7 @@ final class FormCheckoutHeaderView: UIView {
         logoLoadingImageView.setStandardBorder()
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+        vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
         setVehicleTags(viewModel: viewModel)
         
         updateConstraints()

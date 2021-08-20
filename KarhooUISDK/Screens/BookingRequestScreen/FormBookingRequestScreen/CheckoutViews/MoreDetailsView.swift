@@ -29,6 +29,17 @@ final class MoreDetailsView: UIView {
         return stackView
     }()
     
+    private lazy var fleetCapabilitiesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
+        
+        return stackView
+    }()
+    
     private lazy var detailsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,11 +58,6 @@ final class MoreDetailsView: UIView {
         self.setupView()
     }
     
-//    convenience init(viewModel: QuoteViewModel) {
-//        self.init()
-//        self.set(viewModel: viewModel)
-//    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,6 +67,7 @@ final class MoreDetailsView: UIView {
         accessibilityIdentifier = KHMoreDetailsViewID.container
         
         addSubview(stackView)
+        stackView.addArrangedSubview(fleetCapabilitiesStackView)
         stackView.addArrangedSubview(detailsLabel)
         
     }
@@ -73,6 +80,10 @@ final class MoreDetailsView: UIView {
                              trailing: trailingAnchor,
                              paddingLeft: 10.0,
                              paddingRight: 10.0)
+            fleetCapabilitiesStackView.anchor(top: stackView.topAnchor,
+                                              leading: stackView.leadingAnchor,
+                                              bottom: detailsLabel.topAnchor,
+                                              trailing: stackView.trailingAnchor)
             detailsLabel.anchor(leading: stackView.leadingAnchor,
                                 trailing: stackView.trailingAnchor)
             
@@ -80,5 +91,39 @@ final class MoreDetailsView: UIView {
         }
         
         super.updateConstraints()
+    }
+    
+    func set(viewModel: QuoteViewModel) {
+        detailsLabel.text = viewModel.fleetDescription
+        
+        [FleetCapabilities.driverDetails, FleetCapabilities.gpsTracking, FleetCapabilities.flightTracking].forEach { capability in
+            let circleBackgroundView = UIView()
+            circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
+            circleBackgroundView.setDimensions(height: 20.0,
+                                               width: 20.0)
+            circleBackgroundView.layer.cornerRadius = 10.0
+            
+            let iconView = UIImageView()
+            iconView.image = capability.image
+            iconView.setDimensions(height: 20.0,
+                                   width: 20.0)
+            iconView.tintColor = KarhooUI.colors.infoColor
+            circleBackgroundView.addSubview(iconView)
+            
+            let titleLabel = UILabel()
+            titleLabel.text = capability.title
+            
+            let stackView = UIStackView()
+            stackView.accessibilityIdentifier = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .horizontal
+            stackView.distribution = .equalSpacing
+            stackView.spacing = 5
+            stackView.backgroundColor = .systemPink
+            stackView.addArrangedSubview(circleBackgroundView)
+            stackView.addArrangedSubview(titleLabel)
+            
+            fleetCapabilitiesStackView.addArrangedSubview(stackView)
+        }
     }
 }

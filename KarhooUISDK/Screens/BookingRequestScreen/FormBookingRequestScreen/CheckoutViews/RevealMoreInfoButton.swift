@@ -149,8 +149,10 @@ final class RevealMoreInfoButton: UIButton {
             actions?.learnLessPressed()
         }
         
-        dropdownImage.image = currentMode.image
-        buttonLabel.text = currentMode.title
+        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
+            self.dropdownImage.image = currentMode.image
+            self.buttonLabel.text = currentMode.title
+        })
     }
 
     func set(actions: RevealMoreButtonActions) {

@@ -114,7 +114,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsTitleLabel.textColor = KarhooUI.colors.secondary
         passengerDetailsTitleLabel.textAlignment = .center
         passengerDetailsTitleLabel.text = "Passenger"
-        passengerDetailsTitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        passengerDetailsTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         
         return passengerDetailsTitleLabel
     }()
@@ -126,7 +126,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
         passengerPaymentTitleLabel.textAlignment = .center
         passengerPaymentTitleLabel.text = "Payment method"
-        passengerPaymentTitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         
         return passengerPaymentTitleLabel
     }()
