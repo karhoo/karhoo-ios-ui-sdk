@@ -113,7 +113,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsTitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsTitle
         passengerDetailsTitleLabel.textColor = KarhooUI.colors.secondary
         passengerDetailsTitleLabel.textAlignment = .center
-        passengerDetailsTitleLabel.text = "Passenger"
+        passengerDetailsTitleLabel.text = UITexts.Booking.passenger
         passengerDetailsTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         
         return passengerDetailsTitleLabel
@@ -125,7 +125,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerPaymentTitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
         passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
         passengerPaymentTitleLabel.textAlignment = .center
-        passengerPaymentTitleLabel.text = "Payment method"
+        passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         
         return passengerPaymentTitleLabel
@@ -137,7 +137,7 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsSubtitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsTitle
         passengerDetailsSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerDetailsSubtitleLabel.textAlignment = .center
-        passengerDetailsSubtitleLabel.text = "Add passenger"
+        passengerDetailsSubtitleLabel.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
         passengerDetailsSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
         
         return passengerDetailsSubtitleLabel
@@ -231,5 +231,7 @@ final class PassengerDetailsPaymentView: UIView {
         super.updateConstraints()
     }
     
-    private func set(viewModel: QuoteViewModel) {}
+    private func set(viewModel: QuoteViewModel) {
+        // to be used when implementing logic for logged in user / token flows
+    }
 }

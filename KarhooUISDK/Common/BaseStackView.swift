@@ -106,24 +106,8 @@ class BaseStackView: UIView {
         viewList.append(viewIdentifier)
     }
     
-    public func insertViewToStack(view: UIView, at index: Int) {
-        guard let viewIdentifier = view.accessibilityIdentifier else {
-            fatalError("No accessibility Identifier provided for view: \(view)")
-        }
-        
-        if viewList.contains(viewIdentifier) {
-            fatalError("A view with identifier: \(viewIdentifier) already present")
-        }
-        stackContainer.insertArrangedSubview(view, at: index)
-        viewList.insert(viewIdentifier, at: index)
-    }
-    
     public func stackSubViews() -> [UIView] {
         return stackContainer.subviews
-    }
-    
-    public func retrieveIndexFor(viewIdentifier: String) -> Int? {
-        return viewList.firstIndex(of: viewIdentifier)
     }
     
     public func viewSpacing(_ spacing: CGFloat) {

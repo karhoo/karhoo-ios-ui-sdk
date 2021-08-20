@@ -111,7 +111,7 @@ final class MoreDetailsView: UIView {
     }
     
     private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) {
-        let title = "\(maxNumber) \(passenger ? "passengers" : "luggages") max"
+        let title = String(format: (passenger ? UITexts.Booking.maximumPassengers : UITexts.Booking.maximumLuggages), "\(maxNumber)")
         let image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
         let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
         setupView(for: title, with: image, accessibilityId: accessibilityId)

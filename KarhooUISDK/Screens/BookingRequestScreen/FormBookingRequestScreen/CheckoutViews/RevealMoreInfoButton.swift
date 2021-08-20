@@ -29,9 +29,9 @@ private enum ButtonMode {
     var title: String {
         switch self {
         case .learnLess:
-            return "Learn less"
+            return UITexts.Booking.learnLess
         case .learnMore:
-            return "Learn more"
+            return UITexts.Booking.learnMore
         }
     }
 }
