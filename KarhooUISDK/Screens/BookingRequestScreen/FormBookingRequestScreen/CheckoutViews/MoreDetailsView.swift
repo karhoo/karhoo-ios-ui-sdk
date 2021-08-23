@@ -74,6 +74,7 @@ final class MoreDetailsView: UIView {
             
             stackView.anchor(top: topAnchor,
                              leading: leadingAnchor,
+                             bottom: bottomAnchor,
                              trailing: trailingAnchor)
             fleetCapabilitiesStackView.anchor(top: stackView.topAnchor,
                                               leading: stackView.leadingAnchor,
