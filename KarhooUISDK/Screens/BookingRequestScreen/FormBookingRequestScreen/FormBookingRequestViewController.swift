@@ -137,7 +137,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.accent
+        cancellationInfo.textColor = KarhooUI.colors.infoColor
         cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
@@ -157,7 +157,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let rideInfoView = RideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
         rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
-        rideInfoView.backgroundColor = KarhooUI.colors.guestCheckoutLightGrey
+        rideInfoView.backgroundColor = KarhooUI.colors.lightGrey
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
         rideInfoView.setActions(self)

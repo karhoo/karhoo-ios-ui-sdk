@@ -76,6 +76,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         textView.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         textView.returnKeyType = .done
         textView.textColor = KarhooTextInputViewState.inactive.color
+        textView.tintColor = KarhooUI.colors.accent
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
 		textView.autocorrectionType = .no
 
