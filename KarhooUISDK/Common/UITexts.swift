@@ -212,6 +212,9 @@ public enum UITexts {
         public static let passenger = "Text.Booking.Passenger".localized
         public static let maximumPassengers = "Text.Booking.MaximumPassengers".localized
         public static let maximumLuggages = "Text.Booking.MaximumLuggages".localized
+        public static let gpsTracking = "Text.Booking.GPSTracking".localized
+        public static let trainTracking = "Text.Booking.TrainTracking".localized
+        public static let flightTracking = "Text.Booking.FlightTracking".localized
     }
 
     public enum Availability {
@@ -357,5 +360,12 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
+    }
+    
+    func firstLetterUppercased() -> String {
+        guard let firstLetter = self.first?.uppercased() else {
+            return self
+        }
+        return firstLetter + self.dropFirst()
     }
 }

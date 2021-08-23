@@ -420,6 +420,9 @@
 "Text.Booking.Passenger" = "Passenger";
 "Text.Booking.MaximumPassengers" = "%1$@ passengers maximum";
 "Text.Booking.MaximumLuggages" = "%1$@ luggages maximum";
+"Text.Booking.GPSTracking" = "GPS tracking";
+"Text.Booking.TrainTracking" = "Train tracking";
+"Text.Booking.FlightTracking" = "Flight tracking";
 
 /*Prebook Done*/
 /*Fuzzy*/

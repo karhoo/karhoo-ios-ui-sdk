@@ -138,13 +138,11 @@ final class RideInfoView: UIView {
             
             [scheduleMainValue.leadingAnchor.constraint(equalTo: scheduleCaption.leadingAnchor),
              scheduleMainValue.topAnchor.constraint(equalTo: scheduleCaption.bottomAnchor, constant: 5.0),
-             scheduleMainValue.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0),
-             scheduleMainValue.bottomAnchor.constraint(equalTo: rideTypeLabel.topAnchor, constant: -10.0)]
+             scheduleMainValue.trailingAnchor.constraint(lessThanOrEqualTo: priceText.leadingAnchor, constant: 20.0)]
                 .forEach { $0.isActive = true }
             
-            priceTitle.anchor(top: topAnchor,
+            priceTitle.anchor(top: scheduleCaption.topAnchor,
                               trailing: trailingAnchor,
-                              paddingTop: 10.0,
                               paddingRight: 10.0)
             
             priceText.anchor(top: priceTitle.bottomAnchor,

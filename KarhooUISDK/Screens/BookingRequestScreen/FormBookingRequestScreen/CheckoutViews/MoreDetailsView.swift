@@ -47,7 +47,6 @@ final class MoreDetailsView: UIView {
         label.textColor = KarhooUI.colors.infoColor
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.text = "Alpha Taxi is a private-hired vehicles fleet providing e-hailing services in more than 10,000 cities. It has transparent pricing with upfront pricing in real time."
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         
         return label

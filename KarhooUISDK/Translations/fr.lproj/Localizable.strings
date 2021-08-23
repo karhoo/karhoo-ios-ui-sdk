@@ -427,6 +427,9 @@
 "Text.Booking.Passenger" = "Passager";
 "Text.Booking.MaximumPassengers" = "%1$@ passagers maximum";
 "Text.Booking.MaximumLuggages" = "%1$@ bagages maximum";
+"Text.Booking.GPSTracking" = "Suivi GPS";
+"Text.Booking.TrainTracking" = "Associe votre train";
+"Text.Booking.FlightTracking" = "Associe votre vol";
 
 /*Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked*/
 "Text.Booking.PrebookConfirmation" = "Votre réservation\nde: %1$@.\nÀ: %2$@.\nLe: %3$@ est confirmée.";

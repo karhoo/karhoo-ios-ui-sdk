@@ -17,20 +17,7 @@ enum VehicleTag: String {
     }
     
     var title: String {
-        switch self {
-        case .electric:
-            return "Electric"
-        case .hybrid:
-            return "Hybrid"
-        case .wheelchair:
-            return "Wheelchair"
-        case .childSeat:
-            return "Child seat"
-        case .taxi:
-            return "Taxi"
-        case .executive:
-            return "Executive"
-        }
+        return self.rawValue.firstLetterUppercased()
     }
     
     var image: UIImage {
@@ -53,28 +40,21 @@ enum VehicleTag: String {
 
 enum FleetCapabilities: String {
     case gpsTracking, flightTracking, trainTracking
-         //driverDetails, vehicleDetails
     
     enum CodingKeys: String, CodingKey {
         case gpsTracking = "gps_tracking"
         case flightTracking = "flight_tracking"
         case trainTracking = "train_tracking"
-//        case driverDetails = "driver_details"
-//        case vehicleDetails = "vehicle_details"
     }
     
     var title: String {
         switch self {
         case .gpsTracking:
-            return "GPS tracking"
+            return UITexts.Booking.gpsTracking
         case .flightTracking:
-            return "Flight tracking"
+            return UITexts.Booking.flightTracking
         case .trainTracking:
-            return "Train tracking"
-//        case .driverDetails:
-//            return "Driver details"
-//        case .vehicleDetails:
-//            return "Vehicle details"
+            return UITexts.Booking.trainTracking
         }
     }
     
@@ -86,10 +66,6 @@ enum FleetCapabilities: String {
             return UIImage.uisdkImage("flightTrackingIcon")
         case .trainTracking:
             return UIImage.uisdkImage("trainTrackingIcon")
-//        case .driverDetails:
-//            return UIImage.uisdkImage("passenger_capacity_icon")
-//        case .vehicleDetails:
-//            return UIImage.uisdkImage("luggage_icon")
         }
     }
 }
