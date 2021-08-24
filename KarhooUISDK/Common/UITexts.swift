@@ -204,6 +204,17 @@ public enum UITexts {
         public static let guestCheckoutPassengerDetailsTitle = "Text.Booking.GuestCheckoutPassengerDetailsTitle".localized
         public static let guestCheckoutPaymentDetailsTitle = "Text.Booking.GuestCheckoutPaymentDetailsTitle".localized
         public static let guestCheckoutFlightNumberPlaceholder = "Text.Booking.GuestCheckoutFlightNumberPlaceholder".localized
+        public static let estimatedInfoBox = "Text.Booking.EstimatedInfoBox".localized
+        public static let meteredInfoBox = "Text.Booking.MeteredInfoBox".localized
+        public static let fixedInfoBox = "Text.Booking.FixedInfoBox".localized
+        public static let learnMore = "Text.Booking.LearnMore".localized
+        public static let learnLess = "Text.Booking.LearnLess".localized
+        public static let passenger = "Text.Booking.Passenger".localized
+        public static let maximumPassengers = "Text.Booking.MaximumPassengers".localized
+        public static let maximumLuggages = "Text.Booking.MaximumLuggages".localized
+        public static let gpsTracking = "Text.Booking.GPSTracking".localized
+        public static let trainTracking = "Text.Booking.TrainTracking".localized
+        public static let flightTracking = "Text.Booking.FlightTracking".localized
     }
 
     public enum Availability {
@@ -349,5 +360,12 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
+    }
+    
+    func firstLetterUppercased() -> String {
+        guard let firstLetter = self.first?.uppercased() else {
+            return self
+        }
+        return firstLetter + self.dropFirst()
     }
 }

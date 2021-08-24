@@ -37,8 +37,8 @@ class QuoteCellViewModelSpec: XCTestCase {
         XCTAssertEqual(testObject.fleetName, "TestFleet")
         XCTAssertEqual(testObject.scheduleCaption, UITexts.Generic.etaLong.uppercased())
         XCTAssertEqual(testObject.scheduleMainValue, expectedEta)
-        XCTAssertEqual("1", testObject.passengerCapacity)
-        XCTAssertEqual("2", testObject.baggageCapacity)
+        XCTAssertEqual(1, testObject.passengerCapacity)
+        XCTAssertEqual(2, testObject.baggageCapacity)
         XCTAssertNil(testObject.freeCancellationMessage)
     }
 

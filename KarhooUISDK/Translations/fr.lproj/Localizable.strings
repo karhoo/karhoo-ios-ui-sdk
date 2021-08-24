@@ -418,6 +418,19 @@
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Détails de paiement";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Votre chauffeur vous attendra";
 
+/*Checkout component*/
+"Text.Booking.EstimatedInfoBox" = "Cette flotte est un taxi non réglementé. Le devis est une estimation basée sur les facteurs du trajet (distance, temps, etc.). Veuillez consulter les conditions générales de la flotte pour plus d'informations.";
+"Text.Booking.MeteredInfoBox" = "Cette flotte est un taxi à compteur réglementé. Le devis est une estimation basée sur les facteurs de la course (distance, temps, etc.).";
+"Text.Booking.FixedInfoBox" = "Cette flotte applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), veuillez consulter les conditions générales de la flotte.";
+"Text.Booking.LearnMore" = "Plus";
+"Text.Booking.LearnLess" = "Moins";
+"Text.Booking.Passenger" = "Passager";
+"Text.Booking.MaximumPassengers" = "%1$@ passagers maximum";
+"Text.Booking.MaximumLuggages" = "%1$@ bagages maximum";
+"Text.Booking.GPSTracking" = "Suivi GPS";
+"Text.Booking.TrainTracking" = "Associe votre train";
+"Text.Booking.FlightTracking" = "Associe votre vol";
+
 /*Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked*/
 "Text.Booking.PrebookConfirmation" = "Votre réservation\nde: %1$@.\nÀ: %2$@.\nLe: %3$@ est confirmée.";
 
