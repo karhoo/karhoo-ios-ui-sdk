@@ -9,6 +9,10 @@
 import Foundation
 import KarhooSDK
 
-protocol PassengerDetailsActions: class {
+protocol PassengerDetailsActions: BaseViewController {
     func passengerDetailsValid(_ : Bool)
+}
+
+protocol PassengerDetailsPresenterProtocol {
+    func didPressClose()
 }
