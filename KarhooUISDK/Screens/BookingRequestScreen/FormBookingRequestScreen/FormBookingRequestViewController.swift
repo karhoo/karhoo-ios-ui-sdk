@@ -8,7 +8,8 @@
 import UIKit
 import KarhooSDK
 
-final class FormBookingRequestViewController: UIViewController, BookingRequestView {
+final class FormBookingRequestViewController: UIViewController, BookingRequestView, BaseViewController {
+
     private var didSetupConstraints = false
     private var headerView: FormCheckoutHeaderView!
     private var passengerDetailsValid: Bool?
@@ -55,7 +56,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }()
     
     private lazy var passengerDetailsAndPaymentView: PassengerDetailsPaymentView = {
-        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView()
+        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self)
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
         return passengerDetailsAndPaymentView
@@ -287,7 +288,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        passengerDetailsView.details = initialisePassengerDetails()
+        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
@@ -385,7 +386,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backTitleButton.isUserInteractionEnabled = false
         backButton.tintColor = KarhooUI.colors.medGrey
         backTitleButton.tintColor = KarhooUI.colors.medGrey
-//        addPaymentView.isUserInteractionEnabled = false
     }
     
     final class Builder: BookingRequestScreenBuilder {
@@ -403,8 +403,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getPassengerDetails() -> PassengerDetails? {
-//        return passengerDetailsView.details
-        return nil
+        return passengerDetailsAndPaymentView.details
     }
     
     func getPaymentNonce() -> String? {
