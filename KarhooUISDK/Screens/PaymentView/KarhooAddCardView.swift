@@ -12,9 +12,8 @@ public struct KHAddCardViewID {
     public static let view = "add_card_view"
     public static let image = "logo_image"
     public static let title = "title_label"
+    public static let subtitle = "subtitle_label"
     public static let stackView = "stack_view_container"
-    public static let button = "add_card_button"
-    public static let editButton = "edit_card_button"
 }
 
 final class KarhooAddCardView: UIView, PaymentView {
@@ -25,7 +24,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     
     private lazy var passengerPaymentImage: UIImageView = {
         let passengerPaymentIcon = UIImageView()
-        passengerPaymentIcon.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentImage
+        passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentIcon.image = UIImage.uisdkImage("visaIcon")
         passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
@@ -37,7 +36,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     private lazy var passengerPaymentTitle: UILabel = {
         let passengerPaymentTitleLabel = UILabel()
         passengerPaymentTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentTitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
+        passengerPaymentTitleLabel.accessibilityIdentifier = KHAddCardViewID.title
         passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
         passengerPaymentTitleLabel.textAlignment = .center
         passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
@@ -49,7 +48,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     private lazy var passengerPaymentSubtitle: UILabel = {
         let passengerPaymentSubtitleLabel = UILabel()
         passengerPaymentSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentSubtitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
+        passengerPaymentSubtitleLabel.accessibilityIdentifier = KHAddCardViewID.subtitle
         passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerPaymentSubtitleLabel.textAlignment = .center
         passengerPaymentSubtitleLabel.text = UITexts.Generic.add
@@ -61,7 +60,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     private lazy var stackContainer: UIStackView = {
         
         let passengerPaymentStackView = UIStackView()
-        passengerPaymentStackView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentStackView
+        passengerPaymentStackView.accessibilityIdentifier = KHAddCardViewID.stackView
         passengerPaymentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         passengerPaymentStackView.alignment = .center

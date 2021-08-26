@@ -15,13 +15,9 @@ public struct KHPassengerDetailsPaymentViewID {
     public static let passengerDetailsContainer = "passenger_details_container"
     public static let passengerPaymentContainer = "passenger_payment_container"
     public static let passengerDetailsStackView = "passenger_details_stack_view"
-    public static let passengerPaymentStackView = "passenger_payment_stack_view"
     public static let passengerDetailsImage = "passenger_details_image"
-    public static let passengerPaymentImage = "passenger_payment_image"
     public static let passengerDetailsTitle = "passenger_details_title"
-    public static let passengerPaymentTitle = "passenger_payment_title"
     public static let passengerDetailsSubtitle = "passenger_details_subtitle"
-    public static let passengerPaymentSubtitle = "passenger_payment_subtitle"
 }
 
 final class PassengerDetailsPaymentView: UIView {
@@ -57,6 +53,7 @@ final class PassengerDetailsPaymentView: UIView {
     
     private lazy var passengerPaymentContainer: PaymentView = {
         let passengerPaymentView = KarhooAddCardView()
+        passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentContainer
         passengerPaymentView.setBaseViewController(baseViewController)
         return passengerPaymentView
     }()
