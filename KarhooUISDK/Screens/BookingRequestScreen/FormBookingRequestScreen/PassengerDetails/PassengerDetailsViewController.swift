@@ -32,6 +32,9 @@ final class PassengerDetailsViewController: UIViewController {
     private let standardSpacing: CGFloat = 20.0
     private let smallSpacing: CGFloat = 8.0
     private let extraSmallSpacing: CGFloat = 4.0
+    private var inputViews = [KarhooInputView]()
+    private var validSet = Set<String>()
+    weak var actions: PassengerDetailsActions?
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -217,6 +220,8 @@ final class PassengerDetailsViewController: UIViewController {
                              paddingLeft: standardSpacing,
                              paddingBottom: standardSpacing,
                              paddingRight: standardSpacing)
+        
+        inputViews = [firstNameInputView, lastNameInputView, emailNameInputView, mobilePhoneInputView]
     }
     
     // MARK: - Actions
@@ -233,7 +238,20 @@ extension PassengerDetailsViewController: PassengerDetailsActions {
 
 extension PassengerDetailsViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
-        
+        for (index, inputView) in inputViews.enumerated() {
+            if inputView.isValid() {
+                validSet.insert(inputView.accessibilityIdentifier!)
+            } else {
+                validSet.remove(inputView.accessibilityIdentifier!)
+            }
+            if inputView.accessibilityIdentifier == identifier {
+                if index != inputViews.count - 1 {
+                    inputViews[index + 1].setActive()
+                }
+            }
+        }
+
+        actions?.passengerDetailsValid(validSet.count == inputViews.count)
     }
 }
 
