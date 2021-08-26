@@ -81,7 +81,6 @@ final class KarhooAddCardView: UIView, PaymentView {
     
     init() {
         super.init(frame: .zero)
-        
         self.setUpView()
     }
     
@@ -104,6 +103,9 @@ final class KarhooAddCardView: UIView, PaymentView {
     }
 
     private func setUpView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(paymentViewTapped))
+        addGestureRecognizer(tapGesture)
+        
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHAddCardViewID.view
@@ -144,13 +146,12 @@ final class KarhooAddCardView: UIView, PaymentView {
     }
     
     @objc
-    private func buttonTapped() {
+    private func paymentViewTapped() {
         presenter?.updateCardPressed(showRetryAlert: false)
     }
     
-    @objc
-    private func editButtonTapped() {
-        presenter?.updateCardPressed(showRetryAlert: false)
+    func setBaseViewController(_ vc: BaseViewController) {
+        baseViewController = vc
     }
     
     func set(nonce: Nonce) {
@@ -170,6 +171,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     
     func set(paymentMethod: PaymentMethod) {
         passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + paymentMethod.paymentDescription.suffix(2)
+        passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
         updateViewState()
         actions?.didGetNonce(nonce: paymentMethod.nonce)
@@ -189,6 +191,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         layer.borderColor = UIColor.clear.cgColor
         hasPayment = false
         passengerPaymentTitle.text = UITexts.Payment.addPaymentMethod
+        passengerPaymentSubtitle.text = UITexts.Generic.add
         
         setNeedsDisplay()
     }

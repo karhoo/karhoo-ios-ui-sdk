@@ -27,6 +27,8 @@ public struct KHPassengerDetailsPaymentViewID {
 final class PassengerDetailsPaymentView: UIView {
     
     private var didSetupConstraints: Bool = false
+    var baseViewController: BaseViewController!
+    var details: PassengerDetails?
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -55,9 +57,7 @@ final class PassengerDetailsPaymentView: UIView {
     
     private lazy var passengerPaymentContainer: PaymentView = {
         let passengerPaymentView = KarhooAddCardView()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(paymentViewTapped))
-        passengerPaymentView.addGestureRecognizer(tapGesture)
-        
+        passengerPaymentView.setBaseViewController(baseViewController)
         return passengerPaymentView
     }()
     
@@ -108,16 +108,10 @@ final class PassengerDetailsPaymentView: UIView {
         return passengerDetailsSubtitleLabel
     }()
     
-    var details: PassengerDetails?
-    
-    init() {
+    init(baseVC: BaseViewController) {
         super.init(frame: .zero)
+        self.baseViewController = baseVC
         self.setupView()
-    }
-    
-    convenience init(viewModel: QuoteViewModel) {
-        self.init()
-        self.set(viewModel: viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -165,15 +159,6 @@ final class PassengerDetailsPaymentView: UIView {
         }
         
         super.updateConstraints()
-    }
-    
-    private func set(viewModel: QuoteViewModel) {
-        // to be used when implementing logic for logged in user / token flows
-    }
-    
-    @objc
-    private func paymentViewTapped() {
-        // todo: continue implementation
     }
     
     @objc
