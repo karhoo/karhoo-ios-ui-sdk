@@ -239,6 +239,7 @@ public enum UITexts {
         public static let email = "Text.Booking.PassengerDetails.Email".localized
         public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
         public static let doneAction = "Text.Booking.PassengerDetails.DoneAction".localized
+        public static let add = "Text.Booking.PassengerDetails.Add".localized
     }
 
     /* Trip */

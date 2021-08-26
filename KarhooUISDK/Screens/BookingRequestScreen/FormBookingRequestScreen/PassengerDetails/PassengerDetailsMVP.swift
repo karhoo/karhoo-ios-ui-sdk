@@ -14,5 +14,5 @@ protocol PassengerDetailsActions: BaseViewController {
 }
 
 protocol PassengerDetailsPresenterProtocol {
-    func didPressClose()
+//    func didPressClose()
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
-    func didPressClose() {
-        
-    }
+//    func didPressClose() {
+//        
+//    }
 }

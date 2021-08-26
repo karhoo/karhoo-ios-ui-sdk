@@ -419,6 +419,7 @@
 "Text.Booking.PassengerDetails.Email" = "Email";
 "Text.Booking.PassengerDetails.MobilePhone" = "Mobile Phone Number";
 "Text.Booking.PassengerDetails.DoneAction" = "NEXT";
+"Text.Booking.PassengerDetails.Add" = "Add passenger";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";

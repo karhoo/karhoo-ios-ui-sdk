@@ -445,6 +445,7 @@
 "Text.Booking.PassengerDetails.Email" = "Correo electrónico";
 "Text.Booking.PassengerDetails.MobilePhone" = "Número de móvil";
 "Text.Booking.PassengerDetails.DoneAction" = "SIGUIENTE";
+"Text.Booking.PassengerDetails.Add" = "Añadir pasajero";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Esta flota es un taxi no regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.). Por favor, consulte los Términos y Condiciones de la flota para más información.";
