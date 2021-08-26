@@ -46,6 +46,9 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsView.layer.borderWidth = 0.5
         passengerDetailsView.layer.masksToBounds = true
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(passengerDetailsViewTapped))
+        passengerDetailsView.addGestureRecognizer(tapGesture)
+        
         return passengerDetailsView
     }()
     
@@ -56,6 +59,9 @@ final class PassengerDetailsPaymentView: UIView {
         passengerPaymentView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         passengerPaymentView.layer.borderWidth = 0.5
         passengerPaymentView.layer.masksToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(paymentViewTapped))
+        passengerPaymentView.addGestureRecognizer(tapGesture)
         
         return passengerPaymentView
     }()
@@ -233,5 +239,15 @@ final class PassengerDetailsPaymentView: UIView {
     
     private func set(viewModel: QuoteViewModel) {
         // to be used when implementing logic for logged in user / token flows
+    }
+    
+    @objc
+    private func paymentViewTapped() {
+        // todo: continue implementation
+    }
+    
+    @objc
+    private func passengerDetailsViewTapped() {
+        // todo: continue implementation
     }
 }
