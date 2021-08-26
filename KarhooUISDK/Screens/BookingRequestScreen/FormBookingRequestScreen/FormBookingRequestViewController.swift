@@ -287,7 +287,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        passengerDetailsView.details = initialisePassengerDetails()
+        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
@@ -403,8 +403,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getPassengerDetails() -> PassengerDetails? {
-//        return passengerDetailsView.details
-        return nil
+        return passengerDetailsAndPaymentView.details
     }
     
     func getPaymentNonce() -> String? {

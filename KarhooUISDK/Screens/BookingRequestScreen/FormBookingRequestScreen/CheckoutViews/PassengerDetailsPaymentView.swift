@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KarhooSDK
 
 public struct KHPassengerDetailsPaymentViewID {
     public static let container = "passenger_details_payment_container"
@@ -106,6 +107,8 @@ final class PassengerDetailsPaymentView: UIView {
         
         return passengerDetailsSubtitleLabel
     }()
+    
+    var details: PassengerDetails?
     
     init() {
         super.init(frame: .zero)
