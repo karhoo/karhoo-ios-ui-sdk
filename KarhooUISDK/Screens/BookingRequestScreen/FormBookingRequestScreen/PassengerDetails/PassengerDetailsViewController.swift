@@ -209,6 +209,14 @@ final class PassengerDetailsViewController: UIViewController {
         mainStackView.addSubview(mobilePhoneStackView)
         mobilePhoneStackView.addSubview(countryCodeTextField)
         countryCodeTextField.anchor(width: mobilePhoneStackView.bounds.width / 3)
+        
+        view.addSubview(bookingButton)
+        bookingButton.anchor(leading: view.leadingAnchor,
+                             bottom: view.bottomAnchor,
+                             trailing: view.trailingAnchor,
+                             paddingLeft: standardSpacing,
+                             paddingBottom: standardSpacing,
+                             paddingRight: standardSpacing)
     }
     
     // MARK: - Actions
