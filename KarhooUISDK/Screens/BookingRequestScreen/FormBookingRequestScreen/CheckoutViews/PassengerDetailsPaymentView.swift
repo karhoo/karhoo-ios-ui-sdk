@@ -52,14 +52,8 @@ final class PassengerDetailsPaymentView: UIView {
         return passengerDetailsView
     }()
     
-    private lazy var passengerPaymentContainer: UIView = {
-        let passengerPaymentView = UIView()
-        passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentContainer
-        passengerPaymentView.layer.cornerRadius = 5.0
-        passengerPaymentView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-        passengerPaymentView.layer.borderWidth = 0.5
-        passengerPaymentView.layer.masksToBounds = true
-        
+    private lazy var passengerPaymentContainer: PaymentView = {
+        let passengerPaymentView = KarhooAddCardView()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(paymentViewTapped))
         passengerPaymentView.addGestureRecognizer(tapGesture)
         
@@ -78,19 +72,6 @@ final class PassengerDetailsPaymentView: UIView {
         return passengerDetailsStackView
     }()
     
-    private lazy var passengerPaymentStackView: UIStackView = {
-        let passengerPaymentStackView = UIStackView()
-        passengerPaymentStackView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentStackView
-        passengerPaymentStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        passengerPaymentStackView.alignment = .center
-        passengerPaymentStackView.axis = .vertical
-        passengerPaymentStackView.distribution = .fill
-        passengerPaymentStackView.spacing = 5.0
-        
-        return passengerPaymentStackView
-    }()
-    
     private lazy var passengerDetailsImage: UIImageView = {
         let passengerDetailsIcon = UIImageView()
         passengerDetailsIcon.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsImage
@@ -100,17 +81,6 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsIcon.contentMode = .scaleAspectFit
         
         return passengerDetailsIcon
-    }()
-    
-    private lazy var passengerPaymentImage: UIImageView = {
-        let passengerPaymentIcon = UIImageView()
-        passengerPaymentIcon.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentImage
-        passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentIcon.image = UIImage.uisdkImage("visaIcon")
-        passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
-        passengerPaymentIcon.contentMode = .scaleAspectFit
-        
-        return passengerPaymentIcon
     }()
     
     private lazy var passengerDetailsTitle: UILabel = {
@@ -125,18 +95,6 @@ final class PassengerDetailsPaymentView: UIView {
         return passengerDetailsTitleLabel
     }()
     
-    private lazy var passengerPaymentTitle: UILabel = {
-        let passengerPaymentTitleLabel = UILabel()
-        passengerPaymentTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentTitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
-        passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
-        passengerPaymentTitleLabel.textAlignment = .center
-        passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
-        passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
-        
-        return passengerPaymentTitleLabel
-    }()
-    
     private lazy var passengerDetailsSubtitle: UILabel = {
         let passengerDetailsSubtitleLabel = UILabel()
         passengerDetailsSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -147,18 +105,6 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
         
         return passengerDetailsSubtitleLabel
-    }()
-    
-    private lazy var passengerPaymentSubtitle: UILabel = {
-        let passengerPaymentSubtitleLabel = UILabel()
-        passengerPaymentSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentSubtitleLabel.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentTitle
-        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
-        passengerPaymentSubtitleLabel.textAlignment = .center
-        passengerPaymentSubtitleLabel.text = UITexts.Generic.add
-        passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
-        
-        return passengerPaymentSubtitleLabel
     }()
     
     init() {
@@ -184,13 +130,8 @@ final class PassengerDetailsPaymentView: UIView {
         passengerDetailsStackView.addArrangedSubview(passengerDetailsImage)
         passengerDetailsStackView.addArrangedSubview(passengerDetailsTitle)
         passengerDetailsStackView.addArrangedSubview(passengerDetailsSubtitle)
-        
-        passengerPaymentStackView.addArrangedSubview(passengerPaymentImage)
-        passengerPaymentStackView.addArrangedSubview(passengerPaymentTitle)
-        passengerPaymentStackView.addArrangedSubview(passengerPaymentSubtitle)
-        
+
         passengerDetailsContainer.addSubview(passengerDetailsStackView)
-        passengerPaymentContainer.addSubview(passengerPaymentStackView)
         
         stackView.addArrangedSubview(passengerDetailsContainer)
         stackView.addArrangedSubview(passengerPaymentContainer)
@@ -210,22 +151,8 @@ final class PassengerDetailsPaymentView: UIView {
                                              paddingTop: 16.0,
                                              paddingBottom: 16.0)
             
-            passengerPaymentStackView.anchor(top: passengerPaymentContainer.topAnchor,
-                                             leading: passengerPaymentContainer.leadingAnchor,
-                                             bottom: passengerPaymentContainer.bottomAnchor,
-                                             trailing: passengerPaymentContainer.trailingAnchor,
-                                             paddingTop: 16.0,
-                                             paddingBottom: 16.0)
-            
             passengerDetailsImage.anchor(leading: passengerDetailsStackView.leadingAnchor,
                                          trailing: passengerDetailsStackView.trailingAnchor,
-                                         paddingLeft: 56.0,
-                                         paddingRight: 56.0,
-                                         width: 24.0,
-                                         height: 24.0)
-            
-            passengerPaymentImage.anchor(leading: passengerPaymentStackView.leadingAnchor,
-                                         trailing: passengerPaymentStackView.trailingAnchor,
                                          paddingLeft: 56.0,
                                          paddingRight: 56.0,
                                          width: 24.0,
