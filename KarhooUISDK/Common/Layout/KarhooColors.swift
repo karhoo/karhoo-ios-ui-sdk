@@ -120,7 +120,7 @@ public extension KarhooColors {
     var darkBlue: UIColor {
         return #colorLiteral(red: 0.09411764706, green: 0.1019607843, blue: 0.2784313725, alpha: 1) // #181A47
     }
-    var paymentLightGrey: UIColor {
+    var infoBackgroundColor: UIColor {
         return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
     }
 }

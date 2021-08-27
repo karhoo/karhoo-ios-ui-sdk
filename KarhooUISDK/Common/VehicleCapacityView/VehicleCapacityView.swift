@@ -37,7 +37,7 @@ final class VehicleCapacityView: UIView {
         let baggageInfoView = UIView()
         baggageInfoView.translatesAutoresizingMaskIntoConstraints = false
         baggageInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
-        baggageInfoView.backgroundColor = KarhooUI.colors.paymentLightGrey
+        baggageInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         baggageInfoView.layer.cornerRadius = 10.0
         baggageInfoView.layer.masksToBounds = true
         
@@ -64,7 +64,7 @@ final class VehicleCapacityView: UIView {
         let capacityInfoView = UIView()
         capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
         capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
-        capacityInfoView.backgroundColor = KarhooUI.colors.paymentLightGrey
+        capacityInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         capacityInfoView.layer.cornerRadius = 10.0
         capacityInfoView.layer.masksToBounds = true
         

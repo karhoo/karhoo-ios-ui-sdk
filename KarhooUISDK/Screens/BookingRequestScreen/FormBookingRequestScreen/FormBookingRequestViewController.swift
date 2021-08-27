@@ -158,7 +158,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let rideInfoView = RideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
         rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
-        rideInfoView.backgroundColor = KarhooUI.colors.paymentLightGrey
+        rideInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
         rideInfoView.setActions(self)
