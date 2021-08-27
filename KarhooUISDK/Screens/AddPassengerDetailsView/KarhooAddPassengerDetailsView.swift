@@ -101,7 +101,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
 
         if !hasDetails && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.paymentLightGrey.cgColor
+            dotBorderLayer.strokeColor = KarhooUI.colors.infoBackgroundColor.cgColor
             dotBorderLayer.lineDashPattern = [2, 2]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
