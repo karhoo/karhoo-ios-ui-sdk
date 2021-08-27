@@ -37,7 +37,7 @@ final class FormCheckoutHeaderView: UIView {
         topStackView.translatesAutoresizingMaskIntoConstraints = false
         topStackView.alignment = .center
         topStackView.distribution = .fillProportionally
-        topStackView.spacing = 5
+        topStackView.spacing = 10
         
         return topStackView
     }()
@@ -170,13 +170,13 @@ final class FormCheckoutHeaderView: UIView {
         let image = UIImageView()
         image.image = vehicleTag.image
         image.contentMode = .scaleAspectFit
-        image.anchor(width: 9.0, height: 9.0)
-        image.tintColor = KarhooUI.colors.darkGrey
+        image.anchor(width: 12.0, height: 12.0)
+        image.tintColor = KarhooUI.colors.guestCheckoutLightGrey
         
         let label = UILabel()
         label.text = vehicleTag.title
-        label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
-        label.textColor = KarhooUI.colors.darkGrey
+        label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
         fleetCapabilitiesStackView.addArrangedSubview(image)
         fleetCapabilitiesStackView.addArrangedSubview(label)
     }

@@ -92,7 +92,7 @@ final class KarhooAddCardView: UIView, PaymentView {
 
         if !hasPayment && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.paymentLightGrey.cgColor
+            dotBorderLayer.strokeColor = KarhooUI.colors.lightGrey.cgColor
             dotBorderLayer.lineDashPattern = [2, 2]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
