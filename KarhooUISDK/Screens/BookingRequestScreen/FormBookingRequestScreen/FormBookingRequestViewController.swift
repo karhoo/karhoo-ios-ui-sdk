@@ -77,7 +77,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let backTitleButton = UIButton()
         backTitleButton.translatesAutoresizingMaskIntoConstraints = false
         backTitleButton.accessibilityIdentifier = "back_title_button"
-        backTitleButton.setTitle("Back to quote", for: .normal)
+        backTitleButton.setTitle(UITexts.Generic.back, for: .normal)
         backTitleButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         backTitleButton.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
         backTitleButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -123,7 +123,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         learnMoreStackView.translatesAutoresizingMaskIntoConstraints = false
         learnMoreStackView.axis = .horizontal
         learnMoreStackView.spacing = 8
-        learnMoreStackView.distribution = .fill
+        learnMoreStackView.distribution = .equalSpacing
         return learnMoreStackView
     }()
     
@@ -138,7 +138,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.infoColor
+        cancellationInfo.textColor = KarhooUI.colors.primaryTextColor
         cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
@@ -158,7 +158,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let rideInfoView = RideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
         rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
-        rideInfoView.backgroundColor = KarhooUI.colors.lightGrey
+        rideInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
         rideInfoView.setActions(self)
