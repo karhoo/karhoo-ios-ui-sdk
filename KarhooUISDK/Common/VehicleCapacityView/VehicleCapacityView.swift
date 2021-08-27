@@ -37,7 +37,7 @@ final class VehicleCapacityView: UIView {
         let baggageInfoView = UIView()
         baggageInfoView.translatesAutoresizingMaskIntoConstraints = false
         baggageInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
-        baggageInfoView.backgroundColor = KarhooUI.colors.lightGrey
+        baggageInfoView.backgroundColor = KarhooUI.colors.paymentLightGrey
         baggageInfoView.layer.cornerRadius = 10.0
         baggageInfoView.layer.masksToBounds = true
         
@@ -64,7 +64,7 @@ final class VehicleCapacityView: UIView {
         let capacityInfoView = UIView()
         capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
         capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
-        capacityInfoView.backgroundColor = KarhooUI.colors.lightGrey
+        capacityInfoView.backgroundColor = KarhooUI.colors.paymentLightGrey
         capacityInfoView.layer.cornerRadius = 10.0
         capacityInfoView.layer.masksToBounds = true
         
@@ -86,7 +86,7 @@ final class VehicleCapacityView: UIView {
         let baggageCapacityLabel = UILabel()
         baggageCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
         baggageCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.baggageCapacityLabel
-        baggageCapacityLabel.textColor = KarhooUI.colors.infoColor
+        baggageCapacityLabel.textColor = KarhooUI.colors.primaryTextColor
         baggageCapacityLabel.font = KarhooUI.fonts.footnoteBold()
         
         return baggageCapacityLabel
@@ -107,7 +107,7 @@ final class VehicleCapacityView: UIView {
         let passengerCapacityLabel = UILabel()
         passengerCapacityLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerCapacityLabel.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
-        passengerCapacityLabel.textColor = KarhooUI.colors.infoColor
+        passengerCapacityLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerCapacityLabel.font = KarhooUI.fonts.footnoteBold()
         
         return passengerCapacityLabel
@@ -147,7 +147,7 @@ final class VehicleCapacityView: UIView {
         let additionalFleetCapabilitiesLabel = UILabel()
         additionalFleetCapabilitiesLabel.translatesAutoresizingMaskIntoConstraints = false
         additionalFleetCapabilitiesLabel.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
-        additionalFleetCapabilitiesLabel.textColor = KarhooUI.colors.infoColor
+        additionalFleetCapabilitiesLabel.textColor = KarhooUI.colors.primaryTextColor
         additionalFleetCapabilitiesLabel.font = KarhooUI.fonts.bodyBold()
         
         return additionalFleetCapabilitiesLabel

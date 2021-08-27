@@ -35,7 +35,7 @@ final class MoreDetailsView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.spacing = 5
+        stackView.spacing = 10.0
         
         return stackView
     }()
