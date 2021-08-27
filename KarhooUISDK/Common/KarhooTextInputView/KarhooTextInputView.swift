@@ -209,14 +209,6 @@ class KarhooTextInputView: UIView, KarhooInputView {
         }
     }
     
-    public func getIntput() -> String {
-        if textView.text == contentType.placeholderText {
-            return ""
-        }
-        
-        return isValid() ? textView.text : ""
-    }
-    
     public func isFirstResponder() -> Bool {
         return textView.isFirstResponder
     }
