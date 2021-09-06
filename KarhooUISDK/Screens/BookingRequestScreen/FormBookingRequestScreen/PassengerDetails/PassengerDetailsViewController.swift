@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import KarhooSDK
 
 struct KHPassengerDetailsViewID {
     static let scrollView = "scroll_view"
     static let mainStackView = "main_stack_view"
-    static let toolbarView = "toolbar_view"
     static let backButton = "back_button"
     static let pageInfoStackView = "page_info_stack_view"
     static let pageTitleLabel = "page_title_label"
@@ -21,6 +21,7 @@ struct KHPassengerDetailsViewID {
     static let lastNameInputView = "last_name_input_view"
     static let emailInputView = "email_input_view"
     static let mobilePhoneInputView = "mobile_phone_input_view"
+    static let doneButton = "done_button"
 }
 
 final class PassengerDetailsViewController: UIViewController {
@@ -33,7 +34,6 @@ final class PassengerDetailsViewController: UIViewController {
     private let extraSmallSpacing: CGFloat = 4.0
     private var inputViews = [KarhooInputView]()
     private var validSet = Set<String>()
-    weak var actions: PassengerDetailsActions?
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -55,21 +55,16 @@ final class PassengerDetailsViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var toolbarView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.accessibilityIdentifier = KHPassengerDetailsViewID.toolbarView
-        return view
-    }()
-    
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
         button.tintColor = KarhooUI.colors.darkGrey
-        button.setImage(UIImage.uisdkImage("backIcon"), for: .normal) //.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
         button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: extraSmallSpacing, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         return button
@@ -136,12 +131,18 @@ final class PassengerDetailsViewController: UIViewController {
         return inputView
     }()
     
-    private lazy var bookingButton: KarhooBookingButtonView = {
-        let button = KarhooBookingButtonView()
+    private lazy var doneButton: UIButton = {
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = KHPassengerDetailsViewID.doneButton
         button.anchor(height: 55.0)
-        button.set(actions: self)
-        button.set(buttonTitle: UITexts.PassengerDetails.doneAction)
+        button.backgroundColor = KarhooUI.colors.secondary
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitle(UITexts.PassengerDetails.doneAction.uppercased(), for: .normal)
+        button.titleLabel?.font = KarhooUI.fonts.subtitleBold()
+        button.layer.cornerRadius = 8.0
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
         return button
     }()
     
@@ -157,14 +158,24 @@ final class PassengerDetailsViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
+        view.backgroundColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.layer.cornerRadius = 10.0
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundClicked)))
         setUpView()
     }
     
     private func setUpView() {
+        view.addSubview(backButton)
+        backButton.anchor(top: view.topAnchor,
+                          leading: view.leadingAnchor,
+                          paddingTop: standardSpacing,
+                          width: standardButtonSize * 2,
+                          height: standardButtonSize * 2)
+        
         view.addSubview(scrollView)
-        scrollView.anchor(top: self.view.topAnchor,
+        scrollView.anchor(top: backButton.bottomAnchor,
                           bottom: self.view.bottomAnchor)
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
@@ -172,22 +183,14 @@ final class PassengerDetailsViewController: UIViewController {
         scrollView.addSubview(mainStackView)
         mainStackView.anchor(top: scrollView.topAnchor,
                              leading: scrollView.leadingAnchor,
-                             bottom: scrollView.bottomAnchor,
+                             //bottom: scrollView.bottomAnchor,
                              trailing: scrollView.trailingAnchor,
-                             paddingTop: standardMargin,
+                             paddingTop: 0,
                              paddingLeft: standardMargin,
-                             paddingBottom: -standardMargin,
+                             //paddingBottom: -standardMargin,
                              paddingRight: -standardMargin)
         mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        
-        mainStackView.addArrangedSubview(toolbarView)
-        toolbarView.addSubview(backButton)
-        backButton.anchor(top: toolbarView.topAnchor,
-                          leading: toolbarView.leadingAnchor,
-                          bottom: toolbarView.bottomAnchor,
-                          paddingLeft: -standardMargin,
-                          width: standardButtonSize * 2,
-                          height: standardButtonSize)
+        let _ = mainStackView.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -standardSpacing).isActive = true
         
         mainStackView.addArrangedSubview(pageInfoStackView)
         pageInfoStackView.addArrangedSubview(pageTitleLabel)
@@ -198,13 +201,14 @@ final class PassengerDetailsViewController: UIViewController {
         mainStackView.addArrangedSubview(emailNameInputView)
         mainStackView.addArrangedSubview(mobilePhoneInputView)
         
-        view.addSubview(bookingButton)
-        bookingButton.anchor(leading: view.leadingAnchor,
+        view.addSubview(doneButton)
+        doneButton.anchor(leading: view.leadingAnchor,
                              bottom: view.bottomAnchor,
                              trailing: view.trailingAnchor,
                              paddingLeft: standardSpacing,
                              paddingBottom: standardSpacing,
                              paddingRight: standardSpacing)
+        enableDoneButton(false)
         
         view.setNeedsDisplay()
         view.setNeedsLayout()
@@ -214,14 +218,34 @@ final class PassengerDetailsViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func backButtonPressed() {
+    @objc private func backButtonPressed() {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    @objc private func donePressed() {
+        let details = PassengerDetails(firstName: firstNameInputView.getInput(),
+                                       lastName: lastNameInputView.getInput(),
+                                       email: emailNameInputView.getInput(),
+                                       phoneNumber: mobilePhoneInputView.getInput(),
+                                       locale: "en-UK") //TODO: get proper locale based on country code
+        PassengerInfo.shared.set(details: details)
+        backButtonPressed()
+    }
+    
+    @objc private func backgroundClicked() {
+        view.endEditing(true)
+    }
+    
+    //MARK: - Utils
+    func enableDoneButton(_ shouldEnable: Bool) {
+        doneButton.isEnabled = shouldEnable
+        doneButton.alpha = shouldEnable ? 1.0 : 0.4
+   }
 }
 
 extension PassengerDetailsViewController: PassengerDetailsActions {
-    func passengerDetailsValid(_: Bool) {
-        
+    func passengerDetailsValid(_ isValid: Bool) {
+        enableDoneButton(isValid)
     }
 }
 
@@ -240,7 +264,7 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
             }
         }
 
-        actions?.passengerDetailsValid(validSet.count == inputViews.count)
+        passengerDetailsValid(validSet.count == inputViews.count)
     }
 }
 
@@ -250,12 +274,5 @@ extension PassengerDetailsViewController: KarhooTextFieldStateDelegate {
     }
 }
 
-extension PassengerDetailsViewController: BookingButtonActions {
-    func requestPressed() {
-        // TODO: Save passenger details
-    }
-    
-    func addFlightDetailsPressed() {
-        // Do Nothing
-    }
-}
+
+

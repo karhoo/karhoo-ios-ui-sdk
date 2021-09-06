@@ -24,7 +24,7 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
     }
     
     func updatePassengerDetailsPressed() {
-       // TODO: Consider adding an event for this action in the NSDK. See KarhooPaymentPresenter for a usage example
+       // TODO: Consider adding an analytics event for this action in the NSDK. See KarhooPaymentPresenter for a usage example
         
         let presenter = PassengerDetailsPresenter()
         let detailsViewController = PassengerDetailsViewController(presenter: presenter)

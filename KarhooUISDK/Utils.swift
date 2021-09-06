@@ -40,4 +40,19 @@ public class Utils {
 
         return ["": ""]
     }
+    
+    static func isValidName(name: String?) -> Bool {
+        guard let name = name, !name.isEmpty, name.count >= 2 else {
+            return false
+        }
+        
+        for char in name {
+            guard char.isLetter || char.isWhitespace || "\(char)" == "-"
+            else {
+                return false
+            }
+        }
+        
+        return true
+    }
 }

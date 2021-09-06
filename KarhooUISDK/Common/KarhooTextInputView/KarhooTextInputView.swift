@@ -204,6 +204,8 @@ class KarhooTextInputView: UIView, KarhooInputView {
             return Utils.isValidEmail(email: textView.text!)
         case .phone:
             return Utils.isValidPhoneNumber(number: textView.text!)
+        case .firstname, .surname:
+            return textView.text != contentType.placeholderText && Utils.isValidName(name: textView.text)
         default:
             return textView.text != contentType.placeholderText && textView.text != ""
         }
