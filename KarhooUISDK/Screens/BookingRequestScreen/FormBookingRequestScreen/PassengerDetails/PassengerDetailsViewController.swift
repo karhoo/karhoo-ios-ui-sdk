@@ -27,6 +27,7 @@ struct KHPassengerDetailsViewID {
 final class PassengerDetailsViewController: UIViewController {
     
     private var presenter: PassengerDetailsPresenterProtocol
+    private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     private let standardButtonSize: CGFloat = 44.0
     private let standardMargin: CGFloat = 30.0
     private let standardSpacing: CGFloat = 20.0
@@ -34,6 +35,8 @@ final class PassengerDetailsViewController: UIViewController {
     private let extraSmallSpacing: CGFloat = 4.0
     private var inputViews = [KarhooInputView]()
     private var validSet = Set<String>()
+    private var doneButtonBottomConstraint: NSLayoutConstraint!
+    private var scrollViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -156,6 +159,10 @@ final class PassengerDetailsViewController: UIViewController {
         fatalError("init(code:) has not been implemented")
     }
     
+    deinit {
+        keyboardSizeProvider.remove(listener: self)
+    }
+    
     override func loadView() {
         view = UIView()
         view.backgroundColor = UIColor.white
@@ -175,8 +182,9 @@ final class PassengerDetailsViewController: UIViewController {
                           height: standardButtonSize * 2)
         
         view.addSubview(scrollView)
-        scrollView.anchor(top: backButton.bottomAnchor,
-                          bottom: self.view.bottomAnchor)
+        scrollView.anchor(top: backButton.bottomAnchor)
+        scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        scrollViewBottomConstraint.isActive = true
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
@@ -203,12 +211,12 @@ final class PassengerDetailsViewController: UIViewController {
         
         view.addSubview(doneButton)
         doneButton.anchor(leading: view.leadingAnchor,
-                             bottom: view.bottomAnchor,
-                             trailing: view.trailingAnchor,
-                             paddingLeft: standardSpacing,
-                             paddingBottom: standardSpacing,
-                             paddingRight: standardSpacing)
+                          trailing: view.trailingAnchor,
+                          paddingLeft: standardSpacing,
+                          paddingRight: standardSpacing)
         enableDoneButton(false)
+        doneButtonBottomConstraint = doneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -standardSpacing)
+        doneButtonBottomConstraint.isActive = true
         
         view.setNeedsDisplay()
         view.setNeedsLayout()
@@ -216,6 +224,12 @@ final class PassengerDetailsViewController: UIViewController {
         
         inputViews = [firstNameInputView, lastNameInputView, emailNameInputView, mobilePhoneInputView]
         addPreInputtedDetails()
+    }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        keyboardSizeProvider.register(listener: self)
     }
     
     // MARK: - Actions
@@ -289,9 +303,12 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     }
 }
 
-extension PassengerDetailsViewController: KarhooTextFieldStateDelegate {
-    func didChange(text: String, isValid: Bool, identifier: Int) {
-        // TODO: check if method is needed. If not, erase it
+extension PassengerDetailsViewController: KeyboardListener {
+
+    func keyboard(updatedHeight: CGFloat) {
+        doneButtonBottomConstraint.constant = -updatedHeight - standardSpacing
+        scrollViewBottomConstraint.constant = -updatedHeight - standardSpacing * 2 - doneButton.bounds.height
+        view.layoutIfNeeded()
     }
 }
 
