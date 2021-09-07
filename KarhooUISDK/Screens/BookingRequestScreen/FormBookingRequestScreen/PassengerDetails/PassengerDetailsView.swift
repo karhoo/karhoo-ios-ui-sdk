@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-// final class PassengerDetailsView: UIView {
+//final class PassengerDetailsView: UIView {
 //
 //    private let textFieldInset: CGFloat = 30.0
 //    private var inputViews: [KarhooInputView] = []
