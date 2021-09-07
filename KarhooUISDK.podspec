@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.6.2"
+  s.version               = "1.6.3"
   s.summary               = "Karhoo UI SDK"
   s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
   s.license               = 'BSD 2-Clause'
@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
   s.dependency    'BraintreeDropIn', '~> 8.1'
   s.dependency    'Braintree/PaymentFlow', '~> 4.37'
   s.dependency    'PhoneNumberKit', '3.3.1'
-  s.dependency    'Adyen', '3.6.0'
+  s.dependency    'Adyen', '3.7.0'
 
 end

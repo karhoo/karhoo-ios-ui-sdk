@@ -1,16 +1,16 @@
 PODS:
-  - Adyen (3.6.0):
-    - Adyen/Card (= 3.6.0)
-    - Adyen/Core (= 3.6.0)
-    - Adyen/DropIn (= 3.6.0)
-  - Adyen/Card (3.6.0):
+  - Adyen (3.7.0):
+    - Adyen/Card (= 3.7.0)
+    - Adyen/Core (= 3.7.0)
+    - Adyen/DropIn (= 3.7.0)
+  - Adyen/Card (3.7.0):
     - Adyen/Core
-    - Adyen3DS2 (>= 2.1.0-rc.5)
-  - Adyen/Core (3.6.0)
-  - Adyen/DropIn (3.6.0):
+    - Adyen3DS2 (= 2.1.0-rc.6)
+  - Adyen/Core (3.7.0)
+  - Adyen/DropIn (3.7.0):
     - Adyen/Card
     - Adyen/Core
-  - Adyen3DS2 (2.2.2)
+  - Adyen3DS2 (2.1.0-rc.6)
   - Braintree/Card (4.37.1):
     - Braintree/Core
   - Braintree/Core (4.37.1)
@@ -46,8 +46,8 @@ PODS:
   - KarhooSDK (1.5.2):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.6.2):
-    - Adyen (= 3.6.0)
+  - KarhooUISDK (1.6.3):
+    - Adyen (= 3.7.0)
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - FloatingPanel (= 2.0.1)
@@ -64,7 +64,7 @@ PODS:
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
-  - Adyen (= 3.6.0)
+  - Adyen (= 3.7.0)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
@@ -91,18 +91,18 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  Adyen: f2978d24fcfdb992d43c50de87a045bc6b26afa9
-  Adyen3DS2: 98e8f8759f1bd16a6f609f21e3eaa9f66f38d1c6
+  Adyen: 31c52afffea7987e1385da7b66508cd55925b4af
+  Adyen3DS2: 9f7bfb0bd76bd11dcf2599fce2c1d9bbcdc0895a
   Braintree: 94a20907b70aeffb29c40380eec583d783a347b6
   BraintreeDropIn: 073ef11637285efc5572b412079a34942c849ef9
   FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   KarhooSDK: 105be233f17e1ea513d75737a03bf94279b53ba1
-  KarhooUISDK: 3a94b86f57abb63bba50d4d55e9870b30a6bba91
+  KarhooUISDK: dbae43e74af36539e8b3e5018fc17919c58e7f26
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 21abaedcaea4732b5dbbcc9570979f633506a074
+PODFILE CHECKSUM: adea7bda34d2b63a54b7b2cc37e08e9d92edf0c1
 
 COCOAPODS: 1.10.1
