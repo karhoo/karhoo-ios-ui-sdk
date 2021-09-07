@@ -215,21 +215,24 @@ final class PassengerDetailsViewController: UIViewController {
         view.setNeedsUpdateConstraints()
         
         inputViews = [firstNameInputView, lastNameInputView, emailNameInputView, mobilePhoneInputView]
+        addPreInputtedDetails()
     }
     
     // MARK: - Actions
     @objc private func backButtonPressed() {
-        self.dismiss(animated: false, completion: nil)
+        dismissScreen()
+        presenter.backClicked()
     }
     
     @objc private func donePressed() {
+       dismissScreen()
         let details = PassengerDetails(firstName: firstNameInputView.getInput(),
                                        lastName: lastNameInputView.getInput(),
                                        email: emailNameInputView.getInput(),
-                                       phoneNumber: mobilePhoneInputView.getInput(),
-                                       locale: "en-UK") //TODO: get proper locale based on country code
-        PassengerInfo.shared.set(details: details)
-        backButtonPressed()
+                                       phoneNumber: mobilePhoneInputView.getPhoneNumberNoCountryCode(),
+                                       locale: mobilePhoneInputView.getCountryCode()) // TODO: get proper locale based on country code
+        presenter.doneClicked(newDetails: details)
+        dismissScreen()
     }
     
     @objc private func backgroundClicked() {
@@ -241,6 +244,24 @@ final class PassengerDetailsViewController: UIViewController {
         doneButton.isEnabled = shouldEnable
         doneButton.alpha = shouldEnable ? 1.0 : 0.4
    }
+    
+    func dismissScreen() {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    func addPreInputtedDetails() {
+        guard let details = presenter.details
+        else {
+            return
+        }
+        
+        firstNameInputView.set(text: details.firstName)
+        lastNameInputView.set(text: details.lastName)
+        emailNameInputView.set(text: details.email)
+        mobilePhoneInputView.set(text: details.phoneNumber)
+        // TODO: set proper country code based on locale
+        didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
+    }
 }
 
 extension PassengerDetailsViewController: PassengerDetailsActions {

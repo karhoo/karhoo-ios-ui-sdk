@@ -7,9 +7,23 @@
 //
 
 import Foundation
+import KarhooSDK
 
 class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
-//    func didPressClose() {
-//        
-//    }
+    var details: PassengerDetails?
+    var callback: (PassengerDetailsResult) -> ()
+    
+    init(details: PassengerDetails?,
+        callback: @escaping (PassengerDetailsResult) -> ()) {
+        self.details = details
+        self.callback = callback
+    }
+    
+    func doneClicked(newDetails: PassengerDetails) {
+        callback(PassengerDetailsResult(details: newDetails, isCancelled: false))
+    }
+    
+    func backClicked() {
+        callback(PassengerDetailsResult(details: nil, isCancelled: true))
+    }
 }

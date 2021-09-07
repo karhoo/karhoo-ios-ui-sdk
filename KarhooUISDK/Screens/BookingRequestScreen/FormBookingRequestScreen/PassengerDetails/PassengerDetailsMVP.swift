@@ -14,5 +14,12 @@ protocol PassengerDetailsActions: BaseViewController {
 }
 
 protocol PassengerDetailsPresenterProtocol {
-//    func didPressClose()
+    var details: PassengerDetails? { get set }
+    func doneClicked(newDetails: PassengerDetails)
+    func backClicked()
+}
+
+struct PassengerDetailsResult {
+    var details: PassengerDetails?
+    var isCancelled: Bool
 }
