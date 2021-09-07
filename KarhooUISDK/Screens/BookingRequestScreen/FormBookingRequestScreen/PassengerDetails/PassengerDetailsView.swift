@@ -131,7 +131,7 @@ import KarhooSDK
 //    }
 //}
 //
-//extension PassengerDetailsView: KarhooInputViewDelegate {
+// extension PassengerDetailsView: KarhooInputViewDelegate {
 //    func didBecomeInactive(identifier: String) {
 //        for (index, inputView) in inputViews.enumerated() {
 //            if inputView.isValid() {
@@ -148,4 +148,4 @@ import KarhooSDK
 //
 //        actions?.passengerDetailsValid(validSet.count == inputViews.count)
 //    }
-//}
+// }
