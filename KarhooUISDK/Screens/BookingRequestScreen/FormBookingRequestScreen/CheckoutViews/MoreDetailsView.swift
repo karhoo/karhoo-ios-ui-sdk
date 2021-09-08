@@ -106,7 +106,7 @@ final class MoreDetailsView: UIView {
     
     private func setupCapabilityView(for capability: FleetCapabilities) {
         let image = capability.image
-        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.title)"
+        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.rawValue)"
         setupView(for: capability.title, with: image, accessibilityId: accessibilityId)
     }
     

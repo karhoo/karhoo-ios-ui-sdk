@@ -54,8 +54,11 @@ final class FarePriceInfoView: UIView {
                         paddingLeft: 10.0,
                         paddingRight: 10.0)
         fareTypeInfoLabel.centerY(inView: self)
-        fareTypeInfoLabel.anchor(trailing: trailingAnchor,
-                                 paddingBottom: 10.0,
+        fareTypeInfoLabel.anchor(top: topAnchor,
+                                 bottom: bottomAnchor,
+                                 trailing: trailingAnchor,
+                                 paddingTop: 5.0,
+                                 paddingBottom: 5.0,
                                  paddingRight: 10.0)
     }
     

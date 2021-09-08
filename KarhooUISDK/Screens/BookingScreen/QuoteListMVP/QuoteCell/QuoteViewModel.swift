@@ -68,6 +68,20 @@ enum FleetCapabilities: String {
             return UIImage.uisdkImage("trainTrackingIcon")
         }
     }
+    
+    init?(rawValue: String) {
+        guard let key = CodingKeys(rawValue: rawValue) else {
+            return nil
+        }
+        switch key {
+        case .gpsTracking:
+            self = .gpsTracking
+        case .flightTracking:
+            self = .flightTracking
+        case .trainTracking:
+            self = .trainTracking
+        }
+    }
 }
 
 final class QuoteViewModel {
