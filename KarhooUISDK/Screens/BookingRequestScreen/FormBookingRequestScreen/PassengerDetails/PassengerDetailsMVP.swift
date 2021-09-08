@@ -9,6 +9,17 @@
 import Foundation
 import KarhooSDK
 
-protocol PassengerDetailsActions: class {
+protocol PassengerDetailsActions: BaseViewController {
     func passengerDetailsValid(_ : Bool)
+}
+
+protocol PassengerDetailsPresenterProtocol {
+    var details: PassengerDetails? { get set }
+    func doneClicked(newDetails: PassengerDetails)
+    func backClicked()
+}
+
+struct PassengerDetailsResult {
+    var details: PassengerDetails?
+    var isCancelled: Bool
 }

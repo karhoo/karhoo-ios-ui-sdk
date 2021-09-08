@@ -230,6 +230,17 @@ public enum UITexts {
         public static let cancelling = "Text.TripAllocation.Cancelling".localized
         public static let cancelInstruction = "Text.TripAllocation.CancelInstruction".localized
     }
+    
+    public enum PassengerDetails {
+        public static let title = "Text.Booking.PassengerDetails.Title".localized
+        public static let subtitle = "Text.Booking.PassengerDetails.Subtitle".localized
+        public static let firstName = "Text.Booking.PassengerDetails.FirstName".localized
+        public static let lastName = "Text.Booking.PassengerDetails.LastName".localized
+        public static let email = "Text.Booking.PassengerDetails.Email".localized
+        public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
+        public static let doneAction = "Text.Booking.PassengerDetails.DoneAction".localized
+        public static let add = "Text.Booking.PassengerDetails.Add".localized
+    }
 
     /* Trip */
     public enum Trip {

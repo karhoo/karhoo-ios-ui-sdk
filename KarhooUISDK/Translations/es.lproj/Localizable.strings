@@ -437,6 +437,16 @@
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Detalles del pago";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Su conductor esperará por usted";
 
+/*Passenger Details*/
+"Text.Booking.PassengerDetails.Title" = "Pasajero";
+"Text.Booking.PassengerDetails.Subtitle" = "Esta información permite el buen desarrollo de su carrera";
+"Text.Booking.PassengerDetails.FirstName" = "Nombre";
+"Text.Booking.PassengerDetails.LastName" = "Apellido";
+"Text.Booking.PassengerDetails.Email" = "Correo electrónico";
+"Text.Booking.PassengerDetails.MobilePhone" = "Número de móvil";
+"Text.Booking.PassengerDetails.DoneAction" = "SIGUIENTE";
+"Text.Booking.PassengerDetails.Add" = "Añadir pasajero";
+
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Esta flota es un taxi no regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.). Por favor, consulte los Términos y Condiciones de la flota para más información.";
 "Text.Booking.MeteredInfoBox" = "Esta flota es un taxi con taxímetro regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.).";
