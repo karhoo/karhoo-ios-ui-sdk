@@ -9,6 +9,7 @@ import UIKit
 
 public protocol KarhooInputViewDelegate: AnyObject {
     func didBecomeInactive(identifier: String)
+    func didBecomeActive(identifier:String)
 }
 
 class KarhooTextInputView: UIView, KarhooInputView {
@@ -149,6 +150,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
     
     public func setActive() {
         textView.becomeFirstResponder()
+        delegate?.didBecomeActive(identifier: accessibilityIdentifier!)
     }
     
     public func setInactive() {
@@ -254,6 +256,8 @@ extension KarhooTextInputView: UITextViewDelegate {
             textView.textColor = KarhooUI.colors.primaryTextColor
             textView.text = nil
         }
+        
+        delegate?.didBecomeActive(identifier: accessibilityIdentifier!)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

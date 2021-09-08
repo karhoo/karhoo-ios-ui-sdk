@@ -28,6 +28,7 @@ final class PassengerDetailsViewController: UIViewController {
     
     private var presenter: PassengerDetailsPresenterProtocol
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
+    private let doneButtonHeight: CGFloat = 55.0
     private let standardButtonSize: CGFloat = 44.0
     private let standardMargin: CGFloat = 30.0
     private let standardSpacing: CGFloat = 20.0
@@ -37,6 +38,7 @@ final class PassengerDetailsViewController: UIViewController {
     private var validSet = Set<String>()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var scrollViewBottomConstraint: NSLayoutConstraint!
+    private var shouldMoveToNextInputViewOnReturn = true
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -138,7 +140,7 @@ final class PassengerDetailsViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHPassengerDetailsViewID.doneButton
-        button.anchor(height: 55.0)
+        button.anchor(height: doneButtonHeight)
         button.backgroundColor = KarhooUI.colors.secondary
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitle(UITexts.PassengerDetails.doneAction.uppercased(), for: .normal)
@@ -191,14 +193,12 @@ final class PassengerDetailsViewController: UIViewController {
         scrollView.addSubview(mainStackView)
         mainStackView.anchor(top: scrollView.topAnchor,
                              leading: scrollView.leadingAnchor,
-                             //bottom: scrollView.bottomAnchor,
                              trailing: scrollView.trailingAnchor,
                              paddingTop: 0,
                              paddingLeft: standardMargin,
-                             //paddingBottom: -standardMargin,
                              paddingRight: -standardMargin)
         mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        let _ = mainStackView.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -standardSpacing).isActive = true
+        _ = mainStackView.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor, constant: -standardSpacing).isActive = true
         
         mainStackView.addArrangedSubview(pageInfoStackView)
         pageInfoStackView.addArrangedSubview(pageTitleLabel)
@@ -250,10 +250,11 @@ final class PassengerDetailsViewController: UIViewController {
     }
     
     @objc private func backgroundClicked() {
+        shouldMoveToNextInputViewOnReturn = false
         view.endEditing(true)
     }
     
-    //MARK: - Utils
+    // MARK: - Utils
     func enableDoneButton(_ shouldEnable: Bool) {
         doneButton.isEnabled = shouldEnable
         doneButton.alpha = shouldEnable ? 1.0 : 0.4
@@ -292,7 +293,9 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
             } else {
                 validSet.remove(inputView.accessibilityIdentifier!)
             }
-            if inputView.accessibilityIdentifier == identifier {
+            
+            if shouldMoveToNextInputViewOnReturn,
+               inputView.accessibilityIdentifier == identifier {
                 if index != inputViews.count - 1 {
                     inputViews[index + 1].setActive()
                 }
@@ -301,14 +304,24 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
 
         passengerDetailsValid(validSet.count == inputViews.count)
     }
+    
+    func didBecomeActive(identifier: String) {
+        shouldMoveToNextInputViewOnReturn = true
+    }
 }
 
 extension PassengerDetailsViewController: KeyboardListener {
 
     func keyboard(updatedHeight: CGFloat) {
-        doneButtonBottomConstraint.constant = -updatedHeight - standardSpacing
-        scrollViewBottomConstraint.constant = -updatedHeight - standardSpacing * 2 - doneButton.bounds.height
-        view.layoutIfNeeded()
+        let extraHeight = standardSpacing * 2 + doneButtonHeight
+        
+        // This is to stop the animation of the done button's bottom constraint change
+        UIView.animate(withDuration: 0.1, delay: 0, options: []) { [weak self] in
+            self?.doneButtonBottomConstraint.constant = -updatedHeight - (self?.standardSpacing ?? 0.0)
+            self?.scrollViewBottomConstraint.constant = -updatedHeight - extraHeight
+            self?.view.layoutIfNeeded()
+        }
+
     }
 }
 

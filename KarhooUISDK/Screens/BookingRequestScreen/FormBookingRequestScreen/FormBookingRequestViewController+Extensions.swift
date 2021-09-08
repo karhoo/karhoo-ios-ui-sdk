@@ -37,6 +37,10 @@ extension FormBookingRequestViewController: KarhooInputViewDelegate {
         enableBookingButton()
     }
     
+    func didBecomeActive(identifier: String) {
+        enableBookingButton()
+    }
+    
     private func enableBookingButton() {
         if passengerDetailsValid != true {
             bookingButton.setDisabledMode()

@@ -24,11 +24,11 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
     }
     
     func updatePassengerDetailsPressed() {
-       // TODO: Consider adding an analytics event for this action in the NSDK. See KarhooPaymentPresenter for a usage example
+       // Consider adding an analytics event for this action in the NSDK. See KarhooPaymentPresenter for a usage example
         
         let presenter = PassengerDetailsPresenter(details: details) { result in
-            if !result.isCancelled {
-                self.details = result.details
+            if result.isComplete() {
+                self.details = result.completedValue()
                 PassengerInfo.shared.set(details: self.details)
                 self.displayAvailablePassengerDetails()
             }
