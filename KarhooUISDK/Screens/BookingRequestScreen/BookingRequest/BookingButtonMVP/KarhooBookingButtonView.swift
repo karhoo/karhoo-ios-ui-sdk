@@ -199,7 +199,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         button.isEnabled = true
     }
 
-    func set(buttonTitle: String) {
+    private func set(buttonTitle: String) {
         UIView.transition(with: buttonLabel,
                           duration: textTransitionTime,
                           options: [.curveEaseInOut, .transitionCrossDissolve],
