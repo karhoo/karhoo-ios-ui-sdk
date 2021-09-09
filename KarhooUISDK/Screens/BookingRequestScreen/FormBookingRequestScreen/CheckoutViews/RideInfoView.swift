@@ -87,9 +87,11 @@ final class RideInfoView: UIView {
         infoButton.translatesAutoresizingMaskIntoConstraints = true
         infoButton.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
         infoButton.setImage(UIImage.uisdkImage("info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
+        infoButton.contentVerticalAlignment = .fill
+        infoButton.contentHorizontalAlignment = .fill
+        infoButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         infoButton.tintColor = KarhooUI.colors.infoColor
         infoButton.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
-        infoButton.imageView?.contentMode = .scaleToFill
         
         return infoButton
     }()
