@@ -35,6 +35,9 @@ final class PaymentFactory {
     }
 
     func adyenEnvironment() -> Adyen.Environment {
-        return .test
+        switch Karhoo.configuration.environment() {
+            case .production: return .live
+            default: return .test
+        }
     }
 }

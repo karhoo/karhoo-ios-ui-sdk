@@ -19,3 +19,9 @@ protocol KarhooInputView: UIView {
     func set(text: String?)
     func dismissKeyboard()
 }
+
+protocol KarhooPhoneInputViewProtocol: KarhooInputView {
+    func getFullPhoneNumber() -> String
+    func getCountryCode() -> String
+    func getPhoneNumberNoCountryCode() -> String
+}

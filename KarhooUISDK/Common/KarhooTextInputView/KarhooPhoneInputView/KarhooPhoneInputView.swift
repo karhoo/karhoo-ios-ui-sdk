@@ -8,7 +8,7 @@
 import UIKit
 import PhoneNumberKit
 
-class KarhooPhoneInputView: UIView, KarhooInputView {
+class KarhooPhoneInputView: UIView, KarhooPhoneInputViewProtocol {
     
     private var didSetUpConstraints: Bool = false
     
@@ -221,6 +221,19 @@ class KarhooPhoneInputView: UIView, KarhooInputView {
     public func getInput() -> String {
         _ = validatePhoneNumber()
         return phoneNumber
+    }
+    
+    public func getFullPhoneNumber() -> String {
+        return getInput()
+    }
+    
+    public func getPhoneNumberNoCountryCode() -> String {
+        let isValid = validatePhoneNumber()
+        return isValid ? textField.text : ""
+    }
+    
+    public func getCountryCode() -> String {
+        return countryCode.titleLabel?.text ?? ""
     }
     
     private func showCountryPicker() {
