@@ -17,6 +17,7 @@ struct KHMoreDetailsViewID {
 final class MoreDetailsView: UIView {
     
     private var didSetupConstraints: Bool = false
+    private var maximumNumberOfViewsReached: Int = 0
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -88,36 +89,55 @@ final class MoreDetailsView: UIView {
     func set(viewModel: QuoteViewModel) {
         detailsLabel.text = viewModel.fleetDescription
         
-        if viewModel.passengerCapacity > 0 {
-            setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
-        }
-        
-        if viewModel.baggageCapacity > 0 {
-            setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
-        }
-        
-        viewModel.fleetCapabilities.forEach { capability in
-            setupCapabilityView(for: capability)
-        }
+        setupVehicleCapacityView(forViewModel: viewModel)
+        setupView(for: viewModel.fleetCapabilities)
         fleetCapabilitiesStackView.addArrangedSubview(detailsLabel)
         
         setupConstraints()
     }
     
-    private func setupCapabilityView(for capability: FleetCapabilities) {
-        let image = capability.image
-        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capability.rawValue)"
-        setupView(for: capability.title, with: image, accessibilityId: accessibilityId)
+    private func setupVehicleCapacityView(forViewModel viewModel: QuoteViewModel) {
+        if viewModel.fleetCapabilities.count > 0 {
+            let passengerBaggageStackView = UIStackView()
+            passengerBaggageStackView.accessibilityIdentifier = "container_passenger_baggage_stack"
+            passengerBaggageStackView.translatesAutoresizingMaskIntoConstraints = false
+            passengerBaggageStackView.axis = .horizontal
+            passengerBaggageStackView.distribution = .fillEqually
+            passengerBaggageStackView.alignment = .leading
+            passengerBaggageStackView.spacing = 5
+            
+            if viewModel.passengerCapacity > 0 {
+                let passengerStackView = setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
+                passengerBaggageStackView.addArrangedSubview(passengerStackView)
+            }
+            
+            if viewModel.baggageCapacity > 0 {
+                let baggageStackView = setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
+                passengerBaggageStackView.addArrangedSubview(baggageStackView)
+            }
+            
+            fleetCapabilitiesStackView.addArrangedSubview(passengerBaggageStackView)
+        } else {
+            if viewModel.passengerCapacity > 0 {
+                let passengerStackView = setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
+                fleetCapabilitiesStackView.addArrangedSubview(passengerStackView)
+            }
+            
+            if viewModel.baggageCapacity > 0 {
+                let baggageStackView = setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
+                fleetCapabilitiesStackView.addArrangedSubview(baggageStackView)
+            }
+        }
     }
     
-    private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) {
+    private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) -> UIStackView {
         let title = String(format: (passenger ? UITexts.Booking.maximumPassengers : UITexts.Booking.maximumLuggages), "\(maxNumber)")
         let image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
         let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
-        setupView(for: title, with: image, accessibilityId: accessibilityId)
+        return setupView(for: title, with: image, accessibilityId: accessibilityId)
     }
     
-    private func setupView(for title: String, with image: UIImage, accessibilityId: String) {
+    private func setupView(for title: String, with image: UIImage, accessibilityId: String) -> UIStackView {
         let circleBackgroundView = UIView()
         circleBackgroundView.backgroundColor = KarhooUI.colors.lightGrey
         circleBackgroundView.setDimensions(height: 20.0,
@@ -147,6 +167,29 @@ final class MoreDetailsView: UIView {
         stackView.addArrangedSubview(circleBackgroundView)
         stackView.addArrangedSubview(titleLabel)
         
-        fleetCapabilitiesStackView.addArrangedSubview(stackView)
+        return stackView
+    }
+    
+    private func setupView(for capabilities: [FleetCapabilities]) {
+        var index = 0
+        while index < capabilities.count {
+            let firstCap = capabilities[index]
+            let firstCapView = setupView(for: firstCap.title, with: firstCap.image, accessibilityId: firstCap.title)
+            let stackView = UIStackView()
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.alignment = .leading
+            stackView.spacing = 5
+            stackView.addArrangedSubview(firstCapView)
+            
+            if (index + 1 < capabilities.count ) {
+                let secondCap = capabilities[index+1]
+                let secondView = setupView(for: secondCap.title, with: secondCap.image, accessibilityId: secondCap.title)
+                stackView.addArrangedSubview(secondView)
+            }
+            fleetCapabilitiesStackView.addArrangedSubview(stackView)
+            index = index + 2
+        }
     }
 }
