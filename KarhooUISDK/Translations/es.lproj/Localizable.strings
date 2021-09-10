@@ -447,6 +447,10 @@
 "Text.Booking.PassengerDetails.DoneAction" = "SIGUIENTE";
 "Text.Booking.PassengerDetails.Add" = "Añadir pasajero";
 
+/*Country Code Selection*/
+"Text.Booking.CountryCodeSelection.Title" = "País / Región";
+"Text.Booking.CountryCodeSelection.Search" = "Buscar";
+
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Esta flota es un taxi no regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.). Por favor, consulte los Términos y Condiciones de la flota para más información.";
 "Text.Booking.MeteredInfoBox" = "Esta flota es un taxi con taxímetro regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.).";

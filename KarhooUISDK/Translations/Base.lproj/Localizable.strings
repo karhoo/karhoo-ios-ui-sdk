@@ -421,6 +421,10 @@
 "Text.Booking.PassengerDetails.DoneAction" = "NEXT";
 "Text.Booking.PassengerDetails.Add" = "Add passenger";
 
+/*Country Code Selection*/
+"Text.Booking.CountryCodeSelection.Title" = "Country / Region";
+"Text.Booking.CountryCodeSelection.Search" = "Search";
+
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";
 "Text.Booking.MeteredInfoBox" = "This fleet is a regulated metered taxi. The quote is an estimate based on the trip factors (distance, time, etc).";

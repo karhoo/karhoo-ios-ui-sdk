@@ -56,3 +56,21 @@ public class Utils {
         return true
     }
 }
+
+class ViewControllerUtils {
+    static var topBaseViewController: BaseViewController? {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+             topVC = topVC!.presentedViewController
+        }
+        return topVC as? BaseViewController
+    }
+    
+    static var topViewController: UIViewController? {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+             topVC = topVC!.presentedViewController
+        }
+        return topVC
+    }
+}

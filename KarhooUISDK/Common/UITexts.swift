@@ -241,6 +241,11 @@ public enum UITexts {
         public static let doneAction = "Text.Booking.PassengerDetails.DoneAction".localized
         public static let add = "Text.Booking.PassengerDetails.Add".localized
     }
+    
+    public enum CountryCodeSelection {
+        public static let title = "Text.Booking.CountryCodeSelection.Title".localized
+        public static let search = "Text.Booking.CountryCodeSelection.Search".localized
+    }
 
     /* Trip */
     public enum Trip {

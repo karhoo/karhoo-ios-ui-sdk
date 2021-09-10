@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
+final class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
     var details: PassengerDetails?
     private let callback: ScreenResultCallback<PassengerDetails>
     

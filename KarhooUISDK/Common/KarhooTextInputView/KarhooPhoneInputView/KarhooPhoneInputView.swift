@@ -180,7 +180,14 @@ class KarhooPhoneInputView: UIView, KarhooPhoneInputViewProtocol {
     @objc
     private func countryCodeTapped() {
         tintView(.active)
-        showCountryPicker()
+        //showCountryPicker()
+        let presenter = CountryCodeSelectionPresenter(preSelectedCountry: nil) { result in
+            
+        }
+        let vc = CountryCodeSelectionViewController(presenter: presenter)
+        if let topController = ViewControllerUtils.topBaseViewController {
+            topController.showAsOverlay(item: vc, animated: true)
+        }
     }
     
     public func resetView() {
@@ -253,11 +260,16 @@ class KarhooPhoneInputView: UIView, KarhooPhoneInputViewProtocol {
         
         alertView.addAction(action)
         
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            
+//        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+//            while let presentedViewController = topController.presentedViewController {
+//                topController = presentedViewController
+//            }
+//
+//            topController.present(alertView, animated: true) {
+//                pickerView.frame.size.width = alertView.view.frame.size.width
+//            }
+//        }
+        if let topController = ViewControllerUtils.topViewController {
             topController.present(alertView, animated: true) {
                 pickerView.frame.size.width = alertView.view.frame.size.width
             }
