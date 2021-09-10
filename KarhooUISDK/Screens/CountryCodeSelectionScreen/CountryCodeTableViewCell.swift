@@ -37,7 +37,6 @@ class CountryCodeTableViewCell: UITableViewCell {
 
     override func updateConstraints() {
         if !didSetupConstraints {
-        
             view.anchor(top: contentView.topAnchor,
                         leading: contentView.leadingAnchor,
                         bottom: contentView.bottomAnchor,
