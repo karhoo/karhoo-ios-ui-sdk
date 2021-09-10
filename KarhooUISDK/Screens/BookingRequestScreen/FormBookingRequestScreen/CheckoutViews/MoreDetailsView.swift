@@ -189,7 +189,7 @@ final class MoreDetailsView: UIView {
                 stackView.addArrangedSubview(secondView)
             }
             fleetCapabilitiesStackView.addArrangedSubview(stackView)
-            index = index + 2
+            index += 2
         }
     }
 }
