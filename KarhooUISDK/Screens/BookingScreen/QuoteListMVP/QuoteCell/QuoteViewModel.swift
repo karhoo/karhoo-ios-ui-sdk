@@ -68,6 +68,20 @@ enum FleetCapabilities: String {
             return UIImage.uisdkImage("trainTrackingIcon")
         }
     }
+    
+    init?(rawValue: String) {
+        guard let key = CodingKeys(rawValue: rawValue) else {
+            return nil
+        }
+        switch key {
+        case .gpsTracking:
+            self = .gpsTracking
+        case .flightTracking:
+            self = .flightTracking
+        case .trainTracking:
+            self = .trainTracking
+        }
+    }
 }
 
 final class QuoteViewModel {
@@ -101,7 +115,7 @@ final class QuoteViewModel {
                                                          bookingDetails: bookingDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        self.carType = quote.vehicle.vehicleClass
+        self.carType = quote.vehicle.type
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 

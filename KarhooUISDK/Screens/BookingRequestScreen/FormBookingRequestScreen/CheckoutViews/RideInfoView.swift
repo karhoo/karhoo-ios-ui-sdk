@@ -54,7 +54,7 @@ final class RideInfoView: UIView {
         priceTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.estimatedPrice
         priceTitle.textColor = KarhooUI.colors.infoColor
         priceTitle.textAlignment = .right
-        priceTitle.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        priceTitle.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         priceTitle.text = UITexts.Generic.estimatedPrice.uppercased()
         
         return priceTitle
@@ -75,9 +75,9 @@ final class RideInfoView: UIView {
         let ridePriceType = UILabel()
         ridePriceType.translatesAutoresizingMaskIntoConstraints = false
         ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
-        ridePriceType.textColor = KarhooUI.colors.accent
+        ridePriceType.textColor = KarhooUI.colors.infoColor
         ridePriceType.textAlignment = .right
-        ridePriceType.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
+        ridePriceType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         
         return ridePriceType
     }()
@@ -87,9 +87,11 @@ final class RideInfoView: UIView {
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         infoButton.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
         infoButton.setImage(UIImage.uisdkImage("info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
+        infoButton.contentVerticalAlignment = .fill
+        infoButton.contentHorizontalAlignment = .fill
+        infoButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         infoButton.tintColor = KarhooUI.colors.infoColor
         infoButton.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
-        infoButton.imageView?.contentMode = .scaleToFill
         
         return infoButton
     }()

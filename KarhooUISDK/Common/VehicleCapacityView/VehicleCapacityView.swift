@@ -16,7 +16,8 @@ public struct KHVehicleCapacityViewID {
     public static let capacityInfoView = "capacity_info_view"
     public static let capacityIcon = "passenger_capacity_image"
     public static let passengerCapacityLabel = "passenger_capacity_label"
-    public static let additionalCarTags = "additional_car_tags"
+    public static let additionalFleetCapabilitiesView = "additional_capabilities_view"
+    public static let additionalFleetCapabilitiesLabel = "additional_capabilities_label"
 }
 
 final class VehicleCapacityView: UIView {
@@ -135,8 +136,8 @@ final class VehicleCapacityView: UIView {
     private lazy var additionalCarTagsView: UIView = {
         let capacityInfoView = UIView()
         capacityInfoView.translatesAutoresizingMaskIntoConstraints = false
-        capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.additionalCarTags
-        capacityInfoView.backgroundColor = KarhooUI.colors.lightGrey
+        capacityInfoView.accessibilityIdentifier = KHVehicleCapacityViewID.additionalFleetCapabilitiesView
+        capacityInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         capacityInfoView.layer.cornerRadius = 10.0
         capacityInfoView.layer.masksToBounds = true
         
@@ -146,9 +147,9 @@ final class VehicleCapacityView: UIView {
     private lazy var additionalFleetCapabiliesLabel: UILabel = {
         let additionalFleetCapabilitiesLabel = UILabel()
         additionalFleetCapabilitiesLabel.translatesAutoresizingMaskIntoConstraints = false
-        additionalFleetCapabilitiesLabel.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
-        additionalFleetCapabilitiesLabel.textColor = KarhooUI.colors.primaryTextColor
-        additionalFleetCapabilitiesLabel.font = KarhooUI.fonts.bodyBold()
+        additionalFleetCapabilitiesLabel.accessibilityIdentifier = KHVehicleCapacityViewID.additionalFleetCapabilitiesLabel
+        additionalFleetCapabilitiesLabel.textColor = KarhooUI.colors.infoColor
+        additionalFleetCapabilitiesLabel.font = KarhooUI.fonts.captionBold()
         
         return additionalFleetCapabilitiesLabel
     }()
@@ -241,9 +242,18 @@ final class VehicleCapacityView: UIView {
     
     public func setAdditionalFleetCapabilities(_ value: Int) {
         guard value > 0 else { return }
-        additionalFleetCapabiliesLabel.text = "+ \(value)"
+        additionalFleetCapabiliesLabel.text = "+\(value)"
         stackContainer.addArrangedSubview(additionalCarTagsView)
         additionalCarTagsView.addSubview(additionalFleetCapabiliesLabel)
-
+        setAdditionalConstraints()
+        
+        stackContainer.needsUpdateConstraints()
+    }
+    
+    private func setAdditionalConstraints() {
+        additionalCarTagsView.anchor(width: 20.0,
+                                     height: 20.0)
+        additionalFleetCapabiliesLabel.centerX(inView: additionalCarTagsView)
+        additionalFleetCapabiliesLabel.centerY(inView: additionalCarTagsView)
     }
 }
