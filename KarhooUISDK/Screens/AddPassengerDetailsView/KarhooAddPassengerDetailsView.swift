@@ -46,7 +46,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         passengerDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsStackView.alignment = .center
         passengerDetailsStackView.axis = .vertical
-        passengerDetailsStackView.distribution = .fill
+        passengerDetailsStackView.distribution = .equalSpacing
         passengerDetailsStackView.spacing = 5.0
         
         return passengerDetailsStackView

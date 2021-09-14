@@ -408,7 +408,7 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Details";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Mean";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number";
 
 /*Passenger Details*/

@@ -26,7 +26,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentIcon = UIImageView()
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentIcon.image = UIImage.uisdkImage("visaIcon")
+        passengerPaymentIcon.image = UIImage.uisdkImage("plus_icon")
         passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
@@ -52,7 +52,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         passengerPaymentSubtitleLabel.accessibilityIdentifier = KHAddCardViewID.subtitle
         passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerPaymentSubtitleLabel.textAlignment = .center
-        passengerPaymentSubtitleLabel.text = UITexts.Generic.add
+        passengerPaymentSubtitleLabel.text = UITexts.Payment.addPaymentMethod
         passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
         
         return passengerPaymentSubtitleLabel
@@ -66,7 +66,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         
         passengerPaymentStackView.alignment = .center
         passengerPaymentStackView.axis = .vertical
-        passengerPaymentStackView.distribution = .fill
+        passengerPaymentStackView.distribution = .equalSpacing
         passengerPaymentStackView.spacing = 5.0
 
         return passengerPaymentStackView
@@ -190,8 +190,8 @@ final class KarhooAddCardView: UIView, PaymentView {
         layer.borderWidth = 0.0
         layer.borderColor = UIColor.clear.cgColor
         hasPayment = false
-        passengerPaymentTitle.text = UITexts.Payment.addPaymentMethod
-        passengerPaymentSubtitle.text = UITexts.Generic.add
+        passengerPaymentTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
+        passengerPaymentSubtitle.text = UITexts.Payment.addPaymentMethod
         
         setNeedsDisplay()
     }
