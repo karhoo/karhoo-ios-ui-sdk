@@ -27,7 +27,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentIcon.image = UIImage.uisdkImage("plus_icon")
-        passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
+        passengerPaymentIcon.tintColor = KarhooUI.colors.infoColor
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
         return passengerPaymentIcon
@@ -37,7 +37,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentTitleLabel = UILabel()
         passengerPaymentTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentTitleLabel.accessibilityIdentifier = KHAddCardViewID.title
-        passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
+        passengerPaymentTitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerPaymentTitleLabel.textAlignment = .center
         passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
@@ -50,7 +50,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentSubtitleLabel = UILabel()
         passengerPaymentSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentSubtitleLabel.accessibilityIdentifier = KHAddCardViewID.subtitle
-        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
+        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerPaymentSubtitleLabel.textAlignment = .center
         passengerPaymentSubtitleLabel.text = UITexts.Payment.addPaymentMethod
         passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)

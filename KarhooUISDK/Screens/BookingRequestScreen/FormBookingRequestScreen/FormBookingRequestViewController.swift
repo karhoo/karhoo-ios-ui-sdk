@@ -67,7 +67,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.accessibilityIdentifier = "back_button"
         backButton.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.tintColor = KarhooUI.colors.darkGrey
+        backButton.tintColor = KarhooUI.colors.infoColor
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.imageView?.contentMode = .scaleAspectFit
         return backButton
@@ -79,7 +79,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backTitleButton.accessibilityIdentifier = "back_title_button"
         backTitleButton.setTitle(UITexts.Generic.back, for: .normal)
         backTitleButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
-        backTitleButton.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        backTitleButton.setTitleColor(KarhooUI.colors.primaryTextColor, for: .normal)
         backTitleButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         return backTitleButton
     }()

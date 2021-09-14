@@ -57,7 +57,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         passengerDetailsIcon.accessibilityIdentifier = KHAddPassengerDetailsViewID.image
         passengerDetailsIcon.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsIcon.image = UIImage.uisdkImage("user_icon")
-        passengerDetailsIcon.tintColor = KarhooUI.colors.secondary
+        passengerDetailsIcon.tintColor = KarhooUI.colors.infoColor
         passengerDetailsIcon.contentMode = .scaleAspectFit
         
         return passengerDetailsIcon
@@ -67,7 +67,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         let passengerDetailsTitleLabel = UILabel()
         passengerDetailsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsTitleLabel.accessibilityIdentifier = KHAddPassengerDetailsViewID.title
-        passengerDetailsTitleLabel.textColor = KarhooUI.colors.secondary
+        passengerDetailsTitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerDetailsTitleLabel.textAlignment = .center
         passengerDetailsTitleLabel.text = UITexts.Booking.passenger
         passengerDetailsTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
@@ -79,7 +79,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         let passengerDetailsSubtitleLabel = UILabel()
         passengerDetailsSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsSubtitleLabel.accessibilityIdentifier = KHAddPassengerDetailsViewID.subtitle
-        passengerDetailsSubtitleLabel.textColor = KarhooUI.colors.accent
+        passengerDetailsSubtitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerDetailsSubtitleLabel.textAlignment = .center
         passengerDetailsSubtitleLabel.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
         passengerDetailsSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
