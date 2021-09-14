@@ -26,8 +26,8 @@ final public class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentIcon = UIImageView()
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentIcon.image = UIImage.uisdkImage("visaIcon")
-        passengerPaymentIcon.tintColor = KarhooUI.colors.secondary
+        passengerPaymentIcon.image = UIImage.uisdkImage("plus_icon")
+        passengerPaymentIcon.tintColor = KarhooUI.colors.infoColor
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
         return passengerPaymentIcon
@@ -37,10 +37,11 @@ final public class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentTitleLabel = UILabel()
         passengerPaymentTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentTitleLabel.accessibilityIdentifier = KHAddCardViewID.title
-        passengerPaymentTitleLabel.textColor = KarhooUI.colors.secondary
+        passengerPaymentTitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerPaymentTitleLabel.textAlignment = .center
         passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
+        passengerPaymentTitleLabel.numberOfLines = 0
         
         return passengerPaymentTitleLabel
     }()
@@ -49,9 +50,9 @@ final public class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentSubtitleLabel = UILabel()
         passengerPaymentSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentSubtitleLabel.accessibilityIdentifier = KHAddCardViewID.subtitle
-        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
+        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.primaryTextColor
         passengerPaymentSubtitleLabel.textAlignment = .center
-        passengerPaymentSubtitleLabel.text = UITexts.Generic.add
+        passengerPaymentSubtitleLabel.text = UITexts.Payment.addPaymentMethod
         passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
         
         return passengerPaymentSubtitleLabel
@@ -65,7 +66,7 @@ final public class KarhooAddCardView: UIView, PaymentView {
         
         passengerPaymentStackView.alignment = .center
         passengerPaymentStackView.axis = .vertical
-        passengerPaymentStackView.distribution = .fill
+        passengerPaymentStackView.distribution = .equalSpacing
         passengerPaymentStackView.spacing = 5.0
 
         return passengerPaymentStackView
@@ -130,7 +131,7 @@ final public class KarhooAddCardView: UIView, PaymentView {
                                          width: 24.0,
                                          height: 24.0)
 
-            let stackInset: CGFloat = 16.0
+            let stackInset: CGFloat = 12.0
             stackContainer.anchor(top: topAnchor,
                                   leading: leadingAnchor,
                                   bottom: bottomAnchor,
@@ -189,8 +190,8 @@ final public class KarhooAddCardView: UIView, PaymentView {
         layer.borderWidth = 0.0
         layer.borderColor = UIColor.clear.cgColor
         hasPayment = false
-        passengerPaymentTitle.text = UITexts.Payment.addPaymentMethod
-        passengerPaymentSubtitle.text = UITexts.Generic.add
+        passengerPaymentTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
+        passengerPaymentSubtitle.text = UITexts.Payment.addPaymentMethod
         
         setNeedsDisplay()
     }

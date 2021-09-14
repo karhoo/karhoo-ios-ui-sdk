@@ -31,6 +31,7 @@
 "Text.Generic.Email" = "Email";
 "Text.Generic.PhoneNumber" = "Número de teléfono";
 "Text.Generic.Comment" = "Comentario";
+"Text.Generic.Comment.Optional" = "Comentario (Opcional)";
 "Text.Generic.Optional" = "Opcional";
 "Text.Generic.ErrorMessage" = "¡Hubo un problema!";
 
@@ -166,7 +167,7 @@
 "Text.Bookings.BookATrip" = "Solicitar viaje";
 
 /*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
-"Text.Payment.AddPaymentMethod" = "Añada su metodo de pago";
+"Text.Payment.AddPaymentMethod" = "Añadir un método de pago";
 "Text.Payment.PaymentMethod" = "Tarjeta finalizada en";
 
 /*"Edit" used as a button (call to action) */
@@ -434,8 +435,8 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Detalles del pasajero";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Detalles del pago";
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Su conductor esperará por usted";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Método de pago";
+"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Número de vuelo (Opcional)";
 
 /*Passenger Details*/
 "Text.Booking.PassengerDetails.Title" = "Pasajero";

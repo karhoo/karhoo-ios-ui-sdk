@@ -32,6 +32,7 @@
 "Text.Generic.PhoneNumber" = "Phone number";
 "Text.Generic.Comment" = "Comment";
 "Text.Generic.Optional" = "Optional";
+"Text.Generic.Comment.Optional" = "Comment (Optional)";
 "Text.Generic.ErrorMessage" = "Oops something went wrong";
 
 /*english: "creating your Karhoo account". Used in terms conditions construction*/
@@ -148,7 +149,7 @@
 "Text.Bookings.BookATrip" = "Book Ride";
 
 /*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
-"Text.Payment.AddPaymentMethod" = "Add a Payment Method";
+"Text.Payment.AddPaymentMethod" = "Add Payment";
 "Text.Payment.PaymentMethod" = "Card ending";
 
 /*"Edit" used as a button (call to action) */
@@ -408,8 +409,8 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Details";
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Mean";
+"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number (Optional)";
 
 /*Passenger Details*/
 "Text.Booking.PassengerDetails.Title" = "Passenger";
