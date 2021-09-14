@@ -31,6 +31,7 @@
 "Text.Generic.Email" = "Email";
 "Text.Generic.PhoneNumber" = "Número de teléfono";
 "Text.Generic.Comment" = "Comentario";
+"Text.Generic.Comment.Optional" = "Comentario (Opcional)";
 "Text.Generic.Optional" = "Opcional";
 "Text.Generic.ErrorMessage" = "¡Hubo un problema!";
 
@@ -435,7 +436,7 @@
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Detalles del pasajero";
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Método de pago";
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Su conductor esperará por usted";
+"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Número de vuelo (Opcional)";
 
 /*Passenger Details*/
 "Text.Booking.PassengerDetails.Title" = "Pasajero";

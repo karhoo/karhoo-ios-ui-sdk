@@ -164,7 +164,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     func setRequestMode() {
         setSelectedState()
         currentMode = .request
-        set(buttonTitle: UITexts.Booking.requestCar)
+        set(buttonTitle: UITexts.Booking.requestCar.uppercased())
         tickImage.isHidden = true
         activityIndicator?.stopAnimating()
     }
@@ -173,7 +173,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         currentMode = .requesting
         button.isEnabled = false
         containerView.backgroundColor = KarhooUI.colors.secondary
-        set(buttonTitle: UITexts.Booking.requestingCar)
+        set(buttonTitle: UITexts.Booking.requestingCar.uppercased())
         tickImage.isHidden = true
         activityIndicator?.startAnimating()
     }
@@ -181,7 +181,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     func setRequestedMode() {
         setSelectedState()
         currentMode = .requested
-        set(buttonTitle: UITexts.Booking.requestReceived)
+        set(buttonTitle: UITexts.Booking.requestReceived.uppercased())
         tickImage?.isHidden = false
         activityIndicator?.stopAnimating()
     }

@@ -68,6 +68,7 @@ public enum UITexts {
         public static let email = "Text.Generic.Email".localized
         public static let phone = "Text.Generic.PhoneNumber".localized
         public static let comment = "Text.Generic.Comment".localized
+        public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
     }

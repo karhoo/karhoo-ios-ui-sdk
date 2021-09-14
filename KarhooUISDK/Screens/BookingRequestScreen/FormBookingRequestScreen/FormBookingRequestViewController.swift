@@ -273,8 +273,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
         passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: 30.0, paddingRight: 30.0)
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: 30.0, paddingRight: 30.0)
+        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
+        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         
         footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 20.0, paddingRight: 10.0)
         footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
