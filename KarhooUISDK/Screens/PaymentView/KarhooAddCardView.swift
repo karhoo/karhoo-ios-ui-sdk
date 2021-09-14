@@ -16,9 +16,9 @@ public struct KHAddCardViewID {
     public static let stackView = "stack_view_container"
 }
 
-final class KarhooAddCardView: UIView, PaymentView {
+final public class KarhooAddCardView: UIView, PaymentView {
     
-    var baseViewController: BaseViewController?
+    public var baseViewController: BaseViewController?
     
     private var didSetupConstraints: Bool = false
     
@@ -78,7 +78,7 @@ final class KarhooAddCardView: UIView, PaymentView {
     var actions: PaymentViewActions?
     private var presenter: PaymentPresenter?
     
-    init() {
+    public init() {
         super.init(frame: .zero)
         self.setUpView()
     }
@@ -87,7 +87,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
 
         if !hasPayment && dotBorderLayer == nil {
@@ -120,7 +120,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         presenter = KarhooPaymentPresenter(view: self)
     }
 
-    override func updateConstraints() {
+    override public func updateConstraints() {
         if !didSetupConstraints {
 
             passengerPaymentImage.anchor(leading: leadingAnchor,
