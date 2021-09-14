@@ -41,6 +41,7 @@ final class KarhooAddCardView: UIView, PaymentView {
         passengerPaymentTitleLabel.textAlignment = .center
         passengerPaymentTitleLabel.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentTitleLabel.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
+        passengerPaymentTitleLabel.numberOfLines = 0
         
         return passengerPaymentTitleLabel
     }()
@@ -130,7 +131,7 @@ final class KarhooAddCardView: UIView, PaymentView {
                                          width: 24.0,
                                          height: 24.0)
 
-            let stackInset: CGFloat = 16.0
+            let stackInset: CGFloat = 12.0
             stackContainer.anchor(top: topAnchor,
                                   leading: leadingAnchor,
                                   bottom: bottomAnchor,

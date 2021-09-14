@@ -166,7 +166,7 @@
 "Text.Bookings.BookATrip" = "Solicitar viaje";
 
 /*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
-"Text.Payment.AddPaymentMethod" = "Añada su metodo de pago";
+"Text.Payment.AddPaymentMethod" = "Agrege un método de pago";
 "Text.Payment.PaymentMethod" = "Tarjeta finalizada en";
 
 /*"Edit" used as a button (call to action) */

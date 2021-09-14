@@ -136,8 +136,8 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
                                              leading: passengerDetailsContainer.leadingAnchor,
                                              bottom: passengerDetailsContainer.bottomAnchor,
                                              trailing: passengerDetailsContainer.trailingAnchor,
-                                             paddingTop: 16.0,
-                                             paddingBottom: 16.0)
+                                             paddingTop: 12.0,
+                                             paddingBottom: 12.0)
             
             passengerDetailsImage.anchor(leading: passengerDetailsStackView.leadingAnchor,
                                          trailing: passengerDetailsStackView.trailingAnchor,
