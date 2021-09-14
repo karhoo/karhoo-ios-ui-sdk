@@ -21,7 +21,6 @@ final class MoreDetailsView: UIView {
     }
     
     private var didSetupConstraints: Bool = false
-    private var maximumNumberOfViewsReached: Int = 0
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()

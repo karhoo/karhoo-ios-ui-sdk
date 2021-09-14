@@ -84,7 +84,7 @@ final class RideInfoView: UIView {
     
     private lazy var rideTypeInfoButton: UIButton = {
         let infoButton = UIButton(type: .custom)
-        infoButton.translatesAutoresizingMaskIntoConstraints = true
+        infoButton.translatesAutoresizingMaskIntoConstraints = false
         infoButton.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
         infoButton.setImage(UIImage.uisdkImage("info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         infoButton.contentVerticalAlignment = .fill
