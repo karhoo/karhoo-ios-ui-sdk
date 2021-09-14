@@ -697,6 +697,9 @@
 		6BE36B5726EBB1F300F0FE86 /* CountryCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B5626EBB1F300F0FE86 /* CountryCodeTableViewCell.swift */; };
 		6BE36B5926EBB24400F0FE86 /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B5826EBB24400F0FE86 /* CountryCodeView.swift */; };
 		6BE36B5B26EBB37E00F0FE86 /* CountryCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B5A26EBB37E00F0FE86 /* CountryCodeViewModel.swift */; };
+		6BE36B5D26EF8A3400F0FE86 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B5C26EF8A3400F0FE86 /* Country.swift */; };
+		6BE36B5F26EF8DFD00F0FE86 /* KarhooCountryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */; };
+		6BE36B6126EF8E3B00F0FE86 /* KarhooFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */; };
 		6F4235BF2391800C00233C02 /* AddressGoogleLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */; };
 		6F89EA0D248E5CA300F47C1B /* KarhooAddressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */; };
 		791A9CDE26C4EC2A00B52DA1 /* PassengerDetailsPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A9CDD26C4EC2A00B52DA1 /* PassengerDetailsPaymentView.swift */; };
@@ -1438,6 +1441,9 @@
 		6BE36B5626EBB1F300F0FE86 /* CountryCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableViewCell.swift; sourceTree = "<group>"; };
 		6BE36B5826EBB24400F0FE86 /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
 		6BE36B5A26EBB37E00F0FE86 /* CountryCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeViewModel.swift; sourceTree = "<group>"; };
+		6BE36B5C26EF8A3400F0FE86 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCountryParser.swift; sourceTree = "<group>"; };
+		6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFileManager.swift; sourceTree = "<group>"; };
 		6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGoogleLogoView.swift; sourceTree = "<group>"; };
 		6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressDisplayView.swift; sourceTree = "<group>"; };
 		791A9CDD26C4EC2A00B52DA1 /* PassengerDetailsPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsPaymentView.swift; sourceTree = "<group>"; };
@@ -2063,6 +2069,7 @@
 			isa = PBXGroup;
 			children = (
 				099106BC21B82D5200BD7E6F /* Address.swift */,
+				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3061,12 +3068,10 @@
 		6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6BE36B6226F07F4700F0FE86 /* CountryCell */,
 				6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */,
 				6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */,
 				6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */,
-				6BE36B5626EBB1F300F0FE86 /* CountryCodeTableViewCell.swift */,
-				6BE36B5826EBB24400F0FE86 /* CountryCodeView.swift */,
-				6BE36B5A26EBB37E00F0FE86 /* CountryCodeViewModel.swift */,
 			);
 			path = CountryCodeSelectionScreen;
 			sourceTree = "<group>";
@@ -3330,6 +3335,16 @@
 				6BE36A4926EBAE8700F0FE86 /* ZW.png */,
 			);
 			path = CountryFlags;
+			sourceTree = "<group>";
+		};
+		6BE36B6226F07F4700F0FE86 /* CountryCell */ = {
+			isa = PBXGroup;
+			children = (
+				6BE36B5626EBB1F300F0FE86 /* CountryCodeTableViewCell.swift */,
+				6BE36B5826EBB24400F0FE86 /* CountryCodeView.swift */,
+				6BE36B5A26EBB37E00F0FE86 /* CountryCodeViewModel.swift */,
+			);
+			path = CountryCell;
 			sourceTree = "<group>";
 		};
 		79ACDCE926CD2F45008820B5 /* CheckoutViews */ = {
@@ -3996,6 +4011,8 @@
 				FC435F382211B8B400FB6BB5 /* Trips */,
 				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
 				FCAD1C1222088A4200C3AD1D /* Formatters */,
+				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
+				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -4655,6 +4672,7 @@
 				5CD9CFAA22DCAB580086E7A0 /* RatingViewMVP.swift in Sources */,
 				407EC7A522CF564E00F24CFC /* Constraints.swift in Sources */,
 				5CBA2A7724F5D8CC0091D783 /* FormCheckoutHeaderView.swift in Sources */,
+				6BE36B6126EF8E3B00F0FE86 /* KarhooFileManager.swift in Sources */,
 				407EC7C122CF564E00F24CFC /* KarhooNavigationBarView.swift in Sources */,
 				09C765B121DE688100CD81AB /* BookingMapStrategy.swift in Sources */,
 				407EC7C422CF564E00F24CFC /* URLOpener.swift in Sources */,
@@ -4675,6 +4693,7 @@
 				FC83E251221DB4F5008FE26D /* TripMVP.swift in Sources */,
 				095D745323182313002253C0 /* TripRatingCache.swift in Sources */,
 				092005E2225B9216001038ED /* SideMenuBuilder.swift in Sources */,
+				6BE36B5D26EF8A3400F0FE86 /* Country.swift in Sources */,
 				094AE86021C9145D0046EC3C /* TimeSinceNowProvider.swift in Sources */,
 				FC83E2A3221ECC48008FE26D /* KarhooTripSummaryPresenter.swift in Sources */,
 				40A2851F22B2476F0020D78F /* QuoteViewModel.swift in Sources */,
@@ -4877,6 +4896,7 @@
 				09C765B621DE688100CD81AB /* KarhooBookingPresenter.swift in Sources */,
 				09C765AD21DE688100CD81AB /* KarhooBookingMapPresenter.swift in Sources */,
 				4070213C23D9E19400F82B6A /* UIView+Extensions.swift in Sources */,
+				6BE36B5F26EF8DFD00F0FE86 /* KarhooCountryParser.swift in Sources */,
 				5C1CD0B8241A5D88004AFF7D /* TripDetailsMVP.swift in Sources */,
 				FC83E2A2221ECC48008FE26D /* TripSummaryMVP.swift in Sources */,
 				0991070821B83AF700BD7E6F /* Observable+Utils.swift in Sources */,

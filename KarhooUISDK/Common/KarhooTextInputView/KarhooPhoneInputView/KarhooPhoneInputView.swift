@@ -181,9 +181,18 @@ class KarhooPhoneInputView: UIView, KarhooPhoneInputViewProtocol {
     private func countryCodeTapped() {
         tintView(.active)
         //showCountryPicker()
-        let presenter = CountryCodeSelectionPresenter(preSelectedCountry: nil) { result in
+        let presenter = CountryCodeSelectionPresenter(preSelectedCountry: nil) { [weak self] result in
+            guard let value = result.completedValue()
+            else {
+                self?.countryCode.setTitle(nil, for: .normal)
+                self?.countryCode.setTitleColor(KarhooTextInputViewState.inactive.color, for: .normal)
+                return
+            }
             
+            self?.countryCode.setTitle(value.phoneCode, for: .normal)
+            self?.countryCode.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
         }
+        
         let vc = CountryCodeSelectionViewController(presenter: presenter)
         if let topController = ViewControllerUtils.topBaseViewController {
             topController.showAsOverlay(item: vc, animated: true)

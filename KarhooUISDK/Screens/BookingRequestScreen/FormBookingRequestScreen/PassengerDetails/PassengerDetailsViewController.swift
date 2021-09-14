@@ -30,7 +30,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     private let doneButtonHeight: CGFloat = 55.0
     private let standardButtonSize: CGFloat = 44.0
-    private let standardMargin: CGFloat = 30.0
+    private let standardMargin: CGFloat = 20.0
     private let standardSpacing: CGFloat = 20.0
     private let smallSpacing: CGFloat = 8.0
     private let extraSmallSpacing: CGFloat = 4.0
