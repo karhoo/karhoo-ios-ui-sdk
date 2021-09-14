@@ -453,7 +453,6 @@
 "Text.Booking.MeteredInfoBox" = "Esta flota es un taxi con taxímetro regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.).";
 "Text.Booking.FixedInfoBox" = "Esta flota cobra una tarifa plana. La tarifa final puede verse afectada por extras (peajes, retrasos, etc.), por favor, compruebe los Términos y Condiciones de la flota.";
 "Text.Booking.LearnMore" = "Leer más";
-"Text.Booking.LearnLess" = "Leer menos";
 "Text.Booking.Passenger" = "Pasajero";
 "Text.Booking.MaximumPassengers" = "Máximo %1$@ pasajeros";
 "Text.Booking.MaximumLuggages" = "Máximo %1$@ piezas de equipaje";

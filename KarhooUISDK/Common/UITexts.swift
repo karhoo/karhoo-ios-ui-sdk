@@ -209,7 +209,6 @@ public enum UITexts {
         public static let meteredInfoBox = "Text.Booking.MeteredInfoBox".localized
         public static let fixedInfoBox = "Text.Booking.FixedInfoBox".localized
         public static let learnMore = "Text.Booking.LearnMore".localized
-        public static let learnLess = "Text.Booking.LearnLess".localized
         public static let passenger = "Text.Booking.Passenger".localized
         public static let maximumPassengers = "Text.Booking.MaximumPassengers".localized
         public static let maximumLuggages = "Text.Booking.MaximumLuggages".localized

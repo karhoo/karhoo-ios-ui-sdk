@@ -434,7 +434,6 @@
 "Text.Booking.MeteredInfoBox" = "Cette flotte est un taxi à compteur réglementé. Le devis est une estimation basée sur les facteurs de la course (distance, temps, etc.).";
 "Text.Booking.FixedInfoBox" = "Cette flotte applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), veuillez consulter les conditions générales de la flotte.";
 "Text.Booking.LearnMore" = "Plus";
-"Text.Booking.LearnLess" = "Moins";
 "Text.Booking.Passenger" = "Passager";
 "Text.Booking.MaximumPassengers" = "%1$@ passagers maximum";
 "Text.Booking.MaximumLuggages" = "%1$@ bagages maximum";

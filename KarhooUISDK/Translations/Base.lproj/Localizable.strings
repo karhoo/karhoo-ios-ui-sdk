@@ -427,7 +427,6 @@
 "Text.Booking.MeteredInfoBox" = "This fleet is a regulated metered taxi. The quote is an estimate based on the trip factors (distance, time, etc).";
 "Text.Booking.FixedInfoBox" = "This fleet charges a flat fare. The final fare may be affected by extras (tolls, delay, etc), please check the fleet's Terms and Conditions.";
 "Text.Booking.LearnMore" = "Learn more";
-"Text.Booking.LearnLess" = "Learn less";
 "Text.Booking.Passenger" = "Passenger";
 "Text.Booking.MaximumPassengers" = "%1$@ passengers maximum";
 "Text.Booking.MaximumLuggages" = "%1$@ luggages maximum";
