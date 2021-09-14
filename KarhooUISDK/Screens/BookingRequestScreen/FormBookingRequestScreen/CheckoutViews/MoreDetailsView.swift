@@ -16,6 +16,10 @@ struct KHMoreDetailsViewID {
 
 final class MoreDetailsView: UIView {
     
+    private enum CapacityViewType {
+        case passenger, luggage
+    }
+    
     private var didSetupConstraints: Bool = false
     private var maximumNumberOfViewsReached: Int = 0
 
@@ -107,33 +111,33 @@ final class MoreDetailsView: UIView {
             passengerBaggageStackView.spacing = 5
             
             if viewModel.passengerCapacity > 0 {
-                let passengerStackView = setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
+                let passengerStackView = setupCapacityView(for: .passenger, maxNumber: viewModel.passengerCapacity)
                 passengerBaggageStackView.addArrangedSubview(passengerStackView)
             }
             
             if viewModel.baggageCapacity > 0 {
-                let baggageStackView = setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
+                let baggageStackView = setupCapacityView(for: .luggage, maxNumber: viewModel.baggageCapacity)
                 passengerBaggageStackView.addArrangedSubview(baggageStackView)
             }
             
             fleetCapabilitiesStackView.addArrangedSubview(passengerBaggageStackView)
         } else {
             if viewModel.passengerCapacity > 0 {
-                let passengerStackView = setupCapacityView(forPassenger: true, maxNumber: viewModel.passengerCapacity)
+                let passengerStackView = setupCapacityView(for: .passenger, maxNumber: viewModel.passengerCapacity)
                 fleetCapabilitiesStackView.addArrangedSubview(passengerStackView)
             }
             
             if viewModel.baggageCapacity > 0 {
-                let baggageStackView = setupCapacityView(forPassenger: false, maxNumber: viewModel.baggageCapacity)
+                let baggageStackView = setupCapacityView(for: .luggage, maxNumber: viewModel.baggageCapacity)
                 fleetCapabilitiesStackView.addArrangedSubview(baggageStackView)
             }
         }
     }
     
-    private func setupCapacityView(forPassenger passenger: Bool, maxNumber: Int) -> UIStackView {
-        let title = String(format: (passenger ? UITexts.Booking.maximumPassengers : UITexts.Booking.maximumLuggages), "\(maxNumber)")
-        let image = passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
-        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(passenger ? "passenger" : "baggage")"
+    private func setupCapacityView(for capacityViewType: CapacityViewType, maxNumber: Int) -> UIStackView {
+        let title = String(format: (capacityViewType == .passenger ? UITexts.Booking.maximumPassengers : UITexts.Booking.maximumLuggages), "\(maxNumber)")
+        let image = capacityViewType == .passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
+        let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capacityViewType == .passenger ? "passenger" : "baggage")"
         return setupView(for: title, with: image, accessibilityId: accessibilityId)
     }
     
@@ -189,7 +193,7 @@ final class MoreDetailsView: UIView {
                 stackView.addArrangedSubview(secondView)
             }
             fleetCapabilitiesStackView.addArrangedSubview(stackView)
-            index = index + 2
+            index += 2
         }
     }
 }
