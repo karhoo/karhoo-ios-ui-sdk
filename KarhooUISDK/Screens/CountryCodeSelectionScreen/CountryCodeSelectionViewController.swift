@@ -66,11 +66,13 @@ final class CountryCodeSelectionViewController: UIViewController {
     }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.accessibilityIdentifier = KHCountryCodeSelectionViewID.tableView
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.bounces = false
         return tableView
     }()
     
@@ -133,7 +135,6 @@ final class CountryCodeSelectionViewController: UIViewController {
         tableView.register(CountryCodeTableViewCell.self, forCellReuseIdentifier: tableViewReuseIdentifier)
         tableView.dataSource = source
         tableView.delegate = delegate
-        tableView.rowHeight = UITableView.automaticDimension
         
         // Using footerView because content inset can't be used
         let footer = UIView(frame: .init(x: 0, y: 0, width: 50, height: 50 + 20))
