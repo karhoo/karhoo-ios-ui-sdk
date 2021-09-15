@@ -71,13 +71,13 @@ final class RideInfoView: UIView {
         return priceText
     }()
     
-    private lazy var ridePriceType: UILabel = {
-        let ridePriceType = UILabel()
+    private lazy var ridePriceType: UIButton = {
+        let ridePriceType = UIButton()
         ridePriceType.translatesAutoresizingMaskIntoConstraints = false
         ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
-        ridePriceType.textColor = KarhooUI.colors.infoColor
-        ridePriceType.textAlignment = .right
-        ridePriceType.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
+        ridePriceType.setTitleColor(KarhooUI.colors.infoColor, for: .normal)
+        ridePriceType.titleLabel?.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
+        ridePriceType.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
         
         return ridePriceType
     }()
@@ -172,7 +172,7 @@ final class RideInfoView: UIView {
     public func setDetails(viewModel: QuoteViewModel) {
         scheduleCaption.text = viewModel.scheduleCaption
         scheduleMainValue.text = viewModel.scheduleMainValue
-        ridePriceType.text = viewModel.fareType
+        ridePriceType.setTitle(viewModel.fareType, for: .normal) 
         priceText.text = viewModel.fare
         rideTypeLabel.text = viewModel.pickUpType
     }
