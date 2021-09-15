@@ -358,7 +358,11 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
              view?.setAddFlightDetailsState()
          } else {
-             view?.setDefaultState()
+            if karhooUser {
+                view?.setDefaultState()
+            } else {
+                view?.setMoreDetailsState()
+            }
          }
     }
     

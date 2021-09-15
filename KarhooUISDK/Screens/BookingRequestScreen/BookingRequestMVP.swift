@@ -32,6 +32,8 @@ protocol BookingRequestView: BaseViewController {
     func setRequestingState()
 
     func setAddFlightDetailsState()
+    
+    func setMoreDetailsState()
 
     func setDefaultState()
 

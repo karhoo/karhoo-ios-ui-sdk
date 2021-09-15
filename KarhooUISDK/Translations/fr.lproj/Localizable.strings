@@ -92,6 +92,7 @@
 
 /*Booking*/
 "Text.Booking.RequestCar" = "RÉSERVER";
+"Text.Booking.Next" = "SUIVANT";
 "Text.Booking.RequestingCar" = "Commande en cours";
 "Text.Booking.RequestReceived" = "Commande reçue";
 "Text.Bookings.eta" = "Proximité";

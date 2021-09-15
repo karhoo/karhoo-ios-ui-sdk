@@ -67,7 +67,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.accessibilityIdentifier = "back_button"
         backButton.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.tintColor = KarhooUI.colors.infoColor
+        backButton.tintColor = KarhooUI.colors.darkGrey
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.imageView?.contentMode = .scaleAspectFit
         return backButton
@@ -323,6 +323,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func setRequestingState() {
         disableUserInteraction()
         bookingButton.setRequestingMode()
+    }
+    
+    func setMoreDetailsState() {
+        bookingButton.setNextMode()
     }
     
     func setDefaultState() {
