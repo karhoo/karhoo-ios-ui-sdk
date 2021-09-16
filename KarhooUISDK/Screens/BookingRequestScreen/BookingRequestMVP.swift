@@ -15,6 +15,8 @@ protocol BookingRequestPresenter {
     func bookTripPressed()
 
     func didPressAddFlightDetails()
+    
+    func addPassengerDetails()
 
     func didPressFareExplanation()
 
@@ -32,6 +34,8 @@ protocol BookingRequestView: BaseViewController {
     func setRequestingState()
 
     func setAddFlightDetailsState()
+    
+    func setPassenger(details: PassengerDetails?)
     
     func setMoreDetailsState()
 

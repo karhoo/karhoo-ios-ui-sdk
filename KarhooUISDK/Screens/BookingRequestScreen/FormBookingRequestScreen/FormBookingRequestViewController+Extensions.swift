@@ -16,6 +16,10 @@ extension FormBookingRequestViewController: TimePriceViewActions {
 }
 
 extension FormBookingRequestViewController: BookingButtonActions {
+    func addPassengerDetails() {
+        presenter.addPassengerDetails()
+    }
+    
     func requestPressed() {
         presenter.bookTripPressed()
     }

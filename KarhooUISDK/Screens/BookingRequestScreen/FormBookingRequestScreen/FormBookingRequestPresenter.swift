@@ -94,6 +94,19 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func isKarhooUser() -> Bool {
         return karhooUser
     }
+    
+    func addPassengerDetails() {
+        var details = view?.getPassengerDetails()
+        let presenter = PassengerDetailsPresenter(details: details) { result in
+            if result.isComplete() {
+                details = result.completedValue()
+                PassengerInfo.shared.set(details: details)
+                self.view?.setPassenger(details: details)
+            }
+        }
+        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+        view?.showAsOverlay(item: detailsViewController, animated: true)
+    }
 
     func bookTripPressed() {
         if karhooUser {

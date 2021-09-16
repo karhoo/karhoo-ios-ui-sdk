@@ -307,6 +307,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         presenter.didPressClose()
     }
     
+    func setPassenger(details: PassengerDetails?) {
+        passengerDetailsAndPaymentView.details = details
+    }
+    
     func showBookingRequestView(_ show: Bool) {
         containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
         UIView.animate(withDuration: drawAnimationTime,
