@@ -32,11 +32,12 @@ final class KarhooCountryParser {
     }
     
     static func getCountries() -> [Country] {
-        guard let countries: [Country] = KarhooFileManager.getFromFile("Countries")
+        guard var countries: [Country] = KarhooFileManager.getFromFile("Countries")
         else {
             return []
         }
         
+        countries = countries.sorted(by: { $0.name < $1.name })
         return countries
     }
 }

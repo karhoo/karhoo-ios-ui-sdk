@@ -68,6 +68,8 @@
 "Text.Error.EmailValidationError" = "Comprueba que tu email está escrito correctamente";
 "Text.Error.Booking.EnterDestinationToProceed" = "Introduce tu destino para solicitar un viaje";
 "Text.Error.NotLoggedIn" = "No estás conectado";
+"Text.Errors.MissingPhoneNumber" = "Error: no se permiten campos vacíos";
+"Text.Errors.InvalidPhoneNumber" = "Número de teléfono invalido";
 
 /*Terms Condition full string
  1:Making a booking / Registering an account, 2: Supplier name "Terms and Conditions","Privacy Policy"*/

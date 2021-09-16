@@ -14,7 +14,7 @@ struct KHCountryCodeSelectionViewID {
     static let pageTitleLabel = "title_label"
 }
 
-final class CountryCodeSelectionViewController: UIViewController {
+final class CountryCodeSelectionViewController: UIViewController, UITextFieldDelegate {
 
     private let tableViewReuseIdentifier = "CountryCodeTableViewCell"
     private let sectionKey = 0
@@ -22,22 +22,18 @@ final class CountryCodeSelectionViewController: UIViewController {
     
     private let standardButtonSize: CGFloat = 44.0
     private let standardSpacing: CGFloat = 20.0
+    private let smallSpacing: CGFloat = 8.0
     private let extraSmallSpacing: CGFloat = 4.0
+    private let separatorHeight: CGFloat = 1.0
+    
     private var presenter: CountryCodeSelectionPresenter
     private var tableViewBottomConstraint: NSLayoutConstraint!
-    private let searchController = UISearchController(searchResultsController: nil)
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     
     private var data: TableData<Country>!
     private var source: TableDataSource<Country>!
     private var delegate: TableDelegate<Country>! // swiftlint:disable:this weak_delegate
     
-    private var isSearchBarEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    private var isFiltering: Bool {
-        return searchController.isActive && !isSearchBarEmpty
-    }
     // MARK: - Views and Controls
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -54,15 +50,34 @@ final class CountryCodeSelectionViewController: UIViewController {
         return button
     }()
     
-    private lazy var pageTitleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHCountryCodeSelectionViewID.pageTitleLabel
-        label.font = KarhooUI.fonts.titleBold()
-        label.textColor = KarhooUI.colors.infoColor
-        label.text = UITexts.CountryCodeSelection.title
-        label.numberOfLines = 1
-        return label
+    private lazy var searchIconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage.uisdkImage("search").coloured(withTint: KarhooUI.colors.lightGrey)
+        imageView.anchor(width: standardSpacing, height: standardSpacing)
+        return imageView
+    }()
+    
+    private lazy var searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .none
+        textField.clearButtonMode = .whileEditing
+        textField.delegate = self
+        textField.placeholder = UITexts.CountryCodeSelection.search
+        textField.textColor = KarhooUI.colors.primaryTextColor
+        textField.anchor(height: standardButtonSize)
+        textField.returnKeyType = .search
+        textField.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
+        return textField
+    }()
+    
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.anchor(height: separatorHeight)
+        view.backgroundColor = KarhooUI.colors.lightGrey
+        return view
     }()
     
     private lazy var tableView: UITableView = {
@@ -99,30 +114,34 @@ final class CountryCodeSelectionViewController: UIViewController {
         view.addSubview(backButton)
         backButton.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,
-                          paddingTop: standardSpacing,
+                          paddingTop: standardSpacing * 2,
                           width: standardButtonSize * 2,
-                          height: standardButtonSize * 2)
+                          height: standardButtonSize)
         
-        view.addSubview(pageTitleLabel)
-        pageTitleLabel.anchor(top: backButton.bottomAnchor,
-                              leading: view.leadingAnchor,
-                              trailing: view.trailingAnchor,
-                              paddingLeft: standardSpacing,
-                              paddingRight: standardSpacing)
+        view.addSubview(searchTextField)
+        searchTextField.anchor(top: backButton.bottomAnchor,
+                               trailing: view.trailingAnchor,
+                               paddingRight: standardSpacing)
+        
+        view.addSubview(searchIconImageView)
+        searchIconImageView.anchor(leading: view.leadingAnchor,
+                                   trailing: searchTextField.leadingAnchor, paddingLeft:
+                                    standardSpacing, paddingRight: smallSpacing)
+        searchIconImageView.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
+        
+        view.addSubview(separatorView)
+        separatorView.anchor(top: searchTextField.bottomAnchor,
+                             leading: searchTextField.leadingAnchor,
+                             trailing: searchTextField.trailingAnchor,
+                             paddingTop: extraSmallSpacing)
         
         view.addSubview(tableView)
-        tableView.anchor(top: pageTitleLabel.bottomAnchor,
+        tableView.anchor(top: separatorView.bottomAnchor,
                          leading: view.leadingAnchor,
                          trailing: view.trailingAnchor,
                          paddingTop: standardSpacing)
         tableViewBottomConstraint = tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         tableViewBottomConstraint.isActive = true
-        
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = UITexts.CountryCodeSelection.search
-        tableView.tableHeaderView = searchController.searchBar
-        definesPresentationContext = true
         setUpTable()
     }
     
@@ -176,8 +195,12 @@ final class CountryCodeSelectionViewController: UIViewController {
         presenter.backClicked()
     }
     
+    @objc private func textFieldValueChanged(_ textField: UITextField) {
+        filterContentForSearchText(textField.text)
+    }
+    
     // MARK: - Search
-    private func filterContentForSearchText(_ searchText: String) {
+    private func filterContentForSearchText(_ searchText: String?) {
         let filtered = presenter.filterData(filter: searchText)
         delegate.setSection(key: delegateKey, to: filtered)
         tableView.reloadData()
@@ -186,13 +209,6 @@ final class CountryCodeSelectionViewController: UIViewController {
     // MARK: - Utils
     func dismissScreen() {
         self.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension CountryCodeSelectionViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterContentForSearchText(searchBar.text ?? "")
     }
 }
 

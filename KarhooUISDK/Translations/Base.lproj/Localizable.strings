@@ -64,6 +64,8 @@
 "Text.Error.Booking.EnterDestinationToProceed" = "Enter destination to book a ride";
 "Text.Error.NotLoggedIn" = "You're not signed in";
 "Text.TermsConditions.FullString" = "By %1$@, you're agreeing to %2$@'s \n %3$@   |   %4$@";
+"Text.Errors.MissingPhoneNumber" = "Empty field not allowed";
+"Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "Sign in";

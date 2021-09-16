@@ -299,7 +299,6 @@
 		4038DF3A2444BAC40014539B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF392444BAC40014539B /* Utils.swift */; };
 		4038DF3D2444C6E00014539B /* KarhooPhoneInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */; };
 		4038DF3F2444D6810014539B /* KarhooInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF3E2444D6810014539B /* KarhooInputView.swift */; };
-		4038DF422445D5340014539B /* KarhooPhoneInputViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF412445D5340014539B /* KarhooPhoneInputViewDataSource.swift */; };
 		403F448222F19A38008147FC /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403F448122F19A38008147FC /* BaseStackView.swift */; };
 		403F448422F1EC92008147FC /* KarhooTripFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403F448322F1EC92008147FC /* KarhooTripFeedbackViewController.swift */; };
 		404E9C4B23C8BB2B00289F43 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E9C4A23C8BB2B00289F43 /* LineView.swift */; };
@@ -1029,7 +1028,6 @@
 		4038DF392444BAC40014539B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooPhoneInputView.swift; sourceTree = "<group>"; };
 		4038DF3E2444D6810014539B /* KarhooInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooInputView.swift; sourceTree = "<group>"; };
-		4038DF412445D5340014539B /* KarhooPhoneInputViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooPhoneInputViewDataSource.swift; sourceTree = "<group>"; };
 		4038DF43244617960014539B /* KarhooGuestBookingRequestPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooGuestBookingRequestPresenterSpec.swift; sourceTree = "<group>"; };
 		403F448122F19A38008147FC /* BaseStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
 		403F448322F1EC92008147FC /* KarhooTripFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTripFeedbackViewController.swift; sourceTree = "<group>"; };
@@ -2561,7 +2559,6 @@
 			isa = PBXGroup;
 			children = (
 				4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */,
-				4038DF412445D5340014539B /* KarhooPhoneInputViewDataSource.swift */,
 			);
 			path = KarhooPhoneInputView;
 			sourceTree = "<group>";
@@ -4868,7 +4865,6 @@
 				5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */,
 				FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */,
 				0999CBB0220DDA0300A93AF9 /* KarhooUIScreenRouting.swift in Sources */,
-				4038DF422445D5340014539B /* KarhooPhoneInputViewDataSource.swift in Sources */,
 				2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */,
 				0991067F21B8291A00BD7E6F /* AddressTableViewCell.swift in Sources */,
 				4038DF3F2444D6810014539B /* KarhooInputView.swift in Sources */,

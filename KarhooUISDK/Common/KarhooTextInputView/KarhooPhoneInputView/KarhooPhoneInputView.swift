@@ -10,6 +10,7 @@ import PhoneNumberKit
 
 struct KHPhoneInputViewIdentifiers {
     static let containerStackView = "container_stack_view"
+    static let contentStackView = "content_stack_view"
     static let iconContainerView = "icon_container_view"
     static let iconImageView = "icon_image_view"
     static let titleLabel = "title_label"
@@ -42,10 +43,21 @@ class KarhooPhoneInputView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHPhoneInputViewIdentifiers.containerStackView
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = innerSpacing
+        return stackView
+    }()
+    
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = KHPhoneInputViewIdentifiers.contentStackView
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.alignment = .center
-        stackView.spacing = 5.0
+        stackView.spacing = innerSpacing
         return stackView
     }()
     
@@ -107,6 +119,15 @@ class KarhooPhoneInputView: UIView {
         return textView
     }()
     
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = UITexts.Errors.missingPhoneNumber
+        label.textColor = UIColor.red
+        label.font = KarhooUI.fonts.captionRegular()
+        return label
+    }()
+    
     // MARK: - Init
     init(iconImage: UIImage? = nil,
          errorFeedbackType: KarhooTextInputViewErrorFeedbackType = .text,
@@ -123,30 +144,31 @@ class KarhooPhoneInputView: UIView {
     }
     
     private func setUpView() {
-        addSubview(titleLabel)
         addSubview(containerStackView)
+        containerStackView.addArrangedSubview(titleLabel)
+        containerStackView.addArrangedSubview(contentStackView)
+        containerStackView.addArrangedSubview(errorLabel)
         
-        containerStackView.addArrangedSubview(iconImageView)
-        containerStackView.addArrangedSubview(countryCodeButton)
-        containerStackView.addArrangedSubview(textView)
+        errorLabel.isHidden = true
+        
+        contentStackView.addArrangedSubview(iconImageView)
+        contentStackView.addArrangedSubview(countryCodeButton)
+        contentStackView.addArrangedSubview(textView)
         
         iconImageView.isHidden = iconImage == nil
     }
     
     override func updateConstraints() {
         if !didSetUpConstraints {
-            
-            titleLabel.anchor(top: topAnchor,
-                              leading: leadingAnchor)
-            
-            containerStackView.anchor(top: titleLabel.bottomAnchor,
+            containerStackView.anchor(top: topAnchor,
                                       leading: leadingAnchor,
                                       bottom: bottomAnchor,
-                                      trailing: trailingAnchor,
-                                      paddingTop: innerSpacing)
+                                      trailing: trailingAnchor)
             
             countryCodeButton.topAnchor.constraint(equalTo: textView.topAnchor).isActive = true
             countryCodeButton.bottomAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true
+            
+            
            
             didSetUpConstraints = true
         }
@@ -165,6 +187,7 @@ class KarhooPhoneInputView: UIView {
             }
 
             self?.country = value
+            self?.runValidation()
         }
 
         let vc = CountryCodeSelectionViewController(presenter: presenter)
@@ -197,6 +220,7 @@ class KarhooPhoneInputView: UIView {
         if !Utils.isValidPhoneNumber(number: getInput()) {
             showError()
         } else {
+            errorLabel.isHidden = true
             textView.resignFirstResponder()
             delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
         }
@@ -236,6 +260,14 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
             return
         }
         tintView(.error)
+        
+        if textView.text == nil || (textView.text?.isEmpty ?? true) {
+            errorLabel.text = UITexts.Errors.missingPhoneNumber
+        }
+        else {
+            errorLabel.text = UITexts.Errors.invalidPhoneNumber
+        }
+        errorLabel.isHidden = false
     }
 
     public func getInput() -> String {

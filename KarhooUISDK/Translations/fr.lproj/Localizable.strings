@@ -65,6 +65,8 @@
 "Text.Error.Booking.EnterDestinationToProceed" = "Entrez une destination pour procéder à la réservation";
 "Text.Error.NotLoggedIn" = "Vous n'êtes pas identifié.";
 "Text.TermsConditions.FullString" = "En %1$@ %2$@, vous acceptez les \n %3$@  |  %4$@";
+"Text.Errors.MissingPhoneNumber" = "Erreur: Champ de formulaire ne peut être vide";
+"Text.Errors.InvalidPhoneNumber" = "Numéro de portable non valide";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "S'identifier";
