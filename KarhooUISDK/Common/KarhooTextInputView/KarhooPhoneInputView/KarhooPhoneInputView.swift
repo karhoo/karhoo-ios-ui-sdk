@@ -194,7 +194,7 @@ class KarhooPhoneInputView: UIView {
     }
     
     private func runValidation() {
-        if !Utils.isValidPhoneNumber(number: textView.text!) {
+        if !Utils.isValidPhoneNumber(number: getInput()) {
             showError()
         } else {
             textView.resignFirstResponder()
@@ -257,7 +257,7 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
         }
         
         textView.text = value
-        textView.textColor = KarhooTextInputViewState.active.color
+        textView.textColor = KarhooUI.colors.primaryTextColor
     }
 
     func dismissKeyboard() {
@@ -269,14 +269,23 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
    }
 
    public func getPhoneNumberNoCountryCode() -> String {
-//       let isValid = validatePhoneNumber()
-//       return isValid ? textView.text : ""
         return textView.text
    }
 
    public func getCountryCode() -> String {
-        return country.phoneCode
+        return country.code
    }
+    
+    public func set(locale: String) {
+        let allCountries = KarhooCountryParser.getCountries()
+        guard let country = allCountries.first(where: { $0.code == locale })
+        else {
+            self.country = KarhooCountryParser.defaultCountry
+            return
+        }
+        
+        self.country = country
+    }
 }
 
 extension KarhooPhoneInputView: UITextViewDelegate {
@@ -284,7 +293,6 @@ extension KarhooPhoneInputView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         tintView(.active)
-
         if textView.textColor == KarhooTextInputViewState.inactive.color {
             textView.textColor = KarhooUI.colors.primaryTextColor
             textView.text = nil

@@ -243,7 +243,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
                                        lastName: lastNameInputView.getInput(),
                                        email: emailNameInputView.getInput(),
                                        phoneNumber: mobilePhoneInputView.getPhoneNumberNoCountryCode(),
-                                       locale: mobilePhoneInputView.getCountryCode()) // TODO: get proper locale based on country code
+                                       locale: mobilePhoneInputView.getCountryCode())
         presenter.doneClicked(newDetails: details)
         dismissScreen()
     }
@@ -273,7 +273,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         lastNameInputView.set(text: details.lastName)
         emailNameInputView.set(text: details.email)
         mobilePhoneInputView.set(text: details.phoneNumber)
-        // TODO: set proper country code based on locale
+        mobilePhoneInputView.set(locale: details.locale)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
     }
 }
