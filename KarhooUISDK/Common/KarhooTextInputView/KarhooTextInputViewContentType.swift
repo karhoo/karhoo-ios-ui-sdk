@@ -18,13 +18,13 @@ enum KarhooTextInputViewContentType {
     var placeholderText: String {
         switch self {
         case .firstname:
-            return "e.g. Fatima"
+            return UITexts.Generic.name // "e.g. Fatima"
         case .surname:
-            return "e.g. Mangani"
+            return UITexts.Generic.surname // "e.g. Mangani"
         case .email:
-            return "e.g. thomamangani@mail.com"
+            return UITexts.Generic.email // "e.g. thomamangani@mail.com"
         case .phone:
-            return "e.g. +447891011123"
+            return UITexts.Generic.phone // "e.g. +447891011123"
         case .comment:
             return UITexts.Generic.commentOptional
         case .poiDetails:

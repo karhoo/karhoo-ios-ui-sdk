@@ -65,6 +65,8 @@
 "Text.Error.Booking.EnterDestinationToProceed" = "Enter destination to book a ride";
 "Text.Error.NotLoggedIn" = "You're not signed in";
 "Text.TermsConditions.FullString" = "By %1$@, you're agreeing to %2$@'s \n %3$@   |   %4$@";
+"Text.Errors.MissingPhoneNumber" = "Empty field not allowed";
+"Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "Sign in";
@@ -421,6 +423,10 @@
 "Text.Booking.PassengerDetails.MobilePhone" = "Mobile Phone Number";
 "Text.Booking.PassengerDetails.DoneAction" = "NEXT";
 "Text.Booking.PassengerDetails.Add" = "Add passenger";
+
+/*Country Code Selection*/
+"Text.Booking.CountryCodeSelection.Title" = "Country / Region";
+"Text.Booking.CountryCodeSelection.Search" = "Search";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";
