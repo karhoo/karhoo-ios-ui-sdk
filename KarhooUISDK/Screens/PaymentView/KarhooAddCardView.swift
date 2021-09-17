@@ -166,7 +166,7 @@ final public class KarhooAddCardView: UIView, PaymentView {
     }
 
     func startRegisterCardFlow() {
-        presenter?.updateCardPressed(showRetryAlert: true)
+        presenter?.updateCardPressed(showRetryAlert: false)
     }
     
     func set(paymentMethod: PaymentMethod) {

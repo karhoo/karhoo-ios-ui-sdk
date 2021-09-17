@@ -95,7 +95,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         return karhooUser
     }
     
-    func addPassengerDetails() {
+    func addMoreDetails() {
         var details = view?.getPassengerDetails()
         
         if details == nil {

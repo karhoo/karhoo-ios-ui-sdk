@@ -29,5 +29,5 @@ protocol BookingButtonActions: AnyObject {
 
     func addFlightDetailsPressed()
     
-    func addPassengerDetails()
+    func addMoreDetails()
 }

@@ -146,7 +146,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         }
 
         switch mode {
-        case .addDetails: actions?.addPassengerDetails()
+        case .addDetails: actions?.addMoreDetails()
         case .request: actions?.requestPressed()
         case .addFlightDetails: actions?.addFlightDetailsPressed()
         default: return

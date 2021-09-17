@@ -216,7 +216,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         let mockGuestSettings = GuestSettings(identifier: "test", referer: "test", organisationId: "test")
         loadTestObject(configuration: .guest(settings: mockGuestSettings))
         XCTAssertTrue(mockView.setMoreDetailsCalled)
-        testObject.addPassengerDetails()
+        testObject.addMoreDetails()
         XCTAssertNil(mockView.details)
     }
     
