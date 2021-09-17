@@ -83,4 +83,8 @@ final class PassengerDetailsPaymentView: UIView {
         
         super.updateConstraints()
     }
+    
+    func startRegisterCardFlow() {
+        passengerPaymentContainer.startRegisterCardFlow()
+    }
 }

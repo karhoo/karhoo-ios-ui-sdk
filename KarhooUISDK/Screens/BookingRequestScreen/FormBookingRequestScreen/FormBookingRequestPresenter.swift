@@ -97,15 +97,20 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     
     func addPassengerDetails() {
         var details = view?.getPassengerDetails()
-        let presenter = PassengerDetailsPresenter(details: details) { result in
-            if result.isComplete() {
-                details = result.completedValue()
-                PassengerInfo.shared.set(details: details)
-                self.view?.setPassenger(details: details)
+        
+        if details == nil {
+            let presenter = PassengerDetailsPresenter(details: details) { result in
+                if result.isComplete() {
+                    details = result.completedValue()
+                    PassengerInfo.shared.set(details: details)
+                    self.view?.setPassenger(details: details)
+                }
             }
+            let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+            view?.showAsOverlay(item: detailsViewController, animated: true)
+        } else {
+            view?.retryAddPaymentMethod()
         }
-        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
-        view?.showAsOverlay(item: detailsViewController, animated: true)
     }
 
     func bookTripPressed() {

@@ -233,7 +233,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
-        bookingButton.setDisabledMode()
         footerStack.addArrangedSubview(bookingButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
@@ -378,7 +377,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func retryAddPaymentMethod() {
-//        addPaymentView.startRegisterCardFlow()
+        passengerDetailsAndPaymentView.startRegisterCardFlow()
     }
     
     private func enableUserInteraction() {
