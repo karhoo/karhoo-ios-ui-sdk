@@ -63,10 +63,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func load(view: BookingRequestView) {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
-            self.karhooUser = true
-        default:
+        case .guest(settings: _):
             self.karhooUser = false
+        default:
+            self.karhooUser = true
         }
        
         if karhooUser {
