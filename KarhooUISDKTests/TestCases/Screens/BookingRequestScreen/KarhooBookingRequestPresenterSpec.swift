@@ -219,6 +219,17 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         testObject.addPassengerDetails()
         XCTAssertNil(mockView.details)
     }
+    
+    /**
+     * When: Guest karhoo user logged in
+     * Then: view should be set to default state
+     * And: user details should NOT be null initially
+     */
+    func testAddPassengerDetailsFailed() {
+        loadTestObject()
+        XCTAssertFalse(mockView.setMoreDetailsCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+    }
 
     /**
      * When: Booking fails due to payment pre-auth error
