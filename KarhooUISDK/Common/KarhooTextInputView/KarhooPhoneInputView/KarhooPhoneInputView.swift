@@ -14,7 +14,9 @@ struct KHPhoneInputViewIdentifiers {
     static let iconContainerView = "icon_container_view"
     static let iconImageView = "icon_image_view"
     static let titleLabel = "title_label"
+    static let textView = "text_view"
     static let countryCodeButton = "country_code_button"
+    static let errorLabel = "error_label"
 }
 
 class KarhooPhoneInputView: UIView {
@@ -103,7 +105,7 @@ class KarhooPhoneInputView: UIView {
     private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.accessibilityIdentifier = "text_field"
+        textView.accessibilityIdentifier = KHPhoneInputViewIdentifiers.textView
         textView.text = contentType.placeholderText
         textView.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
         textView.returnKeyType = .done
@@ -122,6 +124,7 @@ class KarhooPhoneInputView: UIView {
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = KHPhoneInputViewIdentifiers.errorLabel
         label.text = UITexts.Errors.missingPhoneNumber
         label.textColor = UIColor.red
         label.font = KarhooUI.fonts.captionRegular()
