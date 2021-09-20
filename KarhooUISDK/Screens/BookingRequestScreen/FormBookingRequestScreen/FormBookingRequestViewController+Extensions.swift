@@ -67,7 +67,7 @@ extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     }
     
     func willUpdatePassengerDetails() {
-        presenter.addMoreDetails()
+        presenter.addOrEditPassengerDetails()
     }
 }
 

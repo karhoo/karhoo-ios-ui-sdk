@@ -16,6 +16,8 @@ protocol BookingRequestPresenter {
 
     func didPressAddFlightDetails()
     
+    func addOrEditPassengerDetails()
+    
     func addMoreDetails()
     
     func didAddPassengerDetails()

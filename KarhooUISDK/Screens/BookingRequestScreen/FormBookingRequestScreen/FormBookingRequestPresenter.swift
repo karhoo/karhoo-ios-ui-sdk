@@ -95,19 +95,22 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         return karhooUser
     }
     
-    func addMoreDetails() {
+    func addOrEditPassengerDetails() {
         var details = view?.getPassengerDetails()
-        
-        if details == nil {
-            let presenter = PassengerDetailsPresenter(details: details) { result in
-                if result.isComplete() {
-                    details = result.completedValue()
-                    PassengerInfo.shared.set(details: details)
-                    self.view?.setPassenger(details: details)
-                }
+        let presenter = PassengerDetailsPresenter(details: details) { result in
+            if result.isComplete() {
+                details = result.completedValue()
+                PassengerInfo.shared.set(details: details)
+                self.view?.setPassenger(details: details)
             }
-            let detailsViewController = PassengerDetailsViewController(presenter: presenter)
-            view?.showAsOverlay(item: detailsViewController, animated: true)
+        }
+        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+        view?.showAsOverlay(item: detailsViewController, animated: true)
+    }
+    
+    func addMoreDetails() {
+        if view?.getPassengerDetails() == nil {
+            addOrEditPassengerDetails()
         } else {
             view?.retryAddPaymentMethod()
         }
@@ -384,11 +387,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
              view?.setAddFlightDetailsState()
          } else {
-            if karhooUser {
-                view?.setDefaultState()
-            } else {
-                view?.setMoreDetailsState()
-            }
+            didAddPassengerDetails()
          }
     }
     
