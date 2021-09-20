@@ -156,9 +156,11 @@ final public class KarhooAddCardView: UIView, PaymentView {
     
     func set(nonce: Nonce) {
         passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour.suffix(4)
+        passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(nonce.cardType)
 
         updateViewState()
+        actions?.didGetNonce(nonce: nonce.nonce)
     }
 
     func noPaymentMethod() {
