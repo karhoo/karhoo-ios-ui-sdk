@@ -96,7 +96,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func addMoreDetails() {
-        var details = (view as? FormBookingRequestViewController)?.getPassengerDetails()
+        var details = view?.getPassengerDetails()
         
         if details == nil {
             let presenter = PassengerDetailsPresenter(details: details) { result in
@@ -114,11 +114,11 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func didAddPassengerDetails() {
-        guard let _ = (view as? FormBookingRequestViewController)?.getPassengerDetails(),
-              let _ = (view as? FormBookingRequestViewController)?.getPaymentNonce() else {
-            return
+        if view?.getPassengerDetails() == nil || view?.getPaymentNonce() == nil {
+            view?.setMoreDetailsState()
+        } else {
+            view?.setDefaultState()
         }
-        view?.setDefaultState()
     }
 
     func bookTripPressed() {

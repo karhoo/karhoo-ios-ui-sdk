@@ -60,6 +60,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
+        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
         return passengerDetailsAndPaymentView
     }()
 
@@ -410,7 +411,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func getPassengerDetails() -> PassengerDetails? {
-        return passengerDetailsAndPaymentView.details
+        return passengerDetailsAndPaymentView.validPassengerDetails() ? PassengerInfo.shared.passengerDetails : passengerDetailsAndPaymentView.details
     }
     
     func getPaymentNonce() -> String? {

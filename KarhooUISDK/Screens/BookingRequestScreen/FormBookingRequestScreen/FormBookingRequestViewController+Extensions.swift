@@ -63,6 +63,11 @@ extension FormBookingRequestViewController: PaymentViewActions {
 extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     func didUpdatePassengerDetails(details: PassengerDetails?) {
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+        presenter.didAddPassengerDetails()
+    }
+    
+    func willUpdatePassengerDetails() {
+        presenter.addMoreDetails()
     }
 }
 
