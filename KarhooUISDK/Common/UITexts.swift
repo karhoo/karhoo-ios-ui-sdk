@@ -129,6 +129,8 @@ public enum UITexts {
         public static let prebookingWithinTheHour = "Text.Error.PrebookingWithinTheHour".localized
         public static let missingPaymentSDKToken = "Text.Errors.failedToInitialisePaymentSetup".localized
         public static let noResultsFound = "Text.Errors.NoResultsFound".localized
+        public static let missingPhoneNumber = "Text.Errors.MissingPhoneNumber".localized
+        public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
     }
 
     /* Payment Error */
@@ -241,6 +243,11 @@ public enum UITexts {
         public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
         public static let doneAction = "Text.Booking.PassengerDetails.DoneAction".localized
         public static let add = "Text.Booking.PassengerDetails.Add".localized
+    }
+    
+    public enum CountryCodeSelection {
+        public static let title = "Text.Booking.CountryCodeSelection.Title".localized
+        public static let search = "Text.Booking.CountryCodeSelection.Search".localized
     }
 
     /* Trip */

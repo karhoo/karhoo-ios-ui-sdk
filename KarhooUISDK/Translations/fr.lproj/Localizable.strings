@@ -66,6 +66,8 @@
 "Text.Error.Booking.EnterDestinationToProceed" = "Entrez une destination pour procéder à la réservation";
 "Text.Error.NotLoggedIn" = "Vous n'êtes pas identifié.";
 "Text.TermsConditions.FullString" = "En %1$@ %2$@, vous acceptez les \n %3$@  |  %4$@";
+"Text.Errors.MissingPhoneNumber" = "Erreur: Champ de formulaire ne peut être vide";
+"Text.Errors.InvalidPhoneNumber" = "Numéro de portable non valide";
 
 /*Side Menu*/
 "Text.SideMenu.Login" = "S'identifier";
@@ -429,6 +431,10 @@
 "Text.Booking.PassengerDetails.MobilePhone" = "Numéro de mobile";
 "Text.Booking.PassengerDetails.DoneAction" = "SUIVANT";
 "Text.Booking.PassengerDetails.Add" = "Ajouter passager";
+
+/*Country Code Selection*/
+"Text.Booking.CountryCodeSelection.Title" = "Pays / Région";
+"Text.Booking.CountryCodeSelection.Search" = "Recherche";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Cette flotte est un taxi non réglementé. Le devis est une estimation basée sur les facteurs du trajet (distance, temps, etc.). Veuillez consulter les conditions générales de la flotte pour plus d'informations.";

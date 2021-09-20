@@ -69,6 +69,8 @@
 "Text.Error.EmailValidationError" = "Comprueba que tu email está escrito correctamente";
 "Text.Error.Booking.EnterDestinationToProceed" = "Introduce tu destino para solicitar un viaje";
 "Text.Error.NotLoggedIn" = "No estás conectado";
+"Text.Errors.MissingPhoneNumber" = "Error: no se permiten campos vacíos";
+"Text.Errors.InvalidPhoneNumber" = "Número de teléfono invalido";
 
 /*Terms Condition full string
  1:Making a booking / Registering an account, 2: Supplier name "Terms and Conditions","Privacy Policy"*/
@@ -448,6 +450,10 @@
 "Text.Booking.PassengerDetails.MobilePhone" = "Número de móvil";
 "Text.Booking.PassengerDetails.DoneAction" = "SIGUIENTE";
 "Text.Booking.PassengerDetails.Add" = "Añadir pasajero";
+
+/*Country Code Selection*/
+"Text.Booking.CountryCodeSelection.Title" = "País / Región";
+"Text.Booking.CountryCodeSelection.Search" = "Buscar";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Esta flota es un taxi no regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.). Por favor, consulte los Términos y Condiciones de la flota para más información.";

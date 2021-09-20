@@ -24,20 +24,19 @@ struct KHPassengerDetailsViewID {
     static let doneButton = "done_button"
 }
 
-final class PassengerDetailsViewController: UIViewController {
+final class PassengerDetailsViewController: UIViewController, BaseViewController {
     
     private var presenter: PassengerDetailsPresenterProtocol
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     private let doneButtonHeight: CGFloat = 55.0
     private let standardButtonSize: CGFloat = 44.0
-    private let standardMargin: CGFloat = 30.0
+    private let standardMargin: CGFloat = 20.0
     private let standardSpacing: CGFloat = 20.0
     private let smallSpacing: CGFloat = 8.0
     private let extraSmallSpacing: CGFloat = 4.0
     private var inputViews = [KarhooInputView]()
     private var validSet = Set<String>()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
-    private var scrollViewBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
     
     // MARK: - Views and Controls
@@ -183,10 +182,19 @@ final class PassengerDetailsViewController: UIViewController {
                           width: standardButtonSize * 2,
                           height: standardButtonSize * 2)
         
+        view.addSubview(doneButton)
+        doneButton.anchor(leading: view.leadingAnchor,
+                          trailing: view.trailingAnchor,
+                          paddingLeft: standardSpacing,
+                          paddingRight: standardSpacing)
+        enableDoneButton(false)
+        doneButtonBottomConstraint = doneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -standardSpacing)
+        doneButtonBottomConstraint.isActive = true
+        
         view.addSubview(scrollView)
-        scrollView.anchor(top: backButton.bottomAnchor)
-        scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        scrollViewBottomConstraint.isActive = true
+        scrollView.anchor(top: backButton.bottomAnchor,
+                          bottom: doneButton.topAnchor,
+                          paddingBottom: standardSpacing)
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
@@ -208,15 +216,6 @@ final class PassengerDetailsViewController: UIViewController {
         mainStackView.addArrangedSubview(lastNameInputView)
         mainStackView.addArrangedSubview(emailNameInputView)
         mainStackView.addArrangedSubview(mobilePhoneInputView)
-        
-        view.addSubview(doneButton)
-        doneButton.anchor(leading: view.leadingAnchor,
-                          trailing: view.trailingAnchor,
-                          paddingLeft: standardSpacing,
-                          paddingRight: standardSpacing)
-        enableDoneButton(false)
-        doneButtonBottomConstraint = doneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -standardSpacing)
-        doneButtonBottomConstraint.isActive = true
         
         view.setNeedsDisplay()
         view.setNeedsLayout()
@@ -244,7 +243,7 @@ final class PassengerDetailsViewController: UIViewController {
                                        lastName: lastNameInputView.getInput(),
                                        email: emailNameInputView.getInput(),
                                        phoneNumber: mobilePhoneInputView.getPhoneNumberNoCountryCode(),
-                                       locale: mobilePhoneInputView.getCountryCode()) // TODO: get proper locale based on country code
+                                       locale: mobilePhoneInputView.getCountryCode())
         presenter.doneClicked(newDetails: details)
         dismissScreen()
     }
@@ -274,7 +273,7 @@ final class PassengerDetailsViewController: UIViewController {
         lastNameInputView.set(text: details.lastName)
         emailNameInputView.set(text: details.email)
         mobilePhoneInputView.set(text: details.phoneNumber)
-        // TODO: set proper country code based on locale
+        mobilePhoneInputView.set(locale: details.locale)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
     }
 }
@@ -313,15 +312,11 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
 extension PassengerDetailsViewController: KeyboardListener {
 
     func keyboard(updatedHeight: CGFloat) {
-        let extraHeight = standardSpacing * 2 + doneButtonHeight
-        
         // This is to stop the animation of the done button's bottom constraint change
         UIView.animate(withDuration: 0.1, delay: 0, options: []) { [weak self] in
             self?.doneButtonBottomConstraint.constant = -updatedHeight - (self?.standardSpacing ?? 0.0)
-            self?.scrollViewBottomConstraint.constant = -updatedHeight - extraHeight
             self?.view.layoutIfNeeded()
         }
-
     }
 }
 
