@@ -59,6 +59,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self)
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
+        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
         return passengerDetailsAndPaymentView
     }()
 
@@ -385,7 +386,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backTitleButton.isUserInteractionEnabled = true
         backButton.tintColor = KarhooUI.colors.secondary
         backTitleButton.tintColor = KarhooUI.colors.secondary
-//        addPaymentView.isUserInteractionEnabled = true
     }
     
     private func disableUserInteraction() {

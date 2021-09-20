@@ -84,7 +84,11 @@ final class PassengerDetailsPaymentView: UIView {
         super.updateConstraints()
     }
     
-    func startRegisterCardFlow() {
-        passengerPaymentContainer.startRegisterCardFlow()
+    func startRegisterCardFlow(showRetryAlert: Bool = false) {
+        passengerPaymentContainer.startRegisterCardFlow(showRetryAlert: showRetryAlert)
+    }
+    
+    func setPaymentViewActions(actions: PaymentViewActions) {
+        passengerPaymentContainer.actions = actions
     }
 }

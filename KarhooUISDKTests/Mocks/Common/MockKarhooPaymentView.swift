@@ -33,7 +33,7 @@ final class MockKarhooPaymentView: MockBaseView, PaymentView {
     }
 
     private(set) var startCardFlowCalled = false
-    func startRegisterCardFlow() {
+    func startRegisterCardFlow(showRetryAlert: Bool = true) {
         startCardFlowCalled = true
     }
 }

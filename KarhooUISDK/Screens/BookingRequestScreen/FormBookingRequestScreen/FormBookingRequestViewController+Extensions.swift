@@ -56,6 +56,7 @@ extension FormBookingRequestViewController: PaymentViewActions {
     func didGetNonce(nonce: String) {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+        presenter.didAddPassengerDetails()
     }
 }
 

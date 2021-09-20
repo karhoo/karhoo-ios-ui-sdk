@@ -165,8 +165,8 @@ final public class KarhooAddCardView: UIView, PaymentView {
         resetViewState()
     }
 
-    func startRegisterCardFlow() {
-        presenter?.updateCardPressed(showRetryAlert: false)
+    func startRegisterCardFlow(showRetryAlert: Bool = true) {
+        presenter?.updateCardPressed(showRetryAlert: showRetryAlert)
     }
     
     func set(paymentMethod: PaymentMethod) {
@@ -175,7 +175,6 @@ final public class KarhooAddCardView: UIView, PaymentView {
 		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
         updateViewState()
         actions?.didGetNonce(nonce: paymentMethod.nonce)
-        //self.nonce = paymentMethod.nonce
     }
     
     private func updateViewState() {
