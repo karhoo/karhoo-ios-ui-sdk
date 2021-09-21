@@ -63,10 +63,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func load(view: BookingRequestView) {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
-        case .guest(settings: _):
-            self.karhooUser = false
-        default:
+        case .karhooUser:
             self.karhooUser = true
+        default:
+            self.karhooUser = false
         }
        
         if karhooUser {
@@ -117,7 +117,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func didAddPassengerDetails() {
-        if view?.getPassengerDetails() == nil && view?.getPaymentNonce() == nil {
+        if view?.getPassengerDetails() == nil || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
         } else {
             view?.setDefaultState()
