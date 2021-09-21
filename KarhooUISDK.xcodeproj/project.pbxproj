@@ -438,7 +438,6 @@
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
 		6BE3695426EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */; };
 		6BE3695626EB352700F0FE86 /* CountryCodeSelectionMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */; };
-		6BE36A5726EBAE8700F0FE86 /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 6BE3695726EBAE8500F0FE86 /* Countries.json */; };
 		6BE36A5826EBAE8700F0FE86 /* TG.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BE3695926EBAE8600F0FE86 /* TG.png */; };
 		6BE36A5926EBAE8700F0FE86 /* ME.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BE3695A26EBAE8600F0FE86 /* ME.png */; };
 		6BE36A5A26EBAE8700F0FE86 /* LA.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BE3695B26EBAE8600F0FE86 /* LA.png */; };
@@ -1180,7 +1179,6 @@
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
 		6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionPresenter.swift; sourceTree = "<group>"; };
 		6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionMVP.swift; sourceTree = "<group>"; };
-		6BE3695726EBAE8500F0FE86 /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
 		6BE3695926EBAE8600F0FE86 /* TG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TG.png; sourceTree = "<group>"; };
 		6BE3695A26EBAE8600F0FE86 /* ME.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ME.png; sourceTree = "<group>"; };
 		6BE3695B26EBAE8600F0FE86 /* LA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LA.png; sourceTree = "<group>"; };
@@ -2126,7 +2124,6 @@
 		099152FF21BFDB4500B46D9F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				6BE3695726EBAE8500F0FE86 /* Countries.json */,
 				6BE3695826EBAE8600F0FE86 /* CountryFlags */,
 				0991530021BFDB6400B46D9F /* Assets.xcassets */,
 			);
@@ -4217,7 +4214,6 @@
 				6BE36AFE26EBAE8700F0FE86 /* JM.png in Resources */,
 				6BE36AA126EBAE8700F0FE86 /* TT.png in Resources */,
 				6BE36AE226EBAE8700F0FE86 /* EE.png in Resources */,
-				6BE36A5726EBAE8700F0FE86 /* Countries.json in Resources */,
 				6BE36A7826EBAE8700F0FE86 /* BH.png in Resources */,
 				6BE36A6C26EBAE8700F0FE86 /* TD.png in Resources */,
 				09C765B321DE688100CD81AB /* PrebookField.xib in Resources */,
@@ -5416,7 +5412,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 590106DFF572111F0CF20C9F /* Pods-KarhooUISDKTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
