@@ -117,7 +117,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func didAddPassengerDetails() {
-        if view?.getPassengerDetails() == nil && view?.getPaymentNonce() == nil {
+        if view?.getPassengerDetails() == nil || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
         } else {
             view?.setDefaultState()
