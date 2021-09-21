@@ -11,6 +11,10 @@ public protocol PaymentViewActions {
     func didGetNonce(nonce: String)
 }
 
+extension PaymentViewActions {
+    func didGetNonce(nonce: String) {}
+}
+
 protocol PaymentPresenter {
     func updateCardPressed(showRetryAlert: Bool)
 }
