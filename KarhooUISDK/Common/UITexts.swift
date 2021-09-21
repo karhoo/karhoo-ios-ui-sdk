@@ -194,6 +194,7 @@ public enum UITexts {
     public enum Booking {
         public static let requestCar = "Text.Booking.RequestCar".localized
         public static let requestingCar = "Text.Booking.RequestingCar".localized
+        public static let next = "Text.Booking.Next".localized
         public static let requestReceived = "Text.Booking.RequestReceived".localized
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized

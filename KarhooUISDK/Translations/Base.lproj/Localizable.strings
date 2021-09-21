@@ -90,6 +90,7 @@
 
 /*Booking*/
 "Text.Booking.RequestCar" = "Book";
+"Text.Booking.Next" = "NEXT";
 "Text.Booking.RequestingCar" = "Booking Ride";
 "Text.Booking.RequestReceived" = "Booking Received";
 "Text.Bookings.eta" = "ETA";

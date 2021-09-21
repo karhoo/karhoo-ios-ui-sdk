@@ -19,8 +19,8 @@ protocol PaymentView: BaseView {
     func set(paymentMethod: PaymentMethod)
     func set(nonce: Nonce)
     func noPaymentMethod()
-    func startRegisterCardFlow()
+    func startRegisterCardFlow(showRetryAlert: Bool)
     var baseViewController: BaseViewController? { get set }
     var quote: Quote? { get set }
-    var actions: PaymentViewActions? { get }
+    var actions: PaymentViewActions? { get set }
 }

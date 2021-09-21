@@ -156,17 +156,19 @@ final public class KarhooAddCardView: UIView, PaymentView {
     
     func set(nonce: Nonce) {
         passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour.suffix(4)
+        passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(nonce.cardType)
 
         updateViewState()
+        actions?.didGetNonce(nonce: nonce.nonce)
     }
 
     func noPaymentMethod() {
         resetViewState()
     }
 
-    func startRegisterCardFlow() {
-        presenter?.updateCardPressed(showRetryAlert: true)
+    func startRegisterCardFlow(showRetryAlert: Bool = true) {
+        presenter?.updateCardPressed(showRetryAlert: showRetryAlert)
     }
     
     func set(paymentMethod: PaymentMethod) {
@@ -175,7 +177,6 @@ final public class KarhooAddCardView: UIView, PaymentView {
 		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
         updateViewState()
         actions?.didGetNonce(nonce: paymentMethod.nonce)
-        //self.nonce = paymentMethod.nonce
     }
     
     private func updateViewState() {

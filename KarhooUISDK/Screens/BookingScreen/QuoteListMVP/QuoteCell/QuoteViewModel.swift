@@ -31,7 +31,7 @@ enum VehicleTag: String {
         case .childSeat:
             return UIImage.uisdkImage("childseat")
         case .taxi:
-            return UIImage.uisdkImage("circle")
+            return UIImage.uisdkImage("taxi")
         case .executive:
             return UIImage.uisdkImage("star")
         }

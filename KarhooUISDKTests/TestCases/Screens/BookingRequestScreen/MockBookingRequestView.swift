@@ -39,6 +39,16 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
         asapQtaString = qta
     }
     
+    var details: PassengerDetails?
+    func setPassenger(details: PassengerDetails?) {
+        self.details = details
+    }
+    
+    var setMoreDetailsCalled = false
+    func setMoreDetailsState() {
+        setMoreDetailsCalled = true
+    }
+    
     var timeStringSet: String?
     var dateStringSet: String?
     func setPrebookState(timeString: String?, dateString: String?) {

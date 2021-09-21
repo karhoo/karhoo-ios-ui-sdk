@@ -28,4 +28,6 @@ protocol BookingButtonActions: AnyObject {
     func requestPressed()
 
     func addFlightDetailsPressed()
+    
+    func addMoreDetails()
 }

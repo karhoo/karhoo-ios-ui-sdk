@@ -59,6 +59,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self)
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
+        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
+        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
         return passengerDetailsAndPaymentView
     }()
 
@@ -67,7 +69,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.accessibilityIdentifier = "back_button"
         backButton.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.tintColor = KarhooUI.colors.infoColor
+        backButton.tintColor = KarhooUI.colors.darkGrey
         backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         backButton.imageView?.contentMode = .scaleAspectFit
         return backButton
@@ -233,7 +235,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
-        bookingButton.setDisabledMode()
         footerStack.addArrangedSubview(bookingButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
@@ -307,6 +308,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         presenter.didPressClose()
     }
     
+    func setPassenger(details: PassengerDetails?) {
+        passengerDetailsAndPaymentView.details = details
+    }
+    
     func showBookingRequestView(_ show: Bool) {
         containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
         UIView.animate(withDuration: drawAnimationTime,
@@ -323,6 +328,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func setRequestingState() {
         disableUserInteraction()
         bookingButton.setRequestingMode()
+    }
+    
+    func setMoreDetailsState() {
+        bookingButton.setNextMode()
     }
     
     func setDefaultState() {
@@ -370,7 +379,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     func retryAddPaymentMethod() {
-//        addPaymentView.startRegisterCardFlow()
+        passengerDetailsAndPaymentView.startRegisterCardFlow()
     }
     
     private func enableUserInteraction() {
@@ -378,7 +387,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         backTitleButton.isUserInteractionEnabled = true
         backButton.tintColor = KarhooUI.colors.secondary
         backTitleButton.tintColor = KarhooUI.colors.secondary
-//        addPaymentView.isUserInteractionEnabled = true
     }
     
     private func disableUserInteraction() {

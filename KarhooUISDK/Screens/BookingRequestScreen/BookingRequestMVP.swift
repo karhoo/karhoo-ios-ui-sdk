@@ -15,6 +15,12 @@ protocol BookingRequestPresenter {
     func bookTripPressed()
 
     func didPressAddFlightDetails()
+    
+    func addOrEditPassengerDetails()
+    
+    func addMoreDetails()
+    
+    func didAddPassengerDetails()
 
     func didPressFareExplanation()
 
@@ -32,6 +38,10 @@ protocol BookingRequestView: BaseViewController {
     func setRequestingState()
 
     func setAddFlightDetailsState()
+    
+    func setPassenger(details: PassengerDetails?)
+    
+    func setMoreDetailsState()
 
     func setDefaultState()
 
@@ -61,14 +71,6 @@ protocol BookingRequestView: BaseViewController {
 }
 
 extension BookingRequestView {
-    func getPassengerDetails() -> PassengerDetails? {
-        return nil
-    }
-
-    func getPaymentNonce() -> String? {
-        return nil
-    }
-    
     func getComments() -> String? {
         return nil
     }

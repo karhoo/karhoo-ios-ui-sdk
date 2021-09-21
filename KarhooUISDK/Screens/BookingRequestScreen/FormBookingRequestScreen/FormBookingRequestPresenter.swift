@@ -63,10 +63,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     func load(view: BookingRequestView) {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser:
-            self.karhooUser = true
-        default:
+        case .guest(settings: _):
             self.karhooUser = false
+        default:
+            self.karhooUser = true
         }
        
         if karhooUser {
@@ -93,6 +93,35 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     
     func isKarhooUser() -> Bool {
         return karhooUser
+    }
+    
+    func addOrEditPassengerDetails() {
+        var details = view?.getPassengerDetails()
+        let presenter = PassengerDetailsPresenter(details: details) { result in
+            if result.isComplete() {
+                details = result.completedValue()
+                PassengerInfo.shared.set(details: details)
+                self.view?.setPassenger(details: details)
+            }
+        }
+        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+        view?.showAsOverlay(item: detailsViewController, animated: true)
+    }
+    
+    func addMoreDetails() {
+        if view?.getPassengerDetails() == nil {
+            addOrEditPassengerDetails()
+        } else {
+            view?.retryAddPaymentMethod()
+        }
+    }
+    
+    func didAddPassengerDetails() {
+        if view?.getPassengerDetails() == nil && view?.getPaymentNonce() == nil {
+            view?.setMoreDetailsState()
+        } else {
+            view?.setDefaultState()
+        }
     }
 
     func bookTripPressed() {
@@ -358,7 +387,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
              view?.setAddFlightDetailsState()
          } else {
-             view?.setDefaultState()
+            didAddPassengerDetails()
          }
     }
     

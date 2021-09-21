@@ -99,6 +99,7 @@
 
 /*Booking*/
 "Text.Booking.RequestCar" = "RESERVAR";
+"Text.Booking.Next" = "SIGUIENTE";
 "Text.Booking.RequestingCar" = "Solicitar";
 "Text.Booking.RequestReceived" = "Solicitud recibida";
 "Text.Bookings.eta" = "Proximidad";

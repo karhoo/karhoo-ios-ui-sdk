@@ -10,6 +10,7 @@ import UIKit
 import KarhooSDK
 
 private enum ButtonMode {
+    case addDetails
     case requesting
     case requested
     case request
@@ -145,6 +146,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         }
 
         switch mode {
+        case .addDetails: actions?.addMoreDetails()
         case .request: actions?.requestPressed()
         case .addFlightDetails: actions?.addFlightDetailsPressed()
         default: return
@@ -176,6 +178,15 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         set(buttonTitle: UITexts.Booking.requestingCar.uppercased())
         tickImage.isHidden = true
         activityIndicator?.startAnimating()
+    }
+    
+    func setNextMode() {
+        currentMode = .addDetails
+        button.isEnabled = true
+        containerView.backgroundColor = KarhooUI.colors.secondary
+        set(buttonTitle: UITexts.Booking.next.uppercased())
+        tickImage.isHidden = true
+        activityIndicator?.stopAnimating()
     }
 
     func setRequestedMode() {

@@ -23,20 +23,6 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
         displayAvailablePassengerDetails()
     }
     
-    func updatePassengerDetailsPressed() {
-       // Consider adding an analytics event for this action in the NSDK. See KarhooPaymentPresenter for a usage example
-        
-        let presenter = PassengerDetailsPresenter(details: details) { result in
-            if result.isComplete() {
-                self.details = result.completedValue()
-                PassengerInfo.shared.set(details: self.details)
-                self.displayAvailablePassengerDetails()
-            }
-        }
-        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
-        view.baseViewController?.showAsOverlay(item: detailsViewController, animated: true)
-    }
-    
     func set(details: PassengerDetails?) {
         self.details = details
         displayAvailablePassengerDetails()

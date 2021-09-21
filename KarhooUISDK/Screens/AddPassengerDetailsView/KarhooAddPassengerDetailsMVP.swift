@@ -10,16 +10,17 @@ import Foundation
 import KarhooSDK
 
 protocol AddPassengerDetailsViewActions {
+    func willUpdatePassengerDetails()
     func didUpdatePassengerDetails(details: PassengerDetails?)
 }
 
 protocol AddPassengerDetailsPresenter {
-    func updatePassengerDetailsPressed()
     func set(details: PassengerDetails?)
 }
 
 protocol AddPassengerView: BaseView {
     var baseViewController: BaseViewController? { get set }
+    var actions: AddPassengerDetailsViewActions? { get set }
     func set(details: PassengerDetails?)
     func validDetails() -> Bool
     func showError()

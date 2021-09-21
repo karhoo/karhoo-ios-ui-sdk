@@ -16,6 +16,10 @@ extension FormBookingRequestViewController: TimePriceViewActions {
 }
 
 extension FormBookingRequestViewController: BookingButtonActions {
+    func addMoreDetails() {
+        presenter.addMoreDetails()
+    }
+    
     func requestPressed() {
         presenter.bookTripPressed()
     }
@@ -52,12 +56,18 @@ extension FormBookingRequestViewController: PaymentViewActions {
     func didGetNonce(nonce: String) {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+        presenter.didAddPassengerDetails()
     }
 }
 
 extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     func didUpdatePassengerDetails(details: PassengerDetails?) {
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+        presenter.didAddPassengerDetails()
+    }
+    
+    func willUpdatePassengerDetails() {
+        presenter.addOrEditPassengerDetails()
     }
 }
 
