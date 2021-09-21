@@ -56,11 +56,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }()
     
     private lazy var passengerDetailsAndPaymentView: PassengerDetailsPaymentView = {
-        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self)
+        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self,
+                                                                         addPassengerActions: self,
+                                                                         addPaymentActions: self)
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
-        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
-        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
         return passengerDetailsAndPaymentView
     }()
 

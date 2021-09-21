@@ -16,7 +16,7 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
     private var details: PassengerDetails?
     
     init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
-         view: AddPassengerView = KarhooAddPassengerDetailsView()) {
+         view: AddPassengerView) {
         
         self.analyticsService = analyticsService
         self.view = view

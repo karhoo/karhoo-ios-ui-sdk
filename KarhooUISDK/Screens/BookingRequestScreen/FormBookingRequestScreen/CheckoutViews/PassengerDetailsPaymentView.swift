@@ -20,6 +20,9 @@ final class PassengerDetailsPaymentView: UIView {
     
     private var didSetupConstraints: Bool = false
     var baseViewController: BaseViewController!
+    var addPassengerActions: AddPassengerDetailsViewActions?
+    var addPaymentActions: PaymentViewActions?
+    
     var details: PassengerDetails? {
         didSet {
             passengerDetailsContainer.set(details: details)
@@ -38,21 +41,25 @@ final class PassengerDetailsPaymentView: UIView {
     }()
     
     private lazy var passengerDetailsContainer: AddPassengerView = {
-        let passengerDetailsView = KarhooAddPassengerDetailsView()
+        let passengerDetailsView = KarhooAddPassengerDetailsView(actions: addPassengerActions)
         passengerDetailsView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsContainer
         passengerDetailsView.setBaseViewController(baseViewController)
         return passengerDetailsView
     }()
     
     private lazy var passengerPaymentContainer: PaymentView = {
-        let passengerPaymentView = KarhooAddCardView()
+        let passengerPaymentView = KarhooAddCardView(actions: addPaymentActions)
         passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentContainer
         passengerPaymentView.setBaseViewController(baseViewController)
         return passengerPaymentView
     }()
     
-    init(baseVC: BaseViewController) {
+    init(baseVC: BaseViewController,
+         addPassengerActions: AddPassengerDetailsViewActions,
+         addPaymentActions: PaymentViewActions) {
         super.init(frame: .zero)
+        self.addPassengerActions = addPassengerActions
+        self.addPaymentActions = addPaymentActions
         self.baseViewController = baseVC
         self.setupView()
     }
@@ -86,14 +93,6 @@ final class PassengerDetailsPaymentView: UIView {
     
     func startRegisterCardFlow(showRetryAlert: Bool = false) {
         passengerPaymentContainer.startRegisterCardFlow(showRetryAlert: showRetryAlert)
-    }
-    
-    func setPaymentViewActions(actions: PaymentViewActions) {
-        passengerPaymentContainer.actions = actions
-    }
-    
-    func setPassengerViewActions(actions: AddPassengerDetailsViewActions) {
-        passengerDetailsContainer.actions = actions
     }
     
     func validPassengerDetails() -> Bool {

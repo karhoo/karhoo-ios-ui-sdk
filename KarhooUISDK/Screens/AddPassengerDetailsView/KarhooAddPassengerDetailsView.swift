@@ -87,8 +87,9 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         return passengerDetailsSubtitleLabel
     }()
     
-    init() {
+    init(actions: AddPassengerDetailsViewActions?) {
         super.init(frame: .zero)
+        self.actions = actions
         self.setupView()
     }
     

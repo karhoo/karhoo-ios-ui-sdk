@@ -79,8 +79,9 @@ final public class KarhooAddCardView: UIView, PaymentView {
     var actions: PaymentViewActions?
     private var presenter: PaymentPresenter?
     
-    public init() {
+    public init(actions: PaymentViewActions?) {
         super.init(frame: .zero)
+        self.actions = actions
         self.setUpView()
     }
     

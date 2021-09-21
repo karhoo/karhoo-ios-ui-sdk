@@ -7,7 +7,7 @@
 import Foundation
 import KarhooSDK
 
-protocol PaymentViewActions {
+public protocol PaymentViewActions {
     func didGetNonce(nonce: String)
 }
 
