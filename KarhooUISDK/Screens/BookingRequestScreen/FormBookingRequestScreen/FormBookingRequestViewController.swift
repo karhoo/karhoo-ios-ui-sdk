@@ -385,8 +385,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private func enableUserInteraction() {
         backButton.isUserInteractionEnabled = true
         backTitleButton.isUserInteractionEnabled = true
-        backButton.tintColor = KarhooUI.colors.secondary
-        backTitleButton.tintColor = KarhooUI.colors.secondary
+        backButton.tintColor = KarhooUI.colors.darkGrey
+        backTitleButton.tintColor = KarhooUI.colors.darkGrey
     }
     
     private func disableUserInteraction() {
