@@ -434,7 +434,7 @@
 
 /*Country Code Selection*/
 "Text.Booking.CountryCodeSelection.Title" = "Pays / Région";
-"Text.Booking.CountryCodeSelection.Search" = "Recherche";
+"Text.Booking.CountryCodeSelection.Search" = "Recherche pays/région";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Cette flotte est un taxi non réglementé. Le devis est une estimation basée sur les facteurs du trajet (distance, temps, etc.). Veuillez consulter les conditions générales de la flotte pour plus d'informations.";

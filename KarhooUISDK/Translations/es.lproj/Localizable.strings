@@ -453,7 +453,7 @@
 
 /*Country Code Selection*/
 "Text.Booking.CountryCodeSelection.Title" = "País / Región";
-"Text.Booking.CountryCodeSelection.Search" = "Buscar";
+"Text.Booking.CountryCodeSelection.Search" = "Buscar país/región";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "Esta flota es un taxi no regulado. El presupuesto es una estimación basada en los factores del viaje (distancia, tiempo, etc.). Por favor, consulte los Términos y Condiciones de la flota para más información.";
