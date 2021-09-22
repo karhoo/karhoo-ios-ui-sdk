@@ -419,7 +419,7 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Informations sur le passager";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Méthode de paiement";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Méthodes de paiement";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Numéro de vol (Optionnel)";
 
 /*Passenger Details*/

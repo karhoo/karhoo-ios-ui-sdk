@@ -412,7 +412,7 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Mean";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Methods";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number (Optional)";
 
 /*Passenger Details*/
@@ -423,7 +423,7 @@
 "Text.Booking.PassengerDetails.Email" = "Email";
 "Text.Booking.PassengerDetails.MobilePhone" = "Mobile Phone Number";
 "Text.Booking.PassengerDetails.DoneAction" = "NEXT";
-"Text.Booking.PassengerDetails.Add" = "Add passenger";
+"Text.Booking.PassengerDetails.Add" = "Add Passenger";
 
 /*Country Code Selection*/
 "Text.Booking.CountryCodeSelection.Title" = "Country / Region";

@@ -93,8 +93,8 @@ final public class KarhooAddCardView: UIView, PaymentView {
 
         if !hasPayment && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.lightGrey.cgColor
-            dotBorderLayer.lineDashPattern = [2, 2]
+            dotBorderLayer.strokeColor = KarhooUI.colors.darkGrey.cgColor
+            dotBorderLayer.lineDashPattern = [4, 4]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
             dotBorderLayer.path = UIBezierPath(rect: bounds).cgPath
