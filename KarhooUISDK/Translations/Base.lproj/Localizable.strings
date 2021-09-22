@@ -427,7 +427,7 @@
 
 /*Country Code Selection*/
 "Text.Booking.CountryCodeSelection.Title" = "Country / Region";
-"Text.Booking.CountryCodeSelection.Search" = "Search";
+"Text.Booking.CountryCodeSelection.Search" = "Search country/region";
 
 /*Checkout component*/
 "Text.Booking.EstimatedInfoBox" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";
