@@ -29,9 +29,6 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     private lazy var passengerDetailsContainer: UIView = {
         let passengerDetailsView = UIView()
         passengerDetailsView.accessibilityIdentifier = KHAddPassengerDetailsViewID.container
-        passengerDetailsView.layer.cornerRadius = 5.0
-        passengerDetailsView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-        passengerDetailsView.layer.borderWidth = 0.5
         passengerDetailsView.layer.masksToBounds = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(passengerDetailsViewTapped))
@@ -101,8 +98,8 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
 
         if !hasDetails && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.infoBackgroundColor.cgColor
-            dotBorderLayer.lineDashPattern = [2, 2]
+            dotBorderLayer.strokeColor = KarhooUI.colors.darkGrey.cgColor
+            dotBorderLayer.lineDashPattern = [4, 4]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
             dotBorderLayer.path = UIBezierPath(rect: bounds).cgPath
@@ -111,8 +108,11 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     }
     
     private func setupView() {
+        backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHPassengerDetailsPaymentViewID.container
+        layer.cornerRadius = 4.0
+        layer.masksToBounds = true
         
         addSubview(passengerDetailsContainer)
         

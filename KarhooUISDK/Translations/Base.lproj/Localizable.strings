@@ -152,7 +152,7 @@
 "Text.Bookings.BookATrip" = "Book Ride";
 
 /*"Add new card" in english used in the payments section of the app. Referring to credit / debit card*/
-"Text.Payment.AddPaymentMethod" = "Add Payment";
+"Text.Payment.AddPaymentMethod" = "Add payment";
 "Text.Payment.PaymentMethod" = "Card ending";
 
 /*"Edit" used as a button (call to action) */
@@ -412,7 +412,7 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Mean";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Method";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number (Optional)";
 
 /*Passenger Details*/

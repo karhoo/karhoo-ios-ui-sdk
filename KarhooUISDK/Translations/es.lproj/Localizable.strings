@@ -438,7 +438,7 @@
 
 /*Guest checkout*/
 "Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Detalles del pasajero";
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Método de pago";
+"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Métodos de pago";
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Número de vuelo (Opcional)";
 
 /*Passenger Details*/
