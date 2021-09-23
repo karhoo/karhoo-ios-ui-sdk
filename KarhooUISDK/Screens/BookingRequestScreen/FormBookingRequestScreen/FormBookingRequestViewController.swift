@@ -350,6 +350,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     func set(quote: Quote) {
         let viewModel = QuoteViewModel(quote: quote)
+        passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
