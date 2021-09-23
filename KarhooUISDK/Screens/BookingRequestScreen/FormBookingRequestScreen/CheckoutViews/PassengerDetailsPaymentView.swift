@@ -25,6 +25,11 @@ final class PassengerDetailsPaymentView: UIView {
             passengerDetailsContainer.set(details: details)
         }
     }
+    var quote: Quote? {
+        didSet {
+            passengerPaymentContainer.quote = quote
+        }
+    }
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
