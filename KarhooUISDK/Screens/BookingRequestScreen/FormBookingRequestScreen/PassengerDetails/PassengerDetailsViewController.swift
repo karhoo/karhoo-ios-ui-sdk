@@ -38,6 +38,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private var validSet = Set<String>()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
+    private let currentLocale = NSLocale.current.languageCode ?? "en"
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -242,8 +243,8 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         let details = PassengerDetails(firstName: firstNameInputView.getInput(),
                                        lastName: lastNameInputView.getInput(),
                                        email: emailNameInputView.getInput(),
-                                       phoneNumber: mobilePhoneInputView.getPhoneNumberNoCountryCode(),
-                                       locale: mobilePhoneInputView.getCountryCode())
+                                       phoneNumber: mobilePhoneInputView.getFullPhoneNumber(),
+                                       locale: currentLocale)
         presenter.doneClicked(newDetails: details)
         dismissScreen()
     }
@@ -273,7 +274,6 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         lastNameInputView.set(text: details.lastName)
         emailNameInputView.set(text: details.email)
         mobilePhoneInputView.set(text: details.phoneNumber)
-        mobilePhoneInputView.set(locale: details.locale)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
     }
 }

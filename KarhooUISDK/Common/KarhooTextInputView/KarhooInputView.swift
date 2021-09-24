@@ -24,5 +24,4 @@ protocol KarhooPhoneInputViewProtocol: KarhooInputView {
     func getFullPhoneNumber() -> String
     func getCountryCode() -> String
     func getPhoneNumberNoCountryCode() -> String
-    func set(locale: String)
 }
