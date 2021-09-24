@@ -5164,7 +5164,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.karhooUISDK.Client;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karhooUISDK.DropIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
