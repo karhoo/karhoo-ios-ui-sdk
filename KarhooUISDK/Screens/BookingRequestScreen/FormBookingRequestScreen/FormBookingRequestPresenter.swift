@@ -88,8 +88,32 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
          view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
          paymentNonceProvider.set(baseViewController: view)
          configureQuoteView()
-         view.paymentView(hidden: userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen)
      }
+    
+    private func configureQuoteView() {
+         if bookingDetails.isScheduled {
+             configurePrebookState()
+             return
+         }
+         configureForAsapState()
+     }
+
+     private func configurePrebookState() {
+         guard let timeZone = bookingDetails.originLocationDetails?.timezone() else {
+             return
+         }
+
+         let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
+
+         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate),
+                                 dateString: prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate))
+     }
+
+     private func configureForAsapState() {
+         view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
+                                                                  max: quote.vehicle.qta.highMinutes))
+     }
+
     
     func isKarhooUser() -> Bool {
         return karhooUser
@@ -125,34 +149,26 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
 
     func bookTripPressed() {
+        view?.setRequestingState()
+        
         if karhooUser {
-            submitBooking()
+            submitKarhooUserBooking()
         } else {
-            view?.setRequestingState()
-            
-            guard let passengerDetails = view?.getPassengerDetails(), let nonce = getPaymentNonceAccordingToAuthState() else {
-                view?.setDefaultState()
-                return
-            }
-            
-            if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-                threeDSecureNonceThenBook(nonce: nonce,
-                                          passengerDetails: passengerDetails)
-            } else {
-                book(threeDSecureNonce: nonce, passenger: passengerDetails)
-            }
+            submitGuestAndTokenBooking()
         }
     }
 
-    private func submitBooking() {
+    private func submitKarhooUserBooking() {
         bookingRequestInProgress = true
-        view?.setRequestingState()
         
         guard let currentUser = userService.getCurrentUser(),
-              let currentOrg = userService.getCurrentUser()?.organisations.first else {
+              let passengerDetails = view?.getPassengerDetails(),
+              let currentOrg = userService.getCurrentUser()?.organisations.first
+        else {
             view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                             message: UITexts.Errors.getUserFail,
                             error: nil)
+            view?.setDefaultState()
             return
         }
         
@@ -163,98 +179,45 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         }
         
         if let nonce = view?.getPaymentNonce() {
-            bookTrip(withPaymentNonce: Nonce(nonce: nonce), user: currentUser)
+            book(paymentNonce: nonce,
+                 passenger: passengerDetails,
+                 flightNumber: flightNumber)
         } else {
             paymentNonceProvider.getPaymentNonce(user: currentUser,
                                                  organisation: currentOrg,
                                                  quote: quote) { [weak self] result in
                 switch result {
-                case .completed(let result): handlePaymentNonceProviderResult(result)
-                case .cancelledByUser: self?.view?.setDefaultState()
+                case .completed(let result):
+                    handlePaymentNonceProviderResult(result)
+                    
+                case .cancelledByUser:
+                    self?.view?.setDefaultState()
                 }
             }
         }
         func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
              switch paymentNonceResult {
-             case .nonce(let nonce): bookTrip(withPaymentNonce: nonce, user: currentUser)
+             case .nonce(let nonce):
+                 self.book(paymentNonce: nonce.nonce,
+                      passenger: passengerDetails,
+                      flightNumber: flightNumber)
+                 
              case .cancelledByUser:
                  self.view?.setDefaultState()
+                 
              case .failedToAddCard(let error):
                  self.view?.setDefaultState()
                  self.view?.show(error: error)
+                 
              default:
-                 self.view?.showAlert(title: UITexts.Generic.error, message: UITexts.Errors.somethingWentWrong,
+                 self.view?.showAlert(title: UITexts.Generic.error,
+                                      message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
                  view?.setDefaultState()
              }
         }
     }
     
-    private func bookTrip(withPaymentNonce nonce: Nonce, user: UserInfo) {
-        var tripBooking = TripBooking(quoteId: quote.id,
-                                      passengers: Passengers(additionalPassengers: 0,
-                                                             passengerDetails: [PassengerDetails(user: user)]),
-                                      flightNumber: flightNumber)
-        
-        tripBooking.paymentNonce = nonce.nonce
-        
-        var map: [String: Any] = [:]
-        if let metadata = bookingMetadata {
-            map = metadata
-        }
-        tripBooking.meta = map
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = nonce.nonce
-        }
-        
-        tripService.book(tripBooking: tripBooking)
-            .execute(callback: { [weak self] (result: Result<TripInfo>) in
-                self?.bookingRequestInProgress = false
-                self?.handleBookTrip(result: result)
-            })
-    }
-    
-    private func handleBookTrip(result: Result<TripInfo>) {
-         guard let trip = result.successValue() else {
-             view?.setDefaultState()
-
-             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
-                 view?.retryAddPaymentMethod()
-             } else {
-                 callback(ScreenResult.failed(error: result.errorValue()))
-             }
-
-             return
-         }
-
-         self.trip = trip
-         view?.showBookingRequestView(false)
-     }
-    
-    private func configureQuoteView() {
-         if bookingDetails.isScheduled {
-             configurePrebookState()
-             return
-         }
-         configureForAsapState()
-     }
-
-     private func configurePrebookState() {
-         guard let timeZone = bookingDetails.originLocationDetails?.timezone() else {
-             return
-         }
-
-         let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
-
-         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate),
-                                 dateString: prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate))
-     }
-
-     private func configureForAsapState() {
-         view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
-                                                                  max: quote.vehicle.qta.highMinutes))
-     }
-
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
         case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
@@ -267,6 +230,23 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             return userService.getCurrentUser()?.nonce?.nonce
         } else {
             return view?.getPaymentNonce()
+        }
+    }
+    
+    private func submitGuestAndTokenBooking() {
+        guard let passengerDetails = view?.getPassengerDetails(),
+              let nonce = getPaymentNonceAccordingToAuthState()
+        else {
+            view?.setDefaultState()
+            return
+        }
+        
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+            threeDSecureNonceThenBook(nonce: nonce,
+                                      passengerDetails: passengerDetails)
+        } else {
+            let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
+            book(paymentNonce: nonce, passenger: passengerDetails, flightNumber: flightNumber)
         }
     }
 
@@ -285,22 +265,24 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             switch result {
             case .failedToInitialisePaymentService:
                 view?.setDefaultState()
+                
             case .threeDSecureAuthenticationFailed:
                 view?.retryAddPaymentMethod()
                 view?.setDefaultState()
+                
             case .success(let threeDSecureNonce):
-                book(threeDSecureNonce: threeDSecureNonce, passenger: passengerDetails)
+                let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
+                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: flightNumber)
             }
         }
     }
-
-    private func book(threeDSecureNonce: String, passenger: PassengerDetails) {
-        let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
+    
+    private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
         var tripBooking = TripBooking(quoteId: quote.id,
                                       passengers: Passengers(additionalPassengers: 0,
                                                              passengerDetails: [passenger]),
-                                      flightNumber: flightNumber,
-                                      paymentNonce: threeDSecureNonce,
+                                      flightNumber: (flightNumber ?? "").isEmpty ? nil : flightNumber,
+                                      paymentNonce: paymentNonce,
                                       comments: view?.getComments())
         
         var map: [String: Any] = [:]
@@ -309,19 +291,48 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         }
         tripBooking.meta = map
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = threeDSecureNonce
+            tripBooking.meta["trip_id"] = paymentNonce
         }
-
+        
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
 
-            if let trip = result.successValue() {
-                PassengerInfo.shared.passengerDetails = self?.view?.getPassengerDetails()
-                self?.callback(.completed(result: trip))
-            } else if let error = result.errorValue() {
-                self?.view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
+            if self?.isKarhooUser() ?? false {
+                self?.handleKarhooUserBookTripResult(result)
+            }
+            else {
+                self?.handleGuestAndTokenBookTripResult(result)
             }
         })
+    }
+    
+    private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
+        bookingRequestInProgress = false
+        
+        guard let trip = result.successValue() else {
+            view?.setDefaultState()
+
+            if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
+                view?.retryAddPaymentMethod()
+            } else {
+                callback(ScreenResult.failed(error: result.errorValue()))
+            }
+
+            return
+        }
+
+        self.trip = trip
+        view?.showBookingRequestView(false)
+    }
+    
+    private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
+        if let trip = result.successValue() {
+            PassengerInfo.shared.passengerDetails = view?.getPassengerDetails()
+            callback(.completed(result: trip))
+        }
+        else if let error = result.errorValue() {
+            view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
+        }
     }
 
     func didPressAddFlightDetails() {
@@ -353,7 +364,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.flightNumber = flightDetails.flightNumber
         self.comments = flightDetails.comments
         
-        submitBooking()
+        submitKarhooUserBooking()
     }
     
     func didPressFareExplanation() {

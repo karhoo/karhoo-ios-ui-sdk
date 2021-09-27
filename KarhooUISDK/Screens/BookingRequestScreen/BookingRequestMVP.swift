@@ -66,8 +66,6 @@ protocol BookingRequestView: BaseViewController {
     func getComments() -> String?
     
     func getFlightNumber() -> String?
-
-    func paymentView(hidden: Bool)
 }
 
 extension BookingRequestView {

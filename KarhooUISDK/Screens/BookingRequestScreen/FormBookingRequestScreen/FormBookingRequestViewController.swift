@@ -426,9 +426,4 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     func getFlightNumber() -> String? {
         return poiDetailsInputText.getInput()
     }
-    
-    func paymentView(hidden: Bool) {
-//        addPaymentView.isHidden = hidden
-//        paymentDetailsTitle.isHidden = hidden
-    }
 }
