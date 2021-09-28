@@ -133,7 +133,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func addMoreDetails() {
-        if view?.getPassengerDetails() == nil {
+        if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
         } else {
             view?.retryAddPaymentMethod()
@@ -141,11 +141,25 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func didAddPassengerDetails() {
-        if view?.getPassengerDetails() == nil || getPaymentNonceAccordingToAuthState() == nil {
+        if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
         } else {
             view?.setDefaultState()
         }
+    }
+    
+    private func arePassengerDetailsValid() -> Bool {
+        guard let details = view?.getPassengerDetails(),
+              Utils.isValidName(name: details.firstName),
+              Utils.isValidName(name: details.lastName),
+              Utils.isValidEmail(email: details.email),
+              Utils.isValidPhoneNumber(number: details.phoneNumber),
+              !details.locale.isEmpty
+        else {
+            return false
+        }
+        
+        return true
     }
 
     func bookTripPressed() {
