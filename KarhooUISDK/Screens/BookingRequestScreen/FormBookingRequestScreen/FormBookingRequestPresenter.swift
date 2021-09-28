@@ -259,8 +259,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             threeDSecureNonceThenBook(nonce: nonce,
                                       passengerDetails: passengerDetails)
         } else {
-            let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
-            book(paymentNonce: nonce, passenger: passengerDetails, flightNumber: flightNumber)
+            book(paymentNonce: nonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
         }
     }
 
@@ -285,17 +284,21 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                 view?.setDefaultState()
                 
             case .success(let threeDSecureNonce):
-                let flightNumber = view?.getFlightNumber()?.isEmpty == true ? nil : view?.getFlightNumber()
-                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: flightNumber)
+                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
             }
         }
     }
     
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
+        var flight : String? = flightNumber
+        if let f = flight, (f.isEmpty || f == " ") {
+            flight = nil
+        }
+        
         var tripBooking = TripBooking(quoteId: quote.id,
                                       passengers: Passengers(additionalPassengers: 0,
                                                              passengerDetails: [passenger]),
-                                      flightNumber: (flightNumber ?? "").isEmpty ? nil : flightNumber,
+                                      flightNumber: flight,
                                       paymentNonce: paymentNonce,
                                       comments: view?.getComments())
         
