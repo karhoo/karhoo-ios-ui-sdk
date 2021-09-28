@@ -275,6 +275,16 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         emailNameInputView.set(text: details.email)
         mobilePhoneInputView.set(text: details.phoneNumber)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
+        
+        highlightInvalidFields()
+    }
+    
+    private func highlightInvalidFields() {
+        for (_, inputView) in inputViews.enumerated() {
+            if !inputView.isValid() {
+                inputView.showError()
+            }
+        }
     }
 }
 
