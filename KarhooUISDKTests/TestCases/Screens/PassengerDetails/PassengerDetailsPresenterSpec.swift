@@ -68,4 +68,14 @@ class PassengerDetailsPresenterSpec: XCTestCase {
         mockView.textField.setInactive()
         XCTAssertTrue(mockView.didBecomeInactiveCalled)
     }
+    
+    /**
+      * When: we set the text in the text field
+      * Then: didChangeCharacterInSet is not called
+      * didChangeCharacterInSet should be called only when the input field is edited manually by the user
+      */
+    func testDidChangeCharacterInSetCalled() {
+        mockView.textField.set(text: TestUtil.getRandomString())
+        XCTAssertFalse(mockView.didChangeCharacterInSetCalled)
+    }
 }

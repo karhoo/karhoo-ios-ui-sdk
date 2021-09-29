@@ -38,4 +38,9 @@ final class MockPassengerDetailsViewController: MockBaseViewController, KarhooIn
     func didBecomeActive(identifier: String) {
         didBecomeActiveCalled = true
     }
+    
+    var didChangeCharacterInSetCalled = false
+    func didChangeCharacterInSet(identifier: String) {
+        didChangeCharacterInSetCalled = true
+    }
 }
