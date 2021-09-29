@@ -35,7 +35,6 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private let smallSpacing: CGFloat = 8.0
     private let extraSmallSpacing: CGFloat = 4.0
     private var inputViews = [KarhooInputView]()
-    private var validSet = Set<String>()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
     private let currentLocale = NSLocale.current.languageCode ?? "en"
@@ -296,26 +295,45 @@ extension PassengerDetailsViewController: PassengerDetailsActions {
 
 extension PassengerDetailsViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
-        for (index, inputView) in inputViews.enumerated() {
+        goToNextInputField(startingIdentifier: identifier)
+        updateDoneButtonEnabled()
+    }
+    
+    func didBecomeActive(identifier: String) {
+        shouldMoveToNextInputViewOnReturn = true
+    }
+    
+    func didChangeCharacterInSet(identifier: String) {
+        updateDoneButtonEnabled()
+    }
+    
+    private func getValidInputViewCount() -> Int {
+        var validSet = Set<String>()
+        
+        for (_, inputView) in inputViews.enumerated() {
             if inputView.isValid() {
                 validSet.insert(inputView.accessibilityIdentifier!)
             } else {
                 validSet.remove(inputView.accessibilityIdentifier!)
             }
-            
-            if shouldMoveToNextInputViewOnReturn,
-               inputView.accessibilityIdentifier == identifier {
-                if index != inputViews.count - 1 {
-                    inputViews[index + 1].setActive()
-                }
-            }
         }
-
-        passengerDetailsValid(validSet.count == inputViews.count)
+        
+        return validSet.count
     }
     
-    func didBecomeActive(identifier: String) {
-        shouldMoveToNextInputViewOnReturn = true
+    private func goToNextInputField(startingIdentifier: String) {
+        for (index, inputView) in inputViews.enumerated() {
+            if shouldMoveToNextInputViewOnReturn,
+               inputView.accessibilityIdentifier == startingIdentifier,
+               index != inputViews.count - 1 {
+                inputViews[index + 1].setActive()
+            }
+        }
+    }
+    
+    private func updateDoneButtonEnabled() {
+        let validCount = getValidInputViewCount()
+        passengerDetailsValid(validCount == inputViews.count)
     }
 }
 
