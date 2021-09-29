@@ -2037,21 +2037,13 @@
 			isa = PBXGroup;
 			children = (
 				4010B0D92458847500E7B0F1 /* KarhooTextInputView.swift */,
-				4038DF402445D5180014539B /* KarhooPhoneInputView */,
+				4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */,
 				4038DF3E2444D6810014539B /* KarhooInputView.swift */,
 				4010B0DB245C5DD900E7B0F1 /* KarhooInputViewState.swift */,
 				4010B0DF245C5E1F00E7B0F1 /* KarhooTextInputViewErrorFeedbackType.swift */,
 				4010B0DD245C5DFE00E7B0F1 /* KarhooTextInputViewContentType.swift */,
 			);
 			path = KarhooTextInputView;
-			sourceTree = "<group>";
-		};
-		4038DF402445D5180014539B /* KarhooPhoneInputView */ = {
-			isa = PBXGroup;
-			children = (
-				4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */,
-			);
-			path = KarhooPhoneInputView;
 			sourceTree = "<group>";
 		};
 		4038DF452446179D0014539B /* GuestBookingRequestScreen */ = {

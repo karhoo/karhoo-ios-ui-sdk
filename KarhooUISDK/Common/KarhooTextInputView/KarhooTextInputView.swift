@@ -9,7 +9,8 @@ import UIKit
 
 public protocol KarhooInputViewDelegate: AnyObject {
     func didBecomeInactive(identifier: String)
-    func didBecomeActive(identifier:String)
+    func didBecomeActive(identifier: String)
+    func didChangeCharacterInSet(identifier: String)
 }
 
 class KarhooTextInputView: UIView, KarhooInputView {
@@ -291,11 +292,13 @@ extension KarhooTextInputView: UITextViewDelegate {
             runValidation()
             return false
         }
+        
         return true
     }
     
     internal func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: frame.width, height: .infinity)
         textView.sizeThatFits(size)
+        delegate?.didChangeCharacterInSet(identifier: accessibilityIdentifier!)
     }
 }

@@ -214,7 +214,7 @@ class KarhooPhoneInputView: UIView {
             _ = try phoneNumberKit.parse(phoneNumber)
             return true
         } catch {
-            print("Generic parser error")
+//            print("Generic parser error")
             return false
         }
     }
@@ -360,11 +360,13 @@ extension KarhooPhoneInputView: UITextViewDelegate {
             }
             return false
         }
+        
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: frame.width, height: .infinity)
         textView.sizeThatFits(size)
+        delegate?.didChangeCharacterInSet(identifier: accessibilityIdentifier!)
     }
 }
