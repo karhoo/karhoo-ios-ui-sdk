@@ -42,8 +42,8 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
     private func handleAddCardFlow(result: CardFlowResult, callback: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         switch result {
         case .didAddPaymentMethod(let method):
-            let nonce = Nonce(nonce: method.nonce, cardType: method.nonceType)
-            callback(.completed(value: .nonce(nonce: nonce)))
+//            let nonce = Nonce(nonce: method.nonce, cardType: method.nonceType)
+            callback(.completed(value: .nonce(nonce: method)))
         case .didFailWithError(let error): callback(.completed(value: .failedToAddCard(error: error)))
         case .cancelledByUser: callback(.completed(value: .cancelledByUser))
         }

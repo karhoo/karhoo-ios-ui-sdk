@@ -171,13 +171,13 @@ final public class KarhooAddCardView: UIView, PaymentView {
         presenter?.updateCardPressed(showRetryAlert: showRetryAlert)
     }
     
-    func set(paymentMethod: PaymentMethod) {
-        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + paymentMethod.paymentDescription.suffix(2)
-        passengerPaymentSubtitle.text = UITexts.Generic.edit
-		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
-        updateViewState()
-        actions?.didGetNonce(nonce: paymentMethod.nonce)
-    }
+//    func set(paymentMethod: PaymentMethod) {
+//        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + paymentMethod.paymentDescription.suffix(4)
+//        passengerPaymentSubtitle.text = UITexts.Generic.edit
+//		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
+//        updateViewState()
+//        actions?.didGetNonce(nonce: paymentMethod.nonce)
+//    }
     
     private func updateViewState() {
         layer.borderWidth = 1.0

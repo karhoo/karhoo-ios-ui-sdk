@@ -19,7 +19,7 @@ public protocol CardRegistrationFlow {
 }
 
 public enum CardFlowResult {
-    case didAddPaymentMethod(method: PaymentMethod)
+    case didAddPaymentMethod(method: Nonce)
     case didFailWithError(_ error: KarhooError?)
     case cancelledByUser
 }

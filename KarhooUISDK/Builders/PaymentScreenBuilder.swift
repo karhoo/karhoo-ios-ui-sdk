@@ -11,6 +11,6 @@ import KarhooSDK
 
 public protocol PaymentScreenBuilder {
     func buildAddCardScreen(paymentsToken: PaymentSDKToken,
-                            paymentMethodAdded: ScreenResultCallback<PaymentMethod>?,
+                            paymentMethodAdded: ScreenResultCallback<Nonce>?,
                             flowItemCallback: ScreenResultCallback<Screen>?)
 }

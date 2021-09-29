@@ -97,7 +97,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         baseViewController?.present(item, animated: true, completion: nil)
     }
 
-    private func handleBraintreeUICompletion(_ result: ScreenResult<PaymentMethod>) {
+    private func handleBraintreeUICompletion(_ result: ScreenResult<Nonce>) {
         switch result {
         case .cancelled:
             dismissBraintreeUI()
@@ -119,7 +119,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         }
     }
 
-    private func registerKarhooPayer(method: PaymentMethod) {
+    private func registerKarhooPayer(method: Nonce) {
         guard let currentUser = userService.getCurrentUser() else {
             return
         }
@@ -150,12 +150,12 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
             self?.analyticsService.send(eventName: .userCardRegistered)
             self?.callback?(OperationResult.completed(
-                value: .didAddPaymentMethod(method: PaymentMethod(nonce: nonce.nonce))))
+                value: .didAddPaymentMethod(method: nonce)))
         })
 
     }
 
-    private func registerGuestPayer(method: PaymentMethod) {
+    private func registerGuestPayer(method: Nonce) {
         analyticsService.send(eventName: .userCardRegistered)
         self.baseViewController?.showLoadingOverlay(false)
         self.callback?(OperationResult.completed(value: .didAddPaymentMethod(method: method)))

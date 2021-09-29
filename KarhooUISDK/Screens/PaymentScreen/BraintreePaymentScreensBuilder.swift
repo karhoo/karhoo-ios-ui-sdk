@@ -14,7 +14,7 @@ import Braintree
 final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
 
     func buildAddCardScreen(paymentsToken: PaymentSDKToken,
-                            paymentMethodAdded: ScreenResultCallback<PaymentMethod>?,
+                            paymentMethodAdded: ScreenResultCallback<Nonce>?,
                             flowItemCallback: ScreenResultCallback<Screen>?) {
         let request = BTDropInRequest()
 
@@ -26,11 +26,7 @@ final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
             } else if result?.isCancelled == true {
                 paymentMethodAdded?(.cancelled(byUser: true))
             } else {
-                let paymentMethod = PaymentMethod(nonce: result!.paymentMethod!.nonce,
-                                                  nonceType: result!.paymentMethod!.type,
-                                                  icon: result!.paymentIcon,
-                                                  paymentDescription: result!.paymentDescription)
-
+                let paymentMethod = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: result!.paymentDescription)
                 paymentMethodAdded?(ScreenResult.completed(result: paymentMethod))
             }
         }) else {
