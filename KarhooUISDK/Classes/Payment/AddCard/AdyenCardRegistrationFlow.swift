@@ -229,7 +229,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         case .failure:
             finish(result: .completed(value: .didFailWithError(nil)))
         case .paymentAuthorised(let method):
-            finish(result: .completed(value: .didAddPaymentMethod(method: method)))
+            finish(result: .completed(value: .didAddPaymentMethod(nonce: method)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
         case .refused(let reason, let code):
