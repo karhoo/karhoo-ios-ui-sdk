@@ -379,8 +379,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         timePriceView.set(baseFareHidden: baseFareExplanationHidden)
     }
     
-    func retryAddPaymentMethod() {
-        passengerDetailsAndPaymentView.startRegisterCardFlow()
+    func retryAddPaymentMethod(showRetryAlert: Bool = false) {
+        passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
     
     private func enableUserInteraction() {
