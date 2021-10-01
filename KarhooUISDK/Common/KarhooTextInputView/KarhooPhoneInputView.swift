@@ -344,10 +344,10 @@ extension KarhooPhoneInputView: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.textColor = KarhooTextInputViewState.inactive.color
             textView.text = contentType.placeholderText
-        } else {
-            runValidation()
-            delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
         }
+        
+        runValidation()
+        delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

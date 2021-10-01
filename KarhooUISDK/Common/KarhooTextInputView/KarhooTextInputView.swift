@@ -268,13 +268,14 @@ extension KarhooTextInputView: UITextViewDelegate {
             textView.text =  textView.text.trimmingCharacters(in: .whitespaces)
         }
 
+        
         if textView.text.isEmpty {
             textView.textColor = KarhooTextInputViewState.inactive.color
             textView.text = contentType.placeholderText
-        } else {
-            runValidation()
-            delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
         }
+        
+        runValidation()
+        delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
     }
     
     public func getInput() -> String {
