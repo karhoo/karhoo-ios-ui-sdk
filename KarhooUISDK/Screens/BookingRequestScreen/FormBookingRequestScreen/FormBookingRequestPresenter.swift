@@ -136,7 +136,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
         } else {
-            view?.retryAddPaymentMethod()
+            view?.retryAddPaymentMethod(showRetryAlert: false)
         }
     }
     
@@ -280,7 +280,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                 view?.setDefaultState()
                 
             case .threeDSecureAuthenticationFailed:
-                view?.retryAddPaymentMethod()
+                view?.retryAddPaymentMethod(showRetryAlert: true)
                 view?.setDefaultState()
                 
             case .success(let threeDSecureNonce):
@@ -330,7 +330,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             view?.setDefaultState()
 
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
-                view?.retryAddPaymentMethod()
+                view?.retryAddPaymentMethod(showRetryAlert: true)
             } else {
                 callback(ScreenResult.failed(error: result.errorValue()))
             }

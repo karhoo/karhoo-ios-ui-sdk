@@ -57,7 +57,7 @@ protocol BookingRequestView: BaseViewController {
 
     func setPrebookState(timeString: String?, dateString: String?)
 
-    func retryAddPaymentMethod()
+    func retryAddPaymentMethod(showRetryAlert: Bool)
 
     func getPaymentNonce() -> String?
 
