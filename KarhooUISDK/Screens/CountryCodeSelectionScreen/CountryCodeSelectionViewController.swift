@@ -187,6 +187,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSizeProvider.register(listener: self)
+        forceLightMode()
     }
     
     // MARK: - Actions

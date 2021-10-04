@@ -290,6 +290,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     override func viewDidLoad() {
         super.viewDidLoad()
         passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+        forceLightMode()
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {

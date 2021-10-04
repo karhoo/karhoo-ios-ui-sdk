@@ -41,6 +41,7 @@ final class FlightDetailsViewController: UIViewController, FlightDetailsView {
         presenter.load(view: self)
         setDelegates()
         additionalInformationField?.sizeToFit()
+        forceLightMode()
     }
 
     override func viewDidLayoutSubviews() {

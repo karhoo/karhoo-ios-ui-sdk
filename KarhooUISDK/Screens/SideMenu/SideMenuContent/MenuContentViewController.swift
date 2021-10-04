@@ -35,6 +35,8 @@ final class MenuContentViewController: UIViewController, MenuContentView {
 
         self.logo?.image = KarhooUISDKConfigurationProvider.configuration.logo()
         presenter.checkGuestAuthentication()
+        
+        forceLightMode()
     }
 
     func getFlowItem() -> Screen {

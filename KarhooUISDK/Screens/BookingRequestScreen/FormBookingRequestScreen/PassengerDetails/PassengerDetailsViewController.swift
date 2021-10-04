@@ -229,6 +229,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         keyboardSizeProvider.register(listener: self)
+        forceLightMode()
     }
     
     // MARK: - Actions
