@@ -436,6 +436,7 @@
 		6B5D607F26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D607E26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift */; };
 		6B5E25F326D672090017BFB3 /* PassengerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */; };
 		6B5E25F526D67DCA0017BFB3 /* PassengerDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E25F426D67DCA0017BFB3 /* PassengerDetailsPresenter.swift */; };
+		6BDBBE8F270AFC8C00DF40CA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBBE8E270AFC8C00DF40CA /* UIViewController+Extensions.swift */; };
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
 		6BE3695426EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */; };
 		6BE3695626EB352700F0FE86 /* CountryCodeSelectionMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */; };
@@ -924,6 +925,7 @@
 		6B5D607E26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsPresenterSpec.swift; sourceTree = "<group>"; };
 		6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsViewController.swift; sourceTree = "<group>"; };
 		6B5E25F426D67DCA0017BFB3 /* PassengerDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsPresenter.swift; sourceTree = "<group>"; };
+		6BDBBE8E270AFC8C00DF40CA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
 		6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionPresenter.swift; sourceTree = "<group>"; };
 		6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionMVP.swift; sourceTree = "<group>"; };
@@ -3157,6 +3159,7 @@
 				099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */,
 				0973872121DE77B3004BD5F9 /* NSAttributedString+Utils.swift */,
 				FC8F474C2153E770007841FB /* Bundle+Utils.swift */,
+				6BDBBE8E270AFC8C00DF40CA /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3685,6 +3688,7 @@
 				6BE36B5926EBB24400F0FE86 /* CountryCodeView.swift in Sources */,
 				09C765C421DE688100CD81AB /* KarhooQuoteSorter.swift in Sources */,
 				407EC7C822CF564E00F24CFC /* PhoneNumberCaller.swift in Sources */,
+				6BDBBE8F270AFC8C00DF40CA /* UIViewController+Extensions.swift in Sources */,
 				403F448222F19A38008147FC /* BaseStackView.swift in Sources */,
 				09C765B821DE688100CD81AB /* CancelButtonMVP.swift in Sources */,
 				6BE36B5B26EBB37E00F0FE86 /* CountryCodeViewModel.swift in Sources */,

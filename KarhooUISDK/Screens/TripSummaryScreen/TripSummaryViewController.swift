@@ -27,6 +27,7 @@ class TripSummaryViewController: UIViewController, TripSummaryView {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewLoaded(view: self)
+        forceLightMode()
     }
 
     func set(trip: TripInfo) {

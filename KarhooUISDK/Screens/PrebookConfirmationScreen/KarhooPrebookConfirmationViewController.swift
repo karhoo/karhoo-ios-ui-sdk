@@ -40,6 +40,7 @@ final class KarhooPrebookConfirmationViewController: UIViewController, PrebookCo
         presenter.load(view: self)
         formButton?.delegate = self
         formButton?.setEnabledMode()
+        forceLightMode()
         
     }
 

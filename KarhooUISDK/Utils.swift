@@ -63,7 +63,7 @@ public class Utils {
 class ViewControllerUtils {
     static var topBaseViewController: BaseViewController? {
         var topVC = UIApplication.shared.keyWindow?.rootViewController
-        while((topVC!.presentedViewController) != nil) {
+        while topVC!.presentedViewController != nil {
              topVC = topVC!.presentedViewController
         }
         return topVC as? BaseViewController
@@ -71,7 +71,7 @@ class ViewControllerUtils {
     
     static var topViewController: UIViewController? {
         var topVC = UIApplication.shared.keyWindow?.rootViewController
-        while((topVC!.presentedViewController) != nil) {
+        while topVC!.presentedViewController != nil {
              topVC = topVC!.presentedViewController
         }
         return topVC

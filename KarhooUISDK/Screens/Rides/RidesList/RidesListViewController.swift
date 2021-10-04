@@ -54,6 +54,7 @@ final class RidesListViewController: UIViewController, RidesListView {
         super.viewDidLoad()
     
         presenter.load(screen: self)
+        forceLightMode()
     }
 
     func set(trips: [TripInfo]) {

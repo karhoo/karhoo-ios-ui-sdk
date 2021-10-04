@@ -183,6 +183,8 @@ final class KarhooTripViewController: UIViewController, TripView {
         presenter.load(view: self)
         tripDetailsView.set(actions: self,
                                detailsSuperview: self.view)
+        
+        forceLightMode()
     }
 
     override func viewWillAppear(_ animated: Bool) {

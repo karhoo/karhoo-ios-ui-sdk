@@ -115,6 +115,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView(reverseGeolocate: journeyInfo == nil)
+        forceLightMode()
     }
 
     private func setupMapView(reverseGeolocate: Bool) {

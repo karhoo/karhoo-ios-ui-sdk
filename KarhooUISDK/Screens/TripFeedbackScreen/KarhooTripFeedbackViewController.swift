@@ -26,6 +26,7 @@ final class KarhooTripFeedbackViewController: UIViewController, TripFeedbackView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        forceLightMode()
         view.backgroundColor = .white
         title = UITexts.SideMenu.feedback
         
