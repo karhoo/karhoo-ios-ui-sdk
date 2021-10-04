@@ -341,11 +341,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     func setAddFlightDetailsState() {
         enableUserInteraction()
-        if presenter.isKarhooUser() {
-            bookingButton.setAddFlightDetailsMode()
-        } else {
-            poiDetailsInputText.isHidden = false
-        }
+        poiDetailsInputText.isHidden = false
     }
     
     func set(quote: Quote) {
