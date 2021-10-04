@@ -425,9 +425,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
 
 extension FormBookingRequestPresenter: AppStateChangeDelegate {
     func appDidEnterBackground() {
-        if bookingRequestInProgress == false,
-           flightDetailsScreenIsPresented == false {
-            self.didPressClose()
-        }
+//        Note: Leving this until the flight details input flow is cleaned up
+//        if bookingRequestInProgress == false,
+//           flightDetailsScreenIsPresented == false {
+//            self.didPressClose()
+//        }
     }
 }
