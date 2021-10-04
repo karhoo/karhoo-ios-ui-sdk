@@ -23,10 +23,6 @@ extension FormBookingRequestViewController: BookingButtonActions {
     func requestPressed() {
         presenter.bookTripPressed()
     }
-    
-    func addFlightDetailsPressed() {
-        presenter.didPressAddFlightDetails()
-    }
 }
 
 extension FormBookingRequestViewController: PassengerDetailsActions {
@@ -37,16 +33,11 @@ extension FormBookingRequestViewController: PassengerDetailsActions {
 }
 
 extension FormBookingRequestViewController: KarhooInputViewDelegate {
-    func didBecomeInactive(identifier: String) {
-        enableBookingButton()
-    }
+    func didBecomeInactive(identifier: String) {}
     
-    func didBecomeActive(identifier: String) {
-        enableBookingButton()
-    }
+    func didBecomeActive(identifier: String) {}
     
-    func didChangeCharacterInSet(identifier: String) {
-    }
+    func didChangeCharacterInSet(identifier: String) {}
     
     private func enableBookingButton() {
         if passengerDetailsValid != true {
