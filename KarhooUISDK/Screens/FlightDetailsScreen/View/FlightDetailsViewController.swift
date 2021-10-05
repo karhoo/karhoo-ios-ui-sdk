@@ -110,20 +110,6 @@ final class FlightDetailsViewController: UIViewController, FlightDetailsView {
     deinit {
         keyboardObserver.remove(listener: self)
     }
-
-    final class KarhooFlightDetailsScreenBuilder: FlightDetailsScreenBuilder {
-
-        func buildFlightDetailsScreen(completion: @escaping ScreenResultCallback<FlightDetails>) -> Screen {
-            let flightDetailsPresenter = KarhooFlightDetailsPresenter(completion: completion)
-
-            let flightDetailsViewController = FlightDetailsViewController(presenter: flightDetailsPresenter)
-            let navigationController = UINavigationController(rootViewController: flightDetailsViewController)
-
-            flightDetailsPresenter.load(view: flightDetailsViewController)
-            return navigationController
-        }
-    }
-
 }
 
 extension FlightDetailsViewController: KeyboardListener {

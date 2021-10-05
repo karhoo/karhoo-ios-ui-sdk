@@ -215,7 +215,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
              case .nonce(let nonce):
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
-                      flightNumber: flightNumber)
+                      flightNumber: view?.getFlightNumber())
                  
              case .cancelledByUser:
                  self.view?.setDefaultState()
