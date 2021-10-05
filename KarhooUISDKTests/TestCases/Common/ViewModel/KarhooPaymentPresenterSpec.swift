@@ -84,9 +84,9 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         testObject.updateCardPressed(showRetryAlert: false)
         let paymentMethodAdded = TestUtil.getRandomBraintreePaymentMethod()
         mockCardRegistrationFlow.triggerAddCardResult(
-            .completed(value: .didAddPaymentMethod(method: paymentMethodAdded)))
+            .completed(value: .didAddPaymentMethod(nonce: paymentMethodAdded)))
 
-        XCTAssertEqual(paymentMethodAdded, mockView.paymentMethodSet)
+        XCTAssertEqual(paymentMethodAdded, mockView.nonceSet)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
         KarhooUI.set(configuration: KarhooTestConfiguration())
@@ -101,7 +101,7 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         testObject.updateCardPressed(showRetryAlert: false)
         let paymentMethodAdded = TestUtil.getRandomBraintreePaymentMethod()
         mockCardRegistrationFlow.triggerAddCardResult(
-            .completed(value: .didAddPaymentMethod(method: paymentMethodAdded)))
+            .completed(value: .didAddPaymentMethod(nonce: paymentMethodAdded)))
 
         let updatedUser = TestUtil.getRandomUser(nonce: Nonce(nonce: "some_nonce"))
         mockUserService.currentUserToReturn = updatedUser
