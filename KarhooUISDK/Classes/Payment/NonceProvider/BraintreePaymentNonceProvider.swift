@@ -87,7 +87,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
     private func handleAddCardResult(_ result: CardFlowResult) {
         switch result {
-        case .didAddPaymentMethod(let nonce): execute3dSecureCheckOnNonce(Nonce(nonce: nonce.nonce))
+        case .didAddPaymentMethod(let nonce): execute3dSecureCheckOnNonce(nonce)
         case .didFailWithError(let error): callbackResult?(.completed(value: .failedToAddCard(error: error)))
         case .cancelledByUser: self.callbackResult?(.cancelledByUser)
         }
