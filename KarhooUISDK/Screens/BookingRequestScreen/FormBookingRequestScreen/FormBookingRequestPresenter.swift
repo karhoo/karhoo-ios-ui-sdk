@@ -193,9 +193,14 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         }
         
         if let nonce = view?.getPaymentNonce() {
-            book(paymentNonce: nonce,
-                 passenger: passengerDetails,
-                 flightNumber: flightNumber)
+            if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+                threeDSecureNonceThenBook(nonce: nonce,
+                                          passengerDetails: passengerDetails)
+            } else {
+                book(paymentNonce: nonce,
+                     passenger: passengerDetails,
+                     flightNumber: flightNumber)
+            }
         } else {
             paymentNonceProvider.getPaymentNonce(user: currentUser,
                                                  organisation: currentOrg,
