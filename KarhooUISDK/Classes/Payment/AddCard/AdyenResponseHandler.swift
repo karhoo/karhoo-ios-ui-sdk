@@ -54,8 +54,8 @@ struct AdyenResponseHandler {
             let lastFour = paymentData?[cardSummary] as? String ?? ""
             let icon = paymentIcon(adyenDescription: paymentData?[paymentMethod] as? String)
 
-            let method = Nonce(nonce: tripId, cardType: icon, lastFour: lastFour)
-            return .paymentAuthorised(method)
+            let nonce = Nonce(nonce: tripId, cardType: icon, lastFour: lastFour)
+            return .paymentAuthorised(nonce)
         }
 
         if result == refused {
