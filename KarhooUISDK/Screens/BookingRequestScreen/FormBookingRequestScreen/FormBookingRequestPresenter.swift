@@ -188,7 +188,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                                        quote: quote)
         }
         
-        if let nonce = view?.getPaymentNonce() {
+        if let nonce = getPaymentNonceAccordingToAuthState() {
             book(paymentNonce: nonce,
                  passenger: passengerDetails,
                  flightNumber: view?.getFlightNumber())
@@ -210,7 +210,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
              case .nonce(let nonce):
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
-                      flightNumber: flightNumber)
+                      flightNumber: view?.getFlightNumber())
                  
              case .cancelledByUser:
                  self.view?.setDefaultState()

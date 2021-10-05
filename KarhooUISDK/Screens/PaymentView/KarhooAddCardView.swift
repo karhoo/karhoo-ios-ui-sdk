@@ -76,7 +76,11 @@ final public class KarhooAddCardView: UIView, PaymentView {
     private var hasPayment: Bool = false
     
     var quote: Quote?
-    var actions: PaymentViewActions?
+    var actions: PaymentViewActions? {
+        didSet {
+            presenter = KarhooPaymentPresenter(view: self)
+        }
+    }
     private var presenter: PaymentPresenter?
     
     public init() {
@@ -117,8 +121,6 @@ final public class KarhooAddCardView: UIView, PaymentView {
         stackContainer.addArrangedSubview(passengerPaymentImage)
         stackContainer.addArrangedSubview(passengerPaymentTitle)
         stackContainer.addArrangedSubview(passengerPaymentSubtitle)
-
-        presenter = KarhooPaymentPresenter(view: self)
     }
 
     override public func updateConstraints() {
