@@ -76,7 +76,13 @@ final public class KarhooAddCardView: UIView, PaymentView {
     private var hasPayment: Bool = false
     
     var quote: Quote?
-    var actions: PaymentViewActions?
+    var actions: PaymentViewActions? {
+        didSet {
+            if presenter == nil {
+                presenter = KarhooPaymentPresenter(view: self)
+            }
+        }
+    }
     private var presenter: PaymentPresenter?
     
     public init() {
@@ -117,8 +123,6 @@ final public class KarhooAddCardView: UIView, PaymentView {
         stackContainer.addArrangedSubview(passengerPaymentImage)
         stackContainer.addArrangedSubview(passengerPaymentTitle)
         stackContainer.addArrangedSubview(passengerPaymentSubtitle)
-
-        presenter = KarhooPaymentPresenter(view: self)
     }
 
     override public func updateConstraints() {
@@ -169,14 +173,6 @@ final public class KarhooAddCardView: UIView, PaymentView {
 
     func startRegisterCardFlow(showRetryAlert: Bool = true) {
         presenter?.updateCardPressed(showRetryAlert: showRetryAlert)
-    }
-    
-    func set(paymentMethod: PaymentMethod) {
-        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + paymentMethod.paymentDescription.suffix(2)
-        passengerPaymentSubtitle.text = UITexts.Generic.edit
-		passengerPaymentImage.image = UIImage.uisdkImage(paymentMethod.nonceType)
-        updateViewState()
-        actions?.didGetNonce(nonce: paymentMethod.nonce)
     }
     
     private func updateViewState() {

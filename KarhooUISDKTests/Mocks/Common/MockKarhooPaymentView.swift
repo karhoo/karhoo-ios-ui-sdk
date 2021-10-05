@@ -17,11 +17,6 @@ final class MockKarhooPaymentView: MockBaseView, PaymentView {
 
     var quote: Quote?
 
-    private(set) var paymentMethodSet: PaymentMethod?
-    func set(paymentMethod: PaymentMethod) {
-        paymentMethodSet = paymentMethod
-    }
-
     private(set) var nonceSet: Nonce?
     func set(nonce: Nonce) {
         nonceSet = nonce

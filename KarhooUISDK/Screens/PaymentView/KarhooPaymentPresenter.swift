@@ -53,14 +53,13 @@ final class KarhooPaymentPresenter: PaymentPresenter {
             view.noPaymentMethod()
             return
         }
-
         view.set(nonce: currentNonce)
     }
 
     private func handleAddCardFlow(result: CardFlowResult) {
         switch result {
-        case .didAddPaymentMethod(let method):
-            view.set(paymentMethod: method)
+      case .didAddPaymentMethod(let nonce):
+          view.set(nonce: nonce)
         case .didFailWithError(let error):
             (view.parentViewController as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                                                           message: error?.message ?? "", error: error)

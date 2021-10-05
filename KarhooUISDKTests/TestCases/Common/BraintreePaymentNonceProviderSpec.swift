@@ -118,7 +118,7 @@ final class BraintreePaymentNonceProviderSpec: XCTestCase {
         mockBaseView.selectUpdateCardOnAddCardAlert()
 
         let paymentAdded = TestUtil.getRandomBraintreePaymentMethod(nonce: "some_nonce")
-        mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(method: paymentAdded)))
+        mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(nonce: paymentAdded)))
 
         XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.price.currencyCode)
         XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.price.highPrice))

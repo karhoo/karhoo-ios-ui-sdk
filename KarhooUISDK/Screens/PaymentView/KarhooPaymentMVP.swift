@@ -16,7 +16,6 @@ protocol PaymentPresenter {
 }
 
 protocol PaymentView: BaseView {
-    func set(paymentMethod: PaymentMethod)
     func set(nonce: Nonce)
     func noPaymentMethod()
     func startRegisterCardFlow(showRetryAlert: Bool)

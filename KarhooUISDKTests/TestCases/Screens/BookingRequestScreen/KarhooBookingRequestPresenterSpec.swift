@@ -248,7 +248,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     func testUpdateCardSuccessContinuesBooking() {
         startWithPaymentBookingError()
 
-        mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(method: PaymentMethod())))
+        mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(nonce: Nonce())))
 
         XCTAssertNotNil(mockTripService.tripBookingSet)
         XCTAssertTrue(mockView.setRequestingStateCalled)

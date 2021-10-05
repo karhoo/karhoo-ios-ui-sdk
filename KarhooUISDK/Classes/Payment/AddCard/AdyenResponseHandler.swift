@@ -9,6 +9,7 @@
 //
 
 import Adyen
+import KarhooSDK
 
 struct AdyenResponseHandler {
 
@@ -23,7 +24,7 @@ struct AdyenResponseHandler {
 
     enum AdyenEvent {
         case requiresAction(_ action: Action)
-        case paymentAuthorised(_ method: PaymentMethod)
+        case paymentAuthorised(_ method: Nonce)
         case refused(reason: String, code: String)
         case handleResult(code: String?)
         case failure
@@ -53,10 +54,8 @@ struct AdyenResponseHandler {
             let lastFour = paymentData?[cardSummary] as? String ?? ""
             let icon = paymentIcon(adyenDescription: paymentData?[paymentMethod] as? String)
 
-            let method = PaymentMethod(nonce: tripId,
-                                       nonceType: icon,
-                                       paymentDescription: lastFour)
-            return .paymentAuthorised(method)
+            let nonce = Nonce(nonce: tripId, cardType: icon, lastFour: lastFour)
+            return .paymentAuthorised(nonce)
         }
 
         if result == refused {
