@@ -58,6 +58,9 @@ final class KarhooPaymentPresenter: PaymentPresenter {
 
     private func handleAddCardFlow(result: CardFlowResult) {
         switch result {
+//      code below not needed anymore, left for further reference (until update card flow is fixed)
+//      case .didAddPaymentMethod(let method):
+//          view.set(paymentMethod: method)
         case .didFailWithError(let error):
             (view.parentViewController as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                                                           message: error?.message ?? "", error: error)
