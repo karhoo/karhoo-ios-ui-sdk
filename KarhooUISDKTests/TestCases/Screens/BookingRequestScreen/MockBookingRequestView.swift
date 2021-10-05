@@ -88,7 +88,7 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
     }
 
     var retryAddPaymentMethodCalled = false
-    func retryAddPaymentMethod(showRetryAlert: Bool = false) {
+    func retryAddPaymentMethod(showRetryAlert: Bool) {
         retryAddPaymentMethodCalled = true
     }
 
