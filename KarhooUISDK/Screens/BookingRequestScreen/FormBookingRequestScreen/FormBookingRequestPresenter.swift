@@ -24,7 +24,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
     private var trip: TripInfo?
-    private var flightNumber: String?
     private var comments: String?
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
@@ -195,7 +194,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             } else {
                 book(paymentNonce: nonce,
                      passenger: passengerDetails,
-                     flightNumber: flightNumber)
+                     flightNumber: view?.getFlightNumber())
             }
         } else {
             paymentNonceProvider.getPaymentNonce(user: currentUser,
@@ -351,14 +350,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         else if let error = result.errorValue() {
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
-    }
-    
-    private func didAdd(flightDetails: FlightDetails) {
-        self.flightDetailsScreenIsPresented = false
-        self.flightNumber = flightDetails.flightNumber
-        self.comments = flightDetails.comments
-        
-        submitKarhooUserBooking()
     }
     
     func didPressFareExplanation() {
