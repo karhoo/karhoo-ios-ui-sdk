@@ -13,8 +13,6 @@ protocol BookingRequestPresenter {
     func load(view: BookingRequestView)
 
     func bookTripPressed()
-
-    func didPressAddFlightDetails()
     
     func addOrEditPassengerDetails()
     

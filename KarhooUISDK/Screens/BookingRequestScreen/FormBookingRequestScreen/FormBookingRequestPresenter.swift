@@ -9,6 +9,7 @@ import Foundation
 import KarhooSDK
 
 final class FormBookingRequestPresenter: BookingRequestPresenter {
+    
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: BookingRequestView?
     private let quote: Quote
@@ -23,11 +24,9 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
     private var trip: TripInfo?
-    private var flightNumber: String?
     private var comments: String?
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
-    private let flightDetailsScreenBuilder: FlightDetailsScreenBuilder
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
@@ -40,7 +39,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooAnalytics(),
          appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
-         flightDetailsScreenBuilder: FlightDetailsScreenBuilder = KarhooUI().screens().flightDetails(),
          baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
          paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
          callback: @escaping ScreenResultCallback<TripInfo>) {
@@ -51,13 +49,10 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.paymentNonceProvider = paymentNonceProvider
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        self.flightDetailsScreenBuilder = flightDetailsScreenBuilder
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.bookingDetails = bookingDetails
         self.bookingMetadata = bookingMetadata
-        
-        appStateNotifier.register(listener: self)
     }
 
     func load(view: BookingRequestView) {
@@ -199,7 +194,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             } else {
                 book(paymentNonce: nonce,
                      passenger: passengerDetails,
-                     flightNumber: flightNumber)
+                     flightNumber: view?.getFlightNumber())
             }
         } else {
             paymentNonceProvider.getPaymentNonce(user: currentUser,
@@ -219,7 +214,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
              case .nonce(let nonce):
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
-                      flightNumber: flightNumber)
+                      flightNumber: view?.getFlightNumber())
                  
              case .cancelledByUser:
                  self.view?.setDefaultState()
@@ -356,38 +351,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
     }
-
-    func didPressAddFlightDetails() {
-        if karhooUser {
-            var dismissCallback: (() -> Void)?
-            let flightDetailsScreen = flightDetailsScreenBuilder
-                .buildFlightDetailsScreen(completion: { [weak self] result in
-                    dismissCallback?()
-                    self?.flightDetailsScreenIsPresented = false
-                    
-                    guard let flightDetails = result.completedValue() else {
-                        return
-                    }
-                    
-                    self?.didAdd(flightDetails: flightDetails)
-                })
-            
-            dismissCallback = {
-                flightDetailsScreen.dismiss(animated: true, completion: nil)
-            }
-            
-            view?.present(flightDetailsScreen, animated: true, completion: nil)
-            self.flightDetailsScreenIsPresented = true
-        }
-    }
-    
-    private func didAdd(flightDetails: FlightDetails) {
-        self.flightDetailsScreenIsPresented = false
-        self.flightNumber = flightDetails.flightNumber
-        self.comments = flightDetails.comments
-        
-        submitKarhooUserBooking()
-    }
     
     func didPressFareExplanation() {
         guard karhooUser, bookingRequestInProgress == false else {
@@ -422,18 +385,5 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
             didAddPassengerDetails()
          }
     }
-    
-    deinit {
-        appStateNotifier.remove(listener: self)
-    }
 }
 
-extension FormBookingRequestPresenter: AppStateChangeDelegate {
-    func appDidEnterBackground() {
-//        Note: Leving this until the flight details input flow is cleaned up
-//        if bookingRequestInProgress == false,
-//           flightDetailsScreenIsPresented == false {
-//            self.didPressClose()
-//        }
-    }
-}

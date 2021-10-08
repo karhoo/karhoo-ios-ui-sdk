@@ -14,7 +14,6 @@ private enum ButtonMode {
     case requesting
     case requested
     case request
-    case addFlightDetails
     case disabled
 }
 
@@ -148,7 +147,6 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         switch mode {
         case .addDetails: actions?.addMoreDetails()
         case .request: actions?.requestPressed()
-        case .addFlightDetails: actions?.addFlightDetailsPressed()
         default: return
         }
     }
@@ -194,14 +192,6 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         currentMode = .requested
         set(buttonTitle: UITexts.Booking.requestReceived.uppercased())
         tickImage?.isHidden = false
-        activityIndicator?.stopAnimating()
-    }
-
-    func setAddFlightDetailsMode() {
-        setSelectedState()
-        currentMode = .addFlightDetails
-        set(buttonTitle: UITexts.Airport.addFlightDetails)
-        tickImage.isHidden = true
         activityIndicator?.stopAnimating()
     }
     

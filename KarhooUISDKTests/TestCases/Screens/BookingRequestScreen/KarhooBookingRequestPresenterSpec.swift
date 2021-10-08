@@ -19,10 +19,8 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     private var testCallbackResult: ScreenResult<TripInfo>?
     private var mockUserService: MockUserService!
     private var mockTripService: MockTripService!
-    private var mockFlightDetails: FlightDetails!
     private var mockAppStateNotifier: MockAppStateNotifier!
     private var mockAnalytics: MockAnalytics!
-    private var mockFlightScreenBuilder: MockFlightDetailsScreenBuilder!
     private var mockPopupDialogScreenBuilder: MockPopupDialogScreenBuilder!
     private let mockPaymentNonceProvider = MockPaymentNonceProvider()
     private let mockCardRegistrationFlow = MockCardRegistrationFlow()
@@ -33,13 +31,11 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
 
         mockView = MockBookingRequestView()
         testQuote = TestUtil.getRandomQuote(highPrice: 10)
-        mockFlightDetails = FlightDetails(flightNumber: "flight_number", comments: "comments")
         testBookingDetails = TestUtil.getRandomBookingDetails()
         mockUserService = MockUserService()
         mockTripService = MockTripService()
         mockAppStateNotifier = MockAppStateNotifier()
         mockAnalytics = MockAnalytics()
-        mockFlightScreenBuilder = MockFlightDetailsScreenBuilder()
         mockPopupDialogScreenBuilder = MockPopupDialogScreenBuilder()
 
         loadTestObject()
@@ -366,7 +362,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
      * Then: Screen should not be closed
      */
     func testAppEnteringBackgroundWhenAddingFlightDetails() {
-        testObject.didPressAddFlightDetails()
         mockAppStateNotifier.signalAppDidEnterBackground()
         XCTAssertFalse(mockView.fadeOutCalled)
     }
@@ -404,41 +399,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
 
         XCTAssertTrue(mockView.dismissCalled)
     }
-
-    /**
-     * When: User added flight details
-     * Then: view should be set to requesting
-     * And: View should dismiss
-     * And: trip booking should be made (with added flight number)
-     */
-    func testFlightDetailsAdded() {
-        testObject.didPressAddFlightDetails()
-
-        let flightDetailsAdded = FlightDetails(flightNumber: "some", comments: "someComment")
-
-        mockFlightScreenBuilder.triggerFlightDetailsScreenResult(.completed(result: flightDetailsAdded))
-        mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
-        XCTAssertTrue(mockView.setRequestingStateCalled)
-        XCTAssertTrue(mockFlightScreenBuilder.returnViewController!.dismissCalled)
-        XCTAssertTrue(mockTripService.bookCall.executed)
-        XCTAssertEqual(mockTripService.tripBookingSet?.flightNumber, flightDetailsAdded.flightNumber)
-    }
-
-    /**
-     * When: User cancels adding flight details
-     * Then: view should not be set to requesting
-     * And: View should dismiss
-     * And: trip booking should NOT be made
-     */
-    func testNoFlightDetailsAdded() {
-        testObject.didPressAddFlightDetails()
-
-        mockFlightScreenBuilder.triggerFlightDetailsScreenResult(.cancelled(byUser: true))
-
-        XCTAssertFalse(mockView.setRequestingStateCalled)
-        XCTAssertFalse(mockTripService.bookCall.executed)
-        XCTAssertTrue(mockFlightScreenBuilder.returnViewController!.dismissCalled)
-    }
     
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
@@ -464,7 +424,6 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
                                                    userService: mockUserService,
                                                    analytics: mockAnalytics,
                                                    appStateNotifier: mockAppStateNotifier,
-                                                   flightDetailsScreenBuilder: mockFlightScreenBuilder,
                                                    baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
                                                    paymentNonceProvider: mockPaymentNonceProvider,
                                                    callback: bookingRequestTrip)
