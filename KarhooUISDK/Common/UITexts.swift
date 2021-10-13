@@ -241,8 +241,17 @@ public enum UITexts {
         public static let lastName = "Text.Booking.PassengerDetails.LastName".localized
         public static let email = "Text.Booking.PassengerDetails.Email".localized
         public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
-        public static let doneAction = "Text.Booking.PassengerDetails.DoneAction".localized
+        public static let saveAction = "Text.Booking.PassengerDetails.SaveAction".localized
         public static let add = "Text.Booking.PassengerDetails.Add".localized
+    }
+    
+    public enum VehicleTags {
+        public static let electric = "Vehicle.Tag.Electric".localized
+        public static let hybrid = "Vehicle.Tag.Hybrid".localized
+        public static let wheelchair = "Vehicle.Tag.Wheelchair".localized
+        public static let childseat = "Vehicle.Tag.Childseat".localized
+        public static let taxi = "Vehicle.Tag.Taxi".localized
+        public static let executive = "Vehicle.Tag.Executive".localized
     }
     
     public enum CountryCodeSelection {

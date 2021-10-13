@@ -448,7 +448,7 @@
 "Text.Booking.PassengerDetails.LastName" = "Apellido";
 "Text.Booking.PassengerDetails.Email" = "Correo electrónico";
 "Text.Booking.PassengerDetails.MobilePhone" = "Número de móvil";
-"Text.Booking.PassengerDetails.DoneAction" = "SIGUIENTE";
+"Text.Booking.PassengerDetails.SaveAction" = "SALVAR";
 "Text.Booking.PassengerDetails.Add" = "Añadir pasajero";
 
 /*Country Code Selection*/
@@ -514,6 +514,14 @@
 "EXEC" = "Ejecutivo";
 "TAXI" = "Taxi";
 "ELECTRIC" = "Eléctrico";
+
+/* Vehicle tags*/
+"Vehicle.Tag.Electric" = "Eléctrico";
+"Vehicle.Tag.Hybrid" = "Híbrido";
+"Vehicle.Tag.Wheelchair" = "Adaptado";
+"Vehicle.Tag.Childseat" = "Sillita bebe";
+"Vehicle.Tag.Taxi" = "Taxi";
+"Vehicle.Tag.Executive" = "Ejecutivo";
 
 /*Cancelled by Karhoo*/
 "Text.GenericTripStatus.CancelledByKarhoo" = "Cancelado por Karhoo";

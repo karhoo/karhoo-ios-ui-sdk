@@ -76,7 +76,7 @@ final class RideInfoView: UIView {
         ridePriceType.translatesAutoresizingMaskIntoConstraints = false
         ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
         ridePriceType.setTitleColor(KarhooUI.colors.infoColor, for: .normal)
-        ridePriceType.titleLabel?.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
+        ridePriceType.titleLabel?.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         ridePriceType.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
         
         return ridePriceType
@@ -136,7 +136,7 @@ final class RideInfoView: UIView {
                                  trailing: trailingAnchor,
                                  paddingTop: 10.0,
                                  paddingLeft: 10.0,
-                                 paddingBottom: 10.0)
+                                 paddingBottom: 15.0)
             
             [scheduleMainValue.leadingAnchor.constraint(equalTo: scheduleCaption.leadingAnchor),
              scheduleMainValue.topAnchor.constraint(equalTo: scheduleCaption.bottomAnchor, constant: 5.0),

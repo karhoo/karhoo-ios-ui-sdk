@@ -125,7 +125,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         learnMoreStackView.translatesAutoresizingMaskIntoConstraints = false
         learnMoreStackView.axis = .horizontal
         learnMoreStackView.spacing = 8
-        learnMoreStackView.distribution = .equalSpacing
+        learnMoreStackView.distribution = .fillEqually
         return learnMoreStackView
     }()
     
