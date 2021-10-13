@@ -89,8 +89,12 @@ extension FormBookingRequestViewController: RevealMoreButtonActions {
 
 extension FormBookingRequestViewController: InfoButtonActions {
     func infoButtonPressed() {
-        rideInfoStackView.addArrangedSubview(farePriceInfoView)
-        farePriceInfoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
+        if farePriceInfoView.isDescendant(of: rideInfoStackView) {
+            farePriceInfoView.isHidden.toggle()
+        } else {
+            rideInfoStackView.addArrangedSubview(farePriceInfoView)
+            farePriceInfoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
+        }
     }
 }
 

@@ -422,7 +422,7 @@
 "Text.Booking.PassengerDetails.LastName" = "Last Name";
 "Text.Booking.PassengerDetails.Email" = "Email";
 "Text.Booking.PassengerDetails.MobilePhone" = "Mobile Phone Number";
-"Text.Booking.PassengerDetails.DoneAction" = "NEXT";
+"Text.Booking.PassengerDetails.SaveAction" = "SAVE";
 "Text.Booking.PassengerDetails.Add" = "Add Passenger";
 
 /*Country Code Selection*/
@@ -483,6 +483,14 @@
 "EXEC" = "Exec";
 "TAXI" = "Taxi";
 "ELECTRIC" = "Electric";
+
+/* Vehicle tags*/
+"Vehicle.Tag.Electric" = "Electric";
+"Vehicle.Tag.Hybrid" = "Hybrid";
+"Vehicle.Tag.Wheelchair" = "Wheelchair";
+"Vehicle.Tag.Childseat" = "Child-seat";
+"Vehicle.Tag.Taxi" = "Taxi";
+"Vehicle.Tag.Executive" = "Executive";
 
 /*Cancelled by Karhoo*/
 "Text.GenericTripStatus.CancelledByKarhoo" = "Cancelled by Karhoo";

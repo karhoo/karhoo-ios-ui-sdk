@@ -142,7 +142,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         button.anchor(height: doneButtonHeight)
         button.backgroundColor = KarhooUI.colors.secondary
         button.setTitleColor(UIColor.white, for: .normal)
-        button.setTitle(UITexts.PassengerDetails.doneAction.uppercased(), for: .normal)
+        button.setTitle(UITexts.PassengerDetails.saveAction.uppercased(), for: .normal)
         button.titleLabel?.font = KarhooUI.fonts.subtitleBold()
         button.layer.cornerRadius = 8.0
         button.layer.masksToBounds = true
@@ -178,7 +178,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         view.addSubview(backButton)
         backButton.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,
-                          paddingTop: standardSpacing,
+                          paddingTop: 15.0,
                           width: standardButtonSize * 2,
                           height: standardButtonSize * 2)
         

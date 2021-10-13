@@ -76,7 +76,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         let passengerDetailsSubtitleLabel = UILabel()
         passengerDetailsSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsSubtitleLabel.accessibilityIdentifier = KHAddPassengerDetailsViewID.subtitle
-        passengerDetailsSubtitleLabel.textColor = KarhooUI.colors.primaryTextColor
+        passengerDetailsSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerDetailsSubtitleLabel.textAlignment = .center
         passengerDetailsSubtitleLabel.text = UITexts.Booking.guestCheckoutPassengerDetailsTitle
         passengerDetailsSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
