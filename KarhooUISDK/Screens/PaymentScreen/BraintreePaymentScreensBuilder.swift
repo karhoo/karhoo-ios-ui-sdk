@@ -26,7 +26,7 @@ final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
             } else if result?.isCancelled == true {
                 paymentMethodAdded?(.cancelled(byUser: true))
             } else {
-                let nonce = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: result!.paymentDescription)
+                let nonce = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: String(result!.paymentDescription.suffix(2)))
                 paymentMethodAdded?(ScreenResult.completed(result: nonce))
             }
         }) else {
