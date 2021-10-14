@@ -24,7 +24,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     private var presenter: KarhooAddPassengerDetailsPresenter?
     var actions: AddPassengerDetailsViewActions?
     private var dotBorderLayer: CAShapeLayer!
-    private var hasDetails: Bool = false
+    private var hasValidDetails: Bool = false
     
     private lazy var passengerDetailsContainer: UIView = {
         let passengerDetailsView = UIView()
@@ -96,7 +96,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        if !hasDetails && dotBorderLayer == nil {
+        if !hasValidDetails && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
             dotBorderLayer.strokeColor = KarhooUI.colors.darkGrey.cgColor
             dotBorderLayer.lineDashPattern = [4, 4]
@@ -166,7 +166,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     }
     
     func validDetails() -> Bool {
-        return hasDetails
+        return hasValidDetails
     }
     
     func showError() {
@@ -193,7 +193,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     func updateViewState() {
         layer.borderWidth = 1.0
         layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
-        hasDetails = true
+        hasValidDetails = true
         
         setNeedsDisplay()
     }
@@ -201,7 +201,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
      func resetViewState() {
         layer.borderWidth = 0.0
         layer.borderColor = UIColor.clear.cgColor
-        hasDetails = false
+        hasValidDetails = false
         passengerDetailsTitle.text = UITexts.PassengerDetails.title
         passengerDetailsSubtitle.text = UITexts.PassengerDetails.add
         
