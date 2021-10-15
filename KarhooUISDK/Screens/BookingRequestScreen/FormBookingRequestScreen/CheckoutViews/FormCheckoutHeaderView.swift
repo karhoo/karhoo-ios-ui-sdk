@@ -74,7 +74,7 @@ final class FormCheckoutHeaderView: UIView {
         return logoLoadingImageView
     }()
     
-    private lazy var name: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
@@ -85,7 +85,7 @@ final class FormCheckoutHeaderView: UIView {
         return name
     }()
     
-    private lazy var carType: UILabel = {
+    private lazy var carTypeLabel: UILabel = {
         let carType = UILabel()
         carType.translatesAutoresizingMaskIntoConstraints = false
         carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
@@ -123,8 +123,8 @@ final class FormCheckoutHeaderView: UIView {
         vehicleCapacityView = VehicleCapacityView()
         topStackView.addArrangedSubview(vehicleCapacityView)
         
-        rideDetailStackView.addArrangedSubview(name)
-        rideDetailStackView.addArrangedSubview(carType)
+        rideDetailStackView.addArrangedSubview(nameLabel)
+        rideDetailStackView.addArrangedSubview(carTypeLabel)
         rideDetailStackView.addArrangedSubview(fleetCapabilitiesStackView)
     }
     
@@ -167,23 +167,23 @@ final class FormCheckoutHeaderView: UIView {
     }
     
     private func setupView(for vehicleTag: VehicleTag) {
-        let image = UIImageView()
-        image.image = vehicleTag.image
-        image.contentMode = .scaleAspectFit
-        image.anchor(width: 12.0, height: 12.0)
-        image.tintColor = KarhooUI.colors.guestCheckoutLightGrey
+        let imageView = UIImageView()
+        imageView.image = vehicleTag.image
+        imageView.contentMode = .scaleAspectFit
+        imageView.anchor(width: 12.0, height: 12.0)
+        imageView.tintColor = KarhooUI.colors.guestCheckoutLightGrey
         
         let label = UILabel()
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         label.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        fleetCapabilitiesStackView.addArrangedSubview(image)
+        fleetCapabilitiesStackView.addArrangedSubview(imageView)
         fleetCapabilitiesStackView.addArrangedSubview(label)
     }
     
     func set(viewModel: QuoteViewModel) {
-        name.text = viewModel.fleetName
-        carType.text = viewModel.carType
+        nameLabel.text = viewModel.fleetName
+        carTypeLabel.text = viewModel.carType
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
