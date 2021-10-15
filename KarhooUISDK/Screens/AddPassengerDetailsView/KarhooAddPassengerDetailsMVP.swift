@@ -26,5 +26,6 @@ protocol AddPassengerView: BaseView {
     func showError()
     func updateViewState()
     func resetViewState()
+    func resetViewBorder()
     func updatePassengerSummary(details: PassengerDetails?)
 }

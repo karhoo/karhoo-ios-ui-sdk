@@ -191,20 +191,28 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     }
     
     func updateViewState() {
-        layer.borderWidth = 1.0
-        layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
+        setFullBorder(true)
         hasValidDetails = true
-        
         setNeedsDisplay()
     }
     
      func resetViewState() {
-        layer.borderWidth = 0.0
-        layer.borderColor = UIColor.clear.cgColor
+        setFullBorder(false)
         hasValidDetails = false
         passengerDetailsTitle.text = UITexts.PassengerDetails.title
         passengerDetailsSubtitle.text = UITexts.PassengerDetails.add
         
         setNeedsDisplay()
+    }
+    
+    func resetViewBorder() {
+        setFullBorder(false)
+        hasValidDetails = false
+        setNeedsDisplay()
+    }
+    
+    private func setFullBorder(_ shouldSet: Bool) {
+        layer.borderWidth = shouldSet ? 1.0 : 0.0
+        layer.borderColor = shouldSet ? KarhooUI.colors.guestCheckoutGrey.cgColor : UIColor.clear.cgColor
     }
 }
