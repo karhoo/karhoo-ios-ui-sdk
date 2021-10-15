@@ -10,7 +10,6 @@ import KarhooSDK
 
 public struct KHFormCheckoutHeaderViewID {
     public static let topInfoContainer = "ride_top_info_container"
-    public static let view = "guest_checkout_header_view"
     public static let logo = "logo_image"
     public static let rideDetailsContainer = "ride_details_stack_view"
     public static let name = "name_label"
@@ -107,6 +106,8 @@ final class FormCheckoutHeaderView: UIStackView {
         alignment = .center
         distribution = .fillProportionally
         spacing = 10
+        
+        // TODO: Move this line along with the directionalLayoutMargins line to CheckoutViewController
         isLayoutMarginsRelativeArrangement = true
         
         addArrangedSubview(logoLoadingImageView)
@@ -124,6 +125,9 @@ final class FormCheckoutHeaderView: UIStackView {
             logoLoadingImageView.anchor(width: logoSize,
                                         height: logoSize)
             
+            // TODO: move the padding to the CheckoutViewController when applying the standardization to the CheckoutViewController
+            // The controls inside the header view should be glued to the edges. The parent decides how much margin to add to it
+            // This is a good practice to make the header view reusable in other contexts that may not need the values set below.
             directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
             
             didSetupConstraints = true
