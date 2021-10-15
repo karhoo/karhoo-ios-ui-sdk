@@ -27,19 +27,44 @@ public struct KHFormCheckoutHeaderViewID {
     public static let cancellationInfo = "cancellationInfo_label"
 }
 
-final class FormCheckoutHeaderView: UIView {
+final class FormCheckoutHeaderView: UIStackView {
+    //MARK: - UI
+    private lazy var logoLoadingImageView: LoadingImageView = {
+        let imageView = LoadingImageView()
+        imageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
+        imageView.layer.cornerRadius = 5.0
+        imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
     
-    private var didSetupConstraints: Bool = false
+    private lazy var rideDetailStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
+        stackView.axis = .vertical
+        stackView.spacing = 4.0
+        return stackView
+    }()
     
-    private var topStackView: UIStackView = {
-        let topStackView = UIStackView()
-        topStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
-        topStackView.translatesAutoresizingMaskIntoConstraints = false
-        topStackView.alignment = .center
-        topStackView.distribution = .fillProportionally
-        topStackView.spacing = 10
-        
-        return topStackView
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
+        label.textColor = KarhooUI.colors.infoColor
+        label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var carTypeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
+        label.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
+        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        return label
     }()
     
     private var fleetCapabilitiesStackView: UIStackView = {
@@ -49,54 +74,18 @@ final class FormCheckoutHeaderView: UIView {
         fleetCapabilitiesStackView.alignment = .leading
         fleetCapabilitiesStackView.distribution = .fillProportionally
         fleetCapabilitiesStackView.spacing = 5
-        
         return fleetCapabilitiesStackView
     }()
     
-    private lazy var rideDetailStackView: UIStackView = {
-        let rideDetailStackView = UIStackView()
-        rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
-        rideDetailStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
-        rideDetailStackView.axis = .vertical
-        rideDetailStackView.spacing = 4.0
-        
-        return rideDetailStackView
+    private lazy var vehicleCapacityView: VehicleCapacityView = {
+        let view =  VehicleCapacityView()
+        return view
     }()
     
-    private lazy var logoLoadingImageView: LoadingImageView = {
-        let logoLoadingImageView = LoadingImageView()
-        logoLoadingImageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
-        logoLoadingImageView.layer.cornerRadius = 5.0
-        logoLoadingImageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-        logoLoadingImageView.layer.borderWidth = 0.5
-        logoLoadingImageView.layer.masksToBounds = true
-        
-        return logoLoadingImageView
-    }()
+    //MARK: - Variables
+    private var didSetupConstraints: Bool = false
     
-    private lazy var nameLabel: UILabel = {
-        let name = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
-        name.textColor = KarhooUI.colors.infoColor
-        name.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
-        name.numberOfLines = 0
-        
-        return name
-    }()
-    
-    private lazy var carTypeLabel: UILabel = {
-        let carType = UILabel()
-        carType.translatesAutoresizingMaskIntoConstraints = false
-        carType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
-        carType.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
-        carType.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        
-        return carType
-    }()
-    
-    private var vehicleCapacityView: VehicleCapacityView!
-    
+    //MARK: - Init
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -107,21 +96,22 @@ final class FormCheckoutHeaderView: UIView {
         self.set(viewModel: viewModel)
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Setup
     private func setUpView() {
+        accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
         translatesAutoresizingMaskIntoConstraints = false
-        accessibilityIdentifier = KHFormCheckoutHeaderViewID.view
+        alignment = .center
+        distribution = .fillProportionally
+        spacing = 10
+        isLayoutMarginsRelativeArrangement = true
         
-        addSubview(topStackView)
-        
-        topStackView.addArrangedSubview(logoLoadingImageView)
-        topStackView.addArrangedSubview(rideDetailStackView)
-        
-        vehicleCapacityView = VehicleCapacityView()
-        topStackView.addArrangedSubview(vehicleCapacityView)
+        addArrangedSubview(logoLoadingImageView)
+        addArrangedSubview(rideDetailStackView)
+        addArrangedSubview(vehicleCapacityView)
         
         rideDetailStackView.addArrangedSubview(nameLabel)
         rideDetailStackView.addArrangedSubview(carTypeLabel)
@@ -134,34 +124,39 @@ final class FormCheckoutHeaderView: UIView {
             logoLoadingImageView.anchor(width: logoSize,
                                         height: logoSize)
             
-            topStackView.anchor(top: topAnchor,
-                                leading: leadingAnchor,
-                                trailing: trailingAnchor,
-                                paddingTop: 20.0,
-                                paddingLeft: 10.0,
-                                paddingRight: 10.0)
+            directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
+            
             didSetupConstraints = true
         }
         
         super.updateConstraints()
     }
     
+    func set(viewModel: QuoteViewModel) {
+        nameLabel.text = viewModel.fleetName
+        carTypeLabel.text = viewModel.carType
+        logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
+                                  placeholderImageName: "supplier_logo_placeholder")
+        logoLoadingImageView.setStandardBorder()
+        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
+        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+        vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
+        setVehicleTags(viewModel: viewModel)
+        
+        updateConstraints()
+    }
+    
     private func setVehicleTags(viewModel: QuoteViewModel) {
-        if viewModel.vehicleTags.count >= 2 {
-            let firstTwoCarTags = viewModel.vehicleTags.prefix(2)
-            firstTwoCarTags.forEach {
-                setupView(for: $0)
-            }
-            if viewModel.vehicleTags.count > 2 {
+        if viewModel.vehicleTags.count > 0 {
+            let firstTag = viewModel.vehicleTags[0]
+            setupView(for: firstTag)
+            
+            if viewModel.vehicleTags.count > 1 {
                 let label = UILabel()
-                label.text = "+\(viewModel.vehicleTags.count - 2)"
+                label.text = "+\(viewModel.vehicleTags.count - 1)"
                 label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
                 label.textColor = KarhooUI.colors.darkGrey
                 fleetCapabilitiesStackView.addArrangedSubview(label)
-            }
-        } else {
-            viewModel.vehicleTags.forEach {
-                setupView(for: $0)
             }
         }
     }
@@ -181,20 +176,7 @@ final class FormCheckoutHeaderView: UIView {
         fleetCapabilitiesStackView.addArrangedSubview(label)
     }
     
-    func set(viewModel: QuoteViewModel) {
-        nameLabel.text = viewModel.fleetName
-        carTypeLabel.text = viewModel.carType
-        logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
-                                  placeholderImageName: "supplier_logo_placeholder")
-        logoLoadingImageView.setStandardBorder()
-        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
-        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
-        vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
-        setVehicleTags(viewModel: viewModel)
-        
-        updateConstraints()
-    }
-    
+    //MARK: - Utils
     func hideVehicleCapacityView() {
         vehicleCapacityView.alpha = 0.0
     }
