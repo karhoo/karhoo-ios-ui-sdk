@@ -176,11 +176,10 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     
     private func setUpView() {
         view.addSubview(backButton)
-        backButton.anchor(top: view.topAnchor,
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           leading: view.leadingAnchor,
                           paddingTop: 15.0,
-                          width: standardButtonSize * 2,
-                          height: standardButtonSize * 2)
+                          width: standardButtonSize * 2)
         
         view.addSubview(doneButton)
         doneButton.anchor(leading: view.leadingAnchor,
@@ -194,6 +193,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         view.addSubview(scrollView)
         scrollView.anchor(top: backButton.bottomAnchor,
                           bottom: doneButton.topAnchor,
+                          paddingTop: standardSpacing,
                           paddingBottom: standardSpacing)
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
