@@ -422,6 +422,7 @@
 		6B5D607F26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D607E26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift */; };
 		6B5E25F326D672090017BFB3 /* PassengerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */; };
 		6B5E25F526D67DCA0017BFB3 /* PassengerDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E25F426D67DCA0017BFB3 /* PassengerDetailsPresenter.swift */; };
+		6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */; };
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
 		6BE3695426EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */; };
 		6BE3695626EB352700F0FE86 /* CountryCodeSelectionMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */; };
@@ -902,6 +903,7 @@
 		6B5D607E26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsPresenterSpec.swift; sourceTree = "<group>"; };
 		6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsViewController.swift; sourceTree = "<group>"; };
 		6B5E25F426D67DCA0017BFB3 /* PassengerDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsPresenter.swift; sourceTree = "<group>"; };
+		6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassengerDetails+Extensions.swift"; sourceTree = "<group>"; };
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
 		6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionPresenter.swift; sourceTree = "<group>"; };
 		6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionMVP.swift; sourceTree = "<group>"; };
@@ -1565,6 +1567,7 @@
 				0991070521B83AF700BD7E6F /* LocationDetailsExt.swift */,
 				4070213B23D9E19400F82B6A /* UIView+Extensions.swift */,
 				4030C8F5241B980E0034A944 /* UIColor+extension.swift */,
+				6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */,
 			);
 			path = KarhooSDKExtensions;
 			sourceTree = "<group>";
@@ -3716,6 +3719,7 @@
 				5CBA2A8024F5D8CC0091D783 /* TimePriceMVP.swift in Sources */,
 				4010B0DC245C5DD900E7B0F1 /* KarhooInputViewState.swift in Sources */,
 				FC435F372211B88900FB6BB5 /* CancelRideBehaviour.swift in Sources */,
+				6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */,
 				407EC7A822CF564E00F24CFC /* NibStrings.swift in Sources */,
 				0991068121B8291A00BD7E6F /* AddressSearchProvider.swift in Sources */,
 				FC705B15221321650001036E /* PopupDialogScreenBuilder.swift in Sources */,

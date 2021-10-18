@@ -31,12 +31,14 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
     private func displayAvailablePassengerDetails() {
         view.updatePassengerSummary(details: details)
         
-        guard details != nil
-        else {
+        if details == nil {
             view.resetViewState()
-            return
         }
-        
-        view.updateViewState()
+        else if let details = details, !details.areValid {
+            view.resetViewBorder()
+        }
+        else {
+            view.updateViewState()
+        }
     }
 }

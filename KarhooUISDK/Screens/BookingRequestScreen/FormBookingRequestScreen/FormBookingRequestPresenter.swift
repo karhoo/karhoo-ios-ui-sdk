@@ -145,11 +145,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     
     private func arePassengerDetailsValid() -> Bool {
         guard let details = view?.getPassengerDetails(),
-              Utils.isValidName(name: details.firstName),
-              Utils.isValidName(name: details.lastName),
-              Utils.isValidEmail(email: details.email),
-              Utils.isValidPhoneNumber(number: details.phoneNumber),
-              !details.locale.isEmpty
+              details.areValid
         else {
             return false
         }
