@@ -9,7 +9,8 @@ import UIKit
 import KarhooSDK
 
 public struct KHFormCheckoutHeaderViewID {
-    public static let topInfoContainer = "ride_top_info_container"
+    public static let topContainer = "top_container"
+    public static let fleetInfoContainer = "fleet_info_container"
     public static let logo = "logo_image"
     public static let rideDetailsContainer = "ride_details_stack_view"
     public static let name = "name_label"
@@ -22,12 +23,33 @@ public struct KHFormCheckoutHeaderViewID {
     public static let ridePriceType = "ride_price_type_label"
     public static let ridePriceTypeIcon = "ride_price_type_icon"
     public static let carType = "car_type_label"
+    public static let capabilitiesContentView = "capabilities_content_view"
     public static let fleetCapabilities = "fleet_capabilties_stack_view"
     public static let cancellationInfo = "cancellationInfo_label"
+    public static let learnMoreButton = "learn_more_button"
+    public static let capabilitiesDetailsView = "capabilities_details_view"
 }
 
 final class FormCheckoutHeaderView: UIStackView {
     //MARK: - UI
+    private lazy var fleetInfoStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetInfoContainer
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    // Note: This view was added so thet the fleetInfoStackView could have it's children properly aligned on the vertical axis, yet not stretch the logoLoadingImageView to fit the height
+    // Because the image is loaded from a URL, and not from xcassets, it doesn't scale properly, so setting the content mode to .scaleAspectFit doesn't help
+    private lazy var logoContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var logoLoadingImageView: LoadingImageView = {
         let imageView = LoadingImageView()
         imageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
@@ -35,6 +57,8 @@ final class FormCheckoutHeaderView: UIStackView {
         imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         imageView.layer.borderWidth = 0.5
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -66,18 +90,39 @@ final class FormCheckoutHeaderView: UIStackView {
         return label
     }()
     
-    private var fleetCapabilitiesStackView: UIStackView = {
-        let fleetCapabilitiesStackView = UIStackView()
-        fleetCapabilitiesStackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetCapabilities
-        fleetCapabilitiesStackView.translatesAutoresizingMaskIntoConstraints = false
-        fleetCapabilitiesStackView.alignment = .leading
-        fleetCapabilitiesStackView.distribution = .fillProportionally
-        fleetCapabilitiesStackView.spacing = 5
-        return fleetCapabilitiesStackView
+    private var capabilitiesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetCapabilities
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    private lazy var capacityContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.capabilitiesContentView
+        return view
     }()
     
     private lazy var vehicleCapacityView: VehicleCapacityView = {
         let view =  VehicleCapacityView()
+        return view
+    }()
+    
+    private lazy var learnMoreButton: RevealMoreInfoButton = {
+        let button = RevealMoreInfoButton()
+        button.set(actions: self)
+        button.accessibilityIdentifier = KHFormCheckoutHeaderViewID.learnMoreButton
+        button.anchor(height: 44.0)
+        return button
+    }()
+
+    lazy var capacityDetailsView: MoreDetailsView = {
+        let view = MoreDetailsView()
+        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.capabilitiesDetailsView
         return view
     }()
     
@@ -101,34 +146,54 @@ final class FormCheckoutHeaderView: UIStackView {
     
     //MARK: - Setup
     private func setUpView() {
-        accessibilityIdentifier = KHFormCheckoutHeaderViewID.topInfoContainer
+        accessibilityIdentifier = KHFormCheckoutHeaderViewID.topContainer
         translatesAutoresizingMaskIntoConstraints = false
-        alignment = .center
-        distribution = .fillProportionally
+        alignment = .fill
+        distribution = .fill
+        axis = .vertical
         spacing = 10
         
         // TODO: Move this line along with the directionalLayoutMargins line to CheckoutViewController
         isLayoutMarginsRelativeArrangement = true
         
-        addArrangedSubview(logoLoadingImageView)
-        addArrangedSubview(rideDetailStackView)
-        addArrangedSubview(vehicleCapacityView)
+        addArrangedSubview(fleetInfoStackView)
+        fleetInfoStackView.addArrangedSubview(logoContentView)
+        fleetInfoStackView.addArrangedSubview(rideDetailStackView)
+        fleetInfoStackView.addArrangedSubview(capacityContentView)
+        
+        logoContentView.addSubview(logoLoadingImageView)
         
         rideDetailStackView.addArrangedSubview(nameLabel)
         rideDetailStackView.addArrangedSubview(carTypeLabel)
-        rideDetailStackView.addArrangedSubview(fleetCapabilitiesStackView)
+        rideDetailStackView.addArrangedSubview(capabilitiesStackView)
+        
+        capacityContentView.addSubview(vehicleCapacityView)
+        capacityContentView.addSubview(learnMoreButton)
+        
+        addArrangedSubview(capacityDetailsView)
+        learnLessPressed()
     }
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            let logoSize: CGFloat = 60.0
-            logoLoadingImageView.anchor(width: logoSize,
-                                        height: logoSize)
-            
             // TODO: move the padding to the CheckoutViewController when applying the standardization to the CheckoutViewController
             // The controls inside the header view should be glued to the edges. The parent decides how much margin to add to it
             // This is a good practice to make the header view reusable in other contexts that may not need the values set below.
-            directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10)
+            directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
+            
+            logoLoadingImageView.anchor(top: logoContentView.topAnchor, leading: logoContentView.leadingAnchor, trailing: logoContentView.trailingAnchor, width: 60.0, height: 60.0)
+            
+            
+            vehicleCapacityView.anchor(top: capacityContentView.topAnchor,
+                                              leading: capacityContentView.leadingAnchor,
+                                              trailing: capacityContentView.trailingAnchor)
+            
+            learnMoreButton.anchor( //top: carTypeLabel.bottomAnchor,
+                                   leading: capacityContentView.leadingAnchor,
+                                   bottom: capacityContentView.bottomAnchor,
+                                   trailing: capacityContentView.trailingAnchor)
+            
+            learnMoreButton.topAnchor.constraint(greaterThanOrEqualTo: vehicleCapacityView.bottomAnchor, constant: 5).isActive = true
             
             didSetupConstraints = true
         }
@@ -139,13 +204,16 @@ final class FormCheckoutHeaderView: UIStackView {
     func set(viewModel: QuoteViewModel) {
         nameLabel.text = viewModel.fleetName
         carTypeLabel.text = viewModel.carType
+        
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
+        
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
         setVehicleTags(viewModel: viewModel)
+        capacityDetailsView.set(viewModel: viewModel)
         
         updateConstraints()
     }
@@ -160,7 +228,7 @@ final class FormCheckoutHeaderView: UIStackView {
                 label.text = "+\(viewModel.vehicleTags.count - 1)"
                 label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
                 label.textColor = KarhooUI.colors.darkGrey
-                fleetCapabilitiesStackView.addArrangedSubview(label)
+                capabilitiesStackView.addArrangedSubview(label)
             }
         }
     }
@@ -176,16 +244,28 @@ final class FormCheckoutHeaderView: UIStackView {
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         label.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        fleetCapabilitiesStackView.addArrangedSubview(imageView)
-        fleetCapabilitiesStackView.addArrangedSubview(label)
+        capabilitiesStackView.addArrangedSubview(imageView)
+        capabilitiesStackView.addArrangedSubview(label)
+    }
+}
+
+extension FormCheckoutHeaderView: RevealMoreButtonActions {
+    func learnMorePressed() {
+        self.vehicleCapacityView.isHidden = true
+        self.capacityDetailsView.isHidden = false
+        self.capacityDetailsView.alpha = 0.0
+        UIView.animate(withDuration: 0.25) { [unowned self] in
+            self.capacityDetailsView.alpha = 1.0
+        }
     }
     
-    //MARK: - Utils
-    func hideVehicleCapacityView() {
-        vehicleCapacityView.alpha = 0.0
-    }
-    
-    func displayVehicleCapacityView() {
-        vehicleCapacityView.alpha = 1.0
+    func learnLessPressed() {
+        self.vehicleCapacityView.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.capacityDetailsView.alpha = 0.0
+            self.capacityDetailsView.isHidden = true
+        } completion: { _ in
+            
+        }
     }
 }
