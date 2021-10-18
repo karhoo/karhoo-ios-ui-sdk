@@ -94,8 +94,8 @@ final class FormCheckoutHeaderView: UIStackView {
         let stackView = UIStackView()
         stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetCapabilities
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
+        stackView.distribution = .fill
         stackView.spacing = 5
         return stackView
     }()
@@ -188,12 +188,16 @@ final class FormCheckoutHeaderView: UIStackView {
                                               leading: capacityContentView.leadingAnchor,
                                               trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.anchor( //top: carTypeLabel.bottomAnchor,
-                                   leading: capacityContentView.leadingAnchor,
+            learnMoreButton.anchor(leading: capacityContentView.leadingAnchor,
                                    bottom: capacityContentView.bottomAnchor,
                                    trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.topAnchor.constraint(greaterThanOrEqualTo: vehicleCapacityView.bottomAnchor, constant: 5).isActive = true
+            if capabilitiesStackView.subviews.count > 0 {
+                learnMoreButton.anchor(top: carTypeLabel.bottomAnchor)
+            }
+            else {
+                learnMoreButton.topAnchor.constraint(greaterThanOrEqualTo: vehicleCapacityView.bottomAnchor).isActive = true
+            }
             
             didSetupConstraints = true
         }
@@ -253,19 +257,16 @@ extension FormCheckoutHeaderView: RevealMoreButtonActions {
     func learnMorePressed() {
         self.vehicleCapacityView.isHidden = true
         self.capacityDetailsView.isHidden = false
-        self.capacityDetailsView.alpha = 0.0
-        UIView.animate(withDuration: 0.25) { [unowned self] in
+        UIView.animate(withDuration: 0.45) { [unowned self] in
             self.capacityDetailsView.alpha = 1.0
         }
     }
     
     func learnLessPressed() {
         self.vehicleCapacityView.isHidden = false
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.45) {
             self.capacityDetailsView.alpha = 0.0
             self.capacityDetailsView.isHidden = true
-        } completion: { _ in
-            
         }
     }
 }
