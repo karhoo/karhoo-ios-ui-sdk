@@ -18,8 +18,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     var passengerDetailsValid: Bool?
     var headerView: FormCheckoutHeaderView!
     
-    private let extraSmallSpacing = 8.0
-    private let standardButtonSize = 44.0
+    private let extraSmallSpacing: CGFloat = 8.0
+    private let standardButtonSize: CGFloat = 44.0
     
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
