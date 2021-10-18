@@ -224,8 +224,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
-        baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: poiDetailsInputText)
+        baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
         
         container.addSubview(footerView)
@@ -237,7 +237,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view.setNeedsUpdateConstraints()
         
         presenter.load(view: self)
-        commentsInputText.isHidden = presenter.isKarhooUser()
     }
     
     override func updateViewConstraints() {
