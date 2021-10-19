@@ -57,7 +57,7 @@ public enum UITexts {
         public static let thanks = "Text.Generic.Thanks".localized
         public static let show = "Text.Generic.Show".localized
         public static let hide = "Text.Generic.Hide".localized
-        public static var add = "Text.Generic.Add".localized
+        public static let add = "Text.Generic.Add".localized
         public static let change = "Text.Generic.Change".localized
         public static let submit = "Text.Generic.Submit".localized
         public static let etaLong = "Text.Generic.ETALong".localized
@@ -235,7 +235,7 @@ public enum UITexts {
     }
     
     public enum PassengerDetails {
-        public static let title = "Text.Booking.PassengerDetails.Title".localized
+        public static var title = "Text.Booking.PassengerDetails.Title".localized
         public static let subtitle = "Text.Booking.PassengerDetails.Subtitle".localized
         public static let firstName = "Text.Booking.PassengerDetails.FirstName".localized
         public static let lastName = "Text.Booking.PassengerDetails.LastName".localized
