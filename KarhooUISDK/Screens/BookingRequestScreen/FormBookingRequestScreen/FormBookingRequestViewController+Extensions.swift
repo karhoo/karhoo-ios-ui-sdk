@@ -65,28 +65,6 @@ extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     }
 }
 
-extension FormBookingRequestViewController: RevealMoreButtonActions {
-    func learnMorePressed() {
-        moreDetailsView.alpha = 0.0
-        moreDetailsStackView.addArrangedSubview(moreDetailsView)
-        moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
-                                    trailing: moreDetailsStackView.trailingAnchor)
-        moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
-        UIView.animate(withDuration: 0.25, animations: { [unowned self] in
-            self.headerView.hideVehicleCapacityView()
-            self.moreDetailsView.alpha = 1.0
-        })
-    }
-    
-    func learnLessPressed() {
-        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-            self.moreDetailsView.alpha = 0.0
-            self.moreDetailsView.removeFromSuperview()
-            self.headerView.displayVehicleCapacityView()
-        })
-    }
-}
-
 extension FormBookingRequestViewController: InfoButtonActions {
     func infoButtonPressed() {
         if farePriceInfoView.isDescendant(of: rideInfoStackView) {

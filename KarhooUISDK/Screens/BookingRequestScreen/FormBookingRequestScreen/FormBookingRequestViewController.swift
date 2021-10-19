@@ -100,37 +100,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return baseStackView
     }()
     
-    lazy var moreDetailsStackView: UIStackView = {
-        let moreDetailsStackView = UIStackView()
-        moreDetailsStackView.accessibilityIdentifier = "more_details_base_stack_view"
-        moreDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
-        moreDetailsStackView.axis = .vertical
-        moreDetailsStackView.spacing = 8
-        moreDetailsStackView.distribution = .fill
-        return moreDetailsStackView
-    }()
-    
-    lazy var moreDetailsView: MoreDetailsView = {
-        let view = MoreDetailsView()
-        return view
-    }()
-    
-    private var learnMoreStackView: UIStackView = {
-        let learnMoreStackView = UIStackView()
-        learnMoreStackView.accessibilityIdentifier = "learn_more_stack_view"
-        learnMoreStackView.translatesAutoresizingMaskIntoConstraints = false
-        learnMoreStackView.axis = .horizontal
-        learnMoreStackView.spacing = 8
-        learnMoreStackView.distribution = .fillEqually
-        return learnMoreStackView
-    }()
-    
-    private lazy var learnMoreButton: RevealMoreInfoButton = {
-        let button = RevealMoreInfoButton()
-        button.set(actions: self)
-        return button
-    }()
-    
     private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
@@ -216,11 +185,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
-        
-        baseStackView.addViewToStack(view: moreDetailsStackView)
-        moreDetailsStackView.addArrangedSubview(learnMoreStackView)
-        learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
-        learnMoreStackView.addArrangedSubview(learnMoreButton)
+        baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
@@ -247,6 +212,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         super.updateViewConstraints()
     }
     
+    // TODO: Children of stack views shouldn't be anchored to their parent.
+    // Set the directionalLayoutMargins of the base stack view for insets
+    // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -265,9 +233,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
         
-        moreDetailsStackView.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: 22.0, paddingRight: 22.0)
+        cancellationInfoLabel.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 20.0, paddingLeft: 20.0, paddingBottom: 20.0, paddingRight: 20.0)
         
-        rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
+        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
         passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
@@ -348,7 +316,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
-        moreDetailsView.set(viewModel: viewModel)
         farePriceInfoView.setInfoText(for: quote.quoteType)
     }
     
