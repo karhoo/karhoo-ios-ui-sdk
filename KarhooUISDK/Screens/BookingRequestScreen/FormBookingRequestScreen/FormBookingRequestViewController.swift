@@ -190,11 +190,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
-        
-//        baseStackView.addViewToStack(view: moreDetailsStackView)
-//        moreDetailsStackView.addArrangedSubview(learnMoreStackView)
-//        learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
-//        learnMoreStackView.addArrangedSubview(learnMoreButton)
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
