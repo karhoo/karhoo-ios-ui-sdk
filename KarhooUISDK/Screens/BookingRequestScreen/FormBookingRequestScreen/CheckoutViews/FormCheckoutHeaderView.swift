@@ -11,9 +11,10 @@ import KarhooSDK
 public struct KHFormCheckoutHeaderViewID {
     public static let topContainer = "top_container"
     public static let fleetInfoContainer = "fleet_info_container"
-    public static let logo = "logo_image"
+    public static let logoContainer = "logo_container"
+    public static let logoImageView = "logo_image_view"
     public static let rideDetailsContainer = "ride_details_stack_view"
-    public static let name = "name_label"
+    public static let nameLabel = "name_label"
     public static let rideInfoView = "ride_info_view"
     public static let etaTitle = "eta_title_label"
     public static let etaText = "eta_text_label"
@@ -28,6 +29,7 @@ public struct KHFormCheckoutHeaderViewID {
     public static let cancellationInfo = "cancellationInfo_label"
     public static let learnMoreButton = "learn_more_button"
     public static let capabilitiesDetailsView = "capabilities_details_view"
+    public static let vehicleCapacityView = "vehicle_capacity_view"
 }
 
 final class FormCheckoutHeaderView: UIStackView {
@@ -47,12 +49,13 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var logoContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logoContainer
         return view
     }()
     
     private lazy var logoLoadingImageView: LoadingImageView = {
         let imageView = LoadingImageView()
-        imageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logo
+        imageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
         imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         imageView.layer.borderWidth = 0.5
@@ -74,7 +77,7 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.name
+        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.nameLabel
         label.textColor = KarhooUI.colors.infoColor
         label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         label.numberOfLines = 0
@@ -109,6 +112,7 @@ final class FormCheckoutHeaderView: UIStackView {
     
     private lazy var vehicleCapacityView: VehicleCapacityView = {
         let view =  VehicleCapacityView()
+        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.vehicleCapacityView
         return view
     }()
     
