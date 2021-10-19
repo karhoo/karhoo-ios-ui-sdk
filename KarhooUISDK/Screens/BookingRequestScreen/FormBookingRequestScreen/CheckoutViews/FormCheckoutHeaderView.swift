@@ -257,6 +257,7 @@ final class FormCheckoutHeaderView: UIStackView {
     }
 }
 
+// MARK: - RevealMoreButtonActions
 extension FormCheckoutHeaderView: RevealMoreButtonActions {
     func learnMorePressed() {
         self.vehicleCapacityView.isHidden = true
