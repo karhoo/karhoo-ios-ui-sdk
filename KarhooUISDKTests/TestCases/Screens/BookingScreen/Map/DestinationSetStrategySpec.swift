@@ -107,7 +107,6 @@ class DestinationSetStrategySpec: XCTestCase {
 
         var details = TestUtil.getRandomBookingDetails()
         testObject.changed(bookingDetails: details)
-
         mockMap = MockKarhooMapView() // Start with empty
         testObject.load(map: mockMap)
 

@@ -23,10 +23,6 @@ extension FormBookingRequestViewController: BookingButtonActions {
     func requestPressed() {
         presenter.bookTripPressed()
     }
-    
-    func addFlightDetailsPressed() {
-        presenter.didPressAddFlightDetails()
-    }
 }
 
 extension FormBookingRequestViewController: PassengerDetailsActions {
@@ -37,16 +33,11 @@ extension FormBookingRequestViewController: PassengerDetailsActions {
 }
 
 extension FormBookingRequestViewController: KarhooInputViewDelegate {
-    func didBecomeInactive(identifier: String) {
-        enableBookingButton()
-    }
+    func didBecomeInactive(identifier: String) {}
     
-    func didBecomeActive(identifier: String) {
-        enableBookingButton()
-    }
+    func didBecomeActive(identifier: String) {}
     
-    func didChangeCharacterInSet(identifier: String) {
-    }
+    func didChangeCharacterInSet(identifier: String) {}
     
     private func enableBookingButton() {
         if passengerDetailsValid != true {
@@ -74,32 +65,14 @@ extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     }
 }
 
-extension FormBookingRequestViewController: RevealMoreButtonActions {
-    func learnMorePressed() {
-        moreDetailsView.alpha = 0.0
-        moreDetailsStackView.addArrangedSubview(moreDetailsView)
-        moreDetailsView.anchor(leading: moreDetailsStackView.leadingAnchor,
-                                    trailing: moreDetailsStackView.trailingAnchor)
-        moreDetailsView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
-        UIView.animate(withDuration: 0.25, animations: { [unowned self] in
-            self.headerView.hideVehicleCapacityView()
-            self.moreDetailsView.alpha = 1.0
-        })
-    }
-    
-    func learnLessPressed() {
-        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-            self.moreDetailsView.alpha = 0.0
-            self.moreDetailsView.removeFromSuperview()
-            self.headerView.displayVehicleCapacityView()
-        })
-    }
-}
-
 extension FormBookingRequestViewController: InfoButtonActions {
     func infoButtonPressed() {
-        rideInfoStackView.addArrangedSubview(farePriceInfoView)
-        farePriceInfoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
+        if farePriceInfoView.isDescendant(of: rideInfoStackView) {
+            farePriceInfoView.isHidden.toggle()
+        } else {
+            rideInfoStackView.addArrangedSubview(farePriceInfoView)
+            farePriceInfoView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
+        }
     }
 }
 

@@ -6,15 +6,15 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
-# suppress error of duplocate uuids on pod install: https://github.com/ivpusic/react-native-image-crop-picker/issues/680
+# suppress error of duplicate uuids on pod install: https://github.com/ivpusic/react-native-image-crop-picker/issues/680
 install! 'cocoapods',
          :deterministic_uuids => false
 
 def common_pods
   pod 'Adyen', '3.7.0'
-  #pod 'KarhooSDK', '1.5.2'
+  pod 'KarhooSDK', '1.5.3'
   #pod 'KarhooSDK', :path => '../karhoo-ios-sdk'
-  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+  #pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
 end
 
 target 'Client' do

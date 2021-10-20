@@ -24,8 +24,8 @@ You can use [CocoaPods](http://cocoapods.org/) to install `KarhooUISDK` by addin
 ```ruby
 
 use_frameworks!
-pod 'KarhooSDK', '1.5.2'
-pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.6.2'
+pod 'KarhooSDK', '1.5.3'
+pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.6.4'
 ```
 
 then import `KarhooUISDK` wherever you want to access Karhoo services

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension UIViewController {
+public extension UIViewController {
     func forceLightMode() {
         if #available(iOS 13.0, *) {
             // Always adopt a light interface style.
@@ -17,7 +17,7 @@ extension UIViewController {
     }
 }
 
-extension UIAlertController {
+public extension UIAlertController {
     static func create(title: String?, message: String?, preferredStyle: UIAlertController.Style) -> UIAlertController
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)

@@ -50,7 +50,7 @@ final public class KarhooAddCardView: UIView, PaymentView {
         let passengerPaymentSubtitleLabel = UILabel()
         passengerPaymentSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentSubtitleLabel.accessibilityIdentifier = KHAddCardViewID.subtitle
-        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.primaryTextColor
+        passengerPaymentSubtitleLabel.textColor = KarhooUI.colors.accent
         passengerPaymentSubtitleLabel.textAlignment = .center
         passengerPaymentSubtitleLabel.text = UITexts.Payment.addPaymentMethod
         passengerPaymentSubtitleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 10.0)
@@ -159,7 +159,7 @@ final public class KarhooAddCardView: UIView, PaymentView {
     }
     
     func set(nonce: Nonce) {
-        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour.suffix(4)
+        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour
         passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(nonce.cardType)
 

@@ -15,7 +15,6 @@ public protocol ScreenBuilders {
     var ridesScreenBuilder: RidesListScreenBuilder { get }
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
-    var flightDetailsScreenBuilder: FlightDetailsScreenBuilder { get }
     var tripScreenBuilder: TripScreenBuilder { get }
     var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
 }
@@ -90,10 +89,6 @@ public extension ScreenBuilders {
 
     var ridesScreenBuilder: RidesListScreenBuilder {
         return RidesListViewController.KarhooRidesListScreenBuilder()
-    }
-
-    var flightDetailsScreenBuilder: FlightDetailsScreenBuilder {
-        return FlightDetailsViewController.KarhooFlightDetailsScreenBuilder()
     }
 
     var tripScreenBuilder: TripScreenBuilder {

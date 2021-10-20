@@ -17,7 +17,20 @@ enum VehicleTag: String {
     }
     
     var title: String {
-        return self.rawValue.firstLetterUppercased()
+        switch self {
+        case .electric:
+            return UITexts.VehicleTags.electric
+        case .hybrid:
+            return UITexts.VehicleTags.hybrid
+        case .wheelchair:
+            return UITexts.VehicleTags.wheelchair
+        case .childSeat:
+            return UITexts.VehicleTags.childseat
+        case .taxi:
+            return UITexts.VehicleTags.taxi
+        case .executive:
+            return UITexts.VehicleTags.executive
+        }
     }
     
     var image: UIImage {

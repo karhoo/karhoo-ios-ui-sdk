@@ -18,6 +18,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     var passengerDetailsValid: Bool?
     var headerView: FormCheckoutHeaderView!
     
+    private let extraSmallSpacing: CGFloat = 8.0
+    private let standardButtonSize: CGFloat = 44.0
+    
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
         footerStack.translatesAutoresizingMaskIntoConstraints = false
@@ -65,25 +68,18 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }()
 
     private lazy var backButton: UIButton = {
-        let backButton = UIButton(type: .custom)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.accessibilityIdentifier = "back_button"
-        backButton.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.tintColor = KarhooUI.colors.darkGrey
-        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        backButton.imageView?.contentMode = .scaleAspectFit
-        return backButton
-    }()
-    
-    private lazy var backTitleButton: UIButton = {
-        let backTitleButton = UIButton()
-        backTitleButton.translatesAutoresizingMaskIntoConstraints = false
-        backTitleButton.accessibilityIdentifier = "back_title_button"
-        backTitleButton.setTitle(UITexts.Generic.back, for: .normal)
-        backTitleButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
-        backTitleButton.setTitleColor(KarhooUI.colors.primaryTextColor, for: .normal)
-        backTitleButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        return backTitleButton
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
+        button.tintColor = KarhooUI.colors.darkGrey
+        button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.setTitle(UITexts.Generic.back, for: .normal)
+        button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: extraSmallSpacing, bottom: 0, right: 0)
+        button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        return button
     }()
     
     private lazy var container: UIView = {
@@ -102,37 +98,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         baseStackView.accessibilityIdentifier = "base_stack_view"
         baseStackView.viewSpacing(15.0)
         return baseStackView
-    }()
-    
-    lazy var moreDetailsStackView: UIStackView = {
-        let moreDetailsStackView = UIStackView()
-        moreDetailsStackView.accessibilityIdentifier = "more_details_base_stack_view"
-        moreDetailsStackView.translatesAutoresizingMaskIntoConstraints = false
-        moreDetailsStackView.axis = .vertical
-        moreDetailsStackView.spacing = 8
-        moreDetailsStackView.distribution = .fill
-        return moreDetailsStackView
-    }()
-    
-    lazy var moreDetailsView: MoreDetailsView = {
-        let view = MoreDetailsView()
-        return view
-    }()
-    
-    private var learnMoreStackView: UIStackView = {
-        let learnMoreStackView = UIStackView()
-        learnMoreStackView.accessibilityIdentifier = "learn_more_stack_view"
-        learnMoreStackView.translatesAutoresizingMaskIntoConstraints = false
-        learnMoreStackView.axis = .horizontal
-        learnMoreStackView.spacing = 8
-        learnMoreStackView.distribution = .equalSpacing
-        return learnMoreStackView
-    }()
-    
-    private lazy var learnMoreButton: RevealMoreInfoButton = {
-        let button = RevealMoreInfoButton()
-        button.set(actions: self)
-        return button
     }()
     
     private var cancellationInfoLabel: UILabel = {
@@ -216,21 +181,16 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private func setUpView() {
         container.addSubview(backButton)
-        container.addSubview(backTitleButton)
         container.addSubview(baseStackView)
         
         headerView = FormCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
-        
-        baseStackView.addViewToStack(view: moreDetailsStackView)
-        moreDetailsStackView.addArrangedSubview(learnMoreStackView)
-        learnMoreStackView.addArrangedSubview(cancellationInfoLabel)
-        learnMoreStackView.addArrangedSubview(learnMoreButton)
+        baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
-        baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: poiDetailsInputText)
+        baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
         
         container.addSubview(footerView)
@@ -242,7 +202,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         view.setNeedsUpdateConstraints()
         
         presenter.load(view: self)
-        commentsInputText.isHidden = presenter.isKarhooUser()
     }
     
     override func updateViewConstraints() {
@@ -253,13 +212,18 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         super.updateViewConstraints()
     }
     
+    // TODO: Children of stack views shouldn't be anchored to their parent.
+    // Set the directionalLayoutMargins of the base stack view for insets
+    // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
-        backButton.anchor(top: container.topAnchor, leading: container.leadingAnchor, paddingTop: view.safeAreaInsets.top, paddingLeft: 20.0)
-        backTitleButton.centerY(inView: backButton)
-        backTitleButton.anchor(top: backButton.topAnchor, leading: backButton.trailingAnchor, paddingRight: 10.0)
+        backButton.anchor(top: container.topAnchor,
+                          leading: container.leadingAnchor,
+                          paddingTop: view.safeAreaInsets.top + 15.0,
+                          paddingBottom: 15.0,
+                          width: standardButtonSize * 2)
         
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
@@ -269,9 +233,9 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
         
-        moreDetailsStackView.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: 22.0, paddingRight: 22.0)
+        cancellationInfoLabel.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 20.0, paddingLeft: 20.0, paddingBottom: 20.0, paddingRight: 20.0)
         
-        rideInfoStackView.anchor(top: moreDetailsStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
+        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
         passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
@@ -342,11 +306,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     func setAddFlightDetailsState() {
         enableUserInteraction()
-        if presenter.isKarhooUser() {
-            bookingButton.setAddFlightDetailsMode()
-        } else {
-            poiDetailsInputText.isHidden = false
-        }
+        poiDetailsInputText.isHidden = false
     }
     
     func set(quote: Quote) {
@@ -356,7 +316,6 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
-        moreDetailsView.set(viewModel: viewModel)
         farePriceInfoView.setInfoText(for: quote.quoteType)
     }
     
@@ -386,16 +345,12 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     private func enableUserInteraction() {
         backButton.isUserInteractionEnabled = true
-        backTitleButton.isUserInteractionEnabled = true
         backButton.tintColor = KarhooUI.colors.darkGrey
-        backTitleButton.tintColor = KarhooUI.colors.darkGrey
     }
     
     private func disableUserInteraction() {
         backButton.isUserInteractionEnabled = false
-        backTitleButton.isUserInteractionEnabled = false
         backButton.tintColor = KarhooUI.colors.medGrey
-        backTitleButton.tintColor = KarhooUI.colors.medGrey
     }
     
     final class Builder: BookingRequestScreenBuilder {
