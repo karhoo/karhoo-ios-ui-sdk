@@ -235,7 +235,7 @@ public enum UITexts {
     }
     
     public enum PassengerDetails {
-        public static var title = "Text.Booking.PassengerDetails.Title".localized
+        public static let title = "Text.Booking.PassengerDetails.Title".localized
         public static let subtitle = "Text.Booking.PassengerDetails.Subtitle".localized
         public static let firstName = "Text.Booking.PassengerDetails.FirstName".localized
         public static let lastName = "Text.Booking.PassengerDetails.LastName".localized

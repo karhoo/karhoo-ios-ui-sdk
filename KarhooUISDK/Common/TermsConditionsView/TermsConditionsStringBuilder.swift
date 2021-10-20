@@ -13,17 +13,17 @@ public struct TermsConditionsStringBuilder {
 
     public static var karhooTermsURLString: String {
         #if PRODUCTION
-            return "https://cdn.karhoo.com/d/terms/KarhooAppTerms/Karhoo_terms_and_conditions.html"
+        return "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html"
         #else
-            return "https://cdn.karhoo.com/d/terms/KarhooAppTerms/Karhoo_terms_and_conditions.html"
+            return "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html"
         #endif
     }
 
     public static var karhooPrivacyPolicyURLString: String {
         #if PRODUCTION
-            return "https://cdn.karhoo.com/d/terms/KarhooAppTerms/Karhoo_privacy.html"
+            return "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html"
         #else
-            return "https://cdn.karhoo.com/d/terms/KarhooAppTerms/Karhoo_privacy.html"
+            return "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html"
         #endif
     }
 
