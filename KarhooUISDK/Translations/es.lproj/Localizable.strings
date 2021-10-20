@@ -247,7 +247,7 @@
 
 "Text.Bookings.TrackTrip.AlertTitle" = "El conductor está en camino";
 "Text.Bookings.TrackTrip.AlertMessage" = "¿Le gustaría seguir la ubicación del vehículo?";
-"Text.Bookings.TrackTrip.TrackAction" = "Si";
+"Text.Bookings.TrackTrip.TrackAction" = "Sí";
 "Text.Bookings.TrackTrip.DismissAction" = "No";
 
 /*"Cancel Ride" button action*/
