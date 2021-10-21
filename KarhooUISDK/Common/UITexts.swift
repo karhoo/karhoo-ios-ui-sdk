@@ -35,6 +35,7 @@ public enum UITexts {
         public static let registeringAccountAction = "Text.Generic.RegisterAccountAction".localized
         public static let makingABookingAction = "Text.Generic.MakingBookingAction".localized
         public static let termsAndConditions = "Text.Generic.TermsConditions".localized
+        public static let termsOfUse = "Text.Generic.TermsOfUse".localized
         public static let privacyPolicy = "Text.Generic.PrivacyPolicy".localized
         public static let cancellationPolicy = "Text.Generic.CancellationPolicy".localized
         public static let minutes = "Text.Generic.Minutes".localized
@@ -144,6 +145,14 @@ public enum UITexts {
     public enum TermsConditions {
         // 1: action 2: Supplier name, 2: "Terms and Conditions", 3: "Cancellation/Privacy Policy"
         public static let termsConditionFullString = "Text.TermsConditions.FullString".localized
+        // 1: "Terms and Conditions", 2: "Privacy Policy", 3: Fleet Name, 4: "Terms and Conditions, 5: "Cancellation Policy"
+        public static let bookingTermAndConditionsFullText = "Text.TermsConditions.BookingFullString".localized
+        
+        public static let karhooTermsLink = "Text.TermsConditions.KarhooTermsLink".localized
+        public static let karhooPolicyLink = "Text.TermsConditions.KarhooPolicyLink".localized
+        
+        public static var termsLink = "Text.TermsConditions.TermsLink".localized
+        public static var policyLink = "Text.TermsConditions.PolicyLink".localized
     }
 
     /* Demand API (Karhoo specific) errors */
