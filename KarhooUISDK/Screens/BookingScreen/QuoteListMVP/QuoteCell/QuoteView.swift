@@ -202,7 +202,8 @@ class QuoteView: UIView {
         
         name.text = viewModel.fleetName
         eta.text = viewModel.scheduleMainValue
-        carType.text = viewModel.carType
+        // to be replaced with carType later, as vehicle class is deprecated
+        carType.text = viewModel.vehicleClass
         fare.text = viewModel.fare
         cancellationInfo.text = viewModel.freeCancellationMessage
         cancellationInfo.isHidden = viewModel.freeCancellationMessage == nil
