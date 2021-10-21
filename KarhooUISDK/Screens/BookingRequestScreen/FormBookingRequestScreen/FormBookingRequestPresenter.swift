@@ -119,7 +119,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         let presenter = PassengerDetailsPresenter(details: details) { result in
             if result.isComplete() {
                 details = result.completedValue()
-                PassengerInfo.shared.set(details: details)
                 self.view?.setPassenger(details: details)
             }
         }
@@ -340,7 +339,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
-            PassengerInfo.shared.passengerDetails = view?.getPassengerDetails()
             callback(.completed(result: trip))
         }
         else if let error = result.errorValue() {
