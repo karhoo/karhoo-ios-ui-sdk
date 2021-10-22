@@ -162,13 +162,13 @@ public enum UITexts {
     }
     
     /* Help */
-    enum Help {
+    public enum Help {
         public static var faqLink = "Text.Help.FAQ.Link".localized
         public static var contactUsLink = "Text.Help.ContactUs.Link".localized
     }
 
     /* Side menu */
-    enum SideMenu {
+    public enum SideMenu {
         public static let signIn = "Text.SideMenu.SignIn".localized
         public static let profile = "Text.SideMenu.Profile".localized
         public static let register = "Text.SideMenu.Register".localized
