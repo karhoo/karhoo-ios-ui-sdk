@@ -160,6 +160,12 @@ public enum UITexts {
         public static let K3002 = "Text.KarhooError.K3002".localized // no availability in requested area
         public static let Q0001 = "Text.KarhooError.Q0001".localized // origin
     }
+    
+    /* Help */
+    enum Help {
+        public static var faqLink = "Text.Help.FAQ.Link".localized
+        public static var contactUsLink = "Text.Help.ContactUs.Link".localized
+    }
 
     /* Side menu */
     enum SideMenu {
