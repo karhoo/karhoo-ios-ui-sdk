@@ -291,13 +291,19 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
             return
         }
         
-        let allCountries = KarhooCountryParser.getCountries().sorted(by: { $0.code < $1.code })
-        if let selectedCountry = allCountries.first(where: { value.starts(with: $0.phoneCode )}) {
-            country = selectedCountry
-        }
-        
-        if value.hasPrefix(country.phoneCode) {
-            value = value.removePrefix(country.phoneCode)
+        if value.hasPrefix("+") {
+            // The phone code in the phone number coincides with the provided country's phone code
+            if value.hasPrefix(country.phoneCode) {
+                value = value.removePrefix(country.phoneCode)
+            }
+            // The phone number provided has a different phone code than the provided country's phone code
+            else {
+                let allCountries = KarhooCountryParser.getCountries().sorted(by: { $0.code < $1.code })
+                if let newCountry = allCountries.first(where: { value.starts(with: $0.phoneCode) }) {
+                    country = newCountry
+                    value = value.removePrefix(country.phoneCode)
+                }
+            }
         }
         
         textView.text = value
@@ -319,6 +325,10 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
    public func getCountryCode() -> String {
         return country.code
    }
+    
+    public func set(country: Country) {
+        self.country = country
+    }
 }
 
 extension KarhooPhoneInputView: UITextViewDelegate {

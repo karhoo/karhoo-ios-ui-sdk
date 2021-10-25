@@ -245,7 +245,8 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
                                        email: emailNameInputView.getInput(),
                                        phoneNumber: mobilePhoneInputView.getFullPhoneNumber(),
                                        locale: currentLocale)
-        presenter.doneClicked(newDetails: details)
+        let country = KarhooCountryParser.getCountry(countryCode: mobilePhoneInputView.getCountryCode()) ?? KarhooCountryParser.defaultCountry
+        presenter.doneClicked(newDetails: details, country: country)
         dismissScreen()
     }
     
@@ -273,6 +274,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         firstNameInputView.set(text: details.firstName)
         lastNameInputView.set(text: details.lastName)
         emailNameInputView.set(text: details.email)
+        mobilePhoneInputView.set(country: PassengerInfo.shared.getCountry())
         mobilePhoneInputView.set(text: details.phoneNumber)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
         

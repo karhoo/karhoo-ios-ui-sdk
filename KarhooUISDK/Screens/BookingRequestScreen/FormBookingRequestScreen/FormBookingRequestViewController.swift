@@ -258,10 +258,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
-        if PassengerInfo.shared.passengerDetails == nil {
+        if PassengerInfo.shared.getDetails() == nil {
             return PassengerInfo.shared.currentUserAsPassenger()
         } else {
-            return PassengerInfo.shared.passengerDetails
+            return PassengerInfo.shared.getDetails()
         }
     }
     

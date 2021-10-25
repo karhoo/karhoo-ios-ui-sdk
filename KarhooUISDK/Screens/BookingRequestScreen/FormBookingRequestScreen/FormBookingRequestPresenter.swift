@@ -115,12 +115,15 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
     
     func addOrEditPassengerDetails() {
-        var details = view?.getPassengerDetails()
-        let presenter = PassengerDetailsPresenter(details: details) { result in
-            if result.isComplete() {
-                details = result.completedValue()
-                self.view?.setPassenger(details: details)
+        let details = view?.getPassengerDetails()
+        let presenter = PassengerDetailsPresenter(details: details) { [weak self] result in
+            guard let completedValue = result.completedValue()
+            else {
+                return
             }
+            
+            self?.view?.setPassenger(details: completedValue.details)
+            PassengerInfo.shared.set(country: completedValue.country ?? KarhooCountryParser.defaultCountry)
         }
         let detailsViewController = PassengerDetailsViewController(presenter: presenter)
         view?.showAsOverlay(item: detailsViewController, animated: true)
@@ -360,7 +363,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
     }
 
     func didPressClose() {
-        PassengerInfo.shared.passengerDetails = view?.getPassengerDetails()
+        PassengerInfo.shared.set(details: view?.getPassengerDetails())
         view?.showBookingRequestView(false)
     }
 

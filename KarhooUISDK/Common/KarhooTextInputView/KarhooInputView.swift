@@ -24,4 +24,8 @@ protocol KarhooPhoneInputViewProtocol: KarhooInputView {
     func getFullPhoneNumber() -> String
     func getCountryCode() -> String
     func getPhoneNumberNoCountryCode() -> String
+    
+    // NOTE: When using KarhooPhoneInputView set the country before the text for best results
+    // This is not mandatory, as the usage may vary from component to component
+    func set(country: Country)
 }

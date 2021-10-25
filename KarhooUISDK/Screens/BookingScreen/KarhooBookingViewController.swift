@@ -373,7 +373,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
-        PassengerInfo.shared.passengerDetails = passengerDetails
+        PassengerInfo.shared.set(details: passengerDetails)
 
         var validatedJourneyInfo: JourneyInfo?
 
