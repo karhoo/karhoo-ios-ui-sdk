@@ -9,17 +9,17 @@
 import Foundation
 import KarhooSDK
 
-final class KarhooPaymentPresenter: PaymentPresenter {
+final class KarhooAddPaymentPresenter: AddPaymentPresenter {
 
     private let analyticsService: AnalyticsService
     private let userService: UserService
-    private let view: PaymentView
+    private let view: AddPaymentView
     private var cardRegistrationFlow: CardRegistrationFlow
 
      init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
           userService: UserService = Karhoo.getUserService(),
           cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
-          view: PaymentView = KarhooAddCardView()) {
+          view: AddPaymentView = KarhooAddPaymentView()) {
         self.cardRegistrationFlow = cardRegistrationFlow
         self.analyticsService = analyticsService
         self.userService = userService
@@ -68,7 +68,7 @@ final class KarhooPaymentPresenter: PaymentPresenter {
     }
 }
 
-extension KarhooPaymentPresenter: UserStateObserver {
+extension KarhooAddPaymentPresenter: UserStateObserver {
 
     func userStateUpdated(user: UserInfo?) {
         displayAvailablePaymentMethod()

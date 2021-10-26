@@ -1,5 +1,5 @@
 //
-//  RideInfoView.swift
+//  KarhooRideInfoView.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 18.08.2021.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol InfoButtonActions: AnyObject {
+protocol RideInfoViewDelegate: AnyObject {
     func infoButtonPressed()
 }
 
-final class RideInfoView: UIView {
-    private weak var actions: InfoButtonActions?
+final class KarhooRideInfoView: UIView {
+    private weak var delegate: RideInfoViewDelegate?
     private var didSetupConstraints: Bool = false
     
     private lazy var scheduleCaption: UILabel = {
         let scheduleCaption = UILabel()
         scheduleCaption.translatesAutoresizingMaskIntoConstraints = false
-        scheduleCaption.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaTitle
+        scheduleCaption.accessibilityIdentifier = KHCheckoutHeaderViewID.etaTitle
         scheduleCaption.textColor = KarhooUI.colors.infoColor
         scheduleCaption.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
         scheduleCaption.text = UITexts.Generic.etaLong
@@ -30,7 +30,7 @@ final class RideInfoView: UIView {
     private lazy var scheduleMainValue: UILabel = {
         let scheduleMainValue = UILabel()
         scheduleMainValue.translatesAutoresizingMaskIntoConstraints = false
-        scheduleMainValue.accessibilityIdentifier = KHFormCheckoutHeaderViewID.etaText
+        scheduleMainValue.accessibilityIdentifier = KHCheckoutHeaderViewID.etaText
         scheduleMainValue.textColor = KarhooUI.colors.infoColor
         scheduleMainValue.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
         
@@ -40,7 +40,7 @@ final class RideInfoView: UIView {
     private lazy var rideTypeLabel: UILabel = {
         let rideTypeLabel = UILabel()
         rideTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        rideTypeLabel.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideType
+        rideTypeLabel.accessibilityIdentifier = KHCheckoutHeaderViewID.rideType
         rideTypeLabel.textColor = KarhooUI.colors.infoColor
         rideTypeLabel.text = UITexts.Generic.meetGreet
         rideTypeLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
@@ -51,7 +51,7 @@ final class RideInfoView: UIView {
     private lazy var priceTitle: UILabel = {
         let priceTitle = UILabel()
         priceTitle.translatesAutoresizingMaskIntoConstraints = false
-        priceTitle.accessibilityIdentifier = KHFormCheckoutHeaderViewID.estimatedPrice
+        priceTitle.accessibilityIdentifier = KHCheckoutHeaderViewID.estimatedPrice
         priceTitle.textColor = KarhooUI.colors.infoColor
         priceTitle.textAlignment = .right
         priceTitle.font = KarhooUI.fonts.getBoldFont(withSize: 12.0)
@@ -63,7 +63,7 @@ final class RideInfoView: UIView {
     private lazy var priceText: UILabel = {
         let priceText = UILabel()
         priceText.translatesAutoresizingMaskIntoConstraints = false
-        priceText.accessibilityIdentifier = KHFormCheckoutHeaderViewID.priceText
+        priceText.accessibilityIdentifier = KHCheckoutHeaderViewID.priceText
         priceText.textColor = KarhooUI.colors.infoColor
         priceText.textAlignment = .right
         priceText.font = KarhooUI.fonts.getBoldFont(withSize: 24.0)
@@ -74,7 +74,7 @@ final class RideInfoView: UIView {
     private lazy var ridePriceType: UIButton = {
         let ridePriceType = UIButton()
         ridePriceType.translatesAutoresizingMaskIntoConstraints = false
-        ridePriceType.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceType
+        ridePriceType.accessibilityIdentifier = KHCheckoutHeaderViewID.ridePriceType
         ridePriceType.setTitleColor(KarhooUI.colors.infoColor, for: .normal)
         ridePriceType.titleLabel?.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         ridePriceType.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
@@ -85,7 +85,7 @@ final class RideInfoView: UIView {
     private lazy var rideTypeInfoButton: UIButton = {
         let infoButton = UIButton(type: .custom)
         infoButton.translatesAutoresizingMaskIntoConstraints = false
-        infoButton.accessibilityIdentifier = KHFormCheckoutHeaderViewID.ridePriceTypeIcon
+        infoButton.accessibilityIdentifier = KHCheckoutHeaderViewID.ridePriceTypeIcon
         infoButton.setImage(UIImage.uisdkImage("info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         infoButton.contentVerticalAlignment = .fill
         infoButton.contentHorizontalAlignment = .fill
@@ -172,16 +172,16 @@ final class RideInfoView: UIView {
     public func setDetails(viewModel: QuoteViewModel) {
         scheduleCaption.text = viewModel.scheduleCaption
         scheduleMainValue.text = viewModel.scheduleMainValue
-        ridePriceType.setTitle(viewModel.fareType, for: .normal) 
+        ridePriceType.setTitle(viewModel.fareType, for: .normal)
         priceText.text = viewModel.fare
         rideTypeLabel.text = viewModel.pickUpType
     }
      
-    public func setActions(_ actions: InfoButtonActions) {
-        self.actions = actions
+    public func setActions(_ actions: RideInfoViewDelegate) {
+        self.delegate = actions
     }
     
     @objc private func infoButtonPressed() {
-        actions?.infoButtonPressed()
+        delegate?.infoButtonPressed()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LearnMoreButton.swift
+//  KarhooLearnMoreButton.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 18.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RevealMoreButtonActions: AnyObject {
+protocol LearnMoreButtonDelegate: AnyObject {
     func learnMorePressed()
     func learnLessPressed()
 }
@@ -38,8 +38,8 @@ public struct KHRevealMoreButtonViewID {
     public static let image = "dropdown_up_icon"
 }
 
-final class RevealMoreInfoButton: UIButton {
-    private weak var actions: RevealMoreButtonActions?
+final class KarhooLearnMoreButton: UIButton {
+    private weak var actions: LearnMoreButtonDelegate?
     private var currentMode: ButtonMode = .learnMore
     private var didSetupConstraints = false
     
@@ -158,7 +158,7 @@ final class RevealMoreInfoButton: UIButton {
         })
     }
 
-    func set(actions: RevealMoreButtonActions) {
+    func set(actions: LearnMoreButtonDelegate) {
         self.actions = actions
     }
 }

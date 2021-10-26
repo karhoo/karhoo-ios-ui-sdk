@@ -28,7 +28,7 @@ public struct KHBookingButtonViewID {
 
 final class KarhooBookingButtonView: UIView, BookingButtonView {
 
-    private weak var actions: BookingButtonActions?
+    private weak var actions: BookingButtonDelegate?
     private var containerView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
     private var button: UIButton!
@@ -151,7 +151,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         }
     }
 
-    func set(actions: BookingButtonActions) {
+    func set(actions: BookingButtonDelegate) {
         self.actions = actions
     }
     

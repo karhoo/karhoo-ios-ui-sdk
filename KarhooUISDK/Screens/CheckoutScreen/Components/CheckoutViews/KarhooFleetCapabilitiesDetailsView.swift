@@ -1,5 +1,5 @@
 //
-//  MoreDetailsView.swift
+//  KarhooFleetCapabilitiesDetailsView.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 18.08.2021.
@@ -14,7 +14,7 @@ struct KHMoreDetailsViewID {
     static let fleetDescriptionLabel = "fleet_description_label"
 }
 
-final class MoreDetailsView: UIView {
+final class KarhooFleetCapabilitiesDetailsView: UIView {
     
     private enum CapacityViewType {
         case passenger, luggage
@@ -186,7 +186,7 @@ final class MoreDetailsView: UIView {
             stackView.spacing = 5
             stackView.addArrangedSubview(firstCapView)
             
-            if (index + 1 < capabilities.count ) {
+            if index + 1 < capabilities.count {
                 let secondCap = capabilities[index+1]
                 let secondView = setupView(for: secondCap.title, with: secondCap.image, accessibilityId: secondCap.title)
                 stackView.addArrangedSubview(secondView)

@@ -12,7 +12,7 @@ import KarhooSDK
 
 final class KarhooPaymentPresenterSpec: XCTestCase {
 
-    private var testObject: KarhooPaymentPresenter!
+    private var testObject: KarhooAddPaymentPresenter!
     private var mockAnalyticsService = MockAnalyticsService()
     private var mockUserService = MockUserService()
     private var mockView = MockKarhooPaymentView()
@@ -28,7 +28,7 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         mockUserService.currentUserToReturn = user
         mockView.quote = TestUtil.getRandomQuote()
 
-        testObject = KarhooPaymentPresenter(analyticsService: mockAnalyticsService,
+        testObject = KarhooAddPaymentPresenter(analyticsService: mockAnalyticsService,
                                           userService: mockUserService,
                                           cardRegistrationFlow: mockCardRegistrationFlow,
                                           view: mockView)

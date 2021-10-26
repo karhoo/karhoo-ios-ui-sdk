@@ -1,5 +1,5 @@
 //
-//  PassengerDetailsPaymentView.swift
+//  KarhooAddPassengerDetailsAndPaymentView.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 12.08.2021.
@@ -9,14 +9,14 @@
 import UIKit
 import KarhooSDK
 
-public struct KHPassengerDetailsPaymentViewID {
+public struct KHAddPassengerDetailsAndPaymentViewID {
     public static let container = "passenger_details_payment_container"
     public static let passengerDetailsPaymentStackView = "passenger_details_payment_stack_view"
     public static let passengerDetailsContainer = "passenger_details_container"
     public static let passengerPaymentContainer = "passenger_payment_container"
 }
 
-final class PassengerDetailsPaymentView: UIView {
+final class KarhooAddPassengerDetailsAndPaymentView: UIView {
     
     private var didSetupConstraints: Bool = false
     var baseViewController: BaseViewController!
@@ -33,7 +33,7 @@ final class PassengerDetailsPaymentView: UIView {
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsPaymentStackView
+        stackView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerDetailsPaymentStackView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -44,14 +44,14 @@ final class PassengerDetailsPaymentView: UIView {
     
     private lazy var passengerDetailsContainer: AddPassengerView = {
         let passengerDetailsView = KarhooAddPassengerDetailsView()
-        passengerDetailsView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerDetailsContainer
+        passengerDetailsView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerDetailsContainer
         passengerDetailsView.setBaseViewController(baseViewController)
         return passengerDetailsView
     }()
     
-    private lazy var passengerPaymentContainer: PaymentView = {
-        let passengerPaymentView = KarhooAddCardView()
-        passengerPaymentView.accessibilityIdentifier = KHPassengerDetailsPaymentViewID.passengerPaymentContainer
+    private lazy var passengerPaymentContainer: AddPaymentView = {
+        let passengerPaymentView = KarhooAddPaymentView()
+        passengerPaymentView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerPaymentContainer
         passengerPaymentView.setBaseViewController(baseViewController)
         return passengerPaymentView
     }()
@@ -68,7 +68,7 @@ final class PassengerDetailsPaymentView: UIView {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        accessibilityIdentifier = KHPassengerDetailsPaymentViewID.container
+        accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.container
         
         addSubview(stackView)
         
@@ -93,11 +93,11 @@ final class PassengerDetailsPaymentView: UIView {
         passengerPaymentContainer.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
     
-    func setPaymentViewActions(actions: PaymentViewActions) {
+    func setPaymentViewActions(actions: AddPaymentViewDelegate) {
         passengerPaymentContainer.actions = actions
     }
     
-    func setPassengerViewActions(actions: AddPassengerDetailsViewActions) {
+    func setPassengerViewActions(actions: AddPassengerDetailsViewDelegate) {
         passengerDetailsContainer.actions = actions
     }
     

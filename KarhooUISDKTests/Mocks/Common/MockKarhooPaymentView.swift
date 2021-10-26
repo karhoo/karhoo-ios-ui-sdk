@@ -9,11 +9,11 @@ import Foundation
 @testable import KarhooUISDK
 import KarhooSDK
 
-final class MockKarhooPaymentView: MockBaseView, PaymentView {
+final class MockKarhooPaymentView: MockBaseView, AddPaymentView {
 
     var baseViewController: BaseViewController?
 
-    var actions: PaymentViewActions?
+    var actions: AddPaymentViewDelegate?
 
     var quote: Quote?
 

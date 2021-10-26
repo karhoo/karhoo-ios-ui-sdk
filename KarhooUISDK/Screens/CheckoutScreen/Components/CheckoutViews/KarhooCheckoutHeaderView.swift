@@ -1,5 +1,5 @@
 //
-//  GuestCheckoutHeaderView.swift
+//  KarhooCheckoutHeaderView.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -8,7 +8,7 @@
 import UIKit
 import KarhooSDK
 
-public struct KHFormCheckoutHeaderViewID {
+public struct KHCheckoutHeaderViewID {
     public static let topContainer = "top_container"
     public static let fleetInfoContainer = "fleet_info_container"
     public static let logoContainer = "logo_container"
@@ -32,11 +32,11 @@ public struct KHFormCheckoutHeaderViewID {
     public static let vehicleCapacityView = "vehicle_capacity_view"
 }
 
-final class FormCheckoutHeaderView: UIStackView {
-    //MARK: - UI
+final class KarhooCheckoutHeaderView: UIStackView {
+    // MARK: - UI
     private lazy var fleetInfoStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetInfoContainer
+        stackView.accessibilityIdentifier = KHCheckoutHeaderViewID.fleetInfoContainer
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -49,13 +49,13 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var logoContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logoContainer
+        view.accessibilityIdentifier = KHCheckoutHeaderViewID.logoContainer
         return view
     }()
     
     private lazy var logoLoadingImageView: LoadingImageView = {
         let imageView = LoadingImageView()
-        imageView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.logoImageView
+        imageView.accessibilityIdentifier = KHCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
         imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         imageView.layer.borderWidth = 0.5
@@ -68,7 +68,7 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var rideDetailStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideDetailsContainer
+        stackView.accessibilityIdentifier = KHCheckoutHeaderViewID.rideDetailsContainer
         stackView.axis = .vertical
         stackView.spacing = 4.0
         return stackView
@@ -77,7 +77,7 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.nameLabel
+        label.accessibilityIdentifier = KHCheckoutHeaderViewID.nameLabel
         label.textColor = KarhooUI.colors.infoColor
         label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         label.numberOfLines = 0
@@ -87,7 +87,7 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var carTypeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHFormCheckoutHeaderViewID.carType
+        label.accessibilityIdentifier = KHCheckoutHeaderViewID.carType
         label.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
         label.textColor = KarhooUI.colors.guestCheckoutLightGrey
         return label
@@ -95,7 +95,7 @@ final class FormCheckoutHeaderView: UIStackView {
     
     private var capabilitiesStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.fleetCapabilities
+        stackView.accessibilityIdentifier = KHCheckoutHeaderViewID.fleetCapabilities
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
         stackView.distribution = .fill
@@ -106,27 +106,27 @@ final class FormCheckoutHeaderView: UIStackView {
     private lazy var capacityContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.capabilitiesContentView
+        view.accessibilityIdentifier = KHCheckoutHeaderViewID.capabilitiesContentView
         return view
     }()
     
     private lazy var vehicleCapacityView: VehicleCapacityView = {
         let view =  VehicleCapacityView()
-        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.vehicleCapacityView
+        view.accessibilityIdentifier = KHCheckoutHeaderViewID.vehicleCapacityView
         return view
     }()
     
-    private lazy var learnMoreButton: RevealMoreInfoButton = {
-        let button = RevealMoreInfoButton()
+    private lazy var learnMoreButton: KarhooLearnMoreButton = {
+        let button = KarhooLearnMoreButton()
         button.set(actions: self)
-        button.accessibilityIdentifier = KHFormCheckoutHeaderViewID.learnMoreButton
+        button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
         button.anchor(height: 44.0)
         return button
     }()
 
-    lazy var capacityDetailsView: MoreDetailsView = {
-        let view = MoreDetailsView()
-        view.accessibilityIdentifier = KHFormCheckoutHeaderViewID.capabilitiesDetailsView
+    lazy var capacityDetailsView: KarhooFleetCapabilitiesDetailsView = {
+        let view = KarhooFleetCapabilitiesDetailsView()
+        view.accessibilityIdentifier = KHCheckoutHeaderViewID.capabilitiesDetailsView
         return view
     }()
     
@@ -150,7 +150,7 @@ final class FormCheckoutHeaderView: UIStackView {
     
     //MARK: - Setup
     private func setUpView() {
-        accessibilityIdentifier = KHFormCheckoutHeaderViewID.topContainer
+        accessibilityIdentifier = KHCheckoutHeaderViewID.topContainer
         translatesAutoresizingMaskIntoConstraints = false
         alignment = .fill
         distribution = .fill
@@ -258,7 +258,7 @@ final class FormCheckoutHeaderView: UIStackView {
 }
 
 // MARK: - RevealMoreButtonActions
-extension FormCheckoutHeaderView: RevealMoreButtonActions {
+extension KarhooCheckoutHeaderView: LearnMoreButtonDelegate {
     func learnMorePressed() {
         self.vehicleCapacityView.isHidden = true
         self.capacityDetailsView.isHidden = false

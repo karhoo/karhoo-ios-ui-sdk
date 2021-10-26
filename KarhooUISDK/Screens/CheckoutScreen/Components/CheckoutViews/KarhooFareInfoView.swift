@@ -1,5 +1,5 @@
 //
-//  FarePriceInfoView.swift
+//  KarhooFareInfoView.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 20.08.2021.
@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-final class FarePriceInfoView: UIView {
+final class KarhooFareInfoView: UIView {
     private lazy var fareTypeInfoLabel: UILabel = {
         let fareTypeInfo = UILabel()
         fareTypeInfo.translatesAutoresizingMaskIntoConstraints = false

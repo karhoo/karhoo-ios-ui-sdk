@@ -1,5 +1,5 @@
 //
-//  FormBookingRequestViewController.swift
+//  KarhooCheckoutViewController.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -8,15 +8,15 @@
 import UIKit
 import KarhooSDK
 
-final class FormBookingRequestViewController: UIViewController, BookingRequestView, BaseViewController {
-
+final class KarhooCheckoutViewController: UIViewController, CheckoutView {
+    
     private var didSetupConstraints = false
     private var termsConditionsView: TermsConditionsView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
-    var presenter: BookingRequestPresenter
+    var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
-    var headerView: FormCheckoutHeaderView!
+    var headerView: KarhooCheckoutHeaderView!
     
     private let extraSmallSpacing: CGFloat = 8.0
     private let standardButtonSize: CGFloat = 44.0
@@ -58,8 +58,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return poiDetailsInputText
     }()
     
-    private lazy var passengerDetailsAndPaymentView: PassengerDetailsPaymentView = {
-        let passengerDetailsAndPaymentView = PassengerDetailsPaymentView(baseVC: self)
+    private lazy var passengerDetailsAndPaymentView: KarhooAddPassengerDetailsAndPaymentView = {
+        let passengerDetailsAndPaymentView = KarhooAddPassengerDetailsAndPaymentView(baseVC: self)
         passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
         passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
@@ -103,7 +103,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
-        cancellationInfo.accessibilityIdentifier = KHFormCheckoutHeaderViewID.cancellationInfo
+        cancellationInfo.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.primaryTextColor
         cancellationInfo.text = "Free cancellation until arrival of the driver"
@@ -121,10 +121,10 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return rideInfoStackView
     }()
     
-    private lazy var rideInfoView: RideInfoView = {
-        let rideInfoView = RideInfoView()
+    private lazy var rideInfoView: KarhooRideInfoView = {
+        let rideInfoView = KarhooRideInfoView()
         rideInfoView.translatesAutoresizingMaskIntoConstraints = false
-        rideInfoView.accessibilityIdentifier = KHFormCheckoutHeaderViewID.rideInfoView
+        rideInfoView.accessibilityIdentifier = KHCheckoutHeaderViewID.rideInfoView
         rideInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         rideInfoView.layer.masksToBounds = true
         rideInfoView.layer.cornerRadius = 8.0
@@ -132,8 +132,8 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         return rideInfoView
     }()
     
-    lazy var farePriceInfoView: FarePriceInfoView = {
-        let farePriceInfoView = FarePriceInfoView()
+    lazy var farePriceInfoView: KarhooFareInfoView = {
+        let farePriceInfoView = KarhooFareInfoView()
         farePriceInfoView.translatesAutoresizingMaskIntoConstraints = false
         farePriceInfoView.accessibilityIdentifier = "fare_price_info_view"
         farePriceInfoView.backgroundColor = KarhooUI.colors.accent
@@ -162,7 +162,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
     
     var paymentNonce: String?
     
-    init(presenter: BookingRequestPresenter) {
+    init(presenter: CheckoutPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -183,7 +183,7 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
         container.addSubview(backButton)
         container.addSubview(baseStackView)
         
-        headerView = FormCheckoutHeaderView()
+        headerView = KarhooCheckoutHeaderView()
         baseStackView.addViewToStack(view: headerView)
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
@@ -359,11 +359,11 @@ final class FormBookingRequestViewController: UIViewController, BookingRequestVi
                                        bookingMetadata: [String: Any]?,
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
-            let presenter = FormBookingRequestPresenter(quote: quote,
-                                                        bookingDetails: bookingDetails,
-                                                        bookingMetadata: bookingMetadata,
-                                                        callback: callback)
-            return FormBookingRequestViewController(presenter: presenter)
+            let presenter = KarhooCheckoutPresenter(quote: quote,
+                                              bookingDetails: bookingDetails,
+                                              bookingMetadata: bookingMetadata,
+                                              callback: callback)
+            return KarhooCheckoutViewController(presenter: presenter)
         }
     }
     

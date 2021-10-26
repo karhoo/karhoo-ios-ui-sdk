@@ -9,21 +9,14 @@
 import Foundation
 
 protocol BookingButtonView {
-
-    func set(actions: BookingButtonActions)
-
+    func set(actions: BookingButtonDelegate)
     func setDisabledMode()
-    
     func setRequestMode()
-
     func setRequestingMode()
-
     func setRequestedMode()
 }
 
-protocol BookingButtonActions: AnyObject {
-
+protocol BookingButtonDelegate: AnyObject {
     func requestPressed()
-    
     func addMoreDetails()
 }

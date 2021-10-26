@@ -100,6 +100,6 @@ public extension ScreenBuilders {
     }
 
     func bookingRequestBuilder() -> BookingRequestScreenBuilder {
-        return FormBookingRequestViewController.Builder()
+        return KarhooCheckoutViewController.Builder()
     }
 }

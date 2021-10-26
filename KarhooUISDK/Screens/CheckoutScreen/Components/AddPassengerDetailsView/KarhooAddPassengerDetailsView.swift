@@ -22,7 +22,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     var baseViewController: BaseViewController?
     private var didSetupConstraints: Bool = false
     private var presenter: KarhooAddPassengerDetailsPresenter?
-    var actions: AddPassengerDetailsViewActions?
+    var actions: AddPassengerDetailsViewDelegate?
     private var dotBorderLayer: CAShapeLayer!
     private var hasValidDetails: Bool = false
     
@@ -110,7 +110,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     private func setupView() {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
-        accessibilityIdentifier = KHPassengerDetailsPaymentViewID.container
+        accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.container
         layer.cornerRadius = 4.0
         layer.masksToBounds = true
         

@@ -1,5 +1,5 @@
 //
-//  PassengerFormBookingRequestPresenter.swift
+//  KarhooCheckoutPresenter.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -8,10 +8,10 @@
 import Foundation
 import KarhooSDK
 
-final class FormBookingRequestPresenter: BookingRequestPresenter {
+final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private let callback: ScreenResultCallback<TripInfo>
-    private weak var view: BookingRequestView?
+    private weak var view: CheckoutView?
     private let quote: Quote
     private let bookingDetails: BookingDetails
     internal var passengerDetails: PassengerDetails!
@@ -55,7 +55,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         self.bookingMetadata = bookingMetadata
     }
 
-    func load(view: BookingRequestView) {
+    func load(view: CheckoutView) {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
         case .karhooUser:
@@ -72,7 +72,7 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
         threeDSecureProvider.set(baseViewController: view)
     }
 
-     private func completeLoadingViewForKarhooUser(view: BookingRequestView) {
+     private func completeLoadingViewForKarhooUser(view: CheckoutView) {
          if quote.source == .market {
              view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
          } else {
@@ -109,7 +109,6 @@ final class FormBookingRequestPresenter: BookingRequestPresenter {
                                                                   max: quote.vehicle.qta.highMinutes))
      }
 
-    
     func isKarhooUser() -> Bool {
         return karhooUser
     }

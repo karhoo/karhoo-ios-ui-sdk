@@ -1,5 +1,5 @@
 //
-//  FormBookingRequestViewController+Extensions.swift
+//  KarhooCheckoutViewController+Extensions.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 26.08.2021.
@@ -9,13 +9,13 @@
 import Foundation
 import KarhooSDK
 
-extension FormBookingRequestViewController: TimePriceViewActions {
+extension KarhooCheckoutViewController: TimePriceViewActions {
     func didPressFareExplanation() {
         presenter.didPressFareExplanation()
     }
 }
 
-extension FormBookingRequestViewController: BookingButtonActions {
+extension KarhooCheckoutViewController: BookingButtonDelegate {
     func addMoreDetails() {
         presenter.addMoreDetails()
     }
@@ -25,14 +25,14 @@ extension FormBookingRequestViewController: BookingButtonActions {
     }
 }
 
-extension FormBookingRequestViewController: PassengerDetailsActions {
+extension KarhooCheckoutViewController: PassengerDetailsActions {
     func passengerDetailsValid(_ valid: Bool) {
         passengerDetailsValid = valid
         enableBookingButton()
     }
 }
 
-extension FormBookingRequestViewController: KarhooInputViewDelegate {
+extension KarhooCheckoutViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {}
     
     func didBecomeActive(identifier: String) {}
@@ -46,7 +46,7 @@ extension FormBookingRequestViewController: KarhooInputViewDelegate {
     }
 }
 
-extension FormBookingRequestViewController: PaymentViewActions {
+extension KarhooCheckoutViewController: AddPaymentViewDelegate {
     func didGetNonce(nonce: String) {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
@@ -54,7 +54,7 @@ extension FormBookingRequestViewController: PaymentViewActions {
     }
 }
 
-extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
+extension KarhooCheckoutViewController: AddPassengerDetailsViewDelegate {
     func didUpdatePassengerDetails(details: PassengerDetails?) {
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
         presenter.didAddPassengerDetails()
@@ -65,7 +65,7 @@ extension FormBookingRequestViewController: AddPassengerDetailsViewActions {
     }
 }
 
-extension FormBookingRequestViewController: InfoButtonActions {
+extension KarhooCheckoutViewController: RideInfoViewDelegate {
     func infoButtonPressed() {
         if farePriceInfoView.isDescendant(of: rideInfoStackView) {
             farePriceInfoView.isHidden.toggle()

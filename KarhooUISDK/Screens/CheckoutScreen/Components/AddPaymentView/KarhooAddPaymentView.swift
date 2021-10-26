@@ -16,7 +16,7 @@ public struct KHAddCardViewID {
     public static let stackView = "stack_view_container"
 }
 
-final public class KarhooAddCardView: UIView, PaymentView {
+final public class KarhooAddPaymentView: UIView, AddPaymentView {
     
     public var baseViewController: BaseViewController?
     
@@ -76,14 +76,14 @@ final public class KarhooAddCardView: UIView, PaymentView {
     private var hasPayment: Bool = false
     
     var quote: Quote?
-    var actions: PaymentViewActions? {
+    var actions: AddPaymentViewDelegate? {
         didSet {
             if presenter == nil {
-                presenter = KarhooPaymentPresenter(view: self)
+                presenter = KarhooAddPaymentPresenter(view: self)
             }
         }
     }
-    private var presenter: PaymentPresenter?
+    private var presenter: AddPaymentPresenter?
     
     public init() {
         super.init(frame: .zero)
