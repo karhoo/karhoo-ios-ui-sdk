@@ -11,21 +11,22 @@ import KarhooSDK
 
 final class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
     var details: PassengerDetails?
-    private let callback: ScreenResultCallback<PassengerDetails>
+    private let callback: ScreenResultCallback<PassengerDetailsResult>
     
     init(details: PassengerDetails?,
-         callback: @escaping ScreenResultCallback<PassengerDetails>) {
+         callback: @escaping ScreenResultCallback<PassengerDetailsResult>) {
         self.details = details
         self.callback = callback
     }
     
-    func doneClicked(newDetails: PassengerDetails) {
-        let result = ScreenResult.completed(result: newDetails)
+    func doneClicked(newDetails: PassengerDetails, country: Country) {
+        let data = PassengerDetailsResult(details: newDetails, country: country)
+        let result = ScreenResult.completed(result: data)
         callback(result)
     }
     
     func backClicked() {
-        let result = ScreenResult<PassengerDetails>.cancelled(byUser: true)
+        let result = ScreenResult<PassengerDetailsResult>.cancelled(byUser: true)
         callback(result)
     }
 }

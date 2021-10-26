@@ -15,11 +15,11 @@ protocol PassengerDetailsActions: BaseViewController {
 
 protocol PassengerDetailsPresenterProtocol {
     var details: PassengerDetails? { get set }
-    func doneClicked(newDetails: PassengerDetails)
+    func doneClicked(newDetails: PassengerDetails, country: Country)
     func backClicked()
 }
 
 struct PassengerDetailsResult {
     var details: PassengerDetails?
-    var isCancelled: Bool
+    var country: Country?
 }

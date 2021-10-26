@@ -15,17 +15,17 @@ class PassengerDetailsPresenterSpec: XCTestCase {
     private var testObject: PassengerDetailsPresenter!
     private var mockView: MockPassengerDetailsViewController!
     private var mockDetails: PassengerDetails!
-    private var callbackResult: ScreenResult<PassengerDetails>!
+    private var callbackResult: ScreenResult<PassengerDetailsResult>!
     
     override func setUp() {
         super.setUp()
         
         mockDetails = TestUtil.getRandomPassengerDetails()
-        testObject = PassengerDetailsPresenter(details: mockDetails, callback: passengerDetails)
+        testObject = PassengerDetailsPresenter(details: mockDetails, callback: passengerDetailsResult)
         mockView = MockPassengerDetailsViewController()
     }
     
-    private func passengerDetails(result: ScreenResult<PassengerDetails>) {
+    private func passengerDetailsResult(result: ScreenResult<PassengerDetailsResult>) {
         callbackResult = result
     }
     
@@ -34,10 +34,10 @@ class PassengerDetailsPresenterSpec: XCTestCase {
       * Then: the details passed are returned in the callback
       */
     func testDoneClicked() {
-        testObject.doneClicked(newDetails: mockDetails)
+        testObject.doneClicked(newDetails: mockDetails, country: KarhooCountryParser.defaultCountry)
         XCTAssert(callbackResult != nil)
         XCTAssert(callbackResult.isComplete())
-        XCTAssert(callbackResult.completedValue() == mockDetails)
+        XCTAssert(callbackResult.completedValue()?.details == mockDetails)
     }
     
     /**

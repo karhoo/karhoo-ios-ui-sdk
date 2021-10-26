@@ -56,4 +56,9 @@ final class KarhooCountryParser {
         countries = countries.sorted(by: { $0.name < $1.name })
         return countries
     }
+    
+    static func getCountry(countryCode: String) -> Country? {
+        let all = getCountries()
+        return all.first(where: { $0.code == countryCode })
+    }
 }
