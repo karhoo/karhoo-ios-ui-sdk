@@ -1,5 +1,5 @@
 //
-//  BookingRequestScreen.swift
+//  MockCheckoutView.swift
 //  KarhooTests
 //
 //
@@ -10,13 +10,13 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
+final class MockCheckoutView: MockBaseViewController, CheckoutView {
     
-    var showBookingRequestView = false
-    var showBookingRequestViewValue = false
-    func showBookingRequestView(_ show: Bool) {
-        showBookingRequestView = true
-        showBookingRequestViewValue = show
+    var showCheckoutView = false
+    var showCheckoutViewValue = false
+    func showCheckoutView(_ show: Bool) {
+        showCheckoutView = true
+        showCheckoutViewValue = show
     }
 
     var fadeOutCalled = false
@@ -81,10 +81,9 @@ final class MockBookingRequestView: MockBaseViewController, BookingRequestView {
         theQuoteSet = quote
     }
 
-    var isBookingRequestViewVisible = false
-    func BookingRequestView(_ show: Bool) {
-    
-        isBookingRequestViewVisible = show
+    var isCheckoutViewVisible = false
+    func isCheckoutViewVisible(_ show: Bool) {
+        isCheckoutViewVisible = show
     }
 
     var retryAddPaymentMethodCalled = false

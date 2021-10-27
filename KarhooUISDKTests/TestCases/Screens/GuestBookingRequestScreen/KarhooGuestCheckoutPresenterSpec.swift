@@ -9,10 +9,10 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
+class KarhooGuestCheckoutPresenterSpec: XCTestCase {
 
-    private var testObject: FormBookingRequestPresenter!
-    private var mockView: MockBookingRequestView = MockBookingRequestView()
+    private var testObject: KarhooCheckoutPresenter!
+    private var mockView: MockCheckoutView = MockCheckoutView()
     private var testQuote: Quote = TestUtil.getRandomQuote(highPrice: 10)
     private var testCallbackResult: ScreenResult<TripInfo>?
     private var mockThreeDSecureProvider = MockThreeDSecureProvider()
@@ -232,13 +232,13 @@ class KarhooGuestBookingRequestPresenterSpec: XCTestCase {
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
-        testObject = FormBookingRequestPresenter(quote: testQuote,
-                                                  bookingDetails: mockBookingDetails,
-                                                  bookingMetadata: mockBookingMetadata,
-                                                  threeDSecureProvider: mockThreeDSecureProvider,
-                                                  tripService: mockTripService,
-                                                  userService: mockUserService,
-                                                  callback: guestBookingRequestTrip)
+        testObject = KarhooCheckoutPresenter(quote: testQuote,
+                                             bookingDetails: mockBookingDetails,
+                                             bookingMetadata: mockBookingMetadata,
+                                             threeDSecureProvider: mockThreeDSecureProvider,
+                                             tripService: mockTripService,
+                                             userService: mockUserService,
+                                             callback: guestBookingRequestTrip)
         testObject.load(view: mockView)
     }
 }

@@ -152,14 +152,14 @@
 		14707C6025D54C2100CAD083 /* BookingAddressBarPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E35D6D21E5118A003E840C /* BookingAddressBarPresenterSpec.swift */; };
 		14707C6125D54C2100CAD083 /* MockAddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B9AE25C1C61000986616 /* MockAddressMapView.swift */; };
 		14707C6225D54C2100CAD083 /* KarhooPrebookConfirmationPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD1BFF22087CA600C3AD1D /* KarhooPrebookConfirmationPresenterSpec.swift */; };
-		14707C6325D54C2100CAD083 /* MockBookingRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13584A21D6752F005054AE /* MockBookingRequestView.swift */; };
+		14707C6325D54C2100CAD083 /* MockCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13584A21D6752F005054AE /* MockCheckoutView.swift */; };
 		14707C6425D54C2100CAD083 /* MockTripScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */; };
 		14707C6525D54C2100CAD083 /* MockFareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408AB682234F418B00B351B2 /* MockFareService.swift */; };
 		14707C6625D54C2100CAD083 /* MockAddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9D9919242CED15004F1DBD /* MockAddressService.swift */; };
 		14707C6725D54C2100CAD083 /* MockPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F612216D9C1006C48F2 /* MockPaymentService.swift */; };
 		14707C6825D54C2100CAD083 /* MockCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0F621BE850F00745370 /* MockCall.swift */; };
 		14707C6925D54C2100CAD083 /* ResizingSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13584121D64E8C005054AE /* ResizingSwitcherTests.swift */; };
-		14707C6A25D54C2100CAD083 /* MockBookingRequestScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F462216D0BB006C48F2 /* MockBookingRequestScreenBuilder.swift */; };
+		14707C6A25D54C2100CAD083 /* MockCheckoutScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F462216D0BB006C48F2 /* MockCheckoutScreenBuilder.swift */; };
 		14707C6B25D54C2100CAD083 /* MockTripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13585121D67971005054AE /* MockTripService.swift */; };
 		14707C6C25D54C2100CAD083 /* KarhooAddressPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DCC7F121BE7CE000DF02B9 /* KarhooAddressPresenterSpec.swift */; };
 		14707C6D25D54C2100CAD083 /* TripMapPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2DD221EECB0008FE26D /* TripMapPresenterSpec.swift */; };
@@ -176,7 +176,7 @@
 		14707C7925D54C2100CAD083 /* MockTripsSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC435F6B2211D76100FB6BB5 /* MockTripsSorter.swift */; };
 		14707C7A25D54C2100CAD083 /* MockAddressScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F472216D0BB006C48F2 /* MockAddressScreenBuilder.swift */; };
 		14707C7B25D54C2100CAD083 /* MockPaymentNonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F282022B25C7800AF8E0E /* MockPaymentNonceProvider.swift */; };
-		14707C7C25D54C2100CAD083 /* KarhooBookingRequestPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13584621D64F66005054AE /* KarhooBookingRequestPresenterSpec.swift */; };
+		14707C7C25D54C2100CAD083 /* KarhooCheckoutPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC13584621D64F66005054AE /* KarhooCheckoutPresenterSpec.swift */; };
 		14707C7D25D54C2100CAD083 /* MockQuoteSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E35D5621E5117C003E840C /* MockQuoteSortView.swift */; };
 		14707C7E25D54C2100CAD083 /* KarhooDateFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D293C422C651C10051C455 /* KarhooDateFormatterSpec.swift */; };
 		14707C7F25D54C2100CAD083 /* BookingMapPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E35D6921E5118A003E840C /* BookingMapPresenterSpec.swift */; };
@@ -241,7 +241,7 @@
 		14707CBE25D54C2200CAD083 /* MockBookingDetailsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */; };
 		14707CBF25D54C2200CAD083 /* UnitTestSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096192F521BEAB9C0052B71C /* UnitTestSetup.swift */; };
 		14707CC025D54C2200CAD083 /* MockFeedbackMailComposter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC435F712211D7F500FB6BB5 /* MockFeedbackMailComposter.swift */; };
-		14707CC125D54C2200CAD083 /* KarhooGuestBookingRequestPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF43244617960014539B /* KarhooGuestBookingRequestPresenterSpec.swift */; };
+		14707CC125D54C2200CAD083 /* KarhooGuestCheckoutPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF43244617960014539B /* KarhooGuestCheckoutPresenterSpec.swift */; };
 		14707CC225D54C2200CAD083 /* CurrencyCodeConverterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */; };
 		14707CC325D54C2200CAD083 /* MockQuoteCategoryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E35D4E21E5117C003E840C /* MockQuoteCategoryBarView.swift */; };
 		14707CC425D54C2200CAD083 /* QtaStringFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D293C322C651C10051C455 /* QtaStringFormatterSpec.swift */; };
@@ -754,7 +754,7 @@
 		4038DF392444BAC40014539B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4038DF3C2444C6E00014539B /* KarhooPhoneInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooPhoneInputView.swift; sourceTree = "<group>"; };
 		4038DF3E2444D6810014539B /* KarhooInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooInputView.swift; sourceTree = "<group>"; };
-		4038DF43244617960014539B /* KarhooGuestBookingRequestPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooGuestBookingRequestPresenterSpec.swift; sourceTree = "<group>"; };
+		4038DF43244617960014539B /* KarhooGuestCheckoutPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooGuestCheckoutPresenterSpec.swift; sourceTree = "<group>"; };
 		403F448122F19A38008147FC /* BaseStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
 		403F448322F1EC92008147FC /* KarhooTripFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTripFeedbackViewController.swift; sourceTree = "<group>"; };
 		404E9C4A23C8BB2B00289F43 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
@@ -951,8 +951,8 @@
 		FC13583E21D64E18005054AE /* BookingDetailsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingDetailsSpec.swift; sourceTree = "<group>"; };
 		FC13584121D64E8C005054AE /* ResizingSwitcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizingSwitcherTests.swift; sourceTree = "<group>"; };
 		FC13584221D64E8C005054AE /* DefaultConstraintSwitcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConstraintSwitcherTests.swift; sourceTree = "<group>"; };
-		FC13584621D64F66005054AE /* KarhooBookingRequestPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingRequestPresenterSpec.swift; sourceTree = "<group>"; };
-		FC13584A21D6752F005054AE /* MockBookingRequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingRequestView.swift; sourceTree = "<group>"; };
+		FC13584621D64F66005054AE /* KarhooCheckoutPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPresenterSpec.swift; sourceTree = "<group>"; };
+		FC13584A21D6752F005054AE /* MockCheckoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCheckoutView.swift; sourceTree = "<group>"; };
 		FC13585121D67971005054AE /* MockTripService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTripService.swift; sourceTree = "<group>"; };
 		FC435EE52211B33B00FB6BB5 /* KarhooRidesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooRidesPresenter.swift; sourceTree = "<group>"; };
 		FC435EE72211B33B00FB6BB5 /* RidesMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidesMVP.swift; sourceTree = "<group>"; };
@@ -1008,7 +1008,7 @@
 		FC4B92EC222E982400FE33B4 /* MockRideDetailsScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRideDetailsScreenBuilder.swift; sourceTree = "<group>"; };
 		FC658F422216D0BB006C48F2 /* MockDatePickerScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDatePickerScreenBuilder.swift; sourceTree = "<group>"; };
 		FC658F452216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPrebookConfirmationScreenBuilder.swift; sourceTree = "<group>"; };
-		FC658F462216D0BB006C48F2 /* MockBookingRequestScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingRequestScreenBuilder.swift; sourceTree = "<group>"; };
+		FC658F462216D0BB006C48F2 /* MockCheckoutScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCheckoutScreenBuilder.swift; sourceTree = "<group>"; };
 		FC658F472216D0BB006C48F2 /* MockAddressScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAddressScreenBuilder.swift; sourceTree = "<group>"; };
 		FC658F532216D307006C48F2 /* KarhooCardRegistrationFlowSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCardRegistrationFlowSpec.swift; sourceTree = "<group>"; };
 		FC658F562216D4FC006C48F2 /* MockNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNavigationItem.swift; sourceTree = "<group>"; };
@@ -1984,7 +1984,7 @@
 		4038DF452446179D0014539B /* GuestBookingRequestScreen */ = {
 			isa = PBXGroup;
 			children = (
-				4038DF43244617960014539B /* KarhooGuestBookingRequestPresenterSpec.swift */,
+				4038DF43244617960014539B /* KarhooGuestCheckoutPresenterSpec.swift */,
 			);
 			path = GuestBookingRequestScreen;
 			sourceTree = "<group>";
@@ -2594,8 +2594,8 @@
 		FC13584521D64F2D005054AE /* BookingRequestScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FC13584A21D6752F005054AE /* MockBookingRequestView.swift */,
-				FC13584621D64F66005054AE /* KarhooBookingRequestPresenterSpec.swift */,
+				FC13584A21D6752F005054AE /* MockCheckoutView.swift */,
+				FC13584621D64F66005054AE /* KarhooCheckoutPresenterSpec.swift */,
 			);
 			path = BookingRequestScreen;
 			sourceTree = "<group>";
@@ -2782,7 +2782,7 @@
 			isa = PBXGroup;
 			children = (
 				FC658F472216D0BB006C48F2 /* MockAddressScreenBuilder.swift */,
-				FC658F462216D0BB006C48F2 /* MockBookingRequestScreenBuilder.swift */,
+				FC658F462216D0BB006C48F2 /* MockCheckoutScreenBuilder.swift */,
 				FC658F422216D0BB006C48F2 /* MockDatePickerScreenBuilder.swift */,
 				09F12DC82232ABD30024D6E9 /* MockPopupDialogScreenBuilder.swift */,
 				09D8B29522F444AA00569C55 /* MockFeedbackScreenBuilder.swift */,
@@ -3824,7 +3824,7 @@
 				14707C7525D54C2100CAD083 /* KarhooTripSummaryPresenterSpec.swift in Sources */,
 				14707CB225D54C2200CAD083 /* KarhooBookingPresenterSpec.swift in Sources */,
 				14707C5D25D54C2100CAD083 /* DatePickerPresenterSpec.swift in Sources */,
-				14707C6325D54C2100CAD083 /* MockBookingRequestView.swift in Sources */,
+				14707C6325D54C2100CAD083 /* MockCheckoutView.swift in Sources */,
 				14707C8A25D54C2200CAD083 /* MockKarhooMapView.swift in Sources */,
 				14707C8925D54C2200CAD083 /* MockDestinationEtaView.swift in Sources */,
 				14707C4F25D54C2100CAD083 /* MockPrebookConfirmationScreenBuilder.swift in Sources */,
@@ -3834,10 +3834,10 @@
 				14707CC725D54C2200CAD083 /* KarhooTripAllocationPresenterSpec.swift in Sources */,
 				14707C7625D54C2100CAD083 /* MockUserDefaults.swift in Sources */,
 				14707CC825D54C2200CAD083 /* MockError.swift in Sources */,
-				14707C7C25D54C2100CAD083 /* KarhooBookingRequestPresenterSpec.swift in Sources */,
+				14707C7C25D54C2100CAD083 /* KarhooCheckoutPresenterSpec.swift in Sources */,
 				14707CAD25D54C2200CAD083 /* MockRidesListView.swift in Sources */,
 				14707C3C25D54C2100CAD083 /* BookingAllocationSpinnerPresenterSpec.swift in Sources */,
-				14707C6A25D54C2100CAD083 /* MockBookingRequestScreenBuilder.swift in Sources */,
+				14707C6A25D54C2100CAD083 /* MockCheckoutScreenBuilder.swift in Sources */,
 				14707CD725D54C2200CAD083 /* MockSideMenuHandler.swift in Sources */,
 				14707C7F25D54C2100CAD083 /* BookingMapPresenterSpec.swift in Sources */,
 				14707C8E25D54C2200CAD083 /* BaseViewControllerSpec.swift in Sources */,
@@ -3866,7 +3866,7 @@
 				14707C9825D54C2200CAD083 /* MockTripAllocationView.swift in Sources */,
 				14707C4B25D54C2100CAD083 /* PopupDialogView.swift in Sources */,
 				14707CD225D54C2200CAD083 /* MockQuoteSorter.swift in Sources */,
-				14707CC125D54C2200CAD083 /* KarhooGuestBookingRequestPresenterSpec.swift in Sources */,
+				14707CC125D54C2200CAD083 /* KarhooGuestCheckoutPresenterSpec.swift in Sources */,
 				14707C5625D54C2100CAD083 /* MockTimeScheduler.swift in Sources */,
 				14707C6025D54C2100CAD083 /* BookingAddressBarPresenterSpec.swift in Sources */,
 				14707CC925D54C2200CAD083 /* MockTripSummaryView.swift in Sources */,

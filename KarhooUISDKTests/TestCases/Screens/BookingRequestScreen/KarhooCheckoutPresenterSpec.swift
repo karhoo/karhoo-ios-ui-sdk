@@ -1,5 +1,5 @@
 //
-//  BookingRequestPresenterSpec.swift
+//  KarhooCheckoutPresenterSpec.swift
 //  Karhoo
 //
 //
@@ -10,10 +10,10 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooBookingRequestPresenterSpec: XCTestCase {
+class KarhooCheckoutPresenterSpec: XCTestCase {
 
-    private var testObject: FormBookingRequestPresenter!
-    private var mockView: MockBookingRequestView!
+    private var testObject: KarhooCheckoutPresenter!
+    private var mockView: MockCheckoutView!
     private var testQuote: Quote!
     private var testBookingDetails: BookingDetails!
     private var testCallbackResult: ScreenResult<TripInfo>?
@@ -29,7 +29,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        mockView = MockBookingRequestView()
+        mockView = MockCheckoutView()
         testQuote = TestUtil.getRandomQuote(highPrice: 10)
         testBookingDetails = TestUtil.getRandomBookingDetails()
         mockUserService = MockUserService()
@@ -164,7 +164,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
-        XCTAssertFalse(mockView.isBookingRequestViewVisible)
+        XCTAssertFalse(mockView.isCheckoutViewVisible)
     }
 
     /**
@@ -323,12 +323,12 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
     func testFixedQuoteHidesBaseFare() {
         testQuote = TestUtil.getRandomQuote(highPrice: 10, quoteType: .fixed)
 
-        let fixedFareRequestScreen = FormBookingRequestPresenter(quote: testQuote,
-                                                                   bookingDetails: testBookingDetails,
-                                                                   bookingMetadata: mockBookingMetadata,
-                                                                   tripService: mockTripService,
-                                                                   userService: mockUserService,
-                                                                   callback: bookingRequestTrip)
+        let fixedFareRequestScreen = KarhooCheckoutPresenter(quote: testQuote,
+                                                             bookingDetails: testBookingDetails,
+                                                             bookingMetadata: mockBookingMetadata,
+                                                             tripService: mockTripService,
+                                                             userService: mockUserService,
+                                                             callback: bookingRequestTrip)
 
         fixedFareRequestScreen.load(view: mockView)
 
@@ -374,7 +374,7 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
      */
     func testAppEnteringBackgroundWhenNotRequestingTrip() {
         mockAppStateNotifier.signalAppDidEnterBackground()
-        XCTAssertFalse(mockView.isBookingRequestViewVisible)
+        XCTAssertFalse(mockView.isCheckoutViewVisible)
         XCTAssertNil(testCallbackResult?.completedValue())
     }
 
@@ -417,16 +417,16 @@ class KarhooBookingRequestPresenterSpec: XCTestCase {
 
     private func loadTestObject(configuration: AuthenticationMethod = .karhooUser) {
         KarhooTestConfiguration.authenticationMethod = configuration
-        testObject = FormBookingRequestPresenter(quote: testQuote,
-                                                   bookingDetails: testBookingDetails,
-                                                   bookingMetadata: mockBookingMetadata,
-                                                   tripService: mockTripService,
-                                                   userService: mockUserService,
-                                                   analytics: mockAnalytics,
-                                                   appStateNotifier: mockAppStateNotifier,
-                                                   baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
-                                                   paymentNonceProvider: mockPaymentNonceProvider,
-                                                   callback: bookingRequestTrip)
+        testObject = KarhooCheckoutPresenter(quote: testQuote,
+                                             bookingDetails: testBookingDetails,
+                                             bookingMetadata: mockBookingMetadata,
+                                             tripService: mockTripService,
+                                             userService: mockUserService,
+                                             analytics: mockAnalytics,
+                                             appStateNotifier: mockAppStateNotifier,
+                                             baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
+                                             paymentNonceProvider: mockPaymentNonceProvider,
+                                             callback: bookingRequestTrip)
         testObject.load(view: mockView)
     }
 }
