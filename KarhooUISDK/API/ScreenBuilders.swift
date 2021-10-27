@@ -16,7 +16,7 @@ public protocol ScreenBuilders {
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
     var tripScreenBuilder: TripScreenBuilder { get }
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
+    var checkoutScreenBuilder: CheckoutScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
@@ -39,8 +39,8 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
         return KarhooBookingScreenBuilder()
     }
 
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        return bookingRequestBuilder()
+    var checkoutScreenBuilder: CheckoutScreenBuilder {
+        return checkoutBuilder()
     }
 
     var datePickerScreenBuilder: DatePickerScreenBuilder {
@@ -95,11 +95,11 @@ public extension ScreenBuilders {
         return KarhooTripViewController.KarhooTripScreenBuilder()
     }
 
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        return bookingRequestBuilder()
+    var checkoutScreenBuilder: CheckoutScreenBuilder {
+        return checkoutBuilder()
     }
 
-    func bookingRequestBuilder() -> BookingRequestScreenBuilder {
-        return FormBookingRequestViewController.Builder()
+    func checkoutBuilder() -> CheckoutScreenBuilder {
+        return KarhooCheckoutViewController.Builder()
     }
 }
