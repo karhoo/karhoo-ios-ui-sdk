@@ -248,7 +248,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showBookingRequestView(true)
+        showCheckoutView(true)
     }
     
     override func viewDidLoad() {
@@ -277,7 +277,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.details = details
     }
     
-    func showBookingRequestView(_ show: Bool) {
+    func showCheckoutView(_ show: Bool) {
         containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
         UIView.animate(withDuration: drawAnimationTime,
                        animations: { [weak self] in

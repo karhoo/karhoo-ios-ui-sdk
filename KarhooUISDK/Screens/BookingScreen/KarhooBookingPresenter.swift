@@ -19,7 +19,7 @@ final class KarhooBookingPresenter {
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
-    private let bookingRequestScreenBuilder: CheckoutScreenBuilder
+    private let checkoutScreenBuilder: CheckoutScreenBuilder
     private let prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
@@ -36,7 +36,7 @@ final class KarhooBookingPresenter {
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         bookingRequestScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
+         checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
@@ -50,7 +50,7 @@ final class KarhooBookingPresenter {
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
-        self.bookingRequestScreenBuilder = bookingRequestScreenBuilder
+        self.checkoutScreenBuilder = checkoutScreenBuilder
         self.prebookConfirmationScreenBuilder = prebookConfirmationScreenBuilder
         self.addressScreenBuilder = addressScreenBuilder
         self.datePickerScreenBuilder = datePickerScreenBuilder
@@ -68,22 +68,22 @@ final class KarhooBookingPresenter {
         bookingStatus.remove(observer: self)
     }
 
-    private func showBookingRequestView(quote: Quote,
-                                        bookingDetails: BookingDetails,
-                                        bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
-        let bookingRequestView = bookingRequestScreenBuilder
+    private func showCheckoutView(quote: Quote,
+                                  bookingDetails: BookingDetails,
+                                  bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
+        let checkoutView = checkoutScreenBuilder
             .buildCheckoutScreen(quote: quote,
-                                       bookingDetails: bookingDetails,
-                                       bookingMetadata: bookingMetadata,
-                                       callback: { [weak self] result in
-                                        self?.view?.presentedViewController?.dismiss(animated: false, completion: {
-                                                self?.bookingRequestCompleted(result: result,
-                                                                              quote: quote,
-                                                                              details: bookingDetails)
-                                            })
-                                        })
+                                 bookingDetails: bookingDetails,
+                                 bookingMetadata: bookingMetadata,
+                                 callback: { [weak self] result in
+                                    self?.view?.presentedViewController?.dismiss(animated: false, completion: {
+                                            self?.bookingRequestCompleted(result: result,
+                                                                          quote: quote,
+                                                                          details: bookingDetails)
+                                    })
+            })
 
-        view?.showAsOverlay(item: bookingRequestView, animated: false)
+        view?.showAsOverlay(item: checkoutView, animated: false)
     }
 
     private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: BookingDetails) {
@@ -257,7 +257,7 @@ extension KarhooBookingPresenter: BookingPresenter {
             return
         }
 
-        showBookingRequestView(quote: quote, bookingDetails: bookingDetails)
+        showCheckoutView(quote: quote, bookingDetails: bookingDetails)
     }
 
     func showRidesList(presentationStyle: UIModalPresentationStyle?) {

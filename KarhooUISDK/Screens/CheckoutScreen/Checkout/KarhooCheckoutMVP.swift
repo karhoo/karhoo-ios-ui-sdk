@@ -1,5 +1,5 @@
 //
-//  BookingRequestMVP.swift
+//  CheckoutMVP.swift
 //  Karhoo
 //
 //
@@ -21,7 +21,7 @@ protocol CheckoutPresenter {
 }
 
 protocol CheckoutView: BaseViewController {
-    func showBookingRequestView(_ show: Bool)
+    func showCheckoutView(_ show: Bool)
     func setRequestingState()
     func setAddFlightDetailsState()
     func setPassenger(details: PassengerDetails?)

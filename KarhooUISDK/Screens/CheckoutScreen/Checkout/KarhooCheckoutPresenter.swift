@@ -336,7 +336,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        view?.showBookingRequestView(false)
+        view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
@@ -363,7 +363,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func didPressClose() {
         PassengerInfo.shared.set(details: view?.getPassengerDetails())
-        view?.showBookingRequestView(false)
+        view?.showCheckoutView(false)
     }
 
     func screenHasFadedOut() {
