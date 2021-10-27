@@ -39,7 +39,7 @@ final class KarhooTimePriceView: UIView, TimePriceView {
     private var baseFareIcon: UIImageView!
     
     private var fareExplanationButton: UIButton!
-    private weak var actions: TimePriceViewActions?
+    private weak var delegate: TimePriceViewDelegate?
 
     init() {
         super.init(frame: .zero)
@@ -163,8 +163,8 @@ final class KarhooTimePriceView: UIView, TimePriceView {
             .map { $0.isActive = true }
     }
     
-    func set(actions: TimePriceViewActions) {
-        self.actions = actions
+    func set(actions: TimePriceViewDelegate) {
+        self.delegate = actions
     }
 
     func set(price: String?) {
@@ -196,6 +196,6 @@ final class KarhooTimePriceView: UIView, TimePriceView {
 
     @objc
     private func didPressFareExplanation() {
-        actions?.didPressFareExplanation()
+        delegate?.didPressFareExplanation()
     }
 }

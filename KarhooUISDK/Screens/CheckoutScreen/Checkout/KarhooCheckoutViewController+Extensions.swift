@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-extension KarhooCheckoutViewController: TimePriceViewActions {
+extension KarhooCheckoutViewController: TimePriceViewDelegate {
     func didPressFareExplanation() {
         presenter.didPressFareExplanation()
     }
