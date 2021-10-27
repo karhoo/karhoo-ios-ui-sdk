@@ -353,16 +353,16 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         backButton.tintColor = KarhooUI.colors.medGrey
     }
     
-    final class Builder: BookingRequestScreenBuilder {
-        func buildBookingRequestScreen(quote: Quote,
+    final class Builder: CheckoutScreenBuilder {
+        func buildCheckoutScreen(quote: Quote,
                                        bookingDetails: BookingDetails,
                                        bookingMetadata: [String: Any]?,
                                        callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(quote: quote,
-                                              bookingDetails: bookingDetails,
-                                              bookingMetadata: bookingMetadata,
-                                              callback: callback)
+                                                    bookingDetails: bookingDetails,
+                                                    bookingMetadata: bookingMetadata,
+                                                    callback: callback)
             return KarhooCheckoutViewController(presenter: presenter)
         }
     }

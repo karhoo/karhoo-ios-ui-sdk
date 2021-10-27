@@ -19,7 +19,7 @@ final class KarhooBookingPresenter {
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
-    private let bookingRequestScreenBuilder: BookingRequestScreenBuilder
+    private let bookingRequestScreenBuilder: CheckoutScreenBuilder
     private let prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
@@ -36,7 +36,7 @@ final class KarhooBookingPresenter {
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         bookingRequestScreenBuilder: BookingRequestScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
+         bookingRequestScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.bookingRequest(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
@@ -72,7 +72,7 @@ final class KarhooBookingPresenter {
                                         bookingDetails: BookingDetails,
                                         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
         let bookingRequestView = bookingRequestScreenBuilder
-            .buildBookingRequestScreen(quote: quote,
+            .buildCheckoutScreen(quote: quote,
                                        bookingDetails: bookingDetails,
                                        bookingMetadata: bookingMetadata,
                                        callback: { [weak self] result in
