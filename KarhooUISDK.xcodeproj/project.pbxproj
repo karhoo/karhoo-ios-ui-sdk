@@ -1266,18 +1266,18 @@
 		0949545121FF6FBB00D930C0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				5C9D9917242CEBC3004F1DBD /* MockAnalytics.swift */,
-				5C3C671024603B5700C736E9 /* MockURLOpener.swift */,
-				5C20976F244475660097BA3A /* MockKarhooPaymentView.swift */,
-				09B30F682253986B007768CF /* mockImage.png */,
-				FC435F6F2211D7AF00FB6BB5 /* MockStackButtonView.swift */,
-				09022B232239133700C4A7EE /* MockViewController.swift */,
-				09F12DC622313E300024D6E9 /* MockBaseViewController.swift */,
-				0949545D2201C3E900D930C0 /* MockUserLocationProvider.swift */,
-				0949545421FF7CDB00D930C0 /* MockKarhooMapView.swift */,
-				094954562201C13E00D930C0 /* MockPhoneNumberCaller.swift */,
-				0949545B2201C2BA00D930C0 /* MockDataFormatterType.swift */,
 				14A5B99B25C1BB3500986616 /* MockAddressBarView.swift */,
+				5C9D9917242CEBC3004F1DBD /* MockAnalytics.swift */,
+				09F12DC622313E300024D6E9 /* MockBaseViewController.swift */,
+				0949545B2201C2BA00D930C0 /* MockDataFormatterType.swift */,
+				09B30F682253986B007768CF /* mockImage.png */,
+				0949545421FF7CDB00D930C0 /* MockKarhooMapView.swift */,
+				5C20976F244475660097BA3A /* MockKarhooPaymentView.swift */,
+				094954562201C13E00D930C0 /* MockPhoneNumberCaller.swift */,
+				FC435F6F2211D7AF00FB6BB5 /* MockStackButtonView.swift */,
+				5C3C671024603B5700C736E9 /* MockURLOpener.swift */,
+				0949545D2201C3E900D930C0 /* MockUserLocationProvider.swift */,
+				09022B232239133700C4A7EE /* MockViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1364,16 +1364,15 @@
 		0968F0E321BE7FF100745370 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				0968D82622F8648200047FCF /* TripFeedback */,
-				093D2E6C2224345700D5F031 /* PopupDialog */,
-				FC83E2E0221EED43008FE26D /* Trip */,
-				FC83E2EC221EEDA3008FE26D /* TripSummary */,
-				FC435F522211D34400FB6BB5 /* Rides */,
-				FCAD1C0C220884B900C3AD1D /* PrebookConfirmation */,
+				0968F0E421BE7FF100745370 /* Address */,
 				09E35D4721E5117C003E840C /* BookingScreen */,
 				090F08DB21C934EB000C7E50 /* DatePickerScreen */,
-				09E1475321C7ED06003BB30B /* FlightDetails */,
-				0968F0E421BE7FF100745370 /* Address */,
+				093D2E6C2224345700D5F031 /* PopupDialog */,
+				FCAD1C0C220884B900C3AD1D /* PrebookConfirmation */,
+				FC435F522211D34400FB6BB5 /* Rides */,
+				FC83E2E0221EED43008FE26D /* Trip */,
+				0968D82622F8648200047FCF /* TripFeedback */,
+				FC83E2EC221EEDA3008FE26D /* TripSummary */,
 				FC658F7F221726C8006C48F2 /* UINavigationSpec.swift */,
 			);
 			path = Screen;
@@ -1417,24 +1416,24 @@
 		0968F10321BE859400745370 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */,
+				09F86F83222D84A8008C86DE /* MockAppStateNotifier.swift */,
+				09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */,
+				097050A421FF0AF300E53AD2 /* MockBookingStatus.swift */,
+				FC435F692211D67200FB6BB5 /* MockCancelRideBehaviour.swift */,
+				FC435F712211D7F500FB6BB5 /* MockFeedbackMailComposter.swift */,
+				097800A9226F4886008772E4 /* MockLocationService.swift */,
+				FC658F562216D4FC006C48F2 /* MockNavigationItem.swift */,
 				092F282022B25C7800AF8E0E /* MockPaymentNonceProvider.swift */,
 				094B764522CE734D00326CE1 /* MockThreeDSecureProvider.swift */,
-				095D7455231825C7002253C0 /* MockTripRatingCache.swift */,
-				09F86F85222D8553008C86DE /* MockBookingDetailsObserver.swift */,
-				097800A9226F4886008772E4 /* MockLocationService.swift */,
-				09F86F83222D84A8008C86DE /* MockAppStateNotifier.swift */,
-				09F86F7F222D60AB008C86DE /* TestBroadcaster.swift */,
 				FC83E302221EF0B9008FE26D /* MockTimeFetcher.swift */,
-				FC658F562216D4FC006C48F2 /* MockNavigationItem.swift */,
 				FC435F8D2211E3FA00FB6BB5 /* MockTimeScheduler.swift */,
-				FC435F712211D7F500FB6BB5 /* MockFeedbackMailComposter.swift */,
+				095D7455231825C7002253C0 /* MockTripRatingCache.swift */,
 				FC435F6C2211D76100FB6BB5 /* MockTripsProvider.swift */,
 				FC435F6B2211D76100FB6BB5 /* MockTripsSorter.swift */,
-				FC435F692211D67200FB6BB5 /* MockCancelRideBehaviour.swift */,
-				097050A421FF0AF300E53AD2 /* MockBookingStatus.swift */,
 				09BDD18721C2C20A0074421C /* MockUserDefaults.swift */,
 				09AAEF9721C4283200A04EEC /* MockValidator.swift */,
-				14A5B97225C1AC7C00986616 /* MockAlertHandler.swift */,
+				09F86F7F222D60AB008C86DE /* TestBroadcaster.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1761,18 +1760,18 @@
 		09DCC7ED21BE7CE000DF02B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				6B5D607B26E8E43400163EFE /* PassengerDetails */,
-				0968D82322F82F7C00047FCF /* TripFeedbackScreen */,
-				FC83E2E1221EED4F008FE26D /* TripSummaryScreen */,
-				FC83E2B5221EEBE2008FE26D /* TripScreen */,
-				FC435F452211D30700FB6BB5 /* Rides */,
-				09E35D5F21E5118A003E840C /* BookingScreen */,
-				FC13584521D64F2D005054AE /* BookingRequestScreen */,
-				090F08E221C93591000C7E50 /* DatePickerScreen */,
 				09DCC7EE21BE7CE000DF02B9 /* AddressScreen */,
+				09E35D5F21E5118A003E840C /* BookingScreen */,
+				FC13584521D64F2D005054AE /* CheckoutScreen */,
+				090F08E221C93591000C7E50 /* DatePickerScreen */,
+				4038DF452446179D0014539B /* GuestCheckoutScreen */,
+				6B5D607B26E8E43400163EFE /* PassengerDetails */,
 				FC046596221488D8004E76FE /* PopupDialogScreen */,
 				FCAD1BFE22087C4700C3AD1D /* PrebookConfirmationScreen */,
-				4038DF452446179D0014539B /* GuestBookingRequestScreen */,
+				FC435F452211D30700FB6BB5 /* Rides */,
+				0968D82322F82F7C00047FCF /* TripFeedbackScreen */,
+				FC83E2B5221EEBE2008FE26D /* TripScreen */,
+				FC83E2E1221EED4F008FE26D /* TripSummaryScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1811,13 +1810,6 @@
 				09DE8D45221C658B00451B3C /* BraintreePaymentScreensBuilder.swift */,
 			);
 			path = PaymentScreen;
-			sourceTree = "<group>";
-		};
-		09E1475321C7ED06003BB30B /* FlightDetails */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FlightDetails;
 			sourceTree = "<group>";
 		};
 		09E35D4721E5117C003E840C /* BookingScreen */ = {
@@ -1981,12 +1973,12 @@
 			path = KarhooTextInputView;
 			sourceTree = "<group>";
 		};
-		4038DF452446179D0014539B /* GuestBookingRequestScreen */ = {
+		4038DF452446179D0014539B /* GuestCheckoutScreen */ = {
 			isa = PBXGroup;
 			children = (
 				4038DF43244617960014539B /* KarhooGuestCheckoutPresenterSpec.swift */,
 			);
-			path = GuestBookingRequestScreen;
+			path = GuestCheckoutScreen;
 			sourceTree = "<group>";
 		};
 		403E907722C527EE00F39B91 /* AddPaymentView */ = {
@@ -2553,23 +2545,23 @@
 		FC13583821D64CFB005054AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				094B764322CE731200326CE1 /* TripStatesGetterSpec.swift */,
-				094B763F22CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift */,
-				095D7457231827B4002253C0 /* KarhooTripRatingCacheSpec.swift */,
-				094B763D22CE729300326CE1 /* BraintreePaymentNonceProviderSpec.swift */,
-				09D293C422C651C10051C455 /* KarhooDateFormatterSpec.swift */,
-				09D293C322C651C10051C455 /* QtaStringFormatterSpec.swift */,
-				09B30F5A224CE8BF007768CF /* CancelRideBehaviourSpec.swift */,
 				09C169BF2281B7C700CF7E66 /* BaseViewControllerSpec.swift */,
-				09B30F5B224CE8BF007768CF /* TripsListSorterSpec.swift */,
-				FCF7E68E2226A76B00EEBF98 /* KarhooBookingStatusSpec.swift */,
-				FC435F852211E26400FB6BB5 /* KarhooTripsProviderSpec.swift */,
-				FC435F7B2211DE2A00FB6BB5 /* StackButtonViewSpec.swift */,
-				FC13583B21D64D52005054AE /* TripInfoUtilitySpec.swift */,
-				FC435F762211DC3B00FB6BB5 /* ViewModel */,
+				094B763D22CE729300326CE1 /* BraintreePaymentNonceProviderSpec.swift */,
+				094B763F22CE729400326CE1 /* BraintreeThreeDSecureProviderSpec.swift */,
+				09B30F5A224CE8BF007768CF /* CancelRideBehaviourSpec.swift */,
 				FC13584021D64E63005054AE /* ConstraintSwitcher */,
 				14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */,
+				FCF7E68E2226A76B00EEBF98 /* KarhooBookingStatusSpec.swift */,
+				09D293C422C651C10051C455 /* KarhooDateFormatterSpec.swift */,
+				095D7457231827B4002253C0 /* KarhooTripRatingCacheSpec.swift */,
+				FC435F852211E26400FB6BB5 /* KarhooTripsProviderSpec.swift */,
+				09D293C322C651C10051C455 /* QtaStringFormatterSpec.swift */,
+				FC435F7B2211DE2A00FB6BB5 /* StackButtonViewSpec.swift */,
 				D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */,
+				FC13583B21D64D52005054AE /* TripInfoUtilitySpec.swift */,
+				09B30F5B224CE8BF007768CF /* TripsListSorterSpec.swift */,
+				094B764322CE731200326CE1 /* TripStatesGetterSpec.swift */,
+				FC435F762211DC3B00FB6BB5 /* ViewModel */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2591,13 +2583,13 @@
 			path = ConstraintSwitcher;
 			sourceTree = "<group>";
 		};
-		FC13584521D64F2D005054AE /* BookingRequestScreen */ = {
+		FC13584521D64F2D005054AE /* CheckoutScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC13584A21D6752F005054AE /* MockCheckoutView.swift */,
 				FC13584621D64F66005054AE /* KarhooCheckoutPresenterSpec.swift */,
 			);
-			path = BookingRequestScreen;
+			path = CheckoutScreen;
 			sourceTree = "<group>";
 		};
 		FC13584C21D67823005054AE /* Service */ = {
@@ -2605,10 +2597,10 @@
 			children = (
 				5C9D9919242CED15004F1DBD /* MockAddressService.swift */,
 				407EC7EF22CF93DC00F24CFC /* MockAnalyticsService.swift */,
-				FC658F612216D9C1006C48F2 /* MockPaymentService.swift */,
-				FC13585121D67971005054AE /* MockTripService.swift */,
 				FC83E300221EF042008FE26D /* MockDriverTrackingService.swift */,
 				408AB682234F418B00B351B2 /* MockFareService.swift */,
+				FC658F612216D9C1006C48F2 /* MockPaymentService.swift */,
+				FC13585121D67971005054AE /* MockTripService.swift */,
 				14A5B97A25C1AD4600986616 /* MockUserService.swift */,
 			);
 			path = Service;
@@ -2784,14 +2776,14 @@
 				FC658F472216D0BB006C48F2 /* MockAddressScreenBuilder.swift */,
 				FC658F462216D0BB006C48F2 /* MockCheckoutScreenBuilder.swift */,
 				FC658F422216D0BB006C48F2 /* MockDatePickerScreenBuilder.swift */,
-				09F12DC82232ABD30024D6E9 /* MockPopupDialogScreenBuilder.swift */,
 				09D8B29522F444AA00569C55 /* MockFeedbackScreenBuilder.swift */,
-				FC658F452216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift */,
 				FC658F702216F8B7006C48F2 /* MockPaymentScreenBuilder.swift */,
-				FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */,
-				FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */,
+				09F12DC82232ABD30024D6E9 /* MockPopupDialogScreenBuilder.swift */,
+				FC658F452216D0BB006C48F2 /* MockPrebookConfirmationScreenBuilder.swift */,
 				FC4B92EC222E982400FE33B4 /* MockRideDetailsScreenBuilder.swift */,
 				5C4397CF22615F37006BC6C4 /* MockRidesScreenBuilder.swift */,
+				FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */,
+				FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
