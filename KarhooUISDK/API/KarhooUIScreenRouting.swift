@@ -15,7 +15,7 @@ public protocol Routing {
     func rideDetails() -> RideDetailsScreenBuilder
     func booking() -> BookingScreenBuilder
     func tripScreen() -> TripScreenBuilder
-    func bookingRequest() -> CheckoutScreenBuilder
+    func checkout() -> CheckoutScreenBuilder
 }
 
 public final class UISDKScreenRouting: Routing {
@@ -54,8 +54,7 @@ public final class UISDKScreenRouting: Routing {
         return routing.tripScreenBuilder
     }
 
-    // TODO: Get approval from Mostafa to update this method name as well
-    public func bookingRequest() -> CheckoutScreenBuilder {
+    public func checkout() -> CheckoutScreenBuilder {
         return routing.checkoutScreenBuilder
     }
 
