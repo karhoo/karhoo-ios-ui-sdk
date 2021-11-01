@@ -193,21 +193,35 @@ class ViewController: UIViewController {
 //                            locale: "en")
 
         booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
-                                         passengerDetails: passangerDetails,
-                                         callback: { [weak self] result in
-                                          switch result {
-                                          case .completed(let bookingScreenResult):
-                                            switch bookingScreenResult {
-                                            case .tripAllocated(let trip): (self?.booking as? BookingScreen)?.openTrip(trip)
-                                            default: break
-                                            }
-                                          default: break
-                                          }
-                                         }) as? BookingScreen
-
+                                                                    passengerDetails: passangerDetails,
+                                                                    callback: { [weak self] result in
+                                                                        self?.handleBookingScreenResult(result: result)
+                                                                    }) as? BookingScreen
         self.present(booking!,
                      animated: true,
                      completion: nil)
+    }
+    
+    private func handleBookingScreenResult(result: ScreenResult<BookingScreenResult>) {
+        switch result {
+            
+        case .completed(let bookingScreenResult):
+          switch bookingScreenResult {
+              
+          case .tripAllocated(let trip):
+              (booking as? BookingScreen)?.openTrip(trip)
+              
+          case .prebookConfirmed(let trip, let prebookConfirmationAction):
+              if case .rideDetails = prebookConfirmationAction {
+                  (booking as? BookingScreen)?.openRideDetailsFor(trip)
+              }
+              
+          default:
+              break
+          }
+        default:
+            break
+        }
     }
 
     private func logout() {

@@ -20,6 +20,8 @@ public protocol BookingScreen: BaseViewController {
     func openRidesList(presentationStyle: UIModalPresentationStyle?)
 
     func resetAndLocate()
+    
+    func openRideDetailsFor(_ trip: TripInfo)
 }
 
 /* internal interface for controlling booking screen */
@@ -75,6 +77,8 @@ protocol BookingPresenter {
     func exitPressed()
 
     func goToTripView(trip: TripInfo)
+    
+    func showRideDetailsView(trip: TripInfo)
 }
 
 public enum BookingScreenResult {

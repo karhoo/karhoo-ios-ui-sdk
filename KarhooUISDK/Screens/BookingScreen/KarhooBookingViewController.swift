@@ -359,6 +359,10 @@ extension KarhooBookingViewController: BookingScreen {
     func openTrip(_ trip: TripInfo) {
         presenter.goToTripView(trip: trip)
     }
+    
+    func openRideDetailsFor(_ trip: TripInfo) {
+        presenter.showRideDetailsView(trip: trip)
+    }
 }
 
 // MARK: Builder
