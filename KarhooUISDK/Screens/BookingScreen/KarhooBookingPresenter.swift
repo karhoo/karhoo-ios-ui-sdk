@@ -239,7 +239,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     func tripWaitOnRideDetails(trip: TripInfo) {
         view?.resetAndLocate()
         view?.hideAllocationScreen()
-        showRideDetails(trip: trip)
+        showRideDetailsView(trip: trip)
     }
 
     func tripSuccessfullyCancelled() {
@@ -351,7 +351,7 @@ extension KarhooBookingPresenter: BookingPresenter {
                 goToTripView(trip: trip)
             case .prebookConfirmed(let trip, let action)?:
                 if case .rideDetails = action {
-                    showRideDetails(trip: trip)
+                    showRideDetailsView(trip: trip)
                 }
             default:
                 break
@@ -362,7 +362,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         callback(result)
     }
 
-    func showRideDetails(trip: TripInfo) {
+    func showRideDetailsView(trip: TripInfo) {
         let rideDetailsViewController = rideDetailsScreenBuilder
             .buildOverlayRideDetailsScreen(trip: trip,
                                            callback: { [weak self] result in
