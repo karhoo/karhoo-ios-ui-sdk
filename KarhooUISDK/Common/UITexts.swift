@@ -260,13 +260,29 @@ public enum UITexts {
         public static let add = "Text.Booking.PassengerDetails.Add".localized
     }
     
-    public enum VehicleTags {
-        public static let electric = "Vehicle.Tag.Electric".localized
-        public static let hybrid = "Vehicle.Tag.Hybrid".localized
-        public static let wheelchair = "Vehicle.Tag.Wheelchair".localized
-        public static let childseat = "Vehicle.Tag.Childseat".localized
-        public static let taxi = "Vehicle.Tag.Taxi".localized
-        public static let executive = "Vehicle.Tag.Executive".localized
+    public enum VehicleClass {
+        public static let saloon = "Text.VehicleClass.Saloon".localized
+        public static let taxi = "Text.VehicleClass.Taxi".localized
+        public static let mpv = "Text.VehicleClass.MPV".localized
+        public static let exec = "Text.VehicleClass.Exec".localized
+        public static let moto = "Text.VehicleClass.Moto".localized
+        public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
+    }
+    
+    public enum VehicleType {
+        public static let moto = "Text.VehicleType.Moto".localized
+        public static let standard = "Text.VehicleType.Standard".localized
+        public static let mpv = "Text.VehicleType.MPV".localized
+        public static let bus = "Text.VehicleType.Bus".localized
+    }
+    
+    public enum VehicleTag {
+        public static let electric = "Text.VehicleTag.Electric".localized
+        public static let hybrid = "Text.VehicleTag.Hybrid".localized
+        public static let wheelchair = "Text.VehicleTag.Wheelchair".localized
+        public static let childseat = "Text.VehicleTag.Childseat".localized
+        public static let taxi = "Text.VehicleTag.Taxi".localized
+        public static let executive = "Text.VehicleTag.Executive".localized
     }
     
     public enum CountryCodeSelection {

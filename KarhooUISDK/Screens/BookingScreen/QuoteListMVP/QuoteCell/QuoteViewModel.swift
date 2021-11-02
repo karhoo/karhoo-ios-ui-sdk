@@ -128,8 +128,8 @@ final class QuoteViewModel {
                                                          bookingDetails: bookingDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        // TODO: to be reverted later to carType - vehicleClass is deprecated
-        self.carType = quote.vehicle.vehicleClass
+        // TODO: to be reverted later to localized carType - vehicleClass is deprecated
+        self.carType = quote.vehicle.localizedVehicleClass
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
