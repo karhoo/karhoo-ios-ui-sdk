@@ -19,17 +19,17 @@ enum VehicleTag: String {
     var title: String {
         switch self {
         case .electric:
-            return UITexts.VehicleTags.electric
+            return UITexts.VehicleTag.electric
         case .hybrid:
-            return UITexts.VehicleTags.hybrid
+            return UITexts.VehicleTag.hybrid
         case .wheelchair:
-            return UITexts.VehicleTags.wheelchair
+            return UITexts.VehicleTag.wheelchair
         case .childSeat:
-            return UITexts.VehicleTags.childseat
+            return UITexts.VehicleTag.childseat
         case .taxi:
-            return UITexts.VehicleTags.taxi
+            return UITexts.VehicleTag.taxi
         case .executive:
-            return UITexts.VehicleTags.executive
+            return UITexts.VehicleTag.executive
         }
     }
     
