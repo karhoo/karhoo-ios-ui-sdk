@@ -202,7 +202,7 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
     
     private func addLabels(for categories: [QuoteCategory]) {
         categories.forEach { category in
-            let label = createLabel(category: category.categoryName)
+            let label = createLabel(category: category.localizedCategoryName)
             stackView.addArrangedSubview(label)
             _ = [label.centerYAnchor.constraint(equalTo: stackView.centerYAnchor)].map { $0.isActive = true }
             labels.append(label)

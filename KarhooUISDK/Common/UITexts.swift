@@ -260,13 +260,26 @@ public enum UITexts {
         public static let add = "Text.Booking.PassengerDetails.Add".localized
     }
     
+    public enum QuoteCategory {
+        public static let electric = "Text.QuoteCategory.Electric".localized
+        public static let mpv = "Text.QuoteCategory.MPV".localized
+        public static let saloon = "Text.QuoteCategory.Saloon".localized
+        public static let exec = "Text.QuoteCategory.Exec".localized
+        public static let executive = "Text.QuoteCategory.Executive".localized
+        public static let moto = "Text.QuoteCategory.Moto".localized
+        public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
+        public static let taxi = "Text.QuoteCategory.Taxi".localized
+    }
+    
     public enum VehicleClass {
         public static let saloon = "Text.VehicleClass.Saloon".localized
         public static let taxi = "Text.VehicleClass.Taxi".localized
         public static let mpv = "Text.VehicleClass.MPV".localized
         public static let exec = "Text.VehicleClass.Exec".localized
+        public static let executive = "Text.VehicleClass.Executive".localized
         public static let moto = "Text.VehicleClass.Moto".localized
         public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
+        public static let electric = "Text.VehicleClass.Electric".localized
     }
     
     public enum VehicleType {

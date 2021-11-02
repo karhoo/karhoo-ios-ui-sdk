@@ -45,6 +45,7 @@ public enum VehicleClass: String {
     case exec = "EXEC"
     case moto = "MOTO"
     case motorcycle = "MOTORCYCLE"
+    case electric = "ELECTRIC"
     
     var title: String {
         switch self {
@@ -60,6 +61,8 @@ public enum VehicleClass: String {
             return UITexts.VehicleClass.moto
         case .motorcycle:
             return UITexts.VehicleClass.motorcycle
+        case .electric:
+            return UITexts.VehicleClass.electric
         }
     }
 }
