@@ -100,7 +100,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
         adyenDropIn = DropInComponent(paymentMethods: methods,
                                       paymentMethodsConfiguration: configuration,
-                                      style: DropInComponent.Style(tintColor: KarhooUI.colors.primary))
+                                      style: DropInComponent.Style(tintColor: KarhooUI.colors.secondary))
         adyenDropIn?.delegate = self
         adyenDropIn?.environment = paymentFactory.adyenEnvironment()
         adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
