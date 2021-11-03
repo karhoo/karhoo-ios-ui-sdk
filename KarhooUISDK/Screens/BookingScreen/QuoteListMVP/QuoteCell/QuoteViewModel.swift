@@ -19,17 +19,17 @@ enum VehicleTag: String {
     var title: String {
         switch self {
         case .electric:
-            return UITexts.VehicleTags.electric
+            return UITexts.VehicleTag.electric
         case .hybrid:
-            return UITexts.VehicleTags.hybrid
+            return UITexts.VehicleTag.hybrid
         case .wheelchair:
-            return UITexts.VehicleTags.wheelchair
+            return UITexts.VehicleTag.wheelchair
         case .childSeat:
-            return UITexts.VehicleTags.childseat
+            return UITexts.VehicleTag.childseat
         case .taxi:
-            return UITexts.VehicleTags.taxi
+            return UITexts.VehicleTag.taxi
         case .executive:
-            return UITexts.VehicleTags.executive
+            return UITexts.VehicleTag.executive
         }
     }
     
@@ -128,8 +128,8 @@ final class QuoteViewModel {
                                                          bookingDetails: bookingDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        // TODO: to be reverted later to carType - vehicleClass is deprecated
-        self.carType = quote.vehicle.vehicleClass
+        // TODO: to be reverted later to localized carType - vehicleClass is deprecated
+        self.carType = quote.vehicle.localizedVehicleClass
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
