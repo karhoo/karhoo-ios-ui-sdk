@@ -267,7 +267,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                                callback: { [weak self] result in
                                                 switch result {
                                                 case .completed(let result): handleThreeDSecureCheck(result)
-                                                case .cancelledByUser: self?.view?.setDefaultState()
+                                                case .cancelledByUser:
+                                                    self?.view?.resetNonce()
+                                                    self?.view?.setDefaultState()
                                                 }
         })
 
@@ -283,6 +285,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             case .success(let threeDSecureNonce):
                 book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
             }
+            view?.resetNonce()
         }
     }
     
