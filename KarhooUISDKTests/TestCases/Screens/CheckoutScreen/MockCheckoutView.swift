@@ -61,6 +61,11 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
         setDefaultStateCalled = true
     }
     
+    var resetNonceCalled = false
+    func resetNonce() {
+        resetNonceCalled = true
+    }
+    
     var addFlightDetailsStateSet = false
     func setAddFlightDetailsState() {
         addFlightDetailsStateSet = true
