@@ -176,7 +176,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     func testRequestCarCallbackSuccess() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
         testObject.bookTripPressed()
-        mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
+        mockPaymentNonceProvider.triggerResult(OperationResult.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
         testObject.screenHasFadedOut()
         XCTAssert(testCallbackResult?.isComplete() == true)

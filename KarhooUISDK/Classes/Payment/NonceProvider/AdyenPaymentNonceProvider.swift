@@ -19,7 +19,7 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
     }
 
     func getPaymentNonce(user: UserInfo,
-                         organisation: Organisation,
+                         organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         cardFlow.start(cardCurrency: quote.price.currencyCode,

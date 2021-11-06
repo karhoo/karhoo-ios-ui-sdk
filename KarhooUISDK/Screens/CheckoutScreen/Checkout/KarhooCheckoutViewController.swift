@@ -304,10 +304,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         bookingButton.setRequestMode()
     }
     
-    func resetNonce() {
-        paymentNonce = nil
-    }
-    
     func setAddFlightDetailsState() {
         enableUserInteraction()
         poiDetailsInputText.isHidden = false

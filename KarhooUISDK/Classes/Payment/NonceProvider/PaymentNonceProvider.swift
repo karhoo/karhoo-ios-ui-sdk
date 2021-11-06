@@ -19,7 +19,7 @@ enum PaymentNonceProviderResult {
 
 protocol PaymentNonceProvider {
     func getPaymentNonce(user: UserInfo,
-                         organisation: Organisation,
+                         organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void)
 
