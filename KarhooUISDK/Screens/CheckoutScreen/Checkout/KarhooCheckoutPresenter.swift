@@ -267,10 +267,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func submitGuestBooking() {
-        guard let passengerDetails = view?.getPassengerDetails(),
-              let nonce = getPaymentNonceAccordingToAuthState()
+        guard let passengerDetails = view?.getPassengerDetails()
         else {
             view?.setDefaultState()
+            return
+        }
+        guard let nonce = getPaymentNonceAccordingToAuthState()
+        else {
+            view?.retryAddPaymentMethod(showRetryAlert: false)
             return
         }
         
@@ -299,6 +303,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                                 switch result {
                                                 case .completed(let result): handleThreeDSecureCheck(result)
                                                 case .cancelledByUser:
+                                                    self?.view?.resetPaymentNonce()
                                                     self?.view?.setDefaultState()
                                                 }
         })

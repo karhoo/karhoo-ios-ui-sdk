@@ -189,6 +189,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         hasPayment = false
         passengerPaymentTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentSubtitle.text = UITexts.Payment.addPaymentMethod
+        passengerPaymentImage.image = UIImage.uisdkImage("plus_icon")
         
         setNeedsDisplay()
     }

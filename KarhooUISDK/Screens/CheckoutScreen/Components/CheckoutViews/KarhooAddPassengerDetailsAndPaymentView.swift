@@ -104,4 +104,8 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
     func validPassengerDetails() -> Bool {
         return passengerDetailsContainer.validDetails()
     }
+    
+    func noPaymentMethod() {
+        passengerPaymentContainer.noPaymentMethod()
+    }
 }
