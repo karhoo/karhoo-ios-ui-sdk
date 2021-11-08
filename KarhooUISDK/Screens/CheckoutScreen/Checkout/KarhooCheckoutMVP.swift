@@ -27,7 +27,6 @@ protocol CheckoutView: BaseViewController {
     func setPassenger(details: PassengerDetails?)
     func setMoreDetailsState()
     func setDefaultState()
-    func resetNonce()
     func set(quote: Quote)
     func set(price: String?)
     func set(quoteType: String)

@@ -22,7 +22,7 @@ final class BraintreePaymentNonceProviderSpec: XCTestCase {
     private let mockThreeDSecureProvider = MockThreeDSecureProvider()
     private let mockCardRegistrationFlow = MockCardRegistrationFlow()
     private let userInAnOrg: UserInfo = TestUtil.getRandomUser(inOrganisation: true)
-    private let mockOrganisation = Organisation(id: "some", name: "Karhoo", roles: ["bread"])
+    private let mockOrganisation = "OrgId"
     private let mockQuote = TestUtil.getRandomQuote()
     private var mockBaseView = MockBaseViewController()
     private var getNonceResult: PaymentNonceProviderResult?
@@ -47,7 +47,7 @@ final class BraintreePaymentNonceProviderSpec: XCTestCase {
 
     private func loadTestObject() {
         testObject.getPaymentNonce(user: userInAnOrg,
-                                   organisation: mockOrganisation,
+                                   organisationId: mockOrganisation,
                                    quote: mockQuote,
                                    result: getPaymentNonceResult)
     }
