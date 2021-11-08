@@ -4,24 +4,26 @@
 "CURBSIDE" = "Curbside";
 
 /* PickUp Type */
-"DEFAULT" = "Verzuim";
+"DEFAULT" = "STANDAARD";
 
 "ELECTRIC" = "Elektrisch";
 
+"EXEC" = "Executive";
+
 /* English: Error codes */
-"K0001" = "Algemene verzoekfout";
+"K0001" = "Algemene fout in de aanvraag";
 
-"K0002" = "Ongeldige payload van verzoek";
+"K0002" = "Invalid request payload";
 
-"K0003" = "Kan autorisatietoken niet lezen";
+"K0003" = "Could not read authorisation token";
 
-"K0004" = "Verificatie is vereist voor dit pad";
+"K0004" = "Authentication is required for this path";
 
 "K0005" = "Vereiste rol ontbreekt voor dit verzoek";
 
 "K0006" = "Snelheidslimiet overschreden";
 
-"K0007" = "Stroomonderbreker is geactiveerd voor deze route";
+"K0007" = "Circuit breaker has triggered for this route";
 
 /* User errors, K1xxx */
 "K1001" = "Kan gebruiker niet registreren";
@@ -115,12 +117,18 @@
 
 "KSDK03" = "Gebruiker is al ingelogd";
 
-"MEET_AND_GREET" = "Ontmoet en Groet";
+"MEET_AND_GREET" = "Meet & Greet";
+
+"MPV" = "Minibus";
 
 /* Qxxxx errors */
 "Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
 
+"SALOON" = "Standaard voertuig";
+
 "STAND_BY" = "Stand-by";
+
+"TAXI" = "Taxi";
 
 /* "Version" */
 "Text.About.Version" = "Versie";
@@ -134,7 +142,7 @@
 /* Address Bar */
 "Text.AddressBar.AddDestination" = "Bestemming toevoegen";
 
-"Text.AddressBar.AddPickup" = "Ophalen toevoegen";
+"Text.AddressBar.AddPickup" = "Ophaallocatie toevoegen";
 
 "Text.AddressBar.EnterPickupLocation" = "Vul ophaallocatie in";
 
@@ -150,7 +158,7 @@
 "Text.Airport.HelpfulMessage" = "Voer een geldig vluchtnummer in";
 
 /* "Airport Pickup" used on screen for airport bookinga */
-"Text.Airport.Pickup" = "Luchthaven pick-up";
+"Text.Airport.Pickup" = "Ophalen op de luchthaven";
 
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Alle";
@@ -170,12 +178,12 @@
 /* Country Code Selection */
 "Text.Booking.CountryCodeSelection.Title" = "Land / Regio";
 
-"Text.Booking.EnterDestination" = "Voer bestemming in om beschikbare vloten te zien";
+"Text.Booking.EnterDestination" = "Voer bestemming in om beschikbare taxibedrijven te zien";
 
 /* Checkout component */
-"Text.Booking.EstimatedInfoBox" = "Deze vloot is een niet-gereguleerde taxi. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc). Raadpleeg de algemene voorwaarden van de vloot voor meer informatie.";
+"Text.Booking.EstimatedInfoBox" = "Dit taxibedrijf is een niet-gereguleerde taxi. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc). Raadpleeg de algemene voorwaarden van het taxibedrijf voor meer informatie.";
 
-"Text.Booking.FixedInfoBox" = "Deze vloot rekent een vast tarief. Het uiteindelijke tarief kan worden beïnvloed door extra's (tolgeld, vertraging, enz.). Raadpleeg de algemene voorwaarden van de vloot.";
+"Text.Booking.FixedInfoBox" = "Dit taxibedrijft rekent een vast tarief. Het uiteindelijke tarief kan worden beïnvloed door extra's (tolgeld, vertraging, enz.). Raadpleeg de algemene voorwaarden van het taxibedrijf.";
 
 "Text.Booking.FlightTracking" = "Vlucht volgen";
 
@@ -184,22 +192,22 @@
 "Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Vluchtnummer (optioneel)";
 
 /* Guest checkout */
-"Text.Booking.GuestCheckoutPassengerDetailsTitle" = "passagier details";
+"Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passagiersgegevens";
 
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Betalingsmethoden";
 
-"Text.Booking.LearnMore" = "Leer meer";
+"Text.Booking.LearnMore" = "Meer informatie";
 
-"Text.Booking.MaximumLuggages" = "%1$@ maximaal bagage";
+"Text.Booking.MaximumLuggages" = "%1$@ maximum aantal bagage";
 
-"Text.Booking.MaximumPassengers" = "%1$@ passagiers maximum";
+"Text.Booking.MaximumPassengers" = "%1$@ maximum aantal passagiers";
 
-"Text.Booking.MeteredInfoBox" = "Deze vloot is een gereguleerde taxi met meter. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc).";
+"Text.Booking.MeteredInfoBox" = "Dit taxibedrijf werkt met een gereguleerde taximeter. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc).";
 
 "Text.Booking.Next" = "Volgende";
 
 /* %1$@ if you have suggestions for local fleets. */
-"Text.Booking.NoAvailabilityBody" = "%1$@ als u suggesties heeft voor lokale vloten.";
+"Text.Booking.NoAvailabilityBody" = "%1$@ als u suggesties heeft voor lokale taxibedrijven.";
 
 /* We’re not live here yet! */
 "Text.Booking.NoAvailabilityHeader" = "We zijn hier nog niet live!";
@@ -217,28 +225,28 @@
 
 "Text.Booking.PassengerDetails.LastName" = "Achternaam";
 
-"Text.Booking.PassengerDetails.MobilePhone" = "Mobiele telefoonnummer";
+"Text.Booking.PassengerDetails.MobilePhone" = "Mobiel telefoonnummer";
 
-"Text.Booking.PassengerDetails.SaveAction" = "Bewaar";
+"Text.Booking.PassengerDetails.SaveAction" = "BEWAREN";
 
 "Text.Booking.PassengerDetails.Subtitle" = "Deze informatie zorgt voor een soepel verloop van uw rit.";
 
 /* Passenger Details */
-"Text.Booking.PassengerDetails.Title" = "Passagier";
+"Text.Booking.PassengerDetails.Title" = "Passagiersgegevens";
 
 /* Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked */
 "Text.Booking.PrebookConfirmation" = "Uw boeking\nvanaf: %1$@ \ntot: %2$@ \nat: %3$@ \nis geboektboeking";
 
 /* Prebook Done, Fuzzy */
-"Text.Booking.PrebookConfirmed" = "Voorboeking bevestigd";
+"Text.Booking.PrebookConfirmed" = "Prebook bevestigd";
 
 /* Ride Details */
-"Text.Booking.PrebookConfirmed.RideDetails" = "Ritdetails";
+"Text.Booking.PrebookConfirmed.RideDetails" = "Ritgegevens";
 
 /* Booking */
-"Text.Booking.RequestCar" = "Boek";
+"Text.Booking.RequestCar" = "RESERVEER";
 
-"Text.Booking.RequestingCar" = "Rit boeken";
+"Text.Booking.RequestingCar" = "Rit reserveren";
 
 "Text.Booking.RequestReceived" = "Reservering ontvangen";
 
@@ -248,12 +256,12 @@
 
 "Text.Bookings.Alert.CancellationFee.Continue" = "Wilt u doorgaan?";
 
-"Text.Bookings.Alert.CancellationSuccess.Message" = "Uw reis is succesvol geannuleerd.";
+"Text.Bookings.Alert.CancellationSuccess.Message" = "Uw rit is succesvol geannuleerd.";
 
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Annulering rit succesvol";
 
 /* used as a call to action on a button in the empty bookings screen: English: "Book Ride" */
-"Text.Bookings.BookATrip" = "Boek rit";
+"Text.Bookings.BookATrip" = "Reserveer een rit";
 
 /* "Cancel Ride" button action */
 "Text.Bookings.CancelRide" = "Rit annuleren";
@@ -262,10 +270,10 @@
 "Text.Bookings.ContactDriver" = "Neem contact op met de chauffeur";
 
 /* "Contact Fleet" */
-"Text.Bookings.ContactFleet" = "Neem contact op met Vloot";
+"Text.Bookings.ContactFleet" = "Neem contact op met het taxibedrijf";
 
 /* Generic fallback message for trip load failure */
-"Text.Bookings.CouldNotLoadTrips" = "Kan reizen niet laden.";
+"Text.Bookings.CouldNotLoadTrips" = "Kan de ritten niet laden.";
 
 "Text.Bookings.eta" = "Geschatte aankomsttijd";
 
@@ -284,7 +292,7 @@
 
 "Text.Bookings.Price.Cancelled" = "Geannuleerd";
 
-"Text.Bookings.Quote" = "Citaat";
+"Text.Bookings.Quote" = "Prijsopgave";
 
 /* Button for rebooking a ride */
 "Text.Bookings.RebookRide" = "Rit opnieuw reserveren";
@@ -293,16 +301,16 @@
 "Text.Bookings.ReportIssue" = "Probleem melden";
 
 /* "Track Driver" */
-"Text.Bookings.TrackDriver" = "Baanrijder";
+"Text.Bookings.TrackDriver" = "Track de bestuurder";
 
 /* "Track Trip" */
-"Text.Bookings.TrackTrip" = "Baanrit";
+"Text.Bookings.TrackTrip" = "Track de rit";
 
 "Text.Bookings.TrackTrip.AlertMessage" = "Wilt u het voertuig volgen?";
 
 "Text.Bookings.TrackTrip.AlertTitle" = "De chauffeur is onderweg";
 
-"Text.Bookings.TrackTrip.DismissAction" = "Geen";
+"Text.Bookings.TrackTrip.DismissAction" = "Nee";
 
 "Text.Bookings.TrackTrip.TrackAction" = "Ja";
 
@@ -312,7 +320,7 @@
 "Text.Error.Alert.CantSendEmail" = "Kan geen e-mailbericht verzenden. Configureer eerst de Mail-app.";
 
 /* The action button on the force update alert. ie "Update" (this button takes the user to the app store) */
-"Text.Error.Alert.ForceUpdateButton" = "BIJWERKEN";
+"Text.Error.Alert.ForceUpdateButton" = "Update";
 
 /* The message when the user needs to update the app. ie. "Please update Karhoo to the latest version." */
 "Text.Error.Alert.ForceUpdateMessage" = "Werk de app bij om door te gaan.";
@@ -334,7 +342,7 @@
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Oeps! Er is iets misgegaan. Probeer het opnieuw.";
 
-"Text.Error.NotLoggedIn" = "Je bent niet ingelogd";
+"Text.Error.NotLoggedIn" = "U bent niet ingelogd";
 
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Update kaart";
 
@@ -349,7 +357,7 @@
 "Text.Error.SomethingWentWrong" = "Er is een fout opgetreden";
 
 /* Theoretical edge case where the braintree token is missing */
-"Text.Errors.failedToInitialisePaymentSetup" = "Probleem met het initialiseren van betalingen, neem contact op met de ondersteuning";
+"Text.Errors.failedToInitialisePaymentSetup" = "Probleem met het initialiseren van betalingen, neem contact op met de helpdesk";
 
 "Text.Errors.InvalidPhoneNumber" = "Ongeldig telefoonnummer";
 
@@ -360,16 +368,16 @@
 
 "Text.FeedbackView.addComment" = "Aanvullende opmerkingen";
 
-"Text.FeedbackView.app" = "Hoe gemakkelijk vond je het gebruik van de app?";
+"Text.FeedbackView.app" = "Hoe gemakkelijk vond u het gebruik van de app?";
 
 "Text.FeedbackView.confirmation" = "Bedankt voor het doorgeven van uw feedback";
 
-"Text.FeedbackView.pob" = "Hoe was uw ervaring in de taxi (bijv. netheid van de taxi, route en chauffeur)? Hoe gemakkelijk vond je het gebruik van de app?";
+"Text.FeedbackView.pob" = "Hoe was uw ervaring in de taxi (bijv. netheid van de taxi, route en chauffeur)? Hoe gemakkelijk vond u het gebruik van de app?";
 
-"Text.FeedbackView.pre_pob" = "Hoe was je ervaring met het vinden van de ophaallocatie en het ontmoeten van je chauffeur?";
+"Text.FeedbackView.pre_pob" = "Hoe was uw ervaring met het vinden van de ophaallocatie en het ontmoeten van uw chauffeur?";
 
 /* FeedBackView */
-"Text.FeedbackView.quote" = "Hoe tevreden was u met de selectie van offertes voor uw reis (bijv. Vloten, Prijzen en ETA's)?";
+"Text.FeedbackView.quote" = "Hoe tevreden was u met de selectie van offertes voor uw reis (bijv. Taxibedrijven, Prijzen en ETA's)?";
 
 "Text.Generic.Add" = "Toevoegen";
 
@@ -378,7 +386,7 @@
 
 "Text.Generic.Back" = "Terug";
 
-"Text.Generic.Bookings" = "Boekingen";
+"Text.Generic.Bookings" = "Reserveringen";
 
 /* Localizable.strings,  Karhoo, ,  Copyright © 2020 Karhoo. All rights reserved.,  Generics */
 "Text.Generic.Cancel" = "Annuleren";
@@ -392,7 +400,7 @@
 /* english "Card" (referring to payment card) */
 "Text.Generic.Card" = "Kaart";
 
-"Text.Generic.Change" = "VERANDERING";
+"Text.Generic.Change" = "Wijzigen";
 
 "Text.Generic.Close" = "Sluiten";
 
@@ -403,15 +411,15 @@
 /* "Completed" */
 "Text.Generic.Completed" = "Voltooid";
 
-"Text.Generic.Contact" = "CONTACT";
+"Text.Generic.Contact" = "Contact";
 
-"Text.Generic.Continue" = "Voortzetten";
+"Text.Generic.Continue" = "Verder gaan";
 
 "Text.Generic.Destination" = "Bestemming";
 
-"Text.Generic.Dismiss" = "AFWIJZEN";
+"Text.Generic.Dismiss" = "Stoppen";
 
-"Text.Generic.Done" = "Gedaan";
+"Text.Generic.Done" = "Klaar";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
@@ -435,7 +443,7 @@
 "Text.Generic.Fixed" = "Vaste prijs";
 
 /* "Got It" (generally used on alert buttons) */
-"Text.Generic.GotIt" = "BEGREPEN";
+"Text.Generic.GotIt" = "Ik begrijp het";
 
 /* Password Entry Button */
 "Text.Generic.Hide" = "Verbergen";
@@ -445,7 +453,7 @@
 /* english "making a booking". Used in terms conditions construction */
 "Text.Generic.MakingBookingAction" = "Reservering maken";
 
-"Text.Generic.MeetGreet" = "Ontmoet en Groet";
+"Text.Generic.MeetGreet" = "Meet & Greet";
 
 /* Metered fare type displayed in quotes list: English: "Metered" */
 "Text.Generic.Metered" = "meterprijs";
@@ -456,7 +464,7 @@
 
 "Text.Generic.No" = "Nee";
 
-"Text.Generic.NoCarsAvailable" = "Helaas zijn er op dit moment geen auto's beschikbaar voor uw rit.\n\nProbeer het alstublieft binnenkort nog eens";
+"Text.Generic.NoCarsAvailable" = "Helaas zijn er op dit moment geen auto's beschikbaar voor uw rit. Probeer het alstublieft binnenkort nog eens";
 
 /* The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device" */
 "Text.Generic.NoEmailSetupError" = "Stel alstublieft een e-mailaccount in op uw apparaat";
@@ -473,12 +481,12 @@
 
 "Text.Generic.PhoneNumber" = "Telefoonnummer";
 
-"Text.Generic.Pickup" = "Oppakken";
+"Text.Generic.Pickup" = "Ophaallocatie";
 
 /* English: "Pickup Time" in booking request screen */
-"Text.Generic.PickupTime" = "Ophaal tijd";
+"Text.Generic.PickupTime" = "Ophaaltijd";
 
-"Text.Generic.Prebook" = "Boek";
+"Text.Generic.Prebook" = "RESERVEER";
 
 "Text.Generic.Price" = "Prijs";
 
@@ -499,15 +507,15 @@
 "Text.Generic.Rides" = "Ritten";
 
 /* "Save" used as a button (call to action) */
-"Text.Generic.Save" = "Bewaar";
+"Text.Generic.Save" = "BEWAREN";
 
 /* Password Entry Button */
-"Text.Generic.Show" = "Show";
+"Text.Generic.Show" = "Laat zien";
 
 /* english: "status" */
-"Text.Generic.Status" = "Toestand";
+"Text.Generic.Status" = "Status";
 
-"Text.Generic.Submit" = "INDIENEN";
+"Text.Generic.Submit" = "Indienen";
 
 "Text.Generic.Success" = "Succes";
 
@@ -527,13 +535,13 @@
 "Text.Generic.TripStatus.DriverAllocationDelay.Message" = "Het duurt langer dan normaal voordat het taxibedrijf een chauffeur heeft toegewezen. Een ogenblik geduld alstublieft, neem contact op met het taxibedrijf of annuleer en reserveer bij een ander taxibedrijf.";
 
 /* "Driver Allocation Delay Title" */
-"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Toewijzing vertraging";
+"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Vertraging";
 
 /* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Geannuleerd door chauffeur/verzending";
+"Text.Generic.TripStatus.DriverCancelled" = "Geannuleerd door chauffeur/dispatch";
 
 /* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "Geen stuurprogramma's beschikbaar";
+"Text.Generic.TripStatus.NoDriversAvailable" = "Geen chauffeurs beschikbaar";
 
 /* "Unkown" */
 "Text.Generic.Unknown" = "Onbekend";
@@ -559,7 +567,7 @@
 "Text.GenericTripStatus.Completed" = "Voltooid";
 
 /* Confirmed */
-"Text.GenericTripStatus.Confirmed" = "bevestigd";
+"Text.GenericTripStatus.Confirmed" = "Bevestigd";
 
 /* "Driver En Route" when a driver is en route */
 "Text.GenericTripStatus.EnRoute" = "De chauffeur is onderweg";
@@ -568,7 +576,7 @@
 "Text.GenericTripStatus.Failed" = "Mislukt";
 
 /* "Incomplete" */
-"Text.GenericTripStatus.Incomplete" = "Staat in behandeling";
+"Text.GenericTripStatus.Incomplete" = "Status te bevestigen";
 
 /* in english: "Requested" */
 "Text.GenericTripStatus.Initialised" = "Aangevraagd";
@@ -589,15 +597,15 @@
 /* No availability in requested area, Fuzzy */
 "Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
-"Text.KarhooError.Q0001" = "Ophalen en bestemming kunnen niet hetzelfde zijn.";
+"Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Betaling toevoegen";
 
-"Text.Payment.PaymentMethod" = "Kaart einde";
+"Text.Payment.PaymentMethod" = "Kaart";
 
 /* Prebook */
-"Text.Prebook.PrebookPickupTime" = "Ophaaltijd vooraf boeken";
+"Text.Prebook.PrebookPickupTime" = "Prebook ophaaltijd";
 
 "Text.Prebook.SetPrebook" = "Ophaaltijd instellen";
 
@@ -606,26 +614,26 @@
 
 "Text.Quote.FreeCancellationAndKeyword" = "en";
 
-"Text.Quote.FreeCancellationASAP" = "Gratis annulering tot %1$@ na boeking";
+"Text.Quote.FreeCancellationASAP" = "Gratis annulering tot %1$@ na reserveren";
 
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Gratis annuleren tot de chauffeur onderweg is";
 
 /* Cancellation info on quotes */
-"Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor afhaling";
+"Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
 
 "Text.QuoteCategory.Electric" = "Elektrisch";
 
-"Text.QuoteCategory.Exec" = "Directeur";
+"Text.QuoteCategory.Exec" = "Executive";
 
-"Text.QuoteCategory.Executive" = "Leidinggevend";
+"Text.QuoteCategory.Executive" = "Executive";
 
 "Text.QuoteCategory.Moto" = "Moto";
 
 "Text.QuoteCategory.Motorcycle" = "Motorfiets";
 
-"Text.QuoteCategory.MPV" = "Bus";
+"Text.QuoteCategory.MPV" = "Minibus";
 
-"Text.QuoteCategory.Saloon" = "Personenwagen";
+"Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
@@ -810,11 +818,11 @@
 "Text.User.FirstName" = "Voornaam";
 
 /* Text used on button to trigger password reset... English: Forgotten Password? */
-"Text.User.ForgottenPassword" = "Vergeten wachtwoord?";
+"Text.User.ForgottenPassword" = "Wachtwoord vergeten?";
 
 "Text.User.LastName" = "Achternaam";
 
-"Text.User.MobilePhoneNumber" = "Mobiele telefoonnummer";
+"Text.User.MobilePhoneNumber" = "Mobiel telefoonnummer";
 
 "Text.User.Password" = "Wachtwoord";
 
@@ -825,17 +833,17 @@
 
 "Text.VehicleClass.Electric" = "Elektrisch";
 
-"Text.VehicleClass.Exec" = "Directeur";
+"Text.VehicleClass.Exec" = "Executive";
 
-"Text.VehicleClass.Executive" = "Leidinggevend";
+"Text.VehicleClass.Executive" = "Executive";
 
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorfiets";
 
-"Text.VehicleClass.MPV" = "Bus";
+"Text.VehicleClass.MPV" = "Minibus";
 
-"Text.VehicleClass.Saloon" = "Personenwagen";
+"Text.VehicleClass.Saloon" = "Standaard voertuig";
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
@@ -844,7 +852,7 @@
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Elektrisch";
 
-"Text.VehicleTag.Executive" = "Leidinggevend";
+"Text.VehicleTag.Executive" = "Executive";
 
 "Text.VehicleTag.Hybrid" = "Hybride";
 
@@ -856,7 +864,20 @@
 
 "Text.VehicleType.Moto" = "Moto";
 
-"Text.VehicleType.MPV" = "Bus";
+"Text.VehicleType.MPV" = "Minibus";
 
 "Text.VehicleType.Standard" = "Standaard";
+
+"Vehicle.Tag.Childseat" = "Kinderzitje";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "Elektrisch";
+
+"Vehicle.Tag.Executive" = "Executive";
+
+"Vehicle.Tag.Hybrid" = "Hybride";
+
+"Vehicle.Tag.Taxi" = "Taxi";
+
+"Vehicle.Tag.Wheelchair" = "Rolstoel";
 
