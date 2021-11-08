@@ -117,10 +117,14 @@
 
 "MEET_AND_GREET" = "Incontra e saluta";
 
+"MPV" = "Multiposto";
+
 /* Qxxxx errors */
 "Q0001" = "Ritiro e destinazione non possono essere gli stessi.";
 
 "STAND_BY" = "Pausa";
+
+"TAXI" = "Taxi";
 
 /* "Version" */
 "Text.About.Version" = "Versione";
@@ -136,9 +140,9 @@
 
 "Text.AddressBar.AddPickup" = "Aggiungi partenza";
 
-"Text.AddressBar.EnterPickupLocation" = "Inserisci il luogo di ritiro";
+"Text.AddressBar.EnterPickupLocation" = "Aggiungi partenza";
 
-"Text.AddressSearch.EnterDestinationLocation" = "Inserisci la località di destinazione";
+"Text.AddressSearch.EnterDestinationLocation" = "Aggiungi destinazione";
 
 /* "Add Flight Details" used on booking airport ride */
 "Text.Airport.AddFlightDetails" = "Aggiungi i dettagli del volo";
@@ -381,7 +385,7 @@
 "Text.Generic.Bookings" = "Prenotazioni";
 
 /* Localizable.strings,  Karhoo, ,  Copyright © 2020 Karhoo. All rights reserved.,  Generics */
-"Text.Generic.Cancel" = "ANNULLA";
+"Text.Generic.Cancel" = "Annulla";
 
 /* English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking */
 "Text.Generic.CancellationPolicy" = "Criteri di Cancellazione";
@@ -850,7 +854,7 @@
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
-"Text.VehicleTag.Wheelchair" = "sedia a rotelle";
+"Text.VehicleTag.Wheelchair" = "Sedia a rotelle";
 
 "Text.VehicleType.Bus" = "Autobus";
 
@@ -859,4 +863,15 @@
 "Text.VehicleType.MPV" = "Multiposto";
 
 "Text.VehicleType.Standard" = "Standard";
+
+"Vehicle.Tag.Childseat" = "Seggiolino per bambini";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "Elettrico";
+
+"Vehicle.Tag.Hybrid" = "Ibrido";
+
+"Vehicle.Tag.Taxi" = "Taxi";
+
+"Vehicle.Tag.Wheelchair" = "Sedia a rotelle";
 

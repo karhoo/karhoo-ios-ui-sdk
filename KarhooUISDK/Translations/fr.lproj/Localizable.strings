@@ -8,6 +8,8 @@
 
 "ELECTRIC" = "Electrique";
 
+"EXEC" = "BUSINESS";
+
 /* English: Error codes */
 "K0001" = "Désolé! Une erreur s'est produite";
 
@@ -117,10 +119,16 @@
 
 "MEET_AND_GREET" = "Accueil pancarte";
 
+"MPV" = "VAN";
+
 /* Qxxxx errors */
 "Q0001" = "Départ et destination ne peuvent pas être identiques.";
 
+"SALOON" = "BERLINE";
+
 "STAND_BY" = "Contacter chauffeur";
+
+"TAXI" = "TAXI";
 
 /* "Version" */
 "Text.About.Version" = "Version";
@@ -244,9 +252,9 @@
 
 "Text.Booking.TrainTracking" = "Associe votre train";
 
-"Text.Bookings.Alert.CancellationFee.Charge" = "Des frais d'annulation estimés à %1$@ vont s'appliquer.\n\nSouhaitez-vous continuer?";
+"Text.Bookings.Alert.CancellationFee.Charge" = "Des frais d'annulation estimés à %1$@ vont s'appliquer.\n\nSouhaitez-vous continuer ?";
 
-"Text.Bookings.Alert.CancellationFee.Continue" = "Souhaitez-vous continuer?";
+"Text.Bookings.Alert.CancellationFee.Continue" = "Souhaitez-vous continuer ?";
 
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Votre course a été annulée avec succès.";
 
@@ -360,16 +368,16 @@
 
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 
-"Text.FeedbackView.app" = "Avez-vous trouvé l’application facile à utiliser?";
+"Text.FeedbackView.app" = "Avez-vous trouvé l’application facile à utiliser ?";
 
 "Text.FeedbackView.confirmation" = "Merci d'avoir envoyé vos commentaires";
 
-"Text.FeedbackView.pob" = "Comment s’est passé votre voyage (ex: propreté du véhicule, trajet et chauffeur)?";
+"Text.FeedbackView.pob" = "Comment s’est passé votre voyage (ex: propreté du véhicule, trajet et chauffeur) ?";
 
-"Text.FeedbackView.pre_pob" = "Le point de rencontre et le chauffeur ont-ils été faciles à trouver?";
+"Text.FeedbackView.pre_pob" = "Le point de rencontre et le chauffeur ont-ils été faciles à trouver ?";
 
 /* FeedBackView */
-"Text.FeedbackView.quote" = "Étiez-vous satisfait(e) des choix disponibles concernant les devis pour votre course (ex: Flottes, Prix, Proximité)?";
+"Text.FeedbackView.quote" = "Étiez-vous satisfait(e) des choix disponibles concernant les devis pour votre course (ex: Flottes, Prix, Proximité) ?";
 
 "Text.Generic.Add" = "Ajouter";
 
@@ -704,7 +712,7 @@
 
 "Text.Trip.CancelBookingConfirmation.Alert.Message" = "Des frais d'annulation pourraient être facturés par le fournisseur.";
 
-"Text.Trip.CancelBookingConfirmation.Alert.Title" = "Confirmer l'annulation?";
+"Text.Trip.CancelBookingConfirmation.Alert.Title" = "Confirmer l'annulation ?";
 
 /* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
 "Text.Trip.CancelBookingFailed" = "Annulation non confirmée. Veuillez appeler le fournisseur.";
@@ -810,7 +818,7 @@
 "Text.User.FirstName" = "Prénom";
 
 /* Text used on button to trigger password reset... English: Forgotten Password? */
-"Text.User.ForgottenPassword" = "Mot de passe oublié?";
+"Text.User.ForgottenPassword" = "Mot de passe oublié ?";
 
 "Text.User.LastName" = "Nom";
 
@@ -859,4 +867,17 @@
 "Text.VehicleType.MPV" = "Van";
 
 "Text.VehicleType.Standard" = "Standard";
+
+"Vehicle.Tag.Childseat" = "Siège enfant";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "Electrique";
+
+"Vehicle.Tag.Executive" = "Business";
+
+"Vehicle.Tag.Hybrid" = "Hybride";
+
+"Vehicle.Tag.Taxi" = "Taxi";
+
+"Vehicle.Tag.Wheelchair" = "Fauteuil roulant";
 
