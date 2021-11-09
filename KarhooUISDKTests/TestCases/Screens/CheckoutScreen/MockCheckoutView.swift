@@ -49,6 +49,11 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
         setMoreDetailsCalled = true
     }
     
+    var resetPaymentNonceCalled = false
+    func resetPaymentNonce() {
+        resetPaymentNonceCalled = true
+    }
+    
     var timeStringSet: String?
     var dateStringSet: String?
     func setPrebookState(timeString: String?, dateString: String?) {
