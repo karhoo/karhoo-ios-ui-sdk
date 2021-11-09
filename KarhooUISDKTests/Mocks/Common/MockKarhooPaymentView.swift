@@ -9,18 +9,13 @@ import Foundation
 @testable import KarhooUISDK
 import KarhooSDK
 
-final class MockKarhooPaymentView: MockBaseView, PaymentView {
+final class MockKarhooPaymentView: MockBaseView, AddPaymentView {
 
     var baseViewController: BaseViewController?
 
-    var actions: PaymentViewActions?
+    var actions: AddPaymentViewDelegate?
 
     var quote: Quote?
-
-    private(set) var paymentMethodSet: PaymentMethod?
-    func set(paymentMethod: PaymentMethod) {
-        paymentMethodSet = paymentMethod
-    }
 
     private(set) var nonceSet: Nonce?
     func set(nonce: Nonce) {
@@ -33,7 +28,7 @@ final class MockKarhooPaymentView: MockBaseView, PaymentView {
     }
 
     private(set) var startCardFlowCalled = false
-    func startRegisterCardFlow() {
+    func startRegisterCardFlow(showRetryAlert: Bool = true) {
         startCardFlowCalled = true
     }
 }

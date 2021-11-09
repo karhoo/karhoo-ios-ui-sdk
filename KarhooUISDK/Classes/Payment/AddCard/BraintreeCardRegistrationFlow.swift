@@ -97,7 +97,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         baseViewController?.present(item, animated: true, completion: nil)
     }
 
-    private func handleBraintreeUICompletion(_ result: ScreenResult<PaymentMethod>) {
+    private func handleBraintreeUICompletion(_ result: ScreenResult<Nonce>) {
         switch result {
         case .cancelled:
             dismissBraintreeUI()
@@ -106,20 +106,20 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             dismissBraintreeUI()
             analyticsService.send(eventName: .userCardRegistrationFailed)
             self.callback?(.completed(value: .didFailWithError(error)))
-        case .completed(let braintreePaymentMethod):
+        case .completed(let braintreePaymentNonce):
 
             dismissBraintreeUI()
             baseViewController?.showLoadingOverlay(true)
 
             if Karhoo.configuration.authenticationMethod().guestSettings != nil {
-                registerGuestPayer(method: braintreePaymentMethod)
+                registerGuestPayer(nonce: braintreePaymentNonce)
             } else {
-                registerKarhooPayer(method: braintreePaymentMethod)
+                registerKarhooPayer(nonce: braintreePaymentNonce)
             }
         }
     }
 
-    private func registerKarhooPayer(method: PaymentMethod) {
+    private func registerKarhooPayer(nonce: Nonce) {
         guard let currentUser = userService.getCurrentUser() else {
             return
         }
@@ -133,7 +133,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             return
         }
 
-        let addPaymentPayload = AddPaymentDetailsPayload(nonce: method.nonce,
+        let addPaymentPayload = AddPaymentDetailsPayload(nonce: nonce.nonce,
                                                          payer: payer,
                                                          organisationId: payerOrg.id)
 
@@ -150,15 +150,15 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
             self?.analyticsService.send(eventName: .userCardRegistered)
             self?.callback?(OperationResult.completed(
-                value: .didAddPaymentMethod(method: PaymentMethod(nonce: nonce.nonce))))
+                value: .didAddPaymentMethod(nonce: nonce)))
         })
 
     }
 
-    private func registerGuestPayer(method: PaymentMethod) {
+    private func registerGuestPayer(nonce: Nonce) {
         analyticsService.send(eventName: .userCardRegistered)
         self.baseViewController?.showLoadingOverlay(false)
-        self.callback?(OperationResult.completed(value: .didAddPaymentMethod(method: method)))
+        self.callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: nonce)))
     }
 
     private func dismissBraintreeUI() {

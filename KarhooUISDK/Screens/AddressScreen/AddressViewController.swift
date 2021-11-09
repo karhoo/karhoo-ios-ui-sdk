@@ -55,6 +55,7 @@ final class AddressViewController: UIViewController, AddressView {
         super.viewDidLoad()
         keyboardSizeProvider.register(listener: self)
         setupBackButton()
+        forceLightMode()
     }
     
     override func loadView() {

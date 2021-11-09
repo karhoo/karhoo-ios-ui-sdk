@@ -15,9 +15,8 @@ public protocol ScreenBuilders {
     var ridesScreenBuilder: RidesListScreenBuilder { get }
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
-    var flightDetailsScreenBuilder: FlightDetailsScreenBuilder { get }
     var tripScreenBuilder: TripScreenBuilder { get }
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder { get }
+    var checkoutScreenBuilder: CheckoutScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
@@ -40,8 +39,8 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
         return KarhooBookingScreenBuilder()
     }
 
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        return bookingRequestBuilder()
+    var checkoutScreenBuilder: CheckoutScreenBuilder {
+        return checkoutBuilder()
     }
 
     var datePickerScreenBuilder: DatePickerScreenBuilder {
@@ -92,22 +91,15 @@ public extension ScreenBuilders {
         return RidesListViewController.KarhooRidesListScreenBuilder()
     }
 
-    var flightDetailsScreenBuilder: FlightDetailsScreenBuilder {
-        return FlightDetailsViewController.KarhooFlightDetailsScreenBuilder()
-    }
-
     var tripScreenBuilder: TripScreenBuilder {
         return KarhooTripViewController.KarhooTripScreenBuilder()
     }
 
-    var bookingRequestScreenBuilder: BookingRequestScreenBuilder {
-        return bookingRequestBuilder()
+    var checkoutScreenBuilder: CheckoutScreenBuilder {
+        return checkoutBuilder()
     }
 
-    func bookingRequestBuilder() -> BookingRequestScreenBuilder {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .guest(settings: _), .tokenExchange: return FormBookingRequestViewController.Builder()
-        case .karhooUser: return KarhooBookingRequestViewController.KarhooBookingRequestScreenBuilder()
-        }
+    func checkoutBuilder() -> CheckoutScreenBuilder {
+        return KarhooCheckoutViewController.Builder()
     }
 }

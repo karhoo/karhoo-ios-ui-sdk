@@ -34,13 +34,13 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
     }
 
     func getPaymentNonce(user: UserInfo,
-                         organisation: Organisation,
+                         organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         self.callbackResult = result
         self.quoteToBook = quote
 
-        let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisation.id,
+        let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: quote.price.currencyCode)
 
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute {[weak self] result in
@@ -58,7 +58,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
                           lastName: user.lastName,
                           email: user.email)
         let nonceRequestPayload = NonceRequestPayload(payer: payer,
-                                                      organisationId: organisation.id)
+                                                      organisationId: organisationId)
 
         getNonce(payload: nonceRequestPayload, currencyCode: quote.price.currencyCode)
     }
@@ -87,7 +87,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
     private func handleAddCardResult(_ result: CardFlowResult) {
         switch result {
-        case .didAddPaymentMethod(let method): execute3dSecureCheckOnNonce(Nonce(nonce: method.nonce))
+        case .didAddPaymentMethod(let nonce): execute3dSecureCheckOnNonce(nonce)
         case .didFailWithError(let error): callbackResult?(.completed(value: .failedToAddCard(error: error)))
         case .cancelledByUser: self.callbackResult?(.cancelledByUser)
         }

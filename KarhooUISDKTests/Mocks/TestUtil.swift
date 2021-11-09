@@ -284,11 +284,10 @@ class TestUtil: PrimitiveUtil {
                            date: Date())
     }
 
-    class func getRandomBraintreePaymentMethod(nonce: String = getRandomString()) -> PaymentMethod {
-        return PaymentMethod(nonce: nonce,
-                             nonceType: getRandomString(),
-                             icon: UIView(),
-                             paymentDescription: getRandomString())
+    class func getRandomBraintreePaymentMethod(nonce: String = getRandomString()) -> Nonce {
+        return Nonce(nonce: nonce,
+                     cardType: getRandomString(),
+                     lastFour: "1111")
     }
 
     class func getRandomGuestSettings(organisationId: String = getRandomString()) -> GuestSettings {

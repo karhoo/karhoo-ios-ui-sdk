@@ -154,7 +154,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
     func testAddCardScreenSuccessResult() {
         simulateShowingAddCardScreen()
 
-        mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: PaymentMethod(nonce: "123")))
+        mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: Nonce(nonce: "123")))
         XCTAssertTrue(mockBaseViewController.showLoadingOverlaySet!)
 
         XCTAssert(mockBaseViewController.dismissCalled)

@@ -63,7 +63,7 @@ public final class AlertHandler: AlertHandlerProtocol {
     }
 
     public func show(title: String?, message: String?, actions: [AlertAction]) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController.create(title: title, message: message, preferredStyle: .alert)
 
         actions.forEach { alert.addAction($0.action) }
         alert.view.tintColor = KarhooUI.colors.darkGrey
@@ -74,9 +74,8 @@ public final class AlertHandler: AlertHandlerProtocol {
 
     public func show(error: KarhooError?) -> UIAlertController {
         let message = error?.localizedMessage ?? UITexts.Errors.noDetailsAvailable
-        let alert = UIAlertController(title: UITexts.Errors.somethingWentWrong,
-                                      message: message,
-                                      preferredStyle: .alert)
+        let alert = UIAlertController.create(title: UITexts.Errors.somethingWentWrong, message: message, preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default))
         alert.view.tintColor = KarhooUI.colors.darkGrey
 

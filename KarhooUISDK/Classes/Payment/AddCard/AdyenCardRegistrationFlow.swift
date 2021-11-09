@@ -100,7 +100,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
         adyenDropIn = DropInComponent(paymentMethods: methods,
                                       paymentMethodsConfiguration: configuration,
-                                      style: DropInComponent.Style(tintColor: KarhooUI.colors.primary))
+                                      style: DropInComponent.Style(tintColor: KarhooUI.colors.secondary))
         adyenDropIn?.delegate = self
         adyenDropIn?.environment = paymentFactory.adyenEnvironment()
         adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
@@ -228,8 +228,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         switch event {
         case .failure:
             finish(result: .completed(value: .didFailWithError(nil)))
-        case .paymentAuthorised(let method):
-            finish(result: .completed(value: .didAddPaymentMethod(method: method)))
+        case .paymentAuthorised(let nonce):
+            finish(result: .completed(value: .didAddPaymentMethod(nonce: nonce)))
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
         case .refused(let reason, let code):

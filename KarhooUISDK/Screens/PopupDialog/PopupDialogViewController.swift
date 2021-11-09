@@ -32,6 +32,7 @@ final class PopupDialogViewController: UIViewController, PopupDialogView {
         formButton?.delegate = self
         formButton?.setEnabledMode()
         presenter.load(view: self)
+        forceLightMode()
     }
 
     func set(dialogMessage: String) {

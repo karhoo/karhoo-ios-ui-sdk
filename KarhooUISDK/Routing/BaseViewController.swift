@@ -59,8 +59,7 @@ public extension BaseViewController {
         if let error = error {
             messageToShow = "\(messageToShow) [\(error.code)]"
         }
-        let alert = UIAlertController(title: title, message: messageToShow, preferredStyle: .alert)
-
+        let alert = UIAlertController.create(title: title, message: messageToShow, preferredStyle: .alert)
         actions.forEach { alert.addAction($0.action) }
         alert.view.tintColor = KarhooUI.colors.darkGrey
 
@@ -74,7 +73,7 @@ public extension BaseViewController {
         } else {
             message = UITexts.Errors.noDetailsAvailable
         }
-        let alert = UIAlertController(title: UITexts.Errors.somethingWentWrong,
+        let alert = UIAlertController.create(title: UITexts.Errors.somethingWentWrong,
                                       message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default))
@@ -96,7 +95,7 @@ public extension BaseViewController {
                                             cancelSelected?()
         })
 
-        let alert = UIAlertController(title: UITexts.PaymentError.paymentAlertTitle,
+        let alert = UIAlertController.create(title: UITexts.PaymentError.paymentAlertTitle,
                                       message: UITexts.PaymentError.paymentAlertMessage,
                                       preferredStyle: .alert)
 

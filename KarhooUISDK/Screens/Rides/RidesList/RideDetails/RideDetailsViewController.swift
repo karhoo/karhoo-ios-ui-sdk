@@ -74,6 +74,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         loadingView.set(backgroundColor: KarhooUI.colors.darkGrey, alpha: loadingViewAlpha)
         loadingView.set(loadingText: UITexts.Trip.tripCancellingActivityIndicatorText)
         rideDetailsView.tripMetaDataView.delegate = self
+        forceLightMode()
     }
 
     public func showLoading() {

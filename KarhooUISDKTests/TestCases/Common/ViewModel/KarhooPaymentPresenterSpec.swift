@@ -12,7 +12,7 @@ import KarhooSDK
 
 final class KarhooPaymentPresenterSpec: XCTestCase {
 
-    private var testObject: KarhooPaymentPresenter!
+    private var testObject: KarhooAddPaymentPresenter!
     private var mockAnalyticsService = MockAnalyticsService()
     private var mockUserService = MockUserService()
     private var mockView = MockKarhooPaymentView()
@@ -28,7 +28,7 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         mockUserService.currentUserToReturn = user
         mockView.quote = TestUtil.getRandomQuote()
 
-        testObject = KarhooPaymentPresenter(analyticsService: mockAnalyticsService,
+        testObject = KarhooAddPaymentPresenter(analyticsService: mockAnalyticsService,
                                           userService: mockUserService,
                                           cardRegistrationFlow: mockCardRegistrationFlow,
                                           view: mockView)
@@ -84,9 +84,9 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         testObject.updateCardPressed(showRetryAlert: false)
         let paymentMethodAdded = TestUtil.getRandomBraintreePaymentMethod()
         mockCardRegistrationFlow.triggerAddCardResult(
-            .completed(value: .didAddPaymentMethod(method: paymentMethodAdded)))
+            .completed(value: .didAddPaymentMethod(nonce: paymentMethodAdded)))
 
-        XCTAssertEqual(paymentMethodAdded, mockView.paymentMethodSet)
+        XCTAssertEqual(paymentMethodAdded, mockView.nonceSet)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
         KarhooUI.set(configuration: KarhooTestConfiguration())
@@ -101,7 +101,7 @@ final class KarhooPaymentPresenterSpec: XCTestCase {
         testObject.updateCardPressed(showRetryAlert: false)
         let paymentMethodAdded = TestUtil.getRandomBraintreePaymentMethod()
         mockCardRegistrationFlow.triggerAddCardResult(
-            .completed(value: .didAddPaymentMethod(method: paymentMethodAdded)))
+            .completed(value: .didAddPaymentMethod(nonce: paymentMethodAdded)))
 
         let updatedUser = TestUtil.getRandomUser(nonce: Nonce(nonce: "some_nonce"))
         mockUserService.currentUserToReturn = updatedUser

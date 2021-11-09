@@ -115,6 +115,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView(reverseGeolocate: journeyInfo == nil)
+        forceLightMode()
     }
 
     private func setupMapView(reverseGeolocate: Bool) {
@@ -358,6 +359,10 @@ extension KarhooBookingViewController: BookingScreen {
     func openTrip(_ trip: TripInfo) {
         presenter.goToTripView(trip: trip)
     }
+    
+    func openRideDetailsFor(_ trip: TripInfo) {
+        presenter.showRideDetailsView(trip: trip)
+    }
 }
 
 // MARK: Builder
@@ -372,7 +377,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
-        PassengerInfo.shared.passengerDetails = passengerDetails
+        PassengerInfo.shared.set(details: passengerDetails)
 
         var validatedJourneyInfo: JourneyInfo?
 

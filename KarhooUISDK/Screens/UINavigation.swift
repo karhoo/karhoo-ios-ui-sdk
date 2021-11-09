@@ -92,4 +92,9 @@ public final class UINavigation: UIViewController, NavigationItem {
     public override var childForStatusBarStyle: UIViewController? {
         return controller.topViewController
     }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        forceLightMode()
+    }
 }
