@@ -28,6 +28,11 @@ final class SideMenuViewController: UIViewController, SideMenu {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        forceLightMode()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

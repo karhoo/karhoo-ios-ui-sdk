@@ -7,8 +7,10 @@
 
 import UIKit
 
-public protocol KarhooInputViewDelegate: class {
+public protocol KarhooInputViewDelegate: AnyObject {
     func didBecomeInactive(identifier: String)
+    func didBecomeActive(identifier: String)
+    func didChangeCharacterInSet(identifier: String)
 }
 
 class KarhooTextInputView: UIView, KarhooInputView {
@@ -79,7 +81,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         textView.layer.cornerRadius = 3.0
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
         textView.layer.borderColor = KarhooTextInputViewState.inactive.color.cgColor
-		textView.autocorrectionType = .no
+        textView.autocorrectionType = .no
 
         switch contentType {
         case .firstname:
@@ -87,9 +89,9 @@ class KarhooTextInputView: UIView, KarhooInputView {
         case .surname:
             textView.textContentType = .familyName
         case .email:
-			textView.keyboardType = .emailAddress
+            textView.keyboardType = .emailAddress
             textView.textContentType = .emailAddress
-			textView.autocapitalizationType = .none
+            textView.autocapitalizationType = .none
         case .phone:
             textView.keyboardType = .phonePad
         case .poiDetails:
@@ -106,7 +108,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         titleLabel.accessibilityIdentifier = "title_label"
         titleLabel.text = contentType.titleText
         titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        titleLabel.tintColor = KarhooUI.colors.infoColor
+        titleLabel.tintColor = KarhooUI.colors.primaryTextColor
         addSubview(titleLabel)
         
         updateConstraints()
@@ -149,6 +151,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
     
     public func setActive() {
         textView.becomeFirstResponder()
+        delegate?.didBecomeActive(identifier: accessibilityIdentifier!)
     }
     
     public func setInactive() {
@@ -195,7 +198,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         }
 
         textView.text = value
-        textView.textColor = KarhooUI.colors.infoColor
+        textView.textColor = KarhooUI.colors.primaryTextColor
     }
     
     private func validateField() -> Bool {
@@ -204,12 +207,78 @@ class KarhooTextInputView: UIView, KarhooInputView {
             return Utils.isValidEmail(email: textView.text!)
         case .phone:
             return Utils.isValidPhoneNumber(number: textView.text!)
+        case .firstname, .surname:
+            return textView.text != contentType.placeholderText && Utils.isValidName(name: textView.text)
         default:
             return textView.text != contentType.placeholderText && textView.text != ""
         }
     }
     
-    public func getIntput() -> String {
+    public func isFirstResponder() -> Bool {
+        return textView.isFirstResponder
+    }
+
+    private func runValidation() {
+        switch contentType {
+        case .email:
+            if !Utils.isValidEmail(email: textView.text!) {
+                showError()
+            } else {
+                textView.resignFirstResponder()
+                delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
+            }
+        case .phone:
+            if !Utils.isValidPhoneNumber(number: textView.text!) {
+                showError()
+            } else {
+                textView.resignFirstResponder()
+                delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
+            }
+        case .firstname, .surname:
+            if validateField() {
+                textView.resignFirstResponder()
+                delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
+            } else {
+                showError()
+            }
+        default:
+            textView.resignFirstResponder()
+            delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
+        }
+    }
+}
+
+extension KarhooTextInputView: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        tintView(.active)
+
+        if textView.textColor == KarhooTextInputViewState.inactive.color {
+            textView.textColor = KarhooUI.colors.primaryTextColor
+            textView.text = nil
+        }
+        
+        delegate?.didBecomeActive(identifier: accessibilityIdentifier!)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        tintView(.inactive)
+
+        if textView.text.contains(" ") && contentType.whitespaceAllowed == false {
+            textView.text =  textView.text.trimmingCharacters(in: .whitespaces)
+        }
+
+        
+        if textView.text.isEmpty {
+            textView.textColor = KarhooTextInputViewState.inactive.color
+            textView.text = contentType.placeholderText
+        }
+        
+        runValidation()
+        delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
+    }
+    
+    public func getInput() -> String {
         if textView.text == contentType.placeholderText {
             return ""
         }
@@ -217,79 +286,20 @@ class KarhooTextInputView: UIView, KarhooInputView {
         return isValid() ? textView.text : ""
     }
     
-    public func isFirstResponder() -> Bool {
-        return textView.isFirstResponder
-    }
-
-	private func runValidation() {
-		switch contentType {
-		case .email:
-			if !Utils.isValidEmail(email: textView.text!) {
-				showError()
-			} else {
-				textView.resignFirstResponder()
-				delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
-			}
-		case .phone:
-			if !Utils.isValidPhoneNumber(number: textView.text!) {
-				showError()
-			} else {
-				textView.resignFirstResponder()
-				delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
-			}
-		case .firstname, .surname:
-			if validateField() {
-				textView.resignFirstResponder()
-				delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
-			} else {
-				showError()
-			}
-		default:
-			textView.resignFirstResponder()
-			delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
-		}
-	}
-}
-
-extension KarhooTextInputView: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-		tintView(.active)
-
-        if textView.textColor == KarhooTextInputViewState.inactive.color {
-            textView.textColor = KarhooUI.colors.infoColor
-			textView.text = nil
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-		tintView(.inactive)
-
-        if textView.text.contains(" ") && contentType.whitespaceAllowed == false {
-            textView.text =  textView.text.trimmingCharacters(in: .whitespaces)
-        }
-
-		if textView.text.isEmpty {
-			textView.textColor = KarhooTextInputViewState.inactive.color
-			textView.text = contentType.placeholderText
-		} else {
-			runValidation()
-			delegate?.didBecomeInactive(identifier: accessibilityIdentifier!)
-		}
-    }
-    
     func textView(_ textView: UITextView,
                   shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
         if text == "\n" {
-			runValidation()
+            runValidation()
             return false
         }
+        
         return true
     }
     
     internal func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: frame.width, height: .infinity)
         textView.sizeThatFits(size)
+        delegate?.didChangeCharacterInSet(identifier: accessibilityIdentifier!)
     }
 }

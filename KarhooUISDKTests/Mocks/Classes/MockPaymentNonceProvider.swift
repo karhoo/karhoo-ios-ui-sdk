@@ -14,16 +14,16 @@ final class MockPaymentNonceProvider: PaymentNonceProvider {
 
     private var callback: ((OperationResult<PaymentNonceProviderResult>) -> Void)?
     private(set) var userSet: UserInfo?
-    private(set) var organisationSet: Organisation?
+    private(set) var organisationSet: String = ""
     private(set) var quoteSet: Quote?
     private(set) var getNonceCalled = false
     func getPaymentNonce(user: UserInfo,
-                         organisation: Organisation,
+                         organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         self.callback = result
         userSet = user
-        organisationSet = organisation
+        organisationSet = organisationId
         quoteSet = quote
         getNonceCalled = true
     }

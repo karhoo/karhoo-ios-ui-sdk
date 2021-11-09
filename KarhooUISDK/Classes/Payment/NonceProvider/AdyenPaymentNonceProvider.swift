@@ -19,7 +19,7 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
     }
 
     func getPaymentNonce(user: UserInfo,
-                         organisation: Organisation,
+                         organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         cardFlow.start(cardCurrency: quote.price.currencyCode,
@@ -41,8 +41,7 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
 
     private func handleAddCardFlow(result: CardFlowResult, callback: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         switch result {
-        case .didAddPaymentMethod(let method):
-            let nonce = Nonce(nonce: method.nonce, cardType: method.nonceType)
+        case .didAddPaymentMethod(let nonce):
             callback(.completed(value: .nonce(nonce: nonce)))
         case .didFailWithError(let error): callback(.completed(value: .failedToAddCard(error: error)))
         case .cancelledByUser: callback(.completed(value: .cancelledByUser))

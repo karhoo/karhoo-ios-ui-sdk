@@ -14,11 +14,11 @@ import KarhooSDK
 final class MockPaymentScreenBuilder: PaymentScreenBuilder {
 
     private(set) var paymentsTokenSet: PaymentSDKToken?
-    private(set) var paymentMethodAddedSet: ScreenResultCallback<PaymentMethod>?
+    private(set) var paymentMethodAddedSet: ScreenResultCallback<Nonce>?
     private(set) var flowItemCallbackSet: ScreenResultCallback<Screen>?
 
     func buildAddCardScreen(paymentsToken: PaymentSDKToken,
-                            paymentMethodAdded: ScreenResultCallback<PaymentMethod>?,
+                            paymentMethodAdded: ScreenResultCallback<Nonce>?,
                             flowItemCallback: ScreenResultCallback<Screen>?) {
         paymentsTokenSet = paymentsToken
         paymentMethodAddedSet = paymentMethodAdded

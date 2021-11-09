@@ -12,9 +12,10 @@ import KarhooUISDK
 final class KarhooConfig: KarhooUISDKConfiguration {
 
     static var auth: AuthenticationMethod = .karhooUser
+    static var environment: KarhooEnvironment = .sandbox
 
     func environment() -> KarhooEnvironment {
-        return Keys.staging()
+        return KarhooConfig.environment
     }
 
     func authenticationMethod() -> AuthenticationMethod {

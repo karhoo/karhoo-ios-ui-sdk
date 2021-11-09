@@ -23,7 +23,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     private var mockPhoneNumberCaller: MockPhoneNumberCaller!
     private var mockTripScreenBuilder: MockTripScreenBuilder!
     private var mockRideDetailsScreenBuilder: MockRideDetailsScreenBuilder!
-    private var mockBookingRequestScreenBuilder: MockBookingRequestScreenBuilder!
+    private var mockCheckoutScreenBuilder: MockCheckoutScreenBuilder!
     private var mockPrebookConfirmationScreenBuilder: MockPrebookConfirmationScreenBuilder!
     private var mockAddressScreenBuilder: MockAddressScreenBuilder!
     private var mockDatePickerScreenBuilder: MockDatePickerScreenBuilder!
@@ -42,7 +42,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         mockPhoneNumberCaller = MockPhoneNumberCaller()
         mockTripScreenBuilder = MockTripScreenBuilder()
         mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
-        mockBookingRequestScreenBuilder = MockBookingRequestScreenBuilder()
+        mockCheckoutScreenBuilder = MockCheckoutScreenBuilder()
         mockPrebookConfirmationScreenBuilder = MockPrebookConfirmationScreenBuilder()
         mockBookingStatus.bookingDetailsToReturn = TestUtil.getRandomBookingDetails()
         mockAddressScreenBuilder = MockAddressScreenBuilder()
@@ -64,7 +64,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
                                       tripScreenBuilder: mockTripScreenBuilder,
                                       rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
                                       ridesScreenBuilder: mockRidesScreenBuilder,
-                                      bookingRequestScreenBuilder: mockBookingRequestScreenBuilder,
+                                      checkoutScreenBuilder: mockCheckoutScreenBuilder,
                                       prebookConfirmationScreenBuilder: mockPrebookConfirmationScreenBuilder,
                                       addressScreenBuilder: mockAddressScreenBuilder,
                                       datePickerScreenBuilder: mockDatePickerScreenBuilder,
@@ -277,7 +277,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.didSelectQuote(quote: quoteBooked)
 
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: tripBooked))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)
@@ -295,7 +295,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         testObject.didSelectQuote(quote: TestUtil.getRandomQuote())
 
         let error = TestUtil.getRandomError()
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.failed(error: error))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.failed(error: error))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)
@@ -313,7 +313,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.didSelectQuote(quote: quote)
 
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult( .cancelled(byUser: true))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult( .cancelled(byUser: true))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)
@@ -330,7 +330,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let trip = TestUtil.getRandomTrip(state: .karhooCancelled)
 
         testObject.didSelectQuote(quote: quote)
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: trip))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: trip))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)
@@ -351,7 +351,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.didSelectQuote(quote: quote)
 
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: trip))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: trip))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)
@@ -372,7 +372,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let quoteBooked = TestUtil.getRandomQuote()
 
         testObject.didSelectQuote(quote: quoteBooked)
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: tripBooked))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
         mockBookingView.triggerDismissCallback()
 
         mockPrebookConfirmationScreenBuilder.triggerScreenResult(closeAction)
@@ -391,7 +391,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let rideDetailsResult = ScreenResult<PrebookConfirmationAction>.completed(result: .rideDetails)
 
         testObject.didSelectQuote(quote: TestUtil.getRandomQuote())
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: tripBooked))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
         mockBookingView.triggerDismissCallback()
 
         mockPrebookConfirmationScreenBuilder.triggerScreenResult(rideDetailsResult)
@@ -415,7 +415,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.didSelectQuote(quote: TestUtil.getRandomQuote())
 
-        mockBookingRequestScreenBuilder.triggerBookingRequestScreenResult(.completed(result: tripBooked))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
         mockBookingView.triggerDismissCallback()
 
         mockPrebookConfirmationScreenBuilder.triggerScreenResult(rideDetailsResult)

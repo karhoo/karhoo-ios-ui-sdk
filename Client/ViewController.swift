@@ -14,25 +14,48 @@ class ViewController: UIViewController {
 
     private var booking: Screen?
 
-    private lazy var guestBookingButton: UIButton = {
+    private lazy var authenticatedBraintreeBookingButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Guest Booking Flow", for: .normal)
+        button.setTitle("Authenticated Booking Flow [Braintree]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var guestBraintreeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Guest Booking Flow [Braintree]", for: .normal)
+        button.tintColor = .blue
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var tokenExchangeBraintreeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Token Exchange Booking Flow [Braintree]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var authenticatedAdyenBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Authenticated Booking Flow [Adyen]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var guestAdyenBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Guest Booking Flow [Adyen]", for: .normal)
         button.tintColor = .blue
 
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private lazy var authenticatedBookingButton: UIButton = {
+    private lazy var tokenExchangeAdyenBookingButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Authenticated Booking Flow", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    private lazy var tokenExchangeBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Token Exchange Booking Flow", for: .normal)
+        button.setTitle("Token Exchange Booking Flow [Adyen]", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -40,59 +63,98 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        guestBookingButton.addTarget(self, action: #selector(guestBookingTapped),
-                                     for: .touchUpInside)
-        authenticatedBookingButton.addTarget(self, action: #selector(authenticatedBookingTapped),
+        authenticatedBraintreeBookingButton.addTarget(self, action: #selector(authenticatedBraintreeBookingTapped),
                                        for: .touchUpInside)
-        tokenExchangeBookingButton.addTarget(self, action: #selector(tokenExchangeBookingTapped),
+        guestBraintreeBookingButton.addTarget(self, action: #selector(guestBraintreeBookingTapped),
+                                     for: .touchUpInside)
+        tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped),
+                                             for: .touchUpInside)
+        authenticatedAdyenBookingButton.addTarget(self, action: #selector(authenticatedAdyenBookingTapped),
+                                       for: .touchUpInside)
+        guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped),
+                                     for: .touchUpInside)
+        tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped),
                                              for: .touchUpInside)
     }
 
     override func loadView() {
         super.loadView()
 
-        [guestBookingButton, authenticatedBookingButton, tokenExchangeBookingButton].forEach { button in
+        [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
+         authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton].forEach { button in
             self.view.addSubview(button)
         }
+        
+        authenticatedBraintreeBookingButton.centerX(inView: view)
+        authenticatedBraintreeBookingButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 80)
+        
+        guestBraintreeBookingButton.centerX(inView: view)
+        guestBraintreeBookingButton.anchor(top: authenticatedBraintreeBookingButton.bottomAnchor, paddingTop: 30)
 
-        guestBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        guestBookingButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        tokenExchangeBraintreeBookingButton.centerX(inView: view)
+        tokenExchangeBraintreeBookingButton.anchor(top: guestBraintreeBookingButton.bottomAnchor, paddingTop: 30)
 
-        authenticatedBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        authenticatedBookingButton.topAnchor.constraint(equalTo: guestBookingButton.bottomAnchor,
-                                                        constant: -100).isActive = true
+        authenticatedAdyenBookingButton.centerX(inView: view)
+        authenticatedAdyenBookingButton.anchor(top: tokenExchangeBraintreeBookingButton.bottomAnchor, paddingTop: 80)
 
-        tokenExchangeBookingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        tokenExchangeBookingButton.topAnchor.constraint(equalTo: authenticatedBookingButton.bottomAnchor,
-                                                        constant: -100).isActive = true
+        guestAdyenBookingButton.centerX(inView: view)
+        guestAdyenBookingButton.anchor(top: authenticatedAdyenBookingButton.bottomAnchor, paddingTop: 30)
+
+        tokenExchangeAdyenBookingButton.centerX(inView: view)
+        tokenExchangeAdyenBookingButton.anchor(top: guestAdyenBookingButton.bottomAnchor, paddingTop: 30)
+
     }
 
-    @objc func guestBookingTapped(sender: UIButton) {
+    @objc func guestAdyenBookingTapped(sender: UIButton) {
+        let guestSettings = GuestSettings(identifier: Keys.adyenGuestIdentifier,
+                                          referer: Keys.referer,
+                                          organisationId: Keys.adyenGuestOrganisationId)
+        KarhooConfig.auth = .guest(settings: guestSettings)
+        KarhooConfig.environment = Keys.adyenGuestEnvironment
+        showKarhoo()
+    }
+
+    @objc func guestBraintreeBookingTapped(sender: UIButton) {
         let guestSettings = GuestSettings(identifier: Keys.braintreeGuestIdentifier,
                                           referer: Keys.referer,
                                           organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
+        KarhooConfig.environment = Keys.braintreeGuestEnvironment
         showKarhoo()
     }
 
-    @objc func authenticatedBookingTapped(sender: UIButton) {
+    @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
-        usernamePasswordLoginAndShowKarhoo()
+        KarhooConfig.environment = Keys.adyenUserServiceEnvironment
+        usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
+    }
+    
+    @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
+        KarhooConfig.auth = .karhooUser
+        KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
+        usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
     }
 
-    @objc func tokenExchangeBookingTapped(sender: UIButton) {
+    @objc func tokenExchangeBraintreeBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        tokenLoginAndShowKarhoo()
+        KarhooConfig.environment = Keys.braintreeTokenEnvironment
+        tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
 
-    private func usernamePasswordLoginAndShowKarhoo() {
-        KarhooConfig.auth = .karhooUser
+    @objc func tokenExchangeAdyenBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.environment = Keys.adyenTokenEnvironment
+        tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
+    }
+
+    private func usernamePasswordLoginAndShowKarhoo(username: String, password: String) {
         let userService = Karhoo.getUserService()
         userService.logout().execute(callback: { _ in})
         
-        let userLogin = UserLogin(username: Keys.userServiceEmailBraintree,
-                                  password: Keys.userServicePasswordBraintree)
+        let userLogin = UserLogin(username: username,
+                                  password: password)
         userService.login(userLogin: userLogin).execute(callback: { result in
                                                 print("login: \(result)")
                                                 if result.isSuccess() {
@@ -101,10 +163,10 @@ class ViewController: UIViewController {
         })
     }
 
-    private func tokenLoginAndShowKarhoo() {
+    private func tokenLoginAndShowKarhoo(token: String) {
         let authService = Karhoo.getAuthService()
 
-        authService.login(token: Keys.braintreeAuthToken).execute { result in
+        authService.login(token: token).execute { result in
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
@@ -131,21 +193,35 @@ class ViewController: UIViewController {
 //                            locale: "en")
 
         booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
-                                         passengerDetails: passangerDetails,
-                                         callback: { [weak self] result in
-                                          switch result {
-                                          case .completed(let bookingScreenResult):
-                                            switch bookingScreenResult {
-                                            case .tripAllocated(let trip): (self?.booking as? BookingScreen)?.openTrip(trip)
-                                            default: break
-                                            }
-                                          default: break
-                                          }
-                                         }) as? BookingScreen
-
+                                                                    passengerDetails: passangerDetails,
+                                                                    callback: { [weak self] result in
+                                                                        self?.handleBookingScreenResult(result: result)
+                                                                    }) as? BookingScreen
         self.present(booking!,
                      animated: true,
                      completion: nil)
+    }
+    
+    private func handleBookingScreenResult(result: ScreenResult<BookingScreenResult>) {
+        switch result {
+            
+        case .completed(let bookingScreenResult):
+          switch bookingScreenResult {
+              
+          case .tripAllocated(let trip):
+              (booking as? BookingScreen)?.openTrip(trip)
+              
+          case .prebookConfirmed(let trip, let prebookConfirmationAction):
+              if case .rideDetails = prebookConfirmationAction {
+                  (booking as? BookingScreen)?.openRideDetailsFor(trip)
+              }
+              
+          default:
+              break
+          }
+        default:
+            break
+        }
     }
 
     private func logout() {

@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-public protocol TermsConditionsViewDelegate: class {
+public protocol TermsConditionsViewDelegate: AnyObject {
     func selectedRegistrationTermsConditions()
 }
 
@@ -63,10 +63,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
     
     public override func updateConstraints() {
         if !didSetupConstraints {
-            _ = [termsTextView.topAnchor.constraint(equalTo: topAnchor),
-                 termsTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0),
-                 termsTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0),
-                 termsTextView.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
+            termsTextView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingLeft: 8.0, paddingRight: 8.0)
         }
         
         super.updateConstraints()

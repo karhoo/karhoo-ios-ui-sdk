@@ -35,6 +35,7 @@ public enum UITexts {
         public static let registeringAccountAction = "Text.Generic.RegisterAccountAction".localized
         public static let makingABookingAction = "Text.Generic.MakingBookingAction".localized
         public static let termsAndConditions = "Text.Generic.TermsConditions".localized
+        public static let termsOfUse = "Text.Generic.TermsOfUse".localized
         public static let privacyPolicy = "Text.Generic.PrivacyPolicy".localized
         public static let cancellationPolicy = "Text.Generic.CancellationPolicy".localized
         public static let minutes = "Text.Generic.Minutes".localized
@@ -61,12 +62,14 @@ public enum UITexts {
         public static let change = "Text.Generic.Change".localized
         public static let submit = "Text.Generic.Submit".localized
         public static let etaLong = "Text.Generic.ETALong".localized
+        public static let meetGreet = "Text.Generic.MeetGreet".localized
         public static let estimatedPrice = "Text.Generic.EPrice".localized
         public static let name = "Text.Generic.Name".localized
         public static let surname = "Text.Generic.Surname".localized
         public static let email = "Text.Generic.Email".localized
         public static let phone = "Text.Generic.PhoneNumber".localized
         public static let comment = "Text.Generic.Comment".localized
+        public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
     }
@@ -127,6 +130,8 @@ public enum UITexts {
         public static let prebookingWithinTheHour = "Text.Error.PrebookingWithinTheHour".localized
         public static let missingPaymentSDKToken = "Text.Errors.failedToInitialisePaymentSetup".localized
         public static let noResultsFound = "Text.Errors.NoResultsFound".localized
+        public static let missingPhoneNumber = "Text.Errors.MissingPhoneNumber".localized
+        public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
     }
 
     /* Payment Error */
@@ -140,6 +145,14 @@ public enum UITexts {
     public enum TermsConditions {
         // 1: action 2: Supplier name, 2: "Terms and Conditions", 3: "Cancellation/Privacy Policy"
         public static let termsConditionFullString = "Text.TermsConditions.FullString".localized
+        // 1: "Terms and Conditions", 2: "Privacy Policy", 3: Fleet Name, 4: "Terms and Conditions, 5: "Cancellation Policy"
+        public static let bookingTermAndConditionsFullText = "Text.TermsConditions.BookingFullString".localized
+        
+        public static let karhooTermsLink = "Text.TermsConditions.KarhooTermsLink".localized
+        public static let karhooPolicyLink = "Text.TermsConditions.KarhooPolicyLink".localized
+        
+        public static var termsLink = "Text.TermsConditions.TermsLink".localized
+        public static var policyLink = "Text.TermsConditions.PolicyLink".localized
     }
 
     /* Demand API (Karhoo specific) errors */
@@ -147,9 +160,15 @@ public enum UITexts {
         public static let K3002 = "Text.KarhooError.K3002".localized // no availability in requested area
         public static let Q0001 = "Text.KarhooError.Q0001".localized // origin
     }
+    
+    /* Help */
+    public enum Help {
+        public static var faqLink = "Text.Help.FAQ.Link".localized
+        public static var contactUsLink = "Text.Help.ContactUs.Link".localized
+    }
 
     /* Side menu */
-    enum SideMenu {
+    public enum SideMenu {
         public static let signIn = "Text.SideMenu.SignIn".localized
         public static let profile = "Text.SideMenu.Profile".localized
         public static let register = "Text.SideMenu.Register".localized
@@ -190,6 +209,7 @@ public enum UITexts {
     public enum Booking {
         public static let requestCar = "Text.Booking.RequestCar".localized
         public static let requestingCar = "Text.Booking.RequestingCar".localized
+        public static let next = "Text.Booking.Next".localized
         public static let requestReceived = "Text.Booking.RequestReceived".localized
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized
@@ -203,6 +223,16 @@ public enum UITexts {
         public static let guestCheckoutPassengerDetailsTitle = "Text.Booking.GuestCheckoutPassengerDetailsTitle".localized
         public static let guestCheckoutPaymentDetailsTitle = "Text.Booking.GuestCheckoutPaymentDetailsTitle".localized
         public static let guestCheckoutFlightNumberPlaceholder = "Text.Booking.GuestCheckoutFlightNumberPlaceholder".localized
+        public static let estimatedInfoBox = "Text.Booking.EstimatedInfoBox".localized
+        public static let meteredInfoBox = "Text.Booking.MeteredInfoBox".localized
+        public static let fixedInfoBox = "Text.Booking.FixedInfoBox".localized
+        public static let learnMore = "Text.Booking.LearnMore".localized
+        public static let passenger = "Text.Booking.Passenger".localized
+        public static let maximumPassengers = "Text.Booking.MaximumPassengers".localized
+        public static let maximumLuggages = "Text.Booking.MaximumLuggages".localized
+        public static let gpsTracking = "Text.Booking.GPSTracking".localized
+        public static let trainTracking = "Text.Booking.TrainTracking".localized
+        public static let flightTracking = "Text.Booking.FlightTracking".localized
     }
 
     public enum Availability {
@@ -217,6 +247,60 @@ public enum UITexts {
         public static let allocatingTripTwo = "Text.TripAllocation.AllocatingTripTwo".localized
         public static let cancelling = "Text.TripAllocation.Cancelling".localized
         public static let cancelInstruction = "Text.TripAllocation.CancelInstruction".localized
+    }
+    
+    public enum PassengerDetails {
+        public static let title = "Text.Booking.PassengerDetails.Title".localized
+        public static let subtitle = "Text.Booking.PassengerDetails.Subtitle".localized
+        public static let firstName = "Text.Booking.PassengerDetails.FirstName".localized
+        public static let lastName = "Text.Booking.PassengerDetails.LastName".localized
+        public static let email = "Text.Booking.PassengerDetails.Email".localized
+        public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
+        public static let saveAction = "Text.Booking.PassengerDetails.SaveAction".localized
+        public static let add = "Text.Booking.PassengerDetails.Add".localized
+    }
+    
+    public enum QuoteCategory {
+        public static let electric = "Text.QuoteCategory.Electric".localized
+        public static let mpv = "Text.QuoteCategory.MPV".localized
+        public static let saloon = "Text.QuoteCategory.Saloon".localized
+        public static let exec = "Text.QuoteCategory.Exec".localized
+        public static let executive = "Text.QuoteCategory.Executive".localized
+        public static let moto = "Text.QuoteCategory.Moto".localized
+        public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
+        public static let taxi = "Text.QuoteCategory.Taxi".localized
+    }
+    
+    public enum VehicleClass {
+        public static let saloon = "Text.VehicleClass.Saloon".localized
+        public static let taxi = "Text.VehicleClass.Taxi".localized
+        public static let mpv = "Text.VehicleClass.MPV".localized
+        public static let exec = "Text.VehicleClass.Exec".localized
+        public static let executive = "Text.VehicleClass.Executive".localized
+        public static let moto = "Text.VehicleClass.Moto".localized
+        public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
+        public static let electric = "Text.VehicleClass.Electric".localized
+    }
+    
+    public enum VehicleType {
+        public static let moto = "Text.VehicleType.Moto".localized
+        public static let standard = "Text.VehicleType.Standard".localized
+        public static let mpv = "Text.VehicleType.MPV".localized
+        public static let bus = "Text.VehicleType.Bus".localized
+    }
+    
+    public enum VehicleTag {
+        public static let electric = "Text.VehicleTag.Electric".localized
+        public static let hybrid = "Text.VehicleTag.Hybrid".localized
+        public static let wheelchair = "Text.VehicleTag.Wheelchair".localized
+        public static let childseat = "Text.VehicleTag.Childseat".localized
+        public static let taxi = "Text.VehicleTag.Taxi".localized
+        public static let executive = "Text.VehicleTag.Executive".localized
+    }
+    
+    public enum CountryCodeSelection {
+        public static let title = "Text.Booking.CountryCodeSelection.Title".localized
+        public static let search = "Text.Booking.CountryCodeSelection.Search".localized
     }
 
     /* Trip */
@@ -348,5 +432,20 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
+    }
+    
+    func firstLetterUppercased() -> String {
+        guard let firstLetter = self.first?.uppercased() else {
+            return self
+        }
+        return firstLetter + self.dropFirst()
+    }
+    
+    func removePrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix)
+        else {
+            return self
+        }
+        return String(self.dropFirst(prefix.count))
     }
 }

@@ -9,34 +9,129 @@
 import UIKit
 import KarhooSDK
 
+enum VehicleTag: String {
+    case electric, hybrid, wheelchair, childSeat, taxi, executive
+    
+    enum CodingKeys: String, CodingKey {
+        case childSeat = "child-seat"
+    }
+    
+    var title: String {
+        switch self {
+        case .electric:
+            return UITexts.VehicleTag.electric
+        case .hybrid:
+            return UITexts.VehicleTag.hybrid
+        case .wheelchair:
+            return UITexts.VehicleTag.wheelchair
+        case .childSeat:
+            return UITexts.VehicleTag.childseat
+        case .taxi:
+            return UITexts.VehicleTag.taxi
+        case .executive:
+            return UITexts.VehicleTag.executive
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .electric:
+            return UIImage.uisdkImage("electric")
+        case .hybrid:
+            return UIImage.uisdkImage("circle")
+        case .wheelchair:
+            return UIImage.uisdkImage("wheelchair")
+        case .childSeat:
+            return UIImage.uisdkImage("childseat")
+        case .taxi:
+            return UIImage.uisdkImage("taxi")
+        case .executive:
+            return UIImage.uisdkImage("star")
+        }
+    }
+}
+
+enum FleetCapabilities: String {
+    case gpsTracking, flightTracking, trainTracking
+    
+    enum CodingKeys: String, CodingKey {
+        case gpsTracking = "gps_tracking"
+        case flightTracking = "flight_tracking"
+        case trainTracking = "train_tracking"
+    }
+    
+    var title: String {
+        switch self {
+        case .gpsTracking:
+            return UITexts.Booking.gpsTracking
+        case .flightTracking:
+            return UITexts.Booking.flightTracking
+        case .trainTracking:
+            return UITexts.Booking.trainTracking
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .gpsTracking:
+            return UIImage.uisdkImage("gpsTrackingIcon")
+        case .flightTracking:
+            return UIImage.uisdkImage("flightTrackingIcon")
+        case .trainTracking:
+            return UIImage.uisdkImage("trainTrackingIcon")
+        }
+    }
+    
+    init?(rawValue: String) {
+        guard let key = CodingKeys(rawValue: rawValue) else {
+            return nil
+        }
+        switch key {
+        case .gpsTracking:
+            self = .gpsTracking
+        case .flightTracking:
+            self = .flightTracking
+        case .trainTracking:
+            self = .trainTracking
+        }
+    }
+}
+
 final class QuoteViewModel {
     
     let fleetName: String
+    let fleetDescription: String
     let scheduleCaption: String
     let scheduleMainValue: String
     let carType: String
+    let vehicleTags: [VehicleTag]
+    let fleetCapabilities: [FleetCapabilities]
     let fare: String
     let logoImageURL: String
     let fareType: String
     let showPickUpLabel: Bool
     let pickUpType: String
-    let passengerCapacity: String
-    let baggageCapacity: String
+    let passengerCapacity: Int
+    let baggageCapacity: Int
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
 
     init(quote: Quote,
          bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
-        self.passengerCapacity = "\(quote.vehicle.passengerCapacity)"
-        self.baggageCapacity = "\(quote.vehicle.luggageCapacity)"
+        self.passengerCapacity = quote.vehicle.passengerCapacity
+        self.baggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
+        self.fleetDescription = quote.fleet.description
         let bookingDetails = bookingStatus.getBookingDetails()
         let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
                                                          bookingDetails: bookingDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        self.carType = quote.vehicle.vehicleClass
+        // TODO: to be reverted later to localized carType - vehicleClass is deprecated
+        self.carType = quote.vehicle.localizedVehicleClass
+        self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
+        self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
         case .timeBeforePickup:

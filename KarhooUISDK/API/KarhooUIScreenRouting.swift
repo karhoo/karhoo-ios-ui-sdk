@@ -14,9 +14,8 @@ public protocol Routing {
     func ridesList() -> RidesListScreenBuilder
     func rideDetails() -> RideDetailsScreenBuilder
     func booking() -> BookingScreenBuilder
-    func flightDetails() -> FlightDetailsScreenBuilder
     func tripScreen() -> TripScreenBuilder
-    func bookingRequest() -> BookingRequestScreenBuilder
+    func checkout() -> CheckoutScreenBuilder
 }
 
 public final class UISDKScreenRouting: Routing {
@@ -51,16 +50,12 @@ public final class UISDKScreenRouting: Routing {
         return routing.bookingScreenBuilder
     }
 
-    public func flightDetails() -> FlightDetailsScreenBuilder {
-        return routing.flightDetailsScreenBuilder
-    }
-
     public func tripScreen() -> TripScreenBuilder {
         return routing.tripScreenBuilder
     }
 
-    public func bookingRequest() -> BookingRequestScreenBuilder {
-        return routing.bookingRequestScreenBuilder
+    public func checkout() -> CheckoutScreenBuilder {
+        return routing.checkoutScreenBuilder
     }
 
     public func paymentScreen() -> PaymentScreenBuilder {
