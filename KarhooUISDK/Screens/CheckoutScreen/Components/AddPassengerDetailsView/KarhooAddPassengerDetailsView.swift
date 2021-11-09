@@ -201,6 +201,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         hasValidDetails = false
         passengerDetailsTitle.text = UITexts.PassengerDetails.title
         passengerDetailsSubtitle.text = UITexts.PassengerDetails.add
+        passengerDetailsImage.image = UIImage.uisdkImage("user_icon")
         
         setNeedsDisplay()
     }
