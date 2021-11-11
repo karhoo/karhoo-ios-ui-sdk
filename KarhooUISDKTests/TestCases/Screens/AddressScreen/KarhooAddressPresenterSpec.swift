@@ -264,8 +264,8 @@ class KarhooAddressPresenterSpec: XCTestCase {
         mockAddressSearchProvider.triggerDefaultResponse(recents: [recent])
 
         XCTAssert(mockAddressView.addressCellsToShow?.first?.placeId == recent.placeId)
-        XCTAssert(mockAddressView.addressCellsToShow?.first?.displayAddress == recent.displayAddress)
-        XCTAssert(mockAddressView.addressCellsToShow?.first?.subtitleAddress == recent.lineOne)
+        XCTAssert(mockAddressView.addressCellsToShow?.first?.displayAddress == recent.address.displayAddress)
+        XCTAssert(mockAddressView.addressCellsToShow?.first?.subtitleAddress == recent.address.lineOne)
 
         XCTAssertTrue(mockAddressView.hideEmptyDataSetCalled)
     }

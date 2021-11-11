@@ -86,7 +86,7 @@ final class KarhooAddressPresenter: AddressPresenter {
         switch result {
         case .success(let locationInfo):
             if saveLocation {
-                recentAddressProvider.add(recent: locationInfo.toAddress())
+                recentAddressProvider.add(recent: locationInfo)
             }
             locationDetailsSelected(details: locationInfo)
         case .failure(let error):
@@ -108,7 +108,7 @@ final class KarhooAddressPresenter: AddressPresenter {
 
     func addressMapViewSelected(location: LocationInfo) {
         addressView?.unfocusInputField()
-        recentAddressProvider.add(recent: location.toAddress())
+        recentAddressProvider.add(recent: location)
         locationDetailsSelected(details: location)
     }
 
@@ -194,7 +194,7 @@ extension KarhooAddressPresenter: AddressSearchProviderDelegate {
         }
     }
 
-    func useDefaultAddresses(recents: [Address]) {
+    func useDefaultAddresses(recents: [LocationInfo]) {
         if recents.isEmpty {
             addressView?.show(emptyDataSetMessage: UITexts.AddressScreen.noRecentAddresses)
         } else {

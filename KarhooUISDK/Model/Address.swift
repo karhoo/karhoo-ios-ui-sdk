@@ -71,5 +71,5 @@ struct Address: KarhooCodableModel {
 }
 
 struct RecentAddressList: KarhooCodableModel {
-    var recents: [Address]
+    var recents: [LocationInfo]
 }

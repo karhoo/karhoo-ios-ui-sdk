@@ -17,10 +17,10 @@ final class MockRecentAddressProvider: RecentAddressProvider {
                                   lineOne: "line1")
     var addedRecent: Address?
 
-    func getRecents() -> [Address] {
+    func getRecents() -> [LocationInfo] {
         return [addressToReturn]
     }
-    func add(recent: Address) {
+    func add(recent: LocationInfo) {
         addedRecent = recent
     }
 }

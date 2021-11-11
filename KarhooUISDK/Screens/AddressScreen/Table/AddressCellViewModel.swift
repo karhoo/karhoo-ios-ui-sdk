@@ -16,11 +16,11 @@ struct AddressCellViewModel {
     let iconImageName: String
     let placeId: String
     
-    init(address: Address) {
-        self.displayAddress = address.displayAddress
-        self.subtitleAddress = address.lineOne
+    init(address: LocationInfo) {
+        self.displayAddress = address.address.displayAddress
+        self.subtitleAddress = address.address.lineOne
         self.placeId = address.placeId
-        self.iconImageName = AddressCellViewModel.asset(address.poiDetailsType)
+        self.iconImageName = AddressCellViewModel.asset(address.details.type)
     }
     
     init(place: Place) {

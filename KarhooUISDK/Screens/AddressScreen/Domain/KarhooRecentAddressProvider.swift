@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KarhooSDK
 
 final class KarhooRecentAddressProvider: RecentAddressProvider {
 
@@ -22,14 +23,14 @@ final class KarhooRecentAddressProvider: RecentAddressProvider {
         self.persistantStore = persistantStore
     }
 
-    func getRecents() -> [Address] {
+    func getRecents() -> [LocationInfo] {
         return  getExistingAddresses().recents
     }
 
-    func add(recent: Address) {
+    func add(recent: LocationInfo) {
         var recentAddresses = getExistingAddresses()
         
-        if recentAddresses.recents.contains(where: { $0.placeId == recent.placeId }) {
+        if recentAddresses.recents.contains(where: { $0.position == recent.position }) {
             return
         }
         
