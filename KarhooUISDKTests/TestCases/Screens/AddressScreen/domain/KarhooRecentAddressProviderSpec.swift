@@ -94,8 +94,8 @@ class KarhooRecentAddressProviderSpec: XCTestCase {
         let recents = testObject.getRecents()
 
         XCTAssert(recents.count == 1)
-        recents.forEach { (address: Address) in
-            XCTAssert(address.placeId == testAddress.placeId)
+        recents.forEach { (location: LocationInfo) in
+            XCTAssert(location.placeId == testAddress.placeId)
         }
     }
 }
