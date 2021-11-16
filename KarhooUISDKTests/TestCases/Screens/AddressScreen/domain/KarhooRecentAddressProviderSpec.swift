@@ -34,7 +34,7 @@ class KarhooRecentAddressProviderSpec: XCTestCase {
      *  And:    Stored in the persistant store
      */
     func testAddRecent() {
-        let address = TestUtil.getRandomAddress()
+        let address = TestUtil.getRandomLocationInfo()
 
         testObject.add(recent: address)
         testUserDefaults.valueToReturn = RecentAddressList(recents: []).encode()!
@@ -48,7 +48,7 @@ class KarhooRecentAddressProviderSpec: XCTestCase {
      *  Then:   Address should not be added
      */
     func testAddWhenAlreadyExist() {
-        let existingAddress = TestUtil.getRandomAddress()
+        let existingAddress = TestUtil.getRandomLocationInfo()
 
         testUserDefaults.valueToReturn = RecentAddressList(recents: [existingAddress]).encode()!
         testObject.add(recent: existingAddress)
@@ -63,13 +63,13 @@ class KarhooRecentAddressProviderSpec: XCTestCase {
      *  And:    The new recent should be first
      */
     func testMaxNoOfRecents() {
-        let existingAddresses = [TestUtil.getRandomAddress(placeId: "1"),
-                                 TestUtil.getRandomAddress(placeId: "2"),
-                                 TestUtil.getRandomAddress(placeId: "3"),
-                                 TestUtil.getRandomAddress(placeId: "4"),
-                                 TestUtil.getRandomAddress(placeId: "5")]
+        let existingAddresses = [TestUtil.getRandomLocationInfo(placeId: "1"),
+                                 TestUtil.getRandomLocationInfo(placeId: "2"),
+                                 TestUtil.getRandomLocationInfo(placeId: "3"),
+                                 TestUtil.getRandomLocationInfo(placeId: "4"),
+                                 TestUtil.getRandomLocationInfo(placeId: "5")]
 
-        let newAddress = TestUtil.getRandomAddress(placeId: "6")
+        let newAddress = TestUtil.getRandomLocationInfo(placeId: "6")
         testUserDefaults.valueToReturn = RecentAddressList(recents: existingAddresses).encode()!
         testObject.add(recent: newAddress)
 
@@ -88,7 +88,7 @@ class KarhooRecentAddressProviderSpec: XCTestCase {
      *  Then:   All the recents from the persistent store should be returned
      */
     func testGettingRecents() {
-        let testAddress = TestUtil.getRandomAddress()
+        let testAddress = TestUtil.getRandomLocationInfo()
         testUserDefaults.valueToReturn = RecentAddressList(recents: [testAddress]).encode()!
 
         let recents = testObject.getRecents()

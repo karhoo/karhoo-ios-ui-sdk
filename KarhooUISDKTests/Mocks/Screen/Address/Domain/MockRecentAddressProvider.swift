@@ -15,7 +15,7 @@ final class MockRecentAddressProvider: RecentAddressProvider {
     
     let addressToReturn = LocationInfo(placeId: "place123",
                                        timeZoneIdentifier: "GMT",
-                                       position: Position(latitude: 51.509998, longitude: -0.1371958),
+                                       position: Position(latitude: TestUtil.getRandomCoordinateComponent(), longitude: TestUtil.getRandomCoordinateComponent()),
                                        poiType: .nearest,
                                        address: LocationInfoAddress(displayAddress: "Piccadilly Circus, London, UK",
                                                                     lineOne: "line1",
@@ -26,12 +26,12 @@ final class MockRecentAddressProvider: RecentAddressProvider {
                                                                     postalCode: "123456",
                                                                     countryCode: "GB",
                                                                     region: "GB"),
-                                       details: PoiDetails(iata: "", terminal: "", type: .notSetDetailsType),
-                                       meetingPoint: MeetingPoint(position: Position(latitude: 51.509998, longitude: -0.1371958),
-                                                                  instructions: "",
+                                       details: PoiDetails(iata: TestUtil.getRandomString(), terminal: TestUtil.getRandomString(), type: .notSetDetailsType),
+                                       meetingPoint: MeetingPoint(position: Position(latitude: TestUtil.getRandomCoordinateComponent(), longitude: TestUtil.getRandomCoordinateComponent()),
+                                                                  instructions: TestUtil.getRandomString(),
                                                                   type: .default,
-                                                                  note: ""),
-                                       instructions: "")
+                                                                  note: TestUtil.getRandomString()),
+                                       instructions: TestUtil.getRandomString())
     
     var addedRecent: LocationInfo?
 
