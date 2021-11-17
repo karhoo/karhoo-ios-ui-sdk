@@ -159,7 +159,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
      *  And:    The keyboard should be dismised
      */
     func testSelectedAddress() {
-        let address = TestUtil.getRandomAddress()
+        let address = TestUtil.getRandomLocationInfo()
         let addressViewModel = AddressCellViewModel(address: address)
         testObject.selected(address: addressViewModel)
 
@@ -173,7 +173,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
      *  Then:   That detailed address should be passed back through the callback
      */
     func testDetailsSuccessful() {
-        let address = TestUtil.getRandomAddress(placeId: "test")
+        let address = TestUtil.getRandomLocationInfo(placeId: "test")
         let addressViewModel = AddressCellViewModel(address: address)
 
         testObject.selected(address: addressViewModel)
@@ -192,7 +192,7 @@ class KarhooAddressPresenterSpec: XCTestCase {
     func testDetailsFailure() {
         testObject.set(view: mockAddressView)
 
-        testObject.selected(address: AddressCellViewModel(address: TestUtil.getRandomAddress()))
+        testObject.selected(address: AddressCellViewModel(address: TestUtil.getRandomLocationInfo()))
         let error = TestUtil.getRandomError()
         mockAddressService.locationInfoCall.triggerFailure(error)
         XCTAssertTrue(mockAddressView.focusInputFieldCalled)
@@ -258,14 +258,14 @@ class KarhooAddressPresenterSpec: XCTestCase {
      *  Then:   The screen should be notified accordingly
      */
     func testDefaultAddresses() {
-        let recent = TestUtil.getRandomAddress()
+        let recent = TestUtil.getRandomLocationInfo()
 
         testObject.set(view: mockAddressView)
         mockAddressSearchProvider.triggerDefaultResponse(recents: [recent])
 
         XCTAssert(mockAddressView.addressCellsToShow?.first?.placeId == recent.placeId)
-        XCTAssert(mockAddressView.addressCellsToShow?.first?.displayAddress == recent.displayAddress)
-        XCTAssert(mockAddressView.addressCellsToShow?.first?.subtitleAddress == recent.lineOne)
+        XCTAssert(mockAddressView.addressCellsToShow?.first?.displayAddress == recent.address.displayAddress)
+        XCTAssert(mockAddressView.addressCellsToShow?.first?.subtitleAddress == recent.address.lineOne)
 
         XCTAssertTrue(mockAddressView.hideEmptyDataSetCalled)
     }

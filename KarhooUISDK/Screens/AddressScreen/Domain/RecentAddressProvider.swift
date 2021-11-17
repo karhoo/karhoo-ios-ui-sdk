@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import KarhooSDK
 
 protocol RecentAddressProvider {
-    func getRecents() -> [Address]
+    func getRecents() -> [LocationInfo]
 
-    func add(recent: Address)
+    func add(recent: LocationInfo)
 }

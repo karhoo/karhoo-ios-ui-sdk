@@ -18,8 +18,8 @@ final class MockAddressSearchProviderDelegate: AddressSearchProviderDelegate {
         searchCompletedWithPlaces = places
     }
 
-    private(set) var recentsSet: [Address]?
-    func useDefaultAddresses(recents: [Address]) {
+    private(set) var recentsSet: [LocationInfo]?
+    func useDefaultAddresses(recents: [LocationInfo]) {
         recentsSet = recents
     }
 

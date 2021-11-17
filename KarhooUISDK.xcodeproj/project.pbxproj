@@ -61,7 +61,6 @@
 		0991070921B83AF700BD7E6F /* TripLocationDetailsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991070221B83AF700BD7E6F /* TripLocationDetailsExt.swift */; };
 		0991070A21B83AF700BD7E6F /* TripExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991070321B83AF700BD7E6F /* TripExt.swift */; };
 		0991070B21B83AF700BD7E6F /* Observer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991070421B83AF700BD7E6F /* Observer+Utils.swift */; };
-		0991070C21B83AF700BD7E6F /* LocationDetailsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991070521B83AF700BD7E6F /* LocationDetailsExt.swift */; };
 		0991071321B8486300BD7E6F /* AddressScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991071121B8486300BD7E6F /* AddressScreenBuilder.swift */; };
 		0991071421B934F000BD7E6F /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991071021B8486300BD7E6F /* Screen.swift */; };
 		0991530221BFDC3000B46D9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0991530021BFDB6400B46D9F /* Assets.xcassets */; };
@@ -643,7 +642,6 @@
 		0991070221B83AF700BD7E6F /* TripLocationDetailsExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripLocationDetailsExt.swift; sourceTree = "<group>"; };
 		0991070321B83AF700BD7E6F /* TripExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripExt.swift; sourceTree = "<group>"; };
 		0991070421B83AF700BD7E6F /* Observer+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observer+Utils.swift"; sourceTree = "<group>"; };
-		0991070521B83AF700BD7E6F /* LocationDetailsExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsExt.swift; sourceTree = "<group>"; };
 		0991071021B8486300BD7E6F /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		0991071121B8486300BD7E6F /* AddressScreenBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressScreenBuilder.swift; sourceTree = "<group>"; };
 		0991530021BFDB6400B46D9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1572,7 +1570,6 @@
 				0991070321B83AF700BD7E6F /* TripExt.swift */,
 				408AB68423507DF600B351B2 /* FareExt.swift */,
 				0991070421B83AF700BD7E6F /* Observer+Utils.swift */,
-				0991070521B83AF700BD7E6F /* LocationDetailsExt.swift */,
 				4070213B23D9E19400F82B6A /* UIView+Extensions.swift */,
 				4030C8F5241B980E0034A944 /* UIColor+extension.swift */,
 				6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */,
@@ -3712,7 +3709,6 @@
 				092F281C22B25B0700AF8E0E /* ThreeDSecureProvider.swift in Sources */,
 				097BF283234F2A3E00BBE418 /* VehicleCapacityView.swift in Sources */,
 				6B5B035926D7C2D90001B2DB /* KarhooCheckoutViewController+Extensions.swift in Sources */,
-				0991070C21B83AF700BD7E6F /* LocationDetailsExt.swift in Sources */,
 				FC83E29E221ECC1C008FE26D /* DestinationEtaMVP.swift in Sources */,
 				FC0465A52215AA05004E76FE /* NavigationControllerDelegate.swift in Sources */,
 				4017C46A23CCB0230081834B /* EmptyStateView.swift in Sources */,

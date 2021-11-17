@@ -219,15 +219,6 @@ class TestUtil: PrimitiveUtil {
         return PoiDetails(iata: getRandomString(), terminal: getRandomString(), type: .airport)
     }
 
-    class func getRandomAddress(placeId: String = getRandomString(),
-                                location: CLLocation = getRandomLocation(),
-                                timeZoneIdentifier: String? = nil) -> Address {
-        return Address(placeId: placeId,
-                       displayAddress: getRandomString(),
-                       lineOne: getRandomString(),
-                       timeZoneIdentifier: timeZoneIdentifier)
-    }
-
     class func getRandomLocationInfo(placeId: String = getRandomString(),
                                      timeZoneIdentifier: String = "Europe/London",
                                      poiType: PoiType = .notSetPoiType,

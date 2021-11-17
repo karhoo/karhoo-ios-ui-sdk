@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KarhooSDK
 
 final class KarhooRecentAddressProvider: RecentAddressProvider {
 
@@ -22,14 +23,14 @@ final class KarhooRecentAddressProvider: RecentAddressProvider {
         self.persistantStore = persistantStore
     }
 
-    func getRecents() -> [Address] {
+    func getRecents() -> [LocationInfo] {
         return  getExistingAddresses().recents
     }
 
-    func add(recent: Address) {
+    func add(recent: LocationInfo) {
         var recentAddresses = getExistingAddresses()
         
-        if recentAddresses.recents.contains(where: { $0.placeId == recent.placeId }) {
+        if recentAddresses.recents.contains(where: { $0.position == recent.position }) {
             return
         }
         
@@ -52,8 +53,14 @@ final class KarhooRecentAddressProvider: RecentAddressProvider {
             return RecentAddressList(recents: [])
         }
 
-        guard let decodedAddresses = try? JSONDecoder().decode(RecentAddressList.self, from: addressData) else {
+        guard var decodedAddresses = try? JSONDecoder().decode(RecentAddressList.self, from: addressData) else {
             return RecentAddressList(recents: [])
+        }
+        
+        // Note: When switching from storing [Address] to [LocationInfo], the place ids were decoded as empty strings
+        // This is a one time purge of any invalid data. Next time the user adds a new recent the list will be overwritten with a valid [LocationInfo]
+        if decodedAddresses.recents.first(where: { $0.placeId.isEmpty }) != nil {
+            decodedAddresses.recents = decodedAddresses.recents.filter({ !$0.placeId.isEmpty })
         }
         
         return decodedAddresses
