@@ -98,7 +98,7 @@ public struct TermsConditionsStringBuilder {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        paragraphStyle.lineSpacing = 8
+        paragraphStyle.lineSpacing = 4
 
         let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
                                                                 .foregroundColor: KarhooUI.colors.medGrey,

@@ -17,6 +17,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var headerView: KarhooCheckoutHeaderView!
+    var loyaltyView: KarhooLoyaltyView!
     
     private let extraSmallSpacing: CGFloat = 8.0
     private let standardButtonSize: CGFloat = 44.0
@@ -176,6 +177,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
         termsConditionsView = TermsConditionsView()
+        loyaltyView = KarhooLoyaltyView()
         setUpView()
     }
     
@@ -188,6 +190,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
+        baseStackView.addViewToStack(view: loyaltyView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
@@ -236,7 +239,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfoLabel.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 20.0, paddingLeft: 20.0, paddingBottom: 20.0, paddingRight: 20.0)
         
         rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
-        passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
+        loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: 20.0)
+        
+        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)

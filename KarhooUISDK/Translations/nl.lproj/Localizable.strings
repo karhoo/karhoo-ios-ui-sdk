@@ -356,8 +356,12 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Er is een fout opgetreden";
 
+"Text.Error.UnsupportedCurrency" = "De valuta wordt nog niet ondersteund";
+
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Probleem met het initialiseren van betalingen, neem contact op met de helpdesk";
+
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Uw puntensaldo is onvoldoende";
 
 "Text.Errors.InvalidPhoneNumber" = "Ongeldig telefoonnummer";
 
@@ -456,7 +460,7 @@
 "Text.Generic.MeetGreet" = "Meet & Greet";
 
 /* Metered fare type displayed in quotes list: English: "Metered" */
-"Text.Generic.Metered" = "meterprijs";
+"Text.Generic.Metered" = "Meterprijs";
 
 "Text.Generic.Minutes" = "min";
 
@@ -479,7 +483,7 @@
 /* "Payments" used as the title of the payment method screen */
 "Text.Generic.Payments" = "Betalingen";
 
-"Text.Generic.PhoneNumber" = "Telefoonnummer";
+"Text.Generic.PhoneNumber" = "Mobiel telefoonnummer";
 
 "Text.Generic.Pickup" = "Ophaallocatie";
 
@@ -598,6 +602,14 @@
 "Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
+
+"Text.Loyalty.Info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
+
+"Text.Loyalty.PointsBurnedForTrip" = "U gebruikt %1$@ punten";
+
+"Text.Loyalty.PointsEarnedForTrip" = "Met deze rit verdien je %1$@ punten";
+
+"Text.Loyalty.Title" = "Loyaliteitspunten";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Betaling toevoegen";

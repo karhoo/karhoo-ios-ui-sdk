@@ -133,6 +133,7 @@ public enum UITexts {
         public static let missingPhoneNumber = "Text.Errors.MissingPhoneNumber".localized
         public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
         public static let insufficientBalanceForLoyaltyBurning = "Text.Errors.InsufficientBalanceForLoyaltyBurning".localized
+        public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
     }
 
     /* Payment Error */

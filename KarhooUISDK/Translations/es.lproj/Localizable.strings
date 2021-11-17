@@ -348,8 +348,12 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Hubo un problema";
 
+"Text.Error.UnsupportedCurrency" = "La moneda aún no es compatible";
+
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Error al iniciar la configuración del pago";
+
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Tu saldo de puntos es insuficiente";
 
 "Text.Errors.InvalidPhoneNumber" = "Número de teléfono invalido";
 
@@ -590,6 +594,14 @@
 "Text.KarhooError.K3002" = "Sin disponibilidad en la zona";
 
 "Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
+
+"Text.Loyalty.Info" = "Su tarjeta es necesaria para autorizar esta transacción en caso de que el precio final del viaje exceda su saldo de puntos. No se le cobrará a su cuenta si sus puntos de fidelidad cubren el precio total.";
+
+"Text.Loyalty.PointsBurnedForTrip" = "Estás usando %1$@ puntos";
+
+"Text.Loyalty.PointsEarnedForTrip" = "Este viaje le otorga %1$@ puntos";
+
+"Text.Loyalty.Title" = "Puntos de lealtad";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Añadir un método de pago";
