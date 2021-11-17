@@ -177,7 +177,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
         termsConditionsView = TermsConditionsView()
-        loyaltyView = KarhooLoyaltyView()
+        
+        // TODO: pass proper values
+        loyaltyView = KarhooLoyaltyView(request: LoyaltyViewRequest(loyaltyId: "",
+                                                                    currency: passengerDetailsAndPaymentView.quote?.price.currencyCode ?? "EUR",
+                                                                    tripAmount: passengerDetailsAndPaymentView.quote?.price.highPrice ?? 0.0))
         setUpView()
     }
     

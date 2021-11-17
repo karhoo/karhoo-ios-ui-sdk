@@ -28,7 +28,7 @@ final class KarhooLoyaltyView: UIStackView {
     private let cornerRadius = 3.0
     private let borderWidth = 1.0
     
-    private var presenter: KarhooLoyaltyPresenter?
+    private var presenter: LoyaltyPresenter?
     private var didSetupConstraints: Bool = false
     private var topSwitchConstraint: NSLayoutConstraint?
     private var bottomSwitchConstraint: NSLayoutConstraint?
@@ -76,7 +76,7 @@ final class KarhooLoyaltyView: UIStackView {
         label.accessibilityIdentifier = KHLoyaltyViewID.subtitleLabel
         label.font = KarhooUI.fonts.captionRegular()
         label.textColor = KarhooUI.colors.guestCheckoutLightGrey
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        label.text = UITexts.Loyalty.pointsEarnedForTrip
         label.numberOfLines = 0
         return label
     }()
@@ -94,6 +94,7 @@ final class KarhooLoyaltyView: UIStackView {
         swt.accessibilityIdentifier = KHLoyaltyViewID.burnPointsSwitch
         swt.onTintColor = KarhooUI.colors.accent
         swt.isOn = false
+        swt.addTarget(self, action: #selector(onSwitchValueChanged), for: .valueChanged)
         return swt
     }()
     
@@ -119,9 +120,11 @@ final class KarhooLoyaltyView: UIStackView {
     }()
     
     // MARK: - Init
-    init() {
+    init(request: LoyaltyViewRequest) {
         super.init(frame: .zero)
         self.setupView()
+        presenter = KarhooLoyaltyPresenter(view: self, request: request)
+        presenter?.updateLoyaltyMode(with: .earn)
     }
     
     required init(coder: NSCoder) {
@@ -177,4 +180,59 @@ final class KarhooLoyaltyView: UIStackView {
         topSwitchConstraint?.isActive = subtitleLabel.isHidden
         bottomSwitchConstraint?.isActive = subtitleLabel.isHidden
     }
+    
+    // MARK: - Actions
+    @objc private func onSwitchValueChanged(_ swt: UISwitch) {
+        let mode : LoyaltyMode = swt.isOn ? .burn : .earn
+        presenter?.updateLoyaltyMode(with: mode)
+    }
+}
+
+// MARK: - LoyaltyView
+extension KarhooLoyaltyView: LoyaltyView {
+    
+    func getCurrentMode() -> LoyaltyMode {
+        return presenter?.getCurrentMode() ?? .earn
+    }
+    
+    func set(mode: LoyaltyMode, withSubtitle text: String) {
+        subtitleLabel.text = text
+        subtitleLabel.textColor = KarhooUI.colors.lightGrey
+        contentStackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        
+        switch mode {
+        case .earn:
+            infoView.isHidden = false
+            UIView.animate(withDuration: 0.45) { [weak self] in
+                self?.infoView.alpha = 0.0
+                self?.infoView.isHidden = true
+            }
+            
+        case .burn:
+            infoView.isHidden = false
+            UIView.animate(withDuration: 0.45) { [weak self] in
+                self?.infoView.alpha = 1.0
+            }
+        }
+    }
+    
+    func showError(withMessage message: String) {
+        UIView.animate(withDuration: 0.1) { [weak self] in
+            self?.contentStackView.layer.borderColor = UIColor.red.cgColor
+            self?.subtitleLabel.text = message
+            self?.subtitleLabel.textColor = UIColor.red
+        }
+        
+        shakeView()
+    }
+    
+//    func set(earnAmount: Int) {
+//        let text = String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
+//        subtitleLabel.text = text
+//    }
+//    
+//    func set(burnAmount: Int) {
+//        let text = String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
+//        subtitleLabel.text = text
+//    }
 }

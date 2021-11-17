@@ -9,11 +9,9 @@
 import Foundation
 
 protocol LoyaltyView: AnyObject {
-    func getCurrentMode() -> LoyaltyMode
-    func set(mode: LoyaltyMode)
-    func showError(_ show: Bool)
-    func set(earnAmount: Int)
-    func set(burnAmount: Int)
+    func getCurrentMode() -> LoyaltyMode 
+    func set(mode: LoyaltyMode, withSubtitle text: String)
+    func showError(withMessage message: String)
 }
 
 protocol LoyaltyViewDelegate {
@@ -24,6 +22,7 @@ protocol LoyaltyViewDelegate {
 
 protocol LoyaltyPresenter {
     var delegate: LoyaltyViewDelegate? { get set }
+    func getCurrentMode() -> LoyaltyMode 
     func updateEarnedPoints()
     func updateBurnedPoints()
     func updateLoyaltyMode(with mode: LoyaltyMode)
@@ -31,4 +30,10 @@ protocol LoyaltyPresenter {
 
 enum LoyaltyMode {
     case burn, earn
+}
+
+public struct LoyaltyViewRequest {
+    public var loyaltyId: String
+    public var currency: String
+    public var tripAmount: Double
 }
