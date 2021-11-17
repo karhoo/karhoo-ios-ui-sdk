@@ -132,6 +132,7 @@ public enum UITexts {
         public static let noResultsFound = "Text.Errors.NoResultsFound".localized
         public static let missingPhoneNumber = "Text.Errors.MissingPhoneNumber".localized
         public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
+        public static let insufficientBalanceForLoyaltyBurning = "Text.Errors.InsufficientBalanceForLoyaltyBurning".localized
     }
 
     /* Payment Error */
@@ -416,6 +417,13 @@ public enum UITexts {
         static let freeCancellationASAP = "Text.Quote.FreeCancellationASAP".localized
         static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
+    }
+    
+    public enum Loyalty {
+        static let title = "Text.Loyalty.Title".localized
+        static let pointsEarnedForTrip = "Text.Loyalty.PointsEarnedForTrip".localized
+        static let pointsBurnedForTrip = "Text.Loyalty.PointsBurnedForTrip".localized
+        static let info = "Text.Loyalty.Info".localized
     }
 }
 
