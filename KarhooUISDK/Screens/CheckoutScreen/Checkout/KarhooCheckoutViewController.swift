@@ -345,7 +345,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
-        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: quote.price.currencyCode, tripAmount: quote.price.highPrice)
+        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: quote.price.currencyCode, tripAmount: quote.price.highPrice, canEarn: true, canBurn: true)
         loyaltyView.set(viewModel: loyaltyViewModel)
     }
     

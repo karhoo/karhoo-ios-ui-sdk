@@ -13,6 +13,7 @@ protocol LoyaltyView: AnyObject {
     func set(mode: LoyaltyMode, withSubtitle text: String)
     func set(viewModel: LoyaltyViewModel)
     func set(delegate: LoyaltyViewDelegate)
+    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool)
     func showError(withMessage message: String)
 }
 
@@ -39,4 +40,6 @@ public struct LoyaltyViewModel {
     public var loyaltyId: String
     public var currency: String
     public var tripAmount: Double
+    public var canEarn: Bool
+    public var canBurn: Bool
 }

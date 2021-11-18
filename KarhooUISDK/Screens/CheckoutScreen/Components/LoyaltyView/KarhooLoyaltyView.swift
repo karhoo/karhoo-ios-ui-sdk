@@ -165,7 +165,7 @@ final class KarhooLoyaltyView: UIStackView {
                                           trailing: burnPointsContainerView.trailingAnchor)
             topSwitchConstraint = burnPointsSwitch.topAnchor.constraint(greaterThanOrEqualTo: burnPointsContainerView.topAnchor, constant: 0)
             bottomSwitchConstraint = burnPointsSwitch.bottomAnchor.constraint(greaterThanOrEqualTo: burnPointsContainerView.bottomAnchor, constant: 0)
-            toggleBurnPointsSwitchConstraints()
+            updateBurnPointsSwitchConstraints()
             
             infoLabel.anchor(top: infoView.topAnchor,
                              leading: infoView.leadingAnchor,
@@ -182,9 +182,10 @@ final class KarhooLoyaltyView: UIStackView {
         super.updateConstraints()
     }
     
-    private func toggleBurnPointsSwitchConstraints() {
+    private func updateBurnPointsSwitchConstraints() {
         topSwitchConstraint?.isActive = subtitleLabel.isHidden
         bottomSwitchConstraint?.isActive = subtitleLabel.isHidden
+        setNeedsLayout()
     }
     
     // MARK: - Actions
@@ -258,5 +259,13 @@ extension KarhooLoyaltyView: LoyaltyView {
     
     func set(delegate: LoyaltyViewDelegate) {
         presenter?.delegate = delegate
+    }
+    
+    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
+        subtitleLabel.isHidden = !showEarnRelatedUI
+        burnPointsContainerView.isHidden = !showBurnRelatedUI
+        updateBurnPointsSwitchConstraints()
+        
+        self.isHidden = !showEarnRelatedUI && !showBurnRelatedUI
     }
 }

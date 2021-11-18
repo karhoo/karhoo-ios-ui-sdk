@@ -29,6 +29,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     func set(viewModel: LoyaltyViewModel) {
         self.viewModel = viewModel
+        view?.updateLoyaltyFeatures(showEarnRelatedUI: viewModel.canEarn, showBurnRelatedUI: viewModel.canBurn)
     }
     
     func updateEarnedPoints() {}
@@ -36,16 +37,20 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     func updateBurnedPoints() {}
     
     func updateLoyaltyMode(with mode: LoyaltyMode) {
+        if mode == .burn, !(viewModel?.canBurn ?? false) {
+            return
+        }
+        
         currentMode = mode
         
         if currentMode == .earn {
             view?.set(mode: currentMode, withSubtitle: getSubtitleText())
-        }
-        else if currentMode == .burn, showcaseBurnModeType == .valid {
+            view?.updateLoyaltyFeatures(showEarnRelatedUI: viewModel?.canEarn ?? false, showBurnRelatedUI: viewModel?.canBurn ?? false)
+        } else if currentMode == .burn, showcaseBurnModeType == .valid {
             view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+            view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: viewModel?.canBurn ?? false)
             showcaseBurnModeType = .errorInsufficientBalance
-        }
-        else {
+        } else {
             showcaseBurnMode()
         }
         
@@ -54,9 +59,16 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     private func getSubtitleText() -> String {
         switch currentMode {
-        case .none: return ""
-        case .burn: return String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
-        case .earn: return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
+        case .none:
+            return ""
+        case .burn:
+            return String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
+        case .earn:
+            if viewModel?.canEarn ?? false {
+                return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
+            } else {
+                return ""
+            }
         }
     }
     
@@ -68,14 +80,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         
         switch showcaseBurnModeType {
         case .valid:
+            view?.updateLoyaltyFeatures(showEarnRelatedUI: viewModel?.canEarn ?? false, showBurnRelatedUI: viewModel?.canBurn ?? false)
             showcaseBurnModeType = .errorInsufficientBalance
             
         case .errorInsufficientBalance:
             view?.showError(withMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
+            view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: viewModel?.canBurn ?? false)
             showcaseBurnModeType = .errorUnsupportedCurrency
             
         case .errorUnsupportedCurrency:
             view?.showError(withMessage: UITexts.Errors.unsupportedCurrency)
+            view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: viewModel?.canBurn ?? false)
             showcaseBurnModeType = .valid
         }
     }
