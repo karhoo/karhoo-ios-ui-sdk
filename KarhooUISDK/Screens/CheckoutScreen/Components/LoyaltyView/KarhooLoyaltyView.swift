@@ -217,16 +217,29 @@ extension KarhooLoyaltyView: LoyaltyView {
         
         switch mode {
         case .none, .earn:
+            showInfoView(false)
+            
+        case .burn:
+            showInfoView(true)
+        }
+    }
+    
+    private func showInfoView(_ show: Bool) {
+        if (infoView.isHidden && !show) || (!infoView.isHidden && show)  {
+            return
+        }
+        
+        if show {
+            infoView.isHidden = false
+            UIView.animate(withDuration: 0.45) { [weak self] in
+                self?.infoView.alpha = 1.0
+            }
+        }
+        else {
             infoView.isHidden = false
             UIView.animate(withDuration: 0.45) { [weak self] in
                 self?.infoView.alpha = 0.0
                 self?.infoView.isHidden = true
-            }
-            
-        case .burn:
-            infoView.isHidden = false
-            UIView.animate(withDuration: 0.45) { [weak self] in
-                self?.infoView.alpha = 1.0
             }
         }
     }
@@ -235,6 +248,7 @@ extension KarhooLoyaltyView: LoyaltyView {
         subtitleLabel.text = message
         subtitleLabel.textColor = UIColor.red
         loyaltyStackView.layer.borderColor = UIColor.red.cgColor
+        showInfoView(false)
     }
     
     func set(viewModel: LoyaltyViewModel) {

@@ -17,11 +17,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     private var showcaseBurnModeType: ShowcaseBurnMode = .valid
     
-    private var currentMode: LoyaltyMode = .none {
-        didSet {
-            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
-        }
-    }
+    private var currentMode: LoyaltyMode = .none
     
     init(view: LoyaltyView) {
         self.view = view
@@ -41,8 +37,19 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     func updateLoyaltyMode(with mode: LoyaltyMode) {
         currentMode = mode
+        
+        if currentMode == .earn {
+            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+        }
+        else if currentMode == .burn, showcaseBurnModeType == .valid {
+            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+            showcaseBurnModeType = .errorInsufficientBalance
+        }
+        else {
+            showcaseBurnMode()
+        }
+        
         delegate?.didToggleLoyaltyMode(newValue: mode)
-        showcaseBurnMode()
     }
     
     private func getSubtitleText() -> String {
