@@ -15,6 +15,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     var earnAmount = 0
     var burnAmount = 0
     
+    private var testBurnModeType: TestBurnMode = .valid
+    
     private var currentMode: LoyaltyMode = .earn {
         didSet {
             view?.set(mode: currentMode, withSubtitle: getSubtitleText())
@@ -40,6 +42,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     func updateLoyaltyMode(with mode: LoyaltyMode) {
         currentMode = mode
         delegate?.didToggleLoyaltyMode(newValue: mode)
+        testBurnMode()
     }
     
     private func getSubtitleText() -> String {
@@ -49,5 +52,29 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .earn:
             return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
         }
+    }
+    
+    // TODO: remove this method and the related enum, var, etc. They are only for testing the UI in burn mode while under development
+    private func testBurnMode() {
+        guard currentMode == .burn else {
+            return
+        }
+        
+        switch testBurnModeType {
+        case .valid:
+            testBurnModeType = .errorInsufficientBalance
+            
+        case .errorInsufficientBalance:
+            view?.showError(withMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
+            testBurnModeType = .errorUnsupportedCurrency
+            
+        case .errorUnsupportedCurrency:
+            view?.showError(withMessage: UITexts.Errors.unsupportedCurrency)
+            testBurnModeType = .valid
+        }
+    }
+    
+    private enum TestBurnMode {
+        case valid, errorInsufficientBalance, errorUnsupportedCurrency
     }
 }

@@ -41,7 +41,7 @@ final class KarhooLoyaltyView: UIStackView {
         stackView.accessibilityIdentifier = KHLoyaltyViewID.loyaltyStackView
         stackView.axis = .horizontal
         stackView.spacing = standardHorizontalSpacing
-        stackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        stackView.layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
         stackView.layer.borderWidth = borderWidth
         stackView.layer.cornerRadius = cornerRadius
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -152,6 +152,10 @@ final class KarhooLoyaltyView: UIStackView {
         burnPointsContainerView.addSubview(burnPointsSwitch)
         
         infoView.addSubview(infoLabel)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func updateConstraints() {
@@ -184,8 +188,17 @@ final class KarhooLoyaltyView: UIStackView {
     }
     
     // MARK: - Actions
-    @objc private func onSwitchValueChanged(_ swt: UISwitch) {
-        let mode: LoyaltyMode = swt.isOn ? .burn : .earn
+    @objc private func onSwitchValueChanged() {
+        toggleLoyaltyMode()
+    }
+    
+    @objc private func onViewTapped() {
+        burnPointsSwitch.isOn = !burnPointsSwitch.isOn
+        toggleLoyaltyMode()
+    }
+    
+    private func toggleLoyaltyMode() {
+        let mode: LoyaltyMode = burnPointsSwitch.isOn ? .burn : .earn
         presenter?.updateLoyaltyMode(with: mode)
     }
 }
@@ -200,7 +213,7 @@ extension KarhooLoyaltyView: LoyaltyView {
     func set(mode: LoyaltyMode, withSubtitle text: String) {
         subtitleLabel.text = text
         subtitleLabel.textColor = KarhooUI.colors.lightGrey
-        contentStackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        loyaltyStackView.layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
         
         switch mode {
         case .earn:
@@ -219,13 +232,9 @@ extension KarhooLoyaltyView: LoyaltyView {
     }
     
     func showError(withMessage message: String) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            self?.contentStackView.layer.borderColor = UIColor.red.cgColor
-            self?.subtitleLabel.text = message
-            self?.subtitleLabel.textColor = UIColor.red
-        }
-        
-        shakeView()
+        subtitleLabel.text = message
+        subtitleLabel.textColor = UIColor.red
+        loyaltyStackView.layer.borderColor = UIColor.red.cgColor
     }
     
     func set(viewModel: LoyaltyViewModel) {
