@@ -177,11 +177,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
         termsConditionsView = TermsConditionsView()
-        
-        // TODO: pass proper values
-        loyaltyView = KarhooLoyaltyView(request: LoyaltyViewRequest(loyaltyId: "",
-                                                                    currency: passengerDetailsAndPaymentView.quote?.price.currencyCode ?? "EUR",
-                                                                    tripAmount: passengerDetailsAndPaymentView.quote?.price.highPrice ?? 0.0))
+        loyaltyView = KarhooLoyaltyView()
+        loyaltyView.set(delegate: self)
         setUpView()
     }
     
@@ -240,12 +237,29 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
         
-        cancellationInfoLabel.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 20.0, paddingLeft: 20.0, paddingBottom: 20.0, paddingRight: 20.0)
+        cancellationInfoLabel.anchor(top: headerView.bottomAnchor,
+                                     leading: baseStackView.leadingAnchor,
+                                     trailing: baseStackView.trailingAnchor,
+                                     paddingTop: 20.0,
+                                     paddingLeft: 20.0,
+                                     paddingBottom: 20.0,
+                                     paddingRight: 20.0)
         
-        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
+        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
+                                 leading: baseStackView.leadingAnchor,
+                                 trailing: baseStackView.trailingAnchor,
+                                 paddingTop: 8.0,
+                                 paddingLeft: titleInset,
+                                 paddingRight: titleInset)
         loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: 20.0)
         
-        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
+        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
+                                              leading: baseStackView.leadingAnchor,
+                                              trailing: baseStackView.trailingAnchor,
+                                              paddingTop: titleInset,
+                                              paddingLeft: titleInset,
+                                              paddingRight: titleInset,
+                                              height: 92.0)
 
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
@@ -331,6 +345,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
+        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: quote.price.currencyCode, tripAmount: quote.price.highPrice)
+        loyaltyView.set(viewModel: loyaltyViewModel)
     }
     
     func set(price: String?) {
@@ -369,9 +385,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     final class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(quote: Quote,
-                                       bookingDetails: BookingDetails,
-                                       bookingMetadata: [String: Any]?,
-                                       callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
+                                 bookingDetails: BookingDetails,
+                                 bookingMetadata: [String: Any]?,
+                                 callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(quote: quote,
                                                     bookingDetails: bookingDetails,

@@ -45,7 +45,10 @@ final class KarhooLoyaltyView: UIStackView {
         stackView.layer.borderWidth = borderWidth
         stackView.layer.cornerRadius = cornerRadius
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: standardVerticalSpacing, leading: standardHorizontalSpacing, bottom: standardVerticalSpacing, trailing: standardHorizontalSpacing)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: standardVerticalSpacing,
+                                                                     leading: standardHorizontalSpacing,
+                                                                     bottom: standardVerticalSpacing,
+                                                                     trailing: standardHorizontalSpacing)
         stackView.distribution = .fill
         return stackView
     }()
@@ -120,11 +123,10 @@ final class KarhooLoyaltyView: UIStackView {
     }()
     
     // MARK: - Init
-    init(request: LoyaltyViewRequest) {
+    init() {
         super.init(frame: .zero)
         self.setupView()
-        presenter = KarhooLoyaltyPresenter(view: self, request: request)
-        presenter?.updateLoyaltyMode(with: .earn)
+        presenter = KarhooLoyaltyPresenter(view: self)
     }
     
     required init(coder: NSCoder) {
@@ -183,7 +185,7 @@ final class KarhooLoyaltyView: UIStackView {
     
     // MARK: - Actions
     @objc private func onSwitchValueChanged(_ swt: UISwitch) {
-        let mode : LoyaltyMode = swt.isOn ? .burn : .earn
+        let mode: LoyaltyMode = swt.isOn ? .burn : .earn
         presenter?.updateLoyaltyMode(with: mode)
     }
 }
@@ -224,6 +226,15 @@ extension KarhooLoyaltyView: LoyaltyView {
         }
         
         shakeView()
+    }
+    
+    func set(viewModel: LoyaltyViewModel) {
+        presenter?.set(viewModel: viewModel)
+        presenter?.updateLoyaltyMode(with: .earn)
+    }
+    
+    func set(delegate: LoyaltyViewDelegate) {
+        presenter?.delegate = delegate
     }
     
 //    func set(earnAmount: Int) {

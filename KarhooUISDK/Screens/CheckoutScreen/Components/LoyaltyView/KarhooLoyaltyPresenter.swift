@@ -9,9 +9,9 @@
 import Foundation
 
 final class KarhooLoyaltyPresenter: LoyaltyPresenter {
-    var delegate: LoyaltyViewDelegate?
+    weak var delegate: LoyaltyViewDelegate?
     var view: LoyaltyView?
-    var request: LoyaltyViewRequest?
+    var viewModel: LoyaltyViewModel?
     var earnAmount = 0
     var burnAmount = 0
     
@@ -21,13 +21,16 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
     }
     
-    init(view: LoyaltyView, request: LoyaltyViewRequest) {
+    init(view: LoyaltyView) {
         self.view = view
-        self.request = request
     }
     
     func getCurrentMode() -> LoyaltyMode {
         return currentMode
+    }
+    
+    func set(viewModel: LoyaltyViewModel) {
+        self.viewModel = viewModel
     }
     
     func updateEarnedPoints() {}
@@ -36,6 +39,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     func updateLoyaltyMode(with mode: LoyaltyMode) {
         currentMode = mode
+        delegate?.didToggleLoyaltyMode(newValue: mode)
     }
     
     private func getSubtitleText() -> String {
