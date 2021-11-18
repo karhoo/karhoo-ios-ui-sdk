@@ -15,9 +15,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     var earnAmount = 0
     var burnAmount = 0
     
-    private var testBurnModeType: TestBurnMode = .valid
+    private var showcaseBurnModeType: ShowcaseBurnMode = .valid
     
-    private var currentMode: LoyaltyMode = .earn {
+    private var currentMode: LoyaltyMode = .none {
         didSet {
             view?.set(mode: currentMode, withSubtitle: getSubtitleText())
         }
@@ -42,39 +42,38 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     func updateLoyaltyMode(with mode: LoyaltyMode) {
         currentMode = mode
         delegate?.didToggleLoyaltyMode(newValue: mode)
-        testBurnMode()
+        showcaseBurnMode()
     }
     
     private func getSubtitleText() -> String {
         switch currentMode {
-        case .burn:
-            return String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
-        case .earn:
-            return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
+        case .none: return ""
+        case .burn: return String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
+        case .earn: return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
         }
     }
     
     // TODO: remove this method and the related enum, var, etc. They are only for testing the UI in burn mode while under development
-    private func testBurnMode() {
+    private func showcaseBurnMode() {
         guard currentMode == .burn else {
             return
         }
         
-        switch testBurnModeType {
+        switch showcaseBurnModeType {
         case .valid:
-            testBurnModeType = .errorInsufficientBalance
+            showcaseBurnModeType = .errorInsufficientBalance
             
         case .errorInsufficientBalance:
             view?.showError(withMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
-            testBurnModeType = .errorUnsupportedCurrency
+            showcaseBurnModeType = .errorUnsupportedCurrency
             
         case .errorUnsupportedCurrency:
             view?.showError(withMessage: UITexts.Errors.unsupportedCurrency)
-            testBurnModeType = .valid
+            showcaseBurnModeType = .valid
         }
     }
     
-    private enum TestBurnMode {
+    private enum ShowcaseBurnMode {
         case valid, errorInsufficientBalance, errorUnsupportedCurrency
     }
 }

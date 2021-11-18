@@ -32,7 +32,7 @@ protocol LoyaltyPresenter {
 }
 
 enum LoyaltyMode {
-    case burn, earn
+    case none, earn, burn
 }
 
 public struct LoyaltyViewModel {

@@ -216,7 +216,7 @@ extension KarhooLoyaltyView: LoyaltyView {
         loyaltyStackView.layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
         
         switch mode {
-        case .earn:
+        case .none, .earn:
             infoView.isHidden = false
             UIView.animate(withDuration: 0.45) { [weak self] in
                 self?.infoView.alpha = 0.0
@@ -245,14 +245,4 @@ extension KarhooLoyaltyView: LoyaltyView {
     func set(delegate: LoyaltyViewDelegate) {
         presenter?.delegate = delegate
     }
-    
-//    func set(earnAmount: Int) {
-//        let text = String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(earnAmount)")
-//        subtitleLabel.text = text
-//    }
-//    
-//    func set(burnAmount: Int) {
-//        let text = String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(burnAmount)")
-//        subtitleLabel.text = text
-//    }
 }
