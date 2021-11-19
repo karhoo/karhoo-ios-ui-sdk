@@ -37,13 +37,24 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     func updateBurnedPoints() {}
     
     func updateLoyaltyMode(with mode: LoyaltyMode) {
-        if mode == .burn, !(viewModel?.canBurn ?? false) {
+        if mode == currentMode {
             return
         }
         
-        currentMode = mode
+        let canEarn = viewModel?.canEarn ?? false
+        let canBurn = viewModel?.canBurn ?? false
         
-        if currentMode == .earn {
+        if mode == .burn, !canBurn {
+            return
+        }
+        
+        if mode == .earn, !canEarn {
+            currentMode = .none
+        } else {
+            currentMode = mode
+        }
+        
+        if currentMode == .earn || currentMode == .none {
             view?.set(mode: currentMode, withSubtitle: getSubtitleText())
             view?.updateLoyaltyFeatures(showEarnRelatedUI: viewModel?.canEarn ?? false, showBurnRelatedUI: viewModel?.canBurn ?? false)
         } else if currentMode == .burn, showcaseBurnModeType == .valid {
