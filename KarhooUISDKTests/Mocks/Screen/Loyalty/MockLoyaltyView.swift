@@ -11,6 +11,11 @@ import UIKit
 
 final class MockLoyaltyView: LoyaltyView {
     
+    private(set)var didCallGetUpdateLoyaltyFeatures = false
+    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
+        didCallGetUpdateLoyaltyFeatures = true
+    }
+    
     private(set)var didCallGetCurrentMode = false
     func getCurrentMode() -> LoyaltyMode {
         didCallGetCurrentMode = true

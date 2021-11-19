@@ -22,11 +22,11 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIStackView {
     
-    private let standardHorizontalSpacing = 12.0
-    private let standardVerticalSpacing = 10.0
-    private let smallSpacing = 4.0
-    private let cornerRadius = 3.0
-    private let borderWidth = 1.0
+    private let standardHorizontalSpacing: CGFloat = 12.0
+    private let standardVerticalSpacing: CGFloat = 10.0
+    private let smallSpacing: CGFloat = 4.0
+    private let cornerRadius: CGFloat = 3.0
+    private let borderWidth: CGFloat = 1.0
     
     private var presenter: LoyaltyPresenter?
     private var didSetupConstraints: Bool = false
