@@ -22,6 +22,7 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIStackView {
     
+    private let drawAnimationTime: Double = 0.45
     private let standardHorizontalSpacing: CGFloat = 12.0
     private let standardVerticalSpacing: CGFloat = 10.0
     private let smallSpacing: CGFloat = 4.0
@@ -232,12 +233,12 @@ extension KarhooLoyaltyView: LoyaltyView {
         
         if show {
             infoView.isHidden = false
-            UIView.animate(withDuration: 0.45) { [weak self] in
+            UIView.animate(withDuration: drawAnimationTime) { [weak self] in
                 self?.infoView.alpha = 1.0
             }
         } else {
             infoView.isHidden = false
-            UIView.animate(withDuration: 0.45) { [weak self] in
+            UIView.animate(withDuration: drawAnimationTime) { [weak self] in
                 self?.infoView.alpha = 0.0
                 self?.infoView.isHidden = true
             }
