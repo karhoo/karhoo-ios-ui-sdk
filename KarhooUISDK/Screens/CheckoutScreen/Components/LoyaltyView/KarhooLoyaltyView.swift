@@ -208,7 +208,7 @@ final class KarhooLoyaltyView: UIStackView {
 extension KarhooLoyaltyView: LoyaltyView {
     
     func getCurrentMode() -> LoyaltyMode {
-        return presenter?.getCurrentMode() ?? .earn
+        return presenter?.getCurrentMode() ?? .none
     }
     
     func set(mode: LoyaltyMode, withSubtitle text: String) {
@@ -235,8 +235,7 @@ extension KarhooLoyaltyView: LoyaltyView {
             UIView.animate(withDuration: 0.45) { [weak self] in
                 self?.infoView.alpha = 1.0
             }
-        }
-        else {
+        } else {
             infoView.isHidden = false
             UIView.animate(withDuration: 0.45) { [weak self] in
                 self?.infoView.alpha = 0.0
