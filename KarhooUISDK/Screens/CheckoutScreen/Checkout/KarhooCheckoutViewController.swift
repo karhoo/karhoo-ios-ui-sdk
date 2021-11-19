@@ -17,22 +17,31 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var headerView: KarhooCheckoutHeaderView!
+    var loyaltyView: KarhooLoyaltyView!
     
-    private let extraSmallSpacing: CGFloat = 8.0
+    private let smallSpacing: CGFloat = 8.0
+    private let standardSpacing: CGFloat = 16.0
+    private let smallPadding: CGFloat = 10.0
+    private let standardPadding: CGFloat = 20.0
     private let standardButtonSize: CGFloat = 44.0
+    private let mainButtonHeight: CGFloat = 55.0
+    private let largeCornerRadius: CGFloat = 10.0
+    private let mediumCornerRadius: CGFloat = 8.0
+    private let headerViewHeight: CGFloat = 90.0
+    private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
     
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
         footerStack.translatesAutoresizingMaskIntoConstraints = false
         footerStack.accessibilityIdentifier = "footer_stack_view"
         footerStack.axis = .vertical
-        footerStack.spacing = 15.0
+        footerStack.spacing = standardSpacing
         return footerStack
     }()
     
     lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
-        bookingButton.anchor(height: 55.0)
+        bookingButton.anchor(height: mainButtonHeight)
         bookingButton.set(actions: self)
         return bookingButton
     }()
@@ -77,7 +86,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         button.setTitle(UITexts.Generic.back, for: .normal)
         button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: extraSmallSpacing, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: smallSpacing, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -86,7 +95,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
         container.accessibilityIdentifier = "container_view"
-        container.layer.cornerRadius = 10.0
+        container.layer.cornerRadius = largeCornerRadius
         container.layer.masksToBounds = true
         container.backgroundColor = .white
         return container
@@ -96,7 +105,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
        let baseStackView = BaseStackView()
         baseStackView.translatesAutoresizingMaskIntoConstraints = false
         baseStackView.accessibilityIdentifier = "base_stack_view"
-        baseStackView.viewSpacing(15.0)
+        baseStackView.viewSpacing(standardSpacing)
         return baseStackView
     }()
     
@@ -116,7 +125,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         rideInfoStackView.accessibilityIdentifier = "ride_info_stack_view"
         rideInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         rideInfoStackView.axis = .vertical
-        rideInfoStackView.spacing = 8
+        rideInfoStackView.spacing = smallSpacing
         rideInfoStackView.distribution = .fill
         return rideInfoStackView
     }()
@@ -127,7 +136,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         rideInfoView.accessibilityIdentifier = KHCheckoutHeaderViewID.rideInfoView
         rideInfoView.backgroundColor = KarhooUI.colors.infoBackgroundColor
         rideInfoView.layer.masksToBounds = true
-        rideInfoView.layer.cornerRadius = 8.0
+        rideInfoView.layer.cornerRadius = mediumCornerRadius
         rideInfoView.setActions(self)
         return rideInfoView
     }()
@@ -138,7 +147,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         farePriceInfoView.accessibilityIdentifier = "fare_price_info_view"
         farePriceInfoView.backgroundColor = KarhooUI.colors.accent
         farePriceInfoView.layer.masksToBounds = true
-        farePriceInfoView.layer.cornerRadius = 8.0
+        farePriceInfoView.layer.cornerRadius = mediumCornerRadius
         return farePriceInfoView
     }()
     
@@ -176,6 +185,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
         termsConditionsView = TermsConditionsView()
+        loyaltyView = KarhooLoyaltyView()
+        loyaltyView.set(delegate: self)
         setUpView()
     }
     
@@ -188,6 +199,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
+        baseStackView.addViewToStack(view: loyaltyView)
         baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
@@ -221,27 +233,45 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         backButton.anchor(top: container.topAnchor,
                           leading: container.leadingAnchor,
-                          paddingTop: view.safeAreaInsets.top + 15.0,
-                          paddingBottom: 15.0,
+                          paddingTop: view.safeAreaInsets.top + standardSpacing,
+                          paddingBottom: standardSpacing,
                           width: standardButtonSize * 2)
         
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
         baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
-        
-        let titleInset: CGFloat = 15.0
-        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
-        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 90.0).isActive = true
-        
-        cancellationInfoLabel.anchor(top: headerView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 20.0, paddingLeft: 20.0, paddingBottom: 20.0, paddingRight: 20.0)
-        
-        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: 8.0, paddingLeft: titleInset, paddingRight: titleInset)
-        passengerDetailsAndPaymentView.anchor(top: rideInfoStackView.bottomAnchor, leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingTop: titleInset, paddingLeft: titleInset, paddingRight: titleInset, height: 92.0)
 
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: titleInset, paddingRight: titleInset)
+        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
+        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: 20.0, paddingRight: 10.0)
+        cancellationInfoLabel.anchor(top: headerView.bottomAnchor,
+                                     leading: baseStackView.leadingAnchor,
+                                     trailing: baseStackView.trailingAnchor,
+                                     paddingTop: standardPadding,
+                                     paddingLeft: standardPadding,
+                                     paddingBottom: standardPadding,
+                                     paddingRight: standardPadding)
+        
+        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
+                                 leading: baseStackView.leadingAnchor,
+                                 trailing: baseStackView.trailingAnchor,
+                                 paddingTop: smallSpacing,
+                                 paddingLeft: standardSpacing,
+                                 paddingRight: standardSpacing)
+        loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: standardPadding)
+        
+        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
+                                              leading: baseStackView.leadingAnchor,
+                                              trailing: baseStackView.trailingAnchor,
+                                              paddingTop: standardSpacing,
+                                              paddingLeft: standardSpacing,
+                                              paddingRight: standardSpacing,
+                                              height: passengerDetailsAndPaymentViewHeight)
+
+        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
+        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
+        
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
         footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
     }
@@ -249,6 +279,46 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showCheckoutView(true)
+        setEarnLoyaltyForShowcase()
+    }
+    
+    var canEarn = true
+    var canBurn = true
+    private func setEarnLoyaltyForShowcase() {
+        let earnSwitch = UISwitch()
+        earnSwitch.isOn = true
+        earnSwitch.setOn(true, animated: false)
+        earnSwitch.addTarget(self, action: #selector(onEarnSwitchValueChanged), for: .valueChanged)
+        
+        let alert = UIAlertController.create(title: "Set Loyalty Flags", message: "Choose a value for CAN_EARN", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+            self.setBurnLoyaltyForShowcase()
+        }))
+        alert.view.addSubview(earnSwitch)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setBurnLoyaltyForShowcase() {
+        let burnSwitch = UISwitch()
+        burnSwitch.isOn = true
+        burnSwitch.setOn(true, animated: false)
+        burnSwitch.addTarget(self, action: #selector(onBurnSwitchValueChanged), for: .valueChanged)
+        
+        let alert = UIAlertController.create(title: "Set Loyalty Flags", message: "Choose a value for CAN_BURN", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+            let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: "GBP", tripAmount: 0, canEarn: self.canEarn, canBurn: self.canBurn)
+            self.loyaltyView.set(viewModel: loyaltyViewModel)
+        }))
+        alert.view.addSubview(burnSwitch)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func onEarnSwitchValueChanged(_ swt: UISwitch) {
+        canEarn = swt.isOn
+    }
+    
+    @objc private func onBurnSwitchValueChanged(_ swt: UISwitch) {
+        canBurn = swt.isOn
     }
     
     override func viewDidLoad() {
@@ -322,6 +392,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
+        
+        // TODO: confirm that the highPrice should be used here
+        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: quote.price.currencyCode, tripAmount: quote.price.highPrice, canEarn: self.canEarn, canBurn: self.canBurn)
+        self.loyaltyView.set(viewModel: loyaltyViewModel)
     }
     
     func set(price: String?) {
@@ -360,9 +434,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     final class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(quote: Quote,
-                                       bookingDetails: BookingDetails,
-                                       bookingMetadata: [String: Any]?,
-                                       callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
+                                 bookingDetails: BookingDetails,
+                                 bookingMetadata: [String: Any]?,
+                                 callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(quote: quote,
                                                     bookingDetails: bookingDetails,

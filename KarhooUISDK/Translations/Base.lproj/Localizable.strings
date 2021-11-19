@@ -348,8 +348,12 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Something went wrong";
 
+"Text.Error.UnsupportedCurrency" = "The currency is not supported yet";
+
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Issue with initialising payments, please contact support";
+
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your points balance is insufficient";
 
 "Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
@@ -590,6 +594,14 @@
 "Text.KarhooError.K3002" = "There are no fleets available in this area.";
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
+
+"Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
+
+"Text.Loyalty.PointsBurnedForTrip" = "You are using %1$@ points";
+
+"Text.Loyalty.PointsEarnedForTrip" = "This ride earns you %1$@ points ";
+
+"Text.Loyalty.Title" = "Loyalty points";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Add Payment";
