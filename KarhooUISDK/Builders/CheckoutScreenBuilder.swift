@@ -14,5 +14,6 @@ public protocol CheckoutScreenBuilder {
     func buildCheckoutScreen(quote: Quote,
                              bookingDetails: BookingDetails,
                              bookingMetadata: [String: Any]?,
+                             loyaltyInfo: LoyaltyInfo?,
                              callback: @escaping ScreenResultCallback<TripInfo>) -> Screen
 }

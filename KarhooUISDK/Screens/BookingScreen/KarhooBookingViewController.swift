@@ -110,12 +110,39 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        testLoyalty()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView(reverseGeolocate: journeyInfo == nil)
         forceLightMode()
+    }
+    
+    private func testLoyalty() {
+        let loyaltyService = Karhoo.getLoyaltyService()
+        let identifier = "accor"
+        
+        //1. Status
+        loyaltyService.getLoyaltyStatus(identifier: identifier).execute { status in
+            print(status)
+        }
+        
+        //2. Points to burn
+        loyaltyService.getLoyaltyBurn(identifier: identifier, currency: "GBP", amount: 30).execute { points in
+            print(points)
+        }
+        
+        // 3. Points to earn
+        loyaltyService.getLoyaltyEarn(identifier: identifier, currency: "GBP", amount: 30, points: 0).execute { points in
+            print(points)
+        }
+        
+        // 4. Preauth
+        let request = LoyaltyPreAuth(identifier: identifier, currency: "GBP", points: 30, flexpay: false, membership: "")
+        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { nonce in
+            print(nonce)
+        }
     }
 
     private func setupMapView(reverseGeolocate: Bool) {
@@ -376,6 +403,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
 
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
+                                   loyaltyInfo: LoyaltyInfo? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
         PassengerInfo.shared.set(details: passengerDetails)
 
@@ -388,9 +416,8 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             validatedJourneyInfo = journeyInfo
         }
 
-        let bookingPresenter = KarhooBookingPresenter(callback: callback)
-        let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter,
-                                                                journeyInfo: validatedJourneyInfo)
+        let bookingPresenter = KarhooBookingPresenter(loyaltyInfo: loyaltyInfo, callback: callback)
+        let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting

@@ -19,6 +19,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let tripService: TripService
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
+    private let loyaltyInfo: LoyaltyInfo?
     private let paymentNonceProvider: PaymentNonceProvider
     
     private let analytics: Analytics
@@ -34,6 +35,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     init(quote: Quote,
          bookingDetails: BookingDetails,
          bookingMetadata: [String: Any]?,
+         loyaltyInfo: LoyaltyInfo?,
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
          userService: UserService = Karhoo.getUserService(),
@@ -53,6 +55,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.quote = quote
         self.bookingDetails = bookingDetails
         self.bookingMetadata = bookingMetadata
+        self.loyaltyInfo = loyaltyInfo
     }
 
     func load(view: CheckoutView) {
