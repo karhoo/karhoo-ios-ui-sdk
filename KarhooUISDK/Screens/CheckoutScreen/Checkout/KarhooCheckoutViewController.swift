@@ -279,46 +279,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showCheckoutView(true)
-        setEarnLoyaltyForShowcase()
-    }
-    
-    var canEarn = true
-    var canBurn = true
-    private func setEarnLoyaltyForShowcase() {
-        let earnSwitch = UISwitch()
-        earnSwitch.isOn = true
-        earnSwitch.setOn(true, animated: false)
-        earnSwitch.addTarget(self, action: #selector(onEarnSwitchValueChanged), for: .valueChanged)
-        
-        let alert = UIAlertController.create(title: "Set Loyalty Flags", message: "Choose a value for CAN_EARN", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
-            self.setBurnLoyaltyForShowcase()
-        }))
-        alert.view.addSubview(earnSwitch)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func setBurnLoyaltyForShowcase() {
-        let burnSwitch = UISwitch()
-        burnSwitch.isOn = true
-        burnSwitch.setOn(true, animated: false)
-        burnSwitch.addTarget(self, action: #selector(onBurnSwitchValueChanged), for: .valueChanged)
-        
-        let alert = UIAlertController.create(title: "Set Loyalty Flags", message: "Choose a value for CAN_BURN", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
-            let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: "GBP", tripAmount: 0, canEarn: self.canEarn, canBurn: self.canBurn)
-            self.loyaltyView.set(viewModel: loyaltyViewModel)
-        }))
-        alert.view.addSubview(burnSwitch)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    @objc private func onEarnSwitchValueChanged(_ swt: UISwitch) {
-        canEarn = swt.isOn
-    }
-    
-    @objc private func onBurnSwitchValueChanged(_ swt: UISwitch) {
-        canBurn = swt.isOn
     }
     
     override func viewDidLoad() {
@@ -384,7 +344,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.isHidden = false
     }
     
-    func set(quote: Quote) {
+    func set(quote: Quote, loyaltyInfo: LoyaltyInfo) {
         let viewModel = QuoteViewModel(quote: quote)
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
@@ -394,7 +354,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
         // TODO: confirm that the highPrice should be used here
-        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "", currency: quote.price.currencyCode, tripAmount: quote.price.highPrice, canEarn: self.canEarn, canBurn: self.canBurn)
+        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "",
+                                                currency: quote.price.currencyCode,
+                                                tripAmount: quote.price.highPrice,
+                                                canEarn: loyaltyInfo.canEarn,
+                                                canBurn: loyaltyInfo.canBurn)
         self.loyaltyView.set(viewModel: loyaltyViewModel)
     }
     

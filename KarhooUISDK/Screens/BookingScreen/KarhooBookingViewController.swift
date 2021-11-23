@@ -400,7 +400,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
     public init(locationService: LocationService = KarhooLocationService()) {
         self.locationService = locationService
     }
-
+    
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    loyaltyInfo: LoyaltyInfo? = nil,

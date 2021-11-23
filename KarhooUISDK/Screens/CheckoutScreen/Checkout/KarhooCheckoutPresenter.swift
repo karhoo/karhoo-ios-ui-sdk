@@ -31,7 +31,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-
+    
+    // MARK: - Init & Config
     init(quote: Quote,
          bookingDetails: BookingDetails,
          bookingMetadata: [String: Any]?,
@@ -70,7 +71,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if karhooUser {
             completeLoadingViewForKarhooUser(view: view)
         }
-        view.set(quote: quote)
+        view.set(quote: quote, loyaltyInfo: loyaltyInfo ?? LoyaltyInfo(canEarn: false, canBurn: false))
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
     }
@@ -111,11 +112,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                                   max: quote.vehicle.qta.highMinutes))
      }
-
+    
     func isKarhooUser() -> Bool {
         return karhooUser
     }
     
+    // MARK: - Passenger Details
     func addOrEditPassengerDetails() {
         let details = view?.getPassengerDetails()
         let presenter = PassengerDetailsPresenter(details: details) { [weak self] result in
@@ -157,6 +159,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         return true
     }
 
+    // MARK: - Book
     func bookTripPressed() {
         view?.setRequestingState()
         
@@ -205,7 +208,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
     }
     
-    private func organisationId() -> String {
+    private func getOrganisationId() -> String {
         if let guestId = Karhoo.configuration.authenticationMethod().guestSettings?.organisationId {
             return guestId
         } else if let userOrg = userService.getCurrentUser()?.organisations.first?.id {
@@ -213,60 +216,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         return ""
-    }
-    
-    private func getPaymentNonceThenBook(user: UserInfo,
-                                        organisationId: String,
-                                        passengerDetails: PassengerDetails) {
-        
-        paymentNonceProvider.getPaymentNonce(user: user,
-                                             organisationId: organisationId,
-                                             quote: quote) { [weak self] result in
-            switch result {
-            case .completed(let result):
-                handlePaymentNonceProviderResult(result)
-                
-            case .cancelledByUser:
-                self?.view?.setDefaultState()
-            }
-        }
-        
-        func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
-             switch paymentNonceResult {
-             case .nonce(let nonce):
-                 self.book(paymentNonce: nonce.nonce,
-                      passenger: passengerDetails,
-                      flightNumber: view?.getFlightNumber())
-                 
-             case .cancelledByUser:
-                 self.view?.setDefaultState()
-                 
-             case .failedToAddCard(let error):
-                 self.view?.setDefaultState()
-                 self.view?.show(error: error)
-                 
-             default:
-                 self.view?.showAlert(title: UITexts.Generic.error,
-                                      message: UITexts.Errors.somethingWentWrong,
-                                      error: nil)
-                 view?.setDefaultState()
-             }
-        }
-    }
-    
-    private func getPaymentNonceAccordingToAuthState() -> String? {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
-        default: return view?.getPaymentNonce()
-        }
-    }
-    
-    private func retrievePaymentNonce() -> String? {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            return userService.getCurrentUser()?.nonce?.nonce
-        } else {
-            return view?.getPaymentNonce()
-        }
     }
     
     private func submitGuestBooking() {
@@ -282,8 +231,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            var organisation = organisationId()
-            guard let currentUser = userService.getCurrentUser()
+            let organisation = getOrganisationId()
+            guard let _ = userService.getCurrentUser()
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                 message: UITexts.Errors.getUserFail,
@@ -295,34 +244,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                       passengerDetails: passengerDetails)
         } else {
             book(paymentNonce: nonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
-        }
-    }
-
-    private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
-        threeDSecureProvider.threeDSecureCheck(nonce: nonce,
-                                               currencyCode: quote.price.currencyCode,
-                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
-                                               callback: { [weak self] result in
-                                                switch result {
-                                                case .completed(let result): handleThreeDSecureCheck(result)
-                                                case .cancelledByUser:
-                                                    self?.view?.resetPaymentNonce()
-                                                    self?.view?.setDefaultState()
-                                                }
-        })
-
-        func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
-            switch result {
-            case .failedToInitialisePaymentService:
-                view?.setDefaultState()
-                
-            case .threeDSecureAuthenticationFailed:
-                view?.retryAddPaymentMethod(showRetryAlert: true)
-                view?.setDefaultState()
-                
-            case .success(let threeDSecureNonce):
-                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
-            }
         }
     }
     
@@ -388,6 +309,90 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
     
+    // MARK: - Payment
+    private func getPaymentNonceThenBook(user: UserInfo,
+                                        organisationId: String,
+                                        passengerDetails: PassengerDetails) {
+        
+        paymentNonceProvider.getPaymentNonce(user: user,
+                                             organisationId: organisationId,
+                                             quote: quote) { [weak self] result in
+            switch result {
+            case .completed(let result):
+                handlePaymentNonceProviderResult(result)
+                
+            case .cancelledByUser:
+                self?.view?.setDefaultState()
+            }
+        }
+        
+        func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
+             switch paymentNonceResult {
+             case .nonce(let nonce):
+                 self.book(paymentNonce: nonce.nonce,
+                      passenger: passengerDetails,
+                      flightNumber: view?.getFlightNumber())
+                 
+             case .cancelledByUser:
+                 self.view?.setDefaultState()
+                 
+             case .failedToAddCard(let error):
+                 self.view?.setDefaultState()
+                 self.view?.show(error: error)
+                 
+             default:
+                 self.view?.showAlert(title: UITexts.Generic.error,
+                                      message: UITexts.Errors.somethingWentWrong,
+                                      error: nil)
+                 view?.setDefaultState()
+             }
+        }
+    }
+    
+    private func getPaymentNonceAccordingToAuthState() -> String? {
+        switch Karhoo.configuration.authenticationMethod() {
+        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
+        default: return view?.getPaymentNonce()
+        }
+    }
+    
+    private func retrievePaymentNonce() -> String? {
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+            return userService.getCurrentUser()?.nonce?.nonce
+        } else {
+            return view?.getPaymentNonce()
+        }
+    }
+
+    private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
+        threeDSecureProvider.threeDSecureCheck(nonce: nonce,
+                                               currencyCode: quote.price.currencyCode,
+                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+                                               callback: { [weak self] result in
+                                                switch result {
+                                                case .completed(let result): handleThreeDSecureCheck(result)
+                                                case .cancelledByUser:
+                                                    self?.view?.resetPaymentNonce()
+                                                    self?.view?.setDefaultState()
+                                                }
+        })
+
+        func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
+            switch result {
+            case .failedToInitialisePaymentService:
+                view?.setDefaultState()
+                
+            case .threeDSecureAuthenticationFailed:
+                view?.retryAddPaymentMethod(showRetryAlert: true)
+                view?.setDefaultState()
+                
+            case .success(let threeDSecureNonce):
+                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
+            }
+        }
+    }
+    
+    //MARK; - Utils
     func didPressFareExplanation() {
         guard karhooUser, bookingRequestInProgress == false else {
             return
@@ -420,6 +425,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          } else {
             didAddPassengerDetails()
          }
+    }
+    
+    // MARK: - Loyalty
+    func getLoyaltyInfo() -> LoyaltyInfo {
+        return loyaltyInfo ?? LoyaltyInfo(canEarn: false, canBurn: false)
     }
 }
 
