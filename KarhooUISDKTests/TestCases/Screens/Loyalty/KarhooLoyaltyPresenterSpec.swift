@@ -124,7 +124,7 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
     /**
      *  When:   The the loyalty mode is updated to .burn mode
      *  Then:   The view is not updated
-     *  And: The delegate is notified of the change
+     *  And: The delegate is not notified of the change
      */
     func testUpdateLoyaltyModeToBurnWithEarnOnBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()
@@ -140,7 +140,7 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
     /**
      *  When:   The the loyalty mode is updated to .burn mode
      *  Then:   The view is not updated
-     *  And: The delegate is notified of the change
+     *  And: The delegate is not notified of the change
      */
     func testUpdateLoyaltyModeToBurnWithEarnOffBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()

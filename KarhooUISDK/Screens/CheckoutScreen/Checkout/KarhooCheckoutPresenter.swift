@@ -36,7 +36,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     init(quote: Quote,
          bookingDetails: BookingDetails,
          bookingMetadata: [String: Any]?,
-         loyaltyInfo: LoyaltyInfo?,
+         loyaltyInfo: LoyaltyInfo? = nil,
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
          userService: UserService = Karhoo.getUserService(),
@@ -232,7 +232,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
             let organisation = getOrganisationId()
-            guard let _ = userService.getCurrentUser()
+            guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                 message: UITexts.Errors.getUserFail,
@@ -248,7 +248,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
-        var flight : String? = flightNumber
+        var flight: String? = flightNumber
         if let f = flight, (f.isEmpty || f == " ") {
             flight = nil
         }
@@ -274,8 +274,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
             if self?.isKarhooUser() ?? false {
                 self?.handleKarhooUserBookTripResult(result)
-            }
-            else {
+            } else {
                 self?.handleGuestAndTokenBookTripResult(result)
             }
         })
@@ -303,16 +302,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
             callback(.completed(result: trip))
-        }
-        else if let error = result.errorValue() {
+        } else if let error = result.errorValue() {
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
     }
     
     // MARK: - Payment
     private func getPaymentNonceThenBook(user: UserInfo,
-                                        organisationId: String,
-                                        passengerDetails: PassengerDetails) {
+                                         organisationId: String,
+                                         passengerDetails: PassengerDetails) {
         
         paymentNonceProvider.getPaymentNonce(user: user,
                                              organisationId: organisationId,
@@ -392,7 +390,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
     
-    //MARK; - Utils
+    // MARK: - Utils
     func didPressFareExplanation() {
         guard karhooUser, bookingRequestInProgress == false else {
             return
@@ -426,10 +424,4 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             didAddPassengerDetails()
          }
     }
-    
-    // MARK: - Loyalty
-    func getLoyaltyInfo() -> LoyaltyInfo {
-        return loyaltyInfo ?? LoyaltyInfo(canEarn: false, canBurn: false)
-    }
 }
-
