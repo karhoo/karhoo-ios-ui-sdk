@@ -1558,6 +1558,7 @@
 		099106BB21B82D5200BD7E6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
 				099106BC21B82D5200BD7E6F /* Address.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				6B437CAC274BC94C0051F11C /* LoyaltyInfo.swift */,
@@ -2033,35 +2034,22 @@
 		407EC72022CF564E00F24CFC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
-				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				403F448122F19A38008147FC /* BaseStackView.swift */,
 				5C7F6EF0233A375F0039F3E2 /* BaseView.swift */,
-				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
 				4070213423D9E0CD00F82B6A /* BordedLabel.swift */,
 				407EC75622CF564E00F24CFC /* CloseBarButton.swift */,
-				407EC76F22CF564E00F24CFC /* CurrencyCodeConverter.swift */,
 				4070213623D9E11300F82B6A /* DropDownButton.swift */,
 				4017C46923CCB0230081834B /* EmptyStateView.swift */,
 				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
 				407EC77E22CF564E00F24CFC /* GradientView.swift */,
-				407EC72922CF564E00F24CFC /* KarhooDateFormatter.swift */,
-				407EC75B22CF564E00F24CFC /* KeyboardSizeProvider.swift */,
 				404E9C4A23C8BB2B00289F43 /* LineView.swift */,
 				40C7DC5A23D0A13500975AD3 /* MetaDataView.swift */,
 				407EC74522CF564E00F24CFC /* NibLoadableView.swift */,
-				407EC76222CF564E00F24CFC /* PhoneNumberCaller.swift */,
-				407EC72A22CF564E00F24CFC /* QtaStringFormatter.swift */,
 				407EC77F22CF564E00F24CFC /* RoundedLabel.swift */,
-				D8263F4D262096C30042F259 /* TimeFormatter.swift */,
-				407EC75C22CF564E00F24CFC /* TripInfoUtility.swift */,
 				40C1CD7123C9EC7900EDEA84 /* TripStatusView.swift */,
 				407EC75222CF564E00F24CFC /* UITexts.swift */,
-				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
 				407EC76322CF564E00F24CFC /* AddressBarMVP */,
-				407EC73022CF564E00F24CFC /* Alert */,
 				407227A2238445FF005680F5 /* BaseSelectionView */,
-				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
 				407EC78B22CF564E00F24CFC /* EmptyDataSetView */,
 				407EC78522CF564E00F24CFC /* Error */,
 				407EC75E22CF564E00F24CFC /* FormButtonView */,
@@ -2525,6 +2513,13 @@
 		6BDB6C21274E88E4006DDF1C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
+				407EC73022CF564E00F24CFC /* Alert */,
+				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
+				407EC75C22CF564E00F24CFC /* TripInfoUtility.swift */,
+				407EC76222CF564E00F24CFC /* PhoneNumberCaller.swift */,
+				407EC75B22CF564E00F24CFC /* KeyboardSizeProvider.swift */,
+				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
 				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
 				FC0465A42215AA05004E76FE /* NavigationControllerDelegate.swift */,
@@ -2540,6 +2535,7 @@
 		6BDB6C22274E894B006DDF1C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
 				092F281022B25B0700AF8E0E /* Payment */,
 				FC435F382211B8B400FB6BB5 /* Trips */,
 			);
@@ -3231,6 +3227,10 @@
 		FCAD1C1222088A4200C3AD1D /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
+				D8263F4D262096C30042F259 /* TimeFormatter.swift */,
+				407EC72A22CF564E00F24CFC /* QtaStringFormatter.swift */,
+				407EC76F22CF564E00F24CFC /* CurrencyCodeConverter.swift */,
+				407EC72922CF564E00F24CFC /* KarhooDateFormatter.swift */,
 				FCAD1C1322088A5200C3AD1D /* PrebookConfirmationFormatter.swift */,
 			);
 			path = Formatters;
