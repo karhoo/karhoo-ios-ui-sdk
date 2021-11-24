@@ -99,7 +99,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
 
         if !hasPayment && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.darkGrey.cgColor
+            dotBorderLayer.strokeColor = KarhooUI.colors.medGrey.cgColor
             dotBorderLayer.lineDashPattern = [4, 4]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
@@ -177,7 +177,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
     
     private func updateViewState() {
         layer.borderWidth = 1.0
-        layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
+        layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         hasPayment = true
         
         setNeedsDisplay()

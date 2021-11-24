@@ -23,9 +23,9 @@ struct KHLoyaltyViewID {
 final class KarhooLoyaltyView: UIStackView {
     
     private let drawAnimationTime: Double = 0.45
-    private let standardHorizontalSpacing: CGFloat = 12.0
-    private let standardVerticalSpacing: CGFloat = 10.0
+    private let standardSpacing: CGFloat = 12.0
     private let smallSpacing: CGFloat = 4.0
+    private let mediumCornerRadius: CGFloat = 8.0
     private let cornerRadius: CGFloat = 3.0
     private let borderWidth: CGFloat = 1.0
     
@@ -41,15 +41,15 @@ final class KarhooLoyaltyView: UIStackView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHLoyaltyViewID.loyaltyStackView
         stackView.axis = .horizontal
-        stackView.spacing = standardHorizontalSpacing
-        stackView.layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
+        stackView.spacing = standardSpacing
+        stackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         stackView.layer.borderWidth = borderWidth
         stackView.layer.cornerRadius = cornerRadius
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: standardVerticalSpacing,
-                                                                     leading: standardHorizontalSpacing,
-                                                                     bottom: standardVerticalSpacing,
-                                                                     trailing: standardHorizontalSpacing)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: standardSpacing,
+                                                                     leading: standardSpacing,
+                                                                     bottom: standardSpacing,
+                                                                     trailing: standardSpacing)
         stackView.distribution = .fill
         return stackView
     }()
@@ -79,7 +79,7 @@ final class KarhooLoyaltyView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHLoyaltyViewID.subtitleLabel
         label.font = KarhooUI.fonts.captionRegular()
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.medGrey
         label.text = UITexts.Loyalty.pointsEarnedForTrip
         label.numberOfLines = 0
         return label
@@ -106,9 +106,9 @@ final class KarhooLoyaltyView: UIStackView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHLoyaltyViewID.infoView
-        view.layer.cornerRadius = cornerRadius
+        view.layer.cornerRadius = mediumCornerRadius
         view.layer.masksToBounds = true
-        view.backgroundColor = KarhooUI.colors.secondary
+        view.backgroundColor = KarhooUI.colors.primary
         return view
     }()
     
@@ -118,7 +118,7 @@ final class KarhooLoyaltyView: UIStackView {
         label.accessibilityIdentifier = KHLoyaltyViewID.infoLabel
         label.text = UITexts.Loyalty.info
         label.textColor = UIColor.white
-        label.font = KarhooUI.fonts.captionItalic()
+        label.font = KarhooUI.fonts.captionRegular()
         label.numberOfLines = 0
         return label
     }()
@@ -138,7 +138,7 @@ final class KarhooLoyaltyView: UIStackView {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHLoyaltyViewID.backgroundView
-        spacing = standardVerticalSpacing
+        spacing = standardSpacing
         axis = .vertical
         distribution = .fill
         
@@ -172,10 +172,10 @@ final class KarhooLoyaltyView: UIStackView {
                              leading: infoView.leadingAnchor,
                              bottom: infoView.bottomAnchor,
                              trailing: infoView.trailingAnchor,
-                             paddingTop: standardVerticalSpacing,
-                             paddingLeft: standardHorizontalSpacing,
-                             paddingBottom: standardVerticalSpacing,
-                             paddingRight: standardHorizontalSpacing)
+                             paddingTop: standardSpacing,
+                             paddingLeft: standardSpacing,
+                             paddingBottom: standardSpacing,
+                             paddingRight: standardSpacing)
             
             didSetupConstraints = true
         }
@@ -214,8 +214,8 @@ extension KarhooLoyaltyView: LoyaltyView {
     
     func set(mode: LoyaltyMode, withSubtitle text: String) {
         subtitleLabel.text = text
-        subtitleLabel.textColor = KarhooUI.colors.lightGrey
-        loyaltyStackView.layer.borderColor = KarhooUI.colors.guestCheckoutGrey.cgColor
+        subtitleLabel.textColor = KarhooUI.colors.medGrey
+        loyaltyStackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         
         switch mode {
         case .none, .earn:
