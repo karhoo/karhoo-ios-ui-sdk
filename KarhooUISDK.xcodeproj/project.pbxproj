@@ -2033,6 +2033,7 @@
 		407EC72022CF564E00F24CFC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
 				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				403F448122F19A38008147FC /* BaseStackView.swift */,
 				5C7F6EF0233A375F0039F3E2 /* BaseView.swift */,
@@ -2519,6 +2520,39 @@
 				6B5D607E26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift */,
 			);
 			path = PassengerDetails;
+			sourceTree = "<group>";
+		};
+		6BDB6C21274E88E4006DDF1C /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
+				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
+				FC0465A42215AA05004E76FE /* NavigationControllerDelegate.swift */,
+				FC83E2AC221EE890008FE26D /* TimeFetcher.swift */,
+				FCAD1C1222088A4200C3AD1D /* Formatters */,
+				FC83E2B0221EE909008FE26D /* Logger */,
+				6BDB6C23274E8C8F006DDF1C /* TimeScheduler */,
+				095D745423182318002253C0 /* TripRatingCache */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		6BDB6C22274E894B006DDF1C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				092F281022B25B0700AF8E0E /* Payment */,
+				FC435F382211B8B400FB6BB5 /* Trips */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6BDB6C23274E8C8F006DDF1C /* TimeScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				FC435F432211BB8B00FB6BB5 /* KarhooTimeScheduler.swift */,
+				FC435F412211BB5900FB6BB5 /* TimeScheduler.swift */,
+			);
+			path = TimeScheduler;
 			sourceTree = "<group>";
 		};
 		6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */ = {
@@ -3100,8 +3134,8 @@
 				FC8F473A2153DBF1007841FB /* API */,
 				099152FF21BFDB4500B46D9F /* Assets */,
 				0991070F21B8486300BD7E6F /* Builders */,
-				FCAD1C1122088A3700C3AD1D /* Classes */,
 				407EC72022CF564E00F24CFC /* Common */,
+				6BDB6C22274E894B006DDF1C /* Controllers */,
 				099106E721B8362C00BD7E6F /* Domain */,
 				5C7233BE226510AA001078B6 /* Error */,
 				FC8F47322153A710007841FB /* Extensions */,
@@ -3111,6 +3145,7 @@
 				0991065C21B8291900BD7E6F /* Screens */,
 				090F08E721C94BB6000C7E50 /* Translations */,
 				4038DF392444BAC40014539B /* Utils.swift */,
+				6BDB6C21274E88E4006DDF1C /* Workers */,
 			);
 			path = KarhooUISDK;
 			sourceTree = "<group>";
@@ -3191,25 +3226,6 @@
 				FCAD1C0D220884CC00C3AD1D /* MockPrebookConfirmationView.swift */,
 			);
 			path = PrebookConfirmation;
-			sourceTree = "<group>";
-		};
-		FCAD1C1122088A3700C3AD1D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
-				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
-				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
-				FC435F432211BB8B00FB6BB5 /* KarhooTimeScheduler.swift */,
-				FC0465A42215AA05004E76FE /* NavigationControllerDelegate.swift */,
-				FC83E2AC221EE890008FE26D /* TimeFetcher.swift */,
-				FC435F412211BB5900FB6BB5 /* TimeScheduler.swift */,
-				FCAD1C1222088A4200C3AD1D /* Formatters */,
-				FC83E2B0221EE909008FE26D /* Logger */,
-				092F281022B25B0700AF8E0E /* Payment */,
-				095D745423182318002253C0 /* TripRatingCache */,
-				FC435F382211B8B400FB6BB5 /* Trips */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		FCAD1C1222088A4200C3AD1D /* Formatters */ = {
