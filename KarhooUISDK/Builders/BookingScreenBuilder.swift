@@ -13,16 +13,17 @@ import KarhooSDK
 public protocol BookingScreenBuilder {
     func buildBookingScreen(journeyInfo: JourneyInfo?,
                             passengerDetails: PassengerDetails?,
+                            loyaltyInfo: LoyaltyInfo?,
                             callback: ScreenResultCallback<BookingScreenResult>?) -> Screen
 }
 
 public extension BookingScreenBuilder {
     func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                             passengerDetails: PassengerDetails? = nil,
-                            callback: ScreenResultCallback<BookingScreenResult>? = nil) -> Screen {
-        return buildBookingScreen(journeyInfo: journeyInfo,
-                                  passengerDetails: passengerDetails,
-                                  callback: callback)
+                            loyaltyInfo: LoyaltyInfo? = nil,
+                            callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
+        
+        return buildBookingScreen(journeyInfo: journeyInfo, passengerDetails: passengerDetails, loyaltyInfo: loyaltyInfo, callback: callback)
     }
 }
 

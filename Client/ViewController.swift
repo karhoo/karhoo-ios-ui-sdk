@@ -177,6 +177,7 @@ class ViewController: UIViewController {
     func showKarhoo() {
         var journeyInfo: JourneyInfo? = nil
         var passangerDetails: PassengerDetails? = nil
+        var loyaltyInfo: LoyaltyInfo? = nil
 
 //        let originLat = CLLocationDegrees(Double(51.500869))
 //        let originLon = CLLocationDegrees(Double(-0.124979))
@@ -191,9 +192,12 @@ class ViewController: UIViewController {
 //                            email: "test@karhoo.com",
 //                            phoneNumber: "+15005550006",
 //                            locale: "en")
+        
+        loyaltyInfo = LoyaltyInfo(canEarn: Keys.loyaltyCanEarn, canBurn: Keys.loyaltyCanBurn)
 
         booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
                                                                     passengerDetails: passangerDetails,
+                                                                    loyaltyInfo: loyaltyInfo,
                                                                     callback: { [weak self] result in
                                                                         self?.handleBookingScreenResult(result: result)
                                                                     }) as? BookingScreen

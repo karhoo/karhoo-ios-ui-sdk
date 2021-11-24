@@ -27,11 +27,14 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
+    private var loyaltyInfo: LoyaltyInfo?
 
+    // MARK: - Init
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
          analyticsProvider: Analytics = KarhooAnalytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
+         loyaltyInfo: LoyaltyInfo? = nil,
          callback: ScreenResultCallback<BookingScreenResult>? = nil,
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
@@ -58,6 +61,7 @@ final class KarhooBookingPresenter {
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
         self.paymentService = paymentService
+        self.loyaltyInfo = loyaltyInfo
         userService.add(observer: self)
         bookingStatus.add(observer: self)
     }
@@ -68,6 +72,7 @@ final class KarhooBookingPresenter {
         bookingStatus.remove(observer: self)
     }
 
+    // MARK: - Checkout
     private func showCheckoutView(quote: Quote,
                                   bookingDetails: BookingDetails,
                                   bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
@@ -75,6 +80,7 @@ final class KarhooBookingPresenter {
             .buildCheckoutScreen(quote: quote,
                                  bookingDetails: bookingDetails,
                                  bookingMetadata: bookingMetadata,
+                                 loyaltyInfo: loyaltyInfo,
                                  callback: { [weak self] result in
                                     self?.view?.presentedViewController?.dismiss(animated: false, completion: {
                                             self?.bookingRequestCompleted(result: result,
@@ -86,6 +92,7 @@ final class KarhooBookingPresenter {
         view?.showAsOverlay(item: checkoutView, animated: false)
     }
 
+    // MARK: - Trip booked
     private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: BookingDetails) {
         if let trip = result.completedValue() {
             handleNewlyBooked(trip: trip,
@@ -139,6 +146,7 @@ final class KarhooBookingPresenter {
     }
 }
 
+// MARK: - BookingDetailsObserver
 extension KarhooBookingPresenter: BookingDetailsObserver {
     func bookingStateChanged(details: BookingDetails?) {
         if details?.originLocationDetails != nil,
@@ -153,6 +161,7 @@ extension KarhooBookingPresenter: BookingDetailsObserver {
     }
 }
 
+// MARK: - UserStateObserver
 extension KarhooBookingPresenter: UserStateObserver {
 
     func userStateUpdated(user: UserInfo?) {
@@ -163,13 +172,27 @@ extension KarhooBookingPresenter: UserStateObserver {
     }
 }
 
+// MARK: - BookingPresenter
 extension KarhooBookingPresenter: BookingPresenter {
 
+    // MARK: Lifecycle
     func load(view: BookingView?) {
         self.view = view
         fetchPaymentProvider()
     }
+    
+    func viewWillAppear() {
+        setViewMapPadding()
+    }
 
+    func exitPressed() {
+        bookingStatus.reset()
+        view?.dismiss(animated: true, completion: { [weak self] in
+            self?.callback?(ScreenResult.cancelled(byUser: true))
+        })
+    }
+
+    // MARK: Utils
     private func fetchPaymentProvider() {
         if !Karhoo.configuration.authenticationMethod().isGuest() {
             return
@@ -189,7 +212,18 @@ extension KarhooBookingPresenter: BookingPresenter {
     func populate(with bookingDetails: BookingDetails) {
         bookingStatus.reset(with: bookingDetails)
     }
+    
+    func setViewMapPadding() {
+        let bookingDetails = bookingStatus.getBookingDetails()
+        if bookingDetails?.originLocationDetails != nil,
+            bookingDetails?.destinationLocationDetails != nil {
+            view?.setMapPadding(bottomPaddingEnabled: true)
+        } else {
+            view?.setMapPadding(bottomPaddingEnabled: false)
+        }
+    }
 
+    // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
         resetBookingStatus()
 
@@ -225,6 +259,15 @@ extension KarhooBookingPresenter: BookingPresenter {
             ])
     }
     
+    func tripSuccessfullyCancelled() {
+        resetBookingStatus()
+        view?.hideAllocationScreen()
+        view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
+                        message: UITexts.Bookings.cancellationSuccessAlertMessage,
+                        error: nil)
+    }
+    
+    // MARK: Trip allocation
     func tripDriverAllocationDelayed(trip: TripInfo) {
         view?.showAlert(title: UITexts.GenericTripStatus.driverAllocationDelayTitle,
                         message: UITexts.GenericTripStatus.driverAllocationDelayMessage,
@@ -236,76 +279,12 @@ extension KarhooBookingPresenter: BookingPresenter {
                         ])
     }
     
-    func tripWaitOnRideDetails(trip: TripInfo) {
-        view?.resetAndLocate()
-        view?.hideAllocationScreen()
-        showRideDetailsView(trip: trip)
-    }
-
-    func tripSuccessfullyCancelled() {
-        resetBookingStatus()
-        view?.hideAllocationScreen()
-        view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
-                        message: UITexts.Bookings.cancellationSuccessAlertMessage,
-                        error: nil)
-    }
-
-    func didSelectQuote(quote: Quote) {
-        view?.hideQuoteList()
-
-        guard let bookingDetails = bookingDetails() else {
-            return
-        }
-
-        showCheckoutView(quote: quote, bookingDetails: bookingDetails)
-    }
-
-    func showRidesList(presentationStyle: UIModalPresentationStyle?) {
-        let ridesList = ridesScreenBuilder.buildRidesScreen(completion: { [weak self] result in
-            self?.view?.dismiss(animated: true, completion: {
-                ridesListCompleted(result: result)
-            })
-        })
-        
-        if let presStyle = presentationStyle {
-            ridesList.modalPresentationStyle = presStyle
-        }
-    
-        self.view?.present(ridesList, animated: true, completion: nil)
-
-        func ridesListCompleted(result: ScreenResult<RidesListAction>) {
-            guard let action = result.completedValue() else {
-                return
-            }
-
-            switch action {
-            case .trackTrip(let trip):
-                goToTripView(trip: trip)
-            case .bookNewTrip:
-                view?.resetAndLocate()
-            case .rebookTrip(let trip):
-                rebookTrip(trip)
-            }
-        }
-    }
-
-    func viewWillAppear() {
-        setViewMapPadding()
-    }
-
     func tripAllocated(trip: TripInfo) {
         view?.reset()
         view?.hideAllocationScreen()
         finishWithResult(.completed(result: .tripAllocated(tripInfo: trip)))
     }
-
-    func exitPressed() {
-        bookingStatus.reset()
-        view?.dismiss(animated: true, completion: { [weak self] in
-            self?.callback?(ScreenResult.cancelled(byUser: true))
-        })
-    }
-
+    
     func goToTripView(trip: TripInfo) {
         if Karhoo.configuration.authenticationMethod().isGuest() {
             let dismissTrackingAction = AlertAction(title: UITexts.Trip.trackTripAlertDismissAction, style: .cancel)
@@ -322,7 +301,20 @@ extension KarhooBookingPresenter: BookingPresenter {
             view?.present(tripView, animated: true, completion: nil)
         }
     }
+    
+    // MARK: Quotes
+    func didSelectQuote(quote: Quote) {
+        view?.hideQuoteList()
 
+        guard let bookingDetails = bookingDetails() else {
+            return
+        }
+
+        showCheckoutView(quote: quote, bookingDetails: bookingDetails)
+    }
+
+
+    // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: BookingDetails) {
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
@@ -362,6 +354,42 @@ extension KarhooBookingPresenter: BookingPresenter {
         callback(result)
     }
 
+    // MARK: Ride details
+    func tripWaitOnRideDetails(trip: TripInfo) {
+        view?.resetAndLocate()
+        view?.hideAllocationScreen()
+        showRideDetailsView(trip: trip)
+    }
+    
+    func showRidesList(presentationStyle: UIModalPresentationStyle?) {
+        let ridesList = ridesScreenBuilder.buildRidesScreen(completion: { [weak self] result in
+            self?.view?.dismiss(animated: true, completion: {
+                ridesListCompleted(result: result)
+            })
+        })
+        
+        if let presStyle = presentationStyle {
+            ridesList.modalPresentationStyle = presStyle
+        }
+    
+        self.view?.present(ridesList, animated: true, completion: nil)
+
+        func ridesListCompleted(result: ScreenResult<RidesListAction>) {
+            guard let action = result.completedValue() else {
+                return
+            }
+
+            switch action {
+            case .trackTrip(let trip):
+                goToTripView(trip: trip)
+            case .bookNewTrip:
+                view?.resetAndLocate()
+            case .rebookTrip(let trip):
+                rebookTrip(trip)
+            }
+        }
+    }
+    
     func showRideDetailsView(trip: TripInfo) {
         let rideDetailsViewController = rideDetailsScreenBuilder
             .buildOverlayRideDetailsScreen(trip: trip,
@@ -393,16 +421,6 @@ extension KarhooBookingPresenter: BookingPresenter {
         case .some(.rebookTrip(let details)):
             populate(with: details)
         default: break
-        }
-    }
-
-    func setViewMapPadding() {
-        let bookingDetails = bookingStatus.getBookingDetails()
-        if bookingDetails?.originLocationDetails != nil,
-            bookingDetails?.destinationLocationDetails != nil {
-            view?.setMapPadding(bottomPaddingEnabled: true)
-        } else {
-            view?.setMapPadding(bottomPaddingEnabled: false)
         }
     }
 }
