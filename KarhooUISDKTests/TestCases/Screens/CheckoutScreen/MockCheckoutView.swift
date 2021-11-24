@@ -83,7 +83,7 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
 
     var theQuoteSet: Quote?
     var loyaltyInfoSet: LoyaltyInfo?
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo) {
+    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?) {
         theQuoteSet = quote
         loyaltyInfoSet = loyaltyInfo
     }

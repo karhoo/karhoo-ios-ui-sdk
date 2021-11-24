@@ -71,7 +71,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if karhooUser {
             completeLoadingViewForKarhooUser(view: view)
         }
-        view.set(quote: quote, loyaltyInfo: loyaltyInfo ?? LoyaltyInfo(canEarn: false, canBurn: false))
+        view.set(quote: quote, loyaltyInfo: loyaltyInfo)
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
     }
