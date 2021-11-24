@@ -98,7 +98,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
 
         if !hasValidDetails && dotBorderLayer == nil {
             dotBorderLayer = CAShapeLayer()
-            dotBorderLayer.strokeColor = KarhooUI.colors.darkGrey.cgColor
+            dotBorderLayer.strokeColor = KarhooUI.colors.medGrey.cgColor
             dotBorderLayer.lineDashPattern = [4, 4]
             dotBorderLayer.frame = bounds
             dotBorderLayer.fillColor = nil
@@ -214,6 +214,6 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     
     private func setFullBorder(_ shouldSet: Bool) {
         layer.borderWidth = shouldSet ? 1.0 : 0.0
-        layer.borderColor = shouldSet ? KarhooUI.colors.guestCheckoutGrey.cgColor : UIColor.clear.cgColor
+        layer.borderColor = shouldSet ? KarhooUI.colors.lightGrey.cgColor : UIColor.clear.cgColor
     }
 }

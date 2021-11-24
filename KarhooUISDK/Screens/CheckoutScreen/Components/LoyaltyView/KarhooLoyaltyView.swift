@@ -79,7 +79,7 @@ final class KarhooLoyaltyView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHLoyaltyViewID.subtitleLabel
         label.font = KarhooUI.fonts.captionRegular()
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.medGrey
         label.text = UITexts.Loyalty.pointsEarnedForTrip
         label.numberOfLines = 0
         return label
@@ -214,7 +214,7 @@ extension KarhooLoyaltyView: LoyaltyView {
     
     func set(mode: LoyaltyMode, withSubtitle text: String) {
         subtitleLabel.text = text
-        subtitleLabel.textColor = KarhooUI.colors.lightGrey
+        subtitleLabel.textColor = KarhooUI.colors.medGrey
         loyaltyStackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         
         switch mode {
