@@ -1544,15 +1544,15 @@
 			path = AddressProvider;
 			sourceTree = "<group>";
 		};
-		099106BB21B82D5200BD7E6F /* Model */ = {
+		099106BB21B82D5200BD7E6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
 				099106BC21B82D5200BD7E6F /* Address.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
+				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
 				6B437CAC274BC94C0051F11C /* LoyaltyInfo.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */ = {
@@ -3164,7 +3164,7 @@
 				5C7233BE226510AA001078B6 /* Error */,
 				FC8F47322153A710007841FB /* Extensions */,
 				FC8F471821539E24007841FB /* Info.plist */,
-				099106BB21B82D5200BD7E6F /* Model */,
+				099106BB21B82D5200BD7E6F /* Models */,
 				FC8F473F2153DCC9007841FB /* Routing */,
 				0991065C21B8291900BD7E6F /* Screens */,
 				090F08E721C94BB6000C7E50 /* Translations */,
