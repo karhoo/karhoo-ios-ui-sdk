@@ -2048,10 +2048,8 @@
 				407EC77F22CF564E00F24CFC /* RoundedLabel.swift */,
 				40C1CD7123C9EC7900EDEA84 /* TripStatusView.swift */,
 				407EC75222CF564E00F24CFC /* UITexts.swift */,
-				407EC76322CF564E00F24CFC /* AddressBarMVP */,
 				407227A2238445FF005680F5 /* BaseSelectionView */,
 				407EC78B22CF564E00F24CFC /* EmptyDataSetView */,
-				407EC78522CF564E00F24CFC /* Error */,
 				407EC75E22CF564E00F24CFC /* FormButtonView */,
 				407FC5F722F0A46E00F74D0A /* HintTextView */,
 				407EC74D22CF564E00F24CFC /* KarhooTextField */,
@@ -2063,11 +2061,9 @@
 				407EC77022CF564E00F24CFC /* MapMVP */,
 				407EC77822CF564E00F24CFC /* MessageBanner */,
 				407EC75722CF564E00F24CFC /* NavigationBar */,
-				407EC72B22CF564E00F24CFC /* Notification */,
 				407EC77B22CF564E00F24CFC /* PinView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
 				407EC79022CF564E00F24CFC /* TableViewDelegateDataSource */,
-				407EC74622CF564E00F24CFC /* TermsConditionsView */,
 				407EC78022CF564E00F24CFC /* TripDetailsView */,
 				097BF281234F2A1900BBE418 /* VehicleCapacityView */,
 			);
@@ -2426,7 +2422,6 @@
 		5CBA2A6824F5D8CC0091D783 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
 				6B5B035126D7B7DC0001B2DB /* AddPassengerDetailsView */,
 				403E907722C527EE00F39B91 /* AddPaymentView */,
 				79ACDCE926CD2F45008820B5 /* CheckoutViews */,
@@ -2513,6 +2508,7 @@
 		6BDB6C21274E88E4006DDF1C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				407EC78522CF564E00F24CFC /* Error */,
 				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
 				407EC73022CF564E00F24CFC /* Alert */,
 				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
@@ -2549,6 +2545,17 @@
 				FC435F412211BB5900FB6BB5 /* TimeScheduler.swift */,
 			);
 			path = TimeScheduler;
+			sourceTree = "<group>";
+		};
+		6BDB6C24274FC0E6006DDF1C /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
+				407EC74622CF564E00F24CFC /* TermsConditionsView */,
+				407EC72B22CF564E00F24CFC /* Notification */,
+				407EC76322CF564E00F24CFC /* AddressBarMVP */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 		6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */ = {
@@ -3140,6 +3147,7 @@
 				FC8F473F2153DCC9007841FB /* Routing */,
 				0991065C21B8291900BD7E6F /* Screens */,
 				090F08E721C94BB6000C7E50 /* Translations */,
+				6BDB6C24274FC0E6006DDF1C /* UIComponents */,
 				4038DF392444BAC40014539B /* Utils.swift */,
 				6BDB6C21274E88E4006DDF1C /* Workers */,
 			);
