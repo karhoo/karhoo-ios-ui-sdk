@@ -1558,8 +1558,8 @@
 		099106BB21B82D5200BD7E6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
 				099106BC21B82D5200BD7E6F /* Address.swift */,
+				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				6B437CAC274BC94C0051F11C /* LoyaltyInfo.swift */,
 			);
@@ -1569,18 +1569,16 @@
 		099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C7B185125310E170001CFE6 /* TouchAreaEdgeInsets.swift */,
-				099106FF21B83AF700BD7E6F /* QuoteType+Description.swift */,
-				0991070121B83AF700BD7E6F /* Observable+Utils.swift */,
-				0991070221B83AF700BD7E6F /* TripLocationDetailsExt.swift */,
-				0991070321B83AF700BD7E6F /* TripExt.swift */,
 				408AB68423507DF600B351B2 /* FareExt.swift */,
+				0991070121B83AF700BD7E6F /* Observable+Utils.swift */,
 				0991070421B83AF700BD7E6F /* Observer+Utils.swift */,
-				4070213B23D9E19400F82B6A /* UIView+Extensions.swift */,
-				4030C8F5241B980E0034A944 /* UIColor+extension.swift */,
 				6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */,
-				6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */,
 				6B4C15A82731881A00C10EAE /* QuoteCategory+Extensions.swift */,
+				099106FF21B83AF700BD7E6F /* QuoteType+Description.swift */,
+				6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */,
+				5C7B185125310E170001CFE6 /* TouchAreaEdgeInsets.swift */,
+				0991070321B83AF700BD7E6F /* TripExt.swift */,
+				0991070221B83AF700BD7E6F /* TripLocationDetailsExt.swift */,
 			);
 			path = KarhooSDKExtensions;
 			sourceTree = "<group>";
@@ -2023,38 +2021,19 @@
 		407EC72022CF564E00F24CFC /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				403F448122F19A38008147FC /* BaseStackView.swift */,
-				5C7F6EF0233A375F0039F3E2 /* BaseView.swift */,
-				4070213423D9E0CD00F82B6A /* BordedLabel.swift */,
-				407EC75622CF564E00F24CFC /* CloseBarButton.swift */,
-				4070213623D9E11300F82B6A /* DropDownButton.swift */,
-				4017C46923CCB0230081834B /* EmptyStateView.swift */,
-				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
-				407EC77E22CF564E00F24CFC /* GradientView.swift */,
-				404E9C4A23C8BB2B00289F43 /* LineView.swift */,
-				40C7DC5A23D0A13500975AD3 /* MetaDataView.swift */,
-				407EC74522CF564E00F24CFC /* NibLoadableView.swift */,
-				407EC77F22CF564E00F24CFC /* RoundedLabel.swift */,
-				40C1CD7123C9EC7900EDEA84 /* TripStatusView.swift */,
 				407EC75222CF564E00F24CFC /* UITexts.swift */,
-				407227A2238445FF005680F5 /* BaseSelectionView */,
-				407EC78B22CF564E00F24CFC /* EmptyDataSetView */,
-				407EC75E22CF564E00F24CFC /* FormButtonView */,
-				407FC5F722F0A46E00F74D0A /* HintTextView */,
-				407EC74D22CF564E00F24CFC /* KarhooTextField */,
-				4038DF3B2444C6C30014539B /* KarhooTextInputView */,
+				6BB9404A274FDA1D00478ABD /* BaseControls */,
+				6BB9404B274FDA4A00478ABD /* Buttons */,
+				6BB9404C274FDA7800478ABD /* Labels */,
 				407EC73722CF564E00F24CFC /* Layout */,
-				407EC73322CF564E00F24CFC /* LoadingImageView */,
-				407EC72222CF564E00F24CFC /* LoadingView */,
+				6BB9404F274FDBAF00478ABD /* LoadingControls */,
 				407EC74A22CF564E00F24CFC /* MailComposer */,
 				407EC77022CF564E00F24CFC /* MapMVP */,
-				407EC77822CF564E00F24CFC /* MessageBanner */,
 				407EC75722CF564E00F24CFC /* NavigationBar */,
-				407EC77B22CF564E00F24CFC /* PinView */,
-				407EC72522CF564E00F24CFC /* StackButtonView */,
 				407EC79022CF564E00F24CFC /* TableViewDelegateDataSource */,
 				407EC78022CF564E00F24CFC /* TripDetailsView */,
 				097BF281234F2A1900BBE418 /* VehicleCapacityView */,
+				6BB9404D274FDA9D00478ABD /* Views */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -2107,14 +2086,14 @@
 		407EC73722CF564E00F24CFC /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				407EC73822CF564E00F24CFC /* Constraints.swift */,
-				407EC73922CF564E00F24CFC /* Attributes.swift */,
-				407EC73A22CF564E00F24CFC /* KarhooColors.swift */,
-				407EC73B22CF564E00F24CFC /* NibStrings.swift */,
 				407EC73C22CF564E00F24CFC /* AccessibilityIdentifiers.swift */,
+				407EC73922CF564E00F24CFC /* Attributes.swift */,
+				407EC73822CF564E00F24CFC /* Constraints.swift */,
+				407EC73A22CF564E00F24CFC /* KarhooColors.swift */,
 				407EC73D22CF564E00F24CFC /* KarhooFonts.swift */,
-				407EC74322CF564E00F24CFC /* Layout.swift */,
 				407EC74422CF564E00F24CFC /* KarhooGradients.swift */,
+				407EC74322CF564E00F24CFC /* Layout.swift */,
+				407EC73B22CF564E00F24CFC /* NibStrings.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -2131,8 +2110,8 @@
 		407EC74A22CF564E00F24CFC /* MailComposer */ = {
 			isa = PBXGroup;
 			children = (
-				407EC74B22CF564E00F24CFC /* MailComposer.swift */,
 				407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */,
+				407EC74B22CF564E00F24CFC /* MailComposer.swift */,
 			);
 			path = MailComposer;
 			sourceTree = "<group>";
@@ -2158,8 +2137,8 @@
 		407EC75722CF564E00F24CFC /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				407EC75922CF564E00F24CFC /* NavigationBarMVP.swift */,
 				407EC75A22CF564E00F24CFC /* KarhooNavigationBarView.swift */,
+				407EC75922CF564E00F24CFC /* NavigationBarMVP.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -2266,9 +2245,9 @@
 		407EC79022CF564E00F24CFC /* TableViewDelegateDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				407EC79322CF564E00F24CFC /* TableData.swift */,
 				407EC79122CF564E00F24CFC /* TableDataSource.swift */,
 				407EC79222CF564E00F24CFC /* TableDelegate.swift */,
-				407EC79322CF564E00F24CFC /* TableData.swift */,
 			);
 			path = TableViewDelegateDataSource;
 			sourceTree = "<group>";
@@ -2371,8 +2350,8 @@
 			isa = PBXGroup;
 			children = (
 				5C7233BF226510B9001078B6 /* KarhooUISDKError.swift */,
-				092A6D4E2265EDBA00A8DA5D /* KarhooUISDKErrorType.swift */,
 				092A6D57226615EC00A8DA5D /* KarhooUISDKErrorFactory.swift */,
+				092A6D4E2265EDBA00A8DA5D /* KarhooUISDKErrorType.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -2504,21 +2483,79 @@
 			path = PassengerDetails;
 			sourceTree = "<group>";
 		};
+		6BB9404A274FDA1D00478ABD /* BaseControls */ = {
+			isa = PBXGroup;
+			children = (
+				403F448122F19A38008147FC /* BaseStackView.swift */,
+				5C7F6EF0233A375F0039F3E2 /* BaseView.swift */,
+				407227A2238445FF005680F5 /* BaseSelectionView */,
+			);
+			path = BaseControls;
+			sourceTree = "<group>";
+		};
+		6BB9404B274FDA4A00478ABD /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				407EC75622CF564E00F24CFC /* CloseBarButton.swift */,
+				4070213623D9E11300F82B6A /* DropDownButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		6BB9404C274FDA7800478ABD /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				4070213423D9E0CD00F82B6A /* BordedLabel.swift */,
+				407EC77F22CF564E00F24CFC /* RoundedLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		6BB9404D274FDA9D00478ABD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4017C46923CCB0230081834B /* EmptyStateView.swift */,
+				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
+				407EC77E22CF564E00F24CFC /* GradientView.swift */,
+				404E9C4A23C8BB2B00289F43 /* LineView.swift */,
+				40C7DC5A23D0A13500975AD3 /* MetaDataView.swift */,
+				40C1CD7123C9EC7900EDEA84 /* TripStatusView.swift */,
+				407EC78B22CF564E00F24CFC /* EmptyDataSetView */,
+				407EC75E22CF564E00F24CFC /* FormButtonView */,
+				407FC5F722F0A46E00F74D0A /* HintTextView */,
+				407EC74D22CF564E00F24CFC /* KarhooTextField */,
+				4038DF3B2444C6C30014539B /* KarhooTextInputView */,
+				407EC77822CF564E00F24CFC /* MessageBanner */,
+				407EC77B22CF564E00F24CFC /* PinView */,
+				407EC72522CF564E00F24CFC /* StackButtonView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6BB9404F274FDBAF00478ABD /* LoadingControls */ = {
+			isa = PBXGroup;
+			children = (
+				407EC73322CF564E00F24CFC /* LoadingImageView */,
+				407EC72222CF564E00F24CFC /* LoadingView */,
+			);
+			path = LoadingControls;
+			sourceTree = "<group>";
+		};
 		6BDB6C21274E88E4006DDF1C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				407EC78522CF564E00F24CFC /* Error */,
-				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
-				407EC73022CF564E00F24CFC /* Alert */,
-				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
-				407EC75C22CF564E00F24CFC /* TripInfoUtility.swift */,
-				407EC76222CF564E00F24CFC /* PhoneNumberCaller.swift */,
-				407EC75B22CF564E00F24CFC /* KeyboardSizeProvider.swift */,
 				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
 				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
+				407EC75B22CF564E00F24CFC /* KeyboardSizeProvider.swift */,
 				FC0465A42215AA05004E76FE /* NavigationControllerDelegate.swift */,
+				407EC76222CF564E00F24CFC /* PhoneNumberCaller.swift */,
 				FC83E2AC221EE890008FE26D /* TimeFetcher.swift */,
+				407EC75C22CF564E00F24CFC /* TripInfoUtility.swift */,
+				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
+				407EC73022CF564E00F24CFC /* Alert */,
+				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
+				407EC78522CF564E00F24CFC /* Error */,
 				FCAD1C1222088A4200C3AD1D /* Formatters */,
 				FC83E2B0221EE909008FE26D /* Logger */,
 				6BDB6C23274E8C8F006DDF1C /* TimeScheduler */,
@@ -2530,8 +2567,8 @@
 		6BDB6C22274E894B006DDF1C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6B4E3256274FCEB000A345E9 /* BookingStatus */,
 				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
+				6B4E3256274FCEB000A345E9 /* BookingStatus */,
 				092F281022B25B0700AF8E0E /* Payment */,
 				FC435F382211B8B400FB6BB5 /* Trips */,
 			);
@@ -2550,10 +2587,11 @@
 		6BDB6C24274FC0E6006DDF1C /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
-				407EC74622CF564E00F24CFC /* TermsConditionsView */,
-				407EC72B22CF564E00F24CFC /* Notification */,
+				407EC74522CF564E00F24CFC /* NibLoadableView.swift */,
 				407EC76322CF564E00F24CFC /* AddressBarMVP */,
+				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
+				407EC72B22CF564E00F24CFC /* Notification */,
+				407EC74622CF564E00F24CFC /* TermsConditionsView */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -3167,10 +3205,12 @@
 		FC8F47322153A710007841FB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */,
-				0973872121DE77B3004BD5F9 /* NSAttributedString+Utils.swift */,
 				FC8F474C2153E770007841FB /* Bundle+Utils.swift */,
+				0973872121DE77B3004BD5F9 /* NSAttributedString+Utils.swift */,
+				4030C8F5241B980E0034A944 /* UIColor+extension.swift */,
+				4070213B23D9E19400F82B6A /* UIView+Extensions.swift */,
 				79793ED7270F2E2200944896 /* UIViewController+extensions.swift */,
+				099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3194,9 +3234,9 @@
 		FC8F473F2153DCC9007841FB /* Routing */ = {
 			isa = PBXGroup;
 			children = (
+				095A03D82333D17E007D805E /* BaseViewController.swift */,
 				FC04659E2215A6AD004E76FE /* Navigation.swift */,
 				095B20D522649CEC00119D11 /* ScreenResult.swift */,
-				095A03D82333D17E007D805E /* BaseViewController.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
