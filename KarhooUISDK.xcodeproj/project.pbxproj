@@ -1192,11 +1192,11 @@
 		092005D5225B91C1001038ED /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				092005D6225B91C1001038ED /* SideMenuViewController.swift */,
-				09F60CE8226756AF00023C74 /* SideMenuHandler.swift */,
-				092005D7225B91C1001038ED /* SideMenuContent */,
-				092005DB225B91C1001038ED /* SideMenuViewController.xib */,
 				09F60CDE226623A200023C74 /* SideMenu.swift */,
+				09F60CE8226756AF00023C74 /* SideMenuHandler.swift */,
+				092005D6225B91C1001038ED /* SideMenuViewController.swift */,
+				092005DB225B91C1001038ED /* SideMenuViewController.xib */,
+				092005D7225B91C1001038ED /* SideMenuContent */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -1204,8 +1204,8 @@
 		092005D7225B91C1001038ED /* SideMenuContent */ = {
 			isa = PBXGroup;
 			children = (
-				092005D8225B91C1001038ED /* MenuContentPresenter.swift */,
 				09A1F88E225CBCFF00B3DBE2 /* MenuContentMVP.swift */,
+				092005D8225B91C1001038ED /* MenuContentPresenter.swift */,
 				092005D9225B91C1001038ED /* MenuContentViewController.swift */,
 				092005DA225B91C1001038ED /* MenuContentViewController.xib */,
 			);
@@ -1311,9 +1311,8 @@
 			isa = PBXGroup;
 			children = (
 				094AE85621C9145D0046EC3C /* DatePickerMVP.swift */,
-				094AE85721C9145D0046EC3C /* View */,
-				094AE85A21C9145D0046EC3C /* Domain */,
 				094AE85C21C9145D0046EC3C /* KarhooDatePickerPresenter.swift */,
+				094AE85721C9145D0046EC3C /* View */,
 			);
 			path = DatePickerScreen;
 			sourceTree = "<group>";
@@ -1325,14 +1324,6 @@
 				094AE85921C9145D0046EC3C /* DatePickerViewController.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		094AE85A21C9145D0046EC3C /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				094AE85B21C9145D0046EC3C /* TimeSinceNowProvider.swift */,
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		095D745423182318002253C0 /* TripRatingCache */ = {
@@ -1504,7 +1495,6 @@
 				403F448522F1EC97008147FC /* TripFeedbackScreen */,
 				FC83E24B221DB4C9008FE26D /* TripScreen */,
 				FC83E282221DB549008FE26D /* TripSummaryScreen */,
-				FC0465A02215A962004E76FE /* UINavigation.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1512,13 +1502,12 @@
 		0991066021B8291900BD7E6F /* AddressScreen */ = {
 			isa = PBXGroup;
 			children = (
-				0916BB70236CA14D0064A5D6 /* AddressMapView */,
-				0991067221B8291900BD7E6F /* AddressViewController.swift */,
 				0991066621B8291900BD7E6F /* AddressMVP.swift */,
 				0991066721B8291900BD7E6F /* AddressPresenter.swift */,
+				0991067221B8291900BD7E6F /* AddressViewController.swift */,
+				0916BB70236CA14D0064A5D6 /* AddressMapView */,
 				0991066121B8291900BD7E6F /* AddressSearchBar */,
 				0991066821B8291900BD7E6F /* Table */,
-				0991066F21B8291900BD7E6F /* Domain */,
 			);
 			path = AddressScreen;
 			sourceTree = "<group>";
@@ -1543,7 +1532,7 @@
 			path = Table;
 			sourceTree = "<group>";
 		};
-		0991066F21B8291900BD7E6F /* Domain */ = {
+		0991066F21B8291900BD7E6F /* AddressProvider */ = {
 			isa = PBXGroup;
 			children = (
 				09C169B7227C8EFF00CF7E66 /* AddressType.swift */,
@@ -1552,14 +1541,14 @@
 				0991067021B8291900BD7E6F /* AddressSearchProvider.swift */,
 				0991067121B8291900BD7E6F /* KarhooAddressSearchProvider.swift */,
 			);
-			path = Domain;
+			path = AddressProvider;
 			sourceTree = "<group>";
 		};
 		099106BB21B82D5200BD7E6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
 				099106BC21B82D5200BD7E6F /* Address.swift */,
-				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				6B437CAC274BC94C0051F11C /* LoyaltyInfo.swift */,
 			);
@@ -1617,17 +1606,14 @@
 		09C7655F21DE688000CD81AB /* BookingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
 				09C7659A21DE688000CD81AB /* BookingMVP.swift */,
 				09C7658621DE688000CD81AB /* KarhooBookingPresenter.swift */,
 				09C7658721DE688000CD81AB /* KarhooBookingViewController.swift */,
-				09C7656021DE688000CD81AB /* QuoteListMVP */,
-				09C7657621DE688000CD81AB /* QuoteCategoryBarMVP */,
-				09C7657B21DE688000CD81AB /* Map */,
 				09C7658221DE688000CD81AB /* AddressBar */,
+				09C7657B21DE688000CD81AB /* Map */,
+				09C7657621DE688000CD81AB /* QuoteCategoryBarMVP */,
+				09C7656021DE688000CD81AB /* QuoteListMVP */,
 				09C7658821DE688000CD81AB /* TripAllocationMVP */,
-				09C7659821DE688000CD81AB /* DeepLinkObjects */,
-				5C8316C0246B6D0700BAA926 /* SharedPassengerDetails.swift */,
 			);
 			path = BookingScreen;
 			sourceTree = "<group>";
@@ -1635,14 +1621,14 @@
 		09C7656021DE688000CD81AB /* QuoteListMVP */ = {
 			isa = PBXGroup;
 			children = (
-				09C7656121DE688000CD81AB /* QuoteListPanelLayout.swift */,
-				09C7656221DE688000CD81AB /* QuoteSortMVP */,
-				09C7656B21DE688000CD81AB /* QuoteListMVP.swift */,
-				09C7656D21DE688000CD81AB /* QuoteCell */,
-				09C7657021DE688000CD81AB /* KarhooQuoteListPresenter.swift */,
 				09C7657121DE688000CD81AB /* KarhooGrabberHandleView.swift */,
+				09C7657021DE688000CD81AB /* KarhooQuoteListPresenter.swift */,
 				09C7657221DE688000CD81AB /* KarhooQuoteListViewController.swift */,
+				09C7656B21DE688000CD81AB /* QuoteListMVP.swift */,
+				09C7656121DE688000CD81AB /* QuoteListPanelLayout.swift */,
 				09C7657321DE688000CD81AB /* EmptyDataSetView */,
+				09C7656D21DE688000CD81AB /* QuoteCell */,
+				09C7656221DE688000CD81AB /* QuoteSortMVP */,
 			);
 			path = QuoteListMVP;
 			sourceTree = "<group>";
@@ -1710,12 +1696,12 @@
 		09C7658821DE688000CD81AB /* TripAllocationMVP */ = {
 			isa = PBXGroup;
 			children = (
+				09C7659121DE688000CD81AB /* KarhooTripAllocationPresenter.swift */,
+				09C7658F21DE688000CD81AB /* KarhooTripAllocationView.swift */,
+				09C7659721DE688000CD81AB /* TripAllocationMVP.swift */,
+				09C7659221DE688000CD81AB /* BookingAllocationSpinner */,
 				09C7658921DE688000CD81AB /* CancelButton */,
 				09C7658D21DE688000CD81AB /* RollingTextView */,
-				09C7658F21DE688000CD81AB /* KarhooTripAllocationView.swift */,
-				09C7659121DE688000CD81AB /* KarhooTripAllocationPresenter.swift */,
-				09C7659221DE688000CD81AB /* BookingAllocationSpinner */,
-				09C7659721DE688000CD81AB /* TripAllocationMVP.swift */,
 			);
 			path = TripAllocationMVP;
 			sourceTree = "<group>";
@@ -1747,19 +1733,11 @@
 			path = BookingAllocationSpinner;
 			sourceTree = "<group>";
 		};
-		09C7659821DE688000CD81AB /* DeepLinkObjects */ = {
-			isa = PBXGroup;
-			children = (
-				09C7659921DE688000CD81AB /* KarhooQuoteSorter.swift */,
-			);
-			path = DeepLinkObjects;
-			sourceTree = "<group>";
-		};
 		09DA1A2F22F1A7E1004C6B20 /* FeedbackButton */ = {
 			isa = PBXGroup;
 			children = (
-				09DA1A3022F1A866004C6B20 /* FeedbackButtonView.swift */,
 				09DA1A3222F1A8F4004C6B20 /* FeedbackButtonMVP.swift */,
+				09DA1A3022F1A866004C6B20 /* FeedbackButtonView.swift */,
 			);
 			path = FeedbackButton;
 			sourceTree = "<group>";
@@ -2002,8 +1980,8 @@
 		403F448522F1EC97008147FC /* TripFeedbackScreen */ = {
 			isa = PBXGroup;
 			children = (
-				403F448322F1EC92008147FC /* KarhooTripFeedbackViewController.swift */,
 				405BF00822F4A078005EC44E /* KarhooTripFeedbackPresenter.swift */,
+				403F448322F1EC92008147FC /* KarhooTripFeedbackViewController.swift */,
 				0968D82022F82B8300047FCF /* TripFeedbackMVP.swift */,
 			);
 			path = TripFeedbackScreen;
@@ -2263,10 +2241,10 @@
 		40FE0CEB22D7D290003F65B5 /* RatingViewMVP */ = {
 			isa = PBXGroup;
 			children = (
+				40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */,
 				40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */,
 				4056598322F2ED8D00EF4AFF /* RatingType.swift */,
 				5CD9CFA922DCAB580086E7A0 /* RatingViewMVP.swift */,
-				40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */,
 				40FE0CEE22D7D2FF003F65B5 /* RateButton */,
 			);
 			path = RatingViewMVP;
@@ -2281,43 +2259,33 @@
 			path = RateButton;
 			sourceTree = "<group>";
 		};
-		5C1CD09F241A5D88004AFF7D /* TripDetailsMVP */ = {
+		5C1CD09F241A5D88004AFF7D /* TripDetails */ = {
 			isa = PBXGroup;
 			children = (
-				5C1CD0A0241A5D88004AFF7D /* TripActionsView */,
-				5C1CD0A6241A5D88004AFF7D /* DriverDetails */,
-				5C1CD0AB241A5D88004AFF7D /* TripDetailsMVP.swift */,
-				5C1CD0AC241A5D88004AFF7D /* TripInfoView */,
 				5C1CD0AE241A5D88004AFF7D /* KarhooTripDetailsPresenter.swift */,
 				5C1CD0BE241A8DB8004AFF7D /* KarhooTripDetailsView.swift */,
-				5C1CD0AF241A5D88004AFF7D /* TripScreenDetailsViewModel.swift */,
+				5C1CD0AB241A5D88004AFF7D /* TripDetailsMVP.swift */,
+				5C1CD0A6241A5D88004AFF7D /* DriverDetails */,
+				5C1CD0A0241A5D88004AFF7D /* TripActionsView */,
+				5C1CD0AC241A5D88004AFF7D /* TripInfoView */,
 			);
-			path = TripDetailsMVP;
+			path = TripDetails;
 			sourceTree = "<group>";
 		};
 		5C1CD0A0241A5D88004AFF7D /* TripActionsView */ = {
 			isa = PBXGroup;
 			children = (
-				5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */,
-				5C1CD0A2241A5D88004AFF7D /* Presenter */,
-			);
-			path = TripActionsView;
-			sourceTree = "<group>";
-		};
-		5C1CD0A2241A5D88004AFF7D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
 				5C1CD0A3241A5D88004AFF7D /* KarhooTripOptionsPresenter.swift */,
 				5C1CD0A4241A5D88004AFF7D /* TripOptionsMVP.swift */,
 			);
-			path = Presenter;
+			path = TripActionsView;
 			sourceTree = "<group>";
 		};
 		5C1CD0A6241A5D88004AFF7D /* DriverDetails */ = {
 			isa = PBXGroup;
 			children = (
-				5C1CD0A7241A5D88004AFF7D /* KarhooDriverDetailsView.swift */,
 				5C1CD0A8241A5D88004AFF7D /* DriverDetailsMVP.swift */,
+				5C1CD0A7241A5D88004AFF7D /* KarhooDriverDetailsView.swift */,
 				5C1CD0A9241A5D88004AFF7D /* KarhooDriverDetailsView.xib */,
 			);
 			path = DriverDetails;
@@ -2381,8 +2349,8 @@
 			isa = PBXGroup;
 			children = (
 				5CBA2A6624F5D8CC0091D783 /* PassengerDetailsMVP.swift */,
-				6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */,
 				6B5E25F426D67DCA0017BFB3 /* PassengerDetailsPresenter.swift */,
+				6B5E25F226D672090017BFB3 /* PassengerDetailsViewController.swift */,
 			);
 			path = PassengerDetails;
 			sourceTree = "<group>";
@@ -2541,18 +2509,35 @@
 			path = LoadingControls;
 			sourceTree = "<group>";
 		};
+		6BB94050274FE91100478ABD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC83E27E221DB549008FE26D /* TripSummaryInfoViewModel.swift */,
+				5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */,
+				5C1CD0AF241A5D88004AFF7D /* TripScreenDetailsViewModel.swift */,
+				FC435F162211B3FA00FB6BB5 /* TripMetaDataViewModel.swift */,
+				FCAD1BF522087BD600C3AD1D /* PrebookConfirmationViewModel.swift */,
+				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		6BDB6C21274E88E4006DDF1C /* Workers */ = {
 			isa = PBXGroup;
 			children = (
 				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
 				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
+				09C7659921DE688000CD81AB /* KarhooQuoteSorter.swift */,
 				407EC75B22CF564E00F24CFC /* KeyboardSizeProvider.swift */,
 				FC0465A42215AA05004E76FE /* NavigationControllerDelegate.swift */,
 				407EC76222CF564E00F24CFC /* PhoneNumberCaller.swift */,
+				5C8316C0246B6D0700BAA926 /* SharedPassengerDetails.swift */,
 				FC83E2AC221EE890008FE26D /* TimeFetcher.swift */,
+				094AE85B21C9145D0046EC3C /* TimeSinceNowProvider.swift */,
 				407EC75C22CF564E00F24CFC /* TripInfoUtility.swift */,
 				407EC75D22CF564E00F24CFC /* URLOpener.swift */,
+				4038DF392444BAC40014539B /* Utils.swift */,
 				407EC73022CF564E00F24CFC /* Alert */,
 				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
 				407EC78522CF564E00F24CFC /* Error */,
@@ -2568,6 +2553,7 @@
 			isa = PBXGroup;
 			children = (
 				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
+				0991066F21B8291900BD7E6F /* AddressProvider */,
 				6B4E3256274FCEB000A345E9 /* BookingStatus */,
 				092F281022B25B0700AF8E0E /* Payment */,
 				FC435F382211B8B400FB6BB5 /* Trips */,
@@ -2599,10 +2585,10 @@
 		6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */ = {
 			isa = PBXGroup;
 			children = (
-				6BE36B6226F07F4700F0FE86 /* CountryCell */,
-				6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */,
-				6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */,
 				6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */,
+				6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */,
+				6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */,
+				6BE36B6226F07F4700F0FE86 /* CountryCell */,
 			);
 			path = CountryCodeSelectionScreen;
 			sourceTree = "<group>";
@@ -2741,10 +2727,11 @@
 		FC435EE42211B30F00FB6BB5 /* Rides */ = {
 			isa = PBXGroup;
 			children = (
-				FC435EE72211B33B00FB6BB5 /* RidesMVP.swift */,
 				FC435EE52211B33B00FB6BB5 /* KarhooRidesPresenter.swift */,
+				FC435EE72211B33B00FB6BB5 /* RidesMVP.swift */,
 				FC435EE82211B33B00FB6BB5 /* RidesViewController.swift */,
 				FC435EF22211B36300FB6BB5 /* RidesList */,
+				FC435F072211B3CA00FB6BB5 /* RideDetails */,
 				FC435EEF2211B34900FB6BB5 /* UIPageControl */,
 			);
 			path = Rides;
@@ -2762,11 +2749,10 @@
 		FC435EF22211B36300FB6BB5 /* RidesList */ = {
 			isa = PBXGroup;
 			children = (
-				FC435F072211B3CA00FB6BB5 /* RideDetails */,
-				FC435EFB2211B38300FB6BB5 /* RideCell */,
 				FC435EF42211B37A00FB6BB5 /* RidesListMVP.swift */,
 				FC435EF62211B37A00FB6BB5 /* RidesListPresenter.swift */,
 				FC435EF32211B37A00FB6BB5 /* RidesListViewController.swift */,
+				FC435EFB2211B38300FB6BB5 /* RideCell */,
 			);
 			path = RidesList;
 			sourceTree = "<group>";
@@ -2774,9 +2760,9 @@
 		FC435EFB2211B38300FB6BB5 /* RideCell */ = {
 			isa = PBXGroup;
 			children = (
-				FC435F022211B3A600FB6BB5 /* StackButton */,
 				FC435EFC2211B39A00FB6BB5 /* RideCell.swift */,
 				FC435EFE2211B39A00FB6BB5 /* RideCellViewModel.swift */,
+				FC435F022211B3A600FB6BB5 /* StackButton */,
 			);
 			path = RideCell;
 			sourceTree = "<group>";
@@ -2795,11 +2781,11 @@
 			children = (
 				FC435F232211B49100FB6BB5 /* KarhooRideDetailsPresenter.swift */,
 				FC435F202211B49100FB6BB5 /* RideDetailsMVP.swift */,
+				40E6693423D5B99E00DE63BA /* RideDetailsViewContainer.swift */,
 				FC435F212211B49100FB6BB5 /* RideDetailsViewController.swift */,
 				40FE0CEB22D7D290003F65B5 /* RatingViewMVP */,
-				FC435F112211B3E400FB6BB5 /* TripMetaData */,
 				FC435F102211B3DB00FB6BB5 /* StackButton */,
-				40E6693423D5B99E00DE63BA /* RideDetailsViewContainer.swift */,
+				FC435F112211B3E400FB6BB5 /* TripMetaData */,
 			);
 			path = RideDetails;
 			sourceTree = "<group>";
@@ -2816,11 +2802,10 @@
 		FC435F112211B3E400FB6BB5 /* TripMetaData */ = {
 			isa = PBXGroup;
 			children = (
-				09DA1A2F22F1A7E1004C6B20 /* FeedbackButton */,
 				FC435F122211B3FA00FB6BB5 /* KarhooTripMetaDataPresenter.swift */,
 				FC435F152211B3FA00FB6BB5 /* KarhooTripMetaDataView.swift */,
 				FC435F132211B3FA00FB6BB5 /* TripMetaDataMVP.swift */,
-				FC435F162211B3FA00FB6BB5 /* TripMetaDataViewModel.swift */,
+				09DA1A2F22F1A7E1004C6B20 /* FeedbackButton */,
 			);
 			path = TripMetaData;
 			sourceTree = "<group>";
@@ -2935,8 +2920,8 @@
 		FC705B16221322220001036E /* PopupDialog */ = {
 			isa = PBXGroup;
 			children = (
-				FC705B18221322540001036E /* PopupDialogMVP.swift */,
 				FC705B19221322550001036E /* KarhooPopupDialogPresenter.swift */,
+				FC705B18221322540001036E /* PopupDialogMVP.swift */,
 				FC705B1A221322550001036E /* PopupDialogViewController.swift */,
 				FC705B17221322540001036E /* PopupDialogViewController.xib */,
 			);
@@ -2946,14 +2931,14 @@
 		FC83E24B221DB4C9008FE26D /* TripScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E24D221DB4F4008FE26D /* TripMVP.swift */,
 				FC83E24E221DB4F5008FE26D /* KarhooTripPresenter.swift */,
 				FC83E24C221DB4F4008FE26D /* KarhooTripViewController.swift */,
-				5C1CD09F241A5D88004AFF7D /* TripDetailsMVP */,
-				FC83E270221DB518008FE26D /* DestinationEta */,
-				FC83E275221DB519008FE26D /* OriginEta */,
+				FC83E24D221DB4F4008FE26D /* TripMVP.swift */,
 				FC83E268221DB516008FE26D /* AddressBar */,
+				FC83E270221DB518008FE26D /* DestinationEta */,
 				FC83E26B221DB517008FE26D /* Map */,
+				FC83E275221DB519008FE26D /* OriginEta */,
+				5C1CD09F241A5D88004AFF7D /* TripDetails */,
 			);
 			path = TripScreen;
 			sourceTree = "<group>";
@@ -2988,9 +2973,9 @@
 		FC83E275221DB519008FE26D /* OriginEta */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E271221DB519008FE26D /* OriginEtaMVP.swift */,
-				FC83E272221DB519008FE26D /* KarhooOriginEtaView.swift */,
 				FC83E274221DB519008FE26D /* KarhooOriginEtaPresenter.swift */,
+				FC83E272221DB519008FE26D /* KarhooOriginEtaView.swift */,
+				FC83E271221DB519008FE26D /* OriginEtaMVP.swift */,
 			);
 			path = OriginEta;
 			sourceTree = "<group>";
@@ -3008,7 +2993,6 @@
 			isa = PBXGroup;
 			children = (
 				FC83E27D221DB549008FE26D /* TripSummaryInfoMVP.swift */,
-				FC83E27E221DB549008FE26D /* TripSummaryInfoViewModel.swift */,
 				FC83E27F221DB549008FE26D /* KarhooTripSummaryInfoView.swift */,
 				FC83E280221DB549008FE26D /* KarhooTripSummaryInfoView.xib */,
 			);
@@ -3018,8 +3002,8 @@
 		FC83E282221DB549008FE26D /* TripSummaryScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FC83E276221DB549008FE26D /* TripSummaryMVP.swift */,
 				FC83E277221DB549008FE26D /* KarhooTripSummaryPresenter.swift */,
+				FC83E276221DB549008FE26D /* TripSummaryMVP.swift */,
 				FC83E278221DB549008FE26D /* TripSummaryViewController.swift */,
 				FC83E279221DB549008FE26D /* TripSummaryViewController.xib */,
 				FC83E27C221DB549008FE26D /* Header */,
@@ -3185,7 +3169,7 @@
 				0991065C21B8291900BD7E6F /* Screens */,
 				090F08E721C94BB6000C7E50 /* Translations */,
 				6BDB6C24274FC0E6006DDF1C /* UIComponents */,
-				4038DF392444BAC40014539B /* Utils.swift */,
+				6BB94050274FE91100478ABD /* ViewModels */,
 				6BDB6C21274E88E4006DDF1C /* Workers */,
 			);
 			path = KarhooUISDK;
@@ -3237,6 +3221,7 @@
 				095A03D82333D17E007D805E /* BaseViewController.swift */,
 				FC04659E2215A6AD004E76FE /* Navigation.swift */,
 				095B20D522649CEC00119D11 /* ScreenResult.swift */,
+				FC0465A02215A962004E76FE /* UINavigation.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -3244,11 +3229,10 @@
 		FCAD1BE922087B9100C3AD1D /* PrebookConfirmationScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FCAD1BF622087BD700C3AD1D /* PrebookConfirmationMVP.swift */,
-				FCAD1BF522087BD600C3AD1D /* PrebookConfirmationViewModel.swift */,
 				FCAD1BF822087BD700C3AD1D /* KarhooPrebookConfirmationPresenter.swift */,
 				FCAD1BF722087BD700C3AD1D /* KarhooPrebookConfirmationViewController.swift */,
 				FCAD1BF422087BD600C3AD1D /* KarhooPrebookConfirmationViewController.xib */,
+				FCAD1BF622087BD700C3AD1D /* PrebookConfirmationMVP.swift */,
 			);
 			path = PrebookConfirmationScreen;
 			sourceTree = "<group>";
