@@ -376,7 +376,6 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
     
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
-                                   loyaltyInfo: LoyaltyInfo? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
         PassengerInfo.shared.set(details: passengerDetails)
 
@@ -389,7 +388,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             validatedJourneyInfo = journeyInfo
         }
 
-        let bookingPresenter = KarhooBookingPresenter(loyaltyInfo: loyaltyInfo, callback: callback)
+        let bookingPresenter = KarhooBookingPresenter(callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {

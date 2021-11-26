@@ -406,13 +406,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         func buildCheckoutScreen(quote: Quote,
                                  bookingDetails: BookingDetails,
                                  bookingMetadata: [String: Any]?,
-                                 loyaltyInfo: LoyaltyInfo? = nil,
                                  callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(quote: quote,
                                                     bookingDetails: bookingDetails,
                                                     bookingMetadata: bookingMetadata,
-                                                    loyaltyInfo: loyaltyInfo,
                                                     callback: callback)
             return KarhooCheckoutViewController(presenter: presenter)
         }
