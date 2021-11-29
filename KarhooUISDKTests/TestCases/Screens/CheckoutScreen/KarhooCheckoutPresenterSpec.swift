@@ -25,7 +25,6 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     private let mockPaymentNonceProvider = MockPaymentNonceProvider()
     private let mockCardRegistrationFlow = MockCardRegistrationFlow()
     private var mockBookingMetadata: [String: Any]? = [:]
-    private var mockLoyaltyInfo: LoyaltyInfo!
 
     override func setUp() {
         super.setUp()
@@ -38,7 +37,6 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         mockAppStateNotifier = MockAppStateNotifier()
         mockAnalytics = MockAnalytics()
         mockPopupDialogScreenBuilder = MockPopupDialogScreenBuilder()
-        mockLoyaltyInfo = LoyaltyInfo(canEarn: TestUtil.getRandomBool(), canBurn: TestUtil.getRandomBool())
 
         loadTestObject()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
@@ -328,7 +326,6 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         let fixedFareRequestScreen = KarhooCheckoutPresenter(quote: testQuote,
                                                              bookingDetails: testBookingDetails,
                                                              bookingMetadata: mockBookingMetadata,
-                                                             loyaltyInfo: mockLoyaltyInfo,
                                                              tripService: mockTripService,
                                                              userService: mockUserService,
                                                              callback: bookingRequestTrip)

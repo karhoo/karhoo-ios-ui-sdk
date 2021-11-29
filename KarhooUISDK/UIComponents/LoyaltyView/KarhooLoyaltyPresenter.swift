@@ -38,19 +38,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        var canEarn = false
-        var canBurn = false
+        viewModel = LoyaltyViewModel(request: request)
         
         if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: request.loyaltyId) {
-            canEarn = status.canEarn
-            canBurn = status.canBurn
+            self.set(status: status)
         }
         
-        viewModel = LoyaltyViewModel(loyaltyId: request.loyaltyId,
-                                     currency: request.currency,
-                                     tripAmount: request.tripAmount,
-                                     canEarn: canEarn,
-                                     canBurn: canBurn)
         updateViewFromViewModel()
         refreshStatus()
     }
@@ -69,13 +62,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 return
             }
             
-            self?.viewModel?.balance = status.balance
-            self?.viewModel?.canEarn = status.canEarn
-            self?.viewModel?.canBurn = status.canBurn
+            self?.set(status: status)
             self?.updateViewFromViewModel()
             self?.updateEarnedPoints()
             self?.updateBurnedPoints()
         }
+    }
+    
+    func set(status: LoyaltyStatus) {
+        viewModel?.canEarn = status.canEarn
+        viewModel?.canBurn = status.canBurn
+        viewModel?.balance = status.balance
     }
     
     // MARK: - Earn

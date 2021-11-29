@@ -82,10 +82,10 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
     }
 
     var theQuoteSet: Quote?
-    var loyaltyInfoSet: LoyaltyInfo?
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?) {
+    var loyaltyIdSet: String?
+    func set(quote: Quote, loyaltyId: String) {
         theQuoteSet = quote
-        loyaltyInfoSet = loyaltyInfo
+        loyaltyIdSet = loyaltyId
     }
 
     var isCheckoutViewVisible = false

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import KarhooSDK
 @testable import KarhooUISDK
 
 class KarhooLoyaltyPresenterSpec: XCTestCase {
@@ -14,7 +15,7 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
     private var testObject: KarhooLoyaltyPresenter!
     private var mockView: MockLoyaltyView!
     private var mockDelegate: MockLoyaltyViewDelegate!
-    private var mockViewModel: LoyaltyViewModel!
+    private var mockRequest: LoyaltyViewRequest!
 
     override func setUp() {
         super.setUp()
@@ -32,8 +33,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToEarnWithEarnOnBurnOn() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: true, canBurn: true)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: true, canEarn: true))
         testObject.updateLoyaltyMode(with: .earn)
         
         XCTAssertTrue(testObject.getCurrentMode() == .earn)
@@ -48,8 +50,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToEarnWithEarnOffBurnOn() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: false, canBurn: true)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: true, canEarn: false))
         testObject.updateLoyaltyMode(with: .earn)
         
         XCTAssertFalse(testObject.getCurrentMode() == .earn)
@@ -64,8 +67,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToEarnWithEarnOnBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: true, canBurn: false)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: false, canEarn: true))
         testObject.updateLoyaltyMode(with: .earn)
         
         XCTAssertTrue(testObject.getCurrentMode() == .earn)
@@ -80,8 +84,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToEarnWithEarnOffBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: false, canBurn: false)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: false, canEarn: false))
         testObject.updateLoyaltyMode(with: .earn)
         
         XCTAssertFalse(testObject.getCurrentMode() == .earn)
@@ -96,8 +101,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToBurnWithEarnOnBurnOn() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: true, canBurn: true)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: true, canEarn: true))
         testObject.updateLoyaltyMode(with: .burn)
         
         XCTAssertTrue(testObject.getCurrentMode() == .burn)
@@ -112,8 +118,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToBurnWithEarnOffBurnOn() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: false, canBurn: true)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: true, canEarn: false))
         testObject.updateLoyaltyMode(with: .burn)
         
         XCTAssertTrue(testObject.getCurrentMode() == .burn)
@@ -128,8 +135,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToBurnWithEarnOnBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: true, canBurn: false)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: false, canEarn: true))
         testObject.updateLoyaltyMode(with: .burn)
         
         XCTAssertFalse(testObject.getCurrentMode() == .burn)
@@ -144,8 +152,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
      */
     func testUpdateLoyaltyModeToBurnWithEarnOffBurnOff() {
         let randomFare = TestUtil.getRandomTripFare()
-        mockViewModel = LoyaltyViewModel(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total), canEarn: false, canBurn: false)
-        testObject.set(viewModel: mockViewModel)
+        mockRequest = LoyaltyViewRequest(loyaltyId: TestUtil.getRandomString(), currency: randomFare.currency, tripAmount: Double(randomFare.total))
+        testObject.set(request: mockRequest)
+        testObject.set(status: LoyaltyStatus(balance: 0, canBurn: false, canEarn: false))
         testObject.updateLoyaltyMode(with: .burn)
         
         XCTAssertFalse(testObject.getCurrentMode() == .burn)

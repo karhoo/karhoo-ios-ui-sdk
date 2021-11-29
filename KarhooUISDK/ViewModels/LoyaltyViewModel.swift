@@ -18,12 +18,23 @@ struct LoyaltyViewModel {
     var earnAmount: Int
     var balance: Int
     
-    init(loyaltyId: String, currency: String, tripAmount: Double, canEarn: Bool, canBurn: Bool) {
+    init(loyaltyId: String, currency: String, tripAmount: Double) {
         self.loyaltyId = loyaltyId
         self.currency = currency
         self.tripAmount = tripAmount
-        self.canEarn = canEarn
-        self.canBurn = canBurn
+        self.canEarn = false
+        self.canBurn = false
+        self.burnAmount = 0
+        self.earnAmount = 0
+        self.balance = 0
+    }
+    
+    init(request: LoyaltyViewRequest) {
+        self.loyaltyId = request.loyaltyId
+        self.currency = request.currency
+        self.tripAmount = request.tripAmount
+        self.canEarn = false
+        self.canBurn = false
         self.burnAmount = 0
         self.earnAmount = 0
         self.balance = 0

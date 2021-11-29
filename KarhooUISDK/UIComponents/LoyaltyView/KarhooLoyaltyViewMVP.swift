@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KarhooSDK
 
 protocol LoyaltyView: AnyObject {
     func getCurrentMode() -> LoyaltyMode
@@ -30,6 +31,7 @@ protocol LoyaltyPresenter {
     func updateEarnedPoints()
     func updateBurnedPoints()
     func updateLoyaltyMode(with mode: LoyaltyMode)
+    func set(status: LoyaltyStatus)
 }
 
 enum LoyaltyMode {
