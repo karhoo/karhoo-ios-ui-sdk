@@ -344,7 +344,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.isHidden = false
     }
     
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?) {
+    func set(quote: Quote, loyaltyId: String) {
         let viewModel = QuoteViewModel(quote: quote)
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
@@ -353,19 +353,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
-        guard let loyaltyInfo = loyaltyInfo
-        else {
-            self.loyaltyView.isHidden = true
-            return
-        }
-        
         // TODO: confirm that the highPrice should be used here
-        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "",
+        let loyaltyRequest = LoyaltyViewRequest(loyaltyId: loyaltyId,
                                                 currency: quote.price.currencyCode,
-                                                tripAmount: quote.price.highPrice,
-                                                canEarn: loyaltyInfo.canEarn,
-                                                canBurn: loyaltyInfo.canBurn)
-        self.loyaltyView.set(viewModel: loyaltyViewModel)
+                                                tripAmount: quote.price.highPrice)
+        self.loyaltyView.set(request: loyaltyRequest)
     }
     
     func set(price: String?) {

@@ -19,8 +19,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let tripService: TripService
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
-    private let loyaltyInfo: LoyaltyInfo? = nil
-    private let loyaltyService: LoyaltyService
     private let paymentNonceProvider: PaymentNonceProvider
     
     private let analytics: Analytics
@@ -40,7 +38,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
          userService: UserService = Karhoo.getUserService(),
-         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
          analytics: Analytics = KarhooAnalytics(),
          appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
          baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
@@ -57,7 +54,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.quote = quote
         self.bookingDetails = bookingDetails
         self.bookingMetadata = bookingMetadata
-        self.loyaltyService = loyaltyService
     }
 
     func load(view: CheckoutView) {
@@ -76,14 +72,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
         
-        if let user = userService.getCurrentUser(),
-           let paymentProvider = user.paymentProvider,
-           let status = loyaltyService.getCurrentLoyaltyStatus(identifier: paymentProvider.loyaltyProgamme.id) {
-            let loyaltyInfo = LoyaltyInfo(canEarn: status.canEarn, canBurn: status.canBurn)
-            view.set(quote: quote, loyaltyInfo: loyaltyInfo)
-        } else {
-            view.set(quote: quote, loyaltyInfo: nil)
-        }
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id ?? ""
+        view.set(quote: quote, loyaltyId: loyaltyId)
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {

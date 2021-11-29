@@ -28,7 +28,7 @@ protocol CheckoutView: BaseViewController {
     func setMoreDetailsState()
     func setDefaultState()
     func resetPaymentNonce()
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?)
+    func set(quote: Quote, loyaltyId: String)
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
