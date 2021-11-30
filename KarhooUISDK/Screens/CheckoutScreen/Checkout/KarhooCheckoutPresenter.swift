@@ -72,8 +72,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         setUpBookingButtonState()
         threeDSecureProvider.set(baseViewController: view)
         
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id ?? ""
-        view.set(quote: quote, loyaltyId: loyaltyId)
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        let showLoyalty = loyaltyId != nil && !loyaltyId!.isEmpty
+        view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
