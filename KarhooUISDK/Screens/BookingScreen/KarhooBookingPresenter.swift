@@ -27,14 +27,12 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
-    private var loyaltyInfo: LoyaltyInfo?
 
     // MARK: - Init
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
          analyticsProvider: Analytics = KarhooAnalytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
-         loyaltyInfo: LoyaltyInfo? = nil,
          callback: ScreenResultCallback<BookingScreenResult>? = nil,
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
@@ -61,7 +59,6 @@ final class KarhooBookingPresenter {
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
         self.paymentService = paymentService
-        self.loyaltyInfo = loyaltyInfo
         userService.add(observer: self)
         bookingStatus.add(observer: self)
     }
@@ -80,7 +77,6 @@ final class KarhooBookingPresenter {
             .buildCheckoutScreen(quote: quote,
                                  bookingDetails: bookingDetails,
                                  bookingMetadata: bookingMetadata,
-                                 loyaltyInfo: loyaltyInfo,
                                  callback: { [weak self] result in
                                     self?.view?.presentedViewController?.dismiss(animated: false, completion: {
                                             self?.bookingRequestCompleted(result: result,

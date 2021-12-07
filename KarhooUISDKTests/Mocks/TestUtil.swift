@@ -163,7 +163,7 @@ class TestUtil: PrimitiveUtil {
                             organisations: inOrganisation ? [org] : [],
                             nonce: nonce)
         user.paymentProvider = PaymentProvider(provider: Provider(id: paymentProvider),
-                                               loyaltyProgammes: [])
+                                               loyaltyProgamme: LoyaltyProgramme())
         return user
     }
 

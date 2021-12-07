@@ -28,7 +28,7 @@ protocol CheckoutView: BaseViewController {
     func setMoreDetailsState()
     func setDefaultState()
     func resetPaymentNonce()
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?)
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?)
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
@@ -48,5 +48,9 @@ extension CheckoutView {
     
     func getFlightNumber() -> String? {
         return nil
+    }
+    
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {
+        set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 }

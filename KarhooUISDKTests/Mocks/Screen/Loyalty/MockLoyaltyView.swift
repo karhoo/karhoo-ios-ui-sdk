@@ -27,9 +27,9 @@ final class MockLoyaltyView: LoyaltyView {
         didCallSetLoyaltyMode = true
     }
     
-    private(set)var didSetViewModel = false
-    func set(viewModel: LoyaltyViewModel) {
-        didSetViewModel = true
+    private(set)var didSetRequest = false
+    func set(request: LoyaltyViewRequest) {
+        didSetRequest = true
     }
     
     private(set)var didSetDelegate = false

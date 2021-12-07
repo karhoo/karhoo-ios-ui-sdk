@@ -344,7 +344,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.isHidden = false
     }
     
-    func set(quote: Quote, loyaltyInfo: LoyaltyInfo?) {
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         let viewModel = QuoteViewModel(quote: quote)
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
@@ -353,19 +353,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
-        guard let loyaltyInfo = loyaltyInfo
-        else {
-            self.loyaltyView.isHidden = true
-            return
+        self.loyaltyView.isHidden = !showLoyalty
+        if showLoyalty {
+            // TODO: confirm that the highPrice should be used here
+            let loyaltyRequest = LoyaltyViewRequest(loyaltyId: loyaltyId ?? "",
+                                                    currency: quote.price.currencyCode,
+                                                    tripAmount: quote.price.highPrice)
+            self.loyaltyView.set(request: loyaltyRequest)
         }
-        
-        // TODO: confirm that the highPrice should be used here
-        let loyaltyViewModel = LoyaltyViewModel(loyaltyId: "",
-                                                currency: quote.price.currencyCode,
-                                                tripAmount: quote.price.highPrice,
-                                                canEarn: loyaltyInfo.canEarn,
-                                                canBurn: loyaltyInfo.canBurn)
-        self.loyaltyView.set(viewModel: loyaltyViewModel)
     }
     
     func set(price: String?) {
@@ -406,13 +401,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         func buildCheckoutScreen(quote: Quote,
                                  bookingDetails: BookingDetails,
                                  bookingMetadata: [String: Any]?,
-                                 loyaltyInfo: LoyaltyInfo? = nil,
                                  callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(quote: quote,
                                                     bookingDetails: bookingDetails,
                                                     bookingMetadata: bookingMetadata,
-                                                    loyaltyInfo: loyaltyInfo,
                                                     callback: callback)
             return KarhooCheckoutViewController(presenter: presenter)
         }
