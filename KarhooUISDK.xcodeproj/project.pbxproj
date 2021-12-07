@@ -431,7 +431,7 @@
 		6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */; };
 		6BA3544F27304E400003B888 /* QuoteVehicle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */; };
 		6BB940542754D47800478ABD /* LoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940532754D47800478ABD /* LoyaltyViewModel.swift */; };
-		6BB940562754D4AC00478ABD /* LoyaltyViewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940552754D4AC00478ABD /* LoyaltyViewRequest.swift */; };
+		6BB940562754D4AC00478ABD /* LoyaltyViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */; };
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
 		6BE3695426EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */; };
 		6BE3695626EB352700F0FE86 /* CountryCodeSelectionMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */; };
@@ -922,7 +922,7 @@
 		6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassengerDetails+Extensions.swift"; sourceTree = "<group>"; };
 		6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVehicle+Extensions.swift"; sourceTree = "<group>"; };
 		6BB940532754D47800478ABD /* LoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewModel.swift; sourceTree = "<group>"; };
-		6BB940552754D4AC00478ABD /* LoyaltyViewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewRequest.swift; sourceTree = "<group>"; };
+		6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewDataModel.swift; sourceTree = "<group>"; };
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
 		6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionPresenter.swift; sourceTree = "<group>"; };
 		6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionMVP.swift; sourceTree = "<group>"; };
@@ -1554,7 +1554,7 @@
 				099106BC21B82D5200BD7E6F /* Address.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
-				6BB940552754D4AC00478ABD /* LoyaltyViewRequest.swift */,
+				6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3834,7 +3834,7 @@
 				4070213523D9E0CD00F82B6A /* BordedLabel.swift in Sources */,
 				09C7659C21DE688100CD81AB /* KarhooQuoteSortView.swift in Sources */,
 				0991067A21B8291A00BD7E6F /* AddressPresenter.swift in Sources */,
-				6BB940562754D4AC00478ABD /* LoyaltyViewRequest.swift in Sources */,
+				6BB940562754D4AC00478ABD /* LoyaltyViewDataModel.swift in Sources */,
 				0991067921B8291A00BD7E6F /* AddressMVP.swift in Sources */,
 				09C765AB21DE688100CD81AB /* KarhooQuoteCategoryBarView.swift in Sources */,
 				092A6D4F2265EDBA00A8DA5D /* KarhooUISDKErrorType.swift in Sources */,

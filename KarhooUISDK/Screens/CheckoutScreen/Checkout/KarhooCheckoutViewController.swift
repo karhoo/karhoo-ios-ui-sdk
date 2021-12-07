@@ -356,10 +356,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         self.loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
             // TODO: confirm that the highPrice should be used here
-            let loyaltyRequest = LoyaltyViewRequest(loyaltyId: loyaltyId ?? "",
+            let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,
                                                     tripAmount: quote.price.highPrice)
-            self.loyaltyView.set(request: loyaltyRequest)
+            self.loyaltyView.set(dataModel: loyaltyDataModel)
         }
     }
     

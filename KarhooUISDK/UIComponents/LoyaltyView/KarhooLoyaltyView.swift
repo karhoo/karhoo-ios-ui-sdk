@@ -252,8 +252,8 @@ extension KarhooLoyaltyView: LoyaltyView {
         showInfoView(false)
     }
     
-    func set(request: LoyaltyViewRequest) {
-        presenter?.set(request: request)
+    func set(dataModel: LoyaltyViewDataModel) {
+        presenter?.set(dataModel: dataModel)
         presenter?.updateLoyaltyMode(with: .earn)
     }
     
