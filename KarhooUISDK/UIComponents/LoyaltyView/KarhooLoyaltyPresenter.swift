@@ -86,11 +86,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         // Convert $ amount to cents
         let amount = viewModel.tripAmount * 100
         loyaltyService.getLoyaltyEarn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: Int(amount), burnPoints: 0).execute { [weak self] result in
-            guard let value = result.successValue(),
-                  let self = self
+            guard let value = result.successValue()
             else {
                 self?.viewModel?.canEarn = false
                 self?.updateViewFromViewModel()
+                return
+            }
+            
+            guard let self = self
+            else {
                 return
             }
             
