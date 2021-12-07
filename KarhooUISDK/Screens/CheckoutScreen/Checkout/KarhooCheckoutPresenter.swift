@@ -73,7 +73,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider.set(baseViewController: view)
         
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        let showLoyalty = loyaltyId != nil && !loyaltyId!.isEmpty
+        let showLoyalty = loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 

@@ -70,8 +70,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     func set(status: LoyaltyStatus) {
-        viewModel?.canEarn = status.canEarn
-        viewModel?.canBurn = status.canBurn
+        viewModel?.canEarn = status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn
+        viewModel?.canBurn = status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn
         viewModel?.balance = status.balance
     }
     
