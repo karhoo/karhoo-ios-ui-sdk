@@ -55,7 +55,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        loyaltyService.refreshCurrentLoyaltyStatus(identifier: id).execute { [weak self] result in
+        loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
             guard let status = result.successValue()
             else {
                 self?.hideLoyaltyComponent()
