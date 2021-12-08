@@ -54,7 +54,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         passengerDetailsIcon.accessibilityIdentifier = KHAddPassengerDetailsViewID.image
         passengerDetailsIcon.translatesAutoresizingMaskIntoConstraints = false
         passengerDetailsIcon.image = UIImage.uisdkImage("user_icon")
-        passengerDetailsIcon.tintColor = KarhooUI.colors.infoColor
+        passengerDetailsIcon.tintColor = KarhooUI.colors.darkGrey
         passengerDetailsIcon.contentMode = .scaleAspectFit
         
         return passengerDetailsIcon

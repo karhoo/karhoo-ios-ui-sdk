@@ -75,7 +75,7 @@ final class KarhooTimePriceView: UIView, TimePriceView {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeLabel.accessibilityIdentifier = Identifiers.timeLabel
         timeLabel.font = KarhooUI.fonts.titleBold()
-        timeLabel.textColor = KarhooUI.colors.darkGrey
+        timeLabel.textColor = KarhooUI.colors.primaryTextColor
         timeLabel.textAlignment = .center
         timeStackContainer.addArrangedSubview(timeLabel)
         
@@ -105,7 +105,7 @@ final class KarhooTimePriceView: UIView, TimePriceView {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.accessibilityIdentifier = Identifiers.priceLabel
         priceLabel.font = KarhooUI.fonts.titleBold()
-        priceLabel.textColor = KarhooUI.colors.darkGrey
+        priceLabel.textColor = KarhooUI.colors.primaryTextColor
         priceLabel.textAlignment = .center
         priceStackContainer.addArrangedSubview(priceLabel)
         
@@ -118,7 +118,7 @@ final class KarhooTimePriceView: UIView, TimePriceView {
         quoteTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         quoteTypeLabel.accessibilityIdentifier = Identifiers.dateLabel
         quoteTypeLabel.font = KarhooUI.fonts.captionRegular()
-        quoteTypeLabel.textColor = KarhooUI.colors.medGrey
+        quoteTypeLabel.textColor = KarhooUI.colors.primaryTextColor
         quoteTypeLabel.textAlignment = .center
         fareView.addSubview(quoteTypeLabel)
         

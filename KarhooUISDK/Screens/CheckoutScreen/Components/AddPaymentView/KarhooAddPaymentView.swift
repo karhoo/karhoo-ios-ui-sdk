@@ -27,7 +27,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
         passengerPaymentIcon.image = UIImage.uisdkImage("plus_icon")
-        passengerPaymentIcon.tintColor = KarhooUI.colors.infoColor
+        passengerPaymentIcon.tintColor = KarhooUI.colors.darkGrey
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
         return passengerPaymentIcon
