@@ -28,7 +28,7 @@ final class MockLoyaltyView: LoyaltyView {
     }
     
     private(set)var didSetRequest = false
-    func set(request: LoyaltyViewRequest) {
+    func set(dataModel: LoyaltyViewDataModel) {
         didSetRequest = true
     }
     

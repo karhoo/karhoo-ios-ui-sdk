@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct LoyaltyViewRequest {
+public struct LoyaltyViewDataModel {
     public var loyaltyId: String
     public var currency: String
     public var tripAmount: Double

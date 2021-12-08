@@ -78,7 +78,7 @@ class CurrencyCodeConverter {
     /// - Parameters:
     ///   - majorUnitAmount: The amount in major currency units.
     ///   - currencyCode: The code of the currency.
-    private static func minorUnitAmount(from majorUnitAmount: Double, currencyCode: String) -> Int {
+    static func minorUnitAmount(from majorUnitAmount: Double, currencyCode: String) -> Int {
         let maximumFractionDigits = CurrencyCodeConverter.maximumFractionDigits(for: currencyCode)
         return Int(majorUnitAmount * pow(Double(10), Double(maximumFractionDigits)))
     }

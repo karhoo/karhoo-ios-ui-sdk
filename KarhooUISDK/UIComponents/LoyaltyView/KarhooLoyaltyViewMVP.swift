@@ -12,7 +12,7 @@ import KarhooSDK
 protocol LoyaltyView: AnyObject {
     func getCurrentMode() -> LoyaltyMode
     func set(mode: LoyaltyMode, withSubtitle text: String)
-    func set(request: LoyaltyViewRequest)
+    func set(dataModel: LoyaltyViewDataModel)
     func set(delegate: LoyaltyViewDelegate)
     func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool)
     func showError(withMessage message: String)
@@ -27,7 +27,7 @@ protocol LoyaltyViewDelegate: AnyObject {
 protocol LoyaltyPresenter {
     var delegate: LoyaltyViewDelegate? { get set }
     func getCurrentMode() -> LoyaltyMode
-    func set(request: LoyaltyViewRequest)
+    func set(dataModel: LoyaltyViewDataModel)
     func updateEarnedPoints()
     func updateBurnedPoints()
     func updateLoyaltyMode(with mode: LoyaltyMode)

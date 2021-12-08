@@ -29,7 +29,7 @@ struct LoyaltyViewModel {
         self.balance = 0
     }
     
-    init(request: LoyaltyViewRequest) {
+    init(request: LoyaltyViewDataModel) {
         self.loyaltyId = request.loyaltyId
         self.currency = request.currency
         self.tripAmount = request.tripAmount

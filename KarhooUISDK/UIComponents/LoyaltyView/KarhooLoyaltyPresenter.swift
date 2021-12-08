@@ -30,17 +30,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     // MARK: - Status
-    func set(request: LoyaltyViewRequest) {
+    func set(dataModel: LoyaltyViewDataModel) {
         // Note: An empty loyaltyId means loyalty as a whole is not enabled
-        guard !request.loyaltyId.isEmpty
+        guard !dataModel.loyaltyId.isEmpty
         else {
             self.hideLoyaltyComponent()
             return
         }
         
-        viewModel = LoyaltyViewModel(request: request)
+        viewModel = LoyaltyViewModel(request: dataModel)
         
-        if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: request.loyaltyId) {
+        if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: dataModel.loyaltyId) {
             self.set(status: status)
         }
         
@@ -83,7 +83,24 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
 
-        // TODO: Finish implementing
+        // Convert $ amount to minor units (cents)
+        let amount = CurrencyCodeConverter.minorUnitAmount(from: viewModel.tripAmount, currencyCode: viewModel.currency)
+        loyaltyService.getLoyaltyEarn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: amount, burnPoints: 0).execute { [weak self] result in
+            guard let value = result.successValue()
+            else {
+                self?.viewModel?.canEarn = false
+                self?.updateViewFromViewModel()
+                return
+            }
+            
+            guard let self = self
+            else {
+                return
+            }
+            
+            self.viewModel?.earnAmount = value.points
+            self.view?.set(mode: self.currentMode, withSubtitle: self.getSubtitleText())
+        }
     }
     
     // MARK: - Burn
