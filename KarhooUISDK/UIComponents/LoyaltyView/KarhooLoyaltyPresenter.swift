@@ -95,9 +95,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        // Convert $ amount to cents
-        let amount = viewModel.tripAmount * 100
-        loyaltyService.getLoyaltyBurn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: Int(amount)).execute { [weak self] result in
+        // Convert $ amount to minor units (cents)
+        let amount = CurrencyCodeConverter.minorUnitAmount(from: viewModel.tripAmount, currencyCode: viewModel.currency)
+        loyaltyService.getLoyaltyBurn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: amount).execute { [weak self] result in
             guard let value = result.successValue()
             else {
                 self?.getBurnAmountError = result.errorValue()
