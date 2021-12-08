@@ -145,7 +145,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         let farePriceInfoView = KarhooFareInfoView()
         farePriceInfoView.translatesAutoresizingMaskIntoConstraints = false
         farePriceInfoView.accessibilityIdentifier = "fare_price_info_view"
-        farePriceInfoView.backgroundColor = KarhooUI.colors.accent
+        farePriceInfoView.backgroundColor = KarhooUI.colors.primary
         farePriceInfoView.layer.masksToBounds = true
         farePriceInfoView.layer.cornerRadius = mediumCornerRadius
         return farePriceInfoView
