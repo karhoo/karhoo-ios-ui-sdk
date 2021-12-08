@@ -15,6 +15,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var viewModel: LoyaltyViewModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
+    private var getBurnAmountError: KarhooError?
     
     private var showcaseBurnModeType: ShowcaseBurnMode = .valid
     
@@ -111,7 +112,24 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        // TODO: Finish implementing
+        // Convert $ amount to minor units (cents)
+        let amount = CurrencyCodeConverter.minorUnitAmount(from: viewModel.tripAmount, currencyCode: viewModel.currency)
+        loyaltyService.getLoyaltyBurn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: amount).execute { [weak self] result in
+            guard let value = result.successValue()
+            else {
+                self?.getBurnAmountError = result.errorValue()
+                self?.updateViewFromViewModel()
+                return
+            }
+            
+            guard let self = self
+            else {
+                return
+            }
+
+            self.viewModel?.burnAmount = value.points
+            self.view?.set(mode: self.currentMode, withSubtitle: self.getSubtitleText())
+        }
     }
     
     // MARK: - Mode
@@ -137,16 +155,33 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currentMode = mode
         }
         
-        if currentMode == .earn || currentMode == .none {
-            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
-            updateViewFromViewModel()
-        } else if currentMode == .burn, showcaseBurnModeType == .valid {
-            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
-            view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
-            showcaseBurnModeType = .errorInsufficientBalance
-        } else {
-            showcaseBurnMode()
+        if currentMode == .burn, getBurnAmountError != nil {
+            getBurnAmountError = nil
+            updateBurnedPoints()
         }
+        
+        view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+        switch currentMode {
+        case .none:
+            updateViewFromViewModel()
+        case .earn:
+            updateViewFromViewModel()
+        case .burn:
+            self.view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
+        }
+        
+        
+        
+//        if currentMode == .earn || currentMode == .none {
+//            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+//            updateViewFromViewModel()
+//        } else if currentMode == .burn, showcaseBurnModeType == .valid {
+//            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+//            view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
+//            showcaseBurnModeType = .errorInsufficientBalance
+//        } else {
+//            showcaseBurnMode()
+//        }
         
         delegate?.didToggleLoyaltyMode(newValue: mode)
     }
