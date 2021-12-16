@@ -155,22 +155,14 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currentMode = mode
         }
         
-        if currentMode == .burn, getBurnAmountError != nil {
-            getBurnAmountError = nil
-            updateBurnedPoints()
+        checkGetBurnAmountError()
+
+        if currentMode == .burn, !hasEnoughBalance() {
+            updateUIWithError(message: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
+            return
         }
         
-        view?.set(mode: currentMode, withSubtitle: getSubtitleText())
-        switch currentMode {
-        case .none:
-            updateViewFromViewModel()
-        case .earn:
-            updateViewFromViewModel()
-        case .burn:
-            self.view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
-        }
-        
-        
+        updateUIWithSuccess()
         
 //        if currentMode == .earn || currentMode == .none {
 //            view?.set(mode: currentMode, withSubtitle: getSubtitleText())
@@ -184,6 +176,39 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
 //        }
         
         delegate?.didToggleLoyaltyMode(newValue: mode)
+    }
+    
+    private func checkGetBurnAmountError() {
+        if currentMode == .burn, getBurnAmountError != nil {
+            getBurnAmountError = nil
+            updateBurnedPoints()
+        }
+    }
+    
+    private func hasEnoughBalance() -> Bool {
+        guard let viewModel = viewModel
+        else {
+            return false
+        }
+        
+        return viewModel.balance >= viewModel.burnAmount
+    }
+    
+    private func updateUIWithSuccess() {
+        view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+        switch currentMode {
+        case .none:
+            updateViewFromViewModel()
+        case .earn:
+            updateViewFromViewModel()
+        case .burn:
+            updateViewFromViewModelForBurnMode()
+        }
+    }
+    
+    private func updateUIWithError(message: String) {
+        view?.showError(withMessage: message)
+        updateViewFromViewModelForBurnMode()
     }
     
     // MARK: - Utils
@@ -207,6 +232,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         let canBurn = viewModel?.canBurn ?? false
         
         view?.updateLoyaltyFeatures(showEarnRelatedUI: canEarn, showBurnRelatedUI: canBurn)
+    }
+    
+    private func updateViewFromViewModelForBurnMode() {
+        let canBurn = viewModel?.canBurn ?? false
+        
+        view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
     }
     
     private func hideLoyaltyComponent() {
