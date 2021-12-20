@@ -235,6 +235,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     // MARK: - Utils
     func hasError() -> Bool {
+        if currentMode == .burn, !hasEnoughBalance() {
+            return true
+        }
+        
         if currentMode == .burn, getBurnAmountError != nil {
             return true
         }
