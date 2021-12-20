@@ -186,6 +186,34 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         delegate?.didToggleLoyaltyMode(newValue: mode)
     }
     
+    // MARK: - Pre-Auth
+    private func canPreAuth() -> Bool {
+        // TODO: Add error related checks
+        guard let viewModel = viewModel,
+              viewModel.canBurn,
+              currentMode == .burn
+        else {
+            return false
+        }
+
+        return true
+    }
+    
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        guard canPreAuth(),
+              let viewModel = viewModel
+        else {
+            let error = ErrorModel(message: "You are not allowed to burn points", code: "K002")
+            completion(Result.failure(error: error))
+            return
+        }
+        
+        let request = LoyaltyPreAuth(identifier: viewModel.loyaltyId, currency: viewModel.currency, points: viewModel.burnAmount, flexpay: false, membership: "")
+        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
+            completion(result)
+        }
+    }
+    
     // MARK: - Utils
     private func getSubtitleText() -> String {
         switch currentMode {

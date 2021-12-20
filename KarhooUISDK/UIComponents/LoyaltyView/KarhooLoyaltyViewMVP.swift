@@ -16,6 +16,7 @@ protocol LoyaltyView: AnyObject {
     func set(delegate: LoyaltyViewDelegate)
     func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool)
     func showError(withMessage message: String)
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
 
 protocol LoyaltyViewDelegate: AnyObject {
@@ -32,6 +33,7 @@ protocol LoyaltyPresenter {
     func updateBurnedPoints()
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func set(status: LoyaltyStatus)
+    func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
 }
 
 enum LoyaltyMode {

@@ -18,6 +18,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let threeDSecureProvider: ThreeDSecureProvider
     private let tripService: TripService
     private let userService: UserService
+    private let loyaltyService: LoyaltyService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
     
@@ -38,6 +39,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
          tripService: TripService = Karhoo.getTripService(),
          userService: UserService = Karhoo.getUserService(),
+         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
          analytics: Analytics = KarhooAnalytics(),
          appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
          baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
@@ -47,6 +49,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
+        self.loyaltyService = loyaltyService
         self.paymentNonceProvider = paymentNonceProvider
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
@@ -73,8 +76,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider.set(baseViewController: view)
         
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        let showLoyalty = loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+        let showLoyalty = isLoyaltyEnabled()
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
+    }
+    
+    private func isLoyaltyEnabled() -> Bool {
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -232,7 +240,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            let organisation = getOrganisationId()
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -249,6 +256,26 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
+
+        if isLoyaltyEnabled(),
+            let view = self.view {
+            
+            view.getLoyaltyNonce { [weak self] result in
+                if let error = result.errorValue() {
+                    self?.showLoyaltyNonceError(error: error)
+                    return
+                }
+                
+                if let loyaltyNonce = result.successValue() {
+                    self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
+                }
+            }
+        } else {
+            sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
+        }
+    }
+    
+    private func sendBookRequest(loyaltyNonce: String?, paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
         var flight: String? = flightNumber
         if let f = flight, (f.isEmpty || f == " ") {
             flight = nil
@@ -259,6 +286,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                                              passengerDetails: [passenger]),
                                       flightNumber: flight,
                                       paymentNonce: paymentNonce,
+                                      loyaltyNonce: loyaltyNonce,
                                       comments: view?.getComments())
         
         var map: [String: Any] = [:]
@@ -424,5 +452,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          } else {
             didAddPassengerDetails()
          }
+    }
+    
+    private func showLoyaltyNonceError(error: KarhooError) {
+        // TODO: get slug, get localized message based on said slug
+        
+        let alert = UIAlertController.create(title: UITexts.Generic.error, message: "You are not allowed to burn points", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] action in
+            self?.view?.setDefaultState()
+        }))
+        view?.present(alert, animated: true, completion: nil)
     }
 }

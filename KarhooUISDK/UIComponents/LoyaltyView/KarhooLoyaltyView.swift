@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KarhooSDK
 
 struct KHLoyaltyViewID {
     public static let backgroundView = "background_view"
@@ -267,5 +268,9 @@ extension KarhooLoyaltyView: LoyaltyView {
         updateBurnPointsSwitchConstraints()
         
         self.isHidden = !showEarnRelatedUI && !showBurnRelatedUI
+    }
+    
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        presenter?.getLoyaltyPreAuthNonce(completion: completion)
     }
 }
