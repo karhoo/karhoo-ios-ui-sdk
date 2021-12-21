@@ -151,6 +151,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     func didAddPassengerDetails() {
+        updateBookButtonWithEnabledState()
+    }
+    
+    func updateBookButtonWithEnabledState() {
         if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
         } else {

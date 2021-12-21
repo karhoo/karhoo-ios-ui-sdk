@@ -77,7 +77,13 @@ extension KarhooCheckoutViewController: RideInfoViewDelegate {
 }
 
 extension KarhooCheckoutViewController: LoyaltyViewDelegate {
-    func didToggleLoyaltyMode(newValue: LoyaltyMode) {}
+    func didToggleLoyaltyMode(newValue: LoyaltyMode) {
+        if loyaltyView.hasError() {
+            bookingButton.setDisabledMode()
+        } else {
+            presenter.updateBookButtonWithEnabledState()
+        }
+    }
     
     func didStartLoading() {
         // Note: start activity indicator here if needed
