@@ -70,7 +70,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             self?.updateViewVisibilityFromViewModel()
             self?.updateEarnedPoints(completion: { success in
                 if !success {
-                    self?.handleEarnPointsCallError()
+                    self?.handlePointsCallError(for: .earn)
                 }
                 
                 self?.view?.set(mode: self?.currentMode ?? .none, withSubtitle: self?.getSubtitleText() ?? "")
@@ -179,7 +179,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                     if success {
                         self?.handleUpdateLoyaltyMode(state: .burnPointsError)
                     } else {
-                        self?.handleEarnPointsCallError()
+                        self?.handlePointsCallError(for: .earn)
                         self?.delegate?.didToggleLoyaltyMode(newValue: self?.currentMode ?? .none)
                     }
                 }
@@ -193,7 +193,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                     if success {
                         self?.handleUpdateLoyaltyMode(state: .noError)
                     } else {
-                        self?.handleBurnPointsCallError()
+                        self?.handlePointsCallError(for: .burn)
                         self?.delegate?.didToggleLoyaltyMode(newValue: self?.currentMode ?? .none)
                     }
                 }
@@ -288,35 +288,22 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         view?.updateLoyaltyFeatures(showEarnRelatedUI: false, showBurnRelatedUI: false)
     }
     
-    private func handleEarnPointsCallError() {
+    private func handlePointsCallError(for mode: LoyaltyMode) {
         // TODO: Once the slug is added to the error returned from the server, uncomment and update the snippet below
         // to show the unsupported currency error only when it is indeed the case
-        // and delete the call to updateUIWithError on the next line
-        if currentMode == .earn, (viewModel?.canEarn ?? false) {
-            updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
+        
+        if mode != currentMode {
+            return
         }
-//                switch error?.type {
-//                case .invalidRequestPayload:
-//                    self?.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
-//
-//                default:
-//                    self?.updateViewForGetEarnAmountError()
-//                }
-    }
-    
-    private func handleBurnPointsCallError() {
-        // TODO: Once the slug is added to the error returned from the server, uncomment and update the snippet below
-        // to show the unsupported currency error only when it is indeed the case
-        // and delete the call to updateUIWithError on the next line
-        if currentMode == .burn {
-            updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
-        }
-//                switch error?.type {
-//                case .invalidRequestPayload:
-//                    self?.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
-//
-//                default:
-//                    self?.updateViewVisibilityFromViewModelForBurnMode()
-//                }
+        
+        updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
+        
+//        switch error?.type {
+        //                case .invalidRequestPayload:
+        //                    self?.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
+        //
+        //                default:
+        //                    self?.updateViewForGetEarnAmountError()
+        //                }
     }
 }
