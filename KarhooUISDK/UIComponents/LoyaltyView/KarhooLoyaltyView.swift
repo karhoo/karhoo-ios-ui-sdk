@@ -268,4 +268,8 @@ extension KarhooLoyaltyView: LoyaltyView {
         
         self.isHidden = !showEarnRelatedUI && !showBurnRelatedUI
     }
+    
+    func hasError() -> Bool {
+        return presenter?.hasError() ?? false
+    }
 }

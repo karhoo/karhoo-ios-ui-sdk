@@ -11,6 +11,12 @@ import UIKit
 
 final class MockLoyaltyView: LoyaltyView {
     
+    private(set)var hasErrorsCalled = false
+    func hasError() -> Bool {
+        hasErrorsCalled = true
+        return false
+    }
+    
     private(set)var didCallGetUpdateLoyaltyFeatures = false
     func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
         didCallGetUpdateLoyaltyFeatures = true
