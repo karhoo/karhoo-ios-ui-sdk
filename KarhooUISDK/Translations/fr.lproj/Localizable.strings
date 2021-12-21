@@ -244,7 +244,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Détails de la course";
 
 /* Booking */
-"Text.Booking.RequestCar" = "RÉSERVER";
+"Text.Booking.RequestCar" = "PAYER ET RÉSERVER";
 
 "Text.Booking.RequestingCar" = "Commande en cours";
 
@@ -602,6 +602,8 @@
 "Text.KarhooError.K3002" = "Aucune flotte disponible dans cette zone.";
 
 "Text.KarhooError.Q0001" = "Départ et destination ne peuvent pas être identiques.";
+
+"Text.Loyalty.BurnNotAllowed" = "Vous n’êtes pas autorisé à brûler des points";
 
 "Text.Loyalty.Info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final du trajet dépasse votre solde de points. Votre compte ne sera pas débité si vos points de fidélité couvrent la totalité du prix.";
 

@@ -244,7 +244,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ritgegevens";
 
 /* Booking */
-"Text.Booking.RequestCar" = "RESERVEER";
+"Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
 
 "Text.Booking.RequestingCar" = "Rit reserveren";
 
@@ -602,6 +602,8 @@
 "Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
+
+"Text.Loyalty.BurnNotAllowed" = "Je mag geen punten verbranden";
 
 "Text.Loyalty.Info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
 

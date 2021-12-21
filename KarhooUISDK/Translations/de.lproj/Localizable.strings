@@ -236,7 +236,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
 
 /* Booking */
-"Text.Booking.RequestCar" = "Buchen Sie";
+"Text.Booking.RequestCar" = "BEZAHLEN UND BUCHEN";
 
 "Text.Booking.RequestingCar" = "Fahrt buchen";
 
@@ -594,6 +594,8 @@
 "Text.KarhooError.K3002" = "In diesem Gebiet sind keine Flotten verfügbar.";
 
 "Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
+
+"Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
 
 "Text.Loyalty.Info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Treuepunkte den gesamten Preis abdecken.";
 

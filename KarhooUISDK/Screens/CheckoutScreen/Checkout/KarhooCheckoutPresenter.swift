@@ -461,7 +461,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func showLoyaltyNonceError(error: KarhooError) {
         // TODO: get slug, get localized message based on said slug
         
-        let alert = UIAlertController.create(title: UITexts.Generic.error, message: "You are not allowed to burn points", preferredStyle: .alert)
+        let alert = UIAlertController.create(title: UITexts.Generic.error, message: UITexts.Loyalty.noAllowedToBurnPoints, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] action in
             self?.view?.setDefaultState()
         }))

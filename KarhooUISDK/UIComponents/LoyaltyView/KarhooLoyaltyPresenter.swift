@@ -273,7 +273,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         guard canPreAuth(),
               let viewModel = viewModel
         else {
-            let error = ErrorModel(message: "You are not allowed to burn points", code: "K002")
+            let error = ErrorModel(message: UITexts.Loyalty.noAllowedToBurnPoints, code: "K002")
             completion(Result.failure(error: error))
             return
         }
