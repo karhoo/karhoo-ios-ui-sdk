@@ -252,10 +252,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     // MARK: - Pre-Auth
     private func canPreAuth() -> Bool {
-        // TODO: Add error related checks
         guard let viewModel = viewModel,
+              currentMode == .burn,
               viewModel.canBurn,
-              currentMode == .burn
+              hasEnoughBalance(),
+              getBurnAmountError == nil
         else {
             return false
         }
@@ -264,6 +265,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        if currentMode != .burn {
+            completion(.success(result: LoyaltyNonce(loyaltyNonce: "")))
+            return
+        }
+        
         guard canPreAuth(),
               let viewModel = viewModel
         else {
