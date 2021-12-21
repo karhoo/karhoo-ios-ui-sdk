@@ -273,7 +273,7 @@ extension KarhooLoyaltyView: LoyaltyView {
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         presenter?.getLoyaltyPreAuthNonce(completion: completion)
     }
-    
+  
     func hasError() -> Bool {
         return presenter?.hasError() ?? false
     }

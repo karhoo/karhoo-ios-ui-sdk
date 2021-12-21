@@ -18,6 +18,7 @@ protocol LoyaltyView: AnyObject {
     func showError(withMessage message: String)
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
     func hasError() -> Bool
+    
 }
 
 protocol LoyaltyViewDelegate: AnyObject {
