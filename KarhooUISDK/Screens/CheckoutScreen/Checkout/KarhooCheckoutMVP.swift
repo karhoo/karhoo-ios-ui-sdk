@@ -40,6 +40,7 @@ protocol CheckoutView: BaseViewController {
     func getPassengerDetails() -> PassengerDetails?
     func getComments() -> String?
     func getFlightNumber() -> String?
+    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
 
 extension CheckoutView {

@@ -236,7 +236,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
 /* Booking */
-"Text.Booking.RequestCar" = "Book";
+"Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
@@ -594,6 +594,8 @@
 "Text.KarhooError.K3002" = "There are no fleets available in this area.";
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
+
+"Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
 
 "Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
 

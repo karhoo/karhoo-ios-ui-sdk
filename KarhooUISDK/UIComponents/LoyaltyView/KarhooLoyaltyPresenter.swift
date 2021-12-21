@@ -164,6 +164,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             updateUIWithError(message: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
             delegate?.didToggleLoyaltyMode(newValue: currentMode)
             return
+
         }
         
         handleUpdateLoyaltyMode()
@@ -212,7 +213,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         else {
             return false
         }
-        
+      
         return viewModel.balance >= viewModel.burnAmount
     }
     
@@ -248,6 +249,40 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
         
         return false
+    }
+    
+    // MARK: - Pre-Auth
+    private func canPreAuth() -> Bool {
+        guard let viewModel = viewModel,
+              currentMode == .burn,
+              viewModel.canBurn,
+              hasEnoughBalance(),
+              getBurnAmountError == nil
+        else {
+            return false
+        }
+
+        return true
+    }
+    
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        if currentMode != .burn {
+            completion(.success(result: LoyaltyNonce(loyaltyNonce: "")))
+            return
+        }
+        
+        guard canPreAuth(),
+              let viewModel = viewModel
+        else {
+            let error = ErrorModel(message: UITexts.Loyalty.noAllowedToBurnPoints, code: "K002")
+            completion(Result.failure(error: error))
+            return
+        }
+        
+        let request = LoyaltyPreAuth(identifier: viewModel.loyaltyId, currency: viewModel.currency, points: viewModel.burnAmount, flexpay: false, membership: "")
+        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
+            completion(result)
+        }
     }
     
     private func getSubtitleText() -> String {

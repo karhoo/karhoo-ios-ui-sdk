@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockLoyaltyView: LoyaltyView {
+    var getLoyaltyNonceCalled = false
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        getLoyaltyNonceCalled = true
+        let nonce = LoyaltyNonce(loyaltyNonce: TestUtil.getRandomString())
+        completion(Result.success(result: nonce))
+    }
     
     private(set)var hasErrorsCalled = false
     func hasError() -> Bool {
