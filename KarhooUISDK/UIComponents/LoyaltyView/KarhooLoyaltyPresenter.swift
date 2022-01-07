@@ -285,12 +285,26 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        let flexPay = currentMode == .earn // This will be adapted when we integrate flexPay
-        let points = currentMode == .burn ? viewModel.burnAmount : 0 // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
+        let flexPay = canFlexPay()
+        let points = getLoyaltyBurnPointsForPreAuth()
         let request = LoyaltyPreAuth(identifier: viewModel.loyaltyId, currency: viewModel.currency, points: points, flexpay: flexPay, membership: "")
         loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
             completion(result)
         }
+    }
+    
+    private func canFlexPay() -> Bool {
+        return currentMode == .earn // This will be adapted when we integrate flexPay
+    }
+    
+    private func getLoyaltyBurnPointsForPreAuth() -> Int {
+        guard let viewModel = viewModel
+        else {
+            return 0
+        }
+        
+        // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
+        return currentMode == .burn ? viewModel.burnAmount : 0
     }
     
     private func getSubtitleText() -> String {
