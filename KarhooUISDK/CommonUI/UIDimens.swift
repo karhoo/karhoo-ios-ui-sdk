@@ -57,7 +57,7 @@ public struct UIDimens {
                 get {
                     if #available(iOS 13.0, *) {
                         let window = UIApplication.shared.windows.first
-                        return window.safeAreaInsets.bottom
+                        return window?.safeAreaInsets.bottom ?? 20
                     } else {
                         return 20
                     }
@@ -67,7 +67,7 @@ public struct UIDimens {
                 get {
                     if #available(iOS 13.0, *) {
                         let window = UIApplication.shared.windows.first
-                        return window.safeAreaInsets.top
+                        return window?.safeAreaInsets.top ?? 20
                     } else {
                         return 20
                     }
