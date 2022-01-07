@@ -346,21 +346,18 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     private func handlePointsCallError(for mode: LoyaltyMode) {
-        // TODO: Once the slug is added to the error returned from the server, uncomment and update the snippet below
-        // to show the unsupported currency error only when it is indeed the case
-        
         if mode != currentMode {
             return
         }
         
-        updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
+        let error = mode == .burn ? getBurnAmountError : getEarnAmountError
         
-//        switch error?.type {
-        //                case .invalidRequestPayload:
-        //                    self?.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
-        //
-        //                default:
-        //                    self?.updateViewForGetEarnAmountError()
-        //                }
+        switch error?.type {
+        case .internalServerError:
+            self.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
+
+        default:
+            self.updateViewForGetEarnAmountError()
+        }
     }
 }
