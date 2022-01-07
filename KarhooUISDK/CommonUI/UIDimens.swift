@@ -53,7 +53,7 @@ public struct UIDimens {
         }
         
         public struct SafeArea {
-            public static let bottomHeight: CGFloat {
+            public static var bottomHeight: CGFloat {
                 get {
                     if #available(iOS 13.0, *) {
                         let window = UIApplication.shared.windows.first
@@ -63,7 +63,7 @@ public struct UIDimens {
                     }
                 }
             }
-            public static let topHeight: CGFloat {
+            public static var topHeight: CGFloat {
                 get {
                     if #available(iOS 13.0, *) {
                         let window = UIApplication.shared.windows.first
