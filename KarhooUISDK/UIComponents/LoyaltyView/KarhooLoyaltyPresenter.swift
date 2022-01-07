@@ -254,19 +254,25 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     // MARK: - Pre-Auth
     private func canPreAuth() -> Bool {
         guard let viewModel = viewModel,
-              currentMode == .burn,
-              viewModel.canBurn,
               hasEnoughBalance(),
               getBurnAmountError == nil
         else {
             return false
         }
+        
+        if currentMode == .burn, viewModel.canBurn {
+            return true
+        }
+        
+        if currentMode == .earn, viewModel.canEarn {
+            return true
+        }
 
-        return true
+        return false
     }
     
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        if currentMode != .burn {
+        if currentMode == .none {
             completion(.success(result: LoyaltyNonce(loyaltyNonce: "")))
             return
         }
@@ -279,10 +285,26 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        let request = LoyaltyPreAuth(identifier: viewModel.loyaltyId, currency: viewModel.currency, points: viewModel.burnAmount, flexpay: false, membership: "")
+        let flexPay = canFlexPay()
+        let points = getLoyaltyBurnPointsForPreAuth()
+        let request = LoyaltyPreAuth(identifier: viewModel.loyaltyId, currency: viewModel.currency, points: points, flexpay: flexPay, membership: "")
         loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
             completion(result)
         }
+    }
+    
+    private func canFlexPay() -> Bool {
+        return currentMode == .earn // This will be adapted when we integrate flexPay
+    }
+    
+    private func getLoyaltyBurnPointsForPreAuth() -> Int {
+        guard let viewModel = viewModel
+        else {
+            return 0
+        }
+        
+        // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
+        return currentMode == .burn ? viewModel.burnAmount : 0
     }
     
     private func getSubtitleText() -> String {
