@@ -326,7 +326,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func setMoreDetailsState() {
-        bookingButton.setNextMode()
+        bookingButton.setBookNowMode()
     }
     
     func setDefaultState() {
