@@ -172,7 +172,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             switch result {
             case .success(let quotes):
                 self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
-                if details.destinationLocationDetails != nil {
+                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
                     self?.quoteListView?.hideQuoteSorter()
                 }
 
