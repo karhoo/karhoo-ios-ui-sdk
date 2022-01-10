@@ -45,7 +45,7 @@ public struct UIConstants {
         public static let marginToEdgeOfScreen: CGFloat = 20
     }
     
-    public struct Size {
+    public struct Dimension {
         public struct Button {
             /// 24
             public static let small: CGFloat = 24
