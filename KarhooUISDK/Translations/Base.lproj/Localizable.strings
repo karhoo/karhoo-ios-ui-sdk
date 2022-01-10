@@ -624,7 +624,7 @@
 
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
 
-"Text.QuoteList.FeesAndTaxesIncluded" = "Taxes and fees included";
+"Text.Quote.FeesAndTaxesIncluded" = "Taxes and fees included";
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
