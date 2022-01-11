@@ -12,7 +12,6 @@ import KarhooSDK
 public protocol CheckoutScreenBuilder {
     func buildCheckoutScreen(
         quote: Quote,
-        quoteExpirationDate: Date?,
         bookingDetails: BookingDetails,
         bookingMetadata: [String: Any]?,
         callback: @escaping ScreenResultCallback<TripInfo>
@@ -22,7 +21,6 @@ public protocol CheckoutScreenBuilder {
 public extension CheckoutScreenBuilder {
     func buildCheckoutScreen(
         quote: Quote,
-        quoteExpirationDate: Date?,
         bookingDetails: BookingDetails,
         bookingMetadata: [String: Any]? = nil,
         callback: @escaping ScreenResultCallback<TripInfo>
@@ -30,7 +28,6 @@ public extension CheckoutScreenBuilder {
         
         return buildCheckoutScreen(
             quote: quote,
-            quoteExpirationDate: quoteExpirationDate,
             bookingDetails: bookingDetails,
             bookingMetadata: bookingMetadata,
             callback: callback
