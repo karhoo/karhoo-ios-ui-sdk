@@ -4,7 +4,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-
+// swiftlint:disable file_length
 import Foundation
 import KarhooSDK
 
@@ -134,7 +134,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         let timer = Timer.scheduledTimer(
             withTimeInterval: validityDate.timeIntervalSinceNow,
             repeats: false
-        ) { [weak self] timer in
+        ) { [weak self] _ in
             self?.view?.quoteDidExpire()
             self?.quoteValidityTimer?.invalidate()
             self?.quoteValidityTimer = nil
@@ -499,7 +499,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         let alert = UIAlertController.create(title: UITexts.Generic.error, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] action in
+        alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] _ in
             self?.view?.setDefaultState()
         }))
         view?.present(alert, animated: true, completion: nil)
