@@ -618,6 +618,8 @@
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "Die Buchung wird in der Ortszeit der Abholung vorgenommen (%1$@)";
 
+"Text.Quote.FeesAndTaxesIncluded" = "Inklusive Steuern und Gebühren";
+
 "Text.Quote.FreeCancellationAndKeyword" = "und";
 
 "Text.Quote.FreeCancellationASAP" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";

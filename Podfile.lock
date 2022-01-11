@@ -94,7 +94,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 5e0df2dcef7b154f9c50e55af78f37c656143edd
+    :commit: b32b85c295d7c14e31c45305d9a214635233e6a0
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:

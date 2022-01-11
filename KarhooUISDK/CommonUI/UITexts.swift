@@ -420,6 +420,7 @@ public enum UITexts {
         static let freeCancellationASAP = "Text.Quote.FreeCancellationASAP".localized
         static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
+        static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
     }
     
     public enum Loyalty {

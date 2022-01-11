@@ -8,6 +8,8 @@
 
 "ELECTRIC" = "Electric";
 
+"EXEC" = "EXECUTIVE";
+
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -117,10 +119,16 @@
 
 "MEET_AND_GREET" = "Meet and Greet";
 
+"MPV" = "MPV";
+
 /* Qxxxx errors */
 "Q0001" = "Pick up and destination cannot be the same.";
 
+"SALOON" = "SALOON";
+
 "STAND_BY" = "Stand by";
+
+"TAXI" = "TAXI";
 
 /* "Version" */
 "Text.About.Version" = "Version";
@@ -622,6 +630,8 @@
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "Booking will be made in local time of pickup (%1$@)";
 
+"Text.Quote.FeesAndTaxesIncluded" = "Taxes and Fees Included";
+
 "Text.Quote.FreeCancellationAndKeyword" = "and";
 
 "Text.Quote.FreeCancellationASAP" = "Free cancellation up to %1$@ after booking";
@@ -877,4 +887,17 @@
 "Text.VehicleType.MPV" = "MPV";
 
 "Text.VehicleType.Standard" = "Standard";
+
+"Vehicle.Tag.Childseat" = "Childseat";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "Electric";
+
+"Vehicle.Tag.Executive" = "Executive";
+
+"Vehicle.Tag.Hybrid" = "Hybrid";
+
+"Vehicle.Tag.Taxi" = "Taxi";
+
+"Vehicle.Tag.Wheelchair" = "Wheelchair";
 
