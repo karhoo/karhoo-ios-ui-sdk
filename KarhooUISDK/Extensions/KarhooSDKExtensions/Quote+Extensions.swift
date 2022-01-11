@@ -10,8 +10,37 @@ import Foundation
 import KarhooSDK
 
 extension Quote {
-    var expirationDate: Date {
-        // TODO: get proper expiration date
-        Date()
+
+    func setExpirationDate(using validity: Int) {
+        QuoteDatesHelper.setExpirationDate(
+            of: self,
+            date: Date().addingTimeInterval(TimeInterval(validity))
+        )
+    }
+
+    var quoteExpirationDate: Date? {
+        QuoteDatesHelper.getExpirationDate(of: self)
+    }
+
+}
+                                           
+enum QuoteDatesHelper {
+    private static var expirationDates: [String: Date] = [:]
+
+    static func setExpirationDate(of quotes: Quotes) {
+        quotes.all.forEach {
+            setExpirationDate(
+                of: $0,
+                date: Date().addingTimeInterval(TimeInterval(quotes.validity))
+            )
+        }
+    }
+
+    static func setExpirationDate(of quote: Quote, date: Date) {
+        expirationDates[quote.id] = date
+    }
+
+    static func getExpirationDate(of quote: Quote) -> Date? {
+        expirationDates[quote.id]
     }
 }

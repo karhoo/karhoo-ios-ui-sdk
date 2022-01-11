@@ -243,6 +243,10 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Détails de la course";
 
+"Text.Booking.QuoteExpired" = "Offre expirée";
+
+"Text.Booking.QuoteExpiredMessage" = "Veuillez choisir une autre offre pour continuer la réservation.";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAYER ET RÉSERVER";
 

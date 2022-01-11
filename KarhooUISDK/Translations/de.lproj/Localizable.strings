@@ -235,6 +235,10 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
 
+"Text.Booking.QuoteExpired" = "Zitat erloschen";
+
+"Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BEZAHLEN UND BUCHEN";
 

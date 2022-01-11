@@ -104,6 +104,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
     }
 
+    private func setExpirationDates(of quotes: Quotes) {
+        quotes.all.forEach { $0.setExpirationDate(using: quotes.validity) }
+    }
+
     private func updateViewQuotes(animated: Bool) {
         guard let fetchedQuotes = self.fetchedQuotes,
               let selectedCategory = self.selectedQuoteCategory else {
@@ -173,6 +177,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             switch result {
             case .success(let quotes):
+                self?.setExpirationDates(of: quotes)
                 self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
                 if details.destinationLocationDetails != nil,
                     let scheduled = details.scheduledDate,

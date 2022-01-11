@@ -78,7 +78,7 @@ final class KarhooBookingPresenter {
         let checkoutView = checkoutScreenBuilder
             .buildCheckoutScreen(
                 quote: quote,
-                quoteExpirationDate: nil,
+                quoteExpirationDate: quote.quoteExpirationDate,
                 bookingDetails: bookingDetails,
                 bookingMetadata: bookingMetadata,
                 callback: { [weak self] result in
@@ -92,6 +92,7 @@ final class KarhooBookingPresenter {
                 }
             )
         
+//        view?.push(checkoutView)
         view?.showAsOverlay(item: checkoutView, animated: false)
     }
 

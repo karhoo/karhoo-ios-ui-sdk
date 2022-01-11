@@ -37,7 +37,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     init(
         quote: Quote,
-        quoteExpirationDate: Date?,
         bookingDetails: BookingDetails,
         bookingMetadata: [String: Any]?,
         threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
@@ -62,7 +61,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.quote = quote
         self.bookingDetails = bookingDetails
         self.bookingMetadata = bookingMetadata
-        self.setQuoteValidityDeadline(quoteExpirationDate)
+        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
     deinit {

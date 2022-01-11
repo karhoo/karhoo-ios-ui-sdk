@@ -23,7 +23,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             
             let presenter = KarhooCheckoutPresenter(
                 quote: quote,
-                quoteExpirationDate: quoteExpirationDate,
                 bookingDetails: bookingDetails,
                 bookingMetadata: bookingMetadata,
                 callback: callback
@@ -445,11 +444,27 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
 
     func quoteDidExpire() {
-        // TODO: show expire pop up with dismiss scene completion
-        let expiredAlertController = UIAlertController(title: "_expired", message: "_expired message", preferredStyle: .alert)
-        expiredAlertController.addAction(.init(title: "OK", style: .default) { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        })
+        let expiredAlertController = UIAlertController(
+            title: UITexts.Booking.quoteExpiredTitle,
+            message: UITexts.Booking.quoteExpiredMessage,
+            preferredStyle: .alert
+        )
+        expiredAlertController.addAction(
+            UIAlertAction(
+                title: UITexts.Generic.ok,
+                style: .default
+            ) { [weak self] _ in
+                self?.presenter.didPressClose()
+            }
+        )
+
+        if let presentedViewController = presentedViewController {
+            presentedViewController.dismiss(animated: true) { [weak self] in
+                self?.showAsOverlay(item: expiredAlertController, animated: true)
+            }
+        } else {
+            showAsOverlay(item: expiredAlertController, animated: true)
+        }
     }
 
     // MARK: - Actions

@@ -243,6 +243,10 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ritgegevens";
 
+"Text.Booking.QuoteExpired" = "Offerte verlopen";
+
+"Text.Booking.QuoteExpiredMessage" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
 
