@@ -603,13 +603,13 @@
 
 "Text.KarhooError.Q0001" = "Départ et destination ne peuvent pas être identiques.";
 
-"Text.Loyalty.BurnNotAllowed" = "Vous n’êtes pas autorisé à brûler des points";
+"Text.Loyalty.BurnNotAllowed" = "Vous ne pouvez pas utiliser de points";
 
 "Text.Loyalty.Info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final du trajet dépasse votre solde de points. Votre compte ne sera pas débité si vos points de fidélité couvrent la totalité du prix.";
 
-"Text.Loyalty.PointsBurnedForTrip" = "Vous utilisez %1$@ aiguillage";
+"Text.Loyalty.PointsBurnedForTrip" = "Vous utilisez %1$@ points";
 
-"Text.Loyalty.PointsEarnedForTrip" = "Ce trajet vous rapporte %1$@ aiguillage";
+"Text.Loyalty.PointsEarnedForTrip" = "Ce trajet vous rapporte %1$@ points";
 
 "Text.Loyalty.Title" = "Points de fidélité";
 
@@ -625,6 +625,8 @@
 
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "Heure locale sera utilisée pour la réservation (%1$@)";
+
+"Text.Quote.FeesAndTaxesIncluded" = "Taxes et Frais Inclus";
 
 "Text.Quote.FreeCancellationAndKeyword" = "et";
 
