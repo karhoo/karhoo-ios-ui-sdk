@@ -464,6 +464,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         case .loyaltyCustomerNotAllowedToBurnPoints:
             message = UITexts.Loyalty.noAllowedToBurnPoints
             
+        case .unknownCurrency:
+            message = UITexts.Errors.unsupportedCurrency
+            
         default:
             message = UITexts.Generic.errorMessage
         }

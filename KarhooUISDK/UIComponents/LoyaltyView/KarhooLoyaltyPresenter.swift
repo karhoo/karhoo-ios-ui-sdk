@@ -71,9 +71,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             self?.updateEarnedPoints(completion: { success in
                 if !success {
                     self?.handlePointsCallError(for: .earn)
+                } else {
+                    self?.view?.set(mode: self?.currentMode ?? .none, withSubtitle: self?.getSubtitleText() ?? "")
                 }
                 
-                self?.view?.set(mode: self?.currentMode ?? .none, withSubtitle: self?.getSubtitleText() ?? "")
                 self?.updateBurnedPoints(completion: nil)
             })
         }
@@ -335,7 +336,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         view?.updateLoyaltyFeatures(showEarnRelatedUI: true, showBurnRelatedUI: canBurn)
     }
     
-    private func updateViewForGetEarnAmountError() {
+    private func updateViewForErrorCase() {
         let canBurn = viewModel?.canBurn ?? false
         
         view?.updateLoyaltyFeatures(showEarnRelatedUI: false, showBurnRelatedUI: canBurn)
@@ -353,11 +354,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         let error = mode == .burn ? getBurnAmountError : getEarnAmountError
         
         switch error?.type {
-        case .internalServerError:
+        case .unknownCurrency:
             self.updateUIWithError(message: UITexts.Errors.unsupportedCurrency)
 
         default:
-            self.updateViewForGetEarnAmountError()
+            self.updateViewForErrorCase()
         }
     }
 }
