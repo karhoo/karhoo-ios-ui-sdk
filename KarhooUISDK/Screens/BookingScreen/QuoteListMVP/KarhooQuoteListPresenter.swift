@@ -194,6 +194,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             case .failure(let error):
                 self?.quoteSearchErrorResult(error)
+            @unknown default: break
             }
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
