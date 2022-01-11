@@ -254,14 +254,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     // MARK: - Pre-Auth
     private func canPreAuth() -> Bool {
-        guard let viewModel = viewModel,
-              hasEnoughBalance(),
-              getBurnAmountError == nil
+        guard let viewModel = viewModel
         else {
             return false
         }
         
-        if currentMode == .burn, viewModel.canBurn {
+        if currentMode == .burn,
+           viewModel.canBurn,
+           hasEnoughBalance(),
+           getBurnAmountError == nil {
             return true
         }
         
