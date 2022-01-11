@@ -152,8 +152,6 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             quoteListView?.showQuoteSorter()
         }
 
-        quoteListView?.hideQuotesTitle()
-
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             quoteListView?.hideLoadingView()
@@ -179,14 +177,8 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             case .success(let quotes):
                 self?.setExpirationDates(of: quotes)
                 self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
-                if details.destinationLocationDetails != nil,
-                    let scheduled = details.scheduledDate,
-                    let originTimeZone = details.originLocationDetails?.timezone() {
+                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
                     self?.quoteListView?.hideQuoteSorter()
-
-                    self?.dateFormatter.set(timeZone: originTimeZone)
-                    let dateString = self?.dateFormatter.display(detailStyleDate: scheduled) ?? ""
-                    self?.quoteListView?.showQuotesTitle(dateString)
                 }
 
                 if quotes.all.isEmpty && quotes.status != .completed {
@@ -199,7 +191,8 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             case .failure(let error):
                 self?.quoteSearchErrorResult(error)
-            @unknown default: break
+            @unknown default:
+                break
             }
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
