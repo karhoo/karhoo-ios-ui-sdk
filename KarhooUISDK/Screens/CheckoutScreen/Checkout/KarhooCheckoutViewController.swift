@@ -15,7 +15,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     final class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(
             quote: Quote,
-            quoteExpirationDate: Date?,
             bookingDetails: BookingDetails,
             bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<TripInfo>
