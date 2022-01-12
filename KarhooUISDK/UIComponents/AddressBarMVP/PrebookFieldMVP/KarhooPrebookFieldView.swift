@@ -88,13 +88,14 @@ public final class KarhooPrebookFieldView: UIView {
         
         prebookButton = UIButton(type: .custom)
         prebookButton.translatesAutoresizingMaskIntoConstraints = false
-        prebookButton.setImage(UIImage.uisdkImage("prebook").withRenderingMode(.alwaysTemplate), for: .normal)
+        prebookButton.setImage(UIImage.uisdkImage("fi_calendar").withRenderingMode(.alwaysTemplate), for: .normal)
         prebookButton.tintColor = KarhooUI.colors.accent
         prebookButton.setTitleColor(.black, for: .normal)
         prebookButton.imageView?.contentMode = .scaleAspectFit
         prebookButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         prebookButton.addTarget(self, action: #selector(prebookPressed), for: .touchUpInside)
-        
+        prebookButton.accessibilityHint = UITexts.Booking.prebookRideHint
+
         stackContainer.addArrangedSubview(dateTimeView)
         stackContainer.addArrangedSubview(prebookButton)
         
