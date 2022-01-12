@@ -443,26 +443,27 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
 
     func quoteDidExpire() {
-        let expiredAlertController = UIAlertController(
-            title: UITexts.Booking.quoteExpiredTitle,
-            message: UITexts.Booking.quoteExpiredMessage,
-            preferredStyle: .alert
-        )
-        expiredAlertController.addAction(
-            UIAlertAction(
-                title: UITexts.Generic.ok,
-                style: .default
-            ) { [weak self] _ in
-                self?.presenter.didPressClose()
-            }
-        )
+        let alertHandler = AlertHandler(viewController: self)
+
+        let showAlert: () -> Void = {
+            _ = alertHandler.show(
+                title: UITexts.Booking.quoteExpiredTitle,
+                message: UITexts.Booking.quoteExpiredMessage,
+                actions: [
+                    AlertAction(title: UITexts.Generic.ok, style: .default) { [weak self] _ in
+                        self?.setDefaultState()
+                        self?.presenter.didPressClose()
+                    }
+                ]
+            )
+        }
 
         if let presentedViewController = presentedViewController {
-            presentedViewController.dismiss(animated: true) { [weak self] in
-                self?.showAsOverlay(item: expiredAlertController, animated: true)
+            presentedViewController.dismiss(animated: true) {
+                showAlert()
             }
         } else {
-            showAsOverlay(item: expiredAlertController, animated: true)
+            showAlert()
         }
     }
 

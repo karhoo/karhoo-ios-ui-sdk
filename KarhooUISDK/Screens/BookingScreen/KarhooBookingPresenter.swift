@@ -90,8 +90,7 @@ final class KarhooBookingPresenter {
                     })
                 }
             )
-        
-//        view?.push(checkoutView)
+
         view?.showAsOverlay(item: checkoutView, animated: false)
     }
 
