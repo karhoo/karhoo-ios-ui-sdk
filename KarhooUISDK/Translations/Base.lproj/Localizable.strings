@@ -8,6 +8,8 @@
 
 "ELECTRIC" = "Electric";
 
+"EXEC" = "EXECUTIVE";
+
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -117,10 +119,16 @@
 
 "MEET_AND_GREET" = "Meet and Greet";
 
+"MPV" = "MPV";
+
 /* Qxxxx errors */
 "Q0001" = "Pick up and destination cannot be the same.";
 
+"SALOON" = "SALOON";
+
 "STAND_BY" = "Stand by";
+
+"TAXI" = "TAXI";
 
 /* "Version" */
 "Text.About.Version" = "Version";
@@ -236,7 +244,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
 /* Booking */
-"Text.Booking.RequestCar" = "Book";
+"Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
@@ -348,8 +356,12 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Something went wrong";
 
+"Text.Error.UnsupportedCurrency" = "The currency is not supported yet";
+
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Issue with initialising payments, please contact support";
+
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your points balance is insufficient";
 
 "Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
@@ -591,6 +603,16 @@
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
 
+"Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
+
+"Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
+
+"Text.Loyalty.PointsBurnedForTrip" = "You are using %1$@ points";
+
+"Text.Loyalty.PointsEarnedForTrip" = "This ride earns you %1$@ points ";
+
+"Text.Loyalty.Title" = "Loyalty points";
+
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Add Payment";
 
@@ -603,6 +625,8 @@
 
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "Booking will be made in local time of pickup (%1$@)";
+
+"Text.Quote.FeesAndTaxesIncluded" = "Taxes and Fees Included";
 
 "Text.Quote.FreeCancellationAndKeyword" = "and";
 
@@ -859,4 +883,17 @@
 "Text.VehicleType.MPV" = "MPV";
 
 "Text.VehicleType.Standard" = "Standard";
+
+"Vehicle.Tag.Childseat" = "Childseat";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "Electric";
+
+"Vehicle.Tag.Executive" = "Executive";
+
+"Vehicle.Tag.Hybrid" = "Hybrid";
+
+"Vehicle.Tag.Taxi" = "Taxi";
+
+"Vehicle.Tag.Wheelchair" = "Wheelchair";
 

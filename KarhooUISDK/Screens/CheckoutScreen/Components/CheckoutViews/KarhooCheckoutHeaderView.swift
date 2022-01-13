@@ -78,7 +78,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHCheckoutHeaderViewID.nameLabel
-        label.textColor = KarhooUI.colors.infoColor
+        label.textColor = KarhooUI.colors.primaryTextColor
         label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         label.numberOfLines = 0
         return label

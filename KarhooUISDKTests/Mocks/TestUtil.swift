@@ -163,7 +163,7 @@ class TestUtil: PrimitiveUtil {
                             organisations: inOrganisation ? [org] : [],
                             nonce: nonce)
         user.paymentProvider = PaymentProvider(provider: Provider(id: paymentProvider),
-                                               loyaltyProgammes: [])
+                                               loyaltyProgamme: LoyaltyProgramme())
         return user
     }
 
@@ -217,15 +217,6 @@ class TestUtil: PrimitiveUtil {
 
     class func getAirportPoiDetails() -> PoiDetails {
         return PoiDetails(iata: getRandomString(), terminal: getRandomString(), type: .airport)
-    }
-
-    class func getRandomAddress(placeId: String = getRandomString(),
-                                location: CLLocation = getRandomLocation(),
-                                timeZoneIdentifier: String? = nil) -> Address {
-        return Address(placeId: placeId,
-                       displayAddress: getRandomString(),
-                       lineOne: getRandomString(),
-                       timeZoneIdentifier: timeZoneIdentifier)
     }
 
     class func getRandomLocationInfo(placeId: String = getRandomString(),

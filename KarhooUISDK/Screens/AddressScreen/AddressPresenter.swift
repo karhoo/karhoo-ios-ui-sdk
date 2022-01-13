@@ -82,17 +82,33 @@ final class KarhooAddressPresenter: AddressPresenter {
         }
     }
 
-    private func locationResponseHandler(_ result: Result<LocationInfo>, saveLocation: Bool) {
+    private func locationResponseHandler(_ result: Result<LocationInfo>, saveLocation: Bool, addressViewModel: AddressCellViewModel? = nil) {
         switch result {
         case .success(let locationInfo):
             if saveLocation {
-                recentAddressProvider.add(recent: locationInfo.toAddress())
+                recentAddressProvider.add(recent: locationInfo)
             }
             locationDetailsSelected(details: locationInfo)
         case .failure(let error):
-            addressView?.focusInputField()
-            addressView?.show(error: error)
+            switch error?.type {
+            case .couldNotGetAddress:
+                let recents = recentAddressProvider.getRecents()
+                if let recent = recents.first(where: { $0.placeId == addressViewModel?.placeId }) {
+                    locationDetailsSelected(details: recent)
+                }
+                else {
+                    handleLocationResponseError(error)
+                }
+                    
+            default:
+                handleLocationResponseError(error)
+            }
         }
+    }
+    
+    private func handleLocationResponseError(_ error: KarhooError?) {
+        addressView?.focusInputField()
+        addressView?.show(error: error)
     }
     
     func selected(address: AddressCellViewModel) {
@@ -102,13 +118,13 @@ final class KarhooAddressPresenter: AddressPresenter {
                                                     sessionToken: KarhooAddressPresenter.sessionToken)
 
         addressService.locationInfo(locationInfoSearch: locationInfoSearch).execute(callback: { [weak self] result in
-            self?.locationResponseHandler(result, saveLocation: true)
+            self?.locationResponseHandler(result, saveLocation: true, addressViewModel: address)
         })
     }
 
     func addressMapViewSelected(location: LocationInfo) {
         addressView?.unfocusInputField()
-        recentAddressProvider.add(recent: location.toAddress())
+        recentAddressProvider.add(recent: location)
         locationDetailsSelected(details: location)
     }
 
@@ -194,7 +210,7 @@ extension KarhooAddressPresenter: AddressSearchProviderDelegate {
         }
     }
 
-    func useDefaultAddresses(recents: [Address]) {
+    func useDefaultAddresses(recents: [LocationInfo]) {
         if recents.isEmpty {
             addressView?.show(emptyDataSetMessage: UITexts.AddressScreen.noRecentAddresses)
         } else {

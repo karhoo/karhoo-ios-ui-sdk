@@ -19,10 +19,9 @@ public protocol BookingScreenBuilder {
 public extension BookingScreenBuilder {
     func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                             passengerDetails: PassengerDetails? = nil,
-                            callback: ScreenResultCallback<BookingScreenResult>? = nil) -> Screen {
-        return buildBookingScreen(journeyInfo: journeyInfo,
-                                  passengerDetails: passengerDetails,
-                                  callback: callback)
+                            callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
+        
+        return buildBookingScreen(journeyInfo: journeyInfo, passengerDetails: passengerDetails, callback: callback)
     }
 }
 

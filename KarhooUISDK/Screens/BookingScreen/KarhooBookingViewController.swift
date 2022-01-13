@@ -373,7 +373,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
     public init(locationService: LocationService = KarhooLocationService()) {
         self.locationService = locationService
     }
-
+    
     public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
                                    passengerDetails: PassengerDetails? = nil,
                                    callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
@@ -389,8 +389,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         }
 
         let bookingPresenter = KarhooBookingPresenter(callback: callback)
-        let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter,
-                                                                journeyInfo: validatedJourneyInfo)
+        let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting

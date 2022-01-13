@@ -240,7 +240,7 @@
 "Text.Booking.PrebookConfirmed.RideDetails" = "Dettagli della corsa";
 
 /* Booking */
-"Text.Booking.RequestCar" = "Libro";
+"Text.Booking.RequestCar" = "PAGA E PRENOTA";
 
 "Text.Booking.RequestingCar" = "Prenotazione corsa";
 
@@ -352,8 +352,12 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Si è verificato un errore";
 
+"Text.Error.UnsupportedCurrency" = "La valuta non è ancora supportata";
+
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Problema con l'inizializzazione dei pagamenti, contatta l'assistenza";
+
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Il tuo saldo punti è insufficiente";
 
 "Text.Errors.InvalidPhoneNumber" = "Numero di telefono invalido";
 
@@ -595,6 +599,16 @@
 
 "Text.KarhooError.Q0001" = "Ritiro e destinazione non possono essere gli stessi.";
 
+"Text.Loyalty.BurnNotAllowed" = "Non ti è permesso bruciare punti";
+
+"Text.Loyalty.Info" = "La tua carta è necessaria per autorizzare questa transazione nel caso in cui il prezzo finale della corsa superi il tuo saldo punti. Il tuo account non verrà addebitato se i tuoi punti fedeltà coprono l'intero prezzo.";
+
+"Text.Loyalty.PointsBurnedForTrip" = "Stai utilizzando %1$@ punti";
+
+"Text.Loyalty.PointsEarnedForTrip" = "Questa corsa ti fa guadagnare %1$@ punti";
+
+"Text.Loyalty.Title" = "Punti fedeltà";
+
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
 "Text.Payment.AddPaymentMethod" = "Aggiungi pagamento";
 
@@ -607,6 +621,8 @@
 
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "La prenotazione verrà effettuata nell'ora locale del ritiro ( %1$@ )";
+
+"Text.Quote.FeesAndTaxesIncluded" = "Tasse e Commissioni Incluse";
 
 "Text.Quote.FreeCancellationAndKeyword" = "e";
 

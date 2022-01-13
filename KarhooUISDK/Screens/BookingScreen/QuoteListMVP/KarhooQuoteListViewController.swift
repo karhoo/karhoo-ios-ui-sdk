@@ -9,7 +9,7 @@
 import KarhooSDK
 
 public struct KHQuoteListViewID {
-    public static let prebookQuotesTitleLabel = "prebook_label"
+    public static let prebookQuotesTitleLabel = "taxes_and_fees_included_label"
     public static let tableViewReuseIdentifier = "QuoteCell"
 }
 
@@ -21,7 +21,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     private var loadingView: LoadingView!
     private var stackView: UIStackView!
     private var quoteSortView: KarhooQuoteSortView!
-    private var prebookQuotesTitleLabel: UILabel!
+    private var legalDisclaimerLabel: UILabel!
     private var emptyDataSetView: QuoteListEmptyDataSetView!
     private var quoteCategoryBarView: KarhooQuoteCategoryBarView!
     
@@ -39,16 +39,16 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    override func loadView() {
+        setUpView()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         forceLightMode()
     }
-    
-    override func loadView() {
-        setUpView()
-    }
-    
+
     private func setUpView() {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,15 +62,8 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         stackView.axis = .vertical
         view.addSubview(stackView)
         
-        prebookQuotesTitleLabel = UILabel()
-        prebookQuotesTitleLabel.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
-        prebookQuotesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        prebookQuotesTitleLabel.textAlignment = .center
-        prebookQuotesTitleLabel.font = KarhooUI.fonts.bodyRegular()
-        prebookQuotesTitleLabel.textColor = KarhooUI.colors.medGrey
-        prebookQuotesTitleLabel.isHidden = true
-        stackView.addArrangedSubview(prebookQuotesTitleLabel)
-        
+        setupLegalDisclaimerLabel()
+
         quoteSortView = KarhooQuoteSortView()
         quoteSortView?.set(actions: self)
         stackView.addArrangedSubview(quoteSortView)
@@ -104,6 +97,18 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         
         presenter = KarhooQuoteListPresenter(quoteListView: self)
     }
+
+    private func setupLegalDisclaimerLabel() {
+        legalDisclaimerLabel = UILabel()
+        legalDisclaimerLabel.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
+        legalDisclaimerLabel.translatesAutoresizingMaskIntoConstraints = false
+        legalDisclaimerLabel.textAlignment = .center
+        legalDisclaimerLabel.isHidden = true
+        legalDisclaimerLabel.font = KarhooUI.fonts.bodyRegular()
+        legalDisclaimerLabel.textColor = KarhooUI.colors.medGrey
+        stackView.addArrangedSubview(legalDisclaimerLabel)
+        legalDisclaimerLabel.text = UITexts.Quotes.feesAndTaxesIncluded
+    }
     
     override func updateViewConstraints() {
         if !didSetupConstraints {
@@ -116,7 +121,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
             _ = stackConstraints.map { $0.priority = .defaultLow }
             _ = stackConstraints.map { $0.isActive = true }
             
-            _ = [prebookQuotesTitleLabel.heightAnchor.constraint(equalToConstant: 55.0)].map { $0.isActive = true }
+            _ = [legalDisclaimerLabel.heightAnchor.constraint(equalToConstant: 55.0)].map { $0.isActive = true }
             
             let quoteCategoryHeight: CGFloat = 65.0
             _ = [quoteCategoryBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -184,7 +189,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
             }
         }
         emptyDataSetView.hide()
-        
+        legalDisclaimerLabel.isHidden = false
         delegate.setSection(key: "", to: quotes)
         if data.getItems(section: 0).count > 0, animated {
             tableView.reloadSections([0],
@@ -198,6 +203,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.tableView.alpha = 0
         }
+        legalDisclaimerLabel.isHidden = true
         emptyDataSetView.show(emptyDataSetMessage: message)
     }
     
@@ -224,6 +230,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     func showLoadingView() {
         loadingView.show()
+        legalDisclaimerLabel.isHidden = true
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }
@@ -238,15 +245,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     func hideQuoteSorter() {
         quoteSortView.isHidden = true
-    }
-    
-    func showQuotesTitle(_ title: String) {
-        prebookQuotesTitleLabel.text = title
-        prebookQuotesTitleLabel.isHidden = false
-    }
-    
-    func hideQuotesTitle() {
-        prebookQuotesTitleLabel.isHidden = true
     }
     
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?) {

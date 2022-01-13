@@ -11,6 +11,12 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockCheckoutView: MockBaseViewController, CheckoutView {
+    var getLoyaltyNonceCalled = false
+    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        getLoyaltyNonceCalled = true
+        let nonce = LoyaltyNonce(loyaltyNonce: TestUtil.getRandomString())
+        completion(Result.success(result: nonce))
+    }
     
     var showCheckoutView = false
     var showCheckoutViewValue = false
@@ -82,8 +88,12 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
     }
 
     var theQuoteSet: Quote?
-    func set(quote: Quote) {
+    var loyaltyIdSet: String?
+    var showLoyaltySet:  Bool?
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         theQuoteSet = quote
+        loyaltyIdSet = loyaltyId
+        showLoyaltySet = showLoyalty
     }
 
     var isCheckoutViewVisible = false

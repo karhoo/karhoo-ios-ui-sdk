@@ -41,7 +41,7 @@ final class MockAddressSearchProvider: AddressSearchProvider {
         fetchDefaultValuesCalled = true
     }
 
-    func triggerDefaultResponse(recents: [Address]) {
+    func triggerDefaultResponse(recents: [LocationInfo]) {
         delegate?.useDefaultAddresses(recents: recents)
     }
 

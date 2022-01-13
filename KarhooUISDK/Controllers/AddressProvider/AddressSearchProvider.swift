@@ -12,7 +12,7 @@ import CoreLocation
 
 protocol AddressSearchProviderDelegate: class {
     func searchCompleted(places: [Place])
-    func useDefaultAddresses(recents: [Address])
+    func useDefaultAddresses(recents: [LocationInfo])
     func searchInProgress()
     func searchFailed(error: KarhooError?)
 }
