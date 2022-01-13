@@ -43,10 +43,10 @@ PODS:
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
   - FloatingPanel (2.0.1)
-  - KarhooSDK (1.5.3):
+  - KarhooSDK (1.5.4):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.7.0):
+  - KarhooUISDK (1.7.1):
     - Adyen (= 3.7.0)
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
@@ -68,7 +68,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
+  - KarhooSDK (= 1.5.4)
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
   - SwiftLint
@@ -80,22 +80,15 @@ SPEC REPOS:
     - Braintree
     - BraintreeDropIn
     - FloatingPanel
+    - KarhooSDK
     - KeychainSwift
     - PhoneNumberKit
     - ReachabilitySwift
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :branch: develop
-    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
-
-CHECKOUT OPTIONS:
-  KarhooSDK:
-    :commit: b32b85c295d7c14e31c45305d9a214635233e6a0
-    :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
   Adyen: 31c52afffea7987e1385da7b66508cd55925b4af
@@ -103,13 +96,13 @@ SPEC CHECKSUMS:
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
-  KarhooSDK: d02c689599befaeeb3ad5fcc9e8fc6cafa1d7370
-  KarhooUISDK: 1f6cacb427de47caddbf69f104c5902d14c6de01
+  KarhooSDK: d3f75c19db62ed9a5285bbac7a03e7d59ecd264f
+  KarhooUISDK: 6a442549fef85fb71e86506f9f3e85e06e133b3c
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: 61c6f0dcb1193bc7ae48a5c6a6a211812a1ba595
+PODFILE CHECKSUM: 59671d48219dd943f4c88380dd21ee9c2827ea76
 
 COCOAPODS: 1.11.2
