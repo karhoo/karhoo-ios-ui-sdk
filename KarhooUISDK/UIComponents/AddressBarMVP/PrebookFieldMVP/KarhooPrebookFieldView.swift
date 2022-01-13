@@ -119,30 +119,22 @@ public final class KarhooPrebookFieldView: UIView {
     }
     
     private func setUpConstraints() {
-        [
-            stackContainer.topAnchor.constraint(equalTo: topAnchor),
-            stackContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ].forEach { $0.isActive = true }
+        stackContainer.anchorToSuperview()
+
+        closeButton.anchor(
+            leading: dateTimeStackContainer.trailingAnchor,
+            trailing: dateTimeView.trailingAnchor,
+            width: Constants.closeButtonSize,
+            height: Constants.closeButtonSize
+        )
+
+        prebookButton.anchor(width: Constants.preBookButtonSize, height: Constants.preBookButtonSize)
+        dateTimeStackContainer.anchor(leading: dateTimeView.leadingAnchor, paddingLeft: 5.0)
 
         [
-            closeButton.widthAnchor.constraint(equalToConstant: Constants.closeButtonSize),
-            closeButton.heightAnchor.constraint(equalToConstant: Constants.closeButtonSize),
-            closeButton.leadingAnchor.constraint(equalTo: dateTimeStackContainer.trailingAnchor),
             closeButton.topAnchor.constraint(lessThanOrEqualTo: dateTimeView.topAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: dateTimeView.trailingAnchor),
-            closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor)
-        ].forEach { $0.isActive = true }
-
-        [
-            prebookButton.widthAnchor.constraint(equalToConstant: Constants.preBookButtonSize),
-            prebookButton.heightAnchor.constraint(equalToConstant: Constants.preBookButtonSize)
-        ].forEach { $0.isActive = true }
-        
-        [
-            dateTimeStackContainer.leadingAnchor.constraint(equalTo: dateTimeView.leadingAnchor, constant: 5.0),
-            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)
+            closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor),
+            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor).isActive = true
         ].forEach { $0.isActive = true }
     }
 
