@@ -134,7 +134,7 @@ public final class KarhooPrebookFieldView: UIView {
         [
             closeButton.topAnchor.constraint(lessThanOrEqualTo: dateTimeView.topAnchor),
             closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor),
-            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor).isActive = true
+            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)
         ].forEach { $0.isActive = true }
     }
 
