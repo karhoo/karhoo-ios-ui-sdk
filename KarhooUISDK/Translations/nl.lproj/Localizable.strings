@@ -173,6 +173,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Uw uiteindelijke tarief kan worden beïnvloed door fooien, tolgelden, belastingen en andere heffingen.";
 
+"Text.Booking.BookNow" = "BOEK NU";
+
 "Text.Booking.CountryCodeSelection.Search" = "Land/regio zoeken";
 
 /* Country Code Selection */
@@ -276,6 +278,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Kan de ritten niet laden.";
 
 "Text.Bookings.eta" = "Geschatte aankomsttijd";
+
+"Text.Bookings.NewRide" = "NIEUWE RIT";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Geen ritten";

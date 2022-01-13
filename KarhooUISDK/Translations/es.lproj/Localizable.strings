@@ -165,6 +165,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "La tarifa final puede verse afectada por propinas, peajes, impuestos u otros cargos.";
 
+"Text.Booking.BookNow" = "RESERVAR AHORA";
+
 "Text.Booking.CountryCodeSelection.Search" = "Buscar país/región";
 
 /* Country Code Selection */
@@ -268,6 +270,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Imposible cargar viajes.";
 
 "Text.Bookings.eta" = "Proximidad";
+
+"Text.Bookings.NewRide" = "NUEVO PASEO";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Sin reservas";

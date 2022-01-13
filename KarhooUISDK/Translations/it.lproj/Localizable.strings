@@ -169,6 +169,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "La tua tariffa finale può essere influenzata da mancia, pedaggi, tasse e costi extra.";
 
+"Text.Booking.BookNow" = "PRENOTA ORA";
+
 "Text.Booking.CountryCodeSelection.Search" = "Cerca paese/regione";
 
 /* Country Code Selection */
@@ -272,6 +274,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Impossibile caricare i viaggi.";
 
 "Text.Bookings.eta" = "Ora di arrivo stimata";
+
+"Text.Bookings.NewRide" = "NUOVA CORSA";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Nessuna corsa";
