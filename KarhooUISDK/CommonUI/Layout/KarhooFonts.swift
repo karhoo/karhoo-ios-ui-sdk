@@ -12,13 +12,16 @@ public struct FontFamily {
     let boldFont: String
     let regularFont: String
     let lightFont: String
+    let italicFont: String
     
     public init(boldFont: String = "",
                 regularFont: String = "",
-                lightFont: String = "") {
+                lightFont: String = "",
+                italicFont: String = "") {
         self.boldFont = boldFont
         self.regularFont = regularFont
         self.lightFont = lightFont
+        self.italicFont = italicFont
     }
 }
 
@@ -35,11 +38,13 @@ struct KarhooFonts {
     private var boldFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .bold)
     private var regularFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .regular)
     private var lightFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .light)
+    private var italicFont: UIFont = UIFont(descriptor: UIFont.systemFont(ofSize: 0, weight: .regular).fontDescriptor.withSymbolicTraits(.traitItalic)!, size: 0)
 
     init(family: FontFamily) {
         self.fetchCustomFamily(name: family.boldFont, font: &boldFont)
         self.fetchCustomFamily(name: family.regularFont, font: &regularFont)
         self.fetchCustomFamily(name: family.lightFont, font: &lightFont)
+        self.fetchCustomFamily(name: family.italicFont, font: &italicFont)
     }
 
     private func fetchCustomFamily(name: String, font: inout UIFont) {
@@ -63,12 +68,20 @@ struct KarhooFonts {
         return size != nil ? regularFont.withSize(size!) : regularFont
     }
     
+    func getItalicFont(withSize size: CGFloat? = nil) -> UIFont {
+        return size != nil ? italicFont.withSize(size!) : italicFont
+    }
+    
     func headerBold() -> UIFont {
         return boldFont.withSize(headerSize)
     }
     
     func headerRegular() -> UIFont {
         return regularFont.withSize(headerSize)
+    }
+    
+    func headerItalic() -> UIFont {
+        return italicFont.withSize(headerSize)
     }
     
     func bodyRegular() -> UIFont {
@@ -78,6 +91,10 @@ struct KarhooFonts {
     func bodyBold() -> UIFont {
         return boldFont.withSize(bodySize)
     }
+    
+    func bodyItalic() -> UIFont {
+        return italicFont.withSize(bodySize)
+    }
 
     func captionRegular() -> UIFont {
         return regularFont.withSize(captionSize)
@@ -85,6 +102,10 @@ struct KarhooFonts {
 
     func captionBold() -> UIFont {
         return boldFont.withSize(captionSize)
+    }
+    
+    func captionItalic() -> UIFont {
+        return italicFont.withSize(captionSize)
     }
 
     func footnoteRegular() -> UIFont {
@@ -94,6 +115,10 @@ struct KarhooFonts {
     func footnoteBold() -> UIFont {
         return boldFont.withSize(footnoteSize)
     }
+    
+    func footnoteItalic() -> UIFont {
+        return italicFont.withSize(footnoteSize)
+    }
 
     func titleRegular() -> UIFont {
         return regularFont.withSize(titleSize)
@@ -102,6 +127,10 @@ struct KarhooFonts {
     func titleBold() -> UIFont {
         return boldFont.withSize(titleSize)
     }
+    
+    func titleItalic() -> UIFont {
+        return italicFont.withSize(titleSize)
+    }
 
     func subtitleRegular() -> UIFont {
         return regularFont.withSize(subtitleSize)
@@ -109,5 +138,9 @@ struct KarhooFonts {
 
     func subtitleBold() -> UIFont {
         return boldFont.withSize(subtitleSize)
+    }
+    
+    func subtitleItalic() -> UIFont {
+        return italicFont.withSize(subtitleSize)
     }
 }

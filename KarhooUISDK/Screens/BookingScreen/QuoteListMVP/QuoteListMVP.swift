@@ -32,10 +32,6 @@ public protocol QuoteListView: UIViewController {
 
     func hideQuoteSorter()
 
-    func showQuotesTitle(_ title: String)
-
-    func hideQuotesTitle()
-
     func quotesAvailabilityDidUpdate(availability: Bool)
     
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)

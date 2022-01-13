@@ -18,6 +18,7 @@ protocol CheckoutPresenter {
     func didPressClose()
     func screenHasFadedOut()
     func isKarhooUser() -> Bool
+    func updateBookButtonWithEnabledState()
 }
 
 protocol CheckoutView: BaseViewController {
@@ -28,7 +29,7 @@ protocol CheckoutView: BaseViewController {
     func setMoreDetailsState()
     func setDefaultState()
     func resetPaymentNonce()
-    func set(quote: Quote)
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?)
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
@@ -39,6 +40,7 @@ protocol CheckoutView: BaseViewController {
     func getPassengerDetails() -> PassengerDetails?
     func getComments() -> String?
     func getFlightNumber() -> String?
+    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
 
 extension CheckoutView {
@@ -48,5 +50,9 @@ extension CheckoutView {
     
     func getFlightNumber() -> String? {
         return nil
+    }
+    
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {
+        set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 }

@@ -59,50 +59,50 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var loyaltyCanEarnTrueCanBurnTrueBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Loyalty +Earn +Burn [Adyen]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var loyaltyCanEarnTrueCanBurnFalseBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Loyalty +Earn -Burn [Adyen]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        authenticatedBraintreeBookingButton.addTarget(self, action: #selector(authenticatedBraintreeBookingTapped),
-                                       for: .touchUpInside)
-        guestBraintreeBookingButton.addTarget(self, action: #selector(guestBraintreeBookingTapped),
-                                     for: .touchUpInside)
-        tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped),
-                                             for: .touchUpInside)
-        authenticatedAdyenBookingButton.addTarget(self, action: #selector(authenticatedAdyenBookingTapped),
-                                       for: .touchUpInside)
-        guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped),
-                                     for: .touchUpInside)
-        tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped),
-                                             for: .touchUpInside)
+        authenticatedBraintreeBookingButton.addTarget(self, action: #selector(authenticatedBraintreeBookingTapped), for: .touchUpInside)
+        guestBraintreeBookingButton.addTarget(self, action: #selector(guestBraintreeBookingTapped), for: .touchUpInside)
+        tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped), for: .touchUpInside)
+        authenticatedAdyenBookingButton.addTarget(self, action: #selector(authenticatedAdyenBookingTapped), for: .touchUpInside)
+        guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped), for: .touchUpInside)
+        tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
+        loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
+        loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped), for: .touchUpInside)
     }
 
     override func loadView() {
         super.loadView()
-
-        [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
-         authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton].forEach { button in
-            self.view.addSubview(button)
-        }
         
-        authenticatedBraintreeBookingButton.centerX(inView: view)
-        authenticatedBraintreeBookingButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 80)
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        scrollView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
-        guestBraintreeBookingButton.centerX(inView: view)
-        guestBraintreeBookingButton.anchor(top: authenticatedBraintreeBookingButton.bottomAnchor, paddingTop: 30)
-
-        tokenExchangeBraintreeBookingButton.centerX(inView: view)
-        tokenExchangeBraintreeBookingButton.anchor(top: guestBraintreeBookingButton.bottomAnchor, paddingTop: 30)
-
-        authenticatedAdyenBookingButton.centerX(inView: view)
-        authenticatedAdyenBookingButton.anchor(top: tokenExchangeBraintreeBookingButton.bottomAnchor, paddingTop: 80)
-
-        guestAdyenBookingButton.centerX(inView: view)
-        guestAdyenBookingButton.anchor(top: authenticatedAdyenBookingButton.bottomAnchor, paddingTop: 30)
-
-        tokenExchangeAdyenBookingButton.centerX(inView: view)
-        tokenExchangeAdyenBookingButton.anchor(top: guestAdyenBookingButton.bottomAnchor, paddingTop: 30)
-
+        let stackView = UIStackView(arrangedSubviews: [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
+                                                       authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton,
+                                                       loyaltyCanEarnTrueCanBurnTrueBookingButton, loyaltyCanEarnTrueCanBurnFalseBookingButton])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 30
+        scrollView.addSubview(stackView)
+        stackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 80, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
     }
 
     @objc func guestAdyenBookingTapped(sender: UIButton) {
@@ -147,6 +147,20 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.adyenTokenEnvironment
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
+    }
+    
+    @objc func loyaltyCanEarnTrueCanBurnTrueBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
+    }
+    
+    @objc func loyaltyCanEarnTrueCanBurnFalseBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
 
     private func usernamePasswordLoginAndShowKarhoo(username: String, password: String) {
