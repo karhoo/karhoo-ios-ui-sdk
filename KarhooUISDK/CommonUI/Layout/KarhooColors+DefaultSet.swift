@@ -8,27 +8,24 @@
 
 import UIKit
 
+/// For any colors functional interpretation and description please check `KarhooColors.swift` file.
 struct DefaultKarhooColors: KarhooColors { }
 
 public extension KarhooColors {
     // MARK: - UI Colors
 
-    /// The primary color is used for display components without clickable interaction
     var primary: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#18183F"), darkModeColor: UIColor(hex: "#6F769A"))
     }
 
-    /// The secondary color is used for 1st-level actions that allows changing step and validating
     var secondary: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#FF0082"), darkModeColor: UIColor(hex: "#FF509C"))
     }
 
-    /// The accent color is used for secondary category actions (links, filters)
     var accent: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#2485C2"), darkModeColor: UIColor(hex: "#5BC0EB"))
     }
 
-    /// The color designed to be used for views borders.
     var border: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#EBEBEB"), darkModeColor: UIColor(hex: "#2A2A2A"))
     }
@@ -49,12 +46,10 @@ public extension KarhooColors {
         UIColor.get(lightModeColor: UIColor(hex: "#F6A705"), darkModeColor: UIColor(hex: "#FAF06E"))
     }
 
-    /// White color fit for both loght and dark mode.
     var white: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#FFFFFF"), darkModeColor: UIColor(hex: "#E0E0E0"))
     }
 
-    /// Black color fit for both loght and dark mode.
     var black: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#121212"), darkModeColor: UIColor(hex: "#121212"))
     }
