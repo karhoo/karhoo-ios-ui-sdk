@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import UIKit
 
 public struct KHQuoteListViewID {
     public static let prebookQuotesTitleLabel = "taxes_and_fees_included_label"

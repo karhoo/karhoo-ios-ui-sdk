@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import UIKit
 
 final class BookingStatusViewModel {
 

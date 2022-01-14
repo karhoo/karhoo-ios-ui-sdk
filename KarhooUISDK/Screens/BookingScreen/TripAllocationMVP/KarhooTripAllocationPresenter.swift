@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import CoreFoundation
 
 final class KarhooTripAllocationPresenter: TripAllocationPresenter {
 

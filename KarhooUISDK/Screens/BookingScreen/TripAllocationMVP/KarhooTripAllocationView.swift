@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import UIKit
 
 public struct KHTripAllocationViewID {
     public static let cancelButton = "cancel_button_view"

@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 public protocol TripsSorter {
     func sort(trips: [TripInfo]) -> [TripInfo]

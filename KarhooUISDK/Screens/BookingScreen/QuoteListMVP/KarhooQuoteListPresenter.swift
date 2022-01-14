@@ -7,6 +7,8 @@
 //
 
 import KarhooSDK
+import Foundation
+import Dispatch
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 

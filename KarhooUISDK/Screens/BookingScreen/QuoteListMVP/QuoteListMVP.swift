@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import UIKit
 
 public protocol QuoteListView: UIViewController {
 

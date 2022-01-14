@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 

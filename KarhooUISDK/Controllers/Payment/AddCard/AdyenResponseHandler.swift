@@ -8,6 +8,7 @@
 //  Copyright © 2020 Flit Technologies Ltd. All rights reserved.
 //
 
+import Foundation
 import Adyen
 import KarhooSDK
 
