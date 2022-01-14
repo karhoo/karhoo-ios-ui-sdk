@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Note: When updating the UI, aproximate the commented values to the ones before each comment. E.g.: replace any spacing of value 17 with .standard (which is 16)
 public struct UIConstants {
