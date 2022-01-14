@@ -9,6 +9,10 @@
 import Foundation
 import Adyen
 import KarhooSDK
+#if canImport(AdyenDropIn)
+import AdyenDropIn
+#endif
+
 
 final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 

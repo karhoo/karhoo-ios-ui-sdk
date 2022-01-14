@@ -9,7 +9,13 @@
 import Foundation
 import KarhooSDK
 import BraintreeDropIn
+#if canImport(Braintree)
 import Braintree
+#endif
+#if canImport(BraintreePaymentFlow)
+import BraintreePaymentFlow
+#endif
+
 
 final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
 

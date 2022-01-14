@@ -8,7 +8,14 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(Braintree)
 import Braintree
+#endif
+#if canImport(BraintreeThreeDSecure)
+import BraintreeThreeDSecure
+#endif
+
+
 
 final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTViewControllerPresentingDelegate {
     
