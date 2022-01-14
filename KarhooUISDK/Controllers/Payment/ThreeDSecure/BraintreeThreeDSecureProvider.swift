@@ -119,7 +119,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
 
 extension BraintreeThreeDSecureProvider: BTThreeDSecureRequestDelegate {
     func onLookupComplete(_ request: BTThreeDSecureRequest, lookupResult result: BTThreeDSecureResult, next: @escaping () -> Void) {
-        
+        next()
     }
     
     
