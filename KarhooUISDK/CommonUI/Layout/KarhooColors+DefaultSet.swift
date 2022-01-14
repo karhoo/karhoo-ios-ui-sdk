@@ -1,5 +1,5 @@
 //
-//  KarhooColors+defaultSet.swift
+//  KarhooColors+DefaultSet.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 13/01/2022.

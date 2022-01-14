@@ -24,7 +24,7 @@ class UIColorHexSpec: XCTestCase {
         
         _ = UIColor(hex: randomHex)
 
-        // Thest succeded since assertion has been checked. In case of failure hex initialization would have stoped the scope execution.
+        // The test succeded since assertion has been checked. In case of failure hex initialization would have stoped the scope execution.
         XCTAssertTrue(true)
     }
 }

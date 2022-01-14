@@ -1,5 +1,5 @@
 //
-//  UIColor+extension.swift
+//  UIColor+Extensions.swift
 //  KarhooUISDK
 //
 //
@@ -62,7 +62,7 @@ extension UIColor {
     static func get(lightModeColor: UIColor, darkModeColor: UIColor) -> UIColor {
         if #available(iOS 13, *) {
             return UIColor { (traitCollection) -> UIColor in
-                return traitCollection.userInterfaceStyle == .light ? lightModeColor : darkModeColor
+                return traitCollection.userInterfaceStyle == .dark ? darkModeColor : lightModeColor
             }
         } else {
             return lightModeColor

@@ -31,10 +31,10 @@ public protocol KarhooColors {
     
     var warning: UIColor { get }
 
-    /// White color fit for both loght and dark mode.
+    /// White color fit for both light and dark mode.
     var white: UIColor { get }
 
-    /// Black color fit for both loght and dark mode.
+    /// Black color fit for both light and dark mode.
     var black: UIColor { get }
 
     // MARK: - Background Colors
@@ -57,6 +57,7 @@ public protocol KarhooColors {
 
     var text: UIColor { get }
 
+    /// Used for the input, text area and dropdown by default when they are not selected, not filled or are inactive.
     var textLabel: UIColor { get }
 
     var textInactive: UIColor { get }
