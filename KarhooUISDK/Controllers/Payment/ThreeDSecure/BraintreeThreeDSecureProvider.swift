@@ -15,8 +15,6 @@ import Braintree
 import BraintreeThreeDSecure
 #endif
 
-
-
 final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTViewControllerPresentingDelegate {
     
     private let paymentService: PaymentService
@@ -120,6 +118,10 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
 }
 
 extension BraintreeThreeDSecureProvider: BTThreeDSecureRequestDelegate {
+    func onLookupComplete(_ request: BTThreeDSecureRequest, lookupResult result: BTThreeDSecureResult, next: @escaping () -> Void) {
+        
+    }
+    
     
     func onLookupComplete(_ request: BTThreeDSecureRequest,
                           result: BTThreeDSecureLookup,
@@ -128,10 +130,11 @@ extension BraintreeThreeDSecureProvider: BTThreeDSecureRequestDelegate {
     }
 
     private func threeDSecureResponseHandler(result: BTThreeDSecureResult) {
-        if result.tokenizedCard.nonce != nil {
-            resultCallback?(.completed(value: .success(nonce: result.tokenizedCard.nonce)))
+        if result.tokenizedCard?.nonce != nil {
+            resultCallback?(.completed(value: .success(nonce: result.tokenizedCard?.nonce ?? "")))
         } else {
             resultCallback?(.completed(value: .threeDSecureAuthenticationFailed))
         }
     }
 }
+
