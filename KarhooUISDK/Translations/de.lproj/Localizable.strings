@@ -165,6 +165,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden.";
 
+"Text.Booking.BookNow" = "JETZT BUCHEN";
+
 "Text.Booking.CountryCodeSelection.Search" = "Land/Region suchen";
 
 /* Country Code Selection */
@@ -235,12 +237,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
 
+"Text.Booking.QuoteExpired" = "Zitat erloschen";
+
+"Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BEZAHLEN UND BUCHEN";
 
 "Text.Booking.RequestingCar" = "Fahrt buchen";
 
 "Text.Booking.RequestReceived" = "Erhaltene Buchung";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Planen Sie die Fahrt";
 
 "Text.Booking.TrainTracking" = "Zugverfolgung";
 
@@ -268,6 +277,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Es konnten keine Reisen geladen werden.";
 
 "Text.Bookings.eta" = "Geschätzte Ankunft";
+
+"Text.Bookings.NewRide" = "NEUE FAHRT";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Keine Fahrten";
@@ -594,6 +605,8 @@
 "Text.KarhooError.K3002" = "In diesem Gebiet sind keine Flotten verfügbar.";
 
 "Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
+
+"Text.Loyalty.BalanceTitle" = "BILANTZ: %1$@ PUNKTE";
 
 "Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
 
