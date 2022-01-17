@@ -52,20 +52,19 @@ enum LoyaltyMode {
 enum LoyaltyBalanceMode {
     case success, error
     
-    // TODO: update colors based on new design palette colors for succeess and error
     var backgroundColor: UIColor {
         switch self {
         case .success:
-            return UIColor.green//UIColor(red: 173, green: 239, blue: 209, alpha: 1) //#ADEFD1
+            return KarhooUI.colors.success
         case .error:
-            return UIColor.red
+            return KarhooUI.colors.error
         }
     }
     
     var textColor: UIColor {
         switch self {
         case .success:
-            return KarhooUI.colors.primaryTextColor
+            return KarhooUI.colors.text
         case .error:
             return KarhooUI.colors.white
         }

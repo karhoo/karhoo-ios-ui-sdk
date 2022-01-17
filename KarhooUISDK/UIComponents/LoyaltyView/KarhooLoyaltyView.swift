@@ -26,7 +26,6 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIView {
     
-    private let drawAnimationTime: Double = 0.45
     private let standardSpacing: CGFloat = 12.0
     private let smallSpacing: CGFloat = 4.0
     private let mediumCornerRadius: CGFloat = 8.0
@@ -83,7 +82,7 @@ final class KarhooLoyaltyView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHLoyaltyViewID.titleLabel
         label.font = KarhooUI.fonts.bodyBold()
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.text = UITexts.Loyalty.title
         return label
     }()
@@ -93,7 +92,7 @@ final class KarhooLoyaltyView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHLoyaltyViewID.subtitleLabel
         label.font = KarhooUI.fonts.captionRegular()
-        label.textColor = KarhooUI.colors.medGrey
+        label.textColor = KarhooUI.colors.textLabel
         label.text = UITexts.Loyalty.pointsEarnedForTrip
         label.numberOfLines = 0
         return label
@@ -238,7 +237,7 @@ extension KarhooLoyaltyView: LoyaltyView {
     
     func set(mode: LoyaltyMode, withSubtitle text: String) {
         subtitleLabel.text = text
-        subtitleLabel.textColor = KarhooUI.colors.medGrey
+        subtitleLabel.textColor = KarhooUI.colors.textLabel
         loyaltyStackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
         
         switch mode {
@@ -259,12 +258,12 @@ extension KarhooLoyaltyView: LoyaltyView {
         
         if show {
             infoView.isHidden = false
-            UIView.animate(withDuration: drawAnimationTime) { [weak self] in
+            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
                 self?.infoView.alpha = 1.0
             }
         } else {
             infoView.isHidden = false
-            UIView.animate(withDuration: drawAnimationTime) { [weak self] in
+            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
                 self?.infoView.alpha = 0.0
                 self?.infoView.isHidden = true
             }
@@ -273,8 +272,8 @@ extension KarhooLoyaltyView: LoyaltyView {
     
     func showError(withMessage message: String) {
         subtitleLabel.text = message
-        subtitleLabel.textColor = UIColor.red
-        loyaltyStackView.layer.borderColor = UIColor.red.cgColor
+        subtitleLabel.textColor = KarhooUI.colors.error
+        loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
         showInfoView(false)
         updateBalanceView(mode: .error)
     }
