@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooPrebookConfirmationViewController" customModule="KarhooUISDK" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KarhooPrebookConfirmationViewController" customModule="KarhooUISDK">
             <connections>
                 <outlet property="blurView" destination="alF-J0-vAo" id="C2t-Jl-UkY"/>
                 <outlet property="dateLabel" destination="jzd-bg-01K" id="jcb-ws-oSg"/>
@@ -65,7 +65,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojm-oL-O5G">
                                                         <rect key="frame" x="12" y="107" width="276" height="0.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4a-US-3CQ" customClass="RoundedLabel" customModule="KarhooUISDK" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4a-US-3CQ" customClass="RoundedLabel" customModule="KarhooUISDK">
                                                                 <rect key="frame" x="122.5" y="-7" width="31" height="14.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,7 +101,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t72-Qf-3XT">
                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="128"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-Ht-GDF" customClass="PinView" customModule="KarhooUISDK" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-Ht-GDF" customClass="PinView" customModule="KarhooUISDK">
                                                                         <rect key="frame" x="12" y="49" width="8" height="70"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
@@ -197,7 +197,7 @@
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="12" left="12" bottom="12" right="12"/>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngl-D0-YNy" customClass="FormButton" customModule="KarhooUISDK" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngl-D0-YNy" customClass="FormButton" customModule="KarhooUISDK">
                                                 <rect key="frame" x="0.0" y="361.5" width="300" height="44"/>
                                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -280,6 +280,7 @@
             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
             <fontDescription key="fontDescription" type="system" pointSize="14"/>
             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+            <point key="canvasLocation" x="-294" y="-614"/>
         </textView>
     </objects>
     <resources>
