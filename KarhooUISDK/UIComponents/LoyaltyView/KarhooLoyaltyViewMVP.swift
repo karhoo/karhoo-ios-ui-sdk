@@ -20,6 +20,11 @@ protocol LoyaltyView: AnyObject {
     func hasError() -> Bool
 }
 
+protocol LoyaltyBalanceView: AnyObject {
+    func set(balance: Int)
+    func set(mode: LoyaltyBalanceMode)
+}
+
 protocol LoyaltyViewDelegate: AnyObject {
     func didToggleLoyaltyMode(newValue: LoyaltyMode)
     func didStartLoading()
@@ -40,4 +45,8 @@ protocol LoyaltyPresenter {
 
 enum LoyaltyMode {
     case none, earn, burn
+}
+
+enum LoyaltyBalanceMode {
+    case success, error
 }
