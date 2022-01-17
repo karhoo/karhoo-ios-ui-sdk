@@ -86,6 +86,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         viewModel?.balance = status.balance
     }
     
+    func getBalance() -> Int {
+        return viewModel?.balance ?? 0
+    }
+    
     // MARK: - Earn
     func updateEarnedPoints(completion: ((_ success: Bool) -> Void)? = nil) {
         guard let viewModel = viewModel,

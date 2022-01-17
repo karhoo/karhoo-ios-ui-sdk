@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 protocol LoyaltyView: AnyObject {
     func getCurrentMode() -> LoyaltyMode
@@ -34,6 +35,7 @@ protocol LoyaltyViewDelegate: AnyObject {
 protocol LoyaltyPresenter {
     var delegate: LoyaltyViewDelegate? { get set }
     func getCurrentMode() -> LoyaltyMode
+    func getBalance() -> Int
     func set(dataModel: LoyaltyViewDataModel)
     func updateEarnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?)
@@ -49,4 +51,23 @@ enum LoyaltyMode {
 
 enum LoyaltyBalanceMode {
     case success, error
+    
+    // TODO: update colors based on new design palette colors for succeess and error
+    var backgroundColor: UIColor {
+        switch self {
+        case .success:
+            return UIColor.green//UIColor(red: 173, green: 239, blue: 209, alpha: 1) //#ADEFD1
+        case .error:
+            return UIColor.red
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .success:
+            return KarhooUI.colors.primaryTextColor
+        case .error:
+            return KarhooUI.colors.white
+        }
+    }
 }

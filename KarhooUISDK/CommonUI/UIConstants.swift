@@ -150,6 +150,9 @@ public struct UIConstants {
             /// 20
             public static let tagHeight: CGFloat = 20 // KarhooQuoteCategoryBarView > markerView height
             
+            /// 30
+            public static let largeTagHeight: CGFloat = 30
+            
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             

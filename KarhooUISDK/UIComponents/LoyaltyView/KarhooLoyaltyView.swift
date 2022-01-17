@@ -11,6 +11,7 @@ import KarhooSDK
 
 struct KHLoyaltyViewID {
     public static let backgroundView = "background_view"
+    public static let containerStackView = "container_stack_view"
     public static let loyaltyStackView = "loyalty_stack_view"
     public static let contentStackView = "content_stack_view"
     public static let titleLabel = "title_label"
@@ -19,9 +20,11 @@ struct KHLoyaltyViewID {
     public static let burnPointsSwitch = "burn_points_switch"
     public static let infoView = "info_view"
     public static let infoLabel = "info_label"
+    public static let balanceView = "balance_view"
+    public static let balanceLabel = "balance_label"
 }
 
-final class KarhooLoyaltyView: UIStackView {
+final class KarhooLoyaltyView: UIView {
     
     private let drawAnimationTime: Double = 0.45
     private let standardSpacing: CGFloat = 12.0
@@ -36,6 +39,16 @@ final class KarhooLoyaltyView: UIStackView {
     private var bottomSwitchConstraint: NSLayoutConstraint?
     
     // MARK: - UI
+    private lazy var containerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = KHLoyaltyViewID.containerStackView
+        stackView.spacing = standardSpacing
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
     // Note: The burnPointsSwitch is hidden in case can_burn == false. This stack view makes sure to strech the labels until the right edge of the view in this scenario
     private lazy var loyaltyStackView: UIStackView = {
         let stackView = UIStackView()
@@ -47,10 +60,10 @@ final class KarhooLoyaltyView: UIStackView {
         stackView.layer.borderWidth = borderWidth
         stackView.layer.cornerRadius = cornerRadius
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: standardSpacing,
-                                                                     leading: standardSpacing,
-                                                                     bottom: standardSpacing,
-                                                                     trailing: standardSpacing)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: UIConstants.Spacing.standard,
+                                                                     leading: UIConstants.Spacing.medium,
+                                                                     bottom: UIConstants.Spacing.medium,
+                                                                     trailing: UIConstants.Spacing.medium)
         stackView.distribution = .fill
         return stackView
     }()
@@ -124,6 +137,13 @@ final class KarhooLoyaltyView: UIStackView {
         return label
     }()
     
+    private lazy var balanceView: KarhooLoyaltyBalanceView = {
+        let view = KarhooLoyaltyBalanceView()
+        view.set(balance: presenter?.getBalance() ?? 0)
+        view.set(mode: .success)
+        return view
+    }()
+    
     // MARK: - Init
     init() {
         super.init(frame: .zero)
@@ -139,12 +159,11 @@ final class KarhooLoyaltyView: UIStackView {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHLoyaltyViewID.backgroundView
-        spacing = standardSpacing
-        axis = .vertical
-        distribution = .fill
         
-        addArrangedSubview(loyaltyStackView)
-        addArrangedSubview(infoView)
+        addSubview(containerStackView)
+        addSubview(balanceView)
+        containerStackView.addArrangedSubview(loyaltyStackView)
+        containerStackView.addArrangedSubview(infoView)
         
         loyaltyStackView.addArrangedSubview(contentStackView)
         loyaltyStackView.addArrangedSubview(burnPointsContainerView)
@@ -162,6 +181,8 @@ final class KarhooLoyaltyView: UIStackView {
     
     override func updateConstraints() {
         if !didSetupConstraints {
+            containerStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: UIConstants.Dimension.View.largeTagHeight / 2)
+            
             burnPointsSwitch.centerY(inView: burnPointsContainerView)
             burnPointsSwitch.anchor(leading: burnPointsContainerView.leadingAnchor,
                                           trailing: burnPointsContainerView.trailingAnchor)
@@ -177,6 +198,8 @@ final class KarhooLoyaltyView: UIStackView {
                              paddingLeft: standardSpacing,
                              paddingBottom: standardSpacing,
                              paddingRight: standardSpacing)
+            
+            balanceView.anchor(top: topAnchor, trailing: trailingAnchor)
             
             didSetupConstraints = true
         }
@@ -225,6 +248,8 @@ extension KarhooLoyaltyView: LoyaltyView {
         case .burn:
             showInfoView(true)
         }
+        
+        updateBalanceView(mode: .success)
     }
     
     private func showInfoView(_ show: Bool) {
@@ -251,6 +276,7 @@ extension KarhooLoyaltyView: LoyaltyView {
         subtitleLabel.textColor = UIColor.red
         loyaltyStackView.layer.borderColor = UIColor.red.cgColor
         showInfoView(false)
+        updateBalanceView(mode: .error)
     }
     
     func set(dataModel: LoyaltyViewDataModel) {
@@ -276,5 +302,10 @@ extension KarhooLoyaltyView: LoyaltyView {
   
     func hasError() -> Bool {
         return presenter?.hasError() ?? false
+    }
+    
+    private func updateBalanceView(mode: LoyaltyBalanceMode) {
+        balanceView.set(balance: presenter?.getBalance() ?? 0)
+        balanceView.set(mode: mode)
     }
 }
