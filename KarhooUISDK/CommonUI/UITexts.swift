@@ -237,6 +237,8 @@ public enum UITexts {
         public static let gpsTracking = "Text.Booking.GPSTracking".localized
         public static let trainTracking = "Text.Booking.TrainTracking".localized
         public static let flightTracking = "Text.Booking.FlightTracking".localized
+        public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
+        public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
     }
 
     public enum Availability {
