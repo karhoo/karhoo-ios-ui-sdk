@@ -173,6 +173,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Le prix final peut être affecté par des péages, pourboires, taxes ou autres surcharges.";
 
+"Text.Booking.BookNow" = "RÉSERVEZ MAINTENANT";
+
 "Text.Booking.CountryCodeSelection.Search" = "Recherche pays/région";
 
 /* Country Code Selection */
@@ -283,6 +285,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Impossible de charger les courses";
 
 "Text.Bookings.eta" = "Proximité";
+
+"Text.Bookings.NewRide" = "NOUVEAU MANÈGE";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Aucune réservation";
@@ -621,7 +625,7 @@
 "Text.Loyalty.Title" = "Points de fidélité";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
-"Text.Payment.AddPaymentMethod" = "Ajouter une méthode de paiement";
+"Text.Payment.AddPaymentMethod" = "Ajouter";
 
 "Text.Payment.PaymentMethod" = "Carte";
 
