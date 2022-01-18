@@ -209,6 +209,7 @@ public enum UITexts {
 
     /* Booking */
     public enum Booking {
+        public static let bookNow = "Text.Booking.BookNow".localized
         public static let requestCar = "Text.Booking.RequestCar".localized
         public static let requestingCar = "Text.Booking.RequestingCar".localized
         public static let next = "Text.Booking.Next".localized
@@ -216,6 +217,7 @@ public enum UITexts {
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized
         public static let baseFare = "Text.Booking.BaseFare".localized
+        public static let prebookRideHint = "Text.Booking.PrebookHint".localized
         public static let prebookConfirmed = "Text.Booking.PrebookConfirmed".localized
         public static let prebookConfirmedRideDetails = "Text.Booking.PrebookConfirmed.RideDetails".localized
         public static let prebookConfirmation = "Text.Booking.PrebookConfirmation".localized
@@ -235,6 +237,8 @@ public enum UITexts {
         public static let gpsTracking = "Text.Booking.GPSTracking".localized
         public static let trainTracking = "Text.Booking.TrainTracking".localized
         public static let flightTracking = "Text.Booking.FlightTracking".localized
+        public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
+        public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
     }
 
     public enum Availability {
@@ -369,6 +373,7 @@ public enum UITexts {
         static let noTrips = "Text.Bookings.NoTrips".localized
         static let noTripsBookedMessage = "Text.Bookings.NoTripsBookedMessage".localized
         static let bookATrip = "Text.Bookings.BookATrip".localized
+        static let newRide = "Text.Bookings.NewRide".localized
         static let trackDriver = "Text.Bookings.TrackDriver".localized
         static let contactDriver = "Text.Bookings.ContactDriver".localized
         static let contactFleet = "Text.Bookings.ContactFleet".localized

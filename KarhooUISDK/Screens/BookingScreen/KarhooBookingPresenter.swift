@@ -70,20 +70,26 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Checkout
-    private func showCheckoutView(quote: Quote,
-                                  bookingDetails: BookingDetails,
-                                  bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
+    private func showCheckoutView(
+        quote: Quote,
+        bookingDetails: BookingDetails,
+        bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
+    ) {
         let checkoutView = checkoutScreenBuilder
-            .buildCheckoutScreen(quote: quote,
-                                 bookingDetails: bookingDetails,
-                                 bookingMetadata: bookingMetadata,
-                                 callback: { [weak self] result in
-                                    self?.view?.presentedViewController?.dismiss(animated: false, completion: {
-                                            self?.bookingRequestCompleted(result: result,
-                                                                          quote: quote,
-                                                                          details: bookingDetails)
-                                    })
-            })
+            .buildCheckoutScreen(
+                quote: quote,
+                bookingDetails: bookingDetails,
+                bookingMetadata: bookingMetadata,
+                callback: { [weak self] result in
+                    self?.view?.presentedViewController?.dismiss(animated: false, completion: {
+                        self?.bookingRequestCompleted(
+                            result: result,
+                            quote: quote,
+                            details: bookingDetails
+                        )
+                    })
+                }
+            )
 
         view?.showAsOverlay(item: checkoutView, animated: false)
     }
