@@ -26,12 +26,6 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIView {
     
-    private let standardSpacing: CGFloat = 12.0
-    private let smallSpacing: CGFloat = 4.0
-    private let mediumCornerRadius: CGFloat = 8.0
-    private let cornerRadius: CGFloat = 3.0
-    private let borderWidth: CGFloat = 1.0
-    
     private var presenter: LoyaltyPresenter?
     private var didSetupConstraints: Bool = false
     private var topSwitchConstraint: NSLayoutConstraint?
@@ -42,7 +36,7 @@ final class KarhooLoyaltyView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHLoyaltyViewID.containerStackView
-        stackView.spacing = standardSpacing
+        stackView.spacing = UIConstants.Spacing.medium
         stackView.axis = .vertical
         stackView.distribution = .fill
         return stackView
@@ -54,10 +48,10 @@ final class KarhooLoyaltyView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHLoyaltyViewID.loyaltyStackView
         stackView.axis = .horizontal
-        stackView.spacing = standardSpacing
+        stackView.spacing = UIConstants.Spacing.medium
         stackView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-        stackView.layer.borderWidth = borderWidth
-        stackView.layer.cornerRadius = cornerRadius
+        stackView.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        stackView.layer.cornerRadius = UIConstants.CornerRadius.small
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: UIConstants.Spacing.standard,
                                                                      leading: UIConstants.Spacing.medium,
@@ -72,7 +66,7 @@ final class KarhooLoyaltyView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHLoyaltyViewID.contentStackView
         stackView.axis = .vertical
-        stackView.spacing = smallSpacing
+        stackView.spacing = UIConstants.Spacing.xSmall
         stackView.distribution = .fill
         return stackView
     }()
@@ -119,7 +113,7 @@ final class KarhooLoyaltyView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHLoyaltyViewID.infoView
-        view.layer.cornerRadius = mediumCornerRadius
+        view.layer.cornerRadius = UIConstants.CornerRadius.medium
         view.layer.masksToBounds = true
         view.backgroundColor = KarhooUI.colors.primary
         return view
@@ -193,10 +187,10 @@ final class KarhooLoyaltyView: UIView {
                              leading: infoView.leadingAnchor,
                              bottom: infoView.bottomAnchor,
                              trailing: infoView.trailingAnchor,
-                             paddingTop: standardSpacing,
-                             paddingLeft: standardSpacing,
-                             paddingBottom: standardSpacing,
-                             paddingRight: standardSpacing)
+                             paddingTop: UIConstants.Spacing.medium,
+                             paddingLeft: UIConstants.Spacing.medium,
+                             paddingBottom: UIConstants.Spacing.medium,
+                             paddingRight: UIConstants.Spacing.medium)
             
             balanceView.anchor(top: topAnchor, trailing: trailingAnchor)
             
