@@ -24,7 +24,7 @@ extension Quote {
 
 }
                                            
-enum QuoteDatesHelper {
+struct QuoteDatesHelper {
     private static var expirationDates: [String: Date] = [:]
 
     static func setExpirationDate(of quotes: Quotes) {
