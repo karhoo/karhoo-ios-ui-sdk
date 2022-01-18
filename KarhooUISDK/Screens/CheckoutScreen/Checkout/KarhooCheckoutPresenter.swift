@@ -4,7 +4,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-
+// swiftlint:disable file_length
 import Foundation
 import KarhooSDK
 
@@ -14,6 +14,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private weak var view: CheckoutView?
     private let quote: Quote
     private let bookingDetails: BookingDetails
+    private var quoteValidityTimer: Timer?
     internal var passengerDetails: PassengerDetails!
     private let threeDSecureProvider: ThreeDSecureProvider
     private let tripService: TripService
@@ -33,18 +34,21 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     var karhooUser: Bool = false
     
     // MARK: - Init & Config
-    init(quote: Quote,
-         bookingDetails: BookingDetails,
-         bookingMetadata: [String: Any]?,
-         threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
-         tripService: TripService = Karhoo.getTripService(),
-         userService: UserService = Karhoo.getUserService(),
-         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
-         analytics: Analytics = KarhooAnalytics(),
-         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
-         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
-         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
-         callback: @escaping ScreenResultCallback<TripInfo>) {
+
+    init(
+        quote: Quote,
+        bookingDetails: BookingDetails,
+        bookingMetadata: [String: Any]?,
+        threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
+        tripService: TripService = Karhoo.getTripService(),
+        userService: UserService = Karhoo.getUserService(),
+        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
+        analytics: Analytics = KarhooAnalytics(),
+        appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
+        baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
+        paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
+        callback: @escaping ScreenResultCallback<TripInfo>
+    ) {
         self.threeDSecureProvider = threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
@@ -57,6 +61,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.quote = quote
         self.bookingDetails = bookingDetails
         self.bookingMetadata = bookingMetadata
+        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
+    }
+
+    deinit {
+        quoteValidityTimer?.invalidate()
+        quoteValidityTimer = nil
     }
 
     func load(view: CheckoutView) {
@@ -78,11 +88,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
-    }
-    
-    private func isLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -121,9 +126,22 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          view?.setAsapState(qta: QtaStringFormatter().qtaString(min: quote.vehicle.qta.lowMinutes,
                                                                   max: quote.vehicle.qta.highMinutes))
      }
-    
-    func isKarhooUser() -> Bool {
-        return karhooUser
+
+    private func setQuoteValidityDeadline(_ validityDate: Date?) {
+        guard let validityDate = validityDate else {
+            return
+        }
+        let timer = Timer.scheduledTimer(
+            withTimeInterval: validityDate.timeIntervalSinceNow,
+            repeats: false
+        ) { [weak self] _ in
+            self?.view?.quoteDidExpire()
+            self?.quoteValidityTimer?.invalidate()
+            self?.quoteValidityTimer = nil
+        }
+
+        RunLoop.main.add(timer, forMode: .common)
+        quoteValidityTimer = timer
     }
     
     // MARK: - Passenger Details
@@ -449,6 +467,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
              callback(ScreenResult.cancelled(byUser: false))
          }
     }
+
+    private func isLoyaltyEnabled() -> Bool {
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+    }
+
+    func isKarhooUser() -> Bool {
+        return karhooUser
+    }
     
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(bookingDetails) {
@@ -472,7 +499,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         let alert = UIAlertController.create(title: UITexts.Generic.error, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] action in
+        alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default, handler: { [weak self] _ in
             self?.view?.setDefaultState()
         }))
         view?.present(alert, animated: true, completion: nil)

@@ -178,11 +178,11 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         activityIndicator?.startAnimating()
     }
     
-    func setNextMode() {
+    func setBookNowMode() {
         currentMode = .addDetails
         button.isEnabled = true
         containerView.backgroundColor = KarhooUI.colors.secondary
-        set(buttonTitle: UITexts.Booking.next.uppercased())
+        set(buttonTitle: UITexts.Booking.bookNow)
         tickImage.isHidden = true
         activityIndicator?.stopAnimating()
     }

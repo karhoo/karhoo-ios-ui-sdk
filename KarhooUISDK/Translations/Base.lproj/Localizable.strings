@@ -173,6 +173,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Your final fare might be affected by tips, tolls, taxes, and other charges.";
 
+"Text.Booking.BookNow" = "BOOK NOW";
+
 "Text.Booking.CountryCodeSelection.Search" = "Search country/region";
 
 /* Country Code Selection */
@@ -243,12 +245,21 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
+"Text.Booking.QuoteExpired" = "Quote expired";
+
+"Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
+
 /* Booking */
+"Text.Booking.BookNow" = "BOOK NOW";
+
 "Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
 "Text.Booking.RequestReceived" = "Booking Received";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Schedule the ride";
 
 "Text.Booking.TrainTracking" = "Train tracking";
 
@@ -263,6 +274,8 @@
 /* used as a call to action on a button in the empty bookings screen: English: "Book Ride" */
 "Text.Bookings.BookATrip" = "Book Ride";
 
+"Text.Bookings.NewRide" = "NEW RIDE";
+
 /* "Cancel Ride" button action */
 "Text.Bookings.CancelRide" = "Cancel Ride";
 
@@ -276,6 +289,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Could not load trips.";
 
 "Text.Bookings.eta" = "ETA";
+
+"Text.Bookings.NewRide" = "NEW RIDE";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "No rides";

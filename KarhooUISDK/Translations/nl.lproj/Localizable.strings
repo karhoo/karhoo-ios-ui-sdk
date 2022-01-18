@@ -173,6 +173,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Uw uiteindelijke tarief kan worden beïnvloed door fooien, tolgelden, belastingen en andere heffingen.";
 
+"Text.Booking.BookNow" = "BOEK NU";
+
 "Text.Booking.CountryCodeSelection.Search" = "Land/regio zoeken";
 
 /* Country Code Selection */
@@ -243,12 +245,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ritgegevens";
 
+"Text.Booking.QuoteExpired" = "Offerte verlopen";
+
+"Text.Booking.QuoteExpiredMessage" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
 
 "Text.Booking.RequestingCar" = "Rit reserveren";
 
 "Text.Booking.RequestReceived" = "Reservering ontvangen";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Plan de rit";
 
 "Text.Booking.TrainTracking" = "Trein volgen";
 
@@ -276,6 +285,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Kan de ritten niet laden.";
 
 "Text.Bookings.eta" = "Geschatte aankomsttijd";
+
+"Text.Bookings.NewRide" = "NIEUWE RIT";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Geen ritten";
