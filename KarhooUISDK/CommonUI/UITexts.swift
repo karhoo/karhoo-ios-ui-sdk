@@ -216,6 +216,7 @@ public enum UITexts {
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized
         public static let baseFare = "Text.Booking.BaseFare".localized
+        public static let prebookRideHint = "Text.Booking.PrebookHint".localized
         public static let prebookConfirmed = "Text.Booking.PrebookConfirmed".localized
         public static let prebookConfirmedRideDetails = "Text.Booking.PrebookConfirmed.RideDetails".localized
         public static let prebookConfirmation = "Text.Booking.PrebookConfirmation".localized

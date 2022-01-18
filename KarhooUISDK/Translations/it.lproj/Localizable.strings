@@ -239,12 +239,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Dettagli della corsa";
 
+"Text.Booking.QuoteExpired" = "Preventivo scaduto";
+
+"Text.Booking.QuoteExpiredMessage" = "Si prega di selezionare un nuovo preventivo per continuare con la prenotazione";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAGA E PRENOTA";
 
 "Text.Booking.RequestingCar" = "Prenotazione corsa";
 
 "Text.Booking.RequestReceived" = "Prenotazione ricevuta";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Pianifica la corsa";
 
 "Text.Booking.TrainTracking" = "Monitoraggio del treno";
 

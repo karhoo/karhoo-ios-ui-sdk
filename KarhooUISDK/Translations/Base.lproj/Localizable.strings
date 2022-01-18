@@ -243,12 +243,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
+"Text.Booking.QuoteExpired" = "Quote expired";
+
+"Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
 "Text.Booking.RequestReceived" = "Booking Received";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Schedule the ride";
 
 "Text.Booking.TrainTracking" = "Train tracking";
 
