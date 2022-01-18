@@ -129,7 +129,6 @@ final class RidesListViewController: UIViewController, RidesListView {
             }
             let cellViewModel = RideCellViewModel(trip: trip)
             let tripDetailsViewModel = TripDetailsViewModel(trip: trip)
-            cell.isAccessibilityElement = true
             cell.set(viewModel: cellViewModel,
                      tripDetailsViewModel: tripDetailsViewModel,
                      accessibilityIdentifier: "RideCell_\(indexPath.row + 1)",

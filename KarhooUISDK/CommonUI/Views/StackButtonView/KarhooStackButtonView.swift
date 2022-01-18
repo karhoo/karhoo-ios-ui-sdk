@@ -90,6 +90,7 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         
         buttonOne = UIButton(type: .custom)
         buttonOne.translatesAutoresizingMaskIntoConstraints = false
+        buttonOne.accessibilityLabel = buttonOneText
         buttonOne.accessibilityIdentifier = KHStackButtonID.buttonOne
         buttonOne.titleLabel?.lineBreakMode = .byWordWrapping
         buttonOne.titleLabel?.textAlignment = .center
@@ -120,12 +121,14 @@ final class KarhooStackButtonView: UIView, StackButtonView {
     var buttonOneText: String? {
         didSet {
             buttonOne?.setTitle(buttonOneText, for: .normal)
+            buttonOne?.accessibilityLabel = buttonOneText
         }
     }
 
     var buttonTwoText: String? {
         didSet {
             buttonTwo?.setTitle(buttonTwoText, for: .normal)
+            buttonTwo?.accessibilityLabel = buttonTwoText
         }
     }
 

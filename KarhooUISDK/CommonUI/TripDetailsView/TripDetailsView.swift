@@ -66,6 +66,7 @@ final class TripDetailsView: UIView {
         addSubview(stackContainer)
         
         detailsContainer = UIView()
+        detailsContainer.isAccessibilityElement = true
         detailsContainer.accessibilityIdentifier = "details_container"
         detailsContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.addArrangedSubview(detailsContainer)
@@ -236,6 +237,7 @@ final class TripDetailsView: UIView {
         vehicleInformationLabel?.text = viewModel.vehicleInformation
         pickUpTypeContainer.isHidden = !viewModel.showMeetingPoint
         meetingPointType.text = viewModel.meetingPointText
+        detailsContainer.accessibilityLabel = "\(viewModel.supplierName ), \(viewModel.accessibilityDate), \(viewModel.pickup), \(viewModel.destination)"
     }
     
     func prepareForReuse() {
