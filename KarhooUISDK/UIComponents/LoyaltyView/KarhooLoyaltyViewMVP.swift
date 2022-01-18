@@ -55,7 +55,7 @@ enum LoyaltyBalanceMode {
     var backgroundColor: UIColor {
         switch self {
         case .success:
-            return KarhooUI.colors.success
+            return KarhooUI.colors.primary
         case .error:
             return KarhooUI.colors.error
         }
@@ -64,7 +64,7 @@ enum LoyaltyBalanceMode {
     var textColor: UIColor {
         switch self {
         case .success:
-            return KarhooUI.colors.text
+            return backgroundColor.isLight() ? KarhooUI.colors.text : KarhooUI.colors.white
         case .error:
             return KarhooUI.colors.white
         }

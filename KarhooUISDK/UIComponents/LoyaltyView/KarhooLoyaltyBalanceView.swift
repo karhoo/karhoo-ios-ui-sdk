@@ -19,7 +19,7 @@ final class KarhooLoyaltyBalanceView: UIView {
         label.accessibilityIdentifier = KHLoyaltyViewID.balanceLabel
         label.text = getTitle()
         label.textAlignment = .center
-        label.font = KarhooUI.fonts.bodyBold()
+        label.font = KarhooUI.fonts.captionBold()
         label.accessibilityLabel = getTitle()
         return label
     }()
