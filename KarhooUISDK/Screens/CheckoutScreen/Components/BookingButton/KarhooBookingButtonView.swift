@@ -201,11 +201,14 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     }
 
     private func set(buttonTitle: String) {
-        UIView.transition(with: buttonLabel,
-                          duration: textTransitionTime,
-                          options: [.curveEaseInOut, .transitionCrossDissolve],
-                          animations: { [weak self] in
-                            self?.buttonLabel.text = buttonTitle
-        }, completion: nil)
+        UIView.transition(
+            with: buttonLabel,
+            duration: textTransitionTime,
+            options: [.curveEaseInOut, .transitionCrossDissolve],
+            animations: { [weak self] in
+                self?.buttonLabel.text = buttonTitle
+                self?.button.accessibilityLabel = buttonTitle
+            }, completion: nil
+        )
     }
 }
