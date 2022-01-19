@@ -26,7 +26,7 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIView {
     
-    private var presenter: LoyaltyPresenter?
+    private weak var presenter: LoyaltyPresenter?
     private var didSetupConstraints: Bool = false
     private var topSwitchConstraint: NSLayoutConstraint?
     private var bottomSwitchConstraint: NSLayoutConstraint?
@@ -37,7 +37,6 @@ final class KarhooLoyaltyView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = KHLoyaltyViewID.containerStackView
         stackView.spacing = UIConstants.Spacing.medium
-        stackView.axis = .vertical
         stackView.distribution = .fill
         return stackView
     }()
@@ -132,7 +131,7 @@ final class KarhooLoyaltyView: UIView {
     
     private lazy var balanceView: KarhooLoyaltyBalanceView = {
         let view = KarhooLoyaltyBalanceView()
-        view.set(balance: presenter?.getBalance() ?? 0)
+        view.set(balance: presenter?.balance ?? 0)
         view.set(mode: .success)
         return view
     }()
@@ -141,7 +140,6 @@ final class KarhooLoyaltyView: UIView {
     init() {
         super.init(frame: .zero)
         self.setupView()
-        presenter = KarhooLoyaltyPresenter(view: self)
     }
     
     required init(coder: NSCoder) {
@@ -170,15 +168,21 @@ final class KarhooLoyaltyView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         addGestureRecognizer(tapGestureRecognizer)
+        
+        presenter = KarhooLoyaltyPresenter(view: self)
     }
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            containerStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: UIConstants.Dimension.View.largeTagHeight / 2)
+            containerStackView.anchor(top: topAnchor,
+                                      leading: leadingAnchor,
+                                      bottom: bottomAnchor,
+                                      trailing: trailingAnchor,
+                                      paddingTop: UIConstants.Dimension.View.largeTagHeight / 2)
             
             burnPointsSwitch.centerY(inView: burnPointsContainerView)
             burnPointsSwitch.anchor(leading: burnPointsContainerView.leadingAnchor,
-                                          trailing: burnPointsContainerView.trailingAnchor)
+                                    trailing: burnPointsContainerView.trailingAnchor)
             topSwitchConstraint = burnPointsSwitch.topAnchor.constraint(greaterThanOrEqualTo: burnPointsContainerView.topAnchor, constant: 0)
             bottomSwitchConstraint = burnPointsSwitch.bottomAnchor.constraint(greaterThanOrEqualTo: burnPointsContainerView.bottomAnchor, constant: 0)
             updateBurnPointsSwitchConstraints()
@@ -242,7 +246,7 @@ extension KarhooLoyaltyView: LoyaltyView {
             showInfoView(true)
         }
         
-        updateBalanceView(mode: .success)
+        refreshBalanceView(with: .success)
     }
     
     private func showInfoView(_ show: Bool) {
@@ -269,7 +273,7 @@ extension KarhooLoyaltyView: LoyaltyView {
         subtitleLabel.textColor = KarhooUI.colors.error
         loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
         showInfoView(false)
-        updateBalanceView(mode: .error)
+        refreshBalanceView(with: .error)
     }
     
     func set(dataModel: LoyaltyViewDataModel) {
@@ -297,8 +301,8 @@ extension KarhooLoyaltyView: LoyaltyView {
         return presenter?.hasError() ?? false
     }
     
-    private func updateBalanceView(mode: LoyaltyBalanceMode) {
-        balanceView.set(balance: presenter?.getBalance() ?? 0)
+    private func refreshBalanceView(with mode: LoyaltyBalanceMode) {
+        balanceView.set(balance: presenter?.balance ?? 0)
         balanceView.set(mode: mode)
     }
 }

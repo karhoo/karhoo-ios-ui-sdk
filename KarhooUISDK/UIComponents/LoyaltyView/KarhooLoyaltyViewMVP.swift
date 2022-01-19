@@ -32,10 +32,10 @@ protocol LoyaltyViewDelegate: AnyObject {
     func didEndLoading()
 }
 
-protocol LoyaltyPresenter {
+protocol LoyaltyPresenter: AnyObject {
     var delegate: LoyaltyViewDelegate? { get set }
+    var balance: Int { get }
     func getCurrentMode() -> LoyaltyMode
-    func getBalance() -> Int
     func set(dataModel: LoyaltyViewDataModel)
     func updateEarnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?)
@@ -64,7 +64,7 @@ enum LoyaltyBalanceMode {
     var textColor: UIColor {
         switch self {
         case .success:
-            return backgroundColor.isLight() ? KarhooUI.colors.text : KarhooUI.colors.white
+            return backgroundColor.isLight ? KarhooUI.colors.text : KarhooUI.colors.white
         case .error:
             return KarhooUI.colors.white
         }

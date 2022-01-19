@@ -27,7 +27,7 @@ final class KarhooLoyaltyBalanceView: UIView {
     // MARK: - Init
     init() {
         super.init(frame: .zero)
-        self.setupView()
+        setupView()
     }
     
     required init(coder: NSCoder) {
@@ -41,16 +41,21 @@ final class KarhooLoyaltyBalanceView: UIView {
         anchor(height: UIConstants.Dimension.View.largeTagHeight)
         addSubview(titleLabel)
         
-        titleLabel.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor,
-                          paddingTop: UIConstants.Spacing.xxSmall, paddingLeft: UIConstants.Spacing.medium, paddingBottom: UIConstants.Spacing.xxSmall, paddingRight: UIConstants.Spacing.medium)
+        titleLabel.anchor(top: self.topAnchor,
+                          leading: self.leadingAnchor,
+                          bottom: self.bottomAnchor,
+                          trailing: self.trailingAnchor,
+                          paddingTop: UIConstants.Spacing.xxSmall,
+                          paddingLeft: UIConstants.Spacing.medium,
+                          paddingBottom: UIConstants.Spacing.xxSmall,
+                          paddingRight: UIConstants.Spacing.medium)
         
         set(mode: .success)
     }
     
     // MARK: - Utils
     private func getTitle() -> String {
-        let text = String(format: NSLocalizedString(UITexts.Loyalty.balanceTitle, comment: ""), "\(balance)")
-        return text
+        String(format: NSLocalizedString(UITexts.Loyalty.balanceTitle, comment: ""), "\(balance)")
     }
 }
 

@@ -9,11 +9,11 @@
 import Foundation
 import KarhooSDK
 
-enum LoyaltyState {
-    case noError, earnPointsError, burnPointsError
-}
-
 final class KarhooLoyaltyPresenter: LoyaltyPresenter {
+    enum LoyaltyState {
+        case noError, earnPointsError, burnPointsError
+    }
+    
     weak var delegate: LoyaltyViewDelegate?
     private var view: LoyaltyView?
     private var viewModel: LoyaltyViewModel?
@@ -23,6 +23,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var getEarnAmountError: KarhooError?
     
     private var currentMode: LoyaltyMode = .none
+    
+    var balance: Int {
+        viewModel?.balance ?? 0
+    }
     
     // MARK: - Init
     init(view: LoyaltyView,
@@ -84,10 +88,6 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         viewModel?.canEarn = status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn
         viewModel?.canBurn = status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn
         viewModel?.balance = status.balance
-    }
-    
-    func getBalance() -> Int {
-        return viewModel?.balance ?? 0
     }
     
     // MARK: - Earn
