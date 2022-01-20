@@ -24,8 +24,8 @@ struct KHPassengerDetailsViewID {
     static let doneButton = "done_button"
 }
 
-final class PassengerDetailsViewController: UIViewController, BaseViewController {
-    
+final class PassengerDetailsViewController: UIViewController, PassengerDetailsView, BaseViewController {
+
     private var presenter: PassengerDetailsPresenterProtocol
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     private let doneButtonHeight: CGFloat = 55.0
@@ -38,6 +38,19 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
     private let currentLocale = NSLocale.current.languageCode ?? "en"
+    
+    // MARK: - PassengerDetailsView
+    var delegate: PassengerDetailsDelegate? {
+        didSet {
+            presenter.delegate = delegate
+        }
+    }
+    
+    var details: PassengerDetails? {
+        didSet {
+            addPreInputtedDetails()
+        }
+    }
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -151,9 +164,10 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     }()
     
     // MARK: - Init
-    init(presenter: PassengerDetailsPresenterProtocol) {
-        self.presenter = presenter
+    init() {
+        presenter = PassengerDetailsPresenter()
         super.init(nibName: nil, bundle: nil)
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -164,17 +178,14 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         keyboardSizeProvider.remove(listener: self)
     }
     
-    override func loadView() {
+    private func setUpView() {
         view = UIView()
         view.backgroundColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layer.cornerRadius = 10.0
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundClicked)))
-        setUpView()
-    }
-    
-    private func setUpView() {
+        
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           leading: view.leadingAnchor,
@@ -222,7 +233,6 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         view.setNeedsUpdateConstraints()
         
         inputViews = [firstNameInputView, lastNameInputView, emailNameInputView, mobilePhoneInputView]
-        addPreInputtedDetails()
     }
     
     // MARK: - Lifecycle
@@ -266,7 +276,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     }
     
     func addPreInputtedDetails() {
-        guard let details = presenter.details
+        guard let details = details
         else {
             return
         }
