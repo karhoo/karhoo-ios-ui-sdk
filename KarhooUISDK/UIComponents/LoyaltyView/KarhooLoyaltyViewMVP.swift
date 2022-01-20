@@ -37,10 +37,11 @@ protocol LoyaltyPresenter: AnyObject {
     var balance: Int { get }
     func getCurrentMode() -> LoyaltyMode
     func set(dataModel: LoyaltyViewDataModel)
+    func set(view: LoyaltyView)
+    func set(status: LoyaltyStatus)
     func updateEarnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateLoyaltyMode(with mode: LoyaltyMode)
-    func set(status: LoyaltyStatus)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
     func hasError() -> Bool
 }
