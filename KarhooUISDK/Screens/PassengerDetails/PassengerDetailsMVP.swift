@@ -30,6 +30,6 @@ protocol PassengerDetailsPresenterProtocol {
 }
 
 public struct PassengerDetailsResult {
-    var details: PassengerDetails?
-    var country: Country?
+    public var details: PassengerDetails?
+    public var country: Country?
 }
