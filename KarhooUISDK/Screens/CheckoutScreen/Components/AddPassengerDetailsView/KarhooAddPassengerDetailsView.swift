@@ -193,7 +193,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         let passengerName = "\(details.firstName) \(details.lastName)"
         passengerDetailsTitle.text = passengerName
         passengerDetailsSubtitle.text = UITexts.Generic.edit
-        accessibilityLabel = UITexts.PassengerDetails.title + ": " + passengerName
+        accessibilityLabel = "\(UITexts.PassengerDetails.title): \(passengerName)"
         accessibilityHint = UITexts.Generic.edit
     }
     
