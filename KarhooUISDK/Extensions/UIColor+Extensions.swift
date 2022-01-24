@@ -61,9 +61,19 @@ extension UIColor {
 
     static func get(lightModeColor: UIColor, darkModeColor: UIColor) -> UIColor {
         if #available(iOS 13, *) {
-            return UIColor { (traitCollection) -> UIColor in
+            /**
+             UIColor instance build using `dinamicProvider` constructor is, in fact, only factory method for UIColor that is genereted on the go, depending on user interface style.
+             Therefore it is impossible to perform equality check with any other UIColor.
+             That's why the `properColor` is CGColor instance that hold all required data.
+             
+             In next step the CGColor instance is wrapped into UIColor class instance so it is easy to use.
+             
+              HINT: if there is any other way to make sure that UIColor build using `dinamicProvider` can be compared to other UIColor instance, it should replace current solution.
+             */
+            let properColor = UIColor { (traitCollection) -> UIColor in
                 return traitCollection.userInterfaceStyle == .dark ? darkModeColor : lightModeColor
-            }
+            }.cgColor
+            return UIColor(cgColor: properColor)
         } else {
             return lightModeColor
         }
