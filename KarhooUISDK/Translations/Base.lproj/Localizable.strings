@@ -618,6 +618,8 @@
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
 
+"Text.Loyalty.BalanceTitle" = "BALANCE: %1$@ POINTS";
+
 "Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
 
 "Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";

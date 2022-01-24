@@ -150,6 +150,9 @@ public struct UIConstants {
             /// 20
             public static let tagHeight: CGFloat = 20 // KarhooQuoteCategoryBarView > markerView height
             
+            /// 30
+            public static let largeTagHeight: CGFloat = 30
+            
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
@@ -188,34 +191,34 @@ public struct UIConstants {
     //Animation duration
     public struct Duration {
         /// 0.1
-        public static let xShort: CGFloat = 0.1
+        public static let xShort: Double = 0.1
         
         /// 0.2
-        public static let short: CGFloat = 0.2
+        public static let short: Double = 0.2
         
         /// 0.3
-        public static let medium: CGFloat = 0.3
+        public static let medium: Double = 0.3
         
         /// 0.45
-        public static let long: CGFloat = 0.45
+        public static let long: Double = 0.45
         
         /// 0.5
-        public static let xLong: CGFloat = 0.5
+        public static let xLong: Double = 0.5
         
         /// 0.1
-        public static let xxSmallDelay: CGFloat = 0.1
+        public static let xxSmallDelay: Double = 0.1
         
         ///0.25
-        public static let xSmallDelay: CGFloat = 0.25
+        public static let xSmallDelay: Double = 0.25
         
         /// 0.3
-        public static let smallDelay: CGFloat = 0.3
+        public static let smallDelay: Double = 0.3
         
         /// 3
-        public static let xxLongDelay: CGFloat = 3
+        public static let xxLongDelay: Double = 3
         
         /// 4
-        public static let xxxLongDelay: CGFloat = 4
+        public static let xxxLongDelay: Double = 4
     }
     
     public struct Alpha {

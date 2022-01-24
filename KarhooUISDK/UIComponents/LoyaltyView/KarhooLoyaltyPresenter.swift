@@ -9,13 +9,14 @@
 import Foundation
 import KarhooSDK
 
-enum LoyaltyState {
-    case noError, earnPointsError, burnPointsError
-}
-
 final class KarhooLoyaltyPresenter: LoyaltyPresenter {
+
+    enum LoyaltyState {
+        case noError, earnPointsError, burnPointsError
+    }
+    
     weak var delegate: LoyaltyViewDelegate?
-    private var view: LoyaltyView?
+    private weak var view: LoyaltyView?
     private var viewModel: LoyaltyViewModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
@@ -24,13 +25,21 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     private var currentMode: LoyaltyMode = .none
     
+    var balance: Int {
+        viewModel?.balance ?? 0
+    }
+    
     // MARK: - Init
-    init(view: LoyaltyView,
-         userService: UserService = Karhoo.getUserService(),
-         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService()) {
-        self.view = view
+    init(
+        userService: UserService = Karhoo.getUserService(),
+        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService()
+    ) {
         self.userService = userService
         self.loyaltyService = loyaltyService
+    }
+    
+    func set(view: LoyaltyView) {
+        self.view = view
     }
     
     // MARK: - Status
@@ -63,6 +72,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             guard let status = result.successValue()
             else {
                 self?.hideLoyaltyComponent()
+                #if DEBUG
+                print("Hiding loyalty component due to server error")
+                #endif
                 return
             }
             
@@ -96,8 +108,19 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
 
         // Convert $ amount to minor units (cents)
-        let amount = CurrencyCodeConverter.minorUnitAmount(from: viewModel.tripAmount, currencyCode: viewModel.currency)
-        loyaltyService.getLoyaltyEarn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: amount, burnPoints: 0).execute { [weak self] result in
+        let amount = CurrencyCodeConverter.minorUnitAmount(
+            from: viewModel.tripAmount,
+            currencyCode: viewModel.currency
+        )
+        
+        loyaltyService.getLoyaltyEarn(
+            identifier: viewModel.loyaltyId,
+            currency: viewModel.currency,
+            amount: amount,
+            burnPoints: 0
+        )
+            .execute { [weak self] result in
+                
             guard let value = result.successValue()
             else {
                 let error = result.errorValue()
@@ -122,8 +145,18 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
         
         // Convert $ amount to minor units (cents)
-        let amount = CurrencyCodeConverter.minorUnitAmount(from: viewModel.tripAmount, currencyCode: viewModel.currency)
-        loyaltyService.getLoyaltyBurn(identifier: viewModel.loyaltyId, currency: viewModel.currency, amount: amount).execute { [weak self] result in
+        let amount = CurrencyCodeConverter.minorUnitAmount(
+            from: viewModel.tripAmount,
+            currencyCode: viewModel.currency
+        )
+        
+        loyaltyService.getLoyaltyBurn(
+            identifier: viewModel.loyaltyId,
+            currency: viewModel.currency,
+            amount: amount
+        )
+            .execute { [weak self] result in
+                
             guard let value = result.successValue()
             else {
                 let error = result.errorValue()

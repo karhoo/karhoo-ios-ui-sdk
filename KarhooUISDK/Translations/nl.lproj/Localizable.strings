@@ -614,6 +614,8 @@
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
 
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTEN";
+
 "Text.Loyalty.BurnNotAllowed" = "Je mag geen punten verbranden";
 
 "Text.Loyalty.Info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
