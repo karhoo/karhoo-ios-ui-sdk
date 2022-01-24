@@ -167,12 +167,18 @@ final class KarhooAddressPresenter: AddressPresenter {
     
     public func getCurrentLocation() {
         analytics.userPressedCurrentLocation(addressType: String(describing: addressMode))
-        guard let location = userLocationProvider.getLastKnownLocation()?.coordinate,
-              reverseGeocodingCurrentLocation == false else { return }
+        guard
+            let location = userLocationProvider.getLastKnownLocation()?.coordinate,
+            reverseGeocodingCurrentLocation == false
+        else { return }
+
         reverseGeocodingCurrentLocation = true
-        addressService.reverseGeocode(position: Position(latitude: location.latitude,
-                                                         longitude: location.longitude)).execute { [weak self] result in
-                                                            
+        addressService.reverseGeocode(
+            position: Position(
+                latitude: location.latitude,
+                longitude: location.longitude
+            )
+        ).execute { [weak self] result in
             self?.locationResponseHandler(result, saveLocation: false)
             self?.reverseGeocodingCurrentLocation = false
         }

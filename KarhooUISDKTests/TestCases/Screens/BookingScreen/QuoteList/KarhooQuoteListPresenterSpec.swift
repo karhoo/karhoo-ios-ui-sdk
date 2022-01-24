@@ -43,11 +43,12 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         mockQuoteListView = MockQuoteListView()
         mockQuoteSorter = MockQuoteSorter()
         mockDateFormatter = MockDateFormatterType()
-        testObject = KarhooQuoteListPresenter(bookingStatus: mockBookingStatus,
-                                              quoteService: mockQuoteService,
-                                              quoteListView: mockQuoteListView,
-                                              quoteSorter: mockQuoteSorter,
-                                              dateFormatter: mockDateFormatter)
+        testObject = KarhooQuoteListPresenter(
+            bookingStatus: mockBookingStatus,
+            quoteService: mockQuoteService,
+            quoteListView: mockQuoteListView,
+            quoteSorter: mockQuoteSorter
+        )
     }
 
     private func simulateDestinationSetInBookingDetails(dateSet: Bool = true) {
@@ -100,18 +101,16 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     /**
      * Given: Prebook Quote search refreshes
      * When: Quote search finishes with results
-     * Then: Date formatter should been called and have correct time zone
+     * Then: Date should be set and have correct time zone
      * And: QuoteSorter should hide
      */
     func testSuccessFetchOfPrebook() {
         simulateSuccessfulQuoteFetch()
 
         let bookingDetails = mockBookingStatus.bookingDetailsToReturn
-        XCTAssertEqual(bookingDetails?.scheduledDate,
-                       mockDateFormatter.detailStyleDateSet)
+        XCTAssertNotNil(bookingDetails?.scheduledDate)
 
-        XCTAssertEqual(bookingDetails?.originLocationDetails?.timezone(),
-                       mockDateFormatter.timeZoneSet)
+        XCTAssertEqual(bookingDetails?.originLocationDetails?.timezone().identifier, "Europe/London")
 
         XCTAssertTrue(mockQuoteListView.hideQuoteSorterCalled)
     }

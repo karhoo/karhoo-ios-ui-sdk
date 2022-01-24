@@ -56,20 +56,22 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     }
 
     private func buildTestObject(callback: ScreenResultCallback<BookingScreenResult>?) -> KarhooBookingPresenter {
-        return KarhooBookingPresenter(bookingStatus: mockBookingStatus,
-                                      userService: mockUserService,
-                                      analyticsProvider: mockAppAnalytics,
-                                      phoneNumberCaller: mockPhoneNumberCaller,
-                                      callback: callback,
-                                      tripScreenBuilder: mockTripScreenBuilder,
-                                      rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
-                                      ridesScreenBuilder: mockRidesScreenBuilder,
-                                      checkoutScreenBuilder: mockCheckoutScreenBuilder,
-                                      prebookConfirmationScreenBuilder: mockPrebookConfirmationScreenBuilder,
-                                      addressScreenBuilder: mockAddressScreenBuilder,
-                                      datePickerScreenBuilder: mockDatePickerScreenBuilder,
-                                      tripRatingCache: mockTripRatingCache,
-                                      urlOpener: mockURLOpener)
+        KarhooBookingPresenter(
+            bookingStatus: mockBookingStatus,
+            userService: mockUserService,
+            analyticsProvider: mockAppAnalytics,
+            phoneNumberCaller: mockPhoneNumberCaller,
+            callback: callback,
+            tripScreenBuilder: mockTripScreenBuilder,
+            rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
+            ridesScreenBuilder: mockRidesScreenBuilder,
+            checkoutScreenBuilder: mockCheckoutScreenBuilder,
+            prebookConfirmationScreenBuilder: mockPrebookConfirmationScreenBuilder,
+            addressScreenBuilder: mockAddressScreenBuilder,
+            datePickerScreenBuilder: mockDatePickerScreenBuilder,
+            tripRatingCache: mockTripRatingCache,
+            urlOpener: mockURLOpener
+        )
     }
 
     private func bookingScreenCallback(result: ScreenResult<BookingScreenResult>) {
@@ -313,7 +315,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.didSelectQuote(quote: quote)
 
-        mockCheckoutScreenBuilder.triggerCheckoutScreenResult( .cancelled(byUser: true))
+        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.cancelled(byUser: true))
         mockBookingView.triggerDismissCallback()
 
         XCTAssertTrue(mockBookingView.dismissCalled)

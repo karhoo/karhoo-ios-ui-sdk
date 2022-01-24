@@ -206,18 +206,27 @@ class KarhooAddressPresenterSpec: XCTestCase {
      *  Then:   That text should be passed on to the search
      */
     func testSearch() {
+        testObject = KarhooAddressPresenter(
+            preferredLocation: mockLocation,
+            addressMode: mockAddressMode,
+            selectionCallback: { self.mockLocationInfoResult = $0 },
+            searchProvider: mockAddressSearchProvider,
+            userLocationProvider: mockUserLocationProvider,
+            addressService: mockAddressService,
+            analytics: mockAppAnalytics,
+            recentAddressProvider: mockRecentAddressProvider,
+            searchDelay: 0
+        )
+
         testObject.set(view: mockAddressView)
 
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
         let searchText = "Some text"
         testObject.search(text: searchText)
-        let expectation = XCTestExpectation()
 
-        DispatchQueue.global().asyncAfter(deadline: .now() + searchDelay*2) { [weak self] in
-            XCTAssertEqual(self?.mockAddressSearchProvider.searchString, searchText)
-            expectation.fulfill()
+        DispatchQueue.global(qos: .background).async {
+            XCTAssertEqual(self.mockAddressSearchProvider.searchString, searchText)
         }
-        wait(for: [expectation], timeout: 3)
     }
 
     /**
@@ -413,7 +422,6 @@ class KarhooAddressPresenterSpec: XCTestCase {
         *  Then:    Nothing should happen
         */
     func testCurrentLocationReturnsNil() {
-    
         mockUserLocationProvider.lastKnownLocation = nil
         testObject.getCurrentLocation()
         XCTAssertNil(mockAddressService.reverseGeocodePositionSet)

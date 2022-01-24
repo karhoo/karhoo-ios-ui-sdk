@@ -59,15 +59,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     }
 
     /**
-      * When: Pickup or destination is NOT an airport type address
-      * Then: Screen should be set to default state "Book Ride"
-      */
-    func testRegularBookingSetup() {
-        XCTAssertFalse(mockView.addFlightDetailsStateSet)
-        XCTAssertTrue(mockView.setDefaultStateCalled)
-    }
-
-    /**
+     * When: User details are provided
      * When: The user presses "book ride"
      * And: They are authenticated
      * Then: Then the screen should set to requesting state
@@ -76,6 +68,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * And: Analytics event should fire
      */
     func testRequestCarAuthenticated() {
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
@@ -94,6 +87,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * And: Analytics event should fire
      */
     func testAdyenRequestCarAuthenticated() {
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.paymentNonceToReturn = "nonce"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
@@ -115,6 +109,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     func testbookingMetadata() {
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.paymentNonceToReturn = "nonce"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
@@ -132,6 +127,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      */
     func testCancellingPaymentProviderFlow() {
         mockView.paymentNonceToReturn = "nonce"
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(.cancelledByUser)
@@ -175,6 +171,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      */
     func testRequestCarCallbackSuccess() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(OperationResult.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
@@ -191,6 +188,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      */
     func testRequestFailed() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
 
@@ -218,13 +216,14 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     
     /**
      * When: Guest karhoo user logged in
-     * Then: view should be set to default state
-     * And: user details should NOT be null initially
+     * Then: view should be set to more details state
+     * And: user details should be null initially
      */
     func testAddPassengerDetailsFailed() {
         loadTestObject()
-        XCTAssertFalse(mockView.setMoreDetailsCalled)
-        XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertFalse(mockView.addFlightDetailsStateSet)
+        XCTAssertTrue(mockView.setMoreDetailsCalled)
+        XCTAssertNil(mockView.details)
     }
 
     /**
@@ -258,6 +257,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      */
     func testRequestFailedNonceError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(OperationResult.completed(value: .threeDSecureCheckFailed))
 
@@ -408,6 +408,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
 

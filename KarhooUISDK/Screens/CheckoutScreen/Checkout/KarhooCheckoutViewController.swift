@@ -51,9 +51,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private let headerViewHeight: CGFloat = 90.0
     private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
     private var mainStackBottomPadding: NSLayoutConstraint!
-    
-    
-    
+
     // MARK: - Views
 
     var headerView: KarhooCheckoutHeaderView!
