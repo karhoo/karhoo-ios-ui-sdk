@@ -610,6 +610,8 @@
 
 "Text.KarhooError.Q0001" = "Ritiro e destinazione non possono essere gli stessi.";
 
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTI";
+
 "Text.Loyalty.BurnNotAllowed" = "Non ti è permesso bruciare punti";
 
 "Text.Loyalty.Info" = "La tua carta è necessaria per autorizzare questa transazione nel caso in cui il prezzo finale della corsa superi il tuo saldo punti. Il tuo account non verrà addebitato se i tuoi punti fedeltà coprono l'intero prezzo.";

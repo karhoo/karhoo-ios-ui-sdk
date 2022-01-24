@@ -606,6 +606,8 @@
 
 "Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
 
+"Text.Loyalty.BalanceTitle" = "BILANTZ: %1$@ PUNKTE";
+
 "Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
 
 "Text.Loyalty.Info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Treuepunkte den gesamten Preis abdecken.";

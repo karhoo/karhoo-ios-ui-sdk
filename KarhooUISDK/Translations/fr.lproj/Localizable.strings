@@ -614,6 +614,8 @@
 
 "Text.KarhooError.Q0001" = "Départ et destination ne peuvent pas être identiques.";
 
+"Text.Loyalty.BalanceTitle" = "SOLDE: %1$@ POINTS";
+
 "Text.Loyalty.BurnNotAllowed" = "Vous ne pouvez pas utiliser de points";
 
 "Text.Loyalty.Info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final du trajet dépasse votre solde de points. Votre compte ne sera pas débité si vos points de fidélité couvrent la totalité du prix.";

@@ -606,6 +606,8 @@
 
 "Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
 
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTOS";
+
 "Text.Loyalty.BurnNotAllowed" = "No se le permite quemar puntos";
 
 "Text.Loyalty.Info" = "Su tarjeta es necesaria para autorizar esta transacción en caso de que el precio final del viaje exceda su saldo de puntos. No se le cobrará a su cuenta si sus puntos de fidelidad cubren el precio total.";
