@@ -13,6 +13,7 @@ import KarhooSDK
 final class MockPassengerDetailsViewController: MockBaseViewController, PassengerDetailsView, KarhooInputViewDelegate {
     var delegate: PassengerDetailsDelegate?
     var details: PassengerDetails?
+    var enableBackOption: Bool = true
     
     lazy var textField: KarhooTextInputView = {
         let textField = KarhooTextInputView(contentType: .firstname,
