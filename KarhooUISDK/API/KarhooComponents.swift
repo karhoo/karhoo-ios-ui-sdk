@@ -39,11 +39,13 @@ public class KarhooComponents: BookingScreenComponents {
     }
     
     public func passengerDetails(details: PassengerDetails?,
-                                 delegate: PassengerDetailsDelegate?) -> PassengerDetailsView {
+                                 delegate: PassengerDetailsDelegate?,
+                                 enableBackOption: Bool = true) -> PassengerDetailsView {
         
         let detailsViewController = PassengerDetailsViewController()
         detailsViewController.details = details
         detailsViewController.delegate = delegate
+        detailsViewController.enableBackOption = enableBackOption
         return detailsViewController
     }
 }

@@ -12,13 +12,14 @@ import KarhooSDK
 public protocol PassengerDetailsView: BaseViewController {
     var delegate: PassengerDetailsDelegate? { get set }
     var details: PassengerDetails? { get set }
+    var enableBackOption: Bool { get set }
 }
 
 protocol PassengerDetailsActions: BaseViewController {
     func passengerDetailsValid(_ : Bool)
 }
 
-public protocol PassengerDetailsDelegate {
+public protocol PassengerDetailsDelegate: AnyObject {
     func didInputPassengerDetails(result: PassengerDetailsResult)
     func didCancelInput(byUser: Bool)
 }

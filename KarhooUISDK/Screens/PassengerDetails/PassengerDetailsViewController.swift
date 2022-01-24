@@ -52,6 +52,12 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         }
     }
     
+    var enableBackOption: Bool = true {
+        didSet {
+            backButton.isHidden = !enableBackOption
+        }
+    }
+    
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -292,11 +298,11 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }
     
     private func highlightInvalidFields() {
-        for (_, inputView) in inputViews.enumerated() {
+        inputViews.forEach({ inputView in
             if !inputView.isValid() {
                 inputView.showError()
             }
-        }
+        })
     }
 }
 
@@ -323,13 +329,13 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     private func getValidInputViewCount() -> Int {
         var validSet = Set<String>()
         
-        for (_, inputView) in inputViews.enumerated() {
+        inputViews.forEach({ inputView in
             if inputView.isValid() {
                 validSet.insert(inputView.accessibilityIdentifier!)
             } else {
                 validSet.remove(inputView.accessibilityIdentifier!)
             }
-        }
+        })
         
         return validSet.count
     }
@@ -360,6 +366,3 @@ extension PassengerDetailsViewController: KeyboardListener {
         }
     }
 }
-
-
-
