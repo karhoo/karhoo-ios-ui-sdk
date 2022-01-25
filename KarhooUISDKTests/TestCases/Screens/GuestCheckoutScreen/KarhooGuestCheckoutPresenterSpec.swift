@@ -19,7 +19,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
     private var mockUserService = MockUserService()
-    private var mockPaymentNonceProvicer = MockPaymentNonceProvider()
+    private var mockPaymentNonceProvider = MockPaymentNonceProvider()
     private var mockBookingMetadata: [String: Any]? = [:]
 
     override func setUp() {
@@ -121,7 +121,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         testObject.bookTripPressed()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
             
-        mockPaymentNonceProvicer.triggerResult(.completed(value: .nonce(nonce: expectedNonce)))
+        mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: expectedNonce)))
 
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
@@ -244,7 +244,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
             threeDSecureProvider: mockThreeDSecureProvider,
             tripService: mockTripService,
             userService: mockUserService,
-            paymentNonceProvider: mockPaymentNonceProvicer,
+            paymentNonceProvider: mockPaymentNonceProvider,
             callback: guestBookingRequestTrip
         )
         testObject.load(view: mockView)

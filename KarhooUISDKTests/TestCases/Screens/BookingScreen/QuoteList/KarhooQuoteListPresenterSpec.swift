@@ -18,6 +18,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     private var mockQuoteListView: MockQuoteListView!
     private var mockQuoteSorter: MockQuoteSorter!
     private var mockDateFormatter: MockDateFormatterType!
+    private var mockBookingDetails: BookingDetails!
 
     static let someQuote = TestUtil.getRandomQuote(highPrice: 1000, lowPrice: 1000, categoryName: "Some")
     static let anotherQuote = TestUtil.getRandomQuote(highPrice: 500, lowPrice: 500, categoryName: "anotherQuote")
@@ -43,6 +44,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         mockQuoteListView = MockQuoteListView()
         mockQuoteSorter = MockQuoteSorter()
         mockDateFormatter = MockDateFormatterType()
+        mockBookingDetails  = TestUtil.getRandomBookingDetails(destinationSet: true, dateSet: true)
         testObject = KarhooQuoteListPresenter(
             bookingStatus: mockBookingStatus,
             quoteService: mockQuoteService,
@@ -51,16 +53,13 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         )
     }
 
-    private func simulateDestinationSetInBookingDetails(dateSet: Bool = true) {
-        let bookingDetailsDestinationSet = TestUtil.getRandomBookingDetails(destinationSet: true,
-                                                                            dateSet: dateSet)
-
-        mockBookingStatus.bookingDetailsToReturn = bookingDetailsDestinationSet
-        testObject.bookingStateChanged(details: bookingDetailsDestinationSet)
+    private func simulateDestinationSetInBookingDetails() {
+        mockBookingStatus.bookingDetailsToReturn = mockBookingDetails
+        testObject.bookingStateChanged(details: mockBookingDetails)
     }
 
-    private func simulateSuccessfulQuoteFetch(dateSet: Bool = true) {
-        simulateDestinationSetInBookingDetails(dateSet: dateSet)
+    private func simulateSuccessfulQuoteFetch() {
+        simulateDestinationSetInBookingDetails()
         mockQuoteService.quotesPollCall.triggerPollSuccess(quoteServiceResponse)
     }
 
@@ -110,7 +109,10 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         let bookingDetails = mockBookingStatus.bookingDetailsToReturn
         XCTAssertNotNil(bookingDetails?.scheduledDate)
 
-        XCTAssertEqual(bookingDetails?.originLocationDetails?.timezone().identifier, "Europe/London")
+        XCTAssertEqual(
+            bookingDetails?.originLocationDetails?.timezone().identifier,
+            mockBookingDetails.originLocationDetails?.timezone().identifier
+        )
 
         XCTAssertTrue(mockQuoteListView.hideQuoteSorterCalled)
     }
@@ -122,7 +124,8 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
      * And: QuoteSorter should show
      */
     func testSuccessFetchOfAsap() {
-        simulateSuccessfulQuoteFetch(dateSet: false)
+        mockBookingDetails  = TestUtil.getRandomBookingDetails(destinationSet: true, dateSet: false)
+        simulateSuccessfulQuoteFetch()
 
         XCTAssertNil(mockDateFormatter.detailStyleDateSet)
         XCTAssertTrue(mockQuoteListView.showQuoteSorterCalled)
@@ -263,7 +266,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
      * And: LoadingView should hide
      */
     func testNoQuotesAfterCompletedResponse() {
-        simulateDestinationSetInBookingDetails(dateSet: true)
+        simulateDestinationSetInBookingDetails()
 
         mockQuoteListView.showLoadingViewCalled = false
         mockQuoteListView.hideLoadingViewCalled = false
