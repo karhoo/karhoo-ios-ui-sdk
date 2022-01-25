@@ -116,8 +116,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
     
-    private lazy var learnMoreButton: KarhooLearnMoreButton = {
-        let button = KarhooLearnMoreButton()
+    private lazy var learnMoreButton: KarhooExpandViewButton = {
+        let button = KarhooExpandViewButton(title: UITexts.Booking.learnMore)
         button.set(actions: self)
         button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
         button.anchor(height: 44.0)
@@ -258,18 +258,18 @@ final class KarhooCheckoutHeaderView: UIStackView {
 }
 
 // MARK: - RevealMoreButtonActions
-extension KarhooCheckoutHeaderView: LearnMoreButtonDelegate {
+extension KarhooCheckoutHeaderView: ExpandViewButtonDelegate {
     func learnMorePressed() {
-        self.vehicleCapacityView.isHidden = true
         self.capacityDetailsView.isHidden = false
         UIView.animate(withDuration: 0.45) { [unowned self] in
+            self.vehicleCapacityView.alpha = 0.0
             self.capacityDetailsView.alpha = 1.0
         }
     }
     
     func learnLessPressed() {
-        self.vehicleCapacityView.isHidden = false
         UIView.animate(withDuration: 0.45) {
+            self.vehicleCapacityView.alpha = 1.0
             self.capacityDetailsView.alpha = 0.0
             self.capacityDetailsView.isHidden = true
         }

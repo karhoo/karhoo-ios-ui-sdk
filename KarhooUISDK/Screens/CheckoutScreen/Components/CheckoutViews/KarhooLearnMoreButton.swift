@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LearnMoreButtonDelegate: AnyObject {
+protocol ExpandViewButtonDelegate: AnyObject {
     func learnMorePressed()
     func learnLessPressed()
 }
@@ -16,19 +16,6 @@ protocol LearnMoreButtonDelegate: AnyObject {
 private enum ButtonMode {
     case learnMore
     case learnLess
-    
-    var image: UIImage {
-        switch self {
-        case .learnLess:
-            return UIImage.uisdkImage("dropupIcon")
-        case .learnMore:
-            return UIImage.uisdkImage("dropdownIcon")
-        }
-    }
-    
-    var title: String {
-        return UITexts.Booking.learnMore
-    }
 }
 
 public struct KHRevealMoreButtonViewID {
@@ -38,8 +25,9 @@ public struct KHRevealMoreButtonViewID {
     public static let image = "dropdown_up_icon"
 }
 
-final class KarhooLearnMoreButton: UIButton {
-    private weak var actions: LearnMoreButtonDelegate?
+final class KarhooExpandViewButton: UIButton {
+    private weak var actions: ExpandViewButtonDelegate?
+    private var title: String
     private var currentMode: ButtonMode = .learnMore
     private var didSetupConstraints = false
     
@@ -66,7 +54,7 @@ final class KarhooLearnMoreButton: UIButton {
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
         buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
-        buttonLabel.text = currentMode.title
+        buttonLabel.text = title
         buttonLabel.textColor = KarhooUI.colors.accent
         buttonLabel.textAlignment = .center
         
@@ -75,7 +63,7 @@ final class KarhooLearnMoreButton: UIButton {
 
     private lazy var dropdownImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = currentMode.image
+        imageView.image = UIImage.uisdkImage("dropdownIcon")
         imageView.accessibilityIdentifier = KHRevealMoreButtonViewID.image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = KarhooUI.colors.accent
@@ -83,7 +71,8 @@ final class KarhooLearnMoreButton: UIButton {
         return imageView
     }()
     
-    init() {
+    init(title: String) {
+        self.title = title
         super.init(frame: .zero)
         self.setupView()
     }
@@ -146,19 +135,20 @@ final class KarhooLearnMoreButton: UIButton {
         switch currentMode {
         case .learnMore:
             currentMode = .learnLess
+            UIView.animate(withDuration: 0.45, animations: { [unowned self] in
+                self.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
+            })
             actions?.learnMorePressed()
         case .learnLess:
             currentMode = .learnMore
+            UIView.animate(withDuration: 0.45, animations: { [unowned self] in
+                self.dropdownImage.transform = CGAffineTransform.identity
+            })
             actions?.learnLessPressed()
         }
-        
-        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-            self.dropdownImage.image = currentMode.image
-            self.buttonLabel.text = currentMode.title
-        })
     }
 
-    func set(actions: LearnMoreButtonDelegate) {
+    func set(actions: ExpandViewButtonDelegate) {
         self.actions = actions
     }
 }
