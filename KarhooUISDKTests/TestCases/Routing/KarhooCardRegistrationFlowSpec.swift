@@ -125,7 +125,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
         mockPaymentService.paymentSDKTokenCall.triggerResult(result: .success(result: token))
 
         mockPaymentScreensBuilder.triggerBuilderResult(.failed(error: error))
-        
+
         let expectedSDKTokenError = "\(UITexts.Errors.missingPaymentSDKToken) [\(error.code)]"
 
         XCTAssertEqual(UITexts.Generic.error, mockBaseViewController.showAlertTitle)
