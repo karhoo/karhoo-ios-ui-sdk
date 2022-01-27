@@ -153,6 +153,9 @@ public struct UIConstants {
             /// 30
             public static let largeTagHeight: CGFloat = 30
             
+            /// 30
+            public static let smallRowHeight: CGFloat = 30
+            
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
