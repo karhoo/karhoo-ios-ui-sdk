@@ -503,7 +503,6 @@ extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
         PassengerInfo.shared.set(country: result.country ?? KarhooCountryParser.defaultCountry)
     }
     
-    func didCancelInput(byUser: Bool) {
-        
-    }
+    // No action needed in this case for now
+    func didCancelInput(byUser: Bool) {}
 }

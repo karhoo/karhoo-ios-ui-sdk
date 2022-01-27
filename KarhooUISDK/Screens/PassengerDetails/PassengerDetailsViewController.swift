@@ -298,11 +298,11 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }
     
     private func highlightInvalidFields() {
-        inputViews.forEach({ inputView in
+        inputViews.forEach { inputView in
             if !inputView.isValid() {
                 inputView.showError()
             }
-        })
+        }
     }
 }
 
@@ -329,13 +329,13 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     private func getValidInputViewCount() -> Int {
         var validSet = Set<String>()
         
-        inputViews.forEach({ inputView in
+        inputViews.forEach { inputView in
             if inputView.isValid() {
-                validSet.insert(inputView.accessibilityIdentifier!)
+                validSet.insert(inputView.accessibilityIdentifier ?? "")
             } else {
-                validSet.remove(inputView.accessibilityIdentifier!)
+                validSet.remove(inputView.accessibilityIdentifier ?? "")
             }
-        })
+        }
         
         return validSet.count
     }
