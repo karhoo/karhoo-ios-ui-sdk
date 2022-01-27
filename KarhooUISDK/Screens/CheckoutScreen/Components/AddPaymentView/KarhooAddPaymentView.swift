@@ -165,7 +165,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         passengerPaymentTitle.text = "\(UITexts.Payment.paymentMethod) **** \(nonce.lastFour)"
         passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(nonce.cardType)
-        accessibilityLabel = "\(UITexts.Payment.paymentMethod): **** \(nonce.lastFour.split(separator: " ").joined())"
+        accessibilityLabel = "\(UITexts.Payment.paymentMethod): \(nonce.lastFour.split(separator: " ").joined())"
         accessibilityHint = UITexts.Generic.edit
 
         updateViewState()
