@@ -224,9 +224,12 @@ class KarhooAddressPresenterSpec: XCTestCase {
         let searchText = "Some text"
         testObject.search(text: searchText)
 
-        DispatchQueue.global(qos: .background).async {
+        let expectation = XCTestExpectation()
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.2, execute: {
             XCTAssertEqual(self.mockAddressSearchProvider.searchString, searchText)
-        }
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
@@ -236,10 +239,14 @@ class KarhooAddressPresenterSpec: XCTestCase {
     func testEmptySearch() {
         let searchText = "Some text"
         testObject.search(text: searchText)
-
         testObject.search(text: nil)
 
-        XCTAssert(mockAddressSearchProvider.searchString == nil)
+        let expectation = XCTestExpectation()
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
+            XCTAssert(self.mockAddressSearchProvider.searchString == "")
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
