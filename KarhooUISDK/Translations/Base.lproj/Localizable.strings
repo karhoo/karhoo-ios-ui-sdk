@@ -463,7 +463,7 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Hide";
 
-"Text.Generic.Locale" = "en-GB";
+"Text.Generic.Locale" = "en_GB";
 
 "Text.Generic.Logout" = "Sign out";
 

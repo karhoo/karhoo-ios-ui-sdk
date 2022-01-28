@@ -459,7 +459,7 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Nascondere";
 
-"Text.Generic.Locale" = "it-IT";
+"Text.Generic.Locale" = "it_IT";
 
 "Text.Generic.Logout" = "Esci";
 

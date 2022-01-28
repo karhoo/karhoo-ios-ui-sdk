@@ -463,7 +463,7 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Masquer";
 
-"Text.Generic.Locale" = "fr-FR";
+"Text.Generic.Locale" = "fr_FR";
 
 "Text.Generic.Logout" = "Déconnexion";
 

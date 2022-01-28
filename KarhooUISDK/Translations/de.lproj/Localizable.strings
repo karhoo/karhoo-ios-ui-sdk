@@ -455,7 +455,7 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ausblenden";
 
-"Text.Generic.Locale" = "de-DE";
+"Text.Generic.Locale" = "de_DE";
 
 "Text.Generic.Logout" = "Abmeldung";
 
