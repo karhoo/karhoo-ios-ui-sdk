@@ -81,6 +81,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
+        footerView.layer.shadowColor = KarhooUI.colors.textLabel.cgColor
+        footerView.layer.shadowOpacity = 1
+        footerView.layer.shadowOffset = CGSize(width:0,height:-1)
+        footerView.layer.shadowRadius = 0.5
         return footerView
     }()
     
@@ -312,8 +316,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
-        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding)
+        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor, paddingTop: standardPadding, paddingBottom: standardPadding)
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
     }
     
