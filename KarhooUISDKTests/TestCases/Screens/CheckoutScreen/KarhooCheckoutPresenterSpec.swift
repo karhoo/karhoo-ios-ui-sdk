@@ -94,6 +94,8 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
