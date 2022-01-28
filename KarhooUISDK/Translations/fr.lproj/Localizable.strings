@@ -463,6 +463,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Masquer";
 
+"Text.Generic.Locale" = "fr_FR";
+
 "Text.Generic.Logout" = "Déconnexion";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -643,7 +645,7 @@
 
 "Text.Quote.FreeCancellationAndKeyword" = "et";
 
-"Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ minutes après la réservation";
+"Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ après la réservation";
 
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Annulation sans frais jusqu'au départ du chauffeur";
 

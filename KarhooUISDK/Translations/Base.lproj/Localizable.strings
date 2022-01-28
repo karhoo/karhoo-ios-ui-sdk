@@ -250,8 +250,6 @@
 "Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
 
 /* Booking */
-"Text.Booking.BookNow" = "BOOK NOW";
-
 "Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
@@ -273,8 +271,6 @@
 
 /* used as a call to action on a button in the empty bookings screen: English: "Book Ride" */
 "Text.Bookings.BookATrip" = "Book Ride";
-
-"Text.Bookings.NewRide" = "NEW RIDE";
 
 /* "Cancel Ride" button action */
 "Text.Bookings.CancelRide" = "Cancel Ride";
@@ -466,6 +462,8 @@
 
 /* Password Entry Button */
 "Text.Generic.Hide" = "Hide";
+
+"Text.Generic.Locale" = "en_GB";
 
 "Text.Generic.Logout" = "Sign out";
 

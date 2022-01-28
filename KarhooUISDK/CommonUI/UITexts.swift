@@ -72,6 +72,7 @@ public enum UITexts {
         public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
+        public static let locale = "Text.Generic.Locale".localized
     }
 
     public enum GenericTripStatus {
