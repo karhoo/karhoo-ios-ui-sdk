@@ -455,6 +455,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ausblenden";
 
+"Text.Generic.Locale" = "de-DE";
+
 "Text.Generic.Logout" = "Abmeldung";
 
 /* english "making a booking". Used in terms conditions construction */

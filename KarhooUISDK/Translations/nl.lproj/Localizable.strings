@@ -463,6 +463,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Verbergen";
 
+"Text.Generic.Locale" = "nl-NL";
+
 "Text.Generic.Logout" = "Afmelden";
 
 /* english "making a booking". Used in terms conditions construction */

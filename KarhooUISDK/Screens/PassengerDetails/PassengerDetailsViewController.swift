@@ -37,7 +37,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private var inputViews = [KarhooInputView]()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
-    private let currentLocale = NSLocale.current.languageCode ?? "en"
+    private let currentLocale = UITexts.Generic.locale
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
