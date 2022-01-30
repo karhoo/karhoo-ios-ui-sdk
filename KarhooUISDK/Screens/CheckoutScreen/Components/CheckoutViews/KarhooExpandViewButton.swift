@@ -26,8 +26,11 @@ public struct KHRevealMoreButtonViewID {
 }
 
 final class KarhooExpandViewButton: UIButton {
-    private weak var actions: ExpandViewButtonDelegate?
     private var title: String
+    private var onExpandAction: () -> Void
+    private var onCollapseAction: () -> Void
+
+    
     private var currentMode: ButtonMode = .learnMore
     private var didSetupConstraints = false
     
@@ -71,8 +74,10 @@ final class KarhooExpandViewButton: UIButton {
         return imageView
     }()
     
-    init(title: String) {
+    init(title: String, onExpand: @escaping () -> Void, onCollapce: @escaping () -> Void) {
         self.title = title
+        self.onExpandAction = onExpand
+        self.onCollapseAction = onCollapce
         super.init(frame: .zero)
         self.setupView()
     }
@@ -138,17 +143,15 @@ final class KarhooExpandViewButton: UIButton {
             UIView.animate(withDuration: 0.45, animations: { [unowned self] in
                 self.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
             })
-            actions?.learnMorePressed()
+            onExpandAction()
+//            actions?.learnMorePressed()
         case .learnLess:
             currentMode = .learnMore
             UIView.animate(withDuration: 0.45, animations: { [unowned self] in
                 self.dropdownImage.transform = CGAffineTransform.identity
             })
-            actions?.learnLessPressed()
+            onCollapseAction()
+//            actions?.learnLessPressed()
         }
-    }
-
-    func set(actions: ExpandViewButtonDelegate) {
-        self.actions = actions
     }
 }
