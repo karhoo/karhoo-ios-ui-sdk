@@ -53,7 +53,8 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         self.callback = callback
         baseViewController?.showLoadingOverlay(true)
 
-        let request = AdyenPaymentMethodsRequest(amount: adyenAmout)
+        let request = AdyenPaymentMethodsRequest(amount: adyenAmout,
+                                                 shopperLocale: UITexts.Generic.locale)
         paymentService.adyenPaymentMethods(request: request).execute(callback: { [weak self] result in
             self?.baseViewController?.showLoadingOverlay(false)
             switch result {
