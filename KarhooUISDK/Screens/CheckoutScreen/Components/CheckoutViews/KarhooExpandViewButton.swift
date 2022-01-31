@@ -143,15 +143,13 @@ final class KarhooExpandViewButton: UIButton {
             UIView.animate(withDuration: 0.45, animations: { [unowned self] in
                 self.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
             })
-            onExpandAction()
-//            actions?.learnMorePressed()
+            onCollapseAction()
         case .learnLess:
             currentMode = .learnMore
             UIView.animate(withDuration: 0.45, animations: { [unowned self] in
                 self.dropdownImage.transform = CGAffineTransform.identity
             })
-            onCollapseAction()
-//            actions?.learnLessPressed()
+            onExpandAction()
         }
     }
 }

@@ -59,6 +59,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var headerView: KarhooCheckoutHeaderView!
 
     var loyaltyView: KarhooLoyaltyView!
+    
+    var legalNoticeView: KarhooLegalNoticeView!
 
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
@@ -139,6 +141,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return baseStackView
     }()
     
+    
+    
     private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
@@ -215,6 +219,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView = TermsConditionsView()
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
+        legalNoticeView = KarhooLegalNoticeView()
         setUpView()
     }
     
@@ -253,7 +258,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        
+        if legalNoticeView.isAvailable {
+            baseStackView.addViewToStack(view: legalNoticeView)
+        }
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -315,6 +322,13 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
         footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
+        if legalNoticeView.isAvailable {
+            legalNoticeView.anchor(top: termsConditionsView.bottomAnchor,
+                                   leading: baseStackView.leadingAnchor,
+                                   trailing: baseStackView.trailingAnchor,
+                                   paddingLeft: standardSpacing,
+                                   paddingRight: standardSpacing)
+        }
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
