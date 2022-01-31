@@ -84,7 +84,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.layer.shadowColor = KarhooUI.colors.black.cgColor
         footerView.layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
         footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
-        footerView.layer.shadowRadius = UIConstants.Alpha.shadow
+        footerView.layer.shadowRadius = UIConstants.ShadowRadius.border
         return footerView
     }()
     
