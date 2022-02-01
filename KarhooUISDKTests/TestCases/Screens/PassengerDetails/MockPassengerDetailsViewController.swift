@@ -10,7 +10,11 @@ import UIKit
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockPassengerDetailsViewController: MockBaseViewController, KarhooInputViewDelegate {
+final class MockPassengerDetailsViewController: MockBaseViewController, PassengerDetailsView, KarhooInputViewDelegate {
+    var delegate: PassengerDetailsDelegate?
+    var details: PassengerDetails?
+    var enableBackOption: Bool = true
+    
     lazy var textField: KarhooTextInputView = {
         let textField = KarhooTextInputView(contentType: .firstname,
                                             isOptional: false,

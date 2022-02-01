@@ -147,16 +147,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     // MARK: - Passenger Details
     func addOrEditPassengerDetails() {
         let details = view?.getPassengerDetails()
-        let presenter = PassengerDetailsPresenter(details: details) { [weak self] result in
-            guard let completedValue = result.completedValue()
-            else {
-                return
-            }
-            
-            self?.view?.setPassenger(details: completedValue.details)
-            PassengerInfo.shared.set(country: completedValue.country ?? KarhooCountryParser.defaultCountry)
-        }
-        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+        let detailsViewController = KarhooComponents.shared.passengerDetails(details: details, delegate: self)
         view?.showAsOverlay(item: detailsViewController, animated: true)
     }
     
@@ -504,4 +495,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }))
         view?.present(alert, animated: true, completion: nil)
     }
+}
+
+extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
+    func didInputPassengerDetails(result: PassengerDetailsResult) {
+        view?.setPassenger(details: result.details)
+        PassengerInfo.shared.set(country: result.country ?? KarhooCountryParser.defaultCountry)
+    }
+    
+    // No action needed in this case for now
+    func didCancelInput(byUser: Bool) {}
 }
