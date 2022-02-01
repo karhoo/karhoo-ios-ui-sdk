@@ -115,8 +115,11 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHAddCardViewID.view
+        isAccessibilityElement = true
         layer.cornerRadius = 4.0
         layer.masksToBounds = true
+        accessibilityLabel = UITexts.Payment.addPaymentMethod
+        accessibilityTraits = .button
 
         addSubview(stackContainer)
 
@@ -159,9 +162,11 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
     }
     
     func set(nonce: Nonce) {
-        passengerPaymentTitle.text = UITexts.Payment.paymentMethod + " **** " + nonce.lastFour
+        passengerPaymentTitle.text = "\(UITexts.Payment.paymentMethod) **** \(nonce.lastFour)"
         passengerPaymentSubtitle.text = UITexts.Generic.edit
 		passengerPaymentImage.image = UIImage.uisdkImage(nonce.cardType)
+        accessibilityLabel = "\(UITexts.Payment.paymentMethod): \(nonce.lastFour.split(separator: " ").joined())"
+        accessibilityHint = UITexts.Generic.edit
 
         updateViewState()
         actions?.didGetNonce(nonce: nonce.nonce)

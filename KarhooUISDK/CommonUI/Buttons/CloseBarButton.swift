@@ -18,6 +18,7 @@ public final class CloseBarButton: UIBarButtonItem {
         self.action = #selector(pressed(sender:))
         self.tintColor = .black
         self.accessibilityIdentifier = "close-button"
+        self.accessibilityLabel = UITexts.Generic.close
     }
 
     public required init?(coder aDecoder: NSCoder) {

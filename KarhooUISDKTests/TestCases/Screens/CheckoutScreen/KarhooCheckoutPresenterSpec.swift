@@ -399,6 +399,12 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
         XCTAssertTrue(mockView.dismissCalled)
     }
+
+    func testQuoteExpiredCalling() {
+        mockView.quoteDidExpire()
+
+        XCTAssertTrue(mockView.quoteDidExpireCalled)
+    }
     
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()

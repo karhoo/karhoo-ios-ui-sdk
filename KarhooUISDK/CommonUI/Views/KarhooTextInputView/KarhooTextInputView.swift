@@ -49,7 +49,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
     
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         stackContainer = UIStackView()
         stackContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.accessibilityIdentifier = "stack_container"
@@ -108,10 +108,14 @@ class KarhooTextInputView: UIView, KarhooInputView {
         titleLabel.accessibilityIdentifier = "title_label"
         titleLabel.text = contentType.titleText
         titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        titleLabel.tintColor = KarhooUI.colors.primaryTextColor
+        titleLabel.tintColor = KarhooUI.colors.text
         addSubview(titleLabel)
         
         updateConstraints()
+
+        isAccessibilityElement = true
+        accessibilityLabel = contentType.placeholderText
+        accessibilityHint = contentType.placeholderText == textView.text ? textView.text : nil
     }
     
     override func updateConstraints() {

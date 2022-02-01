@@ -121,7 +121,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
             _ = stackConstraints.map { $0.priority = .defaultLow }
             _ = stackConstraints.map { $0.isActive = true }
             
-            _ = [legalDisclaimerLabel.heightAnchor.constraint(equalToConstant: 55.0)].map { $0.isActive = true }
+            legalDisclaimerLabel.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.View.smallRowHeight).isActive = true
             
             let quoteCategoryHeight: CGFloat = 65.0
             _ = [quoteCategoryBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

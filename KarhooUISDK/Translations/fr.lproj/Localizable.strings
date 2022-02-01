@@ -245,12 +245,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Détails de la course";
 
+"Text.Booking.QuoteExpired" = "Offre expirée";
+
+"Text.Booking.QuoteExpiredMessage" = "Veuillez choisir une autre offre pour continuer la réservation.";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAYER ET RÉSERVER";
 
 "Text.Booking.RequestingCar" = "Commande en cours";
 
 "Text.Booking.RequestReceived" = "Réservation reçue";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Planifier le trajet";
 
 "Text.Booking.TrainTracking" = "Associe votre train";
 
@@ -456,6 +463,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Masquer";
 
+"Text.Generic.Locale" = "fr_FR";
+
 "Text.Generic.Logout" = "Déconnexion";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -607,6 +616,8 @@
 
 "Text.KarhooError.Q0001" = "Départ et destination ne peuvent pas être identiques.";
 
+"Text.Loyalty.BalanceTitle" = "SOLDE: %1$@ POINTS";
+
 "Text.Loyalty.BurnNotAllowed" = "Vous ne pouvez pas utiliser de points";
 
 "Text.Loyalty.Info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final du trajet dépasse votre solde de points. Votre compte ne sera pas débité si vos points de fidélité couvrent la totalité du prix.";
@@ -634,7 +645,7 @@
 
 "Text.Quote.FreeCancellationAndKeyword" = "et";
 
-"Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ minutes après la réservation";
+"Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ après la réservation";
 
 "Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Annulation sans frais jusqu'au départ du chauffeur";
 

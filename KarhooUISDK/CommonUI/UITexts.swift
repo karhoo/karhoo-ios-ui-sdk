@@ -72,6 +72,7 @@ public enum UITexts {
         public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
+        public static let locale = "Text.Generic.Locale".localized
     }
 
     public enum GenericTripStatus {
@@ -217,6 +218,7 @@ public enum UITexts {
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized
         public static let baseFare = "Text.Booking.BaseFare".localized
+        public static let prebookRideHint = "Text.Booking.PrebookHint".localized
         public static let prebookConfirmed = "Text.Booking.PrebookConfirmed".localized
         public static let prebookConfirmedRideDetails = "Text.Booking.PrebookConfirmed.RideDetails".localized
         public static let prebookConfirmation = "Text.Booking.PrebookConfirmation".localized
@@ -236,6 +238,8 @@ public enum UITexts {
         public static let gpsTracking = "Text.Booking.GPSTracking".localized
         public static let trainTracking = "Text.Booking.TrainTracking".localized
         public static let flightTracking = "Text.Booking.FlightTracking".localized
+        public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
+        public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
     }
 
     public enum Availability {
@@ -429,6 +433,7 @@ public enum UITexts {
         static let pointsBurnedForTrip = "Text.Loyalty.PointsBurnedForTrip".localized
         static let info = "Text.Loyalty.Info".localized
         static let noAllowedToBurnPoints = "Text.Loyalty.BurnNotAllowed".localized
+        static let balanceTitle = "Text.Loyalty.BalanceTitle".localized
     }
 }
 

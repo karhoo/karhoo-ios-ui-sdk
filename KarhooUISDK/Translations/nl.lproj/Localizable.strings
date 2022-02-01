@@ -245,12 +245,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ritgegevens";
 
+"Text.Booking.QuoteExpired" = "Offerte verlopen";
+
+"Text.Booking.QuoteExpiredMessage" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
 
 "Text.Booking.RequestingCar" = "Rit reserveren";
 
 "Text.Booking.RequestReceived" = "Reservering ontvangen";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Plan de rit";
 
 "Text.Booking.TrainTracking" = "Trein volgen";
 
@@ -456,6 +463,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Verbergen";
 
+"Text.Generic.Locale" = "nl_NL";
+
 "Text.Generic.Logout" = "Afmelden";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -606,6 +615,8 @@
 "Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
+
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTEN";
 
 "Text.Loyalty.BurnNotAllowed" = "Je mag geen punten verbranden";
 

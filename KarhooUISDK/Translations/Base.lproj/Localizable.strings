@@ -245,6 +245,10 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
+"Text.Booking.QuoteExpired" = "Quote expired";
+
+"Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
+
 /* Booking */
 "Text.Booking.BookNow" = "BOOK NOW";
 
@@ -253,6 +257,9 @@
 "Text.Booking.RequestingCar" = "Booking Ride";
 
 "Text.Booking.RequestReceived" = "Booking Received";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Schedule the ride";
 
 "Text.Booking.TrainTracking" = "Train tracking";
 
@@ -460,6 +467,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Hide";
 
+"Text.Generic.Locale" = "en_GB";
+
 "Text.Generic.Logout" = "Sign out";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -610,6 +619,8 @@
 "Text.KarhooError.K3002" = "There are no fleets available in this area.";
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
+
+"Text.Loyalty.BalanceTitle" = "BALANCE: %1$@ POINTS";
 
 "Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
 

@@ -41,6 +41,7 @@ protocol CheckoutView: BaseViewController {
     func getComments() -> String?
     func getFlightNumber() -> String?
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
+    func quoteDidExpire()
 }
 
 extension CheckoutView {

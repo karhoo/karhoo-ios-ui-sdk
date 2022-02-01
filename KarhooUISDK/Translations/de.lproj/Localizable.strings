@@ -237,12 +237,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
 
+"Text.Booking.QuoteExpired" = "Zitat erloschen";
+
+"Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
+
 /* Booking */
 "Text.Booking.RequestCar" = "BEZAHLEN UND BUCHEN";
 
 "Text.Booking.RequestingCar" = "Fahrt buchen";
 
 "Text.Booking.RequestReceived" = "Erhaltene Buchung";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Planen Sie die Fahrt";
 
 "Text.Booking.TrainTracking" = "Zugverfolgung";
 
@@ -448,6 +455,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ausblenden";
 
+"Text.Generic.Locale" = "de_DE";
+
 "Text.Generic.Logout" = "Abmeldung";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -598,6 +607,8 @@
 "Text.KarhooError.K3002" = "In diesem Gebiet sind keine Flotten verfügbar.";
 
 "Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
+
+"Text.Loyalty.BalanceTitle" = "BILANTZ: %1$@ PUNKTE";
 
 "Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
 
