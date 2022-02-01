@@ -12,6 +12,7 @@ final class TripDetailsViewModel {
 
     public let pickup: String
     public let destination: String
+    public let accessibilityDate: String
     public let formattedDate: String
     public let vehicleInformation: String
     public let supplierName: String
@@ -25,6 +26,7 @@ final class TripDetailsViewModel {
         self.supplierName = trip.fleetInfo.name
         self.supplierLogoStringURL = trip.fleetInfo.logoUrl
         let dateFormatter = KarhooDateFormatter(timeZone: trip.origin.timezone())
+        self.accessibilityDate = dateFormatter.display(fullDate: trip.dateScheduled)
         self.formattedDate = dateFormatter.display(detailStyleDate: trip.dateScheduled)
         switch trip.state {
         case .driverEnRoute, .arrived, .passengerOnBoard, .completed:

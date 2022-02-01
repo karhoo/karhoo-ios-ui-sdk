@@ -463,6 +463,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Verbergen";
 
+"Text.Generic.Locale" = "nl_NL";
+
 "Text.Generic.Logout" = "Afmelden";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -613,6 +615,8 @@
 "Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
+
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTEN";
 
 "Text.Loyalty.BurnNotAllowed" = "Je mag geen punten verbranden";
 

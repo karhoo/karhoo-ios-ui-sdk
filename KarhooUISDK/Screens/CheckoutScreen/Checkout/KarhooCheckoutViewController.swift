@@ -344,7 +344,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.details = details
     }
 
-    
     func setRequestingState() {
         disableUserInteraction()
         bookingButton.setRequestingMode()
@@ -380,7 +379,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         self.loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
-            // TODO: confirm that the highPrice should be used here
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,
                                                     tripAmount: quote.price.highPrice)

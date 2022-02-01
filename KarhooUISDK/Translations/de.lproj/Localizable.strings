@@ -455,6 +455,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ausblenden";
 
+"Text.Generic.Locale" = "de_DE";
+
 "Text.Generic.Logout" = "Abmeldung";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -605,6 +607,8 @@
 "Text.KarhooError.K3002" = "In diesem Gebiet sind keine Flotten verfügbar.";
 
 "Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
+
+"Text.Loyalty.BalanceTitle" = "BILANTZ: %1$@ PUNKTE";
 
 "Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
 

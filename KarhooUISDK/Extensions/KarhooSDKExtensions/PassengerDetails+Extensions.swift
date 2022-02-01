@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 extension PassengerDetails {
-    var areValid: Bool {
+    public var areValid: Bool {
         get {
             guard Utils.isValidName(name: firstName),
                   Utils.isValidName(name: lastName),

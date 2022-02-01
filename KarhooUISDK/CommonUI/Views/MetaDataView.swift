@@ -113,12 +113,17 @@ final class MetaDataView: UIView {
         actionButton = UIButton(type: .custom)
         actionButton.accessibilityIdentifier = KHMetaDataViewID.actionButton
         actionButton.translatesAutoresizingMaskIntoConstraints = false
+        updateAccessibility()
         addSubview(actionButton)
         
         _ = [actionButton.topAnchor.constraint(equalTo: self.topAnchor),
              actionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
              actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
              actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
+    }
+
+    private func updateAccessibility() {
+        actionButton.accessibilityLabel = "\(titleLabel.text ?? "") \(valueLabel.text ?? "")"
     }
     
     // MARK: Public methods
@@ -132,6 +137,7 @@ final class MetaDataView: UIView {
     
     public func setValue(_ value: String) {
         valueLabel.text = value
+        updateAccessibility()
     }
     
     public func setValueColor(_ color: UIColor) {
