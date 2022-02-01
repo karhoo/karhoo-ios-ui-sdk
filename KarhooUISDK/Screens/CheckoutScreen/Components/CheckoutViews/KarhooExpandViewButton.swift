@@ -113,6 +113,7 @@ final class KarhooExpandViewButton: UIButton {
                                  paddingRight: 5.0)
             
             buttonLabel.anchor(top: topAnchor,
+                               leading: containerView.leadingAnchor,
                                bottom: bottomAnchor,
                                trailing: dropdownImage.leadingAnchor,
                                paddingTop: 5.0,

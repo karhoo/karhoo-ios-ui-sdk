@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 public struct KHLegalNoticeViewID {
@@ -20,6 +21,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     let isAvailable: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
     private weak var viewController: UIViewController?
     private let legalNoticeMailComposer: KarhooLegalNoticeMailComposer
+    private var zeroHeightTextConstreint: NSLayoutConstraint
     
     private var didSetUpConstraints: Bool = false
     private var legalNoticeTextView: UITextView!
@@ -45,6 +47,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
     //MARK: - Init
     init(parent: UIViewController, mailComposer: KarhooLegalNoticeMailComposer) {
+        zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
         self.viewController = parent
         self.legalNoticeMailComposer = mailComposer
         super.init(frame: .zero)
@@ -72,7 +75,8 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         if !didSetUpConstraints {
             legalNoticeButton.anchor(
                 top: topAnchor,
-                trailing: trailingAnchor,
+                leading: leadingAnchor,
+                bottom: attributedLabel.topAnchor,
                 paddingLeft: 8.0,
                 paddingRight: 8.0)
             
@@ -123,16 +127,10 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
        }
     
     func showLegalNoticePressed(){
-        UIView.animate(withDuration: 0.45) { [unowned self] in
-            self.attributedLabel.alpha = 1.0
-            self.attributedLabel.isHidden = false
-        }
+        zeroHeightTextConstreint.isActive = false
     }
     
     func hideLegalNoticePressed(){
-        UIView.animate(withDuration: 0.45) {
-            self.attributedLabel.alpha = 0.0
-            self.attributedLabel.isHidden = true
-        }
+        zeroHeightTextConstreint.isActive = true
     }
 }
