@@ -1,5 +1,5 @@
 //
-//  KarhooLearnMoreButton.swift
+//  KarhooExpandViewButton.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 18.08.2021.

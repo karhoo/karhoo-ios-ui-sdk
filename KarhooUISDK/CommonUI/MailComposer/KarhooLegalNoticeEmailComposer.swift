@@ -30,12 +30,10 @@ public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMai
         guard MFMailComposeViewController.canSendMail() == true && viewController != nil else {
             return false
         }
-
-        // TODO: update email components
         _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: "Legal notice mail",
-                                               recipients: ["legalNotice@karhoo.com"],
-                                               body: "Body")
+                                               subject: "",
+                                               recipients: [UITexts.Booking.legalNoticeMail],
+                                               body: "")
         return true
     }
 

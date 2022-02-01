@@ -17,7 +17,7 @@ public struct KHLegalNoticeViewID {
 
 final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
-    let isAvailable: Bool = UITexts.Booking.learnMore.isNotEmpty
+    let isAvailable: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
     private weak var viewController: UIViewController?
     private let legalNoticeMailComposer: KarhooLegalNoticeMailComposer
     
@@ -25,7 +25,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     private var legalNoticeTextView: UITextView!
     
         private lazy var legalNoticeButton: KarhooExpandViewButton = {
-            let button = KarhooExpandViewButton(title: UITexts.Booking.learnMore, onExpand: hideLegalNoticePressed, onCollapce: showLegalNoticePressed)
+            let button = KarhooExpandViewButton(title: UITexts.Booking.legalNotice, onExpand: hideLegalNoticePressed, onCollapce: showLegalNoticePressed)
             button.accessibilityIdentifier = KHLegalNoticeViewID.button
             button.anchor(height: 44.0)
             return button
