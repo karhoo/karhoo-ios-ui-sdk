@@ -357,6 +357,8 @@
 
 "Text.Error.Payment.Alert.Title" = "Problema con la carta";
 
+"Text.Error.Payment.NoDetails.Message" = "Qualcosa è andato storto, riprova o seleziona un altro preventivo";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "La prenotazione anticipata non può essere effettuata entro l'ora corrente.";
 
