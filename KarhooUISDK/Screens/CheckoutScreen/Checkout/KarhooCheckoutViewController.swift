@@ -219,7 +219,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView = TermsConditionsView()
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
-        legalNoticeView = KarhooLegalNoticeView()
+        legalNoticeView = KarhooLegalNoticeView(parent: self, emailComposer: KarhooLegalNoticeEmailComposer)
         setUpView()
     }
     
