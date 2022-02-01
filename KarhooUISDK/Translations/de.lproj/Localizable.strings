@@ -8,6 +8,8 @@
 
 "ELECTRIC" = "Elektrisch";
 
+"EXEC" = "";
+
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
 
@@ -117,10 +119,16 @@
 
 "MEET_AND_GREET" = "Treffen und Begrüßung";
 
+"MPV" = "";
+
 /* Qxxxx errors */
 "Q0001" = "Abholort und Zielort können nicht identisch sein.";
 
+"SALOON" = "";
+
 "STAND_BY" = "Bereitschaft";
+
+"TAXI" = "";
 
 /* "Version" */
 "Text.About.Version" = "Version";
@@ -191,6 +199,12 @@
 "Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Zahlungsarten";
 
 "Text.Booking.LearnMore" = "Erfahren Sie mehr";
+
+"Text.Booking.LegalNotice" = "Rechtlicher Hinweis";
+
+"Text.Booking.LegalNoticeMail" = "";
+
+"Text.Booking.LegalNoticeText" = "";
 
 "Text.Booking.MaximumLuggages" = "%1$@ Gepäckstücke maximal";
 
@@ -353,6 +367,8 @@
 
 "Text.Error.Payment.Alert.Title" = "Problem mit der Karte";
 
+"Text.Error.Payment.NoDetails.Message" = "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut oder wählen Sie ein anderes Angebot";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "Vormerkungen können nicht innerhalb der aktuellen Stunde vorgenommen werden.";
 
@@ -454,6 +470,8 @@
 
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ausblenden";
+
+"Text.Generic.Locale" = "de_DE";
 
 "Text.Generic.Logout" = "Abmeldung";
 
@@ -888,4 +906,17 @@
 "Text.VehicleType.MPV" = "Großraum";
 
 "Text.VehicleType.Standard" = "Standard";
+
+"Vehicle.Tag.Childseat" = "";
+
+/* Vehicle tags */
+"Vehicle.Tag.Electric" = "";
+
+"Vehicle.Tag.Executive" = "";
+
+"Vehicle.Tag.Hybrid" = "";
+
+"Vehicle.Tag.Taxi" = "";
+
+"Vehicle.Tag.Wheelchair" = "";
 
