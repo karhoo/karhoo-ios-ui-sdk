@@ -237,11 +237,7 @@ final class TripDetailsView: UIView {
         vehicleInformationLabel?.text = viewModel.vehicleInformation
         pickUpTypeContainer.isHidden = !viewModel.showMeetingPoint
         meetingPointType.text = viewModel.meetingPointText
-<<<<<<< HEAD
-        detailsContainer.accessibilityLabel = "\(viewModel.supplierName ), \(viewModel.accessibilityDate), \(viewModel.pickup), \(viewModel.destination), \(viewModel.vehicleInformation)"
-=======
         detailsContainer.accessibilityLabel = "\(viewModel.supplierName), \(viewModel.accessibilityDate), \(viewModel.pickup), \(viewModel.destination), \(viewModel.vehicleInformation)"
->>>>>>> 9be880719fa749e5525654ff80b0760a14c98234
     }
     
     func prepareForReuse() {
