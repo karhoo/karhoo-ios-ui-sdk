@@ -20,16 +20,18 @@ public struct LegalNoticeStringBuilder {
         
         let legalNoticeText = NSMutableAttributedString()
         
-        let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                                .foregroundColor: KarhooUI.colors.text,
-                                                                .paragraphStyle: paragraphStyle]
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.text,
+            .paragraphStyle: paragraphStyle]
 
-        let emailAttibutes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                            .foregroundColor: KarhooUI.colors.primary,
-                                                            .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                            .underlineColor: KarhooUI.colors.accent,
-                                                            .paragraphStyle: paragraphStyle,
-                                                             NSAttributedString.Key(rawValue: "email") : "email"]
+        let emailAttibutes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: KarhooUI.colors.accent,
+            .paragraphStyle: paragraphStyle,
+            NSAttributedString.Key(rawValue: "email") : "email"]
         
         let email: String = "contact@karhoo.com"
         var fullText: String {
@@ -41,7 +43,6 @@ public struct LegalNoticeStringBuilder {
         let emailRange = (legalNoticeText.string as NSString).range(of: email)
         legalNoticeText.addAttributes(emailAttibutes, range: emailRange)
         
-//        let emailAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key(rawValue: "email") : "email"]
         return legalNoticeText
 
     }

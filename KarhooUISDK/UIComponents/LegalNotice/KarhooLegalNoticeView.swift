@@ -34,9 +34,8 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     private var attributedLabel: UILabel = {
         let legalNoticeLabel = UILabel()
         legalNoticeLabel.translatesAutoresizingMaskIntoConstraints = false
-        legalNoticeLabel.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
+        legalNoticeLabel.accessibilityIdentifier = KHLegalNoticeViewID.text
         legalNoticeLabel.font = KarhooUI.fonts.captionRegular()
-        legalNoticeLabel.textColor = KarhooUI.colors.text
         legalNoticeLabel.textAlignment = .justified
         legalNoticeLabel.attributedText = LegalNoticeStringBuilder().legalNotice()
         legalNoticeLabel.numberOfLines = 0
@@ -45,7 +44,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     }()
     
     //MARK: - Init
-    init(parent: UIViewController, mailComposer: KarhooLegalNoticeMailComposer ) {
+    init(parent: UIViewController, mailComposer: KarhooLegalNoticeMailComposer) {
         self.viewController = parent
         self.legalNoticeMailComposer = mailComposer
         super.init(frame: .zero)
@@ -63,24 +62,6 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         translatesAutoresizingMaskIntoConstraints = false
         
         attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.singleTap(_:))))
-
-        
-//        legalNoticeTextView = UITextView()
-//        legalNoticeTextView.translatesAutoresizingMaskIntoConstraints = false
-//        legalNoticeTextView.accessibilityIdentifier = KHTermsConditionsViewID.textView
-//        legalNoticeTextView.delegate = self
-//        legalNoticeTextView.font = UIFont.systemFont(ofSize: 24.0)
-//        legalNoticeTextView.dataDetectorTypes = .address
-//        legalNoticeTextView.textAlignment = .center
-//        legalNoticeTextView.isSelectable = true
-//        legalNoticeTextView.isEditable = false
-//        legalNoticeTextView.isScrollEnabled = false
-//        legalNoticeTextView.tintColor = KarhooUI.colors.accent
-//        legalNoticeTextView.attributedText = LegalNoticeStringBuilder().legalNotice()
-//
-//
-        
-        
         
         addSubview(legalNoticeButton)
         addSubview(attributedLabel)
@@ -89,14 +70,20 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
     override func updateConstraints() {
         if !didSetUpConstraints {
-            legalNoticeButton.anchor( top: topAnchor,
-                                    trailing: trailingAnchor)
+            legalNoticeButton.anchor(
+                top: topAnchor,
+                trailing: trailingAnchor,
+                paddingLeft: 8.0,
+                paddingRight: 8.0)
             
-            attributedLabel.anchor(top: legalNoticeButton.bottomAnchor,
-                                    leading: leadingAnchor,
-                                    bottom: bottomAnchor,
-                                    trailing: trailingAnchor,
-                                    paddingBottom: 16)
+            attributedLabel.anchor(
+                top: legalNoticeButton.bottomAnchor,
+                leading: leadingAnchor,
+                bottom: bottomAnchor,
+                trailing: trailingAnchor,
+                paddingLeft: 8.0,
+                paddingBottom: 16,
+                paddingRight: 8.0)
             
             didSetUpConstraints.toggle()
         }
@@ -130,7 +117,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
 
            if index > (self.attributedLabel.text?.count)! { return }
            var range : NSRange = NSRange()
-        if let type = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "email"), at: index, effectiveRange: &range) as? String {
+        if let _ = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "email"), at: index, effectiveRange: &range) as? String {
             _ = self.legalNoticeMailComposer.showLegalNoticekMail()
            }
        }
@@ -139,7 +126,6 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         UIView.animate(withDuration: 0.45) { [unowned self] in
             self.attributedLabel.alpha = 1.0
             self.attributedLabel.isHidden = false
-
         }
     }
     

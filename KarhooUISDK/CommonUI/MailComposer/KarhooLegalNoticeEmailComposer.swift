@@ -1,5 +1,5 @@
 //
-//  KarhooLegalNoticeEmailComposer.swift
+//  KarhooLegalNoticeMailComposer.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 01/02/2022.

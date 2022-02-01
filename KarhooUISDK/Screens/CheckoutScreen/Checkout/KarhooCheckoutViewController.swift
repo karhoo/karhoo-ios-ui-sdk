@@ -219,7 +219,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView = TermsConditionsView()
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
-        legalNoticeView = KarhooLegalNoticeView(parent: self, emailComposer: KarhooLegalNoticeEmailComposer)
+        legalNoticeView = KarhooLegalNoticeView(parent: self, mailComposer: KarhooLegalNoticeMailComposer())
         setUpView()
     }
     
@@ -325,9 +325,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         if legalNoticeView.isAvailable {
             legalNoticeView.anchor(top: termsConditionsView.bottomAnchor,
                                    leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor,
-                                   paddingLeft: standardSpacing,
-                                   paddingRight: standardSpacing)
+                                   trailing: baseStackView.trailingAnchor)
         }
     }
     
