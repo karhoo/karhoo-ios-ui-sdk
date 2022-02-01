@@ -165,6 +165,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "La tarifa final puede verse afectada por propinas, peajes, impuestos u otros cargos.";
 
+"Text.Booking.BookNow" = "RESERVAR AHORA";
+
 "Text.Booking.CountryCodeSelection.Search" = "Buscar país/región";
 
 /* Country Code Selection */
@@ -235,12 +237,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Detalles del viaje";
 
+"Text.Booking.QuoteExpired" = "El presupuesto ha caducado";
+
+"Text.Booking.QuoteExpiredMessage" = "Por favor, elija otra oferta para continuar con la reserva.";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAGAR Y RESERVAR";
 
 "Text.Booking.RequestingCar" = "Solicitar";
 
 "Text.Booking.RequestReceived" = "Solicitud recibida";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Programe el viaje";
 
 "Text.Booking.TrainTracking" = "Vincule su tren";
 
@@ -268,6 +277,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Imposible cargar viajes.";
 
 "Text.Bookings.eta" = "Proximidad";
+
+"Text.Bookings.NewRide" = "NUEVO PASEO";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Sin reservas";
@@ -444,6 +455,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Ocultar";
 
+"Text.Generic.Locale" = "es_ES";
+
 "Text.Generic.Logout" = "Salir";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -594,6 +607,8 @@
 "Text.KarhooError.K3002" = "Sin disponibilidad en la zona";
 
 "Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
+
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTOS";
 
 "Text.Loyalty.BurnNotAllowed" = "No se le permite quemar puntos";
 

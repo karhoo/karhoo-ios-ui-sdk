@@ -169,6 +169,8 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "La tua tariffa finale può essere influenzata da mancia, pedaggi, tasse e costi extra.";
 
+"Text.Booking.BookNow" = "PRENOTA ORA";
+
 "Text.Booking.CountryCodeSelection.Search" = "Cerca paese/regione";
 
 /* Country Code Selection */
@@ -239,12 +241,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Dettagli della corsa";
 
+"Text.Booking.QuoteExpired" = "Preventivo scaduto";
+
+"Text.Booking.QuoteExpiredMessage" = "Si prega di selezionare un nuovo preventivo per continuare con la prenotazione";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAGA E PRENOTA";
 
 "Text.Booking.RequestingCar" = "Prenotazione corsa";
 
 "Text.Booking.RequestReceived" = "Prenotazione ricevuta";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Pianifica la corsa";
 
 "Text.Booking.TrainTracking" = "Monitoraggio del treno";
 
@@ -272,6 +281,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Impossibile caricare i viaggi.";
 
 "Text.Bookings.eta" = "Ora di arrivo stimata";
+
+"Text.Bookings.NewRide" = "NUOVA CORSA";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Nessuna corsa";
@@ -448,6 +459,8 @@
 /* Password Entry Button */
 "Text.Generic.Hide" = "Nascondere";
 
+"Text.Generic.Locale" = "it_IT";
+
 "Text.Generic.Logout" = "Esci";
 
 /* english "making a booking". Used in terms conditions construction */
@@ -598,6 +611,8 @@
 "Text.KarhooError.K3002" = "Non ci sono flotte disponibili in quest'area.";
 
 "Text.KarhooError.Q0001" = "Ritiro e destinazione non possono essere gli stessi.";
+
+"Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTI";
 
 "Text.Loyalty.BurnNotAllowed" = "Non ti è permesso bruciare punti";
 

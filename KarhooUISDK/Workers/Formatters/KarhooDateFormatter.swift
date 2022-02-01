@@ -90,7 +90,6 @@ public class KarhooDateFormatter: DateFormatterType {
         guard let date = date else {
             return ""
         }
-
         dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         dateFormatter.timeZone = timeZone

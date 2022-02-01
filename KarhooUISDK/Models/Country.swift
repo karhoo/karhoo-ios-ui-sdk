@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-struct Country: KarhooCodableModel {
+public struct Country: KarhooCodableModel {
     var name: String
     var phoneCode: String
     var code: String // The flags in Assets > CountryFlags have names corresponding to the the country code
