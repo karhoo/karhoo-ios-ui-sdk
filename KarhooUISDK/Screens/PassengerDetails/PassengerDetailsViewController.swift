@@ -282,10 +282,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }
     
     func addPreInputtedDetails() {
-        guard let details = details
-        else {
-            return
-        }
+        guard let details = details else { return }
         
         firstNameInputView.set(text: details.firstName)
         lastNameInputView.set(text: details.lastName)

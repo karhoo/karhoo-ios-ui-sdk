@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 final class PassengerDetailsPresenter: PassengerDetailsPresenterProtocol {
-    var delegate: PassengerDetailsDelegate?
+    weak var delegate: PassengerDetailsDelegate?
     
     func doneClicked(newDetails: PassengerDetails, country: Country) {
         let result = PassengerDetailsResult(details: newDetails, country: country)
