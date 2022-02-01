@@ -91,7 +91,7 @@ public class KarhooDateFormatter: DateFormatterType {
             return ""
         }
 
-        dateFormatter.timeStyle = .long
+        dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
