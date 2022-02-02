@@ -17,7 +17,7 @@ public struct KHLegalNoticeViewID {
 
 final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
-    let isAvailable: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
+    let shouldBeDisplayed: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
     private weak var parentViewController: UIViewController?
     private let legalNoticeMailComposer: KarhooLegalNoticeMailComposerProtocol
     private var zeroHeightTextConstreint: NSLayoutConstraint

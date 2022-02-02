@@ -258,7 +258,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        if legalNoticeView.isAvailable {
+        if legalNoticeView.shouldBeDisplayed {
             baseStackView.addViewToStack(view: legalNoticeView)
         }
         container.addSubview(footerView)
@@ -322,7 +322,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
         footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
-        if legalNoticeView.isAvailable {
+        if legalNoticeView.shouldBeDisplayed {
             legalNoticeView.anchor(top: termsConditionsView.bottomAnchor,
                                    leading: baseStackView.leadingAnchor,
                                    trailing: baseStackView.trailingAnchor)
