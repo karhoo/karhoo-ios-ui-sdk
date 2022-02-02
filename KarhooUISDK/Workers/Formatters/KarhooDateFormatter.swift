@@ -90,8 +90,7 @@ public class KarhooDateFormatter: DateFormatterType {
         guard let date = date else {
             return ""
         }
-
-        dateFormatter.timeStyle = .long
+        dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
