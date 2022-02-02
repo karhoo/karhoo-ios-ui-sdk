@@ -6,14 +6,12 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-
 import UIKit
 import KarhooSDK
 import MessageUI
 
 public protocol KarhooLegalNoticeMailComposerProtocol: AnyObject {
-    func showLegalNoticekMail() -> Bool
-    func set(parent: UIViewController)
+    func sendLegalNoticeMail(addrees: String) -> Bool
 }
 
 public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMailComposerProtocol {
@@ -22,32 +20,18 @@ public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMai
 
     private let mailComposer = MailComposer()
 
-    public func set(parent: UIViewController) {
+    init(parent: UIViewController?) {
         self.viewController = parent
     }
 
-    public func showLegalNoticekMail() -> Bool {
+    public func sendLegalNoticeMail(addrees: String) -> Bool {
         guard MFMailComposeViewController.canSendMail() == true && viewController != nil else {
             return false
         }
         _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: "",
-                                               recipients: [UITexts.Booking.legalNoticeMail],
+                                               subject: UITexts.Booking.legalNotice,
+                                               recipients: [addrees],
                                                body: "")
         return true
     }
-
-    public func showNoCoverageEmail() -> Bool {
-        guard MFMailComposeViewController.canSendMail() == true && viewController != nil else {
-            return false
-        }
-
-        _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: UITexts.SupportMailMessage.noCoverageEmailSubject,
-                                               recipients: [UITexts.SupportMailMessage.noCoverageEmailAddress],
-                                               body: UITexts.SupportMailMessage.noCoverageEmailBody)
-        return true
-    }
-
-
 }

@@ -6,6 +6,8 @@
   Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 */
 
-"Text.Booking.LegalNoticeMail" = "legal-notice@karhoo.com";
+"Text.Booking.LegalNoticeLink" = "mailto:legal-notice@karhoo.com";
 
-"Text.Booking.LegalNoticeText" = "Karhoo procesa electrónicamente los datos recopilados. enviando correo electrónico a %1$@. Es posible que sea necesario traducir sus datos";  
+"Text.Booking.LegalNoticeText" = "Karhoo procesa electrónicamente los datos recopilados. enviando correo electrónico a %1$@. Es posible que sea necesario traducir sus datos";
+
+"Text.Booking.LegalNoticeTitle" = "Karhoo"

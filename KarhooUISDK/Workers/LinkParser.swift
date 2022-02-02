@@ -13,16 +13,25 @@ enum KarhooLinkType {
     case mail(addrees: String)
 }
 
-final class LinkParser {
+protocol LinkParserProtocol {
+    func formatIsSupported(_ link: String) -> Bool
+    func getLinkType(_ link: String) -> KarhooLinkType?
+}
+
+final class LinkParser: LinkParserProtocol {
     // MARK: - Variables
     private let mailValidator: MailValidatorProtocol
     private let urlStringValidator: UrlStringValidatorProtocol
     private let mailLinkPrefix = "mailto:"
 
     // MARK: - Init
-    init(mailValidator: MailValidatorProtocol, urlStringValidator: UrlStringValidatorProtocol) {
+    init(mailValidator: MailValidatorProtocol = MailValidator(), urlStringValidator: UrlStringValidatorProtocol = UrlStringValidator()) {
         self.mailValidator = mailValidator
         self.urlStringValidator = urlStringValidator
+    }
+    
+    func formatIsSupported(_ link: String) -> Bool {
+        return getLinkType(link) != nil
     }
     
     func getLinkType(_ link: String) -> KarhooLinkType? {

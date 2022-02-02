@@ -15,9 +15,10 @@ public struct LegalNoticeStringBuilder {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         paragraphStyle.lineSpacing = 4
+        
+        let titleForLink: String = UITexts.Booking.legalNoticeMail
+        let link = UITexts.Booking.legalNoticeMail
 
-        
-        
         let legalNoticeText = NSMutableAttributedString()
         
         let regularAttributes: [NSAttributedString.Key: Any] = [
@@ -25,25 +26,24 @@ public struct LegalNoticeStringBuilder {
             .foregroundColor: KarhooUI.colors.text,
             .paragraphStyle: paragraphStyle]
 
-        let emailAttibutes: [NSAttributedString.Key: Any] = [
+        let linklAttibutes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.captionRegular(),
             .foregroundColor: KarhooUI.colors.accent,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .underlineColor: KarhooUI.colors.accent,
             .paragraphStyle: paragraphStyle,
-            NSAttributedString.Key(rawValue: "email") : "email"]
+            NSAttributedString.Key(rawValue: "link"):"link"]
         
-        let mail: String = UITexts.Booking.legalNoticeMail
         var fullText: String {
             String(format: NSLocalizedString(UITexts.Booking.legalNoticeText,
-                                                        comment: ""), mail)
+                                                        comment: ""), titleForLink)
         }
         legalNoticeText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
         
-        let emailRange = (legalNoticeText.string as NSString).range(of: mail)
-        legalNoticeText.addAttributes(emailAttibutes, range: emailRange)
-        
+        if LinkParser().formatIsSupported(link) {
+            let linkRange = (legalNoticeText.string as NSString).range(of: titleForLink)
+            legalNoticeText.addAttributes(linklAttibutes, range: linkRange)
+        }
         return legalNoticeText
-
     }
 }

@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 public struct KHLegalNoticeViewID {
     public static let view = "legal_notice_view"
     public static let button = "legal_notice_button"
@@ -19,8 +18,8 @@ public struct KHLegalNoticeViewID {
 final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
     let isAvailable: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
-    private weak var viewController: UIViewController?
-    private let legalNoticeMailComposer: KarhooLegalNoticeMailComposer
+    private weak var parentViewController: UIViewController?
+    private let legalNoticeMailComposer: KarhooLegalNoticeMailComposerProtocol
     private var zeroHeightTextConstreint: NSLayoutConstraint
     
     private var didSetUpConstraints: Bool = false
@@ -45,21 +44,20 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         return legalNoticeLabel
     }()
     
-    //MARK: - Init
-    init(parent: UIViewController, mailComposer: KarhooLegalNoticeMailComposer) {
+    // MARK: - Init
+    init(parent: UIViewController, linkParser: LinkParser = LinkParser()) {
         zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
-        self.viewController = parent
-        self.legalNoticeMailComposer = mailComposer
+        self.parentViewController = parent
+        self.legalNoticeMailComposer = KarhooLegalNoticeMailComposer(parent: parentViewController)
         super.init(frame: .zero)
         self.setUpView()
     }
-    
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     private func setUpView() {
         accessibilityIdentifier = KHLegalNoticeViewID.view
         translatesAutoresizingMaskIntoConstraints = false
@@ -121,10 +119,11 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
 
            if index > (self.attributedLabel.text?.count)! { return }
            var range : NSRange = NSRange()
-        if let _ = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "email"), at: index, effectiveRange: &range) as? String {
-            _ = self.legalNoticeMailComposer.showLegalNoticekMail()
-           }
+        if let _ = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String {
+            KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: parentViewController).openLink(link: UITexts.Booking.legalNoticeMail)
+           
        }
+    }
     
     func showLegalNoticePressed(){
         zeroHeightTextConstreint.isActive = false
