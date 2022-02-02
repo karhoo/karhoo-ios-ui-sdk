@@ -1,5 +1,5 @@
 //
-//  MailValidatorSpec.swift
+//  MailValidatorTest.swift
 //  KarhooUISDKTests
 //
 //  Created by Bartlomiej Sopala on 02/02/2022.
@@ -10,8 +10,7 @@ import XCTest
 import KarhooUISDK
 @testable import KarhooUISDK
 
-// NOTE: These tests are assuming the simulator's region is set to UK - not USA.
-class MailValidatorSpec: XCTestCase {
+class MailValidatorTest: XCTestCase {
     
     private let correctEmail = "contact@karhoo.com"
     private let incorrectEmailMissingAt = "contact.karhoo.com"

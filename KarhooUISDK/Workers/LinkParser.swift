@@ -14,17 +14,20 @@ enum KarhooLinkType {
 }
 
 final class LinkParser {
-    //MARK: - Variables
+    // MARK: - Variables
     private let mailValidator: MailValidatorProtocol
+    private let urlStringValidator: UrlStringValidatorProtocol
     private let mailLinkPrefix = "mailto:"
 
-    //MARK: - Init
-    init(mailValidator: MailValidatorProtocol) {
+    // MARK: - Init
+    init(mailValidator: MailValidatorProtocol, urlStringValidator: UrlStringValidatorProtocol) {
         self.mailValidator = mailValidator
+        self.urlStringValidator = urlStringValidator
     }
     
     func getLinkType(_ link: String) -> KarhooLinkType? {
-        if let url = URL(string: link) {
+        if urlStringValidator.isCorrectUrl(addrees: link) {
+            guard let url = URL(string: link) else {return nil}
             return .url(url: url)
         } else if String(link.prefix(mailLinkPrefix.count)) == mailLinkPrefix {
             let addrees = String(link.dropFirst(mailLinkPrefix.count))
@@ -34,5 +37,3 @@ final class LinkParser {
         }
     }
 }
-
-
