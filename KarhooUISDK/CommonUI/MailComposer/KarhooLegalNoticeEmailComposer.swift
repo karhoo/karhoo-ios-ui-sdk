@@ -19,6 +19,9 @@ public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMai
     private weak var viewController: UIViewController?
 
     private let mailComposer = MailComposer()
+    
+    private var mailMetaInfoComposer: KarhooMailMetaInfoComposerProtocol = KarhooMailMetaInfoComposer()
+
 
     init(parent: UIViewController?) {
         self.viewController = parent
@@ -31,7 +34,7 @@ public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMai
         _ = mailComposer.presentMailController(from: viewController!,
                                                subject: UITexts.Booking.legalNotice,
                                                recipients: [addrees],
-                                               body: "")
+                                               body: mailMetaInfoComposer.mailMetaInfo())
         return true
     }
 }
