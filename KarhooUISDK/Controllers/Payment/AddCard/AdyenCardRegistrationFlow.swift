@@ -105,14 +105,18 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             finish(result: .completed(value: .didFailWithError(nil)))
             return
         }
+        let adyenDropInStyle = DropInComponent.Style(tintColor: KarhooUI.colors.secondary)
 
-        adyenDropIn = DropInComponent(paymentMethods: methods,
-                                      paymentMethodsConfiguration: configuration,
-                                      style: DropInComponent.Style(tintColor: KarhooUI.colors.secondary))
+        adyenDropIn = DropInComponent(
+            paymentMethods: methods,
+            paymentMethodsConfiguration: configuration,
+            style: adyenDropInStyle
+        )
         adyenDropIn?.delegate = self
         adyenDropIn?.environment = paymentFactory.adyenEnvironment()
         adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
                                                               currencyCode: self.currencyCode))
+        adyenDropIn?.viewController.forceLightMode()
 
         if let dropIn = adyenDropIn?.viewController {
             baseViewController?.present(dropIn, animated: true)
