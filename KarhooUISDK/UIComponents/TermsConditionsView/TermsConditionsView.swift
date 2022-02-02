@@ -44,6 +44,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         accessibilityIdentifier = KHTermsConditionsViewID.view
         
         termsTextView = UITextView()
+        termsTextView.isAccessibilityElement = true
         termsTextView.translatesAutoresizingMaskIntoConstraints = false
         termsTextView.accessibilityIdentifier = KHTermsConditionsViewID.textView
         termsTextView.delegate = self
@@ -70,13 +71,21 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
     }
     
     public func setBookingTerms(supplier: String?, termsStringURL: String) {
-        termsTextView.attributedText = TermsConditionsStringBuilder()
-            .bookingTermsCopy(supplierName: supplier,
-                              termsURL: convert(termsStringURL))
+        let text = TermsConditionsStringBuilder()
+            .bookingTermsCopy(
+                supplierName: supplier,
+                termsURL: convert(termsStringURL)
+            )
+        setText(text)
     }
     
     public func setToRegistrationTerms() {
-        termsTextView.attributedText = TermsConditionsStringBuilder().registrationTermsCopy()
+        setText(TermsConditionsStringBuilder().registrationTermsCopy())
+    }
+
+    private func setText(_ attributedText: NSAttributedString) {
+        termsTextView.attributedText = attributedText
+        termsTextView.accessibilityLabel = attributedText.string.replacingOccurrences(of: "|", with: ".")
     }
     
     private func convert(_ stringURL: String) -> URL {
