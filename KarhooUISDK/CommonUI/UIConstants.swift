@@ -191,6 +191,11 @@ public struct UIConstants {
         public static let large: CGFloat = 10
     }
     
+    public struct ShadowRadius {
+        /// 0.5
+        public static let border: CGFloat = 0.5
+    }
+    
     //Animation duration
     public struct Duration {
         /// 0.1
