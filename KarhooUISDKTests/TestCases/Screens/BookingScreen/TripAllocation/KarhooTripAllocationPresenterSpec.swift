@@ -69,11 +69,11 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
         XCTAssertEqual(mockTrip.tripId, mockTripService.tripTrackingIdentifierSet)
         XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*4) {
             XCTAssertTrue(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 5)
     }
 
     /**

@@ -81,7 +81,7 @@ final class KarhooBookingPresenter {
                 bookingDetails: bookingDetails,
                 bookingMetadata: bookingMetadata,
                 callback: { [weak self] result in
-                    self?.view?.presentedViewController?.dismiss(animated: false, completion: {
+                    self?.view?.dismiss(animated: false, completion: {
                         self?.bookingRequestCompleted(
                             result: result,
                             quote: quote,
@@ -314,7 +314,6 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         showCheckoutView(quote: quote, bookingDetails: bookingDetails)
     }
-
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: BookingDetails) {
