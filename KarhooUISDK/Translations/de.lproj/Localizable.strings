@@ -353,6 +353,8 @@
 
 "Text.Error.Payment.Alert.Title" = "Problem mit der Karte";
 
+"Text.Error.Payment.NoDetails.Message" = "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut oder wählen Sie ein anderes Angebot";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "Vormerkungen können nicht innerhalb der aktuellen Stunde vorgenommen werden.";
 

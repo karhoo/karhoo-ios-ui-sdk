@@ -40,13 +40,19 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         self.callback = callback
 
         if showUpdateCardAlert {
-            self.baseViewController?.showUpdatePaymentCardAlert(updateCardSelected: { [weak self] in
-                self?.startUpdateCardFlow(organisationId: self?.organisationId() ?? "", currencyCode: cardCurrency)
-                }, cancelSelected: { [weak self] in
+            baseViewController?.showUpdatePaymentCardAlert(
+                updateCardSelected: { [weak self] in
+                    self?.startUpdateCardFlow(
+                        organisationId: self?.organisationId() ?? "",
+                        currencyCode: cardCurrency
+                    )
+                },
+                cancelSelected: { [weak self] in
                     self?.callback?(.cancelledByUser)
-            })
+                }
+            )
         } else {
-            self.startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
+            startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
         }
     }
 

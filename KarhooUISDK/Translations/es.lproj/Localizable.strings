@@ -353,6 +353,8 @@
 
 "Text.Error.Payment.Alert.Title" = "Problemas con el pago";
 
+"Text.Error.Payment.NoDetails.Message" = "Algo salió mal, vuelva a intentarlo o seleccione otra cotización";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "Reserva realizada para la misma hora";
 

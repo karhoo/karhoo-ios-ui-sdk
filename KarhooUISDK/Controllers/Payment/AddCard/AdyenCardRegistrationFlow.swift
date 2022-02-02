@@ -62,6 +62,8 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                 self?.getAdyenKey(dropInData: result.data)
             case .failure(let error):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
+            @unknown default:
+                assertionFailure()
             }
         })
     }
@@ -74,6 +76,8 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                                   adyenKey: result.key)
             case .failure(let error):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
+            @unknown default:
+                assertionFailure()
             }
         })
     }
@@ -83,6 +87,9 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         case .guest: return false
         case .tokenExchange: return false
         case .karhooUser: return true
+        @unknown default:
+            assertionFailure()
+            return false
         }
     }
 
@@ -123,8 +130,12 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
     
     private func closeAdyenDropIn(result: OperationResult<CardFlowResult>) {
-        adyenDropIn?.viewController.dismiss(animated: true) {
-            self.callback?(result)
+        if let dropInViewController = adyenDropIn?.viewController {
+            dropInViewController.dismiss(animated: true) { [weak self] in
+                self?.callback?(result)
+            }
+        } else {
+            callback?(result)
         }
     }
 }
@@ -168,7 +179,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
-                break
+                assertionFailure()
             }
         }
     }
@@ -209,6 +220,8 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 self.handle(event: event)
             case .failure(let error):
                 self.finish(result: .completed(value: .didFailWithError(error)))
+            @unknown default:
+                assertionFailure()
             }
         })
     }

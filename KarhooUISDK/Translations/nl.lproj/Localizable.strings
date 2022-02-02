@@ -361,6 +361,8 @@
 
 "Text.Error.Payment.Alert.Title" = "Probleem met kaart";
 
+"Text.Error.Payment.NoDetails.Message" = "Er is iets misgegaan, probeer het opnieuw of selecteer een andere offerte";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "Prebook kan niet binnen het huidige uur worden gereserveerd.";
 

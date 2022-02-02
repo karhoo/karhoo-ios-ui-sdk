@@ -142,6 +142,7 @@ public enum UITexts {
         public static let paymentAlertTitle = "Text.Error.Payment.Alert.Title".localized
         public static let paymentAlertMessage = "Text.Error.Payment.Alert.Message".localized
         public static let paymentAlertUpdateCard = "Text.Error.Payment.Alert.ButtonUpdateCard".localized
+        public static let noDetailsMessage = "Text.Error.Payment.NoDetails.Message".localized
     }
 
     /* terms conditions construction */
