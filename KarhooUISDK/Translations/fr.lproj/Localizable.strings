@@ -202,9 +202,11 @@
 
 "Text.Booking.LegalNotice" = "Avis juridique";
 
-"Text.Booking.LegalNoticeMail" = "";
+"Text.Booking.LegalNoticeLink" = "";
 
 "Text.Booking.LegalNoticeText" = "";
+
+"Text.Booking.LegalNoticeTitle" = "";
 
 "Text.Booking.MaximumLuggages" = "%1$@ bagages maximum";
 

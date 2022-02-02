@@ -120,7 +120,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
            if index > (self.attributedLabel.text?.count)! { return }
            var range : NSRange = NSRange()
         if let _ = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String {
-            KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: parentViewController).openLink(link: UITexts.Booking.legalNoticeMail)
+            KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: parentViewController).openLink(link: UITexts.Booking.legalNoticeLink)
            
        }
     }

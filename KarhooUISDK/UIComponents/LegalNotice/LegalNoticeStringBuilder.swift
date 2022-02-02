@@ -16,8 +16,8 @@ public struct LegalNoticeStringBuilder {
         paragraphStyle.alignment = .center
         paragraphStyle.lineSpacing = 4
         
-        let titleForLink: String = UITexts.Booking.legalNoticeMail
-        let link = UITexts.Booking.legalNoticeMail
+        let titleForLink: String = UITexts.Booking.legalNoticeTitle
+        let link = UITexts.Booking.legalNoticeLink
 
         let legalNoticeText = NSMutableAttributedString()
         

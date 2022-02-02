@@ -240,10 +240,9 @@ public enum UITexts {
         public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
         public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
         public static let legalNotice = "Text.Booking.LegalNotice".localized
-        public static let legalNoticeMail = "Text.Booking.LegalNoticeMail".localized
+        public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
         public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
-
-        
+        public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
     }
 
     public enum Availability {
