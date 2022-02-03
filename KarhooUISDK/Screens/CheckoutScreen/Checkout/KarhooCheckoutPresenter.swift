@@ -147,16 +147,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     // MARK: - Passenger Details
     func addOrEditPassengerDetails() {
         let details = view?.getPassengerDetails()
-        let presenter = PassengerDetailsPresenter(details: details) { [weak self] result in
-            guard let completedValue = result.completedValue()
-            else {
-                return
-            }
-            
-            self?.view?.setPassenger(details: completedValue.details)
-            PassengerInfo.shared.set(country: completedValue.country ?? KarhooCountryParser.defaultCountry)
-        }
-        let detailsViewController = PassengerDetailsViewController(presenter: presenter)
+        let detailsViewController = KarhooComponents.shared.passengerDetails(details: details, delegate: self)
         view?.showAsOverlay(item: detailsViewController, animated: true)
     }
     
@@ -208,10 +199,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
               let passengerDetails = view?.getPassengerDetails(),
               let currentOrg = userService.getCurrentUser()?.organisations.first?.id
         else {
+            view?.setDefaultState()
             view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                             message: UITexts.Errors.getUserFail,
                             error: nil)
-            view?.setDefaultState()
             return
         }
         
@@ -412,29 +403,30 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return view?.getPaymentNonce()
         }
     }
-
+    
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
-        threeDSecureProvider.threeDSecureCheck(nonce: nonce,
-                                               currencyCode: quote.price.currencyCode,
-                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
-                                               callback: { [weak self] result in
-                                                switch result {
-                                                case .completed(let result): handleThreeDSecureCheck(result)
-                                                case .cancelledByUser:
-                                                    self?.view?.resetPaymentNonce()
-                                                    self?.view?.setDefaultState()
-                                                }
-        })
-
+        threeDSecureProvider.threeDSecureCheck(
+            nonce: nonce,
+            currencyCode: quote.price.currencyCode,
+            paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+            callback: { [weak self] result in
+                switch result {
+                case .completed(let result): handleThreeDSecureCheck(result)
+                case .cancelledByUser:
+                    self?.view?.resetPaymentNonce()
+                    self?.view?.setDefaultState()
+                }
+            }
+        )
+        
         func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
             switch result {
             case .failedToInitialisePaymentService:
                 view?.setDefaultState()
-                
+                showPSPUndefinedError()
             case .threeDSecureAuthenticationFailed:
                 view?.retryAddPaymentMethod(showRetryAlert: true)
                 view?.setDefaultState()
-                
             case .success(let threeDSecureNonce):
                 book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
             }
@@ -504,4 +496,23 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }))
         view?.present(alert, animated: true, completion: nil)
     }
+
+    private func showPSPUndefinedError() {
+        // log error
+        view?.showAlert(
+            title: UITexts.Generic.error,
+            message: UITexts.PaymentError.noDetailsMessage,
+            error: nil
+        )
+    }
+}
+
+extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
+    func didInputPassengerDetails(result: PassengerDetailsResult) {
+        view?.setPassenger(details: result.details)
+        PassengerInfo.shared.set(country: result.country ?? KarhooCountryParser.defaultCountry)
+    }
+    
+    // No action needed in this case for now
+    func didCancelInput(byUser: Bool) {}
 }

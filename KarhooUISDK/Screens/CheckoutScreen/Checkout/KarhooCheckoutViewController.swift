@@ -51,9 +51,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private let headerViewHeight: CGFloat = 90.0
     private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
     private var mainStackBottomPadding: NSLayoutConstraint!
-    
-    
-    
+
     // MARK: - Views
 
     var headerView: KarhooCheckoutHeaderView!
@@ -83,6 +81,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
+        footerView.layer.shadowColor = KarhooUI.colors.black.cgColor
+        footerView.layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
+        footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
+        footerView.layer.shadowRadius = UIConstants.ShadowRadius.border
         return footerView
     }()
     
@@ -319,8 +321,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
-        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding)
+        footerStack.anchor(
+            top: footerView.topAnchor,
+            leading: footerView.leadingAnchor,
+            bottom: footerView.bottomAnchor,
+            trailing: footerView.trailingAnchor,
+            paddingTop: standardPadding,
+            paddingBottom: standardPadding
+        )
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
         if legalNoticeView.shouldBeDisplayed {
             legalNoticeView.anchor(top: termsConditionsView.bottomAnchor,
@@ -356,7 +365,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.details = details
     }
 
-    
     func setRequestingState() {
         disableUserInteraction()
         bookingButton.setRequestingMode()
@@ -392,7 +400,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         self.loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
-            // TODO: confirm that the highPrice should be used here
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,
                                                     tripAmount: quote.price.highPrice)

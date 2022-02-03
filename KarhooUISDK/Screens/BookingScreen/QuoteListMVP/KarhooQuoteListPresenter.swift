@@ -19,18 +19,17 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var selectedQuoteCategory: QuoteCategory?
     private var selectedQuoteOrder: QuoteSortOrder = .qta
     private let quoteSorter: QuoteSorter
-    private let dateFormatter: DateFormatterType
 
-    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
-         quoteService: QuoteService = Karhoo.getQuoteService(),
-         quoteListView: QuoteListView,
-         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-         dateFormatter: DateFormatterType = KarhooDateFormatter()) {
+    init(
+        bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+        quoteService: QuoteService = Karhoo.getQuoteService(),
+        quoteListView: QuoteListView,
+        quoteSorter: QuoteSorter = KarhooQuoteSorter()
+    ) {
         self.bookingStatus = bookingStatus
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
-        self.dateFormatter = dateFormatter
         bookingStatus.add(observer: self)
     }
 

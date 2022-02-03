@@ -153,6 +153,9 @@ public struct UIConstants {
             /// 30
             public static let largeTagHeight: CGFloat = 30
             
+            /// 30
+            public static let smallRowHeight: CGFloat = 30
+            
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
@@ -186,6 +189,11 @@ public struct UIConstants {
         
         /// 10
         public static let large: CGFloat = 10
+    }
+    
+    public struct ShadowRadius {
+        /// 0.5
+        public static let border: CGFloat = 0.5
     }
     
     //Animation duration

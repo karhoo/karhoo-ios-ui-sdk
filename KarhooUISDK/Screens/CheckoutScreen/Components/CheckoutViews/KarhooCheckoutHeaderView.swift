@@ -55,6 +55,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
     
     private lazy var logoLoadingImageView: LoadingImageView = {
         let imageView = LoadingImageView()
+        imageView.isAccessibilityElement = true
+        imageView.accessibilityLabel = UITexts.TripSummary.fleet
         imageView.accessibilityIdentifier = KHCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
         imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
@@ -78,7 +80,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHCheckoutHeaderViewID.nameLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         label.numberOfLines = 0
         return label

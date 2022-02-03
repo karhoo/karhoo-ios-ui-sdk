@@ -206,18 +206,30 @@ class KarhooAddressPresenterSpec: XCTestCase {
      *  Then:   That text should be passed on to the search
      */
     func testSearch() {
+        testObject = KarhooAddressPresenter(
+            preferredLocation: mockLocation,
+            addressMode: mockAddressMode,
+            selectionCallback: { self.mockLocationInfoResult = $0 },
+            searchProvider: mockAddressSearchProvider,
+            userLocationProvider: mockUserLocationProvider,
+            addressService: mockAddressService,
+            analytics: mockAppAnalytics,
+            recentAddressProvider: mockRecentAddressProvider,
+            searchDelay: 0
+        )
+
         testObject.set(view: mockAddressView)
 
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
         let searchText = "Some text"
         testObject.search(text: searchText)
-        let expectation = XCTestExpectation()
 
-        DispatchQueue.global().asyncAfter(deadline: .now() + searchDelay*2) { [weak self] in
-            XCTAssertEqual(self?.mockAddressSearchProvider.searchString, searchText)
+        let expectation = XCTestExpectation()
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.2, execute: {
+            XCTAssertEqual(self.mockAddressSearchProvider.searchString, searchText)
             expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 3)
+        })
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
@@ -227,10 +239,14 @@ class KarhooAddressPresenterSpec: XCTestCase {
     func testEmptySearch() {
         let searchText = "Some text"
         testObject.search(text: searchText)
-
         testObject.search(text: nil)
 
-        XCTAssert(mockAddressSearchProvider.searchString == nil)
+        let expectation = XCTestExpectation()
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2, execute: {
+            XCTAssert(self.mockAddressSearchProvider.searchString == "")
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
@@ -413,7 +429,6 @@ class KarhooAddressPresenterSpec: XCTestCase {
         *  Then:    Nothing should happen
         */
     func testCurrentLocationReturnsNil() {
-    
         mockUserLocationProvider.lastKnownLocation = nil
         testObject.getCurrentLocation()
         XCTAssertNil(mockAddressService.reverseGeocodePositionSet)

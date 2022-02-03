@@ -34,12 +34,11 @@ final class KarhooExpandViewButton: UIButton {
     private var currentMode: ButtonMode = .learnMore
     private var didSetupConstraints = false
     
-    private var containerView: UIView = {
+    private lazy var containerView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.accessibilityIdentifier = KHRevealMoreButtonViewID.container
         containerView.backgroundColor = .clear
-        
         return containerView
     }()
     
@@ -48,7 +47,8 @@ final class KarhooExpandViewButton: UIButton {
         button.accessibilityIdentifier = KHBookingButtonViewID.button
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
-        
+        button.accessibilityLabel = currentMode.title
+
         return button
     }()
     
@@ -88,8 +88,11 @@ final class KarhooExpandViewButton: UIButton {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         accessibilityIdentifier = KHRevealMoreButtonViewID.button
-        
+        accessibilityTraits = .button
+        accessibilityLabel = currentMode.title
+
         addSubview(containerView)
         
         containerView.addSubview(buttonLabel)

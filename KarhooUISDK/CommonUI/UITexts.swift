@@ -72,6 +72,7 @@ public enum UITexts {
         public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
+        public static let locale = "Text.Generic.Locale".localized
     }
 
     public enum GenericTripStatus {
@@ -141,6 +142,7 @@ public enum UITexts {
         public static let paymentAlertTitle = "Text.Error.Payment.Alert.Title".localized
         public static let paymentAlertMessage = "Text.Error.Payment.Alert.Message".localized
         public static let paymentAlertUpdateCard = "Text.Error.Payment.Alert.ButtonUpdateCard".localized
+        public static let noDetailsMessage = "Text.Error.Payment.NoDetails.Message".localized
     }
 
     /* terms conditions construction */
