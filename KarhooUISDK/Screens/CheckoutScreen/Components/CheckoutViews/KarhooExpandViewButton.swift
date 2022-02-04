@@ -26,9 +26,9 @@ public struct KHRevealMoreButtonViewID {
 }
 
 final class KarhooExpandViewButton: UIButton {
-    private var title: String
-    private var onExpandAction: () -> Void
-    private var onCollapseAction: () -> Void
+    private let title: String
+    private let onExpandAction: () -> Void
+    private let onCollapseAction: () -> Void
 
     
     private var currentMode: ButtonMode = .learnMore
@@ -47,7 +47,7 @@ final class KarhooExpandViewButton: UIButton {
         button.accessibilityIdentifier = KHBookingButtonViewID.button
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
-        button.accessibilityLabel = currentMode.title
+        button.accessibilityLabel = title
 
         return button
     }()
@@ -91,7 +91,7 @@ final class KarhooExpandViewButton: UIButton {
         isAccessibilityElement = true
         accessibilityIdentifier = KHRevealMoreButtonViewID.button
         accessibilityTraits = .button
-        accessibilityLabel = currentMode.title
+        accessibilityLabel = title
 
         addSubview(containerView)
         
@@ -144,14 +144,14 @@ final class KarhooExpandViewButton: UIButton {
         switch currentMode {
         case .learnMore:
             currentMode = .learnLess
-            UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-                self.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
+            UIView.animate(withDuration: UIConstants.Duration.long, animations: { [weak self] in
+                self?.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
             })
             onCollapseAction()
         case .learnLess:
             currentMode = .learnMore
-            UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-                self.dropdownImage.transform = CGAffineTransform.identity
+            UIView.animate(withDuration: UIConstants.Duration.long, animations: { [weak self] in
+                self?.dropdownImage.transform = .identity
             })
             onExpandAction()
         }

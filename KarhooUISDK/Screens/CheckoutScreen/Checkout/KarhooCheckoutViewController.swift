@@ -36,6 +36,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var termsConditionsView: TermsConditionsView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
+    private let shouldDisplayLegalNotice: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
@@ -53,11 +54,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var mainStackBottomPadding: NSLayoutConstraint!
 
     // MARK: - Views
-
     var headerView: KarhooCheckoutHeaderView!
-
     var loyaltyView: KarhooLoyaltyView!
-    
     var legalNoticeView: KarhooLegalNoticeView!
 
     private lazy var footerStack: UIStackView = {
@@ -142,8 +140,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.viewSpacing(standardSpacing)
         return baseStackView
     }()
-    
-    
     
     private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
@@ -260,7 +256,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        if legalNoticeView.shouldBeDisplayed {
+        if shouldDisplayLegalNotice {
             baseStackView.addViewToStack(view: legalNoticeView)
         }
         container.addSubview(footerView)
@@ -331,10 +327,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             paddingBottom: standardPadding
         )
         termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
-        if legalNoticeView.shouldBeDisplayed {
-            legalNoticeView.anchor(top: termsConditionsView.bottomAnchor,
-                                   leading: baseStackView.leadingAnchor,
-                                   trailing: baseStackView.trailingAnchor)
+        if shouldDisplayLegalNotice {
+            legalNoticeView.anchor(
+                top: termsConditionsView.bottomAnchor,
+                leading: baseStackView.leadingAnchor,
+                trailing: baseStackView.trailingAnchor
+            )
         }
     }
     

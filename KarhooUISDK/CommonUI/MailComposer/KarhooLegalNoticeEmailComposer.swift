@@ -17,24 +17,23 @@ public protocol KarhooLegalNoticeMailComposerProtocol: AnyObject {
 public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMailComposerProtocol {
 
     private weak var viewController: UIViewController?
-
     private let mailComposer = MailComposer()
-    
     private var mailMetaInfoComposer: KarhooMailMetaInfoComposerProtocol = KarhooMailMetaInfoComposer()
-
 
     init(parent: UIViewController?) {
         self.viewController = parent
     }
 
-    public func sendLegalNoticeMail(addrees: String) -> Bool {
-        guard MFMailComposeViewController.canSendMail() == true && viewController != nil else {
+    @discardableResult public func sendLegalNoticeMail(addrees: String) -> Bool {
+        guard MFMailComposeViewController.canSendMail(), let viewController = viewController else {
             return false
         }
-        _ = mailComposer.presentMailController(from: viewController!,
-                                               subject: UITexts.Booking.legalNotice,
-                                               recipients: [addrees],
-                                               body: mailMetaInfoComposer.mailMetaInfo())
+        _ = mailComposer.presentMailController(
+            from: viewController,
+            subject: UITexts.Booking.legalNotice,
+            recipients: [addrees],
+            body: mailMetaInfoComposer.mailMetaInfo()
+        )
         return true
     }
 }
