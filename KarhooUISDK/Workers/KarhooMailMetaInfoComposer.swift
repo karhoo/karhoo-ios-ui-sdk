@@ -9,24 +9,28 @@
 import Foundation
 import KarhooSDK
 
-protocol KarhooMailMetaInfoComposerProtocol {
-    func mailMetaInfo() -> String
+protocol MailMetaInfoComposer {
+    func getMailMetaInfo() -> String
 }
 
-class KarhooMailMetaInfoComposer: KarhooMailMetaInfoComposerProtocol {
-    func mailMetaInfo() -> String {
-        let info = """
+final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
+    
+    private let systemName: String = UIDevice.current.systemName
+    private let systemVersion: String = UIDevice.current.systemVersion
+    private let currentLocale: String = NSLocale.current.identifier
+    
+    func getMailMetaInfo() -> String {
+        return """
                    \n \n \n
                    \(UITexts.SupportMailMessage.feedbackMailMessage)
                    ------------------
                    Application: \(appName()) \(appVersion())
                    Device: \(platform())
-                   System: \(systemName()) \(systemVersion())
-                   Locale: \(currentLocale())
+                   System: \(systemName) \(systemVersion)
+                   Locale: \(currentLocale)
                    User: \(userInfo())
                    ------------------
                    """
-        return info
     }
     
     private func appName() -> String {
@@ -49,18 +53,6 @@ class KarhooMailMetaInfoComposer: KarhooMailMetaInfoComposerProtocol {
         } else {
             return ""
         }
-    }
-
-    private func systemName() -> String {
-        return UIDevice.current.systemName
-    }
-
-    private func systemVersion() -> String {
-        return UIDevice.current.systemVersion
-    }
-
-    private func currentLocale() -> String {
-        return NSLocale.current.identifier
     }
 
     private func platform() -> String {

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class KarhooLegalNoticeLinkOpener {
-    let linkParser: LinkParserProtocol
+final class KarhooLegalNoticeLinkOpener {
+    private let linkParser: LinkParserProtocol
     private weak var viewControllerToPresentFrom: UIViewController?
     
     init(linkParser: LinkParserProtocol = LinkParser(), viewControllerToPresentFrom: UIViewController?) {
@@ -19,7 +19,10 @@ class KarhooLegalNoticeLinkOpener {
     }
     
     func openLink(link: String) {
-        guard let linkType = linkParser.getLinkType(link) else { return }
+        guard let linkType = linkParser.getLinkType(link) else {
+            assertionFailure("Try to open incorrect link format in KarhooLegalNoticeLinkOpener")
+            return
+        }
         switch linkType {
         case .url(let url):
             if UIApplication.shared.canOpenURL(url){

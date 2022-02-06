@@ -14,7 +14,7 @@ enum KarhooLinkType {
 }
 
 protocol LinkParserProtocol {
-    func formatIsSupported(_ link: String) -> Bool
+    func canOpen(_ link: String) -> Bool
     func getLinkType(_ link: String) -> KarhooLinkType?
 }
 
@@ -30,19 +30,23 @@ final class LinkParser: LinkParserProtocol {
         self.urlStringValidator = urlStringValidator
     }
     
-    func formatIsSupported(_ link: String) -> Bool {
+    func canOpen(_ link: String) -> Bool {
         return getLinkType(link) != nil
     }
     
     func getLinkType(_ link: String) -> KarhooLinkType? {
         if urlStringValidator.isCorrectUrl(addrees: link) {
-            guard let url = URL(string: link) else {return nil}
+            guard let url = URL(string: link) else { return nil }
             return .url(url: url)
-        } else if String(link.prefix(mailLinkPrefix.count)) == mailLinkPrefix {
+        } else if hasCorrectMailPrefix(link) {
             let addrees = String(link.dropFirst(mailLinkPrefix.count))
             return mailValidator.isValidMail(addrees) ? .mail(addrees: addrees) : nil
         } else {
             return nil
         }
+    }
+    
+    private func hasCorrectMailPrefix(_ link: String) -> Bool {
+        return String(link.prefix(mailLinkPrefix.count)) == mailLinkPrefix
     }
 }

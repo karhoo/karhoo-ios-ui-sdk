@@ -23,7 +23,7 @@ public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer 
 
     private let mailComposer = MailComposer()
     
-    private var mailMetaInfoComposer: KarhooMailMetaInfoComposerProtocol = KarhooMailMetaInfoComposer()
+    private var mailMetaInfoComposer: MailMetaInfoComposer = KarhooMailMetaInfoComposer()
 
     public func set(parent: UIViewController) {
         self.viewController = parent
@@ -37,7 +37,7 @@ public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer 
         _ = mailComposer.presentMailController(from: viewController!,
                                                subject: UITexts.SupportMailMessage.feedbackEmailSubject,
                                                recipients: [UITexts.SupportMailMessage.feedbackEmailAddress],
-                                               body: mailMetaInfoComposer.mailMetaInfo())
+                                               body: mailMetaInfoComposer.getMailMetaInfo())
         return true
     }
 
@@ -75,7 +75,7 @@ public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer 
                    ------------------
                    Trip: \(trip.displayId)
                    ------------------
-                   \(mailMetaInfoComposer.mailMetaInfo())
+                   \(mailMetaInfoComposer.getMailMetaInfo())
                    """
         return info
     }

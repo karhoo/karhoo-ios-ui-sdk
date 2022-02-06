@@ -16,7 +16,7 @@ class UrlStringValidator: UrlStringValidatorProtocol {
     private let urlPrefix = "https://"
 
     func isCorrectUrl(addrees: String) -> Bool {
-        return String(addrees.lowercased().prefix(urlPrefix.count)) == urlPrefix
+        String(addrees.lowercased().prefix(urlPrefix.count)) == urlPrefix
     }
     
 }

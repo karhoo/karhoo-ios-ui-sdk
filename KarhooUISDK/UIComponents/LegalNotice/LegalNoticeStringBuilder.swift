@@ -40,8 +40,9 @@ public struct LegalNoticeStringBuilder {
         }
         legalNoticeText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
         
-        if LinkParser().formatIsSupported(link) {
-            let linkRange = (legalNoticeText.string as NSString).range(of: titleForLink)
+        if LinkParser().canOpen(link) {
+            let legalNoticeString: NSString = legalNoticeText.string as NSString
+            let linkRange = (legalNoticeString).range(of: titleForLink)
             legalNoticeText.addAttributes(linklAttibutes, range: linkRange)
         }
         return legalNoticeText
