@@ -24,16 +24,16 @@ final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
                    \n \n \n
                    \(UITexts.SupportMailMessage.feedbackMailMessage)
                    ------------------
-                   Application: \(appName()) \(appVersion())
-                   Device: \(platform())
+                   Application: \(getAppName()) \(getAppVersion())
+                   Device: \(getPlatform())
                    System: \(systemName) \(systemVersion)
                    Locale: \(currentLocale)
-                   User: \(userInfo())
+                   User: \(getUserInfo())
                    ------------------
                    """
     }
     
-    private func appName() -> String {
+    private func getAppName() -> String {
         guard let dictionary = Bundle.main.infoDictionary else {
                     return ""
         }
@@ -44,7 +44,7 @@ final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
         }
     }
     
-    private func appVersion() -> String {
+    private func getAppVersion() -> String {
         guard let dictionary = Bundle.main.infoDictionary else {
                     return ""
         }
@@ -55,15 +55,19 @@ final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
         }
     }
 
-    private func platform() -> String {
+    private func getPlatform() -> String {
         var sysinfo = utsname()
         uname(&sysinfo) // ignore return value
-        return String(bytes: Data(bytes: &sysinfo.machine,
-                                  count: Int(_SYS_NAMELEN)),
-                      encoding: .ascii)!.trimmingCharacters(in: .controlCharacters)
+        let sysInfoHardwareTypeData = Data(bytes: &sysinfo.machine, count: Int(_SYS_NAMELEN))
+        guard let sysInfoHardwareName = String(bytes: sysInfoHardwareTypeData, encoding: .ascii) else { return "" }
+        let hardwareNameWithoutControlCharacters = sysInfoHardwareName.trimmingCharacters(in: .controlCharacters)
+        return hardwareNameWithoutControlCharacters
+    
+                                     
+                                     
     }
     
-    private func userInfo() -> String {
+    private func getUserInfo() -> String {
         guard let user = Karhoo.getUserService().getCurrentUser() else {
             return ""
         }
