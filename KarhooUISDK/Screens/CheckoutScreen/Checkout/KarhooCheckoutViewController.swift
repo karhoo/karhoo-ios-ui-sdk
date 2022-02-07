@@ -40,7 +40,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
-
+    private var legalNoticeLinkOperer: LegalNoticeLinkOpener!
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
     private let smallPadding: CGFloat = 10.0
@@ -204,6 +204,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
+        legalNoticeLinkOperer = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -217,7 +218,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView = TermsConditionsView()
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
-        legalNoticeView = KarhooLegalNoticeView(parent: self)
+        legalNoticeView = KarhooLegalNoticeView(linkOpener: legalNoticeLinkOperer)
         setUpView()
     }
     
@@ -233,15 +234,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     override func updateViewConstraints() {
-            if didSetupConstraints == false {
-                setupConstraintsForDefault()
-                didSetupConstraints = true
-            }
-            super.updateViewConstraints()
+        if didSetupConstraints == false {
+            setupConstraintsForDefault()
+            didSetupConstraints = true
         }
+        super.updateViewConstraints()
+    }
     
     // MARK: - Setup
-
     private func setUpView() {
         container.addSubview(backButton)
         container.addSubview(baseStackView)

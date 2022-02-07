@@ -17,8 +17,7 @@ public struct KHLegalNoticeViewID {
 
 final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     
-    private weak var parentViewController: UIViewController?
-    private let legalNoticeMailComposer: KarhooLegalNoticeMailComposerProtocol
+    private weak var linkOpener: LegalNoticeLinkOpener?
     private var zeroHeightTextConstreint: NSLayoutConstraint
     
     private var didSetUpConstraints: Bool = false
@@ -44,10 +43,9 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     }()
     
     // MARK: - Init
-    init(parent: UIViewController, linkParser: LinkParser = LinkParser()) {
+    init(linkOpener: LegalNoticeLinkOpener, linkParser: LinkParser = LinkParser()) {
         zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
-        parentViewController = parent
-        legalNoticeMailComposer = KarhooLegalNoticeMailComposer(parent: parentViewController)
+        self.linkOpener = linkOpener
         super.init(frame: .zero)
         setUpView()
     }
@@ -60,9 +58,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     private func setUpView() {
         accessibilityIdentifier = KHLegalNoticeViewID.view
         translatesAutoresizingMaskIntoConstraints = false
-        
         attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
-        
         addSubview(legalNoticeButton)
         addSubview(attributedLabel)
         hideLegalNoticePressed()
@@ -105,7 +101,6 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
             range: NSMakeRange(0, attributedText.length)
         )
         // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
-        
         let layoutManager = NSLayoutManager()
         let textContainer = NSTextContainer(size: CGSize(width: attributedLabel.frame.width, height: attributedLabel.frame.height + 100))
         let textStorage = NSTextStorage(attributedString: attributedText)
@@ -129,7 +124,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         var range : NSRange = NSRange()
         let attributeOfClickedText = attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String
         if attributeOfClickedText ==  valueForAttributedLink {
-            KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: parentViewController).openLink(link: UITexts.Booking.legalNoticeLink)
+            linkOpener?.openLink(link: UITexts.Booking.legalNoticeLink)
        }
     }
     

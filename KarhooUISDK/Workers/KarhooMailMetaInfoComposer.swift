@@ -62,9 +62,6 @@ final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
         guard let sysInfoHardwareName = String(bytes: sysInfoHardwareTypeData, encoding: .ascii) else { return "" }
         let hardwareNameWithoutControlCharacters = sysInfoHardwareName.trimmingCharacters(in: .controlCharacters)
         return hardwareNameWithoutControlCharacters
-    
-                                     
-                                     
     }
     
     private func getUserInfo() -> String {
