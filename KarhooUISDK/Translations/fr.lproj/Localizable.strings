@@ -348,6 +348,8 @@
 /* empty table view result */
 "Text.Errors.NoResultsFound" = "Aucun résultat trouvé";
 
+"Text.Error.UnkownLoyaltyError" = "Une erreur s’est produite. Pour gagner ou utiliser vos points, veuillez réessayer plus tard.";
+
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 
 "Text.FeedbackView.app" = "Avez-vous trouvé l’application facile à utiliser ?";

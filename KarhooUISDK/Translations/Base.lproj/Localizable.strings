@@ -348,6 +348,8 @@
 /* empty table view result */
 "Text.Errors.NoResultsFound" = "No results found";
 
+"Text.Error.UnkownLoyaltyError" = "An error has occured. To earn or use your points please try again later.";
+
 "Text.FeedbackView.addComment" = "Additional comments";
 
 "Text.FeedbackView.app" = "How easy did you find using the app?";

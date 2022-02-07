@@ -35,6 +35,16 @@ final class KarhooLoyaltyView: UIView {
     private var topSwitchConstraint: NSLayoutConstraint?
     private var bottomSwitchConstraint: NSLayoutConstraint?
     
+    var delegate: LoyaltyViewDelegate? {
+        didSet {
+            presenter.delegate = delegate
+        }
+    }
+    
+    var currentMode: LoyaltyMode {
+        presenter.getCurrentMode()
+    }
+    
     // MARK: - UI
     private lazy var containerStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +167,7 @@ final class KarhooLoyaltyView: UIView {
         presenter = KarhooLoyaltyPresenter()
         super.init(frame: .zero)
         setupView()
-        presenter.set(view: self)
+        presenter.internalDelegate = self
     }
     
     required init(coder: NSCoder) {
@@ -275,32 +285,49 @@ final class KarhooLoyaltyView: UIView {
 // MARK: - LoyaltyView
 extension KarhooLoyaltyView: LoyaltyView {
     
-    func getCurrentMode() -> LoyaltyMode {
-        return presenter.getCurrentMode()
+    func set(dataModel: LoyaltyViewDataModel) {
+        presenter.set(dataModel: dataModel)
+        presenter.updateLoyaltyMode(with: .earn)
     }
     
-    func set(mode: LoyaltyMode, withEarnText earnText: String, andBurnText burnText: String) {
-        errorLabel.isHidden = true
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        presenter.getLoyaltyPreAuthNonce(completion: completion)
+    }
+  
+    func hasError() -> Bool {
+        return presenter.hasError()
+    }
+    
+    private func refreshBalanceView(with mode: LoyaltyBalanceMode) {
+        balanceView.set(balance: presenter.balance)
+        balanceView.set(mode: mode)
+    }
+}
+
+extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
+    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String) {
         earnLabel.text = earnText
         burnLabel.text = burnText
+        burnLabel.isHidden = false
+        errorLabel.isHidden = true
         loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
         
         switch mode {
         case .none, .earn:
             showInfoView(false)
-            
+
         case .burn:
             showInfoView(true)
         }
-        
+
         refreshBalanceView(with: .success)
     }
     
     private func showInfoView(_ show: Bool) {
-        if (infoView.isHidden && !show) || (!infoView.isHidden && show)  {
+        if (infoView.isHidden && !show) || (!infoView.isHidden && show) {
             return
         }
-        
+
         if show {
             infoView.isHidden = false
             UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
@@ -315,43 +342,21 @@ extension KarhooLoyaltyView: LoyaltyView {
         }
     }
     
-    func showError(withMessage message: String) {
-        errorLabel.text = message
-        errorLabel.isHidden = false
-        burnLabel.isHidden = true
+    func updateWith(errorMessage: String) {
         loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
+        errorLabel.isHidden = false
+        errorLabel.text = errorMessage
+        burnLabel.isHidden = true
         showInfoView(false)
         refreshBalanceView(with: .error)
     }
     
-    func set(dataModel: LoyaltyViewDataModel) {
-        presenter.set(dataModel: dataModel)
-        presenter.updateLoyaltyMode(with: .earn)
-    }
-    
-    func set(delegate: LoyaltyViewDelegate) {
-        presenter.delegate = delegate
-    }
-    
-    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
-        earnLabel.isHidden = !showEarnRelatedUI
-        burnPointsContainerView.isHidden = !showBurnRelatedUI
-        separatorView.isHidden = !showBurnRelatedUI
+    func togglefeatures(earnOn: Bool, burnOn: Bool) {
+        earnLabel.isHidden = !earnOn
+        burnPointsContainerView.isHidden = !burnOn
+        separatorView.isHidden = !burnOn
         updateBurnPointsSwitchConstraints()
-        
-        self.isHidden = !showEarnRelatedUI && !showBurnRelatedUI
-    }
-    
-    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        presenter.getLoyaltyPreAuthNonce(completion: completion)
-    }
-  
-    func hasError() -> Bool {
-        return presenter.hasError()
-    }
-    
-    private func refreshBalanceView(with mode: LoyaltyBalanceMode) {
-        balanceView.set(balance: presenter.balance)
-        balanceView.set(mode: mode)
+
+        self.isHidden = !earnOn && !burnOn
     }
 }

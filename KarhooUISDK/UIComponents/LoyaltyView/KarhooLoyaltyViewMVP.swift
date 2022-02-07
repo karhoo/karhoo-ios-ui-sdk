@@ -11,12 +11,9 @@ import KarhooSDK
 import UIKit
 
 protocol LoyaltyView: AnyObject {
-    func getCurrentMode() -> LoyaltyMode
-    func set(mode: LoyaltyMode, withEarnText earnText: String, andBurnText burnText: String)
+    var delegate: LoyaltyViewDelegate? { get set }
+    var currentMode: LoyaltyMode { get }
     func set(dataModel: LoyaltyViewDataModel)
-    func set(delegate: LoyaltyViewDelegate)
-    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool)
-    func showError(withMessage message: String)
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
     func hasError() -> Bool
 }
@@ -34,16 +31,26 @@ protocol LoyaltyViewDelegate: AnyObject {
 
 protocol LoyaltyPresenter: AnyObject {
     var delegate: LoyaltyViewDelegate? { get set }
+    var internalDelegate: LoyaltyPresenterDelegate? { get set }
     var balance: Int { get }
     func getCurrentMode() -> LoyaltyMode
     func set(dataModel: LoyaltyViewDataModel)
-    func set(view: LoyaltyView)
     func set(status: LoyaltyStatus)
     func updateEarnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?)
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
     func hasError() -> Bool
+}
+
+protocol LoyaltyPresenterDelegate: AnyObject {
+    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String)
+    func updateWith(errorMessage: String)
+    func togglefeatures(earnOn: Bool, burnOn: Bool)
+}
+
+enum LoyaltyError {
+    case none, insufficientBalance, unsupportedCurrency, unknownError
 }
 
 enum LoyaltyMode {

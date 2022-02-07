@@ -10,6 +10,6 @@ import Foundation
 
 struct LoyaltyFeatureFlags {
     static let loyaltyEnabled = true
-    static let loyaltyCanEarn = loyaltyEnabled && true
+    static let loyaltyCanEarn = loyaltyEnabled && false
     static let loyaltyCanBurn = loyaltyEnabled && true
 }
