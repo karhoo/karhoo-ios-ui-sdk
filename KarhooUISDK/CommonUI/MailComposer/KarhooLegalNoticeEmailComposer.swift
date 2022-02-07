@@ -16,11 +16,11 @@ public protocol KarhooLegalNoticeMailComposerProtocol: AnyObject {
 
 public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMailComposerProtocol {
 
-    private weak var viewController: UIViewController?
+    private weak var viewController: BaseViewController?
     private let mailComposer = MailComposer()
     private var mailMetaInfoComposer: MailMetaInfoComposer = KarhooMailMetaInfoComposer()
 
-    init(parent: UIViewController?) {
+    init(parent: BaseViewController?) {
         self.viewController = parent
     }
 

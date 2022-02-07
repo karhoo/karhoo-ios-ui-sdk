@@ -13,19 +13,19 @@ import MessageUI
 public protocol FeedbackEmailComposer: AnyObject {
     func showFeedbackMail() -> Bool
     func reportIssueWith(trip: TripInfo) -> Bool
-    func set(parent: UIViewController)
+    func set(parent: BaseViewController)
     func showNoCoverageEmail() -> Bool
 }
 
 public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer {
 
-    private weak var viewController: UIViewController?
+    private weak var viewController: BaseViewController?
 
     private let mailComposer = MailComposer()
     
     private var mailMetaInfoComposer: MailMetaInfoComposer = KarhooMailMetaInfoComposer()
 
-    public func set(parent: UIViewController) {
+    public func set(parent: BaseViewController) {
         self.viewController = parent
     }
 
