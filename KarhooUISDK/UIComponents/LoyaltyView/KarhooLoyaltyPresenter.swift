@@ -84,7 +84,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 if !success {
                     self?.handlePointsCallError(for: .earn)
                 } else {
-                    self?.view?.set(mode: self?.currentMode ?? .none, withSubtitle: self?.getSubtitleText() ?? "")
+                    self?.view?.set(
+                        mode: self?.currentMode ?? .none,
+                        withEarnText: self?.getEarnText() ?? "",
+                        andBurnText: self?.getBurnText() ?? ""
+                    )
                 }
                 
                 self?.updateBurnedPoints(completion: nil)
@@ -252,7 +256,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     private func updateUIWithSuccess() {
-        view?.set(mode: currentMode, withSubtitle: getSubtitleText())
+        view?.set(mode: currentMode, withEarnText: getEarnText(), andBurnText: getBurnText())
         switch currentMode {
         case .none:
             updateViewVisibilityFromViewModel()
@@ -342,18 +346,41 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         return currentMode == .burn ? viewModel.burnAmount : 0
     }
     
-    private func getSubtitleText() -> String {
+    private func getEarnText() -> String {
         switch currentMode {
         case .none:
             return ""
         case .burn:
-            return String(format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""), "\(viewModel?.tripAmount ?? 0)", "\(viewModel?.currency ?? "-")", "\(viewModel?.burnAmount ?? 0)")
+            return String(
+                format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
+                "0"
+            )
+            
         case .earn:
             if viewModel?.canEarn ?? false {
-                return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(viewModel?.earnAmount ?? 0)")
+                return String(
+                    format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
+                    "\(viewModel?.earnAmount ?? 0)"
+                )
             } else {
                 return ""
             }
+        }
+    }
+    
+    private func getBurnText() -> String {
+        switch currentMode {
+        case .none:
+            return ""
+        case .earn:
+            return UITexts.Loyalty.burnOffSubtitle
+        case .burn:
+            return String(
+                format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
+                "\(viewModel?.tripAmount ?? 0)",
+                "\(viewModel?.currency ?? "-")",
+                "\(viewModel?.burnAmount ?? 0)"
+            )
         }
     }
     

@@ -12,7 +12,7 @@ import UIKit
 
 protocol LoyaltyView: AnyObject {
     func getCurrentMode() -> LoyaltyMode
-    func set(mode: LoyaltyMode, withSubtitle text: String)
+    func set(mode: LoyaltyMode, withEarnText earnText: String, andBurnText burnText: String)
     func set(dataModel: LoyaltyViewDataModel)
     func set(delegate: LoyaltyViewDelegate)
     func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool)

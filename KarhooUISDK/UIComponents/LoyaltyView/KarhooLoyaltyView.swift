@@ -44,7 +44,6 @@ final class KarhooLoyaltyView: UIView {
         $0.axis = .vertical
     }
     
-    // Note: The burnPointsSwitch is hidden in case can_burn == false. This stack view makes sure to strech the labels until the right edge of the view in this scenario
     private lazy var loyaltyStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.accessibilityIdentifier = KHLoyaltyViewID.loyaltyStackView
@@ -280,9 +279,10 @@ extension KarhooLoyaltyView: LoyaltyView {
         return presenter.getCurrentMode()
     }
     
-    func set(mode: LoyaltyMode, withSubtitle text: String) {
-//        burnTitleLabel.text = text
-        burnTitleLabel.textColor = KarhooUI.colors.text
+    func set(mode: LoyaltyMode, withEarnText earnText: String, andBurnText burnText: String) {
+        errorLabel.isHidden = true
+        earnLabel.text = earnText
+        burnLabel.text = burnText
         loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
         
         switch mode {
@@ -316,8 +316,9 @@ extension KarhooLoyaltyView: LoyaltyView {
     }
     
     func showError(withMessage message: String) {
-//        burnTitleLabel.text = message
-        burnTitleLabel.textColor = KarhooUI.colors.error
+        errorLabel.text = message
+        errorLabel.isHidden = false
+        burnLabel.isHidden = true
         loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
         showInfoView(false)
         refreshBalanceView(with: .error)
@@ -333,8 +334,9 @@ extension KarhooLoyaltyView: LoyaltyView {
     }
     
     func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
-        burnTitleLabel.isHidden = !showEarnRelatedUI
+        earnLabel.isHidden = !showEarnRelatedUI
         burnPointsContainerView.isHidden = !showBurnRelatedUI
+        separatorView.isHidden = !showBurnRelatedUI
         updateBurnPointsSwitchConstraints()
         
         self.isHidden = !showEarnRelatedUI && !showBurnRelatedUI
