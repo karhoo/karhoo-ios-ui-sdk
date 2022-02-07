@@ -347,7 +347,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .none:
             return ""
         case .burn:
-            return String(format: NSLocalizedString(UITexts.Loyalty.pointsBurnedForTrip, comment: ""), "\(viewModel?.burnAmount ?? 0)")
+            return String(format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""), "\(viewModel?.tripAmount ?? 0)", "\(viewModel?.currency ?? "-")", "\(viewModel?.burnAmount ?? 0)")
         case .earn:
             if viewModel?.canEarn ?? false {
                 return String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(viewModel?.earnAmount ?? 0)")

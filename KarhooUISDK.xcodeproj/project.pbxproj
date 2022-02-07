@@ -440,6 +440,7 @@
 		6BA9DB692785D9700007934C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9DB682785D9700007934C /* UIConstants.swift */; };
 		6BB940542754D47800478ABD /* LoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940532754D47800478ABD /* LoyaltyViewModel.swift */; };
 		6BB940562754D4AC00478ABD /* LoyaltyViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */; };
+		6BC2B3B127B1283E00218372 /* SeparatorWithLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2B3B027B1283E00218372 /* SeparatorWithLabelView.swift */; };
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
 		6BE3695426EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */; };
 		6BE3695626EB352700F0FE86 /* CountryCodeSelectionMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */; };
@@ -940,6 +941,7 @@
 		6BA9DB682785D9700007934C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		6BB940532754D47800478ABD /* LoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewModel.swift; sourceTree = "<group>"; };
 		6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewDataModel.swift; sourceTree = "<group>"; };
+		6BC2B3B027B1283E00218372 /* SeparatorWithLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorWithLabelView.swift; sourceTree = "<group>"; };
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
 		6BE3695326EB34E000F0FE86 /* CountryCodeSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionPresenter.swift; sourceTree = "<group>"; };
 		6BE3695526EB352700F0FE86 /* CountryCodeSelectionMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionMVP.swift; sourceTree = "<group>"; };
@@ -2524,6 +2526,7 @@
 				4038DF3B2444C6C30014539B /* KarhooTextInputView */,
 				407EC77822CF564E00F24CFC /* MessageBanner */,
 				407EC77B22CF564E00F24CFC /* PinView */,
+				6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
 			);
 			path = Views;
@@ -2551,6 +2554,14 @@
 				6BF304EF275FA2920016CFC5 /* FeatureFlags.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				6BC2B3B027B1283E00218372 /* SeparatorWithLabelView.swift */,
+			);
+			path = SeparatorWithLabelView;
 			sourceTree = "<group>";
 		};
 		6BDB6C21274E88E4006DDF1C /* Workers */ = {
@@ -3890,6 +3901,7 @@
 				09C765C321DE688100CD81AB /* TripAllocationMVP.swift in Sources */,
 				5C7B185225310E170001CFE6 /* TouchAreaEdgeInsets.swift in Sources */,
 				FC705B1E221322550001036E /* PopupDialogViewController.swift in Sources */,
+				6BC2B3B127B1283E00218372 /* SeparatorWithLabelView.swift in Sources */,
 				AE4AC8A425F12C28000F9E57 /* AdyenThreeDSecureUtils.swift in Sources */,
 				09C765BE21DE688100CD81AB /* KarhooTripAllocationPresenter.swift in Sources */,
 				404E9C4B23C8BB2B00289F43 /* LineView.swift in Sources */,
