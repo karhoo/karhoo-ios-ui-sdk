@@ -67,7 +67,6 @@ final class KarhooMailMetaInfoComposer: MailMetaInfoComposer {
         guard let user = Karhoo.getUserService().getCurrentUser() else {
             return ""
         }
-
         return """
                \(UITexts.User.email): \(user.email)
                \(UITexts.User.mobilePhone): \(user.mobileNumber)

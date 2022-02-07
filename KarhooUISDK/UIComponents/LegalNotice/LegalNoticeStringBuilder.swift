@@ -9,41 +9,35 @@
 import Foundation
 import UIKit
 
-public struct LegalNoticeStringBuilder {
+struct LegalNoticeStringBuilder {
     
-    func legalNotice() -> NSAttributedString {
+    func getLegalNotice() -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        paragraphStyle.lineSpacing = 4
+        paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
         
         let titleForLink: String = UITexts.Booking.legalNoticeTitle
         let link = UITexts.Booking.legalNoticeLink
-
         let legalNoticeText = NSMutableAttributedString()
-        
         let regularAttributes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.captionRegular(),
             .foregroundColor: KarhooUI.colors.text,
-            .paragraphStyle: paragraphStyle]
-
-        let linklAttibutes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle
+        ]
+        let linkAttibutes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.captionRegular(),
             .foregroundColor: KarhooUI.colors.accent,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .underlineColor: KarhooUI.colors.accent,
             .paragraphStyle: paragraphStyle,
-            NSAttributedString.Key(rawValue: "link"):"link"]
-        
-        var fullText: String {
-            String(format: NSLocalizedString(UITexts.Booking.legalNoticeText,
-                                                        comment: ""), titleForLink)
-        }
+            NSAttributedString.Key(rawValue: "link"): "link"
+        ]
+        let fullText = String(format: NSLocalizedString(UITexts.Booking.legalNoticeText, comment: ""), titleForLink)
         legalNoticeText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
-        
         if LinkParser().canOpen(link) {
             let legalNoticeString: NSString = legalNoticeText.string as NSString
             let linkRange = (legalNoticeString).range(of: titleForLink)
-            legalNoticeText.addAttributes(linklAttibutes, range: linkRange)
+            legalNoticeText.addAttributes(linkAttibutes, range: linkRange)
         }
         return legalNoticeText
     }

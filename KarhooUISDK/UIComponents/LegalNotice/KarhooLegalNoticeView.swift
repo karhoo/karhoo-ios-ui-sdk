@@ -24,12 +24,12 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     private var didSetUpConstraints: Bool = false
     private var legalNoticeTextView: UITextView!
     
-        private lazy var legalNoticeButton: KarhooExpandViewButton = {
-            let button = KarhooExpandViewButton(title: UITexts.Booking.legalNotice, onExpand: hideLegalNoticePressed, onCollapce: showLegalNoticePressed)
-            button.accessibilityIdentifier = KHLegalNoticeViewID.button
-            button.anchor(height: 44.0)
-            return button
-        }()
+    private lazy var legalNoticeButton: KarhooExpandViewButton = {
+        let button = KarhooExpandViewButton(title: UITexts.Booking.legalNotice, onExpand: hideLegalNoticePressed, onCollapce: showLegalNoticePressed)
+        button.accessibilityIdentifier = KHLegalNoticeViewID.button
+        button.anchor(height: UIConstants.Dimension.Button.standard)
+        return button
+    }()
     
     private var attributedLabel: UILabel = {
         let legalNoticeLabel = UILabel()
@@ -37,7 +37,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         legalNoticeLabel.accessibilityIdentifier = KHLegalNoticeViewID.text
         legalNoticeLabel.font = KarhooUI.fonts.captionRegular()
         legalNoticeLabel.textAlignment = .justified
-        legalNoticeLabel.attributedText = LegalNoticeStringBuilder().legalNotice()
+        legalNoticeLabel.attributedText = LegalNoticeStringBuilder().getLegalNotice()
         legalNoticeLabel.numberOfLines = 0
         legalNoticeLabel.isUserInteractionEnabled = true
         return legalNoticeLabel
@@ -46,10 +46,10 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     // MARK: - Init
     init(parent: UIViewController, linkParser: LinkParser = LinkParser()) {
         zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
-        self.parentViewController = parent
-        self.legalNoticeMailComposer = KarhooLegalNoticeMailComposer(parent: parentViewController)
+        parentViewController = parent
+        legalNoticeMailComposer = KarhooLegalNoticeMailComposer(parent: parentViewController)
         super.init(frame: .zero)
-        self.setUpView()
+        setUpView()
     }
     
     required init(coder: NSCoder) {
@@ -61,7 +61,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         accessibilityIdentifier = KHLegalNoticeViewID.view
         translatesAutoresizingMaskIntoConstraints = false
         
-        attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.singleTap(_:))))
+        attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
         
         addSubview(legalNoticeButton)
         addSubview(attributedLabel)
@@ -74,61 +74,70 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
                 top: topAnchor,
                 leading: leadingAnchor,
                 bottom: attributedLabel.topAnchor,
-                paddingLeft: 8.0,
-                paddingRight: 8.0)
+                paddingLeft: UIConstants.Spacing.small,
+                paddingRight: UIConstants.Spacing.small
+            )
             
             attributedLabel.anchor(
                 top: legalNoticeButton.bottomAnchor,
                 leading: leadingAnchor,
                 bottom: bottomAnchor,
                 trailing: trailingAnchor,
-                paddingLeft: 8.0,
-                paddingBottom: 16,
-                paddingRight: 8.0)
+                paddingLeft: UIConstants.Spacing.small,
+                paddingBottom: UIConstants.Spacing.standard,
+                paddingRight: UIConstants.Spacing.small
+            )
             
             didSetUpConstraints.toggle()
         }
         super.updateConstraints()
     }
     
-    @objc func singleTap(_ tap : UITapGestureRecognizer) {
-           let attributedText = NSMutableAttributedString(attributedString: self.attributedLabel.attributedText!)
-        attributedText.addAttributes([NSAttributedString.Key.font: self.attributedLabel.font as UIFont], range: NSMakeRange(0, (self.attributedLabel.attributedText?.string.count)!))
+    @objc private func textViewClicked(_ tap : UITapGestureRecognizer) {
+        let valueForAttributedLink = "link"
+        guard let attributedString = attributedLabel.attributedText else {
+            assertionFailure("Atrtributed string for legal notice equal nil")
+            return
+        }
+        let attributedText = NSMutableAttributedString(attributedString: attributedString)
+        attributedText.addAttributes(
+            [NSAttributedString.Key.font: attributedLabel.font as UIFont],
+            range: NSMakeRange(0, attributedText.length)
+        )
+        // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
+        
+        let layoutManager = NSLayoutManager()
+        let textContainer = NSTextContainer(size: CGSize(width: attributedLabel.frame.width, height: attributedLabel.frame.height + 100))
+        let textStorage = NSTextStorage(attributedString: attributedText)
 
-           // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
-           let layoutManager = NSLayoutManager()
-           let textContainer = NSTextContainer(size: CGSize(width: (self.attributedLabel.frame.width), height: (self.attributedLabel.frame.height)+100))
-           let textStorage = NSTextStorage(attributedString: attributedText)
+        // Configure layoutManager and textStorage
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
 
-           // Configure layoutManager and textStorage
-           layoutManager.addTextContainer(textContainer)
-           textStorage.addLayoutManager(layoutManager)
+        // Configure textContainer
+        textContainer.lineFragmentPadding = 0.0
+        textContainer.lineBreakMode = attributedLabel.lineBreakMode
+        textContainer.maximumNumberOfLines = attributedLabel.numberOfLines
+        let labelSize = attributedLabel.bounds.size
+        textContainer.size = labelSize
+        let tapLocation = tap.location(in: attributedLabel)
 
-           // Configure textContainer
-           textContainer.lineFragmentPadding = 0.0
-           textContainer.lineBreakMode = self.attributedLabel.lineBreakMode
-           textContainer.maximumNumberOfLines = self.attributedLabel.numberOfLines
-           let labelSize = self.attributedLabel.bounds.size
-           textContainer.size = labelSize
-
-           let tapLocation = tap.location(in: self.attributedLabel)
-
-           // get the index of character where user tapped
-           let index = layoutManager.characterIndex(for: tapLocation, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-
-           if index > (self.attributedLabel.text?.count)! { return }
-           var range : NSRange = NSRange()
-        if let _ = self.attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String {
+        // get the index of character where user tapped
+        let index = layoutManager.characterIndex(for: tapLocation, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        guard let attributedLabelTextCount = attributedLabel.text?.count else { return }
+        if index > attributedLabelTextCount { return }
+        var range : NSRange = NSRange()
+        let attributeOfClickedText = attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String
+        if attributeOfClickedText ==  valueForAttributedLink {
             KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: parentViewController).openLink(link: UITexts.Booking.legalNoticeLink)
-           
        }
     }
     
-    func showLegalNoticePressed(){
+    private func showLegalNoticePressed(){
         zeroHeightTextConstreint.isActive = false
     }
     
-    func hideLegalNoticePressed(){
+    private func hideLegalNoticePressed(){
         zeroHeightTextConstreint.isActive = true
     }
 }
