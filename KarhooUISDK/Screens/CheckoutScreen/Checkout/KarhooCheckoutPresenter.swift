@@ -22,7 +22,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let loyaltyService: LoyaltyService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
-    
+    private let sdkConfiguration: KarhooUISDKConfiguration
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
     private var trip: TripInfo?
@@ -47,6 +47,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
+        sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
         self.threeDSecureProvider = threeDSecureProvider
@@ -55,6 +56,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.userService = userService
         self.loyaltyService = loyaltyService
         self.paymentNonceProvider = paymentNonceProvider
+        self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
@@ -467,6 +469,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func isKarhooUser() -> Bool {
         return karhooUser
+    }
+
+    func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
+        sdkConfiguration.isExplicitTermsAndConfitionsAprovalRequired
     }
     
     private func setUpBookingButtonState() {

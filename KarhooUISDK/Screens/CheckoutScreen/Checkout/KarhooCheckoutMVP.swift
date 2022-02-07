@@ -18,6 +18,7 @@ protocol CheckoutPresenter {
     func didPressClose()
     func screenHasFadedOut()
     func isKarhooUser() -> Bool
+    func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool
     func updateBookButtonWithEnabledState()
 }
 

@@ -214,7 +214,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
-        termsConditionsView = TermsConditionsView()
+        termsConditionsView = TermsConditionsView(
+            isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
+        )
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
         setUpView()
