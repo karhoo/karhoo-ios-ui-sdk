@@ -24,6 +24,9 @@ public final class KarhooLegalNoticeMailComposer: NSObject, KarhooLegalNoticeMai
         self.viewController = parent
     }
 
+
+    ///   Returns: `true` if is able to open email client
+    /// - Parameter addrees: Email addrees of recipient.
     @discardableResult public func sendLegalNoticeMail(addrees: String) -> Bool {
         guard MFMailComposeViewController.canSendMail(), let viewController = viewController else {
             return false
