@@ -334,6 +334,8 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Une erreur est survenue";
 
+"Text.Error.UnkownLoyaltyError" = "Une erreur s’est produite. Pour gagner ou utiliser vos points, veuillez réessayer plus tard.";
+
 "Text.Error.UnsupportedCurrency" = "La devise n’est pas encore prise en charge";
 
 /* Theoretical edge case where the braintree token is missing */
@@ -347,8 +349,6 @@
 
 /* empty table view result */
 "Text.Errors.NoResultsFound" = "Aucun résultat trouvé";
-
-"Text.Error.UnkownLoyaltyError" = "Une erreur s’est produite. Pour gagner ou utiliser vos points, veuillez réessayer plus tard.";
 
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 
@@ -373,6 +373,8 @@
 
 /* english "Card" (referring to payment card) */
 "Text.Generic.Card" = "Carte";
+
+"Text.Generic.Checked" = "Vérifié";
 
 "Text.Generic.Close" = "Fermer";
 
@@ -501,6 +503,8 @@
 
 /* No drivers available */
 "Text.Generic.TripStatus.NoDriversAvailable" = "Aucun chauffeur disponible";
+
+"Text.Generic.Unchecked" = "Décochée";
 
 /* "Unkown" */
 "Text.Generic.Unknown" = "Inconnu";

@@ -334,6 +334,8 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Something went wrong";
 
+"Text.Error.UnkownLoyaltyError" = "An error has occured. To earn or use your points please try again later.";
+
 "Text.Error.UnsupportedCurrency" = "The currency is not supported yet";
 
 /* Theoretical edge case where the braintree token is missing */
@@ -347,8 +349,6 @@
 
 /* empty table view result */
 "Text.Errors.NoResultsFound" = "No results found";
-
-"Text.Error.UnkownLoyaltyError" = "An error has occured. To earn or use your points please try again later.";
 
 "Text.FeedbackView.addComment" = "Additional comments";
 
@@ -373,6 +373,8 @@
 
 /* english "Card" (referring to payment card) */
 "Text.Generic.Card" = "Card";
+
+"Text.Generic.Checked" = "Checked";
 
 "Text.Generic.Close" = "Close";
 
@@ -501,6 +503,8 @@
 
 /* No drivers available */
 "Text.Generic.TripStatus.NoDriversAvailable" = "No Drivers available";
+
+"Text.Generic.Unchecked" = "Unchecked";
 
 /* "Unkown" */
 "Text.Generic.Unknown" = "Unknown";

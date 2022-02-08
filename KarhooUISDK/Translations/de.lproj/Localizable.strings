@@ -334,6 +334,8 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Es ist ein Fehler aufgetreten.";
 
+"Text.Error.UnkownLoyaltyError" = "Es ist ein Fehler aufgetreten. Um Ihre Punkte zu sammeln oder zu verwenden, versuchen Sie es bitte später erneut.";
+
 "Text.Error.UnsupportedCurrency" = "Die Währung wird noch nicht unterstützt";
 
 /* Theoretical edge case where the braintree token is missing */
@@ -371,6 +373,8 @@
 
 /* english "Card" (referring to payment card) */
 "Text.Generic.Card" = "Karte";
+
+"Text.Generic.Checked" = "Geprüft";
 
 "Text.Generic.Close" = "Schließen";
 
@@ -499,6 +503,8 @@
 
 /* No drivers available */
 "Text.Generic.TripStatus.NoDriversAvailable" = "Keine Treiber verfügbar";
+
+"Text.Generic.Unchecked" = "Nicht angekreuzt";
 
 /* "Unkown" */
 "Text.Generic.Unknown" = "Unbekannt";
