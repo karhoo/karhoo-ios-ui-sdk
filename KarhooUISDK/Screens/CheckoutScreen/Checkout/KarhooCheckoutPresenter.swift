@@ -207,9 +207,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         if let destination = bookingDetails.destinationLocationDetails {
-            analytics.bookingRequested(destination: destination,
-                                       dateScheduled: bookingDetails.scheduledDate,
-                                       quote: quote)
+            analytics.bookingRequested(tripDetails: self.trip ?? <#default value#>,
+                                       outboundTripId: nil)
         }
         
         if let nonce = view?.getPaymentNonce() {
