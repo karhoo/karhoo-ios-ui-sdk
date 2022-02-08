@@ -372,33 +372,32 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .none:
             return ""
         case .burn:
-            return String(
-                format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
-                "0"
-            )
-            
+            return viewModel?.canEarn ?? false ?
+            getLocalizedEarnPointsText(for: 0) :
+            ""
         case .earn:
-            if viewModel?.canEarn ?? false {
-                return String(
-                    format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
-                    "\(viewModel?.earnAmount ?? 0)"
-                )
-            } else {
-                return ""
-            }
+            return viewModel?.canEarn ?? false ?
+            getLocalizedEarnPointsText(for: viewModel?.earnAmount ?? 0) :
+            ""
         }
+    }
+    
+    private func getLocalizedEarnPointsText(for amount: Int) -> String {
+        String(
+            format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
+            "\(amount)"
+        )
     }
     
     private func getBurnText() -> String {
         switch currentMode {
-        case .none:
-            return ""
-        case .earn:
-            return UITexts.Loyalty.burnOffSubtitle
+        case .none, .earn:
+            return viewModel?.canBurn ?? false ? UITexts.Loyalty.burnOffSubtitle : ""
         case .burn:
+            let amount = viewModel?.tripAmount.amountString ?? "0"
             return String(
                 format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
-                "\(viewModel?.tripAmount ?? 0)",
+                amount,
                 "\(viewModel?.currency ?? "-")",
                 "\(viewModel?.burnAmount ?? 0)"
             )

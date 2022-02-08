@@ -261,8 +261,8 @@ final class KarhooLoyaltyView: UIView {
     }
     
     private func updateBurnPointsSwitchConstraints() {
-        topSwitchConstraint?.isActive = burnTitleLabel.isHidden
-        bottomSwitchConstraint?.isActive = burnTitleLabel.isHidden
+        topSwitchConstraint?.isActive = burnPointsLabelStackView.isHidden
+        bottomSwitchConstraint?.isActive = burnPointsLabelStackView.isHidden
         setNeedsLayout()
     }
     
