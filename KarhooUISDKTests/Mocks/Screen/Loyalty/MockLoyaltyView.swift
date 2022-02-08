@@ -11,6 +11,30 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockLoyaltyView: LoyaltyView {
+    private(set)var mode: LoyaltyMode?
+    private(set)var earnText: String?
+    private(set)var burnText: String?
+    private(set)var errorMessage: String?
+    private(set)var earnOn: Bool?
+    private(set)var burnOn: Bool?
+    private(set)var didCallSetLoyaltyMode = false
+    private(set)var didShowError = false
+    private(set)var didCallGetCurrentMode = false
+    private(set)var didSetDelegate = false
+    private(set)var didCallGetUpdateLoyaltyFeatures = false
+    
+    var delegate: LoyaltyViewDelegate? {
+        didSet {
+            didSetDelegate = true
+        }
+    }
+    
+    var currentMode: LoyaltyMode = .none {
+        didSet {
+            didCallGetCurrentMode = true
+        }
+    }
+    
     var getLoyaltyNonceCalled = false
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         getLoyaltyNonceCalled = true
@@ -23,35 +47,29 @@ final class MockLoyaltyView: LoyaltyView {
         hasErrorsCalled = true
         return false
     }
-    
-    private(set)var didCallGetUpdateLoyaltyFeatures = false
-    func updateLoyaltyFeatures(showEarnRelatedUI: Bool, showBurnRelatedUI: Bool) {
-        didCallGetUpdateLoyaltyFeatures = true
-    }
-    
-    private(set)var didCallGetCurrentMode = false
-    func getCurrentMode() -> LoyaltyMode {
-        didCallGetCurrentMode = true
-        return .none
-    }
-    
-    private(set)var didCallSetLoyaltyMode = false
-    func set(mode: LoyaltyMode, withSubtitle text: String) {
-        didCallSetLoyaltyMode = true
-    }
-    
+
     private(set)var didSetRequest = false
     func set(dataModel: LoyaltyViewDataModel) {
         didSetRequest = true
     }
-    
-    private(set)var didSetDelegate = false
-    func set(delegate: LoyaltyViewDelegate) {
-        didSetDelegate = true
+}
+
+extension MockLoyaltyView: LoyaltyPresenterDelegate {
+    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String) {
+        self.mode = mode
+        self.earnText = earnText
+        self.burnText = burnText
+        didCallSetLoyaltyMode = true
     }
     
-    private(set)var didShowError = false
-    func showError(withMessage message: String) {
+    func updateWith(errorMessage: String) {
+        self.errorMessage = errorMessage
         didShowError = true
+    }
+    
+    func togglefeatures(earnOn: Bool, burnOn: Bool) {
+        self.earnOn = earnOn
+        self.burnOn = burnOn
+        didCallGetUpdateLoyaltyFeatures = true
     }
 }
