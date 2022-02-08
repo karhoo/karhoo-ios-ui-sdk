@@ -207,7 +207,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         if let destination = bookingDetails.destinationLocationDetails {
-            analytics.bookingRequested(tripDetails: self.trip ?? <#default value#>,
+            analytics.bookingRequested(tripDetails: self.trip!,
                                        outboundTripId: nil)
         }
         
