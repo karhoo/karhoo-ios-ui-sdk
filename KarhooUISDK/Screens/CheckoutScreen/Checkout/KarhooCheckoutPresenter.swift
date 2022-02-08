@@ -154,6 +154,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     func addMoreDetails() {
+        guard areTermsAndConditionsAccepted else {
+            self.view?.showTermsConditionsRequiredError()
+            return
+        }
         if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
         } else {
@@ -183,10 +187,23 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         return true
     }
 
+    /// Returns true if explicite acceptance is not required OR it is required and user accepted it
+    private var areTermsAndConditionsAccepted: Bool {
+        if shouldRequireExplicitTermsAndConditionsAcceptance() == false {
+            return true
+        }
+        return view?.areTermsAndConditionsAccepted ?? true
+    }
+
     // MARK: - Book
     func bookTripPressed() {
-        view?.setRequestingState()
+        guard areTermsAndConditionsAccepted else {
+            self.view?.showTermsConditionsRequiredError()
+            return
+        }
         
+        view?.setRequestingState()
+
         if Karhoo.configuration.authenticationMethod().isGuest() {
             submitGuestBooking()
         } else {

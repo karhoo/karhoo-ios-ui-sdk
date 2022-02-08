@@ -430,7 +430,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         backButton.isUserInteractionEnabled = false
         backButton.tintColor = KarhooUI.colors.medGrey
     }
-    
+
+    var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
+
+    func showTermsConditionsRequiredError() {
+        termsConditionsView.showNoAcceptanceError()
+        baseStackView.scrollTo(termsConditionsView, animated: true)
+    }
+
     func getPassengerDetails() -> PassengerDetails? {
         return passengerDetailsAndPaymentView.details
     }

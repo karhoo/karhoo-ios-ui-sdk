@@ -23,6 +23,7 @@ protocol CheckoutPresenter {
 }
 
 protocol CheckoutView: BaseViewController {
+    var areTermsAndConditionsAccepted: Bool { get }
     func showCheckoutView(_ show: Bool)
     func setRequestingState()
     func setAddFlightDetailsState()
@@ -43,6 +44,7 @@ protocol CheckoutView: BaseViewController {
     func getFlightNumber() -> String?
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
     func quoteDidExpire()
+    func showTermsConditionsRequiredError()
 }
 
 extension CheckoutView {

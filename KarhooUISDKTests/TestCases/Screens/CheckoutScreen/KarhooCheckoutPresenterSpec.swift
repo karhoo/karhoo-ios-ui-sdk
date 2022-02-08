@@ -94,8 +94,8 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
-        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
+        XCTAssertTrue(mockTripService.tripBookingSet?.meta.count == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta["trip_id"])
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
@@ -462,6 +462,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
     private func loadTestObject(configuration: AuthenticationMethod = .karhooUser) {
         KarhooTestConfiguration.authenticationMethod = configuration
+        KarhooTestConfiguration.isExplicitTermsAndConfitionsAprovalRequired = false
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
             bookingDetails: testBookingDetails,
