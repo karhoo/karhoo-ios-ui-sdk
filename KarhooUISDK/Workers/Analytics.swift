@@ -10,39 +10,17 @@ import Foundation
 import KarhooSDK
 
 public protocol Analytics {
-    func appOpened()
-    func appBackgrounded()
-    func appClosed()
-    func vehicleTypeSelected(selectedCategory: String,
-                             quoteListId: String?)
-    func changePaymentPressed()
-    func availabilityListExpanded()
-    func locationServicesRejected()
+    func tripStateChanged(tripState: TripInfo?)
+    func fleetsShown(quoteListId: String?, amountShown: Int)
     func prebookOpened()
-    func tripStateChanged(to newState: String)
-    func fleetsSorted(by sortType: String)
-    func fleetListShown(quoteListId: String?)
-    func prebookPickerOpened()
-    func prebookTimeSet(date: Date)
-    func userCalledDriver()
-    func userTermsReviewed()
-    func userCardRegistered()
-    func cardRegistrationFailed()
-    func pickupAddressDisplayed(count: Int)
-    func destinationAddressDisplayed(count: Int)
-    func pickupAddressSelected(_: LocationInfo)
-    func destinationAddressSelected(_: LocationInfo)
-    func returnRideRequested()
-    func rideSummaryExited()
-    func tripAllocationCancellationIntiatedByUser(trip: TripInfo)
-    func userPressedCurrentLocation(addressType: String)
-    func bookingRequested(destination: LocationInfo,
-                          dateScheduled: Date?,
-                          quote: Quote)
+    func prebookSet(date: Date, timezone: String)
+    func userCalledDriver(trip: TripInfo?)
+    func pickupAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int)
+    func destinationAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int)
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
 }
 
 final class KarhooAnalytics: Analytics {
-
     private let base: AnalyticsService
     private let emptyPayload = [String: Any]()
     private let timestampFormatter = TimestampFormatter()
@@ -51,148 +29,60 @@ final class KarhooAnalytics: Analytics {
         self.base = base
     }
 
-    func changePaymentPressed() {
-        base.send(eventName: .changePaymentDetailsPressed)
+    
+    func tripStateChanged(tripState: TripInfo?) {
+        base.send(eventName: .stateChangeDisplayed,
+                  payload: [Keys.tripState: tripState as Any])
     }
-
-    func appOpened() {
-        base.send(eventName: .appOpened, payload: emptyPayload)
-    }
-
-    func appBackgrounded() {
-        base.send(eventName: .appBackgrounded, payload: emptyPayload)
-    }
-
-    func appClosed() {
-        base.send(eventName: .appClosed, payload: emptyPayload)
-    }
-
-    func vehicleTypeSelected(selectedCategory: String, quoteListId: String?) {
-        base.send(eventName: .categorySelected,
-                  payload: [
-                    Keys.categorySelected: selectedCategory,
-                    Keys.quoteListId: quoteListId ?? ""
+    
+    func fleetsShown(quoteListId: String?, amountShown: Int) {
+        base.send(eventName: .fleetListShown, payload: [
+            Keys.quoteListId: quoteListId ?? "",
+            Keys.amountShown: amountShown
         ])
     }
-
-    func bookingRequested(destination: LocationInfo,
-                          dateScheduled: Date?,
-                          quote: Quote) {
-        let payload: [String: Any] = [AnalyticsConstants.Keys.price.rawValue: quote.price.highPrice,
-                                      AnalyticsConstants.Keys.priceCurrency.rawValue: quote.price.currencyCode,
-                                      AnalyticsConstants.Keys.destinationLatitude.rawValue:
-                                        destination.position.latitude,
-                                      AnalyticsConstants.Keys.destinationLongitude.rawValue:
-                                        destination.position.longitude,
-                                      AnalyticsConstants.Keys.destinationAddress.rawValue:
-                                        destination.address.displayAddress,
-                                      AnalyticsConstants.Keys.isPrebook.rawValue: dateScheduled != nil]
-
-        base.send(eventName: .bookingRequested, payload: payload)
+    
+    func prebookSet(date: Date, timezone: String) {
+        let timestamp = timestampFormatter.formattedDate(date)
+        base.send(eventName: .prebookTimeSet, payload: [Keys.prebookTimeSet: timestamp,
+                                                        Keys.timeZone: timezone])
     }
-
-    func availabilityListExpanded() {
-        base.send(eventName: .availabilityListExpanded, payload: emptyPayload)
+    
+    func userCalledDriver(trip: TripInfo?) {
+        base.send(eventName: .userCalledDriver, payload: [Keys.tripInfo: trip as Any])
     }
-
-    func locationServicesRejected() {
-        base.send(eventName: .locationServicesRejected, payload: emptyPayload)
+    
+    func pickupAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int) {
+        base.send(eventName: .pickupAddressSelected,
+                  payload: [Keys.locationDetails: locationDetails,
+                            Keys.positionInAutocompleteList: positionInAutocompleteList])
     }
-
+    
+    func destinationAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int){
+        base.send(eventName: .destinationAddressSelected,
+                  payload: [Keys.locationDetails: locationDetails,
+                            Keys.positionInAutocompleteList: positionInAutocompleteList])
+    }
+    
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
+        base.send(eventName: .bookingRequested, payload: [Keys.tripInfo: tripDetails as Any,
+                                                          Keys.tripId: outboundTripId as Any])
+    }
+    
     func prebookOpened() {
         base.send(eventName: .prebookOpened, payload: emptyPayload)
     }
-
-    func tripStateChanged(to newState: String) {
-        base.send(eventName: .stateChangeDisplayed,
-                  payload: [Keys.tripState: newState])
-    }
-
-    func fleetsSorted(by sortType: String) {
-        base.send(eventName: .fleetListSorted, payload: [Keys.sortType: sortType])
-    }
-
-    func fleetListShown(quoteListId: String?) {
-        base.send(eventName: .fleetListShown, payload: [
-            Keys.quoteListId: quoteListId ?? ""
-        ])
-    }
-
-    func prebookTimeSet(date: Date) {
-        let timestamp = timestampFormatter.formattedDate(date)
-        base.send(eventName: .prebookTimeSet, payload: [Keys.prebookTimeSet: timestamp])
-    }
-
-    func prebookPickerOpened() {
-        base.send(eventName: .prebookOpened, payload: emptyPayload)
-    }
-
-    func userCalledDriver() {
-        base.send(eventName: .userCalledDriver, payload: emptyPayload)
-    }
-
-    func userTermsReviewed() {
-        base.send(eventName: .userTermsReviewed, payload: emptyPayload)
-    }
-
-    func userCardRegistered() {
-        base.send(eventName: .userCardRegistered, payload: emptyPayload)
-    }
-
-    func cardRegistrationFailed() {
-        base.send(eventName: .userCardRegistrationFailed, payload: emptyPayload)
-    }
-
-    func pickupAddressDisplayed(count: Int) {
-        base.send(eventName: .pickupAddressDisplayed, payload: [Keys.countAddressOptions: count])
-    }
-
-    func destinationAddressDisplayed(count: Int) {
-        base.send(eventName: .destinationAddressDisplayed, payload: [Keys.countAddressOptions: count])
-    }
-
-    func pickupAddressSelected(_ locationDetails: LocationInfo) {
-        base.send(eventName: .pickupAddressSelected,
-                  payload: [Keys.address: locationDetails.address.displayAddress])
-    }
-
-    func destinationAddressSelected(_ locationDetails: LocationInfo) {
-        base.send(eventName: .destinationAddressSelected,
-                  payload: [Keys.address: locationDetails.address.displayAddress])
-    }
-
-    func returnRideRequested() {
-        base.send(eventName: .returnRideRequested, payload: emptyPayload)
-    }
-
-    func rideSummaryExited() {
-        base.send(eventName: .rideSummaryExited, payload: emptyPayload)
-    }
-
-    func tripAllocationCancellationIntiatedByUser(trip: TripInfo) {
-          base.send(eventName: .tripCancellationInitiatedByUser,
-                    payload: [Keys.screen: Value.allocation,
-                              Keys.tripId: trip.tripId])
-    }
-    
-    func userPressedCurrentLocation(addressType: String) {
-        base.send(eventName: .currentLocationPressed, payload: [Keys.address: addressType])
-    }
     
     struct Keys {
-        static let categorySelected = "category"
         static let tripState = "tripState"
-        static let sortType = "sortType"
-        static let qtaListId = "qta_list_id"
         static let quoteListId = "quote_list_id"
         static let prebookTimeSet = "prebook_time_set"
-        static let etaDisplayed = "etaDisplayed"
-        static let detaDisplayed = "detaDisplayed"
-        static let countAddressOptions = "countAddressOptions"
-        static let address = "address"
-        static let addressType = "addressType"
-        static let screen = "screen"
         static let tripId = "trip_id"
+        static let amountShown = "amountShown"
+        static let timeZone = "timezone"
+        static let tripInfo = "tripinfo"
+        static let positionInAutocompleteList = "positioninautocompletelist"
+        static let locationDetails = "locationdetails"
     }
 
     struct Value {
