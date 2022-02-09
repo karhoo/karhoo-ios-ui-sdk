@@ -18,10 +18,15 @@ public final class KarhooRidesPresenter: RidesPresenter {
 
     private let completionHandler: ScreenResultCallback<RidesListAction>
     private weak var view: RidesView?
+    private let analytics: Analytics
     private var pages: [RidesListView]?
 
-    public init(completion: @escaping ScreenResultCallback<RidesListAction>) {
-        completionHandler = completion
+    public init(
+        analytics: Analytics? = nil,
+        completion: @escaping ScreenResultCallback<RidesListAction>
+    ) {
+        self.completionHandler = completion
+        self.analytics = analytics ?? KarhooUISDKConfigurationProvider.configuration.analytics()
     }
 
     public func didPressClose() {
@@ -40,6 +45,7 @@ public final class KarhooRidesPresenter: RidesPresenter {
 
     func didPressTrackTrip(trip: TripInfo) {
         finishWithResult(.completed(result: .trackTrip(trip: trip)))
+        analytics.trackTripClicked(tripDetails: trip)
     }
 
     func didPressRebookTrip(trip: TripInfo) {
@@ -53,9 +59,11 @@ public final class KarhooRidesPresenter: RidesPresenter {
     func didSwitchToPage(index: Int) {
         if index == 0 {
             view?.moveTabToUpcomingBookings()
+            analytics.upcomingTripsOpened()
             return
         }
         view?.moveTabToPastBookings()
+        analytics.pastTripsOpened()
     }
 
     private func setUpPages() {

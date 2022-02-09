@@ -219,6 +219,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         loyaltyView.set(delegate: self)
         setUpView()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.startAnalytics()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

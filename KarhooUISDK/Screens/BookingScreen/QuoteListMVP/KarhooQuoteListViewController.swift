@@ -49,6 +49,11 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         forceLightMode()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.startAnalytics()
+    }
+
     private func setUpView() {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

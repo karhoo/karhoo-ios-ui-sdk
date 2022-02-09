@@ -41,7 +41,7 @@ public protocol Analytics {
                           quote: Quote)
     
     func bookingScreenOpened()
-    func qouteListOpened(_ bookingDetails: BookingDetails)
+    func quoteListOpened(_ bookingDetails: BookingDetails)
     func checkoutOpened(_ quote: Quote)
     func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
     func paymentSucceed()
@@ -248,7 +248,7 @@ final class KarhooAnalytics: Analytics {
         base.send(eventName: .currentLocationPressed, payload: [Keys.address: addressType])
     }
 
-    func qouteListOpened(_ bookingDetails: BookingDetails) {
+    func quoteListOpened(_ bookingDetails: BookingDetails) {
         base.send(
             eventName: .quoteListOpened,
             payload: [

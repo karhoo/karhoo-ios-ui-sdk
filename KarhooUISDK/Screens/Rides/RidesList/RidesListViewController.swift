@@ -129,12 +129,20 @@ final class RidesListViewController: UIViewController, RidesListView {
             }
             let cellViewModel = RideCellViewModel(trip: trip)
             let tripDetailsViewModel = TripDetailsViewModel(trip: trip)
-            cell.set(viewModel: cellViewModel,
-                     tripDetailsViewModel: tripDetailsViewModel,
-                     accessibilityIdentifier: "RideCell_\(indexPath.row + 1)",
-                trackTripCallback: { trip in
+            cell.set(
+                viewModel: cellViewModel,
+                tripDetailsViewModel: tripDetailsViewModel,
+                accessibilityIdentifier: "RideCell_\(indexPath.row + 1)",
+                trackTripCallback: { [weak self] trip in
                     self?.ridesListActions?.trackTrip(trip)
-            })
+                },
+                contactFleetCallback: { [weak self] trip, numberToDial in
+                    self?.ridesListActions?.contactFleet(trip, number: numberToDial)
+                },
+                contactDriverCallback: { [weak self] trip, numberToDial in
+                    self?.ridesListActions?.contactDriver(trip, number: numberToDial)
+                }
+            )
         }
 
         delegate.set(selectionCallback: { [weak self] (trip: TripInfo) in

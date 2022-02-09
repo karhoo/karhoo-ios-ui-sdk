@@ -36,7 +36,7 @@ final class KarhooTripPresenter: TripPresenter,
          cancelRideBehaviour: CancelRideBehaviourProtocol? = nil,
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          logger: Logger = DebugLogger(),
-         analytics: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          callback: @escaping ScreenResultCallback<TripScreenResult>) {
         self.trip = initialTrip
@@ -87,6 +87,8 @@ final class KarhooTripPresenter: TripPresenter,
 
         tripTrackingObservable = observable
         tripTrackingObserver = observer
+
+        analyticsScreenOpened()
     }
 
     func cancelBookingPressed() {
@@ -256,5 +258,14 @@ final class KarhooTripPresenter: TripPresenter,
 
     private func finishWithResult(_ result: ScreenResult<TripScreenResult>) {
         self.callback(result)
+    }
+
+    // MARK: - Analytics
+
+    private func analyticsScreenOpened() {
+        analytics.trackTripOpened(
+            tripDetails: trip,
+            isGuest: Karhoo.configuration.authenticationMethod().isGuest()
+        )
     }
 }

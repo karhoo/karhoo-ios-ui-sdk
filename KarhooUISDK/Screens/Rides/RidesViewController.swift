@@ -177,4 +177,12 @@ extension RidesViewController: RidesListActions {
     func rebookTrip(_ trip: TripInfo) {
         presenter.didPressRebookTrip(trip: trip)
     }
+    
+    func contactFleet(_ trip: TripInfo, number: String) {
+        PhoneNumberCaller().call(number: number)
+    }
+
+    func contactDriver(_ trip: TripInfo, number: String) {
+        PhoneNumberCaller().call(number: number)
+    }
 }

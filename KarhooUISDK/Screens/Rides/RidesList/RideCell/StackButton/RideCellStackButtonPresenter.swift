@@ -56,9 +56,13 @@ final class RideCellStackButtonPresenter {
     }
 
     private func setupPreDriverAllocationState(supplierNumber: String) {
-        view.set(buttonText: UITexts.Bookings.contactFleet, action: {
-            PhoneNumberCaller().call(number: supplierNumber)
-        })
+        view.set(
+            buttonText: UITexts.Bookings.contactFleet,
+            action: { [weak self] in
+                guard let self = self else { return }
+                self.rideCellStackButtonActions.contactFleet(self.trip, number: supplierNumber)
+            }
+        )
     }
 
     private func trackTripPressed() {

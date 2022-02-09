@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
@@ -19,17 +20,20 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var selectedQuoteCategory: QuoteCategory?
     private var selectedQuoteOrder: QuoteSortOrder = .qta
     private let quoteSorter: QuoteSorter
+    private let analytics: Analytics
 
     init(
         bookingStatus: BookingStatus = KarhooBookingStatus.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteListView: QuoteListView,
-        quoteSorter: QuoteSorter = KarhooQuoteSorter()
+        quoteSorter: QuoteSorter = KarhooQuoteSorter(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.bookingStatus = bookingStatus
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
+        self.analytics = analytics
         bookingStatus.add(observer: self)
     }
 
@@ -61,6 +65,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         } else {
             updateViewQuotes(animated: false)
         }
+    }
+
+    func startAnalytics() {
+        guard let bookingDetails = bookingStatus.getBookingDetails() else {
+            assertionFailure("Unable to get data to upload")
+            return
+        }
+        analytics.quoteListOpened(bookingDetails)
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {
