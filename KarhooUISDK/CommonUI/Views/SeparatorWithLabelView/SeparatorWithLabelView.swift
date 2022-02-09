@@ -16,17 +16,15 @@ struct KHSeparatorWithLabelViewID {
 }
 
 final class SeparatorWithLabelView: UIView {
-    private lazy var leftSeparator = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = KarhooUI.colors.border
-        $0.accessibilityIdentifier = KHSeparatorWithLabelViewID.leftSeparator
-    }
+    private lazy var leftSeparator = LineView(
+        color: KarhooUI.colors.border,
+        accessibilityIdentifier: KHSeparatorWithLabelViewID.leftSeparator
+    )
     
-    private lazy var rightSeparator = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = KarhooUI.colors.border
-        $0.accessibilityIdentifier = KHSeparatorWithLabelViewID.rightSeparator
-    }
+    private lazy var rightSeparator = LineView(
+        color: KarhooUI.colors.border,
+        accessibilityIdentifier: KHSeparatorWithLabelViewID.rightSeparator
+    )
     
     private lazy var label = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
