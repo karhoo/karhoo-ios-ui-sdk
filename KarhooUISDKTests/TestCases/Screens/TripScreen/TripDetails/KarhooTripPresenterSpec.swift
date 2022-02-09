@@ -173,7 +173,7 @@ final class KarhooTripPresenterSpec: XCTestCase {
         testObject.callDriverPressed()
         
         XCTAssertEqual(mockPhoneNumberCaller.numberCalled, trip.vehicle.driver.phoneNumber)
-        XCTAssertTrue(mockAnalytics.userDidCallDriver)
+        XCTAssertTrue(mockAnalytics.userCalledDriverCalled)
     }
 
     /**
