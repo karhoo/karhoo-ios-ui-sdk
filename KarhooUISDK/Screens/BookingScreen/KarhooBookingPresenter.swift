@@ -31,7 +31,7 @@ final class KarhooBookingPresenter {
     // MARK: - Init
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
-         analyticsProvider: Analytics = KarhooAnalytics(),
+         analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          callback: ScreenResultCallback<BookingScreenResult>? = nil,
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),

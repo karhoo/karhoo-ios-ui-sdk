@@ -34,7 +34,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
          addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
-         analyticsProvider: Analytics = KarhooAnalytics(),
+         analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter

@@ -39,6 +39,24 @@ public protocol Analytics {
     func bookingRequested(destination: LocationInfo,
                           dateScheduled: Date?,
                           quote: Quote)
+    
+    func bookingScreenOpened()
+    func qouteListOpened(_ bookingDetails: BookingDetails)
+    func checkoutOpened(_ quote: Quote)
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
+    func paymentSucceed()
+    func paymentFailed()
+    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
+    func pastTripsOpened()
+    func upcomingTripsOpened()
+    func trackTripClicked(tripDetails: TripInfo)
+    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo)
+    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo)
+}
+
+public enum AnalyticsScreen {
+    case upcomingRides
+    case vehicleTracking
 }
 
 final class KarhooAnalytics: Analytics {
@@ -67,12 +85,22 @@ final class KarhooAnalytics: Analytics {
         base.send(eventName: .appClosed, payload: emptyPayload)
     }
 
-    func vehicleTypeSelected(selectedCategory: String, quoteListId: String?) {
-        base.send(eventName: .categorySelected,
-                  payload: [
-                    Keys.categorySelected: selectedCategory,
-                    Keys.quoteListId: quoteListId ?? ""
-        ])
+    func availabilityListExpanded() {
+        base.send(eventName: .availabilityListExpanded, payload: emptyPayload)
+    }
+
+    func bookingScreenOpened() {
+        base.send(eventName: .bookingScreenOpened)
+    }
+
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
+        base.send(
+            eventName: .checkoutBookingRequested,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+                Keys.outboundTripId: outboundTripId ?? ""
+            ]
+        )
     }
 
     func bookingRequested(destination: LocationInfo,
@@ -91,8 +119,41 @@ final class KarhooAnalytics: Analytics {
         base.send(eventName: .bookingRequested, payload: payload)
     }
 
-    func availabilityListExpanded() {
-        base.send(eventName: .availabilityListExpanded, payload: emptyPayload)
+    func checkoutOpened(_ quote: Quote) {
+        base.send(
+            eventName: .checkoutOpened,
+            payload: [
+                Keys.quoteId: quote.id
+            ]
+        )
+    }
+
+    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+        let eventName: AnalyticsConstants.EventNames
+        switch page {
+        case .upcomingRides: eventName = .contactFleetClicked
+        case .vehicleTracking: fatalError("this screen is not managable by this event")
+        }
+        base.send(
+            eventName: eventName,
+            payload: [
+                Keys.tripId: tripDetails.tripId
+            ]
+        )
+    }
+
+    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+        let eventName: AnalyticsConstants.EventNames
+        switch page {
+        case .upcomingRides: eventName = .ridesUpcomingContactDriverClicked
+        case .vehicleTracking: eventName = .trackingContactDriverClicked
+        }
+        base.send(
+            eventName: eventName,
+            payload: [
+                Keys.tripId: tripDetails.tripId
+            ]
+        )
     }
 
     func locationServicesRejected() {
@@ -156,6 +217,14 @@ final class KarhooAnalytics: Analytics {
                   payload: [Keys.address: locationDetails.address.displayAddress])
     }
 
+    func paymentSucceed() {
+        base.send(eventName: .paymentSucceed)
+    }
+
+    func paymentFailed() {
+        base.send(eventName: .paymentFailed)
+    }
+
     func destinationAddressSelected(_ locationDetails: LocationInfo) {
         base.send(eventName: .destinationAddressSelected,
                   payload: [Keys.address: locationDetails.address.displayAddress])
@@ -178,7 +247,52 @@ final class KarhooAnalytics: Analytics {
     func userPressedCurrentLocation(addressType: String) {
         base.send(eventName: .currentLocationPressed, payload: [Keys.address: addressType])
     }
-    
+
+    func qouteListOpened(_ bookingDetails: BookingDetails) {
+        base.send(
+            eventName: .quoteListOpened,
+            payload: [
+                Keys.bookingOriginPlaceId: bookingDetails.originLocationDetails?.placeId ?? "",
+                Keys.bookingDestinationPlaceId: bookingDetails.destinationLocationDetails?.placeId ?? ""
+            ]
+        )
+    }
+
+    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool) {
+        base.send(
+            eventName: .trackTripOpened,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+                Keys.isGuest: isGuest
+            ]
+        )
+    }
+
+    func pastTripsOpened() {
+        base.send(eventName: .pastTripsOpened)
+    }
+
+    func upcomingTripsOpened() {
+        base.send(eventName: .upcomingTripsOpened)
+    }
+
+    func trackTripClicked(tripDetails: TripInfo) {
+        base.send(
+            eventName: .trackTripClicked,
+            payload: [
+                Keys.tripId: tripDetails.tripId
+            ]
+        )
+    }
+
+    func vehicleTypeSelected(selectedCategory: String, quoteListId: String?) {
+        base.send(eventName: .categorySelected,
+                  payload: [
+                    Keys.categorySelected: selectedCategory,
+                    Keys.quoteListId: quoteListId ?? ""
+        ])
+    }
+
     struct Keys {
         static let categorySelected = "category"
         static let tripState = "tripState"
@@ -193,6 +307,11 @@ final class KarhooAnalytics: Analytics {
         static let addressType = "addressType"
         static let screen = "screen"
         static let tripId = "trip_id"
+        static let outboundTripId = "outbound_trip_id"
+        static let quoteId = "quote_id"
+        static let isGuest = "is_guest"
+        static let bookingOriginPlaceId = "booking_origin_place_id"
+        static let bookingDestinationPlaceId = "booking_destination_place_id"
     }
 
     struct Value {
