@@ -15,8 +15,8 @@ public protocol Analytics {
     func prebookOpened()
     func prebookSet(date: Date, timezone: String)
     func userCalledDriver(trip: TripInfo?)
-    func pickupAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int)
-    func destinationAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int)
+    func pickupAddressSelected(locationDetails: LocationInfo)
+    func destinationAddressSelected(locationDetails: LocationInfo)
     func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
 }
 
@@ -52,16 +52,14 @@ final class KarhooAnalytics: Analytics {
         base.send(eventName: .userCalledDriver, payload: [Keys.tripInfo: trip as Any])
     }
     
-    func pickupAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int) {
+    func pickupAddressSelected(locationDetails: LocationInfo) {
         base.send(eventName: .pickupAddressSelected,
-                  payload: [Keys.locationDetails: locationDetails,
-                            Keys.positionInAutocompleteList: positionInAutocompleteList])
+                  payload: [Keys.locationDetails: locationDetails])
     }
     
-    func destinationAddressSelected(locationDetails: LocationInfo, positionInAutocompleteList: Int){
+    func destinationAddressSelected(locationDetails: LocationInfo){
         base.send(eventName: .destinationAddressSelected,
-                  payload: [Keys.locationDetails: locationDetails,
-                            Keys.positionInAutocompleteList: positionInAutocompleteList])
+                  payload: [Keys.locationDetails: locationDetails])
     }
     
     func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
