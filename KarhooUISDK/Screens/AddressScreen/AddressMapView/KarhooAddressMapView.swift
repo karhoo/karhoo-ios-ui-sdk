@@ -46,7 +46,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         closeButton.setImage(UIImage.uisdkImage("cross"), for: .normal)
         closeButton.addTarget(self, action: #selector(didPressClose), for: .touchUpInside)
         closeButton.imageView?.contentMode = .scaleAspectFit
-        closeButton.tintColor = .black
+        closeButton.tintColor = KarhooUI.colors.text
         addSubview(closeButton)
         
         closeButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, width: 60, height: 60)
