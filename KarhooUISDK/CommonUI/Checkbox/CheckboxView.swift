@@ -93,12 +93,10 @@ class CheckboxView: UIControl {
     }
 
     private func setupLayout() {
-        heightAnchor.constraint(equalToConstant: CustomConstants.sideLenght).isActive = true
-        widthAnchor.constraint(equalToConstant: CustomConstants.sideLenght).isActive = true
-        imageViewContainer.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageViewContainer.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: CustomConstants.visibleIconSideLenght).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: CustomConstants.visibleIconSideLenght).isActive = true
+        anchor(width: CustomConstants.sideLenght, height: CustomConstants.sideLenght)
+        imageViewContainer.centerX(inView: self)
+        imageViewContainer.centerY(inView: self)
+        imageView.anchor(width: CustomConstants.visibleIconSideLenght, height: CustomConstants.visibleIconSideLenght)
         imageView.anchorToSuperview(padding: UIConstants.Spacing.xxSmall)
     }
 
@@ -150,6 +148,6 @@ class CheckboxView: UIControl {
 
     @objc
     private func checkboxTapped(_ sender: UITapGestureRecognizer) {
-        isSelected = !isSelected
+        isSelected.toggle()
     }
 }
