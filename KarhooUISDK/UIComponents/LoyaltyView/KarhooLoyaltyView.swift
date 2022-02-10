@@ -30,10 +30,16 @@ struct KHLoyaltyViewID {
 
 final class KarhooLoyaltyView: UIView {
     
+    private enum LoyaltyConstants {
+        static let topPaddingWithBalanceVisible : CGFloat = UIConstants.Dimension.View.largeTagHeight / 2
+        static let topPaddingWithNoBalanceVisible: CGFloat = 0
+    }
+    
     private let presenter: LoyaltyPresenter
     private var didSetupConstraints: Bool = false
     private var topSwitchConstraint: NSLayoutConstraint?
     private var bottomSwitchConstraint: NSLayoutConstraint?
+    private var topContainerConstraint: NSLayoutConstraint?
     private var tapGestureRecognizer: UITapGestureRecognizer?
     
     var delegate: LoyaltyViewDelegate? {
@@ -189,13 +195,13 @@ final class KarhooLoyaltyView: UIView {
         loyaltyStackView.addArrangedSubview(earnLabel)
         loyaltyStackView.addArrangedSubview(separatorView)
         loyaltyStackView.addArrangedSubview(burnPointsContainerView)
+        loyaltyStackView.addArrangedSubview(errorLabel)
         
         burnPointsContainerView.addSubview(burnPointsLabelStackView)
         burnPointsContainerView.addSubview(burnPointsSwitch)
         
         burnPointsLabelStackView.addArrangedSubview(burnTitleLabel)
         burnPointsLabelStackView.addArrangedSubview(burnLabel)
-        burnPointsLabelStackView.addArrangedSubview(errorLabel)
         
         infoView.addSubview(infoLabel)
         
@@ -207,12 +213,16 @@ final class KarhooLoyaltyView: UIView {
     override func updateConstraints() {
         if !didSetupConstraints {
             containerStackView.anchor(
-                top: topAnchor,
                 leading: leadingAnchor,
                 bottom: bottomAnchor,
-                trailing: trailingAnchor,
-                paddingTop: UIConstants.Dimension.View.largeTagHeight / 2
+                trailing: trailingAnchor
             )
+            
+            topContainerConstraint = containerStackView.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: LoyaltyConstants.topPaddingWithBalanceVisible
+            )
+            topContainerConstraint?.isActive = true
             
             burnPointsLabelStackView.anchor(
                 top: burnPointsContainerView.topAnchor,
@@ -312,6 +322,9 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         burnLabel.isHidden = false
         errorLabel.isHidden = true
         loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
+        tapGestureRecognizer?.isEnabled = true
+        burnPointsSwitch.isEnabled = true
+        topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
         
         switch mode {
         case .none, .earn:
@@ -348,6 +361,8 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         errorLabel.text = errorMessage
         burnLabel.isHidden = true
         showInfoView(false)
+        tapGestureRecognizer?.isEnabled = false
+        burnPointsSwitch.isEnabled = false
         
         switch error {
         case .insufficientBalance:
@@ -355,21 +370,23 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
             burnTitleLabel.textColor = KarhooUI.colors.textLabel
             burnTitleLabel.isHidden = false
             burnPointsSwitch.isHidden = false
-            burnPointsSwitch.isEnabled = false
             burnPointsSwitch.isOn = false
-            tapGestureRecognizer?.isEnabled = false
             loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
             refreshBalanceView(with: .success)
+            balanceView.isHidden = false
+            separatorView.isHidden = false
+            topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
             
         default:
             errorLabel.textColor = KarhooUI.colors.error
             burnTitleLabel.textColor = KarhooUI.colors.textLabel
-            tapGestureRecognizer?.isEnabled = true
             loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
             earnLabel.isHidden = true
             burnTitleLabel.isHidden = true
             burnPointsSwitch.isHidden = true
-            refreshBalanceView(with: .error)
+            balanceView.isHidden = true
+            separatorView.isHidden = true
+            topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithNoBalanceVisible
         }
     }
     

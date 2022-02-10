@@ -87,23 +87,39 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         updateViewVisibilityFromViewModel()
         
         updateEarnedPoints(completion: { [weak self] success in
-            if !success {
-                self?.handlePointsCallError(for: .earn)
-            } else {
-                self?.internalDelegate?.updateWith(
-                    mode: self?.currentMode ?? .none,
-                    earnText: self?.getEarnText() ?? "",
-                    burnText: self?.getBurnText() ?? ""
-                )
-            }
+            self?.handleInitialGetEarnPointsResponse(success: success)
             
-            self?.updateBurnedPoints { _ in
+            self?.updateBurnedPoints { success in
                 self?.delegate?.didEndLoading()
-                if !(self?.hasEnoughBalance() ?? false) {
-                    self?.updateWithError(.insufficientBalance)
-                }
+                self?.handleInitialGetBurnPointsResponse(success: success)
             }
         })
+    }
+    
+    private func handleInitialGetEarnPointsResponse(success: Bool?) {
+        guard let success = success else { return }
+        
+        if !success {
+            handlePointsCallError(for: .earn)
+        } else {
+            internalDelegate?.updateWith(
+                mode: currentMode,
+                earnText: getEarnText(),
+                burnText: getBurnText()
+            )
+        }
+    }
+    
+    private func handleInitialGetBurnPointsResponse(success: Bool?) {
+        guard let success = success else { return }
+        
+        if success, !hasEnoughBalance() {
+            updateWithError(.insufficientBalance)
+        } else if success {
+            handleUpdateLoyaltyMode(state: .noError)
+        } else {
+            handlePointsCallError(for: .burn)
+        }
     }
     
     func set(status: LoyaltyStatus) {
@@ -113,11 +129,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     // MARK: - Earn
-    func updateEarnedPoints(completion: ((_ success: Bool) -> Void)? = nil) {
+    func updateEarnedPoints(completion: ((_ success: Bool?) -> Void)? = nil) {
         guard let viewModel = viewModel,
               viewModel.canEarn
         else {
-            completion?(false)
+            completion?(nil)
             return
         }
 
@@ -149,11 +165,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     // MARK: - Burn
-    func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?) {
+    func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?) {
         guard let viewModel = viewModel,
               viewModel.canBurn
         else {
-            completion?(false)
+            completion?(nil)
             return
         }
         
@@ -224,6 +240,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 delegate?.didStartLoading()
                 updateEarnedPoints { [weak self] success in
                     self?.delegate?.didEndLoading()
+                    guard let success = success
+                    else {
+                        self?.handleUpdateLoyaltyMode(state: .burnPointsError)
+                        return
+                    }
+                    
                     if success {
                         self?.handleUpdateLoyaltyMode(state: .burnPointsError)
                     } else {
@@ -240,6 +262,13 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 delegate?.didStartLoading()
                 updateBurnedPoints { [weak self] success in
                     self?.delegate?.didEndLoading()
+                    
+                    guard let success = success
+                    else {
+                        self?.handleUpdateLoyaltyMode(state: .noError)
+                        return
+                    }
+                    
                     if success {
                         self?.handleUpdateLoyaltyMode(state: .noError)
                     } else {
@@ -273,14 +302,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             burnText: getBurnText()
         )
         
-        switch currentMode {
-        case .none:
-            updateViewVisibilityFromViewModel()
-        case .earn:
-            updateViewVisibilityFromViewModel()
-        case .burn:
-            updateViewVisibilityFromViewModelForBurnMode()
-        }
+        updateViewVisibilityFromViewModel()
     }
     
     private func updateWithError(_ error: LoyaltyError) {
@@ -294,8 +316,6 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         default:
             internalDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.unknownLoyaltyError)
         }
-        
-        updateViewVisibilityFromViewModelForBurnMode()
     }
     
     // MARK: - Utils
@@ -415,33 +435,19 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         internalDelegate?.togglefeatures(earnOn: canEarn, burnOn: canBurn)
     }
     
-    private func updateViewVisibilityFromViewModelForBurnMode() {
-        let canBurn = viewModel?.canBurn ?? false
-        internalDelegate?.togglefeatures(earnOn: true, burnOn: canBurn)
-    }
-    
-    private func updateViewForErrorCase() {
-        let canBurn = viewModel?.canBurn ?? false
-        internalDelegate?.togglefeatures(earnOn: false, burnOn: canBurn)
-    }
-    
     private func hideLoyaltyComponent() {
         internalDelegate?.togglefeatures(earnOn: false, burnOn: false)
     }
     
     private func handlePointsCallError(for mode: LoyaltyMode) {
-        if mode != currentMode {
-            return
-        }
-        
         let error = mode == .burn ? getBurnAmountError : getEarnAmountError
         
         switch error?.type {
         case .unknownCurrency:
-            self.updateWithError(.unsupportedCurrency)
+            updateWithError(.unsupportedCurrency)
 
         default:
-            self.updateViewForErrorCase()
+            updateWithError(.unknownError)
         }
     }
 }

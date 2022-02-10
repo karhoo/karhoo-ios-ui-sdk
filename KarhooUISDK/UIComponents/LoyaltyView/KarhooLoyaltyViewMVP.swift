@@ -18,11 +18,6 @@ protocol LoyaltyView: AnyObject {
     func hasError() -> Bool
 }
 
-protocol LoyaltyBalanceView: AnyObject {
-    func set(balance: Int)
-    func set(mode: LoyaltyBalanceMode)
-}
-
 protocol LoyaltyViewDelegate: AnyObject {
     func didToggleLoyaltyMode(newValue: LoyaltyMode)
     func didStartLoading()
@@ -36,8 +31,8 @@ protocol LoyaltyPresenter: AnyObject {
     func getCurrentMode() -> LoyaltyMode
     func set(dataModel: LoyaltyViewDataModel)
     func set(status: LoyaltyStatus)
-    func updateEarnedPoints(completion: ((_ success: Bool) -> Void)?)
-    func updateBurnedPoints(completion: ((_ success: Bool) -> Void)?)
+    func updateEarnedPoints(completion: ((_ success: Bool?) -> Void)?)
+    func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?)
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
     func hasError() -> Bool
@@ -47,6 +42,11 @@ protocol LoyaltyPresenterDelegate: AnyObject {
     func updateWith(mode: LoyaltyMode, earnText: String, burnText: String)
     func updateWith(error: LoyaltyError, errorMessage: String)
     func togglefeatures(earnOn: Bool, burnOn: Bool)
+}
+
+protocol LoyaltyBalanceView: AnyObject {
+    func set(balance: Int)
+    func set(mode: LoyaltyBalanceMode)
 }
 
 enum LoyaltyError {
