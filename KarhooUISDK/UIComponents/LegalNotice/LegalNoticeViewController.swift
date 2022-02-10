@@ -19,7 +19,6 @@ public struct KHLegalNoticeViewID {
 final class LegalNoticeViewController: UIViewController, BaseViewController {
     
     private var zeroHeightTextConstreint: NSLayoutConstraint!
-    private var linkOpener: LegalNoticeLinkOpener!
     private let shouldShowView = UITexts.Booking.legalNoticeText.isNotEmpty
     private let presenter: LegalNoticePresenter
 
@@ -55,7 +54,6 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     init(presenter: LegalNoticePresenter){
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        linkOpener = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
         setUpView()
     }
     
@@ -67,7 +65,6 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         view = UIView()
         view.accessibilityIdentifier = KHLegalNoticeViewID.view
         view.translatesAutoresizingMaskIntoConstraints = false
-        super.loadView()
         setUpView()
     }
     
@@ -131,7 +128,7 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         var range : NSRange = NSRange()
         let attributeOfClickedText = attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String
         if attributeOfClickedText ==  valueForAttributedLink {
-            linkOpener?.openLink(link: UITexts.Booking.legalNoticeLink)
+            presenter.openLink(link: UITexts.Booking.legalNoticeLink, handler: self)
        }
     }
     

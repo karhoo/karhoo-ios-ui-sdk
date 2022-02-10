@@ -10,11 +10,13 @@ import Foundation
 
 protocol LegalNoticePresenter {
     var shouldShowView: Bool { get }
+    func openLink(link: String, handler: BaseViewController)
 }
 
 class KarhooLegalNoticePresenter: LegalNoticePresenter {
     let shouldShowView: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
+    
+    func openLink(link: String, handler: BaseViewController) {
+        KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: handler).openLink(link: link)
+    }
 }
-
-
-

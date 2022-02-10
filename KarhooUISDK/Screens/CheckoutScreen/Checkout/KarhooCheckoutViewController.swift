@@ -39,7 +39,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
-    private var legalNoticeLinkOperer: LegalNoticeLinkOpener!
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
     private let smallPadding: CGFloat = 10.0
@@ -206,9 +205,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         self.presenter = presenter
         let legalNoticePresenter = KarhooLegalNoticePresenter()
         legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
-        legalNoticeViewController.view.accessibilityIdentifier = KHLegalNoticeViewID.view
         super.init(nibName: nil, bundle: nil)
-        legalNoticeLinkOperer = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
