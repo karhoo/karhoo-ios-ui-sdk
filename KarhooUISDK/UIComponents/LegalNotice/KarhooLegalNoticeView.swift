@@ -24,7 +24,15 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     private var legalNoticeTextView: UITextView!
     
     private lazy var legalNoticeButton: KarhooExpandViewButton = {
-        let button = KarhooExpandViewButton(title: UITexts.Booking.legalNotice, onExpand: hideLegalNoticePressed, onCollapce: showLegalNoticePressed)
+        let button = KarhooExpandViewButton(
+            title: UITexts.Booking.legalNotice,
+            initialMode: .open,
+            onExpand:  { [weak self] in
+                self?.showLegalNoticePressed()
+            },
+            onCollapce:{[weak self] in
+                self?.hideLegalNoticePressed()
+            })
         button.accessibilityIdentifier = KHLegalNoticeViewID.button
         button.anchor(height: UIConstants.Dimension.Button.standard)
         return button

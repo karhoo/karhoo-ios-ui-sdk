@@ -119,7 +119,15 @@ final class KarhooCheckoutHeaderView: UIStackView {
     }()
     
     private lazy var learnMoreButton: KarhooExpandViewButton = {
-        let button = KarhooExpandViewButton(title: UITexts.Booking.learnMore, onExpand: learnLessPressed, onCollapce: learnMorePressed)
+        let button = KarhooExpandViewButton(
+            title: UITexts.Booking.learnMore,
+            onExpand:  {[weak self] in
+                self?.learnLessPressed()
+            },
+            onCollapce: {[weak self] in
+                self?.learnMorePressed()
+            }
+        )
         button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
         button.anchor(height: 44.0)
         return button
