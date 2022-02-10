@@ -20,6 +20,8 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     
     private var zeroHeightTextConstreint: NSLayoutConstraint!
     private var linkOpener: LegalNoticeLinkOpener!
+    private let shouldShowView = UITexts.Booking.legalNoticeText.isNotEmpty
+    private let presenter: LegalNoticePresenter
 
     
     private lazy var legalNoticeButton: KarhooExpandViewButton = {
@@ -50,7 +52,8 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     }()
     
     // MARK: - Init
-    init(){
+    init(presenter: LegalNoticePresenter){
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
         linkOpener = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
         setUpView()
@@ -69,26 +72,28 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     }
     
     private func setUpView() {
-        view.addSubview(legalNoticeButton)
-        view.addSubview(attributedLabel)
-        zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
-        legalNoticeButton.anchor(
-            top: view.topAnchor,
-            leading: view.leadingAnchor,
-            bottom: attributedLabel.topAnchor,
-            paddingLeft: UIConstants.Spacing.small,
-            paddingRight: UIConstants.Spacing.small
-        )
-        attributedLabel.anchor(
-            top: legalNoticeButton.bottomAnchor,
-            leading: view.leadingAnchor,
-            bottom: view.bottomAnchor,
-            trailing: view.trailingAnchor,
-            paddingLeft: UIConstants.Spacing.small,
-            paddingBottom: UIConstants.Spacing.standard,
-            paddingRight: UIConstants.Spacing.small
-        )
-        attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
+        if presenter.shouldShowView {
+            view.addSubview(legalNoticeButton)
+            view.addSubview(attributedLabel)
+            zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
+            legalNoticeButton.anchor(
+                top: view.topAnchor,
+                leading: view.leadingAnchor,
+                bottom: attributedLabel.topAnchor,
+                paddingLeft: UIConstants.Spacing.small,
+                paddingRight: UIConstants.Spacing.small
+            )
+            attributedLabel.anchor(
+                top: legalNoticeButton.bottomAnchor,
+                leading: view.leadingAnchor,
+                bottom: view.bottomAnchor,
+                trailing: view.trailingAnchor,
+                paddingLeft: UIConstants.Spacing.small,
+                paddingBottom: UIConstants.Spacing.standard,
+                paddingRight: UIConstants.Spacing.small
+            )
+            attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
+        }
     }
     
     @objc private func textViewClicked(_ tap : UITapGestureRecognizer) {

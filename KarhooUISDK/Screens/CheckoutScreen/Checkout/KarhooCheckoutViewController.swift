@@ -204,7 +204,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
-        legalNoticeViewController = LegalNoticeViewController()
+        let legalNoticePresenter = KarhooLegalNoticePresenter()
+        legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
         legalNoticeViewController.view.accessibilityIdentifier = KHLegalNoticeViewID.view
         super.init(nibName: nil, bundle: nil)
         legalNoticeLinkOperer = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
@@ -390,7 +391,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.isHidden = false
     }
     
-    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?, showLegalNotice: Bool) {
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         let viewModel = QuoteViewModel(quote: quote)
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
@@ -400,7 +401,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
         self.loyaltyView.isHidden = !showLoyalty
-        self.legalNoticeViewController.view.isHidden = !showLegalNotice
         if showLoyalty {
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,
