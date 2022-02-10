@@ -55,7 +55,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: - Views
     var headerView: KarhooCheckoutHeaderView!
     var loyaltyView: KarhooLoyaltyView!
-    var legalNoticeView: KarhooLegalNoticeView!
+    
+    // MARK: - Child ViewControllers
+    var legalNoticeViewController: LegalNoticeViewController
 
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
@@ -202,6 +204,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
+        legalNoticeViewController = LegalNoticeViewController()
+        legalNoticeViewController.view.accessibilityIdentifier = KHLegalNoticeViewID.view
         super.init(nibName: nil, bundle: nil)
         legalNoticeLinkOperer = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
     }
@@ -217,7 +221,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView = TermsConditionsView()
         loyaltyView = KarhooLoyaltyView()
         loyaltyView.set(delegate: self)
-        legalNoticeView = KarhooLegalNoticeView(linkOpener: legalNoticeLinkOperer)
         setUpView()
     }
     
@@ -255,7 +258,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        baseStackView.addViewToStack(view: legalNoticeView)
+        addChild(legalNoticeViewController)
+        baseStackView.addViewToStack(view: legalNoticeViewController.view)
+        legalNoticeViewController.didMove(toParent: self)
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -327,7 +332,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             leading: baseStackView.leadingAnchor,
             trailing: baseStackView.trailingAnchor
         )
-        legalNoticeView.anchor(
+        legalNoticeViewController.view.anchor(
             top: termsConditionsView.bottomAnchor,
             leading: baseStackView.leadingAnchor,
             trailing: baseStackView.trailingAnchor
@@ -395,7 +400,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
         self.loyaltyView.isHidden = !showLoyalty
-        self.legalNoticeView.isHidden = !showLegalNotice
+        self.legalNoticeViewController.view.isHidden = !showLegalNotice
         if showLoyalty {
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,

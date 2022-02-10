@@ -1,13 +1,14 @@
 //
-//  KarhooLegalNoticeView.swift
+//  LegalNoticeViewController.swift
 //  KarhooUISDK
 //
-//  Created by Bartlomiej Sopala on 26/01/2022.
+//  Created by Bartlomiej Sopala on 10/02/2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
 import Foundation
 import UIKit
+
 
 public struct KHLegalNoticeViewID {
     public static let view = "legal_notice_view"
@@ -15,13 +16,11 @@ public struct KHLegalNoticeViewID {
     public static let text = "legal_notice_text"
 }
 
-final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
+final class LegalNoticeViewController: UIViewController, BaseViewController {
     
-    private weak var linkOpener: LegalNoticeLinkOpener?
-    private var zeroHeightTextConstreint: NSLayoutConstraint
-    
-    private var didSetUpConstraints: Bool = false
-    private var legalNoticeTextView: UITextView!
+    private var zeroHeightTextConstreint: NSLayoutConstraint!
+    private var linkOpener: LegalNoticeLinkOpener!
+
     
     private lazy var legalNoticeButton: KarhooExpandViewButton = {
         let button = KarhooExpandViewButton(
@@ -38,7 +37,7 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         return button
     }()
     
-    private var attributedLabel: UILabel = {
+    private let attributedLabel: UILabel = {
         let legalNoticeLabel = UILabel()
         legalNoticeLabel.translatesAutoresizingMaskIntoConstraints = false
         legalNoticeLabel.accessibilityIdentifier = KHLegalNoticeViewID.text
@@ -51,49 +50,45 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
     }()
     
     // MARK: - Init
-    init(linkOpener: LegalNoticeLinkOpener, linkParser: LinkParser = LinkParser()) {
-        zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
-        self.linkOpener = linkOpener
-        super.init(frame: .zero)
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        linkOpener = KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: self)
         setUpView()
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
-    private func setUpView() {
-        accessibilityIdentifier = KHLegalNoticeViewID.view
-        translatesAutoresizingMaskIntoConstraints = false
-        attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
-        addSubview(legalNoticeButton)
-        addSubview(attributedLabel)
+    override func loadView() {
+        view = UIView()
+        view.accessibilityIdentifier = KHLegalNoticeViewID.view
+        view.translatesAutoresizingMaskIntoConstraints = false
+        super.loadView()
+        setUpView()
     }
     
-    override func updateConstraints() {
-        if !didSetUpConstraints {
-            legalNoticeButton.anchor(
-                top: topAnchor,
-                leading: leadingAnchor,
-                bottom: attributedLabel.topAnchor,
-                paddingLeft: UIConstants.Spacing.small,
-                paddingRight: UIConstants.Spacing.small
-            )
-            
-            attributedLabel.anchor(
-                top: legalNoticeButton.bottomAnchor,
-                leading: leadingAnchor,
-                bottom: bottomAnchor,
-                trailing: trailingAnchor,
-                paddingLeft: UIConstants.Spacing.small,
-                paddingBottom: UIConstants.Spacing.standard,
-                paddingRight: UIConstants.Spacing.small
-            )
-            
-            didSetUpConstraints.toggle()
-        }
-        super.updateConstraints()
+    private func setUpView() {
+        view.addSubview(legalNoticeButton)
+        view.addSubview(attributedLabel)
+        zeroHeightTextConstreint = attributedLabel.heightAnchor.constraint(equalToConstant: 0)
+        legalNoticeButton.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: attributedLabel.topAnchor,
+            paddingLeft: UIConstants.Spacing.small,
+            paddingRight: UIConstants.Spacing.small
+        )
+        attributedLabel.anchor(
+            top: legalNoticeButton.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            paddingLeft: UIConstants.Spacing.small,
+            paddingBottom: UIConstants.Spacing.standard,
+            paddingRight: UIConstants.Spacing.small
+        )
+        attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
     }
     
     @objc private func textViewClicked(_ tap : UITapGestureRecognizer) {
