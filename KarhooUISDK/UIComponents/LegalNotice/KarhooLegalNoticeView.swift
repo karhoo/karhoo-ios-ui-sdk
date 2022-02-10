@@ -69,7 +69,6 @@ final class KarhooLegalNoticeView: UIView, UITextViewDelegate {
         attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
         addSubview(legalNoticeButton)
         addSubview(attributedLabel)
-        hideLegalNoticePressed()
     }
     
     override func updateConstraints() {

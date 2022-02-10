@@ -121,6 +121,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
     private lazy var learnMoreButton: KarhooExpandViewButton = {
         let button = KarhooExpandViewButton(
             title: UITexts.Booking.learnMore,
+            initialMode: .closed,
             onExpand:  {[weak self] in
                 self?.learnLessPressed()
             },
