@@ -36,7 +36,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var termsConditionsView: TermsConditionsView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
-    private let shouldDisplayLegalNotice: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
@@ -256,9 +255,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        if shouldDisplayLegalNotice {
-            baseStackView.addViewToStack(view: legalNoticeView)
-        }
+        baseStackView.addViewToStack(view: legalNoticeView)
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -326,14 +323,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             paddingTop: standardPadding,
             paddingBottom: standardPadding
         )
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
-        if shouldDisplayLegalNotice {
-            legalNoticeView.anchor(
-                top: termsConditionsView.bottomAnchor,
-                leading: baseStackView.leadingAnchor,
-                trailing: baseStackView.trailingAnchor
-            )
-        }
+        termsConditionsView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
+        legalNoticeView.anchor(
+            top: termsConditionsView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
@@ -387,7 +385,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.isHidden = false
     }
     
-    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?, showLegalNotice: Bool) {
         let viewModel = QuoteViewModel(quote: quote)
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
@@ -397,6 +395,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
         self.loyaltyView.isHidden = !showLoyalty
+        self.legalNoticeView.isHidden = !showLegalNotice
         if showLoyalty {
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                     currency: quote.price.currencyCode,

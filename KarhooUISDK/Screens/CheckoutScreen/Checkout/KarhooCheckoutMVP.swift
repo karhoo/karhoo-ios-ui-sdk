@@ -29,7 +29,7 @@ protocol CheckoutView: BaseViewController {
     func setMoreDetailsState()
     func setDefaultState()
     func resetPaymentNonce()
-    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?)
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?, showLegalNotice: Bool)
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
@@ -53,7 +53,7 @@ extension CheckoutView {
         return nil
     }
     
-    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {
-        set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
+    func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil, showLegalNotice: Bool) {
+        set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId, showLegalNotice: showLegalNotice)
     }
 }

@@ -87,7 +87,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
-        view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
+        let showLegalNotice = UITexts.Booking.legalNoticeText.isNotEmpty
+        view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId, showLegalNotice: showLegalNotice)
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
