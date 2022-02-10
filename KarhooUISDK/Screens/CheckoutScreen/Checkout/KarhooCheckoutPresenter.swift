@@ -90,6 +90,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 
+    func screenWillAppear() {
+        analyticsScreenOpened()
+    }
+
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
          if quote.source == .market {
              view.set(price: CurrencyCodeConverter.quoteRangePrice(quote: quote))
@@ -509,7 +513,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     // MARK: - Analytics
 
-    func screenWillAppear() {
+    private func analyticsScreenOpened() {
         analytics.checkoutOpened(quote)
     }
 
