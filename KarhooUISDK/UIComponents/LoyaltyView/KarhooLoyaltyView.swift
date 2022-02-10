@@ -174,7 +174,7 @@ final class KarhooLoyaltyView: UIView {
         presenter = KarhooLoyaltyPresenter()
         super.init(frame: .zero)
         setupView()
-        presenter.internalDelegate = self
+        presenter.presenterDelegate = self
     }
     
     required init(coder: NSCoder) {
@@ -316,9 +316,9 @@ extension KarhooLoyaltyView: LoyaltyView {
 }
 
 extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
-    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String) {
-        earnLabel.text = earnText
-        burnLabel.text = burnText
+    func updateWith(mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) {
+        earnLabel.text = earnSubtitle
+        burnLabel.text = burnSubtitle
         burnLabel.isHidden = false
         errorLabel.isHidden = true
         loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
@@ -327,7 +327,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
         
         switch mode {
-        case .none, .earn:
+        case .none, .earn, .error(_):
             showInfoView(false)
 
         case .burn:
@@ -356,7 +356,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         }
     }
     
-    func updateWith(error: LoyaltyError, errorMessage: String) {
+    func updateWith(error: LoyaltyErrorType, errorMessage: String) {
         errorLabel.isHidden = false
         errorLabel.text = errorMessage
         burnLabel.isHidden = true

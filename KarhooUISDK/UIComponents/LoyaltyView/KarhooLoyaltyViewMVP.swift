@@ -15,32 +15,32 @@ protocol LoyaltyView: AnyObject {
     var currentMode: LoyaltyMode { get }
     func set(dataModel: LoyaltyViewDataModel)
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
-    func hasError() -> Bool
+    func hasError() -> Bool //remove
 }
 
-protocol LoyaltyViewDelegate: AnyObject {
-    func didToggleLoyaltyMode(newValue: LoyaltyMode)
+public protocol LoyaltyViewDelegate: AnyObject {
+    func didChangeMode(newValue: LoyaltyMode)
     func didStartLoading()
     func didEndLoading()
 }
 
 protocol LoyaltyPresenter: AnyObject {
     var delegate: LoyaltyViewDelegate? { get set }
-    var internalDelegate: LoyaltyPresenterDelegate? { get set }
+    var presenterDelegate: LoyaltyPresenterDelegate? { get set }
     var balance: Int { get }
     func getCurrentMode() -> LoyaltyMode
     func set(dataModel: LoyaltyViewDataModel)
     func set(status: LoyaltyStatus)
-    func updateEarnedPoints(completion: ((_ success: Bool?) -> Void)?)
-    func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?)
+    func updateEarnedPoints(completion: ((_ success: Bool?) -> Void)?) //remove completion?
+    func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?) //remove completion?
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
-    func hasError() -> Bool
+    func hasError() -> Bool //remove
 }
 
 protocol LoyaltyPresenterDelegate: AnyObject {
-    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String)
-    func updateWith(error: LoyaltyError, errorMessage: String)
+    func updateWith(mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) // make strings optional
+    func updateWith(error: LoyaltyErrorType, errorMessage: String) //remove and move errorMessage to updateWith(mode: LoyaltyMode
     func togglefeatures(earnOn: Bool, burnOn: Bool)
 }
 
@@ -49,12 +49,43 @@ protocol LoyaltyBalanceView: AnyObject {
     func set(mode: LoyaltyBalanceMode)
 }
 
-enum LoyaltyError {
+public enum LoyaltyErrorType {
     case none, insufficientBalance, unsupportedCurrency, unknownError
+    
+    var text: String {
+        switch self {
+        case .none:
+            return ""
+        case .insufficientBalance:
+            return UITexts.Errors.insufficientBalanceForLoyaltyBurning
+        case .unsupportedCurrency:
+            return UITexts.Errors.unsupportedCurrency
+        case .unknownError:
+            return UITexts.Errors.unknownLoyaltyError
+        }
+    }
 }
 
-enum LoyaltyMode {
-    case none, earn, burn
+public enum LoyaltyMode {
+    case none
+    case earn
+    case burn
+    case error(type: LoyaltyErrorType)
+    
+    static func ==(lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none) :
+            return true
+        case (.earn, .earn):
+            return true
+        case (.burn, .burn):
+            return true
+        case (let .error(type1), let.error(type2)):
+            return type1 == type2
+        default:
+            return false
+        }
+    }
 }
 
 enum LoyaltyBalanceMode {
