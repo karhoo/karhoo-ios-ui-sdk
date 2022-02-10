@@ -29,7 +29,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
     required init(startDate: Date? = nil,
                   now: Date = Date(),
                   timeZone: TimeZone,
-                  analytics: Analytics = KarhooAnalytics(),
+                  analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
                   timeIntervalHelper: DateTimeIntervalHelper = TimeSinceNowProvider(),
                   callback: @escaping ScreenResultCallback<Date>) {
         self.callback = callback

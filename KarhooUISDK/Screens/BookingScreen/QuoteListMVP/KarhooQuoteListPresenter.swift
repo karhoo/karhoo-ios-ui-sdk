@@ -15,8 +15,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteService: QuoteService
     private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
-    private var quotesObserver: Observer<Quotes>?
-    private var quoteSearchObservable: Observable<Quotes>?
+    private var quotesObserver: KarhooSDK.Observer<Quotes>?
+    private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
     private var selectedQuoteOrder: QuoteSortOrder = .qta
     private let quoteSorter: QuoteSorter
@@ -177,7 +177,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
 
-        quotesObserver = Observer<Quotes> { [weak self] result in
+        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
 
             if result.successValue()?.all.isEmpty == false {
                 self?.quoteListView?.hideLoadingView()
