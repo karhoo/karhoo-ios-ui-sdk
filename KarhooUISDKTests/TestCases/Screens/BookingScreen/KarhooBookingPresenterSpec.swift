@@ -59,7 +59,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         KarhooBookingPresenter(
             bookingStatus: mockBookingStatus,
             userService: mockUserService,
-            analyticsProvider: mockAppAnalytics,
+            analytics: mockAppAnalytics,
             phoneNumberCaller: mockPhoneNumberCaller,
             callback: callback,
             tripScreenBuilder: mockTripScreenBuilder,
@@ -599,5 +599,13 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertEqual(mockBookingView.actionAlertMessage, UITexts.Trip.trackTripAlertMessage)
         XCTAssertEqual(mockBookingView.alertActions[0].action.title, UITexts.Trip.trackTripAlertDismissAction)
         XCTAssertEqual(mockBookingView.alertActions[1].action.title, UITexts.Trip.trackTripAlertAction)
+    }
+
+    /**
+     * When: Booking screen is opened
+     * Then: Analytics event should be triggered
+     */
+    func testWhenBookingOpensProperAnalyticsEventIsTriggered() {
+        XCTAssertTrue(mockAppAnalytics.bookingScreenOpenedCalled)
     }
 }

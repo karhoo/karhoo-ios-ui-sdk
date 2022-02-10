@@ -75,7 +75,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssertTrue(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.flightNumber)
         XCTAssertNil(mockTripService.tripBookingSet?.meta)
-        XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+        XCTAssertTrue(mockAnalytics.bookingRequestedWithDesinationCalled)
     }
     
     /**
@@ -96,7 +96,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
         XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
-        XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+        XCTAssertTrue(mockAnalytics.bookingRequestedWithDesinationCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
     
@@ -118,7 +118,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-        XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
+        XCTAssertTrue(mockAnalytics.bookingRequestedWithDesinationCalled)
         let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
         XCTAssertEqual(value, "value")
     }
@@ -150,7 +150,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssertEqual(UITexts.Errors.somethingWentWrong, mockView.showAlertTitle)
         XCTAssertEqual(UITexts.Errors.getUserFail, mockView.showAlertMessage)
         XCTAssertFalse(mockTripService.bookCall.executed)
-        XCTAssertFalse(mockAnalytics.bookingRequestedCalled)
+        XCTAssertFalse(mockAnalytics.bookingRequestedWithDesinationCalled)
     }
 
     /**
@@ -407,6 +407,27 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
         XCTAssertTrue(mockView.quoteDidExpireCalled)
     }
+
+    /**
+     * When: Booking screen is opened
+     * Then: Analytics event should be triggered
+     */
+    func testWhenCheckoutOpensProperAnalyticsEventIsTriggered() {
+        testObject.screenWillAppear()
+        XCTAssertTrue(mockAnalytics.checkoutOpenedCalled)
+    }
+
+    /**
+     * When: Booking is about to be requested
+     * Then: Analytics event should be triggered
+     */
+//    func testWhenBookingIsAboutToBeRequestedProperAnalyticsEventIsTriggered() {
+//        let tripBooked = TestUtil.getRandomTrip(dateSet: false, state: .confirmed)
+////        testObject.didSelectQuote(quote: quoteBooked)
+////        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
+////        testObject.
+////        XCTAssertTrue(mockAnalytics.bookingRequestedWithTripDetailsCalled == tripBooked)
+//    }
     
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()

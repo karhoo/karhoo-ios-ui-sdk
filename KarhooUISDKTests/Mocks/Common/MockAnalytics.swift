@@ -144,8 +144,68 @@ class MockAnalytics: Analytics {
         userPressedCurrentLocationWithAddressType.addressType = addressType
     }
 
-    var bookingRequestedCalled = false
+    var bookingRequestedWithDesinationCalled = false
     func bookingRequested(destination: LocationInfo, dateScheduled: Date?, quote: Quote) {
-        bookingRequestedCalled = true
+        bookingRequestedWithDesinationCalled = true
+    }
+
+    var bookingScreenOpenedCalled = false
+    func bookingScreenOpened() {
+        bookingScreenOpenedCalled = true
+    }
+
+    var quoteListOpenedCalled = false
+    func quoteListOpened(_ bookingDetails: BookingDetails) {
+        quoteListOpenedCalled = true
+    }
+
+    var checkoutOpenedCalled = false
+    func checkoutOpened(_ quote: Quote) {
+        checkoutOpenedCalled = true
+    }
+
+    var bookingRequestedWithTripDetailsCalled: TripInfo?
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
+        bookingRequestedWithTripDetailsCalled = tripDetails
+    }
+
+    var paymentSucceedCalled = false
+    func paymentSucceed() {
+        paymentSucceedCalled = true
+    }
+
+    var paymentFailedCalled = false
+    func paymentFailed() {
+        paymentFailedCalled = true
+    }
+
+    var trackTripOpenedCalled = false
+    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool) {
+        trackTripOpenedCalled = true
+    }
+
+    var pastTripsOpenedCalled = false
+    func pastTripsOpened() {
+        pastTripsOpenedCalled = true
+    }
+
+    var upcomingTripsOpenedCalled = false
+    func upcomingTripsOpened() {
+        upcomingTripsOpenedCalled = true
+    }
+
+    var trackTripClickedCalled = false
+    func trackTripClicked(tripDetails: TripInfo) {
+        trackTripClickedCalled = true
+    }
+
+    var contactFleetClickedCalled: AnalyticsScreen?
+    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+        contactFleetClickedCalled = page
+    }
+
+    var contactDriverClickedCalled: AnalyticsScreen?
+    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+        contactDriverClickedCalled = page
     }
 }
