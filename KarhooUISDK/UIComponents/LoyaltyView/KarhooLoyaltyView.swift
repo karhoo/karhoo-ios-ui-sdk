@@ -34,6 +34,7 @@ final class KarhooLoyaltyView: UIView {
     private var didSetupConstraints: Bool = false
     private var topSwitchConstraint: NSLayoutConstraint?
     private var bottomSwitchConstraint: NSLayoutConstraint?
+    private var tapGestureRecognizer: UITapGestureRecognizer?
     
     var delegate: LoyaltyViewDelegate? {
         didSet {
@@ -198,9 +199,9 @@ final class KarhooLoyaltyView: UIView {
         
         infoView.addSubview(infoLabel)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        addGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
+        tapGestureRecognizer!.numberOfTapsRequired = 1
+        addGestureRecognizer(tapGestureRecognizer!)
     }
     
     override func updateConstraints() {
@@ -342,13 +343,34 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         }
     }
     
-    func updateWith(errorMessage: String) {
-        loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
+    func updateWith(error: LoyaltyError, errorMessage: String) {
         errorLabel.isHidden = false
         errorLabel.text = errorMessage
         burnLabel.isHidden = true
         showInfoView(false)
-        refreshBalanceView(with: .error)
+        
+        switch error {
+        case .insufficientBalance:
+            errorLabel.textColor = KarhooUI.colors.textLabel
+            burnTitleLabel.textColor = KarhooUI.colors.textLabel
+            burnTitleLabel.isHidden = false
+            burnPointsSwitch.isHidden = false
+            burnPointsSwitch.isEnabled = false
+            burnPointsSwitch.isOn = false
+            tapGestureRecognizer?.isEnabled = false
+            loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
+            refreshBalanceView(with: .success)
+            
+        default:
+            errorLabel.textColor = KarhooUI.colors.error
+            burnTitleLabel.textColor = KarhooUI.colors.textLabel
+            tapGestureRecognizer?.isEnabled = true
+            loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
+            earnLabel.isHidden = true
+            burnTitleLabel.isHidden = true
+            burnPointsSwitch.isHidden = true
+            refreshBalanceView(with: .error)
+        }
     }
     
     func togglefeatures(earnOn: Bool, burnOn: Bool) {

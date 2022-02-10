@@ -78,24 +78,32 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 return
             }
             
-            self?.set(status: status)
-            self?.updateViewVisibilityFromViewModel()
-            self?.updateEarnedPoints(completion: { success in
-                if !success {
-                    self?.handlePointsCallError(for: .earn)
-                } else {
-                    self?.internalDelegate?.updateWith(
-                        mode: self?.currentMode ?? .none,
-                        earnText: self?.getEarnText() ?? "",
-                        burnText: self?.getBurnText() ?? ""
-                    )
-                }
-                
-                self?.updateBurnedPoints { _ in
-                    self?.delegate?.didEndLoading()
-                }
-            })
+            self?.handleGetStatusResponse(status: status)
         }
+    }
+    
+    private func handleGetStatusResponse(status: LoyaltyStatus) {
+        set(status: status)
+        updateViewVisibilityFromViewModel()
+        
+        updateEarnedPoints(completion: { [weak self] success in
+            if !success {
+                self?.handlePointsCallError(for: .earn)
+            } else {
+                self?.internalDelegate?.updateWith(
+                    mode: self?.currentMode ?? .none,
+                    earnText: self?.getEarnText() ?? "",
+                    burnText: self?.getBurnText() ?? ""
+                )
+            }
+            
+            self?.updateBurnedPoints { _ in
+                self?.delegate?.didEndLoading()
+                if !(self?.hasEnoughBalance() ?? false) {
+                    self?.updateWithError(.insufficientBalance)
+                }
+            }
+        })
     }
     
     func set(status: LoyaltyStatus) {
@@ -124,8 +132,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currency: viewModel.currency,
             amount: amount,
             burnPoints: 0
-        )
-            .execute { [weak self] result in
+        ).execute { [weak self] result in
                 
             guard let value = result.successValue()
             else {
@@ -160,8 +167,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             identifier: viewModel.loyaltyId,
             currency: viewModel.currency,
             amount: amount
-        )
-            .execute { [weak self] result in
+        ).execute { [weak self] result in
                 
             guard let value = result.successValue()
             else {
@@ -204,7 +210,6 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             updateWithError(.insufficientBalance)
             delegate?.didToggleLoyaltyMode(newValue: currentMode)
             return
-
         }
         
         handleUpdateLoyaltyMode()
@@ -257,7 +262,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         else {
             return false
         }
-      
+        
         return viewModel.balance >= viewModel.burnAmount
     }
     
@@ -281,13 +286,13 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private func updateWithError(_ error: LoyaltyError) {
         switch error {
         case .insufficientBalance:
-            internalDelegate?.updateWith(errorMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
+            internalDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
             
         case .unsupportedCurrency:
-            internalDelegate?.updateWith(errorMessage: UITexts.Errors.unsupportedCurrency)
+            internalDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.unsupportedCurrency)
   
         default:
-            internalDelegate?.updateWith(errorMessage: UITexts.Errors.unknownLoyaltyError)
+            internalDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.unknownLoyaltyError)
         }
         
         updateViewVisibilityFromViewModelForBurnMode()

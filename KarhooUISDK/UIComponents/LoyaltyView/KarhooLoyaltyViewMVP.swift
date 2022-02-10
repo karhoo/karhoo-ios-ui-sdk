@@ -45,7 +45,7 @@ protocol LoyaltyPresenter: AnyObject {
 
 protocol LoyaltyPresenterDelegate: AnyObject {
     func updateWith(mode: LoyaltyMode, earnText: String, burnText: String)
-    func updateWith(errorMessage: String)
+    func updateWith(error: LoyaltyError, errorMessage: String)
     func togglefeatures(earnOn: Bool, burnOn: Bool)
 }
 
