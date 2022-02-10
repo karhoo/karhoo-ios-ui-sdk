@@ -179,10 +179,10 @@ extension RidesViewController: RidesListActions {
     }
     
     func contactFleet(_ trip: TripInfo, number: String) {
-        PhoneNumberCaller().call(number: number)
+        presenter.contactFleet(trip, number: number)
     }
 
     func contactDriver(_ trip: TripInfo, number: String) {
-        PhoneNumberCaller().call(number: number)
+        presenter.contactDriver(trip, number: number)
     }
 }

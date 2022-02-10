@@ -509,7 +509,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     // MARK: - Analytics
 
-    func startAnalytics() {
+    func screenWillAppear() {
         analytics.checkoutOpened(quote)
     }
 

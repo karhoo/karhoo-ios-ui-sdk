@@ -222,7 +222,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.startAnalytics()
+        presenter.screenWillAppear()
     }
     
     override func viewDidLoad() {

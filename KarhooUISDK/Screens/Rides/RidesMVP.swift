@@ -34,4 +34,8 @@ internal protocol RidesPresenter {
     func didPressRequestTrip()
 
     func didSwitchToPage(index: Int)
+
+    func contactFleet(_ trip: TripInfo, number: String)
+
+    func contactDriver(_ trip: TripInfo, number: String)
 }

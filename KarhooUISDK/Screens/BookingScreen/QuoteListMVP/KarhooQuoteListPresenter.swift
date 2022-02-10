@@ -42,6 +42,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
+    func screenWillAppear() {
+        guard let bookingDetails = bookingStatus.getBookingDetails() else {
+            assertionFailure("Unable to get data to upload")
+            return
+        }
+        analytics.quoteListOpened(bookingDetails)
+    }
+
     func selectedQuoteCategory(_ category: QuoteCategory) {
         self.selectedQuoteCategory = category
         updateViewQuotes(animated: true)
@@ -65,14 +73,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         } else {
             updateViewQuotes(animated: false)
         }
-    }
-
-    func startAnalytics() {
-        guard let bookingDetails = bookingStatus.getBookingDetails() else {
-            assertionFailure("Unable to get data to upload")
-            return
-        }
-        analytics.quoteListOpened(bookingDetails)
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {

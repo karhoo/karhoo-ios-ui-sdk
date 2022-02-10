@@ -41,7 +41,7 @@ public protocol QuoteListView: UIViewController {
 
 protocol QuoteListPresenter {
 
-    func startAnalytics()
+    func screenWillAppear()
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 

@@ -66,6 +66,16 @@ public final class KarhooRidesPresenter: RidesPresenter {
         analytics.pastTripsOpened()
     }
 
+    func contactFleet(_ trip: TripInfo, number: String) {
+        analytics.contactFleetClicked(page: .upcomingRides, tripDetails: trip)
+        PhoneNumberCaller().call(number: number)
+    }
+    
+    func contactDriver(_ trip: TripInfo, number: String) {
+        analytics.contactDriverClicked(page: .upcomingRides, tripDetails: trip)
+        PhoneNumberCaller().call(number: number)
+    }
+
     private func setUpPages() {
         guard let view = self.view,
               let pages = self.pages else {

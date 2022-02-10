@@ -51,7 +51,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.startAnalytics()
+        presenter?.screenWillAppear()
     }
 
     private func setUpView() {
