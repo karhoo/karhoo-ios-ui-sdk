@@ -225,12 +225,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if let destination = bookingDetails.destinationLocationDetails {
-            analytics.bookingRequested(destination: destination,
-                                       dateScheduled: bookingDetails.scheduledDate,
-                                       quote: quote)
-        }
-        
         if let nonce = view?.getPaymentNonce() {
             if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
                 self.getPaymentNonceThenBook(user: currentUser,
@@ -357,6 +351,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
+        analytics.bookingRequested(
+            tripDetails: trip,
+            outboundTripId: nil
+        )
+            
         view?.showCheckoutView(false)
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import KarhooSDK
 
-final class MenuContentViewController: UIViewController, MenuContentView {
+final class MenuContentViewController: UIViewController, BaseViewController, MenuContentView {
 
     private let presenter: MenuContentScreenPresenter
     @IBOutlet private weak var logo: UIImageView?

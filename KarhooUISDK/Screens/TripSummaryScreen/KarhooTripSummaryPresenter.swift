@@ -36,12 +36,10 @@ final class KarhooTripSummaryPresenter: TripSummaryPresenter {
         var returnBooking = BookingDetails(originLocationDetails: initialDestination.toLocationInfo())
         returnBooking.destinationLocationDetails = trip.origin.toLocationInfo()
 
-        analytics.returnRideRequested()
         finishWithResult(.completed(result: .rebookWithBookingDetails(returnBooking)))
     }
 
     func exitPressed() {
-        analytics.rideSummaryExited()
         finishWithResult(.completed(result: .closed))
     }
 

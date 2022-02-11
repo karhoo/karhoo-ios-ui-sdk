@@ -53,6 +53,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
 
+    // MARK: - Child ViewControllers
+  
+    var legalNoticeViewController: LegalNoticeViewController
+  
     // MARK: - Views
 
     private var termsConditionsView: TermsConditionsView!
@@ -60,7 +64,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var headerView: KarhooCheckoutHeaderView!
 
     private(set) var loyaltyView: KarhooLoyaltyView!
-
+ 
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
         footerStack.translatesAutoresizingMaskIntoConstraints = false
@@ -206,6 +210,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
+        let legalNoticePresenter = KarhooLegalNoticePresenter()
+        legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -245,7 +251,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     // MARK: - Setup
-
     private func setUpView() {
         container.addSubview(backButton)
         container.addSubview(baseStackView)
@@ -260,7 +265,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        
+        addChild(legalNoticeViewController)
+        baseStackView.addViewToStack(view: legalNoticeViewController.view)
+        legalNoticeViewController.didMove(toParent: self)
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -328,7 +335,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             paddingTop: standardPadding,
             paddingBottom: standardPadding
         )
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
+        termsConditionsView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
+        legalNoticeViewController.view.anchor(
+            top: termsConditionsView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
     }
     
     // MARK: - CheckoutView methods
@@ -426,7 +441,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     // MARK: Data management
     
-    func getPassengerDetails() -> PassengerDetails? {
+    func getPassengerDetails() -
+  
+PassengerDetails? {
         passengerDetailsAndPaymentView.details
     }
     
