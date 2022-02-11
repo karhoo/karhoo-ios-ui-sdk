@@ -36,11 +36,6 @@ class MockAnalytics: Analytics {
     func rideSummaryExited() {
         rideSummaryExitCalled = true
     }
-
-    private(set) var tripCancellationInitiatedCalled: TripInfo?
-    func tripAllocationCancellationIntiatedByUser(trip: TripInfo) {
-        tripCancellationInitiatedCalled = trip
-    }
     
     var isChangeCardDetailsPressed = false
     func changeCardDetailsPressed() {

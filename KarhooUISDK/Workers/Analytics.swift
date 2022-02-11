@@ -13,6 +13,7 @@ public protocol Analytics {
     func tripStateChanged(tripState: TripInfo?)
     func fleetsShown(quoteListId: String?, amountShown: Int)
     func prebookOpened()
+    func userCalledDriver(trip: TripInfo?)
     func bookingScreenOpened()
     func quoteListOpened(_ bookingDetails: BookingDetails)
     func checkoutOpened(_ quote: Quote)
@@ -25,6 +26,11 @@ public protocol Analytics {
     func trackTripClicked(tripDetails: TripInfo)
     func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo)
     func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo)
+}
+
+public enum AnalyticsScreen {
+    case upcomingRides
+    case vehicleTracking
 }
 
 final class KarhooAnalytics: Analytics {
@@ -123,12 +129,6 @@ final class KarhooAnalytics: Analytics {
     func rideSummaryExited() {
         base.send(eventName: .rideSummaryExited, payload: emptyPayload)
     }
-
-    func tripAllocationCancellationIntiatedByUser(trip: TripInfo) {
-          base.send(eventName: .tripCancellationInitiatedByUser,
-                    payload: [Keys.screen: Value.allocation,
-                              Keys.tripId: trip.tripId])
-    }
     
     func userPressedCurrentLocation(addressType: String) {
         base.send(eventName: .currentLocationPressed, payload: [Keys.address: addressType])
@@ -171,14 +171,6 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func vehicleTypeSelected(selectedCategory: String, quoteListId: String?) {
-        base.send(eventName: .categorySelected,
-                  payload: [
-                    Keys.categorySelected: selectedCategory,
-                    Keys.quoteListId: quoteListId ?? ""
-        ])
-    }
-
     func paymentSucceed() {
         base.send(eventName: .paymentSucceed)
     }
@@ -188,6 +180,7 @@ final class KarhooAnalytics: Analytics {
     }
 
     struct Keys {
+        static let address = "address"
         static let tripState = "tripState"
         static let quoteListId = "quote_list_id"
         static let prebookTimeSet = "prebook_time_set"
@@ -197,11 +190,11 @@ final class KarhooAnalytics: Analytics {
         static let positionInAutocompleteList = "positioninautocompletelist"
         static let locationDetails = "locationdetails"
         static let tripId = "trip_id"
-static let outboundTripId = "outbound_trip_id"
-static let quoteId = "quote_id"
-static let isGuest = "is_guest"
-static let bookingOriginPlaceId = "booking_origin_place_id"
-static let bookingDestinationPlaceId = "booking_destination_place_id"
+        static let outboundTripId = "outbound_trip_id"
+        static let quoteId = "quote_id"
+        static let isGuest = "is_guest"
+        static let bookingOriginPlaceId = "booking_origin_place_id"
+        static let bookingDestinationPlaceId = "booking_destination_place_id"
     }
 
     struct Value {
