@@ -104,8 +104,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         } else {
             presenterDelegate?.updateWith(
                 mode: currentMode,
-                earnText: getEarnText(),
-                burnText: getBurnText()
+                earnSubtitle: getEarnText(),
+                burnSubtitle: getBurnText()
             )
         }
     }
@@ -298,8 +298,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private func updateWithSuccess() {
         presenterDelegate?.updateWith(
             mode: currentMode,
-            earnText: getEarnText(),
-            burnText: getBurnText()
+            earnSubtitle: getEarnText(),
+            burnSubtitle: getBurnText()
         )
         
         updateViewVisibilityFromViewModel()
@@ -393,17 +393,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     private func getEarnText() -> String {
+        let canEarn = viewModel?.canEarn ?? false
         switch currentMode {
         case .none, .error(_):
             return ""
         case .burn:
-            return viewModel?.canEarn ?? false ?
-            getLocalizedEarnPointsText(for: 0) :
-            ""
+            return canEarn ? getLocalizedEarnPointsText(for: 0) : ""
         case .earn:
-            return viewModel?.canEarn ?? false ?
-            getLocalizedEarnPointsText(for: viewModel?.earnAmount ?? 0) :
-            ""
+            let earnAmount = viewModel?.earnAmount ?? 0
+            return canEarn ? getLocalizedEarnPointsText(for: earnAmount) : ""
         }
     }
     
@@ -417,7 +415,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private func getBurnText() -> String {
         switch currentMode {
         case .none, .earn, .error(_):
-            return viewModel?.canBurn ?? false ? UITexts.Loyalty.burnOffSubtitle : ""
+            let canBurn = viewModel?.canBurn ?? false
+            return canBurn ? UITexts.Loyalty.burnOffSubtitle : ""
         case .burn:
             let amount = viewModel?.tripAmount.amountString ?? "0"
             return String(
