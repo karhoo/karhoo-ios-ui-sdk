@@ -332,8 +332,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        analytics.bookingRequested(tripDetails: trip,
-                                   outboundTripId: nil)
+        analytics.bookingRequested(
+            tripDetails: trip,
+            outboundTripId: nil
+        )
             
         view?.showCheckoutView(false)
     }
