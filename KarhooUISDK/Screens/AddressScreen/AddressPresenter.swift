@@ -132,9 +132,9 @@ final class KarhooAddressPresenter: AddressPresenter {
         
         switch addressMode {
         case .pickup:
-            analytics.pickupAddressSelected(details)
+            analytics.pickupAddressSelected(locationDetails: details)
         case .destination:
-            analytics.destinationAddressSelected(details)
+            analytics.destinationAddressSelected(locationDetails: details)
         }
         
         finishWithResult(.completed(result: details))
@@ -166,7 +166,6 @@ final class KarhooAddressPresenter: AddressPresenter {
     }
     
     public func getCurrentLocation() {
-        analytics.userPressedCurrentLocation(addressType: String(describing: addressMode))
         guard
             let location = userLocationProvider.getLastKnownLocation()?.coordinate,
             reverseGeocodingCurrentLocation == false
@@ -196,13 +195,6 @@ final class KarhooAddressPresenter: AddressPresenter {
 extension KarhooAddressPresenter: AddressSearchProviderDelegate {
 
     func searchCompleted(places: [Place]) {
-        
-        switch addressMode {
-        case .pickup:
-            analytics.pickupAddressDisplayed(count: places.count)
-        case .destination:
-            analytics.destinationAddressDisplayed(count: places.count)
-        }
       
         if places.isEmpty {
             addressView?.show(emptyDataSetMessage: UITexts.AddressScreen.noResultsFound)

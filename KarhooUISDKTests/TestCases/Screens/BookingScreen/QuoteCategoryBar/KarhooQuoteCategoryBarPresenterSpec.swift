@@ -130,7 +130,6 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
         testObject.selected(index: index, animated: false)
 
         XCTAssertEqual(index, mockView.indexSelected)
-        XCTAssertTrue(mockAppAnalytics.vehicleTypeSelectedCalled)
     }
 
     /**

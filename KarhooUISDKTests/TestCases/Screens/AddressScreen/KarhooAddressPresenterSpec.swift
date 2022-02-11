@@ -396,9 +396,6 @@ class KarhooAddressPresenterSpec: XCTestCase {
         XCTAssertEqual(mockAddressService.reverseGeocodePositionSet?.longitude, location.coordinate.longitude)
         XCTAssertNotNil(mockLocationInfoResult)
         XCTAssertEqual(mockLocationInfoResult?.completedValue()?.placeId, locationInfo.placeId)
-        XCTAssertTrue(mockAppAnalytics.userPressedCurrentLocationWithAddressType.called)
-        XCTAssertEqual(mockAppAnalytics.userPressedCurrentLocationWithAddressType.addressType,
-                       String(describing: testObject.addressMode))
     }
     
     /**
