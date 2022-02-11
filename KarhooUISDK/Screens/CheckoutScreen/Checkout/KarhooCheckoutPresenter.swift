@@ -519,7 +519,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportBookingEvent() {
         guard let trip = trip else {
-            assertionFailure("Trip show not be nil in this view state")
             return
         }
         analytics.bookingRequested(tripDetails: trip, outboundTripId: nil)

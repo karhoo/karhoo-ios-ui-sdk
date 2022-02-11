@@ -421,13 +421,14 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * When: Booking is about to be requested
      * Then: Analytics event should be triggered
      */
-//    func testWhenBookingIsAboutToBeRequestedProperAnalyticsEventIsTriggered() {
-//        let tripBooked = TestUtil.getRandomTrip(dateSet: false, state: .confirmed)
-////        testObject.didSelectQuote(quote: quoteBooked)
-////        mockCheckoutScreenBuilder.triggerCheckoutScreenResult(.completed(result: tripBooked))
-////        testObject.
-////        XCTAssertTrue(mockAnalytics.bookingRequestedWithTripDetailsCalled == tripBooked)
-//    }
+    func testWhenBookingIsAboutToBeRequestedProperAnalyticsEventIsTriggered() {
+        let tripBooked = TestUtil.getRandomTrip(dateSet: false, state: .confirmed)
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        testObject.bookTripPressed()
+        mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+        XCTAssertEqual(mockAnalytics.bookingRequestedWithTripDetailsCalled?.tripId, tripBooked.tripId)
+    }
     
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()

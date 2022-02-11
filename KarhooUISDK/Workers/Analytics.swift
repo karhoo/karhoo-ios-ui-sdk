@@ -131,7 +131,7 @@ final class KarhooAnalytics: Analytics {
     func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         let eventName: AnalyticsConstants.EventNames
         switch page {
-        case .upcomingRides: eventName = .contactFleetClicked
+        case .upcomingRides: eventName = .ridesUpcomingContactFleetClicked
         case .vehicleTracking: fatalError("this screen is not managable by this event")
         }
         base.send(
@@ -269,16 +269,16 @@ final class KarhooAnalytics: Analytics {
     }
 
     func pastTripsOpened() {
-        base.send(eventName: .pastTripsOpened)
+        base.send(eventName: .ridesPastTripsOpened)
     }
 
     func upcomingTripsOpened() {
-        base.send(eventName: .upcomingTripsOpened)
+        base.send(eventName: .ridesUpcomingTripsOpened)
     }
 
     func trackTripClicked(tripDetails: TripInfo) {
         base.send(
-            eventName: .trackTripClicked,
+            eventName: .ridesUpcomingTrackTripClicked,
             payload: [
                 Keys.tripId: tripDetails.tripId
             ]

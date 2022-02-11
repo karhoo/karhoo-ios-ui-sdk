@@ -19,6 +19,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     private var mockQuoteSorter: MockQuoteSorter!
     private var mockDateFormatter: MockDateFormatterType!
     private var mockBookingDetails: BookingDetails!
+    private var mockAnalytics: MockAnalytics!
 
     static let someQuote = TestUtil.getRandomQuote(highPrice: 1000, lowPrice: 1000, categoryName: "Some")
     static let anotherQuote = TestUtil.getRandomQuote(highPrice: 500, lowPrice: 500, categoryName: "anotherQuote")
@@ -45,11 +46,13 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         mockQuoteSorter = MockQuoteSorter()
         mockDateFormatter = MockDateFormatterType()
         mockBookingDetails  = TestUtil.getRandomBookingDetails(destinationSet: true, dateSet: true)
+        mockAnalytics = MockAnalytics()
         testObject = KarhooQuoteListPresenter(
             bookingStatus: mockBookingStatus,
             quoteService: mockQuoteService,
             quoteListView: mockQuoteListView,
-            quoteSorter: mockQuoteSorter
+            quoteSorter: mockQuoteSorter,
+            analytics: mockAnalytics
         )
     }
 
@@ -334,5 +337,9 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         testObject.didSelectQuoteOrder(.price)
 
         XCTAssertTrue(mockQuoteListView.showQuotesAnimated!)
+    }
+
+    func testQuoteListOpenedAnalyticsTriggered() {
+        XCTAssertTrue(mockAnalytics.quoteListOpenedCalled)
     }
 }
