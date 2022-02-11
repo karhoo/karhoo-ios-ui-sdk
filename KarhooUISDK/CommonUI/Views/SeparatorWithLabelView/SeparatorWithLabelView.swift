@@ -16,6 +16,7 @@ struct KHSeparatorWithLabelViewID {
 }
 
 final class SeparatorWithLabelView: UIView {
+    // MARK: - UI Controls
     private lazy var leftSeparator = LineView(
         color: KarhooUI.colors.border,
         accessibilityIdentifier: KHSeparatorWithLabelViewID.leftSeparator
@@ -34,8 +35,7 @@ final class SeparatorWithLabelView: UIView {
         $0.textColor = KarhooUI.colors.textLabel
     }
     
-    private var didSetupConstraints: Bool = false
-    
+    // MARK: - Init
     init() {
         super.init(frame: .zero)
         setupView()
@@ -46,38 +46,40 @@ final class SeparatorWithLabelView: UIView {
     }
     
     private func setupView() {
+        setupProperties()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHSeparatorWithLabelViewID.containerStackView
-        
+    }
+    
+    private func setupHierarchy() {
         addSubview(leftSeparator)
         addSubview(label)
         addSubview(rightSeparator)
     }
     
-    override func updateConstraints() {
-        if !didSetupConstraints {
-            label.centerX(inView: self)
-            label.anchor(top: topAnchor, bottom: bottomAnchor)
-            
-            leftSeparator.anchor(
-                leading: leadingAnchor,
-                trailing: label.leadingAnchor,
-                paddingRight: UIConstants.Spacing.medium,
-                height: UIConstants.Dimension.Separator.height
-            )
-            leftSeparator.centerY(inView: self)
-            
-            rightSeparator.anchor(
-                leading: label.trailingAnchor,
-                trailing: trailingAnchor,
-                paddingLeft: UIConstants.Spacing.medium,
-                height: UIConstants.Dimension.Separator.height
-            )
-            rightSeparator.centerY(inView: self)
-            
-            didSetupConstraints = true
-        }
+    private func setupLayout() {
+        label.centerX(inView: self)
+        label.anchor(top: topAnchor, bottom: bottomAnchor)
         
-        super.updateConstraints()
+        leftSeparator.anchor(
+            leading: leadingAnchor,
+            trailing: label.leadingAnchor,
+            paddingRight: UIConstants.Spacing.medium,
+            height: UIConstants.Dimension.Separator.height
+        )
+        leftSeparator.centerY(inView: self)
+        
+        rightSeparator.anchor(
+            leading: label.trailingAnchor,
+            trailing: trailingAnchor,
+            paddingLeft: UIConstants.Spacing.medium,
+            height: UIConstants.Dimension.Separator.height
+        )
+        rightSeparator.centerY(inView: self)
     }
 }

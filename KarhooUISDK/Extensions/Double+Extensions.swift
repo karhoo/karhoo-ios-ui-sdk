@@ -9,14 +9,14 @@
 import Foundation
 
 extension Optional where Wrapped == Double {
-    public var amountString : String? {
+    var amountString: String? {
         guard let self = self else { return nil }
         return String(format: "%.2f", self)
     }
 }
 
 extension Double {
-    public var amountString : String {
+    var amountString: String {
         String(format: "%.2f", self)
     }
 }
