@@ -97,7 +97,7 @@ final class KarhooTripPresenter: TripPresenter,
 
     func callDriverPressed() {
         phoneCaller.call(number: trip.vehicle.driver.phoneNumber)
-        analytics.userCalledDriver()
+        analytics.userCalledDriver(trip: trip)
     }
 
     func callFleetPressed() {
@@ -197,7 +197,7 @@ final class KarhooTripPresenter: TripPresenter,
             return
         }
 
-        analytics.tripStateChanged(to: trip.state.rawValue)
+        analytics.tripStateChanged(tripState: trip)
 
         let userMarkerVisible = TripInfoUtility.canCancel(trip: trip)
         tripView?.set(userMarkerVisible: userMarkerVisible)

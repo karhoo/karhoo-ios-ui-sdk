@@ -56,8 +56,6 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
             return
         }
 
-        analytics.tripAllocationCancellationIntiatedByUser(trip: trip)
-
         let tripCancellation = TripCancellation(tripId: identifier(trip),
                                                 cancelReason: .otherUserReason)
 

@@ -1,0 +1,13 @@
+/* 
+  localizable.strings
+  KarhooUISDK
+
+  Created by Bartlomiej Sopala on 01/02/2022.
+  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
+*/
+
+"Text.Booking.LegalNoticeLink" = "mailto:legal-notice@karhoo.com";
+
+"Text.Booking.LegalNoticeText" = "Les données collectées font l'objet d'un traitement informatique par Karhoo. envoi d'e-mail à %1$@. Vos données peuvent avoir besoin d'être traduites";
+
+"Text.Booking.LegalNoticeTitle" = "Flit Technologies";

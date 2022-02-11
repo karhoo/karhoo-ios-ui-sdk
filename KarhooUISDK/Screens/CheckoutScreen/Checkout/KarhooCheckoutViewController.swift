@@ -39,7 +39,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     var paymentNonce: String?
-
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
     private let smallPadding: CGFloat = 10.0
@@ -53,10 +52,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var mainStackBottomPadding: NSLayoutConstraint!
 
     // MARK: - Views
-
     var headerView: KarhooCheckoutHeaderView!
-
     var loyaltyView: KarhooLoyaltyView!
+    
+    // MARK: - Child ViewControllers
+    var legalNoticeViewController: LegalNoticeViewController
 
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
@@ -203,6 +203,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
+        let legalNoticePresenter = KarhooLegalNoticePresenter()
+        legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -237,15 +239,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     override func updateViewConstraints() {
-            if didSetupConstraints == false {
-                setupConstraintsForDefault()
-                didSetupConstraints = true
-            }
-            super.updateViewConstraints()
+        if didSetupConstraints == false {
+            setupConstraintsForDefault()
+            didSetupConstraints = true
         }
+        super.updateViewConstraints()
+    }
     
     // MARK: - Setup
-
     private func setUpView() {
         container.addSubview(backButton)
         container.addSubview(baseStackView)
@@ -260,7 +261,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        
+        addChild(legalNoticeViewController)
+        baseStackView.addViewToStack(view: legalNoticeViewController.view)
+        legalNoticeViewController.didMove(toParent: self)
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -328,7 +331,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             paddingTop: standardPadding,
             paddingBottom: standardPadding
         )
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
+        termsConditionsView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
+        legalNoticeViewController.view.anchor(
+            top: termsConditionsView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {

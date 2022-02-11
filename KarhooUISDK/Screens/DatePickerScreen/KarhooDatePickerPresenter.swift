@@ -78,7 +78,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
         }
 
         finishWithResult(ScreenResult.completed(result: initialDate))
-        analytics.prebookTimeSet(date: initialDate)
+        analytics.prebookSet(date: initialDate, timezone: timeZone.identifier)
     }
 
     func cancel() {
