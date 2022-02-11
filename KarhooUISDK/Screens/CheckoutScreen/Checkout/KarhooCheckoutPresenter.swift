@@ -154,10 +154,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     func addMoreDetails() {
-        guard areTermsAndConditionsAccepted else {
-            self.view?.showTermsConditionsRequiredError()
-            return
-        }
         if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
         } else {

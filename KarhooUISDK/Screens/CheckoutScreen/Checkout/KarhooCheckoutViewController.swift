@@ -441,9 +441,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     // MARK: Data management
     
-    func getPassengerDetails() -
-  
-PassengerDetails? {
+    func getPassengerDetails() -> PassengerDetails? {
         passengerDetailsAndPaymentView.details
     }
     
