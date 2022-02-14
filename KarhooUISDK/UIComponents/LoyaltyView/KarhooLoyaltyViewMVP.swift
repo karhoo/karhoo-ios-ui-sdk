@@ -30,8 +30,8 @@ protocol LoyaltyPresenter: AnyObject {
     func getCurrentMode() -> LoyaltyMode
     func set(dataModel: LoyaltyViewDataModel)
     func set(status: LoyaltyStatus)
-    func updateEarnedPoints(completion: ((_ success: Bool?) -> Void)?) //remove completion?
-    func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?) //remove completion?
+    func updateEarnedPoints() //remove completion?
+    func updateBurnedPoints() //remove completion?
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
 }
@@ -81,6 +81,21 @@ public enum LoyaltyMode {
             return type1 == type2
         default:
             return false
+        }
+    }
+    
+    static func !=(lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none) :
+            return false
+        case (.earn, .earn):
+            return false
+        case (.burn, .burn):
+            return false
+        case (let .error(type1), let.error(type2)):
+            return type1 != type2
+        default:
+            return true
         }
     }
 }
