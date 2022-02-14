@@ -121,7 +121,7 @@ final class KarhooAnalytics: Analytics {
         let eventName: AnalyticsConstants.EventNames
         switch page {
         case .upcomingRides: eventName = .ridesUpcomingContactFleetClicked
-        case .vehicleTracking: fatalError("this screen is not managable by this event")
+        case .vehicleTracking: eventName = .vehicleTrackingContactFleetClicked
         }
         base.send(
             eventName: eventName,
