@@ -14,20 +14,25 @@ final class RideDetailsStackButtonPresenter {
     private let isFleetCall: Bool
     private let mailComposer: FeedbackEmailComposer?
     private let phoneNumberCaller: PhoneNumberCallerProtocol?
+    private let analytics: Analytics
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
 
-    init(trip: TripInfo,
+    init(
+        trip: TripInfo,
          stackButton: StackButtonView?,
          mailComposer: FeedbackEmailComposer?,
          rideDetailsStackButtonActions: RideDetailsStackButtonActions,
-         phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller()) {
+         phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+    ) {
         self.trip = trip
         self.isFleetCall = trip.vehicle.driver.phoneNumber.isEmpty
         self.mailComposer = mailComposer
         self.view = stackButton
         self.rideDetailsStackButtonActions = rideDetailsStackButtonActions
         self.phoneNumberCaller = phoneNumberCaller
+        self.analytics = analytics
 
         if TripInfoUtility.canCancel(trip: trip) {
             setupUpAndComingTrip()
@@ -57,11 +62,16 @@ final class RideDetailsStackButtonPresenter {
     private func setupUpAndComingTrip() {
         let buttonText = isFleetCall ? UITexts.Bookings.contactFleet : UITexts.Bookings.contactDriver
         let phoneNumber = isFleetCall ? self.trip.fleetInfo.phoneNumber : self.trip.vehicle.driver.phoneNumber
-        view?.set(firstButtonText: UITexts.Bookings.cancelRide, firstButtonAction: { [weak self] in
-            self?.rideDetailsStackButtonActions?.cancelRide()
-        }, secondButtonText: buttonText, secondButtonAction: {
-            self.phoneNumberCaller?.call(number: phoneNumber)
-        })
+        view?.set(
+            firstButtonText: UITexts.Bookings.cancelRide,
+            firstButtonAction: { [weak self] in
+                self?.rideDetailsStackButtonActions?.cancelRide()
+            },
+            secondButtonText: buttonText,
+            secondButtonAction: { [weak self] in
+                self?.phoneNumberCaller?.call(number: phoneNumber)
+                self?.reportCallEvent()
+            })
     }
 
     private func setupPastTrip() {
@@ -70,6 +80,20 @@ final class RideDetailsStackButtonPresenter {
         }, secondButtonText: UITexts.Bookings.rebookRide, secondButtonAction: { [weak self] in
             self?.rideDetailsStackButtonActions?.rebookRide()
         })
+    }
+
+    private func reportCallEvent() {
+        if isFleetCall {
+            analytics.contactFleetClicked(
+                page: .vehicleTracking,
+                tripDetails: trip
+            )
+        } else {
+            analytics.contactDriverClicked(
+                page: .vehicleTracking,
+                tripDetails: trip
+            )
+        }
     }
 
     private func reportIssue() {

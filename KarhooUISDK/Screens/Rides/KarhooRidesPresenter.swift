@@ -37,6 +37,7 @@ public final class KarhooRidesPresenter: RidesPresenter {
         self.view = view
         setUpPages()
         view.set(title: UITexts.Generic.rides)
+        analytics.upcomingTripsOpened()
     }
 
     func set(pages: [RidesListView]) {

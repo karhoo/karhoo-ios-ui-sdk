@@ -90,6 +90,16 @@ final class KarhooTripPresenterSpec: XCTestCase {
     }
 
     /**
+     *  When:   Screen appears
+     *  Then:   A analitycs event should be triggered
+     */
+    func testScreenAppears() {
+        simulateShowingScreen(tripState: .driverEnRoute)
+        testObject.screenAppeared()
+        XCTAssertTrue(mockAnalytics.trackTripOpenedCalled)
+    }
+
+    /**
      * Given:   Initialised screen with active listeners
      *  When:   Screen disappears
      *  Then:   It should remove trip listener
@@ -173,7 +183,7 @@ final class KarhooTripPresenterSpec: XCTestCase {
         testObject.callDriverPressed()
         
         XCTAssertEqual(mockPhoneNumberCaller.numberCalled, trip.vehicle.driver.phoneNumber)
-        XCTAssertTrue(mockAnalytics.userCalledDriverCalled)
+        XCTAssertTrue(mockAnalytics.contactDriverClickedCalled == .vehicleTracking)
     }
 
     /**

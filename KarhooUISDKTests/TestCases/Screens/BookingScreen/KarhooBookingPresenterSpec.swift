@@ -81,11 +81,13 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     /**
       * When: View appears
       * Then: map padding should be set
+      * And: The analytics event should be triggered
       */
     func testViewAppears() {
         testObject.viewWillAppear()
         
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
+        XCTAssertTrue(mockAppAnalytics.bookingScreenOpenedCalled)
     }
 
     /**
@@ -606,6 +608,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      * Then: Analytics event should be triggered
      */
     func testWhenBookingOpensProperAnalyticsEventIsTriggered() {
-        XCTAssertTrue(mockAppAnalytics.bookingScreenOpenedCalled)
+        mockBookingView.loadViewIfNeeded()
+        
     }
 }

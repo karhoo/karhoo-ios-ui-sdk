@@ -4,6 +4,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
+// swiftlint:disable file_length
 
 import UIKit
 import KarhooSDK

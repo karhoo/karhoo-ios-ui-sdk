@@ -326,7 +326,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         guard let trip = result.successValue() else {
             view?.setDefaultState()
-
+            reportPaymentFailure(result.errorValue()?.message ?? "")
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
                 view?.retryAddPaymentMethod(showRetryAlert: true)
             } else {
@@ -337,18 +337,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        analytics.bookingRequested(
-            tripDetails: trip,
-            outboundTripId: nil
-        )
-            
+        reportPaymentSuccess()
         view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
+            reportPaymentSuccess()
             callback(.completed(result: trip))
         } else if let error = result.errorValue() {
+            reportPaymentFailure(error.message)
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
     }
@@ -520,7 +518,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         guard let trip = trip else {
             return
         }
-        analytics.bookingRequested(tripDetails: trip, outboundTripId: nil)
+        analytics.bookingRequested(tripDetails: trip)
+    }
+
+    private func reportPaymentSuccess() {
+        analytics.paymentSucceed()
+    }
+
+    private func reportPaymentFailure(_ message: String) {
+        analytics.paymentFailed(message)
     }
 }
 

@@ -74,6 +74,16 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     }
 
     /**
+      * When: QuotesList starts
+      * Then: the analytics event should be triggered
+      */
+    func testQuoteListStarts() {
+        mockBookingStatus.bookingDetailsToReturn = TestUtil.getRandomBookingDetails()
+        testObject.screenWillAppear()
+        XCTAssertTrue(mockAnalytics.quoteListOpenedCalled)
+    }
+
+    /**
       * When: Quote search starts
       * Then: Loading view should show
       * And: Quote list should be set to empty list
@@ -337,9 +347,5 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         testObject.didSelectQuoteOrder(.price)
 
         XCTAssertTrue(mockQuoteListView.showQuotesAnimated!)
-    }
-
-    func testQuoteListOpenedAnalyticsTriggered() {
-        XCTAssertTrue(mockAnalytics.quoteListOpenedCalled)
     }
 }
