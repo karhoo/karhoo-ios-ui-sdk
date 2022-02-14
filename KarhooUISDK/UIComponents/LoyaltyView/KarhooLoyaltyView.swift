@@ -323,55 +323,113 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
     
     private func handleUIInSuccessCases(for mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) {
         earnLabel.text = earnSubtitle
-        burnLabel.text = burnSubtitle
-        burnLabel.isHidden = false
-        errorLabel.isHidden = true
-        loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
-        tapGestureRecognizer?.isEnabled = true
-        burnPointsSwitch.isEnabled = true
-        topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
-        
-        switch mode {
-        case .none, .earn, .error:
-            showInfoView(false)
-
-        case .burn:
-            showInfoView(true)
-        }
-
-        refreshBalanceView(with: .success)
+        updateBurnLabels(withMessage: burnSubtitle, for: nil)
+        updateErrorLabel(withMessage: nil, for: nil)
+        updateBorder(withError: nil)
+        updateToggleLoyaltyModeActivity(withError: nil)
+        updateBalanceView(withError: nil)
+        showInfoView(mode == .burn)
     }
     
     private func handleUIInErrorCases(for errorType: LoyaltyErrorType, errorMessage: String) {
-        errorLabel.isHidden = false
-        errorLabel.text = errorMessage
-        burnLabel.isHidden = true
+        updateBurnLabels(withMessage: nil, for: errorType)
         showInfoView(false)
+        updateToggleLoyaltyModeActivity(withError: errorType)
+        updateBorder(withError: errorType)
+        updateErrorLabel(withMessage: errorMessage, for: errorType)
+        updateBalanceView(withError: errorType)
+        separatorView.isHidden = errorType != .insufficientBalance
+        earnLabel.isHidden = errorType != .insufficientBalance
+    }
+    
+    private func updateBurnLabels(withMessage message: String?, for errorType: LoyaltyErrorType?) {
+        guard let type = errorType
+        else {
+            burnLabel.text = message
+            burnLabel.isHidden = false
+            burnTitleLabel.textColor = KarhooUI.colors.text
+            return
+        }
+        
+        burnLabel.isHidden = true
+        burnTitleLabel.textColor = KarhooUI.colors.textLabel
+        
+        switch type {
+        case .insufficientBalance:
+            burnTitleLabel.isHidden = false
+        default:
+            burnTitleLabel.isHidden = true
+        }
+    }
+    
+    private func updateBorder(withError type: LoyaltyErrorType?) {
+        guard let type = type
+        else {
+            loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
+            return
+        }
+        
+        switch type {
+        case .insufficientBalance:
+            loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
+        default:
+            loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
+        }
+    }
+    
+    private func updateErrorLabel(withMessage message: String?, for type: LoyaltyErrorType?) {
+        guard let type = type
+        else {
+            errorLabel.isHidden = true
+            return
+        }
+        
+        errorLabel.isHidden = false
+        errorLabel.text = message
+        switch type {
+        case .insufficientBalance:
+            errorLabel.textColor = KarhooUI.colors.textLabel
+        default:
+            errorLabel.textColor = KarhooUI.colors.error
+        }
+    }
+    
+    private func updateToggleLoyaltyModeActivity(withError type: LoyaltyErrorType?) {
+        guard let type = type
+        else {
+            tapGestureRecognizer?.isEnabled = true
+            burnPointsSwitch.isEnabled = true
+            return
+        }
+        
         tapGestureRecognizer?.isEnabled = false
         burnPointsSwitch.isEnabled = false
         
-        switch errorType {
+        switch type {
         case .insufficientBalance:
-            errorLabel.textColor = KarhooUI.colors.textLabel
-            burnTitleLabel.textColor = KarhooUI.colors.textLabel
-            burnTitleLabel.isHidden = false
             burnPointsSwitch.isHidden = false
             burnPointsSwitch.isOn = false
-            loyaltyStackView.layer.borderColor = KarhooUI.colors.border.cgColor
-            refreshBalanceView(with: .success)
-            balanceView.isHidden = false
-            separatorView.isHidden = false
-            topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
-            
         default:
-            errorLabel.textColor = KarhooUI.colors.error
-            burnTitleLabel.textColor = KarhooUI.colors.textLabel
-            loyaltyStackView.layer.borderColor = KarhooUI.colors.error.cgColor
-            earnLabel.isHidden = true
-            burnTitleLabel.isHidden = true
             burnPointsSwitch.isHidden = true
+        }
+    }
+    
+    private func updateBalanceView(withError type: LoyaltyErrorType?) {
+        guard let type = type
+        else {
+            balanceView.isHidden = false
+            refreshBalanceView(with: .success)
+            topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
+            return
+        }
+        
+        switch type {
+        case .insufficientBalance:
+            balanceView.isHidden = false
+            refreshBalanceView(with: .success)
+            topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
+        default:
             balanceView.isHidden = true
-            separatorView.isHidden = true
             topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithNoBalanceVisible
         }
     }
