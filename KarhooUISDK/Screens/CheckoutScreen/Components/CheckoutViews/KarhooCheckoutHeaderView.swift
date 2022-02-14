@@ -91,7 +91,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHCheckoutHeaderViewID.carType
         label.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.textLabel
         return label
     }()
     
@@ -248,12 +248,12 @@ final class KarhooCheckoutHeaderView: UIStackView {
         imageView.image = vehicleTag.image
         imageView.contentMode = .scaleAspectFit
         imageView.anchor(width: 12.0, height: 12.0)
-        imageView.tintColor = KarhooUI.colors.guestCheckoutLightGrey
+        imageView.tintColor = KarhooUI.colors.text
         
         let label = UILabel()
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.text
         capabilitiesStackView.addArrangedSubview(imageView)
         capabilitiesStackView.addArrangedSubview(label)
     }
