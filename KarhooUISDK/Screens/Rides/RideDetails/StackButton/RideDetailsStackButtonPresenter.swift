@@ -66,9 +66,8 @@ final class RideDetailsStackButtonPresenter {
             secondButtonText: buttonText,
             secondButtonAction: { [weak self] in
                 self?.contact(phoneNumber)
-//                self?.phoneNumberCaller?.call(number: phoneNumber)
-//                self?.reportCallEvent()
-            })
+            }
+        )
     }
 
     private func setupPastTrip() {

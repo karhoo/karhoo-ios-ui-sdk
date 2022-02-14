@@ -18,18 +18,18 @@ public protocol Analytics {
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
     
-    func bookingRequested(tripDetails: TripInfo) // runtime-ok  KarhooCheckoutPresenter  testWhenBookingIsAboutToBeRequestedProperAnalyticsEventIsTriggered
-    func paymentSucceed() // runtime-X KarhooCheckoutPresenter testWhenPaymentSuccededProperAnalyticsEventIsTriggered
-    func paymentFailed(_ message: String) // runtime-X KarhooCheckoutPresenter
-    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool) // runtime-ok  KarhooTripPresenter
-    func pastTripsOpened() // runtime-ok  KarhooRidesPresenter
-    func upcomingTripsOpened() // runtime-ok  KarhooRidesPresenter
-    func trackTripClicked(tripDetails: TripInfo) // runtime-ok KarhooRidesPresenter
-    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) // runtime-ok-upcoming KarhooRidesPresenter
-    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) // runtime-X KarhooRidesPresenter; some other presetner with TRACK feature
-    func bookingScreenOpened() // runtime-ok KarhooBookingPresenter
-    func checkoutOpened(_ quote: Quote) // runtime-ok KarhooCheckoutPresenter // testWhenCheckoutOpensProperAnalyticsEventIsTriggered
-    func quoteListOpened(_ bookingDetails: BookingDetails)  // runtime-ok KarhooQuoteListPresenter
+    func bookingRequested(tripDetails: TripInfo)
+    func paymentSucceed()
+    func paymentFailed(_ message: String)
+    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
+    func pastTripsOpened()
+    func upcomingTripsOpened()
+    func trackTripClicked(tripDetails: TripInfo)
+    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo)
+    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo)
+    func bookingScreenOpened()
+    func checkoutOpened(_ quote: Quote)
+    func quoteListOpened(_ bookingDetails: BookingDetails)
 }
 
 public enum AnalyticsScreen: Equatable {
