@@ -21,10 +21,19 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var viewModel: LoyaltyViewModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
-    private var getBurnAmountError: KarhooError?
-    private var getEarnAmountError: KarhooError?
-    
     private var currentMode: LoyaltyMode = .none
+    private var isSwitchOn: Bool = false
+    
+    private var getBurnAmountError: KarhooError? {
+        didSet {
+            didSetLoyaltyError(getBurnAmountError)
+        }
+    }
+    private var getEarnAmountError: KarhooError? {
+        didSet {
+            didSetLoyaltyError(getEarnAmountError)
+        }
+    }
     
     var balance: Int {
         viewModel?.balance ?? 0
@@ -87,7 +96,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         updateViewVisibilityFromViewModel()
         
         updateEarnedPoints(completion: { [weak self] success in
-            self?.handleInitialGetEarnPointsResponse(success: success)
+            self?.updateUI()
             
             self?.updateBurnedPoints { success in
                 self?.delegate?.didEndLoading()
@@ -96,29 +105,27 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         })
     }
     
-    private func handleInitialGetEarnPointsResponse(success: Bool?) {
-        guard let success = success else { return }
-        
-        if !success {
-            handlePointsCallError(for: .earn)
-        } else {
-            presenterDelegate?.updateWith(
-                mode: currentMode,
-                earnSubtitle: getEarnText(),
-                burnSubtitle: getBurnText()
-            )
-        }
-    }
+//    private func handleInitialGetEarnPointsResponse(success: Bool?) {
+//        guard let success = success else { return }
+//
+//        if !success {
+//            handlePointsCallError(for: .earn)
+//        } else {
+//            presenterDelegate?.updateWith(
+//                mode: currentMode,
+//                earnSubtitle: getEarnText(),
+//                burnSubtitle: getBurnText()
+//            )
+//        }
+//    }
     
     private func handleInitialGetBurnPointsResponse(success: Bool?) {
         guard let success = success else { return }
         
         if success, !hasEnoughBalance() {
-            updateWithError(.insufficientBalance)
+            updateLoyaltyMode(with: .error(type: .insufficientBalance))
         } else if success {
-            handleUpdateLoyaltyMode(state: .noError)
-        } else {
-            handlePointsCallError(for: .burn)
+            updateLoyaltyMode(with: isSwitchOn ? .burn : .earn)
         }
     }
     
@@ -143,13 +150,14 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currencyCode: viewModel.currency
         )
         
+        delegate?.didStartLoading()
         loyaltyService.getLoyaltyEarn(
             identifier: viewModel.loyaltyId,
             currency: viewModel.currency,
             amount: amount,
             burnPoints: 0
         ).execute { [weak self] result in
-                
+            self?.delegate?.didEndLoading()
             guard let value = result.successValue()
             else {
                 let error = result.errorValue()
@@ -158,8 +166,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
                 return
             }
             
-            self?.getEarnAmountError = nil
             self?.viewModel?.earnAmount = value.points
+            self?.getEarnAmountError = nil
             completion?(true)
         }
     }
@@ -212,127 +220,145 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         let canEarn = viewModel?.canEarn ?? false
         let canBurn = viewModel?.canBurn ?? false
         
-        if mode == .burn, !canBurn {
-            return
-        }
-        
-        if mode == .earn, !canEarn {
+        switch mode {
+        case .none:
             currentMode = .none
-        } else {
-            currentMode = mode
+        case .burn:
+            if !canBurn {
+                return
+            } else if !hasEnoughBalance() {
+                currentMode = .error(type: .insufficientBalance)
+            } else {
+                currentMode = .burn
+            }
+        case .earn:
+            currentMode = canEarn ? .earn : .none
+        case .error(let type):
+            currentMode = .error(type: type)
         }
         
-        if currentMode == .burn, !hasEnoughBalance() {
-            updateWithError(.insufficientBalance)
-            delegate?.didChangeMode(newValue: currentMode)
-            return
-        }
-        
-        handleUpdateLoyaltyMode()
+        delegate?.didChangeMode(newValue: currentMode)
+        handleModeChanged()
     }
     
-    private func handleUpdateLoyaltyMode(state: LoyaltyState? = nil) {
-        let s = state ?? .earnPointsError
-        
-        switch s {
-        case .earnPointsError:
-            if currentMode == .earn, getEarnAmountError != nil {
-                delegate?.didStartLoading()
+    private func handleModeChanged() {
+        switch currentMode {
+        case .none, .earn, .burn:
+            updateUI()
+        case .error(_):
+            if getEarnAmountError != nil {
                 updateEarnedPoints { [weak self] success in
-                    self?.delegate?.didEndLoading()
-                    guard let success = success
-                    else {
-                        self?.handleUpdateLoyaltyMode(state: .burnPointsError)
-                        return
-                    }
-                    
-                    if success {
-                        self?.handleUpdateLoyaltyMode(state: .burnPointsError)
-                    } else {
-                        self?.handlePointsCallError(for: .earn)
-                        self?.delegate?.didChangeMode(newValue: self?.currentMode ?? .none)
-                    }
+                    self?.updateUI()
                 }
-            } else {
-                self.handleUpdateLoyaltyMode(state: .burnPointsError)
-            }
-            
-        case .burnPointsError:
-            if currentMode == .burn, getBurnAmountError != nil {
-                delegate?.didStartLoading()
+            } else if getBurnAmountError != nil {
                 updateBurnedPoints { [weak self] success in
-                    self?.delegate?.didEndLoading()
-                    
-                    guard let success = success
-                    else {
-                        self?.handleUpdateLoyaltyMode(state: .noError)
-                        return
-                    }
-                    
-                    if success {
-                        self?.handleUpdateLoyaltyMode(state: .noError)
-                    } else {
-                        self?.handlePointsCallError(for: .burn)
-                        self?.delegate?.didChangeMode(newValue: self?.currentMode ?? .none)
-                    }
+                    self?.updateUI()
                 }
             } else {
-                self.handleUpdateLoyaltyMode(state: .noError)
+                updateUI()
             }
-            
-        case .noError:
-            updateWithSuccess()
-            delegate?.didChangeMode(newValue: currentMode)
         }
     }
     
-    private func hasEnoughBalance() -> Bool {
-        guard let viewModel = viewModel
-        else {
-            return false
+    private func updateUI() {
+        switch currentMode {
+        case .error(let type):
+            presenterDelegate?.updateWith(mode: currentMode, earnSubtitle: nil, burnSubtitle: nil, errorMessage: getErrorMessage(for: type))
+        default:
+            presenterDelegate?.updateWith(mode: currentMode, earnSubtitle: getEarnText(), burnSubtitle: getBurnText(), errorMessage: nil)
         }
-        
-        return viewModel.balance >= viewModel.burnAmount
-    }
-    
-    private func updateWithSuccess() {
-        presenterDelegate?.updateWith(
-            mode: currentMode,
-            earnSubtitle: getEarnText(),
-            burnSubtitle: getBurnText()
-        )
-        
+       
         updateViewVisibilityFromViewModel()
     }
     
-    private func updateWithError(_ error: LoyaltyErrorType) {
-        switch error {
-        case .insufficientBalance:
-            presenterDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.insufficientBalanceForLoyaltyBurning)
-            
-        case .unsupportedCurrency:
-            presenterDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.unsupportedCurrency)
-  
-        default:
-            presenterDelegate?.updateWith(error: error, errorMessage: UITexts.Errors.unknownLoyaltyError)
+    // MARK: - Utils
+    var hasBalance: Bool?
+    private func hasEnoughBalance() -> Bool {
+        if hasBalance == nil {
+           let random = Int.random(in: 0...2)
+           if random % 2 == 0 {
+              hasBalance = true
+           } else {
+              hasBalance = false
+           }
+        }
+        return hasBalance!
+    }
+//    private func hasEnoughBalance() -> Bool {
+//        guard let viewModel = viewModel
+//        else {
+//            return false
+//        }
+//
+//        return viewModel.balance >= viewModel.burnAmount
+//    }
+    
+    private func didSetLoyaltyError(_ error: KarhooError?) {
+        if let error = error {
+            let type: LoyaltyErrorType = error.type == .unknownCurrency ? .unsupportedCurrency : .unknownError
+            updateLoyaltyMode(with: .error(type: type))
+        } else {
+            updateLoyaltyMode(with: .earn)
         }
     }
     
-    // MARK: - Utils
-    func hasError() -> Bool {
-        if currentMode == .burn, !hasEnoughBalance() {
-            return true
+    private func getEarnText() -> String {
+        let canEarn = viewModel?.canEarn ?? false
+        switch currentMode {
+        case .none, .error(_):
+            return ""
+        case .burn:
+            return canEarn ? getLocalizedEarnPointsText(for: 0) : ""
+        case .earn:
+            let earnAmount = viewModel?.earnAmount ?? 0
+            return canEarn ? getLocalizedEarnPointsText(for: earnAmount) : ""
         }
-        
-        if currentMode == .burn, getBurnAmountError != nil {
-            return true
+    }
+    
+    private func getLocalizedEarnPointsText(for amount: Int) -> String {
+        String(
+            format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
+            "\(amount)"
+        )
+    }
+    
+    private func getBurnText() -> String {
+        switch currentMode {
+        case .none, .earn, .error(_):
+            let canBurn = viewModel?.canBurn ?? false
+            return canBurn ? UITexts.Loyalty.burnOffSubtitle : ""
+        case .burn:
+            let amount = viewModel?.tripAmount.amountString ?? "0"
+            return String(
+                format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
+                amount,
+                "\(viewModel?.currency ?? "-")",
+                "\(viewModel?.burnAmount ?? 0)"
+            )
         }
-        
-        if currentMode == .earn, getEarnAmountError != nil {
-            return true
+    }
+    
+    private func getErrorMessage(for error: LoyaltyErrorType) -> String {
+        switch error {
+        case .none:
+            return ""
+        case .insufficientBalance:
+            return UITexts.Errors.insufficientBalanceForLoyaltyBurning
+        case .unsupportedCurrency:
+            return UITexts.Errors.unsupportedCurrency
+        case .unknownError:
+            return UITexts.Errors.unknownLoyaltyError
         }
-        
-        return false
+    }
+    
+    private func updateViewVisibilityFromViewModel() {
+        let canEarn = viewModel?.canEarn ?? false
+        let canBurn = viewModel?.canBurn ?? false
+        presenterDelegate?.togglefeatures(earnOn: canEarn, burnOn: canBurn)
+    }
+    
+    private func hideLoyaltyComponent() {
+        presenterDelegate?.togglefeatures(earnOn: false, burnOn: false)
     }
     
     // MARK: - Pre-Auth
@@ -390,63 +416,5 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         
         // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
         return currentMode == .burn ? viewModel.burnAmount : 0
-    }
-    
-    private func getEarnText() -> String {
-        let canEarn = viewModel?.canEarn ?? false
-        switch currentMode {
-        case .none, .error(_):
-            return ""
-        case .burn:
-            return canEarn ? getLocalizedEarnPointsText(for: 0) : ""
-        case .earn:
-            let earnAmount = viewModel?.earnAmount ?? 0
-            return canEarn ? getLocalizedEarnPointsText(for: earnAmount) : ""
-        }
-    }
-    
-    private func getLocalizedEarnPointsText(for amount: Int) -> String {
-        String(
-            format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
-            "\(amount)"
-        )
-    }
-    
-    private func getBurnText() -> String {
-        switch currentMode {
-        case .none, .earn, .error(_):
-            let canBurn = viewModel?.canBurn ?? false
-            return canBurn ? UITexts.Loyalty.burnOffSubtitle : ""
-        case .burn:
-            let amount = viewModel?.tripAmount.amountString ?? "0"
-            return String(
-                format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
-                amount,
-                "\(viewModel?.currency ?? "-")",
-                "\(viewModel?.burnAmount ?? 0)"
-            )
-        }
-    }
-    
-    private func updateViewVisibilityFromViewModel() {
-        let canEarn = viewModel?.canEarn ?? false
-        let canBurn = viewModel?.canBurn ?? false
-        presenterDelegate?.togglefeatures(earnOn: canEarn, burnOn: canBurn)
-    }
-    
-    private func hideLoyaltyComponent() {
-        presenterDelegate?.togglefeatures(earnOn: false, burnOn: false)
-    }
-    
-    private func handlePointsCallError(for mode: LoyaltyMode) {
-        let error = mode == .burn ? getBurnAmountError : getEarnAmountError
-        
-        switch error?.type {
-        case .unknownCurrency:
-            updateWithError(.unsupportedCurrency)
-
-        default:
-            updateWithError(.unknownError)
-        }
     }
 }

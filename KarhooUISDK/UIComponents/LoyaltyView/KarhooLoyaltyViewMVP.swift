@@ -15,7 +15,6 @@ protocol LoyaltyView: AnyObject {
     var currentMode: LoyaltyMode { get }
     func set(dataModel: LoyaltyViewDataModel)
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
-    func hasError() -> Bool //remove
 }
 
 public protocol LoyaltyViewDelegate: AnyObject {
@@ -35,12 +34,10 @@ protocol LoyaltyPresenter: AnyObject {
     func updateBurnedPoints(completion: ((_ success: Bool?) -> Void)?) //remove completion?
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
-    func hasError() -> Bool //remove
 }
 
 protocol LoyaltyPresenterDelegate: AnyObject {
-    func updateWith(mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) // make strings optional
-    func updateWith(error: LoyaltyErrorType, errorMessage: String) //remove and move errorMessage to updateWith(mode: LoyaltyMode
+    func updateWith(mode: LoyaltyMode, earnSubtitle: String?, burnSubtitle: String?, errorMessage: String?)
     func togglefeatures(earnOn: Bool, burnOn: Bool)
 }
 

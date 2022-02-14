@@ -304,10 +304,6 @@ extension KarhooLoyaltyView: LoyaltyView {
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         presenter.getLoyaltyPreAuthNonce(completion: completion)
     }
-  
-    func hasError() -> Bool {
-        return presenter.hasError()
-    }
     
     private func refreshBalanceView(with mode: LoyaltyBalanceMode) {
         balanceView.set(balance: presenter.balance)
@@ -316,7 +312,16 @@ extension KarhooLoyaltyView: LoyaltyView {
 }
 
 extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
-    func updateWith(mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) {
+    func updateWith(mode: LoyaltyMode, earnSubtitle: String?, burnSubtitle: String?, errorMessage: String?) {
+        switch mode {
+        case .none, .earn, .burn:
+            handleUIInSuccessCases(for: mode, earnSubtitle: earnSubtitle ?? "", burnSubtitle: burnSubtitle ?? "")
+        case .error(let type):
+            handleUIInErrorCases(for: type, errorMessage: errorMessage ?? "")
+        }
+    }
+    
+    private func handleUIInSuccessCases(for mode: LoyaltyMode, earnSubtitle: String, burnSubtitle: String) {
         earnLabel.text = earnSubtitle
         burnLabel.text = burnSubtitle
         burnLabel.isHidden = false
@@ -327,7 +332,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
         
         switch mode {
-        case .none, .earn, .error(_):
+        case .none, .earn, .error:
             showInfoView(false)
 
         case .burn:
@@ -337,26 +342,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         refreshBalanceView(with: .success)
     }
     
-    private func showInfoView(_ show: Bool) {
-        if (infoView.isHidden && !show) || (!infoView.isHidden && show) {
-            return
-        }
-
-        if show {
-            infoView.isHidden = false
-            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
-                self?.infoView.alpha = 1.0
-            }
-        } else {
-            infoView.isHidden = false
-            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
-                self?.infoView.alpha = 0.0
-                self?.infoView.isHidden = true
-            }
-        }
-    }
-    
-    func updateWith(error: LoyaltyErrorType, errorMessage: String) {
+    private func handleUIInErrorCases(for errorType: LoyaltyErrorType, errorMessage: String) {
         errorLabel.isHidden = false
         errorLabel.text = errorMessage
         burnLabel.isHidden = true
@@ -364,7 +350,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
         tapGestureRecognizer?.isEnabled = false
         burnPointsSwitch.isEnabled = false
         
-        switch error {
+        switch errorType {
         case .insufficientBalance:
             errorLabel.textColor = KarhooUI.colors.textLabel
             burnTitleLabel.textColor = KarhooUI.colors.textLabel
@@ -387,6 +373,25 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
             balanceView.isHidden = true
             separatorView.isHidden = true
             topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithNoBalanceVisible
+        }
+    }
+    
+    private func showInfoView(_ show: Bool) {
+        if (infoView.isHidden && !show) || (!infoView.isHidden && show) {
+            return
+        }
+
+        if show {
+            infoView.isHidden = false
+            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
+                self?.infoView.alpha = 1.0
+            }
+        } else {
+            infoView.isHidden = false
+            UIView.animate(withDuration: UIConstants.Duration.long) { [weak self] in
+                self?.infoView.alpha = 0.0
+                self?.infoView.isHidden = true
+            }
         }
     }
     
