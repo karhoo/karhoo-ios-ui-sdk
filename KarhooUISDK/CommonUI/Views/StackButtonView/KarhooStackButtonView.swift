@@ -96,7 +96,7 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonOne.titleLabel?.textAlignment = .center
         buttonOne.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonOne.addTarget(self, action: #selector(buttonOnePressed), for: .touchUpInside)
-        buttonOne.setTitleColor(.black, for: .normal)
+        buttonOne.setTitleColor(KarhooUI.colors.accent, for: .normal)
         
         buttonTwo = UIButton(type: .custom)
         buttonTwo.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +105,7 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonTwo.titleLabel?.textAlignment = .center
         buttonTwo.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonTwo.addTarget(self, action: #selector(buttonTwoPressed), for: .touchUpInside)
-        buttonTwo.setTitleColor(.black, for: .normal)
+        buttonTwo.setTitleColor(KarhooUI.colors.accent, for: .normal)
         
         separatorLine = LineView(color: .lightGray,
                                  width: 1.0,
