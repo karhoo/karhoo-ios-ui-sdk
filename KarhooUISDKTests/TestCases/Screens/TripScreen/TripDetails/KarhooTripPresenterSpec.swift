@@ -173,7 +173,6 @@ final class KarhooTripPresenterSpec: XCTestCase {
     /**
      * When: The user calls driver
      * Then: Phone number caller should call driver number
-     *  And: UserCalledDriver analytics event should be fired
      */
     func testCallDriver() {
         let trip = TestUtil.getRandomTrip(tripId: mockInitialTrip.tripId,
@@ -183,7 +182,6 @@ final class KarhooTripPresenterSpec: XCTestCase {
         testObject.callDriverPressed()
         
         XCTAssertEqual(mockPhoneNumberCaller.numberCalled, trip.vehicle.driver.phoneNumber)
-        XCTAssertTrue(mockAnalytics.contactDriverClickedCalled == .vehicleTracking)
     }
 
     /**

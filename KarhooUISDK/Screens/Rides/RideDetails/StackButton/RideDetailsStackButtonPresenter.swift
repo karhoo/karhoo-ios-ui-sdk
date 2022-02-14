@@ -14,17 +14,14 @@ final class RideDetailsStackButtonPresenter {
     private let isFleetCall: Bool
     private let mailComposer: FeedbackEmailComposer?
     private let phoneNumberCaller: PhoneNumberCallerProtocol?
-    private let analytics: Analytics
     private weak var view: StackButtonView?
     private weak var rideDetailsStackButtonActions: RideDetailsStackButtonActions?
-
     init(
         trip: TripInfo,
-         stackButton: StackButtonView?,
-         mailComposer: FeedbackEmailComposer?,
-         rideDetailsStackButtonActions: RideDetailsStackButtonActions,
-         phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
-         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        stackButton: StackButtonView?,
+        mailComposer: FeedbackEmailComposer?,
+        rideDetailsStackButtonActions: RideDetailsStackButtonActions,
+        phoneNumberCaller: PhoneNumberCallerProtocol? = PhoneNumberCaller()
     ) {
         self.trip = trip
         self.isFleetCall = trip.vehicle.driver.phoneNumber.isEmpty
@@ -32,7 +29,6 @@ final class RideDetailsStackButtonPresenter {
         self.view = stackButton
         self.rideDetailsStackButtonActions = rideDetailsStackButtonActions
         self.phoneNumberCaller = phoneNumberCaller
-        self.analytics = analytics
 
         if TripInfoUtility.canCancel(trip: trip) {
             setupUpAndComingTrip()
@@ -69,8 +65,9 @@ final class RideDetailsStackButtonPresenter {
             },
             secondButtonText: buttonText,
             secondButtonAction: { [weak self] in
-                self?.phoneNumberCaller?.call(number: phoneNumber)
-                self?.reportCallEvent()
+                self?.contact(phoneNumber)
+//                self?.phoneNumberCaller?.call(number: phoneNumber)
+//                self?.reportCallEvent()
             })
     }
 
@@ -82,17 +79,11 @@ final class RideDetailsStackButtonPresenter {
         })
     }
 
-    private func reportCallEvent() {
+    private func contact(_ phoneNumber: String) {
         if isFleetCall {
-            analytics.contactFleetClicked(
-                page: .vehicleTracking,
-                tripDetails: trip
-            )
+            rideDetailsStackButtonActions?.contactFleet(phoneNumber)
         } else {
-            analytics.contactDriverClicked(
-                page: .vehicleTracking,
-                tripDetails: trip
-            )
+            rideDetailsStackButtonActions?.contactDriver(phoneNumber)
         }
     }
 

@@ -25,6 +25,10 @@ protocol RideDetailsPresenter: AnyObject {
     func didPressTripFeedback()
     
     func sendTripRate(rating: Int)
+
+    func didPressContactFleet(_ phoneNumber: String)
+
+    func didPressContactDriver(_ phoneNumber: String)
 }
 
 protocol RideDetailsView: BaseViewController {

@@ -31,6 +31,10 @@ protocol TripPresenter {
     func userMovedMap()
 
     func userDidCloseTrip()
+
+    func contactDriver(_ phoneNumber: String)
+    
+    func contactFleet(_ phoneNumber: String)
 }
 
 protocol TripView: BaseViewController {

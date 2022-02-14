@@ -19,4 +19,8 @@ protocol RideDetailsStackButtonActions: AnyObject {
     func hideRideOptions()
 
     func reportIssueError()
+
+    func contactFleet(_ phoneNumber: String)
+
+    func contactDriver(_ phoneNumber: String)
 }

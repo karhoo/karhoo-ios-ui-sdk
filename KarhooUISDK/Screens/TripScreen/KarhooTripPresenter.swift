@@ -165,6 +165,16 @@ final class KarhooTripPresenter: TripPresenter,
         finishWithResult(.completed(result: .closed))
     }
 
+    func contactDriver(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactDriverClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+    
+    func contactFleet(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactFleetClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+
     private func updateAccordingToTrip() {
         setStatusAccordingToTrip(animated: true)
         updateBookingDetails()

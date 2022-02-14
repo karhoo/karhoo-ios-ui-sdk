@@ -120,8 +120,11 @@ final class KarhooAnalytics: Analytics {
     func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         let eventName: AnalyticsConstants.EventNames
         switch page {
-        case .upcomingRides: eventName = .ridesUpcomingContactFleetClicked
-        case .vehicleTracking: eventName = .vehicleTrackingContactFleetClicked
+        case .upcomingRides:
+            eventName = .ridesUpcomingContactFleetClicked
+        case .vehicleTracking:
+            print("this screen is not managable by this event")
+            return
         }
         base.send(
             eventName: eventName,
