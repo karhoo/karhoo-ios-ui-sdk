@@ -9,24 +9,42 @@
 import UIKit
 
 class BaseStackView: UIView {
-    
-    private var scrollView: UIScrollView!
-    private var stackContainer: UIStackView!
-    private var didSetupConstraints: Bool = false
+
+    // MARK: - Properties
+
     private var viewList = [String]()
     private var keyboardListener: KeyboardSizeProviderProtocol = KeyboardSizeProvider()
     public var isScrollEnabled: Bool {
         get {
-        return scrollView.isScrollEnabled
+            scrollView.isScrollEnabled
         }
         set {
-        if newValue != scrollView.isScrollEnabled {
-            didSetupConstraints = false
-            setNeedsUpdateConstraints()
-        }
-        scrollView.isScrollEnabled = newValue
+            if newValue != scrollView.isScrollEnabled {
+                setNeedsUpdateConstraints()
+            }
+            scrollView.isScrollEnabled = newValue
         }
     }
+
+    // MARK: Views
+
+    private let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private let scrollViewContentView = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private let stackView = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.distribution = .fill
+        $0.alignment = .center
+        $0.axis = .vertical
+        $0.spacing = 0
+        $0.isUserInteractionEnabled = true
+    }
+
+    // MARK: - Lifecycle
     
     public init() {
         super.init(frame: .zero)
@@ -42,77 +60,63 @@ class BaseStackView: UIView {
         keyboardListener.remove(listener: self)
     }
 
-    override public func updateConstraints() {
-        if !didSetupConstraints {
-            
-            var bottomInset: CGFloat = 0.0
-            
-            if #available(iOS 11.0, *) {
-                bottomInset = safeAreaInsets.bottom
-            }
-            
-            scrollView.anchor(top: topAnchor,
-                              leading: leadingAnchor,
-                              bottom: bottomAnchor,
-                              trailing: trailingAnchor,
-                              paddingBottom: bottomInset)
-            
-            stackContainer.centerX(inView: scrollView)
-            stackContainer.anchor(top: scrollView.topAnchor,
-                                  bottom: scrollView.bottomAnchor)
-            
-            didSetupConstraints = true
-        }
-        
-        super.updateConstraints()
-    }
-    
-    // ===================================================
-    // MARK: Private func
+    // MARK: - Setup
+
     private func setUp() {
         keyboardListener.register(listener: self)
+        setupProperties()
+        setupHierarchy()
+        setupLayout()
+    }
+    
+    private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
-        scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    private func setupHierarchy() {
         addSubview(scrollView)
-        
-        stackContainer = buildStackView()
-        scrollView.addSubview(stackContainer)
+        scrollViewContentView.addSubview(stackView)
+        scrollView.addSubview(scrollViewContentView)
     }
-    
-    private func buildStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.axis = .vertical
-        stackView.spacing = 0.0
-        stackView.isUserInteractionEnabled = true
-        return stackView
+
+    private func setupLayout() {
+        scrollView.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            paddingBottom: safeAreaInsets.bottom
+        )
+        scrollViewContentView.anchorToSuperview()
+        stackView.anchorToSuperview()
     }
-    
-    // ===================================================
-    // MARK: Public func
-   func addViewToStack(view: UIView) {
+
+    // MARK: - Endpoints
+
+    func addViewToStack(view: UIView) {
         guard let viewIdentifier = view.accessibilityIdentifier else {
-            fatalError("No accessibility Identifier provided for view: \(view)")
+            assertionFailure("No accessibility Identifier provided for view: \(view)")
+            return
         }
         
         if viewList.contains(viewIdentifier) {
-            fatalError("A view with identifier: \(viewIdentifier) already present")
+            assertionFailure("A view with identifier: \(viewIdentifier) already present")
         }
-        stackContainer.addArrangedSubview(view)
+        stackView.addArrangedSubview(view)
         viewList.append(viewIdentifier)
     }
-    
+
     public func stackSubViews() -> [UIView] {
-        return stackContainer.subviews
+        return stackView.subviews
     }
-    
+
     public func viewSpacing(_ spacing: CGFloat) {
-        stackContainer.spacing = spacing
-        stackContainer.setNeedsLayout()
+        stackView.spacing = spacing
+        stackView.setNeedsLayout()
+    }
+
+    func scrollTo(_ viewToShow: UIView, animated: Bool) {
+        scrollView.scrollRectToVisible(viewToShow.frame, animated: true)
     }
 }
 

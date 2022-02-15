@@ -41,9 +41,6 @@ final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
 
         let category = categories[index]
         quoteCategoryBarView?.didSelectCategory(category)
-
-        analytics.vehicleTypeSelected(selectedCategory: category.categoryName,
-                                      quoteListId: lastQuotesListId)
     }
 
     func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {

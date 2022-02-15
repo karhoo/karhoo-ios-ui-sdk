@@ -8,11 +8,9 @@
 
 import Foundation
 
-final class KarhooUISDKConfigurationProvider {
+enum KarhooUISDKConfigurationProvider {
 
     private(set) static var configuration: KarhooUISDKConfiguration!
-
-    private init() {}
 
     static func set(_ configuration: KarhooUISDKConfiguration) {
         self.configuration = configuration

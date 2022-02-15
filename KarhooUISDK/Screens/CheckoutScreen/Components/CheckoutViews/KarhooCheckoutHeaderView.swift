@@ -118,9 +118,17 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
     
-    private lazy var learnMoreButton: KarhooLearnMoreButton = {
-        let button = KarhooLearnMoreButton()
-        button.set(actions: self)
+    private lazy var learnMoreButton: KarhooExpandViewButton = {
+        let button = KarhooExpandViewButton(
+            title: UITexts.Booking.learnMore,
+            initialMode: .closed,
+            onExpand:  {[weak self] in
+                self?.learnLessPressed()
+            },
+            onCollapce: {[weak self] in
+                self?.learnMorePressed()
+            }
+        )
         button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
         button.anchor(height: 44.0)
         return button
@@ -194,8 +202,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
                                               leading: capacityContentView.leadingAnchor,
                                               trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.anchor(leading: capacityContentView.leadingAnchor,
-                                   bottom: capacityContentView.bottomAnchor,
+            learnMoreButton.anchor(bottom: capacityContentView.bottomAnchor,
                                    trailing: capacityContentView.trailingAnchor)
             
             if capabilitiesStackView.subviews.count > 0 {
@@ -257,21 +264,18 @@ final class KarhooCheckoutHeaderView: UIStackView {
         capabilitiesStackView.addArrangedSubview(imageView)
         capabilitiesStackView.addArrangedSubview(label)
     }
-}
 
-// MARK: - RevealMoreButtonActions
-extension KarhooCheckoutHeaderView: LearnMoreButtonDelegate {
     func learnMorePressed() {
-        self.vehicleCapacityView.isHidden = true
         self.capacityDetailsView.isHidden = false
         UIView.animate(withDuration: 0.45) { [unowned self] in
+            self.vehicleCapacityView.alpha = 0.0
             self.capacityDetailsView.alpha = 1.0
         }
     }
     
     func learnLessPressed() {
-        self.vehicleCapacityView.isHidden = false
         UIView.animate(withDuration: 0.45) {
+            self.vehicleCapacityView.alpha = 1.0
             self.capacityDetailsView.alpha = 0.0
             self.capacityDetailsView.isHidden = true
         }
