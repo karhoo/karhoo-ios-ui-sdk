@@ -381,29 +381,25 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     // MARK: - Pre-Auth
     private func canPreAuth() -> Bool {
-        guard let viewModel = viewModel
+        guard let viewModel = viewModel,
+              currentMode.isEligibleForPreAuth
         else {
             return false
         }
         
         switch currentMode {
-        case .none:
-            return true
         case .earn:
             return viewModel.canEarn
         case .burn:
             let canProceed = viewModel.canBurn && hasEnoughBalance() && getBurnAmountError == nil
             return canProceed
-        case .error:
-            // Note: When in error mode the component is considered to be in earn / none mode
-            // as far as the loyalty nonce retrival is concerned
-            // The error mode only prevents the user from burning points, not earning (when available)
-            return true
+        default:
+            return false
         }
     }
     
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        if currentMode == .none {
+        if  !currentMode.isEligibleForPreAuth {
             completion(.success(result: LoyaltyNonce(loyaltyNonce: "")))
             return
         }

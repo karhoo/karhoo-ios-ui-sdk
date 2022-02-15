@@ -69,6 +69,32 @@ public enum LoyaltyMode {
     case burn
     case error(type: LoyaltyErrorType)
     
+    var isError: Bool {
+        self == .error(type: .unsupportedCurrency) ||
+        self == .error(type: .unknownError) ||
+        self == .error(type: .insufficientBalance)
+    }
+    
+    var isEligibleForPreAuth: Bool {
+        switch self {
+        case .none:
+            return false
+        case .earn, .burn:
+            return true
+        case .error(let type):
+            switch type {
+            // Note: When in error mode the component is considered to be in earn / none mode
+            // (as far as the loyalty nonce retrival is concerned)
+            // The error mode only prevents the user from burning points, not earning (when available)
+            // .unsupportedCurrency is the only exception because the pre-auth call will always fail in this case
+            case .unsupportedCurrency:
+                return false
+            default:
+                return true
+            }
+        }
+    }
+    
     static func ==(lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none) :
