@@ -13,22 +13,20 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
 
     func analytics() -> Analytics
 
-    var bookingMetadata:[String: Any]? { get }
+    var isExplicitTermsAndConfitionsAprovalRequired: Bool { get }
+
+    var bookingMetadata: [String: Any]? { get }
 }
 
 public extension KarhooUISDKConfiguration {
 
-    func logo() -> UIImage {
-        return UIImage(named: "")!
-    }
+    func logo() -> UIImage { UIImage(named: "")! }
 
     func analytics() -> Analytics {
         KarhooAnalytics()
     }
+
+    var isExplicitTermsAndConfitionsAprovalRequired: Bool { false }
     
-    var bookingMetadata:[String: Any]? {
-        get {
-            return nil
-        }
-    }
+    var bookingMetadata: [String: Any]? { nil }
 }
