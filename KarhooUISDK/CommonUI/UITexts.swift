@@ -63,6 +63,8 @@ public enum UITexts {
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
         public static let locale = "Text.Generic.Locale".localized
         public static let or = "Text.Generic.Or".localized
+        public static let checked = "Text.Generic.Checked".localized
+        public static let unchecked = "Text.Generic.Unchecked".localized
     }
 
     public enum GenericTripStatus {
@@ -220,6 +222,10 @@ public enum UITexts {
         public static let flightTracking = "Text.Booking.FlightTracking".localized
         public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
         public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
+        public static let legalNotice = "Text.Booking.LegalNotice".localized
+        public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
+        public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
+        public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
     }
 
     public enum Availability {

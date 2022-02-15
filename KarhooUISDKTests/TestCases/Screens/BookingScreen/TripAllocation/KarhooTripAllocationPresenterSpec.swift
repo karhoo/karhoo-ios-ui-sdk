@@ -98,7 +98,6 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
 
         XCTAssertEqual(mockTripService.tripCancellationSet?.tripId, mockTrip.tripId)
         XCTAssertEqual(mockTripService.tripCancellationSet?.tripId, mockTrip.tripId)
-        XCTAssertEqual(mockAnalytics.tripCancellationInitiatedCalled!.tripId, mockTrip.tripId)
     }
 
     /**

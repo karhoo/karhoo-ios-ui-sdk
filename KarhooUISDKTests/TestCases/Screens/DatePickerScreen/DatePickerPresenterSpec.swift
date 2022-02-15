@@ -163,7 +163,7 @@ class DatePickerPresenterSpec: XCTestCase {
         XCTAssert(mockView.dateSet == newDate)
         XCTAssert(returnedDate == newDate)
 
-        XCTAssertTrue(testAnalytics.prebookTimeSetCalled)
+        XCTAssertTrue(testAnalytics.prebookSetCalled)
     }
 
     /**

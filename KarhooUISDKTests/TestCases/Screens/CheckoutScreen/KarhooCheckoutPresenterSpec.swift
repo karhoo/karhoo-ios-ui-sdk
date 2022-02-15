@@ -43,16 +43,16 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     }
 
     /**
-      * When: Pickup or destination is an airport type address
-      * Then: Screen should set to "add flight details" state
-      * NOTE: As booking button state is called on screen loading and dependent on booking details, we have
-              to reload the entire test object with an airport set as just the pickup, then just the destination
-      */
+     * When: Pickup or destination is an airport type address
+     * Then: Screen should set to "add flight details" state
+     * NOTE: As booking button state is called on screen loading and dependent on booking details, we have
+     to reload the entire test object with an airport set as just the pickup, then just the destination
+     */
     func testAirportBookingSetup() {
         testBookingDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: false)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
-
+        
         testBookingDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: true)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
@@ -94,8 +94,8 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
-        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
+        XCTAssertTrue(mockTripService.tripBookingSet?.meta.count == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta["trip_id"])
         XCTAssertTrue(mockAnalytics.bookingRequestedCalled)
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
@@ -319,9 +319,9 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     }
 
     /**
-      * Given: A fixed fare type
-      * Then: The base fare explanation should be hidden
-      */
+     * Given: A fixed fare type
+     * Then: The base fare explanation should be hidden
+     */
     func testFixedQuoteHidesBaseFare() {
         testQuote = TestUtil.getRandomQuote(highPrice: 10, quoteType: .fixed)
 
@@ -348,10 +348,10 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     }
 
     /**
-      * Given: App state notifier triggers "Did enter background"
-      * When: TripInfo is being reqested
-      * Then: Screen should not be closed
-      */
+     * Given: App state notifier triggers "Did enter background"
+     * When: TripInfo is being reqested
+     * Then: Screen should not be closed
+     */
     func testAppEnteringBackgroundWhenRequestingTrip() {
         testObject.bookTripPressed()
         mockAppStateNotifier.signalAppDidEnterBackground()
@@ -408,6 +408,42 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         XCTAssertTrue(mockView.quoteDidExpireCalled)
     }
     
+    /**
+     * When: SDK `shouldRequireExplicitTermsAndConditionsAcceptance` configuration is default
+     * Then: Presenter should return false
+     */
+    func testIsExplicitTermsConditionsAcceptanceRequiredDefaultValueIsFalse() {
+        let isRequired = testObject.shouldRequireExplicitTermsAndConditionsAcceptance()
+        
+        XCTAssertFalse(isRequired)
+    }
+
+    /**
+     * When: SDK `shouldRequireExplicitTermsAndConditionsAcceptance` configuration is set to true
+     * Then: Presenter should return true
+     */
+    func testIsExplicitTermsConditionsAcceptanceRequiredOverridenValueIsTrue() {
+        KarhooTestConfiguration.isExplicitTermsAndConfitionsAprovalRequired = true
+        
+        testObject = KarhooCheckoutPresenter(
+            quote: testQuote,
+            bookingDetails: testBookingDetails,
+            bookingMetadata: mockBookingMetadata,
+            tripService: mockTripService,
+            userService: mockUserService,
+            analytics: mockAnalytics,
+            appStateNotifier: mockAppStateNotifier,
+            baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
+            paymentNonceProvider: mockPaymentNonceProvider,
+            callback: bookingRequestTrip
+        )
+        testObject.load(view: mockView)
+        
+        let isRequired = testObject.shouldRequireExplicitTermsAndConditionsAcceptance()
+        
+        XCTAssertTrue(isRequired)
+    }
+    
     private func startWithPaymentBookingError() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
@@ -426,16 +462,19 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
     private func loadTestObject(configuration: AuthenticationMethod = .karhooUser) {
         KarhooTestConfiguration.authenticationMethod = configuration
-        testObject = KarhooCheckoutPresenter(quote: testQuote,
-                                             bookingDetails: testBookingDetails,
-                                             bookingMetadata: mockBookingMetadata,
-                                             tripService: mockTripService,
-                                             userService: mockUserService,
-                                             analytics: mockAnalytics,
-                                             appStateNotifier: mockAppStateNotifier,
-                                             baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
-                                             paymentNonceProvider: mockPaymentNonceProvider,
-                                             callback: bookingRequestTrip)
+        KarhooTestConfiguration.isExplicitTermsAndConfitionsAprovalRequired = false
+        testObject = KarhooCheckoutPresenter(
+            quote: testQuote,
+            bookingDetails: testBookingDetails,
+            bookingMetadata: mockBookingMetadata,
+            tripService: mockTripService,
+            userService: mockUserService,
+            analytics: mockAnalytics,
+            appStateNotifier: mockAppStateNotifier,
+            baseFarePopupDialogBuilder: mockPopupDialogScreenBuilder,
+            paymentNonceProvider: mockPaymentNonceProvider,
+            callback: bookingRequestTrip
+        )
         testObject.load(view: mockView)
     }
 }

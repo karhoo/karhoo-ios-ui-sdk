@@ -135,4 +135,12 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
     func quoteDidExpire() {
         quoteDidExpireCalled = true
     }
+
+    var areTermsAndConditionsAcceptedToReturn: Bool = false
+    var areTermsAndConditionsAccepted: Bool { areTermsAndConditionsAcceptedToReturn }
+    
+    var showTermsConditionsRequiredErrorCalled: Bool = false
+    func showTermsConditionsRequiredError() {
+        showTermsConditionsRequiredErrorCalled = true
+    }
 }

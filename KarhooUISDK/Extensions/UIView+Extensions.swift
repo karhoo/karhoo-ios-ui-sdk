@@ -133,6 +133,15 @@ extension UIView {
             paddingRight: paddingTrailing
         )
     }
+
+    func anchorToSuperview(padding: CGFloat) {
+        anchorToSuperview(
+            paddingTop: padding,
+            paddingLeading: padding,
+            paddingTrailing: padding,
+            paddingBottom: padding
+        )
+    }
     
     public func centerX(inView view: UIView, constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false

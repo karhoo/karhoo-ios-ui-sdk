@@ -47,22 +47,27 @@ public struct TermsConditionsStringBuilder {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
 
-        let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                                .foregroundColor: KarhooUI.colors.medGrey,
-                                                                .paragraphStyle: paragraphStyle]
-
-        let policyAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                               .link: policyURL,
-                                                               .foregroundColor: KarhooUI.colors.primary,
-                                                               .underlineColor: KarhooUI.colors.accent,
-                                                               .underlineStyle: NSUnderlineStyle.single.rawValue]
-
-        let termsAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                              .foregroundColor: KarhooUI.colors.primary,
-                                                              .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                              .underlineColor: KarhooUI.colors.accent,
-                                                              .link: termsURL]
-
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.text
+        ]
+        
+        let policyAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .link: policyURL,
+            .foregroundColor: KarhooUI.colors.primary,
+            .underlineColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        let termsAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.primary,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: KarhooUI.colors.accent,
+            .link: termsURL
+        ]
+        
         let termsText = NSMutableAttributedString()
 
         let fullText = String(format: NSLocalizedString(UITexts.TermsConditions.termsConditionFullString,
@@ -98,7 +103,7 @@ public struct TermsConditionsStringBuilder {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        paragraphStyle.lineSpacing = 4
+        paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
 
         let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
                                                                 .foregroundColor: KarhooUI.colors.primaryTextColor,
