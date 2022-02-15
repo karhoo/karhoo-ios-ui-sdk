@@ -55,16 +55,12 @@ final class MockLoyaltyView: LoyaltyView {
 }
 
 extension MockLoyaltyView: LoyaltyPresenterDelegate {
-    func updateWith(mode: LoyaltyMode, earnText: String, burnText: String) {
+    func updateWith(mode: LoyaltyMode, earnSubtitle: String?, burnSubtitle: String?, errorMessage: String?) {
         self.mode = mode
-        self.earnText = earnText
-        self.burnText = burnText
-        didCallSetLoyaltyMode = true
-    }
-    
-    func updateWith(errorMessage: String) {
+        self.earnText = earnSubtitle
+        self.burnText = burnSubtitle
         self.errorMessage = errorMessage
-        didShowError = true
+        didCallSetLoyaltyMode = true
     }
     
     func togglefeatures(earnOn: Bool, burnOn: Bool) {

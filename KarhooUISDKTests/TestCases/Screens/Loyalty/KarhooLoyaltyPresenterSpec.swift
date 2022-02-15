@@ -24,7 +24,7 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
         testObject = KarhooLoyaltyPresenter()
         mockDelegate = MockLoyaltyViewDelegate()
         testObject.delegate = mockDelegate
-        testObject.internalDelegate = mockView
+        testObject.presenterDelegate = mockView
     }
     
     /**
