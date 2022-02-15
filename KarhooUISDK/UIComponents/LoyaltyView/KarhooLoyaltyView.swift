@@ -420,6 +420,7 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
             balanceView.isHidden = false
             refreshBalanceView(with: .success)
             topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithBalanceVisible
+            setNeedsLayout()
             return
         }
         
@@ -432,6 +433,8 @@ extension KarhooLoyaltyView: LoyaltyPresenterDelegate {
             balanceView.isHidden = true
             topContainerConstraint?.constant = LoyaltyConstants.topPaddingWithNoBalanceVisible
         }
+        
+        setNeedsLayout()
     }
     
     private func showInfoView(_ show: Bool) {

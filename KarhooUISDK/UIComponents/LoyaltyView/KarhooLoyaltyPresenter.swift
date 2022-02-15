@@ -24,14 +24,56 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var currentMode: LoyaltyMode = .none
     private var isSwitchOn: Bool = false
     
+    private var didStartLoading: Bool = false {
+        didSet {
+            if didStartLoading {
+                delegate?.didStartLoading()
+            }
+        }
+    }
+    
+    private var isLoadingStatus: Bool = false {
+        didSet {
+            if isLoadingStatus, !didStartLoading {
+                didStartLoading = true
+            }
+            isLoadingDidChange()
+        }
+    }
+    
+    private var isLoadingGetEarnPoints: Bool = false {
+        didSet {
+            if isLoadingGetEarnPoints, !didStartLoading {
+                didStartLoading = true
+            }
+            isLoadingDidChange()
+        }
+    }
+    
+    private var isLoadingGetBurnPoints: Bool = false {
+        didSet {
+            if isLoadingGetBurnPoints, !didStartLoading {
+                didStartLoading = true
+            }
+            isLoadingDidChange()
+        }
+    }
+    
     private var getBurnAmountError: KarhooError? {
         didSet {
             didSetLoyaltyError(getBurnAmountError)
         }
     }
+    
     private var getEarnAmountError: KarhooError? {
         didSet {
             didSetLoyaltyError(getEarnAmountError)
+        }
+    }
+    
+    private var getStatusError: KarhooError? {
+        didSet {
+            didSetLoyaltyError(getStatusError)
         }
     }
     
@@ -74,19 +116,18 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return
         }
         
-        delegate?.didStartLoading()
-        
+        isLoadingStatus = true
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
+            self?.isLoadingStatus = false
+            
             guard let status = result.successValue()
             else {
-                self?.delegate?.didEndLoading()
-                self?.hideLoyaltyComponent()
-                #if DEBUG
-                print("Hiding loyalty component due to server error")
-                #endif
+                self?.getStatusError = result.errorValue()
+                self?.updateUI()
                 return
             }
             
+            self?.getStatusError = nil
             self?.handleGetStatusResponse(status: status)
         }
     }
@@ -118,14 +159,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currencyCode: viewModel.currency
         )
         
-        delegate?.didStartLoading()
+        isLoadingGetEarnPoints = true
         loyaltyService.getLoyaltyEarn(
             identifier: viewModel.loyaltyId,
             currency: viewModel.currency,
             amount: amount,
             burnPoints: 0
         ).execute { [weak self] result in
-            self?.delegate?.didEndLoading()
+            self?.isLoadingGetEarnPoints = false
+            
             guard let value = result.successValue()
             else {
                 let error = result.errorValue()
@@ -154,13 +196,14 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             currencyCode: viewModel.currency
         )
         
-        delegate?.didStartLoading()
+        isLoadingGetBurnPoints = true
         loyaltyService.getLoyaltyBurn(
             identifier: viewModel.loyaltyId,
             currency: viewModel.currency,
             amount: amount
         ).execute { [weak self] result in
-            self?.delegate?.didEndLoading()
+            self?.isLoadingGetBurnPoints = false
+            
             guard let value = result.successValue()
             else {
                 let error = result.errorValue()
@@ -219,7 +262,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .none, .earn, .burn:
             updateUI()
         case .error(_):
-            if getEarnAmountError != nil {
+            if getStatusError != nil {
+                refreshStatus()
+            } else if getEarnAmountError != nil {
                 updateEarnedPoints()
             } else if getBurnAmountError != nil {
                 updateBurnedPoints()
@@ -324,6 +369,14 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     private func hideLoyaltyComponent() {
         presenterDelegate?.togglefeatures(earnOn: false, burnOn: false)
+    }
+    
+    private func isLoadingDidChange() {
+        let isLoading = isLoadingStatus || isLoadingGetEarnPoints || isLoadingGetBurnPoints
+        if !isLoading {
+            didStartLoading = false
+            delegate?.didEndLoading()
+        }
     }
     
     // MARK: - Pre-Auth
