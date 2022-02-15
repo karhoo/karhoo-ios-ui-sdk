@@ -5,6 +5,7 @@
 //  Created by Diana Petrea on 05.01.2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
+// swiftlint:disable comment_spacing nesting
 
 import Foundation
 
@@ -107,6 +108,9 @@ public struct UIConstants {
             
             /// 1.25
             public static let largeWidth: CGFloat = 1.25
+
+            /// 2
+            public static let xLargeWidth: CGFloat = 2
         }
         
         public struct SafeArea {
@@ -181,6 +185,9 @@ public struct UIConstants {
     }
     
     public struct CornerRadius {
+        /// 2
+        public static let xSmall: CGFloat = 2
+
         /// 4
         public static let small: CGFloat = 4 //3...5
         
