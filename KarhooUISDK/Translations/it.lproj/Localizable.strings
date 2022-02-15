@@ -334,14 +334,14 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Si è verificato un errore";
 
-"Text.Error.UnkownLoyaltyError" = "C'è stato un errore. Per guadagnare o utilizzare i tuoi punti, riprova più tardi.";
+"Text.Error.UnkownLoyaltyError" = "C'è stato un errore. Per guadagnare o utilizzare i tuoi punti fedeltà, riprova più tardi.";
 
-"Text.Error.UnsupportedCurrency" = "La valuta non è ancora supportata";
+"Text.Error.UnsupportedCurrency" = "C'è stato un errore. La valuta non è supportata";
 
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Problema con l'inizializzazione dei pagamenti, contatta l'assistenza";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Il tuo saldo punti è insufficiente";
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Il tuo saldo punti non è sufficiente per pagare questa corsa";
 
 "Text.Errors.InvalidPhoneNumber" = "Numero di telefono invalido";
 

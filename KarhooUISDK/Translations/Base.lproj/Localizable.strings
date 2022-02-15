@@ -334,14 +334,14 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Something went wrong";
 
-"Text.Error.UnkownLoyaltyError" = "An error has occured. To earn or use your points please try again later.";
+"Text.Error.UnkownLoyaltyError" = "An error has occurred. To earn or use your loyalty points please try again later.";
 
-"Text.Error.UnsupportedCurrency" = "The currency is not supported yet";
+"Text.Error.UnsupportedCurrency" = "An error has occurred. The currency is not supported";
 
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Issue with initialising payments, please contact support";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your points balance is insufficient";
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your balance is not sufficient to pay for this ride";
 
 "Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
