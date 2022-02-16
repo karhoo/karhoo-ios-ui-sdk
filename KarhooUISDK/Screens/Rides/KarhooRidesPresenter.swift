@@ -19,13 +19,16 @@ public final class KarhooRidesPresenter: RidesPresenter {
     private let completionHandler: ScreenResultCallback<RidesListAction>
     private weak var view: RidesView?
     private let analytics: Analytics
+    private let phoneCaller: PhoneNumberCallerProtocol
     private var pages: [RidesListView]?
 
     public init(
         analytics: Analytics? = nil,
+        phoneCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
         completion: @escaping ScreenResultCallback<RidesListAction>
     ) {
         self.completionHandler = completion
+        self.phoneCaller = phoneCaller
         self.analytics = analytics ?? KarhooUISDKConfigurationProvider.configuration.analytics()
     }
 
@@ -69,12 +72,12 @@ public final class KarhooRidesPresenter: RidesPresenter {
 
     func contactFleet(_ trip: TripInfo, number: String) {
         analytics.contactFleetClicked(page: .upcomingRides, tripDetails: trip)
-        PhoneNumberCaller().call(number: number)
+        phoneCaller.call(number: number)
     }
     
     func contactDriver(_ trip: TripInfo, number: String) {
         analytics.contactDriverClicked(page: .upcomingRides, tripDetails: trip)
-        PhoneNumberCaller().call(number: number)
+        phoneCaller.call(number: number)
     }
 
     private func setUpPages() {
