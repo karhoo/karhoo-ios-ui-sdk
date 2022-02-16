@@ -15,7 +15,7 @@ enum KarhooTextInputViewState {
         case .inactive:
             return KarhooUI.colors.lightGrey
         case .active:
-            return KarhooUI.colors.primary
+            return KarhooUI.colors.secondary
         case .error:
             return .red
         }
