@@ -409,21 +409,21 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     }
     
     /**
-     * When: SDK `shouldRequireExplicitTermsAndConditionsAcceptance` configuration is default
+     * When: SDK `isExplicitTermsAndConditionsConsentRequired` configuration is default
      * Then: Presenter should return false
      */
-    func testIsExplicitTermsConditionsAcceptanceRequiredDefaultValueIsFalse() {
+    func testIsExplicitTermsAndConditionsConsentRequiredDefaultValueIsFalse() {
         let isRequired = testObject.shouldRequireExplicitTermsAndConditionsAcceptance()
         
         XCTAssertFalse(isRequired)
     }
 
     /**
-     * When: SDK `shouldRequireExplicitTermsAndConditionsAcceptance` configuration is set to true
+     * When: SDK `isExplicitTermsAndConditionsConsentRequired` configuration is set to true
      * Then: Presenter should return true
      */
-    func testIsExplicitTermsConditionsAcceptanceRequiredOverridenValueIsTrue() {
-        KarhooTestConfiguration.isExplicitTermsAndConfitionsAprovalRequired = true
+    func testIsExplicitTermsAndConditionsConsentRequiredOverridenValueIsTrue() {
+        KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
         
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
@@ -462,7 +462,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
     private func loadTestObject(configuration: AuthenticationMethod = .karhooUser) {
         KarhooTestConfiguration.authenticationMethod = configuration
-        KarhooTestConfiguration.isExplicitTermsAndConfitionsAprovalRequired = false
+        KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = false
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
             bookingDetails: testBookingDetails,
