@@ -62,6 +62,7 @@ public enum UITexts {
         public static let commentOptional = "Text.Generic.Comment.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
         public static let locale = "Text.Generic.Locale".localized
+        public static let or = "Text.Generic.Or".localized
         public static let checked = "Text.Generic.Checked".localized
         public static let unchecked = "Text.Generic.Unchecked".localized
     }
@@ -116,6 +117,7 @@ public enum UITexts {
         public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
         public static let insufficientBalanceForLoyaltyBurning = "Text.Errors.InsufficientBalanceForLoyaltyBurning".localized
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
+        public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
     }
 
     /* Payment Error */
@@ -402,8 +404,10 @@ public enum UITexts {
     
     public enum Loyalty {
         static let title = "Text.Loyalty.Title".localized
+        static let burnTitle = "Text.Loyalty.BurnTitle".localized
         static let pointsEarnedForTrip = "Text.Loyalty.PointsEarnedForTrip".localized
-        static let pointsBurnedForTrip = "Text.Loyalty.PointsBurnedForTrip".localized
+        static let burnOnSubtitle = "Text.Loyalty.BurnOnSubtitle".localized
+        static let burnOffSubtitle = "Text.Loyalty.BurnOffSubtitle".localized
         static let info = "Text.Loyalty.Info".localized
         static let noAllowedToBurnPoints = "Text.Loyalty.BurnNotAllowed".localized
         static let balanceTitle = "Text.Loyalty.BalanceTitle".localized
