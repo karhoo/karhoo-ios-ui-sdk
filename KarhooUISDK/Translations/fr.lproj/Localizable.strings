@@ -334,14 +334,14 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Une erreur est survenue";
 
-"Text.Error.UnkownLoyaltyError" = "Une erreur s’est produite. Pour gagner ou utiliser vos points, veuillez réessayer plus tard.";
+"Text.Error.UnkownLoyaltyError" = "Une erreur s’est produite. Pour gagner ou utiliser vos points de fidélité, veuillez réessayer plus tard.";
 
-"Text.Error.UnsupportedCurrency" = "La devise n’est pas encore prise en charge";
+"Text.Error.UnsupportedCurrency" = "Une erreur est survenue. La devise n'est pas prise en charge";
 
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Erreur d'initialisation du processus de paiement. Veuillez réessayer.";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Votre solde de points est insuffisant";
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Votre solde de points n'est pas suffisant pour payer ce trajet";
 
 "Text.Errors.InvalidPhoneNumber" = "Numéro de portable non valide";
 

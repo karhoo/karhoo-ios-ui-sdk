@@ -119,11 +119,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
-        button.tintColor = KarhooUI.colors.darkGrey
+        button.tintColor = KarhooUI.colors.text
         button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
-        button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        button.setTitleColor(KarhooUI.colors.text, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: smallSpacing, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -153,7 +153,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.primaryTextColor
+        cancellationInfo.textColor = KarhooUI.colors.text
         cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
@@ -227,7 +227,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
         )
         loyaltyView = KarhooLoyaltyView()
-        loyaltyView.set(delegate: self)
+        loyaltyView.delegate = self
         setUpView()
     }
     
@@ -496,14 +496,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     private func enableUserInteraction() {
         backButton.isUserInteractionEnabled = true
-        backButton.tintColor = KarhooUI.colors.darkGrey
+        backButton.tintColor = KarhooUI.colors.text
     }
-
+    
     private func disableUserInteraction() {
         backButton.isUserInteractionEnabled = false
         backButton.tintColor = KarhooUI.colors.medGrey
     }
-
+    
     private func initialisePassengerDetails() -> PassengerDetails? {
         if PassengerInfo.shared.getDetails() == nil {
             return PassengerInfo.shared.currentUserAsPassenger()

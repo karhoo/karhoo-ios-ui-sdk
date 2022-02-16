@@ -334,14 +334,14 @@
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Er is een fout opgetreden";
 
-"Text.Error.UnkownLoyaltyError" = "Er is een fout opgetreden. Probeer het later opnieuw om punten te verdienen of te gebruiken.";
+"Text.Error.UnkownLoyaltyError" = "Er is een fout opgetreden. Probeer het later opnieuw om loyaliteitspunten te verdienen of te gebruiken.";
 
-"Text.Error.UnsupportedCurrency" = "De valuta wordt nog niet ondersteund";
+"Text.Error.UnsupportedCurrency" = "Er is een fout opgetreden. De valuta wordt niet ondersteund";
 
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Probleem met het initialiseren van betalingen, neem contact op met de helpdesk";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Uw puntensaldo is onvoldoende";
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Uw puntensaldo is niet voldoende om deze rit te betalen";
 
 "Text.Errors.InvalidPhoneNumber" = "Ongeldig telefoonnummer";
 
