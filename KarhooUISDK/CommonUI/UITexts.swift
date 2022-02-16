@@ -118,6 +118,7 @@ public enum UITexts {
         public static let insufficientBalanceForLoyaltyBurning = "Text.Errors.InsufficientBalanceForLoyaltyBurning".localized
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
         public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
+        public static let loyaltyModeNotEligibleForPreAuth = "Text.Error.LoyaltyModeNotEligibleForPreAuth".localized
     }
 
     /* Payment Error */

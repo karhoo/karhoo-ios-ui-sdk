@@ -386,7 +386,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         else {
             return false
         }
-        
+
         switch currentMode {
         case .earn:
             return viewModel.canEarn
@@ -400,7 +400,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         if  !currentMode.isEligibleForPreAuth {
-            completion(.success(result: LoyaltyNonce(loyaltyNonce: "")))
+            // Loyalty related web-services return slug based errors, not error code based ones
+            // this error does not coincide with any error returned by the backend
+            let error =  ErrorModel(message: UITexts.Errors.loyaltyModeNotEligibleForPreAuth, code: "KP005")
+            completion(.failure(error: error))
             return
         }
         
