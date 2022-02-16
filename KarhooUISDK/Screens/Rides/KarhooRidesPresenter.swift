@@ -18,10 +18,18 @@ public final class KarhooRidesPresenter: RidesPresenter {
 
     private let completionHandler: ScreenResultCallback<RidesListAction>
     private weak var view: RidesView?
+    private let analytics: Analytics
+    private let phoneCaller: PhoneNumberCallerProtocol
     private var pages: [RidesListView]?
 
-    public init(completion: @escaping ScreenResultCallback<RidesListAction>) {
-        completionHandler = completion
+    public init(
+        analytics: Analytics? = nil,
+        phoneCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
+        completion: @escaping ScreenResultCallback<RidesListAction>
+    ) {
+        self.completionHandler = completion
+        self.phoneCaller = phoneCaller
+        self.analytics = analytics ?? KarhooUISDKConfigurationProvider.configuration.analytics()
     }
 
     public func didPressClose() {
@@ -32,6 +40,7 @@ public final class KarhooRidesPresenter: RidesPresenter {
         self.view = view
         setUpPages()
         view.set(title: UITexts.Generic.rides)
+        analytics.upcomingTripsOpened()
     }
 
     func set(pages: [RidesListView]) {
@@ -40,6 +49,7 @@ public final class KarhooRidesPresenter: RidesPresenter {
 
     func didPressTrackTrip(trip: TripInfo) {
         finishWithResult(.completed(result: .trackTrip(trip: trip)))
+        analytics.trackTripClicked(tripDetails: trip)
     }
 
     func didPressRebookTrip(trip: TripInfo) {
@@ -53,9 +63,21 @@ public final class KarhooRidesPresenter: RidesPresenter {
     func didSwitchToPage(index: Int) {
         if index == 0 {
             view?.moveTabToUpcomingBookings()
+            analytics.upcomingTripsOpened()
             return
         }
         view?.moveTabToPastBookings()
+        analytics.pastTripsOpened()
+    }
+
+    func contactFleet(_ trip: TripInfo, number: String) {
+        analytics.contactFleetClicked(page: .upcomingRides, tripDetails: trip)
+        phoneCaller.call(number: number)
+    }
+    
+    func contactDriver(_ trip: TripInfo, number: String) {
+        analytics.contactDriverClicked(page: .upcomingRides, tripDetails: trip)
+        phoneCaller.call(number: number)
     }
 
     private func setUpPages() {

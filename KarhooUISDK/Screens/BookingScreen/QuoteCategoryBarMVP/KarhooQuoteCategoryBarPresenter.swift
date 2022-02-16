@@ -18,7 +18,7 @@ final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
     private var lastQuotesListId: String?
     private var categories: [QuoteCategory] = []
 
-    init(analytics: Analytics = KarhooAnalytics(),
+    init(analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          view: QuoteCategoryBarView) {
         self.analytics = analytics

@@ -230,6 +230,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         loyaltyView.delegate = self
         setUpView()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.screenWillAppear()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

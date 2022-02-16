@@ -31,4 +31,14 @@ final class MockRidesListActions: RidesListActions {
     func didCancelTrip(_ trip: TripInfo) {
         cancelledTrip = trip
     }
+
+    private(set) var contactFleetCalled: TripInfo?
+    func contactFleet(_ trip: TripInfo, number: String) {
+        contactFleetCalled = trip
+    }
+
+    private(set) var contactDriverCalled: TripInfo?
+    func contactDriver(_ trip: TripInfo, number: String) {
+        contactDriverCalled = trip
+    }
 }

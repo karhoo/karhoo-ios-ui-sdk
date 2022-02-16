@@ -33,7 +33,7 @@ final class KarhooAddressPresenter: AddressPresenter {
          searchProvider: AddressSearchProvider = KarhooAddressSearchProvider(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressService: AddressService = Karhoo.getAddressService(),
-         analytics: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          recentAddressProvider: RecentAddressProvider = KarhooRecentAddressProvider(),
          searchDelay: Double = 0.5,
          locationService: LocationService = KarhooLocationService()) {

@@ -47,21 +47,33 @@ final class RideCellStackButtonPresenter {
     }
 
     private func setupTrackAndContactDriverState(driverNumber: String) {
-        view.set(firstButtonText: UITexts.Bookings.contactDriver, firstButtonAction: {
-            PhoneNumberCaller().call(number: driverNumber)
-        },
-        secondButtonText: UITexts.Bookings.trackDriver, secondButtonAction: { [weak self] in
-            self?.trackTripPressed()
-        })
+        view.set(
+            firstButtonText: UITexts.Bookings.contactDriver,
+            firstButtonAction: { [weak self] in
+                self?.contactDriverPressed(driverNumber: driverNumber)
+            },
+            secondButtonText: UITexts.Bookings.trackDriver,
+            secondButtonAction: { [weak self] in
+                self?.trackTripPressed()
+            }
+        )
     }
 
     private func setupPreDriverAllocationState(supplierNumber: String) {
-        view.set(buttonText: UITexts.Bookings.contactFleet, action: {
-            PhoneNumberCaller().call(number: supplierNumber)
-        })
+        view.set(
+            buttonText: UITexts.Bookings.contactFleet,
+            action: { [weak self] in
+                guard let self = self else { return }
+                self.rideCellStackButtonActions.contactFleet(self.trip, number: supplierNumber)
+            }
+        )
     }
 
     private func trackTripPressed() {
         rideCellStackButtonActions.track(self.trip)
+    }
+
+    private func contactDriverPressed(driverNumber: String) {
+        rideCellStackButtonActions.contactDriver(self.trip, number: driverNumber)
     }
 }

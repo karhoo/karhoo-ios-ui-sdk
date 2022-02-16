@@ -324,6 +324,14 @@ final class KarhooTripViewController: UIViewController, TripView {
 }
 
 extension KarhooTripViewController: TripScreenDetailsActions {
+    func contactDriver(_ phoneNumber: String) {
+        presenter.contactDriver(phoneNumber)
+    }
+    
+    func contactFleet(_ phoneNumber: String) {
+        presenter.contactFleet(phoneNumber)
+    }
+    
     func cancelTrip() {
         presenter.cancelBookingPressed()
     }
