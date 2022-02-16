@@ -180,10 +180,6 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         fatalError("init(code:) has not been implemented")
     }
     
-    deinit {
-        keyboardSizeProvider.remove(listener: self)
-    }
-    
     private func setUpView() {
         view = UIView()
         view.backgroundColor = UIColor.white
@@ -250,6 +246,11 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         keyboardSizeProvider.register(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboardSizeProvider.remove(listener: self)
     }
     
     // MARK: - Actions
