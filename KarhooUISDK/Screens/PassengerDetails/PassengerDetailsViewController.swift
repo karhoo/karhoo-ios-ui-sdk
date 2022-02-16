@@ -316,7 +316,6 @@ extension PassengerDetailsViewController: PassengerDetailsActions {
 
 extension PassengerDetailsViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
-        goToNextInputField(startingIdentifier: identifier)
         updateDoneButtonEnabled()
     }
     
@@ -341,17 +340,7 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
         
         return validSet.count
     }
-    
-    private func goToNextInputField(startingIdentifier: String) {
-        for (index, inputView) in inputViews.enumerated() {
-            if shouldMoveToNextInputViewOnReturn,
-               inputView.accessibilityIdentifier == startingIdentifier,
-               index != inputViews.count - 1 {
-                inputViews[index + 1].setActive()
-            }
-        }
-    }
-    
+
     private func updateDoneButtonEnabled() {
         let validCount = getValidInputViewCount()
         passengerDetailsValid(validCount == inputViews.count)
