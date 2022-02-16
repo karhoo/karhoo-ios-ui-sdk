@@ -88,7 +88,7 @@ final class KarhooTripPresenter: TripPresenter,
         tripTrackingObservable = observable
         tripTrackingObserver = observer
 
-        analyticsScreenOpened()
+        reportScreenOpened()
     }
 
     func cancelBookingPressed() {
@@ -272,7 +272,7 @@ final class KarhooTripPresenter: TripPresenter,
 
     // MARK: - Analytics
 
-    private func analyticsScreenOpened() {
+    private func reportScreenOpened() {
         analytics.trackTripOpened(
             tripDetails: trip,
             isGuest: Karhoo.configuration.authenticationMethod().isGuest()

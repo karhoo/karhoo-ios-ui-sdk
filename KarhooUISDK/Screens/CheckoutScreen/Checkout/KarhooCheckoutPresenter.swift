@@ -93,7 +93,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func screenWillAppear() {
-        analyticsScreenOpened()
+        reportScreenOpened()
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -529,7 +529,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     // MARK: - Analytics
 
-    private func analyticsScreenOpened() {
+    private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
     }
 
