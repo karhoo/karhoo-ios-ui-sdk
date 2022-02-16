@@ -107,7 +107,7 @@
 
 "MEET_AND_GREET" = "Treffen und Begrüßung";
 
-"MPV" = "";
+"MPV" = "Großraum";
 
 /* Qxxxx errors */
 "Q0001" = "Abholort und Zielort können nicht identisch sein.";
@@ -314,6 +314,8 @@
 
 /* When fetching the user profile fails */
 "Text.Error.GetUserFails" = "Es gab ein Problem beim Abrufen Ihres Profils.";
+
+"Text.Error.LoyaltyModeNotEligibleForPreAuth" = "Der derzeitige Treuemodus kommt nicht für eine Vorabgenehmigung in Frage";
 
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Ups, da ist etwas schief gelaufen. Bitte versuchen Sie es erneut.";
