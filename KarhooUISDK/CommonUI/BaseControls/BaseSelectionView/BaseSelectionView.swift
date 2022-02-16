@@ -117,7 +117,7 @@ public class BaseSelectionView: UIView {
     private func updateViewType() {
         switch viewType {
         case .mapDropOff, .mapPickUp:
-            tintColor = (viewType == .mapDropOff) ? KarhooUI.colors.primary : KarhooUI.colors.secondary
+            tintColor = (viewType == .mapDropOff) ? KarhooUI.colors.secondary : KarhooUI.colors.primary
             thumbnailImage.image = UIImage.uisdkImage("pin_background_icon")
             foregroundThumbnailImage.image = UIImage.uisdkImage(viewType.rawValue)
         case .currentLocation:

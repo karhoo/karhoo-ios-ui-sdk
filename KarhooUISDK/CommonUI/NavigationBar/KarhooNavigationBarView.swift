@@ -52,7 +52,7 @@ final class KarhooNavigationBarView: UIView, NavigationBarView {
         leftButton = UIButton(type: .custom)
         leftButton.translatesAutoresizingMaskIntoConstraints = false
         leftButton.accessibilityIdentifier = KHNavigationBarID.leftButton
-        leftButton.tintColor = KarhooUI.colors.secondary
+        leftButton.tintColor = KarhooUI.colors.text
         leftButton.imageView?.contentMode = .scaleAspectFit
         leftButton.touchAreaEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         leftButton.addTarget(self, action: #selector(leftButtonPressed), for: .touchUpInside)

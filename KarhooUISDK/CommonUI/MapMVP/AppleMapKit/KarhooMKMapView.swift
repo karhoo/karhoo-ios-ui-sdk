@@ -54,7 +54,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         backgroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
         backgroundCenterIcon.isAccessibilityElement = true
-        backgroundCenterIcon.tintColor = KarhooUI.colors.secondary
+        backgroundCenterIcon.tintColor = KarhooUI.colors.primary
         focusButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
 
         addSubview(mapView)

@@ -69,7 +69,7 @@ final class RideCell: UITableViewCell {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = "cancellationInfo_label"
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.accent
+        cancellationInfo.textColor = KarhooUI.colors.text
         cancellationInfo.numberOfLines = 0
 
         cancellationInfoContainer.addSubview(cancellationInfo)
