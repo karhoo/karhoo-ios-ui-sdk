@@ -24,6 +24,8 @@ final class RideCell: UITableViewCell {
     private var trip: TripInfo?
     private var presenter: RideCellStackButtonPresenter?
     private var trackTripCallback: ((TripInfo) -> Void)?
+    private var contactFleetCallback: ((TripInfo, String) -> Void)?
+    private var contactDriverCallback: ((TripInfo, String) -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -103,13 +105,19 @@ final class RideCell: UITableViewCell {
         trackTripCallback = nil
         containerView.layer.shadowPath = nil
     }
-
-    func set(viewModel: RideCellViewModel,
-             tripDetailsViewModel: TripDetailsViewModel,
-             accessibilityIdentifier: String,
-             trackTripCallback: @escaping (TripInfo) -> Void) {
+    
+    func set(
+        viewModel: RideCellViewModel,
+        tripDetailsViewModel: TripDetailsViewModel,
+        accessibilityIdentifier: String,
+        trackTripCallback: @escaping (TripInfo) -> Void,
+        contactFleetCallback: @escaping (TripInfo, String) -> Void,
+        contactDriverCallback: @escaping (TripInfo, String) -> Void
+    ) {
         self.accessibilityIdentifier = accessibilityIdentifier
         self.trackTripCallback = trackTripCallback
+        self.contactFleetCallback = contactFleetCallback
+        self.contactDriverCallback = contactDriverCallback
         tripStatus.setPrice(viewModel.price)
         tripStatus.setStatusTitle(viewModel.tripState)
         tripStatus.setStatusTitleColor(viewModel.tripStateColor)
@@ -149,6 +157,14 @@ extension RideCell: RideCellStackButtonActions {
 
     func track(_ trip: TripInfo) {
         trackTripCallback?(trip)
+    }
+
+    func contactFleet(_ trip: TripInfo, number: String) {
+        contactFleetCallback?(trip, number)
+    }
+
+    func contactDriver(_ trip: TripInfo, number: String) {
+        contactDriverCallback?(trip, number)
     }
 }
 

@@ -43,7 +43,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
-        analytics: Analytics = KarhooAnalytics(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
@@ -90,6 +90,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
+    }
+
+    func screenWillAppear() {
+        reportScreenOpened()
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -278,7 +282,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
-
+        
         if isLoyaltyEnabled(),
             let view = self.view {
             
@@ -319,7 +323,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
             tripBooking.meta["trip_id"] = paymentNonce
         }
-        
+
+        reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
 
@@ -336,7 +341,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         guard let trip = result.successValue() else {
             view?.setDefaultState()
-
+            reportPaymentFailure(result.errorValue()?.message ?? "")
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
                 view?.retryAddPaymentMethod(showRetryAlert: true)
             } else {
@@ -347,18 +352,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        analytics.bookingRequested(
-            tripDetails: trip,
-            outboundTripId: nil
-        )
-            
+        reportPaymentSuccess()
         view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
+            reportPaymentSuccess()
             callback(.completed(result: trip))
         } else if let error = result.errorValue() {
+            reportPaymentFailure(error.message)
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
     }
@@ -484,7 +487,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
-        sdkConfiguration.isExplicitTermsAndConfitionsAprovalRequired
+        sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
     
     private func setUpBookingButtonState() {
@@ -522,6 +525,27 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             message: UITexts.PaymentError.noDetailsMessage,
             error: nil
         )
+    }
+    
+    // MARK: - Analytics
+
+    private func reportScreenOpened() {
+        analytics.checkoutOpened(quote)
+    }
+
+    private func reportBookingEvent() {
+        guard let trip = trip else {
+            return
+        }
+        analytics.bookingRequested(tripDetails: trip)
+    }
+
+    private func reportPaymentSuccess() {
+        analytics.paymentSucceed()
+    }
+
+    private func reportPaymentFailure(_ message: String) {
+        analytics.paymentFailed(message)
     }
 }
 

@@ -15,7 +15,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConfitionsAprovalRequired: Bool = false
 
-    var isExplicitTermsAndConfitionsAprovalRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }
+    var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }
 
     func environment() -> KarhooEnvironment {
         return KarhooConfig.environment

@@ -10,6 +10,7 @@ import KarhooSDK
 
 protocol CheckoutPresenter {
     func load(view: CheckoutView)
+    func screenWillAppear()
     func bookTripPressed()
     func addOrEditPassengerDetails()
     func addMoreDetails()

@@ -59,7 +59,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         KarhooBookingPresenter(
             bookingStatus: mockBookingStatus,
             userService: mockUserService,
-            analyticsProvider: mockAppAnalytics,
+            analytics: mockAppAnalytics,
             phoneNumberCaller: mockPhoneNumberCaller,
             callback: callback,
             tripScreenBuilder: mockTripScreenBuilder,
@@ -81,11 +81,13 @@ final class KarhooBookingPresenterSpec: XCTestCase {
     /**
       * When: View appears
       * Then: map padding should be set
+      * And: The analytics event should be triggered
       */
     func testViewAppears() {
         testObject.viewWillAppear()
         
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
+        XCTAssertTrue(mockAppAnalytics.bookingScreenOpenedCalled)
     }
 
     /**
@@ -599,5 +601,14 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertEqual(mockBookingView.actionAlertMessage, UITexts.Trip.trackTripAlertMessage)
         XCTAssertEqual(mockBookingView.alertActions[0].action.title, UITexts.Trip.trackTripAlertDismissAction)
         XCTAssertEqual(mockBookingView.alertActions[1].action.title, UITexts.Trip.trackTripAlertAction)
+    }
+
+    /**
+     * When: Booking screen is opened
+     * Then: Analytics event should be triggered
+     */
+    func testWhenBookingOpensProperAnalyticsEventIsTriggered() {
+        mockBookingView.loadViewIfNeeded()
+        
     }
 }

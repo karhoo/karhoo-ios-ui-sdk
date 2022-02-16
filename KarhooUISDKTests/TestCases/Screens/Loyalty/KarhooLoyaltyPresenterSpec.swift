@@ -22,9 +22,9 @@ class KarhooLoyaltyPresenterSpec: XCTestCase {
         
         mockView = MockLoyaltyView()
         testObject = KarhooLoyaltyPresenter()
-        testObject.set(view: mockView)
         mockDelegate = MockLoyaltyViewDelegate()
         testObject.delegate = mockDelegate
+        testObject.presenterDelegate = mockView
     }
     
     /**

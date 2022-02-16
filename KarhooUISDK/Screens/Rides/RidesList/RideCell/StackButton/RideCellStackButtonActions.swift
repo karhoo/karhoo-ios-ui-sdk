@@ -11,4 +11,6 @@ import KarhooSDK
 protocol RideCellStackButtonActions {
 
     func track(_ trip: TripInfo)
+    func contactFleet(_ trip: TripInfo, number: String)
+    func contactDriver(_ trip: TripInfo, number: String)
 }

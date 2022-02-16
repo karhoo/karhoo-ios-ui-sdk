@@ -181,6 +181,14 @@ extension RideDetailsViewController: RideDetailsStackButtonActions {
                   message: UITexts.Generic.noMailSetUpMessage,
                   error: nil)
     }
+
+    func contactFleet(_ phoneNumber: String) {
+        presenter.didPressContactFleet(phoneNumber)
+    }
+
+    func contactDriver(_ phoneNumber: String) {
+        presenter.didPressContactDriver(phoneNumber)
+    }
 }
 
 extension RideDetailsViewController: TripMetaDataActions {

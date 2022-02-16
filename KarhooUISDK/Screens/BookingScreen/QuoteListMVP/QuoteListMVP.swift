@@ -41,6 +41,8 @@ public protocol QuoteListView: UIViewController {
 
 protocol QuoteListPresenter {
 
+    func screenWillAppear()
+
     func selectedQuoteCategory(_ category: QuoteCategory)
 
     func didSelectQuoteOrder(_ order: QuoteSortOrder)
