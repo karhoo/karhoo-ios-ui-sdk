@@ -487,7 +487,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
-        sdkConfiguration.isExplicitTermsAndConfitionsAprovalRequired
+        sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
     
     private func setUpBookingButtonState() {

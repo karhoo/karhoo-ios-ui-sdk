@@ -13,7 +13,7 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
 
     func analytics() -> Analytics
 
-    var isExplicitTermsAndConfitionsAprovalRequired: Bool { get }
+    var isExplicitTermsAndConditionsConsentRequired: Bool { get }
 
     var bookingMetadata: [String: Any]? { get }
 }
@@ -26,7 +26,7 @@ public extension KarhooUISDKConfiguration {
         KarhooAnalytics()
     }
 
-    var isExplicitTermsAndConfitionsAprovalRequired: Bool { false }
+    var isExplicitTermsAndConditionsConsentRequired: Bool { false }
     
     var bookingMetadata: [String: Any]? { nil }
 }
