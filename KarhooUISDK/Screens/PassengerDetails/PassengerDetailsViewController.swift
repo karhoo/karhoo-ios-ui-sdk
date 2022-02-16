@@ -66,7 +66,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         scrollView.accessibilityIdentifier = KHPassengerDetailsViewID.scrollView
         return scrollView
     }()
-    
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,10 +180,6 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         fatalError("init(code:) has not been implemented")
     }
     
-    deinit {
-        keyboardSizeProvider.remove(listener: self)
-    }
-    
     private func setUpView() {
         view = UIView()
         view.backgroundColor = UIColor.white
@@ -244,8 +240,17 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardSizeProvider.register(listener: self)
         forceLightMode()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboardSizeProvider.register(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboardSizeProvider.remove(listener: self)
     }
     
     // MARK: - Actions
@@ -357,9 +362,13 @@ extension PassengerDetailsViewController: KeyboardListener {
 
     func keyboard(updatedHeight: CGFloat) {
         // This is to stop the animation of the done button's bottom constraint change
-        UIView.animate(withDuration: 0.1, delay: 0, options: []) { [weak self] in
-            self?.doneButtonBottomConstraint.constant = -updatedHeight - (self?.standardSpacing ?? 0.0)
-            self?.view.layoutIfNeeded()
-        }
+        UIView.animate(
+            withDuration: UIConstants.Duration.xShort,
+            animations: { [weak self] in
+                guard let self = self else { return }
+                self.doneButtonBottomConstraint.constant = -updatedHeight - self.standardSpacing
+                self.view.layoutIfNeeded()
+            }
+        )
     }
 }
