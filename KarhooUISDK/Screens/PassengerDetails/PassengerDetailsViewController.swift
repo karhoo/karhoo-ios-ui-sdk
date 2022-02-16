@@ -345,6 +345,23 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
         let validCount = getValidInputViewCount()
         passengerDetailsValid(validCount == inputViews.count)
     }
+
+    private func scrollToActiveInputView() {
+        var firstFocusedView: UIView? {
+            inputViews.first(where: { $0.isFocused })
+        }
+        var firstResponderView: UIView? {
+            inputViews.first(where: { $0.isFirstResponder() })
+        }
+        let activeInputView: UIView? = firstFocusedView ?? firstResponderView
+
+        guard
+            let rectToShow = activeInputView?.bounds,
+            let translatedRect = activeInputView?.convert(rectToShow, to: scrollView)
+        else { return }
+
+        scrollView.scrollRectToVisible(translatedRect, animated: true)
+    }
 }
 
 extension PassengerDetailsViewController: KeyboardListener {
@@ -352,11 +369,14 @@ extension PassengerDetailsViewController: KeyboardListener {
     func keyboard(updatedHeight: CGFloat) {
         // This is to stop the animation of the done button's bottom constraint change
         UIView.animate(
-            withDuration: UIConstants.Duration.xShort,
+            withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
                 guard let self = self else { return }
                 self.doneButtonBottomConstraint.constant = -updatedHeight - self.standardSpacing
                 self.view.layoutIfNeeded()
+            },
+            completion: { [weak self] _ in
+                self?.scrollToActiveInputView()
             }
         )
     }
