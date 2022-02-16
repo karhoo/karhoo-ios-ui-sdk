@@ -315,6 +315,8 @@
 /* When fetching the user profile fails */
 "Text.Error.GetUserFails" = "Impossible de charger le profil d'utilisateur";
 
+"Text.Error.LoyaltyModeNotEligibleForPreAuth" = "Le mode de fidélité actuel n’est pas éligible à la pré-autorisation";
+
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Une erreur est survenue, veuillez réessayer plus tard.";
 
