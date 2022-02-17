@@ -394,7 +394,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             let canProceed = viewModel.canBurn && hasEnoughBalance() && getBurnAmountError == nil
             return canProceed
         default:
-            return false
+            return true
         }
     }
     
