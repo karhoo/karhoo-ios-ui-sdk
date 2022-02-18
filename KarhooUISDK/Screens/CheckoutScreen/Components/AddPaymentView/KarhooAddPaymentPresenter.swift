@@ -70,7 +70,5 @@ final class KarhooAddPaymentPresenter: AddPaymentPresenter {
 
 extension KarhooAddPaymentPresenter: UserStateObserver {
 
-    func userStateUpdated(user: UserInfo?) {
-        displayAvailablePaymentMethod()
-    }
+    func userStateUpdated(user: UserInfo?) { }
 }
