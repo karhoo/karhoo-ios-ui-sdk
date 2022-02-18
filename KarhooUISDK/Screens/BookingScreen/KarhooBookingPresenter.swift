@@ -14,7 +14,7 @@ final class KarhooBookingPresenter {
     private weak var view: BookingView?
     private let bookingStatus: BookingStatus
     private let userService: UserService
-    private let analyticsProvider: Analytics
+    private let analytics: Analytics
     private let phoneNumberCaller: PhoneNumberCallerProtocol
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
@@ -31,7 +31,7 @@ final class KarhooBookingPresenter {
     // MARK: - Init
     init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
          userService: UserService = Karhoo.getUserService(),
-         analyticsProvider: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          callback: ScreenResultCallback<BookingScreenResult>? = nil,
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
@@ -45,7 +45,7 @@ final class KarhooBookingPresenter {
          urlOpener: URLOpener = KarhooURLOpener(),
          paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
-        self.analyticsProvider = analyticsProvider
+        self.analytics = analytics
         self.bookingStatus = bookingStatus
         self.phoneNumberCaller = phoneNumberCaller
         self.callback = callback
@@ -70,20 +70,26 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Checkout
-    private func showCheckoutView(quote: Quote,
-                                  bookingDetails: BookingDetails,
-                                  bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata) {
+    private func showCheckoutView(
+        quote: Quote,
+        bookingDetails: BookingDetails,
+        bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
+    ) {
         let checkoutView = checkoutScreenBuilder
-            .buildCheckoutScreen(quote: quote,
-                                 bookingDetails: bookingDetails,
-                                 bookingMetadata: bookingMetadata,
-                                 callback: { [weak self] result in
-                                    self?.view?.presentedViewController?.dismiss(animated: false, completion: {
-                                            self?.bookingRequestCompleted(result: result,
-                                                                          quote: quote,
-                                                                          details: bookingDetails)
-                                    })
-            })
+            .buildCheckoutScreen(
+                quote: quote,
+                bookingDetails: bookingDetails,
+                bookingMetadata: bookingMetadata,
+                callback: { [weak self] result in
+                    self?.view?.dismiss(animated: false, completion: {
+                        self?.bookingRequestCompleted(
+                            result: result,
+                            quote: quote,
+                            details: bookingDetails
+                        )
+                    })
+                }
+            )
 
         view?.showAsOverlay(item: checkoutView, animated: false)
     }
@@ -179,6 +185,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     func viewWillAppear() {
         setViewMapPadding()
+        analytics.bookingScreenOpened()
     }
 
     func exitPressed() {
@@ -308,7 +315,6 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         showCheckoutView(quote: quote, bookingDetails: bookingDetails)
     }
-
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: BookingDetails) {

@@ -49,7 +49,7 @@ final class RideDetailsStackButtonPresenterSpec: XCTestCase {
         
         mockStackButtonView.secondButtonAction?()
         
-        XCTAssertEqual(mockPhoneNumberCaller.numberCalled, tripThatCanBeCancelled.vehicle.driver.phoneNumber)
+        XCTAssertTrue(mockRideDetailsStackButtonActions.contactDriverCalled)
     }
     
     /**
@@ -75,7 +75,7 @@ final class RideDetailsStackButtonPresenterSpec: XCTestCase {
         
         mockStackButtonView.secondButtonAction?()
         
-        XCTAssertEqual(mockPhoneNumberCaller.numberCalled, tripThatCanBeCancelled.fleetInfo.phoneNumber)
+        XCTAssertTrue(mockRideDetailsStackButtonActions.contactFleetCalled)
     }
 
     /**

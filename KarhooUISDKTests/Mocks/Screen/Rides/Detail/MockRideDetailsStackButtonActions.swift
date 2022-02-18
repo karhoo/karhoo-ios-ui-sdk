@@ -34,4 +34,14 @@ final class MockRideDetailsStackButtonActions: RideDetailsStackButtonActions {
     func reportIssueError() {
         reportIssueErrorCalled = true
     }
+
+    private(set) var contactFleetCalled = false
+    func contactFleet(_ phoneNumber: String) {
+        contactFleetCalled = true
+    }
+
+    private(set) var contactDriverCalled = false
+    func contactDriver(_ phoneNumber: String) {
+        contactDriverCalled = true
+    }
 }

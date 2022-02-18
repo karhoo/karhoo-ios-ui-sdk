@@ -27,10 +27,10 @@ final class KarhooAddressSearchBarPresenter: AddressSearchBarPresenter {
     private func configureFor(mode: AddressType?) {
         if mode == .pickup {
             addressSearchBar.set(searchPlaceholder: UITexts.AddressBar.enterPickup)
-            addressSearchBar.set(ringColor: KarhooUI.colors.secondary)
+            addressSearchBar.set(ringColor: KarhooUI.colors.primary)
         } else {
             addressSearchBar.set(searchPlaceholder: UITexts.AddressBar.enterDestination)
-            addressSearchBar.set(ringColor: KarhooUI.colors.primary)
+            addressSearchBar.set(ringColor: KarhooUI.colors.secondary)
         }
         
         addressSearchBar.set(maxInputCharacters: 38)

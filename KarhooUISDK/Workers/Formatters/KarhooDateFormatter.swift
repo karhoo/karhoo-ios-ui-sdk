@@ -16,6 +16,7 @@ public protocol DateFormatterType {
     func display(mediumStyleDate date: Date?) -> String
     func display(shortDate date: Date?) -> String
     func display(detailStyleDate date: Date?) -> String
+    func display(fullDate date: Date?) -> String
     func display(clockTime date: Date?) -> String
 }
 
@@ -80,6 +81,17 @@ public class KarhooDateFormatter: DateFormatterType {
 
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .medium
+        dateFormatter.timeZone = timeZone
+        dateFormatter.locale = locale
+        return dateFormatter.string(from: date)
+    }
+
+    public func display(fullDate date: Date?) -> String {
+        guard let date = date else {
+            return ""
+        }
+        dateFormatter.timeStyle = .full
+        dateFormatter.dateStyle = .full
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
         return dateFormatter.string(from: date)

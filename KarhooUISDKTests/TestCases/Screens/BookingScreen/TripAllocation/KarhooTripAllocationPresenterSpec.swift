@@ -69,11 +69,11 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
         XCTAssertEqual(mockTrip.tripId, mockTripService.tripTrackingIdentifierSet)
         XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*2) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + driverAllocationCheckDelay*4) {
             XCTAssertTrue(self.mockTripAllocationView.tripDriverAllocationDelayedCalled)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
@@ -98,7 +98,6 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
 
         XCTAssertEqual(mockTripService.tripCancellationSet?.tripId, mockTrip.tripId)
         XCTAssertEqual(mockTripService.tripCancellationSet?.tripId, mockTrip.tripId)
-        XCTAssertEqual(mockAnalytics.tripCancellationInitiatedCalled!.tripId, mockTrip.tripId)
     }
 
     /**
@@ -167,7 +166,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertEqual(mockTripAllocationView.tripAllocatedCalled!.tripId, newTripUpdate.tripId)
-            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 
@@ -202,7 +201,7 @@ final class KarhooTripAllocationPresenterSpec: XCTestCase {
             mockTripService.trackTripCall.triggerPollSuccess(newTripUpdate)
 
             XCTAssertTrue(mockTripAllocationView.tripCancelledBySystemCalled)
-            XCTAssertTrue(mockTripService.trackTripCall.hasObserver)
+            XCTAssertFalse(mockTripService.trackTripCall.hasObserver)
             XCTAssertTrue(mockTripAllocationView.resetCancelButtonCalled)
             wait(for: [expectation], timeout: 1)
 

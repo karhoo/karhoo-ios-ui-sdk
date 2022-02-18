@@ -90,12 +90,13 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         
         buttonOne = UIButton(type: .custom)
         buttonOne.translatesAutoresizingMaskIntoConstraints = false
+        buttonOne.accessibilityLabel = buttonOneText
         buttonOne.accessibilityIdentifier = KHStackButtonID.buttonOne
         buttonOne.titleLabel?.lineBreakMode = .byWordWrapping
         buttonOne.titleLabel?.textAlignment = .center
         buttonOne.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonOne.addTarget(self, action: #selector(buttonOnePressed), for: .touchUpInside)
-        buttonOne.setTitleColor(.black, for: .normal)
+        buttonOne.setTitleColor(KarhooUI.colors.accent, for: .normal)
         
         buttonTwo = UIButton(type: .custom)
         buttonTwo.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +105,7 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonTwo.titleLabel?.textAlignment = .center
         buttonTwo.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonTwo.addTarget(self, action: #selector(buttonTwoPressed), for: .touchUpInside)
-        buttonTwo.setTitleColor(.black, for: .normal)
+        buttonTwo.setTitleColor(KarhooUI.colors.accent, for: .normal)
         
         separatorLine = LineView(color: .lightGray,
                                  width: 1.0,
@@ -120,12 +121,14 @@ final class KarhooStackButtonView: UIView, StackButtonView {
     var buttonOneText: String? {
         didSet {
             buttonOne?.setTitle(buttonOneText, for: .normal)
+            buttonOne?.accessibilityLabel = buttonOneText
         }
     }
 
     var buttonTwoText: String? {
         didSet {
             buttonTwo?.setTitle(buttonTwoText, for: .normal)
+            buttonTwo?.accessibilityLabel = buttonTwoText
         }
     }
 

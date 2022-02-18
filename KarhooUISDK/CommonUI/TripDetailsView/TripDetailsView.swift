@@ -66,6 +66,7 @@ final class TripDetailsView: UIView {
         addSubview(stackContainer)
         
         detailsContainer = UIView()
+        detailsContainer.isAccessibilityElement = true
         detailsContainer.accessibilityIdentifier = "details_container"
         detailsContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.addArrangedSubview(detailsContainer)
@@ -82,7 +83,7 @@ final class TripDetailsView: UIView {
                                       accessibilityIdentifier: KHTripDetailsViewID.dateLabel)
         detailsContainer.addSubview(dateLabel)
         
-        pickUpDot = buildDot(color: KarhooUI.colors.secondary,
+        pickUpDot = buildDot(color: KarhooUI.colors.primary,
                              accessibilityIdentifier: "pick_up_dot")
         
         pickupLabel = buildGenericLabel(textColor: KarhooUI.colors.darkGrey,
@@ -90,7 +91,7 @@ final class TripDetailsView: UIView {
                                         accessibilityIdentifier: KHTripDetailsViewID.pickupLabel)
         detailsContainer.addSubview(pickupLabel)
         
-        dropOffDot = buildDot(color: KarhooUI.colors.primary,
+        dropOffDot = buildDot(color: KarhooUI.colors.secondary,
                               accessibilityIdentifier: "drop_off_dot")
         
         destinationLabel = buildGenericLabel(textColor: KarhooUI.colors.darkGrey,
@@ -236,6 +237,7 @@ final class TripDetailsView: UIView {
         vehicleInformationLabel?.text = viewModel.vehicleInformation
         pickUpTypeContainer.isHidden = !viewModel.showMeetingPoint
         meetingPointType.text = viewModel.meetingPointText
+        detailsContainer.accessibilityLabel = "\(viewModel.supplierName), \(viewModel.accessibilityDate), \(viewModel.pickup), \(viewModel.destination), \(viewModel.vehicleInformation)"
     }
     
     func prepareForReuse() {

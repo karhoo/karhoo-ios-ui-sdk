@@ -22,6 +22,11 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
                                              referer: "", organisationId: "")
     static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
+    static var isExplicitTermsAndConditionsConsentRequired: Bool = false
+
+    var isExplicitTermsAndConditionsConsentRequired: Bool {
+        Self.isExplicitTermsAndConditionsConsentRequired
+    }
 
     func logo() -> UIImage {
         return UIImage(named: "mockImage",

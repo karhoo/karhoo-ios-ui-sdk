@@ -55,6 +55,7 @@ public final class Attributes: UIView {
     @IBOutlet public var darkGreyFontColour: [UILabel]?
     @IBOutlet public var medGreyFontColour: [UILabel]?
     @IBOutlet public var primaryFontColour: [UILabel]?
+    @IBOutlet public var secondaryFontColour: [UILabel]?
 
     // MARK: - UIButtons fonts
     @IBOutlet public var buttonFontSubtitleBold: [UIButton]?
@@ -151,6 +152,7 @@ public final class Attributes: UIView {
         setValue(KarhooUI.colors.darkGrey, forKeyPath: "darkGreyFontColour.textColor")
         setValue(KarhooUI.colors.medGrey, forKeyPath: "medGreyFontColour.textColor")
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryFontColour.textColor")
+        setValue(KarhooUI.colors.secondary, forKeyPath: "secondaryFontColour.textColor")
 
         // UIButtons- font
         setValue(KarhooUI.fonts.subtitleBold(), forKeyPath: "buttonFontSubtitleBold.font")

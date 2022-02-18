@@ -15,9 +15,11 @@ final class KarhooTripSummaryPresenter: TripSummaryPresenter {
     private let analytics: Analytics
     private let trip: TripInfo
 
-    init(trip: TripInfo,
-         callback: @escaping ScreenResultCallback<TripSummaryResult>,
-         analytics: Analytics = KarhooAnalytics()) {
+    init(
+        trip: TripInfo,
+        callback: @escaping ScreenResultCallback<TripSummaryResult>,
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+    ) {
         self.trip = trip
         self.callback = callback
         self.analytics = analytics
@@ -36,12 +38,10 @@ final class KarhooTripSummaryPresenter: TripSummaryPresenter {
         var returnBooking = BookingDetails(originLocationDetails: initialDestination.toLocationInfo())
         returnBooking.destinationLocationDetails = trip.origin.toLocationInfo()
 
-        analytics.returnRideRequested()
         finishWithResult(.completed(result: .rebookWithBookingDetails(returnBooking)))
     }
 
     func exitPressed() {
-        analytics.rideSummaryExited()
         finishWithResult(.completed(result: .closed))
     }
 

@@ -30,8 +30,8 @@ final class MockFeedbackMailComposer: FeedbackEmailComposer {
         return returnValueReportIssueWithTripCalled
     }
 
-    var setViewControllerCalled: UIViewController?
-    func set(parent: UIViewController) {
+    var setViewControllerCalled: BaseViewController?
+    func set(parent: BaseViewController) {
         setViewControllerCalled = parent
     }
 }

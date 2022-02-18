@@ -110,6 +110,8 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     private func setupView() {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
+        accessibilityTraits = .button
         accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.container
         layer.cornerRadius = 4.0
         layer.masksToBounds = true
@@ -183,11 +185,16 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         else {
             passengerDetailsTitle.text = UITexts.PassengerDetails.title
             passengerDetailsSubtitle.text = UITexts.PassengerDetails.add
+            accessibilityLabel = passengerDetailsTitle.text
+            accessibilityHint = passengerDetailsSubtitle.text
             return
         }
-        
-        passengerDetailsTitle.text = "\(details.firstName) \(details.lastName)"
+
+        let passengerName = "\(details.firstName) \(details.lastName)"
+        passengerDetailsTitle.text = passengerName
         passengerDetailsSubtitle.text = UITexts.Generic.edit
+        accessibilityLabel = "\(UITexts.PassengerDetails.title): \(passengerName)"
+        accessibilityHint = UITexts.Generic.edit
     }
     
     func updateViewState() {

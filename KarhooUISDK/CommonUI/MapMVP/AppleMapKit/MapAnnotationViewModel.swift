@@ -21,11 +21,11 @@ final class MapAnnotationViewModel: NSObject, MKAnnotation {
         switch tag {
         case .destination:
             backgroundIcon = UIImage.uisdkImage(PinAsset.background.rawValue)
-                                    .coloured(withTint: KarhooUI.colors.primary)
+                                    .coloured(withTint: KarhooUI.colors.secondary)
             foregroundIcon = UIImage.uisdkImage(PinAsset.destination.rawValue)
         case .pickup:
             backgroundIcon = UIImage.uisdkImage(PinAsset.background.rawValue)
-                                    .coloured(withTint: KarhooUI.colors.secondary)
+                                    .coloured(withTint: KarhooUI.colors.primary)
             foregroundIcon = UIImage.uisdkImage(PinAsset.pickup.rawValue)
         case .driverLocation:
             backgroundIcon = UIImage.uisdkImage(PinAsset.driverLocation.rawValue)

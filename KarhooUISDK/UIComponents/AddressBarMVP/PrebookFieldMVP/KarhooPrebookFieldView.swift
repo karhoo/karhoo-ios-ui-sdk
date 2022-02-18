@@ -16,19 +16,80 @@ public struct KHPrebookFieldID {
 }
 
 public final class KarhooPrebookFieldView: UIView {
+
+    // MARK: - Nested types
+
+    private enum Constants {
+        static var closeButtonSize: CGFloat = 35.0
+        static var preBookButtonSize: CGFloat = 35.0
+    }
+
+    // MARK: - Properties
+
+    private lazy var prebookButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage.uisdkImage("fi_calendar").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = KarhooUI.colors.accent
+        button.setTitleColor(.black, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        button.addTarget(self, action: #selector(prebookPressed), for: .touchUpInside)
+        button.accessibilityLabel = UITexts.Booking.prebookRideHint
+        return button
+    }()
+
+    private lazy var stackContainer: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = "stackView"
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        return stackView
+    }()
+
+    private lazy var dateTimeView: UIView = {
+        let view = UIView()
+        view.accessibilityIdentifier = KHPrebookFieldID.dateTimeView
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
+    private lazy var dateTimeStackContainer: UIStackView = {
+        let stackView = UIStackView()
+        stackView.accessibilityIdentifier = "dateTime_stackView"
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
+    }()
     
-    // prebook button
-    private var prebookButton: UIButton!
-    private var stackContainer: UIStackView!
-    // prebook details
-    private var dateTimeView: UIView!
-    private var dateTimeStackContainer: UIStackView!
-    private var timeLabel: UILabel!
-    private var dateLabel: UILabel!
-    private var closeButton: UIButton!
+    private lazy var timeLabel: UILabel = buildLabel(
+        font: KarhooUI.fonts.footnoteBold(),
+        accessibilityIdentifier: KHPrebookFieldID.timeLabel
+    )
+    
+    private lazy var dateLabel: UILabel = buildLabel(
+        font: KarhooUI.fonts.footnoteRegular(),
+        accessibilityIdentifier: KHPrebookFieldID.dateLabel
+    )
+    
+    private lazy var closeButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.accessibilityIdentifier = KHPrebookFieldID.closeButton
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = KarhooUI.colors.text
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return button
+    }()
     
     private weak var actions: PreebookFieldActions?
-    
+
+    // MARK: - Initialization
+
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -37,98 +98,77 @@ public final class KarhooPrebookFieldView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
+    
+    private func setupHierarchy() {
+        addSubview(stackContainer)
+        addSubview(dateTimeStackContainer)
+        stackContainer.addArrangedSubview(dateTimeView)
+        stackContainer.addArrangedSubview(dateTimeView)
+        stackContainer.addArrangedSubview(prebookButton)
+        dateTimeStackContainer.addArrangedSubview(timeLabel)
+        dateTimeStackContainer.addArrangedSubview(dateLabel)
+        dateTimeView.addSubview(closeButton)
+    }
     
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
-        
-        stackContainer = UIStackView()
-        stackContainer.accessibilityIdentifier = "stackView"
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
-        stackContainer.axis = .horizontal
-        addSubview(stackContainer)
-        
-        dateTimeView = UIView()
-        dateTimeView.accessibilityIdentifier = KHPrebookFieldID.dateTimeView
-        dateTimeView.translatesAutoresizingMaskIntoConstraints = false
-        dateTimeView.isHidden = true
-        stackContainer.addArrangedSubview(dateTimeView)
-        
-        dateTimeStackContainer = UIStackView()
-        dateTimeStackContainer.accessibilityIdentifier = "dateTime_stackView"
-        dateTimeStackContainer.translatesAutoresizingMaskIntoConstraints = false
-        dateTimeStackContainer.axis = .vertical
-        addSubview(dateTimeStackContainer)
-        
-        timeLabel = UILabel()
-        timeLabel.accessibilityIdentifier = KHPrebookFieldID.timeLabel
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.textAlignment = .center
-        timeLabel.font = KarhooUI.fonts.footnoteBold()
-        timeLabel.textColor = KarhooUI.colors.darkGrey
-        dateTimeStackContainer.addArrangedSubview(timeLabel)
-        
-        dateLabel = UILabel()
-        dateLabel.accessibilityIdentifier = KHPrebookFieldID.dateLabel
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.textAlignment = .center
-        dateLabel.font = KarhooUI.fonts.footnoteRegular()
-        dateLabel.textColor = KarhooUI.colors.darkGrey
-        dateTimeStackContainer.addArrangedSubview(dateLabel)
-        
-        closeButton = UIButton(type: .custom)
-        closeButton.accessibilityIdentifier = KHPrebookFieldID.closeButton
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.setImage(UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
-        closeButton.tintColor = KarhooUI.colors.darkGrey
-        closeButton.setTitleColor(.black, for: .normal)
-        closeButton.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
-        closeButton.imageView?.contentMode = .scaleAspectFit
-        closeButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        dateTimeView.addSubview(closeButton)
-        
-        prebookButton = UIButton(type: .custom)
-        prebookButton.translatesAutoresizingMaskIntoConstraints = false
-        prebookButton.setImage(UIImage.uisdkImage("prebook").withRenderingMode(.alwaysTemplate), for: .normal)
-        prebookButton.tintColor = KarhooUI.colors.accent
-        prebookButton.setTitleColor(.black, for: .normal)
-        prebookButton.imageView?.contentMode = .scaleAspectFit
-        prebookButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        prebookButton.addTarget(self, action: #selector(prebookPressed), for: .touchUpInside)
-        
-        stackContainer.addArrangedSubview(dateTimeView)
-        stackContainer.addArrangedSubview(prebookButton)
-        
+        setupHierarchy()
         setUpConstraints()
     }
     
     private func setUpConstraints() {
-        
-        _ = [stackContainer.topAnchor.constraint(equalTo: topAnchor),
-             stackContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-             stackContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
-             stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor)].map { $0.isActive = true }
-        
-        let closeButtonSize: CGFloat = 35.0
-        _ = [closeButton.widthAnchor.constraint(equalToConstant: closeButtonSize),
-             closeButton.heightAnchor.constraint(equalToConstant: closeButtonSize),
-             closeButton.leadingAnchor.constraint(equalTo: dateTimeStackContainer.trailingAnchor),
-             closeButton.topAnchor.constraint(lessThanOrEqualTo: dateTimeView.topAnchor),
-             closeButton.trailingAnchor.constraint(equalTo: dateTimeView.trailingAnchor),
-             closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor)]
-            .map { $0.isActive = true }
-        
-        let preBookButtonSize: CGFloat = 35.0
-        _ = [prebookButton.widthAnchor.constraint(equalToConstant: preBookButtonSize),
-             prebookButton.heightAnchor.constraint(equalToConstant: preBookButtonSize)].map { $0.isActive = true }
-        
-        _ = [dateTimeStackContainer.leadingAnchor.constraint(equalTo: dateTimeView.leadingAnchor, constant: 5.0),
-             dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)]
-            .map { $0.isActive = true }
+        stackContainer.anchorToSuperview()
+
+        closeButton.anchor(
+            leading: dateTimeStackContainer.trailingAnchor,
+            trailing: dateTimeView.trailingAnchor,
+            width: Constants.closeButtonSize,
+            height: Constants.closeButtonSize
+        )
+
+        prebookButton.anchor(width: Constants.preBookButtonSize, height: Constants.preBookButtonSize)
+        dateTimeStackContainer.anchor(leading: dateTimeView.leadingAnchor, paddingLeft: 5.0)
+
+        [
+            closeButton.topAnchor.constraint(lessThanOrEqualTo: dateTimeView.topAnchor),
+            closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor),
+            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)
+        ].forEach { $0.isActive = true }
     }
+
+    private func buildLabel(font: UIFont, accessibilityIdentifier: String) -> UILabel {
+        let label = UILabel()
+        label.accessibilityIdentifier = accessibilityIdentifier
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = font
+        label.textColor = KarhooUI.colors.darkGrey
+        return label
+    }
+
+    // MARK: - Endpoints
 
     func set(actions: PreebookFieldActions?) {
         self.actions = actions
     }
+
+    func set(date: String, time: String?) {
+        dateTimeView.isHidden = false
+        prebookButton.isHidden = true
+        dateLabel.text = date
+        timeLabel.text = time
+        actions?.prebookSet()
+    }
+
+    func showDefaultView() {
+        dateTimeView.isHidden = true
+        prebookButton.isHidden = false
+        actions?.prebookSet()
+    }
+
+    // MARK: - Actions
 
     @objc
     private func clearPressed(_ sender: Any) {
@@ -140,17 +180,5 @@ public final class KarhooPrebookFieldView: UIView {
         actions?.prebookSelected()
     }
 
-    func set(date: String, time: String?) {
-        dateTimeView.isHidden = false
-        prebookButton.isHidden = true
-        dateLabel?.text = date
-        timeLabel?.text = time
-        actions?.prebookSet()
-    }
-
-    func showDefaultView() {
-        dateTimeView.isHidden = true
-        prebookButton.isHidden = false
-        actions?.prebookSet()
-    }
+    
 }

@@ -111,6 +111,37 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
+
+    public func anchorToSuperview(
+        paddingTop: CGFloat = 0,
+        paddingLeading: CGFloat = 0,
+        paddingTrailing: CGFloat = 0,
+        paddingBottom: CGFloat = 0
+    ) {
+        guard let superview = self.superview else {
+            print("There is no superview the view can be aligned to.")
+            return
+        }
+        anchor(
+            top: superview.topAnchor,
+            leading: superview.leadingAnchor,
+            bottom: superview.bottomAnchor,
+            trailing: superview.trailingAnchor,
+            paddingTop: paddingTop,
+            paddingLeft: paddingLeading,
+            paddingBottom: paddingBottom,
+            paddingRight: paddingTrailing
+        )
+    }
+
+    func anchorToSuperview(padding: CGFloat) {
+        anchorToSuperview(
+            paddingTop: padding,
+            paddingLeading: padding,
+            paddingTrailing: padding,
+            paddingBottom: padding
+        )
+    }
     
     public func centerX(inView view: UIView, constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false

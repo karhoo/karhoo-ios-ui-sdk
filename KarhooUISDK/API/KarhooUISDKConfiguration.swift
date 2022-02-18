@@ -10,19 +10,23 @@ import KarhooSDK
 
 public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     func logo() -> UIImage
-    
-    var bookingMetadata:[String: Any]? { get }
+
+    func analytics() -> Analytics
+
+    var isExplicitTermsAndConditionsConsentRequired: Bool { get }
+
+    var bookingMetadata: [String: Any]? { get }
 }
 
 public extension KarhooUISDKConfiguration {
 
-    func logo() -> UIImage {
-        return UIImage(named: "")!
+    func logo() -> UIImage { UIImage(named: "")! }
+
+    func analytics() -> Analytics {
+        KarhooAnalytics()
     }
+
+    var isExplicitTermsAndConditionsConsentRequired: Bool { false }
     
-    var bookingMetadata:[String: Any]? {
-        get {
-            return nil
-        }
-    }
+    var bookingMetadata: [String: Any]? { nil }
 }

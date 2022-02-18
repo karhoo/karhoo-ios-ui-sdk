@@ -12,6 +12,9 @@ public extension UIViewController {
     func forceLightMode() {
         if #available(iOS 13.0, *) {
             // Always adopt a light interface style.
+            navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: KarhooUI.colors.text]
+            navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: KarhooUI.colors.text]
+            navigationController?.navigationBar.standardAppearance.backgroundColor = KarhooUI.colors.white
             overrideUserInterfaceStyle = .light
         }
     }

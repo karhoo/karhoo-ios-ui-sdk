@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,10 +36,10 @@
                         <outletCollection property="darkGreyFontColour" destination="tH0-Ig-5c2" collectionClass="NSMutableArray" id="u62-iG-opt"/>
                         <outletCollection property="subtitleBold" destination="tH0-Ig-5c2" collectionClass="NSMutableArray" id="LiH-GD-ARZ"/>
                         <outletCollection property="subtitleRegular" destination="ibm-Jb-23a" collectionClass="NSMutableArray" id="3Ft-uX-ksq"/>
-                        <outletCollection property="primaryFontColour" destination="ibm-Jb-23a" collectionClass="NSMutableArray" id="T1S-kG-FM3"/>
                         <outletCollection property="medGreyFontColour" destination="ems-PS-A5F" collectionClass="NSMutableArray" id="1M3-02-edF"/>
                         <outletCollection property="bodyRegular" destination="ems-PS-A5F" collectionClass="NSMutableArray" id="cEj-tE-wcU"/>
-                        <outletCollection property="secondaryImageTint" destination="yGQ-RI-TNF" collectionClass="NSMutableArray" id="uHV-NP-qkt"/>
+                        <outletCollection property="secondaryFontColour" destination="ibm-Jb-23a" collectionClass="NSMutableArray" id="DVB-Pr-No9"/>
+                        <outletCollection property="primaryImageTint" destination="yGQ-RI-TNF" collectionClass="NSMutableArray" id="BeM-sL-Xxq"/>
                     </connections>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLv-ej-iNS">

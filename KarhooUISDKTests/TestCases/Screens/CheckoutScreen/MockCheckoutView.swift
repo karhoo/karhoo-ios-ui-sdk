@@ -130,4 +130,17 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
     func paymentView(hidden: Bool) {
         paymentViewHiddenSet = hidden
     }
+
+    private(set) var quoteDidExpireCalled: Bool = false
+    func quoteDidExpire() {
+        quoteDidExpireCalled = true
+    }
+
+    var areTermsAndConditionsAcceptedToReturn: Bool = false
+    var areTermsAndConditionsAccepted: Bool { areTermsAndConditionsAcceptedToReturn }
+    
+    var showTermsConditionsRequiredErrorCalled: Bool = false
+    func showTermsConditionsRequiredError() {
+        showTermsConditionsRequiredErrorCalled = true
+    }
 }

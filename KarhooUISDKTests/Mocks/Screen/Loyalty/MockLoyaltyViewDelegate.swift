@@ -10,9 +10,8 @@ import Foundation
 @testable import KarhooUISDK
 
 final class MockLoyaltyViewDelegate: LoyaltyViewDelegate {
-    
     private(set)var didCallToggleLoyaltyMode = false
-    func didToggleLoyaltyMode(newValue: LoyaltyMode) {
+    func didChangeMode(newValue: LoyaltyMode) {
         didCallToggleLoyaltyMode = true
     }
     

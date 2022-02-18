@@ -20,7 +20,7 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
     private var displayDriverAllocationAlert: Bool = false
 
     init(tripService: TripService = Karhoo.getTripService(),
-         analytics: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          view: TripAllocationView,
          driverAllocationCheckDelay: Double = 60.0) {
         self.tripService = tripService
@@ -55,8 +55,6 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
         guard let trip = self.trip else {
             return
         }
-
-        analytics.tripAllocationCancellationIntiatedByUser(trip: trip)
 
         let tripCancellation = TripCancellation(tripId: identifier(trip),
                                                 cancelReason: .otherUserReason)

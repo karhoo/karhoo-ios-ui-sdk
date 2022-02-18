@@ -29,7 +29,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
     required init(startDate: Date? = nil,
                   now: Date = Date(),
                   timeZone: TimeZone,
-                  analytics: Analytics = KarhooAnalytics(),
+                  analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
                   timeIntervalHelper: DateTimeIntervalHelper = TimeSinceNowProvider(),
                   callback: @escaping ScreenResultCallback<Date>) {
         self.callback = callback
@@ -78,7 +78,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
         }
 
         finishWithResult(ScreenResult.completed(result: initialDate))
-        analytics.prebookTimeSet(date: initialDate)
+        analytics.prebookSet(date: initialDate, timezone: timeZone.identifier)
     }
 
     func cancel() {

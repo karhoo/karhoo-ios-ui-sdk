@@ -55,6 +55,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
     
     private lazy var logoLoadingImageView: LoadingImageView = {
         let imageView = LoadingImageView()
+        imageView.isAccessibilityElement = true
+        imageView.accessibilityLabel = UITexts.TripSummary.fleet
         imageView.accessibilityIdentifier = KHCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
         imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
@@ -78,7 +80,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHCheckoutHeaderViewID.nameLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.font = KarhooUI.fonts.getBoldFont(withSize: 16.0)
         label.numberOfLines = 0
         return label
@@ -89,7 +91,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHCheckoutHeaderViewID.carType
         label.font = KarhooUI.fonts.getBoldFont(withSize: 14.0)
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.textLabel
         return label
     }()
     
@@ -116,9 +118,17 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
     
-    private lazy var learnMoreButton: KarhooLearnMoreButton = {
-        let button = KarhooLearnMoreButton()
-        button.set(actions: self)
+    private lazy var learnMoreButton: KarhooExpandViewButton = {
+        let button = KarhooExpandViewButton(
+            title: UITexts.Booking.learnMore,
+            initialMode: .closed,
+            onExpand:  {[weak self] in
+                self?.learnLessPressed()
+            },
+            onCollapce: {[weak self] in
+                self?.learnMorePressed()
+            }
+        )
         button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
         button.anchor(height: 44.0)
         return button
@@ -192,8 +202,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
                                               leading: capacityContentView.leadingAnchor,
                                               trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.anchor(leading: capacityContentView.leadingAnchor,
-                                   bottom: capacityContentView.bottomAnchor,
+            learnMoreButton.anchor(bottom: capacityContentView.bottomAnchor,
                                    trailing: capacityContentView.trailingAnchor)
             
             if capabilitiesStackView.subviews.count > 0 {
@@ -246,30 +255,27 @@ final class KarhooCheckoutHeaderView: UIStackView {
         imageView.image = vehicleTag.image
         imageView.contentMode = .scaleAspectFit
         imageView.anchor(width: 12.0, height: 12.0)
-        imageView.tintColor = KarhooUI.colors.guestCheckoutLightGrey
+        imageView.tintColor = KarhooUI.colors.text
         
         let label = UILabel()
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        label.textColor = KarhooUI.colors.guestCheckoutLightGrey
+        label.textColor = KarhooUI.colors.text
         capabilitiesStackView.addArrangedSubview(imageView)
         capabilitiesStackView.addArrangedSubview(label)
     }
-}
 
-// MARK: - RevealMoreButtonActions
-extension KarhooCheckoutHeaderView: LearnMoreButtonDelegate {
     func learnMorePressed() {
-        self.vehicleCapacityView.isHidden = true
         self.capacityDetailsView.isHidden = false
         UIView.animate(withDuration: 0.45) { [unowned self] in
+            self.vehicleCapacityView.alpha = 0.0
             self.capacityDetailsView.alpha = 1.0
         }
     }
     
     func learnLessPressed() {
-        self.vehicleCapacityView.isHidden = false
         UIView.animate(withDuration: 0.45) {
+            self.vehicleCapacityView.alpha = 1.0
             self.capacityDetailsView.alpha = 0.0
             self.capacityDetailsView.isHidden = true
         }
