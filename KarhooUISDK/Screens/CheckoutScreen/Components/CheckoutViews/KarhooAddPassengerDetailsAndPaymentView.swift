@@ -51,6 +51,7 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
     
     private lazy var passengerPaymentContainer: AddPaymentView = {
         let passengerPaymentView = KarhooAddPaymentView()
+        passengerPaymentView.isAccessibilityElement = true
         passengerPaymentView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerPaymentContainer
         passengerPaymentView.setBaseViewController(baseViewController)
         return passengerPaymentView

@@ -90,7 +90,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         destinationIcon.accessibilityIdentifier = KHAddressBarViewID.destinationIcon
         destinationIcon.translatesAutoresizingMaskIntoConstraints = false
         destinationIcon.image = UIImage.uisdkImage("add_destination")
-        destinationIcon.tintColor = KarhooUI.colors.primary
+        destinationIcon.tintColor = KarhooUI.colors.secondary
         destinationIcon.contentMode = .scaleAspectFit
         mainViewContainer.addSubview(destinationIcon)
 
@@ -220,7 +220,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
 
         if pickupDisplayAddress != nil && pickupDisplayAddress != UITexts.AddressBar.addPickup {
             pickUpIcon.image = nil
-            pickUpIcon.backgroundColor = KarhooUI.colors.secondary
+            pickUpIcon.backgroundColor = KarhooUI.colors.primary
             pickUpIcon.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }
     }
@@ -230,7 +230,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         if destinationDisplayAddress != nil && destinationDisplayAddress != UITexts.AddressBar.addDestination {
             destinationIcon.image = nil
             toggleDestinationIconSize(big: false)
-            destinationIcon.backgroundColor = KarhooUI.colors.primary
+            destinationIcon.backgroundColor = KarhooUI.colors.secondary
         }
     }
 
@@ -238,7 +238,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         swapButton.isHidden = false
         destinationIcon.image = nil
         toggleDestinationIconSize(big: false)
-        destinationIcon.backgroundColor = KarhooUI.colors.primary
+        destinationIcon.backgroundColor = KarhooUI.colors.secondary
         destinationField?.ordinaryTextColor()
         destinationField?.disableClear(disableClearButton)
     }

@@ -24,8 +24,8 @@ struct KHPassengerDetailsViewID {
     static let doneButton = "done_button"
 }
 
-final class PassengerDetailsViewController: UIViewController, BaseViewController {
-    
+final class PassengerDetailsViewController: UIViewController, PassengerDetailsView, BaseViewController {
+
     private var presenter: PassengerDetailsPresenterProtocol
     private let keyboardSizeProvider: KeyboardSizeProviderProtocol = KeyboardSizeProvider.shared
     private let doneButtonHeight: CGFloat = 55.0
@@ -37,7 +37,26 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     private var inputViews = [KarhooInputView]()
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
-    private let currentLocale = NSLocale.current.languageCode ?? "en"
+    private let currentLocale = UITexts.Generic.locale
+    
+    // MARK: - PassengerDetailsView
+    var delegate: PassengerDetailsDelegate? {
+        didSet {
+            presenter.delegate = delegate
+        }
+    }
+    
+    var details: PassengerDetails? {
+        didSet {
+            addPreInputtedDetails()
+        }
+    }
+    
+    var enableBackOption: Bool = true {
+        didSet {
+            backButton.isHidden = !enableBackOption
+        }
+    }
     
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
@@ -47,7 +66,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         scrollView.accessibilityIdentifier = KHPassengerDetailsViewID.scrollView
         return scrollView
     }()
-    
+
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,30 +170,24 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     }()
     
     // MARK: - Init
-    init(presenter: PassengerDetailsPresenterProtocol) {
-        self.presenter = presenter
+    init() {
+        presenter = PassengerDetailsPresenter()
         super.init(nibName: nil, bundle: nil)
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(code:) has not been implemented")
     }
     
-    deinit {
-        keyboardSizeProvider.remove(listener: self)
-    }
-    
-    override func loadView() {
+    private func setUpView() {
         view = UIView()
         view.backgroundColor = UIColor.white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layer.cornerRadius = 10.0
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundClicked)))
-        setUpView()
-    }
-    
-    private func setUpView() {
+        
         view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                           leading: view.leadingAnchor,
@@ -222,14 +235,22 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
         view.setNeedsUpdateConstraints()
         
         inputViews = [firstNameInputView, lastNameInputView, emailNameInputView, mobilePhoneInputView]
-        addPreInputtedDetails()
     }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardSizeProvider.register(listener: self)
         forceLightMode()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboardSizeProvider.register(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboardSizeProvider.remove(listener: self)
     }
     
     // MARK: - Actions
@@ -266,10 +287,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     }
     
     func addPreInputtedDetails() {
-        guard let details = presenter.details
-        else {
-            return
-        }
+        guard let details = details else { return }
         
         firstNameInputView.set(text: details.firstName)
         lastNameInputView.set(text: details.lastName)
@@ -282,7 +300,7 @@ final class PassengerDetailsViewController: UIViewController, BaseViewController
     }
     
     private func highlightInvalidFields() {
-        for (_, inputView) in inputViews.enumerated() {
+        inputViews.forEach { inputView in
             if !inputView.isValid() {
                 inputView.showError()
             }
@@ -298,7 +316,6 @@ extension PassengerDetailsViewController: PassengerDetailsActions {
 
 extension PassengerDetailsViewController: KarhooInputViewDelegate {
     func didBecomeInactive(identifier: String) {
-        goToNextInputField(startingIdentifier: identifier)
         updateDoneButtonEnabled()
     }
     
@@ -313,30 +330,37 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     private func getValidInputViewCount() -> Int {
         var validSet = Set<String>()
         
-        for (_, inputView) in inputViews.enumerated() {
+        inputViews.forEach { inputView in
             if inputView.isValid() {
-                validSet.insert(inputView.accessibilityIdentifier!)
+                validSet.insert(inputView.accessibilityIdentifier ?? "")
             } else {
-                validSet.remove(inputView.accessibilityIdentifier!)
+                validSet.remove(inputView.accessibilityIdentifier ?? "")
             }
         }
         
         return validSet.count
     }
-    
-    private func goToNextInputField(startingIdentifier: String) {
-        for (index, inputView) in inputViews.enumerated() {
-            if shouldMoveToNextInputViewOnReturn,
-               inputView.accessibilityIdentifier == startingIdentifier,
-               index != inputViews.count - 1 {
-                inputViews[index + 1].setActive()
-            }
-        }
-    }
-    
+
     private func updateDoneButtonEnabled() {
         let validCount = getValidInputViewCount()
         passengerDetailsValid(validCount == inputViews.count)
+    }
+
+    private func scrollToActiveInputView() {
+        var firstFocusedView: UIView? {
+            inputViews.first(where: { $0.isFocused })
+        }
+        var firstResponderView: UIView? {
+            inputViews.first(where: { $0.isFirstResponder() })
+        }
+        let activeInputView: UIView? = firstFocusedView ?? firstResponderView
+
+        guard
+            let rectToShow = activeInputView?.bounds,
+            let translatedRect = activeInputView?.convert(rectToShow, to: scrollView)
+        else { return }
+
+        scrollView.scrollRectToVisible(translatedRect, animated: true)
     }
 }
 
@@ -344,12 +368,16 @@ extension PassengerDetailsViewController: KeyboardListener {
 
     func keyboard(updatedHeight: CGFloat) {
         // This is to stop the animation of the done button's bottom constraint change
-        UIView.animate(withDuration: 0.1, delay: 0, options: []) { [weak self] in
-            self?.doneButtonBottomConstraint.constant = -updatedHeight - (self?.standardSpacing ?? 0.0)
-            self?.view.layoutIfNeeded()
-        }
+        UIView.animate(
+            withDuration: UIConstants.Duration.short,
+            animations: { [weak self] in
+                guard let self = self else { return }
+                self.doneButtonBottomConstraint.constant = -updatedHeight - self.standardSpacing
+                self.view.layoutIfNeeded()
+            },
+            completion: { [weak self] _ in
+                self?.scrollToActiveInputView()
+            }
+        )
     }
 }
-
-
-

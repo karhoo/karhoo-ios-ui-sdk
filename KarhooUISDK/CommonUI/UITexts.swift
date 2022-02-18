@@ -14,17 +14,13 @@ public enum UITexts {
     /* Generics */
     public enum Generic {
         public static let cancel = "Text.Generic.Cancel".localized
-        public static let cancelled = "Text.Generic.Cancelled".localized
         public static let ok = "Text.Generic.Ok".localized
         public static let close = "Text.Generic.Close".localized
         public static let yes = "Text.Generic.Yes".localized
         public static let no = "Text.Generic.No".localized
-        public static let done = "Text.Generic.Done".localized
         public static let back = "Text.Generic.Back".localized
         public static let error = "Text.Generic.Error".localized
         public static let register = "Text.Generic.Register".localized
-        public static let logout = "Text.Generic.Logout".localized
-        public static let contact = "Text.Generic.Contact".localized
         public static let bookings = "Text.Generic.Bookings".localized
         public static let payment = "Text.Generic.Payment".localized
         public static let payments = "Text.Generic.Payments".localized
@@ -33,7 +29,6 @@ public enum UITexts {
         public static let pickup = "Text.Generic.Pickup".localized
         public static let prebook = "Text.Generic.Prebook".localized
         public static let registeringAccountAction = "Text.Generic.RegisterAccountAction".localized
-        public static let makingABookingAction = "Text.Generic.MakingBookingAction".localized
         public static let termsAndConditions = "Text.Generic.TermsConditions".localized
         public static let termsOfUse = "Text.Generic.TermsOfUse".localized
         public static let privacyPolicy = "Text.Generic.PrivacyPolicy".localized
@@ -54,12 +49,7 @@ public enum UITexts {
         public static let noMailSetUpMessage = "Text.Generic.NoEmailSetupError".localized
         public static let noCarsAvailable = "Text.Generic.NoCarsAvailable".localized
         public static let gotIt = "Text.Generic.GotIt".localized
-        public static let additionalInformation = "Text.Generic.AdditionalInformation".localized
         public static let thanks = "Text.Generic.Thanks".localized
-        public static let show = "Text.Generic.Show".localized
-        public static let hide = "Text.Generic.Hide".localized
-        public static let add = "Text.Generic.Add".localized
-        public static let change = "Text.Generic.Change".localized
         public static let submit = "Text.Generic.Submit".localized
         public static let etaLong = "Text.Generic.ETALong".localized
         public static let meetGreet = "Text.Generic.MeetGreet".localized
@@ -70,28 +60,23 @@ public enum UITexts {
         public static let phone = "Text.Generic.PhoneNumber".localized
         public static let comment = "Text.Generic.Comment".localized
         public static let commentOptional = "Text.Generic.Comment.Optional".localized
-        public static let optional = "Text.Generic.Optional".localized
         public static let errorMessage = "Text.Generic.ErrorMessage".localized
+        public static let locale = "Text.Generic.Locale".localized
+        public static let or = "Text.Generic.Or".localized
+        public static let checked = "Text.Generic.Checked".localized
+        public static let unchecked = "Text.Generic.Unchecked".localized
     }
 
     public enum GenericTripStatus {
-        public static let initialised = "Text.GenericTripStatus.Initialised".localized
         public static let requested = "Text.GenericTripStatus.Requested".localized
         public static let confirmed = "Text.GenericTripStatus.Confirmed".localized
-        public static let allocated = "Text.GenericTripStatus.Allocated".localized
         public static let enRoute = "Text.GenericTripStatus.EnRoute".localized
-        public static let approaching = "Text.GenericTripStatus.Approaching".localized
         public static let arrived = "Text.GenericTripStatus.Arrived".localized
         public static let passengerOnBoard = "Text.GenericTripStatus.PassengerOnBoard".localized
         public static let completed = "Text.GenericTripStatus.Completed".localized
         public static let cancelled = "Text.GenericTripStatus.Cancelled".localized
-        public static let failed = "Text.GenericTripStatus.Failed".localized
         public static let unkown = "Text.GenericTripStatus.Unkown".localized
         public static let incomplete = "Text.GenericTripStatus.Incomplete".localized
-        public static let karhooCancelled = "Text.GenericTripStatus.CancelledByKarhoo".localized
-        public static let bookerCancelled = "Text.Generic.TripStatus.BookerCancelled".localized
-        public static let driverCancelled = "Text.Generic.TripStatus.DriverCancelled".localized
-        public static let noDriversAvailable = "Text.Generic.TripStatus.NoDriversAvailable".localized
         public static let driverAllocationDelayTitle = "Text.Generic.TripStatus.DriverAllocationDelay.Title".localized
         public static let driverAllocationDelayMessage = "Text.Generic.TripStatus.DriverAllocationDelay.Message".localized
     }
@@ -109,9 +94,7 @@ public enum UITexts {
         public static let firstName = "Text.User.FirstName".localized
         public static let lastName = "Text.User.LastName".localized
         public static let email = "Text.User.Email".localized
-        public static let countryCode = "Text.User.PhoneCountryCode".localized
         public static let mobilePhone = "Text.User.MobilePhoneNumber".localized
-        public static let password = "Text.User.Password".localized
         public static let signupEmailSubscribeCopy = "Text.User.EmailSubscription".localized
         public static let signupPendingMessage = "Text.User.SignupPendingMessage".localized
         public static let forgottenPassword = "Text.User.ForgottenPassword".localized
@@ -134,6 +117,8 @@ public enum UITexts {
         public static let invalidPhoneNumber = "Text.Errors.InvalidPhoneNumber".localized
         public static let insufficientBalanceForLoyaltyBurning = "Text.Errors.InsufficientBalanceForLoyaltyBurning".localized
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
+        public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
+        public static let loyaltyModeNotEligibleForPreAuth = "Text.Error.LoyaltyModeNotEligibleForPreAuth".localized
     }
 
     /* Payment Error */
@@ -141,6 +126,7 @@ public enum UITexts {
         public static let paymentAlertTitle = "Text.Error.Payment.Alert.Title".localized
         public static let paymentAlertMessage = "Text.Error.Payment.Alert.Message".localized
         public static let paymentAlertUpdateCard = "Text.Error.Payment.Alert.ButtonUpdateCard".localized
+        public static let noDetailsMessage = "Text.Error.Payment.NoDetails.Message".localized
     }
 
     /* terms conditions construction */
@@ -203,19 +189,19 @@ public enum UITexts {
     public enum Prebook {
         public static let prebookPickerTitle = "Text.Prebook.PrebookPickupTime".localized
         public static let setPrebookTime = "Text.Prebook.SetPrebook".localized
-        // Booking will be made in local time of pickup (timezone-abbreviation)
         public static let timeZoneMessage = "Text.Prebook.TimezoneMessage".localized
     }
 
     /* Booking */
     public enum Booking {
+        public static let bookNow = "Text.Booking.BookNow".localized
         public static let requestCar = "Text.Booking.RequestCar".localized
         public static let requestingCar = "Text.Booking.RequestingCar".localized
-        public static let next = "Text.Booking.Next".localized
         public static let requestReceived = "Text.Booking.RequestReceived".localized
         public static let enterDestination = "Text.Booking.EnterDestination".localized
         public static let baseFareExplanation = "Text.Booking.BaseFareExplanation".localized
         public static let baseFare = "Text.Booking.BaseFare".localized
+        public static let prebookRideHint = "Text.Booking.PrebookHint".localized
         public static let prebookConfirmed = "Text.Booking.PrebookConfirmed".localized
         public static let prebookConfirmedRideDetails = "Text.Booking.PrebookConfirmed.RideDetails".localized
         public static let prebookConfirmation = "Text.Booking.PrebookConfirmation".localized
@@ -235,6 +221,12 @@ public enum UITexts {
         public static let gpsTracking = "Text.Booking.GPSTracking".localized
         public static let trainTracking = "Text.Booking.TrainTracking".localized
         public static let flightTracking = "Text.Booking.FlightTracking".localized
+        public static let quoteExpiredTitle = "Text.Booking.QuoteExpired".localized
+        public static let quoteExpiredMessage = "Text.Booking.QuoteExpiredMessage".localized
+        public static let legalNotice = "Text.Booking.LegalNotice".localized
+        public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
+        public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
+        public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
     }
 
     public enum Availability {
@@ -254,10 +246,6 @@ public enum UITexts {
     public enum PassengerDetails {
         public static let title = "Text.Booking.PassengerDetails.Title".localized
         public static let subtitle = "Text.Booking.PassengerDetails.Subtitle".localized
-        public static let firstName = "Text.Booking.PassengerDetails.FirstName".localized
-        public static let lastName = "Text.Booking.PassengerDetails.LastName".localized
-        public static let email = "Text.Booking.PassengerDetails.Email".localized
-        public static let mobilePhone = "Text.Booking.PassengerDetails.MobilePhone".localized
         public static let saveAction = "Text.Booking.PassengerDetails.SaveAction".localized
         public static let add = "Text.Booking.PassengerDetails.Add".localized
     }
@@ -278,7 +266,6 @@ public enum UITexts {
         public static let taxi = "Text.VehicleClass.Taxi".localized
         public static let mpv = "Text.VehicleClass.MPV".localized
         public static let exec = "Text.VehicleClass.Exec".localized
-        public static let executive = "Text.VehicleClass.Executive".localized
         public static let moto = "Text.VehicleClass.Moto".localized
         public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
         public static let electric = "Text.VehicleClass.Electric".localized
@@ -301,7 +288,6 @@ public enum UITexts {
     }
     
     public enum CountryCodeSelection {
-        public static let title = "Text.Booking.CountryCodeSelection.Title".localized
         public static let search = "Text.Booking.CountryCodeSelection.Search".localized
     }
 
@@ -322,7 +308,6 @@ public enum UITexts {
         public static let tripCancelledByDispatchAlertTitle = "Text.Trip.CancelledByDispatch.AlertTitle".localized
         public static let tripCancelledByDispatchAlertMessage = "Text.Trip.CancelledByDispatch.AlertMessage".localized
         public static let tripCancelBookingConfirmationAlertTitle = "Text.Trip.CancelBookingConfirmation.Alert.Title".localized
-        public static let tripCancelBookingConfirmationAlertMessage = "Text.Trip.CancelBookingConfirmation.Alert.Message".localized
         public static let tripCancelBookingFailedAlertTitle = "Text.Trip.CancelBookingFailed.AlertTitle".localized
         public static let tripCancelBookingFailedAlertMessage = "Text.Trip.CancelBookingFailed.AlertMessage".localized
         public static let tripCancelBookingFailedAlertCallFleetButton = "Text.Trip.CancelBookingFailed.AlertCallFleetButton".localized
@@ -362,13 +347,12 @@ public enum UITexts {
         static let pobFeedbackTitle = "Text.FeedbackView.pob".localized
         static let appFeedbackTitle = "Text.FeedbackView.app".localized
         static let addCommentPlaceholder = "Text.FeedbackView.addComment".localized
-        static let confirmationMessage = "Text.FeedbackView.confirmation".localized
     }
 
     public enum Bookings {
         static let noTrips = "Text.Bookings.NoTrips".localized
         static let noTripsBookedMessage = "Text.Bookings.NoTripsBookedMessage".localized
-        static let bookATrip = "Text.Bookings.BookATrip".localized
+        static let newRide = "Text.Bookings.NewRide".localized
         static let trackDriver = "Text.Bookings.TrackDriver".localized
         static let contactDriver = "Text.Bookings.ContactDriver".localized
         static let contactFleet = "Text.Bookings.ContactFleet".localized
@@ -402,8 +386,6 @@ public enum UITexts {
     public enum Airport {
         static let flightNumber = "Text.Airport.FlightNumber".localized
         static let bookingMessage = "Text.Airport.HelpfulMessage".localized
-        static let airportPickup = "Text.Airport.Pickup".localized
-        static let addFlightDetails = "Text.Airport.AddFlightDetails".localized
     }
 
     public enum AddressScreen {
@@ -423,10 +405,13 @@ public enum UITexts {
     
     public enum Loyalty {
         static let title = "Text.Loyalty.Title".localized
+        static let burnTitle = "Text.Loyalty.BurnTitle".localized
         static let pointsEarnedForTrip = "Text.Loyalty.PointsEarnedForTrip".localized
-        static let pointsBurnedForTrip = "Text.Loyalty.PointsBurnedForTrip".localized
+        static let burnOnSubtitle = "Text.Loyalty.BurnOnSubtitle".localized
+        static let burnOffSubtitle = "Text.Loyalty.BurnOffSubtitle".localized
         static let info = "Text.Loyalty.Info".localized
         static let noAllowedToBurnPoints = "Text.Loyalty.BurnNotAllowed".localized
+        static let balanceTitle = "Text.Loyalty.BalanceTitle".localized
     }
 }
 

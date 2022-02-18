@@ -129,6 +129,8 @@ extension KarhooTripScreenDetailsView: TripInfoViewDelegate {
 }
 
 extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
+    
+    
     func hideRideOptions() {
         tripInfoView.stackButtonView.isHidden = true
     }
@@ -142,4 +144,12 @@ extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
     func rebookRide() {}
 
     func reportIssueError() {}
+
+    func contactFleet(_ phoneNumber: String) {
+        actions?.contactFleet(phoneNumber)
+    }
+    
+    func contactDriver(_ phoneNumber: String) {
+        actions?.contactDriver(phoneNumber)
+    }
 }

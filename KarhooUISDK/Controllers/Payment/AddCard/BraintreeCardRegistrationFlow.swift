@@ -40,13 +40,19 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         self.callback = callback
 
         if showUpdateCardAlert {
-            self.baseViewController?.showUpdatePaymentCardAlert(updateCardSelected: { [weak self] in
-                self?.startUpdateCardFlow(organisationId: self?.organisationId() ?? "", currencyCode: cardCurrency)
-                }, cancelSelected: { [weak self] in
+            baseViewController?.showUpdatePaymentCardAlert(
+                updateCardSelected: { [weak self] in
+                    self?.startUpdateCardFlow(
+                        organisationId: self?.organisationId() ?? "",
+                        currencyCode: cardCurrency
+                    )
+                },
+                cancelSelected: { [weak self] in
                     self?.callback?(.cancelledByUser)
-            })
+                }
+            )
         } else {
-            self.startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
+            startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
         }
     }
 
@@ -137,24 +143,24 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                                                          payer: payer,
                                                          organisationId: payerOrg.id)
 
-        paymentService.addPaymentDetails(addPaymentDetailsPayload: addPaymentPayload)
-            .execute(callback: { [weak self] result in
-            self?.baseViewController?.showLoadingOverlay(false)
+        paymentService
+            .addPaymentDetails(addPaymentDetailsPayload: addPaymentPayload)
+            .execute { [weak self] result in
+                self?.baseViewController?.showLoadingOverlay(false)
+                
+                guard let nonce = result.successValue() else {
+                    self?.baseViewController?.show(error: result.errorValue())
+                    self?.analyticsService.send(eventName: .userCardRegistrationFailed)
+                    self?.callback?(OperationResult.completed(value: .didFailWithError(result.errorValue())))
+                    return
+                }
 
-            guard let nonce = result.successValue() else {
-                self?.baseViewController?.show(error: result.errorValue())
-                self?.analyticsService.send(eventName: .userCardRegistrationFailed)
-                self?.callback?(OperationResult.completed(value: .didFailWithError(result.errorValue())))
-                return
+                self?.analyticsService.send(eventName: .userCardRegistered)
+                self?.callback?(OperationResult.completed(
+                    value: .didAddPaymentMethod(nonce: nonce)))
             }
-
-            self?.analyticsService.send(eventName: .userCardRegistered)
-            self?.callback?(OperationResult.completed(
-                value: .didAddPaymentMethod(nonce: nonce)))
-        })
-
     }
-
+    
     private func registerGuestPayer(nonce: Nonce) {
         analyticsService.send(eventName: .userCardRegistered)
         self.baseViewController?.showLoadingOverlay(false)

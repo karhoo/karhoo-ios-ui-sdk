@@ -33,7 +33,7 @@ final class KarhooAddressPresenter: AddressPresenter {
          searchProvider: AddressSearchProvider = KarhooAddressSearchProvider(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressService: AddressService = Karhoo.getAddressService(),
-         analytics: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          recentAddressProvider: RecentAddressProvider = KarhooRecentAddressProvider(),
          searchDelay: Double = 0.5,
          locationService: LocationService = KarhooLocationService()) {
@@ -132,9 +132,9 @@ final class KarhooAddressPresenter: AddressPresenter {
         
         switch addressMode {
         case .pickup:
-            analytics.pickupAddressSelected(details)
+            analytics.pickupAddressSelected(locationDetails: details)
         case .destination:
-            analytics.destinationAddressSelected(details)
+            analytics.destinationAddressSelected(locationDetails: details)
         }
         
         finishWithResult(.completed(result: details))
@@ -166,13 +166,18 @@ final class KarhooAddressPresenter: AddressPresenter {
     }
     
     public func getCurrentLocation() {
-        analytics.userPressedCurrentLocation(addressType: String(describing: addressMode))
-        guard let location = userLocationProvider.getLastKnownLocation()?.coordinate,
-              reverseGeocodingCurrentLocation == false else { return }
+        guard
+            let location = userLocationProvider.getLastKnownLocation()?.coordinate,
+            reverseGeocodingCurrentLocation == false
+        else { return }
+
         reverseGeocodingCurrentLocation = true
-        addressService.reverseGeocode(position: Position(latitude: location.latitude,
-                                                         longitude: location.longitude)).execute { [weak self] result in
-                                                            
+        addressService.reverseGeocode(
+            position: Position(
+                latitude: location.latitude,
+                longitude: location.longitude
+            )
+        ).execute { [weak self] result in
             self?.locationResponseHandler(result, saveLocation: false)
             self?.reverseGeocodingCurrentLocation = false
         }
@@ -190,13 +195,6 @@ final class KarhooAddressPresenter: AddressPresenter {
 extension KarhooAddressPresenter: AddressSearchProviderDelegate {
 
     func searchCompleted(places: [Place]) {
-        
-        switch addressMode {
-        case .pickup:
-            analytics.pickupAddressDisplayed(count: places.count)
-        case .destination:
-            analytics.destinationAddressDisplayed(count: places.count)
-        }
       
         if places.isEmpty {
             addressView?.show(emptyDataSetMessage: UITexts.AddressScreen.noResultsFound)

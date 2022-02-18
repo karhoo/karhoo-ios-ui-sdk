@@ -17,12 +17,17 @@ class KarhooRidesPresenterSpec: XCTestCase {
     private var testObject: RidesPresenter!
     private var testCallback: ScreenResult<RidesListAction>?
     private var mockTripsService: MockTripService!
+    private var mockAnalytics: MockAnalytics!
 
     override func setUp() {
         mockRidesView = MockRidesView()
         mockTripsService = MockTripService()
+        mockAnalytics = MockAnalytics()
 
-        testObject = KarhooRidesPresenter(completion: bookingsRootScreenCallback)
+        testObject = KarhooRidesPresenter(
+            analytics: mockAnalytics,
+            completion: bookingsRootScreenCallback
+        )
         testObject.bind(view: mockRidesView)
     }
 
@@ -55,6 +60,7 @@ class KarhooRidesPresenterSpec: XCTestCase {
 
         if case .trackTrip(let trip) = testCallback!.completedValue()! {
             XCTAssertEqual(trip.tripId, tripToTrack.tripId)
+            XCTAssertTrue(mockAnalytics.trackTripClickedCalled)
         } else {
             XCTFail("incorrect action result")
         }
@@ -94,23 +100,47 @@ class KarhooRidesPresenterSpec: XCTestCase {
     /**
      * When: the user changes page to upcoming bookings
      * Then: the view should be setting to the correct tab
+     * And: The analytics event should be triggered
      */
     func testMovingTabToUpcomingBookings() {
         testObject.bind(view: mockRidesView)
         testObject.didSwitchToPage(index: 0)
         XCTAssertTrue(mockRidesView.movedTabToUpcomingBookings)
         XCTAssertFalse(mockRidesView.movedTabToPastBookings)
+        XCTAssertTrue(mockAnalytics.upcomingTripsOpenedCalled)
     }
 
     /**
      * When: the user changes page to past bookings
      * Then: the view should be setting to the correct tab
+     * And: The analytics event should be triggered
      */
     func testMovingTabToPastBookings() {
         testObject.bind(view: mockRidesView)
         testObject.didSwitchToPage(index: 1)
         XCTAssertTrue(mockRidesView.movedTabToPastBookings)
         XCTAssertFalse(mockRidesView.movedTabToUpcomingBookings)
+        XCTAssertTrue(mockAnalytics.pastTripsOpenedCalled)
+    }
+
+    /**
+     * When: the user taps contact fleet
+     * Then: the analytics event should be triggered
+     */
+    func testContactFleetClicked() {
+        testObject.bind(view: mockRidesView)
+        testObject.contactFleet(TestUtil.getRandomTrip(), number: "000000000")
+        XCTAssert(mockAnalytics.contactFleetClickedCalled == .upcomingRides)
+    }
+
+    /**
+     * When: the user taps contact driver
+     * Then: the analytics event should be triggered
+     */
+    func testContactDriverClicked() {
+        testObject.bind(view: mockRidesView)
+        testObject.contactDriver(TestUtil.getRandomTrip(), number: "000000000")
+        XCTAssert(mockAnalytics.contactDriverClickedCalled == .upcomingRides)
     }
 
     private func bookingsRootScreenCallback(result: ScreenResult<RidesListAction>) {

@@ -125,7 +125,7 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
         mockPaymentService.paymentSDKTokenCall.triggerResult(result: .success(result: token))
 
         mockPaymentScreensBuilder.triggerBuilderResult(.failed(error: error))
-        
+
         let expectedSDKTokenError = "\(UITexts.Errors.missingPaymentSDKToken) [\(error.code)]"
 
         XCTAssertEqual(UITexts.Generic.error, mockBaseViewController.showAlertTitle)
@@ -155,10 +155,15 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
         simulateShowingAddCardScreen()
 
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: Nonce(nonce: "123")))
-        XCTAssertTrue(mockBaseViewController.showLoadingOverlaySet!)
-
-        XCTAssert(mockBaseViewController.dismissCalled)
-        XCTAssertEqual(mockPaymentService.addPaymentDetailsPayloadSet?.nonce, "123")
+        let expectation = XCTestExpectation()
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+            XCTAssertTrue(self?.mockBaseViewController.showLoadingOverlaySet ?? false)
+            XCTAssert(self?.mockBaseViewController.dismissCalled ?? false)
+            XCTAssertEqual(self?.mockPaymentService.addPaymentDetailsPayloadSet?.nonce, "123")
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 5)
     }
 
     /**
@@ -171,13 +176,22 @@ final class BraintreeCardRegistrationFlowSpec: XCTestCase {
 
         let testError = TestUtil.getRandomError()
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.failed(error: testError))
+        
+        let expectation = XCTestExpectation()
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
+            guard case .didFailWithError? = self?.cardRegistrationFlowCompletionResult,
+                  let self = self
+            else {
+                XCTFail("wrong result")
+                return
+            }
 
-        guard case .didFailWithError? = cardRegistrationFlowCompletionResult else {
-            XCTFail("wrong result")
-            return
-        }
+            XCTAssertFalse(self.mockPaymentService.addPaymentDetailsCall.executed)
+            expectation.fulfill()
+        })
 
-        XCTAssertFalse(mockPaymentService.addPaymentDetailsCall.executed)
+        wait(for: [expectation], timeout: 5)
     }
 
     /**

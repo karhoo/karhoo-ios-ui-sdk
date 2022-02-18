@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,14 +24,14 @@
                     <connections>
                         <outletCollection property="buttonFontSubtitleBold" destination="UjA-4u-3jF" collectionClass="NSMutableArray" id="nVM-fB-ui7"/>
                         <outletCollection property="lightGreyBackgroundColor" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="KHA-Jv-ieh"/>
-                        <outletCollection property="primaryBackgroundColor" destination="lbL-WM-zC3" collectionClass="NSMutableArray" id="ohd-Uf-ydM"/>
+                        <outletCollection property="secondaryBackgroundColor" destination="lbL-WM-zC3" collectionClass="NSMutableArray" id="Oea-Oq-gWR"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbL-WM-zC3">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjA-4u-3jF">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjA-4u-3jF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <accessibility key="accessibilityConfiguration" identifier="form-button"/>
                     <state key="normal">

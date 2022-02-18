@@ -63,7 +63,7 @@ public extension BaseViewController {
         actions.forEach { alert.addAction($0.action) }
         alert.view.tintColor = KarhooUI.colors.darkGrey
 
-        (self as UIViewController).present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     func show(error: KarhooError?) {
@@ -79,7 +79,7 @@ public extension BaseViewController {
         alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default))
         alert.view.tintColor = KarhooUI.colors.darkGrey
 
-        (self as UIViewController).present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     func showUpdatePaymentCardAlert(updateCardSelected: @escaping () -> Void, cancelSelected: (() -> Void)? = nil) {
@@ -104,7 +104,7 @@ public extension BaseViewController {
         alert.preferredAction = updateCardAction
         alert.view.tintColor = KarhooUI.colors.darkGrey
 
-        (self as UIViewController).present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     func showLoadingOverlay(_ show: Bool) {

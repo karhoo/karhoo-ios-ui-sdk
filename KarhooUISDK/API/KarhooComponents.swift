@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KarhooSDK
 
 public class KarhooComponents: BookingScreenComponents {
 
@@ -35,5 +36,16 @@ public class KarhooComponents: BookingScreenComponents {
     public func quoteList() -> QuoteListView {
         let view = KarhooQuoteListViewController()
         return view
+    }
+    
+    public func passengerDetails(details: PassengerDetails?,
+                                 delegate: PassengerDetailsDelegate?,
+                                 enableBackOption: Bool = true) -> PassengerDetailsView {
+        
+        let detailsViewController = PassengerDetailsViewController()
+        detailsViewController.details = details
+        detailsViewController.delegate = delegate
+        detailsViewController.enableBackOption = enableBackOption
+        return detailsViewController
     }
 }

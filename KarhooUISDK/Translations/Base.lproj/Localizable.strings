@@ -1,15 +1,3 @@
-/* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
-"\"Text.Trip.KarhooCancelled.AlertTitle\"" = "Problem Booking";
-
-"CURBSIDE" = "Curbside";
-
-/* PickUp Type */
-"DEFAULT" = "Default";
-
-"ELECTRIC" = "Electric";
-
-"EXEC" = "EXECUTIVE";
-
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -124,15 +112,6 @@
 /* Qxxxx errors */
 "Q0001" = "Pick up and destination cannot be the same.";
 
-"SALOON" = "SALOON";
-
-"STAND_BY" = "Stand by";
-
-"TAXI" = "TAXI";
-
-/* "Version" */
-"Text.About.Version" = "Version";
-
 "Text.Address.CurrentLocation" = "Current location";
 
 "Text.Address.NoRecentAddress" = "No recent results";
@@ -148,17 +127,11 @@
 
 "Text.AddressSearch.EnterDestinationLocation" = "Enter destination location";
 
-/* "Add Flight Details" used on booking airport ride */
-"Text.Airport.AddFlightDetails" = "Add Flight Details";
-
 /* "Flight number" used as the flight number field placeholder */
 "Text.Airport.FlightNumber" = "Flight Number";
 
 /* Message on airport screen for encouraging user to enter as much info about airport booking as possible */
 "Text.Airport.HelpfulMessage" = "Please enter a valid flight number";
-
-/* "Airport Pickup" used on screen for airport bookinga */
-"Text.Airport.Pickup" = "Airport Pickup";
 
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "All";
@@ -173,10 +146,9 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Your final fare might be affected by tips, tolls, taxes, and other charges.";
 
-"Text.Booking.CountryCodeSelection.Search" = "Search country/region";
+"Text.Booking.BookNow" = "BOOK NOW";
 
-/* Country Code Selection */
-"Text.Booking.CountryCodeSelection.Title" = "Country / Region";
+"Text.Booking.CountryCodeSelection.Search" = "Search country/region";
 
 "Text.Booking.EnterDestination" = "Enter destination to see available fleets";
 
@@ -198,13 +170,19 @@
 
 "Text.Booking.LearnMore" = "Learn more";
 
+"Text.Booking.LegalNotice" = "Legal notice";
+
+"Text.Booking.LegalNoticeLink" = "";
+
+"Text.Booking.LegalNoticeText" = "";
+
+"Text.Booking.LegalNoticeTitle" = "";
+
 "Text.Booking.MaximumLuggages" = "%1$@ luggages maximum";
 
 "Text.Booking.MaximumPassengers" = "%1$@ passengers maximum";
 
 "Text.Booking.MeteredInfoBox" = "This fleet is a regulated metered taxi. The quote is an estimate based on the trip factors (distance, time, etc).";
-
-"Text.Booking.Next" = "NEXT";
 
 /* %1$@ if you have suggestions for local fleets. */
 "Text.Booking.NoAvailabilityBody" = "%1$@ if you have suggestions for local fleets.";
@@ -218,14 +196,6 @@
 "Text.Booking.Passenger" = "Passenger";
 
 "Text.Booking.PassengerDetails.Add" = "Add Passenger";
-
-"Text.Booking.PassengerDetails.Email" = "Email";
-
-"Text.Booking.PassengerDetails.FirstName" = "First Name";
-
-"Text.Booking.PassengerDetails.LastName" = "Last Name";
-
-"Text.Booking.PassengerDetails.MobilePhone" = "Mobile Phone Number";
 
 "Text.Booking.PassengerDetails.SaveAction" = "SAVE";
 
@@ -243,12 +213,19 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
 
+"Text.Booking.QuoteExpired" = "Quote expired";
+
+"Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
+
 /* Booking */
 "Text.Booking.RequestCar" = "PAY AND BOOK";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
 "Text.Booking.RequestReceived" = "Booking Received";
+
+/* Accessibility hint for prebook feature entry point */
+"Text.Booking.ScheduleRide" = "Schedule the ride";
 
 "Text.Booking.TrainTracking" = "Train tracking";
 
@@ -259,9 +236,6 @@
 "Text.Bookings.Alert.CancellationSuccess.Message" = "Your trip has been cancelled successfully.";
 
 "Text.Bookings.Alert.CancellationSuccess.Title" = "Ride cancellation successful";
-
-/* used as a call to action on a button in the empty bookings screen: English: "Book Ride" */
-"Text.Bookings.BookATrip" = "Book Ride";
 
 /* "Cancel Ride" button action */
 "Text.Bookings.CancelRide" = "Cancel Ride";
@@ -276,6 +250,8 @@
 "Text.Bookings.CouldNotLoadTrips" = "Could not load trips.";
 
 "Text.Bookings.eta" = "ETA";
+
+"Text.Bookings.NewRide" = "NEW RIDE";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "No rides";
@@ -339,6 +315,8 @@
 /* When fetching the user profile fails */
 "Text.Error.GetUserFails" = "There was a problem getting your profile.";
 
+"Text.Error.LoyaltyModeNotEligibleForPreAuth" = "Current loyalty mode is not eligible for pre-authorization";
+
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Oops, something went wrong. Please try again.";
 
@@ -350,18 +328,22 @@
 
 "Text.Error.Payment.Alert.Title" = "Issue With Card";
 
+"Text.Error.Payment.NoDetails.Message" = "Something went wrong, please retry or select another quote";
+
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "Prebook cannot be made within the current hour.";
 
 /* "Something went wrong" used as a title for error alert */
 "Text.Error.SomethingWentWrong" = "Something went wrong";
 
-"Text.Error.UnsupportedCurrency" = "The currency is not supported yet";
+"Text.Error.UnkownLoyaltyError" = "An error has occurred. To earn or use your loyalty points please try again later.";
+
+"Text.Error.UnsupportedCurrency" = "An error has occurred. The currency is not supported";
 
 /* Theoretical edge case where the braintree token is missing */
 "Text.Errors.failedToInitialisePaymentSetup" = "Issue with initialising payments, please contact support";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your points balance is insufficient";
+"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your balance is not sufficient to pay for this ride";
 
 "Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
 
@@ -374,19 +356,12 @@
 
 "Text.FeedbackView.app" = "How easy did you find using the app?";
 
-"Text.FeedbackView.confirmation" = "Thank you for submitting your feedback";
-
 "Text.FeedbackView.pob" = "How was your experience whilst in the taxi (e.g. taxi cleanliness, routing and driver)? How easy did you find using the app?";
 
 "Text.FeedbackView.pre_pob" = "How was your experience with finding the pick-up location and meeting your driver?";
 
 /* FeedBackView */
 "Text.FeedbackView.quote" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
-
-"Text.Generic.Add" = "Add";
-
-/* "Additional information" used as placeholder on airport details screen */
-"Text.Generic.AdditionalInformation" = "Additional Information";
 
 "Text.Generic.Back" = "Back";
 
@@ -398,13 +373,10 @@
 /* English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking */
 "Text.Generic.CancellationPolicy" = "Cancellation Policy";
 
-/* "Cancelled" */
-"Text.Generic.Cancelled" = "Cancelled";
-
 /* english "Card" (referring to payment card) */
 "Text.Generic.Card" = "Card";
 
-"Text.Generic.Change" = "Change";
+"Text.Generic.Checked" = "Checked";
 
 "Text.Generic.Close" = "Close";
 
@@ -415,15 +387,11 @@
 /* "Completed" */
 "Text.Generic.Completed" = "Completed";
 
-"Text.Generic.Contact" = "Contact";
-
 "Text.Generic.Continue" = "Continue";
 
 "Text.Generic.Destination" = "Destination";
 
 "Text.Generic.Dismiss" = "Dismiss";
-
-"Text.Generic.Done" = "Done";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
@@ -449,13 +417,7 @@
 /* "Got It" (generally used on alert buttons) */
 "Text.Generic.GotIt" = "Got It";
 
-/* Password Entry Button */
-"Text.Generic.Hide" = "Hide";
-
-"Text.Generic.Logout" = "Sign out";
-
-/* english "making a booking". Used in terms conditions construction */
-"Text.Generic.MakingBookingAction" = "making a booking";
+"Text.Generic.Locale" = "en_GB";
 
 "Text.Generic.MeetGreet" = "Meet and greet";
 
@@ -475,7 +437,7 @@
 
 "Text.Generic.Ok" = "OK";
 
-"Text.Generic.Optional" = "Optional";
+"Text.Generic.Or" = "OR";
 
 /* "Payment" used as a button in the side menu to reach all your payment methods */
 "Text.Generic.Payment" = "Payment";
@@ -513,9 +475,6 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Save";
 
-/* Password Entry Button */
-"Text.Generic.Show" = "Show";
-
 /* english: "status" */
 "Text.Generic.Status" = "Status";
 
@@ -547,25 +506,18 @@
 /* No drivers available */
 "Text.Generic.TripStatus.NoDriversAvailable" = "No Drivers available";
 
+"Text.Generic.Unchecked" = "Unchecked";
+
 /* "Unkown" */
 "Text.Generic.Unknown" = "Unknown";
 
 "Text.Generic.Yes" = "Yes";
-
-/* "Allocated" when a driver has been allocated */
-"Text.GenericTripStatus.Allocated" = "Allocated";
-
-/* "Driver Approaching" */
-"Text.GenericTripStatus.Approaching" = "Driver Approaching";
 
 /* Driver Arrived */
 "Text.GenericTripStatus.Arrived" = "Driver Arrived";
 
 /* "Cancelled" */
 "Text.GenericTripStatus.Cancelled" = "Cancelled";
-
-/* Cancelled by Karhoo */
-"Text.GenericTripStatus.CancelledByKarhoo" = "Cancelled by Karhoo";
 
 /* "Completed" (trip completed) */
 "Text.GenericTripStatus.Completed" = "Completed";
@@ -576,14 +528,8 @@
 /* "Driver En Route" when a driver is en route */
 "Text.GenericTripStatus.EnRoute" = "Driver En Route";
 
-/* "Failed" */
-"Text.GenericTripStatus.Failed" = "Failed";
-
 /* "Incomplete" */
 "Text.GenericTripStatus.Incomplete" = "Pending State";
-
-/* in english: "Requested" */
-"Text.GenericTripStatus.Initialised" = "Requested";
 
 /* "On Board" */
 "Text.GenericTripStatus.PassengerOnBoard" = "On Board";
@@ -603,13 +549,19 @@
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
 
+"Text.Loyalty.BalanceTitle" = "BALANCE: %1$@ POINTS";
+
 "Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
+
+"Text.Loyalty.BurnOffSubtitle" = "You can enable your loyalty points to pay for the ride";
+
+"Text.Loyalty.BurnOnSubtitle" = "Pay %1$@ %2$@ with %3$@ loyalty points";
+
+"Text.Loyalty.BurnTitle" = "Use your points";
 
 "Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
 
-"Text.Loyalty.PointsBurnedForTrip" = "You are using %1$@ points";
-
-"Text.Loyalty.PointsEarnedForTrip" = "This ride earns you %1$@ points ";
+"Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyalty points will be added to your account balance at the end of the ride";
 
 "Text.Loyalty.Title" = "Loyalty points";
 
@@ -726,8 +678,6 @@
 /* Call fleet button in trip screen (English: Call Fleet) */
 "Text.Trip.CallFleet" = "Call Fleet";
 
-"Text.Trip.CancelBookingConfirmation.Alert.Message" = "You may be charged a cancellation fee by the supplier.";
-
 "Text.Trip.CancelBookingConfirmation.Alert.Title" = "Cancel your ride?";
 
 /* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
@@ -840,18 +790,12 @@
 
 "Text.User.MobilePhoneNumber" = "Mobile phone number";
 
-"Text.User.Password" = "Password";
-
-"Text.User.PhoneCountryCode" = "Code";
-
 /* "We will notify you via email once your request has been processed." */
 "Text.User.SignupPendingMessage" = "We will notify you via email once your request has been processed.";
 
 "Text.VehicleClass.Electric" = "Electric";
 
 "Text.VehicleClass.Exec" = "Exec";
-
-"Text.VehicleClass.Executive" = "Executive";
 
 "Text.VehicleClass.Moto" = "Moto";
 
@@ -883,17 +827,4 @@
 "Text.VehicleType.MPV" = "MPV";
 
 "Text.VehicleType.Standard" = "Standard";
-
-"Vehicle.Tag.Childseat" = "Childseat";
-
-/* Vehicle tags */
-"Vehicle.Tag.Electric" = "Electric";
-
-"Vehicle.Tag.Executive" = "Executive";
-
-"Vehicle.Tag.Hybrid" = "Hybrid";
-
-"Vehicle.Tag.Taxi" = "Taxi";
-
-"Vehicle.Tag.Wheelchair" = "Wheelchair";
 

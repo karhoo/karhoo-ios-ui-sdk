@@ -19,6 +19,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
     private var mockTripService = MockTripService()
     private var mockBookingDetails = TestUtil.getRandomBookingDetails()
     private var mockUserService = MockUserService()
+    private var mockPaymentNonceProvider = MockPaymentNonceProvider()
     private var mockBookingMetadata: [String: Any]? = [:]
 
     override func setUp() {
@@ -86,12 +87,13 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
      *  Then: View should be updated and callback is called with trip
      */
     func testCorrectPaymentNonceIsUsed() {
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: .init(identifier: "", referer: "", organisationId: ""))
 
         let expectedNonce = Nonce(nonce: "mock_nonce")
-        mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
-
+        
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.bookTripPressed()
+        mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
 
         let tripBooked = TestUtil.getRandomTrip()
@@ -114,9 +116,12 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         let expectedNonce = Nonce(nonce: "mock_nonce")
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: expectedNonce,
                                                                      paymentProvider: "braintree")
-
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        
         testObject.bookTripPressed()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
+            
+        mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: expectedNonce)))
 
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
@@ -232,13 +237,16 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
-        testObject = KarhooCheckoutPresenter(quote: testQuote,
-                                             bookingDetails: mockBookingDetails,
-                                             bookingMetadata: mockBookingMetadata,
-                                             threeDSecureProvider: mockThreeDSecureProvider,
-                                             tripService: mockTripService,
-                                             userService: mockUserService,
-                                             callback: guestBookingRequestTrip)
+        testObject = KarhooCheckoutPresenter(
+            quote: testQuote,
+            bookingDetails: mockBookingDetails,
+            bookingMetadata: mockBookingMetadata,
+            threeDSecureProvider: mockThreeDSecureProvider,
+            tripService: mockTripService,
+            userService: mockUserService,
+            paymentNonceProvider: mockPaymentNonceProvider,
+            callback: guestBookingRequestTrip
+        )
         testObject.load(view: mockView)
     }
 }

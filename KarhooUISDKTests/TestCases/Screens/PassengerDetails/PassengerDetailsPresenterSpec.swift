@@ -15,18 +15,18 @@ class PassengerDetailsPresenterSpec: XCTestCase {
     private var testObject: PassengerDetailsPresenter!
     private var mockView: MockPassengerDetailsViewController!
     private var mockDetails: PassengerDetails!
-    private var callbackResult: ScreenResult<PassengerDetailsResult>!
+    private var mockDelegate: MockPassengerDetailsDelegate!
     
     override func setUp() {
         super.setUp()
         
+        mockDelegate = MockPassengerDetailsDelegate()
         mockDetails = TestUtil.getRandomPassengerDetails()
-        testObject = PassengerDetailsPresenter(details: mockDetails, callback: passengerDetailsResult)
+        testObject = PassengerDetailsPresenter()
         mockView = MockPassengerDetailsViewController()
-    }
-    
-    private func passengerDetailsResult(result: ScreenResult<PassengerDetailsResult>) {
-        callbackResult = result
+        mockView.details = mockDetails
+        testObject.delegate = mockDelegate
+        mockView.delegate = mockDelegate
     }
     
     /**
@@ -35,9 +35,8 @@ class PassengerDetailsPresenterSpec: XCTestCase {
       */
     func testDoneClicked() {
         testObject.doneClicked(newDetails: mockDetails, country: KarhooCountryParser.defaultCountry)
-        XCTAssert(callbackResult != nil)
-        XCTAssert(callbackResult.isComplete())
-        XCTAssert(callbackResult.completedValue()?.details == mockDetails)
+        XCTAssert(mockDelegate.didInputPassengerDetailsCalled)
+        XCTAssert(mockDelegate.details?.details == mockDetails)
     }
     
     /**
@@ -46,9 +45,8 @@ class PassengerDetailsPresenterSpec: XCTestCase {
       */
     func testBackClicked() {
         testObject.backClicked()
-        XCTAssert(callbackResult != nil)
-        XCTAssert(callbackResult.isCancelledByUser())
-        XCTAssert(callbackResult.completedValue() == nil)
+        XCTAssert(mockDelegate.didCancelInputCalled)
+        XCTAssert(mockDelegate.details == nil)
     }
     
     /**

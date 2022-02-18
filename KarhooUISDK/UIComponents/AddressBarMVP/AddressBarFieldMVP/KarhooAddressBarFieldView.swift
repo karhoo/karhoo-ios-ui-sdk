@@ -67,7 +67,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         clearButton.imageView?.contentMode = .scaleAspectFit
         let imageInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         clearButton.imageEdgeInsets = imageInsets
-        clearButton.tintColor = KarhooUI.colors.darkGrey
+        clearButton.tintColor = KarhooUI.colors.text
         stackContainer.addArrangedSubview(clearButton)
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
