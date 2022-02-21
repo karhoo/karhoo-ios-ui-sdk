@@ -172,6 +172,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func updateBookButtonWithEnabledState() {
         if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
+        } else if bookingRequestInProgress {
+            // nothing to do here, the view is already in `Requesting` state
         } else {
             view?.setDefaultState()
         }
