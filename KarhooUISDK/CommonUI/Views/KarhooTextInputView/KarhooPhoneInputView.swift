@@ -27,6 +27,7 @@ class KarhooPhoneInputView: UIView {
     private var didSetUpConstraints: Bool = false
     private var iconImage: UIImage?
     private var errorFeedbackType: KarhooTextInputViewErrorFeedbackType = .icon
+    var focusPhoneNumber: Bool = true
     
     private var country: Country = KarhooCountryParser.defaultCountry {
         didSet {
@@ -191,6 +192,9 @@ class KarhooPhoneInputView: UIView {
 
             self?.country = value
             self?.runValidation()
+            if self?.focusPhoneNumber ?? false {
+                self?.textView.becomeFirstResponder()
+            }
         }
 
         let vc = CountryCodeSelectionViewController(presenter: presenter)

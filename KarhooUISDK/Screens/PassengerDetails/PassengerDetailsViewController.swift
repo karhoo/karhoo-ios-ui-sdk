@@ -58,6 +58,12 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         }
     }
     
+    var focusPhoneNumber: Bool = true {
+        didSet {
+            mobilePhoneInputView.focusPhoneNumber = focusPhoneNumber
+        }
+    }
+    
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
