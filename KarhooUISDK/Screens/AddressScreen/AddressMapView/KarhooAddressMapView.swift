@@ -47,7 +47,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         closeButton.setImage(UIImage.uisdkImage("cross"), for: .normal)
         closeButton.addTarget(self, action: #selector(didPressClose), for: .touchUpInside)
         closeButton.imageView?.contentMode = .scaleAspectFit
-        closeButton.tintColor = .black
+        closeButton.tintColor = KarhooUI.colors.text
         addSubview(closeButton)
         
         closeButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, width: 60, height: 60)
@@ -95,9 +95,9 @@ final class KarhooAddressMapView: UIView, AddressMapView {
     private func setUpView(addressType: AddressType) {
         addressDisplayView.set(addressType: addressType)
         if addressType == .pickup {
-            map.set(centerIcon: PinAsset.pickup.rawValue, tintColor: KarhooUI.colors.secondary)
+            map.set(centerIcon: PinAsset.pickup.rawValue, tintColor: KarhooUI.colors.primary)
         } else {
-            map.set(centerIcon: PinAsset.destination.rawValue, tintColor: KarhooUI.colors.primary)
+            map.set(centerIcon: PinAsset.destination.rawValue, tintColor: KarhooUI.colors.secondary)
         }
     }
     

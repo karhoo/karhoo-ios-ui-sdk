@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Adyen
 import Foundation
 
 final class KarhooRideDetailsPresenter: RideDetailsPresenter {
@@ -16,13 +17,15 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
     private let tripService: TripService
     private var cancelRideBehaviour: CancelRideBehaviourProtocol?
     private weak var rideDetailsView: RideDetailsView?
-    private var tripTrackingObserver: Observer<TripInfo>?
-    private var tripTrackingObservable: Observable<TripInfo>?
+    private var tripTrackingObserver: KarhooSDK.Observer<TripInfo>?
+    private var tripTrackingObservable: KarhooSDK.Observable<TripInfo>?
     private let popupDialogScreenBuilder: PopupDialogScreenBuilder
     private let callback: ScreenResultCallback<RideDetailsAction>
     private let analyticsService: AnalyticsService
+    private let analytics: Analytics
     private let tripFeedbackScreenBuilder: TripFeedbackScreenBuilder
     private let tripRatingCache: TripRatingCache
+    private let phoneCaller: PhoneNumberCallerProtocol
 
     init(trip: TripInfo,
          mailComposer: FeedbackEmailComposer,
@@ -30,7 +33,9 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
          popupDialogScreenBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
          callback: @escaping ScreenResultCallback<RideDetailsAction>,
          analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          feedbackScreenBuilder: TripFeedbackScreenBuilder = UISDKScreenRouting.default.tripFeedbackScreen(),
+         phoneCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache()) {
         self.trip = trip
         self.mailComposer = mailComposer
@@ -38,8 +43,10 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         self.popupDialogScreenBuilder = popupDialogScreenBuilder
         self.callback = callback
         self.analyticsService = analyticsService
+        self.analytics = analytics
         self.tripFeedbackScreenBuilder = feedbackScreenBuilder
         self.tripRatingCache = tripRatingCache
+        self.phoneCaller = phoneCaller
 
         self.setUpTripListener()
     }
@@ -105,6 +112,16 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         self.rideDetailsView?.push(feedbackScreen)
     }
 
+    func didPressContactFleet(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactFleetClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+    
+    func didPressContactDriver(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactDriverClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+
     private func setNavigationBarWithScheduledDate() {
         if let date = trip.dateScheduled {
             let dateFormatter = KarhooDateFormatter(timeZone: trip.origin.timezone())
@@ -117,7 +134,7 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
             return
         }
 
-        tripTrackingObserver = Observer<TripInfo>.value { [weak self] trip in
+        tripTrackingObserver = KarhooSDK.Observer<TripInfo>.value { [weak self] trip in
             self?.updated(trip: trip)
         }
 

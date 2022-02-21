@@ -24,7 +24,7 @@
                     <connections>
                         <outletCollection property="buttonFontSubtitleBold" destination="UjA-4u-3jF" collectionClass="NSMutableArray" id="nVM-fB-ui7"/>
                         <outletCollection property="lightGreyBackgroundColor" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="KHA-Jv-ieh"/>
-                        <outletCollection property="primaryBackgroundColor" destination="lbL-WM-zC3" collectionClass="NSMutableArray" id="ohd-Uf-ydM"/>
+                        <outletCollection property="secondaryBackgroundColor" destination="lbL-WM-zC3" collectionClass="NSMutableArray" id="Oea-Oq-gWR"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbL-WM-zC3">

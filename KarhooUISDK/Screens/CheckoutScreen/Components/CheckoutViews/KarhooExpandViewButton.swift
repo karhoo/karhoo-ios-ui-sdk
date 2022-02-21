@@ -1,5 +1,5 @@
 //
-//  KarhooLearnMoreButton.swift
+//  KarhooExpandViewButton.swift
 //  KarhooUISDK
 //
 //  Created by Anca Feurdean on 18.08.2021.
@@ -8,26 +8,22 @@
 
 import UIKit
 
-protocol LearnMoreButtonDelegate: AnyObject {
+protocol ExpandViewButtonDelegate: AnyObject {
     func learnMorePressed()
     func learnLessPressed()
 }
 
-private enum ButtonMode {
-    case learnMore
-    case learnLess
+enum ExpandButtonMode {
+    case open
+    case closed
     
-    var image: UIImage {
+    mutating func toggle() {
         switch self {
-        case .learnLess:
-            return UIImage.uisdkImage("dropupIcon")
-        case .learnMore:
-            return UIImage.uisdkImage("dropdownIcon")
+        case .open:
+            self = .closed
+        case .closed:
+            self = .open
         }
-    }
-    
-    var title: String {
-        return UITexts.Booking.learnMore
     }
 }
 
@@ -38,17 +34,18 @@ public struct KHRevealMoreButtonViewID {
     public static let image = "dropdown_up_icon"
 }
 
-final class KarhooLearnMoreButton: UIButton {
-    private weak var actions: LearnMoreButtonDelegate?
-    private var currentMode: ButtonMode = .learnMore
+final class KarhooExpandViewButton: UIButton {
+    private let title: String
+    private let onExpandAction: () -> Void
+    private let onCollapseAction: () -> Void
+    private var currentMode: ExpandButtonMode = .open
     private var didSetupConstraints = false
     
-    private var containerView: UIView = {
+    private lazy var containerView: UIView = {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.accessibilityIdentifier = KHRevealMoreButtonViewID.container
         containerView.backgroundColor = .clear
-        
         return containerView
     }()
     
@@ -57,7 +54,8 @@ final class KarhooLearnMoreButton: UIButton {
         button.accessibilityIdentifier = KHBookingButtonViewID.button
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(learnMorePressed), for: .touchUpInside)
-        
+        button.accessibilityLabel = title
+
         return button
     }()
     
@@ -66,7 +64,7 @@ final class KarhooLearnMoreButton: UIButton {
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonLabel.accessibilityIdentifier = KHRevealMoreButtonViewID.buttonTitle
         buttonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
-        buttonLabel.text = currentMode.title
+        buttonLabel.text = title
         buttonLabel.textColor = KarhooUI.colors.accent
         buttonLabel.textAlignment = .center
         
@@ -75,7 +73,7 @@ final class KarhooLearnMoreButton: UIButton {
 
     private lazy var dropdownImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = currentMode.image
+        imageView.image = UIImage.uisdkImage("dropdownIcon")
         imageView.accessibilityIdentifier = KHRevealMoreButtonViewID.image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = KarhooUI.colors.accent
@@ -83,7 +81,11 @@ final class KarhooLearnMoreButton: UIButton {
         return imageView
     }()
     
-    init() {
+    init(title: String, initialMode: ExpandButtonMode, onExpand: @escaping () -> Void, onCollapce: @escaping () -> Void) {
+        self.title = title
+        self.onExpandAction = onExpand
+        self.onCollapseAction = onCollapce
+        self.currentMode = initialMode
         super.init(frame: .zero)
         self.setupView()
     }
@@ -94,10 +96,11 @@ final class KarhooLearnMoreButton: UIButton {
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
+        isAccessibilityElement = true
         accessibilityIdentifier = KHRevealMoreButtonViewID.button
-        
+        accessibilityTraits = .button
+        accessibilityLabel = title
         addSubview(containerView)
-        
         containerView.addSubview(buttonLabel)
         containerView.addSubview(dropdownImage)
         containerView.addSubview(button)
@@ -110,55 +113,56 @@ final class KarhooLearnMoreButton: UIButton {
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            
-            containerView.anchor(top: topAnchor,
-                                 leading: leadingAnchor,
-                                 bottom: bottomAnchor,
-                                 trailing: trailingAnchor,
-                                 paddingLeft: 5.0,
-                                 paddingRight: 5.0)
-            
-            buttonLabel.anchor(top: topAnchor,
-                               bottom: bottomAnchor,
-                               trailing: dropdownImage.leadingAnchor,
-                               paddingTop: 5.0,
-                               paddingBottom: 5.0,
-                               paddingRight: 5.0)
-            
+            containerView.anchor(
+                top: topAnchor,
+                leading: leadingAnchor,
+                bottom: bottomAnchor,
+                trailing: trailingAnchor,
+                paddingLeft: 5.0,
+                paddingRight: 5.0
+            )
+            buttonLabel.anchor(
+                top: topAnchor,
+                leading: containerView.leadingAnchor,
+                bottom: bottomAnchor,
+                trailing: dropdownImage.leadingAnchor,
+                paddingTop: 5.0,
+                paddingBottom: 5.0,
+                paddingRight: 5.0
+            )
             let imageSize: CGFloat = 16.0
             dropdownImage.centerY(inView: self)
-            dropdownImage.anchor(trailing: containerView.trailingAnchor,
-                                 width: imageSize,
-                                 height: imageSize)
+            dropdownImage.anchor(
+                trailing: containerView.trailingAnchor,
+                width: imageSize,
+                height: imageSize
+            )
             
-            button.anchor(top: containerView.topAnchor,
-                          leading: buttonLabel.leadingAnchor,
-                          bottom: containerView.bottomAnchor,
-                          trailing: containerView.trailingAnchor)
-
+            button.anchor(
+                top: containerView.topAnchor,
+                leading: buttonLabel.leadingAnchor,
+                bottom: containerView.bottomAnchor,
+                trailing: containerView.trailingAnchor
+            )
             didSetupConstraints = true
         }
-        
         super.updateConstraints()
     }
 
     @objc private func learnMorePressed() {
         switch currentMode {
-        case .learnMore:
-            currentMode = .learnLess
-            actions?.learnMorePressed()
-        case .learnLess:
-            currentMode = .learnMore
-            actions?.learnLessPressed()
+        case .open:
+            currentMode.toggle()
+            UIView.animate(withDuration: UIConstants.Duration.long, animations: { [weak self] in
+                self?.dropdownImage.transform = CGAffineTransform(rotationAngle: .pi)
+            })
+            onCollapseAction()
+        case .closed:
+            currentMode.toggle()
+            UIView.animate(withDuration: UIConstants.Duration.long, animations: { [weak self] in
+                self?.dropdownImage.transform = .identity
+            })
+            onExpandAction()
         }
-        
-        UIView.animate(withDuration: 0.45, animations: { [unowned self] in
-            self.dropdownImage.image = currentMode.image
-            self.buttonLabel.text = currentMode.title
-        })
-    }
-
-    func set(actions: LearnMoreButtonDelegate) {
-        self.actions = actions
     }
 }

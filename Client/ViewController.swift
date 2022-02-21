@@ -126,6 +126,7 @@ class ViewController: UIViewController {
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
+        KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired = true
         usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
     

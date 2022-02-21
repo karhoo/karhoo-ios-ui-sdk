@@ -1,0 +1,97 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Adyen3DS2",
+        "repositoryURL": "https://github.com/Adyen/adyen-3ds2-ios",
+        "state": {
+          "branch": null,
+          "revision": "5dc03bf6133b6bc1cbde7800d4b980082e5241f9",
+          "version": "2.2.4"
+        }
+      },
+      {
+        "package": "Adyen",
+        "repositoryURL": "https://github.com/Adyen/adyen-ios",
+        "state": {
+          "branch": null,
+          "revision": "948aa4b9d36518c8ac6a271dbe589d10354621e9",
+          "version": "3.9.0"
+        }
+      },
+      {
+        "package": "AdyenWeChatPayInternal",
+        "repositoryURL": "https://github.com/Adyen/adyen-wechatpay-ios",
+        "state": {
+          "branch": null,
+          "revision": "8441165f8db64710f0cc477f98105668d0652e6e",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "BraintreeDropIn",
+        "repositoryURL": "https://github.com/braintree/braintree-ios-drop-in",
+        "state": {
+          "branch": null,
+          "revision": "cf6eead6b1751ff517d6100fa0c4d5c0a3628244",
+          "version": "9.3.0"
+        }
+      },
+      {
+        "package": "Braintree",
+        "repositoryURL": "https://github.com/braintree/braintree_ios",
+        "state": {
+          "branch": null,
+          "revision": "6d57ebe2182ab0e441c8ec359f3c8ba4dc5edb6b",
+          "version": "5.5.0"
+        }
+      },
+      {
+        "package": "FloatingPanel",
+        "repositoryURL": "https://github.com/scenee/FloatingPanel",
+        "state": {
+          "branch": null,
+          "revision": "9b1cb68f0a0f44fb726835d95f6079d94a408af7",
+          "version": "2.0.1"
+        }
+      },
+      {
+        "package": "KarhooSDK",
+        "repositoryURL": "https://github.com/karhoo/karhoo-ios-sdk",
+        "state": {
+          "branch": null,
+          "revision": "53a754877a3e3140d12aa7c00bcc0c51f3c19bfa",
+          "version": "1.5.5"
+        }
+      },
+      {
+        "package": "KeychainSwift",
+        "repositoryURL": "https://github.com/evgenyneu/keychain-swift",
+        "state": {
+          "branch": null,
+          "revision": "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
+          "version": "19.0.0"
+        }
+      },
+      {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
+        "state": {
+          "branch": null,
+          "revision": "dacede2d256b2807a1c5b4906a9c87c9f6f32fa3",
+          "version": "3.3.0"
+        }
+      },
+      {
+        "package": "Reachability",
+        "repositoryURL": "https://github.com/ashleymills/Reachability.swift",
+        "state": {
+          "branch": null,
+          "revision": "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+          "version": "5.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

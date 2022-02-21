@@ -61,6 +61,7 @@ public final class AlertHandler: AlertHandlerProtocol {
         ])
     }
 
+    @discardableResult
     public func show(title: String?, message: String?, actions: [AlertAction]) -> UIAlertController {
         let alert = UIAlertController.create(title: title, message: message, preferredStyle: .alert)
 

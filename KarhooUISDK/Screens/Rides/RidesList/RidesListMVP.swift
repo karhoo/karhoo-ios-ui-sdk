@@ -37,4 +37,8 @@ protocol RidesListActions: AnyObject {
     func trackTrip(_ trip: TripInfo)
 
     func rebookTrip(_ trip: TripInfo)
+
+    func contactFleet(_ trip: TripInfo, number: String)
+
+    func contactDriver(_ trip: TripInfo, number: String)
 }

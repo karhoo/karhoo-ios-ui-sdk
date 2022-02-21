@@ -37,7 +37,7 @@ final class KarhooTripPresenter: TripPresenter,
          cancelRideBehaviour: CancelRideBehaviourProtocol? = nil,
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
          logger: Logger = DebugLogger(),
-         analytics: Analytics = KarhooAnalytics(),
+         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          callback: @escaping ScreenResultCallback<TripScreenResult>) {
         self.trip = initialTrip
@@ -88,6 +88,8 @@ final class KarhooTripPresenter: TripPresenter,
 
         tripTrackingObservable = observable
         tripTrackingObserver = observer
+
+        reportScreenOpened()
     }
 
     func cancelBookingPressed() {
@@ -96,7 +98,7 @@ final class KarhooTripPresenter: TripPresenter,
 
     func callDriverPressed() {
         phoneCaller.call(number: trip.vehicle.driver.phoneNumber)
-        analytics.userCalledDriver()
+        analytics.userCalledDriver(trip: trip)
     }
 
     func callFleetPressed() {
@@ -164,6 +166,16 @@ final class KarhooTripPresenter: TripPresenter,
         finishWithResult(.completed(result: .closed))
     }
 
+    func contactDriver(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactDriverClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+    
+    func contactFleet(_ phoneNumber: String) {
+        phoneCaller.call(number: phoneNumber)
+        analytics.contactFleetClicked(page: .vehicleTracking, tripDetails: trip)
+    }
+
     private func updateAccordingToTrip() {
         setStatusAccordingToTrip(animated: true)
         updateBookingDetails()
@@ -196,7 +208,7 @@ final class KarhooTripPresenter: TripPresenter,
             return
         }
 
-        analytics.tripStateChanged(to: trip.state.rawValue)
+        analytics.tripStateChanged(tripState: trip)
 
         let userMarkerVisible = TripInfoUtility.canCancel(trip: trip)
         tripView?.set(userMarkerVisible: userMarkerVisible)
@@ -257,5 +269,14 @@ final class KarhooTripPresenter: TripPresenter,
 
     private func finishWithResult(_ result: ScreenResult<TripScreenResult>) {
         self.callback(result)
+    }
+
+    // MARK: - Analytics
+
+    private func reportScreenOpened() {
+        analytics.trackTripOpened(
+            tripDetails: trip,
+            isGuest: Karhoo.configuration.authenticationMethod().isGuest()
+        )
     }
 }

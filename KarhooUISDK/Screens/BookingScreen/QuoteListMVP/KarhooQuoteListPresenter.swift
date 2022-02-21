@@ -7,8 +7,8 @@
 //
 
 import KarhooSDK
+import Adyen
 import Foundation
-import Dispatch
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
@@ -16,29 +16,39 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteService: QuoteService
     private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
-    private var quotesObserver: Observer<Quotes>?
-    private var quoteSearchObservable: Observable<Quotes>?
+    private var quotesObserver: KarhooSDK.Observer<Quotes>?
+    private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
     private var selectedQuoteOrder: QuoteSortOrder = .qta
     private let quoteSorter: QuoteSorter
-    private let dateFormatter: DateFormatterType
+    private let analytics: Analytics
 
-    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
-         quoteService: QuoteService = Karhoo.getQuoteService(),
-         quoteListView: QuoteListView,
-         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-         dateFormatter: DateFormatterType = KarhooDateFormatter()) {
+    init(
+        bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+        quoteService: QuoteService = Karhoo.getQuoteService(),
+        quoteListView: QuoteListView,
+        quoteSorter: QuoteSorter = KarhooQuoteSorter(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+    ) {
         self.bookingStatus = bookingStatus
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
-        self.dateFormatter = dateFormatter
+        self.analytics = analytics
         bookingStatus.add(observer: self)
     }
 
     deinit {
         bookingStatus.remove(observer: self)
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+    }
+
+    func screenWillAppear() {
+        guard let bookingDetails = bookingStatus.getBookingDetails() else {
+            assertionFailure("Unable to get data to upload")
+            return
+        }
+        analytics.quoteListOpened(bookingDetails)
     }
 
     func selectedQuoteCategory(_ category: QuoteCategory) {
@@ -106,6 +116,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
     }
 
+    private func setExpirationDates(of quotes: Quotes) {
+        quotes.all.forEach { $0.setExpirationDate(using: quotes.validity) }
+    }
+
     private func updateViewQuotes(animated: Bool) {
         guard let fetchedQuotes = self.fetchedQuotes,
               let selectedCategory = self.selectedQuoteCategory else {
@@ -164,7 +178,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
 
-        quotesObserver = Observer<Quotes> { [weak self] result in
+        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
 
             if result.successValue()?.all.isEmpty == false {
                 self?.quoteListView?.hideLoadingView()
@@ -173,6 +187,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
             switch result {
             case .success(let quotes):
+                self?.setExpirationDates(of: quotes)
                 self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
                 if details.destinationLocationDetails != nil, details.scheduledDate != nil {
                     self?.quoteListView?.hideQuoteSorter()

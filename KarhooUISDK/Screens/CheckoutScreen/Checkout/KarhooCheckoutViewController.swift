@@ -4,21 +4,38 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
+// swiftlint:disable file_length
 
 import UIKit
 import KarhooSDK
 
 final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
+    // MARK: - Nested types
+
+    final class Builder: CheckoutScreenBuilder {
+        func buildCheckoutScreen(
+            quote: Quote,
+            bookingDetails: BookingDetails,
+            bookingMetadata: [String: Any]?,
+            callback: @escaping ScreenResultCallback<TripInfo>
+        ) -> Screen {
+            
+            let presenter = KarhooCheckoutPresenter(
+                quote: quote,
+                bookingDetails: bookingDetails,
+                bookingMetadata: bookingMetadata,
+                callback: callback
+            )
+            return KarhooCheckoutViewController(presenter: presenter)
+        }
+    }
+
+    // MARK: - Properties
+
     private var didSetupConstraints = false
-    private var termsConditionsView: TermsConditionsView!
     private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
-    var presenter: CheckoutPresenter
-    var passengerDetailsValid: Bool?
-    var headerView: KarhooCheckoutHeaderView!
-    var loyaltyView: KarhooLoyaltyView!
-    
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
     private let smallPadding: CGFloat = 10.0
@@ -29,7 +46,25 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private let mediumCornerRadius: CGFloat = 8.0
     private let headerViewHeight: CGFloat = 90.0
     private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
-    
+    private var mainStackBottomPadding: NSLayoutConstraint!
+
+    var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
+    var presenter: CheckoutPresenter
+    var passengerDetailsValid: Bool?
+    var paymentNonce: String?
+
+    // MARK: - Child ViewControllers
+  
+    var legalNoticeViewController: LegalNoticeViewController
+  
+    // MARK: - Views
+
+    private var termsConditionsView: TermsConditionsView!
+
+    private var headerView: KarhooCheckoutHeaderView!
+
+    private(set) var loyaltyView: KarhooLoyaltyView!
+ 
     private lazy var footerStack: UIStackView = {
         let footerStack = UIStackView()
         footerStack.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +74,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return footerStack
     }()
     
-    lazy var bookingButton: KarhooBookingButtonView = {
+    private(set) lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
         bookingButton.anchor(height: mainButtonHeight)
         bookingButton.set(actions: self)
@@ -51,16 +86,20 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
+        footerView.layer.shadowColor = KarhooUI.colors.black.cgColor
+        footerView.layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
+        footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
+        footerView.layer.shadowRadius = UIConstants.ShadowRadius.border
         return footerView
     }()
     
-    lazy var commentsInputText: KarhooTextInputView = {
+    private(set) lazy var commentsInputText: KarhooTextInputView = {
         let commentsInputText = KarhooTextInputView(contentType: .comment, isOptional: true, accessibilityIdentifier: "comment_input_view")
         commentsInputText.delegate = self
         return commentsInputText
     }()
     
-    private lazy var poiDetailsInputText: KarhooTextInputView = {
+    private(set) lazy var poiDetailsInputText: KarhooTextInputView = {
         let poiDetailsInputText = KarhooTextInputView(contentType: .poiDetails, isOptional: true, accessibilityIdentifier: "poi_input_view")
         poiDetailsInputText.delegate = self
         poiDetailsInputText.isHidden = true
@@ -75,16 +114,16 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
         return passengerDetailsAndPaymentView
     }()
-
-    private lazy var backButton: UIButton = {
+    
+    private(set) lazy var backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
-        button.tintColor = KarhooUI.colors.darkGrey
+        button.tintColor = KarhooUI.colors.text
         button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
-        button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        button.setTitleColor(KarhooUI.colors.text, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: smallSpacing, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -102,7 +141,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }()
     
     private lazy var baseStackView: BaseStackView = {
-       let baseStackView = BaseStackView()
+        let baseStackView = BaseStackView()
         baseStackView.translatesAutoresizingMaskIntoConstraints = false
         baseStackView.accessibilityIdentifier = "base_stack_view"
         baseStackView.viewSpacing(standardSpacing)
@@ -114,13 +153,13 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
         cancellationInfo.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
-        cancellationInfo.textColor = KarhooUI.colors.primaryTextColor
+        cancellationInfo.textColor = KarhooUI.colors.text
         cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
     }()
     
-    lazy var rideInfoStackView: UIStackView = {
+    private(set) lazy var rideInfoStackView: UIStackView = {
         let rideInfoStackView = UIStackView()
         rideInfoStackView.accessibilityIdentifier = "ride_info_stack_view"
         rideInfoStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +180,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return rideInfoView
     }()
     
-    lazy var farePriceInfoView: KarhooFareInfoView = {
+    private(set) lazy var farePriceInfoView: KarhooFareInfoView = {
         let farePriceInfoView = KarhooFareInfoView()
         farePriceInfoView.translatesAutoresizingMaskIntoConstraints = false
         farePriceInfoView.accessibilityIdentifier = "fare_price_info_view"
@@ -166,13 +205,13 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         timePriceView.set(actions: self)
         return timePriceView
     }()
-    
-    private var mainStackBottomPadding: NSLayoutConstraint!
-    
-    var paymentNonce: String?
-    
+
+    // MARK: - Lifecycle
+
     init(presenter: CheckoutPresenter) {
         self.presenter = presenter
+        let legalNoticePresenter = KarhooLegalNoticePresenter()
+        legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -184,12 +223,39 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
-        termsConditionsView = TermsConditionsView()
+        termsConditionsView = TermsConditionsView(
+            isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
+        )
         loyaltyView = KarhooLoyaltyView()
-        loyaltyView.set(delegate: self)
+        loyaltyView.delegate = self
         setUpView()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.screenWillAppear()
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+        forceLightMode()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showCheckoutView(true)
+    }
+    
+    override func updateViewConstraints() {
+        if didSetupConstraints == false {
+            setupConstraintsForDefault()
+            didSetupConstraints = true
+        }
+        super.updateViewConstraints()
+    }
+    
+    // MARK: - Setup
     private func setUpView() {
         container.addSubview(backButton)
         container.addSubview(baseStackView)
@@ -204,7 +270,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
-        
+        addChild(legalNoticeViewController)
+        baseStackView.addViewToStack(view: legalNoticeViewController.view)
+        legalNoticeViewController.didMove(toParent: self)
         container.addSubview(footerView)
         footerView.addSubview(footerStack)
         footerStack.addArrangedSubview(bookingButton)
@@ -215,15 +283,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         presenter.load(view: self)
     }
-    
-    override func updateViewConstraints() {
-        if didSetupConstraints == false {
-            setupConstraintsForDefault()
-            didSetupConstraints = true
-        }
-        super.updateViewConstraints()
-    }
-    
+
     // TODO: Children of stack views shouldn't be anchored to their parent.
     // Set the directionalLayoutMargins of the base stack view for insets
     // and the spacing of the base stack view for distancing the children between each other
@@ -271,62 +331,37 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding, paddingRight: smallPadding)
-        footerStack.anchor(top: footerView.topAnchor, leading: footerView.leadingAnchor, bottom: footerView.bottomAnchor, trailing: footerView.trailingAnchor)
-        termsConditionsView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor)
+        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding)
+        footerStack.anchor(
+            top: footerView.topAnchor,
+            leading: footerView.leadingAnchor,
+            bottom: footerView.bottomAnchor,
+            trailing: footerView.trailingAnchor,
+            paddingTop: standardPadding,
+            paddingBottom: standardPadding
+        )
+        termsConditionsView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
+        legalNoticeViewController.view.anchor(
+            top: termsConditionsView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor
+        )
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showCheckoutView(true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
-        forceLightMode()
-    }
-    
-    private func initialisePassengerDetails() -> PassengerDetails? {
-        if PassengerInfo.shared.getDetails() == nil {
-            return PassengerInfo.shared.currentUserAsPassenger()
-        } else {
-            return PassengerInfo.shared.getDetails()
-        }
-    }
-    
-    @objc private func didTapView() {
-        view.endEditing(true)
-    }
-    
-    @objc func backButtonPressed() {
-        presenter.didPressClose()
-    }
-    
-    func setPassenger(details: PassengerDetails?) {
-        passengerDetailsAndPaymentView.details = details
-    }
-    
-    func showCheckoutView(_ show: Bool) {
-        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
-        UIView.animate(withDuration: drawAnimationTime,
-                       animations: { [weak self] in
-                        self?.view.layoutIfNeeded()
-                       }, completion: { [weak self] completed in
-                        if completed && !show {
-                            self?.presenter.screenHasFadedOut()
-                            self?.dismiss(animated: false, completion: nil)
-                        }
-                       })
-    }
-    
+    // MARK: - CheckoutView methods
+
+    // MARK: Set state
+
     func setRequestingState() {
         disableUserInteraction()
         bookingButton.setRequestingMode()
     }
     
     func setMoreDetailsState() {
-        bookingButton.setNextMode()
+        bookingButton.setBookNowMode()
     }
     
     func setDefaultState() {
@@ -353,13 +388,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
         
-        self.loyaltyView.isHidden = !showLoyalty
+        loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
-            // TODO: confirm that the highPrice should be used here
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
-                                                    currency: quote.price.currencyCode,
-                                                    tripAmount: quote.price.highPrice)
-            self.loyaltyView.set(dataModel: loyaltyDataModel)
+                                                        currency: quote.price.currencyCode,
+                                                        tripAmount: quote.price.highPrice)
+            loyaltyView.set(dataModel: loyaltyDataModel)
         }
     }
     
@@ -386,37 +420,38 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     func retryAddPaymentMethod(showRetryAlert: Bool = false) {
         passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
-    
-    private func enableUserInteraction() {
-        backButton.isUserInteractionEnabled = true
-        backButton.tintColor = KarhooUI.colors.darkGrey
+
+    // MARK: Show
+
+    func showTermsConditionsRequiredError() {
+        termsConditionsView.showNoAcceptanceError()
+        baseStackView.scrollTo(termsConditionsView, animated: true)
     }
-    
-    private func disableUserInteraction() {
-        backButton.isUserInteractionEnabled = false
-        backButton.tintColor = KarhooUI.colors.medGrey
+
+    func showCheckoutView(_ show: Bool) {
+        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
+        UIView.animate(
+            withDuration: drawAnimationTime,
+            animations: { [weak self] in
+                self?.view.layoutIfNeeded()
+            },
+            completion: { [weak self] completed in
+                if completed && !show {
+                    self?.presenter.screenHasFadedOut()
+                    self?.dismiss(animated: false, completion: nil)
+                }
+            }
+        )
     }
-    
-    final class Builder: CheckoutScreenBuilder {
-        func buildCheckoutScreen(quote: Quote,
-                                 bookingDetails: BookingDetails,
-                                 bookingMetadata: [String: Any]?,
-                                 callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
-            
-            let presenter = KarhooCheckoutPresenter(quote: quote,
-                                                    bookingDetails: bookingDetails,
-                                                    bookingMetadata: bookingMetadata,
-                                                    callback: callback)
-            return KarhooCheckoutViewController(presenter: presenter)
-        }
-    }
+
+    // MARK: Data management
     
     func getPassengerDetails() -> PassengerDetails? {
-        return passengerDetailsAndPaymentView.details
+        passengerDetailsAndPaymentView.details
     }
     
     func getPaymentNonce() -> String? {
-        return self.paymentNonce
+        paymentNonce
     }
     
     func getComments() -> String? {
@@ -429,5 +464,66 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         return loyaltyView.getLoyaltyPreAuthNonce(completion: completion)
+    }
+
+    func setPassenger(details: PassengerDetails?) {
+        passengerDetailsAndPaymentView.details = details
+    }
+
+    // MARK: Events
+
+    func quoteDidExpire() {
+        let alertHandler = AlertHandler(viewController: self)
+
+        let showAlert: () -> Void = {
+            alertHandler.show(
+                title: UITexts.Booking.quoteExpiredTitle,
+                message: UITexts.Booking.quoteExpiredMessage,
+                actions: [
+                    AlertAction(title: UITexts.Generic.ok, style: .default) { [weak self] _ in
+                        self?.setDefaultState()
+                        self?.presenter.didPressClose()
+                    }
+                ]
+            )
+        }
+
+        if let presentedViewController = presentedViewController {
+            presentedViewController.dismiss(animated: true) {
+                showAlert()
+            }
+        } else {
+            showAlert()
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func enableUserInteraction() {
+        backButton.isUserInteractionEnabled = true
+        backButton.tintColor = KarhooUI.colors.text
+    }
+    
+    private func disableUserInteraction() {
+        backButton.isUserInteractionEnabled = false
+        backButton.tintColor = KarhooUI.colors.medGrey
+    }
+    
+    private func initialisePassengerDetails() -> PassengerDetails? {
+        if PassengerInfo.shared.getDetails() == nil {
+            return PassengerInfo.shared.currentUserAsPassenger()
+        } else {
+            return PassengerInfo.shared.getDetails()
+        }
+    }
+
+    // MARK: - Actions
+    
+    @objc private func didTapView() {
+        view.endEditing(true)
+    }
+    
+    @objc private func backButtonPressed() {
+        presenter.didPressClose()
     }
 }

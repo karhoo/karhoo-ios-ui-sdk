@@ -178,11 +178,11 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         activityIndicator?.startAnimating()
     }
     
-    func setNextMode() {
+    func setBookNowMode() {
         currentMode = .addDetails
         button.isEnabled = true
         containerView.backgroundColor = KarhooUI.colors.secondary
-        set(buttonTitle: UITexts.Booking.next.uppercased())
+        set(buttonTitle: UITexts.Booking.bookNow)
         tickImage.isHidden = true
         activityIndicator?.stopAnimating()
     }
@@ -201,11 +201,14 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     }
 
     private func set(buttonTitle: String) {
-        UIView.transition(with: buttonLabel,
-                          duration: textTransitionTime,
-                          options: [.curveEaseInOut, .transitionCrossDissolve],
-                          animations: { [weak self] in
-                            self?.buttonLabel.text = buttonTitle
-        }, completion: nil)
+        UIView.transition(
+            with: buttonLabel,
+            duration: textTransitionTime,
+            options: [.curveEaseInOut, .transitionCrossDissolve],
+            animations: { [weak self] in
+                self?.buttonLabel.text = buttonTitle
+                self?.button.accessibilityLabel = buttonTitle
+            }, completion: nil
+        )
     }
 }

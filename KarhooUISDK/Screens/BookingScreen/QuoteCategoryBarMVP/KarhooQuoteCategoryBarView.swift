@@ -154,7 +154,7 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
         let selectedLabel = labels[selectedIndex]
         markerCenterX.constant = selectedLabel.center.x
         markerWidth.constant = selectedLabel.frame.width + 8
-        _ = labels.map { $0.backgroundColor = KarhooUI.colors.lightGrey }
+        _ = labels.map { $0.backgroundColor = KarhooUI.colors.background2 }
         _ = labels.map { $0.textColor = KarhooUI.colors.darkGrey }
         selectedLabel.backgroundColor = .clear
         

@@ -34,7 +34,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
          addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
-         analyticsProvider: Analytics = KarhooAnalytics(),
+         analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
         self.addressBarPresenter = addressBarPresenter
@@ -108,8 +108,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         setupQuoteListPanel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+        sideMenu?.hideMenu()
+        mapView.set(userMarkerVisible: true)
     }
     
     override func viewDidLoad() {
@@ -191,14 +194,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomNotificationView?.addLink(linkText) { [weak self] in
             _ = self?.feedbackMailComposer.showNoCoverageEmail()
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        presenter.viewWillAppear()
-        sideMenu?.hideMenu()
-        mapView.set(userMarkerVisible: true)
     }
 
     func showQuoteList() {

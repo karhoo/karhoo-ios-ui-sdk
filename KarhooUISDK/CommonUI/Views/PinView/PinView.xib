@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +16,10 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cNM-bC-ugF" customClass="Attributes" customModule="KarhooUISDK">
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="secondaryImageTint" destination="9tU-h2-lPF" collectionClass="NSMutableArray" id="EXr-Xs-0pb"/>
+                        <outletCollection property="primaryImageTint" destination="t0c-LP-Aig" collectionClass="NSMutableArray" id="Hg1-rF-vYj"/>
+                    </connections>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="t0c-LP-Aig" userLabel="Pickup pin Icon">
                     <rect key="frame" x="0.0" y="2" width="15" height="15"/>
@@ -59,7 +61,7 @@
         </view>
     </objects>
     <resources>
-        <image name="drop_off_icon" width="282" height="282"/>
-        <image name="pickup_icon" width="282" height="282"/>
+        <image name="drop_off_icon" width="22" height="22"/>
+        <image name="pickup_icon" width="22" height="22"/>
     </resources>
 </document>

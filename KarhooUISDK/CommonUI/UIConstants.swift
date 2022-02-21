@@ -5,6 +5,7 @@
 //  Created by Diana Petrea on 05.01.2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
+// swiftlint:disable comment_spacing nesting
 
 import Foundation
 import UIKit
@@ -108,6 +109,9 @@ public struct UIConstants {
             
             /// 1.25
             public static let largeWidth: CGFloat = 1.25
+
+            /// 2
+            public static let xLargeWidth: CGFloat = 2
         }
         
         public struct SafeArea {
@@ -151,6 +155,12 @@ public struct UIConstants {
             /// 20
             public static let tagHeight: CGFloat = 20 // KarhooQuoteCategoryBarView > markerView height
             
+            /// 30
+            public static let largeTagHeight: CGFloat = 30
+            
+            /// 30
+            public static let smallRowHeight: CGFloat = 30
+            
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
@@ -176,6 +186,9 @@ public struct UIConstants {
     }
     
     public struct CornerRadius {
+        /// 2
+        public static let xSmall: CGFloat = 2
+
         /// 4
         public static let small: CGFloat = 4 //3...5
         
@@ -186,37 +199,42 @@ public struct UIConstants {
         public static let large: CGFloat = 10
     }
     
+    public struct ShadowRadius {
+        /// 0.5
+        public static let border: CGFloat = 0.5
+    }
+    
     //Animation duration
     public struct Duration {
         /// 0.1
-        public static let xShort: CGFloat = 0.1
+        public static let xShort: Double = 0.1
         
         /// 0.2
-        public static let short: CGFloat = 0.2
+        public static let short: Double = 0.2
         
         /// 0.3
-        public static let medium: CGFloat = 0.3
+        public static let medium: Double = 0.3
         
         /// 0.45
-        public static let long: CGFloat = 0.45
+        public static let long: Double = 0.45
         
         /// 0.5
-        public static let xLong: CGFloat = 0.5
+        public static let xLong: Double = 0.5
         
         /// 0.1
-        public static let xxSmallDelay: CGFloat = 0.1
+        public static let xxSmallDelay: Double = 0.1
         
         ///0.25
-        public static let xSmallDelay: CGFloat = 0.25
+        public static let xSmallDelay: Double = 0.25
         
         /// 0.3
-        public static let smallDelay: CGFloat = 0.3
+        public static let smallDelay: Double = 0.3
         
         /// 3
-        public static let xxLongDelay: CGFloat = 3
+        public static let xxLongDelay: Double = 3
         
         /// 4
-        public static let xxxLongDelay: CGFloat = 4
+        public static let xxxLongDelay: Double = 4
     }
     
     public struct Alpha {

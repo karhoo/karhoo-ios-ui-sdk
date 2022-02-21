@@ -15,7 +15,9 @@ final class RidesViewController: UIViewController, RidesView {
     private let twoPageViewController: TwoPageViewController
     private let presenter: RidesPresenter
     @IBOutlet private weak var upcomingTabLabel: UILabel?
+    @IBOutlet private weak var upcomingTabButton: UIButton!
     @IBOutlet private weak var pastTabLabel: UILabel?
+    @IBOutlet private weak var pastTabButton: UIButton!
     @IBOutlet private weak var tabView: UIView?
     @IBOutlet private weak var childPageView: UIView?
     @IBOutlet private var tabConstraintSwitcher: ResizingSwitcher!
@@ -44,7 +46,7 @@ final class RidesViewController: UIViewController, RidesView {
         addChild(twoPageViewController)
 
         formButton?.delegate = self
-        formButton?.set(title: UITexts.Bookings.bookATrip)
+        formButton?.set(title: UITexts.Bookings.newRide)
         formButton?.setEnabledMode()
         tabConstraintSwitcher.set(animationTime: tabAnimationTime)
         presenter.bind(view: self)
@@ -52,6 +54,9 @@ final class RidesViewController: UIViewController, RidesView {
         tabView?.backgroundColor = KarhooUI.colors.accent
         upcomingTabLabel?.textColor = KarhooUI.colors.accent
         forceLightMode()
+
+        pastTabButton?.accessibilityLabel = UITexts.Bookings.past
+        upcomingTabButton?.accessibilityLabel = UITexts.Bookings.upcoming
     }
 
     func set(title: String) {
@@ -171,5 +176,13 @@ extension RidesViewController: RidesListActions {
 
     func rebookTrip(_ trip: TripInfo) {
         presenter.didPressRebookTrip(trip: trip)
+    }
+    
+    func contactFleet(_ trip: TripInfo, number: String) {
+        presenter.contactFleet(trip, number: number)
+    }
+
+    func contactDriver(_ trip: TripInfo, number: String) {
+        presenter.contactDriver(trip, number: number)
     }
 }

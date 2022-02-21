@@ -32,5 +32,9 @@ protocol TripScreenDetailsActions: AnyObject {
     func cancelTrip()
     
     func tripDetailViewDidChangeSize()
+
+    func contactDriver(_ phoneNumber: String)
+
+    func contactFleet(_ phoneNumber: String)
     
 }

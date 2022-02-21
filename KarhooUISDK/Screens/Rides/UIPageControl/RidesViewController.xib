@@ -12,9 +12,11 @@
             <connections>
                 <outlet property="childPageView" destination="bOE-gI-AXs" id="uRw-DU-GQ2"/>
                 <outlet property="formButton" destination="M22-tZ-BcT" id="yes-Q5-ndk"/>
+                <outlet property="pastTabButton" destination="3he-PU-GsQ" id="6RJ-D3-qmM"/>
                 <outlet property="pastTabLabel" destination="xJm-se-0v8" id="2si-kD-9Z6"/>
                 <outlet property="tabConstraintSwitcher" destination="NXg-ZJ-d5a" id="7Kk-Lu-ZR1"/>
                 <outlet property="tabView" destination="u8q-r4-fPh" id="AhD-UD-wO1"/>
+                <outlet property="upcomingTabButton" destination="JPQ-nl-WRa" id="SL4-uB-iDN"/>
                 <outlet property="upcomingTabLabel" destination="dYh-2F-gBC" id="5Nk-jw-OQZ"/>
                 <outlet property="view" destination="93J-v6-Kog" id="5Uv-Nc-fxu"/>
             </connections>
@@ -50,13 +52,15 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYh-2F-gBC">
                                     <rect key="frame" x="58.5" y="14" width="70.5" height="18"/>
-                                    <accessibility key="accessibilityConfiguration" identifier="ride-list-upcoming"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="ride-list-upcoming">
+                                        <bool key="isElement" value="NO"/>
+                                    </accessibility>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-nl-WRa">
-                                    <rect key="frame" x="0.0" y="0.0" width="187" height="46"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-nl-WRa">
+                                    <rect key="frame" x="0.0" y="1" width="187" height="46"/>
                                     <connections>
                                         <action selector="upcomingBookingsPressed" destination="-1" eventType="touchUpInside" id="cnv-hS-1pn"/>
                                     </connections>
@@ -77,6 +81,9 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJm-se-0v8">
                                     <rect key="frame" x="78.5" y="14" width="30" height="18"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <bool key="isElement" value="NO"/>
+                                    </accessibility>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
