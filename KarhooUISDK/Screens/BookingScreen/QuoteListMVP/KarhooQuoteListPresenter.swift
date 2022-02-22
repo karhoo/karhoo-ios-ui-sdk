@@ -64,7 +64,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes(animated: animated)
     }
 
-    private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: BookingDetails?) {
+    private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: JourneyDetails?) {
         self.fetchedQuotes = quotes
         quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
                                          quoteListId: quotes.quoteListId)
@@ -150,7 +150,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
 extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
 
         guard let details = details else {

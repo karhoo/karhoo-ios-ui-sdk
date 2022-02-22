@@ -83,7 +83,7 @@ final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
 
 extension KarhooQuoteCategoryBarPresenter: BookingDetailsObserver {
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         resetCategories()
     }
 }

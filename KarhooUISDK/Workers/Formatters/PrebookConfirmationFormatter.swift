@@ -10,7 +10,7 @@ import KarhooSDK
 
 final class PrebookConfirmationFormatter {
 
-    static func confirmationMessage(withDetails bookingDetails: BookingDetails) -> String {
+    static func confirmationMessage(withDetails bookingDetails: JourneyDetails) -> String {
         let pickup = bookingDetails.originLocationDetails?.address.displayAddress ?? ""
         let destination = bookingDetails.destinationLocationDetails?.address.displayAddress ?? ""
 

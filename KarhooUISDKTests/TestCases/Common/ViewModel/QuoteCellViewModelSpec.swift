@@ -78,7 +78,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let quote = TestUtil.getRandomQuote()
         let bookingStatus = MockBookingStatus()
         let locationInfo = LocationInfo(details: PoiDetails(type: .airport))
-        bookingStatus.bookingDetailsToReturn = BookingDetails(originLocationDetails: locationInfo)
+        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
         testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
         
@@ -95,7 +95,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let quote = TestUtil.getRandomQuote(pickUpType: .meetAndGreet)
         let bookingStatus = MockBookingStatus()
         let locationInfo = LocationInfo(details: PoiDetails(type: .airport))
-        bookingStatus.bookingDetailsToReturn = BookingDetails(originLocationDetails: locationInfo)
+        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
         testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
         
@@ -112,7 +112,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let quote = TestUtil.getRandomQuote()
         let bookingStatus = MockBookingStatus()
         let locationInfo = LocationInfo(details: PoiDetails(type: .trainStation))
-        bookingStatus.bookingDetailsToReturn = BookingDetails(originLocationDetails: locationInfo)
+        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
         testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
         
@@ -129,7 +129,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let quote = TestUtil.getRandomQuote(pickUpType: .meetAndGreet)
         let bookingStatus = MockBookingStatus()
         let locationInfo = LocationInfo(details: PoiDetails(type: .trainStation))
-        bookingStatus.bookingDetailsToReturn = BookingDetails(originLocationDetails: locationInfo)
+        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
         testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
         

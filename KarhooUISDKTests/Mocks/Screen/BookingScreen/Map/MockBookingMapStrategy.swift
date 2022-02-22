@@ -23,8 +23,8 @@ class MockBookingMapStrategy: BookingMapStrategy {
     }
 
     var startCalled = false
-    var startBookingDetails: BookingDetails?
-    func start(bookingDetails: BookingDetails?) {
+    var startBookingDetails: JourneyDetails?
+    func start(bookingDetails: JourneyDetails?) {
         startCalled = true
         startBookingDetails = bookingDetails
     }
@@ -47,8 +47,8 @@ class MockBookingMapStrategy: BookingMapStrategy {
     }
 
     var detailsChangedCalled = false
-    var detailsChangedTo: BookingDetails?
-    func changed(bookingDetails: BookingDetails?) {
+    var detailsChangedTo: JourneyDetails?
+    func changed(bookingDetails: JourneyDetails?) {
         detailsChangedCalled = true
         detailsChangedTo = bookingDetails
     }

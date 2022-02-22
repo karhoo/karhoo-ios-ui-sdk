@@ -41,7 +41,7 @@ public struct TripInfoUtility {
         return [.requested, .confirmed].contains(trip.state)
     }
 
-    public static func isAirportBooking(_ bookingDetails: BookingDetails) -> Bool {
+    public static func isAirportBooking(_ bookingDetails: JourneyDetails) -> Bool {
         return bookingDetails.originLocationDetails?.details.type == .airport ||
                bookingDetails.destinationLocationDetails?.details.type == .airport
     }

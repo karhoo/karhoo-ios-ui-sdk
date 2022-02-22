@@ -12,7 +12,7 @@ import KarhooSDK
 public protocol CheckoutScreenBuilder {
     func buildCheckoutScreen(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        bookingDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) -> Screen
@@ -21,7 +21,7 @@ public protocol CheckoutScreenBuilder {
 public extension CheckoutScreenBuilder {
     func buildCheckoutScreen(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        bookingDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = nil,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) -> Screen {

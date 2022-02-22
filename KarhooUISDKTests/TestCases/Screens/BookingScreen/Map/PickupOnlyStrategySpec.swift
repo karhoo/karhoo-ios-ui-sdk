@@ -52,7 +52,7 @@ class PickupOnlyStrategySpec: XCTestCase {
      */
     func testStartWithPickup() {
         let pickup = TestUtil.getRandomLocationInfo()
-        let details = BookingDetails(originLocationDetails: pickup)
+        let details = JourneyDetails(originLocationDetails: pickup)
         testObject.start(bookingDetails: details)
 
         XCTAssertFalse(mockMapView.focusButtonHiddenSet!)
@@ -69,7 +69,7 @@ class PickupOnlyStrategySpec: XCTestCase {
         mockLocationService.setLocationAccessEnabled = false
         
         let pickup = TestUtil.getRandomLocationInfo()
-        let details = BookingDetails(originLocationDetails: pickup)
+        let details = JourneyDetails(originLocationDetails: pickup)
         testObject.start(bookingDetails: details)
         XCTAssertFalse(mockMapView.focusButtonHiddenSet!)
         XCTAssertTrue(mockMapView.centerPinHidden!)
@@ -138,7 +138,7 @@ class PickupOnlyStrategySpec: XCTestCase {
     func testDetailsChangesSamePickup() {
         let pickupLocation = Position(latitude: 10, longitude: 11)
         let pickup = TestUtil.getRandomLocationInfo(position: pickupLocation)
-        let details = BookingDetails(originLocationDetails: pickup)
+        let details = JourneyDetails(originLocationDetails: pickup)
 
         testObject.changed(bookingDetails: details)
 

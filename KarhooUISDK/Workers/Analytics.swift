@@ -29,7 +29,7 @@ public protocol Analytics {
     func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo)
     func bookingScreenOpened()
     func checkoutOpened(_ quote: Quote)
-    func quoteListOpened(_ bookingDetails: BookingDetails)
+    func quoteListOpened(_ bookingDetails: JourneyDetails)
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -148,7 +148,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func quoteListOpened(_ bookingDetails: BookingDetails) {
+    func quoteListOpened(_ bookingDetails: JourneyDetails) {
         base.send(
             eventName: .quoteListOpened,
             payload: [

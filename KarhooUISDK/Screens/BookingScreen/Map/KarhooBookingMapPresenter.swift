@@ -45,7 +45,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         currentStrategy?.focusMap()
     }
 
-    private func getStrategyToUse(details: BookingDetails?) -> BookingMapStrategy {
+    private func getStrategyToUse(details: JourneyDetails?) -> BookingMapStrategy {
         if details?.originLocationDetails == nil && details?.destinationLocationDetails == nil {
             return emptyBookingStrategy
         } else if details?.originLocationDetails != nil && details?.destinationLocationDetails == nil {
@@ -55,7 +55,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         }
     }
 
-    private func changeTo(strategy: BookingMapStrategy, details: BookingDetails?) {
+    private func changeTo(strategy: BookingMapStrategy, details: JourneyDetails?) {
         currentStrategy?.stop()
         currentStrategy = strategy
         currentStrategy?.start(bookingDetails: details)
@@ -75,7 +75,7 @@ extension KarhooBookingMapPresenter: PickupOnlyStrategyDelegate {
 
 extension KarhooBookingMapPresenter: BookingDetailsObserver {
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         let strategyToUse = getStrategyToUse(details: details)
 
         if strategyToUse !== currentStrategy {

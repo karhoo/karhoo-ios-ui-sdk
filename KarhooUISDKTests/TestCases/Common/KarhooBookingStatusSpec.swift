@@ -238,7 +238,7 @@ class KarhooBookingStatusSpec: XCTestCase {
 
     }
 
-    private func assert(bookingDetails: BookingDetails?,
+    private func assert(bookingDetails: JourneyDetails?,
                         originLocationDetails: LocationInfo?,
                         destination: LocationInfo?,
                         date: Date?) {

@@ -122,7 +122,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         show(bookingDetails: swappedDetails)
     }
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         show(bookingDetails: details)
     }
 
@@ -141,7 +141,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         view?.destinationSetState(disableClearButton: false)
     }
 
-    private func show(bookingDetails: BookingDetails?) {
+    private func show(bookingDetails: JourneyDetails?) {
         setUpPickupState(locationInfo: bookingDetails?.originLocationDetails)
         setUpDestinationState(locationInfo: bookingDetails?.destinationLocationDetails)
         setUpPrebookState(date: bookingDetails?.scheduledDate)

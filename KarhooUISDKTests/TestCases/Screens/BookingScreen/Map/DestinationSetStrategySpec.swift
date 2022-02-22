@@ -45,7 +45,7 @@ class DestinationSetStrategySpec: XCTestCase {
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
     }
 
-    private func assertLocationsToZoomOn(map: MockKarhooMapView, details: BookingDetails) {
+    private func assertLocationsToZoomOn(map: MockKarhooMapView, details: JourneyDetails) {
         let containsDestination = map.locationsToZoomTo?.contains {
             $0.coordinate == details.destinationLocationDetails!.position.toCLLocation().coordinate
         }

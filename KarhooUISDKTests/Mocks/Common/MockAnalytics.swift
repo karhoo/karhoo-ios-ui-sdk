@@ -79,7 +79,7 @@ class MockAnalytics: Analytics {
     }
     
     var quoteListOpenedCalled = false
-    func quoteListOpened(_ bookingDetails: BookingDetails) {
+    func quoteListOpened(_ bookingDetails: JourneyDetails) {
         quoteListOpenedCalled = true
     }
     

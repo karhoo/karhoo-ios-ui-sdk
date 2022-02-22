@@ -72,7 +72,7 @@ final class KarhooBookingPresenter {
     // MARK: - Checkout
     private func showCheckoutView(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        bookingDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
         let checkoutView = checkoutScreenBuilder
@@ -95,7 +95,7 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Trip booked
-    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: BookingDetails) {
+    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: JourneyDetails) {
         if let trip = result.completedValue() {
             handleNewlyBooked(trip: trip,
                               quote: quote,
@@ -111,7 +111,7 @@ final class KarhooBookingPresenter {
     }
 
     private func rebookTrip(_ trip: TripInfo) {
-        var bookingDetails = BookingDetails(originLocationDetails: trip.origin.toLocationInfo())
+        var bookingDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
         bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
         populate(with: bookingDetails)
@@ -120,7 +120,7 @@ final class KarhooBookingPresenter {
 
     private func handleNewlyBooked(trip: TripInfo,
                                    quote: Quote,
-                                   bookingDetails: BookingDetails) {
+                                   bookingDetails: JourneyDetails) {
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
@@ -150,7 +150,7 @@ final class KarhooBookingPresenter {
 
 // MARK: - BookingDetailsObserver
 extension KarhooBookingPresenter: BookingDetailsObserver {
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         if details?.originLocationDetails != nil,
             details?.destinationLocationDetails != nil {
             view?.showQuoteList()
@@ -208,11 +208,11 @@ extension KarhooBookingPresenter: BookingPresenter {
         bookingStatus.reset()
     }
 
-    func bookingDetails() -> BookingDetails? {
+    func bookingDetails() -> JourneyDetails? {
         return bookingStatus.getBookingDetails()
     }
 
-    func populate(with bookingDetails: BookingDetails) {
+    func populate(with bookingDetails: JourneyDetails) {
         bookingStatus.reset(with: bookingDetails)
     }
     
@@ -243,7 +243,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         view?.hideAllocationScreen()
 
-        var bookingDetails = BookingDetails(originLocationDetails: trip.origin.toLocationInfo())
+        var bookingDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
         bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
         populate(with: bookingDetails)
     }
@@ -317,7 +317,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     // MARK: Prebook
-    func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: BookingDetails) {
+    func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: JourneyDetails) {
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
                                             bookingDetails: bookingDetails,

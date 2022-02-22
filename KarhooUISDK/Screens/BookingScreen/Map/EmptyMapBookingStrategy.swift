@@ -28,7 +28,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
         self.reverseGeolocate = reverseGeolocate
     }
 
-    func start(bookingDetails: BookingDetails?) {
+    func start(bookingDetails: JourneyDetails?) {
         mapView?.centerPin(hidden: true)
         mapView?.set(focusButtonHidden: false)
 
@@ -53,7 +53,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
         }
     }
 
-    func changed(bookingDetails: BookingDetails?) {}
+    func changed(bookingDetails: JourneyDetails?) {}
 
     func stop() {
         userLocationProvider.set(locationChangedCallback: nil)

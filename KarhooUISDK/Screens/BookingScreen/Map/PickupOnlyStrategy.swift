@@ -57,14 +57,14 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         self.reverseGeolocate = reverseGeolocate
     }
 
-    func start(bookingDetails: BookingDetails?) {
+    func start(bookingDetails: JourneyDetails?) {
         setup(bookingDetails: bookingDetails)
         userLocationProvider.set(locationChangedCallback: { [weak self] (location: CLLocation) in
             self?.didGetUserLocation(location)
         })
     }
 
-    private func setup(bookingDetails: BookingDetails?) {
+    private func setup(bookingDetails: JourneyDetails?) {
         guard bookingDetails?.destinationLocationDetails == nil else {
             stop()
             return
@@ -113,7 +113,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
       
     }
 
-    func changed(bookingDetails: BookingDetails?) {
+    func changed(bookingDetails: JourneyDetails?) {
         setup(bookingDetails: bookingDetails)
     }
 

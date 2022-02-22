@@ -10,10 +10,10 @@ import Foundation
 import KarhooUISDK
 
 final class MockBookingDetailsObserver: BookingDetailsObserver {
-    var lastBookingState: BookingDetails?
+    var lastBookingState: JourneyDetails?
     var bookingStateChangedCalled = false
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func bookingStateChanged(details: JourneyDetails?) {
         lastBookingState = details
         bookingStateChangedCalled = true
     }

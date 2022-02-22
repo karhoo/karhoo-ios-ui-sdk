@@ -37,8 +37,8 @@ final class MockBookingView: MockBaseViewController, BookingView {
         resetAndLocateCalled = true
     }
 
-    private(set) var theSetBookingDetails: BookingDetails?
-    func set(bookingDetails: BookingDetails) {
+    private(set) var theSetBookingDetails: JourneyDetails?
+    func set(bookingDetails: JourneyDetails) {
         theSetBookingDetails = bookingDetails
     }
 

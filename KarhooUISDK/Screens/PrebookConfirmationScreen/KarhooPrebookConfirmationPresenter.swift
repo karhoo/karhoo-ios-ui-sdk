@@ -13,12 +13,12 @@ final class KarhooPrebookConfirmationPresenter: PrebookConfirmationPresenter {
 
     private weak var confirmationView: PrebookConfirmationView?
 
-    private let bookingDetails: BookingDetails
+    private let bookingDetails: JourneyDetails
     private let quote: Quote
     private let callback: ScreenResultCallback<PrebookConfirmationAction>
 
     init(quote: Quote,
-         bookingDetails: BookingDetails,
+         bookingDetails: JourneyDetails,
          callback: @escaping ScreenResultCallback<PrebookConfirmationAction>) {
         self.quote = quote
         self.bookingDetails = bookingDetails

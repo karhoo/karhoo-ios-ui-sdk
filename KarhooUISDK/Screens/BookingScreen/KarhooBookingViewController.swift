@@ -214,7 +214,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mapPresenter.focusMap()
     }
 
-    func set(bookingDetails: BookingDetails) {
+    func set(bookingDetails: JourneyDetails) {
         DispatchQueue.main.async { [weak self] in
             self?.presenter.populate(with: bookingDetails)
         }

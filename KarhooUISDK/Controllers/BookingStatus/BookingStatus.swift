@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 public protocol BookingDetailsObserver: AnyObject {
-    func bookingStateChanged(details: BookingDetails?)
+    func bookingStateChanged(details: JourneyDetails?)
 }
 
 public protocol BookingStatus {
@@ -20,8 +20,8 @@ public protocol BookingStatus {
     func set(pickup: LocationInfo?)
     func set(destination: LocationInfo?)
     func set(prebookDate: Date?)
-    func reset(with bookingDetails: BookingDetails)
+    func reset(with bookingDetails: JourneyDetails)
     func reset()
     func setJourneyInfo(journeyInfo: JourneyInfo?)
-    func getBookingDetails() -> BookingDetails?
+    func getBookingDetails() -> JourneyDetails?
 }

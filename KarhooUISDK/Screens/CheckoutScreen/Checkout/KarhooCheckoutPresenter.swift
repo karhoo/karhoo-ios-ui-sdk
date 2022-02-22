@@ -13,7 +13,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: CheckoutView?
     private let quote: Quote
-    private let bookingDetails: BookingDetails
+    private let bookingDetails: JourneyDetails
     private var quoteValidityTimer: Timer?
     internal var passengerDetails: PassengerDetails!
     private let threeDSecureProvider: ThreeDSecureProvider
@@ -37,7 +37,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     init(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        bookingDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
         tripService: TripService = Karhoo.getTripService(),

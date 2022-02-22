@@ -21,7 +21,7 @@ final class PrebookConfirmationViewModel {
     let pickUpType: String
     let showPickUpType: Bool
 
-    init(bookingDetails: BookingDetails,
+    init(bookingDetails: JourneyDetails,
          quote: Quote,
          dateFormatter: DateFormatterType = KarhooDateFormatter()) {
         self.title = UITexts.Booking.prebookConfirmed

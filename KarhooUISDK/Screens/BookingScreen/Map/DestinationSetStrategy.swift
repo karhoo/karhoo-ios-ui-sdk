@@ -20,7 +20,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
         self.map = map
     }
 
-    func start(bookingDetails: BookingDetails?) {
+    func start(bookingDetails: JourneyDetails?) {
         handle(bookingDetails: bookingDetails)
     }
 
@@ -36,7 +36,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
         map?.zoom(to: [pickup, destination])
     }
 
-    func changed(bookingDetails: BookingDetails?) {
+    func changed(bookingDetails: JourneyDetails?) {
         handle(bookingDetails: bookingDetails)
     }
 
@@ -46,7 +46,7 @@ final class DestinationSetStrategy: BookingMapStrategy {
         removePins()
     }
 
-    private func handle(bookingDetails: BookingDetails?) {
+    private func handle(bookingDetails: JourneyDetails?) {
         guard let pickup = bookingDetails?.originLocationDetails else {
             return
         }

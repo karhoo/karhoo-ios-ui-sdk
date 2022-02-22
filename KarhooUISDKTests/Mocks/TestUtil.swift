@@ -183,8 +183,8 @@ class TestUtil: PrimitiveUtil {
     class func getRandomBookingDetails(originSet: Bool = true,
                                        destinationSet: Bool = true,
                                        dateSet: Bool = true,
-                                       originTimeZoneIdentifier: String = "Europe/London") -> BookingDetails {
-        var details = BookingDetails()
+                                       originTimeZoneIdentifier: String = "Europe/London") -> JourneyDetails {
+        var details = JourneyDetails()
 
         if originSet {
             details.originLocationDetails = getRandomLocationInfo(timeZoneIdentifier: originTimeZoneIdentifier)
@@ -201,14 +201,14 @@ class TestUtil: PrimitiveUtil {
         return details
     }
 
-    class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> BookingDetails {
-        var bookingDetails: BookingDetails
+    class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> JourneyDetails {
+        var bookingDetails: JourneyDetails
         let airportLocationDetails = getRandomLocationInfo(poiType: .enriched, poiDetails: getAirportPoiDetails())
         if originAsAirportAddress == true {
-            bookingDetails = BookingDetails(originLocationDetails: airportLocationDetails)
+            bookingDetails = JourneyDetails(originLocationDetails: airportLocationDetails)
             bookingDetails.destinationLocationDetails = getRandomLocationInfo()
         } else {
-            bookingDetails = BookingDetails(originLocationDetails: getRandomLocationInfo())
+            bookingDetails = JourneyDetails(originLocationDetails: getRandomLocationInfo())
             bookingDetails.destinationLocationDetails = airportLocationDetails
         }
 

@@ -18,7 +18,7 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return true
      */
     func testIsScheduledWhenScheduled() {
-        var bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        var bookingDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
         bookingDetails.scheduledDate = Date()
 
         XCTAssert(bookingDetails.isScheduled)
@@ -30,7 +30,7 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return false
      */
     func testIsScheduledNil() {
-        let bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        let bookingDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
 
         XCTAssertFalse(bookingDetails.isScheduled)
     }
@@ -41,7 +41,7 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return false
      */
     func testIsScheduledFor1970() {
-        var bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        var bookingDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
         bookingDetails.scheduledDate = Date(timeIntervalSince1970: 0)
 
         XCTAssertFalse(bookingDetails.isScheduled)

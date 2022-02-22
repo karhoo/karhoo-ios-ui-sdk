@@ -166,7 +166,7 @@ final class QuoteViewModel {
         }
     }
 
-    private static func scheduleTexts(quote: Quote, bookingDetails: BookingDetails?) -> (caption: String, value: String) {
+    private static func scheduleTexts(quote: Quote, bookingDetails: JourneyDetails?) -> (caption: String, value: String) {
         if let scheduledDate = bookingDetails?.scheduledDate,
            let originTimeZone = bookingDetails?.originLocationDetails?.timezone() {
             // If the booking is prebooked display only the date + time

@@ -12,7 +12,7 @@ import KarhooSDK
 public final class KarhooBookingStatus: BookingStatus {
 
     private let broadcaster: Broadcaster<AnyObject>
-    private var status: BookingDetails?
+    private var status: JourneyDetails?
     private let addressService: AddressService
     public static let shared = KarhooBookingStatus()
 
@@ -37,7 +37,7 @@ public final class KarhooBookingStatus: BookingStatus {
         }
 
         if status == nil {
-            status = BookingDetails(originLocationDetails: pickup)
+            status = JourneyDetails(originLocationDetails: pickup)
         } else {
             status?.originLocationDetails = pickup
         }
@@ -65,12 +65,12 @@ public final class KarhooBookingStatus: BookingStatus {
         broadcastState()
     }
 
-    public func reset(with bookingDetails: BookingDetails) {
+    public func reset(with bookingDetails: JourneyDetails) {
         status = bookingDetails
         broadcastState()
     }
 
-    public func getBookingDetails() -> BookingDetails? {
+    public func getBookingDetails() -> JourneyDetails? {
         return status
     }
 

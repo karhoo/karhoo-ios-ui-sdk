@@ -13,7 +13,7 @@ import CoreLocation
 
 public protocol BookingScreen: BaseViewController {
 
-    func set(bookingDetails: BookingDetails)
+    func set(bookingDetails: JourneyDetails)
 
     func openTrip(_ trip: TripInfo)
 
@@ -31,7 +31,7 @@ internal protocol BookingView: BookingScreen, QuoteListActions {
 
     func resetAndLocate()
 
-    func set(bookingDetails: BookingDetails)
+    func set(bookingDetails: JourneyDetails)
 
     func showAllocationScreen(trip: TripInfo)
 
@@ -56,9 +56,9 @@ protocol BookingPresenter {
 
     func resetBookingStatus()
 
-    func populate(with bookingDetails: BookingDetails)
+    func populate(with bookingDetails: JourneyDetails)
 
-    func bookingDetails() -> BookingDetails?
+    func bookingDetails() -> JourneyDetails?
 
     func tripSuccessfullyCancelled()
 
