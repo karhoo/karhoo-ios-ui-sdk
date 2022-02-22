@@ -550,10 +550,10 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         testObject.showRidesList(presentationStyle: nil)
         mockRidesScreenBuilder.triggerRidesScreenResult(.completed(result: .rebookTrip(trip: mockTrip)))
 
-        var mockBookingDetails = JourneyDetails(originLocationDetails: mockTrip.origin.toLocationInfo())
-        mockBookingDetails.destinationLocationDetails = mockTrip.destination?.toLocationInfo()
+        var mockJourneyDetails = JourneyDetails(originLocationDetails: mockTrip.origin.toLocationInfo())
+        mockJourneyDetails.destinationLocationDetails = mockTrip.destination?.toLocationInfo()
         mockBookingView.triggerDismissCallback()
-        XCTAssertEqual(mockBookingDetails, mockBookingStatus.resetBookingDetailsSet)
+        XCTAssertEqual(mockJourneyDetails, mockBookingStatus.resetBookingDetailsSet)
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
         XCTAssertTrue(mockBookingView.mapPaddingBottomPaddingEnabled!)
     }

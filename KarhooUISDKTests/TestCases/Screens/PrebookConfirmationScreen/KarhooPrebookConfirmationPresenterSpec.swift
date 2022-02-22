@@ -16,7 +16,7 @@ final class KarhooPrebookConfirmationPresenterSpec: XCTestCase {
 
     private var mockView: MockPrebookConfirmationView!
     private var mockQuote: Quote!
-    private var mockBookingDetails: JourneyDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockCallback: ScreenResult<PrebookConfirmationAction>?
     private var testObject: KarhooPrebookConfirmationPresenter!
 

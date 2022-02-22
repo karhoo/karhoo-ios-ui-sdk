@@ -65,12 +65,12 @@ public final class KarhooBookingStatus: BookingStatus {
         broadcastState()
     }
 
-    public func reset(with bookingDetails: JourneyDetails) {
-        status = bookingDetails
+    public func reset(with journeyDetails: JourneyDetails) {
+        status = journeyDetails
         broadcastState()
     }
 
-    public func getBookingDetails() -> JourneyDetails? {
+    public func getJourneyDetails() -> JourneyDetails? {
         return status
     }
 

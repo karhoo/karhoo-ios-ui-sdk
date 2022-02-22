@@ -16,14 +16,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     final class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(
             quote: Quote,
-            bookingDetails: JourneyDetails,
+            journeyDetails: JourneyDetails,
             bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<TripInfo>
         ) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(
                 quote: quote,
-                bookingDetails: bookingDetails,
+                journeyDetails: journeyDetails,
                 bookingMetadata: bookingMetadata,
                 callback: callback
             )

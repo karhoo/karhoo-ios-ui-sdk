@@ -15,7 +15,7 @@ class BookingMapPresenterSpec: XCTestCase {
 
     private var testPickupOnlyStrategy: MockPickupOnlyStrategy!
     private var testDestinationSetStrategy: MockBookingMapStrategy!
-    private var testBookingDetails: JourneyDetails!
+    private var testJourneyDetails: JourneyDetails!
     private var mockBookingStatus: MockBookingStatus!
     private var testObject: KarhooBookingMapPresenter!
 

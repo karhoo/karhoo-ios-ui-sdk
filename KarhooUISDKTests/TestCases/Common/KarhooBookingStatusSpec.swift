@@ -238,12 +238,12 @@ class KarhooBookingStatusSpec: XCTestCase {
 
     }
 
-    private func assert(bookingDetails: JourneyDetails?,
+    private func assert(journeyDetails: JourneyDetails?,
                         originLocationDetails: LocationInfo?,
                         destination: LocationInfo?,
                         date: Date?) {
-        XCTAssertEqual(originLocationDetails?.placeId, bookingDetails?.originLocationDetails?.placeId)
-        XCTAssertEqual(destination?.placeId, bookingDetails?.destinationLocationDetails?.placeId)
-        XCTAssertEqual(date, bookingDetails?.scheduledDate)
+        XCTAssertEqual(originLocationDetails?.placeId, journeyDetails?.originLocationDetails?.placeId)
+        XCTAssertEqual(destination?.placeId, journeyDetails?.destinationLocationDetails?.placeId)
+        XCTAssertEqual(date, journeyDetails?.scheduledDate)
     }
 }

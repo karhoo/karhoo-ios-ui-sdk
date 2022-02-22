@@ -72,20 +72,20 @@ final class KarhooBookingPresenter {
     // MARK: - Checkout
     private func showCheckoutView(
         quote: Quote,
-        bookingDetails: JourneyDetails,
+        journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
         let checkoutView = checkoutScreenBuilder
             .buildCheckoutScreen(
                 quote: quote,
-                bookingDetails: bookingDetails,
+                journeyDetails: journeyDetails,
                 bookingMetadata: bookingMetadata,
                 callback: { [weak self] result in
                     self?.view?.dismiss(animated: false, completion: {
                         self?.bookingRequestCompleted(
                             result: result,
                             quote: quote,
-                            details: bookingDetails
+                            details: journeyDetails
                         )
                     })
                 }
@@ -99,7 +99,7 @@ final class KarhooBookingPresenter {
         if let trip = result.completedValue() {
             handleNewlyBooked(trip: trip,
                               quote: quote,
-                              bookingDetails: details)
+                              journeyDetails: details)
             return
         }
 
@@ -111,16 +111,16 @@ final class KarhooBookingPresenter {
     }
 
     private func rebookTrip(_ trip: TripInfo) {
-        var bookingDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
-        bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
+        var journeyDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
+        journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
-        populate(with: bookingDetails)
+        populate(with: journeyDetails)
         setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
                                    quote: Quote,
-                                   bookingDetails: JourneyDetails) {
+                                   journeyDetails: JourneyDetails) {
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
@@ -136,11 +136,11 @@ final class KarhooBookingPresenter {
                             error: nil)
 
         default:
-            if bookingDetails.isScheduled {
+            if journeyDetails.isScheduled {
                 view?.reset()
                 showPrebookConfirmation(quote: quote,
                                         trip: trip,
-                                        bookingDetails: bookingDetails)
+                                        journeyDetails: journeyDetails)
             } else {
                 view?.showAllocationScreen(trip: trip)
             }
@@ -208,16 +208,16 @@ extension KarhooBookingPresenter: BookingPresenter {
         bookingStatus.reset()
     }
 
-    func bookingDetails() -> JourneyDetails? {
-        return bookingStatus.getBookingDetails()
+    func getJourneyDetails() -> JourneyDetails? {
+        return bookingStatus.getJourneyDetails()
     }
 
-    func populate(with bookingDetails: JourneyDetails) {
-        bookingStatus.reset(with: bookingDetails)
+    func populate(with journeyDetails: JourneyDetails) {
+        bookingStatus.reset(with: journeyDetails)
     }
     
     func setViewMapPadding() {
-        let bookingDetails = bookingStatus.getBookingDetails()
+        let bookingDetails = bookingStatus.getJourneyDetails()
         if bookingDetails?.originLocationDetails != nil,
             bookingDetails?.destinationLocationDetails != nil {
             view?.setMapPadding(bottomPaddingEnabled: true)
@@ -243,9 +243,9 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         view?.hideAllocationScreen()
 
-        var bookingDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
-        bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
-        populate(with: bookingDetails)
+        var journeyDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
+        journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
+        populate(with: journeyDetails)
     }
 
     func tripCancellationFailed(trip: TripInfo) {
@@ -309,18 +309,18 @@ extension KarhooBookingPresenter: BookingPresenter {
     func didSelectQuote(quote: Quote) {
         view?.hideQuoteList()
 
-        guard let bookingDetails = bookingDetails() else {
+        guard let bookingDetails = getJourneyDetails() else {
             return
         }
 
-        showCheckoutView(quote: quote, bookingDetails: bookingDetails)
+        showCheckoutView(quote: quote, journeyDetails: bookingDetails)
     }
 
     // MARK: Prebook
-    func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: JourneyDetails) {
+    func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
-                                            bookingDetails: bookingDetails,
+                                            journeyDetails: journeyDetails,
                                             confirmationCallback: { [weak self] result in
                                                 self?.view?.dismiss(animated: true, completion: nil)
                                                 self?.prebookConfirmationCompleted(result: result, trip: trip)

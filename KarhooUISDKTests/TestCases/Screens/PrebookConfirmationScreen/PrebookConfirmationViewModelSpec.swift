@@ -15,7 +15,7 @@ import KarhooSDK
 final class PrebookConfirmationViewModelSpec: XCTestCase {
 
     private var mockQuote: Quote!
-    private var mockBookingDetails: JourneyDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockDateFormatterType: MockDateFormatterType!
     private var testObject: PrebookConfirmationViewModel!
 

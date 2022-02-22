@@ -202,14 +202,14 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> JourneyDetails {
-        var bookingDetails: JourneyDetails
+        var journeyDetails: JourneyDetails
         let airportLocationDetails = getRandomLocationInfo(poiType: .enriched, poiDetails: getAirportPoiDetails())
         if originAsAirportAddress == true {
-            bookingDetails = JourneyDetails(originLocationDetails: airportLocationDetails)
-            bookingDetails.destinationLocationDetails = getRandomLocationInfo()
+            journeyDetails = JourneyDetails(originLocationDetails: airportLocationDetails)
+            journeyDetails.destinationLocationDetails = getRandomLocationInfo()
         } else {
-            bookingDetails = JourneyDetails(originLocationDetails: getRandomLocationInfo())
-            bookingDetails.destinationLocationDetails = airportLocationDetails
+            journeyDetails = JourneyDetails(originLocationDetails: getRandomLocationInfo())
+            journeyDetails.destinationLocationDetails = airportLocationDetails
         }
 
         return bookingDetails

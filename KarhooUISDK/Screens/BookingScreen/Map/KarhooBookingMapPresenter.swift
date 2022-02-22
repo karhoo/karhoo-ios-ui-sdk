@@ -27,7 +27,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         self.emptyBookingStrategy = emptyBookingStrategy
         pickupOnlyStrategy.set(delegate: self)
         bookingStatus.add(observer: self)
-        currentStrategy = getStrategyToUse(details: bookingStatus.getBookingDetails())
+        currentStrategy = getStrategyToUse(details: bookingStatus.getJourneyDetails())
     }
 
     deinit {
@@ -38,7 +38,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         pickupOnlyStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
         destinationSetStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
         emptyBookingStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
-        currentStrategy?.start(bookingDetails: bookingStatus.getBookingDetails())
+        currentStrategy?.start(journeyDetails: bookingStatus.getJourneyDetails())
     }
 
     func focusMap() {
@@ -58,7 +58,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     private func changeTo(strategy: BookingMapStrategy, details: JourneyDetails?) {
         currentStrategy?.stop()
         currentStrategy = strategy
-        currentStrategy?.start(bookingDetails: details)
+        currentStrategy?.start(journeyDetails: details)
     }
 }
 
@@ -81,7 +81,7 @@ extension KarhooBookingMapPresenter: BookingDetailsObserver {
         if strategyToUse !== currentStrategy {
             changeTo(strategy: strategyToUse, details: details)
         } else {
-            currentStrategy?.changed(bookingDetails: details)
+            currentStrategy?.changed(journeyDetails: details)
         }
     }
 }

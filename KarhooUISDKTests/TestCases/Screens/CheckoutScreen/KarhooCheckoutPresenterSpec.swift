@@ -15,7 +15,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
     private var testObject: KarhooCheckoutPresenter!
     private var mockView: MockCheckoutView!
     private var testQuote: Quote!
-    private var testBookingDetails: JourneyDetails!
+    private var testJourneyDetails: JourneyDetails!
     private var testCallbackResult: ScreenResult<TripInfo>?
     private var mockUserService: MockUserService!
     private var mockTripService: MockTripService!

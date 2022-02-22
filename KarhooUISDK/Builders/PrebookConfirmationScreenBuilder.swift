@@ -11,7 +11,7 @@ import KarhooSDK
 
 internal protocol PrebookConfirmationScreenBuilder {
     func buildPrebookConfirmationScreen(quote: Quote,
-                                        bookingDetails: JourneyDetails,
+                                        journeyDetails: JourneyDetails,
                                         confirmationCallback:
         @escaping ScreenResultCallback<PrebookConfirmationAction>) -> Screen
 }

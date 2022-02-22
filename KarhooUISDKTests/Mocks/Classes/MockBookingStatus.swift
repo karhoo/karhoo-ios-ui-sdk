@@ -48,9 +48,9 @@ final class MockBookingStatus: BookingStatus {
         dateSetCalled = true
     }
 
-    var bookingDetailsToReturn: JourneyDetails?
-    func getBookingDetails() -> JourneyDetails? {
-        return bookingDetailsToReturn
+    var journeyDetailsToReturn: JourneyDetails?
+    func getJourneyDetails() -> JourneyDetails? {
+        return journeyDetailsToReturn
     }
     
     var resetCalled = false
@@ -58,12 +58,12 @@ final class MockBookingStatus: BookingStatus {
         resetCalled = true
     }
 
-    var resetBookingDetailsSet: JourneyDetails?
-    func reset(with bookingDetails: JourneyDetails) {
-        resetBookingDetailsSet = bookingDetails
+    var resetJourneyDetailsSet: JourneyDetails?
+    func reset(with journeyDetails: JourneyDetails) {
+        resetJourneyDetailsSet = journeyDetails
     }
 
-    func triggerCallback(bookingDetails: JourneyDetails?) {
-        observer?.bookingStateChanged(details: bookingDetails)
+    func triggerCallback(journeyDetails: JourneyDetails?) {
+        observer?.bookingStateChanged(details: journeyDetails)
     }
 }

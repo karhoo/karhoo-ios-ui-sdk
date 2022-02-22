@@ -57,20 +57,20 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         self.reverseGeolocate = reverseGeolocate
     }
 
-    func start(bookingDetails: JourneyDetails?) {
-        setup(bookingDetails: bookingDetails)
+    func start(journeyDetails: JourneyDetails?) {
+        setup(journeyDetails: journeyDetails)
         userLocationProvider.set(locationChangedCallback: { [weak self] (location: CLLocation) in
             self?.didGetUserLocation(location)
         })
     }
 
-    private func setup(bookingDetails: JourneyDetails?) {
-        guard bookingDetails?.destinationLocationDetails == nil else {
+    private func setup(journeyDetails: JourneyDetails?) {
+        guard journeyDetails?.destinationLocationDetails == nil else {
             stop()
             return
         }
 
-        guard let pickup = bookingDetails?.originLocationDetails else {
+        guard let pickup = journeyDetails?.originLocationDetails else {
             return
         }
 
@@ -94,7 +94,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     func focusMap() {
 
         func focousOnPickup() {
-            if let originPosition = bookingStatus.getBookingDetails()?.originLocationDetails?.position {
+            if let originPosition = bookingStatus.getJourneyDetails()?.originLocationDetails?.position {
                 map?.center(on: originPosition.toCLLocation())
                 return
             }
@@ -113,8 +113,8 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
       
     }
 
-    func changed(bookingDetails: JourneyDetails?) {
-        setup(bookingDetails: bookingDetails)
+    func changed(journeyDetails: JourneyDetails?) {
+        setup(journeyDetails: journeyDetails)
     }
 
     func stop() {

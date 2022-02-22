@@ -10,16 +10,16 @@ import KarhooSDK
 
 final class PrebookConfirmationFormatter {
 
-    static func confirmationMessage(withDetails bookingDetails: JourneyDetails) -> String {
-        let pickup = bookingDetails.originLocationDetails?.address.displayAddress ?? ""
-        let destination = bookingDetails.destinationLocationDetails?.address.displayAddress ?? ""
+    static func confirmationMessage(withDetails journeyDetails: JourneyDetails) -> String {
+        let pickup = journeyDetails.originLocationDetails?.address.displayAddress ?? ""
+        let destination = journeyDetails.destinationLocationDetails?.address.displayAddress ?? ""
 
-        guard let originTimeZone = bookingDetails.originLocationDetails?.timezone() else {
+        guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
             return String(format: UITexts.Booking.prebookConfirmation, pickup, destination, "")
         }
 
         let dateFormatter = KarhooDateFormatter(timeZone: originTimeZone)
-        let scheduledDate = dateFormatter.display(detailStyleDate: bookingDetails.scheduledDate)
+        let scheduledDate = dateFormatter.display(detailStyleDate: journeyDetails.scheduledDate)
 
         return String(format: UITexts.Booking.prebookConfirmation, pickup, destination, scheduledDate)
     }

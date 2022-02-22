@@ -43,11 +43,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func screenWillAppear() {
-        guard let bookingDetails = bookingStatus.getBookingDetails() else {
+        guard let journeyDetails = bookingStatus.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
-        analytics.quoteListOpened(bookingDetails)
+        analytics.quoteListOpened(journeyDetails)
     }
 
     func selectedQuoteCategory(_ category: QuoteCategory) {
@@ -64,11 +64,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes(animated: animated)
     }
 
-    private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: JourneyDetails?) {
+    private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
         self.fetchedQuotes = quotes
         quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
                                          quoteListId: quotes.quoteListId)
-        if bookingDetails?.destinationLocationDetails != nil, bookingDetails?.isScheduled == true {
+        if journeyDetails?.destinationLocationDetails != nil, journeyDetails?.isScheduled == true {
             didSelectQuoteOrder(.price, animated: false)
         } else {
             updateViewQuotes(animated: false)
@@ -187,7 +187,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             switch result {
             case .success(let quotes):
                 self?.setExpirationDates(of: quotes)
-                self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
+                self?.quoteSearchSuccessResult(quotes, journeyDetails: details)
                 if details.destinationLocationDetails != nil, details.scheduledDate != nil {
                     self?.quoteListView?.hideQuoteSorter()
                 }

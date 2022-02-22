@@ -18,7 +18,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     private var mockQuoteListView: MockQuoteListView!
     private var mockQuoteSorter: MockQuoteSorter!
     private var mockDateFormatter: MockDateFormatterType!
-    private var mockBookingDetails: JourneyDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockAnalytics: MockAnalytics!
 
     static let someQuote = TestUtil.getRandomQuote(highPrice: 1000, lowPrice: 1000, categoryName: "Some")
