@@ -34,6 +34,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     }
 
     override func loadView() {
+        view = UIView()
         setupView()
     }
 
@@ -79,25 +80,39 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     // MARK: - State handling
 
     private func handleState(_ state: QuoteListStete) {
+        tableView.beginUpdates()
+        
         switch state {
         case .loading:
             handleLoadingState()
-        case .fetched(let quotes):
-            handleFetchState(quotes)
+        case .fetched:
+            handleFetchState()
         case .empty:
             handleEmptyState()
         }
+        
+        tableView.endUpdates()
     }
 
     private func handleLoadingState() {
-        
     }
 
-    private func handleFetchState(_ quotes: [Quote]) {
-        
+    private func handleFetchState() {
+        // hide loader
     }
 
     private func handleEmptyState() {
+    }
+    
+    // MARK: - Utils
+    
+    private func getQuotes() -> [Quote] {
+        switch presenter.state {
+        case .loading, .empty:
+            return []
+        case .fetched(let quotes):
+            return quotes
+        }
     }
 
     // MARK: - Scene Input methods
@@ -106,7 +121,6 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         DispatchQueue.main.async { [weak self] in
             self?.presenter.updateQuoteListState(state)
         }
-        
     }
 }
 
@@ -114,7 +128,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 extension KarhooNewQuoteListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.quotes.count
+        getQuotes().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
