@@ -12,6 +12,7 @@ protocol NewQuoteListViewController: BaseViewController {
 }
 
 protocol NewQuoteListPresenter: AnyObject {
+    var onQuoteListStateUpdated: ((QuoteListStete) -> Void)? { get set }
     func viewDidLoad()
     func viewWillAppear()
 }

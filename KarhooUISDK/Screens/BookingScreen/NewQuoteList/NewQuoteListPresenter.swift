@@ -9,12 +9,19 @@
 import Foundation
 import KarhooSDK
 
+enum QuoteListStete {
+    case loading
+    case fetched(quotes: [Quote])
+    case empty
+}
+
 class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
 
     private let router: NewQuoteListRouter
     let onQuoteSelected: (Quote) -> Void
     let onQuoteDetailsSelected: (Quote) -> Void
     var quotes: [Quote]
+    var onQuoteListStateUpdated: ((QuoteListStete) -> Void)?
 
     init(
         router: NewQuoteListRouter,
@@ -32,5 +39,8 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
     }
 
     func viewWillAppear() {
+        if quotes.isNotEmpty {
+            onQuoteListStateUpdated?(.fetched(quotes: quotes))
+        }
     }
 }

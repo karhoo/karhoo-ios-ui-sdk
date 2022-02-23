@@ -46,6 +46,16 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     func setupBinding(_ presenter: NewQuoteListPresenter) {
         self.presenter = presenter
+        presenter.onQuoteListStateUpdated = { [weak self] state in
+            switch state {
+            case .loading:
+                break
+            case .fetched(let quotes)
+                break
+            case empty:
+                break
+            }
+        }
     }
 
     // MARK: - Setup view
