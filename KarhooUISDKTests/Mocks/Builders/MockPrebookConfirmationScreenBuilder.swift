@@ -23,7 +23,7 @@ final class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuild
                                         confirmationCallback: @escaping ScreenResultCallback<PrebookConfirmationAction>) -> Screen {
         
         quoteSet = quote
-        bookingDetailsSet = journeyDetails
+        journeyDetailsSet = journeyDetails
         confirmationCallbackSet = confirmationCallback
         return prebookConfirmationScreenInstance
     }

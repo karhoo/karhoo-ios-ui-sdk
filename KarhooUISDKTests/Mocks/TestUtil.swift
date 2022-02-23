@@ -180,7 +180,7 @@ class TestUtil: PrimitiveUtil {
         return Passengers(additionalPassengers: 0, passengerDetails: [PassengerDetails(user: TestUtil.getRandomUser())])
     }
 
-    class func getRandomBookingDetails(originSet: Bool = true,
+    class func getRandomJourneyDetails(originSet: Bool = true,
                                        destinationSet: Bool = true,
                                        dateSet: Bool = true,
                                        originTimeZoneIdentifier: String = "Europe/London") -> JourneyDetails {
@@ -212,7 +212,7 @@ class TestUtil: PrimitiveUtil {
             journeyDetails.destinationLocationDetails = airportLocationDetails
         }
 
-        return bookingDetails
+        return journeyDetails
     }
 
     class func getAirportPoiDetails() -> PoiDetails {

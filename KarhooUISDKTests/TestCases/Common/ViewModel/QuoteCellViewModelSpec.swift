@@ -53,16 +53,16 @@ class QuoteCellViewModelSpec: XCTestCase {
                                             qtaLowMinutes: 1,
                                             passengerCapacity: 2,
                                             luggageCapacity: 2)
-        let mockBookingStatus = MockBookingStatus()
-        let bookingDetails = TestUtil.getRandomBookingDetails()
-        mockBookingStatus.bookingDetailsToReturn = bookingDetails
+        let mockJourneyDetailsController = MockJourneyDetailsController()
+        let bookingDetails = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsController.journeyDetailsToReturn = bookingDetails
 
         let timezone = bookingDetails.originLocationDetails!.timezone()
         let prebookFormatter = KarhooDateFormatter(timeZone: timezone)
         let expectedCaption = prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate)
         let expectedMainValue = prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
 
         XCTAssertEqual(testObject.scheduleCaption, expectedCaption)
         XCTAssertEqual(testObject.scheduleMainValue, expectedMainValue)
@@ -76,11 +76,11 @@ class QuoteCellViewModelSpec: XCTestCase {
      */
     func testDefaultAirportPickup() {
         let quote = TestUtil.getRandomQuote()
-        let bookingStatus = MockBookingStatus()
+        let mockJourneyDetailsController = MockJourneyDetailsController()
         let locationInfo = LocationInfo(details: PoiDetails(type: .airport))
-        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
+        mockJourneyDetailsController.journeyDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
-        testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
         
         XCTAssertFalse(testObject.showPickUpLabel)
     }
@@ -93,11 +93,11 @@ class QuoteCellViewModelSpec: XCTestCase {
      */
      func testAirportPickupType() {
         let quote = TestUtil.getRandomQuote(pickUpType: .meetAndGreet)
-        let bookingStatus = MockBookingStatus()
+        let mockJourneyDetailsController = MockJourneyDetailsController()
         let locationInfo = LocationInfo(details: PoiDetails(type: .airport))
-        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
+        mockJourneyDetailsController.journeyDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
-        testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
         
         XCTAssertTrue(testObject.showPickUpLabel)
     }
@@ -110,11 +110,11 @@ class QuoteCellViewModelSpec: XCTestCase {
      */
     func testDefaultPickup() {
         let quote = TestUtil.getRandomQuote()
-        let bookingStatus = MockBookingStatus()
+        let mockJourneyDetailsController = MockJourneyDetailsController()
         let locationInfo = LocationInfo(details: PoiDetails(type: .trainStation))
-        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
+        mockJourneyDetailsController.journeyDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
-        testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
         
         XCTAssertFalse(testObject.showPickUpLabel)
     }
@@ -127,11 +127,11 @@ class QuoteCellViewModelSpec: XCTestCase {
      */
     func testNonPoiPickup() {
         let quote = TestUtil.getRandomQuote(pickUpType: .meetAndGreet)
-        let bookingStatus = MockBookingStatus()
+        let mockJourneyDetailsController = MockJourneyDetailsController()
         let locationInfo = LocationInfo(details: PoiDetails(type: .trainStation))
-        bookingStatus.bookingDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
+        mockJourneyDetailsController.journeyDetailsToReturn = JourneyDetails(originLocationDetails: locationInfo)
         
-        testObject = QuoteViewModel(quote: quote, bookingStatus: bookingStatus)
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
         
         XCTAssertFalse(testObject.showPickUpLabel)
     }
@@ -143,7 +143,7 @@ class QuoteCellViewModelSpec: XCTestCase {
     func testMarketQuoteShowsRange() {
         let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .market)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: MockJourneyDetailsController())
 
         XCTAssertEqual(testObject.fare, "£10.00 - £50.00")
     }
@@ -155,7 +155,7 @@ class QuoteCellViewModelSpec: XCTestCase {
     func testFleetQuoteSingleFare() {
         let quote = TestUtil.getRandomQuote(highPrice: 5000, lowPrice: 1000, source: .fleet)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: MockJourneyDetailsController())
 
         XCTAssertEqual(testObject.fare, "£50.00")
     }
@@ -169,10 +169,10 @@ class QuoteCellViewModelSpec: XCTestCase {
         let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
-        let mockBookingStatus = MockBookingStatus()
-        let scheduledBookingDetails = TestUtil.getRandomBookingDetails(originSet: true, destinationSet: true, dateSet: true)
-        mockBookingStatus.bookingDetailsToReturn = scheduledBookingDetails
-        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+        let mockJourneyDetailsController = MockJourneyDetailsController()
+        let scheduledBookingDetails = TestUtil.getRandomJourneyDetails(originSet: true, destinationSet: true, dateSet: true)
+        mockJourneyDetailsController.journeyDetailsToReturn = scheduledBookingDetails
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
 
         XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes before pickup")
     }
@@ -186,10 +186,10 @@ class QuoteCellViewModelSpec: XCTestCase {
         let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 10))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
-        let mockBookingStatus = MockBookingStatus()
-        let asapBookingDetails = TestUtil.getRandomBookingDetails(originSet: true, destinationSet: true, dateSet: false)
-        mockBookingStatus.bookingDetailsToReturn = asapBookingDetails
-        testObject = QuoteViewModel(quote: quote, bookingStatus: mockBookingStatus)
+        let mockJourneyDetailsController = MockJourneyDetailsController()
+        let asapBookingDetails = TestUtil.getRandomJourneyDetails(originSet: true, destinationSet: true, dateSet: false)
+        mockJourneyDetailsController.journeyDetailsToReturn = asapBookingDetails
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: mockJourneyDetailsController)
 
         XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation up to 10 minutes after booking")
     }
@@ -203,7 +203,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .timeBeforePickup, minutes: 0))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: MockJourneyDetailsController())
 
         XCTAssertNil(testObject.freeCancellationMessage)
     }
@@ -217,7 +217,7 @@ class QuoteCellViewModelSpec: XCTestCase {
         let sla = ServiceAgreements(serviceCancellation: ServiceCancellation(type: .beforeDriverEnRoute))
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: sla)
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: MockJourneyDetailsController())
 
         XCTAssertEqual(testObject.freeCancellationMessage, "Free cancellation until the driver is en route")
     }
@@ -230,7 +230,7 @@ class QuoteCellViewModelSpec: XCTestCase {
     func testNoFreeCancellationMinutesOnSLA() {
         let quote = TestUtil.getRandomQuote(highPrice: 50, lowPrice: 10, source: .fleet, serviceLevelAgreements: ServiceAgreements())
 
-        testObject = QuoteViewModel(quote: quote, bookingStatus: MockBookingStatus())
+        testObject = QuoteViewModel(quote: quote, journeyDetailsController: MockJourneyDetailsController())
 
         XCTAssertNil(testObject.freeCancellationMessage)
     }

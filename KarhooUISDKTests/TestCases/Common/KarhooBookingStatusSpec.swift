@@ -13,14 +13,14 @@ import KarhooSDK
 class KarhooBookingStatusSpec: XCTestCase {
 
     private var testBroadcaster: TestBroadcaster!
-    private var testObserver: MockBookingDetailsObserver!
+    private var testObserver: MockJourneyDetailsObserver!
     private var testObject: KarhooJourneyDetailsController!
     private var mockAddressService = MockAddressService()
 
     override func setUp() {
         super.setUp()
 
-        testObserver = MockBookingDetailsObserver()
+        testObserver = MockJourneyDetailsObserver()
         testBroadcaster = TestBroadcaster()
         testObject = KarhooJourneyDetailsController(broadcaster: testBroadcaster, addressService: mockAddressService)
 
@@ -55,13 +55,13 @@ class KarhooBookingStatusSpec: XCTestCase {
         let locationTwo = TestUtil.getRandomLocationInfo()
 
         testObject.set(pickup: locationOne)
-        assert(bookingDetails: testObserver.lastBookingState,
-                originLocationDetails: locationOne,
-                destination: nil,
-                date: nil)
+        assert(journeyDetails: testObserver.lastJourneyDetails,
+               originLocationDetails: locationOne,
+               destination: nil,
+               date: nil)
 
         testObject.set(pickup: locationTwo)
-        assert(bookingDetails: testObserver.lastBookingState,
+        assert(journeyDetails: testObserver.lastJourneyDetails,
                originLocationDetails: locationTwo,
                destination: nil, date: nil)
     }
@@ -75,7 +75,7 @@ class KarhooBookingStatusSpec: XCTestCase {
         testObject.set(pickup: TestUtil.getRandomLocationInfo())
         testObject.set(pickup: nil)
 
-        XCTAssertTrue(testObserver.bookingStateChangedCalled)
+        XCTAssertTrue(testObserver.journeyDetailsChangedCalled)
     }
 
     /**
@@ -90,7 +90,7 @@ class KarhooBookingStatusSpec: XCTestCase {
         let destination = TestUtil.getRandomLocationInfo()
         testObject.set(destination: destination)
 
-        assert(bookingDetails: testObserver.lastBookingState,
+        assert(journeyDetails: testObserver.lastJourneyDetails,
                originLocationDetails: pickup,
                destination: destination,
                date: nil)
@@ -105,8 +105,8 @@ class KarhooBookingStatusSpec: XCTestCase {
         let destination = TestUtil.getRandomLocationInfo()
         testObject.set(destination: destination)
 
-        XCTAssertNil(testObserver.lastBookingState)
-        XCTAssertFalse(testObserver.bookingStateChangedCalled)
+        XCTAssertNil(testObserver.lastJourneyDetails)
+        XCTAssertFalse(testObserver.journeyDetailsChangedCalled)
     }
 
     /**
@@ -124,7 +124,7 @@ class KarhooBookingStatusSpec: XCTestCase {
 
         testObject.set(destination: nil)
 
-        assert(bookingDetails: testObserver.lastBookingState,
+        assert(journeyDetails: testObserver.lastJourneyDetails,
                originLocationDetails: pickup, destination: nil, date: nil)
     }
 
@@ -140,7 +140,7 @@ class KarhooBookingStatusSpec: XCTestCase {
         let prebookTime = Date()
         testObject.set(prebookDate: prebookTime)
 
-        assert(bookingDetails: testObserver.lastBookingState,
+        assert(journeyDetails: testObserver.lastJourneyDetails,
                originLocationDetails: pickup,
                destination: nil,
                date: prebookTime)
@@ -159,7 +159,7 @@ class KarhooBookingStatusSpec: XCTestCase {
         testObject.set(prebookDate: prebookTime)
         testObject.set(prebookDate: nil)
 
-        assert(bookingDetails: testObserver.lastBookingState,
+        assert(journeyDetails: testObserver.lastJourneyDetails,
                originLocationDetails: pickup,
                destination: nil,
                date: nil)
@@ -175,8 +175,8 @@ class KarhooBookingStatusSpec: XCTestCase {
         let prebookTime = Date()
         testObject.set(prebookDate: prebookTime)
 
-        XCTAssertNil(testObserver.lastBookingState)
-        XCTAssertFalse(testObserver.bookingStateChangedCalled)
+        XCTAssertNil(testObserver.lastJourneyDetails)
+        XCTAssertFalse(testObserver.journeyDetailsChangedCalled)
     }
 
     /**
@@ -190,9 +190,9 @@ class KarhooBookingStatusSpec: XCTestCase {
         testObject.set(destination: destinationAddress)
         let date = Date()
         testObject.set(prebookDate: date)
-        let bookingDetails = testObject.getBookingDetails()
+        let journeyDetails = testObject.getJourneyDetails()
 
-        assert(bookingDetails: bookingDetails,
+        assert(journeyDetails: journeyDetails,
                originLocationDetails: pickup,
                destination: destinationAddress,
                date: date)
@@ -213,8 +213,8 @@ class KarhooBookingStatusSpec: XCTestCase {
 
         testObject.reset()
 
-        XCTAssertNil(testObject.getBookingDetails())
-        XCTAssertNil(testObserver.lastBookingState)
+        XCTAssertNil(testObject.getJourneyDetails())
+        XCTAssertNil(testObserver.lastJourneyDetails)
     }
 
     /**
@@ -230,11 +230,11 @@ class KarhooBookingStatusSpec: XCTestCase {
         mockAddressService.reverseGeocodeCall.triggerSuccess(pickup)
         mockAddressService.reverseGeocodeCall.triggerSuccess(destination)
 
-        assert(bookingDetails: testObject.getBookingDetails(),
+        assert(journeyDetails: testObject.getJourneyDetails(),
                originLocationDetails: pickup,
                destination: destination,
                date: journeyInfo.date)
-        XCTAssertTrue(testObserver.bookingStateChangedCalled)
+        XCTAssertTrue(testObserver.journeyDetailsChangedCalled)
 
     }
 

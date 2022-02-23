@@ -15,7 +15,7 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
 
     private var mockView: MockQuoteCategoryBarView!
     private var mockAppAnalytics: MockAnalytics!
-    private var mockBookingStatus: MockBookingStatus!
+    private var mockJourneyDetailsController: MockJourneyDetailsController!
     private var testObject: KarhooQuoteCategoryBarPresenter!
 
     override func setUp() {
@@ -23,9 +23,9 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
 
         mockView = MockQuoteCategoryBarView()
         mockAppAnalytics = MockAnalytics()
-        mockBookingStatus = MockBookingStatus()
+        mockJourneyDetailsController = MockJourneyDetailsController()
         testObject = KarhooQuoteCategoryBarPresenter(analytics: mockAppAnalytics,
-                                                     bookingStatus: mockBookingStatus,
+                                                     journeyDetailsController: mockJourneyDetailsController,
                                                      view: mockView)
 
     }
@@ -35,8 +35,8 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
       * Then: Categories shoud reset
       */
     func testChangingBookingDetailsClearsCategories() {
-        let changedBookingDetails = TestUtil.getRandomBookingDetails()
-        testObject.bookingStateChanged(details: changedBookingDetails)
+        let changedJourneyDetails = TestUtil.getRandomJourneyDetails()
+        testObject.journeyDetailsChanged(details: changedJourneyDetails)
 
         XCTAssertTrue(mockView.categoriesSet!.isEmpty)
     }

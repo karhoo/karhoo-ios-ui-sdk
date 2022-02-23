@@ -31,7 +31,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
 
         mockView = MockCheckoutView()
         testQuote = TestUtil.getRandomQuote(highPrice: 10)
-        testBookingDetails = TestUtil.getRandomBookingDetails()
+        testJourneyDetails = TestUtil.getRandomJourneyDetails()
         mockUserService = MockUserService()
         mockTripService = MockTripService()
         mockAppStateNotifier = MockAppStateNotifier()
@@ -49,11 +49,11 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      to reload the entire test object with an airport set as just the pickup, then just the destination
      */
     func testAirportBookingSetup() {
-        testBookingDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: false)
+        testJourneyDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: false)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
         
-        testBookingDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: true)
+        testJourneyDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: true)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
     }
@@ -293,12 +293,12 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      *  And: Quote type should be set correctly
      */
     func testPrebookSetup() {
-        let timeZone = testBookingDetails.originLocationDetails!.timezone()
+        let timeZone = testJourneyDetails.originLocationDetails!.timezone()
         let formatter = KarhooDateFormatter(timeZone: timeZone)
-        let displayTime = formatter.display(shortStyleTime: testBookingDetails.scheduledDate)
+        let displayTime = formatter.display(shortStyleTime: testJourneyDetails.scheduledDate)
 
         XCTAssert(mockView.timeStringSet == displayTime)
-        XCTAssert(mockView.dateStringSet == formatter.display(mediumStyleDate: testBookingDetails.scheduledDate))
+        XCTAssert(mockView.dateStringSet == formatter.display(mediumStyleDate: testJourneyDetails.scheduledDate))
     }
 
     /**
@@ -307,7 +307,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      *  And: Quote type should be set correctly
      */
     func testAsapSetup() {
-        testBookingDetails.scheduledDate = nil
+        testJourneyDetails.scheduledDate = nil
         loadTestObject()
         let qta = QtaStringFormatter().qtaString(min: testQuote.vehicle.qta.lowMinutes,
                                                  max: testQuote.vehicle.qta.highMinutes)
@@ -323,7 +323,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         testQuote = TestUtil.getRandomQuote(highPrice: 10, quoteType: .fixed)
 
         let fixedFareRequestScreen = KarhooCheckoutPresenter(quote: testQuote,
-                                                             bookingDetails: testBookingDetails,
+                                                             journeyDetails: testJourneyDetails,
                                                              bookingMetadata: mockBookingMetadata,
                                                              tripService: mockTripService,
                                                              userService: mockUserService,
@@ -424,7 +424,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
-            bookingDetails: testBookingDetails,
+            journeyDetails: testJourneyDetails,
             bookingMetadata: mockBookingMetadata,
             tripService: mockTripService,
             userService: mockUserService,
@@ -472,7 +472,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = false
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
-            bookingDetails: testBookingDetails,
+            journeyDetails: testJourneyDetails,
             bookingMetadata: mockBookingMetadata,
             tripService: mockTripService,
             userService: mockUserService,
