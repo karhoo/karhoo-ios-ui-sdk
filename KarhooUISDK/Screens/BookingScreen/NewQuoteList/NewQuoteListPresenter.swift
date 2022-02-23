@@ -12,9 +12,20 @@ import KarhooSDK
 class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
 
     private let router: NewQuoteListRouter
+    let onQuoteSelected: (Quote) -> Void
+    let onQuoteDetailsSelected: (Quote) -> Void
+    var quotes: [Quote]
 
-    init(router: NewQuoteListRouter) {
+    init(
+        router: NewQuoteListRouter,
+        quotes: [Quote],
+        onQuoteSelected: @escaping (Quote) -> Void,
+        onQuoteDetailsSelected: @escaping (Quote) -> Void
+    ) {
         self.router = router
+        self.quotes = quotes
+        self.onQuoteSelected = onQuoteSelected
+        self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }
 
     func viewDidLoad() {

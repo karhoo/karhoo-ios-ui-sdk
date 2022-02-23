@@ -10,10 +10,20 @@ import Foundation
 import KarhooSDK
 
 enum NewQuoteList {
-    static func build() -> NewQuoteListViewController {
+    static func build(
+        quotes: [Quote] = [],
+        onQuoteSelected: @escaping (Quote) -> Void,
+        onQuoteDetailsSelected: @escaping (Quote) -> Void
+    ) -> NewQuoteListViewController {
+        
         let viewController = KarhooNewQuoteListViewController()
         let router = KarhooNewQuoteListRouter(viewController: viewController)
-        let presenter = KarhooNewQuoteListPresenter(router: router)
+        let presenter = KarhooNewQuoteListPresenter(
+            router: router,
+            quotes: quotes,
+            onQuoteSelected: onQuoteSelected,
+            onQuoteDetailsSelected: onQuoteDetailsSelected
+        )
 
         viewController.setupBinding(presenter)
 
