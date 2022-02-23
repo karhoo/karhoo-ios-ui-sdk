@@ -118,12 +118,12 @@ final class QuoteViewModel {
     let freeCancellationMessage: String?
 
     init(quote: Quote,
-         bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
+         journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared) {
         self.passengerCapacity = quote.vehicle.passengerCapacity
         self.baggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
         self.fleetDescription = quote.fleet.description
-        let journeyDetails = bookingStatus.getJourneyDetails()
+        let journeyDetails = journeyDetailsController.getJourneyDetails()
         let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
                                                          journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption

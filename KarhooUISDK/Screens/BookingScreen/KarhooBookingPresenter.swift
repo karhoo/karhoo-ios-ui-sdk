@@ -12,7 +12,7 @@ import KarhooSDK
 final class KarhooBookingPresenter {
 
     private weak var view: BookingView?
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsController: JourneyDetailsController
     private let userService: UserService
     private let analytics: Analytics
     private let phoneNumberCaller: PhoneNumberCallerProtocol
@@ -29,7 +29,7 @@ final class KarhooBookingPresenter {
     private let paymentService: PaymentService
 
     // MARK: - Init
-    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+    init(journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -46,7 +46,7 @@ final class KarhooBookingPresenter {
          paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
         self.analytics = analytics
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsController = journeyDetailsController
         self.phoneNumberCaller = phoneNumberCaller
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
@@ -60,13 +60,13 @@ final class KarhooBookingPresenter {
         self.urlOpener = urlOpener
         self.paymentService = paymentService
         userService.add(observer: self)
-        bookingStatus.add(observer: self)
+        journeyDetailsController.add(observer: self)
     }
     // swiftlint:enable line_length
 
     deinit {
         userService.remove(observer: self)
-        bookingStatus.remove(observer: self)
+        journeyDetailsController.remove(observer: self)
     }
 
     // MARK: - Checkout
@@ -149,8 +149,8 @@ final class KarhooBookingPresenter {
 }
 
 // MARK: - BookingDetailsObserver
-extension KarhooBookingPresenter: BookingDetailsObserver {
-    func bookingStateChanged(details: JourneyDetails?) {
+extension KarhooBookingPresenter: JourneyDetailsObserver {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         if details?.originLocationDetails != nil,
             details?.destinationLocationDetails != nil {
             view?.showQuoteList()
@@ -189,7 +189,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func exitPressed() {
-        bookingStatus.reset()
+        journeyDetailsController.reset()
         view?.dismiss(animated: true, completion: { [weak self] in
             self?.callback?(ScreenResult.cancelled(byUser: true))
         })
@@ -205,19 +205,19 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func resetBookingStatus() {
-        bookingStatus.reset()
+        journeyDetailsController.reset()
     }
 
     func getJourneyDetails() -> JourneyDetails? {
-        return bookingStatus.getJourneyDetails()
+        return journeyDetailsController.getJourneyDetails()
     }
 
     func populate(with journeyDetails: JourneyDetails) {
-        bookingStatus.reset(with: journeyDetails)
+        journeyDetailsController.reset(with: journeyDetails)
     }
     
     func setViewMapPadding() {
-        let bookingDetails = bookingStatus.getJourneyDetails()
+        let bookingDetails = journeyDetailsController.getJourneyDetails()
         if bookingDetails?.originLocationDetails != nil,
             bookingDetails?.destinationLocationDetails != nil {
             view?.setMapPadding(bottomPaddingEnabled: true)

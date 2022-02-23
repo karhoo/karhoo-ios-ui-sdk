@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 import CoreLocation
 
-protocol PickupOnlyStrategyDelegate: class {
+protocol PickupOnlyStrategyDelegate: AnyObject {
     func setFromMap(pickup: LocationInfo?)
     func pickupFailedToSetFromMap(error: KarhooError?)
 }
@@ -29,19 +29,19 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     private var timer: TimeScheduler?
     private var currentPickup: LocationInfo?
     private var lastLocation: CLLocation?
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsController: JourneyDetailsController
     private let locationService: LocationService
     private var reverseGeolocate: Bool
 
     init(userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressService: AddressService = Karhoo.getAddressService(),
          timer: TimeScheduler = KarhooTimeScheduler(),
-         bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+         journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
          locationService: LocationService = KarhooLocationService()) {
         self.userLocationProvider = userLocationProvider
         self.addressService = addressService
         self.timer = timer
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsController = journeyDetailsController
         self.locationService = locationService
         self.reverseGeolocate = false
     }
@@ -94,7 +94,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     func focusMap() {
 
         func focousOnPickup() {
-            if let originPosition = bookingStatus.getJourneyDetails()?.originLocationDetails?.position {
+            if let originPosition = journeyDetailsController.getJourneyDetails()?.originLocationDetails?.position {
                 map?.center(on: originPosition.toCLLocation())
                 return
             }

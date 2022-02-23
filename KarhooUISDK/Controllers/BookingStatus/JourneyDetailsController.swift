@@ -9,13 +9,13 @@
 import Foundation
 import KarhooSDK
 
-public protocol BookingDetailsObserver: AnyObject {
-    func bookingStateChanged(details: JourneyDetails?)
+public protocol JourneyDetailsObserver: AnyObject {
+    func journeyDetailsChanged(details: JourneyDetails?)
 }
 
-public protocol BookingStatus {
-    func add(observer: BookingDetailsObserver)
-    func remove(observer: BookingDetailsObserver)
+public protocol JourneyDetailsController {
+    func add(observer: JourneyDetailsObserver)
+    func remove(observer: JourneyDetailsObserver)
 
     func set(pickup: LocationInfo?)
     func set(destination: LocationInfo?)

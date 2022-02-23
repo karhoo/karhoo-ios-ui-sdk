@@ -14,7 +14,7 @@ class KarhooBookingStatusSpec: XCTestCase {
 
     private var testBroadcaster: TestBroadcaster!
     private var testObserver: MockBookingDetailsObserver!
-    private var testObject: KarhooBookingStatus!
+    private var testObject: KarhooJourneyDetailsController!
     private var mockAddressService = MockAddressService()
 
     override func setUp() {
@@ -22,7 +22,7 @@ class KarhooBookingStatusSpec: XCTestCase {
 
         testObserver = MockBookingDetailsObserver()
         testBroadcaster = TestBroadcaster()
-        testObject = KarhooBookingStatus(broadcaster: testBroadcaster, addressService: mockAddressService)
+        testObject = KarhooJourneyDetailsController(broadcaster: testBroadcaster, addressService: mockAddressService)
 
         testObject.add(observer: testObserver)
     }

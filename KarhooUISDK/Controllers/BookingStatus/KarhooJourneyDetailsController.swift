@@ -9,12 +9,12 @@
 import Foundation
 import KarhooSDK
 
-public final class KarhooBookingStatus: BookingStatus {
+public final class KarhooJourneyDetailsController: JourneyDetailsController {
 
     private let broadcaster: Broadcaster<AnyObject>
     private var status: JourneyDetails?
     private let addressService: AddressService
-    public static let shared = KarhooBookingStatus()
+    public static let shared = KarhooJourneyDetailsController()
 
     init(broadcaster: Broadcaster<AnyObject> = Broadcaster<AnyObject>(),
          addressService: AddressService = Karhoo.getAddressService()) {
@@ -22,11 +22,11 @@ public final class KarhooBookingStatus: BookingStatus {
         self.addressService = addressService
     }
 
-    public func add(observer: BookingDetailsObserver) {
+    public func add(observer: JourneyDetailsObserver) {
         self.broadcaster.add(listener: observer)
     }
 
-    public func remove(observer: BookingDetailsObserver) {
+    public func remove(observer: JourneyDetailsObserver) {
         self.broadcaster.remove(listener: observer)
     }
 
@@ -76,8 +76,8 @@ public final class KarhooBookingStatus: BookingStatus {
 
     private func broadcastState() {
         broadcaster.broadcast { [weak self] (listener: AnyObject) in
-            let listener = listener as? BookingDetailsObserver
-            listener?.bookingStateChanged(details: self?.status)
+            let listener = listener as? JourneyDetailsObserver
+            listener?.journeyDetailsChanged(details: self?.status)
         }
     }
 

@@ -11,7 +11,7 @@ import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsController: JourneyDetailsController
     private let quoteService: QuoteService
     private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
@@ -23,27 +23,27 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let analytics: Analytics
 
     init(
-        bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+        journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteListView: QuoteListView,
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsController = journeyDetailsController
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
         self.analytics = analytics
-        bookingStatus.add(observer: self)
+        journeyDetailsController.add(observer: self)
     }
 
     deinit {
-        bookingStatus.remove(observer: self)
+        journeyDetailsController.remove(observer: self)
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
     func screenWillAppear() {
-        guard let journeyDetails = bookingStatus.getJourneyDetails() else {
+        guard let journeyDetails = journeyDetailsController.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
@@ -148,9 +148,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 }
 
-extension KarhooQuoteListPresenter: BookingDetailsObserver {
+extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
-    func bookingStateChanged(details: JourneyDetails?) {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
 
         guard let details = details else {

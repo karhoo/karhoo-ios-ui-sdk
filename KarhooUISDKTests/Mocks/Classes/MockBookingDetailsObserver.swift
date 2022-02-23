@@ -9,11 +9,11 @@
 import Foundation
 import KarhooUISDK
 
-final class MockBookingDetailsObserver: BookingDetailsObserver {
+final class MockBookingDetailsObserver: JourneyDetailsObserver {
     var lastBookingState: JourneyDetails?
     var bookingStateChangedCalled = false
 
-    func bookingStateChanged(details: JourneyDetails?) {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         lastBookingState = details
         bookingStateChangedCalled = true
     }

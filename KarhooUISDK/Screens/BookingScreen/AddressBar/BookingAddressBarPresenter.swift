@@ -11,7 +11,7 @@ import CoreLocation
 
 final class BookingAddressBarPresenter: AddressBarPresenter {
 
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsController: JourneyDetailsController
     private var journeyInfo: JourneyInfo?
     private let addressService: AddressService
     private weak var view: AddressBarView?
@@ -19,28 +19,28 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
 
-    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+    init(journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
          journeyInfo: JourneyInfo? = nil,
          addressService: AddressService = Karhoo.getAddressService(),
          userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressScreenBuilder: AddressScreenBuilder = KarhooUI().screens().address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker()) {
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsController = journeyDetailsController
         self.journeyInfo = journeyInfo
         self.addressService = addressService
         self.userLocationProvider = userLocationProvider
         self.addressScreenBuilder = addressScreenBuilder
         self.datePickerScreenBuilder = datePickerScreenBuilder
-        bookingStatus.add(observer: self)
+        journeyDetailsController.add(observer: self)
     }
 
     deinit {
-        bookingStatus.remove(observer: self)
+        journeyDetailsController.remove(observer: self)
     }
 
     func load(view: AddressBarView?) {
         self.view = view
-        show(journeyDetails: bookingStatus.getJourneyDetails())
+        show(journeyDetails: journeyDetailsController.getJourneyDetails())
     }
 
     func addressSelected(type: AddressType) {
@@ -48,14 +48,14 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
 
         var typeSelected = type
 
-        if typeSelected == .destination && bookingStatus.getJourneyDetails()?.originLocationDetails == nil {
+        if typeSelected == .destination && journeyDetailsController.getJourneyDetails()?.originLocationDetails == nil {
             typeSelected = .pickup
         }
 
         if case AddressType.pickup = typeSelected {
             searchBias = userLocationProvider.getLastKnownLocation()
         } else {
-            searchBias = bookingStatus.getJourneyDetails()?.originLocationDetails?.position.toCLLocation()
+            searchBias = journeyDetailsController.getJourneyDetails()?.originLocationDetails?.position.toCLLocation()
         }
         
         let addressSearchScreen = addressScreenBuilder.buildAddressScreen(locationBias: searchBias,
@@ -72,11 +72,11 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         switch addressType {
         case .pickup:
             if let newOrigin = result.completedValue() {
-                bookingStatus.set(pickup: newOrigin)
+                journeyDetailsController.set(pickup: newOrigin)
             }
         case .destination:
             if let newDestination = result.completedValue() {
-                bookingStatus.set(destination: newDestination)
+                journeyDetailsController.set(destination: newDestination)
             }
         }
 
@@ -85,14 +85,14 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
 
     func addressCleared(type: AddressType) {
         switch type {
-        case .pickup: bookingStatus.set(pickup: nil)
-        case .destination: bookingStatus.set(destination: nil)
+        case .pickup: journeyDetailsController.set(pickup: nil)
+        case .destination: journeyDetailsController.set(destination: nil)
         }
     }
 
     func prebookSelected() {
-        guard let currentBookingDetails = bookingStatus.getJourneyDetails(),
-            let originTimeZone = bookingStatus.getJourneyDetails()?.originLocationDetails?.timezone() else {
+        guard let currentBookingDetails = journeyDetailsController.getJourneyDetails(),
+            let originTimeZone = journeyDetailsController.getJourneyDetails()?.originLocationDetails?.timezone() else {
             return
         }
 
@@ -101,7 +101,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
                                    timeZone: originTimeZone,
                                    callback: { [weak self] result in
                                     self?.view?.parentViewController?.dismiss(animated: true, completion: nil)
-                                    self?.bookingStatus.set(prebookDate: result.completedValue())
+                                    self?.journeyDetailsController.set(prebookDate: result.completedValue())
         })
 
         datePickerScreen.modalPresentationStyle = .overCurrentContext
@@ -110,19 +110,19 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     }
 
     func prebookCleared() {
-        bookingStatus.set(prebookDate: nil)
+        journeyDetailsController.set(prebookDate: nil)
     }
 
     func addressSwapSelected() {
-        var swappedDetails = bookingStatus.getJourneyDetails()?.reverse()
+        var swappedDetails = journeyDetailsController.getJourneyDetails()?.reverse()
         pickupSet(locationInfo: swappedDetails?.originLocationDetails)
         destinationSet(locationInfo: swappedDetails?.destinationLocationDetails)
-        swappedDetails?.scheduledDate = bookingStatus.getJourneyDetails()?.scheduledDate
+        swappedDetails?.scheduledDate = journeyDetailsController.getJourneyDetails()?.scheduledDate
 
         show(journeyDetails: swappedDetails)
     }
 
-    func bookingStateChanged(details: JourneyDetails?) {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         show(journeyDetails: details)
     }
 
@@ -130,14 +130,14 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         guard let pickup = locationInfo else {
             return
         }
-        bookingStatus.set(pickup: pickup)
+        journeyDetailsController.set(pickup: pickup)
     }
 
     private func destinationSet(locationInfo: LocationInfo?) {
         guard let destination = locationInfo else {
             return
         }
-        bookingStatus.set(destination: destination)
+        journeyDetailsController.set(destination: destination)
         view?.destinationSetState(disableClearButton: false)
     }
 
@@ -176,7 +176,7 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
     }
 
     private func setPrebook(date: Date) {
-        guard let originTimeZone = bookingStatus.getJourneyDetails()?.originLocationDetails?.timezone() else {
+        guard let originTimeZone = journeyDetailsController.getJourneyDetails()?.originLocationDetails?.timezone() else {
             return
         }
         

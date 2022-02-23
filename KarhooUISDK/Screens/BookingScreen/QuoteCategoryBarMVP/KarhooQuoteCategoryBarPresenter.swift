@@ -12,19 +12,19 @@ import KarhooSDK
 final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
 
     private let analytics: Analytics
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsController: JourneyDetailsController
     private weak var quoteCategoryBarView: QuoteCategoryBarView?
     private var selectedIndex: Int?
     private var lastQuotesListId: String?
     private var categories: [QuoteCategory] = []
 
     init(analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-         bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+         journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
          view: QuoteCategoryBarView) {
         self.analytics = analytics
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsController = journeyDetailsController
         self.quoteCategoryBarView = view
-        self.bookingStatus.add(observer: self)
+        self.journeyDetailsController.add(observer: self)
     }
 
     func selected(index: Int, animated: Bool) {
@@ -81,9 +81,9 @@ final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
     }
 }
 
-extension KarhooQuoteCategoryBarPresenter: BookingDetailsObserver {
+extension KarhooQuoteCategoryBarPresenter: JourneyDetailsObserver {
 
-    func bookingStateChanged(details: JourneyDetails?) {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         resetCategories()
     }
 }

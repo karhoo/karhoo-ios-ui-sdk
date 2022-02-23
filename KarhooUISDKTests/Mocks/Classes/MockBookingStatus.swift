@@ -9,21 +9,21 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockBookingStatus: BookingStatus {
+final class MockBookingStatus: JourneyDetailsController {
 
     var journeyInfoSet: JourneyInfo?
     func setJourneyInfo(journeyInfo: JourneyInfo?) {
         journeyInfoSet = journeyInfo
     }
 
-    weak var observer: BookingDetailsObserver?
+    weak var observer: JourneyDetailsObserver?
 
-    func add(observer: BookingDetailsObserver) {
+    func add(observer: JourneyDetailsObserver) {
         self.observer = observer
     }
 
     var removeCalled = false
-    func remove(observer: BookingDetailsObserver) {
+    func remove(observer: JourneyDetailsObserver) {
         removeCalled = true
     }
 
@@ -64,6 +64,6 @@ final class MockBookingStatus: BookingStatus {
     }
 
     func triggerCallback(journeyDetails: JourneyDetails?) {
-        observer?.bookingStateChanged(details: journeyDetails)
+        observer?.journeyDetailsChanged(details: journeyDetails)
     }
 }
