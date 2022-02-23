@@ -16,6 +16,12 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     private var presenter: NewQuoteListPresenter!
 
     // MARK: - Views
+
+    private lazy var tableView = UITableView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.delegate = self
+        $0.dataSource = self
+    }
     
     // MARK: - Lifecycle
 
@@ -47,14 +53,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     func setupBinding(_ presenter: NewQuoteListPresenter) {
         self.presenter = presenter
         presenter.onQuoteListStateUpdated = { [weak self] state in
-            switch state {
-            case .loading:
-                break
-            case .fetched(let quotes)
-                break
-            case empty:
-                break
-            }
+            self?.handleState(state)
         }
     }
 
@@ -70,8 +69,57 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     }
 
     private func setupHierarchy() {
+        view.addSubview(tableView)
     }
 
     private func setupLayout() {
+        tableView.anchorToSuperview()
+    }
+
+    // MARK: - State handling
+
+    private func handleState(_ state: QuoteListStete) {
+        switch state {
+        case .loading:
+            handleLoadingState()
+        case .fetched(let quotes):
+            handleFetchState(quotes)
+        case .empty:
+            handleEmptyState()
+        }
+    }
+
+    private func handleLoadingState() {
+        
+    }
+
+    private func handleFetchState(_ quotes: [Quote]) {
+        
+    }
+
+    private func handleEmptyState() {
+    }
+
+    // MARK: - Scene Input methods
+
+    func updateQuoteListState(_ state: QuoteListStete) {
+        DispatchQueue.main.async { [weak self] in
+            self?.presenter.updateQuoteListState(state)
+        }
+        
+    }
+}
+
+    // MARK: - TableView delegate & data source
+extension KarhooNewQuoteListViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.quotes.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        UITableViewCell().then {
+            $0.backgroundColor = .red
+        }
     }
 }

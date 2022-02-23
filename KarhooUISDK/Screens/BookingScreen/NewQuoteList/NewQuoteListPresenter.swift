@@ -20,8 +20,8 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
     private let router: NewQuoteListRouter
     let onQuoteSelected: (Quote) -> Void
     let onQuoteDetailsSelected: (Quote) -> Void
-    var quotes: [Quote]
     var onQuoteListStateUpdated: ((QuoteListStete) -> Void)?
+    var state: QuoteListStete = .empty
 
     init(
         router: NewQuoteListRouter,
@@ -30,7 +30,7 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
         onQuoteDetailsSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
-        self.quotes = quotes
+        self.state = quotes.isEmpty ? .empty : .fetched(quotes: quotes)
         self.onQuoteSelected = onQuoteSelected
         self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }
@@ -39,8 +39,11 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
     }
 
     func viewWillAppear() {
-        if quotes.isNotEmpty {
-            onQuoteListStateUpdated?(.fetched(quotes: quotes))
-        }
+        onQuoteListStateUpdated?(state)
+    }
+
+    func updateQuoteListState(_ state: QuoteListStete) {
+        self.state = state
+        onQuoteListStateUpdated?(state)
     }
 }

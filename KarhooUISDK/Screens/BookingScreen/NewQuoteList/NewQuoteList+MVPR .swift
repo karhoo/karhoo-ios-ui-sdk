@@ -9,12 +9,15 @@
 import KarhooSDK
 
 protocol NewQuoteListViewController: BaseViewController {
+    func updateQuoteListState(_ state: QuoteListStete)
 }
 
 protocol NewQuoteListPresenter: AnyObject {
+    var state: QuoteListStete { get }
     var onQuoteListStateUpdated: ((QuoteListStete) -> Void)? { get set }
     func viewDidLoad()
     func viewWillAppear()
+    func updateQuoteListState(_ state: QuoteListStete)
 }
 
 protocol NewQuoteListRouter {
