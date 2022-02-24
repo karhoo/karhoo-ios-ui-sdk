@@ -1,0 +1,29 @@
+phrase:
+  project_id: 7b8fda6d5a278d9e614d3a9c4dac2552
+  pull:
+    targets:
+    - file: ./KarhooUISDK/Translations/Base.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: aaf8c958b38639ee4ed95968216287e9
+    - file: ./KarhooUISDK/Translations/de.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: f78479b7489bc41a9b36467ea38841c0
+    - file: ./KarhooUISDK/Translations/es.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 4e1fd40f8a6998a5453ab380840894f3
+    - file: ./KarhooUISDK/Translations/fr.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 4fa1656dd5ff049e56b673c38a32e739
+        
+    - file: ./KarhooUISDK/Translations/it.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 5469f4bb572bf48c0e13b393d9f90c20
+    - file: ./KarhooUISDK/Translations/nl.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: eaeb14fb78a369258bb498629f0f892a
