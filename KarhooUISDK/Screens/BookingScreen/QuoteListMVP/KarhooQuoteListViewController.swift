@@ -15,6 +15,7 @@ public struct KHQuoteListViewID {
 }
 
 final class KarhooQuoteListViewController: UIViewController, QuoteListView {
+    // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
     var tableView: UITableView!
     private var didSetupConstraints = false
     
@@ -25,15 +26,20 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     private var legalDisclaimerLabel: UILabel!
     private var emptyDataSetView: QuoteListEmptyDataSetView!
     private var quoteCategoryBarView: KarhooQuoteCategoryBarView!
-    
-    
-    private lazy var tableViewController = NewQuoteList.build(onQuoteSelected: {_ in}, onQuoteDetailsSelected: {_ in})
-    
-    private let tableViewReuseIdentifier = KHQuoteListViewID.tableViewReuseIdentifier
-    private var data: TableData<Quote>!
-    private var source: TableDataSource<Quote>!
-    private var delegate: TableDelegate<Quote>! // swiftlint:disable:this weak_delegate
     private var presenter: QuoteListPresenter?
+
+    // MARK: - Nested view controllers
+
+    private lazy var tableViewController = NewQuoteList.build(
+        onQuoteSelected: { [weak self] quote in
+            self?.quoteListActions?.didSelectQuote(quote)
+        },
+        onQuoteDetailsSelected: { _ in
+            // TODO: Finish implementation
+        }
+    )
+
+    // MARK: - Lifecycle
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -84,20 +90,10 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         emptyDataSetView = QuoteListEmptyDataSetView()
         emptyDataSetView.hide()
         stackView.addArrangedSubview(emptyDataSetView)
-        
-        data = TableData<Quote>()
-        source = TableDataSource<Quote>(reuseIdentifier: tableViewReuseIdentifier, tableData: data)
-        delegate = TableDelegate<Quote>(tableData: data)
-        
+
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.accessibilityIdentifier = "table_view"
-//        setUpTable()
-        
-        tableViewController.loadViewIfNeeded()
-        addChild(tableViewController)
-        stackView.addArrangedSubview(tableViewController.view)
-        
+
         loadingView = LoadingView()
         loadingView.set(backgroundColor: .clear)
         loadingView.set(activityIndicatorColor: KarhooUI.colors.darkGrey)
@@ -106,7 +102,14 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         
         view.setNeedsUpdateConstraints()
         
+        setupNestedTableViewController()
         presenter = KarhooQuoteListPresenter(quoteListView: self)
+    }
+
+    private func setupNestedTableViewController() {
+        tableViewController.loadViewIfNeeded()
+        addChild(tableViewController)
+        stackView.addArrangedSubview(tableViewController.view)
     }
 
     private func setupLegalDisclaimerLabel() {
@@ -139,9 +142,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
                  quoteCategoryBarView.heightAnchor.constraint(equalToConstant: quoteCategoryHeight),
                  quoteCategoryBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)]
                 .map { $0.isActive = true }
-            
-//            _ = [tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-//                 tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)].map { $0.isActive = true }
 
             let loadingConstraints: [NSLayoutConstraint] = [loadingView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                                              constant: 15.0),
@@ -158,56 +158,12 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         super.updateViewConstraints()
     }
     
-//    private func setUpTable() {
-//        tableView.register(QuoteCell.self, forCellReuseIdentifier: tableViewReuseIdentifier)
-//        tableView.dataSource = source
-//        tableView.delegate = delegate
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 50.0
-//        tableView.separatorStyle = .none
-//
-//        // Using footerView because content inset can't be used
-//        let footer = UIView(frame: .init(x: 0, y: 0, width: 50, height: 50 + 20))
-//        footer.backgroundColor = .clear
-//        tableView.tableFooterView = footer
-//
-//        func cellCallback(quote: Quote, cell: UITableViewCell, indexPath: IndexPath) {
-//            guard let cell = cell as? QuoteCell else {
-//                return
-//            }
-//            let viewModel = QuoteViewModel(quote: quote)
-//            cell.set(viewModel: viewModel)
-//        }
-//
-//        source.set(cellConfigurationCallback: cellCallback)
-//
-//        delegate.set(selectionCallback: { [weak self] (quote: Quote) in
-//            guard let self = self else {
-//                return
-//            }
-//            self.quoteListActions?.didSelectQuote(quote)
-//        })
-//    }
-    
     func set(quoteListActions: QuoteListActions) {
         self.quoteListActions = quoteListActions
     }
     
     func showQuotes(_ quotes: [Quote], animated: Bool) {
-//        if tableView.alpha == 0 {
-//            UIView.animate(withDuration: 0.3) { [weak self] in
-//                self?.tableView.alpha = 1
-//            }
-//        }
-//        emptyDataSetView.hide()
-//        legalDisclaimerLabel.isHidden = false
-//        delegate.setSection(key: "", to: quotes)
-//        if data.getItems(section: 0).count > 0, animated {
-//            tableView.reloadSections([0],
-//                                     with: .fade)
-//        } else {
-//            tableView.reloadData()
-//        }
+        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
     }
     
     func showEmptyDataSetMessage(_ message: String) {

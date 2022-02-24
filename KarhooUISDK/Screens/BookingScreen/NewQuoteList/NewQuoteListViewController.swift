@@ -17,10 +17,15 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - Views
 
+    private lazy var activityIndicator = UIActivityIndicatorView()
     private lazy var tableView = UITableView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
+        $0.separatorStyle = .singleLine
+        $0.accessibilityIdentifier = "table_view"
+        $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
+        $0.tableFooterView = activityIndicator
     }
     
     // MARK: - Lifecycle
@@ -80,8 +85,6 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     // MARK: - State handling
 
     private func handleState(_ state: QuoteListStete) {
-        tableView.beginUpdates()
-        
         switch state {
         case .loading:
             handleLoadingState()
@@ -90,18 +93,19 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         case .empty:
             handleEmptyState()
         }
-        
-        tableView.endUpdates()
+        tableView.reloadData()
     }
 
     private func handleLoadingState() {
+        activityIndicator.startAnimating()
     }
 
     private func handleFetchState() {
-        // hide loader
+        activityIndicator.stopAnimating()
     }
 
     private func handleEmptyState() {
+        activityIndicator.stopAnimating()
     }
     
     // MARK: - Utils
@@ -132,8 +136,19 @@ extension KarhooNewQuoteListViewController: UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell().then {
-            $0.backgroundColor = .red
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: QuoteCell.self), for: indexPath)
+        
+        if let cell = cell as? QuoteCell, let quote = getQuotes()[safe: indexPath.row] {
+            cell.set(viewModel: QuoteViewModel(quote: quote))
         }
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let quote = getQuotes()[safe: indexPath.row] else {
+            return
+        }
+        presenter.onQuoteSelected(quote)
     }
 }
