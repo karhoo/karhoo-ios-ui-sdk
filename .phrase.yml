@@ -1,5 +1,11 @@
 phrase:
   project_id: 7b8fda6d5a278d9e614d3a9c4dac2552
+  push:
+    sources:
+    - file: ./KarhooUISDK/Translations/Base.lproj/Localizable.strings
+      params:
+        file_format: strings
+        update_translations: false
   pull:
     targets:
     - file: ./KarhooUISDK/Translations/Base.lproj/Localizable.strings
