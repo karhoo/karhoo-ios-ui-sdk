@@ -187,6 +187,9 @@ class KarhooPhoneInputView: UIView {
         let presenter = CountryCodeSelectionPresenter(preSelectedCountry: country) { [weak self] result in
             guard let value = result.completedValue()
             else {
+                if self?.focusPhoneNumber ?? false {
+                    self?.textView.becomeFirstResponder()
+                }
                 return
             }
 
