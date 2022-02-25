@@ -66,10 +66,33 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 
     func setupBinding(_ presenter: QuoteListPresenter) {
         self.presenter = presenter
-        presenter.onStateUpdated = { _ in
-            assertionFailure()
-            // TODO: tbd
+        presenter.onStateUpdated = { [weak self] state in
+            self?.handleStateUpdate(state)
         }
+    }
+    
+    // MARK: - State handling
+    private func handleStateUpdate(_ state: QuoteListState) {
+        switch state {
+        case .loading:
+            self.handleLoadingState()
+        case .fetched(quotes: let quotes):
+            self.handleFetchedState(quotes: quotes)
+        case .empty(reason: let reason):
+            self.handleEmptyState(reason: reason)
+        }
+    }
+    
+    private func handleLoadingState(){
+        tableViewController.updateQuoteListState(.loading)
+    }
+    
+    private func handleFetchedState(quotes: [Quote]){
+        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
+    }
+    
+    private func handleEmptyState(reason: QuoteListState.Error) {
+        tableViewController.updateQuoteListState(.empty(reason: reason))
     }
 
     private func setUpView() {
@@ -207,17 +230,17 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         quoteCategoryBarView.isHidden = !show
     }
     
-    func hideLoadingView() {
-        loadingView.hide()
-    }
-    
-    func showLoadingView() {
-        loadingView.show()
-        emptyDataSetView.hide()
-        legalDisclaimerLabel.isHidden = true
-        view.layoutIfNeeded()
-        view.setNeedsLayout()
-    }
+//    func hideLoadingView() {
+//        loadingView.hide()
+//    }
+//
+//    func showLoadingView() {
+//        loadingView.show()
+//        emptyDataSetView.hide()
+//        legalDisclaimerLabel.isHidden = true
+//        view.layoutIfNeeded()
+//        view.setNeedsLayout()
+//    }
 
     func quotesAvailabilityDidUpdate(availability: Bool) {
         quoteListActions?.quotesAvailabilityDidUpdate(availability: availability)

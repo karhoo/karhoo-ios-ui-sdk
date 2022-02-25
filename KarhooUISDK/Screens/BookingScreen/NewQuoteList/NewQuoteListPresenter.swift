@@ -9,22 +9,14 @@
 import Foundation
 import KarhooSDK
 
-extension NewQuoteList {
-    enum State {
-        case loading
-        case fetched(quotes: [Quote])
-        case empty
-    }
-}
-
 
 class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
 
     private let router: NewQuoteListRouter
     let onQuoteSelected: (Quote) -> Void
     let onQuoteDetailsSelected: (Quote) -> Void
-    var onQuoteListStateUpdated: ((NewQuoteList.State) -> Void)?
-    var state: NewQuoteList.State = .empty
+    var onQuoteListStateUpdated: ((QuoteListState) -> Void)?
+    var state: QuoteListState
 
     init(
         router: NewQuoteListRouter,
@@ -33,7 +25,7 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
         onQuoteDetailsSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
-        self.state = quotes.isEmpty ? .empty : .fetched(quotes: quotes)
+        self.state = quotes.isEmpty ? .empty(reason: .noResults) : .fetched(quotes: quotes)
         self.onQuoteSelected = onQuoteSelected
         self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }
@@ -45,7 +37,7 @@ class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
         onQuoteListStateUpdated?(state)
     }
 
-    func updateQuoteListState(_ state: NewQuoteList.State) {
+    func updateQuoteListState(_ state: QuoteListState) {
         self.state = state
         onQuoteListStateUpdated?(state)
     }
