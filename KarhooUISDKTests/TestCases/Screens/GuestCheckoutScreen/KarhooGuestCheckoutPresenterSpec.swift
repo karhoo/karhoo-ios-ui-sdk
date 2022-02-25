@@ -17,7 +17,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
     private var testCallbackResult: ScreenResult<TripInfo>?
     private var mockThreeDSecureProvider = MockThreeDSecureProvider()
     private var mockTripService = MockTripService()
-    private var mockBookingDetails = TestUtil.getRandomBookingDetails()
+    private var mockJourneyDetails = TestUtil.getRandomJourneyDetails()
     private var mockUserService = MockUserService()
     private var mockPaymentNonceProvider = MockPaymentNonceProvider()
     private var mockBookingMetadata: [String: Any]? = [:]
@@ -239,7 +239,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
         testObject = KarhooCheckoutPresenter(
             quote: testQuote,
-            bookingDetails: mockBookingDetails,
+            journeyDetails: mockJourneyDetails,
             bookingMetadata: mockBookingMetadata,
             threeDSecureProvider: mockThreeDSecureProvider,
             tripService: mockTripService,

@@ -35,7 +35,7 @@ public protocol AddressBarView: BaseView {
     func setDisplayTripState()
 }
 
-protocol AddressBarPresenter: BookingDetailsObserver {
+protocol AddressBarPresenter: JourneyDetailsObserver {
 
     func load(view: AddressBarView?)
 

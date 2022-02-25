@@ -32,8 +32,8 @@ class DestinationSetStrategySpec: XCTestCase {
      *  And:    Destination pin should be set
      */
     func testStart() {
-        let details = TestUtil.getRandomBookingDetails()
-        testObject.start(bookingDetails: details)
+        let details = TestUtil.getRandomJourneyDetails()
+        testObject.start(journeyDetails: details)
 
         XCTAssert(mockMap.locationsToZoomTo?.count == 2)
         
@@ -45,7 +45,7 @@ class DestinationSetStrategySpec: XCTestCase {
                        details.destinationLocationDetails!.position.toCLLocation().coordinate)
     }
 
-    private func assertLocationsToZoomOn(map: MockKarhooMapView, details: BookingDetails) {
+    private func assertLocationsToZoomOn(map: MockKarhooMapView, details: JourneyDetails) {
         let containsDestination = map.locationsToZoomTo?.contains {
             $0.coordinate == details.destinationLocationDetails!.position.toCLLocation().coordinate
         }
@@ -77,9 +77,9 @@ class DestinationSetStrategySpec: XCTestCase {
      */
     func testBookingDetailsChangesFromNotSet() {
 
-        let details = TestUtil.getRandomBookingDetails()
+        let details = TestUtil.getRandomJourneyDetails()
 
-        testObject.changed(bookingDetails: details)
+        testObject.changed(journeyDetails: details)
 
         XCTAssert(mockMap.locationsToZoomTo?.count == 2)
         
@@ -105,13 +105,13 @@ class DestinationSetStrategySpec: XCTestCase {
      */
     func testBookingDetailsChangesFromSet() {
 
-        var details = TestUtil.getRandomBookingDetails()
-        testObject.changed(bookingDetails: details)
+        var details = TestUtil.getRandomJourneyDetails()
+        testObject.changed(journeyDetails: details)
         mockMap = MockKarhooMapView() // Start with empty
         testObject.load(map: mockMap)
 
-        details = TestUtil.getRandomBookingDetails()
-        testObject.changed(bookingDetails: details)
+        details = TestUtil.getRandomJourneyDetails()
+        testObject.changed(journeyDetails: details)
 
         XCTAssert(mockMap.locationsToZoomTo?.count == 2)
         
@@ -135,7 +135,7 @@ class DestinationSetStrategySpec: XCTestCase {
      */
     func testNilBookingDetails() {
 
-        testObject.changed(bookingDetails: nil)
+        testObject.changed(journeyDetails: nil)
 
         XCTAssertNil(mockMap.locationsToZoomTo)
         XCTAssert(mockMap.addedPins.count == 0)
@@ -148,9 +148,9 @@ class DestinationSetStrategySpec: XCTestCase {
      */
     func testBookingDetailsChangesNoDestination() {
 
-        let details = TestUtil.getRandomBookingDetails(destinationSet: false)
+        let details = TestUtil.getRandomJourneyDetails(destinationSet: false)
 
-        testObject.changed(bookingDetails: details)
+        testObject.changed(journeyDetails: details)
 
         XCTAssertNil(mockMap.locationsToZoomTo)
         XCTAssert(mockMap.addedPins.count == 0)
@@ -162,14 +162,14 @@ class DestinationSetStrategySpec: XCTestCase {
      * Then:    Nothing should happen
      */
     func testUnimportnatBookingDetailsChanges() {
-        var details = TestUtil.getRandomBookingDetails()
-        testObject.changed(bookingDetails: details)
+        var details = TestUtil.getRandomJourneyDetails()
+        testObject.changed(journeyDetails: details)
 
         mockMap.locationsToZoomTo = nil
         mockMap.addedPins = [:]
 
         details.scheduledDate =  Date()
-        testObject.changed(bookingDetails: details)
+        testObject.changed(journeyDetails: details)
 
         XCTAssertNil(mockMap.locationsToZoomTo)
         XCTAssert(mockMap.addedPins.count == 0)
@@ -181,8 +181,8 @@ class DestinationSetStrategySpec: XCTestCase {
      * Then:    The map should zoom to the current trip
      */
     func testLocateUser() {
-        let details = TestUtil.getRandomBookingDetails()
-        testObject.changed(bookingDetails: details)
+        let details = TestUtil.getRandomJourneyDetails()
+        testObject.changed(journeyDetails: details)
 
         mockMap.locationsToZoomTo = nil
 

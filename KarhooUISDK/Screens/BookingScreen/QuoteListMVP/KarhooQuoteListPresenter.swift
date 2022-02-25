@@ -11,7 +11,7 @@ import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsManager: JourneyDetailsManager
     private let quoteService: QuoteService
     private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
@@ -25,31 +25,31 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     init(
-        bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteListView: QuoteListView,
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
         self.analytics = analytics
-        bookingStatus.add(observer: self)
+        journeyDetailsManager.add(observer: self)
     }
 
     deinit {
-        bookingStatus.remove(observer: self)
+        journeyDetailsManager.remove(observer: self)
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
     func screenWillAppear() {
-        guard let bookingDetails = bookingStatus.getBookingDetails() else {
+        guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
-        analytics.quoteListOpened(bookingDetails)
+        analytics.quoteListOpened(journeyDetails)
     }
 
     func selectedQuoteCategory(_ category: QuoteCategory) {
@@ -66,11 +66,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes(animated: animated)
     }
 
-    private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: BookingDetails?) {
+    private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
         self.fetchedQuotes = quotes
         quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
                                          quoteListId: quotes.quoteListId)
-        if bookingDetails?.destinationLocationDetails != nil, bookingDetails?.isScheduled == true {
+        if journeyDetails?.destinationLocationDetails != nil, journeyDetails?.isScheduled == true {
             didSelectQuoteOrder(.price, animated: false)
         } else {
             updateViewQuotes(animated: false)
@@ -150,9 +150,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 }
 
-extension KarhooQuoteListPresenter: BookingDetailsObserver {
+extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
-    func bookingStateChanged(details: BookingDetails?) {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
 
         guard let details = details else {
@@ -187,7 +187,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             switch result {
             case .success(let quotes):
                 self?.setExpirationDates(of: quotes)
-                self?.quoteSearchSuccessResult(quotes, bookingDetails: details)
+                self?.quoteSearchSuccessResult(quotes, journeyDetails: details)
                 if details.destinationLocationDetails != nil, details.scheduledDate != nil {
                     self?.quoteListView?.hideQuoteSorter()
                 }

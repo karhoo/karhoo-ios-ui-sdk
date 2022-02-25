@@ -15,16 +15,16 @@ import KarhooSDK
 final class PrebookConfirmationViewModelSpec: XCTestCase {
 
     private var mockQuote: Quote!
-    private var mockBookingDetails: BookingDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockDateFormatterType: MockDateFormatterType!
     private var testObject: PrebookConfirmationViewModel!
 
     override func setUp() {
         super.setUp()
         mockQuote = TestUtil.getRandomQuote()
-        mockBookingDetails = TestUtil.getRandomBookingDetails()
+        mockJourneyDetails = TestUtil.getRandomJourneyDetails()
         mockDateFormatterType = MockDateFormatterType()
-        testObject = PrebookConfirmationViewModel(bookingDetails: mockBookingDetails,
+        testObject = PrebookConfirmationViewModel(journeyDetails: mockJourneyDetails,
                                                   quote: mockQuote,
                                                   dateFormatter: mockDateFormatterType)
     }
@@ -35,10 +35,10 @@ final class PrebookConfirmationViewModelSpec: XCTestCase {
      */
     func testViewModelInitialised() {
         XCTAssertEqual(UITexts.Booking.prebookConfirmed, testObject.title)
-        XCTAssertEqual(mockBookingDetails.originLocationDetails?.address.displayAddress, testObject.originLocation)
-        XCTAssertEqual(mockBookingDetails.destinationLocationDetails?.address.displayAddress ?? "",
+        XCTAssertEqual(mockJourneyDetails.originLocationDetails?.address.displayAddress, testObject.originLocation)
+        XCTAssertEqual(mockJourneyDetails.destinationLocationDetails?.address.displayAddress ?? "",
                        testObject.destinationLocation)
-        XCTAssertEqual(mockBookingDetails.originLocationDetails?.timezone(), mockDateFormatterType.timeZoneSet)
+        XCTAssertEqual(mockJourneyDetails.originLocationDetails?.timezone(), mockDateFormatterType.timeZoneSet)
         XCTAssertEqual(mockDateFormatterType.clockTimeReturnString, testObject.time)
         XCTAssertEqual(mockDateFormatterType.shortDateReturnString, testObject.date)
         XCTAssertEqual(CurrencyCodeConverter.toPriceString(quote: mockQuote), testObject.price)

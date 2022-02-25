@@ -19,12 +19,12 @@ class PickupOnlyStrategySpec: XCTestCase {
     private var mockPickupStrategyDelegate: MockPickupOnlyStrategyDelegate! // swiftlint:disable:this weak_delegate
     private var mockKarhooTime: MockTimeScheduler!
     private var testObject: PickupOnlyStrategy!
-    private let mockBookingStatus = MockBookingStatus()
+    private let mockJourneyDetailsManager = MockJourneyDetailsManager()
     private let mockLocationService = MockLocationService()
 
     override func setUp() {
         super.setUp()
-        mockBookingStatus.bookingDetailsToReturn = TestUtil.getRandomBookingDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         mockMapView = MockKarhooMapView()
         mockUserLocationProvider = MockUserLocationProvider()
         mockAddressService = MockAddressService()
@@ -34,7 +34,7 @@ class PickupOnlyStrategySpec: XCTestCase {
         testObject = PickupOnlyStrategy(userLocationProvider: mockUserLocationProvider,
                                         addressService: mockAddressService,
                                         timer: mockKarhooTime,
-                                        bookingStatus: mockBookingStatus,
+                                        journeyDetailsManager: mockJourneyDetailsManager,
                                         locationService: mockLocationService)
         testObject.load(map: mockMapView)
         testObject.set(delegate: mockPickupStrategyDelegate)
@@ -52,8 +52,8 @@ class PickupOnlyStrategySpec: XCTestCase {
      */
     func testStartWithPickup() {
         let pickup = TestUtil.getRandomLocationInfo()
-        let details = BookingDetails(originLocationDetails: pickup)
-        testObject.start(bookingDetails: details)
+        let details = JourneyDetails(originLocationDetails: pickup)
+        testObject.start(journeyDetails: details)
 
         XCTAssertFalse(mockMapView.focusButtonHiddenSet!)
         XCTAssertFalse(mockMapView.centerPinHidden!)
@@ -69,8 +69,8 @@ class PickupOnlyStrategySpec: XCTestCase {
         mockLocationService.setLocationAccessEnabled = false
         
         let pickup = TestUtil.getRandomLocationInfo()
-        let details = BookingDetails(originLocationDetails: pickup)
-        testObject.start(bookingDetails: details)
+        let details = JourneyDetails(originLocationDetails: pickup)
+        testObject.start(journeyDetails: details)
         XCTAssertFalse(mockMapView.focusButtonHiddenSet!)
         XCTAssertTrue(mockMapView.centerPinHidden!)
         XCTAssertEqual(mockMapView.locationToCenterOn?.coordinate, pickup.position.toCLLocation().coordinate)
@@ -138,12 +138,12 @@ class PickupOnlyStrategySpec: XCTestCase {
     func testDetailsChangesSamePickup() {
         let pickupLocation = Position(latitude: 10, longitude: 11)
         let pickup = TestUtil.getRandomLocationInfo(position: pickupLocation)
-        let details = BookingDetails(originLocationDetails: pickup)
+        let details = JourneyDetails(originLocationDetails: pickup)
 
-        testObject.changed(bookingDetails: details)
+        testObject.changed(journeyDetails: details)
 
         mockMapView.locationsToZoomTo = nil
-        testObject.changed(bookingDetails: details)
+        testObject.changed(journeyDetails: details)
 
         XCTAssertNil(mockMapView.locationsToZoomTo)
     }
