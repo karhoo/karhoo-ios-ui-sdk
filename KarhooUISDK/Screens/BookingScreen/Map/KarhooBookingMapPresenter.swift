@@ -15,30 +15,30 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     private let destinationSetStrategy: BookingMapStrategy
     private let emptyBookingStrategy: BookingMapStrategy
     private var currentStrategy: BookingMapStrategy?
-    private let journeyDetailsController: JourneyDetailsController
+    private let journeyDetailsManager: JourneyDetailsManager
 
     init(pickupOnlyStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy(),
          destinationSetStrategy: BookingMapStrategy = DestinationSetStrategy(),
-         journeyDetailsController: JourneyDetailsController =  KarhooJourneyDetailsController.shared,
+         journeyDetailsManager: JourneyDetailsManager =  KarhooJourneyDetailsManager.shared,
          emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy()) {
         self.pickupOnlyStrategy = pickupOnlyStrategy
         self.destinationSetStrategy = destinationSetStrategy
-        self.journeyDetailsController = journeyDetailsController
+        self.journeyDetailsManager = journeyDetailsManager
         self.emptyBookingStrategy = emptyBookingStrategy
         pickupOnlyStrategy.set(delegate: self)
-        journeyDetailsController.add(observer: self)
-        currentStrategy = getStrategyToUse(details: journeyDetailsController.getJourneyDetails())
+        journeyDetailsManager.add(observer: self)
+        currentStrategy = getStrategyToUse(details: journeyDetailsManager.getJourneyDetails())
     }
 
     deinit {
-        journeyDetailsController.remove(observer: self)
+        journeyDetailsManager.remove(observer: self)
     }
 
     func load(map: MapView?, reverseGeolocate: Bool = true) {
         pickupOnlyStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
         destinationSetStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
         emptyBookingStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
-        currentStrategy?.start(journeyDetails: journeyDetailsController.getJourneyDetails())
+        currentStrategy?.start(journeyDetails: journeyDetailsManager.getJourneyDetails())
     }
 
     func focusMap() {
@@ -65,7 +65,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
 extension KarhooBookingMapPresenter: PickupOnlyStrategyDelegate {
 
     func setFromMap(pickup: LocationInfo?) {
-        journeyDetailsController.set(pickup: pickup)
+        journeyDetailsManager.set(pickup: pickup)
     }
 
     func pickupFailedToSetFromMap(error: KarhooError?) {

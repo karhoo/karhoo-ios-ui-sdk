@@ -9,7 +9,7 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockJourneyDetailsController: JourneyDetailsController {
+final class MockJourneyDetailsManager: JourneyDetailsManager {
 
     var journeyInfoSet: JourneyInfo?
     func setJourneyInfo(journeyInfo: JourneyInfo?) {

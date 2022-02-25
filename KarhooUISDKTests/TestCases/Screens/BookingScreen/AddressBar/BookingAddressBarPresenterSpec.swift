@@ -14,7 +14,7 @@ import KarhooSDK
 class BookingAddressBarPresenterSpec: XCTestCase {
 
     private var testObject: BookingAddressBarPresenter!
-    private var mockJourneyDetailsController = MockJourneyDetailsController()
+    private var mockJourneyDetailsManager = MockJourneyDetailsManager()
     private var testDetails = TestUtil.getRandomJourneyDetails()
     private var mockDatePickerScreenBuilder = MockDatePickerScreenBuilder()
     private var mockAddressView: MockAddressBarView!
@@ -29,7 +29,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
         mockAddressView = MockAddressBarView()
         mockUserLocationProvider.lastKnownLocation = location
 
-        testObject = BookingAddressBarPresenter(journeyDetailsController: mockJourneyDetailsController,
+        testObject = BookingAddressBarPresenter(journeyDetailsManager: mockJourneyDetailsManager,
                                                 addressService: mockAddressService,
                                                 userLocationProvider: mockUserLocationProvider,
                                                 addressScreenBuilder: mockAddressScreenBuilder,
@@ -44,7 +44,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      *  Then:   Everything should be properly set up
      */
     func testInitialization() {
-        XCTAssert(mockJourneyDetailsController.observer === testObject)
+        XCTAssert(mockJourneyDetailsManager.observer === testObject)
     }
 
     /**
@@ -53,7 +53,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      */
     func testDeinit() {
         testObject = nil
-        XCTAssertNil(mockJourneyDetailsController.observer)
+        XCTAssertNil(mockJourneyDetailsManager.observer)
     }
 
     /**
@@ -61,7 +61,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      *  Then:   The current booking details should be set
      */
     func testLoadView() {
-        mockJourneyDetailsController.journeyDetailsToReturn = testDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = testDetails
 
         testObject.load(view: mockAddressView)
 
@@ -86,7 +86,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
         mockAddressScreenBuilder.triggerAddressScreenResult(.completed(result: somePickupAddress))
 
         XCTAssertEqual(expectedBias.coordinate, mockAddressScreenBuilder.preferredLocationSet?.coordinate)
-        XCTAssertEqual(somePickupAddress.placeId, mockJourneyDetailsController.pickupSet?.placeId)
+        XCTAssertEqual(somePickupAddress.placeId, mockJourneyDetailsManager.pickupSet?.placeId)
     }
 
     /**
@@ -97,7 +97,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     func testPrebookTimeSelectedWithTimeZone() {
         testDetails = TestUtil.getRandomJourneyDetails(originTimeZoneIdentifier: "America/New_York")
 
-        mockJourneyDetailsController.journeyDetailsToReturn = testDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = testDetails
 
         testObject.prebookSelected()
 
@@ -110,7 +110,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
       */
     func testPickupSet() {
         let pickupOnlyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false)
-        mockJourneyDetailsController.triggerCallback(journeyDetails: pickupOnlyDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: pickupOnlyDetails)
 
         XCTAssertTrue(mockAddressView.pickupSetStateCalled)
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, pickupOnlyDetails.originLocationDetails?.address.displayAddress)
@@ -122,7 +122,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
       */
     func testPickupNotSet() {
         let pickupOnlyDetails = TestUtil.getRandomJourneyDetails(originSet: false)
-        mockJourneyDetailsController.triggerCallback(journeyDetails: pickupOnlyDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: pickupOnlyDetails)
 
         XCTAssertTrue(mockAddressView.pickupNotSetStateCalled)
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, UITexts.AddressBar.addPickup)
@@ -134,7 +134,7 @@ class BookingAddressBarPresenterSpec: XCTestCase {
       */
     func testDestinationSet() {
         let bookingDetails = TestUtil.getRandomJourneyDetails(destinationSet: true)
-        mockJourneyDetailsController.triggerCallback(journeyDetails: bookingDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: bookingDetails)
         
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, bookingDetails.originLocationDetails?.address.displayAddress)
         XCTAssertEqual(mockAddressView.destinationDisplayAddressSet, bookingDetails.destinationLocationDetails!.address.displayAddress)
@@ -147,14 +147,14 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      */
     func testScheduledDateSet() {
         testDetails = TestUtil.getRandomJourneyDetails(originSet: true, originTimeZoneIdentifier: "America/New_York")
-        mockJourneyDetailsController.journeyDetailsToReturn = testDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = testDetails
         
         testObject.prebookSelected()
 
         let selectedDate = TestUtil.getRandomDate()
         mockDatePickerScreenBuilder.triggerScreenResult(.completed(result: selectedDate))
 
-        XCTAssertEqual(selectedDate, mockJourneyDetailsController.dateSet)
+        XCTAssertEqual(selectedDate, mockJourneyDetailsManager.dateSet)
     }
 
     /**
@@ -164,8 +164,8 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     func testPickupCleared() {
         testObject.addressCleared(type: .pickup)
 
-        XCTAssert(mockJourneyDetailsController.pickupSetCalled)
-        XCTAssertNil(mockJourneyDetailsController.pickupSet)
+        XCTAssert(mockJourneyDetailsManager.pickupSetCalled)
+        XCTAssertNil(mockJourneyDetailsManager.pickupSet)
     }
 
     /**
@@ -175,8 +175,8 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     func testDestinationCleared() {
         testObject.addressCleared(type: .destination)
 
-        XCTAssert(mockJourneyDetailsController.destinationSetCalled)
-        XCTAssertNil(mockJourneyDetailsController.destinationSet)
+        XCTAssert(mockJourneyDetailsManager.destinationSetCalled)
+        XCTAssertNil(mockJourneyDetailsManager.destinationSet)
     }
 
     /**
@@ -186,8 +186,8 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     func testPickupTimeCleared() {
         testObject.prebookCleared()
 
-        XCTAssert(mockJourneyDetailsController.dateSetCalled)
-        XCTAssertNil(mockJourneyDetailsController.dateSet)
+        XCTAssert(mockJourneyDetailsManager.dateSetCalled)
+        XCTAssertNil(mockJourneyDetailsManager.dateSet)
     }
 
     /**
@@ -196,11 +196,11 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      */
     func testSettingDetails() {
         testDetails = TestUtil.getRandomJourneyDetails(dateSet: true)
-        mockJourneyDetailsController.journeyDetailsToReturn = testDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = testDetails
         testObject.load(view: mockAddressView)
 
-        mockJourneyDetailsController.triggerCallback(journeyDetails: testDetails)
-        let timeZone = mockJourneyDetailsController.getJourneyDetails()?.originLocationDetails?.timezone() ?? TimeZone.current
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: testDetails)
+        let timeZone = mockJourneyDetailsManager.getJourneyDetails()?.originLocationDetails?.timezone() ?? TimeZone.current
         let formatter = KarhooDateFormatter(timeZone: timeZone)
 
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, testDetails.originLocationDetails?.address.displayAddress)
@@ -214,10 +214,10 @@ class BookingAddressBarPresenterSpec: XCTestCase {
      *  Then:   The screen should be updated with that information
      */
     func testSettingNilDetails() {
-        mockJourneyDetailsController.journeyDetailsToReturn = nil
-        mockJourneyDetailsController.triggerCallback(journeyDetails: nil)
+        mockJourneyDetailsManager.journeyDetailsToReturn = nil
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: nil)
 
-        testObject = BookingAddressBarPresenter(journeyDetailsController: mockJourneyDetailsController,
+        testObject = BookingAddressBarPresenter(journeyDetailsManager: mockJourneyDetailsManager,
                                                 addressService: mockAddressService,
                                                 userLocationProvider: mockUserLocationProvider)
 
@@ -240,14 +240,14 @@ class BookingAddressBarPresenterSpec: XCTestCase {
         let initialBookingDetails = TestUtil.getRandomJourneyDetails(destinationSet: true,
                                                                      dateSet: true)
         testObject.load(view: mockAddressView)
-        mockJourneyDetailsController.journeyDetailsToReturn = initialBookingDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = initialBookingDetails
 
-        mockJourneyDetailsController.triggerCallback(journeyDetails: initialBookingDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: initialBookingDetails)
 
         testObject.addressSwapSelected()
         
-        XCTAssertEqual(mockJourneyDetailsController.destinationSet?.placeId, initialBookingDetails.originLocationDetails?.placeId)
-        XCTAssertEqual(mockJourneyDetailsController.pickupSet?.placeId, initialBookingDetails.destinationLocationDetails?.placeId)
+        XCTAssertEqual(mockJourneyDetailsManager.destinationSet?.placeId, initialBookingDetails.originLocationDetails?.placeId)
+        XCTAssertEqual(mockJourneyDetailsManager.pickupSet?.placeId, initialBookingDetails.destinationLocationDetails?.placeId)
         
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, initialBookingDetails.destinationLocationDetails!.address.displayAddress)
         XCTAssertEqual(mockAddressView.destinationDisplayAddressSet, initialBookingDetails.originLocationDetails?.address.displayAddress)
@@ -265,14 +265,14 @@ class BookingAddressBarPresenterSpec: XCTestCase {
     func testAddressBarSwapWithNilScheduledDate() {
         let initialBookingDetails = TestUtil.getRandomJourneyDetails(destinationSet: true,
                                                                      dateSet: false)
-        mockJourneyDetailsController.journeyDetailsToReturn = initialBookingDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = initialBookingDetails
 
         testObject.load(view: mockAddressView)
 
         testObject.addressSwapSelected()
         
-        XCTAssertEqual(mockJourneyDetailsController.destinationSet?.placeId, initialBookingDetails.originLocationDetails?.placeId)
-        XCTAssertEqual(mockJourneyDetailsController.pickupSet?.placeId, initialBookingDetails.destinationLocationDetails?.placeId)
+        XCTAssertEqual(mockJourneyDetailsManager.destinationSet?.placeId, initialBookingDetails.originLocationDetails?.placeId)
+        XCTAssertEqual(mockJourneyDetailsManager.pickupSet?.placeId, initialBookingDetails.destinationLocationDetails?.placeId)
         
         XCTAssertEqual(mockAddressView.pickupDisplayAddressSet, initialBookingDetails.destinationLocationDetails!.address.displayAddress)
         XCTAssertEqual(mockAddressView.destinationDisplayAddressSet, initialBookingDetails.originLocationDetails?.address.displayAddress)

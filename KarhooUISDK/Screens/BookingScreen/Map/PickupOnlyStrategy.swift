@@ -29,19 +29,19 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     private var timer: TimeScheduler?
     private var currentPickup: LocationInfo?
     private var lastLocation: CLLocation?
-    private let journeyDetailsController: JourneyDetailsController
+    private let journeyDetailsManager: JourneyDetailsManager
     private let locationService: LocationService
     private var reverseGeolocate: Bool
 
     init(userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          addressService: AddressService = Karhoo.getAddressService(),
          timer: TimeScheduler = KarhooTimeScheduler(),
-         journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          locationService: LocationService = KarhooLocationService()) {
         self.userLocationProvider = userLocationProvider
         self.addressService = addressService
         self.timer = timer
-        self.journeyDetailsController = journeyDetailsController
+        self.journeyDetailsManager = journeyDetailsManager
         self.locationService = locationService
         self.reverseGeolocate = false
     }
@@ -94,7 +94,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     func focusMap() {
 
         func focousOnPickup() {
-            if let originPosition = journeyDetailsController.getJourneyDetails()?.originLocationDetails?.position {
+            if let originPosition = journeyDetailsManager.getJourneyDetails()?.originLocationDetails?.position {
                 map?.center(on: originPosition.toCLLocation())
                 return
             }

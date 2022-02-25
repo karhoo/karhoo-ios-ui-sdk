@@ -13,7 +13,7 @@ import KarhooSDK
 class KarhooQuoteListPresenterSpec: XCTestCase {
 
     private var testObject: KarhooQuoteListPresenter!
-    private var mockJourneyDetailsController: MockJourneyDetailsController!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var mockQuoteService: MockQuoteService!
     private var mockQuoteListView: MockQuoteListView!
     private var mockQuoteSorter: MockQuoteSorter!
@@ -40,7 +40,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        mockJourneyDetailsController = MockJourneyDetailsController()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         mockQuoteService = MockQuoteService()
         mockQuoteListView = MockQuoteListView()
         mockQuoteSorter = MockQuoteSorter()
@@ -48,7 +48,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
         mockJourneyDetails  = TestUtil.getRandomJourneyDetails(destinationSet: true, dateSet: true)
         mockAnalytics = MockAnalytics()
         testObject = KarhooQuoteListPresenter(
-            journeyDetailsController: mockJourneyDetailsController,
+            journeyDetailsManager: mockJourneyDetailsManager,
             quoteService: mockQuoteService,
             quoteListView: mockQuoteListView,
             quoteSorter: mockQuoteSorter,
@@ -57,7 +57,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     }
 
     private func simulateDestinationSetInBookingDetails() {
-        mockJourneyDetailsController.journeyDetailsToReturn = mockJourneyDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = mockJourneyDetails
         testObject.journeyDetailsChanged(details: mockJourneyDetails)
     }
 
@@ -69,7 +69,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     private func simulateNoDestinationInBookingDetails() {
         let noDestinationJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false)
 
-        mockJourneyDetailsController.journeyDetailsToReturn = noDestinationJourneyDetails
+        mockJourneyDetailsManager.journeyDetailsToReturn = noDestinationJourneyDetails
         testObject.journeyDetailsChanged(details: noDestinationJourneyDetails)
     }
 
@@ -78,7 +78,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
       * Then: the analytics event should be triggered
       */
     func testQuoteListStarts() {
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         testObject.screenWillAppear()
         XCTAssertTrue(mockAnalytics.quoteListOpenedCalled)
     }
@@ -119,7 +119,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     func testSuccessFetchOfPrebook() {
         simulateSuccessfulQuoteFetch()
 
-        let journeyDetails = mockJourneyDetailsController.journeyDetailsToReturn
+        let journeyDetails = mockJourneyDetailsManager.journeyDetailsToReturn
         XCTAssertNotNil(journeyDetails?.scheduledDate)
 
         XCTAssertEqual(

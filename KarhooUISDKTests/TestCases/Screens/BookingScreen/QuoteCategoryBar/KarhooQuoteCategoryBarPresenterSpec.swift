@@ -15,7 +15,7 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
 
     private var mockView: MockQuoteCategoryBarView!
     private var mockAppAnalytics: MockAnalytics!
-    private var mockJourneyDetailsController: MockJourneyDetailsController!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var testObject: KarhooQuoteCategoryBarPresenter!
 
     override func setUp() {
@@ -23,9 +23,9 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
 
         mockView = MockQuoteCategoryBarView()
         mockAppAnalytics = MockAnalytics()
-        mockJourneyDetailsController = MockJourneyDetailsController()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         testObject = KarhooQuoteCategoryBarPresenter(analytics: mockAppAnalytics,
-                                                     journeyDetailsController: mockJourneyDetailsController,
+                                                     journeyDetailsManager: mockJourneyDetailsManager,
                                                      view: mockView)
 
     }

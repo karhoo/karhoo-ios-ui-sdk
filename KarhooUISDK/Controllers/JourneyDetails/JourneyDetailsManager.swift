@@ -13,7 +13,7 @@ public protocol JourneyDetailsObserver: AnyObject {
     func journeyDetailsChanged(details: JourneyDetails?)
 }
 
-public protocol JourneyDetailsController {
+public protocol JourneyDetailsManager {
     func add(observer: JourneyDetailsObserver)
     func remove(observer: JourneyDetailsObserver)
 

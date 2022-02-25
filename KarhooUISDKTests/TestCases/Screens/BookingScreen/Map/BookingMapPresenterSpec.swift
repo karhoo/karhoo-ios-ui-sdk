@@ -16,7 +16,7 @@ class BookingMapPresenterSpec: XCTestCase {
     private var testPickupOnlyStrategy: MockPickupOnlyStrategy!
     private var testDestinationSetStrategy: MockBookingMapStrategy!
     private var testJourneyDetails: JourneyDetails!
-    private var mockJourneyDetailsController: MockJourneyDetailsController!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var testObject: KarhooBookingMapPresenter!
 
     override func setUp() {
@@ -28,12 +28,12 @@ class BookingMapPresenterSpec: XCTestCase {
         testJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false,
                                                               dateSet: false)
 
-        mockJourneyDetailsController = MockJourneyDetailsController()
-        mockJourneyDetailsController.journeyDetailsToReturn = testJourneyDetails
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
+        mockJourneyDetailsManager.journeyDetailsToReturn = testJourneyDetails
 
         testObject = KarhooBookingMapPresenter(pickupOnlyStrategy: testPickupOnlyStrategy,
                                                destinationSetStrategy: testDestinationSetStrategy,
-                                               journeyDetailsController: mockJourneyDetailsController)
+                                               journeyDetailsManager: mockJourneyDetailsManager)
     }
 
     /** 

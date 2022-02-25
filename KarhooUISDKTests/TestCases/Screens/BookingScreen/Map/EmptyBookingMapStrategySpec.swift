@@ -14,13 +14,13 @@ class EmptyBookingMapStrategySpec: XCTestCase {
     private var mockMapView = MockKarhooMapView()
     private var mockUserLocationProvider = MockUserLocationProvider()
     private var testObject = EmptyMapBookingStrategy()
-    private let mockJourneyDetailsController = MockJourneyDetailsController()
+    private let mockJourneyDetailsManager = MockJourneyDetailsManager()
 
     override func setUp() {
         super.setUp()
 
         testObject = EmptyMapBookingStrategy(userLocationProvider: mockUserLocationProvider,
-                                             journeyDetailsController: mockJourneyDetailsController)
+                                             journeyDetailsManager: mockJourneyDetailsManager)
         testObject.load(map: mockMapView)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
@@ -51,7 +51,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
 
         testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockJourneyDetailsController.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**
@@ -64,7 +64,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
 
         testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockJourneyDetailsController.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**

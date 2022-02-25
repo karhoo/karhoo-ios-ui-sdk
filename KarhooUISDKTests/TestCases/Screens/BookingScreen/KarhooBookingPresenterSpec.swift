@@ -16,7 +16,7 @@ import KarhooSDK
 final class KarhooBookingPresenterSpec: XCTestCase {
 
     private var mockAppAnalytics: MockAnalytics!
-    private var mockJourneyDetailsController: MockJourneyDetailsController!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var mockUserService: MockUserService!
     private var testObject: KarhooBookingPresenter!
     private var mockBookingView: MockBookingView!
@@ -37,14 +37,14 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         super.setUp()
         KarhooTestConfiguration.authenticationMethod = .karhooUser
         mockAppAnalytics = MockAnalytics()
-        mockJourneyDetailsController = MockJourneyDetailsController()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         mockUserService = MockUserService()
         mockPhoneNumberCaller = MockPhoneNumberCaller()
         mockTripScreenBuilder = MockTripScreenBuilder()
         mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
         mockCheckoutScreenBuilder = MockCheckoutScreenBuilder()
         mockPrebookConfirmationScreenBuilder = MockPrebookConfirmationScreenBuilder()
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         mockAddressScreenBuilder = MockAddressScreenBuilder()
         mockDatePickerScreenBuilder = MockDatePickerScreenBuilder()
         mockRidesScreenBuilder = MockRidesScreenBuilder()
@@ -57,7 +57,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
     private func buildTestObject(callback: ScreenResultCallback<BookingScreenResult>?) -> KarhooBookingPresenter {
         KarhooBookingPresenter(
-            journeyDetailsController: mockJourneyDetailsController,
+            journeyDetailsManager: mockJourneyDetailsManager,
             userService: mockUserService,
             analytics: mockAppAnalytics,
             phoneNumberCaller: mockPhoneNumberCaller,
@@ -99,7 +99,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      * And: Quote Categories should be hidden
      */
     func testSorterStateNilBookingDetails() {
-        mockJourneyDetailsController.triggerCallback(journeyDetails: nil)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: nil)
         XCTAssertTrue(mockBookingView.hideQuoteListCalled)
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
@@ -115,7 +115,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      */
     func testBookingStatusUpdates() {
         let mockJourneyDetails = TestUtil.getRandomJourneyDetails()
-        mockJourneyDetailsController.triggerCallback(journeyDetails: mockJourneyDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertTrue(mockBookingView.showQuoteListCalled)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
@@ -127,7 +127,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      */
     func testBookingStatusUpdatesNoDestination() {
         let mockJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false)
-        mockJourneyDetailsController.triggerCallback(journeyDetails: mockJourneyDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertFalse(mockBookingView.mapPaddingBottomPaddingEnabled!)
     }
 
@@ -138,7 +138,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      */
     func testHideQuoteCategories() {
         let mockJourneyDetails = TestUtil.getRandomJourneyDetails()
-        mockJourneyDetailsController.triggerCallback(journeyDetails: mockJourneyDetails)
+        mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
 
@@ -147,10 +147,10 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      *  Then:   The bookingStatus should revert to its initial state
      */
     func testResetBookingStatus() {
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         testObject.resetBookingStatus()
 
-        XCTAssertTrue(mockJourneyDetailsController.resetCalled)
+        XCTAssertTrue(mockJourneyDetailsManager.resetCalled)
     }
 
     /**
@@ -169,7 +169,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         testObject.populate(with: testJourneyDetails)
         XCTAssertEqual(testJourneyDetails.originLocationDetails?.placeId,
-                       mockJourneyDetailsController.resetJourneyDetailsSet!.originLocationDetails?.placeId)
+                       mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails?.placeId)
     }
 
     /**
@@ -191,9 +191,9 @@ final class KarhooBookingPresenterSpec: XCTestCase {
             XCTAssertEqual(String(format: UITexts.Trip.noDriversAvailableMessage,
                                   mockTrip.fleetInfo.name), mockBookingView.showAlertMessage)
         XCTAssertTrue(mockTrip.origin.toLocationInfo()
-            .equals(mockJourneyDetailsController.resetJourneyDetailsSet!.originLocationDetails!))
+            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!))
         XCTAssertTrue(mockTrip.destination!.toLocationInfo()
-            .equals(mockJourneyDetailsController.resetJourneyDetailsSet!.destinationLocationDetails!))
+            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!))
 
             tearDown()
         })
@@ -216,9 +216,9 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertEqual(UITexts.Trip.karhooCancelledAlertMessage, mockBookingView.showAlertMessage)
 
         XCTAssertTrue(mockTrip.origin.toLocationInfo()
-            .equals(mockJourneyDetailsController.resetJourneyDetailsSet!.originLocationDetails!))
+            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!))
         XCTAssertTrue(mockTrip.destination!.toLocationInfo()
-            .equals(mockJourneyDetailsController.resetJourneyDetailsSet!.destinationLocationDetails!))
+            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!))
 
     }
 
@@ -262,10 +262,10 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      *  And:    Trip rating cache should be cleared
      */
     func testUserLogsOut() {
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         mockUserService.triggerUserStateChange(user: nil)
 
-        XCTAssertTrue(mockJourneyDetailsController.resetCalled)
+        XCTAssertTrue(mockJourneyDetailsManager.resetCalled)
         XCTAssertTrue(mockTripRatingCache.clearTripRatingCalled)
     }
 
@@ -275,7 +275,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      *  And: Booking request presenter should be dismissed
      */
     func testBookingConfirmed() {
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails(dateSet: false)
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails(dateSet: false)
         let tripBooked = TestUtil.getRandomTrip(dateSet: false, state: .confirmed)
         let quoteBooked = TestUtil.getRandomQuote()
 
@@ -294,7 +294,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      *  Then: error should show
      */
     func testBookingRequestFails() {
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails(dateSet: false)
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails(dateSet: false)
 
         testObject.didSelectQuote(quote: TestUtil.getRandomQuote())
 
@@ -381,7 +381,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
 
         mockPrebookConfirmationScreenBuilder.triggerScreenResult(closeAction)
 
-        XCTAssertEqual(mockJourneyDetailsController.journeyDetailsToReturn, mockPrebookConfirmationScreenBuilder.journeyDetailsSet)
+        XCTAssertEqual(mockJourneyDetailsManager.journeyDetailsToReturn, mockPrebookConfirmationScreenBuilder.journeyDetailsSet)
         XCTAssertEqual(quoteBooked, mockPrebookConfirmationScreenBuilder.quoteSet)
         XCTAssertTrue(mockBookingView.dismissCalled)
     }
@@ -501,7 +501,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let mockBookingDetails = TestUtil.getRandomJourneyDetails()
         mockTripScreenBuilder
             .callbackSet?(.completed(result: TripScreenResult.rebookTrip(rebookDetails: mockBookingDetails)))
-        XCTAssertEqual(mockBookingDetails, mockJourneyDetailsController.resetJourneyDetailsSet)
+        XCTAssertEqual(mockBookingDetails, mockJourneyDetailsManager.resetJourneyDetailsSet)
     }
 
     /**
@@ -526,7 +526,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         let mockBookingDetails = TestUtil.getRandomJourneyDetails()
         mockTripScreenBuilder
             .callbackSet?(.completed(result: TripScreenResult.rebookTrip(rebookDetails: mockBookingDetails)))
-        XCTAssertEqual(mockBookingDetails, mockJourneyDetailsController.resetJourneyDetailsSet)
+        XCTAssertEqual(mockBookingDetails, mockJourneyDetailsManager.resetJourneyDetailsSet)
     }
 
     /**
@@ -553,7 +553,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         var mockJourneyDetails = JourneyDetails(originLocationDetails: mockTrip.origin.toLocationInfo())
         mockJourneyDetails.destinationLocationDetails = mockTrip.destination?.toLocationInfo()
         mockBookingView.triggerDismissCallback()
-        XCTAssertEqual(mockJourneyDetails, mockJourneyDetailsController.resetJourneyDetailsSet)
+        XCTAssertEqual(mockJourneyDetails, mockJourneyDetailsManager.resetJourneyDetailsSet)
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
         XCTAssertTrue(mockBookingView.mapPaddingBottomPaddingEnabled!)
     }

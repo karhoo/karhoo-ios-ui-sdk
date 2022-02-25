@@ -12,7 +12,7 @@ import KarhooSDK
 final class KarhooBookingPresenter {
 
     private weak var view: BookingView?
-    private let journeyDetailsController: JourneyDetailsController
+    private let journeyDetailsManager: JourneyDetailsManager
     private let userService: UserService
     private let analytics: Analytics
     private let phoneNumberCaller: PhoneNumberCallerProtocol
@@ -29,7 +29,7 @@ final class KarhooBookingPresenter {
     private let paymentService: PaymentService
 
     // MARK: - Init
-    init(journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
+    init(journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -46,7 +46,7 @@ final class KarhooBookingPresenter {
          paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
         self.analytics = analytics
-        self.journeyDetailsController = journeyDetailsController
+        self.journeyDetailsManager = journeyDetailsManager
         self.phoneNumberCaller = phoneNumberCaller
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
@@ -60,13 +60,13 @@ final class KarhooBookingPresenter {
         self.urlOpener = urlOpener
         self.paymentService = paymentService
         userService.add(observer: self)
-        journeyDetailsController.add(observer: self)
+        journeyDetailsManager.add(observer: self)
     }
     // swiftlint:enable line_length
 
     deinit {
         userService.remove(observer: self)
-        journeyDetailsController.remove(observer: self)
+        journeyDetailsManager.remove(observer: self)
     }
 
     // MARK: - Checkout
@@ -189,7 +189,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func exitPressed() {
-        journeyDetailsController.reset()
+        journeyDetailsManager.reset()
         view?.dismiss(animated: true, completion: { [weak self] in
             self?.callback?(ScreenResult.cancelled(byUser: true))
         })
@@ -205,21 +205,21 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func resetBookingStatus() {
-        journeyDetailsController.reset()
+        journeyDetailsManager.reset()
     }
 
     func getJourneyDetails() -> JourneyDetails? {
-        return journeyDetailsController.getJourneyDetails()
+        return journeyDetailsManager.getJourneyDetails()
     }
 
     func populate(with journeyDetails: JourneyDetails) {
-        journeyDetailsController.reset(with: journeyDetails)
+        journeyDetailsManager.reset(with: journeyDetails)
     }
     
     func setViewMapPadding() {
-        let bookingDetails = journeyDetailsController.getJourneyDetails()
-        if bookingDetails?.originLocationDetails != nil,
-            bookingDetails?.destinationLocationDetails != nil {
+        let journeyDetails = journeyDetailsManager.getJourneyDetails()
+        if journeyDetails?.originLocationDetails != nil,
+            journeyDetails?.destinationLocationDetails != nil {
             view?.setMapPadding(bottomPaddingEnabled: true)
         } else {
             view?.setMapPadding(bottomPaddingEnabled: false)

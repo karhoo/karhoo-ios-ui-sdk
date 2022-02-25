@@ -11,7 +11,7 @@ import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
-    private let journeyDetailsController: JourneyDetailsController
+    private let journeyDetailsManager: JourneyDetailsManager
     private let quoteService: QuoteService
     private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
@@ -23,27 +23,27 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let analytics: Analytics
 
     init(
-        journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared,
+        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteListView: QuoteListView,
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.journeyDetailsController = journeyDetailsController
+        self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
         self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
         self.analytics = analytics
-        journeyDetailsController.add(observer: self)
+        journeyDetailsManager.add(observer: self)
     }
 
     deinit {
-        journeyDetailsController.remove(observer: self)
+        journeyDetailsManager.remove(observer: self)
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
     func screenWillAppear() {
-        guard let journeyDetails = journeyDetailsController.getJourneyDetails() else {
+        guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }

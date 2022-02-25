@@ -27,7 +27,7 @@ public class KarhooComponents: BookingScreenComponents {
         presenter.load(view: addressBarView)
 
         if let journey = journeyInfo {
-            KarhooJourneyDetailsController.shared.setJourneyInfo(journeyInfo: journey)
+            KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
         }
 
         return addressBarView

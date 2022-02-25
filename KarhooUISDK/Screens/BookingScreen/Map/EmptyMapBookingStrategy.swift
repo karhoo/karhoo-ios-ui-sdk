@@ -13,14 +13,14 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
 
     private let userLocationProvider: UserLocationProvider
     private var mapView: MapView?
-    private let journeyDetailsController: JourneyDetailsController
+    private let journeyDetailsManager: JourneyDetailsManager
     private let locationManager: CLLocationManager = CLLocationManager()
     private var reverseGeolocate: Bool = false
 
     init(userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
-         journeyDetailsController: JourneyDetailsController = KarhooJourneyDetailsController.shared) {
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared) {
         self.userLocationProvider = userLocationProvider
-        self.journeyDetailsController = journeyDetailsController
+        self.journeyDetailsManager = journeyDetailsManager
     }
 
     func load(map: MapView?, reverseGeolocate: Bool = true) {
@@ -46,7 +46,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
     func focusMap() {
         if(reverseGeolocate) {
             if let location = userLocationProvider.getLastKnownLocation() {
-                journeyDetailsController.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
+                journeyDetailsManager.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
             } else {
                 locationManager.requestWhenInUseAuthorization()
              }

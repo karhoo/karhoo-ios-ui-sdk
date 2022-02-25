@@ -9,12 +9,12 @@
 import Foundation
 import KarhooSDK
 
-public final class KarhooJourneyDetailsController: JourneyDetailsController {
+public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
 
     private let broadcaster: Broadcaster<AnyObject>
     private var status: JourneyDetails?
     private let addressService: AddressService
-    public static let shared = KarhooJourneyDetailsController()
+    public static let shared = KarhooJourneyDetailsManager()
 
     init(broadcaster: Broadcaster<AnyObject> = Broadcaster<AnyObject>(),
          addressService: AddressService = Karhoo.getAddressService()) {

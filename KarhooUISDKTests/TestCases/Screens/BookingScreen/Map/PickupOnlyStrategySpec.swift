@@ -19,12 +19,12 @@ class PickupOnlyStrategySpec: XCTestCase {
     private var mockPickupStrategyDelegate: MockPickupOnlyStrategyDelegate! // swiftlint:disable:this weak_delegate
     private var mockKarhooTime: MockTimeScheduler!
     private var testObject: PickupOnlyStrategy!
-    private let mockJourneyDetailsController = MockJourneyDetailsController()
+    private let mockJourneyDetailsManager = MockJourneyDetailsManager()
     private let mockLocationService = MockLocationService()
 
     override func setUp() {
         super.setUp()
-        mockJourneyDetailsController.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         mockMapView = MockKarhooMapView()
         mockUserLocationProvider = MockUserLocationProvider()
         mockAddressService = MockAddressService()
@@ -34,7 +34,7 @@ class PickupOnlyStrategySpec: XCTestCase {
         testObject = PickupOnlyStrategy(userLocationProvider: mockUserLocationProvider,
                                         addressService: mockAddressService,
                                         timer: mockKarhooTime,
-                                        journeyDetailsController: mockJourneyDetailsController,
+                                        journeyDetailsManager: mockJourneyDetailsManager,
                                         locationService: mockLocationService)
         testObject.load(map: mockMapView)
         testObject.set(delegate: mockPickupStrategyDelegate)
