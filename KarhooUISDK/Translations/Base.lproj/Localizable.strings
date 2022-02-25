@@ -363,7 +363,7 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
 
-"Text.Generic.Back" = "Back";
+"Text.Generic.Back" = "Back ";
 
 "Text.Generic.Bookings" = "Bookings";
 
