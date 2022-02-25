@@ -14,7 +14,7 @@ public struct KHQuoteListViewID {
     public static let tableViewReuseIdentifier = "QuoteCell"
 }
 
-final class KarhooQuoteListViewController: UIViewController, QuoteListView {
+final class KarhooQuoteListViewController: UIViewController, BaseViewController, QuoteListView {
     
     // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
     var tableView: UITableView!
@@ -33,11 +33,10 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 
     private lazy var tableViewController = NewQuoteList.build(
         onQuoteSelected: { [weak self] quote in
-            //TODO: Implement didSelectQoute in Presenter
-//            self?.quoteListActions?.didSelectQuote(quote)
+            self?.presenter?.didSelectQuote(quote)
         },
-        onQuoteDetailsSelected: { _ in
-            // TODO: Finish implementation
+        onQuoteDetailsSelected: { [weak self] quote in
+            self?.presenter?.didSelectQuoteDetails(quote)
         }
     )
 
@@ -66,6 +65,8 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         presenter?.screenWillAppear()
     }
 
+    // MARK: - Setup binding
+
     func setupBinding(_ presenter: QuoteListPresenter) {
         self.presenter = presenter
         presenter.onStateUpdated = { [weak self] state in
@@ -74,6 +75,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     }
     
     // MARK: - State handling
+
     private func handleStateUpdate(_ state: QuoteListState) {
         switch state {
         case .loading:
@@ -139,7 +141,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         setupNestedTableViewController()
 
         view.setNeedsUpdateConstraints()
-        presenter = KarhooQuoteListPresenter(quoteListView: self)
     }
 
     private func setupNestedTableViewController() {
@@ -193,12 +194,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         
         super.updateViewConstraints()
     }
-
-    // MARK: - Update state
-
-    func updateState(_ state: QuoteListState) {
-        // TODO: update state
-    }
     
 //    func set(quoteListActions: QuoteListActions) {
 //        self.quoteListActions = quoteListActions
@@ -222,18 +217,18 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 //        emptyDataSetView.hide()
 //    }
     
-    func didSelectQuoteCategory(_ category: QuoteCategory) {
-        presenter?.selectedQuoteCategory(category)
-    }
+//    func didSelectQuoteCategory(_ category: QuoteCategory) {
+//        presenter?.selectedQuoteCategory(category)
+//    }
     
     func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
         quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
     }
 
-    func toggleCategoryFilteringControls(show: Bool) {
-        quoteSortView.alpha = show ? 1 : 0
-        quoteCategoryBarView.isHidden = !show
-    }
+//    func toggleCategoryFilteringControls(show: Bool) {
+//        quoteSortView.alpha = show ? 1 : 0
+//        quoteCategoryBarView.isHidden = !show
+//    }
     
 //    func hideLoadingView() {
 //        loadingView.hide()
@@ -274,6 +269,6 @@ extension KarhooQuoteListViewController: QuoteSortViewActions {
 extension KarhooQuoteListViewController: QuoteCategoryBarActions {
     
     func didSelectCategory(_ category: QuoteCategory) {
-        didSelectQuoteCategory(category)
+//        didSelectQuoteCategory(category)
     }
 }

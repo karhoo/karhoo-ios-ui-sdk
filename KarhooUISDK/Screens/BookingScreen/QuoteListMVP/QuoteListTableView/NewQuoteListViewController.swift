@@ -54,7 +54,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         presenter.viewWillAppear()
     }
 
-    // MARK: - Setup business logic
+    // MARK: - Setup binding
 
     func setupBinding(_ presenter: NewQuoteListPresenter) {
         self.presenter = presenter

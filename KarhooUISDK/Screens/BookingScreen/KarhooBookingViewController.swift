@@ -146,7 +146,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mainPanelVC.surfaceView.backgroundColor = .clear
 
         mainPanelVC.set(contentViewController: quoteListView)
-        mainPanelVC.track(scrollView: quoteListView.tableView)
         setupGrabberHandle(forVC: mainPanelVC)
         quoteListPanelVC = mainPanelVC
     }
@@ -303,7 +302,7 @@ extension KarhooBookingViewController: TripAllocationActions {
 extension KarhooBookingViewController: QuoteCategoryBarActions {
 
     func didSelectCategory(_ category: QuoteCategory) {
-        quoteListView.didSelectQuoteCategory(category)
+//        quoteListView.didSelectQuoteCategory(category)
     }
 }
 

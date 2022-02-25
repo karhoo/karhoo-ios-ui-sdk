@@ -27,37 +27,10 @@ public enum QuoteListState {
 
 public protocol QuoteListView: UIViewController {
 
-//    func showQuotes(_ quotes: [Quote], animated: Bool) // list state
-
-//    func set(quoteListActions: QuoteListActions)
-
-//    func showEmptyDataSetMessage(_ message: String) // list state
-
-//    func hideEmptyDataSetMessage() // list state
-
-    func toggleCategoryFilteringControls(show: Bool)
-
-//    func showLoadingView() // list state
-//
-//    func hideLoadingView() // list state
-
-    func didSelectQuoteCategory(_ category: QuoteCategory)
-
-    func categoriesChanged(categories: [QuoteCategory], quoteListId: String?)
-
-    func showQuoteSorter()
-
-    func hideQuoteSorter()
-
-//    func quotesAvailabilityDidUpdate(availability: Bool)
-    
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
 
-    var tableView: UITableView! { get }
+//    var tableView: UITableView! { get }func didSelectQuote(_ quote: Quote)
 
-    // New
-
-    func updateState(_ state: QuoteListState)
 }
 
 protocol QuoteListPresenter: AnyObject {
@@ -69,6 +42,10 @@ protocol QuoteListPresenter: AnyObject {
     func selectedQuoteCategory(_ category: QuoteCategory)
 
     func didSelectQuoteOrder(_ order: QuoteSortOrder)
+
+    func didSelectQuote(_ quote: Quote)
+
+    func didSelectQuoteDetails(_ quote: Quote)
 }
 
 //public protocol QuoteListActions: AnyObject {
@@ -78,3 +55,9 @@ protocol QuoteListPresenter: AnyObject {
 //    func quotesAvailabilityDidUpdate(availability: Bool)
 //}
 
+protocol QuoteListRouter {
+
+    func routeToQuote(_ quote: Quote)
+
+    func routeToQuoteDetails(_ quote: Quote)
+}

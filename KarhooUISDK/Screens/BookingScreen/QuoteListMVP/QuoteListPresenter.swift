@@ -11,9 +11,11 @@ import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
+    // MARK: - Properties
+
     private let journeyDetailsManager: JourneyDetailsManager
     private let quoteService: QuoteService
-    private weak var quoteListView: QuoteListView?
+//    private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
@@ -21,19 +23,21 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var selectedQuoteOrder: QuoteSortOrder = .qta
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
-
+    private let router: QuoteListRouter
     var onStateUpdated: ((QuoteListState) -> Void)?
 
+    // MARK: - Lifecycle
+
     init(
+        router: QuoteListRouter,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
-        quoteListView: QuoteListView,
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
+        self.router = router
         self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
-        self.quoteListView = quoteListView
         self.quoteSorter = quoteSorter
         self.analytics = analytics
         journeyDetailsManager.add(observer: self)
@@ -52,6 +56,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         analytics.quoteListOpened(journeyDetails)
     }
 
+    // MARK: - Endpoints
+
     func selectedQuoteCategory(_ category: QuoteCategory) {
         self.selectedQuoteCategory = category
         updateViewQuotes(animated: true)
@@ -66,10 +72,20 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes(animated: animated)
     }
 
+    func didSelectQuote(_ quote: Quote) {
+        router.routeToQuote(quote)
+    }
+
+    func didSelectQuoteDetails(_ quote: Quote) {
+        // TODO: finish implementation
+    }
+
+    // MARK: - Private
+
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
         self.fetchedQuotes = quotes
-        quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
-                                         quoteListId: quotes.quoteListId)
+//        quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
+//                                         quoteListId: quotes.quoteListId)
         if journeyDetails?.destinationLocationDetails != nil, journeyDetails?.isScheduled == true {
             didSelectQuoteOrder(.price, animated: false)
         } else {
@@ -86,13 +102,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
 //            quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
-            quoteListView?.toggleCategoryFilteringControls(show: true)
+//            quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             // TODO: Decide which error should be presented
             onStateUpdated?(.empty(reason: .KarhooErrorQ0001))
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
-            quoteListView?.toggleCategoryFilteringControls(show: true)
+//            quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
         }
     }
@@ -102,7 +118,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
         
         DispatchQueue.main.asyncAfter(deadline: deadline) {
-            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
+//            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
         }
     }
     
@@ -150,6 +166,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 }
 
+// MARK: - JourneyDetailsObserver
 extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
@@ -160,19 +177,19 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
         }
 
         if details.destinationLocationDetails != nil, details.isScheduled {
-            quoteListView?.hideQuoteSorter()
+//            quoteListView?.hideQuoteSorter()
         } else {
-            quoteListView?.showQuoteSorter()
+//            quoteListView?.showQuoteSorter()
         }
 
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
-            quoteListView?.toggleCategoryFilteringControls(show: true)
+//            quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
         onStateUpdated?(.loading)
-        quoteListView?.toggleCategoryFilteringControls(show: false)
+//        quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
@@ -181,23 +198,23 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
             if result.successValue()?.all.isEmpty == false {
                 self?.onStateUpdated?(.empty(reason: .noResults))
-                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
+//                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
             }
 
             switch result {
             case .success(let quotes):
                 self?.setExpirationDates(of: quotes)
                 self?.quoteSearchSuccessResult(quotes, journeyDetails: details)
-                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
-                    self?.quoteListView?.hideQuoteSorter()
-                }
+//                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
+//                    self?.quoteListView?.hideQuoteSorter()
+//                }
 
                 if quotes.all.isEmpty && quotes.status != .completed {
                     self?.onStateUpdated?(.loading)
-                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
+//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 } else if quotes.all.isEmpty && quotes.status == .completed {
                     self?.onStateUpdated?(.empty(reason: .noResults))
-                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
+//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
 
             case .failure(let error):
