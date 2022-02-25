@@ -113,7 +113,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      * And: Hide no availability bar
      * And: HideQuoteCategories called
      */
-    func testBookingStatusUpdates() {
+    func testJourneyDetailsUpdates() {
         let mockJourneyDetails = TestUtil.getRandomJourneyDetails()
         mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertTrue(mockBookingView.showQuoteListCalled)
@@ -125,7 +125,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      * When: destination is nil
      * Then: Map padding should be set without bottom padding
      */
-    func testBookingStatusUpdatesNoDestination() {
+    func testJourneyDetailsUpdatesNoDestination() {
         let mockJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false)
         mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertFalse(mockBookingView.mapPaddingBottomPaddingEnabled!)
@@ -146,9 +146,9 @@ final class KarhooBookingPresenterSpec: XCTestCase {
      *  When:   Resetting booking status
      *  Then:   The bookingStatus should revert to its initial state
      */
-    func testResetBookingStatus() {
+    func testResetJourneyDetails() {
         mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
-        testObject.resetBookingStatus()
+        testObject.resetJourneyDetails()
 
         XCTAssertTrue(mockJourneyDetailsManager.resetCalled)
     }

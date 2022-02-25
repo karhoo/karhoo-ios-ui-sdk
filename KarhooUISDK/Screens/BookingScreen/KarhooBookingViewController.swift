@@ -206,11 +206,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func reset() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
     }
 
     func resetAndLocate() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
         mapPresenter.focusMap()
     }
 

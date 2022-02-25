@@ -54,7 +54,7 @@ protocol BookingPresenter {
 
     func load(view: BookingView?)
 
-    func resetBookingStatus()
+    func resetJourneyDetails()
 
     func populate(with journeyDetails: JourneyDetails)
 

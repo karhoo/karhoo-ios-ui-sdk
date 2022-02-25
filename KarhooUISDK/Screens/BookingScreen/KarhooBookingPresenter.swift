@@ -168,7 +168,7 @@ extension KarhooBookingPresenter: UserStateObserver {
 
     func userStateUpdated(user: UserInfo?) {
         if user == nil {
-            resetBookingStatus()
+            resetJourneyDetails()
             tripRatingCache.clearTripRatings()
         }
     }
@@ -204,7 +204,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         paymentService.getPaymentProvider().execute(callback: { _ in})
     }
 
-    func resetBookingStatus() {
+    func resetJourneyDetails() {
         journeyDetailsManager.reset()
     }
 
@@ -228,7 +228,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
-        resetBookingStatus()
+        resetJourneyDetails()
 
         switch trip.state {
         case .karhooCancelled:
@@ -263,7 +263,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func tripSuccessfullyCancelled() {
-        resetBookingStatus()
+        resetJourneyDetails()
         view?.hideAllocationScreen()
         view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
                         message: UITexts.Bookings.cancellationSuccessAlertMessage,
