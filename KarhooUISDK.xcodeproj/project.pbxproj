@@ -2498,14 +2498,14 @@
 			path = Loyalty;
 			sourceTree = "<group>";
 		};
-		6B4E3256274FCEB000A345E9 /* BookingStatus */ = {
+		6B4E3256274FCEB000A345E9 /* JourneyDetails */ = {
 			isa = PBXGroup;
 			children = (
 				6B2F88F827C6295C00685B47 /* JourneyDetailsController.swift */,
 				6B2F88F627C628DF00685B47 /* JourneyDetails.swift */,
 				6B4E3250274FCB6300A345E9 /* KarhooJourneyDetailsController.swift */,
 			);
-			path = BookingStatus;
+			path = JourneyDetails;
 			sourceTree = "<group>";
 		};
 		6B5B035126D7B7DC0001B2DB /* AddPassengerDetailsView */ = {
@@ -2647,7 +2647,7 @@
 			children = (
 				FC435F362211B88800FB6BB5 /* CancelRideBehaviour.swift */,
 				0991066F21B8291900BD7E6F /* AddressProvider */,
-				6B4E3256274FCEB000A345E9 /* BookingStatus */,
+				6B4E3256274FCEB000A345E9 /* JourneyDetails */,
 				092F281022B25B0700AF8E0E /* Payment */,
 				FC435F382211B8B400FB6BB5 /* Trips */,
 			);
