@@ -15,12 +15,4 @@ struct KarhooNewQuoteListRouter: NewQuoteListRouter {
     init(viewController: BaseViewController) {
         self.viewController = viewController
     }
-
-    // Example routing method
-    /**
-    func routeToSample(sampleObject: Any) {
-        let targetViewController = SampleViewController(with: sampleObject)
-        viewController.show(targetViewController)
-    }
-     */
 }

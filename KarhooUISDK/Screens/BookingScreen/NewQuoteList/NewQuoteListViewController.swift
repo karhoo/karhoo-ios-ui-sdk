@@ -84,7 +84,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - State handling
 
-    private func handleState(_ state: QuoteListStete) {
+    private func handleState(_ state: NewQuoteList.State) {
         switch state {
         case .loading:
             handleLoadingState()
@@ -121,7 +121,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - Scene Input methods
 
-    func updateQuoteListState(_ state: QuoteListStete) {
+    func updateQuoteListState(_ state: NewQuoteList.State) {
         DispatchQueue.main.async { [weak self] in
             self?.presenter.updateQuoteListState(state)
         }
