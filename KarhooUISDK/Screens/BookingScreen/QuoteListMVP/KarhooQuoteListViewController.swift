@@ -75,8 +75,6 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         view.addSubview(stackView)
-        
-        setupLegalDisclaimerLabel()
 
         quoteSortView = KarhooQuoteSortView()
         quoteSortView?.set(actions: self)
@@ -99,10 +97,11 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         loadingView.set(activityIndicatorColor: KarhooUI.colors.darkGrey)
         view.addSubview(loadingView)
         view.bringSubviewToFront(loadingView)
-        
-        view.setNeedsUpdateConstraints()
-        
+
+        setupLegalDisclaimerLabel()
         setupNestedTableViewController()
+
+        view.setNeedsUpdateConstraints()
         presenter = KarhooQuoteListPresenter(quoteListView: self)
     }
 
@@ -164,6 +163,8 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     func showQuotes(_ quotes: [Quote], animated: Bool) {
         tableViewController.updateQuoteListState(.fetched(quotes: quotes))
+        legalDisclaimerLabel.isHidden = false
+        emptyDataSetView.hide()
     }
     
     func showEmptyDataSetMessage(_ message: String) {
@@ -197,6 +198,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     func showLoadingView() {
         loadingView.show()
+        emptyDataSetView.hide()
         legalDisclaimerLabel.isHidden = true
         view.layoutIfNeeded()
         view.setNeedsLayout()
