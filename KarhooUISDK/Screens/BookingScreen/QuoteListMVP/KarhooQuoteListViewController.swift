@@ -119,7 +119,7 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         legalDisclaimerLabel.isHidden = true
         legalDisclaimerLabel.font = KarhooUI.fonts.bodyRegular()
         legalDisclaimerLabel.textColor = KarhooUI.colors.medGrey
-        stackView.addArrangedSubview(legalDisclaimerLabel)
+        stackView.insertArrangedSubview(legalDisclaimerLabel, at: 0)
         legalDisclaimerLabel.text = UITexts.Quotes.feesAndTaxesIncluded
     }
     
