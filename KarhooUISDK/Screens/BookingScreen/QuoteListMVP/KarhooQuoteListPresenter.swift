@@ -81,17 +81,16 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         guard let error = error else {
             return
         }
-
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.quotesAvailabilityDidUpdate(availability: false)
-            quoteListView?.hideLoadingView()
+            onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
             quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
-            quoteListView?.hideLoadingView()
+            onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
             quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
         }
@@ -167,13 +166,13 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
 
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
-            quoteListView?.hideLoadingView()
+            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
             quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
         
         quoteListView?.showQuotes([], animated: true)
-        quoteListView?.showLoadingView()
+        onStateUpdated?(.loading)
         quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
@@ -182,7 +181,7 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
 
             if result.successValue()?.all.isEmpty == false {
-                self?.quoteListView?.hideLoadingView()
+                self?.onStateUpdated?(.empty(reason: .noResults))
                 self?.quoteListView?.toggleCategoryFilteringControls(show: true)
             }
 
@@ -195,10 +194,10 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
                 }
 
                 if quotes.all.isEmpty && quotes.status != .completed {
-                    self?.quoteListView?.showLoadingView()
+                    self?.onStateUpdated?(.loading)
                     self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 } else if quotes.all.isEmpty && quotes.status == .completed {
-                    self?.quoteListView?.hideLoadingView()
+                    self?.onStateUpdated?(.empty(reason: .noResults))
                     self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
 

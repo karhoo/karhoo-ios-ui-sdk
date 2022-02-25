@@ -11,10 +11,14 @@ import KarhooSDK
 public enum QuoteListState {
     case loading
     case fetched(quotes: [Quote])
-    case empty(reason: Empty)
+    case empty(reason: Error)
 
-    public enum Empty {
-        case noForFilters
+    public enum Error {
+        case destinationOrOriginEmpty
+        case noResults
+        case noAvailabilityInRequestedArea
+        case originAndDestinationAreTheSame
+        case example
     }
 }
 
@@ -30,9 +34,9 @@ public protocol QuoteListView: UIViewController {
 
     func toggleCategoryFilteringControls(show: Bool)
 
-    func showLoadingView() // list state
-
-    func hideLoadingView() // list state
+//    func showLoadingView() // list state
+//
+//    func hideLoadingView() // list state
 
     func didSelectQuoteCategory(_ category: QuoteCategory)
 
@@ -53,7 +57,7 @@ public protocol QuoteListView: UIViewController {
     func updateState(_ state: QuoteListState)
 }
 
-protocol QuoteListPresenter {
+protocol QuoteListPresenter: AnyObject {
     
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
