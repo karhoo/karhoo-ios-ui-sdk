@@ -8,21 +8,31 @@
 
 import KarhooSDK
 
+public enum QuoteListState {
+    case loading
+    case fetched(quotes: [Quote])
+    case empty(reason: Empty)
+
+    public enum Empty {
+        case noForFilters
+    }
+}
+
 public protocol QuoteListView: UIViewController {
 
-    func showQuotes(_ quotes: [Quote], animated: Bool)
+    func showQuotes(_ quotes: [Quote], animated: Bool) // list state
 
     func set(quoteListActions: QuoteListActions)
 
-    func showEmptyDataSetMessage(_ message: String)
+    func showEmptyDataSetMessage(_ message: String) // list state
 
-    func hideEmptyDataSetMessage()
+    func hideEmptyDataSetMessage() // list state
 
     func toggleCategoryFilteringControls(show: Bool)
 
-    func showLoadingView()
+    func showLoadingView() // list state
 
-    func hideLoadingView()
+    func hideLoadingView() // list state
 
     func didSelectQuoteCategory(_ category: QuoteCategory)
 
@@ -37,9 +47,15 @@ public protocol QuoteListView: UIViewController {
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
 
     var tableView: UITableView! { get }
+
+    // New
+
+    func updateState(_ state: QuoteListState)
 }
 
 protocol QuoteListPresenter {
+    
+    var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
     func screenWillAppear()
 

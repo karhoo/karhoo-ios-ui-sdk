@@ -55,12 +55,21 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
         forceLightMode()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.screenWillAppear()
+    }
+
+    func setupBinding(_ presenter: QuoteListPresenter) {
+        self.presenter = presenter
+        presenter.onStateUpdated = { _ in
+            assertionFailure()
+            // TODO: tbd
+        }
     }
 
     private func setUpView() {
@@ -155,6 +164,12 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         }
         
         super.updateViewConstraints()
+    }
+
+    // MARK: - Update state
+
+    func updateState(_ state: QuoteListState) {
+        // TODO: update state
     }
     
     func set(quoteListActions: QuoteListActions) {

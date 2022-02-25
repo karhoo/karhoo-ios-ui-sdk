@@ -22,6 +22,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
 
+    var onStateUpdated: ((QuoteListState) -> Void)?
+
     init(
         bookingStatus: BookingStatus = KarhooBookingStatus.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
