@@ -15,11 +15,12 @@ public struct KHQuoteListViewID {
 }
 
 final class KarhooQuoteListViewController: UIViewController, QuoteListView {
+    
     // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
     var tableView: UITableView!
     private var didSetupConstraints = false
     
-    private weak var quoteListActions: QuoteListActions?
+//    private weak var quoteListActions: QuoteListActions?
     private var loadingView: LoadingView!
     private var stackView: UIStackView!
     private var quoteSortView: KarhooQuoteSortView!
@@ -32,7 +33,8 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 
     private lazy var tableViewController = NewQuoteList.build(
         onQuoteSelected: { [weak self] quote in
-            self?.quoteListActions?.didSelectQuote(quote)
+            //TODO: Implement didSelectQoute in Presenter
+//            self?.quoteListActions?.didSelectQuote(quote)
         },
         onQuoteDetailsSelected: { _ in
             // TODO: Finish implementation
@@ -89,6 +91,9 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
     
     private func handleFetchedState(quotes: [Quote]){
         tableViewController.updateQuoteListState(.fetched(quotes: quotes))
+        legalDisclaimerLabel.isHidden = false
+        //TODO: Remove view from layout in future
+        emptyDataSetView.hide()
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
@@ -195,15 +200,15 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         // TODO: update state
     }
     
-    func set(quoteListActions: QuoteListActions) {
-        self.quoteListActions = quoteListActions
-    }
+//    func set(quoteListActions: QuoteListActions) {
+//        self.quoteListActions = quoteListActions
+//    }
     
-    func showQuotes(_ quotes: [Quote], animated: Bool) {
-        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
-        legalDisclaimerLabel.isHidden = false
-        emptyDataSetView.hide()
-    }
+//    func showQuotes(_ quotes: [Quote], animated: Bool) {
+//        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
+//        legalDisclaimerLabel.isHidden = false
+//        emptyDataSetView.hide()
+//    }
     
     func showEmptyDataSetMessage(_ message: String) {
         UIView.animate(withDuration: 0.3) { [weak self] in
@@ -213,9 +218,9 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
         emptyDataSetView.show(emptyDataSetMessage: message)
     }
     
-    func hideEmptyDataSetMessage() {
-        emptyDataSetView.hide()
-    }
+//    func hideEmptyDataSetMessage() {
+//        emptyDataSetView.hide()
+//    }
     
     func didSelectQuoteCategory(_ category: QuoteCategory) {
         presenter?.selectedQuoteCategory(category)
@@ -242,9 +247,9 @@ final class KarhooQuoteListViewController: UIViewController, QuoteListView {
 //        view.setNeedsLayout()
 //    }
 
-    func quotesAvailabilityDidUpdate(availability: Bool) {
-        quoteListActions?.quotesAvailabilityDidUpdate(availability: availability)
-    }
+//    func quotesAvailabilityDidUpdate(availability: Bool) {
+//        quoteListActions?.quotesAvailabilityDidUpdate(availability: availability)
+//    }
 
     func showQuoteSorter() {
         quoteSortView.isHidden = false

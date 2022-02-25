@@ -84,12 +84,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            quoteListView?.quotesAvailabilityDidUpdate(availability: false)
+//            quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
             quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            quoteListView?.showEmptyDataSetMessage(UITexts.KarhooError.Q0001)
+            // TODO: Decide which error should be presented
+            onStateUpdated?(.empty(reason: .KarhooErrorQ0001))
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
             quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
@@ -136,12 +137,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
 
         if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false {
-            quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesInSelectedCategory)
+            onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
         } else if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == true && fetchedQuotes.status == .completed {
-            quoteListView?.showEmptyDataSetMessage(UITexts.Availability.noQuotesForSelectedParameters)
+            onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
-            quoteListView?.showQuotes(sortedQuotes, animated: animated)
+            onStateUpdated?(.fetched(quotes: sortedQuotes))
         }
         
         handleQuoteStatus()
@@ -170,8 +171,6 @@ extension KarhooQuoteListPresenter: BookingDetailsObserver {
             quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
-        
-        quoteListView?.showQuotes([], animated: true)
         onStateUpdated?(.loading)
         quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,

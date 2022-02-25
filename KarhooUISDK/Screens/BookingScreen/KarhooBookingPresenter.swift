@@ -159,7 +159,7 @@ extension KarhooBookingPresenter: BookingDetailsObserver {
             view?.setMapPadding(bottomPaddingEnabled: false)
         }
 
-        view?.quotesAvailabilityDidUpdate(availability: true)
+//        view?.quotesAvailabilityDidUpdate(availability: true)
     }
 }
 

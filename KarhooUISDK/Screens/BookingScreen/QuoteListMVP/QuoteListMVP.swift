@@ -18,19 +18,22 @@ public enum QuoteListState {
         case noResults
         case noAvailabilityInRequestedArea
         case originAndDestinationAreTheSame
+        case KarhooErrorQ0001
+        case noQuotesInSelectedCategory // error message: UITexts.Availability.noQuotesInSelectedCategory
+        case noQuotesForSelectedParameters // error message: UITexts.Availability.noQuotesForSelectedParameters
         case example
     }
 }
 
 public protocol QuoteListView: UIViewController {
 
-    func showQuotes(_ quotes: [Quote], animated: Bool) // list state
+//    func showQuotes(_ quotes: [Quote], animated: Bool) // list state
 
-    func set(quoteListActions: QuoteListActions)
+//    func set(quoteListActions: QuoteListActions)
 
-    func showEmptyDataSetMessage(_ message: String) // list state
+//    func showEmptyDataSetMessage(_ message: String) // list state
 
-    func hideEmptyDataSetMessage() // list state
+//    func hideEmptyDataSetMessage() // list state
 
     func toggleCategoryFilteringControls(show: Bool)
 
@@ -46,7 +49,7 @@ public protocol QuoteListView: UIViewController {
 
     func hideQuoteSorter()
 
-    func quotesAvailabilityDidUpdate(availability: Bool)
+//    func quotesAvailabilityDidUpdate(availability: Bool)
     
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
 
@@ -68,9 +71,10 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectQuoteOrder(_ order: QuoteSortOrder)
 }
 
-public protocol QuoteListActions: AnyObject {
+//public protocol QuoteListActions: AnyObject {
+//
+//    func didSelectQuote(_ quote: Quote)
+//
+//    func quotesAvailabilityDidUpdate(availability: Bool)
+//}
 
-    func didSelectQuote(_ quote: Quote)
-
-    func quotesAvailabilityDidUpdate(availability: Bool)
-}
