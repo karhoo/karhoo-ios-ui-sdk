@@ -88,8 +88,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
         self.fetchedQuotes = quotes
-//        quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
-//                                         quoteListId: quotes.quoteListId)
         if journeyDetails?.destinationLocationDetails != nil, journeyDetails?.isScheduled == true {
             didSelectQuoteOrder(.price, animated: false)
         } else {
@@ -104,15 +102,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-//            quoteListView?.quotesAvailabilityDidUpdate(availability: false)
             onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
-//            quoteListView?.toggleCategoryFilteringControls(show: true)
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             // TODO: Decide which error should be presented
             onStateUpdated?(.empty(reason: .KarhooErrorQ0001))
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
-//            quoteListView?.toggleCategoryFilteringControls(show: true)
         default: break
         }
     }
@@ -174,7 +169,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         print("KarhooQuoteListPresenter – result updated \(Date())")
         if result.successValue()?.all.isEmpty == false {
             self.onStateUpdated?(.empty(reason: .noResults))
-//                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
         }
 
         switch result {
@@ -211,20 +205,12 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
             return
         }
 
-        if details.destinationLocationDetails != nil, details.isScheduled {
-//            quoteListView?.hideQuoteSorter()
-        } else {
-//            quoteListView?.showQuoteSorter()
-        }
-
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
-//            quoteListView?.toggleCategoryFilteringControls(show: true)
             return
         }
         onStateUpdated?(.loading)
-//        quoteListView?.toggleCategoryFilteringControls(show: false)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
