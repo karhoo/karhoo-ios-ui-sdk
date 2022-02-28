@@ -59,17 +59,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     // MARK: - Endpoints
 
     func selectedQuoteCategory(_ category: QuoteCategory) {
-        self.selectedQuoteCategory = category
-        updateViewQuotes(animated: true)
+        selectedQuoteCategory = category
+        updateViewQuotes()
     }
-
+    
     func didSelectQuoteOrder(_ order: QuoteSortOrder) {
-        self.didSelectQuoteOrder(order, animated: true)
-    }
-
-    func didSelectQuoteOrder(_ order: QuoteSortOrder, animated: Bool) {
-        self.selectedQuoteOrder = order
-        updateViewQuotes(animated: animated)
+        selectedQuoteOrder = order
+        updateViewQuotes()
     }
 
     func didSelectQuote(_ quote: Quote) {
@@ -86,13 +82,20 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     // MARK: - Private
 
-    private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
-        self.fetchedQuotes = quotes
-        if journeyDetails?.destinationLocationDetails != nil, journeyDetails?.isScheduled == true {
-            didSelectQuoteOrder(.price, animated: false)
-        } else {
-            updateViewQuotes(animated: false)
+    private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
+        // Checkout component required this data
+        setExpirationDates(of: quotes)
+        if quotes.all.isEmpty && quotes.status != .completed {
+            onStateUpdated?(.loading)
+        } else if quotes.all.isEmpty && quotes.status == .completed {
+            onStateUpdated?(.empty(reason: .noResults))
         }
+        fetchedQuotes = quotes
+        // Why order is set based on location details?
+        if journeyDetails.destinationLocationDetails != nil, journeyDetails.isScheduled {
+            selectedQuoteOrder = .price
+        }
+        updateViewQuotes(animated: false)
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {
@@ -113,13 +116,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        // Magic
-//        let timer = fetchedQuotes!.validity
-//        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
-//
-//        DispatchQueue.main.asyncAfter(deadline: deadline) {
-////            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
-//        }
+        let quotesValidity = fetchedQuotes!.validity
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
+            self?.refreshSubscription()
+        }
     }
     
     private func handleQuoteStatus() {
@@ -128,8 +129,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         if fetchedQuotes.status == .completed {
-//            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-//            handleQuotePolling()
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+            handleQuotePolling()
         }
     }
 
@@ -137,7 +138,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         quotes.all.forEach { $0.setExpirationDate(using: quotes.validity) }
     }
 
-    private func updateViewQuotes(animated: Bool) {
+    private func updateViewQuotes() {
         guard let fetchedQuotes = self.fetchedQuotes,
               let selectedCategory = self.selectedQuoteCategory else {
             return
@@ -160,38 +161,23 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
             onStateUpdated?(.fetched(quotes: sortedQuotes))
         }
-        
         handleQuoteStatus()
-
     }
 
     private func handleResult(result: Result<Quotes>, jurneyDetails: JourneyDetails) {
-        print("KarhooQuoteListPresenter – result updated \(Date())")
-        if result.successValue()?.all.isEmpty == false {
-            self.onStateUpdated?(.empty(reason: .noResults))
-        }
-
         switch result {
         case .success(let quotes):
-            self.setExpirationDates(of: quotes)
-            self.quoteSearchSuccessResult(quotes, journeyDetails: jurneyDetails)
-//                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
-//                    self?.quoteListView?.hideQuoteSorter()
-//                }
-
-            if quotes.all.isEmpty && quotes.status != .completed {
-                self.onStateUpdated?(.loading)
-//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
-            } else if quotes.all.isEmpty && quotes.status == .completed {
-                self.onStateUpdated?(.empty(reason: .noResults))
-//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
-            }
-
+            quoteSearchSuccessResult(quotes, journeyDetails: jurneyDetails)
         case .failure(let error):
-            self.quoteSearchErrorResult(error)
+            quoteSearchErrorResult(error)
         @unknown default:
             break
         }
+    }
+    
+    private func refreshSubscription() {
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        quoteSearchObservable?.subscribe(observer: quotesObserver)
     }
 }
 
@@ -200,11 +186,9 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-
         guard let details = details else {
             return
         }
-
         guard let destination = details.destinationLocationDetails,
             let origin = details.originLocationDetails else {
             onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
@@ -214,13 +198,10 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
-
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
             self?.handleResult(result: result, jurneyDetails: details)
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
-        
-        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        quoteSearchObservable?.subscribe(observer: quotesObserver)
+        refreshSubscription()
     }
 }
