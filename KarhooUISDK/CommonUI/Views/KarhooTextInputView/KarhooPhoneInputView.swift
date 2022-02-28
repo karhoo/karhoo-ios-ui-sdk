@@ -187,22 +187,24 @@ class KarhooPhoneInputView: UIView {
         let presenter = CountryCodeSelectionPresenter(preSelectedCountry: country) { [weak self] result in
             guard let value = result.completedValue()
             else {
-                if self?.focusPhoneNumber ?? false {
-                    self?.textView.becomeFirstResponder()
-                }
+                self?.focusPhoneNumberField()
                 return
             }
 
             self?.country = value
             self?.runValidation()
-            if self?.focusPhoneNumber ?? false {
-                self?.textView.becomeFirstResponder()
-            }
+            self?.focusPhoneNumberField()
         }
 
         let vc = CountryCodeSelectionViewController(presenter: presenter)
         if let topController = ViewControllerUtils.topBaseViewController {
             topController.showAsOverlay(item: vc, animated: true)
+        }
+    }
+    
+    private func focusPhoneNumberField(){
+        if focusPhoneNumber ?? false {
+            textView.becomeFirstResponder()
         }
     }
     
