@@ -9,7 +9,6 @@
 import Foundation
 import KarhooSDK
 
-
 class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
 
     private let router: NewQuoteListRouter

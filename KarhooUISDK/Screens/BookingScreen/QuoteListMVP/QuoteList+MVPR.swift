@@ -46,6 +46,8 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectQuote(_ quote: Quote)
 
     func didSelectQuoteDetails(_ quote: Quote)
+
+    func didSelectCategory(_ category: QuoteCategory)
 }
 
 //public protocol QuoteListActions: AnyObject {

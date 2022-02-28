@@ -269,6 +269,6 @@ extension KarhooQuoteListViewController: QuoteSortViewActions {
 extension KarhooQuoteListViewController: QuoteCategoryBarActions {
     
     func didSelectCategory(_ category: QuoteCategory) {
-//        didSelectQuoteCategory(category)
+        presenter?.didSelectCategory(category)
     }
 }

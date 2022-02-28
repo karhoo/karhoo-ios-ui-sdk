@@ -15,7 +15,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     private let journeyDetailsManager: JourneyDetailsManager
     private let quoteService: QuoteService
-//    private weak var quoteListView: QuoteListView?
     private var fetchedQuotes: Quotes?
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
@@ -24,6 +23,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
+    private var isSubscribed: Bool = false
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
@@ -80,6 +80,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         // TODO: finish implementation
     }
 
+    func didSelectCategory(_ category: QuoteCategory) {
+        // TODO: finish implementation
+    }
+
     // MARK: - Private
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails?) {
@@ -114,12 +118,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        let timer = fetchedQuotes!.validity
-        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
-        
-        DispatchQueue.main.asyncAfter(deadline: deadline) {
-//            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
-        }
+        // Magic
+//        let timer = fetchedQuotes!.validity
+//        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(timer)
+//
+//        DispatchQueue.main.asyncAfter(deadline: deadline) {
+////            self.quoteSearchObservable?.subscribe(observer: self.quotesObserver)
+//        }
     }
     
     private func handleQuoteStatus() {
@@ -128,8 +133,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         if fetchedQuotes.status == .completed {
-            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            handleQuotePolling()
+//            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+//            handleQuotePolling()
         }
     }
 
@@ -164,6 +169,36 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         handleQuoteStatus()
 
     }
+
+    private func handleResult(result: Result<Quotes>, jurneyDetails: JourneyDetails) {
+        print("KarhooQuoteListPresenter – result updated \(Date())")
+        if result.successValue()?.all.isEmpty == false {
+            self.onStateUpdated?(.empty(reason: .noResults))
+//                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
+        }
+
+        switch result {
+        case .success(let quotes):
+            self.setExpirationDates(of: quotes)
+            self.quoteSearchSuccessResult(quotes, journeyDetails: jurneyDetails)
+//                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
+//                    self?.quoteListView?.hideQuoteSorter()
+//                }
+
+            if quotes.all.isEmpty && quotes.status != .completed {
+                self.onStateUpdated?(.loading)
+//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
+            } else if quotes.all.isEmpty && quotes.status == .completed {
+                self.onStateUpdated?(.empty(reason: .noResults))
+//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
+            }
+
+        case .failure(let error):
+            self.quoteSearchErrorResult(error)
+        @unknown default:
+            break
+        }
+    }
 }
 
 // MARK: - JourneyDetailsObserver
@@ -195,35 +230,11 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
                                       dateScheduled: details.scheduledDate)
 
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-
-            if result.successValue()?.all.isEmpty == false {
-                self?.onStateUpdated?(.empty(reason: .noResults))
-//                self?.quoteListView?.toggleCategoryFilteringControls(show: true)
-            }
-
-            switch result {
-            case .success(let quotes):
-                self?.setExpirationDates(of: quotes)
-                self?.quoteSearchSuccessResult(quotes, journeyDetails: details)
-//                if details.destinationLocationDetails != nil, details.scheduledDate != nil {
-//                    self?.quoteListView?.hideQuoteSorter()
-//                }
-
-                if quotes.all.isEmpty && quotes.status != .completed {
-                    self?.onStateUpdated?(.loading)
-//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
-                } else if quotes.all.isEmpty && quotes.status == .completed {
-                    self?.onStateUpdated?(.empty(reason: .noResults))
-//                    self?.quoteListView?.toggleCategoryFilteringControls(show: false)
-                }
-
-            case .failure(let error):
-                self?.quoteSearchErrorResult(error)
-            @unknown default:
-                break
-            }
+            self?.handleResult(result: result, jurneyDetails: details)
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
+        
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
         quoteSearchObservable?.subscribe(observer: quotesObserver)
     }
 }
