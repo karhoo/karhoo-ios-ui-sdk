@@ -23,7 +23,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
-    private var isSubscribed: Bool = false
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
@@ -95,7 +94,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         if journeyDetails.destinationLocationDetails != nil, journeyDetails.isScheduled {
             selectedQuoteOrder = .price
         }
-        updateViewQuotes(animated: false)
+        updateViewQuotes()
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {
@@ -108,8 +107,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            // TODO: Decide which error should be presented
-            onStateUpdated?(.empty(reason: .KarhooErrorQ0001))
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
         default: break
         }
@@ -124,14 +121,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuoteStatus() {
-        guard let fetchedQuotes = self.fetchedQuotes else {
-            return
-        }
-        
-        if fetchedQuotes.status == .completed {
-            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            handleQuotePolling()
-        }
+        guard fetchedQuotes?.status == .completed else { return }
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        handleQuotePolling()
     }
 
     private func setExpirationDates(of quotes: Quotes) {
@@ -145,17 +137,21 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
 
         let quotesToShow: [Quote]
-
+        
+        // TODO: Change filtering logic, not use names as a comparator
         if selectedQuoteCategory?.categoryName == UITexts.Availability.allCategory {
             quotesToShow = fetchedQuotes.all
         } else {
             quotesToShow = fetchedQuotes.quoteCategories
                 .filter { $0.categoryName == selectedCategory.categoryName }.first?.quotes ?? []
         }
-
-        if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false {
+        
+        let existQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
+        let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+        
+        if existQuotesInSelectedCategory {
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
-        } else if quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == true && fetchedQuotes.status == .completed {
+        } else if noQuotesForSelectedParapeters {
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
