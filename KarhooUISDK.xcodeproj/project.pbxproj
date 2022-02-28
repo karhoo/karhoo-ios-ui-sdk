@@ -891,11 +891,11 @@
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51D400CD27C9795700A5208F /* QuoteListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListBuilder.swift; sourceTree = "<group>"; };
 		51D400CF27C97A4200A5208F /* QuoteListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListRouter.swift; sourceTree = "<group>"; };
-		51D400D227CCDC1700A5208F /* NewQuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListViewController.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QuoteListTableView/NewQuoteListViewController.swift; sourceTree = SOURCE_ROOT; };
-		51D400D327CCDC1700A5208F /* NewQuoteListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListRouter.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QuoteListTableView/NewQuoteListRouter.swift; sourceTree = SOURCE_ROOT; };
-		51D400D427CCDC1700A5208F /* NewQuoteList+MVPR .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NewQuoteList+MVPR .swift"; path = "KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QuoteListTableView/NewQuoteList+MVPR .swift"; sourceTree = SOURCE_ROOT; };
-		51D400D527CCDC1700A5208F /* NewQuoteListBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListBuilder.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QuoteListTableView/NewQuoteListBuilder.swift; sourceTree = SOURCE_ROOT; };
-		51D400D627CCDC1700A5208F /* NewQuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListPresenter.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QuoteListTableView/NewQuoteListPresenter.swift; sourceTree = SOURCE_ROOT; };
+		51D400D227CCDC1700A5208F /* NewQuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListViewController.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QouteListTable/NewQuoteListViewController.swift; sourceTree = SOURCE_ROOT; };
+		51D400D327CCDC1700A5208F /* NewQuoteListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListRouter.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QouteListTable/NewQuoteListRouter.swift; sourceTree = SOURCE_ROOT; };
+		51D400D427CCDC1700A5208F /* NewQuoteList+MVPR .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NewQuoteList+MVPR .swift"; path = "KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QouteListTable/NewQuoteList+MVPR .swift"; sourceTree = SOURCE_ROOT; };
+		51D400D527CCDC1700A5208F /* NewQuoteListBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListBuilder.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QouteListTable/NewQuoteListBuilder.swift; sourceTree = SOURCE_ROOT; };
+		51D400D627CCDC1700A5208F /* NewQuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewQuoteListPresenter.swift; path = KarhooUISDK/Screens/BookingScreen/QuoteListMVP/QouteListTable/NewQuoteListPresenter.swift; sourceTree = SOURCE_ROOT; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
 		51E75B4027C7C4F000A016BD /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlow.swift; sourceTree = "<group>"; };
@@ -1698,7 +1698,7 @@
 		09C7656021DE688000CD81AB /* QuoteListMVP */ = {
 			isa = PBXGroup;
 			children = (
-				51D400D127CCDBEA00A5208F /* QuoteListTable */,
+				7B613E4027CCF67000D23C42 /* QouteListTable */,
 				51D400CD27C9795700A5208F /* QuoteListBuilder.swift */,
 				09C7657121DE688000CD81AB /* KarhooGrabberHandleView.swift */,
 				09C7657021DE688000CD81AB /* QuoteListPresenter.swift */,
@@ -2351,18 +2351,6 @@
 			path = Checkbox;
 			sourceTree = "<group>";
 		};
-		51D400D127CCDBEA00A5208F /* QuoteListTable */ = {
-			isa = PBXGroup;
-			children = (
-				51D400D427CCDC1700A5208F /* NewQuoteList+MVPR .swift */,
-				51D400D527CCDC1700A5208F /* NewQuoteListBuilder.swift */,
-				51D400D627CCDC1700A5208F /* NewQuoteListPresenter.swift */,
-				51D400D327CCDC1700A5208F /* NewQuoteListRouter.swift */,
-				51D400D227CCDC1700A5208F /* NewQuoteListViewController.swift */,
-			);
-			path = QuoteListTable;
-			sourceTree = "<group>";
-		};
 		5C1CD09F241A5D88004AFF7D /* TripDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -2761,6 +2749,18 @@
 				7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */,
 			);
 			path = LegalNotice;
+			sourceTree = "<group>";
+		};
+		7B613E4027CCF67000D23C42 /* QouteListTable */ = {
+			isa = PBXGroup;
+			children = (
+				51D400D427CCDC1700A5208F /* NewQuoteList+MVPR .swift */,
+				51D400D527CCDC1700A5208F /* NewQuoteListBuilder.swift */,
+				51D400D627CCDC1700A5208F /* NewQuoteListPresenter.swift */,
+				51D400D327CCDC1700A5208F /* NewQuoteListRouter.swift */,
+				51D400D227CCDC1700A5208F /* NewQuoteListViewController.swift */,
+			);
+			path = QouteListTable;
 			sourceTree = "<group>";
 		};
 		E3D901DD9D9A20F01C1B688D /* Frameworks */ = {
