@@ -21,17 +21,17 @@ final class PrebookConfirmationViewModel {
     let pickUpType: String
     let showPickUpType: Bool
 
-    init(bookingDetails: BookingDetails,
+    init(journeyDetails: JourneyDetails,
          quote: Quote,
          dateFormatter: DateFormatterType = KarhooDateFormatter()) {
         self.title = UITexts.Booking.prebookConfirmed
-        self.originLocation = bookingDetails.originLocationDetails?.address.displayAddress ?? ""
-        self.destinationLocation = bookingDetails.destinationLocationDetails?.address.displayAddress ?? ""
+        self.originLocation = journeyDetails.originLocationDetails?.address.displayAddress ?? ""
+        self.destinationLocation = journeyDetails.destinationLocationDetails?.address.displayAddress ?? ""
 
-        if let originTimeZone = bookingDetails.originLocationDetails?.timezone() {
+        if let originTimeZone = journeyDetails.originLocationDetails?.timezone() {
             dateFormatter.set(timeZone: originTimeZone)
-            self.date = dateFormatter.display(shortDate: bookingDetails.scheduledDate)
-            self.time = dateFormatter.display(clockTime: bookingDetails.scheduledDate)
+            self.date = dateFormatter.display(shortDate: journeyDetails.scheduledDate)
+            self.time = dateFormatter.display(clockTime: journeyDetails.scheduledDate)
         } else {
             self.date = ""
             self.time = ""
@@ -41,7 +41,7 @@ final class PrebookConfirmationViewModel {
         self.priceTitle = quote.quoteType.description
         self.buttonTitle = UITexts.Booking.prebookConfirmedRideDetails
         self.showPickUpType = quote.pickUpType != .default &&
-                              bookingDetails.originLocationDetails?.details.type == .airport
+                              journeyDetails.originLocationDetails?.details.type == .airport
 
         switch quote.pickUpType {
         case .meetAndGreet: pickUpType = UITexts.Bookings.meetAndGreetPickup

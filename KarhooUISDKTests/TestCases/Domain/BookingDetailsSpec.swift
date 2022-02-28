@@ -18,10 +18,10 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return true
      */
     func testIsScheduledWhenScheduled() {
-        var bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
-        bookingDetails.scheduledDate = Date()
+        var journeyDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        journeyDetails.scheduledDate = Date()
 
-        XCTAssert(bookingDetails.isScheduled)
+        XCTAssert(journeyDetails.isScheduled)
     }
 
     /**
@@ -30,9 +30,9 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return false
      */
     func testIsScheduledNil() {
-        let bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        let journeyDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
 
-        XCTAssertFalse(bookingDetails.isScheduled)
+        XCTAssertFalse(journeyDetails.isScheduled)
     }
 
     /**
@@ -41,9 +41,9 @@ class BookingDetailsSpec: XCTestCase {
      *  Then:   Should return false
      */
     func testIsScheduledFor1970() {
-        var bookingDetails = BookingDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
-        bookingDetails.scheduledDate = Date(timeIntervalSince1970: 0)
+        var journeyDetails = JourneyDetails(originLocationDetails: TestUtil.getRandomLocationInfo())
+        journeyDetails.scheduledDate = Date(timeIntervalSince1970: 0)
 
-        XCTAssertFalse(bookingDetails.isScheduled)
+        XCTAssertFalse(journeyDetails.isScheduled)
     }
 }

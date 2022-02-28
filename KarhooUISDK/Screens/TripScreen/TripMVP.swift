@@ -67,6 +67,6 @@ protocol TripView: BaseViewController {
 }
 
 public enum TripScreenResult {
-    case rebookTrip(rebookDetails: BookingDetails)
+    case rebookTrip(rebookDetails: JourneyDetails)
     case closed
 }
