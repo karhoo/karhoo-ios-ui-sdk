@@ -146,11 +146,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+        let noQuotesForSelectedParameters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
         
         if noQuotesInSelectedCategory {
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
-        } else if noQuotesForSelectedParapeters {
+        } else if noQuotesForSelectedParameters {
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
