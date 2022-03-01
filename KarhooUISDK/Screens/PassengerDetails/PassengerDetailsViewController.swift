@@ -58,12 +58,6 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         }
     }
     
-    var focusPhoneNumber: Bool = true {
-        didSet {
-            mobilePhoneInputView.focusPhoneNumber = focusPhoneNumber
-        }
-    }
-    
     // MARK: - Views and Controls
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -176,10 +170,12 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }()
     
     // MARK: - Init
-    init() {
+    init(focusPhoneNumber: Bool = true) {
         presenter = PassengerDetailsPresenter()
         super.init(nibName: nil, bundle: nil)
         setUpView()
+        
+        mobilePhoneInputView.focusPhoneNumber = focusPhoneNumber
     }
     
     required init?(coder aDecoder: NSCoder) {
