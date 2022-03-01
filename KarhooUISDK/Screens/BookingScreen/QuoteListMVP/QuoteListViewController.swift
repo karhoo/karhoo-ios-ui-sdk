@@ -24,7 +24,15 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private var loadingView: LoadingView!
     private var stackView: UIStackView!
     private var quoteSortView: KarhooQuoteSortView!
-    private var legalDisclaimerLabel: UILabel!
+    private var legalDisclaimerLabel = UILabel().then {
+        $0.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textAlignment = .center
+        $0.isHidden = true
+        $0.font = KarhooUI.fonts.bodyRegular()
+        $0.textColor = KarhooUI.colors.medGrey
+        $0.text = UITexts.Quotes.feesAndTaxesIncluded
+    }
     private var emptyDataSetView: QuoteListEmptyDataSetView!
     private var quoteCategoryBarView: KarhooQuoteCategoryBarView!
     private var presenter: QuoteListPresenter!
@@ -168,15 +176,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupLegalDisclaimerLabel() {
-        legalDisclaimerLabel = UILabel()
-        legalDisclaimerLabel.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
-        legalDisclaimerLabel.translatesAutoresizingMaskIntoConstraints = false
-        legalDisclaimerLabel.textAlignment = .center
-        legalDisclaimerLabel.isHidden = true
-        legalDisclaimerLabel.font = KarhooUI.fonts.bodyRegular()
-        legalDisclaimerLabel.textColor = KarhooUI.colors.medGrey
         stackView.insertArrangedSubview(legalDisclaimerLabel, at: 0)
-        legalDisclaimerLabel.text = UITexts.Quotes.feesAndTaxesIncluded
     }
     
     override func updateViewConstraints() {

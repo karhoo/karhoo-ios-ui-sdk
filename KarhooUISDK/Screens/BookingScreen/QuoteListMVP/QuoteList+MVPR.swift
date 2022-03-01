@@ -21,7 +21,6 @@ public enum QuoteListState {
         case KarhooErrorQ0001
         case noQuotesInSelectedCategory // error message: UITexts.Availability.noQuotesInSelectedCategory
         case noQuotesForSelectedParameters // error message: UITexts.Availability.noQuotesForSelectedParameters
-        case example
     }
 }
 

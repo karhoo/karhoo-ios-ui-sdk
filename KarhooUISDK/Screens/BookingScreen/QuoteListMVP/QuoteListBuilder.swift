@@ -25,6 +25,7 @@ enum QuoteList {
         )
 
         viewController.setupBinding(presenter)
+        viewController.loadViewIfNeeded()
 
         return viewController
     }

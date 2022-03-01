@@ -307,7 +307,7 @@ extension KarhooBookingViewController: QuoteCategoryBarActions {
     }
 }
 
-//extension KarhooBookingViewController: QuoteListActions {
+// extension KarhooBookingViewController: QuoteListActions {
 //
 //    func didSelectQuote(_ quote: Quote) {
 //        hideQuoteList()
@@ -328,7 +328,7 @@ extension KarhooBookingViewController: QuoteCategoryBarActions {
 //            self?.view.layoutIfNeeded()
 //        }
 //    }
-//}
+// }
 
 extension KarhooBookingViewController: NavigationBarActions {
 
