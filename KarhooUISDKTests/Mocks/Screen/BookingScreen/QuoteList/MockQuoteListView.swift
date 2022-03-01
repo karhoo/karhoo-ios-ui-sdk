@@ -18,10 +18,10 @@ final class MockQuoteListView: UIViewController, QuoteListView {
         showQuotesAnimated = animated
     }
 
-    private(set) var quoteListActionsSet: QuoteListActions?
-    func set(quoteListActions: QuoteListActions) {
-        quoteListActionsSet = quoteListActions
-    }
+//    private(set) var quoteListActionsSet: QuoteListActions?
+//    func set(quoteListActions: QuoteListActions) {
+//        quoteListActionsSet = quoteListActions
+//    }
 
     private(set) var emptyDataSetMessageSet: String?
     func showEmptyDataSetMessage(_ message: String) {

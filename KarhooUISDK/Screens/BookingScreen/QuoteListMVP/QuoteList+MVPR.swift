@@ -29,8 +29,6 @@ public protocol QuoteListView: UIViewController {
 
     func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
 
-//    var tableView: UITableView! { get }func didSelectQuote(_ quote: Quote)
-
 }
 
 protocol QuoteListPresenter: AnyObject {
