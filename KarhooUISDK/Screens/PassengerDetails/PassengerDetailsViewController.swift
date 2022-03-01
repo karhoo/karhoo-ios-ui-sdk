@@ -38,6 +38,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     private var doneButtonBottomConstraint: NSLayoutConstraint!
     private var shouldMoveToNextInputViewOnReturn = true
     private let currentLocale = UITexts.Generic.locale
+    private var shouldFocusNumberInputAutomatically: Bool = true
     
     // MARK: - PassengerDetailsView
     var delegate: PassengerDetailsDelegate? {
@@ -149,7 +150,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }()
     
     private lazy var mobilePhoneInputView: KarhooPhoneInputView = {
-        let inputView = KarhooPhoneInputView(accessibilityIdentifier: KHPassengerDetailsViewID.mobilePhoneInputView)
+        let inputView = KarhooPhoneInputView(accessibilityIdentifier: KHPassengerDetailsViewID.mobilePhoneInputView, shouldFocusNumberInputAutomatically: self.shouldFocusNumberInputAutomatically)
         inputView.delegate = self
         return inputView
     }()
@@ -173,9 +174,8 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     init(focusPhoneNumber: Bool = true) {
         presenter = PassengerDetailsPresenter()
         super.init(nibName: nil, bundle: nil)
+        shouldFocusNumberInputAutomatically = focusPhoneNumber
         setUpView()
-        
-        mobilePhoneInputView.focusPhoneNumber = focusPhoneNumber
     }
     
     required init?(coder aDecoder: NSCoder) {

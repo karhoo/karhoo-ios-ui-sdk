@@ -27,7 +27,7 @@ class KarhooPhoneInputView: UIView {
     private var didSetUpConstraints: Bool = false
     private var iconImage: UIImage?
     private var errorFeedbackType: KarhooTextInputViewErrorFeedbackType = .icon
-    var focusPhoneNumber: Bool = true
+    private var shouldFocusNumberInputAutomatically: Bool = true
     
     private var country: Country = KarhooCountryParser.defaultCountry {
         didSet {
@@ -135,12 +135,14 @@ class KarhooPhoneInputView: UIView {
     // MARK: - Init
     init(iconImage: UIImage? = nil,
          errorFeedbackType: KarhooTextInputViewErrorFeedbackType = .text,
-         accessibilityIdentifier: String) {
+         accessibilityIdentifier: String,
+         shouldFocusNumberInputAutomatically: Bool) {
         super.init(frame: .zero)
         self.accessibilityIdentifier = accessibilityIdentifier
         self.iconImage = iconImage
         self.errorFeedbackType = errorFeedbackType
         self.setUpView()
+        self.shouldFocusNumberInputAutomatically = shouldFocusNumberInputAutomatically
     }
     
     required init?(coder: NSCoder) {
@@ -203,8 +205,9 @@ class KarhooPhoneInputView: UIView {
     }
     
     private func focusPhoneNumberField(){
-        if focusPhoneNumber ?? false {
+        guard !shouldFocusNumberInputAutomatically else{
             textView.becomeFirstResponder()
+            return
         }
     }
     
