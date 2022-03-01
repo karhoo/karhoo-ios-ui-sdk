@@ -1,5 +1,5 @@
 //  
-//  NewQuoteListViewController.swift
+//  QuoteListTableViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -9,11 +9,11 @@
 import UIKit
 import KarhooSDK
 
-class KarhooNewQuoteListViewController: UIViewController, BaseViewController, NewQuoteListViewController {
+class KarhooQuoteListTableViewController: UIViewController, BaseViewController, QuoteListTableViewController {
 
     // MARK: - Properties
 
-    private var presenter: NewQuoteListPresenter!
+    private var presenter: QuoteListTablePresenter!
 
     // MARK: - Views
 
@@ -56,7 +56,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: NewQuoteListPresenter) {
+    func setupBinding(_ presenter: QuoteListTablePresenter) {
         self.presenter = presenter
         presenter.onQuoteListStateUpdated = { [weak self] state in
             self?.handleState(state)
@@ -129,7 +129,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 }
 
     // MARK: - TableView delegate & data source
-extension KarhooNewQuoteListViewController: UITableViewDelegate, UITableViewDataSource {
+extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         getQuotes().count

@@ -14,7 +14,7 @@ public struct KHQuoteListViewID {
     public static let tableViewReuseIdentifier = "QuoteCell"
 }
 
-final class KarhooQuoteListViewController: UIViewController, BaseViewController, QuoteListView {
+final class KarhooQuoteListViewController: UIViewController, BaseViewController, QuoteListViewController {
     
     // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
     var tableView: UITableView!
@@ -27,11 +27,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private var legalDisclaimerLabel: UILabel!
     private var emptyDataSetView: QuoteListEmptyDataSetView!
     private var quoteCategoryBarView: KarhooQuoteCategoryBarView!
-    private var presenter: QuoteListPresenter?
+    private var presenter: QuoteListPresenter!
 
     // MARK: - Nested view controllers
 
-    private lazy var tableViewController = NewQuoteList.build(
+    private lazy var tableViewController = QuoteListTable.build(
         onQuoteSelected: { [weak self] quote in
             self?.presenter?.didSelectQuote(quote)
         },
@@ -51,18 +51,18 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     override func loadView() {
-        setUpView()
+        setupView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
-        forceLightMode()
+        presenter?.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.screenWillAppear()
+        presenter?.viewWillAppear()
     }
 
     // MARK: - Setup binding
@@ -72,6 +72,24 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
+    }
+
+    // MARK: - Setup view
+
+    private func setupView() {
+        setupProperties()
+        setupHierarchy()
+        setupLayout()
+    }
+
+    private func setupProperties() {
+        forceLightMode()
+    }
+
+    private func setupHierarchy() {
+    }
+
+    private func setupLayout() {
     }
     
     // MARK: - State handling
@@ -87,11 +105,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         }
     }
     
-    private func handleLoadingState(){
+    private func handleLoadingState() {
         tableViewController.updateQuoteListState(.loading)
     }
     
-    private func handleFetchedState(quotes: [Quote]){
+    private func handleFetchedState(quotes: [Quote]) {
         tableViewController.updateQuoteListState(.fetched(quotes: quotes))
         legalDisclaimerLabel.isHidden = false
         //TODO: Remove view from layout in future

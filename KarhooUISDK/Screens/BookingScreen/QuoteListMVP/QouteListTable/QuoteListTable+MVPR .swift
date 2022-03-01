@@ -1,5 +1,5 @@
 //  
-//  NewQuoteList+MVPR .swift
+//  QuoteListTable+MVPR .swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -8,11 +8,11 @@
 
 import KarhooSDK
 
-protocol NewQuoteListViewController: BaseViewController {
+protocol QuoteListTableViewController: BaseViewController {
     func updateQuoteListState(_ state: QuoteListState)
 }
 
-protocol NewQuoteListPresenter: AnyObject {
+protocol QuoteListTablePresenter: AnyObject {
     var state: QuoteListState { get }
     var onQuoteListStateUpdated: ((QuoteListState) -> Void)? { get set }
     var onQuoteSelected: (Quote) -> Void { get }
@@ -22,5 +22,5 @@ protocol NewQuoteListPresenter: AnyObject {
     func updateQuoteListState(_ state: QuoteListState)
 }
 
-protocol NewQuoteListRouter {
+protocol QuoteListTableRouter {
 }

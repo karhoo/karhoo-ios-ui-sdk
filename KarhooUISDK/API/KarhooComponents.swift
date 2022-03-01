@@ -33,7 +33,7 @@ public class KarhooComponents: BookingScreenComponents {
         return addressBarView
     }
 
-    public func quoteList() -> QuoteListView {
+    public func quoteList() -> QuoteListViewController {
         let view = QuoteList.build()
         return view
     }

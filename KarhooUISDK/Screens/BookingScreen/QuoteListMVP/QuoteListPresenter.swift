@@ -47,7 +47,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
-    func screenWillAppear() {
+    func viewDidLoad() {
+    }
+
+    func viewWillAppear() {
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return

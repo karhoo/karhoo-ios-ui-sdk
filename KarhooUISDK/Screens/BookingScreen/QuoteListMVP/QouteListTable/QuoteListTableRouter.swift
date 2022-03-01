@@ -1,5 +1,5 @@
 //  
-//  NewQuoteListRouter.swift
+//  QuoteListTableRouter.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-struct KarhooNewQuoteListRouter: NewQuoteListRouter {
+struct KarhooQuoteListTableRouter: QuoteListTableRouter {
     private var viewController: BaseViewController
 
     init(viewController: BaseViewController) {

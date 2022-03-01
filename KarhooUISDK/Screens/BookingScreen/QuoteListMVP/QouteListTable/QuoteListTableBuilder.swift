@@ -1,5 +1,5 @@
 //  
-//  NewQuoteListBuilder.swift
+//  QuoteListTableBuilder.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -9,16 +9,16 @@
 import Foundation
 import KarhooSDK
 
-enum NewQuoteList {
+enum QuoteListTable {
     static func build(
         quotes: [Quote] = [],
         onQuoteSelected: @escaping (Quote) -> Void,
         onQuoteDetailsSelected: @escaping (Quote) -> Void
-    ) -> NewQuoteListViewController {
+    ) -> QuoteListTableViewController {
         
-        let viewController = KarhooNewQuoteListViewController()
-        let router = KarhooNewQuoteListRouter(viewController: viewController)
-        let presenter = KarhooNewQuoteListPresenter(
+        let viewController = KarhooQuoteListTableViewController()
+        let router = KarhooQuoteListTableRouter(viewController: viewController)
+        let presenter = KarhooQuoteListTablePresenter(
             router: router,
             quotes: quotes,
             onQuoteSelected: onQuoteSelected,

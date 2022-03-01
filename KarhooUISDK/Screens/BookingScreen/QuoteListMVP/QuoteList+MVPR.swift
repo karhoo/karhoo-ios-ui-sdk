@@ -25,19 +25,16 @@ public enum QuoteListState {
     }
 }
 
-public protocol QuoteListView: UIViewController {
-
-    func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
-
-//    var tableView: UITableView! { get }func didSelectQuote(_ quote: Quote)
-
+public protocol QuoteListViewController: UIViewController {
 }
 
 protocol QuoteListPresenter: AnyObject {
     
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
-    func screenWillAppear()
+    func viewDidLoad()
+
+    func viewWillAppear()
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 
@@ -49,13 +46,6 @@ protocol QuoteListPresenter: AnyObject {
 
     func didSelectCategory(_ category: QuoteCategory)
 }
-
-//public protocol QuoteListActions: AnyObject {
-//
-//    func didSelectQuote(_ quote: Quote)
-//
-//    func quotesAvailabilityDidUpdate(availability: Bool)
-//}
 
 protocol QuoteListRouter {
 
