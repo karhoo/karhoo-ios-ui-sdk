@@ -134,25 +134,24 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     private func updateViewQuotes() {
-        guard let fetchedQuotes = self.fetchedQuotes,
-              let selectedCategory = self.selectedQuoteCategory else {
-            return
-        }
+        guard let fetchedQuotes = self.fetchedQuotes else { return }
 
         let quotesToShow: [Quote]
         
         // TODO: Change filtering logic, not use names as a comparator
-        if selectedQuoteCategory?.categoryName == UITexts.Availability.allCategory {
+        if selectedQuoteCategory?.categoryName == UITexts.Availability.allCategory || selectedQuoteCategory == nil {
             quotesToShow = fetchedQuotes.all
         } else {
             quotesToShow = fetchedQuotes.quoteCategories
-                .filter { $0.categoryName == selectedCategory.categoryName }.first?.quotes ?? []
+                .filter {
+                    $0.categoryName == selectedQuoteCategory?.categoryName }
+                .first?.quotes ?? []
         }
         
-        let existQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
+        let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
         let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
         
-        if existQuotesInSelectedCategory {
+        if noQuotesInSelectedCategory {
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
         } else if noQuotesForSelectedParapeters {
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
