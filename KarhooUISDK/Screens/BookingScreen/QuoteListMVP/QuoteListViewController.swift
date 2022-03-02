@@ -125,7 +125,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         tableViewController.updateQuoteListState(.fetched(quotes: quotes))
         legalDisclaimerLabel.isHidden = false
         //TODO: Remove view from layout in future
-        emptyDataSetView.hide()
+//        emptyDataSetView.hide()
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
