@@ -425,4 +425,10 @@ extension KarhooBookingPresenter: BookingPresenter {
         default: break
         }
     }
+    
+    func didProvideJourneyInfo(_ info: JourneyInfo) {
+        //TODO: Create router for this
+        let qouteList = QuoteList.build(journeyInfo: info)
+        view?.present(qouteList, animated: true)
+    }
 }
