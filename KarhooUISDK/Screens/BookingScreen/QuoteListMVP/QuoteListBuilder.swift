@@ -18,6 +18,7 @@ enum QuoteList {
         let viewController = KarhooQuoteListViewController()
         let router = KarhooQuoteListRouter(viewController: viewController)
         let presenter = KarhooQuoteListPresenter(
+            journeyDetails: journeyDetails,
             router: router,
             journeyDetailsManager: KarhooJourneyDetailsManager.shared,
             quoteService: quoteService,

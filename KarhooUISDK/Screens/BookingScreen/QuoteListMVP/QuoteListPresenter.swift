@@ -27,7 +27,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     // MARK: - Lifecycle
 
-    init(
+    init(journeyDetails: JourneyDetails? = nil,
         router: QuoteListRouter,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
@@ -40,6 +40,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         self.quoteSorter = quoteSorter
         self.analytics = analytics
         journeyDetailsManager.add(observer: self)
+        
+        if let journeyDetails = journeyDetails {
+            journeyDetailsManager.reset(with: journeyDetails)
+        }
     }
 
     deinit {

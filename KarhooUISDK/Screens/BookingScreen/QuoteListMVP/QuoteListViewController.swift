@@ -93,15 +93,18 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupProperties() {
-        view = UIView().then { $0.backgroundColor = .red }
+        view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         forceLightMode()
     }
 
     private func setupHierarchy() {
+        view.addSubview(tableViewController.view)
     }
 
     private func setupLayout() {
 //        setUpView()
+        tableViewController.view.anchorToSuperview()
     }
     
     // MARK: - State handling
@@ -132,46 +135,46 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         tableViewController.updateQuoteListState(.empty(reason: reason))
     }
 
-    private func setUpView() {
-        view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10.0
-        view.layer.masksToBounds = true
-        
-        stackView = UIStackView()
-        stackView.accessibilityIdentifier = "stack_view"
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        view.addSubview(stackView)
-
-        quoteSortView = KarhooQuoteSortView()
-        quoteSortView?.set(actions: self)
-        stackView.addArrangedSubview(quoteSortView)
-        
-        quoteCategoryBarView = KarhooQuoteCategoryBarView()
-        quoteCategoryBarView?.set(actions: self)
-        quoteCategoryBarView.isHidden = true
-        stackView.addArrangedSubview(quoteCategoryBarView)
-        
-        emptyDataSetView = QuoteListEmptyDataSetView()
-        emptyDataSetView.hide()
-        stackView.addArrangedSubview(emptyDataSetView)
-
-        tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        loadingView = LoadingView()
-        loadingView.set(backgroundColor: .clear)
-        loadingView.set(activityIndicatorColor: KarhooUI.colors.darkGrey)
-        view.addSubview(loadingView)
-        view.bringSubviewToFront(loadingView)
-
-        setupLegalDisclaimerLabel()
-        setupNestedTableViewController()
-
-        view.setNeedsUpdateConstraints()
-    }
+//    private func setUpView() {
+//        view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = .white
+//        view.layer.cornerRadius = 10.0
+//        view.layer.masksToBounds = true
+//
+//        stackView = UIStackView()
+//        stackView.accessibilityIdentifier = "stack_view"
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.axis = .vertical
+//        view.addSubview(stackView)
+//
+//        quoteSortView = KarhooQuoteSortView()
+//        quoteSortView?.set(actions: self)
+//        stackView.addArrangedSubview(quoteSortView)
+//
+//        quoteCategoryBarView = KarhooQuoteCategoryBarView()
+//        quoteCategoryBarView?.set(actions: self)
+//        quoteCategoryBarView.isHidden = true
+//        stackView.addArrangedSubview(quoteCategoryBarView)
+//
+//        emptyDataSetView = QuoteListEmptyDataSetView()
+//        emptyDataSetView.hide()
+//        stackView.addArrangedSubview(emptyDataSetView)
+//
+//        tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        loadingView = LoadingView()
+//        loadingView.set(backgroundColor: .clear)
+//        loadingView.set(activityIndicatorColor: KarhooUI.colors.darkGrey)
+//        view.addSubview(loadingView)
+//        view.bringSubviewToFront(loadingView)
+//
+//        setupLegalDisclaimerLabel()
+//        setupNestedTableViewController()
+//
+//        view.setNeedsUpdateConstraints()
+//    }
 
     private func setupNestedTableViewController() {
         tableViewController.loadViewIfNeeded()
