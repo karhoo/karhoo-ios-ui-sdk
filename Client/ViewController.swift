@@ -207,14 +207,20 @@ class ViewController: UIViewController {
 //                            phoneNumber: "+15005550006",
 //                            locale: "en")
 
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
-                                                                    passengerDetails: passangerDetails,
-                                                                    callback: { [weak self] result in
-                                                                        self?.handleBookingScreenResult(result: result)
-                                                                    }) as? BookingScreen
-        self.present(booking!,
-                     animated: true,
-                     completion: nil)
+        let booking = KarhooUI().screens().booking()
+            .buildBookingScreen(
+                journeyInfo: journeyInfo,
+                passengerDetails: passangerDetails,
+                callback: { [weak self] result in
+                    self?.handleBookingScreenResult(result: result)
+                }
+            )
+        
+        self.present(
+            booking,
+            animated: true,
+            completion: nil
+        )
     }
     
     private func handleBookingScreenResult(result: ScreenResult<BookingScreenResult>) {

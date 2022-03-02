@@ -334,7 +334,7 @@ extension KarhooBookingViewController: NavigationBarActions {
 
     func rightButtonPressed() {
 //        openRidesList(presentationStyle: nil)
-        show(quoteListViewController, sender: nil)
+        show(QuoteList.build(), sender: nil)
     }
 
     func leftButtonPressed() {
@@ -391,6 +391,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         let bookingPresenter = KarhooBookingPresenter(callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
+        /**
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(hostViewController: bookingViewController,
@@ -410,5 +411,10 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             bookingViewController.modalPresentationStyle = .fullScreen
             return bookingViewController
         }
+         */
+        let navigationController = UINavigationController(rootViewController: bookingViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
+        navigationController.modalPresentationStyle = .fullScreen
+        return navigationController
     }
 }

@@ -77,6 +77,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     func setupBinding(_ presenter: QuoteListPresenter) {
         self.presenter = presenter
+        loadViewIfNeeded()
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
@@ -91,6 +92,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupProperties() {
+        view = UIView()
         forceLightMode()
     }
 
@@ -98,6 +100,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupLayout() {
+        setUpView()
     }
     
     // MARK: - State handling
