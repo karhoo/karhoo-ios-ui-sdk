@@ -151,13 +151,16 @@ final class KarhooBookingPresenter {
 // MARK: - BookingDetailsObserver
 extension KarhooBookingPresenter: JourneyDetailsObserver {
     func journeyDetailsChanged(details: JourneyDetails?) {
-        if details?.originLocationDetails != nil,
-            details?.destinationLocationDetails != nil {
-            view?.showQuoteList()
-        } else {
-            view?.hideQuoteList()
-            view?.setMapPadding(bottomPaddingEnabled: false)
-        }
+        guard let details = details,
+            details.originLocationDetails != nil,
+            details.destinationLocationDetails != nil
+        else { return }
+            didProvideJourneyDetails(details)
+//            view?.showQuoteList()
+//        } else {
+//            view?.hideQuoteList()
+//            view?.setMapPadding(bottomPaddingEnabled: false)
+//        }
 
 //        view?.quotesAvailabilityDidUpdate(availability: true)
     }
@@ -424,5 +427,11 @@ extension KarhooBookingPresenter: BookingPresenter {
             populate(with: details)
         default: break
         }
+    }
+    
+    func didProvideJourneyDetails(_ details: JourneyDetails) {
+        //TODO: Create router for this
+        let qouteList = QuoteList.build(journeyDetails: details)
+        view?.present(qouteList, animated: true)
     }
 }

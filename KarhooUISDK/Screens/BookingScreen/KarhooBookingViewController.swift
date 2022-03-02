@@ -18,26 +18,26 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
-    private var quoteListViewController = KarhooUI.components.quoteList()
+//    private var quoteListViewController = KarhooUI.components.quoteList()
     private var quoteListPanelVC: FloatingPanelController?
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
     private let grabberTopPadding: CGFloat = 6.0
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
-    private let addressBarPresenter: AddressBarPresenter
+//    private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
     private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
 
     init(presenter: BookingPresenter,
-         addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
+//         addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
-        self.addressBarPresenter = addressBarPresenter
+//        self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
@@ -196,13 +196,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func showQuoteList() {
-        show(quoteListViewController, sender: nil)
-        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
-        setMapPadding(bottomPaddingEnabled: true)
+//        show(quoteListViewController, sender: nil)
+//        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
+//        setMapPadding(bottomPaddingEnabled: true)
     }
 
     func hideQuoteList() {
-//        quoteListPanelVC?.removePanelFromParent(animated: true)
+////        quoteListPanelVC?.removePanelFromParent(animated: true)
     }
 
     func reset() {
@@ -361,7 +361,7 @@ extension KarhooBookingViewController: BookingScreen {
     }
 
     func openQuotesList(_ journeyDetails: JourneyDetails) {
-        show(quoteListViewController, sender: nil)
+//        show(quoteListViewController, sender: nil)
     }
 }
 
