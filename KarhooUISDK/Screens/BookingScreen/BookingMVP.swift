@@ -80,7 +80,7 @@ protocol BookingPresenter {
     
     func showRideDetailsView(trip: TripInfo)
     
-    func didProvideJourneyInfo(_ info: JourneyInfo)
+    func didProvideJourneyDetails(_ details: JourneyDetails)
 }
 
 public enum BookingScreenResult {

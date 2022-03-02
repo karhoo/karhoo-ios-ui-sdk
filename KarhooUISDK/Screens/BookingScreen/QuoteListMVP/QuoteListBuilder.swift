@@ -13,7 +13,7 @@ enum QuoteList {
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        journeyInfo: JourneyInfo
+        journeyDetails: JourneyDetails
     ) -> QuoteListViewController {
         let viewController = KarhooQuoteListViewController()
         let router = KarhooQuoteListRouter(viewController: viewController)
