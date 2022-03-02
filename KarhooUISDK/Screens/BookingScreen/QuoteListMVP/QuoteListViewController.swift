@@ -70,6 +70,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         presenter?.viewWillAppear()
     }
 
@@ -92,7 +93,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupProperties() {
-        view = UIView()
+        view = UIView().then { $0.backgroundColor = .red }
         forceLightMode()
     }
 
@@ -100,7 +101,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupLayout() {
-        setUpView()
+//        setUpView()
     }
     
     // MARK: - State handling
@@ -184,7 +185,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     override func updateViewConstraints() {
         if !didSetupConstraints {
-
+/**
             let stackConstraints: [NSLayoutConstraint] = [stackView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                                          constant: 16.0),
                  stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -211,6 +212,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             _ = loadingConstraints.map { $0.isActive = true }
             
             didSetupConstraints = true
+ */
         }
         
         super.updateViewConstraints()

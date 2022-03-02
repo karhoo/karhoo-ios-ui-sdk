@@ -10,10 +10,10 @@ import KarhooSDK
 
 enum QuoteList {
     static func build(
+        journeyDetails: JourneyDetails? = nil,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        journeyDetails: JourneyDetails
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) -> QuoteListViewController {
         let viewController = KarhooQuoteListViewController()
         let router = KarhooQuoteListRouter(viewController: viewController)

@@ -334,7 +334,7 @@ extension KarhooBookingViewController: NavigationBarActions {
 
     func rightButtonPressed() {
 //        openRidesList(presentationStyle: nil)
-        show(QuoteList.build(), sender: nil)
+        push(QuoteList.build())
     }
 
     func leftButtonPressed() {

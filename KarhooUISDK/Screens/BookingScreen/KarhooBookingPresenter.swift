@@ -431,7 +431,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
         //TODO: Create router for this
-        let qouteList = QuoteList.build(journeyDetails: details)
-        view?.present(qouteList, animated: true)
+        let quoteList = QuoteList.build(journeyDetails: details)
+        view?.push(quoteList)
     }
 }
