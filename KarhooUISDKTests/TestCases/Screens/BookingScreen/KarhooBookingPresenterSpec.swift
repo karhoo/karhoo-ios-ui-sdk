@@ -90,6 +90,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertTrue(mockAppAnalytics.bookingScreenOpenedCalled)
     }
 
+    /** Update once new QuoteList is developed
     /**
      * Given: Booking status updates
      * When: status is nil
@@ -104,7 +105,8 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertTrue(mockBookingView.setMapPaddingCalled)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
-
+     */
+    /** Update once new QuoteList is developed
     /**
      * Given: Booking status updates
      * When: status is not nil
@@ -119,7 +121,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         XCTAssertTrue(mockBookingView.showQuoteListCalled)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
-
+     */
     /**
      * Given: Booking status updates
      * When: destination is nil
@@ -130,7 +132,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertFalse(mockBookingView.mapPaddingBottomPaddingEnabled!)
     }
-
+    /** Update once new QuoteList is developed
     /**
      * Given: Booking status updates
      * When: status is not nil
@@ -141,7 +143,7 @@ final class KarhooBookingPresenterSpec: XCTestCase {
         mockJourneyDetailsManager.triggerCallback(journeyDetails: mockJourneyDetails)
         XCTAssertTrue(mockBookingView.availabilityValueSet)
     }
-
+    */
     /**
      *  When:   Resetting booking status
      *  Then:   The bookingStatus should revert to its initial state

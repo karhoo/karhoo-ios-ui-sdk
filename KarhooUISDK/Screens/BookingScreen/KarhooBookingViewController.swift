@@ -103,7 +103,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
 
-        quoteListView.set(quoteListActions: self)
+//        quoteListView.set(quoteListActions: self)
     
         setupQuoteListPanel()
     }
@@ -146,7 +146,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mainPanelVC.surfaceView.backgroundColor = .clear
 
         mainPanelVC.set(contentViewController: quoteListView)
-        mainPanelVC.track(scrollView: quoteListView.tableView)
         setupGrabberHandle(forVC: mainPanelVC)
         quoteListPanelVC = mainPanelVC
     }
@@ -303,32 +302,32 @@ extension KarhooBookingViewController: TripAllocationActions {
 extension KarhooBookingViewController: QuoteCategoryBarActions {
 
     func didSelectCategory(_ category: QuoteCategory) {
-        quoteListView.didSelectQuoteCategory(category)
+//        quoteListView.didSelectQuoteCategory(category)
     }
 }
 
-extension KarhooBookingViewController: QuoteListActions {
-
-    func didSelectQuote(_ quote: Quote) {
-        hideQuoteList()
-        presenter.didSelectQuote(quote: quote)
-    }
-
-    func quotesAvailabilityDidUpdate(availability: Bool) {
-        if availability == false {
-            hideQuoteList()
-        }
-
-        showAvailabilityBar(!availability)
-    }
-    
-    private func showAvailabilityBar(_ show: Bool) {
-        bottomNotificationViewBottomConstraint.constant = show ? 0.0 : 150.0
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.view.layoutIfNeeded()
-        }
-    }
-}
+//extension KarhooBookingViewController: QuoteListActions {
+//
+//    func didSelectQuote(_ quote: Quote) {
+//        hideQuoteList()
+//        presenter.didSelectQuote(quote: quote)
+//    }
+//
+//    func quotesAvailabilityDidUpdate(availability: Bool) {
+//        if availability == false {
+//            hideQuoteList()
+//        }
+//
+//        showAvailabilityBar(!availability)
+//    }
+//    
+//    private func showAvailabilityBar(_ show: Bool) {
+//        bottomNotificationViewBottomConstraint.constant = show ? 0.0 : 150.0
+//        UIView.animate(withDuration: 0.3) { [weak self] in
+//            self?.view.layoutIfNeeded()
+//        }
+//    }
+//}
 
 extension KarhooBookingViewController: NavigationBarActions {
 

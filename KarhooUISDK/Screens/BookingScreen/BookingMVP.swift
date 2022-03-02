@@ -25,7 +25,7 @@ public protocol BookingScreen: BaseViewController {
 }
 
 /* internal interface for controlling booking screen */
-internal protocol BookingView: BookingScreen, QuoteListActions {
+internal protocol BookingView: BookingScreen {
 
     func reset()
 

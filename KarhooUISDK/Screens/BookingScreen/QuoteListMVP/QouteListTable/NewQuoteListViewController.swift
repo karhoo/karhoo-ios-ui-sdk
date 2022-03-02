@@ -54,7 +54,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         presenter.viewWillAppear()
     }
 
-    // MARK: - Setup business logic
+    // MARK: - Setup binding
 
     func setupBinding(_ presenter: NewQuoteListPresenter) {
         self.presenter = presenter
@@ -84,7 +84,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - State handling
 
-    private func handleState(_ state: NewQuoteList.State) {
+    private func handleState(_ state: QuoteListState) {
         switch state {
         case .loading:
             handleLoadingState()
@@ -121,7 +121,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - Scene Input methods
 
-    func updateQuoteListState(_ state: NewQuoteList.State) {
+    func updateQuoteListState(_ state: QuoteListState) {
         DispatchQueue.main.async { [weak self] in
             self?.presenter.updateQuoteListState(state)
         }
