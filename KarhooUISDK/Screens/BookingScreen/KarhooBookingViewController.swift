@@ -112,6 +112,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
         sideMenu?.hideMenu()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         mapView.set(userMarkerVisible: true)
     }
     

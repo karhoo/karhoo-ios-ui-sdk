@@ -432,6 +432,17 @@ extension KarhooBookingPresenter: BookingPresenter {
     func didProvideJourneyDetails(_ details: JourneyDetails) {
         //TODO: Create router for this
         let quoteList = QuoteList.build(journeyDetails: details)
+        
+        if #available(iOS 13.0, *) {
+            // navigation bar for ios 13+ configured in QuoteListViewController:setupNavigationBar() function
+        } else {
+            let backArrow = UIImage.uisdkImage("back_arrow")
+            let navigationBarColor = KarhooUI.colors.primary
+            view?.navigationController?.navigationBar.barTintColor = navigationBarColor
+            view?.navigationController?.navigationBar.backIndicatorImage = backArrow
+            view?.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
+            view?.navigationItem.title = ""
+        }
         view?.push(quoteList)
     }
 }

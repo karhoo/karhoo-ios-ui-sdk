@@ -70,10 +70,29 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        setupNavigationBar()
         presenter?.viewWillAppear()
     }
-
+    
+    // MARK: - Setup Navigation Bar
+    
+    private func setupNavigationBar(){
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: KarhooUI.colors.white]
+        // back button for iOS < 13 must be configured in "previous" view controller,
+        if #available(iOS 13.0, *) {
+            let backArrow = UIImage.uisdkImage("back_arrow")
+            let navigationBarColor = KarhooUI.colors.primary
+            navigationController?.navigationBar.backItem?.title = ""
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = navigationBarColor
+            appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        }
+    }
     // MARK: - Setup binding
 
     func setupBinding(_ presenter: QuoteListPresenter) {
@@ -110,6 +129,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     // MARK: - State handling
 
     private func handleStateUpdate(_ state: QuoteListState) {
+        setNavigationBarTitle(forState: state)
         switch state {
         case .loading:
             self.handleLoadingState()
@@ -133,6 +153,17 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     private func handleEmptyState(reason: QuoteListState.Error) {
         tableViewController.updateQuoteListState(.empty(reason: reason))
+    }
+    // TODO: Prepare and update values for all possible cases
+    private func setNavigationBarTitle(forState state: QuoteListState){
+        switch state {
+        case .loading:
+            navigationItem.title = "LOADING..."
+        case .fetched(let quotes):
+            navigationItem.title = "\(quotes.count) RESULTS"
+        case .empty(_):
+            navigationItem.title = "0 RESULTS"
+        }
     }
 
 //    private func setUpView() {
