@@ -8,7 +8,6 @@
 
 import UIKit
 import KarhooSDK
-import FloatingPanel
 import CoreLocation
 
 final class KarhooBookingViewController: UIViewController, BookingView {

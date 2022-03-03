@@ -6,7 +6,7 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import FloatingPanel
+//import FloatingPanel
 
 //final class QuoteListPanelLayout: FloatingPanelLayout {
 //    
