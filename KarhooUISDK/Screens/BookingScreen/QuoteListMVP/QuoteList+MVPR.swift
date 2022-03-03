@@ -50,7 +50,7 @@ protocol QuoteListPresenter: AnyObject {
 
 protocol QuoteListRouter {
 
-    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
+    func routeToQuote(_ quote: Quote)
 
     func routeToQuoteDetails(_ quote: Quote)
 }
