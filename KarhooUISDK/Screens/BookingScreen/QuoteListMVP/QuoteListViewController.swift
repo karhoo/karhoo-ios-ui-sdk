@@ -30,7 +30,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.textAlignment = .center
         $0.isHidden = true
         $0.font = KarhooUI.fonts.bodyRegular()
-        $0.textColor = KarhooUI.colors.medGrey
+        $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
     private var emptyDataSetView: QuoteListEmptyDataSetView!
@@ -93,7 +93,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupProperties() {
-        view = UIView().then { $0.backgroundColor = KarhooUI.colors.background1 }
+        view = UIView()
         forceLightMode()
     }
 
@@ -103,7 +103,12 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupLayout() {
-        tableViewController.view.anchorToSuperview()
+        tableViewController.view.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
     }
     
     // MARK: - State handling
