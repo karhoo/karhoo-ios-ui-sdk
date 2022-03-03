@@ -106,8 +106,6 @@ final class KarhooBookingPresenter {
         if let error = result.errorValue() {
             view?.show(error: error)
         }
-
-//        view?.showQuoteList()
     }
 
     private func rebookTrip(_ trip: TripInfo) {
@@ -115,7 +113,7 @@ final class KarhooBookingPresenter {
         journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
         populate(with: journeyDetails)
-        setViewMapPadding()
+//        setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
@@ -156,13 +154,6 @@ extension KarhooBookingPresenter: JourneyDetailsObserver {
             details.destinationLocationDetails != nil
         else { return }
             didProvideJourneyDetails(details)
-//            view?.showQuoteList()
-//        } else {
-//            view?.hideQuoteList()
-//            view?.setMapPadding(bottomPaddingEnabled: false)
-//        }
-
-//        view?.quotesAvailabilityDidUpdate(availability: true)
     }
 }
 
@@ -187,7 +178,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-        setViewMapPadding()
+//        setViewMapPadding()
         analytics.bookingScreenOpened()
     }
 
@@ -219,15 +210,15 @@ extension KarhooBookingPresenter: BookingPresenter {
         journeyDetailsManager.reset(with: journeyDetails)
     }
     
-    func setViewMapPadding() {
-        let journeyDetails = journeyDetailsManager.getJourneyDetails()
-        if journeyDetails?.originLocationDetails != nil,
-            journeyDetails?.destinationLocationDetails != nil {
-            view?.setMapPadding(bottomPaddingEnabled: true)
-        } else {
-            view?.setMapPadding(bottomPaddingEnabled: false)
-        }
-    }
+//    func setViewMapPadding() {
+//        let journeyDetails = journeyDetailsManager.getJourneyDetails()
+//        if journeyDetails?.originLocationDetails != nil,
+//            journeyDetails?.destinationLocationDetails != nil {
+//            view?.setMapPadding(bottomPaddingEnabled: true)
+//        } else {
+//            view?.setMapPadding(bottomPaddingEnabled: false)
+//        }
+//    }
 
     // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
@@ -310,8 +301,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     // MARK: Quotes
     func didSelectQuote(quote: Quote) {
-//        view?.hideQuoteList()
-
         guard let bookingDetails = getJourneyDetails() else {
             return
         }

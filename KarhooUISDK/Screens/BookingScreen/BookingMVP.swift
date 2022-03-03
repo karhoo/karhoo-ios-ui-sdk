@@ -37,7 +37,7 @@ internal protocol BookingView: BookingScreen {
 
     func hideAllocationScreen()
 
-    func setMapPadding(bottomPaddingEnabled: Bool)
+//    func setMapPadding(bottomPaddingEnabled: Bool)
 
     func set(leftNavigationButton: NavigationBarItemIcon)
 
