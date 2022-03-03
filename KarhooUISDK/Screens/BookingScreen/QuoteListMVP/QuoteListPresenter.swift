@@ -41,9 +41,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         self.analytics = analytics
         journeyDetailsManager.add(observer: self)
         
-        if let journeyDetails = journeyDetails {
-            journeyDetailsManager.reset(with: journeyDetails)
-        }
+//        if let journeyDetails = journeyDetails {
+//            journeyDetailsManager.reset(with: journeyDetails)
+//        }
     }
 
     deinit {

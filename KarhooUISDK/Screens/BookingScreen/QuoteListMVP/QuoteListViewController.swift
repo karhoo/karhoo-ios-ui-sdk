@@ -30,7 +30,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.textAlignment = .center
         $0.isHidden = true
         $0.font = KarhooUI.fonts.bodyRegular()
-        $0.textColor = KarhooUI.colors.medGrey
+        $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
     private var emptyDataSetView: QuoteListEmptyDataSetView!
