@@ -42,7 +42,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         journeyDetailsManager.add(observer: self)
         
         if let journeyDetails = journeyDetails {
-            journeyDetailsManager.reset(with: journeyDetails)
+//            journeyDetailsManager.reset(with: journeyDetails)
         }
     }
 
