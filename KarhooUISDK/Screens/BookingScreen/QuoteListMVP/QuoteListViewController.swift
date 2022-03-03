@@ -94,7 +94,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setupProperties() {
         view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         forceLightMode()
     }
 
@@ -103,8 +102,12 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupLayout() {
-//        setUpView()
-        tableViewController.view.anchorToSuperview()
+        tableViewController.view.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
     }
     
     // MARK: - State handling
