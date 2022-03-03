@@ -17,7 +17,7 @@ public struct KHQuoteListViewID {
 final class KarhooQuoteListViewController: UIViewController, BaseViewController, QuoteListViewController {
     
     // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
-    var tableView: UITableView!
+//    var tableView: UITableView!
     private var didSetupConstraints = false
     
 //    private weak var quoteListActions: QuoteListActions?
@@ -30,7 +30,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.textAlignment = .center
         $0.isHidden = true
         $0.font = KarhooUI.fonts.bodyRegular()
-        $0.textColor = KarhooUI.colors.medGrey
+        $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
     private var emptyDataSetView: QuoteListEmptyDataSetView!
@@ -113,17 +113,21 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setupProperties() {
         view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         forceLightMode()
     }
 
     private func setupHierarchy() {
         view.addSubview(tableViewController.view)
+        addChild(tableViewController)
     }
 
     private func setupLayout() {
-//        setUpView()
-        tableViewController.view.anchorToSuperview()
+        tableViewController.view.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
     }
     
     // MARK: - State handling
@@ -207,49 +211,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 //        view.setNeedsUpdateConstraints()
 //    }
 
-    private func setupNestedTableViewController() {
-        tableViewController.loadViewIfNeeded()
-        addChild(tableViewController)
-        stackView.addArrangedSubview(tableViewController.view)
-    }
-
     private func setupLegalDisclaimerLabel() {
         stackView.insertArrangedSubview(legalDisclaimerLabel, at: 0)
-    }
-    
-    override func updateViewConstraints() {
-        if !didSetupConstraints {
-/**
-            let stackConstraints: [NSLayoutConstraint] = [stackView.topAnchor.constraint(equalTo: view.topAnchor,
-                                                                                         constant: 16.0),
-                 stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                 stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                 stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)]
-            _ = stackConstraints.map { $0.priority = .defaultLow }
-            _ = stackConstraints.map { $0.isActive = true }
-            
-            legalDisclaimerLabel.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.View.smallRowHeight).isActive = true
-            
-            let quoteCategoryHeight: CGFloat = 65.0
-            _ = [quoteCategoryBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                 quoteCategoryBarView.heightAnchor.constraint(equalToConstant: quoteCategoryHeight),
-                 quoteCategoryBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)]
-                .map { $0.isActive = true }
-
-            let loadingConstraints: [NSLayoutConstraint] = [loadingView.topAnchor.constraint(equalTo: view.topAnchor,
-                                                                                             constant: 15.0),
-                 loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                 loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                 loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                 loadingView.heightAnchor.constraint(equalToConstant: 200.0)]
-            _ = loadingConstraints.map { $0.priority = .defaultLow }
-            _ = loadingConstraints.map { $0.isActive = true }
-            
-            didSetupConstraints = true
- */
-        }
-        
-        super.updateViewConstraints()
     }
     
 //    func set(quoteListActions: QuoteListActions) {
@@ -263,11 +226,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 //    }
     
     func showEmptyDataSetMessage(_ message: String) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.tableView.alpha = 0
-        }
-        legalDisclaimerLabel.isHidden = true
-        emptyDataSetView.show(emptyDataSetMessage: message)
     }
     
 //    func hideEmptyDataSetMessage() {
