@@ -334,8 +334,7 @@ extension KarhooBookingViewController: QuoteCategoryBarActions {
 extension KarhooBookingViewController: NavigationBarActions {
 
     func rightButtonPressed() {
-//        openRidesList(presentationStyle: nil)
-        push(QuoteList.build())
+        openRidesList(presentationStyle: nil)
     }
 
     func leftButtonPressed() {
