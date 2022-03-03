@@ -107,7 +107,7 @@ final class KarhooBookingPresenter {
             view?.show(error: error)
         }
 
-        view?.showQuoteList()
+//        view?.showQuoteList()
     }
 
     private func rebookTrip(_ trip: TripInfo) {
@@ -310,7 +310,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     // MARK: Quotes
     func didSelectQuote(quote: Quote) {
-        view?.hideQuoteList()
+//        view?.hideQuoteList()
 
         guard let bookingDetails = getJourneyDetails() else {
             return
