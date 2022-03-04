@@ -173,19 +173,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         tripAllocationView.dismissScreen()
     }
 
-//    func setMapPadding(bottomPaddingEnabled: Bool) {
-//        let margin: CGFloat = 10
-//        let extraPadding: CGFloat = 10
-//        let addressBarBottom = (addressBar.frame.maxY) + extraPadding * 2
-//        let bottomContainerTop: CGFloat = bottomPaddingEnabled ? (QuoteListPanelLayout.compactSize + extraPadding) : 0
-//        
-//        let padding = UIEdgeInsets(top: addressBarBottom,
-//                                   left: margin,
-//                                   bottom: bottomContainerTop,
-//                                   right: margin)
-//        mapView.set(padding: padding)
-//    }
-
     func set(sideMenu: SideMenu) {
         self.sideMenu = sideMenu
     }

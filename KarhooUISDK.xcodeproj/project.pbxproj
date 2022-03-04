@@ -66,12 +66,10 @@
 		09B30F692253986B007768CF /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B30F682253986B007768CF /* mockImage.png */; };
 		09C169B8227C8EFF00CF7E66 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169B7227C8EFF00CF7E66 /* AddressType.swift */; };
 		09C7649321DE665000CD81AB /* BookingScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7649221DE665000CD81AB /* BookingScreenBuilder.swift */; };
-		09C7659B21DE688100CD81AB /* QuoteListPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656121DE688000CD81AB /* QuoteListPanelLayout.swift */; };
 		09C7659C21DE688100CD81AB /* KarhooQuoteSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656321DE688000CD81AB /* KarhooQuoteSortView.swift */; };
 		09C7659F21DE688100CD81AB /* QuoteSortMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656921DE688000CD81AB /* QuoteSortMVP.swift */; };
 		09C765A021DE688100CD81AB /* QuoteList+MVPR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7656B21DE688000CD81AB /* QuoteList+MVPR.swift */; };
 		09C765A421DE688100CD81AB /* QuoteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7657021DE688000CD81AB /* QuoteListPresenter.swift */; };
-		09C765A521DE688100CD81AB /* KarhooGrabberHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7657121DE688000CD81AB /* KarhooGrabberHandleView.swift */; };
 		09C765A621DE688100CD81AB /* QuoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7657221DE688000CD81AB /* QuoteListViewController.swift */; };
 		09C765A821DE688100CD81AB /* QuoteListEmptyDataSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7657521DE688000CD81AB /* QuoteListEmptyDataSetView.swift */; };
 		09C765A921DE688100CD81AB /* QuoteCategoryBarMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7657721DE688000CD81AB /* QuoteCategoryBarMVP.swift */; };
@@ -696,12 +694,10 @@
 		09C169BB22819C1A00CF7E66 /* MockPickupOnlyStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPickupOnlyStrategy.swift; sourceTree = "<group>"; };
 		09C169BF2281B7C700CF7E66 /* BaseViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerSpec.swift; sourceTree = "<group>"; };
 		09C7649221DE665000CD81AB /* BookingScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingScreenBuilder.swift; sourceTree = "<group>"; };
-		09C7656121DE688000CD81AB /* QuoteListPanelLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListPanelLayout.swift; sourceTree = "<group>"; };
 		09C7656321DE688000CD81AB /* KarhooQuoteSortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteSortView.swift; sourceTree = "<group>"; };
 		09C7656921DE688000CD81AB /* QuoteSortMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteSortMVP.swift; sourceTree = "<group>"; };
 		09C7656B21DE688000CD81AB /* QuoteList+MVPR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuoteList+MVPR.swift"; sourceTree = "<group>"; };
 		09C7657021DE688000CD81AB /* QuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListPresenter.swift; sourceTree = "<group>"; };
-		09C7657121DE688000CD81AB /* KarhooGrabberHandleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooGrabberHandleView.swift; sourceTree = "<group>"; };
 		09C7657221DE688000CD81AB /* QuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListViewController.swift; sourceTree = "<group>"; };
 		09C7657521DE688000CD81AB /* QuoteListEmptyDataSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListEmptyDataSetView.swift; sourceTree = "<group>"; };
 		09C7657721DE688000CD81AB /* QuoteCategoryBarMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCategoryBarMVP.swift; sourceTree = "<group>"; };
@@ -1708,7 +1704,6 @@
 				09C7657321DE688000CD81AB /* EmptyDataSetView */,
 				09C7656D21DE688000CD81AB /* QuoteCell */,
 				09C7656221DE688000CD81AB /* QuoteSortMVP */,
-				51D400E727CD32BC00A5208F /* Helpers */,
 			);
 			path = QuoteListMVP;
 			sourceTree = "<group>";
@@ -2349,15 +2344,6 @@
 				51A1100B27AD511F00A54E76 /* CheckboxView.swift */,
 			);
 			path = Checkbox;
-			sourceTree = "<group>";
-		};
-		51D400E727CD32BC00A5208F /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				09C7657121DE688000CD81AB /* KarhooGrabberHandleView.swift */,
-				09C7656121DE688000CD81AB /* QuoteListPanelLayout.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5C1CD09F241A5D88004AFF7D /* TripDetails */ = {
@@ -3736,7 +3722,6 @@
 				407EC7B122CF564E00F24CFC /* NibLoadableView.swift in Sources */,
 				095A03D92333D17E007D805E /* BaseViewController.swift in Sources */,
 				7B34182027A8B24D00E2D49D /* KarhooLegalNoticeEmailComposer.swift in Sources */,
-				09C7659B21DE688100CD81AB /* QuoteListPanelLayout.swift in Sources */,
 				FC435F1F2211B40B00FB6BB5 /* RideDetailsStackButtonPresenter.swift in Sources */,
 				40FE0CED22D7D2D4003F65B5 /* RateButtonViewModel.swift in Sources */,
 				7B34183627AB152200E2D49D /* KarhooLegalNoticeLinkOpener.swift in Sources */,
@@ -4003,7 +3988,6 @@
 				0991067921B8291A00BD7E6F /* AddressMVP.swift in Sources */,
 				09C765AB21DE688100CD81AB /* KarhooQuoteCategoryBarView.swift in Sources */,
 				092A6D4F2265EDBA00A8DA5D /* KarhooUISDKErrorType.swift in Sources */,
-				09C765A521DE688100CD81AB /* KarhooGrabberHandleView.swift in Sources */,
 				6B5E25F326D672090017BFB3 /* PassengerDetailsViewController.swift in Sources */,
 				407EC7A622CF564E00F24CFC /* Attributes.swift in Sources */,
 				4038DF3A2444BAC40014539B /* Utils.swift in Sources */,

@@ -113,7 +113,6 @@ final class KarhooBookingPresenter {
         journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
         populate(with: journeyDetails)
-//        setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
@@ -178,7 +177,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-//        setViewMapPadding()
         analytics.bookingScreenOpened()
     }
 
@@ -209,16 +207,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     func populate(with journeyDetails: JourneyDetails) {
         journeyDetailsManager.reset(with: journeyDetails)
     }
-    
-//    func setViewMapPadding() {
-//        let journeyDetails = journeyDetailsManager.getJourneyDetails()
-//        if journeyDetails?.originLocationDetails != nil,
-//            journeyDetails?.destinationLocationDetails != nil {
-//            view?.setMapPadding(bottomPaddingEnabled: true)
-//        } else {
-//            view?.setMapPadding(bottomPaddingEnabled: false)
-//        }
-//    }
 
     // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
