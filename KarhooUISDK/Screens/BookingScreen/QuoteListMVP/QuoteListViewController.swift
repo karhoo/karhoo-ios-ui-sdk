@@ -15,27 +15,49 @@ public struct KHQuoteListViewID {
 }
 
 final class KarhooQuoteListViewController: UIViewController, BaseViewController, QuoteListViewController {
-    
-    // TODO: when refactoring KarhooQuoteListViewController remove this legacy tableView instance
-//    var tableView: UITableView!
-    private var didSetupConstraints = false
-    
-//    private weak var quoteListActions: QuoteListActions?
-    private var loadingView: LoadingView!
-    private var stackView: UIStackView!
-    private var quoteSortView: KarhooQuoteSortView!
-    private var legalDisclaimerLabel = UILabel().then {
+
+    // MARK: - Properties
+
+    private var presenter: QuoteListPresenter!
+
+    // MARK: - Header views
+
+    private lazy var headerContainerView = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private lazy var tableHeaderStackView = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.alignment = .fill
+        $0.spacing = UIConstants.Spacing.standard
+    }
+    private var headerViews: [UIView] {
+        [
+            addressPickerView,
+            quoteCategoryBarView,
+            quoteSortView,
+            legalDisclaimerLabel
+        ]
+    }
+    private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private lazy var quoteSortView = KarhooQuoteSortView().then {
+        $0.set(actions: self)
+    }
+    private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
+        $0.set(actions: self)
+    }
+    private lazy var legalDisclaimerLabel = UILabel().then {
         $0.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
         $0.textAlignment = .center
-        $0.isHidden = true
         $0.font = KarhooUI.fonts.bodyRegular()
         $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
-    private var emptyDataSetView: QuoteListEmptyDataSetView!
-    private var quoteCategoryBarView: KarhooQuoteCategoryBarView!
-    private var presenter: QuoteListPresenter!
 
     // MARK: - Nested view controllers
 
@@ -101,6 +123,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
+        presenter.onCategoriesUpdated = { [weak self] categories in
+            self?.handleCategoriesUpdated(categories)
+        }
     }
 
     // MARK: - Setup view
@@ -128,6 +153,16 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor
         )
+        headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
+        headerContainerView.addSubview(tableHeaderStackView)
+        tableHeaderStackView.anchorToSuperview(
+            paddingTop: UIConstants.Spacing.medium,
+            paddingLeading: UIConstants.Spacing.medium,
+            paddingTrailing: UIConstants.Spacing.medium,
+            paddingBottom: UIConstants.Spacing.small
+        )
+        tableViewController.assignHeaderView(headerContainerView)
+        headerContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
     // MARK: - State handling
@@ -137,6 +172,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         switch state {
         case .loading:
             self.handleLoadingState()
+        case .fetching(quotes: let quotes):
+            self.handleFetchingState(quotes: quotes)
         case .fetched(quotes: let quotes):
             self.handleFetchedState(quotes: quotes)
         case .empty(reason: let reason):
@@ -147,12 +184,15 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func handleLoadingState() {
         tableViewController.updateQuoteListState(.loading)
     }
-    
+
+    private func handleFetchingState(quotes: [Quote]) {
+        tableViewController.updateQuoteListState(.fetching(quotes: quotes))
+        legalDisclaimerLabel.isHidden = false
+    }
+
     private func handleFetchedState(quotes: [Quote]) {
         tableViewController.updateQuoteListState(.fetched(quotes: quotes))
         legalDisclaimerLabel.isHidden = false
-        //TODO: Remove view from layout in future
-//        emptyDataSetView.hide()
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
@@ -170,110 +210,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         }
     }
 
-//    private func setUpView() {
-//        view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = .white
-//        view.layer.cornerRadius = 10.0
-//        view.layer.masksToBounds = true
-//
-//        stackView = UIStackView()
-//        stackView.accessibilityIdentifier = "stack_view"
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.axis = .vertical
-//        view.addSubview(stackView)
-//
-//        quoteSortView = KarhooQuoteSortView()
-//        quoteSortView?.set(actions: self)
-//        stackView.addArrangedSubview(quoteSortView)
-//
-//        quoteCategoryBarView = KarhooQuoteCategoryBarView()
-//        quoteCategoryBarView?.set(actions: self)
-//        quoteCategoryBarView.isHidden = true
-//        stackView.addArrangedSubview(quoteCategoryBarView)
-//
-//        emptyDataSetView = QuoteListEmptyDataSetView()
-//        emptyDataSetView.hide()
-//        stackView.addArrangedSubview(emptyDataSetView)
-//
-//        tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        loadingView = LoadingView()
-//        loadingView.set(backgroundColor: .clear)
-//        loadingView.set(activityIndicatorColor: KarhooUI.colors.darkGrey)
-//        view.addSubview(loadingView)
-//        view.bringSubviewToFront(loadingView)
-//
-//        setupLegalDisclaimerLabel()
-//        setupNestedTableViewController()
-//
-//        view.setNeedsUpdateConstraints()
-//    }
+    // MARK: - Categories handling
 
-    private func setupLegalDisclaimerLabel() {
-        stackView.insertArrangedSubview(legalDisclaimerLabel, at: 0)
-    }
-    
-//    func set(quoteListActions: QuoteListActions) {
-//        self.quoteListActions = quoteListActions
-//    }
-    
-//    func showQuotes(_ quotes: [Quote], animated: Bool) {
-//        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
-//        legalDisclaimerLabel.isHidden = false
-//        emptyDataSetView.hide()
-//    }
-    
-    func showEmptyDataSetMessage(_ message: String) {
-    }
-    
-//    func hideEmptyDataSetMessage() {
-//        emptyDataSetView.hide()
-//    }
-    
-//    func didSelectQuoteCategory(_ category: QuoteCategory) {
-//        presenter?.selectedQuoteCategory(category)
-//    }
-    
-    func categoriesChanged(categories: [QuoteCategory], quoteListId: String?) {
-        quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
-    }
-
-//    func toggleCategoryFilteringControls(show: Bool) {
-//        quoteSortView.alpha = show ? 1 : 0
-//        quoteCategoryBarView.isHidden = !show
-//    }
-    
-//    func hideLoadingView() {
-//        loadingView.hide()
-//    }
-//
-//    func showLoadingView() {
-//        loadingView.show()
-//        emptyDataSetView.hide()
-//        legalDisclaimerLabel.isHidden = true
-//        view.layoutIfNeeded()
-//        view.setNeedsLayout()
-//    }
-
-//    func quotesAvailabilityDidUpdate(availability: Bool) {
-//        quoteListActions?.quotesAvailabilityDidUpdate(availability: availability)
-//    }
-
-    func showQuoteSorter() {
-        quoteSortView.isHidden = false
-    }
-    
-    func hideQuoteSorter() {
-        quoteSortView.isHidden = true
-    }
-    
-    func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?) {
-        quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
+    private func handleCategoriesUpdated(_ categories: [QuoteCategory]) {
+        quoteCategoryBarView.set(categories: categories)
     }
 }
 
+// MARK: - QuoteSortViewActions
 extension KarhooQuoteListViewController: QuoteSortViewActions {
     
     func didSelectQuoteOrder(_ order: QuoteSortOrder) {
@@ -281,6 +225,7 @@ extension KarhooQuoteListViewController: QuoteSortViewActions {
     }
 }
 
+// MARK: - QuoteCategoryBarActions
 extension KarhooQuoteListViewController: QuoteCategoryBarActions {
     
     func didSelectCategory(_ category: QuoteCategory) {

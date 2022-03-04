@@ -17,12 +17,16 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     // MARK: - Views
 
-    private lazy var activityIndicator = UIActivityIndicatorView()
+    private lazy var activityIndicator = UIActivityIndicatorView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConstants.Dimension.View.loadingViewHeight)
+        $0.backgroundColor = view.backgroundColor
+        $0.color = KarhooUI.colors.accent
+    }
     private lazy var tableView = UITableView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
-        $0.separatorStyle = .singleLine
+        $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
         $0.tableFooterView = activityIndicator
@@ -40,6 +44,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     override func loadView() {
         view = UIView()
+        view.backgroundColor = KarhooUI.colors.background1
         setupView()
     }
 
@@ -89,8 +94,10 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         switch state {
         case .loading:
             handleLoadingState()
+        case .fetching:
+            handleFetchingState()
         case .fetched:
-            handleFetchState()
+            handleFetchedState()
         case .empty:
             handleEmptyState()
         }
@@ -101,7 +108,11 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         activityIndicator.startAnimating()
     }
 
-    private func handleFetchState() {
+    private func handleFetchingState() {
+        activityIndicator.startAnimating()
+    }
+
+    private func handleFetchedState() {
         activityIndicator.stopAnimating()
     }
 
@@ -115,7 +126,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         switch presenter.state {
         case .loading, .empty:
             return []
-        case .fetched(let quotes):
+        case .fetching(let quotes), .fetched(let quotes):
             return quotes
         }
     }
@@ -126,6 +137,10 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         DispatchQueue.main.async { [weak self] in
             self?.presenter.updateQuoteListState(state)
         }
+    }
+
+    func assignHeaderView(_ view: UIView) {
+        tableView.tableHeaderView = view
     }
 }
 
