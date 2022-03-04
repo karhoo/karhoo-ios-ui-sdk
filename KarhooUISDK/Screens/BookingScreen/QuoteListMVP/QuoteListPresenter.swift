@@ -23,11 +23,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
+    var onCategoriesUpdated: (([QuoteCategory]) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
 
-    init(journeyDetails: JourneyDetails? = nil,
+    init(
+        journeyDetails: JourneyDetails? = nil,
         router: QuoteListRouter,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
@@ -162,7 +164,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
-            onStateUpdated?(.fetched(quotes: sortedQuotes))
+            onCategoriesUpdated?(fetchedQuotes.quoteCategories)
+            
+            let status: QuoteListState = fetchedQuotes.status == .completed ? .fetched(quotes: sortedQuotes) : .fetching(quotes: sortedQuotes)
+            onStateUpdated?(status)
         }
         handleQuoteStatus()
     }

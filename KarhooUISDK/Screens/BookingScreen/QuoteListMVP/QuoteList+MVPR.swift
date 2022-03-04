@@ -10,6 +10,7 @@ import KarhooSDK
 
 public enum QuoteListState {
     case loading
+    case fetching(quotes: [Quote])
     case fetched(quotes: [Quote])
     case empty(reason: Error)
 
@@ -29,6 +30,8 @@ public protocol QuoteListViewController: UIViewController {
 
 protocol QuoteListPresenter: AnyObject {
     
+    var onCategoriesUpdated: (([QuoteCategory]) -> Void)? { get set }
+
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
     func viewDidLoad()
