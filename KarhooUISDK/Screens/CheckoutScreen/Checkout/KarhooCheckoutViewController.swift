@@ -34,7 +34,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: - Properties
 
     private var didSetupConstraints = false
-    private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
@@ -289,7 +288,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        container.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         backButton.anchor(top: container.topAnchor,
                           leading: container.leadingAnchor,
@@ -297,8 +296,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                           paddingBottom: standardSpacing,
                           width: standardButtonSize * 2)
         
-        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
-        containerBottomConstraint.isActive = true
         baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
 
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
@@ -429,7 +426,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
 
     func showCheckoutView(_ show: Bool) {
-        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
+        // TODO: implement navigation to previous screen if needed
+        /*containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
         UIView.animate(
             withDuration: drawAnimationTime,
             animations: { [weak self] in
@@ -441,7 +439,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                     self?.dismiss(animated: false, completion: nil)
                 }
             }
-        )
+        )*/
     }
 
     // MARK: Data management
