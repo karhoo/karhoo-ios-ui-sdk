@@ -23,6 +23,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
+    let onQuoteSelected: (Quote) -> Void
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
@@ -32,13 +33,15 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        onQuoteSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
         self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
         self.quoteSorter = quoteSorter
         self.analytics = analytics
+        self.onQuoteSelected = onQuoteSelected
         journeyDetailsManager.add(observer: self)
     }
 
@@ -68,7 +71,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuote(_ quote: Quote) {
-        router.routeToQuote(quote)
+//        router.routeToQuote(quote)
+        onQuoteSelected(quote)
     }
 
     func didSelectQuoteDetails(_ quote: Quote) {

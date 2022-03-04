@@ -48,13 +48,6 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectCategory(_ category: QuoteCategory)
 }
 
-//public protocol QuoteListActions: AnyObject {
-//
-//    func didSelectQuote(_ quote: Quote)
-//
-//    func quotesAvailabilityDidUpdate(availability: Bool)
-//}
-
 protocol QuoteListRouter {
 
     func routeToQuote(_ quote: Quote)

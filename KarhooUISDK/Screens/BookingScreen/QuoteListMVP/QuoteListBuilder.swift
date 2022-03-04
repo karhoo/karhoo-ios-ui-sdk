@@ -12,7 +12,8 @@ enum QuoteList {
     static func build(
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        onQuoteSelected: @escaping (Quote) -> Void
     ) -> QuoteListView {
         let viewController = KarhooQuoteListViewController()
         let router = KarhooQuoteListRouter(viewController: viewController)
@@ -21,7 +22,8 @@ enum QuoteList {
             journeyDetailsManager: KarhooJourneyDetailsManager.shared,
             quoteService: quoteService,
             quoteSorter: quoteSorter,
-            analytics: analytics
+            analytics: analytics,
+            onQuoteSelected: onQuoteSelected
         )
 
         viewController.setupBinding(presenter)

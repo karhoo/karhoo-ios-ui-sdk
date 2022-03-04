@@ -33,8 +33,8 @@ public class KarhooComponents: BookingScreenComponents {
         return addressBarView
     }
 
-    public func quoteList() -> QuoteListView {
-        let view = QuoteList.build()
+    public func quoteList(onQuoteSelected: @escaping (Quote) -> Void) -> QuoteListView {
+        let view = QuoteList.build(onQuoteSelected: onQuoteSelected)
         return view
     }
     

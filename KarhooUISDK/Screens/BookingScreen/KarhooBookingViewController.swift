@@ -18,7 +18,10 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
-    private var quoteListView = KarhooUI.components.quoteList()
+    private lazy var quoteListView = KarhooUI.components.quoteList(onQuoteSelected: { [weak self] in
+        self?.hideQuoteList()
+        self?.presenter.didSelectQuote(quote: $0)
+    })
     private var quoteListPanelVC: FloatingPanelController?
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
@@ -305,29 +308,6 @@ extension KarhooBookingViewController: QuoteCategoryBarActions {
 //        quoteListView.didSelectQuoteCategory(category)
     }
 }
-
-//extension KarhooBookingViewController: QuoteListActions {
-//
-//    func didSelectQuote(_ quote: Quote) {
-//        hideQuoteList()
-//        presenter.didSelectQuote(quote: quote)
-//    }
-//
-//    func quotesAvailabilityDidUpdate(availability: Bool) {
-//        if availability == false {
-//            hideQuoteList()
-//        }
-//
-//        showAvailabilityBar(!availability)
-//    }
-//    
-//    private func showAvailabilityBar(_ show: Bool) {
-//        bottomNotificationViewBottomConstraint.constant = show ? 0.0 : 150.0
-//        UIView.animate(withDuration: 0.3) { [weak self] in
-//            self?.view.layoutIfNeeded()
-//        }
-//    }
-//}
 
 extension KarhooBookingViewController: NavigationBarActions {
 
