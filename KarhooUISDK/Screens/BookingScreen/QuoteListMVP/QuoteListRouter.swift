@@ -16,7 +16,29 @@ struct KarhooQuoteListRouter: QuoteListRouter {
         self.viewController = viewController
     }
 
-    func routeToQuote(_ quote: Quote) {
+    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails) {
+    let checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout()
+        
+        let checkoutView = checkoutScreenBuilder
+            .buildCheckoutScreen(
+                quote: quote,
+                journeyDetails: journeyDetails,
+                bookingMetadata: KarhooUISDKConfigurationProvider.configuration.bookingMetadata,
+                callback: {_ in
+//                TODO: Add ecpected bahaviour, previously implemented in KarhooBookingPresenter.bookingRequestCompleted
+                    return}
+               /* callback: { [weak self] result in
+                   self?.view?.dismiss(animated: false, completion: {
+                        self?.bookingRequestCompleted(
+                            result: result,
+                            quote: quote,
+                            details: journeyDetails
+                        )
+                    })
+                }*/
+            )
+        viewController.navigationController?.setNavigationBarHidden(true, animated: false)
+        viewController.push(checkoutView)
         // TODO: finish implementation
     }
 

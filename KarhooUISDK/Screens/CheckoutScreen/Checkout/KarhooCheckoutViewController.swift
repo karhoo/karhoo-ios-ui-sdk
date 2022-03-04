@@ -524,6 +524,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     @objc private func backButtonPressed() {
-        presenter.didPressClose()
+        navigationController?.popViewController(animated: true)
     }
 }
