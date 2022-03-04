@@ -37,12 +37,6 @@ internal protocol BookingView: BookingScreen {
 
     func hideAllocationScreen()
 
-    func showQuoteList()
-
-    func hideQuoteList()
-
-    func setMapPadding(bottomPaddingEnabled: Bool)
-
     func set(leftNavigationButton: NavigationBarItemIcon)
 
     func set(sideMenu: SideMenu)
@@ -87,4 +81,8 @@ public enum BookingScreenResult {
     case tripAllocated(tripInfo: TripInfo)
     case prebookConfirmed(tripInfo: TripInfo, prebookConfirmationAction: PrebookConfirmationAction)
     case bookingFailed(error: KarhooError)
+}
+
+protocol BookingRouter {
+    func routeToQuoteList(from sender: BaseViewController, details: JourneyDetails)
 }

@@ -27,9 +27,11 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
+    private let router: BookingRouter
 
     // MARK: - Init
-    init(journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
+    init(router: BookingRouter,
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -44,6 +46,7 @@ final class KarhooBookingPresenter {
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
          urlOpener: URLOpener = KarhooURLOpener(),
          paymentService: PaymentService = Karhoo.getPaymentService()) {
+        self.router = router
         self.userService = userService
         self.analytics = analytics
         self.journeyDetailsManager = journeyDetailsManager
@@ -106,8 +109,6 @@ final class KarhooBookingPresenter {
         if let error = result.errorValue() {
             view?.show(error: error)
         }
-
-        view?.showQuoteList()
     }
 
     private func rebookTrip(_ trip: TripInfo) {
@@ -115,7 +116,6 @@ final class KarhooBookingPresenter {
         journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
         populate(with: journeyDetails)
-        setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
@@ -156,13 +156,6 @@ extension KarhooBookingPresenter: JourneyDetailsObserver {
             details.destinationLocationDetails != nil
         else { return }
             didProvideJourneyDetails(details)
-//            view?.showQuoteList()
-//        } else {
-//            view?.hideQuoteList()
-//            view?.setMapPadding(bottomPaddingEnabled: false)
-//        }
-
-//        view?.quotesAvailabilityDidUpdate(availability: true)
     }
 }
 
@@ -187,7 +180,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-        setViewMapPadding()
         analytics.bookingScreenOpened()
     }
 
@@ -217,16 +209,6 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func populate(with journeyDetails: JourneyDetails) {
         journeyDetailsManager.reset(with: journeyDetails)
-    }
-    
-    func setViewMapPadding() {
-        let journeyDetails = journeyDetailsManager.getJourneyDetails()
-        if journeyDetails?.originLocationDetails != nil,
-            journeyDetails?.destinationLocationDetails != nil {
-            view?.setMapPadding(bottomPaddingEnabled: true)
-        } else {
-            view?.setMapPadding(bottomPaddingEnabled: false)
-        }
     }
 
     // MARK: Trip cancellation
@@ -310,8 +292,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     // MARK: Quotes
     func didSelectQuote(quote: Quote) {
-        view?.hideQuoteList()
-
         guard let bookingDetails = getJourneyDetails() else {
             return
         }
@@ -430,20 +410,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        //TODO: Create router for this
-        let quoteList = QuoteList.build(journeyDetails: details)
-        if view?.navigationController?.topViewController == view {
-            if #available(iOS 13.0, *) {
-                // navigation bar for ios 13+ configured in QuoteListViewController:setupNavigationBar() function
-            } else {
-                let backArrow = UIImage.uisdkImage("back_arrow")
-                let navigationBarColor = KarhooUI.colors.primary
-                view?.navigationController?.navigationBar.barTintColor = navigationBarColor
-                view?.navigationController?.navigationBar.backIndicatorImage = backArrow
-                view?.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
-                view?.navigationItem.title = ""
-            }
-            view?.push(quoteList)
-        }
+        guard let view = view else { return }
+        router.routeToQuoteList(from: view, details: details)
     }
 }
