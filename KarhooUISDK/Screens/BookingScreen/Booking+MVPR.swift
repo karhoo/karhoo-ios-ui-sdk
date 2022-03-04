@@ -84,3 +84,7 @@ public enum BookingScreenResult {
     case prebookConfirmed(tripInfo: TripInfo, prebookConfirmationAction: PrebookConfirmationAction)
     case bookingFailed(error: KarhooError)
 }
+
+protocol BookingRouter {
+    func routeToQuoteList(from sender: BaseViewController, details: JourneyDetails)
+}

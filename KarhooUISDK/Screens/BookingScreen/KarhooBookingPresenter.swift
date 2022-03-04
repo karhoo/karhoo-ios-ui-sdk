@@ -27,9 +27,11 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
+    private let router: BookingRouter
 
     // MARK: - Init
-    init(journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
+    init(router: BookingRouter,
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -44,6 +46,7 @@ final class KarhooBookingPresenter {
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
          urlOpener: URLOpener = KarhooURLOpener(),
          paymentService: PaymentService = Karhoo.getPaymentService()) {
+        self.router = router
         self.userService = userService
         self.analytics = analytics
         self.journeyDetailsManager = journeyDetailsManager
@@ -407,8 +410,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        //TODO: Create router for this
-        let quoteList = QuoteList.build(journeyDetails: details)
-        view?.push(quoteList)
+        guard let view = view else { return }
+        router.routeToQuoteList(from: view, details: details)
     }
 }

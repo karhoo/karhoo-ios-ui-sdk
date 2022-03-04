@@ -275,7 +275,8 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             validatedJourneyInfo = journeyInfo
         }
 
-        let bookingPresenter = KarhooBookingPresenter(callback: callback)
+        let router = KarhooBookingRouter()
+        let bookingPresenter = KarhooBookingPresenter(router: router, callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
         /**
