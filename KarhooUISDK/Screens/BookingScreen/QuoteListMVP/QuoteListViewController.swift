@@ -95,26 +95,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         setupNavigationBar()
         presenter?.viewWillAppear()
     }
-    
-    // MARK: - Setup Navigation Bar
-    
-    private func setupNavigationBar(){
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: KarhooUI.colors.white]
-        // back button for iOS < 13 must be configured in "previous" view controller,
-        if #available(iOS 13.0, *) {
-            let backArrow = UIImage.uisdkImage("back_arrow")
-            let navigationBarColor = KarhooUI.colors.primary
-            navigationController?.navigationBar.backItem?.title = ""
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = navigationBarColor
-            appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
-        }
-    }
+
     // MARK: - Setup binding
 
     func setupBinding(_ presenter: QuoteListPresenter) {
@@ -144,6 +125,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func setupHierarchy() {
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
+        headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
+        headerContainerView.addSubview(tableHeaderStackView)
+        tableViewController.assignHeaderView(headerContainerView)
     }
 
     private func setupLayout() {
@@ -153,16 +137,34 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor
         )
-        headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
-        headerContainerView.addSubview(tableHeaderStackView)
+        
         tableHeaderStackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
             paddingLeading: UIConstants.Spacing.medium,
             paddingTrailing: UIConstants.Spacing.medium,
             paddingBottom: UIConstants.Spacing.small
         )
-        tableViewController.assignHeaderView(headerContainerView)
+        
         headerContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
+    
+    private func setupNavigationBar(){
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: KarhooUI.colors.white
+        ]
+        // back button for iOS < 13 must be configured in "previous" view controller,
+        if #available(iOS 13.0, *) {
+            let backArrow = UIImage.uisdkImage("back_arrow")
+            let navigationBarColor = KarhooUI.colors.primary
+            navigationController?.navigationBar.backItem?.title = ""
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = navigationBarColor
+            appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        }
     }
     
     // MARK: - State handling
@@ -198,10 +200,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func handleEmptyState(reason: QuoteListState.Error) {
         tableViewController.updateQuoteListState(.empty(reason: reason))
     }
+
     // TODO: Prepare and update values for all possible cases
     private func setNavigationBarTitle(forState state: QuoteListState){
         switch state {
-        case .loading:
+        case .loading, .fetching:
             navigationItem.title = "LOADING..."
         case .fetched(let quotes):
             navigationItem.title = "\(quotes.count) RESULTS"
