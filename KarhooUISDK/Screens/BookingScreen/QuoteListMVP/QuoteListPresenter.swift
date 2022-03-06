@@ -80,6 +80,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func didSelectQuote(_ quote: Quote) {
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else { return }
         router.routeToQuote(quote, journeyDetails: journeyDetails)
+//        onQuoteSelected(quote)
     }
 
     func didSelectQuoteDetails(_ quote: Quote) {

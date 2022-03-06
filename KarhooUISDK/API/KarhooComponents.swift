@@ -33,10 +33,9 @@ public class KarhooComponents: BookingScreenComponents {
         return addressBarView
     }
 
-//    public func quoteList() -> QuoteListViewController {
-//        let view = QuoteList.build()
-//        return view
-//    }
+    public func quoteList() -> QuoteListViewController {
+        QuoteList.build()
+    }
     
     public func passengerDetails(details: PassengerDetails?,
                                  delegate: PassengerDetailsDelegate?,

@@ -91,7 +91,7 @@ extension MockBookingView: BookingScreen {
         openRidesDetailsCalled = true
     }
 }
-
+/**
 extension MockBookingView: QuoteListActions {
 
     func didSelectQuote(_ quote: Quote) {}
@@ -101,3 +101,4 @@ extension MockBookingView: QuoteListActions {
     }
 
 }
+*/

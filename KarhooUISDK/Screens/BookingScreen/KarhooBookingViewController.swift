@@ -21,7 +21,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var sideMenu: SideMenu?
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
-//    private let addressBarPresenter: AddressBarPresenter
+//    private let addressBarPresenter: AddressBarPresente
     private let mapPresenter: BookingMapPresenter
     private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
