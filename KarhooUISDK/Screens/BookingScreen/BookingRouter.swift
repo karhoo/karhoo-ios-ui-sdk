@@ -11,7 +11,15 @@ import Foundation
 class KarhooBookingRouter: BookingRouter {
     
     func routeToQuoteList(from view: BaseViewController, details: JourneyDetails) {
-        let quoteList = QuoteList.build(journeyDetails: details)
+        guard let navigationController = view.navigationController else {
+            assertionFailure()
+            return
+        }
+
+        let quoteListCoordinator = KarhooComponents.shared.quoteList(
+            navigationController: navigationController,
+            journeyDetails: details
+        )
         if view.navigationController?.topViewController == view {
             if #available(iOS 13.0, *) {
                 // navigation bar for ios 13+ configured in QuoteListViewController:setupNavigationBar() function
@@ -23,7 +31,7 @@ class KarhooBookingRouter: BookingRouter {
                 view.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
                 view.navigationItem.title = ""
             }
-            view.push(quoteList)
+            quoteListCoordinator.start()
         }
     }
 }

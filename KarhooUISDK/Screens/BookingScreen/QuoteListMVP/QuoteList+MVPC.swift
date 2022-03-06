@@ -25,7 +25,12 @@ public enum QuoteListState {
     }
 }
 
-public protocol QuoteListViewController: UIViewController {
+public protocol QuoteListCoordinator: KarhooUISDKSceneCoordinator {
+}
+
+protocol QuoteListViewController: BaseViewController {
+
+    func setupBinding(_ presenter: QuoteListPresenter)
 }
 
 protocol QuoteListPresenter: AnyObject {
@@ -49,7 +54,7 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectCategory(_ category: QuoteCategory)
 }
 
-protocol QuoteListRouter {
+protocol QuoteListRouter: AnyObject {
 
     func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
 

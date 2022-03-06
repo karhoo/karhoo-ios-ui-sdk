@@ -18,7 +18,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Properties
 
-    private var presenter: QuoteListPresenter!
+    private weak var presenter: QuoteListPresenter?
 
     // MARK: - Header views
 
@@ -61,7 +61,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Nested view controllers
 
-    private lazy var tableViewController = QuoteListTable.build(
+    private lazy var tableViewCoordinator: QuoteListTableCoordinator = KarhooQuoteListTableCoordinator(
         onQuoteSelected: { [weak self] quote in
             self?.presenter?.didSelectQuote(quote)
         },
@@ -123,15 +123,16 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setupHierarchy() {
+        let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
         headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
         headerContainerView.addSubview(tableHeaderStackView)
-        tableViewController.assignHeaderView(headerContainerView)
+        tableViewCoordinator.assignHeaderView(headerContainerView)
     }
 
     private func setupLayout() {
-        tableViewController.view.anchor(
+        tableViewCoordinator.viewController.view.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             leading: view.leadingAnchor,
             bottom: view.bottomAnchor,
@@ -148,7 +149,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         headerContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
-    private func setupNavigationBar(){
+    private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: KarhooUI.colors.white
@@ -184,21 +185,21 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
-        tableViewController.updateQuoteListState(.loading)
+        tableViewCoordinator.updateQuoteListState(.loading)
     }
 
     private func handleFetchingState(quotes: [Quote]) {
-        tableViewController.updateQuoteListState(.fetching(quotes: quotes))
+        tableViewCoordinator.updateQuoteListState(.fetching(quotes: quotes))
         legalDisclaimerLabel.isHidden = false
     }
 
     private func handleFetchedState(quotes: [Quote]) {
-        tableViewController.updateQuoteListState(.fetched(quotes: quotes))
+        tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
         legalDisclaimerLabel.isHidden = false
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
-        tableViewController.updateQuoteListState(.empty(reason: reason))
+        tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
     }
 
     // TODO: Prepare and update values for all possible cases
@@ -208,7 +209,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             navigationItem.title = "LOADING..."
         case .fetched(let quotes):
             navigationItem.title = "\(quotes.count) RESULTS"
-        case .empty(_):
+        case .empty:
             navigationItem.title = "0 RESULTS"
         }
     }

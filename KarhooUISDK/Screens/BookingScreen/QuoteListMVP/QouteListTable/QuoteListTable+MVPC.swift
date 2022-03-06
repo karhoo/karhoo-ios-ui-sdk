@@ -8,20 +8,39 @@
 
 import KarhooSDK
 
-protocol QuoteListTableViewController: BaseViewController {
+protocol QuoteListTableCoordinator: KarhooUISDKSceneCoordinator {
+    var viewController: QuoteListTableViewController { get }
+
     func updateQuoteListState(_ state: QuoteListState)
-    /// Assign table view header view. It's size needs to be nonzero.
+
     func assignHeaderView(_ view: UIView)
 }
 
+protocol QuoteListTableViewController: BaseViewController {
+
+    func setupBinding(_ presenter: QuoteListTablePresenter)
+
+    /// Assign table view header view. It's size needs to be nonzero.
+    func assignHeaderView(_ view: UIView)
+
+}
+
 protocol QuoteListTablePresenter: AnyObject {
+
     var state: QuoteListState { get }
+
     var onQuoteListStateUpdated: ((QuoteListState) -> Void)? { get set }
+
     var onQuoteSelected: (Quote) -> Void { get }
+
     var onQuoteDetailsSelected: (Quote) -> Void { get }
+
     func viewDidLoad()
+
     func viewWillAppear()
+
     func updateQuoteListState(_ state: QuoteListState)
+
 }
 
 protocol QuoteListTableRouter {

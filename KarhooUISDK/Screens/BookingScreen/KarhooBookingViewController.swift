@@ -21,23 +21,22 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var sideMenu: SideMenu?
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
-//    private let addressBarPresenter: AddressBarPresente
     private let mapPresenter: BookingMapPresenter
     private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
+    
 
     init(presenter: BookingPresenter,
-//         addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
-//        self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
+        
         
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
@@ -246,10 +245,6 @@ extension KarhooBookingViewController: BookingScreen {
     
     func openRideDetailsFor(_ trip: TripInfo) {
         presenter.showRideDetailsView(trip: trip)
-    }
-
-    func openQuotesList(_ journeyDetails: JourneyDetails) {
-//        show(quoteListViewController, sender: nil)
     }
 }
 

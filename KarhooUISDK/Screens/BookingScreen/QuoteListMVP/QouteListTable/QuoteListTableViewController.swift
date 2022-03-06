@@ -133,12 +133,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     // MARK: - Scene Input methods
 
-    func updateQuoteListState(_ state: QuoteListState) {
-        DispatchQueue.main.async { [weak self] in
-            self?.presenter.updateQuoteListState(state)
-        }
-    }
-
     func assignHeaderView(_ view: UIView) {
         tableView.tableHeaderView = view
     }
