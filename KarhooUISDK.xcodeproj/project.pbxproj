@@ -1450,6 +1450,7 @@
 				090F08DB21C934EB000C7E50 /* DatePickerScreen */,
 				093D2E6C2224345700D5F031 /* PopupDialog */,
 				FCAD1C0C220884B900C3AD1D /* PrebookConfirmation */,
+				514E7FC527D50CBF002DB078 /* QuoteList */,
 				FC435F522211D34400FB6BB5 /* Rides */,
 				FC83E2E0221EED43008FE26D /* Trip */,
 				0968D82622F8648200047FCF /* TripFeedback */,
@@ -1563,6 +1564,7 @@
 				09DE8D44221C658B00451B3C /* PaymentScreen */,
 				FC705B16221322220001036E /* PopupDialog */,
 				FCAD1BE922087B9100C3AD1D /* PrebookConfirmationScreen */,
+				09C7656021DE688000CD81AB /* QuoteList */,
 				FC435EE42211B30F00FB6BB5 /* Rides */,
 				092005D5225B91C1001038ED /* SideMenu */,
 				403F448522F1EC97008147FC /* TripFeedbackScreen */,
@@ -1687,13 +1689,12 @@
 				09C7658221DE688000CD81AB /* AddressBar */,
 				09C7657B21DE688000CD81AB /* Map */,
 				09C7657621DE688000CD81AB /* QuoteCategoryBarMVP */,
-				09C7656021DE688000CD81AB /* QuoteListMVP */,
 				09C7658821DE688000CD81AB /* TripAllocationMVP */,
 			);
 			path = BookingScreen;
 			sourceTree = "<group>";
 		};
-		09C7656021DE688000CD81AB /* QuoteListMVP */ = {
+		09C7656021DE688000CD81AB /* QuoteList */ = {
 			isa = PBXGroup;
 			children = (
 				09C7656B21DE688000CD81AB /* QuoteList+MVPC.swift */,
@@ -1705,7 +1706,7 @@
 				09C7656D21DE688000CD81AB /* QuoteCell */,
 				09C7656221DE688000CD81AB /* QuoteSortMVP */,
 			);
-			path = QuoteListMVP;
+			path = QuoteList;
 			sourceTree = "<group>";
 		};
 		09C7656221DE688000CD81AB /* QuoteSortMVP */ = {
@@ -1879,7 +1880,6 @@
 				145EC6F125C98CBB00F1FC94 /* Domain */,
 				0949543E21FF5A8800D930C0 /* MockBookingView.swift */,
 				09E35D4821E5117C003E840C /* TripAllocation */,
-				09E35D4B21E5117C003E840C /* QuoteList */,
 				09E35D4D21E5117C003E840C /* QuoteCategoryBar */,
 				09E35D5121E5117C003E840C /* Map */,
 				09E35D5521E5117C003E840C /* QuoteSortView */,
@@ -2336,6 +2336,14 @@
 				40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */,
 			);
 			path = RateButton;
+			sourceTree = "<group>";
+		};
+		514E7FC527D50CBF002DB078 /* QuoteList */ = {
+			isa = PBXGroup;
+			children = (
+				09E35D4B21E5117C003E840C /* QuoteList */,
+			);
+			path = QuoteList;
 			sourceTree = "<group>";
 		};
 		51A1100A27AD510800A54E76 /* Checkbox */ = {
