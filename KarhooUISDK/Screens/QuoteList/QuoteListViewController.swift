@@ -187,38 +187,52 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
-        tableViewCoordinator.updateQuoteListState(.loading)
-        setHeaderDisabled()
-    }
-
-    private func handleFetchingState(quotes: [Quote]) {
-        tableViewCoordinator.updateQuoteListState(.fetching(quotes: quotes))
-        setHeaderEnabled()
-    }
-
-    private func handleFetchedState(quotes: [Quote]) {
-        tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
-        setHeaderEnabled()
-    }
-    
-    private func handleEmptyState(reason: QuoteListState.Error) {
-        tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
-        setHeaderDisabled()
-    }
-
-    private func setHeaderEnabled() {
-        UIView.animate(withDuration: UIConstants.Duration.short) { [weak self] in
-            self?.quoteCategoryBarView.setEnabled()
-            self?.quoteSortView.setEnabled()
-            self?.legalDisclaimerLabel.isHidden = false
+        setHeaderDisabled { [weak self] in
+            self?.tableViewCoordinator.updateQuoteListState(.loading)
         }
     }
 
-    private func setHeaderDisabled() {
-        UIView.animate(withDuration: UIConstants.Duration.short) { [weak self] in
-            self?.quoteCategoryBarView.setDisabled()
-            self?.quoteSortView.setDisabled()
-            self?.legalDisclaimerLabel.isHidden = true
+    private func handleFetchingState(quotes: [Quote]) {
+        setHeaderEnabled { [weak self] in
+            self?.tableViewCoordinator.updateQuoteListState(.fetching(quotes: quotes))
+        }
+    }
+
+    private func handleFetchedState(quotes: [Quote]) {
+        setHeaderEnabled { [weak self] in
+            self?.tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
+        }
+    }
+    
+    private func handleEmptyState(reason: QuoteListState.Error) {
+        setHeaderDisabled { [weak self] in
+            self?.tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
+        }
+    }
+
+    private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
+        UIView.animate(
+            withDuration: UIConstants.Duration.short,
+            animations: { [weak self] in
+                self?.quoteCategoryBarView.isHidden = false
+                self?.quoteSortView.setEnabled()
+                self?.legalDisclaimerLabel.isHidden = false
+            }
+        ) { _ in
+            completion()
+        }
+    }
+
+    private func setHeaderDisabled(completion: @escaping () -> Void = { }) {
+        UIView.animate(
+            withDuration: UIConstants.Duration.short,
+            animations: { [weak self] in
+                self?.quoteCategoryBarView.isHidden = true
+                self?.quoteSortView.setDisabled()
+                self?.legalDisclaimerLabel.isHidden = true
+            }
+        ) { _ in
+            completion()
         }
     }
 

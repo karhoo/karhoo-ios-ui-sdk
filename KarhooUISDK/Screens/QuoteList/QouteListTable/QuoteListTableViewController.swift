@@ -100,23 +100,38 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         case .empty:
             handleEmptyState()
         }
-        tableView.reloadData()
     }
 
     private func handleLoadingState() {
         activityIndicator.startAnimating()
+        if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
+            tableView.beginUpdates()
+            tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
+        }
     }
 
     private func handleFetchingState() {
         activityIndicator.startAnimating()
+        if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.beginUpdates()
+            tableView.insertSections(IndexSet(integer: 0), with: .automatic)
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
+        }
     }
 
     private func handleFetchedState() {
         activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
 
     private func handleEmptyState() {
         activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
     
     // MARK: - Utils

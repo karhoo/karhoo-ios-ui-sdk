@@ -61,12 +61,14 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
 
     func setDisabled() {
         isUserInteractionEnabled = false
-        alpha = UIConstants.Alpha.disabled
+        segmentedControl.isUserInteractionEnabled = false
+        segmentedControl.alpha = UIConstants.Alpha.disabled
     }
 
     func setEnabled() {
         isUserInteractionEnabled = true
-        alpha = UIConstants.Alpha.enabled
+        segmentedControl.isUserInteractionEnabled = true
+        segmentedControl.alpha = UIConstants.Alpha.enabled
     }
     
     @objc

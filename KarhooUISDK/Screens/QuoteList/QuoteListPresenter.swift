@@ -159,18 +159,23 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
         let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
-        
-        if noQuotesInSelectedCategory {
+        let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
+
+        switch (noQuotesInSelectedCategory, noQuotesForSelectedParapeters, sortedQuotes.isEmpty, fetchedQuotes.status) {
+        case (true, _, _, _):
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
-        } else if noQuotesForSelectedParapeters {
+        case (_, true, _, _):
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
-        } else {
-            let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
+        case (_, _, true, _):
+            onStateUpdated?(.loading)
+        case (_, _, _, .completed):
             onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
-            
-            let status: QuoteListState = fetchedQuotes.status == .completed ? .fetched(quotes: sortedQuotes) : .fetching(quotes: sortedQuotes)
-            onStateUpdated?(status)
+            onStateUpdated?(.fetched(quotes: sortedQuotes))
+        default:
+            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
+            onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
+
         handleQuoteStatus()
     }
 
