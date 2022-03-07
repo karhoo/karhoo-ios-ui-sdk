@@ -35,7 +35,7 @@ protocol QuoteListViewController: BaseViewController {
 
 protocol QuoteListPresenter: AnyObject {
     
-    var onCategoriesUpdated: (([QuoteCategory]) -> Void)? { get set }
+    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)? { get set }
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 

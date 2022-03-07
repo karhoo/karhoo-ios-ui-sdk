@@ -19,7 +19,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private lazy var activityIndicator = UIActivityIndicatorView().then {
         $0.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConstants.Dimension.View.loadingViewHeight)
-        $0.backgroundColor = view.backgroundColor
         $0.color = KarhooUI.colors.accent
     }
     private lazy var tableView = UITableView().then {

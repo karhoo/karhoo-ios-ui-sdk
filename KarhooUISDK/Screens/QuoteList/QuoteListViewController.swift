@@ -104,8 +104,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
-        presenter.onCategoriesUpdated = { [weak self] categories in
-            self?.handleCategoriesUpdated(categories)
+        presenter.onCategoriesUpdated = { [weak self] categories, quoteListId in
+            self?.handleCategoriesUpdated(categories, quoteListId: quoteListId)
         }
     }
 
@@ -145,11 +145,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
         tableHeaderStackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
-            paddingLeading: UIConstants.Spacing.medium,
-            paddingTrailing: UIConstants.Spacing.medium,
             paddingBottom: UIConstants.Spacing.small
         )
-        
+
         headerContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
@@ -238,8 +236,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Categories handling
 
-    private func handleCategoriesUpdated(_ categories: [QuoteCategory]) {
-        quoteCategoryBarView.set(categories: categories)
+    private func handleCategoriesUpdated(_ categories: [QuoteCategory], quoteListId: String?) {
+        quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
     }
 }
 

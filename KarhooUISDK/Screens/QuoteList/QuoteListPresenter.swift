@@ -23,7 +23,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
-    var onCategoriesUpdated: (([QuoteCategory]) -> Void)?
+    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
@@ -87,7 +87,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectCategory(_ category: QuoteCategory) {
-        // TODO: finish implementation
+        selectedQuoteCategory = category
+        updateViewQuotes()
     }
 
     // MARK: - Private
@@ -165,7 +166,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
         } else {
             let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
-            onCategoriesUpdated?(fetchedQuotes.quoteCategories)
+            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
             
             let status: QuoteListState = fetchedQuotes.status == .completed ? .fetched(quotes: sortedQuotes) : .fetching(quotes: sortedQuotes)
             onStateUpdated?(status)
