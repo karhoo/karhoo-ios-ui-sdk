@@ -24,7 +24,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private let mapPresenter: BookingMapPresenter
     private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
-    
 
     init(presenter: BookingPresenter,
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
@@ -36,8 +35,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
-        
-        
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
 
@@ -275,7 +272,6 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         let bookingPresenter = KarhooBookingPresenter(router: router, callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
 
-        /**
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(hostViewController: bookingViewController,
@@ -291,14 +287,11 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
         } else {
+            let navigationController = UINavigationController(rootViewController: bookingViewController)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            navigationController.modalPresentationStyle = .fullScreen
             bookingViewController.set(leftNavigationButton: .exitIcon)
-            bookingViewController.modalPresentationStyle = .fullScreen
-            return bookingViewController
+            return navigationController
         }
-         */
-        let navigationController = UINavigationController(rootViewController: bookingViewController)
-        navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.modalPresentationStyle = .fullScreen
-        return navigationController
     }
 }
