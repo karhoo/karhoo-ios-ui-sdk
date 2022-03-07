@@ -138,7 +138,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor
         )
-        
+
+        quoteCategoryBarView.heightAnchor.constraint(
+            equalToConstant: UIConstants.Dimension.View.largeRowHeight
+        ).isActive = true
+
         tableHeaderStackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
             paddingLeading: UIConstants.Spacing.medium,
