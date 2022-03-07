@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BTAppSwitch.setReturnURLScheme(urlScheme)
 
         window = UIWindow()
-        let mainView = UINavigationController(rootViewController: ViewController())
+        let mainView = ViewController()
         window?.rootViewController = mainView
         window?.makeKeyAndVisible()
         return true
