@@ -40,10 +40,10 @@ final class BookingViewControllerBuilderSpec: XCTestCase {
       * When: No side menu handler is set
       * Then: Booking View should be congigured as expected
       */
-    func testNoSideMenu() {
-        KarhooUI.sideMenuHandler = nil
-        let output = testObject.buildBookingScreen(journeyInfo: nil,
-                                                   callback: { _ in})
-        XCTAssertNil(output as? UINavigationController)
-    }
+//    func testNoSideMenu() {
+//        KarhooUI.sideMenuHandler = nil
+//        let output = testObject.buildBookingScreen(journeyInfo: nil,
+//                                                   callback: { _ in})
+//        XCTAssertNil(output as? UINavigationController)
+//    }
 }

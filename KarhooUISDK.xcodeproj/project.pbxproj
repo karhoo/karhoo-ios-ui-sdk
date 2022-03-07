@@ -372,6 +372,7 @@
 		514E7FC827D609EB002DB078 /* QuoteListTable+MVPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC727D609EB002DB078 /* QuoteListTable+MVPC.swift */; };
 		514E7FCA27D609F6002DB078 /* QuoteListTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC927D609F6002DB078 /* QuoteListTablePresenter.swift */; };
 		514E7FCC27D609FE002DB078 /* QuoteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FCB27D609FE002DB078 /* QuoteListTableViewController.swift */; };
+		514E7FCE27D6753F002DB078 /* MockBookingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FCD27D6753F002DB078 /* MockBookingRouter.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
@@ -885,6 +886,7 @@
 		514E7FC727D609EB002DB078 /* QuoteListTable+MVPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuoteListTable+MVPC.swift"; sourceTree = "<group>"; };
 		514E7FC927D609F6002DB078 /* QuoteListTablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListTablePresenter.swift; sourceTree = "<group>"; };
 		514E7FCB27D609FE002DB078 /* QuoteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListTableViewController.swift; sourceTree = "<group>"; };
+		514E7FCD27D6753F002DB078 /* MockBookingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBookingRouter.swift; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
@@ -1883,6 +1885,7 @@
 				09E35D4D21E5117C003E840C /* QuoteCategoryBar */,
 				09E35D5121E5117C003E840C /* Map */,
 				09E35D5521E5117C003E840C /* QuoteSortView */,
+				514E7FCD27D6753F002DB078 /* MockBookingRouter.swift */,
 			);
 			path = BookingScreen;
 			sourceTree = "<group>";
@@ -4240,6 +4243,7 @@
 				14707CC625D54C2200CAD083 /* TripAddressBarPresenterSpec.swift in Sources */,
 				14707C5825D54C2100CAD083 /* MockBookingView.swift in Sources */,
 				14707C4325D54C2100CAD083 /* MockStackButtonView.swift in Sources */,
+				514E7FCE27D6753F002DB078 /* MockBookingRouter.swift in Sources */,
 				14707CC025D54C2200CAD083 /* MockFeedbackMailComposter.swift in Sources */,
 				14707C9B25D54C2200CAD083 /* PickupOnlyStrategySpec.swift in Sources */,
 				14707C5F25D54C2100CAD083 /* KarhooTripsProviderSpec.swift in Sources */,
