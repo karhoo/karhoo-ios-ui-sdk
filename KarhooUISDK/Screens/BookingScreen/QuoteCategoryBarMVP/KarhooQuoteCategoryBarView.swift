@@ -192,6 +192,16 @@ final class KarhooQuoteCategoryBarView: UIView, QuoteCategoryBarView {
         hapticGenerator.impactOccurred()
         actions?.didSelectCategory(category)
     }
+
+    func setDisabled() {
+        alpha = UIConstants.Alpha.disabled
+        isUserInteractionEnabled = false
+    }
+
+    func setEnabled() {
+        alpha = UIConstants.Alpha.enabled
+        isUserInteractionEnabled = true
+    }
     
     private func removeExistingLabels() {
         labels.forEach { (label: UILabel) in

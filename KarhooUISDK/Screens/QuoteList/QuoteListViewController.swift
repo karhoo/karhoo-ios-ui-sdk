@@ -190,20 +190,38 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     private func handleLoadingState() {
         tableViewCoordinator.updateQuoteListState(.loading)
+        setHeaderDisabled()
     }
 
     private func handleFetchingState(quotes: [Quote]) {
         tableViewCoordinator.updateQuoteListState(.fetching(quotes: quotes))
-        legalDisclaimerLabel.isHidden = false
+        setHeaderEnabled()
     }
 
     private func handleFetchedState(quotes: [Quote]) {
         tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
-        legalDisclaimerLabel.isHidden = false
+        setHeaderEnabled()
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
         tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
+        setHeaderDisabled()
+    }
+
+    private func setHeaderEnabled() {
+        UIView.animate(withDuration: UIConstants.Duration.short) { [weak self] in
+            self?.quoteCategoryBarView.setEnabled()
+            self?.quoteSortView.setEnabled()
+            self?.legalDisclaimerLabel.isHidden = false
+        }
+    }
+
+    private func setHeaderDisabled() {
+        UIView.animate(withDuration: UIConstants.Duration.short) { [weak self] in
+            self?.quoteCategoryBarView.setDisabled()
+            self?.quoteSortView.setDisabled()
+            self?.legalDisclaimerLabel.isHidden = true
+        }
     }
 
     // TODO: Prepare and update values for all possible cases
