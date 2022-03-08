@@ -49,10 +49,6 @@ jobs:
           paths:
             - vendor/bundle
       - run:
-          name: Fetch CocoaPods Specs
-          command: |
-              curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-      - run:
           name: Decode Keys.swift
           command:
            echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
