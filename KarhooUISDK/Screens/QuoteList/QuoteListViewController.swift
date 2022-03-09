@@ -237,14 +237,15 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     // TODO: Prepare and update values for all possible cases
-    private func setNavigationBarTitle(forState state: QuoteListState){
+    private func setNavigationBarTitle(forState state: QuoteListState) {
         switch state {
         case .loading, .fetching:
-            navigationItem.title = "LOADING..."
+            navigationItem.title = ""
         case .fetched(let quotes):
-            navigationItem.title = "\(quotes.count) RESULTS"
+            let message = quotes.count > 1 ? UITexts.Quotes.results : UITexts.Quotes.result
+            navigationItem.title = String(format: message, quotes.count.description)
         case .empty:
-            navigationItem.title = "0 RESULTS"
+            navigationItem.title = ""
         }
     }
 

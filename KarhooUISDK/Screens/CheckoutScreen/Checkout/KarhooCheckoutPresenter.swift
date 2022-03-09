@@ -359,7 +359,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
         self.trip = trip
         reportPaymentSuccess()
-        view?.showCheckoutView(false)
+        routeToBooking(result: ScreenResult.completed(result: trip))
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
@@ -470,11 +470,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view?.showAsOverlay(item: popupDialog, animated: true)
     }
 
-    func didPressClose() {
+    func didPressCloseOnExpirationAlert() {
         PassengerInfo.shared.set(details: view?.getPassengerDetails())
-        view?.showCheckoutView(false)
+        routeToPreviousScene(result: ScreenResult.cancelled(byUser: false))
     }
 
+    // TODO: to be removed
     func screenHasFadedOut() {
         if let trip = self.trip {
              callback(ScreenResult.completed(result: trip))
@@ -494,6 +495,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
+    }
+
+    private func routeToBooking(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
+            self?.callback(result)
+        }
+    }
+
+    func routeToPreviousScene(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popViewController(animated: true)
     }
     
     private func setUpBookingButtonState() {

@@ -84,5 +84,12 @@ public enum BookingScreenResult {
 }
 
 protocol BookingRouter {
-    func routeToQuoteList(from sender: BaseViewController, details: JourneyDetails)
+    func routeToQuoteList(details: JourneyDetails, onQuoteSelected: ((Quote) -> Void)?)
+
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+    )
 }

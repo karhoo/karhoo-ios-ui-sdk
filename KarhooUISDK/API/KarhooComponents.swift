@@ -36,11 +36,13 @@ public class KarhooComponents: BookingScreenComponents {
 
     public func quoteList(
         navigationController: UINavigationController,
-        journeyDetails: JourneyDetails
+        journeyDetails: JourneyDetails,
+        onQuoteSelected: ((Quote) -> Void)?
     ) -> QuoteListCoordinator {
         KarhooQuoteListCoordinator(
             navigationController: navigationController,
-            journeyDetails: journeyDetails
+            journeyDetails: journeyDetails,
+            onQuoteSelected: onQuoteSelected
         )
     }
     

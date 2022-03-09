@@ -98,7 +98,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
         presenter.viewWillAppear()
         sideMenu?.hideMenu()
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -271,6 +270,8 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         let router = KarhooBookingRouter()
         let bookingPresenter = KarhooBookingPresenter(router: router, callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
+        router.viewController = bookingViewController
+        router.checkoutScreenBuilder = UISDKScreenRouting.default.checkout()
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
@@ -283,12 +284,10 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             let navigationController = UINavigationController(rootViewController: bookingViewController)
             navigationController.viewControllers.insert(sideMenu.getFlowItem(),
                     at: navigationController.viewControllers.endIndex)
-            navigationController.setNavigationBarHidden(true, animated: false)
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
         } else {
             let navigationController = UINavigationController(rootViewController: bookingViewController)
-            navigationController.setNavigationBarHidden(true, animated: false)
             navigationController.modalPresentationStyle = .fullScreen
             bookingViewController.set(leftNavigationButton: .exitIcon)
             return navigationController

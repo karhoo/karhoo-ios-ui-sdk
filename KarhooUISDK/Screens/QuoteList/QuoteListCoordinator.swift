@@ -20,6 +20,8 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
     private(set) var viewController: QuoteListViewController!
     private(set) var presenter: QuoteListPresenter!
 
+    var onQuoteSelected: ((Quote) -> Void)?
+
     // MARK: - Initializator
 
     init(
@@ -27,7 +29,8 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
         journeyDetails: JourneyDetails? = nil,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        onQuoteSelected: ((Quote) -> Void)?
     ) {
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListViewController()
@@ -39,6 +42,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
             quoteSorter: quoteSorter,
             analytics: analytics
         )
+        self.onQuoteSelected = onQuoteSelected
         self.viewController.setupBinding(presenter)
     }
 
@@ -52,30 +56,32 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
 extension KarhooQuoteListCoordinator: QuoteListRouter {
 
     func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails) {
-        // TODO: replace to use Coordiantor pattern
-        let checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout()
-        
-        let checkoutView = checkoutScreenBuilder
-            .buildCheckoutScreen(
-                quote: quote,
-                journeyDetails: journeyDetails,
-                bookingMetadata: KarhooUISDKConfigurationProvider.configuration.bookingMetadata,
-                callback: {_ in
-//                TODO: Add ecpected bahaviour, previously implemented in KarhooBookingPresenter.bookingRequestCompleted
-                    return}
-               /* callback: { [weak self] result in
-                   self?.view?.dismiss(animated: false, completion: {
-                        self?.bookingRequestCompleted(
-                            result: result,
-                            quote: quote,
-                            details: journeyDetails
-                        )
-                    })
-                }*/
-            )
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.show(checkoutView, sender: nil)
-        // TODO: finish implementation
+        // TODO: replace to use Booking coordinator to perform actual navigation
+//        let checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout()
+//
+//        let checkoutView = checkoutScreenBuilder
+//            .buildCheckoutScreen(
+//                quote: quote,
+//                journeyDetails: journeyDetails,
+//                bookingMetadata: KarhooUISDKConfigurationProvider.configuration.bookingMetadata,
+//                callback: {_ in
+////                TODO: Add ecpected bahaviour, previously implemented in KarhooBookingPresenter.bookingRequestCompleted
+//                    return}
+//               /* callback: { [weak self] result in
+//                   self?.view?.dismiss(animated: false, completion: {
+//                        self?.bookingRequestCompleted(
+//                            result: result,
+//                            quote: quote,
+//                            details: journeyDetails
+//                        )
+//                    })
+//                }*/
+//            )
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//        navigationController?.show(checkoutView, sender: nil)
+//        // TODO: finish implementation
+
+        onQuoteSelected?(quote)
     }
 
     func routeToQuoteDetails(_ quote: Quote) {

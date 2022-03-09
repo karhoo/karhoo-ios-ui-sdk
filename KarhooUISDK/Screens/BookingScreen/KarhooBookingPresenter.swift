@@ -19,7 +19,6 @@ final class KarhooBookingPresenter {
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
-    private let checkoutScreenBuilder: CheckoutScreenBuilder
     private let prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
@@ -39,7 +38,6 @@ final class KarhooBookingPresenter {
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
@@ -54,7 +52,6 @@ final class KarhooBookingPresenter {
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
-        self.checkoutScreenBuilder = checkoutScreenBuilder
         self.prebookConfirmationScreenBuilder = prebookConfirmationScreenBuilder
         self.addressScreenBuilder = addressScreenBuilder
         self.datePickerScreenBuilder = datePickerScreenBuilder
@@ -78,23 +75,14 @@ final class KarhooBookingPresenter {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
-        let checkoutView = checkoutScreenBuilder
-            .buildCheckoutScreen(
-                quote: quote,
-                journeyDetails: journeyDetails,
-                bookingMetadata: bookingMetadata,
-                callback: { [weak self] result in
-                    self?.view?.dismiss(animated: false, completion: {
-                        self?.bookingRequestCompleted(
-                            result: result,
-                            quote: quote,
-                            details: journeyDetails
-                        )
-                    })
-                }
-            )
-
-        view?.showAsOverlay(item: checkoutView, animated: false)
+        router.routeToCheckout(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            bookingRequestCompletion: { [weak self] result, quote, journeyDetails in
+                self?.bookingRequestCompleted(result: result, quote: quote, details: journeyDetails)
+            }
+        )
     }
 
     // MARK: - Trip booked
@@ -410,7 +398,12 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        guard let view = view else { return }
-        router.routeToQuoteList(from: view, details: details)
+        router.routeToQuoteList(details: details) { [weak self] quote in
+            guard let self = self, let details = self.getJourneyDetails() else { return }
+            self.showCheckoutView(
+                quote: quote,
+                journeyDetails: details
+            )
+        }
     }
 }

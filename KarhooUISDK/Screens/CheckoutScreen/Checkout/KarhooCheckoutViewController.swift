@@ -232,6 +232,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         presenter.screenWillAppear()
     }
     
@@ -243,7 +244,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showCheckoutView(true)
+//        showCheckoutView(true)
     }
     
     override func updateViewConstraints() {
@@ -425,23 +426,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.scrollTo(termsConditionsView, animated: true)
     }
 
-    func showCheckoutView(_ show: Bool) {
-        // TODO: implement navigation to previous screen if needed
-        /*containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
-        UIView.animate(
-            withDuration: drawAnimationTime,
-            animations: { [weak self] in
-                self?.view.layoutIfNeeded()
-            },
-            completion: { [weak self] completed in
-                if completed && !show {
-                    self?.presenter.screenHasFadedOut()
-                    self?.dismiss(animated: false, completion: nil)
-                }
-            }
-        )*/
-    }
-
     // MARK: Data management
     
     func getPassengerDetails() -> PassengerDetails? {
@@ -480,7 +464,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                 actions: [
                     AlertAction(title: UITexts.Generic.ok, style: .default) { [weak self] _ in
                         self?.setDefaultState()
-                        self?.presenter.didPressClose()
+                        self?.presenter.didPressCloseOnExpirationAlert()
                     }
                 ]
             )
