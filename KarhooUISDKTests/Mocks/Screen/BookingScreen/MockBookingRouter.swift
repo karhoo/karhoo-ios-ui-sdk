@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KarhooSDK
 import XCTest
 
 @testable import KarhooUISDK
@@ -14,7 +15,29 @@ import XCTest
 class MockBookingRouter: BookingRouter {
 
     var routeToQuoteListCalled = false
-    func routeToQuoteList(from sender: BaseViewController, details: JourneyDetails) {
+    func routeToQuoteList(details: JourneyDetails, onQuoteSelected: ((Quote) -> Void)?) {
         routeToQuoteListCalled = true
+    }
+
+    private var bookingRequestCompletion: ((ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void)?
+    var routeToCheckoutCalled = false
+    var quote: Quote?
+    var journeyDetails: JourneyDetails?
+    var bookingMetadata: [String: Any]?
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+    ) {
+        self.quote = quote
+        self.journeyDetails = journeyDetails
+        self.bookingRequestCompletion = bookingRequestCompletion
+        self.bookingMetadata = bookingMetadata
+        routeToCheckoutCalled = true
+    }
+
+    func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
+        bookingRequestCompletion?(result, quote!, journeyDetails!)
     }
 }
