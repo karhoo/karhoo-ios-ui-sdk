@@ -1,5 +1,3 @@
-" Text.Generic.QuoteCell.DriverArrival" = "";
-
 /* English: Error codes */
 "K0001" = "Désolé! Une erreur s'est produite";
 
@@ -461,6 +459,8 @@
 "Text.Generic.PrivacyPolicy" = "Politique de Confidentialité";
 
 "Text.Generic.QuoteCell.Details" = "";
+
+"Text.Generic.QuoteCell.DriverArrival" = "";
 
 "Text.Generic.Register" = "Inscription";
 
