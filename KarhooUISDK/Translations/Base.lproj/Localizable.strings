@@ -1,5 +1,3 @@
-" Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
-
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -461,6 +459,8 @@
 "Text.Generic.PrivacyPolicy" = "Privacy Policy";
 
 "Text.Generic.QuoteCell.Details" = "Details";
+
+"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
 
 "Text.Generic.Register" = "Register";
 
