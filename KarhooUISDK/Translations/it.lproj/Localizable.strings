@@ -458,6 +458,8 @@
 
 "Text.Generic.PrivacyPolicy" = "Politica sulla Riservatezza";
 
+"Text.Generic.QouteCell.Details" = "";
+
 "Text.Generic.Register" = "Registrati";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -589,6 +591,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancellazione gratuita fino a %1$@ prima del ritiro";
 
+"Text.Quote.Results" = "%1$@ risultati";
+
 "Text.QuoteCategory.Electric" = "Elettrico";
 
 "Text.QuoteCategory.Exec" = "Esecutivo";
@@ -604,6 +608,8 @@
 "Text.QuoteCategory.Saloon" = "Standard";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.Quotes.Result" = "%1$@ risultato";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Circa";
