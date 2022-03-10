@@ -251,7 +251,7 @@
 
 "Text.Bookings.eta" = "Proximité";
 
-"Text.Bookings.NewRide" = "NOUVEAU MANÈGE";
+"Text.Bookings.NewRide" = "NOUVELLE COURSE";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Aucune réservation";
@@ -458,6 +458,8 @@
 
 "Text.Generic.PrivacyPolicy" = "Politique de Confidentialité";
 
+"Text.Generic.QouteCell.Details" = "";
+
 "Text.Generic.Register" = "Inscription";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -589,6 +591,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
 
+"Text.Quote.Results" = "%1$@ résultats";
+
 "Text.QuoteCategory.Electric" = "Electrique";
 
 "Text.QuoteCategory.Exec" = "Business";
@@ -604,6 +608,8 @@
 "Text.QuoteCategory.Saloon" = "Berline";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.Quotes.Result" = "%1$@ résultat";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "À propos";
