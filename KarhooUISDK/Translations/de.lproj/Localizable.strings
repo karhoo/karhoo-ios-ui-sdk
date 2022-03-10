@@ -609,7 +609,9 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
-"Text.Quotes.Result" = "%1$@ Ergebnis";
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Über";
