@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC8F471321539E24007841FB"
-               BuildableName = "KarhooUISDK.framework"
-               BlueprintName = "KarhooUISDK"
-               ReferencedContainer = "container:KarhooUISDK.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5C2E260C2420F8AC00B1FF0C"
                BuildableName = "Client.app"
                BlueprintName = "Client"
