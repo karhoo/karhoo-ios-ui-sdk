@@ -200,23 +200,25 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
-        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        guard let details = details else {
-            return
-        }
-        guard let destination = details.destinationLocationDetails,
-            let origin = details.originLocationDetails else {
-            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
-            return
-        }
-        onStateUpdated?(.loading)
-        let quoteSearch = QuoteSearch(origin: origin,
-                                      destination: destination,
-                                      dateScheduled: details.scheduledDate)
-        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-            self?.handleResult(result: result, jurneyDetails: details)
-        }
-        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
-        refreshSubscription()
+        onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+
+//        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+//        guard let details = details else {
+//            return
+//        }
+//        guard let destination = details.destinationLocationDetails,
+//            let origin = details.originLocationDetails else {
+//            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
+//            return
+//        }
+//        onStateUpdated?(.loading)
+//        let quoteSearch = QuoteSearch(origin: origin,
+//                                      destination: destination,
+//                                      dateScheduled: details.scheduledDate)
+//        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
+//            self?.handleResult(result: result, jurneyDetails: details)
+//        }
+//        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
+//        refreshSubscription()
     }
 }
