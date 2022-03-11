@@ -97,8 +97,8 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
             handleFetchingState()
         case .fetched:
             handleFetchedState()
-        case .empty:
-            handleEmptyState()
+        case .empty(let error):
+            handleEmptyState(error)
         }
     }
 
@@ -129,9 +129,11 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         tableView.reloadData()
     }
 
-    private func handleEmptyState() {
+    private func handleEmptyState(_ error: QuoteListState.Error) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
+        let errorView = QuoteListErrorViewBuilder.buildView(for: error)
+        tableView.backgroundView = errorView
     }
     
     // MARK: - Utils
