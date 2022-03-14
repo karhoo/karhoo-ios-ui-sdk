@@ -60,7 +60,6 @@ final class KarhooBookingPresenter {
         self.urlOpener = urlOpener
         self.paymentService = paymentService
         userService.add(observer: self)
-        journeyDetailsManager.add(observer: self)
     }
     // swiftlint:enable line_length
 
@@ -169,6 +168,12 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     func viewWillAppear() {
         analytics.bookingScreenOpened()
+        journeyDetailsManager.remove(observer: self)
+        journeyDetailsManager.add(observer: self)
+    }
+
+    func viewDidDissapear() {
+        journeyDetailsManager.remove(observer: self)
     }
 
     func exitPressed() {
@@ -398,6 +403,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
+        guard view?.navigationController?.topViewController === view else { return }
         router.routeToQuoteList(details: details) { [weak self] quote in
             guard let self = self, let details = self.getJourneyDetails() else { return }
             self.showCheckoutView(
