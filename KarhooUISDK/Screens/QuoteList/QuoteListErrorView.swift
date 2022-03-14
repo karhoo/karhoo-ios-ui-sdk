@@ -23,7 +23,7 @@ final class QuoteListErrorView: UIView {
     // MARK: - Views
 
     private lazy var titleLabel = UILabel().then {
-        $0.font = KarhooUI.fonts.getSemiboldFont(withSize: 18)
+        $0.font = KarhooUI.fonts.getSemiboldFont(withSize: Constants.titleFontSize)
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -31,7 +31,7 @@ final class QuoteListErrorView: UIView {
     }
 
     private lazy var descriptionLabel = UILabel().then {
-        $0.font = KarhooUI.fonts.getRegularFont(withSize: 14)
+        $0.font = KarhooUI.fonts.getRegularFont(withSize: Constants.messageFontSize)
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
         $0.numberOfLines = 0
