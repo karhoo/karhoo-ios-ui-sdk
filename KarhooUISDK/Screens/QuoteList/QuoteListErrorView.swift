@@ -54,7 +54,7 @@ final class QuoteListErrorView: UIView {
 
     // MARK: - Properties
 
-    private let viewModel: QuoteListTableErrorViewModel
+    let viewModel: QuoteListTableErrorViewModel
     private weak var delegate: QuoteListErrorViewDelegate?
 
     // MARK: - Initialization
@@ -68,6 +68,11 @@ final class QuoteListErrorView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError()
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        animateIn()
     }
 
     // MARK: - Setup
@@ -87,6 +92,33 @@ final class QuoteListErrorView: UIView {
         imageView.anchor(width: Constants.imageViewSize.width, height: Constants.imageViewSize.height)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    }
+
+    // MARK: - Helpers
+
+    private func animateIn() {
+        [
+            imageView,
+            titleLabel,
+            descriptionLabel
+        ].forEach(aniamteSubviewIn)
+    }
+
+    private func aniamteSubviewIn(_ viewToAnimate: UIView) {
+        viewToAnimate.alpha = UIConstants.Alpha.hidden
+        viewToAnimate.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        UIView.animate(
+            withDuration: UIConstants.Duration.medium,
+            delay: .random(in: (0...UIConstants.Duration.xSmallDelay)),
+            usingSpringWithDamping: UIConstants.Animation.springWithDamping,
+            initialSpringVelocity: UIConstants.Animation.initialSpringVelocity,
+            options: .curveEaseIn,
+            animations: {
+                viewToAnimate.alpha = UIConstants.Alpha.enabled
+                viewToAnimate.transform = .identity
+            },
+            completion: nil
+        )
     }
 
     private func buildSeparator(height: CGFloat? = nil) -> UIView {

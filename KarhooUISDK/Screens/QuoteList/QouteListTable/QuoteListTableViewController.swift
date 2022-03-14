@@ -105,6 +105,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleLoadingState() {
         activityIndicator.startAnimating()
+        tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
             tableView.beginUpdates()
             tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
@@ -116,6 +117,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleFetchingState() {
         activityIndicator.startAnimating()
+        tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
             tableView.beginUpdates()
             tableView.insertSections(IndexSet(integer: 0), with: .automatic)
@@ -128,13 +130,16 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleFetchedState() {
         activityIndicator.stopAnimating()
         tableView.reloadData()
+        tableView.backgroundView = nil
     }
 
     private func handleEmptyState(_ error: QuoteListState.Error) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
         let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: nil)
-        tableView.backgroundView = errorView
+        let currentErrorView = tableView.backgroundView as? QuoteListErrorView
+        let shouldReplaceErrorView = currentErrorView?.viewModel != errorView.viewModel
+        tableView.backgroundView = shouldReplaceErrorView ? errorView : tableView.backgroundView
     }
     
     // MARK: - Utils

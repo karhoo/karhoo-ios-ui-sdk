@@ -20,11 +20,12 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     init(
         router: QuoteListTableRouter,
         quotes: [Quote],
+        initialState: QuoteListState? = .loading,
         onQuoteSelected: @escaping (Quote) -> Void,
         onQuoteDetailsSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
-        self.state = quotes.isEmpty ? .empty(reason: .noResults) : .fetched(quotes: quotes)
+        self.state = initialState ?? (quotes.isEmpty ? .empty(reason: .noResults) : .fetched(quotes: quotes))
         self.onQuoteSelected = onQuoteSelected
         self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }

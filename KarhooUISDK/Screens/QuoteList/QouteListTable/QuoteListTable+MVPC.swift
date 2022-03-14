@@ -49,11 +49,19 @@ protocol QuoteListTablePresenter: AnyObject {
 protocol QuoteListTableRouter {
 }
 
-struct QuoteListTableErrorViewModel {
+struct QuoteListTableErrorViewModel: Equatable {
     let title: String
     let message: String?
     let attributedMessage: NSAttributedString?
     let imageName: String
     let actionTitle: String?
     let actionCallback: (() -> Void)?
+
+    static func == (lhs: QuoteListTableErrorViewModel, rhs: QuoteListTableErrorViewModel) -> Bool {
+        lhs.title == rhs.title &&
+        lhs.message == rhs.message &&
+        lhs.attributedMessage == rhs.attributedMessage &&
+        lhs.imageName == rhs.imageName &&
+        lhs.actionTitle == rhs.actionTitle
+    }
 }

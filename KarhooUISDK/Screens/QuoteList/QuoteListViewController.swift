@@ -189,7 +189,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
-        setHeaderDisabled { [weak self] in
+        setHeaderDisabled(hideAuxiliaryHeaderItems: true) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.loading)
         }
     }
@@ -224,7 +224,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
                 self?.quoteCategoryBarView.isHidden = false
-                self?.quoteSortView.setEnabled()
+                self?.quoteSortView.isHidden = false
                 self?.legalDisclaimerLabel.isHidden = false
             },
             completion: { _ in
@@ -241,7 +241,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
                 self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
-                self?.quoteSortView.setDisabled()
                 self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
                 self?.legalDisclaimerLabel.isHidden = hideAuxiliaryHeaderItems
             },
