@@ -20,6 +20,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private weak var presenter: QuoteListPresenter?
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+
     // MARK: - Header views
 
     private lazy var headerContainerView = UIView().then {
