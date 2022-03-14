@@ -242,11 +242,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         forceLightMode()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        showCheckoutView(true)
-    }
-    
     override func updateViewConstraints() {
         if didSetupConstraints == false {
             setupConstraintsForDefault()
