@@ -17,7 +17,7 @@ final class QuoteListErrorView: UIView {
     private enum Constants {
         static let imageViewSize = CGSize(width: 68, height: 70)
         static let titleFontSize = CGFloat(18)
-        static let messageFontSize = CGFloat(18)
+        static let messageFontSize = CGFloat(14)
     }
 
     // MARK: - Views
