@@ -133,7 +133,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleEmptyState(_ error: QuoteListState.Error) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
-        let errorView = QuoteListErrorViewBuilder.buildView(for: error)
+        let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: nil)
         tableView.backgroundView = errorView
     }
     

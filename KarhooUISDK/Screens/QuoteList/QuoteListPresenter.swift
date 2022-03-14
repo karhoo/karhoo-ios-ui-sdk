@@ -96,12 +96,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
         // Checkout component required this data
         setExpirationDates(of: quotes)
-        if quotes.all.isEmpty && quotes.status != .completed {
-            onStateUpdated?(.loading)
-        } else if quotes.all.isEmpty && quotes.status == .completed {
-            onStateUpdated?(.empty(reason: .noResults))
-        }
-        fetchedQuotes = quotes
+        fetchedQuotes = Quotes(quoteListId: quotes.quoteListId, quoteCategories: quotes.quoteCategories, all: [], validity: quotes.validity, status: quotes.status) //quotes
         // Why order is set based on location details?
         if journeyDetails.destinationLocationDetails != nil, journeyDetails.isScheduled {
             selectedQuoteOrder = .price
@@ -116,7 +111,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+            onStateUpdated?(.empty(reason: .noResults))
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
@@ -158,21 +153,19 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
-        switch (noQuotesInSelectedCategory, noQuotesForSelectedParapeters, sortedQuotes.isEmpty, fetchedQuotes.status) {
-        case (true, _, _, _):
+        onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
+
+        switch (noQuotesForTimeAndArea, noQuotesInSelectedCategory, fetchedQuotes.status) {
+        case (true, _, _):
+            onStateUpdated?(.empty(reason: .noResults))
+        case (_, true, _):
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
-        case (_, true, _, _):
-            onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
-        case (_, _, true, _):
-            onStateUpdated?(.loading)
-        case (_, _, _, .completed):
-            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
+        case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
-        default:
-            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
+        case (_, _, _):
             onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
 
@@ -200,25 +193,23 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
-        onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
-
-//        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-//        guard let details = details else {
-//            return
-//        }
-//        guard let destination = details.destinationLocationDetails,
-//            let origin = details.originLocationDetails else {
-//            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
-//            return
-//        }
-//        onStateUpdated?(.loading)
-//        let quoteSearch = QuoteSearch(origin: origin,
-//                                      destination: destination,
-//                                      dateScheduled: details.scheduledDate)
-//        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-//            self?.handleResult(result: result, jurneyDetails: details)
-//        }
-//        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
-//        refreshSubscription()
+        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        guard let details = details else {
+            return
+        }
+        guard let destination = details.destinationLocationDetails,
+            let origin = details.originLocationDetails else {
+            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
+            return
+        }
+        onStateUpdated?(.loading)
+        let quoteSearch = QuoteSearch(origin: origin,
+                                      destination: destination,
+                                      dateScheduled: details.scheduledDate)
+        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
+            self?.handleResult(result: result, jurneyDetails: details)
+        }
+        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
+        refreshSubscription()
     }
 }

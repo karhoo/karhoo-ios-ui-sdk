@@ -36,6 +36,7 @@ struct KarhooFonts {
     private let footnoteSize: CGFloat = 10
     
     private var boldFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .bold)
+    private var semiboldFont: UIFont = .systemFont(ofSize: 0, weight: .semibold)
     private var regularFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .regular)
     private var lightFont: UIFont = UIFont.systemFont(ofSize: 0, weight: .light)
     private var italicFont: UIFont = UIFont(descriptor: UIFont.systemFont(ofSize: 0, weight: .regular).fontDescriptor.withSymbolicTraits(.traitItalic)!, size: 0)
@@ -62,6 +63,10 @@ struct KarhooFonts {
     
     func getBoldFont(withSize size: CGFloat? = nil) -> UIFont {
         return size != nil ? boldFont.withSize(size!) : boldFont
+    }
+
+    func getSemiboldFont(withSize size: CGFloat? = nil) -> UIFont {
+        size != nil ? semiboldFont.withSize(size!) : semiboldFont
     }
     
     func getRegularFont(withSize size: CGFloat? = nil) -> UIFont {

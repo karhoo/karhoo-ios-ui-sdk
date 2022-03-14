@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 protocol QuoteListTableCoordinator: KarhooUISDKSceneCoordinator {
     var viewController: QuoteListTableViewController { get }
@@ -41,7 +42,18 @@ protocol QuoteListTablePresenter: AnyObject {
 
     func updateQuoteListState(_ state: QuoteListState)
 
+    func getErrorViewModel() -> QuoteListTableErrorViewModel
+
 }
 
 protocol QuoteListTableRouter {
+}
+
+struct QuoteListTableErrorViewModel {
+    let title: String
+    let message: String?
+    let attributedMessage: NSAttributedString?
+    let imageName: String
+    let actionTitle: String?
+    let actionCallback: (() -> Void)?
 }

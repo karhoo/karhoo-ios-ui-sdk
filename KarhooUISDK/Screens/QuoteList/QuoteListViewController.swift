@@ -205,7 +205,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleEmptyState(reason: QuoteListState.Error) {
-        setHeaderDisabled { [weak self] in
+        let hideAuxiliaryHeaderItems: Bool
+        switch reason {
+        case .noResults:
+            hideAuxiliaryHeaderItems = true
+        default:
+            hideAuxiliaryHeaderItems = false
+        }
+        setHeaderDisabled(hideAuxiliaryHeaderItems: hideAuxiliaryHeaderItems) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
         }
     }
@@ -217,23 +224,29 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
                 self?.quoteCategoryBarView.isHidden = false
                 self?.quoteSortView.setEnabled()
                 self?.legalDisclaimerLabel.isHidden = false
+            },
+            completion: { _ in
+                completion()
             }
-        ) { _ in
-            completion()
-        }
+        )
     }
 
-    private func setHeaderDisabled(completion: @escaping () -> Void = { }) {
+    private func setHeaderDisabled(
+        hideAuxiliaryHeaderItems: Bool = false,
+        completion: @escaping () -> Void = { }
+    ) {
         UIView.animate(
             withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
-                self?.quoteCategoryBarView.isHidden = true
+                self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
                 self?.quoteSortView.setDisabled()
-                self?.legalDisclaimerLabel.isHidden = true
+                self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
+                self?.legalDisclaimerLabel.isHidden = hideAuxiliaryHeaderItems
+            },
+            completion: { _ in
+                completion()
             }
-        ) { _ in
-            completion()
-        }
+        )
     }
 
     // TODO: Prepare and update values for all possible cases

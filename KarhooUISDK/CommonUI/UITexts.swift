@@ -403,6 +403,8 @@ public enum UITexts {
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
+        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
+        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
     }
     
     public enum Loyalty {
