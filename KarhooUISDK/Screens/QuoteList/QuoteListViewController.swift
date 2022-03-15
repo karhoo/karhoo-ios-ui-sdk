@@ -39,7 +39,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             addressPickerView,
             quoteCategoryBarView,
             quoteSortView,
-            legalDisclaimerLabel
+            legalDisclaimerContainer
         ]
     }
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
@@ -51,12 +51,15 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
         $0.set(actions: self)
     }
+    private lazy var legalDisclaimerContainer = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
     private lazy var legalDisclaimerLabel = UILabel().then {
         $0.accessibilityIdentifier = KHQuoteListViewID.prebookQuotesTitleLabel
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        $0.textAlignment = .center
-        $0.font = KarhooUI.fonts.bodyRegular()
+        $0.textAlignment = .right
+        $0.font = KarhooUI.fonts.captionBold()
         $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
@@ -128,6 +131,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
+        legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
         headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
         headerContainerView.addSubview(tableHeaderStackView)
         tableViewCoordinator.assignHeaderView(headerContainerView)
@@ -144,6 +148,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         quoteCategoryBarView.heightAnchor.constraint(
             equalToConstant: UIConstants.Dimension.View.largeRowHeight
         ).isActive = true
+
+        legalDisclaimerLabel.anchorToSuperview(
+            paddingTrailing: UIConstants.Spacing.standard
+        )
 
         tableHeaderStackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
