@@ -34,6 +34,9 @@ class KarhooBookingRouter: BookingRouter {
                 viewController?.navigationController?.navigationBar.barTintColor = navigationBarColor
                 viewController?.navigationController?.navigationBar.backIndicatorImage = backArrow
                 viewController?.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
+                viewController?.navigationController?.navigationBar.titleTextAttributes = [
+                    .foregroundColor: KarhooUI.colors.white
+                ]
                 viewController?.navigationItem.title = ""
             }
         }
