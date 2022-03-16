@@ -37,7 +37,7 @@ class QuoteView: UIView {
     private var logoLoadingImageView: LoadingImageView!
     private var name: UILabel!
     private var rideDetailStackView: UIStackView!
-    private var vehicleCapacityView: VehicleCapacityView!
+    private var vehicleCapacityView: NewVehicleCapacityView!
     private var capacityAndPickupTypeContainer: UIStackView!
     private var detailsButton: UIButton!
     private var middleStack: UIStackView!
@@ -129,7 +129,7 @@ class QuoteView: UIView {
             stack.spacing = 10.0
         }
 
-        vehicleCapacityView = VehicleCapacityView()
+        vehicleCapacityView = NewVehicleCapacityView()
 
         detailsButton = UIButton().then{ button in
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -155,7 +155,6 @@ class QuoteView: UIView {
             stack.accessibilityIdentifier = KHQuoteViewID.middleStackView
             stack.axis = .horizontal
             stack.alignment = .center
-            stack.spacing = UIStackView.spacingUseSystem
             stack.isLayoutMarginsRelativeArrangement = true
             stack.directionalLayoutMargins = NSDirectionalEdgeInsets(
                     top: 0,
