@@ -302,8 +302,7 @@ class QuoteView: UIView {
     }
     
     func set(viewModel: QuoteViewModel) {
-        // TODO: Add Vehicle type to name
-        name.text = "(\(viewModel.carType))"
+        name.text = viewModel.vehicleType
         eta.text = viewModel.scheduleMainValue
         fare.text = viewModel.fare
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,

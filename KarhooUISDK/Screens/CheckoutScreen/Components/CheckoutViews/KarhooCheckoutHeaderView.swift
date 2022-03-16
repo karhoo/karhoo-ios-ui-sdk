@@ -220,7 +220,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
     
     func set(viewModel: QuoteViewModel) {
         nameLabel.text = viewModel.fleetName
-        carTypeLabel.text = viewModel.carType
+        carTypeLabel.text = viewModel.vehicleType.capitalized
         
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")

@@ -265,17 +265,7 @@ public enum UITexts {
         public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
         public static let taxi = "Text.QuoteCategory.Taxi".localized
     }
-    
-    public enum VehicleClass {
-        public static let saloon = "Text.VehicleClass.Saloon".localized
-        public static let taxi = "Text.VehicleClass.Taxi".localized
-        public static let mpv = "Text.VehicleClass.MPV".localized
-        public static let exec = "Text.VehicleClass.Exec".localized
-        public static let moto = "Text.VehicleClass.Moto".localized
-        public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
-        public static let electric = "Text.VehicleClass.Electric".localized
-    }
-    
+
     public enum VehicleType {
         public static let moto = "Text.VehicleType.Moto".localized
         public static let standard = "Text.VehicleType.Standard".localized
