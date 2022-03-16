@@ -12,8 +12,9 @@ install! 'cocoapods',
 
 def common_pods
   pod 'Adyen', '3.7.0'
+  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :commit => 'e00e9df888ffe9fa75b29e6c4ecdeca802254464'
 #  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
-  pod 'KarhooSDK', '1.5.5'
+#  pod 'KarhooSDK', '1.5.5'
 end
 
 target 'Client' do
