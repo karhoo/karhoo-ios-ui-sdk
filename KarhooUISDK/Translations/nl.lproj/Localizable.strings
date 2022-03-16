@@ -1,3 +1,5 @@
+"Text.Generic.QuoteCell.DriverArrival" = "";
+
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
 
@@ -457,6 +459,8 @@
 "Text.Generic.Price" = "Prijs";
 
 "Text.Generic.PrivacyPolicy" = "Privacybeleid";
+
+"Text.Generic.QuoteCell.Details" = "";
 
 "Text.Generic.Register" = "Registreren";
 

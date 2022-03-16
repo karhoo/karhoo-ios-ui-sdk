@@ -37,7 +37,7 @@ class QuoteView: UIView {
     private var logoLoadingImageView: LoadingImageView!
     private var name: UILabel!
     private var rideDetailStackView: UIStackView!
-    private var vehicleCapacityView: NewVehicleCapacityView!
+    private var vehicleCapacityView: VehicleCapacityView!
     private var capacityAndPickupTypeContainer: UIStackView!
     private var detailsButton: UIButton!
     private var middleStack: UIStackView!
@@ -129,7 +129,7 @@ class QuoteView: UIView {
             stack.spacing = 10.0
         }
 
-        vehicleCapacityView = NewVehicleCapacityView()
+        vehicleCapacityView = VehicleCapacityView()
 
         detailsButton = UIButton().then{ button in
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -137,8 +137,7 @@ class QuoteView: UIView {
             button.backgroundColor = KarhooUI.colors.accent
             button.setTitleColor(KarhooUI.colors.white, for: .normal)
             button.titleLabel?.font = KarhooUI.fonts.footnoteRegular()
-            // TODO: Add to Phrase.com
-            button.setTitle("Details", for: .normal)
+            button.setTitle(UITexts.QuoteCell.details, for: .normal)
             button.clipsToBounds = true
             button.layer.cornerRadius = UIConstants.CornerRadius.large
             button.contentEdgeInsets = UIEdgeInsets(
@@ -186,8 +185,7 @@ class QuoteView: UIView {
             label.textAlignment = .right
             label.font = KarhooUI.fonts.footnoteRegular()
             label.textColor = KarhooUI.colors.darkGrey
-            // TODO: Add to Phrase.com
-            label.text = "Driver arrival"
+            label.text = UITexts.QuoteCell.driverArrival
         }
 
         // Price details stack

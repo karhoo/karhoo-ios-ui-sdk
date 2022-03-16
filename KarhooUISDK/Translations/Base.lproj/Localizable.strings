@@ -1,3 +1,5 @@
+"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
+
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -405,14 +407,14 @@
 "Text.Generic.ErrorMessage" = "Oops something went wrong";
 
 /* English: "Estimated" */
-"Text.Generic.Estimated" = "Estimated";
+"Text.Generic.Estimated" = "Estimated price";
 
 "Text.Generic.ETA" = "ETA";
 
 "Text.Generic.ETALong" = "Estimated arrival time";
 
 /* Reference to fixed pricing.. English equivalent: "Fixed" */
-"Text.Generic.Fixed" = "Fixed";
+"Text.Generic.Fixed" = "Fix price";
 
 /* "Got It" (generally used on alert buttons) */
 "Text.Generic.GotIt" = "Got It";
@@ -422,7 +424,7 @@
 "Text.Generic.MeetGreet" = "Meet and greet";
 
 /* Metered fare type displayed in quotes list: English: "Metered" */
-"Text.Generic.Metered" = "Metered";
+"Text.Generic.Metered" = "Metered price";
 
 "Text.Generic.Minutes" = "min";
 
@@ -457,6 +459,8 @@
 "Text.Generic.Price" = "Price";
 
 "Text.Generic.PrivacyPolicy" = "Privacy Policy";
+
+"Text.Generic.QuoteCell.Details" = "Details";
 
 "Text.Generic.Register" = "Register";
 

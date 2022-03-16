@@ -67,6 +67,11 @@ public enum UITexts {
         public static let unchecked = "Text.Generic.Unchecked".localized
     }
 
+    public enum QuoteCell {
+        public static let details = "Text.Generic.QuoteCell.Details".localized
+        public static let driverArrival = "Text.Generic.QuoteCell.DriverArrival".localized
+    }
+
     public enum GenericTripStatus {
         public static let requested = "Text.GenericTripStatus.Requested".localized
         public static let confirmed = "Text.GenericTripStatus.Confirmed".localized
