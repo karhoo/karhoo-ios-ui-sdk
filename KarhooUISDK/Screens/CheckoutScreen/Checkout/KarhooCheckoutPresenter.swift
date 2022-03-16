@@ -365,7 +365,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
             reportPaymentSuccess()
-            callback(.completed(result: trip))
+            routeToBooking(result: .completed(result: trip))
         } else if let error = result.errorValue() {
             reportPaymentFailure(error.message)
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
@@ -473,15 +473,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func didPressCloseOnExpirationAlert() {
         PassengerInfo.shared.set(details: view?.getPassengerDetails())
         routeToPreviousScene(result: ScreenResult.cancelled(byUser: false))
-    }
-
-    // TODO: to be removed
-    func screenHasFadedOut() {
-        if let trip = self.trip {
-             callback(ScreenResult.completed(result: trip))
-         } else {
-             callback(ScreenResult.cancelled(byUser: false))
-         }
     }
 
     private func isLoyaltyEnabled() -> Bool {
