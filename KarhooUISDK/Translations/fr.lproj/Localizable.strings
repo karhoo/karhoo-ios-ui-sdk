@@ -611,6 +611,10 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage" = "";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "";
+
 "Text.Quotes.Result" = "";
 
 "Text.Quotes.Results" = "";
