@@ -155,9 +155,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: KarhooUI.colors.white
-        ]
+        
         // back button for iOS < 13 must be configured in "previous" view controller,
         if #available(iOS 13.0, *) {
             let backArrow = UIImage.uisdkImage("back_arrow")
@@ -167,6 +165,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = navigationBarColor
             appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
+            appearance.titleTextAttributes = [
+                .foregroundColor: KarhooUI.colors.white
+            ]
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         }

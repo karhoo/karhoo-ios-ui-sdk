@@ -96,7 +96,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
         // Checkout component required this data
         setExpirationDates(of: quotes)
-        fetchedQuotes = Quotes(quoteListId: quotes.quoteListId, quoteCategories: quotes.quoteCategories, all: [], validity: quotes.validity, status: quotes.status) //quotes
+        fetchedQuotes = quotes
         // Why order is set based on location details?
         if journeyDetails.destinationLocationDetails != nil, journeyDetails.isScheduled {
             selectedQuoteOrder = .price

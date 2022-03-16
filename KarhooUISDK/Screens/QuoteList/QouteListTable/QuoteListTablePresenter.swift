@@ -102,4 +102,5 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return nil
         }
     }
+
 }

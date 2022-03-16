@@ -3461,9 +3461,9 @@
 			buildConfigurationList = FC8F472821539E24007841FB /* Build configuration list for PBXNativeTarget "KarhooUISDK" */;
 			buildPhases = (
 				088C04C08B254D9AF8BFB5B1 /* [CP] Check Pods Manifest.lock */,
+				FC8F471121539E24007841FB /* Headers */,
 				FC8F470F21539E24007841FB /* Sources */,
 				FC8F471021539E24007841FB /* Frameworks */,
-				FC8F471121539E24007841FB /* Headers */,
 				FC8F471221539E24007841FB /* Resources */,
 				5C8316B92469FCB200BAA926 /* SwiftLint Script */,
 			);
