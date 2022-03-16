@@ -1,0 +1,75 @@
+--acronyms 
+--allman false
+--assetliterals visual-width
+--beforemarks 
+--binarygrouping 4,8
+--categorymark "MARK: %c"
+--classthreshold 0
+--closingparen balanced
+--closurevoid remove
+--commas always
+--conflictmarkers reject
+--decimalgrouping 3,6
+--elseposition same-line
+--emptybraces no-space
+--enumthreshold 0
+--exponentcase lowercase
+--exponentgrouping disabled
+--extensionacl on-declarations
+--extensionlength 0
+--extensionmark "MARK: - %t + %c"
+--fractiongrouping disabled
+--fragment false
+--funcattributes prev-line
+--groupedextension "MARK: %c"
+--guardelse auto
+--header ignore
+--hexgrouping 4,8
+--hexliteralcase uppercase
+--ifdef indent
+--importgrouping testable-last
+--indent tab
+--indentcase false
+--indentstrings false
+--lifecycle 
+--lineaftermarks true
+--linebreaks lf
+--markcategories true
+--markextensions always
+--marktypes always
+--maxwidth 140
+--modifierorder 
+--nevertrailing 
+--nospaceoperators 
+--nowrapoperators 
+--octalgrouping 4,8
+--operatorfunc spaced
+--organizetypes actor,class,enum,struct
+--patternlet hoist
+--ranges spaced
+--redundanttype infer-locals-only
+--self init-only
+--selfrequired 
+--semicolons inline
+--shortoptionals always
+--smarttabs enabled
+--stripunusedargs closure-only
+--structthreshold 0
+--swiftversion 5.5
+--tabwidth 4
+--trailingclosures 
+--trimwhitespace always
+--typeattributes prev-line
+--typemark "MARK: - %t"
+--varattributes same-line
+--voidtype void
+--wraparguments before-first
+--wrapcollections before-first
+--wrapconditions before-first
+--wrapparameters before-first
+--wrapreturntype preserve
+--wrapternary default
+--wraptypealiases before-first
+--xcodeindentation disabled
+--yodaswap always
+--disable andOperator,anyObjectProtocol,assertionFailures,blankLinesAroundMark,blankLinesAtEndOfScope,blankLinesAtStartOfScope,blankLinesBetweenScopes,braces,consecutiveBlankLines,consecutiveSpaces,duplicateImports,elseOnSameLine,emptyBraces,enumNamespaces,extensionAccessControl,fileHeader,hoistPatternLet,indent,initCoderUnavailable,leadingDelimiters,linebreakAtEndOfFile,linebreaks,modifierOrder,numberFormatting,preferKeyPath,redundantBackticks,redundantBreak,redundantClosure,redundantExtensionACL,redundantFileprivate,redundantGet,redundantInit,redundantLet,redundantLetError,redundantNilInit,redundantObjc,redundantParens,redundantPattern,redundantRawValues,redundantReturn,redundantSelf,redundantType,redundantVoidReturnType,semicolons,sortedImports,spaceAroundBraces,spaceAroundBrackets,spaceAroundComments,spaceAroundGenerics,spaceAroundOperators,spaceAroundParens,spaceInsideBraces,spaceInsideBrackets,spaceInsideComments,spaceInsideGenerics,spaceInsideParens,strongOutlets,strongifiedSelf,todos,trailingClosures,trailingCommas,trailingSpace,typeSugar,unusedArguments,void,wrap,wrapArguments,wrapAttributes,wrapMultilineStatementBraces,yodaConditions
