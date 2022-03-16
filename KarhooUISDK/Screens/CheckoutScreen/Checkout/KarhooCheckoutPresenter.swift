@@ -359,13 +359,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
         self.trip = trip
         reportPaymentSuccess()
-        view?.showCheckoutView(false)
+        routeToBooking(result: ScreenResult.completed(result: trip))
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
             reportPaymentSuccess()
-            callback(.completed(result: trip))
+            routeToBooking(result: .completed(result: trip))
         } else if let error = result.errorValue() {
             reportPaymentFailure(error.message)
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
@@ -470,17 +470,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view?.showAsOverlay(item: popupDialog, animated: true)
     }
 
-    func didPressClose() {
+    func didPressCloseOnExpirationAlert() {
         PassengerInfo.shared.set(details: view?.getPassengerDetails())
-        view?.showCheckoutView(false)
-    }
-
-    func screenHasFadedOut() {
-        if let trip = self.trip {
-             callback(ScreenResult.completed(result: trip))
-         } else {
-             callback(ScreenResult.cancelled(byUser: false))
-         }
+        routeToPreviousScene(result: ScreenResult.cancelled(byUser: false))
     }
 
     private func isLoyaltyEnabled() -> Bool {
@@ -494,6 +486,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
+    }
+
+    private func routeToBooking(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
+            self?.callback(result)
+        }
+    }
+
+    func routeToPreviousScene(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popViewController(animated: true)
     }
     
     private func setUpBookingButtonState() {

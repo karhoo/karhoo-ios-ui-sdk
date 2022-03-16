@@ -58,6 +58,18 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
     }
+
+    func setDisabled() {
+        isUserInteractionEnabled = false
+        segmentedControl.isUserInteractionEnabled = false
+        segmentedControl.alpha = UIConstants.Alpha.disabled
+    }
+
+    func setEnabled() {
+        isUserInteractionEnabled = true
+        segmentedControl.isUserInteractionEnabled = true
+        segmentedControl.alpha = UIConstants.Alpha.enabled
+    }
     
     @objc
     func segmentControlChanged(_ sender: UISegmentedControl) {

@@ -172,7 +172,6 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         testObject.bookTripPressed()
         mockPaymentNonceProvider.triggerResult(OperationResult.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
-        testObject.screenHasFadedOut()
         XCTAssert(testCallbackResult?.isComplete() == true)
         XCTAssert(mockAnalytics.paymentSucceedCalled)
     }

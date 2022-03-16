@@ -16,8 +16,7 @@ protocol CheckoutPresenter {
     func addMoreDetails()
     func didAddPassengerDetails()
     func didPressFareExplanation()
-    func didPressClose()
-    func screenHasFadedOut()
+    func didPressCloseOnExpirationAlert()
     func isKarhooUser() -> Bool
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool
     func updateBookButtonWithEnabledState()
@@ -25,7 +24,6 @@ protocol CheckoutPresenter {
 
 protocol CheckoutView: BaseViewController {
     var areTermsAndConditionsAccepted: Bool { get }
-    func showCheckoutView(_ show: Bool)
     func setRequestingState()
     func setAddFlightDetailsState()
     func setPassenger(details: PassengerDetails?)

@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 public class KarhooComponents: BookingScreenComponents {
 
@@ -33,9 +34,16 @@ public class KarhooComponents: BookingScreenComponents {
         return addressBarView
     }
 
-    public func quoteList(onQuoteSelected: @escaping (Quote) -> Void) -> QuoteListView {
-        let view = QuoteList.build(onQuoteSelected: onQuoteSelected)
-        return view
+    public func quoteList(
+        navigationController: UINavigationController,
+        journeyDetails: JourneyDetails,
+        onQuoteSelected: ((Quote) -> Void)?
+    ) -> QuoteListCoordinator {
+        KarhooQuoteListCoordinator(
+            navigationController: navigationController,
+            journeyDetails: journeyDetails,
+            onQuoteSelected: onQuoteSelected
+        )
     }
     
     public func passengerDetails(details: PassengerDetails?,

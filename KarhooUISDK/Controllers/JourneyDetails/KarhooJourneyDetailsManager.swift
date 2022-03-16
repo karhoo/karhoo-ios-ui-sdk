@@ -69,6 +69,10 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
         status = journeyDetails
         broadcastState()
     }
+    
+    public func silentReset(with journeyDetails: JourneyDetails) {
+        status = journeyDetails
+    }
 
     public func getJourneyDetails() -> JourneyDetails? {
         return status

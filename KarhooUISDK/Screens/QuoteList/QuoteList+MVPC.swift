@@ -10,6 +10,7 @@ import KarhooSDK
 
 public enum QuoteListState {
     case loading
+    case fetching(quotes: [Quote])
     case fetched(quotes: [Quote])
     case empty(reason: Error)
 
@@ -21,21 +22,26 @@ public enum QuoteListState {
         case KarhooErrorQ0001
         case noQuotesInSelectedCategory // error message: UITexts.Availability.noQuotesInSelectedCategory
         case noQuotesForSelectedParameters // error message: UITexts.Availability.noQuotesForSelectedParameters
-        case example
     }
 }
 
-public protocol QuoteListView: UIViewController {
+public protocol QuoteListCoordinator: KarhooUISDKSceneCoordinator {
+}
 
-    func categoriesDidChange(categories: [QuoteCategory], quoteListId: String?)
+protocol QuoteListViewController: BaseViewController {
 
+    func setupBinding(_ presenter: QuoteListPresenter)
 }
 
 protocol QuoteListPresenter: AnyObject {
     
+    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)? { get set }
+
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
-    func screenWillAppear()
+    func viewDidLoad()
+
+    func viewWillAppear()
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 
@@ -48,9 +54,9 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectCategory(_ category: QuoteCategory)
 }
 
-protocol QuoteListRouter {
+protocol QuoteListRouter: AnyObject {
 
-    func routeToQuote(_ quote: Quote)
+    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
 
     func routeToQuoteDetails(_ quote: Quote)
 }

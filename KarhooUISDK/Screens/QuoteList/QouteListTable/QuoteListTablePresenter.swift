@@ -1,5 +1,5 @@
 //  
-//  NewQuoteListPresenter.swift
+//  QuoteListTablePresenter.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -9,16 +9,16 @@
 import Foundation
 import KarhooSDK
 
-class KarhooNewQuoteListPresenter: NewQuoteListPresenter {
+class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
-    private let router: NewQuoteListRouter
+    private let router: QuoteListTableRouter
     let onQuoteSelected: (Quote) -> Void
     let onQuoteDetailsSelected: (Quote) -> Void
     var onQuoteListStateUpdated: ((QuoteListState) -> Void)?
     var state: QuoteListState
 
     init(
-        router: NewQuoteListRouter,
+        router: QuoteListTableRouter,
         quotes: [Quote],
         onQuoteSelected: @escaping (Quote) -> Void,
         onQuoteDetailsSelected: @escaping (Quote) -> Void

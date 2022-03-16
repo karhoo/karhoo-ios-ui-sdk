@@ -34,7 +34,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: - Properties
 
     private var didSetupConstraints = false
-    private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
     private let smallSpacing: CGFloat = 8.0
     private let standardSpacing: CGFloat = 16.0
@@ -233,6 +232,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         presenter.screenWillAppear()
     }
     
@@ -240,11 +240,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         super.viewDidLoad()
         passengerDetailsAndPaymentView.details = initialisePassengerDetails()
         forceLightMode()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showCheckoutView(true)
     }
     
     override func updateViewConstraints() {
@@ -289,7 +284,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        container.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         backButton.anchor(top: container.topAnchor,
                           leading: container.leadingAnchor,
@@ -297,8 +292,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                           paddingBottom: standardSpacing,
                           width: standardButtonSize * 2)
         
-        containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
-        containerBottomConstraint.isActive = true
         baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
 
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
@@ -428,22 +421,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.scrollTo(termsConditionsView, animated: true)
     }
 
-    func showCheckoutView(_ show: Bool) {
-        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
-        UIView.animate(
-            withDuration: drawAnimationTime,
-            animations: { [weak self] in
-                self?.view.layoutIfNeeded()
-            },
-            completion: { [weak self] completed in
-                if completed && !show {
-                    self?.presenter.screenHasFadedOut()
-                    self?.dismiss(animated: false, completion: nil)
-                }
-            }
-        )
-    }
-
     // MARK: Data management
     
     func getPassengerDetails() -> PassengerDetails? {
@@ -482,7 +459,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                 actions: [
                     AlertAction(title: UITexts.Generic.ok, style: .default) { [weak self] _ in
                         self?.setDefaultState()
-                        self?.presenter.didPressClose()
+                        self?.presenter.didPressCloseOnExpirationAlert()
                     }
                 ]
             )
@@ -524,6 +501,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     @objc private func backButtonPressed() {
-        presenter.didPressClose()
+        navigationController?.popViewController(animated: true)
     }
 }

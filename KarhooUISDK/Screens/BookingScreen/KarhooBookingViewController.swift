@@ -8,7 +8,6 @@
 
 import UIKit
 import KarhooSDK
-import FloatingPanel
 import CoreLocation
 
 final class KarhooBookingViewController: UIViewController, BookingView {
@@ -18,34 +17,24 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
-    private lazy var quoteListView = KarhooUI.components.quoteList(onQuoteSelected: { [weak self] in
-        self?.hideQuoteList()
-        self?.presenter.didSelectQuote(quote: $0)
-    })
-    private var quoteListPanelVC: FloatingPanelController?
     private var mapView: MapView = KarhooMKMapView()
     private var sideMenu: SideMenu?
-    private let grabberTopPadding: CGFloat = 6.0
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
-    private let addressBarPresenter: AddressBarPresenter
     private let mapPresenter: BookingMapPresenter
     private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
 
     init(presenter: BookingPresenter,
-         addressBarPresenter: AddressBarPresenter = BookingAddressBarPresenter(),
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
-        self.addressBarPresenter = addressBarPresenter
         self.mapPresenter = mapPresenter
         self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
-        
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
 
@@ -105,16 +94,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomNotificationViewBottomConstraint = bottomNotificationView.bottomAnchor.constraint(
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
-
-//        quoteListView.set(quoteListActions: self)
-    
-        setupQuoteListPanel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
         sideMenu?.hideMenu()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         mapView.set(userMarkerVisible: true)
     }
     
@@ -127,57 +113,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private func setupMapView(reverseGeolocate: Bool) {
         mapPresenter.load(map: mapView, reverseGeolocate: reverseGeolocate)
         mapView.set(presenter: mapPresenter)
-    }
-
-    private func setupQuoteListPanel() {
-        let mainPanelVC = FloatingPanelController()
-        
-        let appearance = SurfaceAppearance()
-        appearance.cornerRadius = 8.0
-        appearance.backgroundColor = .clear
-        
-        let shadow = SurfaceAppearance.Shadow()
-        shadow.color = .black
-        shadow.offset = CGSize(width: 0, height: 16)
-        shadow.radius = 16
-        shadow.spread = 8
-        appearance.shadows = [shadow]
-        
-        mainPanelVC.delegate = self
-        mainPanelVC.isRemovalInteractionEnabled = false
-        mainPanelVC.surfaceView.appearance = appearance
-        mainPanelVC.surfaceView.backgroundColor = .clear
-
-        mainPanelVC.set(contentViewController: quoteListView)
-        setupGrabberHandle(forVC: mainPanelVC)
-        quoteListPanelVC = mainPanelVC
-    }
-
-    private func setupGrabberHandle(forVC mainPanelVC: FloatingPanelController) {
-        let grabberHandleView = KarhooGrabberHandleView()
-        mainPanelVC.surfaceView.grabberHandle.isHidden = true
-        mainPanelVC.surfaceView.addSubview(grabberHandleView)
-        grabberHandleView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            grabberHandleView.topAnchor
-                .constraint(equalTo: mainPanelVC.surfaceView.topAnchor, constant: grabberTopPadding),
-            grabberHandleView.widthAnchor
-                .constraint(equalToConstant: grabberHandleView.frame.width),
-            grabberHandleView.heightAnchor
-                .constraint(equalToConstant: grabberHandleView.frame.height),
-            grabberHandleView.centerXAnchor
-                .constraint(equalTo: mainPanelVC.surfaceView.centerXAnchor)
-            ])
-
-        let action = #selector(floatingViewGrabberHandleTapped(_:))
-        let tap = UITapGestureRecognizer(target: self, action: action)
-        grabberHandleView.addGestureRecognizer(tap)
-    }
-
-    @objc
-    func floatingViewGrabberHandleTapped(_ sender: UITapGestureRecognizer) {
-        let moveTo: FloatingPanelState = quoteListPanelVC?.state == .full ?  .half : .full
-        self.quoteListPanelVC?.move(to: moveTo, animated: true)
     }
     
     private func setupBottomNotification() {
@@ -196,15 +131,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomNotificationView?.addLink(linkText) { [weak self] in
             _ = self?.feedbackMailComposer.showNoCoverageEmail()
         }
-    }
-
-    func showQuoteList() {
-        quoteListPanelVC?.addPanel(toParent: self, at: -1, animated: true)
-        setMapPadding(bottomPaddingEnabled: true)
-    }
-
-    func hideQuoteList() {
-        quoteListPanelVC?.removePanelFromParent(animated: true)
     }
 
     func reset() {
@@ -243,33 +169,12 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         tripAllocationView.dismissScreen()
     }
 
-    func setMapPadding(bottomPaddingEnabled: Bool) {
-        let margin: CGFloat = 10
-        let extraPadding: CGFloat = 10
-        let addressBarBottom = (addressBar.frame.maxY) + extraPadding * 2
-        let bottomContainerTop: CGFloat = bottomPaddingEnabled ? (QuoteListPanelLayout.compactSize + extraPadding) : 0
-        
-        let padding = UIEdgeInsets(top: addressBarBottom,
-                                   left: margin,
-                                   bottom: bottomContainerTop,
-                                   right: margin)
-        mapView.set(padding: padding)
-    }
-
     func set(sideMenu: SideMenu) {
         self.sideMenu = sideMenu
     }
 
     func set(leftNavigationButton: NavigationBarItemIcon) {
         navigationBar.set(leftIcon: leftNavigationButton)
-    }
-}
-
-extension KarhooBookingViewController: FloatingPanelControllerDelegate {
-
-    func floatingPanel(_ vc: FloatingPanelController,
-                       layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
-        return QuoteListPanelLayout()
     }
 }
 
@@ -362,8 +267,11 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             validatedJourneyInfo = journeyInfo
         }
 
-        let bookingPresenter = KarhooBookingPresenter(callback: callback)
+        let router = KarhooBookingRouter()
+        let bookingPresenter = KarhooBookingPresenter(router: router, callback: callback)
         let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
+        router.viewController = bookingViewController
+        router.checkoutScreenBuilder = UISDKScreenRouting.default.checkout()
 
         if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
@@ -376,13 +284,13 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             let navigationController = UINavigationController(rootViewController: bookingViewController)
             navigationController.viewControllers.insert(sideMenu.getFlowItem(),
                     at: navigationController.viewControllers.endIndex)
-            navigationController.setNavigationBarHidden(true, animated: false)
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
         } else {
+            let navigationController = UINavigationController(rootViewController: bookingViewController)
+            navigationController.modalPresentationStyle = .fullScreen
             bookingViewController.set(leftNavigationButton: .exitIcon)
-            bookingViewController.modalPresentationStyle = .fullScreen
-            return bookingViewController
+            return navigationController
         }
     }
 }

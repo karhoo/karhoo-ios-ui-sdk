@@ -1,5 +1,5 @@
 //  
-//  NewQuoteListViewController.swift
+//  QuoteListTableViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -9,20 +9,23 @@
 import UIKit
 import KarhooSDK
 
-class KarhooNewQuoteListViewController: UIViewController, BaseViewController, NewQuoteListViewController {
+class KarhooQuoteListTableViewController: UIViewController, BaseViewController, QuoteListTableViewController {
 
     // MARK: - Properties
 
-    private var presenter: NewQuoteListPresenter!
+    private var presenter: QuoteListTablePresenter!
 
     // MARK: - Views
 
-    private lazy var activityIndicator = UIActivityIndicatorView()
+    private lazy var activityIndicator = UIActivityIndicatorView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConstants.Dimension.View.loadingViewHeight)
+        $0.color = KarhooUI.colors.accent
+    }
     private lazy var tableView = UITableView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
-        $0.separatorStyle = .singleLine
+        $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
         $0.tableFooterView = activityIndicator
@@ -40,6 +43,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     override func loadView() {
         view = UIView()
+        view.backgroundColor = KarhooUI.colors.background1
         setupView()
     }
 
@@ -56,7 +60,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: NewQuoteListPresenter) {
+    func setupBinding(_ presenter: QuoteListTablePresenter) {
         self.presenter = presenter
         presenter.onQuoteListStateUpdated = { [weak self] state in
             self?.handleState(state)
@@ -72,6 +76,7 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
     }
 
     private func setupProperties() {
+        view.backgroundColor = KarhooUI.colors.background1
     }
 
     private func setupHierarchy() {
@@ -88,24 +93,45 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         switch state {
         case .loading:
             handleLoadingState()
+        case .fetching:
+            handleFetchingState()
         case .fetched:
-            handleFetchState()
+            handleFetchedState()
         case .empty:
             handleEmptyState()
         }
-        tableView.reloadData()
     }
 
     private func handleLoadingState() {
         activityIndicator.startAnimating()
+        if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
+            tableView.beginUpdates()
+            tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
+        }
     }
 
-    private func handleFetchState() {
+    private func handleFetchingState() {
+        activityIndicator.startAnimating()
+        if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.beginUpdates()
+            tableView.insertSections(IndexSet(integer: 0), with: .automatic)
+            tableView.endUpdates()
+        } else {
+            tableView.reloadData()
+        }
+    }
+
+    private func handleFetchedState() {
         activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
 
     private func handleEmptyState() {
         activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
     
     // MARK: - Utils
@@ -114,22 +140,20 @@ class KarhooNewQuoteListViewController: UIViewController, BaseViewController, Ne
         switch presenter.state {
         case .loading, .empty:
             return []
-        case .fetched(let quotes):
+        case .fetching(let quotes), .fetched(let quotes):
             return quotes
         }
     }
 
     // MARK: - Scene Input methods
 
-    func updateQuoteListState(_ state: QuoteListState) {
-        DispatchQueue.main.async { [weak self] in
-            self?.presenter.updateQuoteListState(state)
-        }
+    func assignHeaderView(_ view: UIView) {
+        tableView.tableHeaderView = view
     }
 }
 
     // MARK: - TableView delegate & data source
-extension KarhooNewQuoteListViewController: UITableViewDelegate, UITableViewDataSource {
+extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         getQuotes().count

@@ -23,26 +23,29 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
-    let onQuoteSelected: (Quote) -> Void
+    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Lifecycle
 
     init(
+        journeyDetails: JourneyDetails? = nil,
         router: QuoteListRouter,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        onQuoteSelected: @escaping (Quote) -> Void
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.router = router
         self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
         self.quoteSorter = quoteSorter
         self.analytics = analytics
-        self.onQuoteSelected = onQuoteSelected
         journeyDetailsManager.add(observer: self)
+        
+        if let journeyDetails = journeyDetails {
+            journeyDetailsManager.silentReset(with: journeyDetails)
+        }
     }
 
     deinit {
@@ -50,12 +53,16 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
     }
 
-    func screenWillAppear() {
+    func viewDidLoad() {
+    }
+
+    func viewWillAppear() {
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
         analytics.quoteListOpened(journeyDetails)
+        journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
     }
 
     // MARK: - Endpoints
@@ -71,8 +78,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuote(_ quote: Quote) {
-//        router.routeToQuote(quote)
-        onQuoteSelected(quote)
+        guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else { return }
+        router.routeToQuote(quote, journeyDetails: journeyDetails)
     }
 
     func didSelectQuoteDetails(_ quote: Quote) {
@@ -80,7 +87,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectCategory(_ category: QuoteCategory) {
-        // TODO: finish implementation
+        selectedQuoteCategory = category
+        updateViewQuotes()
     }
 
     // MARK: - Private
@@ -150,16 +158,24 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForSelectedParameters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
-        
-        if noQuotesInSelectedCategory {
+        let noQuotesForSelectedParapeters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+        let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
+
+        switch (noQuotesInSelectedCategory, noQuotesForSelectedParapeters, sortedQuotes.isEmpty, fetchedQuotes.status) {
+        case (true, _, _, _):
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
-        } else if noQuotesForSelectedParameters {
+        case (_, true, _, _):
             onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
-        } else {
-            let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
+        case (_, _, true, _):
+            onStateUpdated?(.loading)
+        case (_, _, _, .completed):
+            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
             onStateUpdated?(.fetched(quotes: sortedQuotes))
+        default:
+            onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
+            onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
+
         handleQuoteStatus()
     }
 

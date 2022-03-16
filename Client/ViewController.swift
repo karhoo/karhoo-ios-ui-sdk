@@ -207,28 +207,37 @@ class ViewController: UIViewController {
 //                            phoneNumber: "+15005550006",
 //                            locale: "en")
 
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
-                                                                    passengerDetails: passangerDetails,
-                                                                    callback: { [weak self] result in
-                                                                        self?.handleBookingScreenResult(result: result)
-                                                                    }) as? BookingScreen
-        self.present(booking!,
-                     animated: true,
-                     completion: nil)
+        booking = KarhooUI().screens().booking()
+            .buildBookingScreen(
+                journeyInfo: journeyInfo,
+                passengerDetails: passangerDetails,
+                callback: { [weak self] result in
+                    self?.handleBookingScreenResult(result: result)
+                }
+            )
+        
+        self.present(
+            booking!,
+            animated: true,
+            completion: nil
+        )
     }
-    
+
     private func handleBookingScreenResult(result: ScreenResult<BookingScreenResult>) {
+        let bookingInNavigationStack = (booking as? UINavigationController)?.viewControllers.first { $0 is BookingScreen }
+        let bookingScreen = (booking as? BookingScreen) ?? (bookingInNavigationStack as? BookingScreen)
+
         switch result {
             
         case .completed(let bookingScreenResult):
           switch bookingScreenResult {
               
           case .tripAllocated(let trip):
-              (booking as? BookingScreen)?.openTrip(trip)
+              bookingScreen?.openTrip(trip)
               
           case .prebookConfirmed(let trip, let prebookConfirmationAction):
               if case .rideDetails = prebookConfirmationAction {
-                  (booking as? BookingScreen)?.openRideDetailsFor(trip)
+                  bookingScreen?.openRideDetailsFor(trip)
               }
               
           default:

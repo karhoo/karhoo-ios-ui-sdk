@@ -9,7 +9,12 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockQuoteListView: UIViewController, QuoteListView {
+final class MockQuoteListView: UIViewController, QuoteListViewController {
+    
+    var setupBindingCalled = false
+    func setupBinding(_ presenter: QuoteListPresenter) {
+        setupBindingCalled = true
+    }
 
     private(set) var quotesSet: [Quote]?
     private(set) var showQuotesAnimated: Bool?
