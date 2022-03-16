@@ -59,6 +59,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeTitle
+        case .empty(reason: .originAndDestinationAreTheSame):
+            return UITexts.Quotes.errorPickupAndDestinationSameTitle
         default:
             return ""
         }
@@ -68,6 +70,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeMessage
+        case .empty(reason: .originAndDestinationAreTheSame):
+            return UITexts.Quotes.errorPickupAndDestinationSameMessage
         default:
             return nil
         }
@@ -84,6 +88,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return "quoteList_error_no_availability"
+        case .empty(reason: .originAndDestinationAreTheSame):
+            return "quoteList_error_pickup_destination_similar"
         default:
             return "quoteList_error_no_availability"
         }

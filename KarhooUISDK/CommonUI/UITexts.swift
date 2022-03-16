@@ -405,6 +405,8 @@ public enum UITexts {
         static let results = "Text.Quotes.Results".localized
         static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
         static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
+        static let errorPickupAndDestinationSameTitle = "Text.Quotes.ErrorPickupAndDestinationSameTitle".localized
+        static let errorPickupAndDestinationSameMessage = "Text.Quotes.ErrorPickupAndDestinationSameMessage".localized
     }
     
     public enum Loyalty {
