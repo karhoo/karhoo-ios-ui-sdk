@@ -4,15 +4,6 @@
 //
 
 import Foundation
-
-//
-//  VehicleCapacityView.swift
-//  KarhooUISDK
-//
-//
-//  Copyright © 2020 Karhoo. All rights reserved.
-//
-
 import UIKit
 import KarhooSDK
 
@@ -63,7 +54,7 @@ final class NewVehicleCapacityView: UIStackView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageIcon
-        imageView.anchor(width: 14.0, height: 14.0)
+        imageView.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
         return imageView
     }()
 
@@ -71,7 +62,7 @@ final class NewVehicleCapacityView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageCapacityLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.primary
         label.font = KarhooUI.fonts.footnoteRegular()
         return label
     }()
@@ -81,7 +72,7 @@ final class NewVehicleCapacityView: UIStackView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityIcon
-        imageView.anchor(width: 14.0, height: 14.0)
+        imageView.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
         return imageView
     }()
 
@@ -89,7 +80,7 @@ final class NewVehicleCapacityView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHNewVehicleCapacityViewID.passengerCapacityLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.primary
         label.font = KarhooUI.fonts.footnoteRegular()
         return label
     }()
@@ -110,7 +101,7 @@ final class NewVehicleCapacityView: UIStackView {
         accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityView
         backgroundColor = .clear
         axis = .horizontal
-        spacing = 5.0
+        spacing = UIConstants.Spacing.small
         alignment = .center
         distribution = .fillProportionally
 

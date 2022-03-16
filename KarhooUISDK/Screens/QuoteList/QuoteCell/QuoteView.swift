@@ -115,7 +115,7 @@ class QuoteView: UIView {
         name = UILabel().then { name in
             name.translatesAutoresizingMaskIntoConstraints = false
             name.accessibilityIdentifier = KHQuoteViewID.name
-            name.textColor = KarhooUI.colors.darkGrey
+            name.textColor = KarhooUI.colors.text
             name.font = KarhooUI.fonts.bodyBold()
             name.numberOfLines = 0
             name.lineBreakMode = .byWordWrapping
@@ -176,7 +176,7 @@ class QuoteView: UIView {
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
             label.textAlignment = .right
             label.font = KarhooUI.fonts.headerBold()
-            label.textColor = KarhooUI.colors.darkGrey
+            label.textColor = KarhooUI.colors.black
         }
         etaDescription = UILabel().then{ label in
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -184,7 +184,7 @@ class QuoteView: UIView {
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
             label.textAlignment = .right
             label.font = KarhooUI.fonts.footnoteRegular()
-            label.textColor = KarhooUI.colors.darkGrey
+            label.textColor = KarhooUI.colors.text
             label.text = UITexts.QuoteCell.driverArrival
         }
 
@@ -200,7 +200,7 @@ class QuoteView: UIView {
         fare.accessibilityIdentifier = KHQuoteViewID.fare
         fare.textAlignment = .right
         fare.font = KarhooUI.fonts.headerBold()
-        fare.textColor = KarhooUI.colors.darkGrey
+        fare.textColor = KarhooUI.colors.black
 
         fareType = UILabel()
         fareType.translatesAutoresizingMaskIntoConstraints = false
@@ -208,7 +208,7 @@ class QuoteView: UIView {
         fareType.setContentCompressionResistancePriority(.required, for: .horizontal)
         fareType.textAlignment = .right
         fareType.font = KarhooUI.fonts.footnoteRegular()
-        fareType.textColor = KarhooUI.colors.darkGrey
+        fareType.textColor = KarhooUI.colors.text
 
         // Bottom stack
        lineSeparator = LineView(
@@ -240,7 +240,7 @@ class QuoteView: UIView {
         fleetName = UILabel().then { fleetName in
             fleetName.translatesAutoresizingMaskIntoConstraints = false
             fleetName.accessibilityIdentifier = KHQuoteViewID.fleetName
-            fleetName.textColor = KarhooUI.colors.darkGrey
+            fleetName.textColor = KarhooUI.colors.text
             fleetName.font = KarhooUI.fonts.footnoteBold()
             fleetName.numberOfLines = 0
             fleetName.lineBreakMode = .byWordWrapping
