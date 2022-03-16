@@ -458,6 +458,10 @@
 
 "Text.Generic.PrivacyPolicy" = "Privacybeleid";
 
+"Text.Generic.QuoteCell.Details" = "";
+
+"Text.Generic.QuoteCell.DriverArrival" = "";
+
 "Text.Generic.Register" = "Registreren";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -589,6 +593,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
 
+"Text.Quote.Results" = "%1$@ resultaten";
+
 "Text.QuoteCategory.Electric" = "Elektrisch";
 
 "Text.QuoteCategory.Exec" = "Executive";
@@ -604,6 +610,10 @@
 "Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Over";
