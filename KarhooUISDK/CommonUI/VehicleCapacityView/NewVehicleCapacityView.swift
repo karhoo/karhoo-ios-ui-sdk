@@ -115,12 +115,12 @@ final class NewVehicleCapacityView: UIStackView {
             trailing: UIConstants.Spacing.xSmall
         )
         baggageImageView.anchor(
-            width: UIConstants.Dimension.Icon.medium,
-            height: UIConstants.Dimension.Icon.medium
+            width: UIConstants.Dimension.Icon.small,
+            height: UIConstants.Dimension.Icon.small
         )
         passengerCapacityImageView.anchor(
-            width: UIConstants.Dimension.Icon.medium,
-            height: UIConstants.Dimension.Icon.medium
+            width: UIConstants.Dimension.Icon.small,
+            height: UIConstants.Dimension.Icon.small
         )
     }
 
