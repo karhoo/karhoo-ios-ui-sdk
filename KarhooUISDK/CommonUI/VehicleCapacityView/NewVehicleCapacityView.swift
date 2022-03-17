@@ -9,7 +9,9 @@ import KarhooSDK
 
 public struct KHNewVehicleCapacityViewID {
     public static let capacityView = "vehicle_capacity_view"
+    public static let passengerContainerView = "passenger_stack_container"
     public static let passengerStack = "passenger_stack"
+    public static let baggageContainerView = "baggage_stack_container"
     public static let baggageStack = "baggage_stack"
     public static let baggageIcon = "baggage_image"
     public static let baggageCapacityLabel = "baggage_capacity_label"
@@ -19,19 +21,27 @@ public struct KHNewVehicleCapacityViewID {
 
 final class NewVehicleCapacityView: UIStackView {
 
+    private lazy var passengerContainerView = UIView().then { view in
+        view.backgroundColor =  KarhooUI.colors.background1
+        view.accessibilityIdentifier = KHNewVehicleCapacityViewID.passengerContainerView
+        view.clipsToBounds = true
+        view.layer.cornerRadius = UIConstants.CornerRadius.xSmall
+    }
+
     private lazy var passengerStack = UIStackView().then {stack in
-        stack.backgroundColor = KarhooUI.colors.background1
         stack.accessibilityIdentifier = KHNewVehicleCapacityViewID.passengerStack
-        stack.clipsToBounds = true
-        stack.layer.cornerRadius = UIConstants.CornerRadius.xSmall
         stack.spacing = UIConstants.Spacing.xxSmall
+    }
+
+    private lazy var baggageContainerView = UIView().then { view in
+        view.backgroundColor =  KarhooUI.colors.background1
+        view.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageContainerView
+        view.clipsToBounds = true
+        view.layer.cornerRadius = UIConstants.CornerRadius.xSmall
     }
 
     private lazy var baggageStack = UIStackView().then {stack in
         stack.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageStack
-        stack.backgroundColor = KarhooUI.colors.background1
-        stack.clipsToBounds = true
-        stack.layer.cornerRadius = UIConstants.CornerRadius.xSmall
         stack.spacing = UIConstants.Spacing.xxSmall
     }
 
@@ -91,15 +101,18 @@ final class NewVehicleCapacityView: UIStackView {
     }
 
     private func setupHierarchy(){
-        addArrangedSubview(baggageStack)
+        addArrangedSubview(baggageContainerView)
+        baggageContainerView.addSubview(baggageStack)
         baggageStack.addArrangedSubview(baggageImageView)
         baggageStack.addArrangedSubview(baggageCapacityLabel)
-        addArrangedSubview(passengerStack)
+        addArrangedSubview(passengerContainerView)
+        passengerContainerView.addSubview(passengerStack)
         passengerStack.addArrangedSubview(passengerCapacityImageView)
         passengerStack.addArrangedSubview(passengerCapacityLabel)
     }
 
     private func setupLayout(){
+        passengerStack.anchorToSuperview()
         passengerStack.isLayoutMarginsRelativeArrangement = true
         passengerStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: UIConstants.Spacing.xxSmall,
@@ -107,6 +120,7 @@ final class NewVehicleCapacityView: UIStackView {
             bottom: UIConstants.Spacing.xxSmall,
             trailing: UIConstants.Spacing.xSmall
         )
+        baggageStack.anchorToSuperview()
         baggageStack.isLayoutMarginsRelativeArrangement = true
         baggageStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: UIConstants.Spacing.xxSmall,
