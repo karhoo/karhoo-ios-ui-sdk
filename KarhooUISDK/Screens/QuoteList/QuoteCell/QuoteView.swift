@@ -25,6 +25,7 @@ public struct KHQuoteViewID {
     public static let fareType = "fareType_label"
     public static let lineSeparator = "line_separator"
     public static let bottomStack = "bottom_stack"
+    public static let bottomStackContainer = "bottom_stack_container"
     public static let bottomImage = "bottom_image"
     public static let fleetName = "fleet_name"
 }
@@ -33,6 +34,7 @@ class QuoteView: UIView {
     private var didSetupConstraints: Bool = false
 
     private var containerStack: UIStackView!
+    private var viewWithBorder: UIView!
     private var carInfoView: UIView!
     private var logoLoadingImageView: LoadingImageView!
     private var name: UILabel!
@@ -49,6 +51,7 @@ class QuoteView: UIView {
     private var fareType: UILabel!
     private var lineSeparator: LineView!
     private var bottomStack: UIStackView!
+    private var bottomStackContainer: UIView!
     private var bottomImage: LoadingImageView!
     private var fleetName: UILabel!
 
@@ -90,8 +93,13 @@ class QuoteView: UIView {
             stack.alignment = .fill
             stack.clipsToBounds = true
             stack.layer.cornerRadius = UIConstants.CornerRadius.large
-            stack.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-            stack.layer.borderColor = KarhooUI.colors.border.cgColor
+        }
+
+        viewWithBorder = UIView().then{ view in
+            view.clipsToBounds = true
+            view.layer.cornerRadius = UIConstants.CornerRadius.large
+            view.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+            view.layer.borderColor = KarhooUI.colors.border.cgColor
         }
 
         carInfoView = UIView().then { view in
@@ -140,12 +148,6 @@ class QuoteView: UIView {
             button.setTitle(UITexts.QuoteCell.details, for: .normal)
             button.clipsToBounds = true
             button.layer.cornerRadius = UIConstants.CornerRadius.large
-            button.contentEdgeInsets = UIEdgeInsets(
-                    top: UIConstants.Spacing.small,
-                    left: UIConstants.Spacing.standard,
-                    bottom: UIConstants.Spacing.small,
-                    right: UIConstants.Spacing.standard
-            )
             button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         }
 
@@ -154,13 +156,6 @@ class QuoteView: UIView {
             stack.accessibilityIdentifier = KHQuoteViewID.middleStackView
             stack.axis = .horizontal
             stack.alignment = .center
-            stack.isLayoutMarginsRelativeArrangement = true
-            stack.directionalLayoutMargins = NSDirectionalEdgeInsets(
-                    top: 0,
-                    leading: UIConstants.Spacing.small,
-                    bottom: UIConstants.Spacing.small,
-                    trailing: UIConstants.Spacing.small
-            )
         }
 
         // ETA stack
@@ -213,23 +208,20 @@ class QuoteView: UIView {
         // Bottom stack
        lineSeparator = LineView(
            color: KarhooUI.colors.border,
-           width: UIConstants.Dimension.Border.standardWidth,
            accessibilityIdentifier: KHQuoteViewID.lineSeparator
        )
+
+        bottomStackContainer = UIView().then{ view in
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.accessibilityIdentifier = KHQuoteViewID.bottomStackContainer
+            view.backgroundColor = KarhooUI.colors.background1
+        }
+
         bottomStack = UIStackView().then{stack in
             stack.translatesAutoresizingMaskIntoConstraints = false
             stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
-            stack.backgroundColor = KarhooUI.colors.background1
             stack.alignment = .leading
             stack.axis = .horizontal
-            stack.spacing = UIStackView.spacingUseSystem
-            stack.isLayoutMarginsRelativeArrangement = true
-            stack.directionalLayoutMargins = NSDirectionalEdgeInsets(
-                top: UIConstants.Spacing.small,
-                leading: UIConstants.Spacing.small,
-                bottom: UIConstants.Spacing.small,
-                trailing: UIConstants.Spacing.small
-            )
         }
 
         bottomImage = LoadingImageView().then { logo in
@@ -248,7 +240,8 @@ class QuoteView: UIView {
     }
 
     private func setupHierarchy(){
-        addSubview(containerStack)
+        addSubview(viewWithBorder)
+        viewWithBorder.addSubview(containerStack)
         containerStack.addArrangedSubview(carInfoView)
         carInfoView.addSubview(logoLoadingImageView)
         carInfoView.addSubview(rideDetailStackView)
@@ -263,16 +256,18 @@ class QuoteView: UIView {
         etaStack.addArrangedSubview(etaDescription)
         priceDetailsStack.addArrangedSubview(fare)
         priceDetailsStack.addArrangedSubview(fareType)
-        containerStack.addArrangedSubview(lineSeparator)
 
         containerStack.addArrangedSubview(lineSeparator)
-        containerStack.addArrangedSubview(bottomStack)
+        containerStack.addArrangedSubview(bottomStackContainer)
+        bottomStackContainer.addSubview(bottomStack)
         bottomStack.addArrangedSubview(bottomImage)
         bottomStack.addArrangedSubview(fleetName)
     }
 
     private func setupLayout() {
-        containerStack.anchorToSuperview(
+        containerStack.anchorToSuperview()
+        viewWithBorder.anchorToSuperview(
+
             paddingTop: UIConstants.Spacing.small,
             paddingLeading: UIConstants.Spacing.standard,
             paddingTrailing: UIConstants.Spacing.standard,
@@ -297,7 +292,29 @@ class QuoteView: UIView {
             paddingTop: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small
         )
+        middleStack.isLayoutMarginsRelativeArrangement = true
+        middleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: UIConstants.Spacing.small,
+            bottom: UIConstants.Spacing.small,
+            trailing: UIConstants.Spacing.small
+        )
+        lineSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        bottomStack.anchorToSuperview()
+        bottomStack.isLayoutMarginsRelativeArrangement = true
+        bottomStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: UIConstants.Spacing.small,
+            leading: UIConstants.Spacing.small,
+            bottom: UIConstants.Spacing.small,
+            trailing: UIConstants.Spacing.small
+        )
         detailsButton.anchor(top: carInfoView.topAnchor, right: carInfoView.rightAnchor)
+        detailsButton.contentEdgeInsets = UIEdgeInsets(
+            top: UIConstants.Spacing.small,
+            left: UIConstants.Spacing.standard,
+            bottom: UIConstants.Spacing.small,
+            right: UIConstants.Spacing.standard
+        )
         bottomImage.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
     }
     
