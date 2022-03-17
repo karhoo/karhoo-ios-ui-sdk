@@ -103,7 +103,8 @@ final class SupplierView: UIView {
     
     func set(viewModel: QuoteViewModel) {
         supplierName.text = viewModel.fleetName
-        let vehicleTypeText = viewModel.showPickUpLabel ? viewModel.vehicleType + " | " + viewModel.pickUpType :
+        let vehicleTypeTextForPickupVisible = viewModel.vehicleType + " | " + viewModel.pickUpType
+        let vehicleTypeText = viewModel.showPickUpLabel ? vehicleTypeTextForPickupVisible :
                               viewModel.vehicleType
         vehicleType.text = vehicleTypeText
         cancellationInfo.text = viewModel.freeCancellationMessage

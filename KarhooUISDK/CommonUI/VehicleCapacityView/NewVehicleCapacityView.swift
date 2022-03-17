@@ -24,13 +24,6 @@ final class NewVehicleCapacityView: UIStackView {
         stack.accessibilityIdentifier = KHNewVehicleCapacityViewID.passengerStack
         stack.clipsToBounds = true
         stack.layer.cornerRadius = UIConstants.CornerRadius.xSmall
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(
-            top: UIConstants.Spacing.xxSmall,
-            leading: UIConstants.Spacing.xSmall,
-            bottom: UIConstants.Spacing.xxSmall,
-            trailing: UIConstants.Spacing.xSmall
-        )
         stack.spacing = UIConstants.Spacing.xxSmall
     }
 
@@ -39,64 +32,55 @@ final class NewVehicleCapacityView: UIStackView {
         stack.backgroundColor = KarhooUI.colors.background1
         stack.clipsToBounds = true
         stack.layer.cornerRadius = UIConstants.CornerRadius.xSmall
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(
-            top: UIConstants.Spacing.xxSmall,
-            leading: UIConstants.Spacing.xSmall,
-            bottom: UIConstants.Spacing.xxSmall,
-            trailing: UIConstants.Spacing.xSmall
-        )
         stack.spacing = UIConstants.Spacing.xxSmall
     }
 
-    private var baggageImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.uisdkImage("luggage_icon"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageIcon
-        imageView.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
-        return imageView
-    }()
+    private lazy var baggageImageView = UIImageView().then { image in
+        image.image = UIImage.uisdkImage("luggage_icon")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        image.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageIcon
+    }
 
-    private lazy var baggageCapacityLabel: UILabel = {
-        let label = UILabel()
+    private lazy var baggageCapacityLabel = UILabel().then { label in
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHNewVehicleCapacityViewID.baggageCapacityLabel
         label.textColor = KarhooUI.colors.primary
         label.font = KarhooUI.fonts.footnoteRegular()
-        return label
-    }()
+    }
 
-    private lazy var passengerCapacityImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.uisdkImage("passenger_capacity_icon"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityIcon
-        imageView.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
-        return imageView
-    }()
+    private lazy var passengerCapacityImageView = UIImageView().then { image in
+        image.image = UIImage.uisdkImage("passenger_capacity_icon")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityIcon
+        image.contentMode = .scaleAspectFill
+    }
 
-    private lazy var passengerCapacityLabel: UILabel = {
-        let label = UILabel()
+    private lazy var passengerCapacityLabel = UILabel().then { label in
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHNewVehicleCapacityViewID.passengerCapacityLabel
         label.textColor = KarhooUI.colors.primary
         label.font = KarhooUI.fonts.footnoteRegular()
-        return label
-    }()
+    }
 
     // MARK: - Init
     init() {
         super.init(frame: .zero)
-        self.setUpView()
+        self.setupView()
     }
 
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func setupView() {
+        setupProperties()
+        setupHierarchy()
+        setupLayout()
+    }
+
     // MARK: - Setup
-    private func setUpView() {
+    private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityView
         backgroundColor = .clear
@@ -104,14 +88,40 @@ final class NewVehicleCapacityView: UIStackView {
         spacing = UIConstants.Spacing.small
         alignment = .center
         distribution = .fillProportionally
+    }
 
+    private func setupHierarchy(){
         addArrangedSubview(baggageStack)
         baggageStack.addArrangedSubview(baggageImageView)
         baggageStack.addArrangedSubview(baggageCapacityLabel)
         addArrangedSubview(passengerStack)
         passengerStack.addArrangedSubview(passengerCapacityImageView)
         passengerStack.addArrangedSubview(passengerCapacityLabel)
-        layoutIfNeeded()
+    }
+
+    private func setupLayout(){
+        passengerStack.isLayoutMarginsRelativeArrangement = true
+        passengerStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: UIConstants.Spacing.xxSmall,
+            leading: UIConstants.Spacing.xSmall,
+            bottom: UIConstants.Spacing.xxSmall,
+            trailing: UIConstants.Spacing.xSmall
+        )
+        baggageStack.isLayoutMarginsRelativeArrangement = true
+        baggageStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: UIConstants.Spacing.xxSmall,
+            leading: UIConstants.Spacing.xSmall,
+            bottom: UIConstants.Spacing.xxSmall,
+            trailing: UIConstants.Spacing.xSmall
+        )
+        baggageImageView.anchor(
+            width: UIConstants.Dimension.Icon.medium,
+            height: UIConstants.Dimension.Icon.medium
+        )
+        passengerCapacityImageView.anchor(
+            width: UIConstants.Dimension.Icon.medium,
+            height: UIConstants.Dimension.Icon.medium
+        )
     }
 
     // MARK: - Public
