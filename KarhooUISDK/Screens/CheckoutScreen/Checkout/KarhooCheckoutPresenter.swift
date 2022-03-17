@@ -540,21 +540,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportBookingEvent() {
-        guard let origin = journeyDetails.originLocationDetails
-        else {
-            return
-        }
+        guard let origin = journeyDetails.originLocationDetails else { return }
         
-        if trip == nil {
-            trip = TripInfo(
+        func buildTripForAnalytics() -> TripInfo {
+             TripInfo(
                 origin: origin.toTripLocationDetails(),
                 destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
                 dateScheduled: journeyDetails.scheduledDate,
                 quote: quote.toTripQuote()
-            )
+             )
         }
         
-        analytics.bookingRequested(tripDetails: trip!)
+        analytics.bookingRequested(tripDetails: trip ?? buildTripForAnalytics())
     }
 
     private func reportPaymentSuccess() {
