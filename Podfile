@@ -27,7 +27,7 @@ target 'KarhooUISDK' do
   common_pods
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
-  pod 'SwiftLint'
+  pod 'SwiftLint', '0.46.3'
   pod 'Adyen', '3.7.0'
   pod 'PhoneNumberKit', '3.3.1'
 end
