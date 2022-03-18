@@ -82,6 +82,11 @@ class QuoteView: UIView {
     }
 
     private func setupProperties() {
+        setupCellProperties()
+        setupFooterProperties()
+    }
+
+    private func setupCellProperties() {
         backgroundColor = KarhooUI.colors.white
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHQuoteViewID.quoteView
@@ -95,7 +100,7 @@ class QuoteView: UIView {
             stack.layer.cornerRadius = UIConstants.CornerRadius.large
         }
 
-        viewWithBorder = UIView().then{ view in
+        viewWithBorder = UIView().then { view in
             view.clipsToBounds = true
             view.layer.cornerRadius = UIConstants.CornerRadius.large
             view.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
@@ -139,7 +144,7 @@ class QuoteView: UIView {
 
         vehicleCapacityView = VehicleCapacityView()
 
-        detailsButton = UIButton().then{ button in
+        detailsButton = UIButton().then { button in
             button.translatesAutoresizingMaskIntoConstraints = false
             button.accessibilityIdentifier = KHQuoteViewID.detailsButton
             button.backgroundColor = KarhooUI.colors.accent
@@ -173,7 +178,7 @@ class QuoteView: UIView {
             label.font = KarhooUI.fonts.headerBold()
             label.textColor = KarhooUI.colors.black
         }
-        etaDescription = UILabel().then{ label in
+        etaDescription = UILabel().then { label in
             label.translatesAutoresizingMaskIntoConstraints = false
             label.accessibilityIdentifier = KHQuoteViewID.etaDescription
             label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -204,20 +209,21 @@ class QuoteView: UIView {
         fareType.textAlignment = .right
         fareType.font = KarhooUI.fonts.footnoteRegular()
         fareType.textColor = KarhooUI.colors.text
+    }
 
-        // Bottom stack
-       lineSeparator = LineView(
-           color: KarhooUI.colors.border,
-           accessibilityIdentifier: KHQuoteViewID.lineSeparator
-       )
+    private func setupFooterProperties() {
+        lineSeparator = LineView(
+            color: KarhooUI.colors.border,
+            accessibilityIdentifier: KHQuoteViewID.lineSeparator
+        )
 
-        bottomStackContainer = UIView().then{ view in
+        bottomStackContainer = UIView().then { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             view.accessibilityIdentifier = KHQuoteViewID.bottomStackContainer
             view.backgroundColor = KarhooUI.colors.background1
         }
 
-        bottomStack = UIStackView().then{stack in
+        bottomStack = UIStackView().then {stack in
             stack.translatesAutoresizingMaskIntoConstraints = false
             stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
             stack.alignment = .leading
@@ -239,7 +245,7 @@ class QuoteView: UIView {
         }
     }
 
-    private func setupHierarchy(){
+    private func setupHierarchy() {
         addSubview(viewWithBorder)
         viewWithBorder.addSubview(containerStack)
         containerStack.addArrangedSubview(carInfoView)
