@@ -32,7 +32,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
         self.viewController = KarhooQuoteListTableViewController()
         self.presenter = KarhooQuoteListTablePresenter(
             router: self,
-            quotes: quotes,
+            initialState: .fetched(quotes: quotes),
             onQuoteSelected: onQuoteSelected,
             onQuoteDetailsSelected: onQuoteDetailsSelected
         )
