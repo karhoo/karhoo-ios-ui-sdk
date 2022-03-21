@@ -132,7 +132,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
         legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
-        headerViews.forEach { tableHeaderStackView.addArrangedSubview($0) }
+        tableHeaderStackView.addArrangedSubviews(headerViews)
         headerContainerView.addSubview(tableHeaderStackView)
         tableViewCoordinator.assignHeaderView(headerContainerView)
     }
@@ -229,12 +229,15 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
+        quoteCategoryBarView.isHidden = false
+        quoteSortView.isHidden = false
+        legalDisclaimerContainer.isHidden = false
         UIView.animate(
             withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
-                self?.quoteCategoryBarView.isHidden = false
-                self?.quoteSortView.isHidden = false
-                self?.legalDisclaimerContainer.isHidden = false
+                self?.quoteCategoryBarView.alpha = 1
+                self?.quoteSortView.alpha = 1
+                self?.legalDisclaimerContainer.alpha = 1
             },
             completion: { _ in
                 completion()
@@ -249,17 +252,23 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         UIView.animate(
             withDuration: UIConstants.Duration.short,
             animations: { [weak self] in
-                self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
-                self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
-                self?.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
+                if hideAuxiliaryHeaderItems {
+                    self?.quoteCategoryBarView.alpha = 0
+                    self?.quoteSortView.alpha = 0
+                    self?.legalDisclaimerContainer.alpha = 0
+                }
             },
-            completion: { _ in
+            completion: { [weak self] _ in
+                if hideAuxiliaryHeaderItems {
+                    self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
+                    self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
+                    self?.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
+                }
                 completion()
             }
         )
     }
 
-    // TODO: Prepare and update values for all possible cases
     private func setNavigationBarTitle(forState state: QuoteListState) {
         switch state {
         case .loading, .fetching:

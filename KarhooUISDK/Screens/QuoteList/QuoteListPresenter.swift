@@ -153,7 +153,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty // && fetchedQuotes.status == .completed
+        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
         onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
@@ -165,6 +165,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
         case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
+        case (_, _, .progressing) where fetchedQuotes.all.isEmpty:
+            onStateUpdated?(.loading)
         case (_, _, _):
             onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
