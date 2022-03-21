@@ -379,6 +379,7 @@
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
+		51A6F36F27E8AD3500FBA140 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
@@ -896,6 +897,7 @@
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
@@ -2605,6 +2607,7 @@
 				407EC77B22CF564E00F24CFC /* PinView */,
 				6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
+				51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3785,6 +3788,7 @@
 				7B56043627A15EEB00FC5F1C /* String+Extensions.swift in Sources */,
 				0991067621B8291A00BD7E6F /* KarhooAddressSearchBarPresenter.swift in Sources */,
 				407EC7CD22CF564E00F24CFC /* AddressBarFieldMVP.swift in Sources */,
+				51A6F36F27E8AD3500FBA140 /* SeparatorView.swift in Sources */,
 				51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */,
 				FC435EED2211B33B00FB6BB5 /* RidesViewController.swift in Sources */,
 				09C765BC21DE688100CD81AB /* KarhooTripAllocationView.swift in Sources */,

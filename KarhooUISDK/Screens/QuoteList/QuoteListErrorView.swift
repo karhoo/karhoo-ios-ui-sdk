@@ -81,13 +81,13 @@ final class QuoteListErrorView: UIView {
         addSubview(contentStackView)
         contentStackView.anchorToSuperview(padding: UIConstants.Spacing.standard)
         contentStackView.addArrangedSubviews([
-            buildSeparator(),
+            SeparatorView(),
             imageView,
-            buildSeparator(height: UIConstants.Spacing.standard),
+            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             titleLabel,
-            buildSeparator(height: UIConstants.Spacing.standard),
+            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             descriptionLabel,
-            buildSeparator()
+            SeparatorView()
         ])
         imageView.anchor(width: Constants.imageViewSize.width, height: Constants.imageViewSize.height)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -119,12 +119,5 @@ final class QuoteListErrorView: UIView {
             },
             completion: nil
         )
-    }
-
-    private func buildSeparator(height: CGFloat? = nil) -> UIView {
-        UIView().then {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.anchor(height: height)
-        }
     }
 }
