@@ -228,6 +228,7 @@ class QuoteView: UIView {
             stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
             stack.alignment = .leading
             stack.axis = .horizontal
+            stack.spacing = UIConstants.Spacing.xSmall
         }
 
         bottomImage = LoadingImageView().then { logo in
@@ -308,6 +309,7 @@ class QuoteView: UIView {
         lineSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         bottomStack.anchorToSuperview()
         bottomStack.isLayoutMarginsRelativeArrangement = true
+        bottomStack.alignment = .center
         bottomStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: UIConstants.Spacing.small,
             leading: UIConstants.Spacing.small,
