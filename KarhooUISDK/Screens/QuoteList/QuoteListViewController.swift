@@ -227,7 +227,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             animations: { [weak self] in
                 self?.quoteCategoryBarView.isHidden = false
                 self?.quoteSortView.setEnabled()
-                self?.legalDisclaimerLabel.isHidden = false
+                self?.legalDisclaimerContainer.isHidden = false
             }
         ) { _ in
             completion()
@@ -240,7 +240,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             animations: { [weak self] in
                 self?.quoteCategoryBarView.isHidden = true
                 self?.quoteSortView.setDisabled()
-                self?.legalDisclaimerLabel.isHidden = true
+                self?.legalDisclaimerContainer.isHidden = true
             }
         ) { _ in
             completion()
