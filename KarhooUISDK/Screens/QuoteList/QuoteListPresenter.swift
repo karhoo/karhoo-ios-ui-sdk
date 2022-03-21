@@ -83,7 +83,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuoteDetails(_ quote: Quote) {
-        // TODO: finish implementation
     }
 
     func didSelectCategory(_ category: QuoteCategory) {
