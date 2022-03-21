@@ -61,7 +61,8 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftLint (0.46.3)
+  - SwiftFormat/CLI (0.49.6)
+  - SwiftLint (0.46.2)
 
 DEPENDENCIES:
   - Adyen (= 3.7.0)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - KarhooSDK (= 1.5.5)
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
+  - SwiftFormat/CLI (~> 0.49)
   - SwiftLint
 
 SPEC REPOS:
@@ -78,13 +80,14 @@ SPEC REPOS:
     - Adyen3DS2
     - Braintree
     - BraintreeDropIn
-    - FloatingPanel
-    - PhoneNumberKit
-    - SwiftLint
-  trunk:
     - KarhooSDK
     - KeychainSwift
+    - PhoneNumberKit
     - ReachabilitySwift
+    - SwiftLint
+  trunk:
+    - FloatingPanel
+    - SwiftFormat
 
 EXTERNAL SOURCES:
   KarhooUISDK:
@@ -101,8 +104,9 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftLint: ae76d82f056734f853c8cd0371503252c606c482
+  SwiftFormat: e40542bcf76fdaa006d0dc26a9ca8278ca028d76
+  SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: 01e73501fbdfe5a6ae860d6e109490f0fa59ce80
+PODFILE CHECKSUM: 1ba523af62f82f4c0e1f33472c83998e5c0cf5ea
 
 COCOAPODS: 1.11.2

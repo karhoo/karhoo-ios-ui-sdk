@@ -21,7 +21,21 @@ extension Quote {
     var quoteExpirationDate: Date? {
         QuoteDatesHelper.getExpirationDate(of: self)
     }
-
+    
+    func toTripQuote() -> TripQuote {
+        TripQuote(
+            total: self.price.intHighPrice,
+            currency: self.price.currencyCode,
+            gratuityPercent: 0,
+            breakdown: [],
+            qtaHighMinutes: self.vehicle.qta.highMinutes,
+            qtaLowMinutes: self.vehicle.qta.lowMinutes,
+            highPrice: self.price.intHighPrice,
+            lowPrice: self.price.intLowPrice,
+            type: self.quoteType,
+            vehicleClass: self.vehicle.vehicleClass
+        )
+    }
 }
                                            
 struct QuoteDatesHelper {
