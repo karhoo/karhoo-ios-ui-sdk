@@ -125,6 +125,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func setupProperties() {
         view = UIView()
         forceLightMode()
+        setHeaderDisabled(hideAuxiliaryHeaderItems: true, animated: false)
     }
 
     private func setupHierarchy() {
@@ -169,6 +170,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             let backArrow = UIImage.uisdkImage("back_arrow")
             let navigationBarColor = KarhooUI.colors.primary
             navigationController?.navigationBar.backItem?.title = ""
+            navigationController?.navigationBar.barTintColor = navigationBarColor
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = navigationBarColor
@@ -218,22 +220,24 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func handleEmptyState(reason: QuoteListState.Error) {
         let hideAuxiliaryHeaderItems: Bool
         switch reason {
-        case .noResults:
-            hideAuxiliaryHeaderItems = true
         default:
-            hideAuxiliaryHeaderItems = false
+            hideAuxiliaryHeaderItems = true
         }
         setHeaderDisabled(hideAuxiliaryHeaderItems: hideAuxiliaryHeaderItems) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
         }
     }
 
+    // MARK: - Helpers
+
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         quoteCategoryBarView.isHidden = false
         quoteSortView.isHidden = false
         legalDisclaimerContainer.isHidden = false
         UIView.animate(
-            withDuration: UIConstants.Duration.short,
+            withDuration: UIConstants.Duration.medium,
+            delay: 0,
+            options: .curveEaseOut,
             animations: { [weak self] in
                 self?.quoteCategoryBarView.alpha = 1
                 self?.quoteSortView.alpha = 1
@@ -247,10 +251,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setHeaderDisabled(
         hideAuxiliaryHeaderItems: Bool = false,
+        animated: Bool = true,
         completion: @escaping () -> Void = { }
     ) {
         UIView.animate(
-            withDuration: UIConstants.Duration.short,
+            withDuration: animated ? UIConstants.Duration.medium : 0,
+            delay: 0,
+            options: .curveEaseOut,
             animations: { [weak self] in
                 if hideAuxiliaryHeaderItems {
                     self?.quoteCategoryBarView.alpha = 0
