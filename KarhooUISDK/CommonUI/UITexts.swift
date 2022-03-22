@@ -119,6 +119,10 @@ public enum UITexts {
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
         public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
         public static let loyaltyModeNotEligibleForPreAuth = "Text.Error.LoyaltyModeNotEligibleForPreAuth".localized
+
+        // Quote List errors
+        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
+        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
     }
 
     /* Payment Error */
@@ -403,8 +407,6 @@ public enum UITexts {
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
-        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
-        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
     }
     
     public enum Loyalty {

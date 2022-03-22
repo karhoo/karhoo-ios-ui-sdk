@@ -57,7 +57,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     private func titleForPresentedError() -> String {
         switch state {
         case .empty(reason: .noResults):
-            return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeTitle
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeTitle
         default:
             return ""
         }
@@ -66,7 +66,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     private func messageForPresentedError() -> String? {
         switch state {
         case .empty(reason: .noResults):
-            return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeMessage
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeMessage
         default:
             return nil
         }
