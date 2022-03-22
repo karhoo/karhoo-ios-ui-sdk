@@ -1,3 +1,5 @@
+"Text.Generic.QuoteCell.DriverArrival" = "";
+
 /* English: Error codes */
 "K0001" = "Error general";
 
@@ -457,6 +459,8 @@
 "Text.Generic.Price" = "Precio";
 
 "Text.Generic.PrivacyPolicy" = "Política de Privacidad";
+
+"Text.Generic.QuoteCell.Details" = "";
 
 "Text.Generic.Register" = "Registrarse";
 
