@@ -119,7 +119,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        let quotesValidity = fetchedQuotes!.validity
+        guard let quotesValidity = fetchedQuotes?.validity else {
+            assertionFailure()
+            return
+        }
         let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
         DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
             self?.refreshSubscription()
@@ -173,10 +176,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         handleQuoteStatus()
     }
 
-    private func handleResult(result: Result<Quotes>, jurneyDetails: JourneyDetails) {
+    private func handleResult(result: Result<Quotes>, journeyDetails: JourneyDetails) {
         switch result {
         case .success(let quotes):
-            quoteSearchSuccessResult(quotes, journeyDetails: jurneyDetails)
+            quoteSearchSuccessResult(quotes, journeyDetails: journeyDetails)
         case .failure(let error):
             quoteSearchErrorResult(error)
         @unknown default:
@@ -208,7 +211,8 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-            self?.handleResult(result: result, jurneyDetails: details)
+            guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
+            self?.handleResult(result: result, journeyDetails: details)
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
         refreshSubscription()
