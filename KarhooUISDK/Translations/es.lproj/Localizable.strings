@@ -611,6 +611,14 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Cambie una de sus direcciones para acceder a las ofertas.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+
 "Text.Quotes.Result" = "";
 
 "Text.Quotes.Results" = "";

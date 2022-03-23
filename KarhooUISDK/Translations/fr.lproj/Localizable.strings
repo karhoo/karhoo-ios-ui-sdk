@@ -611,6 +611,14 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre moment.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une de vos adresses pour accéder aux offres.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+
 "Text.Quotes.Result" = "";
 
 "Text.Quotes.Results" = "";
