@@ -19,13 +19,12 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
     init(
         router: QuoteListTableRouter,
-        quotes: [Quote],
-        initialState: QuoteListState? = .loading,
+        initialState: QuoteListState = .loading,
         onQuoteSelected: @escaping (Quote) -> Void,
         onQuoteDetailsSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
-        self.state = initialState ?? (quotes.isEmpty ? .empty(reason: .noResults) : .fetched(quotes: quotes))
+        self.state = initialState
         self.onQuoteSelected = onQuoteSelected
         self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }
@@ -58,7 +57,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     private func titleForPresentedError() -> String {
         switch state {
         case .empty(reason: .noResults):
-            return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeTitle
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeTitle
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Quotes.errorPickupAndDestinationSameTitle
         default:
@@ -69,7 +68,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     private func messageForPresentedError() -> String? {
         switch state {
         case .empty(reason: .noResults):
-            return UITexts.Quotes.errorNoAvailabilityForTheRequestTimeMessage
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeMessage
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Quotes.errorPickupAndDestinationSameMessage
         default:
@@ -88,8 +87,6 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return "quoteList_error_no_availability"
-        case .empty(reason: .originAndDestinationAreTheSame):
-            return "quoteList_error_pickup_destination_similar"
         default:
             return "quoteList_error_no_availability"
         }

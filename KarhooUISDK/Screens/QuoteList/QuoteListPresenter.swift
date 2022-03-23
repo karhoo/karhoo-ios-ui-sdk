@@ -83,7 +83,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuoteDetails(_ quote: Quote) {
-        // TODO: finish implementation
     }
 
     func didSelectCategory(_ category: QuoteCategory) {
@@ -120,7 +119,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
     
     private func handleQuotePolling() {
-        let quotesValidity = fetchedQuotes!.validity
+        guard let quotesValidity = fetchedQuotes?.validity else {
+            assertionFailure()
+            return
+        }
         let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
         DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
             self?.refreshSubscription()
@@ -153,7 +155,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         }
         
         let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty // && fetchedQuotes.status == .completed
+        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
         onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
@@ -165,6 +167,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
         case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
+        case (_, _, .progressing) where fetchedQuotes.all.isEmpty:
+            onStateUpdated?(.loading)
         case (_, _, _):
             onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
@@ -172,10 +176,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         handleQuoteStatus()
     }
 
-    private func handleResult(result: Result<Quotes>, jurneyDetails: JourneyDetails) {
+    private func handleResult(result: Result<Quotes>, journeyDetails: JourneyDetails) {
         switch result {
         case .success(let quotes):
-            quoteSearchSuccessResult(quotes, journeyDetails: jurneyDetails)
+            quoteSearchSuccessResult(quotes, journeyDetails: journeyDetails)
         case .failure(let error):
             quoteSearchErrorResult(error)
         @unknown default:
@@ -207,7 +211,8 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
                                       destination: destination,
                                       dateScheduled: details.scheduledDate)
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-            self?.handleResult(result: result, jurneyDetails: details)
+            guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
+            self?.handleResult(result: result, journeyDetails: details)
         }
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable()
         refreshSubscription()
