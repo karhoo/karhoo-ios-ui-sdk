@@ -611,9 +611,13 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage" = "";
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van uw adressen om toegang te krijgen tot de aanbiedingen.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
 
 "Text.Quotes.Result" = "";
 
