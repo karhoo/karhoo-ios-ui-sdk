@@ -16,7 +16,7 @@ class IconPlusTextHorizontalView: UIView {
     private let text: String
     private let background: UIColor
     private let cornerRadius: CGFloat
-    private let iconSize: CGFloat
+    private let iconRectSide: CGFloat
 
     // MARK: view elements
     private var stack: UIStackView!
@@ -34,7 +34,7 @@ class IconPlusTextHorizontalView: UIView {
         self.text = text
         self.background = background
         self.cornerRadius = cornerRadius
-        self.iconSize = iconSize
+        self.iconRectSide = iconSize
         super.init(frame: .zero)
         setUpView()
     }
@@ -92,8 +92,8 @@ class IconPlusTextHorizontalView: UIView {
             trailing: UIConstants.Spacing.xSmall
         )
         imageView.anchor(
-            width: UIConstants.Dimension.Icon.small,
-            height: UIConstants.Dimension.Icon.small
+            width: iconRectSide,
+            height: iconRectSide
         )
     }
 }

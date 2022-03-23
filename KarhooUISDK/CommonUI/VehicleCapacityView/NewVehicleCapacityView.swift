@@ -39,7 +39,7 @@ final class NewVehicleCapacityView: UIStackView {
     }
 
     // MARK: - Public
-    public func setBaggageCapacity(_ value: Int) {
+    func setBaggageCapacity(_ value: Int) {
         guard value > 0 else { return }
         baggageCapacityView = IconPlusTextHorizontalView(
             icon: UIImage.uisdkImage("luggage_icon"),
@@ -48,7 +48,7 @@ final class NewVehicleCapacityView: UIStackView {
         addArrangedSubview(baggageCapacityView!)
     }
 
-    public func setPassengerCapacity(_ value: Int) {
+    func setPassengerCapacity(_ value: Int) {
         guard value > 0 else { return }
         passengerCapacityView = IconPlusTextHorizontalView(
             icon: UIImage.uisdkImage("passenger_capacity_icon"),
