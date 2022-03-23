@@ -123,6 +123,8 @@ public enum UITexts {
         // Quote List errors
         static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
         static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
+        static let errorNoAvailabilityInRequestedAreaTitle = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle".localized
+        static let errorNoAvailabilityInRequestedAreaMessage = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaMessage".localized
     }
 
     /* Payment Error */

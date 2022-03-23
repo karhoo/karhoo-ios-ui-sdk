@@ -58,6 +58,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Errors.errorNoAvailabilityForTheRequestTimeTitle
+        case .empty(reason: .noAvailabilityInRequestedArea):
+            return "No fleets in this area yet" //UITexts.Errors.errorNoAvailabilityInRequestedAreaTitle
         default:
             return ""
         }
@@ -67,6 +69,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Errors.errorNoAvailabilityForTheRequestTimeMessage
+        case .empty(reason: .noAvailabilityInRequestedArea):
+            return nil // for this case we are showing attributedMessageForPresentedError
         default:
             return nil
         }
@@ -74,6 +78,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
     private func attributedMessageForPresentedError() -> NSAttributedString? {
         switch state {
+        case .empty(reason: .noAvailabilityInRequestedArea):
+            return getAttributedStringForNoCoverageError()
         default:
             return nil
         }
@@ -83,6 +89,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return "quoteList_error_no_availability"
+        case .empty(reason: .noAvailabilityInRequestedArea):
+            return "quoteList_error_no_coverage"
         default:
             return "quoteList_error_no_availability"
         }
@@ -102,4 +110,30 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         }
     }
 
+    private func getAttributedStringForNoCoverageError() -> NSAttributedString {
+        let contactUsText = "Contact us"
+        let contactUsLink = "https://karhoo.com"
+        let message = "%1$@ to suggest news fleets"// UITexts.Errors.errorNoAvailabilityInRequestedAreaMessage
+
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.bodyRegular(),
+            .foregroundColor: KarhooUI.colors.text
+        ]
+
+        let linkAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.bodyRegular(),
+            .link: contactUsLink,
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+
+        let attrText = NSMutableAttributedString()
+        let fullText = String(format: NSLocalizedString(message,
+            comment: ""), contactUsText)
+        attrText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
+        let contactUsRange = (attrText.string as NSString).range(of: contactUsText)
+        attrText.addAttributes(linkAttributes, range: contactUsRange)
+        return attrText
+    }
 }

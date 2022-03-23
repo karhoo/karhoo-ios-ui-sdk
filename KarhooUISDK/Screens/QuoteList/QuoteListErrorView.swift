@@ -12,18 +12,10 @@ protocol QuoteListErrorViewDelegate: AnyObject {
 
 final class QuoteListErrorView: UIView {
 
-    // MARK: - Nested types
-    
-    private enum Constants {
-        static let imageViewSize = CGSize(width: 68, height: 70)
-        static let titleFontSize = CGFloat(18)
-        static let messageFontSize = CGFloat(14)
-    }
-
     // MARK: - Views
 
     private lazy var titleLabel = UILabel().then {
-        $0.font = KarhooUI.fonts.getSemiboldFont(withSize: Constants.titleFontSize)
+        $0.font = KarhooUI.fonts.subtitleSemibold()
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -31,7 +23,7 @@ final class QuoteListErrorView: UIView {
     }
 
     private lazy var descriptionLabel = UILabel().then {
-        $0.font = KarhooUI.fonts.getRegularFont(withSize: Constants.messageFontSize)
+        $0.font = KarhooUI.fonts.bodyRegular()
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
         $0.numberOfLines = 0
@@ -89,7 +81,7 @@ final class QuoteListErrorView: UIView {
             descriptionLabel,
             SeparatorView()
         ])
-        imageView.anchor(width: Constants.imageViewSize.width, height: Constants.imageViewSize.height)
+        imageView.anchor(width: UIConstants.Dimension.Icon.xxxLarge, height: UIConstants.Dimension.Icon.xxxLarge)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
@@ -101,10 +93,10 @@ final class QuoteListErrorView: UIView {
             imageView,
             titleLabel,
             descriptionLabel
-        ].forEach(aniamteSubviewIn)
+        ].forEach(animateSubviewIn)
     }
 
-    private func aniamteSubviewIn(_ viewToAnimate: UIView) {
+    private func animateSubviewIn(_ viewToAnimate: UIView) {
         viewToAnimate.alpha = UIConstants.Alpha.hidden
         viewToAnimate.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         UIView.animate(
