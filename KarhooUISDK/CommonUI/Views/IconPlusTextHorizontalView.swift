@@ -23,13 +23,14 @@ class IconPlusTextHorizontalView: UIView {
     private var imageView: UIImageView!
     private var label: UILabel!
 
-    public init(icon: UIImage,
-                text: String,
-                accessibilityIdentifier: String,
-                background: UIColor = KarhooUI.colors.background1,
-                cornerRadius: CGFloat = 0,
-                iconSize: CGFloat = UIConstants.Dimension.Icon.small
-                ) {
+    init(
+        icon: UIImage,
+        text: String,
+        accessibilityIdentifier: String,
+        background: UIColor = KarhooUI.colors.background1,
+        cornerRadius: CGFloat = 0,
+        iconSize: CGFloat = UIConstants.Dimension.Icon.small
+    ) {
         self.icon = icon
         self.text = text
         self.background = background
