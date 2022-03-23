@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "CHIUDI";
 
+"Text.Generic.DriverArrival" = "Arrivo dell'autista";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifica";
 
@@ -457,10 +459,6 @@
 "Text.Generic.Price" = "Prezzo";
 
 "Text.Generic.PrivacyPolicy" = "Politica sulla Riservatezza";
-
-"Text.Generic.QuoteCell.Details" = "";
-
-"Text.Generic.QuoteCell.DriverArrival" = "";
 
 "Text.Generic.Register" = "Registrati";
 
@@ -610,6 +608,8 @@
 "Text.QuoteCategory.Saloon" = "Standard";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Dettagli";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Si prega di scegliere un orario diverso.";
 
