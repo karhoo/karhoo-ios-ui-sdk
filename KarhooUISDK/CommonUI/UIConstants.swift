@@ -252,4 +252,12 @@ public struct UIConstants {
         /// 0.6
         public static let overlay: CGFloat = 0.6
     }
+
+    struct Animation {
+        /// 0.5
+        static let springWithDamping: CGFloat = 0.5
+
+        /// 0.8
+        static let initialSpringVelocity: CGFloat = 0.8
+    }
 }
