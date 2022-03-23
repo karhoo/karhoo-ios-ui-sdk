@@ -19,12 +19,12 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
     init(
         router: QuoteListTableRouter,
-        quotes: [Quote],
+        initialState: QuoteListState = .loading,
         onQuoteSelected: @escaping (Quote) -> Void,
         onQuoteDetailsSelected: @escaping (Quote) -> Void
     ) {
         self.router = router
-        self.state = quotes.isEmpty ? .empty(reason: .noResults) : .fetched(quotes: quotes)
+        self.state = initialState
         self.onQuoteSelected = onQuoteSelected
         self.onQuoteDetailsSelected = onQuoteDetailsSelected
     }
@@ -40,4 +40,66 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         self.state = state
         onQuoteListStateUpdated?(state)
     }
+
+    func getErrorViewModel() -> QuoteListTableErrorViewModel {
+        QuoteListTableErrorViewModel(
+            title: titleForPresentedError(),
+            message: messageForPresentedError(),
+            attributedMessage: attributedMessageForPresentedError(),
+            imageName: imageNameForPresentedError(),
+            actionTitle: actionTitleForPresentedError(),
+            actionCallback: actionForPresentedError()
+        )
+    }
+
+    // MARK: - Build error view model helper methods
+
+    private func titleForPresentedError() -> String {
+        switch state {
+        case .empty(reason: .noResults):
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeTitle
+        default:
+            return ""
+        }
+    }
+
+    private func messageForPresentedError() -> String? {
+        switch state {
+        case .empty(reason: .noResults):
+            return UITexts.Errors.errorNoAvailabilityForTheRequestTimeMessage
+        default:
+            return nil
+        }
+    }
+
+    private func attributedMessageForPresentedError() -> NSAttributedString? {
+        switch state {
+        default:
+            return nil
+        }
+    }
+
+    private func imageNameForPresentedError() -> String {
+        switch state {
+        case .empty(reason: .noResults):
+            return "quoteList_error_no_availability"
+        default:
+            return "quoteList_error_no_availability"
+        }
+    }
+
+    private func actionTitleForPresentedError() -> String? {
+        switch state {
+        default:
+            return nil
+        }
+    }
+
+    private func actionForPresentedError() -> (() -> Void)? {
+        switch state {
+        default:
+            return nil
+        }
+    }
+
 }

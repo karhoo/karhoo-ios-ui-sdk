@@ -1,5 +1,3 @@
-"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
-
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -462,6 +460,8 @@
 
 "Text.Generic.QuoteCell.Details" = "Details";
 
+"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
+
 "Text.Generic.Register" = "Register";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -593,6 +593,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
 
+"Text.Quote.Results" = "%1$@ results";
+
 "Text.QuoteCategory.Electric" = "Electric";
 
 "Text.QuoteCategory.Exec" = "Exec";
@@ -608,6 +610,10 @@
 "Text.QuoteCategory.Saloon" = "Saloon";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.Quotes.Result" = "%1$@ result";
+
+"Text.Quotes.Results" = "%1$@ results";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";

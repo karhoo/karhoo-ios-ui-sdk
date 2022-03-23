@@ -67,11 +67,6 @@ public enum UITexts {
         public static let unchecked = "Text.Generic.Unchecked".localized
     }
 
-    public enum QuoteCell {
-        public static let details = "Text.Generic.QuoteCell.Details".localized
-        public static let driverArrival = "Text.Generic.QuoteCell.DriverArrival".localized
-    }
-
     public enum GenericTripStatus {
         public static let requested = "Text.GenericTripStatus.Requested".localized
         public static let confirmed = "Text.GenericTripStatus.Confirmed".localized
@@ -124,6 +119,10 @@ public enum UITexts {
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
         public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
         public static let loyaltyModeNotEligibleForPreAuth = "Text.Error.LoyaltyModeNotEligibleForPreAuth".localized
+
+        // Quote List errors
+        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
+        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
     }
 
     /* Payment Error */
@@ -265,7 +264,17 @@ public enum UITexts {
         public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
         public static let taxi = "Text.QuoteCategory.Taxi".localized
     }
-
+    
+    public enum VehicleClass {
+        public static let saloon = "Text.VehicleClass.Saloon".localized
+        public static let taxi = "Text.VehicleClass.Taxi".localized
+        public static let mpv = "Text.VehicleClass.MPV".localized
+        public static let exec = "Text.VehicleClass.Exec".localized
+        public static let moto = "Text.VehicleClass.Moto".localized
+        public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
+        public static let electric = "Text.VehicleClass.Electric".localized
+    }
+    
     public enum VehicleType {
         public static let moto = "Text.VehicleType.Moto".localized
         public static let standard = "Text.VehicleType.Standard".localized

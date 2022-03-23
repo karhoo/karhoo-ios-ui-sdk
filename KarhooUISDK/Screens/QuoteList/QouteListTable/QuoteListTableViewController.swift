@@ -25,6 +25,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
+        $0.bounces = false
         $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
@@ -97,13 +98,14 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
             handleFetchingState()
         case .fetched:
             handleFetchedState()
-        case .empty:
-            handleEmptyState()
+        case .empty(let error):
+            handleEmptyState(error)
         }
     }
 
     private func handleLoadingState() {
         activityIndicator.startAnimating()
+        tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
             tableView.beginUpdates()
             tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
@@ -115,6 +117,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleFetchingState() {
         activityIndicator.startAnimating()
+        tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
             tableView.beginUpdates()
             tableView.insertSections(IndexSet(integer: 0), with: .automatic)
@@ -127,11 +130,16 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleFetchedState() {
         activityIndicator.stopAnimating()
         tableView.reloadData()
+        tableView.backgroundView = nil
     }
 
-    private func handleEmptyState() {
+    private func handleEmptyState(_ error: QuoteListState.Error) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
+        let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: nil)
+        let currentErrorView = tableView.backgroundView as? QuoteListErrorView
+        let shouldReplaceErrorView = currentErrorView?.viewModel != errorView.viewModel
+        tableView.backgroundView = shouldReplaceErrorView ? errorView : tableView.backgroundView
     }
     
     // MARK: - Utils
