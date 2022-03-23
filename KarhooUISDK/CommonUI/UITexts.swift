@@ -122,7 +122,9 @@ public enum UITexts {
 
         // Quote List errors
         static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
-        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
+        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle".localized
+        static let errorPickupAndDestinationSameTitle = "Text.Quotes.ErrorPickupAndDestinationSameTitle".localized
+        static let errorPickupAndDestinationSameMessage = "Text.Quotes.ErrorPickupAndDestinationSameSubtitle".localized
     }
 
     /* Payment Error */
@@ -407,10 +409,6 @@ public enum UITexts {
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
-        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
-        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeMessage".localized
-        static let errorPickupAndDestinationSameTitle = "Text.Quotes.ErrorPickupAndDestinationSameTitle".localized
-        static let errorPickupAndDestinationSameMessage = "Text.Quotes.ErrorPickupAndDestinationSameMessage".localized
     }
     
     public enum Loyalty {
