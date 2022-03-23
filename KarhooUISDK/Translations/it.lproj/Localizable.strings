@@ -395,6 +395,8 @@
 
 "Text.Generic.Dismiss" = "CHIUDI";
 
+"Text.Generic.DriverArrival" = "Arrivo dell'autista";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifica";
 
@@ -593,6 +595,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancellazione gratuita fino a %1$@ prima del ritiro";
 
+"Text.Quote.Results" = "%1$@ risultati";
+
 "Text.QuoteCategory.Electric" = "Elettrico";
 
 "Text.QuoteCategory.Exec" = "Esecutivo";
@@ -608,6 +612,20 @@
 "Text.QuoteCategory.Saloon" = "Standard";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Dettagli";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Si prega di scegliere un orario diverso.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Nessuna disponibilità per l'orario di richiesta.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Per favore cambia uno dei tuoi indirizzi per accedere alle offerte.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Circa";

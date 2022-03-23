@@ -1,5 +1,3 @@
-"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
-
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -395,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Dismiss";
 
+"Text.Generic.DriverArrival" = "Driver arrival";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
 
@@ -593,6 +593,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
 
+"Text.Quote.Results" = "%1$@ results";
+
 "Text.QuoteCategory.Electric" = "Electric";
 
 "Text.QuoteCategory.Exec" = "Exec";
@@ -608,6 +610,20 @@
 "Text.QuoteCategory.Saloon" = "Saloon";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please chosse a different time.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of your addresses to access the offers.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Departure and destination addresses are similar.";
+
+"Text.Quotes.Result" = "%1$@ result";
+
+"Text.Quotes.Results" = "%1$@ results";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";

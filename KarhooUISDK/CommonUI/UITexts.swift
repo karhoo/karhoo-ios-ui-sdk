@@ -68,7 +68,7 @@ public enum UITexts {
     }
 
     public enum QuoteCell {
-        public static let details = "Text.Generic.QuoteCell.Details".localized
+        public static let details = "Text.QuoteCell.Details".localized
         public static let driverArrival = "Text.Generic.QuoteCell.DriverArrival".localized
     }
 

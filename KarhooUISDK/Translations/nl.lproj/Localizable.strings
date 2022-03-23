@@ -395,6 +395,8 @@
 
 "Text.Generic.Dismiss" = "Stoppen";
 
+"Text.Generic.DriverArrival" = "Aankomst chauffeur";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
 
@@ -593,6 +595,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
 
+"Text.Quote.Results" = "%1$@ resultaten";
+
 "Text.QuoteCategory.Electric" = "Elektrisch";
 
 "Text.QuoteCategory.Exec" = "Executive";
@@ -608,6 +612,20 @@
 "Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van uw adressen om toegang te krijgen tot de aanbiedingen.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Over";
