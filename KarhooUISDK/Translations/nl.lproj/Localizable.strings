@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Stoppen";
 
+"Text.Generic.DriverArrival" = "Aankomst chauffeur";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
 
@@ -457,10 +459,6 @@
 "Text.Generic.Price" = "Prijs";
 
 "Text.Generic.PrivacyPolicy" = "Privacybeleid";
-
-"Text.Generic.QuoteCell.Details" = "";
-
-"Text.Generic.QuoteCell.DriverArrival" = "";
 
 "Text.Generic.Register" = "Registreren";
 
@@ -610,6 +608,16 @@
 "Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Ophaal- en afleveradressen zijn vergelijkbaar";
 
 "Text.Quotes.Result" = "";
 

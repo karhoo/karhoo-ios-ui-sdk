@@ -15,7 +15,7 @@ final class QuoteListErrorView: UIView {
     // MARK: - Nested types
     
     private enum Constants {
-        static let imageViewSize = CGSize(width: 68, height: 70)
+        static let imageViewSize = CGSize(width: 120, height: 120)
         static let titleFontSize = CGFloat(18)
         static let messageFontSize = CGFloat(14)
     }
