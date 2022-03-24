@@ -611,6 +611,8 @@
 
 "Text.QuoteCell.Details" = "Details";
 
+"Text.QuoteCell.DriverArrival" = "Ankunft des Fahrers";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Bitte wählen Sie eine andere Zeit.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Keine Verfügbarkeit für die angefragte Zeit.";

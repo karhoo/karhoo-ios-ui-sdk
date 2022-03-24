@@ -24,6 +24,10 @@ public struct KHVehicleCapacityViewID {
     public static let additionalFleetCapabilitiesLabel = "additional_capabilities_label"
 }
 
+/// NOTE: New layout created in NewVehicleCapacityView.swift
+/// Remove this file and use new one for Checkout View
+
+
 final class VehicleCapacityView: UIStackView {
     
     // MARK: - UI
