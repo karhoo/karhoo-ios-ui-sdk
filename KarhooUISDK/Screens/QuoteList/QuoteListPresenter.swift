@@ -110,7 +110,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            onStateUpdated?(.empty(reason: .noResults))
+            onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
