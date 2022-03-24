@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Descartar";
 
+"Text.Generic.DriverArrival" = "Llegada del conductor";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Editar";
 

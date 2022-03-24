@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Fermer";
 
+"Text.Generic.DriverArrival" = "Arrivée du chauffeur";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifier";
 
@@ -457,8 +459,6 @@
 "Text.Generic.Price" = "Prix";
 
 "Text.Generic.PrivacyPolicy" = "Politique de Confidentialité";
-
-"Text.Generic.QuoteCell.Details" = "";
 
 "Text.Generic.Register" = "Inscription";
 
