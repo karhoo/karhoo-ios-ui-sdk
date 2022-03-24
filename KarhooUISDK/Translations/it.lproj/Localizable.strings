@@ -617,7 +617,7 @@
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Gli indirizzi di partenza e di destinazione sono simili";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Gli indirizzi di ritiro e riconsegna sono simili";
 
 "Text.Quotes.Result" = "";
 

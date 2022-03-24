@@ -617,7 +617,7 @@
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de départ et de destination sont similaires";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
 
 "Text.Quotes.Result" = "";
 

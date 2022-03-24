@@ -617,7 +617,7 @@
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de salida y destino son similares";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de recogida y entrega son similares";
 
 "Text.Quotes.Result" = "";
 

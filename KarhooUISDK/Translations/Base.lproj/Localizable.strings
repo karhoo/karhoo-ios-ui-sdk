@@ -617,7 +617,7 @@
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Departure and destination addresses are similar";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Pick up and drop-off addresses are similar";
 
 "Text.Quotes.Result" = "%1$@ result";
 
