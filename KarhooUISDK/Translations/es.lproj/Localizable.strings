@@ -617,9 +617,9 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Cambie una de sus direcciones para acceder a las ofertas.";
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de recogida y entrega son similares";
 
 "Text.Quotes.Result" = "";
 
