@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Dismiss";
 
+"Text.Generic.DriverArrival" = "Driver arrival";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
 
@@ -457,10 +459,6 @@
 "Text.Generic.Price" = "Price";
 
 "Text.Generic.PrivacyPolicy" = "Privacy Policy";
-
-"Text.Generic.QuoteCell.Details" = "Details";
-
-"Text.Generic.QuoteCell.DriverArrival" = "Driver arrival";
 
 "Text.Generic.Register" = "Register";
 
@@ -610,6 +608,16 @@
 "Text.QuoteCategory.Saloon" = "Saloon";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please chosse a different time.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Pick up and drop-off addresses are similar";
 
 "Text.Quotes.Result" = "%1$@ result";
 
