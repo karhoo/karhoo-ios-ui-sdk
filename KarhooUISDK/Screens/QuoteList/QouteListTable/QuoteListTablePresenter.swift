@@ -112,7 +112,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
     private func getAttributedStringForNoCoverageError() -> NSAttributedString {
         let contactUsText = "Contact us"
-        let contactUsLink = "https://karhoo.com"
+        let contactUsLink = "OpenContactUsMail"
         let message = "%1$@ to suggest news fleets"// UITexts.Errors.errorNoAvailabilityInRequestedAreaMessage
 
         let regularAttributes: [NSAttributedString.Key: Any] = [
@@ -135,5 +135,9 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         let contactUsRange = (attrText.string as NSString).range(of: contactUsText)
         attrText.addAttributes(linkAttributes, range: contactUsRange)
         return attrText
+    }
+
+    func showNoCoverageEmail(){
+        router.showNoCoverageEmail()
     }
 }
