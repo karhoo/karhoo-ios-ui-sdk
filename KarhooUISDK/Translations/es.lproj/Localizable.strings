@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Descartar";
 
-"Text.Generic.DriverArrival" = "Llegada del conductor";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Editar";
 
@@ -612,6 +610,8 @@
 "Text.QuoteCategory.Taxi" = "Taxi";
 
 "Text.QuoteCell.Details" = "Detalles";
+
+"Text.QuoteCell.DriverArrival" = "Llegada del conductor";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
