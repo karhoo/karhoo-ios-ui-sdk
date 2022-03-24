@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Stoppen";
 
-"Text.Generic.DriverArrival" = "Aankomst chauffeur";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
 
@@ -610,6 +608,8 @@
 "Text.QuoteCategory.Taxi" = "Taxi";
 
 "Text.QuoteCell.Details" = "Details";
+
+"Text.QuoteCell.DriverArrival" = "Aankomst chauffeur";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
 
