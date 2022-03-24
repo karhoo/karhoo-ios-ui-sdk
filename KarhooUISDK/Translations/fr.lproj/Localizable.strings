@@ -615,9 +615,9 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une de vos adresses pour accéder aux offres.";
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de départ et de destination sont similaires";
 
 "Text.Quotes.Result" = "";
 

@@ -615,9 +615,9 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van uw adressen om toegang te krijgen tot de aanbiedingen.";
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Vertrek- en bestemmingsadressen zijn vergelijkbaar";
 
 "Text.Quotes.Result" = "";
 
