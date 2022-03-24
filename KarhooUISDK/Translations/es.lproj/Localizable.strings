@@ -393,6 +393,8 @@
 
 "Text.Generic.Dismiss" = "Descartar";
 
+"Text.Generic.DriverArrival" = "Llegada del conductor";
+
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Editar";
 
@@ -457,10 +459,6 @@
 "Text.Generic.Price" = "Precio";
 
 "Text.Generic.PrivacyPolicy" = "Política de Privacidad";
-
-"Text.Generic.QuoteCell.Details" = "";
-
-"Text.Generic.QuoteCell.DriverArrival" = "";
 
 "Text.Generic.Register" = "Registrarse";
 
@@ -611,13 +609,15 @@
 
 "Text.QuoteCategory.Taxi" = "Taxi";
 
+"Text.QuoteCell.Details" = "Detalles";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Cambie una de sus direcciones para acceder a las ofertas.";
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de recogida y entrega son similares";
 
 "Text.Quotes.Result" = "";
 
