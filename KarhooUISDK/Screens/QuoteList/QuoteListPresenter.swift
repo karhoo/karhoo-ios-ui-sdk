@@ -90,6 +90,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes()
     }
 
+    func didSelectSort() {
+        router.routeToSort()
+    }
+
     // MARK: - Private
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {

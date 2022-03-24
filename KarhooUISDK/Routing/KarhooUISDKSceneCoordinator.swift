@@ -18,7 +18,9 @@ public protocol KarhooUISDKSceneCoordinator: AnyObject {
 
     func start()
 
-    func startNested(partentViewController: BaseViewController, superview: UIView)
+    func startNested(parentViewController: BaseViewController, superview: UIView)
+
+    func startPresented(on parentCoordinator: KarhooUISDKSceneCoordinator)
 
     func addChild(_ childCoordinator: KarhooUISDKSceneCoordinator)
 
@@ -27,9 +29,17 @@ public protocol KarhooUISDKSceneCoordinator: AnyObject {
 
 extension KarhooUISDKSceneCoordinator {
 
-    func startNested(partentViewController: BaseViewController, superview: UIView) {
+    func start() {
+        navigationController?.show(baseViewController, sender: nil)
+    }
+
+    func startNested(parentViewController: BaseViewController, superview: UIView) {
         superview.addSubview(baseViewController.view)
-        partentViewController.addChild(baseViewController)
+        parentViewController.addChild(baseViewController)
+    }
+
+    func startPresented(on parentCoordinator: KarhooUISDKSceneCoordinator) {
+        parentCoordinator.baseViewController.present(baseViewController, animated: true)
     }
 
     func addChild(_ childCoordinator: KarhooUISDKSceneCoordinator) {

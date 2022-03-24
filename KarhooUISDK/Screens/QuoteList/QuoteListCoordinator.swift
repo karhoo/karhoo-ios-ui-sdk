@@ -56,35 +56,15 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
 extension KarhooQuoteListCoordinator: QuoteListRouter {
 
     func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails) {
-        // TODO: replace to use Booking coordinator to perform actual navigation
-//        let checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout()
-//
-//        let checkoutView = checkoutScreenBuilder
-//            .buildCheckoutScreen(
-//                quote: quote,
-//                journeyDetails: journeyDetails,
-//                bookingMetadata: KarhooUISDKConfigurationProvider.configuration.bookingMetadata,
-//                callback: {_ in
-////                TODO: Add ecpected bahaviour, previously implemented in KarhooBookingPresenter.bookingRequestCompleted
-//                    return}
-//               /* callback: { [weak self] result in
-//                   self?.view?.dismiss(animated: false, completion: {
-//                        self?.bookingRequestCompleted(
-//                            result: result,
-//                            quote: quote,
-//                            details: journeyDetails
-//                        )
-//                    })
-//                }*/
-//            )
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//        navigationController?.show(checkoutView, sender: nil)
-//        // TODO: finish implementation
-
         onQuoteSelected?(quote)
     }
 
     func routeToQuoteDetails(_ quote: Quote) {
-        // TODO: finish implementation
+    }
+
+    func routeToSort() {
+        let sortCoordinator = KarhooQuoteListSortCoordinator()
+        addChild(sortCoordinator)
+        sortCoordinator.startPresented(on: self)
     }
 }

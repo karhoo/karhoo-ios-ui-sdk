@@ -181,6 +181,11 @@ public struct UIConstants {
             
             /// 180 x 180
             public static let driverDetailsViewSize = CGSize(width: 180, height: 180)
+            
+            /// 48
+            public static let mainActionButtonHeight: CGFloat = 48
+
+            public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
     }
     
@@ -196,6 +201,9 @@ public struct UIConstants {
         
         /// 10
         public static let large: CGFloat = 10
+
+        /// 12
+        public static let xLarge: CGFloat = 12
     }
     
     public struct ShadowRadius {

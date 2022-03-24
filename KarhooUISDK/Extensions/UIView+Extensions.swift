@@ -26,6 +26,14 @@ extension UIView {
         maskLayer.path = roundCornersPath.cgPath
         layer.mask = maskLayer
     }
+
+    func applyRoundCorners(
+        _ cornerMask: CACornerMask,
+        radius: CGFloat
+    ) {
+        layer.cornerRadius = radius
+        layer.maskedCorners = cornerMask
+    }
     
     public func animateBorderColor(toColor: UIColor, duration: Double) {
         let animation: CABasicAnimation = CABasicAnimation(keyPath: "borderColor")

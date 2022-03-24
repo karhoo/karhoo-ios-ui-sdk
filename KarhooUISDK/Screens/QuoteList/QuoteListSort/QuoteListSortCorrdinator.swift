@@ -9,8 +9,8 @@
 import Foundation
 import KarhooSDK
 
-struct KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
-    
+class KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
+
     var childCoordinators: [KarhooUISDKSceneCoordinator] = []
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
@@ -28,10 +28,6 @@ struct KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
             router: self
         )
         self.viewController.setupBinding(presenter)
-    }
-    
-    func start() {
-        navigationController?.show(viewController, sender: nil)
     }
 }
 

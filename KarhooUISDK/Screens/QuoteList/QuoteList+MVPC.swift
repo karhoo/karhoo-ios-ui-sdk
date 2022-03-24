@@ -53,6 +53,8 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectQuoteDetails(_ quote: Quote)
 
     func didSelectCategory(_ category: QuoteCategory)
+
+    func didSelectSort()
 }
 
 protocol QuoteListRouter: AnyObject {
@@ -60,4 +62,6 @@ protocol QuoteListRouter: AnyObject {
     func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
 
     func routeToQuoteDetails(_ quote: Quote)
+
+    func routeToSort()
 }

@@ -39,6 +39,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             addressPickerView,
             quoteCategoryBarView,
             quoteSortView,
+            sortButton,
             legalDisclaimerContainer
         ]
     }
@@ -47,6 +48,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     private lazy var quoteSortView = KarhooQuoteSortView().then {
         $0.set(actions: self)
+    }
+    private lazy var sortButton = UIButton().then {
+        $0.layer.borderColor = KarhooUI.colors.border.cgColor
+        $0.layer.cornerRadius = UIConstants.CornerRadius.large
+        $0.setTitleColor(KarhooUI.colors.text, for: .normal)
+        $0.setTitle("sort_", for: .normal)
+        $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
     private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
         $0.set(actions: self)
@@ -178,6 +186,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             appearance.titleTextAttributes = [
                 .foregroundColor: KarhooUI.colors.white
             ]
+            navigationController?.navigationBar.barStyle = .black
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         }
@@ -292,6 +301,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func handleCategoriesUpdated(_ categories: [QuoteCategory], quoteListId: String?) {
         quoteCategoryBarView.categoriesChanged(categories: categories, quoteListId: quoteListId)
+    }
+
+    // MARK: - UI Actions
+
+    @objc
+    private func sortButtonTapped(_ sender: UIButton) {
+        presenter?.didSelectSort()
     }
 }
 
