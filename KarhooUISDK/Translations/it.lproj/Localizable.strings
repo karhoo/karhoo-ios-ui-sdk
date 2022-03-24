@@ -615,6 +615,12 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Nessuna disponibilità per l'orario di richiesta.";
 
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ per suggerire flotte di notizie";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contattaci";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Gli indirizzi di ritiro e riconsegna sono simili";

@@ -615,6 +615,12 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
 
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ to suggest news fleets";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contact us";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "No fleets in this area yet";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Pick up and drop-off addresses are similar";
