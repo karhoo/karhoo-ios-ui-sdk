@@ -87,6 +87,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return "quoteList_error_no_availability"
+        case .empty(reason: .originAndDestinationAreTheSame):
+            return "quoteList_error_pickup_destination_similar"
         default:
             return "quoteList_error_no_availability"
         }
