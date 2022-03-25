@@ -458,10 +458,6 @@
 
 "Text.Generic.PrivacyPolicy" = "Politique de Confidentialité";
 
-"Text.Generic.QuoteCell.Details" = "";
-
-"Text.Generic.QuoteCell.DriverArrival" = "";
-
 "Text.Generic.Register" = "Inscription";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -610,6 +606,24 @@
 "Text.QuoteCategory.Saloon" = "Berline";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Détails";
+
+"Text.QuoteCell.DriverArrival" = "Arrivée du chauffeur";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre moment.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes d’actualités";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
 
 "Text.Quotes.Result" = "";
 

@@ -458,10 +458,6 @@
 
 "Text.Generic.PrivacyPolicy" = "Privacybeleid";
 
-"Text.Generic.QuoteCell.Details" = "";
-
-"Text.Generic.QuoteCell.DriverArrival" = "";
-
 "Text.Generic.Register" = "Registreren";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -610,6 +606,24 @@
 "Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.QuoteCell.DriverArrival" = "Aankomst chauffeur";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ om nieuwsvloten voor te stellen";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contacteer ons";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Ophaal- en afleveradressen zijn vergelijkbaar";
 
 "Text.Quotes.Result" = "";
 
