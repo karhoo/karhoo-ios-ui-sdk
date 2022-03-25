@@ -22,4 +22,8 @@ class KarhooQuoteListSortPresenter: QuoteListSortPresenter {
 
     func viewWillAppear() {
     }
+
+    func close(save: Bool) {
+        router.dismiss()
+    }
 }

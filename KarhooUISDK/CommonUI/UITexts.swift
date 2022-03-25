@@ -46,6 +46,7 @@ public enum UITexts {
         public static let card = "Text.Generic.Card".localized
         public static let reportIssue = "Text.Generic.ReportIssue".localized
         public static let rides = "Text.Generic.Rides".localized
+        public static let save = "Text.Generic.Save".localized
         public static let noMailSetUpMessage = "Text.Generic.NoEmailSetupError".localized
         public static let noCarsAvailable = "Text.Generic.NoCarsAvailable".localized
         public static let gotIt = "Text.Generic.GotIt".localized

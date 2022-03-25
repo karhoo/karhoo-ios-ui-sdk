@@ -32,4 +32,7 @@ class KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
 }
 
 extension KarhooQuoteListSortCoordinator: QuoteListSortRouter {
+    func dismiss() {
+        viewController.dismiss(animated: true, completion: nil)
+    }
 }

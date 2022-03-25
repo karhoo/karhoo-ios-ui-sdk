@@ -12,6 +12,18 @@ import Adyen
 
 class KarhooQuoteListSortViewController: UIViewController, BaseViewController, QuoteListSortViewController {
 
+    enum SortOption: UserSelectable, CaseIterable {
+        case price
+        case eta
+
+        var localizedString: String {
+            switch self {
+            case .price: return "Price_"
+            case .eta: return "Driver_arrival"
+            }
+        }
+    }
+
     // MARK: - Properties
 
     private var presenter: QuoteListSortPresenter!
@@ -22,6 +34,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     private lazy var visibleContainer = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = KarhooUI.colors.background1
         $0.applyRoundCorners(
             [.layerMinXMinYCorner, .layerMaxXMinYCorner],
@@ -50,13 +63,10 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         $0.setImage(.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
-    private lazy var selectionView = UILabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .black
-        $0.text = "selection view"
-    }
+    private lazy var selectionView = SingleSelectionListView<SortOption>(options: SortOption.allCases)
+
     private lazy var confirmButton = MainActionButton().then {
-        $0.setTitle("SAVE_", for: .normal)
+        $0.setTitle(UITexts.Generic.save.uppercased(), for: .normal)
         $0.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
     }
     
@@ -102,6 +112,9 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
 
     private func setupProperties() {
         view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        // Setup dismiss gestures
         transparentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
         transparentView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(backgroundPanned)))
         visibleContainer.addGestureRecognizer(
@@ -155,14 +168,21 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
             paddingBottom: UIConstants.Spacing.standard,
             paddingRight: UIConstants.Spacing.standard
         )
-        headerLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        headerStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+
+        closeButton.anchor(
+            width: UIConstants.Dimension.Button.small,
+            height: UIConstants.Dimension.Button.small
+        )
     }
+
+    // MARK: - Helpers
 
     // MARK: - UI Actions
 
     @objc
     private func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        self.dismiss(animated: true, completion: nil)
+        presenter.close(save: false)
     }
 
     @objc
@@ -171,21 +191,23 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         let velocity = sender.velocity(in: view)
         let velocityNoiceCap: CGFloat = 5
         guard velocity.y > velocityNoiceCap else { return }
-        dismiss(animated: true, completion: nil)
+        presenter.close(save: false)
     }
 
     @objc
     private func visibleContainerPanned(_ sender: UIPanGestureRecognizer) {
-        // nothing to do here, the interaction should be ignored
+        // Nothing to do here, the interaction should be ignored.
+        // Reason for this gesture to exist is to override default UIKit drag-to-dismiss gesture from visible container view.
     }
 
     @objc
     private func savePressed(_ sender: MainActionButton) {
-        print("save tapped")
+        presenter.close(save: true)
     }
 
     @objc
     private func closePressed(_ sender: UIButton) {
         print("save tapped")
+        presenter.close(save: false)
     }
 }

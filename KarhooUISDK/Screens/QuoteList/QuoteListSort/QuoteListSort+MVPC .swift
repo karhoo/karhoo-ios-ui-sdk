@@ -19,7 +19,9 @@ protocol QuoteListSortViewController: BaseViewController {
 protocol QuoteListSortPresenter: AnyObject {
     func viewDidLoad()
     func viewWillAppear()
+    func close(save: Bool)
 }
 
 protocol QuoteListSortRouter: AnyObject {
+    func dismiss()
 }
