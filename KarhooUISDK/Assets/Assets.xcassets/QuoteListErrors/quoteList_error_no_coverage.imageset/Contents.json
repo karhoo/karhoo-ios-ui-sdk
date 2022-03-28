@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "quoteList_error_no_availability.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

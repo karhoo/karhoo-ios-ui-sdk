@@ -28,8 +28,8 @@ public struct FontFamily {
 struct KarhooFonts {
 
     private let titleSize: CGFloat = 30
-    private let subtitleSize: CGFloat = 20
     private let fontSize24: CGFloat = 24
+    private let subtitleSize: CGFloat = 20
     private let headerSize: CGFloat = 17
     private let bodySize: CGFloat = 15
     private let captionSize: CGFloat = 12
@@ -42,10 +42,10 @@ struct KarhooFonts {
     private var italicFont: UIFont = UIFont(descriptor: UIFont.systemFont(ofSize: 0, weight: .regular).fontDescriptor.withSymbolicTraits(.traitItalic)!, size: 0)
 
     init(family: FontFamily) {
-        self.fetchCustomFamily(name: family.boldFont, font: &boldFont)
-        self.fetchCustomFamily(name: family.regularFont, font: &regularFont)
-        self.fetchCustomFamily(name: family.lightFont, font: &lightFont)
-        self.fetchCustomFamily(name: family.italicFont, font: &italicFont)
+        fetchCustomFamily(name: family.boldFont, font: &boldFont)
+        fetchCustomFamily(name: family.regularFont, font: &regularFont)
+        fetchCustomFamily(name: family.lightFont, font: &lightFont)
+        fetchCustomFamily(name: family.italicFont, font: &italicFont)
     }
 
     private func fetchCustomFamily(name: String, font: inout UIFont) {
@@ -62,7 +62,7 @@ struct KarhooFonts {
     }
     
     func getBoldFont(withSize size: CGFloat? = nil) -> UIFont {
-        return size != nil ? boldFont.withSize(size!) : boldFont
+        size != nil ? boldFont.withSize(size!) : boldFont
     }
 
     func getSemiboldFont(withSize size: CGFloat? = nil) -> UIFont {
@@ -70,82 +70,90 @@ struct KarhooFonts {
     }
     
     func getRegularFont(withSize size: CGFloat? = nil) -> UIFont {
-        return size != nil ? regularFont.withSize(size!) : regularFont
+        size != nil ? regularFont.withSize(size!) : regularFont
     }
     
     func getItalicFont(withSize size: CGFloat? = nil) -> UIFont {
-        return size != nil ? italicFont.withSize(size!) : italicFont
+        size != nil ? italicFont.withSize(size!) : italicFont
     }
     
     func headerBold() -> UIFont {
-        return boldFont.withSize(headerSize)
+        boldFont.withSize(headerSize)
+    }
+
+    func headerSemibold() -> UIFont {
+        semiboldFont.withSize(headerSize)
     }
     
     func headerRegular() -> UIFont {
-        return regularFont.withSize(headerSize)
+        regularFont.withSize(headerSize)
     }
     
     func headerItalic() -> UIFont {
-        return italicFont.withSize(headerSize)
+        italicFont.withSize(headerSize)
     }
     
     func bodyRegular() -> UIFont {
-        return regularFont.withSize(bodySize)
+        regularFont.withSize(bodySize)
     }
 
     func bodyBold() -> UIFont {
-        return boldFont.withSize(bodySize)
+        boldFont.withSize(bodySize)
     }
     
     func bodyItalic() -> UIFont {
-        return italicFont.withSize(bodySize)
+        italicFont.withSize(bodySize)
     }
 
     func captionRegular() -> UIFont {
-        return regularFont.withSize(captionSize)
+        regularFont.withSize(captionSize)
     }
 
     func captionBold() -> UIFont {
-        return boldFont.withSize(captionSize)
+        boldFont.withSize(captionSize)
     }
     
     func captionItalic() -> UIFont {
-        return italicFont.withSize(captionSize)
+        italicFont.withSize(captionSize)
     }
 
     func footnoteRegular() -> UIFont {
-        return regularFont.withSize(footnoteSize)
+        regularFont.withSize(footnoteSize)
     }
 
     func footnoteBold() -> UIFont {
-        return boldFont.withSize(footnoteSize)
+        boldFont.withSize(footnoteSize)
     }
     
     func footnoteItalic() -> UIFont {
-        return italicFont.withSize(footnoteSize)
+        italicFont.withSize(footnoteSize)
     }
 
     func titleRegular() -> UIFont {
-        return regularFont.withSize(titleSize)
+        regularFont.withSize(titleSize)
     }
 
     func titleBold() -> UIFont {
-        return boldFont.withSize(titleSize)
+        boldFont.withSize(titleSize)
     }
     
     func titleItalic() -> UIFont {
-        return italicFont.withSize(titleSize)
+        italicFont.withSize(titleSize)
     }
 
     func subtitleRegular() -> UIFont {
-        return regularFont.withSize(subtitleSize)
+        regularFont.withSize(subtitleSize)
+    }
+
+    func subtitleSemibold() -> UIFont {
+        semiboldFont.withSize(subtitleSize)
     }
 
     func subtitleBold() -> UIFont {
-        return boldFont.withSize(subtitleSize)
+        boldFont.withSize(subtitleSize)
     }
     
     func subtitleItalic() -> UIFont {
-        return italicFont.withSize(subtitleSize)
+        italicFont.withSize(subtitleSize)
     }
 }
