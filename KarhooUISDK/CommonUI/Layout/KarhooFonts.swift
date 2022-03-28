@@ -93,6 +93,10 @@ struct KarhooFonts {
         return regularFont.withSize(bodySize)
     }
 
+    func bodySemibold() -> UIFont {
+        return semiboldFont.withSize(bodySize)
+    }
+
     func bodyBold() -> UIFont {
         return boldFont.withSize(bodySize)
     }
@@ -103,6 +107,10 @@ struct KarhooFonts {
 
     func captionRegular() -> UIFont {
         return regularFont.withSize(captionSize)
+    }
+
+    func captionSemibold() -> UIFont {
+        return semiboldFont.withSize(captionSize)
     }
 
     func captionBold() -> UIFont {

@@ -12,18 +12,6 @@ import Adyen
 
 class KarhooQuoteListSortViewController: UIViewController, BaseViewController, QuoteListSortViewController {
 
-    enum SortOption: UserSelectable, CaseIterable {
-        case price
-        case eta
-
-        var localizedString: String {
-            switch self {
-            case .price: return "Price_"
-            case .eta: return "Driver_arrival"
-            }
-        }
-    }
-
     // MARK: - Properties
 
     private var presenter: QuoteListSortPresenter!
@@ -41,7 +29,6 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
             radius: UIConstants.CornerRadius.large
         )
     }
-
     private lazy var stackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -53,17 +40,20 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
     }
     private lazy var headerLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "Sort_By"
+        $0.text = UITexts.Generic.sortBy
         $0.textColor = KarhooUI.colors.text
-        $0.font = KarhooUI.fonts.subtitleBold()
+        $0.font = KarhooUI.fonts.subtitleRegular()
     }
     private lazy var closeButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = KarhooUI.colors.text
-        $0.setImage(.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setImage(.uisdkImage("cross_new").withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
-    private lazy var selectionView = SingleSelectionListView<SortOption>(options: SortOption.allCases)
+    private lazy var selectionView = SingleSelectionListView<QuoteListSortOrder>(
+        options: presenter.sortOptions,
+        selectedOption: presenter.selectedSortOption
+    )
 
     private lazy var confirmButton = MainActionButton().then {
         $0.setTitle(UITexts.Generic.save.uppercased(), for: .normal)
@@ -133,11 +123,11 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         visibleContainer.addSubview(stackView)
         stackView.addArrangedSubviews([
             headerStackView,
-            SeparatorView(fixedHeight: 10),
+            SeparatorView(fixedHeight: UIConstants.Spacing.small),
             SeparatorView(fixedHeight: 1, color: KarhooUI.colors.border),
-            SeparatorView(fixedHeight: 20),
+            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             selectionView,
-            SeparatorView(fixedHeight: 20),
+            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             confirmButton
         ])
         headerStackView.addArrangedSubviews([
@@ -202,12 +192,12 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
 
     @objc
     private func savePressed(_ sender: MainActionButton) {
+        presenter.set(sortOption: selectionView.selectedOption ?? .price)
         presenter.close(save: true)
     }
 
     @objc
     private func closePressed(_ sender: UIButton) {
-        print("save tapped")
         presenter.close(save: false)
     }
 }

@@ -62,8 +62,13 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
     func routeToQuoteDetails(_ quote: Quote) {
     }
 
-    func routeToSort() {
-        let sortCoordinator = KarhooQuoteListSortCoordinator()
+    func routeToSort(selectedSortOrder: QuoteListSortOrder) {
+        let sortCoordinator = KarhooQuoteListSortCoordinator(
+            selectedOption: selectedSortOrder,
+            onSortOptionComfirmed: { [weak self] selectedSortOption in
+                self?.presenter.didSelectQuoteOrder(selectedSortOption)
+            }
+        )
         addChild(sortCoordinator)
         sortCoordinator.startPresented(on: self)
     }

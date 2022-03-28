@@ -46,7 +46,7 @@ protocol QuoteListPresenter: AnyObject {
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 
-    func didSelectQuoteOrder(_ order: QuoteSortOrder)
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder)
 
     func didSelectQuote(_ quote: Quote)
 
@@ -54,7 +54,7 @@ protocol QuoteListPresenter: AnyObject {
 
     func didSelectCategory(_ category: QuoteCategory)
 
-    func didSelectSort()
+    func didSelectShowSort()
 }
 
 protocol QuoteListRouter: AnyObject {
@@ -63,5 +63,5 @@ protocol QuoteListRouter: AnyObject {
 
     func routeToQuoteDetails(_ quote: Quote)
 
-    func routeToSort()
+    func routeToSort(selectedSortOrder: QuoteListSortOrder)
 }

@@ -370,6 +370,7 @@
 		5132EAF627EBA6F100866FA9 /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAF527EBA6F000866FA9 /* MainActionButton.swift */; };
 		5132EAF927ECD02500866FA9 /* SingleSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */; };
 		5132EAFC27ECF5E100866FA9 /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */; };
+		5132EB0227F1E1D000866FA9 /* RadioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0127F1E1D000866FA9 /* RadioControl.swift */; };
 		514E7FC027D4F141002DB078 /* QuoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */; };
 		514E7FC227D4F6F2002DB078 /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */; };
 		514E7FC427D4FB1B002DB078 /* QuoteListTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */; };
@@ -896,6 +897,7 @@
 		5132EAF527EBA6F000866FA9 /* MainActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
 		5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionListView.swift; sourceTree = "<group>"; };
 		5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
+		5132EB0127F1E1D000866FA9 /* RadioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioControl.swift; sourceTree = "<group>"; };
 		514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListTableCoordinator.swift; sourceTree = "<group>"; };
@@ -2395,6 +2397,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		5132EB0027F1E1BE00866FA9 /* RadioControl */ = {
+			isa = PBXGroup;
+			children = (
+				5132EB0127F1E1D000866FA9 /* RadioControl.swift */,
+			);
+			path = RadioControl;
+			sourceTree = "<group>";
+		};
 		514E7FC527D50CBF002DB078 /* QuoteList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2637,6 +2647,7 @@
 		6BB9404D274FDA9D00478ABD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5132EB0027F1E1BE00866FA9 /* RadioControl */,
 				4017C46923CCB0230081834B /* EmptyStateView.swift */,
 				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
 				407EC77E22CF564E00F24CFC /* GradientView.swift */,
@@ -4062,6 +4073,7 @@
 				097BF283234F2A3E00BBE418 /* VehicleCapacityView.swift in Sources */,
 				6B5B035926D7C2D90001B2DB /* KarhooCheckoutViewController+Extensions.swift in Sources */,
 				FC83E29E221ECC1C008FE26D /* DestinationEtaMVP.swift in Sources */,
+				5132EB0227F1E1D000866FA9 /* RadioControl.swift in Sources */,
 				FC0465A52215AA05004E76FE /* NavigationControllerDelegate.swift in Sources */,
 				4017C46A23CCB0230081834B /* EmptyStateView.swift in Sources */,
 				6B5B035726D7B83F0001B2DB /* KarhooAddPassengerDetailsMVP.swift in Sources */,

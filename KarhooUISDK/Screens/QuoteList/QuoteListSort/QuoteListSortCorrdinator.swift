@@ -20,12 +20,16 @@ class KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
     // MARK: - Initializator
     
     init(
-        navigationController: UINavigationController? = nil
+        navigationController: UINavigationController? = nil,
+        selectedOption: QuoteListSortOrder,
+        onSortOptionComfirmed: @escaping (QuoteListSortOrder) -> Void
     ) {
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListSortViewController()
         self.presenter = KarhooQuoteListSortPresenter(
-            router: self
+            router: self,
+            selectedOption: selectedOption,
+            onSortOptionComfirmed: onSortOptionComfirmed
         )
         self.viewController.setupBinding(presenter)
     }

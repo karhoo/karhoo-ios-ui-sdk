@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol UserSelectable {
+protocol UserSelectable: Equatable {
     var localizedString: String { get }
 }

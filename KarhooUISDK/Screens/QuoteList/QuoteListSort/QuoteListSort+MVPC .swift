@@ -17,8 +17,11 @@ protocol QuoteListSortViewController: BaseViewController {
 }
 
 protocol QuoteListSortPresenter: AnyObject {
+    var sortOptions: [QuoteListSortOrder] { get }
+    var selectedSortOption: QuoteListSortOrder { get }
     func viewDidLoad()
     func viewWillAppear()
+    func set(sortOption: QuoteListSortOrder)
     func close(save: Bool)
 }
 

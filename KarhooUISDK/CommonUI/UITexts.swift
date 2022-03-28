@@ -66,6 +66,8 @@ public enum UITexts {
         public static let or = "Text.Generic.Or".localized
         public static let checked = "Text.Generic.Checked".localized
         public static let unchecked = "Text.Generic.Unchecked".localized
+        public static let sortBy = "Text.Generic.SortBy".localized
+        public static let driverArrival = "Text.Generic.DriverArrival".localized
     }
 
     public enum GenericTripStatus {

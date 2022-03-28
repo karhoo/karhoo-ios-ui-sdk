@@ -11,9 +11,21 @@ import KarhooSDK
 
 class KarhooQuoteListSortPresenter: QuoteListSortPresenter {
 
+    var sortOptions: [QuoteListSortOrder] {
+        QuoteListSortOrder.allCases
+    }
+    private(set) var selectedSortOption: QuoteListSortOrder
+    private let onSortOptionComfirmed: (QuoteListSortOrder) -> Void
+    
     private let router: QuoteListSortRouter
 
-    init(router: QuoteListSortRouter) {
+    init(
+        router: QuoteListSortRouter,
+        selectedOption: QuoteListSortOrder,
+        onSortOptionComfirmed: @escaping (QuoteListSortOrder) -> Void
+    ) {
+        self.selectedSortOption = selectedOption
+        self.onSortOptionComfirmed = onSortOptionComfirmed
         self.router = router
     }
 
@@ -24,6 +36,13 @@ class KarhooQuoteListSortPresenter: QuoteListSortPresenter {
     }
 
     func close(save: Bool) {
+        if save {
+            onSortOptionComfirmed(selectedSortOption)
+        }
         router.dismiss()
+    }
+
+    func set(sortOption: QuoteListSortOrder) {
+        selectedSortOption = sortOption
     }
 }

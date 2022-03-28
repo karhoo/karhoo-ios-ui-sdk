@@ -8,17 +8,24 @@
 
 import KarhooSDK
 
-enum QuoteSortOrder {
+enum QuoteListSortOrder: UserSelectable, CaseIterable {
     case price, qta
+
+    var localizedString: String {
+        switch self {
+        case .price: return UITexts.Generic.price
+        case .qta: return UITexts.Generic.driverArrival
+        }
+    }
 }
 
 protocol QuoteSorter {
-    func sortQuotes(_ quotes: [Quote], by order: QuoteSortOrder) -> [Quote]
+    func sortQuotes(_ quotes: [Quote], by order: QuoteListSortOrder) -> [Quote]
 }
 
 final class KarhooQuoteSorter: QuoteSorter {
 
-    func sortQuotes(_ quotes: [Quote], by order: QuoteSortOrder) -> [Quote] {
+    func sortQuotes(_ quotes: [Quote], by order: QuoteListSortOrder) -> [Quote] {
         switch order {
         case .price:
             return sortQuotesByPrice(quotes)

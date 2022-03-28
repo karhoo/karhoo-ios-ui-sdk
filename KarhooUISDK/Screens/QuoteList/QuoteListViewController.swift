@@ -30,18 +30,24 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var tableHeaderStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
-        $0.distribution = .fill
-        $0.alignment = .fill
+        $0.alignment = .center
         $0.spacing = UIConstants.Spacing.standard
     }
     private var headerViews: [UIView] {
-        [
+        #if DEBUG
+        return [
+            addressPickerView,
+            buttonsStackView,
+            legalDisclaimerContainer
+        ]
+        #else
+        return [
             addressPickerView,
             quoteCategoryBarView,
             quoteSortView,
-            sortButton,
             legalDisclaimerContainer
         ]
+        #endif
     }
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -49,12 +55,23 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var quoteSortView = KarhooQuoteSortView().then {
         $0.set(actions: self)
     }
+    private lazy var buttonsStackView = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = true
+        $0.axis = .horizontal
+        $0.spacing = UIConstants.Spacing.medium
+    }
     private lazy var sortButton = UIButton().then {
         $0.layer.borderColor = KarhooUI.colors.border.cgColor
+        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
         $0.layer.cornerRadius = UIConstants.CornerRadius.large
+        $0.clipsToBounds = true
         $0.setTitleColor(KarhooUI.colors.text, for: .normal)
-        $0.setTitle("sort_", for: .normal)
+        $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
+        $0.setImage(.uisdkImage("arrowDown"), for: .normal)
+        $0.setTitle(UITexts.Generic.sortBy, for: .normal)
+        $0.tintColor = KarhooUI.colors.text
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
+        $0.addTouchAnimation()
     }
     private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
         $0.set(actions: self)
@@ -67,7 +84,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
         $0.textAlignment = .right
-        $0.font = KarhooUI.fonts.captionBold()
+        $0.font = KarhooUI.fonts.captionSemibold()
         $0.textColor = KarhooUI.colors.text
         $0.text = UITexts.Quotes.feesAndTaxesIncluded
     }
@@ -140,6 +157,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
+        buttonsStackView.addArrangedSubviews([sortButton])
         legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
         tableHeaderStackView.addArrangedSubviews(headerViews)
         headerContainerView.addSubview(tableHeaderStackView)
@@ -154,12 +172,30 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             trailing: view.trailingAnchor
         )
 
+        addressPickerView.anchor(
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingLeft: 5,
+            paddingRight: 5
+        )
         quoteCategoryBarView.heightAnchor.constraint(
             equalToConstant: UIConstants.Dimension.View.largeRowHeight
         ).isActive = true
 
-        legalDisclaimerLabel.anchorToSuperview(
-            paddingTrailing: UIConstants.Spacing.standard
+        buttonsStackView.anchor(
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingLeft: 10,
+            paddingRight: 10
+        )
+
+        sortButton.anchor(height: UIConstants.Dimension.Button.medium)
+
+        legalDisclaimerLabel.anchor(
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingLeft: UIConstants.Spacing.standard,
+            paddingRight: UIConstants.Spacing.standard
         )
 
         tableHeaderStackView.anchorToSuperview(
@@ -240,6 +276,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     // MARK: - Helpers
 
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
+        buttonsStackView.isHidden = false
         quoteCategoryBarView.isHidden = false
         quoteSortView.isHidden = false
         legalDisclaimerContainer.isHidden = false
@@ -248,6 +285,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             delay: 0,
             options: .curveEaseOut,
             animations: { [weak self] in
+                self?.buttonsStackView.alpha = 1
                 self?.quoteCategoryBarView.alpha = 1
                 self?.quoteSortView.alpha = 1
                 self?.legalDisclaimerContainer.alpha = 1
@@ -269,6 +307,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             options: .curveEaseOut,
             animations: { [weak self] in
                 if hideAuxiliaryHeaderItems {
+                    self?.buttonsStackView.alpha = 0
                     self?.quoteCategoryBarView.alpha = 0
                     self?.quoteSortView.alpha = 0
                     self?.legalDisclaimerContainer.alpha = 0
@@ -276,6 +315,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             },
             completion: { [weak self] _ in
                 if hideAuxiliaryHeaderItems {
+                    self?.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
                     self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
                     self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
                     self?.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
@@ -307,14 +347,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     @objc
     private func sortButtonTapped(_ sender: UIButton) {
-        presenter?.didSelectSort()
+        presenter?.didSelectShowSort()
     }
 }
 
 // MARK: - QuoteSortViewActions
 extension KarhooQuoteListViewController: QuoteSortViewActions {
     
-    func didSelectQuoteOrder(_ order: QuoteSortOrder) {
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder) {
         presenter?.didSelectQuoteOrder(order)
     }
 }

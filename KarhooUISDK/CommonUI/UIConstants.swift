@@ -50,7 +50,10 @@ public struct UIConstants {
         public struct Button {
             /// 24
             public static let small: CGFloat = 24
-            
+
+            /// 32
+            public static let medium: CGFloat = 32
+
             /// 44
             public static let standard: CGFloat = 44
             

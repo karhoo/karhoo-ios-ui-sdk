@@ -19,7 +19,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
-    private var selectedQuoteOrder: QuoteSortOrder = .qta
+    private var selectedQuoteOrder: QuoteListSortOrder = .qta
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
@@ -72,7 +72,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes()
     }
     
-    func didSelectQuoteOrder(_ order: QuoteSortOrder) {
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder) {
         selectedQuoteOrder = order
         updateViewQuotes()
     }
@@ -90,8 +90,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes()
     }
 
-    func didSelectSort() {
-        router.routeToSort()
+    func didSelectShowSort() {
+        router.routeToSort(selectedSortOrder: selectedQuoteOrder)
     }
 
     // MARK: - Private

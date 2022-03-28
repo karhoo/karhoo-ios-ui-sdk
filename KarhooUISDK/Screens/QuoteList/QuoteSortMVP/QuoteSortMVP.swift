@@ -12,5 +12,5 @@ protocol QuoteSortView: AnyObject { }
 
 protocol QuoteSortViewActions: AnyObject {
 
-    func didSelectQuoteOrder(_ order: QuoteSortOrder)
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder)
 }
