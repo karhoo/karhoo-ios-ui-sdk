@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Salvare";
 
+"Text.Generic.SortBy" = "Ordina per";
+
 /* english: "status" */
 "Text.Generic.Status" = "Stato";
 
@@ -619,7 +621,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contattaci";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Ancora nessuna flotta in quest'area";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 

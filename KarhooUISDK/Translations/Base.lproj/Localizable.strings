@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Save";
 
+"Text.Generic.SortBy" = "Sort By";
+
 /* english: "status" */
 "Text.Generic.Status" = "Status";
 

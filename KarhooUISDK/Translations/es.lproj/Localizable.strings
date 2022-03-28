@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Salvar";
 
+"Text.Generic.SortBy" = "Ordenar por";
+
 /* english: "status" */
 "Text.Generic.Status" = "Estado";
 
@@ -619,7 +621,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contáctenos";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Aún no hay flotas en esta área";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 

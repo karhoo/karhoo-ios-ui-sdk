@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Sauvegarder";
 
+"Text.Generic.SortBy" = "Trier par";
+
 /* english: "status" */
 "Text.Generic.Status" = "État actuel";
 
@@ -619,7 +621,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Pas encore de flottes dans ce domaine";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 

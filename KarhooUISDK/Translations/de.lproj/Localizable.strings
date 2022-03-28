@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Speichern";
 
+"Text.Generic.SortBy" = "Sortieren nach";
+
 /* english: "status" */
 "Text.Generic.Status" = "Status";
 
@@ -619,7 +621,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Kontaktieren Sie uns";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Noch keine Flotten in diesem Gebiet";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Bitte ändern Sie eine der Adressen, um Zugang zu den Angeboten zu erhalten";
 

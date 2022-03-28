@@ -475,6 +475,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "BEWAREN";
 
+"Text.Generic.SortBy" = "Sorteer op";
+
 /* english: "status" */
 "Text.Generic.Status" = "Status";
 
@@ -619,7 +621,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contacteer ons";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Nog geen vloten in dit gebied";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
 
