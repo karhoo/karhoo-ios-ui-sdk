@@ -1,4 +1,4 @@
-//  
+//
 //  QuoteListTablePresenter.swift
 //  KarhooUISDK
 //
@@ -117,15 +117,13 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     }
 
     private func getAttributedStringForNoCoverageError() -> NSAttributedString {
-        let contactUsText = "Contact us"
+        let contactUsText = UITexts.Errors.errorNoAvailabilityInRequestedAreaContactUsLinkText
         let contactUsLink = "OpenContactUsMail"
-        let message = "%1$@ to suggest news fleets"// UITexts.Errors.errorNoAvailabilityInRequestedAreaMessage
-
+        let message = UITexts.Errors.errorNoAvailabilityInRequestedAreaContactUsFullText
         let regularAttributes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.bodyRegular(),
             .foregroundColor: KarhooUI.colors.text
         ]
-
         let linkAttributes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.bodyRegular(),
             .link: contactUsLink,

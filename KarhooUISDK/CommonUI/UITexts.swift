@@ -131,6 +131,9 @@ public enum UITexts {
         static let errorPickupAndDestinationSameTitle = "Text.Quotes.ErrorPickupAndDestinationSameTitle".localized
         static let errorPickupAndDestinationSameMessage = "Text.Quotes.ErrorPickupAndDestinationSameSubtitle".localized
         static let errorNoAvailabilityInRequestedAreaTitle = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle".localized
+        static let errorNoAvailabilityInRequestedAreaContactUsLinkText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText".localized
+        static let errorNoAvailabilityInRequestedAreaContactUsFullText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText".localized
+
     }
 
     /* Payment Error */
