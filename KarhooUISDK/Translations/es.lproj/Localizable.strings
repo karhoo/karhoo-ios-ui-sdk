@@ -460,6 +460,8 @@
 
 "Text.Generic.PrivacyPolicy" = "Política de Privacidad";
 
+"Text.Generic.QuoteCell.Details" = "";
+
 "Text.Generic.Register" = "Registrarse";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -610,6 +612,8 @@
 "Text.QuoteCategory.Taxi" = "Taxi";
 
 "Text.QuoteCell.Details" = "Detalles";
+
+"Text.QuoteCell.DriverArrival" = "Llegada del conductor";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 

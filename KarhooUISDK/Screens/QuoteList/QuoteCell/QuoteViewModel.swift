@@ -103,7 +103,7 @@ final class QuoteViewModel {
     let fleetDescription: String
     let scheduleCaption: String
     let scheduleMainValue: String
-    let carType: String
+    let vehicleType: String
     let vehicleTags: [VehicleTag]
     let fleetCapabilities: [FleetCapabilities]
     let fare: String
@@ -128,8 +128,7 @@ final class QuoteViewModel {
                                                          journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        // TODO: to be reverted later to localized carType - vehicleClass is deprecated
-        self.carType = quote.vehicle.localizedVehicleClass
+        self.vehicleType = quote.vehicle.localizedVehicleType
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 

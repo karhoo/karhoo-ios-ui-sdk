@@ -611,6 +611,8 @@
 
 "Text.QuoteCell.Details" = "Details";
 
+"Text.QuoteCell.DriverArrival" = "Aankomst chauffeur";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
