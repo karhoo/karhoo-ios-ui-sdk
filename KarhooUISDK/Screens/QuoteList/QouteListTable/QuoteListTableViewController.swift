@@ -136,7 +136,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleEmptyState(_ error: QuoteListState.Error) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
-        let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: nil)
+        let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: self)
         let currentErrorView = tableView.backgroundView as? QuoteListErrorView
         let shouldReplaceErrorView = currentErrorView?.viewModel != errorView.viewModel
         tableView.backgroundView = shouldReplaceErrorView ? errorView : tableView.backgroundView
@@ -182,5 +182,11 @@ extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDa
             return
         }
         presenter.onQuoteSelected(quote)
+    }
+}
+
+extension KarhooQuoteListTableViewController: QuoteListErrorViewDelegate {
+    func showNoCoverageEmail(){
+        presenter.showNoCoverageEmail()
     }
 }

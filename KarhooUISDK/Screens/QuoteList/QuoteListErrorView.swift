@@ -7,10 +7,11 @@ import Foundation
 import KarhooSDK
 import UIKit
 
-protocol QuoteListErrorViewDelegate: AnyObject {
+@objc protocol QuoteListErrorViewDelegate: AnyObject {
+    func showNoCoverageEmail()
 }
 
-final class QuoteListErrorView: UIView {
+final class QuoteListErrorView: UIView, UITextViewDelegate {
 
     private lazy var titleLabel = UILabel().then {
         $0.font = KarhooUI.fonts.subtitleSemibold()
@@ -20,13 +21,15 @@ final class QuoteListErrorView: UIView {
         $0.text = viewModel.title
     }
 
-    private lazy var descriptionLabel = UILabel().then {
+    private lazy var descriptionLabel = UITextView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = false
         $0.font = KarhooUI.fonts.bodyRegular()
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
-        $0.numberOfLines = 0
         if let attributedMessage = viewModel.attributedMessage {
             $0.attributedText = viewModel.attributedMessage
+            $0.isUserInteractionEnabled = true
         } else {
             $0.text = viewModel.message
         }
@@ -82,6 +85,7 @@ final class QuoteListErrorView: UIView {
         imageView.anchor(width: UIConstants.Dimension.Icon.xxxLarge, height: UIConstants.Dimension.Icon.xxxLarge)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        descriptionLabel.delegate = self
     }
 
     // MARK: - Helpers
@@ -109,5 +113,12 @@ final class QuoteListErrorView: UIView {
             },
             completion: nil
         )
+    }
+
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if URL.absoluteString == "OpenContactUsMail" {
+            delegate?.showNoCoverageEmail()
+        }
+        return false
     }
 }
