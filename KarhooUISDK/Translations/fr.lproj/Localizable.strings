@@ -617,6 +617,12 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
 
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes d’actualités";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";

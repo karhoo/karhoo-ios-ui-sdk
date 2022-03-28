@@ -460,8 +460,6 @@
 
 "Text.Generic.PrivacyPolicy" = "Política de Privacidad";
 
-"Text.Generic.QuoteCell.Details" = "";
-
 "Text.Generic.Register" = "Registrarse";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
@@ -618,6 +616,12 @@
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ para sugerir nuevas flotas";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contáctenos";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 
