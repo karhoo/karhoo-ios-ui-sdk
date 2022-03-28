@@ -195,6 +195,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             left: view.leftAnchor,
             right: view.rightAnchor,
             paddingLeft: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.xSmall,
             paddingRight: UIConstants.Spacing.standard
         )
 

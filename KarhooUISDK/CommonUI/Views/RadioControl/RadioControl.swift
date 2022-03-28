@@ -158,6 +158,8 @@ class RadioControl: UIControl {
         withDelay delay: CGFloat = 0,
         animation: @escaping () -> Void
     ) {
+        let userInteractionSettingSnapshot = isUserInteractionEnabled
+        isUserInteractionEnabled = false
         UIView.animate(
             withDuration: duration,
             delay: delay,
@@ -165,7 +167,9 @@ class RadioControl: UIControl {
             initialSpringVelocity: UIConstants.Animation.initialSpringVelocity,
             options: .curveEaseIn,
             animations: animation,
-            completion: { _ in }
+            completion: { [weak self] _ in
+                self?.isUserInteractionEnabled = userInteractionSettingSnapshot
+            }
         )
     }
 }
