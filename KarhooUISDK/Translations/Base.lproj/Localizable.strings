@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Dismiss";
 
-"Text.Generic.DriverArrival" = "Driver arrival";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Save";
+
+"Text.Generic.SortBy" = "Sort By";
 
 /* english: "status" */
 "Text.Generic.Status" = "Status";
@@ -616,6 +616,12 @@
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please chosse a different time.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ to suggest news fleets";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contact us";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "No fleets in this area yet";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
 

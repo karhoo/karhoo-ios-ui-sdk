@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "CHIUDI";
 
-"Text.Generic.DriverArrival" = "Arrivo dell'autista";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifica";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Salvare";
+
+"Text.Generic.SortBy" = "Ordina per";
 
 /* english: "status" */
 "Text.Generic.Status" = "Stato";
@@ -616,6 +616,12 @@
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Si prega di scegliere un orario diverso.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Nessuna disponibilità per l'orario di richiesta.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ per suggerire flotte di notizie";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contattaci";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Ancora nessuna flotta in quest'area";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 

@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Stoppen";
 
-"Text.Generic.DriverArrival" = "Aankomst chauffeur";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "BEWAREN";
+
+"Text.Generic.SortBy" = "Sorteer op";
 
 /* english: "status" */
 "Text.Generic.Status" = "Status";
@@ -616,6 +616,12 @@
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ om nieuwsvloten voor te stellen";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contacteer ons";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Nog geen vloten in dit gebied";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
 

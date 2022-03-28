@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Fermer";
 
-"Text.Generic.DriverArrival" = "Arrivée du chauffeur";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifier";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Sauvegarder";
+
+"Text.Generic.SortBy" = "Trier par";
 
 /* english: "status" */
 "Text.Generic.Status" = "État actuel";
@@ -616,6 +616,12 @@
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre moment.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes d’actualités";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Pas encore de flottes dans ce domaine";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 
