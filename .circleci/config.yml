@@ -41,6 +41,7 @@ jobs:
       - run:
           name: Install Gemfile for Fastlane
           command: |
+           gem install bundler:2.2.7
            bundle config set --local path 'vendor/bundle'
            bundle check || bundle install
       - save_cache:
