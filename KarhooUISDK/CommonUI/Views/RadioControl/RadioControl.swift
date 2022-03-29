@@ -155,14 +155,14 @@ class RadioControl: UIControl {
 
     private func animate(
         duration: TimeInterval = UIConstants.Duration.xShort,
-        withDelay delay: CGFloat = 0,
+        withDelay delay: Double = 0,
         animation: @escaping () -> Void
     ) {
         let userInteractionSettingSnapshot = isUserInteractionEnabled
         isUserInteractionEnabled = false
         UIView.animate(
             withDuration: duration,
-            delay: delay,
+            delay: CGFloat(delay),
             usingSpringWithDamping: UIConstants.Animation.springWithDamping,
             initialSpringVelocity: UIConstants.Animation.initialSpringVelocity,
             options: .curveEaseIn,
