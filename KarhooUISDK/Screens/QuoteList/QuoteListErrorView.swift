@@ -21,7 +21,7 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
         $0.text = viewModel.title
     }
 
-    private lazy var descriptionLabel = UITextView().then {
+    private lazy var descriptionTextView = UITextView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.font = KarhooUI.fonts.bodyRegular()
@@ -79,13 +79,13 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
             SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             titleLabel,
             SeparatorView(fixedHeight: UIConstants.Spacing.standard),
-            descriptionLabel,
+            descriptionTextView,
             SeparatorView()
         ])
         imageView.anchor(width: UIConstants.Dimension.Icon.xxxLarge, height: UIConstants.Dimension.Icon.xxxLarge)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        descriptionLabel.delegate = self
+        descriptionTextView.delegate = self
     }
 
     // MARK: - Helpers
@@ -94,7 +94,7 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
         [
             imageView,
             titleLabel,
-            descriptionLabel
+            descriptionTextView
         ].forEach(animateSubviewIn)
     }
 
