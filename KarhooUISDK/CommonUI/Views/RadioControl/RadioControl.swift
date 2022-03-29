@@ -162,7 +162,7 @@ class RadioControl: UIControl {
         isUserInteractionEnabled = false
         UIView.animate(
             withDuration: duration,
-            delay: CGFloat(delay),
+            delay: delay,
             usingSpringWithDamping: UIConstants.Animation.springWithDamping,
             initialSpringVelocity: UIConstants.Animation.initialSpringVelocity,
             options: .curveEaseIn,
