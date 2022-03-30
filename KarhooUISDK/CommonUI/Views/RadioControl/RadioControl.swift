@@ -74,6 +74,7 @@ class RadioControl: UIControl {
                 .then {
                     $0.delegate = self
                     $0.requiresExclusiveTouchType = false
+                    $0.cancelsTouchesInView = false
                 }
         )
         isSelected = false
