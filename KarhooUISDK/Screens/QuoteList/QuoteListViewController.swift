@@ -34,20 +34,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.spacing = UIConstants.Spacing.standard
     }
     private var headerViews: [UIView] {
-        #if DEBUG
-        return [
+        [
             addressPickerView,
             buttonsStackView,
             legalDisclaimerContainer
         ]
-        #else
-        return [
-            addressPickerView,
-            quoteCategoryBarView,
-            quoteSortView,
-            legalDisclaimerContainer
-        ]
-        #endif
     }
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
