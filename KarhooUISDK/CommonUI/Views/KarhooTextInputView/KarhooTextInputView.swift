@@ -316,7 +316,7 @@ extension KarhooTextInputView: UITextPasteDelegate {
         to textRange: UITextRange
     ) -> UITextRange {
         textView.replace(textRange, withText: attributedString.string)
-            return textRange
+        return textRange
     }
 }
 
