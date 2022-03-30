@@ -30,7 +30,7 @@ class RadioControl: UIControl {
 
     override var isSelected: Bool {
         get {
-            selectionStatus
+            isOn
         }
         set {
             setSelected(newValue)
@@ -41,7 +41,7 @@ class RadioControl: UIControl {
     let unselectAllowed: Bool
 
     /// Local value to store current state, since `isSelected` is used by UIKit and need to be computed property.
-    private var selectionStatus: Bool = false
+    private var isOn: Bool = false
 
     // MARK: - Initialization
 
@@ -113,7 +113,7 @@ class RadioControl: UIControl {
     // MARK: - Helpers
 
     private func setSelected(_ isSelected: Bool) {
-        selectionStatus = isSelected
+        isOn = isSelected
         super.isSelected = isSelected
         isSelected ? setSelectedState() : setDefaultState()
     }

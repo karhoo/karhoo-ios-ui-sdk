@@ -14,7 +14,7 @@ enum QuoteListSortOrder: UserSelectable, CaseIterable {
     var localizedString: String {
         switch self {
         case .price: return UITexts.Generic.price
-        case .qta: return UITexts.Generic.driverArrival
+        case .qta: return UITexts.Quotes.driverArrivalTime
         }
     }
 }

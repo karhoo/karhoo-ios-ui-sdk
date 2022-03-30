@@ -370,7 +370,7 @@
 		5132EAF927ECD02500866FA9 /* SingleSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */; };
 		5132EAFC27ECF5E100866FA9 /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */; };
 		5132EB0227F1E1D000866FA9 /* RadioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0127F1E1D000866FA9 /* RadioControl.swift */; };
-		5132EB0427F2517B00866FA9 /* UIControl+addTouchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0327F2517B00866FA9 /* UIControl+addTouchAnimation.swift */; };
+		5132EB0427F2517B00866FA9 /* UIControl+AddTouchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */; };
 		514E7FC027D4F141002DB078 /* QuoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */; };
 		514E7FC227D4F6F2002DB078 /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */; };
 		514E7FC427D4FB1B002DB078 /* QuoteListTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */; };
@@ -901,7 +901,7 @@
 		5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionListView.swift; sourceTree = "<group>"; };
 		5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
 		5132EB0127F1E1D000866FA9 /* RadioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioControl.swift; sourceTree = "<group>"; };
-		5132EB0327F2517B00866FA9 /* UIControl+addTouchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+addTouchAnimation.swift"; sourceTree = "<group>"; };
+		5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+AddTouchAnimation.swift"; sourceTree = "<group>"; };
 		514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListTableCoordinator.swift; sourceTree = "<group>"; };
@@ -3420,7 +3420,7 @@
 				51E75B4027C7C4F000A016BD /* Collection+Safe.swift */,
 				511D9CCD27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift */,
 				516D1A2A27DF86FB00110B69 /* UIStackView+addArrangedSubviews.swift */,
-				5132EB0327F2517B00866FA9 /* UIControl+addTouchAnimation.swift */,
+				5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4003,7 +4003,7 @@
 				6B5B035326D7B8010001B2DB /* KarhooAddPassengerDetailsView.swift in Sources */,
 				097800A6226F427D008772E4 /* LocationService.swift in Sources */,
 				5C1B298725247E4F00E3CEEF /* AdyenPaymentNonceProvider.swift in Sources */,
-				5132EB0427F2517B00866FA9 /* UIControl+addTouchAnimation.swift in Sources */,
+				5132EB0427F2517B00866FA9 /* UIControl+AddTouchAnimation.swift in Sources */,
 				FC83E2A0221ECC1C008FE26D /* KarhooDestinationEtaView.swift in Sources */,
 				5CBA2A7B24F5D8CC0091D783 /* KarhooBookingButtonView.swift in Sources */,
 				FC435F252211B49100FB6BB5 /* RideDetailsViewController.swift in Sources */,

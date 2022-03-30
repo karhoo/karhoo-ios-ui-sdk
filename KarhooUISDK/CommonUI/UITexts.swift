@@ -407,6 +407,7 @@ public enum UITexts {
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
+        static let driverArrivalTime = "Text.Quotes.DriverArrivalTime".localized
     }
     
     public enum Loyalty {
