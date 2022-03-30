@@ -311,13 +311,12 @@ extension KarhooTextInputView: UITextViewDelegate {
 
 extension KarhooTextInputView: UITextPasteDelegate {
     func textPasteConfigurationSupporting(
-          _ textPasteConfigurationSupporting: UITextPasteConfigurationSupporting,
-          performPasteOf attributedString: NSAttributedString,
-          to textRange: UITextRange
-        ) -> UITextRange
-    {
-        self.textView.replace(textRange, withText: attributedString.string)
-          return textRange
+        _ textPasteConfigurationSupporting: UITextPasteConfigurationSupporting,
+        performPasteOf attributedString: NSAttributedString,
+        to textRange: UITextRange
+    ) -> UITextRange {
+        textView.replace(textRange, withText: attributedString.string)
+            return textRange
     }
 }
 
