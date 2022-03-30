@@ -23,8 +23,6 @@ class RadioControl: UIControl {
         $0.contentMode = .scaleAspectFit
         $0.image = .uisdkImage("radioUnselected")
     }
-    
-    private let animateTransitionToDefaultState: Bool
 
     override var allControlEvents: UIControl.Event { .touchUpInside }
 
@@ -37,24 +35,17 @@ class RadioControl: UIControl {
         }
     }
 
-    /// Set false if view should not allow touch interactions to change it's state to unselected
-    let unselectAllowed: Bool
-
     /// Local value to store current state, since `isSelected` is used by UIKit and need to be computed property.
     private var isOn: Bool = false
 
     // MARK: - Initialization
 
-    init(unselectAllowed: Bool = true, animateTransitionToDefaultState: Bool = true) {
-        self.animateTransitionToDefaultState = animateTransitionToDefaultState
-        self.unselectAllowed = unselectAllowed
+    init() {
         super.init(frame: .zero)
         self.setup()
     }
     
     required init?(coder: NSCoder) {
-        self.unselectAllowed = true
-        self.animateTransitionToDefaultState = true
         super.init(coder: coder)
         self.setup()
     }
@@ -69,14 +60,6 @@ class RadioControl: UIControl {
     
     private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
-        addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
-                .then {
-                    $0.delegate = self
-                    $0.requiresExclusiveTouchType = false
-                    $0.cancelsTouchesInView = false
-                }
-        )
         isSelected = false
     }
     
@@ -94,21 +77,6 @@ class RadioControl: UIControl {
         }.isActive = true
         defaultImageView.anchorToSuperview(padding: UIConstants.Spacing.xSmall)
         selectedImageView.anchorToSuperview(padding: UIConstants.Spacing.xSmall)
-    }
-
-    // MARK: - UI Actions
-
-    @objc
-    private func buttonTapped(_ sender: UITapGestureRecognizer) {
-        switch (isSelected, unselectAllowed) {
-        case (true, true):
-            // Setting default/unselected state by UI interaction should be allowed only if `unselectAllowed` is true
-            isSelected = false
-        case (false, _):
-            isSelected = true
-        default:
-            break
-        }
     }
 
     // MARK: - Helpers
@@ -137,21 +105,11 @@ class RadioControl: UIControl {
 
     private func setDefaultState() {
         // Step 1: hide selected image
-        animate(
-            duration: animateTransitionToDefaultState ? UIConstants.Duration.xShort : 0,
-            animation: {
-                self.selectedImageView.alpha = UIConstants.Alpha.hidden
-                self.selectedImageView.transform = CGAffineTransform.init(scaleX: 0, y: 0)
-            }
-        )
-        // Step 2: animate in default image
-        animate(
-            withDelay: animateTransitionToDefaultState ? UIConstants.Duration.xShort : 0,
-            animation: {
-                self.defaultImageView.alpha = UIConstants.Alpha.enabled
-                self.defaultImageView.transform = .identity
-            }
-        )
+        selectedImageView.alpha = UIConstants.Alpha.hidden
+        selectedImageView.transform = CGAffineTransform.init(scaleX: 0, y: 0)
+        
+        defaultImageView.alpha = UIConstants.Alpha.enabled
+        defaultImageView.transform = .identity
     }
 
     private func animate(
@@ -172,11 +130,5 @@ class RadioControl: UIControl {
                 self?.isUserInteractionEnabled = userInteractionSettingSnapshot
             }
         )
-    }
-}
-
-extension RadioControl: UIGestureRecognizerDelegate {
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        true
     }
 }
