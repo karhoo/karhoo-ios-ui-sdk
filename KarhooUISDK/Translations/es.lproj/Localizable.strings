@@ -613,6 +613,8 @@
 
 "Text.QuoteCell.DriverArrival" = "Llegada del conductor";
 
+"Text.Quotes.DriverArrivalTime" = "Hora de llegada del conductor";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
