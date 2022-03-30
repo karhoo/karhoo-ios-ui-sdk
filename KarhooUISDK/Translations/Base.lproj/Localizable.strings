@@ -613,6 +613,8 @@
 
 "Text.QuoteCell.DriverArrival" = "Driver arrival";
 
+"Text.Quotes.DriverArrivalTime" = "Driver arrival time";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please chosse a different time.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
