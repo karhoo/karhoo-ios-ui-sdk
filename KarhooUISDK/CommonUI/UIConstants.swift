@@ -82,6 +82,9 @@ public struct UIConstants {
             
             /// 64
             public static let xxLarge: CGFloat = 64 //54+
+
+            /// 120
+            public static let xxxLarge: CGFloat = 120
             
             /// 222
             public static let logoWidth: CGFloat = 222

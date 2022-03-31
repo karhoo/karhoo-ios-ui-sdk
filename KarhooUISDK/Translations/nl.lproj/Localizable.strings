@@ -617,6 +617,12 @@
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
 
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ om nieuwsvloten voor te stellen";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contacteer ons";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Ophaal- en afleveradressen zijn vergelijkbaar";
