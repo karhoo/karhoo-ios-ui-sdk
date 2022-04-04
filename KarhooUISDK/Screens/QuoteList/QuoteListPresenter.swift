@@ -12,7 +12,8 @@ import Adyen
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     // MARK: - Constants
-    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
+    // TODO: REVERT TO 120 AFTER TESTS
+    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 15 //120
 
     // MARK: - Properties
 
@@ -159,8 +160,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             assertionFailure()
             return
         }
-//      quoteListRefreshedAt = Date()
-        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
+        // TODO: REVERT TO 'quotesValidity' AFTER TESTS
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(30)
+        dateOfListRefreshing = Date().addingTimeInterval(Double(30))
         DispatchQueue.main.asyncAfter(deadline: deadline) {[weak self] in
             if let isViewVisible = self?.isViewVisible, isViewVisible {
                 self?.refreshSubscription()
