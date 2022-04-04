@@ -73,7 +73,6 @@ class SingleSelectionListView<T: UserSelectable>: UIView {
     private func buildOptionRow(for option: T) -> SelectionRowView<T> {
         SelectionRowView(
             value: option,
-            allowedToUnselectItself: false,
             onSelected: { [weak self] in
                 self?.optionSelected($0)
             }
@@ -96,13 +95,15 @@ class SingleSelectionListView<T: UserSelectable>: UIView {
 
 // MARK: - SelectionRowView
 private class SelectionRowView<T: UserSelectable>: UIView {
+
+    // MARK: - Properties
+
     let value: T
     let onSelected: (T) -> Void
 
-    /// Set `true` if it is allowed to have non of the options selected.
-    let allowedToUnselectItself: Bool
+    // MARK: - Views
 
-    private lazy var selectControl = RadioControl(unselectAllowed: allowedToUnselectItself).then {
+    private lazy var selectControl = RadioControl().then {
         $0.addTarget(self, action: #selector(selectPressed), for: .touchUpInside)
     }
     private lazy var stackView = UIStackView().then {
@@ -122,11 +123,9 @@ private class SelectionRowView<T: UserSelectable>: UIView {
 
     init(
         value: T,
-        allowedToUnselectItself: Bool = false,
         onSelected: @escaping (T) -> Void = { _ in }
     ) {
         self.value = value
-        self.allowedToUnselectItself = allowedToUnselectItself
         self.onSelected = onSelected
         super.init(frame: .zero)
         self.setup()
