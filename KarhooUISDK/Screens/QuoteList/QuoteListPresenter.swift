@@ -30,7 +30,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     var onStateUpdated: ((QuoteListState) -> Void)?
 
     // MARK: - Properties required to determinate if quote list should be refreshed
-    var quoteListRefreshedAt: Date?
+    var dateOfListRefreshing: Date?
     var isViewVisible = false
 
     // MARK: - Lifecycle
@@ -111,7 +111,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     // MARK: - Private
 
     func shouldReloadList() -> Bool {
-        guard let fireDate = quoteListRefreshedAt else { return true }
+        guard let fireDate = dateOfListRefreshing else { return true }
         let intervalToFire = fireDate.timeIntervalSinceNow
         // NOTE: 'fireDate.timeIntervalSinceNow' is negative when list is reloading and new timer is not started yet
         return  intervalToFire > 0 && intervalToFire < minimumAcceptedValidityToQuoteRefresh
@@ -165,7 +165,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             if let isViewVisible = self?.isViewVisible, isViewVisible {
                 self?.refreshSubscription()
             } else {
-                self?.quoteListRefreshedAt = nil
+                self?.dateOfListRefreshing = nil
             }
         }
     }
@@ -239,7 +239,9 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        quoteListRefreshedAt = Date()
+        if dateOfListRefreshing == nil {
+            dateOfListRefreshing = Date()
+        }
         guard let details = details else {
             return
         }
