@@ -154,6 +154,8 @@ class QuoteView: UIView {
             button.clipsToBounds = true
             button.layer.cornerRadius = UIConstants.CornerRadius.large
             button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+            // button temporary hidden, uncomment when Qoute details page will be implemented
+            button.isHidden = true
         }
 
         middleStack = UIStackView().then { stack in

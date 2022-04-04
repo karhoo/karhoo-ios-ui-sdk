@@ -19,6 +19,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: QuoteListTableViewController
     private(set) var presenter: QuoteListTablePresenter!
+    private(set) var noCoverageMailComposer: FeedbackEmailComposer
 
     // MARK: - Initializator
 
@@ -26,17 +27,20 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
         navigationController: UINavigationController? = nil,
         quotes: [Quote] = [],
         onQuoteSelected: @escaping (Quote) -> Void,
-        onQuoteDetailsSelected: @escaping (Quote) -> Void
+        onQuoteDetailsSelected: @escaping (Quote) -> Void,
+        mailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer()
     ) {
         self.navigationController = navigationController
-        self.viewController = KarhooQuoteListTableViewController()
-        self.presenter = KarhooQuoteListTablePresenter(
+        noCoverageMailComposer = mailComposer
+        viewController = KarhooQuoteListTableViewController()
+        noCoverageMailComposer.set(parent: viewController)
+        presenter = KarhooQuoteListTablePresenter(
             router: self,
             initialState: .fetched(quotes: quotes),
             onQuoteSelected: onQuoteSelected,
             onQuoteDetailsSelected: onQuoteDetailsSelected
         )
-        self.viewController.setupBinding(presenter)
+        viewController.setupBinding(presenter)
     }
 
     func start() {
@@ -53,4 +57,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
 }
 
 extension KarhooQuoteListTableCoordinator: QuoteListTableRouter {
+    func showNoCoverageEmail(){
+        noCoverageMailComposer.showNoCoverageEmail()
+    }
 }

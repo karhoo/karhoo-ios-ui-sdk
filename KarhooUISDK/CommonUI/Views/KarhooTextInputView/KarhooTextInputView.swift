@@ -82,6 +82,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         textView.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
         textView.layer.borderColor = KarhooTextInputViewState.inactive.color.cgColor
         textView.autocorrectionType = .no
+        textView.pasteDelegate = self
 
         switch contentType {
         case .firstname:
@@ -307,3 +308,15 @@ extension KarhooTextInputView: UITextViewDelegate {
         delegate?.didChangeCharacterInSet(identifier: accessibilityIdentifier!)
     }
 }
+
+extension KarhooTextInputView: UITextPasteDelegate {
+    func textPasteConfigurationSupporting(
+        _ textPasteConfigurationSupporting: UITextPasteConfigurationSupporting,
+        performPasteOf attributedString: NSAttributedString,
+        to textRange: UITextRange
+    ) -> UITextRange {
+        textView.replace(textRange, withText: attributedString.string)
+        return textRange
+    }
+}
+

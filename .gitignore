@@ -79,3 +79,4 @@ fastlane/.env
 Client/Keys.swift
 
 *.DS_Store
+.idea

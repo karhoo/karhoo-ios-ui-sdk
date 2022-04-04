@@ -44,9 +44,12 @@ protocol QuoteListTablePresenter: AnyObject {
 
     func getErrorViewModel() -> QuoteListTableErrorViewModel
 
+    func showNoCoverageEmail()
+
 }
 
 protocol QuoteListTableRouter {
+    func showNoCoverageEmail()
 }
 
 struct QuoteListTableErrorViewModel: Equatable {
