@@ -25,6 +25,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let router: QuoteListRouter
     var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
+    var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
 
@@ -210,6 +211,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
             onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
             return
         }
+        isSortingAvailable = !details.isScheduled
         onStateUpdated?(.loading)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,

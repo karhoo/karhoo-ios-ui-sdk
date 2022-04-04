@@ -40,6 +40,8 @@ protocol QuoteListPresenter: AnyObject {
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
+    var isSortingAvailable: Bool { get }
+
     func viewDidLoad()
 
     func viewWillAppear()
