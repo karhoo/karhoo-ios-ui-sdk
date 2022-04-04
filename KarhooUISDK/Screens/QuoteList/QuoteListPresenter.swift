@@ -11,6 +11,9 @@ import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
+    // MARK: - Constants
+    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
+
     // MARK: - Properties
 
     private let journeyDetailsManager: JourneyDetailsManager
@@ -25,6 +28,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let router: QuoteListRouter
     var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
+
+    // MARK: - Properties required to determinate if quote list should be refreshed
+    var quoteListRefreshedAt: Date?
+    var isViewVisible = false
 
     // MARK: - Lifecycle
 
@@ -57,12 +64,23 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func viewWillAppear() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openAndCloseActivity), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openAndCloseActivity), name: UIApplication.didBecomeActiveNotification, object: nil)
+        isViewVisible = true
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
         analytics.quoteListOpened(journeyDetails)
-        journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+        if shouldReloadList() {
+            journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+        }
+    }
+
+    func viewWillDisappear(){
+        isViewVisible = false
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name:  UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     // MARK: - Endpoints
@@ -91,6 +109,24 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     // MARK: - Private
+
+    func shouldReloadList() -> Bool {
+        guard let fireDate = quoteListRefreshedAt else { return true }
+        let intervalToFire = fireDate.timeIntervalSinceNow
+        // NOTE: 'fireDate.timeIntervalSinceNow' is negative when list is reloading and new timer is not started yet
+        return  intervalToFire > 0 && intervalToFire < minimumAcceptedValidityToQuoteRefresh
+    }
+
+    @objc func openAndCloseActivity(_ notification: Notification)  {
+        if notification.name == UIApplication.didBecomeActiveNotification{
+            isViewVisible = true
+            if shouldReloadList() {
+                journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+            }
+        }else if notification.name == UIApplication.willResignActiveNotification{
+            isViewVisible = false
+        }
+    }
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
         // Checkout component required this data
@@ -123,9 +159,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             assertionFailure()
             return
         }
+//      quoteListRefreshedAt = Date()
         let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
-            self?.refreshSubscription()
+        DispatchQueue.main.asyncAfter(deadline: deadline) {[weak self] in
+            if let isViewVisible = self?.isViewVisible, isViewVisible {
+                self?.refreshSubscription()
+            } else {
+                self?.quoteListRefreshedAt = nil
+            }
         }
     }
     
@@ -198,6 +239,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        quoteListRefreshedAt = Date()
         guard let details = details else {
             return
         }

@@ -101,6 +101,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter?.viewWillAppear()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter?.viewWillDisappear()
+    }
+
     // MARK: - Setup binding
 
     func setupBinding(_ presenter: QuoteListPresenter) {
