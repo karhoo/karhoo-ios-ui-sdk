@@ -55,6 +55,8 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectCategory(_ category: QuoteCategory)
 
     func didSelectShowSort()
+
+    func didSelectShowFilters()
 }
 
 protocol QuoteListRouter: AnyObject {

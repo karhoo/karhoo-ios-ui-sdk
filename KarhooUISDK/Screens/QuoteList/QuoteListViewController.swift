@@ -50,6 +50,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.translatesAutoresizingMaskIntoConstraints = true
         $0.axis = .horizontal
         $0.spacing = UIConstants.Spacing.medium
+        $0.distribution = .fillEqually
     }
     private lazy var sortButton = UIButton().then {
         $0.layer.borderColor = KarhooUI.colors.border.cgColor
@@ -62,6 +63,20 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.setTitle(UITexts.Generic.sortBy, for: .normal)
         $0.tintColor = KarhooUI.colors.text
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
+        $0.addTouchAnimation()
+    }
+
+    private lazy var filtersButton = UIButton().then {
+        $0.layer.borderColor = KarhooUI.colors.border.cgColor
+        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        $0.layer.cornerRadius = UIConstants.CornerRadius.large
+        $0.clipsToBounds = true
+        $0.setTitleColor(KarhooUI.colors.text, for: .normal)
+        $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
+        $0.setImage(.uisdkImage("filters_icon"), for: .normal)
+        $0.setTitle("Filters", for: .normal)
+        $0.tintColor = KarhooUI.colors.text
+        $0.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         $0.addTouchAnimation()
     }
     private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
@@ -148,7 +163,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
-        buttonsStackView.addArrangedSubviews([sortButton])
+        buttonsStackView.addArrangedSubviews([sortButton, filtersButton])
         legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
         tableHeaderStackView.addArrangedSubviews(headerViews)
         headerContainerView.addSubview(tableHeaderStackView)
@@ -181,7 +196,19 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         )
 
         sortButton.anchor(height: UIConstants.Dimension.Button.medium)
-
+        filtersButton.anchor(height: UIConstants.Dimension.Button.medium)
+        filtersButton.contentEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 6
+        )
+        filtersButton.titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: 6,
+            bottom: 0,
+            right: -6
+        )
         legalDisclaimerLabel.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -267,6 +294,20 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Helpers
 
+    private func setEnabledFiltersCount(_ count: Int){
+        if count == 0 {
+            filtersButton.layer.borderColor = KarhooUI.colors.border.cgColor
+            filtersButton.setTitleColor(KarhooUI.colors.text, for: .normal)
+            filtersButton.setTitle("Filters", for: .normal)
+            filtersButton.tintColor = KarhooUI.colors.text
+        } else {
+            filtersButton.layer.borderColor = KarhooUI.colors.accent.cgColor
+            filtersButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
+            filtersButton.setTitle("Filters(\(count))", for: .normal)
+            filtersButton.tintColor = KarhooUI.colors.accent
+        }
+    }
+
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         buttonsStackView.isHidden = false
         quoteCategoryBarView.isHidden = false
@@ -340,6 +381,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     @objc
     private func sortButtonTapped(_ sender: UIButton) {
         presenter?.didSelectShowSort()
+    }
+
+    @objc
+    private func filterButtonTapped(_sender: UIButton) {
+        presenter?.didselectShowFilters()
     }
 }
 

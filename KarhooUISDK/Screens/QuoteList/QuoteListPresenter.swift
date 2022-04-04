@@ -94,6 +94,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         router.routeToSort(selectedSortOrder: selectedQuoteOrder)
     }
 
+    func didSelectShowFilters() {
+        // TODO: Implement routing
+    }
+
     // MARK: - Private
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
