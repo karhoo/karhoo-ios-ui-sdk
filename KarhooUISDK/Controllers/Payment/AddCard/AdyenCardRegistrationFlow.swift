@@ -94,12 +94,15 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startDropIn(data: Data, adyenKey: String) {
+        let apiContext = APIContext(environment: paymentFactory.adyenEnvironment(), clientKey: adyenKey)
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
 
-        let configuration = DropInComponent.PaymentMethodsConfiguration()
+        let configuration = DropInComponent.Configuration(apiContext: apiContext)
         configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
         configuration.card.showsHolderNameField = true
+        configuration.payment = Payment(amount: Amount(value: self.amount,
+            currencyCode: self.currencyCode))
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
@@ -109,13 +112,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
         adyenDropIn = DropInComponent(
             paymentMethods: methods,
-            paymentMethodsConfiguration: configuration,
+            configuration: configuration,
             style: adyenDropInStyle
         )
         adyenDropIn?.delegate = self
-        adyenDropIn?.environment = paymentFactory.adyenEnvironment()
-        adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
-                                                              currencyCode: self.currencyCode))
+//        adyenDropIn?.environment = paymentFactory.adyenEnvironment()
+//        adyenDropIn?.payment = Payment(amount: Amount(value: self.amount,
+//                                                              currencyCode: self.currencyCode))
         adyenDropIn?.viewController.forceLightMode()
 
         if let dropIn = adyenDropIn?.viewController {
@@ -145,8 +148,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 }
 
 extension AdyenCardRegistrationFlow: DropInComponentDelegate {
-
-    func didSubmit(_ data: PaymentComponentData, from component: DropInComponent) {
+        func didSubmit(_ data: PaymentComponentData, for paymentMethod: PaymentMethod, from component: DropInComponent) {
         let encoder = JSONEncoder()
         do {
             let jsonData = try encoder.encode(data.paymentMethod.encodable)
@@ -214,12 +216,12 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
             switch result {
             case .success(let result):
-                guard let detailsRespone = Utils.convertToDictionary(data: result.data) else {
+                guard let detailsResponse = Utils.convertToDictionary(data: result.data) else {
                     self.finish(result: .completed(value: .didFailWithError(nil)))
                     return
                 }
 
-                let event = self.adyenResponseHandler.nextStepFor(data: detailsRespone,
+                let event = self.adyenResponseHandler.nextStepFor(data: detailsResponse,
                                                                   tripId: self.tripId)
                 self.handle(event: event)
             case .failure(let error):
@@ -240,6 +242,10 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
     func didCancel(component: PresentableComponent, from dropInComponent: DropInComponent) {
         finish(result: .cancelledByUser)
+    }
+
+    func didComplete(from component: DropInComponent) {
+        // TODO: add logic if needed
     }
 
     private func handle(event: AdyenResponseHandler.AdyenEvent) {
