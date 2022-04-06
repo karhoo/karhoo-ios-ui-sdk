@@ -98,11 +98,11 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
 
         let configuration = DropInComponent.Configuration(apiContext: apiContext)
-        configuration.card.publicKey = adyenKey
+//        configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
         configuration.card.showsHolderNameField = true
         configuration.payment = Payment(amount: Amount(value: self.amount,
-            currencyCode: self.currencyCode))
+            currencyCode: self.currencyCode), countryCode: "FR")
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
@@ -158,7 +158,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             }
             submitPayments(dropInJson: adyenData, storePaymentMethod: data.storePaymentMethod)
         } catch let error {
-            adyenDropIn?.stopLoading()
+            adyenDropIn?.stopLoadingIfNeeded()
             didFail(with: error, from: component)
         }
     }
@@ -202,7 +202,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             adyenData["details"] = adyenData
             submitAdyenPaymentDetails(payload: adyenData)
         } catch let error {
-            adyenDropIn?.stopLoading()
+            adyenDropIn?.stopLoadingIfNeeded()
             didFail(with: error, from: component)
         }
     }
