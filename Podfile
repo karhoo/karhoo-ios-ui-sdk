@@ -13,7 +13,8 @@ install! 'cocoapods',
 def common_pods
   # pod 'Adyen', '3.7.0'
 #  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
-  pod 'KarhooSDK', '1.5.5'
+#   pod 'KarhooSDK', '1.5.5'
+  pod 'KarhooSDK',  :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'feature/4021-add-client-key-endpoint'
 end
 
 target 'Client' do

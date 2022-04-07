@@ -69,11 +69,11 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func getAdyenKey(dropInData: Data) {
-        paymentService.getAdyenPublicKey().execute(callback: { [weak self] result in
+        paymentService.getAdyenClientKey().execute(callback: { [weak self] result in
             switch result {
             case .success(let result):
                 self?.startDropIn(data: dropInData,
-                                  adyenKey: result.key)
+                    adyenKey: result.clientKey)
             case .failure(let error):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
