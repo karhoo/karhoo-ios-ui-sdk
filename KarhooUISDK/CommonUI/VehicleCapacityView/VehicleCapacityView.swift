@@ -219,18 +219,10 @@ final class VehicleCapacityView: UIStackView {
     
     // MARK: - Public
     public func setBaggageCapacity(_ value: Int) {
-        guard value > 0 else {
-            baggageContentView.removeFromSuperview()
-            return
-        }
         baggageCapacityLabel.text = "\(value)"
     }
     
     public func setPassengerCapacity(_ value: Int) {
-        guard value > 0 else {
-            passengerCapacityContentView.removeFromSuperview()
-            return
-        }
         passengerCapacityLabel.text = "\(value)"
     }
     
