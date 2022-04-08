@@ -96,13 +96,16 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private func startDropIn(data: Data, adyenKey: String) {
         let apiContext = APIContext(environment: paymentFactory.adyenEnvironment(), clientKey: adyenKey)
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
-
         let configuration = DropInComponent.Configuration(apiContext: apiContext)
-//        configuration.card.publicKey = adyenKey
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
         configuration.card.showsHolderNameField = true
+        var countryCode: String {
+            var locale = UITexts.Generic.locale
+            guard locale.count == 5 else { return "GB"}
+            return String(locale.dropFirst(3))
+        }
         configuration.payment = Payment(amount: Amount(value: self.amount,
-            currencyCode: self.currencyCode), countryCode: "FR")
+            currencyCode: self.currencyCode), countryCode: countryCode)
 
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
@@ -116,9 +119,6 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             style: adyenDropInStyle
         )
         adyenDropIn?.delegate = self
-//        adyenDropIn?.environment = paymentFactory.adyenEnvironment()
-//        adyenDropIn?.payment = Payment(amount: Amount(value: self.amount,
-//                                                              currencyCode: self.currencyCode))
         adyenDropIn?.viewController.forceLightMode()
 
         if let dropIn = adyenDropIn?.viewController {
