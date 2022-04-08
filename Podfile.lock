@@ -83,7 +83,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `feature/4021-add-client-key-endpoint`)"
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `develop`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
   - SwiftLint
@@ -103,14 +103,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/4021-add-client-key-endpoint
+    :branch: develop
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: e3baa533fcd5a653442c67a793a80472afd19bea
+    :commit: bc5b1ae00a14aae8509616cda1d23006790444c1
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
@@ -127,6 +127,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: d114740362fbc1e3c44f13ccbc4ad8129d3509ca
+PODFILE CHECKSUM: 8d5bf3b6e0d0cc36d9010087d92f0f29cc261231
 
 COCOAPODS: 1.11.2
