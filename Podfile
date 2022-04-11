@@ -12,7 +12,7 @@ install! 'cocoapods',
 
 def common_pods
   # pod 'Adyen', '3.7.0'
- pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
+ pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'feature/MOB-4020-Update-Network-SDK-to-support-versioning-of-payment-related-calls'
 #   pod 'KarhooSDK', '1.5.5'
 end
 
