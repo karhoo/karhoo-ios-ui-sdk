@@ -46,6 +46,7 @@ public enum UITexts {
         public static let card = "Text.Generic.Card".localized
         public static let reportIssue = "Text.Generic.ReportIssue".localized
         public static let rides = "Text.Generic.Rides".localized
+        public static let save = "Text.Generic.Save".localized
         public static let noMailSetUpMessage = "Text.Generic.NoEmailSetupError".localized
         public static let noCarsAvailable = "Text.Generic.NoCarsAvailable".localized
         public static let gotIt = "Text.Generic.GotIt".localized
@@ -65,6 +66,8 @@ public enum UITexts {
         public static let or = "Text.Generic.Or".localized
         public static let checked = "Text.Generic.Checked".localized
         public static let unchecked = "Text.Generic.Unchecked".localized
+        public static let sortBy = "Text.Generic.SortBy".localized
+        public static let driverArrival = "Text.Generic.DriverArrival".localized
     }
 
     public enum QuoteCell {
@@ -408,6 +411,7 @@ public enum UITexts {
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
+        static let driverArrivalTime = "Text.Quotes.DriverArrivalTime".localized
     }
     
     public enum Loyalty {

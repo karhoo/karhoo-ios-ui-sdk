@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "DISMISS";
 
-"Text.Generic.DriverArrival" = "Ankunft des Fahrers";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Bearbeiten";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Speichern";
+
+"Text.Generic.SortBy" = "Sortieren nach";
 
 /* english: "status" */
 "Text.Generic.Status" = "Status";
@@ -613,6 +613,8 @@
 
 "Text.QuoteCell.DriverArrival" = "Ankunft des Fahrers";
 
+"Text.Quotes.DriverArrivalTime" = "Ankunftszeit des Fahrers";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Bitte wählen Sie eine andere Zeit.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Keine Verfügbarkeit für die angefragte Zeit.";
@@ -621,7 +623,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Kontaktieren Sie uns";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Noch keine Flotten in diesem Gebiet";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Bitte ändern Sie eine der Adressen, um Zugang zu den Angeboten zu erhalten";
 

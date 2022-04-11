@@ -366,6 +366,11 @@
 		40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */; };
 		40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */; };
 		511D9CCE27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511D9CCD27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift */; };
+		5132EAF627EBA6F100866FA9 /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAF527EBA6F000866FA9 /* MainActionButton.swift */; };
+		5132EAF927ECD02500866FA9 /* SingleSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */; };
+		5132EAFC27ECF5E100866FA9 /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */; };
+		5132EB0227F1E1D000866FA9 /* RadioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0127F1E1D000866FA9 /* RadioControl.swift */; };
+		5132EB0427F2517B00866FA9 /* UIControl+AddTouchAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */; };
 		514E7FC027D4F141002DB078 /* QuoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */; };
 		514E7FC227D4F6F2002DB078 /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */; };
 		514E7FC427D4FB1B002DB078 /* QuoteListTableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */; };
@@ -379,6 +384,10 @@
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
 		51A6F36F27E8AD3500FBA140 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */; };
+		51AF148027EB0DDF00EC4C9E /* QuoteListSort+MVPC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF147C27EB0DDF00EC4C9E /* QuoteListSort+MVPC .swift */; };
+		51AF148127EB0DDF00EC4C9E /* QuoteListSortPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF147D27EB0DDF00EC4C9E /* QuoteListSortPresenter.swift */; };
+		51AF148227EB0DDF00EC4C9E /* QuoteListSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF147E27EB0DDF00EC4C9E /* QuoteListSortViewController.swift */; };
+		51AF148327EB0DDF00EC4C9E /* QuoteListSortCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF147F27EB0DDF00EC4C9E /* QuoteListSortCorrdinator.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
@@ -888,6 +897,11 @@
 		40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingView.swift; sourceTree = "<group>"; };
 		40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingPresenter.swift; sourceTree = "<group>"; };
 		511D9CCD27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINAvigationController+navigationCompletions.swift"; sourceTree = "<group>"; };
+		5132EAF527EBA6F000866FA9 /* MainActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
+		5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionListView.swift; sourceTree = "<group>"; };
+		5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
+		5132EB0127F1E1D000866FA9 /* RadioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioControl.swift; sourceTree = "<group>"; };
+		5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+AddTouchAnimation.swift"; sourceTree = "<group>"; };
 		514E7FBF27D4F141002DB078 /* QuoteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC127D4F6F1002DB078 /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		514E7FC327D4FB1B002DB078 /* QuoteListTableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListTableCoordinator.swift; sourceTree = "<group>"; };
@@ -901,6 +915,10 @@
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		51AF147C27EB0DDF00EC4C9E /* QuoteListSort+MVPC .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteListSort+MVPC .swift"; sourceTree = "<group>"; };
+		51AF147D27EB0DDF00EC4C9E /* QuoteListSortPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortPresenter.swift; sourceTree = "<group>"; };
+		51AF147E27EB0DDF00EC4C9E /* QuoteListSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortViewController.swift; sourceTree = "<group>"; };
+		51AF147F27EB0DDF00EC4C9E /* QuoteListSortCorrdinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortCorrdinator.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
@@ -1722,6 +1740,7 @@
 				7B613E4027CCF67000D23C42 /* QouteListTable */,
 				09C7657321DE688000CD81AB /* EmptyDataSetView */,
 				09C7656D21DE688000CD81AB /* QuoteCell */,
+				512D104B27EB0CDA0021E4CB /* QuoteListSort */,
 				09C7656221DE688000CD81AB /* QuoteSortMVP */,
 				E4A0D90782429D813CDC2761 /* QuoteListErrorView.swift */,
 			);
@@ -2358,6 +2377,41 @@
 			path = RateButton;
 			sourceTree = "<group>";
 		};
+		512D104B27EB0CDA0021E4CB /* QuoteListSort */ = {
+			isa = PBXGroup;
+			children = (
+				51AF147C27EB0DDF00EC4C9E /* QuoteListSort+MVPC .swift */,
+				51AF147D27EB0DDF00EC4C9E /* QuoteListSortPresenter.swift */,
+				51AF147E27EB0DDF00EC4C9E /* QuoteListSortViewController.swift */,
+				51AF147F27EB0DDF00EC4C9E /* QuoteListSortCorrdinator.swift */,
+			);
+			path = QuoteListSort;
+			sourceTree = "<group>";
+		};
+		5132EAF727ECD00C00866FA9 /* SingleSelectionListView */ = {
+			isa = PBXGroup;
+			children = (
+				5132EAF827ECD02500866FA9 /* SingleSelectionListView.swift */,
+			);
+			path = SingleSelectionListView;
+			sourceTree = "<group>";
+		};
+		5132EAFA27ECF5CB00866FA9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5132EAFB27ECF5E100866FA9 /* UserSelectable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5132EB0027F1E1BE00866FA9 /* RadioControl */ = {
+			isa = PBXGroup;
+			children = (
+				5132EB0127F1E1D000866FA9 /* RadioControl.swift */,
+			);
+			path = RadioControl;
+			sourceTree = "<group>";
+		};
 		514E7FC527D50CBF002DB078 /* QuoteList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2600,6 +2654,7 @@
 		6BB9404D274FDA9D00478ABD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5132EB0027F1E1BE00866FA9 /* RadioControl */,
 				4017C46923CCB0230081834B /* EmptyStateView.swift */,
 				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
 				407EC77E22CF564E00F24CFC /* GradientView.swift */,
@@ -2614,9 +2669,11 @@
 				407EC77822CF564E00F24CFC /* MessageBanner */,
 				407EC77B22CF564E00F24CFC /* PinView */,
 				6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */,
+				5132EAF727ECD00C00866FA9 /* SingleSelectionListView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
 				5D48055724918AC61DECE18B /* IconPlusTextHorizontalView.swift */,
 				51A6F36E27E8AD3500FBA140 /* SeparatorView.swift */,
+				5132EAF527EBA6F000866FA9 /* MainActionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3326,6 +3383,7 @@
 				FC8F47322153A710007841FB /* Extensions */,
 				FC8F471821539E24007841FB /* Info.plist */,
 				099106BB21B82D5200BD7E6F /* Models */,
+				5132EAFA27ECF5CB00866FA9 /* Protocols */,
 				FC8F473F2153DCC9007841FB /* Routing */,
 				0991065C21B8291900BD7E6F /* Screens */,
 				090F08E721C94BB6000C7E50 /* Translations */,
@@ -3362,6 +3420,7 @@
 				51E75B4027C7C4F000A016BD /* Collection+Safe.swift */,
 				511D9CCD27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift */,
 				516D1A2A27DF86FB00110B69 /* UIStackView+addArrangedSubviews.swift */,
+				5132EB0327F2517B00866FA9 /* UIControl+AddTouchAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3763,6 +3822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				407227A423844621005680F5 /* BaseSelectionViewType.swift in Sources */,
+				51AF148127EB0DDF00EC4C9E /* QuoteListSortPresenter.swift in Sources */,
 				6B26061C2743ED5C0030DB4B /* KarhooLoyaltyView.swift in Sources */,
 				09C169B8227C8EFF00CF7E66 /* AddressType.swift in Sources */,
 				5C8316C1246B6D0700BAA926 /* SharedPassengerDetails.swift in Sources */,
@@ -3775,6 +3835,7 @@
 				7B34182027A8B24D00E2D49D /* KarhooLegalNoticeEmailComposer.swift in Sources */,
 				FC435F1F2211B40B00FB6BB5 /* RideDetailsStackButtonPresenter.swift in Sources */,
 				40FE0CED22D7D2D4003F65B5 /* RateButtonViewModel.swift in Sources */,
+				5132EAFC27ECF5E100866FA9 /* UserSelectable.swift in Sources */,
 				7B34183627AB152200E2D49D /* KarhooLegalNoticeLinkOpener.swift in Sources */,
 				FCAD1BFD22087BD800C3AD1D /* KarhooPrebookConfirmationPresenter.swift in Sources */,
 				0991071421B934F000BD7E6F /* Screen.swift in Sources */,
@@ -3803,6 +3864,7 @@
 				FC83E250221DB4F5008FE26D /* KarhooTripViewController.swift in Sources */,
 				FC83E2B1221EE920008FE26D /* DebugLogger.swift in Sources */,
 				09C765C121DE688100CD81AB /* KarhooBookingAllocationPresenter.swift in Sources */,
+				5132EAF627EBA6F100866FA9 /* MainActionButton.swift in Sources */,
 				FC83E252221DB4F5008FE26D /* KarhooTripPresenter.swift in Sources */,
 				FC705B0F22130B990001036E /* RidesListScreenBuilder.swift in Sources */,
 				511D9CCE27D90193004CBA6B /* UINAvigationController+navigationCompletions.swift in Sources */,
@@ -3857,6 +3919,7 @@
 				095B20D622649CEC00119D11 /* ScreenResult.swift in Sources */,
 				407EC7AF22CF564E00F24CFC /* Layout.swift in Sources */,
 				FC435F242211B49100FB6BB5 /* RideDetailsMVP.swift in Sources */,
+				51AF148327EB0DDF00EC4C9E /* QuoteListSortCorrdinator.swift in Sources */,
 				5CD9CFAA22DCAB580086E7A0 /* RatingViewMVP.swift in Sources */,
 				407EC7A522CF564E00F24CFC /* Constraints.swift in Sources */,
 				5CBA2A7724F5D8CC0091D783 /* KarhooCheckoutHeaderView.swift in Sources */,
@@ -3872,6 +3935,7 @@
 				092005DC225B91C1001038ED /* SideMenuViewController.swift in Sources */,
 				5C7F6EF1233A375F0039F3E2 /* BaseView.swift in Sources */,
 				407EC7C922CF564E00F24CFC /* PrebookFieldMVP.swift in Sources */,
+				51AF148227EB0DDF00EC4C9E /* QuoteListSortViewController.swift in Sources */,
 				097800A8226F4434008772E4 /* KarhooLocationService.swift in Sources */,
 				FC435F1B2211B3FA00FB6BB5 /* TripMetaDataViewModel.swift in Sources */,
 				7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */,
@@ -3939,6 +4003,7 @@
 				6B5B035326D7B8010001B2DB /* KarhooAddPassengerDetailsView.swift in Sources */,
 				097800A6226F427D008772E4 /* LocationService.swift in Sources */,
 				5C1B298725247E4F00E3CEEF /* AdyenPaymentNonceProvider.swift in Sources */,
+				5132EB0427F2517B00866FA9 /* UIControl+AddTouchAnimation.swift in Sources */,
 				FC83E2A0221ECC1C008FE26D /* KarhooDestinationEtaView.swift in Sources */,
 				5CBA2A7B24F5D8CC0091D783 /* KarhooBookingButtonView.swift in Sources */,
 				FC435F252211B49100FB6BB5 /* RideDetailsViewController.swift in Sources */,
@@ -3947,6 +4012,7 @@
 				FCAD1BFA22087BD800C3AD1D /* PrebookConfirmationViewModel.swift in Sources */,
 				FC83E2A4221ECC48008FE26D /* TripSummaryViewController.swift in Sources */,
 				0991070921B83AF700BD7E6F /* TripLocationDetailsExt.swift in Sources */,
+				51AF148027EB0DDF00EC4C9E /* QuoteListSort+MVPC .swift in Sources */,
 				099106C321B8304900BD7E6F /* RecentAddressProvider.swift in Sources */,
 				0946CB5D21CBDF0400DBDD42 /* CheckoutScreenBuilder.swift in Sources */,
 				FC435F3D2211BA1700FB6BB5 /* KarhooTripsProvider.swift in Sources */,
@@ -3968,6 +4034,7 @@
 				0916BB72236CA2300064A5D6 /* KarhooAddressMapMVP.swift in Sources */,
 				FC435EEC2211B33B00FB6BB5 /* RidesMVP.swift in Sources */,
 				FC435F1E2211B40B00FB6BB5 /* RideDetailsStackButtonActions.swift in Sources */,
+				5132EAF927ECD02500866FA9 /* SingleSelectionListView.swift in Sources */,
 				5C1CD0BB241A5D88004AFF7D /* TripScreenDetailsViewModel.swift in Sources */,
 				09E683232374522900BFF5B9 /* KarhooAddressMapPresenter.swift in Sources */,
 				6B5B035526D7B81F0001B2DB /* KarhooAddPassengerDetailsPresenter.swift in Sources */,
@@ -4016,6 +4083,7 @@
 				097BF283234F2A3E00BBE418 /* VehicleCapacityView.swift in Sources */,
 				6B5B035926D7C2D90001B2DB /* KarhooCheckoutViewController+Extensions.swift in Sources */,
 				FC83E29E221ECC1C008FE26D /* DestinationEtaMVP.swift in Sources */,
+				5132EB0227F1E1D000866FA9 /* RadioControl.swift in Sources */,
 				FC0465A52215AA05004E76FE /* NavigationControllerDelegate.swift in Sources */,
 				4017C46A23CCB0230081834B /* EmptyStateView.swift in Sources */,
 				6B5B035726D7B83F0001B2DB /* KarhooAddPassengerDetailsMVP.swift in Sources */,

@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Descartar";
 
-"Text.Generic.DriverArrival" = "Llegada del conductor";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Editar";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Salvar";
+
+"Text.Generic.SortBy" = "Ordenar por";
 
 /* english: "status" */
 "Text.Generic.Status" = "Estado";
@@ -613,6 +613,8 @@
 
 "Text.QuoteCell.DriverArrival" = "Llegada del conductor";
 
+"Text.Quotes.DriverArrivalTime" = "Hora de llegada del conductor";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
@@ -621,7 +623,7 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contáctenos";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Aún no hay flotas en esta área";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 

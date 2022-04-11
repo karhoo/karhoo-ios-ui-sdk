@@ -1,310 +1,733 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='KarhooUISDKTests.xctest' tests='229' failures='0'>
-  <testsuite name='KarhooUISDKTests.DefaultConstraintSwitcherTests' tests='13' failures='0'>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testEmptyConstraints' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNormalCaseAnimated' time='1.003'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNoneSet' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveForActiveTag' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateNonActiveConstraintByTagNotAnimated' time='1.002'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testSetupSameTags' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveWithoutConstraints' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveForInactiveTag' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveInvalidTag' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNormalCaseNotAnimated' time='1.001'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateByTagNoConstraints' time='1.005'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testReActivateByTag' time='1.004'/>
-    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateNonActiveConstraintByTagAnimated' time='1.005'/>
-  </testsuite>
+<testsuites name='KarhooUISDKTests.xctest' tests='542' failures='11'>
   <testsuite name='KarhooUISDKTests.KarhooAddressSearchProviderSpec' tests='9' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testLessThanThreeCharacters' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSuccessResponse' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSuccessResponse' time='0.007'/>
     <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testTwoFastSearches' time='0.002'/>
     <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSearchForEmptyString' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSearchThreeCharacters' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSearchShouldNotOverwriteDefaults' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testFailureResponse' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testTwoConsecutiveSearches' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSearchThreeCharacters' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testLessThanThreeCharacters' time='0.002'/>
     <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testPreferredLocation' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testSearchShouldNotOverwriteDefaults' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testTwoConsecutiveSearches' time='0.007'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressSearchProviderSpec' name='testFailureResponse' time='0.003'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.BookingStatusViewModelSpec' tests='5' failures='0'>
-    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testInProgressTrip' time='0.007'/>
-    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testCompletedTrip' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testCancelledTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testNoDriversAvailable' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testIncompleteTri' time='0.002'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' tests='9' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testSwitchingFromMissingCategory' time='0.047'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testUpdatedCategoryPosition' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testInvalidCategorySelection' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testNewAvailability' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategoriesChanged' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testSameCategorySelection' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategoriesNotUpdated' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategorySelection' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testChangingBookingDetailsClearsCategories' time='0.003'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.KarhooDateFormatterSpec' tests='6' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateFormatInLondon' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateInSydney' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateTimeFormatterInParis' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testNilDate' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testDetailDateDisplay' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateTimeFormatter' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateTimeFormatterInParis' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testNilDate' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateInSydney' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateFormatInLondon' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testPrebookDateTimeFormatter' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooDateFormatterSpec' name='testDetailDateDisplay' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooRidesPresenterSpec' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testTrackTrip' time='0.060'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testContactFleetClicked' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testViewLoad' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testRequestTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testMovingTabToUpcomingBookings' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testRebookingTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testMovingTabToPastBookings' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testClose' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesPresenterSpec' name='testContactDriverClicked' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BookingStatusViewModelSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testNoDriversAvailable' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testInProgressTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testIncompleteTri' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testCancelledTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingStatusViewModelSpec' name='testCompletedTrip' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.ResizingSwitcherTests' tests='8' failures='0'>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testContractNonAnimated' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testCheckIfActuallyExpanded' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testToggleWhenExpanded' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testContractAction' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testExpandAction' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testExpandNonAnimated' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testCheckIfNotExpanded' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testToggleWhenContracted' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooTripPresenterSpec' tests='24' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testCompletedPresentsRideDetails' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testTripPOBupdate' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testCancelledByKarhooTripUpdate' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testScreenAppears' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testUserLocationMarkerShows' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testCallDriver' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testTripAndDriverLocationUpdatesDriverEnRoute' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testPassengerOnBoardFocus' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testMapMovedByUser' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testCancelTripButton' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testUpdateCancelledByDriver' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testDriverArrivedFocus' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testCallFleet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testTripAndDriverLocationUpdates' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testTripCompleteDismissesView' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testPreDriverAllocationFocus' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testUserLocationMarkerHides' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testRebookTripFromRideDetails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testHandleSuccessfulCancellation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testShowLoadingOverlay' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testDriverLocationFocus' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testScreenDisappears' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testDriverEnRouteFocus' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripPresenterSpec' name='testHideLoadingOverlay' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooTripDetailsPresenterSpec' tests='3' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripDetailsPresenterSpec' name='testTripUpdateOnView' time='0.026'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripDetailsPresenterSpec' name='testOnStop' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripDetailsPresenterSpec' name='testOnStart' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.SwiftThenSpec' tests='7' failures='0'>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testWith_Dictionary' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testDo' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testWith' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testThen_NSObject' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testRethrows' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testWith_Set' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.SwiftThenSpec' name='testWith_Array' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' tests='8' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToBurnWithEarnOffBurnOn' time='0.038'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToEarnWithEarnOnBurnOn' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToBurnWithEarnOffBurnOff' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToEarnWithEarnOffBurnOff' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToEarnWithEarnOffBurnOn' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToEarnWithEarnOnBurnOff' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToBurnWithEarnOnBurnOn' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooLoyaltyPresenterSpec' name='testUpdateLoyaltyModeToBurnWithEarnOnBurnOff' time='0.005'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.TimeFormatterSpec' tests='8' failures='0'>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testMinuteExpectedFormatting' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHoursMinuteExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourMinuteExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testNoMinutesExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourMinutesExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testMinutesExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHoursMinutesExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourExpectedFormatting' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testNoMinutesExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHoursMinuteExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testMinuteExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourMinutesExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testMinutesExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHoursMinutesExpectedFormatting' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TimeFormatterSpec' name='testHourMinuteExpectedFormatting' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.EmptyBookingMapStrategySpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testStart' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testStopStrategy' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testFocusMapGuest' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testFocusMap' time='0.005'/>
+  <testsuite name='KarhooUISDKTests.UIColorHexSpec' tests='2' failures='0'>
+    <testcase classname='KarhooUISDKTests.UIColorHexSpec' name='testHexInitialization' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.UIColorHexSpec' name='testRandomHexInitialization' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooRidesListPresenterSpec' tests='5' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testRideSelected' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testNewPageRequest' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testNonEmptyState' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testEmptyState' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testFetchFailureDueToGenericError' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' tests='14' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testReportIssue' time='0.009'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testRatingEventSentCorrectly' time='0.008'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testSettingTripThatHasBeenRated' time='0.009'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testTrackTrip' time='0.011'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testPresentDismissBaseFareDialog' time='0.018'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testNavigationTitleSet' time='0.028'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testCancelledByDispatchTripUpdate' time='0.007'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testRebookTrip' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testSettingTrip' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testScreenUpdates' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testUpcomingBookingListening' time='0.025'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testPastBookingListening' time='0.021'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testExtraFeedbackShown' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooRideDetailsPresenterSpec' name='testCancelSuccess' time='0.009'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooBookingStatusSpec' tests='12' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testClearingDestination' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testResettingBookingDetails' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testSettingPickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testSetPrebookTimeNoPickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testSettingDestination' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testGetBookingDetails' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testSetPrebookTime' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testRemoveObserver' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testAddObserver' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testClearingPickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testSettingDestinationNoPickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooBookingStatusSpec' name='testClearPrebookTime' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testGetNonceFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testGetNonceSuccess' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testSDKInitFail' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testAddCardSuccess' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testSetBaseView' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testThreeDSecureCheckSuccess' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testThreeDSecureCheckFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testSDKInitSuccess' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreePaymentNonceProviderSpec' name='testAddCardFails' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooAddressMapPresenterSpec' tests='2' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooAddressMapPresenterSpec' name='testInit' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooAddressMapPresenterSpec' name='testReturningALocation' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' tests='10' failures='6'>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testCorrectTokenExchangePaymentNonceIsUsedForBraintreePayment'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;756&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:134
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testTripServiceFails' time='0.053'/>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testbookingMetadata'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;72&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:185
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testCorrectPaymentNonceIsUsed'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;603&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:107
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testTripServiceSucceeds'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;638&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:82
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testAdyenPaymentFlow'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;359&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:226
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testCorrectTokenExchangePaymentNonceIsUsedForAdyenPayment'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(&quot;77&quot;)&quot;) is not equal to (&quot;nil&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/GuestCheckoutScreen/KarhooGuestCheckoutPresenterSpec.swift:155
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testThreeDSecureSent' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testThreeDSecureProviderFails' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooGuestCheckoutPresenterSpec' name='testThreeDSecureProviderSucceeds' time='0.024'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.QuoteCellViewModelSpec' tests='11' failures='0'>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.105'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testAirportPickupType' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testDefaultAirportPickup' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testInit' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testNonPoiPickup' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testDefaultPickup' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testMarketQuoteShowsRange' time='0.005'/>
+  <testsuite name='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' tests='5' failures='2'>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' name='testShowClearButton' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' name='testConfigurationForDestination'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(UIExtendedSRGBColorSpace 1 0 0.509804 1)&quot;) is not equal to (&quot;Optional(UIExtendedSRGBColorSpace 0.0941176 0.0941176 0.247059 1)&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/AddressScreen/AddressSearchBar/KarhooAddressSearchBarPresenterSpec.swift:55
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' name='testHideClearButton' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' name='testConfigurationForPickup'>
+      <failure message='XCTAssertEqual failed: (&quot;Optional(UIExtendedSRGBColorSpace 0.0941176 0.0941176 0.247059 1)&quot;) is not equal to (&quot;Optional(UIExtendedSRGBColorSpace 1 0 0.509804 1)&quot;)'>
+        KarhooUISDKTests/TestCases/Screens/AddressScreen/AddressSearchBar/KarhooAddressSearchBarPresenterSpec.swift:66
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooAddressSearchBarPresenterSpec' name='testMaxInputCharSetCorrectly' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooBookingPresenterSpec' tests='26' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testShowRideDetailsOnDriverAllocationDelayAlertDismissal' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testTripCanceledBySystemDriverUnavailable' time='0.010'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testShowRideDetailsAfterPrebookConfirmation' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testTripCanceledByUserFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testUserLogsOut' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testBookingDetailsSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testHideAllocationScreen' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testTripCanceledBySystemKarhooCancelled' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testViewAppears' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testResetJourneyDetails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testWhenTheUserConfirmsToTrackShouldOpenTheTripTrackingURL' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testNoDriversAvailableBooking' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testRideListCompletedWithRebookTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testWhenTheUserDismissesTripTrackingShouldNotOpenTheTripTrackingURL' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testFinishingWithCallbackSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testBookingConfirmed' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testFinishingWithNoCallbackSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testCallbackOnBookingPrebookConfirmnation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testTripCanceledByUserSuccess' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testBookingRequestFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testRideListCompletedWithBookNewTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testWhenTheUserIsPresentedTheTripTrackingAlertItShouldHaveCorrectContent' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testWhenBookingOpensProperAnalyticsEventIsTriggered' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testKarhooCancelledBooking' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testRideListCompletedWithTrackTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooBookingPresenterSpec' name='testPrebookConfirmationPresentAndDismiss' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.QuoteCellViewModelSpec' tests='13' failures='0'>
     <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testFleetQuoteSingleFare' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testDefaultAirportPickup' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testNonPoiPickup' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testMarketQuoteShowsRange' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testDefaultPickup' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenSLAHasFreeCancellationMinutesAndTheBookingIsASAPShowCorrectCancellationMessage' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testInit' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testWhenTheRideIsPrebookedShouldDisplayCorrectScheduleValues' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.QuoteCellViewModelSpec' name='testAirportPickupType' time='0.003'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.DestinationSetStrategySpec' tests='9' failures='0'>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testUnimportnatBookingDetailsChanges' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesFromNotSet' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testLocateUser' time='0.000'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testLocateUserNoPickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testStart' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesFromSet' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testNilBookingDetails' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testStop' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesNoDestination' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.TripMetaDataViewModelSpec' tests='12' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testInitialisationWithCompletedTrip' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testInitialisationWithCancelledTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testTripEmptyFare' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testSetFare' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testUpcomingRideBaseFareQuote' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testUpcomingRideQuote' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testNoDriversAvailableTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testTripCompletedFare' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripSummaryInfoViewModelSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testZeroFareShowsQuote' time='0.159'/>
+    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testNoFareShowsQuote' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testNoVehicleInfo' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testLoadingViewModel' time='0.004'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.MapAnnotationViewModelSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.MapAnnotationViewModelSpec' name='testWhenCreatingViewModelForDriverPinShouldHaveCorrectBackgroundIcon' time='0.020'/>
+    <testcase classname='KarhooUISDKTests.MapAnnotationViewModelSpec' name='testWhenCreatingViewModelShouldHaveAssignedCoordinates' time='0.053'/>
+    <testcase classname='KarhooUISDKTests.MapAnnotationViewModelSpec' name='testWhenCreatingViewModelForDestinationPinShouldHaveCorrectForegroundIcon' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.MapAnnotationViewModelSpec' name='testWhenCreatingViewModelForDriverPinShouldHaveNoForegroundIcon' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MapAnnotationViewModelSpec' name='testWhenCreatingViewModelForPickUpPinShouldHaveCorrectForegroundIcon' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.PassengerDetailsPresenterSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.PassengerDetailsPresenterSpec' name='testBackClicked' time='0.168'/>
+    <testcase classname='KarhooUISDKTests.PassengerDetailsPresenterSpec' name='testDoneClicked' time='0.025'/>
+    <testcase classname='KarhooUISDKTests.PassengerDetailsPresenterSpec' name='testDidBecomeInactiveCalled' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.PassengerDetailsPresenterSpec' name='testDidChangeCharacterInSetCalled' time='0.008'/>
+    <testcase classname='KarhooUISDKTests.PassengerDetailsPresenterSpec' name='testDidBecomeActiveCalled' time='0.005'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.DefaultConstraintSwitcherTests' tests='13' failures='0'>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testReActivateByTag' time='1.012'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateByTagNoConstraints' time='1.005'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNoneSet' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateNonActiveConstraintByTagNotAnimated' time='1.007'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveInvalidTag' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testSetupSameTags' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNormalCaseNotAnimated' time='1.010'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testEmptyConstraints' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testConstraintSwitchNormalCaseAnimated' time='1.011'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveForInactiveTag' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testActivateNonActiveConstraintByTagAnimated' time='1.008'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveForActiveTag' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DefaultConstraintSwitcherTests' name='testIsActiveWithoutConstraints' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripAddressBarPresenterSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripAddressBarPresenterSpec' name='testScreenLoaded' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.PrebookConfirmationViewModelSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.PrebookConfirmationViewModelSpec' name='testViewModelInitialised' time='0.004'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testViewShowsAndDismisses' time='0.003'/>
     <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testGetSDKTokenFails' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testViewShowsAndDismisses' time='0.002'/>
     <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testGetSDKTokenSuccess' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testGetSDKToken' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BraintreeThreeDSecureProviderSpec' name='testGetSDKToken' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.BookingItemViewModelSpec' tests='10' failures='0'>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testCompletedTrip' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testIncompleteTrip' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testNoDriversAvailable' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testPriceSet' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testOtherTripState' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testCancelledTrip' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.002'/>
+  <testsuite name='KarhooUISDKTests.PopupDialogPresenterSpec' tests='3' failures='0'>
+    <testcase classname='KarhooUISDKTests.PopupDialogPresenterSpec' name='testSettingCopy' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.PopupDialogPresenterSpec' name='testTapDismissByPopupButton' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.PopupDialogPresenterSpec' name='testTapDismiss' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' tests='11' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testHidingEtaViewWhenDriverIsNotEnroute' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testTripCompleted' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testNonTrackingStateToDriverEnroute' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testHidingEtaViewWhenEtaIsZero' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testDriverEnrouteGlitchEdgecase' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testStartMonitoringEta' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testNonTrackableSuccessiveStateUpdates' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testDriverLocationUpdatedWhenDriverEnRoute' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testStopMonitoring' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testSuccessiveDriverEnrouteStatusUpdates' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooOriginEtaPresenterSpec' name='testPassengerOnboardDoesntListenForDriverLocation' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripDetailsViewModelSpec' tests='7' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelInitialisation' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelShowsVehicleRegistration' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNotSet' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNotDefault' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointDefault' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelShowsVehicleDescription' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNil' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.UINavigationSpec' tests='6' failures='0'>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testHidePushed' time='0.027'/>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShow' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShowModal' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testHideWhenPresented' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShowOverlay' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testInitialized' time='0.002'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.KarhooTripRatingCacheSpec' tests='4' failures='0'>
     <testcase classname='KarhooUISDKTests.KarhooTripRatingCacheSpec' name='testReadingTripWithNoRating' time='0.001'/>
     <testcase classname='KarhooUISDKTests.KarhooTripRatingCacheSpec' name='testReadingRatedTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooTripRatingCacheSpec' name='testSavingRating' time='0.001'/>
     <testcase classname='KarhooUISDKTests.KarhooTripRatingCacheSpec' name='testSynchroniseCalled' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripRatingCacheSpec' name='testSavingRating' time='0.001'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooRecentAddressProviderSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testMaxNoOfRecents' time='0.007'/>
-    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testAddWhenAlreadyExist' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testAddRecent' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testGettingRecents' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.KarhooQuoteSorterSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testQuoteOrderByPrice' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testOrderByQtaSameQtaDifferentPrice' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testQuoteOrderByQTA' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testOrderByPriceSamePriceDifferentQta' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.CurrencyCodeConverterSpec' tests='5' failures='0'>
-    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testQuoteRange' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testInvlalidCurrencyCode' time='0.323'/>
-    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingQuoteToPrice' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingZeroPriceQuote' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingRawToPrice' time='0.002'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.TripDetailsViewModelSpec' tests='7' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelInitialisation' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointDefault' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNotDefault' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelShowsVehicleDescription' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testViewModelShowsVehicleRegistration' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNotSet' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripDetailsViewModelSpec' name='testMeetingPointNil' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.BookingDetailsSpec' tests='3' failures='0'>
-    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledNil' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledFor1970' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledWhenScheduled' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.TripExt' tests='3' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripExt' name='testGetFareString' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.TripExt' name='testGetQuoteString' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.TripExt' name='testGetFareStringNoFareInTrip' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' tests='5' failures='0'>
-    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUpComingTripButtonsWithoutDriverNumber' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testPastTrip' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUnknownTripState' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testInprogressTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUpComingTripButtonsWithDriverNumber' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.TripStatesGetterSpec' tests='2' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripStatesGetterSpec' name='testPastStates' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripStatesGetterSpec' name='testUpcomingStates' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.PrebookConfirmationFormatterSpec' tests='1' failures='0'>
-    <testcase classname='KarhooUISDKTests.PrebookConfirmationFormatterSpec' name='testOutput' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.FlightNumberValidatorSpec' tests='3' failures='0'>
-    <testcase classname='KarhooUISDKTests.FlightNumberValidatorSpec' name='testInvalidFlightNumber' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.FlightNumberValidatorSpec' name='testValidFlightNumber' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.FlightNumberValidatorSpec' name='testEmptyStringValidation' time='0.001'/>
-  </testsuite>
-  <testsuite name='KarhooUISDKTests.TripFeedbackPresenter' tests='3' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_additional_feedbacks_submitted' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_correct_tripId_returned' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_feedback_added_correctly' time='0.003'/>
+  <testsuite name='KarhooUISDKTests.CancelRideBehaviourSpec' tests='7' failures='0'>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCancellationWithFeeFailedAlert' time='0.023'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCancellationWithFeeAlert' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='test' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCancellationFeeRetrievalFailure' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCallOnCancellationAlert' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCancellationSuccess' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.CancelRideBehaviourSpec' name='testCancellationWithoutFeeAlert' time='0.002'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.QtaStringFormatterSpec' tests='5' failures='0'>
     <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testNilValueFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testExpectedFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testSingleNilValueFormatting' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testZeroMinAndMaxFormatting' time='0.001'/>
     <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testZeroMinFormatting' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testExpectedFormatting' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testZeroMinAndMaxFormatting' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.QtaStringFormatterSpec' name='testSingleNilValueFormatting' time='0.001'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.TripSummaryInfoViewModelSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testZeroFareShowsQuote' time='0.049'/>
-    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testLoadingViewModel' time='0.005'/>
-    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testNoVehicleInfo' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripSummaryInfoViewModelSpec' name='testNoFareShowsQuote' time='0.003'/>
+  <testsuite name='KarhooUISDKTests.MailValidatorTest' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testCorrectEmail' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailEmpty' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailwithSpaceInMiddle' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailDomainWithoutDot' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIincorrectEmailwithSpaceAtEnd' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailMissingDomain' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailMissingAt' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailwithSpaceAtBeginning' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.MailValidatorTest' name='testIncorrectEmailMissingprefix' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testStop' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testAppBecomesActive' time='0.000'/>
-    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testStart' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testAppGoesToBackground' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.BookingMapPresenterSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingMapPresenterSpec' name='testDestinationNotSet' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.BookingMapPresenterSpec' name='testNoChange' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.BookingMapPresenterSpec' name='testDestinationSet' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.BookingMapPresenterSpec' name='testInit' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingMapPresenterSpec' name='testLoadMap' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.TripMetaDataViewModelSpec' tests='12' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testSetFare' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testNoDriversAvailableTrip' time='0.006'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testInitialisationWithCompletedTrip' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testUpcomingRideBaseFareQuote' time='0.011'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testTripEmptyFare' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testUpcomingRideQuote' time='0.009'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testInitialisationWithCancelledTrip' time='0.004'/>
-    <testcase classname='KarhooUISDKTests.TripMetaDataViewModelSpec' name='testTripCompletedFare' time='0.002'/>
+  <testsuite name='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testTripCancelledBySystem' time='2.222'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testTripAllocated' time='0.823'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testCancelTripFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testStartMonitoringGuestUserTrip' time='0.211'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testCancelTripSuccessful' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testGuestAuthenticationUsesFollowCode' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testCancelTripNoCurrentTripSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testCancelTripWithCurrentTripSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripAllocationPresenterSpec' name='testStartMonitoringAuthorisedUserTrip' time='0.413'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooAddressMapPresenterSpec' tests='2' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooAddressMapPresenterSpec' name='testInit' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressMapPresenterSpec' name='testReturningALocation' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripStatesGetterSpec' tests='2' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripStatesGetterSpec' name='testPastStates' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripStatesGetterSpec' name='testUpcomingStates' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooDestinationEtaSpec' tests='10' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testTripCompleted' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testDriverEnRouteDoesntListenForDriverLocation' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testStartMonitoringEta' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testStopMonitoring' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testHidingEtaViewWhenEtaIsZero' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testNonTrackingStateToPassengerOnBoard' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testPassengerOnBoardGlitchEdgeCase' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testDriverLocationUpdatedWhenPassengerOnBoard' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testSuccessivePassengerOnBoardStatusUpdates' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooDestinationEtaSpec' name='testHidingEtaViewWhenPassengerIsNotOnBoard' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripsListSorterSpec' tests='2' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripsListSorterSpec' name='testDescendingSort' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripsListSorterSpec' name='testAscendingSort' time='0.001'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.KarhooPaymentPresenterSpec' tests='8' failures='0'>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testNoPaymentMethodForUserSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testForceReryCardFlowStart' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCardRegistrationFlowStarted' time='0.002'/>
     <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testUserPaymentNonceSet' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCardRegistrationFlowFinishedAsGuest' time='0.001'/>
     <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCardRegistrationFlowFinishedAsUser' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCardRegistrationFlowStarted' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testNoQuoteCurrencyCodeAvailable' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testForceReryCardFlowStart' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCorrectEventIsSent' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCardRegistrationFlowFinishedAsGuest' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testCorrectEventIsSent' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testNoQuoteCurrencyCodeAvailable' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooPaymentPresenterSpec' name='testNoPaymentMethodForUserSet' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.ResizingSwitcherTests' tests='8' failures='0'>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testCheckIfActuallyExpanded' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testExpandAction' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testCheckIfNotExpanded' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testToggleWhenContracted' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testExpandNonAnimated' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testContractAction' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testToggleWhenExpanded' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.ResizingSwitcherTests' name='testContractNonAnimated' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.KarhooRecentAddressProviderSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testGettingRecents' time='0.008'/>
+    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testAddWhenAlreadyExist' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testAddRecent' time='0.042'/>
+    <testcase classname='KarhooUISDKTests.KarhooRecentAddressProviderSpec' name='testMaxNoOfRecents' time='0.047'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.TripAddressBarPresenterSpec' tests='1' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripAddressBarPresenterSpec' name='testScreenLoaded' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.DatePickerPresenterSpec' tests='14' failures='0'>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testBoundriesOnViewShownRoundingNeeded' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testNoStartDateOnViewShown' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testInvalidBigStartDateOnViewShown' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testDateChangedToTooBigValue' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testDateChangedToValidValue' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testDateChangedToTooSmallValue' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testStartDateOnViewShown' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testDifferentTimeZoneOriginAndLocalTime' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testCancel' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testSameTimeZoneOriginAndLocalTime' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testInvalidSmallStartDateOnViewShown' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testPrebookingWithinTheHour' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testBoundriesOnViewShown' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DatePickerPresenterSpec' name='testDateChangedToInvalidRounding' time='0.001'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.RideCellStackButtonPresenterSpec' tests='4' failures='0'>
-    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testTrackCallDriverOptions' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testPreTripTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testPassengerOnBoardTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testDerNoContactDriver' time='0.001'/>
+  <testsuite name='KarhooUISDKTests.CurrencyCodeConverterSpec' tests='11' failures='0'>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testInvlalidCurrencyCode' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingRawToPrice' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingZeroPriceQuoteInJOD' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testQuoteRangeForJOD' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingZeroPriceQuote' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingQuoteToPriceForJPY' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testQuoteRange' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingZeroPriceQuoteInJPY' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingQuoteToPriceForJOD' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testConvertingQuoteToPrice' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.CurrencyCodeConverterSpec' name='testQuoteRangeForJPY' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.BookingViewControllerBuilderSpec' tests='1' failures='0'>
-    <testcase classname='KarhooUISDKTests.BookingViewControllerBuilderSpec' name='testNoSideMenu' time='0.682'/>
+  <testsuite name='KarhooUISDKTests.KarhooRidesListPresenterSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testFetchFailureDueToGenericError' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testNewPageRequest' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testRideSelected' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testNonEmptyState' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooRidesListPresenterSpec' name='testEmptyState' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripFeedbackPresenter' tests='3' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_additional_feedbacks_submitted' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_feedback_added_correctly' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripFeedbackPresenter' name='test_correct_tripId_returned' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUnknownTripState' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testPastTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testInprogressTrip' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUpComingTripButtonsWithoutDriverNumber' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.RideDetailsStackButtonPresenterSpec' name='testUpComingTripButtonsWithDriverNumber' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' tests='13' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testRemoveObserver' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSettingDestination' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testAddObserver' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSettingDestinationNoPickup' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testGetBookingDetails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testClearPrebookTime' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSetPrebookTimeNoPickup' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testClearingDestination' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testResettingBookingDetails' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSettingPickup' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testClearingPickup' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSetPrebookTime' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooJourneyDetailsManagerSpec' name='testSetJourney' time='0.002'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.BaseViewControllerSpec' tests='3' failures='0'>
-    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testShowError' time='0.038'/>
-    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testShowAlert' time='0.011'/>
-    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testPreAuthAlert' time='0.011'/>
+    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testShowAlert' time='0.041'/>
+    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testShowError' time='0.007'/>
+    <testcase classname='KarhooUISDKTests.BaseViewControllerSpec' name='testPreAuthAlert' time='0.010'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.LinkParserTest' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.LinkParserTest' name='testUrlStrnigWithoutHttps' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.LinkParserTest' name='testCorrectUrl' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.LinkParserTest' name='testCorrectEmail' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.LinkParserTest' name='testEmailWithoutPrefix' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooAddressPresenterSpec' tests='25' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingFailureResponse' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testCurrentLocationReturnsNil' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testSearch' time='0.212'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testDefaultAddresses' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testSearchFailedUnexpectedError' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testSelectedAddress' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testAddressPickedFromMap' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testNoDefaultAddresses' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testNoSearchResultsFound' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testEmptySearch' time='2.025'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testDetailsFailure' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testSearchInProgress' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testCheckingTheLocationPermissionsGranted' time='0.009'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testPickupViewShown' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testCurrentLocationSuccess' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testCurrentLocationFailure' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testCheckingTheLocationPermissionsDenied' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testIfReverseGeocodingDidNotSendResponseShouldNotReverseGeocodeAnotherCurrentLocation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testViewShown' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testClose' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testShouldBeAbleReverseGeocodeCurrentLocationAgainAfterGeocodingSuccessfulResponse' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testDetailsSuccessful' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testAddressSearchResults' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testSearchFailedNoResultsFound' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooAddressPresenterSpec' name='testInitialization' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.QuoteDatesHelperSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.QuoteDatesHelperSpec' name='testSetingExpirationDate' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooCheckoutPresenterSpec' tests='29' failures='1'>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testPaymentErrorShowsStartsUpdateCardFlow' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAddPassengerDetails' time='0.023'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testFixedQuoteHidesBaseFare' time='0.016'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAdyenRequestCarAuthenticated' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testPrebookSetup' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestCarAuthenticated' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestFailed' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testbookingMetadata' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testNotFixedQuote' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestCarNotAuthenticated' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testUpdateCardSuccessContinuesBooking' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testIsExplicitTermsAndConditionsConsentRequiredDefaultValueIsFalse' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestCarCallbackSuccess'>
+      <failure message='XCTAssertTrue failed'>
+        KarhooUISDKTests/TestCases/Screens/CheckoutScreen/KarhooCheckoutPresenterSpec.swift:175
+      </failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAirportBookingSetup' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAppEnteringBackgroundWhenNotRequestingTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAddPassengerDetailsFailed' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testWhenCheckoutOpened' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestFailedNonceError' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testCancellingPaymentProviderFlow' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testRequestCarFadeOut' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testPriceSetAsRange' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAppEnteringBackgroundWhenAddingFlightDetails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testQuoteExpiredCalling' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testBaseFareDialogShowing' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testBaseFareDialogDismisses' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAppEnteringBackgroundWhenRequestingTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testAsapSetup' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testIsExplicitTermsAndConditionsConsentRequiredOverridenValueIsTrue' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooCheckoutPresenterSpec' name='testPriceSet' time='0.004'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testAppGoesToBackground' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testAppBecomesActive' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testStop' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAllocationSpinnerPresenterSpec' name='testStart' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testInvalidCategorySelection' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategoriesNotUpdated' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testSwitchingFromMissingCategory' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testChangingBookingDetailsClearsCategories' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testNewAvailability' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategoriesChanged' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testCategorySelection' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testUpdatedCategoryPosition' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteCategoryBarPresenterSpec' name='testSameCategorySelection' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.PrebookConfirmationFormatterSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.PrebookConfirmationFormatterSpec' name='testOutput' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.EmptyBookingMapStrategySpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testFocusMapGuest' time='0.007'/>
+    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testFocusMap' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testStart' time='0.006'/>
+    <testcase classname='KarhooUISDKTests.EmptyBookingMapStrategySpec' name='testStopStrategy' time='0.007'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooTripMetaDataPresenterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripMetaDataPresenterSpec' name='testUpdateFare' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripMetaDataPresenterSpec' name='testUpdateFareNotPerformed' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripMetaDataPresenterSpec' name='testInit' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripMetaDataPresenterSpec' name='testShowingBaseFareDialog' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooQuoteSorterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testOrderByQtaSameQtaDifferentPrice' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testQuoteOrderByQTA' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testQuoteOrderByPrice' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooQuoteSorterSpec' name='testOrderByPriceSamePriceDifferentQta' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BookingAddressBarPresenterSpec' tests='16' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPrebookTimeSelectedWithTimeZone' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testScheduledDateSet' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPickupSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testDestinationSet' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testDestinationCleared' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testLoadView' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPickupAddressSet' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testDeinit' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testSettingNilDetails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testAddressBarSwapWithScheduledDate' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPickupTimeCleared' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPickupNotSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testPickupCleared' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testAddressBarSwapWithNilScheduledDate' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testInitialization' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingAddressBarPresenterSpec' name='testSettingDetails' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripExt' tests='3' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripExt' name='testGetQuoteString' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripExt' name='testGetFareString' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripExt' name='testGetFareStringNoFareInTrip' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripMapPresenterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripMapPresenterSpec' name='testPlottingPins' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.TripMapPresenterSpec' name='testLoad' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.TripMapPresenterSpec' name='testPlottingDriver' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.TripMapPresenterSpec' name='testUserMovesMap' time='0.001'/>
   </testsuite>
   <testsuite name='KarhooUISDKTests.TripInfoUtilitySpec' tests='12' failures='0'>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testPreDriverAllocation' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testLongTripStateTranslation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanContactDriverNoNumber' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackDriver' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testShortTripStateTranslation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testLongTripStateTranslation' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testPreDriverAllocation' time='0.001'/>
     <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testAirportType' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanContactDriver' time='0.001'/>
     <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCancelledTrip' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testShortTripStateTranslation' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanContactDriverNoNumber' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testIncompleteTripStatusTranslation' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testIfTripCanBeCancelled' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackDriver' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackAndContactDriver' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackAndContactDriverNoDriverNumber' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackAndContactDriver' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanContactDriver' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testIfTripCanBeCancelled' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testIncompleteTripStatusTranslation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.TripInfoUtilitySpec' name='testCanTrackAndContactDriverNoDriverNumber' time='0.002'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.PickupOnlyStrategySpec' tests='10' failures='0'>
+  <testsuite name='KarhooUISDKTests.KarhooTripsProviderSpec' tests='5' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripsProviderSpec' name='testFailure' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripsProviderSpec' name='testPollingNotSet' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripsProviderSpec' name='testSuccess' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripsProviderSpec' name='testPollingSet' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.KarhooTripsProviderSpec' name='testReachabilityChange' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BookingViewControllerBuilderSpec' tests='2' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingViewControllerBuilderSpec' name='testNavigationStackWhenSideMenuHanlderIsSet' time='0.824'/>
+    <testcase classname='KarhooUISDKTests.BookingViewControllerBuilderSpec' name='testNavigationStackWhenSideMenuHanlderIsNotSet' time='0.051'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooTripSummaryPresenterSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooTripSummaryPresenterSpec' name='testScreenLoading' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.KarhooPrebookConfirmationPresenterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.KarhooPrebookConfirmationPresenterSpec' name='testTapScreenCallsCallback' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooPrebookConfirmationPresenterSpec' name='testTapButtonCallsCallback' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooPrebookConfirmationPresenterSpec' name='testTapCloseCallsCallback' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.KarhooPrebookConfirmationPresenterSpec' name='testUIUpdates' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' tests='11' failures='2'>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testAddPaymentProviderSucceeds' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testAddCardScreenFailureResult' time='0.102'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testFlowStartFailsToCreateBraintreeUI' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testFlowStartsWithoutShowingUpdateCardAlert' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testFlowStartUserCancels' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testAddPaymentProviderFails' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testCancellingDropInUI' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testFlowStart' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testRegisteringCardAsAGuest' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testAddCardScreenSuccessResult'>
+      <failure message='XCTAssertTrue failed'>KarhooUISDKTests/TestCases/Routing/KarhooCardRegistrationFlowSpec.swift:161</failure>
+    </testcase>
+    <testcase classname='KarhooUISDKTests.BraintreeCardRegistrationFlowSpec' name='testAddCardScreenSuccessResult'>
+      <failure message='XCTAssertEqual failed: (&quot;nil&quot;) is not equal to (&quot;Optional(&quot;123&quot;)&quot;)'>KarhooUISDKTests/TestCases/Routing/KarhooCardRegistrationFlowSpec.swift:163</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.PickupOnlyStrategySpec' tests='12' failures='0'>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testReverseGeocodeError' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testPanMap' time='0.002'/>
     <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testStartWithPickup' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testPanMap' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testStop' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testReverseGeocodeError' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testGuestAuthenticationModeFocusMap' time='0.001'/>
     <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testReverseGeocodeFailedToProduceAddress' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testGuestAuthenticationModeFocusMapWithLocations' time='0.001'/>
     <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testReverseGeocodeComplete' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testLocateMeWithoutLocation' time='0.001'/>
     <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testDetailsChangesSamePickup' time='0.001'/>
-    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testLocateMeWithLocation' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testStartWithPickupAndPermissions' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testGuestAuthenticationModeFocusMap' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testStop' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testLocateMeWithLocation' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.PickupOnlyStrategySpec' name='testLocateMeWithoutLocation' time='0.001'/>
   </testsuite>
-  <testsuite name='KarhooUISDKTests.UINavigationSpec' tests='6' failures='0'>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testHideWhenPresented' time='0.023'/>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShowOverlay' time='0.003'/>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testInitialized' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShowModal' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testHidePushed' time='0.002'/>
-    <testcase classname='KarhooUISDKTests.UINavigationSpec' name='testShow' time='0.002'/>
+  <testsuite name='KarhooUISDKTests.BookingItemViewModelSpec' tests='10' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testPriceSet' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testWhenFreeCancellationBeforeDriverOnRouteIsAvailableShouldShowCorrectFreeCancellationMessage' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testWhenCancellationIsAllowedOnlyWith0MinutesBeforePickupShouldNotDisplayTheCancellationMessage' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testNoDriversAvailable' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testOtherTripState' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testCancelledTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testIncompleteTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testCompletedTrip' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testNoFreeCancellationMinutesOnSLA' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.BookingItemViewModelSpec' name='testFreeCancellationMinutesOnSLA' time='0.003'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.AdyenCardRegistrationFlowSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.AdyenCardRegistrationFlowSpec' name='testFlowStart' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.RideCellStackButtonPresenterSpec' tests='4' failures='0'>
+    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testPassengerOnBoardTrip' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testDerNoContactDriver' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testPreTripTrip' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.RideCellStackButtonPresenterSpec' name='testTrackCallDriverOptions' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.BookingDetailsSpec' tests='3' failures='0'>
+    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledNil' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledWhenScheduled' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.BookingDetailsSpec' name='testIsScheduledFor1970' time='0.001'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.DestinationSetStrategySpec' tests='9' failures='0'>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testUnimportnatBookingDetailsChanges' time='0.004'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testStop' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesFromSet' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesNoDestination' time='0.002'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testLocateUserNoPickup' time='0.001'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testLocateUser' time='0.003'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testBookingDetailsChangesFromNotSet' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testStart' time='0.005'/>
+    <testcase classname='KarhooUISDKTests.DestinationSetStrategySpec' name='testNilBookingDetails' time='0.002'/>
+  </testsuite>
+  <testsuite name='KarhooUISDKTests.TripScreenDetailsViewModelSpec' tests='1' failures='0'>
+    <testcase classname='KarhooUISDKTests.TripScreenDetailsViewModelSpec' name='testPropertyBinding' time='0.002'/>
   </testsuite>
 </testsuites>

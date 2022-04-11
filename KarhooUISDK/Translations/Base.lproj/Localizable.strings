@@ -393,8 +393,6 @@
 
 "Text.Generic.Dismiss" = "Dismiss";
 
-"Text.Generic.DriverArrival" = "Driver arrival";
-
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
 
@@ -476,6 +474,8 @@
 
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Save";
+
+"Text.Generic.SortBy" = "Sort By";
 
 /* english: "status" */
 "Text.Generic.Status" = "Status";
@@ -612,6 +612,8 @@
 "Text.QuoteCell.Details" = "Details";
 
 "Text.QuoteCell.DriverArrival" = "Driver arrival";
+
+"Text.Quotes.DriverArrivalTime" = "Driver arrival time";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please chosse a different time.";
 

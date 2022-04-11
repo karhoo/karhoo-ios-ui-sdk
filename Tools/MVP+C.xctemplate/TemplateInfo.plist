@@ -36,10 +36,10 @@
 			<key>Type</key>
 			<string>popup</string>
 			<key>Default</key>
-			<string>MVP+R</string>
+			<string>MVP+C</string>
 			<key>Values</key>
 			<array>
-				<string>MVP+R</string>
+				<string>MVP+C</string>
 			</array>
 		</dict>
 	</array>
