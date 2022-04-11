@@ -99,11 +99,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         let configuration = DropInComponent.Configuration(apiContext: apiContext)
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
         configuration.card.showsHolderNameField = true
-        var countryCode: String {
-            var locale = UITexts.Generic.locale
-            guard locale.count == 5 else { return "GB"}
-            return String(locale.dropFirst(3))
-        }
+        var countryCode = NSLocale.current.regionCode ?? "GB"
         configuration.payment = Payment(amount: Amount(value: self.amount,
             currencyCode: self.currencyCode), countryCode: countryCode)
 
