@@ -11,10 +11,7 @@ import KarhooSDK
 
 final class RideDetailsViewController: UIViewController, RideDetailsView {
 
-    private var scrollView: UIScrollView!
-    private var rideDetailsView: RideDetailsViewContainer!
-
-    private var loadingView: LoadingView!
+    // MARK: - Properties
     
     private let presenter: RideDetailsPresenter
     private var trip: TripInfo?
@@ -22,7 +19,25 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
     private var cancelRideBehaviour: CancelRideBehaviourProtocol?
     private var tripMetaDataPresenter: TripMetaDataPresenter?
     private let loadingViewAlpha: CGFloat = 0.85
-    
+
+    // MARK: Views
+
+    private lazy var scrollView = UIScrollView().then { scrollView in
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.accessibilityIdentifier = "scroll_view"
+        scrollView.backgroundColor = .white
+    }
+    private lazy var rideDetailsView = RideDetailsViewContainer()
+    private lazy var trackDriverButton = MainActionButton().then {
+        $0.setTitle(UITexts.Bookings.trackDriver, for: .normal)
+        $0.addTarget(self, action: #selector(trackDriverTapped), for: .touchUpInside)
+    }
+    private lazy var loadingView = LoadingView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    // MARK: - Lifecycle
+
     init(presenter: RideDetailsPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -37,36 +52,6 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         self.setUpView()
     }
 
-    private func setUpView() {
-        
-        scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.accessibilityIdentifier = "scroll_view"
-        scrollView.backgroundColor = .white
-        
-        view.addSubview(scrollView)
-        _ = [scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
-        
-        rideDetailsView = RideDetailsViewContainer()
-        scrollView.addSubview(rideDetailsView)
-        _ = [rideDetailsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10.0),
-             rideDetailsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10.0),
-             rideDetailsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,
-                                                       constant: -10.0)].map { $0.isActive = true }
-        
-        loadingView = LoadingView()
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loadingView)
-        
-        _ = [loadingView.topAnchor.constraint(equalTo: view.topAnchor),
-             loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
-    }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         presenter.bind(view: self)
@@ -76,6 +61,54 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         rideDetailsView.tripMetaDataView.delegate = self
         forceLightMode()
     }
+
+    // MARK: - Setup
+
+    private func setUpView() {
+        setupHierarchy()
+        setupLayout()
+    }
+
+    private func setupHierarchy() {
+        view.addSubview(scrollView)
+        view.addSubview(loadingView)
+        view.addSubview(trackDriverButton)
+        scrollView.addSubview(rideDetailsView)
+    }
+    
+    private func setupLayout() {
+        [
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ].forEach { $0.isActive = true }
+        
+        [
+            rideDetailsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10.0),
+            rideDetailsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10.0),
+            rideDetailsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,
+                                                      constant: -10.0)
+        ].forEach { $0.isActive = true }
+        
+        [
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ].forEach { $0.isActive = true }
+
+        trackDriverButton.anchor(
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor,
+            paddingLeft: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.standard,
+            paddingRight: UIConstants.Spacing.standard
+        )
+    }
+
+    // MARK: - Methods
 
     public func showLoading() {
         navigationController?.navigationBar.isHidden = true
@@ -156,6 +189,13 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
             return navigationController
         }
+    }
+
+    // MARK: - UI Actions
+
+    @objc
+    private func trackDriverTapped(_ sender: MainActionButton) {
+        presenter.didPressTrackTrip()
     }
 }
 
