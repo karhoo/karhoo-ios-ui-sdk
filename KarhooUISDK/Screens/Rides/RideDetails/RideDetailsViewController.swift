@@ -77,26 +77,17 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
     }
     
     private func setupLayout() {
-        [
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ].forEach { $0.isActive = true }
-        
-        [
-            rideDetailsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10.0),
-            rideDetailsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10.0),
-            rideDetailsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,
-                                                      constant: -10.0)
-        ].forEach { $0.isActive = true }
-        
-        [
-            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
-            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ].forEach { $0.isActive = true }
+        scrollView.anchorToSuperview()
+        loadingView.anchorToSuperview()
+
+        rideDetailsView.anchor(
+            top: scrollView.topAnchor,
+            leading: scrollView.leadingAnchor,
+            trailing: scrollView.trailingAnchor,
+            paddingTop: UIConstants.Spacing.medium,
+            paddingLeft: UIConstants.Spacing.medium,
+            paddingRight: UIConstants.Spacing.medium
+        )
 
         trackDriverButton.anchor(
             leading: view.leadingAnchor,
@@ -145,6 +136,10 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
     func hideFeedbackOptions() {
         rideDetailsView.tripMetaDataView.hideRatingOptions()
+    }
+
+    func setTrackButtonVisible(_ isVisible: Bool) {
+        trackDriverButton.isHidden = !isVisible
     }
 
     final class KarhooRideDetailsScreenBuilder: RideDetailsScreenBuilder {
