@@ -79,6 +79,11 @@ final class RidesListViewController: UIViewController, RidesListView {
         ridesListActions?.rebookTrip(trip)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.load(screen: self)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
