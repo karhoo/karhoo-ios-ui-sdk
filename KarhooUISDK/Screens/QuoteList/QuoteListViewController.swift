@@ -91,7 +91,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
+        assert(presenter != nil, "Presented needs to be assigned using `setupBinding` method")
         presenter?.viewDidLoad()
     }
 
@@ -194,13 +194,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         setNavigationBarTitle(forState: state)
         switch state {
         case .loading:
-            self.handleLoadingState()
+            handleLoadingState()
         case .fetching(quotes: let quotes):
-            self.handleFetchingState(quotes: quotes)
+            handleFetchingState(quotes: quotes)
         case .fetched(quotes: let quotes):
-            self.handleFetchedState(quotes: quotes)
+            handleFetchedState(quotes: quotes)
         case .empty(reason: let reason):
-            self.handleEmptyState(reason: reason)
+            handleEmptyState(reason: reason)
         }
     }
     
