@@ -118,6 +118,12 @@
 
 "Text.Address.SetOnMap" = "Auf Karte setzen";
 
+/* Adyen overriden texts*/
+
+"adyen.submitButton" = "Vorautorisieren";
+
+"adyen.submitButton.formatted" = "Vorautorisieren %@";
+
 /* Address Bar */
 "Text.AddressBar.AddDestination" = "Ziel hinzufügen";
 

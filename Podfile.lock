@@ -83,7 +83,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `feature/MOB-4020-Update-Network-SDK-to-support-versioning-of-payment-related-calls`)"
+  - "KarhooSDK (from `git@github.com:karhoo/karhoo-ios-sdk.git`, branch `MOB-4020-release-1.6`)"
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
   - SwiftLint
@@ -103,14 +103,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/MOB-4020-Update-Network-SDK-to-support-versioning-of-payment-related-calls
+    :branch: MOB-4020-release-1.6
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 9d071756502348780841d6debc90af7fc7cfb13a
+    :commit: fbd45b137cc0da91b488f794b1fa5d02af76eee4
     :git: "git@github.com:karhoo/karhoo-ios-sdk.git"
 
 SPEC CHECKSUMS:
@@ -127,6 +127,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: ad28f3e0b79922a0aa9f697faba5189d32917b9a
+PODFILE CHECKSUM: e414ffcdf054fc1439af749cdf4fd3976468241f
 
 COCOAPODS: 1.11.2
