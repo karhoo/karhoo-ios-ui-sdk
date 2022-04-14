@@ -11,9 +11,9 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def common_pods
-  pod 'Adyen', '3.7.0'
-#  pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'develop'
-  pod 'KarhooSDK', '1.5.5'
+  # pod 'Adyen', '3.7.0'
+ pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-4020-release-1.6'
+#   pod 'KarhooSDK', '1.5.5'
 end
 
 target 'Client' do
@@ -28,7 +28,7 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'SwiftLint'
-  pod 'Adyen', '3.7.0'
+  pod 'Adyen', '4.7.1'
   pod 'PhoneNumberKit', '3.3.1'
 end
 

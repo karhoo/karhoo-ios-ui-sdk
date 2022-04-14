@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
   s.dependency    'BraintreeDropIn', '~> 8.1'
   s.dependency    'Braintree/PaymentFlow', '~> 4.37'
   s.dependency    'PhoneNumberKit', '3.3.1'
-  s.dependency    'Adyen', '3.7.0'
+  s.dependency    'Adyen', '4.7.1'
 
 end
