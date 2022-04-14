@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Pre-authorise %@";
+
+"adyen.submitButton" = "Pre-authorise";
+
 /* English: Error codes */
 "K0001" = "General request error";
 
@@ -398,7 +402,7 @@
 
 "Text.Generic.Email" = "Email address";
 
-"Text.Generic.EPrice" = "Estimated Price";
+"Text.Generic.EPrice" = "Estimated price";
 
 "Text.Generic.Error" = "Error";
 
@@ -412,7 +416,7 @@
 "Text.Generic.ETALong" = "Estimated arrival time";
 
 /* Reference to fixed pricing.. English equivalent: "Fixed" */
-"Text.Generic.Fixed" = "Fix price";
+"Text.Generic.Fixed" = "Fixed price";
 
 /* "Got It" (generally used on alert buttons) */
 "Text.Generic.GotIt" = "Got It";

@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Pré-autoriser %@";
+
+"adyen.submitButton" = "Pré-autoriser";
+
 /* English: Error codes */
 "K0001" = "Désolé! Une erreur s'est produite";
 
@@ -350,7 +354,7 @@
 "Text.Errors.MissingPhoneNumber" = "Ce champ ne peut pas rester vide.";
 
 /* empty table view result */
-"Text.Errors.NoResultsFound" = "Aucun résultat trouvé";
+"Text.Errors.NoResultsFound" = "Pas de résultats";
 
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 
