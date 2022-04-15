@@ -15,8 +15,17 @@
         "repositoryURL": "https://github.com/Adyen/adyen-ios",
         "state": {
           "branch": null,
-          "revision": "948aa4b9d36518c8ac6a271dbe589d10354621e9",
-          "version": "3.9.0"
+          "revision": "98f7edc8df2dbb5b0f2e9042037593e36bcdae11",
+          "version": "4.7.1"
+        }
+      },
+      {
+        "package": "AdyenNetworking",
+        "repositoryURL": "https://github.com/Adyen/adyen-networking-ios",
+        "state": {
+          "branch": null,
+          "revision": "9b10df842e774f5c99a2d76b1d950ec4d5d80898",
+          "version": "1.0.0"
         }
       },
       {
@@ -24,8 +33,8 @@
         "repositoryURL": "https://github.com/Adyen/adyen-wechatpay-ios",
         "state": {
           "branch": null,
-          "revision": "8441165f8db64710f0cc477f98105668d0652e6e",
-          "version": "1.0.0"
+          "revision": "aee9b422f02d3ff75533a3338db45f2f9b9010b0",
+          "version": "2.1.0"
         }
       },
       {
