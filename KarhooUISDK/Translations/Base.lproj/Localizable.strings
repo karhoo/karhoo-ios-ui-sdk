@@ -372,7 +372,7 @@
 "Text.Generic.Bookings" = "Bookings";
 
 /* Localizable.strings,  Karhoo, ,  Copyright © 2020 Karhoo. All rights reserved.,  Generics */
-"Text.Generic.Cancel" = "Cancel";
+"Text.Generic.Cancel" = "Cancel 2";
 
 /* English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking */
 "Text.Generic.CancellationPolicy" = "Cancellation Policy";
