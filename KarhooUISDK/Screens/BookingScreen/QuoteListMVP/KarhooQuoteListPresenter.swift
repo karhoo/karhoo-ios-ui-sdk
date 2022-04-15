@@ -19,7 +19,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
-    private var selectedQuoteOrder: QuoteSortOrder = .qta
+    private var selectedQuoteOrder: QuoteSortOrder = .price
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
 
@@ -52,7 +52,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func selectedQuoteCategory(_ category: QuoteCategory) {
-        self.selectedQuoteCategory = category
+        selectedQuoteCategory = category
         updateViewQuotes(animated: true)
     }
 
@@ -61,12 +61,12 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuoteOrder(_ order: QuoteSortOrder, animated: Bool) {
-        self.selectedQuoteOrder = order
+        selectedQuoteOrder = order
         updateViewQuotes(animated: animated)
     }
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, bookingDetails: BookingDetails?) {
-        self.fetchedQuotes = quotes
+        fetchedQuotes = quotes
         quoteListView?.categoriesChanged(categories: quotes.quoteCategories,
                                          quoteListId: quotes.quoteListId)
         if bookingDetails?.destinationLocationDetails != nil, bookingDetails?.isScheduled == true {
