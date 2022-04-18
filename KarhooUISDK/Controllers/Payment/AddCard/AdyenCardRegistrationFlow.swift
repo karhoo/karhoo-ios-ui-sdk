@@ -71,27 +71,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         paymentService.getAdyenClientKey().execute(callback: { [weak self] result in
             switch result {
             case .success(let result):
-                self?.showClientKey(result, dropInData: dropInData)
-//                self?.startDropIn(data: dropInData, adyenKey: result.clientKey)
+                self?.startDropIn(data: dropInData, adyenKey: result.clientKey)
             case .failure(let error):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
                 assertionFailure()
             }
         })
-    }
-    
-    private func showClientKey(_ result: AdyenClientKey, dropInData: Data) {
-        let message = "Key: \(result.clientKey)\nEnvironment: \(result.environment)"
-        let alert = UIAlertController.create(
-            title: "Adyen Client Key",
-            message: message,
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            self.startDropIn(data: dropInData, adyenKey: result.clientKey)
-        }))
-        baseViewController?.present(alert, animated: true, completion: nil)
     }
 
     private var showStorePaymentMethod: Bool {
