@@ -9,8 +9,12 @@
 //
 
 import Foundation
-import Adyen
 import KarhooSDK
+import Adyen
+#if canImport(AdyenActions)
+import AdyenActions
+#endif
+
 
 struct AdyenResponseHandler {
 

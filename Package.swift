@@ -17,7 +17,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "KarhooSDK", url: "https://github.com/karhoo/karhoo-ios-sdk", .exact(Version(1, 6, 0))),
+        .package(name: "KarhooSDK", url: "https://github.com/karhoo/karhoo-ios-sdk", .exact(Version(1, 6, 1))),
         .package(name: "Adyen", url: "https://github.com/Adyen/adyen-ios", .exact(Version(4, 7, 1))),
         .package(name: "FloatingPanel", url: "https://github.com/scenee/FloatingPanel", .exact(Version(2, 0, 1))),
         .package(name: "BraintreeDropIn", url: "https://github.com/braintree/braintree-ios-drop-in", .exact(Version(9, 3, 0))),
