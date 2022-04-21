@@ -42,6 +42,8 @@ protocol RideDetailsView: BaseViewController {
     func hideLoading()
 
     func hideFeedbackOptions()
+
+    func setTrackButtonVisible(_ isVisible: Bool)
 }
 
 public enum RideDetailsAction {

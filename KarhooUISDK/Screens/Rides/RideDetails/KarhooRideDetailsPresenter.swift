@@ -59,6 +59,8 @@ final class KarhooRideDetailsPresenter: RideDetailsPresenter {
         view.setUpWith(trip: trip,
                        mailComposer: mailComposer)
         setNavigationBarWithScheduledDate()
+        let shouldBeTrackButtonVisible = TripInfoUtility.canTrackDriver(trip: trip)
+        view.setTrackButtonVisible(shouldBeTrackButtonVisible)
 
         tripRatingCache.tripRated(tripId: trip.tripId) ? view.hideFeedbackOptions() : ()
     }
