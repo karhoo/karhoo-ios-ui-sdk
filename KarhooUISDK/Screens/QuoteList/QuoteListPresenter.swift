@@ -19,7 +19,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
-    private var selectedQuoteOrder: QuoteSortOrder = .qta
+    private var selectedQuoteOrder: QuoteListSortOrder = .qta
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
@@ -29,6 +29,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var isViewVisible = false
     // TODO: REVERT TO 120 AFTER TESTS
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 15 // 120
+    var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
 
@@ -86,7 +87,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         updateViewQuotes()
     }
     
-    func didSelectQuoteOrder(_ order: QuoteSortOrder) {
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder) {
         selectedQuoteOrder = order
         updateViewQuotes()
     }
@@ -102,6 +103,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func didSelectCategory(_ category: QuoteCategory) {
         selectedQuoteCategory = category
         updateViewQuotes()
+    }
+
+    func didSelectShowSort() {
+        router.routeToSort(selectedSortOrder: selectedQuoteOrder)
     }
 
     // MARK: - Private
@@ -257,6 +262,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
         if dateOfListReceiving == nil {
             dateOfListReceiving = Date()
         }
+        isSortingAvailable = !details.isScheduled
         onStateUpdated?(.loading)
         let quoteSearch = QuoteSearch(origin: origin,
                                       destination: destination,

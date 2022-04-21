@@ -11,9 +11,13 @@ import UIKit
 
 class SeparatorView: UIView {
 
-    init(fixedHeight: CGFloat? = nil, fixedWidth: CGFloat? = nil) {
+    init(
+        fixedHeight: CGFloat? = nil,
+        fixedWidth: CGFloat? = nil,
+        color: UIColor = .clear
+    ) {
         super.init(frame: .zero)
-        self.setup(height: fixedHeight, width: fixedWidth)
+        self.setup(height: fixedHeight, width: fixedWidth, color: color)
     }
 
     override init(frame: CGRect) {
@@ -26,7 +30,8 @@ class SeparatorView: UIView {
         self.setup()
     }
     
-    private func setup(height: CGFloat? = nil, width: CGFloat? = nil) {
+    private func setup(height: CGFloat? = nil, width: CGFloat? = nil, color: UIColor? = nil) {
         anchor(width: width, height: height)
+        backgroundColor = color
     }
 }

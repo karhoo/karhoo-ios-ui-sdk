@@ -40,6 +40,8 @@ protocol QuoteListPresenter: AnyObject {
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
+    var isSortingAvailable: Bool { get }
+
     func viewDidLoad()
 
     func viewWillAppear()
@@ -48,13 +50,15 @@ protocol QuoteListPresenter: AnyObject {
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 
-    func didSelectQuoteOrder(_ order: QuoteSortOrder)
+    func didSelectQuoteOrder(_ order: QuoteListSortOrder)
 
     func didSelectQuote(_ quote: Quote)
 
     func didSelectQuoteDetails(_ quote: Quote)
 
     func didSelectCategory(_ category: QuoteCategory)
+
+    func didSelectShowSort()
 }
 
 protocol QuoteListRouter: AnyObject {
@@ -62,4 +66,6 @@ protocol QuoteListRouter: AnyObject {
     func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
 
     func routeToQuoteDetails(_ quote: Quote)
+
+    func routeToSort(selectedSortOrder: QuoteListSortOrder)
 }
