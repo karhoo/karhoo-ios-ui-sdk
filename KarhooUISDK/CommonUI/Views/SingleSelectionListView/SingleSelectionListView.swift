@@ -117,7 +117,7 @@ private class SelectionRowView<T: UserSelectable>: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isUserInteractionEnabled = true
         $0.text = value.localizedString
-        $0.font = KarhooUI.fonts.captionRegular()
+        $0.font = KarhooUI.fonts.bodyRegular()
         $0.textColor = KarhooUI.colors.text
     }
 
