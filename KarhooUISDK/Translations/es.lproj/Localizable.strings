@@ -140,7 +140,7 @@
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Todo";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "No hay disponibilidad para la hora solicitada. Por favor, seleccione una hora diferente.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Lo sentimos, la reserva instantánea no está disponible para este destino, pero puede reservar con antelación para su próximo viaje.";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "No hay disponibilidad en la categoría solicitada.\n Por favor seleccione otra categoría.";
 
