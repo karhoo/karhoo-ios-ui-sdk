@@ -11,9 +11,8 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def common_pods
-  # pod 'Adyen', '3.7.0'
- pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-4020-release-1.6'
-#   pod 'KarhooSDK', '1.5.5'
+# pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-4020-release-1.6'
+   pod 'KarhooSDK', '1.6.1'
 end
 
 target 'Client' do
