@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Preautorizar %@";
+
+"adyen.submitButton" = "preautorizar";
+
 /* English: Error codes */
 "K0001" = "Error general";
 
@@ -136,7 +140,7 @@
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Todo";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "No hay disponibilidad para la hora solicitada. Por favor, seleccione una hora diferente.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Lo sentimos, la reserva instantánea no está disponible para este destino, pero puede reservar con antelación para su próximo viaje.";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "No hay disponibilidad en la categoría solicitada.\n Por favor seleccione otra categoría.";
 
@@ -475,6 +479,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Salvar";
 
+"Text.Generic.SortBy" = "Ordenar por";
+
 /* english: "status" */
 "Text.Generic.Status" = "Estado";
 
@@ -589,6 +595,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancelación gratuita hasta %1$@ antes de la recogida";
 
+"Text.Quote.Results" = "%1$@ resultados";
+
 "Text.QuoteCategory.Electric" = "Eléctrico";
 
 "Text.QuoteCategory.Exec" = "Ejecutivo";
@@ -604,6 +612,30 @@
 "Text.QuoteCategory.Saloon" = "Sedán";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Detalles";
+
+"Text.QuoteCell.DriverArrival" = "Llegada del conductor";
+
+"Text.Quotes.DriverArrivalTime" = "Hora de llegada del conductor";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ para sugerir nuevas flotas";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contáctenos";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Aún no hay flotas en esta área";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de recogida y entrega son similares";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Información";

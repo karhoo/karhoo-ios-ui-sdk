@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Pre-autoriseren %@";
+
+"adyen.submitButton" = "Pre-autoriseren";
+
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
 
@@ -136,7 +140,7 @@
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Alle";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "Geen beschikbaarheid voor de gevraagde tijd. Kies een ander tijdstip.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Sorry, voor deze bestemming zijn reserveringen voor zeer korte termijn niet beschikbaar, u kunt wel reserveren voor uw volgende reis!";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "Er zijn geen offertes voor deze categorie.\nKies een andere categorie.";
 
@@ -475,6 +479,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "BEWAREN";
 
+"Text.Generic.SortBy" = "Sorteer op";
+
 /* english: "status" */
 "Text.Generic.Status" = "Status";
 
@@ -589,6 +595,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
 
+"Text.Quote.Results" = "%1$@ resultaten";
+
 "Text.QuoteCategory.Electric" = "Elektrisch";
 
 "Text.QuoteCategory.Exec" = "Executive";
@@ -604,6 +612,30 @@
 "Text.QuoteCategory.Saloon" = "Standaard voertuig";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Details";
+
+"Text.QuoteCell.DriverArrival" = "Aankomst chauffeur";
+
+"Text.Quotes.DriverArrivalTime" = "Aankomsttijd chauffeur";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ om nieuwsvloten voor te stellen";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contacteer ons";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Nog geen vloten in dit gebied";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Ophaal- en afleveradressen zijn vergelijkbaar";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Over";
