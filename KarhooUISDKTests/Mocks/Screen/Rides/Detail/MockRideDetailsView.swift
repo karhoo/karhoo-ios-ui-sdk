@@ -36,4 +36,9 @@ final class MockRideDetailsView: MockBaseViewController, RideDetailsView {
     func hideFeedbackOptions() {
         hideFeedbackOptionsCalled = true
     }
+
+    private(set) var setTrackButtonVisibleCalled = false
+    func setTrackButtonVisible(_ isVisible: Bool) {
+        setTrackButtonVisibleCalled = true
+    }
 }
