@@ -24,8 +24,8 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private let paymentFactory: PaymentFactory
     private let threeDSecureUtil: ThreeDSecureUtils
 
-    private var adyenAmout: AdyenAmount {
-        return AdyenAmount(currency: self.currencyCode, value: self.amount)
+    private var adyenAmount: AdyenAmount {
+         AdyenAmount(currency: currencyCode, value: amount)
     }
 
     init(paymentService: PaymentService = Karhoo.getPaymentService(),
@@ -47,14 +47,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                supplierPartnerId: String,
                showUpdateCardAlert: Bool,
                callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
-        self.currencyCode = cardCurrency
+        currencyCode = cardCurrency
         self.amount = amount
         self.supplierPartnerId = supplierPartnerId
         self.callback = callback
         baseViewController?.showLoadingOverlay(true)
 
-        let request = AdyenPaymentMethodsRequest(amount: adyenAmout,
-                                                 shopperLocale: UITexts.Generic.locale)
+        let request = AdyenPaymentMethodsRequest(amount: adyenAmount, shopperLocale: UITexts.Generic.locale)
         paymentService.adyenPaymentMethods(request: request).execute(callback: { [weak self] result in
             self?.baseViewController?.showLoadingOverlay(false)
             switch result {
@@ -69,11 +68,10 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func getAdyenKey(dropInData: Data) {
-        paymentService.getAdyenPublicKey().execute(callback: { [weak self] result in
+        paymentService.getAdyenClientKey().execute(callback: { [weak self] result in
             switch result {
             case .success(let result):
-                self?.startDropIn(data: dropInData,
-                                  adyenKey: result.key)
+                self?.startDropIn(data: dropInData, adyenKey: result.clientKey)
             case .failure(let error):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
@@ -94,28 +92,27 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startDropIn(data: Data, adyenKey: String) {
+        let apiContext = APIContext(environment: paymentFactory.adyenEnvironment(), clientKey: adyenKey)
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
-
-        let configuration = DropInComponent.PaymentMethodsConfiguration()
-        configuration.card.publicKey = adyenKey
+        let configuration = DropInComponent.Configuration(apiContext: apiContext)
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
         configuration.card.showsHolderNameField = true
-
+        let countryCode = NSLocale.current.regionCode ?? "GB"
+        configuration.payment = Payment(
+            amount: Amount(value: amount, currencyCode: currencyCode),
+            countryCode: countryCode
+        )
         guard let methods = paymentMethods else {
             finish(result: .completed(value: .didFailWithError(nil)))
             return
         }
         let adyenDropInStyle = DropInComponent.Style(tintColor: KarhooUI.colors.secondary)
-
         adyenDropIn = DropInComponent(
             paymentMethods: methods,
-            paymentMethodsConfiguration: configuration,
+            configuration: configuration,
             style: adyenDropInStyle
         )
         adyenDropIn?.delegate = self
-        adyenDropIn?.environment = paymentFactory.adyenEnvironment()
-        adyenDropIn?.payment = Payment(amount: Payment.Amount(value: self.amount,
-                                                              currencyCode: self.currencyCode))
         adyenDropIn?.viewController.forceLightMode()
 
         if let dropIn = adyenDropIn?.viewController {
@@ -129,7 +126,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
                 self.closeAdyenDropIn(result: result)
             }
         } else {
-            self.closeAdyenDropIn(result: result)
+            closeAdyenDropIn(result: result)
         }
     }
     
@@ -145,8 +142,11 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 }
 
 extension AdyenCardRegistrationFlow: DropInComponentDelegate {
-
-    func didSubmit(_ data: PaymentComponentData, from component: DropInComponent) {
+    func didSubmit(
+        _ data: PaymentComponentData,
+        for paymentMethod: PaymentMethod,
+        from component: DropInComponent
+    ){
         let encoder = JSONEncoder()
         do {
             let jsonData = try encoder.encode(data.paymentMethod.encodable)
@@ -156,7 +156,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             }
             submitPayments(dropInJson: adyenData, storePaymentMethod: data.storePaymentMethod)
         } catch let error {
-            adyenDropIn?.stopLoading()
+            adyenDropIn?.stopLoadingIfNeeded()
             didFail(with: error, from: component)
         }
     }
@@ -164,13 +164,15 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
     private func submitPayments(dropInJson: [String: Any], storePaymentMethod: Bool) {
         var adyenPayload = AdyenDropInPayload()
         adyenPayload.paymentMethod = dropInJson
-        adyenPayload.amount = adyenAmout
+        adyenPayload.amount = adyenAmount
         adyenPayload.additionalData = ["allow3DS2": "true"]
         adyenPayload.storePaymentMethod = storePaymentMethod
-        adyenPayload.returnUrl = self.threeDSecureUtil.current3DSReturnUrl
-        adyenPayload.browserInfo = AdyenBrowserInfo(userAgent: self.threeDSecureUtil.userAgent, acceptHeader: self.threeDSecureUtil.acceptHeader)
-
-        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, supplyPartnerID: self.supplierPartnerId)
+        adyenPayload.returnUrl = threeDSecureUtil.current3DSReturnUrl
+        adyenPayload.browserInfo = AdyenBrowserInfo(
+            userAgent: threeDSecureUtil.userAgent,
+            acceptHeader: threeDSecureUtil.acceptHeader
+        )
+        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, supplyPartnerID: supplierPartnerId)
         paymentService.adyenPayments(request: request).execute { [weak self] result in
             guard let self = self else { return }
 
@@ -200,13 +202,13 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             adyenData["details"] = adyenData
             submitAdyenPaymentDetails(payload: adyenData)
         } catch let error {
-            adyenDropIn?.stopLoading()
+            adyenDropIn?.stopLoadingIfNeeded()
             didFail(with: error, from: component)
         }
     }
 
     private func submitAdyenPaymentDetails(payload: [String: Any]) {
-        let request = PaymentsDetailsRequestPayload(tripId: self.tripId,
+        let request = PaymentsDetailsRequestPayload(tripId: tripId,
                                                     paymentsPayload: payload)
 
         paymentService.getAdyenPaymentDetails(paymentDetails: request).execute(callback: { [weak self] result in
@@ -214,12 +216,12 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
 
             switch result {
             case .success(let result):
-                guard let detailsRespone = Utils.convertToDictionary(data: result.data) else {
+                guard let detailsResponse = Utils.convertToDictionary(data: result.data) else {
                     self.finish(result: .completed(value: .didFailWithError(nil)))
                     return
                 }
 
-                let event = self.adyenResponseHandler.nextStepFor(data: detailsRespone,
+                let event = self.adyenResponseHandler.nextStepFor(data: detailsResponse,
                                                                   tripId: self.tripId)
                 self.handle(event: event)
             case .failure(let error):
@@ -238,9 +240,10 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         }
     }
 
-    func didCancel(component: PresentableComponent, from dropInComponent: DropInComponent) {
+    func didCancel(component: PaymentComponent, from dropInComponent: DropInComponent) {
         finish(result: .cancelledByUser)
     }
+    func didComplete(from component: DropInComponent) { }
 
     private func handle(event: AdyenResponseHandler.AdyenEvent) {
         switch event {
