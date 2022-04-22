@@ -57,15 +57,13 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - FloatingPanel (2.0.1)
   - KarhooSDK (1.6.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.7.2):
+  - KarhooUISDK (1.7.3):
     - Adyen (= 4.7.1)
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
-    - FloatingPanel (= 2.0.1)
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
@@ -96,7 +94,6 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - FloatingPanel
     - KarhooSDK
     - KeychainSwift
     - PhoneNumberKit
@@ -114,9 +111,8 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   KarhooSDK: c481f315c37583270cce4c912af883af70f276f3
-  KarhooUISDK: 2f5befe757d36f00b3a13522632c93e84adc5705
+  KarhooUISDK: 3af3e93c6db7c309e5f1e7c0478cd724ae8d0ff7
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

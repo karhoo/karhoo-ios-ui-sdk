@@ -19,7 +19,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var selectedQuoteCategory: QuoteCategory?
-    private var selectedQuoteOrder: QuoteListSortOrder = .qta
+    private var selectedQuoteOrder: QuoteListSortOrder = .price
     private let quoteSorter: QuoteSorter
     private let analytics: Analytics
     private let router: QuoteListRouter
