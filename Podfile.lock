@@ -86,7 +86,7 @@ DEPENDENCIES:
   - KarhooSDK (= 1.6.1)
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
-  - SwiftLint
+  - SwiftLint (~> 0.47)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -120,6 +120,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 8d33c4419a31bac8abef4efac4dab09fc310358f
+PODFILE CHECKSUM: 8d6a69977f713f6040bbaec0b0a3f92ce36d544f
 
 COCOAPODS: 1.11.2
