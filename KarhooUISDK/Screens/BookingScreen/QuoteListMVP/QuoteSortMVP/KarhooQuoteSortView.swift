@@ -18,7 +18,7 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
         let control = UISegmentedControl(items: items)
         control.accessibilityIdentifier = "segment_control"
         control.tintColor = KarhooUI.colors.primary
-        control.selectedSegmentIndex = 0
+        control.selectedSegmentIndex = 1
         if #available(iOS 13.0, *) {
             control.selectedSegmentTintColor = KarhooUI.colors.accent
             control.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
@@ -30,7 +30,7 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
 
     init() {
         super.init(frame: .zero)
-        self.setUpView()
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +39,7 @@ final class KarhooQuoteSortView: UIView, QuoteSortView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setUpView()
+        setUpView()
     }
     
     private func setUpView() {
