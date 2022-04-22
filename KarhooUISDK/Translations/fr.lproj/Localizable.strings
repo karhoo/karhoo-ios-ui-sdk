@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Pré-autoriser %@";
+
+"adyen.submitButton" = "Pré-autoriser";
+
 /* English: Error codes */
 "K0001" = "Désolé! Une erreur s'est produite";
 
@@ -136,7 +140,7 @@
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Tous";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "Aucune course disponible à l\'horaire demandé. Veuillez modifier votre horaire.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Désolé, la réservation spontanée n'est pas disponible sur cette destination, mais vous pouvez réserver à l'avance pour votre prochain voyage !";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "Aucun devis disponible pour cette catégorie. \n Veuillez choisir une autre catégorie.";
 
@@ -251,7 +255,7 @@
 
 "Text.Bookings.eta" = "Proximité";
 
-"Text.Bookings.NewRide" = "NOUVEAU MANÈGE";
+"Text.Bookings.NewRide" = "NOUVELLE COURSE";
 
 /* English: "No Trips" used if the booking list screen is empty */
 "Text.Bookings.NoTrips" = "Aucune réservation";
@@ -350,7 +354,7 @@
 "Text.Errors.MissingPhoneNumber" = "Ce champ ne peut pas rester vide.";
 
 /* empty table view result */
-"Text.Errors.NoResultsFound" = "Aucun résultat trouvé";
+"Text.Errors.NoResultsFound" = "Pas de résultats";
 
 "Text.FeedbackView.addComment" = "Commentaires supplémentaires";
 
@@ -475,6 +479,8 @@
 /* "Save" used as a button (call to action) */
 "Text.Generic.Save" = "Sauvegarder";
 
+"Text.Generic.SortBy" = "Trier par";
+
 /* english: "status" */
 "Text.Generic.Status" = "État actuel";
 
@@ -589,6 +595,8 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
 
+"Text.Quote.Results" = "%1$@ résultats";
+
 "Text.QuoteCategory.Electric" = "Electrique";
 
 "Text.QuoteCategory.Exec" = "Business";
@@ -604,6 +612,30 @@
 "Text.QuoteCategory.Saloon" = "Berline";
 
 "Text.QuoteCategory.Taxi" = "Taxi";
+
+"Text.QuoteCell.Details" = "Détails";
+
+"Text.QuoteCell.DriverArrival" = "Arrivée du chauffeur";
+
+"Text.Quotes.DriverArrivalTime" = "Heure d’arrivée du chauffeur";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre moment.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes d’actualités";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
+
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Pas encore de flottes dans ce domaine";
+
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
+
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
+
+"Text.Quotes.Result" = "";
+
+"Text.Quotes.Results" = "";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "À propos";
