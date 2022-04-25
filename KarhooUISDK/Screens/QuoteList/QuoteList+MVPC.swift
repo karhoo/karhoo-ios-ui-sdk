@@ -46,6 +46,8 @@ protocol QuoteListPresenter: AnyObject {
 
     func viewWillAppear()
 
+    func viewWillDisappear()
+
     func selectedQuoteCategory(_ category: QuoteCategory)
 
     func didSelectQuoteOrder(_ order: QuoteListSortOrder)

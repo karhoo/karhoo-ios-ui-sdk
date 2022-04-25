@@ -25,6 +25,10 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let router: QuoteListRouter
     var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
+    private var dateOfListReceiving: Date?
+    private var isViewVisible = false
+    // TODO: REVERT TO 120 AFTER TESTS
+    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 15 // 120
     var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
@@ -52,18 +56,28 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     deinit {
         journeyDetailsManager.remove(observer: self)
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        unsubscribeFromBecomeAndResignActiveNotifications()
     }
 
     func viewDidLoad() {
     }
 
     func viewWillAppear() {
+        subscribeToBecomeAndResignActiveNotifications()
+        isViewVisible = true
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
             assertionFailure("Unable to get data to upload")
             return
         }
         analytics.quoteListOpened(journeyDetails)
-        journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+        if shouldReloadQuotes() {
+            journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+        }
+    }
+
+    func viewWillDisappear() {
+        isViewVisible = false
+        unsubscribeFromBecomeAndResignActiveNotifications()
     }
 
     // MARK: - Endpoints
@@ -97,6 +111,34 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     // MARK: - Private
 
+    private func subscribeToBecomeAndResignActiveNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeActivityState), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeActivityState), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+
+    private func unsubscribeFromBecomeAndResignActiveNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+
+    private func shouldReloadQuotes() -> Bool {
+        guard let fireDate = dateOfListReceiving else { return true }
+        let intervalToFire = fireDate.timeIntervalSinceNow
+        // NOTE: 'fireDate.timeIntervalSinceNow' is negative when list is reloading and new timer is not started yet
+        return  intervalToFire > 0 && intervalToFire < minimumAcceptedValidityToQuoteRefresh
+    }
+
+    @objc func didChangeActivityState(_ notification: Notification) {
+        if notification.name == UIApplication.didBecomeActiveNotification {
+            isViewVisible = true
+            if shouldReloadQuotes() {
+                journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
+            }
+        } else if notification.name == UIApplication.willResignActiveNotification {
+            isViewVisible = false
+        }
+    }
+
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
         // Checkout component required this data
         setExpirationDates(of: quotes)
@@ -128,9 +170,15 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             assertionFailure()
             return
         }
-        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
-            self?.refreshSubscription()
+        // TODO: REVERT TO 'quotesValidity' AFTER TESTS
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(30)
+        dateOfListReceiving = Date().addingTimeInterval(Double(30))
+        DispatchQueue.main.asyncAfter(deadline: deadline) {[weak self] in
+            if self?.isViewVisible == true {
+                self?.refreshSubscription()
+            } else {
+                self?.dateOfListReceiving = nil
+            }
         }
     }
     
@@ -145,7 +193,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     private func updateViewQuotes() {
-        guard let fetchedQuotes = self.fetchedQuotes else { return }
+        guard let fetchedQuotes = fetchedQuotes else { return }
 
         let quotesToShow: [Quote]
         
@@ -210,6 +258,9 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
             let origin = details.originLocationDetails else {
             onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
             return
+        }
+        if dateOfListReceiving == nil {
+            dateOfListReceiving = Date()
         }
         isSortingAvailable = !details.isScheduled
         onStateUpdated?(.loading)
