@@ -40,9 +40,13 @@ protocol QuoteListPresenter: AnyObject {
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
+    var isSortingAvailable: Bool { get }
+
     func viewDidLoad()
 
     func viewWillAppear()
+
+    func viewWillDisappear()
 
     func selectedQuoteCategory(_ category: QuoteCategory)
 
@@ -55,8 +59,6 @@ protocol QuoteListPresenter: AnyObject {
     func didSelectCategory(_ category: QuoteCategory)
 
     func didSelectShowSort()
-
-    func didSelectShowFilters()
 }
 
 protocol QuoteListRouter: AnyObject {

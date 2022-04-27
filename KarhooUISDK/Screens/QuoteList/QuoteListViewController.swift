@@ -18,7 +18,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Properties
 
-    private weak var presenter: QuoteListPresenter?
+    private weak var presenter: QuoteListPresenter!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
@@ -43,14 +43,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    private lazy var quoteSortView = KarhooQuoteSortView().then {
-        $0.set(actions: self)
-    }
     private lazy var buttonsStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = true
         $0.axis = .horizontal
         $0.spacing = UIConstants.Spacing.medium
-        $0.distribution = .fillEqually
     }
     private lazy var sortButton = UIButton().then {
         $0.layer.borderColor = KarhooUI.colors.border.cgColor
@@ -122,7 +118,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
+        assert(presenter != nil, "Presented needs to be assigned using `setupBinding` method")
         presenter?.viewDidLoad()
     }
 
@@ -130,6 +126,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         super.viewWillAppear(animated)
         setupNavigationBar()
         presenter?.viewWillAppear()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter?.viewWillDisappear()
     }
 
     // MARK: - Setup binding
@@ -197,18 +198,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
         sortButton.anchor(height: UIConstants.Dimension.Button.medium)
         filtersButton.anchor(height: UIConstants.Dimension.Button.medium)
-        filtersButton.contentEdgeInsets = UIEdgeInsets(
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 6
-        )
-        filtersButton.titleEdgeInsets = UIEdgeInsets(
-            top: 0,
-            left: 6,
-            bottom: 0,
-            right: -6
-        )
+
         legalDisclaimerLabel.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -253,13 +243,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         setNavigationBarTitle(forState: state)
         switch state {
         case .loading:
-            self.handleLoadingState()
+            handleLoadingState()
         case .fetching(quotes: let quotes):
-            self.handleFetchingState(quotes: quotes)
+            handleFetchingState(quotes: quotes)
         case .fetched(quotes: let quotes):
-            self.handleFetchedState(quotes: quotes)
+            handleFetchedState(quotes: quotes)
         case .empty(reason: let reason):
-            self.handleEmptyState(reason: reason)
+            handleEmptyState(reason: reason)
         }
     }
     
@@ -311,7 +301,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         buttonsStackView.isHidden = false
         quoteCategoryBarView.isHidden = false
-        quoteSortView.isHidden = false
+        sortButton.isHidden = !presenter.isSortingAvailable
         legalDisclaimerContainer.isHidden = false
         UIView.animate(
             withDuration: UIConstants.Duration.medium,
@@ -320,7 +310,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             animations: { [weak self] in
                 self?.buttonsStackView.alpha = 1
                 self?.quoteCategoryBarView.alpha = 1
-                self?.quoteSortView.alpha = 1
                 self?.legalDisclaimerContainer.alpha = 1
             },
             completion: { _ in
@@ -342,17 +331,17 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
                 if hideAuxiliaryHeaderItems {
                     self?.buttonsStackView.alpha = 0
                     self?.quoteCategoryBarView.alpha = 0
-                    self?.quoteSortView.alpha = 0
                     self?.legalDisclaimerContainer.alpha = 0
                 }
             },
             completion: { [weak self] _ in
+                guard let self = self else { return }
                 if hideAuxiliaryHeaderItems {
-                    self?.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
-                    self?.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
-                    self?.quoteSortView.isHidden = hideAuxiliaryHeaderItems
-                    self?.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
+                    self.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
+                    self.quoteCategoryBarView.isHidden = hideAuxiliaryHeaderItems
+                    self.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
                 }
+                self.sortButton.isHidden = !self.presenter.isSortingAvailable
                 completion()
             }
         )
@@ -383,17 +372,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter?.didSelectShowSort()
     }
 
+
     @objc
     private func filterButtonTapped(_sender: UIButton) {
         presenter?.didselectShowFilters()
-    }
-}
-
-// MARK: - QuoteSortViewActions
-extension KarhooQuoteListViewController: QuoteSortViewActions {
-    
-    func didSelectQuoteOrder(_ order: QuoteListSortOrder) {
-        presenter?.didSelectQuoteOrder(order)
     }
 }
 

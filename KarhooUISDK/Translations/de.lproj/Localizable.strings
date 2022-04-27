@@ -1,3 +1,7 @@
+" adyen.submitButton.formatted" = "Vorautorisieren %@";
+
+"adyen.submitButton" = "Vorautorisieren";
+
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
 
@@ -136,7 +140,7 @@
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
 "Text.Availability.AllCategory" = "Alle";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "Keine Verfügbarkeit für die gewünschte Zeit. Bitte wählen Sie eine andere Zeit.";
+"Text.Availability.NoQuotesForSelectedParameters" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
 
 "Text.Availability.NoQuotesInSelectedCategory" = "Es gibt keine Angebote für diese Kategorie.\nBitte wählen Sie eine andere Kategorie.";
 
@@ -213,7 +217,7 @@
 /* Ride Details */
 "Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
 
-"Text.Booking.QuoteExpired" = "Zitat erloschen";
+"Text.Booking.QuoteExpired" = "Grundtarif erloschen";
 
 "Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
 
@@ -244,7 +248,7 @@
 "Text.Bookings.ContactDriver" = "Kontakt Fahrer";
 
 /* "Contact Fleet" */
-"Text.Bookings.ContactFleet" = "Kontakt Flotte";
+"Text.Bookings.ContactFleet" = "Kontakt Fahrer";
 
 /* Generic fallback message for trip load failure */
 "Text.Bookings.CouldNotLoadTrips" = "Es konnten keine Reisen geladen werden.";
@@ -268,10 +272,10 @@
 
 "Text.Bookings.Price.Cancelled" = "Abgebrochen";
 
-"Text.Bookings.Quote" = "Zitat";
+"Text.Bookings.Quote" = "Grundtarif";
 
 /* Button for rebooking a ride */
-"Text.Bookings.RebookRide" = "Rebooking-Fahrt";
+"Text.Bookings.RebookRide" = "Erneut buchen";
 
 /* "Report Issue" Button */
 "Text.Bookings.ReportIssue" = "Ausgabe melden";
@@ -391,7 +395,7 @@
 
 "Text.Generic.Destination" = "Zielort";
 
-"Text.Generic.Dismiss" = "DISMISS";
+"Text.Generic.Dismiss" = "ENTLASSEN";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Bearbeiten";
@@ -593,7 +597,7 @@
 
 "Text.Quote.Results" = "%1$@ Ergebnisse";
 
-"Text.QuoteCategory.Electric" = "Elektrisch";
+"Text.QuoteCategory.Electric" = "Electric";
 
 "Text.QuoteCategory.Exec" = "Exec";
 
@@ -821,7 +825,7 @@
 /* "We will notify you via email once your request has been processed." */
 "Text.User.SignupPendingMessage" = "Wir werden Sie per E-Mail benachrichtigen, sobald Ihr Antrag bearbeitet wurde.";
 
-"Text.VehicleClass.Electric" = "Elektrisch";
+"Text.VehicleClass.Electric" = "Electric";
 
 "Text.VehicleClass.Exec" = "Exec";
 
@@ -838,7 +842,7 @@
 "Text.VehicleTag.Childseat" = "Kindersitz";
 
 /* Vehicle tags */
-"Text.VehicleTag.Electric" = "Elektrisch";
+"Text.VehicleTag.Electric" = "Electric";
 
 "Text.VehicleTag.Executive" = "Exekutive";
 
