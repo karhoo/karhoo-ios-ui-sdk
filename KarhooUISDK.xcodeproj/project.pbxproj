@@ -379,6 +379,10 @@
 		514E7FCC27D609FE002DB078 /* QuoteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FCB27D609FE002DB078 /* QuoteListTableViewController.swift */; };
 		514E7FCE27D6753F002DB078 /* MockBookingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E7FCD27D6753F002DB078 /* MockBookingRouter.swift */; };
 		51671F412819DFCC00F75712 /* BorderedWOBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51671F402819DFCC00F75712 /* BorderedWOBackgroundButton.swift */; };
+		51671F47281AA8B900F75712 /* QuoteListFilters+MVPC .swift in Sources */ = {isa = PBXBuildFile; fileRef = 51671F43281AA8B900F75712 /* QuoteListFilters+MVPC .swift */; };
+		51671F48281AA8B900F75712 /* QuoteListFiltersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51671F44281AA8B900F75712 /* QuoteListFiltersPresenter.swift */; };
+		51671F49281AA8B900F75712 /* QuoteListFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51671F45281AA8B900F75712 /* QuoteListFiltersViewController.swift */; };
+		51671F4A281AA8B900F75712 /* QuoteListFiltersCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51671F46281AA8B900F75712 /* QuoteListFiltersCorrdinator.swift */; };
 		516D1A2B27DF86FB00110B69 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D1A2A27DF86FB00110B69 /* UIStackView+addArrangedSubviews.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
@@ -914,6 +918,10 @@
 		514E7FCB27D609FE002DB078 /* QuoteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListTableViewController.swift; sourceTree = "<group>"; };
 		514E7FCD27D6753F002DB078 /* MockBookingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBookingRouter.swift; sourceTree = "<group>"; };
 		51671F402819DFCC00F75712 /* BorderedWOBackgroundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedWOBackgroundButton.swift; sourceTree = "<group>"; };
+		51671F43281AA8B900F75712 /* QuoteListFilters+MVPC .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteListFilters+MVPC .swift"; sourceTree = "<group>"; };
+		51671F44281AA8B900F75712 /* QuoteListFiltersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersPresenter.swift; sourceTree = "<group>"; };
+		51671F45281AA8B900F75712 /* QuoteListFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersViewController.swift; sourceTree = "<group>"; };
+		51671F46281AA8B900F75712 /* QuoteListFiltersCorrdinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersCorrdinator.swift; sourceTree = "<group>"; };
 		516D1A2A27DF86FB00110B69 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
@@ -1743,6 +1751,7 @@
 				09C7657321DE688000CD81AB /* EmptyDataSetView */,
 				09C7656D21DE688000CD81AB /* QuoteCell */,
 				512D104B27EB0CDA0021E4CB /* QuoteListSort */,
+				51671F42281AA89800F75712 /* QuoteListFilters */,
 				09C7656221DE688000CD81AB /* QuoteSortMVP */,
 				E4A0D90782429D813CDC2761 /* QuoteListErrorView.swift */,
 			);
@@ -2420,6 +2429,17 @@
 				09E35D4B21E5117C003E840C /* QuoteList */,
 			);
 			path = QuoteList;
+			sourceTree = "<group>";
+		};
+		51671F42281AA89800F75712 /* QuoteListFilters */ = {
+			isa = PBXGroup;
+			children = (
+				51671F43281AA8B900F75712 /* QuoteListFilters+MVPC .swift */,
+				51671F44281AA8B900F75712 /* QuoteListFiltersPresenter.swift */,
+				51671F45281AA8B900F75712 /* QuoteListFiltersViewController.swift */,
+				51671F46281AA8B900F75712 /* QuoteListFiltersCorrdinator.swift */,
+			);
+			path = QuoteListFilters;
 			sourceTree = "<group>";
 		};
 		51A1100A27AD510800A54E76 /* Checkbox */ = {
@@ -3905,6 +3925,7 @@
 				5CDACF2E23CCAC8700FD4F56 /* KarhooMKMapView.swift in Sources */,
 				4038DF0E243CC0B70014539B /* QuoteCell.swift in Sources */,
 				092005DE225B91C1001038ED /* MenuContentViewController.swift in Sources */,
+				51671F49281AA8B900F75712 /* QuoteListFiltersViewController.swift in Sources */,
 				407227A12384323F005680F5 /* BaseSelectionView.swift in Sources */,
 				09A1F88F225CBCFF00B3DBE2 /* MenuContentMVP.swift in Sources */,
 				0973872221DE77B3004BD5F9 /* NSAttributedString+Utils.swift in Sources */,
@@ -4104,6 +4125,7 @@
 				4010B0DC245C5DD900E7B0F1 /* KarhooInputViewState.swift in Sources */,
 				FC435F372211B88900FB6BB5 /* CancelRideBehaviour.swift in Sources */,
 				6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */,
+				51671F4A281AA8B900F75712 /* QuoteListFiltersCorrdinator.swift in Sources */,
 				518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */,
 				407EC7A822CF564E00F24CFC /* NibStrings.swift in Sources */,
 				0991068121B8291A00BD7E6F /* AddressSearchProvider.swift in Sources */,
@@ -4171,6 +4193,8 @@
 				FC04659F2215A6AD004E76FE /* Navigation.swift in Sources */,
 				4038DF3D2444C6E00014539B /* KarhooPhoneInputView.swift in Sources */,
 				40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */,
+				51671F47281AA8B900F75712 /* QuoteListFilters+MVPC .swift in Sources */,
+				51671F48281AA8B900F75712 /* QuoteListFiltersPresenter.swift in Sources */,
 				6B2F88F727C628DF00685B47 /* JourneyDetails.swift in Sources */,
 				09C765B621DE688100CD81AB /* KarhooBookingPresenter.swift in Sources */,
 				09C765AD21DE688100CD81AB /* KarhooBookingMapPresenter.swift in Sources */,

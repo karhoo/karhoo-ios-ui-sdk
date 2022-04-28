@@ -74,11 +74,8 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
     }
 
     func routeToFilters() {
-        let filtersViewController = UIViewController().then {
-            $0.loadViewIfNeeded()
-            $0.view.backgroundColor = .white
-//            $0.modalPresentationStyle = .automatic
-        }
-        baseViewController.present(filtersViewController, animated: true, completion: nil)
+        let filtersCoordinator = KarhooQuoteListFiltersCoordinator()
+        addChild(filtersCoordinator)
+        filtersCoordinator.startPresented(on: self)
     }
 }

@@ -1,0 +1,45 @@
+//  
+//  QuoteListFiltersCorrdinator.swift
+//  KarhooUISDK
+//
+//  Created by Aleksander Wedrychowski on 28/04/2022.
+//  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
+//
+
+import Foundation
+import KarhooSDK
+
+class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
+    
+    var childCoordinators: [KarhooUISDKSceneCoordinator] = []
+    var baseViewController: BaseViewController { viewController }
+    private(set) var navigationController: UINavigationController?
+    private(set) var viewController: QuoteListFiltersViewController
+    private(set) var presenter: QuoteListFiltersPresenter!
+    
+    // MARK: - Initializator
+    
+    init(
+        navigationController: UINavigationController? = nil
+    ) {
+        self.navigationController = navigationController
+        self.viewController = KarhooQuoteListFiltersViewController()
+        self.presenter = KarhooQuoteListFiltersPresenter(
+            router: self
+        )
+        self.viewController.setupBinding(presenter)
+    }
+    
+    func start() {
+        navigationController?.show(viewController, sender: nil)
+    }
+
+    func startPresented(on parentCoordinator: KarhooUISDKSceneCoordinator) {
+        navigationController = UINavigationController()
+        navigationController?.setViewControllers([viewController], animated: false)
+        parentCoordinator.baseViewController.present(navigationController!, animated: true)
+    }
+}
+
+extension KarhooQuoteListFiltersCoordinator: QuoteListFiltersRouter {
+}
