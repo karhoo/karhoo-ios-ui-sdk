@@ -44,36 +44,20 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     private lazy var buttonsStackView = UIStackView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
+        $0.distribution = .fillEqually
         $0.spacing = UIConstants.Spacing.medium
     }
-    private lazy var sortButton = UIButton().then {
-        $0.layer.borderColor = KarhooUI.colors.border.cgColor
-        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        $0.layer.cornerRadius = UIConstants.CornerRadius.large
-        $0.clipsToBounds = true
-        $0.setTitleColor(KarhooUI.colors.text, for: .normal)
-        $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
+    private lazy var sortButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("arrowDown"), for: .normal)
         $0.setTitle(UITexts.Generic.sortBy, for: .normal)
-        $0.tintColor = KarhooUI.colors.text
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
-        $0.addTouchAnimation()
     }
-
-    private lazy var filtersButton = UIButton().then {
-        $0.layer.borderColor = KarhooUI.colors.border.cgColor
-        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        $0.layer.cornerRadius = UIConstants.CornerRadius.large
-        $0.clipsToBounds = true
-        $0.setTitleColor(KarhooUI.colors.text, for: .normal)
-        $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
+    private lazy var filtersButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("filters_icon"), for: .normal)
-        $0.setTitle("Filters", for: .normal)
-        $0.tintColor = KarhooUI.colors.text
+        $0.setTitle("Filters_", for: .normal)
         $0.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
-        $0.addTouchAnimation()
     }
     private lazy var quoteCategoryBarView = KarhooQuoteCategoryBarView().then {
         $0.set(actions: self)
@@ -196,9 +180,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             paddingRight: 10
         )
 
-        sortButton.anchor(height: UIConstants.Dimension.Button.medium)
-        filtersButton.anchor(height: UIConstants.Dimension.Button.medium)
-
         legalDisclaimerLabel.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -284,7 +265,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Helpers
 
-    private func setEnabledFiltersCount(_ count: Int){
+    private func setEnabledFiltersCount(_ count: Int) {
         if count == 0 {
             filtersButton.layer.borderColor = KarhooUI.colors.border.cgColor
             filtersButton.setTitleColor(KarhooUI.colors.text, for: .normal)
@@ -372,10 +353,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter?.didSelectShowSort()
     }
 
-
     @objc
     private func filterButtonTapped(_sender: UIButton) {
-        presenter?.didselectShowFilters()
+        presenter?.didSelectShowFilters()
     }
 }
 

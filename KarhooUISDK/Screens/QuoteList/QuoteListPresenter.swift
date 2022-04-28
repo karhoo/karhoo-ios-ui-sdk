@@ -109,9 +109,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         router.routeToSort(selectedSortOrder: selectedQuoteOrder)
     }
 
-
     func didSelectShowFilters() {
-        // TODO: Implement routing
+        router.routeToFilters()
     }
 
     // MARK: - Private
