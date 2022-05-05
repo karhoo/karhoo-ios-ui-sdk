@@ -8,6 +8,7 @@
 
 import KarhooSDK
 import CoreLocation
+import UIKit
 
 /* public interface for controlling booking screen */
 

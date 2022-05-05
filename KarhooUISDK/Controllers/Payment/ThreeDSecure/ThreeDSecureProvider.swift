@@ -8,7 +8,13 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(Braintree)
 import Braintree
+#endif
+#if canImport(BraintreeThreeDSecure)
+import BraintreeThreeDSecure
+#endif
+
 
 enum ThreeDSecureCheckResult {
     case success(nonce: String)

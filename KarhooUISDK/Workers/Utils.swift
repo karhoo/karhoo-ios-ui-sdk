@@ -7,6 +7,7 @@
 
 import Foundation
 import PhoneNumberKit
+import UIKit
 
 public class Utils {
     // The unicode values are possible variations for apostrophe / single quote

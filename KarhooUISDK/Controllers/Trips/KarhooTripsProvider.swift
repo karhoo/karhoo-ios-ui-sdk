@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 public final class KarhooTripsProvider: TripsProvider {
 

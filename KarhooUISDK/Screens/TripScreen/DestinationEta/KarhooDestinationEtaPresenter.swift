@@ -7,6 +7,8 @@
 //
 
 import KarhooSDK
+import Foundation
+import CoreGraphics
 
 final class KarhooDestinationEtaPresenter: DestinationEtaPresenter {
 

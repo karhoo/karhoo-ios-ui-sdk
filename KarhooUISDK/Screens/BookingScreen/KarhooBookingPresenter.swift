@@ -8,6 +8,7 @@
 
 import CoreLocation
 import KarhooSDK
+import UIKit
 
 final class KarhooBookingPresenter {
 

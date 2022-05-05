@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormButton" customModule="KarhooUISDK" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormButton" customModule="KarhooUISDK">
             <connections>
                 <outlet property="backgroundView" destination="lbL-WM-zC3" id="3FC-aK-mAb"/>
                 <outlet property="button" destination="UjA-4u-3jF" id="I6y-LA-RhZ"/>
