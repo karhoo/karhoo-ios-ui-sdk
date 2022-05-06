@@ -14,8 +14,11 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConfitionsAprovalRequired: Bool = false
+    static var pspCore: PSPCore = AdyenPSPCore()
+
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }
+    var pspCore: PSPCore { KarhooConfig.pspCore }
 
     func environment() -> KarhooEnvironment {
         return KarhooConfig.environment

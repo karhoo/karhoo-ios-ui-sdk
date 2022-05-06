@@ -13,25 +13,32 @@ import Adyen
 final class PaymentFactory {
 
     private let userService: UserService
+    private let sdkConfiguration: KarhooUISDKConfiguration
 
-    init(userService: UserService = Karhoo.getUserService()) {
+    init(userService: UserService = Karhoo.getUserService(),
+         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration) {
         self.userService = userService
+        self.sdkConfiguration = sdkConfiguration
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenCardRegistrationFlow()
-        } else {
-            return BraintreeCardRegistrationFlow()
-        }
+        sdkConfiguration.pspCore.getCardFlow()
+        // MULTIPSP
+//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+//            return AdyenCardRegistrationFlow()
+//        } else {
+//            return BraintreeCardRegistrationFlow()
+//        }
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenPaymentNonceProvider()
-        }
-
-        return BraintreePaymentNonceProvider()
+        sdkConfiguration.pspCore.getNonceProvider()
+        // MULTIPSP
+//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+//            return AdyenPaymentNonceProvider()
+//        }
+//
+//        return BraintreePaymentNonceProvider()
     }
 
     func adyenEnvironment() -> Adyen.Environment {
