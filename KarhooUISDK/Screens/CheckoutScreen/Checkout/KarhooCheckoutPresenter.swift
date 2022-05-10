@@ -32,7 +32,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-    
+    var paymentNonce: Nonce?
+
     // MARK: - Init & Config
 
     init(
@@ -342,8 +343,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-        
-        guard let trip = result.successValue() else {
+//
+//        guard let trip = result.successValue() else {
             view?.setDefaultState()
             reportPaymentFailure(result.errorValue()?.message ?? "")
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
@@ -353,11 +354,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             }
 
             return
-        }
-
-        self.trip = trip
-        reportPaymentSuccess()
-        view?.showCheckoutView(false)
+//        }
+//
+//        self.trip = trip
+//        reportPaymentSuccess()
+//        view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
@@ -434,6 +435,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)
                 case .cancelledByUser:
+                    self?.paymentNonce = nil
                     self?.view?.resetPaymentNonce()
                     self?.view?.setDefaultState()
                 }
@@ -549,7 +551,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportPaymentFailure(_ message: String) {
-        analytics.paymentFailed(message)
+        analytics.paymentFailed(
+            message: message,
+            paymentMethodLast4Digits: paymentNonce?.lastFour ?? "",
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
+        )
     }
 }
 
