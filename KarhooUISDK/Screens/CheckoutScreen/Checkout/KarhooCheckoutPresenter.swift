@@ -225,9 +225,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                             error: nil)
             return
         }
+
+        getPaymentNonceThenBook(user: currentUser,
+            organisationId: currentOrg,
+            passengerDetails: passengerDetails)
         
         if let nonce = view?.getPaymentNonce() {
-            if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+          //  if  userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+            if sdkConfiguration.pspCore.shouldGetPaymentBeforeBook {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
@@ -266,7 +271,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+        if sdkConfiguration.pspCore.shouldCheckThreeDBeforeBook {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -324,10 +329,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let metadata = bookingMetadata {
             map = metadata
         }
-        tripBooking.meta = map
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = paymentNonce
-        }
+        tripBooking.meta = sdkConfiguration.pspCore.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
+        // MULTIPSP
+//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+//            tripBooking.meta["trip_id"] = paymentNonce
+//        }
 
         reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
@@ -419,6 +425,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func retrievePaymentNonce() -> String? {
+        // TODO: MULTIPSP - implement
+        sdkConfiguration.pspCore.retrievePaymentNonce()
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
             return userService.getCurrentUser()?.nonce?.nonce
         } else {
