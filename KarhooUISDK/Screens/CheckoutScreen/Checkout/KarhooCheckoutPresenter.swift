@@ -233,6 +233,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         if let nonce = view?.getPaymentNonce() {
           //  if  userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+
             if sdkConfiguration.pspCore.shouldGetPaymentBeforeBook {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
@@ -330,11 +331,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let metadata = bookingMetadata {
             map = metadata
         }
-        tripBooking.meta = sdkConfiguration.pspCore.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
+//        tripBooking.meta = sdkConfiguration.pspCore.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
         // MULTIPSP
-//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-//            tripBooking.meta["trip_id"] = paymentNonce
-//        }
+
+        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
+            tripBooking.meta["trip_id"] = paymentNonce
+        }
 
         reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
@@ -420,20 +422,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
+        case .tokenExchange(settings: _), .karhooUser: return paymentNonce?.nonce
         default: return view?.getPaymentNonce()
         }
     }
-    
-    private func retrievePaymentNonce() -> String? {
-        // TODO: MULTIPSP - implement
-        sdkConfiguration.pspCore.retrievePaymentNonce()
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            return userService.getCurrentUser()?.nonce?.nonce
-        } else {
-            return view?.getPaymentNonce()
-        }
-    }
+
     
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
         threeDSecureProvider.threeDSecureCheck(

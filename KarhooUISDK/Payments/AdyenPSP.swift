@@ -5,28 +5,13 @@
 import Foundation
 import KarhooSDK
 
-public class AdyenPSPCore: PSPCore {
+public class AdyenPSPCore: PaymentManager {
 
+    public init() {}
     public let shouldGetPaymentBeforeBook: Bool  = false
-    public var shouldCheckThreeDBeforeBook: Bool = false
-
-    public init() {
-        
-    }
-
-    public func getCardFlow() -> CardRegistrationFlow {
-        AdyenCardRegistrationFlow()
-    }
-
-    public func getNonceProvider() -> PaymentNonceProvider {
-        AdyenPaymentNonceProvider()
-    }
-
-    public func  retrievePaymentNonce() -> String? {
-        // TODO: implement
-        return nil
-    }
-
+    public var shouldCheckThreeDSBeforeBook: Bool = false
+    public let getCardFlow: CardRegistrationFlow = AdyenCardRegistrationFlow()
+    public let getNonceProvider: PaymentNonceProvider = AdyenPaymentNonceProvider()
     public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {
         var mutableMeta = meta
         mutableMeta["trip_id"] = nonce
@@ -34,24 +19,12 @@ public class AdyenPSPCore: PSPCore {
     }
 }
 
-public class BraintreePSPCore: PSPCore {
-
+public class BraintreePSPCore: PaymentManager {
+    public init() {}
     public let shouldGetPaymentBeforeBook: Bool  = true
-    public var shouldCheckThreeDBeforeBook: Bool = true
-
-    public func getCardFlow() -> CardRegistrationFlow {
-        BraintreeCardRegistrationFlow()
-    }
-
-    public func getNonceProvider() -> PaymentNonceProvider {
-        BraintreePaymentNonceProvider()
-    }
-
-    public func  retrievePaymentNonce() -> String? {
-        // TODO: implement
-        return nil
-    }
-
+    public let shouldCheckThreeDSBeforeBook: Bool = true
+    public let getCardFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
+    public let getNonceProvider: PaymentNonceProvider = BraintreePaymentNonceProvider()
     public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {
         meta
     }
