@@ -343,8 +343,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-//
-//        guard let trip = result.successValue() else {
+
+        guard let trip = result.successValue() else {
             view?.setDefaultState()
             reportPaymentFailure(result.errorValue()?.message ?? "")
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
@@ -354,11 +354,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             }
 
             return
-//        }
-//
-//        self.trip = trip
-//        reportPaymentSuccess()
-//        view?.showCheckoutView(false)
+        }
+
+        self.trip = trip
+        reportPaymentSuccess()
+        view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
