@@ -226,7 +226,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if let nonce = view?.getPaymentNonce() {
+        if let nonce = paymentNonce?.nonce {
             if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
@@ -414,7 +414,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
         case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
-        default: return view?.getPaymentNonce()
+        default: return paymentNonce?.nonce
         }
     }
     
@@ -422,7 +422,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
             return userService.getCurrentUser()?.nonce?.nonce
         } else {
-            return view?.getPaymentNonce()
+            return paymentNonce?.nonce
         }
     }
     

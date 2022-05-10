@@ -81,18 +81,15 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * And: They are using Adyen for payment
      * And: No booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
-     * And: Get nonce endpoint should be called
      */
     func testAdyenRequestCarAuthenticated() {
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        mockView.paymentNonceToReturn = "nonce"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
-        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
-        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
+        XCTAssertTrue(mockTripService.tripBookingSet?.meta.count == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta["trip_id"])
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
     
@@ -107,11 +104,9 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        mockView.paymentNonceToReturn = "nonce"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
-        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
         XCTAssertEqual(value, "value")
@@ -122,7 +117,6 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * Then: no alert should show
      */
     func testCancellingPaymentProviderFlow() {
-        mockView.paymentNonceToReturn = "nonce"
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()

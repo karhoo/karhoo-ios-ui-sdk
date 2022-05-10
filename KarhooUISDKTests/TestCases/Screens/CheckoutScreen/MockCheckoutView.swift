@@ -110,11 +110,6 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
     func getPassengerDetails() -> PassengerDetails? {
         return passengerDetailsToReturn
     }
-
-    var paymentNonceToReturn: String?
-    func getPaymentNonce() -> String? {
-        return paymentNonceToReturn
-    }
     
     var commentsToReturn: String?
     func getComments() -> String? {

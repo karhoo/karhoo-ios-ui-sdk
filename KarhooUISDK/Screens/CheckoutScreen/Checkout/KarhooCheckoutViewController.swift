@@ -448,10 +448,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.details
     }
     
-    func getPaymentNonce() -> String? {
-        presenter.paymentNonce?.nonce
-    }
-    
     func getComments() -> String? {
         return commentsInputText.getInput()
     }
