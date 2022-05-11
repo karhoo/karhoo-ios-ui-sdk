@@ -550,7 +550,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportPaymentFailure(_ message: String) {
-        analytics.paymentFailed(message)
+        analytics.paymentFailed(
+                message: message,
+                paymentMethodLast4Digits: paymentNonce?.lastFour ?? "",
+                date: Date(),
+                amount: quote.price.highPrice.description,
+                currency: quote.price.currencyCode
+        )
     }
 }
 
