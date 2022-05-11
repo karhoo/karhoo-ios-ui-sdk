@@ -9,6 +9,7 @@
 import KarhooSDK
 
 protocol CheckoutPresenter {
+    var paymentNonce: Nonce? { get set }
     func load(view: CheckoutView)
     func screenWillAppear()
     func bookTripPressed()

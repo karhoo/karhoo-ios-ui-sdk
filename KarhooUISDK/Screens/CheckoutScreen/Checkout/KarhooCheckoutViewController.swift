@@ -51,7 +51,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
-    var paymentNonce: String?
+    var paymentNonce: Nonce? {
+        get {
+            presenter.paymentNonce
+        }
+        set {
+            presenter.paymentNonce = newValue
+        }
+    }
 
     // MARK: - Child ViewControllers
   
@@ -451,7 +458,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func getPaymentNonce() -> String? {
-        paymentNonce
+        paymentNonce?.nonce
     }
     
     func getComments() -> String? {

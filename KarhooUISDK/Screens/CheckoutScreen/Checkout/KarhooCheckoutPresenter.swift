@@ -32,7 +32,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-    
+    var paymentNonce: Nonce?
+
     // MARK: - Init & Config
 
     init(
