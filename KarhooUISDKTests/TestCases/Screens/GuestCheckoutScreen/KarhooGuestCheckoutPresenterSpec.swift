@@ -150,7 +150,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         XCTAssertNotNil(mockTripService.tripBookingSet)
         XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
         XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        XCTAssertEqual(mockView.paymentNonceToReturn, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
         XCTAssertTrue(mockView.setDefaultStateCalled)
@@ -180,7 +180,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
         XCTAssertNotNil(mockTripService.tripBookingSet)
         XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
         XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        XCTAssertEqual(mockView.paymentNonceToReturn, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
         XCTAssertTrue(mockView.setDefaultStateCalled)
@@ -232,7 +232,7 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
     }
 
     private func loadTestObject() {
-        mockView.paymentNonceToReturn = "123"
+        mockView.paymentNonceToReturn = Nonce(nonce: "123")
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
