@@ -2,7 +2,7 @@
 platform :ios, '11.0'
 
 # Standard cocoapods specs source
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
 use_frameworks!
 
