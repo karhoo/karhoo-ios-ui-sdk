@@ -14,7 +14,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConfitionsAprovalRequired: Bool = false
-    static var paymentManager: PaymentManager = BraintreePaymentManager()
+    static var paymentManager: PaymentManager!
 
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }

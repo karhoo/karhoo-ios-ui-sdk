@@ -111,6 +111,7 @@ class ViewController: UIViewController {
                                           organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = Keys.adyenGuestEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
         showKarhoo()
     }
 
@@ -120,12 +121,14 @@ class ViewController: UIViewController {
                                           organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = Keys.braintreeGuestEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         showKarhoo()
     }
 
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
         KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired = true
         usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
@@ -133,6 +136,7 @@ class ViewController: UIViewController {
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
     }
 
@@ -140,6 +144,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
 
@@ -147,6 +152,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.adyenTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
     }
     
@@ -154,6 +160,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -161,6 +168,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
 
