@@ -22,23 +22,11 @@ final class PaymentFactory {
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        sdkConfiguration.pspCore.getCardFlow()
-        // MULTIPSP
-//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-//            return AdyenCardRegistrationFlow()
-//        } else {
-//            return BraintreeCardRegistrationFlow()
-//        }
+        sdkConfiguration.paymentManager.getCardFlow
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        sdkConfiguration.pspCore.getNonceProvider()
-        // MULTIPSP
-//        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-//            return AdyenPaymentNonceProvider()
-//        }
-//
-//        return BraintreePaymentNonceProvider()
+        sdkConfiguration.paymentManager.getNonceProvider
     }
 
     func adyenEnvironment() -> Adyen.Environment {

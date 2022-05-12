@@ -5,7 +5,7 @@
 import Foundation
 import KarhooSDK
 
-public class AdyenPSPCore: PaymentManager {
+public class AdyenPaymentManager: PaymentManager {
 
     public init() {}
     public let shouldGetPaymentBeforeBook: Bool  = false
@@ -19,7 +19,7 @@ public class AdyenPSPCore: PaymentManager {
     }
 }
 
-public class BraintreePSPCore: PaymentManager {
+public class BraintreePaymentManager: PaymentManager {
     public init() {}
     public let shouldGetPaymentBeforeBook: Bool  = true
     public let shouldCheckThreeDSBeforeBook: Bool = true

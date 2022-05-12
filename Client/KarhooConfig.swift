@@ -14,11 +14,11 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConfitionsAprovalRequired: Bool = false
-    static var pspCore: PSPCore = AdyenPSPCore()
+    static var paymentManager: PaymentManager = BraintreePaymentManager()
 
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }
-    var pspCore: PSPCore { KarhooConfig.pspCore }
+    var paymentManager: PaymentManager { KarhooConfig.paymentManager }
 
     func environment() -> KarhooEnvironment {
         return KarhooConfig.environment

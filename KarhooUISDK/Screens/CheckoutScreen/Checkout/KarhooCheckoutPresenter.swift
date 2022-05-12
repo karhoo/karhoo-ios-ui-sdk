@@ -234,7 +234,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let nonce = view?.getPaymentNonce() {
           //  if  userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
 
-            if sdkConfiguration.pspCore.shouldGetPaymentBeforeBook {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBook {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
@@ -273,7 +273,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if sdkConfiguration.pspCore.shouldCheckThreeDBeforeBook {
+        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBook {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -331,13 +331,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let metadata = bookingMetadata {
             map = metadata
         }
-//        tripBooking.meta = sdkConfiguration.pspCore.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
-        // MULTIPSP
-
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = paymentNonce
-        }
-
+        tripBooking.meta = sdkConfiguration.pspCore.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
         reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
