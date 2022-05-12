@@ -33,7 +33,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-    var paymentNonce: Nonce?
 
     // MARK: - Init & Config
 
@@ -239,7 +238,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
             } else {
-                book(paymentNonce: nonce,
+                book(paymentNonce: nonce.nonce,
                      passenger: passengerDetails,
                      flightNumber: view?.getFlightNumber())
             }
@@ -416,8 +415,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return paymentNonce?.nonce
-        default: return view?.getPaymentNonce()
+        case .tokenExchange(settings: _), .karhooUser: return view?.getPaymentNonce()?.nonce
+        default: return view?.getPaymentNonce()?.nonce
         }
     }
 
@@ -431,7 +430,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)
                 case .cancelledByUser:
-                    self?.paymentNonce = nil
                     self?.view?.resetPaymentNonce()
                     self?.view?.setDefaultState()
                 }
@@ -548,11 +546,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
-            message: message,
-            paymentMethodLast4Digits: paymentNonce?.lastFour ?? "",
-            date: Date(),
-            amount: quote.price.highPrice.description,
-            currency: quote.price.currencyCode
+                message: message,
+                last4Digits: view?.getPaymentNonce()?.lastFour ?? "",
+                date: Date(),
+                amount: quote.price.highPrice.description,
+                currency: quote.price.currencyCode
         )
     }
 }

@@ -9,7 +9,6 @@
 import KarhooSDK
 
 protocol CheckoutPresenter {
-    var paymentNonce: Nonce? { get set }
     func load(view: CheckoutView)
     func screenWillAppear()
     func bookTripPressed()
@@ -40,7 +39,7 @@ protocol CheckoutView: BaseViewController {
     func setAsapState(qta: String?)
     func setPrebookState(timeString: String?, dateString: String?)
     func retryAddPaymentMethod(showRetryAlert: Bool)
-    func getPaymentNonce() -> String?
+    func getPaymentNonce() -> Nonce?
     func getPassengerDetails() -> PassengerDetails?
     func getComments() -> String?
     func getFlightNumber() -> String?

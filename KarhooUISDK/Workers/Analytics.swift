@@ -20,7 +20,7 @@ public protocol Analytics {
     
     func bookingRequested(tripDetails: TripInfo)
     func paymentSucceed()
-    func paymentFailed(message: String, paymentMethodLast4Digits: String, date: Date, amount: String, currency: String)
+    func paymentFailed(message: String, last4Digits: String, date: Date, amount: String, currency: String)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
     func upcomingTripsOpened()
@@ -96,11 +96,11 @@ final class KarhooAnalytics: Analytics {
     }
 
     func paymentFailed(
-        message: String,
-        paymentMethodLast4Digits: String,
-        date: Date,
-        amount: String,
-        currency: String
+            message: String,
+            last4Digits: String,
+            date: Date,
+            amount: String,
+            currency: String
     ) {
         let dateString: String
         if #available(iOS 15.0, *) {
@@ -110,14 +110,14 @@ final class KarhooAnalytics: Analytics {
             dateString = formatter.string(from: date)
         }
         base.send(
-            eventName: .paymentFailed,
-            payload: [
-                Keys.message: message,
-                Keys.cardLast4Digits: paymentMethodLast4Digits,
-                Keys.date: dateString,
-                Keys.amount: amount,
-                Keys.currency: currency
-            ]
+                eventName: .paymentFailed,
+                payload: [
+                    Keys.message: message,
+                    Keys.cardLast4Digits: last4Digits,
+                    Keys.date: dateString,
+                    Keys.amount: amount,
+                    Keys.currency: currency
+                ]
         )
     }
 
