@@ -29,6 +29,7 @@ target 'KarhooUISDK' do
   pod 'SwiftLint', '~> 0.47'
   pod 'Adyen', '4.7.1'
   pod 'PhoneNumberKit', '3.3.1'
+  pod 'SwiftFormat/CLI', '~> 0.49'
 end
 
 # UISDK unit tests
