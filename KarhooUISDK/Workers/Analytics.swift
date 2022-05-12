@@ -113,7 +113,6 @@ final class KarhooAnalytics: Analytics {
                 eventName: .paymentFailed,
                 payload: [
                     Keys.message: message,
-                    Keys.message: message,
                     Keys.cardLast4Digits: paymentMethodLast4Digits,
                     Keys.date: dateString,
                     Keys.amount: amount,
