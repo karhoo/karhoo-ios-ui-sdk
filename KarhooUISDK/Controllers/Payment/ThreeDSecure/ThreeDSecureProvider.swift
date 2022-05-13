@@ -8,15 +8,8 @@
 
 import Foundation
 import KarhooSDK
-#if canImport(Braintree)
-import Braintree
-#endif
-#if canImport(BraintreeThreeDSecure)
-import BraintreeThreeDSecure
-#endif
 
-
-enum ThreeDSecureCheckResult {
+public enum ThreeDSecureCheckResult {
     case success(nonce: String)
     case threeDSecureAuthenticationFailed
     case failedToInitialisePaymentService
@@ -29,7 +22,7 @@ protocol ThreeDSecureUtils {
     var current3DSReturnUrlScheme: String { get }
 }
 
-protocol ThreeDSecureProvider {
+public protocol ThreeDSecureProvider {
 
     func threeDSecureCheck(nonce: String,
                            currencyCode: String,

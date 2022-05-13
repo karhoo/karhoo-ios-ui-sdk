@@ -17,9 +17,11 @@ import BraintreePaymentFlow
 #endif
 
 
-final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
+final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
+    
+    public init(){}
 
-    func buildAddCardScreen(paymentsToken: PaymentSDKToken,
+    public func buildAddCardScreen(paymentsToken: PaymentSDKToken,
                             paymentMethodAdded: ScreenResultCallback<Nonce>?,
                             flowItemCallback: ScreenResultCallback<Screen>?) {
         let request = BTDropInRequest()

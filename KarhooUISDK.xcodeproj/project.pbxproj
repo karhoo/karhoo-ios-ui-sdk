@@ -63,6 +63,7 @@
 		0991530221BFDC3000B46D9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0991530021BFDB6400B46D9F /* Assets.xcassets */; };
 		0999CBB0220DDA0300A93AF9 /* KarhooUIScreenRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999CBAF220DDA0300A93AF9 /* KarhooUIScreenRouting.swift */; };
 		09A1F88F225CBCFF00B3DBE2 /* MenuContentMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A1F88E225CBCFF00B3DBE2 /* MenuContentMVP.swift */; };
+		09A467784AF54EA1680A03D7 /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE56DF89E8A3DA571863055 /* Pods_Client.framework */; };
 		09B30F692253986B007768CF /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B30F682253986B007768CF /* mockImage.png */; };
 		09C169B8227C8EFF00CF7E66 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169B7227C8EFF00CF7E66 /* AddressType.swift */; };
 		09C7649321DE665000CD81AB /* BookingScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C7649221DE665000CD81AB /* BookingScreenBuilder.swift */; };
@@ -365,7 +366,6 @@
 		40FE0CED22D7D2D4003F65B5 /* RateButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */; };
 		40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */; };
 		40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */; };
-		45669DA8511D1FA71199C447 /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F95629E6FCC5F092FE67A53 /* Pods_Client.framework */; };
 		5174A4D928119484002E3EF4 /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5174A4D828119484002E3EF4 /* MainActionButton.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
@@ -374,7 +374,6 @@
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
-		53A216AE58F8F82FE642530C /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574FEC4E932B8C7DB729490E /* Pods_KarhooUISDK.framework */; };
 		5C089DF82507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */; };
 		5C1B298725247E4F00E3CEEF /* AdyenPaymentNonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */; };
 		5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */; };
@@ -418,7 +417,7 @@
 		5CDACF3023CCB8DC00FD4F56 /* MapAnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */; };
 		5CED9268227F1CFB00E0C960 /* ScreenBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */; };
 		5D48026C326FDB6D6353842A /* TestPSPCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D480023B39CB282149B1F6F /* TestPSPCore.swift */; };
-		5D480EE523F179B8A4C941CB /* PSPCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D480AA0E5A7B05BDCF14464 /* PSPCore.swift */; };
+		5D480EE523F179B8A4C941CB /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D480AA0E5A7B05BDCF14464 /* PaymentManager.swift */; };
 		6B1DDE772796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1DDE762796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift */; };
 		6B26061C2743ED5C0030DB4B /* KarhooLoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26061B2743ED5C0030DB4B /* KarhooLoyaltyView.swift */; };
 		6B26061E2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26061D2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift */; };
@@ -459,6 +458,7 @@
 		6BF5C48D2799DE410056C460 /* MockPassengerDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF5C48C2799DE410056C460 /* MockPassengerDetailsDelegate.swift */; };
 		6F4235BF2391800C00233C02 /* AddressGoogleLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */; };
 		6F89EA0D248E5CA300F47C1B /* KarhooAddressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */; };
+		76505B8CD27FFDD9E356BE29 /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B4DBA4A753091AC34C1530 /* Pods_KarhooUISDK.framework */; };
 		791A9CDE26C4EC2A00B52DA1 /* KarhooAddPassengerDetailsAndPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A9CDD26C4EC2A00B52DA1 /* KarhooAddPassengerDetailsAndPaymentView.swift */; };
 		79793ED8270F2E2200944896 /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79793ED7270F2E2200944896 /* UIViewController+extensions.swift */; };
 		799DC592268F66EC00A48589 /* MapAnnotationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */; };
@@ -480,10 +480,12 @@
 		7B56043627A15EEB00FC5F1C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56043527A15EEB00FC5F1C /* String+Extensions.swift */; };
 		7B9532CB27B5642100B13FD1 /* LegalNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */; };
 		7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */; };
+		7B9E2655282E70E500742DDF /* AdyenPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E2654282E70E500742DDF /* AdyenPaymentManager.swift */; };
+		7B9E2658282E711A00742DDF /* BraintreePaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E2657282E711A00742DDF /* BraintreePaymentManager.swift */; };
+		972D58596259C8C772220752 /* Pods_KarhooUISDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D4A35617E1CC65F19504BB6 /* Pods_KarhooUISDKTests.framework */; };
 		986578A0F928780978136BC5 /* RidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986573E003E549DB4C06EA7A /* RidesViewController.xib */; };
 		A1A0312626171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */; };
 		AE4AC8A425F12C28000F9E57 /* AdyenThreeDSecureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4AC8A325F12C28000F9E57 /* AdyenThreeDSecureUtils.swift */; };
-		D522F18BCC3E998E0FE405D8 /* Pods_KarhooUISDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0861D00FD51FCE12B8A912C /* Pods_KarhooUISDKTests.framework */; };
 		D8263F4E262096C30042F259 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8263F4D262096C30042F259 /* TimeFormatter.swift */; };
 		D88BC2862620C51C00F1EA60 /* TimeFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */; };
 		D8D8ED2A261F1FDA0061066D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D8D8ED2D261F1FDA0061066D /* Localizable.stringsdict */; };
@@ -871,7 +873,8 @@
 		40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateButtonViewModel.swift; sourceTree = "<group>"; };
 		40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingView.swift; sourceTree = "<group>"; };
 		40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingPresenter.swift; sourceTree = "<group>"; };
-		4F042EC6BCC376E20C736302 /* Pods-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		4A19E72267089FF50A06EEFE /* Pods-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		4D5A0F912C16F0314C12F545 /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		5174A4D828119484002E3EF4 /* MainActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
@@ -880,8 +883,6 @@
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
-		51F3E6B2FC78063DB7C19D8B /* Pods-KarhooUISDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.debug.xcconfig"; sourceTree = "<group>"; };
-		574FEC4E932B8C7DB729490E /* Pods_KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlow.swift; sourceTree = "<group>"; };
 		5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenPaymentNonceProvider.swift; sourceTree = "<group>"; };
 		5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOptionsViewModel.swift; sourceTree = "<group>"; };
@@ -933,8 +934,7 @@
 		5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModel.swift; sourceTree = "<group>"; };
 		5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilders.swift; sourceTree = "<group>"; };
 		5D480023B39CB282149B1F6F /* TestPSPCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPSPCore.swift; sourceTree = "<group>"; };
-		5D480AA0E5A7B05BDCF14464 /* PSPCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PSPCore.swift; path = Payments/PSPCore.swift; sourceTree = "<group>"; };
-		5F95629E6FCC5F092FE67A53 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D480AA0E5A7B05BDCF14464 /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		6B1DDE762796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyBalanceView.swift; sourceTree = "<group>"; };
 		6B26061B2743ED5C0030DB4B /* KarhooLoyaltyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyView.swift; sourceTree = "<group>"; };
 		6B26061D2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyViewMVP.swift; sourceTree = "<group>"; };
@@ -973,6 +973,7 @@
 		6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFileManager.swift; sourceTree = "<group>"; };
 		6BF304EF275FA2920016CFC5 /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		6BF5C48C2799DE410056C460 /* MockPassengerDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPassengerDetailsDelegate.swift; sourceTree = "<group>"; };
+		6EE56DF89E8A3DA571863055 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressGoogleLogoView.swift; sourceTree = "<group>"; };
 		6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressDisplayView.swift; sourceTree = "<group>"; };
 		791A9CDD26C4EC2A00B52DA1 /* KarhooAddPassengerDetailsAndPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddPassengerDetailsAndPaymentView.swift; sourceTree = "<group>"; };
@@ -1001,10 +1002,11 @@
 		7B56043527A15EEB00FC5F1C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeViewController.swift; sourceTree = "<group>"; };
 		7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePresenter.swift; sourceTree = "<group>"; };
+		7B9E2654282E70E500742DDF /* AdyenPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenPaymentManager.swift; sourceTree = "<group>"; };
+		7B9E2657282E711A00742DDF /* BraintreePaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraintreePaymentManager.swift; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
-		99C18F42A6BFAB2D0530BD93 /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
+		9D4A35617E1CC65F19504BB6 /* Pods_KarhooUISDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListPresenterSpec.swift; sourceTree = "<group>"; };
-		A44D22249E3327F6AFFB9C80 /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		AE4AC8A325F12C28000F9E57 /* AdyenThreeDSecureUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdyenThreeDSecureUtils.swift; sourceTree = "<group>"; };
 		AE6E39E5271DADE500EE92C9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE6E39E6271DADE500EE92C9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -1012,14 +1014,16 @@
 		AE6E39E8271DAE0E00EE92C9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		AE6E39E9271DAE2100EE92C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE6E39EA271DAE2100EE92C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = nl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		CDD6F335B4AE50B0F6D3FFD1 /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B12F6A38546E88C131B2217E /* Pods-KarhooUISDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.release.xcconfig"; sourceTree = "<group>"; };
+		C3905671F04693E9C6453C66 /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
+		D430F79980032A2091CE3061 /* Pods-KarhooUISDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.debug.xcconfig"; sourceTree = "<group>"; };
+		D7B4DBA4A753091AC34C1530 /* Pods_KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8263F4D262096C30042F259 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatterSpec.swift; sourceTree = "<group>"; };
 		D8D8ED2C261F1FDA0061066D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED31261F1FE00061066D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED32261F1FE10061066D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		EAC7B5F4DB272DB0F948028A /* Pods-KarhooUISDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.release.xcconfig"; sourceTree = "<group>"; };
-		F0861D00FD51FCE12B8A912C /* Pods_KarhooUISDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9D69AF259494F9E6E2F24C5 /* Pods-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreenBuilder.swift; sourceTree = "<group>"; };
 		FC04659722148912004E76FE /* PopupDialogPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogPresenterSpec.swift; sourceTree = "<group>"; };
 		FC04659E2215A6AD004E76FE /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -1174,7 +1178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45669DA8511D1FA71199C447 /* Pods_Client.framework in Frameworks */,
+				09A467784AF54EA1680A03D7 /* Pods_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,7 +1186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A216AE58F8F82FE642530C /* Pods_KarhooUISDK.framework in Frameworks */,
+				76505B8CD27FFDD9E356BE29 /* Pods_KarhooUISDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,7 +1194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D522F18BCC3E998E0FE405D8 /* Pods_KarhooUISDKTests.framework in Frameworks */,
+				972D58596259C8C772220752 /* Pods_KarhooUISDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,6 +1280,7 @@
 		092F281022B25B0700AF8E0E /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				5D480AA0E5A7B05BDCF14464 /* PaymentManager.swift */,
 				092F281122B25B0700AF8E0E /* AddCard */,
 				092F281322B25B0700AF8E0E /* NonceProvider */,
 				092F281622B25B0700AF8E0E /* ThreeDSecure */,
@@ -1286,11 +1291,8 @@
 		092F281122B25B0700AF8E0E /* AddCard */ = {
 			isa = PBXGroup;
 			children = (
-				092F281222B25B0700AF8E0E /* BraintreeCardRegistrationFlow.swift */,
 				5C4252582518D06000CCCB5D /* CardRegistrationFlow.swift */,
 				5C6267E9252CC24500AB6CD2 /* PaymentFactory.swift */,
-				5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */,
-				5C626860252DFC0A00AB6CD2 /* AdyenResponseHandler.swift */,
 			);
 			path = AddCard;
 			sourceTree = "<group>";
@@ -1298,8 +1300,6 @@
 		092F281322B25B0700AF8E0E /* NonceProvider */ = {
 			isa = PBXGroup;
 			children = (
-				092F281422B25B0700AF8E0E /* BraintreePaymentNonceProvider.swift */,
-				5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */,
 				092F281522B25B0700AF8E0E /* PaymentNonceProvider.swift */,
 			);
 			path = NonceProvider;
@@ -1308,9 +1308,7 @@
 		092F281622B25B0700AF8E0E /* ThreeDSecure */ = {
 			isa = PBXGroup;
 			children = (
-				AE4AC8A325F12C28000F9E57 /* AdyenThreeDSecureUtils.swift */,
 				092F281722B25B0700AF8E0E /* ThreeDSecureProvider.swift */,
-				092F281822B25B0700AF8E0E /* BraintreeThreeDSecureProvider.swift */,
 			);
 			path = ThreeDSecure;
 			sourceTree = "<group>";
@@ -1550,7 +1548,6 @@
 				6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */,
 				094AE85521C9145D0046EC3C /* DatePickerScreen */,
 				5CBA2A6524F5D8CC0091D783 /* PassengerDetails */,
-				09DE8D44221C658B00451B3C /* PaymentScreen */,
 				FC705B16221322220001036E /* PopupDialog */,
 				FCAD1BE922087B9100C3AD1D /* PrebookConfirmationScreen */,
 				FC435EE42211B30F00FB6BB5 /* Rides */,
@@ -1852,14 +1849,6 @@
 				09DCC7F321BE7CE000DF02B9 /* KarhooAddressSearchProviderSpec.swift */,
 			);
 			path = domain;
-			sourceTree = "<group>";
-		};
-		09DE8D44221C658B00451B3C /* PaymentScreen */ = {
-			isa = PBXGroup;
-			children = (
-				09DE8D45221C658B00451B3C /* BraintreePaymentScreensBuilder.swift */,
-			);
-			path = PaymentScreen;
 			sourceTree = "<group>";
 		};
 		09E35D4721E5117C003E840C /* BookingScreen */ = {
@@ -2706,12 +2695,12 @@
 		79C4CC0320274ACDA240783A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				99C18F42A6BFAB2D0530BD93 /* Pods-Client.debug.xcconfig */,
-				A44D22249E3327F6AFFB9C80 /* Pods-Client.release.xcconfig */,
-				51F3E6B2FC78063DB7C19D8B /* Pods-KarhooUISDK.debug.xcconfig */,
-				EAC7B5F4DB272DB0F948028A /* Pods-KarhooUISDK.release.xcconfig */,
-				CDD6F335B4AE50B0F6D3FFD1 /* Pods-KarhooUISDKTests.debug.xcconfig */,
-				4F042EC6BCC376E20C736302 /* Pods-KarhooUISDKTests.release.xcconfig */,
+				C3905671F04693E9C6453C66 /* Pods-Client.debug.xcconfig */,
+				4D5A0F912C16F0314C12F545 /* Pods-Client.release.xcconfig */,
+				D430F79980032A2091CE3061 /* Pods-KarhooUISDK.debug.xcconfig */,
+				B12F6A38546E88C131B2217E /* Pods-KarhooUISDK.release.xcconfig */,
+				D9D69AF259494F9E6E2F24C5 /* Pods-KarhooUISDKTests.debug.xcconfig */,
+				4A19E72267089FF50A06EEFE /* Pods-KarhooUISDKTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2734,6 +2723,38 @@
 			path = "Bundle+extensions";
 			sourceTree = "<group>";
 		};
+		7B9E2651282DCB9A00742DDF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				5D480023B39CB282149B1F6F /* TestPSPCore.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		7B9E2653282E6F6200742DDF /* AdyenPSP */ = {
+			isa = PBXGroup;
+			children = (
+				5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */,
+				7B9E2654282E70E500742DDF /* AdyenPaymentManager.swift */,
+				5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */,
+				5C626860252DFC0A00AB6CD2 /* AdyenResponseHandler.swift */,
+				AE4AC8A325F12C28000F9E57 /* AdyenThreeDSecureUtils.swift */,
+			);
+			path = AdyenPSP;
+			sourceTree = "<group>";
+		};
+		7B9E2656282E70FB00742DDF /* BraintreePSP */ = {
+			isa = PBXGroup;
+			children = (
+				7B9E2657282E711A00742DDF /* BraintreePaymentManager.swift */,
+				092F281222B25B0700AF8E0E /* BraintreeCardRegistrationFlow.swift */,
+				092F281422B25B0700AF8E0E /* BraintreePaymentNonceProvider.swift */,
+				09DE8D45221C658B00451B3C /* BraintreePaymentScreensBuilder.swift */,
+				092F281822B25B0700AF8E0E /* BraintreeThreeDSecureProvider.swift */,
+			);
+			path = BraintreePSP;
+			sourceTree = "<group>";
+		};
 		E3D901DD9D9A20F01C1B688D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2741,9 +2762,9 @@
 				094DAF9D2400503F00035F9F /* KarhooSDK.framework */,
 				094DAF952400418000035F9F /* KarhooSDK.framework */,
 				09EBC66922D612C600F1177E /* KarhooSDK.framework */,
-				5F95629E6FCC5F092FE67A53 /* Pods_Client.framework */,
-				574FEC4E932B8C7DB729490E /* Pods_KarhooUISDK.framework */,
-				F0861D00FD51FCE12B8A912C /* Pods_KarhooUISDKTests.framework */,
+				6EE56DF89E8A3DA571863055 /* Pods_Client.framework */,
+				D7B4DBA4A753091AC34C1530 /* Pods_KarhooUISDK.framework */,
+				9D4A35617E1CC65F19504BB6 /* Pods_KarhooUISDKTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3242,12 +3263,15 @@
 		FC8F470A21539E24007841FB = {
 			isa = PBXGroup;
 			children = (
+				7B9E2656282E70FB00742DDF /* BraintreePSP */,
+				7B9E2653282E6F6200742DDF /* AdyenPSP */,
 				FC8F471621539E24007841FB /* KarhooUISDK */,
 				FC8F472121539E24007841FB /* KarhooUISDKTests */,
 				5C2E260E2420F8AC00B1FF0C /* Client */,
 				FC8F471521539E24007841FB /* Products */,
 				E3D901DD9D9A20F01C1B688D /* Frameworks */,
 				79C4CC0320274ACDA240783A /* Pods */,
+				7B9E2651282DCB9A00742DDF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3279,7 +3303,6 @@
 				6BDB6C24274FC0E6006DDF1C /* UIComponents */,
 				6BB94050274FE91100478ABD /* ViewModels */,
 				6BDB6C21274E88E4006DDF1C /* Workers */,
-				5D480AA0E5A7B05BDCF14464 /* PSPCore.swift */,
 			);
 			path = KarhooUISDK;
 			sourceTree = "<group>";
@@ -3397,11 +3420,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C2E261E2420F8AD00B1FF0C /* Build configuration list for PBXNativeTarget "Client" */;
 			buildPhases = (
-				191FC1BB47C389E36809DEC1 /* [CP] Check Pods Manifest.lock */,
+				BD027C90D723CC274D7D9C5A /* [CP] Check Pods Manifest.lock */,
 				5C2E26092420F8AC00B1FF0C /* Sources */,
 				5C2E260A2420F8AC00B1FF0C /* Frameworks */,
 				5C2E260B2420F8AC00B1FF0C /* Resources */,
-				41BABA806ADF9D743CE7688C /* [CP] Embed Pods Frameworks */,
+				48B13CF1BC77BEFA36BDC99A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3416,7 +3439,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC8F472821539E24007841FB /* Build configuration list for PBXNativeTarget "KarhooUISDK" */;
 			buildPhases = (
-				7E16BDC5A64737DD653DA200 /* [CP] Check Pods Manifest.lock */,
+				E21EE68C9387E0F4B0036BF9 /* [CP] Check Pods Manifest.lock */,
 				FC8F470F21539E24007841FB /* Sources */,
 				FC8F471021539E24007841FB /* Frameworks */,
 				FC8F471121539E24007841FB /* Headers */,
@@ -3436,11 +3459,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC8F472B21539E24007841FB /* Build configuration list for PBXNativeTarget "KarhooUISDKTests" */;
 			buildPhases = (
-				900E43073D6D45202DE81777 /* [CP] Check Pods Manifest.lock */,
+				D9FDF9FF3DD52D8342E06879 /* [CP] Check Pods Manifest.lock */,
 				FC8F471921539E24007841FB /* Sources */,
 				FC8F471A21539E24007841FB /* Frameworks */,
 				FC8F471B21539E24007841FB /* Resources */,
-				63F87846A45DAAF527FB14D8 /* [CP] Embed Pods Frameworks */,
+				C766BAB674AC4780BAEE29F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3549,29 +3572,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		191FC1BB47C389E36809DEC1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Client-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		41BABA806ADF9D743CE7688C /* [CP] Embed Pods Frameworks */ = {
+		48B13CF1BC77BEFA36BDC99A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3606,7 +3607,29 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		63F87846A45DAAF527FB14D8 /* [CP] Embed Pods Frameworks */ = {
+		BD027C90D723CC274D7D9C5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C766BAB674AC4780BAEE29F7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3623,29 +3646,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDKTests/Pods-KarhooUISDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7E16BDC5A64737DD653DA200 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDK-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		900E43073D6D45202DE81777 /* [CP] Check Pods Manifest.lock */ = {
+		D9FDF9FF3DD52D8342E06879 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3661,6 +3662,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E21EE68C9387E0F4B0036BF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDK-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3739,6 +3762,7 @@
 				40FE0CEA22D7D28B003F65B5 /* RateButton.swift in Sources */,
 				7B56043627A15EEB00FC5F1C /* String+Extensions.swift in Sources */,
 				0991067621B8291A00BD7E6F /* KarhooAddressSearchBarPresenter.swift in Sources */,
+				7B9E2658282E711A00742DDF /* BraintreePaymentManager.swift in Sources */,
 				407EC7CD22CF564E00F24CFC /* AddressBarFieldMVP.swift in Sources */,
 				51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */,
 				FC435EED2211B33B00FB6BB5 /* RidesViewController.swift in Sources */,
@@ -3938,6 +3962,7 @@
 				407EC7E722CF564E00F24CFC /* KarhooEmptyDataSetView.swift in Sources */,
 				407EC79922CF564E00F24CFC /* KarhooStackButtonView.swift in Sources */,
 				51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */,
+				7B9E2655282E70E500742DDF /* AdyenPaymentManager.swift in Sources */,
 				FCAD1BFC22087BD800C3AD1D /* KarhooPrebookConfirmationViewController.swift in Sources */,
 				407EC7E922CF564E00F24CFC /* EmptyDataSetMVP.swift in Sources */,
 				6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */,
@@ -4032,7 +4057,7 @@
 				40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */,
 				407EC79822CF564E00F24CFC /* StackButtonView.swift in Sources */,
 				407EC7C622CF564E00F24CFC /* FormButton.swift in Sources */,
-				5D480EE523F179B8A4C941CB /* PSPCore.swift in Sources */,
+				5D480EE523F179B8A4C941CB /* PaymentManager.swift in Sources */,
 				5D48026C326FDB6D6353842A /* TestPSPCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4283,7 +4308,7 @@
 /* Begin XCBuildConfiguration section */
 		5C2E261F2420F8AD00B1FF0C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99C18F42A6BFAB2D0530BD93 /* Pods-Client.debug.xcconfig */;
+			baseConfigurationReference = C3905671F04693E9C6453C66 /* Pods-Client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -4306,7 +4331,7 @@
 		};
 		5C2E26202420F8AD00B1FF0C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A44D22249E3327F6AFFB9C80 /* Pods-Client.release.xcconfig */;
+			baseConfigurationReference = 4D5A0F912C16F0314C12F545 /* Pods-Client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -4457,7 +4482,7 @@
 		};
 		FC8F472921539E24007841FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51F3E6B2FC78063DB7C19D8B /* Pods-KarhooUISDK.debug.xcconfig */;
+			baseConfigurationReference = D430F79980032A2091CE3061 /* Pods-KarhooUISDK.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4499,7 +4524,7 @@
 		};
 		FC8F472A21539E24007841FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAC7B5F4DB272DB0F948028A /* Pods-KarhooUISDK.release.xcconfig */;
+			baseConfigurationReference = B12F6A38546E88C131B2217E /* Pods-KarhooUISDK.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4540,7 +4565,7 @@
 		};
 		FC8F472C21539E24007841FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDD6F335B4AE50B0F6D3FFD1 /* Pods-KarhooUISDKTests.debug.xcconfig */;
+			baseConfigurationReference = D9D69AF259494F9E6E2F24C5 /* Pods-KarhooUISDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
@@ -4565,7 +4590,7 @@
 		};
 		FC8F472D21539E24007841FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F042EC6BCC376E20C736302 /* Pods-KarhooUISDKTests.release.xcconfig */;
+			baseConfigurationReference = 4A19E72267089FF50A06EEFE /* Pods-KarhooUISDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;

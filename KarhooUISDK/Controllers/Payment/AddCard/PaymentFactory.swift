@@ -8,7 +8,6 @@
 
 import Foundation
 import KarhooSDK
-import Adyen
 
 final class PaymentFactory {
 
@@ -27,12 +26,5 @@ final class PaymentFactory {
 
     func nonceProvider() -> PaymentNonceProvider {
         sdkConfiguration.paymentManager.getNonceProvider
-    }
-
-    func adyenEnvironment() -> Adyen.Environment {
-        switch Karhoo.configuration.environment() {
-            case .production: return .live
-            default: return .test
-        }
     }
 }

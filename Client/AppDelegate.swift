@@ -7,8 +7,12 @@
 
 import KarhooUISDK
 import KarhooSDK
+#if canImport(Braintree)
 import Braintree
+#endif
+#if canImport(Braintree)
 import Adyen
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         KarhooUI.set(configuration: KarhooConfig())
-        BTAppSwitch.setReturnURLScheme(urlScheme)
+        #if canImport(Braintree)
+            BTAppSwitch.setReturnURLScheme(urlScheme)
+        #endif
 
         window = UIWindow()
         let mainView = ViewController()
@@ -33,10 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.scheme?.localizedCaseInsensitiveCompare(urlScheme) == .orderedSame {
             return BTAppSwitch.handleOpen(url, options: options)
         }
+        
+        #if canImport(Braintree)
         let adyenThreeDSecureUtils = AdyenThreeDSecureUtils()
         if url.scheme?.localizedCaseInsensitiveCompare(adyenThreeDSecureUtils.current3DSReturnUrlScheme) == .orderedSame {
             return RedirectComponent.applicationDidOpen(from: url)
         }
+        #endif
         return false
     }
 }

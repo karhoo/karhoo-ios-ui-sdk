@@ -11,5 +11,5 @@ public protocol PaymentManager {
     var getNonceProvider: PaymentNonceProvider { get }
     func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any]
     var shouldGetPaymentBeforeBook: Bool { get }
-    var shouldCheckThreeDSBeforeBook: Bool { get }
+    var getThreeDSecureProvider: ThreeDSecureProvider? { get }
 }

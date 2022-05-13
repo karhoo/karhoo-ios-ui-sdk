@@ -18,7 +18,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private let userService: UserService
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
 
-    public init(paymentScreenBuilder: PaymentScreenBuilder = UISDKScreenRouting.default.paymentScreen(),
+    public init(paymentScreenBuilder: PaymentScreenBuilder = BraintreePaymentScreenBuilder(),
                 paymentService: PaymentService = Karhoo.getPaymentService(),
                 userService: UserService = Karhoo.getUserService(),
                 analytics: AnalyticsService = Karhoo.getAnalyticsService()) {

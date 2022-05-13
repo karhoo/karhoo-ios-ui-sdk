@@ -18,16 +18,15 @@ end
 target 'Client' do
   inherit! :search_paths
   pod 'KarhooUISDK', :path => './'
+  pod 'KarhooUISDK/Adyen', :path => './'
+  pod 'KarhooUISDK/Braintree', :path => './'
 end
 
 # UISDK framework
 target 'KarhooUISDK' do
   common_pods
   pod 'FloatingPanel', '2.0.1'
-  pod 'BraintreeDropIn', '~> 8.1'
-  pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'SwiftLint', '~> 0.47'
-  pod 'Adyen', '4.7.1'
   pod 'PhoneNumberKit', '3.3.1'
 end
 

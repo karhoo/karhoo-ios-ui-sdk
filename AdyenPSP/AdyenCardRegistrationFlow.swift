@@ -97,7 +97,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startDropIn(data: Data, adyenKey: String) {
-        let apiContext = APIContext(environment: paymentFactory.adyenEnvironment(), clientKey: adyenKey)
+        let apiContext = APIContext(environment: getAdyenEnvironment(), clientKey: adyenKey)
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
         let configuration = DropInComponent.Configuration(apiContext: apiContext)
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
@@ -143,6 +143,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             }
         } else {
             callback?(result)
+        }
+    }
+    
+    private func getAdyenEnvironment() -> Adyen.Environment {
+        switch Karhoo.configuration.environment() {
+            case .production: return .live
+            default: return .test
         }
     }
 }
