@@ -169,7 +169,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         accessibilityHint = UITexts.Generic.edit
 
         updateViewState()
-        actions?.didGetNonce(nonce: nonce.nonce)
+        actions?.didGetNonce(nonce: nonce)
     }
 
     func noPaymentMethod() {
