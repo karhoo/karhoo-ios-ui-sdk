@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
         KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
-        KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired = true
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
     

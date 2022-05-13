@@ -13,11 +13,11 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
-    static var isExplicitTermsAndConfitionsAprovalRequired: Bool = false
+    static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
 
 
-    var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired }
+    var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
     var paymentManager: PaymentManager { KarhooConfig.paymentManager }
 
     func environment() -> KarhooEnvironment {
