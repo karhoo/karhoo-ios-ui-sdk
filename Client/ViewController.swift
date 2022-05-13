@@ -111,7 +111,7 @@ class ViewController: UIViewController {
                                           organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = Keys.adyenGuestEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         showKarhoo()
     }
 
@@ -128,7 +128,7 @@ class ViewController: UIViewController {
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
@@ -152,7 +152,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.adyenTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
     }
     
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -168,7 +168,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentNonceProvider()
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
 
