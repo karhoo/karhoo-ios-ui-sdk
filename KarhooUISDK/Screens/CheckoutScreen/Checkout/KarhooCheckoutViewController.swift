@@ -370,6 +370,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func resetPaymentNonce() {
+        paymentNonce = nil
         passengerDetailsAndPaymentView.noPaymentMethod()
     }
     
