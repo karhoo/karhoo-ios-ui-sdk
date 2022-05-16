@@ -85,7 +85,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      */
     func testAdyenRequestCarAuthenticated() {
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        mockView.paymentNonceToReturn = "nonce"
+        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
@@ -107,7 +107,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        mockView.paymentNonceToReturn = "nonce"
+        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
@@ -122,7 +122,7 @@ class KarhooCheckoutPresenterSpec: XCTestCase {
      * Then: no alert should show
      */
     func testCancellingPaymentProviderFlow() {
-        mockView.paymentNonceToReturn = "nonce"
+        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()

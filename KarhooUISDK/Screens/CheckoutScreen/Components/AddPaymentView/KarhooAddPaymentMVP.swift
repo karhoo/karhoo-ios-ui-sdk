@@ -8,7 +8,7 @@ import Foundation
 import KarhooSDK
 
 protocol AddPaymentViewDelegate {
-    func didGetNonce(nonce: String)
+    func didGetNonce(nonce: Nonce)
 }
 
 protocol AddPaymentPresenter {

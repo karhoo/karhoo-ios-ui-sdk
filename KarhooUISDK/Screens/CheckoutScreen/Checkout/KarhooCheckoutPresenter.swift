@@ -33,7 +33,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-    
+
     // MARK: - Init & Config
 
     init(
@@ -232,7 +232,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
             } else {
-                book(paymentNonce: nonce,
+                book(paymentNonce: nonce.nonce,
                      passenger: passengerDetails,
                      flightNumber: view?.getFlightNumber())
             }
@@ -414,7 +414,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
         case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
-        default: return view?.getPaymentNonce()
+        default: return view?.getPaymentNonce()?.nonce
         }
     }
     
@@ -422,7 +422,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
             return userService.getCurrentUser()?.nonce?.nonce
         } else {
-            return view?.getPaymentNonce()
+            return view?.getPaymentNonce()?.nonce
         }
     }
     
@@ -550,7 +550,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportPaymentFailure(_ message: String) {
-        analytics.paymentFailed(message)
+        analytics.paymentFailed(
+                message: message,
+                last4Digits: view?.getPaymentNonce()?.lastFour ?? "",
+                date: Date(),
+                amount: quote.price.highPrice.description,
+                currency: quote.price.currencyCode
+        )
     }
 }
 
