@@ -76,6 +76,7 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
+  - SwiftFormat/CLI (0.49.7)
   - SwiftLint (0.47.0)
 
 DEPENDENCIES:
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - KarhooSDK (= 1.6.1)
   - KarhooUISDK (from `./`)
   - PhoneNumberKit (= 3.3.1)
+  - SwiftFormat/CLI (~> 0.49)
   - SwiftLint (~> 0.47)
 
 SPEC REPOS:
@@ -101,6 +103,8 @@ SPEC REPOS:
     - PhoneNumberKit
     - ReachabilitySwift
     - SwiftLint
+  trunk:
+    - SwiftFormat
 
 EXTERNAL SOURCES:
   KarhooUISDK:
@@ -118,8 +122,9 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SwiftFormat: b70e3c776a74c67ce8bd140425a8c86d4a843759
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 8d6a69977f713f6040bbaec0b0a3f92ce36d544f
+PODFILE CHECKSUM: bd20824e038af3c8478b5dd6f2cc7855d0d62b42
 
 COCOAPODS: 1.11.2

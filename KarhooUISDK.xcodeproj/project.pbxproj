@@ -372,6 +372,7 @@
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
+		5192C0252832EB4F00D01FC8 /* LocationInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */; };
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
@@ -878,6 +879,7 @@
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
+		5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationInfo+Extensions.swift"; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
@@ -1620,6 +1622,7 @@
 			isa = PBXGroup;
 			children = (
 				408AB68423507DF600B351B2 /* FareExt.swift */,
+				5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */,
 				0991070121B83AF700BD7E6F /* Observable+Utils.swift */,
 				0991070421B83AF700BD7E6F /* Observer+Utils.swift */,
 				6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */,
@@ -3864,6 +3867,7 @@
 				FC435F252211B49100FB6BB5 /* RideDetailsViewController.swift in Sources */,
 				407EC7A322CF564E00F24CFC /* LoadingImageView.swift in Sources */,
 				6B26061E2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift in Sources */,
+				5192C0252832EB4F00D01FC8 /* LocationInfo+Extensions.swift in Sources */,
 				FCAD1BFA22087BD800C3AD1D /* PrebookConfirmationViewModel.swift in Sources */,
 				FC83E2A4221ECC48008FE26D /* TripSummaryViewController.swift in Sources */,
 				0991070921B83AF700BD7E6F /* TripLocationDetailsExt.swift in Sources */,
