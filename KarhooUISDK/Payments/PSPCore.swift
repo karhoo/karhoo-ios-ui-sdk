@@ -9,7 +9,7 @@ import KarhooSDK
 public protocol PaymentManager {
     var getCardFlow: CardRegistrationFlow { get }
     var getNonceProvider: PaymentNonceProvider { get }
-    func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any]
     var shouldGetPaymentBeforeBook: Bool { get }
     var shouldCheckThreeDSBeforeBook: Bool { get }
+    func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any]
 }

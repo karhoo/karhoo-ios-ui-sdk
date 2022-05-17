@@ -121,7 +121,8 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingScreenOpened() {
+
+func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
     }
 

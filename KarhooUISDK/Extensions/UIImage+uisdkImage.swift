@@ -1,5 +1,5 @@
 //
-//  Bundle+Utils.swift
+//  UIImage+uisdkImage.swift
 //  KarhooUISDK
 //  Copyright © 2022 Karhoo. All rights reserved.
 //

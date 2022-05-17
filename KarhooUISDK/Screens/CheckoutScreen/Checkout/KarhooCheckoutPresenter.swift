@@ -231,8 +231,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             passengerDetails: passengerDetails)
         
         if let nonce = view?.getPaymentNonce() {
-          //  if  userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-
             if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBook {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,

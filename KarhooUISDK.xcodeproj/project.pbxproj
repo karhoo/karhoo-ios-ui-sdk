@@ -370,6 +370,8 @@
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
+		5192B43A2833820B00AAAAAB /* MockPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192B4392833820B00AAAAAB /* MockPaymentManager.swift */; };
+		5192C0232832DE4500D01FC8 /* UIImage+uisdkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */; };
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
@@ -417,7 +419,6 @@
 		5CDACF2E23CCAC8700FD4F56 /* KarhooMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDACF2D23CCAC8700FD4F56 /* KarhooMKMapView.swift */; };
 		5CDACF3023CCB8DC00FD4F56 /* MapAnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */; };
 		5CED9268227F1CFB00E0C960 /* ScreenBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */; };
-		5D48026C326FDB6D6353842A /* TestPSPCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D480023B39CB282149B1F6F /* TestPSPCore.swift */; };
 		5D480EE523F179B8A4C941CB /* PSPCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D480AA0E5A7B05BDCF14464 /* PSPCore.swift */; };
 		6B1DDE772796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1DDE762796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift */; };
 		6B26061C2743ED5C0030DB4B /* KarhooLoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26061B2743ED5C0030DB4B /* KarhooLoyaltyView.swift */; };
@@ -876,6 +877,8 @@
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
+		5192B4392833820B00AAAAAB /* MockPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentManager.swift; sourceTree = "<group>"; };
+		5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+uisdkImage.swift"; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
@@ -932,7 +935,6 @@
 		5CDACF2D23CCAC8700FD4F56 /* KarhooMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMKMapView.swift; sourceTree = "<group>"; };
 		5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModel.swift; sourceTree = "<group>"; };
 		5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilders.swift; sourceTree = "<group>"; };
-		5D480023B39CB282149B1F6F /* TestPSPCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPSPCore.swift; sourceTree = "<group>"; };
 		5D480AA0E5A7B05BDCF14464 /* PSPCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PSPCore.swift; path = Payments/PSPCore.swift; sourceTree = "<group>"; };
 		5F95629E6FCC5F092FE67A53 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1DDE762796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyBalanceView.swift; sourceTree = "<group>"; };
@@ -2318,6 +2320,13 @@
 			path = RateButton;
 			sourceTree = "<group>";
 		};
+		5192B43828337E4000AAAAAB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		51A1100A27AD510800A54E76 /* Checkbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2556,6 +2565,7 @@
 				4010B0E1245C67F300E7B0F1 /* ErrorBannerView.swift */,
 				407EC77E22CF564E00F24CFC /* GradientView.swift */,
 				404E9C4A23C8BB2B00289F43 /* LineView.swift */,
+				5174A4D828119484002E3EF4 /* MainActionButton.swift */,
 				40C7DC5A23D0A13500975AD3 /* MetaDataView.swift */,
 				40C1CD7123C9EC7900EDEA84 /* TripStatusView.swift */,
 				407EC78B22CF564E00F24CFC /* EmptyDataSetView */,
@@ -2566,7 +2576,6 @@
 				407EC77B22CF564E00F24CFC /* PinView */,
 				6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
-				5174A4D828119484002E3EF4 /* MainActionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2819,6 +2828,7 @@
 				FC658F612216D9C1006C48F2 /* MockPaymentService.swift */,
 				FC13585121D67971005054AE /* MockTripService.swift */,
 				14A5B97A25C1AD4600986616 /* MockUserService.swift */,
+				5192B4392833820B00AAAAAB /* MockPaymentManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -3248,6 +3258,7 @@
 				FC8F471521539E24007841FB /* Products */,
 				E3D901DD9D9A20F01C1B688D /* Frameworks */,
 				79C4CC0320274ACDA240783A /* Pods */,
+				5192B43828337E4000AAAAAB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3305,6 +3316,7 @@
 				4070213B23D9E19400F82B6A /* UIView+Extensions.swift */,
 				79793ED7270F2E2200944896 /* UIViewController+extensions.swift */,
 				6B275DD827B25EB200B401E6 /* Double+Extensions.swift */,
+				5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */,
 				099106FE21B83AF700BD7E6F /* KarhooSDKExtensions */,
 				7B56043527A15EEB00FC5F1C /* String+Extensions.swift */,
 			);
@@ -3852,6 +3864,7 @@
 				09C765BB21DE688100CD81AB /* RollingTextView.swift in Sources */,
 				5C1CD0B4241A5D88004AFF7D /* KarhooDriverDetailsView.swift in Sources */,
 				09E683212374236100BFF5B9 /* KarhooAddressMapView.swift in Sources */,
+				5192C0232832DE4500D01FC8 /* UIImage+uisdkImage.swift in Sources */,
 				FC435EF12211B35C00FB6BB5 /* TwoPageViewController.swift in Sources */,
 				09C765AC21DE688100CD81AB /* KarhooQuoteCategoryBarPresenter.swift in Sources */,
 				407EC7EB22CF564E00F24CFC /* TableDelegate.swift in Sources */,
@@ -4033,7 +4046,6 @@
 				407EC79822CF564E00F24CFC /* StackButtonView.swift in Sources */,
 				407EC7C622CF564E00F24CFC /* FormButton.swift in Sources */,
 				5D480EE523F179B8A4C941CB /* PSPCore.swift in Sources */,
-				5D48026C326FDB6D6353842A /* TestPSPCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4165,6 +4177,7 @@
 				14707CDA25D54C2200CAD083 /* MockRideDetailsScreenBuilder.swift in Sources */,
 				14707C6F25D54C2100CAD083 /* TripDetailsViewModelSpec.swift in Sources */,
 				14707CCC25D54C2200CAD083 /* MockBookingStatus.swift in Sources */,
+				5192B43A2833820B00AAAAAB /* MockPaymentManager.swift in Sources */,
 				14707CBA25D54C2200CAD083 /* TestBroadcaster.swift in Sources */,
 				14707CDE25D54C2200CAD083 /* PrebookConfirmationFormatterSpec.swift in Sources */,
 				14707C9325D54C2200CAD083 /* MockPickupOnlyStrategyDelegate.swift in Sources */,
