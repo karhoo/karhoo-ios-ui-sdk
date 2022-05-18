@@ -230,7 +230,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             organisationId: currentOrg,
             passengerDetails: passengerDetails)
         
-        if let nonce = view?.getPaymentNonce() {
+        if let nonce = retrievePaymentNonce() {
             if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBook {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
@@ -413,12 +413,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return view?.getPaymentNonce()?.nonce
-        default: return view?.getPaymentNonce()?.nonce
+        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()?.nonce
+        default: return retrievePaymentNonce()?.nonce
         }
     }
 
-    
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
         threeDSecureProvider.threeDSecureCheck(
             nonce: nonce,
@@ -495,6 +494,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             didAddPassengerDetails()
          }
     }
+
+    private func retrievePaymentNonce() -> Nonce? {
+        view?.getPaymentNonce()
+    }
     
     private func showLoyaltyNonceError(error: KarhooError) {
         var message = ""
@@ -553,7 +556,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
                 message: message,
-                last4Digits: view?.getPaymentNonce()?.lastFour ?? "",
+                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
                 date: Date(),
                 amount: quote.price.highPrice.description,
                 currency: quote.price.currencyCode
