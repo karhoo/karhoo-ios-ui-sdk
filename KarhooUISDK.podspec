@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform              = :ios, '11.0'
   s.ios.deployment_target = '11.0'
+  s.exclude_files = 'KarhooUISDK/Extensions/Bundle+extensions/BundleSPM+current.swift'
 
   s.requires_arc          = true
 

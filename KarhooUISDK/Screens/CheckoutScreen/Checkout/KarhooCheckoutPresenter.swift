@@ -7,6 +7,7 @@
 // swiftlint:disable file_length
 import Foundation
 import KarhooSDK
+import UIKit
 
 final class KarhooCheckoutPresenter: CheckoutPresenter {
     

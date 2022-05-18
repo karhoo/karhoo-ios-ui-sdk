@@ -11,7 +11,7 @@ public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
     
     public var userAgent: String {
-        return "KH/UISDK/iOS/\(KarhooUISDKVersionNumber)"
+        "KH/UISDK/iOS/1.7.3" //\(KarhooUISDKVersionNumber)"
     }
     
     public var acceptHeader = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"

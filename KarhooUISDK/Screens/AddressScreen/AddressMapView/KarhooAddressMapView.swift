@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 final class KarhooAddressMapView: UIView, AddressMapView {
     
