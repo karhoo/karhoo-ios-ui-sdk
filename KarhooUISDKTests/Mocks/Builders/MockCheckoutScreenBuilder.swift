@@ -18,7 +18,7 @@ final class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
     let screenInstance = Screen()
 
     func buildCheckoutScreen(quote: Quote,
-                             bookingDetails: BookingDetails,
+                             journeyDetails: JourneyDetails,
                              bookingMetadata: [String: Any]?,
                              callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
         self.quote = quote

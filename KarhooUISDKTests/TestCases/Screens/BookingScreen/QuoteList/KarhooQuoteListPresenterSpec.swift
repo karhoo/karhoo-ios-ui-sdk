@@ -13,12 +13,12 @@ import KarhooSDK
 class KarhooQuoteListPresenterSpec: XCTestCase {
 
     private var testObject: KarhooQuoteListPresenter!
-    private var mockBookingStatus: MockBookingStatus!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var mockQuoteService: MockQuoteService!
     private var mockQuoteListView: MockQuoteListView!
     private var mockQuoteSorter: MockQuoteSorter!
     private var mockDateFormatter: MockDateFormatterType!
-    private var mockBookingDetails: BookingDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockAnalytics: MockAnalytics!
 
     static let someQuote = TestUtil.getRandomQuote(highPrice: 1000, lowPrice: 1000, categoryName: "Some")
@@ -40,15 +40,15 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        mockBookingStatus = MockBookingStatus()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         mockQuoteService = MockQuoteService()
         mockQuoteListView = MockQuoteListView()
         mockQuoteSorter = MockQuoteSorter()
         mockDateFormatter = MockDateFormatterType()
-        mockBookingDetails  = TestUtil.getRandomBookingDetails(destinationSet: true, dateSet: true)
+        mockJourneyDetails  = TestUtil.getRandomJourneyDetails(destinationSet: true, dateSet: true)
         mockAnalytics = MockAnalytics()
         testObject = KarhooQuoteListPresenter(
-            bookingStatus: mockBookingStatus,
+            journeyDetailsManager: mockJourneyDetailsManager,
             quoteService: mockQuoteService,
             quoteListView: mockQuoteListView,
             quoteSorter: mockQuoteSorter,
@@ -57,8 +57,8 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     }
 
     private func simulateDestinationSetInBookingDetails() {
-        mockBookingStatus.bookingDetailsToReturn = mockBookingDetails
-        testObject.bookingStateChanged(details: mockBookingDetails)
+        mockJourneyDetailsManager.journeyDetailsToReturn = mockJourneyDetails
+        testObject.journeyDetailsChanged(details: mockJourneyDetails)
     }
 
     private func simulateSuccessfulQuoteFetch() {
@@ -67,10 +67,10 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     }
 
     private func simulateNoDestinationInBookingDetails() {
-        let noDestinationBookingDetails = TestUtil.getRandomBookingDetails(destinationSet: false)
+        let noDestinationJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false)
 
-        mockBookingStatus.bookingDetailsToReturn = noDestinationBookingDetails
-        testObject.bookingStateChanged(details: noDestinationBookingDetails)
+        mockJourneyDetailsManager.journeyDetailsToReturn = noDestinationJourneyDetails
+        testObject.journeyDetailsChanged(details: noDestinationJourneyDetails)
     }
 
     /**
@@ -78,7 +78,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
       * Then: the analytics event should be triggered
       */
     func testQuoteListStarts() {
-        mockBookingStatus.bookingDetailsToReturn = TestUtil.getRandomBookingDetails()
+        mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         testObject.screenWillAppear()
         XCTAssertTrue(mockAnalytics.quoteListOpenedCalled)
     }
@@ -119,12 +119,12 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
     func testSuccessFetchOfPrebook() {
         simulateSuccessfulQuoteFetch()
 
-        let bookingDetails = mockBookingStatus.bookingDetailsToReturn
-        XCTAssertNotNil(bookingDetails?.scheduledDate)
+        let journeyDetails = mockJourneyDetailsManager.journeyDetailsToReturn
+        XCTAssertNotNil(journeyDetails?.scheduledDate)
 
         XCTAssertEqual(
-            bookingDetails?.originLocationDetails?.timezone().identifier,
-            mockBookingDetails.originLocationDetails?.timezone().identifier
+            journeyDetails?.originLocationDetails?.timezone().identifier,
+            mockJourneyDetails.originLocationDetails?.timezone().identifier
         )
 
         XCTAssertTrue(mockQuoteListView.hideQuoteSorterCalled)
@@ -137,7 +137,7 @@ class KarhooQuoteListPresenterSpec: XCTestCase {
      * And: QuoteSorter should show
      */
     func testSuccessFetchOfAsap() {
-        mockBookingDetails  = TestUtil.getRandomBookingDetails(destinationSet: true, dateSet: false)
+        mockJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: true, dateSet: false)
         simulateSuccessfulQuoteFetch()
 
         XCTAssertNil(mockDateFormatter.detailStyleDateSet)

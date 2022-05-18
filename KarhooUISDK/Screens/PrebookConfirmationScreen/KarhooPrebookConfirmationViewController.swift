@@ -68,11 +68,11 @@ final class KarhooPrebookConfirmationViewController: UIViewController, PrebookCo
     final class KarhooPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
 
         public func buildPrebookConfirmationScreen(quote: Quote,
-                                                   bookingDetails: BookingDetails,
+                                                   journeyDetails: JourneyDetails,
                                                    confirmationCallback:
             @escaping ScreenResultCallback<PrebookConfirmationAction>) -> Screen {
             let presenter = KarhooPrebookConfirmationPresenter(quote: quote,
-                                                               bookingDetails: bookingDetails,
+                                                               journeyDetails: journeyDetails,
                                                                callback: confirmationCallback)
 
             return KarhooPrebookConfirmationViewController(presenter: presenter)

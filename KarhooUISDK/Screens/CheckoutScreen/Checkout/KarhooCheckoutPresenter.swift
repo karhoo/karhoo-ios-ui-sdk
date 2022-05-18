@@ -14,7 +14,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: CheckoutView?
     private let quote: Quote
-    private let bookingDetails: BookingDetails
+    private let journeyDetails: JourneyDetails
     private var quoteValidityTimer: Timer?
     internal var passengerDetails: PassengerDetails!
     private let threeDSecureProvider: ThreeDSecureProvider
@@ -38,7 +38,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     init(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
         tripService: TripService = Karhoo.getTripService(),
@@ -62,7 +62,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.analytics = analytics
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
-        self.bookingDetails = bookingDetails
+        self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
         self.setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
@@ -111,7 +111,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
      }
     
     private func configureQuoteView() {
-         if bookingDetails.isScheduled {
+         if journeyDetails.isScheduled {
              configurePrebookState()
              return
          }
@@ -119,14 +119,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
      }
 
      private func configurePrebookState() {
-         guard let timeZone = bookingDetails.originLocationDetails?.timezone() else {
+         guard let timeZone = journeyDetails.originLocationDetails?.timezone() else {
              return
          }
 
          let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
 
-         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate),
-                                 dateString: prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate))
+         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: journeyDetails.scheduledDate),
+                                 dateString: prebookFormatter.display(mediumStyleDate: journeyDetails.scheduledDate))
      }
 
      private func configureForAsapState() {
@@ -496,7 +496,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func setUpBookingButtonState() {
-        if TripInfoUtility.isAirportBooking(bookingDetails) {
+        if TripInfoUtility.isAirportBooking(journeyDetails) {
              view?.setAddFlightDetailsState()
          } else {
             didAddPassengerDetails()
@@ -539,10 +539,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportBookingEvent() {
-        guard let trip = trip else {
-            return
+        guard let origin = journeyDetails.originLocationDetails else { return }
+        
+        func buildTripForAnalytics() -> TripInfo {
+             TripInfo(
+                origin: origin.toTripLocationDetails(),
+                destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
+                dateScheduled: journeyDetails.scheduledDate,
+                quote: quote.toTripQuote()
+             )
         }
-        analytics.bookingRequested(tripDetails: trip)
+        
+        analytics.bookingRequested(tripDetails: trip ?? buildTripForAnalytics())
     }
 
     private func reportPaymentSuccess() {
