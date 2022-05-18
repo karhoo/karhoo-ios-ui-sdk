@@ -231,7 +231,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             passengerDetails: passengerDetails)
         
         if let nonce = retrievePaymentNonce() {
-            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBook {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
@@ -270,7 +270,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBook {
+        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,

@@ -7,22 +7,24 @@
 //
 
 import Foundation
+import KarhooSDK
 @testable import KarhooUISDK
 
 class MockPaymentManager: PaymentManager {
-    var gerCardFlowMock = CardRegistrationFlowMock()
-    var getCardFlow: CardRegistrationFlow {
-        gerCardFlowMock
+    var cardFlowMock = CardRegistrationFlowMock()
+    var cardFlow: CardRegistrationFlow {
+        cardFlowMock
     }
-    var getNonceProvider: PaymentNonceProvider {
-        AdyenPaymentNonceProvider()
+    var nonceProviderMock = PaymentNonceProviderMock()
+    var nonceProvider: PaymentNonceProvider {
+        nonceProviderMock
     }
 
-    var shouldGetPaymentBeforeBookValue = false
-    var shouldGetPaymentBeforeBook: Bool { shouldGetPaymentBeforeBookValue }
+    var shouldGetPaymentBeforeBookingValue = false
+    var shouldGetPaymentBeforeBooking: Bool { shouldGetPaymentBeforeBookingValue }
     
-    var shouldCheckThreeDSBeforeBookValue = true
-    var shouldCheckThreeDSBeforeBook: Bool { shouldCheckThreeDSBeforeBookValue }
+    var shouldCheckThreeDSBeforeBookingValue = true
+    var shouldCheckThreeDSBeforeBooking: Bool { shouldCheckThreeDSBeforeBookingValue }
 
     var getMetaWithUpdateTripIdIfRequiredValue = [String: Any]()
     func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
@@ -40,5 +42,27 @@ class CardRegistrationFlowMock: CardRegistrationFlow {
     var startCalled = false
     func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         startCalled = true
+    }
+}
+
+class PaymentNonceProviderMock: PaymentNonceProvider {
+    var getPaymentNonceResult: OperationResult<PaymentNonceProviderResult> = .completed(
+        value: PaymentNonceProviderResult.nonce(
+            nonce: Nonce(nonce: "123", cardType: "456", lastFour: "0987")
+        )
+    )
+        
+    func getPaymentNonce(
+        user: UserInfo,
+        organisationId: String,
+        quote: Quote,
+        result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void
+    ) {
+        result(getPaymentNonceResult)
+    }
+
+    var setBaseViewControllerCalled = false
+    func set(baseViewController: BaseViewController) {
+        setBaseViewControllerCalled = true
     }
 }
