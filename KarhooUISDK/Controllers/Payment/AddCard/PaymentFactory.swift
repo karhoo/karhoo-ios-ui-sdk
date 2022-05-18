@@ -8,6 +8,9 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(Adyen)
+import Adyen
+#endif
 
 final class PaymentFactory {
 
