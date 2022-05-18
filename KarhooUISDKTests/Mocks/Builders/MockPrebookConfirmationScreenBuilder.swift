@@ -14,16 +14,16 @@ import KarhooSDK
 final class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
 
     private(set) var quoteSet: Quote?
-    private(set) var bookingDetailsSet: BookingDetails?
+    private(set) var journeyDetailsSet: JourneyDetails?
     private var confirmationCallbackSet: ScreenResultCallback<PrebookConfirmationAction>?
     let prebookConfirmationScreenInstance = Screen()
 
     func buildPrebookConfirmationScreen(quote: Quote,
-                                        bookingDetails: BookingDetails,
+                                        journeyDetails: JourneyDetails,
                                         confirmationCallback: @escaping ScreenResultCallback<PrebookConfirmationAction>) -> Screen {
         
         quoteSet = quote
-        bookingDetailsSet = bookingDetails
+        journeyDetailsSet = journeyDetails
         confirmationCallbackSet = confirmationCallback
         return prebookConfirmationScreenInstance
     }
