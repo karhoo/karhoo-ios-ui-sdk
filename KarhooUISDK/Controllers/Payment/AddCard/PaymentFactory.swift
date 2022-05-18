@@ -8,7 +8,6 @@
 
 import Foundation
 import KarhooSDK
-import Adyen
 
 final class PaymentFactory {
 

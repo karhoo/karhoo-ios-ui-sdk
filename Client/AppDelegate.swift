@@ -7,8 +7,6 @@
 
 import KarhooUISDK
 import KarhooSDK
-import Braintree
-import Adyen
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
