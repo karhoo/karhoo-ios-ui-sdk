@@ -19,13 +19,3 @@ public class AdyenPaymentManager: PaymentManager {
     }
 }
 
-public class BraintreePaymentManager: PaymentManager {
-    public init() {}
-    public let shouldGetPaymentBeforeBook: Bool  = true
-    public let shouldCheckThreeDSBeforeBook: Bool = true
-    public let getCardFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
-    public let getNonceProvider: PaymentNonceProvider = BraintreePaymentNonceProvider()
-    public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {
-        meta
-    }
-}
