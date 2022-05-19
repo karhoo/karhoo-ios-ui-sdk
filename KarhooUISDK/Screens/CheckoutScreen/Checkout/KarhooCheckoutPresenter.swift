@@ -14,10 +14,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let callback: ScreenResultCallback<TripInfo>
     private weak var view: CheckoutView?
     private let quote: Quote
-    private let bookingDetails: BookingDetails
+    private let journeyDetails: JourneyDetails
     private var quoteValidityTimer: Timer?
     internal var passengerDetails: PassengerDetails!
-    private let threeDSecureProvider: ThreeDSecureProvider?
+    private let threeDSecureProvider: ThreeDSecureProvider
     private let tripService: TripService
     private let userService: UserService
     private let loyaltyService: LoyaltyService
@@ -38,8 +38,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     init(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
+        threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
@@ -50,7 +51,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = sdkConfiguration.paymentManager.getThreeDSecureProvider
+        self.threeDSecureProvider = threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
@@ -61,7 +62,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.analytics = analytics
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
-        self.bookingDetails = bookingDetails
+        self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
         self.setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
@@ -85,8 +86,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         setUpBookingButtonState()
-        // TODO: Check if required for Adyen?
-        threeDSecureProvider?.set(baseViewController: view)
+        threeDSecureProvider.set(baseViewController: view)
         
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
@@ -111,7 +111,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
      }
     
     private func configureQuoteView() {
-         if bookingDetails.isScheduled {
+         if journeyDetails.isScheduled {
              configurePrebookState()
              return
          }
@@ -119,14 +119,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
      }
 
      private func configurePrebookState() {
-         guard let timeZone = bookingDetails.originLocationDetails?.timezone() else {
+         guard let timeZone = journeyDetails.originLocationDetails?.timezone() else {
              return
          }
 
          let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)
 
-         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: bookingDetails.scheduledDate),
-                                 dateString: prebookFormatter.display(mediumStyleDate: bookingDetails.scheduledDate))
+         view?.setPrebookState(timeString: prebookFormatter.display(shortStyleTime: journeyDetails.scheduledDate),
+                                 dateString: prebookFormatter.display(mediumStyleDate: journeyDetails.scheduledDate))
      }
 
      private func configureForAsapState() {
@@ -230,10 +230,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             organisationId: currentOrg,
             passengerDetails: passengerDetails)
         
-        if let nonce = view?.getPaymentNonce() {
-          //  if  userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-
-            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBook {
+        if let nonce = retrievePaymentNonce() {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
@@ -272,7 +270,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if let _ = sdkConfiguration.paymentManager.getThreeDSecureProvider {
+        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -415,14 +413,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return view?.getPaymentNonce()?.nonce
-        default: return view?.getPaymentNonce()?.nonce
+        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()?.nonce
+        default: return retrievePaymentNonce()?.nonce
         }
     }
 
-    
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
-        threeDSecureProvider?.threeDSecureCheck(
+        threeDSecureProvider.threeDSecureCheck(
             nonce: nonce,
             currencyCode: quote.price.currencyCode,
             paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
@@ -491,11 +488,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func setUpBookingButtonState() {
-        if TripInfoUtility.isAirportBooking(bookingDetails) {
+        if TripInfoUtility.isAirportBooking(journeyDetails) {
              view?.setAddFlightDetailsState()
          } else {
             didAddPassengerDetails()
          }
+    }
+
+    private func retrievePaymentNonce() -> Nonce? {
+        view?.getPaymentNonce()
     }
     
     private func showLoyaltyNonceError(error: KarhooError) {
@@ -534,10 +535,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportBookingEvent() {
-        guard let trip = trip else {
-            return
+        guard let origin = journeyDetails.originLocationDetails else { return }
+        
+        func buildTripForAnalytics() -> TripInfo {
+             TripInfo(
+                origin: origin.toTripLocationDetails(),
+                destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
+                dateScheduled: journeyDetails.scheduledDate,
+                quote: quote.toTripQuote()
+             )
         }
-        analytics.bookingRequested(tripDetails: trip)
+        
+        analytics.bookingRequested(tripDetails: trip ?? buildTripForAnalytics())
     }
 
     private func reportPaymentSuccess() {
@@ -547,7 +556,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
                 message: message,
-                last4Digits: view?.getPaymentNonce()?.lastFour ?? "",
+                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
                 date: Date(),
                 amount: quote.price.highPrice.description,
                 currency: quote.price.currencyCode

@@ -8,6 +8,9 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(Adyen)
+import Adyen
+#endif
 
 final class PaymentFactory {
 
@@ -21,10 +24,10 @@ final class PaymentFactory {
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        sdkConfiguration.paymentManager.getCardFlow
+        sdkConfiguration.paymentManager.cardFlow
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        sdkConfiguration.paymentManager.getNonceProvider
+        sdkConfiguration.paymentManager.nonceProvider
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-public struct BookingDetails: Equatable {
+public struct JourneyDetails: Equatable {
 
     public var originLocationDetails: LocationInfo?
     public var destinationLocationDetails: LocationInfo?
@@ -27,20 +27,20 @@ public struct BookingDetails: Equatable {
         return scheduled.timeIntervalSince1970 != 0
     }
 
-    public func reverse() -> BookingDetails? {
+    public func reverse() -> JourneyDetails? {
 
         guard let initialDestination = self.destinationLocationDetails else {
             return nil
         }
         let initialPickup = self.originLocationDetails
 
-        var newBookingDetails = BookingDetails(originLocationDetails: initialDestination)
+        var newBookingDetails = JourneyDetails(originLocationDetails: initialDestination)
         newBookingDetails.destinationLocationDetails = initialPickup
 
         return newBookingDetails
     }
 
-    static public func == (lhs: BookingDetails, rhs: BookingDetails) -> Bool {
+    static public func == (lhs: JourneyDetails, rhs: JourneyDetails) -> Bool {
         return lhs.originLocationDetails?.placeId == rhs.originLocationDetails?.placeId
             && lhs.destinationLocationDetails?.placeId == rhs.destinationLocationDetails?.placeId
             && lhs.scheduledDate == rhs.scheduledDate

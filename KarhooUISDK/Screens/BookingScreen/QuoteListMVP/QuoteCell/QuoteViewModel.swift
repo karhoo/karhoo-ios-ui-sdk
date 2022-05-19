@@ -118,14 +118,14 @@ final class QuoteViewModel {
     let freeCancellationMessage: String?
 
     init(quote: Quote,
-         bookingStatus: BookingStatus = KarhooBookingStatus.shared) {
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared) {
         self.passengerCapacity = quote.vehicle.passengerCapacity
         self.baggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
         self.fleetDescription = quote.fleet.description
-        let bookingDetails = bookingStatus.getBookingDetails()
+        let journeyDetails = journeyDetailsManager.getJourneyDetails()
         let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
-                                                         bookingDetails: bookingDetails)
+                                                         journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
         // TODO: to be reverted later to localized carType - vehicleClass is deprecated
@@ -137,7 +137,7 @@ final class QuoteViewModel {
         case .timeBeforePickup:
             if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
                 let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                let messageFormat = bookingDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
+                let messageFormat = journeyDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
                 freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
             } else {
                 freeCancellationMessage = nil
@@ -155,7 +155,7 @@ final class QuoteViewModel {
 
         self.logoImageURL = quote.fleet.logoUrl
         self.fareType = quote.quoteType.description
-        let origin = bookingDetails?.originLocationDetails?.details.type
+        let origin = journeyDetails?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport
 
         switch quote.pickUpType {
@@ -166,9 +166,9 @@ final class QuoteViewModel {
         }
     }
 
-    private static func scheduleTexts(quote: Quote, bookingDetails: BookingDetails?) -> (caption: String, value: String) {
-        if let scheduledDate = bookingDetails?.scheduledDate,
-           let originTimeZone = bookingDetails?.originLocationDetails?.timezone() {
+    private static func scheduleTexts(quote: Quote, journeyDetails: JourneyDetails?) -> (caption: String, value: String) {
+        if let scheduledDate = journeyDetails?.scheduledDate,
+           let originTimeZone = journeyDetails?.originLocationDetails?.timezone() {
             // If the booking is prebooked display only the date + time
             let timeZone = originTimeZone
             let prebookFormatter = KarhooDateFormatter(timeZone: timeZone)

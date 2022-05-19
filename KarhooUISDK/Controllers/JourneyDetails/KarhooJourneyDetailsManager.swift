@@ -9,12 +9,12 @@
 import Foundation
 import KarhooSDK
 
-public final class KarhooBookingStatus: BookingStatus {
+public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
 
     private let broadcaster: Broadcaster<AnyObject>
-    private var status: BookingDetails?
+    private var status: JourneyDetails?
     private let addressService: AddressService
-    public static let shared = KarhooBookingStatus()
+    public static let shared = KarhooJourneyDetailsManager()
 
     init(broadcaster: Broadcaster<AnyObject> = Broadcaster<AnyObject>(),
          addressService: AddressService = Karhoo.getAddressService()) {
@@ -22,11 +22,11 @@ public final class KarhooBookingStatus: BookingStatus {
         self.addressService = addressService
     }
 
-    public func add(observer: BookingDetailsObserver) {
+    public func add(observer: JourneyDetailsObserver) {
         self.broadcaster.add(listener: observer)
     }
 
-    public func remove(observer: BookingDetailsObserver) {
+    public func remove(observer: JourneyDetailsObserver) {
         self.broadcaster.remove(listener: observer)
     }
 
@@ -37,7 +37,7 @@ public final class KarhooBookingStatus: BookingStatus {
         }
 
         if status == nil {
-            status = BookingDetails(originLocationDetails: pickup)
+            status = JourneyDetails(originLocationDetails: pickup)
         } else {
             status?.originLocationDetails = pickup
         }
@@ -65,19 +65,19 @@ public final class KarhooBookingStatus: BookingStatus {
         broadcastState()
     }
 
-    public func reset(with bookingDetails: BookingDetails) {
-        status = bookingDetails
+    public func reset(with journeyDetails: JourneyDetails) {
+        status = journeyDetails
         broadcastState()
     }
 
-    public func getBookingDetails() -> BookingDetails? {
+    public func getJourneyDetails() -> JourneyDetails? {
         return status
     }
 
     private func broadcastState() {
         broadcaster.broadcast { [weak self] (listener: AnyObject) in
-            let listener = listener as? BookingDetailsObserver
-            listener?.bookingStateChanged(details: self?.status)
+            let listener = listener as? JourneyDetailsObserver
+            listener?.journeyDetailsChanged(details: self?.status)
         }
     }
 

@@ -9,12 +9,8 @@ import KarhooSDK
 public protocol PaymentManager {
     var cardFlow: CardRegistrationFlow { get }
     var nonceProvider: PaymentNonceProvider { get }
+    var threeDSecureProvider: ThreeDSecureProvider? { get }
     var shouldGetPaymentBeforeBooking: Bool { get }
     var shouldCheckThreeDSBeforeBooking: Bool { get }
     func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any]
-<<<<<<< HEAD:KarhooUISDK/Controllers/Payment/PaymentManager.swift
-    var shouldGetPaymentBeforeBook: Bool { get }
-    var getThreeDSecureProvider: ThreeDSecureProvider? { get }
-=======
->>>>>>> MOB-4091-multi-psp-contract:KarhooUISDK/Payments/PaymentManager.swift
 }

@@ -180,11 +180,11 @@ class TestUtil: PrimitiveUtil {
         return Passengers(additionalPassengers: 0, passengerDetails: [PassengerDetails(user: TestUtil.getRandomUser())])
     }
 
-    class func getRandomBookingDetails(originSet: Bool = true,
+    class func getRandomJourneyDetails(originSet: Bool = true,
                                        destinationSet: Bool = true,
                                        dateSet: Bool = true,
-                                       originTimeZoneIdentifier: String = "Europe/London") -> BookingDetails {
-        var details = BookingDetails()
+                                       originTimeZoneIdentifier: String = "Europe/London") -> JourneyDetails {
+        var details = JourneyDetails()
 
         if originSet {
             details.originLocationDetails = getRandomLocationInfo(timeZoneIdentifier: originTimeZoneIdentifier)
@@ -201,18 +201,18 @@ class TestUtil: PrimitiveUtil {
         return details
     }
 
-    class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> BookingDetails {
-        var bookingDetails: BookingDetails
+    class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> JourneyDetails {
+        var journeyDetails: JourneyDetails
         let airportLocationDetails = getRandomLocationInfo(poiType: .enriched, poiDetails: getAirportPoiDetails())
         if originAsAirportAddress == true {
-            bookingDetails = BookingDetails(originLocationDetails: airportLocationDetails)
-            bookingDetails.destinationLocationDetails = getRandomLocationInfo()
+            journeyDetails = JourneyDetails(originLocationDetails: airportLocationDetails)
+            journeyDetails.destinationLocationDetails = getRandomLocationInfo()
         } else {
-            bookingDetails = BookingDetails(originLocationDetails: getRandomLocationInfo())
-            bookingDetails.destinationLocationDetails = airportLocationDetails
+            journeyDetails = JourneyDetails(originLocationDetails: getRandomLocationInfo())
+            journeyDetails.destinationLocationDetails = airportLocationDetails
         }
 
-        return bookingDetails
+        return journeyDetails
     }
 
     class func getAirportPoiDetails() -> PoiDetails {

@@ -14,13 +14,13 @@ class EmptyBookingMapStrategySpec: XCTestCase {
     private var mockMapView = MockKarhooMapView()
     private var mockUserLocationProvider = MockUserLocationProvider()
     private var testObject = EmptyMapBookingStrategy()
-    private let mockBookingStatus = MockBookingStatus()
+    private let mockJourneyDetailsManager = MockJourneyDetailsManager()
 
     override func setUp() {
         super.setUp()
 
         testObject = EmptyMapBookingStrategy(userLocationProvider: mockUserLocationProvider,
-                                             bookingStatus: mockBookingStatus)
+                                             journeyDetailsManager: mockJourneyDetailsManager)
         testObject.load(map: mockMapView)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
@@ -33,7 +33,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
      * And: Focus button is hidden for guest
      */
     func testStart() {
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
         XCTAssertTrue(mockMapView.centerPinHidden!)
         XCTAssertNotNil(mockUserLocationProvider.locationChangedCallback)
 
@@ -49,9 +49,9 @@ class EmptyBookingMapStrategySpec: XCTestCase {
     func testFocusMap() {
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
 
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**
@@ -62,9 +62,9 @@ class EmptyBookingMapStrategySpec: XCTestCase {
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
 
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**

@@ -206,17 +206,17 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func reset() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
     }
 
     func resetAndLocate() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
         mapPresenter.focusMap()
     }
 
-    func set(bookingDetails: BookingDetails) {
+    func set(journeyDetails: JourneyDetails) {
         DispatchQueue.main.async { [weak self] in
-            self?.presenter.populate(with: bookingDetails)
+            self?.presenter.populate(with: journeyDetails)
         }
     }
 

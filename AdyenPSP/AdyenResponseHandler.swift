@@ -10,7 +10,9 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(Adyen)
 import Adyen
+#endif
 #if canImport(AdyenActions)
 import AdyenActions
 #endif
