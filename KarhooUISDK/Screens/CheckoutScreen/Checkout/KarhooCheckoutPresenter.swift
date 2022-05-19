@@ -225,9 +225,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                             error: nil)
             return
         }
+
+        getPaymentNonceThenBook(user: currentUser,
+            organisationId: currentOrg,
+            passengerDetails: passengerDetails)
         
-        if let nonce = view?.getPaymentNonce() {
-            if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+        if let nonce = retrievePaymentNonce() {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
@@ -266,7 +270,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -324,11 +328,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let metadata = bookingMetadata {
             map = metadata
         }
-        tripBooking.meta = map
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = paymentNonce
-        }
-
+        tripBooking.meta = sdkConfiguration.paymentManager.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
         reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
@@ -343,7 +343,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-        
+
         guard let trip = result.successValue() else {
             view?.setDefaultState()
             reportPaymentFailure(result.errorValue()?.message ?? "")
@@ -413,19 +413,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
-        default: return view?.getPaymentNonce()?.nonce
+        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()?.nonce
+        default: return retrievePaymentNonce()?.nonce
         }
     }
-    
-    private func retrievePaymentNonce() -> String? {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            return userService.getCurrentUser()?.nonce?.nonce
-        } else {
-            return view?.getPaymentNonce()?.nonce
-        }
-    }
-    
+
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
         threeDSecureProvider.threeDSecureCheck(
             nonce: nonce,
@@ -502,6 +494,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             didAddPassengerDetails()
          }
     }
+
+    private func retrievePaymentNonce() -> Nonce? {
+        view?.getPaymentNonce()
+    }
     
     private func showLoyaltyNonceError(error: KarhooError) {
         var message = ""
@@ -560,7 +556,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
                 message: message,
-                last4Digits: view?.getPaymentNonce()?.lastFour ?? "",
+                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
                 date: Date(),
                 amount: quote.price.highPrice.description,
                 currency: quote.price.currencyCode

@@ -17,6 +17,9 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     var isExplicitTermsAndConditionsConsentRequired: Bool { get }
 
     var bookingMetadata: [String: Any]? { get }
+    
+    var paymentManager: PaymentManager { get }
+
 }
 
 public extension KarhooUISDKConfiguration {

@@ -83,6 +83,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
             }
         }
     }
+
     private var presenter: AddPaymentPresenter?
     
     public init() {

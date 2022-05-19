@@ -8,7 +8,9 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(BraintreeDropIn)
 import BraintreeDropIn
+#endif
 #if canImport(Braintree)
 import Braintree
 #endif
