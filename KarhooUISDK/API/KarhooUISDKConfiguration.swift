@@ -18,7 +18,7 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
 
     var bookingMetadata: [String: Any]? { get }
     
-    var paymentManager: PaymentManager { get }
+    var paymentManager: PaymentManager! { get }
 
 }
 

@@ -8,14 +8,15 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 
 public class BraintreePaymentManager: PaymentManager {
     public init() {}
     public var shouldCheckThreeDSBeforeBooking: Bool = true
     public let shouldGetPaymentBeforeBooking: Bool  = true
-    public let threeDSecureProvider: ThreeDSecureProvider? = BraintreeThreeDSecureProvider()
-    public let cardFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
-    public let nonceProvider: PaymentNonceProvider = BraintreePaymentNonceProvider()
+    public let getThreeDSecureProvider: ThreeDSecureProvider? = BraintreeThreeDSecureProvider()
+    public let getCardFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
+    public let getNonceProvider: PaymentNonceProvider = BraintreePaymentNonceProvider()
     public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {
         meta
     }

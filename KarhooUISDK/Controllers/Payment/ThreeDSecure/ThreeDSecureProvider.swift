@@ -15,7 +15,7 @@ public enum ThreeDSecureCheckResult {
     case failedToInitialisePaymentService
 }
 
-protocol ThreeDSecureUtils {
+public protocol ThreeDSecureUtils {
     var userAgent: String { get }
     var acceptHeader: String { get }
     var current3DSReturnUrl: String { get }

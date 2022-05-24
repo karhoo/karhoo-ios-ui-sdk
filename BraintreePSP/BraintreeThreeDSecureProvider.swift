@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 #if canImport(Braintree)
 import Braintree
 #endif

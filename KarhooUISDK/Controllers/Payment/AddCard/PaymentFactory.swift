@@ -8,26 +8,23 @@
 
 import Foundation
 import KarhooSDK
-#if canImport(Adyen)
-import Adyen
-#endif
 
 final class PaymentFactory {
 
     private let userService: UserService
     private let sdkConfiguration: KarhooUISDKConfiguration
 
-    init(userService: UserService = Karhoo.getUserService(),
+    public init(userService: UserService = Karhoo.getUserService(),
          sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration) {
         self.userService = userService
         self.sdkConfiguration = sdkConfiguration
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        sdkConfiguration.paymentManager.cardFlow
+        sdkConfiguration.paymentManager.getCardFlow
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        sdkConfiguration.paymentManager.nonceProvider
+        sdkConfiguration.paymentManager.getNonceProvider
     }
 }

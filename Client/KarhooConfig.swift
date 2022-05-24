@@ -10,7 +10,6 @@ import KarhooSDK
 import KarhooUISDK
 
 final class KarhooConfig: KarhooUISDKConfiguration {
-
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
@@ -18,7 +17,6 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
-    var paymentManager: PaymentManager { KarhooConfig.paymentManager }
 
     func environment() -> KarhooEnvironment {
         return KarhooConfig.environment
@@ -26,5 +24,9 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     func authenticationMethod() -> AuthenticationMethod {
         return KarhooConfig.auth
+    }
+    
+    var paymentManager: PaymentManager! {
+        KarhooConfig.paymentManager
     }
 }

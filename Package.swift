@@ -42,13 +42,15 @@ let package = Package(
 
         .target(
             name: "AdyenPSP",
-            dependencies: [.product(name: "Adyen", package: "Adyen"),
+            dependencies: [.target(name: "KarhooUISDK"),
+                           .product(name: "Adyen", package: "Adyen"),
                            .product(name: "AdyenDropIn", package: "Adyen")],
             path: "AdyenPSP"),
 
         .target(
             name: "BraintreePSP",
-            dependencies: [.product(name: "BraintreeDropIn", package: "BraintreeDropIn"),
+            dependencies: [.target(name: "KarhooUISDK"),
+                           .product(name: "BraintreeDropIn", package: "BraintreeDropIn"),
                            .product(name: "BraintreePaymentFlow", package: "Braintree"),
                            .product(name: "BraintreeThreeDSecure", package: "Braintree")],
             path: "BraintreePSP"),

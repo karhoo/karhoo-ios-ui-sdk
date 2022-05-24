@@ -17,7 +17,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let journeyDetails: JourneyDetails
     private var quoteValidityTimer: Timer?
     internal var passengerDetails: PassengerDetails!
-    private let threeDSecureProvider: ThreeDSecureProvider
+    private let threeDSecureProvider: ThreeDSecureProvider?
     private let tripService: TripService
     private let userService: UserService
     private let loyaltyService: LoyaltyService
@@ -40,7 +40,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
@@ -51,7 +50,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = threeDSecureProvider
+        self.threeDSecureProvider = sdkConfiguration.paymentManager.getThreeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
@@ -86,7 +85,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         setUpBookingButtonState()
-        threeDSecureProvider.set(baseViewController: view)
+        threeDSecureProvider?.set(baseViewController: view)
         
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
@@ -419,7 +418,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
-        threeDSecureProvider.threeDSecureCheck(
+        threeDSecureProvider?.threeDSecureCheck(
             nonce: nonce,
             currencyCode: quote.price.currencyCode,
             paymentAmout: NSDecimalNumber(value: quote.price.highPrice),

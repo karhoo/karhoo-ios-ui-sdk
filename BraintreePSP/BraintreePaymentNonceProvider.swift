@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 
 final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 

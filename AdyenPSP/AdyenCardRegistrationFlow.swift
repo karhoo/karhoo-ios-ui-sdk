@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 #if canImport(Adyen)
 import Adyen
 #endif
@@ -28,7 +29,6 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var currencyCode: String = ""
     private var supplierPartnerId: String = ""
     private let adyenResponseHandler: AdyenResponseHandler
-    private let paymentFactory: PaymentFactory
     private let threeDSecureUtil: ThreeDSecureUtils
 
     private var adyenAmount: AdyenAmount {
@@ -37,11 +37,9 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
     init(paymentService: PaymentService = Karhoo.getPaymentService(),
          adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
-         paymentFactory: PaymentFactory = PaymentFactory(),
          threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()) {
         self.paymentService = paymentService
         self.adyenResponseHandler = adyenResponseHandler
-        self.paymentFactory = paymentFactory
         self.threeDSecureUtil = threeDSecureUtil
     }
 

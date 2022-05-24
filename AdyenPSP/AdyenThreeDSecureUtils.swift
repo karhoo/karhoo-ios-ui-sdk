@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KarhooUISDK
 
 public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
