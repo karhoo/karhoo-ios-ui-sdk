@@ -227,6 +227,9 @@ public enum UITexts {
         public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
         public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
         public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
+        public static let noLocationPermissionTitle = "Text.Booking.NoLocationPermissionAlertTitle".localized
+        public static let noLocationPermissionMessage = "Text.Booking.NoLocationPermissionAlertMessage".localized
+        public static let noLocationPermissionConfirm = "Text.Booking.NoLocationPermissionAlertConfirm".localized
     }
 
     public enum Availability {
