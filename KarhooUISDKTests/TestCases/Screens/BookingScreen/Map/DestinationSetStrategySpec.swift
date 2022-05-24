@@ -22,7 +22,7 @@ class DestinationSetStrategySpec: XCTestCase {
         mockMap = MockKarhooMapView()
         testObject = DestinationSetStrategy()
 
-        testObject.load(map: mockMap)
+        testObject.load(map: mockMap, onLocationPermissionDenied: nil)
     }
 
     /**
@@ -108,7 +108,7 @@ class DestinationSetStrategySpec: XCTestCase {
         var details = TestUtil.getRandomJourneyDetails()
         testObject.changed(journeyDetails: details)
         mockMap = MockKarhooMapView() // Start with empty
-        testObject.load(map: mockMap)
+        testObject.load(map: mockMap, onLocationPermissionDenied: nil)
 
         details = TestUtil.getRandomJourneyDetails()
         testObject.changed(journeyDetails: details)
