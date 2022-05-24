@@ -278,7 +278,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             title: UITexts.Booking.noLocationPermissionConfirm,
             style: .default,
             handler: { _ in
-                UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
