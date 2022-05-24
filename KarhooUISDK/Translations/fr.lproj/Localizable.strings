@@ -197,6 +197,12 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Contactez-nous";
 
+"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+
+"Text.Booking.NoLocationPermissionAlertMessage" = "";
+
+"Text.Booking.NoLocationPermissionAlertTitle" = "Autorisation requise";
+
 "Text.Booking.Passenger" = "Passager";
 
 "Text.Booking.PassengerDetails.Add" = "Ajouter passager";
