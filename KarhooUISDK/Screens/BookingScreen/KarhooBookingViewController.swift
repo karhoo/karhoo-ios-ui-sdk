@@ -122,7 +122,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     private func setupMapView(reverseGeolocate: Bool) {
-        mapPresenter.load(map: mapView, reverseGeolocate: reverseGeolocate)
+        mapPresenter.load(
+            map: mapView,
+            reverseGeolocate: reverseGeolocate,
+            onLocationPermissionDenied: { [weak self] in
+                self?.showNoLocationPermissionsPopUp()
+            }
+        )
         mapView.set(presenter: mapPresenter)
     }
 
@@ -260,6 +266,23 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     func set(leftNavigationButton: NavigationBarItemIcon) {
         navigationBar.set(leftIcon: leftNavigationButton)
+    }
+    
+    private func showNoLocationPermissionsPopUp() {
+        let alertController = UIAlertController(
+            title: UITexts.Booking.noLocationPermissionTitle,
+            message: UITexts.Booking.noLocationPermissionMessage,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(
+            title: UITexts.Booking.noLocationPermissionConfirm,
+            style: .default,
+            handler: { _ in
+                UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+            }
+        ))
+        alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
+        present(alertController, animated: true)
     }
 }
 
