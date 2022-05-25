@@ -9,8 +9,6 @@
 import Foundation
 import XCTest
 @testable import KarhooSDK
-@testable import Adyen
-
 @testable import KarhooUISDK
 
 final class AdyenCardRegistrationFlowSpec: XCTestCase {

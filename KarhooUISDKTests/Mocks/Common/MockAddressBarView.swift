@@ -8,7 +8,7 @@
 
 import CoreLocation
 import KarhooSDK
-
+import UIKit
 @testable import KarhooUISDK
 
 class MockBaseView: UIView, BaseView {

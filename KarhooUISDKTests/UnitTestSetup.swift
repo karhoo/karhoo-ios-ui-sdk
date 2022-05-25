@@ -6,7 +6,9 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import Foundation
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
 
 final class UnitTestSetup: NSObject {
