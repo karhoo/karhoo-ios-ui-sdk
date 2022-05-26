@@ -11,6 +11,9 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 class MockPaymentManager: PaymentManager {
+    var threeDSecureProviderMock = MockThreeDSecureProvider()
+    var threeDSecureProvider: ThreeDSecureProvider?
+    
     var cardFlowMock = CardRegistrationFlowMock()
     var cardFlow: CardRegistrationFlow {
         cardFlowMock

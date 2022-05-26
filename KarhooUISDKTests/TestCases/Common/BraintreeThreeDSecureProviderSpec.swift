@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 import KarhooSDK
 
+@testable import BraintreePSP
 @testable import KarhooUISDK
 
 final class BraintreeThreeDSecureProviderSpec: XCTestCase {

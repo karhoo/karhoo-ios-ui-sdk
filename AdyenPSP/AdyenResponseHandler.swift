@@ -10,6 +10,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 #if canImport(Adyen)
 import Adyen
 #endif

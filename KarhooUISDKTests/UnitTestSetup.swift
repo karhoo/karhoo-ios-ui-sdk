@@ -31,7 +31,7 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
     }
 
     var mockPaymentManager = MockPaymentManager()
-    var paymentManager: PaymentManager {
+    var paymentManager: PaymentManager! {
         mockPaymentManager
     }
 

@@ -32,6 +32,16 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
         guard let flowItem = BTDropInController(authorization: paymentsToken.token,
                                                 request: request,
                                                 handler: {( _, result: BTDropInResult?, error: Error?) in
+            #if SWIFT_PACKAGE
+            if error != nil {
+                paymentMethodAdded?(.failed(error: error as? KarhooError))
+            } else if result?.isCanceled == true {
+                paymentMethodAdded?(.cancelled(byUser: true))
+            } else {
+                let nonce = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: String(result!.paymentDescription.suffix(2)))
+                paymentMethodAdded?(ScreenResult.completed(result: nonce))
+            }
+            #else
             if error != nil {
                 paymentMethodAdded?(.failed(error: error as? KarhooError))
             } else if result?.isCancelled == true {
@@ -40,6 +50,7 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
                 let nonce = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: String(result!.paymentDescription.suffix(2)))
                 paymentMethodAdded?(ScreenResult.completed(result: nonce))
             }
+            #endif
         }) else {
             flowItemCallback?(.failed(error: nil))
             return

@@ -243,10 +243,10 @@ class KarhooGuestCheckoutPresenterSpec: XCTestCase {
             quote: testQuote,
             journeyDetails: mockJourneyDetails,
             bookingMetadata: mockBookingMetadata,
-            threeDSecureProvider: mockThreeDSecureProvider,
             tripService: mockTripService,
             userService: mockUserService,
             paymentNonceProvider: mockPaymentNonceProvider,
+            sdkConfiguration: KarhooUISDKConfigurationProvider.configuration,
             callback: guestBookingRequestTrip
         )
         testObject.load(view: mockView)

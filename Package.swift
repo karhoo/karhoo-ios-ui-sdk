@@ -58,7 +58,11 @@ let package = Package(
 
         .testTarget(
             name: "KarhooUISDKTests",
-            dependencies: [.target(name: "KarhooUISDK")],
+            dependencies: [
+                .target(name: "KarhooUISDK"),
+                .target(name: "AdyenPSP"),
+                .target(name: "BraintreePSP")
+            ],
             path: "KarhooUISDKTests",
             exclude: ["Info.plist"])
     ]

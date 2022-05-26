@@ -8,6 +8,8 @@
 
 import Foundation
 import XCTest
+
+@testable import AdyenPSP
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
