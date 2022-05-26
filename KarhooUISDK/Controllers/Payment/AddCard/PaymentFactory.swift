@@ -21,10 +21,10 @@ final class PaymentFactory {
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        sdkConfiguration.paymentManager.getCardFlow
+        sdkConfiguration.paymentManager.cardFlow
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        sdkConfiguration.paymentManager.getNonceProvider
+        sdkConfiguration.paymentManager.nonceProvider
     }
 }

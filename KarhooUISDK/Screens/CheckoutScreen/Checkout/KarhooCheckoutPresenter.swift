@@ -50,7 +50,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = sdkConfiguration.paymentManager.getThreeDSecureProvider
+        self.threeDSecureProvider = sdkConfiguration.paymentManager.threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
