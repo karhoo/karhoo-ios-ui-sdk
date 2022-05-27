@@ -232,7 +232,6 @@
 		14707CBB25D54C2200CAD083 /* MockAddressSearchProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0E821BE7FF100745370 /* MockAddressSearchProviderDelegate.swift */; };
 		14707CBD25D54C2200CAD083 /* PrebookConfirmationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD1C0122087CA600C3AD1D /* PrebookConfirmationViewModelSpec.swift */; };
 		14707CBE25D54C2200CAD083 /* MockJourneyDetailsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F86F85222D8553008C86DE /* MockJourneyDetailsObserver.swift */; };
-		14707CBF25D54C2200CAD083 /* UnitTestSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096192F521BEAB9C0052B71C /* UnitTestSetup.swift */; };
 		14707CC025D54C2200CAD083 /* MockFeedbackMailComposter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC435F712211D7F500FB6BB5 /* MockFeedbackMailComposter.swift */; };
 		14707CC125D54C2200CAD083 /* KarhooGuestCheckoutPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038DF43244617960014539B /* KarhooGuestCheckoutPresenterSpec.swift */; };
 		14707CC225D54C2200CAD083 /* CurrencyCodeConverterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A5B96A25C19BEE00986616 /* CurrencyCodeConverterSpec.swift */; };
@@ -384,6 +383,7 @@
 		51BA1F6428355BDB001C58E4 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A0A60283559A300D119E0 /* PaymentManager.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
+		51CA129D2840F13600B0337F /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
 		51EAE7902840DE2D0033A8B1 /* KarhooTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */; };
 		5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */; };
@@ -637,7 +637,6 @@
 		095D745223182313002253C0 /* TripRatingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRatingCache.swift; sourceTree = "<group>"; };
 		095D7455231825C7002253C0 /* MockTripRatingCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripRatingCache.swift; sourceTree = "<group>"; };
 		095D7457231827B4002253C0 /* KarhooTripRatingCacheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTripRatingCacheSpec.swift; sourceTree = "<group>"; };
-		096192F521BEAB9C0052B71C /* UnitTestSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestSetup.swift; sourceTree = "<group>"; };
 		0966BDB9225CF8A90032C76C /* KarhooBookingViewController+BuilderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooBookingViewController+BuilderSpec.swift"; sourceTree = "<group>"; };
 		0966BDBB225DFFE60032C76C /* TripExtSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripExtSpec.swift; sourceTree = "<group>"; };
 		0968D82022F82B8300047FCF /* TripFeedbackMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFeedbackMVP.swift; sourceTree = "<group>"; };
@@ -890,6 +889,7 @@
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
+		51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTestConfiguration.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
 		51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTestCase.swift; sourceTree = "<group>"; };
 		5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlow.swift; sourceTree = "<group>"; };
@@ -3328,8 +3328,8 @@
 				FC658F502216D2DD006C48F2 /* TestCases */,
 				0968F0E221BE7FF100745370 /* Mocks */,
 				FC8F472421539E24007841FB /* Info.plist */,
-				096192F521BEAB9C0052B71C /* UnitTestSetup.swift */,
 				51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */,
+				51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */,
 			);
 			path = KarhooUISDKTests;
 			sourceTree = "<group>";
@@ -4100,6 +4100,7 @@
 				14707CD625D54C2200CAD083 /* BraintreePaymentNonceProviderSpec.swift in Sources */,
 				14707C9025D54C2200CAD083 /* KarhooBookingViewController+BuilderSpec.swift in Sources */,
 				14707CB025D54C2200CAD083 /* KarhooPaymentPresenterSpec.swift in Sources */,
+				51CA129D2840F13600B0337F /* KarhooTestConfiguration.swift in Sources */,
 				14707CC725D54C2200CAD083 /* KarhooTripAllocationPresenterSpec.swift in Sources */,
 				14707C7625D54C2100CAD083 /* MockUserDefaults.swift in Sources */,
 				14707CC825D54C2200CAD083 /* MockError.swift in Sources */,
@@ -4185,7 +4186,6 @@
 				14707CD425D54C2200CAD083 /* BraintreeThreeDSecureProviderSpec.swift in Sources */,
 				14707CC425D54C2200CAD083 /* QtaStringFormatterSpec.swift in Sources */,
 				14707C6925D54C2100CAD083 /* ResizingSwitcherTests.swift in Sources */,
-				14707CBF25D54C2200CAD083 /* UnitTestSetup.swift in Sources */,
 				14707C8725D54C2200CAD083 /* MockObservable.swift in Sources */,
 				14707CA725D54C2200CAD083 /* CancelRideBehaviourSpec.swift in Sources */,
 				14707CCA25D54C2200CAD083 /* MockURLOpener.swift in Sources */,
