@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooAddressPresenterSpec: XCTestCase {
+class KarhooAddressPresenterSpec: KarhooTestCase {
 
     private var mockLocation: CLLocation!
     private var mockAddressMode: AddressType!

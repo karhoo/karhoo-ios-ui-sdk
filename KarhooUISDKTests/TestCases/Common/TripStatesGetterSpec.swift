@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class TripStatesGetterSpec: XCTestCase {
+class TripStatesGetterSpec: KarhooTestCase {
 
     private var testObject: TripStatesGetter = TripStatesGetter()
 

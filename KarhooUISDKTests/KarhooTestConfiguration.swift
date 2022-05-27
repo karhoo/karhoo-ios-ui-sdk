@@ -1,5 +1,5 @@
 //
-//  UnitTestSetup.swift
+//  KarhooTestConfiguration.swift
 //  KarhooUISDKTests
 //
 //
@@ -10,13 +10,6 @@ import Foundation
 import KarhooSDK
 import UIKit
 @testable import KarhooUISDK
-
-final class UnitTestSetup: NSObject {
-
-    override init() {
-        KarhooUI.set(configuration: KarhooTestConfiguration())
-    }
-}
 
 class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
@@ -36,9 +29,11 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
     }
 
     func logo() -> UIImage {
-        return UIImage(named: "mockImage",
-                       in: Bundle(for: UnitTestSetup.self),
-                       compatibleWith: nil)!
+        UIImage(
+            named: "mockImage",
+            in: Bundle(for: KarhooTestConfiguration.self),
+            compatibleWith: nil
+        ) ?? UIImage()
     }
 
     func environment() -> KarhooEnvironment {

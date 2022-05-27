@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class TripMetaDataViewModelSpec: XCTestCase {
+class TripMetaDataViewModelSpec: KarhooTestCase {
 
     private var testObject: TripMetaDataViewModel!
 

@@ -22,7 +22,7 @@ struct TestThenUserModel {
 }
 extension TestThenUserModel: Then {}
 
-class SwiftThenSpec: XCTestCase {
+class SwiftThenSpec: KarhooTestCase {
     
     func testThen_NSObject() {
         let queue = OperationQueue().then {

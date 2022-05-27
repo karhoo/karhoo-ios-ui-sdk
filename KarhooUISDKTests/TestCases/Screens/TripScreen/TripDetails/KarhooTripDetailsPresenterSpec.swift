@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class KarhooTripDetailsPresenterSpec: XCTestCase {
+final class KarhooTripDetailsPresenterSpec: KarhooTestCase {
 
     private var testObject: KahrooTripScreenDetailsPresenter!
     private var mockTripService: MockTripService!

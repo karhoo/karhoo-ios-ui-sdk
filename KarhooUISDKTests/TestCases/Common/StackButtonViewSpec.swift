@@ -13,7 +13,7 @@ import XCTest
 /*  techDebt to test a UIView, that logic should really be in a presenter
     (see BookingHistoryActionButton and BookingHistoryDetailActionButton)
  */
-class StackButtonViewSpec: XCTestCase {
+class StackButtonViewSpec: KarhooTestCase {
 
     private var testObject: KarhooStackButtonView!
     private var actionTwoCalled: Bool!

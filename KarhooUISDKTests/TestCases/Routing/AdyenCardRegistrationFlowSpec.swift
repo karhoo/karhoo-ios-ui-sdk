@@ -13,7 +13,7 @@ import XCTest
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
-final class AdyenCardRegistrationFlowSpec: XCTestCase {
+final class AdyenCardRegistrationFlowSpec: KarhooTestCase {
 
     private var testObject: AdyenCardRegistrationFlow!
     private var mockPaymentScreensBuilder: MockPaymentScreenBuilder!

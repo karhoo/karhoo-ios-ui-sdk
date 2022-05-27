@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooDestinationEtaSpec: XCTestCase {
+final class KarhooDestinationEtaSpec: KarhooTestCase {
     
     private let testTripId: String = "some_tripid"
     private var mockTripService: MockTripService!

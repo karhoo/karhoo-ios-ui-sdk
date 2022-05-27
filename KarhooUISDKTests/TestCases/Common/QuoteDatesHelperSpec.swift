@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class QuoteDatesHelperSpec: XCTestCase {
+class QuoteDatesHelperSpec: KarhooTestCase {
 
     typealias sut = QuoteDatesHelper
 

@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class TripAddressBarPresenterSpec: XCTestCase {
+class TripAddressBarPresenterSpec: KarhooTestCase {
 
     /**
      *  When:   The screen is loaded

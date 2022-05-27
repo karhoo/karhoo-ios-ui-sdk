@@ -18,11 +18,12 @@ private typealias LoadConstraintsArgumentTuple =
 private typealias ActivateConstraintWithTagArgumentTuple =
     (tag: Int, animated: Bool, completion: ConstraintSwitcherCompletedClosure?)
 
-class ResizingSwitcherTests: XCTestCase {
+class ResizingSwitcherTests: KarhooTestCase {
 
     fileprivate var testTuple: (testObject: ResizingSwitcher, constraintSwitcher: TestConstraintSwitcher)?
 
     override func setUp() {
+        super.setUp()
         let constraintSwitcher = TestConstraintSwitcher()
 
         let expandedConstraints = [NSLayoutConstraint()]

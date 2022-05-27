@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class BookingItemViewModelSpec: XCTestCase {
+class BookingItemViewModelSpec: KarhooTestCase {
 
     private var testObject: RideCellViewModel!
 

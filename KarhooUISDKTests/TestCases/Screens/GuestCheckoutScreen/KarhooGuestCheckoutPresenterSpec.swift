@@ -9,7 +9,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooGuestCheckoutPresenterSpec: XCTestCase {
+class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooCheckoutPresenter!
     private var mockView: MockCheckoutView = MockCheckoutView()

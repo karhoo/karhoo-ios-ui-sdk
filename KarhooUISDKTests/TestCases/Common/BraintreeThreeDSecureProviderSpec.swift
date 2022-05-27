@@ -13,7 +13,7 @@ import KarhooSDK
 @testable import BraintreePSP
 @testable import KarhooUISDK
 
-final class BraintreeThreeDSecureProviderSpec: XCTestCase {
+final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
 
     private var testObject: BraintreeThreeDSecureProvider!
     private var mockPaymentService = MockPaymentService()

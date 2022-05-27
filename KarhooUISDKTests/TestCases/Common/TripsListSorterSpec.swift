@@ -9,7 +9,7 @@
 import XCTest
 import KarhooUISDK
 
-class TripsListSorterSpec: XCTestCase {
+class TripsListSorterSpec: KarhooTestCase {
 
     private var testObject: KarhooTripsSorter?
 

@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooTripsProviderSpec: XCTestCase {
+class KarhooTripsProviderSpec: KarhooTestCase {
 
     private var testObject: KarhooTripsProvider!
     private var mockReachability: MockReachabilityProvider!
@@ -21,6 +21,7 @@ class KarhooTripsProviderSpec: XCTestCase {
     private var mockTripInResponse: TripInfo!
     private var mockTripResponse: [TripInfo] = []
     override func setUp() {
+        super.setUp()
         mockTripInResponse = TestUtil.getRandomTrip()
         mockTripResponse = [mockTripInResponse]
         mockTripsProviderDelegate = MockTripsProviderDelegate()

@@ -12,7 +12,7 @@ import XCTest
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
-final class BraintreePaymentNonceProviderSpec: XCTestCase {
+final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
 
     private var testObject: BraintreePaymentNonceProvider!
 

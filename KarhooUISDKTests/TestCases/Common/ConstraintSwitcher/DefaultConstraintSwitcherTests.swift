@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class DefaultConstraintSwitcherTests: XCTestCase {
+class DefaultConstraintSwitcherTests: KarhooTestCase {
 
     typealias TestObjectsTuple =
         (primaryConstraints: [NSLayoutConstraint],

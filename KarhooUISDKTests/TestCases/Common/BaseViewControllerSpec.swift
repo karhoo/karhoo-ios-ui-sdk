@@ -12,7 +12,7 @@ import XCTest
 
 private class SomeBaseView: MockViewController, BaseViewController {}
 
-final class BaseViewControllerSpec: XCTestCase {
+final class BaseViewControllerSpec: KarhooTestCase {
 
     private let testObject = SomeBaseView()
 

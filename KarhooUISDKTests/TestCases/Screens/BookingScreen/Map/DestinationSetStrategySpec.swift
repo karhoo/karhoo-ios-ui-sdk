@@ -11,7 +11,7 @@ import CoreLocation
 import KarhooSDK
 @testable import KarhooUISDK
 
-class DestinationSetStrategySpec: XCTestCase {
+class DestinationSetStrategySpec: KarhooTestCase {
 
     var mockMap: MockKarhooMapView!
     var testObject: DestinationSetStrategy!
