@@ -106,19 +106,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - FloatingPanel
     - KarhooSDK
     - KeychainSwift
-    - PhoneNumberKit
     - ReachabilitySwift
-    - SwiftLint
   trunk:
     - Adyen
     - Adyen3DS2
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
+    - FloatingPanel
+    - PhoneNumberKit
     - SwiftFormat
+    - SwiftLint
 
 EXTERNAL SOURCES:
   KarhooUISDK:
@@ -139,6 +139,6 @@ SPEC CHECKSUMS:
   SwiftFormat: b70e3c776a74c67ce8bd140425a8c86d4a843759
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: b222272ca64ae23857512e42ce6d56f05b10659e
+PODFILE CHECKSUM: b8cafd1bc67be6f92d260deacb4c8ffa4358a224
 
 COCOAPODS: 1.11.2

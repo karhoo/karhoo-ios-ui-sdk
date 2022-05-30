@@ -31,6 +31,21 @@ target 'KarhooUISDK' do
   pod 'SwiftFormat/CLI', '~> 0.49'
 end
 
+# AdyenPSP framework
+target 'KarhooUISDK-AdyenPSP' do
+  inherit! :search_paths
+  common_pods
+  pod 'KarhooUISDK', :path => './'
+end
+
+# BraintreePSP framework
+target 'KarhooUISDK-BraintreePSP' do
+  inherit! :search_paths
+  common_pods
+  pod 'KarhooUISDK', :path => './'
+end
+
+
 # UISDK unit tests
 target 'KarhooUISDKTests' do
   inherit! :search_paths
