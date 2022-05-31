@@ -1,10 +1,10 @@
-//
-//  BraintreePaymentScreensBuilder.swift
-//  Karhoo
-//
-//
-//  Copyright © 2020 Karhoo. All rights reserved.
-//
+////
+////  BraintreePaymentScreensBuilder.swift
+////  Karhoo
+////
+////
+////  Copyright © 2020 Karhoo. All rights reserved.
+////
 
 import Foundation
 import KarhooSDK
@@ -21,7 +21,7 @@ import BraintreePaymentFlow
 
 
 final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
-    
+
     public init(){}
 
     public func buildAddCardScreen(paymentsToken: PaymentSDKToken,
@@ -43,7 +43,7 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
                 result?.isCancelled
                 #endif
             }
-            
+
             if error != nil {
                 paymentMethodAdded?(.failed(error: error as? KarhooError))
             } else if isResultCanceled == true {

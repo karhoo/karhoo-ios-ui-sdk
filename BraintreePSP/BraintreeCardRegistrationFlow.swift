@@ -148,7 +148,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             .addPaymentDetails(addPaymentDetailsPayload: addPaymentPayload)
             .execute { [weak self] result in
                 self?.baseViewController?.showLoadingOverlay(false)
-                
+
                 guard let nonce = result.successValue() else {
                     self?.baseViewController?.show(error: result.errorValue())
                     self?.analyticsService.send(eventName: .userCardRegistrationFailed)
@@ -161,7 +161,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                     value: .didAddPaymentMethod(nonce: nonce)))
             }
     }
-    
+
     private func registerGuestPayer(nonce: Nonce) {
         analyticsService.send(eventName: .userCardRegistered)
         self.baseViewController?.showLoadingOverlay(false)

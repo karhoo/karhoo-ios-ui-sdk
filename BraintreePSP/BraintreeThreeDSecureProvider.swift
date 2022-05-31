@@ -17,23 +17,23 @@ import BraintreeThreeDSecure
 #endif
 
 final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTViewControllerPresentingDelegate {
-    
+
     private let paymentService: PaymentService
     private var paymentFlowDriver: BTPaymentFlowDriver?
     private let userService: UserService
     private var baseViewController: BaseViewController?
     private var resultCallback: ((OperationResult<ThreeDSecureCheckResult>) -> Void)?
-    
+
     init(paymentService: PaymentService = Karhoo.getPaymentService(),
          userService: UserService = Karhoo.getUserService()) {
         self.paymentService = paymentService
         self.userService = userService
     }
-    
+
     func set(baseViewController: BaseViewController) {
         self.baseViewController = baseViewController
     }
-    
+
     func threeDSecureCheck(nonce: String,
                            currencyCode: String,
                            paymentAmout: NSDecimalNumber,
@@ -48,7 +48,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
 
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: currencyCode)
-        
+
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest)
             .execute(callback: { [weak self] result in
                 switch result {
@@ -76,10 +76,10 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
         guard let apiClient = BTAPIClient(authorization: authToken.token) else {
             return
         }
-        
+
         self.paymentFlowDriver = BTPaymentFlowDriver(apiClient: apiClient)
         self.paymentFlowDriver?.viewControllerPresentingDelegate = self
-        
+
         let request = BTThreeDSecureRequest()
         request.nonce = nonce
         request.versionRequested = .version2
@@ -91,9 +91,9 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
                                                           raiseOnOverflow: false,
                                                           raiseOnUnderflow: false,
                                                           raiseOnDivideByZero: false)
-        
+
         request.amount = amount.rounding(accordingToBehavior: decimalNumberHandler)
-        
+
         self.paymentFlowDriver?.startPaymentFlow(request) { [weak self] (result, error) in
             if error?._code == BTPaymentFlowDriverErrorType.canceled.rawValue {
                 self?.resultCallback?(.cancelledByUser)
@@ -104,15 +104,15 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
                 self?.resultCallback?(.completed(value: .threeDSecureAuthenticationFailed))
                 return
             }
-            
+
             self?.threeDSecureResponseHandler(result: result)
         }
     }
-    
+
     func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
         viewController.dismiss(animated: true, completion: nil)
     }
-    
+
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
         baseViewController?.present(viewController, animated: true, completion: nil)
     }
@@ -122,8 +122,8 @@ extension BraintreeThreeDSecureProvider: BTThreeDSecureRequestDelegate {
     func onLookupComplete(_ request: BTThreeDSecureRequest, lookupResult result: BTThreeDSecureResult, next: @escaping () -> Void) {
         next()
     }
-    
-    
+
+
     func onLookupComplete(_ request: BTThreeDSecureRequest,
                           result: BTThreeDSecureLookup,
                           next: @escaping () -> Void) {

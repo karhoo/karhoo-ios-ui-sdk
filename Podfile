@@ -18,8 +18,8 @@ end
 target 'Client' do
   inherit! :search_paths
   pod 'KarhooUISDK', :path => './'
-  pod 'KarhooUISDK/Adyen', :path => './'
-  pod 'KarhooUISDK/Braintree', :path => './'
+   pod 'KarhooUISDK/Adyen', :path => './'
+   pod 'KarhooUISDK/Braintree', :path => './'
 end
 
 # UISDK framework
@@ -32,17 +32,25 @@ target 'KarhooUISDK' do
 end
 
 # AdyenPSP framework
-target 'KarhooUISDK-AdyenPSP' do
+target 'AdyenPSP' do
   inherit! :search_paths
   common_pods
   pod 'KarhooUISDK', :path => './'
+#  pod 'KarhooUISDK/Adyen', :path => './'
+  pod 'Adyen', '4.7.1'
+  pod 'BraintreeDropIn', '~> 8.1'
+  pod 'Braintree/PaymentFlow', '~> 4.37'
 end
 
 # BraintreePSP framework
-target 'KarhooUISDK-BraintreePSP' do
+target 'BraintreePSP' do
   inherit! :search_paths
   common_pods
   pod 'KarhooUISDK', :path => './'
+#  pod 'KarhooUISDK/Braintree', :path => './'
+  pod 'BraintreeDropIn', '~> 8.1'
+  pod 'Braintree/PaymentFlow', '~> 4.37'
+  pod 'Adyen', '4.7.1'
 end
 
 
@@ -50,4 +58,7 @@ end
 target 'KarhooUISDKTests' do
   inherit! :search_paths
   common_pods
+  pod 'BraintreeDropIn', '~> 8.1'
+  pod 'Braintree/PaymentFlow', '~> 4.37'
+  pod 'Adyen', '4.7.1'
 end

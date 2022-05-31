@@ -1,10 +1,10 @@
+////
+////  AdyenThreeDSecureUtils.swift
+////  KarhooSDK
+////
+////  Created by Mostafa Hadian on 04/03/2021.
+////
 //
-//  AdyenThreeDSecureUtils.swift
-//  KarhooSDK
-//
-//  Created by Mostafa Hadian on 04/03/2021.
-//
-
 import Foundation
 import KarhooUISDK
 
