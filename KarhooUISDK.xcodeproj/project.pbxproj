@@ -3734,7 +3734,6 @@
 					FC8F471C21539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
-						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 				};
 			};
@@ -5077,7 +5076,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/Client";
 			};
 			name = Debug;
 		};
@@ -5102,7 +5100,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/Client";
 			};
 			name = Release;
 		};
