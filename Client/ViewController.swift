@@ -9,6 +9,8 @@ import UIKit
 import KarhooUISDK
 import CoreLocation
 import KarhooSDK
+import AdyenPSP
+import BraintreePSP
 
 class ViewController: UIViewController {
 

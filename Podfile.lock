@@ -61,23 +61,6 @@ PODS:
   - KarhooSDK (1.6.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.7.3):
-    - FloatingPanel (= 2.0.1)
-    - KarhooSDK
-    - KarhooUISDK/Core (= 1.7.3)
-    - PhoneNumberKit (= 3.3.1)
-  - KarhooUISDK/Adyen (1.7.3):
-    - FloatingPanel (= 2.0.1)
-    - KarhooSDK
-    - PhoneNumberKit (= 3.3.1)
-  - KarhooUISDK/Braintree (1.7.3):
-    - FloatingPanel (= 2.0.1)
-    - KarhooSDK
-    - PhoneNumberKit (= 3.3.1)
-  - KarhooUISDK/Core (1.7.3):
-    - FloatingPanel (= 2.0.1)
-    - KarhooSDK
-    - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
@@ -95,9 +78,6 @@ DEPENDENCIES:
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
   - KarhooSDK (= 1.6.1)
-  - KarhooUISDK (from `./`)
-  - KarhooUISDK/Adyen (from `./`)
-  - KarhooUISDK/Braintree (from `./`)
   - PhoneNumberKit (= 3.3.1)
   - SwiftFormat/CLI (~> 0.49)
   - SwiftLint (~> 0.47)
@@ -117,10 +97,6 @@ SPEC REPOS:
     - SwiftFormat
     - SwiftLint
 
-EXTERNAL SOURCES:
-  KarhooUISDK:
-    :path: "./"
-
 SPEC CHECKSUMS:
   Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
   Adyen3DS2: ab81415419e1269b95ec01502d18912985806351
@@ -129,13 +105,12 @@ SPEC CHECKSUMS:
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   KarhooSDK: c481f315c37583270cce4c912af883af70f276f3
-  KarhooUISDK: 710d67489ca465a5c23177678fa2821116460ff6
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftFormat: b70e3c776a74c67ce8bd140425a8c86d4a843759
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 7162dea75103f729819d9ce915db8d3b1934e3ed
+PODFILE CHECKSUM: 836a217ca6c4001083391d6bcd3e7651a4a968a4
 
 COCOAPODS: 1.11.2
