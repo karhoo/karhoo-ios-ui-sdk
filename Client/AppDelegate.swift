@@ -7,8 +7,6 @@
 
 import KarhooUISDK
 import KarhooSDK
-import AdyenPSP
-import BraintreePSP
 #if canImport(Braintree)
 import Braintree
 #endif

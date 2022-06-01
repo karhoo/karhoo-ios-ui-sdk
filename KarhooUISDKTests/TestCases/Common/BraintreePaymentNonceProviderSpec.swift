@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import BraintreePSP
+
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
