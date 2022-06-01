@@ -27,11 +27,14 @@ Pod::Spec.new do |s|
 
   s.subspec 'Adyen' do |adyen|
     adyen.dependency    'KarhooUISDK/Core'
+    adyen.dependency    'Adyen', '4.7.1'
     adyen.source_files = 'AdyenPSP/**/*.swift'
   end
 
   s.subspec 'Braintree' do |braintree|
     braintree.dependency    'KarhooUISDK/Core'
+    braintree.dependency    'BraintreeDropIn', '~> 8.1'
+    braintree.dependency    'Braintree/PaymentFlow', '~> 4.37'
     braintree.source_files = 'BraintreePSP/**/*.swift'
   end
 
