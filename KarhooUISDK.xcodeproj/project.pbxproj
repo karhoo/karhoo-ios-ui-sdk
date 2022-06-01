@@ -642,13 +642,6 @@
 			remoteGlobalIDString = 5141C92C2846383100F72E84;
 			remoteInfo = BraintreePSP;
 		};
-		5190E5FB2846717C00208E95 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
-			remoteInfo = Client;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -3699,7 +3692,6 @@
 				5190E5F828466B8100208E95 /* PBXTargetDependency */,
 				5190E5FA28466B8100208E95 /* PBXTargetDependency */,
 				14707ADE25D54B5B00CAD083 /* PBXTargetDependency */,
-				5190E5FC2846717C00208E95 /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKTests;
 			productName = KarhooUISDKTests;
@@ -4606,11 +4598,6 @@
 			isa = PBXTargetDependency;
 			target = 5141C92C2846383100F72E84 /* BraintreePSP */;
 			targetProxy = 5190E5F928466B8100208E95 /* PBXContainerItemProxy */;
-		};
-		5190E5FC2846717C00208E95 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
-			targetProxy = 5190E5FB2846717C00208E95 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
