@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Konnte keine Schätzungen erhalten";
 
-"K3002" = "Kein Kostenvoranschlag möglich (keine Verfügbarkeit im angefragten Gebiet gefunden)";
+"K3002" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
 
 "K3003" = "Kann keinen Kostenvoranschlag erhalten (konnte kein bestimmtes Angebot finden)";
 
@@ -197,9 +197,9 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Nehmen Sie Kontakt auf";
 
-"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Einstellungen";
 
-"Text.Booking.NoLocationPermissionAlertMessage" = "";
+"Text.Booking.NoLocationPermissionAlertMessage" = "Standortdaten werden benötigt, um Ihren Standort anzuzeigen. Um die Berechtigungseinstellungen zu ändern, gehen Sie bitte zur Registerkarte iOS-Einstellungen und wählen Sie einen neuen Wert.";
 
 "Text.Booking.NoLocationPermissionAlertTitle" = "Erlaubnis erforderlich";
 

@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Impossible de trouver un devis";
 
-"K3002" = "Impossible de trouver un devis (aucune flotte trouvée dans la zone demandée)";
+"K3002" = "Désolé, la réservation spontanée n'est pas disponible sur cette destination, mais vous pouvez réserver à l'avance pour votre prochain voyage !";
 
 "K3003" = "Impossible de trouver un devis (devis en question non trouvé)";
 
@@ -197,9 +197,9 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Contactez-nous";
 
-"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Paramètres";
 
-"Text.Booking.NoLocationPermissionAlertMessage" = "";
+"Text.Booking.NoLocationPermissionAlertMessage" = "Données de localisation nécessaires pour afficher votre emplacement. Pour modifier les paramètres d’autorisation, accédez à l’onglet Paramètres iOS et choisissez une nouvelle valeur.";
 
 "Text.Booking.NoLocationPermissionAlertTitle" = "Autorisation requise";
 
@@ -555,7 +555,6 @@
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/fr/requests/new";
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/fr";
-
 
 "Text.KarhooError.Q0001" = "Départ et destination ne peuvent pas être identiques.";
 

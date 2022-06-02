@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Impossibile ottenere stime";
 
-"K3002" = "Impossibile ottenere preventivi (nessuna disponibilità trovata nell'area richiesta)";
+"K3002" = "Siamo spiacenti, la prenotazione immediata non è disponibile per questa destinazione, ma puoi prenotare in anticipo per il tuo prossimo viaggio!";
 
 "K3003" = "Impossibile ottenere le stime (impossibile trovare il preventivo specificato)";
 
@@ -197,9 +197,9 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Entra in contatto";
 
-"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Impostazioni";
 
-"Text.Booking.NoLocationPermissionAlertMessage" = "";
+"Text.Booking.NoLocationPermissionAlertMessage" = "Dati sulla posizione necessari per mostrare la tua posizione. Per modificare le impostazioni di autorizzazione, vai alla scheda delle impostazioni di iOS e scegli un nuovo valore.";
 
 "Text.Booking.NoLocationPermissionAlertTitle" = "Permesso necessario";
 
