@@ -75,7 +75,7 @@ public final class KarhooTripsProvider: TripsProvider {
                     return
                 }
                 
-                self?.noMoreItems = trips.count == 0 ? true : false
+                self?.noMoreItems = trips.count == 0
                 self?.delegate?.fetched(trips: trips)
             })
     }
