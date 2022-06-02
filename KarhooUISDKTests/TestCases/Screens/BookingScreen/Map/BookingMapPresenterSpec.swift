@@ -50,7 +50,7 @@ class BookingMapPresenterSpec: XCTestCase {
      * Then:    All the strategies should reveive that map
      */
     func testLoadMap() {
-        testObject.load(map: nil)
+        testObject.load(map: nil, onLocationPermissionDenied: nil)
 
         XCTAssert(testPickupOnlyStrategy.loadMapCalled)
         XCTAssert(testDestinationSetStrategy.loadMapCalled)

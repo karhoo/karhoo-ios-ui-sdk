@@ -36,7 +36,7 @@ class PickupOnlyStrategySpec: XCTestCase {
                                         timer: mockKarhooTime,
                                         journeyDetailsManager: mockJourneyDetailsManager,
                                         locationService: mockLocationService)
-        testObject.load(map: mockMapView)
+        testObject.load(map: mockMapView, onLocationPermissionDenied: nil)
         testObject.set(delegate: mockPickupStrategyDelegate)
     }
 
