@@ -556,9 +556,6 @@
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
-/* No availability in requested area, Fuzzy */
-"Text.KarhooError.K3002" = "Sin disponibilidad en la zona";
-
 "Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
 
 "Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTOS";

@@ -556,9 +556,6 @@
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
-/* No availability in requested area, Fuzzy */
-"Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
-
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
 
 "Text.Loyalty.BalanceTitle" = "SALDO: %1$@ PUNTEN";
