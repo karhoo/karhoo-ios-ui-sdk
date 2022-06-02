@@ -84,6 +84,9 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * And: Get nonce endpoint should be called
      */
     // TODO: update PSP flow tests to new, agnostic, approach
+    // SOMETIMES:
+    // FAILS FOR ADYEN
+    // FAILS FOR BRAINTREE
     func testAdyenRequestCarAuthenticated() {
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
@@ -105,6 +108,9 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * And: Injected metadata should be set on TripBooking request object
      */
     // TODO: update PSP flow tests to new, agnostic, approach
+    // SOMETIMES:
+    // FAILS FOR ADYEN
+    // FAILS FOR BRAINTREE
     func testbookingMetadata() {
         mockBookingMetadata = ["key":"value"]
         loadTestObject()

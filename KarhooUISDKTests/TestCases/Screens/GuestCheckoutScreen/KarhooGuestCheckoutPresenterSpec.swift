@@ -33,7 +33,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
      *  Then: ThreeDSecure request should be correctly formed and sent
      *  And: View should be in a requesting state
      */
+    
+    // FAILS FOR ADYEN
     func testThreeDSecureSent() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.bookTripPressed()
 
         XCTAssertTrue(mockView.setRequestingStateCalled)
@@ -44,7 +47,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** When: 3D secure provider succeeds
      *  Then: Then trip service should be called with secure nonce
      */
+    
+    // FAILS FOR ADYEN
     func testThreeDSecureProviderSucceeds() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.bookTripPressed()
 
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "456")))
@@ -55,7 +61,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** When: 3D secure provider fails
      *  Then: Then trip service should not be called
      */
+    
+    // FAILS FOR ADYEN
     func testThreeDSecureProviderFails() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.bookTripPressed()
 
         mockThreeDSecureProvider.triggerResult(.completed(value: .threeDSecureAuthenticationFailed))
@@ -67,7 +76,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** When: Trip service booking succceeds
      *  Then: View should be updated and callback is called with trip
      */
+    
+    // FAILS FOR ADYEN
     func testTripServiceSucceeds() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.bookTripPressed()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "456")))
 
@@ -86,7 +98,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** When: Trip service booking succceeds
      *  Then: View should be updated and callback is called with trip
      */
+    
+    // FAILS FOR ADYEN
     func testCorrectPaymentNonceIsUsed() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         KarhooTestConfiguration.authenticationMethod = .guest(settings: .init(identifier: "", referer: "", organisationId: ""))
 
         let expectedNonce = Nonce(nonce: "mock_nonce")
@@ -138,7 +153,10 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** When: Trip service booking succceeds for token exchange
      *  Then: View should be updated and callback is called with trip
      */
+    
+    // FAILS FOR BRAINTREE
     func testCorrectTokenExchangePaymentNonceIsUsedForAdyenPayment() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
                                                                      paymentProvider: "adyen")
@@ -166,7 +184,9 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
      * And: Injected metadata should be set on TripBooking request object
      */
     // TODO: update PSP flow tests to new, agnostic, approach
+    // FAILS FOR BRAINTREE
     func testbookingMetadata() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
         KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
@@ -243,6 +263,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
             quote: testQuote,
             journeyDetails: mockJourneyDetails,
             bookingMetadata: mockBookingMetadata,
+            threeDSecureProvider: mockThreeDSecureProvider,
             tripService: mockTripService,
             userService: mockUserService,
             paymentNonceProvider: mockPaymentNonceProvider,

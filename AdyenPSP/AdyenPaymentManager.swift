@@ -12,7 +12,7 @@ import KarhooUISDK
 
 public class AdyenPaymentManager: PaymentManager {
     public init() {}
-    public var shouldCheckThreeDSBeforeBooking: Bool = true
+    public var shouldCheckThreeDSBeforeBooking: Bool = false
     public let shouldGetPaymentBeforeBooking: Bool  = false
     public let threeDSecureProvider: ThreeDSecureProvider? = nil
     public let cardFlow: CardRegistrationFlow = AdyenCardRegistrationFlow()

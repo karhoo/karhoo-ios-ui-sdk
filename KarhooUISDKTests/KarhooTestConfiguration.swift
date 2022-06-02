@@ -18,14 +18,15 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
     static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
     static var isExplicitTermsAndConditionsConsentRequired: Bool = false
+    
 
     var isExplicitTermsAndConditionsConsentRequired: Bool {
         Self.isExplicitTermsAndConditionsConsentRequired
     }
 
-    var mockPaymentManager = MockPaymentManager()
+    static var mockPaymentManager = MockPaymentManager(.adyen)
     var paymentManager: PaymentManager! {
-        mockPaymentManager
+        Self.mockPaymentManager
     }
 
     func logo() -> UIImage {

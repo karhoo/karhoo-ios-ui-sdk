@@ -40,6 +40,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
+        threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
@@ -50,7 +51,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = sdkConfiguration.paymentManager.threeDSecureProvider
+        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider 
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
