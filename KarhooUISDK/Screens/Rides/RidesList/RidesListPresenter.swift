@@ -27,6 +27,11 @@ final class KarhooRidesListPresenter: RidesListPresenter, TripsProviderDelegate 
 
     func load(screen: RidesListView) {
         ridesListView = screen
+    }
+
+    func viewWillAppear() {
+        tripsProvider.stop()
+        listOfTrips = []
         tripsProvider.start()
     }
 

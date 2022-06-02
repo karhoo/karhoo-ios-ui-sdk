@@ -27,6 +27,8 @@ protocol RidesListPresenter {
 
     func load(screen: RidesListView)
 
+    func viewWillAppear()
+
     func rideSelected(_ tripInfo: TripInfo)
     
     func requestNewPage()
