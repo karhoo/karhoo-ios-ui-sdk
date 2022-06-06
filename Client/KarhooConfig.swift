@@ -26,7 +26,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
         return KarhooConfig.auth
     }
     
-    var paymentManager: PaymentManager! {
+    var paymentManager: PaymentManager {
         KarhooConfig.paymentManager
     }
 }

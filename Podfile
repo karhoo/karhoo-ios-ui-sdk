@@ -18,6 +18,9 @@ end
 target 'Client' do
   inherit! :search_paths
   pod 'KarhooUISDK', :path => './'
+  pod 'KarhooUISDK/Adyen', :path => './'
+  pod 'KarhooUISDK/Braintree', :path => './'
+
 end
 
 # UISDK framework
