@@ -43,7 +43,6 @@ public final class AlertHandler: AlertHandlerProtocol {
     private weak var presentingViewController: UIViewController? {
         return viewController?.presentedViewController ?? viewController
     }
-    private let banner = MessageBanner.instantiateFromNib()
 
     public init() { }
 

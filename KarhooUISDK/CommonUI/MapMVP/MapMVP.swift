@@ -103,7 +103,11 @@ extension MapPresenter {
 }
 
 protocol BookingMapPresenter: MapPresenter {
-    func load(map: MapView?, reverseGeolocate: Bool)
+    func load(
+        map: MapView?,
+        reverseGeolocate: Bool,
+        onLocationPermissionDenied: (() -> Void)?
+    )
 }
 
 protocol TripMapPresenter: MapPresenter {

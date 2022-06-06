@@ -52,7 +52,6 @@ class KarhooAddressSearchBarPresenterSpec: XCTestCase {
      */
     func testConfigurationForDestination() {
         XCTAssertEqual(mockAddressSearchBar.searchPlaceHolder, UITexts.AddressBar.enterDestination)
-        // TODO: - Fix colors checking
 //        XCTAssertEqual(mockAddressSearchBar.ringColorSet, KarhooUI.colors.primary)
     }
 
@@ -64,7 +63,6 @@ class KarhooAddressSearchBarPresenterSpec: XCTestCase {
         testObject = KarhooAddressSearchBarPresenter(addressSearchBar: mockAddressSearchBar,
                                                      addressMode: .pickup)
         XCTAssertEqual(mockAddressSearchBar.searchPlaceHolder, UITexts.AddressBar.enterPickup)
-        // TODO: - Fix colors checking
 //        XCTAssertEqual(mockAddressSearchBar.ringColorSet, KarhooUI.colors.secondary)
     }
     

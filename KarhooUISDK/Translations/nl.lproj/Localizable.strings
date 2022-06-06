@@ -197,6 +197,12 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Neem contact op";
 
+"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+
+"Text.Booking.NoLocationPermissionAlertMessage" = "";
+
+"Text.Booking.NoLocationPermissionAlertTitle" = "Toestemming nodig";
+
 "Text.Booking.Passenger" = "Passagier";
 
 "Text.Booking.PassengerDetails.Add" = "Passagier toevoegen";

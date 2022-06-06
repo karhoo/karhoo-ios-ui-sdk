@@ -37,6 +37,33 @@ final class RidesListViewController: UIViewController, RidesListView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        presenter.load(screen: self)
+        forceLightMode()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        var bottomOffset: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            bottomOffset = view.safeAreaInsets.bottom
+        }
+        let offset = bookButtonHeight + bottomOffset
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0,
+                                                         width: view.frame.width,
+                                                         height: offset))
+        
+        tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: offset, right: 0)
+    }
+
     func set(ridesListActions: RidesListActions) {
         self.ridesListActions = ridesListActions
     }
@@ -48,13 +75,6 @@ final class RidesListViewController: UIViewController, RidesListView {
         
         setUpTable()
         setUpEmptyStateView()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        presenter.load(screen: self)
-        forceLightMode()
     }
 
     func set(trips: [TripInfo]) {
@@ -77,26 +97,6 @@ final class RidesListViewController: UIViewController, RidesListView {
 
     func rebookTrip(_ trip: TripInfo) {
         ridesListActions?.rebookTrip(trip)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter.load(screen: self)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        var bottomOffset: CGFloat = 0
-        if #available(iOS 11.0, *) {
-            bottomOffset = view.safeAreaInsets.bottom
-        }
-        let offset = bookButtonHeight + bottomOffset
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0,
-                                                         width: view.frame.width,
-                                                         height: offset))
-        
-        tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: offset, right: 0)
     }
     
     private func setUpEmptyStateView() {

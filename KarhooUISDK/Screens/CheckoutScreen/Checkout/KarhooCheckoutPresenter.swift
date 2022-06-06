@@ -7,6 +7,7 @@
 // swiftlint:disable file_length
 import Foundation
 import KarhooSDK
+import UIKit
 
 final class KarhooCheckoutPresenter: CheckoutPresenter {
     
@@ -32,7 +33,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
 
     var karhooUser: Bool = false
-    
+
     // MARK: - Init & Config
 
     init(
@@ -226,14 +227,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                             error: nil)
             return
         }
+
+        getPaymentNonceThenBook(user: currentUser,
+            organisationId: currentOrg,
+            passengerDetails: passengerDetails)
         
-        if let nonce = view?.getPaymentNonce() {
-            if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+        if let nonce = retrievePaymentNonce() {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
                 self.getPaymentNonceThenBook(user: currentUser,
                                             organisationId: currentOrg,
                                             passengerDetails: passengerDetails)
             } else {
-                book(paymentNonce: nonce,
+                book(paymentNonce: nonce.nonce,
                      passenger: passengerDetails,
                      flightNumber: view?.getFlightNumber())
             }
@@ -267,7 +272,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
         
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
+        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
             guard userService.getCurrentUser() != nil
             else {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
@@ -325,11 +330,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if let metadata = bookingMetadata {
             map = metadata
         }
-        tripBooking.meta = map
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            tripBooking.meta["trip_id"] = paymentNonce
-        }
-
+        tripBooking.meta = sdkConfiguration.paymentManager.getMetaWithUpdateTripIdIfRequired(meta: tripBooking.meta, nonce: paymentNonce)
         reportBookingEvent()
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
@@ -344,7 +345,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-        
+
         guard let trip = result.successValue() else {
             view?.setDefaultState()
             reportPaymentFailure(result.errorValue()?.message ?? "")
@@ -361,7 +362,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         reportPaymentSuccess()
         routeToBooking(result: ScreenResult.completed(result: trip))
     }
-    
+
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
             reportPaymentSuccess()
@@ -414,19 +415,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func getPaymentNonceAccordingToAuthState() -> String? {
         switch Karhoo.configuration.authenticationMethod() {
-        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()
-        default: return view?.getPaymentNonce()
+        case .tokenExchange(settings: _), .karhooUser: return retrievePaymentNonce()?.nonce
+        default: return retrievePaymentNonce()?.nonce
         }
     }
-    
-    private func retrievePaymentNonce() -> String? {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .braintree {
-            return userService.getCurrentUser()?.nonce?.nonce
-        } else {
-            return view?.getPaymentNonce()
-        }
-    }
-    
+
     private func threeDSecureNonceThenBook(nonce: String, passengerDetails: PassengerDetails) {
         threeDSecureProvider.threeDSecureCheck(
             nonce: nonce,
@@ -475,6 +468,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         routeToPreviousScene(result: ScreenResult.cancelled(byUser: false))
     }
 
+    func screenHasFadedOut() {
+        if let trip = self.trip {
+             callback(ScreenResult.completed(result: trip))
+         } else {
+             callback(ScreenResult.cancelled(byUser: false))
+         }
+    }
+
     private func isLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
@@ -487,6 +488,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
+    
 
     private func routeToBooking(result: ScreenResult<TripInfo>) {
         view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
@@ -497,13 +499,17 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func routeToPreviousScene(result: ScreenResult<TripInfo>) {
         view?.navigationController?.popViewController(animated: true)
     }
-    
+
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(journeyDetails) {
              view?.setAddFlightDetailsState()
          } else {
             didAddPassengerDetails()
          }
+    }
+
+    private func retrievePaymentNonce() -> Nonce? {
+        view?.getPaymentNonce()
     }
     
     private func showLoyaltyNonceError(error: KarhooError) {
@@ -561,7 +567,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportPaymentFailure(_ message: String) {
-        analytics.paymentFailed(message)
+        analytics.paymentFailed(
+                message: message,
+                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+                date: Date(),
+                amount: quote.price.highPrice.description,
+                currency: quote.price.currencyCode
+        )
     }
 }
 

@@ -8,8 +8,15 @@
 //  Copyright © 2020 Flit Technologies Ltd. All rights reserved.
 //
 
-import Adyen
+import Foundation
 import KarhooSDK
+#if canImport(Adyen)
+import Adyen
+#endif
+#if canImport(AdyenActions)
+import AdyenActions
+#endif
+
 
 struct AdyenResponseHandler {
 

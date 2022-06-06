@@ -20,7 +20,8 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     init(pickupOnlyStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy(),
          destinationSetStrategy: BookingMapStrategy = DestinationSetStrategy(),
          journeyDetailsManager: JourneyDetailsManager =  KarhooJourneyDetailsManager.shared,
-         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy()) {
+         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy()
+    ) {
         self.pickupOnlyStrategy = pickupOnlyStrategy
         self.destinationSetStrategy = destinationSetStrategy
         self.journeyDetailsManager = journeyDetailsManager
@@ -33,13 +34,21 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     deinit {
         journeyDetailsManager.remove(observer: self)
     }
-
-    func load(map: MapView?, reverseGeolocate: Bool = true) {
-        pickupOnlyStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
-        destinationSetStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
-        emptyBookingStrategy.load(map: map, reverseGeolocate: reverseGeolocate)
-        currentStrategy?.start(journeyDetails: journeyDetailsManager.getJourneyDetails())
-    }
+    
+    func load(
+        map: MapView?,
+        reverseGeolocate: Bool = true,
+        onLocationPermissionDenied: (() -> Void)?) {
+            [pickupOnlyStrategy, destinationSetStrategy, emptyBookingStrategy].forEach { strategy in
+                strategy.load(
+                    map: map,
+                    reverseGeolocate: reverseGeolocate,
+                    onLocationPermissionDenied: onLocationPermissionDenied
+                )
+            }
+            
+            currentStrategy?.start(journeyDetails: journeyDetailsManager.getJourneyDetails())
+        }
 
     func focusMap() {
         currentStrategy?.focusMap()

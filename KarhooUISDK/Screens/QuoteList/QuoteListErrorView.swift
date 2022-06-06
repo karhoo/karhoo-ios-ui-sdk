@@ -2,7 +2,6 @@
 // Created by Aleksander Wedrychowski on 10/03/2022.
 // Copyright (c) 2022 Flit Technologies Ltd. All rights reserved.
 //
-
 import Foundation
 import KarhooSDK
 import UIKit
@@ -46,12 +45,10 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
     }
 
     // MARK: - Properties
-
     let viewModel: QuoteListTableErrorViewModel
     private weak var delegate: QuoteListErrorViewDelegate?
 
     // MARK: - Initialization
-
     init(using viewModel: QuoteListTableErrorViewModel, delegate: QuoteListErrorViewDelegate?) {
         self.viewModel = viewModel
         self.delegate = delegate
@@ -69,7 +66,6 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
     }
 
     // MARK: - Setup
-
     private func setupView() {
         addSubview(contentStackView)
         contentStackView.anchorToSuperview(padding: UIConstants.Spacing.standard)
@@ -89,7 +85,6 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
     }
 
     // MARK: - Helpers
-
     private func animateIn() {
         [
             imageView,

@@ -36,7 +36,7 @@ class MainActionButton: UIButton {
 
         titleLabel?.font = KarhooUI.fonts.subtitleBold()
         setTitleColor(KarhooUI.colors.white, for: .normal)
-        
+
         addTouchAnimation()
     }
 

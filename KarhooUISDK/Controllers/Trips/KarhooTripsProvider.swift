@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 public final class KarhooTripsProvider: TripsProvider {
 
@@ -45,8 +46,9 @@ public final class KarhooTripsProvider: TripsProvider {
     }
     
     public func stop() {
-        self.reachability.remove(listener: self)
-        self.timer.invalidate()
+        reachability.remove(listener: self)
+        itemsOffset = 0
+        timer.invalidate()
     }
 
     deinit {
@@ -54,25 +56,28 @@ public final class KarhooTripsProvider: TripsProvider {
     }
 
     fileprivate func loadTrips() {
-        let tripSearch = TripSearch(tripStates: TripStatesGetter().getStatesForTripRequest(type: requestType),
-                                    paginationRowCount: pageSize,
-                                    paginationOffset: itemsOffset)
-
-        tripService.search(tripSearch: tripSearch)
-                    .execute(callback: { [weak self] (result: Result<[TripInfo]>) in
-            guard result.isSuccess() else {
-                self?.delegate?.tripProviderFailed(error: result.errorValue())
-                return
-            }
-
-            guard let trips = result.successValue() else {
-                self?.delegate?.fetched(trips: [])
-                return
-            }
+        let tripSearch = TripSearch(
+            tripStates: TripStatesGetter().getStatesForTripRequest(type: requestType),
+            paginationRowCount: pageSize,
+            paginationOffset: itemsOffset
+        )
         
-            self?.noMoreItems = trips.count == 0 ? true : false
-            self?.delegate?.fetched(trips: trips)
-        })
+        tripService
+            .search(tripSearch: tripSearch)
+            .execute(callback: { [weak self] (result: Result<[TripInfo]>) in
+                guard result.isSuccess() else {
+                    self?.delegate?.tripProviderFailed(error: result.errorValue())
+                    return
+                }
+                
+                guard let trips = result.successValue() else {
+                    self?.delegate?.fetched(trips: [])
+                    return
+                }
+                
+                self?.noMoreItems = trips.isEmpty
+                self?.delegate?.fetched(trips: trips)
+            })
     }
     
     public func requestNewPage(pageOffset: Int) {

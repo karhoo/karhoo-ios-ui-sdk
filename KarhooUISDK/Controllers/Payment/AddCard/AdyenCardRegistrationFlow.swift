@@ -7,8 +7,15 @@
 //
 
 import Foundation
-import Adyen
 import KarhooSDK
+#if canImport(Adyen)
+import Adyen
+#endif
+#if canImport(AdyenDropIn)
+import AdyenDropIn
+import AdyenActions
+#endif
+
 
 final class AdyenCardRegistrationFlow: CardRegistrationFlow {
 
@@ -108,6 +115,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             return
         }
         let adyenDropInStyle = DropInComponent.Style(tintColor: KarhooUI.colors.secondary)
+
         adyenDropIn = DropInComponent(
             paymentMethods: methods,
             configuration: configuration,

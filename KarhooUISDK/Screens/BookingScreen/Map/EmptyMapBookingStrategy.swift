@@ -16,6 +16,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
     private let journeyDetailsManager: JourneyDetailsManager
     private let locationManager: CLLocationManager = CLLocationManager()
     private var reverseGeolocate: Bool = false
+    private var onLocationPermissionDenied: (() -> Void)?
 
     init(userLocationProvider: UserLocationProvider = KarhooUserLocationProvider.shared,
          journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared) {
@@ -23,9 +24,14 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
         self.journeyDetailsManager = journeyDetailsManager
     }
 
-    func load(map: MapView?, reverseGeolocate: Bool = true) {
+    func load(
+        map: MapView?,
+        reverseGeolocate: Bool = true,
+        onLocationPermissionDenied: (() -> Void)?
+    ) {
         self.mapView = map
         self.reverseGeolocate = reverseGeolocate
+        self.onLocationPermissionDenied = onLocationPermissionDenied
     }
 
     func start(journeyDetails: JourneyDetails?) {
@@ -48,7 +54,13 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
             if let location = userLocationProvider.getLastKnownLocation() {
                 journeyDetailsManager.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
             } else {
-                locationManager.requestWhenInUseAuthorization()
+                let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+                switch locationAuthorizationStatus {
+                case .denied, .restricted:
+                    onLocationPermissionDenied?()
+                default:
+                    locationManager.requestWhenInUseAuthorization()
+                }
              }
         }
     }

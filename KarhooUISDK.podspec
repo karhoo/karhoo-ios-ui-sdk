@@ -18,10 +18,12 @@ Pod::Spec.new do |s|
 
   s.platform              = :ios, '11.0'
   s.ios.deployment_target = '11.0'
+  s.exclude_files = 'KarhooUISDK/Extensions/Bundle+extensions/BundleSPM+current.swift'
 
   s.requires_arc          = true
 
   s.dependency    'KarhooSDK'
+  s.dependency 	  'FloatingPanel', '2.0.1'
   s.dependency    'BraintreeDropIn', '~> 8.1'
   s.dependency    'Braintree/PaymentFlow', '~> 4.37'
   s.dependency    'PhoneNumberKit', '3.3.1'

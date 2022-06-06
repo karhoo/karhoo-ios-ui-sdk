@@ -8,8 +8,16 @@
 
 import Foundation
 import KarhooSDK
+#if canImport(BraintreeDropIn)
 import BraintreeDropIn
+#endif
+#if canImport(Braintree)
 import Braintree
+#endif
+#if canImport(BraintreePaymentFlow)
+import BraintreePaymentFlow
+#endif
+
 
 final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
 
@@ -23,8 +31,9 @@ final class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
                                                 handler: {( _, result: BTDropInResult?, error: Error?) in
             if error != nil {
                 paymentMethodAdded?(.failed(error: error as? KarhooError))
-            } else if result?.isCancelled == true {
-                paymentMethodAdded?(.cancelled(byUser: true))
+                //TODO: Check, why it is removed
+           /* } else if result?.isCancelled == true {
+                paymentMethodAdded?(.cancelled(byUser: true))*/
             } else {
                 let nonce = Nonce(nonce: result!.paymentMethod!.nonce, cardType: result!.paymentMethod!.type, lastFour: String(result!.paymentDescription.suffix(2)))
                 paymentMethodAdded?(ScreenResult.completed(result: nonce))

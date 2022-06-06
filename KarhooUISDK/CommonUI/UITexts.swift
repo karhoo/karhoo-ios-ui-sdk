@@ -245,6 +245,9 @@ public enum UITexts {
         public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
         public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
         public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
+        public static let noLocationPermissionTitle = "Text.Booking.NoLocationPermissionAlertTitle".localized
+        public static let noLocationPermissionMessage = "Text.Booking.NoLocationPermissionAlertMessage".localized
+        public static let noLocationPermissionConfirm = "Text.Booking.NoLocationPermissionAlertConfirm".localized
     }
 
     public enum Availability {
@@ -278,7 +281,17 @@ public enum UITexts {
         public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
         public static let taxi = "Text.QuoteCategory.Taxi".localized
     }
-
+    
+    public enum VehicleClass {
+        public static let saloon = "Text.VehicleClass.Saloon".localized
+        public static let taxi = "Text.VehicleClass.Taxi".localized
+        public static let mpv = "Text.VehicleClass.MPV".localized
+        public static let exec = "Text.VehicleClass.Exec".localized
+        public static let moto = "Text.VehicleClass.Moto".localized
+        public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
+        public static let electric = "Text.VehicleClass.Electric".localized
+    }
+    
     public enum VehicleType {
         public static let moto = "Text.VehicleType.Moto".localized
         public static let standard = "Text.VehicleType.Standard".localized
