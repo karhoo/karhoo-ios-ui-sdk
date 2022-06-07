@@ -116,19 +116,18 @@ final class KarhooExpandViewButton: UIButton {
             containerView.anchor(
                 top: topAnchor,
                 leading: leadingAnchor,
-                bottom: bottomAnchor,
-                trailing: trailingAnchor,
+                trailing: trailingAnchor, bottom: bottomAnchor,
                 paddingLeft: 5.0,
                 paddingRight: 5.0
             )
             buttonLabel.anchor(
                 top: topAnchor,
                 leading: containerView.leadingAnchor,
-                bottom: bottomAnchor,
                 trailing: dropdownImage.leadingAnchor,
+                bottom: bottomAnchor,
                 paddingTop: 5.0,
-                paddingBottom: 5.0,
-                paddingRight: 5.0
+                paddingRight: 5.0,
+                paddingBottom: 5.0
             )
             let imageSize: CGFloat = 16.0
             dropdownImage.centerY(inView: self)
@@ -141,8 +140,8 @@ final class KarhooExpandViewButton: UIButton {
             button.anchor(
                 top: containerView.topAnchor,
                 leading: buttonLabel.leadingAnchor,
-                bottom: containerView.bottomAnchor,
-                trailing: containerView.trailingAnchor
+                trailing: containerView.trailingAnchor,
+                bottom: containerView.bottomAnchor
             )
             didSetupConstraints = true
         }

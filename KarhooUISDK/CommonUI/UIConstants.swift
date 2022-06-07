@@ -8,6 +8,7 @@
 // swiftlint:disable comment_spacing nesting
 
 import Foundation
+import UIKit
 
 // Note: When updating the UI, aproximate the commented values to the ones before each comment. E.g.: replace any spacing of value 17 with .standard (which is 16)
 public struct UIConstants {
@@ -88,7 +89,7 @@ public struct UIConstants {
 
             /// 120
             public static let xxxLarge: CGFloat = 120
-            
+
             /// 222
             public static let logoWidth: CGFloat = 222
         }
@@ -187,10 +188,11 @@ public struct UIConstants {
             
             /// 180 x 180
             public static let driverDetailsViewSize = CGSize(width: 180, height: 180)
-            
+
             /// 48
             public static let mainActionButtonHeight: CGFloat = 48
 
+            /// 95%
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
     }
@@ -266,6 +268,7 @@ public struct UIConstants {
         /// 0.6
         public static let overlay: CGFloat = 0.6
     }
+
 
     struct Animation {
         /// 0.5

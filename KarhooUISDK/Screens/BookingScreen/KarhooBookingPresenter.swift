@@ -8,6 +8,7 @@
 
 import CoreLocation
 import KarhooSDK
+import UIKit
 
 final class KarhooBookingPresenter {
 
@@ -142,7 +143,7 @@ extension KarhooBookingPresenter: JourneyDetailsObserver {
             details.originLocationDetails != nil,
             details.destinationLocationDetails != nil
         else { return }
-            didProvideJourneyDetails(details)
+        didProvideJourneyDetails(details)
     }
 }
 

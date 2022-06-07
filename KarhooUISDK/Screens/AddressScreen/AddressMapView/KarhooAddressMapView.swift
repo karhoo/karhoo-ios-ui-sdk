@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 final class KarhooAddressMapView: UIView, AddressMapView {
     
@@ -68,7 +69,14 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         setLocationButton.imageView?.contentMode = .scaleAspectFit
         addSubview(setLocationButton)
         
-        setLocationButton.anchor(bottom: safeAreaLayoutGuide.bottomAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, paddingBottom: 26, paddingRight: 15, width: 60, height: 60)
+        setLocationButton.anchor(
+            trailing: safeAreaLayoutGuide.trailingAnchor,
+            bottom: safeAreaLayoutGuide.bottomAnchor,
+            paddingRight: 15,
+            paddingBottom: 26,
+            width: 60,
+            height: 60
+        )
 
         map.centerPin(hidden: false)
         

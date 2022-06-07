@@ -5,7 +5,6 @@
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
-
 import UIKit
 import KarhooSDK
 

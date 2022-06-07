@@ -197,6 +197,12 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Get in touch";
 
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Settings";
+
+"Text.Booking.NoLocationPermissionAlertMessage" = "Location data needed to show your location. To change permission settings, please go to iOS settings tab and choose new value.";
+
+"Text.Booking.NoLocationPermissionAlertTitle" = "Permission needed";
+
 "Text.Booking.Passenger" = "Passenger";
 
 "Text.Booking.PassengerDetails.Add" = "Add Passenger";

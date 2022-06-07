@@ -2,7 +2,7 @@
 platform :ios, '11.0'
 
 # Standard cocoapods specs source
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
 use_frameworks!
 
@@ -23,6 +23,7 @@ end
 # UISDK framework
 target 'KarhooUISDK' do
   common_pods
+  pod 'FloatingPanel', '2.0.1'
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'SwiftLint', '~> 0.47'

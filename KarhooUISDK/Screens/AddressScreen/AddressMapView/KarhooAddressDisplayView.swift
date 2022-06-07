@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class KarhooAddressDisplayView: UIView {
 
@@ -38,7 +39,14 @@ final class KarhooAddressDisplayView: UIView {
         stackContainer.distribution = .fillProportionally
         addSubview(stackContainer)
 
-        stackContainer.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingLeft: 8, paddingRight: 8)
+        stackContainer.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: bottomAnchor,
+            paddingLeft: UIConstants.Spacing.small,
+            paddingRight: UIConstants.Spacing.small
+        )
         stackContainer.centerY(inView: self)
 
         addressTypeImage = UIImageView()
@@ -59,7 +67,14 @@ final class KarhooAddressDisplayView: UIView {
         addressTypeImage.anchor(leading: stackContainer.leadingAnchor, paddingLeft: 8, width: 15, height: 15)
         addressTypeImage.centerY(inView: stackContainer)
 
-        addressDisplayLabel.anchor(leading: addressTypeImage.trailingAnchor, trailing: stackContainer.trailingAnchor, paddingTop: 8, paddingLeft: 10, paddingBottom: 8, paddingRight: 4)
+        addressDisplayLabel.anchor(
+            leading: addressTypeImage.trailingAnchor,
+            trailing: stackContainer.trailingAnchor,
+            paddingTop: UIConstants.Spacing.small,
+            paddingLeft: 10,
+            paddingRight: UIConstants.Spacing.xSmall,
+            paddingBottom: UIConstants.Spacing.small
+        )
         addressDisplayLabel.centerY(inView: stackContainer)
     }
     

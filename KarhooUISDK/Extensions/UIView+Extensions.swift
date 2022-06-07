@@ -74,18 +74,20 @@ extension UIView {
         self.subviews.forEach { $0.backgroundColor = .random()}
     }
     
-    public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                       left: NSLayoutXAxisAnchor? = nil,
-                       leading: NSLayoutXAxisAnchor? = nil,
-                       bottom: NSLayoutYAxisAnchor? = nil,
-                       right: NSLayoutXAxisAnchor? = nil,
-                       trailing: NSLayoutXAxisAnchor? = nil,
-                       paddingTop: CGFloat = 0,
-                       paddingLeft: CGFloat = 0,
-                       paddingBottom: CGFloat = 0,
-                       paddingRight: CGFloat = 0,
-                       width: CGFloat? = nil,
-                       height: CGFloat? = nil) {
+    public func anchor(
+        top: NSLayoutYAxisAnchor? = nil,
+        left: NSLayoutXAxisAnchor? = nil,
+        leading: NSLayoutXAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        trailing: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        paddingTop: CGFloat = 0,
+        paddingLeft: CGFloat = 0,
+        paddingRight: CGFloat = 0,
+        paddingBottom: CGFloat = 0,
+        width: CGFloat? = nil,
+        height: CGFloat? = nil
+    ) {
         translatesAutoresizingMaskIntoConstraints = false
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
@@ -99,16 +101,16 @@ extension UIView {
             leadingAnchor.constraint(equalTo: leading, constant: paddingLeft).isActive = true
         }
         
-        if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
-        }
-        
         if let right = right {
             rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
         if let trailing = trailing {
             trailingAnchor.constraint(equalTo: trailing, constant: -paddingRight).isActive = true
+        }
+        
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
         }
         
         if let width = width {
@@ -133,12 +135,12 @@ extension UIView {
         anchor(
             top: superview.topAnchor,
             leading: superview.leadingAnchor,
-            bottom: superview.bottomAnchor,
             trailing: superview.trailingAnchor,
+            bottom: superview.bottomAnchor,
             paddingTop: paddingTop,
             paddingLeft: paddingLeading,
-            paddingBottom: paddingBottom,
-            paddingRight: paddingTrailing
+            paddingRight: paddingTrailing,
+            paddingBottom: paddingBottom
         )
     }
 
@@ -177,7 +179,7 @@ extension UIView {
     
     func addShadow() {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.55
+        layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
         layer.shadowOffset = CGSize.init(width: 0.5, height: 0.5)
         layer.masksToBounds = false
     }

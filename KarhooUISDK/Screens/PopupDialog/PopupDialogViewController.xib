@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupDialogViewController" customModule="KarhooUISDK" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupDialogViewController" customModule="KarhooUISDK">
             <connections>
                 <outlet property="blurView" destination="rcs-7a-6w4" id="KcP-z8-WgZ"/>
                 <outlet property="formButton" destination="FUq-5h-uCd" id="upL-Pt-wnQ"/>
@@ -34,7 +32,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9B-yt-17m">
                                 <rect key="frame" x="37.5" y="96" width="300" height="475"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-5h-uCd" customClass="FormButton" customModule="KarhooUISDK" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-5h-uCd" customClass="FormButton" customModule="KarhooUISDK">
                                         <rect key="frame" x="0.0" y="431" width="300" height="44"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -104,6 +102,7 @@ tolls, taxes, and other charges.</string>
                     </connections>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="ZPM-tm-KeW"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -112,7 +111,7 @@ tolls, taxes, and other charges.</string>
                 <constraint firstItem="rcs-7a-6w4" firstAttribute="top" secondItem="ZAM-1Z-C69" secondAttribute="top" id="kaV-aL-wnn"/>
                 <constraint firstItem="rcs-7a-6w4" firstAttribute="bottom" secondItem="ZAM-1Z-C69" secondAttribute="bottom" id="q5f-mT-fDe"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZPM-tm-KeW"/>
+            <point key="canvasLocation" x="132" y="132"/>
         </view>
         <tapGestureRecognizer id="HKk-1d-ZNW">
             <connections>

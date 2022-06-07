@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 protocol MailMetaInfoComposer {
     func getMailMetaInfo() -> String

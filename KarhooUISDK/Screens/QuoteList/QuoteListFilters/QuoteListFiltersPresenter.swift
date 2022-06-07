@@ -12,14 +12,26 @@ import KarhooSDK
 class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     private let router: QuoteListFiltersRouter
+    private let onFiltersConfirmed: ([String]) -> Void
 
-    init(router: QuoteListFiltersRouter) {
+    init(
+        router: QuoteListFiltersRouter,
+        onFiltersConfirmed: @escaping ([String]) -> Void
+    ) {
         self.router = router
+        self.onFiltersConfirmed = onFiltersConfirmed
     }
 
     func viewDidLoad() {
     }
 
     func viewWillAppear() {
+    }
+
+    func close(save: Bool) {
+        if save {
+            onFiltersConfirmed([])
+        }
+        router.dismiss()
     }
 }

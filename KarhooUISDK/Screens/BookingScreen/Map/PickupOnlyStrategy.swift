@@ -50,7 +50,11 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
         self.delegate = delegate
     }
 
-    func load(map: MapView?, reverseGeolocate: Bool = true) {
+    func load(
+        map: MapView?,
+        reverseGeolocate: Bool = true,
+        onLocationPermissionDenied: (() -> Void)?
+    ) {
         self.map = map
         self.map?.set(actions: self)
         self.map?.set(userMarkerVisible: true)

@@ -42,10 +42,10 @@ struct KarhooFonts {
     private var italicFont: UIFont = UIFont(descriptor: UIFont.systemFont(ofSize: 0, weight: .regular).fontDescriptor.withSymbolicTraits(.traitItalic)!, size: 0)
 
     init(family: FontFamily) {
-        fetchCustomFamily(name: family.boldFont, font: &boldFont)
-        fetchCustomFamily(name: family.regularFont, font: &regularFont)
-        fetchCustomFamily(name: family.lightFont, font: &lightFont)
-        fetchCustomFamily(name: family.italicFont, font: &italicFont)
+        self.fetchCustomFamily(name: family.boldFont, font: &boldFont)
+        self.fetchCustomFamily(name: family.regularFont, font: &regularFont)
+        self.fetchCustomFamily(name: family.lightFont, font: &lightFont)
+        self.fetchCustomFamily(name: family.italicFont, font: &italicFont)
     }
 
     private func fetchCustomFamily(name: String, font: inout UIFont) {
@@ -114,7 +114,7 @@ struct KarhooFonts {
     }
 
     func captionSemibold() -> UIFont {
-        return semiboldFont.withSize(captionSize)
+        semiboldFont.withSize(captionSize)
     }
 
     func captionBold() -> UIFont {

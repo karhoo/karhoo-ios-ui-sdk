@@ -92,7 +92,12 @@ class ViewController: UIViewController {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        scrollView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor
+        )
         
         let stackView = UIStackView(arrangedSubviews: [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
                                                        authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton,
@@ -102,7 +107,16 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 30
         scrollView.addSubview(stackView)
-        stackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 80, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
+        stackView.anchor(
+            top: scrollView.topAnchor,
+            leading: scrollView.leadingAnchor,
+            trailing: scrollView.trailingAnchor,
+            bottom: scrollView.bottomAnchor,
+            paddingTop: 80,
+            paddingLeft: 20,
+            paddingRight: 20,
+            paddingBottom: 20
+        )
     }
 
     @objc func guestAdyenBookingTapped(sender: UIButton) {
@@ -111,6 +125,7 @@ class ViewController: UIViewController {
                                           organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = Keys.adyenGuestEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         showKarhoo()
     }
 
@@ -120,19 +135,22 @@ class ViewController: UIViewController {
                                           organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = Keys.braintreeGuestEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         showKarhoo()
     }
 
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
-        KarhooConfig.isExplicitTermsAndConfitionsAprovalRequired = true
+        KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
     }
     
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
     }
 
@@ -140,6 +158,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
 
@@ -147,6 +166,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.adyenTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
     }
     
@@ -154,6 +174,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -161,6 +182,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
 

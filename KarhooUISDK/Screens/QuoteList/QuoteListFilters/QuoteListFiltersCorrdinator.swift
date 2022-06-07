@@ -25,7 +25,8 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListFiltersViewController()
         self.presenter = KarhooQuoteListFiltersPresenter(
-            router: self
+            router: self,
+            onFiltersConfirmed: { _ in }
         )
         self.viewController.setupBinding(presenter)
     }
@@ -42,4 +43,7 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
 }
 
 extension KarhooQuoteListFiltersCoordinator: QuoteListFiltersRouter {
+    func dismiss() {
+        viewController.dismiss(animated: true, completion: nil)
+    }
 }

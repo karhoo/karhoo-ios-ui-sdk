@@ -39,8 +39,8 @@ class CountryCodeTableViewCell: UITableViewCell {
         if !didSetupConstraints {
             view.anchor(top: contentView.topAnchor,
                         leading: contentView.leadingAnchor,
-                        bottom: contentView.bottomAnchor,
-                        trailing: contentView.trailingAnchor)
+                        trailing: contentView.trailingAnchor,
+                        bottom: contentView.bottomAnchor)
             
             didSetupConstraints = true
         }

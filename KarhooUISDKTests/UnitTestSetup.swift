@@ -28,6 +28,11 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
         Self.isExplicitTermsAndConditionsConsentRequired
     }
 
+    var mockPaymentManager = MockPaymentManager()
+    var paymentManager: PaymentManager {
+        mockPaymentManager
+    }
+
     func logo() -> UIImage {
         return UIImage(named: "mockImage",
                        in: Bundle(for: UnitTestSetup.self),
@@ -40,5 +45,10 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
     func authenticationMethod() -> AuthenticationMethod {
         return Self.authenticationMethod
+    }
+
+    var mockAnalytics = MockAnalytics()
+    func analytics() -> Analytics {
+        mockAnalytics
     }
 }

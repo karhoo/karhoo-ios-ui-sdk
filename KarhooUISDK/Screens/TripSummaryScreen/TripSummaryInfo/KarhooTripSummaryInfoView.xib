@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +62,7 @@
                     </connections>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-Qo-xeT">
-                    <rect key="frame" x="74" y="21" width="158" height="23"/>
+                    <rect key="frame" x="74" y="65" width="158" height="23"/>
                     <accessibility key="accessibilityConfiguration" identifier="summary-logo">
                         <bool key="isElement" value="YES"/>
                     </accessibility>
@@ -70,21 +72,21 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3G-aI-eWF" customClass="PinView" customModule="KarhooUISDK">
-                    <rect key="frame" x="10" y="127.5" width="8" height="26"/>
+                    <rect key="frame" x="10" y="171.5" width="8" height="26"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="8" id="MuM-9U-bOR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-1y-INF" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
-                    <rect key="frame" x="10" y="89" width="286" height="15"/>
+                    <rect key="frame" x="10" y="133" width="286" height="15"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="mrm-eE-tJp"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some origin some origin some origin some origin some origin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shl-R4-rWZ">
-                    <rect key="frame" x="34" y="119" width="267" height="17"/>
+                    <rect key="frame" x="34" y="163" width="267" height="17"/>
                     <accessibility key="accessibilityConfiguration" identifier="origin-summary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="YuQ-ds-fr6"/>
@@ -94,7 +96,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some destination" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-O2-IWD">
-                    <rect key="frame" x="34" y="145" width="267" height="17"/>
+                    <rect key="frame" x="34" y="189" width="267" height="17"/>
                     <accessibility key="accessibilityConfiguration" identifier="destination-summary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="gIF-1x-2xV"/>
@@ -103,28 +105,28 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAa-ff-vbI">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAa-ff-vbI">
                     <rect key="frame" x="87" y="170" width="185" height="18"/>
                     <accessibility key="accessibilityConfiguration" identifier="supplier-summary"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fleet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z82-Kc-mYx">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Fleet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z82-Kc-mYx">
                     <rect key="frame" x="34" y="170" width="34" height="18"/>
                     <accessibility key="accessibilityConfiguration" identifier="fleet-summary"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-IP-Tuf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-IP-Tuf">
                     <rect key="frame" x="92" y="196" width="180" height="18"/>
                     <accessibility key="accessibilityConfiguration" identifier="vehicle-description-summary"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Or6-rC-l4t">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Or6-rC-l4t">
                     <rect key="frame" x="34" y="196" width="50" height="18"/>
                     <accessibility key="accessibilityConfiguration" identifier="vehicle-summary"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -132,7 +134,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-6q-Hrk" customClass="TripSummaryHeaderView" customModule="KarhooUISDK">
-                    <rect key="frame" x="10" y="233" width="286" height="15"/>
+                    <rect key="frame" x="10" y="249" width="286" height="15"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="1EO-zX-3Mh"/>
@@ -153,7 +155,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Fri 2 May 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-cX-F58" userLabel="Date Label">
-                    <rect key="frame" x="102.5" y="51" width="101" height="23"/>
+                    <rect key="frame" x="102.5" y="95" width="101" height="23"/>
                     <accessibility key="accessibilityConfiguration" identifier="date-summary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="AfX-aa-hmF"/>

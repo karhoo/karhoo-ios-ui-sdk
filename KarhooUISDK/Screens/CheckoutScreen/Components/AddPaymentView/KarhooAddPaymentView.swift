@@ -83,6 +83,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
             }
         }
     }
+
     private var presenter: AddPaymentPresenter?
     
     public init() {
@@ -141,8 +142,8 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
             let stackInset: CGFloat = 12.0
             stackContainer.anchor(top: topAnchor,
                                   leading: leadingAnchor,
-                                  bottom: bottomAnchor,
                                   trailing: trailingAnchor,
+                                  bottom: bottomAnchor,
                                   paddingTop: stackInset,
                                   paddingBottom: stackInset)
 
@@ -169,7 +170,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         accessibilityHint = UITexts.Generic.edit
 
         updateViewState()
-        actions?.didGetNonce(nonce: nonce.nonce)
+        actions?.didGetNonce(nonce: nonce)
     }
 
     func noPaymentMethod() {

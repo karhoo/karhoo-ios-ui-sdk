@@ -66,6 +66,7 @@ public final class KarhooFeedbackEmailComposer: NSObject, FeedbackEmailComposer 
     }
 
     // MARK: private
+
     private func tripReportBody(trip: TripInfo) -> String {
         let info = """
                    \(UITexts.SupportMailMessage.supportMailReportTrip)

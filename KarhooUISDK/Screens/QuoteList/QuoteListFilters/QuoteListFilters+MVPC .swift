@@ -19,7 +19,9 @@ protocol QuoteListFiltersViewController: BaseViewController {
 protocol QuoteListFiltersPresenter: AnyObject {
     func viewDidLoad()
     func viewWillAppear()
+    func close(save: Bool)
 }
 
 protocol QuoteListFiltersRouter: AnyObject {
+    func dismiss()
 }

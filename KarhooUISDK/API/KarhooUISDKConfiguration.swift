@@ -7,6 +7,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     func logo() -> UIImage
@@ -16,6 +17,9 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     var isExplicitTermsAndConditionsConsentRequired: Bool { get }
 
     var bookingMetadata: [String: Any]? { get }
+    
+    var paymentManager: PaymentManager { get }
+
 }
 
 public extension KarhooUISDKConfiguration {

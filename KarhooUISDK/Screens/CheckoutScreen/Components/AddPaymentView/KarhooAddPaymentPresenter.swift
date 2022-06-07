@@ -13,7 +13,7 @@ final class KarhooAddPaymentPresenter: AddPaymentPresenter {
 
     private let analyticsService: AnalyticsService
     private let userService: UserService
-    private let view: AddPaymentView
+    private unowned let view: AddPaymentView
     private var cardRegistrationFlow: CardRegistrationFlow
 
      init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),

@@ -159,8 +159,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         tableViewCoordinator.viewController.view.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             leading: view.leadingAnchor,
-            bottom: view.bottomAnchor,
-            trailing: view.trailingAnchor
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor
         )
 
         addressPickerView.anchor(
@@ -184,8 +184,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             left: view.leftAnchor,
             right: view.rightAnchor,
             paddingLeft: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.xSmall,
-            paddingRight: UIConstants.Spacing.standard
+            paddingRight: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.xSmall
         )
 
         tableHeaderStackView.anchorToSuperview(
