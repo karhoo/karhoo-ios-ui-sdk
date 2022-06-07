@@ -15,11 +15,11 @@ let package = Package(
             name: "KarhooUISDK",
             targets: ["KarhooUISDK"]),
         .library(
-            name: "AdyenPSP",
-            targets: ["AdyenPSP"]),
+            name: "KarhooUISDKAdyen",
+            targets: ["KarhooUISDKAdyen"]),
         .library(
-            name: "BraintreePSP",
-            targets: ["BraintreePSP"]),
+            name: "KarhooUISDKBraintree",
+            targets: ["KarhooUISDKBraintree"]),
 
     ],
     dependencies: [
@@ -41,14 +41,14 @@ let package = Package(
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"]),
 
         .target(
-            name: "AdyenPSP",
+            name: "KarhooUISDKAdyen",
             dependencies: [.target(name: "KarhooUISDK"),
                            .product(name: "Adyen", package: "Adyen"),
                            .product(name: "AdyenDropIn", package: "Adyen")],
             path: "AdyenPSP"),
 
         .target(
-            name: "BraintreePSP",
+            name: "KarhooUISDKBraintree",
             dependencies: [.target(name: "KarhooUISDK"),
                            .product(name: "BraintreeDropIn", package: "BraintreeDropIn"),
                            .product(name: "BraintreePaymentFlow", package: "Braintree"),
@@ -60,8 +60,8 @@ let package = Package(
             name: "KarhooUISDKTests",
             dependencies: [
                 .target(name: "KarhooUISDK"),
-                .target(name: "AdyenPSP"),
-                .target(name: "BraintreePSP")
+                .target(name: "KarhooUISDKAdyen"),
+                .target(name: "KarhooUISDKBraintree")
             ],
             path: "KarhooUISDKTests",
             exclude: ["Info.plist"])
