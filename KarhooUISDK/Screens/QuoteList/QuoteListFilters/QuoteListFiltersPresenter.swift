@@ -9,14 +9,17 @@
 import Foundation
 import KarhooSDK
 
+protocol QuoteListFilter {
+}
+
 class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     private let router: QuoteListFiltersRouter
-    private let onFiltersConfirmed: ([String]) -> Void
-
+    private let onFiltersConfirmed: ([QuoteListFilter]) -> Void
+    private var selectedFilters: [QuoteListFilter] = []
     init(
         router: QuoteListFiltersRouter,
-        onFiltersConfirmed: @escaping ([String]) -> Void
+        onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
     ) {
         self.router = router
         self.onFiltersConfirmed = onFiltersConfirmed
@@ -30,7 +33,7 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     func close(save: Bool) {
         if save {
-            onFiltersConfirmed([])
+            onFiltersConfirmed(selectedFilters)
         }
         router.dismiss()
     }
