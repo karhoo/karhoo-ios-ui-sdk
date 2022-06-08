@@ -10,7 +10,7 @@ import KarhooSDK
 #if canImport(Braintree)
 import Braintree
 #endif
-#if canImport(Braintree)
+#if canImport(Adyen)
 import Adyen
 #endif
 
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return BTAppSwitch.handleOpen(url, options: options)
         }
         
-        #if canImport(Braintree)
+        #if canImport(Adyen)
         let adyenThreeDSecureUtils = AdyenThreeDSecureUtils()
         if url.scheme?.localizedCaseInsensitiveCompare(adyenThreeDSecureUtils.current3DSReturnUrlScheme) == .orderedSame {
             return RedirectComponent.applicationDidOpen(from: url)

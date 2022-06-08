@@ -17,7 +17,7 @@ public class AdyenPaymentManager: PaymentManager {
     public let threeDSecureProvider: ThreeDSecureProvider? = nil
     public let cardFlow: CardRegistrationFlow = AdyenCardRegistrationFlow()
     public let nonceProvider: PaymentNonceProvider = AdyenPaymentNonceProvider()
-    public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {
+    public func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
         var mutableMeta = meta
         mutableMeta["trip_id"] = nonce
         return mutableMeta
