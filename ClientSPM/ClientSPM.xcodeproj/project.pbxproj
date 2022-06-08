@@ -39,7 +39,7 @@
 		5126821F28379BE7001869C9 /* ClientSPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientSPMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5126822328379BE7001869C9 /* ClientSPMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSPMTests.swift; sourceTree = "<group>"; };
 		5126823D28379C71001869C9 /* karhoo-ios-ui-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "karhoo-ios-ui-sdk"; path = ..; sourceTree = "<group>"; };
-		7B7446472850BC86004595E2 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		7B7446472850BC86004595E2 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = ../../Client/Keys.swift; sourceTree = "<group>"; };
 		7B8A9D3B2850B711003A93DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7B8A9D3D2850B77E003A93DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../Client/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
