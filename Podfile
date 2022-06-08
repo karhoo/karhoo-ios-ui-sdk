@@ -10,13 +10,11 @@ use_frameworks!
 install! 'cocoapods',
          :deterministic_uuids => false
 
-def common_pods
-   pod 'KarhooSDK', '1.6.2'
-end
+pod 'KarhooUISDK', :path => './'
+pod 'KarhooSDK', '1.6.2'
 
 target 'Client' do
   inherit! :search_paths
-  pod 'KarhooUISDK', :path => './'
   pod 'KarhooUISDK/Adyen', :path => './'
   pod 'KarhooUISDK/Braintree', :path => './'
 
@@ -24,7 +22,6 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  common_pods
   pod 'FloatingPanel', '2.0.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
@@ -35,8 +32,5 @@ target 'KarhooUISDK' do
 end
 
 # UISDK unit tests
-target 'KarhooUISDKTests' do
-  inherit! :search_paths
-  pod 'KarhooUISDK', :path => './'
-  common_pods
-end
+# target 'KarhooUISDKTests' do
+# end
