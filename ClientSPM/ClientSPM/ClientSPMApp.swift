@@ -7,7 +7,7 @@
 
 import KarhooSDK
 import KarhooUISDK
-import AdyenPSP
+import KarhooUISDKAdyen
 import SwiftUI
 
 @main
@@ -53,7 +53,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
         KarhooConfig.auth
     }
     
-    var paymentManager: PaymentManager! {
+    var paymentManager: PaymentManager {
         KarhooConfig.paymentManager
     }
 }

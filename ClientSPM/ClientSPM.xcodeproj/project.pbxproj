@@ -12,9 +12,12 @@
 		5126821728379BE7001869C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5126821628379BE7001869C9 /* Assets.xcassets */; };
 		5126821A28379BE7001869C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5126821928379BE7001869C9 /* Preview Assets.xcassets */; };
 		5126822428379BE7001869C9 /* ClientSPMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5126822328379BE7001869C9 /* ClientSPMTests.swift */; };
-		5126824028379CFC001869C9 /* KarhooUISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5126823F28379CFC001869C9 /* KarhooUISDK */; };
-		515604862840BD5100395D83 /* AdyenPSP in Frameworks */ = {isa = PBXBuildFile; productRef = 515604852840BD5100395D83 /* AdyenPSP */; };
-		515604882840BDF800395D83 /* BraintreePSP in Frameworks */ = {isa = PBXBuildFile; productRef = 515604872840BDF800395D83 /* BraintreePSP */; };
+		7B7446482850BC86004595E2 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446472850BC86004595E2 /* Keys.swift */; };
+		7B8A9D3C2850B711003A93DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A9D3B2850B711003A93DC /* MainViewController.swift */; };
+		7B8A9D3E2850B77E003A93DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A9D3D2850B77E003A93DC /* ViewController.swift */; };
+		7B8A9D402850BB0C003A93DC /* KarhooUISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 7B8A9D3F2850BB0C003A93DC /* KarhooUISDK */; };
+		7B8A9D422850BB0C003A93DC /* KarhooUISDKAdyen in Frameworks */ = {isa = PBXBuildFile; productRef = 7B8A9D412850BB0C003A93DC /* KarhooUISDKAdyen */; };
+		7B8A9D442850BB0C003A93DC /* KarhooUISDKBraintree in Frameworks */ = {isa = PBXBuildFile; productRef = 7B8A9D432850BB0C003A93DC /* KarhooUISDKBraintree */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		5126821F28379BE7001869C9 /* ClientSPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientSPMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5126822328379BE7001869C9 /* ClientSPMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSPMTests.swift; sourceTree = "<group>"; };
 		5126823D28379C71001869C9 /* karhoo-ios-ui-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "karhoo-ios-ui-sdk"; path = ..; sourceTree = "<group>"; };
+		7B7446472850BC86004595E2 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		7B8A9D3B2850B711003A93DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7B8A9D3D2850B77E003A93DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../Client/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,9 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515604882840BDF800395D83 /* BraintreePSP in Frameworks */,
-				515604862840BD5100395D83 /* AdyenPSP in Frameworks */,
-				5126824028379CFC001869C9 /* KarhooUISDK in Frameworks */,
+				7B8A9D402850BB0C003A93DC /* KarhooUISDK in Frameworks */,
+				7B8A9D422850BB0C003A93DC /* KarhooUISDKAdyen in Frameworks */,
+				7B8A9D442850BB0C003A93DC /* KarhooUISDKBraintree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +88,13 @@
 		5126821128379BE3001869C9 /* ClientSPM */ = {
 			isa = PBXGroup;
 			children = (
+				7B8A9D3D2850B77E003A93DC /* ViewController.swift */,
 				5126821228379BE3001869C9 /* ClientSPMApp.swift */,
 				5126821428379BE3001869C9 /* ContentView.swift */,
+				7B8A9D3B2850B711003A93DC /* MainViewController.swift */,
 				5126821628379BE7001869C9 /* Assets.xcassets */,
 				5126821828379BE7001869C9 /* Preview Content */,
+				7B7446472850BC86004595E2 /* Keys.swift */,
 			);
 			path = ClientSPM;
 			sourceTree = "<group>";
@@ -138,9 +147,9 @@
 			);
 			name = ClientSPM;
 			packageProductDependencies = (
-				5126823F28379CFC001869C9 /* KarhooUISDK */,
-				515604852840BD5100395D83 /* AdyenPSP */,
-				515604872840BDF800395D83 /* BraintreePSP */,
+				7B8A9D3F2850BB0C003A93DC /* KarhooUISDK */,
+				7B8A9D412850BB0C003A93DC /* KarhooUISDKAdyen */,
+				7B8A9D432850BB0C003A93DC /* KarhooUISDKBraintree */,
 			);
 			productName = ClientSPM;
 			productReference = 5126820F28379BE3001869C9 /* ClientSPM.app */;
@@ -226,8 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8A9D3C2850B711003A93DC /* MainViewController.swift in Sources */,
 				5126821528379BE3001869C9 /* ContentView.swift in Sources */,
+				7B8A9D3E2850B77E003A93DC /* ViewController.swift in Sources */,
 				5126821328379BE3001869C9 /* ClientSPMApp.swift in Sources */,
+				7B7446482850BC86004595E2 /* Keys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,17 +505,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5126823F28379CFC001869C9 /* KarhooUISDK */ = {
+		7B8A9D3F2850BB0C003A93DC /* KarhooUISDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KarhooUISDK;
 		};
-		515604852840BD5100395D83 /* AdyenPSP */ = {
+		7B8A9D412850BB0C003A93DC /* KarhooUISDKAdyen */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AdyenPSP;
+			productName = KarhooUISDKAdyen;
 		};
-		515604872840BDF800395D83 /* BraintreePSP */ = {
+		7B8A9D432850BB0C003A93DC /* KarhooUISDKBraintree */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = BraintreePSP;
+			productName = KarhooUISDKBraintree;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
