@@ -360,7 +360,6 @@
 		40FE0CED22D7D2D4003F65B5 /* RateButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */; };
 		40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */; };
 		40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */; };
-		4EA3C9F7E31A2C132F1B0040 /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E569183D40E72789BA75BA8 /* Pods_KarhooUISDK.framework */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		5188CD4A2832F5810071BFEB /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188CD492832F5810071BFEB /* MainActionButton.swift */; };
@@ -385,6 +384,7 @@
 		51CA129D2840F13600B0337F /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
 		51EAE7902840DE2D0033A8B1 /* KarhooTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */; };
+		5C0A8BDAEF11C6B6CC8E6CB5 /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F189179DA62C25EB4DE704 /* Pods_Client.framework */; };
 		5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */; };
 		5C1CD0B1241A5D88004AFF7D /* KarhooTripOptionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A3241A5D88004AFF7D /* KarhooTripOptionsPresenter.swift */; };
 		5C1CD0B2241A5D88004AFF7D /* TripOptionsMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A4241A5D88004AFF7D /* TripOptionsMVP.swift */; };
@@ -464,7 +464,6 @@
 		6BF5C48D2799DE410056C460 /* MockPassengerDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF5C48C2799DE410056C460 /* MockPassengerDetailsDelegate.swift */; };
 		6F4235BF2391800C00233C02 /* AddressGoogleLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4235BE2391800C00233C02 /* AddressGoogleLogoView.swift */; };
 		6F89EA0D248E5CA300F47C1B /* KarhooAddressDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */; };
-		6FDDEF01FE6D925E51D4669B /* Pods_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5415540B724728AD4542F32 /* Pods_Client.framework */; };
 		791A9CDE26C4EC2A00B52DA1 /* KarhooAddPassengerDetailsAndPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791A9CDD26C4EC2A00B52DA1 /* KarhooAddPassengerDetailsAndPaymentView.swift */; };
 		79793ED8270F2E2200944896 /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79793ED7270F2E2200944896 /* UIViewController+extensions.swift */; };
 		799DC592268F66EC00A48589 /* MapAnnotationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */; };
@@ -488,10 +487,12 @@
 		7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */; };
 		986578A0F928780978136BC5 /* RidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986573E003E549DB4C06EA7A /* RidesViewController.xib */; };
 		A1A0312626171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */; };
+		A6940926F3694556D7DEC96E /* Pods_KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D7919A94343F6170872537 /* Pods_KarhooUISDK.framework */; };
 		D8263F4E262096C30042F259 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8263F4D262096C30042F259 /* TimeFormatter.swift */; };
 		D88BC2862620C51C00F1EA60 /* TimeFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */; };
 		D8D8ED2A261F1FDA0061066D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D8D8ED2D261F1FDA0061066D /* Localizable.stringsdict */; };
 		D8D8ED2B261F1FDA0061066D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D8D8ED2D261F1FDA0061066D /* Localizable.stringsdict */; };
+		DCD87903BEC6118D5DC68D09 /* Pods_KarhooUISDK_KarhooUISDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C317B3FF9FEFD7F3B39577 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */; };
 		FC046595221484E2004E76FE /* RideDetailsScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */; };
 		FC04659F2215A6AD004E76FE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC04659E2215A6AD004E76FE /* Navigation.swift */; };
 		FC0465A12215A962004E76FE /* UINavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0465A02215A962004E76FE /* UINavigation.swift */; };
@@ -758,7 +759,6 @@
 		09F86F85222D8553008C86DE /* MockJourneyDetailsObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockJourneyDetailsObserver.swift; sourceTree = "<group>"; };
 		1413303125DBDC3100EDAD3B /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		145EC6F225C98CC800F1FC94 /* MockQuoteSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteSorter.swift; sourceTree = "<group>"; };
-		14655F38EF68DFEDA30BBA2B /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
 		14A5B93225C1823C00986616 /* KarhooConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooConfig.swift; sourceTree = "<group>"; };
 		14A5B95625C1941C00986616 /* MockTripAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTripAllocationView.swift; sourceTree = "<group>"; };
 		14A5B95F25C1982200986616 /* KarhooAddressSearchBarPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressSearchBarPresenterSpec.swift; sourceTree = "<group>"; };
@@ -771,7 +771,8 @@
 		14A5B9C625C1CFCB00986616 /* KarhooRideDetailsPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRideDetailsPresenterSpec.swift; sourceTree = "<group>"; };
 		23391EAB22C65525007D704E /* AddressCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCellViewModel.swift; sourceTree = "<group>"; };
 		2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyInfo.swift; sourceTree = "<group>"; };
-		29481E1FCD588670B9C548D3 /* Pods-KarhooUISDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.release.xcconfig"; sourceTree = "<group>"; };
+		28C317B3FF9FEFD7F3B39577 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDK_KarhooUISDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39F189179DA62C25EB4DE704 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		400BE99122CF4D27002942CC /* KarhooAddPaymentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooAddPaymentPresenter.swift; sourceTree = "<group>"; };
 		4010B0D92458847500E7B0F1 /* KarhooTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTextInputView.swift; sourceTree = "<group>"; };
 		4010B0DB245C5DD900E7B0F1 /* KarhooInputViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooInputViewState.swift; sourceTree = "<group>"; };
@@ -872,6 +873,7 @@
 		40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateButtonViewModel.swift; sourceTree = "<group>"; };
 		40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingView.swift; sourceTree = "<group>"; };
 		40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRatingPresenter.swift; sourceTree = "<group>"; };
+		46D7919A94343F6170872537 /* Pods_KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		5141C9192846375A00F72E84 /* AdyenPSP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdyenPSP.h; sourceTree = "<group>"; };
 		5141C91E2846377A00F72E84 /* AdyenThreeDSecureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenThreeDSecureUtils.swift; sourceTree = "<group>"; };
@@ -898,7 +900,6 @@
 		51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTestConfiguration.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
 		51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTestCase.swift; sourceTree = "<group>"; };
-		572A3CBE658FF0221C1DCAED /* Pods-KarhooUISDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.debug.xcconfig"; sourceTree = "<group>"; };
 		5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOptionsViewModel.swift; sourceTree = "<group>"; };
 		5C1CD0A3241A5D88004AFF7D /* KarhooTripOptionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTripOptionsPresenter.swift; sourceTree = "<group>"; };
 		5C1CD0A4241A5D88004AFF7D /* TripOptionsMVP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOptionsMVP.swift; sourceTree = "<group>"; };
@@ -946,7 +947,7 @@
 		5CDACF2D23CCAC8700FD4F56 /* KarhooMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMKMapView.swift; sourceTree = "<group>"; };
 		5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModel.swift; sourceTree = "<group>"; };
 		5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilders.swift; sourceTree = "<group>"; };
-		5E569183D40E72789BA75BA8 /* Pods_KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63BA3363F367A16F0B2207EB /* Pods-KarhooUISDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.debug.xcconfig"; sourceTree = "<group>"; };
 		6B1DDE762796FBBF000A2C78 /* KarhooLoyaltyBalanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyBalanceView.swift; sourceTree = "<group>"; };
 		6B26061B2743ED5C0030DB4B /* KarhooLoyaltyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyView.swift; sourceTree = "<group>"; };
 		6B26061D2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyViewMVP.swift; sourceTree = "<group>"; };
@@ -1014,8 +1015,9 @@
 		7B68F6AF284E2ED000F2E89B /* KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeViewController.swift; sourceTree = "<group>"; };
 		7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePresenter.swift; sourceTree = "<group>"; };
-		835A6A294A1937BBA4724FBD /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
+		9CAB73662B7F269EEDEEFFED /* Pods-Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.debug.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.debug.xcconfig"; sourceTree = "<group>"; };
+		9D3DE166E2229CC61FED11A5 /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListPresenterSpec.swift; sourceTree = "<group>"; };
 		AE6E39E5271DADE500EE92C9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE6E39E6271DADE500EE92C9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -1023,12 +1025,14 @@
 		AE6E39E8271DAE0E00EE92C9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		AE6E39E9271DAE2100EE92C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE6E39EA271DAE2100EE92C9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = nl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		B25CE906B5EA7C68B5D03BA0 /* Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC194267DC22481F51A2882E /* Pods-KarhooUISDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK.release.xcconfig"; sourceTree = "<group>"; };
 		D8263F4D262096C30042F259 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFormatterSpec.swift; sourceTree = "<group>"; };
 		D8D8ED2C261F1FDA0061066D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED31261F1FE00061066D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED32261F1FE10061066D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		F5415540B724728AD4542F32 /* Pods_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE9D3AFD5DE7A35DAE28709 /* Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreenBuilder.swift; sourceTree = "<group>"; };
 		FC04659722148912004E76FE /* PopupDialogPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogPresenterSpec.swift; sourceTree = "<group>"; };
 		FC04659E2215A6AD004E76FE /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -1183,7 +1187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FDDEF01FE6D925E51D4669B /* Pods_Client.framework in Frameworks */,
+				5C0A8BDAEF11C6B6CC8E6CB5 /* Pods_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,7 +1195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EA3C9F7E31A2C132F1B0040 /* Pods_KarhooUISDK.framework in Frameworks */,
+				A6940926F3694556D7DEC96E /* Pods_KarhooUISDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,6 +1203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD87903BEC6118D5DC68D09 /* Pods_KarhooUISDK_KarhooUISDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2740,10 +2745,12 @@
 		79C4CC0320274ACDA240783A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				14655F38EF68DFEDA30BBA2B /* Pods-Client.debug.xcconfig */,
-				835A6A294A1937BBA4724FBD /* Pods-Client.release.xcconfig */,
-				572A3CBE658FF0221C1DCAED /* Pods-KarhooUISDK.debug.xcconfig */,
-				29481E1FCD588670B9C548D3 /* Pods-KarhooUISDK.release.xcconfig */,
+				9CAB73662B7F269EEDEEFFED /* Pods-Client.debug.xcconfig */,
+				9D3DE166E2229CC61FED11A5 /* Pods-Client.release.xcconfig */,
+				63BA3363F367A16F0B2207EB /* Pods-KarhooUISDK.debug.xcconfig */,
+				CC194267DC22481F51A2882E /* Pods-KarhooUISDK.release.xcconfig */,
+				B25CE906B5EA7C68B5D03BA0 /* Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig */,
+				DEE9D3AFD5DE7A35DAE28709 /* Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2774,8 +2781,9 @@
 				094DAF9D2400503F00035F9F /* KarhooSDK.framework */,
 				094DAF952400418000035F9F /* KarhooSDK.framework */,
 				09EBC66922D612C600F1177E /* KarhooSDK.framework */,
-				F5415540B724728AD4542F32 /* Pods_Client.framework */,
-				5E569183D40E72789BA75BA8 /* Pods_KarhooUISDK.framework */,
+				39F189179DA62C25EB4DE704 /* Pods_Client.framework */,
+				46D7919A94343F6170872537 /* Pods_KarhooUISDK.framework */,
+				28C317B3FF9FEFD7F3B39577 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3435,11 +3443,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C2E261E2420F8AD00B1FF0C /* Build configuration list for PBXNativeTarget "Client" */;
 			buildPhases = (
-				5776CDC7198C98011F0DB335 /* [CP] Check Pods Manifest.lock */,
+				A5EC4330A75A6A1ED07DDDF3 /* [CP] Check Pods Manifest.lock */,
 				5C2E26092420F8AC00B1FF0C /* Sources */,
 				5C2E260A2420F8AC00B1FF0C /* Frameworks */,
 				5C2E260B2420F8AC00B1FF0C /* Resources */,
-				65C57BB51E34482A06E8BCBC /* [CP] Embed Pods Frameworks */,
+				F0801AA274B6D5A10EE408AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3454,7 +3462,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC8F472821539E24007841FB /* Build configuration list for PBXNativeTarget "KarhooUISDK" */;
 			buildPhases = (
-				C66E7AB869D193FB6350844E /* [CP] Check Pods Manifest.lock */,
+				548FE884F56473F39CA7191C /* [CP] Check Pods Manifest.lock */,
 				FC8F471121539E24007841FB /* Headers */,
 				FC8F470F21539E24007841FB /* Sources */,
 				FC8F471021539E24007841FB /* Frameworks */,
@@ -3474,9 +3482,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC8F472B21539E24007841FB /* Build configuration list for PBXNativeTarget "KarhooUISDKTests" */;
 			buildPhases = (
+				B0543C76FD4965DC5FAD8F65 /* [CP] Check Pods Manifest.lock */,
 				FC8F471921539E24007841FB /* Sources */,
 				FC8F471A21539E24007841FB /* Frameworks */,
 				FC8F471B21539E24007841FB /* Resources */,
+				23D4D5436C5929CAA421C6D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3585,7 +3595,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5776CDC7198C98011F0DB335 /* [CP] Check Pods Manifest.lock */ = {
+		23D4D5436C5929CAA421C6D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		548FE884F56473F39CA7191C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3600,7 +3627,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Client-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDK-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3625,24 +3652,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		65C57BB51E34482A06E8BCBC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C66E7AB869D193FB6350844E /* [CP] Check Pods Manifest.lock */ = {
+		A5EC4330A75A6A1ED07DDDF3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3657,11 +3667,50 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDK-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Client-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0543C76FD4965DC5FAD8F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KarhooUISDK-KarhooUISDKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0801AA274B6D5A10EE408AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4285,7 +4334,7 @@
 /* Begin XCBuildConfiguration section */
 		5C2E261F2420F8AD00B1FF0C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14655F38EF68DFEDA30BBA2B /* Pods-Client.debug.xcconfig */;
+			baseConfigurationReference = 9CAB73662B7F269EEDEEFFED /* Pods-Client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -4307,7 +4356,7 @@
 		};
 		5C2E26202420F8AD00B1FF0C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 835A6A294A1937BBA4724FBD /* Pods-Client.release.xcconfig */;
+			baseConfigurationReference = 9D3DE166E2229CC61FED11A5 /* Pods-Client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -4457,7 +4506,7 @@
 		};
 		FC8F472921539E24007841FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 572A3CBE658FF0221C1DCAED /* Pods-KarhooUISDK.debug.xcconfig */;
+			baseConfigurationReference = 63BA3363F367A16F0B2207EB /* Pods-KarhooUISDK.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4498,7 +4547,7 @@
 		};
 		FC8F472A21539E24007841FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29481E1FCD588670B9C548D3 /* Pods-KarhooUISDK.release.xcconfig */;
+			baseConfigurationReference = CC194267DC22481F51A2882E /* Pods-KarhooUISDK.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -4538,6 +4587,7 @@
 		};
 		FC8F472C21539E24007841FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B25CE906B5EA7C68B5D03BA0 /* Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
@@ -4562,6 +4612,7 @@
 		};
 		FC8F472D21539E24007841FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE9D3AFD5DE7A35DAE28709 /* Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
