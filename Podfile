@@ -11,8 +11,7 @@ install! 'cocoapods',
          :deterministic_uuids => false
 
 def common_pods
-# pod 'KarhooSDK', :git => 'git@github.com:karhoo/karhoo-ios-sdk.git', :branch => 'MOB-4020-release-1.6'
-   pod 'KarhooSDK', '1.6.1'
+   pod 'KarhooSDK', '1.6.2'
 end
 
 target 'Client' do
