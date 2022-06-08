@@ -23,7 +23,7 @@ class EmptyBookingMapStrategySpec: KarhooTestCase {
         mockJourneyDetailsManager = MockJourneyDetailsManager()
         testObject = EmptyMapBookingStrategy(userLocationProvider: mockUserLocationProvider,
                                              journeyDetailsManager: mockJourneyDetailsManager)
-        testObject.load(map: mockMapView)
+        testObject.load(map: mockMapView, onLocationPermissionDenied: nil)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
     }

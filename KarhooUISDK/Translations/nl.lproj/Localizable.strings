@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Kan geen schattingen krijgen";
 
-"K3002" = "Kan geen schattingen krijgen (geen beschikbaarheid gevonden in het gevraagde gebied)";
+"K3002" = "Sorry, voor deze bestemming zijn reserveringen voor zeer korte termijn niet beschikbaar, u kunt wel reserveren voor uw volgende reis!";
 
 "K3003" = "Kan geen schattingen krijgen (kon gespecificeerde offerte niet vinden)";
 
@@ -196,6 +196,12 @@
 
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Neem contact op";
+
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Instellingen";
+
+"Text.Booking.NoLocationPermissionAlertMessage" = "Locatiegegevens die nodig zijn om uw locatie te tonen. Om de machtigingsinstellingen te wijzigen, gaat u naar het tabblad iOS-instellingen en kiest u een nieuwe waarde.";
+
+"Text.Booking.NoLocationPermissionAlertTitle" = "Toestemming nodig";
 
 "Text.Booking.Passenger" = "Passagier";
 
@@ -549,9 +555,6 @@
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
-
-/* No availability in requested area, Fuzzy */
-"Text.KarhooError.K3002" = "Er zijn geen vloten beschikbaar in dit gebied.";
 
 "Text.KarhooError.Q0001" = "De ophaallocatie en eindbestemming kunnen niet hetzelfde zijn.";
 
