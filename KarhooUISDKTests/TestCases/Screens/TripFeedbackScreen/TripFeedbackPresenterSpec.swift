@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class TripFeedbackPresenter: XCTestCase {
+final class TripFeedbackPresenter: KarhooTestCase {
 
     private var testObject: KarhooTripFeedbackPresenter!
     private var testTripId = "testTripId"

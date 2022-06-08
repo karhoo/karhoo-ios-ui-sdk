@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class CancelRideBehaviourSpec: XCTestCase {
+class CancelRideBehaviourSpec: KarhooTestCase {
 
     private var mockAlertHandler: MockAlertHandler!
     private var mockTripService: MockTripService!

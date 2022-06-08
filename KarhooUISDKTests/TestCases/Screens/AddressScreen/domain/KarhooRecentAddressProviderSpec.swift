@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooRecentAddressProviderSpec: XCTestCase {
+class KarhooRecentAddressProviderSpec: KarhooTestCase {
 
     private var testUserDefaults: MockUserDefaults!
     private var testObject: KarhooRecentAddressProvider!

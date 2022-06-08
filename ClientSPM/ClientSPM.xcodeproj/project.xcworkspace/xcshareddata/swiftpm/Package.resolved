@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/karhoo/karhoo-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "1d0d70a7700f1b091a5b66f29cbc66f0913bd1a1",
-          "version": "1.6.1"
+          "revision": "e8e4bbd9280f8fb5771a819b57624399f966371e",
+          "version": "1.6.2"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
         "state": {
           "branch": null,
-          "revision": "dacede2d256b2807a1c5b4906a9c87c9f6f32fa3",
-          "version": "3.3.0"
+          "revision": "c7d7b0c91ef0ad7e413022edfcf5d6f75561e2d5",
+          "version": "3.3.1"
         }
       },
       {

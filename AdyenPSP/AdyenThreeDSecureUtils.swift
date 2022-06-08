@@ -4,8 +4,9 @@
 //
 //  Created by Mostafa Hadian on 04/03/2021.
 //
-
+//
 import Foundation
+import KarhooUISDK
 
 public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
@@ -24,8 +25,6 @@ public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
         guard let bundleId = Bundle.main.bundleIdentifier else {
             return ""
         }
-
         return "\(bundleId).adyen"
     }
-
 }

@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-final class BookingViewControllerBuilderSpec: XCTestCase {
+final class BookingViewControllerBuilderSpec: KarhooTestCase {
 
     private let mockLocationService = MockLocationService()
     private var testObject: BookingScreenBuilder!

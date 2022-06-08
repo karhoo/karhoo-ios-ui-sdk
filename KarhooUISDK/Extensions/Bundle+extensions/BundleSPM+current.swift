@@ -12,7 +12,7 @@ import Foundation
 
 extension Bundle{
 //    The Swift Package Manager creates a static extension on Bundle for the package module. You access the resource by specifying Bundle.module as the bundle.
-    static var current: Bundle {
+    public static var current: Bundle {
         return .module
     }
 }

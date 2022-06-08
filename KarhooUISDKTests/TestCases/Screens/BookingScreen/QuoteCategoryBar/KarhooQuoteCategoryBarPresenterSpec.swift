@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
+class KarhooQuoteCategoryBarPresenterSpec: KarhooTestCase {
 
     private var mockView: MockQuoteCategoryBarView!
     private var mockAppAnalytics: MockAnalytics!

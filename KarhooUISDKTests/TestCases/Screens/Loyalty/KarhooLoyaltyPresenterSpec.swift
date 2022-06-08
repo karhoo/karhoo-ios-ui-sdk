@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooLoyaltyPresenterSpec: XCTestCase {
+class KarhooLoyaltyPresenterSpec: KarhooTestCase {
     
     private var testObject: KarhooLoyaltyPresenter!
     private var mockView: MockLoyaltyView!

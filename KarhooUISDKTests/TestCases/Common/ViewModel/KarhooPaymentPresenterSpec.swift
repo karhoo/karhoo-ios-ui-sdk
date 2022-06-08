@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class KarhooPaymentPresenterSpec: XCTestCase {
+final class KarhooPaymentPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooAddPaymentPresenter!
     private var mockAnalyticsService = MockAnalyticsService()

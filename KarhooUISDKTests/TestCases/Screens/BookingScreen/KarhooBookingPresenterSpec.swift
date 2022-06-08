@@ -13,7 +13,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 // swiftlint:disable file_length
-final class KarhooBookingPresenterSpec: XCTestCase {
+final class KarhooBookingPresenterSpec: KarhooTestCase {
 
     private var mockAppAnalytics: MockAnalytics!
     private var mockJourneyDetailsManager: MockJourneyDetailsManager!

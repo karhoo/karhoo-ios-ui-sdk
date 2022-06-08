@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooAddressSearchBarPresenterSpec: XCTestCase {
+class KarhooAddressSearchBarPresenterSpec: KarhooTestCase {
 
     private var mockAddressSearchBar: MockAddressSearchBar!
     private var mockAddressMode: AddressType!

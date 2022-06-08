@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class DatePickerPresenterSpec: XCTestCase {
+class DatePickerPresenterSpec: KarhooTestCase {
 
     private var mockView: MockDatePickerView!
     private var testAnalytics: MockAnalytics!

@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class QuoteCellViewModelSpec: XCTestCase {
+class QuoteCellViewModelSpec: KarhooTestCase {
 
     private var testObject: QuoteViewModel!
     

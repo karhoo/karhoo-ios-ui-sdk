@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooTripSummaryPresenterSpec: XCTestCase {
+class KarhooTripSummaryPresenterSpec: KarhooTestCase {
 
     private var mockAnalytics: MockAnalytics!
     private var mockCallback: ScreenResult<TripSummaryResult>?
@@ -19,6 +19,7 @@ class KarhooTripSummaryPresenterSpec: XCTestCase {
     private var testObject: KarhooTripSummaryPresenter!
 
     override func setUp() {
+        super.setUp()
         mockAnalytics = MockAnalytics()
         mockTrip = TestUtil.getRandomTrip()
         mockTripSummaryScreen = MockTripSummaryView()

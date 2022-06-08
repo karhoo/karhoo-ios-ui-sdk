@@ -58,10 +58,6 @@ public final class UISDKScreenRouting: Routing {
         return routing.checkoutScreenBuilder
     }
 
-    public func paymentScreen() -> PaymentScreenBuilder {
-        return internalRouting.paymentScreenBuilder
-    }
-
     internal func datePicker() -> DatePickerScreenBuilder {
         return internalRouting.datePickerScreenBuilder
     }

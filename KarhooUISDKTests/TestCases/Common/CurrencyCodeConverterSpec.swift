@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class CurrencyCodeConverterSpec: XCTestCase {
+class CurrencyCodeConverterSpec: KarhooTestCase {
 
     /**
      *  Given:  A valid currency code in the quote

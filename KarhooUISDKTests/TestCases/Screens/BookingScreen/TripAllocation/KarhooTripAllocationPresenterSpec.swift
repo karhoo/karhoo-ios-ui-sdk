@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooTripAllocationPresenterSpec: XCTestCase {
+final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooTripAllocationPresenter!
     private var mockTripService: MockTripService!

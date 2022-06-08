@@ -6,6 +6,7 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import UIKit
 @testable import KarhooUISDK
 
 final class MockTripFeedbackScreenBuilder: TripFeedbackScreenBuilder {

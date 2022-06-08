@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class RideCellStackButtonPresenterSpec: XCTestCase {
+class RideCellStackButtonPresenterSpec: KarhooTestCase {
 
     private var testObject: RideCellStackButtonPresenter!
     private var mockStackButtonView: MockStackButtonView!

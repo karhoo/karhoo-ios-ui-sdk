@@ -8,10 +8,11 @@
 
 import Foundation
 import XCTest
+
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
-final class BraintreeCardRegistrationFlowSpec: XCTestCase {
+final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
     private var testObject: BraintreeCardRegistrationFlow!
     private var mockPaymentScreensBuilder: MockPaymentScreenBuilder!

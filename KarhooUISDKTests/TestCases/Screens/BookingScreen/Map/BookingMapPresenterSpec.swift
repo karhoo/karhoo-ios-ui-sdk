@@ -11,7 +11,7 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-class BookingMapPresenterSpec: XCTestCase {
+class BookingMapPresenterSpec: KarhooTestCase {
 
     private var testPickupOnlyStrategy: MockPickupOnlyStrategy!
     private var testDestinationSetStrategy: MockBookingMapStrategy!
