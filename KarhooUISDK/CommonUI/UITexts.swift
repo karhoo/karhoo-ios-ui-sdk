@@ -145,7 +145,7 @@ public enum UITexts {
 
     /* Demand API (Karhoo specific) errors */
     public enum KarhooError {
-        public static let K3002 = "Text.KarhooError.K3002".localized // no availability in requested area
+        public static let K3002 = "K3002".localized // no availability in requested area
         public static let Q0001 = "Text.KarhooError.Q0001".localized // origin
     }
     

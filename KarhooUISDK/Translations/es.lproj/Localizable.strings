@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Imposible obtener estimaciones";
 
-"K3002" = "Imposible obtener estimaciones (no se encontró disponibilidad en el área solicitada)";
+"K3002" = "Lo sentimos, la reserva instantánea no está disponible para este destino, pero puede reservar con antelación para su próximo viaje.";
 
 "K3003" = "Imposible obtener estimaciones (no se encontró la tarifa específica)";
 
@@ -197,9 +197,9 @@
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "contacto";
 
-"Text.Booking.NoLocationPermissionAlertConfirm" = "";
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Ajustes";
 
-"Text.Booking.NoLocationPermissionAlertMessage" = "";
+"Text.Booking.NoLocationPermissionAlertMessage" = "Datos de ubicación necesarios para mostrar su ubicación. Para cambiar la configuración de permisos, vaya a la pestaña de configuración de iOS y elija un nuevo valor.";
 
 "Text.Booking.NoLocationPermissionAlertTitle" = "Permiso necesario";
 
@@ -555,9 +555,6 @@
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
-
-/* No availability in requested area, Fuzzy */
-"Text.KarhooError.K3002" = "Sin disponibilidad en la zona";
 
 "Text.KarhooError.Q0001" = "La recogida y el destino no pueden ser iguales.";
 
