@@ -13,6 +13,8 @@
 		5126821A28379BE7001869C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5126821928379BE7001869C9 /* Preview Assets.xcassets */; };
 		5126822428379BE7001869C9 /* ClientSPMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5126822328379BE7001869C9 /* ClientSPMTests.swift */; };
 		5126824028379CFC001869C9 /* KarhooUISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5126823F28379CFC001869C9 /* KarhooUISDK */; };
+		515604862840BD5100395D83 /* AdyenPSP in Frameworks */ = {isa = PBXBuildFile; productRef = 515604852840BD5100395D83 /* AdyenPSP */; };
+		515604882840BDF800395D83 /* BraintreePSP in Frameworks */ = {isa = PBXBuildFile; productRef = 515604872840BDF800395D83 /* BraintreePSP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515604882840BDF800395D83 /* BraintreePSP in Frameworks */,
+				515604862840BD5100395D83 /* AdyenPSP in Frameworks */,
 				5126824028379CFC001869C9 /* KarhooUISDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +139,8 @@
 			name = ClientSPM;
 			packageProductDependencies = (
 				5126823F28379CFC001869C9 /* KarhooUISDK */,
+				515604852840BD5100395D83 /* AdyenPSP */,
+				515604872840BDF800395D83 /* BraintreePSP */,
 			);
 			productName = ClientSPM;
 			productReference = 5126820F28379BE3001869C9 /* ClientSPM.app */;
@@ -490,6 +496,14 @@
 		5126823F28379CFC001869C9 /* KarhooUISDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KarhooUISDK;
+		};
+		515604852840BD5100395D83 /* AdyenPSP */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AdyenPSP;
+		};
+		515604872840BDF800395D83 /* BraintreePSP */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BraintreePSP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
