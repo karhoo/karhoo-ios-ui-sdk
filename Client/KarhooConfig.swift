@@ -15,7 +15,6 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
 
-
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
 
     func environment() -> KarhooEnvironment {

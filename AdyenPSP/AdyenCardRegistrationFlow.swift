@@ -35,9 +35,11 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
          AdyenAmount(currency: currencyCode, value: amount)
     }
 
-    init(paymentService: PaymentService = Karhoo.getPaymentService(),
-         adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
-         threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()) {
+    init(
+        paymentService: PaymentService = Karhoo.getPaymentService(),
+        adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
+        threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()
+    ) {
         self.paymentService = paymentService
         self.adyenResponseHandler = adyenResponseHandler
         self.threeDSecureUtil = threeDSecureUtil
@@ -47,11 +49,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         self.baseViewController = baseViewController
     }
 
-    func start(cardCurrency: String,
-               amount: Int,
-               supplierPartnerId: String,
-               showUpdateCardAlert: Bool,
-               callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    func start(
+        cardCurrency: String,
+        amount: Int,
+        supplierPartnerId: String,
+        showUpdateCardAlert: Bool,
+        callback: @escaping (OperationResult<CardFlowResult>) -> Void
+    ) {
         currencyCode = cardCurrency
         self.amount = amount
         self.supplierPartnerId = supplierPartnerId
@@ -270,7 +274,11 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         case .refused(let reason, let code):
             finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason, code: code))))
         case .handleResult(let code):
-            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable, code: code ?? UITexts.Errors.noDetailsAvailable))))
+            let error = ErrorModel(
+                message: code ?? UITexts.Errors.noDetailsAvailable,
+                code: code ?? UITexts.Errors.noDetailsAvailable
+            )
+            finish(result: .completed(value: .didFailWithError(error)))
         }
     }
 }

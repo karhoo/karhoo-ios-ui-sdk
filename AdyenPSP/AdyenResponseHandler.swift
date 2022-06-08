@@ -42,11 +42,9 @@ struct AdyenResponseHandler {
         guard let adyenActionObject = data[action] as? [String: Any] else {
             return resolve(data: data, tripId: tripId)
         }
-
         guard let jsonData = try? JSONSerialization.data(withJSONObject: adyenActionObject, options: []) else {
             return .failure
         }
-
         guard let adyenAction = try? JSONDecoder().decode(Action.self,
                                                           from: jsonData) else {
             return .failure
@@ -67,17 +65,19 @@ struct AdyenResponseHandler {
         }
 
         if result == refused {
-            return .refused(reason: (data[refusalReason] as? String) ?? UITexts.Errors.noDetailsAvailable, code: (data[resultCode] as? String) ?? UITexts.Errors.noDetailsAvailable)
+            return .refused(
+                reason: (data[refusalReason] as? String) ?? UITexts.Errors.noDetailsAvailable,
+                code: (data[resultCode] as? String) ?? UITexts.Errors.noDetailsAvailable
+            )
         }
-
         return .handleResult(code: result)
     }
 
     private func paymentIcon(adyenDescription: String?) -> String {
         switch adyenDescription {
-        case "mc": return "MasterCard"
-        case "visa": return "Visa"
-        default: return ""
+            case "mc": return "MasterCard"
+            case "visa": return "Visa"
+            default: return ""
         }
     }
 }

@@ -24,8 +24,10 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
     private var baseViewController: BaseViewController?
     private var resultCallback: ((OperationResult<ThreeDSecureCheckResult>) -> Void)?
 
-    init(paymentService: PaymentService = Karhoo.getPaymentService(),
-         userService: UserService = Karhoo.getUserService()) {
+    init(
+        paymentService: PaymentService = Karhoo.getPaymentService(),
+        userService: UserService = Karhoo.getUserService()
+    ) {
         self.paymentService = paymentService
         self.userService = userService
     }
@@ -34,20 +36,22 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
         self.baseViewController = baseViewController
     }
 
-    func threeDSecureCheck(nonce: String,
-                           currencyCode: String,
-                           paymentAmout: NSDecimalNumber,
-                           callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void) {
-
+    func threeDSecureCheck(
+        nonce: String,
+        currencyCode: String,
+        paymentAmout: NSDecimalNumber,
+        callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
+    ) {
         self.resultCallback = callback
 
         guard let organisationId = organisationId() else {
             resultCallback?(.completed(value: .failedToInitialisePaymentService))
             return
         }
-
-        let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
-                                                     currency: currencyCode)
+        let sdkTokenRequest = PaymentSDKTokenPayload(
+            organisationId: organisationId,
+            currency: currencyCode
+        )
 
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest)
             .execute(callback: { [weak self] result in
@@ -70,9 +74,11 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
         return nil
     }
 
-    private func start3DSecureCheck(authToken: PaymentSDKToken,
-                                    nonce: String,
-                                    amount: NSDecimalNumber) {
+    private func start3DSecureCheck(
+        authToken: PaymentSDKToken,
+        nonce: String,
+        amount: NSDecimalNumber
+    ) {
         guard let apiClient = BTAPIClient(authorization: authToken.token) else {
             return
         }
@@ -85,15 +91,15 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
         request.versionRequested = .version2
         request.threeDSecureRequestDelegate = self
 
-        let decimalNumberHandler = NSDecimalNumberHandler(roundingMode: .plain,
-                                                          scale: 2,
-                                                          raiseOnExactness: false,
-                                                          raiseOnOverflow: false,
-                                                          raiseOnUnderflow: false,
-                                                          raiseOnDivideByZero: false)
-
+        let decimalNumberHandler = NSDecimalNumberHandler(
+            roundingMode: .plain,
+            scale: 2,
+            raiseOnExactness: false,
+            raiseOnOverflow: false,
+            raiseOnUnderflow: false,
+            raiseOnDivideByZero: false
+        )
         request.amount = amount.rounding(accordingToBehavior: decimalNumberHandler)
-
         self.paymentFlowDriver?.startPaymentFlow(request) { [weak self] (result, error) in
             if error?._code == BTPaymentFlowDriverErrorType.canceled.rawValue {
                 self?.resultCallback?(.cancelledByUser)
@@ -119,14 +125,20 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
 }
 
 extension BraintreeThreeDSecureProvider: BTThreeDSecureRequestDelegate {
-    func onLookupComplete(_ request: BTThreeDSecureRequest, lookupResult result: BTThreeDSecureResult, next: @escaping () -> Void) {
+    func onLookupComplete(
+        _ request: BTThreeDSecureRequest,
+        lookupResult result: BTThreeDSecureResult,
+        next: @escaping () -> Void
+    ) {
         next()
     }
 
 
-    func onLookupComplete(_ request: BTThreeDSecureRequest,
-                          result: BTThreeDSecureLookup,
-                          next: @escaping () -> Void) {
+    func onLookupComplete(
+        _ request: BTThreeDSecureRequest,
+        result: BTThreeDSecureLookup,
+        next: @escaping () -> Void
+    ) {
         next()
     }
 

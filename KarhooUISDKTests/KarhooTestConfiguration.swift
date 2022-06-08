@@ -13,13 +13,11 @@ import UIKit
 
 class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
-    static var guestSettings = GuestSettings(identifier: "",
-                                             referer: "", organisationId: "")
+    static var guestSettings = GuestSettings(identifier: "", referer: "", organisationId: "")
     static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
     static var isExplicitTermsAndConditionsConsentRequired: Bool = false
     
-
     var isExplicitTermsAndConditionsConsentRequired: Bool {
         Self.isExplicitTermsAndConditionsConsentRequired
     }

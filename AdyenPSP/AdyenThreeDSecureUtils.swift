@@ -25,8 +25,6 @@ public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
         guard let bundleId = Bundle.main.bundleIdentifier else {
             return ""
         }
-
         return "\(bundleId).adyen"
     }
-
 }

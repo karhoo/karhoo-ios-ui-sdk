@@ -19,10 +19,12 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private let userService: UserService
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
 
-    public init(paymentScreenBuilder: PaymentScreenBuilder = BraintreePaymentScreenBuilder(),
-                paymentService: PaymentService = Karhoo.getPaymentService(),
-                userService: UserService = Karhoo.getUserService(),
-                analytics: AnalyticsService = Karhoo.getAnalyticsService()) {
+    public init(
+        paymentScreenBuilder: PaymentScreenBuilder = BraintreePaymentScreenBuilder(),
+        paymentService: PaymentService = Karhoo.getPaymentService(),
+        userService: UserService = Karhoo.getUserService(),
+        analytics: AnalyticsService = Karhoo.getAnalyticsService()
+    ) {
         self.paymentScreenBuilder = paymentScreenBuilder
         self.paymentService = paymentService
         self.userService = userService
@@ -33,11 +35,13 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         self.baseViewController = baseViewController
     }
 
-   public func start(cardCurrency: String,
-                     amount: Int,
-                     supplierPartnerId: String,
-                     showUpdateCardAlert: Bool,
-                     callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    public func start(
+        cardCurrency: String,
+        amount: Int,
+        supplierPartnerId: String,
+        showUpdateCardAlert: Bool,
+        callback: @escaping (OperationResult<CardFlowResult>) -> Void
+    ) {
         self.callback = callback
 
         if showUpdateCardAlert {
@@ -63,7 +67,6 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         } else if let userOrg = userService.getCurrentUser()?.organisations.first?.id {
             return userOrg
         }
-
         return ""
     }
 
@@ -84,23 +87,26 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func buildBraintreeUI(paymentsToken: PaymentSDKToken) {
-        paymentScreenBuilder.buildAddCardScreen(paymentsToken: paymentsToken,
-                                                paymentMethodAdded: { [weak self] result in
-                                                    self?.handleBraintreeUICompletion(result)
+        paymentScreenBuilder.buildAddCardScreen(
+            paymentsToken: paymentsToken,
+            paymentMethodAdded: { [weak self] result in
+                self?.handleBraintreeUICompletion(result)
             },
-                                                flowItemCallback: { [weak self] result in
-                                                    self?.didBuildBraintreeUIScreen(result)
-        })
+            flowItemCallback: { [weak self] result in
+                self?.didBuildBraintreeUIScreen(result)
+            }
+        )
     }
 
     private func didBuildBraintreeUIScreen(_ result: ScreenResult<Screen>) {
         guard let item = result.completedValue() else {
-            baseViewController?.showAlert(title: UITexts.Generic.error,
-                                          message: UITexts.Errors.missingPaymentSDKToken,
-                                          error: result.errorValue())
+            baseViewController?.showAlert(
+                title: UITexts.Generic.error,
+                message: UITexts.Errors.missingPaymentSDKToken,
+                error: result.errorValue()
+            )
             return
         }
-
         baseViewController?.present(item, animated: true, completion: nil)
     }
 
