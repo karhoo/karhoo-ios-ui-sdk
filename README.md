@@ -47,7 +47,7 @@ KarhooUISDK is released as a SPM beginning from version 1.8.0
 Use URL for repository: `https://github.com/karhoo/karhoo-ios-ui-sdk`
 
 and you will find 3 available packages:
-`KarhooUISDK`: only core pacgage, 	
+`KarhooUISDK`: only core package, 	
 `KarhooUISDKAdyen`: core + Adyen payment provider
 `KarhooUISDKBraintree`: core + Braintree Payment Provider
 
