@@ -10,10 +10,6 @@ use_frameworks!
 install! 'cocoapods',
          :deterministic_uuids => false
 
-def common_pods
-   pod 'KarhooSDK', '1.6.2'
-end
-
 target 'Client' do
   inherit! :search_paths
   pod 'KarhooUISDK', :path => './'
@@ -24,7 +20,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  common_pods
+  pod 'KarhooSDK', '1.6.2'
   pod 'FloatingPanel', '2.0.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
@@ -32,11 +28,8 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.1'
-end
 
-# UISDK unit tests
-target 'KarhooUISDKTests' do
-  inherit! :search_paths
-  pod 'KarhooUISDK', :path => './'
-  common_pods
+  target 'KarhooUISDKTests' do
+    inherit! :complete
+  end
 end
