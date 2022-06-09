@@ -401,6 +401,7 @@
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
+		51E755722852093600C9C928 /* QuoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E755712852093600C9C928 /* QuoteListFilter.swift */; };
 		5C089DF82507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */; };
 		5C1B298725247E4F00E3CEEF /* AdyenPaymentNonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */; };
 		5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */; };
@@ -937,6 +938,7 @@
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
+		51E755712852093600C9C928 /* QuoteListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFilter.swift; sourceTree = "<group>"; };
 		5C089DF72507A2E100B3D4CA /* AdyenCardRegistrationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenCardRegistrationFlow.swift; sourceTree = "<group>"; };
 		5C1B298625247E4E00E3CEEF /* AdyenPaymentNonceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenPaymentNonceProvider.swift; sourceTree = "<group>"; };
 		5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOptionsViewModel.swift; sourceTree = "<group>"; };
@@ -2333,6 +2335,7 @@
 				510522E4284F43CE001DA60F /* QuoteListFiltersCorrdinator.swift */,
 				510522E5284F43CE001DA60F /* QuoteListFiltersPresenter.swift */,
 				510522E3284F43CE001DA60F /* QuoteListFiltersViewController.swift */,
+				51E755712852093600C9C928 /* QuoteListFilter.swift */,
 			);
 			path = QuoteListFilters;
 			sourceTree = "<group>";
@@ -3935,6 +3938,7 @@
 				FC435EF72211B37A00FB6BB5 /* RidesListViewController.swift in Sources */,
 				5161FEDA284E5AF7001F87A6 /* UINavigationController+navigationCompletions.swift in Sources */,
 				5C4252592518D06000CCCB5D /* CardRegistrationFlow.swift in Sources */,
+				51E755722852093600C9C928 /* QuoteListFilter.swift in Sources */,
 				407EC7BB22CF564E00F24CFC /* UITexts.swift in Sources */,
 				7B34181E27A89E5900E2D49D /* LegalNoticeStringBuilder.swift in Sources */,
 				09DA1A3122F1A866004C6B20 /* FeedbackButtonView.swift in Sources */,

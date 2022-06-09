@@ -9,19 +9,20 @@
 import Foundation
 import KarhooSDK
 
-protocol QuoteListFilter {
-}
-
 class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     private let router: QuoteListFiltersRouter
-    private let onFiltersConfirmed: ([QuoteListFilter]) -> Void
-    private var selectedFilters: [QuoteListFilter] = []
+    private let onResultsForFiltersChosen: (QuoteListSelectedFiltersModel) -> Int
+    private let onFiltersConfirmed: (QuoteListSelectedFiltersModel) -> Void
+    private var selectedFilters: QuoteListSelectedFiltersModel = .default()
+
     init(
         router: QuoteListFiltersRouter,
-        onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
+        onResultsForFiltersChosen: @escaping (QuoteListSelectedFiltersModel) -> Int,
+        onFiltersConfirmed: @escaping (QuoteListSelectedFiltersModel) -> Void
     ) {
         self.router = router
+        self.onResultsForFiltersChosen = onResultsForFiltersChosen
         self.onFiltersConfirmed = onFiltersConfirmed
     }
 
@@ -31,10 +32,36 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     func viewWillAppear() {
     }
 
+//    func filterSelected(_ filter: QuoteListFilter) {
+//    }
+
     func close(save: Bool) {
         if save {
             onFiltersConfirmed(selectedFilters)
         }
         router.dismiss()
+    }
+}
+
+struct QuoteListSelectedFiltersModel {
+    init(numberOfLuggages: Int, numberOfPassengers: Int, vehicleTypes: String, vehicleClasses: String) {
+        self.numberOfLuggages = numberOfLuggages
+        self.numberOfPassengers = numberOfPassengers
+        self.vehicleTypes = vehicleTypes
+        self.vehicleClasses = vehicleClasses
+    }
+    
+    let numberOfLuggages: Int
+    let numberOfPassengers: Int
+    let vehicleTypes: String
+    let vehicleClasses: String
+    
+    static func `default`() -> QuoteListSelectedFiltersModel {
+        QuoteListSelectedFiltersModel(
+            numberOfLuggages: 0,
+            numberOfPassengers: 1,
+            vehicleTypes: "",
+            vehicleClasses: ""
+        )
     }
 }
