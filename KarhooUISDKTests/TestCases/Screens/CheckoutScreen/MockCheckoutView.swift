@@ -111,8 +111,8 @@ final class MockCheckoutView: MockBaseViewController, CheckoutView {
         return passengerDetailsToReturn
     }
 
-    var paymentNonceToReturn: String?
-    func getPaymentNonce() -> String? {
+    var paymentNonceToReturn: Nonce?
+    func getPaymentNonce() -> Nonce? {
         return paymentNonceToReturn
     }
     

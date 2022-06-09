@@ -12,11 +12,11 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooPrebookConfirmationPresenterSpec: XCTestCase {
+final class KarhooPrebookConfirmationPresenterSpec: KarhooTestCase {
 
     private var mockView: MockPrebookConfirmationView!
     private var mockQuote: Quote!
-    private var mockBookingDetails: BookingDetails!
+    private var mockJourneyDetails: JourneyDetails!
     private var mockCallback: ScreenResult<PrebookConfirmationAction>?
     private var testObject: KarhooPrebookConfirmationPresenter!
 
@@ -25,9 +25,9 @@ final class KarhooPrebookConfirmationPresenterSpec: XCTestCase {
         mockCallback = nil
         mockView = MockPrebookConfirmationView()
         mockQuote = TestUtil.getRandomQuote()
-        mockBookingDetails = TestUtil.getRandomBookingDetails()
+        mockJourneyDetails = TestUtil.getRandomJourneyDetails()
         testObject = KarhooPrebookConfirmationPresenter(quote: mockQuote,
-                                                        bookingDetails: mockBookingDetails,
+                                                        journeyDetails: mockJourneyDetails,
                                                         callback: prebookConfirmationCallback)
         testObject.load(view: mockView)
     }

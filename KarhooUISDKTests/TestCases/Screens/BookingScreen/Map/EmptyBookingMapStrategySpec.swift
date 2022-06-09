@@ -9,19 +9,21 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-class EmptyBookingMapStrategySpec: XCTestCase {
+class EmptyBookingMapStrategySpec: KarhooTestCase {
 
-    private var mockMapView = MockKarhooMapView()
-    private var mockUserLocationProvider = MockUserLocationProvider()
-    private var testObject = EmptyMapBookingStrategy()
-    private let mockBookingStatus = MockBookingStatus()
+    private var mockMapView: MockKarhooMapView!
+    private var mockUserLocationProvider: MockUserLocationProvider!
+    private var testObject: EmptyMapBookingStrategy!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
 
     override func setUp() {
         super.setUp()
-
+        mockMapView = MockKarhooMapView()
+        mockUserLocationProvider = MockUserLocationProvider()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         testObject = EmptyMapBookingStrategy(userLocationProvider: mockUserLocationProvider,
-                                             bookingStatus: mockBookingStatus)
-        testObject.load(map: mockMapView)
+                                             journeyDetailsManager: mockJourneyDetailsManager)
+        testObject.load(map: mockMapView, onLocationPermissionDenied: nil)
 
         KarhooTestConfiguration.authenticationMethod = .karhooUser
     }
@@ -33,7 +35,7 @@ class EmptyBookingMapStrategySpec: XCTestCase {
      * And: Focus button is hidden for guest
      */
     func testStart() {
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
         XCTAssertTrue(mockMapView.centerPinHidden!)
         XCTAssertNotNil(mockUserLocationProvider.locationChangedCallback)
 
@@ -49,9 +51,9 @@ class EmptyBookingMapStrategySpec: XCTestCase {
     func testFocusMap() {
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
 
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**
@@ -62,9 +64,9 @@ class EmptyBookingMapStrategySpec: XCTestCase {
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
         mockUserLocationProvider.lastKnownLocation = TestUtil.getRandomLocation()
 
-        testObject.start(bookingDetails: nil)
+        testObject.start(journeyDetails: nil)
 
-        XCTAssertNotNil(mockBookingStatus.journeyInfoSet?.origin)
+        XCTAssertNotNil(mockJourneyDetailsManager.journeyInfoSet?.origin)
     }
 
     /**

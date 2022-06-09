@@ -79,7 +79,7 @@ class MockAnalytics: Analytics {
     }
     
     var quoteListOpenedCalled = false
-    func quoteListOpened(_ bookingDetails: BookingDetails) {
+    func quoteListOpened(_ journeyDetails: JourneyDetails) {
         quoteListOpenedCalled = true
     }
     
@@ -99,7 +99,7 @@ class MockAnalytics: Analytics {
     }
     
     var paymentFailedCalled = false
-    func paymentFailed(_ message: String) {
+    func paymentFailed(message: String, last4Digits: String, date: Date, amount: String, currency: String) {
         paymentFailedCalled = true
     }
     

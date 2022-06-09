@@ -16,14 +16,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     final class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(
             quote: Quote,
-            bookingDetails: BookingDetails,
+            journeyDetails: JourneyDetails,
             bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<TripInfo>
         ) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(
                 quote: quote,
-                bookingDetails: bookingDetails,
+                journeyDetails: journeyDetails,
                 bookingMetadata: bookingMetadata,
                 callback: callback
             )
@@ -51,7 +51,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
-    var paymentNonce: String?
+    var paymentNonce: Nonce?
 
     // MARK: - Child ViewControllers
   
@@ -370,7 +370,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func resetPaymentNonce() {
-        self.paymentNonce = nil
+        paymentNonce = nil
         passengerDetailsAndPaymentView.noPaymentMethod()
     }
     
@@ -450,7 +450,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.details
     }
     
-    func getPaymentNonce() -> String? {
+    func getPaymentNonce() -> Nonce? {
         paymentNonce
     }
     

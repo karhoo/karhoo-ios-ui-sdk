@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class RideDetailsStackButtonPresenterSpec: XCTestCase {
+final class RideDetailsStackButtonPresenterSpec: KarhooTestCase {
 
     private var testObject: RideDetailsStackButtonPresenter!
     private var mockStackButtonView: MockStackButtonView!

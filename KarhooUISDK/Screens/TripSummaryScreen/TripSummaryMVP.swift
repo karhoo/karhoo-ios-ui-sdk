@@ -20,6 +20,6 @@ protocol TripSummaryView: AnyObject {
 }
 
 public enum TripSummaryResult {
-    case rebookWithBookingDetails(_: BookingDetails)
+    case rebookWithJourneyDetails(_: JourneyDetails)
     case closed
 }

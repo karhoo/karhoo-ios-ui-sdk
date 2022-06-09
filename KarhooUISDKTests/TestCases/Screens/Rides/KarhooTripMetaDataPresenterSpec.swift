@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooTripMetaDataPresenterSpec: XCTestCase {
+final class KarhooTripMetaDataPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooTripMetaDataPresenter!
     private var mockTripMetaDataView: MockTripMetaDataView!

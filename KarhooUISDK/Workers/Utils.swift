@@ -7,6 +7,7 @@
 
 import Foundation
 import PhoneNumberKit
+import UIKit
 
 public class Utils {
     // The unicode values are possible variations for apostrophe / single quote
@@ -34,7 +35,7 @@ public class Utils {
         }
     }
 
-    static func convertToDictionary(data: Data) -> [String: Any]? {
+    public static func convertToDictionary(data: Data) -> [String: Any]? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         } catch {

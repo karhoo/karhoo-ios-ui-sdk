@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-final class SideMenuContentPresenterTest: XCTestCase {
+final class SideMenuContentPresenterTest: KarhooTestCase {
 
     private var testObject: MenuContentScreenPresenter!
     private var mockSideMenuHandler: MockSideMenuHandler!

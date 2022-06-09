@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-enum PaymentNonceProviderResult {
+public enum PaymentNonceProviderResult {
     case nonce(nonce: Nonce)
     case threeDSecureCheckFailed
     case failedToInitialisePaymentService(error: KarhooError?)
@@ -17,7 +17,7 @@ enum PaymentNonceProviderResult {
     case cancelledByUser
 }
 
-protocol PaymentNonceProvider {
+public protocol PaymentNonceProvider {
     func getPaymentNonce(user: UserInfo,
                          organisationId: String,
                          quote: Quote,

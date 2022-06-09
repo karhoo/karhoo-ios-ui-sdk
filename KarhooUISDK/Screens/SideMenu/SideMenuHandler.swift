@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol SideMenuHandler {
     func showProfile(onViewController viewController: UIViewController)

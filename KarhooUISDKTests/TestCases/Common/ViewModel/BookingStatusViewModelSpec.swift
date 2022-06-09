@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class BookingStatusViewModelSpec: XCTestCase {
+class BookingStatusViewModelSpec: KarhooTestCase {
 
     private var testObject: BookingStatusViewModel!
 

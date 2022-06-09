@@ -38,7 +38,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Could not get estimates";
 
-"K3002" = "Could not get estimates (no availability found within requested area)";
+"K3002" = "Apologies ASAP bookings are not currently available for this destination, however you can book in advance for your next trip!";
 
 "K3003" = "Could not get estimates (could not find specified quote)";
 
@@ -196,6 +196,12 @@
 
 /* Get in touch */
 "Text.Booking.NoAvailabilityLink" = "Get in touch";
+
+"Text.Booking.NoLocationPermissionAlertConfirm" = "Settings";
+
+"Text.Booking.NoLocationPermissionAlertMessage" = "Location permission needed to show your location. To change permission settings, please go to the device settings and enable the location permission for this app";
+
+"Text.Booking.NoLocationPermissionAlertTitle" = "Permission needed";
 
 "Text.Booking.Passenger" = "Passenger";
 
@@ -549,9 +555,6 @@
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
-
-/* No availability in requested area, Fuzzy */
-"Text.KarhooError.K3002" = "There are no fleets available in this area.";
 
 "Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
 

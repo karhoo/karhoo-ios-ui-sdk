@@ -11,12 +11,12 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-class BookingMapPresenterSpec: XCTestCase {
+class BookingMapPresenterSpec: KarhooTestCase {
 
     private var testPickupOnlyStrategy: MockPickupOnlyStrategy!
     private var testDestinationSetStrategy: MockBookingMapStrategy!
-    private var testBookingDetails: BookingDetails!
-    private var mockBookingStatus: MockBookingStatus!
+    private var testJourneyDetails: JourneyDetails!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
     private var testObject: KarhooBookingMapPresenter!
 
     override func setUp() {
@@ -25,15 +25,15 @@ class BookingMapPresenterSpec: XCTestCase {
         testPickupOnlyStrategy = MockPickupOnlyStrategy()
         testDestinationSetStrategy = MockBookingMapStrategy()
 
-        testBookingDetails = TestUtil.getRandomBookingDetails(destinationSet: false,
+        testJourneyDetails = TestUtil.getRandomJourneyDetails(destinationSet: false,
                                                               dateSet: false)
 
-        mockBookingStatus = MockBookingStatus()
-        mockBookingStatus.bookingDetailsToReturn = testBookingDetails
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
+        mockJourneyDetailsManager.journeyDetailsToReturn = testJourneyDetails
 
         testObject = KarhooBookingMapPresenter(pickupOnlyStrategy: testPickupOnlyStrategy,
                                                destinationSetStrategy: testDestinationSetStrategy,
-                                               bookingStatus: mockBookingStatus)
+                                               journeyDetailsManager: mockJourneyDetailsManager)
     }
 
     /** 
@@ -50,7 +50,7 @@ class BookingMapPresenterSpec: XCTestCase {
      * Then:    All the strategies should reveive that map
      */
     func testLoadMap() {
-        testObject.load(map: nil)
+        testObject.load(map: nil, onLocationPermissionDenied: nil)
 
         XCTAssert(testPickupOnlyStrategy.loadMapCalled)
         XCTAssert(testDestinationSetStrategy.loadMapCalled)
@@ -61,21 +61,21 @@ class BookingMapPresenterSpec: XCTestCase {
      * Then:    The pickup only strategy should be used
      */
     func testDestinationNotSet() {
-        var details = TestUtil.getRandomBookingDetails()
-        testObject.bookingStateChanged(details: details)
+        var details = TestUtil.getRandomJourneyDetails()
+        testObject.journeyDetailsChanged(details: details)
 
         details.destinationLocationDetails = nil
         testDestinationSetStrategy.reset()
         testPickupOnlyStrategy.reset()
 
-        testObject.bookingStateChanged(details: details)
+        testObject.journeyDetailsChanged(details: details)
 
         XCTAssertFalse(isStarted(strategy: testDestinationSetStrategy))
         XCTAssertFalse(strategyUsed(testDestinationSetStrategy))
 
         XCTAssert(isStarted(strategy: testPickupOnlyStrategy))
         XCTAssert(strategyUsed(testPickupOnlyStrategy))
-        XCTAssertEqual(testPickupOnlyStrategy.startBookingDetails?.originLocationDetails?.placeId,
+        XCTAssertEqual(testPickupOnlyStrategy.startJourneyDetails?.originLocationDetails?.placeId,
                       details.originLocationDetails?.placeId)
     }
 
@@ -84,8 +84,8 @@ class BookingMapPresenterSpec: XCTestCase {
      * Then:    The destination set strategy should be used
      */
     func testDestinationSet() {
-        let details = TestUtil.getRandomBookingDetails()
-        testObject.bookingStateChanged(details: details)
+        let details = TestUtil.getRandomJourneyDetails()
+        testObject.journeyDetailsChanged(details: details)
 
         XCTAssert(isStarted(strategy: testDestinationSetStrategy))
         XCTAssert(strategyUsed(testDestinationSetStrategy))
@@ -100,8 +100,8 @@ class BookingMapPresenterSpec: XCTestCase {
      * Then:    The current state should get the new booking details
      */
     func testNoChange() {
-        let details = TestUtil.getRandomBookingDetails(destinationSet: false, dateSet: false)
-        testObject.bookingStateChanged(details: details)
+        let details = TestUtil.getRandomJourneyDetails(destinationSet: false, dateSet: false)
+        testObject.journeyDetailsChanged(details: details)
 
         XCTAssertFalse(isStarted(strategy: testDestinationSetStrategy))
         XCTAssertFalse(isStarted(strategy: testPickupOnlyStrategy))

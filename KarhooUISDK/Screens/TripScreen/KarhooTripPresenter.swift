@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 
 final class KarhooTripPresenter: TripPresenter,
                                  CancelRideDelegate {
@@ -247,9 +248,9 @@ final class KarhooTripPresenter: TripPresenter,
 
             switch screenResult {
             case .rebookTrip(let trip):
-                var bookingDetails = BookingDetails(originLocationDetails: trip.origin.toLocationInfo())
-                bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
-                self?.finishWithResult(.completed(result: .rebookTrip(rebookDetails: bookingDetails)))
+                var journeyDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
+                journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
+                self?.finishWithResult(.completed(result: .rebookTrip(rebookDetails: journeyDetails)))
             default:
                 self?.finishWithResult(.completed(result: .closed))
             }

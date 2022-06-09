@@ -16,12 +16,16 @@ final class DestinationSetStrategy: BookingMapStrategy {
     private var currentPickupAddress: LocationInfo?
     private var currentDestinationAddress: LocationInfo?
     
-    func load(map: MapView?, reverseGeolocate: Bool = true) {
+    func load(
+        map: MapView?,
+        reverseGeolocate: Bool = true,
+        onLocationPermissionDenied: (() -> Void)?
+    ) {
         self.map = map
     }
 
-    func start(bookingDetails: BookingDetails?) {
-        handle(bookingDetails: bookingDetails)
+    func start(journeyDetails: JourneyDetails?) {
+        handle(journeyDetails: journeyDetails)
     }
 
     func focusMap() {
@@ -36,8 +40,8 @@ final class DestinationSetStrategy: BookingMapStrategy {
         map?.zoom(to: [pickup, destination])
     }
 
-    func changed(bookingDetails: BookingDetails?) {
-        handle(bookingDetails: bookingDetails)
+    func changed(journeyDetails: JourneyDetails?) {
+        handle(journeyDetails: journeyDetails)
     }
 
     func stop() {
@@ -46,12 +50,12 @@ final class DestinationSetStrategy: BookingMapStrategy {
         removePins()
     }
 
-    private func handle(bookingDetails: BookingDetails?) {
-        guard let pickup = bookingDetails?.originLocationDetails else {
+    private func handle(journeyDetails: JourneyDetails?) {
+        guard let pickup = journeyDetails?.originLocationDetails else {
             return
         }
 
-        guard let destination = bookingDetails?.destinationLocationDetails else {
+        guard let destination = journeyDetails?.destinationLocationDetails else {
             return
         }
 

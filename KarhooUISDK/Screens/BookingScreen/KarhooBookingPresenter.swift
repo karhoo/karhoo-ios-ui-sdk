@@ -8,11 +8,12 @@
 
 import CoreLocation
 import KarhooSDK
+import UIKit
 
 final class KarhooBookingPresenter {
 
     private weak var view: BookingView?
-    private let bookingStatus: BookingStatus
+    private let journeyDetailsManager: JourneyDetailsManager
     private let userService: UserService
     private let analytics: Analytics
     private let phoneNumberCaller: PhoneNumberCallerProtocol
@@ -29,7 +30,7 @@ final class KarhooBookingPresenter {
     private let paymentService: PaymentService
 
     // MARK: - Init
-    init(bookingStatus: BookingStatus = KarhooBookingStatus.shared,
+    init(journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -46,7 +47,7 @@ final class KarhooBookingPresenter {
          paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.userService = userService
         self.analytics = analytics
-        self.bookingStatus = bookingStatus
+        self.journeyDetailsManager = journeyDetailsManager
         self.phoneNumberCaller = phoneNumberCaller
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
@@ -60,32 +61,32 @@ final class KarhooBookingPresenter {
         self.urlOpener = urlOpener
         self.paymentService = paymentService
         userService.add(observer: self)
-        bookingStatus.add(observer: self)
+        journeyDetailsManager.add(observer: self)
     }
     // swiftlint:enable line_length
 
     deinit {
         userService.remove(observer: self)
-        bookingStatus.remove(observer: self)
+        journeyDetailsManager.remove(observer: self)
     }
 
     // MARK: - Checkout
     private func showCheckoutView(
         quote: Quote,
-        bookingDetails: BookingDetails,
+        journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
         let checkoutView = checkoutScreenBuilder
             .buildCheckoutScreen(
                 quote: quote,
-                bookingDetails: bookingDetails,
+                journeyDetails: journeyDetails,
                 bookingMetadata: bookingMetadata,
                 callback: { [weak self] result in
                     self?.view?.dismiss(animated: false, completion: {
                         self?.bookingRequestCompleted(
                             result: result,
                             quote: quote,
-                            details: bookingDetails
+                            details: journeyDetails
                         )
                     })
                 }
@@ -95,11 +96,11 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Trip booked
-    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: BookingDetails) {
+    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: JourneyDetails) {
         if let trip = result.completedValue() {
             handleNewlyBooked(trip: trip,
                               quote: quote,
-                              bookingDetails: details)
+                              journeyDetails: details)
             return
         }
 
@@ -111,16 +112,16 @@ final class KarhooBookingPresenter {
     }
 
     private func rebookTrip(_ trip: TripInfo) {
-        var bookingDetails = BookingDetails(originLocationDetails: trip.origin.toLocationInfo())
-        bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
+        var journeyDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
+        journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
-        populate(with: bookingDetails)
+        populate(with: journeyDetails)
         setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
                                    quote: Quote,
-                                   bookingDetails: BookingDetails) {
+                                   journeyDetails: JourneyDetails) {
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
@@ -136,11 +137,11 @@ final class KarhooBookingPresenter {
                             error: nil)
 
         default:
-            if bookingDetails.isScheduled {
+            if journeyDetails.isScheduled {
                 view?.reset()
                 showPrebookConfirmation(quote: quote,
                                         trip: trip,
-                                        bookingDetails: bookingDetails)
+                                        journeyDetails: journeyDetails)
             } else {
                 view?.showAllocationScreen(trip: trip)
             }
@@ -149,8 +150,8 @@ final class KarhooBookingPresenter {
 }
 
 // MARK: - BookingDetailsObserver
-extension KarhooBookingPresenter: BookingDetailsObserver {
-    func bookingStateChanged(details: BookingDetails?) {
+extension KarhooBookingPresenter: JourneyDetailsObserver {
+    func journeyDetailsChanged(details: JourneyDetails?) {
         if details?.originLocationDetails != nil,
             details?.destinationLocationDetails != nil {
             view?.showQuoteList()
@@ -168,7 +169,7 @@ extension KarhooBookingPresenter: UserStateObserver {
 
     func userStateUpdated(user: UserInfo?) {
         if user == nil {
-            resetBookingStatus()
+            resetJourneyDetails()
             tripRatingCache.clearTripRatings()
         }
     }
@@ -189,7 +190,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func exitPressed() {
-        bookingStatus.reset()
+        journeyDetailsManager.reset()
         view?.dismiss(animated: true, completion: { [weak self] in
             self?.callback?(ScreenResult.cancelled(byUser: true))
         })
@@ -204,22 +205,22 @@ extension KarhooBookingPresenter: BookingPresenter {
         paymentService.getPaymentProvider().execute(callback: { _ in})
     }
 
-    func resetBookingStatus() {
-        bookingStatus.reset()
+    func resetJourneyDetails() {
+        journeyDetailsManager.reset()
     }
 
-    func bookingDetails() -> BookingDetails? {
-        return bookingStatus.getBookingDetails()
+    func getJourneyDetails() -> JourneyDetails? {
+        return journeyDetailsManager.getJourneyDetails()
     }
 
-    func populate(with bookingDetails: BookingDetails) {
-        bookingStatus.reset(with: bookingDetails)
+    func populate(with journeyDetails: JourneyDetails) {
+        journeyDetailsManager.reset(with: journeyDetails)
     }
     
     func setViewMapPadding() {
-        let bookingDetails = bookingStatus.getBookingDetails()
-        if bookingDetails?.originLocationDetails != nil,
-            bookingDetails?.destinationLocationDetails != nil {
+        let journeyDetails = journeyDetailsManager.getJourneyDetails()
+        if journeyDetails?.originLocationDetails != nil,
+            journeyDetails?.destinationLocationDetails != nil {
             view?.setMapPadding(bottomPaddingEnabled: true)
         } else {
             view?.setMapPadding(bottomPaddingEnabled: false)
@@ -228,7 +229,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
-        resetBookingStatus()
+        resetJourneyDetails()
 
         switch trip.state {
         case .karhooCancelled:
@@ -243,9 +244,9 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         view?.hideAllocationScreen()
 
-        var bookingDetails = BookingDetails(originLocationDetails: trip.origin.toLocationInfo())
-        bookingDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
-        populate(with: bookingDetails)
+        var journeyDetails = JourneyDetails(originLocationDetails: trip.origin.toLocationInfo())
+        journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
+        populate(with: journeyDetails)
     }
 
     func tripCancellationFailed(trip: TripInfo) {
@@ -263,7 +264,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func tripSuccessfullyCancelled() {
-        resetBookingStatus()
+        resetJourneyDetails()
         view?.hideAllocationScreen()
         view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
                         message: UITexts.Bookings.cancellationSuccessAlertMessage,
@@ -309,18 +310,18 @@ extension KarhooBookingPresenter: BookingPresenter {
     func didSelectQuote(quote: Quote) {
         view?.hideQuoteList()
 
-        guard let bookingDetails = bookingDetails() else {
+        guard let bookingDetails = getJourneyDetails() else {
             return
         }
 
-        showCheckoutView(quote: quote, bookingDetails: bookingDetails)
+        showCheckoutView(quote: quote, journeyDetails: bookingDetails)
     }
 
     // MARK: Prebook
-    func showPrebookConfirmation(quote: Quote, trip: TripInfo, bookingDetails: BookingDetails) {
+    func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
-                                            bookingDetails: bookingDetails,
+                                            journeyDetails: journeyDetails,
                                             confirmationCallback: { [weak self] result in
                                                 self?.view?.dismiss(animated: true, completion: nil)
                                                 self?.prebookConfirmationCompleted(result: result, trip: trip)

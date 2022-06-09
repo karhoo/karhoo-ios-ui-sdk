@@ -122,7 +122,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     private func setupMapView(reverseGeolocate: Bool) {
-        mapPresenter.load(map: mapView, reverseGeolocate: reverseGeolocate)
+        mapPresenter.load(
+            map: mapView,
+            reverseGeolocate: reverseGeolocate,
+            onLocationPermissionDenied: { [weak self] in
+                self?.showNoLocationPermissionsPopUp()
+            }
+        )
         mapView.set(presenter: mapPresenter)
     }
 
@@ -206,17 +212,17 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func reset() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
     }
 
     func resetAndLocate() {
-        presenter.resetBookingStatus()
+        presenter.resetJourneyDetails()
         mapPresenter.focusMap()
     }
 
-    func set(bookingDetails: BookingDetails) {
+    func set(journeyDetails: JourneyDetails) {
         DispatchQueue.main.async { [weak self] in
-            self?.presenter.populate(with: bookingDetails)
+            self?.presenter.populate(with: journeyDetails)
         }
     }
 
@@ -260,6 +266,23 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     func set(leftNavigationButton: NavigationBarItemIcon) {
         navigationBar.set(leftIcon: leftNavigationButton)
+    }
+    
+    private func showNoLocationPermissionsPopUp() {
+        let alertController = UIAlertController(
+            title: UITexts.Booking.noLocationPermissionTitle,
+            message: UITexts.Booking.noLocationPermissionMessage,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(
+            title: UITexts.Booking.noLocationPermissionConfirm,
+            style: .default,
+            handler: { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        ))
+        alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
+        present(alertController, animated: true)
     }
 }
 

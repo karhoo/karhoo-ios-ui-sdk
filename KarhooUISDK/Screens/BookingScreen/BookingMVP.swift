@@ -8,12 +8,13 @@
 
 import KarhooSDK
 import CoreLocation
+import UIKit
 
 /* public interface for controlling booking screen */
 
 public protocol BookingScreen: BaseViewController {
 
-    func set(bookingDetails: BookingDetails)
+    func set(journeyDetails: JourneyDetails)
 
     func openTrip(_ trip: TripInfo)
 
@@ -31,7 +32,7 @@ internal protocol BookingView: BookingScreen, QuoteListActions {
 
     func resetAndLocate()
 
-    func set(bookingDetails: BookingDetails)
+    func set(journeyDetails: JourneyDetails)
 
     func showAllocationScreen(trip: TripInfo)
 
@@ -54,11 +55,11 @@ protocol BookingPresenter {
 
     func load(view: BookingView?)
 
-    func resetBookingStatus()
+    func resetJourneyDetails()
 
-    func populate(with bookingDetails: BookingDetails)
+    func populate(with journeyDetails: JourneyDetails)
 
-    func bookingDetails() -> BookingDetails?
+    func getJourneyDetails() -> JourneyDetails?
 
     func tripSuccessfullyCancelled()
 

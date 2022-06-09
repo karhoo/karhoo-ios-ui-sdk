@@ -9,14 +9,14 @@
 import XCTest
 @testable import KarhooUISDK
 
-class PrebookConfirmationFormatterSpec: XCTestCase {
+class PrebookConfirmationFormatterSpec: KarhooTestCase {
 
     /**
       * When: Passed booking details
       * Then: Then (PrebookConfirmationFormatter) should return the correct text copy
       */
     func testOutput() {
-        let testBookingDetails = TestUtil.getRandomBookingDetails(dateSet: true)
+        let testBookingDetails = TestUtil.getRandomJourneyDetails(dateSet: true)
 
         let output = PrebookConfirmationFormatter.confirmationMessage(withDetails: testBookingDetails)
         let pickup = testBookingDetails.originLocationDetails!.address.displayAddress

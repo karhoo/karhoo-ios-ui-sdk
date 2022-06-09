@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooRidesListPresenterSpec: XCTestCase {
+final class KarhooRidesListPresenterSpec: KarhooTestCase {
 
     private var mockRidesListView: MockRidesListView!
     private var testObject: KarhooRidesListPresenter!
@@ -41,7 +41,6 @@ final class KarhooRidesListPresenterSpec: XCTestCase {
       * Then: Then rides list view should set to an empty state
       */
     func testEmptyState() {
-        XCTAssert(mockTripsProvider.startCalled)
         mockTripsProvider.delegate?.fetched(trips: [])
         XCTAssert(mockRidesListView.tripsToSet.isEmpty)
         XCTAssert(mockRidesListView.theEmptyStateTitle == UITexts.Bookings.noTrips)
@@ -54,7 +53,6 @@ final class KarhooRidesListPresenterSpec: XCTestCase {
       */
     func testNonEmptyState() {
         let fetchedTrips = [TestUtil.getRandomTrip()]
-        XCTAssert(mockTripsProvider.startCalled)
         mockTripsProvider.delegate?.fetched(trips: fetchedTrips)
         XCTAssert(mockRidesListView.tripsToSet[0].tripId == fetchedTrips[0].tripId)
         XCTAssertFalse(mockRidesListView.emptyStateCalled)

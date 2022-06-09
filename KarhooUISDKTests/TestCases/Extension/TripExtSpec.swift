@@ -11,7 +11,7 @@ import XCTest
 @testable import KarhooUISDK
 import KarhooSDK
 
-class TripExt: XCTestCase {
+class TripExt: KarhooTestCase {
 
     /**
      * Given: getting formatted fare

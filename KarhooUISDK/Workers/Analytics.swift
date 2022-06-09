@@ -20,7 +20,7 @@ public protocol Analytics {
     
     func bookingRequested(tripDetails: TripInfo)
     func paymentSucceed()
-    func paymentFailed(_ message: String)
+    func paymentFailed(message: String, last4Digits: String, date: Date, amount: String, currency: String)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
     func upcomingTripsOpened()
@@ -29,7 +29,7 @@ public protocol Analytics {
     func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo)
     func bookingScreenOpened()
     func checkoutOpened(_ quote: Quote)
-    func quoteListOpened(_ bookingDetails: BookingDetails)
+    func quoteListOpened(_ journeyDetails: JourneyDetails)
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -95,16 +95,34 @@ final class KarhooAnalytics: Analytics {
         base.send(eventName: .paymentSucceed)
     }
 
-    func paymentFailed(_ message: String) {
+    func paymentFailed(
+            message: String,
+            last4Digits: String,
+            date: Date,
+            amount: String,
+            currency: String
+    ) {
+        let dateString: String
+        if #available(iOS 15.0, *) {
+            dateString = date.ISO8601Format()
+        } else {
+            let formatter = DateFormatter()
+            dateString = formatter.string(from: date)
+        }
         base.send(
-            eventName: .paymentFailed,
-            payload: [
-                Keys.message: message
-            ]
+                eventName: .paymentFailed,
+                payload: [
+                    Keys.message: message,
+                    Keys.cardLast4Digits: last4Digits,
+                    Keys.date: dateString,
+                    Keys.amount: amount,
+                    Keys.currency: currency
+                ]
         )
     }
 
-    func bookingScreenOpened() {
+
+func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
     }
 
@@ -148,12 +166,12 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func quoteListOpened(_ bookingDetails: BookingDetails) {
+    func quoteListOpened(_ journeyDetails: JourneyDetails) {
         base.send(
             eventName: .quoteListOpened,
             payload: [
-                Keys.bookingOriginPlaceId: bookingDetails.originLocationDetails?.placeId ?? "",
-                Keys.bookingDestinationPlaceId: bookingDetails.destinationLocationDetails?.placeId ?? ""
+                Keys.bookingOriginPlaceId: journeyDetails.originLocationDetails?.placeId ?? "",
+                Keys.bookingDestinationPlaceId: journeyDetails.destinationLocationDetails?.placeId ?? ""
             ]
         )
     }
@@ -201,6 +219,10 @@ final class KarhooAnalytics: Analytics {
         static let bookingOriginPlaceId = "booking_origin_place_id"
         static let bookingDestinationPlaceId = "booking_destination_place_id"
         static let message = "message"
+        static let date = "date"
+        static let cardLast4Digits = "card_last_4_digits"
+        static let amount = "amount"
+        static let currency = "currency"
     }
 
     struct Value {

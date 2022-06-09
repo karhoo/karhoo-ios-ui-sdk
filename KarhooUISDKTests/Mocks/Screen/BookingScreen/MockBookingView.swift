@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
 
 final class MockBookingView: MockBaseViewController, BookingView {
@@ -37,9 +38,9 @@ final class MockBookingView: MockBaseViewController, BookingView {
         resetAndLocateCalled = true
     }
 
-    private(set) var theSetBookingDetails: BookingDetails?
-    func set(bookingDetails: BookingDetails) {
-        theSetBookingDetails = bookingDetails
+    private(set) var theSetJourneyDetails: JourneyDetails?
+    func set(journeyDetails: JourneyDetails) {
+        theSetJourneyDetails = journeyDetails
     }
 
     private(set) var showAllocationScreenCalled = false

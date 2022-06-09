@@ -7,7 +7,7 @@
 //
 
 import KarhooSDK
-import Adyen
+import Foundation
 
 final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 

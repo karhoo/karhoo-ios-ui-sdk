@@ -145,7 +145,7 @@ public enum UITexts {
 
     /* Demand API (Karhoo specific) errors */
     public enum KarhooError {
-        public static let K3002 = "Text.KarhooError.K3002".localized // no availability in requested area
+        public static let K3002 = "K3002".localized // no availability in requested area
         public static let Q0001 = "Text.KarhooError.Q0001".localized // origin
     }
     
@@ -227,6 +227,9 @@ public enum UITexts {
         public static let legalNoticeLink = "Text.Booking.LegalNoticeLink".localized
         public static let legalNoticeText = "Text.Booking.LegalNoticeText".localized
         public static let legalNoticeTitle = "Text.Booking.LegalNoticeTitle".localized
+        public static let noLocationPermissionTitle = "Text.Booking.NoLocationPermissionAlertTitle".localized
+        public static let noLocationPermissionMessage = "Text.Booking.NoLocationPermissionAlertMessage".localized
+        public static let noLocationPermissionConfirm = "Text.Booking.NoLocationPermissionAlertConfirm".localized
     }
 
     public enum Availability {

@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class PassengerDetailsPresenterSpec: XCTestCase {
+class PassengerDetailsPresenterSpec: KarhooTestCase {
     
     private var testObject: PassengerDetailsPresenter!
     private var mockView: MockPassengerDetailsViewController!

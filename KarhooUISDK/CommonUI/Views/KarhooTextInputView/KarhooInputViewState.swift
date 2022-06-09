@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum KarhooTextInputViewState {
     case inactive, active, error
