@@ -26,6 +26,7 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
         self.viewController = KarhooQuoteListFiltersViewController()
         self.presenter = KarhooQuoteListFiltersPresenter(
             router: self,
+            onResultsForFiltersChosen: { _ in -1 },
             onFiltersConfirmed: { _ in }
         )
         self.viewController.setupBinding(presenter)

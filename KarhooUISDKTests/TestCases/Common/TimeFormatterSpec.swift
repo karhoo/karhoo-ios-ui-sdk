@@ -11,7 +11,7 @@ import Foundation
 
 @testable import KarhooUISDK
 
-final class TimeFormatterSpec: XCTestCase {
+final class TimeFormatterSpec: KarhooTestCase {
 
     /**
       * When: Minutes are 30

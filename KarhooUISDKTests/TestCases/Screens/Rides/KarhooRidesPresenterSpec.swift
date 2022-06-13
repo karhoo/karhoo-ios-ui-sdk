@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooRidesPresenterSpec: XCTestCase {
+class KarhooRidesPresenterSpec: KarhooTestCase {
 
     private var mockRidesView: MockRidesView!
     private var testObject: RidesPresenter!
@@ -20,6 +20,7 @@ class KarhooRidesPresenterSpec: XCTestCase {
     private var mockAnalytics: MockAnalytics!
 
     override func setUp() {
+        super.setUp()
         mockRidesView = MockRidesView()
         mockTripsService = MockTripService()
         mockAnalytics = MockAnalytics()

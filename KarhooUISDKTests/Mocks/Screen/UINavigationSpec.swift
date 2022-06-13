@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class UINavigationSpec: XCTestCase {
+class UINavigationSpec: KarhooTestCase {
 
     private var testNavController: TestNavigationController!
     private var testNavDelegate: NavigationItemDelegate! // swiftlint:disable:this weak_delegate

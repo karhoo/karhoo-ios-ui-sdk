@@ -11,6 +11,22 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 class MockPaymentManager: PaymentManager {
+    
+    enum MockPaymentServicProviderType{
+        case adyen
+        case braintree
+    }
+    
+    private let psp: MockPaymentServicProviderType
+    
+    init(_ psp: MockPaymentServicProviderType){
+        self.psp = psp
+    }
+    var threeDSecureProviderMock = MockThreeDSecureProvider()
+    var threeDSecureProvider: ThreeDSecureProvider? {
+        threeDSecureProviderMock
+    }
+    
     var cardFlowMock = CardRegistrationFlowMock()
     var cardFlow: CardRegistrationFlow {
         cardFlowMock
@@ -19,12 +35,24 @@ class MockPaymentManager: PaymentManager {
     var nonceProvider: PaymentNonceProvider {
         nonceProviderMock
     }
-
-    var shouldGetPaymentBeforeBookingValue = false
-    var shouldGetPaymentBeforeBooking: Bool { shouldGetPaymentBeforeBookingValue }
+    var shouldCheckThreeDSBeforeBooking: Bool {
+        switch psp {
+            case .adyen:
+                return false
+            case .braintree:
+                return true
+        }
+    }
     
-    var shouldCheckThreeDSBeforeBookingValue = true
-    var shouldCheckThreeDSBeforeBooking: Bool { shouldCheckThreeDSBeforeBookingValue }
+    var shouldGetPaymentBeforeBooking: Bool {
+        switch psp {
+            
+        case .adyen:
+            return false
+        case .braintree:
+            return true
+        }
+    }
 
     var getMetaWithUpdateTripIdIfRequiredValue = [String: Any]()
     func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {

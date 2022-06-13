@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-final class KarhooAddressMapPresenterSpec: XCTestCase {
+final class KarhooAddressMapPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooAddressMapPresenter!
     private var mockAddressMapView = MockAddressMapView()

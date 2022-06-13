@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 
 final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
@@ -19,9 +20,11 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
     private weak var baseViewController: BaseViewController?
     private let cardRegistrationFlow: CardRegistrationFlow
 
-    init(paymentService: PaymentService = Karhoo.getPaymentService(),
-         threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
-         cardRegistrationFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()) {
+    init(
+        paymentService: PaymentService = Karhoo.getPaymentService(),
+        threeDSecureProvider: ThreeDSecureProvider = BraintreeThreeDSecureProvider(),
+        cardRegistrationFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
+    ) {
         self.paymentService = paymentService
         self.threeDSecureProvider = threeDSecureProvider
         self.cardRegistrationFlow = cardRegistrationFlow
@@ -33,10 +36,12 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         cardRegistrationFlow.setBaseView(baseViewController)
     }
 
-    func getPaymentNonce(user: UserInfo,
-                         organisationId: String,
-                         quote: Quote,
-                         result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
+    func getPaymentNonce(
+        user: UserInfo,
+        organisationId: String,
+        quote: Quote,
+        result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void
+    ) {
         self.callbackResult = result
         self.quoteToBook = quote
 
@@ -53,13 +58,16 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             }
         }
 
-        let payer = Payer(id: user.userId,
-                          firstName: user.firstName,
-                          lastName: user.lastName,
-                          email: user.email)
-        let nonceRequestPayload = NonceRequestPayload(payer: payer,
-                                                      organisationId: organisationId)
-
+        let payer = Payer(
+            id: user.userId,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email
+        )
+        let nonceRequestPayload = NonceRequestPayload(
+            payer: payer,
+            organisationId: organisationId
+        )
         getNonce(payload: nonceRequestPayload, currencyCode: quote.price.currencyCode)
     }
 
@@ -73,11 +81,12 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
     }
 
     private func triggerAddCardFlow(currencyCode: String) {
-        self.cardRegistrationFlow.start(cardCurrency: currencyCode,
-                                        amount: 0,
-                                        supplierPartnerId: "",
-                                        showUpdateCardAlert: true,
-                                        callback: { [weak self] result in
+        self.cardRegistrationFlow.start(
+            cardCurrency: currencyCode,
+            amount: 0,
+            supplierPartnerId: "",
+            showUpdateCardAlert: true,
+            callback: { [weak self] result in
             switch result {
             case .completed(let addCardResult): self?.handleAddCardResult(addCardResult)
             case .cancelledByUser: self?.callbackResult?(.cancelledByUser)
@@ -108,14 +117,15 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             return
         }
 
-        threeDSecureProvider.threeDSecureCheck(nonce: nonce.nonce,
-                                               currencyCode: quote.price.currencyCode,
-                                               paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
-                                               callback: { [weak self] result in
-                                                switch result {
-                                                case .completed(let result): handleThreeDSecureCheck(result)
-                                                case .cancelledByUser: self?.callbackResult?(.cancelledByUser)
-                                                }
+        threeDSecureProvider.threeDSecureCheck(
+            nonce: nonce.nonce,
+            currencyCode: quote.price.currencyCode,
+            paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+            callback: { [weak self] result in
+                switch result {
+                case .completed(let result): handleThreeDSecureCheck(result)
+                case .cancelledByUser: self?.callbackResult?(.cancelledByUser)
+            }
         })
 
         func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {

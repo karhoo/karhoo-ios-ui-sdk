@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class TripSummaryInfoViewModelSpec: XCTestCase {
+final class TripSummaryInfoViewModelSpec: KarhooTestCase {
 
     private var testObject: TripSummaryInfoViewModel!
 

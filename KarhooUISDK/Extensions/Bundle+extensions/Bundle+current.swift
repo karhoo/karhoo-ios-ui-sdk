@@ -8,7 +8,7 @@ import UIKit
 import Foundation
 
 extension Bundle {
-    static var current: Bundle {
+    public static var current: Bundle {
         if let bundlePath = Bundle(for: KarhooUI.self).path(forResource: "KarhooUISDK", ofType: "bundle") {
             return Bundle(path: bundlePath)!
         } else {

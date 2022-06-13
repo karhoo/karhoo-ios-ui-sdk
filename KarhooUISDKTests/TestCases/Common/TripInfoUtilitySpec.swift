@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class TripInfoUtilitySpec: XCTestCase {
+final class TripInfoUtilitySpec: KarhooTestCase {
 
     /**
      * Given: A cancelled trip

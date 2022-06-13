@@ -11,7 +11,7 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-final class KarhooTripPresenterSpec: XCTestCase {
+final class KarhooTripPresenterSpec: KarhooTestCase {
 
     private var mockInitialTrip: TripInfo!
     private var mockTripView: MockTripView!

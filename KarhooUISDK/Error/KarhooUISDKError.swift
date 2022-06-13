@@ -30,12 +30,12 @@ extension KarhooUIError {
     }
 }
 
-struct ErrorModel: KarhooError {
+public struct ErrorModel: KarhooError {
 
-    let message: String
-    let code: String
+    public let message: String
+    public let code: String
 
-    init(message: String, code: String) {
+    public init(message: String, code: String) {
         self.message = message
         self.code = code
     }

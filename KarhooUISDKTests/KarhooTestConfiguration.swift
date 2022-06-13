@@ -1,42 +1,38 @@
 //
-//  UnitTestSetup.swift
+//  KarhooTestConfiguration.swift
 //  KarhooUISDKTests
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import Foundation
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
-
-final class UnitTestSetup: NSObject {
-
-    override init() {
-        KarhooUI.set(configuration: KarhooTestConfiguration())
-    }
-}
 
 class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
-    static var guestSettings = GuestSettings(identifier: "",
-                                             referer: "", organisationId: "")
+    static var guestSettings = GuestSettings(identifier: "", referer: "", organisationId: "")
     static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
     static var isExplicitTermsAndConditionsConsentRequired: Bool = false
-
+    
     var isExplicitTermsAndConditionsConsentRequired: Bool {
         Self.isExplicitTermsAndConditionsConsentRequired
     }
 
-    var mockPaymentManager = MockPaymentManager()
+    static var mockPaymentManager = MockPaymentManager(.adyen)
     var paymentManager: PaymentManager {
-        mockPaymentManager
+        Self.mockPaymentManager
     }
 
     func logo() -> UIImage {
-        return UIImage(named: "mockImage",
-                       in: Bundle(for: UnitTestSetup.self),
-                       compatibleWith: nil)!
+        UIImage(
+            named: "mockImage",
+            in: Bundle(for: KarhooTestConfiguration.self),
+            compatibleWith: nil
+        ) ?? UIImage()
     }
 
     func environment() -> KarhooEnvironment {

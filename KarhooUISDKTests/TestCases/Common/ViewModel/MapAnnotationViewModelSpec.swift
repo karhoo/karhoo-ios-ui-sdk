@@ -13,7 +13,7 @@ import CoreLocation
 
 @testable import KarhooUISDK
 
-class MapAnnotationViewModelSpec: XCTestCase {
+class MapAnnotationViewModelSpec: KarhooTestCase {
     
     var mapAnnotationVM: MapAnnotationViewModel!
     

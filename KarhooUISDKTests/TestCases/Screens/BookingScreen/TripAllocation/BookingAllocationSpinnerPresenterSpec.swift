@@ -9,7 +9,7 @@
 import XCTest
 @testable import KarhooUISDK
 
-final class BookingAllocationSpinnerPresenterSpec: XCTestCase {
+final class BookingAllocationSpinnerPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooBookingAllocationSpinnerPresenter!
     private var mockAppStateNotifier: MockAppStateNotifier!

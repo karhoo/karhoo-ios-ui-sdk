@@ -4,14 +4,15 @@
 //
 //  Created by Mostafa Hadian on 04/03/2021.
 //
-
+//
 import Foundation
+import KarhooUISDK
 
 public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
     
     public var userAgent: String {
-        "KH/UISDK/iOS/1.7.3" //\(KarhooUISDKVersionNumber)"
+        "KH/UISDK/iOS/1.8.0" //\(KarhooUISDKVersionNumber)"
     }
     
     public var acceptHeader = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
@@ -24,8 +25,6 @@ public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
         guard let bundleId = Bundle.main.bundleIdentifier else {
             return ""
         }
-
         return "\(bundleId).adyen"
     }
-
 }

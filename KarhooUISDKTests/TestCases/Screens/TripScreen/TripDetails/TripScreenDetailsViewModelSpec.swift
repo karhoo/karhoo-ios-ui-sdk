@@ -9,7 +9,7 @@
 import XCTest
 @testable import KarhooUISDK
 
-final class TripScreenDetailsViewModelSpec: XCTestCase {
+final class TripScreenDetailsViewModelSpec: KarhooTestCase {
 
     private var testObject: TripScreenDetailsViewModel!
     private var mockTrip = TestUtil.getRandomTrip()

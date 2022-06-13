@@ -11,7 +11,7 @@ import KarhooUISDK
 @testable import KarhooUISDK
 
 
-class LinkParserTest: XCTestCase {
+class LinkParserTest: KarhooTestCase {
     
     private let linkParser = LinkParser(mailValidator: MailValidator(), urlStringValidator: UrlStringValidator())
     

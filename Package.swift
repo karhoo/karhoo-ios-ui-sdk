@@ -14,34 +14,55 @@ let package = Package(
         .library(
             name: "KarhooUISDK",
             targets: ["KarhooUISDK"]),
+        .library(
+            name: "KarhooUISDKAdyen",
+            targets: ["KarhooUISDKAdyen"]),
+        .library(
+            name: "KarhooUISDKBraintree",
+            targets: ["KarhooUISDKBraintree"]),
+
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "KarhooSDK", url: "https://github.com/karhoo/karhoo-ios-sdk", .exact(Version(1, 6, 1))),
+        .package(name: "KarhooSDK", url: "https://github.com/karhoo/karhoo-ios-sdk", .exact(Version(1, 6, 2))),
         .package(name: "Adyen", url: "https://github.com/Adyen/adyen-ios", .exact(Version(4, 7, 1))),
         .package(name: "FloatingPanel", url: "https://github.com/scenee/FloatingPanel", .exact(Version(2, 0, 1))),
         .package(name: "BraintreeDropIn", url: "https://github.com/braintree/braintree-ios-drop-in", .exact(Version(9, 3, 0))),
-        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", .exact(Version(3, 3, 0))),
+        .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", .exact(Version(3, 3, 1))),
         .package(name: "Braintree", url: "https://github.com/braintree/braintree_ios", .exact(Version(5, 5, 0)))
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "KarhooUISDK",
             dependencies: [.product(name: "KarhooSDK", package: "KarhooSDK"),
-                           .product(name: "Adyen", package: "Adyen"),
-                           .product(name: "AdyenDropIn", package: "Adyen"),
                            .product(name: "FloatingPanel", package: "FloatingPanel"),
-                           .product(name: "BraintreeDropIn", package: "BraintreeDropIn"),
-                           .product(name: "PhoneNumberKit", package: "PhoneNumberKit"),
-                           .product(name: "BraintreePaymentFlow", package: "Braintree"),
-                           .product(name: "BraintreeThreeDSecure", package: "Braintree")],
+                           .product(name: "PhoneNumberKit", package: "PhoneNumberKit")],
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"]),
+
+        .target(
+            name: "KarhooUISDKAdyen",
+            dependencies: [.target(name: "KarhooUISDK"),
+                           .product(name: "Adyen", package: "Adyen"),
+                           .product(name: "AdyenDropIn", package: "Adyen")],
+            path: "AdyenPSP"),
+
+        .target(
+            name: "KarhooUISDKBraintree",
+            dependencies: [.target(name: "KarhooUISDK"),
+                           .product(name: "BraintreeDropIn", package: "BraintreeDropIn"),
+                           .product(name: "BraintreePaymentFlow", package: "Braintree"),
+                           .product(name: "BraintreeThreeDSecure", package: "Braintree")],
+            path: "BraintreePSP"),
+
+
         .testTarget(
             name: "KarhooUISDKTests",
-            dependencies: [.target(name: "KarhooUISDK")],
+            dependencies: [
+                .target(name: "KarhooUISDK"),
+                .target(name: "KarhooUISDKAdyen"),
+                .target(name: "KarhooUISDKBraintree")
+            ],
             path: "KarhooUISDKTests",
             exclude: ["Info.plist"])
     ]

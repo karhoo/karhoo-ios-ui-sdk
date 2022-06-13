@@ -10,7 +10,7 @@ import XCTest
 import KarhooUISDK
 @testable import KarhooUISDK
 
-class MailValidatorTest: XCTestCase {
+class MailValidatorTest: KarhooTestCase {
     
     private let correctEmail = "contact@karhoo.com"
     private let incorrectEmailMissingAt = "contact.karhoo.com"

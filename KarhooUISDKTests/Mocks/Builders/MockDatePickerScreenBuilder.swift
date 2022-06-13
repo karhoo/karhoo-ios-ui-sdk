@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 @testable import KarhooUISDK
 
 final class MockDatePickerScreenBuilder: DatePickerScreenBuilder {

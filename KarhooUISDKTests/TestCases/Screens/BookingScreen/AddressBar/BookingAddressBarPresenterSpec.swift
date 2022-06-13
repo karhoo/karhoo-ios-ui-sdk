@@ -11,7 +11,7 @@ import CoreLocation
 import KarhooSDK
 @testable import KarhooUISDK
 
-class BookingAddressBarPresenterSpec: XCTestCase {
+class BookingAddressBarPresenterSpec: KarhooTestCase {
 
     private var testObject: BookingAddressBarPresenter!
     private var mockJourneyDetailsManager = MockJourneyDetailsManager()

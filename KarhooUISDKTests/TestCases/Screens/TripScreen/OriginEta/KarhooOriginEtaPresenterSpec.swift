@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooOriginEtaPresenterSpec: XCTestCase {
+class KarhooOriginEtaPresenterSpec: KarhooTestCase {
     
     private let testTripId: String = "some_tripid"
     private var mockTripService: MockTripService!

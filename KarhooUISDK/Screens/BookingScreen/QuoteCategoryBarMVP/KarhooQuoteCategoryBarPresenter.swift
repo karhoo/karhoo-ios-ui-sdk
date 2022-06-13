@@ -48,6 +48,14 @@ final class KarhooQuoteCategoryBarPresenter: QuoteCategoryBarPresenter {
         guard self.categories != categories else {
             return
         }
+        
+        // Reset the selected index if the old category count doesn't match the new one
+        // This fixes the scenario where the user has the "All" category selected on ASAP, then chooses to pre-book,
+        // in which case more or less categories may appear, offsetting the initial selection
+        if self.categories.count != categories.count {
+            self.selectedIndex = nil
+        }
+        
         self.categories = categories
         self.lastQuotesListId = quoteListId
         updateCategories()
