@@ -8,36 +8,23 @@
 
 import Foundation
 import KarhooSDK
-import Adyen
 
 final class PaymentFactory {
 
     private let userService: UserService
+    private let sdkConfiguration: KarhooUISDKConfiguration
 
-    init(userService: UserService = Karhoo.getUserService()) {
+    public init(userService: UserService = Karhoo.getUserService(),
+         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration) {
         self.userService = userService
+        self.sdkConfiguration = sdkConfiguration
     }
 
     func getCardFlow() -> CardRegistrationFlow {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenCardRegistrationFlow()
-        } else {
-            return BraintreeCardRegistrationFlow()
-        }
+        sdkConfiguration.paymentManager.cardFlow
     }
 
     func nonceProvider() -> PaymentNonceProvider {
-        if userService.getCurrentUser()?.paymentProvider?.provider.type == .adyen {
-            return AdyenPaymentNonceProvider()
-        }
-
-        return BraintreePaymentNonceProvider()
-    }
-
-    func adyenEnvironment() -> Adyen.Environment {
-        switch Karhoo.configuration.environment() {
-            case .production: return .live
-            default: return .test
-        }
+        sdkConfiguration.paymentManager.nonceProvider
     }
 }

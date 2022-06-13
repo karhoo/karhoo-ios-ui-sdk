@@ -21,7 +21,6 @@ public protocol ScreenBuilders {
 
 internal protocol InternalScreenBuilders {
     var tripSummaryScreenBuilder: TripSummaryScreenBuilder { get }
-    var paymentScreenBuilder: PaymentScreenBuilder { get }
     var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }
@@ -49,10 +48,6 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
 
     var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
         return KarhooPrebookConfirmationViewController.KarhooPrebookConfirmationScreenBuilder()
-    }
-
-    var paymentScreenBuilder: PaymentScreenBuilder {
-        return BraintreePaymentScreenBuilder()
     }
 
     var tripSummaryScreenBuilder: TripSummaryScreenBuilder {

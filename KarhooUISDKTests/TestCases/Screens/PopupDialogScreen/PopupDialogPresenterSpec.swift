@@ -9,13 +9,14 @@
 import XCTest
 @testable import KarhooUISDK
 
-class PopupDialogPresenterSpec: XCTestCase {
+class PopupDialogPresenterSpec: KarhooTestCase {
 
     private var testObject: PopupDialogPresenter!
     private var testCallback: ScreenResult<Void>?
     private var mockView: MockPopupDialogView!
 
     override func setUp() {
+        super.setUp()
         mockView = MockPopupDialogView()
         testObject = KarhooPopupDialogPresenter(callback: popupDialogCallback)
         testObject.load(view: mockView)

@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-final class KarhooTripRatingCacheSpec: XCTestCase {
+final class KarhooTripRatingCacheSpec: KarhooTestCase {
 
     private var testObject: KarhooTripRatingCache!
     private var mockUserDefaults = MockUserDefaults()

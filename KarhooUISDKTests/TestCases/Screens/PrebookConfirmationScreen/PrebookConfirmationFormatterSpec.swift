@@ -9,7 +9,7 @@
 import XCTest
 @testable import KarhooUISDK
 
-class PrebookConfirmationFormatterSpec: XCTestCase {
+class PrebookConfirmationFormatterSpec: KarhooTestCase {
 
     /**
       * When: Passed booking details

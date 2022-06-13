@@ -24,8 +24,16 @@ You can use [CocoaPods](http://cocoapods.org/) to install `KarhooUISDK` by addin
 ```ruby
 
 use_frameworks!
-pod 'KarhooSDK', '1.6.1'
-pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.7.3'
+pod 'KarhooSDK', '1.6.2'
+pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.8.0'
+```
+Depending on payment provider you want to use in your integration add:
+```ruby
+pod 'KarhooUISDK/Adyen', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.8.0'
+```
+or
+```ruby
+pod 'KarhooUISDK/Braintree', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.8.0'
 ```
 
 then import `KarhooUISDK` wherever you want to access Karhoo services
@@ -33,6 +41,18 @@ then import `KarhooUISDK` wherever you want to access Karhoo services
 ``` swift
 import KarhooUISDK
 ```
+
+#### Swift Package Manager
+KarhooUISDK is released as a SPM beginning from version 1.8.0
+Use URL for repository: `https://github.com/karhoo/karhoo-ios-ui-sdk`
+
+and you will find 3 available packages:
+`KarhooUISDK`: only core package, 	
+`KarhooUISDKAdyen`: core + Adyen payment provider
+`KarhooUISDKBraintree`: core + Braintree Payment Provider
+
+then import `KarhooUISDK` wherever you want to access Karhoo services
+
 
 ## Usage
 
@@ -42,6 +62,7 @@ There are a few things the UI SDK needs to know before you can get started. Such
 
 ```swift
 import KarhooUISDK
+// for SPM integration import also chosen payment provider module: KarhooUISDKAdyen or KarhooUISDKBraintree
 
 struct YourCompanyKarhooConfiguration: KarhooUISDKConfiguration {
     
@@ -52,6 +73,12 @@ struct YourCompanyKarhooConfiguration: KarhooUISDKConfiguration {
     func authenticationMethod() -> AuthenticationMethod {
     // for other authentication methods such as guest or token exchange bookings please see: https://developer.karhoo.com/docs/using-the-network-sdk#authentication
         return .karhooUser
+    }
+    
+    var paymentProvider: PaymentProvider {
+        AdyenPaymentProvider()
+        // OR
+        BraintreePaymentProvider()
     }
 }
 ```

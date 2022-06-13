@@ -14,7 +14,7 @@ import CoreLocation
 
 @testable import KarhooUISDK
 
-class KarhooAddressSearchProviderSpec: XCTestCase {
+class KarhooAddressSearchProviderSpec: KarhooTestCase {
 
     private var mockAddressService: MockAddressService!
     private var mockAddressSearchProviderDelegate: MockAddressSearchProviderDelegate!

@@ -10,13 +10,12 @@ import KarhooUISDK
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        MainViewController()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainViewController()
     }
 }

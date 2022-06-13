@@ -10,7 +10,7 @@ import XCTest
 import KarhooUISDK
 
 // NOTE: These tests are assuming the simulator's region is set to UK - not USA.
-class KarhooDateFormatterSpec: XCTestCase {
+class KarhooDateFormatterSpec: KarhooTestCase {
     private let locale = Locale(identifier: "en_GB")
 
     /**

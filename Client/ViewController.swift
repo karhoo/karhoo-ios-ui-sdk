@@ -9,6 +9,12 @@ import UIKit
 import KarhooUISDK
 import CoreLocation
 import KarhooSDK
+#if canImport(KarhooUISDKAdyen)
+import KarhooUISDKAdyen
+#endif
+#if canImport(KarhooUISDKBraintree)
+import KarhooUISDKBraintree
+#endif
 
 class ViewController: UIViewController {
 

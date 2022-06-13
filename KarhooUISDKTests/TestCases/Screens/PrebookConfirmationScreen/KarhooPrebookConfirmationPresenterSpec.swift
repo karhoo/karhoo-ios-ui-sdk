@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class KarhooPrebookConfirmationPresenterSpec: XCTestCase {
+final class KarhooPrebookConfirmationPresenterSpec: KarhooTestCase {
 
     private var mockView: MockPrebookConfirmationView!
     private var mockQuote: Quote!

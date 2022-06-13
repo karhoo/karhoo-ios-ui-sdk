@@ -11,7 +11,7 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-class PickupOnlyStrategySpec: XCTestCase {
+class PickupOnlyStrategySpec: KarhooTestCase {
 
     private var mockMapView: MockKarhooMapView!
     private var mockUserLocationProvider: MockUserLocationProvider!

@@ -10,7 +10,7 @@ import XCTest
 import Foundation
 import KarhooUISDK
 
-final class QtaStringFormatterSpec: XCTestCase {
+final class QtaStringFormatterSpec: KarhooTestCase {
 
     /**
       * When: A minimum eta of 2 mins and a maximum of 5

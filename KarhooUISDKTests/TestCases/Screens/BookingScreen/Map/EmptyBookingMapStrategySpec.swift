@@ -9,16 +9,18 @@ import Foundation
 import XCTest
 @testable import KarhooUISDK
 
-class EmptyBookingMapStrategySpec: XCTestCase {
+class EmptyBookingMapStrategySpec: KarhooTestCase {
 
-    private var mockMapView = MockKarhooMapView()
-    private var mockUserLocationProvider = MockUserLocationProvider()
-    private var testObject = EmptyMapBookingStrategy()
-    private let mockJourneyDetailsManager = MockJourneyDetailsManager()
+    private var mockMapView: MockKarhooMapView!
+    private var mockUserLocationProvider: MockUserLocationProvider!
+    private var testObject: EmptyMapBookingStrategy!
+    private var mockJourneyDetailsManager: MockJourneyDetailsManager!
 
     override func setUp() {
         super.setUp()
-
+        mockMapView = MockKarhooMapView()
+        mockUserLocationProvider = MockUserLocationProvider()
+        mockJourneyDetailsManager = MockJourneyDetailsManager()
         testObject = EmptyMapBookingStrategy(userLocationProvider: mockUserLocationProvider,
                                              journeyDetailsManager: mockJourneyDetailsManager)
         testObject.load(map: mockMapView, onLocationPermissionDenied: nil)

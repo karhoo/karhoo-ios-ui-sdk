@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 #if canImport(Adyen)
 import Adyen
 #endif
@@ -28,20 +29,19 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var currencyCode: String = ""
     private var supplierPartnerId: String = ""
     private let adyenResponseHandler: AdyenResponseHandler
-    private let paymentFactory: PaymentFactory
     private let threeDSecureUtil: ThreeDSecureUtils
 
     private var adyenAmount: AdyenAmount {
          AdyenAmount(currency: currencyCode, value: amount)
     }
 
-    init(paymentService: PaymentService = Karhoo.getPaymentService(),
-         adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
-         paymentFactory: PaymentFactory = PaymentFactory(),
-         threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()) {
+    init(
+        paymentService: PaymentService = Karhoo.getPaymentService(),
+        adyenResponseHandler: AdyenResponseHandler = AdyenResponseHandler(),
+        threeDSecureUtil: ThreeDSecureUtils = AdyenThreeDSecureUtils()
+    ) {
         self.paymentService = paymentService
         self.adyenResponseHandler = adyenResponseHandler
-        self.paymentFactory = paymentFactory
         self.threeDSecureUtil = threeDSecureUtil
     }
 
@@ -49,11 +49,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         self.baseViewController = baseViewController
     }
 
-    func start(cardCurrency: String,
-               amount: Int,
-               supplierPartnerId: String,
-               showUpdateCardAlert: Bool,
-               callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    func start(
+        cardCurrency: String,
+        amount: Int,
+        supplierPartnerId: String,
+        showUpdateCardAlert: Bool,
+        callback: @escaping (OperationResult<CardFlowResult>) -> Void
+    ) {
         currencyCode = cardCurrency
         self.amount = amount
         self.supplierPartnerId = supplierPartnerId
@@ -99,7 +101,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startDropIn(data: Data, adyenKey: String) {
-        let apiContext = APIContext(environment: paymentFactory.adyenEnvironment(), clientKey: adyenKey)
+        let apiContext = APIContext(environment: getAdyenEnvironment(), clientKey: adyenKey)
         let paymentMethods = try? JSONDecoder().decode(PaymentMethods.self, from: data)
         let configuration = DropInComponent.Configuration(apiContext: apiContext)
         configuration.card.showsStorePaymentMethodField = showStorePaymentMethod
@@ -146,6 +148,13 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
             }
         } else {
             callback?(result)
+        }
+    }
+    
+    private func getAdyenEnvironment() -> Adyen.Environment {
+        switch Karhoo.configuration.environment() {
+            case .production: return .live
+            default: return .test
         }
     }
 }
@@ -265,7 +274,11 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         case .refused(let reason, let code):
             finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason, code: code))))
         case .handleResult(let code):
-            finish(result: .completed(value: .didFailWithError(ErrorModel(message: code ?? UITexts.Errors.noDetailsAvailable, code: code ?? UITexts.Errors.noDetailsAvailable))))
+            let error = ErrorModel(
+                message: code ?? UITexts.Errors.noDetailsAvailable,
+                code: code ?? UITexts.Errors.noDetailsAvailable
+            )
+            finish(result: .completed(value: .didFailWithError(error)))
         }
     }
 }

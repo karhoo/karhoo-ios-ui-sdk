@@ -12,7 +12,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class PrebookConfirmationViewModelSpec: XCTestCase {
+final class PrebookConfirmationViewModelSpec: KarhooTestCase {
 
     private var mockQuote: Quote!
     private var mockJourneyDetails: JourneyDetails!

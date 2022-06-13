@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import Foundation
 @testable import KarhooUISDK
 
 final class MockTripsSorter: TripsSorter {

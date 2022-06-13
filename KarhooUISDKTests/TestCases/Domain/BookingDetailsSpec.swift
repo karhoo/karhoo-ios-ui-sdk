@@ -10,7 +10,7 @@ import XCTest
 
 @testable import KarhooUISDK
 
-class BookingDetailsSpec: XCTestCase {
+class BookingDetailsSpec: KarhooTestCase {
 
     /**
      *  Given:  Scheduled date is now

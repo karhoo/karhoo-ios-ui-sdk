@@ -10,7 +10,7 @@ import KarhooSDK
 import XCTest
 @testable import KarhooUISDK
 
-final class KarhooQuoteSorterSpec: XCTestCase {
+final class KarhooQuoteSorterSpec: KarhooTestCase {
 
     private var testObject = KarhooQuoteSorter()
 

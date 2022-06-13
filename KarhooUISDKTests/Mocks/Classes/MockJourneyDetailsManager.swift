@@ -6,6 +6,7 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
+import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 

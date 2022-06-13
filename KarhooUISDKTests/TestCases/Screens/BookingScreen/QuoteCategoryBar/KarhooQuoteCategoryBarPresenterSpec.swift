@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
+class KarhooQuoteCategoryBarPresenterSpec: KarhooTestCase {
 
     private var mockView: MockQuoteCategoryBarView!
     private var mockAppAnalytics: MockAnalytics!
@@ -98,9 +98,9 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
      * Given:   The selected category exists amongst the received items
      * When:    New categories have been received
      * Then:    The view should be told about them
-     *  And:    The selected category index should point to the same category
+     *  And:    The selected category index should be reset to the All category (always last)
      */
-    func testUpdatedCategoryPosition() {
+    func testUpdatedCategoryPositionForDifferentCategoryCount() {
         
         let selectedIndex = 1
         let categories = createCategories(withNames: ["ABC", "def", "ÄÖ"])
@@ -109,6 +109,28 @@ class KarhooQuoteCategoryBarPresenterSpec: XCTestCase {
 
         let categories2 = createCategories(withNames: ["abc", "ÄÖ", "hej", "def"])
         let expectedCategories2 = createCategories(withNames: ["abc", "ÄÖ", "hej", "def",
+                                                               UITexts.Availability.allCategory])
+        testObject.categoriesChanged(categories: categories2, quoteListId: nil)
+
+        XCTAssertEqual(expectedCategories2, mockView.categoriesSet!)
+        XCTAssertEqual(mockView.indexSelected, expectedCategories2.count - 1)
+    }
+    
+    /**
+     * Given:   The selected category exists amongst the received items
+     * When:    New categories have been received
+     * Then:    The view should be told about them
+     *  And:    The selected category index should point to the same position
+     */
+    func testUpdatedCategoryPositionForSameCategoryCount() {
+        
+        let selectedIndex = 1
+        let categories = createCategories(withNames: ["ABC", "def", "ÄÖ"])
+        testObject.categoriesChanged(categories: categories, quoteListId: nil)
+        testObject.selected(index: selectedIndex, animated: false)
+
+        let categories2 = createCategories(withNames: ["abc", "ÄÖ", "hej"])
+        let expectedCategories2 = createCategories(withNames: ["abc", "ÄÖ", "hej",
                                                                UITexts.Availability.allCategory])
         testObject.categoriesChanged(categories: categories2, quoteListId: nil)
 

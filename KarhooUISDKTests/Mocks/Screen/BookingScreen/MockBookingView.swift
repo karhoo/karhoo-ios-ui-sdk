@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
 
 final class MockBookingView: MockBaseViewController, BookingView {

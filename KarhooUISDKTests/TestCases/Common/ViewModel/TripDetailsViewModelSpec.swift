@@ -11,7 +11,7 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class TripDetailsViewModelSpec: XCTestCase {
+class TripDetailsViewModelSpec: KarhooTestCase {
 
     private var testObject: TripDetailsViewModel!
 

@@ -12,7 +12,7 @@ import CoreLocation
 
 @testable import KarhooUISDK
 
-class TripMapPresenterSpec: XCTestCase {
+class TripMapPresenterSpec: KarhooTestCase {
 
     private var mockMapView: MockKarhooMapView = MockKarhooMapView()
     private var testObject: TripMapPresenter!

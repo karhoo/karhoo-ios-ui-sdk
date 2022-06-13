@@ -10,7 +10,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class KarhooQuoteListPresenterSpec: XCTestCase {
+class KarhooQuoteListPresenterSpec: KarhooTestCase {
 
     /** Tests need to be aligned once new Quote List scene will be developed
     private var testObject: KarhooQuoteListPresenter!
