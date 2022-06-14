@@ -10,8 +10,9 @@ import Foundation
 
 class KarhooQuoteListFilterModelHandler {
     
-    var model: QuoteListSelectedFiltersModel = .default
-    
+    private(set) var model: QuoteListSelectedFiltersModel = .default
+    private lazy var defaultModel: QuoteListSelectedFiltersModel = .default
+
     func filterSelected(_ filter: QuoteListFilter) {
         switch filter.filterCategory {
         case .luggage: addLuggageFilter(filter)
@@ -28,8 +29,8 @@ class KarhooQuoteListFilterModelHandler {
 
     func filterDeselected(_ filter: QuoteListFilter) {
         switch filter.filterCategory {
-        case .luggage: removeLuggageFilter(filter)
-        case .passengers: removePassengersFilter(filter)
+        case .luggage: removeLuggageFilter()
+        case .passengers: removePassengersFilter()
         case .vehicleType: removeVehicleTypeFilter(filter)
         case .vehicleClass: removeVehicleClassFilter(filter)
         case .vehicleExtras: removeVehicleExtrasFilter(filter)
@@ -39,6 +40,8 @@ class KarhooQuoteListFilterModelHandler {
         case .cancelationAndWatingTime: removeCancelationAndWatingTimeFilter(filter)
         }
     }
+
+    // MARK: - Add filter methods
 
     private func addLuggageFilter(_ filter: QuoteListFilter) {
         guard let filter = filter as? QuoteListFilters.LuggageCapasityModel
@@ -121,39 +124,76 @@ class KarhooQuoteListFilterModelHandler {
         model.cancelationAndWaitingTime.insert(filter)
     }
 
-    private func removeLuggageFilter(_ filter: QuoteListFilter) {
-        model.numberOfLuggages = QuoteListSelectedFiltersModel.default.numberOfLuggages
+    // MARK: - Remove filter methods
+
+    private func removeLuggageFilter() {
+        model.numberOfLuggages = defaultModel.numberOfLuggages
     }
 
-    private func removePassengersFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+    private func removePassengersFilter() {
+        model.numberOfPassengers = defaultModel.numberOfPassengers
     }
 
     private func removeVehicleTypeFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.VehicleType
+        else {
+            assertionFailure()
+            return
+        }
+        model.vehicleTypes.remove(filter)
     }
 
     private func removeVehicleClassFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.VehicleClass
+        else {
+            assertionFailure()
+            return
+        }
+        model.vehicleClasses.remove(filter)
     }
 
     private func removeVehicleExtrasFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.VehicleExtras
+        else {
+            assertionFailure()
+            return
+        }
+        model.vehicleExtras.remove(filter)
     }
 
     private func removeEcoFriendlyFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.EcoFriendly
+        else {
+            assertionFailure()
+            return
+        }
+        model.ecoFriendly.remove(filter)
     }
 
     private func removeFleetCapabilityFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.FleetCapabilities
+        else {
+            assertionFailure()
+            return
+        }
+        model.fleetCapabilities.remove(filter)
     }
 
-    private func removeQuoteTypeFilter(_ filer: QuoteListFilter) {
-        assertionFailure()
+    private func removeQuoteTypeFilter(_ filter: QuoteListFilter) {
+        guard let filter = filter as? QuoteListFilters.QuoteType
+        else {
+            assertionFailure()
+            return
+        }
+        model.quoteType.remove(filter)
     }
 
     private func removeCancelationAndWatingTimeFilter(_ filter: QuoteListFilter) {
-        assertionFailure()
+        guard let filter = filter as? QuoteListFilters.CancelationAndWatingTime
+        else {
+            assertionFailure()
+            return
+        }
+        model.cancelationAndWaitingTime.remove(filter)
     }
 }
