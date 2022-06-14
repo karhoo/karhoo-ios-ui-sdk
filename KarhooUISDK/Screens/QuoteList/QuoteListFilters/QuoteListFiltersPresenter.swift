@@ -11,17 +11,23 @@ import KarhooSDK
 
 class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
+    // MARK: - Properties
+
     private let router: QuoteListFiltersRouter
+    private let filterModelHandler: QuoteListFilterModelHandler
     private let onResultsForFiltersChosen: (QuoteListSelectedFiltersModel) -> Int
     private let onFiltersConfirmed: (QuoteListSelectedFiltersModel) -> Void
-    private var selectedFilters: QuoteListSelectedFiltersModel = .default()
+
+    // MARK: - Lifecycle
 
     init(
         router: QuoteListFiltersRouter,
+        filterModelHandler: QuoteListFilterModelHandler,
         onResultsForFiltersChosen: @escaping (QuoteListSelectedFiltersModel) -> Int,
         onFiltersConfirmed: @escaping (QuoteListSelectedFiltersModel) -> Void
     ) {
         self.router = router
+        self.filterModelHandler = filterModelHandler
         self.onResultsForFiltersChosen = onResultsForFiltersChosen
         self.onFiltersConfirmed = onFiltersConfirmed
     }
@@ -32,36 +38,21 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     func viewWillAppear() {
     }
 
-//    func filterSelected(_ filter: QuoteListFilter) {
-//    }
+    // MARK: - Communication methods
+
+    func filterSelected(_ filter: QuoteListFilter) {
+        filterModelHandler.filterSelected(filter)
+    }
+    
+    func filterDeselected(_ filter: QuoteListFilter) {
+        filterModelHandler.filterDeselected(filter)
+    }
 
     func close(save: Bool) {
         if save {
-            onFiltersConfirmed(selectedFilters)
+            onFiltersConfirmed(filterModelHandler.filterModel)
         }
         router.dismiss()
     }
-}
 
-struct QuoteListSelectedFiltersModel {
-    init(numberOfLuggages: Int, numberOfPassengers: Int, vehicleTypes: String, vehicleClasses: String) {
-        self.numberOfLuggages = numberOfLuggages
-        self.numberOfPassengers = numberOfPassengers
-        self.vehicleTypes = vehicleTypes
-        self.vehicleClasses = vehicleClasses
-    }
-    
-    let numberOfLuggages: Int
-    let numberOfPassengers: Int
-    let vehicleTypes: String
-    let vehicleClasses: String
-    
-    static func `default`() -> QuoteListSelectedFiltersModel {
-        QuoteListSelectedFiltersModel(
-            numberOfLuggages: 0,
-            numberOfPassengers: 1,
-            vehicleTypes: "",
-            vehicleClasses: ""
-        )
-    }
 }
