@@ -10,9 +10,9 @@ import Foundation
 import KarhooSDK
 
 protocol QuoteListFilter {
-    var filterValue: String { get }
     var icon: UIImage? { get }
     var filterCategory: QuoteListFilters.Category { get }
+    func conditionMet(for quote: Quote) -> Bool
 }
 
 extension QuoteListFilter {
@@ -35,7 +35,7 @@ extension QuoteListFilters {
         case ecoFriendly
         case fleetCapabilities
         case quoteTypes
-        case cancelationAndWatingTime
+        case serviceAgreements
         
         var localized: String {
             switch self {
@@ -47,7 +47,7 @@ extension QuoteListFilters {
             case .ecoFriendly: return "ecoFriendly".localized
             case .fleetCapabilities: return "fleetCapabilities".localized
             case .quoteTypes: return "quoteTypes".localized
-            case .cancelationAndWatingTime: return "cancelationAndWatingTime".localized
+            case .serviceAgreements: return "cancelationAndWatingTime".localized
             }
         }
         
@@ -60,7 +60,7 @@ extension QuoteListFilters {
             case .vehicleExtras: return .multi
             case .ecoFriendly: return .multi
             case .fleetCapabilities: return .multi
-            case .cancelationAndWatingTime: return .multi
+            case .serviceAgreements: return .multi
             case .quoteTypes: return .multi
             }
         }
@@ -77,7 +77,10 @@ extension QuoteListFilters {
         var minValue: Int { 0 }
         var maxValue: Int { 7 }
         var filterCategory: Category { .luggage }
-        var filterValue: String { value.description }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.luggageCapacity >= value
+        }
     }
 
     struct PassengersCapasityModel: QuoteListFilter {
@@ -85,10 +88,14 @@ extension QuoteListFilters {
         var minValue: Int { 1 }
         var maxValue: Int { 7 }
         var filterCategory: Category { .passengers }
-        var filterValue: String { value.description }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.passengerCapacity >= value
+        }
     }
 
     enum VehicleType: String, QuoteListFilter {
+        case all
         case standard
         case berline
         case van
@@ -96,7 +103,10 @@ extension QuoteListFilters {
         case bike
 
         var filterCategory: Category { .vehicleType }
-        var filterValue: String { rawValue.description }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.type.lowercased() == rawValue
+        }
     }
 
     enum VehicleClass: String, UserSelectable, CaseIterable, QuoteListFilter {
@@ -104,16 +114,26 @@ extension QuoteListFilters {
         case luxury
 
         var filterCategory: Category { .vehicleClass }
-        var filterValue: String { rawValue }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.vehicleClass
+                .map { $0.lowercased() }
+                .contains(rawValue)
+        }
     }
 
     enum VehicleExtras: String, UserSelectable, CaseIterable, QuoteListFilter {
         case taxi
-        case childSeat
+        case childSeat = "child-seat"
         case wheelchair
 
         var filterCategory: Category { .vehicleExtras }
-        var filterValue: String { rawValue }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.tags
+                .map { $0.lowercased() }
+                .contains(rawValue)
+        }
     }
 
     enum EcoFriendly: String, QuoteListFilter {
@@ -121,7 +141,12 @@ extension QuoteListFilters {
         case hybrid
 
         var filterCategory: Category { .ecoFriendly }
-        var filterValue: String { rawValue.description }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.vehicle.tags
+                .map { $0.lowercased() }
+                .contains(rawValue)
+        }
     }
     
     enum FleetCapabilities: String, QuoteListFilter {
@@ -132,22 +157,38 @@ extension QuoteListFilters {
         case vehicleDetails
         
         var filterCategory: QuoteListFilters.Category { .fleetCapabilities }
-        var filterValue: String { rawValue }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            return quote.fleet.capability
+                .map { $0.lowercased() }
+                .contains(rawValue)
+        }
     }
 
     enum QuoteType: String, UserSelectable, CaseIterable, QuoteListFilter {
-        case fixedPrice
-        case meteredPrice
+        case fixed
+        case metered
 
         var filterCategory: Category { .quoteTypes}
-        var filterValue: String { rawValue }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            quote.quoteType.rawValue.lowercased() == rawValue
+        }
     }
 
-    enum CancelationAndWatingTime: String, QuoteListFilter {
-        case freeCancelation
-        case freeWatingTime
+    enum ServiceAgreements: String, QuoteListFilter {
+        case freeCancelation = "free_cancellation"
+        case freeWatingTime = "free_waiting_time"
         
-        var filterCategory: QuoteListFilters.Category { .cancelationAndWatingTime }
-        var filterValue: String { rawValue }
+        var filterCategory: QuoteListFilters.Category { .serviceAgreements }
+
+        func conditionMet(for quote: Quote) -> Bool {
+            switch self {
+            case .freeCancelation:
+                return quote.serviceLevelAgreements?.serviceCancellation.type != .other(value: nil)
+            case .freeWatingTime:
+                return (quote.serviceLevelAgreements?.serviceWaiting.minutes ?? 0) > 0
+            }
+        }
     }
 }

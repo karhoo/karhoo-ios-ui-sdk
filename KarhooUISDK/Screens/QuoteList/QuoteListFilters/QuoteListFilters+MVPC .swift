@@ -27,8 +27,10 @@ protocol QuoteListFiltersRouter: AnyObject {
     func dismiss()
 }
 
-protocol QuoteListFilterModelHandler {
-    var filterModel: QuoteListSelectedFiltersModel { get }
-    func filterSelected(_ filter: QuoteListFilter)
-    func filterDeselected(_ filter: QuoteListFilter)
+protocol QuoteFilterHandler: AnyObject {
+    var filters: [QuoteListFilter] { get set }
+    /// Filter given input using provided fitlers value
+    func filter(_ quotes: Quotes, using filters: [QuoteListFilter]) -> [Quote]
+    /// Filter given input using self.filters variable value
+    func filter(_ quotes: Quotes) -> [Quote]
 }

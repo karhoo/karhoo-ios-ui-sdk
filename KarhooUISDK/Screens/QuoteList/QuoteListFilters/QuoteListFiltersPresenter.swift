@@ -14,17 +14,18 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     // MARK: - Properties
 
     private let router: QuoteListFiltersRouter
-    private let filterModelHandler: QuoteListFilterModelHandler
-    private let onResultsForFiltersChosen: (QuoteListSelectedFiltersModel) -> Int
-    private let onFiltersConfirmed: (QuoteListSelectedFiltersModel) -> Void
+    private let filterModelHandler: QuoteFilterHandler
+    private let onResultsForFiltersChosen: ([QuoteListFilter]) -> Int
+    private let onFiltersConfirmed: ([QuoteListFilter]) -> Void
+    private var filters: [QuoteListFilter] = []
 
     // MARK: - Lifecycle
 
     init(
         router: QuoteListFiltersRouter,
-        filterModelHandler: QuoteListFilterModelHandler,
-        onResultsForFiltersChosen: @escaping (QuoteListSelectedFiltersModel) -> Int,
-        onFiltersConfirmed: @escaping (QuoteListSelectedFiltersModel) -> Void
+        filterModelHandler: QuoteFilterHandler = KarhooQuoteFilterHandler(),
+        onResultsForFiltersChosen: @escaping ([QuoteListFilter]) -> Int,
+        onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
     ) {
         self.router = router
         self.filterModelHandler = filterModelHandler
@@ -41,16 +42,16 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     // MARK: - Communication methods
 
     func filterSelected(_ filter: QuoteListFilter) {
-        filterModelHandler.filterSelected(filter)
+        filters.append(filter)
     }
     
     func filterDeselected(_ filter: QuoteListFilter) {
-        filterModelHandler.filterDeselected(filter)
+        filters.removeAll { $0.localizedString == filter.localizedString && $0.filterCategory == filter.filterCategory }
     }
 
     func close(save: Bool) {
         if save {
-            onFiltersConfirmed(filterModelHandler.filterModel)
+            onFiltersConfirmed(filters)
         }
         router.dismiss()
     }

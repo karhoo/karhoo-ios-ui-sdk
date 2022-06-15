@@ -125,9 +125,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
-        presenter.onCategoriesUpdated = { [weak self] categories, quoteListId in
-            self?.handleCategoriesUpdated(categories, quoteListId: quoteListId)
-        }
     }
 
     // MARK: - Setup view

@@ -66,7 +66,7 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
         let sortCoordinator = KarhooQuoteListSortCoordinator(
             selectedOption: selectedSortOrder,
             onSortOptionComfirmed: { [weak self] selectedSortOption in
-                self?.presenter.didSelectQuoteOrder(selectedSortOption)
+                self?.presenter.didSelectQuoteSortOrder(selectedSortOption)
             }
         )
         addChild(sortCoordinator)
@@ -74,7 +74,14 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
     }
 
     func routeToFilters() {
-        let filtersCoordinator = KarhooQuoteListFiltersCoordinator()
+        let filtersCoordinator = KarhooQuoteListFiltersCoordinator(
+            onResultsForFiltersChosen: { [weak self] filters in
+                self?.presenter.getNumberOfResultsForQuoteFilters(filters) ?? 0
+            },
+            onFiltersConfirmed: { [weak self] filters in
+                self?.presenter.selectedQuoteFilters(filters)
+            }
+        )
         addChild(filtersCoordinator)
         filtersCoordinator.startPresented(on: self)
     }
