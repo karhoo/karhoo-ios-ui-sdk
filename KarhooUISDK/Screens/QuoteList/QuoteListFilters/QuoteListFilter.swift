@@ -83,7 +83,7 @@ extension QuoteListFilters {
         }
     }
 
-    struct PassengersCapasityModel: QuoteListFilter {
+    struct PassengerCapacityModel: QuoteListFilter {
         var value: Int
         var minValue: Int { 1 }
         var maxValue: Int { 7 }
@@ -105,7 +105,8 @@ extension QuoteListFilters {
         var filterCategory: Category { .vehicleType }
 
         func conditionMet(for quote: Quote) -> Bool {
-            quote.vehicle.type.lowercased() == rawValue
+            if self == .all { return true }
+            return quote.vehicle.type.lowercased() == rawValue
         }
     }
 

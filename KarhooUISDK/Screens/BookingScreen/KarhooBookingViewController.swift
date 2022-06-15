@@ -230,13 +230,6 @@ extension KarhooBookingViewController: TripAllocationActions {
     }
 }
 
-extension KarhooBookingViewController: QuoteCategoryBarActions {
-
-    func didSelectCategory(_ category: QuoteCategory) {
-//        quoteListView.didSelectQuoteCategory(category)
-    }
-}
-
 extension KarhooBookingViewController: NavigationBarActions {
 
     func rightButtonPressed() {
