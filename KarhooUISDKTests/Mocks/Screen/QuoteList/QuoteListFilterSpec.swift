@@ -11,7 +11,7 @@ import XCTest
 import KarhooSDK
 @testable import KarhooUISDK
 
-class QuoteListFIlterSpec: XCTestCase {
+class QuoteListFIlterSpec: KarhooTestCase {
     
     func testLuggageCapasityFilterSuccess() {
         let filter = QuoteListFilters.LuggageCapasityModel(value: 3)

@@ -15,18 +15,17 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
 
     /// Filter given input using self.filters variable value
     func filter(
-        _ quotes: Quotes
+        _ quotes: [Quote]
     ) -> [Quote] {
         filter(quotes, using: filters)
     }
 
     /// Filter given input using provided fitlers value
     func filter(
-        _ quotes: Quotes,
+        _ quotes: [Quote],
         using filters: [QuoteListFilter]
     ) -> [Quote] {
-        quotes.all
-            .filter { quote in
+        quotes.filter { quote in
                 filters.allSatisfy { filter in
                     filter.conditionMet(for: quote)
                 }

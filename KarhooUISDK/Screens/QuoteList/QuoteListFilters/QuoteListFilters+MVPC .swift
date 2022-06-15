@@ -30,7 +30,7 @@ protocol QuoteListFiltersRouter: AnyObject {
 protocol QuoteFilterHandler: AnyObject {
     var filters: [QuoteListFilter] { get set }
     /// Filter given input using provided fitlers value
-    func filter(_ quotes: Quotes, using filters: [QuoteListFilter]) -> [Quote]
+    func filter(_ quotes: [Quote], using filters: [QuoteListFilter]) -> [Quote]
     /// Filter given input using self.filters variable value
-    func filter(_ quotes: Quotes) -> [Quote]
+    func filter(_ quotes: [Quote]) -> [Quote]
 }
