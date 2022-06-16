@@ -57,7 +57,6 @@ final class MockBookingView: MockBaseViewController, BookingView {
 
     private(set) var tripToOpen: TripInfo?
     private(set) var openRidesListCalled = false
-    private(set) var availabilityValueSet: Bool = false
     private(set) var openRidesDetailsCalled = false
 }
 
@@ -75,14 +74,3 @@ extension MockBookingView: BookingScreen {
         openRidesDetailsCalled = true
     }
 }
-/**
-extension MockBookingView: QuoteListActions {
-
-    func didSelectQuote(_ quote: Quote) {}
-
-    func quotesAvailabilityDidUpdate(availability: Bool) {
-        availabilityValueSet = availability
-    }
-
-}
-*/

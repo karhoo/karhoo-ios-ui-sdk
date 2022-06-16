@@ -70,14 +70,14 @@ class QuoteListFIlterSpec: KarhooTestCase {
     }
     
     func testVehicleExtrasFilterSuccess() {
-        let filter = QuoteListFilters.VehicleExtras.childSeat
+        let filter = QuoteListFilters.VehicleExtras.taxi
         let quote = Quote(vehicle: QuoteVehicle(tags: ["taxi", "wheelchair"]))
         
         XCTAssert(filter.conditionMet(for: quote))
     }
 
     func testVehicleExtrasFilterFailure() {
-        let filter = QuoteListFilters.VehicleExtras.taxi
+        let filter = QuoteListFilters.VehicleExtras.childSeat
         let quote = Quote(vehicle: QuoteVehicle(tags: ["taxi", "wheelchair"]))
         
         XCTAssertFalse(filter.conditionMet(for: quote))
