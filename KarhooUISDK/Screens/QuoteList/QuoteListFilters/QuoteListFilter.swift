@@ -116,9 +116,7 @@ extension QuoteListFilters {
         var filterCategory: Category { .vehicleClass }
 
         func conditionMet(for quote: Quote) -> Bool {
-            quote.vehicle.vehicleClass
-                .map { $0.lowercased() }
-                .contains(rawValue)
+            quote.vehicle.vehicleClass.lowercased() == rawValue
         }
     }
 

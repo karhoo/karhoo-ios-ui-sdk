@@ -32,11 +32,11 @@ class KarhooQuoteFilterHandlerSpec: KarhooTestCase {
         ]
         let quotesToFilter: [Quote] = [
             Quote(quoteType: .fixed, vehicle: .init(vehicleClass: "EXECUTIVE")),
-            Quote(quoteType: .fixed, vehicle: .init(vehicleClass: "EXECUTIVE"))
+            Quote(quoteType: .fixed, vehicle: .init(vehicleClass: "executive"))
         ]
         let filteredQuotes = sut.filter(quotesToFilter, using: filters)
         
-        XCTAssert(filteredQuotes.count == quotesToFilter.count)
+        XCTAssert(filteredQuotes.count == quotesToFilter.count, "filtered results: \(filteredQuotes.count), expected: \(quotesToFilter.count)")
     }
 
     func testFiltersFiltering2() {

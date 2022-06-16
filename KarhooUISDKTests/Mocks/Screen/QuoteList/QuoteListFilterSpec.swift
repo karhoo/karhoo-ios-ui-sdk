@@ -42,14 +42,14 @@ class QuoteListFIlterSpec: KarhooTestCase {
     }
 
     func testVehicleTypeFilterSuccess() {
-        let filter = QuoteListFilters.VehicleType.van
-        let quote = Quote(vehicle: QuoteVehicle(type: "van"))
+        let filter = QuoteListFilters.VehicleType.moto
+        let quote = Quote(vehicle: QuoteVehicle(type: "moto"))
         
         XCTAssert(filter.conditionMet(for: quote))
     }
 
     func testVehicleTypeFilterFailure() {
-        let filter = QuoteListFilters.VehicleType.van
+        let filter = QuoteListFilters.VehicleType.moto
         let quote = Quote(vehicle: QuoteVehicle(type: "bike"))
         
         XCTAssertFalse(filter.conditionMet(for: quote))
