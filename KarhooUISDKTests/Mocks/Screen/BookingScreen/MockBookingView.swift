@@ -55,26 +55,9 @@ final class MockBookingView: MockBaseViewController, BookingView {
         hideAllocationScreenCalled = true
     }
 
-    private(set) var showQuoteListCalled = false
-    func showQuoteList() {
-        showQuoteListCalled = true
-    }
-
-    private(set) var hideQuoteListCalled = false
-    func hideQuoteList() {
-        hideQuoteListCalled = true
-    }
-
-    private(set) var setMapPaddingCalled = false
-    private(set) var mapPaddingBottomPaddingEnabled: Bool?
-    func setMapPadding(bottomPaddingEnabled: Bool) {
-        setMapPaddingCalled = true
-        mapPaddingBottomPaddingEnabled = bottomPaddingEnabled
-    }
-
     private(set) var tripToOpen: TripInfo?
     private(set) var openRidesListCalled = false
-    private(set) var availabilityValueSet: Bool!
+    private(set) var availabilityValueSet: Bool = false
     private(set) var openRidesDetailsCalled = false
 }
 

@@ -97,10 +97,9 @@ extension QuoteListFilters {
     enum VehicleType: String, QuoteListFilter {
         case all
         case standard
-        case berline
-        case van
+        case bus
+        case mvp
         case moto
-        case bike
 
         var filterCategory: Category { .vehicleType }
 
