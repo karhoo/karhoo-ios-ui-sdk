@@ -29,16 +29,14 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.distribution = .fill
         $0.alignment = .fill
-        $0.isUserInteractionEnabled = true
     }
     private lazy var headerLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = UITexts.Generic.sortBy
+        $0.text = UITexts.Quotes.filter
         $0.textColor = KarhooUI.colors.text
         $0.font = KarhooUI.fonts.subtitleSemibold()
     }
     private lazy var closeButton = UIButton().then {
-//        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = KarhooUI.colors.text
         $0.setImage(.uisdkImage("cross_new"), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
