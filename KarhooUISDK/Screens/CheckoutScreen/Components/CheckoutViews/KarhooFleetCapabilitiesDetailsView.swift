@@ -78,7 +78,8 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
             
             stackView.anchor(top: topAnchor,
                              leading: leadingAnchor,
-                             trailing: trailingAnchor, bottom: bottomAnchor)
+                             trailing: trailingAnchor,
+                             bottom: bottomAnchor)
             fleetCapabilitiesStackView.anchor(top: stackView.topAnchor,
                                               leading: stackView.leadingAnchor,
                                               trailing: stackView.trailingAnchor)
