@@ -14,7 +14,6 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     // MARK: - Properties
 
     private let router: QuoteListFiltersRouter
-    private let filterModelHandler: QuoteFilterHandler
     private let onResultsForFiltersChosen: ([QuoteListFilter]) -> Int
     private let onFiltersConfirmed: ([QuoteListFilter]) -> Void
     private var filters: [QuoteListFilter] = []
@@ -23,12 +22,10 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     init(
         router: QuoteListFiltersRouter,
-        filterModelHandler: QuoteFilterHandler = KarhooQuoteFilterHandler(),
         onResultsForFiltersChosen: @escaping ([QuoteListFilter]) -> Int,
         onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
     ) {
         self.router = router
-        self.filterModelHandler = filterModelHandler
         self.onResultsForFiltersChosen = onResultsForFiltersChosen
         self.onFiltersConfirmed = onFiltersConfirmed
     }
@@ -56,4 +53,11 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
         router.dismiss()
     }
 
+    func resetFilter() {
+        filters = []
+    }
+
+    func resultsCountForSelectedFilters() -> Int {
+        onResultsForFiltersChosen(filters)
+    }
 }

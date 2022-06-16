@@ -13,6 +13,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
 
     // MARK: - Properties
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     private var presenter: QuoteListFiltersPresenter!
 
     // MARK: - Views
@@ -37,10 +38,17 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         $0.font = KarhooUI.fonts.subtitleSemibold()
     }
     private lazy var closeButton = UIButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
+//        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = KarhooUI.colors.text
         $0.setImage(.uisdkImage("cross_new"), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+    }
+    private lazy var resetButton = UIButton().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setTitle("reset_filter", for: .normal)
+        $0.setTitleColor(KarhooUI.colors.accent, for: .normal)
+        $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
+        $0.addTarget(self, action: #selector(resetPressed), for: .touchUpInside)
     }
     private lazy var footerView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +83,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     override func viewWillAppear(_ animate: Bool) {
         super.viewWillAppear(animate)
         presenter.viewWillAppear()
+        updateConfirmButtonTitle()
     }
 
     // MARK: - Setup business logic
@@ -98,6 +107,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
 
     private func setupHierarchy() {
         view.addSubview(headerStackView)
+        view.addSubview(resetButton)
         view.addSubview(scrollView)
         view.addSubview(footerView)
         scrollView.addSubview(stackView)
@@ -114,7 +124,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
 
     private func setupLayout() {
         scrollView.anchor(
-            top: headerStackView.bottomAnchor,
+            top: resetButton.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor,
             bottom: footerView.topAnchor,
@@ -138,6 +148,12 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             paddingRight: UIConstants.Spacing.standard
         )
         headerStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        resetButton.anchor(
+            top: headerStackView.bottomAnchor,
+            right: headerStackView.rightAnchor,
+            paddingTop: UIConstants.Spacing.large,
+            height: UIConstants.Dimension.Button.small
+        )
         footerView.anchor(
             top: confirmButton.topAnchor,
             left: view.leftAnchor,
@@ -158,6 +174,19 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         )
     }
 
+    // MARK: - Private
+    
+    private func updateConfirmButtonTitle() {
+        let count = presenter.resultsCountForSelectedFilters().description
+        let text = String(format: UITexts.Quotes.filterPageResults, count)
+        confirmButton.setTitle(text, for: .normal)
+    }
+
+    private func filterSelected(_ filter: QuoteListFilter) {
+        presenter.filterSelected(filter)
+        updateConfirmButtonTitle()
+    }
+
     // MARK: - UI Actions
 
     @objc
@@ -168,5 +197,11 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     @objc
     private func closePressed(_ sender: UIButton) {
         presenter.close(save: false)
+    }
+
+    @objc
+    private func resetPressed(_ sender: UIButton) {
+        presenter.resetFilter()
+        // TODO: reset subviews
     }
 }

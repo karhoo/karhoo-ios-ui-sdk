@@ -425,6 +425,9 @@ public enum UITexts {
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized
         static let driverArrivalTime = "Text.Quotes.DriverArrivalTime".localized
+        static let filter = "Text.Quotes.Filter".localized
+        static let filterPageResults = "Text.Quotes.FilterPageResults".localized
+        static let resetFilter = "Text.Quotes.ResetFilter".localized
     }
     
     public enum Loyalty {

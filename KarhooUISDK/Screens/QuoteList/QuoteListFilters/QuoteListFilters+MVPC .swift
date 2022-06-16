@@ -21,6 +21,8 @@ protocol QuoteListFiltersPresenter: AnyObject {
     func viewWillAppear()
     func filterSelected(_ filter: QuoteListFilter)
     func close(save: Bool)
+    func resetFilter()
+    func resultsCountForSelectedFilters() -> Int
 }
 
 protocol QuoteListFiltersRouter: AnyObject {

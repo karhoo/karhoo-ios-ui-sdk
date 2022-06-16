@@ -8,12 +8,12 @@
 
 import UIKit
 import KarhooSDK
-import Adyen
 
 class KarhooQuoteListSortViewController: UIViewController, BaseViewController, QuoteListSortViewController {
 
     // MARK: - Properties
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     private var presenter: QuoteListSortPresenter!
 
     // MARK: - Views

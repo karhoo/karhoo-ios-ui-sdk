@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
     
@@ -43,9 +44,8 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
     }
 
     func startPresented(on parentCoordinator: KarhooUISDKSceneCoordinator) {
-        navigationController = UINavigationController()
-        navigationController?.setViewControllers([viewController], animated: false)
-        parentCoordinator.baseViewController.present(navigationController!, animated: true)
+        let presentingViewController = navigationController ?? parentCoordinator.baseViewController
+        presentingViewController.present(viewController, animated: true)
     }
 }
 

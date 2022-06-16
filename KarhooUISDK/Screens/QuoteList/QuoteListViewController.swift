@@ -56,7 +56,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     private lazy var filtersButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("filters_icon"), for: .normal)
-        $0.setTitle("Filters_", for: .normal)
+        $0.setTitle(UITexts.Quotes.filter, for: .normal)
         $0.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
     }
     private lazy var legalDisclaimerContainer = UIView().then {
