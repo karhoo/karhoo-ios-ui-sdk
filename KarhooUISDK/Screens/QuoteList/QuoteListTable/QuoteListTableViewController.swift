@@ -98,8 +98,8 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
             handleFetchingState()
         case .fetched:
             handleFetchedState()
-        case .empty(let error):
-            handleEmptyState(error)
+        case .empty(let reason):
+            handleEmptyState(reason)
         }
     }
 
@@ -133,13 +133,13 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         tableView.backgroundView = nil
     }
 
-    private func handleEmptyState(_ error: QuoteListState.Error) {
+    private func handleEmptyState(_ reason: QuoteListState.EmptyReason) {
         activityIndicator.stopAnimating()
         tableView.reloadData()
-        let errorView = QuoteListErrorView(using: presenter.getErrorViewModel(), delegate: self)
-        let currentErrorView = tableView.backgroundView as? QuoteListErrorView
-        let shouldReplaceErrorView = currentErrorView?.viewModel != errorView.viewModel
-        tableView.backgroundView = shouldReplaceErrorView ? errorView : tableView.backgroundView
+        let emptyView = QuoteListEmptyView(using: presenter.getEmptyReasonViewModel(), delegate: self)
+        let currentEmptyView = tableView.backgroundView as? QuoteListEmptyView
+        let shouldReplaceEmptyView = currentEmptyView?.viewModel != emptyView.viewModel
+        tableView.backgroundView = shouldReplaceEmptyView ? emptyView : tableView.backgroundView
     }
     
     // MARK: - Utils

@@ -200,7 +200,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private func updateViewQuotes() {
         guard let fetchedQuotes = fetchedQuotes else { return }
 
-        let quotesToShow: [Quote] = quoteFilter.filter(fetchedQuotes.all)
+        let quotesToShow: [Quote] = [] // quoteFilter.filter(fetchedQuotes.all)
 
         let noQuotesForSelectedFitlers = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
         let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
@@ -211,7 +211,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         case (true, _, _):
             onStateUpdated?(.empty(reason: .noResults))
         case (_, true, _):
-            onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
+            onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
         case (_, _, .progressing) where fetchedQuotes.all.isEmpty:

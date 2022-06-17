@@ -42,7 +42,7 @@ protocol QuoteListTablePresenter: AnyObject {
 
     func updateQuoteListState(_ state: QuoteListState)
 
-    func getErrorViewModel() -> QuoteListTableErrorViewModel
+    func getEmptyReasonViewModel() -> QuoteListTableErrorViewModel
 
     func showNoCoverageEmail()
 

@@ -242,9 +242,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         }
     }
     
-    private func handleEmptyState(reason: QuoteListState.Error) {
+    private func handleEmptyState(reason: QuoteListState.EmptyReason) {
         let hideAuxiliaryHeaderItems: Bool
         switch reason {
+        case .noResults:
+            hideAuxiliaryHeaderItems = false
         default:
             hideAuxiliaryHeaderItems = true
         }

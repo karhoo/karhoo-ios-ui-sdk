@@ -10,7 +10,7 @@ import UIKit
     func showNoCoverageEmail()
 }
 
-final class QuoteListErrorView: UIView, UITextViewDelegate {
+final class QuoteListEmptyView: UIView, UITextViewDelegate {
 
     private lazy var titleLabel = UILabel().then {
         $0.font = KarhooUI.fonts.subtitleSemibold()

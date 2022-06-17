@@ -41,20 +41,20 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         onQuoteListStateUpdated?(state)
     }
 
-    func getErrorViewModel() -> QuoteListTableErrorViewModel {
+    func getEmptyReasonViewModel() -> QuoteListTableErrorViewModel {
         QuoteListTableErrorViewModel(
-            title: titleForPresentedError(),
-            message: messageForPresentedError(),
-            attributedMessage: attributedMessageForPresentedError(),
-            imageName: imageNameForPresentedError(),
-            actionTitle: actionTitleForPresentedError(),
-            actionCallback: actionForPresentedError()
+            title: titleForPresentedEmptyResult(),
+            message: messageForPresentedEmptyResult(),
+            attributedMessage: attributedMessageForPresentedEmptyResult(),
+            imageName: imageNameForPresentedEmptyResult(),
+            actionTitle: actionTitleForPresentedEmptyResult(),
+            actionCallback: actionForPresentedEmptyResult()
         )
     }
 
     // MARK: - Build error view model helper methods
 
-    private func titleForPresentedError() -> String {
+    private func titleForPresentedEmptyResult() -> String {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Errors.errorNoAvailabilityForTheRequestTimeTitle
@@ -62,12 +62,14 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return UITexts.Errors.errorPickupAndDestinationSameTitle
         case .empty(reason: .noAvailabilityInRequestedArea):
             return "No fleets in this area yet"
+        case .empty(reason: .noQuotesAfterFiltering):
+            return UITexts.Errors.errorNoResultsForFilterTitle
         default:
             return ""
         }
     }
 
-    private func messageForPresentedError() -> String? {
+    private func messageForPresentedEmptyResult() -> String? {
         switch state {
         case .empty(reason: .noResults):
             return UITexts.Errors.errorNoAvailabilityForTheRequestTimeMessage
@@ -75,24 +77,28 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return UITexts.Errors.errorPickupAndDestinationSameMessage
         case .empty(reason: .noAvailabilityInRequestedArea):
             return nil // for this case we are showing attributedMessageForPresentedError
+        case .empty(reason: .noQuotesAfterFiltering):
+            return UITexts.Errors.errorNoResultsForFilterMessage
         default:
             return nil
         }
     }
 
-    private func attributedMessageForPresentedError() -> NSAttributedString? {
+    private func attributedMessageForPresentedEmptyResult() -> NSAttributedString? {
         switch state {
         case .empty(reason: .noAvailabilityInRequestedArea):
-            return getAttributedStringForNoCoverageError()
+            return getAttributedStringForNoCoverageEmptyResult()
         default:
             return nil
         }
     }
 
-    private func imageNameForPresentedError() -> String {
+    private func imageNameForPresentedEmptyResult() -> String {
         switch state {
         case .empty(reason: .noResults):
             return "quoteList_error_no_availability"
+        case .empty(reason:  .noQuotesAfterFiltering):
+            return "quoteList_error_no_results_for_filter"
         case .empty(reason: .originAndDestinationAreTheSame):
             return "quoteList_error_pickup_destination_similar"
         case .empty(reason: .noAvailabilityInRequestedArea):
@@ -102,21 +108,21 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         }
     }
 
-    private func actionTitleForPresentedError() -> String? {
+    private func actionTitleForPresentedEmptyResult() -> String? {
         switch state {
         default:
             return nil
         }
     }
 
-    private func actionForPresentedError() -> (() -> Void)? {
+    private func actionForPresentedEmptyResult() -> (() -> Void)? {
         switch state {
         default:
             return nil
         }
     }
 
-    private func getAttributedStringForNoCoverageError() -> NSAttributedString {
+    private func getAttributedStringForNoCoverageEmptyResult() -> NSAttributedString {
         let contactUsText = UITexts.Errors.errorNoAvailabilityInRequestedAreaContactUsLinkText
         let contactUsLink = "OpenContactUsMail"
         let message = UITexts.Errors.errorNoAvailabilityInRequestedAreaContactUsFullText
