@@ -14,14 +14,14 @@ import KarhooSDK
 class QuoteListFIlterSpec: KarhooTestCase {
     
     func testLuggageCapasityFilterSuccess() {
-        let filter = QuoteListFilters.LuggageCapasityModel(value: 3)
+        let filter = QuoteListFilters.LuggageCapacityModel(value: 3)
         let quote = Quote(vehicle: QuoteVehicle(luggageCapacity: 3))
         
         XCTAssert(filter.conditionMet(for: quote))
     }
 
     func testLuggageCapasityFilterFailure() {
-        let filter = QuoteListFilters.LuggageCapasityModel(value: 3)
+        let filter = QuoteListFilters.LuggageCapacityModel(value: 3)
         let quote = Quote(vehicle: QuoteVehicle(luggageCapacity: 2))
         
         XCTAssertFalse(filter.conditionMet(for: quote))

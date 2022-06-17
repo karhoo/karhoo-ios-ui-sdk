@@ -299,17 +299,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             delay: 0,
             options: .curveEaseOut,
             animations: { [weak self] in
-                if hideAuxiliaryHeaderItems {
-                    self?.buttonsStackView.alpha = 0
-                    self?.legalDisclaimerContainer.alpha = 0
-                }
+                let alpha: CGFloat = hideAuxiliaryHeaderItems ? 0 : 1
+                self?.buttonsStackView.alpha = alpha
+                self?.legalDisclaimerContainer.alpha = alpha
             },
             completion: { [weak self] _ in
                 guard let self = self else { return }
-                if hideAuxiliaryHeaderItems {
-                    self.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
-                    self.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
-                }
+                self.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
+                self.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
                 self.sortButton.isHidden = !self.presenter.isSortingAvailable
                 completion()
             }
