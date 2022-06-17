@@ -155,7 +155,8 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         footerView.anchor(
             top: confirmButton.topAnchor,
             left: view.leftAnchor,
-            right: view.rightAnchor, bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            bottom: view.bottomAnchor,
             paddingTop: -UIConstants.Spacing.large
         )
         closeButton.anchor(

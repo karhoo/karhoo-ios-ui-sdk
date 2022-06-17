@@ -245,7 +245,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func handleEmptyState(reason: QuoteListState.EmptyReason) {
         let hideAuxiliaryHeaderItems: Bool
         switch reason {
-        case .noResults:
+        case .noQuotesAfterFiltering:
             hideAuxiliaryHeaderItems = false
         default:
             hideAuxiliaryHeaderItems = true
@@ -294,6 +294,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         animated: Bool = true,
         completion: @escaping () -> Void = { }
     ) {
+//        let hideAuxiliaryHeaderItems = false
         UIView.animate(
             withDuration: animated ? UIConstants.Duration.medium : 0,
             delay: 0,
@@ -306,7 +307,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             completion: { [weak self] _ in
                 guard let self = self else { return }
                 self.buttonsStackView.isHidden = hideAuxiliaryHeaderItems
-                self.legalDisclaimerContainer.isHidden = hideAuxiliaryHeaderItems
+                self.legalDisclaimerContainer.isHidden = true
                 self.sortButton.isHidden = !self.presenter.isSortingAvailable
                 completion()
             }
