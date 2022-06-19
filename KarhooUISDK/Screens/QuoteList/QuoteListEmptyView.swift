@@ -80,7 +80,10 @@ final class QuoteListEmptyView: UIView, UITextViewDelegate {
         ])
         imageView.anchor(width: UIConstants.Dimension.Icon.xxxLarge, height: UIConstants.Dimension.Icon.xxxLarge)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        imageView.centerYAnchor.constraint(
+            equalTo: centerYAnchor,
+            constant: -UIConstants.Spacing.large
+        ).isActive = true
         descriptionTextView.delegate = self
     }
 
