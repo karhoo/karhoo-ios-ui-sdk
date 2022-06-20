@@ -43,7 +43,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     }
     private lazy var resetButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setTitle("reset_filter", for: .normal)
+        $0.setTitle(UITexts.Quotes.resetFilter, for: .normal)
         $0.setTitleColor(KarhooUI.colors.accent, for: .normal)
         $0.titleLabel?.font = KarhooUI.fonts.bodySemibold()
         $0.addTarget(self, action: #selector(resetPressed), for: .touchUpInside)
