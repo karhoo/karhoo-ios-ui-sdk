@@ -131,7 +131,8 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         stackView.anchor(
             top: scrollView.topAnchor,
             left: scrollView.leftAnchor,
-            right: scrollView.rightAnchor, bottom: scrollView.bottomAnchor,
+            right: scrollView.rightAnchor,
+            bottom: scrollView.bottomAnchor,
             paddingTop: UIConstants.Spacing.standard,
             paddingLeft: UIConstants.Spacing.standard,
             paddingRight: UIConstants.Spacing.standard,
