@@ -97,8 +97,8 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         termsTextView.anchor(
             top: topAnchor,
             leading: leadingAnchor,
-            bottom: bottomAnchor,
             trailing: trailingAnchor,
+            bottom: bottomAnchor,
             paddingLeft: UIConstants.Spacing.standard,
             paddingRight: UIConstants.Spacing.standard
         )
@@ -114,8 +114,8 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         termsTextView.anchor(
             top: topAnchor,
             leading: checkboxView.trailingAnchor,
-            bottom: bottomAnchor,
             trailing: trailingAnchor,
+            bottom: bottomAnchor,
             paddingLeft: UIConstants.Spacing.xxSmall + CheckboxView.CustomConstants.visibleAndActualWidthOffset / 2,
             paddingRight: UIConstants.Spacing.standard
         )

@@ -283,15 +283,6 @@ extension KarhooBookingPresenter: BookingPresenter {
             view?.present(tripView, animated: true, completion: nil)
         }
     }
-    
-    // MARK: Quotes
-    func didSelectQuote(quote: Quote) {
-        guard let bookingDetails = getJourneyDetails() else {
-            return
-        }
-
-        showCheckoutView(quote: quote, journeyDetails: bookingDetails)
-    }
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {

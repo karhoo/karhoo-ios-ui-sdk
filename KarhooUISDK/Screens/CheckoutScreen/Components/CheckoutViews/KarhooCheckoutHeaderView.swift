@@ -202,8 +202,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
                                               leading: capacityContentView.leadingAnchor,
                                               trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.anchor(bottom: capacityContentView.bottomAnchor,
-                                   trailing: capacityContentView.trailingAnchor)
+            learnMoreButton.anchor(
+                trailing: capacityContentView.trailingAnchor,
+                bottom: capacityContentView.bottomAnchor
+            )
             
             if capabilitiesStackView.subviews.count > 0 {
                 learnMoreButton.anchor(top: carTypeLabel.bottomAnchor)

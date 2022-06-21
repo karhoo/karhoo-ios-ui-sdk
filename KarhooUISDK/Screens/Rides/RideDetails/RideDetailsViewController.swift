@@ -91,11 +91,11 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
         trackDriverButton.anchor(
             leading: view.leadingAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             trailing: view.trailingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             paddingLeft: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.standard,
-            paddingRight: UIConstants.Spacing.standard
+            paddingRight: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.standard
         )
     }
 

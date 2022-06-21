@@ -131,13 +131,13 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
         if !didSetupConstraints {
             passengerDetailsContainer.anchor(top: self.topAnchor,
                                              leading: self.leadingAnchor,
-                                             bottom: self.bottomAnchor,
-                                             trailing: self.trailingAnchor)
+                                             trailing: self.trailingAnchor,
+                                             bottom: self.bottomAnchor)
             
             passengerDetailsStackView.anchor(top: passengerDetailsContainer.topAnchor,
                                              leading: passengerDetailsContainer.leadingAnchor,
-                                             bottom: passengerDetailsContainer.bottomAnchor,
                                              trailing: passengerDetailsContainer.trailingAnchor,
+                                             bottom: passengerDetailsContainer.bottomAnchor,
                                              paddingTop: 12.0,
                                              paddingBottom: 12.0)
             

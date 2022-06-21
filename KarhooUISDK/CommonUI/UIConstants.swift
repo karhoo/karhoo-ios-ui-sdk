@@ -156,10 +156,10 @@ public struct UIConstants {
             public static let rowHeight: CGFloat = 50 //includes KarhooQuoteListViewController > prebookQuotesTitleLabel height
             
             /// 60
-            public static let largeRowHeight: CGFloat = 60 // includes the address search bar height & KarhooQuoteListViewController > quoteCategoryBarView height
+            public static let largeRowHeight: CGFloat = 60 // includes the address search bar height
             
             /// 20
-            public static let tagHeight: CGFloat = 20 // KarhooQuoteCategoryBarView > markerView height
+            public static let tagHeight: CGFloat = 20
             
             /// 30
             public static let largeTagHeight: CGFloat = 30

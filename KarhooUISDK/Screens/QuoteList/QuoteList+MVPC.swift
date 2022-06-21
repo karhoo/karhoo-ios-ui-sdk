@@ -35,8 +35,6 @@ protocol QuoteListViewController: BaseViewController {
 }
 
 protocol QuoteListPresenter: AnyObject {
-    
-    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)? { get set }
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 
@@ -48,17 +46,19 @@ protocol QuoteListPresenter: AnyObject {
 
     func viewWillDisappear()
 
-    func selectedQuoteCategory(_ category: QuoteCategory)
+    func getNumberOfResultsForQuoteFilters(_ filters: [QuoteListFilter]) -> Int
 
-    func didSelectQuoteOrder(_ order: QuoteListSortOrder)
+    func selectedQuoteFilters(_ filters: [QuoteListFilter])
+
+    func didSelectQuoteSortOrder(_ order: QuoteListSortOrder)
 
     func didSelectQuote(_ quote: Quote)
 
     func didSelectQuoteDetails(_ quote: Quote)
 
-    func didSelectCategory(_ category: QuoteCategory)
-
     func didSelectShowSort()
+
+    func didSelectShowFilters()
 }
 
 protocol QuoteListRouter: AnyObject {
@@ -68,4 +68,6 @@ protocol QuoteListRouter: AnyObject {
     func routeToQuoteDetails(_ quote: Quote)
 
     func routeToSort(selectedSortOrder: QuoteListSortOrder)
+
+    func routeToFilters()
 }

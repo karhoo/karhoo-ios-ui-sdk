@@ -32,18 +32,6 @@ final class BookingViewControllerBuilderSpec: KarhooTestCase {
                                                    callback: { _ in})
         let expectedNavigationControllerOutput = (output as? UINavigationController)!
 
-        XCTAssertTrue(expectedNavigationControllerOutput.isNavigationBarHidden)
         XCTAssertEqual(2, expectedNavigationControllerOutput.viewControllers.count)
-    }
-
-    /**
-      * When: No side menu handler is set
-      * Then: Booking View should be congigured as expected
-      */
-    func testNoSideMenu() {
-        KarhooUI.sideMenuHandler = nil
-        let output = testObject.buildBookingScreen(journeyInfo: nil,
-                                                   callback: { _ in})
-        XCTAssertNil(output as? UINavigationController)
     }
 }

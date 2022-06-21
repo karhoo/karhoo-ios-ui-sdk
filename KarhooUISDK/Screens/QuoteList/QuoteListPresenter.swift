@@ -18,12 +18,11 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private var fetchedQuotes: Quotes?
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
-    private var selectedQuoteCategory: QuoteCategory?
     private var selectedQuoteOrder: QuoteListSortOrder = .price
     private let quoteSorter: QuoteSorter
+    private let quoteFilter: QuoteFilterHandler
     private let analytics: Analytics
     private let router: QuoteListRouter
-    var onCategoriesUpdated: (([QuoteCategory], String) -> Void)?
     var onStateUpdated: ((QuoteListState) -> Void)?
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
@@ -39,12 +38,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
+        quoteFilter: QuoteFilterHandler = KarhooQuoteFilterHandler(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.router = router
         self.journeyDetailsManager = journeyDetailsManager
         self.quoteService = quoteService
         self.quoteSorter = quoteSorter
+        self.quoteFilter = quoteFilter
         self.analytics = analytics
         journeyDetailsManager.add(observer: self)
         
@@ -82,12 +83,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     // MARK: - Endpoints
 
-    func selectedQuoteCategory(_ category: QuoteCategory) {
-        selectedQuoteCategory = category
-        updateViewQuotes()
-    }
-    
-    func didSelectQuoteOrder(_ order: QuoteListSortOrder) {
+    func didSelectQuoteSortOrder(_ order: QuoteListSortOrder) {
         selectedQuoteOrder = order
         updateViewQuotes()
     }
@@ -100,13 +96,22 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func didSelectQuoteDetails(_ quote: Quote) {
     }
 
-    func didSelectCategory(_ category: QuoteCategory) {
-        selectedQuoteCategory = category
+    func getNumberOfResultsForQuoteFilters(_ filters: [QuoteListFilter]) -> Int {
+        guard let quotes = fetchedQuotes else { return 0 }
+        return quoteFilter.filter(quotes.all, using: filters).count
+    }
+
+    func selectedQuoteFilters(_ filters: [QuoteListFilter]) {
+        quoteFilter.filters = filters
         updateViewQuotes()
     }
 
     func didSelectShowSort() {
         router.routeToSort(selectedSortOrder: selectedQuoteOrder)
+    }
+
+    func didSelectShowFilters() {
+        router.routeToFilters()
     }
 
     // MARK: - Private
@@ -195,25 +200,14 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private func updateViewQuotes() {
         guard let fetchedQuotes = fetchedQuotes else { return }
 
-        let quotesToShow: [Quote]
-        
-        // TODO: Change filtering logic, not use names as a comparator
-        if selectedQuoteCategory?.categoryName == UITexts.Availability.allCategory || selectedQuoteCategory == nil {
-            quotesToShow = fetchedQuotes.all
-        } else {
-            quotesToShow = fetchedQuotes.quoteCategories
-                .filter {
-                    $0.categoryName == selectedQuoteCategory?.categoryName }
-                .first?.quotes ?? []
-        }
-        
-        let noQuotesInSelectedCategory = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
+        let quotesToShow: [Quote] = quoteFilter.filter(fetchedQuotes.all)
+
+        let noQuotesForSelectedFitlers = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
         let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
-        onCategoriesUpdated?(fetchedQuotes.quoteCategories, fetchedQuotes.quoteListId)
-
-        switch (noQuotesForTimeAndArea, noQuotesInSelectedCategory, fetchedQuotes.status) {
+        switch (noQuotesForTimeAndArea, noQuotesForSelectedFitlers, fetchedQuotes.status) {
         case (true, _, _):
             onStateUpdated?(.empty(reason: .noResults))
         case (_, true, _):

@@ -55,11 +55,11 @@ final class KarhooFareInfoView: UIView {
                         paddingRight: 10.0)
         fareTypeInfoLabel.centerY(inView: self)
         fareTypeInfoLabel.anchor(top: topAnchor,
-                                 bottom: bottomAnchor,
                                  trailing: trailingAnchor,
+                                 bottom: bottomAnchor,
                                  paddingTop: 5.0,
-                                 paddingBottom: 5.0,
-                                 paddingRight: 10.0)
+                                 paddingRight: 10.0,
+                                 paddingBottom: 5.0)
     }
     
     private func retrieveTextBasedOn(fareType: QuoteType) -> String {

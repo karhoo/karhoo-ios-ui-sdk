@@ -295,7 +295,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
-        baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
+        baseStackView.anchor(
+            top: backButton.bottomAnchor,
+            leading: container.leadingAnchor,
+            trailing: container.trailingAnchor,
+            bottom: footerView.topAnchor
+        )
 
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
@@ -305,8 +310,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                                      trailing: baseStackView.trailingAnchor,
                                      paddingTop: standardPadding,
                                      paddingLeft: standardPadding,
-                                     paddingBottom: standardPadding,
-                                     paddingRight: standardPadding)
+                                     paddingRight: standardPadding,
+                                     paddingBottom: standardPadding)
         
         rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
                                  leading: baseStackView.leadingAnchor,
@@ -327,12 +332,17 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding)
+        footerView.anchor(
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: container.bottomAnchor,
+            paddingBottom: standardPadding
+        )
         footerStack.anchor(
             top: footerView.topAnchor,
             leading: footerView.leadingAnchor,
-            bottom: footerView.bottomAnchor,
             trailing: footerView.trailingAnchor,
+            bottom: footerView.bottomAnchor,
             paddingTop: standardPadding,
             paddingBottom: standardPadding
         )

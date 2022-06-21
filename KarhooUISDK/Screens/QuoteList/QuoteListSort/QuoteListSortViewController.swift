@@ -8,12 +8,12 @@
 
 import UIKit
 import KarhooSDK
-import Adyen
 
 class KarhooQuoteListSortViewController: UIViewController, BaseViewController, QuoteListSortViewController {
 
     // MARK: - Properties
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     private var presenter: QuoteListSortPresenter!
 
     // MARK: - Views
@@ -42,7 +42,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = UITexts.Generic.sortBy
         $0.textColor = KarhooUI.colors.text
-        $0.font = KarhooUI.fonts.subtitleRegular()
+        $0.font = KarhooUI.fonts.subtitleSemibold()
     }
     private lazy var closeButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -140,23 +140,23 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         transparentView.anchor(
             top: view.topAnchor,
             left: view.leftAnchor,
-            bottom: visibleContainer.topAnchor,
-            right: view.rightAnchor
+            right: view.rightAnchor,
+            bottom: visibleContainer.topAnchor
         )
         visibleContainer.anchor(
             left: view.leftAnchor,
-            bottom: view.bottomAnchor,
-            right: view.rightAnchor
+            right: view.rightAnchor,
+            bottom: view.bottomAnchor
         )
         stackView.anchor(
             top: visibleContainer.topAnchor,
             left: visibleContainer.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             right: visibleContainer.rightAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             paddingTop: UIConstants.Spacing.standard,
             paddingLeft: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.standard,
-            paddingRight: UIConstants.Spacing.standard
+            paddingRight: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.standard
         )
         headerStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
 
