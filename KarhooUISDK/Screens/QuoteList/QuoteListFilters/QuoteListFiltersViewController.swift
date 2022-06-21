@@ -113,10 +113,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             headerLabel,
             closeButton
         ])
-        stackView.addArrangedSubviews([
-            SeparatorView(fixedHeight: 1200, color: .blue),
-            SeparatorView()
-        ])
+        stackView.addArrangedSubviews(FilterViewBuilder.buildFilterViews())
         footerView.addSubview(confirmButton)
     }
 
