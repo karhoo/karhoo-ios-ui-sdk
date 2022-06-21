@@ -21,11 +21,11 @@ class NumericFilterView: UIView, FilterView {
     private lazy var stackView = UIStackView().then {
         $0.axis = .horizontal
         $0.alignment = .center
-//        $0.distribution = .
     }
     private lazy var iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = filter.icon
+        $0.contentMode = .scaleAspectFit
     }
     private lazy var titleLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -35,28 +35,30 @@ class NumericFilterView: UIView, FilterView {
     }
     private lazy var decreaseCountButton = UIButton().then {
         $0.layer.borderColor = KarhooUI.colors.accent.cgColor
-        layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        layer.cornerRadius = UIConstants.CornerRadius.medium
-        layer.masksToBounds = true
+        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        $0.layer.cornerRadius = UIConstants.CornerRadius.medium
+        $0.layer.masksToBounds = true
         $0.backgroundColor = KarhooUI.colors.lightAccent
-        $0.setTitleColor(KarhooUI.colors.accent, for: .normal)
-        $0.setTitle("-", for: .normal)
+        $0.setImage(.uisdkImage("quantity_minus"), for: .normal)
+        $0.imageView?.tintColor = KarhooUI.colors.accent
+        $0.addTarget(self, action: #selector(decreaseTapped), for: .touchUpInside)
         $0.addTouchAnimation()
     }
     private lazy var increaseCountButton = UIButton().then {
         $0.layer.borderColor = KarhooUI.colors.accent.cgColor
-        layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        layer.cornerRadius = UIConstants.CornerRadius.medium
-        layer.masksToBounds = true
+        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        $0.layer.cornerRadius = UIConstants.CornerRadius.medium
+        $0.layer.masksToBounds = true
         $0.backgroundColor = KarhooUI.colors.lightAccent
-        $0.setTitleColor(KarhooUI.colors.accent, for: .normal)
-        $0.setTitle("+", for: .normal)
+        $0.setImage(.uisdkImage("quantity_plus"), for: .normal)
+        $0.imageView?.tintColor = KarhooUI.colors.accent
+        $0.addTarget(self, action: #selector(increaseTapped), for: .touchUpInside)
         $0.addTouchAnimation()
     }
     private lazy var currentFilterValueLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = numericFilter.value.description
-        $0.font = KarhooUI.fonts.titleBold()
+        $0.font = KarhooUI.fonts.headerSemibold()
         $0.textAlignment = .center
     }
 
@@ -125,10 +127,32 @@ class NumericFilterView: UIView, FilterView {
 
     }
 
+    // MARK: - Private methods
+
+    private func updateCounterButtonsState() {
+        increaseCountButton.isEnabled = numericFilter.value <= numericFilter.maxValue
+        decreaseCountButton.isEnabled = numericFilter.value >= numericFilter.minValue
+    }
+
     // MARK: - API
 
     func reset() {
         
     }
 
+    // MARK: - UI Actions
+
+    @objc
+    private func decreaseTapped(_ sender: UIButton) {
+        numericFilter.value = max(numericFilter.minValue, numericFilter.value - 1)
+        updateCounterButtonsState()
+        
+    }
+
+    @objc
+    private func increaseTapped(_ sender: UIButton) {
+        numericFilter.value = min(numericFilter.maxValue, numericFilter.value + 1)
+        updateCounterButtonsState()
+        
+    }
 }

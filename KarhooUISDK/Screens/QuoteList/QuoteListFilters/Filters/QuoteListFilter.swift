@@ -22,7 +22,7 @@ extension QuoteListFilter {
 }
 
 protocol QuoteListNumericFilter: QuoteListFilter {
-    var value: Int { get }
+    var value: Int { get set }
     var minValue: Int { get }
     var maxValue: Int { get }
 }
