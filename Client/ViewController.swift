@@ -98,7 +98,12 @@ class ViewController: UIViewController {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        scrollView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor
+        )
         
         let stackView = UIStackView(arrangedSubviews: [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
                                                        authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton,
@@ -108,7 +113,16 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 30
         scrollView.addSubview(stackView)
-        stackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 80, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
+        stackView.anchor(
+            top: scrollView.topAnchor,
+            leading: scrollView.leadingAnchor,
+            trailing: scrollView.trailingAnchor,
+            bottom: scrollView.bottomAnchor,
+            paddingTop: 80,
+            paddingLeft: 20,
+            paddingRight: 20,
+            paddingBottom: 20
+        )
     }
 
     @objc func guestAdyenBookingTapped(sender: UIButton) {

@@ -640,6 +640,12 @@
 
 "Text.Quotes.Results" = "%1$@ results";
 
+"Text.Quotes.Filter" = "Filter";
+
+"Text.Quotes.FilterPageResults" = "View all %1$@ results";
+
+"Text.Quotes.ResetFilter" = "Reset filter";
+
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";
 

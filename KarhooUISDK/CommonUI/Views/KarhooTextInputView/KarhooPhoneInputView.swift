@@ -168,8 +168,8 @@ class KarhooPhoneInputView: UIView {
         if !didSetUpConstraints {
             containerStackView.anchor(top: topAnchor,
                                       leading: leadingAnchor,
-                                      bottom: bottomAnchor,
-                                      trailing: trailingAnchor)
+                                      trailing: trailingAnchor,
+                                      bottom: bottomAnchor)
             
             countryCodeButton.topAnchor.constraint(equalTo: textView.topAnchor).isActive = true
             countryCodeButton.bottomAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true

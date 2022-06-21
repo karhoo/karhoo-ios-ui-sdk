@@ -285,19 +285,19 @@ class QuoteView: UIView {
         logoLoadingImageView.anchor(
             top: carInfoView.topAnchor,
             left: carInfoView.leftAnchor,
-            bottom: carInfoView.bottomAnchor,
             right: rideDetailStackView.leftAnchor,
+            bottom: carInfoView.bottomAnchor,
             paddingTop: UIConstants.Spacing.small,
             paddingLeft: UIConstants.Spacing.small,
-            paddingBottom: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small,
+            paddingBottom: UIConstants.Spacing.small,
             width: UIConstants.Dimension.Icon.xLarge,
             height: UIConstants.Dimension.Icon.xLarge
         )
         rideDetailStackView.anchor(
             top: carInfoView.topAnchor,
-            bottom: carInfoView.bottomAnchor,
             right: detailsButton.leftAnchor,
+            bottom: carInfoView.bottomAnchor,
             paddingTop: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small
         )

@@ -62,8 +62,6 @@ protocol BookingPresenter {
     
     func tripDriverAllocationDelayed(trip: TripInfo)
 
-    func didSelectQuote(quote: Quote)
-
     func showRidesList(presentationStyle: UIModalPresentationStyle?)
 
     func tripAllocated(trip: TripInfo)
