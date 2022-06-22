@@ -147,14 +147,13 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         XCTAssertFalse(mockPaymentService.addPaymentDetailsCall.executed)
     }
 
-    // TODO: Fix test
-    /*
     /**
      * When: Addcard screen is successful
      * Then: Navigation should dismiss top item
      * Then: Payment provider should add with expected token
      */
     func testAddCardScreenSuccessResult() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         simulateShowingAddCardScreen()
 
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: Nonce(nonce: "123")))
@@ -167,8 +166,8 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 5)
-    }*/
-
+    }
+    
     /**
      * When: Addcard screen fails
      * Then: Alert handler should show error
@@ -197,7 +196,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         wait(for: [expectation], timeout: 5)
     }
     // TODO: Fix test
-    /*
+    
     /**
       * When: Add payment provider fails
       * Then: Loading view should hide
@@ -218,7 +217,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
             XCTFail("wrong result")
             return
         }
-    }*/
+    }
 
     /**
      * When: Add payment provider succeeds
