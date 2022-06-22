@@ -21,7 +21,7 @@ public extension UIViewController {
     }
     
     var viewIsOnScreen: Bool{
-        return self.isViewLoaded && view.window != nil
+        self.isViewLoaded && view.window != nil
     }
 }
 
