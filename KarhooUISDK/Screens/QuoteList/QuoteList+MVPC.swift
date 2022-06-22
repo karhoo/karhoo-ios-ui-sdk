@@ -12,16 +12,16 @@ public enum QuoteListState {
     case loading
     case fetching(quotes: [Quote])
     case fetched(quotes: [Quote])
-    case empty(reason: Error)
+    case empty(reason: EmptyReason)
 
     // TODO: once all error handling tickets will be done, remove not needed error cases
-    public enum Error {
+    public enum EmptyReason {
         case destinationOrOriginEmpty
         case noResults
         case noAvailabilityInRequestedArea
         case originAndDestinationAreTheSame
         case KarhooErrorQ0001
-        case noQuotesInSelectedCategory // error message: UITexts.Availability.noQuotesInSelectedCategory
+        case noQuotesAfterFiltering // error message: UITexts.Availability.noQuotesInSelectedCategory
         case noQuotesForSelectedParameters // error message: UITexts.Availability.noQuotesForSelectedParameters
     }
 }

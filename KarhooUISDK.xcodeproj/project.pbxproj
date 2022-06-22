@@ -350,7 +350,7 @@
 		5135E56828574A1300F14A0F /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56728574A1300F14A0F /* MainActionButton.swift */; };
 		5135E56E28574A4100F14A0F /* QuoteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56928574A4100F14A0F /* QuoteListPresenter.swift */; };
 		5135E56F28574A4100F14A0F /* QuoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56A28574A4100F14A0F /* QuoteListViewController.swift */; };
-		5135E57028574A4100F14A0F /* QuoteListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56B28574A4100F14A0F /* QuoteListErrorView.swift */; };
+		5135E57028574A4100F14A0F /* QuoteListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56B28574A4100F14A0F /* QuoteListEmptyView.swift */; };
 		5135E57128574A4100F14A0F /* QuoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56C28574A4100F14A0F /* QuoteListCoordinator.swift */; };
 		5135E57228574A4100F14A0F /* QuoteList+MVPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56D28574A4100F14A0F /* QuoteList+MVPC.swift */; };
 		5135E57628574A4A00F14A0F /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E57328574A4A00F14A0F /* QuoteView.swift */; };
@@ -892,7 +892,7 @@
 		5135E56728574A1300F14A0F /* MainActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
 		5135E56928574A4100F14A0F /* QuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListPresenter.swift; sourceTree = "<group>"; };
 		5135E56A28574A4100F14A0F /* QuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListViewController.swift; sourceTree = "<group>"; };
-		5135E56B28574A4100F14A0F /* QuoteListErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListErrorView.swift; sourceTree = "<group>"; };
+		5135E56B28574A4100F14A0F /* QuoteListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListEmptyView.swift; sourceTree = "<group>"; };
 		5135E56C28574A4100F14A0F /* QuoteListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListCoordinator.swift; sourceTree = "<group>"; };
 		5135E56D28574A4100F14A0F /* QuoteList+MVPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuoteList+MVPC.swift"; sourceTree = "<group>"; };
 		5135E57328574A4A00F14A0F /* QuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
@@ -2350,7 +2350,7 @@
 			children = (
 				5135E56D28574A4100F14A0F /* QuoteList+MVPC.swift */,
 				5135E56C28574A4100F14A0F /* QuoteListCoordinator.swift */,
-				5135E56B28574A4100F14A0F /* QuoteListErrorView.swift */,
+				5135E56B28574A4100F14A0F /* QuoteListEmptyView.swift */,
 				5135E56928574A4100F14A0F /* QuoteListPresenter.swift */,
 				5135E56A28574A4100F14A0F /* QuoteListViewController.swift */,
 				5161FE91284E4CD7001F87A6 /* QuoteCell */,
@@ -3871,7 +3871,7 @@
 				5135E58728574A5A00F14A0F /* QuoteListTable+MVPC.swift in Sources */,
 				79ACDCE826CCBAA9008820B5 /* KarhooRideInfoView.swift in Sources */,
 				FC83E29B221ECC0B008FE26D /* KarhooOriginEtaView.swift in Sources */,
-				5135E57028574A4100F14A0F /* QuoteListErrorView.swift in Sources */,
+				5135E57028574A4100F14A0F /* QuoteListEmptyView.swift in Sources */,
 				6F4235BF2391800C00233C02 /* AddressGoogleLogoView.swift in Sources */,
 				FC83E250221DB4F5008FE26D /* KarhooTripViewController.swift in Sources */,
 				FC83E2B1221EE920008FE26D /* DebugLogger.swift in Sources */,

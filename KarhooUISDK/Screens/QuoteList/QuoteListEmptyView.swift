@@ -10,7 +10,7 @@ import UIKit
     func showNoCoverageEmail()
 }
 
-final class QuoteListErrorView: UIView, UITextViewDelegate {
+final class QuoteListEmptyView: UIView, UITextViewDelegate {
 
     private lazy var titleLabel = UILabel().then {
         $0.font = KarhooUI.fonts.subtitleSemibold()
@@ -80,7 +80,10 @@ final class QuoteListErrorView: UIView, UITextViewDelegate {
         ])
         imageView.anchor(width: UIConstants.Dimension.Icon.xxxLarge, height: UIConstants.Dimension.Icon.xxxLarge)
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        imageView.centerYAnchor.constraint(
+            equalTo: centerYAnchor,
+            constant: -UIConstants.Spacing.large
+        ).isActive = true
         descriptionTextView.delegate = self
     }
 

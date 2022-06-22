@@ -632,9 +632,19 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Pas encore de flottes dans ce domaine";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Veuillez modifier votre sélection de filtre.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "Aucun résultat après filtrage.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
+
+"Text.Quotes.Filter" = "Filtre";
+
+"Text.Quotes.FilterPageResults" = "Voir tout %1$@ résultats";
+
+"Text.Quotes.ResetFilter" = "Réinitialiser le filtre";
 
 "Text.Quotes.Result" = "";
 

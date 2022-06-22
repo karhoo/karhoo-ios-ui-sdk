@@ -202,16 +202,16 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
         let quotesToShow: [Quote] = quoteFilter.filter(fetchedQuotes.all)
 
-        let noQuotesForSelectedFitlers = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
+        let noQuotesForSelectedFilters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
         let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
 
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
-        switch (noQuotesForTimeAndArea, noQuotesForSelectedFitlers, fetchedQuotes.status) {
+        switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, fetchedQuotes.status) {
         case (true, _, _):
             onStateUpdated?(.empty(reason: .noResults))
         case (_, true, _):
-            onStateUpdated?(.empty(reason: .noQuotesInSelectedCategory))
+            onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
         case (_, _, .progressing) where fetchedQuotes.all.isEmpty:
