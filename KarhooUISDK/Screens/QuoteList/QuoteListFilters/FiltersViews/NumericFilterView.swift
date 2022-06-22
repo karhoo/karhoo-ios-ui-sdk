@@ -13,6 +13,7 @@ class NumericFilterView: UIView, FilterView {
     
     // MARK: - Propterties
 
+    var onFilterChanged: ((QuoteListFilter) -> Void)?
     private var numericFilter: QuoteListNumericFilter
     var filter: QuoteListFilter { numericFilter  }
 
@@ -33,27 +34,11 @@ class NumericFilterView: UIView, FilterView {
         $0.textColor = KarhooUI.colors.text
         $0.font = KarhooUI.fonts.bodySemibold()
     }
-    private lazy var decreaseCountButton = UIButton().then {
-        $0.layer.borderColor = KarhooUI.colors.accent.cgColor
-        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        $0.layer.cornerRadius = UIConstants.CornerRadius.medium
-        $0.layer.masksToBounds = true
-        $0.backgroundColor = KarhooUI.colors.lightAccent
-        $0.setImage(.uisdkImage("quantity_minus"), for: .normal)
-        $0.imageView?.tintColor = KarhooUI.colors.accent
+    private lazy var decreaseCountButton = CounterButton(variation: .decrease).then {
         $0.addTarget(self, action: #selector(decreaseTapped), for: .touchUpInside)
-        $0.addTouchAnimation()
     }
-    private lazy var increaseCountButton = UIButton().then {
-        $0.layer.borderColor = KarhooUI.colors.accent.cgColor
-        $0.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-        $0.layer.cornerRadius = UIConstants.CornerRadius.medium
-        $0.layer.masksToBounds = true
-        $0.backgroundColor = KarhooUI.colors.lightAccent
-        $0.setImage(.uisdkImage("quantity_plus"), for: .normal)
-        $0.imageView?.tintColor = KarhooUI.colors.accent
+    private lazy var increaseCountButton = CounterButton(variation: .increase).then {
         $0.addTarget(self, action: #selector(increaseTapped), for: .touchUpInside)
-        $0.addTouchAnimation()
     }
     private lazy var currentFilterValueLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +65,7 @@ class NumericFilterView: UIView, FilterView {
         setupProperties()
         setupHierarchy()
         setupLayout()
+        updateCounterState()
     }
 
     private func setupProperties() {
@@ -110,34 +96,23 @@ class NumericFilterView: UIView, FilterView {
             paddingTrailing: UIConstants.Spacing.standard,
             paddingBottom: UIConstants.Spacing.medium
         )
-//        heightAnchor.constraint(equalToConstant: 52).do {
-//            $0.priority = .defaultHigh
-//            $0.isActive = true
-//        }
         iconImageView.setDimensions(width: UIConstants.Dimension.Icon.standard)
         currentFilterValueLabel.setDimensions(width: UIConstants.Dimension.Icon.xLarge)
-        decreaseCountButton.setDimensions(
-            height: UIConstants.Dimension.Button.medium,
-            width: UIConstants.Dimension.Button.medium
-        )
-        increaseCountButton.setDimensions(
-            height: UIConstants.Dimension.Button.medium,
-            width: UIConstants.Dimension.Button.medium
-        )
-
     }
 
     // MARK: - Private methods
 
-    private func updateCounterButtonsState() {
-        increaseCountButton.isEnabled = numericFilter.value <= numericFilter.maxValue
-        decreaseCountButton.isEnabled = numericFilter.value >= numericFilter.minValue
+    private func updateCounterState() {
+        increaseCountButton.isEnabled = numericFilter.value < numericFilter.maxValue
+        decreaseCountButton.isEnabled = numericFilter.value > numericFilter.minValue
+        currentFilterValueLabel.text = numericFilter.value.description
     }
 
     // MARK: - API
 
     func reset() {
-        
+        numericFilter.value = numericFilter.defaultValue
+        updateCounterState()
     }
 
     // MARK: - UI Actions
@@ -145,14 +120,14 @@ class NumericFilterView: UIView, FilterView {
     @objc
     private func decreaseTapped(_ sender: UIButton) {
         numericFilter.value = max(numericFilter.minValue, numericFilter.value - 1)
-        updateCounterButtonsState()
-        
+        updateCounterState()
+        onFilterChanged?(filter)
     }
 
     @objc
     private func increaseTapped(_ sender: UIButton) {
         numericFilter.value = min(numericFilter.maxValue, numericFilter.value + 1)
-        updateCounterButtonsState()
-        
+        updateCounterState()
+        onFilterChanged?(filter)
     }
 }

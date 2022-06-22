@@ -69,5 +69,5 @@ protocol QuoteListRouter: AnyObject {
 
     func routeToSort(selectedSortOrder: QuoteListSortOrder)
 
-    func routeToFilters()
+    func routeToFilters(_ filters: [QuoteListFilter])
 }

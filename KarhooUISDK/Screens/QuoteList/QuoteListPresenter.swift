@@ -111,7 +111,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectShowFilters() {
-        router.routeToFilters()
+        router.routeToFilters(quoteFilter.filters)
     }
 
     // MARK: - Private

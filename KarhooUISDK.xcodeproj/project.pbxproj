@@ -398,6 +398,7 @@
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
 		51BCAFAD285782D500AFA244 /* QuoteFilterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BCAFAC285782D500AFA244 /* QuoteFilterHandler.swift */; };
+		51C8BB2A2862285100B70637 /* CounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C8BB292862285100B70637 /* CounterButton.swift */; };
 		51CA129D2840F13600B0337F /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
 		51EAE7902840DE2D0033A8B1 /* KarhooTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */; };
@@ -943,6 +944,7 @@
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51BCAFAC285782D500AFA244 /* QuoteFilterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFilterHandler.swift; sourceTree = "<group>"; };
+		51C8BB292862285100B70637 /* CounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterButton.swift; sourceTree = "<group>"; };
 		51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTestConfiguration.swift; sourceTree = "<group>"; };
 		51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quote+Extensions.swift"; sourceTree = "<group>"; };
 		51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTestCase.swift; sourceTree = "<group>"; };
@@ -2678,6 +2680,7 @@
 				407EC75622CF564E00F24CFC /* CloseBarButton.swift */,
 				4070213623D9E11300F82B6A /* DropDownButton.swift */,
 				5135E56728574A1300F14A0F /* MainActionButton.swift */,
+				51C8BB292862285100B70637 /* CounterButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -3901,6 +3904,7 @@
 				FC705B1D221322550001036E /* KarhooPopupDialogPresenter.swift in Sources */,
 				407EC7B222CF564E00F24CFC /* TermsConditionsView.swift in Sources */,
 				5135E56F28574A4100F14A0F /* QuoteListViewController.swift in Sources */,
+				51C8BB2A2862285100B70637 /* CounterButton.swift in Sources */,
 				407EC7A722CF564E00F24CFC /* KarhooColors.swift in Sources */,
 				407EC79B22CF564E00F24CFC /* QtaStringFormatter.swift in Sources */,
 				40FE0CEA22D7D28B003F65B5 /* RateButton.swift in Sources */,

@@ -656,6 +656,10 @@
 
 "Text.Quotes.ResetFilter" = "Reset filter";
 
+"Text.Quotes.FiltersPassengers" = "Passenger(s)";
+
+"Text.Quotes.FiltersLuggages" = "Luggage(s)";
+
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";
 

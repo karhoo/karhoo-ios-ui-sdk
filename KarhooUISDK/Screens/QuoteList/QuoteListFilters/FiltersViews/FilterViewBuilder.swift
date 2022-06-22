@@ -10,33 +10,33 @@ import Foundation
 import UIKit
 
 struct FilterViewBuilder {
-    static func buildView(for filterCategory: QuoteListFilters.Category) -> FilterView {
-        switch filterCategory {
-        case .luggage: return NumericFilterView(filter: QuoteListFilters.LuggageCapacityModel(value: 0))
-        case .passengers: return NumericFilterView(filter: QuoteListFilters.PassengerCapacityModel(value: 1))
-        case .vehicleType: return TemporarFilterView()
-        case .vehicleClass: return TemporarFilterView()
-        case .vehicleExtras: return TemporarFilterView()
-        case .ecoFriendly: return TemporarFilterView()
-        case .fleetCapabilities: return TemporarFilterView()
-        case .serviceAgreements: return TemporarFilterView()
-        case .quoteTypes: return TemporarFilterView()
-        }
+    var filters: [QuoteListFilter]
+    
+    func buildFilterViews() -> [UIView] {
+        [
+            buildPassengersFilterView(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
+            buildLuggagesFilterView(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+            SeparatorView(fixedHeight: UIConstants.Dimension.Border.standardWidth, color: KarhooUI.colors.border),
+            SeparatorView()
+        ]
     }
 
-    static func buildFilterViews() -> [UIView] {
-        [
-        NumericFilterView(filter: QuoteListFilters.PassengerCapacityModel(value: 1)),
-        SeparatorView(fixedHeight: UIConstants.Spacing.standard),
-        NumericFilterView(filter: QuoteListFilters.LuggageCapacityModel(value: 0)),
-        SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-        SeparatorView(fixedHeight: UIConstants.Dimension.Border.standardWidth, color: KarhooUI.colors.border),
-        SeparatorView()
-        ]
+    private func buildPassengersFilterView() -> UIView {
+        let filter = (filters.first { $0.filterCategory == .passengers } as? QuoteListNumericFilter) ?? QuoteListFilters.PassengerCapacityModel(value: 1)
+        return NumericFilterView(filter: filter)
+    }
+    
+    private func buildLuggagesFilterView() -> UIView {
+        let filter = (filters.first { $0.filterCategory == .luggage } as? QuoteListNumericFilter) ?? QuoteListFilters.LuggageCapacityModel(value: 0)
+        return NumericFilterView(filter: filter)
     }
 }
 
 class TemporarFilterView: UIView, FilterView {
+    var onFilterChanged: ((QuoteListFilter) -> Void)?
+    
     var filter: QuoteListFilter = QuoteListFilters.PassengerCapacityModel(value: 1)
     func reset() {
     }

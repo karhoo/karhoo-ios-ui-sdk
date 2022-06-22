@@ -25,6 +25,7 @@ protocol QuoteListNumericFilter: QuoteListFilter {
     var value: Int { get set }
     var minValue: Int { get }
     var maxValue: Int { get }
+    var defaultValue: Int { get }
 }
 
 enum QuoteListFilters {
@@ -44,8 +45,8 @@ extension QuoteListFilters {
         
         var localized: String {
             switch self {
-            case .luggage: return "Luggage(s)_".localized
-            case .passengers: return "Passenger(s)_".localized
+            case .luggage: return UITexts.Quotes.filtersLuggages
+            case .passengers: return UITexts.Quotes.filtersPassengers
             case .vehicleType: return "vehicleType".localized
             case .vehicleClass: return "vehicleClass".localized
             case .vehicleExtras: return "vehicleExtras".localized

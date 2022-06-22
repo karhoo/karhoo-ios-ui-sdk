@@ -73,8 +73,9 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
         sortCoordinator.startPresented(on: self)
     }
 
-    func routeToFilters() {
+    func routeToFilters(_ filters: [QuoteListFilter]) {
         let filtersCoordinator = KarhooQuoteListFiltersCoordinator(
+            filters: filters,
             onResultsForFiltersChosen: { [weak self] filters in
                 self?.presenter.getNumberOfResultsForQuoteFilters(filters) ?? 0
             },
