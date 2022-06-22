@@ -294,7 +294,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         animated: Bool = true,
         completion: @escaping () -> Void = { }
     ) {
-//        let hideAuxiliaryHeaderItems = false
         UIView.animate(
             withDuration: animated ? UIConstants.Duration.medium : 0,
             delay: 0,
