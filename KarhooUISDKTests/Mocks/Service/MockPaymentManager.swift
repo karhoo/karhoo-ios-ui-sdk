@@ -46,19 +46,23 @@ class MockPaymentManager: PaymentManager {
     
     var shouldGetPaymentBeforeBooking: Bool {
         switch psp {
-            
         case .adyen:
             return false
         case .braintree:
             return true
         }
     }
-
-    var getMetaWithUpdateTripIdIfRequiredValue = [String: Any]()
-    func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
-        getMetaWithUpdateTripIdIfRequiredValue
-    }
     
+    func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
+        switch psp {
+        case .adyen:
+            var mutableMeta = meta
+            mutableMeta["trip_id"] = nonce
+            return mutableMeta
+        case .braintree:
+            return meta
+        }
+    }
 }
 
 class CardRegistrationFlowMock: CardRegistrationFlow {

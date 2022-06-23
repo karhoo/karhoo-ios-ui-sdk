@@ -106,24 +106,29 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should be called
      * And: Injected metadata should be set on TripBooking request object
+     * And: Matadata should include trip_id
      */
     // TODO: update PSP flow tests to new, agnostic, approach
     // SOMETIMES:
     // FAILS FOR ADYEN
     // FAILS FOR BRAINTREE
-//    func testbookingMetadata() {
-//        mockBookingMetadata = ["key":"value"]
-//        loadTestObject()
-//        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-//        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
-//        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
-//        testObject.bookTripPressed()
-//        XCTAssert(mockView.setRequestingStateCalled)
-//        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
-//        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-//        let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
-//        XCTAssertEqual(value, "value")
-//    }
+    func testAdyenBookingMetadata() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
+        mockBookingMetadata = ["key":"value"]
+        loadTestObject()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        let nonce = Nonce()
+        mockView.paymentNonceToReturn = nonce
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssert(mockPaymentNonceProvider.getNonceCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
+        XCTAssertEqual(value, "value")
+        let tripIdValue: String? = mockTripService.tripBookingSet?.meta["trip_id"] as? String
+        XCTAssertEqual(tripIdValue, nonce.nonce)
+    }
 
     /**
      * When: Adyen payment is cancelled
