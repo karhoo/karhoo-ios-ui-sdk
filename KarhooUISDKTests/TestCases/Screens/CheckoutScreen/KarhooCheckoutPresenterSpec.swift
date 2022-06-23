@@ -104,20 +104,16 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * When: The user presses "book ride"
      * And: booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
-     * And: Get nonce endpoint should be called
+     * And: Get nonce endpoint should not be called
      * And: Injected metadata should be set on TripBooking request object
-     * And: Matadata should include trip_id
+     * And: Matadata should include trip_id = nonce
      */
-    // TODO: update PSP flow tests to new, agnostic, approach
-    // SOMETIMES:
-    // FAILS FOR ADYEN
-    // FAILS FOR BRAINTREE
     func testAdyenBookingMetadata() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        let nonce = Nonce()
+        let nonce = Nonce(nonce: "nonce")
         mockView.paymentNonceToReturn = nonce
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
