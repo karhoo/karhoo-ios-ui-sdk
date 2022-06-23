@@ -122,7 +122,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.bookTripPressed()
         XCTAssert(mockView.setRequestingStateCalled)
-        XCTAssert(mockPaymentNonceProvider.getNonceCalled)
+        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
         XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
         XCTAssertEqual(value, "value")

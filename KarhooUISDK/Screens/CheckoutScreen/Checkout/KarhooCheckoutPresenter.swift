@@ -226,10 +226,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             return
         }
 
-        getPaymentNonceThenBook(user: currentUser,
-            organisationId: currentOrg,
-            passengerDetails: passengerDetails)
-        
         if let nonce = retrievePaymentNonce() {
             if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
                 self.getPaymentNonceThenBook(user: currentUser,
