@@ -21,6 +21,7 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
     // MARK: - Initializator
     
     init(
+        filters: [QuoteListFilter],
         navigationController: UINavigationController? = nil,
         onResultsForFiltersChosen: @escaping ([QuoteListFilter]) -> Int,
         onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
@@ -28,6 +29,7 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListFiltersViewController()
         self.presenter = KarhooQuoteListFiltersPresenter(
+            filters: filters,
             router: self,
             onResultsForFiltersChosen: { filters in
                 onResultsForFiltersChosen(filters)

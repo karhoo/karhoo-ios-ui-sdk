@@ -21,6 +21,13 @@ extension QuoteListFilter {
     var icon: UIImage? { nil }
 }
 
+protocol QuoteListNumericFilter: QuoteListFilter {
+    var value: Int { get set }
+    var minValue: Int { get }
+    var maxValue: Int { get }
+    var defaultValue: Int { get }
+}
+
 enum QuoteListFilters {
 }
 
@@ -38,8 +45,8 @@ extension QuoteListFilters {
         
         var localized: String {
             switch self {
-            case .luggage: return "luggage".localized
-            case .passengers: return "passengers".localized
+            case .luggage: return UITexts.Quotes.filtersLuggages
+            case .passengers: return UITexts.Quotes.filtersPassengers
             case .vehicleType: return "vehicleType".localized
             case .vehicleClass: return "vehicleClass".localized
             case .vehicleExtras: return "vehicleExtras".localized

@@ -17,9 +17,11 @@ protocol QuoteListFiltersViewController: BaseViewController {
 }
 
 protocol QuoteListFiltersPresenter: AnyObject {
+    var filters: [QuoteListFilter] { get }
     func viewDidLoad()
     func viewWillAppear()
     func filterSelected(_ filter: QuoteListFilter)
+    func filterDeselected(_ filter: QuoteListFilter)
     func close(save: Bool)
     func resetFilter()
     func resultsCountForSelectedFilters() -> Int

@@ -21,7 +21,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     private lazy var scrollView = UIScrollView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    private lazy var stackView = UIStackView().then {
+    private lazy var filterViewsStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
     }
@@ -96,6 +96,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         setupProperties()
         setupHierarchy()
         setupLayout()
+        setupFilterViewsBinding()
     }
 
     private func setupProperties() {
@@ -108,15 +109,15 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         view.addSubview(resetButton)
         view.addSubview(scrollView)
         view.addSubview(footerView)
-        scrollView.addSubview(stackView)
+        scrollView.addSubview(filterViewsStackView)
         headerStackView.addArrangedSubviews([
             headerLabel,
             closeButton
         ])
-        stackView.addArrangedSubviews([
-            SeparatorView(fixedHeight: 1200, color: .blue),
-            SeparatorView()
-        ])
+        filterViewsStackView.addArrangedSubviews(
+            FilterViewBuilder(filters: presenter.filters)
+                .buildFilterViews()
+        )
         footerView.addSubview(confirmButton)
     }
 
@@ -128,7 +129,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             bottom: footerView.topAnchor,
             paddingTop: UIConstants.Spacing.standard
         )
-        stackView.anchor(
+        filterViewsStackView.anchor(
             top: scrollView.topAnchor,
             left: scrollView.leftAnchor,
             right: scrollView.rightAnchor,
@@ -146,7 +147,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             paddingLeft: UIConstants.Spacing.standard,
             paddingRight: UIConstants.Spacing.standard
         )
-        headerStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
+        headerStackView.widthAnchor.constraint(equalTo: filterViewsStackView.widthAnchor).isActive = true
         resetButton.anchor(
             top: headerStackView.bottomAnchor,
             right: headerStackView.rightAnchor,
@@ -172,6 +173,16 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             paddingRight: UIConstants.Spacing.standard,
             paddingBottom: UIConstants.Spacing.large
         )
+    }
+
+    private func setupFilterViewsBinding() {
+        filterViewsStackView.subviews
+            .compactMap { $0 as? FilterView }
+            .forEach { filterView in
+                filterView.onFilterChanged = { [weak self] updatedFilter in
+                    self?.filterSelected(updatedFilter)
+                }
+            }
     }
 
     // MARK: - Private
@@ -202,6 +213,11 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     @objc
     private func resetPressed(_ sender: UIButton) {
         presenter.resetFilter()
-        // TODO: reset subviews
+        updateConfirmButtonTitle()
+        filterViewsStackView.subviews
+            .compactMap { $0 as? FilterView }
+            .forEach { filterView in
+                filterView.reset()
+            }
     }
-}
+}           

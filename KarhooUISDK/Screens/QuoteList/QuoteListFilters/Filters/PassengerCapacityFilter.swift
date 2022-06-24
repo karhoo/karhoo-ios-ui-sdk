@@ -10,14 +10,19 @@ import Foundation
 import KarhooSDK
 
 extension QuoteListFilters {
-    struct PassengerCapacityModel: QuoteListFilter {
+    struct PassengerCapacityModel: QuoteListNumericFilter {
         var value: Int
         var minValue: Int { 1 }
         var maxValue: Int { 7 }
+        var defaultValue: Int { 1 }
         var filterCategory: Category { .passengers }
 
         func conditionMet(for quote: Quote) -> Bool {
             quote.vehicle.passengerCapacity >= value
+        }
+
+        var icon: UIImage? {
+            .uisdkImage("filter_passengers")
         }
     }
 }

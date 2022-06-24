@@ -430,6 +430,8 @@ public enum UITexts {
         static let filter = "Text.Quotes.Filter".localized
         static let filterPageResults = "Text.Quotes.FilterPageResults".localized
         static let resetFilter = "Text.Quotes.ResetFilter".localized
+        static let filtersPassengers = "Text.Quotes.FiltersPassengers".localized
+        static let filtersLuggages = "Text.Quotes.FiltersLuggages".localized
     }
     
     public enum Loyalty {
