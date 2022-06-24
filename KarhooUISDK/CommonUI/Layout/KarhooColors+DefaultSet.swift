@@ -27,6 +27,7 @@ public extension KarhooColors {
     }
 
     var lightAccent: UIColor {
+        // Same color for light and dark modes
         UIColor(hex: "#E1F4FC")
     }
 
