@@ -13,9 +13,9 @@ class NumericFilterView: UIView, FilterView {
     
     // MARK: - Propterties
 
-    var onFilterChanged: ((QuoteListFilter) -> Void)?
+    var onFilterChanged: (([QuoteListFilter]) -> Void)?
     private var numericFilter: QuoteListNumericFilter
-    var filter: QuoteListFilter { numericFilter  }
+    var filter: [QuoteListFilter] { [numericFilter]  }
 
     // MARK: Views
 
@@ -25,12 +25,12 @@ class NumericFilterView: UIView, FilterView {
     }
     private lazy var iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = filter.icon
+        $0.image = numericFilter.icon
         $0.contentMode = .scaleAspectFit
     }
     private lazy var titleLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = filter.filterCategory.localized
+        $0.text = numericFilter.filterCategory.localized
         $0.textColor = KarhooUI.colors.text
         $0.font = KarhooUI.fonts.bodySemibold()
     }
@@ -90,6 +90,10 @@ class NumericFilterView: UIView, FilterView {
     }
     
     private func setupLayout() {
+        heightAnchor.constraint(equalToConstant: 52).do {
+            $0.priority = .defaultLow
+            $0.isActive = true
+        }
         stackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
             paddingLeading: UIConstants.Spacing.standard,

@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 extension QuoteListFilters {
-    enum FleetCapabilities: String, QuoteListFilter {
+    enum FleetCapabilities: String, QuoteListFilter, CaseIterable {
         case flightTracking
         case trainTracking
         case gpsTracking
@@ -18,6 +18,10 @@ extension QuoteListFilters {
         case vehicleDetails
         
         var filterCategory: QuoteListFilters.Category { .fleetCapabilities }
+        
+        var localizedString: String {
+            rawValue
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             return quote.fleet.capability

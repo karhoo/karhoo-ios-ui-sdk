@@ -10,11 +10,15 @@ import Foundation
 import KarhooSDK
 
 extension QuoteListFilters {
-    enum ServiceAgreements: String, QuoteListFilter {
+    enum ServiceAgreements: String, QuoteListFilter, CaseIterable {
         case freeCancelation = "free_cancellation"
         case freeWatingTime = "free_waiting_time"
         
         var filterCategory: QuoteListFilters.Category { .serviceAgreements }
+        
+        var localizedString: String {
+            rawValue
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             switch self {

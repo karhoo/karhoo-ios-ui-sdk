@@ -12,11 +12,11 @@ import KarhooSDK
 protocol QuoteListFilter {
     var icon: UIImage? { get }
     var filterCategory: QuoteListFilters.Category { get }
+    var localizedString: String { get }
     func conditionMet(for quote: Quote) -> Bool
 }
 
 extension QuoteListFilter {
-    var localizedString: String { filterCategory.localized }
     var selectionType: QuoteListFilters.SelectionType { filterCategory.selectionType }
     var icon: UIImage? { nil }
 }

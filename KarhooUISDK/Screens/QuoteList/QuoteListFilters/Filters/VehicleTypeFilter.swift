@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 extension QuoteListFilters {
-    enum VehicleType: String, QuoteListFilter {
+    enum VehicleType: String, QuoteListFilter, CaseIterable {
         case all
         case standard
         case bus
@@ -18,6 +18,10 @@ extension QuoteListFilters {
         case moto
 
         var filterCategory: Category { .vehicleType }
+
+        var localizedString: String {
+            rawValue
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             if self == .all { return true }

@@ -16,9 +16,12 @@ extension QuoteListFilters {
 
         var filterCategory: Category { .vehicleClass }
 
+        var localizedString: String {
+            rawValue
+        }
+        
         func conditionMet(for quote: Quote) -> Bool {
             quote.vehicle.vehicleClass.lowercased() == rawValue
         }
     }
 }
-

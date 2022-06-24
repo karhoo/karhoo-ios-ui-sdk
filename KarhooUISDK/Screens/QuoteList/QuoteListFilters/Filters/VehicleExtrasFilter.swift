@@ -16,6 +16,10 @@ extension QuoteListFilters {
         case wheelchair
 
         var filterCategory: Category { .vehicleExtras }
+        
+        var localizedString: String {
+            rawValue
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             quote.vehicle.tags

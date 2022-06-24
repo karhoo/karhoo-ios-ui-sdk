@@ -46,14 +46,10 @@ class BorderedWOBackgroundButton: UIButton {
         layer.borderWidth = UIConstants.Dimension.Border.standardWidth
         layer.cornerRadius = UIConstants.CornerRadius.large
         clipsToBounds = true
-//        if #available(iOS 15.0, *) {
-//            setupButtonConfiguration()
-//        } else {
         imageEdgeInsets.right = UIConstants.Spacing.xSmall
         titleLabel?.font = KarhooUI.fonts.bodySemibold()
         setTitleColor(KarhooUI.colors.text, for: .normal)
         imageView?.tintColor = KarhooUI.colors.text
-//        }
         setTitleColor(KarhooUI.colors.accent, for: .selected)
         addTouchAnimation()
     }
@@ -64,20 +60,6 @@ class BorderedWOBackgroundButton: UIButton {
         ).then {
             $0.priority = .defaultHigh
         }.isActive = true
-    }
-    
-    @available(iOS 15.0, *)
-    private func setupButtonConfiguration() {
-        configuration = UIButton.Configuration.plain()
-        configuration?.imagePadding = UIConstants.Spacing.xSmall
-        configuration?.baseForegroundColor = KarhooUI.colors.text
-        configuration?.baseBackgroundColor = .clear
-        configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
-            var outgoing = incoming
-            outgoing.font = KarhooUI.fonts.bodySemibold()
-            outgoing.foregroundColor = KarhooUI.colors.text
-            return outgoing
-        }
     }
 
     // MARK: - Private methods
@@ -99,7 +81,7 @@ class BorderedWOBackgroundButton: UIButton {
     // MARK: - Endpoint methods
 
     func setSelected(withNumber numberToShow: Int) {
-        let newTitle = (title(for: .normal) ?? "") + " " + numberToShow.description
+        let newTitle = (title(for: .normal) ?? "") + " (\(numberToShow))"
         setTitle(newTitle, for: .selected)
         isSelected = true
     }

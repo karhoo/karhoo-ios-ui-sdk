@@ -180,7 +180,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             .compactMap { $0 as? FilterView }
             .forEach { filterView in
                 filterView.onFilterChanged = { [weak self] updatedFilter in
-                    self?.filterSelected(updatedFilter)
+                    updatedFilter.forEach { self?.filterSelected($0) }
                 }
             }
     }
@@ -220,4 +220,4 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
                 filterView.reset()
             }
     }
-}           
+}

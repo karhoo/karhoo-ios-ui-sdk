@@ -15,6 +15,10 @@ extension QuoteListFilters {
         case metered
 
         var filterCategory: Category { .quoteTypes}
+        
+        var localizedString: String {
+            rawValue
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             quote.quoteType.rawValue.lowercased() == rawValue
