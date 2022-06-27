@@ -195,7 +195,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         wait(for: [expectation], timeout: 5)
     }
-    // TODO: Fix test
     
     /**
       * When: Add payment provider fails
