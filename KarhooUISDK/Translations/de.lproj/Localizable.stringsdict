@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>1 minute</string>
+			<string>1 Minute</string>
 			<key>other</key>
-			<string>%d minuten</string>
+			<string>%d Minuten</string>
 		</dict>
 	</dict>
 	<key>Text.Quote.FreeCancellationBeforePickupHours</key>
@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>1 stunde</string>
+			<string>1 Stunde</string>
 			<key>other</key>
-			<string>%d stunden</string>
+			<string>%d Stunden</string>
 		</dict>
 	</dict>
 </dict>
