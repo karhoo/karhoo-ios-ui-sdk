@@ -13,7 +13,7 @@ class NumericFilterView: UIView, FilterView {
     
     // MARK: - Propterties
 
-    var onFilterChanged: (([QuoteListFilter]) -> Void)?
+    var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     private var numericFilter: QuoteListNumericFilter
     var filter: [QuoteListFilter] { [numericFilter]  }
 
@@ -44,6 +44,7 @@ class NumericFilterView: UIView, FilterView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = numericFilter.value.description
         $0.font = KarhooUI.fonts.headerSemibold()
+        $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
     }
 
@@ -125,13 +126,13 @@ class NumericFilterView: UIView, FilterView {
     private func decreaseTapped(_ sender: UIButton) {
         numericFilter.value = max(numericFilter.minValue, numericFilter.value - 1)
         updateCounterState()
-        onFilterChanged?(filter)
+        onFilterChanged?(filter, numericFilter.filterCategory)
     }
 
     @objc
     private func increaseTapped(_ sender: UIButton) {
         numericFilter.value = min(numericFilter.maxValue, numericFilter.value + 1)
         updateCounterState()
-        onFilterChanged?(filter)
+        onFilterChanged?(filter, numericFilter.filterCategory)
     }
 }

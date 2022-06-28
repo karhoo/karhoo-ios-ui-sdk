@@ -68,6 +68,7 @@ public enum UITexts {
         public static let unchecked = "Text.Generic.Unchecked".localized
         public static let sortBy = "Text.Generic.SortBy".localized
         public static let driverArrival = "Text.Generic.DriverArrival".localized
+        public static let all = "Text.Generic.all".localized
     }
 
     public enum QuoteCell {
@@ -283,12 +284,23 @@ public enum UITexts {
         public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
         public static let taxi = "Text.QuoteCategory.Taxi".localized
     }
+
+    public enum QuoteFilterCategory {
+        public static let vehicleType = "Text.Quotes.FilterVehicleType".localized
+        public static let vehicleClass = "Text.Quotes.FilterVehicleClass".localized
+        public static let vehicleExtras = "Text.Quotes.FilterVehicleExtras".localized
+        public static let ecoFriendly = "Text.Quotes.FilterEcoFriendly".localized
+        public static let fleetCapabilities = "Text.Quotes.FilterFleetCapabilities".localized
+        public static let quoteTypes = "Text.Quotes.FilterQuoteTypes".localized
+        public static let serviceAgreements = "Text.Quotes.FilterServiceAgreements".localized
+    }
     
     public enum VehicleClass {
         public static let saloon = "Text.VehicleClass.Saloon".localized
         public static let taxi = "Text.VehicleClass.Taxi".localized
         public static let mpv = "Text.VehicleClass.MPV".localized
         public static let exec = "Text.VehicleClass.Exec".localized
+        public static let luxury = "Text.VehicleClass.Luxury".localized
         public static let moto = "Text.VehicleClass.Moto".localized
         public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
         public static let electric = "Text.VehicleClass.Electric".localized
@@ -308,6 +320,14 @@ public enum UITexts {
         public static let childseat = "Text.VehicleTag.Childseat".localized
         public static let taxi = "Text.VehicleTag.Taxi".localized
         public static let executive = "Text.VehicleTag.Executive".localized
+    }
+
+    public enum FleetCapabilities {
+        public static let flightTracking = "Text.FleetCapabilities.FlightTracking".localized
+        public static let trainTracking = "Text.FleetCapabilities.TrainTracking".localized
+        public static let gpsTracking = "Text.FleetCapabilities.GpsTracking".localized
+        public static let driverDetails = "Text.FleetCapabilities.DriverDetails".localized
+        public static let vehicleDetails = "Text.FleetCapabilities.VehicleDetails".localized
     }
     
     public enum CountryCodeSelection {

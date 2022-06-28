@@ -40,26 +40,9 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     // MARK: - Communication methods
 
-    func filterSelected(_ filter: QuoteListFilter) {
-        switch filter.filterCategory.selectionType {
-        case .single, .number:
-            filters.removeAll { $0.filterCategory == filter.filterCategory }
-        case .multi:
-            // Just in case, to avoid duplicates
-            filters.removeAll {
-                $0.localizedString == filter.localizedString &&
-                $0.filterCategory == filter.filterCategory
-            }
-        }
-        
-        filters.append(filter)
-    }
-
-    func filterDeselected(_ filter: QuoteListFilter) {
-        filters.removeAll {
-            $0.localizedString == filter.localizedString &&
-            $0.filterCategory == filter.filterCategory
-        }
+    func filterSelected(_ filter: [QuoteListFilter], for category: QuoteListFilters.Category) {
+        filters.removeAll { $0.filterCategory == category }
+        filters.append(contentsOf: filter)
     }
 
     func close(save: Bool) {

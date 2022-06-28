@@ -51,7 +51,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     private lazy var footerView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = KarhooUI.colors.background1
-        $0.addShadow()
+        $0.addShadow(Float(UIConstants.Alpha.lightShadow))
     }
     private lazy var confirmButton = MainActionButton().then {
         $0.setTitle(UITexts.Generic.save.uppercased(), for: .normal)
@@ -173,14 +173,15 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             paddingRight: UIConstants.Spacing.standard,
             paddingBottom: UIConstants.Spacing.large
         )
+        view.layoutIfNeeded()
     }
 
     private func setupFilterViewsBinding() {
         filterViewsStackView.subviews
             .compactMap { $0 as? FilterView }
             .forEach { filterView in
-                filterView.onFilterChanged = { [weak self] updatedFilter in
-                    updatedFilter.forEach { self?.filterSelected($0) }
+                filterView.onFilterChanged = { [weak self] updatedFilter, category in
+                    self?.filterSelected(updatedFilter, for: category)
                 }
             }
     }
@@ -193,8 +194,8 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         confirmButton.setTitle(text, for: .normal)
     }
 
-    private func filterSelected(_ filter: QuoteListFilter) {
-        presenter.filterSelected(filter)
+    private func filterSelected(_ filter: [QuoteListFilter], for category: QuoteListFilters.Category) {
+        presenter.filterSelected(filter, for: category)
         updateConfirmButtonTitle()
     }
 

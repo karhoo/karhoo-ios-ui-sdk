@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import KarhooSDK
 
 struct FilterViewBuilder {
     var filters: [QuoteListFilter]
@@ -58,7 +59,7 @@ struct FilterViewBuilder {
     private func buildVehicleTypeFilterView() -> UIView {
         let selectedFilters = filters.filter { $0.filterCategory == .vehicleType }
         return ItemsFilterView(
-            title: QuoteListFilters.Category.vehicleType.localized,
+            category: .vehicleType,
             selectableFilters: QuoteListFilters.VehicleType.allCases,
             selectedFilters: selectedFilters
         )
@@ -67,7 +68,7 @@ struct FilterViewBuilder {
     private func buildVehicleClassFilterView() -> UIView {
         let selectedFilters = filters.filter { $0.filterCategory == .vehicleClass }
         return ItemsFilterView(
-            title: QuoteListFilters.Category.vehicleClass.localized,
+            category: .vehicleClass,
             selectableFilters: QuoteListFilters.VehicleClass.allCases,
             selectedFilters: selectedFilters
         )
@@ -76,7 +77,7 @@ struct FilterViewBuilder {
     private func buildVehicleExtrasFilterView() -> UIView {
         let selectedFilters = filters.filter { $0.filterCategory == .vehicleExtras }
         return ItemsFilterView(
-            title: QuoteListFilters.Category.vehicleExtras.localized,
+            category: .vehicleExtras,
             selectableFilters: QuoteListFilters.VehicleExtras.allCases,
             selectedFilters: selectedFilters
         )
@@ -85,7 +86,7 @@ struct FilterViewBuilder {
     private func buildEcoFriendlyFilterView() -> UIView {
         let selectedFilters = filters.filter { $0.filterCategory == .ecoFriendly }
         return ItemsFilterView(
-            title: QuoteListFilters.Category.ecoFriendly.localized,
+            category: .ecoFriendly,
             selectableFilters: QuoteListFilters.EcoFriendly.allCases,
             selectedFilters: selectedFilters
         )
@@ -94,7 +95,7 @@ struct FilterViewBuilder {
     private func buildFleetCapabilitiesFilterView() -> UIView {
         let selectedFilters = filters.filter { $0.filterCategory == .fleetCapabilities }
         return ItemsFilterView(
-            title: QuoteListFilters.Category.fleetCapabilities.localized,
+            category: .fleetCapabilities,
             selectableFilters: QuoteListFilters.FleetCapabilities.allCases,
             selectedFilters: selectedFilters
         )
@@ -102,7 +103,7 @@ struct FilterViewBuilder {
 }
 
 class TemporarFilterView: UIView, FilterView {
-    var onFilterChanged: (([QuoteListFilter]) -> Void)?
+    var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     
     var filter: [QuoteListFilter] = [QuoteListFilters.PassengerCapacityModel(value: 1)]
     func reset() {

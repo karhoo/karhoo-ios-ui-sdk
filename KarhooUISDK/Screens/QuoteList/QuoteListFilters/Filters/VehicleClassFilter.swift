@@ -16,8 +16,20 @@ extension QuoteListFilters {
 
         var filterCategory: Category { .vehicleClass }
 
+        var icon: UIImage? {
+            switch self {
+            case .executive:
+                return .uisdkImage("u_briefcase")
+            case .luxury:
+                return .uisdkImage("fi_star")
+            }
+        }
+
         var localizedString: String {
-            rawValue
+            switch self {
+            case .executive: return UITexts.VehicleTag.executive
+            case .luxury: return UITexts.VehicleClass.luxury
+            }
         }
         
         func conditionMet(for quote: Quote) -> Bool {

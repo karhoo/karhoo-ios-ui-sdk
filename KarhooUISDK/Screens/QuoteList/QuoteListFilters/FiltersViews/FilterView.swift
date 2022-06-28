@@ -11,6 +11,6 @@ import UIKit
 
 protocol FilterView: UIView {
     var filter: [QuoteListFilter] { get }
-    var onFilterChanged: (([QuoteListFilter]) -> Void)? { get set }
+    var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)? { get set }
     func reset()
 }

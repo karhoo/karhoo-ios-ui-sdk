@@ -1,5 +1,5 @@
 //
-//  String+Extensions.swift
+//  Collection+isNotEmpty.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 26/01/2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+extension Collection {
     var isNotEmpty: Bool {
         !self.isEmpty
     }

@@ -11,21 +11,28 @@ import KarhooSDK
 
 extension QuoteListFilters {
     enum VehicleType: String, QuoteListFilter, CaseIterable {
-        case all
         case standard
         case bus
-        case mvp
+        case mpv
         case moto
 
         var filterCategory: Category { .vehicleType }
 
         var localizedString: String {
-            rawValue
+            switch self {
+            case .moto:
+                return UITexts.VehicleType.moto
+            case .standard:
+                return UITexts.VehicleType.standard
+            case .mpv:
+                return UITexts.VehicleType.mpv
+            case .bus:
+                return UITexts.VehicleType.bus
+            }
         }
 
         func conditionMet(for quote: Quote) -> Bool {
-            if self == .all { return true }
-            return quote.vehicle.type.lowercased() == rawValue
+            quote.vehicle.type.lowercased() == rawValue
         }
     }
 }

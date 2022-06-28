@@ -842,6 +842,8 @@
 
 "Text.VehicleClass.Exec" = "Executive";
 
+"Text.VehicleClass.Luxury" = "Luxury";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorfiets";

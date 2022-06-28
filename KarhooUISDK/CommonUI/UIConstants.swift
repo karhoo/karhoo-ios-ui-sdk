@@ -264,6 +264,8 @@ public struct UIConstants {
         
         /// 0.5
         public static let shadow: CGFloat = 0.5
+
+        static let lightShadow: CGFloat = 0.2
         
         /// 0.6
         public static let overlay: CGFloat = 0.6

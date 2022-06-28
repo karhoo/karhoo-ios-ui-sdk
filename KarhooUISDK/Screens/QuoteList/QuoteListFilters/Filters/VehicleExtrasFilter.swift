@@ -11,14 +11,25 @@ import KarhooSDK
 
 extension QuoteListFilters {
     enum VehicleExtras: String, UserSelectable, CaseIterable, QuoteListFilter {
-        case taxi
         case childSeat = "child-seat"
         case wheelchair
 
         var filterCategory: Category { .vehicleExtras }
         
+        var icon: UIImage? {
+            switch self {
+            case .childSeat:
+                return .uisdkImage("u_baby-carriage")
+            case .wheelchair:
+                return .uisdkImage("u_wheelchair")
+            }
+        }
+
         var localizedString: String {
-            rawValue
+            switch self {
+            case .childSeat: return UITexts.VehicleTag.childseat
+            case .wheelchair: return UITexts.VehicleTag.wheelchair
+            }
         }
 
         func conditionMet(for quote: Quote) -> Bool {

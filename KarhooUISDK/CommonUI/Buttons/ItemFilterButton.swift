@@ -9,10 +9,25 @@
 import Foundation
 import UIKit
 
-class ItemFilterButton: UIButton {
+class ItemFilterButton: ItemButton {
     
     let filter: QuoteListFilter
+
+    init(filter: QuoteListFilter) {
+        self.filter = filter
+        super.init(title: filter.localizedString, icon: filter.icon)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class ItemButton: UIButton {
+
+    let itemTitle: String
+    let itemIcon: UIImage?
+
     override var isSelected: Bool {
         get { super.isSelected }
         set {
@@ -21,16 +36,17 @@ class ItemFilterButton: UIButton {
         }
     }
 
-    /// Value needs to be overrides due to `titleEdgeInsets` usage
+    // Value overriden due to `titleEdgeInsets` usage
     override var intrinsicContentSize: CGSize {
         CGSize(
             width: super.intrinsicContentSize.width + 2 * UIConstants.Spacing.medium,
-            height: super.intrinsicContentSize.height + 2 * UIConstants.Spacing.small
+            height: super.intrinsicContentSize.height + 2 * UIConstants.Spacing.xSmall
         )
     }
     
-    init(filter: QuoteListFilter) {
-        self.filter = filter
+    init(title: String, icon: UIImage? = nil) {
+        self.itemTitle = title
+        self.itemIcon = icon
         super.init(frame: .zero)
         setup()
     }
@@ -40,8 +56,8 @@ class ItemFilterButton: UIButton {
     }
     
     private func setup() {
-        setImage(filter.icon, for: .normal)
-        setTitle(filter.localizedString, for: .normal)
+        setTitle(itemTitle, for: .normal)
+        setImage(itemIcon, for: .normal)
         setTitleColor(KarhooUI.colors.text, for: .normal)
         setTitleColor(KarhooUI.colors.accent, for: .selected)
         layer.borderWidth = UIConstants.Dimension.Border.standardWidth
@@ -49,12 +65,14 @@ class ItemFilterButton: UIButton {
         titleLabel?.setContentCompressionResistancePriority(.required, for: .horizontal)
         adjustsImageWhenHighlighted = false
         titleLabel?.font = KarhooUI.fonts.bodySemibold()
+        imageEdgeInsets.right = UIConstants.Spacing.small
         titleEdgeInsets = UIEdgeInsets(
-            top: UIConstants.Spacing.small,
-            left: UIConstants.Spacing.medium,
-            bottom: UIConstants.Spacing.small,
-            right: UIConstants.Spacing.medium
+            top: UIConstants.Spacing.xSmall,
+            left: UIConstants.Spacing.small,
+            bottom: UIConstants.Spacing.xSmall,
+            right: UIConstants.Spacing.small
         )
+        setNeedsLayout()
         updateSelectedDesign()
         addTouchAnimation()
     }
