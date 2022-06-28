@@ -229,24 +229,21 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     /** Whem: Adyen is the payment provider
      *  Then: Correct flow executes
      */
-    // TODO: update PSP flow tests to new, agnostic, approach
     func testAdyenPaymentFlow() {
-//        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
-//                                                                     paymentProvider: "adyen")
-//        testObject.bookTripPressed()
-//
-//        XCTAssertFalse(mockThreeDSecureProvider.threeDSecureCalled)
-//
-//        let tripBooked = TestUtil.getRandomTrip()
-//        mockTripService.bookCall.triggerSuccess(tripBooked)
-//
-//        XCTAssertNotNil(mockTripService.tripBookingSet)
-//        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-//        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-//        XCTAssertEqual("123", mockTripService.tripBookingSet?.paymentNonce)
-//
-//        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-//        XCTAssertTrue(mockView.setDefaultStateCalled)
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
+                                                                     paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        XCTAssertFalse(mockThreeDSecureProvider.threeDSecureCalled)
+        let tripBooked = TestUtil.getRandomTrip()
+        mockTripService.bookCall.triggerSuccess(tripBooked)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual("123", mockTripService.tripBookingSet?.paymentNonce)
+
+        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
     private func guestBookingRequestTrip(result: ScreenResult<TripInfo>) {

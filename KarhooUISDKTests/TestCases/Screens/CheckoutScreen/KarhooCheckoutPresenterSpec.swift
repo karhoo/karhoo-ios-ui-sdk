@@ -83,22 +83,19 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should be called
      */
-    // TODO: update PSP flow tests to new, agnostic, approach
-    // SOMETIMES:
-    // FAILS FOR ADYEN
-    // FAILS FOR BRAINTREE
-//    func testAdyenRequestCarAuthenticated() {
-//        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-//        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
-//        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
-//        testObject.bookTripPressed()
-//        XCTAssert(mockView.setRequestingStateCalled)
-//        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
-//        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-//        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
-//        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
-//        XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
-//    }
+    func testAdyenRequestCarAuthenticated() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
+        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        testObject.bookTripPressed()
+        XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockTripService.tripBookingSet!.meta.count == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"])
+        XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
+    }
     
     /**
      * When: The user presses "book ride"
@@ -131,6 +128,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * Then: no alert should show
      */
     func testCancellingPaymentProviderFlow() {
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
