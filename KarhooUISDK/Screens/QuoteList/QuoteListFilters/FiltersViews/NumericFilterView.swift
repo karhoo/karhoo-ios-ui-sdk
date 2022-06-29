@@ -15,6 +15,7 @@ class NumericFilterView: UIView, FilterView {
 
     var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     private var numericFilter: QuoteListNumericFilter
+    var category: QuoteListFilters.Category { numericFilter.filterCategory }
     var filter: [QuoteListFilter] { [numericFilter]  }
 
     // MARK: Views
@@ -117,6 +118,14 @@ class NumericFilterView: UIView, FilterView {
 
     func reset() {
         numericFilter.value = numericFilter.defaultValue
+        updateCounterState()
+    }
+
+    func configure(using filter: [QuoteListFilter]) {
+        guard let filter = filter.first as? QuoteListNumericFilter else {
+            return
+        }
+        numericFilter = filter
         updateCounterState()
     }
 

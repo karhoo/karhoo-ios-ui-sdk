@@ -82,6 +82,14 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         super.viewWillAppear(animate)
         presenter.viewWillAppear()
         updateConfirmButtonTitle()
+        
+        filterViewsStackView.arrangedSubviews
+            .compactMap { $0 as? FilterView }
+            .forEach { filterView in
+                let category = filterView.category
+                let filtersForCategory = presenter.filters.filter { $0.filterCategory == category }
+                filterView.configure(using: filtersForCategory)
+            }
     }
 
     // MARK: - Setup business logic
@@ -177,7 +185,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     }
 
     private func setupFilterViewsBinding() {
-        filterViewsStackView.subviews
+        filterViewsStackView.arrangedSubviews
             .compactMap { $0 as? FilterView }
             .forEach { filterView in
                 filterView.onFilterChanged = { [weak self] updatedFilter, category in

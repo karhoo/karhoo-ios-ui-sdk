@@ -103,9 +103,13 @@ struct FilterViewBuilder {
 }
 
 class TemporarFilterView: UIView, FilterView {
+    var category: QuoteListFilters.Category { .luggage }
+    
     var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     
     var filter: [QuoteListFilter] = [QuoteListFilters.PassengerCapacityModel(value: 1)]
     func reset() {
+    }
+    func configure(using filter: [QuoteListFilter]) {
     }
 }

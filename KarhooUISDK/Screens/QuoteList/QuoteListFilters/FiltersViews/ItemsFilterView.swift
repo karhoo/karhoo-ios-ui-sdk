@@ -37,6 +37,7 @@ class ItemsFilterView: UIView, FilterView {
         $0.axis = .vertical
         $0.spacing = UIConstants.Spacing.small
         $0.alignment = .leading
+        $0.distribution = .fillEqually
     }
 
     private var itemButtons: [UIButton] = []
@@ -113,9 +114,8 @@ class ItemsFilterView: UIView, FilterView {
         }
         selectableFilters.forEach { selectableFilter in
             var horizontalStackView: UIStackView
-            let itemView = ItemFilterButton(filter: selectableFilter)
-            itemButtons.append(itemView)
-            itemView.addTarget(self, action: #selector(itemButtonTapped), for: .touchUpInside)
+            let itemView = buildItemFilterButton(for: selectableFilter)
+
             if let stackView = itemsMainStackView.subviews.last as? UIStackView {
                 horizontalStackView = stackView
                 if isThereSpaceForNextItem(
@@ -146,6 +146,14 @@ class ItemsFilterView: UIView, FilterView {
         }
     }
 
+    private func buildItemFilterButton(for filter: QuoteListFilter) -> ItemFilterButton {
+        let itemView = ItemFilterButton(filter: filter)
+        itemView.isSelected = self.filter.contains { $0.localizedString == filter.localizedString }
+        itemButtons.append(itemView)
+        itemView.addTarget(self, action: #selector(itemButtonTapped), for: .touchUpInside)
+        return itemView
+    }
+
     private func buildHorizontalStackViewForItems() -> UIStackView {
         UIStackView().then {
             $0.axis = .horizontal
@@ -164,6 +172,11 @@ class ItemsFilterView: UIView, FilterView {
     func reset() {
         filter = []
         itemButtons.forEach { $0.isSelected = false }
+    }
+
+    func configure(using filter: [QuoteListFilter]) {
+        self.filter = filter
+        setupItems()
     }
     
     // MARK: - UI Actions
