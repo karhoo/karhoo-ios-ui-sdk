@@ -439,10 +439,12 @@ public enum UITexts {
     }
     
     public enum Quotes {
+        static let freeCancellation = "Text.Quote.FreeCancellation".localized
         static let freeCancellationPrebook = "Text.Quote.FreeCancellationPrebook".localized
         static let freeCancellationASAP = "Text.Quote.FreeCancellationASAP".localized
         static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
+        static let freeWaitingTime = "Text.Quote.FreeWaitingTime".localized
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
         static let result = "Text.Quotes.Result".localized
         static let results = "Text.Quotes.Results".localized

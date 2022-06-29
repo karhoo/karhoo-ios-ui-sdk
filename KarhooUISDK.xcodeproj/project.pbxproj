@@ -377,6 +377,8 @@
 		51801A2E285B72D200EE6583 /* FleetCapabilitiesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A2D285B72D200EE6583 /* FleetCapabilitiesFilter.swift */; };
 		51801A30285B72F000EE6583 /* QuoteTypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A2F285B72F000EE6583 /* QuoteTypeFilter.swift */; };
 		51801A32285B730B00EE6583 /* ServiceAgreementsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A31285B730B00EE6583 /* ServiceAgreementsFilter.swift */; };
+		51808505286C456A001E4940 /* FilterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808504286C4569001E4940 /* FilterListView.swift */; };
+		51808507286C6CA9001E4940 /* FilterListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808506286C6CA9001E4940 /* FilterListItem.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
@@ -936,6 +938,8 @@
 		51801A2D285B72D200EE6583 /* FleetCapabilitiesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetCapabilitiesFilter.swift; sourceTree = "<group>"; };
 		51801A2F285B72F000EE6583 /* QuoteTypeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTypeFilter.swift; sourceTree = "<group>"; };
 		51801A31285B730B00EE6583 /* ServiceAgreementsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAgreementsFilter.swift; sourceTree = "<group>"; };
+		51808504286C4569001E4940 /* FilterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListView.swift; sourceTree = "<group>"; };
+		51808506286C6CA9001E4940 /* FilterListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListItem.swift; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
@@ -2469,6 +2473,8 @@
 				51F614D82861B5BB00A7EC11 /* NumericFilterView.swift */,
 				51F614DA2861B5DE00A7EC11 /* FilterView.swift */,
 				51F51B492864815100CF345E /* ItemsFilterView.swift */,
+				51808504286C4569001E4940 /* FilterListView.swift */,
+				51808506286C6CA9001E4940 /* FilterListItem.swift */,
 			);
 			path = FiltersViews;
 			sourceTree = "<group>";
@@ -4028,6 +4034,7 @@
 				094AE86121C9145D0046EC3C /* KarhooDatePickerPresenter.swift in Sources */,
 				51BCAFAD285782D500AFA244 /* QuoteFilterHandler.swift in Sources */,
 				09DA1A3322F1A8F4004C6B20 /* FeedbackButtonMVP.swift in Sources */,
+				51808505286C456A001E4940 /* FilterListView.swift in Sources */,
 				407EC79F22CF564E00F24CFC /* KarhooNotificationView.swift in Sources */,
 				0968D82122F82B8300047FCF /* TripFeedbackMVP.swift in Sources */,
 				5135E56E28574A4100F14A0F /* QuoteListPresenter.swift in Sources */,
@@ -4042,6 +4049,7 @@
 				FC435EF12211B35C00FB6BB5 /* TwoPageViewController.swift in Sources */,
 				407EC7EB22CF564E00F24CFC /* TableDelegate.swift in Sources */,
 				51F614D72860EA2200A7EC11 /* FilterViewBuilder.swift in Sources */,
+				51808507286C6CA9001E4940 /* FilterListItem.swift in Sources */,
 				FC83E288221DBA1B008FE26D /* TripSummaryScreenBuilder.swift in Sources */,
 				09F60CDF226623A200023C74 /* SideMenu.swift in Sources */,
 				6B2606202743EF820030DB4B /* KarhooLoyaltyPresenter.swift in Sources */,

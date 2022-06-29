@@ -17,7 +17,12 @@ extension QuoteListFilters {
         var filterCategory: Category { .quoteTypes}
         
         var localizedString: String {
-            rawValue
+            switch self {
+            case .fixed:
+                return UITexts.Generic.fixed
+            case .metered:
+                return UITexts.Generic.metered
+            }
         }
 
         func conditionMet(for quote: Quote) -> Bool {
