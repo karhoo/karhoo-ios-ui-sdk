@@ -81,8 +81,13 @@ class ItemButton: UIButton {
         let borderColor = isSelected ? KarhooUI.colors.accent.cgColor : UIColor.clear.cgColor
         let color = isSelected ? KarhooUI.colors.lightAccent : KarhooUI.colors.background2
         let tint = isSelected ? KarhooUI.colors.accent : KarhooUI.colors.text
-        layer.borderColor = borderColor
-        backgroundColor = color
-        imageView?.tintColor = tint
+        UIView.animate(
+            withDuration: UIConstants.Duration.xShort,
+            animations: { [weak self] in
+                self?.layer.borderColor = borderColor
+                self?.backgroundColor = color
+                self?.imageView?.tintColor = tint
+            }
+        )
     }
 }

@@ -166,14 +166,20 @@ extension UIView {
         }
     }
     
-    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil) {
+    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil, priority: UILayoutPriority = .required) {
         translatesAutoresizingMaskIntoConstraints = false
         if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+            widthAnchor.constraint(equalToConstant: width).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
         
         if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+            heightAnchor.constraint(equalToConstant: height).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
     }
     
