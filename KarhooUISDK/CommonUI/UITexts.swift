@@ -138,6 +138,8 @@ public enum UITexts {
         static let errorNoResultsForFilterMessage = "Text.Quotes.ErrorNoResultsForFilterSubtitle".localized
         static let errorNoAvailabilityInRequestedAreaContactUsLinkText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText".localized
         static let errorNoAvailabilityInRequestedAreaContactUsFullText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText".localized
+        static let errorDestinationOrOriginEmptyTitle = "Text.Quotes.ErrorDestinationOrOriginEmptyTitle".localized
+        static let errorDestinationOrOriginEmptyMessage = "Text.Quotes.ErrorDestinationOrOriginEmptySubtitle".localized
 
     }
 
