@@ -297,13 +297,13 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
 
-            let navigationController = UINavigationController(rootViewController: bookingViewController)
+            let navigationController = NavigationController(rootViewController: bookingViewController)
             navigationController.viewControllers.insert(sideMenu.getFlowItem(),
                     at: navigationController.viewControllers.endIndex)
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
         } else {
-            let navigationController = UINavigationController(rootViewController: bookingViewController)
+            let navigationController = NavigationController(rootViewController: bookingViewController)
             navigationController.modalPresentationStyle = .fullScreen
             bookingViewController.set(leftNavigationButton: .exitIcon)
             return navigationController

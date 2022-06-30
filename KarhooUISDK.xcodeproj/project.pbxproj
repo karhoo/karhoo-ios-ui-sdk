@@ -379,6 +379,7 @@
 		51801A32285B730B00EE6583 /* ServiceAgreementsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A31285B730B00EE6583 /* ServiceAgreementsFilter.swift */; };
 		51808505286C456A001E4940 /* FilterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808504286C4569001E4940 /* FilterListView.swift */; };
 		51808507286C6CA9001E4940 /* FilterListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808506286C6CA9001E4940 /* FilterListItem.swift */; };
+		51808509286DBF87001E4940 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808508286DBF87001E4940 /* NavigationController.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
@@ -940,6 +941,7 @@
 		51801A31285B730B00EE6583 /* ServiceAgreementsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAgreementsFilter.swift; sourceTree = "<group>"; };
 		51808504286C4569001E4940 /* FilterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListView.swift; sourceTree = "<group>"; };
 		51808506286C6CA9001E4940 /* FilterListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListItem.swift; sourceTree = "<group>"; };
+		51808508286DBF87001E4940 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
@@ -2802,6 +2804,7 @@
 				6B4E3256274FCEB000A345E9 /* JourneyDetails */,
 				092F281022B25B0700AF8E0E /* Payment */,
 				FC435F382211B8B400FB6BB5 /* Trips */,
+				51808508286DBF87001E4940 /* NavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3947,6 +3950,7 @@
 				FC705B0D2212DE6E0001036E /* RidesScreenBuilder.swift in Sources */,
 				51F4D56928574D0E00A8DB5E /* UINavigationController+navigationCompletions.swift in Sources */,
 				0991067721B8291A00BD7E6F /* AddressSearchBarMVP.swift in Sources */,
+				51808509286DBF87001E4940 /* NavigationController.swift in Sources */,
 				5CDACF2E23CCAC8700FD4F56 /* KarhooMKMapView.swift in Sources */,
 				5190F0112847858B00F7623A /* BraintreePaymentNonceProvider.swift in Sources */,
 				092005DE225B91C1001038ED /* MenuContentViewController.swift in Sources */,
