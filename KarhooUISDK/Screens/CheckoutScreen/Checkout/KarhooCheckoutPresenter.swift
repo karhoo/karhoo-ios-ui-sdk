@@ -418,7 +418,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider?.threeDSecureCheck(
             nonce: nonce,
             currencyCode: quote.price.currencyCode,
-            paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+            paymentAmount: NSDecimalNumber(value: quote.price.highPrice),
             callback: { [weak self] result in
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)
@@ -551,11 +551,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
-                message: message,
-                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
-                date: Date(),
-                amount: quote.price.highPrice.description,
-                currency: quote.price.currencyCode
+            message: message,
+            last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
         )
     }
 }

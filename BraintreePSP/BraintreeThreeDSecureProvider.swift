@@ -39,7 +39,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
     func threeDSecureCheck(
         nonce: String,
         currencyCode: String,
-        paymentAmout: NSDecimalNumber,
+        paymentAmount: NSDecimalNumber,
         callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     ) {
         self.resultCallback = callback
@@ -57,7 +57,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
             .execute(callback: { [weak self] result in
                 switch result {
                 case .success(let token):
-                    self?.start3DSecureCheck(authToken: token, nonce: nonce, amount: paymentAmout)
+                    self?.start3DSecureCheck(authToken: token, nonce: nonce, amount: paymentAmount)
                 case .failure:
                     callback(.completed(value: .failedToInitialisePaymentService))
                     return
@@ -83,8 +83,8 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
             return
         }
 
-        self.paymentFlowDriver = BTPaymentFlowDriver(apiClient: apiClient)
-        self.paymentFlowDriver?.viewControllerPresentingDelegate = self
+        paymentFlowDriver = BTPaymentFlowDriver(apiClient: apiClient)
+        paymentFlowDriver?.viewControllerPresentingDelegate = self
 
         let request = BTThreeDSecureRequest()
         request.nonce = nonce
@@ -100,7 +100,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
             raiseOnDivideByZero: false
         )
         request.amount = amount.rounding(accordingToBehavior: decimalNumberHandler)
-        self.paymentFlowDriver?.startPaymentFlow(request) { [weak self] (result, error) in
+        paymentFlowDriver?.startPaymentFlow(request) { [weak self] (result, error) in
             if error?._code == BTPaymentFlowDriverErrorType.canceled.rawValue {
                 self?.resultCallback?(.cancelledByUser)
                 return

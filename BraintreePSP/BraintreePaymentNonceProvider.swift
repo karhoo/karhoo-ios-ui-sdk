@@ -120,7 +120,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         threeDSecureProvider.threeDSecureCheck(
             nonce: nonce.nonce,
             currencyCode: quote.price.currencyCode,
-            paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+            paymentAmount: NSDecimalNumber(value: quote.price.highPrice),
             callback: { [weak self] result in
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)

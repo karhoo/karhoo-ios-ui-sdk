@@ -26,7 +26,7 @@ public protocol ThreeDSecureProvider {
 
     func threeDSecureCheck(nonce: String,
                            currencyCode: String,
-                           paymentAmout: NSDecimalNumber,
+                           paymentAmount: NSDecimalNumber,
                            callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void)
 
     func set(baseViewController: BaseViewController)
