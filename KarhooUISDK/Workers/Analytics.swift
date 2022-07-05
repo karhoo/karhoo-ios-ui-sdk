@@ -18,9 +18,14 @@ public protocol Analytics {
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
     
-    func bookingRequested(tripDetails: TripInfo)
-    func paymentSucceed()
-    func paymentFailed(message: String, last4Digits: String, date: Date, amount: String, currency: String)
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
+    func paymentSucceed(tripDetails: TripInfo)
+    func paymentFailed(tripDetails: TripInfo, message: String, last4Digits: String, date: Date, amount: String, currency: String)
+    func cardAuthorisationFail(message: String, last4Digits: String, date: Date, amount: String, currency: String)
+    func cardAuthorisationSuccess(tripDetails: TripInfo)
+    func loyaltyStatusRequested(tripDetails: TripInfo, loyaltyEnabled: Bool, result: (canEarn: Bool, canBurn: Bool, balance: Int)?)
+    func loyaltyPreAuthFail(tripDetails: TripInfo)
+    func loyaltyPreAuthSuccess(tripDetails: TripInfo)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
     func upcomingTripsOpened()
@@ -82,20 +87,28 @@ final class KarhooAnalytics: Analytics {
                   payload: [Keys.locationDetails: locationDetails])
     }
 
-    func bookingRequested(tripDetails: TripInfo) {
+    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
+        var payload =  [
+            Keys.tripId: tripDetails.tripId
+        ]
+        if let outboundTripId = outboundTripId {
+            payload[Keys.outboundTripId] = outboundTripId
+        }
         base.send(
             eventName: .checkoutBookingRequested,
-            payload: [
-                Keys.tripId: tripDetails.tripId
-            ]
+            payload: payload
         )
     }
 
-    func paymentSucceed() {
-        base.send(eventName: .paymentSucceed)
+    func paymentSucceed(tripDetails: TripInfo) {
+        base.send(
+            eventName: .paymentSucceed,
+            payload: [Keys.tripId : tripDetails.tripId]
+            )
     }
 
     func paymentFailed(
+            tripDetails: TripInfo,
             message: String,
             last4Digits: String,
             date: Date,
@@ -112,6 +125,7 @@ final class KarhooAnalytics: Analytics {
         base.send(
                 eventName: .paymentFailed,
                 payload: [
+                    Keys.tripId: tripDetails.tripId,
                     Keys.message: message,
                     Keys.cardLast4Digits: last4Digits,
                     Keys.date: dateString,
@@ -121,8 +135,89 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
+    func cardAuthorisationFail(
+        tripDetails: TripInfo,
+        message: String,
+        last4Digits: String,
+        date: Date,
+        amount: String,
+        currency: String
+    ) {
+        let dateString: String
+        if #available(iOS 15.0, *) {
+            dateString = date.ISO8601Format()
+        } else {
+            let formatter = DateFormatter()
+            dateString = formatter.string(from: date)
+        }
+        base.send(
+            eventName: .cardAuthorisationFailed,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+                Keys.message: message,
+                Keys.cardLast4Digits: last4Digits,
+                Keys.date: dateString,
+                Keys.amount: amount,
+                Keys.currency: currency
+            ]
+        )
+    }
 
-func bookingScreenOpened() {
+    func cardAuthorisationSuccess(
+        tripDetails: TripInfo
+    ) {
+        base.send(
+            eventName: .cardAuthorisationSuccess,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+            ]
+        )
+    }
+
+    func loyaltyStatusRequested(
+        tripDetails: TripInfo,
+        loyaltyEnabled: Bool,
+        result: (canEarn: Bool,
+                 canBurn: Bool,
+                 balance: Int)?
+    ) {
+        var payload: [String : Any] = [
+            Keys.tripId: tripDetails.tripId,
+            Keys.loyaltyEnabled: loyaltyEnabled
+        ]
+        if let result = result {
+            payload["canEarn"] = result.canEarn
+            payload["canBurn"] = result.canBurn
+            payload["balance"] = result.balance
+        }
+        base.send(
+            eventName: .loyaltyStatusRequested,
+            payload: payload
+        )
+    }
+
+    func loyaltyPreAuthSuccess(tripDetails: TripInfo) {
+        base.send(
+            eventName: .loyaltyPreauthSuccess,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+            ]
+        )
+    }
+
+    func loyaltyPreAuthFail(
+        tripDetails: TripInfo
+    ) {
+        base.send(
+            eventName: .loyaltyPreauthFailed,
+            payload: [
+                Keys.tripId: tripDetails.tripId,
+            ]
+        )
+    }
+
+
+    func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
     }
 
@@ -223,6 +318,10 @@ func bookingScreenOpened() {
         static let cardLast4Digits = "card_last_4_digits"
         static let amount = "amount"
         static let currency = "currency"
+        static let loyaltyEnabled = "loyaltyEnabled"
+        static let canEarn = "canEarn"
+        static let canBurn = "canBurn"
+        static let balance = "balance"
     }
 
     struct Value {
