@@ -288,7 +288,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
     
-    private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
+    private func book(paymentNonce: String, passenger: PassengerDetails, luggage: Luggage, flightNumber: String?) {
         
         if isLoyaltyEnabled(),
             let view = self.view {
@@ -296,7 +296,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             view.getLoyaltyNonce { [weak self] result in
                 if let error = result.errorValue() {
                     if error.type == .failedToGenerateNonce {
-                        self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
+                        self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, luggage: luggage, flightNumber: flightNumber)
                     } else {
                         self?.showLoyaltyNonceError(error: error)
                     }
@@ -304,15 +304,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 }
                 
                 if let loyaltyNonce = result.successValue() {
-                    self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
+                    self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce, paymentNonce: paymentNonce, passenger: passenger, luggage: luggage, flightNumber: flightNumber)
                 }
             }
         } else {
-            sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
+            sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, luggage: luggage, flightNumber: flightNumber)
         }
     }
     
-    private func sendBookRequest(loyaltyNonce: String?, paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
+    private func sendBookRequest(loyaltyNonce: String?, paymentNonce: String, passenger: PassengerDetails, luggage: Luggage, flightNumber: String?) {
         var flight: String? = flightNumber
         if let f = flight, (f.isEmpty || f == " ") {
             flight = nil
@@ -320,7 +320,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         
         var tripBooking = TripBooking(quoteId: quote.id,
                                       passengers: Passengers(additionalPassengers: 0,
-                                                             passengerDetails: [passenger]),
+                                                             passengerDetails: [passenger],
+                                                             luggage: luggage),
                                       flightNumber: flight,
                                       paymentNonce: paymentNonce,
                                       loyaltyNonce: loyaltyNonce,
