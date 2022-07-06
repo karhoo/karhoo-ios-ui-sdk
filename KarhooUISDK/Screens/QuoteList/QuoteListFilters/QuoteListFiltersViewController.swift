@@ -186,6 +186,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             paddingRight: UIConstants.Spacing.standard,
             paddingBottom: UIConstants.Spacing.large
         )
+        view.layoutIfNeeded()
     }
 
     private func setupFilterViewsBinding() {
