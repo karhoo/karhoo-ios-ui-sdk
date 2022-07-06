@@ -25,10 +25,39 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
         _ quotes: [Quote],
         using filters: [QuoteListFilter]
     ) -> [Quote] {
-        quotes.filter { quote in
-                filters.allSatisfy { filter in
-                    filter.conditionMet(for: quote)
-                }
+        guard filters.isNotEmpty else {
+            return quotes
+        }
+        let segregatedFitlers = segregate(filters)
+        let filteredQuotes = filter(quotes, using: segregatedFitlers)
+        return filteredQuotes
+    }
+
+    private func segregate(_ filters: [QuoteListFilter]) -> [QuoteListFilters.Category: [QuoteListFilter]] {
+        var segregatedFilters: [QuoteListFilters.Category: [QuoteListFilter]] = [:]
+        filters.forEach { filter in
+            if segregatedFilters[filter.filterCategory] != nil {
+                segregatedFilters[filter.filterCategory]?.append(filter)
+            } else {
+                segregatedFilters[filter.filterCategory] = [filter]
             }
+        }
+        return segregatedFilters
+    }
+
+    private func filter(
+        _ quotes: [Quote],
+        using segregatedFilters: [QuoteListFilters.Category: [QuoteListFilter]]
+    ) -> [Quote] {
+        quotes.filter { quoteToFilter in
+            let quoteMeetsFilteringConditions: [Bool] = segregatedFilters.map { filters in
+                let categoryFitlerConditionMet = filters.value.first { filterOfGivenCategory in
+                    filterOfGivenCategory.conditionMet(for: quoteToFilter)
+                }
+                return categoryFitlerConditionMet != nil
+            }
+            // If filtering results do not contain false result, return success (quote mets all filtering conditions)
+            return quoteMeetsFilteringConditions.contains(false) == false
+        }
     }
 }

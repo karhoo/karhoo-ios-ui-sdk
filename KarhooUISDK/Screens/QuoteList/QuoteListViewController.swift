@@ -122,6 +122,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
+        presenter.onFiltersCountUpdated = { [weak self] filtersCount in
+            self?.updateFilterButtonState(using: filtersCount)
+        }
     }
 
     // MARK: - Setup view
@@ -210,6 +213,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     // MARK: - State handling
 
+    private func updateFilterButtonState(using filtersCount: Int) {
+        switch filtersCount {
+        case 0: filtersButton.isSelected = false
+        default: filtersButton.setSelected(withNumber: filtersCount)
+        }
+        
+    }
+
     private func handleStateUpdate(_ state: QuoteListState) {
         setNavigationBarTitle(forState: state)
         switch state {
@@ -256,20 +267,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     // MARK: - Helpers
-
-    private func setEnabledFiltersCount(_ count: Int) {
-        if count == 0 {
-            filtersButton.layer.borderColor = KarhooUI.colors.border.cgColor
-            filtersButton.setTitleColor(KarhooUI.colors.text, for: .normal)
-            filtersButton.setTitle("Filters", for: .normal)
-            filtersButton.tintColor = KarhooUI.colors.text
-        } else {
-            filtersButton.layer.borderColor = KarhooUI.colors.accent.cgColor
-            filtersButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
-            filtersButton.setTitle("Filters(\(count))", for: .normal)
-            filtersButton.tintColor = KarhooUI.colors.accent
-        }
-    }
 
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         buttonsStackView.isHidden = false

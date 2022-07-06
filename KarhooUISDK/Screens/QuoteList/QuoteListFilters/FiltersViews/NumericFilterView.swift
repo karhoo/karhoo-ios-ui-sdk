@@ -13,9 +13,10 @@ class NumericFilterView: UIView, FilterView {
     
     // MARK: - Propterties
 
-    var onFilterChanged: ((QuoteListFilter) -> Void)?
+    var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     private var numericFilter: QuoteListNumericFilter
-    var filter: QuoteListFilter { numericFilter  }
+    var category: QuoteListFilters.Category { numericFilter.filterCategory }
+    var filter: [QuoteListFilter] { [numericFilter]  }
 
     // MARK: Views
 
@@ -25,12 +26,12 @@ class NumericFilterView: UIView, FilterView {
     }
     private lazy var iconImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = filter.icon
+        $0.image = numericFilter.icon
         $0.contentMode = .scaleAspectFit
     }
     private lazy var titleLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = filter.filterCategory.localized
+        $0.text = numericFilter.filterCategory.localized
         $0.textColor = KarhooUI.colors.text
         $0.font = KarhooUI.fonts.bodySemibold()
     }
@@ -44,6 +45,7 @@ class NumericFilterView: UIView, FilterView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = numericFilter.value.description
         $0.font = KarhooUI.fonts.headerSemibold()
+        $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
     }
 
@@ -90,6 +92,10 @@ class NumericFilterView: UIView, FilterView {
     }
     
     private func setupLayout() {
+        heightAnchor.constraint(equalToConstant: 52).do {
+            $0.priority = .defaultLow
+            $0.isActive = true
+        }
         stackView.anchorToSuperview(
             paddingTop: UIConstants.Spacing.medium,
             paddingLeading: UIConstants.Spacing.standard,
@@ -115,19 +121,27 @@ class NumericFilterView: UIView, FilterView {
         updateCounterState()
     }
 
+    func configure(using filter: [QuoteListFilter]) {
+        guard let filter = filter.first as? QuoteListNumericFilter else {
+            return
+        }
+        numericFilter = filter
+        updateCounterState()
+    }
+
     // MARK: - UI Actions
 
     @objc
     private func decreaseTapped(_ sender: UIButton) {
         numericFilter.value = max(numericFilter.minValue, numericFilter.value - 1)
         updateCounterState()
-        onFilterChanged?(filter)
+        onFilterChanged?(filter, numericFilter.filterCategory)
     }
 
     @objc
     private func increaseTapped(_ sender: UIButton) {
         numericFilter.value = min(numericFilter.maxValue, numericFilter.value + 1)
         updateCounterState()
-        onFilterChanged?(filter)
+        onFilterChanged?(filter, numericFilter.filterCategory)
     }
 }

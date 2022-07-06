@@ -525,6 +525,8 @@
 
 "Text.Generic.Yes" = "Yes";
 
+"Text.Generic.all" = "All";
+
 /* Driver Arrived */
 "Text.GenericTripStatus.Arrived" = "Driver Arrived";
 
@@ -659,6 +661,32 @@
 "Text.Quotes.FiltersPassengers" = "Passenger(s)";
 
 "Text.Quotes.FiltersLuggages" = "Luggage(s)";
+
+"Text.Quotes.FilterVehicleType" = "Vehicle types";
+
+"Text.Quotes.FilterVehicleClass" = "Vehicle class";
+
+"Text.Quotes.FilterVehicleExtras" = "Vehicle extras";
+
+"Text.Quotes.FilterEcoFriendly" = "Eco-friendly";
+
+"Text.Quotes.FilterFleetCapabilities" = "Fleet capabilities";
+
+"Text.Quotes.FilterQuoteTypes" = "Quote types";
+
+"Text.Quotes.FilterServiceAgreements" = "Cancelation and waiting time";
+
+"Text.FleetCapabilities.FlightTracking" = "Flight Tracking";
+
+"Text.FleetCapabilities.TrainTracking" = "Train Tracking";
+
+"Text.FleetCapabilities.GpsTracking" = "GPS Tracking";
+
+"Text.FleetCapabilities.DriverDetails" = "Driver Details";
+
+"Text.FleetCapabilities.VehicleDetails" = "Vehicle Details";
+
+"Text.VehicleClass.Luxury" = "Luxury";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";

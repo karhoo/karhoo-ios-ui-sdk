@@ -10,11 +10,27 @@ import Foundation
 import KarhooSDK
 
 extension QuoteListFilters {
-    enum EcoFriendly: String, QuoteListFilter {
+    enum EcoFriendly: String, QuoteListFilter, CaseIterable {
         case electric
         case hybrid
 
         var filterCategory: Category { .ecoFriendly }
+        
+        var icon: UIImage? {
+            switch self {
+            case .electric:
+                return .uisdkImage("electric")
+            case .hybrid:
+                return .uisdkImage("hybrid")
+            }
+        }
+        
+        var localizedString: String {
+            switch self {
+            case .electric: return UITexts.VehicleTag.electric
+            case .hybrid: return UITexts.VehicleTag.hybrid
+            }
+        }
 
         func conditionMet(for quote: Quote) -> Bool {
             quote.vehicle.tags

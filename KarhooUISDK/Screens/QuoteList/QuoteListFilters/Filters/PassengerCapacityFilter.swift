@@ -21,6 +21,8 @@ extension QuoteListFilters {
             quote.vehicle.passengerCapacity >= value
         }
 
+        var localizedString: String { filterCategory.localized }
+
         var icon: UIImage? {
             .uisdkImage("filter_passengers")
         }
