@@ -568,7 +568,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportBookingEvent() {
         if let trip = tripInfoForAnalytics {
-            analytics.bookingRequested(tripDetails: trip)
+            analytics.bookingRequested(tripDetails: trip, outboundTripId: nil)
         }
     }
 
@@ -591,7 +591,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportCardAuthorisationFailed(_ message: String) {
-        analytics.cardAuthorisationFailed(
+        guard let trip = tripInfoForAnalytics else { return }
+        analytics.cardAuthorisationFail(
+            tripDetails: trip, 
             message: message,
             last4Digits: retrievePaymentNonce()?.lastFour ?? "",
             date: Date(),
