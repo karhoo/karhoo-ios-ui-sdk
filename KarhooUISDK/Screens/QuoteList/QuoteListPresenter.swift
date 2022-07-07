@@ -97,8 +97,17 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func getNumberOfResultsForQuoteFilters(_ filters: [QuoteListFilter]) -> Int {
+        handleLuggageAndPassengerFilters(filters)
         guard let quotes = fetchedQuotes else { return 0 }
         return quoteFilter.filter(quotes.all, using: filters).count
+    }
+    
+    func handleLuggageAndPassengerFilters(_ filters: [QuoteListFilter]) {
+//        for filter in filters {
+//            if filter == filters.count {
+//
+//            }
+//        }
     }
 
     func selectedQuoteFilters(_ filters: [QuoteListFilter]) {

@@ -31,6 +31,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
+    private var passengerCount: Int = 1
+    private var luggageCount: Int = 0
 
     var karhooUser: Bool = false
 
@@ -39,6 +41,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     init(
         quote: Quote,
         journeyDetails: JourneyDetails,
+        passengerCount: Int,
+        luggageCount: Int,
         bookingMetadata: [String: Any]?,
         threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
@@ -63,6 +67,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
+        self.passengerCount = passengerCount
+        self.luggageCount = luggageCount
         self.bookingMetadata = bookingMetadata
         self.setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
@@ -319,8 +325,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
         
         var tripBooking = TripBooking(quoteId: quote.id,
-                                      passengers: Passengers(additionalPassengers: 0,
-                                                             passengerDetails: [passenger]),
+                                      passengers: Passengers(additionalPassengers: passengerCount - 1,
+                                                             passengerDetails: [passenger],
+                                                            luggage: Luggage(total: luggageCount)),
                                       flightNumber: flight,
                                       paymentNonce: paymentNonce,
                                       loyaltyNonce: loyaltyNonce,

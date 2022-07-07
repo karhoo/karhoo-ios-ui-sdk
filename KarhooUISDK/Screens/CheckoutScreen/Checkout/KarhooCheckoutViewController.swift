@@ -17,6 +17,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         func buildCheckoutScreen(
             quote: Quote,
             journeyDetails: JourneyDetails,
+            passengerCount: Int,
+            luggageCount: Int,
             bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<TripInfo>
         ) -> Screen {
@@ -24,6 +26,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             let presenter = KarhooCheckoutPresenter(
                 quote: quote,
                 journeyDetails: journeyDetails,
+                passengerCount: passengerCount,
+                luggageCount: luggageCount,
                 bookingMetadata: bookingMetadata,
                 callback: callback
             )
