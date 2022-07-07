@@ -60,11 +60,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
+        baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
-        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
+        setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
     deinit {
@@ -526,31 +526,72 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     // MARK: - Analytics
 
+    private var tripInfoForAnalytics: TripInfo? {
+        if let trip = trip { return trip }
+        guard let origin = journeyDetails.originLocationDetails else { return  nil }
+        return TripInfo(
+            origin: origin.toTripLocationDetails(),
+            destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
+            dateScheduled: journeyDetails.scheduledDate,
+            quote: quote.toTripQuote()
+        )
+    }
+
+
     private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
     }
 
-    private func reportBookingEvent() {
-        guard let origin = journeyDetails.originLocationDetails else { return }
-        
-        func buildTripForAnalytics() -> TripInfo {
-             TripInfo(
-                origin: origin.toTripLocationDetails(),
-                destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
-                dateScheduled: journeyDetails.scheduledDate,
-                quote: quote.toTripQuote()
-             )
+    private func reportCardAuthorisationFail(_ message: String) {
+        guard let trip = tripInfoForAnalytics else { return }
+        analytics.cardAuthorisationFail(
+            tripDetails: trip,
+            message: message,
+            last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
+        )
+    }
+
+    private func reportCardAuthorisationSucceed(){
+        if let trip = tripInfoForAnalytics {
+            analytics.cardAuthorisationSuccess(tripDetails: trip)
         }
-        
-        analytics.bookingRequested(tripDetails: trip ?? buildTripForAnalytics())
+    }
+
+    private func reportLoyaltyStatusRequested(loyaltyEnabled: Bool, result: (canEarn: Bool, canBurn: Bool, balance: Int)?){
+        if let trip = tripInfoForAnalytics {
+            analytics.loyaltyStatusRequested(tripDetails: trip, loyaltyEnabled: loyaltyEnabled, result: result)
+        }
+    }
+
+    private func reportBookingEvent() {
+        if let trip = tripInfoForAnalytics {
+            analytics.bookingRequested(tripDetails: trip)
+        }
     }
 
     private func reportPaymentSuccess() {
-        analytics.paymentSucceed()
+        if let trip = tripInfoForAnalytics {
+            analytics.paymentSucceed(tripDetails: trip)
+        }
     }
 
     private func reportPaymentFailure(_ message: String) {
+        guard let trip = tripInfoForAnalytics else { return }
         analytics.paymentFailed(
+            tripDetails: trip,
+            message: message,
+            last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
+        )
+    }
+
+    private func reportCardAuthorisationFailed(_ message: String) {
+        analytics.cardAuthorisationFailed(
             message: message,
             last4Digits: retrievePaymentNonce()?.lastFour ?? "",
             date: Date(),

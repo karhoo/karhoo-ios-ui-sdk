@@ -21,7 +21,7 @@ public protocol Analytics {
     func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
     func paymentSucceed(tripDetails: TripInfo)
     func paymentFailed(tripDetails: TripInfo, message: String, last4Digits: String, date: Date, amount: String, currency: String)
-    func cardAuthorisationFail(message: String, last4Digits: String, date: Date, amount: String, currency: String)
+    func cardAuthorisationFail(tripDetails: TripInfo, message: String, last4Digits: String, date: Date, amount: String, currency: String)
     func cardAuthorisationSuccess(tripDetails: TripInfo)
     func loyaltyStatusRequested(tripDetails: TripInfo, loyaltyEnabled: Bool, result: (canEarn: Bool, canBurn: Bool, balance: Int)?)
     func loyaltyPreAuthFail(tripDetails: TripInfo)
@@ -163,9 +163,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func cardAuthorisationSuccess(
-        tripDetails: TripInfo
-    ) {
+    func cardAuthorisationSuccess(tripDetails: TripInfo) {
         base.send(
             eventName: .cardAuthorisationSuccess,
             payload: [
