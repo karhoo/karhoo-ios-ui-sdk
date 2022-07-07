@@ -68,7 +68,9 @@ class FilterListItem: UIControl {
             top: topAnchor,
             right: rightAnchor,
             bottom: bottomAnchor,
-            paddingRight: UIConstants.Spacing.large
+            paddingTop: -UIConstants.Spacing.xxSmall,
+            paddingRight: UIConstants.Spacing.large,
+            paddingBottom: -UIConstants.Spacing.xxSmall
         )
         setDimensions(height: UIConstants.Dimension.Button.medium)
     }
