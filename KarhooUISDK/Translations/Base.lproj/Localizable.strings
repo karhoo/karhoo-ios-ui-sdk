@@ -641,6 +641,8 @@
 "Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Please change your filter selection.";
 
 "Text.Quotes.ErrorNoResultsForFilterTitle" = "No results after filtering.";
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Pick up or Dropoff address is missing.";
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Please enter both pickup and dropoff addresses to access the offers.";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
 
