@@ -73,6 +73,8 @@ final class KarhooBookingPresenter {
     private func showCheckoutView(
         quote: Quote,
         journeyDetails: JourneyDetails,
+        passengerCount: Int,
+        luggageCount: Int,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
         router.routeToCheckout(
@@ -400,7 +402,9 @@ extension KarhooBookingPresenter: BookingPresenter {
             guard let self = self, let details = self.getJourneyDetails() else { return }
             self.showCheckoutView(
                 quote: quote,
-                journeyDetails: details
+                journeyDetails: details,
+                passengerCount: <#T##Int#>,
+                luggageCount: <#T##Int#>
             )
         }
     }
