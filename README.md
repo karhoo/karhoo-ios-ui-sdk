@@ -75,10 +75,10 @@ struct YourCompanyKarhooConfiguration: KarhooUISDKConfiguration {
         return .karhooUser
     }
     
-    var paymentProvider: PaymentProvider {
-        AdyenPaymentProvider()
+    var paymentManager: PaymentManager {
+        AdyenPaymentManager()
         // OR
-        BraintreePaymentProvider()
+        BraintreePaymentManager()
     }
 }
 ```
