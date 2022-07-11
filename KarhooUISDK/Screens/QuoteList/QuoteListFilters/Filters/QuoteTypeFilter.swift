@@ -26,7 +26,10 @@ extension QuoteListFilters {
         }
 
         func conditionMet(for quote: Quote) -> Bool {
-            quote.quoteType.rawValue.lowercased() == rawValue
+            switch self {
+            case .fixed: return quote.quoteType == .fixed
+            case .metered: return quote.quoteType == .metered
+            }
         }
     }
 }
