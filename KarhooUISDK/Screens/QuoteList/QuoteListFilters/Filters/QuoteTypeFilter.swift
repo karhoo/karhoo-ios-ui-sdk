@@ -28,7 +28,7 @@ extension QuoteListFilters {
         func conditionMet(for quote: Quote) -> Bool {
             switch self {
             case .fixed: return quote.quoteType == .fixed
-            case .metered: return quote.quoteType == .metered
+            case .metered: return [.metered, .estimated].contains(quote.quoteType)
             }
         }
     }
