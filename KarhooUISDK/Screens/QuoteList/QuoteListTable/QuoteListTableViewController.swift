@@ -13,6 +13,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     // MARK: - Properties
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     private var presenter: QuoteListTablePresenter!
 
     // MARK: - Views

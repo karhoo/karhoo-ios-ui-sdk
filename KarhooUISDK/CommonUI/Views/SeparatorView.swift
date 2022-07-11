@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// View designed to be used as line separator with fixed dimensions or flexible spacer between views (in UIStackView, for example).
 class SeparatorView: UIView {
 
     init(

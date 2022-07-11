@@ -159,9 +159,14 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         resetButton.anchor(
             top: headerStackView.bottomAnchor,
             right: headerStackView.rightAnchor,
-            paddingTop: UIConstants.Spacing.large,
-            height: UIConstants.Dimension.Button.small
+            paddingTop: UIConstants.Spacing.large
         )
+        resetButton.heightAnchor
+            .constraint(equalToConstant: UIConstants.Dimension.Button.small)
+            .do {
+                $0.priority = .defaultHigh
+                $0.isActive = true
+        }
         footerView.anchor(
             top: confirmButton.topAnchor,
             left: view.leftAnchor,

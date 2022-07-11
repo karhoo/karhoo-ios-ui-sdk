@@ -71,6 +71,7 @@ class NumericFilterView: UIView, FilterView {
     }
 
     private func setupProperties() {
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = KarhooUI.colors.background1
         layer.borderColor = KarhooUI.colors.border.cgColor
         layer.borderWidth = UIConstants.Dimension.Border.standardWidth
@@ -92,15 +93,10 @@ class NumericFilterView: UIView, FilterView {
     }
     
     private func setupLayout() {
-        heightAnchor.constraint(equalToConstant: 52).do {
-            $0.priority = .defaultLow
-            $0.isActive = true
-        }
+        setDimensions(height: UIConstants.Dimension.Button.large, priority: .defaultLow)
         stackView.anchorToSuperview(
-            paddingTop: UIConstants.Spacing.medium,
             paddingLeading: UIConstants.Spacing.standard,
-            paddingTrailing: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.medium
+            paddingTrailing: UIConstants.Spacing.standard
         )
         iconImageView.setDimensions(width: UIConstants.Dimension.Icon.standard)
         currentFilterValueLabel.setDimensions(width: UIConstants.Dimension.Icon.xLarge)

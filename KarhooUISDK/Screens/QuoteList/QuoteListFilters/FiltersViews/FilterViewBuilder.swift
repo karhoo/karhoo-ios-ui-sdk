@@ -18,27 +18,35 @@ struct FilterViewBuilder {
             buildPassengersFilterView(),
             SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             buildLuggagesFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
             buildLineSeparator(),
             SeparatorView(fixedHeight: UIConstants.Spacing.medium),
             buildVehicleTypeFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildLineSeparator(),
             SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
             buildVehicleClassFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildLineSeparator(),
             SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
             buildVehicleExtrasFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildLineSeparator(),
             SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
             buildEcoFriendlyFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildLineSeparator(),
             SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
             buildFleetCapabilitiesFilterView(),
-            SeparatorView()
+            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+            buildQuoteTypesFilterView(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+            buildLineSeparator(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+            buildServiceAgreementsFilterView(),
+            SeparatorView(fixedHeight: UIConstants.Spacing.medium)
         ]
     }
 
@@ -97,6 +105,24 @@ struct FilterViewBuilder {
         return ItemsFilterView(
             category: .fleetCapabilities,
             selectableFilters: QuoteListFilters.FleetCapabilities.allCases,
+            selectedFilters: selectedFilters
+        )
+    }
+
+    private func buildQuoteTypesFilterView() -> UIView {
+        let selectedFilters = filters.filter { $0.filterCategory == .quoteTypes }
+        return FilterListView(
+            category: .quoteTypes,
+            selectableFilters: QuoteListFilters.QuoteType.allCases,
+            selectedFilters: selectedFilters
+        )
+    }
+    
+    private func buildServiceAgreementsFilterView() -> UIView {
+        let selectedFilters = filters.filter { $0.filterCategory == .serviceAgreements }
+        return FilterListView(
+            category: .serviceAgreements,
+            selectableFilters: QuoteListFilters.ServiceAgreements.allCases,
             selectedFilters: selectedFilters
         )
     }

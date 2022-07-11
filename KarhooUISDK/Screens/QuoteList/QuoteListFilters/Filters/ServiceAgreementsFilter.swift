@@ -17,7 +17,12 @@ extension QuoteListFilters {
         var filterCategory: QuoteListFilters.Category { .serviceAgreements }
         
         var localizedString: String {
-            rawValue
+            switch self {
+            case .freeCancelation:
+                return UITexts.Quotes.freeCancellation
+            case .freeWatingTime:
+                return UITexts.Quotes.freeWaitingTime
+            }
         }
 
         func conditionMet(for quote: Quote) -> Bool {
