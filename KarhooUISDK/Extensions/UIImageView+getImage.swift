@@ -12,13 +12,13 @@ extension UIImageView {
     func getImage(
         using url: URL?,
         placeholder: UIImage? = nil,
-        completion: @escaping () -> Void = {}
+        completion: @escaping (UIImage?) -> Void = { _ in }
     ) {
         if let placeholder = placeholder {
             image = placeholder
         }
         guard let url = url, let nsUrl = NSURL(string: url.absoluteString) else {
-            completion()
+            completion(nil)
             return
         }
         if let cachedImage = UIImage.cache.object(forKey: nsUrl) {
@@ -28,6 +28,6 @@ extension UIImageView {
                 self?.image = fetchedImage
             }
         }
-        completion()
+        completion(image)
     }
 }

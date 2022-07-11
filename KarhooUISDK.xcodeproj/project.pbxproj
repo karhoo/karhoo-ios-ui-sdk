@@ -281,7 +281,6 @@
 		407EC79F22CF564E00F24CFC /* KarhooNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC72F22CF564E00F24CFC /* KarhooNotificationView.swift */; };
 		407EC7A022CF564E00F24CFC /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73122CF564E00F24CFC /* AlertFactory.swift */; };
 		407EC7A122CF564E00F24CFC /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73222CF564E00F24CFC /* AlertHandler.swift */; };
-		407EC7A222CF564E00F24CFC /* CachingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73422CF564E00F24CFC /* CachingImageView.swift */; };
 		407EC7A322CF564E00F24CFC /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73522CF564E00F24CFC /* LoadingImageView.swift */; };
 		407EC7A522CF564E00F24CFC /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73822CF564E00F24CFC /* Constraints.swift */; };
 		407EC7A622CF564E00F24CFC /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC73922CF564E00F24CFC /* Attributes.swift */; };
@@ -832,7 +831,6 @@
 		407EC72F22CF564E00F24CFC /* KarhooNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooNotificationView.swift; sourceTree = "<group>"; };
 		407EC73122CF564E00F24CFC /* AlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		407EC73222CF564E00F24CFC /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
-		407EC73422CF564E00F24CFC /* CachingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingImageView.swift; sourceTree = "<group>"; };
 		407EC73522CF564E00F24CFC /* LoadingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		407EC73822CF564E00F24CFC /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		407EC73922CF564E00F24CFC /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
@@ -2113,7 +2111,6 @@
 		407EC73322CF564E00F24CFC /* LoadingImageView */ = {
 			isa = PBXGroup;
 			children = (
-				407EC73422CF564E00F24CFC /* CachingImageView.swift */,
 				407EC73522CF564E00F24CFC /* LoadingImageView.swift */,
 			);
 			path = LoadingImageView;
@@ -4250,7 +4247,6 @@
 				5C1CD0B8241A5D88004AFF7D /* TripDetailsMVP.swift in Sources */,
 				FC83E2A2221ECC48008FE26D /* TripSummaryMVP.swift in Sources */,
 				0991070821B83AF700BD7E6F /* Observable+Utils.swift in Sources */,
-				407EC7A222CF564E00F24CFC /* CachingImageView.swift in Sources */,
 				FC435F3A2211B8CD00FB6BB5 /* TripsProvider.swift in Sources */,
 				5C7233C0226510B9001078B6 /* KarhooUISDKError.swift in Sources */,
 				7B34182C27AAA54000E2D49D /* LinkParser.swift in Sources */,
