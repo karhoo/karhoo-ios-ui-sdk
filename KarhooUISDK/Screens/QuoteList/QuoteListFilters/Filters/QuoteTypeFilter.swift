@@ -19,9 +19,9 @@ extension QuoteListFilters {
         var localizedString: String {
             switch self {
             case .fixed:
-                return UITexts.Generic.fixed
+                return KarhooSDK.QuoteType.fixed.description
             case .metered:
-                return UITexts.Generic.metered
+                return KarhooSDK.QuoteType.metered.description
             }
         }
 

@@ -93,7 +93,7 @@ class NumericFilterView: UIView, FilterView {
     }
     
     private func setupLayout() {
-        setDimensions(height: 52, priority: .defaultLow)
+        setDimensions(height: UIConstants.Dimension.Button.large, priority: .defaultLow)
         stackView.anchorToSuperview(
             paddingLeading: UIConstants.Spacing.standard,
             paddingTrailing: UIConstants.Spacing.standard
