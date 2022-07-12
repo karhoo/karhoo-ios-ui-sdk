@@ -103,7 +103,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         return quoteFilter.filter(quotes.all, using: filters).count
     }
     
-    func handleLuggageAndPassengerFilters(_ filters: [QuoteListFilter]) {
+    func updateLuggageAndPassengerFilters(_ filters: [QuoteListFilter]) {
         for filter in filters {
             switch filter.filterCategory {
             case .luggage:
@@ -118,7 +118,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     func selectedQuoteFilters(_ filters: [QuoteListFilter]) {
         quoteFilter.filters = filters
-        handleLuggageAndPassengerFilters(filters)
+        updateLuggageAndPassengerFilters(filters)
         updateViewQuotes()
     }
 
