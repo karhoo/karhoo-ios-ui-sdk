@@ -31,8 +31,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
-    private var passengerCount: Int = 1
-    private var luggageCount: Int = 0
+    private var passengerCount: Int
+    private var luggageCount: Int
 
     var karhooUser: Bool = false
 
