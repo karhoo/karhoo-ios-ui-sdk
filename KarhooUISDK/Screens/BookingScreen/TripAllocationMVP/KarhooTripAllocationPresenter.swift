@@ -37,7 +37,7 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
 
         tripObserver = Observer<TripInfo> { [weak self] result in
             switch result {
-            case .success(let trip): self?.tripUpdateReceived(trip: trip)
+            case .success(let trip, _): self?.tripUpdateReceived(trip: trip)
             default: break
             }
         }

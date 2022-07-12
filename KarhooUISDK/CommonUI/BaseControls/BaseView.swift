@@ -21,7 +21,7 @@ public extension BaseView {
         configService.uiConfig(uiConfigRequest: UIConfigRequest(viewId: self.accessibilityIdentifier))
             .execute(callback: { [weak self] result in
             switch result {
-            case .success(let model): self?.set(configuration: model)
+            case .success(let model, _): self?.set(configuration: model)
             case .failure: print("no config for view: \(self?.accessibilityIdentifier ?? "nil" )")
             }
         })

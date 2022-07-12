@@ -339,6 +339,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
+        let correlationId = result.correlationId()
 
         guard let trip = result.successValue() else {
             view?.setDefaultState()
@@ -358,6 +359,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
+        let correlationId = result.correlationId()
         if let trip = result.successValue() {
             reportPaymentSuccess()
             callback(.completed(result: trip))

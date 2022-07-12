@@ -66,9 +66,9 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         paymentService.adyenPaymentMethods(request: request).execute(callback: { [weak self] result in
             self?.baseViewController?.showLoadingOverlay(false)
             switch result {
-            case .success(let result):
+            case .success(let result, _):
                 self?.getAdyenKey(dropInData: result.data)
-            case .failure(let error):
+            case .failure(let error, _):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
                 assertionFailure()
@@ -79,9 +79,9 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private func getAdyenKey(dropInData: Data) {
         paymentService.getAdyenClientKey().execute(callback: { [weak self] result in
             switch result {
-            case .success(let result):
+            case .success(let result, _):
                 self?.startDropIn(data: dropInData, adyenKey: result.clientKey)
-            case .failure(let error):
+            case .failure(let error, _):
                 self?.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
                 assertionFailure()
@@ -195,12 +195,12 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             guard let self = self else { return }
 
             switch result {
-            case .success(let result):
+            case .success(let result, _):
                 self.tripId = result.tripId
                 let event = self.adyenResponseHandler.nextStepFor(data: result.payload,
                                                                   tripId: result.tripId)
                 self.handle(event: event)
-            case .failure(let error):
+            case .failure(let error, _):
                 self.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
                 assertionFailure()
@@ -233,7 +233,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             guard let self = self else { return }
 
             switch result {
-            case .success(let result):
+            case .success(let result, _):
                 guard let detailsResponse = Utils.convertToDictionary(data: result.data) else {
                     self.finish(result: .completed(value: .didFailWithError(nil)))
                     return
@@ -242,7 +242,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
                 let event = self.adyenResponseHandler.nextStepFor(data: detailsResponse,
                                                                   tripId: self.tripId)
                 self.handle(event: event)
-            case .failure(let error):
+            case .failure(let error, _):
                 self.finish(result: .completed(value: .didFailWithError(error)))
             @unknown default:
                 assertionFailure()

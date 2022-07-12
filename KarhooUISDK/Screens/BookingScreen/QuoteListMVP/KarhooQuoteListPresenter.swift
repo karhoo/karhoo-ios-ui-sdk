@@ -185,7 +185,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
             }
 
             switch result {
-            case .success(let quotes):
+            case .success(let quotes, _):
                 self?.setExpirationDates(of: quotes)
                 self?.quoteSearchSuccessResult(quotes, journeyDetails: details)
                 if details.destinationLocationDetails != nil, details.scheduledDate != nil {
@@ -200,7 +200,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
                     self?.quoteListView?.toggleCategoryFilteringControls(show: false)
                 }
 
-            case .failure(let error):
+            case .failure(let error, _):
                 self?.quoteSearchErrorResult(error)
             @unknown default:
                 break

@@ -56,7 +56,7 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest)
             .execute(callback: { [weak self] result in
                 switch result {
-                case .success(let token):
+                case .success(let token, _):
                     self?.start3DSecureCheck(authToken: token, nonce: nonce, amount: paymentAmount)
                 case .failure:
                     callback(.completed(value: .failedToInitialisePaymentService))
