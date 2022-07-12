@@ -118,8 +118,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         
         isLoadingStatus = true
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
+            let correlationId = result.correlationId()
             self?.isLoadingStatus = false
-            
             guard let status = result.successValue()
             else {
                 self?.getStatusError = result.errorValue()
