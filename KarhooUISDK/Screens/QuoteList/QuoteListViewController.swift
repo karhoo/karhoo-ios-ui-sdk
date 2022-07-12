@@ -40,6 +40,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             legalDisclaimerContainer
         ]
     }
+    private lazy var loadingBar = LoadingBar().then {
+        $0.state = .indeterminate
+    }
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -145,6 +148,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
+        view.addSubview(loadingBar)
         buttonsStackView.addArrangedSubviews([sortButton, filtersButton])
         legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
         tableHeaderStackView.addArrangedSubviews(headerViews)
@@ -159,7 +163,12 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             trailing: view.trailingAnchor,
             bottom: view.bottomAnchor
         )
-
+        loadingBar.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            height: UIConstants.Dimension.View.loadingBarHeight
+        )
         addressPickerView.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -236,6 +245,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
+        loadingBar.startAnimation()
         setHeaderDisabled(hideAuxiliaryHeaderItems: true) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.loading)
         }
@@ -248,12 +258,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func handleFetchedState(quotes: [Quote]) {
+        loadingBar.stopAnimation()
         setHeaderEnabled { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
         }
     }
     
     private func handleEmptyState(reason: QuoteListState.EmptyReason) {
+        loadingBar.stopAnimation()
         let hideAuxiliaryHeaderItems: Bool
         switch reason {
         case .noQuotesAfterFiltering:
