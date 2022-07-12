@@ -29,8 +29,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     // TODO: REVERT TO 120 AFTER TESTS
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 15 // 120
     var isSortingAvailable: Bool = true
-    private var passengerCount: Int = 1
-    private var luggageCount: Int = 0
 
     // MARK: - Lifecycle
 
@@ -101,19 +99,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func getNumberOfResultsForQuoteFilters(_ filters: [QuoteListFilter]) -> Int {
         guard let quotes = fetchedQuotes else { return 0 }
         return quoteFilter.filter(quotes.all, using: filters).count
-    }
-    
-    private func updateLuggageAndPassengerFilters(_ filters: [QuoteListFilter]) {
-        for filter in filters {
-            switch filter.filterCategory {
-            case .luggage:
-                luggageCount = (filter as? QuoteListNumericFilter)?.value ?? 0
-            case .passengers:
-                passengerCount = (filter as? QuoteListNumericFilter)?.value ?? 1
-            default:
-                break
-            }
-        }
     }
 
     func selectedQuoteFilters(_ filters: [QuoteListFilter]) {

@@ -12,6 +12,8 @@ import KarhooSDK
 class KarhooQuoteFilterHandler: QuoteFilterHandler {
     
     var filters: [QuoteListFilter] = []
+    private var luggageCount: Int = 0
+    private var passengerCount: Int = 1
 
     /// Filter given input using self.filters variable value
     func filter(
@@ -30,5 +32,18 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
                     filter.conditionMet(for: quote)
                 }
             }
+    }
+    
+    func updateLuggageAndPassengerFilters(_ filters: [QuoteListFilter]) {
+        for filter in filters {
+            switch filter.filterCategory {
+            case .luggage:
+                luggageCount = (filter as? QuoteListNumericFilter)?.value ?? 0
+            case .passengers:
+                passengerCount = (filter as? QuoteListNumericFilter)?.value ?? 1
+            default:
+                break
+            }
+        }
     }
 }
