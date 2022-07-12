@@ -103,7 +103,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     func selectedQuoteFilters(_ filters: [QuoteListFilter]) {
         quoteFilter.filters = filters
-        updateLuggageAndPassengerFilters(filters)
+        quoteFilter.updateLuggageAndPassengerFilters(filters)
         updateViewQuotes()
     }
 

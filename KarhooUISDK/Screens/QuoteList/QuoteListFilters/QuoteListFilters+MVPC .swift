@@ -37,4 +37,6 @@ protocol QuoteFilterHandler: AnyObject {
     func filter(_ quotes: [Quote], using filters: [QuoteListFilter]) -> [Quote]
     /// Filter given input using self.filters variable value
     func filter(_ quotes: [Quote]) -> [Quote]
+    /// Handle Passenger And Luggage filters
+    func updateLuggageAndPassengerFilters(_ filters: [QuoteListFilter])
 }
