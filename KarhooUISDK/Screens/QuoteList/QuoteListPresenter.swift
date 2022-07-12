@@ -80,6 +80,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func viewWillDisappear() {
         isViewVisible = false
         unsubscribeFromBecomeAndResignActiveNotifications()
+        reportHowManyQuotesHasBeenShown()
     }
 
     // MARK: - Endpoints
@@ -239,6 +240,19 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private func refreshSubscription() {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
         quoteSearchObservable?.subscribe(observer: quotesObserver)
+    }
+
+    private func reportHowManyQuotesHasBeenShown() {
+        guard
+            let quoteListId = fetchedQuotes?.quoteListId,
+            let quotesCount = fetchedQuotes?.all.count
+        else {
+            return
+        }
+        analytics.fleetsShown(
+            quoteListId: quoteListId,
+            amountShown: quotesCount
+        )
     }
 }
 
