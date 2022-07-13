@@ -11,7 +11,7 @@ import Foundation
 extension Optional where Wrapped == Date {
     
     func toString() -> String? {
-        return self?.toString()
+        self?.toString()
     }
 }
 
