@@ -102,19 +102,12 @@ final class KarhooAnalytics: Analytics {
             amount: String,
             currency: String
     ) {
-        let dateString: String
-        if #available(iOS 15.0, *) {
-            dateString = date.ISO8601Format()
-        } else {
-            let formatter = DateFormatter()
-            dateString = formatter.string(from: date)
-        }
         base.send(
                 eventName: .paymentFailed,
                 payload: [
                     Keys.message: message,
                     Keys.cardLast4Digits: last4Digits,
-                    Keys.date: dateString,
+                    Keys.date: date.toString(),
                     Keys.amount: amount,
                     Keys.currency: currency
                 ]
@@ -122,7 +115,7 @@ final class KarhooAnalytics: Analytics {
     }
 
 
-func bookingScreenOpened() {
+    func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
     }
 
@@ -171,7 +164,8 @@ func bookingScreenOpened() {
             eventName: .quoteListOpened,
             payload: [
                 Keys.bookingOriginPlaceId: journeyDetails.originLocationDetails?.placeId ?? "",
-                Keys.bookingDestinationPlaceId: journeyDetails.destinationLocationDetails?.placeId ?? ""
+                Keys.bookingDestinationPlaceId: journeyDetails.destinationLocationDetails?.placeId ?? "",
+                Keys.date: journeyDetails.scheduledDate?.toString() ?? ""
             ]
         )
     }
