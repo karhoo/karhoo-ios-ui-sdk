@@ -16,7 +16,8 @@ extension Optional where Wrapped == Date {
 }
 
 extension Date {
-    
+
+    /// Casts date to string using ISO8601 standard
     func toString() -> String {
         let dateString: String
         
@@ -24,6 +25,8 @@ extension Date {
             dateString = self.ISO8601Format()
         } else {
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             dateString = formatter.string(from: self)
         }
         
