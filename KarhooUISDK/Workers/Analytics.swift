@@ -17,15 +17,14 @@ public protocol Analytics {
     func userCalledDriver(trip: TripInfo?)
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
-    
-    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?)
-    func paymentSucceed(tripDetails: TripInfo)
-    func paymentFailed(tripDetails: TripInfo, message: String, last4Digits: String, date: Date, amount: String, currency: String)
+    func bookingRequested(quoteId: String, correlationId: String)
+    func paymentSucceed(tripId: String, quoteId: String, correlationId: String)
+    func paymentFailure(quoteId: String, correlationId: String, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
-    func loyaltyStatusRequested(quoteId: String, loyaltyName: String, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
+    func loyaltyStatusRequested(quoteId: String, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
     func loyaltyPreAuthFailure(quoteId: String, correlationId: String, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
-    func loyaltyPreAuthSuccess(tripDetails: TripInfo)
+    func loyaltyPreAuthSuccess(quoteId: String, correlationId: String, preauthType: LoyaltyMode)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
     func upcomingTripsOpened()
@@ -43,6 +42,7 @@ public enum AnalyticsScreen: Equatable {
 }
 
 final class KarhooAnalytics: Analytics {
+    
     private let base: AnalyticsService
     private let emptyPayload = [String: Any]()
     private let timestampFormatter = TimestampFormatter()
@@ -87,33 +87,36 @@ final class KarhooAnalytics: Analytics {
                   payload: [Keys.locationDetails: locationDetails])
     }
 
-    func bookingRequested(tripDetails: TripInfo, outboundTripId: String?) {
-        var payload =  [
-            Keys.tripId: tripDetails.tripId
-        ]
-        if let outboundTripId = outboundTripId {
-            payload[Keys.outboundTripId] = outboundTripId
-        }
+    func bookingRequested(quoteId: String, correlationId: String) {
         base.send(
             eventName: .checkoutBookingRequested,
-            payload: payload
+            payload: [
+                Keys.quoteId: quoteId,
+                Keys.correlationId: correlationId
+            ]
         )
     }
 
-    func paymentSucceed(tripDetails: TripInfo) {
+    func paymentSucceed(tripId: String, quoteId: String, correlationId: String) {
         base.send(
             eventName: .paymentSucceed,
-            payload: [Keys.tripId : tripDetails.tripId]
-            )
+            payload: [
+                Keys.tripId : tripId,
+                Keys.correlationId: correlationId,
+                Keys.quoteId: quoteId
+            ]
+        )
     }
 
-    func paymentFailed(
-            tripDetails: TripInfo,
-            message: String,
-            last4Digits: String,
-            date: Date,
-            amount: String,
-            currency: String
+    func paymentFailure(
+        quoteId: String,
+        correlationId: String,
+        message: String,
+        lastFourDigits: String,
+        paymentMethodUsed: String,
+        date: Date,
+        amount: String,
+        currency: String
     ) {
         let dateString: String
         if #available(iOS 15.0, *) {
@@ -123,15 +126,17 @@ final class KarhooAnalytics: Analytics {
             dateString = formatter.string(from: date)
         }
         base.send(
-                eventName: .paymentFailed,
-                payload: [
-                    Keys.tripId: tripDetails.tripId,
-                    Keys.message: message,
-                    Keys.cardLast4Digits: last4Digits,
-                    Keys.date: dateString,
-                    Keys.amount: amount,
-                    Keys.currency: currency
-                ]
+            eventName: .paymentFailure,
+            payload: [
+                Keys.quoteId: quoteId,
+                Keys.correlationId: correlationId,
+                Keys.errorMessage: message,
+                Keys.cardLast4Digits: lastFourDigits,
+                Keys.paymentMethodUsed: paymentMethodUsed,
+                Keys.date: dateString,
+                Keys.amount: amount,
+                Keys.currency: currency
+            ]
         )
     }
     func cardAuthorisationFailure(
@@ -207,12 +212,21 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func loyaltyPreAuthSuccess(tripDetails: TripInfo) {
+    func loyaltyPreAuthSuccess(
+        quoteId: String,
+        correlationId: String,
+        preauthType: LoyaltyMode
+    ) {
+        var payload: [String : Any] = [
+            Keys.quoteId: quoteId,
+            Keys.correlationId: correlationId
+        ]
+        if let mode = getDescriptionForLoyaltyMode(preauthType) {
+            payload[Keys.loyaltyPreauthType] = mode
+        }
         base.send(
             eventName: .loyaltyPreauthSuccess,
-            payload: [
-                Keys.tripId: tripDetails.tripId,
-            ]
+            payload: payload
         )
     }
 
@@ -223,26 +237,12 @@ final class KarhooAnalytics: Analytics {
         errorSlug: String?,
         errorMessage: String?
     ) {
-        
-        var preauthTypeName: String? {
-            switch preauthType {
-            case .none:
-                return "none"
-            case .earn:
-                return "earn"
-            case .burn:
-                return "burn"
-            case .error(_):
-                return nil
-            }
-        }
-        
         var payload: [String : Any] = [
             Keys.quoteId: quoteId,
             Keys.correlationId: correlationId,
-        ]        
-        if let preauthTypeName = preauthTypeName {
-            payload[Keys.loyaltyPreauthType] = preauthTypeName
+        ]
+        if let mode = getDescriptionForLoyaltyMode(preauthType) {
+            payload[Keys.loyaltyPreauthType] = mode
         }
         if let errorSlug = errorSlug {
             payload[Keys.errorSlug] = errorSlug
@@ -337,6 +337,20 @@ final class KarhooAnalytics: Analytics {
                 Keys.tripId: tripDetails.tripId
             ]
         )
+    }
+    
+    private func getDescriptionForLoyaltyMode(_ type: LoyaltyMode) -> String? {
+
+        switch type {
+        case .none:
+            return "none"
+        case .earn:
+            return "earn"
+        case .burn:
+            return "burn"
+        case .error(_):
+            return nil
+        }
     }
 
     private struct Keys {

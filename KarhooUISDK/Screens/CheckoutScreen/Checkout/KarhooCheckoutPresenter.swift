@@ -580,7 +580,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportPaymentFailure(_ message: String) {
         guard let trip = tripInfoForAnalytics else { return }
-        analytics.paymentFailed(
+        analytics.paymentFailure(
             tripDetails: trip,
             message: message,
             last4Digits: retrievePaymentNonce()?.lastFour ?? "",
