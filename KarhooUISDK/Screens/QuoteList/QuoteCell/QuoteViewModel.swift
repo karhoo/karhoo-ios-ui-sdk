@@ -107,7 +107,6 @@ final class QuoteViewModel {
     let fleetCapabilities: [FleetCapabilities]
     let fare: String
     let logoImageURL: String
-    var vehicleImageURL: String?
     let fareType: String
     let showPickUpLabel: Bool
     let pickUpType: String
@@ -117,11 +116,8 @@ final class QuoteViewModel {
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
 
-    init(
-        quote: Quote,
-        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
-        vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
-    ) {
+    init(quote: Quote,
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared) {
         self.passengerCapacity = quote.vehicle.passengerCapacity
         self.baggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
@@ -165,13 +161,6 @@ final class QuoteViewModel {
         case .curbside: pickUpType = UITexts.Bookings.cubsidePickup
         case .standyBy: pickUpType = UITexts.Bookings.standBy
         default: pickUpType = ""
-        }
-        getImageUrl(for: quote, with: vehicleRulesProvider)
-    }
-
-    private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
-        provider.getRule(for: quote) { [weak self] rule in
-            self?.vehicleImageURL = rule?.imagePath
         }
     }
 

@@ -27,7 +27,6 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
-    private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
 
     // MARK: - Init
@@ -45,9 +44,7 @@ final class KarhooBookingPresenter {
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
          urlOpener: URLOpener = KarhooURLOpener(),
-         paymentService: PaymentService = Karhoo.getPaymentService(),
-         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
-    ) {
+         paymentService: PaymentService = Karhoo.getPaymentService()) {
         self.router = router
         self.userService = userService
         self.analytics = analytics
@@ -63,7 +60,6 @@ final class KarhooBookingPresenter {
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
         self.paymentService = paymentService
-        self.vehicleRulesProvider = vehicleRulesProvider
         userService.add(observer: self)
     }
     // swiftlint:enable line_length
@@ -169,7 +165,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     func load(view: BookingView?) {
         self.view = view
         fetchPaymentProvider()
-        fetchVehicleRules()
     }
     
     func viewWillAppear() {
@@ -196,10 +191,6 @@ extension KarhooBookingPresenter: BookingPresenter {
         }
 
         paymentService.getPaymentProvider().execute(callback: { _ in})
-    }
-
-    private func fetchVehicleRules() {
-        vehicleRulesProvider.update()
     }
 
     func resetJourneyDetails() {

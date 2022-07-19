@@ -332,7 +332,7 @@ class QuoteView: UIView {
         name.text = viewModel.vehicleType
         eta.text = viewModel.scheduleMainValue
         fare.text = viewModel.fare
-        logoLoadingImageView.load(imageURL: viewModel.vehicleImageURL ?? viewModel.logoImageURL,
+        logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")
         fareType.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
