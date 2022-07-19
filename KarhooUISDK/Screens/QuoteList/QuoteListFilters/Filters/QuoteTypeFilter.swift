@@ -19,14 +19,17 @@ extension QuoteListFilters {
         var localizedString: String {
             switch self {
             case .fixed:
-                return UITexts.Generic.fixed
+                return KarhooSDK.QuoteType.fixed.description
             case .metered:
-                return UITexts.Generic.metered
+                return KarhooSDK.QuoteType.metered.description
             }
         }
 
         func conditionMet(for quote: Quote) -> Bool {
-            quote.quoteType.rawValue.lowercased() == rawValue
+            switch self {
+            case .fixed: return quote.quoteType == .fixed
+            case .metered: return [.metered, .estimated].contains(quote.quoteType)
+            }
         }
     }
 }
