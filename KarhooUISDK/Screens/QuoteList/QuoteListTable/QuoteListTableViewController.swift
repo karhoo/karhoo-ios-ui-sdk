@@ -119,7 +119,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleFetchingState() {
         guard viewIsOnScreen else { return }
-        activityIndicator.startAnimating()
+        activityIndicator.stopAnimating()
         tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
             tableView.beginUpdates()

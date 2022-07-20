@@ -123,7 +123,6 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         XCTAssertTrue(mockView.setDefaultStateCalled)
     }
     
-    
     /** When: Trip service booking succceeds for token exchange
      *  Then: View should be updated and callback is called with trip
      */

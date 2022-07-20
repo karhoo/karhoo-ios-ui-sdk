@@ -382,6 +382,7 @@
 		51808509286DBF87001E4940 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51808508286DBF87001E4940 /* NavigationController.swift */; };
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
+		51884C12287DA1C900E48D70 /* LoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51884C11287DA1C900E48D70 /* LoadingBar.swift */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
 		5190F00B2847858600F7623A /* AdyenPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141C924284637AC00F72E84 /* AdyenPaymentManager.swift */; };
 		5190F00C2847858600F7623A /* AdyenResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141C9202846379200F72E84 /* AdyenResponseHandler.swift */; };
@@ -945,6 +946,7 @@
 		51808508286DBF87001E4940 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		518245862790A917006B791A /* KarhooColors+DefaultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KarhooColors+DefaultSet.swift"; sourceTree = "<group>"; };
 		518245882790B2B0006B791A /* UIColorHexSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHexSpec.swift; sourceTree = "<group>"; };
+		51884C11287DA1C900E48D70 /* LoadingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBar.swift; sourceTree = "<group>"; };
 		518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDatesHelperSpec.swift; sourceTree = "<group>"; };
 		5192B4392833820B00AAAAAB /* MockPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentManager.swift; sourceTree = "<group>"; };
 		5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+uisdkImage.swift"; sourceTree = "<group>"; };
@@ -2447,6 +2449,14 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
+		51884C10287DA1BC00E48D70 /* LoadingBar */ = {
+			isa = PBXGroup;
+			children = (
+				51884C11287DA1C900E48D70 /* LoadingBar.swift */,
+			);
+			path = LoadingBar;
+			sourceTree = "<group>";
+		};
 		5192B43828337E4000AAAAAB /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -2737,6 +2747,7 @@
 		6BB9404F274FDBAF00478ABD /* LoadingControls */ = {
 			isa = PBXGroup;
 			children = (
+				51884C10287DA1BC00E48D70 /* LoadingBar */,
 				407EC73322CF564E00F24CFC /* LoadingImageView */,
 				407EC72222CF564E00F24CFC /* LoadingView */,
 			);
@@ -4207,6 +4218,7 @@
 				4070213723D9E11300F82B6A /* DropDownButton.swift in Sources */,
 				5C8316BB246A0B6200BAA926 /* EmptyMapBookingStrategy.swift in Sources */,
 				5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */,
+				51884C12287DA1C900E48D70 /* LoadingBar.swift in Sources */,
 				FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */,
 				84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */,
 				0999CBB0220DDA0300A93AF9 /* KarhooUIScreenRouting.swift in Sources */,
