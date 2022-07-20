@@ -18,8 +18,8 @@ public protocol Analytics {
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
     func bookingRequested(quoteId: String, correlationId: String)
-    func paymentSucceed(tripId: String, quoteId: String, correlationId: String)
-    func paymentFailure(quoteId: String, correlationId: String, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
+    func bookingSucceed(tripId: String, quoteId: String, correlationId: String)
+    func bookingFailure(quoteId: String, correlationId: String, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
     func loyaltyStatusRequested(quoteId: String, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
@@ -97,9 +97,9 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func paymentSucceed(tripId: String, quoteId: String, correlationId: String) {
+    func bookingSucceed(tripId: String, quoteId: String, correlationId: String) {
         base.send(
-            eventName: .paymentSucceed,
+            eventName: .bookingSucceed,
             payload: [
                 Keys.tripId : tripId,
                 Keys.correlationId: correlationId,
@@ -108,7 +108,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func paymentFailure(
+    func bookingFailure(
         quoteId: String,
         correlationId: String,
         message: String,
@@ -126,7 +126,7 @@ final class KarhooAnalytics: Analytics {
             dateString = formatter.string(from: date)
         }
         base.send(
-            eventName: .paymentFailure,
+            eventName: .bookingFailure,
             payload: [
                 Keys.quoteId: quoteId,
                 Keys.correlationId: correlationId,

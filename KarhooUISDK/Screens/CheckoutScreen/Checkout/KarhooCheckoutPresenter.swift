@@ -339,11 +339,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-        let correlationId = result.correlationId()
-
         guard let trip = result.successValue() else {
             view?.setDefaultState()
-            reportPaymentFailure(result.errorValue()?.message ?? "")
+            reportBookingFailure(message: result.errorValue()?.message ?? "", correlationId: result.correlationId())
             if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
                 view?.retryAddPaymentMethod(showRetryAlert: true)
             } else {
@@ -354,17 +352,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        reportPaymentSuccess()
+        reportPaymentSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
         view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
-        let correlationId = result.correlationId()
         if let trip = result.successValue() {
-            reportPaymentSuccess()
+            reportPaymentSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
             callback(.completed(result: trip))
         } else if let error = result.errorValue() {
-            reportPaymentFailure(error.message)
+            reportBookingFailure(message: error.message, correlationId: result.correlationId())
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
         }
     }
@@ -572,18 +569,17 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
 
-    private func reportPaymentSuccess() {
-        if let trip = tripInfoForAnalytics {
-            analytics.paymentSucceed(tripDetails: trip)
-        }
+    private func reportPaymentSuccess(tripId: String, quoteId: String, correlationId: String?) {
+            analytics.paymentSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
     }
 
-    private func reportPaymentFailure(_ message: String) {
-        guard let trip = tripInfoForAnalytics else { return }
-        analytics.paymentFailure(
-            tripDetails: trip,
+    private func reportBookingFailure(message: String, correlationId: String?) {
+        analytics.bookingFailure(
+            quoteId: quote.id,
+            correlationId: correlationId ?? "",
             message: message,
-            last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+            lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice.description,
             currency: quote.price.currencyCode
