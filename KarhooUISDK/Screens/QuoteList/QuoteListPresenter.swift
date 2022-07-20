@@ -24,6 +24,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let analytics: Analytics
     private let router: QuoteListRouter
     var onStateUpdated: ((QuoteListState) -> Void)?
+    var onFiltersCountUpdated: ((Int) -> Void)?
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
     // TODO: REVERT TO 120 AFTER TESTS
@@ -104,6 +105,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     func selectedQuoteFilters(_ filters: [QuoteListFilter]) {
         quoteFilter.filters = filters
         quoteFilter.updateLuggageAndPassengerFilters(filters)
+        onFiltersCountUpdated?(filters.count)
         updateViewQuotes()
     }
 

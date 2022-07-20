@@ -10,25 +10,8 @@ import UIKit
 
 extension UIView {
  
-    public func applyRoundCorners(corners: UIRectCorner = [.topLeft, .topRight],
-                                  radius: CGFloat = 20) {
-        let bottomOffset: CGFloat = 100
-
-        let roundCornersPath = UIBezierPath(roundedRect: CGRect(x: 0,
-                                                                y: 0,
-                                                                width: bounds.width,
-                                                                height: bounds.height + bottomOffset),
-                                            byRoundingCorners: corners,
-                                            cornerRadii: CGSize(width: radius, height: radius))
-
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.bounds
-        maskLayer.path = roundCornersPath.cgPath
-        layer.mask = maskLayer
-    }
-
     func applyRoundCorners(
-        _ cornerMask: CACornerMask,
+        _ cornerMask: CACornerMask = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner],
         radius: CGFloat
     ) {
         layer.cornerRadius = radius
@@ -166,20 +149,26 @@ extension UIView {
         }
     }
     
-    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil) {
+    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil, priority: UILayoutPriority = .required) {
         translatesAutoresizingMaskIntoConstraints = false
         if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+            widthAnchor.constraint(equalToConstant: width).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
         
         if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+            heightAnchor.constraint(equalToConstant: height).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
     }
     
-    func addShadow() {
+    func addShadow(_ opacity: Float = Float(UIConstants.Alpha.shadow)) {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
+        layer.shadowOpacity = opacity
         layer.shadowOffset = CGSize.init(width: 0.5, height: 0.5)
         layer.masksToBounds = false
     }

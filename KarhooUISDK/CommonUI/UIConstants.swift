@@ -142,6 +142,9 @@ public struct UIConstants {
         public struct View {
             /// 4
             public static let tabSelectionIndicatorHeight: CGFloat = 4
+
+            /// 4
+            public static let loadingBarHeight: CGFloat = 4
             
             /// 22 x 22
             public static let loadingHudSize = CGSize(width: 22.0, height: 22.0)
@@ -264,6 +267,8 @@ public struct UIConstants {
         
         /// 0.5
         public static let shadow: CGFloat = 0.5
+
+        static let lightShadow: CGFloat = 0.2
         
         /// 0.6
         public static let overlay: CGFloat = 0.6

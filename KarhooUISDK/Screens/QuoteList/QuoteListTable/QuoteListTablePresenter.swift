@@ -64,6 +64,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return "No fleets in this area yet"
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterTitle
+        case .empty(reason: .destinationOrOriginEmpty):
+            return UITexts.Errors.errorDestinationOrOriginEmptyTitle
         default:
             return ""
         }
@@ -79,6 +81,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return nil // for this case we are showing attributedMessageForPresentedError
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterMessage
+        case .empty(reason: .destinationOrOriginEmpty):
+            return UITexts.Errors.errorDestinationOrOriginEmptyMessage
         default:
             return nil
         }
@@ -103,6 +107,8 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
             return "quoteList_error_pickup_destination_similar"
         case .empty(reason: .noAvailabilityInRequestedArea):
             return "quoteList_error_no_coverage"
+        case .empty(reason: .destinationOrOriginEmpty):
+            return "quoteList_error_pickup_destination_similar"
         default:
             return "quoteList_error_no_availability"
         }

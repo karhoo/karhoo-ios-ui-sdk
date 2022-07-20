@@ -525,6 +525,8 @@
 
 "Text.Generic.Yes" = "Yes";
 
+"Text.Generic.all" = "All";
+
 /* Driver Arrived */
 "Text.GenericTripStatus.Arrived" = "Driver Arrived";
 
@@ -589,6 +591,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Taxes and Fees Included";
 
+"Text.Quote.FreeCancellation" = "Free cancelation";
+
 "Text.Quote.FreeCancellationAndKeyword" = "and";
 
 "Text.Quote.FreeCancellationASAP" = "Free cancellation up to %1$@ after booking";
@@ -597,6 +601,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
+
+"Text.Quote.FreeWaitingTime" = "Free waiting time";
 
 "Text.Quote.Results" = "%1$@ results";
 
@@ -635,6 +641,8 @@
 "Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Please change your filter selection.";
 
 "Text.Quotes.ErrorNoResultsForFilterTitle" = "No results after filtering.";
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Pick up or Dropoff address is missing.";
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Please enter both pickup and dropoff addresses to access the offers.";
 
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
 
@@ -659,6 +667,32 @@
 "Text.Quotes.FiltersPassengers" = "Passenger(s)";
 
 "Text.Quotes.FiltersLuggages" = "Luggage(s)";
+
+"Text.Quotes.FilterVehicleType" = "Vehicle types";
+
+"Text.Quotes.FilterVehicleClass" = "Vehicle class";
+
+"Text.Quotes.FilterVehicleExtras" = "Vehicle extras";
+
+"Text.Quotes.FilterEcoFriendly" = "Eco-friendly";
+
+"Text.Quotes.FilterFleetCapabilities" = "Fleet capabilities";
+
+"Text.Quotes.FilterQuoteTypes" = "Quote types";
+
+"Text.Quotes.FilterServiceAgreements" = "Cancelation and waiting time";
+
+"Text.FleetCapabilities.FlightTracking" = "Flight Tracking";
+
+"Text.FleetCapabilities.TrainTracking" = "Train Tracking";
+
+"Text.FleetCapabilities.GpsTracking" = "GPS Tracking";
+
+"Text.FleetCapabilities.DriverDetails" = "Driver Details";
+
+"Text.FleetCapabilities.VehicleDetails" = "Vehicle Details";
+
+"Text.VehicleClass.Luxury" = "Luxury";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "About";

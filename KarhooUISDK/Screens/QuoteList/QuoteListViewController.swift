@@ -40,6 +40,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             legalDisclaimerContainer
         ]
     }
+    private lazy var loadingBar = LoadingBar().then {
+        $0.state = .indeterminate
+    }
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -122,6 +125,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
         }
+        presenter.onFiltersCountUpdated = { [weak self] filtersCount in
+            self?.updateFilterButtonState(using: filtersCount)
+        }
     }
 
     // MARK: - Setup view
@@ -142,6 +148,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         let tableViewController = tableViewCoordinator.viewController
         view.addSubview(tableViewController.view)
         addChild(tableViewController)
+        view.addSubview(loadingBar)
         buttonsStackView.addArrangedSubviews([sortButton, filtersButton])
         legalDisclaimerContainer.addSubview(legalDisclaimerLabel)
         tableHeaderStackView.addArrangedSubviews(headerViews)
@@ -156,7 +163,12 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             trailing: view.trailingAnchor,
             bottom: view.bottomAnchor
         )
-
+        loadingBar.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            height: UIConstants.Dimension.View.loadingBarHeight
+        )
         addressPickerView.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -210,6 +222,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     // MARK: - State handling
 
+    private func updateFilterButtonState(using filtersCount: Int) {
+        switch filtersCount {
+        case 0: filtersButton.isSelected = false
+        default: filtersButton.setSelected(withNumber: filtersCount)
+        }
+        
+    }
+
     private func handleStateUpdate(_ state: QuoteListState) {
         setNavigationBarTitle(forState: state)
         switch state {
@@ -225,6 +245,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
+        loadingBar.startAnimation()
         setHeaderDisabled(hideAuxiliaryHeaderItems: true) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.loading)
         }
@@ -237,12 +258,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     private func handleFetchedState(quotes: [Quote]) {
+        loadingBar.stopAnimation()
         setHeaderEnabled { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.fetched(quotes: quotes))
         }
     }
     
     private func handleEmptyState(reason: QuoteListState.EmptyReason) {
+        loadingBar.stopAnimation()
         let hideAuxiliaryHeaderItems: Bool
         switch reason {
         case .noQuotesAfterFiltering:
@@ -256,20 +279,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
 
     // MARK: - Helpers
-
-    private func setEnabledFiltersCount(_ count: Int) {
-        if count == 0 {
-            filtersButton.layer.borderColor = KarhooUI.colors.border.cgColor
-            filtersButton.setTitleColor(KarhooUI.colors.text, for: .normal)
-            filtersButton.setTitle("Filters", for: .normal)
-            filtersButton.tintColor = KarhooUI.colors.text
-        } else {
-            filtersButton.layer.borderColor = KarhooUI.colors.accent.cgColor
-            filtersButton.setTitleColor(KarhooUI.colors.accent, for: .normal)
-            filtersButton.setTitle("Filters(\(count))", for: .normal)
-            filtersButton.tintColor = KarhooUI.colors.accent
-        }
-    }
 
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         buttonsStackView.isHidden = false

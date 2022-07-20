@@ -142,7 +142,7 @@ final class RidesViewController: UIViewController, RidesView {
 
         private func embedInNavigationController(_ vc: UIViewController,
                                                  closeCallback: @escaping ScreenResultCallback<Void>) -> Screen {
-            let navigationController = UINavigationController(rootViewController: vc)
+            let navigationController = NavigationController(rootViewController: vc)
 
             let closeButton = CloseBarButton {
                 closeCallback(.cancelled(byUser: true))

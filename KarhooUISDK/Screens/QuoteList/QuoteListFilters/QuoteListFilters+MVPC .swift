@@ -20,8 +20,8 @@ protocol QuoteListFiltersPresenter: AnyObject {
     var filters: [QuoteListFilter] { get }
     func viewDidLoad()
     func viewWillAppear()
-    func filterSelected(_ filter: QuoteListFilter)
-    func filterDeselected(_ filter: QuoteListFilter)
+    // Using this method pass all selected filters to the presenter. Every other filer of this category will not be active anymore.
+    func filterSelected(_ filter: [QuoteListFilter], for category: QuoteListFilters.Category)
     func close(save: Bool)
     func resetFilter()
     func resultsCountForSelectedFilters() -> Int

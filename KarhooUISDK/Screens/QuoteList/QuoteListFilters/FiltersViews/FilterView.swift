@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 protocol FilterView: UIView {
-    var filter: QuoteListFilter { get }
-    var onFilterChanged: ((QuoteListFilter) -> Void)? { get set }
+    var category: QuoteListFilters.Category { get }
+    var filter: [QuoteListFilter] { get }
+    var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)? { get set }
     func reset()
+    func configure(using filter: [QuoteListFilter])
 }

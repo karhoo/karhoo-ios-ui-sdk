@@ -12,11 +12,11 @@ import KarhooSDK
 protocol QuoteListFilter {
     var icon: UIImage? { get }
     var filterCategory: QuoteListFilters.Category { get }
+    var localizedString: String { get }
     func conditionMet(for quote: Quote) -> Bool
 }
 
 extension QuoteListFilter {
-    var localizedString: String { filterCategory.localized }
     var selectionType: QuoteListFilters.SelectionType { filterCategory.selectionType }
     var icon: UIImage? { nil }
 }
@@ -45,15 +45,24 @@ extension QuoteListFilters {
         
         var localized: String {
             switch self {
-            case .luggage: return UITexts.Quotes.filtersLuggages
-            case .passengers: return UITexts.Quotes.filtersPassengers
-            case .vehicleType: return "vehicleType".localized
-            case .vehicleClass: return "vehicleClass".localized
-            case .vehicleExtras: return "vehicleExtras".localized
-            case .ecoFriendly: return "ecoFriendly".localized
-            case .fleetCapabilities: return "fleetCapabilities".localized
-            case .quoteTypes: return "quoteTypes".localized
-            case .serviceAgreements: return "cancelationAndWatingTime".localized
+            case .luggage:
+                return UITexts.Quotes.filtersLuggages
+            case .passengers:
+                return UITexts.Quotes.filtersPassengers
+            case .vehicleType:
+                return UITexts.QuoteFilterCategory.vehicleType
+            case .vehicleClass:
+                return UITexts.QuoteFilterCategory.vehicleClass
+            case .vehicleExtras:
+                return UITexts.QuoteFilterCategory.vehicleExtras
+            case .ecoFriendly:
+                return UITexts.QuoteFilterCategory.ecoFriendly
+            case .fleetCapabilities:
+                return UITexts.QuoteFilterCategory.fleetCapabilities
+            case .quoteTypes:
+                return UITexts.QuoteFilterCategory.quoteTypes
+            case .serviceAgreements:
+                return UITexts.QuoteFilterCategory.serviceAgreements
             }
         }
         
