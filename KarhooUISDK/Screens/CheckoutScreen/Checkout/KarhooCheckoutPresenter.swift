@@ -352,13 +352,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        reportPaymentSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
+        reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
         view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.successValue() {
-            reportPaymentSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
+            reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
             callback(.completed(result: trip))
         } else if let error = result.errorValue() {
             reportBookingFailure(message: error.message, correlationId: result.correlationId())
@@ -389,15 +389,17 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
                       flightNumber: view?.getFlightNumber())
-                 
+                 reportCardAuthorisationSuccess()
              case .cancelledByUser:
                  self.view?.setDefaultState()
-                 
              case .failedToAddCard(let error):
                  self.view?.setDefaultState()
                  self.view?.show(error: error)
-                 
-             default:
+                 if let message = error?.message {
+                     self.reportCardAuthorisationFailure(message: message)
+                 }
+                 default:
+                 self.reportCardAuthorisationFailure(message: "Unknown error")
                  self.view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
@@ -541,7 +543,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         analytics.checkoutOpened(quote)
     }
 
-    private func reportCardAuthorisationFailure(_ message: String) {
+    private func reportCardAuthorisationFailure(message: String) {
         analytics.cardAuthorisationFailure(
             quoteId: quote.id,
             errorMessage: message,
@@ -553,22 +555,34 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         )
     }
 
-    private func reportCardAuthorisationSucceed(){
+    private func reportCardAuthorisationSuccess(){
         analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
 
-    private func reportLoyaltyStatusRequested(quoteId: String, loyaltyName: String, result: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String) {
-        if let trip = tripInfoForAnalytics {
-            analytics.loyaltyStatusRequested(quoteId: String, loyaltyName: String, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
-        }
-    }
+//    private func reportLoyaltyStatusRequested(
+//        quoteId: String,
+//        loyaltyName: String,
+//        result: LoyaltyStatus?,
+//        errorSlug: String?,
+//        errorMessage: String?,
+//        correlationId: String
+//    ) {
+//            analytics.loyaltyStatusRequested(
+//                quoteId: quoteId,
+//                loyaltyName: loyaltyName,
+//                loyaltyStatus: <#T##LoyaltyStatus?#>,
+//                errorSlug: <#T##String?#>,
+//                errorMessage: <#T##String?#>,
+//                correlationId: <#T##String?#>
+//            )
+//    }
 
     private func reportBookingEvent(quoteId: String) {
         analytics.bookingRequested(quoteId: quoteId)
     }
 
-    private func reportPaymentSuccess(tripId: String, quoteId: String, correlationId: String?) {
-            analytics.paymentSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
+    private func reportBookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
+            analytics.bookingSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
     }
 
     private func reportBookingFailure(message: String, correlationId: String?) {
