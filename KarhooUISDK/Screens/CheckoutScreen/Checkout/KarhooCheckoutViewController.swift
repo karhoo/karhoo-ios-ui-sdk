@@ -462,8 +462,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return poiDetailsInputText.getInput()
     }
     
-    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        return loyaltyView.getLoyaltyPreAuthNonce(completion: completion)
+    func getLoyaltyNonce(quoteId: String, completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        return loyaltyView.getLoyaltyPreAuthNonce(quoteId: quoteId, completion: completion)
     }
 
     func setPassenger(details: PassengerDetails?) {

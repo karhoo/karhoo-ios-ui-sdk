@@ -23,6 +23,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var loyaltyService: LoyaltyService
     private var currentMode: LoyaltyMode = .none
     private var isSwitchOn: Bool = false
+    private let analytics: Analytics
     
     private var didStartLoading: Bool = false {
         didSet {
@@ -84,10 +85,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     // MARK: - Init
     init(
         userService: UserService = Karhoo.getUserService(),
-        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService()
+        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.userService = userService
         self.loyaltyService = loyaltyService
+        self.analytics = analytics
     }
     
     // MARK: - Status
@@ -398,7 +401,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
     }
     
-    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+    func getLoyaltyPreAuthNonce(quoteId: String, completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         if  !currentMode.isEligibleForPreAuth {
             // Loyalty related web-services return slug based errors, not error code based ones
             // this error does not coincide with any error returned by the backend
@@ -425,7 +428,13 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             flexpay: flexPay, membership: ""
         )
         
-        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
+        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { [weak self] result in
+            if let _ = result.successValue(), let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthSuccess(quoteId: quoteId, correlationId: result.correlationId(), preauthType: currentMode)
+            }
+            if let error = result.errorValue(), let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthFailure(quoteId: quoteId, correlationId: result.correlationId(), preauthType: currentMode, errorSlug: error.slug, errorMessage: error.message)
+            }
             completion(result)
         }
     }
@@ -443,4 +452,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
         return currentMode == .burn ? viewModel.burnAmount : 0
     }
+    
+    // MARK: - Analytics
+    
+    private func reportLoyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String){
+        analytics.loyaltyPreAuthFailure(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
+    }
+    
+    private func reportLoyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode){
+        analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
+    }
+
 }

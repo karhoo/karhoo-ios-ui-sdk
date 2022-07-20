@@ -36,7 +36,7 @@ final class MockLoyaltyView: LoyaltyView {
     }
     
     var getLoyaltyNonceCalled = false
-    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+    func getLoyaltyPreAuthNonce(quoteId: String, completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         getLoyaltyNonceCalled = true
         let nonce = LoyaltyNonce(loyaltyNonce: TestUtil.getRandomString())
         completion(Result.success(result: nonce))
