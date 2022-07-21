@@ -57,7 +57,7 @@ class QuoteListFIlterSpec: KarhooTestCase {
 
     func testVehicleClassFilterSuccess() {
         let filter = QuoteListFilters.VehicleClass.luxury
-        let quote = Quote(vehicle: QuoteVehicle(vehicleClass: "luxury"))
+        let quote = Quote(vehicle: QuoteVehicle(tags: ["luxury"]))
         
         XCTAssert(filter.conditionMet(for: quote))
     }

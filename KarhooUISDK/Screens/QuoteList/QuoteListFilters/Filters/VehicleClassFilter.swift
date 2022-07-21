@@ -33,7 +33,7 @@ extension QuoteListFilters {
         }
         
         func conditionMet(for quote: Quote) -> Bool {
-            quote.vehicle.vehicleClass.lowercased() == rawValue
+            quote.vehicle.tags.map { $0.lowercased() }.contains(rawValue)
         }
     }
 }

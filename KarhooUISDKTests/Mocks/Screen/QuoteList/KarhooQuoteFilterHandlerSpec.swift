@@ -31,8 +31,8 @@ class KarhooQuoteFilterHandlerSpec: KarhooTestCase {
             QuoteListFilters.VehicleClass.executive
         ]
         let quotesToFilter: [Quote] = [
-            Quote(quoteType: .fixed, vehicle: .init(vehicleClass: "EXECUTIVE")),
-            Quote(quoteType: .fixed, vehicle: .init(vehicleClass: "executive"))
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["EXECUTIVE"])),
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["executive"]))
         ]
         let filteredQuotes = sut.filter(quotesToFilter, using: filters)
         
