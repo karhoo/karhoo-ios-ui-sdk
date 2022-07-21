@@ -20,7 +20,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :commit => 'b3d69222f13090bc373fa077a8f41e09f421282a'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :commit => 'd66f515aee78855db0598b36e21aef790bebc530'
   # pod 'KarhooSDK', '1.6.2'
   pod 'FloatingPanel', '2.0.1'
   pod 'SwiftLint', '~> 0.47'

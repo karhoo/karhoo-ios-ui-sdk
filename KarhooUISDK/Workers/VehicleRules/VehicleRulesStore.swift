@@ -10,18 +10,18 @@ import Foundation
 import KarhooSDK
 
 protocol VehicleRulesStore: AnyObject {
-    func save(_ rules: VehicleRules)
-    func get() -> VehicleRules?
+    func save(_ rules: VehicleImageRules)
+    func get() -> VehicleImageRules?
 }
 
 final class KarhooVehicleRulesStore: VehicleRulesStore {
 
-    private let storeKey = "vahicleRules"
+    private let storeKey = "VehicleImageRules"
     private var userDefaults: UserDefaults {
         .standard
     }
     
-    func save(_ rules: VehicleRules) {
+    func save(_ rules: VehicleImageRules) {
         guard let encodedRules = try? JSONEncoder().encode(rules) else {
             assertionFailure()
             return
@@ -29,9 +29,9 @@ final class KarhooVehicleRulesStore: VehicleRulesStore {
         userDefaults.set(encodedRules, forKey: storeKey)
     }
     
-    func get() -> VehicleRules? {
+    func get() -> VehicleImageRules? {
         guard let data = userDefaults.data(forKey: storeKey),
-                let rules = try? JSONDecoder().decode(VehicleRules.self, from: data) else {
+                let rules = try? JSONDecoder().decode(VehicleImageRules.self, from: data) else {
             return nil
         }
         return rules

@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, commit `b3d69222f13090bc373fa077a8f41e09f421282a`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, commit `d66f515aee78855db0598b36e21aef790bebc530`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -114,14 +114,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :commit: b3d69222f13090bc373fa077a8f41e09f421282a
+    :commit: d66f515aee78855db0598b36e21aef790bebc530
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: b3d69222f13090bc373fa077a8f41e09f421282a
+    :commit: d66f515aee78855db0598b36e21aef790bebc530
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -139,6 +139,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 016c15401d06959ef9f81d7956462e91f55b8ac5
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: 6e321d89021c30ae5e1641cf54081cfc4e743e2f
+PODFILE CHECKSUM: b7ba37824a972834bb26a6acfec6626352b04b49
 
 COCOAPODS: 1.11.3

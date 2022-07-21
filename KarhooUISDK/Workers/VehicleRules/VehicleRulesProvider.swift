@@ -11,7 +11,7 @@ import KarhooSDK
 
 protocol VehicleRulesProvider: AnyObject {
     func update()
-    func getRule(for quote: Quote, completion: @escaping (VehicleRule?) -> Void)
+    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void)
 }
 
 final class KarhooVehicleRulesProvider: VehicleRulesProvider {
@@ -19,11 +19,11 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     private var rulesUpdateInProgress = false
     private let quoteService: QuoteService?
     private let store: VehicleRulesStore
-    private var rules: VehicleRules? {
+    private var rules: VehicleImageRules? {
         store.get()
     }
     
-    private var onRulesUpdated: ((VehicleRules) -> Void)?
+    private var onRulesUpdated: ((VehicleImageRules) -> Void)?
     
     
     init(
@@ -34,7 +34,7 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
         self.store = store
     }
     
-    private func handle(_ result: Result<VehicleRules>) {
+    private func handle(_ result: Result<VehicleImageRules>) {
         guard let rules = result.successValue() else {
             return
         }
@@ -43,13 +43,13 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     
     func update() {
         rulesUpdateInProgress = true
-        quoteService?.getVehiclesRules().execute { [weak self] result in
+        quoteService?.getVehicleImageRules().execute { [weak self] result in
             self?.handle(result)
             self?.rulesUpdateInProgress = false
         }
     }
     
-    func getRules(completion: @escaping (VehicleRules?) -> Void) {
+    func getRules(completion: @escaping (VehicleImageRules?) -> Void) {
         if rulesUpdateInProgress {
             onRulesUpdated = completion
         } else {
@@ -57,13 +57,21 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
         }
     }
     
-    func getRule(for quote: Quote, completion: @escaping (VehicleRule?) -> Void) {
+    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void) {
         let quoteTags = Set(quote.vehicle.tags.map { $0.lowercased() })
         getRules { vehicleRules in
-            let rule = vehicleRules?.rules.first { rule in
-                let ruleTags = Set(rule.tags.map { $0.lowercased() })
-                return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags.isSubset(of: quoteTags)
+            var fallbackRule: VehicleImageRule? {
+                vehicleRules?.rules.first { $0.ruleType == .fallback }
             }
+            var defaultTypeRule: VehicleImageRule? {
+                vehicleRules?.rules.first { $0.type == quote.vehicle.type && $0.ruleType == .typeDefault }
+            }
+            let specificRule = vehicleRules?.rules.first { rule in
+                guard rule.ruleType == .specific else { return false }
+                let ruleTags = Set(rule.tags.map { $0.lowercased() })
+                return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteTags
+            }
+            let rule = (specificRule ?? defaultTypeRule) ?? fallbackRule
             completion(rule)
         }
     }
