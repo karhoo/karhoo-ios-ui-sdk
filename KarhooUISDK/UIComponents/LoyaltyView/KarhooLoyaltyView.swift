@@ -296,8 +296,8 @@ final class KarhooLoyaltyView: UIView {
 // MARK: - LoyaltyView
 extension KarhooLoyaltyView: LoyaltyView {
     
-    func set(dataModel: LoyaltyViewDataModel) {
-        presenter.set(dataModel: dataModel)
+    func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
+        presenter.set(dataModel: dataModel, quoteId: quoteId)
         presenter.updateLoyaltyMode(with: .earn)
     }
     

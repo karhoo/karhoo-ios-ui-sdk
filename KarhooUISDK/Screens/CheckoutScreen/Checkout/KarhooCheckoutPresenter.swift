@@ -556,24 +556,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
 
-//    private func reportLoyaltyStatusRequested(
-//        quoteId: String,
-//        loyaltyName: String,
-//        result: LoyaltyStatus?,
-//        errorSlug: String?,
-//        errorMessage: String?,
-//        correlationId: String
-//    ) {
-//            analytics.loyaltyStatusRequested(
-//                quoteId: quoteId,
-//                loyaltyName: loyaltyName,
-//                loyaltyStatus: <#T##LoyaltyStatus?#>,
-//                errorSlug: <#T##String?#>,
-//                errorMessage: <#T##String?#>,
-//                correlationId: <#T##String?#>
-//            )
-//    }
-
     private func reportBookingEvent(quoteId: String) {
         analytics.bookingRequested(quoteId: quoteId)
     }

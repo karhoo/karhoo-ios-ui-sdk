@@ -393,7 +393,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                         currency: quote.price.currencyCode,
                                                         tripAmount: quote.price.highPrice)
-            loyaltyView.set(dataModel: loyaltyDataModel)
+            loyaltyView.set(dataModel: loyaltyDataModel, quoteId: quote.id)
         }
     }
     
