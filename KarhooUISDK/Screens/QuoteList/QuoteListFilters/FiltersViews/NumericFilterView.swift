@@ -16,7 +16,7 @@ class NumericFilterView: UIView, FilterView {
     var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     private var numericFilter: QuoteListNumericFilter
     var category: QuoteListFilters.Category { numericFilter.filterCategory }
-    var filter: [QuoteListFilter] { [numericFilter]  }
+    var filter: [QuoteListFilter]
 
     // MARK: Views
 
@@ -53,6 +53,7 @@ class NumericFilterView: UIView, FilterView {
 
     init(filter: QuoteListNumericFilter) {
         self.numericFilter = filter
+        self.filter =  [numericFilter]
         super.init(frame: .zero)
         setup()
     }
@@ -109,6 +110,14 @@ class NumericFilterView: UIView, FilterView {
         decreaseCountButton.isEnabled = numericFilter.value > numericFilter.minValue
         currentFilterValueLabel.text = numericFilter.value.description
     }
+    
+    private func didSelect() {
+        self.filter = [numericFilter]
+    }
+    
+    private func didDeselect() {
+        self.filter = []
+    }
 
     // MARK: - API
 
@@ -131,6 +140,7 @@ class NumericFilterView: UIView, FilterView {
     private func decreaseTapped(_ sender: UIButton) {
         numericFilter.value = max(numericFilter.minValue, numericFilter.value - 1)
         updateCounterState()
+        numericFilter.isInDefaultState ? didDeselect() : didSelect()
         onFilterChanged?(filter, numericFilter.filterCategory)
     }
 
@@ -138,6 +148,7 @@ class NumericFilterView: UIView, FilterView {
     private func increaseTapped(_ sender: UIButton) {
         numericFilter.value = min(numericFilter.maxValue, numericFilter.value + 1)
         updateCounterState()
+        numericFilter.isInDefaultState ? didDeselect() : didSelect()
         onFilterChanged?(filter, numericFilter.filterCategory)
     }
 }
