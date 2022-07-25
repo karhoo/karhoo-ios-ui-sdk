@@ -65,7 +65,7 @@ protocol QuoteListPresenter: AnyObject {
 
 protocol QuoteListRouter: AnyObject {
 
-    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails)
+    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails, passengerCount: Int, luggageCount: Int)
 
     func routeToQuoteDetails(_ quote: Quote)
 
