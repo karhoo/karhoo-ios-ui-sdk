@@ -104,14 +104,6 @@ class ItemsFilterView: UIView, FilterView {
         itemsMainStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         itemButtons = []
 
-        if allOptionEnabled {
-            let horizontalStackView = buildHorizontalStackViewForItems()
-            itemsMainStackView.addArrangedSubview(horizontalStackView)
-            let allItem = ItemButton(title: UITexts.Generic.all)
-            itemButtons.append(allItem)
-            allItem.addTarget(self, action: #selector(allButtonTapped), for: .touchUpInside)
-            horizontalStackView.addArrangedSubview(allItem)
-        }
         selectableFilters.forEach { selectableFilter in
             var horizontalStackView: UIStackView
             let itemView = buildItemFilterButton(for: selectableFilter)
@@ -180,21 +172,6 @@ class ItemsFilterView: UIView, FilterView {
     }
     
     // MARK: - UI Actions
-
-    @objc private func allButtonTapped(_ sender: ItemButton) {
-        sender.isSelected = !sender.isSelected
-        
-        switch sender.isSelected {
-        case true:
-            selectableFilters.forEach { didSelect($0) }
-            itemButtons
-                .filter { $0 is ItemFilterButton } // Only `all` item is ItemButton, rest of them are instances of ItemFilterButton type.
-                .forEach { $0.isSelected = false }
-        case false:
-            selectableFilters.forEach { didDeselect($0) }
-        }
-        onFilterChanged?(filter, category)
-    }
 
     @objc private func itemButtonTapped(_ sender: ItemFilterButton) {
         sender.isSelected = !sender.isSelected
