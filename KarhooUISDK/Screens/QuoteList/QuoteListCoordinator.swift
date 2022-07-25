@@ -55,7 +55,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
 
 extension KarhooQuoteListCoordinator: QuoteListRouter {
 
-    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails) {
+    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails, passengerCount: Int, luggageCount: Int) {
         onQuoteSelected?(quote)
     }
 
