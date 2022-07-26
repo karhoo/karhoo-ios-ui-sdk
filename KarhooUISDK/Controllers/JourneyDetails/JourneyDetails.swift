@@ -14,6 +14,8 @@ public struct JourneyDetails: Equatable {
     public var originLocationDetails: LocationInfo?
     public var destinationLocationDetails: LocationInfo?
     public var scheduledDate: Date?
+    public var luggagesCount: Int = 0
+    public var passangersCount: Int = 1
 
     public init(originLocationDetails: LocationInfo? = nil) {
         self.originLocationDetails = originLocationDetails

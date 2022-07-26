@@ -29,6 +29,8 @@ protocol QuoteListNumericFilter: QuoteListFilter {
 }
 
 enum QuoteListFilters {
+    static let defaultPassengersCount = 1
+    static let defaultLuggagesCount = 0
 }
 
 extension QuoteListFilters {

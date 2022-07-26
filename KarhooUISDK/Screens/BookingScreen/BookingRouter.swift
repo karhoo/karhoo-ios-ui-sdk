@@ -14,7 +14,10 @@ class KarhooBookingRouter: BookingRouter {
     weak var viewController: BaseViewController?
     var checkoutScreenBuilder: CheckoutScreenBuilder?
 
-    func routeToQuoteList(details: JourneyDetails, onQuoteSelected: ((Quote) -> Void)?) {
+    func routeToQuoteList(
+        details: JourneyDetails,
+        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+    ) {
         guard let navigationController = viewController?.navigationController else {
             assertionFailure()
             return

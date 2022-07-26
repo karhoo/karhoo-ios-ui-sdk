@@ -396,11 +396,10 @@ extension KarhooBookingPresenter: BookingPresenter {
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
         guard view?.navigationController?.topViewController === view else { return }
-        router.routeToQuoteList(details: details) { [weak self] quote in
-            guard let self = self, let details = self.getJourneyDetails() else { return }
-            self.showCheckoutView(
+        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
+            self?.showCheckoutView(
                 quote: quote,
-                journeyDetails: details
+                journeyDetails: journeyDetails
             )
         }
     }

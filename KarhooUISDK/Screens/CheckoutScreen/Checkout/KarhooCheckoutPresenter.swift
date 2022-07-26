@@ -314,13 +314,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             flight = nil
         }
         
-        var tripBooking = TripBooking(quoteId: quote.id,
-                                      passengers: Passengers(additionalPassengers: 0,
-                                                             passengerDetails: [passenger]),
-                                      flightNumber: flight,
-                                      paymentNonce: paymentNonce,
-                                      loyaltyNonce: loyaltyNonce,
-                                      comments: view?.getComments())
+        var tripBooking = TripBooking(
+            quoteId: quote.id,
+            passengers: Passengers(
+                additionalPassengers: journeyDetails.passangersCount - 1,
+                passengerDetails: [passenger],
+                luggage: Luggage(total: journeyDetails.luggagesCount)
+            ),
+            flightNumber: flight,
+            paymentNonce: paymentNonce,
+            loyaltyNonce: loyaltyNonce,
+            comments: view?.getComments()
+        )
         
         var map: [String: Any] = [:]
         if let metadata = bookingMetadata {

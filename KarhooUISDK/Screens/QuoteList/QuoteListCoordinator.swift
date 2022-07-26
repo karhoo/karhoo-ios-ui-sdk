@@ -20,7 +20,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
     private(set) var viewController: QuoteListViewController!
     private(set) var presenter: QuoteListPresenter!
 
-    var onQuoteSelected: ((Quote) -> Void)?
+    private let onQuoteSelected: (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
 
     // MARK: - Initializator
 
@@ -30,8 +30,9 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        onQuoteSelected: ((Quote) -> Void)?
+        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
     ) {
+        self.onQuoteSelected = onQuoteSelected
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListViewController()
         self.presenter = KarhooQuoteListPresenter(
@@ -42,7 +43,6 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
             quoteSorter: quoteSorter,
             analytics: analytics
         )
-        self.onQuoteSelected = onQuoteSelected
         self.viewController.setupBinding(presenter)
     }
 
@@ -55,8 +55,11 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
 
 extension KarhooQuoteListCoordinator: QuoteListRouter {
 
-    func routeToQuote(_ quote: Quote, journeyDetails: JourneyDetails) {
-        onQuoteSelected?(quote)
+    func routeToQuote(
+        _ quote: Quote,
+        journeyDetails: JourneyDetails
+    ) {
+        onQuoteSelected(quote, journeyDetails)
     }
 
     func routeToQuoteDetails(_ quote: Quote) {

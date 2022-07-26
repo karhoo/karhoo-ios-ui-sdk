@@ -37,7 +37,7 @@ public class KarhooComponents: BookingScreenComponents {
     public func quoteList(
         navigationController: UINavigationController,
         journeyDetails: JourneyDetails,
-        onQuoteSelected: ((Quote) -> Void)?
+        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
     ) -> QuoteListCoordinator {
         KarhooQuoteListCoordinator(
             navigationController: navigationController,

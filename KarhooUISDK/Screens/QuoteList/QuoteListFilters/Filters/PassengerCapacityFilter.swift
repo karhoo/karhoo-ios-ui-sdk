@@ -14,7 +14,7 @@ extension QuoteListFilters {
         var value: Int
         var minValue: Int { 1 }
         var maxValue: Int { 7 }
-        var defaultValue: Int { 1 }
+        var defaultValue: Int { QuoteListFilters.defaultPassengersCount }
         var filterCategory: Category { .passengers }
 
         func conditionMet(for quote: Quote) -> Bool {
