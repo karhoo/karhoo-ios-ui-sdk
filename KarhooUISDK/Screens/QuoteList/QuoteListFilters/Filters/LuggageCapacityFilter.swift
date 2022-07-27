@@ -11,7 +11,6 @@ import KarhooSDK
 
 extension QuoteListFilters {
     struct LuggageCapacityModel: QuoteListNumericFilter {
-        static let defaultValue: Int = 0
         var value: Int
         var minValue: Int { 0 }
         var maxValue: Int { 7 }
