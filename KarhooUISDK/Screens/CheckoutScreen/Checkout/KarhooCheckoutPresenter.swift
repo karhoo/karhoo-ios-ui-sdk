@@ -561,7 +561,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportBookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
-            analytics.bookingSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
+        analytics.bookingSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
     }
 
     private func reportBookingFailure(message: String, correlationId: String?) {
@@ -576,7 +576,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             currency: quote.price.currencyCode
         )
     }
-
 }
 
 extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
