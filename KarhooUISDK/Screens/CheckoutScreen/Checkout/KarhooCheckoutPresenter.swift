@@ -285,7 +285,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             let view = self.view {
             
             view.getLoyaltyNonce { [weak self] result in
-                if let error = result.errorValue() {
+                if let error = result.getErrorValue() {
                     if error.type == .failedToGenerateNonce {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                     } else {
@@ -294,7 +294,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                     return
                 }
                 
-                if let loyaltyNonce = result.successValue() {
+                if let loyaltyNonce = result.getSuccessValue() {
                     self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                 }
             }
@@ -336,30 +336,30 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         bookingRequestInProgress = false
-        guard let trip = result.successValue() else {
+        guard let trip = result.getSuccessValue() else {
             view?.setDefaultState()
-            reportBookingFailure(message: result.errorValue()?.message ?? "", correlationId: result.correlationId())
-            if result.errorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
+            reportBookingFailure(message: result.getErrorValue()?.message ?? "", correlationId: result.getCorrelationId())
+            if result.getErrorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
                 view?.retryAddPaymentMethod(showRetryAlert: true)
             } else {
-                callback(ScreenResult.failed(error: result.errorValue()))
+                callback(ScreenResult.failed(error: result.getErrorValue()))
             }
 
             return
         }
 
         self.trip = trip
-        reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
+        reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
         view?.showCheckoutView(false)
     }
     
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
-        if let trip = result.successValue() {
-            reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.correlationId())
+        if let trip = result.getSuccessValue() {
+            reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
             callback(.completed(result: trip))
-        } else if let error = result.errorValue() {
-            reportBookingFailure(message: error.message, correlationId: result.correlationId())
-            view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.errorValue())
+        } else if let error = result.getErrorValue() {
+            reportBookingFailure(message: error.message, correlationId: result.getCorrelationId())
+            view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.getErrorValue())
         }
     }
     

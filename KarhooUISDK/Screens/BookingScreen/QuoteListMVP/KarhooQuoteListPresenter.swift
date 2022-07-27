@@ -179,7 +179,7 @@ extension KarhooQuoteListPresenter: JourneyDetailsObserver {
 
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
 
-            if result.successValue()?.all.isEmpty == false {
+            if result.getSuccessValue()?.all.isEmpty == false {
                 self?.quoteListView?.hideLoadingView()
                 self?.quoteListView?.toggleCategoryFilteringControls(show: true)
             }

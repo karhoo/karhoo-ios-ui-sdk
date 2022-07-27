@@ -67,7 +67,7 @@ final class KarhooTripAllocationPresenter: TripAllocationPresenter {
                 self?.view.tripCancellationRequestSucceeded()
                 self?.tripObservable?.unsubscribe(observer: self?.tripObserver)
             } else {
-                self?.view.tripCancellationRequestFailed(error: result.errorValue(), trip: trip)
+                self?.view.tripCancellationRequestFailed(error: result.getErrorValue(), trip: trip)
             }
         })
     }

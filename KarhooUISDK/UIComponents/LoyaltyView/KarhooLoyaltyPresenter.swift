@@ -126,16 +126,16 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             self?.isLoadingStatus = false
             self?.reportLoyaltyStatusRequested(
                 quoteId: self?.quoteIdForAnalytics,
-                correlationId: result.correlationId(),
+                correlationId: result.getCorrelationId(),
                 loyaltyName: self?.viewModel?.loyaltyId,
-                loyaltyStatus: result.successValue(),
-                errorSlug: result.errorValue()?.slug,
-                errorMessage: result.errorValue()?.message
+                loyaltyStatus: result.getSuccessValue(),
+                errorSlug: result.getErrorValue()?.slug,
+                errorMessage: result.getErrorValue()?.message
             )
             
-            guard let status = result.successValue()
+            guard let status = result.getSuccessValue()
             else {
-                self?.getStatusError = result.errorValue()
+                self?.getStatusError = result.getErrorValue()
                 self?.updateUI()
                 return
             }
@@ -181,9 +181,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         ).execute { [weak self] result in
             self?.isLoadingGetEarnPoints = false
             
-            guard let value = result.successValue()
+            guard let value = result.getSuccessValue()
             else {
-                let error = result.errorValue()
+                let error = result.getErrorValue()
                 self?.getEarnAmountError = error
                 self?.updateUI()
                 return
@@ -217,9 +217,9 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         ).execute { [weak self] result in
             self?.isLoadingGetBurnPoints = false
             
-            guard let value = result.successValue()
+            guard let value = result.getSuccessValue()
             else {
-                let error = result.errorValue()
+                let error = result.getErrorValue()
                 self?.getBurnAmountError = error
                 self?.updateUI()
                 return
@@ -439,11 +439,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         )
         
         loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { [weak self] result in
-            if let _ = result.successValue(), let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthSuccess(quoteId: self?.quoteIdForAnalytics, correlationId: result.correlationId(), preauthType: currentMode)
+            if let _ = result.getSuccessValue(), let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthSuccess(quoteId: self?.quoteIdForAnalytics, correlationId: result.getCorrelationId(), preauthType: currentMode)
             }
-            if let error = result.errorValue(), let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthFailure(quoteId: self?.quoteIdForAnalytics, correlationId: result.correlationId(), preauthType: currentMode, errorSlug: error.slug, errorMessage: error.message)
+            if let error = result.getErrorValue(), let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthFailure(quoteId: self?.quoteIdForAnalytics, correlationId: result.getCorrelationId(), preauthType: currentMode, errorSlug: error.slug, errorMessage: error.message)
             }
             completion(result)
         }

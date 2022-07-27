@@ -34,7 +34,7 @@ final class KarhooTripMetaDataPresenter: TripMetaDataPresenter {
     func updateFare() {
         if trip.state == .completed {
             fareService.fareDetails(tripId: trip.tripId).execute { [weak self] response in
-                guard let newFare = response.successValue() else { return }
+                guard let newFare = response.getSuccessValue() else { return }
                 self?.tripMetaDataViewModel.setFare(newFare)
             }
         }
