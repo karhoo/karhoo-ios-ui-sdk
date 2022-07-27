@@ -21,7 +21,7 @@ end
 # UISDK framework
 target 'KarhooUISDK' do
 #  pod 'KarhooSDK', '1.6.2'
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :commit => 'a2d6151a99fa2b293232ed65a7d07c002f77918d' # :branch => 'feature/MOB-4160-extract-correlationId'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/analytics-reporter' 
   pod 'FloatingPanel', '2.0.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
