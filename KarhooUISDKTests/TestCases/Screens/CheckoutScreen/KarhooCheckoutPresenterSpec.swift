@@ -202,7 +202,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
         mockTripService.bookCall.triggerFailure(bookingError)
         XCTAssert(mockView.setDefaultStateCalled)
         XCTAssertFalse(mockCardRegistrationFlow.startCalled)
-        XCTAssertEqual(testCallbackResult?.getErrorValue()?.code, bookingError.code)
+        XCTAssertEqual(testCallbackResult?.errorValue()?.code, bookingError.code)
         XCTAssertTrue(mockAnalytics.paymentFailedCalled)
 
     }
