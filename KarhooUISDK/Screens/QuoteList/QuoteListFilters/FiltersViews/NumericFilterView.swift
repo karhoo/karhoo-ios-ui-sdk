@@ -16,7 +16,9 @@ class NumericFilterView: UIView, FilterView {
     var onFilterChanged: (([QuoteListFilter], QuoteListFilters.Category) -> Void)?
     private var numericFilter: QuoteListNumericFilter
     var category: QuoteListFilters.Category { numericFilter.filterCategory }
-    var filter: [QuoteListFilter] { [numericFilter]  }
+    var filter: [QuoteListFilter] {
+        numericFilter.isInDefaultState ? [] : [numericFilter]
+    }
 
     // MARK: Views
 

@@ -28,6 +28,10 @@ protocol QuoteListNumericFilter: QuoteListFilter {
     var defaultValue: Int { get }
 }
 
+extension QuoteListNumericFilter {
+    var isInDefaultState: Bool { value == defaultValue}
+}
+
 enum QuoteListFilters {
 }
 
