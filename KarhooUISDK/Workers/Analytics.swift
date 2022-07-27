@@ -100,7 +100,7 @@ final class KarhooAnalytics: Analytics {
         base.send(
             eventName: .bookingSucceed,
             payload: [
-                Keys.tripId : tripId,
+                Keys.tripId: tripId,
                 Keys.correlationId: correlationId ?? "",
                 Keys.quoteId: quoteId
             ]
@@ -172,7 +172,7 @@ final class KarhooAnalytics: Analytics {
         base.send(
             eventName: .cardAuthorisationSuccess,
             payload: [
-                Keys.quoteId: quoteId,
+                Keys.quoteId: quoteId
             ]
         )
     }
@@ -185,7 +185,7 @@ final class KarhooAnalytics: Analytics {
         errorSlug: String?,
         errorMessage: String?
     ) {
-        var payload: [String : Any] = [
+        var payload: [String: Any] = [
             Keys.correlationId: correlationId ?? "",
             Keys.quoteId: quoteId,
             Keys.loyaltyEnabled: loyaltyStatus?.canBurn == true || loyaltyStatus?.canEarn == true,
@@ -216,7 +216,7 @@ final class KarhooAnalytics: Analytics {
         correlationId: String?,
         preauthType: LoyaltyMode
     ) {
-        var payload: [String : Any] = [
+        var payload: [String: Any] = [
             Keys.quoteId: quoteId,
             Keys.correlationId: correlationId ?? ""
         ]
@@ -236,9 +236,9 @@ final class KarhooAnalytics: Analytics {
         errorSlug: String?,
         errorMessage: String?
     ) {
-        var payload: [String : Any] = [
+        var payload: [String: Any] = [
             Keys.quoteId: quoteId,
-            Keys.correlationId: correlationId ?? "",
+            Keys.correlationId: correlationId ?? ""
         ]
         if let mode = getDescriptionForLoyaltyMode(preauthType) {
             payload[Keys.loyaltyPreauthType] = mode
@@ -255,7 +255,6 @@ final class KarhooAnalytics: Analytics {
             payload: payload
         )
     }
-
 
     func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
@@ -347,7 +346,7 @@ final class KarhooAnalytics: Analytics {
             return "earn"
         case .burn:
             return "burn"
-        case .error(_):
+        case .error:
             return nil
         }
     }
@@ -383,9 +382,6 @@ final class KarhooAnalytics: Analytics {
         static let errorMessage = "error_message"
         static let loyaltyName = "loyaltyName"
         static let loyaltyPreauthType = "loyalty_preauth_type"
-
-        
-
     }
 
     struct Value {
