@@ -52,4 +52,32 @@ class KarhooQuoteFilterHandlerSpec: KarhooTestCase {
         
         XCTAssert(filteredQuotes.isEmpty)
     }
+
+    /// Test AND categories success
+    func testFiltersFiltering3() {
+        let filters: [QuoteListFilter] = [
+            QuoteListFilters.VehicleExtras.wheelchair,
+            QuoteListFilters.VehicleExtras.childSeat
+        ]
+        let quotesToFilter: [Quote] = [
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["wheelchair", "child-seat"])),
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["wheelchair", "child-seat"]))
+        ]
+        let filteredQuotes = sut.filter(quotesToFilter, using: filters)
+        XCTAssert(filteredQuotes.count == quotesToFilter.count, "filtered results: \(filteredQuotes.count), expected: \(quotesToFilter.count)")
+    }
+
+    /// Test AND categories failure
+    func testFiltersFiltering4() {
+        let filters: [QuoteListFilter] = [
+            QuoteListFilters.VehicleExtras.wheelchair,
+            QuoteListFilters.VehicleExtras.childSeat
+        ]
+        let quotesToFilter: [Quote] = [
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["child-seat"])),
+            Quote(quoteType: .fixed, vehicle: .init(tags: ["wheelchair"]))
+        ]
+        let filteredQuotes = sut.filter(quotesToFilter, using: filters)
+        XCTAssert(filteredQuotes.isEmpty)
+    }
 }
