@@ -27,8 +27,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     var onFiltersCountUpdated: ((Int) -> Void)?
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
-    // TODO: REVERT TO 120 AFTER TESTS
-    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 15 // 120
+    private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
     var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
@@ -184,9 +183,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
             assertionFailure()
             return
         }
-        // TODO: REVERT TO 'quotesValidity' AFTER TESTS
-        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(30)
-        dateOfListReceiving = Date().addingTimeInterval(Double(30))
+        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
+        dateOfListReceiving = Date().addingTimeInterval(Double(quotesValidity))
         DispatchQueue.main.asyncAfter(deadline: deadline) {[weak self] in
             if self?.isViewVisible == true {
                 self?.refreshSubscription()

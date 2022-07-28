@@ -246,7 +246,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     
     private func handleLoadingState() {
         loadingBar.startAnimation()
-        setHeaderDisabled(hideAuxiliaryHeaderItems: true) { [weak self] in
+        setHeaderDisabled(hideAuxiliaryHeaderItems: false) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.loading)
         }
     }

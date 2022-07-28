@@ -52,8 +52,8 @@ class LoadingBar: UIView {
      */
     var animateDeterminateInitialization: Bool = false
     
-    var indeterminateAnimationDuration: TimeInterval = 1.0
-    var determinateAnimationDuration: TimeInterval = 1.0
+    var indeterminateAnimationDuration: TimeInterval = 1.2
+    var determinateAnimationDuration: TimeInterval = 1.2
     
     private var zeroFrame: CGRect {
         CGRect(origin: .zero, size: CGSize(width: 0, height: bounds.size.height))
