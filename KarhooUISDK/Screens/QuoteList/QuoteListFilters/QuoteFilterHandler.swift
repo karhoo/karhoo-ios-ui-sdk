@@ -65,7 +65,7 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
                     return categoryFitlerConditionMet != nil
                 }
             }
-            // If filtering results do not contain false result, return success (quote mets all filtering conditions)
+            // If filtering results do not contain false result, return success (quote meets all filtering conditions)
             return quoteMeetsFilteringConditions.contains(false) == false
         }
     }
