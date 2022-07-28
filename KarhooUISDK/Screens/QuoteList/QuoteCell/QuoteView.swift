@@ -31,13 +31,18 @@ public struct KHQuoteViewID {
 }
 
 class QuoteView: UIView {
+
+    private enum CustomConstants {
+        static let logoImageViewSide: CGFloat = 60
+    }
+
     private var didSetupConstraints: Bool = false
 
     private var containerStack: UIStackView!
     private var viewWithBorder: UIView!
     private var carInfoView: UIView!
     private var logoLoadingImageView: LoadingImageView!
-    private var name: UILabel!
+    private var vehicleTypeLabel: UILabel!
     private var rideDetailStackView: UIStackView!
     private var vehicleCapacityView: VehicleCapacityView!
     private var capacityAndPickupTypeContainer: UIStackView!
@@ -115,6 +120,7 @@ class QuoteView: UIView {
 
         logoLoadingImageView = LoadingImageView().then { logo in
             logo.accessibilityIdentifier = KHQuoteViewID.logoImage
+            logo.contentMode = .scaleAspectFill
             logo.layer.masksToBounds = true
         }
 
@@ -125,13 +131,13 @@ class QuoteView: UIView {
         rideDetailStackView.alignment = .leading
         rideDetailStackView.spacing = UIConstants.Spacing.xSmall
 
-        name = UILabel().then { name in
-            name.translatesAutoresizingMaskIntoConstraints = false
-            name.accessibilityIdentifier = KHQuoteViewID.name
-            name.textColor = KarhooUI.colors.text
-            name.font = KarhooUI.fonts.bodyBold()
-            name.numberOfLines = 0
-            name.lineBreakMode = .byWordWrapping
+        vehicleTypeLabel = UILabel().then {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.accessibilityIdentifier = KHQuoteViewID.name
+            $0.textColor = KarhooUI.colors.text
+            $0.font = KarhooUI.fonts.bodyBold()
+            $0.numberOfLines = 0
+            $0.lineBreakMode = .byWordWrapping
         }
 
         capacityAndPickupTypeContainer = UIStackView().then { stack in
@@ -255,7 +261,7 @@ class QuoteView: UIView {
         carInfoView.addSubview(logoLoadingImageView)
         carInfoView.addSubview(rideDetailStackView)
         carInfoView.addSubview(detailsButton)
-        rideDetailStackView.addArrangedSubview(name)
+        rideDetailStackView.addArrangedSubview(vehicleTypeLabel)
         rideDetailStackView.addArrangedSubview(vehicleCapacityView)
 
         containerStack.addArrangedSubview(middleStack)
@@ -272,11 +278,10 @@ class QuoteView: UIView {
         bottomStack.addArrangedSubview(bottomImage)
         bottomStack.addArrangedSubview(fleetName)
     }
-
+    
     private func setupLayout() {
         containerStack.anchorToSuperview()
         viewWithBorder.anchorToSuperview(
-
             paddingTop: UIConstants.Spacing.small,
             paddingLeading: UIConstants.Spacing.standard,
             paddingTrailing: UIConstants.Spacing.standard,
@@ -287,12 +292,11 @@ class QuoteView: UIView {
             left: carInfoView.leftAnchor,
             right: rideDetailStackView.leftAnchor,
             bottom: carInfoView.bottomAnchor,
-            paddingTop: UIConstants.Spacing.small,
             paddingLeft: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small,
             paddingBottom: UIConstants.Spacing.small,
-            width: UIConstants.Dimension.Icon.xLarge,
-            height: UIConstants.Dimension.Icon.xLarge
+            width: CustomConstants.logoImageViewSide,
+            height: CustomConstants.logoImageViewSide
         )
         rideDetailStackView.anchor(
             top: carInfoView.topAnchor,
@@ -329,7 +333,7 @@ class QuoteView: UIView {
     }
     
     func set(viewModel: QuoteViewModel) {
-        name.text = viewModel.vehicleType
+        vehicleTypeLabel.text = viewModel.vehicleType
         eta.text = viewModel.scheduleMainValue
         fare.text = viewModel.fare
         logoLoadingImageView.load(
@@ -345,7 +349,7 @@ class QuoteView: UIView {
     }
     
     func resetView() {
-        name.text = nil
+        vehicleTypeLabel.text = nil
         eta.text = nil
         fare.text = nil
         fareType.text = nil
