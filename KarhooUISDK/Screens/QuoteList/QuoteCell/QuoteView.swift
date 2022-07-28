@@ -272,11 +272,10 @@ class QuoteView: UIView {
         bottomStack.addArrangedSubview(bottomImage)
         bottomStack.addArrangedSubview(fleetName)
     }
-
+    
     private func setupLayout() {
         containerStack.anchorToSuperview()
         viewWithBorder.anchorToSuperview(
-
             paddingTop: UIConstants.Spacing.small,
             paddingLeading: UIConstants.Spacing.standard,
             paddingTrailing: UIConstants.Spacing.standard,
@@ -291,8 +290,8 @@ class QuoteView: UIView {
             paddingLeft: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small,
             paddingBottom: UIConstants.Spacing.small,
-            width: UIConstants.Dimension.Icon.xLarge,
-            height: UIConstants.Dimension.Icon.xLarge
+            width: 52, // UIConstants.Dimension.Icon.xLarge,
+            height: 52 // UIConstants.Dimension.Icon.xLarge
         )
         rideDetailStackView.anchor(
             top: carInfoView.topAnchor,

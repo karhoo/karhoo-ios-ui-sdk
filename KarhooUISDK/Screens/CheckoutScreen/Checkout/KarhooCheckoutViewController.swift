@@ -335,7 +335,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.anchor(
             leading: view.leadingAnchor,
             trailing: view.trailingAnchor,
-            bottom: container.bottomAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             paddingBottom: standardPadding
         )
         footerStack.anchor(

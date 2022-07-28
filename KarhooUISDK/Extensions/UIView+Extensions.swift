@@ -10,25 +10,8 @@ import UIKit
 
 extension UIView {
  
-    public func applyRoundCorners(corners: UIRectCorner = [.topLeft, .topRight],
-                                  radius: CGFloat = 20) {
-        let bottomOffset: CGFloat = 100
-
-        let roundCornersPath = UIBezierPath(roundedRect: CGRect(x: 0,
-                                                                y: 0,
-                                                                width: bounds.width,
-                                                                height: bounds.height + bottomOffset),
-                                            byRoundingCorners: corners,
-                                            cornerRadii: CGSize(width: radius, height: radius))
-
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.bounds
-        maskLayer.path = roundCornersPath.cgPath
-        layer.mask = maskLayer
-    }
-
     func applyRoundCorners(
-        _ cornerMask: CACornerMask,
+        _ cornerMask: CACornerMask = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner],
         radius: CGFloat
     ) {
         layer.cornerRadius = radius
