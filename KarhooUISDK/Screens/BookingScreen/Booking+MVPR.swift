@@ -82,7 +82,10 @@ public enum BookingScreenResult {
 }
 
 protocol BookingRouter {
-    func routeToQuoteList(details: JourneyDetails, onQuoteSelected: ((Quote) -> Void)?)
+    func routeToQuoteList(
+        details: JourneyDetails,
+        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+    )
 
     func routeToCheckout(
         quote: Quote,

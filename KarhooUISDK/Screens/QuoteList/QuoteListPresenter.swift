@@ -91,7 +91,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     }
 
     func didSelectQuote(_ quote: Quote) {
-        guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else { return }
+        guard var journeyDetails = journeyDetailsManager.getJourneyDetails() else { return }
+        let passengersCountFilter = quoteFilter.filters.first(where: { $0.filterCategory == .passengers }) as? QuoteListNumericFilter
+        let luggagesCountFilter = quoteFilter.filters.first(where: { $0.filterCategory == .luggage }) as? QuoteListNumericFilter
+        
+        journeyDetails.passangersCount = passengersCountFilter?.value ?? QuoteListFilters.defaultPassengersCount
+        journeyDetails.luggagesCount = luggagesCountFilter?.value ?? QuoteListFilters.defaultLuggagesCount
+
         router.routeToQuote(quote, journeyDetails: journeyDetails)
     }
 

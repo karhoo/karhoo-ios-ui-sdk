@@ -32,6 +32,8 @@ protocol QuoteListFiltersRouter: AnyObject {
 }
 
 protocol QuoteFilterHandler: AnyObject {
+    var numberOfPassangers: Int { get }
+    var numberOfLuggages: Int { get }
     var filters: [QuoteListFilter] { get set }
     /// Filter given input using provided fitlers value
     func filter(_ quotes: [Quote], using filters: [QuoteListFilter]) -> [Quote]

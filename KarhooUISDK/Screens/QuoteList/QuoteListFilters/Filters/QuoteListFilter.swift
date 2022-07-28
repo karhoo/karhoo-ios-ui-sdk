@@ -33,6 +33,8 @@ extension QuoteListNumericFilter {
 }
 
 enum QuoteListFilters {
+    static let defaultPassengersCount = 1
+    static let defaultLuggagesCount = 0
 }
 
 extension QuoteListFilters {

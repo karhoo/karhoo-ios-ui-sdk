@@ -15,7 +15,10 @@ import XCTest
 class MockBookingRouter: BookingRouter {
 
     var routeToQuoteListCalled = false
-    func routeToQuoteList(details: JourneyDetails, onQuoteSelected: ((Quote) -> Void)?) {
+    func routeToQuoteList(
+        details: JourneyDetails,
+        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+    ) {
         routeToQuoteListCalled = true
     }
 

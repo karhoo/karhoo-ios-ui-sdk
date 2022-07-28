@@ -13,6 +13,16 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
     
     var filters: [QuoteListFilter] = []
 
+    var numberOfPassangers: Int {
+        let filter = filters.first(where: { $0.filterCategory == .passengers }) as? QuoteListNumericFilter
+        return filter?.value ?? QuoteListFilters.defaultPassengersCount
+    }
+    
+    var numberOfLuggages: Int {
+        let filter = filters.first(where: { $0.filterCategory == .luggage }) as? QuoteListNumericFilter
+        return filter?.value ?? QuoteListFilters.defaultLuggagesCount
+    }
+
     /// Filter given input using self.filters variable value
     func filter(
         _ quotes: [Quote]
