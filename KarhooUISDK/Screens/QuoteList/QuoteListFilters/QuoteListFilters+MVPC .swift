@@ -10,6 +10,7 @@ import KarhooSDK
 
 protocol QuoteListFiltersCoordinator: KarhooUISDKSceneCoordinator {
     var viewController: QuoteListFiltersViewController { get }
+    func updateResults()
 }
 
 protocol QuoteListFiltersViewController: BaseViewController {
@@ -17,12 +18,14 @@ protocol QuoteListFiltersViewController: BaseViewController {
 }
 
 protocol QuoteListFiltersPresenter: AnyObject {
+    var onQuotesUpdated: (() -> Void)? { get set }
     var filters: [QuoteListFilter] { get }
     func viewDidLoad()
     func viewWillAppear()
     // Using this method pass all selected filters to the presenter. Every other filer of this category will not be active anymore.
     func filterSelected(_ filter: [QuoteListFilter], for category: QuoteListFilters.Category)
     func close(save: Bool)
+    func updateResults()
     func resetFilter()
     func resultsCountForSelectedFilters() -> Int
 }

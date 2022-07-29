@@ -51,7 +51,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     private lazy var footerView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = KarhooUI.colors.background1
-        $0.addShadow(Float(UIConstants.Alpha.lightShadow))
+        $0.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
     }
     private lazy var confirmButton = MainActionButton().then {
         $0.setTitle(UITexts.Generic.save.uppercased(), for: .normal)
@@ -96,6 +96,9 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
 
     func setupBinding(_ presenter: QuoteListFiltersPresenter) {
         self.presenter = presenter
+        self.presenter.onQuotesUpdated = { [weak self] in
+            self?.updateConfirmButtonTitle()
+        }
     }
 
     // MARK: - Setup view
@@ -172,7 +175,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
             left: view.leftAnchor,
             right: view.rightAnchor,
             bottom: view.bottomAnchor,
-            paddingTop: -UIConstants.Spacing.large
+            paddingTop: -UIConstants.Spacing.standard
         )
         closeButton.anchor(
             width: UIConstants.Dimension.Button.small,
@@ -181,10 +184,10 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         confirmButton.anchor(
             left: footerView.leftAnchor,
             right: footerView.rightAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            bottom: view.bottomAnchor,
             paddingLeft: UIConstants.Spacing.standard,
             paddingRight: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.large
+            paddingBottom: UIConstants.Spacing.xLarge
         )
         view.layoutIfNeeded()
     }
