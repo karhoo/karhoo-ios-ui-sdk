@@ -18,13 +18,13 @@ public protocol Analytics {
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
     func bookingRequested(quoteId: String)
-    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?)
-    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
-    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
+    func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?)
+    func bookingFailure(quoteId: String?, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
+    func cardAuthorisationFailure(quoteId: String?, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
-    func loyaltyStatusRequested(quoteId: String, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?)
-    func loyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
-    func loyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode)
+    func loyaltyStatusRequested(quoteId: String?, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?)
+    func loyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
+    func loyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
     func upcomingTripsOpened()
@@ -96,19 +96,19 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
+    func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
         base.send(
             eventName: .bookingSuccess,
             payload: [
                 Keys.tripId: tripId,
                 Keys.correlationId: correlationId ?? "",
-                Keys.quoteId: quoteId
+                Keys.quoteId: quoteId ?? ""
             ]
         )
     }
 
     func bookingFailure(
-        quoteId: String,
+        quoteId: String?,
         correlationId: String?,
         message: String,
         lastFourDigits: String,
@@ -127,7 +127,7 @@ final class KarhooAnalytics: Analytics {
         base.send(
             eventName: .bookingFailure,
             payload: [
-                Keys.quoteId: quoteId,
+                Keys.quoteId: quoteId ?? "",
                 Keys.correlationId: correlationId ?? "",
                 Keys.errorMessage: message,
                 Keys.cardLast4Digits: lastFourDigits,
@@ -139,7 +139,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
     func cardAuthorisationFailure(
-        quoteId: String,
+        quoteId: String?,
         errorMessage: String,
         lastFourDigits: String,
         paymentMethodUsed: String,
@@ -157,7 +157,7 @@ final class KarhooAnalytics: Analytics {
         base.send(
             eventName: .cardAuthorisationFailure,
             payload: [
-                Keys.quoteId: quoteId,
+                Keys.quoteId: quoteId ?? "",
                 Keys.message: errorMessage,
                 Keys.cardLast4Digits: lastFourDigits,
                 Keys.paymentMethodUsed: paymentMethodUsed,
@@ -178,7 +178,7 @@ final class KarhooAnalytics: Analytics {
     }
 
     func loyaltyStatusRequested(
-        quoteId: String,
+        quoteId: String?,
         correlationId: String?,
         loyaltyName: String?,
         loyaltyStatus: LoyaltyStatus?,
@@ -187,7 +187,7 @@ final class KarhooAnalytics: Analytics {
     ) {
         var payload: [String: Any] = [
             Keys.correlationId: correlationId ?? "",
-            Keys.quoteId: quoteId,
+            Keys.quoteId: quoteId ?? "",
             Keys.loyaltyEnabled: loyaltyStatus?.canBurn == true || loyaltyStatus?.canEarn == true,
             Keys.loyaltyStatusSuccess: loyaltyStatus != nil
         ]
@@ -212,12 +212,12 @@ final class KarhooAnalytics: Analytics {
     }
 
     func loyaltyPreAuthSuccess(
-        quoteId: String,
+        quoteId: String?,
         correlationId: String?,
         preauthType: LoyaltyMode
     ) {
         var payload: [String: Any] = [
-            Keys.quoteId: quoteId,
+            Keys.quoteId: quoteId ?? "",
             Keys.correlationId: correlationId ?? ""
         ]
         if let mode = getDescriptionForLoyaltyMode(preauthType) {
@@ -230,14 +230,14 @@ final class KarhooAnalytics: Analytics {
     }
 
     func loyaltyPreAuthFailure(
-        quoteId: String,
+        quoteId: String?,
         correlationId: String?,
         preauthType: LoyaltyMode,
         errorSlug: String?,
         errorMessage: String?
     ) {
         var payload: [String: Any] = [
-            Keys.quoteId: quoteId,
+            Keys.quoteId: quoteId ?? "",
             Keys.correlationId: correlationId ?? ""
         ]
         if let mode = getDescriptionForLoyaltyMode(preauthType) {

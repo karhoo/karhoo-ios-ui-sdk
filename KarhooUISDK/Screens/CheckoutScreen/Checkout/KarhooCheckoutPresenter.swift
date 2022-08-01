@@ -560,7 +560,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         analytics.bookingRequested(quoteId: quoteId)
     }
 
-    private func reportBookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
+    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
         analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
     }
 

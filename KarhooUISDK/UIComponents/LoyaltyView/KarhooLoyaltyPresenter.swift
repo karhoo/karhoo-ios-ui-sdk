@@ -469,11 +469,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     // MARK: - Analytics
 
     private func reportLoyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String) {
-        analytics.loyaltyPreAuthFailure(quoteId: quoteId ?? "", correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
+        analytics.loyaltyPreAuthFailure(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
     }
 
     private func reportLoyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode) {
-        analytics.loyaltyPreAuthSuccess(quoteId: quoteId ?? "", correlationId: correlationId, preauthType: preauthType)
+        analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
     }
 
     private func reportLoyaltyStatusRequested(
@@ -484,7 +484,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         error: KarhooError?
     ) {
         analytics.loyaltyStatusRequested(
-            quoteId: quoteId ?? "",
+            quoteId: quoteId,
             correlationId: correlationId,
             loyaltyName: correlationId,
             loyaltyStatus: loyaltyStatus,

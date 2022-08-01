@@ -15,17 +15,17 @@ class MockAnalytics: Analytics {
         // TODO: write tests
     }
     
-    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
+    func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
         // TODO: write tests
         paymentSucceedCalled = true
     }
     
-    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
+    func bookingFailure(quoteId: String?, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
         // TODO: write tests
         paymentFailedCalled = true
     }
     
-    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
+    func cardAuthorisationFailure(quoteId: String?, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
         // TODO: write tests
     }
     
@@ -33,15 +33,15 @@ class MockAnalytics: Analytics {
         // TODO: write tests
     }
     
-    func loyaltyStatusRequested(quoteId: String, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?) {
+    func loyaltyStatusRequested(quoteId: String?, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?) {
         // TODO: write tests
     }
     
-    func loyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?) {
+    func loyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?) {
         // TODO: write tests
     }
     
-    func loyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode) {
+    func loyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode) {
         // TODO: write tests
     }
     
