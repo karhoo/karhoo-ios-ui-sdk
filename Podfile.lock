@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/analytics-reporter`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-4160-extract-correlationId`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -114,14 +114,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/analytics-reporter
+    :branch: feature/MOB-4160-extract-correlationId
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 4fa78295db4b14d565c70fff0972690fef262bfe
+    :commit: f3daa9c134540cf9b32602973e07fc65259eea4e
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -139,6 +139,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 53864d9acbae3a954eb413736729500fe7051435
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: bf181818c9304226c0f2d6153285bdf07570ffd7
+PODFILE CHECKSUM: ffe864f221cb8aca61bdcf83eba04929b197a8f3
 
 COCOAPODS: 1.11.3
