@@ -18,9 +18,9 @@ public protocol Analytics {
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
     func bookingRequested(quoteId: String)
-    func bookingSucceed(tripId: String, quoteId: String, correlationId: String?)
-    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
-    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
+    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?)
+    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
+    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
     func loyaltyStatusRequested(quoteId: String, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?)
     func loyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
@@ -96,9 +96,9 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingSucceed(tripId: String, quoteId: String, correlationId: String?) {
+    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
         base.send(
-            eventName: .bookingSucceed,
+            eventName: .bookingSuccess,
             payload: [
                 Keys.tripId: tripId,
                 Keys.correlationId: correlationId ?? "",
@@ -114,7 +114,7 @@ final class KarhooAnalytics: Analytics {
         lastFourDigits: String,
         paymentMethodUsed: String,
         date: Date,
-        amount: String,
+        amount: Double,
         currency: String
     ) {
         let dateString: String
@@ -144,7 +144,7 @@ final class KarhooAnalytics: Analytics {
         lastFourDigits: String,
         paymentMethodUsed: String,
         date: Date,
-        amount: String,
+        amount: Double,
         currency: String
     ) {
         let dateString: String

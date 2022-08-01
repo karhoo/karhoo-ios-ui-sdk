@@ -15,7 +15,7 @@ class MockAnalytics: Analytics {
         // TODO: write tests
     }
     
-    func bookingSucceed(tripId: String, quoteId: String, correlationId: String?) {
+    func bookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
         // TODO: write tests
         paymentSucceedCalled = true
     }
