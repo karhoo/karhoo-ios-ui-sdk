@@ -52,8 +52,8 @@ class QuoteView: UIView {
     private var eta: UILabel!
     private var etaDescription: UILabel!
     private var priceDetailsStack: UIStackView!
-    private var fare: UILabel!
-    private var fareType: UILabel!
+    private var fareLabel: UILabel!
+    private var fareTypeLabel: UILabel!
     private var lineSeparator: LineView!
     private var bottomStack: UIStackView!
     private var bottomStackContainer: UIView!
@@ -135,7 +135,7 @@ class QuoteView: UIView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.accessibilityIdentifier = KHQuoteViewID.name
             $0.textColor = KarhooUI.colors.text
-            $0.font = KarhooUI.fonts.bodyBold()
+            $0.font = KarhooUI.fonts.bodySemibold()
             $0.numberOfLines = 0
             $0.lineBreakMode = .byWordWrapping
         }
@@ -202,21 +202,21 @@ class QuoteView: UIView {
         priceDetailsStack.accessibilityIdentifier = KHQuoteViewID.priceStackView
         priceDetailsStack.axis = .vertical
 
-        fare = UILabel()
-        fare.translatesAutoresizingMaskIntoConstraints = false
-        fare.setContentCompressionResistancePriority(.required, for: .horizontal)
-        fare.accessibilityIdentifier = KHQuoteViewID.fare
-        fare.textAlignment = .right
-        fare.font = KarhooUI.fonts.headerBold()
-        fare.textColor = KarhooUI.colors.black
+        fareLabel = UILabel()
+        fareLabel.translatesAutoresizingMaskIntoConstraints = false
+        fareLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        fareLabel.accessibilityIdentifier = KHQuoteViewID.fare
+        fareLabel.textAlignment = .right
+        fareLabel.font = KarhooUI.fonts.headerBold()
+        fareLabel.textColor = KarhooUI.colors.black
 
-        fareType = UILabel()
-        fareType.translatesAutoresizingMaskIntoConstraints = false
-        fareType.accessibilityIdentifier = KHQuoteViewID.fareType
-        fareType.setContentCompressionResistancePriority(.required, for: .horizontal)
-        fareType.textAlignment = .right
-        fareType.font = KarhooUI.fonts.footnoteRegular()
-        fareType.textColor = KarhooUI.colors.text
+        fareTypeLabel = UILabel()
+        fareTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        fareTypeLabel.accessibilityIdentifier = KHQuoteViewID.fareType
+        fareTypeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        fareTypeLabel.textAlignment = .right
+        fareTypeLabel.font = KarhooUI.fonts.footnoteRegular()
+        fareTypeLabel.textColor = KarhooUI.colors.text
     }
 
     private func setupFooterProperties() {
@@ -266,11 +266,11 @@ class QuoteView: UIView {
 
         containerStack.addArrangedSubview(middleStack)
         middleStack.addArrangedSubview(etaStack)
-        middleStack.addArrangedSubview(priceDetailsStack)
+        carInfoView.addSubview(priceDetailsStack)
         etaStack.addArrangedSubview(eta)
         etaStack.addArrangedSubview(etaDescription)
-        priceDetailsStack.addArrangedSubview(fare)
-        priceDetailsStack.addArrangedSubview(fareType)
+        priceDetailsStack.addArrangedSubview(fareLabel)
+        priceDetailsStack.addArrangedSubview(fareTypeLabel)
 
         containerStack.addArrangedSubview(lineSeparator)
         containerStack.addArrangedSubview(bottomStackContainer)
@@ -305,6 +305,10 @@ class QuoteView: UIView {
             paddingTop: UIConstants.Spacing.small,
             paddingRight: UIConstants.Spacing.small
         )
+
+        priceDetailsStack.anchor(trailing: viewWithBorder.trailingAnchor, paddingRight: UIConstants.Spacing.small)
+        fareLabel.lastBaselineAnchor.constraint(equalTo: vehicleTypeLabel.lastBaselineAnchor).isActive = true
+
         middleStack.isLayoutMarginsRelativeArrangement = true
         middleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: 0,
@@ -335,12 +339,12 @@ class QuoteView: UIView {
     func set(viewModel: QuoteViewModel) {
         vehicleTypeLabel.text = viewModel.vehicleType
         eta.text = viewModel.scheduleMainValue
-        fare.text = viewModel.fare
+        fareLabel.text = viewModel.fare
         logoLoadingImageView.load(
             imageURL: viewModel.vehicleImageURL ?? viewModel.logoImageURL,
             placeholderImageName: "supplier_logo_placeholder"
         )
-        fareType.text = viewModel.fareType
+        fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         bottomImage.load(imageURL: viewModel.logoImageURL,
@@ -351,8 +355,8 @@ class QuoteView: UIView {
     func resetView() {
         vehicleTypeLabel.text = nil
         eta.text = nil
-        fare.text = nil
-        fareType.text = nil
+        fareLabel.text = nil
+        fareTypeLabel.text = nil
         logoLoadingImageView.cancel()
     }
 }
