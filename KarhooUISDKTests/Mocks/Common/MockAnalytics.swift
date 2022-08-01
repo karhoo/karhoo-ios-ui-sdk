@@ -20,12 +20,12 @@ class MockAnalytics: Analytics {
         paymentSucceedCalled = true
     }
     
-    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String) {
+    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
         // TODO: write tests
         paymentFailedCalled = true
     }
     
-    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String) {
+    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
         // TODO: write tests
     }
     
