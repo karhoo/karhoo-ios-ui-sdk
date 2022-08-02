@@ -276,7 +276,6 @@ class QuoteView: UIView {
             right: rideDetailStackView.leftAnchor,
             bottom: vehicleContainerView.bottomAnchor,
             paddingRight: UIConstants.Spacing.small,
-//            paddingBottom: UIConstants.Spacing.small,
             width: CustomConstants.logoImageViewWidth,
             height: CustomConstants.logoImageViewHieght
         )
@@ -290,7 +289,7 @@ class QuoteView: UIView {
         priceDetailsStack.anchor(
             left: rightContentView.leftAnchor,
             right: viewWithBorder.rightAnchor,
-            paddingRight: UIConstants.Spacing.small
+            paddingRight: UIConstants.Spacing.medium
         )
         constraintsForASAPQuote.forEach { $0.isActive = true }
 
