@@ -154,7 +154,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfo.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.text
-        cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
     }()
