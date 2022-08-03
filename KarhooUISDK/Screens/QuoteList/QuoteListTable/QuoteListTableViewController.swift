@@ -45,7 +45,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = KarhooUI.colors.background1
         setupView()
     }
 

@@ -140,6 +140,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setupProperties() {
         view = UIView()
+        view.backgroundColor = KarhooUI.colors.background1
         forceLightMode()
         setHeaderDisabled(hideAuxiliaryHeaderItems: true, animated: false)
     }
@@ -217,6 +218,19 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             navigationController?.navigationBar.barStyle = .black
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        }
+
+        if #available(iOS 14.0, *) {
+            let itemButton = UIBarButtonItem(
+                title: "switch_color",
+                primaryAction: UIAction { [weak self] _ in
+                    guard let self = self else { return }
+                    let isNewColor = self.view.backgroundColor == KarhooUI.colors.background1
+                    self.view.backgroundColor = isNewColor ? .white : UIColor(hex: "#FAFAFA")
+                })
+            navigationItem.rightBarButtonItem = itemButton
+        } else {
+            // Fallback on earlier versions
         }
     }
     
