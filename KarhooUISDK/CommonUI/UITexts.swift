@@ -323,6 +323,7 @@ public enum UITexts {
         public static let childseat = "Text.VehicleTag.Childseat".localized
         public static let taxi = "Text.VehicleTag.Taxi".localized
         public static let executive = "Text.VehicleTag.Executive".localized
+        public static let luxury = "Text.VehicleTag.Luxury".localized
     }
 
     public enum FleetCapabilities {

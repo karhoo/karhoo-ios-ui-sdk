@@ -865,6 +865,8 @@
 
 "Text.VehicleTag.Wheelchair" = "Sedia a rotelle";
 
+"Text.VehicleTag.Luxury" = "Lusso";
+
 "Text.VehicleType.Bus" = "Autobus";
 
 "Text.VehicleType.Moto" = "Moto";
