@@ -161,7 +161,7 @@
 
 "Text.Booking.FixedInfoBox" = "Cette flotte applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), veuillez consulter les conditions générales de la flotte.";
 
-"Text.Booking.FlightTracking" = "Associe votre vol";
+"Text.Booking.FlightTracking" = "Suivi du n° de vol";
 
 "Text.Booking.GPSTracking" = "Suivi GPS";
 
@@ -237,7 +237,7 @@
 /* Accessibility hint for prebook feature entry point */
 "Text.Booking.ScheduleRide" = "Planifier le trajet";
 
-"Text.Booking.TrainTracking" = "Associe votre train";
+"Text.Booking.TrainTracking" = "Suivi du n° de train";
 
 "Text.Bookings.Alert.CancellationFee.Charge" = "Des frais d'annulation estimés à %1$@ vont s'appliquer.\n\nSouhaitez-vous continuer ?";
 
@@ -372,6 +372,18 @@
 
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Étiez-vous satisfait(e) des choix disponibles concernant les devis pour votre course (ex: Flottes, Prix, Proximité) ?";
+
+"Text.FleetCapabilities.DriverDetails" = "Détails du conducteur";
+
+"Text.FleetCapabilities.FlightTracking" = "Suivi du n° de vol";
+
+"Text.FleetCapabilities.GpsTracking" = "Suivi GPS";
+
+"Text.FleetCapabilities.TrainTracking" = "Suivi du n° de train";
+
+"Text.FleetCapabilities.VehicleDetails" = "Détails du véhicule";
+
+"Text.Generic.All" = "Tous";
 
 "Text.Generic.Back" = "Retour";
 
@@ -589,6 +601,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Taxes et Frais Inclus";
 
+"Text.Quote.FreeCancellation" = "Annulation gratuite";
+
 "Text.Quote.FreeCancellationAndKeyword" = "et";
 
 "Text.Quote.FreeCancellationASAP" = "Annulation sans frais jusqu'à %1$@ après la réservation";
@@ -597,6 +611,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
+
+"Text.Quote.FreeWaitingTime" = "Temps d’attente gratuit";
 
 "Text.Quote.Results" = "%1$@ résultats";
 
@@ -622,7 +638,9 @@
 
 "Text.Quotes.DriverArrivalTime" = "Heure d’arrivée du chauffeur";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre moment.";
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "L’adresse de prise en charge ou de dépôt est manquante.";
+
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre horaire.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
 
@@ -640,11 +658,29 @@
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
 
-"Text.Quotes.Filter" = "Filtre";
+"Text.Quotes.Filter" = "Filtrer";
 
-"Text.Quotes.FilterPageResults" = "Voir tout %1$@ résultats";
+"Text.Quotes.FilterEcoFriendly" = "Respectueux de l’environnement";
 
-"Text.Quotes.ResetFilter" = "Réinitialiser le filtre";
+"Text.Quotes.FilterFleetCapabilities" = "Capacités de la flotte";
+
+"Text.Quotes.FilterPageResults" = "Voir %1$@ résultats";
+
+"Text.Quotes.FilterQuoteTypes" = "Types de devis";
+
+"Text.Quotes.FilterServiceAgreements" = "Annulation et temps d’attente";
+
+"Text.Quotes.FiltersLuggages" = "Bagage(s)";
+
+"Text.Quotes.FiltersPassengers" = "Passager(s)";
+
+"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+
+"Text.Quotes.FilterVehicleExtras" = "Extras du véhicule";
+
+"Text.Quotes.FilterVehicleType" = "Types de véhicules";
+
+"Text.Quotes.ResetFilter" = "Réinitialiser les filtres";
 
 "Text.Quotes.Result" = "";
 
@@ -842,6 +878,8 @@
 
 "Text.VehicleClass.Exec" = "Business";
 
+"Text.VehicleClass.Luxury" = "luxe";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Moto";
@@ -852,7 +890,7 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Siège enfant";
+"Text.VehicleTag.ChildSeat" = "Siège enfant";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Électrique";
@@ -861,9 +899,11 @@
 
 "Text.VehicleTag.Hybrid" = "Hybride";
 
+"Text.VehicleTag.Luxury" = "luxe";
+
 "Text.VehicleTag.Taxi" = "Taxi";
 
-"Text.VehicleTag.Wheelchair" = "Fauteuil roulant";
+"Text.VehicleTag.Wheelchair" = "Accessible PMR";
 
 "Text.VehicleType.Bus" = "Bus";
 
@@ -871,5 +911,5 @@
 
 "Text.VehicleType.MPV" = "Van";
 
-"Text.VehicleType.Standard" = "Standard";
+"Text.VehicleType.Standard" = "Berline";
 

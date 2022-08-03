@@ -373,6 +373,18 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Wie zufrieden waren Sie mit der Auswahl der Angebote für Ihre Reise (z. B. Flotten, Preise und ETAs)?";
 
+"Text.FleetCapabilities.DriverDetails" = "Angaben zum Fahrer";
+
+"Text.FleetCapabilities.FlightTracking" = "Flugverfolgung";
+
+"Text.FleetCapabilities.GpsTracking" = "GPS-Ortung";
+
+"Text.FleetCapabilities.TrainTracking" = "Zugverfolgung";
+
+"Text.FleetCapabilities.VehicleDetails" = "Fahrzeug-Details";
+
+"Text.Generic.All" = "Alle";
+
 "Text.Generic.Back" = "Zurück";
 
 "Text.Generic.Bookings" = "Buchungen";
@@ -589,6 +601,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Inklusive Steuern und Gebühren";
 
+"Text.Quote.FreeCancellation" = "Kostenlose Stornierung";
+
 "Text.Quote.FreeCancellationAndKeyword" = "und";
 
 "Text.Quote.FreeCancellationASAP" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
@@ -597,6 +611,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Kostenlose Stornierung bis zu %1$@ vor der Abholung";
+
+"Text.Quote.FreeWaitingTime" = "Kostenlose Wartezeit";
 
 "Text.Quote.Results" = "%1$@ Ergebnisse";
 
@@ -622,6 +638,8 @@
 
 "Text.Quotes.DriverArrivalTime" = "Ankunftszeit des Fahrers";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Die Adresse für die Abholung oder Rückgabe fehlt.";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Bitte wählen Sie eine andere Zeit.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Keine Verfügbarkeit für die angefragte Zeit.";
@@ -642,7 +660,25 @@
 
 "Text.Quotes.Filter" = "Filter";
 
+"Text.Quotes.FilterEcoFriendly" = "Umweltfreundlich";
+
+"Text.Quotes.FilterFleetCapabilities" = "Flottenkapazitäten";
+
 "Text.Quotes.FilterPageResults" = "Alle %1$@ Ergebnisse anzeigen";
+
+"Text.Quotes.FilterQuoteTypes" = "Arten von Zitaten";
+
+"Text.Quotes.FilterServiceAgreements" = "Stornierung und Wartezeit";
+
+"Text.Quotes.FiltersLuggages" = "Gepäckstücke";
+
+"Text.Quotes.FiltersPassengers" = "Passagier(e)";
+
+"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_fahrzeug_klasse";
+
+"Text.Quotes.FilterVehicleExtras" = "Fahrzeug-Extras";
+
+"Text.Quotes.FilterVehicleType" = "Fahrzeugtypen";
 
 "Text.Quotes.ResetFilter" = "Filter zurücksetzen";
 
@@ -842,6 +878,8 @@
 
 "Text.VehicleClass.Exec" = "Exec";
 
+"Text.VehicleClass.Luxury" = "Luxus";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorrad";
@@ -852,7 +890,7 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Kindersitz";
+"Text.VehicleTag.ChildSeat" = "Kindersitz";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Electric";
@@ -860,6 +898,8 @@
 "Text.VehicleTag.Executive" = "Exekutive";
 
 "Text.VehicleTag.Hybrid" = "Hybrid";
+
+"Text.VehicleTag.Luxury" = "Luxus";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 

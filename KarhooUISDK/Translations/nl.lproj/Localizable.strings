@@ -373,6 +373,18 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Hoe tevreden was u met de selectie van offertes voor uw reis (bijv. Taxibedrijven, Prijzen en ETA's)?";
 
+"Text.FleetCapabilities.DriverDetails" = "Gegevens van de bestuurder";
+
+"Text.FleetCapabilities.FlightTracking" = "Vlucht volgen";
+
+"Text.FleetCapabilities.GpsTracking" = "GPS-tracking";
+
+"Text.FleetCapabilities.TrainTracking" = "Trein volgen";
+
+"Text.FleetCapabilities.VehicleDetails" = "voertuiggegevens";
+
+"Text.Generic.All" = "Alle";
+
 "Text.Generic.Back" = "Terug";
 
 "Text.Generic.Bookings" = "Reserveringen";
@@ -589,6 +601,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Belastingen en Toeslagen Inbegrepen";
 
+"Text.Quote.FreeCancellation" = "Gratis annuleren";
+
 "Text.Quote.FreeCancellationAndKeyword" = "en";
 
 "Text.Quote.FreeCancellationASAP" = "Gratis annulering tot %1$@ na reserveren";
@@ -597,6 +611,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
+
+"Text.Quote.FreeWaitingTime" = "Gratis wachttijd";
 
 "Text.Quote.Results" = "%1$@ resultaten";
 
@@ -622,6 +638,8 @@
 
 "Text.Quotes.DriverArrivalTime" = "Aankomsttijd chauffeur";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Ophaal- of afleveradres ontbreekt.";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Gelieve een ander tijdstip te kiezen.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Geen beschikbaarheid voor de aanvraagtijd.";
@@ -642,9 +660,27 @@
 
 "Text.Quotes.Filter" = "Filter";
 
+"Text.Quotes.FilterEcoFriendly" = "Milieuvriendelijk";
+
+"Text.Quotes.FilterFleetCapabilities" = "Vlootmogelijkheden";
+
 "Text.Quotes.FilterPageResults" = "Bekijk alle %1$@ resultaten";
 
-"Text.Quotes.ResetFilter" = "Filter resetten";
+"Text.Quotes.FilterQuoteTypes" = "Soorten offertes";
+
+"Text.Quotes.FilterServiceAgreements" = "Annulering en wachttijd";
+
+"Text.Quotes.FiltersLuggages" = "Bagage)";
+
+"Text.Quotes.FiltersPassengers" = "Passagier(s)";
+
+"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+
+"Text.Quotes.FilterVehicleExtras" = "Voertuig Extra's";
+
+"Text.Quotes.FilterVehicleType" = "Voertuigtypes";
+
+"Text.Quotes.ResetFilter" = "Filters resetten";
 
 "Text.Quotes.Result" = "";
 
@@ -842,6 +878,8 @@
 
 "Text.VehicleClass.Exec" = "Executive";
 
+"Text.VehicleClass.Luxury" = "Luxe";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorfiets";
@@ -852,7 +890,7 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Kinderzitje";
+"Text.VehicleTag.ChildSeat" = "Kinderzitje";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Elektrisch";
@@ -860,6 +898,8 @@
 "Text.VehicleTag.Executive" = "Executive";
 
 "Text.VehicleTag.Hybrid" = "Hybride";
+
+"Text.VehicleTag.Luxury" = "Luxe";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
