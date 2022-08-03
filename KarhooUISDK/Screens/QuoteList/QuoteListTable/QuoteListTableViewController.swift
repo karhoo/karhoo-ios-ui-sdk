@@ -27,6 +27,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         $0.delegate = self
         $0.dataSource = self
         $0.bounces = false
+        $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))

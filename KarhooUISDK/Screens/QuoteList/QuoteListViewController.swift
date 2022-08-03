@@ -219,19 +219,18 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         }
-
-        if #available(iOS 14.0, *) {
-            let itemButton = UIBarButtonItem(
-                title: "switch_color",
-                primaryAction: UIAction { [weak self] _ in
-                    guard let self = self else { return }
-                    let isNewColor = self.view.backgroundColor == KarhooUI.colors.background1
-                    self.view.backgroundColor = isNewColor ? .white : UIColor(hex: "#FAFAFA")
-                })
-            navigationItem.rightBarButtonItem = itemButton
-        } else {
-            // Fallback on earlier versions
-        }
+        
+        let itemButton = UIBarButtonItem(
+            title: "Switch",
+            style: .plain,
+            target: self,
+            action: #selector(tappedChangeBackbourndColor))
+        navigationItem.rightBarButtonItem = itemButton
+    }
+    
+    @objc private func tappedChangeBackbourndColor() {
+        let isNewColor = view.backgroundColor!.cgColor == KarhooUI.colors.background1.cgColor
+        view.backgroundColor = isNewColor ? .white : KarhooUI.colors.background1
     }
     
     // MARK: - State handling
