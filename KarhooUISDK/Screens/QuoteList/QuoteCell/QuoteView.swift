@@ -134,7 +134,7 @@ class QuoteView: UIView {
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.textAlignment = .right
         label.font = KarhooUI.fonts.headerBold()
-        label.textColor = KarhooUI.colors.black
+        label.textColor = KarhooUI.colors.text
     }
     private lazy var etaDescriptionLabel = UILabel().then { label in
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +157,7 @@ class QuoteView: UIView {
         fareLabel.accessibilityIdentifier = KHQuoteViewID.fare
         fareLabel.textAlignment = .right
         fareLabel.font = KarhooUI.fonts.headerBold()
-        fareLabel.textColor = KarhooUI.colors.black
+        fareLabel.textColor = KarhooUI.colors.text
     }
     
     private lazy var fareTypeLabel = UILabel().then {
