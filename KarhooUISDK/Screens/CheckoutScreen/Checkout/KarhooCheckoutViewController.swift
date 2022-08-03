@@ -76,7 +76,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     private(set) lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
-        bookingButton.anchor(height: mainButtonHeight)
+        bookingButton.anchor(height: UIConstants.Dimension.Button.mainActionButtonHeight)
         bookingButton.set(actions: self)
         return bookingButton
     }()
@@ -86,10 +86,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
-        footerView.layer.shadowColor = KarhooUI.colors.black.cgColor
-        footerView.layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
-        footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
-        footerView.layer.shadowRadius = UIConstants.ShadowRadius.border
+        footerView.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
         return footerView
     }()
     
@@ -284,7 +281,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        container.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        container.anchorToSuperview()
 
         backButton.anchor(top: container.topAnchor,
                           leading: container.leadingAnchor,
@@ -334,16 +331,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.anchor(
             leading: view.leadingAnchor,
             trailing: view.trailingAnchor,
-            bottom: view.bottomAnchor,
-            paddingBottom: standardPadding
+            bottom: view.bottomAnchor
         )
         footerStack.anchor(
             top: footerView.topAnchor,
             leading: footerView.leadingAnchor,
             trailing: footerView.trailingAnchor,
             bottom: footerView.bottomAnchor,
-            paddingTop: standardPadding,
-            paddingBottom: standardPadding
+            paddingTop: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.xLarge
         )
         termsConditionsView.anchor(
             leading: baseStackView.leadingAnchor,

@@ -15,6 +15,16 @@ class FilterListItem: UIControl {
 
     var filter: QuoteListFilter
 
+    override var isSelected: Bool {
+        get {
+            super.isSelected
+        }
+        set {
+            checkboxView.isSelected = newValue
+            super.isSelected = newValue
+        }
+    }
+
     // MARK: Views
 
     private lazy var titleLabel = UILabel().then {

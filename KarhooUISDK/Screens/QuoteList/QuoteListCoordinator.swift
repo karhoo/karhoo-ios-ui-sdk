@@ -20,7 +20,9 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
     private(set) var viewController: QuoteListViewController!
     private(set) var presenter: QuoteListPresenter!
 
-    private let onQuoteSelected: (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+    private let onQuoteSelected: (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
+
+    private var filtersCoordinator: QuoteListFiltersCoordinator?
 
     // MARK: - Initializator
 
@@ -30,7 +32,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
     ) {
         self.onQuoteSelected = onQuoteSelected
         self.navigationController = navigationController
@@ -41,7 +43,10 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
             journeyDetailsManager: KarhooJourneyDetailsManager.shared,
             quoteService: quoteService,
             quoteSorter: quoteSorter,
-            analytics: analytics
+            analytics: analytics,
+            onQuotesUpdated: { [weak self] in
+                self?.filtersCoordinator?.updateResults()
+            }
         )
         self.viewController.setupBinding(presenter)
     }
@@ -84,9 +89,15 @@ extension KarhooQuoteListCoordinator: QuoteListRouter {
             },
             onFiltersConfirmed: { [weak self] filters in
                 self?.presenter.selectedQuoteFilters(filters)
+            },
+            onFinish: { [weak self] in
+                guard let filtersCoordinator = self?.filtersCoordinator else { return }
+                self?.removeChild(filtersCoordinator)
+                self?.filtersCoordinator = nil
             }
         )
         addChild(filtersCoordinator)
         filtersCoordinator.startPresented(on: self)
+        self.filtersCoordinator = filtersCoordinator
     }
 }

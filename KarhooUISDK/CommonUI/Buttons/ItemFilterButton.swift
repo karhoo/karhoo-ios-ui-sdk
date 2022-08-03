@@ -72,6 +72,7 @@ class ItemButton: UIButton {
             bottom: UIConstants.Spacing.xSmall,
             right: UIConstants.Spacing.small
         )
+        heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.medium).isActive = true
         setNeedsLayout()
         updateSelectedDesign()
         addTouchAnimation()

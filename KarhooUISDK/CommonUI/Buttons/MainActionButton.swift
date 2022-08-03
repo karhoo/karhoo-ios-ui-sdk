@@ -42,7 +42,7 @@ class MainActionButton: UIButton {
 
     private func setupLayout() {
         heightAnchor.constraint(
-            equalToConstant: UIConstants.Dimension.View.mainActionButtonHeight
+            equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight
         ).then {
             $0.priority = .defaultHigh
         }.isActive = true
