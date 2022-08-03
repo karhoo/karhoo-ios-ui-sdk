@@ -55,11 +55,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var sortButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("arrowDown"), for: .normal)
         $0.setTitle(UITexts.Generic.sortBy, for: .normal)
+        $0.backgroundColor = KarhooUI.colors.white
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
     private lazy var filtersButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("filters_icon"), for: .normal)
         $0.setTitle(UITexts.Quotes.filter, for: .normal)
+        $0.backgroundColor = KarhooUI.colors.white
         $0.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
     }
     private lazy var legalDisclaimerContainer = UIView().then {

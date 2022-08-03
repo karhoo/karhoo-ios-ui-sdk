@@ -53,6 +53,7 @@ class QuoteView: UIView {
         view.layer.cornerRadius = UIConstants.CornerRadius.large
         view.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
         view.layer.borderColor = KarhooUI.colors.border.cgColor
+        view.backgroundColor = KarhooUI.colors.white
     }
     private lazy var containerStack = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -227,7 +228,6 @@ class QuoteView: UIView {
     }
 
     private func setupProperties() {
-        backgroundColor = KarhooUI.colors.white
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHQuoteViewID.quoteView
     }

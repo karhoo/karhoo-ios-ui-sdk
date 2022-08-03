@@ -78,7 +78,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     }
 
     private func setupProperties() {
-        view.backgroundColor = KarhooUI.colors.background1
+        view.backgroundColor = .clear
     }
 
     private func setupHierarchy() {
