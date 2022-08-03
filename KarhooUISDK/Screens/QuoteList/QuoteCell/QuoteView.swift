@@ -32,33 +32,173 @@ public struct KHQuoteViewID {
 
 class QuoteView: UIView {
 
+    // MARK: - Nested types
+    
     private enum CustomConstants {
-        static let logoImageViewSide: CGFloat = 60
+        static let logoImageViewHieght: CGFloat = 60
+        static let logoImageViewWidth: CGFloat = 64
     }
 
-    private var didSetupConstraints: Bool = false
+    // MARK: - Properties
 
-    private var containerStack: UIStackView!
-    private var viewWithBorder: UIView!
-    private var carInfoView: UIView!
-    private var logoLoadingImageView: LoadingImageView!
-    private var vehicleTypeLabel: UILabel!
-    private var rideDetailStackView: UIStackView!
-    private var vehicleCapacityView: VehicleCapacityView!
-    private var capacityAndPickupTypeContainer: UIStackView!
-    private var detailsButton: UIButton!
-    private var middleStack: UIStackView!
-    private var etaStack: UIStackView!
-    private var eta: UILabel!
-    private var etaDescription: UILabel!
-    private var priceDetailsStack: UIStackView!
-    private var fare: UILabel!
-    private var fareType: UILabel!
-    private var lineSeparator: LineView!
-    private var bottomStack: UIStackView!
-    private var bottomStackContainer: UIView!
-    private var bottomImage: LoadingImageView!
-    private var fleetName: UILabel!
+    private var viewModel: QuoteViewModel?
+    // Constraints for both ASAP and Scheduled states. ASAP layout as default.
+    private lazy var constraintsForScheduledQuote: [NSLayoutConstraint] = [priceDetailsStack.centerYAnchor.constraint(equalTo: vehicleContainerView.centerYAnchor)]
+    private lazy var constraintsForASAPQuote: [NSLayoutConstraint] = [fareLabel.lastBaselineAnchor.constraint(equalTo: etaLabel.lastBaselineAnchor)]
+
+    // MARK: - Views
+
+    private lazy var viewWithBorder = UIView().then { view in
+        view.clipsToBounds = true
+        view.layer.cornerRadius = UIConstants.CornerRadius.large
+        view.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        view.layer.borderColor = KarhooUI.colors.border.cgColor
+    }
+    private lazy var containerStack = UIStackView().then { stack in
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = KHQuoteViewID.containerStackView
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.clipsToBounds = true
+        stack.layer.cornerRadius = UIConstants.CornerRadius.large
+    }
+    private lazy var topContentContainer = UIView()
+    private lazy var topContentStack = UIStackView().then { stack in
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = UIConstants.Spacing.medium
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.clipsToBounds = true
+    }
+    private lazy var leftContentStack = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+    }
+    private lazy var rightContentView = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private lazy var vehicleContainerView = UIView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    private lazy var logoLoadingImageView = LoadingImageView().then { logo in
+        logo.accessibilityIdentifier = KHQuoteViewID.logoImage
+        logo.contentMode = .scaleAspectFill
+        logo.layer.masksToBounds = true
+    }
+
+    private lazy var vehicleTypeLabel = UILabel().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.accessibilityIdentifier = KHQuoteViewID.name
+        $0.textColor = KarhooUI.colors.text
+        $0.font = KarhooUI.fonts.bodySemibold()
+        $0.numberOfLines = 0
+        $0.lineBreakMode = .byWordWrapping
+    }
+    private lazy var rideDetailStackView = UIStackView().then { rideDetailStackView in
+        rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
+        rideDetailStackView.accessibilityIdentifier = KHQuoteViewID.rideDetailsStackView
+        rideDetailStackView.axis = .vertical
+        rideDetailStackView.alignment = .leading
+        rideDetailStackView.spacing = UIConstants.Spacing.xSmall
+    }
+    private lazy var vehicleCapacityView = VehicleCapacityView()
+    private lazy var capacityAndPickupTypeContainer = UIStackView().then { stack in
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = KHQuoteViewID.capacityStackView
+        stack.axis = .horizontal
+        stack.alignment = .leading
+        stack.spacing = 10.0
+    }
+    private lazy var detailsButton = UIButton().then { button in
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = KHQuoteViewID.detailsButton
+        button.backgroundColor = KarhooUI.colors.accent
+        button.setTitleColor(KarhooUI.colors.white, for: .normal)
+        button.titleLabel?.font = KarhooUI.fonts.footnoteRegular()
+        button.setTitle(UITexts.QuoteCell.details, for: .normal)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = UIConstants.CornerRadius.large
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+        // button temporary hidden, uncomment when Qoute details page will be implemented
+        button.isHidden = true
+    }
+    private lazy var etaStack = UIStackView().then { stack in
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = KHQuoteViewID.etaStackView
+        stack.axis = .vertical
+        stack.alignment = .leading
+    }
+    private lazy var etaLabel = UILabel().then { label in
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = KHQuoteViewID.eta
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.textAlignment = .right
+        label.font = KarhooUI.fonts.headerBold()
+        label.textColor = KarhooUI.colors.text
+    }
+    private lazy var etaDescriptionLabel = UILabel().then { label in
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = KHQuoteViewID.etaDescription
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.textAlignment = .right
+        label.font = KarhooUI.fonts.footnoteRegular()
+        label.textColor = KarhooUI.colors.text
+        label.text = UITexts.QuoteCell.driverArrival
+    }
+    private lazy var priceDetailsStack = UIStackView().then { priceDetailsStack in
+        priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
+        priceDetailsStack.accessibilityIdentifier = KHQuoteViewID.priceStackView
+        priceDetailsStack.axis = .vertical
+    }
+    
+    private lazy var fareLabel = UILabel().then { fareLabel in
+        fareLabel.translatesAutoresizingMaskIntoConstraints = false
+        fareLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        fareLabel.accessibilityIdentifier = KHQuoteViewID.fare
+        fareLabel.textAlignment = .right
+        fareLabel.font = KarhooUI.fonts.headerBold()
+        fareLabel.textColor = KarhooUI.colors.text
+    }
+    
+    private lazy var fareTypeLabel = UILabel().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.accessibilityIdentifier = KHQuoteViewID.fareType
+        $0.setContentCompressionResistancePriority(.required, for: .horizontal)
+        $0.textAlignment = .right
+        $0.font = KarhooUI.fonts.footnoteRegular()
+        $0.textColor = KarhooUI.colors.text
+    }
+    
+    private lazy var lineSeparator = LineView(
+        color: KarhooUI.colors.border,
+        accessibilityIdentifier: KHQuoteViewID.lineSeparator
+    )
+    private lazy var bottomStack = UIStackView().then { stack in
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
+        stack.alignment = .leading
+        stack.axis = .horizontal
+        stack.spacing = UIConstants.Spacing.xSmall
+    }
+    private lazy var bottomStackContainer = UIView().then { view in
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = KHQuoteViewID.bottomStackContainer
+        view.backgroundColor = KarhooUI.colors.background1
+    }
+    private lazy var bottomImage = LoadingImageView().then { logo in
+        logo.accessibilityIdentifier = KHQuoteViewID.logoImage
+        logo.layer.masksToBounds = true
+    }
+    private lazy var fleetNameLabel = UILabel().then { fleetName in
+        fleetName.translatesAutoresizingMaskIntoConstraints = false
+        fleetName.accessibilityIdentifier = KHQuoteViewID.fleetName
+        fleetName.textColor = KarhooUI.colors.text
+        fleetName.font = KarhooUI.fonts.footnoteBold()
+        fleetName.numberOfLines = 0
+        fleetName.lineBreakMode = .byWordWrapping
+    }
+
+    // MARK: - Lifecycle
 
     init() {
         super.init(frame: .zero)
@@ -87,231 +227,72 @@ class QuoteView: UIView {
     }
 
     private func setupProperties() {
-        setupCellProperties()
-        setupFooterProperties()
-    }
-
-    private func setupCellProperties() {
         backgroundColor = KarhooUI.colors.white
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = KHQuoteViewID.quoteView
-
-        containerStack = UIStackView().then { stack in
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.accessibilityIdentifier = KHQuoteViewID.containerStackView
-            stack.axis = .vertical
-            stack.alignment = .fill
-            stack.clipsToBounds = true
-            stack.layer.cornerRadius = UIConstants.CornerRadius.large
-        }
-
-        viewWithBorder = UIView().then { view in
-            view.clipsToBounds = true
-            view.layer.cornerRadius = UIConstants.CornerRadius.large
-            view.layer.borderWidth = UIConstants.Dimension.Border.standardWidth
-            view.layer.borderColor = KarhooUI.colors.border.cgColor
-        }
-
-        carInfoView = UIView().then { view in
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.accessibilityIdentifier = KHQuoteViewID.carInfoStackView
-            view.clipsToBounds = true
-        }
-
-        logoLoadingImageView = LoadingImageView().then { logo in
-            logo.accessibilityIdentifier = KHQuoteViewID.logoImage
-            logo.contentMode = .scaleAspectFill
-            logo.layer.masksToBounds = true
-        }
-
-        rideDetailStackView = UIStackView()
-        rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
-        rideDetailStackView.accessibilityIdentifier = KHQuoteViewID.rideDetailsStackView
-        rideDetailStackView.axis = .vertical
-        rideDetailStackView.alignment = .leading
-        rideDetailStackView.spacing = UIConstants.Spacing.xSmall
-
-        vehicleTypeLabel = UILabel().then {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.accessibilityIdentifier = KHQuoteViewID.name
-            $0.textColor = KarhooUI.colors.text
-            $0.font = KarhooUI.fonts.bodyBold()
-            $0.numberOfLines = 0
-            $0.lineBreakMode = .byWordWrapping
-        }
-
-        capacityAndPickupTypeContainer = UIStackView().then { stack in
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.accessibilityIdentifier = KHQuoteViewID.capacityStackView
-            stack.axis = .horizontal
-            stack.alignment = .leading
-            stack.spacing = 10.0
-        }
-
-        vehicleCapacityView = VehicleCapacityView()
-
-        detailsButton = UIButton().then { button in
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.accessibilityIdentifier = KHQuoteViewID.detailsButton
-            button.backgroundColor = KarhooUI.colors.accent
-            button.setTitleColor(KarhooUI.colors.white, for: .normal)
-            button.titleLabel?.font = KarhooUI.fonts.footnoteRegular()
-            button.setTitle(UITexts.QuoteCell.details, for: .normal)
-            button.clipsToBounds = true
-            button.layer.cornerRadius = UIConstants.CornerRadius.large
-            button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
-            // button temporary hidden, uncomment when Qoute details page will be implemented
-            button.isHidden = true
-        }
-
-        middleStack = UIStackView().then { stack in
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.accessibilityIdentifier = KHQuoteViewID.middleStackView
-            stack.axis = .horizontal
-            stack.alignment = .center
-        }
-
-        // ETA stack
-        etaStack = UIStackView().then { stack in
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.accessibilityIdentifier = KHQuoteViewID.etaStackView
-            stack.axis = .vertical
-            stack.alignment = .leading
-        }
-        eta = UILabel().then { label in
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.accessibilityIdentifier = KHQuoteViewID.eta
-            label.setContentCompressionResistancePriority(.required, for: .horizontal)
-            label.textAlignment = .right
-            label.font = KarhooUI.fonts.headerBold()
-            label.textColor = KarhooUI.colors.black
-        }
-        etaDescription = UILabel().then { label in
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.accessibilityIdentifier = KHQuoteViewID.etaDescription
-            label.setContentCompressionResistancePriority(.required, for: .horizontal)
-            label.textAlignment = .right
-            label.font = KarhooUI.fonts.footnoteRegular()
-            label.textColor = KarhooUI.colors.text
-            label.text = UITexts.QuoteCell.driverArrival
-        }
-
-        // Price details stack
-        priceDetailsStack = UIStackView()
-        priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
-        priceDetailsStack.accessibilityIdentifier = KHQuoteViewID.priceStackView
-        priceDetailsStack.axis = .vertical
-
-        fare = UILabel()
-        fare.translatesAutoresizingMaskIntoConstraints = false
-        fare.setContentCompressionResistancePriority(.required, for: .horizontal)
-        fare.accessibilityIdentifier = KHQuoteViewID.fare
-        fare.textAlignment = .right
-        fare.font = KarhooUI.fonts.headerBold()
-        fare.textColor = KarhooUI.colors.black
-
-        fareType = UILabel()
-        fareType.translatesAutoresizingMaskIntoConstraints = false
-        fareType.accessibilityIdentifier = KHQuoteViewID.fareType
-        fareType.setContentCompressionResistancePriority(.required, for: .horizontal)
-        fareType.textAlignment = .right
-        fareType.font = KarhooUI.fonts.footnoteRegular()
-        fareType.textColor = KarhooUI.colors.text
-    }
-
-    private func setupFooterProperties() {
-        lineSeparator = LineView(
-            color: KarhooUI.colors.border,
-            accessibilityIdentifier: KHQuoteViewID.lineSeparator
-        )
-
-        bottomStackContainer = UIView().then { view in
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.accessibilityIdentifier = KHQuoteViewID.bottomStackContainer
-            view.backgroundColor = KarhooUI.colors.background1
-        }
-
-        bottomStack = UIStackView().then {stack in
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
-            stack.alignment = .leading
-            stack.axis = .horizontal
-            stack.spacing = UIConstants.Spacing.xSmall
-        }
-
-        bottomImage = LoadingImageView().then { logo in
-            logo.accessibilityIdentifier = KHQuoteViewID.logoImage
-            logo.layer.masksToBounds = true
-        }
-
-        fleetName = UILabel().then { fleetName in
-            fleetName.translatesAutoresizingMaskIntoConstraints = false
-            fleetName.accessibilityIdentifier = KHQuoteViewID.fleetName
-            fleetName.textColor = KarhooUI.colors.text
-            fleetName.font = KarhooUI.fonts.footnoteBold()
-            fleetName.numberOfLines = 0
-            fleetName.lineBreakMode = .byWordWrapping
-        }
     }
 
     private func setupHierarchy() {
         addSubview(viewWithBorder)
         viewWithBorder.addSubview(containerStack)
-        containerStack.addArrangedSubview(carInfoView)
-        carInfoView.addSubview(logoLoadingImageView)
-        carInfoView.addSubview(rideDetailStackView)
-        carInfoView.addSubview(detailsButton)
+        containerStack.addArrangedSubview(topContentContainer)
+        topContentContainer.addSubview(topContentStack)
+        topContentStack.addArrangedSubview(leftContentStack)
+        topContentStack.addArrangedSubview(rightContentView)
+        leftContentStack.addArrangedSubview(vehicleContainerView)
+        vehicleContainerView.addSubview(logoLoadingImageView)
+        vehicleContainerView.addSubview(rideDetailStackView)
         rideDetailStackView.addArrangedSubview(vehicleTypeLabel)
         rideDetailStackView.addArrangedSubview(vehicleCapacityView)
 
-        containerStack.addArrangedSubview(middleStack)
-        middleStack.addArrangedSubview(etaStack)
-        middleStack.addArrangedSubview(priceDetailsStack)
-        etaStack.addArrangedSubview(eta)
-        etaStack.addArrangedSubview(etaDescription)
-        priceDetailsStack.addArrangedSubview(fare)
-        priceDetailsStack.addArrangedSubview(fareType)
+        leftContentStack.addArrangedSubview(etaStack)
+        rightContentView.addSubview(priceDetailsStack)
+
+        etaStack.addArrangedSubview(etaLabel)
+        etaStack.addArrangedSubview(etaDescriptionLabel)
+        priceDetailsStack.addArrangedSubview(fareLabel)
+        priceDetailsStack.addArrangedSubview(fareTypeLabel)
 
         containerStack.addArrangedSubview(lineSeparator)
         containerStack.addArrangedSubview(bottomStackContainer)
         bottomStackContainer.addSubview(bottomStack)
         bottomStack.addArrangedSubview(bottomImage)
-        bottomStack.addArrangedSubview(fleetName)
+        bottomStack.addArrangedSubview(fleetNameLabel)
     }
     
     private func setupLayout() {
         containerStack.anchorToSuperview()
         viewWithBorder.anchorToSuperview(
             paddingTop: UIConstants.Spacing.small,
-            paddingLeading: UIConstants.Spacing.standard,
-            paddingTrailing: UIConstants.Spacing.standard,
+            paddingLeading: UIConstants.Spacing.medium,
+            paddingTrailing: UIConstants.Spacing.medium,
             paddingBottom: UIConstants.Spacing.small
         )
+        topContentStack.anchorToSuperview(padding: UIConstants.Spacing.small)
+        
         logoLoadingImageView.anchor(
-            top: carInfoView.topAnchor,
-            left: carInfoView.leftAnchor,
+            top: vehicleContainerView.topAnchor,
+            left: vehicleContainerView.leftAnchor,
             right: rideDetailStackView.leftAnchor,
-            bottom: carInfoView.bottomAnchor,
-            paddingLeft: UIConstants.Spacing.small,
+            bottom: vehicleContainerView.bottomAnchor,
             paddingRight: UIConstants.Spacing.small,
-            paddingBottom: UIConstants.Spacing.small,
-            width: CustomConstants.logoImageViewSide,
-            height: CustomConstants.logoImageViewSide
+            width: CustomConstants.logoImageViewWidth,
+            height: CustomConstants.logoImageViewHieght
         )
         rideDetailStackView.anchor(
-            top: carInfoView.topAnchor,
-            right: detailsButton.leftAnchor,
-            bottom: carInfoView.bottomAnchor,
-            paddingTop: UIConstants.Spacing.small,
+            top: vehicleContainerView.topAnchor,
+            right: vehicleContainerView.rightAnchor,
+            bottom: vehicleContainerView.bottomAnchor,
+            paddingTop: UIConstants.Spacing.xSmall,
             paddingRight: UIConstants.Spacing.small
         )
-        middleStack.isLayoutMarginsRelativeArrangement = true
-        middleStack.directionalLayoutMargins = NSDirectionalEdgeInsets(
-            top: 0,
-            leading: UIConstants.Spacing.small,
-            bottom: UIConstants.Spacing.small,
-            trailing: UIConstants.Spacing.small
+        priceDetailsStack.anchor(
+            left: rightContentView.leftAnchor,
+            right: viewWithBorder.rightAnchor,
+            paddingRight: UIConstants.Spacing.medium
         )
+        constraintsForASAPQuote.forEach { $0.isActive = true }
+
         lineSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         bottomStack.anchorToSuperview()
         bottomStack.isLayoutMarginsRelativeArrangement = true
@@ -322,37 +303,47 @@ class QuoteView: UIView {
             bottom: UIConstants.Spacing.small,
             trailing: UIConstants.Spacing.small
         )
-        detailsButton.anchor(top: carInfoView.topAnchor, right: carInfoView.rightAnchor)
-        detailsButton.contentEdgeInsets = UIEdgeInsets(
-            top: UIConstants.Spacing.small,
-            left: UIConstants.Spacing.standard,
-            bottom: UIConstants.Spacing.small,
-            right: UIConstants.Spacing.standard
-        )
         bottomImage.anchor(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
     }
+
+    private func setScheduledDesign() {
+        constraintsForASAPQuote.forEach { $0.isActive = false }
+        constraintsForScheduledQuote.forEach { $0.isActive = true }
+        etaStack.isHidden = true
+    }
+
+    private func setASAPDesign() {
+        constraintsForASAPQuote.forEach { $0.isActive = true }
+        constraintsForScheduledQuote.forEach { $0.isActive = false }
+        etaStack.isHidden = false
+    }
+
+    // MARK: - Endpoints
     
     func set(viewModel: QuoteViewModel) {
+        self.viewModel = viewModel
         vehicleTypeLabel.text = viewModel.vehicleType
-        eta.text = viewModel.scheduleMainValue
-        fare.text = viewModel.fare
+        etaLabel.text = viewModel.scheduleMainValue
+        fareLabel.text = viewModel.fare
         logoLoadingImageView.load(
             imageURL: viewModel.vehicleImageURL ?? viewModel.logoImageURL,
             placeholderImageName: "supplier_logo_placeholder"
         )
-        fareType.text = viewModel.fareType
+        fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         bottomImage.load(imageURL: viewModel.logoImageURL,
             placeholderImageName: "supplier_logo_placeholder")
-        fleetName.text = viewModel.fleetName
+        fleetNameLabel.text = viewModel.fleetName
+        
+        viewModel.isScheduled ? setScheduledDesign() : setASAPDesign()
     }
-    
+
     func resetView() {
         vehicleTypeLabel.text = nil
-        eta.text = nil
-        fare.text = nil
-        fareType.text = nil
+        etaLabel.text = nil
+        fareLabel.text = nil
+        fareTypeLabel.text = nil
         logoLoadingImageView.cancel()
     }
 }

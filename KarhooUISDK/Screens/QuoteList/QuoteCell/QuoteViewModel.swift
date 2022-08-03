@@ -119,6 +119,7 @@ final class QuoteViewModel {
     let pickUpType: String
     let passengerCapacity: Int
     let baggageCapacity: Int
+    let isScheduled: Bool
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -165,7 +166,7 @@ final class QuoteViewModel {
         self.fareType = quote.quoteType.description
         let origin = journeyDetails?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport
-
+        self.isScheduled = journeyDetails?.isScheduled ?? false
         switch quote.pickUpType {
         case .meetAndGreet: pickUpType = UITexts.Bookings.meetAndGreetPickup
         case .curbside: pickUpType = UITexts.Bookings.cubsidePickup
