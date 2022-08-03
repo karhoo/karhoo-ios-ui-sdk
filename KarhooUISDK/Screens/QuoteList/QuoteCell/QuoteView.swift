@@ -43,7 +43,7 @@ class QuoteView: UIView {
 
     private var viewModel: QuoteViewModel?
     // Constraints for both ASAP and Scheduled states. ASAP layout as default.
-    private lazy var constraintsForScheduledQuote: [NSLayoutConstraint] = [fareLabel.lastBaselineAnchor.constraint(equalTo: vehicleTypeLabel.lastBaselineAnchor)]
+    private lazy var constraintsForScheduledQuote: [NSLayoutConstraint] = [priceDetailsStack.centerYAnchor.constraint(equalTo: vehicleContainerView.centerYAnchor)]
     private lazy var constraintsForASAPQuote: [NSLayoutConstraint] = [fareLabel.lastBaselineAnchor.constraint(equalTo: etaLabel.lastBaselineAnchor)]
 
     // MARK: - Views
@@ -264,8 +264,8 @@ class QuoteView: UIView {
         containerStack.anchorToSuperview()
         viewWithBorder.anchorToSuperview(
             paddingTop: UIConstants.Spacing.small,
-            paddingLeading: UIConstants.Spacing.standard,
-            paddingTrailing: UIConstants.Spacing.standard,
+            paddingLeading: UIConstants.Spacing.medium,
+            paddingTrailing: UIConstants.Spacing.medium,
             paddingBottom: UIConstants.Spacing.small
         )
         topContentStack.anchorToSuperview(padding: UIConstants.Spacing.small)
