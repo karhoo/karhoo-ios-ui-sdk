@@ -9,7 +9,8 @@ import UIKit
 import KarhooSDK
 
 enum VehicleTag: String {
-    case electric, hybrid, wheelchair, childSeat, taxi, executive
+    case electric, hybrid, wheelchair, childSeat, taxi, executive, luxury
+    
     
     enum CodingKeys: String, CodingKey {
         case childSeat = "child-seat"
@@ -29,6 +30,9 @@ enum VehicleTag: String {
             return UITexts.VehicleTag.taxi
         case .executive:
             return UITexts.VehicleTag.executive
+        case .luxury:
+            return UITexts.VehicleTag.luxury
+            
         }
     }
     
@@ -45,6 +49,8 @@ enum VehicleTag: String {
         case .taxi:
             return UIImage.uisdkImage("taxi")
         case .executive:
+            return UIImage.uisdkImage("star")
+        case .luxury:
             return UIImage.uisdkImage("star")
         }
     }
@@ -113,6 +119,7 @@ final class QuoteViewModel {
     let pickUpType: String
     let passengerCapacity: Int
     let baggageCapacity: Int
+    let isScheduled: Bool
 
     /// If this message is not `nil`, it should be displayed
     let freeCancellationMessage: String?
@@ -127,11 +134,11 @@ final class QuoteViewModel {
         self.fleetName = quote.fleet.name
         self.fleetDescription = quote.fleet.description
         let journeyDetails = journeyDetailsManager.getJourneyDetails()
-        let scheduleTexts = QuoteViewModel.scheduleTexts(quote: quote,
+        let scheduleTexts = QuoteViewModel.getScheduleTexts(quote: quote,
                                                          journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        self.vehicleType = quote.vehicle.localizedVehicleType
+        self.vehicleType = Self.getVehicleTypeText(for: quote.vehicle)
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
@@ -159,7 +166,7 @@ final class QuoteViewModel {
         self.fareType = quote.quoteType.description
         let origin = journeyDetails?.originLocationDetails?.details.type
         self.showPickUpLabel = quote.pickUpType != .default && origin == .airport
-
+        self.isScheduled = journeyDetails?.isScheduled ?? false
         switch quote.pickUpType {
         case .meetAndGreet: pickUpType = UITexts.Bookings.meetAndGreetPickup
         case .curbside: pickUpType = UITexts.Bookings.cubsidePickup
@@ -175,7 +182,7 @@ final class QuoteViewModel {
         }
     }
 
-    private static func scheduleTexts(quote: Quote, journeyDetails: JourneyDetails?) -> (caption: String, value: String) {
+    private static func getScheduleTexts(quote: Quote, journeyDetails: JourneyDetails?) -> (caption: String, value: String) {
         if let scheduledDate = journeyDetails?.scheduledDate,
            let originTimeZone = journeyDetails?.originLocationDetails?.timezone() {
             // If the booking is prebooked display only the date + time
@@ -191,5 +198,16 @@ final class QuoteViewModel {
                                                             max: quote.vehicle.qta.highMinutes)
             return (etaCaption, etaMinutes)
         }
+    }
+    
+    private static func getVehicleTypeText(for vehicle: QuoteVehicle) -> String {
+        let tags = vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
+        if tags.contains(.executive) {
+            return UITexts.QuoteCategory.executive
+        }
+        if tags.contains(.luxury) {
+            return UITexts.VehicleClass.luxury
+        }
+        return vehicle.localizedVehicleType
     }
 }

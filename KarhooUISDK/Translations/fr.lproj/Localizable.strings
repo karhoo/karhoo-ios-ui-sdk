@@ -865,6 +865,8 @@
 
 "Text.VehicleTag.Wheelchair" = "Fauteuil roulant";
 
+"Text.VehicleTag.Luxury" = "luxe";
+
 "Text.VehicleType.Bus" = "Bus";
 
 "Text.VehicleType.Moto" = "Moto";
