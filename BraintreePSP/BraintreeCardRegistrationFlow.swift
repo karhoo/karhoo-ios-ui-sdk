@@ -75,13 +75,13 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                                                      currency: currencyCode)
 
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute { [weak self] result in
-            if let token = result.successValue() {
+            if let token = result.getSuccessValue() {
                 self?.buildBraintreeUI(paymentsToken: token)
             } else {
                 self?.baseViewController?.showAlert(title: UITexts.Generic.error,
                                           message: UITexts.Errors.missingPaymentSDKToken,
-                                          error: result.errorValue())
-                self?.callback?(.completed(value: .didFailWithError(result.errorValue())))
+                                          error: result.getErrorValue())
+                self?.callback?(.completed(value: .didFailWithError(result.getErrorValue())))
             }
         }
     }
@@ -155,10 +155,10 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             .execute { [weak self] result in
                 self?.baseViewController?.showLoadingOverlay(false)
 
-                guard let nonce = result.successValue() else {
-                    self?.baseViewController?.show(error: result.errorValue())
+                guard let nonce = result.getSuccessValue() else {
+                    self?.baseViewController?.show(error: result.getErrorValue())
                     self?.analyticsService.send(eventName: .userCardRegistrationFailed)
-                    self?.callback?(OperationResult.completed(value: .didFailWithError(result.errorValue())))
+                    self?.callback?(OperationResult.completed(value: .didFailWithError(result.getErrorValue())))
                     return
                 }
 
