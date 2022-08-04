@@ -223,11 +223,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         }
     }
     
-    @objc private func tappedChangeBackbourndColor() {
-        let isNewColor = view.backgroundColor!.cgColor == KarhooUI.colors.background1.cgColor
-        view.backgroundColor = isNewColor ? .white : KarhooUI.colors.background1
-    }
-    
     // MARK: - State handling
 
     private func updateFilterButtonState(using filtersCount: Int) {
