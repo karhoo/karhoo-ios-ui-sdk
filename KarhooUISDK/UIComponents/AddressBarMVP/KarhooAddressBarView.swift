@@ -74,8 +74,8 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         mainViewContainer.layer.cornerRadius = cornerRadious
         mainViewContainer.layer.masksToBounds = true
         if borderLine {
-            mainViewContainer.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
-            mainViewContainer.layer.borderWidth = 1.0
+            mainViewContainer.layer.borderColor = KarhooUI.colors.border.cgColor
+            mainViewContainer.layer.borderWidth =  UIConstants.Dimension.Border.standardWidth
         }
         addSubview(mainViewContainer)
         

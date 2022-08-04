@@ -24,6 +24,7 @@ final class QuoteListEmptyView: UIView, UITextViewDelegate {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.font = KarhooUI.fonts.bodyRegular()
+        $0.backgroundColor = .clear
         $0.textColor = KarhooUI.colors.text
         $0.textAlignment = .center
         if let attributedMessage = viewModel.attributedMessage {

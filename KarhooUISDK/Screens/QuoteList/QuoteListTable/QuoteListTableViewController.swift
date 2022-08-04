@@ -27,6 +27,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         $0.delegate = self
         $0.dataSource = self
         $0.bounces = false
+        $0.backgroundColor = .clear
         $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
@@ -45,7 +46,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     override func loadView() {
         view = UIView()
-        view.backgroundColor = KarhooUI.colors.background1
         setupView()
     }
 
@@ -78,7 +78,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     }
 
     private func setupProperties() {
-        view.backgroundColor = KarhooUI.colors.background1
+        view.backgroundColor = .clear
     }
 
     private func setupHierarchy() {
