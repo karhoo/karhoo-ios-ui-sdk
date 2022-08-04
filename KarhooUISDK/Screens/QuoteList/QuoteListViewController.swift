@@ -221,13 +221,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         }
-        
-        let itemButton = UIBarButtonItem(
-            title: "Switch",
-            style: .plain,
-            target: self,
-            action: #selector(tappedChangeBackbourndColor))
-        navigationItem.rightBarButtonItem = itemButton
     }
     
     @objc private func tappedChangeBackbourndColor() {
