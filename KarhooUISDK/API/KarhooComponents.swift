@@ -17,12 +17,14 @@ public class KarhooComponents: BookingScreenComponents {
     public func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView {
         let presenter = BookingAddressBarPresenter()
 
-        let addressBarView = KarhooAddressBarView(cornerRadious: 3.0,
-                                                  borderLine: true,
-                                                  dropShadow: false,
-                                                  verticalPadding: 5.0,
-                                                  horizontalPadding: 5.0,
-                                                  hidePickUpDestinationConnector: true)
+        let addressBarView = KarhooAddressBarView(
+            cornerRadious: UIConstants.CornerRadius.large,
+            borderLine: true,
+            dropShadow: false,
+            verticalPadding: 5.0,
+            horizontalPadding: 5.0,
+            hidePickUpDestinationConnector: true
+        )
 
         addressBarView.set(presenter: presenter)
         presenter.load(view: addressBarView)
