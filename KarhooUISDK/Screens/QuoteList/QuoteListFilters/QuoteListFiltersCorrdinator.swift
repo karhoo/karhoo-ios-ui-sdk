@@ -17,16 +17,20 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: QuoteListFiltersViewController
     private(set) var presenter: QuoteListFiltersPresenter!
-    
+
+    private let onFinish: () -> Void
+
     // MARK: - Initializator
     
     init(
         filters: [QuoteListFilter],
         navigationController: UINavigationController? = nil,
         onResultsForFiltersChosen: @escaping ([QuoteListFilter]) -> Int,
-        onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void
+        onFiltersConfirmed: @escaping ([QuoteListFilter]) -> Void,
+        onFinish: @escaping () -> Void = { }
     ) {
         self.navigationController = navigationController
+        self.onFinish = onFinish
         self.viewController = KarhooQuoteListFiltersViewController()
         self.presenter = KarhooQuoteListFiltersPresenter(
             filters: filters,
@@ -49,10 +53,15 @@ class KarhooQuoteListFiltersCoordinator: QuoteListFiltersCoordinator {
         let presentingViewController = navigationController ?? parentCoordinator.baseViewController
         presentingViewController.present(viewController, animated: true)
     }
+
+    func updateResults() {
+        presenter.updateResults()
+    }
 }
 
 extension KarhooQuoteListFiltersCoordinator: QuoteListFiltersRouter {
     func dismiss() {
         viewController.dismiss(animated: true, completion: nil)
+        onFinish()
     }
 }

@@ -25,6 +25,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
     private let router: QuoteListRouter
     var onStateUpdated: ((QuoteListState) -> Void)?
     var onFiltersCountUpdated: ((Int) -> Void)?
+    var onQuotesUpdated: () -> Void
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
@@ -39,7 +40,8 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         quoteFilter: QuoteFilterHandler = KarhooQuoteFilterHandler(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        onQuotesUpdated: @escaping () -> Void
     ) {
         self.router = router
         self.journeyDetailsManager = journeyDetailsManager
@@ -47,6 +49,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         self.quoteSorter = quoteSorter
         self.quoteFilter = quoteFilter
         self.analytics = analytics
+        self.onQuotesUpdated = onQuotesUpdated
         journeyDetailsManager.add(observer: self)
         
         if let journeyDetails = journeyDetails {
@@ -226,7 +229,7 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         case (_, _, _):
             onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
-
+        onQuotesUpdated()
         handleQuoteStatus()
     }
 

@@ -66,6 +66,9 @@ public struct UIConstants {
             
             /// 128
             public static let xxLarge: CGFloat = 128
+
+            /// 48
+            public static let mainActionButtonHeight: CGFloat = 48
         }
         
         public struct Icon {
@@ -192,9 +195,6 @@ public struct UIConstants {
             /// 180 x 180
             public static let driverDetailsViewSize = CGSize(width: 180, height: 180)
 
-            /// 48
-            public static let mainActionButtonHeight: CGFloat = 48
-
             /// 95%
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
@@ -274,12 +274,19 @@ public struct UIConstants {
         public static let overlay: CGFloat = 0.6
     }
 
-
     struct Animation {
         /// 0.5
         static let springWithDamping: CGFloat = 0.5
 
         /// 0.8
         static let initialSpringVelocity: CGFloat = 0.8
+    }
+
+    enum Shadow {
+        static let smallRadius: CGFloat = 1.5
+        
+        static let lightShadowAlpha: CGFloat = 0.2
+
+        static let shadowAlpha: CGFloat = 0.5
     }
 }

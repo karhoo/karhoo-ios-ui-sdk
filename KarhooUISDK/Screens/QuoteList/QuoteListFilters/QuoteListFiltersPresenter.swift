@@ -16,6 +16,8 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
     private let router: QuoteListFiltersRouter
     private let onResultsForFiltersChosen: ([QuoteListFilter]) -> Int
     private let onFiltersConfirmed: ([QuoteListFilter]) -> Void
+    var onQuotesUpdated: (() -> Void)?
+
     private(set) var filters: [QuoteListFilter]
 
     // MARK: - Lifecycle
@@ -58,5 +60,9 @@ class KarhooQuoteListFiltersPresenter: QuoteListFiltersPresenter {
 
     func resultsCountForSelectedFilters() -> Int {
         onResultsForFiltersChosen(filters)
+    }
+
+    func updateResults() {
+        onQuotesUpdated?()
     }
 }
