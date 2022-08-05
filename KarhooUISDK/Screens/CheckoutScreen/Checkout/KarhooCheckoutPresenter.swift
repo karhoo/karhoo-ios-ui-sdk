@@ -20,7 +20,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let threeDSecureProvider: ThreeDSecureProvider?
     private let tripService: TripService
     private let userService: UserService
-    private let loyaltyService: LoyaltyService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
     private let sdkConfiguration: KarhooUISDKConfiguration
@@ -43,7 +42,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
-        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
@@ -55,7 +53,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
-        self.loyaltyService = loyaltyService
         self.paymentNonceProvider = paymentNonceProvider
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
@@ -289,7 +286,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         if isLoyaltyEnabled(),
             let view = self.view {
             
-            view.getLoyaltyNonce { [weak self] result in
+            view.getLoyaltyNonce(quoteId: quote.id) { [weak self] result in
                 if let error = result.errorValue() {
                     if error.type == .failedToGenerateNonce {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
