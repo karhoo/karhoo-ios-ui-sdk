@@ -356,7 +356,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        reportPaymentSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
+        reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
         routeToBooking(result: ScreenResult.completed(result: trip))
     }
 
@@ -423,7 +423,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider?.threeDSecureCheck(
             nonce: nonce,
             currencyCode: quote.price.currencyCode,
-            paymentAmout: NSDecimalNumber(value: quote.price.highPrice),
+            paymentAmount: NSDecimalNumber(value: quote.price.highPrice),
             callback: { [weak self] result in
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)

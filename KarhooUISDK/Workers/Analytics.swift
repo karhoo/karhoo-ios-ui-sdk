@@ -125,7 +125,7 @@ final class KarhooAnalytics: Analytics {
                 Keys.errorMessage: message,
                 Keys.cardLast4Digits: lastFourDigits,
                 Keys.paymentMethodUsed: paymentMethodUsed,
-                Keys.date: dateString,
+                Keys.date: date.toString(),
                 Keys.amount: amount,
                 Keys.currency: currency
             ]
