@@ -553,7 +553,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
-            amount: quote.price.highPrice.description,
+            amount: quote.price.highPrice,
             currency: quote.price.currencyCode
         )
     }
@@ -567,7 +567,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func reportBookingSuccess(tripId: String, quoteId: String, correlationId: String?) {
-            analytics.bookingSucceed(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
+        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
     }
 
     private func reportBookingFailure(message: String, correlationId: String?) {
@@ -578,11 +578,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
-            amount: quote.price.highPrice.description,
+            amount: quote.price.highPrice,
             currency: quote.price.currencyCode
         )
     }
-
 }
 
 extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
