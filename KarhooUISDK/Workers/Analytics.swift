@@ -17,7 +17,7 @@ public protocol Analytics {
     func userCalledDriver(trip: TripInfo?)
     func pickupAddressSelected(locationDetails: LocationInfo)
     func destinationAddressSelected(locationDetails: LocationInfo)
-    func bookingRequested(quoteId: String, correlationId: String)
+    func bookingRequested(quoteId: String)
     func bookingSucceed(tripId: String, quoteId: String, correlationId: String)
     func bookingFailure(quoteId: String, correlationId: String, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
@@ -87,12 +87,11 @@ final class KarhooAnalytics: Analytics {
                   payload: [Keys.locationDetails: locationDetails])
     }
 
-    func bookingRequested(quoteId: String, correlationId: String) {
+    func bookingRequested(quoteId: String) {
         base.send(
             eventName: .checkoutBookingRequested,
             payload: [
-                Keys.quoteId: quoteId,
-                Keys.correlationId: correlationId
+                Keys.quoteId: quoteId
             ]
         )
     }

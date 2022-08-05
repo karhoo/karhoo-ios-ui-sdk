@@ -332,7 +332,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             map = metadata
         }
         tripBooking.meta = sdkConfiguration.paymentManager.getMetaWithUpdateTripIdIfRequired(meta: map, nonce: paymentNonce)
-        reportBookingEvent()
+        reportBookingEvent(quoteId: quote.id)
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
             self?.view?.setDefaultState()
 
@@ -570,19 +570,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
 
-    private func reportBookingEvent() {
-        guard let origin = journeyDetails.originLocationDetails else { return }
-        
-        func buildTripForAnalytics() -> TripInfo {
-             TripInfo(
-                origin: origin.toTripLocationDetails(),
-                destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
-                dateScheduled: journeyDetails.scheduledDate,
-                quote: quote.toTripQuote()
-             )
-        }
-        
-        analytics.bookingRequested(tripDetails: trip ?? buildTripForAnalytics())
+    private func reportBookingEvent(quoteId: String) {
+        analytics.bookingRequested(quoteId: quoteId)
     }
 
     private func reportPaymentSuccess(tripId: String, quoteId: String, correlationId: String?) {
