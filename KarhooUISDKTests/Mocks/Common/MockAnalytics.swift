@@ -11,6 +11,40 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 class MockAnalytics: Analytics {
+    func bookingRequested(quoteId: String) {
+        // TODO: write tests
+    }
+    
+    func bookingSucceed(tripId: String, quoteId: String, correlationId: String?) {
+        // TODO: write tests
+        paymentSucceedCalled = true
+    }
+    
+    func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String) {
+        // TODO: write tests
+        paymentFailedCalled = true
+    }
+    
+    func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String) {
+        // TODO: write tests
+    }
+    
+    func cardAuthorisationSuccess(quoteId: String) {
+        // TODO: write tests
+    }
+    
+    func loyaltyStatusRequested(quoteId: String, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?) {
+        // TODO: write tests
+    }
+    
+    func loyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?) {
+        // TODO: write tests
+    }
+    
+    func loyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode) {
+        // TODO: write tests
+    }
+    
     var prebookSetCalled = false
     func prebookSet(date: Date, timezone: String) {
         prebookSetCalled = true
