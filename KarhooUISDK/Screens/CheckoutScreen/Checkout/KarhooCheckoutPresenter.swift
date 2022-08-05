@@ -550,6 +550,29 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         analytics.checkoutOpened(quote)
     }
 
+
+    private func reportCardAuthorisationFailure(_ message: String) {
+        analytics.cardAuthorisationFailure(
+            quoteId: quote.id,
+            errorMessage: message,
+            lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
+        )
+    }
+
+    private func reportCardAuthorisationSucceed(){
+        analytics.cardAuthorisationSuccess(quoteId: quote.id)
+    }
+
+    private func reportLoyaltyStatusRequested(quoteId: String, loyaltyName: String, result: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String) {
+        if let trip = tripInfoForAnalytics {
+            analytics.loyaltyStatusRequested(quoteId: String, loyaltyName: String, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
+        }
+    }
+
     private func reportBookingEvent() {
         guard let origin = journeyDetails.originLocationDetails else { return }
         
@@ -571,13 +594,15 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportPaymentFailure(_ message: String) {
         analytics.paymentFailed(
-                message: message,
-                last4Digits: retrievePaymentNonce()?.lastFour ?? "",
-                date: Date(),
-                amount: quote.price.highPrice.description,
-                currency: quote.price.currencyCode
+            tripDetails: trip,
+            message: message,
+            last4Digits: retrievePaymentNonce()?.lastFour ?? "",
+            date: Date(),
+            amount: quote.price.highPrice.description,
+            currency: quote.price.currencyCode
         )
     }
+
 }
 
 extension KarhooCheckoutPresenter: PassengerDetailsDelegate {
