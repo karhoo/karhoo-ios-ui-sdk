@@ -23,7 +23,7 @@ public protocol Analytics {
     func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
     func loyaltyStatusRequested(quoteId: String, loyaltyName: String, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String)
-    func loyaltyPreAuthFail(tripDetails: TripInfo)
+    func loyaltyPreAuthFailure(quoteId: String, correlationId: String, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
     func loyaltyPreAuthSuccess(tripDetails: TripInfo)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
     func pastTripsOpened()
@@ -180,10 +180,10 @@ final class KarhooAnalytics: Analytics {
             payload[Keys.loyaltyStatusBalance] = loyaltyStatus.balance
         }
         if let errorSlug = errorSlug {
-            payload[Keys.loyaltyStatusErrorSlug] = errorSlug
+            payload[Keys.errorSlug] = errorSlug
         }
         if let errorMessage = errorMessage {
-            payload[Keys.loyaltyStatusErrorMessage] = errorMessage
+            payload[Keys.errorMessage] = errorMessage
         }
         base.send(
             eventName: .loyaltyStatusRequested,
@@ -200,14 +200,44 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func loyaltyPreAuthFail(
-        tripDetails: TripInfo
+    func loyaltyPreAuthFailure(
+        quoteId: String,
+        correlationId: String,
+        preauthType: LoyaltyMode,
+        errorSlug: String?,
+        errorMessage: String?
     ) {
+        
+        var preauthTypeName: String? {
+            switch preauthType {
+            case .none:
+                return "none"
+            case .earn:
+                return "earn"
+            case .burn:
+                return "burn"
+            case .error(_):
+                return nil
+            }
+        }
+        
+        var payload: [String : Any] = [
+            Keys.quoteId: quoteId,
+            Keys.correlationId: correlationId,
+        ]        
+        if let preauthTypeName = preauthTypeName {
+            payload[Keys.loyaltyPreauthType] = preauthTypeName
+        }
+        if let errorSlug = errorSlug {
+            payload[Keys.errorSlug] = errorSlug
+        }
+        if let errorMessage = errorMessage {
+            payload[Keys.errorMessage] = errorMessage
+        }
+        
         base.send(
-            eventName: .loyaltyPreauthFailed,
-            payload: [
-                Keys.tripId: tripDetails.tripId,
-            ]
+            eventName: .loyaltyPreauthFailure,
+            payload: payload
         )
     }
 
@@ -317,13 +347,14 @@ final class KarhooAnalytics: Analytics {
         static let loyaltyEnabled = "loyaltyEnabled"
         static let paymentMethodUsed = "paymentMethodUsed"
         static let correlationId = "correlationId"
-        static let loyaltyStatusSuccess = "LOYALTY_STATUS_SUCCESS"
-        static let loyaltyStatusCanBurn = "LOYALTY_STATUS_CAN_BURN"
-        static let loyaltyStatusCanEarn = "LOYALTY_STATUS_CAN_EARN"
-        static let loyaltyStatusBalance = "LOYALTY_STATUS_BALANCE"
-        static let loyaltyStatusErrorSlug = "LOYALTY_STATUS_ERROR_SLUG"
-        static let loyaltyStatusErrorMessage = "LOYALTY_STATUS_ERROR_MESSAGE"
+        static let loyaltyStatusSuccess = "loyalty_status_success"
+        static let loyaltyStatusCanBurn = "loyalty_status_can_burn"
+        static let loyaltyStatusCanEarn = "loyalty_status_can_earn"
+        static let loyaltyStatusBalance = "loyalty_status_balance"
+        static let errorSlug = "error_slug"
+        static let errorMessage = "error_message"
         static let loyaltyName = "loyaltyName"
+        static let loyaltyPreauthType = "loyalty_preauth_type"
 
         
 
