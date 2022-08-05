@@ -30,6 +30,7 @@ class QuoteCell: UITableViewCell {
     
     private func setUpView() {
         backgroundColor = .clear
+        selectionStyle = .none
         quoteView = QuoteView()
         contentView.addSubview(quoteView)
         
