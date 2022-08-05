@@ -24,6 +24,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var currentMode: LoyaltyMode = .none
     private var isSwitchOn: Bool = false
     private let analytics: Analytics
+    private var quoteId: String? // required for analvtics events
     
     private var didStartLoading: Bool = false {
         didSet {
@@ -94,7 +95,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     // MARK: - Status
-    func set(dataModel: LoyaltyViewDataModel) {
+    func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
         // Note: An empty loyaltyId means loyalty as a whole is not enabled
         guard !dataModel.loyaltyId.isEmpty
         else {
@@ -122,6 +123,14 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         isLoadingStatus = true
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
             self?.isLoadingStatus = false
+            self?.reportLoyaltyStatusRequested(
+                quoteId: self?.quoteId,
+                correlationId: result.correlationId(),
+                loyaltyName: self?.viewModel?.loyaltyId,
+                loyaltyStatus: result.successValue(),
+                errorSlug: result.errorValue()?.slug,
+                errorMessage: result.errorValue()?.message
+            )
             
             guard let status = result.successValue()
             else {
@@ -462,5 +471,24 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private func reportLoyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode){
         analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
     }
-
+    
+    
+    private func reportLoyaltyStatusRequested(
+        quoteId: String?,
+        correlationId: String?,
+        loyaltyName: String?,
+        loyaltyStatus: LoyaltyStatus?,
+        errorSlug: String?,
+        errorMessage: String?
+        
+    ) {
+            analytics.loyaltyStatusRequested(
+                quoteId: quoteId ?? "",
+                correlationId: errorMessage,
+                loyaltyName: correlationId,
+                loyaltyStatus: loyaltyStatus,
+                errorSlug: errorSlug,
+                errorMessage: errorSlug
+            )
+    }
 }

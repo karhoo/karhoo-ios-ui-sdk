@@ -22,7 +22,7 @@ public protocol Analytics {
     func bookingFailure(quoteId: String, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationFailure(quoteId: String, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: String, currency: String)
     func cardAuthorisationSuccess(quoteId: String)
-    func loyaltyStatusRequested(quoteId: String, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?, correlationId: String?)
+    func loyaltyStatusRequested(quoteId: String, correlationId: String?, loyaltyName: String?, loyaltyStatus: LoyaltyStatus?, errorSlug: String?, errorMessage: String?)
     func loyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String?)
     func loyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode)
     func trackTripOpened(tripDetails: TripInfo, isGuest: Bool)
@@ -173,11 +173,11 @@ final class KarhooAnalytics: Analytics {
 
     func loyaltyStatusRequested(
         quoteId: String,
+        correlationId: String?,
         loyaltyName: String?,
         loyaltyStatus: LoyaltyStatus?,
         errorSlug: String?,
-        errorMessage: String?,
-        correlationId: String?
+        errorMessage: String?
     ) {
         var payload: [String : Any] = [
             Keys.correlationId: correlationId ?? "",
