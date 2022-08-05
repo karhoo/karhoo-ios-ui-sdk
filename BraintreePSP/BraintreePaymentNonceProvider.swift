@@ -53,7 +53,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             case .success(let sdkToken, _):
                 self?.sdkToken = sdkToken
             case .failure:
-                self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.errorValue())))
+                self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.getErrorValue())))
                 return
             }
         }
