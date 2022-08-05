@@ -24,7 +24,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     private var currentMode: LoyaltyMode = .none
     private var isSwitchOn: Bool = false
     private let analytics: Analytics
-    private var quoteId: String? // required for analvtics events
+    private var quoteIdForAnalytics: String?
     
     private var didStartLoading: Bool = false {
         didSet {
@@ -95,7 +95,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
     
     // MARK: - Status
-    func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
+    func set(dataModel: LoyaltyViewDataModel, quoteId: String = "") {
+        self.quoteIdForAnalytics = quoteId
         // Note: An empty loyaltyId means loyalty as a whole is not enabled
         guard !dataModel.loyaltyId.isEmpty
         else {
@@ -124,7 +125,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
             self?.isLoadingStatus = false
             self?.reportLoyaltyStatusRequested(
-                quoteId: self?.quoteId,
+                quoteId: self?.quoteIdForAnalytics,
                 correlationId: result.correlationId(),
                 loyaltyName: self?.viewModel?.loyaltyId,
                 loyaltyStatus: result.successValue(),
@@ -410,7 +411,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         }
     }
     
-    func getLoyaltyPreAuthNonce(quoteId: String, completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         if  !currentMode.isEligibleForPreAuth {
             // Loyalty related web-services return slug based errors, not error code based ones
             // this error does not coincide with any error returned by the backend
@@ -439,10 +440,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         
         loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { [weak self] result in
             if let _ = result.successValue(), let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthSuccess(quoteId: quoteId, correlationId: result.correlationId(), preauthType: currentMode)
+                self?.reportLoyaltyPreAuthSuccess(quoteId: self?.quoteIdForAnalytics, correlationId: result.correlationId(), preauthType: currentMode)
             }
             if let error = result.errorValue(), let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthFailure(quoteId: quoteId, correlationId: result.correlationId(), preauthType: currentMode, errorSlug: error.slug, errorMessage: error.message)
+                self?.reportLoyaltyPreAuthFailure(quoteId: self?.quoteIdForAnalytics, correlationId: result.correlationId(), preauthType: currentMode, errorSlug: error.slug, errorMessage: error.message)
             }
             completion(result)
         }
@@ -464,12 +465,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     
     // MARK: - Analytics
     
-    private func reportLoyaltyPreAuthFailure(quoteId: String, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String){
-        analytics.loyaltyPreAuthFailure(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
+    private func reportLoyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String){
+        analytics.loyaltyPreAuthFailure(quoteId: quoteId ?? "", correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
     }
     
-    private func reportLoyaltyPreAuthSuccess(quoteId: String, correlationId: String?, preauthType: LoyaltyMode){
-        analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
+    private func reportLoyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode){
+        analytics.loyaltyPreAuthSuccess(quoteId: quoteId ?? "", correlationId: correlationId, preauthType: preauthType)
     }
     
     

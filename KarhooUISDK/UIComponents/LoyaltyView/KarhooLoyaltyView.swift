@@ -300,8 +300,8 @@ extension KarhooLoyaltyView: LoyaltyView {
         presenter.updateLoyaltyMode(with: .earn)
     }
     
-    func getLoyaltyPreAuthNonce(quoteId: String, completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        presenter.getLoyaltyPreAuthNonce(quoteId: quoteId, completion: completion)
+    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        presenter.getLoyaltyPreAuthNonce(completion: completion)
     }
     
     private func refreshBalanceView(with mode: LoyaltyBalanceMode) {
