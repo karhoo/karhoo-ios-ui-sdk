@@ -50,7 +50,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
         paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute {[weak self] result in
             switch result {
-            case .success(let sdkToken):
+            case .success(let sdkToken, _):
                 self?.sdkToken = sdkToken
             case .failure:
                 self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.errorValue())))
@@ -74,7 +74,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
     private func getNonce(payload: NonceRequestPayload, currencyCode: String) {
         paymentService.getNonce(nonceRequestPayload: payload).execute { [weak self] result in
             switch result {
-            case .success(let nonce): self?.execute3dSecureCheckOnNonce(nonce)
+            case .success(let nonce, _): self?.execute3dSecureCheckOnNonce(nonce)
             case .failure: self?.triggerAddCardFlow(currencyCode: currencyCode)
             }
         }
