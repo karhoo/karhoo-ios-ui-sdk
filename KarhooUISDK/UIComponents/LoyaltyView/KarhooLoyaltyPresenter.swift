@@ -486,7 +486,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         analytics.loyaltyStatusRequested(
             quoteId: quoteId,
             correlationId: correlationId,
-            loyaltyName: correlationId,
+            loyaltyName: loyaltyName,
             loyaltyStatus: loyaltyStatus,
             errorSlug: error?.slug,
             errorMessage: error?.message
