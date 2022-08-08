@@ -206,7 +206,7 @@ final class QuoteViewModel {
             return UITexts.QuoteCategory.executive
         }
         if tags.contains(.luxury) {
-            return UITexts.VehicleClass.luxury
+            return UITexts.VehicleTag.luxury
         }
         return vehicle.localizedVehicleType
     }
