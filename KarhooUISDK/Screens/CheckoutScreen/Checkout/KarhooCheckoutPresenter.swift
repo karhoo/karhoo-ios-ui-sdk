@@ -393,17 +393,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
                       flightNumber: view?.getFlightNumber())
-                 reportCardAuthorisationSuccess()
              case .cancelledByUser:
                  self.view?.setDefaultState()
              case .failedToAddCard(let error):
                  self.view?.setDefaultState()
                  self.view?.show(error: error)
-                 if let message = error?.message {
-                     self.reportCardAuthorisationFailure(message: message)
-                 }
                  default:
-                 self.reportCardAuthorisationFailure(message: "Unknown error")
                  self.view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
@@ -544,22 +539,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess(){
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
 
     private func reportBookingEvent(quoteId: String) {

@@ -13,6 +13,7 @@ protocol AddPaymentViewDelegate {
 
 protocol AddPaymentPresenter {
     func updateCardPressed(showRetryAlert: Bool)
+    func setQuote(_ quote: Quote)
 }
 
 protocol AddPaymentView: BaseView {

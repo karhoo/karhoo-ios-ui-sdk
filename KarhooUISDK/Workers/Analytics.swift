@@ -34,6 +34,7 @@ public protocol Analytics {
     func bookingScreenOpened()
     func checkoutOpened(_ quote: Quote)
     func quoteListOpened(_ journeyDetails: JourneyDetails)
+    func changePaymentDetailsPressed()
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -130,6 +131,10 @@ final class KarhooAnalytics: Analytics {
                 Keys.currency: currency
             ]
         )
+    }
+
+    func changePaymentDetailsPressed(){
+        base.send(eventName: .changePaymentDetailsPressed)
     }
 
     func cardAuthorisationFailure(
