@@ -23,7 +23,6 @@ jobs:
     environment:
       FASTLANE_LANE_TEST: UISDK_unit_tests
     shell: /bin/bash --login -eo pipefail
-    resource_class: xlarge
     steps:
       - checkout
       - run:
