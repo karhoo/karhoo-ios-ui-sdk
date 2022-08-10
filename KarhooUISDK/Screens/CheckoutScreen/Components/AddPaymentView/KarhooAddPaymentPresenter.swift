@@ -76,7 +76,8 @@ final class KarhooAddPaymentPresenter: AddPaymentPresenter {
         self.quote = quote
     }
 
-    // Analytics
+    // MARK: Analytics
+    
     private func reportCardAuthorisationFailure(message: String) {
         analytics.cardAuthorisationFailure(
             quoteId: quote?.id ?? "",
