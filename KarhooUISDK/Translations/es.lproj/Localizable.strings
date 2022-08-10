@@ -638,6 +638,8 @@
 
 "Text.Quotes.DriverArrivalTime" = "Hora de llegada del conductor";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Ingrese las direcciones de recogida y entrega para acceder a las ofertas.";
+
 "Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Falta la dirección de recogida o entrega.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
@@ -684,7 +686,7 @@
 
 "Text.Quotes.Result" = "";
 
-"Text.Quotes.Results" = "";
+"Text.Quotes.Results" = "%1$@ resultados";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Información";
@@ -904,8 +906,6 @@
 "Text.VehicleTag.Taxi" = "Taxi";
 
 "Text.VehicleTag.Wheelchair" = "Adaptado";
-
-"Text.VehicleTag.Luxury" = "Lujo";
 
 "Text.VehicleType.Bus" = "Autobús";
 
