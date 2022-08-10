@@ -214,8 +214,8 @@ final class KarhooLoyaltyView: UIView {
         if !didSetupConstraints {
             containerStackView.anchor(
                 leading: leadingAnchor,
-                bottom: bottomAnchor,
-                trailing: trailingAnchor
+                trailing: trailingAnchor,
+                bottom: bottomAnchor
             )
             
             topContainerConstraint = containerStackView.topAnchor.constraint(
@@ -253,12 +253,11 @@ final class KarhooLoyaltyView: UIView {
             infoLabel.anchor(
                 top: infoView.topAnchor,
                 leading: infoView.leadingAnchor,
-                bottom: infoView.bottomAnchor,
-                trailing: infoView.trailingAnchor,
+                trailing: infoView.trailingAnchor, bottom: infoView.bottomAnchor,
                 paddingTop: UIConstants.Spacing.medium,
                 paddingLeft: UIConstants.Spacing.medium,
-                paddingBottom: UIConstants.Spacing.medium,
-                paddingRight: UIConstants.Spacing.medium
+                paddingRight: UIConstants.Spacing.medium,
+                paddingBottom: UIConstants.Spacing.medium
             )
             
             balanceView.anchor(top: topAnchor, trailing: trailingAnchor)

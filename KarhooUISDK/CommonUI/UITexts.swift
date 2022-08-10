@@ -5,6 +5,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
+// swiftlint:disable file_length
 
 import Foundation
 import KarhooSDK
@@ -46,6 +47,7 @@ public enum UITexts {
         public static let card = "Text.Generic.Card".localized
         public static let reportIssue = "Text.Generic.ReportIssue".localized
         public static let rides = "Text.Generic.Rides".localized
+        public static let save = "Text.Generic.Save".localized
         public static let noMailSetUpMessage = "Text.Generic.NoEmailSetupError".localized
         public static let noCarsAvailable = "Text.Generic.NoCarsAvailable".localized
         public static let gotIt = "Text.Generic.GotIt".localized
@@ -65,6 +67,14 @@ public enum UITexts {
         public static let or = "Text.Generic.Or".localized
         public static let checked = "Text.Generic.Checked".localized
         public static let unchecked = "Text.Generic.Unchecked".localized
+        public static let sortBy = "Text.Generic.SortBy".localized
+        public static let driverArrival = "Text.Generic.DriverArrival".localized
+        public static let all = "Text.Generic.all".localized
+    }
+
+    public enum QuoteCell {
+        public static let details = "Text.QuoteCell.Details".localized
+        public static let driverArrival = "Text.QuoteCell.DriverArrival".localized
     }
 
     public enum GenericTripStatus {
@@ -119,6 +129,20 @@ public enum UITexts {
         public static let unsupportedCurrency = "Text.Error.UnsupportedCurrency".localized
         public static let unknownLoyaltyError = "Text.Error.UnkownLoyaltyError".localized
         public static let loyaltyModeNotEligibleForPreAuth = "Text.Error.LoyaltyModeNotEligibleForPreAuth".localized
+
+        // Quote List errors
+        static let errorNoAvailabilityForTheRequestTimeTitle = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle".localized
+        static let errorNoAvailabilityForTheRequestTimeMessage = "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle".localized
+        static let errorPickupAndDestinationSameTitle = "Text.Quotes.ErrorPickupAndDestinationSameTitle".localized
+        static let errorPickupAndDestinationSameMessage = "Text.Quotes.ErrorPickupAndDestinationSameSubtitle".localized
+        static let errorNoAvailabilityInRequestedAreaTitle = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle".localized
+        static let errorNoResultsForFilterTitle = "Text.Quotes.ErrorNoResultsForFilterTitle".localized
+        static let errorNoResultsForFilterMessage = "Text.Quotes.ErrorNoResultsForFilterSubtitle".localized
+        static let errorNoAvailabilityInRequestedAreaContactUsLinkText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText".localized
+        static let errorNoAvailabilityInRequestedAreaContactUsFullText = "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText".localized
+        static let errorDestinationOrOriginEmptyTitle = "Text.Quotes.ErrorDestinationOrOriginEmptyTitle".localized
+        static let errorDestinationOrOriginEmptyMessage = "Text.Quotes.ErrorDestinationOrOriginEmptySubtitle".localized
+
     }
 
     /* Payment Error */
@@ -263,12 +287,23 @@ public enum UITexts {
         public static let motorcycle = "Text.QuoteCategory.Motorcycle".localized
         public static let taxi = "Text.QuoteCategory.Taxi".localized
     }
+
+    public enum QuoteFilterCategory {
+        public static let vehicleType = "Text.Quotes.FilterVehicleType".localized
+        public static let vehicleClass = "Text.Quotes.FilterVehicleClass".localized
+        public static let vehicleExtras = "Text.Quotes.FilterVehicleExtras".localized
+        public static let ecoFriendly = "Text.Quotes.FilterEcoFriendly".localized
+        public static let fleetCapabilities = "Text.Quotes.FilterFleetCapabilities".localized
+        public static let quoteTypes = "Text.Quotes.FilterQuoteTypes".localized
+        public static let serviceAgreements = "Text.Quotes.FilterServiceAgreements".localized
+    }
     
     public enum VehicleClass {
         public static let saloon = "Text.VehicleClass.Saloon".localized
         public static let taxi = "Text.VehicleClass.Taxi".localized
         public static let mpv = "Text.VehicleClass.MPV".localized
         public static let exec = "Text.VehicleClass.Exec".localized
+        public static let luxury = "Text.VehicleClass.Luxury".localized
         public static let moto = "Text.VehicleClass.Moto".localized
         public static let motorcycle = "Text.VehicleClass.Motorcycle".localized
         public static let electric = "Text.VehicleClass.Electric".localized
@@ -288,6 +323,15 @@ public enum UITexts {
         public static let childseat = "Text.VehicleTag.Childseat".localized
         public static let taxi = "Text.VehicleTag.Taxi".localized
         public static let executive = "Text.VehicleTag.Executive".localized
+        public static let luxury = "Text.VehicleTag.Luxury".localized
+    }
+
+    public enum FleetCapabilities {
+        public static let flightTracking = "Text.FleetCapabilities.FlightTracking".localized
+        public static let trainTracking = "Text.FleetCapabilities.TrainTracking".localized
+        public static let gpsTracking = "Text.FleetCapabilities.GpsTracking".localized
+        public static let driverDetails = "Text.FleetCapabilities.DriverDetails".localized
+        public static let vehicleDetails = "Text.FleetCapabilities.VehicleDetails".localized
     }
     
     public enum CountryCodeSelection {
@@ -399,11 +443,21 @@ public enum UITexts {
     }
     
     public enum Quotes {
+        static let freeCancellation = "Text.Quote.FreeCancellation".localized
         static let freeCancellationPrebook = "Text.Quote.FreeCancellationPrebook".localized
         static let freeCancellationASAP = "Text.Quote.FreeCancellationASAP".localized
         static let freeCancellationAndKeyword = "Text.Quote.FreeCancellationAndKeyword".localized
         static let freeCancellationBeforeDriverEnRoute = "Text.Quote.FreeCancellationBeforeDriverEnRoute".localized
+        static let freeWaitingTime = "Text.Quote.FreeWaitingTime".localized
         static let feesAndTaxesIncluded = "Text.Quote.FeesAndTaxesIncluded".localized
+        static let result = "Text.Quotes.Result".localized
+        static let results = "Text.Quotes.Results".localized
+        static let driverArrivalTime = "Text.Quotes.DriverArrivalTime".localized
+        static let filter = "Text.Quotes.Filter".localized
+        static let filterPageResults = "Text.Quotes.FilterPageResults".localized
+        static let resetFilter = "Text.Quotes.ResetFilter".localized
+        static let filtersPassengers = "Text.Quotes.FiltersPassengers".localized
+        static let filtersLuggages = "Text.Quotes.FiltersLuggages".localized
     }
     
     public enum Loyalty {

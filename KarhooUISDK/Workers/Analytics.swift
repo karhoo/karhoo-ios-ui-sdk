@@ -34,6 +34,7 @@ public protocol Analytics {
     func bookingScreenOpened()
     func checkoutOpened(_ quote: Quote)
     func quoteListOpened(_ journeyDetails: JourneyDetails)
+    func changePaymentDetailsPressed()
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -117,13 +118,6 @@ final class KarhooAnalytics: Analytics {
         amount: Double,
         currency: String
     ) {
-        let dateString: String
-        if #available(iOS 15.0, *) {
-            dateString = date.ISO8601Format()
-        } else {
-            let formatter = DateFormatter()
-            dateString = formatter.string(from: date)
-        }
         base.send(
             eventName: .bookingFailure,
             payload: [
@@ -132,12 +126,17 @@ final class KarhooAnalytics: Analytics {
                 Keys.errorMessage: message,
                 Keys.cardLast4Digits: lastFourDigits,
                 Keys.paymentMethodUsed: paymentMethodUsed,
-                Keys.date: dateString,
+                Keys.date: date.toString(),
                 Keys.amount: amount,
                 Keys.currency: currency
             ]
         )
     }
+
+    func changePaymentDetailsPressed(){
+        base.send(eventName: .changePaymentDetailsPressed)
+    }
+
     func cardAuthorisationFailure(
         quoteId: String?,
         errorMessage: String,
@@ -305,7 +304,8 @@ final class KarhooAnalytics: Analytics {
             eventName: .quoteListOpened,
             payload: [
                 Keys.bookingOriginPlaceId: journeyDetails.originLocationDetails?.placeId ?? "",
-                Keys.bookingDestinationPlaceId: journeyDetails.destinationLocationDetails?.placeId ?? ""
+                Keys.bookingDestinationPlaceId: journeyDetails.destinationLocationDetails?.placeId ?? "",
+                Keys.date: journeyDetails.scheduledDate?.toString() ?? ""
             ]
         )
     }

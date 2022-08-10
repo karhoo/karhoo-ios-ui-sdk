@@ -57,8 +57,8 @@ final class RideCell: UITableViewCell {
         containerView.addSubview(containerStackView)
         containerStackView.anchor(top: containerView.topAnchor,
                                   leading: containerView.leadingAnchor,
-                                  bottom: containerView.bottomAnchor,
-                                  trailing: containerView.trailingAnchor)
+                                  trailing: containerView.trailingAnchor,
+                                  bottom: containerView.bottomAnchor)
         
         tripDetailsView = TripDetailsView()
         containerStackView.addArrangedSubview(tripDetailsView)
@@ -75,12 +75,12 @@ final class RideCell: UITableViewCell {
         cancellationInfoContainer.addSubview(cancellationInfo)
         cancellationInfo.anchor(top: cancellationInfoContainer.topAnchor,
                                 leading: cancellationInfoContainer.leadingAnchor,
-                                bottom: cancellationInfoContainer.bottomAnchor,
                                 trailing: cancellationInfoContainer.trailingAnchor,
+                                bottom: cancellationInfoContainer.bottomAnchor,
                                 paddingTop: 10,
                                 paddingLeft: 10,
-                                paddingBottom: 10,
-                                paddingRight: 10)
+                                paddingRight: 10,
+                                paddingBottom: 10)
         containerStackView.addArrangedSubview(cancellationInfoContainer)
         
         separatorLine = LineView(color: .lightGray, accessibilityIdentifier: "separator_view")

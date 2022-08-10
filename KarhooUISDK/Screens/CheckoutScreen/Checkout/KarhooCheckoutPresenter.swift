@@ -57,11 +57,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        baseFareDialogBuilder = baseFarePopupDialogBuilder
+        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
-        setQuoteValidityDeadline(quote.quoteExpirationDate)
+        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
     deinit {
@@ -170,6 +170,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func updateBookButtonWithEnabledState() {
         if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             view?.setMoreDetailsState()
+        } else if bookingRequestInProgress {
+            // nothing to do here, the view is already in `Requesting` state
         } else {
             view?.setDefaultState()
         }
@@ -309,13 +311,18 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             flight = nil
         }
         
-        var tripBooking = TripBooking(quoteId: quote.id,
-                                      passengers: Passengers(additionalPassengers: 0,
-                                                             passengerDetails: [passenger]),
-                                      flightNumber: flight,
-                                      paymentNonce: paymentNonce,
-                                      loyaltyNonce: loyaltyNonce,
-                                      comments: view?.getComments())
+        var tripBooking = TripBooking(
+            quoteId: quote.id,
+            passengers: Passengers(
+                additionalPassengers: journeyDetails.passangersCount - 1,
+                passengerDetails: [passenger],
+                luggage: Luggage(total: journeyDetails.luggagesCount)
+            ),
+            flightNumber: flight,
+            paymentNonce: paymentNonce,
+            loyaltyNonce: loyaltyNonce,
+            comments: view?.getComments()
+        )
         
         var map: [String: Any] = [:]
         if let metadata = bookingMetadata {
@@ -350,13 +357,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
         self.trip = trip
         reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
-        view?.showCheckoutView(false)
+        routeToBooking(result: ScreenResult.completed(result: trip))
     }
-    
+
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
-            callback(.completed(result: trip))
+            routeToBooking(result: .completed(result: trip))
         } else if let error = result.getErrorValue() {
             reportBookingFailure(message: error.message, correlationId: result.getCorrelationId())
             view?.showAlert(title: UITexts.Generic.error, message: "\(error.localizedMessage)", error: result.getErrorValue())
@@ -386,17 +393,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                  self.book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
                       flightNumber: view?.getFlightNumber())
-                 reportCardAuthorisationSuccess()
              case .cancelledByUser:
                  self.view?.setDefaultState()
              case .failedToAddCard(let error):
                  self.view?.setDefaultState()
                  self.view?.show(error: error)
-                 if let message = error?.message {
-                     self.reportCardAuthorisationFailure(message: message)
-                 }
                  default:
-                 self.reportCardAuthorisationFailure(message: "Unknown error")
                  self.view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
@@ -455,9 +457,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view?.showAsOverlay(item: popupDialog, animated: true)
     }
 
-    func didPressClose() {
+    func didPressCloseOnExpirationAlert() {
         PassengerInfo.shared.set(details: view?.getPassengerDetails())
-        view?.showCheckoutView(false)
+        routeToPreviousScene(result: ScreenResult.cancelled(byUser: false))
     }
 
     func screenHasFadedOut() {
@@ -481,6 +483,17 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
     
+
+    private func routeToBooking(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
+            self?.callback(result)
+        }
+    }
+
+    func routeToPreviousScene(result: ScreenResult<TripInfo>) {
+        view?.navigationController?.popViewController(animated: true)
+    }
+
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(journeyDetails) {
              view?.setAddFlightDetailsState()
@@ -524,36 +537,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     // MARK: - Analytics
 
-    private var tripInfoForAnalytics: TripInfo? {
-        if let trip = trip { return trip }
-        guard let origin = journeyDetails.originLocationDetails else { return  nil }
-        return TripInfo(
-            origin: origin.toTripLocationDetails(),
-            destination: journeyDetails.destinationLocationDetails?.toTripLocationDetails(),
-            dateScheduled: journeyDetails.scheduledDate,
-            quote: quote.toTripQuote()
-        )
-    }
-
-
     private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess(){
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
 
     private func reportBookingEvent(quoteId: String) {

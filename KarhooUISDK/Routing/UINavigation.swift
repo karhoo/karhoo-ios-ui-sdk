@@ -10,6 +10,8 @@ import UIKit
 
 public final class UINavigation: UIViewController, NavigationItem {
 
+    public override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+
     private let controller: UINavigationController
     private let controllerDelegate: NavigationItemDelegate // swiftlint:disable:this weak_delegate
 
