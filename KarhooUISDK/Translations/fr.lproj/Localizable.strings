@@ -79,7 +79,7 @@
 
 "K4020" = "Impossible de réserver un voyage avec le DMS sélectionné";
 
-"K4025" = "Prix du devis augmenté lors de la réservation";
+"K4025" = "Le prix de l'offre a augmenté lors de la réservation";
 
 /* Availability errors, K5xxx */
 "K5001" = "Impossible de trouver un devis";
@@ -338,7 +338,7 @@
 
 "Text.Error.Payment.Alert.Title" = "Un problème est survenu avec votre carte";
 
-"Text.Error.Payment.NoDetails.Message" = "Quelque chose s’est mal passé, veuillez réessayer ou sélectionner un autre devis";
+"Text.Error.Payment.NoDetails.Message" = "Quelque chose s’est mal passé, veuillez réessayer ou sélectionner une autre offre";
 
 /* Error message when user tries to prebook within the current hour of local time */
 "Text.Error.PrebookingWithinTheHour" = "L'heure et date de la commande doit être supérieure à une heure";
@@ -599,7 +599,7 @@
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
 "Text.Prebook.TimezoneMessage" = "Heure locale sera utilisée pour la réservation (%1$@)";
 
-"Text.Quote.FeesAndTaxesIncluded" = "Taxes et Frais Inclus";
+"Text.Quote.FeesAndTaxesIncluded" = "Taxes et Frais inclus";
 
 "Text.Quote.FreeCancellation" = "Annulation gratuite";
 
@@ -612,11 +612,11 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
 
-"Text.Quote.FreeWaitingTime" = "Temps d’attente gratuit";
+"Text.Quote.FreeWaitingTime" = "Attente gratuite";
 
 "Text.Quote.Results" = "%1$@ résultats";
 
-"Text.QuoteCategory.Electric" = "Electrique";
+"Text.QuoteCategory.Electric" = "Électrique";
 
 "Text.QuoteCategory.Exec" = "Business";
 
@@ -636,37 +636,37 @@
 
 "Text.QuoteCell.DriverArrival" = "Arrivée du chauffeur";
 
-"Text.Quotes.DriverArrivalTime" = "Heure d’arrivée du chauffeur";
+"Text.Quotes.DriverArrivalTime" = "Arrivée du chauffeur";
 
-"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "L’adresse de prise en charge ou de dépôt est manquante.";
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "L’adresse de départ ou d'arrivée est manquante.";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "S’il vous plaît choisir un autre horaire.";
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Veuillez choisir un autre horaire.";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure de la demande.";
+"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Aucune disponibilité pour l’heure demandée.";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes d’actualités";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ pour suggérer des flottes";
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contactez-nous";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Pas encore de flottes dans ce domaine";
+"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Nous n'avons pas encore de véhicules dans cette zone";
 
-"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Veuillez modifier votre sélection de filtre.";
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Veuillez modifier vos filtres.";
 
 "Text.Quotes.ErrorNoResultsForFilterTitle" = "Aucun résultat après filtrage.";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux devis";
+"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Veuillez modifier l’une des adresses pour accéder aux offres";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de prise en charge et de dépôt sont similaires";
+"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Les adresses de départ et d'arrivée sont identiques";
 
 "Text.Quotes.Filter" = "Filtrer";
 
 "Text.Quotes.FilterEcoFriendly" = "Respectueux de l’environnement";
 
-"Text.Quotes.FilterFleetCapabilities" = "Capacités de la flotte";
+"Text.Quotes.FilterFleetCapabilities" = "Capacités du prestataire";
 
 "Text.Quotes.FilterPageResults" = "Voir %1$@ résultats";
 
-"Text.Quotes.FilterQuoteTypes" = "Types de devis";
+"Text.Quotes.FilterQuoteTypes" = "Types d'offres";
 
 "Text.Quotes.FilterServiceAgreements" = "Annulation et temps d’attente";
 
@@ -674,17 +674,17 @@
 
 "Text.Quotes.FiltersPassengers" = "Passager(s)";
 
-"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+"Text.Quotes.FilterVehicleClass" = "Catégorie de véhicule";
 
-"Text.Quotes.FilterVehicleExtras" = "Extras du véhicule";
+"Text.Quotes.FilterVehicleExtras" = "Options du véhicule";
 
 "Text.Quotes.FilterVehicleType" = "Types de véhicules";
 
 "Text.Quotes.ResetFilter" = "Réinitialiser les filtres";
 
-"Text.Quotes.Result" = "";
+"Text.Quotes.Result" = "résultats";
 
-"Text.Quotes.Results" = "";
+"Text.Quotes.Results" = "résultats";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "À propos";
@@ -878,7 +878,7 @@
 
 "Text.VehicleClass.Exec" = "Business";
 
-"Text.VehicleClass.Luxury" = "luxe";
+"Text.VehicleClass.Luxury" = "Luxe";
 
 "Text.VehicleClass.Moto" = "Moto";
 
@@ -899,7 +899,7 @@
 
 "Text.VehicleTag.Hybrid" = "Hybride";
 
-"Text.VehicleTag.Luxury" = "luxe";
+"Text.VehicleTag.Luxury" = "Luxe";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
