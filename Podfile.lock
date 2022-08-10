@@ -58,19 +58,19 @@ PODS:
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
   - FloatingPanel (2.0.1)
-  - KarhooSDK (1.6.2):
+  - KarhooSDK (1.6.3):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.7.3):
-    - KarhooUISDK/Core (= 1.7.3)
-  - KarhooUISDK/Adyen (1.7.3):
+  - KarhooUISDK (1.8.0):
+    - KarhooUISDK/Core (= 1.8.0)
+  - KarhooUISDK/Adyen (1.8.0):
     - Adyen (= 4.7.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.7.3):
+  - KarhooUISDK/Braintree (1.8.0):
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.7.3):
+  - KarhooUISDK/Core (1.8.0):
     - FloatingPanel (= 2.0.1)
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
@@ -82,15 +82,15 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - ReachabilitySwift (5.0.0)
-  - SwiftFormat/CLI (0.49.9)
-  - SwiftLint (0.47.1)
+  - SwiftFormat/CLI (0.49.14)
+  - SwiftLint (0.48.0)
 
 DEPENDENCIES:
   - Adyen (= 4.7.1)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - FloatingPanel (= 2.0.1)
-  - KarhooSDK (= 1.6.2)
+  - KarhooSDK (= 1.6.3)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -124,14 +124,14 @@ SPEC CHECKSUMS:
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
-  KarhooSDK: f4851290d67750ebbc83b2d0506ad000ebdb1c12
-  KarhooUISDK: 33aeded4b61e5c24145b09edd4925bbe3bbdf1ae
+  KarhooSDK: ecdd7cdcaa76f2a3d52e3b2331414fde6c7d770e
+  KarhooUISDK: dd0dada714152e1867dc0980c7156feaa526d82f
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftFormat: 016c15401d06959ef9f81d7956462e91f55b8ac5
-  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+  SwiftFormat: 09cc5eb67ae49356c4ad9a2be6a0d5a4212b61bb
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 53916737150ece5deeca3d9c630a52518da40fda
+PODFILE CHECKSUM: 557bfb485c7bb6184ae74204985fca96582d34db
 
 COCOAPODS: 1.11.3

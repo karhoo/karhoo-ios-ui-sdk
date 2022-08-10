@@ -5,7 +5,6 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-
 import Foundation
 import KarhooSDK
 
@@ -69,6 +68,10 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
         status = journeyDetails
         broadcastState()
     }
+    
+    public func silentReset(with journeyDetails: JourneyDetails) {
+        status = journeyDetails
+    }
 
     public func getJourneyDetails() -> JourneyDetails? {
         return status
@@ -87,13 +90,13 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
         }
 
         addressService.reverseGeocode(position: desiredPickup.toPosition()).execute(callback: { [weak self] result in
-            if let newPickup = result.successValue() {
+            if let newPickup = result.getSuccessValue() {
                 self?.set(pickup: newPickup)
                 self?.set(prebookDate: journeyInfo?.date)
 
                 if let destination = journeyInfo?.destination {
                     self?.addressService.reverseGeocode(position: destination.toPosition()).execute(callback: { [weak self] result in
-                        if let newDestination = result.successValue() {
+                        if let newDestination = result.getSuccessValue() {
                             self?.set(destination: newDestination)
                         }
                     })

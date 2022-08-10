@@ -905,6 +905,8 @@
 
 "Text.VehicleTag.Wheelchair" = "Accessible PMR";
 
+"Text.VehicleTag.Luxury" = "luxe";
+
 "Text.VehicleType.Bus" = "Bus";
 
 "Text.VehicleType.Moto" = "Moto";

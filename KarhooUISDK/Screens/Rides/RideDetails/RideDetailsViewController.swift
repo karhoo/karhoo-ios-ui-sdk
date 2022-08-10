@@ -91,11 +91,11 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
 
         trackDriverButton.anchor(
             leading: view.leadingAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             trailing: view.trailingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
             paddingLeft: UIConstants.Spacing.standard,
-            paddingBottom: UIConstants.Spacing.standard,
-            paddingRight: UIConstants.Spacing.standard
+            paddingRight: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.standard
         )
     }
 
@@ -174,7 +174,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
         private
         func embedInNavigationController(_ vc: UIViewController,
                                          closeCallback: @escaping ScreenResultCallback<RideDetailsAction>) -> Screen {
-            let navigationController = UINavigationController(rootViewController: vc)
+            let navigationController = NavigationController(rootViewController: vc)
             let closeButton = CloseBarButton {
                 closeCallback(.cancelled(byUser: true))
             }

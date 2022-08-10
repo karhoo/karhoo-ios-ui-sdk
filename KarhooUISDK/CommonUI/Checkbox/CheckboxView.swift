@@ -16,7 +16,7 @@ class CheckboxView: UIControl {
     enum CustomConstants {
         static let visibleIconSideLenght: CGFloat = 18
         static let sideLenght: CGFloat = UIConstants.Dimension.Button.small
-        static let visibleAndActualWidthOffset: CGFloat = sideLenght - visibleIconSideLenght
+        static let visibleAndActualWidthOffset: CGFloat = 6
     }
 
     private enum SelectionState {
@@ -93,10 +93,16 @@ class CheckboxView: UIControl {
     }
 
     private func setupLayout() {
-        anchor(width: CustomConstants.sideLenght, height: CustomConstants.sideLenght)
+        widthAnchor.constraint(equalToConstant: CustomConstants.sideLenght).do {
+            $0.priority = .defaultHigh
+            $0.isActive = true
+        }
+        heightAnchor.constraint(equalToConstant: CustomConstants.sideLenght).do {
+            $0.priority = .defaultHigh
+            $0.isActive = true
+        }
         imageViewContainer.centerX(inView: self)
         imageViewContainer.centerY(inView: self)
-        imageView.anchor(width: CustomConstants.visibleIconSideLenght, height: CustomConstants.visibleIconSideLenght)
         imageView.anchorToSuperview(padding: UIConstants.Spacing.xxSmall)
     }
 
@@ -149,5 +155,6 @@ class CheckboxView: UIControl {
     @objc
     private func checkboxTapped(_ sender: UITapGestureRecognizer) {
         isSelected.toggle()
+        sendActions(for: .valueChanged)
     }
 }

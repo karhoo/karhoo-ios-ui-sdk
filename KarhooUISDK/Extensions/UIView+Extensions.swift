@@ -7,25 +7,15 @@
 //
 
 import UIKit
-import CoreGraphics
 
 extension UIView {
  
-    public func applyRoundCorners(corners: UIRectCorner = [.topLeft, .topRight],
-                                  radius: CGFloat = 20) {
-        let bottomOffset: CGFloat = 100
-
-        let roundCornersPath = UIBezierPath(roundedRect: CGRect(x: 0,
-                                                                y: 0,
-                                                                width: bounds.width,
-                                                                height: bounds.height + bottomOffset),
-                                            byRoundingCorners: corners,
-                                            cornerRadii: CGSize(width: radius, height: radius))
-
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.bounds
-        maskLayer.path = roundCornersPath.cgPath
-        layer.mask = maskLayer
+    func applyRoundCorners(
+        _ cornerMask: CACornerMask = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner],
+        radius: CGFloat
+    ) {
+        layer.cornerRadius = radius
+        layer.maskedCorners = cornerMask
     }
     
     public func animateBorderColor(toColor: UIColor, duration: Double) {
@@ -67,18 +57,20 @@ extension UIView {
         self.subviews.forEach { $0.backgroundColor = .random()}
     }
     
-    public func anchor(top: NSLayoutYAxisAnchor? = nil,
-                       left: NSLayoutXAxisAnchor? = nil,
-                       leading: NSLayoutXAxisAnchor? = nil,
-                       bottom: NSLayoutYAxisAnchor? = nil,
-                       right: NSLayoutXAxisAnchor? = nil,
-                       trailing: NSLayoutXAxisAnchor? = nil,
-                       paddingTop: CGFloat = 0,
-                       paddingLeft: CGFloat = 0,
-                       paddingBottom: CGFloat = 0,
-                       paddingRight: CGFloat = 0,
-                       width: CGFloat? = nil,
-                       height: CGFloat? = nil) {
+    public func anchor(
+        top: NSLayoutYAxisAnchor? = nil,
+        left: NSLayoutXAxisAnchor? = nil,
+        leading: NSLayoutXAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        trailing: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        paddingTop: CGFloat = 0,
+        paddingLeft: CGFloat = 0,
+        paddingRight: CGFloat = 0,
+        paddingBottom: CGFloat = 0,
+        width: CGFloat? = nil,
+        height: CGFloat? = nil
+    ) {
         translatesAutoresizingMaskIntoConstraints = false
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
@@ -92,16 +84,16 @@ extension UIView {
             leadingAnchor.constraint(equalTo: leading, constant: paddingLeft).isActive = true
         }
         
-        if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
-        }
-        
         if let right = right {
             rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
         if let trailing = trailing {
             trailingAnchor.constraint(equalTo: trailing, constant: -paddingRight).isActive = true
+        }
+        
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
         }
         
         if let width = width {
@@ -126,12 +118,12 @@ extension UIView {
         anchor(
             top: superview.topAnchor,
             leading: superview.leadingAnchor,
-            bottom: superview.bottomAnchor,
             trailing: superview.trailingAnchor,
+            bottom: superview.bottomAnchor,
             paddingTop: paddingTop,
             paddingLeft: paddingLeading,
-            paddingBottom: paddingBottom,
-            paddingRight: paddingTrailing
+            paddingRight: paddingTrailing,
+            paddingBottom: paddingBottom
         )
     }
 
@@ -157,21 +149,29 @@ extension UIView {
         }
     }
     
-    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil) {
+    public func setDimensions(height: CGFloat? = nil, width: CGFloat? = nil, priority: UILayoutPriority = .required) {
         translatesAutoresizingMaskIntoConstraints = false
         if let width = width {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+            widthAnchor.constraint(equalToConstant: width).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
         
         if let height = height {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+            heightAnchor.constraint(equalToConstant: height).do {
+                $0.priority = priority
+                $0.isActive = true
+            }
         }
     }
-    
-    func addShadow() {
+
+    /// Add shadow with given opacity (default = 0.5) and radius (default from UIKit = 3) and 0.5,0.5 offset.
+    func addShadow(_ opacity: Float = Float(UIConstants.Alpha.shadow), radius: CGFloat = 3) {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.55
+        layer.shadowOpacity = opacity
         layer.shadowOffset = CGSize.init(width: 0.5, height: 0.5)
         layer.masksToBounds = false
+        layer.shadowRadius = radius
     }
 }

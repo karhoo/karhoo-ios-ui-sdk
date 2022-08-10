@@ -24,6 +24,10 @@ public struct KHVehicleCapacityViewID {
     public static let additionalFleetCapabilitiesLabel = "additional_capabilities_label"
 }
 
+/// NOTE: New layout created in NewVehicleCapacityView.swift
+/// Remove this file and use new one for Checkout View
+
+
 final class VehicleCapacityView: UIStackView {
     
     // MARK: - UI
@@ -216,17 +220,19 @@ final class VehicleCapacityView: UIStackView {
     // MARK: - Public
     public func setBaggageCapacity(_ value: Int) {
         guard value > 0 else {
-            baggageContentView.removeFromSuperview()
+            baggageContentView.isHidden = true
             return
         }
+        baggageContentView.isHidden = false
         baggageCapacityLabel.text = "\(value)"
     }
     
     public func setPassengerCapacity(_ value: Int) {
         guard value > 0 else {
-            passengerCapacityContentView.removeFromSuperview()
+            passengerCapacityContentView.isHidden = true
             return
         }
+        passengerCapacityContentView.isHidden = false
         passengerCapacityLabel.text = "\(value)"
     }
     

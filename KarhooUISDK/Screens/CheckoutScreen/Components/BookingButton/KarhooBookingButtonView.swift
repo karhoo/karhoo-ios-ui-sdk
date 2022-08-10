@@ -102,8 +102,8 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
             
             containerView.anchor(top: topAnchor,
                                  leading: leadingAnchor,
-                                 bottom: bottomAnchor,
                                  trailing: trailingAnchor,
+                                 bottom: bottomAnchor,
                                  paddingLeft: 20.0,
                                  paddingRight: 20.0)
 
@@ -129,8 +129,8 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
 
             button.anchor(top: topAnchor,
                           leading: leadingAnchor,
-                          bottom: bottomAnchor,
-                          trailing: trailingAnchor)
+                          trailing: trailingAnchor,
+                          bottom: bottomAnchor)
 
             didSetupConstraints = true
         }
