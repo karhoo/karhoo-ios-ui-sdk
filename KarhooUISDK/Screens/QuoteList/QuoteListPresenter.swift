@@ -235,9 +235,9 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
     private func handleResult(result: Result<Quotes>, journeyDetails: JourneyDetails) {
         switch result {
-        case .success(let quotes):
+        case .success(let quotes, _):
             quoteSearchSuccessResult(quotes, journeyDetails: journeyDetails)
-        case .failure(let error):
+        case .failure(let error, _):
             quoteSearchErrorResult(error)
         @unknown default:
             break

@@ -29,10 +29,10 @@ final class MockKarhooPollExecutor: KarhooPollExecutor {
     func startPolling<T>(pollTime: TimeInterval, callback: @escaping CallbackClosure<T>) {
         startedPolling = true
         pollingCallback = { (result: Result<Any>) -> Void in
-            if let value = result.successValue() as? T {
+            if let value = result.getSuccessValue() as? T {
                 callback(.success(result: value))
             } else {
-                callback(.failure(error: result.errorValue()))
+                callback(.failure(error: result.getErrorValue()))
             }
         }
     }

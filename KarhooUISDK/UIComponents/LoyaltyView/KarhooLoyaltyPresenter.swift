@@ -14,16 +14,18 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     enum LoyaltyState {
         case noError, earnPointsError, burnPointsError
     }
-    
+
     weak var delegate: LoyaltyViewDelegate?
     weak var presenterDelegate: LoyaltyPresenterDelegate?
-    
+
     private var viewModel: LoyaltyViewModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
     private var currentMode: LoyaltyMode = .none
     private var isSwitchOn: Bool = false
-    
+    private let analytics: Analytics
+    private var quoteIdForAnalytics: String?
+
     private var didStartLoading: Bool = false {
         didSet {
             if didStartLoading {
@@ -31,7 +33,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             }
         }
     }
-    
+
     private var isLoadingStatus: Bool = false {
         didSet {
             if isLoadingStatus, !didStartLoading {
@@ -40,7 +42,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             isLoadingDidChange()
         }
     }
-    
+
     private var isLoadingGetEarnPoints: Bool = false {
         didSet {
             if isLoadingGetEarnPoints, !didStartLoading {
@@ -49,7 +51,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             isLoadingDidChange()
         }
     }
-    
+
     private var isLoadingGetBurnPoints: Bool = false {
         didSet {
             if isLoadingGetBurnPoints, !didStartLoading {
@@ -58,93 +60,100 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             isLoadingDidChange()
         }
     }
-    
+
     private var getBurnAmountError: KarhooError? {
         didSet {
             didSetLoyaltyError(getBurnAmountError)
         }
     }
-    
+
     private var getEarnAmountError: KarhooError? {
         didSet {
             didSetLoyaltyError(getEarnAmountError)
         }
     }
-    
+
     private var getStatusError: KarhooError? {
         didSet {
             didSetLoyaltyError(getStatusError)
         }
     }
-    
+
     var balance: Int {
         viewModel?.balance ?? 0
     }
-    
+
     // MARK: - Init
     init(
         userService: UserService = Karhoo.getUserService(),
-        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService()
+        loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.userService = userService
         self.loyaltyService = loyaltyService
+        self.analytics = analytics
     }
-    
+
     // MARK: - Status
-    func set(dataModel: LoyaltyViewDataModel) {
+    func set(dataModel: LoyaltyViewDataModel, quoteId: String = "") {
+        self.quoteIdForAnalytics = quoteId
         // Note: An empty loyaltyId means loyalty as a whole is not enabled
         guard !dataModel.loyaltyId.isEmpty
         else {
             self.hideLoyaltyComponent()
             return
         }
-        
         viewModel = LoyaltyViewModel(request: dataModel)
-        
         if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: dataModel.loyaltyId) {
             self.set(status: status)
         }
-        
         updateViewVisibilityFromViewModel()
         refreshStatus()
     }
-    
+
     private func refreshStatus() {
         guard let id = viewModel?.loyaltyId
         else {
             hideLoyaltyComponent()
             return
         }
-        
+
         isLoadingStatus = true
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
             self?.isLoadingStatus = false
-            
-            guard let status = result.successValue()
+            self?.reportLoyaltyStatusRequested(
+                quoteId: self?.quoteIdForAnalytics,
+                correlationId: result.getCorrelationId(),
+                loyaltyName: self?.viewModel?.loyaltyId,
+                loyaltyStatus: result.getSuccessValue(),
+                error: result.getErrorValue()
+            )
+
+            guard let status = result.getSuccessValue()
             else {
-                self?.getStatusError = result.errorValue()
+                self?.getStatusError = result.getErrorValue()
                 self?.updateUI()
                 return
             }
-            
+
             self?.getStatusError = nil
             self?.handleGetStatusResponse(status: status)
         }
     }
-    
+
     private func handleGetStatusResponse(status: LoyaltyStatus) {
         set(status: status)
         updateViewVisibilityFromViewModel()
         updateEarnedPoints()
         updateBurnedPoints()
     }
-    
+
     func set(status: LoyaltyStatus) {
         viewModel?.canEarn = status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn
         viewModel?.canBurn = status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn
         viewModel?.balance = status.balance
     }
-    
+
     // MARK: - Earn
     func updateEarnedPoints() {
         guard let viewModel = viewModel,
@@ -158,7 +167,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             from: viewModel.tripAmount,
             currencyCode: viewModel.currency
         )
-        
+
         isLoadingGetEarnPoints = true
         loyaltyService.getLoyaltyEarn(
             identifier: viewModel.loyaltyId,
@@ -167,21 +176,21 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             burnPoints: 0
         ).execute { [weak self] result in
             self?.isLoadingGetEarnPoints = false
-            
-            guard let value = result.successValue()
+
+            guard let value = result.getSuccessValue()
             else {
-                let error = result.errorValue()
+                let error = result.getErrorValue()
                 self?.getEarnAmountError = error
                 self?.updateUI()
                 return
             }
-            
+
             self?.viewModel?.earnAmount = value.points
             self?.getEarnAmountError = nil
             self?.updateUI()
         }
     }
-    
+
     // MARK: - Burn
     func updateBurnedPoints() {
         guard let viewModel = viewModel,
@@ -189,13 +198,13 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         else {
             return
         }
-        
+
         // Convert $ amount to minor units (cents)
         let amount = CurrencyCodeConverter.minorUnitAmount(
             from: viewModel.tripAmount,
             currencyCode: viewModel.currency
         )
-        
+
         isLoadingGetBurnPoints = true
         loyaltyService.getLoyaltyBurn(
             identifier: viewModel.loyaltyId,
@@ -203,39 +212,38 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             amount: amount
         ).execute { [weak self] result in
             self?.isLoadingGetBurnPoints = false
-            
-            guard let value = result.successValue()
+
+            guard let value = result.getSuccessValue()
             else {
-                let error = result.errorValue()
+                let error = result.getErrorValue()
                 self?.getBurnAmountError = error
                 self?.updateUI()
                 return
             }
-            
+
             self?.getBurnAmountError = nil
             self?.viewModel?.burnAmount = value.points
-            
+
             if !(self?.hasEnoughBalance() ?? false) {
                 self?.updateLoyaltyMode(with: .error(type: .insufficientBalance))
             }
-            
+
             self?.updateUI()
         }
     }
-    
+
     // MARK: - Mode
     func getCurrentMode() -> LoyaltyMode {
         return currentMode
     }
-    
+
     func updateLoyaltyMode(with mode: LoyaltyMode) {
         if mode == currentMode {
             return
         }
-        
         let canEarn = viewModel?.canEarn ?? false
         let canBurn = viewModel?.canBurn ?? false
-        
+
         switch mode {
         case .none:
             currentMode = .none
@@ -252,16 +260,16 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .error(let type):
             currentMode = .error(type: type)
         }
-        
+
         delegate?.didChangeMode(newValue: currentMode)
         handleModeChanged()
     }
-    
+
     private func handleModeChanged() {
         switch currentMode {
         case .none, .earn, .burn:
             updateUI()
-        case .error(_):
+        case .error:
             if getStatusError != nil {
                 refreshStatus()
             } else if getEarnAmountError != nil {
@@ -273,7 +281,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             }
         }
     }
-    
+
     private func updateUI() {
         updateViewVisibilityFromViewModel()
         switch currentMode {
@@ -283,28 +291,27 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             presenterDelegate?.updateWith(mode: currentMode, earnSubtitle: getEarnText(), burnSubtitle: getBurnText(), errorMessage: nil)
         }
     }
-    
+
     // MARK: - Utils
     private func hasEnoughBalance() -> Bool {
         guard let viewModel = viewModel
         else {
             return false
         }
-
         return viewModel.balance >= viewModel.burnAmount
     }
-    
+
     private func didSetLoyaltyError(_ error: KarhooError?) {
         if let error = error {
             let type: LoyaltyErrorType = error.type == .unknownCurrency ? .unsupportedCurrency : .unknownError
             updateLoyaltyMode(with: .error(type: type))
         }
     }
-    
+
     private func getEarnText() -> String {
         let canEarn = viewModel?.canEarn ?? false
         switch currentMode {
-        case .none, .error(_):
+        case .none, .error:
             return ""
         case .burn:
             return canEarn ? getLocalizedEarnPointsText(for: 0) : ""
@@ -313,17 +320,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return canEarn ? getLocalizedEarnPointsText(for: earnAmount) : ""
         }
     }
-    
+
     private func getLocalizedEarnPointsText(for amount: Int) -> String {
         String(
             format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
             "\(amount)"
         )
     }
-    
+
     private func getBurnText() -> String {
         switch currentMode {
-        case .none, .earn, .error(_):
+        case .none, .earn, .error:
             let canBurn = viewModel?.canBurn ?? false
             return canBurn ? UITexts.Loyalty.burnOffSubtitle : ""
         case .burn:
@@ -336,7 +343,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             )
         }
     }
-    
+
     private func getErrorMessage(for error: LoyaltyErrorType) -> String {
         switch error {
         case .none:
@@ -349,11 +356,10 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return UITexts.Errors.unknownLoyaltyError
         }
     }
-    
+
     private func updateViewVisibilityFromViewModel() {
         let canEarn = viewModel?.canEarn ?? false
         let canBurn = viewModel?.canBurn ?? false
-        
         switch currentMode {
         case .none, .earn, .burn:
             presenterDelegate?.togglefeatures(earnOn: canEarn, burnOn: canBurn)
@@ -366,11 +372,11 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             }
         }
     }
-    
+
     private func hideLoyaltyComponent() {
         presenterDelegate?.togglefeatures(earnOn: false, burnOn: false)
     }
-    
+
     private func isLoadingDidChange() {
         let isLoading = isLoadingStatus || isLoadingGetEarnPoints || isLoadingGetBurnPoints
         if !isLoading {
@@ -378,7 +384,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             delegate?.didEndLoading()
         }
     }
-    
+
     // MARK: - Pre-Auth
     private func canPreAuth() -> Bool {
         guard let viewModel = viewModel,
@@ -397,17 +403,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             return true
         }
     }
-    
+
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        if  !currentMode.isEligibleForPreAuth {
+        if !currentMode.isEligibleForPreAuth {
             // Loyalty related web-services return slug based errors, not error code based ones
             // this error does not coincide with any error returned by the backend
             // Although the message is not shown in the UISDK implementation it will serve DPs when integrating as a standalone component
-            let error =  ErrorModel(message: UITexts.Errors.loyaltyModeNotEligibleForPreAuth, code: "KP005")
+            let error = ErrorModel(message: UITexts.Errors.loyaltyModeNotEligibleForPreAuth, code: "KP005")
             completion(.failure(error: error))
             return
         }
-        
+
         guard canPreAuth(),
               let viewModel = viewModel
         else {
@@ -415,7 +421,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             completion(Result.failure(error: error))
             return
         }
-        
+
         let flexPay = canFlexPay()
         let points = getLoyaltyBurnPointsForPreAuth()
         let request = LoyaltyPreAuth(
@@ -424,23 +430,66 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             points: points,
             flexpay: flexPay, membership: ""
         )
-        
-        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { result in
+
+        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { [weak self] result in
+            if result.getSuccessValue() != nil, let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthSuccess(
+                    quoteId: self?.quoteIdForAnalytics,
+                    correlationId: result.getCorrelationId(),
+                    preauthType: currentMode
+                )
+            }
+            if let error = result.getErrorValue(), let currentMode = self?.currentMode {
+                self?.reportLoyaltyPreAuthFailure(
+                    quoteId: self?.quoteIdForAnalytics,
+                    correlationId: result.getCorrelationId(),
+                    preauthType: currentMode,
+                    errorSlug: error.slug,
+                    errorMessage: error.message
+                )
+            }
             completion(result)
         }
     }
-    
+
     private func canFlexPay() -> Bool {
         return currentMode != .burn // This will be adapted when we integrate flexPay
     }
-    
+
     private func getLoyaltyBurnPointsForPreAuth() -> Int {
         guard let viewModel = viewModel
         else {
             return 0
         }
-        
+
         // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
         return currentMode == .burn ? viewModel.burnAmount : 0
+    }
+
+    // MARK: - Analytics
+
+    private func reportLoyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String) {
+        analytics.loyaltyPreAuthFailure(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
+    }
+
+    private func reportLoyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode) {
+        analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
+    }
+
+    private func reportLoyaltyStatusRequested(
+        quoteId: String?,
+        correlationId: String?,
+        loyaltyName: String?,
+        loyaltyStatus: LoyaltyStatus?,
+        error: KarhooError?
+    ) {
+        analytics.loyaltyStatusRequested(
+            quoteId: quoteId,
+            correlationId: correlationId,
+            loyaltyName: loyaltyName,
+            loyaltyStatus: loyaltyStatus,
+            errorSlug: error?.slug,
+            errorMessage: error?.message
+        )
     }
 }

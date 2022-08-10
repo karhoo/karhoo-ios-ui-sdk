@@ -13,7 +13,7 @@ extension Observer {
 
     static func value(_ closure: @escaping ((ResponseType) -> Void)) -> Observer<ResponseType> {
         let newClosure = { (result: Result<ResponseType>) in
-            guard let value = result.successValue() else {
+            guard let value = result.getSuccessValue() else {
                 return
             }
             closure(value)
@@ -26,7 +26,7 @@ extension Observer {
             guard result.isSuccess() == false else {
                 return
             }
-            closure(result.errorValue())
+            closure(result.getErrorValue())
         }
         return Observer<ResponseType>(newClosure)
     }

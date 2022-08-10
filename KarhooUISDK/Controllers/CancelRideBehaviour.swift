@@ -50,7 +50,7 @@ final class CancelRideBehaviour: CancelRideBehaviourProtocol {
                 }
                 
                 if result.isSuccess() {
-                    self.showCancellationFeeAlert(cancellationFee: result.successValue() ?? CancellationFee())
+                    self.showCancellationFeeAlert(cancellationFee: result.getSuccessValue() ?? CancellationFee())
                 } else {
                     self.showCancellationFailedAlert()
                 }
