@@ -21,6 +21,7 @@ public protocol JourneyDetailsManager {
     func set(destination: LocationInfo?)
     func set(prebookDate: Date?)
     func reset(with journeyDetails: JourneyDetails)
+    func silentReset(with journeyDetails: JourneyDetails)
     func reset()
     func setJourneyInfo(journeyInfo: JourneyInfo?)
     func getJourneyDetails() -> JourneyDetails?

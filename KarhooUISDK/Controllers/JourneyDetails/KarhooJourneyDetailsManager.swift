@@ -5,7 +5,6 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-
 import Foundation
 import KarhooSDK
 
@@ -68,6 +67,10 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
     public func reset(with journeyDetails: JourneyDetails) {
         status = journeyDetails
         broadcastState()
+    }
+    
+    public func silentReset(with journeyDetails: JourneyDetails) {
+        status = journeyDetails
     }
 
     public func getJourneyDetails() -> JourneyDetails? {

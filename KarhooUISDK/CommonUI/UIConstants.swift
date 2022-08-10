@@ -51,7 +51,10 @@ public struct UIConstants {
         public struct Button {
             /// 24
             public static let small: CGFloat = 24
-            
+
+            /// 32
+            public static let medium: CGFloat = 32
+
             /// 44
             public static let standard: CGFloat = 44
             
@@ -63,6 +66,9 @@ public struct UIConstants {
             
             /// 128
             public static let xxLarge: CGFloat = 128
+
+            /// 48
+            public static let mainActionButtonHeight: CGFloat = 48
         }
         
         public struct Icon {
@@ -83,7 +89,10 @@ public struct UIConstants {
             
             /// 64
             public static let xxLarge: CGFloat = 64 //54+
-            
+
+            /// 120
+            public static let xxxLarge: CGFloat = 120
+
             /// 222
             public static let logoWidth: CGFloat = 222
         }
@@ -136,6 +145,9 @@ public struct UIConstants {
         public struct View {
             /// 4
             public static let tabSelectionIndicatorHeight: CGFloat = 4
+
+            /// 4
+            public static let loadingBarHeight: CGFloat = 4
             
             /// 22 x 22
             public static let loadingHudSize = CGSize(width: 22.0, height: 22.0)
@@ -150,10 +162,10 @@ public struct UIConstants {
             public static let rowHeight: CGFloat = 50 //includes KarhooQuoteListViewController > prebookQuotesTitleLabel height
             
             /// 60
-            public static let largeRowHeight: CGFloat = 60 // includes the address search bar height & KarhooQuoteListViewController > quoteCategoryBarView height
+            public static let largeRowHeight: CGFloat = 60 // includes the address search bar height
             
             /// 20
-            public static let tagHeight: CGFloat = 20 // KarhooQuoteCategoryBarView > markerView height
+            public static let tagHeight: CGFloat = 20
             
             /// 30
             public static let largeTagHeight: CGFloat = 30
@@ -183,8 +195,8 @@ public struct UIConstants {
             /// 180 x 180
             public static let driverDetailsViewSize = CGSize(width: 180, height: 180)
 
-            /// 48
-            public static let mainActionButtonHeight: CGFloat = 48
+            /// 95%
+            public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
     }
     
@@ -201,7 +213,7 @@ public struct UIConstants {
         /// 10
         public static let large: CGFloat = 10
 
-        /// 64
+        /// 12
         public static let xLarge: CGFloat = 12
     }
     
@@ -255,8 +267,26 @@ public struct UIConstants {
         
         /// 0.5
         public static let shadow: CGFloat = 0.5
+
+        static let lightShadow: CGFloat = 0.2
         
         /// 0.6
         public static let overlay: CGFloat = 0.6
+    }
+
+    struct Animation {
+        /// 0.5
+        static let springWithDamping: CGFloat = 0.5
+
+        /// 0.8
+        static let initialSpringVelocity: CGFloat = 0.8
+    }
+
+    enum Shadow {
+        static let smallRadius: CGFloat = 1.5
+        
+        static let lightShadowAlpha: CGFloat = 0.2
+
+        static let shadowAlpha: CGFloat = 0.5
     }
 }

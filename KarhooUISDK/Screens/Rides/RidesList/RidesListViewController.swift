@@ -37,6 +37,13 @@ final class RidesListViewController: UIViewController, RidesListView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        presenter.load(screen: self)
+        forceLightMode()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
@@ -55,13 +62,6 @@ final class RidesListViewController: UIViewController, RidesListView {
                                                          height: offset))
         
         tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: offset, right: 0)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        presenter.load(screen: self)
-        forceLightMode()
     }
 
     func set(ridesListActions: RidesListActions) {
@@ -98,7 +98,7 @@ final class RidesListViewController: UIViewController, RidesListView {
     func rebookTrip(_ trip: TripInfo) {
         ridesListActions?.rebookTrip(trip)
     }
-
+    
     private func setUpEmptyStateView() {
         emptyStateView = EmptyStateView()
         view.addSubview(emptyStateView)

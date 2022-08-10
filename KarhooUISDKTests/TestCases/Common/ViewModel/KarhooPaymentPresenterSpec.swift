@@ -13,7 +13,7 @@ import KarhooSDK
 final class KarhooPaymentPresenterSpec: KarhooTestCase {
 
     private var testObject: KarhooAddPaymentPresenter!
-    private var mockAnalyticsService = MockAnalyticsService()
+    private var mockAnalytics = MockAnalytics()
     private var mockUserService = MockUserService()
     private var mockView = MockKarhooPaymentView()
     private var mockCardRegistrationFlow = MockCardRegistrationFlow()
@@ -28,10 +28,13 @@ final class KarhooPaymentPresenterSpec: KarhooTestCase {
         mockUserService.currentUserToReturn = user
         mockView.quote = TestUtil.getRandomQuote()
 
-        testObject = KarhooAddPaymentPresenter(analyticsService: mockAnalyticsService,
-                                          userService: mockUserService,
-                                          cardRegistrationFlow: mockCardRegistrationFlow,
-                                          view: mockView)
+        testObject = KarhooAddPaymentPresenter(
+            analytics: mockAnalytics,
+            userService: mockUserService,
+            cardRegistrationFlow: mockCardRegistrationFlow,
+            view: mockView,
+            quote: quote
+        )
     }
 
     /**
@@ -125,6 +128,6 @@ final class KarhooPaymentPresenterSpec: KarhooTestCase {
      */
     func testCorrectEventIsSent() {
         testObject.updateCardPressed(showRetryAlert: false)
-        XCTAssertEqual(mockAnalyticsService.eventSent, .changePaymentDetailsPressed)
+        XCTAssertTrue(mockAnalytics.changePaymentDetailsCalled)
     }
 }

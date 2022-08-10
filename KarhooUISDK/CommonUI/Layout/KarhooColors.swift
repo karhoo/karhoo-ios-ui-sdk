@@ -17,6 +17,9 @@ public protocol KarhooColors {
     /// The secondary color is used for 1st-level actions that allows changing step and validating
     var secondary: UIColor { get }
 
+    /// The lighter variation of accent color
+    var lightAccent: UIColor { get }
+
     /// The accent color is used for secondary category actions (links, filters)
     var accent: UIColor { get }
 

@@ -98,7 +98,12 @@ class ViewController: UIViewController {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        scrollView.anchor(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor
+        )
         
         let stackView = UIStackView(arrangedSubviews: [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
                                                        authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton,
@@ -108,7 +113,16 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 30
         scrollView.addSubview(stackView)
-        stackView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 80, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
+        stackView.anchor(
+            top: scrollView.topAnchor,
+            leading: scrollView.leadingAnchor,
+            trailing: scrollView.trailingAnchor,
+            bottom: scrollView.bottomAnchor,
+            paddingTop: 80,
+            paddingLeft: 20,
+            paddingRight: 20,
+            paddingBottom: 20
+        )
     }
 
     @objc func guestAdyenBookingTapped(sender: UIButton) {
@@ -221,28 +235,37 @@ class ViewController: UIViewController {
 //                            phoneNumber: "+15005550006",
 //                            locale: "en")
 
-        booking = KarhooUI().screens().booking().buildBookingScreen(journeyInfo: journeyInfo,
-                                                                    passengerDetails: passangerDetails,
-                                                                    callback: { [weak self] result in
-                                                                        self?.handleBookingScreenResult(result: result)
-                                                                    }) as? BookingScreen
-        self.present(booking!,
-                     animated: true,
-                     completion: nil)
+        booking = KarhooUI().screens().booking()
+            .buildBookingScreen(
+                journeyInfo: journeyInfo,
+                passengerDetails: passangerDetails,
+                callback: { [weak self] result in
+                    self?.handleBookingScreenResult(result: result)
+                }
+            )
+        
+        self.present(
+            booking!,
+            animated: true,
+            completion: nil
+        )
     }
-    
+
     private func handleBookingScreenResult(result: ScreenResult<BookingScreenResult>) {
+        let bookingInNavigationStack = (booking as? UINavigationController)?.viewControllers.first { $0 is BookingScreen }
+        let bookingScreen = (booking as? BookingScreen) ?? (bookingInNavigationStack as? BookingScreen)
+
         switch result {
             
         case .completed(let bookingScreenResult):
           switch bookingScreenResult {
               
           case .tripAllocated(let trip):
-              (booking as? BookingScreen)?.openTrip(trip)
+              bookingScreen?.openTrip(trip)
               
           case .prebookConfirmed(let trip, let prebookConfirmationAction):
               if case .rideDetails = prebookConfirmationAction {
-                  (booking as? BookingScreen)?.openRideDetailsFor(trip)
+                  bookingScreen?.openRideDetailsFor(trip)
               }
               
           default:

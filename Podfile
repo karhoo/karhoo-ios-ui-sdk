@@ -20,8 +20,8 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-#  pod 'KarhooSDK', '1.6.2'
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop' 
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+  # pod 'KarhooSDK', '1.6.2'
   pod 'FloatingPanel', '2.0.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
@@ -34,13 +34,3 @@ target 'KarhooUISDK' do
     inherit! :complete
   end
 end
-
-#post_install do |installer_representation|
- # installer_representation.pods_project.targets.each do |target|
-  #  target.build_configurations.each do |config|
-   #   config.build_settings[‘ONLY_ACTIVE_ARCH’] = ‘NO’
-    #  config.build_settings[“EXCLUDED_ARCHS[sdk=iphonesimulator*]“] = “arm64”
-     # config.build_settings[‘BUILD_LIBRARY_FOR_DISTRIBUTION’] = ‘YES’
-#    end
- # end
-# end

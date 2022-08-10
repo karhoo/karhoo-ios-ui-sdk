@@ -83,11 +83,10 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
             attributedLabel.anchor(
                 top: legalNoticeButton.bottomAnchor,
                 leading: view.leadingAnchor,
-                bottom: view.bottomAnchor,
-                trailing: view.trailingAnchor,
+                trailing: view.trailingAnchor, bottom: view.bottomAnchor,
                 paddingLeft: UIConstants.Spacing.small,
-                paddingBottom: UIConstants.Spacing.standard,
-                paddingRight: UIConstants.Spacing.small
+                paddingRight: UIConstants.Spacing.small,
+                paddingBottom: UIConstants.Spacing.standard
             )
             attributedLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(textViewClicked(_:))))
         }

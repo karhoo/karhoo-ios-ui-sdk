@@ -11,6 +11,11 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 class MockAnalytics: Analytics {
+    
+    var changePaymentDetailsCalled = false
+    func changePaymentDetailsPressed() {
+        changePaymentDetailsCalled = true
+    }
     func bookingRequested(quoteId: String) {
         // TODO: write tests
     }

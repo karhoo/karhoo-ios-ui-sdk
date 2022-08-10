@@ -202,8 +202,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
                                               leading: capacityContentView.leadingAnchor,
                                               trailing: capacityContentView.trailingAnchor)
             
-            learnMoreButton.anchor(bottom: capacityContentView.bottomAnchor,
-                                   trailing: capacityContentView.trailingAnchor)
+            learnMoreButton.anchor(
+                trailing: capacityContentView.trailingAnchor,
+                bottom: capacityContentView.bottomAnchor
+            )
             
             if capabilitiesStackView.subviews.count > 0 {
                 learnMoreButton.anchor(top: carTypeLabel.bottomAnchor)
@@ -220,7 +222,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
     
     func set(viewModel: QuoteViewModel) {
         nameLabel.text = viewModel.fleetName
-        carTypeLabel.text = viewModel.carType
+        carTypeLabel.text = viewModel.vehicleType.capitalized
         
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
                                   placeholderImageName: "supplier_logo_placeholder")

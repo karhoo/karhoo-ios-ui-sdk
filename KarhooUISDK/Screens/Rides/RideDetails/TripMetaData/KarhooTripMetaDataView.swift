@@ -92,12 +92,12 @@ final class KarhooTripMetaDataView: UIView, TripMetaDataView {
         cancellationInfoContainer.addSubview(cancellationInfo)
         cancellationInfo.anchor(top: cancellationInfoContainer.topAnchor,
                                 leading: cancellationInfoContainer.leadingAnchor,
-                                bottom: cancellationInfoContainer.bottomAnchor,
                                 trailing: cancellationInfoContainer.trailingAnchor,
+                                bottom: cancellationInfoContainer.bottomAnchor,
                                 paddingTop: 10,
                                 paddingLeft: 10,
-                                paddingBottom: 10,
-                                paddingRight: 10)
+                                paddingRight: 10,
+                                paddingBottom: 10)
         return cancellationInfoContainer
     }
 

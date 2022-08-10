@@ -17,7 +17,7 @@ final class MockQuoteService: QuoteService {
     var quoteCoverageSet: QuoteCoverageRequest?
     var verifyQuoteSet: VerifyQuotePayload?
     var vehilcleImageRulesCall = MockCall<VehicleImageRules>()
-    
+
     func quotes(quoteSearch: QuoteSearch) -> PollCall<Quotes> {
         quoteSearchSet = quoteSearch
         return quotesPollCall

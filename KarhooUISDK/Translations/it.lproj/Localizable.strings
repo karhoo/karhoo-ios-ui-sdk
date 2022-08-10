@@ -632,9 +632,19 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Ancora nessuna flotta in quest'area";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Si prega di modificare la selezione del filtro.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "Nessun risultato dopo il filtraggio.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Gli indirizzi di ritiro e riconsegna sono simili";
+
+"Text.Quotes.Filter" = "Filtro";
+
+"Text.Quotes.FilterPageResults" = "Visualizza tutti i %1$@ risultati";
+
+"Text.Quotes.ResetFilter" = "Ripristina filtro";
 
 "Text.Quotes.Result" = "";
 
@@ -854,6 +864,8 @@
 "Text.VehicleTag.Taxi" = "Taxi";
 
 "Text.VehicleTag.Wheelchair" = "Sedia a rotelle";
+
+"Text.VehicleTag.Luxury" = "Lusso";
 
 "Text.VehicleType.Bus" = "Autobus";
 

@@ -632,9 +632,19 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Nog geen vloten in dit gebied";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Wijzig uw filterselectie.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "Geen resultaat na filteren.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Ophaal- en afleveradressen zijn vergelijkbaar";
+
+"Text.Quotes.Filter" = "Filter";
+
+"Text.Quotes.FilterPageResults" = "Bekijk alle %1$@ resultaten";
+
+"Text.Quotes.ResetFilter" = "Filter resetten";
 
 "Text.Quotes.Result" = "";
 
@@ -832,6 +842,8 @@
 
 "Text.VehicleClass.Exec" = "Executive";
 
+"Text.VehicleClass.Luxury" = "Luxury";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorfiets";
@@ -854,6 +866,8 @@
 "Text.VehicleTag.Taxi" = "Taxi";
 
 "Text.VehicleTag.Wheelchair" = "Rolstoel";
+
+"Text.VehicleTag.Luxury" = "Luxe";
 
 "Text.VehicleType.Bus" = "Bus";
 
