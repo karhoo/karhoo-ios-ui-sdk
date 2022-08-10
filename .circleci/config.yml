@@ -18,12 +18,11 @@ jobs:
   ### Build & test job
   build-and-test:
     macos:
-      xcode: 13.2.1
+      xcode: 13.3.1
     working_directory: /Users/distiller/project/KarhooUISDK.xcworkspace
     environment:
       FASTLANE_LANE_TEST: UISDK_unit_tests
     shell: /bin/bash --login -eo pipefail
-    resource_class: xlarge
     steps:
       - checkout
       - run:

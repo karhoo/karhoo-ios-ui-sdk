@@ -132,8 +132,8 @@ final class KarhooRideInfoView: UIView {
                                                 constant: 20.0)].forEach { $0.isActive = true }
             
             rideTypeLabel.anchor(leading: leadingAnchor,
-                                 bottom: bottomAnchor,
                                  trailing: trailingAnchor,
+                                 bottom: bottomAnchor,
                                  paddingTop: 10.0,
                                  paddingLeft: 10.0,
                                  paddingBottom: 15.0)
@@ -148,15 +148,16 @@ final class KarhooRideInfoView: UIView {
                               paddingRight: 10.0)
             
             priceText.anchor(top: priceTitle.bottomAnchor,
-                             bottom: ridePriceType.topAnchor,
                              trailing: priceTitle.trailingAnchor,
+                             bottom: ridePriceType.topAnchor,
                              paddingTop: 5.0,
                              paddingBottom: 10.0)
             
-            ridePriceType.anchor(bottom: bottomAnchor,
-                                 trailing: trailingAnchor,
-                                 paddingBottom: 10.0,
-                                 paddingRight: 10.0)
+            ridePriceType.anchor(trailing: trailingAnchor,
+                                 bottom: bottomAnchor,
+                                 paddingRight: 10.0,
+                                 paddingBottom: 10.0
+            )
             rideTypeInfoButton.centerYAnchor.constraint(equalTo: ridePriceType.centerYAnchor).isActive = true
             rideTypeInfoButton.anchor(trailing: ridePriceType.leadingAnchor,
                                      paddingRight: 3.0,

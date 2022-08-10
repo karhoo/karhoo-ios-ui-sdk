@@ -51,9 +51,9 @@ final class KarhooAddressSearchProvider: AddressSearchProvider {
         delegate?.searchInProgress()
         let searchCallback = { [weak self] (result: Result<Places>) in
             switch result {
-            case .success(let places):
+            case .success(let places, _):
                 self?.searchCompleted(search: string, places: places.places)
-            case .failure(let error):
+            case .failure(let error, _):
                 self?.searchFailed(search: string, error: error)
             }
         }

@@ -292,7 +292,7 @@ final class AddressViewController: UIViewController, AddressView {
             let view = AddressViewController(presenter: presenter)
             presenter.set(view: view)
 
-            return UINavigationController(rootViewController: view)
+            return NavigationController(rootViewController: view)
         }
     }
 }

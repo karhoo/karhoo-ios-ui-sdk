@@ -21,7 +21,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
     public var baseViewController: BaseViewController?
     
     private var didSetupConstraints: Bool = false
-    
+
     private lazy var passengerPaymentImage: UIImageView = {
         let passengerPaymentIcon = UIImageView()
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
@@ -75,11 +75,17 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
     private var dotBorderLayer: CAShapeLayer!
     private var hasPayment: Bool = false
     
-    var quote: Quote?
+    var quote: Quote?{
+        didSet {
+            guard let quote = quote else { return }
+            presenter?.setQuote(quote)
+        }
+    }
+    
     var actions: AddPaymentViewDelegate? {
         didSet {
             if presenter == nil {
-                presenter = KarhooAddPaymentPresenter(view: self)
+                presenter = KarhooAddPaymentPresenter(view: self, quote: quote)
             }
         }
     }
@@ -142,8 +148,8 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
             let stackInset: CGFloat = 12.0
             stackContainer.anchor(top: topAnchor,
                                   leading: leadingAnchor,
-                                  bottom: bottomAnchor,
                                   trailing: trailingAnchor,
+                                  bottom: bottomAnchor,
                                   paddingTop: stackInset,
                                   paddingBottom: stackInset)
 

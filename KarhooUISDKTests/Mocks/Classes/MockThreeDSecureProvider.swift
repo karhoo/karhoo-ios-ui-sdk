@@ -19,10 +19,10 @@ final class MockThreeDSecureProvider: ThreeDSecureProvider {
     private(set) var threeDSecureCalled = false
     func threeDSecureCheck(nonce: String,
                            currencyCode: String,
-                           paymentAmout: NSDecimalNumber,
+                           paymentAmount: NSDecimalNumber,
                            callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void) {
         self.nonceSet = nonce
-        self.paymentAmountSet = paymentAmout
+        self.paymentAmountSet = paymentAmount
         self.currencyCodeSet = currencyCode
         self.callback = callback
         self.threeDSecureCalled = true

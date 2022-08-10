@@ -19,6 +19,10 @@ public extension UIViewController {
             overrideUserInterfaceStyle = .light
         }
     }
+    
+    var viewIsOnScreen: Bool{
+        self.isViewLoaded && view.window != nil
+    }
 }
 
 public extension UIAlertController {

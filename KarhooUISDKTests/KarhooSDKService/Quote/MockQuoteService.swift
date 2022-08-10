@@ -16,7 +16,8 @@ final class MockQuoteService: QuoteService {
     var quoteSearchSet: QuoteSearch?
     var quoteCoverageSet: QuoteCoverageRequest?
     var verifyQuoteSet: VerifyQuotePayload?
-    
+    var vehilcleImageRulesCall = MockCall<VehicleImageRules>()
+
     func quotes(quoteSearch: QuoteSearch) -> PollCall<Quotes> {
         quoteSearchSet = quoteSearch
         return quotesPollCall
@@ -35,5 +36,9 @@ final class MockQuoteService: QuoteService {
     func verifyQuote(verifyQuotePayload: VerifyQuotePayload) -> Call<Quote> {
         verifyQuoteSet = verifyQuotePayload
         return verifyQuoteCall
+    }
+
+    func getVehicleImageRules() -> Call<VehicleImageRules> {
+        vehilcleImageRulesCall
     }
 }

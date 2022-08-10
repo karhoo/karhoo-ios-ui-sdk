@@ -373,6 +373,18 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
 
+"Text.FleetCapabilities.DriverDetails" = "Detalles del conductor";
+
+"Text.FleetCapabilities.FlightTracking" = "Vincule su vuelo";
+
+"Text.FleetCapabilities.GpsTracking" = "Seguimiento GPS";
+
+"Text.FleetCapabilities.TrainTracking" = "Vincule su tren";
+
+"Text.FleetCapabilities.VehicleDetails" = "Detalles del vehículo";
+
+"Text.Generic.All" = "Todo";
+
 "Text.Generic.Back" = "Volver";
 
 "Text.Generic.Bookings" = "Reservas";
@@ -589,6 +601,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Tasas e Impuestos Incluidos";
 
+"Text.Quote.FreeCancellation" = "Cancelación gratis";
+
 "Text.Quote.FreeCancellationAndKeyword" = "y";
 
 "Text.Quote.FreeCancellationASAP" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
@@ -597,6 +611,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancelación gratuita hasta %1$@ antes de la recogida";
+
+"Text.Quote.FreeWaitingTime" = "Tiempo de espera libre";
 
 "Text.Quote.Results" = "%1$@ resultados";
 
@@ -622,6 +638,10 @@
 
 "Text.Quotes.DriverArrivalTime" = "Hora de llegada del conductor";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Ingrese las direcciones de recogida y entrega para acceder a las ofertas.";
+
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Falta la dirección de recogida o entrega.";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Por favor, elija un horario diferente.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No hay disponibilidad para el tiempo de solicitud.";
@@ -632,13 +652,41 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Aún no hay flotas en esta área";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Cambie su selección de filtro.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "No hay resultados después del filtrado.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Por favor cambie una de las direcciones para acceder a las cotizaciones";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Las direcciones de recogida y entrega son similares";
 
+"Text.Quotes.Filter" = "Filtrar";
+
+"Text.Quotes.FilterEcoFriendly" = "Respetuoso del medio ambiente";
+
+"Text.Quotes.FilterFleetCapabilities" = "Capacidades de flota";
+
+"Text.Quotes.FilterPageResults" = "Ver todos los resultados %1$@";
+
+"Text.Quotes.FilterQuoteTypes" = "Tipos de cotización";
+
+"Text.Quotes.FilterServiceAgreements" = "Cancelación y tiempo de espera";
+
+"Text.Quotes.FiltersLuggages" = "Equipaje(s)";
+
+"Text.Quotes.FiltersPassengers" = "Pasajero(s)";
+
+"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+
+"Text.Quotes.FilterVehicleExtras" = "Extras del vehículo";
+
+"Text.Quotes.FilterVehicleType" = "Tipos de vehículos";
+
+"Text.Quotes.ResetFilter" = "Restablecer filtros";
+
 "Text.Quotes.Result" = "";
 
-"Text.Quotes.Results" = "";
+"Text.Quotes.Results" = "%1$@ resultados";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Información";
@@ -832,6 +880,8 @@
 
 "Text.VehicleClass.Exec" = "Ejecutivo";
 
+"Text.VehicleClass.Luxury" = "Lujo";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motocicleta";
@@ -842,7 +892,7 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Sillita bebe";
+"Text.VehicleTag.ChildSeat" = "Asiento para niños";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Eléctrico";
@@ -850,6 +900,8 @@
 "Text.VehicleTag.Executive" = "Ejecutivo";
 
 "Text.VehicleTag.Hybrid" = "Híbrido";
+
+"Text.VehicleTag.Luxury" = "Lujo";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
@@ -861,5 +913,5 @@
 
 "Text.VehicleType.MPV" = "Monovolumen";
 
-"Text.VehicleType.Standard" = "Estándar";
+"Text.VehicleType.Standard" = "Sedán";
 

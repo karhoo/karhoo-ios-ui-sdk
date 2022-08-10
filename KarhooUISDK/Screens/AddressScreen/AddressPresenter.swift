@@ -84,12 +84,12 @@ final class KarhooAddressPresenter: AddressPresenter {
 
     private func locationResponseHandler(_ result: Result<LocationInfo>, saveLocation: Bool, addressViewModel: AddressCellViewModel? = nil) {
         switch result {
-        case .success(let locationInfo):
+        case .success(let locationInfo, _):
             if saveLocation {
                 recentAddressProvider.add(recent: locationInfo)
             }
             locationDetailsSelected(details: locationInfo)
-        case .failure(let error):
+        case .failure(let error, _):
             switch error?.type {
             case .couldNotGetAddress:
                 let recents = recentAddressProvider.getRecents()

@@ -66,11 +66,11 @@ public final class KarhooTripsProvider: TripsProvider {
             .search(tripSearch: tripSearch)
             .execute(callback: { [weak self] (result: Result<[TripInfo]>) in
                 guard result.isSuccess() else {
-                    self?.delegate?.tripProviderFailed(error: result.errorValue())
+                    self?.delegate?.tripProviderFailed(error: result.getErrorValue())
                     return
                 }
                 
-                guard let trips = result.successValue() else {
+                guard let trips = result.getSuccessValue() else {
                     self?.delegate?.fetched(trips: [])
                     return
                 }
