@@ -76,13 +76,8 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
         super.viewDidLoad()
         assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
         presenter.viewDidLoad()
-    }
 
-    override func viewWillAppear(_ animate: Bool) {
-        super.viewWillAppear(animate)
-        presenter.viewWillAppear()
         updateConfirmButtonTitle()
-        
         filterViewsStackView.arrangedSubviews
             .compactMap { $0 as? FilterView }
             .forEach { filterView in
@@ -90,6 +85,11 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
                 let filtersForCategory = presenter.filters.filter { $0.filterCategory == category }
                 filterView.configure(using: filtersForCategory)
             }
+    }
+
+    override func viewWillAppear(_ animate: Bool) {
+        super.viewWillAppear(animate)
+        presenter.viewWillAppear()
     }
 
     // MARK: - Setup business logic
