@@ -404,7 +404,8 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        guard view?.navigationController?.topViewController === view else { return }
+        let topViewController = view?.navigationController?.topViewController
+        guard topViewController === view || topViewController is SideMenuViewController  else { return }
         router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
             self?.showCheckoutView(
                 quote: quote,
