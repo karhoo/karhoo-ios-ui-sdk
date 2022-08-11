@@ -320,7 +320,7 @@ public enum UITexts {
         public static let electric = "Text.VehicleTag.Electric".localized
         public static let hybrid = "Text.VehicleTag.Hybrid".localized
         public static let wheelchair = "Text.VehicleTag.Wheelchair".localized
-        public static let childseat = "Text.VehicleTag.Childseat".localized
+        public static let childseat = "Text.VehicleTag.ChildSeat".localized
         public static let taxi = "Text.VehicleTag.Taxi".localized
         public static let executive = "Text.VehicleTag.Executive".localized
         public static let luxury = "Text.VehicleTag.Luxury".localized
