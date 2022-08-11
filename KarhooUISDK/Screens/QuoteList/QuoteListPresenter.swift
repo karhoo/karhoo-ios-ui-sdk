@@ -7,7 +7,6 @@
 //
 
 import KarhooSDK
-import Adyen
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 
