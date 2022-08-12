@@ -61,7 +61,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Errors.errorPickupAndDestinationSameTitle
         case .empty(reason: .noAvailabilityInRequestedArea):
-            return "No fleets in this area yet"
+            return UITexts.KarhooError.K3002
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterTitle
         case .empty(reason: .destinationOrOriginEmpty):
