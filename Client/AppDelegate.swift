@@ -54,6 +54,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-         completionHandler([.alert,.badge])
+            if notification.request.identifier.contains(KarhooAnalitycsServiceWithNotifications.karhooNotificationIdentifierPrefix){
+                completionHandler([.alert,.badge])
+            }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier && response.notification.request.identifier.contains(KarhooAnalitycsServiceWithNotifications.karhooNotificationIdentifierPrefix) {
+            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            if var topController = keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                let alert = UIAlertController(
+                    title: response.notification.request.content.title,
+                    message: (response.notification.request.content.userInfo["payload_body"] as? String) ?? response.notification.request.content.body,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil)
+                )
+                topController.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
