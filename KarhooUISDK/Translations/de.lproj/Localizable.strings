@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Vorautorisieren %@";
-
 "adyen.submitButton" = "Vorautorisieren";
+
+"adyen.submitButton.formatted" = "Vorautorisieren %@";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";

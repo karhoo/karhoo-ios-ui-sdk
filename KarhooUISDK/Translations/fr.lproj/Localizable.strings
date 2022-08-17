@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Pré-autoriser %@";
-
 "adyen.submitButton" = "Pré-autoriser";
+
+"adyen.submitButton.formatted" = "Pré-autoriser %@";
 
 /* English: Error codes */
 "K0001" = "Désolé! Une erreur s'est produite";
@@ -676,7 +676,7 @@
 
 "Text.Quotes.FiltersPassengers" = "Passager(s)";
 
-"Text.Quotes.FilterVehicleClass" = "Catégorie de véhicule";
+"Text.Quotes.FilterVehicleClass" = "Catégories de véhicule";
 
 "Text.Quotes.FilterVehicleExtras" = "Options du véhicule";
 

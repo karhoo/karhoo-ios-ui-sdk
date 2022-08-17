@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Pre-authorise %@";
-
 "adyen.submitButton" = "Pre-authorise";
+
+"adyen.submitButton.formatted" = "Pre-authorise %@";
 
 /* English: Error codes */
 "K0001" = "General request error";
