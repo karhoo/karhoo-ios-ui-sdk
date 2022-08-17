@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Preautorizar %@";
-
 "adyen.submitButton" = "preautorizar";
+
+"adyen.submitButton.formatted" = "Preautorizar %@";
 
 /* English: Error codes */
 "K0001" = "Error general";
@@ -676,7 +676,7 @@
 
 "Text.Quotes.FiltersPassengers" = "Pasajero(s)";
 
-"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+"Text.Quotes.FilterVehicleClass" = "Clase de vehículo";
 
 "Text.Quotes.FilterVehicleExtras" = "Extras del vehículo";
 

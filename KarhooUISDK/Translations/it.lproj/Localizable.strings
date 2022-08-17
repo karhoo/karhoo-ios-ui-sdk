@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Pre-autorizza %@";
-
 "adyen.submitButton" = "Pre-autorizzare";
+
+"adyen.submitButton.formatted" = "Pre-autorizza %@";
 
 /* English: Error codes */
 "K0001" = "Errore di richiesta generale";
@@ -672,11 +672,11 @@
 
 "Text.Quotes.FilterServiceAgreements" = "Cancellazione e tempo di attesa";
 
-"Text.Quotes.FiltersLuggages" = "Bagagli)";
+"Text.Quotes.FiltersLuggages" = "Bagagli";
 
 "Text.Quotes.FiltersPassengers" = "Passeggero(i)";
 
-"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+"Text.Quotes.FilterVehicleClass" = "Classe di veicoli";
 
 "Text.Quotes.FilterVehicleExtras" = "Extra del veicolo";
 

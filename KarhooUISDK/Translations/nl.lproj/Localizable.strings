@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Pre-autoriseren %@";
-
 "adyen.submitButton" = "Pre-autoriseren";
+
+"adyen.submitButton.formatted" = "Pre-autoriseren %@";
 
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
@@ -672,11 +672,11 @@
 
 "Text.Quotes.FilterServiceAgreements" = "Annulering en wachttijd";
 
-"Text.Quotes.FiltersLuggages" = "Bagage)";
+"Text.Quotes.FiltersLuggages" = "Bagage";
 
 "Text.Quotes.FiltersPassengers" = "Passagier(s)";
 
-"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_vehicle_class";
+"Text.Quotes.FilterVehicleClass" = "Voertuigklasse";
 
 "Text.Quotes.FilterVehicleExtras" = "Voertuig Extra's";
 

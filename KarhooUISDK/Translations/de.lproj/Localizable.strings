@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Vorautorisieren %@";
-
 "adyen.submitButton" = "Vorautorisieren";
+
+"adyen.submitButton.formatted" = "Vorautorisieren %@";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -676,7 +676,7 @@
 
 "Text.Quotes.FiltersPassengers" = "Passagier(e)";
 
-"Text.Quotes.FilterVehicleClass" = "kh_uisdk_filter_fahrzeug_klasse";
+"Text.Quotes.FilterVehicleClass" = "Fahrzeugklasse";
 
 "Text.Quotes.FilterVehicleExtras" = "Fahrzeug-Extras";
 

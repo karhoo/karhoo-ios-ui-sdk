@@ -24,8 +24,7 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     }
     
     private var onRulesUpdated: ((VehicleImageRules) -> Void)?
-    
-    
+
     init(
         quoteService: QuoteService? = Karhoo.getQuoteService(),
         store: VehicleRulesStore = KarhooVehicleRulesStore()
@@ -35,7 +34,7 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     }
     
     private func handle(_ result: Result<VehicleImageRules>) {
-        guard let rules = result.successValue() else {
+        guard let rules = result.getSuccessValue() else {
             return
         }
         store.save(rules)
@@ -58,7 +57,6 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     }
     
     func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void) {
-        let quoteTags = Set(quote.vehicle.tags.map { $0.lowercased() })
         getRules { vehicleRules in
             var fallbackRule: VehicleImageRule? {
                 vehicleRules?.rules.first { $0.ruleType == .fallback }
@@ -66,12 +64,28 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
             var defaultTypeRule: VehicleImageRule? {
                 vehicleRules?.rules.first { $0.type == quote.vehicle.type && $0.ruleType == .typeDefault }
             }
+            var anyMatchingTagRule: VehicleImageRule? {
+                var rule: VehicleImageRule?
+                let rulesWithOneTag = vehicleRules?.rules.filter { $0.tags.count == 1 }
+                quote.vehicle.tags
+                    .map { $0.lowercased() }
+                    .forEach { quoteTag in
+                        guard rule == nil else { return }
+                        rule = rulesWithOneTag?.first { ruleWithOneTag in
+                            ruleWithOneTag.tags
+                                .map { $0.lowercased() }
+                                .contains(quoteTag.lowercased())
+                        }
+                    }
+                return rule
+            }
             let specificRule = vehicleRules?.rules.first { rule in
                 guard rule.ruleType == .specific else { return false }
                 let ruleTags = Set(rule.tags.map { $0.lowercased() })
-                return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteTags
+                let quoteVehicleTags = Set(quote.vehicle.tags.map { $0.lowercased() })
+                return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteVehicleTags
             }
-            let rule = (specificRule ?? defaultTypeRule) ?? fallbackRule
+            let rule = (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
             completion(rule)
         }
     }
