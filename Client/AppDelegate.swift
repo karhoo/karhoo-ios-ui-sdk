@@ -15,7 +15,7 @@ import Adyen
 #endif
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     private let urlScheme = "com.karhooUISDK.Client.Payments"
@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainView = ViewController()
         window?.rootViewController = mainView
         window?.makeKeyAndVisible()
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -47,5 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
         return false
+    }
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+         completionHandler([.alert,.badge])
     }
 }

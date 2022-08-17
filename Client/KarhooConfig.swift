@@ -28,4 +28,8 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     var paymentManager: PaymentManager {
         KarhooConfig.paymentManager
     }
+
+    func analytics() -> Analytics {
+        KarhooAnalitycsWithNotifications()
+    }
 }
