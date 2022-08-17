@@ -25,7 +25,11 @@ class KarhooAnalitycsServiceWithNotifications: AnalyticsService {
             content.sound = .default
             content.userInfo["payload_body"] = body
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let request = UNNotificationRequest(identifier: Self.karhooNotificationIdentifierPrefix + UUID().uuidString, content: content, trigger: trigger)
+            let request = UNNotificationRequest(
+                identifier: Self.karhooNotificationIdentifierPrefix + UUID().uuidString,
+                content: content,
+                trigger: trigger
+            )
             UNUserNotificationCenter.current().add(request) { (error) in
                 if error != nil {
                    print(error)
