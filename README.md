@@ -24,7 +24,7 @@ You can use [CocoaPods](http://cocoapods.org/) to install `KarhooUISDK` by addin
 ```ruby
 
 use_frameworks!
-pod 'KarhooSDK', '1.6.2'
+pod 'KarhooSDK', '1.6.3'
 pod 'KarhooUISDK', :git => 'git@github.com:karhoo/karhoo-ios-ui-sdk.git', :tag => '1.9.0'
 ```
 Depending on payment provider you want to use in your integration add:
