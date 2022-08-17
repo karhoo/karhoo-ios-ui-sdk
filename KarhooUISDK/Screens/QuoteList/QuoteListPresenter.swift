@@ -218,7 +218,13 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
 
         switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, fetchedQuotes.status) {
         case (true, _, _):
-            onStateUpdated?(.empty(reason: .noResults))
+            let journeyDetails = journeyDetailsManager.getJourneyDetails()
+            switch journeyDetails?.isScheduled {
+            case false:
+                onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+            default:
+                onStateUpdated?(.empty(reason: .noResults))
+            }
         case (_, true, _):
             onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
