@@ -165,10 +165,10 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
 
         lastLocation = location
         addressService.reverseGeocode(position: location.toPosition()).execute(callback: { [weak self] result in
-            if let address = result.successValue() {
+            if let address = result.getSuccessValue() {
                 self?.reverseGeolocateSuccess(details: address, for: location)
             } else {
-                self?.delegate?.pickupFailedToSetFromMap(error: result.errorValue())
+                self?.delegate?.pickupFailedToSetFromMap(error: result.getErrorValue())
             }
         })
     }

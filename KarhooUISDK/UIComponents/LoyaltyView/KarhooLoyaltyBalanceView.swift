@@ -44,12 +44,13 @@ final class KarhooLoyaltyBalanceView: UIView {
         titleLabel.anchor(
             top: self.topAnchor,
             leading: self.leadingAnchor,
-            bottom: self.bottomAnchor,
             trailing: self.trailingAnchor,
+            bottom: self.bottomAnchor,
             paddingTop: UIConstants.Spacing.xxSmall,
             paddingLeft: UIConstants.Spacing.medium,
-            paddingBottom: UIConstants.Spacing.xxSmall,
-            paddingRight: UIConstants.Spacing.medium)
+            paddingRight: UIConstants.Spacing.medium,
+            paddingBottom: UIConstants.Spacing.xxSmall
+        )
         
         set(mode: .success)
     }

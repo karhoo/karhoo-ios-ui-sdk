@@ -83,8 +83,8 @@ class BaseStackView: UIView {
         scrollView.anchor(
             top: topAnchor,
             leading: leadingAnchor,
-            bottom: bottomAnchor,
             trailing: trailingAnchor,
+            bottom: bottomAnchor,
             paddingBottom: safeAreaInsets.bottom
         )
         scrollViewContentView.anchorToSuperview()

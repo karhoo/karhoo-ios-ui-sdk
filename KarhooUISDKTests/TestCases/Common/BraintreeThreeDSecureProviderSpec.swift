@@ -37,7 +37,7 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
     func testGetSDKToken() {
         testObject.threeDSecureCheck(nonce: "",
                                      currencyCode: currencyCode,
-                                     paymentAmout: 10.0,
+                                     paymentAmount: 10.0,
                                      callback: {_ in})
 
         XCTAssertTrue(mockPaymentService.initialisePaymentSDKCalled)
@@ -52,7 +52,7 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
         let error = TestUtil.getRandomError()
         testObject.threeDSecureCheck(nonce: "",
                                      currencyCode: currencyCode,
-                                     paymentAmout: 10.0,
+                                     paymentAmount: 10.0,
                                      callback: { _ in
                                         self.callbackExpectation.fulfill()
                                         
@@ -70,7 +70,7 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
     func testGetSDKTokenSuccess() {
         testObject.threeDSecureCheck(nonce: "",
                                      currencyCode: currencyCode,
-                                     paymentAmout: 10.0,
+                                     paymentAmount: 10.0,
                                      callback: { _ in
                                         XCTFail("not expecting callback")
         })

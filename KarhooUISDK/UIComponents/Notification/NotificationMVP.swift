@@ -13,3 +13,4 @@ public protocol NotificationView {
     func change(title: NSAttributedString)
     func addLink(_ link: String, callback: @escaping (() -> Void))
 }
+ 

@@ -29,7 +29,7 @@ let package = Package(
         .package(name: "FloatingPanel", url: "https://github.com/scenee/FloatingPanel", .exact(Version(2, 0, 1))),
         .package(name: "BraintreeDropIn", url: "https://github.com/braintree/braintree-ios-drop-in", .exact(Version(9, 3, 0))),
         .package(name: "PhoneNumberKit", url: "https://github.com/marmelroy/PhoneNumberKit", .exact(Version(3, 3, 1))),
-        .package(name: "Braintree", url: "https://github.com/braintree/braintree_ios", .exact(Version(5, 5, 0)))
+        .package(name: "Braintree", url: "https://github.com/braintree/braintree_ios", .exact(Version(5, 6, 3)))
     ],
     targets: [
         .target(

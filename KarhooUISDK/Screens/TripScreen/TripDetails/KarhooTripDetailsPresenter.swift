@@ -25,9 +25,9 @@ final class KahrooTripScreenDetailsPresenter: TripScreenDetailsPresenter {
     func startMonitoringTrip(tripId: String) {
         tripObserver = Observer { [weak self] result in
             switch result {
-            case .success(let trip):
+            case .success(let trip, _):
                 self?.handleTripUpdate(trip: trip)
-            case .failure(let error):
+            case .failure(let error, _):
                 self?.tripUpdateFailed(error: error)
             }
         }

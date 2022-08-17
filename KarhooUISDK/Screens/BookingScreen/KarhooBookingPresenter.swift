@@ -20,7 +20,6 @@ final class KarhooBookingPresenter {
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
-    private let checkoutScreenBuilder: CheckoutScreenBuilder
     private let prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
@@ -28,9 +27,12 @@ final class KarhooBookingPresenter {
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
     private let paymentService: PaymentService
+    private let vehicleRulesProvider: VehicleRulesProvider
+    private let router: BookingRouter
 
     // MARK: - Init
-    init(journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
+    init(router: BookingRouter,
+         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
          userService: UserService = Karhoo.getUserService(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          phoneNumberCaller: PhoneNumberCallerProtocol = PhoneNumberCaller(),
@@ -38,13 +40,15 @@ final class KarhooBookingPresenter {
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         checkoutScreenBuilder: CheckoutScreenBuilder = UISDKScreenRouting.default.checkout(),
          prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
          urlOpener: URLOpener = KarhooURLOpener(),
-         paymentService: PaymentService = Karhoo.getPaymentService()) {
+         paymentService: PaymentService = Karhoo.getPaymentService(),
+         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
+    ) {
+        self.router = router
         self.userService = userService
         self.analytics = analytics
         self.journeyDetailsManager = journeyDetailsManager
@@ -52,7 +56,6 @@ final class KarhooBookingPresenter {
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
-        self.checkoutScreenBuilder = checkoutScreenBuilder
         self.prebookConfirmationScreenBuilder = prebookConfirmationScreenBuilder
         self.addressScreenBuilder = addressScreenBuilder
         self.datePickerScreenBuilder = datePickerScreenBuilder
@@ -60,8 +63,8 @@ final class KarhooBookingPresenter {
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
         self.paymentService = paymentService
+        self.vehicleRulesProvider = vehicleRulesProvider
         userService.add(observer: self)
-        journeyDetailsManager.add(observer: self)
     }
     // swiftlint:enable line_length
 
@@ -76,23 +79,14 @@ final class KarhooBookingPresenter {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = KarhooUISDKConfigurationProvider.configuration.bookingMetadata
     ) {
-        let checkoutView = checkoutScreenBuilder
-            .buildCheckoutScreen(
-                quote: quote,
-                journeyDetails: journeyDetails,
-                bookingMetadata: bookingMetadata,
-                callback: { [weak self] result in
-                    self?.view?.dismiss(animated: false, completion: {
-                        self?.bookingRequestCompleted(
-                            result: result,
-                            quote: quote,
-                            details: journeyDetails
-                        )
-                    })
-                }
-            )
-
-        view?.showAsOverlay(item: checkoutView, animated: false)
+        router.routeToCheckout(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            bookingRequestCompletion: { [weak self] result, quote, journeyDetails in
+                self?.bookingRequestCompleted(result: result, quote: quote, details: journeyDetails)
+            }
+        )
     }
 
     // MARK: - Trip booked
@@ -107,8 +101,6 @@ final class KarhooBookingPresenter {
         if let error = result.errorValue() {
             view?.show(error: error)
         }
-
-        view?.showQuoteList()
     }
 
     private func rebookTrip(_ trip: TripInfo) {
@@ -116,7 +108,6 @@ final class KarhooBookingPresenter {
         journeyDetails.destinationLocationDetails = trip.destination?.toLocationInfo()
 
         populate(with: journeyDetails)
-        setViewMapPadding()
     }
 
     private func handleNewlyBooked(trip: TripInfo,
@@ -152,15 +143,11 @@ final class KarhooBookingPresenter {
 // MARK: - BookingDetailsObserver
 extension KarhooBookingPresenter: JourneyDetailsObserver {
     func journeyDetailsChanged(details: JourneyDetails?) {
-        if details?.originLocationDetails != nil,
-            details?.destinationLocationDetails != nil {
-            view?.showQuoteList()
-        } else {
-            view?.hideQuoteList()
-            view?.setMapPadding(bottomPaddingEnabled: false)
-        }
-
-        view?.quotesAvailabilityDidUpdate(availability: true)
+        guard let details = details,
+            details.originLocationDetails != nil,
+            details.destinationLocationDetails != nil
+        else { return }
+        didProvideJourneyDetails(details)
     }
 }
 
@@ -182,11 +169,17 @@ extension KarhooBookingPresenter: BookingPresenter {
     func load(view: BookingView?) {
         self.view = view
         fetchPaymentProvider()
+        fetchVehicleRules()
     }
     
     func viewWillAppear() {
-        setViewMapPadding()
         analytics.bookingScreenOpened()
+        journeyDetailsManager.remove(observer: self)
+        journeyDetailsManager.add(observer: self)
+    }
+
+    func viewDidDissapear() {
+        journeyDetailsManager.remove(observer: self)
     }
 
     func exitPressed() {
@@ -205,6 +198,10 @@ extension KarhooBookingPresenter: BookingPresenter {
         paymentService.getPaymentProvider().execute(callback: { _ in})
     }
 
+    private func fetchVehicleRules() {
+        vehicleRulesProvider.update()
+    }
+
     func resetJourneyDetails() {
         journeyDetailsManager.reset()
     }
@@ -215,16 +212,6 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func populate(with journeyDetails: JourneyDetails) {
         journeyDetailsManager.reset(with: journeyDetails)
-    }
-    
-    func setViewMapPadding() {
-        let journeyDetails = journeyDetailsManager.getJourneyDetails()
-        if journeyDetails?.originLocationDetails != nil,
-            journeyDetails?.destinationLocationDetails != nil {
-            view?.setMapPadding(bottomPaddingEnabled: true)
-        } else {
-            view?.setMapPadding(bottomPaddingEnabled: false)
-        }
     }
 
     // MARK: Trip cancellation
@@ -304,17 +291,6 @@ extension KarhooBookingPresenter: BookingPresenter {
                                                                 callback: tripViewCallback)
             view?.present(tripView, animated: true, completion: nil)
         }
-    }
-    
-    // MARK: Quotes
-    func didSelectQuote(quote: Quote) {
-        view?.hideQuoteList()
-
-        guard let bookingDetails = getJourneyDetails() else {
-            return
-        }
-
-        showCheckoutView(quote: quote, journeyDetails: bookingDetails)
     }
 
     // MARK: Prebook
@@ -424,6 +400,17 @@ extension KarhooBookingPresenter: BookingPresenter {
         case .some(.rebookTrip(let details)):
             populate(with: details)
         default: break
+        }
+    }
+    
+    func didProvideJourneyDetails(_ details: JourneyDetails) {
+        let topViewController = view?.navigationController?.topViewController
+        guard topViewController === view || topViewController is SideMenuViewController  else { return }
+        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
+            self?.showCheckoutView(
+                quote: quote,
+                journeyDetails: journeyDetails
+            )
         }
     }
 }

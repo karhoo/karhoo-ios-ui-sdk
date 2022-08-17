@@ -45,7 +45,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         stackContainer.accessibilityIdentifier = "stackView"
         stackContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.axis = .horizontal
-        stackContainer.distribution = .fillProportionally
+        stackContainer.distribution = .equalSpacing
         addSubview(stackContainer)
         
         label = UILabel()

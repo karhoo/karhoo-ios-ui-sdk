@@ -76,7 +76,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     private(set) lazy var bookingButton: KarhooBookingButtonView = {
         let bookingButton = KarhooBookingButtonView()
-        bookingButton.anchor(height: mainButtonHeight)
+        bookingButton.anchor(height: UIConstants.Dimension.Button.mainActionButtonHeight)
         bookingButton.set(actions: self)
         return bookingButton
     }()
@@ -86,10 +86,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
-        footerView.layer.shadowColor = KarhooUI.colors.black.cgColor
-        footerView.layer.shadowOpacity = Float(UIConstants.Alpha.shadow)
-        footerView.layer.shadowOffset = CGSize(width: 0, height: -1)
-        footerView.layer.shadowRadius = UIConstants.ShadowRadius.border
+        footerView.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
         return footerView
     }()
     
@@ -154,7 +151,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         cancellationInfo.accessibilityIdentifier = KHCheckoutHeaderViewID.cancellationInfo
         cancellationInfo.font = KarhooUI.fonts.captionRegular()
         cancellationInfo.textColor = KarhooUI.colors.text
-        cancellationInfo.text = "Free cancellation until arrival of the driver"
         cancellationInfo.numberOfLines = 0
         return cancellationInfo
     }()
@@ -233,6 +229,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         presenter.screenWillAppear()
     }
     
@@ -240,11 +237,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         super.viewDidLoad()
         passengerDetailsAndPaymentView.details = initialisePassengerDetails()
         forceLightMode()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showCheckoutView(true)
     }
     
     override func updateViewConstraints() {
@@ -289,8 +281,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        container.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
+        container.anchorToSuperview()
+
         backButton.anchor(top: container.topAnchor,
                           leading: container.leadingAnchor,
                           paddingTop: view.safeAreaInsets.top + standardSpacing,
@@ -299,7 +291,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
-        baseStackView.anchor(top: backButton.bottomAnchor, leading: container.leadingAnchor, bottom: footerView.topAnchor, trailing: container.trailingAnchor)
+        baseStackView.anchor(
+            top: backButton.bottomAnchor,
+            leading: container.leadingAnchor,
+            trailing: container.trailingAnchor,
+            bottom: footerView.topAnchor
+        )
 
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
@@ -309,8 +306,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                                      trailing: baseStackView.trailingAnchor,
                                      paddingTop: standardPadding,
                                      paddingLeft: standardPadding,
-                                     paddingBottom: standardPadding,
-                                     paddingRight: standardPadding)
+                                     paddingRight: standardPadding,
+                                     paddingBottom: standardPadding)
         
         rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
                                  leading: baseStackView.leadingAnchor,
@@ -331,14 +328,18 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         
-        footerView.anchor(leading: view.leadingAnchor, bottom: container.bottomAnchor, trailing: view.trailingAnchor, paddingBottom: standardPadding)
+        footerView.anchor(
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            bottom: view.bottomAnchor
+        )
         footerStack.anchor(
             top: footerView.topAnchor,
             leading: footerView.leadingAnchor,
-            bottom: footerView.bottomAnchor,
             trailing: footerView.trailingAnchor,
-            paddingTop: standardPadding,
-            paddingBottom: standardPadding
+            bottom: footerView.bottomAnchor,
+            paddingTop: UIConstants.Spacing.standard,
+            paddingBottom: UIConstants.Spacing.xLarge
         )
         termsConditionsView.anchor(
             leading: baseStackView.leadingAnchor,
@@ -387,13 +388,14 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
+        passengerDetailsAndPaymentView.quote = quote
         
         loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
             let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
                                                         currency: quote.price.currencyCode,
                                                         tripAmount: quote.price.highPrice)
-            loyaltyView.set(dataModel: loyaltyDataModel)
+            loyaltyView.set(dataModel: loyaltyDataModel, quoteId: quote.id)
         }
     }
     
@@ -426,22 +428,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     func showTermsConditionsRequiredError() {
         termsConditionsView.showNoAcceptanceError()
         baseStackView.scrollTo(termsConditionsView, animated: true)
-    }
-
-    func showCheckoutView(_ show: Bool) {
-        containerBottomConstraint.constant = show ? 0.0 : UIScreen.main.bounds.height
-        UIView.animate(
-            withDuration: drawAnimationTime,
-            animations: { [weak self] in
-                self?.view.layoutIfNeeded()
-            },
-            completion: { [weak self] completed in
-                if completed && !show {
-                    self?.presenter.screenHasFadedOut()
-                    self?.dismiss(animated: false, completion: nil)
-                }
-            }
-        )
     }
 
     // MARK: Data management
@@ -482,7 +468,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                 actions: [
                     AlertAction(title: UITexts.Generic.ok, style: .default) { [weak self] _ in
                         self?.setDefaultState()
-                        self?.presenter.didPressClose()
+                        self?.presenter.didPressCloseOnExpirationAlert()
                     }
                 ]
             )
@@ -524,6 +510,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     @objc private func backButtonPressed() {
-        presenter.didPressClose()
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -1,0 +1,46 @@
+phrase:
+  project_id: 8e4c22fcf72ecdc3363818caacb7c50a
+  push:
+    sources:
+    - file: ./KarhooUISDK/Translations/Base.lproj/Localizable.strings
+      params:
+        file_format: strings
+        update_translations: false
+  pull:
+    targets:
+    - file: ./KarhooUISDK/Translations/Base.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: f390ef60a73bcd6ee5ef1d4b78363e58
+        include_empty_translations: true
+        encoding: UTF-8
+    - file: ./KarhooUISDK/Translations/de.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 6510393c2bbcba9a2d9f9561db8a3c6c
+        include_empty_translations: true
+        encoding: UTF-8
+    - file: ./KarhooUISDK/Translations/es.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 2cea4b12cd2e5fd56202eabd131d1bd3
+        include_empty_translations: true
+        encoding: UTF-8
+    - file: ./KarhooUISDK/Translations/fr.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 35ea33464c4e6fa8369db03f78f78bbd
+        include_empty_translations: true
+        encoding: UTF-8
+    - file: ./KarhooUISDK/Translations/it.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 44d999b670083599794939e6c17f41b8
+        include_empty_translations: true
+        encoding: UTF-8
+    - file: ./KarhooUISDK/Translations/nl.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: 987bb9091a4f245e929881845623aa3e
+        include_empty_translations: true
+        encoding: UTF-8

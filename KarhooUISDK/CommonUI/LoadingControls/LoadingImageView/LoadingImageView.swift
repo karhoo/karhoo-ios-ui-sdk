@@ -10,7 +10,7 @@ import UIKit
 
 public final class LoadingImageView: UIView {
 
-    private var cachingImageView: CachingImageView!
+    private var imageView: UIImageView!
     private var activityIndicator: UIActivityIndicatorView!
     private(set) var image: UIImage!
 
@@ -32,16 +32,16 @@ public final class LoadingImageView: UIView {
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        cachingImageView = CachingImageView()
-        cachingImageView.translatesAutoresizingMaskIntoConstraints = false
-        cachingImageView.accessibilityIdentifier = "caching_image"
-        cachingImageView.isAccessibilityElement = true
+        imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "caching_image"
+        imageView.isAccessibilityElement = true
         
-        addSubview(cachingImageView)
-        _ = [cachingImageView.topAnchor.constraint(equalTo: self.topAnchor),
-             cachingImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-             cachingImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-             cachingImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
+        addSubview(imageView)
+        _ = [imageView.topAnchor.constraint(equalTo: self.topAnchor),
+             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true }
         
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -50,28 +50,27 @@ public final class LoadingImageView: UIView {
         activityIndicator.hidesWhenStopped = true
         
         addSubview(activityIndicator)
-        _ = [activityIndicator.centerXAnchor.constraint(equalTo: cachingImageView.centerXAnchor),
-             activityIndicator.centerYAnchor.constraint(equalTo: cachingImageView.centerYAnchor)]
+        _ = [activityIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+             activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)]
             .map { $0.isActive = true }
     }
     
     public func cancel() {
         activityIndicator?.stopAnimating()
-        cachingImageView?.image = nil
+        imageView?.image = nil
     }
 
     public func load(imageURL: String, placeholderImageName: String?) {
         activityIndicator?.startAnimating()
-
-        cachingImageView?.loadRemoteImage(urlString: imageURL,
-                                          placeHolderImageName: placeholderImageName,
-                                          completion: { [weak self] image in
-            self?.image = image
-                        
-            DispatchQueue.main.async { [weak self] in
+        
+        imageView?.getImage(
+            using: URL(string: imageURL),
+            placeholder: UIImage.uisdkImage(placeholderImageName ?? ""),
+            completion: { [weak self] image in
+                self?.image = image
                 self?.activityIndicator?.stopAnimating()
             }
-        })
+        )
     }
 
     public func setStandardBorder() {
