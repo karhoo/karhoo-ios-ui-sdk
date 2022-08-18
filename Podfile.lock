@@ -57,21 +57,19 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - FloatingPanel (2.0.1)
   - KarhooSDK (1.6.3):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.9.0):
-    - KarhooUISDK/Core (= 1.9.0)
-  - KarhooUISDK/Adyen (1.9.0):
+  - KarhooUISDK (1.9.1):
+    - KarhooUISDK/Core (= 1.9.1)
+  - KarhooUISDK/Adyen (1.9.1):
     - Adyen (= 4.7.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.9.0):
+  - KarhooUISDK/Braintree (1.9.1):
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.9.0):
-    - FloatingPanel (= 2.0.1)
+  - KarhooUISDK/Core (1.9.1):
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
@@ -89,7 +87,6 @@ DEPENDENCIES:
   - Adyen (= 4.7.1)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - FloatingPanel (= 2.0.1)
   - KarhooSDK (= 1.6.3)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
@@ -105,7 +102,6 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - FloatingPanel
     - KarhooSDK
     - KeychainSwift
     - PhoneNumberKit
@@ -123,15 +119,14 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  FloatingPanel: 579a5ac0154f923a9d7302c4f13dbc0268511c92
   KarhooSDK: ecdd7cdcaa76f2a3d52e3b2331414fde6c7d770e
-  KarhooUISDK: a2f3406f3b8a2f0a93cfc6412f864f121e0397a2
+  KarhooUISDK: 8829b6f120b36ee44054b73286eebb90e66997b0
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftFormat: 09cc5eb67ae49356c4ad9a2be6a0d5a4212b61bb
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 557bfb485c7bb6184ae74204985fca96582d34db
+PODFILE CHECKSUM: a04036dd42018420764492374d6be63896180c7c
 
 COCOAPODS: 1.11.3
