@@ -30,6 +30,6 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     }
 
     func analytics() -> Analytics {
-        KarhooAnalitycsWithNotifications()
+        KarhooAnalytics(base: KarhooAnalitycsServiceWithNotifications() )
     }
 }
