@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 
+@testable import KarhooUISDKBraintree
 @testable import KarhooSDK
 @testable import KarhooUISDK
 

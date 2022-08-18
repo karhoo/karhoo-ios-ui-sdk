@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.9.0"
+  s.version               = "1.9.1"
   s.summary               = "Karhoo UI SDK"
   s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
   s.license               = 'BSD 2-Clause'
@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |core|
     core.dependency    'KarhooSDK'
-    core.dependency    'FloatingPanel', '2.0.1'
     core.dependency    'PhoneNumberKit', '3.3.1'
     core.source_files = 'KarhooUISDK/**/*.swift'
     core.exclude_files = 'KarhooUISDK/Extensions/Bundle+extensions/BundleSPM+current.swift'
