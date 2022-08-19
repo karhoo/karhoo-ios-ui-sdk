@@ -7,6 +7,8 @@
 //
 
 import KarhooSDK
+import Foundation
+import UIKit
 
 final class KarhooQuoteListPresenter: QuoteListPresenter {
 

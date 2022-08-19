@@ -10,6 +10,9 @@ import Foundation
 import XCTest
 import KarhooSDK
 
+#if SWIFT_PACKAGE
+@testable import KarhooUISDKBraintree
+#endif
 @testable import KarhooUISDK
 
 final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {

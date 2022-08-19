@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
 
