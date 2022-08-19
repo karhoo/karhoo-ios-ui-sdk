@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 extension QuoteListFilters {
     enum FleetCapabilities: String, QuoteListFilter, CaseIterable {

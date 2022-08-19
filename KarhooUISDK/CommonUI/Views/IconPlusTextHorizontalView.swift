@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct KHIconPlusTextHorizontalViewID {
     public static let stack = "icon_plus_label_stack"

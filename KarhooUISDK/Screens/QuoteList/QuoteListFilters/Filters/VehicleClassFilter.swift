@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 extension QuoteListFilters {
     enum VehicleClass: String, UserSelectable, CaseIterable, QuoteListFilter {

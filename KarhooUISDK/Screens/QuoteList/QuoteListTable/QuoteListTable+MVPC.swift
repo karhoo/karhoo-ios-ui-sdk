@@ -8,6 +8,7 @@
 
 import KarhooSDK
 import Foundation
+import UIKit
 
 protocol QuoteListTableCoordinator: KarhooUISDKSceneCoordinator {
     var viewController: QuoteListTableViewController { get }
