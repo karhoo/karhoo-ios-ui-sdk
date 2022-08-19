@@ -9,7 +9,7 @@ use_frameworks!
 post_install do |installer_representation|
   installer_representation.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings[‘ONLY_ACTIVE_ARCH’] = ‘NO’
+      config.build_settings[‘ONLY_ACTIVE_ARCH’] = ‘YES’
       config.build_settings[“EXCLUDED_ARCHS[sdk=iphonesimulator*]“] = “arm64”
       config.build_settings[‘BUILD_LIBRARY_FOR_DISTRIBUTION’] = ‘YES’
     end
@@ -38,8 +38,10 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.1'
+end
 
-  target 'KarhooUISDKTests' do
-    inherit! :complete
-  end
+target 'KarhooUISDKTests' do
+  inherit! :complete
+  pod 'KarhooUISDK/Adyen', :path => './'
+  pod 'KarhooUISDK/Braintree', :path => './'
 end
