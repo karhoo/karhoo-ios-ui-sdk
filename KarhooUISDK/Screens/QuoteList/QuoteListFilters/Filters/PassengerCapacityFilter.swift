@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 extension QuoteListFilters {
     struct PassengerCapacityModel: QuoteListNumericFilter {

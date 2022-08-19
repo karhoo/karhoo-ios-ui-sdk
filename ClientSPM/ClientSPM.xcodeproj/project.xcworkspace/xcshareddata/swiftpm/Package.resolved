@@ -56,21 +56,12 @@
         }
       },
       {
-        "package": "FloatingPanel",
-        "repositoryURL": "https://github.com/scenee/FloatingPanel",
-        "state": {
-          "branch": null,
-          "revision": "9b1cb68f0a0f44fb726835d95f6079d94a408af7",
-          "version": "2.0.1"
-        }
-      },
-      {
         "package": "KarhooSDK",
         "repositoryURL": "https://github.com/karhoo/karhoo-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "e8e4bbd9280f8fb5771a819b57624399f966371e",
-          "version": "1.6.2"
+          "revision": "f7f6c655b734aee8d47bc44dbd3967aa09bc68bf",
+          "version": "1.6.3"
         }
       },
       {
