@@ -70,6 +70,7 @@ public enum UITexts {
         public static let sortBy = "Text.Generic.SortBy".localized
         public static let driverArrival = "Text.Generic.DriverArrival".localized
         public static let all = "Text.Generic.all".localized
+        public static let checkout = "Text.Generic.Checkout".localized
     }
 
     public enum QuoteCell {

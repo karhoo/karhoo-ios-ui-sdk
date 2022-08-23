@@ -100,10 +100,10 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
         sideMenu?.hideMenu()
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        setupNavigationBar()
         mapView.set(userMarkerVisible: true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView(reverseGeolocate: journeyInfo == nil)
@@ -137,6 +137,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomNotificationView?.addLink(linkText) { [weak self] in
             _ = self?.feedbackMailComposer.showNoCoverageEmail()
         }
+    }
+
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationItem.backButtonTitle = ""
     }
 
     func reset() {
@@ -297,13 +302,13 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
 
-            let navigationController = NavigationController(rootViewController: bookingViewController)
+            let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
             navigationController.viewControllers.insert(sideMenu.getFlowItem(),
                     at: navigationController.viewControllers.endIndex)
             navigationController.modalPresentationStyle = .fullScreen
             return navigationController
         } else {
-            let navigationController = NavigationController(rootViewController: bookingViewController)
+            let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
             navigationController.modalPresentationStyle = .fullScreen
             bookingViewController.set(leftNavigationButton: .exitIcon)
             return navigationController

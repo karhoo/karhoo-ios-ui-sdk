@@ -29,21 +29,6 @@ class KarhooBookingRouter: BookingRouter {
             journeyDetails: details,
             onQuoteSelected: onQuoteSelected
         )
-        if viewController?.navigationController?.topViewController == viewController {
-            if #available(iOS 13.0, *) {
-                // navigation bar for ios 13+ configured in QuoteListViewController:setupNavigationBar() function
-            } else {
-                let backArrow = UIImage.uisdkImage("back_arrow")
-                let navigationBarColor = KarhooUI.colors.primary
-                viewController?.navigationController?.navigationBar.barTintColor = navigationBarColor
-                viewController?.navigationController?.navigationBar.backIndicatorImage = backArrow
-                viewController?.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
-                viewController?.navigationController?.navigationBar.titleTextAttributes = [
-                    .foregroundColor: KarhooUI.colors.white
-                ]
-                viewController?.navigationItem.title = ""
-            }
-        }
 
         quoteListCoordinator.start()
     }
