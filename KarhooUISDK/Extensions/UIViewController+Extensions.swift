@@ -21,9 +21,9 @@ public extension UIViewController {
 
 public extension UIAlertController {
     static func create(
-            title: String?,
-            message: String?,
-            preferredStyle: UIAlertController.Style
+        title: String?,
+        message: String?,
+        preferredStyle: UIAlertController.Style
     ) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         alert.overrideUserInterfaceStyle = .light

@@ -67,8 +67,8 @@ final class NavigationController: UINavigationController {
 
     private func setupDesign() {
         let backArrow = UIImage.uisdkImage("back_arrow")
-                .withRenderingMode(.alwaysTemplate)
-                .withTintColor(style.tintColor)
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(style.tintColor)
         navigationController?.navigationBar.barTintColor = style.backgroundColor
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
