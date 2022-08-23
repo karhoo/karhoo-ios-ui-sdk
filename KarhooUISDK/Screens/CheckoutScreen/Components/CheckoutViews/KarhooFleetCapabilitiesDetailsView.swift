@@ -44,18 +44,6 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
         return stackView
     }()
     
-    private lazy var detailsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHMoreDetailsViewID.fleetDescriptionLabel
-        label.textColor = KarhooUI.colors.infoColor
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        
-        return label
-    }()
-    
     init() {
         super.init(frame: .zero)
         self.setupView()
@@ -90,12 +78,8 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
     }
     
     func set(viewModel: QuoteViewModel) {
-        detailsLabel.text = viewModel.fleetDescription
-        
         setupVehicleCapacityView(forViewModel: viewModel)
         setupView(for: viewModel.fleetCapabilities)
-        fleetCapabilitiesStackView.addArrangedSubview(detailsLabel)
-        
         setupConstraints()
     }
     
