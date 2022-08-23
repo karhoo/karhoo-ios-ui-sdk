@@ -373,7 +373,7 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Quanto sei soddisfatto della selezione dei preventivi per il tuo viaggio (ad es. Flotte, Prezzi ed ETA)?";
 
-"Text.FleetCapabilities.DriverDetails" = "Dettagli del driver";
+"Text.FleetCapabilities.DriverDetails" = "Dettagli dell’autista";
 
 "Text.FleetCapabilities.FlightTracking" = "Monitoraggio del volo";
 
@@ -399,6 +399,8 @@
 "Text.Generic.Card" = "Carta";
 
 "Text.Generic.Checked" = "controllato";
+
+"Text.Generic.Checkout" = "Cassa";
 
 "Text.Generic.Close" = "Chiudi";
 
@@ -618,9 +620,9 @@
 
 "Text.QuoteCategory.Electric" = "Elettrico";
 
-"Text.QuoteCategory.Exec" = "Esecutivo";
+"Text.QuoteCategory.Exec" = "Executive";
 
-"Text.QuoteCategory.Executive" = "Esecutivo";
+"Text.QuoteCategory.Executive" = "Executive";
 
 "Text.QuoteCategory.Moto" = "Moto";
 
@@ -666,7 +668,7 @@
 
 "Text.Quotes.FilterFleetCapabilities" = "Capacità della flotta";
 
-"Text.Quotes.FilterPageResults" = "Visualizza tutti i %1$@ risultati";
+"Text.Quotes.FilterPageResults" = "Visualizza tutti e %1$@ risultati";
 
 "Text.Quotes.FilterQuoteTypes" = "Tipi di preventivo";
 
@@ -682,7 +684,7 @@
 
 "Text.Quotes.FilterVehicleType" = "Tipi di veicoli";
 
-"Text.Quotes.ResetFilter" = "Ripristina filtros";
+"Text.Quotes.ResetFilter" = "Ripristina filtri";
 
 "Text.Quotes.Result" = "";
 
@@ -878,7 +880,7 @@
 
 "Text.VehicleClass.Electric" = "Elettrico";
 
-"Text.VehicleClass.Exec" = "Esecutivo";
+"Text.VehicleClass.Exec" = "Executive";
 
 "Text.VehicleClass.Luxury" = "Lusso";
 
@@ -897,7 +899,7 @@
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Elettrico";
 
-"Text.VehicleTag.Executive" = "Esecutivo";
+"Text.VehicleTag.Executive" = "Executive";
 
 "Text.VehicleTag.Hybrid" = "Ibrido";
 
