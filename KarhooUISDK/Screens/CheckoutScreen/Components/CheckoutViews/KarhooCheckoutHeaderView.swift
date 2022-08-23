@@ -27,6 +27,7 @@ public struct KHCheckoutHeaderViewID {
     public static let capabilitiesContentView = "capabilities_content_view"
     public static let fleetCapabilities = "fleet_capabilties_stack_view"
     public static let cancellationInfo = "cancellationInfo_label"
+    public static let fleetCapabilitiesLabel = "fleetCapabilities_label"
     public static let learnMoreButton = "learn_more_button"
     public static let capabilitiesDetailsView = "capabilities_details_view"
     public static let vehicleCapacityView = "vehicle_capacity_view"
@@ -59,7 +60,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         imageView.accessibilityLabel = UITexts.TripSummary.fleet
         imageView.accessibilityIdentifier = KHCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
-        imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        imageView.layer.borderColor = KarhooUI.colors.border.cgColor
         imageView.layer.borderWidth = 0.5
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -95,7 +96,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return label
     }()
     
-    private var capabilitiesStackView: UIStackView = {
+    private var vehicleTagsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.accessibilityIdentifier = KHCheckoutHeaderViewID.fleetCapabilities
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,12 +116,6 @@ final class KarhooCheckoutHeaderView: UIStackView {
     private lazy var vehicleCapacityView: VehicleCapacityView = {
         let view =  VehicleCapacityView()
         view.accessibilityIdentifier = KHCheckoutHeaderViewID.vehicleCapacityView
-        return view
-    }()
-
-    lazy var capacityDetailsView: KarhooFleetCapabilitiesDetailsView = {
-        let view = KarhooFleetCapabilitiesDetailsView()
-        view.accessibilityIdentifier = KHCheckoutHeaderViewID.capabilitiesDetailsView
         return view
     }()
     
@@ -163,11 +158,9 @@ final class KarhooCheckoutHeaderView: UIStackView {
         
         rideDetailStackView.addArrangedSubview(nameLabel)
         rideDetailStackView.addArrangedSubview(carTypeLabel)
-        rideDetailStackView.addArrangedSubview(capabilitiesStackView)
+        rideDetailStackView.addArrangedSubview(vehicleTagsStackView)
         
         capacityContentView.addSubview(vehicleCapacityView)
-        
-        addArrangedSubview(capacityDetailsView)
     }
     
     override func updateConstraints() {
@@ -190,7 +183,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
                     leading: capacityContentView.leadingAnchor,
                     trailing: capacityContentView.trailingAnchor
             )
-            
+
             didSetupConstraints = true
         }
         
@@ -207,9 +200,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
-        vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
         setVehicleTags(viewModel: viewModel)
-        capacityDetailsView.set(viewModel: viewModel)
         
         updateConstraints()
     }
@@ -223,8 +214,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
                 let label = UILabel()
                 label.text = "+\(viewModel.vehicleTags.count - 1)"
                 label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
-                label.textColor = KarhooUI.colors.darkGrey
-                capabilitiesStackView.addArrangedSubview(label)
+                label.textColor = KarhooUI.colors.text
+                vehicleTagsStackView.addArrangedSubview(label)
             }
         }
     }
@@ -240,7 +231,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         label.textColor = KarhooUI.colors.text
-        capabilitiesStackView.addArrangedSubview(imageView)
-        capabilitiesStackView.addArrangedSubview(label)
+        vehicleTagsStackView.addArrangedSubview(imageView)
+        vehicleTagsStackView.addArrangedSubview(label)
     }
 }

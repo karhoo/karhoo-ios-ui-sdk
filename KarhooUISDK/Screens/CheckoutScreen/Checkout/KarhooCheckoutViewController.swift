@@ -131,7 +131,17 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.viewSpacing(standardSpacing)
         return baseStackView
     }()
-    
+
+    private var fleetCapabilitiesLabel = UILabel().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.accessibilityIdentifier = KHCheckoutHeaderViewID.fleetCapabilitiesLabel
+        $0.setContentCompressionResistancePriority(.required, for: .vertical)
+        $0.font = KarhooUI.fonts.captionRegular()
+        $0.textColor = KarhooUI.colors.text
+        $0.lineBreakMode = .byWordWrapping
+        $0.numberOfLines = 0
+    }
+
     private var cancellationInfoLabel: UILabel = {
         let cancellationInfo = UILabel()
         cancellationInfo.translatesAutoresizingMaskIntoConstraints = false
@@ -243,6 +253,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             $0.accessibilityIdentifier = "separator_view"
         })
         baseStackView.addViewToStack(view: headerView)
+        baseStackView.addViewToStack(view: fleetCapabilitiesLabel)
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
@@ -288,21 +299,32 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
         headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
-        
-        cancellationInfoLabel.anchor(top: headerView.bottomAnchor,
-                                     leading: baseStackView.leadingAnchor,
-                                     trailing: baseStackView.trailingAnchor,
-                                     paddingTop: standardPadding,
-                                     paddingLeft: standardPadding,
-                                     paddingRight: standardPadding,
-                                     paddingBottom: standardPadding)
-        
-        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
-                                 leading: baseStackView.leadingAnchor,
-                                 trailing: baseStackView.trailingAnchor,
-                                 paddingTop: smallSpacing,
-                                 paddingLeft: standardSpacing,
-                                 paddingRight: standardSpacing)
+
+        fleetCapabilitiesLabel.anchor(
+            top: headerView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+        cancellationInfoLabel.anchor(
+            top: fleetCapabilitiesLabel.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardPadding,
+            paddingLeft: standardPadding,
+            paddingRight: standardPadding,
+            paddingBottom: standardPadding
+        )
+        rideInfoStackView.anchor(
+            top: cancellationInfoLabel.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: smallSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
         loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: standardPadding)
         
         passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
@@ -373,6 +395,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
+        fleetCapabilitiesLabel.text = viewModel.fleetCapabilities.map { $0.title }.joined(separator: ", ")
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
