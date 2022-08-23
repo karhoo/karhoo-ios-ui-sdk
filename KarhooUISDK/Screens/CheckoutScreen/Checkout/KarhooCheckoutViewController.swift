@@ -88,7 +88,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
-        footerView.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
+        footerView.addShadow(UIConstants.Alpha.lightShadow, radius: UIConstants.Shadow.smallRadius)
         return footerView
     }()
     

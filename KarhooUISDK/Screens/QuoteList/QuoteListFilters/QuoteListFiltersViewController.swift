@@ -51,7 +51,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     private lazy var footerView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = KarhooUI.colors.background1
-        $0.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
+        $0.addShadow(UIConstants.Alpha.lightShadow, radius: UIConstants.Shadow.smallRadius)
     }
     private lazy var confirmButton = MainActionButton().then {
         $0.setTitle(UITexts.Generic.save.uppercased(), for: .normal)

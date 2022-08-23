@@ -53,6 +53,7 @@ final class RidesViewController: UIViewController, RidesView {
         
         tabView?.backgroundColor = KarhooUI.colors.accent
         upcomingTabLabel?.textColor = KarhooUI.colors.accent
+        navigationItem.backButtonTitle = ""
         forceLightMode()
 
         pastTabButton?.accessibilityLabel = UITexts.Bookings.past
