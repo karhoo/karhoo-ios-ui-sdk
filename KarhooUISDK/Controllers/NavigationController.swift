@@ -72,13 +72,14 @@ final class NavigationController: UINavigationController {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = style.backgroundColor
+            appearance.shadowColor = .clear
             appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
             appearance.titleTextAttributes = [
                 .foregroundColor: style.tintColor
             ]
-            navigationBar.shadowImage = nil
+            navigationBar.shadowImage = UIImage()
             navigationBar.barStyle = .black
-            navigationBar.setBackgroundImage(nil, for: .default)
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
 
             navigationBar.standardAppearance = appearance
             navigationBar.compactAppearance = appearance
