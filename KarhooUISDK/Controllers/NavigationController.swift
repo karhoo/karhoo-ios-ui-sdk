@@ -79,7 +79,6 @@ final class NavigationController: UINavigationController {
             appearance.titleTextAttributes = [
                 .foregroundColor: style.tintColor
             ]
-            // set navigation bar items colors to style.tintColor
             navigationBar.tintColor = style.tintColor
             navigationBar.shadowImage = UIImage()
             navigationBar.barStyle = .black
