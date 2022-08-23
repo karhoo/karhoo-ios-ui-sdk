@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Pre-autorizza %@";
-
 "adyen.submitButton" = "Pre-autorizzare";
+
+"adyen.submitButton.formatted" = "Pre-autorizza %@";
 
 /* English: Error codes */
 "K0001" = "Errore di richiesta generale";
@@ -373,6 +373,18 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Quanto sei soddisfatto della selezione dei preventivi per il tuo viaggio (ad es. Flotte, Prezzi ed ETA)?";
 
+"Text.FleetCapabilities.DriverDetails" = "Dettagli dell’autista";
+
+"Text.FleetCapabilities.FlightTracking" = "Monitoraggio del volo";
+
+"Text.FleetCapabilities.GpsTracking" = "Tracciamento GPS";
+
+"Text.FleetCapabilities.TrainTracking" = "Monitoraggio del treno";
+
+"Text.FleetCapabilities.VehicleDetails" = "Dettagli del veicolo";
+
+"Text.Generic.All" = "Tutti";
+
 "Text.Generic.Back" = "Indietro";
 
 "Text.Generic.Bookings" = "Prenotazioni";
@@ -387,6 +399,8 @@
 "Text.Generic.Card" = "Carta";
 
 "Text.Generic.Checked" = "controllato";
+
+"Text.Generic.Checkout" = "Cassa";
 
 "Text.Generic.Close" = "Chiudi";
 
@@ -589,6 +603,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Tasse e Commissioni Incluse";
 
+"Text.Quote.FreeCancellation" = "Cancellazione gratuita";
+
 "Text.Quote.FreeCancellationAndKeyword" = "e";
 
 "Text.Quote.FreeCancellationASAP" = "Cancellazione gratuita fino a %1$@ dopo la prenotazione";
@@ -598,13 +614,15 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancellazione gratuita fino a %1$@ prima del ritiro";
 
+"Text.Quote.FreeWaitingTime" = "Tempo di attesa gratuito";
+
 "Text.Quote.Results" = "%1$@ risultati";
 
 "Text.QuoteCategory.Electric" = "Elettrico";
 
-"Text.QuoteCategory.Exec" = "Esecutivo";
+"Text.QuoteCategory.Exec" = "Executive";
 
-"Text.QuoteCategory.Executive" = "Esecutivo";
+"Text.QuoteCategory.Executive" = "Executive";
 
 "Text.QuoteCategory.Moto" = "Moto";
 
@@ -622,6 +640,10 @@
 
 "Text.Quotes.DriverArrivalTime" = "Orario di arrivo dell'autista";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Inserisci sia l'indirizzo di ritiro che quello di consegna per accedere alle offerte.";
+
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Manca l'indirizzo di ritiro o riconsegna.";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Si prega di scegliere un orario diverso.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Nessuna disponibilità per l'orario di richiesta.";
@@ -632,13 +654,41 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Ancora nessuna flotta in quest'area";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Si prega di modificare la selezione del filtro.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "Nessun risultato dopo il filtraggio.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Si prega di modificare uno degli indirizzi per accedere ai preventivi";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Gli indirizzi di ritiro e riconsegna sono simili";
 
+"Text.Quotes.Filter" = "Filtro";
+
+"Text.Quotes.FilterEcoFriendly" = "Ecologico";
+
+"Text.Quotes.FilterFleetCapabilities" = "Capacità della flotta";
+
+"Text.Quotes.FilterPageResults" = "Visualizza tutti e %1$@ risultati";
+
+"Text.Quotes.FilterQuoteTypes" = "Tipi di preventivo";
+
+"Text.Quotes.FilterServiceAgreements" = "Cancellazione e tempo di attesa";
+
+"Text.Quotes.FiltersLuggages" = "Bagagli";
+
+"Text.Quotes.FiltersPassengers" = "Passeggero(i)";
+
+"Text.Quotes.FilterVehicleClass" = "Classe di veicoli";
+
+"Text.Quotes.FilterVehicleExtras" = "Extra del veicolo";
+
+"Text.Quotes.FilterVehicleType" = "Tipi di veicoli";
+
+"Text.Quotes.ResetFilter" = "Ripristina filtri";
+
 "Text.Quotes.Result" = "";
 
-"Text.Quotes.Results" = "";
+"Text.Quotes.Results" = "%1$@ risultati";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Circa";
@@ -830,7 +880,9 @@
 
 "Text.VehicleClass.Electric" = "Elettrico";
 
-"Text.VehicleClass.Exec" = "Esecutivo";
+"Text.VehicleClass.Exec" = "Executive";
+
+"Text.VehicleClass.Luxury" = "Lusso";
 
 "Text.VehicleClass.Moto" = "Moto";
 
@@ -842,14 +894,16 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Seggiolino per bambini";
+"Text.VehicleTag.ChildSeat" = "Seggiolino per bambini";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Elettrico";
 
-"Text.VehicleTag.Executive" = "Esecutivo";
+"Text.VehicleTag.Executive" = "Executive";
 
 "Text.VehicleTag.Hybrid" = "Ibrido";
+
+"Text.VehicleTag.Luxury" = "Lusso";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
@@ -861,5 +915,5 @@
 
 "Text.VehicleType.MPV" = "Multiposto";
 
-"Text.VehicleType.Standard" = "Standard";
+"Text.VehicleType.Standard" = "Berlina";
 

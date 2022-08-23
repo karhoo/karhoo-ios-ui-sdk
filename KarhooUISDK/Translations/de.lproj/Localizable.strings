@@ -1,6 +1,6 @@
-" adyen.submitButton.formatted" = "Vorautorisieren %@";
-
 "adyen.submitButton" = "Vorautorisieren";
+
+"adyen.submitButton.formatted" = "Vorautorisieren %@";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -373,6 +373,18 @@
 /* FeedBackView */
 "Text.FeedbackView.quote" = "Wie zufrieden waren Sie mit der Auswahl der Angebote für Ihre Reise (z. B. Flotten, Preise und ETAs)?";
 
+"Text.FleetCapabilities.DriverDetails" = "Angaben zum Fahrer";
+
+"Text.FleetCapabilities.FlightTracking" = "Flugverfolgung";
+
+"Text.FleetCapabilities.GpsTracking" = "GPS-Ortung";
+
+"Text.FleetCapabilities.TrainTracking" = "Zugverfolgung";
+
+"Text.FleetCapabilities.VehicleDetails" = "Fahrzeug-Details";
+
+"Text.Generic.All" = "Alle";
+
 "Text.Generic.Back" = "Zurück";
 
 "Text.Generic.Bookings" = "Buchungen";
@@ -387,6 +399,8 @@
 "Text.Generic.Card" = "Karte";
 
 "Text.Generic.Checked" = "Geprüft";
+
+"Text.Generic.Checkout" = "Zur Kasse";
 
 "Text.Generic.Close" = "Schließen";
 
@@ -589,6 +603,8 @@
 
 "Text.Quote.FeesAndTaxesIncluded" = "Inklusive Steuern und Gebühren";
 
+"Text.Quote.FreeCancellation" = "Kostenlose Stornierung";
+
 "Text.Quote.FreeCancellationAndKeyword" = "und";
 
 "Text.Quote.FreeCancellationASAP" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
@@ -597,6 +613,8 @@
 
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Kostenlose Stornierung bis zu %1$@ vor der Abholung";
+
+"Text.Quote.FreeWaitingTime" = "Kostenlose Wartezeit";
 
 "Text.Quote.Results" = "%1$@ Ergebnisse";
 
@@ -622,6 +640,10 @@
 
 "Text.Quotes.DriverArrivalTime" = "Ankunftszeit des Fahrers";
 
+"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Bitte geben Sie sowohl die Abhol- als auch die Rückgabeadresse ein, um auf die Angebote zugreifen zu können.";
+
+"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Die Adresse für die Abholung oder Rückgabe fehlt.";
+
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Bitte wählen Sie eine andere Zeit.";
 
 "Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Keine Verfügbarkeit für die angefragte Zeit.";
@@ -632,13 +654,41 @@
 
 "Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Noch keine Flotten in diesem Gebiet";
 
+"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Bitte ändern Sie Ihre Filterauswahl.";
+
+"Text.Quotes.ErrorNoResultsForFilterTitle" = "Keine Ergebnisse nach der Filterung.";
+
 "Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Bitte ändern Sie eine der Adressen, um Zugang zu den Angeboten zu erhalten";
 
 "Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Die Adressen für die Abholung und Rückgabe sind ähnlich";
 
+"Text.Quotes.Filter" = "Filter";
+
+"Text.Quotes.FilterEcoFriendly" = "Umweltfreundlich";
+
+"Text.Quotes.FilterFleetCapabilities" = "Flottenkapazitäten";
+
+"Text.Quotes.FilterPageResults" = "Alle %1$@ Ergebnisse anzeigen";
+
+"Text.Quotes.FilterQuoteTypes" = "Arten von Zitaten";
+
+"Text.Quotes.FilterServiceAgreements" = "Stornierung und Wartezeit";
+
+"Text.Quotes.FiltersLuggages" = "Gepäckstücke";
+
+"Text.Quotes.FiltersPassengers" = "Passagier(e)";
+
+"Text.Quotes.FilterVehicleClass" = "Fahrzeugklasse";
+
+"Text.Quotes.FilterVehicleExtras" = "Fahrzeug-Extras";
+
+"Text.Quotes.FilterVehicleType" = "Fahrzeugtypen";
+
+"Text.Quotes.ResetFilter" = "Filter zurücksetzen";
+
 "Text.Quotes.Result" = "";
 
-"Text.Quotes.Results" = "";
+"Text.Quotes.Results" = "%1$@ Ergebnisse";
 
 /* Side Menu "About" section title, Fuzzy */
 "Text.SideMenu.About" = "Über";
@@ -832,6 +882,8 @@
 
 "Text.VehicleClass.Exec" = "Exec";
 
+"Text.VehicleClass.Luxury" = "Luxus";
+
 "Text.VehicleClass.Moto" = "Moto";
 
 "Text.VehicleClass.Motorcycle" = "Motorrad";
@@ -842,7 +894,7 @@
 
 "Text.VehicleClass.Taxi" = "Taxi";
 
-"Text.VehicleTag.Childseat" = "Kindersitz";
+"Text.VehicleTag.ChildSeat" = "Kindersitz";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Electric";
@@ -850,6 +902,8 @@
 "Text.VehicleTag.Executive" = "Exekutive";
 
 "Text.VehicleTag.Hybrid" = "Hybrid";
+
+"Text.VehicleTag.Luxury" = "Luxus";
 
 "Text.VehicleTag.Taxi" = "Taxi";
 
