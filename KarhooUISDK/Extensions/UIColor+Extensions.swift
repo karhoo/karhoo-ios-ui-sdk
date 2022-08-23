@@ -70,7 +70,6 @@ extension UIColor {
         // return always light color until SDK starts to support dark mode
         return lightModeColor
         /*
-        if #available(iOS 13, *) {
             /**
              UIColor instance build using `dinamicProvider` constructor is, in fact, only factory method for UIColor that is genereted on the go, depending on user interface style.
              Therefore it is impossible to perform equality check with any other UIColor.
@@ -84,8 +83,6 @@ extension UIColor {
                 return traitCollection.userInterfaceStyle == .dark ? darkModeColor : lightModeColor
             }.cgColor
             return UIColor(cgColor: properColor)
-        } else {
-            return lightModeColor
-        }*/
+        */
     }
 }

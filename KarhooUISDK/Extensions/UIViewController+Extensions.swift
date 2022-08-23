@@ -11,9 +11,7 @@ import UIKit
 
 public extension UIViewController {
     func forceLightMode() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
+        overrideUserInterfaceStyle = .light
     }
     
     var viewIsOnScreen: Bool{
@@ -22,13 +20,13 @@ public extension UIViewController {
 }
 
 public extension UIAlertController {
-    static func create(title: String?, message: String?, preferredStyle: UIAlertController.Style) -> UIAlertController
-    {
+    static func create(
+            title: String?,
+            message: String?,
+            preferredStyle: UIAlertController.Style
+    ) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        if #available(iOS 13.0, *) {
-            // Always adopt a light interface style.
-            alert.overrideUserInterfaceStyle = .light
-        }
+        alert.overrideUserInterfaceStyle = .light
         return alert
     }
 }

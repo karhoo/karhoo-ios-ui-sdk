@@ -66,30 +66,28 @@ final class NavigationController: UINavigationController {
     }
 
     private func setupDesign() {
-        if #available(iOS 13.0, *) {
-            let backArrow = UIImage.uisdkImage("back_arrow")
-                    .withRenderingMode(.alwaysTemplate)
-                    .withTintColor(style.tintColor)
-            navigationController?.navigationBar.barTintColor = style.backgroundColor
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = style.backgroundColor
-            appearance.shadowColor = .clear
-            appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
-            appearance.titleTextAttributes = [
-                .foregroundColor: style.tintColor
-            ]
-            navigationBar.tintColor = style.tintColor
-            navigationBar.shadowImage = UIImage()
-            navigationBar.barStyle = .black
-            navigationBar.setBackgroundImage(UIImage(), for: .default)
+        let backArrow = UIImage.uisdkImage("back_arrow")
+                .withRenderingMode(.alwaysTemplate)
+                .withTintColor(style.tintColor)
+        navigationController?.navigationBar.barTintColor = style.backgroundColor
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = style.backgroundColor
+        appearance.shadowColor = .clear
+        appearance.setBackIndicatorImage(backArrow, transitionMaskImage: backArrow)
+        appearance.titleTextAttributes = [
+            .foregroundColor: style.tintColor
+        ]
+        navigationBar.tintColor = style.tintColor
+        navigationBar.shadowImage = UIImage()
+        navigationBar.barStyle = .black
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
 
-            navigationBar.standardAppearance = appearance
-            navigationBar.compactAppearance = appearance
-            navigationBar.scrollEdgeAppearance = appearance
-            if #available(iOS 15.0, *) {
-                navigationBar.compactScrollEdgeAppearance = appearance
-            }
+        navigationBar.standardAppearance = appearance
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        if #available(iOS 15.0, *) {
+            navigationBar.compactScrollEdgeAppearance = appearance
         }
     }
 }
