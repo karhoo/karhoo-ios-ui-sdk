@@ -118,7 +118,13 @@ final class KarhooCheckoutHeaderView: UIStackView {
         view.accessibilityIdentifier = KHCheckoutHeaderViewID.vehicleCapacityView
         return view
     }()
-    
+
+    lazy var capacityDetailsView: KarhooFleetCapabilitiesDetailsView = {
+        let view = KarhooFleetCapabilitiesDetailsView()
+        view.accessibilityIdentifier = KHCheckoutHeaderViewID.capabilitiesDetailsView
+        return view
+    }()
+
     //MARK: - Variables
     private var didSetupConstraints: Bool = false
     
@@ -159,8 +165,9 @@ final class KarhooCheckoutHeaderView: UIStackView {
         rideDetailStackView.addArrangedSubview(nameLabel)
         rideDetailStackView.addArrangedSubview(carTypeLabel)
         rideDetailStackView.addArrangedSubview(vehicleTagsStackView)
-        
         capacityContentView.addSubview(vehicleCapacityView)
+
+        addArrangedSubview(capacityDetailsView)
     }
     
     override func updateConstraints() {
@@ -201,7 +208,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         setVehicleTags(viewModel: viewModel)
-        
+        capacityDetailsView.set(viewModel: viewModel)
         updateConstraints()
     }
     

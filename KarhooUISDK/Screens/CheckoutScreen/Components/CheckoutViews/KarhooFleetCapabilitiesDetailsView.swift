@@ -92,17 +92,7 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
             passengerBaggageStackView.distribution = .fillEqually
             passengerBaggageStackView.alignment = .leading
             passengerBaggageStackView.spacing = 5
-            
-            if viewModel.passengerCapacity > 0 {
-                let passengerStackView = setupCapacityView(for: .passenger, maxNumber: viewModel.passengerCapacity)
-                passengerBaggageStackView.addArrangedSubview(passengerStackView)
-            }
-            
-            if viewModel.baggageCapacity > 0 {
-                let baggageStackView = setupCapacityView(for: .luggage, maxNumber: viewModel.baggageCapacity)
-                passengerBaggageStackView.addArrangedSubview(baggageStackView)
-            }
-            
+
             fleetCapabilitiesStackView.addArrangedSubview(passengerBaggageStackView)
         } else {
             if viewModel.passengerCapacity > 0 {

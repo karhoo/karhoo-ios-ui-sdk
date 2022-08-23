@@ -140,7 +140,7 @@ final class QuoteViewModel {
         self.scheduleMainValue = scheduleTexts.value
         self.vehicleType = Self.getVehicleTypeText(for: quote.vehicle)
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
-        self.fleetCapabilities = [.flightTracking, .gpsTracking]  // quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
+        self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
         switch quote.serviceLevelAgreements?.serviceCancellation.type {
         case .timeBeforePickup:
