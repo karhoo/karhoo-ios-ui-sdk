@@ -38,10 +38,10 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.1'
-end
-
-target 'KarhooUISDKTests' do
-  inherit! :complete
-  pod 'KarhooUISDK/Adyen', :path => './'
-  pod 'KarhooUISDK/Braintree', :path => './'
+  
+  target 'KarhooUISDKTests' do
+    inherit! :complete
+    pod 'KarhooUISDK/Adyen', :path => './'
+    pod 'KarhooUISDK/Braintree', :path => './'
+  end
 end
