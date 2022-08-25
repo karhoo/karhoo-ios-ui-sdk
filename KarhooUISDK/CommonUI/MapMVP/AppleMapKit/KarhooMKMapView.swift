@@ -50,6 +50,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private func setupView() {
         mapView.delegate = self
         mapView.isRotateEnabled = false
+        mapView.showsUserLocation = true
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
         backgroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -146,6 +147,22 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
     func zoomToDefaultLevel() {
         zoom(toLevel: standardZoom)
+    }
+    
+    @discardableResult
+    func zoomToUserPosition() -> Bool {
+        if let userLocation = CLLocationManager().location?.coordinate {
+            let viewRegion = MKCoordinateRegion(
+                center: userLocation,
+                latitudinalMeters: CLLocationDistance(standardZoom),
+                longitudinalMeters: CLLocationDistance(standardZoom)
+            )
+            mapView.setRegion(viewRegion, animated: true)
+            return true
+        } else {
+            assertionFailure()
+            return false
+        }
     }
 
     func zoom(to: [CLLocation]) {
@@ -247,22 +264,26 @@ extension KarhooMKMapView: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        let customAnnotation = annotation as? MapAnnotationViewModel
-        view.image = customAnnotation?.backgroundIcon
-        
-        if let iconImage = customAnnotation?.foregroundIcon {
-            let icon = UIImageView(image: iconImage)
-            icon.translatesAutoresizingMaskIntoConstraints = false
-            icon.contentMode = .scaleAspectFit
-            view.addSubview(icon)
+        if annotation is MKUserLocation {
+            return nil
+        } else {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            let customAnnotation = annotation as? MapAnnotationViewModel
+            view.image = customAnnotation?.backgroundIcon
             
-            icon.centerX(inView: view)
-            icon.centerY(inView: view, constant: -6)
-            icon.anchor(width: 16, height: 16)
+            if let iconImage = customAnnotation?.foregroundIcon {
+                let icon = UIImageView(image: iconImage)
+                icon.translatesAutoresizingMaskIntoConstraints = false
+                icon.contentMode = .scaleAspectFit
+                view.addSubview(icon)
+                
+                icon.centerX(inView: view)
+                icon.centerY(inView: view, constant: -6)
+                icon.anchor(width: 16, height: 16)
+            }
+            
+            return view
         }
-        
-        return view
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

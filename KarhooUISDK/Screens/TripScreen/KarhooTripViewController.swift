@@ -190,7 +190,12 @@ final class KarhooTripViewController: UIViewController, TripView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        tripMapPresenter.load(map: map)
+        tripMapPresenter.load(
+            map: map,
+            onLocationPermissionDenied: { [weak self] in
+                self?.showNoLocationPermissionsPopUp()
+            }
+        )
         presenter.screenAppeared()
         originEtaView?.start(tripId: trip.tripId)
         destinationEtaView?.start(tripId: trip.tripId)
@@ -245,13 +250,17 @@ final class KarhooTripViewController: UIViewController, TripView {
     func focusMapOnRoute() {
         tripMapPresenter.focusOnRoute()
     }
+    
+    func focusOnUserLocation() {
+        tripMapPresenter.focusOnUserLocation()
+    }
 
     func focusMapOnDriverAndPickup() {
         tripMapPresenter.focusOnPickupAndDriver()
     }
 
-    func focusMapOnDriverAndDestination() {
-        tripMapPresenter.focusOnDestinationAndDriver()
+    func focusMapOnDriver() {
+        tripMapPresenter.focusOnDriver()
     }
 
     func setAddressBar(with trip: TripInfo) {
@@ -269,7 +278,6 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     @objc
     private func locatePressed() {
-        set(locateButtonHidden: true)
         presenter.locatePressed()
     }
 
@@ -295,6 +303,23 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    private func showNoLocationPermissionsPopUp() {
+        let alertController = UIAlertController(
+            title: UITexts.Booking.noLocationPermissionTitle,
+            message: UITexts.Booking.noLocationPermissionMessage,
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(
+            title: UITexts.Booking.noLocationPermissionConfirm,
+            style: .default,
+            handler: { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        ))
+        alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
+        present(alertController, animated: true)
     }
 
     final class KarhooTripScreenBuilder: TripScreenBuilder {
