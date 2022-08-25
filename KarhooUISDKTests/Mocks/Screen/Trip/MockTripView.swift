@@ -33,7 +33,7 @@ final class MockTripView: MockBaseViewController, TripView {
     }
     
     private(set) var focusMapOnDriverAndDestinationCalled = false
-    func focusMapOnDriverAndDestination() {
+    func focusMapOnDriver() {
         focusMapOnDriverAndDestinationCalled = true
     }
 

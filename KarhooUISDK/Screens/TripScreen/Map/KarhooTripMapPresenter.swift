@@ -33,7 +33,7 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         self.tripView = view
     }
 
-    func load(map: MapView?) {
+    func load(map: MapView?, onLocationPermissionDenied: (() -> Void)?) {
         guard self.mapView !== map else {
             return
         }
@@ -42,6 +42,14 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         mapView?.centerPin(hidden: true)
         mapView?.zoomToDefaultLevel()
         mapView?.set(minimumZoom: 0, maximumZoom: mapView?.idealMaximumZoom ?? 0)
+
+        let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+        switch locationAuthorizationStatus {
+        case .denied, .restricted:
+            onLocationPermissionDenied?()
+        default:
+            CLLocationManager().requestWhenInUseAuthorization()
+        }
     }
 
     func focusOnRoute() {
@@ -52,6 +60,13 @@ final class KarhooTripMapPresenter: TripMapPresenter {
 
         mapView?.zoom(to: [originAddress.position.toCLLocation(), destination.position.toCLLocation()])
     }
+    
+    func focusOnUserLocation() {
+        let zoomSucceded = mapView?.zoomToUserPosition() ?? false
+        if zoomSucceded == false {
+            focusOnPickupAndDriver()
+        }
+    }
 
     func focusOnPickupAndDriver() {
         guard let driverLocation = previousDriverLocation else {
@@ -61,14 +76,13 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         mapView?.zoom(to: [originAddress.position.toCLLocation(), driverLocation])
     }
 
-    func focusOnDestinationAndDriver() {
-        guard let driverLocation = previousDriverLocation,
-              let destinationLocation = destinationAddress?.position.toCLLocation() else {
-                focusOnRoute()
+    func focusOnDriver() {
+        guard let driverLocation = previousDriverLocation else {
+            focusOnUserLocation()
             return
         }
 
-        mapView?.zoom(to: [destinationLocation, driverLocation])
+        mapView?.zoom(to: [driverLocation])
     }
 
     func updateDriver(location: CLLocation) {

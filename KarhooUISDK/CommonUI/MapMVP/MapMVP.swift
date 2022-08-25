@@ -31,6 +31,9 @@ protocol MapView: UIView {
 
     func zoomToDefaultLevel()
 
+    @discardableResult
+    func zoomToUserPosition() -> Bool
+
     func zoom(to: [CLLocation])
 
     func zoom(toLevel: Float)
@@ -111,10 +114,11 @@ protocol BookingMapPresenter: MapPresenter {
 }
 
 protocol TripMapPresenter: MapPresenter {
-    func load(map: MapView?)
+    func load(map: MapView?, onLocationPermissionDenied: (() -> Void)?)
     func focusOnRoute()
+    func focusOnUserLocation()
     func focusOnPickupAndDriver()
-    func focusOnDestinationAndDriver()
+    func focusOnDriver()
     func updateDriver(location: CLLocation)
     func plotPins()
 }
