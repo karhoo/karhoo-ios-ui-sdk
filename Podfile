@@ -41,7 +41,5 @@ target 'KarhooUISDK' do
   
   target 'KarhooUISDKTests' do
     inherit! :complete
-    pod 'KarhooUISDK/Adyen', :path => './'
-    pod 'KarhooUISDK/Braintree', :path => './'
   end
 end
