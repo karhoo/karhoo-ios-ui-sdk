@@ -226,9 +226,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
                                           state: .arrived)
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
-        
-        XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
+
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
     }
 
@@ -243,7 +241,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
 
-        assetOnlyFocusMapOnDriverCalled()
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
     }
 
     /**
@@ -259,11 +257,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         let driverTrackingInfo = TestUtil.getRandomDriverTrackingInfo()
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(driverTrackingInfo)
 
-        assetOnlyFocusMapOnDriverCalled()
-    }
-
-    private func assetOnlyFocusMapOnDriverCalled() {
-        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
     }
 
     /**
