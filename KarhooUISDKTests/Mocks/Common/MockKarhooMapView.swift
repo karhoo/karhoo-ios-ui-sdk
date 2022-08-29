@@ -74,6 +74,11 @@ final class MockKarhooMapView: UIView, MapView {
 
     func zoom(toPolyline: String) {}
 
+    private(set) var zoomToUserPositionToReturn = true
+    func zoomToUserPosition() -> Bool {
+        zoomToUserPositionToReturn
+    }
+    
     var locationsToZoomTo: [CLLocation]?
     func zoom(to: [CLLocation]) {
         locationsToZoomTo = to

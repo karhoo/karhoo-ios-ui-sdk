@@ -31,11 +31,6 @@ final class MockTripView: MockBaseViewController, TripView {
     func set(locateButtonHidden: Bool) {
         theLocateButtonHidden = locateButtonHidden
     }
-    
-    private(set) var focusMapOnDriverAndDestinationCalled = false
-    func focusMapOnDriver() {
-        focusMapOnDriverAndDestinationCalled = true
-    }
 
     private(set) var setTripStatusCalled = false
     func set(tripStatus: String?) {
@@ -77,6 +72,11 @@ final class MockTripView: MockBaseViewController, TripView {
         focusMapOnDriverCalled = true
     }
     
+    private(set) var focusOnUserLocationCalled = false
+    func focusOnUserLocation() {
+        focusOnUserLocationCalled = true
+    }
+
     func update(driverLocation: CLLocation) {}
 
     private(set) var userMarkerVisibleSet = false

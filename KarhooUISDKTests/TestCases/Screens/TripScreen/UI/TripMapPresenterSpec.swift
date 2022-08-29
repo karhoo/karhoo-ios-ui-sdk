@@ -30,7 +30,7 @@ class TripMapPresenterSpec: KarhooTestCase {
         testObject = KarhooTripMapPresenter(originAddress: mockPickupPoint,
                                                destinationAddress: mockDestinationPoint)
 
-        testObject.load(map: mockMapView)
+        testObject.load(map: mockMapView, onLocationPermissionDenied: nil)
         mockMapView.set(actions: mockMapViewActions)
     }
 

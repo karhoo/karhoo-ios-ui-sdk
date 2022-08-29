@@ -199,7 +199,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         XCTAssertTrue(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
         XCTAssertTrue(mockAnalytics.tripStateChangedCalled)
     }
 
@@ -217,7 +216,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
         XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
     }
     
     /**
@@ -234,7 +232,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
         XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
     }
 
     /**
@@ -268,7 +265,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
     }
 
     private func assetOnlyFocusMapOnDriverAndDestinationCalled() {
-        XCTAssertTrue(mockTripView.focusMapOnDriverAndDestinationCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
         XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
@@ -303,7 +299,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(driverTrackingInfo)
 
         XCTAssertFalse(mockTripView.theLocateButtonHidden!)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
         XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
