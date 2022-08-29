@@ -36,7 +36,7 @@ jobs:
             # - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             # - gem-cache-v1-{{ arch }}-{{ .Branch }}
             # - gem-cache-v1
-    #  - run: bundle install
+#      - run: bundle install
       - run:
           name: Install Gemfile for Fastlane
           command: |
@@ -56,7 +56,10 @@ jobs:
           name: Install CocoaPods
           command: |
            bundle check || bundle install
+           rm -rf "${HOME}/Library/Caches/CocoaPods"
+           rm -rf "`pwd`/Pods/"
            bundle exec pod deintegrate
+           bundle exec pod cache clean --all
            bundle exec pod install --repo-update --verbose
       - run:
           name: Run unit test
