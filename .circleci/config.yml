@@ -56,7 +56,7 @@ jobs:
           name: Install CocoaPods
           command: |
            bundle check || bundle install
-           pundle exec pod deintegrate
+           bundle exec pod deintegrate
            bundle exec pod install --repo-update --verbose
       - run:
           name: Run unit test
