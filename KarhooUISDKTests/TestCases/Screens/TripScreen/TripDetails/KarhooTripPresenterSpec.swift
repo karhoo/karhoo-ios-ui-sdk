@@ -199,7 +199,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         XCTAssertTrue(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
         XCTAssertTrue(mockAnalytics.tripStateChangedCalled)
     }
 
@@ -214,10 +213,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
 
-        XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertTrue(mockTripView.focusOnUserLocationCalled)
     }
     
     /**
@@ -231,10 +227,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
         
-        XCTAssertTrue(mockTripView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertTrue(mockTripView.focusMapOnDriverCalled)
     }
 
     /**
@@ -248,7 +241,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
 
-        assetOnlyFocusMapOnDriverAndDestinationCalled()
+        XCTAssert(mockTripView.focusMapOnDriverCalled)
     }
 
     /**
@@ -264,14 +257,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         let driverTrackingInfo = TestUtil.getRandomDriverTrackingInfo()
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(driverTrackingInfo)
 
-        assetOnlyFocusMapOnDriverAndDestinationCalled()
-    }
-
-    private func assetOnlyFocusMapOnDriverAndDestinationCalled() {
-        XCTAssertTrue(mockTripView.focusMapOnDriverAndDestinationCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
-        XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
-        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
+        XCTAssert(mockTripView.focusMapOnDriverCalled)
     }
 
     /**
@@ -303,7 +289,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(driverTrackingInfo)
 
         XCTAssertFalse(mockTripView.theLocateButtonHidden!)
-        XCTAssertFalse(mockTripView.focusMapOnDriverAndDestinationCalled)
+        XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
         XCTAssertFalse(mockTripView.focusMapOnRouteCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverCalled)
         XCTAssertFalse(mockTripView.focusMapOnDriverAndPickupCalled)
@@ -387,43 +373,6 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         guard case .closed? = screenResult?.completedValue()! else {
             XCTFail("Wrong result")
             return
-        }
-    }
-
-    /**
-     * When: User is tracking trip but is not yet in the car
-     * Then  User location should be visible on the map
-     */
-    func testUserLocationMarkerShows() {
-        let userLocationVisibleStates: [TripState] = [.requested,
-                                                      .confirmed,
-                                                      .driverEnRoute,
-                                                      .arrived]
-
-        userLocationVisibleStates.forEach { state in
-            simulateShowingScreen(tripState: state)
-            mockTripService.trackTripCall.triggerPollSuccess(mockInitialTrip)
-            XCTAssertTrue(mockTripView.userMarkerVisibleSet)
-        }
-    }
-
-    /**
-     * When: User is on board
-     * Then  User location should not be visisble
-     */
-    func testUserLocationMarkerHides() {
-        let userLocationNotVisibleStates: [TripState] = [.passengerOnBoard,
-                                                         .bookerCancelled,
-                                                         .karhooCancelled,
-                                                         .completed,
-                                                         .noDriversAvailable,
-                                                         .unknown,
-                                                         .incomplete]
-
-        userLocationNotVisibleStates.forEach { state in
-            simulateShowingScreen(tripState: state)
-            mockTripService.trackTripCall.triggerPollSuccess(mockInitialTrip)
-            XCTAssertFalse(mockTripView.userMarkerVisibleSet)
         }
     }
 }

@@ -55,9 +55,11 @@ protocol TripView: BaseViewController {
 
     func focusMapOnRoute()
 
+    func focusOnUserLocation()
+
     func focusMapOnDriverAndPickup()
 
-    func focusMapOnDriverAndDestination()
+    func focusMapOnDriver()
 
     func userMovedMap()
 

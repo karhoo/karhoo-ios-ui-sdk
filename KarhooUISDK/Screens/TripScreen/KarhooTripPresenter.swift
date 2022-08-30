@@ -185,12 +185,12 @@ final class KarhooTripPresenter: TripPresenter,
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
-            tripView?.focusMapOnDriverAndPickup()
+            tripView?.focusOnUserLocation()
             return
         }
 
         if trip.state == .passengerOnBoard {
-            tripView?.focusMapOnDriverAndDestination()
+            tripView?.focusOnDriver()
             return
         }
 
@@ -209,9 +209,6 @@ final class KarhooTripPresenter: TripPresenter,
         }
 
         analytics.tripStateChanged(tripState: trip)
-
-        let userMarkerVisible = TripInfoUtility.canCancel(trip: trip)
-        tripView?.set(userMarkerVisible: userMarkerVisible)
 
         switch trip.state {
         case .completed:
