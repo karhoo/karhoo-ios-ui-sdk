@@ -227,7 +227,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockTripService.trackTripCall.triggerPollSuccess(trip)
         testObject.locatePressed()
         
-        XCTAssertTrue(mockTripView.focusMapOnDriverCalled)
+        XCTAssertTrue(mockTripView.focusOnUserLocationCalled)
     }
 
     /**
