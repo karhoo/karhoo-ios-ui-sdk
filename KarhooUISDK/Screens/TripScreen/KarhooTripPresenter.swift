@@ -190,7 +190,7 @@ final class KarhooTripPresenter: TripPresenter,
         }
 
         if trip.state == .passengerOnBoard {
-            tripView?.focusMapOnDriver()()
+            tripView?.focusMapOnDriver()
             return
         }
 
