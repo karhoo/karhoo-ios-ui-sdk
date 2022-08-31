@@ -184,6 +184,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
                     width: 60.0,
                     height: 60.0
             )
+            logoLoadingImageView.bottomAnchor.constraint(
+                lessThanOrEqualTo: logoContentView.bottomAnchor,
+                constant: UIConstants.Spacing.small
+            ).isActive = true
 
             vehicleCapacityView.anchor(
                     top: capacityContentView.topAnchor,
@@ -216,6 +220,9 @@ final class KarhooCheckoutHeaderView: UIStackView {
         if viewModel.vehicleTags.count > 0 {
             let firstTag = viewModel.vehicleTags[0]
             setupView(for: firstTag)
+        } else {
+//            rideDetailStackView.addArrangedSubview(UIView()) // autoresising spacer to fill in gap in ui
+            vehicleTagsStackView.isHidden = true
         }
     }
     

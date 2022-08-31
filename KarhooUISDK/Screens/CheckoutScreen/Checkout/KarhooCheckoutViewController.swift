@@ -46,7 +46,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private let mainButtonHeight: CGFloat = 55.0
     private let largeCornerRadius: CGFloat = 10.0
     private let mediumCornerRadius: CGFloat = 8.0
-    private let headerViewHeight: CGFloat = 90.0
+    private let headerViewHeight: CGFloat = 70.0
     private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
     private var mainStackBottomPadding: NSLayoutConstraint!
 
