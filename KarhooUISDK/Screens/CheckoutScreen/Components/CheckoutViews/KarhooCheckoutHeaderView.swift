@@ -27,6 +27,7 @@ public struct KHCheckoutHeaderViewID {
     public static let capabilitiesContentView = "capabilities_content_view"
     public static let fleetCapabilities = "fleet_capabilties_stack_view"
     public static let cancellationInfo = "cancellationInfo_label"
+    public static let fleetCapabilitiesLabel = "fleetCapabilities_label"
     public static let learnMoreButton = "learn_more_button"
     public static let capabilitiesDetailsView = "capabilities_details_view"
     public static let vehicleCapacityView = "vehicle_capacity_view"
@@ -59,7 +60,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         imageView.accessibilityLabel = UITexts.TripSummary.fleet
         imageView.accessibilityIdentifier = KHCheckoutHeaderViewID.logoImageView
         imageView.layer.cornerRadius = 5.0
-        imageView.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+        imageView.layer.borderColor = KarhooUI.colors.border.cgColor
         imageView.layer.borderWidth = 0.5
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -95,7 +96,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return label
     }()
     
-    private var capabilitiesStackView: UIStackView = {
+    private var vehicleTagsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.accessibilityIdentifier = KHCheckoutHeaderViewID.fleetCapabilities
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -117,29 +118,13 @@ final class KarhooCheckoutHeaderView: UIStackView {
         view.accessibilityIdentifier = KHCheckoutHeaderViewID.vehicleCapacityView
         return view
     }()
-    
-    private lazy var learnMoreButton: KarhooExpandViewButton = {
-        let button = KarhooExpandViewButton(
-            title: UITexts.Booking.learnMore,
-            initialMode: .closed,
-            onExpand:  {[weak self] in
-                self?.learnLessPressed()
-            },
-            onCollapce: {[weak self] in
-                self?.learnMorePressed()
-            }
-        )
-        button.accessibilityIdentifier = KHCheckoutHeaderViewID.learnMoreButton
-        button.anchor(height: 44.0)
-        return button
-    }()
 
     lazy var capacityDetailsView: KarhooFleetCapabilitiesDetailsView = {
         let view = KarhooFleetCapabilitiesDetailsView()
         view.accessibilityIdentifier = KHCheckoutHeaderViewID.capabilitiesDetailsView
         return view
     }()
-    
+
     //MARK: - Variables
     private var didSetupConstraints: Bool = false
     
@@ -179,13 +164,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
         
         rideDetailStackView.addArrangedSubview(nameLabel)
         rideDetailStackView.addArrangedSubview(carTypeLabel)
-        rideDetailStackView.addArrangedSubview(capabilitiesStackView)
-        
+        rideDetailStackView.addArrangedSubview(vehicleTagsStackView)
         capacityContentView.addSubview(vehicleCapacityView)
-        capacityContentView.addSubview(learnMoreButton)
-        
+
         addArrangedSubview(capacityDetailsView)
-        learnLessPressed()
     }
     
     override func updateConstraints() {
@@ -195,25 +177,20 @@ final class KarhooCheckoutHeaderView: UIStackView {
             // This is a good practice to make the header view reusable in other contexts that may not need the values set below.
             directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
             
-            logoLoadingImageView.anchor(top: logoContentView.topAnchor, leading: logoContentView.leadingAnchor, trailing: logoContentView.trailingAnchor, width: 60.0, height: 60.0)
-            
-            
-            vehicleCapacityView.anchor(top: capacityContentView.topAnchor,
-                                              leading: capacityContentView.leadingAnchor,
-                                              trailing: capacityContentView.trailingAnchor)
-            
-            learnMoreButton.anchor(
-                trailing: capacityContentView.trailingAnchor,
-                bottom: capacityContentView.bottomAnchor
+            logoLoadingImageView.anchor(
+                    top: logoContentView.topAnchor,
+                    leading: logoContentView.leadingAnchor,
+                    trailing: logoContentView.trailingAnchor,
+                    width: 60.0,
+                    height: 60.0
             )
-            
-            if capabilitiesStackView.subviews.count > 0 {
-                learnMoreButton.anchor(top: carTypeLabel.bottomAnchor)
-            }
-            else {
-                learnMoreButton.topAnchor.constraint(greaterThanOrEqualTo: vehicleCapacityView.bottomAnchor).isActive = true
-            }
-            
+
+            vehicleCapacityView.anchor(
+                    top: capacityContentView.topAnchor,
+                    leading: capacityContentView.leadingAnchor,
+                    trailing: capacityContentView.trailingAnchor
+            )
+
             didSetupConstraints = true
         }
         
@@ -230,10 +207,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
         
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
-        vehicleCapacityView.setAdditionalFleetCapabilities(viewModel.fleetCapabilities.count)
         setVehicleTags(viewModel: viewModel)
         capacityDetailsView.set(viewModel: viewModel)
-        
         updateConstraints()
     }
     
@@ -241,14 +216,6 @@ final class KarhooCheckoutHeaderView: UIStackView {
         if viewModel.vehicleTags.count > 0 {
             let firstTag = viewModel.vehicleTags[0]
             setupView(for: firstTag)
-            
-            if viewModel.vehicleTags.count > 1 {
-                let label = UILabel()
-                label.text = "+\(viewModel.vehicleTags.count - 1)"
-                label.font = KarhooUI.fonts.getRegularFont(withSize: 9.0)
-                label.textColor = KarhooUI.colors.darkGrey
-                capabilitiesStackView.addArrangedSubview(label)
-            }
         }
     }
     
@@ -263,23 +230,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         label.text = vehicleTag.title
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
         label.textColor = KarhooUI.colors.text
-        capabilitiesStackView.addArrangedSubview(imageView)
-        capabilitiesStackView.addArrangedSubview(label)
-    }
-
-    func learnMorePressed() {
-        self.capacityDetailsView.isHidden = false
-        UIView.animate(withDuration: 0.45) { [unowned self] in
-            self.vehicleCapacityView.alpha = 0.0
-            self.capacityDetailsView.alpha = 1.0
-        }
-    }
-    
-    func learnLessPressed() {
-        UIView.animate(withDuration: 0.45) {
-            self.vehicleCapacityView.alpha = 1.0
-            self.capacityDetailsView.alpha = 0.0
-            self.capacityDetailsView.isHidden = true
-        }
+        vehicleTagsStackView.addArrangedSubview(imageView)
+        vehicleTagsStackView.addArrangedSubview(label)
     }
 }

@@ -123,8 +123,6 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
         visibleContainer.addSubview(stackView)
         stackView.addArrangedSubviews([
             headerStackView,
-            SeparatorView(fixedHeight: UIConstants.Spacing.small),
-            SeparatorView(fixedHeight: 1, color: KarhooUI.colors.border),
             SeparatorView(fixedHeight: UIConstants.Spacing.standard),
             selectionView,
             SeparatorView(fixedHeight: UIConstants.Spacing.standard),

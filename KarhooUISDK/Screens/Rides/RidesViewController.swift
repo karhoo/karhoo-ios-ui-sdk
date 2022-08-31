@@ -53,6 +53,7 @@ final class RidesViewController: UIViewController, RidesView {
         
         tabView?.backgroundColor = KarhooUI.colors.accent
         upcomingTabLabel?.textColor = KarhooUI.colors.accent
+        navigationItem.backButtonTitle = ""
         forceLightMode()
 
         pastTabButton?.accessibilityLabel = UITexts.Bookings.past
@@ -142,7 +143,7 @@ final class RidesViewController: UIViewController, RidesView {
 
         private func embedInNavigationController(_ vc: UIViewController,
                                                  closeCallback: @escaping ScreenResultCallback<Void>) -> Screen {
-            let navigationController = NavigationController(rootViewController: vc)
+            let navigationController = NavigationController(rootViewController: vc, style: .secondary)
 
             let closeButton = CloseBarButton {
                 closeCallback(.cancelled(byUser: true))
