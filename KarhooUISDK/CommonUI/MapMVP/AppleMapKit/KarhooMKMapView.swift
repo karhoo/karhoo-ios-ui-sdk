@@ -160,7 +160,6 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
             mapView.setRegion(viewRegion, animated: true)
             return true
         } else {
-            assertionFailure()
             return false
         }
     }
