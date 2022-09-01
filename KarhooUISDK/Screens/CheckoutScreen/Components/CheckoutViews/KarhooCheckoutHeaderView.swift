@@ -221,7 +221,6 @@ final class KarhooCheckoutHeaderView: UIStackView {
             let firstTag = viewModel.vehicleTags[0]
             setupView(for: firstTag)
         } else {
-//            rideDetailStackView.addArrangedSubview(UIView()) // autoresising spacer to fill in gap in ui
             vehicleTagsStackView.isHidden = true
         }
     }
