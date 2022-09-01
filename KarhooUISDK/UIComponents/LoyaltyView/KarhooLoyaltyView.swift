@@ -96,7 +96,7 @@ final class KarhooLoyaltyView: UIView {
         $0.accessibilityIdentifier = KHLoyaltyViewID.earnLabel
         $0.font = KarhooUI.fonts.captionRegular()
         $0.textColor = KarhooUI.colors.text
-        $0.text = UITexts.Loyalty.pointsEarnedForTrip
+        $0.text = ""
         $0.numberOfLines = 0
     }
     

@@ -316,7 +316,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         case .burn:
             return canEarn ? getLocalizedEarnPointsText(for: 0) : ""
         case .earn:
-            let earnAmount = viewModel?.earnAmount ?? 0
+            guard let earnAmount = viewModel?.earnAmount, earnAmount > 0 else { return "" }
             return canEarn ? getLocalizedEarnPointsText(for: earnAmount) : ""
         }
     }
