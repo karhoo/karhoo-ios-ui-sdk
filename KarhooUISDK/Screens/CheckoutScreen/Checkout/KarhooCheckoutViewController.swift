@@ -462,8 +462,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             )
         }
 
-        if let presentedViewController = presentedViewController {
-            presentedViewController.dismiss(animated: true) {
+        if self.presentedViewController != nil {
+            dismiss(animated: true) {
                 showAlert()
             }
         } else {
