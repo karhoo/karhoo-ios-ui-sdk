@@ -27,12 +27,11 @@ final class KarhooRidesListPresenter: RidesListPresenter, TripsProviderDelegate 
 
     func load(screen: RidesListView) {
         ridesListView = screen
+        reloadList()
     }
 
     func viewWillAppear() {
-        tripsProvider.stop()
-        listOfTrips = []
-        tripsProvider.start()
+        reloadList()
     }
 
     func fetched(trips: [TripInfo]) {
@@ -79,6 +78,12 @@ final class KarhooRidesListPresenter: RidesListPresenter, TripsProviderDelegate 
         } else {
             ridesListView?.set(trips: tripsSorter.sort(trips: listOfTrips))
         }
+    }
+
+    private func reloadList() {
+        tripsProvider.stop()
+        listOfTrips = []
+        tripsProvider.start()
     }
     
     public func requestNewPage() {
