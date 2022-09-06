@@ -17,6 +17,8 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     private var currentStrategy: BookingMapStrategy?
     private let journeyDetailsManager: JourneyDetailsManager
 
+    private var onLocationPermissionDenied: (() -> Void)?
+
     init(pickupOnlyStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy(),
          destinationSetStrategy: BookingMapStrategy = DestinationSetStrategy(),
          journeyDetailsManager: JourneyDetailsManager =  KarhooJourneyDetailsManager.shared,
@@ -39,6 +41,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         map: MapView?,
         reverseGeolocate: Bool = true,
         onLocationPermissionDenied: (() -> Void)?) {
+            self.onLocationPermissionDenied = onLocationPermissionDenied
             [pickupOnlyStrategy, destinationSetStrategy, emptyBookingStrategy].forEach { strategy in
                 strategy.load(
                     map: map,
@@ -51,6 +54,12 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         }
 
     func focusMap() {
+        let isLocationPermissionGranted = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways
+        guard isLocationPermissionGranted else {
+            onLocationPermissionDenied?()
+            return
+        }
         currentStrategy?.focusMap()
     }
 

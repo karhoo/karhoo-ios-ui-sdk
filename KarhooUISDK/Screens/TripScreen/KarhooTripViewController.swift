@@ -189,7 +189,11 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setMapPadding()
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tripMapPresenter.load(
             map: map,
             onLocationPermissionDenied: { [weak self] in
@@ -199,8 +203,6 @@ final class KarhooTripViewController: UIViewController, TripView {
         presenter.screenAppeared()
         originEtaView?.start(tripId: trip.tripId)
         destinationEtaView?.start(tripId: trip.tripId)
-
-        setMapPadding()
     }
 
     override func viewDidLayoutSubviews() {
@@ -296,7 +298,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         map.set(padding: padding)
     }
 
-    private func showNoLocationPermissionsPopUp() {
+    func showNoLocationPermissionsPopUp() {
         let alertController = UIAlertController(
             title: UITexts.Booking.noLocationPermissionTitle,
             message: UITexts.Booking.noLocationPermissionMessage,
@@ -310,7 +312,7 @@ final class KarhooTripViewController: UIViewController, TripView {
             }
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
-        present(alertController, animated: true)
+        showAsOverlay(item: alertController, animated: true)
     }
 
     @objc

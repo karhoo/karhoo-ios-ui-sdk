@@ -30,7 +30,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  # pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+  # pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-4132-refresh-token---add-a-way-for-DP-to-provide-new-token'
   pod 'KarhooSDK', '1.6.3'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'

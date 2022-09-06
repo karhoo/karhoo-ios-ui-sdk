@@ -8,6 +8,7 @@
 
 import KarhooSDK
 import Foundation
+import CoreLocation
 
 final class KarhooTripPresenter: TripPresenter,
                                  CancelRideDelegate {
@@ -182,6 +183,12 @@ final class KarhooTripPresenter: TripPresenter,
     }
 
     private func focusMap() {
+        let isLocationPermissionGranted = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways
+        guard isLocationPermissionGranted else {
+            tripView?.showNoLocationPermissionsPopUp()
+            return
+        }
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
