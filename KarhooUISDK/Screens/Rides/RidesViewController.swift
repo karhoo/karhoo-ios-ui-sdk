@@ -131,6 +131,8 @@ final class RidesViewController: UIViewController, RidesView {
                                   paginationEnabled: true) as? RidesListView else {
                     return Screen()
             }
+            ridesView.addChild(upcomingRidesList)
+            ridesView.addChild(pastRidesList)
 
             ridesPresenter.set(pages: [upcomingRidesList, pastRidesList])
 
