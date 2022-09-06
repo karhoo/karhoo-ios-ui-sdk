@@ -54,8 +54,10 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         }
 
     func focusMap() {
-        let isLocationPermissionGranted = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == .authorizedAlways
+        var isLocationPermissionGranted: Bool {
+            CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() == .authorizedAlways
+        }
         guard isLocationPermissionGranted else {
             onLocationPermissionDenied?()
             return

@@ -198,6 +198,7 @@ final class KarhooTripViewController: UIViewController, TripView {
             map: map,
             onLocationPermissionDenied: { [weak self] in
                 self?.showNoLocationPermissionsPopUp()
+                self?.focusMapOnPickup()
             }
         )
         presenter.screenAppeared()
@@ -263,6 +264,10 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     func focusMapOnDriver() {
         tripMapPresenter.focusOnDriver()
+    }
+    
+    func focusMapOnPickup() {
+        tripMapPresenter.focusOnPickup()
     }
 
     func setAddressBar(with trip: TripInfo) {

@@ -61,11 +61,14 @@ final class KarhooTripMapPresenter: TripMapPresenter {
 
     func focusOnRoute() {
         guard let destination = destinationAddress else {
-            mapView?.zoom(to: [originAddress.position.toCLLocation()])
+            focusOnPickup()
             return
         }
-
         mapView?.zoom(to: [originAddress.position.toCLLocation(), destination.position.toCLLocation()])
+    }
+    
+    func focusOnPickup() {
+        mapView?.zoom(to: [originAddress.position.toCLLocation()])
     }
 
     func focusOnPickupAndDriver() {

@@ -183,16 +183,20 @@ final class KarhooTripPresenter: TripPresenter,
     }
 
     private func focusMap() {
-        let isLocationPermissionGranted = CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == .authorizedAlways
-        guard isLocationPermissionGranted else {
-            tripView?.showNoLocationPermissionsPopUp()
-            return
-        }
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
-            tripView?.focusOnUserLocation()
+            var isLocationPermissionGranted: Bool {
+                CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+                    CLLocationManager.authorizationStatus() == .authorizedAlways
+            }
+            switch isLocationPermissionGranted {
+            case true:
+                tripView?.focusOnUserLocation()
+            case false:
+                tripView?.showNoLocationPermissionsPopUp()
+                tripView?.focusMapOnPickup()
+            }
             return
         }
 
