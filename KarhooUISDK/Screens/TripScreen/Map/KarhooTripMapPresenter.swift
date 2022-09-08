@@ -51,6 +51,11 @@ final class KarhooTripMapPresenter: TripMapPresenter {
             CLLocationManager().requestWhenInUseAuthorization()
         }
     }
+
+    var locatePressedCalled = false
+    func locatePressed() {
+        locatePressedCalled = true
+    }
     
     func focusOnUserLocation() {
         let zoomSucceded = mapView?.zoomToUserPosition() ?? false
