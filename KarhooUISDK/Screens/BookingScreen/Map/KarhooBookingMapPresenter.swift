@@ -16,18 +16,23 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     private let emptyBookingStrategy: BookingMapStrategy
     private var currentStrategy: BookingMapStrategy?
     private let journeyDetailsManager: JourneyDetailsManager
+    private let locationPermissionProvider: LocationPermissionProvider
 
     private var onLocationPermissionDenied: (() -> Void)?
 
     init(pickupOnlyStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy(),
          destinationSetStrategy: BookingMapStrategy = DestinationSetStrategy(),
          journeyDetailsManager: JourneyDetailsManager =  KarhooJourneyDetailsManager.shared,
-         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy()
+         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy(),
+         locationPermissionProvider: LocationPermissionProvider = KarhooLocationPermissionProvider(),
+         onLocationPermissionDenied: (() -> Void)? = nil
     ) {
         self.pickupOnlyStrategy = pickupOnlyStrategy
         self.destinationSetStrategy = destinationSetStrategy
         self.journeyDetailsManager = journeyDetailsManager
         self.emptyBookingStrategy = emptyBookingStrategy
+        self.locationPermissionProvider = locationPermissionProvider
+        self.onLocationPermissionDenied = onLocationPermissionDenied
         pickupOnlyStrategy.set(delegate: self)
         journeyDetailsManager.add(observer: self)
         currentStrategy = getStrategyToUse(details: journeyDetailsManager.getJourneyDetails())
@@ -54,11 +59,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         }
 
     func focusMap() {
-        var isLocationPermissionGranted: Bool {
-            CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-                CLLocationManager.authorizationStatus() == .authorizedAlways
-        }
-        guard isLocationPermissionGranted else {
+        guard locationPermissionProvider.isLocationPermissionGranted else {
             onLocationPermissionDenied?()
             return
         }

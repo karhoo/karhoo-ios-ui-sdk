@@ -13,15 +13,20 @@ import CoreLocation
 
 class BookingMapPresenterSpec: KarhooTestCase {
 
+    private var testEmptyBookingStrategy: MockBookingMapStrategy!
     private var testPickupOnlyStrategy: MockPickupOnlyStrategy!
     private var testDestinationSetStrategy: MockBookingMapStrategy!
     private var testJourneyDetails: JourneyDetails!
     private var mockJourneyDetailsManager: MockJourneyDetailsManager!
+    private var mockLocationPermissionProvider: MockLocationPermissionProvider!
     private var testObject: KarhooBookingMapPresenter!
+
+    private var onLocationPermissionDeniedCalled: Bool!
 
     override func setUp() {
         super.setUp()
 
+        testEmptyBookingStrategy = MockBookingMapStrategy()
         testPickupOnlyStrategy = MockPickupOnlyStrategy()
         testDestinationSetStrategy = MockBookingMapStrategy()
 
@@ -30,15 +35,26 @@ class BookingMapPresenterSpec: KarhooTestCase {
 
         mockJourneyDetailsManager = MockJourneyDetailsManager()
         mockJourneyDetailsManager.journeyDetailsToReturn = testJourneyDetails
+        
+        mockLocationPermissionProvider = MockLocationPermissionProvider()
+        mockLocationPermissionProvider.isLocationPermissionGrantedReturn = true
+        onLocationPermissionDeniedCalled = false
 
-        testObject = KarhooBookingMapPresenter(pickupOnlyStrategy: testPickupOnlyStrategy,
-                                               destinationSetStrategy: testDestinationSetStrategy,
-                                               journeyDetailsManager: mockJourneyDetailsManager)
+        testObject = KarhooBookingMapPresenter(
+            pickupOnlyStrategy: testPickupOnlyStrategy,
+            destinationSetStrategy: testDestinationSetStrategy,
+            journeyDetailsManager: mockJourneyDetailsManager,
+            emptyBookingStrategy: testEmptyBookingStrategy,
+            locationPermissionProvider: mockLocationPermissionProvider,
+            onLocationPermissionDenied: {
+                self.onLocationPermissionDeniedCalled = true
+            }
+        )
     }
 
     /** 
      * When:    Initialized
-     * Then:    The correct strategy should be used 
+     * Then:    The correct strategy should be used
      */
     func testInit() {
         XCTAssertFalse(strategyUsed(testDestinationSetStrategy))
@@ -58,7 +74,7 @@ class BookingMapPresenterSpec: KarhooTestCase {
 
     /**
      * When:    No destination is set
-     * Then:    The pickup only strategy should be used
+     * Then:    The user location only strategy should be used
      */
     func testDestinationNotSet() {
         var details = TestUtil.getRandomJourneyDetails()
@@ -67,7 +83,7 @@ class BookingMapPresenterSpec: KarhooTestCase {
         details.destinationLocationDetails = nil
         testDestinationSetStrategy.reset()
         testPickupOnlyStrategy.reset()
-
+    
         testObject.journeyDetailsChanged(details: details)
 
         XCTAssertFalse(isStarted(strategy: testDestinationSetStrategy))
