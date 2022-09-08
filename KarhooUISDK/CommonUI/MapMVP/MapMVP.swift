@@ -98,6 +98,7 @@ extension MapViewActions {
 }
 
 protocol MapPresenter {
+    func locatePressed()
 	func focusMap()
 }
 

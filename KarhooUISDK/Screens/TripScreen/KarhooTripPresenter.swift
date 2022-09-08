@@ -133,6 +133,9 @@ final class KarhooTripPresenter: TripPresenter,
     }
 
     func locatePressed() {
+        if locationPermissionProvider.isLocationPermissionGranted == false {
+            tripView?.showNoLocationPermissionsPopUp()
+        }
         focusMap()
     }
 
@@ -193,7 +196,6 @@ final class KarhooTripPresenter: TripPresenter,
             case true:
                 tripView?.focusOnUserLocation()
             case false:
-                tripView?.showNoLocationPermissionsPopUp()
                 tripView?.focusMapOnPickup()
             }
             return

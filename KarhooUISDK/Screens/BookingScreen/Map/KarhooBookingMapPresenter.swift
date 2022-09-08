@@ -58,11 +58,15 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
             currentStrategy?.start(journeyDetails: journeyDetailsManager.getJourneyDetails())
         }
 
-    func focusMap() {
+    func locatePressed() {
         guard locationPermissionProvider.isLocationPermissionGranted else {
             onLocationPermissionDenied?()
             return
         }
+        focusMap()
+    }
+
+    func focusMap() {
         currentStrategy?.focusMap()
     }
 
