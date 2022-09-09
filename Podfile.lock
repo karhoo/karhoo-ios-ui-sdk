@@ -1,0 +1,112 @@
+PODS:
+  - Adyen (4.7.1):
+    - Adyen/Actions (= 4.7.1)
+    - Adyen/Card (= 4.7.1)
+    - Adyen/Components (= 4.7.1)
+    - Adyen/Core (= 4.7.1)
+    - Adyen/DropIn (= 4.7.1)
+    - Adyen/Encryption (= 4.7.1)
+  - Adyen/Actions (4.7.1):
+    - Adyen/Core
+    - Adyen3DS2 (= 2.2.4)
+  - Adyen/Card (4.7.1):
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Components (4.7.1):
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Core (4.7.1):
+    - AdyenNetworking (= 1.0.0)
+  - Adyen/DropIn (4.7.1):
+    - Adyen/Actions
+    - Adyen/Card
+    - Adyen/Components
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Encryption (4.7.1)
+  - Adyen3DS2 (2.2.4)
+  - AdyenNetworking (1.0.0)
+  - Braintree/Card (4.38.0):
+    - Braintree/Core
+  - Braintree/Core (4.38.0)
+  - Braintree/PaymentFlow (4.38.0):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.38.0)
+  - Braintree/UnionPay (4.38.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (8.2.0):
+    - BraintreeDropIn/DropIn (= 8.2.0)
+  - BraintreeDropIn/DropIn (8.2.0):
+    - Braintree/Card (~> 4.32)
+    - Braintree/Core (~> 4.32)
+    - Braintree/PaymentFlow (~> 4.32)
+    - Braintree/PayPal (~> 4.32)
+    - Braintree/UnionPay (~> 4.32)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (8.2.0)
+  - KarhooSDK (1.6.3):
+    - KeychainSwift (= 12.0.0)
+    - ReachabilitySwift (= 5.0.0)
+  - KeychainSwift (12.0.0)
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - ReachabilitySwift (5.0.0)
+  - SwiftFormat/CLI (0.49.18)
+  - SwiftLint (0.49.1)
+
+DEPENDENCIES:
+  - Adyen (= 4.7.1)
+  - Braintree/PaymentFlow (~> 4.37)
+  - BraintreeDropIn (~> 8.1)
+  - KarhooSDK (= 1.6.3)
+  - PhoneNumberKit (= 3.3.1)
+  - SwiftFormat/CLI (~> 0.49)
+  - SwiftLint (~> 0.47)
+
+SPEC REPOS:
+  trunk:
+    - Adyen
+    - Adyen3DS2
+    - AdyenNetworking
+    - Braintree
+    - BraintreeDropIn
+    - KarhooSDK
+    - KeychainSwift
+    - PhoneNumberKit
+    - ReachabilitySwift
+    - SwiftFormat
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
+  Adyen3DS2: ab81415419e1269b95ec01502d18912985806351
+  AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
+  Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
+  BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
+  KarhooSDK: ecdd7cdcaa76f2a3d52e3b2331414fde6c7d770e
+  KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SwiftFormat: 2402d29b26746f169cce5454d5af88314cbb2e35
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
+
+PODFILE CHECKSUM: f404a0dcfdffbb27dcfbc4f82926ba0da9e5766d
+
+COCOAPODS: 1.11.3
