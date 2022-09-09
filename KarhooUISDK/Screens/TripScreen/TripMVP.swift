@@ -57,6 +57,8 @@ protocol TripView: BaseViewController {
 
     func focusOnUserLocation()
 
+    func focusMapOnPickup()
+
     func focusMapOnDriverAndPickup()
 
     func focusMapOnDriver()
@@ -66,6 +68,8 @@ protocol TripView: BaseViewController {
     func set(locateButtonHidden: Bool)
 
     func set(userMarkerVisible: Bool)
+
+    func showNoLocationPermissionsPopUp()
 }
 
 public enum TripScreenResult {

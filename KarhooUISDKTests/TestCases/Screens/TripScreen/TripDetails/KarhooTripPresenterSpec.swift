@@ -21,6 +21,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
     private var mockPhoneNumberCaller = MockPhoneNumberCaller()
     private var mockAnalytics: MockAnalytics!
     private var mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
+    private var mockLocationPermissionProvider: MockLocationPermissionProvider!
     private var testObject: KarhooTripPresenter!
     private var screenResult: ScreenResult<TripScreenResult>?
 
@@ -41,15 +42,19 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
         mockCancelRide = MockCancelRideBehaviour()
         mockAnalytics = MockAnalytics()
         mockDriverTrackingService = MockDriverTrackingService()
+        mockLocationPermissionProvider = MockLocationPermissionProvider()
 
-        testObject = KarhooTripPresenter(initialTrip: mockInitialTrip,
-                                            service: mockTripService,
-                                            driverTrackingService: mockDriverTrackingService,
-                                            cancelRideBehaviour: mockCancelRide,
-                                            phoneNumberCaller: mockPhoneNumberCaller,
-                                            analytics: mockAnalytics,
-                                            rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
-                                            callback: tripScreenCallback)
+        testObject = KarhooTripPresenter(
+            initialTrip: mockInitialTrip,
+            service: mockTripService,
+            driverTrackingService: mockDriverTrackingService,
+            cancelRideBehaviour: mockCancelRide,
+            phoneNumberCaller: mockPhoneNumberCaller,
+            analytics: mockAnalytics,
+            rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
+            locationPermissionProvider: mockLocationPermissionProvider,
+            callback: tripScreenCallback
+        )
         
         testObject.load(view: mockTripView)
         testObject.screenAppeared()
