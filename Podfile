@@ -20,11 +20,15 @@ end
 install! 'cocoapods',
          :deterministic_uuids => false
 
+pod 'KarhooUISDK', :path => './'
+pod 'KarhooUISDK/Adyen', :path => './'
+pod 'KarhooUISDK/Braintree', :path => './'
+
 target 'Client' do
-  inherit! :search_paths
-  pod 'KarhooUISDK', :path => './'
-  pod 'KarhooUISDK/Adyen', :path => './'
-  pod 'KarhooUISDK/Braintree', :path => './'
+#  inherit! :search_paths
+#  pod 'KarhooUISDK', :path => './'
+#  pod 'KarhooUISDK/Adyen', :path => './'
+#  pod 'KarhooUISDK/Braintree', :path => './'
 
 end
 
