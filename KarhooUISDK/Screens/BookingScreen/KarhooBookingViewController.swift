@@ -44,7 +44,25 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        forceLightMode()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+        sideMenu?.hideMenu()
+        setupNavigationBar()
+        mapView.set(userMarkerVisible: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupMapView(reverseGeolocate: journeyInfo == nil)
+    }
+
     private func setUpView() {
         presenter.load(view: self)
         
@@ -95,26 +113,16 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter.viewWillAppear()
-        sideMenu?.hideMenu()
-        setupNavigationBar()
-        mapView.set(userMarkerVisible: true)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupMapView(reverseGeolocate: journeyInfo == nil)
-        forceLightMode()
-    }
 
     private func setupMapView(reverseGeolocate: Bool) {
         mapPresenter.load(
             map: mapView,
             reverseGeolocate: reverseGeolocate,
             onLocationPermissionDenied: { [weak self] in
+                // Do not show pop up when allocation view is visible
+                guard self?.tripAllocationView.alpha != 1 else {
+                    return
+                }
                 self?.showNoLocationPermissionsPopUp()
             }
         )
@@ -202,7 +210,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             }
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
-        present(alertController, animated: true)
+        showAsOverlay(item: alertController, animated: true)
     }
 }
 
