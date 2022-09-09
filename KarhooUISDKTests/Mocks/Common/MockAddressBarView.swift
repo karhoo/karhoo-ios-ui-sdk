@@ -81,3 +81,9 @@ final class MockAddressBarView: MockBaseView, AddressBarView {
         setDisplayTripStateCalled = true
     }
 }
+
+// TODO: move to new file
+class MockLocationPermissionProvider: LocationPermissionProvider {
+    var isLocationPermissionGrantedReturn = true
+    var isLocationPermissionGranted: Bool { isLocationPermissionGrantedReturn }
+}
