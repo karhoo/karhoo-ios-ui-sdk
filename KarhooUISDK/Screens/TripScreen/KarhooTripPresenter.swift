@@ -132,6 +132,9 @@ final class KarhooTripPresenter: TripPresenter,
     }
 
     func locatePressed() {
+        if locationPermissionProvider.isLocationPermissionGranted == false {
+            tripView?.showNoLocationPermissionsPopUp()
+        }
         focusMap()
     }
 
@@ -188,7 +191,12 @@ final class KarhooTripPresenter: TripPresenter,
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
-            tripView?.focusOnUserLocation()
+            switch locationPermissionProvider.isLocationPermissionGranted {
+            case true:
+                tripView?.focusOnUserLocation()
+            case false:
+                tripView?.focusMapOnPickup()
+            }
             return
         }
 
