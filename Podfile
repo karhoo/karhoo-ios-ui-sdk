@@ -20,17 +20,17 @@ end
 install! 'cocoapods',
          :deterministic_uuids => false
 
-pod 'KarhooUISDK', :path => './'
-pod 'KarhooUISDK/Adyen', :path => './'
-pod 'KarhooUISDK/Braintree', :path => './'
-
-target 'Client' do
-#  inherit! :search_paths
-#  pod 'KarhooUISDK', :path => './'
-#  pod 'KarhooUISDK/Adyen', :path => './'
-#  pod 'KarhooUISDK/Braintree', :path => './'
-
-end
+#pod 'KarhooUISDK', :path => './'
+#pod 'KarhooUISDK/Adyen', :path => './'
+#pod 'KarhooUISDK/Braintree', :path => './'
+#
+#target 'Client' do
+##  inherit! :search_paths
+##  pod 'KarhooUISDK', :path => './'
+##  pod 'KarhooUISDK/Adyen', :path => './'
+##  pod 'KarhooUISDK/Braintree', :path => './'
+#
+#end
 
 # UISDK framework
 target 'KarhooUISDK' do
@@ -42,6 +42,10 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.1'
+  
+  target 'Client' do
+    inherit! :complete
+  end
   
   target 'KarhooUISDKTests' do
     inherit! :complete
