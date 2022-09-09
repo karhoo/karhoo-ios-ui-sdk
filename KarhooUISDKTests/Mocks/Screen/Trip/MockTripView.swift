@@ -83,4 +83,14 @@ final class MockTripView: MockBaseViewController, TripView {
     func set(userMarkerVisible: Bool) {
         userMarkerVisibleSet = userMarkerVisible
     }
+
+    var showNoLocationPermissionsPopUpCalled = false
+    func showNoLocationPermissionsPopUp() {
+        showNoLocationPermissionsPopUpCalled = true
+    }
+
+    private(set) var focusMapOnPickupCalled = false
+    func focusMapOnPickup() {
+        focusMapOnDriverAndPickupCalled = true
+    }
 }
