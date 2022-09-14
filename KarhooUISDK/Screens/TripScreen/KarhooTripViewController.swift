@@ -189,11 +189,7 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setMapPadding()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         tripMapPresenter.load(
             map: map,
             onLocationPermissionDenied: { [weak self] in
@@ -204,6 +200,8 @@ final class KarhooTripViewController: UIViewController, TripView {
         presenter.screenAppeared()
         originEtaView?.start(tripId: trip.tripId)
         destinationEtaView?.start(tripId: trip.tripId)
+
+        setMapPadding()
     }
 
     override func viewDidLayoutSubviews() {
