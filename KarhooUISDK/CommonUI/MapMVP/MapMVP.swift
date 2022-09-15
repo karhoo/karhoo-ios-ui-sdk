@@ -98,6 +98,7 @@ extension MapViewActions {
 }
 
 protocol MapPresenter {
+    func locatePressed()
 	func focusMap()
 }
 
@@ -116,6 +117,7 @@ protocol BookingMapPresenter: MapPresenter {
 protocol TripMapPresenter: MapPresenter {
     func load(map: MapView?, onLocationPermissionDenied: (() -> Void)?)
     func focusOnRoute()
+    func focusOnPickup()
     func focusOnPickupAndDriver()
     func focusOnUserLocation()
     func focusOnDriver()

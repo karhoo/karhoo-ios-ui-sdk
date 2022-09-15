@@ -100,7 +100,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
     @objc
     private func locatePressed() {
-		presenter?.focusMap()
+		presenter?.locatePressed()
     }
 
 	func set(presenter: MapPresenter) {
