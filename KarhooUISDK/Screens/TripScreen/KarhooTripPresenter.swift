@@ -72,7 +72,7 @@ final class KarhooTripPresenter: TripPresenter,
 
     func screenDidLayoutSubviews() {
         tripView?.plotPinsOnMap()
-        tripView?.focusMapOnRoute()
+        tripView?.focusMapOnAllPOI()
         forceSetStatusAccordingToTrip()
     }
 
