@@ -103,7 +103,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         locateButton.translatesAutoresizingMaskIntoConstraints = false
         locateButton.accessibilityIdentifier = KHKarhooTripViewID.locateButton
         locateButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
-        locateButton.setImage(UIImage.uisdkImage("locate"), for: .normal)
+        locateButton.setImage(UIImage.uisdkImage("kh_locate"), for: .normal)
         view.addSubview(locateButton)
 
         originEtaView = KarhooOriginEtaView()

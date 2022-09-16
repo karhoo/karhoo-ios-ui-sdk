@@ -36,7 +36,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private var focusButton: UIButton = {
         var button = UIButton(type: .custom)
         button.accessibilityIdentifier = KHMapViewID.locateButtonIdentifier
-        button.setImage(UIImage.uisdkImage("locate"), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_locate"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

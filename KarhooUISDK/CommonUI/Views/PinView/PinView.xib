@@ -21,7 +21,7 @@
                         <outletCollection property="primaryImageTint" destination="t0c-LP-Aig" collectionClass="NSMutableArray" id="Hg1-rF-vYj"/>
                     </connections>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pickup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="t0c-LP-Aig" userLabel="Pickup pin Icon">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_pickup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="t0c-LP-Aig" userLabel="Pickup pin Icon">
                     <rect key="frame" x="0.0" y="2" width="15" height="15"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="t0c-LP-Aig" secondAttribute="height" multiplier="1:1" id="xEo-ed-iyy"/>
@@ -62,6 +62,6 @@
     </objects>
     <resources>
         <image name="kh_drop_off_icon" width="22" height="22"/>
-        <image name="pickup_icon" width="22" height="22"/>
+        <image name="kh_pickup_icon" width="128" height="128"/>
     </resources>
 </document>
