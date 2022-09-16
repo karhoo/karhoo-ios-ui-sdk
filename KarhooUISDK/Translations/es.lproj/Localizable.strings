@@ -614,11 +614,7 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancelación gratuita hasta %1$@ antes de la recogida";
 
-<<<<<<< HEAD
-"Text.Quote.FreeWaitingTime" = "Tiempo de espera libre";
-=======
 "Text.Quote.FreeWaitingTime" = "Tiempo de espera gratis";
->>>>>>> MOB-4320_release_1_9_2
 
 "Text.Quote.Results" = "%1$@ resultados";
 
