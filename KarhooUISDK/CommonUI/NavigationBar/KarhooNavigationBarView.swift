@@ -88,7 +88,7 @@ final class KarhooNavigationBarView: UIView, NavigationBarView {
         case .menuIcon:
             leftImage = UIImage.uisdkImage("menu").withRenderingMode(.alwaysTemplate)
         case .exitIcon:
-            leftImage = UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate)
+            leftImage = UIImage.uisdkImage("kh_cross").withRenderingMode(.alwaysTemplate)
             leftButton.contentEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         }
         

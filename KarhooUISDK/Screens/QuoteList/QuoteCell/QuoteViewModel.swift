@@ -39,19 +39,19 @@ enum VehicleTag: String {
     var image: UIImage {
         switch self {
         case .electric:
-            return UIImage.uisdkImage("electric")
+            return UIImage.uisdkImage("kh_electric")
         case .hybrid:
-            return UIImage.uisdkImage("circle")
+            return UIImage.uisdkImage("kh_circle")
         case .wheelchair:
-            return UIImage.uisdkImage("wheelchair")
+            return UIImage.uisdkImage("kh_wheelchair")
         case .childSeat:
-            return UIImage.uisdkImage("childseat")
+            return UIImage.uisdkImage("kh_childseat")
         case .taxi:
-            return UIImage.uisdkImage("taxi")
+            return UIImage.uisdkImage("kh_taxi")
         case .executive:
-            return UIImage.uisdkImage("star")
+            return UIImage.uisdkImage("kh_star")
         case .luxury:
-            return UIImage.uisdkImage("star")
+            return UIImage.uisdkImage("kh_star")
         }
     }
 }

@@ -40,7 +40,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHCountryCodeSelectionViewID.backButton
         button.tintColor = KarhooUI.colors.darkGrey
-        button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_back_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
         button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)

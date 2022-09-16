@@ -78,7 +78,7 @@ final class KarhooCancelButtonView: UIView, CancelButtonView {
         cancelButton = UIButton(type: .custom)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.accessibilityIdentifier = KHCancelButtonViewID.cancelButton
-        cancelButton.setImage(UIImage.uisdkImage("cancelButton").withRenderingMode(.alwaysTemplate),
+        cancelButton.setImage(UIImage.uisdkImage("kh_cancel_button").withRenderingMode(.alwaysTemplate),
                               for: .normal)
         cancelButton.tintColor = .white
         cancelButton.addTarget(self, action: #selector(cancelButtonTouchUpInside), for: .touchUpInside)

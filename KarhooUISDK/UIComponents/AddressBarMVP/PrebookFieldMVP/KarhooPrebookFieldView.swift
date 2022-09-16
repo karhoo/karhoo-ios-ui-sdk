@@ -77,7 +77,7 @@ public final class KarhooPrebookFieldView: UIView {
         let button = UIButton(type: .custom)
         button.accessibilityIdentifier = KHPrebookFieldID.closeButton
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_cross").withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = KarhooUI.colors.text
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
