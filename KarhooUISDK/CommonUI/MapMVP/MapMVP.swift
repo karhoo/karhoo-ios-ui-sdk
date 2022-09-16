@@ -116,6 +116,7 @@ protocol BookingMapPresenter: MapPresenter {
 
 protocol TripMapPresenter: MapPresenter {
     func load(map: MapView?, onLocationPermissionDenied: (() -> Void)?)
+    func focusOnAllPOI()
     func focusOnRoute()
     func focusOnPickup()
     func focusOnPickupAndDriver()

@@ -248,6 +248,10 @@ final class KarhooTripViewController: UIViewController, TripView {
         tripMapPresenter.plotPins()
     }
 
+    func focusMapOnAllPOI() {
+        tripMapPresenter.focusOnAllPOI()
+    }
+
     func focusMapOnRoute() {
         tripMapPresenter.focusOnRoute()
     }

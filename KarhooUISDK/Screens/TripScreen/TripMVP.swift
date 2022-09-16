@@ -53,6 +53,8 @@ protocol TripView: BaseViewController {
 
     func plotPinsOnMap()
 
+    func focusMapOnAllPOI()
+
     func focusMapOnRoute()
 
     func focusOnUserLocation()
