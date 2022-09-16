@@ -74,6 +74,16 @@ final class KarhooTripMapPresenter: TripMapPresenter {
             focusOnPickupAndDriver()
         }
     }
+    
+    func focusOnAllPOI() {
+        let poi: [CLLocation] = [
+            originAddress.position.toCLLocation(),
+            destinationAddress?.position.toCLLocation(),
+            previousDriverLocation,
+            CLLocationManager().location
+        ].compactMap { $0 }
+        mapView?.zoom(to: poi)
+    }
 
     func focusOnRoute() {
         guard let destination = destinationAddress else {
