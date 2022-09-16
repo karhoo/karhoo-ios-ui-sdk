@@ -16,9 +16,12 @@ import KarhooUISDKAdyen
 import KarhooUISDKBraintree
 #endif
 
+public let notificationEnabledUserDefaultsKey = "notifications_enabled"
+ 
 class ViewController: UIViewController {
 
     private var booking: Screen?
+    private let defaults = UserDefaults.standard
 
     private lazy var authenticatedBraintreeBookingButton: UIButton = {
         let button = UIButton()
@@ -79,6 +82,12 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var notificationsButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +100,7 @@ class ViewController: UIViewController {
         tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped), for: .touchUpInside)
+        notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
     }
 
     override func loadView() {
@@ -105,9 +115,18 @@ class ViewController: UIViewController {
             bottom: view.bottomAnchor
         )
         
-        let stackView = UIStackView(arrangedSubviews: [authenticatedBraintreeBookingButton, guestBraintreeBookingButton, tokenExchangeBraintreeBookingButton,
-                                                       authenticatedAdyenBookingButton, guestAdyenBookingButton, tokenExchangeAdyenBookingButton,
-                                                       loyaltyCanEarnTrueCanBurnTrueBookingButton, loyaltyCanEarnTrueCanBurnFalseBookingButton])
+        let stackView = UIStackView(arrangedSubviews: [
+            authenticatedBraintreeBookingButton,
+            guestBraintreeBookingButton,
+            tokenExchangeBraintreeBookingButton,
+            authenticatedAdyenBookingButton,
+            guestAdyenBookingButton,
+            tokenExchangeAdyenBookingButton,
+            loyaltyCanEarnTrueCanBurnTrueBookingButton,
+            loyaltyCanEarnTrueCanBurnFalseBookingButton,
+            notificationsButton
+        ])
+        updateNotificationButtonLabel()
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fillEqually
@@ -190,6 +209,39 @@ class ViewController: UIViewController {
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
+    }
+    
+    // MARK: Notifications
+    
+    @objc func notificationsButtonTapped(sender: UIButton){
+        if notificationsEnabled {
+            setUserDefaultsNotifiactions(enabled: false)
+            updateNotificationButtonLabel()
+        } else {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] success, error in
+                if success {
+                    self?.setUserDefaultsNotifiactions(enabled: true)
+                    self?.updateNotificationButtonLabel()
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private var notificationsEnabled: Bool {
+        return defaults.bool(forKey: notificationEnabledUserDefaultsKey)
+    }
+    
+    private func setUserDefaultsNotifiactions(enabled: Bool) {
+        defaults.set(enabled, forKey: notificationEnabledUserDefaultsKey)
+    }
+    
+    func updateNotificationButtonLabel() {
+        let label = "Notifications: " + (notificationsEnabled ? "ENABLED" : "DISABLED")
+        DispatchQueue.main.async {
+            self.notificationsButton.setTitle(label, for: .normal)
+        }
     }
 
     private func usernamePasswordLoginAndShowKarhoo(username: String, password: String) {

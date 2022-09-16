@@ -161,7 +161,7 @@
 
 "Text.Booking.FixedInfoBox" = "Esta flota cobra una tarifa plana. La tarifa final puede verse afectada por extras (peajes, retrasos, etc.), por favor, compruebe los Términos y Condiciones de la flota.";
 
-"Text.Booking.FlightTracking" = "Vincule su vuelo";
+"Text.Booking.FlightTracking" = "Tracking del vuelo";
 
 "Text.Booking.GPSTracking" = "Seguimiento GPS";
 
@@ -237,7 +237,7 @@
 /* Accessibility hint for prebook feature entry point */
 "Text.Booking.ScheduleRide" = "Programe el viaje";
 
-"Text.Booking.TrainTracking" = "Vincule su tren";
+"Text.Booking.TrainTracking" = "Tracking del tren";
 
 "Text.Bookings.Alert.CancellationFee.Charge" = "Se le cargará una tasa de cancelación estimada en %1$@.\n\n¿Quiere continuar?";
 
@@ -399,6 +399,8 @@
 "Text.Generic.Card" = "Tarjeta";
 
 "Text.Generic.Checked" = "Comprobado";
+
+"Text.Generic.Checkout" = "Caja";
 
 "Text.Generic.Close" = "Cerrar";
 
@@ -612,7 +614,7 @@
 /* Cancellation info on quotes */
 "Text.Quote.FreeCancellationPrebook" = "Cancelación gratuita hasta %1$@ antes de la recogida";
 
-"Text.Quote.FreeWaitingTime" = "Tiempo de espera libre";
+"Text.Quote.FreeWaitingTime" = "Tiempo de espera gratis";
 
 "Text.Quote.Results" = "%1$@ resultados";
 

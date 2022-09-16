@@ -8,6 +8,7 @@
 import Foundation
 import PhoneNumberKit
 import UIKit
+import CoreLocation.CLLocationManager
 
 public class Utils {
     // The unicode values are possible variations for apostrophe / single quote
@@ -76,5 +77,17 @@ class ViewControllerUtils {
              topVC = topVC!.presentedViewController
         }
         return topVC
+    }
+}
+
+// TODO: move to new file
+protocol LocationPermissionProvider: AnyObject {
+    var isLocationPermissionGranted: Bool { get }
+}
+
+final class KarhooLocationPermissionProvider: LocationPermissionProvider {
+    var isLocationPermissionGranted: Bool {
+        CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways
     }
 }

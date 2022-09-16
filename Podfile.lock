@@ -60,16 +60,16 @@ PODS:
   - KarhooSDK (1.6.3):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.9.1):
-    - KarhooUISDK/Core (= 1.9.1)
-  - KarhooUISDK/Adyen (1.9.1):
+  - KarhooUISDK (1.9.2):
+    - KarhooUISDK/Core (= 1.9.2)
+  - KarhooUISDK/Adyen (1.9.2):
     - Adyen (= 4.7.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.9.1):
+  - KarhooUISDK/Braintree (1.9.2):
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.9.1):
+  - KarhooUISDK/Core (1.9.2):
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
@@ -120,13 +120,13 @@ SPEC CHECKSUMS:
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   KarhooSDK: ecdd7cdcaa76f2a3d52e3b2331414fde6c7d770e
-  KarhooUISDK: 8829b6f120b36ee44054b73286eebb90e66997b0
+  KarhooUISDK: fa14c46f1de9b59eb3caebf3f04e2c499e30f5e6
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftFormat: 09cc5eb67ae49356c4ad9a2be6a0d5a4212b61bb
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 61dee75303e83e71333d8c66dd1d6f795d8bf2e9
+PODFILE CHECKSUM: 4b4e68010cee1141228aaeb85c7eb387c08f9c59
 
 COCOAPODS: 1.11.3

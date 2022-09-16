@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+platform :ios, '13.0'
 
 # Standard cocoapods specs source
 source 'https://cdn.cocoapods.org/'
@@ -38,10 +38,8 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.1'
-end
-
-target 'KarhooUISDKTests' do
-  inherit! :complete
-  pod 'KarhooUISDK/Adyen', :path => './'
-  pod 'KarhooUISDK/Braintree', :path => './'
+  
+  target 'KarhooUISDKTests' do
+    inherit! :complete
+  end
 end

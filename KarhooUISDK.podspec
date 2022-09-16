@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.9.1"
+  s.version               = "1.9.2"
   s.summary               = "Karhoo UI SDK"
   s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
   s.license               = 'BSD 2-Clause'
   s.author                = { "Karhoo" => "ios@karhoo.com" }
   s.source                = { :git => "https://github.com/karhoo/karhoo-ios-ui-sdk.git", :tag => s.version }
-  s.platform              = :ios, '11.0'
-  s.ios.deployment_target = '11.0'
+  s.platform              = :ios, '13.0'
+  s.ios.deployment_target = '13.0'
   s.requires_arc          = true
   s.default_subspec = 'Core'
 

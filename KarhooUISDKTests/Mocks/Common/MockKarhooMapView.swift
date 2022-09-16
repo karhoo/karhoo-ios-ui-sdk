@@ -79,6 +79,11 @@ final class MockKarhooMapView: UIView, MapView {
         locationsToZoomTo = to
     }
 
+    private(set) var zoomToUserPositionToReturn = true
+    func zoomToUserPosition() -> Bool {
+        zoomToUserPositionToReturn
+    }
+
     var levelToZoomTo: Float?
     func zoom(toLevel: Float) {
         levelToZoomTo = toLevel

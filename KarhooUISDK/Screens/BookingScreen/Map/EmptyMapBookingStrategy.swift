@@ -42,14 +42,14 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
             mapView?.center(on: userLocation)
         }
 
-        focusMap()
+        focusMap(triggerPermissionDeniedIfNeeded: false)
 
         userLocationProvider.set(locationChangedCallback: { [weak self] _ in
             self?.focusMap()
         })
     }
 
-    func focusMap() {
+    private func focusMap(triggerPermissionDeniedIfNeeded: Bool) {
         if(reverseGeolocate) {
             if let location = userLocationProvider.getLastKnownLocation() {
                 journeyDetailsManager.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
@@ -57,12 +57,18 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
                 let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
                 switch locationAuthorizationStatus {
                 case .denied, .restricted:
-                    onLocationPermissionDenied?()
+                    if triggerPermissionDeniedIfNeeded {
+                        onLocationPermissionDenied?()
+                    }
                 default:
                     locationManager.requestWhenInUseAuthorization()
                 }
-             }
+            }
         }
+    }
+
+    func focusMap() {
+        focusMap(triggerPermissionDeniedIfNeeded: true)
     }
 
     func changed(journeyDetails: JourneyDetails?) {}

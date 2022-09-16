@@ -22,18 +22,25 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     private let originAddress: TripLocationDetails
     private let destinationAddress: TripLocationDetails?
     private var previousDriverLocation: CLLocation?
+    private let locationPermissionProvider: LocationPermissionProvider
 
-    init(originAddress: TripLocationDetails,
-         destinationAddress: TripLocationDetails?) {
+    private var onLocationPermissionDenied: (() -> Void)?
+
+    init(
+        originAddress: TripLocationDetails,
+        destinationAddress: TripLocationDetails?,
+        locationPermissionProvider: LocationPermissionProvider = KarhooLocationPermissionProvider()
+    ) {
         self.originAddress = originAddress
         self.destinationAddress = destinationAddress
+        self.locationPermissionProvider = locationPermissionProvider
     }
 
     func set(view: TripView?) {
         self.tripView = view
     }
 
-    func load(map: MapView?) {
+    func load(map: MapView?, onLocationPermissionDenied: (() -> Void)?) {
         guard self.mapView !== map else {
             return
         }
@@ -42,15 +49,52 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         mapView?.centerPin(hidden: true)
         mapView?.zoomToDefaultLevel()
         mapView?.set(minimumZoom: 0, maximumZoom: mapView?.idealMaximumZoom ?? 0)
+        self.onLocationPermissionDenied = onLocationPermissionDenied
+
+        let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+        switch locationAuthorizationStatus {
+        case .denied, .restricted:
+            onLocationPermissionDenied?()
+        default:
+            CLLocationManager().requestWhenInUseAuthorization()
+        }
+    }
+
+    func locatePressed() {
+        guard locationPermissionProvider.isLocationPermissionGranted else {
+            onLocationPermissionDenied?()
+            return
+        }
+        focusOnUserLocation()
+    }
+    
+    func focusOnUserLocation() {
+        let zoomSucceded = mapView?.zoomToUserPosition() ?? false
+        if zoomSucceded == false {
+            focusOnPickupAndDriver()
+        }
+    }
+    
+    func focusOnAllPOI() {
+        let poi: [CLLocation] = [
+            originAddress.position.toCLLocation(),
+            destinationAddress?.position.toCLLocation(),
+            previousDriverLocation,
+            CLLocationManager().location
+        ].compactMap { $0 }
+        mapView?.zoom(to: poi)
     }
 
     func focusOnRoute() {
         guard let destination = destinationAddress else {
-            mapView?.zoom(to: [originAddress.position.toCLLocation()])
+            focusOnPickup()
             return
         }
-
         mapView?.zoom(to: [originAddress.position.toCLLocation(), destination.position.toCLLocation()])
+    }
+    
+    func focusOnPickup() {
+        mapView?.zoom(to: [originAddress.position.toCLLocation()])
     }
 
     func focusOnPickupAndDriver() {
@@ -60,15 +104,14 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         }
         mapView?.zoom(to: [originAddress.position.toCLLocation(), driverLocation])
     }
-
-    func focusOnDestinationAndDriver() {
-        guard let driverLocation = previousDriverLocation,
-              let destinationLocation = destinationAddress?.position.toCLLocation() else {
-                focusOnRoute()
+    
+    func focusOnDriver() {
+        guard let driverLocation = previousDriverLocation else {
+            focusOnUserLocation()
             return
         }
 
-        mapView?.zoom(to: [destinationLocation, driverLocation])
+        mapView?.zoom(to: [driverLocation])
     }
 
     func updateDriver(location: CLLocation) {
