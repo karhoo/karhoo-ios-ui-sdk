@@ -50,7 +50,7 @@ final class DropDownButton: UIView {
         buttonTitle.text = UITexts.Trip.tripRideOptions
         addSubview(buttonTitle)
         
-        dropDownImage = UIImageView(image: UIImage.uisdkImage("drop_down_arrow"))
+        dropDownImage = UIImageView(image: UIImage.uisdkImage("kh_drop_down_arrow"))
         dropDownImage.tintColor = .darkGray
         dropDownImage.translatesAutoresizingMaskIntoConstraints = false
         dropDownImage.accessibilityIdentifier = KHDropDownButtonID.dropDownImage

@@ -29,7 +29,7 @@ public final class KarhooPrebookFieldView: UIView {
     private lazy var prebookButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.uisdkImage("fi_calendar").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_calendar").withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = KarhooUI.colors.accent
         button.setTitleColor(.black, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit

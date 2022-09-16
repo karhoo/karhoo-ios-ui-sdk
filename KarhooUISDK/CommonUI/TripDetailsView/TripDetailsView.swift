@@ -231,7 +231,7 @@ final class TripDetailsView: UIView {
         supplierNameLabel?.text = viewModel.supplierName
         dateLabel.text = viewModel.formattedDate
         supplierImage.load(imageURL: viewModel.supplierLogoStringURL,
-                           placeholderImageName: "fleet_logo_placeholder")
+                           placeholderImageName: "kh_fleet_logo_placeholder")
         pickupLabel.text = viewModel.pickup
         destinationLabel.text = viewModel.destination
         vehicleInformationLabel?.text = viewModel.vehicleInformation

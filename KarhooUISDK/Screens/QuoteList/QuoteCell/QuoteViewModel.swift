@@ -79,9 +79,9 @@ enum FleetCapabilities: String {
     var image: UIImage {
         switch self {
         case .gpsTracking:
-            return UIImage.uisdkImage("gpsTrackingIcon")
+            return UIImage.uisdkImage("kh_gps_tracking_icon")
         case .flightTracking:
-            return UIImage.uisdkImage("flightTrackingIcon")
+            return UIImage.uisdkImage("kh_flight_tracking_icon")
         case .trainTracking:
             return UIImage.uisdkImage("trainTrackingIcon")
         }

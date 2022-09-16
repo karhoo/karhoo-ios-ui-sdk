@@ -59,7 +59,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
     private lazy var filtersButton = BorderedWOBackgroundButton().then {
-        $0.setImage(.uisdkImage("filters_icon"), for: .normal)
+        $0.setImage(.uisdkImage("kh_filters_icon"), for: .normal)
         $0.setTitle(UITexts.Quotes.filter, for: .normal)
         $0.backgroundColor = KarhooUI.colors.white
         $0.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)

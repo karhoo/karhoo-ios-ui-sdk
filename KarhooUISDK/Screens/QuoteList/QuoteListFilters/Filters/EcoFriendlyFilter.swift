@@ -20,7 +20,7 @@ extension QuoteListFilters {
         var icon: UIImage? {
             switch self {
             case .electric:
-                return .uisdkImage("electric")
+                return .uisdkImage("kh_electric")
             case .hybrid:
                 return .uisdkImage("hybrid")
             }

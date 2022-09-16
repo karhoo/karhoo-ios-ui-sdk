@@ -95,7 +95,7 @@ final class KarhooTripScreenDetailsView: UIView, TripScreenDetailsView {
         tripInfoView.setDriverLicenseNumber(tripDetailsViewModel.driverRegulatoryLicenseNumber)
         tripInfoView.setLicensePlateNumber(tripDetailsViewModel.vehicleLicensePlate)
         tripInfoView.setDriverImage(tripDetailsViewModel.driverPhotoUrl,
-                                       placeholder: "driverImagePlaceholder")
+                                       placeholder: "kh_driver_image_placeholder")
     }
 }
 
