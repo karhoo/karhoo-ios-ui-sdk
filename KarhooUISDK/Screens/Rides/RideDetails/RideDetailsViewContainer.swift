@@ -45,11 +45,9 @@ final class RideDetailsViewContainer: UIView {
              viewContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor),
              viewContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true}
         
-        viewContainer.layer.cornerRadius = 5
-        viewContainer.layer.borderColor = UIColor.lightGray.cgColor
-        viewContainer.layer.borderWidth = 1.0
+        viewContainer.layer.cornerRadius = UIConstants.CornerRadius.medium
         viewContainer.layer.masksToBounds = true
-        
+
         stackContainer = UIStackView()
         stackContainer.axis = .vertical
         stackContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -83,16 +81,8 @@ final class RideDetailsViewContainer: UIView {
              stackButtonView.bottomAnchor.constraint(equalTo: viewContainer.bottomAnchor)].map { $0.isActive = true }
     }
     
-    func addContainerOuterShadow() {
-        if layer.shadowPath == nil {
-            layer.shadowColor = UIColor.black.cgColor
-            layer.shadowOpacity = 0.5
-            layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-            layer.shadowRadius = 5
-            layer.shadowOffset = .zero
-            layer.shouldRasterize = true
-            layer.rasterizationScale = UIScreen.main.scale
-        }
+    private func addContainerOuterShadow() {
+        addShadow(UIConstants.Alpha.lightShadow)
     }
 
     public func updateViewLayers() {

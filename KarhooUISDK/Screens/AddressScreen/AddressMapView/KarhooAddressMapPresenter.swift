@@ -32,6 +32,10 @@ final class KarhooAddressMapPresenter: AddressMapPresenter {
     func lastSelectedLocation() -> LocationInfo? {
         return locationFromMap
     }
+
+    func locatePressed() {
+        focusMap()
+    }
 }
 
 extension KarhooAddressMapPresenter: PickupOnlyStrategyDelegate {

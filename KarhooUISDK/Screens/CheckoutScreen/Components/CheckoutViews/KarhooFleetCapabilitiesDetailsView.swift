@@ -44,18 +44,6 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
         return stackView
     }()
     
-    private lazy var detailsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.accessibilityIdentifier = KHMoreDetailsViewID.fleetDescriptionLabel
-        label.textColor = KarhooUI.colors.infoColor
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        
-        return label
-    }()
-    
     init() {
         super.init(frame: .zero)
         self.setupView()
@@ -90,47 +78,25 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
     }
     
     func set(viewModel: QuoteViewModel) {
-        detailsLabel.text = viewModel.fleetDescription
-        
         setupVehicleCapacityView(forViewModel: viewModel)
         setupView(for: viewModel.fleetCapabilities)
-        fleetCapabilitiesStackView.addArrangedSubview(detailsLabel)
-        
         setupConstraints()
     }
     
     private func setupVehicleCapacityView(forViewModel viewModel: QuoteViewModel) {
-        if viewModel.fleetCapabilities.count > 0 {
-            let passengerBaggageStackView = UIStackView()
-            passengerBaggageStackView.accessibilityIdentifier = "container_passenger_baggage_stack"
-            passengerBaggageStackView.translatesAutoresizingMaskIntoConstraints = false
-            passengerBaggageStackView.axis = .horizontal
-            passengerBaggageStackView.distribution = .fillEqually
-            passengerBaggageStackView.alignment = .leading
-            passengerBaggageStackView.spacing = 5
-            
-            if viewModel.passengerCapacity > 0 {
-                let passengerStackView = setupCapacityView(for: .passenger, maxNumber: viewModel.passengerCapacity)
-                passengerBaggageStackView.addArrangedSubview(passengerStackView)
-            }
-            
-            if viewModel.baggageCapacity > 0 {
-                let baggageStackView = setupCapacityView(for: .luggage, maxNumber: viewModel.baggageCapacity)
-                passengerBaggageStackView.addArrangedSubview(baggageStackView)
-            }
-            
-            fleetCapabilitiesStackView.addArrangedSubview(passengerBaggageStackView)
-        } else {
-            if viewModel.passengerCapacity > 0 {
-                let passengerStackView = setupCapacityView(for: .passenger, maxNumber: viewModel.passengerCapacity)
-                fleetCapabilitiesStackView.addArrangedSubview(passengerStackView)
-            }
-            
-            if viewModel.baggageCapacity > 0 {
-                let baggageStackView = setupCapacityView(for: .luggage, maxNumber: viewModel.baggageCapacity)
-                fleetCapabilitiesStackView.addArrangedSubview(baggageStackView)
-            }
+        guard viewModel.fleetCapabilities.count > 0 else {
+            isHidden = true
+            return
         }
+        let passengerBaggageStackView = UIStackView()
+        passengerBaggageStackView.accessibilityIdentifier = "container_passenger_baggage_stack"
+        passengerBaggageStackView.translatesAutoresizingMaskIntoConstraints = false
+        passengerBaggageStackView.axis = .horizontal
+        passengerBaggageStackView.distribution = .fillEqually
+        passengerBaggageStackView.alignment = .leading
+        passengerBaggageStackView.spacing = 5
+        
+        fleetCapabilitiesStackView.addArrangedSubview(passengerBaggageStackView)
     }
     
     private func setupCapacityView(for capacityViewType: CapacityViewType, maxNumber: Int) -> UIStackView {

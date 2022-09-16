@@ -125,20 +125,12 @@ public struct UIConstants {
         
         public struct SafeArea {
             public static var bottomHeight: CGFloat {
-                if #available(iOS 13.0, *) {
-                    let window = UIApplication.shared.windows.first
-                    return window?.safeAreaInsets.bottom ?? 20
-                } else {
-                    return 20
-                }
+                let window = UIApplication.shared.windows.first
+                return window?.safeAreaInsets.bottom ?? 20
             }
             public static var topHeight: CGFloat {
-                if #available(iOS 13.0, *) {
-                    let window = UIApplication.shared.windows.first
-                    return window?.safeAreaInsets.top ?? 20
-                } else {
-                    return 20
-                }
+                let window = UIApplication.shared.windows.first
+                return window?.safeAreaInsets.top ?? 20
             }
         }
         

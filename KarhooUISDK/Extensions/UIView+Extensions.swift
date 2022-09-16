@@ -168,9 +168,9 @@ extension UIView {
     }
 
     /// Add shadow with given opacity (default = 0.5) and radius (default from UIKit = 3) and 0.5,0.5 offset.
-    func addShadow(_ opacity: Float = Float(UIConstants.Alpha.shadow), radius: CGFloat = 3) {
+    func addShadow(_ opacity: CGFloat = UIConstants.Alpha.shadow, radius: CGFloat = 3) {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = opacity
+        layer.shadowOpacity = Float(opacity)
         layer.shadowOffset = CGSize.init(width: 0.5, height: 0.5)
         layer.masksToBounds = false
         layer.shadowRadius = radius

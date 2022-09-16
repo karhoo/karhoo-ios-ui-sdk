@@ -16,16 +16,23 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
     private let emptyBookingStrategy: BookingMapStrategy
     private var currentStrategy: BookingMapStrategy?
     private let journeyDetailsManager: JourneyDetailsManager
+    private let locationPermissionProvider: LocationPermissionProvider
+
+    private var onLocationPermissionDenied: (() -> Void)?
 
     init(pickupOnlyStrategy: PickupOnlyStrategyProtocol = PickupOnlyStrategy(),
          destinationSetStrategy: BookingMapStrategy = DestinationSetStrategy(),
          journeyDetailsManager: JourneyDetailsManager =  KarhooJourneyDetailsManager.shared,
-         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy()
+         emptyBookingStrategy: BookingMapStrategy = EmptyMapBookingStrategy(),
+         locationPermissionProvider: LocationPermissionProvider = KarhooLocationPermissionProvider(),
+         onLocationPermissionDenied: (() -> Void)? = nil
     ) {
         self.pickupOnlyStrategy = pickupOnlyStrategy
         self.destinationSetStrategy = destinationSetStrategy
         self.journeyDetailsManager = journeyDetailsManager
         self.emptyBookingStrategy = emptyBookingStrategy
+        self.locationPermissionProvider = locationPermissionProvider
+        self.onLocationPermissionDenied = onLocationPermissionDenied
         pickupOnlyStrategy.set(delegate: self)
         journeyDetailsManager.add(observer: self)
         currentStrategy = getStrategyToUse(details: journeyDetailsManager.getJourneyDetails())
@@ -39,6 +46,7 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         map: MapView?,
         reverseGeolocate: Bool = true,
         onLocationPermissionDenied: (() -> Void)?) {
+            self.onLocationPermissionDenied = onLocationPermissionDenied
             [pickupOnlyStrategy, destinationSetStrategy, emptyBookingStrategy].forEach { strategy in
                 strategy.load(
                     map: map,
@@ -49,6 +57,14 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
             
             currentStrategy?.start(journeyDetails: journeyDetailsManager.getJourneyDetails())
         }
+
+    func locatePressed() {
+        guard locationPermissionProvider.isLocationPermissionGranted else {
+            onLocationPermissionDenied?()
+            return
+        }
+        focusMap()
+    }
 
     func focusMap() {
         currentStrategy?.focusMap()

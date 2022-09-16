@@ -33,6 +33,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     // MARK: - Properties
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+
     private var didSetupConstraints = false
     private var containerBottomConstraint: NSLayoutConstraint!
     private let drawAnimationTime: Double = 0.45
@@ -44,7 +46,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private let mainButtonHeight: CGFloat = 55.0
     private let largeCornerRadius: CGFloat = 10.0
     private let mediumCornerRadius: CGFloat = 8.0
-    private let headerViewHeight: CGFloat = 90.0
+    private let headerViewHeight: CGFloat = 70.0
     private let passengerDetailsAndPaymentViewHeight: CGFloat = 90.0
     private var mainStackBottomPadding: NSLayoutConstraint!
 
@@ -86,7 +88,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         footerView.translatesAutoresizingMaskIntoConstraints = false
         footerView.accessibilityIdentifier = "footer_view"
         footerView.backgroundColor = .white
-        footerView.addShadow(Float(UIConstants.Alpha.lightShadow), radius: UIConstants.Shadow.smallRadius)
+        footerView.addShadow(UIConstants.Alpha.lightShadow, radius: UIConstants.Shadow.smallRadius)
         return footerView
     }()
     
@@ -110,21 +112,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
         passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
         return passengerDetailsAndPaymentView
-    }()
-    
-    private(set) lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
-        button.tintColor = KarhooUI.colors.text
-        button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.setTitle(UITexts.Generic.back, for: .normal)
-        button.setTitleColor(KarhooUI.colors.text, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: smallSpacing, bottom: 0, right: 0)
-        button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        return button
     }()
     
     private lazy var container: UIView = {
@@ -229,10 +216,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
         presenter.screenWillAppear()
+        setupNavigationBar()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         passengerDetailsAndPaymentView.details = initialisePassengerDetails()
@@ -249,10 +236,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     // MARK: - Setup
     private func setUpView() {
-        container.addSubview(backButton)
         container.addSubview(baseStackView)
         
         headerView = KarhooCheckoutHeaderView()
+        baseStackView.addViewToStack(view: SeparatorView(fixedHeight: UIConstants.Spacing.small).then {
+            $0.accessibilityIdentifier = "separator_view"
+        })
         baseStackView.addViewToStack(view: headerView)
         baseStackView.addViewToStack(view: cancellationInfoLabel)
         baseStackView.addViewToStack(view: rideInfoStackView)
@@ -276,6 +265,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         presenter.load(view: self)
     }
 
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.title = UITexts.Generic.checkout
+    }
+
     // TODO: Children of stack views shouldn't be anchored to their parent.
     // Set the directionalLayoutMargins of the base stack view for insets
     // and the spacing of the base stack view for distancing the children between each other
@@ -283,16 +277,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view.anchor(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         container.anchorToSuperview()
 
-        backButton.anchor(top: container.topAnchor,
-                          leading: container.leadingAnchor,
-                          paddingTop: view.safeAreaInsets.top + standardSpacing,
-                          paddingBottom: standardSpacing,
-                          width: standardButtonSize * 2)
-        
         containerBottomConstraint = container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: UIScreen.main.bounds.height)
         containerBottomConstraint.isActive = true
         baseStackView.anchor(
-            top: backButton.bottomAnchor,
+            top: container.topAnchor,
             leading: container.leadingAnchor,
             trailing: container.trailingAnchor,
             bottom: footerView.topAnchor
@@ -474,8 +462,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             )
         }
 
-        if let presentedViewController = presentedViewController {
-            presentedViewController.dismiss(animated: true) {
+        if self.presentedViewController != nil {
+            dismiss(animated: true) {
                 showAlert()
             }
         } else {
@@ -486,13 +474,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: - Helpers
 
     private func enableUserInteraction() {
-        backButton.isUserInteractionEnabled = true
-        backButton.tintColor = KarhooUI.colors.text
+        navigationItem.backBarButtonItem?.isEnabled = true
     }
     
     private func disableUserInteraction() {
-        backButton.isUserInteractionEnabled = false
-        backButton.tintColor = KarhooUI.colors.medGrey
+        navigationItem.backBarButtonItem?.isEnabled = false
     }
     
     private func initialisePassengerDetails() -> PassengerDetails? {
@@ -507,9 +493,5 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     @objc private func didTapView() {
         view.endEditing(true)
-    }
-    
-    @objc private func backButtonPressed() {
-        navigationController?.popViewController(animated: true)
     }
 }
