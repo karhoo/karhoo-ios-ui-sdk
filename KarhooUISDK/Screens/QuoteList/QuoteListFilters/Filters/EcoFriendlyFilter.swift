@@ -22,7 +22,7 @@ extension QuoteListFilters {
             case .electric:
                 return .uisdkImage("kh_electric")
             case .hybrid:
-                return .uisdkImage("hybrid")
+                return .uisdkImage("kh_hybrid")
             }
         }
         

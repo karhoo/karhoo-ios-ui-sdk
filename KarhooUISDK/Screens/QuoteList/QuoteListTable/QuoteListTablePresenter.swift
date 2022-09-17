@@ -101,17 +101,17 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
     private func imageNameForPresentedEmptyResult() -> String {
         switch state {
         case .empty(reason: .noResults):
-            return "quoteList_error_no_availability"
+            return "kh_quoteList_error_no_availability"
         case .empty(reason:  .noQuotesAfterFiltering):
-            return "quoteList_error_no_results_for_filter"
+            return "kh_quoteList_error_no_results_for_filter"
         case .empty(reason: .originAndDestinationAreTheSame):
-            return "quoteList_error_pickup_destination_similar"
+            return "kh_quoteList_error_pickup_destination_similar"
         case .empty(reason: .noAvailabilityInRequestedArea):
-            return "quoteList_error_no_coverage"
+            return "kh_quoteList_error_no_coverage"
         case .empty(reason: .destinationOrOriginEmpty):
-            return "quoteList_error_pickup_destination_similar"
+            return "kh_quoteList_error_pickup_destination_similar"
         default:
-            return "quoteList_error_no_availability"
+            return "kh_quoteList_error_no_availability"
         }
     }
 

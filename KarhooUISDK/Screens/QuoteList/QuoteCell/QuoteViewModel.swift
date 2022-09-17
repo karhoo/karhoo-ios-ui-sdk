@@ -83,7 +83,7 @@ enum FleetCapabilities: String {
         case .flightTracking:
             return UIImage.uisdkImage("kh_flight_tracking_icon")
         case .trainTracking:
-            return UIImage.uisdkImage("trainTrackingIcon")
+            return UIImage.uisdkImage("kh_train_tracking_icon")
         }
     }
     

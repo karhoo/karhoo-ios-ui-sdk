@@ -19,8 +19,8 @@ class CounterButton: UIButton {
 
         fileprivate var image: UIImage? {
             switch self {
-            case .decrease: return .uisdkImage("quantity_minus")
-            case .increase: return .uisdkImage("quantity_plus")
+            case .decrease: return .uisdkImage("kh_quantity_minus")
+            case .increase: return .uisdkImage("kh_quantity_plus")
             }
         }
     }
