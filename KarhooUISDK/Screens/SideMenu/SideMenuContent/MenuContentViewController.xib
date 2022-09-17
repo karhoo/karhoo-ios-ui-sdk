@@ -110,7 +110,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxz-nr-BaL" userLabel="ProfileContainer">
                             <rect key="frame" x="0.0" y="80" width="355" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-sZ-DTP">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_profile" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-sZ-DTP">
                                     <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="17" id="24Y-Bm-HXK"/>
@@ -260,7 +260,7 @@
     <resources>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="kh_help-circle" width="24" height="24"/>
-        <image name="profile" width="34" height="34"/>
+        <image name="kh_profile" width="34" height="34"/>
         <image name="rides" width="17" height="18"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
