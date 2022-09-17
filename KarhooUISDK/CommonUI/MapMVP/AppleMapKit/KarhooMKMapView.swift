@@ -24,8 +24,8 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return 0.075
     }
 
-    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_background_icon"))
-    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
+    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_pin_background_icon"))
+    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_pin_pickup_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
     private var pins: [TripPinTags: MapAnnotationViewModel] = [:]
