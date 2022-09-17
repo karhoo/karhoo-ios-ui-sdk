@@ -29,7 +29,7 @@ extension QuoteListFilters {
             case .trainTracking:
                 return .uisdkImage("kh_metro")
             case .driverDetails:
-                return .uisdkImage("user")
+                return .uisdkImage("kh_user")
             case .vehicleDetails:
                 return .uisdkImage("kh_car")
             }

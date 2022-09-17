@@ -22,7 +22,7 @@ extension QuoteListFilters {
             case .childSeat:
                 return .uisdkImage("kh_baby_carriage")
             case .wheelchair:
-                return .uisdkImage("wheelchair")
+                return .uisdkImage("kh_wheelchair")
             }
         }
 
