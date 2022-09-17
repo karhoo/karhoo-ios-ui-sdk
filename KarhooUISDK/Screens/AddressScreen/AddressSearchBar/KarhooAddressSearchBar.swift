@@ -104,7 +104,7 @@ class KarhooAddressSearchBar: UIView, AddressSearchBar {
         clearButton.translatesAutoresizingMaskIntoConstraints = false
         clearButton.accessibilityIdentifier = KHAddressSearchBarID.clearButton
         clearButton.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
-        clearButton.setImage(UIImage.uisdkImage("search_clear"), for: .normal)
+        clearButton.setImage(UIImage.uisdkImage("kh_search_clear"), for: .normal)
         clearButton.isHidden = true
         searchContainer.addSubview(clearButton)
         

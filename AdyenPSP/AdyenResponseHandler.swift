@@ -75,8 +75,8 @@ struct AdyenResponseHandler {
 
     private func paymentIcon(adyenDescription: String?) -> String {
         switch adyenDescription {
-            case "mc": return "MasterCard"
-            case "visa": return "Visa"
+            case "mc": return "kh_mastercard"
+            case "visa": return "kh_visa"
             default: return ""
         }
     }

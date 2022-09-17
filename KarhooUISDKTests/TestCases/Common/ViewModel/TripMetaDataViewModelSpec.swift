@@ -23,7 +23,7 @@ class TripMetaDataViewModelSpec: KarhooTestCase {
         testObject = TripMetaDataViewModel(trip: completedTrip)
 
         XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.statusIconName, "trip_completed")
+        XCTAssertEqual(testObject.statusIconName, "kh_trip_completed")
         XCTAssertEqual(testObject.displayId, completedTrip.displayId)
         XCTAssertEqual(testObject.price, completedTrip.farePrice())
     }
@@ -37,7 +37,7 @@ class TripMetaDataViewModelSpec: KarhooTestCase {
         testObject = TripMetaDataViewModel(trip: cancelledTrip)
 
         XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.statusIconName, "trip_cancelled")
+        XCTAssertEqual(testObject.statusIconName, "kh_trip_cancelled")
         XCTAssertEqual(testObject.displayId, cancelledTrip.displayId)
         XCTAssertEqual(testObject.price, cancelledTrip.quotePrice())
     }
@@ -51,7 +51,7 @@ class TripMetaDataViewModelSpec: KarhooTestCase {
         testObject = TripMetaDataViewModel(trip: noDriversAvailableTrip)
 
         XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.statusIconName, "trip_cancelled")
+        XCTAssertEqual(testObject.statusIconName, "kh_trip_cancelled")
         XCTAssertEqual(testObject.status, UITexts.GenericTripStatus.cancelled)
         XCTAssertEqual(testObject.displayId, noDriversAvailableTrip.displayId)
         XCTAssertEqual(testObject.price, noDriversAvailableTrip.quotePrice())

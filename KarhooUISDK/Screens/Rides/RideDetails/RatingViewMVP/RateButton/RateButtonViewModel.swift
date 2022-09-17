@@ -11,8 +11,8 @@ import UIKit
 struct RateButtonViewModel {
     let buttonStates: (normal: UIImage, selected: UIImage)
     
-    public init(normalImageName: String = "star_normal",
-                selectedImageName: String = "star_selected") {
+    public init(normalImageName: String = "kh_star_normal",
+                selectedImageName: String = "kh_star_selected") {
         self.buttonStates = (normal: UIImage.uisdkImage(normalImageName),
                              selected: UIImage.uisdkImage(selectedImageName))
     }

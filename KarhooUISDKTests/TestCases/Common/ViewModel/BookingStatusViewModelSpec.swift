@@ -22,7 +22,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         let completedTrip = TestUtil.getRandomTrip(state: .completed)
         testObject = BookingStatusViewModel(trip: completedTrip)
 
-        XCTAssert(testObject.imageName == "trip_completed")
+        XCTAssert(testObject.imageName == "kh_trip_completed")
         XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
     }
 
@@ -34,7 +34,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         let cancelledTrip = TestUtil.getRandomTrip(state: .bookerCancelled)
         testObject = BookingStatusViewModel(trip: cancelledTrip)
 
-        XCTAssert(testObject.imageName == "trip_cancelled")
+        XCTAssert(testObject.imageName == "kh_trip_cancelled")
         XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
     }
 
@@ -46,7 +46,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         let noDriversAvailableTrip = TestUtil.getRandomTrip(state: .noDriversAvailable)
         testObject = BookingStatusViewModel(trip: noDriversAvailableTrip)
 
-        XCTAssert(testObject.imageName == "trip_cancelled")
+        XCTAssert(testObject.imageName == "kh_trip_cancelled")
         XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
     }
 
