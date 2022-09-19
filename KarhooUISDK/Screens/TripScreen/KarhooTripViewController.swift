@@ -14,7 +14,7 @@ public struct KHKarhooTripViewID {
     public static let closeButton = "close_button"
     public static let locateButton = "locate_button"
 }
-
+ 
 final class KarhooTripViewController: UIViewController, TripView {
 
     private var didSetupConstraints: Bool = false
@@ -194,6 +194,7 @@ final class KarhooTripViewController: UIViewController, TripView {
             map: map,
             onLocationPermissionDenied: { [weak self] in
                 self?.showNoLocationPermissionsPopUp()
+                self?.focusMapOnPickup()
             }
         )
         presenter.screenAppeared()
@@ -247,6 +248,11 @@ final class KarhooTripViewController: UIViewController, TripView {
         tripMapPresenter.plotPins()
     }
 
+    func focusMapOnAllPOI() {
+        tripMapPresenter.focusOnAllPOI()
+    }
+
+
     func focusMapOnRoute() {
         tripMapPresenter.focusOnRoute()
     }
@@ -261,6 +267,10 @@ final class KarhooTripViewController: UIViewController, TripView {
 
     func focusMapOnDriver() {
         tripMapPresenter.focusOnDriver()
+    }
+    
+    func focusMapOnPickup() {
+        tripMapPresenter.focusOnPickup()
     }
 
     func setAddressBar(with trip: TripInfo) {
@@ -296,7 +306,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         map.set(padding: padding)
     }
 
-    private func showNoLocationPermissionsPopUp() {
+    func showNoLocationPermissionsPopUp() {
         let alertController = UIAlertController(
             title: UITexts.Booking.noLocationPermissionTitle,
             message: UITexts.Booking.noLocationPermissionMessage,
@@ -310,7 +320,7 @@ final class KarhooTripViewController: UIViewController, TripView {
             }
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
-        present(alertController, animated: true)
+        showAsOverlay(item: alertController, animated: true)
     }
 
     @objc

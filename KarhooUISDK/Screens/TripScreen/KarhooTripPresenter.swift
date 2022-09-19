@@ -28,6 +28,7 @@ final class KarhooTripPresenter: TripPresenter,
     private var tripTrackingObservable: Observable<TripInfo>?
     private var tripTrackingObserver: Observer<TripInfo>?
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
+    private let locationPermissionProvider: LocationPermissionProvider
     private let callback: ScreenResultCallback<TripScreenResult>
     private let tripInfoPollingInterval: TimeInterval = 30
 
@@ -39,6 +40,7 @@ final class KarhooTripPresenter: TripPresenter,
          logger: Logger = DebugLogger(),
          analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
+         locationPermissionProvider: LocationPermissionProvider = KarhooLocationPermissionProvider(),
          callback: @escaping ScreenResultCallback<TripScreenResult>) {
         self.trip = initialTrip
         self.logger = logger
@@ -48,6 +50,7 @@ final class KarhooTripPresenter: TripPresenter,
         self.analytics = analytics
         self.cancelRide = cancelRideBehaviour
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
+        self.locationPermissionProvider = locationPermissionProvider
         self.callback = callback
         self.cancelRide?.delegate = self
     }
@@ -69,7 +72,7 @@ final class KarhooTripPresenter: TripPresenter,
 
     func screenDidLayoutSubviews() {
         tripView?.plotPinsOnMap()
-        tripView?.focusMapOnRoute()
+        tripView?.focusMapOnAllPOI()
         forceSetStatusAccordingToTrip()
     }
 
@@ -129,6 +132,9 @@ final class KarhooTripPresenter: TripPresenter,
     }
 
     func locatePressed() {
+        if locationPermissionProvider.isLocationPermissionGranted == false {
+            tripView?.showNoLocationPermissionsPopUp()
+        }
         focusMap()
     }
 
@@ -185,7 +191,12 @@ final class KarhooTripPresenter: TripPresenter,
         cameraShouldFollowCar = true
 
         if trip.state == .driverEnRoute || trip.state == .arrived {
-            tripView?.focusOnUserLocation()
+            switch locationPermissionProvider.isLocationPermissionGranted {
+            case true:
+                tripView?.focusOnUserLocation()
+            case false:
+                tripView?.focusMapOnPickup()
+            }
             return
         }
 

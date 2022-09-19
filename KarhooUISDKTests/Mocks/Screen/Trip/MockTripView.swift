@@ -57,9 +57,14 @@ final class MockTripView: MockBaseViewController, TripView {
         setAddressBarCalled = true
     }
     
-    private(set) var plotPinsOnMapCalled = true
+    private(set) var plotPinsOnMapCalled = false
     func plotPinsOnMap() {
-        plotPinsOnMapCalled = false
+        plotPinsOnMapCalled = true
+    }
+
+    private(set) var focusMapOnAllPOICalled = false
+    func focusMapOnAllPOI() {
+        focusMapOnAllPOICalled = true
     }
     
     private(set) var focusMapOnRouteCalled = false
@@ -82,5 +87,15 @@ final class MockTripView: MockBaseViewController, TripView {
     private(set) var userMarkerVisibleSet = false
     func set(userMarkerVisible: Bool) {
         userMarkerVisibleSet = userMarkerVisible
+    }
+
+    var showNoLocationPermissionsPopUpCalled = false
+    func showNoLocationPermissionsPopUp() {
+        showNoLocationPermissionsPopUpCalled = true
+    }
+
+    private(set) var focusMapOnPickupCalled = false
+    func focusMapOnPickup() {
+        focusMapOnDriverAndPickupCalled = true
     }
 }
