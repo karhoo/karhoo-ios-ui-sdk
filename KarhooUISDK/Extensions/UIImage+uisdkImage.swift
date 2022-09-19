@@ -11,13 +11,10 @@ extension UIImage {
     
     static func uisdkImage(_ name: String) -> UIImage {
         guard let loadedImage = UIImage(named: name) else {
-            guard let imageInCurrent = UIImage(
+            return UIImage(
                 named: name,
                 in: .current,
-                compatibleWith: nil) else {
-                fatalError()
-            }
-            return imageInCurrent
+                compatibleWith: nil) ?? UIImage()
         }
         return loadedImage
     }
