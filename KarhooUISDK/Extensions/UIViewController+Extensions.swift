@@ -17,7 +17,6 @@ public extension UIViewController {
     var viewIsOnScreen: Bool{
         self.isViewLoaded && view.window != nil
     }
-
 }
 
 public extension UIAlertController {

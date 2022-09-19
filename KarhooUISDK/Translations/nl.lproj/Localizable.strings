@@ -228,7 +228,7 @@
 "Text.Booking.QuoteExpiredMessage" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
 
 /* Booking */
-"Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
+"Text.Booking.RequestCar" = "BOEKING BEVESTIGEN";
 
 "Text.Booking.RequestingCar" = "Rit reserveren";
 
@@ -406,7 +406,7 @@
 
 "Text.Generic.Comment" = "Opmerkingen";
 
-"Text.Generic.Comment.Optional" = "Opmerkingen (optioneel)";
+"Text.Generic.Comment.Optional" = "Opmerkingen (babystoel, rolstoel, enz.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Voltooid";

@@ -228,7 +228,7 @@
 "Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
 
 /* Booking */
-"Text.Booking.RequestCar" = "PAY AND BOOK";
+"Text.Booking.RequestCar" = "CONFIRM BOOKING";
 
 "Text.Booking.RequestingCar" = "Booking Ride";
 
@@ -406,7 +406,7 @@
 
 "Text.Generic.Comment" = "Comment";
 
-"Text.Generic.Comment.Optional" = "Comment (Optional)";
+"Text.Generic.Comment.Optional" = "Additional comments (Child seat, wheelchair, etc.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Completed";
@@ -668,7 +668,7 @@
 
 "Text.Quotes.FilterFleetCapabilities" = "Fleet capabilities";
 
-"Text.Quotes.FilterPageResults" = "View all %1$@ results";
+"Text.Quotes.FilterPageResults" = "View %1$@ results";
 
 "Text.Quotes.FilterQuoteTypes" = "Quote types";
 
