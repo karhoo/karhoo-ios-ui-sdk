@@ -70,7 +70,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         let incompleteTrip = TestUtil.getRandomTrip(state: .incomplete)
         testObject = BookingStatusViewModel(trip: incompleteTrip)
         
-        XCTAssertEqual("trip_cancelled", testObject.imageName)
+        XCTAssertEqual("kh_trip_cancelled", testObject.imageName)
         XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
     }
 }
