@@ -228,7 +228,7 @@
 "Text.Booking.QuoteExpiredMessage" = "Por favor, elija otra oferta para continuar con la reserva.";
 
 /* Booking */
-"Text.Booking.RequestCar" = "PAGAR Y RESERVAR";
+"Text.Booking.RequestCar" = "CONFIRMAR LA RESERVA";
 
 "Text.Booking.RequestingCar" = "Solicitar";
 
@@ -406,7 +406,7 @@
 
 "Text.Generic.Comment" = "Comentario";
 
-"Text.Generic.Comment.Optional" = "Comentario (Opcional)";
+"Text.Generic.Comment.Optional" = "Comentarios adicionales (Niños, Silla de ruedas, etc.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Completado";
@@ -668,7 +668,7 @@
 
 "Text.Quotes.FilterFleetCapabilities" = "Capacidades de flota";
 
-"Text.Quotes.FilterPageResults" = "Ver todos los resultados %1$@";
+"Text.Quotes.FilterPageResults" = "Ver todos los resultados (%1$@)";
 
 "Text.Quotes.FilterQuoteTypes" = "Tipos de cotización";
 

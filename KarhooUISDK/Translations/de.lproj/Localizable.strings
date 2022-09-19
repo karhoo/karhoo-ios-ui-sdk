@@ -228,7 +228,7 @@
 "Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
 
 /* Booking */
-"Text.Booking.RequestCar" = "BEZAHLEN UND BUCHEN";
+"Text.Booking.RequestCar" = "BUCHUNG BESTÄTIGEN";
 
 "Text.Booking.RequestingCar" = "Fahrt buchen";
 
@@ -406,7 +406,7 @@
 
 "Text.Generic.Comment" = "Kommentar";
 
-"Text.Generic.Comment.Optional" = "Kommentar (fakultativ)";
+"Text.Generic.Comment.Optional" = "Zusätzliche Bemerkungen (Babysitz, Rollstuhl, usw.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Abgeschlossen";
