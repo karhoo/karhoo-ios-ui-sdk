@@ -82,7 +82,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         pickUpIcon = UIImageView()
         pickUpIcon.accessibilityIdentifier = KHAddressBarViewID.pickUpIcon
         pickUpIcon.translatesAutoresizingMaskIntoConstraints = false
-        pickUpIcon.image = UIImage.uisdkImage("kh_add_pickUp")
+        pickUpIcon.image = UIImage.uisdkImage("kh_add_pick_up")
         pickUpIcon.contentMode = .scaleAspectFit
         mainViewContainer.addSubview(pickUpIcon)
 

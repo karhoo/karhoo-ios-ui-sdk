@@ -77,6 +77,7 @@ struct AdyenResponseHandler {
         switch adyenDescription {
             case "mc": return "kh_mastercard"
             case "visa": return "kh_visa"
+            case "amex": return "kh_american_express"
             default: return ""
         }
     }
