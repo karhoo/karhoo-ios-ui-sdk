@@ -149,18 +149,21 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         zoom(toLevel: standardZoom)
     }
 
-    @discardableResult
-    func zoomToUserPosition() -> Bool {
-        if let userLocation = CLLocationManager().location?.coordinate {
-            let viewRegion = MKCoordinateRegion(
-                center: userLocation,
-                latitudinalMeters: CLLocationDistance(standardZoom),
-                longitudinalMeters: CLLocationDistance(standardZoom)
-            )
-            mapView.setRegion(viewRegion, animated: true)
-            return true
-        } else {
-            return false
+    func zoomToUserPosition(completion: @escaping (Bool) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let userLocation = CLLocationManager().location?.coordinate {
+                let viewRegion = MKCoordinateRegion(
+                    center: userLocation,
+                    latitudinalMeters: CLLocationDistance(self.standardZoom),
+                    longitudinalMeters: CLLocationDistance(self.standardZoom)
+                )
+                DispatchQueue.main.async {
+                    self.mapView.setRegion(viewRegion, animated: true)
+                }
+                completion(true)
+            } else {
+                completion(false)
+            }
         }
     }
 
