@@ -86,7 +86,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         
         let padding = UIEdgeInsets(top: addressBarBottom,
                                    left: margin,
-                                   bottom: -190,
+                                   bottom: 0,
                                    right: margin)
         map.set(padding: padding)
     }

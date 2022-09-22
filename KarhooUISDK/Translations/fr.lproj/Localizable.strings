@@ -174,7 +174,7 @@
 
 "Text.Booking.LearnMore" = "Plus";
 
-"Text.Booking.LegalNotice" = "Avis juridique";
+"Text.Booking.LegalNotice" = "Mentions légales";
 
 "Text.Booking.LegalNoticeLink" = "";
 
@@ -209,7 +209,7 @@
 
 "Text.Booking.PassengerDetails.SaveAction" = "SAUVEGARDER";
 
-"Text.Booking.PassengerDetails.Subtitle" = "Ces informations permettent le bon déroulement de votre course";
+"Text.Booking.PassengerDetails.Subtitle" = "Ces informations permettent le bon déroulement de votre course.";
 
 /* Passenger Details */
 "Text.Booking.PassengerDetails.Title" = "Passager";
@@ -228,7 +228,7 @@
 "Text.Booking.QuoteExpiredMessage" = "Veuillez choisir une autre offre pour continuer la réservation.";
 
 /* Booking */
-"Text.Booking.RequestCar" = "PAYER ET RÉSERVER";
+"Text.Booking.RequestCar" = "VALIDER LA RÉSERVATION";
 
 "Text.Booking.RequestingCar" = "Commande en cours";
 
@@ -400,13 +400,13 @@
 
 "Text.Generic.Checked" = "Vérifié";
 
-"Text.Generic.Checkout" = "Caisse";
+"Text.Generic.Checkout" = "Réservation";
 
 "Text.Generic.Close" = "Fermer";
 
 "Text.Generic.Comment" = "Commentaire";
 
-"Text.Generic.Comment.Optional" = "Commentaire (Optionnel)";
+"Text.Generic.Comment.Optional" = "Commentaires supplémentaires (Siège bébé, PMR, etc.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Completé";
@@ -668,7 +668,7 @@
 
 "Text.Quotes.FilterFleetCapabilities" = "Capacités du prestataire";
 
-"Text.Quotes.FilterPageResults" = "Voir %1$@ résultats";
+"Text.Quotes.FilterPageResults" = "Voir %1$@ résultat(s)";
 
 "Text.Quotes.FilterQuoteTypes" = "Types d'offres";
 

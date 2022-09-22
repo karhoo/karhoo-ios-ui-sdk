@@ -31,8 +31,7 @@ protocol MapView: UIView {
 
     func zoomToDefaultLevel()
 
-    @discardableResult
-    func zoomToUserPosition() -> Bool
+    func zoomToUserPosition(completion: @escaping (Bool) -> Void)
 
     func zoom(to: [CLLocation])
 
