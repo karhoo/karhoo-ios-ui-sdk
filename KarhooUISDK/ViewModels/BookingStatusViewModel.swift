@@ -22,7 +22,7 @@ final class BookingStatusViewModel {
         } else if trip.state == .completed {
             self.imageName = "kh_uisdk_trip_completed"
         } else {
-            self.imageName = "kh_uisdk_trip_cancelled"
+            self.imageName = ""
         }
     }
 }
