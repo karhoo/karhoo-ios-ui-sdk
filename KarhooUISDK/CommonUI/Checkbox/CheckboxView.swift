@@ -25,8 +25,8 @@ class CheckboxView: UIControl {
 
         var image: UIImage {
             switch self {
-            case .selected: return .uisdkImage("checkbox_selected")
-            case .unselected: return .uisdkImage("checkbox_unselected")
+            case .selected: return .uisdkImage("kh_uisdk_checkbox_selected")
+            case .unselected: return .uisdkImage("kh_uisdk_checkbox_unselected")
             }
         }
     }

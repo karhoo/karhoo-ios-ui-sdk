@@ -64,7 +64,7 @@ final class ErrorBannerView: UIView {
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         dismissButton.accessibilityIdentifier = KHErrorBannerViewID.dismissButton
         dismissButton.addTarget(self, action: #selector(didTapOnDismiss), for: .touchUpInside)
-        dismissButton.setImage(UIImage.uisdkImage("cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        dismissButton.setImage(UIImage.uisdkImage("kh_uisdk_cross").withRenderingMode(.alwaysTemplate), for: .normal)
         dismissButton.tintColor = KarhooUI.colors.white
         addSubview(dismissButton)
         

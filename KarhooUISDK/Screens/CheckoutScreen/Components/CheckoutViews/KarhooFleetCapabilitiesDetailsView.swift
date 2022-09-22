@@ -101,7 +101,7 @@ final class KarhooFleetCapabilitiesDetailsView: UIView {
     
     private func setupCapacityView(for capacityViewType: CapacityViewType, maxNumber: Int) -> UIStackView {
         let title = String(format: (capacityViewType == .passenger ? UITexts.Booking.maximumPassengers : UITexts.Booking.maximumLuggages), "\(maxNumber)")
-        let image = capacityViewType == .passenger ? UIImage.uisdkImage("passenger_capacity_icon") : UIImage.uisdkImage("luggage_icon")
+        let image = capacityViewType == .passenger ? UIImage.uisdkImage("kh_uisdk_passenger_capacity_icon") : UIImage.uisdkImage("kh_uisdk_luggage_icon")
         let accessibilityId = KHMoreDetailsViewID.fleetCapabilitiesStackView + "_\(capacityViewType == .passenger ? "passenger" : "baggage")"
         return setupView(for: title, with: image, accessibilityId: accessibilityId)
     }

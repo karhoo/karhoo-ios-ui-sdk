@@ -8,11 +8,24 @@
 
 import Foundation
 
-public enum BaseSelectionViewType: String {
-    case mapPickUp = "pin_pickUp_icon"
-    case mapDropOff = "pin_destination_icon"
-    case currentLocation = "current_location_icon"
-    case none = ""
+public enum BaseSelectionViewType {
+    case mapPickUp
+    case mapDropOff
+    case currentLocation
+    case none
+    
+    var iconName: String {
+        switch self {
+        case .mapPickUp:
+            return "kh_uisdk_pin_pickup_icon"
+        case .mapDropOff:
+            return "kh_uisdk_pin_destination_icon"
+        case .currentLocation:
+            return "kh_uisdk_current_location_icon"
+        case .none:
+            return ""
+        }
+    }
     
     var titleText: String {
         switch self {

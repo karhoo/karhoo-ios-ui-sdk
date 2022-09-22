@@ -33,15 +33,6 @@ public class BaseSelectionView: UIView {
             thumbnailImage.tintColor = tintColor
         }
     }
-
-    @IBInspectable var typeAdapter: String {
-        get { return self.viewType.rawValue }
-        
-        set {
-            viewType = BaseSelectionViewType(rawValue: newValue) ?? .none
-            updateViewType()
-        }
-     }
     
     init(type: BaseSelectionViewType, identifier: String = "") {
         self.viewType = type
@@ -118,10 +109,10 @@ public class BaseSelectionView: UIView {
         switch viewType {
         case .mapDropOff, .mapPickUp:
             tintColor = (viewType == .mapDropOff) ? KarhooUI.colors.secondary : KarhooUI.colors.primary
-            thumbnailImage.image = UIImage.uisdkImage("pin_background_icon")
-            foregroundThumbnailImage.image = UIImage.uisdkImage(viewType.rawValue)
+            thumbnailImage.image = UIImage.uisdkImage("kh_uisdk_pin_background_icon")
+            foregroundThumbnailImage.image = UIImage.uisdkImage(viewType.iconName)
         case .currentLocation:
-            thumbnailImage.image = UIImage.uisdkImage(viewType.rawValue)
+            thumbnailImage.image = UIImage.uisdkImage(viewType.iconName)
         case .none:
             break
         }

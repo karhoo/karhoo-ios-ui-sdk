@@ -327,13 +327,13 @@ class QuoteView: UIView {
         fareLabel.text = viewModel.fare
         logoLoadingImageView.load(
             imageURL: viewModel.vehicleImageURL ?? viewModel.logoImageURL,
-            placeholderImageName: "supplier_logo_placeholder"
+            placeholderImageName: "kh_uisdk_supplier_logo_placeholder"
         )
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         bottomImage.load(imageURL: viewModel.logoImageURL,
-            placeholderImageName: "supplier_logo_placeholder")
+            placeholderImageName: "kh_uisdk_supplier_logo_placeholder")
         fleetNameLabel.text = viewModel.fleetName
         
         viewModel.isScheduled ? setScheduledDesign() : setASAPDesign()

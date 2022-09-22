@@ -44,7 +44,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.accessibilityIdentifier = "set_on_map_close"
         closeButton.isAccessibilityElement = true
-        closeButton.setImage(UIImage.uisdkImage("cross"), for: .normal)
+        closeButton.setImage(UIImage.uisdkImage("kh_uisdk_cross"), for: .normal)
         closeButton.addTarget(self, action: #selector(didPressClose), for: .touchUpInside)
         closeButton.imageView?.contentMode = .scaleAspectFit
         closeButton.tintColor = KarhooUI.colors.text
@@ -62,7 +62,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         setLocationButton.translatesAutoresizingMaskIntoConstraints = false
         setLocationButton.accessibilityIdentifier = "set_on_map_okay"
         setLocationButton.isAccessibilityElement = true
-        let locationButtonImage = UIImage.uisdkImage("confirm").withRenderingMode(.alwaysTemplate)
+        let locationButtonImage = UIImage.uisdkImage("kh_uisdk_confirm").withRenderingMode(.alwaysTemplate)
         setLocationButton.setImage(locationButtonImage, for: .normal)
         setLocationButton.tintColor = KarhooUI.colors.secondary
         setLocationButton.addTarget(self, action: #selector(selectLocation), for: .touchUpInside)

@@ -356,12 +356,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
+        view?.setRequestedState()
         reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
         routeToBooking(result: ScreenResult.completed(result: trip))
     }
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
+            view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
             routeToBooking(result: .completed(result: trip))
         } else if let error = result.getErrorValue() {
