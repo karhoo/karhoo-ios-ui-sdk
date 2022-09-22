@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +50,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Dbw-Fv-52k">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="353.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_prebook_image" translatesAutoresizingMaskIntoConstraints="NO" id="20G-lx-GVK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_prebook_image" translatesAutoresizingMaskIntoConstraints="NO" id="20G-lx-GVK">
                                                         <rect key="frame" x="12" y="12" width="276" height="39"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Confirmed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phB-gj-h9I">
@@ -213,7 +213,7 @@
                                             <constraint firstAttribute="height" constant="12" id="SQW-81-san"/>
                                         </constraints>
                                         <color key="tintColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="kh_cross"/>
+                                        <state key="normal" image="kh_uisdk_cross"/>
                                         <connections>
                                             <action selector="didTapClose" destination="-1" eventType="touchUpInside" id="CuA-34-v3f"/>
                                         </connections>
@@ -284,7 +284,7 @@
         </textView>
     </objects>
     <resources>
-        <image name="kh_cross" width="24" height="24"/>
-        <image name="kh_prebook_image" width="90" height="39"/>
+        <image name="kh_uisdk_cross" width="24" height="24"/>
+        <image name="kh_uisdk_prebook_image" width="90" height="39"/>
     </resources>
 </document>

@@ -73,7 +73,7 @@ final class KarhooExpandViewButton: UIButton {
 
     private lazy var dropdownImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage.uisdkImage("kh_drop_down_icon")
+        imageView.image = UIImage.uisdkImage("kh_uisdk_drop_down_icon")
         imageView.accessibilityIdentifier = KHRevealMoreButtonViewID.image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = KarhooUI.colors.accent

@@ -38,7 +38,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     }
     private lazy var closeButton = UIButton().then {
         $0.tintColor = KarhooUI.colors.text
-        $0.setImage(.uisdkImage("kh_cross_new"), for: .normal)
+        $0.setImage(.uisdkImage("kh_uisdk_cross_new"), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
     private lazy var resetButton = UIButton().then {

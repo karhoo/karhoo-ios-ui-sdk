@@ -74,7 +74,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
         activityIndicator.hidesWhenStopped = true
         containerView.addSubview(activityIndicator)
         
-        tickImage = UIImageView(image: UIImage.uisdkImage("kh_confirm").withRenderingMode(.alwaysTemplate))
+        tickImage = UIImageView(image: UIImage.uisdkImage("kh_uisdk_confirm").withRenderingMode(.alwaysTemplate))
         tickImage.accessibilityIdentifier = KHBookingButtonViewID.image
         tickImage.translatesAutoresizingMaskIntoConstraints = false
         tickImage.tintColor = KarhooUI.colors.white

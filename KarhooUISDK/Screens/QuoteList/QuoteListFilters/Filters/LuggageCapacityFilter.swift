@@ -25,7 +25,7 @@ extension QuoteListFilters {
         var localizedString: String { filterCategory.localized }
 
         var icon: UIImage? {
-            .uisdkImage("kh_filter_luggages")
+            .uisdkImage("kh_uisdk_filter_luggages")
         }
     }
 }

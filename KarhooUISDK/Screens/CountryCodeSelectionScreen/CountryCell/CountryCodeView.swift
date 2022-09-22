@@ -37,7 +37,7 @@ class CountryCodeView: UIView {
     private lazy var isSelectedImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.uisdkImage("kh_circle")
+        imageView.image = UIImage.uisdkImage("kh_uisdk_circle")
         imageView.contentMode = .scaleAspectFit
         imageView.anchor(width: standardIconSize, height: standardIconSize)
         return imageView

@@ -20,9 +20,9 @@ extension QuoteListFilters {
         var icon: UIImage? {
             switch self {
             case .executive:
-                return .uisdkImage("kh_briefcase")
+                return .uisdkImage("kh_uisdk_briefcase")
             case .luxury:
-                return .uisdkImage("kh_star_empty")
+                return .uisdkImage("kh_uisdk_star_empty")
             }
         }
 

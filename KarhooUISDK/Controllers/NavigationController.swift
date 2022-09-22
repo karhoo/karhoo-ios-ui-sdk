@@ -66,7 +66,7 @@ final class NavigationController: UINavigationController {
     }
 
     private func setupDesign() {
-        let backArrow = UIImage.uisdkImage("kh_back_arrow")
+        let backArrow = UIImage.uisdkImage("kh_uisdk_back_arrow")
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(style.tintColor)
         navigationController?.navigationBar.barTintColor = style.backgroundColor

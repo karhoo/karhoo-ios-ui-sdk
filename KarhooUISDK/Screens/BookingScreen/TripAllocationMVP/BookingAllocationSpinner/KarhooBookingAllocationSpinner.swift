@@ -37,7 +37,7 @@ final class KarhooBookingAllocationSpinner: UIView, BookingAllocationSpinnerView
         alpha = 0
         presenter = KarhooBookingAllocationSpinnerPresenter(view: self)
         
-        spinnerImageView = UIImageView(image: UIImage.uisdkImage("kh_allocating_spinner"))
+        spinnerImageView = UIImageView(image: UIImage.uisdkImage("kh_uisdk_allocating_spinner"))
         spinnerImageView.translatesAutoresizingMaskIntoConstraints = false
         spinnerImageView.accessibilityIdentifier = KHBookingAllocationSpinnerID.spinnerImage
         addSubview(spinnerImageView)

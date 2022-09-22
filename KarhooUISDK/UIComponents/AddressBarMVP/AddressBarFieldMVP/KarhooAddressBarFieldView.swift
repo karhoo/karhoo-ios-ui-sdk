@@ -63,7 +63,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         clearButton.translatesAutoresizingMaskIntoConstraints = false
         clearButton.isHidden = clearButtonDisabled
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
-        clearButton.setImage(UIImage.uisdkImage("kh_cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        clearButton.setImage(UIImage.uisdkImage("kh_uisdk_cross").withRenderingMode(.alwaysTemplate), for: .normal)
         clearButton.imageView?.contentMode = .scaleAspectFit
         let imageInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         clearButton.imageEdgeInsets = imageInsets

@@ -11,10 +11,15 @@ extension UIImage {
     
     static func uisdkImage(_ name: String) -> UIImage {
         guard let loadedImage = UIImage(named: name) else {
-            return UIImage(
+            guard let image = UIImage(
                 named: name,
                 in: .current,
-                compatibleWith: nil) ?? UIImage()
+                compatibleWith: nil)
+            else {
+                fatalError("Icon not found")
+            }
+            
+            return image
         }
         return loadedImage
     }

@@ -41,7 +41,7 @@ class AddressTableViewCell: UITableViewCell {
     private func setUpView() {
         widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
 
-        icon = UIImageView(image: UIImage.uisdkImage("kh_search_result"))
+        icon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_search_result"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.accessibilityLabel = KHAddressTableViewCellID.icon
         icon.tintColor = KarhooUI.colors.infoColor

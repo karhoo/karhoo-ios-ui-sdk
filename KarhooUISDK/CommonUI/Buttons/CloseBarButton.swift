@@ -13,7 +13,7 @@ public final class CloseBarButton: UIBarButtonItem {
     public init(callback: @escaping () -> Void) {
         self.callback = callback
         super.init()
-        self.image = UIImage.uisdkImage("kh_cross")
+        self.image = UIImage.uisdkImage("kh_uisdk_cross")
         self.target = self
         self.action = #selector(pressed(sender:))
         self.tintColor = KarhooUI.colors.text

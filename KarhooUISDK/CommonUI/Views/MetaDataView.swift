@@ -72,7 +72,7 @@ final class MetaDataView: UIView {
              titleLabel.bottomAnchor.constraint(equalTo: bottomLine.topAnchor,
                                                 constant: -9.0)].map { $0.isActive = true }
         
-        baseFareIcon = UIImageView(image: UIImage.uisdkImage("kh_base_fare"))
+        baseFareIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_base_fare"))
         baseFareIcon.accessibilityIdentifier = KHMetaDataViewID.baseFareIcon
         baseFareIcon.translatesAutoresizingMaskIntoConstraints = false
         baseFareIcon.isHidden = true
@@ -99,7 +99,7 @@ final class MetaDataView: UIView {
              valueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
                                                   constant: -8.0)].map { $0.isActive = true }
         
-        statusIcon = UIImageView(image: UIImage.uisdkImage("kh_base_fare"))
+        statusIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_base_fare"))
         statusIcon.accessibilityIdentifier = KHMetaDataViewID.statusIcon
         statusIcon.translatesAutoresizingMaskIntoConstraints = false
         statusIcon.isHidden = true

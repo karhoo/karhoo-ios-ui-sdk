@@ -38,7 +38,7 @@ class AddressGoogleLogoView: UIView {
         footerImage = UIImageView(frame: .zero)
         footerImage.accessibilityIdentifier = KHAddressGoogleLogoViewID.footerImage
         footerImage.translatesAutoresizingMaskIntoConstraints = false
-        footerImage.image = UIImage.uisdkImage("kh_powered_by_google_on_white")
+        footerImage.image = UIImage.uisdkImage("kh_uisdk_powered_by_google_on_white")
         footerImage.contentMode = .scaleAspectFit
         addSubview(footerImage)
         

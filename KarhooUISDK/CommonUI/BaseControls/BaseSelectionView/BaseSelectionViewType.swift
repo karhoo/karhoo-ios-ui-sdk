@@ -17,11 +17,11 @@ public enum BaseSelectionViewType {
     var iconName: String {
         switch self {
         case .mapPickUp:
-            return "kh_pin_pickup_icon"
+            return "kh_uisdk_pin_pickup_icon"
         case .mapDropOff:
-            return "kh_pin_destination_icon"
+            return "kh_uisdk_pin_destination_icon"
         case .currentLocation:
-            return "kh_current_location_icon"
+            return "kh_uisdk_current_location_icon"
         case .none:
             return ""
         }

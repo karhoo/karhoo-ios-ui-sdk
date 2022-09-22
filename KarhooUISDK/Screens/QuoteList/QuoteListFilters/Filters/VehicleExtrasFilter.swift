@@ -20,9 +20,9 @@ extension QuoteListFilters {
         var icon: UIImage? {
             switch self {
             case .childSeat:
-                return .uisdkImage("kh_baby_carriage")
+                return .uisdkImage("kh_uisdk_baby_carriage")
             case .wheelchair:
-                return .uisdkImage("kh_wheelchair")
+                return .uisdkImage("kh_uisdk_wheelchair")
             }
         }
 

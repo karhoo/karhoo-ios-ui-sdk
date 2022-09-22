@@ -34,7 +34,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
 
     private func cancelledTripAssertions() {
         XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.tripStateIconName, "kh_trip_cancelled")
+        XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.price, testObject.trip.farePrice())
         XCTAssertEqual(testObject.showActionButtons, false)
     }
@@ -49,7 +49,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         testObject = RideCellViewModel(trip: completedTrip)
 
         XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.tripStateIconName, "kh_trip_completed")
+        XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_completed")
         XCTAssertEqual(testObject.price, completedTrip.farePrice())
         XCTAssertEqual(testObject.showActionButtons, false)
     }
@@ -64,7 +64,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         testObject = RideCellViewModel(trip: noDriversAvailableTrip)
 
         XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.tripStateIconName, "kh_trip_cancelled")
+        XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.tripState, UITexts.GenericTripStatus.cancelled)
         XCTAssertEqual(testObject.showActionButtons, false)
         XCTAssertEqual(testObject.price, UITexts.Bookings.priceCancelled)
@@ -106,7 +106,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         testObject = RideCellViewModel(trip: incompleteTrip)
 
         XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
-        XCTAssertEqual(testObject.tripStateIconName, "kh_trip_cancelled")
+        XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.price, incompleteTrip.quotePrice())
         XCTAssertFalse(testObject.showActionButtons)
     }

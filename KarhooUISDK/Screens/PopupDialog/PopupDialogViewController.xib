@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_base_fair_dialog_map" translatesAutoresizingMaskIntoConstraints="NO" id="KWL-6B-To2">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_base_fair_dialog_map" translatesAutoresizingMaskIntoConstraints="NO" id="KWL-6B-To2">
                                         <rect key="frame" x="40" y="83" width="220" height="222"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="21D-LH-3aU"/>
@@ -120,6 +120,6 @@ tolls, taxes, and other charges.</string>
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="kh_base_fair_dialog_map" width="220" height="222"/>
+        <image name="kh_uisdk_base_fair_dialog_map" width="220" height="222"/>
     </resources>
 </document>

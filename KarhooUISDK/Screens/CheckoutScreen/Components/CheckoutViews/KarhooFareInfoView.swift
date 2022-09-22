@@ -24,7 +24,7 @@ final class KarhooFareInfoView: UIView {
 
     private lazy var infoIcon: UIImageView = {
         let iconImage = UIImageView()
-        iconImage.image = UIImage.uisdkImage("kh_info_icon")
+        iconImage.image = UIImage.uisdkImage("kh_uisdk_info_icon")
         iconImage.tintColor = KarhooUI.colors.white
         iconImage.contentMode = .scaleAspectFit
         iconImage.setDimensions(height: 12.0,

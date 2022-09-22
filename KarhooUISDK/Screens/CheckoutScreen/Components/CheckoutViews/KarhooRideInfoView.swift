@@ -86,7 +86,7 @@ final class KarhooRideInfoView: UIView {
         let infoButton = UIButton(type: .custom)
         infoButton.translatesAutoresizingMaskIntoConstraints = false
         infoButton.accessibilityIdentifier = KHCheckoutHeaderViewID.ridePriceTypeIcon
-        infoButton.setImage(UIImage.uisdkImage("kh_info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
+        infoButton.setImage(UIImage.uisdkImage("kh_uisdk_info_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         infoButton.contentVerticalAlignment = .fill
         infoButton.contentHorizontalAlignment = .fill
         infoButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)

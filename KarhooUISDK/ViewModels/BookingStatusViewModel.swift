@@ -18,11 +18,11 @@ final class BookingStatusViewModel {
         self.statusColor = KarhooUI.colors.darkGrey
 
         if TripInfoUtility.isCancelled(trip: trip) || trip.state == .incomplete {
-            self.imageName =  "kh_trip_cancelled"
+            self.imageName =  "kh_uisdk_trip_cancelled"
         } else if trip.state == .completed {
-            self.imageName = "kh_trip_completed"
+            self.imageName = "kh_uisdk_trip_completed"
         } else {
-            self.imageName = ""
+            self.imageName = "kh_uisdk_trip_cancelled"
         }
     }
 }

@@ -53,7 +53,7 @@ final class VehicleCapacityView: UIStackView {
     }()
     
     private var baggageImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.uisdkImage("kh_luggage_icon"))
+        let imageView = UIImageView(image: UIImage.uisdkImage("kh_uisdk_luggage_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.accessibilityIdentifier = KHVehicleCapacityViewID.baggageIcon
@@ -100,7 +100,7 @@ final class VehicleCapacityView: UIStackView {
     }()
     
     private lazy var passengerCapacityImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.uisdkImage("kh_passenger_capacity_icon"))
+        let imageView = UIImageView(image: UIImage.uisdkImage("kh_uisdk_passenger_capacity_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.accessibilityIdentifier = KHVehicleCapacityViewID.capacityIcon

@@ -122,7 +122,7 @@ final class KarhooTimePriceView: UIView, TimePriceView {
         quoteTypeLabel.textAlignment = .center
         fareView.addSubview(quoteTypeLabel)
         
-        baseFareIcon = UIImageView(image: UIImage.uisdkImage("kh_base_fare").withRenderingMode(.alwaysTemplate))
+        baseFareIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_base_fare").withRenderingMode(.alwaysTemplate))
         baseFareIcon.translatesAutoresizingMaskIntoConstraints = false
         baseFareIcon.accessibilityIdentifier = Identifiers.baseIcon
         baseFareIcon.tintColor = KarhooUI.colors.primary

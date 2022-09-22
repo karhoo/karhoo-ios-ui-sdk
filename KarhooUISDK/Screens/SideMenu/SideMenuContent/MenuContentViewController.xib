@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -70,7 +70,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="997-MJ-ydk" userLabel="RidesContainer">
                             <rect key="frame" x="0.0" y="25" width="355" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_rides" translatesAutoresizingMaskIntoConstraints="NO" id="fTD-Sj-bED">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_rides" translatesAutoresizingMaskIntoConstraints="NO" id="fTD-Sj-bED">
                                     <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="17" id="V2q-4E-h3C"/>
@@ -110,7 +110,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxz-nr-BaL" userLabel="ProfileContainer">
                             <rect key="frame" x="0.0" y="80" width="355" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_profile" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-sZ-DTP">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_profile" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-sZ-DTP">
                                     <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="17" id="24Y-Bm-HXK"/>
@@ -150,7 +150,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or2-aq-fkt" userLabel="Help Container">
                             <rect key="frame" x="0.0" y="190" width="355" height="40"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_help-circle" translatesAutoresizingMaskIntoConstraints="NO" id="vfO-ew-4Cj">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_help_circle" translatesAutoresizingMaskIntoConstraints="NO" id="vfO-ew-4Cj">
                                     <rect key="frame" x="0.0" y="11.5" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="Ztk-wG-XOu"/>
@@ -258,12 +258,12 @@
         </view>
     </objects>
     <resources>
-        <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="kh_help-circle" width="24" height="24"/>
-        <image name="kh_profile" width="34" height="34"/>
-        <image name="kh_rides" width="17" height="18"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="kh_uisdk_help_circle" width="24" height="24"/>
+        <image name="kh_uisdk_profile" width="34" height="34"/>
+        <image name="kh_uisdk_rides" width="17" height="18"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
