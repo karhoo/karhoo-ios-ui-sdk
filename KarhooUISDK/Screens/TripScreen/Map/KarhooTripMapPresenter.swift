@@ -69,9 +69,10 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     }
     
     func focusOnUserLocation() {
-        let zoomSucceded = mapView?.zoomToUserPosition() ?? false
-        if zoomSucceded == false {
-            focusOnPickupAndDriver()
+        mapView?.zoomToUserPosition { [weak self] succeeded in
+            if succeeded == false {
+                self?.focusOnPickupAndDriver()
+            }
         }
     }
     

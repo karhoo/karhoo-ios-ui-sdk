@@ -36,8 +36,14 @@ final class DestinationSetStrategy: BookingMapStrategy {
         guard let destination = currentDestinationAddress?.position.toCLLocation() else {
             return
         }
+        
+        var locations = [pickup, destination]
+        
+        if let userLocation = CLLocationManager().location {
+            locations.append(userLocation)
+        }
 
-        map?.zoom(to: [pickup, destination])
+        map?.zoom(to: locations)
     }
 
     func changed(journeyDetails: JourneyDetails?) {

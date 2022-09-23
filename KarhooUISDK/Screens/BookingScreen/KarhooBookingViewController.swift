@@ -48,6 +48,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidLoad() {
         super.viewDidLoad()
         forceLightMode()
+        setupMapView(reverseGeolocate: journeyInfo == nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,11 +57,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         sideMenu?.hideMenu()
         setupNavigationBar()
         mapView.set(userMarkerVisible: true)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupMapView(reverseGeolocate: journeyInfo == nil)
     }
 
     private func setUpView() {
