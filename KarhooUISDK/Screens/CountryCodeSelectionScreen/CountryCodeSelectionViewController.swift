@@ -53,7 +53,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
     private lazy var searchIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.uisdkImage("search").coloured(withTint: KarhooUI.colors.lightGrey)
+        imageView.image = UIImage.uisdkImage("kh_uisdk_search").coloured(withTint: KarhooUI.colors.lightGrey)
         imageView.anchor(width: standardSpacing, height: standardSpacing)
         return imageView
     }()
