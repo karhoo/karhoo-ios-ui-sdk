@@ -70,8 +70,8 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
             mapView.centerXAnchor.constraint(equalTo: centerXAnchor),
             mapView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            backgroundCenterIcon.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: 95.0),
-            backgroundCenterIcon.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            backgroundCenterIcon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            backgroundCenterIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
             backgroundCenterIcon.widthAnchor.constraint(equalToConstant: 35.0),
             backgroundCenterIcon.heightAnchor.constraint(equalToConstant: 45.0),
             
@@ -149,18 +149,21 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         zoom(toLevel: standardZoom)
     }
 
-    @discardableResult
-    func zoomToUserPosition() -> Bool {
-        if let userLocation = CLLocationManager().location?.coordinate {
-            let viewRegion = MKCoordinateRegion(
-                center: userLocation,
-                latitudinalMeters: CLLocationDistance(standardZoom),
-                longitudinalMeters: CLLocationDistance(standardZoom)
-            )
-            mapView.setRegion(viewRegion, animated: true)
-            return true
-        } else {
-            return false
+    func zoomToUserPosition(completion: @escaping (Bool) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let userLocation = CLLocationManager().location?.coordinate {
+                let viewRegion = MKCoordinateRegion(
+                    center: userLocation,
+                    latitudinalMeters: CLLocationDistance(self.standardZoom),
+                    longitudinalMeters: CLLocationDistance(self.standardZoom)
+                )
+                DispatchQueue.main.async {
+                    self.mapView.setRegion(viewRegion, animated: true)
+                }
+                completion(true)
+            } else {
+                completion(false)
+            }
         }
     }
 
@@ -255,8 +258,12 @@ extension KarhooMKMapView: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if mapDragged {
-            mapViewActions?.userStoppedMovingTheMap(center: CLLocation(latitude: mapView.region.center.latitude,
-                                                                       longitude: mapView.region.center.longitude))
+            mapViewActions?.userStoppedMovingTheMap(
+                center: CLLocation(
+                    latitude: mapView.region.center.latitude,
+                    longitude: mapView.region.center.longitude
+                )
+            )
             mapDragged = false
         }
 
