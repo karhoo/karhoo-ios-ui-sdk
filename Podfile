@@ -28,6 +28,10 @@ target 'Client' do
 
 end
 
+#target 'LiveActivityWidgetExtension' do
+#  pod 'KarhooUISDK', :path => './'
+#end
+
 # UISDK framework
 target 'KarhooUISDK' do
   # pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'

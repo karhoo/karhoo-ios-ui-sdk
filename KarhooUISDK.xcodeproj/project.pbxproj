@@ -533,6 +533,13 @@
 		7B98323828B8C163000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
+		7BB0BE4128EEE6A000FFEF8F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB0BE4028EEE6A000FFEF8F /* WidgetKit.framework */; };
+		7BB0BE4328EEE6A000FFEF8F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB0BE4228EEE6A000FFEF8F /* SwiftUI.framework */; };
+		7BB0BE4628EEE6A100FFEF8F /* LiveActivityWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0BE4528EEE6A100FFEF8F /* LiveActivityWidgetBundle.swift */; };
+		7BB0BE4828EEE6A100FFEF8F /* LiveActivityWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0BE4728EEE6A100FFEF8F /* LiveActivityWidgetLiveActivity.swift */; };
+		7BB0BE4A28EEE6A100FFEF8F /* LiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0BE4928EEE6A100FFEF8F /* LiveActivityWidget.swift */; };
+		7BB0BE4C28EEE6A300FFEF8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB0BE4B28EEE6A300FFEF8F /* Assets.xcassets */; };
+		7BB0BE5028EEE6A300FFEF8F /* LiveActivityWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7BB0BE3F28EEE6A000FFEF8F /* LiveActivityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		986578A0F928780978136BC5 /* RidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986573E003E549DB4C06EA7A /* RidesViewController.xib */; };
 		A1A0312626171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */; };
@@ -629,7 +636,28 @@
 			remoteGlobalIDString = FC8F471321539E24007841FB;
 			remoteInfo = KarhooUISDK;
 		};
+		7BB0BE4E28EEE6A300FFEF8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC8F470B21539E24007841FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BB0BE3E28EEE6A000FFEF8F;
+			remoteInfo = LiveActivityWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7BB0BE5128EEE6A300FFEF8F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7BB0BE5028EEE6A300FFEF8F /* LiveActivityWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		000F233990DF794606862737 /* Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1111,6 +1139,14 @@
 		7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePresenter.swift; sourceTree = "<group>"; };
 		7B982C6DA6FCF2E8FF005496 /* Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B98323728B8C163000C11FE /* LoyalityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalityMode.swift; sourceTree = "<group>"; };
+		7BB0BE3F28EEE6A000FFEF8F /* LiveActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LiveActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BB0BE4028EEE6A000FFEF8F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7BB0BE4228EEE6A000FFEF8F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7BB0BE4528EEE6A100FFEF8F /* LiveActivityWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidgetBundle.swift; sourceTree = "<group>"; };
+		7BB0BE4728EEE6A100FFEF8F /* LiveActivityWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		7BB0BE4928EEE6A100FFEF8F /* LiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidget.swift; sourceTree = "<group>"; };
+		7BB0BE4B28EEE6A300FFEF8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7BB0BE4D28EEE6A300FFEF8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
 		A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListPresenterSpec.swift; sourceTree = "<group>"; };
@@ -1282,6 +1318,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A28C6EACB592C35D5246AB /* Pods_Client.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BB0BE3C28EEE6A000FFEF8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BB0BE4328EEE6A000FFEF8F /* SwiftUI.framework in Frameworks */,
+				7BB0BE4128EEE6A000FFEF8F /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2933,6 +2978,18 @@
 			path = "Bundle+extensions";
 			sourceTree = "<group>";
 		};
+		7BB0BE4428EEE6A000FFEF8F /* LiveActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7BB0BE4528EEE6A100FFEF8F /* LiveActivityWidgetBundle.swift */,
+				7BB0BE4728EEE6A100FFEF8F /* LiveActivityWidgetLiveActivity.swift */,
+				7BB0BE4928EEE6A100FFEF8F /* LiveActivityWidget.swift */,
+				7BB0BE4B28EEE6A300FFEF8F /* Assets.xcassets */,
+				7BB0BE4D28EEE6A300FFEF8F /* Info.plist */,
+			);
+			path = LiveActivityWidget;
+			sourceTree = "<group>";
+		};
 		E3D901DD9D9A20F01C1B688D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2944,6 +3001,8 @@
 				6787A5C23EBC467DB6FE56D8 /* Pods_Client.framework */,
 				011AF9B964FD9F2FAAEEA65C /* Pods_KarhooUISDK.framework */,
 				65810E250E5BB8C7A2EEF731 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */,
+				7BB0BE4028EEE6A000FFEF8F /* WidgetKit.framework */,
+				7BB0BE4228EEE6A000FFEF8F /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3449,6 +3508,7 @@
 				5C2E260E2420F8AC00B1FF0C /* Client */,
 				5141C9182846375A00F72E84 /* AdyenPSP */,
 				5141C92E2846383100F72E84 /* BraintreePSP */,
+				7BB0BE4428EEE6A000FFEF8F /* LiveActivityWidget */,
 				FC8F471521539E24007841FB /* Products */,
 				E3D901DD9D9A20F01C1B688D /* Frameworks */,
 				79C4CC0320274ACDA240783A /* Pods */,
@@ -3462,6 +3522,7 @@
 				FC8F471421539E24007841FB /* KarhooUISDK.framework */,
 				FC8F471D21539E24007841FB /* KarhooUISDKTests.xctest */,
 				5C2E260D2420F8AC00B1FF0C /* Client.app */,
+				7BB0BE3F28EEE6A000FFEF8F /* LiveActivityWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3618,15 +3679,34 @@
 				5C2E260A2420F8AC00B1FF0C /* Frameworks */,
 				5C2E260B2420F8AC00B1FF0C /* Resources */,
 				DAC233A6122FF65B5CDCC0E5 /* [CP] Embed Pods Frameworks */,
+				7BB0BE5128EEE6A300FFEF8F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7BB0BE4F28EEE6A300FFEF8F /* PBXTargetDependency */,
 			);
 			name = Client;
 			productName = Client;
 			productReference = 5C2E260D2420F8AC00B1FF0C /* Client.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7BB0BE3E28EEE6A000FFEF8F /* LiveActivityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BB0BE5428EEE6A300FFEF8F /* Build configuration list for PBXNativeTarget "LiveActivityWidgetExtension" */;
+			buildPhases = (
+				7BB0BE3B28EEE6A000FFEF8F /* Sources */,
+				7BB0BE3C28EEE6A000FFEF8F /* Frameworks */,
+				7BB0BE3D28EEE6A000FFEF8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveActivityWidgetExtension;
+			productName = LiveActivityWidgetExtension;
+			productReference = 7BB0BE3F28EEE6A000FFEF8F /* LiveActivityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		FC8F471321539E24007841FB /* KarhooUISDK */ = {
 			isa = PBXNativeTarget;
@@ -3674,12 +3754,15 @@
 		FC8F470B21539E24007841FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Flit Technologies Ltd";
 				TargetAttributes = {
 					5C2E260C2420F8AC00B1FF0C = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					7BB0BE3E28EEE6A000FFEF8F = {
+						CreatedOnToolsVersion = 14.1;
 					};
 					FC8F471321539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -3712,6 +3795,7 @@
 				FC8F471321539E24007841FB /* KarhooUISDK */,
 				FC8F471C21539E24007841FB /* KarhooUISDKTests */,
 				5C2E260C2420F8AC00B1FF0C /* Client */,
+				7BB0BE3E28EEE6A000FFEF8F /* LiveActivityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -3725,6 +3809,14 @@
 				7B34182327A95F0B00E2D49D /* Localizable.strings in Resources */,
 				5C2E26192420F8AD00B1FF0C /* Assets.xcassets in Resources */,
 				D8D8ED2B261F1FDA0061066D /* Localizable.stringsdict in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BB0BE3D28EEE6A000FFEF8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BB0BE4C28EEE6A300FFEF8F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3901,6 +3993,16 @@
 				14A5B93325C1823C00986616 /* KarhooConfig.swift in Sources */,
 				7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */,
 				1413303225DBDC3100EDAD3B /* Keys.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BB0BE3B28EEE6A000FFEF8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BB0BE4628EEE6A100FFEF8F /* LiveActivityWidgetBundle.swift in Sources */,
+				7BB0BE4828EEE6A100FFEF8F /* LiveActivityWidgetLiveActivity.swift in Sources */,
+				7BB0BE4A28EEE6A100FFEF8F /* LiveActivityWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4499,6 +4601,11 @@
 			target = FC8F471321539E24007841FB /* KarhooUISDK */;
 			targetProxy = 14707ADD25D54B5B00CAD083 /* PBXContainerItemProxy */;
 		};
+		7BB0BE4F28EEE6A300FFEF8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BB0BE3E28EEE6A000FFEF8F /* LiveActivityWidgetExtension */;
+			targetProxy = 7BB0BE4E28EEE6A300FFEF8F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -4556,6 +4663,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CD1B2CE9E36BF0A70978DC1 /* Pods-Client.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
@@ -4578,6 +4686,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F0B6A1490FEA12DEBF6C9A39 /* Pods-Client.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
@@ -4591,6 +4700,69 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhooUISDK.DropIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7BB0BE5228EEE6A300FFEF8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U7U4Q7YGDH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Flit Technologies Ltd. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karhooUISDK.DropIn.LiveActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7BB0BE5328EEE6A300FFEF8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U7U4Q7YGDH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Flit Technologies Ltd. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karhooUISDK.DropIn.LiveActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4863,6 +5035,15 @@
 			buildConfigurations = (
 				5C2E261F2420F8AD00B1FF0C /* Debug */,
 				5C2E26202420F8AD00B1FF0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BB0BE5428EEE6A300FFEF8F /* Build configuration list for PBXNativeTarget "LiveActivityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BB0BE5228EEE6A300FFEF8F /* Debug */,
+				7BB0BE5328EEE6A300FFEF8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
