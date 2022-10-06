@@ -12,12 +12,12 @@ import SwiftUI
 struct Provider: TimelineProvider {
     
     var status: String {
-        let defaultStatus = "No status"
+        var result = "No status"
         if let userDefaults = UserDefaults(suiteName: "group.com.karhooUISDK.DropIn") {
-            return userDefaults.object(forKey: "status") as? String ?? defaultStatus
-        } else {
-            return defaultStatus
+            result = userDefaults.object(forKey: "status") as? String ?? result
         }
+        print("TripStatusProvider readed: " + result)
+        return result
     }
     
     func placeholder(in context: Context) -> SimpleEntry {
@@ -35,8 +35,8 @@ struct Provider: TimelineProvider {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
     
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+        for secondsOffset in 0 ..< 500 {
+            let entryDate = Calendar.current.date(byAdding: .second, value: secondsOffset * 5, to: currentDate)!
             let entry = SimpleEntry(date: entryDate, status: status)
             entries.append(entry)
         }

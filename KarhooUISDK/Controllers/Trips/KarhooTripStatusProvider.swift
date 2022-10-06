@@ -5,6 +5,7 @@
 
 import Foundation
 import KarhooSDK
+import WidgetKit
 
 public protocol TripStatusListener: AnyObject {
     func tripStatusChanged(state: TripState)
@@ -71,6 +72,12 @@ final class KarhooTripStatusProvider: TripStatusProvider {
 
     private func tripStatusUpdated(state: TripState) {
         print("TripStatusProvider - state \(state)")
+        if let userDefaults = UserDefaults(suiteName: "group.com.karhooUISDK.DropIn") {
+            userDefaults.set(state.rawValue, forKey: "state")
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadTimelines(ofKind: "LiveActivityWidget")
+            }
+        }
         listeners.forEach { $0.tripStatusChanged(state: state)}
     }
 }
