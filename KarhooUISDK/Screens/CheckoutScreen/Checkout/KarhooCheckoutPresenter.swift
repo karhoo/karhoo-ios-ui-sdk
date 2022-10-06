@@ -22,7 +22,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
-    private let TripInfoUpdateProvider: TripInfoUpdateProvider
+    private let tripInfoUpdateProvider: TripInfoUpdateProvider
+    private let tripStatusNotificationWorker: TripStatusNotificationWorker
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
@@ -47,7 +48,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
-        TripInfoUpdateProvider: TripInfoUpdateProvider = KarhooTripInfoUpdateProvider.shared,
+        tripInfoUpdateProvider: TripInfoUpdateProvider = KarhooTripInfoUpdateProvider.shared,
+        tripStatusNotificationWorker: TripStatusNotificationWorker = KarhooTripStatusNotificationWorker.shared,
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
@@ -56,7 +58,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.callback = callback
         self.userService = userService
         self.paymentNonceProvider = paymentNonceProvider
-        self.TripInfoUpdateProvider = TripInfoUpdateProvider
+        self.tripInfoUpdateProvider = tripInfoUpdateProvider
+        self.tripStatusNotificationWorker = tripStatusNotificationWorker
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
@@ -359,7 +362,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
-        TripInfoUpdateProvider.monitorTrip(tripId: trip.tripId)
+        setupTripStatusMonitoring(tripInfo: trip)
         view?.setRequestedState()
         reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
         routeToBooking(result: ScreenResult.completed(result: trip))
@@ -367,7 +370,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
-            TripInfoUpdateProvider.monitorTrip(tripId: trip.tripId)
+            setupTripStatusMonitoring(tripInfo: trip)
             view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
             
@@ -541,6 +544,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             message: UITexts.PaymentError.noDetailsMessage,
             error: nil
         )
+    }
+
+    /// Setup TripInfo updated monitorig, so external objects can react to status changes.
+    private func setupTripStatusMonitoring(tripInfo: TripInfo) {
+        tripInfoUpdateProvider.monitorTrip(tripInfo: tripInfo)
+        tripStatusNotificationWorker.start()
     }
     
     // MARK: - Analytics

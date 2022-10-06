@@ -5,7 +5,15 @@
 
 import KarhooSDK
 
-final class TripStatusNotificationWorker: TripUpdateListener {
+/// Object should observe TripInfo changes and send propoer data to LocalNotification handler.
+protocol TripStatusNotificationWorker: AnyObject {
+    func start()
+    func stop()
+}
+
+final class KarhooTripStatusNotificationWorker: TripStatusNotificationWorker, TripUpdateListener {
+
+    static let shared = KarhooTripStatusNotificationWorker()
 
     private let TripInfoUpdateProvider: TripInfoUpdateProvider
     private let localNotificationWorker: LocalNotificationWorker
@@ -29,8 +37,11 @@ final class TripStatusNotificationWorker: TripUpdateListener {
         TripInfoUpdateProvider.remove(listener: self)
     }
 
-    func tripStatusChanged(tripInfo: TripInfo) {
-        guard let notification = tripStatusNotificationFactory.notification(for: tripInfo) else {
+    func tripStatusChanged(tripInfo: TripInfo, currentState: TripState) {
+        guard let notification = tripStatusNotificationFactory.notification(
+            for: tripInfo,
+            withState: currentState
+        ) else {
             return
         }
 

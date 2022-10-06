@@ -7,11 +7,11 @@ import Foundation
 import KarhooSDK
 
 public protocol TripUpdateListener: AnyObject {
-    func tripStatusChanged(tripInfo: TripInfo)
+    func tripStatusChanged(tripInfo: TripInfo, currentState: TripState)
 }
 
 public protocol TripInfoUpdateProvider: AnyObject {
-    func monitorTrip(tripId: String)
+    func monitorTrip(tripInfo: TripInfo)
     func stopMonitoringTrip()
     func add(listener: TripUpdateListener)
     func remove(listener: TripUpdateListener)
@@ -30,7 +30,11 @@ final class KarhooTripInfoUpdateProvider: TripInfoUpdateProvider {
     private var listeners: [TripUpdateListener] = []
     private var tripUpdateObservable: Observable<TripInfo>?
     private var tripUpdateObserver: Observer<TripInfo>?
+    private var tripStateUpdateObservable: Observable<TripState>?
+    private var tripStateUpdateObserver: Observer<TripState>?
+    
     private(set) var tripInfo: TripInfo?
+    private let tripInfoPollingInterval: TimeInterval = 30
 
     // MARK: - Lifecycle
 
@@ -50,29 +54,66 @@ final class KarhooTripInfoUpdateProvider: TripInfoUpdateProvider {
         listeners.removeAll(where: { $0 === listener })
     }
 
-    func monitorTrip(tripId: String) {
-        self.tripId = tripId
+    func monitorTrip(tripInfo: TripInfo) {
+        self.tripId = tripInfo.tripId
 
         let observer = Observer<TripInfo>.value { [weak self] tripInfo in
             self?.tripInfoUpdated(tripInfo: tripInfo)
         }
 
-        let observable = tripService.trackTrip(identifier: tripId).observable()
+        let stateObserver = Observer<TripState>.value { [weak self] state in
+            self?.tripInfoUpdated(state: state)
+        }
+
+        let observable = tripService
+            .trackTrip(identifier: identifier(tripInfo))
+            .observable()
         observable.subscribe(observer: observer)
+        
+        let stateObservable = tripService
+            .status(tripId: tripInfo.tripId)
+            .observable()
+        stateObservable.subscribe(observer: stateObserver)
 
         tripUpdateObserver = observer
         tripUpdateObservable = observable
+        
+        tripStateUpdateObserver = stateObserver
+        tripStateUpdateObservable = stateObservable
     }
 
     func stopMonitoringTrip() {
         tripUpdateObservable?.unsubscribe(observer: tripUpdateObserver)
+        tripStateUpdateObservable?.unsubscribe(observer: tripStateUpdateObserver)
     }
 
     // MARK: - Private methods
 
+    private func tripInfoUpdated(state: TripState) {
+        print("TripInfoUpdateProvider - state \(state)")
+        guard let tripInfo else { return }
+        
+        listeners.forEach { $0.tripStatusChanged(tripInfo: tripInfo, currentState: tripInfo.state)}
+
+        if tripInfo.state == .completed {
+            stopMonitoringTrip()
+        }
+    }
+
     private func tripInfoUpdated(tripInfo: TripInfo) {
         self.tripInfo = tripInfo
-        print("TripInfoUpdateProvider - state \(tripInfo.state)")
-        listeners.forEach { $0.tripStatusChanged(tripInfo: tripInfo)}
+        print("TripInfoUpdateProvider - info update \(tripInfo.state)")
+        listeners.forEach { $0.tripStatusChanged(tripInfo: tripInfo, currentState: tripInfo.state)}
+        
+        if tripInfo.state == .completed {
+            stopMonitoringTrip()
+        }
+    }
+
+    private func identifier(_ trip: TripInfo) -> String {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return trip.followCode
+        }
+        return trip.tripId
     }
 }

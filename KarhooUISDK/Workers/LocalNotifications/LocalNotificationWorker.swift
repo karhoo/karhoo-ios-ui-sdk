@@ -22,6 +22,8 @@ final class KarhooLocalNotificationWorker: NSObject, LocalNotificationWorker {
 
     init(notificationCenter: UNUserNotificationCenter = UNUserNotificationCenter.current()) {
         self.notificationCenter = notificationCenter
+        super.init()
+        self.checkNotificationPermissionStatus()
     }
 
     // MARK: - Endpoints

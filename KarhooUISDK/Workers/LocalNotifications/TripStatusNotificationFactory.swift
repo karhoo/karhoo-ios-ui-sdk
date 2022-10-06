@@ -6,16 +6,16 @@
 import KarhooSDK
 
 protocol TripStatusNotificationFactory: AnyObject {
-    func notification(for tripInfo: TripInfo) -> LocalNotification?
+    func notification(for tripInfo: TripInfo, withState state: TripState) -> LocalNotification?
 }
 
 final class KarhooTripStatusNotificationFactory: TripStatusNotificationFactory {
 
-    func notification(for tripInfo: TripInfo) -> LocalNotification? {
-        switch tripInfo.state {
+    func notification(for tripInfo: TripInfo, withState state: TripState) -> LocalNotification? {
+        switch state {
         default:
             return LocalNotification(
-                title: "State: \(tripInfo.state.rawValue)",
+                title: "State: \(state.rawValue)",
                 body: "",
                 identifier: tripInfo.tripId
             )
