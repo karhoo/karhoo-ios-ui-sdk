@@ -1147,6 +1147,8 @@
 		7BB0BE4928EEE6A100FFEF8F /* LiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidget.swift; sourceTree = "<group>"; };
 		7BB0BE4B28EEE6A300FFEF8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB0BE4D28EEE6A300FFEF8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BB0BE5528EEF59900FFEF8F /* Client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Client.entitlements; sourceTree = "<group>"; };
+		7BB0BE5628EEF5D300FFEF8F /* LiveActivityWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveActivityWidgetExtension.entitlements; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
 		A1A0312526171A4E00B01E1F /* KarhooQuoteListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListPresenterSpec.swift; sourceTree = "<group>"; };
@@ -2602,6 +2604,7 @@
 		5C2E260E2420F8AC00B1FF0C /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				7BB0BE5528EEF59900FFEF8F /* Client.entitlements */,
 				5C2E260F2420F8AC00B1FF0C /* AppDelegate.swift */,
 				5C2E26112420F8AC00B1FF0C /* SceneDelegate.swift */,
 				5C2E26132420F8AC00B1FF0C /* ViewController.swift */,
@@ -3503,6 +3506,7 @@
 		FC8F470A21539E24007841FB = {
 			isa = PBXGroup;
 			children = (
+				7BB0BE5628EEF5D300FFEF8F /* LiveActivityWidgetExtension.entitlements */,
 				FC8F471621539E24007841FB /* KarhooUISDK */,
 				FC8F472121539E24007841FB /* KarhooUISDKTests */,
 				5C2E260E2420F8AC00B1FF0C /* Client */,
@@ -4665,6 +4669,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Client/Client.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				ENABLE_BITCODE = NO;
@@ -4688,6 +4693,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Client/Client.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				ENABLE_BITCODE = NO;
@@ -4712,6 +4718,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveActivityWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
@@ -4744,6 +4751,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveActivityWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;

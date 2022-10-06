@@ -12,7 +12,12 @@ import SwiftUI
 struct Provider: TimelineProvider {
     
     var status: String {
-        "Status"
+        let defaultStatus = "No status"
+        if let userDefaults = UserDefaults(suiteName: "group.com.karhooUISDK.DropIn") {
+            return userDefaults.object(forKey: "status") as? String ?? defaultStatus
+        } else {
+            return defaultStatus
+        }
     }
     
     func placeholder(in context: Context) -> SimpleEntry {
@@ -50,8 +55,10 @@ struct LiveActivityWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
-        Text(entry.status)
+        VStack{
+            Text(entry.date, style: .time)
+            Text(entry.status)
+        }
     }
 }
 
