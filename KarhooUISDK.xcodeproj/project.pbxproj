@@ -541,7 +541,11 @@
 		D88BC2862620C51C00F1EA60 /* TimeFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88BC2852620C51C00F1EA60 /* TimeFormatterSpec.swift */; };
 		D8D8ED2A261F1FDA0061066D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D8D8ED2D261F1FDA0061066D /* Localizable.stringsdict */; };
 		D8D8ED2B261F1FDA0061066D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = D8D8ED2D261F1FDA0061066D /* Localizable.stringsdict */; };
-		E4A0DDFC28A46F2050B88FE4 /* KarhooTripStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0DC0F95481147837057FB /* KarhooTripStatusProvider.swift */; };
+		E4A0D1FC441488D95C420F7E /* TripStatusNotificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D3E34647880FA4C7AC83 /* TripStatusNotificationWorker.swift */; };
+		E4A0D3E2A0843B0DE282AB5A /* TripStatusNotificationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D1E633E9D2B21E49CA44 /* TripStatusNotificationFactory.swift */; };
+		E4A0D4552DC48FAC7950E655 /* LocalNotificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0DEE200CBF8431EE6701C /* LocalNotificationWorker.swift */; };
+		E4A0D4DBE3179021B8684808 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0DC6C5574401C600ABB67 /* LocalNotification.swift */; };
+		E4A0DDFC28A46F2050B88FE4 /* KarhooTripInfoUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0DC0F95481147837057FB /* KarhooTripInfoUpdateProvider.swift */; };
 		F4154AD7AF156D57B2A4D5E5 /* Pods_KarhooUISDK_KarhooUISDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65810E250E5BB8C7A2EEF731 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */; };
 		FC046595221484E2004E76FE /* RideDetailsScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */; };
 		FC04659F2215A6AD004E76FE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC04659E2215A6AD004E76FE /* Navigation.swift */; };
@@ -1125,7 +1129,11 @@
 		D8D8ED2C261F1FDA0061066D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED31261F1FE00061066D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		D8D8ED32261F1FE10061066D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		E4A0DC0F95481147837057FB /* KarhooTripStatusProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTripStatusProvider.swift; sourceTree = "<group>"; };
+		E4A0D1E633E9D2B21E49CA44 /* TripStatusNotificationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStatusNotificationFactory.swift; sourceTree = "<group>"; };
+		E4A0D3E34647880FA4C7AC83 /* TripStatusNotificationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStatusNotificationWorker.swift; sourceTree = "<group>"; };
+		E4A0DC0F95481147837057FB /* KarhooTripInfoUpdateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTripInfoUpdateProvider.swift; sourceTree = "<group>"; };
+		E4A0DC6C5574401C600ABB67 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		E4A0DEE200CBF8431EE6701C /* LocalNotificationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationWorker.swift; sourceTree = "<group>"; };
 		F0B6A1490FEA12DEBF6C9A39 /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsScreenBuilder.swift; sourceTree = "<group>"; };
 		FC04659722148912004E76FE /* PopupDialogPresenterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogPresenterSpec.swift; sourceTree = "<group>"; };
@@ -1715,6 +1723,7 @@
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
 				6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */,
+				E4A0DC6C5574401C600ABB67 /* LocalNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2821,6 +2830,7 @@
 				407EC75322CF564E00F24CFC /* ConstraintSwitcher */,
 				407EC78522CF564E00F24CFC /* Error */,
 				FCAD1C1222088A4200C3AD1D /* Formatters */,
+				E4A0DB9E23542E7DA637EA01 /* LocalNotifications */,
 				FC83E2B0221EE909008FE26D /* Logger */,
 				6BDB6C23274E8C8F006DDF1C /* TimeScheduler */,
 				095D745423182318002253C0 /* TripRatingCache */,
@@ -2946,6 +2956,16 @@
 				65810E250E5BB8C7A2EEF731 /* Pods_KarhooUISDK_KarhooUISDKTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4A0DB9E23542E7DA637EA01 /* LocalNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				E4A0DEE200CBF8431EE6701C /* LocalNotificationWorker.swift */,
+				E4A0D3E34647880FA4C7AC83 /* TripStatusNotificationWorker.swift */,
+				E4A0D1E633E9D2B21E49CA44 /* TripStatusNotificationFactory.swift */,
+			);
+			path = LocalNotifications;
 			sourceTree = "<group>";
 		};
 		FC046596221488D8004E76FE /* PopupDialogScreen */ = {
@@ -3125,7 +3145,7 @@
 				FC435F3B2211BA1700FB6BB5 /* KarhooTripsProvider.swift */,
 				FC435F3C2211BA1700FB6BB5 /* KarhooTripsSorter.swift */,
 				FC435F392211B8CD00FB6BB5 /* TripsProvider.swift */,
-				E4A0DC0F95481147837057FB /* KarhooTripStatusProvider.swift */,
+				E4A0DC0F95481147837057FB /* KarhooTripInfoUpdateProvider.swift */,
 			);
 			path = Trips;
 			sourceTree = "<group>";
@@ -4302,7 +4322,11 @@
 				40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */,
 				407EC79822CF564E00F24CFC /* StackButtonView.swift in Sources */,
 				407EC7C622CF564E00F24CFC /* FormButton.swift in Sources */,
-				E4A0DDFC28A46F2050B88FE4 /* KarhooTripStatusProvider.swift in Sources */,
+				E4A0DDFC28A46F2050B88FE4 /* KarhooTripInfoUpdateProvider.swift in Sources */,
+				E4A0D4552DC48FAC7950E655 /* LocalNotificationWorker.swift in Sources */,
+				E4A0D1FC441488D95C420F7E /* TripStatusNotificationWorker.swift in Sources */,
+				E4A0D4DBE3179021B8684808 /* LocalNotification.swift in Sources */,
+				E4A0D3E2A0843B0DE282AB5A /* TripStatusNotificationFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
