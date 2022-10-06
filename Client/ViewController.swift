@@ -174,21 +174,37 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .karhooUser
+            self.refreshUsernamePasswordLogin(
+                username: Keys.adyenUserServiceEmail,
+                password: Keys.adyenUserServicePassword,
+                callback: callback
+            )
         }
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
-        usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
+        usernamePasswordLoginAndShowKarhoo(
+            username: Keys.adyenUserServiceEmail,
+            password: Keys.adyenUserServicePassword
+        )
     }
     
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .karhooUser
+            self.refreshUsernamePasswordLogin(
+                username: Keys.braintreeUserServiceEmail,
+                password: Keys.braintreeUserServicePassword,
+                callback: callback
+            )
         }
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
-        usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
+        usernamePasswordLoginAndShowKarhoo(
+            username: Keys.braintreeUserServiceEmail,
+            password: Keys.braintreeUserServicePassword
+        )
     }
 
     @objc func tokenExchangeBraintreeBookingTapped(sender: UIButton) {
@@ -196,6 +212,7 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+            self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
@@ -207,6 +224,7 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+            self.refreshTokenLogin(token: Keys.adyenAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.adyenTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -218,6 +236,7 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -229,6 +248,7 @@ class ViewController: UIViewController {
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
             KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -281,6 +301,23 @@ class ViewController: UIViewController {
                                                 }
         })
     }
+    
+    private func refreshUsernamePasswordLogin(
+        username: String,
+        password: String,
+        callback: @escaping () -> Void) {
+            let userService = Karhoo.getUserService()
+            userService.logout().execute(callback: { _ in})
+            
+            let userLogin = UserLogin(username: username,
+                                      password: password)
+            userService.login(userLogin: userLogin).execute(callback: { result in
+                print("login: \(result)")
+                if result.isSuccess() {
+                    callback()
+                }
+            })
+    }
 
     private func tokenLoginAndShowKarhoo(token: String) {
         let authService = Karhoo.getAuthService()
@@ -289,6 +326,17 @@ class ViewController: UIViewController {
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
+            }
+        }
+    }
+    
+    private func refreshTokenLogin(token: String, callback: @escaping () -> Void) {
+        let authService = Karhoo.getAuthService()
+
+        authService.login(token: token).execute { result in
+            print("token login: \(result)")
+            if result.isSuccess() {
+                callback()
             }
         }
     }

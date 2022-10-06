@@ -87,7 +87,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.1)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-4126-proactively-refresh-token`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `develop`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -110,14 +110,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/MOB-4126-proactively-refresh-token
+    :branch: develop
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 525d7b7ea387bba6ae753295c178c7efcdb102d0
+    :commit: 073fb1802db652bb71fe7147fd64ce58e23f0ed9
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -134,6 +134,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 09cc5eb67ae49356c4ad9a2be6a0d5a4212b61bb
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 9248a3375f6673847fb5a7c5ac1ba820a49f081e
+PODFILE CHECKSUM: 3960b5b630984b9b21e36f51a130951492483c7f
 
 COCOAPODS: 1.11.3
