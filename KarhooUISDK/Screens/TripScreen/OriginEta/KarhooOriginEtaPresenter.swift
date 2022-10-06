@@ -44,7 +44,6 @@ final class KarhooOriginEtaPresenter: OriginEtaPresenter {
 
         tripStateObserver = observer
         tripStateObservable = observable
-
     }
 
     func stopMonitoringTrip() {

@@ -22,6 +22,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private let userService: UserService
     private let bookingMetadata: [String: Any]?
     private let paymentNonceProvider: PaymentNonceProvider
+    private let tripStatusProvider: TripStatusProvider
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
@@ -46,6 +47,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
+        tripStatusProvider: TripStatusProvider = KarhooTripStatusProvider.shared,
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
@@ -54,6 +56,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.callback = callback
         self.userService = userService
         self.paymentNonceProvider = paymentNonceProvider
+        self.tripStatusProvider = tripStatusProvider
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
@@ -356,6 +359,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
 
         self.trip = trip
+        tripStatusProvider.monitorTrip(tripId: trip.tripId)
         view?.setRequestedState()
         reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
         routeToBooking(result: ScreenResult.completed(result: trip))
@@ -363,8 +367,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
+            tripStatusProvider.monitorTrip(tripId: trip.tripId)
             view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
+            
             routeToBooking(result: .completed(result: trip))
         } else if let error = result.getErrorValue() {
             reportBookingFailure(message: error.message, correlationId: result.getCorrelationId())
