@@ -173,13 +173,11 @@ class ViewController: UIViewController {
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshUsernamePasswordLogin(
-                    username: Keys.adyenUserServiceEmail,
-                    password: Keys.adyenUserServicePassword,
-                    callback: callback
-                )
-            }
+            self.refreshUsernamePasswordLogin(
+                username: Keys.adyenUserServiceEmail,
+                password: Keys.adyenUserServicePassword,
+                callback: callback
+            )
         }
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -193,13 +191,11 @@ class ViewController: UIViewController {
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshUsernamePasswordLogin(
-                    username: Keys.braintreeUserServiceEmail,
-                    password: Keys.braintreeUserServicePassword,
-                    callback: callback
-                )
-            }
+            self.refreshUsernamePasswordLogin(
+                username: Keys.braintreeUserServiceEmail,
+                password: Keys.braintreeUserServicePassword,
+                callback: callback
+            )
         }
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
@@ -213,9 +209,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
-            }
+            self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
@@ -226,9 +220,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshTokenLogin(token: Keys.adyenAuthToken, callback: callback)
-            }
+            self.refreshTokenLogin(token: Keys.adyenAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.adyenTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -239,9 +231,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
-            }
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -252,9 +242,7 @@ class ViewController: UIViewController {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
         KarhooConfig.onUpdateAuthentication = { callback in
-            self.logout {
-                self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
-            }
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
@@ -313,7 +301,6 @@ class ViewController: UIViewController {
         password: String,
         callback: @escaping () -> Void) {
             let userService = Karhoo.getUserService()
-            userService.logout().execute(callback: { _ in})
             
             let userLogin = UserLogin(username: username,
                                       password: password)
