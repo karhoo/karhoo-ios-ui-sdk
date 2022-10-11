@@ -12,7 +12,6 @@ import UIKit
 @testable import KarhooUISDK
 
 class KarhooTestConfiguration: KarhooUISDKConfiguration {
-
     static var guestSettings = GuestSettings(identifier: "", referer: "", organisationId: "")
     static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     static var authenticationMethod: AuthenticationMethod = .karhooUser
@@ -46,5 +45,9 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
     var mockAnalytics = MockAnalytics()
     func analytics() -> Analytics {
         mockAnalytics
+    }
+    
+    func requireSDKAuthentication(callback: @escaping () -> Void) {
+        //TODO: test this
     }
 }
