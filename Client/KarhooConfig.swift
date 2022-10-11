@@ -10,8 +10,6 @@ import KarhooSDK
 import KarhooUISDK
 
 final class KarhooConfig: KarhooUISDKConfiguration {
-    
-    
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false

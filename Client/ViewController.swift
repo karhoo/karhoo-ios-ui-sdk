@@ -339,19 +339,19 @@ class ViewController: UIViewController {
         var journeyInfo: JourneyInfo? = nil
         var passangerDetails: PassengerDetails? = nil
         
-        //        let originLat = CLLocationDegrees(Double(51.500869))
-        //        let originLon = CLLocationDegrees(Double(-0.124979))
-        //        let destLat = CLLocationDegrees(Double(51.502159))
-        //        let destLon = CLLocationDegrees(Double(-0.142040))
-        //
-        //        journeyInfo = JourneyInfo(origin: CLLocation(latitude: originLat, longitude: originLon),
-        //                                                     destination: CLLocation(latitude: destLat, longitude: destLon))
-        //
-        //        passangerDetails = PassengerDetails(firstName: "Name",
-        //                            lastName: "Lastname",
-        //                            email: "test@karhoo.com",
-        //                            phoneNumber: "+15005550006",
-        //                            locale: "en")
+//        let originLat = CLLocationDegrees(Double(51.500869))
+//        let originLon = CLLocationDegrees(Double(-0.124979))
+//        let destLat = CLLocationDegrees(Double(51.502159))
+//        let destLon = CLLocationDegrees(Double(-0.142040))
+//
+//        journeyInfo = JourneyInfo(origin: CLLocation(latitude: originLat, longitude: originLon),
+//                                                     destination: CLLocation(latitude: destLat, longitude: destLon))
+//
+//        passangerDetails = PassengerDetails(firstName: "Name",
+//                            lastName: "Lastname",
+//                            email: "test@karhoo.com",
+//                            phoneNumber: "+15005550006",
+//                            locale: "en")
         
         booking = KarhooUI().screens().booking()
             .buildBookingScreen(
