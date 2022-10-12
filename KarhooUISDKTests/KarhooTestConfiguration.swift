@@ -46,8 +46,9 @@ class KarhooTestConfiguration: KarhooUISDKConfiguration {
     func analytics() -> Analytics {
         mockAnalytics
     }
-    
+
+    var onRequiredSDKAuthentication: (()->Void) -> Void = { $0() }
     func requireSDKAuthentication(callback: @escaping () -> Void) {
-        //TODO: test this
+        onRequiredSDKAuthentication { callback() }
     }
 }
