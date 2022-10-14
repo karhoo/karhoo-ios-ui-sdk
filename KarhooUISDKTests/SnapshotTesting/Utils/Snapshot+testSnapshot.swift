@@ -10,11 +10,12 @@ import Foundation
 import XCTest
 import UIKit
 import SnapshotTesting
+import Quick
 
 func testSnapshot<View: UIView>(
     _ view: View,
     file: StaticString = #file,
-    testName: String = #function,
+    fileName: String = #function,
     line: UInt = #line
 ) {
     guard view.bounds.size != .zero else {
@@ -25,7 +26,7 @@ func testSnapshot<View: UIView>(
       matching: view,
       as: .image,
       file: file,
-      testName: testName, // TODO: find a way to create file with specific test case's `describe/context/it` in name.
+      testName: QuickSpec.current?.name ?? fileName,
       line: line
     )
     guard let message = failure else { return }
@@ -35,7 +36,7 @@ func testSnapshot<View: UIView>(
 func testSnapshot<ViewController: UIViewController>(
     _ viewController: ViewController,
     file: StaticString = #file,
-    testName: String = #function,
+    fileName: String = #function,
     line: UInt = #line
 ) {
     guard viewController.view.bounds.size != .zero else {
@@ -46,14 +47,14 @@ func testSnapshot<ViewController: UIViewController>(
       matching: viewController,
       as: .image(on: .iPhoneX),
       file: file,
-      testName: testName,
+      testName: QuickSpec.current?.name ?? fileName,
       line: line
     )
     let test2Failure = verifySnapshot(
       matching: viewController,
       as: .image(on: .iPhoneXsMax),
       file: file,
-      testName: testName,
+      testName: QuickSpec.current?.name ?? fileName,
       line: line
     )
 

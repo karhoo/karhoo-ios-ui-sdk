@@ -18,7 +18,7 @@ class ExampleSnapshotSpec: QuickSpec {
     override func spec() {
 
         /// Define feature/method/view that is tested
-        describe("Feature [Define general scope]") {
+        describe("Feature name") {
             // Define variables needed for all test cases in given spec. In most of the cases there will be the list of suts (tested objects) and mocks injected using dependency injection
             var sut1: UIView!
             var sut2: UIViewController!
@@ -30,8 +30,8 @@ class ExampleSnapshotSpec: QuickSpec {
                 sut2 = UIViewController()
             }
 
-            /// Set specific context. Examples: user is logged in, user is not logged in
-            context("when... [Define specific preconditions or environment settings]") {
+            /// Define specific preconditions or environment settings. Examples: user is logged in, user is not logged in.
+            context("when... ") {
                 beforeEach {
                     sut1.backgroundColor = .red
                     sut1.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
@@ -40,7 +40,8 @@ class ExampleSnapshotSpec: QuickSpec {
                     // The closure will be fired before every single nested scope (`describe`, `context`, `it`). It should be used to setup specific environment and make sure one test does not affect any other.
                 }
 
-                context("when user has no money [if needed you can create additional nested context to test some specific use case]") {
+                // if needed you can create additional nested context to test some specific use case
+                context("and when user has no money") {
                     /// Define variables needed only for given context
                     let variableNeededOnlyForGivenContext = TestUtil()
 
@@ -55,15 +56,18 @@ class ExampleSnapshotSpec: QuickSpec {
                     }
                 }
 
-                it("should... [test specific requirement]") {
+                // test specific requirement
+                it("should...") {
                     /// actual assertion and test code goes here
                 }
 
-                it("should show proper design of view controller [test another specific requirement - in this case view controller design]") {
+                // test another specific requirement - in this case view controller design
+                it("should show proper design of view controller") {
                     testSnapshot(sut2)
                 }
 
-                it("should show proper design of view [test another requirement - in this case sut1 design") {
+                // test another requirement - in this case sut1 design
+                it("should show proper design of view") {
                     testSnapshot(sut1)
                 }
             }
