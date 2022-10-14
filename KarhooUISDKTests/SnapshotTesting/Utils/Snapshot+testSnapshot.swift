@@ -22,15 +22,15 @@ func testSnapshot<View: UIView>(
         XCTFail("\(String(describing: View.self)) - size is equal to zero", file: file, line: line)
         return
     }
-    let failure = verifySnapshot(
+    guard let failureMessage = verifySnapshot(
       matching: view,
       as: .image,
       file: file,
       testName: QuickSpec.current?.name ?? fileName,
       line: line
-    )
-    guard let message = failure else { return }
-    XCTFail(message, file: file, line: line)
+    ) else { return }
+
+    XCTFail(failureMessage, file: file, line: line)
 }
 
 func testSnapshot<ViewController: UIViewController>(
@@ -43,26 +43,17 @@ func testSnapshot<ViewController: UIViewController>(
         XCTFail("\(String(describing: ViewController.self)) - views's size equals zero", file: file, line: line)
         return
     }
-    let test1Failure = verifySnapshot(
-      matching: viewController,
-      as: .image(on: .iPhoneX),
-      file: file,
-      testName: QuickSpec.current?.name ?? fileName,
-      line: line
-    )
-    let test2Failure = verifySnapshot(
-      matching: viewController,
-      as: .image(on: .iPhoneXsMax),
-      file: file,
-      testName: QuickSpec.current?.name ?? fileName,
-      line: line
-    )
-
-    if let message = test1Failure {
-        XCTFail(message, file: file, line: line)
-    }
-
-    if let message = test2Failure {
-        XCTFail(message, file: file, line: line)
-    }
+    [.iPhoneX, .iPhoneXsMax]
+        .compactMap {
+            verifySnapshot(
+                matching: viewController,
+                as: .image(on: $0),
+                file: file,
+                testName: QuickSpec.current?.name ?? fileName,
+                line: line
+            )
+        }
+        .forEach { failureMessage in
+            XCTFail(failureMessage, file: file, line: line)
+        }
 }
