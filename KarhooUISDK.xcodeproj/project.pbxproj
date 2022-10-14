@@ -346,6 +346,8 @@
 		510522EA284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		512AD7232859ED3D00888F60 /* MockQuoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7222859ED3D00888F60 /* MockQuoteListView.swift */; };
 		512AD7252859ED7700888F60 /* QuoteListFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */; };
+		512F28FF28F998680099B944 /* Snapshot+testSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F28FE28F998680099B944 /* Snapshot+testSnapshot.swift */; };
+		512F290228F998A20099B944 /* ExampleSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F290128F998A20099B944 /* ExampleSnapshotSpec.swift */; };
 		5135E56828574A1300F14A0F /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56728574A1300F14A0F /* MainActionButton.swift */; };
 		5135E56E28574A4100F14A0F /* QuoteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56928574A4100F14A0F /* QuoteListPresenter.swift */; };
 		5135E56F28574A4100F14A0F /* QuoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56A28574A4100F14A0F /* QuoteListViewController.swift */; };
@@ -916,6 +918,8 @@
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		512AD7222859ED3D00888F60 /* MockQuoteListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockQuoteListView.swift; sourceTree = "<group>"; };
 		512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFilterSpec.swift; sourceTree = "<group>"; };
+		512F28FE28F998680099B944 /* Snapshot+testSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Snapshot+testSnapshot.swift"; sourceTree = "<group>"; };
+		512F290128F998A20099B944 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
 		5135E56728574A1300F14A0F /* MainActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
 		5135E56928574A4100F14A0F /* QuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListPresenter.swift; sourceTree = "<group>"; };
 		5135E56A28574A4100F14A0F /* QuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListViewController.swift; sourceTree = "<group>"; };
@@ -2363,6 +2367,23 @@
 			path = QuoteList;
 			sourceTree = "<group>";
 		};
+		512F28FD28F998310099B944 /* SnapshotTesting */ = {
+			isa = PBXGroup;
+			children = (
+				512F290028F998850099B944 /* Utils */,
+				512F290128F998A20099B944 /* ExampleSnapshotSpec.swift */,
+			);
+			path = SnapshotTesting;
+			sourceTree = "<group>";
+		};
+		512F290028F998850099B944 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				512F28FE28F998680099B944 /* Snapshot+testSnapshot.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5141C9182846375A00F72E84 /* AdyenPSP */ = {
 			isa = PBXGroup;
 			children = (
@@ -3501,6 +3522,7 @@
 		FC8F472121539E24007841FB /* KarhooUISDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				512F28FD28F998310099B944 /* SnapshotTesting */,
 				FC658F502216D2DD006C48F2 /* TestCases */,
 				0968F0E221BE7FF100745370 /* Mocks */,
 				FC8F472421539E24007841FB /* Info.plist */,
@@ -4379,8 +4401,10 @@
 				512AD7232859ED3D00888F60 /* MockQuoteListView.swift in Sources */,
 				14707C9F25D54C2200CAD083 /* MockRecentAddressProvider.swift in Sources */,
 				518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */,
+				512F290228F998A20099B944 /* ExampleSnapshotSpec.swift in Sources */,
 				14707C9825D54C2200CAD083 /* MockTripAllocationView.swift in Sources */,
 				14707C4B25D54C2100CAD083 /* PopupDialogView.swift in Sources */,
+				512F28FF28F998680099B944 /* Snapshot+testSnapshot.swift in Sources */,
 				14707CD225D54C2200CAD083 /* MockQuoteSorter.swift in Sources */,
 				14707CC125D54C2200CAD083 /* KarhooGuestCheckoutPresenterSpec.swift in Sources */,
 				14707C5625D54C2100CAD083 /* MockTimeScheduler.swift in Sources */,
