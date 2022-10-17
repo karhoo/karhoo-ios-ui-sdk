@@ -26,7 +26,6 @@ target 'Client' do
   pod 'KarhooUISDK', :path => './'
   pod 'KarhooUISDK/Adyen', :path => './'
   pod 'KarhooUISDK/Braintree', :path => './'
-
 end
 
 # UISDK framework
@@ -43,7 +42,7 @@ target 'KarhooUISDK' do
   target 'KarhooUISDKTests' do
     inherit! :complete
     pod 'SnapshotTesting', '1.9.0'
-    pod 'Quick'
-    pod 'Nimble'
+    pod 'Quick', '~> 5.0.1'
+    pod 'Nimble', '~> 10.0.0'
   end
 end
