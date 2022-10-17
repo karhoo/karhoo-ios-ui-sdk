@@ -3697,7 +3697,6 @@
 					FC8F471C21539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
-						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 				};
 			};
@@ -4830,7 +4829,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = "$(inherited)";
@@ -4847,7 +4845,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Debug;
 		};
@@ -4857,7 +4854,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
@@ -4873,7 +4869,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Release;
 		};
