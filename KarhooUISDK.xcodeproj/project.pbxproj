@@ -634,6 +634,13 @@
 			remoteGlobalIDString = FC8F471321539E24007841FB;
 			remoteInfo = KarhooUISDK;
 		};
+		519D100328FDB10700EF0EB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC8F470B21539E24007841FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
+			remoteInfo = Client;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -3677,6 +3684,7 @@
 			);
 			dependencies = (
 				14707ADE25D54B5B00CAD083 /* PBXTargetDependency */,
+				519D100428FDB10700EF0EB0 /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKTests;
 			productName = KarhooUISDKTests;
@@ -3703,6 +3711,7 @@
 					FC8F471C21539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
+						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 				};
 			};
@@ -4519,6 +4528,11 @@
 			target = FC8F471321539E24007841FB /* KarhooUISDK */;
 			targetProxy = 14707ADD25D54B5B00CAD083 /* PBXContainerItemProxy */;
 		};
+		519D100428FDB10700EF0EB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
+			targetProxy = 519D100328FDB10700EF0EB0 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -4848,6 +4862,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Debug;
 		};
@@ -4872,6 +4887,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Release;
 		};
