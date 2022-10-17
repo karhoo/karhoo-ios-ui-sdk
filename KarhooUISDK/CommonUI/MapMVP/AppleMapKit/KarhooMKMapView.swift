@@ -142,7 +142,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
                                                                        longitude: on.coordinate.longitude),
                                         span: span)
 
-        mapView.setRegion(region, animated: true)
+        DispatchQueue.main.async {
+            self.mapView.setRegion(region, animated: true)
+        }
     }
 
     func zoomToDefaultLevel() {
@@ -174,25 +176,35 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
             return annotation
         }
 
-        mapView.showAnnotations(annotations, animated: true)
+        DispatchQueue.main.async {
+            self.mapView.showAnnotations(annotations, animated: true)
+        }
     }
 
     func zoom(toLevel: Float) {
         let span = MKCoordinateSpan(latitudeDelta: Double(toLevel), longitudeDelta: Double(toLevel))
         let region = MKCoordinateRegion(center: mapView.region.center, span: span)
-        mapView.setRegion(region, animated: true)
+        
+        DispatchQueue.main.async {
+            self.mapView.setRegion(region, animated: true)
+        }
     }
 
     func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         pins[tag] = annotation
-        mapView.addAnnotation(annotation)
+        DispatchQueue.main.async {
+            self.mapView.addAnnotation(annotation)
+        }
     }
 
     func removePin(tag: TripPinTags) {
         guard let pinToRemove = pins[tag] else {
             return
         }
-        mapView.removeAnnotation(pinToRemove)
+        
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotation(pinToRemove)
+        }
         pins.removeValue(forKey: tag)
     }
 
@@ -230,7 +242,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     }
 
     func removeTripLine() {
-        mapView.removeOverlays(mapView.overlays)
+        DispatchQueue.main.async {
+            self.mapView.removeOverlays(self.mapView.overlays)
+        }
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
