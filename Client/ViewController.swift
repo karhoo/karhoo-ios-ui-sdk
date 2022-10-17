@@ -299,7 +299,8 @@ class ViewController: UIViewController {
     private func refreshUsernamePasswordLogin(
         username: String,
         password: String,
-        callback: @escaping () -> Void) {
+        callback: @escaping () -> Void
+    ) {
             let userService = Karhoo.getUserService()
             
             let userLogin = UserLogin(username: username,
