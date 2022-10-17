@@ -398,6 +398,7 @@
 		5192B43A2833820B00AAAAAB /* MockPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192B4392833820B00AAAAAB /* MockPaymentManager.swift */; };
 		5192C0232832DE4500D01FC8 /* UIImage+uisdkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */; };
 		5192C0252832EB4F00D01FC8 /* LocationInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */; };
+		519D100928FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519D100828FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift */; };
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
 		51ADF0B0287C02C8000AEF87 /* UIImage+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADF0AF287C02C8000AEF87 /* UIImage+load.swift */; };
 		51ADF0B2287C0A72000AEF87 /* UIImageView+getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADF0B1287C0A72000AEF87 /* UIImageView+getImage.swift */; };
@@ -964,6 +965,7 @@
 		5192B4392833820B00AAAAAB /* MockPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentManager.swift; sourceTree = "<group>"; };
 		5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+uisdkImage.swift"; sourceTree = "<group>"; };
 		5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationInfo+Extensions.swift"; sourceTree = "<group>"; };
+		519D100828FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSnapshotSpec.swift; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51ADF0AF287C02C8000AEF87 /* UIImage+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+load.swift"; sourceTree = "<group>"; };
 		51ADF0B1287C0A72000AEF87 /* UIImageView+getImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+getImage.swift"; sourceTree = "<group>"; };
@@ -2491,6 +2493,30 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		519D100528FDBF8400EF0EB0 /* QuoteList */ = {
+			isa = PBXGroup;
+			children = (
+				519D100728FDBF9500EF0EB0 /* Fitler */,
+				519D100628FDBF8E00EF0EB0 /* Sort */,
+				519D100828FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift */,
+			);
+			path = QuoteList;
+			sourceTree = "<group>";
+		};
+		519D100628FDBF8E00EF0EB0 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		519D100728FDBF9500EF0EB0 /* Fitler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fitler;
+			sourceTree = "<group>";
+		};
 		51A1100A27AD510800A54E76 /* Checkbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2523,6 +2549,7 @@
 		51FFF9ED28FD82AE0005384F /* SnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				519D100528FDBF8400EF0EB0 /* QuoteList */,
 				51FFF9EE28FD82C70005384F /* ExampleSnapshotSpec.swift */,
 				51FFF9F028FD82DC0005384F /* SnapshotUtils.swift */,
 			);
@@ -4400,6 +4427,7 @@
 				14707CB425D54C2200CAD083 /* MockRidesScreenBuilder.swift in Sources */,
 				14707C9D25D54C2200CAD083 /* MockMapViewActions.swift in Sources */,
 				7B34183027AAB56F00E2D49D /* MailValidatorTest.swift in Sources */,
+				519D100928FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift in Sources */,
 				14707C8F25D54C2200CAD083 /* RideDetailsStackButtonPresenterSpec.swift in Sources */,
 				14707C5C25D54C2100CAD083 /* KarhooAddressSearchProviderSpec.swift in Sources */,
 				14707CDF25D54C2200CAD083 /* MockTripSummaryScreenBuilder.swift in Sources */,
