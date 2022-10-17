@@ -12,6 +12,7 @@ post_install do |installer_representation|
       config.build_settings[‘ONLY_ACTIVE_ARCH’] = ‘YES’
       config.build_settings[“EXCLUDED_ARCHS[sdk=iphonesimulator*]“] = “arm64”
       config.build_settings[‘BUILD_LIBRARY_FOR_DISTRIBUTION’] = ‘YES’
+      config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
     end
   end
 end
@@ -30,8 +31,8 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  # pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
-  pod 'KarhooSDK', '1.6.3'
+   pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+#  pod 'KarhooSDK', '1.6.3'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'
