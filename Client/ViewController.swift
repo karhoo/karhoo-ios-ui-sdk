@@ -327,12 +327,14 @@ class ViewController: UIViewController {
     private func refreshTokenLogin(token: String, callback: @escaping () -> Void) {
         let authService = Karhoo.getAuthService()
         
-        authService.login(token: token).execute { result in
-            print("token login: \(result)")
-            if result.isSuccess() {
-                callback()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            authService.login(token: token).execute { result in
+                print("token login: \(result)")
+                if result.isSuccess() {
+                    callback()
+                }
             }
-        }
+         }
     }
     
     func showKarhoo() {
