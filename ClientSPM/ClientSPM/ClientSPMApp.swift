@@ -39,7 +39,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
-
+    static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired
@@ -55,5 +55,13 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     
     var paymentManager: PaymentManager {
         KarhooConfig.paymentManager
+    }
+    
+    func requireSDKAuthentication(callback: @escaping () -> Void) {
+        print("Client: KarhooConfig.requireSDKAuthentication started")
+        KarhooConfig.onUpdateAuthentication {
+            print("Client: KarhooConfig.requireSDKAuthentication finished")
+            callback()
+        }
     }
 }
