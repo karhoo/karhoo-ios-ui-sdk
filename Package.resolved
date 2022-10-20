@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/karhoo/karhoo-ios-sdk",
       "state" : {
-        "revision" : "f7f6c655b734aee8d47bc44dbd3967aa09bc68bf",
-        "version" : "1.6.3"
+        "revision" : "d2db636d6fdbded6b128590e80343ba4ceb3b1d8",
+        "version" : "1.7.0"
       }
     },
     {

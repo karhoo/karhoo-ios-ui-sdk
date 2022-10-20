@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/karhoo/karhoo-ios-sdk", exact: "1.6.3"),
+        .package(url: "https://github.com/karhoo/karhoo-ios-sdk", exact: "1.7.0"),
         .package(url: "https://github.com/Adyen/adyen-ios", exact: "4.7.1"),
         .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.3.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit", exact: "3.3.1"),
