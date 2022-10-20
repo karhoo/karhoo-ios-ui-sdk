@@ -10,10 +10,10 @@ import CoreLocation
 import KarhooSDK
 
 enum PinAsset: String {
-    case background = "pin_background_icon"
-    case pickup = "pin_pickUp_icon"
-    case destination = "pin_destination_icon"
-    case driverLocation = "car_icon"
+    case background = "kh_uisdk_pin_background_icon"
+    case pickup = "kh_uisdk_pin_pickup_icon"
+    case destination = "kh_uisdk_pin_destination_icon"
+    case driverLocation = "kh_uisdk_car_icon"
 }
 
 protocol BookingMapStrategy: AnyObject {

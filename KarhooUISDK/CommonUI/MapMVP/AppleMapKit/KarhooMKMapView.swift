@@ -24,8 +24,8 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return 0.075
     }
 
-    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_background_icon"))
-    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("pin_pickUp_icon"))
+    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_pin_background_icon"))
+    private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_pin_pickup_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
     private var pins: [TripPinTags: MapAnnotationViewModel] = [:]
@@ -36,7 +36,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private var focusButton: UIButton = {
         var button = UIButton(type: .custom)
         button.accessibilityIdentifier = KHMapViewID.locateButtonIdentifier
-        button.setImage(UIImage.uisdkImage("locate"), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_uisdk_locate"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -142,7 +142,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
                                                                        longitude: on.coordinate.longitude),
                                         span: span)
 
-        mapView.setRegion(region, animated: true)
+        DispatchQueue.main.async {
+            self.mapView.setRegion(region, animated: true)
+        }
     }
 
     func zoomToDefaultLevel() {
@@ -174,25 +176,35 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
             return annotation
         }
 
-        mapView.showAnnotations(annotations, animated: true)
+        DispatchQueue.main.async {
+            self.mapView.showAnnotations(annotations, animated: true)
+        }
     }
 
     func zoom(toLevel: Float) {
         let span = MKCoordinateSpan(latitudeDelta: Double(toLevel), longitudeDelta: Double(toLevel))
         let region = MKCoordinateRegion(center: mapView.region.center, span: span)
-        mapView.setRegion(region, animated: true)
+        
+        DispatchQueue.main.async {
+            self.mapView.setRegion(region, animated: true)
+        }
     }
 
     func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         pins[tag] = annotation
-        mapView.addAnnotation(annotation)
+        DispatchQueue.main.async {
+            self.mapView.addAnnotation(annotation)
+        }
     }
 
     func removePin(tag: TripPinTags) {
         guard let pinToRemove = pins[tag] else {
             return
         }
-        mapView.removeAnnotation(pinToRemove)
+        
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotation(pinToRemove)
+        }
         pins.removeValue(forKey: tag)
     }
 
@@ -230,7 +242,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     }
 
     func removeTripLine() {
-        mapView.removeOverlays(mapView.overlays)
+        DispatchQueue.main.async {
+            self.mapView.removeOverlays(self.mapView.overlays)
+        }
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,

@@ -47,7 +47,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
     private lazy var closeButton = UIButton().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = KarhooUI.colors.text
-        $0.setImage(.uisdkImage("cross_new"), for: .normal)
+        $0.setImage(.uisdkImage("kh_uisdk_cross_new"), for: .normal)
         $0.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
     private lazy var selectionView = SingleSelectionListView<QuoteListSortOrder>(

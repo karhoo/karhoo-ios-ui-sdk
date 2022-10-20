@@ -22,33 +22,13 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         let completedTrip = TestUtil.getRandomTrip(state: .completed)
         testObject = BookingStatusViewModel(trip: completedTrip)
 
-        XCTAssert(testObject.imageName == "trip_completed")
+        XCTAssert(testObject.imageName == "kh_uisdk_trip_completed")
         XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
     }
 
-    /**
-     * Given: A cancelled trip
-     * Then: The view model should be set accordingly
-     */
-    func testCancelledTrip() {
-        let cancelledTrip = TestUtil.getRandomTrip(state: .bookerCancelled)
-        testObject = BookingStatusViewModel(trip: cancelledTrip)
-
-        XCTAssert(testObject.imageName == "trip_cancelled")
+    /**kh_uisdk_trip_cancelled")
         XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
-    }
-
-    /**
-     * Given: No drivers available trip state
-     * Then: The view model should be set accordingly
-     */
-    func testNoDriversAvailable() {
-        let noDriversAvailableTrip = TestUtil.getRandomTrip(state: .noDriversAvailable)
-        testObject = BookingStatusViewModel(trip: noDriversAvailableTrip)
-
-        XCTAssert(testObject.imageName == "trip_cancelled")
-        XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
-    }
+    }*/
 
     /**
      * Given: A trip neither completed nor cancelled
@@ -66,11 +46,11 @@ class BookingStatusViewModelSpec: KarhooTestCase {
     * Given: An incomplete trip
     * Then: The view model should be set accordingly
     */
-    func testIncompleteTri() {
+    func testIncompleteTrip() {
         let incompleteTrip = TestUtil.getRandomTrip(state: .incomplete)
         testObject = BookingStatusViewModel(trip: incompleteTrip)
         
-        XCTAssertEqual("trip_cancelled", testObject.imageName)
+        XCTAssertEqual("kh_uisdk_trip_cancelled", testObject.imageName)
         XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
     }
 }

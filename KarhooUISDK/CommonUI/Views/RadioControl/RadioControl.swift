@@ -16,12 +16,12 @@ class RadioControl: UIControl {
     private let selectedImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
-        $0.image = .uisdkImage("radioSelected")
+        $0.image = .uisdkImage("kh_uisdk_radio_selected")
     }
     private let defaultImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
-        $0.image = .uisdkImage("radioUnselected")
+        $0.image = .uisdkImage("kh_uisdk_radio_unselected")
     }
 
     override var allControlEvents: UIControl.Event { .touchUpInside }

@@ -17,7 +17,7 @@ import KarhooUISDKBraintree
 #endif
 
 public let notificationEnabledUserDefaultsKey = "notifications_enabled"
- 
+
 class ViewController: UIViewController {
 
     private var booking: Screen?
@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Guest Booking Flow [Braintree]", for: .normal)
         button.tintColor = .blue
-
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -57,7 +56,6 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Guest Booking Flow [Adyen]", for: .normal)
         button.tintColor = .blue
-
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -149,6 +147,10 @@ class ViewController: UIViewController {
                                           referer: Keys.referer,
                                           organisationId: Keys.adyenGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            KarhooConfig.auth = .guest(settings: guestSettings)
+            callback() // Guest profile is not able to provide new user auth
+        }
         KarhooConfig.environment = Keys.adyenGuestEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         showKarhoo()
@@ -159,6 +161,10 @@ class ViewController: UIViewController {
                                           referer: Keys.referer,
                                           organisationId: Keys.braintreeGuestOrganisationId)
         KarhooConfig.auth = .guest(settings: guestSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            KarhooConfig.auth = .guest(settings: guestSettings)
+            callback() // Guest profile is not able to provide new user auth
+        }
         KarhooConfig.environment = Keys.braintreeGuestEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
         showKarhoo()
@@ -166,30 +172,56 @@ class ViewController: UIViewController {
 
     @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshUsernamePasswordLogin(
+                username: Keys.adyenUserServiceEmail,
+                password: Keys.adyenUserServicePassword,
+                callback: callback
+            )
+        }
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
-        usernamePasswordLoginAndShowKarhoo(username: Keys.adyenUserServiceEmail, password: Keys.adyenUserServicePassword)
+        usernamePasswordLoginAndShowKarhoo(
+            username: Keys.adyenUserServiceEmail,
+            password: Keys.adyenUserServicePassword
+        )
     }
     
     @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
         KarhooConfig.auth = .karhooUser
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshUsernamePasswordLogin(
+                username: Keys.braintreeUserServiceEmail,
+                password: Keys.braintreeUserServicePassword,
+                callback: callback
+            )
+        }
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
-        usernamePasswordLoginAndShowKarhoo(username: Keys.braintreeUserServiceEmail, password: Keys.braintreeUserServicePassword)
+        usernamePasswordLoginAndShowKarhoo(
+            username: Keys.braintreeUserServiceEmail,
+            password: Keys.braintreeUserServicePassword
+        )
     }
-
+    
     @objc func tokenExchangeBraintreeBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
+        }
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
-
+    
     @objc func tokenExchangeAdyenBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.adyenAuthToken, callback: callback)
+        }
         KarhooConfig.environment = Keys.adyenTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
@@ -198,6 +230,9 @@ class ViewController: UIViewController {
     @objc func loyaltyCanEarnTrueCanBurnTrueBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
+        }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
@@ -206,6 +241,9 @@ class ViewController: UIViewController {
     @objc func loyaltyCanEarnTrueCanBurnFalseBookingTapped(sender: UIButton) {
         let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
         KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
+        }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
@@ -251,16 +289,34 @@ class ViewController: UIViewController {
         let userLogin = UserLogin(username: username,
                                   password: password)
         userService.login(userLogin: userLogin).execute(callback: { result in
-                                                print("login: \(result)")
-                                                if result.isSuccess() {
-                                                    self.showKarhoo()
-                                                }
+            print("login: \(result)")
+            if result.isSuccess() {
+                self.showKarhoo()
+            }
         })
+    }
+    
+    private func refreshUsernamePasswordLogin(
+        username: String,
+        password: String,
+        callback: @escaping () -> Void
+    ) {
+            let userService = Karhoo.getUserService()
+            
+            let userLogin = UserLogin(username: username,
+                                      password: password)
+            userService.login(userLogin: userLogin).execute(callback: { result in
+                print("login: \(result)")
+                if result.isSuccess() {
+                    callback()
+                }
+            }
+        )
     }
 
     private func tokenLoginAndShowKarhoo(token: String) {
         let authService = Karhoo.getAuthService()
-
+        
         authService.login(token: token).execute { result in
             print("token login: \(result)")
             if result.isSuccess() {
@@ -268,11 +324,24 @@ class ViewController: UIViewController {
             }
         }
     }
-
+    
+    private func refreshTokenLogin(token: String, callback: @escaping () -> Void) {
+        let authService = Karhoo.getAuthService()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            authService.login(token: token).execute { result in
+                print("token login: \(result)")
+                if result.isSuccess() {
+                    callback()
+                }
+            }
+         }
+    }
+    
     func showKarhoo() {
         var journeyInfo: JourneyInfo? = nil
         var passangerDetails: PassengerDetails? = nil
-
+        
 //        let originLat = CLLocationDegrees(Double(51.500869))
 //        let originLon = CLLocationDegrees(Double(-0.124979))
 //        let destLat = CLLocationDegrees(Double(51.502159))
@@ -286,7 +355,7 @@ class ViewController: UIViewController {
 //                            email: "test@karhoo.com",
 //                            phoneNumber: "+15005550006",
 //                            locale: "en")
-
+        
         booking = KarhooUI().screens().booking()
             .buildBookingScreen(
                 journeyInfo: journeyInfo,
@@ -308,31 +377,31 @@ class ViewController: UIViewController {
         let bookingScreen = (booking as? BookingScreen) ?? (bookingInNavigationStack as? BookingScreen)
 
         switch result {
-            
+
         case .completed(let bookingScreenResult):
-          switch bookingScreenResult {
-              
-          case .tripAllocated(let trip):
-              bookingScreen?.openTrip(trip)
-              
-          case .prebookConfirmed(let trip, let prebookConfirmationAction):
-              if case .rideDetails = prebookConfirmationAction {
-                  bookingScreen?.openRideDetailsFor(trip)
-              }
-              
-          default:
-              break
-          }
+            switch bookingScreenResult {
+                
+            case .tripAllocated(let trip):
+                bookingScreen?.openTrip(trip)
+                
+            case .prebookConfirmed(let trip, let prebookConfirmationAction):
+                if case .rideDetails = prebookConfirmationAction {
+                    bookingScreen?.openRideDetailsFor(trip)
+                }
+                
+            default:
+                break
+            }
         default:
             break
         }
     }
 
-    private func logout() {
+    private func logout(callback: @escaping () -> Void = {}) {
         if Karhoo.configuration.authenticationMethod().isGuest() {
             return
         }
 
-        Karhoo.getUserService().logout().execute(callback: { _ in})
+        Karhoo.getUserService().logout().execute { _ in callback() }
     }
 }
