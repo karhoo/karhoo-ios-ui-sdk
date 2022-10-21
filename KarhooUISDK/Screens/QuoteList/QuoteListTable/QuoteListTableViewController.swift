@@ -18,11 +18,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     // MARK: - Views
 
-    private lazy var activityIndicator = UIActivityIndicatorView().then {
-        $0.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConstants.Dimension.View.loadingViewHeight)
-        $0.color = KarhooUI.colors.accent
-    }
-    private lazy var tableView = UITableView().then {
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
@@ -31,8 +27,9 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         $0.separatorStyle = .none
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
-        $0.tableFooterView = activityIndicator
     }
+
+    private weak var headerView: UIView?
     
     // MARK: - Lifecycle
 
@@ -106,7 +103,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleLoadingState() {
         guard viewIsOnScreen else { return }
-//        activityIndicator.startAnimating()
         tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
             tableView.beginUpdates()
@@ -119,7 +115,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleFetchingState() {
         guard viewIsOnScreen else { return }
-        activityIndicator.stopAnimating()
         tableView.backgroundView = nil
         if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
             tableView.beginUpdates()
@@ -131,13 +126,11 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     }
 
     private func handleFetchedState() {
-        activityIndicator.stopAnimating()
         tableView.reloadData()
         tableView.backgroundView = nil
     }
 
     private func handleEmptyState(_ reason: QuoteListState.EmptyReason) {
-        activityIndicator.stopAnimating()
         tableView.reloadData()
         let emptyView = QuoteListEmptyView(using: presenter.getEmptyReasonViewModel(), delegate: self)
         let currentEmptyView = tableView.backgroundView as? QuoteListEmptyView
@@ -159,12 +152,26 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     // MARK: - Scene Input methods
 
     func assignHeaderView(_ view: UIView) {
-        tableView.tableHeaderView = view
+        headerView = view
     }
 }
 
     // MARK: - TableView delegate & data source
 extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView else { return nil }
+        let view = UIView()
+        view.addSubview(headerView)
+        headerView.anchorToSuperview(
+            paddingTop: UIConstants.Spacing.medium,
+            paddingLeading: UIConstants.Spacing.medium,
+            paddingTrailing: UIConstants.Spacing.medium,
+            paddingBottom: -UIConstants.Spacing.xSmall
+        )
+        view.layoutIfNeeded()
+        return view
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         getQuotes().count
@@ -189,7 +196,7 @@ extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDa
 }
 
 extension KarhooQuoteListTableViewController: QuoteListErrorViewDelegate {
-    func showNoCoverageEmail(){
+    func showNoCoverageEmail() {
         presenter.showNoCoverageEmail()
     }
 }

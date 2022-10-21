@@ -42,7 +42,7 @@ func testSnapshot<ViewController: UIViewController>(
         XCTFail("\(String(describing: ViewController.self)) - views's size equals zero", file: file, line: line)
         return
     }
-    [.iPhoneX, .iPhoneXsMax]
+    [.iPhoneX]
         .compactMap {
             verifySnapshot(
                 matching: viewController,

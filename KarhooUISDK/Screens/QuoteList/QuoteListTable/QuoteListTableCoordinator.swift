@@ -57,7 +57,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
 }
 
 extension KarhooQuoteListTableCoordinator: QuoteListTableRouter {
-    func showNoCoverageEmail(){
-        noCoverageMailComposer.showNoCoverageEmail()
+    func showNoCoverageEmail() {
+        _ = noCoverageMailComposer.showNoCoverageEmail()
     }
 }

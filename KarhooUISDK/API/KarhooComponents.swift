@@ -21,8 +21,8 @@ public class KarhooComponents: BookingScreenComponents {
             cornerRadious: UIConstants.CornerRadius.large,
             borderLine: true,
             dropShadow: false,
-            verticalPadding: 5.0,
-            horizontalPadding: 5.0,
+            verticalPadding: 0,
+            horizontalPadding: 0,
             hidePickUpDestinationConnector: true
         )
 

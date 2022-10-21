@@ -15,84 +15,126 @@ import KarhooSDK
 
 class QuoteListSnapshotSpec: QuickSpec {
 
+    var navigationController: NavigationController!
+    var sut: KarhooQuoteListViewController!
+    var coordinator: KarhooQuoteListCoordinator!
+    var presenterMock: MockQuoteListPresenter!
+    var mockQuoteService: MockQuoteService!
+
     override func spec() {
         describe("QuoteList") {
-            var sut: KarhooQuoteListViewController!
-            var presenterMock: MockQuoteListPresenter!
 
             beforeEach {
-                sut = KarhooQuoteListViewController()
-                presenterMock = MockQuoteListPresenter()
-                sut.setupBinding(presenterMock)
+                let mockVC = MockViewController().then {
+                    $0.loadViewIfNeeded()
+                }
+                self.navigationController = NavigationController(rootViewController: mockVC, style: .primary)
+                self.sut = KarhooQuoteListViewController()
+                self.presenterMock = MockQuoteListPresenter()
+                self.sut.setupBinding(self.presenterMock)
+                self.navigationController.pushViewController(self.sut, animated: false)
             }
 
-            context("when the view is opened") {
+            context("when journey details are set") {
+                beforeEach {
+                    let journey = JourneyInfo.mock()
+                    KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+                }
 
-                it("should have valid design") {
-                    testSnapshot(sut)
+                context("when the view is opened") {
+
+                    it("should have valid design for loading state") {
+                        testSnapshot(self.navigationController)
+                    }
+                }
+
+                context("when quotes are loaded") {
+                    beforeEach {
+//                        self.presenterMock.onStateUpdated?(.loading)
+//                        self.presenterMock.onStateUpdated?(.fetching(quotes: [.init()]))
+                        self.presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
+                    }
+
+                    //                context("and when sorting is available") {
+                    //
+                    //                    beforeEach {
+                    //                        self.presenterMock.isSortingAvailableToReturn = true
+                    //                    }
+
+                    //                    it("should have valid design") {
+                    ////                        testSnapshot(self.navigationController)
+                    //                    }
+                    //                }
+
+                    context("and when sorting is available") {
+
+                        beforeEach {
+                            self.presenterMock.isSortingAvailableToReturn = true
+                        }
+
+                        it("should have valid design") {
+                            assertSnapshot(
+                                matching: self.navigationController,
+                                as: .wait(
+                                    for: 3,
+                                    on: .image(on: .iPhoneX)
+                                ),
+                                named: QuickSpec.current.name
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-class MockQuoteListPresenter: QuoteListPresenter {
-    var onStateUpdatedCallback: () -> Void = {}
-    lazy var onStateUpdated: ((KarhooUISDK.QuoteListState) -> Void)? = { _ in
-        self.onStateUpdatedCallback()
+extension Quote {
+    static func mock(quoteType: QuoteType = .estimated, vehicleType: String = "standard") -> Quote {
+        Quote(
+            id: UUID().uuidString,
+            quoteType: quoteType,
+            source: .fleet,
+            pickUpType: .default,
+            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
+            vehicle: QuoteVehicle(
+                vehicleClass: vehicleType,
+                type: vehicleType,
+                tags: ["wheelchair", "child-seat"],
+                qta: QuoteQta(highMinutes: 10, lowMinutes: 5),
+                passengerCapacity: 4,
+                luggageCapacity: 4
+            ),
+            price: QuotePrice(highPrice: 10.0, lowPrice: 8.0, currencyCode: "EUR"),
+            validity: 30,
+            serviceLevelAgreements: ServiceAgreements(
+                serviceCancellation: .init(type: .timeBeforePickup, minutes: 5),
+                serviceWaiting: .init(minutes: 5)
+            )
+        )
     }
 
-    var onFiltersCountUpdatedCallback: () -> Void = {}
-    lazy var onFiltersCountUpdated: ((Int) -> Void)? = { _ in
-        self.onFiltersCountUpdatedCallback()
+    static func mock2(quoteType: QuoteType = .fixed, vehicleType: String = "mpv") -> Quote {
+        Quote(
+            id: UUID().uuidString,
+            quoteType: quoteType,
+            source: .fleet,
+            pickUpType: .default,
+            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
+            vehicle: QuoteVehicle(
+                vehicleClass: vehicleType,
+                type: vehicleType,
+                tags: ["wheelchair", "child-seat"],
+                qta: QuoteQta(highMinutes: 10, lowMinutes: 5),
+                passengerCapacity: 4,
+                luggageCapacity: 4
+            ),
+            price: QuotePrice(highPrice: 10.0, lowPrice: 8.0, currencyCode: "EUR"),
+            validity: 30,
+            serviceLevelAgreements: ServiceAgreements(
+                serviceCancellation: .init(type: .timeBeforePickup, minutes: 5),
+                serviceWaiting: .init(minutes: 5)
+            )
+        )
     }
-
-    var isSortingAvailableToReturn = false
-    var isSortingAvailable: Bool { isSortingAvailableToReturn }
-
-    func viewDidLoad() {
-    }
-
-    func viewWillAppear() {
-    }
-
-    func viewWillDisappear() {
-    }
-
-    var getNumberOfResultsForQuoteFiltersToReturn = 0
-    func getNumberOfResultsForQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) -> Int {
-        getNumberOfResultsForQuoteFiltersToReturn
-    }
-
-    var selectedQuoteFiltersCalled = false
-    func selectedQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) {
-        selectedQuoteFiltersCalled = true
-    }
-
-    var didSelectQuoteSortOrderCalled = false
-    func didSelectQuoteSortOrder(_ order: KarhooUISDK.QuoteListSortOrder) {
-        didSelectQuoteSortOrderCalled = true
-    }
-
-    var didSelectQuoteCalled = false
-    func didSelectQuote(_ quote: KarhooSDK.Quote) {
-        didSelectQuoteCalled = true
-    }
-
-    var didSelectQuoteDetails = false
-    func didSelectQuoteDetails(_ quote: KarhooSDK.Quote) {
-        didSelectQuoteDetails = true
-    }
-
-    var didSelectShowSortCalled = false
-    func didSelectShowSort() {
-        didSelectShowSortCalled = true
-    }
-
-    var didSelectShowFiltersCalled = false
-    func didSelectShowFilters() {
-        didSelectShowFiltersCalled = true
-    }
-
-
 }

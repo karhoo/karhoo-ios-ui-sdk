@@ -29,4 +29,10 @@ class MockViewController: UIViewController {
         presentedItem = viewControllerToPresent
         presentAnimated = flag
     }
+
+    override func loadView() {
+        view = UIView()
+        navigationItem.title = ""
+        navigationItem.backButtonTitle = ""
+    }
 }
