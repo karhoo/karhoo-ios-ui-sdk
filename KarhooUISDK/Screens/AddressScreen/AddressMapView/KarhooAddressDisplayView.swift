@@ -81,9 +81,9 @@ final class KarhooAddressDisplayView: UIView {
     func set(addressType: AddressType) {
         switch addressType {
         case .pickup:
-            addressTypeImage.image = UIImage.uisdkImage("pickup_icon").coloured(withTint: KarhooUI.colors.primary)
+            addressTypeImage.image = UIImage.uisdkImage("kh_uisdk_pickup_icon").coloured(withTint: KarhooUI.colors.primary)
         case .destination:
-            addressTypeImage.image = UIImage.uisdkImage("drop_off_icon").coloured(withTint: KarhooUI.colors.secondary)
+            addressTypeImage.image = UIImage.uisdkImage("kh_uisdk_drop_off_icon").coloured(withTint: KarhooUI.colors.secondary)
         }
     }
     

@@ -31,6 +31,6 @@ struct AddressCellViewModel {
     }
     
     private static func asset(_ detailsType: PoiDetailsType) -> String {
-        return detailsType == .airport ? "airplane" : "search_result"
+        return detailsType == .airport ? "kh_uisdk_airplane" : "kh_uisdk_search_result"
     }
 }

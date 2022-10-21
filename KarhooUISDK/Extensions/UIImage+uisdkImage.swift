@@ -11,9 +11,7 @@ extension UIImage {
     
     static func uisdkImage(_ name: String) -> UIImage {
         guard let loadedImage = UIImage(named: name) else {
-            return UIImage(named: name,
-                           in: .current,
-                           compatibleWith: nil) ?? UIImage()
+            return UIImage(named: name, in: .current, compatibleWith: nil) ?? UIImage()
         }
         return loadedImage
     }

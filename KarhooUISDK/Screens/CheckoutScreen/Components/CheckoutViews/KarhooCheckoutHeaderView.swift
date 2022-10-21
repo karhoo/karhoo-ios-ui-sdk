@@ -206,7 +206,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         carTypeLabel.text = viewModel.vehicleType.capitalized
         
         logoLoadingImageView.load(imageURL: viewModel.logoImageURL,
-                                  placeholderImageName: "supplier_logo_placeholder")
+                                  placeholderImageName: "kh_uisdk_supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
         
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)

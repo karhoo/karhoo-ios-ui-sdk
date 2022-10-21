@@ -26,7 +26,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         let passengerPaymentIcon = UIImageView()
         passengerPaymentIcon.accessibilityIdentifier = KHAddCardViewID.image
         passengerPaymentIcon.translatesAutoresizingMaskIntoConstraints = false
-        passengerPaymentIcon.image = UIImage.uisdkImage("plus_icon")
+        passengerPaymentIcon.image = UIImage.uisdkImage("kh_uisdk_plus_icon")
         passengerPaymentIcon.tintColor = KarhooUI.colors.darkGrey
         passengerPaymentIcon.contentMode = .scaleAspectFit
         
@@ -201,7 +201,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         hasPayment = false
         passengerPaymentTitle.text = UITexts.Booking.guestCheckoutPaymentDetailsTitle
         passengerPaymentSubtitle.text = UITexts.Payment.addPaymentMethod
-        passengerPaymentImage.image = UIImage.uisdkImage("plus_icon")
+        passengerPaymentImage.image = UIImage.uisdkImage("kh_uisdk_plus_icon")
         
         setNeedsDisplay()
     }

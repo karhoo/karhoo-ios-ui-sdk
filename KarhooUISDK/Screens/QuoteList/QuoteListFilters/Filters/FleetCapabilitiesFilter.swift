@@ -23,15 +23,15 @@ extension QuoteListFilters {
         var icon: UIImage? {
             switch self {
             case .gpsTracking:
-                return .uisdkImage("location-arrow-alt")
+                return .uisdkImage("kh_uisdk_location_arrow_alt")
             case .flightTracking:
-                return .uisdkImage("plane")
+                return .uisdkImage("kh_uisdk_plane")
             case .trainTracking:
-                return .uisdkImage("metro")
+                return .uisdkImage("kh_uisdk_metro")
             case .driverDetails:
-                return .uisdkImage("user")
+                return .uisdkImage("kh_uisdk_user")
             case .vehicleDetails:
-                return .uisdkImage("car")
+                return .uisdkImage("kh_uisdk_car")
             }
         }
 

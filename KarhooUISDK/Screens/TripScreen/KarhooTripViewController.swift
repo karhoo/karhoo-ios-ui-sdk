@@ -74,7 +74,8 @@ final class KarhooTripViewController: UIViewController, TripView {
         closeButton = UIButton(type: .custom)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.accessibilityIdentifier = KHKarhooTripViewID.closeButton
-        closeButton.setImage(UIImage.uisdkImage("drop_down_arrow").withRenderingMode(.alwaysTemplate), for: .normal)
+        closeButton.setImage(UIImage.uisdkImage("kh_uisdk_drop_down_arrow")
+            .withRenderingMode(.alwaysTemplate), for: .normal)
         closeButton.tintColor = KarhooUI.colors.darkGrey
         closeButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
@@ -103,7 +104,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         locateButton.translatesAutoresizingMaskIntoConstraints = false
         locateButton.accessibilityIdentifier = KHKarhooTripViewID.locateButton
         locateButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
-        locateButton.setImage(UIImage.uisdkImage("locate"), for: .normal)
+        locateButton.setImage(UIImage.uisdkImage("kh_uisdk_locate"), for: .normal)
         view.addSubview(locateButton)
 
         originEtaView = KarhooOriginEtaView()

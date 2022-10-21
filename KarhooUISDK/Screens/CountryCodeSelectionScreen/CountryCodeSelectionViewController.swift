@@ -40,7 +40,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHCountryCodeSelectionViewID.backButton
         button.tintColor = KarhooUI.colors.darkGrey
-        button.setImage(UIImage.uisdkImage("backIcon").withRenderingMode(.alwaysTemplate), for: .normal)
+        button.setImage(UIImage.uisdkImage("kh_uisdk_back_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
         button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
@@ -53,7 +53,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
     private lazy var searchIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.uisdkImage("search").coloured(withTint: KarhooUI.colors.lightGrey)
+        imageView.image = UIImage.uisdkImage("kh_uisdk_search").coloured(withTint: KarhooUI.colors.lightGrey)
         imageView.anchor(width: standardSpacing, height: standardSpacing)
         return imageView
     }()

@@ -82,14 +82,14 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         pickUpIcon = UIImageView()
         pickUpIcon.accessibilityIdentifier = KHAddressBarViewID.pickUpIcon
         pickUpIcon.translatesAutoresizingMaskIntoConstraints = false
-        pickUpIcon.image = UIImage.uisdkImage("add_pickUp")
+        pickUpIcon.image = UIImage.uisdkImage("kh_uisdk_add_pick_up")
         pickUpIcon.contentMode = .scaleAspectFit
         mainViewContainer.addSubview(pickUpIcon)
 
         destinationIcon = UIImageView()
         destinationIcon.accessibilityIdentifier = KHAddressBarViewID.destinationIcon
         destinationIcon.translatesAutoresizingMaskIntoConstraints = false
-        destinationIcon.image = UIImage.uisdkImage("add_destination")
+        destinationIcon.image = UIImage.uisdkImage("kh_uisdk_add_destination")
         destinationIcon.tintColor = KarhooUI.colors.secondary
         destinationIcon.contentMode = .scaleAspectFit
         mainViewContainer.addSubview(destinationIcon)
@@ -126,7 +126,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         swapButton = UIButton(type: .custom)
         swapButton.accessibilityIdentifier = KHAddressBarViewID.swapButton
         swapButton.translatesAutoresizingMaskIntoConstraints = false
-        swapButton.setImage(UIImage.uisdkImage("address_swap").withRenderingMode(.alwaysTemplate), for: .normal)
+        swapButton.setImage(UIImage.uisdkImage("kh_uisdk_address_swap").withRenderingMode(.alwaysTemplate), for: .normal)
         swapButton.tintColor = KarhooUI.colors.accent
         swapButton.addTarget(self, action: #selector(addressSwapTapped), for: .touchUpInside)
         mainViewContainer.addSubview(swapButton)
@@ -263,7 +263,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     public func destinationNotSetState() {
         swapButton.isHidden = true
         toggleDestinationIconSize(big: true)
-        destinationIcon.image = UIImage.uisdkImage("add_destination").withRenderingMode(.alwaysTemplate)
+        destinationIcon.image = UIImage.uisdkImage("kh_uisdk_add_destination").withRenderingMode(.alwaysTemplate)
         destinationIcon.backgroundColor = .clear
         set(destinationDisplayAddress: UITexts.AddressBar.addDestination)
         destinationField?.ordinaryTextColor()
