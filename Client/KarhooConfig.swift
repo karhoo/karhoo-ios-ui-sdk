@@ -31,8 +31,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     }
 
     func analytics() -> Analytics {
-        TemporarAnalytics()
-//        KarhooAnalytics(base: KarhooAnalitycsServiceWithNotifications() )
+        KarhooAnalytics(base: KarhooAnalitycsServiceWithNotifications() )
     }
 
     func requireSDKAuthentication(callback: @escaping () -> Void) {
@@ -41,61 +40,5 @@ final class KarhooConfig: KarhooUISDKConfiguration {
             print("Client: KarhooConfig.requireSDKAuthentication finished")
             callback()
         }
-    }
-}
-
-class TemporarAnalytics: Analytics {
-    func tripStateChanged(tripState: KarhooSDK.TripInfo?) {
-    }
-    func fleetsShown(quoteListId: String?, amountShown: Int) {
-    }
-    func prebookOpened() {
-    }
-    func prebookSet(date: Date, timezone: String) {
-    }
-    func userCalledDriver(trip: KarhooSDK.TripInfo?) {
-    }
-    func pickupAddressSelected(locationDetails: KarhooSDK.LocationInfo) {
-    }
-    func destinationAddressSelected(locationDetails: KarhooSDK.LocationInfo) {
-    }
-    func bookingRequested(quoteId: String) {
-    }
-    func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-    }
-    func bookingFailure(quoteId: String?, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
-    }
-    func cardAuthorisationFailure(quoteId: String?, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
-    }
-    func cardAuthorisationSuccess(quoteId: String) {
-    }
-    func loyaltyStatusRequested(quoteId: String?, correlationId: String?, loyaltyName: String?, loyaltyStatus: KarhooSDK.LoyaltyStatus?, errorSlug: String?, errorMessage: String?) {
-    }
-    func loyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: KarhooUISDK.LoyaltyMode, errorSlug: String?, errorMessage: String?) {
-    }
-    func loyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: KarhooUISDK.LoyaltyMode) {
-
-    }
-    func trackTripOpened(tripDetails: KarhooSDK.TripInfo, isGuest: Bool) {
-
-    }
-    func pastTripsOpened() {
-
-    }
-    func upcomingTripsOpened() {
-    }
-    func trackTripClicked(tripDetails: KarhooSDK.TripInfo) {
-    }
-    func contactFleetClicked(page: KarhooUISDK.AnalyticsScreen, tripDetails: KarhooSDK.TripInfo) {
-    }
-    func contactDriverClicked(page: KarhooUISDK.AnalyticsScreen, tripDetails: KarhooSDK.TripInfo) {
-    }
-    func bookingScreenOpened() {
-    }
-    func checkoutOpened(_ quote: KarhooSDK.Quote) {
-    }
-    func quoteListOpened(_ journeyDetails: KarhooUISDK.JourneyDetails) {
-    }
-    func changePaymentDetailsPressed() {
     }
 }
