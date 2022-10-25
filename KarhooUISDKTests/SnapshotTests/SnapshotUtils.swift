@@ -42,17 +42,11 @@ func testSnapshot<ViewController: UIViewController>(
         XCTFail("\(String(describing: ViewController.self)) - views's size equals zero", file: file, line: line)
         return
     }
-    [.iPhoneX]
-        .compactMap {
-            verifySnapshot(
-                matching: viewController,
-                as: .image(on: $0),
-                file: file,
-                testName: QuickSpec.current?.name ?? fileName,
-                line: line
-            )
-        }
-        .forEach { failureMessage in
-            XCTFail(failureMessage, file: file, line: line)
-        }
+    guard let failureMessage = verifySnapshot(
+        matching: view,
+        as: .image,
+        file: file,
+        testName: QuickSpec.current?.name ?? fileName,
+        line: line
+    ) else { return }
 }
