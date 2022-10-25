@@ -686,7 +686,7 @@
 
 "Text.Quotes.ResetFilter" = "Réinitialiser les filtres";
 
-"Text.Quotes.Result" = "résultats";
+"Text.Quotes.Result" = "%1$@ résultat(s)";
 
 "Text.Quotes.Results" = "%1$@ résultats";
 
