@@ -50,21 +50,19 @@ class QuoteListSnapshotSpec: QuickSpec {
 
                 context("when quotes are loaded") {
                     beforeEach {
-//                        self.presenterMock.onStateUpdated?(.loading)
-//                        self.presenterMock.onStateUpdated?(.fetching(quotes: [.init()]))
                         self.presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                     }
 
-                    //                context("and when sorting is available") {
-                    //
-                    //                    beforeEach {
-                    //                        self.presenterMock.isSortingAvailableToReturn = true
-                    //                    }
+                    context("and when sorting is available") {
 
-                    //                    it("should have valid design") {
-                    ////                        testSnapshot(self.navigationController)
-                    //                    }
-                    //                }
+                        beforeEach {
+                            self.presenterMock.isSortingAvailableToReturn = true
+                        }
+
+                        it("should have valid design") {
+                            testSnapshot(self.navigationController)
+                        }
+                    }
 
                     context("and when sorting is available") {
 
@@ -76,7 +74,7 @@ class QuoteListSnapshotSpec: QuickSpec {
                             assertSnapshot(
                                 matching: self.navigationController,
                                 as: .wait(
-                                    for: 3,
+                                    for: 1,
                                     on: .image(on: .iPhoneX)
                                 ),
                                 named: QuickSpec.current.name
