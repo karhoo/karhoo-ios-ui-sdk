@@ -42,5 +42,8 @@ target 'KarhooUISDK' do
   
   target 'KarhooUISDKTests' do
     inherit! :complete
+    pod 'SnapshotTesting', '1.9.0'
+    pod 'Quick', '~> 5.0.1'
+    pod 'Nimble', '~> 10.0.0'
   end
 end
