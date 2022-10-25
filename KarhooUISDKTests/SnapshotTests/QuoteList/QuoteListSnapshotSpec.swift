@@ -15,24 +15,32 @@ import KarhooSDK
 
 class QuoteListSnapshotSpec: QuickSpec {
 
-    var navigationController: NavigationController!
-    var sut: KarhooQuoteListViewController!
-    var coordinator: KarhooQuoteListCoordinator!
-    var presenterMock: MockQuoteListPresenter!
-    var mockQuoteService: MockQuoteService!
-
     override func spec() {
         describe("QuoteList") {
 
+            var navigationController: NavigationController!
+            var sut: KarhooQuoteListViewController!
+            var presenterMock: MockQuoteListPresenter!
+
             beforeEach {
+                let journey = JourneyInfo.mock()
+                KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+
                 let mockVC = MockViewController().then {
                     $0.loadViewIfNeeded()
                 }
-                self.navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                self.sut = KarhooQuoteListViewController()
-                self.presenterMock = MockQuoteListPresenter()
-                self.sut.setupBinding(self.presenterMock)
-                self.navigationController.pushViewController(self.sut, animated: false)
+                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
+                sut = KarhooQuoteListViewController()
+                presenterMock = MockQuoteListPresenter()
+                sut.setupBinding(presenterMock)
+                navigationController.pushViewController(sut, animated: false)
+            }
+
+            context("when the view is opened") {
+
+                it("should have valid design") {
+                    testSnapshot(navigationController)
+                }
             }
 
             context("when journey details are set") {
@@ -41,44 +49,43 @@ class QuoteListSnapshotSpec: QuickSpec {
                     KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
                 }
 
-                context("when the view is opened") {
+                context("and when the view is opened") {
 
                     it("should have valid design for loading state") {
-                        testSnapshot(self.navigationController)
+                        testSnapshot(navigationController)
                     }
                 }
 
-                context("when quotes are loaded") {
+                context("and when sorting is available") {
                     beforeEach {
-                        self.presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
+                        presenterMock.isSortingAvailableToReturn = true
+
                     }
 
-                    context("and when sorting is available") {
-
+                    context("and when quotes are loaded") {
                         beforeEach {
-                            self.presenterMock.isSortingAvailableToReturn = true
+                            presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                         }
 
                         it("should have valid design") {
-                            testSnapshot(self.navigationController)
+                            testSnapshot(navigationController)
                         }
                     }
+                }
 
-                    context("and when sorting is available") {
+                context("and when sorting is not available") {
+                    beforeEach {
+                        presenterMock.isSortingAvailableToReturn = false
+                    }
+
+                    context("and when quotes are loaded") {
 
                         beforeEach {
-                            self.presenterMock.isSortingAvailableToReturn = true
+                            presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                         }
 
                         it("should have valid design") {
-                            assertSnapshot(
-                                matching: self.navigationController,
-                                as: .wait(
-                                    for: 1,
-                                    on: .image(on: .iPhoneX)
-                                ),
-                                named: QuickSpec.current.name
-                            )
+                            testSnapshot(navigationController)
                         }
                     }
                 }
@@ -87,52 +94,66 @@ class QuoteListSnapshotSpec: QuickSpec {
     }
 }
 
-extension Quote {
-    static func mock(quoteType: QuoteType = .estimated, vehicleType: String = "standard") -> Quote {
-        Quote(
-            id: UUID().uuidString,
-            quoteType: quoteType,
-            source: .fleet,
-            pickUpType: .default,
-            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
-            vehicle: QuoteVehicle(
-                vehicleClass: vehicleType,
-                type: vehicleType,
-                tags: ["wheelchair", "child-seat"],
-                qta: QuoteQta(highMinutes: 10, lowMinutes: 5),
-                passengerCapacity: 4,
-                luggageCapacity: 4
-            ),
-            price: QuotePrice(highPrice: 10.0, lowPrice: 8.0, currencyCode: "EUR"),
-            validity: 30,
-            serviceLevelAgreements: ServiceAgreements(
-                serviceCancellation: .init(type: .timeBeforePickup, minutes: 5),
-                serviceWaiting: .init(minutes: 5)
-            )
-        )
-    }
+class QuoteListAsyncSnapshotSpec: QuickSpec {
 
-    static func mock2(quoteType: QuoteType = .fixed, vehicleType: String = "mpv") -> Quote {
-        Quote(
-            id: UUID().uuidString,
-            quoteType: quoteType,
-            source: .fleet,
-            pickUpType: .default,
-            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
-            vehicle: QuoteVehicle(
-                vehicleClass: vehicleType,
-                type: vehicleType,
-                tags: ["wheelchair", "child-seat"],
-                qta: QuoteQta(highMinutes: 10, lowMinutes: 5),
-                passengerCapacity: 4,
-                luggageCapacity: 4
-            ),
-            price: QuotePrice(highPrice: 10.0, lowPrice: 8.0, currencyCode: "EUR"),
-            validity: 30,
-            serviceLevelAgreements: ServiceAgreements(
-                serviceCancellation: .init(type: .timeBeforePickup, minutes: 5),
-                serviceWaiting: .init(minutes: 5)
-            )
-        )
+    override func spec() {
+        describe("QuoteList") {
+
+            var navigationController: NavigationController!
+            var sut: KarhooQuoteListViewController!
+            var presenterMock: MockQuoteListPresenter!
+
+            beforeEach {
+                let mockVC = MockViewController().then {
+                    $0.loadViewIfNeeded()
+                }
+                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
+                sut = KarhooQuoteListViewController()
+                presenterMock = MockQuoteListPresenter()
+                sut.setupBinding(presenterMock)
+                navigationController.pushViewController(sut, animated: false)
+            }
+
+            context("when journey details are set") {
+                beforeEach {
+                    let journey = JourneyInfo.mock()
+                    KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+                }
+
+                context("and when quotes are loaded") {
+                    beforeEach {
+                        presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
+                    }
+
+                    it("should have valid design") {
+                        assertSnapshot(
+                            matching: navigationController,
+                            as: .wait(
+                                for: 1,
+                                on: .image(on: .iPhoneX)
+                            ),
+                            named: QuickSpec.current.name
+                        )
+                    }
+                }
+
+                context("and when there is no available services") {
+                    beforeEach {
+                        presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+                    }
+
+                    it("should have valid design") {
+                        assertSnapshot(
+                            matching: navigationController,
+                            as: .wait(
+                                for: 1,
+                                on: .image(on: .iPhoneX)
+                            ),
+                            named: QuickSpec.current.name
+                        )
+                    }
+                }
+            }
+        }
     }
 }

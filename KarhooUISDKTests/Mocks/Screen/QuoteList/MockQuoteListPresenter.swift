@@ -20,7 +20,7 @@ class MockQuoteListPresenter: QuoteListPresenter {
         self.onFiltersCountUpdatedCallback()
     }
 
-    var isSortingAvailableToReturn = false
+    var isSortingAvailableToReturn = true
     var isSortingAvailable: Bool { isSortingAvailableToReturn }
 
     func viewDidLoad() {
