@@ -33,7 +33,7 @@ end
     scan(
       workspace: "KarhooUISDK.xcworkspace",
       scheme: "KarhooUISDKTests",
-      device: "iPhone 13 mini",
+      device: "iPhone 14",
       deployment_target_version: "16.0",
       clean: true,
       include_simulator_logs: false,
