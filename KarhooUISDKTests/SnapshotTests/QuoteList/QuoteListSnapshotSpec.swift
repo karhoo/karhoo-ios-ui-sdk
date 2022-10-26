@@ -94,64 +94,7 @@ class QuoteListSnapshotSpec: QuickSpec {
     }
 }
 
-class QuoteListAsyncEmptySnapshotSpec: QuickSpec {
-
-    override func spec() {
-        describe("QuoteList") {
-
-            var navigationController: NavigationController!
-            var sut: KarhooQuoteListViewController!
-            var presenterMock: MockQuoteListPresenter!
-
-            beforeEach {
-                let mockVC = MockViewController().then {
-                    $0.loadViewIfNeeded()
-                }
-                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                sut = KarhooQuoteListViewController()
-                presenterMock = MockQuoteListPresenter()
-                sut.setupBinding(presenterMock)
-                navigationController.pushViewController(sut, animated: false)
-            }
-
-            //                context("and when quotes are loaded") {
-            //                    beforeEach {
-            //                        presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
-            //                    }
-            //
-            //                    it("should have valid design") {
-            //                        assertSnapshot(
-            //                            matching: navigationController.view,
-            //                            as: .wait(
-            //                                for: 1,
-            //                                on: .image
-            //                            ),
-            //                            named: QuickSpec.current.name
-            //                        )
-            //                    }
-            //                }
-
-            context("and when there is no available services") {
-                beforeEach {
-                    presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
-                }
-
-                it("should have valid design") {
-                    assertSnapshot(
-                        matching: navigationController.view,
-                        as: .wait(
-                            for: 1,
-                            on: .image
-                        ),
-                        named: QuickSpec.current.name
-                    )
-                }
-            }
-        }
-    }
-}
-
-class QuoteListAsyncLoadedSpecs: QuickSpec {
+class QuoteListAsyncSnapshotSpec: QuickSpec {
 
     override func spec() {
         describe("QuoteList") {
@@ -176,11 +119,28 @@ class QuoteListAsyncLoadedSpecs: QuickSpec {
                     presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                 }
 
+//                it("should have valid design") {
+//                    assertSnapshot(
+//                        matching: navigationController.view,
+//                        as: .wait(
+//                            for: 3,
+//                            on: .image
+//                        ),
+//                        named: QuickSpec.current.name
+//                    )
+//                }
+            }
+
+            context("and when there is no available services") {
+                beforeEach {
+                    presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+                }
+
                 it("should have valid design") {
                     assertSnapshot(
                         matching: navigationController.view,
                         as: .wait(
-                            for: 3,
+                            for: 1,
                             on: .image
                         ),
                         named: QuickSpec.current.name
