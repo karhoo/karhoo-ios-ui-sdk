@@ -114,44 +114,37 @@ class QuoteListAsyncEmptySnapshotSpec: QuickSpec {
                 navigationController.pushViewController(sut, animated: false)
             }
 
-            context("when journey details are set") {
+            //                context("and when quotes are loaded") {
+            //                    beforeEach {
+            //                        presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
+            //                    }
+            //
+            //                    it("should have valid design") {
+            //                        assertSnapshot(
+            //                            matching: navigationController.view,
+            //                            as: .wait(
+            //                                for: 1,
+            //                                on: .image
+            //                            ),
+            //                            named: QuickSpec.current.name
+            //                        )
+            //                    }
+            //                }
+
+            context("and when there is no available services") {
                 beforeEach {
-                    let journey = JourneyInfo.mock()
-                    KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+                    presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
                 }
 
-//                context("and when quotes are loaded") {
-//                    beforeEach {
-//                        presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
-//                    }
-//
-//                    it("should have valid design") {
-//                        assertSnapshot(
-//                            matching: navigationController.view,
-//                            as: .wait(
-//                                for: 1,
-//                                on: .image
-//                            ),
-//                            named: QuickSpec.current.name
-//                        )
-//                    }
-//                }
-
-                context("and when there is no available services") {
-                    beforeEach {
-                        presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
-                    }
-
-                    it("should have valid design") {
-                        assertSnapshot(
-                            matching: navigationController.view,
-                            as: .wait(
-                                for: 1,
-                                on: .image
-                            ),
-                            named: QuickSpec.current.name
-                        )
-                    }
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController.view,
+                        as: .wait(
+                            for: 1,
+                            on: .image
+                        ),
+                        named: QuickSpec.current.name
+                    )
                 }
             }
         }
@@ -178,27 +171,20 @@ class QuoteListAsyncLoadedSpecs: QuickSpec {
                 navigationController.pushViewController(sut, animated: false)
             }
 
-            context("when journey details are set") {
+            context("and when quotes are loaded") {
                 beforeEach {
-                    let journey = JourneyInfo.mock()
-                    KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+                    presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                 }
 
-                context("and when quotes are loaded") {
-                    beforeEach {
-                        presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
-                    }
-
-                    it("should have valid design") {
-                        assertSnapshot(
-                            matching: navigationController.view,
-                            as: .wait(
-                                for: 1,
-                                on: .image
-                            ),
-                            named: QuickSpec.current.name
-                        )
-                    }
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController.view,
+                        as: .wait(
+                            for: 1,
+                            on: .image
+                        ),
+                        named: QuickSpec.current.name
+                    )
                 }
             }
         }
