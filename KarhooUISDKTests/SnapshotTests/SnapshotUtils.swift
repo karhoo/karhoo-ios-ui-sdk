@@ -43,7 +43,7 @@ func testSnapshot<ViewController: UIViewController>(
         return
     }
     guard let failureMessage = verifySnapshot(
-        matching: view,
+        matching: viewController.view,
         as: .image,
         file: file,
         testName: QuickSpec.current?.name ?? fileName,
