@@ -16,7 +16,7 @@ extension Quote {
             quoteType: quoteType,
             source: .fleet,
             pickUpType: .default,
-            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
+            fleet: .init(id: PrimitiveUtil.getRandomString(), name: "Mocked Fleet"),
             vehicle: QuoteVehicle(
                 vehicleClass: vehicleType,
                 type: vehicleType,
