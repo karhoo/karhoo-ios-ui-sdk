@@ -2505,7 +2505,7 @@
 		519D100528FDBF8400EF0EB0 /* QuoteList */ = {
 			isa = PBXGroup;
 			children = (
-				519D100728FDBF9500EF0EB0 /* Fitler */,
+				519D100728FDBF9500EF0EB0 /* Filter */,
 				519D100628FDBF8E00EF0EB0 /* Sort */,
 				519D100828FDBFAE00EF0EB0 /* QuoteListSnapshotSpec.swift */,
 			);
@@ -2519,11 +2519,11 @@
 			path = Sort;
 			sourceTree = "<group>";
 		};
-		519D100728FDBF9500EF0EB0 /* Fitler */ = {
+		519D100728FDBF9500EF0EB0 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Fitler;
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		51A1100A27AD510800A54E76 /* Checkbox */ = {

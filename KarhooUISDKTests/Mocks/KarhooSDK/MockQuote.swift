@@ -12,7 +12,7 @@ import KarhooSDK
 extension Quote {
     static func mock(quoteType: QuoteType = .estimated, vehicleType: String = "standard") -> Quote {
         Quote(
-            id: UUID().uuidString,
+            id: PrimitiveUtil.getRandomString(),
             quoteType: quoteType,
             source: .fleet,
             pickUpType: .default,
@@ -36,11 +36,11 @@ extension Quote {
 
     static func mock2(quoteType: QuoteType = .fixed, vehicleType: String = "mpv") -> Quote {
         Quote(
-            id: UUID().uuidString,
+            id: PrimitiveUtil.getRandomString(),
             quoteType: quoteType,
             source: .fleet,
             pickUpType: .default,
-            fleet: .init(id: UUID().uuidString, name: "Mocked Fleet"),
+            fleet: .init(id: PrimitiveUtil.getRandomString(), name: "Mocked Fleet"),
             vehicle: QuoteVehicle(
                 vehicleClass: vehicleType,
                 type: vehicleType,
