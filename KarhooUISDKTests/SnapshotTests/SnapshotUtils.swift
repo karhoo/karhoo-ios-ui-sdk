@@ -49,4 +49,6 @@ func testSnapshot<ViewController: UIViewController>(
         testName: QuickSpec.current?.name ?? fileName,
         line: line
     ) else { return }
+
+    XCTFail(failureMessage, file: file, line: line)
 }
