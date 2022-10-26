@@ -180,7 +180,7 @@ class QuoteListAsyncLoadedSpecs: QuickSpec {
                     assertSnapshot(
                         matching: navigationController.view,
                         as: .wait(
-                            for: 1,
+                            for: 3,
                             on: .image
                         ),
                         named: QuickSpec.current.name
