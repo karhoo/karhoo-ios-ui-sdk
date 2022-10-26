@@ -25,18 +25,27 @@ class QuoteListSortSnapshotSpec: QuickSpec {
             beforeEach {
                 let mockVC = MockViewController().then {
                     $0.loadViewIfNeeded()
+                    $0.view.backgroundColor = .white
                 }
                 navigationController = NavigationController(rootViewController: mockVC, style: .primary)
                 sut = KarhooQuoteListSortViewController()
                 presenterMock = MockQuoteListSortPresenter()
                 sut.setupBinding(presenterMock)
-                navigationController.present(sut, animated: false)
+                mockVC.present(sut, animated: false)
             }
 
             context("when it's showned") {
 
                 it("should have a valid design") {
-                    testSnapshot(navigationController)
+//                    testSnapshot(navigationController)
+                    assertSnapshot(
+                        matching: navigationController.view,
+                        as: .wait(
+                            for: 3,
+                            on: .image
+                        ),
+                        named: QuickSpec.current.name
+                    )
                 }
             }
         }
