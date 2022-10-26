@@ -419,6 +419,8 @@
 		51EFCA8A285756270099071C /* QuoteListFiltersCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA85285756270099071C /* QuoteListFiltersCorrdinator.swift */; };
 		51EFCA8B285756270099071C /* QuoteListFiltersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA86285756270099071C /* QuoteListFiltersPresenter.swift */; };
 		51EFCA8D285756600099071C /* BorderedWOBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA8C285756600099071C /* BorderedWOBackgroundButton.swift */; };
+		51F05F972909536C00D2BC60 /* QuoteListSortSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F05F962909536C00D2BC60 /* QuoteListSortSnapshotSpec.swift */; };
+		51F05F992909542C00D2BC60 /* MockQuoteListSortPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F05F982909542C00D2BC60 /* MockQuoteListSortPresenter.swift */; };
 		51F4D56128574CA900A8DB5E /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56028574CA900A8DB5E /* UserSelectable.swift */; };
 		51F4D56328574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */; };
 		51F4D56528574CC700A8DB5E /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56428574CC700A8DB5E /* Collection+Safe.swift */; };
@@ -988,6 +990,8 @@
 		51EFCA85285756270099071C /* QuoteListFiltersCorrdinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersCorrdinator.swift; sourceTree = "<group>"; };
 		51EFCA86285756270099071C /* QuoteListFiltersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersPresenter.swift; sourceTree = "<group>"; };
 		51EFCA8C285756600099071C /* BorderedWOBackgroundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedWOBackgroundButton.swift; sourceTree = "<group>"; };
+		51F05F962909536C00D2BC60 /* QuoteListSortSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortSnapshotSpec.swift; sourceTree = "<group>"; };
+		51F05F982909542C00D2BC60 /* MockQuoteListSortPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListSortPresenter.swift; sourceTree = "<group>"; };
 		51F4D56028574CA900A8DB5E /* UserSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
 		51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		51F4D56428574CC700A8DB5E /* Collection+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
@@ -2367,6 +2371,7 @@
 				512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */,
 				51801A15285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift */,
 				51000D3E29000B5800C4C4A5 /* MockQuoteListPresenter.swift */,
+				51F05F982909542C00D2BC60 /* MockQuoteListSortPresenter.swift */,
 			);
 			path = QuoteList;
 			sourceTree = "<group>";
@@ -2515,6 +2520,7 @@
 		519D100628FDBF8E00EF0EB0 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
+				51F05F962909536C00D2BC60 /* QuoteListSortSnapshotSpec.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -4366,6 +4372,7 @@
 			files = (
 				14707C8225D54C2100CAD083 /* MockViewController.swift in Sources */,
 				14707C4525D54C2100CAD083 /* MockLocationService.swift in Sources */,
+				51F05F992909542C00D2BC60 /* MockQuoteListSortPresenter.swift in Sources */,
 				14707C7925D54C2100CAD083 /* MockTripsSorter.swift in Sources */,
 				14707C8D25D54C2200CAD083 /* MockOriginEtaView.swift in Sources */,
 				14707CDC25D54C2200CAD083 /* MockPopupDialogScreenBuilder.swift in Sources */,
@@ -4403,6 +4410,7 @@
 				14707CA825D54C2200CAD083 /* MockRideDetailsView.swift in Sources */,
 				14707C5A25D54C2100CAD083 /* TripStatesGetterSpec.swift in Sources */,
 				51DB734828FED1BB00516343 /* JourneyInfo+mock.swift in Sources */,
+				51F05F972909536C00D2BC60 /* QuoteListSortSnapshotSpec.swift in Sources */,
 				14707C9925D54C2200CAD083 /* MockFeedbackScreenBuilder.swift in Sources */,
 				14707C4925D54C2100CAD083 /* MockTripScreenDetailsView.swift in Sources */,
 				518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */,
