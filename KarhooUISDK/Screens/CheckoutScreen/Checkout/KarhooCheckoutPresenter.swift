@@ -174,7 +174,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             // nothing to do here, the view is already in `Requesting` state
         } else {
             view?.setDefaultState()
-            startBooking()
         }
     }
     
@@ -198,17 +197,21 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     // MARK: - Book
     func startBooking() {
-        guard areTermsAndConditionsAccepted else {
-            view?.showTermsConditionsRequiredError()
+        if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             return
-        }
-        
-        view?.setRequestingState()
-
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            submitGuestBooking()
+        } else if bookingRequestInProgress {
+            return
         } else {
-            submitAuthenticatedBooking()
+            guard areTermsAndConditionsAccepted else {
+                view?.showTermsConditionsRequiredError()
+                return
+            }
+            view?.setRequestingState()
+            if Karhoo.configuration.authenticationMethod().isGuest() {
+                submitGuestBooking()
+            } else {
+                submitAuthenticatedBooking()
+            }
         }
     }
 

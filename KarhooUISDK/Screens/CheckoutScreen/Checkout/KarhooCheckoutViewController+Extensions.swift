@@ -47,6 +47,7 @@ extension KarhooCheckoutViewController: AddPaymentViewDelegate {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
         presenter.didAddPassengerDetails()
+        presenter.startBooking()
     }
 }
 
