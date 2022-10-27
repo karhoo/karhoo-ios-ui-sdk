@@ -57,11 +57,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
+        baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
-        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
+        setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
     deinit {
@@ -73,9 +73,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
         case .karhooUser:
-            self.karhooUser = true
+            karhooUser = true
         default:
-            self.karhooUser = false
+            karhooUser = false
         }
        
         if karhooUser {
@@ -174,6 +174,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             // nothing to do here, the view is already in `Requesting` state
         } else {
             view?.setDefaultState()
+            startBooking()
         }
     }
     
@@ -196,9 +197,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     // MARK: - Book
-    func bookTripPressed() {
+    func startBooking() {
         guard areTermsAndConditionsAccepted else {
-            self.view?.showTermsConditionsRequiredError()
+            view?.showTermsConditionsRequiredError()
             return
         }
         
@@ -284,7 +285,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
         
         if isLoyaltyEnabled(),
-            let view = self.view {
+            let view = view {
             
             view.getLoyaltyNonce { [weak self] result in
                 if let error = result.getErrorValue() {
@@ -392,16 +393,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
              switch paymentNonceResult {
              case .nonce(let nonce):
-                 self.book(paymentNonce: nonce.nonce,
+                 book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
                       flightNumber: view?.getFlightNumber())
              case .cancelledByUser:
-                 self.view?.setDefaultState()
+                 view?.setDefaultState()
              case .failedToAddCard(let error):
-                 self.view?.setDefaultState()
-                 self.view?.show(error: error)
+                 view?.setDefaultState()
+                 view?.show(error: error)
                  default:
-                 self.view?.showAlert(title: UITexts.Generic.error,
+                 view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
                  view?.setDefaultState()
@@ -465,7 +466,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func screenHasFadedOut() {
-        if let trip = self.trip {
+        if let trip = trip {
              callback(ScreenResult.completed(result: trip))
          } else {
              callback(ScreenResult.cancelled(byUser: false))
@@ -478,7 +479,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func isKarhooUser() -> Bool {
-        return karhooUser
+        karhooUser
     }
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {

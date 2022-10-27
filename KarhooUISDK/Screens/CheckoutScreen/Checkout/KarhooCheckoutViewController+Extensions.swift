@@ -19,10 +19,6 @@ extension KarhooCheckoutViewController: BookingButtonDelegate {
     func addMoreDetails() {
         presenter.addMoreDetails()
     }
-    
-    func requestPressed() {
-        presenter.bookTripPressed()
-    }
 }
 
 extension KarhooCheckoutViewController: PassengerDetailsActions {

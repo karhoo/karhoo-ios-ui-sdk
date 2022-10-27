@@ -41,7 +41,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
 
     init() {
         super.init(frame: .zero)
-        self.setUpView()
+        setUpView()
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +94,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setUpView()
+        setUpView()
     }
     
     override func updateConstraints() {
@@ -146,7 +146,7 @@ final class KarhooBookingButtonView: UIView, BookingButtonView {
 
         switch mode {
         case .addDetails: actions?.addMoreDetails()
-        case .request: actions?.requestPressed()
+        case .request: return
         default: return
         }
     }

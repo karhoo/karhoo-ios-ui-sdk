@@ -17,6 +17,5 @@ protocol BookingButtonView {
 }
 
 protocol BookingButtonDelegate: AnyObject {
-    func requestPressed()
     func addMoreDetails()
 }
