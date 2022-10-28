@@ -347,6 +347,7 @@
 		510522E9284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		510522EA284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		51218F0A2907CF21001B677A /* MockQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51218F092907CF21001B677A /* MockQuote.swift */; };
+		51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */; };
 		512AD7232859ED3D00888F60 /* MockQuoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7222859ED3D00888F60 /* MockQuoteListView.swift */; };
 		512AD7252859ED7700888F60 /* QuoteListFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */; };
 		5135E56828574A1300F14A0F /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56728574A1300F14A0F /* MainActionButton.swift */; };
@@ -643,12 +644,12 @@
 			remoteGlobalIDString = FC8F471321539E24007841FB;
 			remoteInfo = KarhooUISDK;
 		};
-		51CC85C3290BC2EA00E5E703 /* PBXContainerItemProxy */ = {
+		51219496290BDEA50090E908 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FC8F470B21539E24007841FB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
-			remoteInfo = Client;
+			remoteGlobalIDString = FC8F471321539E24007841FB;
+			remoteInfo = KarhooUISDK;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -928,6 +929,7 @@
 		51000D3E29000B5800C4C4A5 /* MockQuoteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListPresenter.swift; sourceTree = "<group>"; };
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		51218F092907CF21001B677A /* MockQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuote.swift; sourceTree = "<group>"; };
+		51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
 		512AD7222859ED3D00888F60 /* MockQuoteListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockQuoteListView.swift; sourceTree = "<group>"; };
 		512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFilterSpec.swift; sourceTree = "<group>"; };
 		5135E56728574A1300F14A0F /* MainActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
@@ -2569,6 +2571,7 @@
 			children = (
 				51CC85BC290BC1E600E5E703 /* KarhooUISDKUITests.swift */,
 				51CC85BE290BC1E600E5E703 /* KarhooUISDKUITestsLaunchTests.swift */,
+				51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */,
 			);
 			path = KarhooUISDKUITests;
 			sourceTree = "<group>";
@@ -3717,7 +3720,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				51CC85C4290BC2EA00E5E703 /* PBXTargetDependency */,
+				51219497290BDEA50090E908 /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKUITests;
 			productName = KarhooUISDKUITests;
@@ -4057,6 +4060,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51CC85BD290BC1E600E5E703 /* KarhooUISDKUITests.swift in Sources */,
+				51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */,
 				51CC85BF290BC1E600E5E703 /* KarhooUISDKUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4685,10 +4689,10 @@
 			target = FC8F471321539E24007841FB /* KarhooUISDK */;
 			targetProxy = 14707ADD25D54B5B00CAD083 /* PBXContainerItemProxy */;
 		};
-		51CC85C4290BC2EA00E5E703 /* PBXTargetDependency */ = {
+		51219497290BDEA50090E908 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
-			targetProxy = 51CC85C3290BC2EA00E5E703 /* PBXContainerItemProxy */;
+			target = FC8F471321539E24007841FB /* KarhooUISDK */;
+			targetProxy = 51219496290BDEA50090E908 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

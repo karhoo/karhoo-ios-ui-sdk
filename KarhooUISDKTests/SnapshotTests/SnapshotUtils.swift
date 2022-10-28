@@ -11,7 +11,7 @@ import UIKit
 import SnapshotTesting
 import Quick
 
-func testSnapshot<View: UIView>(
+public func testSnapshot<View: UIView>(
     _ view: View,
     file: StaticString = #file,
     fileName: String = #function,
@@ -32,7 +32,7 @@ func testSnapshot<View: UIView>(
     XCTFail(failureMessage, file: file, line: line)
 }
 
-func testSnapshot<ViewController: UIViewController>(
+public func testSnapshot<ViewController: UIViewController>(
     _ viewController: ViewController,
     file: StaticString = #file,
     fileName: String = #function,
