@@ -46,4 +46,11 @@ target 'KarhooUISDK' do
     pod 'Quick', '~> 5.0.1'
     pod 'Nimble', '~> 10.0.0'
   end
+
+  target 'KarhooUISDKUITests' do
+    inherit! :search_paths
+    pod 'SnapshotTesting', '1.9.0'
+    pod 'Quick', '~> 5.0.1'
+    pod 'Nimble', '~> 10.0.0'
+  end
 end
