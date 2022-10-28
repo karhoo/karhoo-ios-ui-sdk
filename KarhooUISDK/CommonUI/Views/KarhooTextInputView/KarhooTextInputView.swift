@@ -272,7 +272,6 @@ extension KarhooTextInputView: UITextViewDelegate {
         if textView.text.contains(" ") && contentType.whitespaceAllowed == false {
             textView.text =  textView.text.trimmingCharacters(in: .whitespaces)
         }
-
         
         if textView.text.isEmpty {
             textView.textColor = KarhooTextInputViewState.inactive.color

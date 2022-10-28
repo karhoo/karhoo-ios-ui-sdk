@@ -49,7 +49,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider 
+        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
@@ -489,7 +489,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
     
-
     private func routeToBooking(result: ScreenResult<TripInfo>) {
         view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
             self?.callback(result)

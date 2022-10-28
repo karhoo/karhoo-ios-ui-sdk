@@ -133,7 +133,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func changePaymentDetailsPressed(){
+    func changePaymentDetailsPressed() {
         base.send(eventName: .changePaymentDetailsPressed)
     }
 
