@@ -3798,7 +3798,6 @@
 				TargetAttributes = {
 					51CC85B9290BC1E600E5E703 = {
 						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 					5C2E260C2420F8AC00B1FF0C = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -4752,6 +4751,7 @@
 			baseConfigurationReference = 9B3AD79339AC85966A502369 /* Pods-KarhooUISDKUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
@@ -4763,13 +4763,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = Client;
 			};
 			name = Debug;
 		};
@@ -4778,6 +4778,7 @@
 			baseConfigurationReference = D6D3A8060F8B980590B97157 /* Pods-KarhooUISDKUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
@@ -4788,13 +4789,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDKUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = Client;
 			};
 			name = Release;
 		};

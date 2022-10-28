@@ -39,3 +39,6 @@ final class KarhooUISDKUITests: XCTestCase {
         }
     }
 }
+
+//Test target KarhooUISDKUITests encountered an error (The bundle identifier for Client.app couldn’t be read. No such file or directory: “/Users/vagrant/Library/Developer/Xcode/DerivedData/KarhooUISDK-fuqqygkbnljznnbnrtspxoarldom/Build/Products/Debug-iphonesimulator/Client.app”.)
+
