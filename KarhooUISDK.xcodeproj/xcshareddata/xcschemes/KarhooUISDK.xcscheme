@@ -76,6 +76,16 @@
                ReferencedContainer = "container:KarhooUISDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "51CC85B9290BC1E600E5E703"
+               BuildableName = "KarhooUISDKUITests.xctest"
+               BlueprintName = "KarhooUISDKUITests"
+               ReferencedContainer = "container:KarhooUISDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -116,15 +126,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC8F471321539E24007841FB"
-            BuildableName = "KarhooUISDK.framework"
-            BlueprintName = "KarhooUISDK"
-            ReferencedContainer = "container:KarhooUISDK.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
