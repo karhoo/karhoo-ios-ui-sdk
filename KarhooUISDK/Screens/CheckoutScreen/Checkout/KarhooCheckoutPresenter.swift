@@ -196,7 +196,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     // MARK: - Book
-    func startBooking() {
+    func completeBookingFlow() {
         if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             return
         } else if bookingRequestInProgress {

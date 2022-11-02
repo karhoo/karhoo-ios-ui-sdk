@@ -11,7 +11,7 @@ import KarhooSDK
 protocol CheckoutPresenter {
     func load(view: CheckoutView)
     func screenWillAppear()
-    func startBooking()
+    func completeBookingFlow()
     func addOrEditPassengerDetails()
     func addMoreDetails()
     func didAddPassengerDetails()

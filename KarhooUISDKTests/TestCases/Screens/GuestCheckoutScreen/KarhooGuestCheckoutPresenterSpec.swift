@@ -38,7 +38,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     
     func testThreeDSecureBraintreeSent() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
-        testObject.startBooking()
+        testObject.completeBookingFlow()
 
         // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setRequestingStateCalled)
         XCTAssertTrue(mockThreeDSecureProvider.setBaseViewControllerCalled)
@@ -51,7 +51,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     
     func testThreeDSecureProviderBraintreeSucceeds() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
-        testObject.startBooking()
+        testObject.completeBookingFlow()
 
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "456")))
 
@@ -64,7 +64,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     
     func testThreeDSecureProviderBraintreeFails() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
-        testObject.startBooking()
+        testObject.completeBookingFlow()
 
         mockThreeDSecureProvider.triggerResult(.completed(value: .threeDSecureAuthenticationFailed))
 
@@ -78,7 +78,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     
     func testTripServiceBraintreeSucceeds() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
-        testObject.startBooking()
+        testObject.completeBookingFlow()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "456")))
 
         let tripBooked = TestUtil.getRandomTrip()
@@ -106,7 +106,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let expectedNonce = Nonce(nonce: "mock_nonce")
         
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
-        testObject.startBooking()
+        testObject.completeBookingFlow()
         mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
 
@@ -134,7 +134,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
                                                                      paymentProvider: "braintree")
         mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         
-        testObject.startBooking()
+        testObject.completeBookingFlow()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
             
         mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: expectedNonce)))
@@ -163,7 +163,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: KarhooTestConfiguration.tokenExchangeSettings)
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
                                                                      paymentProvider: "adyen")
-        testObject.startBooking()
+        testObject.completeBookingFlow()
 
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
@@ -194,7 +194,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil,
                                                                      paymentProvider: "adyen")
         
-        testObject.startBooking()
+        testObject.completeBookingFlow()
 
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
