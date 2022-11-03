@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 import KarhooSDK
-import KarhooUISDK
+@testable import KarhooUISDK
 
 extension JourneyInfo {
 

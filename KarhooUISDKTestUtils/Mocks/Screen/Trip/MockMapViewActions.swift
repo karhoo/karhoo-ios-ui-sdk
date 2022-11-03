@@ -6,7 +6,6 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import XCTest
 import CoreLocation
 @testable import KarhooUISDK
 

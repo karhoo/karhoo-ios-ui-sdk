@@ -8,7 +8,6 @@
 
 import Foundation
 import KarhooSDK
-import XCTest
 
 @testable import KarhooUISDK
 

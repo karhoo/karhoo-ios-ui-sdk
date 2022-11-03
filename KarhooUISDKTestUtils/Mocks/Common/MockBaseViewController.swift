@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import KarhooUISDK
+@testable import KarhooUISDK
 import KarhooSDK
 
 class MockBaseViewController: UIViewController, BaseViewController {

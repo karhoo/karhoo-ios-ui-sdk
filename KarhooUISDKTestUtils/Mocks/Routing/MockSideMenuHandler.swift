@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import KarhooUISDK
+@testable import KarhooUISDK
 
 final class MockSideMenuHandler: SideMenuHandler {
     var pressedOnBookings = false

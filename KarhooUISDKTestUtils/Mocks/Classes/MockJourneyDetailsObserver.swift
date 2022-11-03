@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KarhooUISDK
+@testable import KarhooUISDK
 
 final class MockJourneyDetailsObserver: JourneyDetailsObserver {
     var lastJourneyDetails: JourneyDetails?
