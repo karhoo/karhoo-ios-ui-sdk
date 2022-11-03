@@ -8,12 +8,12 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockURLOpener: URLOpener {
+final public class MockURLOpener: URLOpener {
 
-    func open(_: URL) {}
+    public func open(_: URL) {}
 
-    var followCodeSet: String?
-    func openAgentPortalTracker(followCode: String) {
+    public var followCodeSet: String?
+    public func openAgentPortalTracker(followCode: String) {
         followCodeSet = followCode
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 extension Quote {
-    static func mock(quoteType: QuoteType = .estimated, vehicleType: String = "standard") -> Quote {
+    static public func mock(quoteType: QuoteType = .estimated, vehicleType: String = "standard") -> Quote {
         Quote(
             id: PrimitiveUtil.getRandomString(),
             quoteType: quoteType,
@@ -34,7 +34,7 @@ extension Quote {
         )
     }
 
-    static func mock2(quoteType: QuoteType = .fixed, vehicleType: String = "mpv") -> Quote {
+    static public func mock2(quoteType: QuoteType = .fixed, vehicleType: String = "mpv") -> Quote {
         Quote(
             id: PrimitiveUtil.getRandomString(),
             quoteType: quoteType,

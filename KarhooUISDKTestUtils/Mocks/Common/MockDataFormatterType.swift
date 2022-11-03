@@ -9,56 +9,56 @@
 import Foundation
 @testable import KarhooUISDK
 
-class MockDateFormatterType: DateFormatterType {
+public class MockDateFormatterType: DateFormatterType {
 
-    private(set) var timeZoneSet: TimeZone?
-    func set(timeZone: TimeZone) {
+    public var timeZoneSet: TimeZone?
+    public func set(timeZone: TimeZone) {
         timeZoneSet = timeZone
     }
 
-    private(set) var localeSet: Locale?
-    func set(locale: Locale) {
+    public var localeSet: Locale?
+    public func set(locale: Locale) {
         localeSet = locale
     }
 
-    private(set) var shortStyleTimeSet: Date?
-    var shortStyleTimeReturnString: String = TestUtil.getRandomString()
-    func display(shortStyleTime date: Date?) -> String {
+    public var shortStyleTimeSet: Date?
+    public var shortStyleTimeReturnString: String = TestUtil.getRandomString()
+    public func display(shortStyleTime date: Date?) -> String {
         shortStyleTimeSet = date
         return shortStyleTimeReturnString
     }
 
-    private(set) var mediumStyleDateSet: Date?
-    var mediumStyleDateReturnString: String = TestUtil.getRandomString()
-    func display(mediumStyleDate date: Date?) -> String {
+    public var mediumStyleDateSet: Date?
+    public var mediumStyleDateReturnString: String = TestUtil.getRandomString()
+    public func display(mediumStyleDate date: Date?) -> String {
         mediumStyleDateSet = date
         return mediumStyleDateReturnString
     }
 
-    private(set) var shortDateSet: Date?
-    var shortDateReturnString: String = TestUtil.getRandomString()
-    func display(shortDate date: Date?) -> String {
+    public var shortDateSet: Date?
+    public var shortDateReturnString: String = TestUtil.getRandomString()
+    public func display(shortDate date: Date?) -> String {
         shortDateSet = date
         return shortDateReturnString
     }
 
-    private(set) var detailStyleDateSet: Date?
-    var detailStyleDateReturnString: String = TestUtil.getRandomString()
-    func display(detailStyleDate date: Date?) -> String {
+    public var detailStyleDateSet: Date?
+    public var detailStyleDateReturnString: String = TestUtil.getRandomString()
+    public func display(detailStyleDate date: Date?) -> String {
         detailStyleDateSet = date
         return detailStyleDateReturnString
     }
 
-    private(set) var fullTimeSet: Date?
-    var fullTimeReturnString: String = TestUtil.getRandomString()
+    public var fullTimeSet: Date?
+    public var fullTimeReturnString: String = TestUtil.getRandomString()
     public func display(fullDate date: Date?) -> String {
         fullTimeSet = date
         return fullTimeReturnString
     }
 
-    private(set) var clockTimeSet: Date?
-    var clockTimeReturnString: String = TestUtil.getRandomString()
-    func display(clockTime date: Date?) -> String {
+    public var clockTimeSet: Date?
+    public var clockTimeReturnString: String = TestUtil.getRandomString()
+    public func display(clockTime date: Date?) -> String {
         clockTimeSet = date
         return clockTimeReturnString
     }

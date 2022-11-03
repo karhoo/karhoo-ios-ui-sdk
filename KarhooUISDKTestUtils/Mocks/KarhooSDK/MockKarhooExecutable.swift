@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-class MockExecutable: KarhooExecutable {
-    func execute<T: Codable>(callback: @escaping CallbackClosure<T>) {}
-    func cancel() {}
+public class MockExecutable: KarhooExecutable {
+    public func execute<T: Codable>(callback: @escaping CallbackClosure<T>) {}
+    public func cancel() {}
 }

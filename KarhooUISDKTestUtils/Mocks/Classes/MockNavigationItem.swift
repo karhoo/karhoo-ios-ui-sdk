@@ -10,48 +10,48 @@ import UIKit
 
 @testable import KarhooUISDK
 
-final class MockNavigationItem: NavigationItem {
+final public class MockNavigationItem: NavigationItem {
 
-    var lastCallWasAnimated: Bool?
+    public var lastCallWasAnimated: Bool?
 
-    private(set) var presentModalItem: Screen?
-    private(set) var presentedAsModelItemAnimated: Bool?
-    func presentAsModal(item: Screen, animated: Bool) {
+    public var presentModalItem: Screen?
+    public var presentedAsModelItemAnimated: Bool?
+    public func presentAsModal(item: Screen, animated: Bool) {
         presentModalItem = item
         flowItemsAdded.append(item)
         presentedAsModelItemAnimated = animated
     }
 
-    var flowItemsAdded = [Screen]()
-    func show(item: Screen, animated: Bool) {
+    public var flowItemsAdded = [Screen]()
+    public func show(item: Screen, animated: Bool) {
         lastCallWasAnimated = animated
         flowItemsAdded.append(item)
     }
 
-    var lastPushTypeModal = false
-    func showAsModal(item: Screen, animated: Bool) {
+    public var lastPushTypeModal = false
+    public func showAsModal(item: Screen, animated: Bool) {
         flowItemsAdded.append(item)
         lastPushTypeModal = true
     }
 
-    var overlay: Screen?
-    var lastPushTypeOverlay = false
-    func showAsOverlay(item: Screen, animated: Bool) {
+    public var overlay: Screen?
+    public var lastPushTypeOverlay = false
+    public func showAsOverlay(item: Screen, animated: Bool) {
         lastCallWasAnimated = animated
         overlay = item
         flowItemsAdded.append(item)
         lastPushTypeOverlay = true
     }
 
-    func dismiss(animated: Bool, completion: (() -> Void)?) {
+    public func dismiss(animated: Bool, completion: (() -> Void)?) {
         lastCallWasAnimated = animated
         overlay = nil
         flowItemLastRemoved = flowItemsAdded.removeLast()
     }
 
-    var flowItemLastRemoved: Screen?
-    var hideTopItemCalled = false
-    func hideTopItem(animated: Bool, completion: (() -> Void)?) {
+    public var flowItemLastRemoved: Screen?
+    public var hideTopItemCalled = false
+    public func hideTopItem(animated: Bool, completion: (() -> Void)?) {
         hideTopItemCalled = true
         if flowItemsAdded.isEmpty {
             completion?()
@@ -61,8 +61,8 @@ final class MockNavigationItem: NavigationItem {
         completion?()
     }
 
-    var popCalled = false
-    func pop(animated: Bool, completion: (() -> Void)?) {
+    public var popCalled = false
+    public func pop(animated: Bool, completion: (() -> Void)?) {
         popCalled = true
         if flowItemsAdded.isEmpty {
             completion?()
@@ -72,13 +72,13 @@ final class MockNavigationItem: NavigationItem {
         completion?()
     }
 
-    var flowItem = MockViewController()
-    func getFlowItem() -> Screen {
+    public var flowItem = MockViewController()
+    public func getFlowItem() -> Screen {
         return flowItem
     }
 
-    var popToRootCalled = false
-    func popToRoot() {
+    public var popToRootCalled = false
+    public func popToRoot() {
         popToRootCalled = true
     }
 }

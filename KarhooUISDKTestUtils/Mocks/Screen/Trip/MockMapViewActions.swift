@@ -9,13 +9,13 @@
 import CoreLocation
 @testable import KarhooUISDK
 
-class MockMapViewActions: MapViewActions {
+public class MockMapViewActions: MapViewActions {
 
-    private(set) var gestureDetectedCalled = false
-    func mapGestureDetected() {
+    public var gestureDetectedCalled = false
+    public func mapGestureDetected() {
         gestureDetectedCalled = true
     }
 
-    func userStartedMovingTheMap() {}
-    func userStoppedMovingTheMap(center: CLLocation?) {}
+    public func userStartedMovingTheMap() {}
+    public func userStoppedMovingTheMap(center: CLLocation?) {}
 }

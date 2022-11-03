@@ -9,32 +9,32 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockTripsProvider: TripsProvider {
+final public class MockTripsProvider: TripsProvider {
 
-    var startCalled = false
-    func start() {
+    public var startCalled = false
+    public func start() {
         startCalled = true
     }
 
-    var stopCalled = false
-    func stop() {
+    public var stopCalled = false
+    public func stop() {
         stopCalled = true
     }
 
-    var delegate: TripsProviderDelegate? // swiftlint:disable:this weak_delegate
+    public var delegate: TripsProviderDelegate? // swiftlint:disable:this weak_delegate
 
-    var theTripsToFetch: [TripInfo] = []
-    func fetched(trips: [TripInfo]) {
+    public var theTripsToFetch: [TripInfo] = []
+    public func fetched(trips: [TripInfo]) {
         theTripsToFetch = trips
     }
 
-    var theErrorToSet: Error?
-    func tripProviderFailed(error: Error?) {
+    public var theErrorToSet: Error?
+    public func tripProviderFailed(error: Error?) {
         theErrorToSet = error
     }
     
-    var testPage: Int = 0
-    func requestNewPage(pageOffset: Int) {
+    public var testPage: Int = 0
+    public func requestNewPage(pageOffset: Int) {
         testPage = pageOffset
     }
 }

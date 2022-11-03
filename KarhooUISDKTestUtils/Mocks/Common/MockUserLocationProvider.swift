@@ -9,20 +9,20 @@
 import CoreLocation
 import KarhooSDK
 
-class MockUserLocationProvider: UserLocationProvider {
+public class MockUserLocationProvider: UserLocationProvider {
 
-    var locationChangedCallback: LocationProvidedClosure?
-    var lastKnownLocation: CLLocation?
+    public var locationChangedCallback: LocationProvidedClosure?
+    public var lastKnownLocation: CLLocation?
 
-    func set(locationChangedCallback: LocationProvidedClosure?) {
+    public func set(locationChangedCallback: LocationProvidedClosure?) {
         self.locationChangedCallback = locationChangedCallback
     }
 
-    func getLastKnownLocation() -> CLLocation? {
+    public func getLastKnownLocation() -> CLLocation? {
         return lastKnownLocation
     }
 
-    func triggerLocationCallback(location: CLLocation) {
+    public func triggerLocationCallback(location: CLLocation) {
         locationChangedCallback?(location)
     }
 }

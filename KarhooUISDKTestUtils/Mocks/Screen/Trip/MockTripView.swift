@@ -11,91 +11,91 @@ import KarhooSDK
 import CoreLocation
 @testable import KarhooUISDK
 
-final class MockTripView: MockBaseViewController, TripView {
+final public class MockTripView: MockBaseViewController, TripView {
 
-    func currentTrip() -> TripInfo {
+    public func currentTrip() -> TripInfo {
         return trip!
     }
 
-    private(set) var trip: TripInfo?
-    func set(trip: TripInfo) {
+    public var trip: TripInfo?
+    public func set(trip: TripInfo) {
         self.trip = trip
     }
 
-    private(set) var userMovedMapCalled = false
-    func userMovedMap() {
+    public var userMovedMapCalled = false
+    public func userMovedMap() {
         userMovedMapCalled = true
     }
     
-    private(set) var theLocateButtonHidden: Bool?
-    func set(locateButtonHidden: Bool) {
+    public var theLocateButtonHidden: Bool?
+    public func set(locateButtonHidden: Bool) {
         theLocateButtonHidden = locateButtonHidden
     }
 
-    private(set) var focusOnUserLocationCalled = false
-    func focusOnUserLocation() {
+    public var focusOnUserLocationCalled = false
+    public func focusOnUserLocation() {
         focusOnUserLocationCalled = true
     }
 
-    private(set) var setTripStatusCalled = false
-    func set(tripStatus: String?) {
+    public var setTripStatusCalled = false
+    public func set(tripStatus: String?) {
         setTripStatusCalled = true
     }
 
-    private(set) var showLoadingCalled = false
-    func showLoading() {
+    public var showLoadingCalled = false
+    public func showLoading() {
         showLoadingCalled = true
     }
     
-    private(set) var hideLoadingCalled = false
-    func hideLoading() {
+    public var hideLoadingCalled = false
+    public func hideLoading() {
         hideLoadingCalled = true
     }
     
-    private(set) var setAddressBarCalled = false
-    func setAddressBar(with trip: TripInfo) {
+    public var setAddressBarCalled = false
+    public func setAddressBar(with trip: TripInfo) {
         setAddressBarCalled = true
     }
     
-    private(set) var plotPinsOnMapCalled = false
-    func plotPinsOnMap() {
+    public var plotPinsOnMapCalled = false
+    public func plotPinsOnMap() {
         plotPinsOnMapCalled = true
     }
 
-    private(set) var focusMapOnAllPOICalled = false
-    func focusMapOnAllPOI() {
+    public var focusMapOnAllPOICalled = false
+    public func focusMapOnAllPOI() {
         focusMapOnAllPOICalled = true
     }
     
-    private(set) var focusMapOnRouteCalled = false
-    func focusMapOnRoute() {
+    public var focusMapOnRouteCalled = false
+    public func focusMapOnRoute() {
         focusMapOnRouteCalled = true
     }
     
-    private(set) var focusMapOnDriverAndPickupCalled = false
-    func focusMapOnDriverAndPickup() {
+    public var focusMapOnDriverAndPickupCalled = false
+    public func focusMapOnDriverAndPickup() {
         focusMapOnDriverAndPickupCalled = true
     }
     
-    private(set) var focusMapOnDriverCalled = false
-    func focusMapOnDriver() {
+    public var focusMapOnDriverCalled = false
+    public func focusMapOnDriver() {
         focusMapOnDriverCalled = true
     }
     
-    func update(driverLocation: CLLocation) {}
+    public func update(driverLocation: CLLocation) {}
 
-    private(set) var userMarkerVisibleSet = false
-    func set(userMarkerVisible: Bool) {
+    public var userMarkerVisibleSet = false
+    public func set(userMarkerVisible: Bool) {
         userMarkerVisibleSet = userMarkerVisible
     }
 
-    var showNoLocationPermissionsPopUpCalled = false
-    func showNoLocationPermissionsPopUp() {
+    public var showNoLocationPermissionsPopUpCalled = false
+    public func showNoLocationPermissionsPopUp() {
         showNoLocationPermissionsPopUpCalled = true
     }
 
-    private(set) var focusMapOnPickupCalled = false
-    func focusMapOnPickup() {
+    public var focusMapOnPickupCalled = false
+    public func focusMapOnPickup() {
         focusMapOnDriverAndPickupCalled = true
     }
 }

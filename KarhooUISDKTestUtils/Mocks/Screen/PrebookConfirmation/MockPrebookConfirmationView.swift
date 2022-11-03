@@ -9,14 +9,14 @@
 import UIKit
 @testable import KarhooUISDK
 
-final class MockPrebookConfirmationView: PrebookConfirmationView {
-    private(set) var viewModelSet: PrebookConfirmationViewModel?
-    func updateUI(withViewModel viewModel: PrebookConfirmationViewModel) {
+final public class MockPrebookConfirmationView: PrebookConfirmationView {
+    public var viewModelSet: PrebookConfirmationViewModel?
+    public func updateUI(withViewModel viewModel: PrebookConfirmationViewModel) {
         viewModelSet = viewModel
     }
 
-    private(set) var dismissViewCalled = false
-    func dimsissView() {
+    public var dismissViewCalled = false
+    public func dimsissView() {
         dismissViewCalled = true
     }
 }

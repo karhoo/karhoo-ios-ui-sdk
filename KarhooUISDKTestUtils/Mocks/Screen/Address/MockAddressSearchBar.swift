@@ -11,58 +11,58 @@ import Foundation
 
 @testable import KarhooUISDK
 
-class MockAddressSearchBar: AddressSearchBar {
+public class MockAddressSearchBar: AddressSearchBar {
 
-    var ringColorSet: UIColor?
-    func set(ringColor: UIColor) {
+    public var ringColorSet: UIColor?
+    public func set(ringColor: UIColor) {
         ringColorSet = ringColor
     }
 
-    var setHintCalled = false
-    var searchPlaceHolder: String?
-    func set(searchPlaceholder: String?) {
+    public var setHintCalled = false
+    public var searchPlaceHolder: String?
+    public func set(searchPlaceholder: String?) {
         setHintCalled = true
         searchPlaceHolder = searchPlaceholder
     }
 
-    var clearSearchFieldCalled = false
-    func clearSearchInputField() {
+    public var clearSearchFieldCalled = false
+    public func clearSearchInputField() {
         clearSearchFieldCalled = true
     }
 
-    var focusInputFieldCalled = false
-    func focusInputField() {
+    public var focusInputFieldCalled = false
+    public func focusInputField() {
         focusInputFieldCalled = true
     }
 
-    var unfocusInputFieldCalled = false
-    func unfocusInputField() {
+    public var unfocusInputFieldCalled = false
+    public func unfocusInputField() {
         unfocusInputFieldCalled = true
     }
 
-    var resignFirstResponderCalled = false
-    func resignFirstResponder() -> Bool {
+    public var resignFirstResponderCalled = false
+    public func resignFirstResponder() -> Bool {
         resignFirstResponderCalled = true
         return true
     }
     
-    var showLoadingIndicatorCalled = false
-    func showLoadingIndicator() {
+    public var showLoadingIndicatorCalled = false
+    public func showLoadingIndicator() {
         showLoadingIndicatorCalled = true
     }
 
-    var hideLoadingIndicatorCalled = false
-    func hideLoadingIndicator() {
+    public var hideLoadingIndicatorCalled = false
+    public func hideLoadingIndicator() {
         hideLoadingIndicatorCalled = true
     }
     
-    var maxCharSet: Int = -1
-    func set(maxInputCharacters: Int) {
+    public var maxCharSet: Int = -1
+    public func set(maxInputCharacters: Int) {
         maxCharSet = maxInputCharacters
     }
     
-    var clearButtonHidden: Bool = false
-    func hideClearButton(hide: Bool) {
+    public var clearButtonHidden: Bool = false
+    public func hideClearButton(hide: Bool) {
         clearButtonHidden = hide
     }
 }

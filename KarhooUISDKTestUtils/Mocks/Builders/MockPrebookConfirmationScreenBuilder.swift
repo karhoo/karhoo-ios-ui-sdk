@@ -11,14 +11,14 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
+final public class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
 
-    private(set) var quoteSet: Quote?
-    private(set) var journeyDetailsSet: JourneyDetails?
+    public var quoteSet: Quote?
+    public var journeyDetailsSet: JourneyDetails?
     private var confirmationCallbackSet: ScreenResultCallback<PrebookConfirmationAction>?
-    let prebookConfirmationScreenInstance = Screen()
+    public let prebookConfirmationScreenInstance = Screen()
 
-    func buildPrebookConfirmationScreen(quote: Quote,
+    public func buildPrebookConfirmationScreen(quote: Quote,
                                         journeyDetails: JourneyDetails,
                                         confirmationCallback: @escaping ScreenResultCallback<PrebookConfirmationAction>) -> Screen {
         
@@ -29,7 +29,7 @@ final class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuild
     }
     // swiftlint:enable line_length
     
-    func triggerScreenResult(_ result: ScreenResult<PrebookConfirmationAction>) {
+    public func triggerScreenResult(_ result: ScreenResult<PrebookConfirmationAction>) {
         confirmationCallbackSet?(result)
     }
 }

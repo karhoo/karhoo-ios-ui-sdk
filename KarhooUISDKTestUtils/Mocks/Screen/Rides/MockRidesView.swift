@@ -10,50 +10,50 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockRidesView: RidesView {
+final public class MockRidesView: RidesView {
 
-    var indexToSwitchTo: Int?
-    func switchedToPageIndex(index: Int) {
+    public var indexToSwitchTo: Int?
+    public func switchedToPageIndex(index: Int) {
         indexToSwitchTo = index
     }
 
-    var thePages: [RidesListView]?
-    func set(pageViews: [RidesListView]) {
+    public var thePages: [RidesListView]?
+    public func set(pageViews: [RidesListView]) {
         thePages = pageViews
     }
 
-    var theSelectedTrip: TripInfo?
-    func selected(_ trip: TripInfo) {
+    public var theSelectedTrip: TripInfo?
+    public func selected(_ trip: TripInfo) {
         theSelectedTrip = trip
     }
 
-    var selectedTrackedTrip: TripInfo?
-    func pressedTrackTrip(trip: TripInfo) {
+    public var selectedTrackedTrip: TripInfo?
+    public func pressedTrackTrip(trip: TripInfo) {
         selectedTrackedTrip = trip
     }
 
-    var didPressedRequestTrip = false
-    func pressedRequestTrip() {
+    public var didPressedRequestTrip = false
+    public func pressedRequestTrip() {
         didPressedRequestTrip = true
     }
 
-    var movedTabToPastBookings = false
-    func moveTabToPastBookings() {
+    public var movedTabToPastBookings = false
+    public func moveTabToPastBookings() {
         movedTabToPastBookings = true
     }
 
-    var movedTabToUpcomingBookings = false
-    func moveTabToUpcomingBookings() {
+    public var movedTabToUpcomingBookings = false
+    public func moveTabToUpcomingBookings() {
         movedTabToUpcomingBookings = true
     }
 
-    var theTitleSet: String?
-    func set(title: String) {
+    public var theTitleSet: String?
+    public func set(title: String) {
         theTitleSet = title
     }
 
-    private(set) var dismissViewCalled = false
-    func dismissView() {
+    public var dismissViewCalled = false
+    public func dismissView() {
         dismissViewCalled = true
     }
 }

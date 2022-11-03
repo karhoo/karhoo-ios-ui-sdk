@@ -9,4 +9,4 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockTripFeedbackView: MockBaseViewController, TripFeedbackView {}
+final public class MockTripFeedbackView: MockBaseViewController, TripFeedbackView {}

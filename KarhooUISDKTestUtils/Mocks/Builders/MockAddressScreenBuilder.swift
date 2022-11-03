@@ -9,17 +9,16 @@
 import UIKit
 import KarhooSDK
 import CoreLocation
-
 @testable import KarhooUISDK
 
-final class MockAddressScreenBuilder: AddressScreenBuilder {
+final public class MockAddressScreenBuilder: AddressScreenBuilder {
 
-    private(set) var preferredLocationSet: CLLocation?
-    private(set) var addressModeSet: AddressType?
-    private(set) var callbackSet: ScreenResultCallback<LocationInfo>?
-    let returnScreen = UIViewController()
+    public var preferredLocationSet: CLLocation?
+    public var addressModeSet: AddressType?
+    public var callbackSet: ScreenResultCallback<LocationInfo>?
+    public let returnScreen = UIViewController()
 
-    func buildAddressScreen(locationBias: CLLocation?,
+    public func buildAddressScreen(locationBias: CLLocation?,
                             addressType: AddressType,
                             callback: @escaping ScreenResultCallback<LocationInfo>) -> Screen {
         self.preferredLocationSet = locationBias
@@ -29,7 +28,7 @@ final class MockAddressScreenBuilder: AddressScreenBuilder {
         return returnScreen
     }
 
-    func triggerAddressScreenResult(_ result: ScreenResult<LocationInfo>) {
+    public func triggerAddressScreenResult(_ result: ScreenResult<LocationInfo>) {
         callbackSet?(result)
     }
 }

@@ -11,16 +11,16 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockPickupOnlyStrategyDelegate: PickupOnlyStrategyDelegate {
+final public class MockPickupOnlyStrategyDelegate: PickupOnlyStrategyDelegate {
 
-    var locationDetailsSetFromMap: LocationInfo?
-    func setFromMap(pickup: LocationInfo?) {
+    public var locationDetailsSetFromMap: LocationInfo?
+    public func setFromMap(pickup: LocationInfo?) {
         locationDetailsSetFromMap = pickup
     }
 
-    var pickupFailedToSetCalled = false
-    var pickupFailedError: KarhooError?
-    func pickupFailedToSetFromMap(error: KarhooError?) {
+    public var pickupFailedToSetCalled = false
+    public var pickupFailedError: KarhooError?
+    public func pickupFailedToSetFromMap(error: KarhooError?) {
         pickupFailedToSetCalled = true
         pickupFailedError = error
     }

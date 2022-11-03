@@ -11,79 +11,79 @@ import KarhooSDK
 import UIKit
 @testable import KarhooUISDK
 
-class MockBaseView: UIView, BaseView {
+public class MockBaseView: UIView, BaseView {
 
-    var parentViewController: UIViewController? {
+    public var parentViewController: UIViewController? {
         return MockViewController()
     }
 }
 
-final class MockAddressBarView: MockBaseView, AddressBarView {
+final public class MockAddressBarView: MockBaseView, AddressBarView {
 
-    var prebookDateStringSet: String?
-    var prebookTimeStringSet: String?
-    func set(prebookDate: String, prebookTime: String) {
+    public var prebookDateStringSet: String?
+    public var prebookTimeStringSet: String?
+    public func set(prebookDate: String, prebookTime: String) {
         prebookDateStringSet = prebookDate
         prebookTimeStringSet = prebookTime
     }
 
-    var defaultPrebookStateSet = false
-    func setDefaultPrebookState() {
+    public var defaultPrebookStateSet = false
+    public func setDefaultPrebookState() {
         defaultPrebookStateSet = true
     }
 
-    var destinationSetStateCalled = false
-     func destinationSetState(disableClearButton: Bool) {
+    public var destinationSetStateCalled = false
+     public func destinationSetState(disableClearButton: Bool) {
         destinationSetStateCalled = true
     }
     
-    var destinationNotSetStateCalled = false
-    func destinationNotSetState() {
+    public var destinationNotSetStateCalled = false
+    public func destinationNotSetState() {
         destinationNotSetStateCalled = true
     }
 
-    var pickupSetStateCalled = false
-    func pickupSetState() {
+    public var pickupSetStateCalled = false
+    public func pickupSetState() {
         pickupSetStateCalled = true
     }
 
-    var pickupNotSetStateCalled = false
-    func pickupNotSetState() {
+    public var pickupNotSetStateCalled = false
+    public func pickupNotSetState() {
         pickupNotSetStateCalled = true
     }
 
-    var showPickupSpinnerCalled = false
-    func showPickupSpinner() {
+    public var showPickupSpinnerCalled = false
+    public func showPickupSpinner() {
         showPickupSpinnerCalled = true
     }
 
-    var hidePickupSpinnerCalled = false
-    func hidePickupSpinner() {
+    public var hidePickupSpinnerCalled = false
+    public func hidePickupSpinner() {
         hidePickupSpinnerCalled = true
     }
 
-    var pickupDisplayAddressSet: String?
-    var setPickupCalled = false
-    func set(pickupDisplayAddress: String?) {
+    public var pickupDisplayAddressSet: String?
+    public var setPickupCalled = false
+    public func set(pickupDisplayAddress: String?) {
         pickupDisplayAddressSet = pickupDisplayAddress
         setPickupCalled = true
     }
 
-    var destinationDisplayAddressSet: String?
-    var setDestinationCalled = false
-    func set(destinationDisplayAddress: String?) {
+    public var destinationDisplayAddressSet: String?
+    public var setDestinationCalled = false
+    public func set(destinationDisplayAddress: String?) {
         destinationDisplayAddressSet = destinationDisplayAddress
         setDestinationCalled = true
     }
 
-    var setDisplayTripStateCalled = false
-    func setDisplayTripState() {
+    public var setDisplayTripStateCalled = false
+    public func setDisplayTripState() {
         setDisplayTripStateCalled = true
     }
 }
 
 // TODO: move to new file
-class MockLocationPermissionProvider: LocationPermissionProvider {
-    var isLocationPermissionGrantedReturn = true
-    var isLocationPermissionGranted: Bool { isLocationPermissionGrantedReturn }
+public class MockLocationPermissionProvider: LocationPermissionProvider {
+    public var isLocationPermissionGrantedReturn = true
+    public var isLocationPermissionGranted: Bool { isLocationPermissionGrantedReturn }
 }

@@ -8,11 +8,11 @@
 
 @testable import KarhooUISDK
 
-final class MockCancelRideBehaviour: CancelRideBehaviourProtocol {
-    weak var delegate: CancelRideDelegate?
-    private(set) var cancelPressedCalled = false
+final public class MockCancelRideBehaviour: CancelRideBehaviourProtocol {
+    weak public var delegate: CancelRideDelegate?
+    public var cancelPressedCalled = false
 
-    func cancelPressed() {
+    public func cancelPressed() {
         cancelPressedCalled = true
     }
 }

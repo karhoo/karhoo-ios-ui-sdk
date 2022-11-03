@@ -9,22 +9,22 @@
 import Foundation
 import KarhooSDK
 
-class TestBroadcaster: Broadcaster<AnyObject> {
-    var lastListenerAdded: AnyObject?
-    var lastListenerRemoved: AnyObject?
+public class TestBroadcaster: Broadcaster<AnyObject> {
+    public var lastListenerAdded: AnyObject?
+    public var lastListenerRemoved: AnyObject?
 
-    override func add(listener: AnyObject) {
+    override public func add(listener: AnyObject) {
         lastListenerAdded = listener
         super.add(listener: listener)
     }
 
-    override func remove(listener: AnyObject) {
+    override public func remove(listener: AnyObject) {
         lastListenerRemoved = listener
         super.remove(listener: listener)
     }
 
-    var hasListenersReturnValue: Bool?
-    override func hasListeners() -> Bool {
+    public var hasListenersReturnValue: Bool?
+    override public func hasListeners() -> Bool {
         if hasListenersReturnValue == nil {
             return super.hasListeners()
         }

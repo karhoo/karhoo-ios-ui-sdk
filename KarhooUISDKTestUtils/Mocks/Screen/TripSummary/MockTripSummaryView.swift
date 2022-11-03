@@ -10,15 +10,15 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockTripSummaryView: TripSummaryView {
+final public class MockTripSummaryView: TripSummaryView {
 
-    private(set) var tripSet: TripInfo?
-    func set(trip: TripInfo) {
+    public var tripSet: TripInfo?
+    public func set(trip: TripInfo) {
         tripSet = trip
     }
 
-    private(set) var dismissViewCalled = false
-    func dismissView() {
+    public var dismissViewCalled = false
+    public func dismissView() {
         dismissViewCalled = true
     }
 }

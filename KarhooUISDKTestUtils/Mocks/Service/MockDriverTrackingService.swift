@@ -11,11 +11,11 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class MockDriverTrackingService: DriverTrackingService {
+public class MockDriverTrackingService: DriverTrackingService {
 
-    let trackDriverCall = MockPollCall<DriverTrackingInfo>()
-    var trackDriverCalled = false
-    func trackDriver(tripId: String) -> PollCall<DriverTrackingInfo> {
+    public let trackDriverCall = MockPollCall<DriverTrackingInfo>()
+    public var trackDriverCalled = false
+    public func trackDriver(tripId: String) -> PollCall<DriverTrackingInfo> {
         trackDriverCalled = true
         return trackDriverCall
     }

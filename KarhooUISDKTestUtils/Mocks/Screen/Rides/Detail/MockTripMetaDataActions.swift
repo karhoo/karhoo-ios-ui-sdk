@@ -8,10 +8,10 @@
 
 @testable import KarhooUISDK
 
-final class MockTripMetaDataActions: TripMetaDataActions {
+final public class MockTripMetaDataActions: TripMetaDataActions {
 
-    private(set) var showBaseFareDialogCalled = false
-    func showBaseFareDialog() {
+    public var showBaseFareDialogCalled = false
+    public func showBaseFareDialog() {
         showBaseFareDialogCalled = true
     }
 }

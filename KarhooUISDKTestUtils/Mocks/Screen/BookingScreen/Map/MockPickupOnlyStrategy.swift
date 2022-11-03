@@ -9,10 +9,10 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockPickupOnlyStrategy: MockBookingMapStrategy, PickupOnlyStrategyProtocol {
+final public class MockPickupOnlyStrategy: MockBookingMapStrategy, PickupOnlyStrategyProtocol {
 
-    private(set) var pickupOnlyStrategyDelegateSet: PickupOnlyStrategyDelegate?
-    func set(delegate: PickupOnlyStrategyDelegate?) {
+    public var pickupOnlyStrategyDelegateSet: PickupOnlyStrategyDelegate?
+    public func set(delegate: PickupOnlyStrategyDelegate?) {
         self.pickupOnlyStrategyDelegateSet = delegate
     }
 }

@@ -10,12 +10,12 @@ import KarhooSDK
 import Foundation
 @testable import KarhooUISDK
 
-final class MockTripsSorter: TripsSorter {
+final public class MockTripsSorter: TripsSorter {
 
-    var sortedOrder: ComparisonResult?
-    var tripsOutput: [TripInfo]?
-    var sortCalled = false
-    func sort(trips: [TripInfo]) -> [TripInfo] {
+    public var sortedOrder: ComparisonResult?
+    public var tripsOutput: [TripInfo]?
+    public var sortCalled = false
+    public func sort(trips: [TripInfo]) -> [TripInfo] {
         sortCalled = true
         return tripsOutput ?? trips
     }

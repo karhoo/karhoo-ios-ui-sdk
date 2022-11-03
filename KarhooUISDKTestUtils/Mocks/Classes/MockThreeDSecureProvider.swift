@@ -10,14 +10,14 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockThreeDSecureProvider: ThreeDSecureProvider {
+final public class MockThreeDSecureProvider: ThreeDSecureProvider {
 
-    private(set) var nonceSet: String?
-    private(set) var paymentAmountSet: NSDecimalNumber?
-    private(set) var currencyCodeSet: String?
+    public var nonceSet: String?
+    public var paymentAmountSet: NSDecimalNumber?
+    public var currencyCodeSet: String?
     private var callback: ((OperationResult<ThreeDSecureCheckResult>) -> Void)?
-    private(set) var threeDSecureCalled = false
-    func threeDSecureCheck(nonce: String,
+    public var threeDSecureCalled = false
+    public func threeDSecureCheck(nonce: String,
                            currencyCode: String,
                            paymentAmount: NSDecimalNumber,
                            callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void) {
@@ -28,12 +28,12 @@ final class MockThreeDSecureProvider: ThreeDSecureProvider {
         self.threeDSecureCalled = true
     }
 
-    private(set) var setBaseViewControllerCalled = false
-    func set(baseViewController: BaseViewController) {
+    public var setBaseViewControllerCalled = false
+    public func set(baseViewController: BaseViewController) {
         setBaseViewControllerCalled = true
     }
 
-    func triggerResult(_ result: OperationResult<ThreeDSecureCheckResult>) {
+    public func triggerResult(_ result: OperationResult<ThreeDSecureCheckResult>) {
         self.callback?(result)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-class MockCall<T: KarhooCodableModel>: Call<T> {
+public class MockCall<T: KarhooCodableModel>: Call<T> {
 
     private var callback: ((Result<T>) -> Void)?
     public var executed: Bool = false
@@ -22,20 +22,20 @@ class MockCall<T: KarhooCodableModel>: Call<T> {
         super.init(executable: MockExecutable())
     }
 
-    override func execute(callback: @escaping (Result<T>) -> Void) {
+    override public func execute(callback: @escaping (Result<T>) -> Void) {
         self.executed = true
         self.callback = callback
     }
 
-    func triggerResult(result: Result<T>) {
+    public func triggerResult(result: Result<T>) {
         callback?(result)
     }
 
-    func triggerSuccess(_ value: T) {
+    public func triggerSuccess(_ value: T) {
         callback?(.success(result: value))
     }
 
-    func triggerFailure(_ error: KarhooError) {
+    public func triggerFailure(_ error: KarhooError) {
         callback?(.failure(error: error))
     }
 }

@@ -8,18 +8,18 @@
 
 @testable import KarhooUISDK
 
-final class MockTripMetaDataView: TripMetaDataView {
+final public class MockTripMetaDataView: TripMetaDataView {
 
-    var setViewModel: TripMetaDataViewModel?
-    var setPresenter: TripMetaDataPresenter?
-    func set(viewModel: TripMetaDataViewModel,
+    public var setViewModel: TripMetaDataViewModel?
+    public var setPresenter: TripMetaDataPresenter?
+    public func set(viewModel: TripMetaDataViewModel,
              presenter: TripMetaDataPresenter) {
         setViewModel = viewModel
         setPresenter = presenter
     }
 
-    private(set) var hideRatingOptionsCalled = false
-    func hideRatingOptions() {
+    public var hideRatingOptionsCalled = false
+    public func hideRatingOptions() {
         hideRatingOptionsCalled = true
     }
 }

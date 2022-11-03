@@ -11,20 +11,20 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockCardRegistrationFlow: CardRegistrationFlow {
+final public class MockCardRegistrationFlow: CardRegistrationFlow {
 
-    private(set) var setBaseViewControllerCalled = false
-    func setBaseView(_ baseViewController: BaseViewController?) {
+    public var setBaseViewControllerCalled = false
+    public func setBaseView(_ baseViewController: BaseViewController?) {
         setBaseViewControllerCalled = true
     }
 
-    private(set) var startCalled = false
-    private(set) var currencyCodeSet: String?
-    private(set) var supplierPartnerIdSet: String?
-    private(set) var showUpdateCardAlertSet: Bool?
-    private(set) var amountSet: Int?
+    public var startCalled = false
+    public var currencyCodeSet: String?
+    public var supplierPartnerIdSet: String?
+    public var showUpdateCardAlertSet: Bool?
+    public var amountSet: Int?
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
-    func start(cardCurrency: String,
+    public func start(cardCurrency: String,
                amount: Int,
                supplierPartnerId: String,
                showUpdateCardAlert: Bool,
@@ -37,7 +37,7 @@ final class MockCardRegistrationFlow: CardRegistrationFlow {
         self.callback = callback
     }
 
-    func triggerAddCardResult(_ result: OperationResult<CardFlowResult>) {
+    public func triggerAddCardResult(_ result: OperationResult<CardFlowResult>) {
         callback?(result)
     }
 }

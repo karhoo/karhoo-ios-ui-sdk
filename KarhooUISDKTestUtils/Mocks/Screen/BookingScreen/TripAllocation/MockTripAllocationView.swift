@@ -9,50 +9,50 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockTripAllocationView: TripAllocationView {
+final public class MockTripAllocationView: TripAllocationView {
     
-    private(set) var tripDriverAllocationDelayedCalled = false
+    public var tripDriverAllocationDelayedCalled = false
 
-    private(set) var actionsSet: TripAllocationActions?
-    func set(actions: TripAllocationActions) {
+    public var actionsSet: TripAllocationActions?
+    public func set(actions: TripAllocationActions) {
         actionsSet = actions
     }
 
-    private(set) var tripSet: TripInfo?
-    func presentScreen(forTrip trip: TripInfo) {
+    public var tripSet: TripInfo?
+    public func presentScreen(forTrip trip: TripInfo) {
         tripSet = trip
     }
 
-    private(set) var tripAllocatedCalled: TripInfo?
-    func tripAllocated(trip: TripInfo) {
+    public var tripAllocatedCalled: TripInfo?
+    public func tripAllocated(trip: TripInfo) {
         tripAllocatedCalled = trip
     }
 
-    private(set) var tripCancellationRequestSucceededCalled = false
-    func tripCancellationRequestSucceeded() {
+    public var tripCancellationRequestSucceededCalled = false
+    public func tripCancellationRequestSucceeded() {
         tripCancellationRequestSucceededCalled = true
     }
 
-    private(set) var tripCancellationRequestFailedCalled: KarhooError?
-    private(set) var tripCancellationRequestFailedCalledTrip: TripInfo?
-    func tripCancellationRequestFailed(error: KarhooError?, trip: TripInfo) {
+    public var tripCancellationRequestFailedCalled: KarhooError?
+    public var tripCancellationRequestFailedCalledTrip: TripInfo?
+    public func tripCancellationRequestFailed(error: KarhooError?, trip: TripInfo) {
         tripCancellationRequestFailedCalled = error
         tripCancellationRequestFailedCalledTrip = trip
     }
 
-    private(set) var tripCancelledBySystemCalled = false
-    private(set) var tripCancelledBySystemSet: TripInfo?
-    func tripCancelledBySystem(trip: TripInfo) {
+    public var tripCancelledBySystemCalled = false
+    public var tripCancelledBySystemSet: TripInfo?
+    public func tripCancelledBySystem(trip: TripInfo) {
         tripCancelledBySystemCalled = true
         tripCancelledBySystemSet = trip
     }
 
-    private(set) var resetCancelButtonCalled = false
-    func resetCancelButtonProgress() {
+    public var resetCancelButtonCalled = false
+    public func resetCancelButtonProgress() {
         resetCancelButtonCalled = true
     }
     
-    func tripDriverAllocationDelayed(trip: TripInfo) {
+    public func tripDriverAllocationDelayed(trip: TripInfo) {
         tripDriverAllocationDelayedCalled = true
     }
 }

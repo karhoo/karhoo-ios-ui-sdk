@@ -9,31 +9,31 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockDatePickerView: MockBaseViewController, DatePickerView {
+final public class MockDatePickerView: MockBaseViewController, DatePickerView {
     
-    private(set) var theTimeZoneSet: TimeZone?
-    func setDatePicker(timeZone: TimeZone) {
+    public var theTimeZoneSet: TimeZone?
+    public func setDatePicker(timeZone: TimeZone) {
         theTimeZoneSet = timeZone
     }
 
-    private(set) var theTimeZoneMessageText: String?
-    func set(timeZoneMessageText: String) {
+    public var theTimeZoneMessageText: String?
+    public func set(timeZoneMessageText: String) {
         theTimeZoneMessageText = timeZoneMessageText
     }
 
-    private(set) var timeZoneMessageHiddenSet: Bool = false
-    func set(timeZoneMessageHidden: Bool) {
+    public var timeZoneMessageHiddenSet: Bool = false
+    public func set(timeZoneMessageHidden: Bool) {
         timeZoneMessageHiddenSet = timeZoneMessageHidden
     }
 
-    private(set) var dateSet: Date?
-    func set(date: Date) {
+    public var dateSet: Date?
+    public func set(date: Date) {
         dateSet = date
     }
 
-    private(set) var minDateSet: Date?
-    private(set) var maxDateSet: Date?
-    func setBoundries(min: Date, max: Date) {
+    public var minDateSet: Date?
+    public var maxDateSet: Date?
+    public func setBoundries(min: Date, max: Date) {
         minDateSet = min
         maxDateSet = max
     }

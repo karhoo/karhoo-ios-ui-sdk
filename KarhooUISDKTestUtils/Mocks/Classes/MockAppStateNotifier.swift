@@ -9,31 +9,31 @@
 import Foundation
 import KarhooSDK
 
-final class MockAppStateNotifier: AppStateNotifierProtocol {
+final public class MockAppStateNotifier: AppStateNotifierProtocol {
 
-    private(set) var listeners = [AppStateChangeDelegate?]()
+    public var listeners = [AppStateChangeDelegate?]()
 
-    private(set) var registrationsCount = 0
-    func register(listener: AppStateChangeDelegate) {
+    public var registrationsCount = 0
+    public func register(listener: AppStateChangeDelegate) {
         listeners.append(listener)
         registrationsCount += 1
     }
 
-    private(set) var removalCount = 0
-    func remove(listener: AppStateChangeDelegate) {
+    public var removalCount = 0
+    public func remove(listener: AppStateChangeDelegate) {
         listeners = listeners.filter { $0 !== listener }
         removalCount += 1
     }
 
-    func signalAppDidBecomeActive() {
+    public func signalAppDidBecomeActive() {
         listeners.forEach { $0?.appDidBecomeActive() }
     }
 
-    func signalAppWillResignActive() {
+    public func signalAppWillResignActive() {
         listeners.forEach { $0?.appWillResignActive() }
     }
 
-    func signalAppDidEnterBackground() {
+    public func signalAppDidEnterBackground() {
         listeners.forEach { $0?.appDidEnterBackground() }
     }
 }

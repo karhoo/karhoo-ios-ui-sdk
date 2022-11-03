@@ -9,11 +9,11 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockJourneyDetailsObserver: JourneyDetailsObserver {
-    var lastJourneyDetails: JourneyDetails?
-    var journeyDetailsChangedCalled = false
+final public class MockJourneyDetailsObserver: JourneyDetailsObserver {
+    public var lastJourneyDetails: JourneyDetails?
+    public var journeyDetailsChangedCalled = false
 
-    func journeyDetailsChanged(details: JourneyDetails?) {
+    public func journeyDetailsChanged(details: JourneyDetails?) {
         lastJourneyDetails = details
         journeyDetailsChangedCalled = true
     }

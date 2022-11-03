@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 @testable import KarhooUISDK
 
-final class MockDatePickerScreenBuilder: DatePickerScreenBuilder {
+final public class MockDatePickerScreenBuilder: DatePickerScreenBuilder {
 
-    private(set) var startDateSet: Date?
-    private(set) var timeZoneSet: TimeZone?
-    private(set) var callbackSet: ScreenResultCallback<Date>?
-    let returnViewController = UIViewController()
+    public var startDateSet: Date?
+    public var timeZoneSet: TimeZone?
+    public var callbackSet: ScreenResultCallback<Date>?
+    public let returnViewController = UIViewController()
 
-    func buildDatePickerScreen(startDate: Date?,
+    public func buildDatePickerScreen(startDate: Date?,
                                timeZone: TimeZone,
                                callback: @escaping ScreenResultCallback<Date>) -> Screen {
         startDateSet = startDate
@@ -27,7 +27,7 @@ final class MockDatePickerScreenBuilder: DatePickerScreenBuilder {
         return returnViewController
     }
 
-    func triggerScreenResult(_ result: ScreenResult<Date>) {
+    public func triggerScreenResult(_ result: ScreenResult<Date>) {
         self.callbackSet?(result)
     }
 }

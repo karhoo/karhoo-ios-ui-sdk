@@ -10,112 +10,112 @@ import UIKit
 import CoreLocation
 @testable import KarhooUISDK
 
-final class MockKarhooMapView: UIView, MapView {
+final public class MockKarhooMapView: UIView, MapView {
 
-    func set(presenter: MapPresenter) {}
+    public func set(presenter: MapPresenter) {}
 
-    var standardZoom: Float {
+    public var standardZoom: Float {
         return 1
     }
 
-    var idealMaximumZoom: Float {
+    public var idealMaximumZoom: Float {
         return 2
     }
 
-    private(set) var centerIconSet: String?
-    func set(centerIcon: String, tintColor: UIColor) {
+    public var centerIconSet: String?
+    public func set(centerIcon: String, tintColor: UIColor) {
         centerIconSet = centerIcon
     }
 
-    var minimumZoomSet: Float?
-    var maximumZoomSet: Float?
-    func set(minimumZoom: Float, maximumZoom: Float) {
+    public var minimumZoomSet: Float?
+    public var maximumZoomSet: Float?
+    public func set(minimumZoom: Float, maximumZoom: Float) {
         minimumZoomSet = minimumZoom
         maximumZoomSet = maximumZoom
     }
 
-    var actionsSet: MapViewActions?
-    func set(actions: MapViewActions?) {
+    public var actionsSet: MapViewActions?
+    public func set(actions: MapViewActions?) {
         actionsSet = actions
     }
 
-    func set(padding: UIEdgeInsets) {}
+    public func set(padding: UIEdgeInsets) {}
 
-    func set(userMarkerVisible: Bool) {}
+    public func set(userMarkerVisible: Bool) {}
 
-    var focusButtonHiddenSet: Bool?
-	func set(focusButtonHidden: Bool) {
+    public var focusButtonHiddenSet: Bool?
+	public func set(focusButtonHidden: Bool) {
         focusButtonHiddenSet = focusButtonHidden
     }
 
-    func getCenter() -> CLLocation? { return CLLocation() }
+    public func getCenter() -> CLLocation? { return CLLocation() }
 
-    var locationToCenterOn: CLLocation?
-    func center(on: CLLocation) {
+    public var locationToCenterOn: CLLocation?
+    public func center(on: CLLocation) {
         locationToCenterOn = on
     }
 
-    var locationToCenterOnZoom: CLLocation?
-    var locationToCenterOnZoomLevel: Float?
-    func center(on: CLLocation, zoomLevel: Float) {
+    public var locationToCenterOnZoom: CLLocation?
+    public var locationToCenterOnZoomLevel: Float?
+    public func center(on: CLLocation, zoomLevel: Float) {
         locationToCenterOnZoom = on
         locationToCenterOn = on
         locationToCenterOnZoomLevel = zoomLevel
     }
 
-    func draw(polyline: String) {}
+    public func draw(polyline: String) {}
 
-    func remove(polyline: String) {}
+    public func remove(polyline: String) {}
 
-    var zoomedToDefaultLevelCalled = false
-    func zoomToDefaultLevel() {
+    public var zoomedToDefaultLevelCalled = false
+    public func zoomToDefaultLevel() {
         zoomedToDefaultLevelCalled = true
     }
 
-    func zoom(toPolyline: String) {}
+    public func zoom(toPolyline: String) {}
 
-    var locationsToZoomTo: [CLLocation]?
-    func zoom(to: [CLLocation]) {
+    public var locationsToZoomTo: [CLLocation]?
+    public func zoom(to: [CLLocation]) {
         locationsToZoomTo = to
     }
 
-    private(set) var zoomToUserPositionToReturn = true
-    func zoomToUserPosition(completion: @escaping (Bool) -> Void) {
+    public var zoomToUserPositionToReturn = true
+    public func zoomToUserPosition(completion: @escaping (Bool) -> Void) {
         completion(zoomToUserPositionToReturn)
     }
 
-    var levelToZoomTo: Float?
-    func zoom(toLevel: Float) {
+    public var levelToZoomTo: Float?
+    public func zoom(toLevel: Float) {
         levelToZoomTo = toLevel
     }
 
-    var addedPins: [TripPinTags: CLLocationCoordinate2D] = [:]
-    func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
+    public var addedPins: [TripPinTags: CLLocationCoordinate2D] = [:]
+    public func addPin(annotation: MapAnnotationViewModel, tag: TripPinTags) {
         addedPins[tag] = annotation.coordinate
     }
 
-    var removedPins: [TripPinTags] = []
-    func removePin(tag: TripPinTags) {
+    public var removedPins: [TripPinTags] = []
+    public func removePin(tag: TripPinTags) {
         removedPins.append(tag)
     }
 
-    var movedPins: [TripPinTags: CLLocation] = [:]
-    func movePin(tag: TripPinTags, to: CLLocation) {
+    public var movedPins: [TripPinTags: CLLocation] = [:]
+    public func movePin(tag: TripPinTags, to: CLLocation) {
         movedPins[tag] = to
     }
 
-    var centerPinHidden: Bool?
-    func centerPin(hidden: Bool) {
+    public var centerPinHidden: Bool?
+    public func centerPin(hidden: Bool) {
         centerPinHidden = hidden
     }
 
-    var addTripLineCalled = false
-    func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
+    public var addTripLineCalled = false
+    public func addTripLine(pickup: CLLocation, dropoff: CLLocation) {
         addTripLineCalled = true
     }
 
-    var removeTripLineCalled = false
-    func removeTripLine() {
+    public var removeTripLineCalled = false
+    public func removeTripLine() {
         removeTripLineCalled = true
     }
 }

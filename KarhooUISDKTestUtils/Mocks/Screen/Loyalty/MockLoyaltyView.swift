@@ -10,7 +10,7 @@ import UIKit
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockLoyaltyView: LoyaltyView {
+final public class MockLoyaltyView: LoyaltyView {
     private(set)var mode: LoyaltyMode?
     private(set)var earnText: String?
     private(set)var burnText: String?
@@ -23,39 +23,39 @@ final class MockLoyaltyView: LoyaltyView {
     private(set)var didSetDelegate = false
     private(set)var didCallGetUpdateLoyaltyFeatures = false
     
-    var delegate: LoyaltyViewDelegate? {
+    public var delegate: LoyaltyViewDelegate? {
         didSet {
             didSetDelegate = true
         }
     }
     
-    var currentMode: LoyaltyMode = .none {
+    public var currentMode: LoyaltyMode = .none {
         didSet {
             didCallGetCurrentMode = true
         }
     }
     
-    var getLoyaltyNonceCalled = false
-    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+    public var getLoyaltyNonceCalled = false
+    public func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         getLoyaltyNonceCalled = true
         let nonce = LoyaltyNonce(loyaltyNonce: TestUtil.getRandomString())
         completion(Result.success(result: nonce))
     }
     
     private(set)var hasErrorsCalled = false
-    func hasError() -> Bool {
+    public func hasError() -> Bool {
         hasErrorsCalled = true
         return false
     }
 
     private(set)var didSetRequest = false
-    func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
+    public func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
         didSetRequest = true
     }
 }
 
 extension MockLoyaltyView: LoyaltyPresenterDelegate {
-    func updateWith(mode: LoyaltyMode, earnSubtitle: String?, burnSubtitle: String?, errorMessage: String?) {
+    public func updateWith(mode: LoyaltyMode, earnSubtitle: String?, burnSubtitle: String?, errorMessage: String?) {
         self.mode = mode
         self.earnText = earnSubtitle
         self.burnText = burnSubtitle
@@ -63,7 +63,7 @@ extension MockLoyaltyView: LoyaltyPresenterDelegate {
         didCallSetLoyaltyMode = true
     }
     
-    func togglefeatures(earnOn: Bool, burnOn: Bool) {
+    public func togglefeatures(earnOn: Bool, burnOn: Bool) {
         self.earnOn = earnOn
         self.burnOn = burnOn
         didCallGetUpdateLoyaltyFeatures = true

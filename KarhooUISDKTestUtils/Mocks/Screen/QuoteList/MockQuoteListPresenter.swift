@@ -9,61 +9,61 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-class MockQuoteListPresenter: QuoteListPresenter {
-    var onStateUpdatedCallback: () -> Void = {}
-    lazy var onStateUpdated: ((KarhooUISDK.QuoteListState) -> Void)? = { _ in
+public class MockQuoteListPresenter: QuoteListPresenter {
+    public var onStateUpdatedCallback: () -> Void = {}
+    lazy public var onStateUpdated: ((KarhooUISDK.QuoteListState) -> Void)? = { _ in
         self.onStateUpdatedCallback()
     }
 
-    var onFiltersCountUpdatedCallback: () -> Void = {}
-    lazy var onFiltersCountUpdated: ((Int) -> Void)? = { _ in
+    public var onFiltersCountUpdatedCallback: () -> Void = {}
+    lazy public var onFiltersCountUpdated: ((Int) -> Void)? = { _ in
         self.onFiltersCountUpdatedCallback()
     }
 
-    var isSortingAvailableToReturn = true
-    var isSortingAvailable: Bool { isSortingAvailableToReturn }
+    public var isSortingAvailableToReturn = true
+    public var isSortingAvailable: Bool { isSortingAvailableToReturn }
 
-    func viewDidLoad() {
+    public func viewDidLoad() {
     }
 
-    func viewWillAppear() {
+    public func viewWillAppear() {
     }
 
-    func viewWillDisappear() {
+    public func viewWillDisappear() {
     }
 
-    var getNumberOfResultsForQuoteFiltersToReturn = 0
-    func getNumberOfResultsForQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) -> Int {
+    public var getNumberOfResultsForQuoteFiltersToReturn = 0
+    public func getNumberOfResultsForQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) -> Int {
         getNumberOfResultsForQuoteFiltersToReturn
     }
 
-    var selectedQuoteFiltersCalled = false
-    func selectedQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) {
+    public var selectedQuoteFiltersCalled = false
+    public func selectedQuoteFilters(_ filters: [KarhooUISDK.QuoteListFilter]) {
         selectedQuoteFiltersCalled = true
     }
 
-    var didSelectQuoteSortOrderCalled = false
-    func didSelectQuoteSortOrder(_ order: KarhooUISDK.QuoteListSortOrder) {
+    public var didSelectQuoteSortOrderCalled = false
+    public func didSelectQuoteSortOrder(_ order: KarhooUISDK.QuoteListSortOrder) {
         didSelectQuoteSortOrderCalled = true
     }
 
-    var didSelectQuoteCalled = false
-    func didSelectQuote(_ quote: KarhooSDK.Quote) {
+    public var didSelectQuoteCalled = false
+    public func didSelectQuote(_ quote: KarhooSDK.Quote) {
         didSelectQuoteCalled = true
     }
 
-    var didSelectQuoteDetails = false
-    func didSelectQuoteDetails(_ quote: KarhooSDK.Quote) {
+    public var didSelectQuoteDetails = false
+    public func didSelectQuoteDetails(_ quote: KarhooSDK.Quote) {
         didSelectQuoteDetails = true
     }
 
-    var didSelectShowSortCalled = false
-    func didSelectShowSort() {
+    public var didSelectShowSortCalled = false
+    public func didSelectShowSort() {
         didSelectShowSortCalled = true
     }
 
-    var didSelectShowFiltersCalled = false
-    func didSelectShowFilters() {
+    public var didSelectShowFiltersCalled = false
+    public func didSelectShowFilters() {
         didSelectShowFiltersCalled = true
     }
 }

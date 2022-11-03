@@ -9,19 +9,19 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockDestinationEtaView: DestinationEtaView {
+final public class MockDestinationEtaView: DestinationEtaView {
    
-    func start(tripId: String) {}
+    public func start(tripId: String) {}
     
-    func stop() {}
+    public func stop() {}
     
-    var showEtaSet: String?
-    func show(eta: String) {
+    public var showEtaSet: String?
+    public func show(eta: String) {
         showEtaSet = eta
     }
     
-    var hideEtaCalled = false
-    func hide() {
+    public var hideEtaCalled = false
+    public func hide() {
         hideEtaCalled = true
     }
     

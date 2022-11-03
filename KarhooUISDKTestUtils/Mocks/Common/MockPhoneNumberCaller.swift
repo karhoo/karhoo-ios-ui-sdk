@@ -8,10 +8,10 @@
 
 @testable import KarhooUISDK
 
-class MockPhoneNumberCaller: PhoneNumberCallerProtocol {
-    private(set) var numberCalled: String?
+public class MockPhoneNumberCaller: PhoneNumberCallerProtocol {
+    public var numberCalled: String?
 
-    func call(number: String) {
+    public func call(number: String) {
         numberCalled = number
     }
 }

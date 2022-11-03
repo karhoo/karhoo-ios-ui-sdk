@@ -9,24 +9,24 @@
 import Foundation
 import KarhooSDK
 
-final class MockKarhooPollExecutor: KarhooPollExecutor {
+final public class MockKarhooPollExecutor: KarhooPollExecutor {
 
     private let mockExecutable: MockExecutable
     init(executable: MockExecutable = MockExecutable()) {
         self.mockExecutable = executable
     }
 
-    func set(pollTime: TimeInterval) {}
+    public func set(pollTime: TimeInterval) {}
 
-    func stopPolling() {}
+    public func stopPolling() {}
 
-    var executable: KarhooExecutable {
+    public var executable: KarhooExecutable {
         return self.mockExecutable
     }
 
-    var startedPolling = false
+    public var startedPolling = false
     private var pollingCallback: CallbackClosure<Any>?
-    func startPolling<T>(pollTime: TimeInterval, callback: @escaping CallbackClosure<T>) {
+    public func startPolling<T>(pollTime: TimeInterval, callback: @escaping CallbackClosure<T>) {
         startedPolling = true
         pollingCallback = { (result: Result<Any>) -> Void in
             if let value = result.getSuccessValue() as? T {
@@ -37,11 +37,11 @@ final class MockKarhooPollExecutor: KarhooPollExecutor {
         }
     }
 
-    func triggerSuccess<T: KarhooCodableModel>(_ value: T) {
+    public func triggerSuccess<T: KarhooCodableModel>(_ value: T) {
         pollingCallback?(.success(result: value))
     }
 
-    func triggerFail(_ error: KarhooError) {
+    public func triggerFail(_ error: KarhooError) {
         pollingCallback?(.failure(error: error))
     }
 }

@@ -6,6 +6,6 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-class KarhooUISDKTestUtils {
+public class KarhooUISDKTestUtils {
 
 }

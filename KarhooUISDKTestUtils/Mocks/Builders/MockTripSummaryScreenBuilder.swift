@@ -12,14 +12,14 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockTripSummaryScreenBuilder: TripSummaryScreenBuilder {
+final public class MockTripSummaryScreenBuilder: TripSummaryScreenBuilder {
 
-    private(set) var tripSet: TripInfo?
-    private(set) var callbackSet: ScreenResultCallback<TripSummaryResult>?
+    public var tripSet: TripInfo?
+    public var callbackSet: ScreenResultCallback<TripSummaryResult>?
 
-    let returnViewController = UIViewController()
+    public let returnViewController = UIViewController()
 
-    func buildTripSummaryScreen(trip: TripInfo,
+    public func buildTripSummaryScreen(trip: TripInfo,
                                 callback: @escaping ScreenResultCallback<TripSummaryResult>) -> Screen {
         tripSet = trip
         callbackSet = callback

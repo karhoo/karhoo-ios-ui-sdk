@@ -10,35 +10,35 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockRidesListActions: RidesListActions {
+final public class MockRidesListActions: RidesListActions {
 
-    private(set) var selectedTrip: TripInfo?
-    func selectedTrip(_ trip: TripInfo) {
+    public var selectedTrip: TripInfo?
+    public func selectedTrip(_ trip: TripInfo) {
         selectedTrip = trip
     }
 
-    private(set) var trackTrip: TripInfo?
-    func trackTrip(_ trip: TripInfo) {
+    public var trackTrip: TripInfo?
+    public func trackTrip(_ trip: TripInfo) {
         trackTrip = trip
     }
 
-    private(set) var rebookTrip: TripInfo?
-    func rebookTrip(_ trip: TripInfo) {
+    public var rebookTrip: TripInfo?
+    public func rebookTrip(_ trip: TripInfo) {
         rebookTrip = trip
     }
 
-    private(set) var cancelledTrip: TripInfo?
-    func didCancelTrip(_ trip: TripInfo) {
+    public var cancelledTrip: TripInfo?
+    public func didCancelTrip(_ trip: TripInfo) {
         cancelledTrip = trip
     }
 
-    private(set) var contactFleetCalled: TripInfo?
-    func contactFleet(_ trip: TripInfo, number: String) {
+    public var contactFleetCalled: TripInfo?
+    public func contactFleet(_ trip: TripInfo, number: String) {
         contactFleetCalled = trip
     }
 
-    private(set) var contactDriverCalled: TripInfo?
-    func contactDriver(_ trip: TripInfo, number: String) {
+    public var contactDriverCalled: TripInfo?
+    public func contactDriver(_ trip: TripInfo, number: String) {
         contactDriverCalled = trip
     }
 }

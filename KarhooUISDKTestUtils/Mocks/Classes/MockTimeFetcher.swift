@@ -10,9 +10,9 @@ import Foundation
 
 @testable import KarhooUISDK
 
-final class MockTimeFetcher: TimeFetcher {
-    var timeToDeliver: Date = Date()
-    func now() -> Date {
+final public class MockTimeFetcher: TimeFetcher {
+    public var timeToDeliver: Date = Date()
+    public func now() -> Date {
         return timeToDeliver
     }
 }

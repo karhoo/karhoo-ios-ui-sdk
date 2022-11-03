@@ -29,13 +29,22 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "518ADDA629142484007976E1"
-               BuildableName = "ClientTests.xctest"
-               BlueprintName = "ClientTests"
+               BlueprintIdentifier = "FC8F471C21539E24007841FB"
+               BuildableName = "KarhooUISDKTests.xctest"
+               BlueprintName = "KarhooUISDKTests"
+               ReferencedContainer = "container:KarhooUISDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "51CC85B9290BC1E600E5E703"
+               BuildableName = "KarhooUISDKUITests.xctest"
+               BlueprintName = "KarhooUISDKUITests"
                ReferencedContainer = "container:KarhooUISDK.xcodeproj">
             </BuildableReference>
          </TestableReference>

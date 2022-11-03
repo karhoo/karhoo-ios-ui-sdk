@@ -9,19 +9,19 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockLoyaltyViewDelegate: LoyaltyViewDelegate {
+final public class MockLoyaltyViewDelegate: LoyaltyViewDelegate {
     private(set)var didCallToggleLoyaltyMode = false
-    func didChangeMode(newValue: LoyaltyMode) {
+    public func didChangeMode(newValue: LoyaltyMode) {
         didCallToggleLoyaltyMode = true
     }
     
     private(set)var didCallStartLoading = false
-    func didStartLoading() {
+    public func didStartLoading() {
         didCallStartLoading = true
     }
     
     private(set)var didCallEndLoading = false
-    func didEndLoading() {
+    public func didEndLoading() {
         didCallEndLoading = true
     }  
 }

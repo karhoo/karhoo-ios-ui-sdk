@@ -8,15 +8,15 @@
 
 @testable import KarhooUISDK
 
-final class MockBookingAllocationSpinnerView: BookingAllocationSpinnerView {
+final public class MockBookingAllocationSpinnerView: BookingAllocationSpinnerView {
 
-    private(set) var startRotationCalled = false
-    func startRotation() {
+    public var startRotationCalled = false
+    public func startRotation() {
         startRotationCalled = true
     }
 
-    private(set) var stopRotationCalled = false
-    func stopRotation() {
+    public var stopRotationCalled = false
+    public func stopRotation() {
         stopRotationCalled = true
     }
 }

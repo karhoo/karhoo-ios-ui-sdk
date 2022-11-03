@@ -11,47 +11,47 @@ import Foundation
 @testable import KarhooUISDK
 import KarhooSDK
 
-class MockBaseViewController: UIViewController, BaseViewController {
+public class MockBaseViewController: UIViewController, BaseViewController {
 
-    private(set) var showLoadingOverlaySet: Bool?
-    func showLoadingOverlay(_ show: Bool) {
+    public var showLoadingOverlaySet: Bool?
+    public func showLoadingOverlay(_ show: Bool) {
         showLoadingOverlaySet = show
     }
 
-    private(set) var showAsOverlayCalled = false
-    private(set) var showAsOverlayScreen: Screen?
-    func showAsOverlay(item: Screen, animated: Bool) {
+    public var showAsOverlayCalled = false
+    public var showAsOverlayScreen: Screen?
+    public func showAsOverlay(item: Screen, animated: Bool) {
         showAsOverlayCalled = true
         showAsOverlayScreen = item
     }
 
-    private(set) var dismissCalled = false
+    public var dismissCalled = false
     private var dismissCallback: (() -> Void)?
-    override func dismiss(animated: Bool, completion: (() -> Void)?) {
+    override public func dismiss(animated: Bool, completion: (() -> Void)?) {
         dismissCalled = true
         dismissCallback = completion
     }
 
-    func triggerDismissCallback() {
+    public func triggerDismissCallback() {
         dismissCallback?()
     }
 
-    private(set) var popCalled = false
-    func pop() {
+    public var popCalled = false
+    public func pop() {
         popCalled = true
     }
 
-    private(set) var presentViewCalled = false
-    private(set) var presentedView: Screen?
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+    public var presentViewCalled = false
+    public var presentedView: Screen?
+    override public func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
         presentViewCalled = true
         self.presentedView = viewControllerToPresent
     }
 
-    private(set) var showAlertTitle: String?
-    private(set) var showAlertMessage: String?
-    private(set) var showAlertCalled = false
-    func showAlert(title: String?, message: String, error: KarhooError?) {
+    public var showAlertTitle: String?
+    public var showAlertMessage: String?
+    public var showAlertCalled = false
+    public func showAlert(title: String?, message: String, error: KarhooError?) {
         showAlertTitle = title
         var messageToShow = message
         if let error = error {
@@ -61,22 +61,22 @@ class MockBaseViewController: UIViewController, BaseViewController {
         showAlertCalled = true
     }
 
-    private(set) var pushViewController: UIViewController?
-    func push(_ viewController: UIViewController) {
+    public var pushViewController: UIViewController?
+    public func push(_ viewController: UIViewController) {
         pushViewController = viewController
     }
 
-    private(set) var errorToShow: KarhooError?
-    private(set) var showErrorCalled = false
-    func show(error: KarhooError?) {
+    public var errorToShow: KarhooError?
+    public var showErrorCalled = false
+    public func show(error: KarhooError?) {
         errorToShow = error
         showErrorCalled = true
     }
 
-    private(set) var actionAlertTitle: String?
-    private(set) var actionAlertMessage: String?
-    private(set) var alertActions: [AlertAction] = []
-    func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction]) {
+    public var actionAlertTitle: String?
+    public var actionAlertMessage: String?
+    public var alertActions: [AlertAction] = []
+    public func showAlert(title: String?, message: String, error: KarhooError?, actions: [AlertAction]) {
         alertActions.append(contentsOf: actions)
         actionAlertTitle = title
         var messageToShow = message
@@ -87,25 +87,25 @@ class MockBaseViewController: UIViewController, BaseViewController {
         showAlertCalled = true
     }
 
-    func triggerAlertAction(atIndex index: Int) {
+    public func triggerAlertAction(atIndex index: Int) {
         let action = alertActions[index]
         action.handler?(action.action)
     }
 
-    private(set) var showPaymentPreAuthAlertCalled = false
+    public var showPaymentPreAuthAlertCalled = false
     private var updateCardCallback: (() -> Void)?
     private var cancelCallback: (() -> Void)?
-    func showUpdatePaymentCardAlert(updateCardSelected: @escaping () -> Void, cancelSelected: (() -> Void)?) {
+    public func showUpdatePaymentCardAlert(updateCardSelected: @escaping () -> Void, cancelSelected: (() -> Void)?) {
         showPaymentPreAuthAlertCalled = true
         self.updateCardCallback = updateCardSelected
         self.cancelCallback = cancelSelected
     }
 
-    func selectUpdateCardOnAddCardAlert() {
+    public func selectUpdateCardOnAddCardAlert() {
         self.updateCardCallback?()
     }
 
-    func selectCancelOnUpdateCardAlert() {
+    public func selectCancelOnUpdateCardAlert() {
         self.cancelCallback?()
     }
 }

@@ -9,16 +9,16 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockAddressMapView: AddressMapView {
+final public class MockAddressMapView: AddressMapView {
 
-    func set(actions: AddressMapActions, addressType: AddressType) {}
+    public func set(actions: AddressMapActions, addressType: AddressType) {}
 
-    func mapView() -> MapView {
+    public func mapView() -> MapView {
         return MockKarhooMapView()
     }
 
-    private(set) var addressBarTextSet: String?
-    func set(addressBarText: String) {
+    public var addressBarTextSet: String?
+    public func set(addressBarText: String) {
         addressBarTextSet = addressBarText
     }
 }

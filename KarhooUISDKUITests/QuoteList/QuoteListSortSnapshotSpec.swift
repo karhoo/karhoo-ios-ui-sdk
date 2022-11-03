@@ -10,7 +10,7 @@ import Quick
 import Nimble
 import SnapshotTesting
 import KarhooSDK
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class QuoteListSortSnapshotSpec: QuickSpec {

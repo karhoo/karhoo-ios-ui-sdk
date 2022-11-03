@@ -8,24 +8,24 @@
 
 @testable import KarhooUISDK
 
-final class MockStackButtonView: StackButtonView {
+final public class MockStackButtonView: StackButtonView {
 
-    var singleButtonTextCalled: String?
-    var singleButtonAction: (() -> Void)?
+    public var singleButtonTextCalled: String?
+    public var singleButtonAction: (() -> Void)?
 
-    func set(buttonText: String, action: @escaping () -> Void) {
+    public func set(buttonText: String, action: @escaping () -> Void) {
         singleButtonTextCalled = buttonText
         singleButtonAction = action
     }
 
-    var firstButtonTextCalled: String?
-    var firstButtonActionCalled: (() -> Void)?
-    var secondButtonTextCalled: String?
-    var secondButtonActionCalled: (() -> Void)?
-    var firstButtonAction: (() -> Void)?
-    var secondButtonAction: (() -> Void)?
+    public var firstButtonTextCalled: String?
+    public var firstButtonActionCalled: (() -> Void)?
+    public var secondButtonTextCalled: String?
+    public var secondButtonActionCalled: (() -> Void)?
+    public var firstButtonAction: (() -> Void)?
+    public var secondButtonAction: (() -> Void)?
 
-    func set(firstButtonText: String, firstButtonAction: @escaping () -> Void,
+    public func set(firstButtonText: String, firstButtonAction: @escaping () -> Void,
              secondButtonText: String, secondButtonAction: @escaping () -> Void) {
         firstButtonTextCalled = firstButtonText
         firstButtonActionCalled = firstButtonAction

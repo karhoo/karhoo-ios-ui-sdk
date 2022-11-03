@@ -9,21 +9,21 @@
 import UIKit
 @testable import KarhooUISDK
 
-final class MockTripFeedbackScreenBuilder: TripFeedbackScreenBuilder {
+final public class MockTripFeedbackScreenBuilder: TripFeedbackScreenBuilder {
 
-    private(set) var buildFeedbackScreenCalled = false
-    private(set) var feedbackScreen = UIViewController()
-    private(set) var tripIdSet: String?
-    private(set) var callback: ScreenResultCallback<Void>?
+    public var buildFeedbackScreenCalled = false
+    public var feedbackScreen = UIViewController()
+    public var tripIdSet: String?
+    public var callback: ScreenResultCallback<Void>?
 
-    func buildFeedbackScreen(tripId: String, callback: @escaping ScreenResultCallback<Void>) -> Screen {
+    public func buildFeedbackScreen(tripId: String, callback: @escaping ScreenResultCallback<Void>) -> Screen {
         buildFeedbackScreenCalled = true
         self.tripIdSet = tripId
         self.callback = callback
         return feedbackScreen
     }
 
-    func triggerScreenResult(_ result: ScreenResult<Void>) {
+    public func triggerScreenResult(_ result: ScreenResult<Void>) {
         callback?(result)
     }
 }

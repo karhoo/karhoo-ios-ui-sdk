@@ -9,52 +9,52 @@
 import Foundation
 @testable import KarhooUISDK
 
-class MockBookingMapStrategy: BookingMapStrategy {
+public class MockBookingMapStrategy: BookingMapStrategy {
 
-    func functionsCalled() -> Bool {
+    public func functionsCalled() -> Bool {
         return locateUserCalled
     }
 
-    var loadMapCalled = false
-    var mapLoaded: MapView?
-    func load(map: MapView?, reverseGeolocate: Bool, onLocationPermissionDenied: (() -> Void)?) {
+    public var loadMapCalled = false
+    public var mapLoaded: MapView?
+    public func load(map: MapView?, reverseGeolocate: Bool, onLocationPermissionDenied: (() -> Void)?) {
         loadMapCalled = true
         mapLoaded = map
     }
 
-    var startCalled = false
-    var startJourneyDetails: JourneyDetails?
-    func start(journeyDetails: JourneyDetails?) {
+    public var startCalled = false
+    public var startJourneyDetails: JourneyDetails?
+    public func start(journeyDetails: JourneyDetails?) {
         startCalled = true
         startJourneyDetails = journeyDetails
     }
 
-    var locateUserCalled = false
-    func focusMap() {
+    public var locateUserCalled = false
+    public func focusMap() {
         locateUserCalled = true
     }
 
-    var stopCalled = false
-    func stop() {
+    public var stopCalled = false
+    public func stop() {
         stopCalled = true
     }
 
-    func reset() {
+    public func reset() {
         loadMapCalled = false
         locateUserCalled = false
         startCalled = false
         stopCalled = false
     }
 
-    var detailsChangedCalled = false
-    var detailsChangedTo: JourneyDetails?
-    func changed(journeyDetails: JourneyDetails?) {
+    public var detailsChangedCalled = false
+    public var detailsChangedTo: JourneyDetails?
+    public func changed(journeyDetails: JourneyDetails?) {
         detailsChangedCalled = true
         detailsChangedTo = journeyDetails
     }
 
-    private(set) var appDidBecomeActiveCalled = false
-    func appDidBecomeActive() {
+    public var appDidBecomeActiveCalled = false
+    public func appDidBecomeActive() {
         appDidBecomeActiveCalled = true
     }
 }

@@ -10,20 +10,20 @@
 
 import KarhooSDK
 
-final class MockRideCellStackButtonActions: RideCellStackButtonActions {
+final public class MockRideCellStackButtonActions: RideCellStackButtonActions {
 
-    var trackTripCalled = false
-    func track(_ trip: TripInfo) {
+    public var trackTripCalled = false
+    public func track(_ trip: TripInfo) {
         trackTripCalled = true
     }
 
-    private(set) var contactFleetCalled: TripInfo?
-    func contactFleet(_ trip: TripInfo, number: String) {
+    public var contactFleetCalled: TripInfo?
+    public func contactFleet(_ trip: TripInfo, number: String) {
         contactFleetCalled = trip
     }
 
-    private(set) var contactDriverCalled: TripInfo?
-    func contactDriver(_ trip: TripInfo, number: String) {
+    public var contactDriverCalled: TripInfo?
+    public func contactDriver(_ trip: TripInfo, number: String) {
         contactDriverCalled = trip
     }
 }

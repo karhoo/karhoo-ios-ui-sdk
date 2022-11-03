@@ -11,13 +11,13 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
+final public class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
 
-    var quote: Quote?
-    var callback: ScreenResultCallback<TripInfo>?
-    let screenInstance = Screen()
+    public var quote: Quote?
+    public var callback: ScreenResultCallback<TripInfo>?
+    public let screenInstance = Screen()
 
-    func buildCheckoutScreen(quote: Quote,
+    public func buildCheckoutScreen(quote: Quote,
                              journeyDetails: JourneyDetails,
                              bookingMetadata: [String: Any]?,
                              callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
@@ -26,7 +26,7 @@ final class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
         return screenInstance
     }
 
-    func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
+    public func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
         callback?(result)
     }
 }

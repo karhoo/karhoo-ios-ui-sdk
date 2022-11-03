@@ -11,12 +11,12 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class MockFareService: FareService {
+public class MockFareService: FareService {
     
-    let fareDetailsCall = MockCall<Fare>()
-    var fareDetailsCalled = false
+    public let fareDetailsCall = MockCall<Fare>()
+    public var fareDetailsCalled = false
     
-    func fareDetails(tripId: String) -> Call<Fare> {
+    public func fareDetails(tripId: String) -> Call<Fare> {
         fareDetailsCalled = true
         return fareDetailsCall
     }

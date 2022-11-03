@@ -11,10 +11,10 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class MockBookingRouter: BookingRouter {
+public class MockBookingRouter: BookingRouter {
 
-    var routeToQuoteListCalled = false
-    func routeToQuoteList(
+    public var routeToQuoteListCalled = false
+    public func routeToQuoteList(
         details: JourneyDetails,
         onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
     ) {
@@ -22,11 +22,11 @@ class MockBookingRouter: BookingRouter {
     }
 
     private var bookingRequestCompletion: ((ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void)?
-    var routeToCheckoutCalled = false
-    var quote: Quote?
-    var journeyDetails: JourneyDetails?
-    var bookingMetadata: [String: Any]?
-    func routeToCheckout(
+    public var routeToCheckoutCalled = false
+    public var quote: Quote?
+    public var journeyDetails: JourneyDetails?
+    public var bookingMetadata: [String: Any]?
+    public func routeToCheckout(
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
@@ -39,7 +39,7 @@ class MockBookingRouter: BookingRouter {
         routeToCheckoutCalled = true
     }
 
-    func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
+    public func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
         bookingRequestCompletion?(result, quote!, journeyDetails!)
     }
 }

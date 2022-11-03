@@ -10,35 +10,35 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockRideDetailsView: MockBaseViewController, RideDetailsView {
+final public class MockRideDetailsView: MockBaseViewController, RideDetailsView {
 
-    var setTripCalled: TripInfo!
-    func setUpWith(trip: TripInfo, mailComposer: FeedbackEmailComposer) {
+    public var setTripCalled: TripInfo!
+    public func setUpWith(trip: TripInfo, mailComposer: FeedbackEmailComposer) {
         setTripCalled = trip
     }
 
-    var theNavigationTitleSet: String?
-    func set(navigationTitle: String) {
+    public var theNavigationTitleSet: String?
+    public func set(navigationTitle: String) {
         theNavigationTitleSet = navigationTitle
     }
 
-    private(set) var didShowLoading = false
-    func showLoading() {
+    public var didShowLoading = false
+    public func showLoading() {
         didShowLoading = true
     }
 
-    private(set) var didHideLoading = false
-    func hideLoading() {
+    public var didHideLoading = false
+    public func hideLoading() {
         didHideLoading = true
     }
 
-    private(set) var hideFeedbackOptionsCalled = false
-    func hideFeedbackOptions() {
+    public var hideFeedbackOptionsCalled = false
+    public func hideFeedbackOptions() {
         hideFeedbackOptionsCalled = true
     }
 
-    private(set) var setTrackButtonVisibleCalled = false
-    func setTrackButtonVisible(_ isVisible: Bool) {
+    public var setTrackButtonVisibleCalled = false
+    public func setTrackButtonVisible(_ isVisible: Bool) {
         setTrackButtonVisibleCalled = true
     }
 }

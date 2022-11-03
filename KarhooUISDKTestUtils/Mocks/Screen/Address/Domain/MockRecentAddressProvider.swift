@@ -11,9 +11,9 @@ import CoreLocation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockRecentAddressProvider: RecentAddressProvider {
+final public class MockRecentAddressProvider: RecentAddressProvider {
     
-    let addressToReturn = LocationInfo(placeId: "place123",
+     public let addressToReturn = LocationInfo(placeId: "place123",
                                        timeZoneIdentifier: "GMT",
                                        position: Position(latitude: TestUtil.getRandomCoordinateComponent(), longitude: TestUtil.getRandomCoordinateComponent()),
                                        poiType: .nearest,
@@ -33,12 +33,12 @@ final class MockRecentAddressProvider: RecentAddressProvider {
                                                                   note: TestUtil.getRandomString()),
                                        instructions: TestUtil.getRandomString())
     
-    var addedRecent: LocationInfo?
+    public var addedRecent: LocationInfo?
 
-    func getRecents() -> [LocationInfo] {
+    public func getRecents() -> [LocationInfo] {
         return [addressToReturn]
     }
-    func add(recent: LocationInfo) {
+    public func add(recent: LocationInfo) {
         addedRecent = recent
     }
 }

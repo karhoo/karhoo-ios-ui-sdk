@@ -9,9 +9,9 @@
 import Foundation
 import KarhooSDK
 
-class MockObservable<T: KarhooCodableModel>: Observable<T> {
+public class MockObservable<T: KarhooCodableModel>: Observable<T> {
 
-    var hasObserver: Bool = false
+    public var hasObserver: Bool = false
     private var observer: Observer<T>?
 
     public init() {
@@ -24,13 +24,13 @@ class MockObservable<T: KarhooCodableModel>: Observable<T> {
         self.observer = observer
     }
 
-    private(set) var unsubscribeCalled = false
+    public var unsubscribeCalled = false
     public override func unsubscribe(observer: Observer<T>) {
         hasObserver = false
         unsubscribeCalled = true
     }
 
-    func triggerResult(result: Result<T>) {
+    public func triggerResult(result: Result<T>) {
         observer?.closure(result)
     }
 }

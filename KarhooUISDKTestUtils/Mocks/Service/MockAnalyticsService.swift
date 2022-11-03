@@ -9,17 +9,17 @@
 import Foundation
 import KarhooSDK
 
-class MockAnalyticsService: AnalyticsService {
+public class MockAnalyticsService: AnalyticsService {
     
-    private(set) var eventSent: AnalyticsConstants.EventNames?
-    private(set) var eventPayloadSent: [String: Any]?
+    public var eventSent: AnalyticsConstants.EventNames?
+    public var eventPayloadSent: [String: Any]?
 
-    func send(eventName: AnalyticsConstants.EventNames, payload: [String: Any]) {
+    public func send(eventName: AnalyticsConstants.EventNames, payload: [String: Any]) {
         eventSent = eventName
         eventPayloadSent = payload
     }
 
-    func send(eventName: AnalyticsConstants.EventNames) {
+    public func send(eventName: AnalyticsConstants.EventNames) {
         eventSent = eventName
     }
 }

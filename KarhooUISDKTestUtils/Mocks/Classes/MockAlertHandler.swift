@@ -12,22 +12,22 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-class MockAlertHandler: AlertHandlerProtocol {
-    var displayError: KarhooError?
-    func show(error: KarhooError?) -> UIAlertController {
+public class MockAlertHandler: AlertHandlerProtocol {
+    public var displayError: KarhooError?
+    public func show(error: KarhooError?) -> UIAlertController {
         displayError = error
         return UIAlertController()
     }
 
-    var alertTitle: String?
-    var alertMessage: String?
-    var alertActions: [AlertAction]?
+    public var alertTitle: String?
+    public var alertMessage: String?
+    public var alertActions: [AlertAction]?
 
-    func triggerFirstAlertAction() {
+    public func triggerFirstAlertAction() {
         callActionHandler(forButtonIndex: 0)
     }
  
-    func triggerSecondAlertAction() {
+    public func triggerSecondAlertAction() {
         callActionHandler(forButtonIndex: 1)
     }
 
@@ -38,17 +38,17 @@ class MockAlertHandler: AlertHandlerProtocol {
         alertAction.handler?(alertAction.action)
     }
 
-    var firstAlertButtonTitle: String? {
+    public var firstAlertButtonTitle: String? {
         return alertActions?[0].title
     }
 
-    var secondAlertButtonTitle: String? {
+    public var secondAlertButtonTitle: String? {
         return alertActions?[1].title
     }
 
-    var alertControllerToReturn: TestAlertController?
+    public var alertControllerToReturn: TestAlertController?
 
-    func show(title: String?, message: String?) -> UIAlertController {
+    public func show(title: String?, message: String?) -> UIAlertController {
         clearData()
 
         alertTitle = title
@@ -59,7 +59,7 @@ class MockAlertHandler: AlertHandlerProtocol {
         return alertControllerToReturn ?? TestAlertController()
     }
 
-    func show(title: String?, message: String?, actions: [AlertAction]) -> UIAlertController {
+    public func show(title: String?, message: String?, actions: [AlertAction]) -> UIAlertController {
         clearData()
 
         alertTitle = title
@@ -71,17 +71,17 @@ class MockAlertHandler: AlertHandlerProtocol {
         return alert
     }
 
-    func clearData() {
+    public func clearData() {
         alertTitle = nil
         alertMessage = nil
         alertActions = nil
     }
 }
 
-final class TestAlertController: UIAlertController {
+final public class TestAlertController: UIAlertController {
 
-    private(set) var dismissCalled = false
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+    public var dismissCalled = false
+    override public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
         dismissCalled = true
     }

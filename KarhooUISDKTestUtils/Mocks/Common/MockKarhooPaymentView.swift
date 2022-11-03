@@ -9,26 +9,26 @@ import Foundation
 @testable import KarhooUISDK
 import KarhooSDK
 
-final class MockKarhooPaymentView: MockBaseView, AddPaymentView {
+final public class MockKarhooPaymentView: MockBaseView, AddPaymentView {
 
-    var baseViewController: BaseViewController?
+    public var baseViewController: BaseViewController?
 
-    var actions: AddPaymentViewDelegate?
+    public var actions: AddPaymentViewDelegate?
 
-    var quote: Quote?
+    public var quote: Quote?
 
-    private(set) var nonceSet: Nonce?
-    func set(nonce: Nonce) {
+    public var nonceSet: Nonce?
+    public func set(nonce: Nonce) {
         nonceSet = nonce
     }
 
-    private(set) var noPaymentMethodCalled = false
-    func noPaymentMethod() {
+    public var noPaymentMethodCalled = false
+    public func noPaymentMethod() {
         noPaymentMethodCalled = true
     }
 
-    private(set) var startCardFlowCalled = false
-    func startRegisterCardFlow(showRetryAlert: Bool = true) {
+    public var startCardFlowCalled = false
+    public func startRegisterCardFlow(showRetryAlert: Bool = true) {
         startCardFlowCalled = true
     }
 }

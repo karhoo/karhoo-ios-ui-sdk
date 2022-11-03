@@ -9,20 +9,20 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockPopupDialogView: PopupDialogView {
+final public class MockPopupDialogView: PopupDialogView {
 
-    private(set) var theDialogMessageSet: String?
-    func set(dialogMessage: String) {
+    public var theDialogMessageSet: String?
+    public func set(dialogMessage: String) {
         theDialogMessageSet = dialogMessage
     }
 
-    private(set) var theFormButtonTitleSet: String?
-    func set(formButtonTitle: String) {
+    public var theFormButtonTitleSet: String?
+    public func set(formButtonTitle: String) {
         theFormButtonTitleSet = formButtonTitle
     }
 
-    private(set) var theDialogTitleSet: String?
-    func set(dialogTitle: String) {
+    public var theDialogTitleSet: String?
+    public func set(dialogTitle: String) {
         theDialogTitleSet = dialogTitle
     }
 }

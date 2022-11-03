@@ -12,44 +12,44 @@ import CoreLocation
 
 @testable import KarhooUISDK
 
-final class MockAddressSearchProvider: AddressSearchProvider {
-    var delegate: AddressSearchProviderDelegate? // swiftlint:disable:this weak_delegate
-    var preferredLocation: CLLocation?
-    var searchString: String?
+final public class MockAddressSearchProvider: AddressSearchProvider {
+    public var delegate: AddressSearchProviderDelegate? // swiftlint:disable:this weak_delegate
+    public var preferredLocation: CLLocation?
+    public var searchString: String?
 
-    var sessionToken: String = ""
+    public var sessionToken: String = ""
 
-    var fetchDefaultValuesCalled = false
+    public var fetchDefaultValuesCalled = false
 
-    func set(delegate: AddressSearchProviderDelegate?) {
+    public func set(delegate: AddressSearchProviderDelegate?) {
         self.delegate = delegate
     }
 
-    func set(preferredLocation: CLLocation?) {
+    public func set(preferredLocation: CLLocation?) {
         self.preferredLocation = preferredLocation
     }
 
-    func search(for string: String) {
+    public func search(for string: String) {
         searchString = string
     }
 
-    func triggerSuccessResponse(places: [Place]) {
+    public func triggerSuccessResponse(places: [Place]) {
         delegate?.searchCompleted(places: places)
     }
 
-    func fetchDefaultValues() {
+    public func fetchDefaultValues() {
         fetchDefaultValuesCalled = true
     }
 
-    func triggerDefaultResponse(recents: [LocationInfo]) {
+    public func triggerDefaultResponse(recents: [LocationInfo]) {
         delegate?.useDefaultAddresses(recents: recents)
     }
 
-    func triggerSearchInProgress() {
+    public func triggerSearchInProgress() {
         delegate?.searchInProgress()
     }
 
-    func triggerFailedSearch(error: KarhooError?) {
+    public func triggerFailedSearch(error: KarhooError?) {
         delegate?.searchFailed(error: error)
     }
 }

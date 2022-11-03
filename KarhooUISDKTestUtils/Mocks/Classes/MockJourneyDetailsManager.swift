@@ -10,65 +10,65 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockJourneyDetailsManager: JourneyDetailsManager {
-    var silentResetCalled = false
-    func silentReset(with journeyDetails: JourneyDetails) {
+final public class MockJourneyDetailsManager: JourneyDetailsManager {
+    public var silentResetCalled = false
+    public func silentReset(with journeyDetails: JourneyDetails) {
         silentResetCalled = true
     }
 
-    var journeyInfoSet: JourneyInfo?
-    func setJourneyInfo(journeyInfo: JourneyInfo?) {
+    public var journeyInfoSet: JourneyInfo?
+    public func setJourneyInfo(journeyInfo: JourneyInfo?) {
         journeyInfoSet = journeyInfo
     }
 
-    weak var observer: JourneyDetailsObserver?
+    weak public var observer: JourneyDetailsObserver?
 
-    func add(observer: JourneyDetailsObserver) {
+    public func add(observer: JourneyDetailsObserver) {
         self.observer = observer
     }
 
-    var removeCalled = false
-    func remove(observer: JourneyDetailsObserver) {
+    public var removeCalled = false
+    public func remove(observer: JourneyDetailsObserver) {
         removeCalled = true
     }
 
-    var pickupSet: LocationInfo?
-    var pickupSetCalled = false
-    func set(pickup: LocationInfo?) {
+    public var pickupSet: LocationInfo?
+    public var pickupSetCalled = false
+    public func set(pickup: LocationInfo?) {
         pickupSet = pickup
         pickupSetCalled = true
     }
 
-    var destinationSet: LocationInfo?
-    var destinationSetCalled = false
-    func set(destination: LocationInfo?) {
+    public var destinationSet: LocationInfo?
+    public var destinationSetCalled = false
+    public func set(destination: LocationInfo?) {
         destinationSet = destination
         destinationSetCalled = true
     }
 
-    var dateSet: Date?
-    var dateSetCalled = false
-    func set(prebookDate: Date?) {
+    public var dateSet: Date?
+    public var dateSetCalled = false
+    public func set(prebookDate: Date?) {
         dateSet = prebookDate
         dateSetCalled = true
     }
 
-    var journeyDetailsToReturn: JourneyDetails?
-    func getJourneyDetails() -> JourneyDetails? {
+    public var journeyDetailsToReturn: JourneyDetails?
+    public func getJourneyDetails() -> JourneyDetails? {
         return journeyDetailsToReturn
     }
     
-    var resetCalled = false
-    func reset() {
+    public var resetCalled = false
+    public func reset() {
         resetCalled = true
     }
 
-    var resetJourneyDetailsSet: JourneyDetails?
-    func reset(with journeyDetails: JourneyDetails) {
+    public var resetJourneyDetailsSet: JourneyDetails?
+    public func reset(with journeyDetails: JourneyDetails) {
         resetJourneyDetailsSet = journeyDetails
     }
 
-    func triggerCallback(journeyDetails: JourneyDetails?) {
+    public func triggerCallback(journeyDetails: JourneyDetails?) {
         observer?.journeyDetailsChanged(details: journeyDetails)
     }
 }

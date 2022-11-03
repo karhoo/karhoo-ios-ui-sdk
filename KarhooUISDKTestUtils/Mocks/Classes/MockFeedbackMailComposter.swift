@@ -11,27 +11,27 @@ import UIKit
 
 @testable import KarhooUISDK
 
-final class MockFeedbackMailComposer: FeedbackEmailComposer {
+final public class MockFeedbackMailComposer: FeedbackEmailComposer {
 
-    var returnValueFeedbackMailCalled = false
-    func showFeedbackMail() -> Bool {
+    public var returnValueFeedbackMailCalled = false
+    public func showFeedbackMail() -> Bool {
         return returnValueFeedbackMailCalled
     }
 
-    var returnValueShowCoverageEmail = false
-    func showNoCoverageEmail() -> Bool {
+    public var returnValueShowCoverageEmail = false
+    public func showNoCoverageEmail() -> Bool {
         return returnValueShowCoverageEmail
     }
 
-    var reportedTripCalled: TripInfo?
-    var returnValueReportIssueWithTripCalled = false
-    func reportIssueWith(trip: TripInfo) -> Bool {
+    public var reportedTripCalled: TripInfo?
+    public var returnValueReportIssueWithTripCalled = false
+    public func reportIssueWith(trip: TripInfo) -> Bool {
         reportedTripCalled = trip
         return returnValueReportIssueWithTripCalled
     }
 
-    var setViewControllerCalled: BaseViewController?
-    func set(parent: BaseViewController) {
+    public var setViewControllerCalled: BaseViewController?
+    public func set(parent: BaseViewController) {
         setViewControllerCalled = parent
     }
 }

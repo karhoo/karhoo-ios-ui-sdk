@@ -10,41 +10,41 @@ import KarhooSDK
 
 @testable import KarhooUISDK
 
-final class MockRidesListView: MockBaseViewController, RidesListView {
+final public class MockRidesListView: MockBaseViewController, RidesListView {
 
-    var paginationEnabled: Bool = true
+    public var paginationEnabled: Bool = true
 
-    var tripsToSet = [TripInfo]()
-    func set(trips: [TripInfo]) {
+    public var tripsToSet = [TripInfo]()
+    public func set(trips: [TripInfo]) {
         tripsToSet = trips
     }
 
-    var emptyStateCalled = false
-    var theEmptyStateTitle: String?
-    var theEmptyStateMessage: String?
-    func setEmptyState(title: String, message: String) {
+    public var emptyStateCalled = false
+    public var theEmptyStateTitle: String?
+    public var theEmptyStateMessage: String?
+    public func setEmptyState(title: String, message: String) {
         theEmptyStateTitle = title
         theEmptyStateMessage = message
         emptyStateCalled = true
     }
 
-    private(set) var ridesListActionsSet: RidesListActions?
-    func set(ridesListActions: RidesListActions) {
+    public var ridesListActionsSet: RidesListActions?
+    public func set(ridesListActions: RidesListActions) {
         ridesListActionsSet = ridesListActions
     }
 
-    private(set) var ridesListPresenterSet: RidesListPresenter?
-    func set(presenter: RidesListPresenter) {
+    public var ridesListPresenterSet: RidesListPresenter?
+    public func set(presenter: RidesListPresenter) {
         ridesListPresenterSet = presenter
     }
 
-    private(set) var trackTripSet: TripInfo?
-    func trackTrip(_ trip: TripInfo) {
+    public var trackTripSet: TripInfo?
+    public func trackTrip(_ trip: TripInfo) {
         self.trackTripSet = trip
     }
 
-    private(set) var rebookTripSet: TripInfo?
-    func rebookTrip(_ trip: TripInfo) {
+    public var rebookTripSet: TripInfo?
+    public func rebookTrip(_ trip: TripInfo) {
         self.rebookTripSet = trip
     }
 }

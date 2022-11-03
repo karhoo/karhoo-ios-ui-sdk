@@ -10,89 +10,89 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockAddressView: MockBaseViewController, AddressView {
+final public class MockAddressView: MockBaseViewController, AddressView {
 
-    private(set) var setCellCalled = false
-    private(set) var addressCellsToShow: [AddressCellViewModel]?
-    func set(cells: [AddressCellViewModel]) {
+    public var setCellCalled = false
+    public var addressCellsToShow: [AddressCellViewModel]?
+    public func set(cells: [AddressCellViewModel]) {
         setCellCalled = true
         addressCellsToShow = cells
     }
 
-    private(set) var setTitleCalled = false
-    var titleString: String?
-    func set(title: String?) {
+    public var setTitleCalled = false
+    public var titleString: String?
+    public func set(title: String?) {
         setTitleCalled = true
         titleString = title
     }
 
-    private(set) var mapPickerIconSet: BaseSelectionViewType?
-    func set(mapPickerIcon: BaseSelectionViewType) {
+    public var mapPickerIconSet: BaseSelectionViewType?
+    public func set(mapPickerIcon: BaseSelectionViewType) {
         mapPickerIconSet = mapPickerIcon
     }
 
-    private(set) var showLoadingIndicatorCalled = false
-    func showLoadingIndicator() {
+    public var showLoadingIndicatorCalled = false
+    public func showLoadingIndicator() {
         showLoadingIndicatorCalled = true
     }
 
-    private(set) var hideLoadingIndicatorCalled = false
-    func hideLoadingIndicator() {
+    public var hideLoadingIndicatorCalled = false
+    public func hideLoadingIndicator() {
         hideLoadingIndicatorCalled = true
     }
 
-    private(set) var hideClearButtonCalled = false
-    func hideClearButton() {
+    public var hideClearButtonCalled = false
+    public func hideClearButton() {
         hideClearButtonCalled = true
     }
 
-    private(set) var showClearButtonCalled = false
-    func showClearButton() {
+    public var showClearButtonCalled = false
+    public func showClearButton() {
         showClearButtonCalled = true
     }
 
-    private(set) var focusInputFieldCalled = false
-    func focusInputField() {
+    public var focusInputFieldCalled = false
+    public func focusInputField() {
         focusInputFieldCalled = true
     }
 
-    private(set) var unfocusInputFieldCalled = false
-    func unfocusInputField() {
+    public var unfocusInputFieldCalled = false
+    public func unfocusInputField() {
         unfocusInputFieldCalled = true
     }
 
-    private(set) var showLoadingScreenCalled = false
-    func showLoadingScreen() {
+    public var showLoadingScreenCalled = false
+    public func showLoadingScreen() {
         showLoadingScreenCalled = true
     }
 
-    private(set) var hideLoadingScreenCalled = false
-    func hideLoadingScreen() {
+    public var hideLoadingScreenCalled = false
+    public func hideLoadingScreen() {
         hideLoadingScreenCalled = true
     }
 
-    private(set) var clearSearchFieldCalled = false
-    func clearSearchInputField() {
+    public var clearSearchFieldCalled = false
+    public func clearSearchInputField() {
         clearSearchFieldCalled = true
     }
 
-    private(set) var emptyDataSetMessageSet: String?
-    func show(emptyDataSetMessage: String) {
+    public var emptyDataSetMessageSet: String?
+    public func show(emptyDataSetMessage: String) {
         emptyDataSetMessageSet = emptyDataSetMessage
     }
 
-    private(set) var hideEmptyDataSetCalled = false
-    func hideEmptyDataSet() {
+    public var hideEmptyDataSetCalled = false
+    public func hideEmptyDataSet() {
         hideEmptyDataSetCalled = true
     }
     
-    private(set) var hasCalledTheBuildMapViewMethod = false
-    func buildAddressMapView() {
+    public var hasCalledTheBuildMapViewMethod = false
+    public func buildAddressMapView() {
         hasCalledTheBuildMapViewMethod = true
     }
     
-    private(set) var hasCalledDisableLocationOptionsMethod = false
-    func disableLocationOptions() {
+    public var hasCalledDisableLocationOptionsMethod = false
+    public func disableLocationOptions() {
         hasCalledDisableLocationOptionsMethod = true
     }
 }

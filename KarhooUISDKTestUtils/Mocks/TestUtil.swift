@@ -11,9 +11,9 @@ import CoreLocation
 @testable import KarhooSDK
 @testable import KarhooUISDK
 
-class TestUtil: PrimitiveUtil {
+public class TestUtil: PrimitiveUtil {
 
-    class func getRandomError(code: String = TestUtil.getRandomString(),
+    public class func getRandomError(code: String = TestUtil.getRandomString(),
                               message: String = TestUtil.getRandomString(),
                               userMessage: String = TestUtil.getRandomString()) -> MockError {
         let error = MockError(code: code,
@@ -22,7 +22,7 @@ class TestUtil: PrimitiveUtil {
         return error
     }
 
-    class func getRandomTrip(tripId: String = TestUtil.getRandomString(),
+    public class func getRandomTrip(tripId: String = TestUtil.getRandomString(),
                              followCode: String = TestUtil.getRandomString(),
                              dateSet: Bool = false,
                              dateScheduled: Date = getRandomDate(),
@@ -49,13 +49,13 @@ class TestUtil: PrimitiveUtil {
         return trip
     }
 
-    class func getRandomMeetingPoint(type: MeetingPointType = .notSet) -> MeetingPoint {
+    public class func getRandomMeetingPoint(type: MeetingPointType = .notSet) -> MeetingPoint {
         return MeetingPoint(position: getRandomPosition(),
                             instructions: getRandomString(),
                             type: type)
     }
 
-    class func getRandomFleetInfo(fleetId: String = getRandomString(),
+    public class func getRandomFleetInfo(fleetId: String = getRandomString(),
                                   name: String =  getRandomString(),
                                   description: String =  getRandomString(),
                                   phoneNumber: String =  getRandomString(),
@@ -70,7 +70,7 @@ class TestUtil: PrimitiveUtil {
                          logoUrl: logoUrl)
     }
 
-    class func getRandomTripLocationDetails() -> TripLocationDetails {
+    public class func getRandomTripLocationDetails() -> TripLocationDetails {
         return TripLocationDetails(displayAddress: TestUtil.getRandomString(),
                                    placeId: TestUtil.getRandomString(),
                                    position: getRandomPosition(),
@@ -78,25 +78,25 @@ class TestUtil: PrimitiveUtil {
 
     }
 
-    class func getRandomPosition(latitude: Double = Double(TestUtil.getRandomInt()),
+    public class func getRandomPosition(latitude: Double = Double(TestUtil.getRandomInt()),
                                  longitude: Double = Double(TestUtil.getRandomInt())) -> Position {
         return Position(latitude: latitude, longitude: longitude)
     }
 
-    class func getRandomDirection(kph: Int = Int(TestUtil.getRandomInt()),
+    public class func getRandomDirection(kph: Int = Int(TestUtil.getRandomInt()),
                                   heading: Int = Int(TestUtil.getRandomInt())) -> Direction {
         return Direction(kph: kph, heading: heading)
     }
 
-    class func getRandomFare() -> Fare {
+    public class func getRandomFare() -> Fare {
         return Fare(breakdown: FareComponent(total: 1000.0, currency: "GBP"))
     }
 
-    class func getRandomTripFare() -> TripFare {
+    public class func getRandomTripFare() -> TripFare {
         return TripFare(total: 20, currency: "GBP", gratuityPercent: 2)
     }
 
-    class func getRandomVehicle(driver: Driver = getRandomDriver(),
+    public class func getRandomVehicle(driver: Driver = getRandomDriver(),
                                 vehicleClass: String = getRandomString()) -> Vehicle {
         return Vehicle(vehicleClass: vehicleClass,
                        vehicleLicensePlate: getRandomString(),
@@ -104,7 +104,7 @@ class TestUtil: PrimitiveUtil {
                        driver: driver)
     }
 
-    class func getRandomDriver(firstName: String = getRandomString(),
+    public class func getRandomDriver(firstName: String = getRandomString(),
                                lastName: String = getRandomString(),
                                photoURL: String = TestUtil.getRandomString(),
                                phoneNumber: String = TestUtil.getRandomString(),
@@ -116,7 +116,7 @@ class TestUtil: PrimitiveUtil {
                       licenseNumber: licenseNumber)
     }
 
-    class func getRandomQuote(quoteId: String = getRandomString(),
+    public class func getRandomQuote(quoteId: String = getRandomString(),
                               availabilityId: String = getRandomString(),
                               fleetName: String = getRandomString(),
                               highPrice: Int = 1000,
@@ -151,7 +151,7 @@ class TestUtil: PrimitiveUtil {
                      serviceLevelAgreements: serviceLevelAgreements ?? ServiceAgreements())
     }
 
-    class func getRandomUser(inOrganisation: Bool = true,
+    public class func getRandomUser(inOrganisation: Bool = true,
                              nonce: Nonce? = Nonce(),
                              paymentProvider: String = "braintree") -> UserInfo {
         let org = Organisation(id: "some", name: "company", roles: ["bread"])
@@ -167,7 +167,7 @@ class TestUtil: PrimitiveUtil {
         return user
     }
 
-    class func getRandomUserRegistration() -> UserRegistration {
+    public class func getRandomUserRegistration() -> UserRegistration {
         return UserRegistration(firstName: getRandomString(),
                                 lastName: getRandomString(),
                                 email: getRandomString(),
@@ -176,11 +176,11 @@ class TestUtil: PrimitiveUtil {
                                 password: getRandomString())
     }
 
-    class func getRandomPassengers() -> Passengers {
+    public class func getRandomPassengers() -> Passengers {
         return Passengers(additionalPassengers: 0, passengerDetails: [PassengerDetails(user: TestUtil.getRandomUser())])
     }
 
-    class func getRandomJourneyDetails(originSet: Bool = true,
+    public class func getRandomJourneyDetails(originSet: Bool = true,
                                        destinationSet: Bool = true,
                                        dateSet: Bool = true,
                                        originTimeZoneIdentifier: String = "Europe/London") -> JourneyDetails {
@@ -201,7 +201,7 @@ class TestUtil: PrimitiveUtil {
         return details
     }
 
-    class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> JourneyDetails {
+    public class func getAirportBookingDetails(originAsAirportAddress: Bool = false) -> JourneyDetails {
         var journeyDetails: JourneyDetails
         let airportLocationDetails = getRandomLocationInfo(poiType: .enriched, poiDetails: getAirportPoiDetails())
         if originAsAirportAddress == true {
@@ -215,11 +215,11 @@ class TestUtil: PrimitiveUtil {
         return journeyDetails
     }
 
-    class func getAirportPoiDetails() -> PoiDetails {
+    public class func getAirportPoiDetails() -> PoiDetails {
         return PoiDetails(iata: getRandomString(), terminal: getRandomString(), type: .airport)
     }
 
-    class func getRandomLocationInfo(placeId: String = getRandomString(),
+    public class func getRandomLocationInfo(placeId: String = getRandomString(),
                                      timeZoneIdentifier: String = "Europe/London",
                                      poiType: PoiType = .notSetPoiType,
                                      poiDetails: PoiDetails = PoiDetails(),
@@ -243,7 +243,7 @@ class TestUtil: PrimitiveUtil {
                             details: poiDetails)
     }
 
-    class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
+    public class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
         return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
                                   direction: TestUtil.getRandomDirection(),
@@ -251,7 +251,7 @@ class TestUtil: PrimitiveUtil {
                                   destinationEta: etaToDestination)
     }
 
-    class func getRandomTripQuote(quoteType: QuoteType = .fixed,
+    public class func getRandomTripQuote(quoteType: QuoteType = .fixed,
                                   total: Int = getRandomInt()) -> TripQuote {
         return TripQuote(total: total,
                          currency: "GBP",
@@ -263,29 +263,29 @@ class TestUtil: PrimitiveUtil {
                          vehicleClass: "Saloon")
     }
 
-    class func getRandomVehicleAttributes() -> QuoteVehicle {
+    public class func getRandomVehicleAttributes() -> QuoteVehicle {
         return QuoteVehicle(vehicleClass: "Saloon",
                             passengerCapacity: Int.random(in: 0...5),
                             luggageCapacity: Int.random(in: 0...7))
     }
 
-    class func getRandomJourneyInfo() -> JourneyInfo {
+    public class func getRandomJourneyInfo() -> JourneyInfo {
         return JourneyInfo(origin: CLLocation(latitude: 2000.0, longitude: -454.53),
                            destination: CLLocation(latitude: 900.65, longitude: 874.53),
                            date: Date())
     }
 
-    class func getRandomBraintreePaymentMethod(nonce: String = getRandomString()) -> Nonce {
+    public class func getRandomBraintreePaymentMethod(nonce: String = getRandomString()) -> Nonce {
         return Nonce(nonce: nonce,
                      cardType: getRandomString(),
                      lastFour: "1111")
     }
 
-    class func getRandomGuestSettings(organisationId: String = getRandomString()) -> GuestSettings {
+    public class func getRandomGuestSettings(organisationId: String = getRandomString()) -> GuestSettings {
         return GuestSettings(identifier: "identifier", referer: "referer", organisationId: organisationId)
     }
 
-    class func getRandomPassengerDetails(firstName: String = getRandomString(),
+    public class func getRandomPassengerDetails(firstName: String = getRandomString(),
                                          lastName: String = getRandomString(),
                                          email: String = getRandomString(),
                                          phoneNumber: String = getRandomString(),

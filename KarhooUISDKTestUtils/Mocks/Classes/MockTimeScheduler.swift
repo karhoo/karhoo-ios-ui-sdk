@@ -10,14 +10,14 @@ import Foundation
 
 @testable import KarhooUISDK
 
-final class MockTimeScheduler: TimeScheduler {
-    enum TimeoutEvent: Equatable {
+final public class MockTimeScheduler: TimeScheduler {
+    public enum TimeoutEvent: Equatable {
         case schedule(TimeInterval)
         case invalidate
         
         public static func == (lhs: TimeoutEvent, rhs: TimeoutEvent) -> Bool {
             switch (lhs, rhs) {
-            case let (.schedule(lhsInterval), .schedule(rhsInterval)):
+            case let(.schedule(lhsInterval), .schedule(rhsInterval)):
                 return lhsInterval == rhsInterval
             case (.invalidate, .invalidate):
                 return true
@@ -27,20 +27,20 @@ final class MockTimeScheduler: TimeScheduler {
         }
     }
     
-    private(set) var events: [TimeoutEvent] = []
-    private(set) var lastBlock: (() -> Void)?
-    private(set) var schuduleRepeats: Bool?
-    func schedule(block: @escaping () -> Void, in timeInterval: TimeInterval, repeats: Bool) {
+    public var events: [TimeoutEvent] = []
+    public var lastBlock: (() -> Void)?
+    public var schuduleRepeats: Bool?
+    public func schedule(block: @escaping () -> Void, in timeInterval: TimeInterval, repeats: Bool) {
         events.append(.schedule(timeInterval))
         lastBlock = block
         schuduleRepeats = repeats
     }
     
-    func fire() {
+    public func fire() {
         lastBlock?()
     }
     
-    func invalidate() {
+    public func invalidate() {
         events.append(.invalidate)
     }
 }

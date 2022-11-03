@@ -14,7 +14,7 @@ import KarhooSDK
 extension JourneyInfo {
 
     /// Charles De Gaulle Airport in Paris => Stade De France
-    static func mock() -> JourneyInfo {
+    static public func mock() -> JourneyInfo {
         .init(
             origin: CLLocation(
                 latitude: 49.00815141502007,
@@ -29,7 +29,7 @@ extension JourneyInfo {
 }
 
 extension JourneyDetails {
-    static func mock() -> JourneyDetails {
+    static public func mock() -> JourneyDetails {
         var details = JourneyDetails(originLocationDetails: .init())
         details.destinationLocationDetails = .init()
         let destination = JourneyInfo.mock().destination

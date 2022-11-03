@@ -9,32 +9,34 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-class MockQuoteListSortPresenter: QuoteListSortPresenter {
+public class MockQuoteListSortPresenter: QuoteListSortPresenter {
 
-    var sortOptionsToReturn: [KarhooUISDK.QuoteListSortOrder] = KarhooUISDK.QuoteListSortOrder.allCases
-    var sortOptions: [KarhooUISDK.QuoteListSortOrder] {
+    public init() {}
+
+    public var sortOptionsToReturn: [KarhooUISDK.QuoteListSortOrder] = KarhooUISDK.QuoteListSortOrder.allCases
+    public var sortOptions: [KarhooUISDK.QuoteListSortOrder] {
         sortOptionsToReturn
     }
 
-    var selectedSortOptionToReturn = KarhooUISDK.QuoteListSortOrder.price
-    var selectedSortOption: KarhooUISDK.QuoteListSortOrder {
+    public var selectedSortOptionToReturn = KarhooUISDK.QuoteListSortOrder.price
+    public var selectedSortOption: KarhooUISDK.QuoteListSortOrder {
         selectedSortOptionToReturn
     }
 
-    func viewDidLoad() {
+    public func viewDidLoad() {
     }
 
-    func viewWillAppear() {
+    public func viewWillAppear() {
     }
 
-    var setSortOptionCalled = false
-    func set(sortOption: KarhooUISDK.QuoteListSortOrder) {
+    public var setSortOptionCalled = false
+    public func set(sortOption: KarhooUISDK.QuoteListSortOrder) {
         setSortOptionCalled = true
     }
 
-    var closeWithSaveCalled = false
-    var closeCalled = false
-    func close(save: Bool) {
+    public var closeWithSaveCalled = false
+    public var closeCalled = false
+    public func close(save: Bool) {
         closeWithSaveCalled = save
         closeCalled = true
     }

@@ -10,14 +10,14 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-final class MockPaymentNonceProvider: PaymentNonceProvider {
+final public class MockPaymentNonceProvider: PaymentNonceProvider {
 
     private var callback: ((OperationResult<PaymentNonceProviderResult>) -> Void)?
-    private(set) var userSet: UserInfo?
-    private(set) var organisationSet: String = ""
-    private(set) var quoteSet: Quote?
-    private(set) var getNonceCalled = false
-    func getPaymentNonce(user: UserInfo,
+    public var userSet: UserInfo?
+    public var organisationSet: String = ""
+    public var quoteSet: Quote?
+    public var getNonceCalled = false
+    public func getPaymentNonce(user: UserInfo,
                          organisationId: String,
                          quote: Quote,
                          result: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
@@ -28,11 +28,11 @@ final class MockPaymentNonceProvider: PaymentNonceProvider {
         getNonceCalled = true
     }
 
-    func triggerResult(_ result: OperationResult<PaymentNonceProviderResult>) {
+    public func triggerResult(_ result: OperationResult<PaymentNonceProviderResult>) {
         callback?(result)
     }
-    private(set) var setBaseViewControllerCalled = false
-    func set(baseViewController: BaseViewController) {
+    public var setBaseViewControllerCalled = false
+    public func set(baseViewController: BaseViewController) {
         setBaseViewControllerCalled = true
     }
 }

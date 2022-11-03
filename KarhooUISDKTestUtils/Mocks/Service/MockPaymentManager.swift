@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 
-class MockPaymentManager: PaymentManager {
+public class MockPaymentManager: PaymentManager {
     
     enum MockPaymentServicProviderType{
         case adyen
@@ -22,20 +22,20 @@ class MockPaymentManager: PaymentManager {
     init(_ psp: MockPaymentServicProviderType){
         self.psp = psp
     }
-    var threeDSecureProviderMock = MockThreeDSecureProvider()
-    var threeDSecureProvider: ThreeDSecureProvider? {
+    public var threeDSecureProviderMock = MockThreeDSecureProvider()
+    public var threeDSecureProvider: ThreeDSecureProvider? {
         threeDSecureProviderMock
     }
     
-    var cardFlowMock = CardRegistrationFlowMock()
-    var cardFlow: CardRegistrationFlow {
+    public var cardFlowMock = CardRegistrationFlowMock()
+    public var cardFlow: CardRegistrationFlow {
         cardFlowMock
     }
-    var nonceProviderMock = PaymentNonceProviderMock()
-    var nonceProvider: PaymentNonceProvider {
+    public var nonceProviderMock = PaymentNonceProviderMock()
+    public var nonceProvider: PaymentNonceProvider {
         nonceProviderMock
     }
-    var shouldCheckThreeDSBeforeBooking: Bool {
+    public var shouldCheckThreeDSBeforeBooking: Bool {
         switch psp {
             case .adyen:
                 return false
@@ -44,7 +44,7 @@ class MockPaymentManager: PaymentManager {
         }
     }
     
-    var shouldGetPaymentBeforeBooking: Bool {
+    public var shouldGetPaymentBeforeBooking: Bool {
         switch psp {
         case .adyen:
             return false
@@ -53,7 +53,7 @@ class MockPaymentManager: PaymentManager {
         }
     }
     
-    func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
+    public func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
         switch psp {
         case .adyen:
             var mutableMeta = meta
@@ -65,26 +65,26 @@ class MockPaymentManager: PaymentManager {
     }
 }
 
-class CardRegistrationFlowMock: CardRegistrationFlow {
-    var setBaseViewCalled = false
-    func setBaseView(_ baseViewController: BaseViewController?) {
+public class CardRegistrationFlowMock: CardRegistrationFlow {
+    public var setBaseViewCalled = false
+    public func setBaseView(_ baseViewController: BaseViewController?) {
         setBaseViewCalled = true
     }
     
-    var startCalled = false
-    func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    public var startCalled = false
+    public func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         startCalled = true
     }
 }
 
-class PaymentNonceProviderMock: PaymentNonceProvider {
-    var getPaymentNonceResult: OperationResult<PaymentNonceProviderResult> = .completed(
+public class PaymentNonceProviderMock: PaymentNonceProvider {
+    public var getPaymentNonceResult: OperationResult<PaymentNonceProviderResult> = .completed(
         value: PaymentNonceProviderResult.nonce(
             nonce: Nonce(nonce: "123", cardType: "456", lastFour: "0987")
         )
     )
         
-    func getPaymentNonce(
+    public func getPaymentNonce(
         user: UserInfo,
         organisationId: String,
         quote: Quote,
@@ -93,8 +93,8 @@ class PaymentNonceProviderMock: PaymentNonceProvider {
         result(getPaymentNonceResult)
     }
 
-    var setBaseViewControllerCalled = false
-    func set(baseViewController: BaseViewController) {
+    public var setBaseViewControllerCalled = false
+    public func set(baseViewController: BaseViewController) {
         setBaseViewControllerCalled = true
     }
 }

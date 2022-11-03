@@ -10,25 +10,25 @@ import Foundation
 import KarhooSDK
 import CoreLocation
 
-final class MockAddressService: AddressService {
+final public class MockAddressService: AddressService {
 
-    private(set) var placeSearchCall = MockCall<Places>(executable: MockExecutable())
-    private(set) var placeSearchSet: PlaceSearch?
-    func placeSearch(placeSearch: PlaceSearch) -> Call<Places> {
+    public var placeSearchCall = MockCall<Places>(executable: MockExecutable())
+    public var placeSearchSet: PlaceSearch?
+    public func placeSearch(placeSearch: PlaceSearch) -> Call<Places> {
         placeSearchSet = placeSearch
         return placeSearchCall
     }
 
-    private(set) var locationInfoCall = MockCall<LocationInfo>(executable: MockExecutable())
-    private(set) var locationInfoSearchSet: LocationInfoSearch?
-    func locationInfo(locationInfoSearch: LocationInfoSearch) -> Call<LocationInfo> {
+    public var locationInfoCall = MockCall<LocationInfo>(executable: MockExecutable())
+    public var locationInfoSearchSet: LocationInfoSearch?
+    public func locationInfo(locationInfoSearch: LocationInfoSearch) -> Call<LocationInfo> {
         locationInfoSearchSet = locationInfoSearch
         return locationInfoCall
     }
 
-    private(set) var reverseGeocodeCall = MockCall<LocationInfo>(executable: MockExecutable())
-    private(set) var reverseGeocodePositionSet: Position?
-    func reverseGeocode(position: Position) -> Call<LocationInfo> {
+    public var reverseGeocodeCall = MockCall<LocationInfo>(executable: MockExecutable())
+    public var reverseGeocodePositionSet: Position?
+    public func reverseGeocode(position: Position) -> Call<LocationInfo> {
         reverseGeocodePositionSet = position
         return reverseGeocodeCall
     }

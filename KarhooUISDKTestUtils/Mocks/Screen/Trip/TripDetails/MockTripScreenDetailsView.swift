@@ -9,17 +9,17 @@
 import UIKit
 @testable import KarhooUISDK
 
-final class MockTripScreenDetailsView: UIView, TripScreenDetailsView {
+final public class MockTripScreenDetailsView: UIView, TripScreenDetailsView {
 
-    func set(actions: TripScreenDetailsActions,
+    public func set(actions: TripScreenDetailsActions,
              detailsSuperview: UIView) {}
 
-    func start(tripId: String) {}
+    public func start(tripId: String) {}
 
-    func stop() {}
+    public func stop() {}
 
-    private(set) var viewModelSet: TripScreenDetailsViewModel?
-    func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
+    public var viewModelSet: TripScreenDetailsViewModel?
+    public func updateViewModel(tripDetailsViewModel: TripScreenDetailsViewModel) {
         self.viewModelSet = tripDetailsViewModel
     }
 

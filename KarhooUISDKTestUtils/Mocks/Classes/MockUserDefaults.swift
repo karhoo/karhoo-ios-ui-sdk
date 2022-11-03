@@ -8,41 +8,41 @@
 
 import Foundation
 
-final class MockUserDefaults: UserDefaults {
+final public class MockUserDefaults: UserDefaults {
 
-    var synchronizeCalled = false
-    override func synchronize() -> Bool {
+    public var synchronizeCalled = false
+    override public func synchronize() -> Bool {
         synchronizeCalled = true
         return super.synchronize()
     }
 
-    var setForKeyCalled = false
-    var valueSet: Any?
-    override func set(_ value: Any?, forKey defaultName: String) {
+    public var setForKeyCalled = false
+    public var valueSet: Any?
+    override public func set(_ value: Any?, forKey defaultName: String) {
         super.set(value, forKey: defaultName)
         setForKeyCalled = true
         self.valueSet = value
     }
 
-    var boolKeyValueSet: String?
-    var boolValueSet: Bool?
-    override func set(_ value: Bool, forKey defaultName: String) {
+    public var boolKeyValueSet: String?
+    public var boolValueSet: Bool?
+    override public func set(_ value: Bool, forKey defaultName: String) {
         boolKeyValueSet = defaultName
         boolValueSet = value
     }
 
-    var boolToReturn: Bool?
-    override func bool(forKey defaultName: String) -> Bool {
+    public var boolToReturn: Bool?
+    override public func bool(forKey defaultName: String) -> Bool {
         return boolToReturn!
     }
 
-    private(set) var removePersistentDomainCalled = false
-    override func removePersistentDomain(forName domainName: String) {
+    public var removePersistentDomainCalled = false
+    override public func removePersistentDomain(forName domainName: String) {
         removePersistentDomainCalled = true
     }
 
-    var valueToReturn: Any?
-    override func value(forKey key: String) -> Any? {
+    public var valueToReturn: Any?
+    override public func value(forKey key: String) -> Any? {
         super.value(forKey: key)
         return valueToReturn
     }

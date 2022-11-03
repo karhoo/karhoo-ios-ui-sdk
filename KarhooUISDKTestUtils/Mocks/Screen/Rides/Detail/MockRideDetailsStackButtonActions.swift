@@ -8,40 +8,40 @@
 
 @testable import KarhooUISDK
 
-final class MockRideDetailsStackButtonActions: RideDetailsStackButtonActions {
+final public class MockRideDetailsStackButtonActions: RideDetailsStackButtonActions {
 
-    private(set) var cancelRideCalled = false
-    func cancelRide() {
+    public var cancelRideCalled = false
+    public func cancelRide() {
         cancelRideCalled = true
     }
 
-    private(set) var rebookRideCalled = false
-    func rebookRide() {
+    public var rebookRideCalled = false
+    public func rebookRide() {
         rebookRideCalled = true
     }
 
-    private(set) var trackRideCalled = false
-    func trackRide() {
+    public var trackRideCalled = false
+    public func trackRide() {
         trackRideCalled = true
     }
 
-    private(set) var hideRideOptionsCalled = false
-    func hideRideOptions() {
+    public var hideRideOptionsCalled = false
+    public func hideRideOptions() {
         hideRideOptionsCalled = true
     }
 
-    private(set) var reportIssueErrorCalled = false
-    func reportIssueError() {
+    public var reportIssueErrorCalled = false
+    public func reportIssueError() {
         reportIssueErrorCalled = true
     }
 
-    private(set) var contactFleetCalled = false
-    func contactFleet(_ phoneNumber: String) {
+    public var contactFleetCalled = false
+    public func contactFleet(_ phoneNumber: String) {
         contactFleetCalled = true
     }
 
-    private(set) var contactDriverCalled = false
-    func contactDriver(_ phoneNumber: String) {
+    public var contactDriverCalled = false
+    public func contactDriver(_ phoneNumber: String) {
         contactDriverCalled = true
     }
 }

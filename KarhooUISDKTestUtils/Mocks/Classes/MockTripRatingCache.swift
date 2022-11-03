@@ -9,20 +9,20 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockTripRatingCache: TripRatingCache {
+final public class MockTripRatingCache: TripRatingCache {
     
-    private(set) var saveTripRatingCalled = false
-    func saveTripRated(tripId: String) {
+    public var saveTripRatingCalled = false
+    public func saveTripRated(tripId: String) {
         return saveTripRatingCalled = true
     }
 
-    var tripRatedValueToReturn: Bool?
-    func tripRated(tripId: String) -> Bool {
+    public var tripRatedValueToReturn: Bool?
+    public func tripRated(tripId: String) -> Bool {
         return tripRatedValueToReturn!
     }
 
-    private(set) var clearTripRatingCalled = false
-    func clearTripRatings() {
+    public var clearTripRatingCalled = false
+    public func clearTripRatings() {
         clearTripRatingCalled = true
     }
 

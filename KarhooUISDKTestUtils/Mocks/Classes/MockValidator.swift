@@ -9,30 +9,30 @@
 import Foundation
 @testable import KarhooUISDK
 
-class MockValidatorListener: ValidatorListener {
+public class MockValidatorListener: ValidatorListener {
 
-    var invalidCalled = false
-    var invalidReason: String?
-    func invalid(reason: String?) {
+    public var invalidCalled = false
+    public var invalidReason: String?
+    public func invalid(reason: String?) {
         invalidCalled = true
         invalidReason = reason
     }
 
-    var validCalled = false
-    func valid() {
+    public var validCalled = false
+    public func valid() {
         validCalled = true
     }
 }
 
-class MockValidator: Validator {
+public class MockValidator: Validator {
 
-    var listenerSet: ValidatorListener?
-    func set(listener: ValidatorListener?) {
+    public var listenerSet: ValidatorListener?
+    public func set(listener: ValidatorListener?) {
         listenerSet = listener
     }
 
-    var validateTextSet: String?
-    func validate(text: String) {
+    public var validateTextSet: String?
+    public func validate(text: String) {
         validateTextSet = text
     }
 }

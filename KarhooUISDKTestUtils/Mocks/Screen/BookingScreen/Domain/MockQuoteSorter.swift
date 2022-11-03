@@ -9,13 +9,13 @@
 @testable import KarhooUISDK
 import KarhooSDK
 
-final class MockQuoteSorter: QuoteSorter {
+final public class MockQuoteSorter: QuoteSorter {
 
-    private(set) var sortQuotesSet: [Quote]?
-    private(set) var orderSet: QuoteListSortOrder?
+    public var sortQuotesSet: [Quote]?
+    public var orderSet: QuoteListSortOrder?
 
-    var quotesToReturn: [Quote] = []
-    func sortQuotes(_ quotes: [Quote], by order: QuoteListSortOrder) -> [Quote] {
+    public var quotesToReturn: [Quote] = []
+    public func sortQuotes(_ quotes: [Quote], by order: QuoteListSortOrder) -> [Quote] {
         sortQuotesSet = quotes
         orderSet = order
         return quotesToReturn

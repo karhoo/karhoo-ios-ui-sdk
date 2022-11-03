@@ -10,16 +10,16 @@ import UIKit
 import Foundation
 @testable import KarhooUISDK
 
-final class MockRidesScreenBuilder: RidesScreenBuilder {
+final public class MockRidesScreenBuilder: RidesScreenBuilder {
 
     private var completion: ScreenResultCallback<RidesListAction>?
-    let returnViewController = UIViewController()
-    func buildRidesScreen(completion: @escaping ScreenResultCallback<RidesListAction>) -> Screen {
+    public let returnViewController = UIViewController()
+    public func buildRidesScreen(completion: @escaping ScreenResultCallback<RidesListAction>) -> Screen {
         self.completion = completion
         return returnViewController
     }
 
-    func triggerRidesScreenResult(_ result: ScreenResult<RidesListAction>) {
+    public func triggerRidesScreenResult(_ result: ScreenResult<RidesListAction>) {
         self.completion?(result)
     }
 }
