@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockAddressSearchProviderDelegate: AddressSearchProviderDelegate {
+    public init() {}
 
     public var searchCompletedWithPlaces: [Place]?
     public func searchCompleted(places: [Place]) {

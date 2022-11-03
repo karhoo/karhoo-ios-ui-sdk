@@ -10,6 +10,12 @@ import Foundation
 import KarhooSDK
 
 public struct MockError: KarhooError, Equatable {
+    public init(code: String, message: String, userMessage: String) {
+        self.code = code
+        self.message = message
+        self.userMessage = userMessage
+    }
+
     public let code: String
     public let message: String
     public let userMessage: String

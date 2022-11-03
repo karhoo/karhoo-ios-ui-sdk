@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockAddressMapView: AddressMapView {
+    public init() {}
 
     public func set(actions: AddressMapActions, addressType: AddressType) {}
 

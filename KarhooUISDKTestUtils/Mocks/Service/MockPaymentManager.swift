@@ -11,15 +11,15 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockPaymentManager: PaymentManager {
-    
-    enum MockPaymentServicProviderType{
+
+    public enum MockPaymentServicProviderType{
         case adyen
         case braintree
     }
     
     private let psp: MockPaymentServicProviderType
-    
-    init(_ psp: MockPaymentServicProviderType){
+
+    public init(_ psp: MockPaymentServicProviderType){
         self.psp = psp
     }
     public var threeDSecureProviderMock = MockThreeDSecureProvider()

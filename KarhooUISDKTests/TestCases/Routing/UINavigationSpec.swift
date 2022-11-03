@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class UINavigationSpec: KarhooTestCase {

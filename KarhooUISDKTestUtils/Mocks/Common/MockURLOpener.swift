@@ -9,6 +9,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockURLOpener: URLOpener {
+    public init() {}
 
     public func open(_: URL) {}
 

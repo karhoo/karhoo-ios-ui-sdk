@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockPaymentNonceProvider: PaymentNonceProvider {
+    public init() {}
 
     private var callback: ((OperationResult<PaymentNonceProviderResult>) -> Void)?
     public var userSet: UserInfo?

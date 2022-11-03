@@ -10,7 +10,8 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockTripRatingCache: TripRatingCache {
-    
+    public init() {}
+
     public var saveTripRatingCalled = false
     public func saveTripRated(tripId: String) {
         return saveTripRatingCalled = true

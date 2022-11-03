@@ -10,6 +10,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripsProvider: TripsProvider {
+    public init() {}
 
     public var startCalled = false
     public func start() {

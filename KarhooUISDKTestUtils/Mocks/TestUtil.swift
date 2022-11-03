@@ -12,6 +12,7 @@ import CoreLocation
 @testable import KarhooUISDK
 
 public class TestUtil: PrimitiveUtil {
+    public override init() { }
 
     public class func getRandomError(code: String = TestUtil.getRandomString(),
                               message: String = TestUtil.getRandomString(),

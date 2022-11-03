@@ -11,6 +11,9 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockJourneyDetailsManager: JourneyDetailsManager {
+
+    public init() {}
+
     public var silentResetCalled = false
     public func silentReset(with journeyDetails: JourneyDetails) {
         silentResetCalled = true

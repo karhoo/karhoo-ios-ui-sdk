@@ -9,6 +9,7 @@
 @testable import KarhooUISDK
 
 final public class MockTripMetaDataView: TripMetaDataView {
+    public init() {}
 
     public var setViewModel: TripMetaDataViewModel?
     public var setPresenter: TripMetaDataPresenter?

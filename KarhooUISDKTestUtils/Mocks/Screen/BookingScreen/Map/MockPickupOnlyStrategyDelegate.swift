@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockPickupOnlyStrategyDelegate: PickupOnlyStrategyDelegate {
+    public init() {}
 
     public var locationDetailsSetFromMap: LocationInfo?
     public func setFromMap(pickup: LocationInfo?) {

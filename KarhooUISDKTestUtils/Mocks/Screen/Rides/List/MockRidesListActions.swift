@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockRidesListActions: RidesListActions {
+    public init() {}
 
     public var selectedTrip: TripInfo?
     public func selectedTrip(_ trip: TripInfo) {

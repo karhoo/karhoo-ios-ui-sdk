@@ -12,6 +12,7 @@ import Foundation
 @testable import KarhooUISDK
 
 public class MockAddressSearchBar: AddressSearchBar {
+    public init() {}
 
     public var ringColorSet: UIColor?
     public func set(ringColor: UIColor) {

@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockCardRegistrationFlow: CardRegistrationFlow {
+    public init() {}
 
     public var setBaseViewControllerCalled = false
     public func setBaseView(_ baseViewController: BaseViewController?) {

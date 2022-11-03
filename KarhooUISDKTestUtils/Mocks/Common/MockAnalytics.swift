@@ -11,7 +11,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockAnalytics: Analytics {
-    
+    public init() {}
+
     public var changePaymentDetailsCalled = false
     public func changePaymentDetailsPressed() {
         changePaymentDetailsCalled = true

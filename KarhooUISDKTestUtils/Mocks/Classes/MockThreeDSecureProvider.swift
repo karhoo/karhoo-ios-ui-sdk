@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockThreeDSecureProvider: ThreeDSecureProvider {
+    public init() {}
 
     public var nonceSet: String?
     public var paymentAmountSet: NSDecimalNumber?

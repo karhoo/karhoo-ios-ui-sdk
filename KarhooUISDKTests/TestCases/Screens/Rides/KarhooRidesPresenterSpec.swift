@@ -8,7 +8,7 @@
 
 import XCTest
 import KarhooSDK
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class KarhooRidesPresenterSpec: KarhooTestCase {

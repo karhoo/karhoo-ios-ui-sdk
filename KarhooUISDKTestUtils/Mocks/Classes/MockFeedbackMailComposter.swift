@@ -12,6 +12,7 @@ import UIKit
 @testable import KarhooUISDK
 
 final public class MockFeedbackMailComposer: FeedbackEmailComposer {
+    public init() {}
 
     public var returnValueFeedbackMailCalled = false
     public func showFeedbackMail() -> Bool {

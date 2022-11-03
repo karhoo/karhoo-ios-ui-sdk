@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockTimeSinceNowProvider: DateTimeIntervalHelper {
+    public init() {}
 
     public var intervalToReturn: TimeInterval!
     public func intervalSinceNow(forDate date: Date) -> TimeInterval {

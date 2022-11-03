@@ -9,7 +9,7 @@
 import XCTest
 import KarhooSDK
 import CoreLocation
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class TripMapPresenterSpec: KarhooTestCase {

@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockPaymentScreenBuilder: PaymentScreenBuilder {
+    public init() {}
 
     public var paymentsTokenSet: PaymentSDKToken?
     public var paymentMethodAddedSet: ScreenResultCallback<Nonce>?

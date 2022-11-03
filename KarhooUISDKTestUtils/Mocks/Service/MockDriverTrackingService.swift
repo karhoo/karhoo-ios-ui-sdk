@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockDriverTrackingService: DriverTrackingService {
+    public init() {}
 
     public let trackDriverCall = MockPollCall<DriverTrackingInfo>()
     public var trackDriverCalled = false

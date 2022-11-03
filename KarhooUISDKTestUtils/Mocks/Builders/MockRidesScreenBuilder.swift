@@ -11,6 +11,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockRidesScreenBuilder: RidesScreenBuilder {
+    public init() {}
 
     private var completion: ScreenResultCallback<RidesListAction>?
     public let returnViewController = UIViewController()

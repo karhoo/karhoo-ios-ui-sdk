@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripService: TripService {
+    public init() {}
 
      public let bookCall = MockCall<TripInfo>()
     public var tripBookingSet: TripBooking?

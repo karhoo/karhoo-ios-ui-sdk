@@ -13,6 +13,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockRideDetailsScreenBuilder: RideDetailsScreenBuilder {
+    public init() {}
 
     public var rideDetailsScreenTrip: TripInfo?
     private var rideDetailsScreenCallback: ScreenResultCallback<RideDetailsAction>?

@@ -10,6 +10,7 @@ import Foundation
 import KarhooSDK
 
 final public class MockAppStateNotifier: AppStateNotifierProtocol {
+    public init() {}
 
     public var listeners = [AppStateChangeDelegate?]()
 

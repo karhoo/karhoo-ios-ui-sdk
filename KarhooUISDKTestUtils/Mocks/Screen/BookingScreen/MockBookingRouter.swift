@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockBookingRouter: BookingRouter {
+    public init() {}
 
     public var routeToQuoteListCalled = false
     public func routeToQuoteList(

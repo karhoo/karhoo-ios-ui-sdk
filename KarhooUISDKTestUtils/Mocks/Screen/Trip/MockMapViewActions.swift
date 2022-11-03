@@ -10,6 +10,7 @@ import CoreLocation
 @testable import KarhooUISDK
 
 public class MockMapViewActions: MapViewActions {
+    public init() {}
 
     public var gestureDetectedCalled = false
     public func mapGestureDetected() {

@@ -11,6 +11,8 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockTimeScheduler: TimeScheduler {
+    public init() {}
+
     public enum TimeoutEvent: Equatable {
         case schedule(TimeInterval)
         case invalidate

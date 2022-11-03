@@ -12,6 +12,7 @@ import CoreLocation
 @testable import KarhooUISDK
 
 final public class MockAddressScreenBuilder: AddressScreenBuilder {
+    public init() {}
 
     public var preferredLocationSet: CLLocation?
     public var addressModeSet: AddressType?

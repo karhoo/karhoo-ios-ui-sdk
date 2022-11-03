@@ -11,6 +11,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockTripsSorter: TripsSorter {
+    public init() {}
 
     public var sortedOrder: ComparisonResult?
     public var tripsOutput: [TripInfo]?

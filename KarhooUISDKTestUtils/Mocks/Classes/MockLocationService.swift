@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockLocationService: LocationService {
+    public init() {}
 
     public var setLocationAccessEnabled: Bool?
     public func locationAccessEnabled() -> Bool {

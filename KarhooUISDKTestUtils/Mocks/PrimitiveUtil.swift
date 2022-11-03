@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 
 public class PrimitiveUtil {
+    public init() {}
 
     public class func getRandomLocation() -> CLLocation {
         return CLLocation(latitude: getRandomCoordinateComponent(),

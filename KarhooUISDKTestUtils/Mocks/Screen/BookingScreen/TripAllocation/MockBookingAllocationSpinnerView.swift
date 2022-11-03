@@ -9,6 +9,7 @@
 @testable import KarhooUISDK
 
 final public class MockBookingAllocationSpinnerView: BookingAllocationSpinnerView {
+    public init() {}
 
     public var startRotationCalled = false
     public func startRotation() {

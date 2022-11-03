@@ -14,7 +14,7 @@
 //  Copyright © 2015 Suyeol Jeon. All rights reserved.
 //
 import XCTest
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 struct TestThenUserModel {

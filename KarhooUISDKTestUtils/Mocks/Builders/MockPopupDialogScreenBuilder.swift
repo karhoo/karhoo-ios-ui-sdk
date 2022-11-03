@@ -11,6 +11,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockPopupDialogScreenBuilder: PopupDialogScreenBuilder {
+    public init() {}
 
     private var callbackSet: ScreenResultCallback<Void>?
     public let returnScreen = UIViewController()

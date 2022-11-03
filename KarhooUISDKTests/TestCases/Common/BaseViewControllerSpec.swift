@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 private class SomeBaseView: MockViewController, BaseViewController {}

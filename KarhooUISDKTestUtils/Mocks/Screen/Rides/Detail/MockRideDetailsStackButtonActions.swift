@@ -9,6 +9,7 @@
 @testable import KarhooUISDK
 
 final public class MockRideDetailsStackButtonActions: RideDetailsStackButtonActions {
+    public init() {}
 
     public var cancelRideCalled = false
     public func cancelRide() {

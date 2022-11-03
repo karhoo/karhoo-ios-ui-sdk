@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockRidesView: RidesView {
+    public init() {}
 
     public var indexToSwitchTo: Int?
     public func switchedToPageIndex(index: Int) {

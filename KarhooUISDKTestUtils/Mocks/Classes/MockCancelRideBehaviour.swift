@@ -9,6 +9,8 @@
 @testable import KarhooUISDK
 
 final public class MockCancelRideBehaviour: CancelRideBehaviourProtocol {
+    public init() {}
+
     weak public var delegate: CancelRideDelegate?
     public var cancelPressedCalled = false
 

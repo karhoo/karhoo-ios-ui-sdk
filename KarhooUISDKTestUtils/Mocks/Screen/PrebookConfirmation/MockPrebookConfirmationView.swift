@@ -10,6 +10,8 @@ import UIKit
 @testable import KarhooUISDK
 
 final public class MockPrebookConfirmationView: PrebookConfirmationView {
+    public init() {}
+
     public var viewModelSet: PrebookConfirmationViewModel?
     public func updateUI(withViewModel viewModel: PrebookConfirmationViewModel) {
         viewModelSet = viewModel

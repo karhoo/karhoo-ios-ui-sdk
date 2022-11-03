@@ -10,7 +10,8 @@ import Foundation
 import KarhooSDK
 
 public class MockAnalyticsService: AnalyticsService {
-    
+    public init() {}
+
     public var eventSent: AnalyticsConstants.EventNames?
     public var eventPayloadSent: [String: Any]?
 

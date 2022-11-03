@@ -10,6 +10,7 @@ import CoreLocation
 import KarhooSDK
 
 public class MockUserLocationProvider: UserLocationProvider {
+    public init() {}
 
     public var locationChangedCallback: LocationProvidedClosure?
     public var lastKnownLocation: CLLocation?

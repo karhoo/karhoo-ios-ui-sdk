@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class MockViewController: UIViewController {
+open class MockViewController: UIViewController {
 
     public var dismissCallback: (() -> Void)?
     public var dismissCalled = false

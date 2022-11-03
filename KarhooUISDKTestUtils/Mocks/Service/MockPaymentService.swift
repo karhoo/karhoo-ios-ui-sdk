@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockPaymentService: PaymentService {
+    public init() {}
 
     public var getNonceCalled = false
     public var getNoncePayloadSet: NonceRequestPayload?

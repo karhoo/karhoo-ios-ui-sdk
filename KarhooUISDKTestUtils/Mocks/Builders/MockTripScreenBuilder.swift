@@ -13,6 +13,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripScreenBuilder: TripScreenBuilder {
+    public init() {}
 
     public var tripSet: TripInfo?
     public var callbackSet: ScreenResultCallback<TripScreenResult>?

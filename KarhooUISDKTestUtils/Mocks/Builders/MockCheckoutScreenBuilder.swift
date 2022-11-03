@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
+    public init() {}
 
     public var quote: Quote?
     public var callback: ScreenResultCallback<TripInfo>?

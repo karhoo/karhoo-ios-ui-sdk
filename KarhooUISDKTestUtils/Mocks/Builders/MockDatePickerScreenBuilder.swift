@@ -12,6 +12,8 @@ import UIKit
 
 final public class MockDatePickerScreenBuilder: DatePickerScreenBuilder {
 
+    public init() {}
+
     public var startDateSet: Date?
     public var timeZoneSet: TimeZone?
     public var callbackSet: ScreenResultCallback<Date>?

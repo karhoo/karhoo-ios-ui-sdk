@@ -11,7 +11,7 @@ import Foundation
 @testable import KarhooUISDK
 import KarhooSDK
 
-public class MockBaseViewController: UIViewController, BaseViewController {
+open class MockBaseViewController: UIViewController, BaseViewController {
 
     public var showLoadingOverlaySet: Bool?
     public func showLoadingOverlay(_ show: Bool) {

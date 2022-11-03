@@ -11,6 +11,7 @@ import KarhooSDK
 import CoreLocation
 
 final public class MockAddressService: AddressService {
+    public init() {}
 
     public var placeSearchCall = MockCall<Places>(executable: MockExecutable())
     public var placeSearchSet: PlaceSearch?

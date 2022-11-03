@@ -9,6 +9,7 @@
 @testable import KarhooUISDK
 
 final public class MockTripMetaDataActions: TripMetaDataActions {
+    public init() {}
 
     public var showBaseFareDialogCalled = false
     public func showBaseFareDialog() {

@@ -12,6 +12,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockPrebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
+    public init() {}
 
     public var quoteSet: Quote?
     public var journeyDetailsSet: JourneyDetails?

@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripSummaryView: TripSummaryView {
+    public init() {}
 
     public var tripSet: TripInfo?
     public func set(trip: TripInfo) {

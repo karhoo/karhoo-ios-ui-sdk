@@ -8,7 +8,7 @@
 import XCTest
 import CoreLocation
 import KarhooSDK
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 // swiftlint:disable file_length

@@ -9,6 +9,8 @@
 @testable import KarhooUISDK
 
 public class MockPhoneNumberCaller: PhoneNumberCallerProtocol {
+    public init() {}
+
     public var numberCalled: String?
 
     public func call(number: String) {

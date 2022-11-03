@@ -13,6 +13,8 @@ import CoreLocation
 @testable import KarhooUISDK
 
 final public class MockAddressSearchProvider: AddressSearchProvider {
+    public init() {}
+
     public var delegate: AddressSearchProviderDelegate? // swiftlint:disable:this weak_delegate
     public var preferredLocation: CLLocation?
     public var searchString: String?

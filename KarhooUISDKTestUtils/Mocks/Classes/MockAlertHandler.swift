@@ -13,6 +13,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockAlertHandler: AlertHandlerProtocol {
+    public init() {}
+
     public var displayError: KarhooError?
     public func show(error: KarhooError?) -> UIAlertController {
         displayError = error

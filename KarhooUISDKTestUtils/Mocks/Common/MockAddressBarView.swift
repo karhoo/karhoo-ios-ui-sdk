@@ -82,8 +82,9 @@ final public class MockAddressBarView: MockBaseView, AddressBarView {
     }
 }
 
-// TODO: move to new file
 public class MockLocationPermissionProvider: LocationPermissionProvider {
+    public init() {}
+
     public var isLocationPermissionGrantedReturn = true
     public var isLocationPermissionGranted: Bool { isLocationPermissionGrantedReturn }
 }

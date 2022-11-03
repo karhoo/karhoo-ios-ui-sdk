@@ -12,7 +12,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockFareService: FareService {
-    
+    public init() {}
+
     public let fareDetailsCall = MockCall<Fare>()
     public var fareDetailsCalled = false
     

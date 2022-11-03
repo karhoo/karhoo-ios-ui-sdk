@@ -13,6 +13,8 @@ import KarhooSDK
 
 final public class MockUserService: UserService {
 
+    public init() {}
+
     public let updateUserCall = MockCall<UserInfo>(executable: MockExecutable())
     public func updateUserDetails(update: UserDetailsUpdateRequest) -> Call<UserInfo> {
         return updateUserCall

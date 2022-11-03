@@ -12,7 +12,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockRecentAddressProvider: RecentAddressProvider {
-    
+    public init() {}
+
      public let addressToReturn = LocationInfo(placeId: "place123",
                                        timeZoneIdentifier: "GMT",
                                        position: Position(latitude: TestUtil.getRandomCoordinateComponent(), longitude: TestUtil.getRandomCoordinateComponent()),

@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import KarhooUISDKTestUtils
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 /*  techDebt to test a UIView, that logic should really be in a presenter

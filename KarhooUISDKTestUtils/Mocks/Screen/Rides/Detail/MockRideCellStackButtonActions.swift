@@ -11,6 +11,7 @@
 import KarhooSDK
 
 final public class MockRideCellStackButtonActions: RideCellStackButtonActions {
+    public init() {}
 
     public var trackTripCalled = false
     public func track(_ trip: TripInfo) {

@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 public class MockBookingMapStrategy: BookingMapStrategy {
+    public init() {}
 
     public func functionsCalled() -> Bool {
         return locateUserCalled

@@ -9,6 +9,7 @@
 @testable import KarhooUISDK
 
 final public class MockStackButtonView: StackButtonView {
+    public init() {}
 
     public var singleButtonTextCalled: String?
     public var singleButtonAction: (() -> Void)?

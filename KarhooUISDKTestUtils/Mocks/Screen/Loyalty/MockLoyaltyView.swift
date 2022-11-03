@@ -11,18 +11,20 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockLoyaltyView: LoyaltyView {
-    private(set)var mode: LoyaltyMode?
-    private(set)var earnText: String?
-    private(set)var burnText: String?
-    private(set)var errorMessage: String?
-    private(set)var earnOn: Bool?
-    private(set)var burnOn: Bool?
-    private(set)var didCallSetLoyaltyMode = false
-    private(set)var didShowError = false
-    private(set)var didCallGetCurrentMode = false
-    private(set)var didSetDelegate = false
-    private(set)var didCallGetUpdateLoyaltyFeatures = false
-    
+    public var mode: LoyaltyMode?
+    public var earnText: String?
+    public var burnText: String?
+    public var errorMessage: String?
+    public var earnOn: Bool?
+    public var burnOn: Bool?
+    public var didCallSetLoyaltyMode = false
+    public var didShowError = false
+    public var didCallGetCurrentMode = false
+    public var didSetDelegate = false
+    public var didCallGetUpdateLoyaltyFeatures = false
+
+    public init() {}
+
     public var delegate: LoyaltyViewDelegate? {
         didSet {
             didSetDelegate = true

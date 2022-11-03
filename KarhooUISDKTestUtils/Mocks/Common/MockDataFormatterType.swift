@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 public class MockDateFormatterType: DateFormatterType {
+    public init() { }
 
     public var timeZoneSet: TimeZone?
     public func set(timeZone: TimeZone) {

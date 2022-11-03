@@ -10,6 +10,7 @@ import UIKit
 @testable import KarhooUISDK
 
 final public class MockTripFeedbackScreenBuilder: TripFeedbackScreenBuilder {
+    public init() {}
 
     public var buildFeedbackScreenCalled = false
     public var feedbackScreen = UIViewController()

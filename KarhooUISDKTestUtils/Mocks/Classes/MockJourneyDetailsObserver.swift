@@ -10,6 +10,8 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockJourneyDetailsObserver: JourneyDetailsObserver {
+    public init() { }
+
     public var lastJourneyDetails: JourneyDetails?
     public var journeyDetailsChangedCalled = false
 

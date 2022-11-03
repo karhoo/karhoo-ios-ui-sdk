@@ -10,7 +10,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripAllocationView: TripAllocationView {
-    
+    public init() {}
+
     public var tripDriverAllocationDelayedCalled = false
 
     public var actionsSet: TripAllocationActions?

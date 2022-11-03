@@ -10,6 +10,7 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockPopupDialogView: PopupDialogView {
+    public init() {}
 
     public var theDialogMessageSet: String?
     public func set(dialogMessage: String) {
