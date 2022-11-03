@@ -52,27 +52,23 @@ class ExampleSnapshotSpec: QuickSpec {
                     }
 
                     it("should show proper design") {
-//                        testSnapshot(sut1)
-                        fail()
+                        testSnapshot(sut1)
                     }
                 }
 
                 // test specific requirement
                 it("should...") {
                     /// actual assertion and test code goes here
-                    fail()
                 }
 
                 // test another specific requirement - in this case view controller design
                 it("should show proper design of view controller") {
-//                    KarhooUISDKTests.testSnapshot(sut2)
-                    fail()
+                    testSnapshot(sut2)
                 }
 
                 // test another requirement - in this case sut1 design
                 it("should show proper design of view") {
-//                    KarhooUISDKTests.testSnapshot(sut1)
-                    fail()
+                    testSnapshot(sut1)
                 }
             }
         }
