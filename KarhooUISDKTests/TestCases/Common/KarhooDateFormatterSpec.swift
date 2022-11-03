@@ -8,6 +8,7 @@
 
 import XCTest
 import KarhooUISDK
+@testable import KarhooUISDKTestUtils
 
 // NOTE: These tests are assuming the simulator's region is set to UK - not USA.
 class KarhooDateFormatterSpec: KarhooTestCase {

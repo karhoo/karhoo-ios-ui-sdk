@@ -9,6 +9,7 @@
 import Foundation
 import XCTest
 import KarhooSDK
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class KarhooQuoteFilterHandlerSpec: KarhooTestCase {

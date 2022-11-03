@@ -11,6 +11,7 @@ import XCTest
 import KarhooSDK
 import CoreLocation
 
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class MapAnnotationViewModelSpec: KarhooTestCase {

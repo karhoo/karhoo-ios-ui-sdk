@@ -11,6 +11,7 @@ import SnapshotTesting
 import Quick
 import Nimble
 import UIKit
+import KarhooUISDKTests
 @testable import KarhooUISDK
 
 class ExampleSnapshotSpec: QuickSpec {

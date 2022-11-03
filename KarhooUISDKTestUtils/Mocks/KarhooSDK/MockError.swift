@@ -9,12 +9,12 @@
 import Foundation
 import KarhooSDK
 
-struct MockError: KarhooError, Equatable {
-    let code: String
-    let message: String
-    let userMessage: String
+public struct MockError: KarhooError, Equatable {
+    public let code: String
+    public let message: String
+    public let userMessage: String
 
-    static func == (lhs: MockError, rhs: MockError) -> Bool {
+    public static func == (lhs: MockError, rhs: MockError) -> Bool {
         return lhs.code == rhs.code
             && lhs.message == rhs.message
             && lhs.userMessage == rhs.userMessage

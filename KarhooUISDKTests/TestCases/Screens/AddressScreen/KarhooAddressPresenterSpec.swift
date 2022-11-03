@@ -9,7 +9,7 @@
 import XCTest
 import CoreLocation
 import KarhooSDK
-
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class KarhooAddressPresenterSpec: KarhooTestCase {

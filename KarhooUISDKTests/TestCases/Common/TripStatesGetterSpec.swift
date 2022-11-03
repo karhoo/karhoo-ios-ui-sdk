@@ -9,6 +9,7 @@
 import XCTest
 import KarhooSDK
 
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class TripStatesGetterSpec: KarhooTestCase {

@@ -12,7 +12,7 @@ import CoreLocation
 @testable import KarhooUISDK
 
 class TestUtil: PrimitiveUtil {
-    
+
     class func getRandomError(code: String = TestUtil.getRandomString(),
                               message: String = TestUtil.getRandomString(),
                               userMessage: String = TestUtil.getRandomString()) -> MockError {
@@ -75,14 +75,14 @@ class TestUtil: PrimitiveUtil {
                                    placeId: TestUtil.getRandomString(),
                                    position: getRandomPosition(),
                                    timeZoneIdentifier: "Europe/London")
-        
+
     }
-    
+
     class func getRandomPosition(latitude: Double = Double(TestUtil.getRandomInt()),
                                  longitude: Double = Double(TestUtil.getRandomInt())) -> Position {
         return Position(latitude: latitude, longitude: longitude)
     }
-    
+
     class func getRandomDirection(kph: Int = Int(TestUtil.getRandomInt()),
                                   heading: Int = Int(TestUtil.getRandomInt())) -> Direction {
         return Direction(kph: kph, heading: heading)
@@ -91,7 +91,7 @@ class TestUtil: PrimitiveUtil {
     class func getRandomFare() -> Fare {
         return Fare(breakdown: FareComponent(total: 1000.0, currency: "GBP"))
     }
-    
+
     class func getRandomTripFare() -> TripFare {
         return TripFare(total: 20, currency: "GBP", gratuityPercent: 2)
     }
@@ -197,7 +197,7 @@ class TestUtil: PrimitiveUtil {
         if dateSet {
             details.scheduledDate = Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(10000000)))
         }
-        
+
         return details
     }
 
@@ -234,7 +234,7 @@ class TestUtil: PrimitiveUtil {
                                                   postalCode: getRandomString(),
                                                   countryCode: getRandomString(),
                                                   region: getRandomString())
-        
+
         return LocationInfo(placeId: placeId,
                             timeZoneIdentifier: timeZoneIdentifier,
                             position: position,
@@ -268,7 +268,7 @@ class TestUtil: PrimitiveUtil {
                             passengerCapacity: Int.random(in: 0...5),
                             luggageCapacity: Int.random(in: 0...7))
     }
-    
+
     class func getRandomJourneyInfo() -> JourneyInfo {
         return JourneyInfo(origin: CLLocation(latitude: 2000.0, longitude: -454.53),
                            destination: CLLocation(latitude: 900.65, longitude: 874.53),

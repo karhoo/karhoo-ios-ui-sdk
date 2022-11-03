@@ -8,6 +8,7 @@
 
 import XCTest
 import KarhooSDK
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class TripSummaryInfoViewModelSpec: KarhooTestCase {

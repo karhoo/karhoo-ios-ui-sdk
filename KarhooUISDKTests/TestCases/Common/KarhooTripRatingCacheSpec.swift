@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class KarhooTripRatingCacheSpec: KarhooTestCase {

@@ -8,6 +8,7 @@
 
 import XCTest
 
+@testable import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class DefaultConstraintSwitcherTests: KarhooTestCase {

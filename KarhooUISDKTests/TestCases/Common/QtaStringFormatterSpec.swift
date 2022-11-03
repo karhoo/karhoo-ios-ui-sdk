@@ -9,6 +9,7 @@
 import XCTest
 import Foundation
 import KarhooUISDK
+@testable import KarhooUISDKTestUtils
 
 final class QtaStringFormatterSpec: KarhooTestCase {
 

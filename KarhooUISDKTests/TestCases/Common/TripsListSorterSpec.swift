@@ -8,6 +8,7 @@
 
 import XCTest
 import KarhooUISDK
+@testable import KarhooUISDKTestUtils
 
 class TripsListSorterSpec: KarhooTestCase {
 
