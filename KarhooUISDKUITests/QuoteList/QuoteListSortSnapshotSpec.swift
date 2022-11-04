@@ -18,35 +18,20 @@ class QuoteListSortSnapshotSpec: QuickSpec {
     override func spec() {
 
         describe("QuoteListSort") {
-            var navigationController: NavigationController!
-            var sut: KarhooQuoteListSortViewController!
-            var presenterMock: QuoteListSortPresenter!
+            var quoteListSortCoordinator: KarhooQuoteListSortCoordinator!
 
             beforeEach {
-                KarhooUI.set(configuration: KarhooTestConfiguration())
-                let mockVC = MockViewController().then {
-                    $0.loadViewIfNeeded()
-                    $0.view.backgroundColor = .white
-                }
-                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                sut = KarhooQuoteListSortViewController()
-                presenterMock = MockQuoteListSortPresenter()
-                sut.setupBinding(presenterMock)
-                mockVC.present(sut, animated: false)
+                quoteListSortCoordinator = KarhooQuoteListSortCoordinator(
+                    selectedOption: .price,
+                    onSortOptionComfirmed: { _ in }
+                )
+                quoteListSortCoordinator.start()
             }
 
             context("when it's showned") {
 
                 it("should have a valid design") {
-//                    testSnapshot(navigationController)
-                    assertSnapshot(
-                        matching: navigationController.view,
-                        as: .wait(
-                            for: 3,
-                            on: .image
-                        ),
-                        named: QuickSpec.current.name
-                    )
+                    testSnapshot(quoteListSortCoordinator.viewController)
                 }
             }
         }

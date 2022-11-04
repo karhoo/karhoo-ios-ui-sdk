@@ -121,16 +121,16 @@ class QuoteListAsyncSnapshotSpec: QuickSpec {
                     presenterMock.onStateUpdated?(.fetched(quotes: [.mock(), .mock2(), .mock(), .mock2()]))
                 }
 
-//                it("should have valid design") {
-//                    assertSnapshot(
-//                        matching: navigationController.view,
-//                        as: .wait(
-//                            for: 3,
-//                            on: .image
-//                        ),
-//                        named: QuickSpec.current.name
-//                    )
-//                }
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController.view,
+                        as: .wait(
+                            for: 3,
+                            on: .image
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
             }
 
             context("and when there is no available services") {

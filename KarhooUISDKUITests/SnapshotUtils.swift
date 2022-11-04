@@ -40,13 +40,9 @@ public func testSnapshot<ViewController: UIViewController>(
     fileName: String = #function,
     line: UInt = #line
 ) {
-    guard viewController.view.bounds.size != .zero else {
-        fail("\(String(describing: ViewController.self)) - views's size equals zero", file: file.description, line: line)
-        return
-    }
     guard let failureMessage = verifySnapshot(
-        matching: viewController.view,
-        as: .image,
+        matching: viewController,
+        as: .image(on: .iPhoneX),
         file: file,
         testName: QuickSpec.current?.name ?? fileName,
         line: line
