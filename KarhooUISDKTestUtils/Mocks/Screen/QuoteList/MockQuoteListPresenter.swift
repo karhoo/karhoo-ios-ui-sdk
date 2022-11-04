@@ -10,6 +10,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockQuoteListPresenter: QuoteListPresenter {
+    public init() { }
+
     public var onStateUpdatedCallback: () -> Void = {}
     lazy public var onStateUpdated: ((KarhooUISDK.QuoteListState) -> Void)? = { _ in
         self.onStateUpdatedCallback()

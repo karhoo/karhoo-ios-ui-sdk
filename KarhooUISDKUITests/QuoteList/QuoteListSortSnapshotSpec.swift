@@ -23,7 +23,8 @@ class QuoteListSortSnapshotSpec: QuickSpec {
             var presenterMock: QuoteListSortPresenter!
 
             beforeEach {
-                let mockVC = UIViewController().then {
+                KarhooUI.set(configuration: KarhooTestConfiguration())
+                let mockVC = MockViewController().then {
                     $0.loadViewIfNeeded()
                     $0.view.backgroundColor = .white
                 }
