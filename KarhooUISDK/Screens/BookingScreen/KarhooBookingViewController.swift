@@ -9,6 +9,7 @@
 import UIKit
 import KarhooSDK
 import CoreLocation
+import SwiftUI
 
 final class KarhooBookingViewController: UIViewController, BookingView {
     
@@ -108,6 +109,29 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomNotificationViewBottomConstraint = bottomNotificationView.bottomAnchor.constraint(
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
+        
+        let testButton = UIButton().then { button in
+            button.setTitle("Test", for: .normal)
+            button.setDimensions(height: 44, width: 120)
+            button.backgroundColor = UIColor.black
+            button.addTarget(self, action: #selector(onTestClicked), for: .touchUpInside)
+        }
+        view.addSubview(testButton)
+        
+        testButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        testButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    @objc func onTestClicked() {
+        let vm = KarhooBottomSheetViewModel()
+        vm.callback = { result in
+            print("Got a hit")
+            self.dismiss(animated: true)
+        }
+        vm.present()
+        let sheet = KarhooBottomSheet(viewModel: vm)
+        let vc = UIHostingController(rootView: sheet)
+        present(vc, animated: true)
     }
 
     private func setupMapView(reverseGeolocate: Bool) {
