@@ -18,7 +18,7 @@ jobs:
   ### Build & test job
   build-and-test:
     macos:
-      xcode: 13.4.1
+      xcode: 14.0.1
     working_directory: /Users/distiller/project/KarhooUISDK.xcworkspace
     environment:
       FASTLANE_LANE_TEST: UISDK_unit_tests
@@ -73,7 +73,7 @@ jobs:
           
   adhoc:
     macos:
-      xcode: 14.0
+      xcode: 14.0.1
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE_TEST: UISDK_unit_tests
