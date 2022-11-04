@@ -652,13 +652,6 @@
 			remoteGlobalIDString = FC8F471321539E24007841FB;
 			remoteInfo = KarhooUISDK;
 		};
-		5128653D2914F7D600EA8934 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
-			remoteInfo = Client;
-		};
 		518ADD9F291420CA007976E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FC8F470B21539E24007841FB /* Project object */;
@@ -3852,7 +3845,6 @@
 			);
 			dependencies = (
 				51E225DC291417AA007704ED /* PBXTargetDependency */,
-				5128653E2914F7D600EA8934 /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKTests;
 			productName = KarhooUISDKTests;
@@ -3886,7 +3878,6 @@
 					FC8F471C21539E24007841FB = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
-						TestTargetID = 5C2E260C2420F8AC00B1FF0C;
 					};
 				};
 			};
@@ -4799,11 +4790,6 @@
 			target = FC8F471321539E24007841FB /* KarhooUISDK */;
 			targetProxy = 512865392914440000EA8934 /* PBXContainerItemProxy */;
 		};
-		5128653E2914F7D600EA8934 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
-			targetProxy = 5128653D2914F7D600EA8934 /* PBXContainerItemProxy */;
-		};
 		518ADDA0291420CA007976E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 51BF1DF52913D24D0000BA7E /* KarhooUISDKTestUtils */;
@@ -5227,7 +5213,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = "$(inherited)";
@@ -5247,7 +5232,6 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Debug;
 		};
@@ -5257,7 +5241,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
@@ -5276,7 +5259,6 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Client";
 			};
 			name = Release;
 		};
