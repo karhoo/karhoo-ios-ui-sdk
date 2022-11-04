@@ -123,10 +123,10 @@ class QuoteListAsyncSnapshotSpec: QuickSpec {
 
                 it("should have valid design") {
                     assertSnapshot(
-                        matching: navigationController.view,
+                        matching: navigationController,
                         as: .wait(
                             for: 3,
-                            on: .image
+                            on: .image(on: .iPhoneX)
                         ),
                         named: QuickSpec.current.name
                     )
@@ -140,10 +140,10 @@ class QuoteListAsyncSnapshotSpec: QuickSpec {
 
                 it("should have valid design") {
                     assertSnapshot(
-                        matching: navigationController.view,
+                        matching: navigationController,
                         as: .wait(
                             for: 1,
-                            on: .image
+                            on: .image(on: .iPhoneX)
                         ),
                         named: QuickSpec.current.name
                     )
