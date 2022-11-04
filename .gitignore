@@ -76,6 +76,7 @@ fastlane/test_output
 fastlane/.env
 
 # access keys
+.phrase.yml
 Client/Keys.swift
 
 *.DS_Store
