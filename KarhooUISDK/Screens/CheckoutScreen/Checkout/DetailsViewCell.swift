@@ -9,16 +9,28 @@
 import SwiftUI
 
 struct DetailsViewCell: View {
+    
+    var title: String = "Passenger name"
     var body: some View {
         Group {
-            HStack(spacing: 10){
-//                Image("kh_uisdk_passenger")
+            HStack(spacing: UIConstants.Spacing.small) {
             Image(uiImage: UIImage.uisdkImage("kh_uisdk_passenger"))
-                    .frame(width: 32, height: 32)
+                    .frame(
+                        width: UIConstants.Dimension.Icon.large,
+                        height: UIConstants.Dimension.Icon.large
+                    )
                     .foregroundColor(.red)
-                Text("Passanger")
-
-                
+                VStack(alignment: .leading) {
+                    Text(title).lineLimit(2).font(.system(size: 16))
+                    Text("add details").lineLimit(2).font(.system(size: 10))
+                }
+                .background(Color.red)
+                Spacer()
+                Image("kh_uisdk_right_arrow", bundle: .current)
+                    .frame(
+                        width: UIConstants.Dimension.Icon.standard,
+                        height: UIConstants.Dimension.Icon.standard
+                    )
             }
             .padding(.all, 16)
 //            .background(Color.yellow)
@@ -28,7 +40,7 @@ struct DetailsViewCell: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.purple, lineWidth: 1)
+                    .stroke(Color.red, lineWidth: 1)
             )
         }
     }
