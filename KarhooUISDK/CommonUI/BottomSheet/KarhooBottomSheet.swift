@@ -11,13 +11,13 @@ import SwiftUI
 struct KarhooBottomSheet<Content: View>: View {
     var viewModel: BottomSheetViewModel
     @ViewBuilder let content: () -> Content
+    @ObservedObject private var keyboard = KeyboardResponder()
 
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-            
             VStack {
-                HStack{
+                HStack {
                     Text(viewModel.title)
                         .font(.headline)
                         .bold()
@@ -42,16 +42,17 @@ struct KarhooBottomSheet<Content: View>: View {
                         trailing: UIConstants.Spacing.marginToEdgeOfScreen
                     )
                 )
-                
+
                 content()
+                    .scrollOnOverflow()
+                    .background(Color.red)
                 
                 Spacer()
-                    .frame(maxHeight:UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0)
+                    .frame(height: getBottomPadding())
+                    .animation(.easeOut(duration: UIConstants.Duration.medium))
             }
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: viewModel.cornerRadius, style: .continuous))
-            
-            
         }
         .zIndex(1)
         .transition(.move(edge: .bottom))
@@ -61,6 +62,14 @@ struct KarhooBottomSheet<Content: View>: View {
     init(viewModel: BottomSheetViewModel, @ViewBuilder content: @escaping () -> Content) {
         self.viewModel = viewModel
         self.content = content
+    }
+    
+    private func getBottomPadding() -> CGFloat {
+        if keyboard.currentHeight > 0 {
+            return keyboard.currentHeight + UIConstants.Spacing.standard
+        }
+        
+        return UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
     }
 }
 
@@ -80,6 +89,9 @@ struct KarhooBottomSheetChildView: View {
             Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
             
             TextField("Inner child here", text: $text)
+                .border(.black)
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
     }
 }
+

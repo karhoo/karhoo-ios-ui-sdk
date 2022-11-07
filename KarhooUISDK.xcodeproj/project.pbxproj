@@ -539,6 +539,8 @@
 		7B98323828B8C163000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
+		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
+		84011F59291982D60009D858 /* SwiftUIScrollViewOverflowContentModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F58291982D60009D858 /* SwiftUIScrollViewOverflowContentModifier.swift */; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		84E86C502913EC66002B924A /* KarhooBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E86C4F2913EC66002B924A /* KarhooBottomSheetViewModel.swift */; };
 		84E86C522913ECAC002B924A /* KarhooBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E86C512913ECAC002B924A /* KarhooBottomSheet.swift */; };
@@ -1120,6 +1122,8 @@
 		7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePresenter.swift; sourceTree = "<group>"; };
 		7B982C6DA6FCF2E8FF005496 /* Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B98323728B8C163000C11FE /* LoyalityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalityMode.swift; sourceTree = "<group>"; };
+		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
+		84011F58291982D60009D858 /* SwiftUIScrollViewOverflowContentModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIScrollViewOverflowContentModifier.swift; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		84E86C4F2913EC66002B924A /* KarhooBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		84E86C512913ECAC002B924A /* KarhooBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheet.swift; sourceTree = "<group>"; };
@@ -2154,6 +2158,8 @@
 				407EC74422CF564E00F24CFC /* KarhooGradients.swift */,
 				407EC74322CF564E00F24CFC /* Layout.swift */,
 				407EC73B22CF564E00F24CFC /* NibStrings.swift */,
+				84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */,
+				84011F58291982D60009D858 /* SwiftUIScrollViewOverflowContentModifier.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -4022,6 +4028,7 @@
 				407EC7BD22CF564E00F24CFC /* ConstraintSwitcher.swift in Sources */,
 				79ACDCE626CCB5FB008820B5 /* KarhooFleetCapabilitiesDetailsView.swift in Sources */,
 				407EC79E22CF564E00F24CFC /* NotificationMVP.swift in Sources */,
+				84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */,
 				51F4D56B28574D1600A8DB5E /* UIStackView+addArrangedSubviews.swift in Sources */,
 				FC705B0D2212DE6E0001036E /* RidesScreenBuilder.swift in Sources */,
 				51F4D56928574D0E00A8DB5E /* UINavigationController+navigationCompletions.swift in Sources */,
@@ -4270,6 +4277,7 @@
 				09D8B29422F3491F00569C55 /* TripFeedbackScreenBuilder.swift in Sources */,
 				6BE36B5726EBB1F300F0FE86 /* CountryCodeTableViewCell.swift in Sources */,
 				5C1CD0B1241A5D88004AFF7D /* KarhooTripOptionsPresenter.swift in Sources */,
+				84011F59291982D60009D858 /* SwiftUIScrollViewOverflowContentModifier.swift in Sources */,
 				51EFCA87285756270099071C /* QuoteListFilter.swift in Sources */,
 				5135E58628574A5A00F14A0F /* QuoteListTableViewController.swift in Sources */,
 				407EC7DD22CF564E00F24CFC /* GradientView.swift in Sources */,
