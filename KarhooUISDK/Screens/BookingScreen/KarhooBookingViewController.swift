@@ -128,9 +128,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             print("Got a hit")
             self.dismiss(animated: true)
         }
-        vm.present()
-        let sheet = KarhooBottomSheet(viewModel: vm)
+        let sheet = KarhooBottomSheet(viewModel: vm) {
+            KarhooBottomSheetChildView(text: "Some text")
+        }
         let vc = UIHostingController(rootView: sheet)
+        vc.view.backgroundColor = UIColor.clear
+        vc.view.bounds.size = UIScreen.main.bounds.size
+        
         present(vc, animated: true)
     }
 
