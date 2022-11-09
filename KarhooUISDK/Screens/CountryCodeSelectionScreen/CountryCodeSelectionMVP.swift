@@ -12,5 +12,5 @@ protocol CountryCodeSelectionActions {
     var preSelectedCountry: Country? { get set }
     func countrySelected(country: Country)
     func backClicked()
-    func filterData(filter: String?) -> [Country] 
+    func filterData(filter: String?) -> [Country]
 }

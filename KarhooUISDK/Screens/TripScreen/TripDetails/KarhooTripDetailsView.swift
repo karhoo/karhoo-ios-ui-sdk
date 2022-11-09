@@ -130,7 +130,6 @@ extension KarhooTripScreenDetailsView: TripInfoViewDelegate {
 
 extension KarhooTripScreenDetailsView: RideDetailsStackButtonActions {
     
-    
     func hideRideOptions() {
         tripInfoView.stackButtonView.isHidden = true
     }

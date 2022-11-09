@@ -11,7 +11,7 @@ import KarhooSDK
 protocol CheckoutPresenter {
     func load(view: CheckoutView)
     func screenWillAppear()
-    func bookTripPressed()
+    func completeBookingFlow()
     func addOrEditPassengerDetails()
     func addMoreDetails()
     func didAddPassengerDetails()
@@ -49,11 +49,11 @@ protocol CheckoutView: BaseViewController {
 
 extension CheckoutView {
     func getComments() -> String? {
-        return nil
+        nil
     }
     
     func getFlightNumber() -> String? {
-        return nil
+        nil
     }
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {

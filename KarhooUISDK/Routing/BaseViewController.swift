@@ -130,6 +130,10 @@ public extension BaseViewController {
             loadingView.set(backgroundColor: .black, alpha: loadingViewAlpha)
         }
 
-        show ? loadingView.show() : loadingView.hide()
+        if show {
+            loadingView.show()
+        } else {
+            loadingView.hide()
+        }
     }
 }

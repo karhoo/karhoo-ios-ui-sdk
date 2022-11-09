@@ -21,7 +21,7 @@ extension KarhooCheckoutViewController: BookingButtonDelegate {
     }
     
     func requestPressed() {
-        presenter.bookTripPressed()
+        presenter.completeBookingFlow()
     }
 }
 
@@ -51,6 +51,7 @@ extension KarhooCheckoutViewController: AddPaymentViewDelegate {
         paymentNonce = nonce
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
         presenter.didAddPassengerDetails()
+        presenter.completeBookingFlow()
     }
 }
 
