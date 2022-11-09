@@ -8,6 +8,7 @@
 
 import UIKit
 import KarhooSDK
+import SwiftUI
 
 final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
@@ -64,6 +65,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var termsConditionsView: TermsConditionsView!
 
     private var headerView: KarhooCheckoutHeaderView!
+    
+    private var passengerViewController: UIHostingController<DetailsCellView>
 
     private(set) var loyaltyView: KarhooLoyaltyView!
  
@@ -195,6 +198,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         self.presenter = presenter
         let legalNoticePresenter = KarhooLegalNoticePresenter()
         legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
+        passengerViewController = DetailsCellViewController(passengerDetails: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -223,6 +227,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     override func viewDidLoad() {
         super.viewDidLoad()
         passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+        
         forceLightMode()
     }
     
@@ -247,7 +252,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: loyaltyView)
-        baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
+        baseStackView.addViewToStack(view: passengerViewController.view)
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
@@ -305,13 +310,20 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
                                  paddingRight: standardSpacing)
         loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: standardPadding)
         
-        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
+//        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
+//                                              leading: baseStackView.leadingAnchor,
+//                                              trailing: baseStackView.trailingAnchor,
+//                                              paddingTop: standardSpacing,
+//                                              paddingLeft: standardSpacing,
+//                                              paddingRight: standardSpacing,
+//                                              height: passengerDetailsAndPaymentViewHeight)
+        passengerViewController.view.anchor(top: loyaltyView.bottomAnchor,
                                               leading: baseStackView.leadingAnchor,
                                               trailing: baseStackView.trailingAnchor,
                                               paddingTop: standardSpacing,
                                               paddingLeft: standardSpacing,
-                                              paddingRight: standardSpacing,
-                                              height: passengerDetailsAndPaymentViewHeight)
+                                              paddingRight: standardSpacing
+                                              /*height: passengerDetailsAndPaymentViewHeight*/)
 
         poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
         commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
