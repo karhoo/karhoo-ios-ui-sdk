@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Decode Keys.swift
           command:
-           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
+           echo "$CLIENT_KEYS_2" | base64 --decode > Client/Keys.swift
       - run:
           name: Install CocoaPods
           command: |
