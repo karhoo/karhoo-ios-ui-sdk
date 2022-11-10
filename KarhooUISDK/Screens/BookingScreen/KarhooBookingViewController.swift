@@ -129,7 +129,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             self.dismiss(animated: true)
         }
         let sheet = KarhooBottomSheet(viewModel: vm) {
-            KarhooBottomSheetChildView(text: "Some text", isFirstPresentation: true)
+            KarhooBottomSheetChildView(text: "Some text")
         }
         let vc = UIHostingController(rootView: sheet)
         vc.view.backgroundColor = UIColor.clear
