@@ -66,7 +66,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     private var headerView: KarhooCheckoutHeaderView!
     
-    private var passengerViewController: UIHostingController<DetailsCellView>
+    private var passengerViewController: DetailsCellViewController
 
     private(set) var loyaltyView: KarhooLoyaltyView!
  

@@ -53,7 +53,7 @@ struct DetailsCellView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(KarhooUI.colors.white.getColor())
         )
-        onTapGesture(perform: { return })
+        .onTapGesture(perform: { return })
     }
 }
 
