@@ -295,6 +295,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
+        
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
                                             journeyDetails: journeyDetails,
