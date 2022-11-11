@@ -19,6 +19,6 @@ protocol BottomSheetViewModel {
 class KarhooBottomSheetViewModel: BottomSheetViewModel {
     var title: String = "Some Title"
     var backgroundColor: UIColor = KarhooUI.colors.white
-    var cornerRadius: CGFloat = UIConstants.CornerRadius.xLarge
+    var cornerRadius: CGFloat = UIConstants.CornerRadius.xxLarge
     var callback: ScreenResultCallback<()>?
 }

@@ -15,23 +15,34 @@ struct KarhooBottomSheet<Content: View>: View {
     @State private var contentFrame: CGSize?
 
     var body: some View {
-        VStack (spacing: 0.0, content: {
+        VStack(spacing: 0.0, content: {
             Spacer()
                 .background(Color.clear)
                 .layoutPriority(250)
+                .onTapGesture {
+                    if let callback = viewModel.callback {
+                        callback(ScreenResult.cancelled(byUser: true))
+                    }
+                }
             
             VStack(spacing: 0.0) {
                 HStack {
                     Text(viewModel.title)
                         .font(.headline)
                         .bold()
+                        // .foregroundColor(KarhooUI.colors.text.getColor())
                     Spacer()
+                        .background(Color.clear)
                     Button {
                         if let callback = viewModel.callback {
                             callback(ScreenResult.cancelled(byUser: true))
                         }
                     } label: {
-                        Image(uiImage: UIImage.uisdkImage("kh_uisdk_cross"))
+                        Image(
+                            uiImage:
+                                UIImage.uisdkImage("kh_uisdk_cross_new")
+                                .coloured(withTint: KarhooUI.colors.text)
+                        )
                     }
                     .frame(
                         width: UIConstants.Dimension.Button.standard,
@@ -41,9 +52,9 @@ struct KarhooBottomSheet<Content: View>: View {
                 .padding(
                     EdgeInsets(
                         top: UIConstants.Spacing.standard,
-                        leading: UIConstants.Spacing.marginToEdgeOfScreen,
+                        leading: UIConstants.Spacing.standard,
                         bottom: 0,
-                        trailing: UIConstants.Spacing.marginToEdgeOfScreen
+                        trailing: UIConstants.Spacing.small
                     )
                 )
                 
@@ -53,67 +64,15 @@ struct KarhooBottomSheet<Content: View>: View {
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
             }
-            .background(Color.white) //TODO: add karhoo color
+            .background(Color.white) // TODO: add karhoo color
             .clipShape(RoundedRectangle(cornerRadius: viewModel.cornerRadius, style: .continuous))
+            .layoutPriority(750)
+            .allowsHitTesting(false)
         })
         .edgesIgnoringSafeArea([.bottom, .top])
-//        VStack(spacing: 0) {
-//            Spacer()
-//            VStack {
-//                HStack {
-//                    Text(viewModel.title)
-//                        .font(.headline)
-//                        .bold()
-//                    Spacer()
-//                    Button(action: {
-//                        if let callback = viewModel.callback {
-//                            callback(ScreenResult.cancelled(byUser: true))
-//                        }
-//                    }) {
-//                        Image(uiImage: UIImage.uisdkImage("kh_uisdk_cross"))
-//                    }
-//                    .frame(
-//                        width: UIConstants.Dimension.Button.standard,
-//                        height: UIConstants.Dimension.Button.standard
-//                    )
-//                }
-//                .padding(
-//                    EdgeInsets(
-//                        top: UIConstants.Spacing.standard,
-//                        leading: UIConstants.Spacing.marginToEdgeOfScreen,
-//                        bottom: 0,
-//                        trailing: UIConstants.Spacing.marginToEdgeOfScreen
-//                    )
-//                )
-//
-//                content()
-//
-////                ScrollView {
-////                    content()
-////                        .background(
-////                        GeometryReader { geo in
-////                            Color.clear.onAppear {
-////                                print("Geo: \(geo.size)")
-////                                contentFrame = geo.size
-////                            }
-////                        }
-////                    )
-////                }
-////                .frame(height: contentFrame?.height ?? UIScreen.main.bounds.height)
-//
-//                Spacer()
-//                    .frame(height: getBottomPadding())
-//                    .animation(.easeOut(duration: UIConstants.Duration.medium))
-//
-//            }
-//            .background(Color.white)
-//            .clipShape(RoundedRectangle(cornerRadius: viewModel.cornerRadius, style: .continuous))
-//            .offset(y: -getBottomPadding())
-//        }
-//        .zIndex(1)
-//        .transition(.move(edge: .bottom))
-//        .edgesIgnoringSafeArea(.all)
-        
+        .zIndex(1)
+        .transition(.move(edge: .bottom))
+
     }
     
     init(viewModel: BottomSheetViewModel, @ViewBuilder content: @escaping () -> Content) {
@@ -131,13 +90,13 @@ struct KarhooBottomSheet<Content: View>: View {
     }
 }
 
-//struct KarhooBottomSheet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel()) {
-//            KarhooBottomSheetChildView(text: "Some text")
-//        }
-//    }
-//}
+struct KarhooBottomSheet_Previews: PreviewProvider {
+    static var previews: some View {
+        KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel()) {
+            KarhooBottomSheetChildView(text: "Some text")
+        }
+    }
+}
 
 struct KarhooBottomSheetChildView: View {
 
@@ -150,7 +109,7 @@ struct KarhooBottomSheetChildView: View {
                 
             Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
                 .fixedSize(horizontal: false, vertical: true)
-//            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
 //            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
 //            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
             TextField("Inner child here", text: $text)
