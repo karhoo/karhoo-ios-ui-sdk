@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct KarhooBottomSheet<Content: View>: View {
-    var viewModel: BottomSheetViewModel
-    
-    @ViewBuilder let content: () -> Content
+    private var viewModel: BottomSheetViewModel
+    @ViewBuilder private let content: () -> Content
     @ObservedObject private var keyboard = KeyboardResponder()
 
     var body: some View {
@@ -102,6 +101,20 @@ struct KarhooBottomSheet_Previews: PreviewProvider {
         KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel()) {
             KarhooBottomSheetChildView(text: "Some text")
         }
+    }
+}
+
+final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
+    func buildBottomSheetScreenBuilderForUIKit(
+        viewModel: BottomSheetViewModel,
+        content: @escaping () -> some View
+    ) -> Screen {
+        let sheet = KarhooBottomSheet(viewModel: viewModel) {
+            content()
+        }
+        let vc = UIHostingController(rootView: sheet)
+        vc.view.backgroundColor = UIColor.clear
+        return vc
     }
 }
 

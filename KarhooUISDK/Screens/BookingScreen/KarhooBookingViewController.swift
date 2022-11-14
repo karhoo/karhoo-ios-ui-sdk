@@ -128,13 +128,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             print("Got a hit")
             self.dismiss(animated: true)
         }
-        let sheet = KarhooBottomSheet(viewModel: vm) {
+        
+        let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
+        let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
             KarhooBottomSheetChildView(text: "Some text")
         }
-        let vc = UIHostingController(rootView: sheet)
-        vc.view.backgroundColor = UIColor.clear
-        vc.view.bounds.size = UIScreen.main.bounds.size
-
         showAsOverlay(item: vc, animated: true)
     }
 

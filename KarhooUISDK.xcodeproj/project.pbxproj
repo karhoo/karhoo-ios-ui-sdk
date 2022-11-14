@@ -541,6 +541,7 @@
 		7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
+		846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */; };
 		84E86C502913EC66002B924A /* KarhooBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E86C4F2913EC66002B924A /* KarhooBottomSheetViewModel.swift */; };
 		84E86C522913ECAC002B924A /* KarhooBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E86C512913ECAC002B924A /* KarhooBottomSheet.swift */; };
 		986578A0F928780978136BC5 /* RidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986573E003E549DB4C06EA7A /* RidesViewController.xib */; };
@@ -1123,6 +1124,7 @@
 		7B98323728B8C163000C11FE /* LoyalityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalityMode.swift; sourceTree = "<group>"; };
 		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetScreenBuilder.swift; sourceTree = "<group>"; };
 		84E86C4F2913EC66002B924A /* KarhooBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		84E86C512913ECAC002B924A /* KarhooBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheet.swift; sourceTree = "<group>"; };
 		986573E003E549DB4C06EA7A /* RidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RidesViewController.xib; sourceTree = "<group>"; };
@@ -1768,6 +1770,7 @@
 				09D8B29322F3491F00569C55 /* TripFeedbackScreenBuilder.swift */,
 				FC83E283221DB6B8008FE26D /* TripScreenBuilder.swift */,
 				FC83E287221DBA1B008FE26D /* TripSummaryScreenBuilder.swift */,
+				846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";
@@ -4208,6 +4211,7 @@
 				FC435F012211B39A00FB6BB5 /* RideCellViewModel.swift in Sources */,
 				5C1CD0B5241A5D88004AFF7D /* DriverDetailsMVP.swift in Sources */,
 				408AB68523507DF600B351B2 /* FareExt.swift in Sources */,
+				846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */,
 				09F60CE9226756AF00023C74 /* SideMenuHandler.swift in Sources */,
 				79ACDCED26CFC3E7008820B5 /* KarhooFareInfoView.swift in Sources */,
 				099106BD21B82D5200BD7E6F /* Address.swift in Sources */,
