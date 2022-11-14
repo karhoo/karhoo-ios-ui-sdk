@@ -37,7 +37,7 @@ struct DetailsCellView: View {
                 .frame(
                     width: UIConstants.Dimension.Icon.standard,
                     height: UIConstants.Dimension.Icon.standard
-                )
+                ).foregroundColor(KarhooUI.colors.primary.getColor())
             }
             .padding(.all, 16)
             .frame(
@@ -51,7 +51,7 @@ struct DetailsCellView: View {
                 .stroke(KarhooUI.colors.border.getColor(), lineWidth: 1)
         ).background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(KarhooUI.colors.white.getColor())
+                .fill(KarhooUI.colors.background2.getColor())
         )
         .onTapGesture(perform: { return })
     }
