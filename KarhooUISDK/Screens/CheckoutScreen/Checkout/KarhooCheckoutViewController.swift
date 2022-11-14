@@ -66,7 +66,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     private var headerView: KarhooCheckoutHeaderView!
     
-    private var passengerViewController: DetailsCellViewController
+    private var passengerViewController: DetailsCellViewController!
 
     private(set) var loyaltyView: KarhooLoyaltyView!
  
@@ -198,7 +198,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         self.presenter = presenter
         let legalNoticePresenter = KarhooLegalNoticePresenter()
         legalNoticeViewController = LegalNoticeViewController(presenter: legalNoticePresenter)
-        passengerViewController = DetailsCellViewController(passengerDetails: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -210,6 +209,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
+        passengerViewController = DetailsCellViewController(passengerDetails: nil, actions: self)
         termsConditionsView = TermsConditionsView(
             isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
         )
@@ -458,6 +458,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
 
     func setPassenger(details: PassengerDetails?) {
+        passengerViewController.set(details: details)
         passengerDetailsAndPaymentView.details = details
     }
 

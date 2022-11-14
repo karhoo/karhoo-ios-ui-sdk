@@ -12,30 +12,36 @@ import KarhooSDK
 class DetailsCellViewController: UIHostingController<DetailsCellView>, AddPassengerDetailsPresenter {
     
     private let analyticsService: AnalyticsService
-    private var details: PassengerDetails?
+    let actions: AddPassengerDetailsViewDelegate
     
     
-    init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(), passengerDetails: PassengerDetails?){
+    init(analyticsService: AnalyticsService = Karhoo.getAnalyticsService(), passengerDetails: PassengerDetails?, actions: AddPassengerDetailsViewDelegate){
         self.analyticsService = analyticsService
+        self.actions = actions
         let model = Self.getModel(from: passengerDetails)
-        super.init(rootView: DetailsCellView(title: model.title, subtitle: model.subtitle, iconName: model.iconName))
+        super.init(rootView: DetailsCellView(model: model))
+        self.rootView.delegate = self
         self.view.accessibilityIdentifier = "passenger_details_cell_view"
     }
     
     func set(details: PassengerDetails?) {
-        self.details = details
         let model = Self.getModel(from: details)
-        (rootView as DetailsCellView).title = model.title
-        (rootView as DetailsCellView).subtitle = model.subtitle
-        (rootView as DetailsCellView).iconName = model.iconName
+        self.rootView.model.update(title: model.title, subtitle:model.subtitle)
     }
     
-    static func getModel(from details: PassengerDetails?) -> DetailsCellModel {
-        let modelForIncompleteUser = DetailsCellModel(title: UITexts.PassengerDetails.title, subtitle: UITexts.PassengerDetails.add, iconName: "kh_uisdk_passenger")
-        return DetailsCellModel(
-            title: modelForIncompleteUser.title,
-            subtitle: modelForIncompleteUser.subtitle,
-            iconName: modelForIncompleteUser.iconName
+    private static func getModel(from details: PassengerDetails?) -> DetailsCellModel {
+        guard let details = details else {
+            return DetailsCellModel(
+                title: UITexts.PassengerDetails.title,
+                subtitle: UITexts.PassengerDetails.add,
+                iconName: "kh_uisdk_passenger"
+            )
+        }
+        let passengerName = "\(details.firstName) \(details.lastName)"
+        return DetailsCellModel (
+            title: passengerName,
+            subtitle:  "\(details.phoneNumber)",
+            iconName: "kh_uisdk_passenger"
         )
     }
     

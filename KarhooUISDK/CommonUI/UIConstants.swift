@@ -207,6 +207,9 @@ public struct UIConstants {
 
         /// 12
         public static let xLarge: CGFloat = 12
+        
+        /// 20
+        public static let xxLarge: CGFloat = 20
     }
     
     public struct ShadowRadius {

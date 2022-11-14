@@ -10,24 +10,24 @@ import SwiftUI
 
 struct DetailsCellView: View {
     
-    @State var title = ""
-    @State var subtitle = ""
-    @State var iconName: String
+    @ObservedObject var model: DetailsCellModel
+    var delegate: DetailsCellViewController? = nil
+
     var body: some View {
         Group {
             HStack(spacing: UIConstants.Spacing.small) {
-                Image(uiImage: UIImage.uisdkImage(iconName))
+                Image(uiImage: UIImage.uisdkImage(model.iconName))
                 .frame(
                     width: UIConstants.Dimension.Icon.large,
                     height: UIConstants.Dimension.Icon.large
                 )
                 .foregroundColor(KarhooUI.colors.primary.getColor())
             VStack(alignment: .leading) {
-                Text(title)
+                Text(model.title)
                     .lineLimit(2)
                     .font(.system(size: 16))
                     .foregroundColor(KarhooUI.colors.text.getColor())
-                Text(subtitle)
+                Text(model.subtitle)
                     .lineLimit(2)
                     .font(.system(size: 10))
                     .foregroundColor(KarhooUI.colors.textLabel.getColor())
@@ -44,27 +44,25 @@ struct DetailsCellView: View {
                 maxWidth: .infinity,
                 alignment: .leading
             )
-            
         }
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(KarhooUI.colors.border.getColor(), lineWidth: 1)
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xxLarge)
+                .stroke(
+                    KarhooUI.colors.border.getColor(),
+                    lineWidth: UIConstants.Dimension.Border.standardWidth
+                )
         ).background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xxLarge)
                 .fill(KarhooUI.colors.background2.getColor())
         )
-        .onTapGesture(perform: { return })
+        .onTapGesture(perform: {
+            delegate?.actions.willUpdatePassengerDetails()
+        })
     }
-}
-
-struct DetailsCellModel{
-    var title: String
-    var subtitle: String
-    var iconName: String
 }
 
 struct DetailsViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger")
+        DetailsCellView(model: DetailsCellModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
     }
 }
