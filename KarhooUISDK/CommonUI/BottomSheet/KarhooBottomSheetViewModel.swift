@@ -13,12 +13,12 @@ protocol BottomSheetViewModel {
     var title: String { get set }
     var cornerRadius: CGFloat { get set }
     var backgroundColor: UIColor { get set }
-    var callback: ScreenResultCallback<()>? { get set }
+    var callback: ScreenResultCallback<AnyObject>? { get set }
 }
 
 class KarhooBottomSheetViewModel: BottomSheetViewModel {
     var title: String = "Some Title"
     var backgroundColor: UIColor = KarhooUI.colors.white
     var cornerRadius: CGFloat = UIConstants.CornerRadius.xxLarge
-    var callback: ScreenResultCallback<()>?
+    var callback: ScreenResultCallback<AnyObject>?
 }
