@@ -38,7 +38,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
-
+        
         self.setUpView()
     }
 
@@ -134,8 +134,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         let vc = UIHostingController(rootView: sheet)
         vc.view.backgroundColor = UIColor.clear
         vc.view.bounds.size = UIScreen.main.bounds.size
-        
-        present(vc, animated: true)
+
+        showAsOverlay(item: vc, animated: true)
     }
 
     private func setupMapView(reverseGeolocate: Bool) {

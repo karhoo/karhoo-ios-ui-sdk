@@ -10,20 +10,15 @@ import SwiftUI
 
 struct KarhooBottomSheet<Content: View>: View {
     var viewModel: BottomSheetViewModel
+    
     @ViewBuilder let content: () -> Content
     @ObservedObject private var keyboard = KeyboardResponder()
-    @State private var contentFrame: CGSize?
 
     var body: some View {
         VStack(spacing: 0.0, content: {
             Spacer()
                 .background(Color.clear)
                 .layoutPriority(250)
-                .onTapGesture {
-                    if let callback = viewModel.callback {
-                        callback(ScreenResult.cancelled(byUser: true))
-                    }
-                }
             
             VStack(spacing: 0.0) {
                 HStack {
@@ -58,6 +53,10 @@ struct KarhooBottomSheet<Content: View>: View {
                     )
                 )
                 
+                // The content is not wrapped inside a ScrollView intentionally
+                // A ScrollView expands to the full height available which is not a desired outcome for all instances where this bottom sheet will be used
+                // Trying to control the height of the ScrollView with GeometryReader gives odd behaviours to the UI, so it is not recommended
+                // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened, then wrap that view inside a ScrollView before injecting it into this bottom sheet
                 content()
                 
                 Spacer()
@@ -67,12 +66,20 @@ struct KarhooBottomSheet<Content: View>: View {
             .background(Color.white) // TODO: add karhoo color
             .clipShape(RoundedRectangle(cornerRadius: viewModel.cornerRadius, style: .continuous))
             .layoutPriority(750)
-            .allowsHitTesting(false)
+            .onTapGesture {
+                // Do nothing. This was added to intercept touches so that they aren't picked up by the main VStack tap gesture recognizer
+                // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
+            }
         })
         .edgesIgnoringSafeArea([.bottom, .top])
-        .zIndex(1)
-        .transition(.move(edge: .bottom))
-
+        // .contentShape(Rectangle()) is needed in order to define the tappable area of the bottom sheet
+        // Without a defined content shape the clear background does not intercept the user's taps
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if let callback = viewModel.callback {
+                callback(ScreenResult.cancelled(byUser: true))
+            }
+        }
     }
     
     init(viewModel: BottomSheetViewModel, @ViewBuilder content: @escaping () -> Content) {
@@ -107,9 +114,9 @@ struct KarhooBottomSheetChildView: View {
             Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
                 .fixedSize(horizontal: false, vertical: true)
                 
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-                .fixedSize(horizontal: false, vertical: true)
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+//            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+//                .fixedSize(horizontal: false, vertical: true)
+//            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
 //            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
 //            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
             TextField("Inner child here", text: $text)
