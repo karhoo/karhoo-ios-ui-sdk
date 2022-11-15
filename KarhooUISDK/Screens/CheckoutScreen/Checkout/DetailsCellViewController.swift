@@ -13,7 +13,7 @@ class DetailsCellViewController: UIHostingController<DetailsCellView>, DetailsCe
     
     var onClickAction: (() -> Void)!
     
-    init(rootView: DetailsCellView, onClickAction: @escaping () -> Void) {
+    init(rootView: DetailsCellView, onClickAction: @escaping () -> Void){
         super.init(rootView: rootView)
         self.onClickAction = onClickAction
     }

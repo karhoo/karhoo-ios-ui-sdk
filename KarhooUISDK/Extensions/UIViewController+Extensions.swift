@@ -14,7 +14,7 @@ public extension UIViewController {
         overrideUserInterfaceStyle = .light
     }
     
-    var viewIsOnScreen: Bool {
+    var viewIsOnScreen: Bool{
         self.isViewLoaded && view.window != nil
     }
 }

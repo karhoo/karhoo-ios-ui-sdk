@@ -11,12 +11,16 @@ import KarhooSDK
 
 extension QuoteVehicle {
     var localizedVehicleType: String {
-        let value = type.uppercased()
-        guard let enumCase = VehicleType(rawValue: value)
-        else {
-            return type
+        get {
+            let value = type.uppercased()
+            
+            guard let enumCase = VehicleType(rawValue: value)
+            else {
+                return type
+            }
+            
+            return enumCase.title
         }
-        return enumCase.title
     }
 }
 

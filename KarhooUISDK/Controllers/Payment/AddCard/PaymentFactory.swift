@@ -14,10 +14,8 @@ final class PaymentFactory {
     private let userService: UserService
     private let sdkConfiguration: KarhooUISDKConfiguration
 
-    public init(
-        userService: UserService = Karhoo.getUserService(),
-        sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration
-    ) {
+    public init(userService: UserService = Karhoo.getUserService(),
+         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration) {
         self.userService = userService
         self.sdkConfiguration = sdkConfiguration
     }
