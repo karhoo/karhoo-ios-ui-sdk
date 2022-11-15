@@ -133,7 +133,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
             KarhooBottomSheetChildView(text: "Some text")
         }
-        showAsOverlay(item: vc, animated: true)
+        present(vc, animated: true)
     }
 
     private func setupMapView(reverseGeolocate: Bool) {

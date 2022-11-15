@@ -17,14 +17,14 @@ struct KarhooBottomSheet<Content: View>: View {
         VStack(spacing: 0.0, content: {
             Spacer()
                 .background(Color.clear)
-                .layoutPriority(250)
+                .layoutPriority(Double(UILayoutPriority.defaultLow.rawValue))
             
             VStack(spacing: 0.0) {
                 HStack {
                     Text(viewModel.title)
                         .font(.headline)
                         .bold()
-                        // .foregroundColor(KarhooUI.colors.text.getColor())
+                        .foregroundColor(KarhooUI.colors.text.getColor())
                     Spacer()
                         .background(Color.clear)
                     Button {
@@ -62,18 +62,19 @@ struct KarhooBottomSheet<Content: View>: View {
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
             }
-            .background(Color.white) // TODO: add karhoo color
+            .background(KarhooUI.colors.background1.getColor())
             .clipShape(RoundedRectangle(cornerRadius: viewModel.cornerRadius, style: .continuous))
-            .layoutPriority(750)
+            .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
             .onTapGesture {
                 // Do nothing. This was added to intercept touches so that they aren't picked up by the main VStack tap gesture recognizer
                 // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
             }
         })
-        .edgesIgnoringSafeArea([.bottom, .top])
-        // .contentShape(Rectangle()) is needed in order to define the tappable area of the bottom sheet
-        // Without a defined content shape the clear background does not intercept the user's taps
-        .contentShape(Rectangle())
+        .background(
+            KarhooUI.colors.black.getColor()
+                .opacity(UIConstants.Alpha.overlay)
+        )
+        .edgesIgnoringSafeArea([.all])
         .onTapGesture {
             if let callback = viewModel.callback {
                 callback(ScreenResult.cancelled(byUser: true))
@@ -114,6 +115,7 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
         }
         let vc = UIHostingController(rootView: sheet)
         vc.view.backgroundColor = UIColor.clear
+        vc.modalPresentationStyle = .overFullScreen
         return vc
     }
 }
