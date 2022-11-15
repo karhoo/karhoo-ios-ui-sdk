@@ -13,7 +13,7 @@ public struct KHErrorBannerViewID {
     public static let dismissButton = "dismiss_button"
 }
 
-protocol ErrorBannerViewDelegate: class {
+protocol ErrorBannerViewDelegate: AnyObject {
     func didTapOnDismiss(_ view: ErrorBannerView)
 }
 

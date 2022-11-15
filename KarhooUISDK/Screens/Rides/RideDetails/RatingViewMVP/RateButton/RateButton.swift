@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RateButtonDelegate: class {
+protocol RateButtonDelegate: AnyObject {
     func didTapRateButton(index: Int)
 }
 
