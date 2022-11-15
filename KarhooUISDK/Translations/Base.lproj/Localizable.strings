@@ -287,6 +287,9 @@
 /* The title of the alert when user is forced to update ie "App Update Required" */
 "Text.Error.Alert.ForceUpdateTitle" = "New version available";
 
+/* Errors */
+"Text.Error.EmailValidationError" = "Check your email address is spelt correctly";
+
 /* When the user enters an invalid flight number, Fuzzy */
 "Text.Error.FlightNumberValidationHint" = "Flight number";
 
