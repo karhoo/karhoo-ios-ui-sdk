@@ -11,17 +11,15 @@ import KarhooSDK
 
 extension PassengerDetails {
     public var areValid: Bool {
-        get {
-            guard Utils.isValidName(name: firstName),
-                  Utils.isValidName(name: lastName),
-                  Utils.isValidEmail(email: email),
-                  Utils.isValidPhoneNumber(number: phoneNumber),
-                  !locale.isEmpty
-            else {
-                return false
-            }
-            
-            return true
+        guard Utils.isValidName(name: firstName),
+              Utils.isValidName(name: lastName),
+              Utils.isValidEmail(email: email),
+              Utils.isValidPhoneNumber(number: phoneNumber),
+              !locale.isEmpty
+        else {
+            return false
         }
+        
+        return true
     }
 }

@@ -77,7 +77,6 @@ public extension KarhooColors {
         UIColor.get(lightModeColor: UIColor(hex: "#E5E5E5"), darkModeColor: UIColor(hex: "#2C2C2C"))
     }
 
-
     // MARK: - Text Colors
 
     var text: UIColor {

@@ -17,7 +17,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
         analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
         passengerDetails: PassengerDetails?,
         actions: AddPassengerDetailsViewDelegate
-    ){
+    ) {
         self.analyticsService = analyticsService
         super.init(
             rootView: DetailsCellView(model: Self.getModel(from: passengerDetails)),
@@ -33,7 +33,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
     
     func set(details: PassengerDetails?) {
         let model = Self.getModel(from: details)
-        rootView.model.update(title: model.title, subtitle:model.subtitle)
+        rootView.model.update(title: model.title, subtitle: model.subtitle)
     }
     
     private static func getModel(from details: PassengerDetails?) -> DetailsCellModel {
@@ -45,9 +45,9 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
             )
         }
         let passengerName = "\(details.firstName) \(details.lastName)"
-        return DetailsCellModel (
+        return DetailsCellModel(
             title: passengerName,
-            subtitle:  "\(details.phoneNumber)",
+            subtitle: "\(details.phoneNumber)",
             iconName: "kh_uisdk_passenger"
         )
     }
