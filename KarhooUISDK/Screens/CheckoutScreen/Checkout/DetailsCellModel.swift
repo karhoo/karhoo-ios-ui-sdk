@@ -15,13 +15,13 @@ class DetailsCellModel: ObservableObject {
     @Published var subtitle: String
     @Published var iconName: String
     
-    init(title: String, subtitle: String, iconName: String){
+    init(title: String, subtitle: String, iconName: String) {
         self.title = title
         self.subtitle = subtitle
         self.iconName = iconName
     }
     
-    func update(title: String, subtitle: String){
+    func update(title: String, subtitle: String) {
         self.title = title
         self.subtitle = subtitle
     }

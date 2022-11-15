@@ -11,7 +11,7 @@ import SwiftUI
 struct DetailsCellView: View {
     
     @ObservedObject var model: DetailsCellModel
-    var delegate: DetailsCellViewControllerProtocol? = nil
+    weak var delegate: DetailsCellViewControllerProtocol?
 
     var body: some View {
         Group {
@@ -61,7 +61,7 @@ struct DetailsCellView: View {
     }
 }
 
-struct DetailsViewCell_Previews: PreviewProvider {
+struct DetailsViewCellPreviews: PreviewProvider {
     static var previews: some View {
         DetailsCellView(model: DetailsCellModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
     }

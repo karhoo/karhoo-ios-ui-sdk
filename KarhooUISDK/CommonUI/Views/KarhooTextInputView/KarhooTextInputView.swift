@@ -318,4 +318,3 @@ extension KarhooTextInputView: UITextPasteDelegate {
         return textRange
     }
 }
-
