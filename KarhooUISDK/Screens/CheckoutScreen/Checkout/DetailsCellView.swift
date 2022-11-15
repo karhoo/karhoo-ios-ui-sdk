@@ -11,7 +11,7 @@ import SwiftUI
 struct DetailsCellView: View {
     
     @ObservedObject var model: DetailsCellModel
-    var delegate: DetailsCellViewController? = nil
+    var delegate: DetailsCellViewControllerProtocol? = nil
 
     var body: some View {
         Group {
@@ -56,7 +56,7 @@ struct DetailsCellView: View {
                 .fill(KarhooUI.colors.background2.getColor())
         )
         .onTapGesture(perform: {
-            delegate?.actions.willUpdatePassengerDetails()
+            delegate?.onClickAction()
         })
     }
 }

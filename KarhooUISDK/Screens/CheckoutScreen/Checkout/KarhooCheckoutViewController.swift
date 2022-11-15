@@ -66,7 +66,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     private var headerView: KarhooCheckoutHeaderView!
     
-    private var passengerViewController: DetailsCellViewController!
+    private var passengerViewController: PassengerCellViewController!
 
     private(set) var loyaltyView: KarhooLoyaltyView!
  
@@ -209,7 +209,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
-        passengerViewController = DetailsCellViewController(passengerDetails: nil, actions: self)
+        passengerViewController = PassengerCellViewController(passengerDetails: nil, actions: self)
         termsConditionsView = TermsConditionsView(
             isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
         )
