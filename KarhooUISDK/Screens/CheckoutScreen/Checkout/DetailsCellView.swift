@@ -63,6 +63,6 @@ struct DetailsCellView: View {
 
 struct DetailsViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(model: DetailsCellModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
+        DetailsCellView(model: DetailsCellModel(title: "Passenger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
     }
 }
