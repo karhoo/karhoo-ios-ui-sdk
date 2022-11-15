@@ -295,6 +295,19 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
+        /** For a later ticket
+         let vm = KarhooBottomSheetViewModel()
+         vm.callback = { result in
+             print("Got a hit")
+             self.dismiss(animated: true)
+         }
+         
+         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
+         let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
+             KarhooBottomSheetChildView2(text: "Some text")
+         }
+         present(vc, animated: true)
+         **/
         let prebookConfirmation = prebookConfirmationScreenBuilder
             .buildPrebookConfirmationScreen(quote: quote,
                                             journeyDetails: journeyDetails,

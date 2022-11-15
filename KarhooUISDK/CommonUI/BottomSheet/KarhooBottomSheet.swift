@@ -61,7 +61,7 @@ struct KarhooBottomSheet<Content: View>: View {
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
             }
-            .background(KarhooUI.colors.white.getColor())
+            .background(KarhooUI.colors.white.getColor()) // TODO: add proper background after color definition tweaking
             .clipShape(
                 RoundedRectangle(
                     cornerRadius: viewModel.cornerRadius,
@@ -78,7 +78,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
             }
         })
-        .colorScheme(.light) // Delete this line after dark mode modifications
+        .colorScheme(.light) // TODO: Delete this line after dark mode modifications
         .background(
             KarhooUI.colors.black.getColor()
                 .opacity(UIConstants.Alpha.overlay)
@@ -134,7 +134,9 @@ struct KarhooBottomSheet<Content: View>: View {
 struct KarhooBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
         KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel()) {
-            KarhooBottomSheetChildView1(text: "Some text")
+            VStack {
+                Text("Inner View")
+            }
         }
     }
 }
@@ -153,43 +155,3 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
         return vc
     }
 }
-
-struct KarhooBottomSheetChildView1: View {
-
-    @State var text: String
-
-    var body: some View {
-        VStack(spacing: 20, content: {
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-
-            TextField("Inner child here", text: $text)
-                .border(Color.black)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        })
-        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-    }
-}
-
-struct KarhooBottomSheetChildView2: View {
-
-    @State var text: String
-
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 20, content: {
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-                    
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-
-                TextField("Inner child here", text: $text)
-                    .border(Color.black)
-            })
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-        }
-       
-    }
-}
-
