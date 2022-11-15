@@ -54,7 +54,8 @@ struct KarhooBottomSheet<Content: View>: View {
                 // The content is not wrapped inside a ScrollView intentionally
                 // A ScrollView expands to the full height available which is not a desired outcome for all instances where this bottom sheet will be used
                 // Trying to control the height of the ScrollView with GeometryReader gives odd behaviours to the UI, so it is not recommended
-                // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened, then wrap that view inside a ScrollView before injecting it into this bottom sheet
+                // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened,
+                // then wrap that view inside a ScrollView before injecting it into this bottom sheet
                 content()
                 
                 Spacer()
