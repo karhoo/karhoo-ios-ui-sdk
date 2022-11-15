@@ -110,19 +110,29 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
         
-        let testButton = UIButton().then { button in
-            button.setTitle("Test", for: .normal)
-            button.setDimensions(height: 44, width: 120)
+        let testButton1 = UIButton().then { button in
+            button.setTitle("Test without Scroll View", for: .normal)
+            button.setDimensions(height: 44, width: 220)
             button.backgroundColor = UIColor.black
-            button.addTarget(self, action: #selector(onTestClicked), for: .touchUpInside)
+            button.addTarget(self, action: #selector(onTest1Clicked), for: .touchUpInside)
         }
-        view.addSubview(testButton)
         
-        testButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        testButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        let testButton2 = UIButton().then { button in
+            button.setTitle("Test with Scroll View", for: .normal)
+            button.setDimensions(height: 44, width: 220)
+            button.backgroundColor = UIColor.black
+            button.addTarget(self, action: #selector(onTest2Clicked), for: .touchUpInside)
+        }
+
+        view.addSubview(testButton1)
+        view.addSubview(testButton2)
+        testButton1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        testButton1.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        testButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        testButton2.topAnchor.constraint(equalTo: testButton1.bottomAnchor, constant: 16).isActive = true
     }
     
-    @objc func onTestClicked() {
+    @objc func onTest1Clicked() {
         let vm = KarhooBottomSheetViewModel()
         vm.callback = { result in
             print("Got a hit")
@@ -131,7 +141,21 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         
         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
         let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
-            KarhooBottomSheetChildView(text: "Some text")
+            KarhooBottomSheetChildView1(text: "Some text")
+        }
+        present(vc, animated: true)
+    }
+    
+    @objc func onTest2Clicked() {
+        let vm = KarhooBottomSheetViewModel()
+        vm.callback = { result in
+            print("Got a hit")
+            self.dismiss(animated: true)
+        }
+        
+        let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
+        let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
+            KarhooBottomSheetChildView2(text: "Some text")
         }
         present(vc, animated: true)
     }
