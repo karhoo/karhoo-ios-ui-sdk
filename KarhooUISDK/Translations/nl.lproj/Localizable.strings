@@ -20,8 +20,6 @@
 /* User errors, K1xxx */
 "K1001" = "Kan gebruiker niet registreren";
 
-"K1002" = "Kan gebruiker niet registreren (gebruiker bestaat al)";
-
 "K1003" = "Kon de gebruiker niet registreren (incorrecte aanvraag)";
 
 "K1004" = "Kan gebruiker niet registreren (ongeldig telefoonnummer)";
@@ -29,8 +27,6 @@
 "K1005" = "Kan gebruikersgegevens niet ophalen (ongeldige token)";
 
 "K1006" = "Kan gebruikersgegevens niet ophalen (gebruiker bestaat niet)";
-
-"K1999" = "Gebruiker is aangemaakt maar nog niet geautoriseerd. We nemen contact met je op zodra deze is ingeschakeld.";
 
 /* Locations errors, K2xxx */
 "K2001" = "Kon adres niet krijgen";
@@ -71,15 +67,9 @@
 
 "K4014" = "Kon reis niet boeken als agent";
 
-"K4015" = "Kon reis niet boeken als reiziger";
-
-"k4015" = "Kon reis niet boeken als reiziger";
-
 "K4018" = "Kon reis niet boeken omdat deze offerte niet langer beschikbaar is";
 
 "K4020" = "Kon reis niet boeken met het geselecteerde DMS";
-
-"K4025" = "Offerteprijs verhoogd tijdens boeking";
 
 /* Availability errors, K5xxx */
 "K5001" = "Kan geen schattingen krijgen";
@@ -87,20 +77,6 @@
 "K5002" = "Kon geen beschikbaarheid krijgen (geen beschikbaarheid gevonden in het gevraagde gebied)";
 
 "K5003" = "Kon geen beschikbaarheid krijgen (geen categorieën gevonden binnen het gevraagde gebied)";
-
-/* Authentication errors K6xxx */
-"K6001" = "Ongeldig e-mailadres of wachtwoord. Probeer het opnieuw";
-
-/* KPOI errors, K7xxx */
-"K7001" = "Kon KPOI-verzoek niet verwerken";
-
-"K7002" = "Kan Karhoo POI met overeenkomende ID niet vinden";
-
-"K7003" = "Kan Karhoo POI niet lezen";
-
-"K7004" = "Kan Karhoo POI niet schrijven";
-
-"K7005" = "Kan Karhoo POI niet verwijderen";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Er is iets misgegaan, maar we weten niet wat het was";
@@ -228,14 +204,11 @@
 "Text.Booking.QuoteExpiredMessage" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
 
 /* Booking */
-"Text.Booking.RequestCar" = "BETALEN EN RESERVEER";
+"Text.Booking.RequestCar" = "BOEKING BEVESTIGEN";
 
 "Text.Booking.RequestingCar" = "Rit reserveren";
 
 "Text.Booking.RequestReceived" = "Reservering ontvangen";
-
-/* Accessibility hint for prebook feature entry point */
-"Text.Booking.ScheduleRide" = "Plan de rit";
 
 "Text.Booking.TrainTracking" = "Trein volgen";
 
@@ -314,8 +287,6 @@
 /* The title of the alert when user is forced to update ie "App Update Required" */
 "Text.Error.Alert.ForceUpdateTitle" = "Nieuwe versie beschikbaar";
 
-"Text.Error.Booking.EnterDestinationToProceed" = "Voer bestemming in om een rit te reserveren";
-
 /* Errors */
 "Text.Error.EmailValidationError" = "Controleer of uw e-mailadres correct is gespeld";
 
@@ -329,8 +300,6 @@
 
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Oeps! Er is iets misgegaan. Probeer het opnieuw.";
-
-"Text.Error.NotLoggedIn" = "U bent niet ingelogd";
 
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Update kaart";
 
@@ -383,8 +352,6 @@
 
 "Text.FleetCapabilities.VehicleDetails" = "voertuiggegevens";
 
-"Text.Generic.All" = "Alle";
-
 "Text.Generic.Back" = "Terug";
 
 "Text.Generic.Bookings" = "Reserveringen";
@@ -406,16 +373,12 @@
 
 "Text.Generic.Comment" = "Opmerkingen";
 
-"Text.Generic.Comment.Optional" = "Opmerkingen (optioneel)";
+"Text.Generic.Comment.Optional" = "Opmerkingen (babystoel, rolstoel, enz.)";
 
 /* "Completed" */
 "Text.Generic.Completed" = "Voltooid";
 
-"Text.Generic.Continue" = "Verder gaan";
-
 "Text.Generic.Destination" = "Bestemming";
-
-"Text.Generic.Dismiss" = "Stoppen";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Wijzigen";
@@ -430,8 +393,6 @@
 
 /* English: "Estimated" */
 "Text.Generic.Estimated" = "Geschatte prijs";
-
-"Text.Generic.ETA" = "Geschatte aankomsttijd";
 
 "Text.Generic.ETALong" = "Geschatte aankomsttijd";
 
@@ -506,8 +467,6 @@
 
 "Text.Generic.Submit" = "Indienen";
 
-"Text.Generic.Success" = "Succes";
-
 "Text.Generic.Surname" = "Achternaam";
 
 "Text.Generic.TermsConditions" = "Algemene Gebruiksvoorwaarden Taxibedrijf";
@@ -517,20 +476,11 @@
 /* "Thanks for your interest" */
 "Text.Generic.Thanks" = "Bedankt voor uw interesse";
 
-/* Booker cancelled */
-"Text.Generic.TripStatus.BookerCancelled" = "Geannuleerd";
-
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Message" = "Het duurt langer dan normaal voordat het taxibedrijf een chauffeur heeft toegewezen. Een ogenblik geduld alstublieft, neem contact op met het taxibedrijf of annuleer en reserveer bij een ander taxibedrijf.";
 
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Vertraging";
-
-/* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Geannuleerd door chauffeur/dispatch";
-
-/* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "Geen chauffeurs beschikbaar";
 
 "Text.Generic.Unchecked" = "niet aangevinkt";
 
@@ -562,9 +512,6 @@
 
 /* english: requested */
 "Text.GenericTripStatus.Requested" = "Aangevraagd";
-
-/* "Pending" */
-"Text.GenericTripStatus.Unknown" = "In behandeling";
 
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
@@ -615,8 +562,6 @@
 "Text.Quote.FreeCancellationPrebook" = "Gratis annuleren tot %1$@ voor ophalen";
 
 "Text.Quote.FreeWaitingTime" = "Gratis wachttijd";
-
-"Text.Quote.Results" = "%1$@ resultaten";
 
 "Text.QuoteCategory.Electric" = "Elektrisch";
 
@@ -697,9 +642,6 @@
 
 "Text.SideMenu.Help" = "Help";
 
-/* Side Menu */
-"Text.SideMenu.Login" = "Inloggen";
-
 /* "Profile" button on the side menu */
 "Text.SideMenu.Profile" = "Profiel";
 
@@ -710,8 +652,6 @@
 
 /* Sign Out on the side menu */
 "Text.SideMenu.SignOut" = "Afmelden";
-
-"Text.SideMenu.Signup" = "Registreren";
 
 /* In app email to customer support / feedback */
 "Text.SupportMailMessage.Feedback" = "Verwijder alstublieft deze informatie niet, omdat dit ons helpt de app te verbeteren.";
@@ -765,9 +705,6 @@
 
 "Text.Trip.CancelBookingConfirmation.Alert.Title" = "Wilt u uw rit annuleren?";
 
-/* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
-"Text.Trip.CancelBookingFailed" = "Annulering niet bevestigd, neem alstublieft contact op met het taxibedrijf.";
-
 "Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Taxibedrijf bellen";
 
 "Text.Trip.CancelBookingFailed.AlertMessage" = "We ondervinden problemen bij het annuleren van uw rit. Neem alstublieft contact op met het taxibedrijf.";
@@ -798,11 +735,6 @@
 
 /* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
 "Text.Trip.KarhooCancelled.AlertTitle" = "Probleem met reserveren";
-
-"Text.Trip.MessageDriver" = "Stuur de chauffeur een bericht";
-
-/* For when demand is too high and there are no drivers available */
-"Text.Trip.NoDriversAvailable" = "Geen chauffeurs beschikbaar";
 
 /* Alert message in popup when dispatch cancels due to no drivers */
 "Text.Trip.NoDriversAvailable.AlertMessage" = "Sorry, de vraag is groot. %1$@ momenteel geen beschikbare chauffeurs";
