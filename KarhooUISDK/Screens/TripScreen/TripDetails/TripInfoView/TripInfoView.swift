@@ -16,7 +16,7 @@ public struct KHTripInfoViewID {
     public static let vehicleLicense = "vehicle_license_view"
 }
 
-public protocol TripInfoViewDelegate: AnyObject {
+public protocol TripInfoViewDelegate: class {
     func rideOptionsTapped(_ value: Bool)
     func driverImageTapped(_ image: UIImage)
 }

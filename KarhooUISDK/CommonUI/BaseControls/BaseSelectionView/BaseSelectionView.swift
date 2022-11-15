@@ -14,7 +14,7 @@ public struct KHBaseSelectionViewID {
     public static let titleLabel = "title_label"
 }
 
-public protocol BaseSelectionViewDelegate: AnyObject {
+public protocol BaseSelectionViewDelegate: class {
     func didSelectView(_ view: BaseSelectionView)
 }
 

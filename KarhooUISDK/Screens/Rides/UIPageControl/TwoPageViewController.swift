@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TwoPageControllerDelegate: AnyObject {
+protocol TwoPageControllerDelegate: class {
     func switchedToPage(index: Int)
 }
 

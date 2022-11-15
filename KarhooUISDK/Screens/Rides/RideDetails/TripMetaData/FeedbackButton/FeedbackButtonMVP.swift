@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FeedbackButtonActions: AnyObject {
+protocol FeedbackButtonActions: class {
     func didSelectFeedbackButton()
 }

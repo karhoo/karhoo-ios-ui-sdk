@@ -13,7 +13,7 @@ private enum ButtonMode {
     case disabled
 }
 
-protocol FormButtonDelegate: AnyObject {
+protocol FormButtonDelegate: class {
     func formButtonPressed()
 }
 
