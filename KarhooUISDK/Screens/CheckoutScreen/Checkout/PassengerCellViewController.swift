@@ -12,6 +12,7 @@ import KarhooSDK
 class PassengerCellViewController: DetailsCellViewController, AddPassengerDetailsPresenter {
     
     private let analyticsService: AnalyticsService
+    var details: PassengerDetails?
     
     init(
         analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
@@ -19,6 +20,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
         delegate: AddPassengerDetailsViewDelegate
     ){
         self.analyticsService = analyticsService
+        self.details = passengerDetails
         super.init(
             rootView: DetailsCellView(model: Self.getModel(from: passengerDetails)),
             onTap: delegate.willUpdatePassengerDetails
@@ -32,6 +34,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
     }
     
     func set(details: PassengerDetails?) {
+        self.details = details
         let model = Self.getModel(from: details)
         rootView.model.update(title: model.title, subtitle:model.subtitle)
     }

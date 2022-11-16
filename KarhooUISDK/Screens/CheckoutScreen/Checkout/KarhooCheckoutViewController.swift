@@ -226,7 +226,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+//        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+        passengerViewController.details = initialisePassengerDetails()
         
         forceLightMode()
     }
@@ -456,7 +457,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: Data management
     
     func getPassengerDetails() -> PassengerDetails? {
-        passengerDetailsAndPaymentView.details
+        passengerViewController.details
     }
     
     func getPaymentNonce() -> Nonce? {

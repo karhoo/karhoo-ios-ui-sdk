@@ -21,7 +21,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     
     var baseViewController: BaseViewController?
     private var didSetupConstraints: Bool = false
-    private var presenter: KarhooAddPassengerDetailsPresenter?
+//    private var presenter: KarhooAddPassengerDetailsPresenter?
     var actions: AddPassengerDetailsViewDelegate?
     private var dotBorderLayer: CAShapeLayer!
     private var hasValidDetails: Bool = false
@@ -124,7 +124,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
 
         passengerDetailsContainer.addSubview(passengerDetailsStackView)
         
-        presenter = KarhooAddPassengerDetailsPresenter(view: self)
+//        presenter = KarhooAddPassengerDetailsPresenter(view: self)
     }
     
     override func updateConstraints() {
@@ -163,7 +163,7 @@ final class KarhooAddPassengerDetailsView: UIView, AddPassengerView {
     }
     
     func set(details: PassengerDetails?) {
-        presenter?.set(details: details)
+//        presenter?.set(details: details)
         actions?.didUpdatePassengerDetails(details: details)
     }
     
