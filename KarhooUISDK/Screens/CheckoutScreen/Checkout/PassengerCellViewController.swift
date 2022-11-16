@@ -13,6 +13,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
     
     private let analyticsService: AnalyticsService
     var details: PassengerDetails?
+    weak var delegate: AddPassengerDetailsViewDelegate?
     
     init(
         analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
@@ -36,6 +37,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
     func set(details: PassengerDetails?) {
         self.details = details
         let model = Self.getModel(from: details)
+        delegate?.didUpdatePassengerDetails(details: details)
         rootView.model.update(title: model.title, subtitle:model.subtitle)
     }
     

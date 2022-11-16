@@ -22,7 +22,7 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
     var baseViewController: BaseViewController!
     var details: PassengerDetails? {
         didSet {
-            passengerDetailsContainer.set(details: details)
+//            passengerDetailsContainer.set(details: details)
         }
     }
     var quote: Quote? {
@@ -42,12 +42,12 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
         return stackView
     }()
     
-    private lazy var passengerDetailsContainer: AddPassengerView = {
-        let passengerDetailsView = KarhooAddPassengerDetailsView()
-        passengerDetailsView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerDetailsContainer
-        passengerDetailsView.setBaseViewController(baseViewController)
-        return passengerDetailsView
-    }()
+//    private lazy var passengerDetailsContainer: AddPassengerView = {
+//        let passengerDetailsView = KarhooAddPassengerDetailsView()
+//        passengerDetailsView.accessibilityIdentifier = KHAddPassengerDetailsAndPaymentViewID.passengerDetailsContainer
+//        passengerDetailsView.setBaseViewController(baseViewController)
+//        return passengerDetailsView
+//    }()
     
     private lazy var passengerPaymentContainer: AddPaymentView = {
         let passengerPaymentView = KarhooAddPaymentView()
@@ -73,7 +73,7 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
         
         addSubview(stackView)
         
-        stackView.addArrangedSubview(passengerDetailsContainer)
+//        stackView.addArrangedSubview(passengerDetailsContainer)
         stackView.addArrangedSubview(passengerPaymentContainer)
     }
     
@@ -99,12 +99,12 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
     }
     
     func setPassengerViewActions(actions: AddPassengerDetailsViewDelegate) {
-        passengerDetailsContainer.actions = actions
+//        passengerDetailsContainer.actions = actions
     }
     
-    func validPassengerDetails() -> Bool {
-        return passengerDetailsContainer.validDetails()
-    }
+//    func validPassengerDetails() -> Bool {
+////        return passengerDetailsContainer.validDetails()
+//    }
     
     func noPaymentMethod() {
         passengerPaymentContainer.noPaymentMethod()
