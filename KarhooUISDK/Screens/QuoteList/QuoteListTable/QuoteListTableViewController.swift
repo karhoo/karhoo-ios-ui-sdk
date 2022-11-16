@@ -189,7 +189,7 @@ extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDa
 }
 
 extension KarhooQuoteListTableViewController: QuoteListErrorViewDelegate {
-    func showNoCoverageEmail(){
+    func showNoCoverageEmail() {
         presenter.showNoCoverageEmail()
     }
 }

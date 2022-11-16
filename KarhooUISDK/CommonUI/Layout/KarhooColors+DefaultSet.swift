@@ -62,31 +62,19 @@ public extension KarhooColors {
     // MARK: - Background Colors
 
     var background1: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#FAFAFA"), darkModeColor: UIColor(hex: "#232323"))
+        UIColor.get(lightModeColor: UIColor(hex: "#FAFAFA"), darkModeColor: UIColor(hex: "#121212"))
     }
 
     var background2: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#F2F2F2"), darkModeColor: UIColor(hex: "#252525"))
+        UIColor.get(lightModeColor: UIColor(hex: "#FFFFFF"), darkModeColor: UIColor(hex: "#232323"))
     }
 
     var background3: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#E3E3E3"), darkModeColor: UIColor(hex: "#2C2C2C"))
+        UIColor.get(lightModeColor: UIColor(hex: "#F2F2F2"), darkModeColor: UIColor(hex: "#252525"))
     }
 
     var background4: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#E0E0E0"), darkModeColor: UIColor(hex: "#2E2E2E"))
-    }
-
-    var background5: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#DBDBDB"), darkModeColor: UIColor(hex: "#333333"))
-    }
-
-    var background6: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#D9D9D9"), darkModeColor: UIColor(hex: "#363636"))
-    }
-
-    var background7: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#D6D6D6"), darkModeColor: UIColor(hex: "#383838"))
+        UIColor.get(lightModeColor: UIColor(hex: "#E5E5E5"), darkModeColor: UIColor(hex: "#2C2C2C"))
     }
 
     // MARK: - Text Colors
@@ -96,15 +84,15 @@ public extension KarhooColors {
     }
 
     var textLabel: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#A0A0A0"), darkModeColor: UIColor(hex: "#9E9E9E"))
+        UIColor.get(lightModeColor: UIColor(hex: "#757575"), darkModeColor: UIColor(hex: "#9E9E9E"))
     }
 
     var textInactive: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#E0E0E0"), darkModeColor: UIColor(hex: "#464646"))
+        UIColor.get(lightModeColor: UIColor(hex: "#E0E0E0"), darkModeColor: UIColor(hex: "#2C2C2C"))
     }
     
     var textError: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#ED3A3A"), darkModeColor: UIColor(hex: "#EB7577"))
+        UIColor.get(lightModeColor: UIColor(hex: "#ED3A3A"), darkModeColor: UIColor(hex: "#E2E2E2"))
     }
 
     // MARK: - Depracated

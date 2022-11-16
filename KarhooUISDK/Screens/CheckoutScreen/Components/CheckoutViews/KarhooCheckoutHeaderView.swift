@@ -125,10 +125,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
 
-    //MARK: - Variables
+    // MARK: - Variables
     private var didSetupConstraints: Bool = false
     
-    //MARK: - Init
+    // MARK: - Init
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -143,7 +143,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     private func setUpView() {
         accessibilityIdentifier = KHCheckoutHeaderViewID.topContainer
         translatesAutoresizingMaskIntoConstraints = false
