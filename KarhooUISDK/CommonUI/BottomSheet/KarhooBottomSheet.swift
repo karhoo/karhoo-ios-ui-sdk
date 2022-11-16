@@ -9,11 +9,19 @@
 import SwiftUI
 
 struct KarhooBottomSheet<Content: View>: View {
+    // MARK: - Properties
     private var viewModel: BottomSheetViewModel
     @ViewBuilder private let content: () -> Content
     @ObservedObject private var keyboard = KeyboardResponder()
     @State private var offset = CGSize.zero
 
+    // MARK: - Init
+    init(viewModel: BottomSheetViewModel, @ViewBuilder content: @escaping () -> Content) {
+        self.viewModel = viewModel
+        self.content = content
+    }
+   
+    // MARK: - Body
     var body: some View {
         VStack(spacing: 0.0, content: {
             Spacer()
@@ -107,18 +115,14 @@ struct KarhooBottomSheet<Content: View>: View {
         }
     }
     
-    init(viewModel: BottomSheetViewModel, @ViewBuilder content: @escaping () -> Content) {
-        self.viewModel = viewModel
-        self.content = content
-    }
-    
+    // MARK: - Helpers
     private func getBottomPadding() -> CGFloat {
-        let safeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
-        if keyboard.currentHeight > 0 {
-            return keyboard.currentHeight
+        guard keyboard.currentHeight > 0 else {
+            let safeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
+            return safeArea
         }
         
-        return safeArea
+        return keyboard.currentHeight
     }
     
     private func getTopPadding() -> CGFloat {
