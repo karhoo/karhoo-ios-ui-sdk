@@ -37,7 +37,7 @@ struct KarhooBottomSheet<Content: View>: View {
                     Spacer()
                         .background(Color.clear)
                     Button {
-                        dismiss()
+                        viewModel.dismiss()
                     } label: {
                         Image(
                             uiImage:
@@ -70,7 +70,7 @@ struct KarhooBottomSheet<Content: View>: View {
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
             }
-            .background(KarhooUI.colors.white.getColor()) // TODO: add proper background after color definition tweaking
+            .background(viewModel.backgroundColor)
             .clipShape(
                 RoundedRectangle(
                     cornerRadius: viewModel.cornerRadius,
@@ -104,14 +104,14 @@ struct KarhooBottomSheet<Content: View>: View {
                 })
                 .onEnded({ _ in
                     if offset.height > 100 {
-                        dismiss()
+                        viewModel.dismiss()
                     } else {
                         offset = .zero
                     }
                 })
         )
         .onTapGesture {
-            dismiss()
+            viewModel.dismiss()
         }
     }
     
@@ -128,21 +128,19 @@ struct KarhooBottomSheet<Content: View>: View {
     private func getTopPadding() -> CGFloat {
         UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     }
-    
-    private func dismiss() {
-        if let callback = viewModel.callback {
-            callback(ScreenResult.cancelled(byUser: true))
-        }
-    }
 }
 
 struct KarhooBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
-        KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel()) {
-            VStack {
-                Text("Inner View")
-            }
-        }
+        KarhooBottomSheet(
+            viewModel: KarhooBottomSheetViewModel(
+                title: "Some title",
+                onDismissCallback: {
+                })) {
+                    VStack {
+                        Text("Inner View")
+                    }
+                }
     }
 }
 
@@ -160,3 +158,43 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
         return vc
     }
 }
+
+struct KarhooBottomSheetChildView1: View {
+
+    @State var text: String
+
+    var body: some View {
+        VStack(spacing: 20, content: {
+            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+
+            TextField("Inner child here", text: $text)
+                .border(Color.black)
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        })
+        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+    }
+}
+
+struct KarhooBottomSheetChildView2: View {
+
+    @State var text: String
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 20, content: {
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+                    
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+
+                TextField("Inner child here", text: $text)
+                    .border(Color.black)
+            })
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+        }
+       
+    }
+}
+

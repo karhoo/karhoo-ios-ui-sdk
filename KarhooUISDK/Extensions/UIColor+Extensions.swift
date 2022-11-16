@@ -88,7 +88,7 @@ extension UIColor {
     }
     
     func getColor() -> Color {
-        return Color(
+        Color(
             .sRGB,
             red: self.cgColor.components![0],
             green:self.cgColor.components![1],
@@ -97,3 +97,4 @@ extension UIColor {
         )
     }
 }
+
