@@ -168,7 +168,7 @@ public struct UIConstants {
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
-            // TODO: think of better names
+            // Think of better names
             /// 212 x 212
             public static let findTripSpinnerSize = CGSize(width: 212, height: 212)
             

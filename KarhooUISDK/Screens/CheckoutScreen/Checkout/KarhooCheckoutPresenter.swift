@@ -400,7 +400,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
              case .failedToAddCard(let error):
                  view?.setDefaultState()
                  view?.show(error: error)
-                 default:
+             default:
                  view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)

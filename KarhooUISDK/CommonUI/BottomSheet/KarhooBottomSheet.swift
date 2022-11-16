@@ -87,7 +87,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
             }
         })
-        .colorScheme(.light) // TODO: Delete this line after dark mode modifications
+        .colorScheme(.light) // Delete this line after dark mode modifications
         .background(
             KarhooUI.colors.black.getColor()
                 .opacity(UIConstants.Alpha.overlay)
@@ -158,4 +158,3 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
         return vc
     }
 }
-

@@ -11,7 +11,6 @@ import KarhooSDK
 enum VehicleTag: String {
     case electric, hybrid, wheelchair, childSeat, taxi, executive, luxury
     
-    
     enum CodingKeys: String, CodingKey {
         case childSeat = "child-seat"
     }
