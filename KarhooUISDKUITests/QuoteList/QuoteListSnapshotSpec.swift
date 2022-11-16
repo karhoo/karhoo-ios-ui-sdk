@@ -149,6 +149,57 @@ class QuoteListAsyncSnapshotSpec: QuickSpec {
                     )
                 }
             }
+
+            context("and destination or origin are too similar") {
+                beforeEach {
+                    presenterMock.onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
+                }
+
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController,
+                        as: .wait(
+                            for: 1,
+                            on: .image(on: .iPhoneX)
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
+            }
+
+            context("and there are no results for given filters") {
+                beforeEach {
+                    presenterMock.onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
+                }
+
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController,
+                        as: .wait(
+                            for: 1,
+                            on: .image(on: .iPhoneX)
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
+            }
+
+            context("and there are no results for given ride parameters") {
+                beforeEach {
+                    presenterMock.onStateUpdated?(.empty(reason: .noQuotesForSelectedParameters))
+                }
+
+                it("should have valid design") {
+                    assertSnapshot(
+                        matching: navigationController,
+                        as: .wait(
+                            for: 1,
+                            on: .image(on: .iPhoneX)
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
+            }
         }
     }
 }
