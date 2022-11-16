@@ -158,6 +158,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func addMoreDetails() {
         if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
+        } else if areTermsAndConditionsAccepted == false {
+            view?.showTermsConditionsRequiredError()
         } else {
             view?.retryAddPaymentMethod(showRetryAlert: false)
         }
