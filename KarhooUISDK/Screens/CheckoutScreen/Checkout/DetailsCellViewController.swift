@@ -11,11 +11,11 @@ import SwiftUI
 
 class DetailsCellViewController: UIHostingController<DetailsCellView>, DetailsCellViewControllerProtocol {
     
-    var onClickAction: (() -> Void)!
+    var onTap: (() -> Void)!
     
-    init(rootView: DetailsCellView, onClickAction: @escaping () -> Void) {
+    init(rootView: DetailsCellView, onTap: @escaping () -> Void) {
         super.init(rootView: rootView)
-        self.onClickAction = onClickAction
+        self.onTap = onTap
     }
     
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
@@ -24,5 +24,5 @@ class DetailsCellViewController: UIHostingController<DetailsCellView>, DetailsCe
 }
 
 protocol DetailsCellViewControllerProtocol: AnyObject {
-    var onClickAction: (() -> Void)! { get }
+    var onTap: (() -> Void)! { get }
 }

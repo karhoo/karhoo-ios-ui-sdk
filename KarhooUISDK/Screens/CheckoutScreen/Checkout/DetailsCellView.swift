@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailsCellView: View {
     
-    @ObservedObject var model: DetailsCellModel
+    @ObservedObject var model: DetailsCellViewModel
     weak var delegate: DetailsCellViewControllerProtocol?
 
     var body: some View {
@@ -25,21 +25,24 @@ struct DetailsCellView: View {
             VStack(alignment: .leading) {
                 Text(model.title)
                     .lineLimit(2)
-                    .font(.system(size: 16))
+                    .font(Font(KarhooUI.fonts.headerSemibold()))
                     .foregroundColor(KarhooUI.colors.text.getColor())
                 Text(model.subtitle)
                     .lineLimit(2)
-                    .font(.system(size: 10))
+                    .font(Font(KarhooUI.fonts.footnoteRegular()))
                     .foregroundColor(KarhooUI.colors.textLabel.getColor())
             }
-                Spacer().accessibility(identifier: "String")
-                Image("kh_uisdk_right_arrow", bundle: .current)
+                Spacer()
+                Image(uiImage:
+                    UIImage.uisdkImage("kh_uisdk_right_arrow")
+                    .coloured(withTint: KarhooUI.colors.primary)
+                )
                 .frame(
                     width: UIConstants.Dimension.Icon.standard,
                     height: UIConstants.Dimension.Icon.standard
-                ).foregroundColor(KarhooUI.colors.primary.getColor())
+                )
             }
-            .padding(.all, 16)
+            .padding(.all, UIConstants.Spacing.standard)
             .frame(
                 maxWidth: .infinity,
                 alignment: .leading
@@ -56,13 +59,13 @@ struct DetailsCellView: View {
                 .fill(KarhooUI.colors.background2.getColor())
         )
         .onTapGesture(perform: {
-            delegate?.onClickAction()
+            delegate?.onTap()
         })
     }
 }
 
 struct DetailsViewCellPreviews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(model: DetailsCellModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
+        DetailsCellView(model: DetailsCellViewModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
     }
 }

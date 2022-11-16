@@ -16,12 +16,12 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
     init(
         analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
         passengerDetails: PassengerDetails?,
-        actions: AddPassengerDetailsViewDelegate
+        delegate: AddPassengerDetailsViewDelegate
     ){
         self.analyticsService = analyticsService
         super.init(
             rootView: DetailsCellView(model: Self.getModel(from: passengerDetails)),
-            onClickAction: actions.willUpdatePassengerDetails
+            onTap: delegate.willUpdatePassengerDetails
         )
         rootView.delegate = self
         self.view.accessibilityIdentifier = "passenger_details_cell_view"
@@ -36,16 +36,16 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
         rootView.model.update(title: model.title, subtitle:model.subtitle)
     }
     
-    private static func getModel(from details: PassengerDetails?) -> DetailsCellModel {
+    private static func getModel(from details: PassengerDetails?) -> DetailsCellViewModel {
         guard let details = details else {
-            return DetailsCellModel(
+            return DetailsCellViewModel(
                 title: UITexts.PassengerDetails.title,
                 subtitle: UITexts.PassengerDetails.add,
                 iconName: "kh_uisdk_passenger"
             )
         }
         let passengerName = "\(details.firstName) \(details.lastName)"
-        return DetailsCellModel (
+        return DetailsCellViewModel (
             title: passengerName,
             subtitle:  "\(details.phoneNumber)",
             iconName: "kh_uisdk_passenger"

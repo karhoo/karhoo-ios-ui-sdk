@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class DetailsCellModel: ObservableObject {
+class DetailsCellViewModel: ObservableObject {
     
     @Published var title: String
     @Published var subtitle: String

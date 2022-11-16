@@ -209,7 +209,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
-        passengerViewController = PassengerCellViewController(passengerDetails: nil, actions: self)
+        passengerViewController = PassengerCellViewController(passengerDetails: nil, delegate: self)
         termsConditionsView = TermsConditionsView(
             isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
         )
@@ -291,43 +291,61 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             bottom: footerView.topAnchor
         )
 
-        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
+        headerView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
         
-        cancellationInfoLabel.anchor(top: headerView.bottomAnchor,
-                                     leading: baseStackView.leadingAnchor,
-                                     trailing: baseStackView.trailingAnchor,
-                                     paddingTop: standardPadding,
-                                     paddingLeft: standardPadding,
-                                     paddingRight: standardPadding,
-                                     paddingBottom: standardPadding)
+        cancellationInfoLabel.anchor(
+            top: headerView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardPadding,
+            paddingLeft: standardPadding,
+            paddingRight: standardPadding,
+            paddingBottom: standardPadding
+        )
         
-        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
-                                 leading: baseStackView.leadingAnchor,
-                                 trailing: baseStackView.trailingAnchor,
-                                 paddingTop: smallSpacing,
-                                 paddingLeft: standardSpacing,
-                                 paddingRight: standardSpacing)
-        loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: standardPadding)
+        rideInfoStackView.anchor(
+            top: cancellationInfoLabel.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: smallSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+        loyaltyView.anchor(
+            top: rideInfoStackView.bottomAnchor,
+            leading: rideInfoStackView.leadingAnchor,
+            trailing: rideInfoStackView.trailingAnchor,
+            paddingTop: standardPadding
+        )
         
-//        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
-//                                              leading: baseStackView.leadingAnchor,
-//                                              trailing: baseStackView.trailingAnchor,
-//                                              paddingTop: standardSpacing,
-//                                              paddingLeft: standardSpacing,
-//                                              paddingRight: standardSpacing,
-//                                              height: passengerDetailsAndPaymentViewHeight)
-        passengerViewController.view.anchor(top: loyaltyView.bottomAnchor,
-                                              leading: baseStackView.leadingAnchor,
-                                              trailing: baseStackView.trailingAnchor,
-                                              paddingTop: standardSpacing,
-                                              paddingLeft: standardSpacing,
-                                              paddingRight: standardSpacing
-                                              /*height: passengerDetailsAndPaymentViewHeight*/)
+        passengerViewController.view.anchor(
+            top: loyaltyView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
 
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
-        
+        poiDetailsInputText.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+        commentsInputText.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+    
         footerView.anchor(
             leading: view.leadingAnchor,
             trailing: view.trailingAnchor,
