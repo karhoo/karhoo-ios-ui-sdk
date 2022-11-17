@@ -31,8 +31,7 @@ struct KarhooBottomSheet<Content: View>: View {
             VStack(spacing: 0.0) {
                 HStack {
                     Text(viewModel.title)
-                        .font(.headline)
-                        .bold()
+                        .font(Font(KarhooUI.fonts.bodyBold()))
                         .foregroundColor(KarhooUI.colors.text.getColor())
                     Spacer()
                         .background(Color.clear)
