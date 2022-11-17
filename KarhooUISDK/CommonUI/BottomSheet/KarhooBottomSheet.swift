@@ -92,8 +92,8 @@ struct KarhooBottomSheet<Content: View>: View {
         .background(
             LinearGradient(
                 colors: [
-                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.disabled),
-                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.overlay)
+                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.hidden),
+                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.enabled)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
