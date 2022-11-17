@@ -108,15 +108,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return poiDetailsInputText
     }()
     
-//    private lazy var passengerDetailsAndPaymentView: KarhooAddPassengerDetailsAndPaymentView = {
-//        let passengerDetailsAndPaymentView = KarhooAddPassengerDetailsAndPaymentView(baseVC: self)
-//        passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
-//        passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
-//        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
-//        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
-//        return passengerDetailsAndPaymentView
-//    }()
-//    
     private lazy var container: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -226,9 +217,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
         passengerViewController.details = initialisePassengerDetails()
-        
         forceLightMode()
     }
     
@@ -411,19 +400,18 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         let viewModel = QuoteViewModel(quote: quote)
-//        passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
-//        passengerDetailsAndPaymentView.quote = quote
-        
         loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
-            let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
-                                                        currency: quote.price.currencyCode,
-                                                        tripAmount: quote.price.highPrice)
+            let loyaltyDataModel = LoyaltyViewDataModel(
+                loyaltyId: loyaltyId ?? "",
+                currency: quote.price.currencyCode,
+                tripAmount: quote.price.highPrice
+            )
             loyaltyView.set(dataModel: loyaltyDataModel, quoteId: quote.id)
         }
     }
@@ -483,7 +471,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     func setPassenger(details: PassengerDetails?) {
         passengerViewController.set(details: details)
-//        passengerDetailsAndPaymentView.details = details
     }
 
     // MARK: Events

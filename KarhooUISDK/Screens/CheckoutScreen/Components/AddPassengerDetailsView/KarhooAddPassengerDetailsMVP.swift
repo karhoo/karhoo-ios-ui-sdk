@@ -17,15 +17,3 @@ protocol AddPassengerDetailsViewDelegate: AnyObject {
 protocol AddPassengerDetailsPresenter {
     func set(details: PassengerDetails?)
 }
-
-protocol AddPassengerView: BaseView {
-    var baseViewController: BaseViewController? { get set }
-    var actions: AddPassengerDetailsViewDelegate? { get set }
-    func set(details: PassengerDetails?)
-    func validDetails() -> Bool
-    func showError()
-    func updateViewState()
-    func resetViewState()
-    func resetViewBorder()
-    func updatePassengerSummary(details: PassengerDetails?)
-}

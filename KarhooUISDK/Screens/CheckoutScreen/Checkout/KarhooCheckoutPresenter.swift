@@ -165,7 +165,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             view?.showTermsConditionsRequiredError()
         } else {
             view?.retryAddPaymentMethod(showRetryAlert: false)
-            // tutaj: startRegisterCardFlow
         }
     }
     
@@ -459,19 +458,20 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         cardRegistrationFlow.setBaseView(view)
         reportChangePaymentDetailsPressed()
         
-        let currencyCode = quote.price.currencyCode ?? "GBP"
-        let amount = quote.price.intHighPrice ?? 0
-        let supplierPartnerId = quote.fleet.id ?? ""
+        let currencyCode = quote.price.currencyCode
+        let amount = quote.price.intHighPrice
+        let supplierPartnerId = quote.fleet.id
         
-        cardRegistrationFlow.start(cardCurrency: currencyCode,
-                                   amount: amount,
-                                   supplierPartnerId: supplierPartnerId,
-                                   showUpdateCardAlert: showRetryAlert,
-                                   callback: { [weak self] result in
-            guard let cardFlowResult = result.completedValue() else {
-                return
-            }
-            self?.handleAddCardFlow(result: cardFlowResult)
+        cardRegistrationFlow.start(
+            cardCurrency: currencyCode,
+            amount: amount,
+            supplierPartnerId: supplierPartnerId,
+            showUpdateCardAlert: showRetryAlert,
+            callback: { [weak self] result in
+                guard let cardFlowResult = result.completedValue() else {
+                    return
+                }
+                self?.handleAddCardFlow(result: cardFlowResult)
         })
     }
     
@@ -483,21 +483,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             completeBookingFlow()
         case .didFailWithError(let error):
             reportCardAuthorisationFailure(message: error?.message ?? "")
-            view?.showAlert(title: UITexts.Errors.somethingWentWrong,
-                                                                          message: error?.message ?? "", error: error)
+            view?.showAlert(
+                title: UITexts.Errors.somethingWentWrong,
+                message: error?.message ?? "", error: error
+            )
         default: break
         }
     }
-    
-//    func didGetNonce(nonce: Nonce) {
-//        // tutaj, maybe should setup paymentNonce
-////        paymentNonce = nonce
-////        didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
-////        // TODO: Remove next line
-////        presenter.didAddPassengerDetails()
-////        presenter.completeBookingFlow()
-//        completeBookingFlow()
-//    }
     
     // MARK: - Utils
     func didPressFareExplanation() {
