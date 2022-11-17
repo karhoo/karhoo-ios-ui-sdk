@@ -108,15 +108,15 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         return poiDetailsInputText
     }()
     
-    private lazy var passengerDetailsAndPaymentView: KarhooAddPassengerDetailsAndPaymentView = {
-        let passengerDetailsAndPaymentView = KarhooAddPassengerDetailsAndPaymentView(baseVC: self)
-        passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
-        passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
-        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
-        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
-        return passengerDetailsAndPaymentView
-    }()
-    
+//    private lazy var passengerDetailsAndPaymentView: KarhooAddPassengerDetailsAndPaymentView = {
+//        let passengerDetailsAndPaymentView = KarhooAddPassengerDetailsAndPaymentView(baseVC: self)
+//        passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
+//        passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
+//        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
+//        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
+//        return passengerDetailsAndPaymentView
+//    }()
+//    
     private lazy var container: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -396,7 +396,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func resetPaymentNonce() {
         paymentNonce = nil
-        passengerDetailsAndPaymentView.noPaymentMethod()
+//        passengerDetailsAndPaymentView.noPaymentMethod()
     }
     
     func setAddFlightDetailsState() {
@@ -406,13 +406,13 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         let viewModel = QuoteViewModel(quote: quote)
-        passengerDetailsAndPaymentView.quote = quote
+//        passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
-        passengerDetailsAndPaymentView.quote = quote
+//        passengerDetailsAndPaymentView.quote = quote
         
         loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
@@ -444,7 +444,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func retryAddPaymentMethod(showRetryAlert: Bool = false) {
-        passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
+        presenter.didPressPayButton(showRetryAlert: showRetryAlert)
+//        view.startRegisterCardFlow(showRetryAlert: showRetryAlert)
+
+        
+        // tutaj: startRegisterCardFlow(showRetryAlert
+//        passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
 
     // MARK: Show
@@ -478,7 +483,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     func setPassenger(details: PassengerDetails?) {
         passengerViewController.set(details: details)
-        passengerDetailsAndPaymentView.details = details
+//        passengerDetailsAndPaymentView.details = details
     }
 
     // MARK: Events

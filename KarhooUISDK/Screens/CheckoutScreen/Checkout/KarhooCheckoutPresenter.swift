@@ -30,6 +30,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
+    private var cardRegistrationFlow: CardRegistrationFlow
 
     var karhooUser: Bool = false
 
@@ -47,6 +48,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
+        cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
         self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
@@ -61,6 +63,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
+        self.cardRegistrationFlow = cardRegistrationFlow
         setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
@@ -162,6 +165,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             view?.showTermsConditionsRequiredError()
         } else {
             view?.retryAddPaymentMethod(showRetryAlert: false)
+            // tutaj: startRegisterCardFlow
         }
     }
     
@@ -451,6 +455,52 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         }
     }
     
+    func didPressPayButton(showRetryAlert: Bool) {
+        cardRegistrationFlow.setBaseView(view)
+        reportChangePaymentDetailsPressed()
+        
+        let currencyCode = quote.price.currencyCode ?? "GBP"
+        let amount = quote.price.intHighPrice ?? 0
+        let supplierPartnerId = quote.fleet.id ?? ""
+        
+        cardRegistrationFlow.start(cardCurrency: currencyCode,
+                                   amount: amount,
+                                   supplierPartnerId: supplierPartnerId,
+                                   showUpdateCardAlert: showRetryAlert,
+                                   callback: { [weak self] result in
+            guard let cardFlowResult = result.completedValue() else {
+                return
+            }
+            self?.handleAddCardFlow(result: cardFlowResult)
+        })
+    }
+    
+    private func handleAddCardFlow(result: CardFlowResult) {
+        switch result {
+        case .didAddPaymentMethod(let nonce):
+            reportCardAuthorisationSuccess()
+            
+            completeBookingFlow()
+//            view.didGetNonce(nonce: nonce)
+//            view.set(nonce: nonce)
+        case .didFailWithError(let error):
+            reportCardAuthorisationFailure(message: error?.message ?? "")
+            (view as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
+                                                                          message: error?.message ?? "", error: error)
+        default: break
+        }
+    }
+    
+//    func didGetNonce(nonce: Nonce) {
+//        // tutaj, maybe should setup paymentNonce
+////        paymentNonce = nonce
+////        didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
+////        // TODO: Remove next line
+////        presenter.didAddPassengerDetails()
+////        presenter.completeBookingFlow()
+//        completeBookingFlow()
+//    }
+    
     // MARK: - Utils
     func didPressFareExplanation() {
         guard karhooUser, bookingRequestInProgress == false else {
@@ -562,6 +612,26 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             correlationId: correlationId ?? "",
             message: message,
             lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
+            date: Date(),
+            amount: quote.price.highPrice,
+            currency: quote.price.currencyCode
+        )
+    }
+    
+    private func reportChangePaymentDetailsPressed() {
+        analytics.changePaymentDetailsPressed()
+    }
+    
+    private func reportCardAuthorisationSuccess() {
+        analytics.cardAuthorisationSuccess(quoteId: quote.id)
+    }
+    
+    private func reportCardAuthorisationFailure(message: String) {
+        analytics.cardAuthorisationFailure(
+            quoteId: quote.id,
+            errorMessage: message,
+            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice,

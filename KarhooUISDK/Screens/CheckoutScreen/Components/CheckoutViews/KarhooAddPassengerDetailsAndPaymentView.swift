@@ -94,9 +94,9 @@ final class KarhooAddPassengerDetailsAndPaymentView: UIView {
         passengerPaymentContainer.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
     
-    func setPaymentViewActions(actions: AddPaymentViewDelegate) {
-        passengerPaymentContainer.actions = actions
-    }
+//    func setPaymentViewActions(actions: AddPaymentViewDelegate) {
+////        passengerPaymentContainer.actions = actions
+//    }
     
     func setPassengerViewActions(actions: AddPassengerDetailsViewDelegate) {
 //        passengerDetailsContainer.actions = actions

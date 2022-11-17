@@ -7,9 +7,9 @@
 import Foundation
 import KarhooSDK
 
-protocol AddPaymentViewDelegate {
-    func didGetNonce(nonce: Nonce)
-}
+//protocol AddPaymentViewDelegate {
+//    func didGetNonce(nonce: Nonce)
+//}
 
 protocol AddPaymentPresenter {
     func updateCardPressed(showRetryAlert: Bool)
@@ -22,5 +22,5 @@ protocol AddPaymentView: BaseView {
     func startRegisterCardFlow(showRetryAlert: Bool)
     var baseViewController: BaseViewController? { get set }
     var quote: Quote? { get set }
-    var actions: AddPaymentViewDelegate? { get set }
+//    var actions: AddPaymentViewDelegate? { get set }
 }

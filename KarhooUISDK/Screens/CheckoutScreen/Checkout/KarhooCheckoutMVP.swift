@@ -20,6 +20,7 @@ protocol CheckoutPresenter {
     func isKarhooUser() -> Bool
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool
     func updateBookButtonWithEnabledState()
+    func didPressPayButton(showRetryAlert: Bool)
 }
 
 protocol CheckoutView: BaseViewController {

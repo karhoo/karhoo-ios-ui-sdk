@@ -82,13 +82,13 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         }
     }
     
-    var actions: AddPaymentViewDelegate? {
-        didSet {
-            if presenter == nil {
-                presenter = KarhooAddPaymentPresenter(view: self, quote: quote)
-            }
-        }
-    }
+//    var actions: AddPaymentViewDelegate? {
+//        didSet {
+//            if presenter == nil {
+//                presenter = KarhooAddPaymentPresenter(view: self, quote: quote)
+//            }
+//        }
+//    }
 
     private var presenter: AddPaymentPresenter?
     
@@ -176,7 +176,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
         accessibilityHint = UITexts.Generic.edit
 
         updateViewState()
-        actions?.didGetNonce(nonce: nonce)
+//        actions?.didGetNonce(nonce: nonce)
     }
 
     func noPaymentMethod() {
