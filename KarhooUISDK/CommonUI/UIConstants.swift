@@ -263,6 +263,7 @@ public struct UIConstants {
         /// 0.5
         public static let shadow: CGFloat = 0.5
 
+        /// 0.2
         static let lightShadow: CGFloat = 0.2
         
         /// 0.6
