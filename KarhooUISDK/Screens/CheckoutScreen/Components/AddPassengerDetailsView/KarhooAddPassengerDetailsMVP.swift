@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-protocol AddPassengerDetailsViewDelegate {
+protocol AddPassengerDetailsViewDelegate: AnyObject {
     func willUpdatePassengerDetails()
     func didUpdatePassengerDetails(details: PassengerDetails?)
 }

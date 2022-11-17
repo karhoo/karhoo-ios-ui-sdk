@@ -130,7 +130,7 @@ struct KarhooBottomSheet<Content: View>: View {
     }
 }
 
-struct KarhooBottomSheet_Previews: PreviewProvider {
+struct KarhooBottomSheetPreviews: PreviewProvider {
     static var previews: some View {
         KarhooBottomSheet(
             viewModel: KarhooBottomSheetViewModel(
