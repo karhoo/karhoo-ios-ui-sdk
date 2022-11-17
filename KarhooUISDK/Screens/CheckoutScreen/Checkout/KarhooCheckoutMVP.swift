@@ -36,6 +36,7 @@ protocol CheckoutView: BaseViewController {
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
+    func set(nonce: Nonce)
     func setAsapState(qta: String?)
     func setPrebookState(timeString: String?, dateString: String?)
     func retryAddPaymentMethod(showRetryAlert: Bool)

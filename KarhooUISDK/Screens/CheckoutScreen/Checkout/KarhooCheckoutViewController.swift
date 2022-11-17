@@ -394,6 +394,11 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         bookingButton.setRequestedMode()
     }
     
+    func set(nonce: Nonce){
+        paymentNonce = nonce
+//        presenter.completeBookingFlow()
+    }
+    
     func resetPaymentNonce() {
         paymentNonce = nil
 //        passengerDetailsAndPaymentView.noPaymentMethod()
@@ -445,11 +450,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func retryAddPaymentMethod(showRetryAlert: Bool = false) {
         presenter.didPressPayButton(showRetryAlert: showRetryAlert)
-//        view.startRegisterCardFlow(showRetryAlert: showRetryAlert)
-
-        
-        // tutaj: startRegisterCardFlow(showRetryAlert
-//        passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
     }
 
     // MARK: Show

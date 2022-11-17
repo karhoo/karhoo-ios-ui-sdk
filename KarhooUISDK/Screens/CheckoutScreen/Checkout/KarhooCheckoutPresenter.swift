@@ -479,13 +479,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         switch result {
         case .didAddPaymentMethod(let nonce):
             reportCardAuthorisationSuccess()
-            
+            view?.set(nonce: nonce)
             completeBookingFlow()
-//            view.didGetNonce(nonce: nonce)
-//            view.set(nonce: nonce)
         case .didFailWithError(let error):
             reportCardAuthorisationFailure(message: error?.message ?? "")
-            (view as? BaseViewController)?.showAlert(title: UITexts.Errors.somethingWentWrong,
+            view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                                                           message: error?.message ?? "", error: error)
         default: break
         }
