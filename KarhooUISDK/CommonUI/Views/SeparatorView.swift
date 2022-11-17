@@ -34,5 +34,6 @@ class SeparatorView: UIView {
     private func setup(height: CGFloat? = nil, width: CGFloat? = nil, color: UIColor? = nil) {
         anchor(width: width, height: height)
         backgroundColor = color
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }

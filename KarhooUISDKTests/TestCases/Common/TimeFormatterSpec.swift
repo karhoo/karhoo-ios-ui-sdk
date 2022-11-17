@@ -9,6 +9,7 @@
 import XCTest
 import Foundation
 
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class TimeFormatterSpec: KarhooTestCase {
