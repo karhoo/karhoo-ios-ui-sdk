@@ -366,6 +366,7 @@
 		51477AF428899B2400C5E18B /* VehicleRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51477AF328899B2400C5E18B /* VehicleRulesProvider.swift */; };
 		51477AF628899B2E00C5E18B /* VehicleRulesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51477AF528899B2E00C5E18B /* VehicleRulesStore.swift */; };
 		51671F412819DFCC00F75712 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		51715DE12925360400893F0F /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51715DE02925360400893F0F /* AddressView.swift */; };
 		51801A16285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A15285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift */; };
 		51801A1B285B163B00EE6583 /* RadioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A1A285B163B00EE6583 /* RadioControl.swift */; };
 		51801A1D285B17BB00EE6583 /* MockBookingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A1C285B17BB00EE6583 /* MockBookingRouter.swift */; };
@@ -942,6 +943,7 @@
 		5141C93C2846387A00F72E84 /* BraintreeThreeDSecureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraintreeThreeDSecureProvider.swift; sourceTree = "<group>"; };
 		51477AF328899B2400C5E18B /* VehicleRulesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRulesProvider.swift; sourceTree = "<group>"; };
 		51477AF528899B2E00C5E18B /* VehicleRulesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRulesStore.swift; sourceTree = "<group>"; };
+		51715DE02925360400893F0F /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		51801A15285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteFilterHandlerSpec.swift; sourceTree = "<group>"; };
 		51801A1A285B163B00EE6583 /* RadioControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioControl.swift; sourceTree = "<group>"; };
 		51801A1C285B17BB00EE6583 /* MockBookingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBookingRouter.swift; sourceTree = "<group>"; };
@@ -2076,6 +2078,7 @@
 			children = (
 				407EC75222CF564E00F24CFC /* UITexts.swift */,
 				6BA9DB682785D9700007934C /* UIConstants.swift */,
+				51715DDF292535EA00893F0F /* AddressView */,
 				6BB9404A274FDA1D00478ABD /* BaseControls */,
 				6BB9404B274FDA4A00478ABD /* Buttons */,
 				51A1100A27AD510800A54E76 /* Checkbox */,
@@ -2449,6 +2452,14 @@
 				51F4D56028574CA900A8DB5E /* UserSelectable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		51715DDF292535EA00893F0F /* AddressView */ = {
+			isa = PBXGroup;
+			children = (
+				51715DE02925360400893F0F /* AddressView.swift */,
+			);
+			path = AddressView;
 			sourceTree = "<group>";
 		};
 		51801A17285B161900EE6583 /* RadioControl */ = {
@@ -4273,6 +4284,7 @@
 				51884C12287DA1C900E48D70 /* LoadingBar.swift in Sources */,
 				FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */,
 				84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */,
+				51715DE12925360400893F0F /* AddressView.swift in Sources */,
 				0999CBB0220DDA0300A93AF9 /* KarhooUIScreenRouting.swift in Sources */,
 				5135E57628574A4A00F14A0F /* QuoteView.swift in Sources */,
 				2396A2AB255566DC007BD9E1 /* JourneyInfo.swift in Sources */,

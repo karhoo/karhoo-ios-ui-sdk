@@ -189,6 +189,8 @@ public struct UIConstants {
 
             /// 95%
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+
+            static let addressViewDotsColumnWidth: CGFloat = 10
         }
     }
     
