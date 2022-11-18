@@ -21,6 +21,8 @@ struct DetailsCellView: View {
                     width: UIConstants.Dimension.Icon.large,
                     height: UIConstants.Dimension.Icon.large
                 )
+                .padding(.top, UIConstants.Spacing.xSmall)
+                .padding(.bottom, UIConstants.Spacing.xSmall)
                 .foregroundColor(KarhooUI.colors.primary.getColor())
             VStack(alignment: .leading) {
                 Text(model.title)
@@ -49,13 +51,13 @@ struct DetailsCellView: View {
             )
         }
         .background(
-            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xxLarge)
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                 .stroke(
                     KarhooUI.colors.border.getColor(),
                     lineWidth: UIConstants.Dimension.Border.standardWidth
                 )
         ).background(
-            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xxLarge)
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                 .fill(KarhooUI.colors.background2.getColor())
         )
         .onTapGesture(perform: {
