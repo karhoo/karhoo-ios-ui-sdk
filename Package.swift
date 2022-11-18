@@ -28,7 +28,11 @@ let package = Package(
         .package(url: "https://github.com/Adyen/adyen-ios", exact: "4.7.1"),
         .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.3.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit", exact: "3.3.1"),
-        .package(url: "https://github.com/braintree/braintree_ios", exact: "5.6.3")
+        .package(url: "https://github.com/braintree/braintree_ios", exact: "5.6.3"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.9.0"),
+        .package(url: "https://github.com/Quick/Quick", exact: "5.0.1"),
+        .package(url: "https://github.com/Quick/Nimble", exact: "10.0.0")
+
     ],
     targets: [
         .target(
@@ -59,7 +63,11 @@ let package = Package(
             dependencies: [
                 .target(name: "KarhooUISDK"),
                 .target(name: "KarhooUISDKAdyen"),
-                .target(name: "KarhooUISDKBraintree")
+                .target(name: "KarhooUISDKBraintree"),
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+                .product(name: "Quick", package: "Quick"),
+                .product(name: "Nimble", package: "Nimble")
+
             ],
             path: "KarhooUISDKTests",
             exclude: ["Info.plist"])
