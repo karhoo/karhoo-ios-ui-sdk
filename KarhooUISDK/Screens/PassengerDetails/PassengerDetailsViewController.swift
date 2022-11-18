@@ -130,7 +130,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
                                             isOptional: false,
                                             accessibilityIdentifier: KHPassengerDetailsViewID.firstNameInputView)
         inputView.delegate = self
-        inputView.setBackgroundColor(.white)
+        inputView.setBackgroundColor(KarhooUI.colors.background2)
         return inputView
     }()
     
@@ -139,7 +139,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
                                             isOptional: false,
                                             accessibilityIdentifier: KHPassengerDetailsViewID.lastNameInputView)
         inputView.delegate = self
-        inputView.setBackgroundColor(.white)
+        inputView.setBackgroundColor(KarhooUI.colors.background2)
         return inputView
     }()
     
@@ -148,7 +148,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
                                             isOptional: false,
                                             accessibilityIdentifier: KHPassengerDetailsViewID.emailInputView)
         inputView.delegate = self
-        inputView.setBackgroundColor(.white)
+        inputView.setBackgroundColor(KarhooUI.colors.background2)
         return inputView
     }()
     
@@ -158,7 +158,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
             shouldFocusNumberInputAutomatically: self.shouldFocusNumberInputAutomatically
         )
         inputView.delegate = self
-        inputView.setBackgroundColor(.white)
+        inputView.setBackgroundColor(KarhooUI.colors.background2)
         return inputView
     }()
     
