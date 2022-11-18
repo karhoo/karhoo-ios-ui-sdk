@@ -11,6 +11,11 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final class MockCheckoutView: MockBaseViewController, CheckoutView {
+    var setNonceCalled = false
+    func set(nonce: KarhooSDK.Nonce) {
+        setNonceCalled = true
+    }
+    
     var setRequestedStateCalled = false
     func setRequestedState() {
         setRequestedStateCalled = true

@@ -46,15 +46,6 @@ extension KarhooCheckoutViewController: KarhooInputViewDelegate {
     }
 }
 
-extension KarhooCheckoutViewController: AddPaymentViewDelegate {
-    func didGetNonce(nonce: Nonce) {
-        paymentNonce = nonce
-        didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)
-        presenter.didAddPassengerDetails()
-        presenter.completeBookingFlow()
-    }
-}
-
 extension KarhooCheckoutViewController: AddPassengerDetailsViewDelegate {
     func didUpdatePassengerDetails(details: PassengerDetails?) {
         didBecomeInactive(identifier: commentsInputText.accessibilityIdentifier!)

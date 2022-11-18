@@ -20,6 +20,7 @@ protocol CheckoutPresenter {
     func isKarhooUser() -> Bool
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool
     func updateBookButtonWithEnabledState()
+    func didPressPayButton(showRetryAlert: Bool)
 }
 
 protocol CheckoutView: BaseViewController {
@@ -35,6 +36,7 @@ protocol CheckoutView: BaseViewController {
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
+    func set(nonce: Nonce)
     func setAsapState(qta: String?)
     func setPrebookState(timeString: String?, dateString: String?)
     func retryAddPaymentMethod(showRetryAlert: Bool)
