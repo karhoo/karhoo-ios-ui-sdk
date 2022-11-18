@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Vorautorisieren";
+"adyen.submitButton" = "TRANSAKTION AUTORISIEREN";
 
-"adyen.submitButton.formatted" = "Vorautorisieren %@";
+"adyen.submitButton.formatted" = "TRANSAKTION AUTORISIEREN";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -150,7 +150,7 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden.";
 
-"Text.Booking.BookNow" = "JETZT BUCHEN";
+"kh_uisdk_next" = "Weiter";
 
 "Text.Booking.CountryCodeSelection.Search" = "Land/Region suchen";
 
