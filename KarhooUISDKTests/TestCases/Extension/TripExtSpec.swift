@@ -8,8 +8,9 @@
 
 import Foundation
 import XCTest
-@testable import KarhooUISDK
 import KarhooSDK
+import KarhooUISDKTestUtils
+@testable import KarhooUISDK
 
 class TripExt: KarhooTestCase {
 

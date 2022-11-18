@@ -7,7 +7,7 @@
 //
 
 import XCTest
-
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class DatePickerPresenterSpec: KarhooTestCase {
