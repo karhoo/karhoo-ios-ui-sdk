@@ -81,4 +81,8 @@ public final class UISDKScreenRouting: Routing {
     internal func tripFeedbackScreen() -> TripFeedbackScreenBuilder {
         return internalRouting.tripFeedbackScreenBuilder
     }
+    
+    internal func bottomSheetScreen() -> BottomSheetScreenBuilder {
+        return internalRouting.bottomSheetScreenBuilder
+    }
 }

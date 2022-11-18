@@ -270,7 +270,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         navigationItem.title = UITexts.Generic.checkout
     }
 
-    // TODO: Children of stack views shouldn't be anchored to their parent.
+    // Children of stack views shouldn't be anchored to their parent.
     // Set the directionalLayoutMargins of the base stack view for insets
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {

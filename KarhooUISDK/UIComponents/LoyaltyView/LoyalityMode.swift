@@ -57,9 +57,9 @@ public enum LoyaltyMode {
         }
     }
     
-    static func ==(lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+    static func == (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
         switch (lhs, rhs) {
-        case (.none, .none) :
+        case (.none, .none):
             return true
         case (.earn, .earn):
             return true
@@ -72,9 +72,9 @@ public enum LoyaltyMode {
         }
     }
     
-    static func !=(lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+    static func != (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
         switch (lhs, rhs) {
-        case (.none, .none) :
+        case (.none, .none):
             return false
         case (.earn, .earn):
             return false

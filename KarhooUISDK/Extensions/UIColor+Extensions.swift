@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     
-    var isLight : Bool {
+    var isLight: Bool {
         guard let components = cgColor.components, components.count > 2 else {return false}
         let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
         return brightness > 0.5
@@ -84,5 +85,15 @@ extension UIColor {
             }.cgColor
             return UIColor(cgColor: properColor)
         */
+    }
+
+    func getColor() -> Color {
+        Color(
+            .sRGB,
+            red: self.cgColor.components![0],
+            green: self.cgColor.components![1],
+            blue: self.cgColor.components![2],
+            opacity: 1
+        )
     }
 }

@@ -19,11 +19,9 @@ final class KarhooFileManager {
         do {
             let decodedData = try JSONDecoder().decode(T.self, from: data)
             return decodedData
-        }
-        catch {
+        } catch {
             print(error)
         }
-        
         return nil
     }
     
@@ -33,11 +31,9 @@ final class KarhooFileManager {
                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 return jsonData
             }
-        }
-        catch {
+        } catch {
             print(error)
         }
-        
         return nil
     }
 }
