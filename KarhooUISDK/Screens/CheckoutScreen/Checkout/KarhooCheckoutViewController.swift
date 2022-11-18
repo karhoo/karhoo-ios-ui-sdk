@@ -385,12 +385,10 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func set(nonce: Nonce){
         paymentNonce = nonce
-//        presenter.completeBookingFlow()
     }
     
     func resetPaymentNonce() {
         paymentNonce = nil
-//        passengerDetailsAndPaymentView.noPaymentMethod()
     }
     
     func setAddFlightDetailsState() {
