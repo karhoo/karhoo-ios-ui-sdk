@@ -15,11 +15,6 @@ struct KarhooAddressView: View {
 
     // MARK: - Nested types
 
-    struct Label {
-        let text: String
-        let subtext: String
-    }
-
     enum Design {
         /// Bordered view, with SDKs `background1` color and rounded corners.
         case bordered
@@ -49,9 +44,10 @@ struct KarhooAddressView: View {
 
     // MARK: - Properties
 
-    let pickUp: Label
-    let destination: Label
+    let pickUp: AddressLabel
+    let destination: AddressLabel
     let timeLabelText: String?
+    let tags: [Tag]
     var borderColor: UIColor = KarhooUI.colors.border
     let borderWidth: CGFloat = 1
     var cornerRadius: CGFloat = UIConstants.CornerRadius.large
@@ -61,17 +57,19 @@ struct KarhooAddressView: View {
     // MARK: - Lifecycle
 
     init(
-        pickUp: Label,
-        destination: Label,
+        pickUp: AddressLabel,
+        destination: AddressLabel,
         design: Design = .default,
         showsLineBetweenPickUpAndDestination: Bool = true,
-        timeLabelText: String? = nil
+        timeLabelText: String? = nil,
+        tags: [Tag] = []
     ) {
         self.pickUp = pickUp
         self.destination = destination
         self.borderColor = design.borderColor
         self.backgroundColor = design.backgroundColor
         self.timeLabelText = timeLabelText
+        self.tags = tags
         self.showsLineBetweenPickUpAndDestination = showsLineBetweenPickUpAndDestination
     }
 
@@ -126,12 +124,16 @@ struct KarhooAddressView: View {
     @ViewBuilder
     private var labelsColumn: some View {
         VStack(alignment: .leading) {
-            AddressLabel(
+            AddressLabelView(
                 text: pickUp.text,
                 subtext: pickUp.subtext
             )
-            Spacer(minLength: UIConstants.Spacing.medium)
-            AddressLabel(
+            if tags.isNotEmpty {
+                buildTagsView()
+            } else {
+                Spacer(minLength: UIConstants.Spacing.medium)
+            }
+            AddressLabelView(
                 text: destination.text,
                 subtext: destination.subtext
             )
@@ -144,10 +146,20 @@ struct KarhooAddressView: View {
             Text(text)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .multilineTextAlignment(.trailing)
-                .padding(.top, UIConstants.Dimension.View.addressViewTimeLabelTopPadding)
+                .padding(.top, UIConstants.Dimension.View.addressViewPadding)
                 .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
             Spacer()
         }
+    }
+
+    @ViewBuilder
+    private func buildTagsView() -> some View {
+        VStack(alignment: .leading) {
+            ForEach(tags) {
+                TagView(tag: $0)
+            }
+        }
+        .padding(.vertical, UIConstants.Spacing.xSmall)
     }
 }
 
@@ -160,28 +172,61 @@ struct KarhooAddressView_Preview: PreviewProvider {
     }
 }
 
-private struct AddressLabel: View {
+// MARK: - Address label model & view
+extension KarhooAddressView {
 
-    let text: String
-    var subtext: String?
+    struct AddressLabel {
+        let text: String
+        let subtext: String
+    }
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(text)
-                .font(Font(KarhooUI.fonts.bodyRegular()))
-                .lineLimit(1)
-                .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
-                .foregroundColor(Color(KarhooUI.colors.text))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            if let subtext = subtext {
-                Text(subtext)
-                    .font(Font(KarhooUI.fonts.captionBold()))
+    struct AddressLabelView: View {
+
+        let text: String
+        var subtext: String?
+
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(text)
+                    .font(Font(KarhooUI.fonts.bodyRegular()))
                     .lineLimit(1)
                     .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
-                    .foregroundColor(Color(KarhooUI.colors.textLabel))
+                    .foregroundColor(Color(KarhooUI.colors.text))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                if let subtext = subtext {
+                    Text(subtext)
+                        .font(Font(KarhooUI.fonts.captionBold()))
+                        .lineLimit(1)
+                        .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
+                        .foregroundColor(Color(KarhooUI.colors.textLabel))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
+            .frame(height: UIConstants.Dimension.View.addressViewLabelHeight)
         }
-        .frame(height: UIConstants.Dimension.View.addressViewLabelHeight)
+    }
+}
+
+// MARK: - Tag model & view
+extension KarhooAddressView {
+    struct Tag: Identifiable {
+        let id = UUID()
+        let title: String
+    }
+
+    struct TagView: View {
+
+        let tag: Tag
+
+        var body: some View {
+            Text(tag.title)
+                .font(Font(KarhooUI.fonts.captionBold()))
+                .frame(height: 14)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 10)
+                .background(Color(KarhooUI.colors.primary))
+                .foregroundColor(Color(KarhooUI.colors.background2))
+                .addBorder(.clear, cornerRadius: 5)
+        }
     }
 }

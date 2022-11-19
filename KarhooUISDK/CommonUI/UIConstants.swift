@@ -194,7 +194,7 @@ public struct UIConstants {
 
             static let addressViewLabelHeight: CGFloat = 32
 
-            static let addressViewTimeLabelTopPadding: CGFloat = 10
+            static let addressViewPadding: CGFloat = 10
 
             static let addressViewRoundIconSide: CGFloat = 10
 
