@@ -44,15 +44,15 @@ struct KarhooAddressView: View {
 
     // MARK: - Properties
 
-    let pickUp: AddressLabel
-    let destination: AddressLabel
-    let timeLabelText: String?
-    let tags: [Tag]
-    var borderColor: UIColor = KarhooUI.colors.border
-    let borderWidth: CGFloat = 1
-    var cornerRadius: CGFloat = UIConstants.CornerRadius.large
-    var backgroundColor: UIColor = KarhooUI.colors.white
-    let showsLineBetweenPickUpAndDestination: Bool
+    private let pickUp: AddressLabel
+    private let destination: AddressLabel
+    private let timeLabelText: String?
+    private let tags: [Tag]
+    private var borderColor: UIColor = KarhooUI.colors.border
+    private let borderWidth: CGFloat = 1
+    private var cornerRadius: CGFloat = UIConstants.CornerRadius.large
+    private var backgroundColor: UIColor = KarhooUI.colors.white
+    private let showsLineBetweenPickUpAndDestination: Bool
 
     // MARK: - Lifecycle
 
@@ -163,15 +163,6 @@ struct KarhooAddressView: View {
     }
 }
 
-struct KarhooAddressView_Preview: PreviewProvider {
-    static var previews: some View {
-        KarhooAddressView(
-            pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
-            destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom")
-        )
-    }
-}
-
 // MARK: - Address label model & view
 extension KarhooAddressView {
 
@@ -228,5 +219,15 @@ extension KarhooAddressView {
                 .foregroundColor(Color(KarhooUI.colors.background2))
                 .addBorder(.clear, cornerRadius: 5)
         }
+    }
+}
+
+// MARK: - Preview
+struct KarhooAddressView_Preview: PreviewProvider {
+    static var previews: some View {
+        KarhooAddressView(
+            pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
+            destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom")
+        )
     }
 }
