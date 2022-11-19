@@ -180,14 +180,14 @@ extension KarhooAddressView {
             VStack(alignment: .leading, spacing: 0) {
                 Text(text)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .lineLimit(1)
+                    .lineLimit(2)
                     .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                     .foregroundColor(Color(KarhooUI.colors.text))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let subtext = subtext {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionBold()))
-                        .lineLimit(1)
+                        .lineLimit(2)
                         .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                         .foregroundColor(Color(KarhooUI.colors.textLabel))
                         .frame(maxWidth: .infinity, alignment: .leading)
