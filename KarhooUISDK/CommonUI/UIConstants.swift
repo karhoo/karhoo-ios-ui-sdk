@@ -191,6 +191,14 @@ public struct UIConstants {
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 
             static let addressViewDotsColumnWidth: CGFloat = 10
+
+            static let addressViewLabelHeight: CGFloat = 32
+
+            static let addressViewTimeLabelTopPadding: CGFloat = 10
+
+            static let addressViewRoundIconSide: CGFloat = 10
+
+            static let addressViewMinimumScaleFactor: CGFloat = 0.7
         }
     }
     

@@ -37,7 +37,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private var headerViews: [UIView] {
         [
-            addressPickerView,
+            newAddressView.view,
             buttonsStackView,
             legalDisclaimerContainer
         ]
@@ -48,6 +48,19 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+
+    let newAddressView = UIHostingController(
+        rootView: KarhooAddressView(
+            pickUp: .init(text: "London City Airport, Hartmann Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
+            destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom"),
+            design: .borderedWithWhiteBackground,
+            timeLabelText: "NOW"
+        )
+    ).then {
+        $0.loadViewIfNeeded()
+        $0.view.backgroundColor = .clear
+    }
+
     private lazy var buttonsStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
