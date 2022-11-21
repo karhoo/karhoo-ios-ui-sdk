@@ -4,7 +4,7 @@
 
 /* English: Error codes */
 "K0001" = "General request error";
-
+  
 "K0002" = "Invalid request payload";
 
 "K0003" = "Could not read authorisation token";
@@ -34,7 +34,7 @@
 /* Quotes errors, K3xxx */
 "K3001" = "Could not get estimates";
 
-"K3002" = "Apologies ASAP bookings are not currently available for this destination, however you can book in advance for your next trip!";
+"kh_uisdk_quotes_error_no_results_found" = "Apologies ASAP bookings are not currently available for this destination, however you can book in advance for your next trip!";
 
 "K3003" = "Could not get estimates (could not find specified quote)";
 
@@ -92,760 +92,659 @@
 /* Qxxxx errors */
 "Q0001" = "Pick up and destination cannot be the same.";
 
-"Text.Address.CurrentLocation" = "Current location";
+"kh_uisdk_current_location" = "Current location";
 
-"Text.Address.NoRecentAddress" = "No recent results";
+"kh_uisdk_recents_empty" = "No recent results";
 
-"Text.Address.SetOnMap" = "Set on map";
+"kh_uisdk_setOnMap" = "Set on map";
 
 /* Address Bar */
-"Text.AddressBar.AddDestination" = "Add destination";
+"kh_uisdk_address_picker_dropoff_booking" = "Add destination";
 
-"Text.AddressBar.AddPickup" = "Add pickup";
+"kh_uisdk_address_picker_add_pickup" = "Add pickup";
 
-"Text.AddressBar.EnterPickupLocation" = "Enter pickup location";
+"kh_uisdk_address_picker_enter_pickup" = "Enter pickup location";
 
-"Text.AddressSearch.EnterDestinationLocation" = "Enter destination location";
-
-/* "Flight number" used as the flight number field placeholder */
-"Text.Airport.FlightNumber" = "Flight Number";
+"kh_uisdk_address_picker_enter_destination" = "Enter destination location";
 
 /* Message on airport screen for encouraging user to enter as much info about airport booking as possible */
-"Text.Airport.HelpfulMessage" = "Please enter a valid flight number";
+"kh_uisdk_airport_bookingMessage" = "Please enter a valid flight number";
 
 /* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
-"Text.Availability.AllCategory" = "All";
+"kh_uisdk_filter_all" = "All";
 
-"Text.Availability.NoQuotesForSelectedParameters" = "Apologies ASAP bookings are not currently available for this destination, however you can book in advance for your next trip!";
+"kh_uisdk_K3002" = "Apologies ASAP bookings are not currently available for this destination, however you can book in advance for your next trip!";
 
-"Text.Availability.NoQuotesInSelectedCategory" = "There are no quotes for this category. \n Please choose another category.";
+"kh_uisdk_noQuotesInSelectedCategory" = "There are no quotes for this category. \n Please choose another category.";
 
 /* Base fare title */
-"Text.Booking.BaseFare" = "Base Fare";
+"kh_uisdk_base" = "Base Fare";
 
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
-"Text.Booking.BaseFareExplanation" = "Your final fare might be affected by tips, tolls, taxes, and other charges.";
+"kh_uisdk_baseFareExplanation" = "Your final fare might be affected by tips, tolls, taxes, and other charges.";
 
-"Text.Booking.BookNow" = "BOOK NOW";
+"kh_uisdk_book_now" = "BOOK NOW";
 
-"Text.Booking.CountryCodeSelection.Search" = "Search country/region";
+"kh_uisdk_country_search" = "Search country/region";
 
-"Text.Booking.EnterDestination" = "Enter destination to see available fleets";
+"kh_uisdk_enterDestination" = "Enter destination to see available fleets";
 
 /* Checkout component */
-"Text.Booking.EstimatedInfoBox" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";
+"kh_uisdk_price_info_text_estimated" = "This fleet is a non-regulated taxi. The quote is an estimate based on the trip factors (distance, time, etc). Please refer to the fleet's Terms and Conditions for more information.";
 
-"Text.Booking.FixedInfoBox" = "This fleet charges a flat fare. The final fare may be affected by extras (tolls, delay, etc), please check the fleet's Terms and Conditions.";
+"kh_uisdk_price_info_text_fixed" = "This fleet charges a flat fare. The final fare may be affected by extras (tolls, delay, etc), please check the fleet's Terms and Conditions.";
 
-"Text.Booking.FlightTracking" = "Flight tracking";
+"kh_uisdk_filter_fight_tracking" = "Flight tracking";
 
-"Text.Booking.GPSTracking" = "GPS tracking";
+"kh_uisdk_filter_gps_tracking" = "GPS tracking";
 
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flight number (Optional)";
+"kh_uisdk_flight_number" = "Flight number (Optional)";
 
 /* Guest checkout */
-"Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passenger Details";
+"kh_uisdk_passenger_details" = "Passenger Details";
 
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Payment Methods";
+"kh_uisdk_guestCheckoutPaymentDetailsTitle" = "Payment Methods";
 
-"Text.Booking.LearnMore" = "Learn more";
+"kh_uisdk_quote_learn_more" = "Learn more";
 
-"Text.Booking.LegalNotice" = "Legal notice";
+"kh_uisdk_legal_notice_label" = "Legal notice";
 
-"Text.Booking.LegalNoticeLink" = "";
+"kh_uisdk_legal_notice_link" = "";
 
-"Text.Booking.LegalNoticeText" = "";
+"kh_uisdk_legal_notice_text" = "";
 
-"Text.Booking.LegalNoticeTitle" = "";
+"kh_uisdk_legal_notice_title" = "";
 
-"Text.Booking.MaximumLuggages" = "%1$@ luggages maximum";
+"kh_uisdk_baggage_max_ios" = "%1$@ luggages maximum";
 
-"Text.Booking.MaximumPassengers" = "%1$@ passengers maximum";
+"kh_uisdk_passengers_max_ios" = "%1$@ passengers maximum";
 
-"Text.Booking.MeteredInfoBox" = "This fleet is a regulated metered taxi. The quote is an estimate based on the trip factors (distance, time, etc).";
+"kh_uisdk_price_info_text_metered" = "This fleet is a regulated metered taxi. The quote is an estimate based on the trip factors (distance, time, etc).";
 
 /* %1$@ if you have suggestions for local fleets. */
-"Text.Booking.NoAvailabilityBody" = "%1$@ if you have suggestions for local fleets.";
+"kh_uisdk_noAvailabilityBody" = "%1$@ if you have suggestions for local fleets.";
 
 /* We’re not live here yet! */
-"Text.Booking.NoAvailabilityHeader" = "We’re not live here yet!";
+"kh_uisdk_quotes_no_availability" = "We’re not live here yet! Get in touch if you have suggestions for local fleets.";
 
 /* Get in touch */
-"Text.Booking.NoAvailabilityLink" = "Get in touch";
+"kh_uisdk_noAvailabilityLink" = "Get in touch";
 
-"Text.Booking.NoLocationPermissionAlertConfirm" = "Settings";
+"kh_uisdk_settings" = "Settings";
 
-"Text.Booking.NoLocationPermissionAlertMessage" = "Location permission needed to show your location. To change permission settings, please go to the device settings and enable the location permission for this app";
+"kh_uisdk_noLocationPermissionMessage" = "Location permission needed to show your location. To change permission settings, please go to the device settings and enable the location permission for this app";
 
-"Text.Booking.NoLocationPermissionAlertTitle" = "Permission needed";
+"kh_uisdk_noLocationPermissionTitle" = "Permission needed";
 
-"Text.Booking.Passenger" = "Passenger";
+"kh_uisdk_booking_checkout_passenger" = "Passenger";
 
-"Text.Booking.PassengerDetails.Add" = "Add Passenger";
+"kh_uisdk_passengerDetails_addPassenger" = "Add Passenger";
 
-"Text.Booking.PassengerDetails.SaveAction" = "SAVE";
-
-"Text.Booking.PassengerDetails.Subtitle" = "This information allows the smooth running of your ride.";
-
-/* Passenger Details */
-"Text.Booking.PassengerDetails.Title" = "Passenger";
+"kh_uisdk_passengerDetails_subtitle" = "This information allows the smooth running of your ride.";
 
 /* Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked */
-"Text.Booking.PrebookConfirmation" = "Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been bookedbooking";
+"kh_uisdk_prebookConfirmation" = "Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been bookedbooking";
 
 /* Prebook Done, Fuzzy */
-"Text.Booking.PrebookConfirmed" = "Prebook Confirmed";
+"kh_uisdk_prebookConfirmed" = "Prebook Confirmed";
 
 /* Ride Details */
-"Text.Booking.PrebookConfirmed.RideDetails" = "Ride Details";
+"kh_uisdk_ride_details" = "Ride Details";
 
-"Text.Booking.QuoteExpired" = "Quote expired";
+"kh_uisdk_offer_expired" = "Quote expired";
 
-"Text.Booking.QuoteExpiredMessage" = "Please select a new quote to continue with your booking";
+"kh_uisdk_offer_expired_text" = "Please select a new quote to continue with your booking";
 
 /* Booking */
-"Text.Booking.RequestCar" = "CONFIRM BOOKING";
+"kh_uisdk_requestCar" = "CONFIRM BOOKING";
 
-"Text.Booking.RequestingCar" = "Booking Ride";
+"kh_uisdk_requestingCar" = "Booking Ride";
 
-"Text.Booking.RequestReceived" = "Booking Received";
+"kh_uisdK_requestReceived" = "Booking Received";
 
-"Text.Booking.TrainTracking" = "Train tracking";
+"kh_uisdk_filter_train_tracking" = "Train tracking";
 
-"Text.Bookings.Alert.CancellationFee.Charge" = "You will be charged a cancellation fee estimated at %1$@.\n\nWould you like to proceed?";
+"kh_uisdk_you_may_be_charged_ios" = "You will be charged a cancellation fee estimated at %1$@.\n\nWould you like to proceed?";
 
-"Text.Bookings.Alert.CancellationFee.Continue" = "Would you like to proceed?";
+"kh_uisdk_would_you_like_to_proceed" = "Would you like to proceed?";
 
-"Text.Bookings.Alert.CancellationSuccess.Message" = "Your trip has been cancelled successfully.";
+"kh_uisdk_cancel_ride_successful_message" = "Your trip has been cancelled successfully.";
 
-"Text.Bookings.Alert.CancellationSuccess.Title" = "Ride cancellation successful";
-
-/* "Cancel Ride" button action */
-"Text.Bookings.CancelRide" = "Cancel Ride";
-
-/* "Contact Driver" (button action) */
-"Text.Bookings.ContactDriver" = "Contact Driver";
-
-/* "Contact Fleet" */
-"Text.Bookings.ContactFleet" = "Contact Fleet";
+"kh_uisdk_cancel_ride_successful" = "Ride cancellation successful";
 
 /* Generic fallback message for trip load failure */
-"Text.Bookings.CouldNotLoadTrips" = "Could not load trips.";
+"kh_uisdk_couldNotLoadTrips" = "Could not load trips.";
 
-"Text.Bookings.eta" = "ETA";
+"kh_uisdk_eta" = "ETA";
 
-"Text.Bookings.NewRide" = "NEW RIDE";
+"kh_uisdk_new_ride" = "NEW RIDE";
 
 /* English: "No Trips" used if the booking list screen is empty */
-"Text.Bookings.NoTrips" = "No rides";
+"kh_uisdk_noTrips" = "No rides";
 
 /* used as a message on the booking screen if the user has no trips. English: "You have no booked trips yet. We can help you get from A to B" */
-"Text.Bookings.NoTripsBookedMessage" = "You have not booked any rides yet. We can help you get from A to B";
+"kh_uisdk_past_rides_empty" = "You have not booked any rides yet. We can help you get from A to B";
 
 /* "Past" used on past tabs on bookings list */
-"Text.Bookings.Past" = "Past";
+"kh_uisdk_title_page_past" = "Past";
 
-"Text.Bookings.price" = "Price";
+"kh_uisdk_price" = "Price";
 
-"Text.Bookings.Price" = "Price";
+"kh_uisdk_cancelled" = "Cancelled";
 
-"Text.Bookings.Price.Cancelled" = "Cancelled";
-
-"Text.Bookings.Quote" = "Quote";
+"kh_uisdk_quote" = "Quote";
 
 /* Button for rebooking a ride */
-"Text.Bookings.RebookRide" = "Rebook Ride";
+"kh_uisdk_rebook_ride" = "Rebook Ride";
 
 /* "Report Issue" Button */
-"Text.Bookings.ReportIssue" = "Report Issue";
+"kh_uisdk_report_issue" = "Report Issue";
 
 /* "Track Driver" */
-"Text.Bookings.TrackDriver" = "Track Driver";
+"kh_uisdk_track_driver" = "Track Driver";
 
 /* "Track Trip" */
-"Text.Bookings.TrackTrip" = "Track Ride";
+"kh_uisdk_trackTrip" = "Track Ride";
 
-"Text.Bookings.TrackTrip.AlertMessage" = "Would you like to track the vehicle?";
+"kh_uisdk_trackTripAlertMessage" = "Would you like to track the vehicle?";
 
-"Text.Bookings.TrackTrip.AlertTitle" = "The driver is en route";
-
-"Text.Bookings.TrackTrip.DismissAction" = "No";
-
-"Text.Bookings.TrackTrip.TrackAction" = "Yes";
+"kh_uisdk_trackTripAlertTitle" = "The driver is en route";
 
 /* Upcoming: used on upcoming tabs for rides, Fuzzy */
-"Text.Bookings.Upcoming" = "Upcoming";
+"kh_uisdk_title_page_upcoming" = "Upcoming";
 
-"Text.Error.Alert.CantSendEmail" = "Can't send email message. Configure Mail app first.";
+"kh_uisdk_errors_cantSendEmail" = "Can't send email message. Configure Mail app first.";
 
 /* The action button on the force update alert. ie "Update" (this button takes the user to the app store) */
-"Text.Error.Alert.ForceUpdateButton" = "Update";
+"kh_uisdk_errors_forceUpdateButton" = "Update";
 
 /* The message when the user needs to update the app. ie. "Please update Karhoo to the latest version." */
-"Text.Error.Alert.ForceUpdateMessage" = "Please update the app to continue.";
+"kh_uisdk_errors_forceUpdateMessage" = "Please update the app to continue.";
 
 /* The title of the alert when user is forced to update ie "App Update Required" */
-"Text.Error.Alert.ForceUpdateTitle" = "New version available";
+"kh_uisdk_errors_forceUpdateTitle" = "New version available";
 
 /* Errors */
 "Text.Error.EmailValidationError" = "Check your email address is spelt correctly";
 
 /* When the user enters an invalid flight number, Fuzzy */
-"Text.Error.FlightNumberValidationHint" = "Flight number";
+"kh_uisdk_errors_flightNumberValidatorError" = "Flight number";
 
 /* When fetching the user profile fails */
-"Text.Error.GetUserFails" = "There was a problem getting your profile.";
+"kh_uisdk_errors_getUserFail" = "There was a problem getting your profile.";
 
-"Text.Error.LoyaltyModeNotEligibleForPreAuth" = "Current loyalty mode is not eligible for pre-authorization";
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "Current loyalty mode is not eligible for pre-authorization";
 
-/* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
-"Text.Error.NoDetails" = "Oops, something went wrong. Please try again.";
+"kh_uisdk_payment_paymentAlertUpdateCard" = "Update Card";
 
-"Text.Error.Payment.Alert.ButtonUpdateCard" = "Update Card";
+"kh_uisdk_payment_issue" = "Payment Issue";
 
-"Text.Error.Payment.Alert.Message" = "We were unable to authorise your credit/debit card.";
-
-"Text.Error.Payment.Alert.Title" = "Issue With Card";
-
-"Text.Error.Payment.NoDetails.Message" = "Something went wrong, please retry or select another quote";
+"kh_uisdk_payment_issue_message" = "There has been an issue with your card";
 
 /* Error message when user tries to prebook within the current hour of local time */
-"Text.Error.PrebookingWithinTheHour" = "Prebook cannot be made within the current hour.";
+"kh_uisdk_errors_prebookingWithinTheHour" = "Prebook cannot be made within the current hour.";
 
 /* "Something went wrong" used as a title for error alert */
-"Text.Error.SomethingWentWrong" = "Something went wrong";
+"kh_uisdk_something_went_wrong" = "Something went wrong";
 
-"Text.Error.UnkownLoyaltyError" = "An error has occurred. To earn or use your loyalty points please try again later.";
+"kh_uisdk_loyalty_unknown_error" = "An error has occurred. To earn or use your loyalty points please try again later.";
 
-"Text.Error.UnsupportedCurrency" = "An error has occurred. The currency is not supported";
+"kh_uisdk_loyalty_unsupported_currency" = "An error has occurred. The currency is not supported";
 
 /* Theoretical edge case where the braintree token is missing */
-"Text.Errors.failedToInitialisePaymentSetup" = "Issue with initialising payments, please contact support";
+"kh_uisdk_errors_missingPaymentSDKToken" = "Issue with initialising payments, please contact support";
 
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Your balance is not sufficient to pay for this ride";
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "Your balance is not sufficient to pay for this ride";
 
-"Text.Errors.InvalidPhoneNumber" = "Invalid phone number";
+"kh_uisdk_invalid_phone_number" = "Invalid phone number";
 
-"Text.Errors.MissingPhoneNumber" = "Empty field not allowed";
+"kh_uisdk_invalid_empty_field" = "Empty field not allowed";
 
 /* empty table view result */
-"Text.Errors.NoResultsFound" = "No results found";
+"kh_uisdk_results_empty" = "No results found";
 
-"Text.FeedbackView.addComment" = "Additional comments";
+"kh_uisdk_addCommentPlaceholder" = "Additional comments";
 
-"Text.FeedbackView.app" = "How easy did you find using the app?";
+"kh_uisdk_question_four" = "How easy did you find using the app?";
 
-"Text.FeedbackView.pob" = "How was your experience whilst in the taxi (e.g. taxi cleanliness, routing and driver)? How easy did you find using the app?";
+"kh_uisdk_question_three" = "How was your experience whilst in the taxi (e.g. taxi cleanliness, routing and driver)? How easy did you find using the app?";
 
-"Text.FeedbackView.pre_pob" = "How was your experience with finding the pick-up location and meeting your driver?";
+"kh_uisdk_question_two" = "How was your experience with finding the pick-up location and meeting your driver?";
 
 /* FeedBackView */
-"Text.FeedbackView.quote" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
+"kh_uisdk_question_one" = "How happy were you with the selection of quotes for your trip (e.g. Fleets, Prices and ETAs)?";
 
-"Text.FleetCapabilities.DriverDetails" = "Driver Details";
+"kh_uisdk_filter_driver_details" = "Driver Details";
 
-"Text.FleetCapabilities.FlightTracking" = "Flight Tracking";
+"kh_uisdk_filter_vehicle_details" = "Vehicle Details";
 
-"Text.FleetCapabilities.GpsTracking" = "GPS Tracking";
+"kh_uisdk_back" = "Back";
 
-"Text.FleetCapabilities.TrainTracking" = "Train Tracking";
-
-"Text.FleetCapabilities.VehicleDetails" = "Vehicle Details";
-
-"Text.Generic.Back" = "Back";
-
-"Text.Generic.Bookings" = "Bookings";
+"kh_uisdk_bookings" = "Bookings";
 
 /* Localizable.strings,  Karhoo, ,  Copyright © 2020 Karhoo. All rights reserved.,  Generics */
-"Text.Generic.Cancel" = "Cancel";
+"kh_uisdk_cancel" = "Cancel";
 
 /* English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking */
-"Text.Generic.CancellationPolicy" = "Cancellation Policy";
+"kh_uisdk_label_fleet_cancellation_policy" = "Cancellation Policy";
 
 /* english "Card" (referring to payment card) */
-"Text.Generic.Card" = "Card";
+"kh_uisdk_card" = "Card";
 
-"Text.Generic.Checked" = "Checked";
+"kh_uisdk_checked" = "Checked";
 
-"Text.Generic.Checkout" = "Checkout";
+"kh_uisdk_booking_checkout_title" = "Checkout";
 
 "Text.Generic.Close" = "Close";
 
-"Text.Generic.Comment" = "Comment";
+"kh_uisdk_additional_comments" = "Additional comments (Child seat, wheelchair, etc.)";
 
-"Text.Generic.Comment.Optional" = "Additional comments (Child seat, wheelchair, etc.)";
-
-/* "Completed" */
-"Text.Generic.Completed" = "Completed";
-
-"Text.Generic.Destination" = "Destination";
+"kh_uisdk_address_picker_destination_title" = "Destination";
 
 /* "Edit" used as a button (call to action) */
-"Text.Generic.Edit" = "Edit";
+"kh_uisdk_edit" = "Edit";
 
-"Text.Generic.Email" = "Email address";
-
-"Text.Generic.EPrice" = "Estimated price";
-
-"Text.Generic.Error" = "Error";
-
-"Text.Generic.ErrorMessage" = "Oops something went wrong";
+"kh_uisdk_error" = "Error";
 
 /* English: "Estimated" */
-"Text.Generic.Estimated" = "Estimated price";
+"kh_uisdk_estimated_fare" = "Estimated price";
 
-"Text.Generic.ETALong" = "Estimated arrival time";
+"kh_uisdk_estimated_arrival_time" = "Estimated arrival time";
 
 /* Reference to fixed pricing.. English equivalent: "Fixed" */
-"Text.Generic.Fixed" = "Fixed price";
+"kh_uisdk_fixed_fare" = "Fixed price";
 
 /* "Got It" (generally used on alert buttons) */
-"Text.Generic.GotIt" = "Got It";
+"kh_uisdk_got_it" = "Got It";
 
-"Text.Generic.Locale" = "en_GB";
+"kh_uisdk_locale" = "en_GB";
 
-"Text.Generic.MeetGreet" = "Meet and greet";
+"kh_uisdk_pickup_type_meet_and_greet" = "Meet and greet";
 
 /* Metered fare type displayed in quotes list: English: "Metered" */
-"Text.Generic.Metered" = "Metered price";
+"kh_uisdk_metered" = "Metered";
 
-"Text.Generic.Minutes" = "min";
+"kh_uisdk_min" = "min";
 
-"Text.Generic.Name" = "Name";
+"kh_uisdk_no" = "No";
 
-"Text.Generic.No" = "No";
-
-"Text.Generic.NoCarsAvailable" = "Unfortunately, no cars are available for your ride at this time.\n\n Please check again soon";
+"kh_uisdk_noCarsAvailable" = "Unfortunately, no cars are available for your ride at this time.\n\n Please check again soon";
 
 /* The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device" */
-"Text.Generic.NoEmailSetupError" = "Please set up a mail account on your device";
+"kh_uisdk_noEmailSetupError" = "Please set up a mail account on your device";
 
-"Text.Generic.Ok" = "OK";
+"kh_uisdk_ok" = "OK";
 
-"Text.Generic.Or" = "OR";
+"kh_uisdk_loyalty_separator" = "OR";
 
 /* "Payment" used as a button in the side menu to reach all your payment methods */
-"Text.Generic.Payment" = "Payment";
+"kh_uisdk_payment" = "Payment";
 
 /* "Payments" used as the title of the payment method screen */
-"Text.Generic.Payments" = "Payments";
+"kh_uisdk_payments" = "Payments";
 
-"Text.Generic.PhoneNumber" = "Phone number";
-
-"Text.Generic.Pickup" = "Pickup";
+"kh_uisdk_address_picker_pickup_title" = "Pickup";
 
 /* English: "Pickup Time" in booking request screen */
-"Text.Generic.PickupTime" = "Pickup time";
+"kh_uisdk_pickup_time" = "Pickup time";
 
-"Text.Generic.Prebook" = "Book";
+"kh_uisdk_address_picker_prebook" = "Book";
 
-"Text.Generic.Price" = "Price";
+"kh_uisdk_price" = "Price";
 
-"Text.Generic.PrivacyPolicy" = "Privacy Policy";
+"kh_uisdk_karhoo_privacy_policy" = "Privacy Policy";
 
-"Text.Generic.Register" = "Register";
+"kh_uisdk_register" = "Register";
 
 /* english: "creating your Karhoo account". Used in terms conditions construction */
-"Text.Generic.RegisterAccountAction" = "creating your Karhoo account";
+"kh_uisdk_terms_and_conditions_registerAccountAction" = "creating your Karhoo account";
 
 /* English: "Report Issue" */
-"Text.Generic.ReportIssue" = "Report issue";
+"kh_uisdk_report_issue" = "Report issue";
 
 /* String for when trip is initially loaded and no trip state has yet come through. "Requesting" */
-"Text.Generic.Requesting" = "Requesting";
+"kh_uisdk_requesting" = "Requesting";
 
 /* used in side menu "Rides" */
-"Text.Generic.Rides" = "Rides";
+"kh_uisdk_rides" = "Rides";
 
 /* "Save" used as a button (call to action) */
-"Text.Generic.Save" = "Save";
+"kh_uisdk_save" = "Save";
 
-"Text.Generic.SortBy" = "Sort By";
+"kh_uisdk_sort_by" = "Sort By";
 
 /* english: "status" */
-"Text.Generic.Status" = "Status";
+"kh_uisdk_status" = "Status";
 
-"Text.Generic.Submit" = "Submit";
+"kh_uisdk_submit" = "Submit";
 
-"Text.Generic.Surname" = "Surname";
+"kh_uisdk_label_fleet_terms_and_conditions" = "Terms and Conditions";
 
-"Text.Generic.TermsConditions" = "Terms and Conditions";
-
-"Text.Generic.TermsOfUse" = "Terms of Use";
+"kh_uisdk_booking_terms_and_conditions" = "Terms of Use";
 
 /* "Thanks for your interest" */
-"Text.Generic.Thanks" = "Thanks for your interest";
+"kh_uisdk_thanks" = "Thanks for your interest";
 
 /* "Driver Allocation Delay Title" */
-"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "It is taking longer than usual for the fleet to allocate a driver. Please wait, contact the fleet, or cancel and rebook with a different fleet.";
+"kh_uisdk_allocation_delay_text" = "It is taking longer than usual for the fleet to allocate a driver. Please wait, contact the fleet, or cancel and rebook with a different fleet.";
 
 /* "Driver Allocation Delay Title" */
-"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Allocation delay";
+"kh_uisdk_allocation_delay_title" = "Allocation delay";
 
-"Text.Generic.Unchecked" = "Unchecked";
+"kh_uisdk_unchecked" = "Unchecked";
 
-/* "Unkown" */
-"Text.Generic.Unknown" = "Unknown";
-
-"Text.Generic.Yes" = "Yes";
+"kh_uisdk_yes" = "Yes";
 
 /* Driver Arrived */
-"Text.GenericTripStatus.Arrived" = "Driver Arrived";
+"kh_uisdk_ride_state_arrived" = "Driver Arrived";
 
 /* "Cancelled" */
-"Text.GenericTripStatus.Cancelled" = "Cancelled";
+"kh_uisdk_ride_state_cancelled" = "Cancelled";
 
 /* "Completed" (trip completed) */
-"Text.GenericTripStatus.Completed" = "Completed";
+"kh_uisdk_ride_state_completed" = "Completed";
 
 /* Confirmed */
-"Text.GenericTripStatus.Confirmed" = "Confirmed";
+"kh_uisdk_ride_state_confirmed" = "Confirmed";
 
 /* "Driver En Route" when a driver is en route */
-"Text.GenericTripStatus.EnRoute" = "Driver En Route";
-
-/* "Incomplete" */
-"Text.GenericTripStatus.Incomplete" = "Pending State";
+"kh_uisdk_ride_state_der" = "Driver En Route";
 
 /* "On Board" */
-"Text.GenericTripStatus.PassengerOnBoard" = "On Board";
+"kh_uisdk_ride_state_pob" = "On Board";
 
 /* english: requested */
-"Text.GenericTripStatus.Requested" = "Requested";
+"kh_uisdk_ride_state_requested" = "Requested";
 
-"Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
+"kh_uisdk_Q0001" = "Pick up and destination cannot be the same.";
 
-"Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
+"kh_uisdk_loyalty_balance_title" = "BALANCE: %1$@ POINTS";
 
-"Text.KarhooError.Q0001" = "Pick up and destination cannot be the same.";
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "You are not allowed to burn points";
 
-"Text.Loyalty.BalanceTitle" = "BALANCE: %1$@ POINTS";
+"kh_uisdk_loyalty_use_points_off_subtitle" = "You can enable your loyalty points to pay for the ride";
 
-"Text.Loyalty.BurnNotAllowed" = "You are not allowed to burn points";
+"kh_uisdk_loyalty_use_points_on_subtitle_ios" = "Pay %1$@ %2$@ with %3$@ loyalty points";
 
-"Text.Loyalty.BurnOffSubtitle" = "You can enable your loyalty points to pay for the ride";
+"kh_uisdk_loyalty_use_points_title" = "Use your points";
 
-"Text.Loyalty.BurnOnSubtitle" = "Pay %1$@ %2$@ with %3$@ loyalty points";
+"kh_uisdk_loyalty_info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
 
-"Text.Loyalty.BurnTitle" = "Use your points";
+"kh_uisdk_loyalty_points_earned_for_trip_ios" = "%1$@ loyalty points will be added to your account balance at the end of the ride";
 
-"Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
-
-"Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyalty points will be added to your account balance at the end of the ride";
-
-"Text.Loyalty.Title" = "Loyalty points";
+"kh_uisdk_loyalty_title" = "Loyalty points";
 
 /* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
-"Text.Payment.AddPaymentMethod" = "Add Payment";
-
-"Text.Payment.PaymentMethod" = "Card";
+"kh_uisdk_booking_checkout_add_payment_method" = "Add Payment";
 
 /* Prebook */
-"Text.Prebook.PrebookPickupTime" = "Prebook Pickup Time";
+"kh_uisdk_prebookPickerTitle" = "Prebook Pickup Time";
 
-"Text.Prebook.SetPrebook" = "Set Pickup Time";
+"kh_uisdk_setPrebookTime" = "Set Pickup Time";
 
 /* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
-"Text.Prebook.TimezoneMessage" = "Booking will be made in local time of pickup (%1$@)";
+"kh_uisdk_prebook_timezone_title" = "Booking will be made in local time of pickup (%1$@)";
 
-"Text.Quote.FeesAndTaxesIncluded" = "Taxes and Fees Included";
+"Tkh_uisdk_fees_and_taxes_included" = "Taxes and Fees Included";
 
-"Text.Quote.FreeCancellation" = "Free cancelation";
+"kh_uisdk_filter_free_cancellation" = "Free cancelation";
 
-"Text.Quote.FreeCancellationAndKeyword" = "and";
+"kh_uisdk_quote_cancellation_and_keyword" = "and";
 
-"Text.Quote.FreeCancellationASAP" = "Free cancellation up to %1$@ after booking";
+"kh_uisdk_freeCancellationASAP_ios" = "Free cancellation up to %1$@ after booking";
 
-"Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Free cancellation until the driver is en route";
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Free cancellation until the driver is en route";
 
 /* Cancellation info on quotes */
-"Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "Free cancellation up to %1$@ before pickup";
 
-"Text.Quote.FreeWaitingTime" = "Free waiting time";
+"kh_uisdk_filter_free_waiting_time" = "Free waiting time";
 
-"Text.QuoteCategory.Electric" = "Electric";
+"kh_uisdk_electric" = "Electric";
 
-"Text.QuoteCategory.Exec" = "Exec";
+"kh_uisdk_exec" = "Exec";
 
-"Text.QuoteCategory.Executive" = "Executive";
+"kh_uisdk_filter_executive" = "Executive";
 
-"Text.QuoteCategory.Moto" = "Moto";
+"kh_uisdk_moto" = "Moto";
 
-"Text.QuoteCategory.Motorcycle" = "Motorcycle";
+"kh_uisdk_mpv" = "MPV";
 
-"Text.QuoteCategory.MPV" = "MPV";
+"kh_uisdk_saloon" = "Saloon";
 
-"Text.QuoteCategory.Saloon" = "Saloon";
+"kh_uisdk_vehicle_standard" = "Standard";
 
-"Text.QuoteCategory.Taxi" = "Taxi";
+"kh_uisdk_taxi" = "Taxi";
 
-"Text.QuoteCell.Details" = "Details";
+"kh_uisdk_quoteCell_details" = "Details";
 
-"Text.QuoteCell.DriverArrival" = "Driver arrival";
+"kh_uisdk_driver_arrival" = "Driver arrival";
 
-"Text.Quotes.DriverArrivalTime" = "Driver arrival time";
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Please enter both pickup and dropoff addresses to access the offers.";
 
-"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Please enter both pickup and dropoff addresses to access the offers.";
+"kh_uisdk_quotes_error_missing_addresses_title" = "Pick-up or Drop-off address is missing.";
 
-"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Pick-up or Drop-off address is missing.";
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Please choose a different time.";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Please choose a different time.";
+"kh_uisdk_quotes_error_no_availability_title" = "No availability for the request time.";
 
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "No availability for the request time.";
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ to suggest new fleets";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ to suggest new fleets";
+"kh_uisdk_contact_us" = "Contact us";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Contact us";
+"kh_uisdk_quotes_error_no_coverage_title" = "No fleets in this area yet";
 
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "No fleets in this area yet";
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Please change your filter selection.";
 
-"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Please change your filter selection.";
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "No results after filtering.";
 
-"Text.Quotes.ErrorNoResultsForFilterTitle" = "No results after filtering.";
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Please change one of the addresses to access the quotes";
 
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Please change one of the addresses to access the quotes";
+"kh_uisdk_quotes_error_similar_addresses_title" = "Pick-up and drop-off addresses are similar";
 
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Pick-up and drop-off addresses are similar";
+"kh_uisdk_filter" = "Filter";
 
-"Text.Quotes.Filter" = "Filter";
+"kh_uisdk_filter_eco_friendly" = "Eco-friendly";
 
-"Text.Quotes.FilterEcoFriendly" = "Eco-friendly";
+"kh_uisdk_filter_fleet_capabilities" = "Fleet capabilities";
 
-"Text.Quotes.FilterFleetCapabilities" = "Fleet capabilities";
+"kh_uisdk_filter_page_results_ios" = "View %1$@ results";
 
-"Text.Quotes.FilterPageResults" = "View %1$@ results";
+"kh_uisdk_filter_quote_types" = "Quote types";
 
-"Text.Quotes.FilterQuoteTypes" = "Quote types";
+"kh_uisdk_filter_cancellation_and_waiting_time" = "Cancellation and waiting time";
 
-"Text.Quotes.FilterServiceAgreements" = "Cancelation and waiting time";
+"kh_uisdk_filter_luggages" = "Luggage(s)";
 
-"Text.Quotes.FiltersLuggages" = "Luggage(s)";
+"kh_uisdk_filter_passengers" = "Passanger(s)";
 
-"Text.Quotes.FiltersPassengers" = "Passanger(s)";
+"kh_uisdk_filter_vehicle_class" = "Vehicle class";
 
-"Text.Quotes.FilterVehicleClass" = "Vehicle class";
+"kh_uisdk_filter_vehicle_extras" = "Vehicle extras";
 
-"Text.Quotes.FilterVehicleExtras" = "Vehicle extras";
+"kh_uisdk_filter_vehicle_types" = "Vehicle types";
 
-"Text.Quotes.FilterVehicleType" = "Vehicle types";
+"kh_uisdk_reset_filter" = "Reset filters";
 
-"Text.Quotes.ResetFilter" = "Reset filters";
+"kh_uisdk_result_ios" = "%1$@ result(s)";
 
-"Text.Quotes.Result" = "%1$@ result(s)";
-
-"Text.Quotes.Results" = "%1$@ results";
+"kh_uisdk_results_ios" = "%1$@ results";
 
 /* Side Menu "About" section title, Fuzzy */
-"Text.SideMenu.About" = "About";
+"kh_uisdk_about" = "About";
 
-"Text.SideMenu.Feedback" = "Feedback";
+"kh_uisdk_feedback" = "Feedback";
 
-"Text.SideMenu.Help" = "Help";
+"kh_uisdk_help" = "Help";
 
 /* "Profile" button on the side menu */
-"Text.SideMenu.Profile" = "Profile";
+"kh_uisdk_profile" = "Profile";
 
-/* Register on the side menu */
-"Text.SideMenu.Register" = "Register";
-
-"Text.SideMenu.SignIn" = "Sign in";
+"kh_uisdk_sign_in" = "Sign in";
 
 /* Sign Out on the side menu */
-"Text.SideMenu.SignOut" = "Sign out";
+"kh_uisdk_sign_out" = "Sign out";
 
 /* In app email to customer support / feedback */
-"Text.SupportMailMessage.Feedback" = "Please do not delete this information as it helps us improve the app.";
+"kh_uisdk_email_info" = "Please do not delete this information as it helps us improve the app.";
 
-"Text.SupportMailMessage.FeedbackEmail" = "support@karhoo.com";
+"kh_uisdk_feedback_email" = "support@karhoo.com";
 
-"Text.SupportMailMessage.FeedbackSubject" = "Feedback";
+"kh_uisdk_feedback_title" = "Please, tell us more about your trip";
 
-"Text.SupportMailMessage.NoCoverageBody" = "Thank you for recommending a fleet in your area. To get coverage in your area as fast as possible, please provide us with area and the name of transportation company.\n Area:\n Fleet time:";
+"kh_uisdk_fleet_recommendation_body" = "Thank you for recommending a fleet in your area. To get coverage in your area as fast as possible, please provide us with area and the name of transportation company.\n Area:\n Fleet time:";
 
 /* No coverage email */
-"Text.SupportMailMessage.NoCoverageSubject" = "Fleet recommendation";
+"kh_uisdk_fleet_recommendation_subject" = "Fleet recommendation";
 
-"Text.SupportMailMessage.ReportIssue" = "Please use the space below to report a specific issue with your ride.";
+"kh_uisdk_email_report_issue_message" = "Please use the space below to report a specific issue with your ride.";
 
 "Text.SupportMailMessage.ReportIssueSubject" = "Report Issue";
 
-"Text.SupportMailMessage.SupplierEmail" = "suppliers@karhoo.com";
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
 
-"Text.SupportMailMessage.SupportEmail" = "support@karhoo.com";
+"kh_uisdk_support_email" = "support@karhoo.com";
 
 /* Used in the checkout component before booking a ride */
-"Text.TermsConditions.BookingFullString" = "By making a booking you agree to the %1$@ | %2$@ and %3$@ %4$@ | %3$@ %5$@.";
+"kh_uisdk_booking_terms_ios" = "By making a booking you agree to the %1$@ | %2$@ and %3$@ %4$@ | %3$@ %5$@.";
 
-"Text.TermsConditions.FullString" = "By %1$@, you're agreeing to %2$@'s \n %3$@   |   %4$@";
+"kh_uisdk_termsConditionFullString" = "By %1$@, you're agreeing to %2$@'s \n %3$@   |   %4$@";
 
-"Text.TermsConditions.KarhooPolicyLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
 
-"Text.TermsConditions.KarhooTermsLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
 
-"Text.TermsConditions.PolicyLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
-
-"Text.TermsConditions.TermsLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
-
-"Text.TrackingLink.production" = "https://agent-portal.karhoo.com/follow/";
+"kh_uisdk_productionLink" = "https://agent-portal.karhoo.com/follow/";
 
 /* Trip Tracking Links */
-"Text.TrackingLink.sandbox" = "https://agent-portal.sandbox.karhoo.com/follow/";
+"kh_uisdk_sandboxLink" = "https://agent-portal.sandbox.karhoo.com/follow/";
 
-"Text.TrackingLink.staging" = "https://agent-portal.stg.karhoo.net/follow/";
+"kh_uisdk_stagingLink" = "https://agent-portal.stg.karhoo.net/follow/";
 
-"Text.Trip.ActivityIndicator.Cancelling" = "Cancelling";
+"kh_uisdk_cancelling_ride" = "Cancelling";
 
 /* "Arrival" displayed on arrival box in trip */
-"Text.Trip.Arrival" = "Arrival";
+"kh_uisdk_arrival" = "Arrival";
 
-"Text.Trip.CallDriver" = "Contact Driver";
+"kh_uisdk_contact_driver" = "Contact Driver";
 
-/* Call fleet button in trip screen (English: Call Fleet) */
-"Text.Trip.CallFleet" = "Call Fleet";
+"kh_uisdk_cancel_your_ride" = "Cancel your ride?";
 
-"Text.Trip.CancelBookingConfirmation.Alert.Title" = "Cancel your ride?";
+"kh_uisdk_contact_fleet" = "Contact Fleet";
 
-"Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Call Fleet";
+"kh_uisdk_difficulties_cancelling_message" = "We are experiencing issues cancelling your ride. Please contact the fleet.";
 
-"Text.Trip.CancelBookingFailed.AlertMessage" = "We are experiencing issues cancelling your ride. Please contact the fleet.";
+"kh_uisdk_difficulties_cancelling_title" = "Difficulties Cancelling";
 
-"Text.Trip.CancelBookingFailed.AlertTitle" = "Difficulties Cancelling";
+"kh_uisdk_tripStatusCancelledByDispatch" = "Your booking has been cancelled.";
 
-"Text.Trip.CancelledByDispatch" = "Your booking has been cancelled.";
-
-"Text.Trip.CancelledByDispatch.AlertMessage" = "Your booking has been cancelled. Please contact us for more information.";
+"kh_uisdk_tripCancelledByDispatchAlertMessage" = "Your booking has been cancelled. Please contact us for more information.";
 
 "Text.Trip.CancelledByDispatch.AlertTitle" = "Cancelled by fleet";
 
-"Text.Trip.CancelledByUser" = "You cancelled the booking";
+"kh_uisdk_tripStatusCancelledByUser" = "You cancelled the booking";
 
 /* Trip */
-"Text.Trip.CancelRide" = "Cancel Ride";
+"kh_uisdk_cancel_ride" = "Cancel Ride";
 
-"Text.Trip.Completed" = "You've reached your destination";
+"kh_uisdk_tripStatusCompleted" = "You've reached your destination";
 
-"Text.Trip.Confirmed" = "Your booking has been accepted.\nWaiting for a driver to be allocated.";
+"kh_uisdk_tripStatusConfirmed" = "Your booking has been accepted.\nWaiting for a driver to be allocated.";
 
-"Text.Trip.DriverArrived" = "Your driver has arrived!";
+"kh_uisdk_tripStatusDriverArrived" = "Your driver has arrived!";
 
-"Text.Trip.DriverEnRoute" = "Your driver is en route";
+"kh_uisdk_tripStatusDriverEnRoute" = "Your driver is en route";
 
 /* alert message when karhoo cancel the trip-supposedly happens for preauth failure */
-"Text.Trip.KarhooCancelled.AlertMessage" = "There was a problem making this booking. Please try again or contact support.";
+"kh_uisdk_karhooCancelledAlertMessage" = "There was a problem making this booking. Please try again or contact support.";
 
 /* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
-"Text.Trip.KarhooCancelled.AlertTitle" = "Problem Booking";
+"kh_uisdk_karhooCancelledAlertTitle" = "Problem Booking";
 
 /* Alert message in popup when dispatch cancels due to no drivers */
-"Text.Trip.NoDriversAvailable.AlertMessage" = "Sorry, demand is high. %1$@ currently has no available drivers.";
+"kh_uisdk_booking_failed_body_ios" = "Sorry, demand is high. %1$@ currently has no available drivers.";
 
 /* Popup title message when dispatch cancels due to no drivers */
-"Text.Trip.NoDriversAvailable.AlertTitle" = "Booking Failed";
+"kh_uisdk_booking_failed" = "Booking Failed";
 
-"Text.Trip.PassengerOnBoard" = "You're on your way. Have a safe ride!";
+"kh_uisdk_pass_on_board" = "You're on your way. Have a safe ride!";
 
 /* Trip Statuses */
-"Text.Trip.Requested" = "%1$@ is allocating you a driver. This could take up to 5 minutes.";
+"kh_uisdk_tripStatusRequested" = "%1$@ is allocating you a driver. This could take up to 5 minutes.";
 
 /* Used as a button in the trip screen. English: "Ride Options" */
-"Text.Trip.RideOptions" = "Ride Options";
+"kh_uisdk_tripRideOptions" = "Ride Options";
 
 /* Please wait whilst you\'re allocated a driver */
-"Text.TripAllocation.AllocatingTripOne" = "Please wait whilst you\'re allocated a driver";
+"kh_uisdk_allocating_trip_one" = "Please wait whilst you\'re allocated a driver";
 
 /* This may take a moment or two */
-"Text.TripAllocation.AllocatingTripTwo" = "This may take a moment or two";
+"kh_uisdk_allocating_trip_two" = "This may take a moment or two";
 
-"Text.TripAllocation.CancelInstruction" = "Tap and hold to cancel";
+"kh_uisdk_cancelling" = "Tap and hold to cancel";
 
-"Text.TripAllocation.Cancelling" = "Cancelling";
+"kh_uisdk_cancelling_ride" = "Cancelling ride";
 
 /* Finding your ride... */
-"Text.TripAllocation.FindingYourRide" = "Finding your ride...";
+"kh_uisdk_finding_your_ride" = "Finding your ride...";
 
 /* Trip Rating */
-"Text.TripRating.Confirmation" = "Thank you for submitting your Rating.";
+"kh_uisdk_rating_submitted" = "Thank you for submitting your Rating.";
 
-"Text.TripRating.ExtraFeedback" = "Tell us more";
+"kh_uisdk_feedback_title" = "Please, tell us more about your trip";
 
-"Text.TripRating.Title" = "How would you rate your trip?";
+"kh_uisdk_rate_trip_label" = "How would you rate your trip?";
 
 /* Used for the "Book Return Ride" button on the trip summary screen */
-"Text.TripSummary.BookReturnRide" = "Book Return Ride";
+"kh_uisdk_bookReturnRide" = "Book Return Ride";
 
 /* "Date" */
-"Text.TripSummary.Date" = "Date";
+"kh_uisdk_date" = "Date";
 
 /* Fleet */
-"Text.TripSummary.Fleet" = "Fleet";
+"kh_uisdk_fleet" = "Fleet";
 
 /* "Payment Summary" header used on Trip Summary Screen */
-"Text.TripSummary.PaymentSummary" = "Payment Summary";
+"kh_uisdk_paymentSummary" = "Payment Summary";
 
 /* "Quoted Price": used in trip summary screen when the fare is not available */
-"Text.TripSummary.QuotedPrice" = "Quoted Price";
+"kh_uisdk_quotedPrice" = "Quoted Price";
 
 /* Total Fare */
-"Text.TripSummary.TotalFare" = "Total Fare";
+"kh_uisdk_totalFare" = "Total Fare";
 
 /* "Trip Summary" header used on screen */
-"Text.TripSummary.TripSummary" = "Ride Summary";
+"kh_uisdk_tripSummary" = "Ride Summary";
 
-"Text.TripSummary.Vehicle" = "Vehicle";
+"kh_uisdk_vehicle" = "Vehicle";
 
-"Text.User.Email" = "Email";
+"kh_uisdk_email_hint" = "Email";
 
-"Text.User.EmailSubscription" = "I do not wish to receive free rides, promos or offers";
+"kh_uisdk_signupEmailSubscribeCopy" = "I do not wish to receive free rides, promos or offers";
 
 /* User (register / login / user attributes) */
-"Text.User.FirstName" = "First name";
+"kh_uisdk_first_name_hint" = "First name";
 
 /* Text used on button to trigger password reset... English: Forgotten Password? */
-"Text.User.ForgottenPassword" = "Forgotten password?";
+"kh_uisdk_forgottenPassword" = "Forgotten password?";
 
-"Text.User.LastName" = "Last name";
+"kh_uisdk_last_name_hint" = "Last name";
 
-"Text.User.MobilePhoneNumber" = "Mobile phone number";
+"kh_uisdk_mobile_phone_number_hint" = "Mobile phone number";
 
 /* "We will notify you via email once your request has been processed." */
-"Text.User.SignupPendingMessage" = "We will notify you via email once your request has been processed.";
+"kh_uisdk_signupPendingMessage" = "We will notify you via email once your request has been processed.";
 
-"Text.VehicleClass.Electric" = "Electric";
+"kh_uisdk_filter_luxury" = "Luxury";
 
-"Text.VehicleClass.Exec" = "Exec";
-
-"Text.VehicleClass.Luxury" = "Luxury";
-
-"Text.VehicleClass.Moto" = "Moto";
-
-"Text.VehicleClass.Motorcycle" = "Motorcycle";
-
-"Text.VehicleClass.MPV" = "MPV";
-
-"Text.VehicleClass.Saloon" = "Saloon";
-
-"Text.VehicleClass.Taxi" = "Taxi";
-
-"Text.VehicleTag.ChildSeat" = "Child Seat";
+"kh_uisdk_filter_child_seat" = "Child Seat";
 
 /* Vehicle tags */
 "Text.VehicleTag.Electric" = "Electric";
 
-"Text.VehicleTag.Executive" = "Executive";
+"kh_uisdk_filter_hybrid" = "Hybrid";
 
-"Text.VehicleTag.Hybrid" = "Hybrid";
+"kh_uisdk_filter_wheelchair" = "Wheelchair Accessible";
 
-"Text.VehicleTag.Luxury" = "Luxury";
-
-"Text.VehicleTag.Taxi" = "Taxi";
-
-"Text.VehicleTag.Wheelchair" = "Wheelchair Accessible";
-
-"Text.VehicleType.Bus" = "Bus";
-
-"Text.VehicleType.Moto" = "Motorcycle";
-
-"Text.VehicleType.MPV" = "MPV";
-
-"Text.VehicleType.Standard" = "Saloon";
+"kh_uisdk_vehicle_bus" = "Bus";
 

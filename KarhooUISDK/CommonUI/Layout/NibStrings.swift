@@ -100,7 +100,7 @@ final class NibStrings: UIView {
         setValue(UITexts.Generic.close, forKeyPath: "navBarCloseButton.title")
         setValue(UITexts.Generic.bookings, forKeyPath: "navBarBookingsButton.title")
         setValue(UITexts.Generic.payments, forKeyPath: "navBarTitlePayments.topItem.title")
-        setValue(UITexts.Generic.prebook, forKeyPath: "addressBarPrebookLabel.text")
+        setValue(UITexts.AddressBar.prebook, forKeyPath: "addressBarPrebookLabel.text")
 
         setValue(UITexts.User.signupEmailSubscribeCopy, forKeyPath: "registerEmailSubscriptionLabel.text")
 

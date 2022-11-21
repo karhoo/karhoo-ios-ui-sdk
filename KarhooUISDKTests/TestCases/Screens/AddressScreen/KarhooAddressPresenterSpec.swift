@@ -69,7 +69,7 @@ class KarhooAddressPresenterSpec: KarhooTestCase {
         testObject.set(view: mockAddressView)
         testObject.viewWillShow()
 
-        XCTAssertEqual(mockAddressView.titleString, UITexts.Generic.destination)
+        XCTAssertEqual(mockAddressView.titleString, UITexts.AddressBar.destinationTitle)
         XCTAssertEqual(mockAddressView.mapPickerIconSet, .mapDropOff)
         XCTAssertTrue(mockAddressSearchProvider.fetchDefaultValuesCalled)
         XCTAssertTrue(mockAddressView.focusInputFieldCalled)
@@ -91,7 +91,7 @@ class KarhooAddressPresenterSpec: KarhooTestCase {
         pickupInput.set(view: mockAddressView)
         pickupInput.viewWillShow()
 
-        XCTAssert(mockAddressView.titleString == UITexts.Generic.pickup)
+        XCTAssert(mockAddressView.titleString == UITexts.AddressBar.pickupTitle)
         XCTAssertEqual(mockAddressView.mapPickerIconSet, .mapPickUp)
 
     }
