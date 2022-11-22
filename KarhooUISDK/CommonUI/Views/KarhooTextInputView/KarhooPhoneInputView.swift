@@ -80,7 +80,7 @@ class KarhooPhoneInputView: UIView {
         label.accessibilityIdentifier = KHPhoneInputViewIdentifiers.titleLabel
         label.text = contentType.titleText
         label.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        label.tintColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         return label
     }()
     
@@ -318,6 +318,10 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
         
         textView.text = value
         textView.textColor = KarhooUI.colors.primaryTextColor
+    }
+    
+    func setBackgroundColor(_ color: UIColor) {
+        textView.backgroundColor = color
     }
 
     func dismissKeyboard() {

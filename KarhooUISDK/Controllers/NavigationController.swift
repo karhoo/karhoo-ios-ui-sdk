@@ -66,6 +66,9 @@ final class NavigationController: UINavigationController {
     }
 
     private func setupDesign() {
+        let barButtonItemAppearance = UIBarButtonItem.appearance()
+        barButtonItemAppearance.setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
+
         let backArrow = UIImage.uisdkImage("kh_uisdk_back_arrow")
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(style.tintColor)
