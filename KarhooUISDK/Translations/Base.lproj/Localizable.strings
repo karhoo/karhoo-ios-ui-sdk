@@ -917,3 +917,16 @@
 
 "Text.VehicleType.Standard" = "Saloon";
 
+/* Error messages for codes kp006 to kp0011 and messages in another languages will appear automatically in localizable.strings
+ files when we pull strings from common project for the first time
+ */
+
+"kh_uisdk_KP001" = "Unable to decode request body";
+
+"kh_uisdk_KP002" = "Primary org for user is not UUID";
+
+"kh_uisdk_KP003" = "Missing supply partner ID";
+
+"kh_uisdk_KP004" = "UserID is not UUID";
+
+"kh_uisdk_KP005" = "Browser information must be defined to enforce 3DS";
