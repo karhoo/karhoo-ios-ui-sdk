@@ -50,27 +50,33 @@ extension BookingConfirmationViewModel {
 }
 
 class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
-    var iconName: String
+    var iconName: String = ""
     var journeyDetails: JourneyDetails
     var quote: Quote
     var shouldShowLoyalty: Bool
     private var callback: () -> Void
     
     init(
-        iconName: String,
         journeyDetails: JourneyDetails,
         quote: Quote,
         shouldShowLoyalty: Bool,
+        vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         callback: @escaping () -> Void
     ) {
-        self.iconName = iconName
         self.journeyDetails = journeyDetails
         self.quote = quote
         self.shouldShowLoyalty = shouldShowLoyalty
         self.callback = callback
+        getImageUrl(for: quote, with: vehicleRuleProvider)
     }
     
     func dismiss() {
         callback()
+    }
+    
+    private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
+        provider.getRule(for: quote) { [weak self] rule in
+            self?.iconName = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+        }
     }
 }

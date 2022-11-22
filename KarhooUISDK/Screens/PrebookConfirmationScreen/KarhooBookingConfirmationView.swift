@@ -32,10 +32,10 @@ struct KarhooBookingConfirmationView: View {
             HStack {
                 VStack {
                     Text(viewModel.printedTime)
-                        .bold()
-                        .font(.title)
+                        .font(Font(KarhooUI.fonts.titleBold()))
+                    
                     Text(viewModel.printedDate)
-                        .font(.subheadline)
+                        .font(Font(KarhooUI.fonts.bodyRegular()))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 
@@ -45,10 +45,10 @@ struct KarhooBookingConfirmationView: View {
                     
                 VStack {
                     Text(viewModel.printedPrice)
-                        .bold()
-                        .font(.title)
+                        .font(Font(KarhooUI.fonts.titleBold()))
+                    
                     Text(viewModel.printedPriceType)
-                        .font(.subheadline)
+                        .font(Font(KarhooUI.fonts.bodyRegular()))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
             }
@@ -71,7 +71,6 @@ struct KarhooBookingConfirmationView: View {
 struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
     static var previews: some View {
         KarhooBookingConfirmationView(viewModel: KarhooBookingConfirmationViewModel(
-            iconName: "kh_uisdk_check_circle",
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             shouldShowLoyalty: true,
@@ -88,8 +87,7 @@ struct KarhooMainButton: View {
     var body: some View {
         ZStack {
             Text(title)
-                .font(.headline)
-                .bold()
+                .font(Font(KarhooUI.fonts.headerBold()))
                 .foregroundColor(KarhooUI.colors.white.getColor())
                 
         }

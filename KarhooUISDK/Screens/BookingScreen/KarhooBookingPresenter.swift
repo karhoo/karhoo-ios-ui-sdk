@@ -295,30 +295,39 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Prebook
     func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
-        /** For a later ticket
-         let vm = KarhooBottomSheetViewModel()
-         vm.callback = { result in
-             print("Got a hit")
-             self.dismiss(animated: true)
-         }
+        let masterViewModel = KarhooBottomSheetViewModel(
+            title: UITexts.Booking.prebookConfirmed
+        ) {
+            self.view?.dismiss(animated: true, completion: nil)
+        }
+        
+        let contentViewModel = KarhooBookingConfirmationViewModel(
+            journeyDetails: journeyDetails,
+            quote: quote,
+            shouldShowLoyalty: true
+        ) {
+            //self?.prebookConfirmationCompleted(result: result, trip: trip)
+            print("Show details")
+        }
          
          let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
-         let vc = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: vm) {
-             KarhooBottomSheetChildView2(text: "Some text")
+         let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
+             KarhooBookingConfirmationView(viewModel: contentViewModel)
          }
-         present(vc, animated: true)
-         **/
+        
+        view?.present(sheet, animated: true)
          
-        let prebookConfirmation = prebookConfirmationScreenBuilder
-            .buildPrebookConfirmationScreen(quote: quote,
-                                            journeyDetails: journeyDetails,
-                                            confirmationCallback: { [weak self] result in
-                                                self?.view?.dismiss(animated: true, completion: nil)
-                                                self?.prebookConfirmationCompleted(result: result, trip: trip)
-            })
-
-        prebookConfirmation.modalTransitionStyle = .crossDissolve
-        view?.showAsOverlay(item: prebookConfirmation, animated: true)
+         
+//        let prebookConfirmation = prebookConfirmationScreenBuilder
+//            .buildPrebookConfirmationScreen(quote: quote,
+//                                            journeyDetails: journeyDetails,
+//                                            confirmationCallback: { [weak self] result in
+//                                                self?.view?.dismiss(animated: true, completion: nil)
+//                                                self?.prebookConfirmationCompleted(result: result, trip: trip)
+//            })
+//
+//        prebookConfirmation.modalTransitionStyle = .crossDissolve
+//        view?.showAsOverlay(item: prebookConfirmation, animated: true)
     }
 
     func prebookConfirmationCompleted(result: ScreenResult<PrebookConfirmationAction>, trip: TripInfo) {
