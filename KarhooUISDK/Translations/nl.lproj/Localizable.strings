@@ -644,11 +644,11 @@
 
 "kh_uisdk_mins" = "min";
 
-"kh_uisdk_minutes_plurals.one" = "minuut";
+"kh_uisdk_minutes_plurals.one" = "%d minuut";
 
-"kh_uisdk_minutes_plurals.other" = "minuut";
+"kh_uisdk_minutes_plurals.other" = "%d minuut";
 
-"kh_uisdk_minutes_plurals.zero" = "minuut";
+"kh_uisdk_minutes_plurals.zero" = "%d minuut";
 
 "kh_uisdk_mobile_phone_number_hint" = "Mobiele telefoonnummer";
 
