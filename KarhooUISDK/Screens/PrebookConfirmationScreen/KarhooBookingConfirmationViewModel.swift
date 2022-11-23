@@ -11,7 +11,8 @@ import KarhooSDK
 import SwiftUI
 
 protocol BookingConfirmationViewModel {
-    var iconName: String { get set }
+    var vehicleImageURL: String { get set }
+    var vehicleImagePlaceholder: String { get set }
     var journeyDetails: JourneyDetails { get set }
     var quote: Quote { get set }
     var shouldShowLoyalty: Bool { get set }
@@ -47,10 +48,16 @@ extension BookingConfirmationViewModel {
     var printedPriceType: String {
         quote.quoteType.description
     }
+    
+    var vehicleImagePlaceholder: String {
+        "kh_uisdk_supplier_logo_placeholder"
+    }
 }
 
 class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
-    var iconName: String = ""
+    var vehicleImagePlaceholder: String = "kh_uisdk_supplier_logo_placeholder"
+    
+    var vehicleImageURL: String = ""
     var journeyDetails: JourneyDetails
     var quote: Quote
     var shouldShowLoyalty: Bool
@@ -76,7 +83,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
         provider.getRule(for: quote) { [weak self] rule in
-            self?.iconName = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+            self?.vehicleImageURL = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public final class LoadingImageView: UIView {
 
@@ -76,5 +77,25 @@ public final class LoadingImageView: UIView {
     public func setStandardBorder() {
         layer.borderColor = KarhooUI.colors.darkGrey.withAlphaComponent(0.20).cgColor
         layer.borderWidth = 0.5
+    }
+}
+
+struct RepresentedLoadingImageView: UIViewRepresentable {
+    typealias UIViewType = LoadingImageView
+    
+    var url: String
+    var placeholder: String?
+    
+    init(url: String, placeholder: String? = nil) {
+        self.url = url
+        self.placeholder = placeholder
+    }
+    
+    func makeUIView(context: Context) -> LoadingImageView {
+        return LoadingImageView()
+    }
+    
+    func updateUIView(_ uiView: LoadingImageView, context: Context) {
+        uiView.load(imageURL: url, placeholderImageName: placeholder)
     }
 }
