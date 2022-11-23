@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// View presenting user-friendly information how many poins shall be added/removed to/from Loyalty.
 struct KarhooLoyaltyInformationView: View {
 
     private enum Constants {
@@ -50,7 +51,6 @@ struct KarhooLoyaltyInformationView: View {
         .colorScheme(.light)
     }
 
-    
 }
 
 // MARK: - Preview
