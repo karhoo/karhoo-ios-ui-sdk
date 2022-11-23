@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-authorise";
+"adyen.submitButton" = "AUTHORISE TRANSACTION";
 
-"adyen.submitButton.formatted" = "Pre-authorise %@";
+"adyen.submitButton.formatted" = "AUTHORISE TRANSACTION";
 
 /* English: Error codes */
 "K0001" = "General request error";
@@ -531,7 +531,11 @@
 
 "Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
 
+"Text.Loyalty.PointsAddInfo" = "%@ loyalty points will be added to your account balance at the end of the ride";
+
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyalty points will be added to your account balance at the end of the ride";
+
+"Text.Loyalty.PointsRemovedInfo" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
 
 "Text.Loyalty.Title" = "Loyalty points";
 
@@ -621,7 +625,7 @@
 
 "Text.Quotes.FiltersLuggages" = "Luggage(s)";
 
-"Text.Quotes.FiltersPassengers" = "Passanger(s)";
+"Text.Quotes.FiltersPassengers" = "Passenger(s)";
 
 "Text.Quotes.FilterVehicleClass" = "Vehicle class";
 

@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-autoriseren";
+"adyen.submitButton" = "TRANSACTIE GOEDKEUREN";
 
-"adyen.submitButton.formatted" = "Pre-autoriseren %@";
+"adyen.submitButton.formatted" = "TRANSACTIE GOEDKEUREN";
 
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
@@ -531,7 +531,11 @@
 
 "Text.Loyalty.Info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
 
+"Text.Loyalty.PointsAddInfo" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
+
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyaliteitspunten worden aan het einde van de rit toegevoegd aan uw accountsaldo";
+
+"Text.Loyalty.PointsRemovedInfo" = "%@ loyaliteitspunten worden aan het einde van de rit van uw accountsaldo afgetrokken";
 
 "Text.Loyalty.Title" = "Loyaliteitspunten";
 

@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-autorizzare";
+"adyen.submitButton" = "AUTORIZZA LA TRANSAZIONE";
 
-"adyen.submitButton.formatted" = "Pre-autorizza %@";
+"adyen.submitButton.formatted" = "AUTORIZZA LA TRANSAZIONE";
 
 /* English: Error codes */
 "K0001" = "Errore di richiesta generale";
@@ -531,7 +531,11 @@
 
 "Text.Loyalty.Info" = "La tua carta è necessaria per autorizzare questa transazione nel caso in cui il prezzo finale della corsa superi il tuo saldo punti. Il tuo account non verrà addebitato se i tuoi punti fedeltà coprono l'intero prezzo.";
 
+"Text.Loyalty.PointsAddInfo" = "%@ punti fedeltà verranno aggiunti al saldo del tuo account alla fine della corsa";
+
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ punti fedeltà verranno aggiunti al saldo del tuo account al termine della corsa";
+
+"Text.Loyalty.PointsRemovedInfo" = "%@ punti fedeltà verranno detratti dal saldo del tuo account alla fine della corsa";
 
 "Text.Loyalty.Title" = "Punti fedeltà";
 
