@@ -31,7 +31,7 @@ struct KHLoyaltyViewID {
 final class KarhooLoyaltyView: UIView {
     
     private enum LoyaltyConstants {
-        static let topPaddingWithBalanceVisible : CGFloat = UIConstants.Dimension.View.largeTagHeight / 2
+        static let topPaddingWithBalanceVisible: CGFloat = UIConstants.Dimension.View.largeTagHeight / 2
         static let topPaddingWithNoBalanceVisible: CGFloat = 0
     }
     

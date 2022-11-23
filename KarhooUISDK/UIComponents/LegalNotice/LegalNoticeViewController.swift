@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 public struct KHLegalNoticeViewID {
     public static let view = "legal_notice_view"
     public static let button = "legal_notice_button"
@@ -22,15 +21,14 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     private let shouldShowView = UITexts.Booking.legalNoticeText.isNotEmpty
     private let presenter: LegalNoticePresenter
 
-    
     private lazy var legalNoticeButton: KarhooExpandViewButton = {
         let button = KarhooExpandViewButton(
             title: UITexts.Booking.legalNotice,
             initialMode: .open,
-            onExpand:  { [weak self] in
+            onExpand: { [weak self] in
                 self?.showLegalNoticePressed()
             },
-            onCollapce:{[weak self] in
+            onCollapce: { [weak self] in
                 self?.hideLegalNoticePressed()
             })
         button.accessibilityIdentifier = KHLegalNoticeViewID.button
@@ -51,7 +49,7 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     }()
     
     // MARK: - Init
-    init(presenter: LegalNoticePresenter){
+    init(presenter: LegalNoticePresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
         setUpView()
@@ -92,7 +90,7 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         }
     }
     
-    @objc private func textViewClicked(_ tap : UITapGestureRecognizer) {
+    @objc private func textViewClicked(_ tap: UITapGestureRecognizer) {
         let valueForAttributedLink = "link"
         guard let attributedString = attributedLabel.attributedText else {
             assertionFailure("Atrtributed string for legal notice equal nil")
@@ -101,7 +99,7 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         let attributedText = NSMutableAttributedString(attributedString: attributedString)
         attributedText.addAttributes(
             [NSAttributedString.Key.font: attributedLabel.font as UIFont],
-            range: NSMakeRange(0, attributedText.length)
+            range: NSRange(location: 0, length: attributedText.length)
         )
         // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
         let layoutManager = NSLayoutManager()
@@ -124,18 +122,18 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         let index = layoutManager.characterIndex(for: tapLocation, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         guard let attributedLabelTextCount = attributedLabel.text?.count else { return }
         if index > attributedLabelTextCount { return }
-        var range : NSRange = NSRange()
+        var range: NSRange = NSRange()
         let attributeOfClickedText = attributedLabel.attributedText?.attribute(NSAttributedString.Key(rawValue: "link"), at: index, effectiveRange: &range) as? String
         if attributeOfClickedText ==  valueForAttributedLink {
             presenter.openLink(link: UITexts.Booking.legalNoticeLink, handler: self)
        }
     }
     
-    private func showLegalNoticePressed(){
+    private func showLegalNoticePressed() {
         zeroHeightTextConstreint.isActive = false
     }
     
-    private func hideLegalNoticePressed(){
+    private func hideLegalNoticePressed() {
         zeroHeightTextConstreint.isActive = true
     }
 }

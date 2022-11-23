@@ -11,16 +11,14 @@ import KarhooSDK
 
 extension QuoteCategory {
     var localizedCategoryName: String {
-        get {
-            let value = categoryName.uppercased()
-            
-            guard let enumCase = QuoteCategoryName(rawValue: value)
-            else {
-                return categoryName
-            }
-            
-            return enumCase.title
+        let value = categoryName.uppercased()
+        
+        guard let enumCase = QuoteCategoryName(rawValue: value)
+        else {
+            return categoryName
         }
+        
+        return enumCase.title
     }
 }
 

@@ -253,7 +253,6 @@ final class KarhooTripViewController: UIViewController, TripView {
         tripMapPresenter.focusOnAllPOI()
     }
 
-
     func focusMapOnRoute() {
         tripMapPresenter.focusOnRoute()
     }

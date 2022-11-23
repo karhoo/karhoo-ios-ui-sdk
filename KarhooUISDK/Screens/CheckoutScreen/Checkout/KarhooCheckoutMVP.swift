@@ -49,11 +49,11 @@ protocol CheckoutView: BaseViewController {
 
 extension CheckoutView {
     func getComments() -> String? {
-        return nil
+        nil
     }
     
     func getFlightNumber() -> String? {
-        return nil
+        nil
     }
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {

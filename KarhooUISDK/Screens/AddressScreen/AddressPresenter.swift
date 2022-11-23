@@ -95,8 +95,7 @@ final class KarhooAddressPresenter: AddressPresenter {
                 let recents = recentAddressProvider.getRecents()
                 if let recent = recents.first(where: { $0.placeId == addressViewModel?.placeId }) {
                     locationDetailsSelected(details: recent)
-                }
-                else {
+                } else {
                     handleLocationResponseError(error)
                 }
                     
