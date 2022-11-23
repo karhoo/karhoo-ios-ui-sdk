@@ -456,7 +456,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     
     func didPressPayButton(showRetryAlert: Bool) {
         cardRegistrationFlow.setBaseView(view)
-        reportChangePaymentDetailsPressed()
         
         let currencyCode = quote.price.currencyCode
         let amount = quote.price.intHighPrice
@@ -607,10 +606,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             amount: quote.price.highPrice,
             currency: quote.price.currencyCode
         )
-    }
-    
-    private func reportChangePaymentDetailsPressed() {
-        analytics.changePaymentDetailsPressed()
     }
     
     private func reportCardAuthorisationSuccess() {
