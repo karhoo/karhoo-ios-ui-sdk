@@ -297,7 +297,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             
             view.getLoyaltyNonce { [weak self] result in
                 if let error = result.getErrorValue() {
-                    if error.type == .failedToGenerateNonce {
+                    if error.type == .errMissingBrowserInfo {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                     } else {
                         self?.showLoyaltyNonceError(error: error)
