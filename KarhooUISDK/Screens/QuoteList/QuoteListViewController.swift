@@ -46,7 +46,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.state = .indeterminate
     }
 
-    let infoView = UIHostingController(rootView: KarhooLoyaltyInformationView(mode: .earn, points: 10)).then {
+    let infoView = UIHostingController(rootView: KarhooLoyaltyInformationView(viewModel: .init(mode: .earn, pointsToBeModified: 10))).then {
         $0.view.backgroundColor = .clear
     }
 

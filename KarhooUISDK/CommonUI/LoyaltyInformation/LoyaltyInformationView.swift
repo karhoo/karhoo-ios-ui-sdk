@@ -34,7 +34,7 @@ struct KarhooLoyaltyInformationView: View {
                 .foregroundColor(Color(KarhooUI.colors.primary))
                 .frame(width: Constants.iconSide, height: Constants.iconSide)
             Text(viewModel.text)
-                .font(Font(KarhooUI.fonts.bodyBold()))
+                .font(Font(KarhooUI.fonts.captionBold()))
                 .foregroundColor(Color(KarhooUI.colors.primary))
                 .frame(alignment: .leading)
                 .multilineTextAlignment(.leading)
@@ -56,6 +56,6 @@ struct KarhooLoyaltyInformationView: View {
 // MARK: - Preview
 struct KarhooLoyaltyInformationView_Preview: PreviewProvider {
     static var previews: some View {
-        KarhooLoyaltyInformationView(viewModel: .init( mode: .earn, points: 10))
+        KarhooLoyaltyInformationView(viewModel: .init(mode: .earn, pointsToBeModified: 10))
     }
 }
