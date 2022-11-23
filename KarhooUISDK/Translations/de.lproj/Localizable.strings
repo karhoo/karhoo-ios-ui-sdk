@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Vorautorisieren";
+"adyen.submitButton" = "TRANSAKTION AUTORISIEREN";
 
-"adyen.submitButton.formatted" = "Vorautorisieren %@";
+"adyen.submitButton.formatted" = "TRANSAKTION AUTORISIEREN";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -531,7 +531,11 @@
 
 "Text.Loyalty.Info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Treuepunkte den gesamten Preis abdecken.";
 
+"Text.Loyalty.PointsAddInfo" = "%@ Die Treuepunkte werden am Ende der Fahrt Ihrem Konto gutgeschrieben.";
+
 "Text.Loyalty.PointsEarnedForTrip" = "Am Ende der Fahrt werden Ihrem Kontostand %1$@ Treuepunkte gutgeschrieben";
+
+"Text.Loyalty.PointsRemovedInfo" = "%@ Die Treuepunkte werden am Ende der Fahrt von Ihrem Kontostand abgezogen.";
 
 "Text.Loyalty.Title" = "Treuepunkte";
 
