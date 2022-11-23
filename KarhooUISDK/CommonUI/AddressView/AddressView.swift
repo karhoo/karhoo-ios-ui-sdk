@@ -37,7 +37,7 @@ struct KarhooAddressView: View {
             case .bordered, .borderedWithWhiteBackground:
                 return KarhooUI.colors.border
             case .default:
-                return KarhooUI.colors.white
+                return KarhooUI.colors.background2
             }
         }
     }
