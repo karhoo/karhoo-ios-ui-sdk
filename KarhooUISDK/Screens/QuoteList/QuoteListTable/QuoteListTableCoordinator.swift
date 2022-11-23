@@ -58,6 +58,6 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
 
 extension KarhooQuoteListTableCoordinator: QuoteListTableRouter {
     func showNoCoverageEmail() {
-        _ = noCoverageMailComposer.showNoCoverageEmail()
+        noCoverageMailComposer.showNoCoverageEmail()
     }
 }

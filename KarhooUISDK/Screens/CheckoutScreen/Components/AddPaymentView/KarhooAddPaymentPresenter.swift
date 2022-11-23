@@ -72,7 +72,7 @@ final class KarhooAddPaymentPresenter: AddPaymentPresenter {
         }
     }
     
-    internal func setQuote(_ quote: Quote){
+    internal func setQuote(_ quote: Quote) {
         self.quote = quote
     }
 
@@ -90,11 +90,11 @@ final class KarhooAddPaymentPresenter: AddPaymentPresenter {
         )
     }
 
-    private func reportCardAuthorisationSuccess(){
+    private func reportCardAuthorisationSuccess() {
         analytics.cardAuthorisationSuccess(quoteId: quote?.id ?? "")
     }
 
-    private func reportChangePaymentDetailsPressed(){
+    private func reportChangePaymentDetailsPressed() {
         analytics.changePaymentDetailsPressed()
     }
 }

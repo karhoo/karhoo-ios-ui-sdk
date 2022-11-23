@@ -8,7 +8,6 @@
 import Foundation
 import PhoneNumberKit
 import UIKit
-import CoreLocation.CLLocationManager
 
 public class Utils {
     // The unicode values are possible variations for apostrophe / single quote
@@ -64,7 +63,7 @@ public class Utils {
 
 class ViewControllerUtils {
     static var topBaseViewController: BaseViewController? {
-        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        var topVC = UIApplication.shared.windows.first?.rootViewController
         while topVC!.presentedViewController != nil {
              topVC = topVC!.presentedViewController
         }
@@ -72,22 +71,10 @@ class ViewControllerUtils {
     }
     
     static var topViewController: UIViewController? {
-        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        var topVC = UIApplication.shared.windows.first?.rootViewController
         while topVC!.presentedViewController != nil {
              topVC = topVC!.presentedViewController
         }
         return topVC
-    }
-}
-
-// TODO: move to new file
-protocol LocationPermissionProvider: AnyObject {
-    var isLocationPermissionGranted: Bool { get }
-}
-
-final class KarhooLocationPermissionProvider: LocationPermissionProvider {
-    var isLocationPermissionGranted: Bool {
-        CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == .authorizedAlways
     }
 }

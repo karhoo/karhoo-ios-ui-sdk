@@ -50,7 +50,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
     }
 
     private func focusMap(triggerPermissionDeniedIfNeeded: Bool) {
-        if(reverseGeolocate) {
+        if reverseGeolocate {
             if let location = userLocationProvider.getLastKnownLocation() {
                 journeyDetailsManager.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
             } else {

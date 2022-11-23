@@ -5,6 +5,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
+// swiftlint:disable function_parameter_count
 
 import Foundation
 import KarhooSDK
@@ -133,7 +134,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func changePaymentDetailsPressed(){
+    func changePaymentDetailsPressed() {
         base.send(eventName: .changePaymentDetailsPressed)
     }
 

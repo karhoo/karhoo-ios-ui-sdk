@@ -125,10 +125,10 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
 
-    //MARK: - Variables
+    // MARK: - Variables
     private var didSetupConstraints: Bool = false
     
-    //MARK: - Init
+    // MARK: - Init
     init() {
         super.init(frame: .zero)
         self.setUpView()
@@ -143,7 +143,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     private func setUpView() {
         accessibilityIdentifier = KHCheckoutHeaderViewID.topContainer
         translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +152,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
         axis = .vertical
         spacing = 10
         
-        // TODO: Move this line along with the directionalLayoutMargins line to CheckoutViewController
+        // Move this line along with the directionalLayoutMargins line to CheckoutViewController
         isLayoutMarginsRelativeArrangement = true
         
         addArrangedSubview(fleetInfoStackView)
@@ -172,7 +172,7 @@ final class KarhooCheckoutHeaderView: UIStackView {
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            // TODO: move the padding to the CheckoutViewController when applying the standardization to the CheckoutViewController
+            // Move the padding to the CheckoutViewController when applying the standardization to the CheckoutViewController
             // The controls inside the header view should be glued to the edges. The parent decides how much margin to add to it
             // This is a good practice to make the header view reusable in other contexts that may not need the values set below.
             directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
