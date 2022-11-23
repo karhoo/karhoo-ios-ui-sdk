@@ -28,7 +28,7 @@ struct KarhooAddressView: View {
             case .bordered:
                 return KarhooUI.colors.background1
             case .borderedWithWhiteBackground, .default:
-                return KarhooUI.colors.white
+                return KarhooUI.colors.background2
             }
         }
 
@@ -51,7 +51,7 @@ struct KarhooAddressView: View {
     private var borderColor: UIColor = KarhooUI.colors.border
     private let borderWidth: CGFloat = 1
     private var cornerRadius: CGFloat = UIConstants.CornerRadius.large
-    private var backgroundColor: UIColor = KarhooUI.colors.white
+    private var backgroundColor: UIColor = KarhooUI.colors.background2
     private let showsLineBetweenPickUpAndDestination: Bool
 
     // MARK: - Lifecycle
