@@ -37,17 +37,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private var headerViews: [UIView] {
         [
-            infoView.view, // addressPickerView,
+            addressPickerView,
             buttonsStackView,
             legalDisclaimerContainer
         ]
     }
     private lazy var loadingBar = LoadingBar().then {
         $0.state = .indeterminate
-    }
-
-    let infoView = UIHostingController(rootView: KarhooLoyaltyInformationView(viewModel: .init(mode: .earn, pointsToBeModified: 10))).then {
-        $0.view.backgroundColor = .clear
     }
 
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
