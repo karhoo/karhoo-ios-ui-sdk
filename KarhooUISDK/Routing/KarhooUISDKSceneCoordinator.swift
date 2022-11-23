@@ -40,7 +40,7 @@ extension KarhooUISDKSceneCoordinator {
     }
 
     func startPresented(on parentCoordinator: KarhooUISDKSceneCoordinator) {
-        parentCoordinator.baseViewController.present(baseViewController, animated: true)
+        parentCoordinator.baseViewController.present(baseViewController, animated: false)
     }
 
     func addChild(_ childCoordinator: KarhooUISDKSceneCoordinator) {

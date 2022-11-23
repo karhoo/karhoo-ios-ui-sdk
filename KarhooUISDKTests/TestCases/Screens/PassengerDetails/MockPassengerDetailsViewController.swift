@@ -8,6 +8,7 @@
 
 import UIKit
 import KarhooSDK
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class MockPassengerDetailsViewController: MockBaseViewController, PassengerDetailsView, KarhooInputViewDelegate {

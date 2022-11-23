@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class TripScreenDetailsViewModelSpec: KarhooTestCase {

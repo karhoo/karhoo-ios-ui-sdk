@@ -20,8 +20,6 @@
 /* User errors, K1xxx */
 "K1001" = "Could not register user";
 
-"K1002" = "Could not register user (user already exists)";
-
 "K1003" = "Could not register user (invalid request)";
 
 "K1004" = "Could not register user (invalid phone number)";
@@ -29,8 +27,6 @@
 "K1005" = "Could not get user details (invalid token)";
 
 "K1006" = "Could not get user details (user does not exist)";
-
-"K1999" = "User has been created but not been authorized yet, we will get in touch once enabled.";
 
 /* Locations errors, K2xxx */
 "K2001" = "Could not get address";
@@ -71,15 +67,9 @@
 
 "K4014" = "Could not book trip as agent";
 
-"K4015" = "Could not book trip as traveller";
-
-"k4015" = "Could not book trip as traveller";
-
 "K4018" = "Could not book trip as this quote is no longer available";
 
 "K4020" = "Could not book trip with the selected DMS";
-
-"K4025" = "Quote price increased whilst booking";
 
 /* Availability errors, K5xxx */
 "K5001" = "Could not get estimates";
@@ -87,20 +77,6 @@
 "K5002" = "Could not get availability (no availability found within requested area)";
 
 "K5003" = "Could not get availability (no categories found within requested area)";
-
-/* Authentication errors K6xxx */
-"K6001" = "Invalid email or Password. Please try again";
-
-/* KPOI errors, K7xxx */
-"K7001" = "Could not process KPOI request";
-
-"K7002" = "Could not find Karhoo POI with matching ID";
-
-"K7003" = "Could not read Karhoo POI";
-
-"K7004" = "Could not write Karhoo POI";
-
-"K7005" = "Could not delete Karhoo POI";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Something went wrong but we don't know what it was";
@@ -234,9 +210,6 @@
 
 "Text.Booking.RequestReceived" = "Booking Received";
 
-/* Accessibility hint for prebook feature entry point */
-"Text.Booking.ScheduleRide" = "Schedule the ride";
-
 "Text.Booking.TrainTracking" = "Train tracking";
 
 "Text.Bookings.Alert.CancellationFee.Charge" = "You will be charged a cancellation fee estimated at %1$@.\n\nWould you like to proceed?";
@@ -314,8 +287,6 @@
 /* The title of the alert when user is forced to update ie "App Update Required" */
 "Text.Error.Alert.ForceUpdateTitle" = "New version available";
 
-"Text.Error.Booking.EnterDestinationToProceed" = "Enter destination to book a ride";
-
 /* Errors */
 "Text.Error.EmailValidationError" = "Check your email address is spelt correctly";
 
@@ -329,8 +300,6 @@
 
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Oops, something went wrong. Please try again.";
-
-"Text.Error.NotLoggedIn" = "You're not signed in";
 
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Update Card";
 
@@ -383,8 +352,6 @@
 
 "Text.FleetCapabilities.VehicleDetails" = "Vehicle Details";
 
-"Text.Generic.All" = "All";
-
 "Text.Generic.Back" = "Back";
 
 "Text.Generic.Bookings" = "Bookings";
@@ -411,11 +378,7 @@
 /* "Completed" */
 "Text.Generic.Completed" = "Completed";
 
-"Text.Generic.Continue" = "Continue";
-
 "Text.Generic.Destination" = "Destination";
-
-"Text.Generic.Dismiss" = "Dismiss";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Edit";
@@ -430,8 +393,6 @@
 
 /* English: "Estimated" */
 "Text.Generic.Estimated" = "Estimated price";
-
-"Text.Generic.ETA" = "ETA";
 
 "Text.Generic.ETALong" = "Estimated arrival time";
 
@@ -506,8 +467,6 @@
 
 "Text.Generic.Submit" = "Submit";
 
-"Text.Generic.Success" = "Success";
-
 "Text.Generic.Surname" = "Surname";
 
 "Text.Generic.TermsConditions" = "Terms and Conditions";
@@ -517,20 +476,11 @@
 /* "Thanks for your interest" */
 "Text.Generic.Thanks" = "Thanks for your interest";
 
-/* Booker cancelled */
-"Text.Generic.TripStatus.BookerCancelled" = "Cancelled";
-
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Message" = "It is taking longer than usual for the fleet to allocate a driver. Please wait, contact the fleet, or cancel and rebook with a different fleet.";
 
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Allocation delay";
-
-/* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Cancelled by driver/dispatch";
-
-/* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "No Drivers available";
 
 "Text.Generic.Unchecked" = "Unchecked";
 
@@ -562,9 +512,6 @@
 
 /* english: requested */
 "Text.GenericTripStatus.Requested" = "Requested";
-
-/* "Pending" */
-"Text.GenericTripStatus.Unknown" = "Pending";
 
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
@@ -615,8 +562,6 @@
 "Text.Quote.FreeCancellationPrebook" = "Free cancellation up to %1$@ before pickup";
 
 "Text.Quote.FreeWaitingTime" = "Free waiting time";
-
-"Text.Quote.Results" = "%1$@ results";
 
 "Text.QuoteCategory.Electric" = "Electric";
 
@@ -697,9 +642,6 @@
 
 "Text.SideMenu.Help" = "Help";
 
-/* Side Menu */
-"Text.SideMenu.Login" = "Sign in";
-
 /* "Profile" button on the side menu */
 "Text.SideMenu.Profile" = "Profile";
 
@@ -710,8 +652,6 @@
 
 /* Sign Out on the side menu */
 "Text.SideMenu.SignOut" = "Sign out";
-
-"Text.SideMenu.Signup" = "Register";
 
 /* In app email to customer support / feedback */
 "Text.SupportMailMessage.Feedback" = "Please do not delete this information as it helps us improve the app.";
@@ -765,9 +705,6 @@
 
 "Text.Trip.CancelBookingConfirmation.Alert.Title" = "Cancel your ride?";
 
-/* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
-"Text.Trip.CancelBookingFailed" = "Cancellation not confirmed, please call supplier";
-
 "Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Call Fleet";
 
 "Text.Trip.CancelBookingFailed.AlertMessage" = "We are experiencing issues cancelling your ride. Please contact the fleet.";
@@ -798,11 +735,6 @@
 
 /* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
 "Text.Trip.KarhooCancelled.AlertTitle" = "Problem Booking";
-
-"Text.Trip.MessageDriver" = "Message driver";
-
-/* For when demand is too high and there are no drivers available */
-"Text.Trip.NoDriversAvailable" = "No drivers available";
 
 /* Alert message in popup when dispatch cancels due to no drivers */
 "Text.Trip.NoDriversAvailable.AlertMessage" = "Sorry, demand is high. %1$@ currently has no available drivers.";
