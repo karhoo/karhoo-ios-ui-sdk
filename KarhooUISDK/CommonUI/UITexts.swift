@@ -470,6 +470,8 @@ public enum UITexts {
         static let info = "Text.Loyalty.Info".localized
         static let noAllowedToBurnPoints = "Text.Loyalty.BurnNotAllowed".localized
         static let balanceTitle = "Text.Loyalty.BalanceTitle".localized
+        static let loyaltyPointsRemovedInfo = "Text.Loyalty.PointsRemovedInfo"
+        static let loyaltyPointsAddInfo = "Text.Loyalty.PointsAddInfo"
     }
 }
 
