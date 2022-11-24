@@ -10,6 +10,12 @@ import SwiftUI
 import KarhooSDK
 
 struct KarhooBookingConfirmationView: View {
+    enum Constants {
+        static let vehicleImageSize: CGFloat = 80
+        static let vehicleImageXOffset: CGFloat = -5
+        static let separatorHeight: CGFloat = 50
+    }
+    
     // MARK: - Properties
     private var viewModel: BookingConfirmationViewModel
     
@@ -30,9 +36,9 @@ struct KarhooBookingConfirmationView: View {
                 
                 KarhooAsyncImage(urlString: viewModel.vehicleImageURL)
                     .frame(
-                        width: 80,
-                        height: 80)
-                .offset(x: -5)
+                        width: Constants.vehicleImageSize,
+                        height: Constants.vehicleImageSize)
+                    .offset(x: Constants.vehicleImageXOffset)
             }
             .frame(height: UIConstants.Dimension.Icon.xxLarge)
             
@@ -51,7 +57,7 @@ struct KarhooBookingConfirmationView: View {
                 
                 Rectangle()
                     .fill(KarhooUI.colors.border.getColor())
-                    .frame(width: 1, height: 50, alignment: .center)
+                    .frame(width: 1, height: Constants.separatorHeight, alignment: .center)
                     
                 VStack {
                     Text(viewModel.printedPrice)
