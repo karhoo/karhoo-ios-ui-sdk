@@ -11,19 +11,9 @@ import SwiftUI
 /// View presenting user-friendly information how many poins shall be added/removed to/from Loyalty.
 struct KarhooLoyaltyInformationView: View {
 
-    private enum Constants {
-        static let iconSide: CGFloat = 16
-    }
-
     // MARK: - Properties
 
     let viewModel: ViewModel
-
-    // MARK: - Lifecycle
-
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
 
     // MARK: - Views
 
@@ -33,7 +23,7 @@ struct KarhooLoyaltyInformationView: View {
                 .resizable()
                 .renderingMode(.template)
                 .foregroundColor(Color(KarhooUI.colors.primary))
-                .frame(width: Constants.iconSide, height: Constants.iconSide)
+                .frame(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
             Text(viewModel.text)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .foregroundColor(Color(KarhooUI.colors.primary))
@@ -48,7 +38,6 @@ struct KarhooLoyaltyInformationView: View {
             Color(KarhooUI.colors.primary),
             cornerRadius: UIConstants.CornerRadius.small
         )
-        .colorScheme(.light)
     }
 
 }
