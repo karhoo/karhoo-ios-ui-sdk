@@ -78,6 +78,10 @@
 
 "K5003" = "Could not get availability (no categories found within requested area)";
 
+"kh_uisdk_loyalty_info_add_points" = "%@ loyalty points will be added to your account balance at the end of the ride";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Something went wrong but we don't know what it was";
 
@@ -531,11 +535,7 @@
 
 "Text.Loyalty.Info" = "Your card is needed to authorise this transaction in case the final price of the ride exceeds your points balance. Your account won't be charged if your loyalty points cover the entire price.";
 
-"Text.Loyalty.PointsAddInfo" = "%@ loyalty points will be added to your account balance at the end of the ride";
-
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyalty points will be added to your account balance at the end of the ride";
-
-"Text.Loyalty.PointsRemovedInfo" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
 
 "Text.Loyalty.Title" = "Loyalty points";
 

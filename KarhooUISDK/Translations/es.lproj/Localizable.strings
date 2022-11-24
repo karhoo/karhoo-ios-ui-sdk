@@ -78,6 +78,10 @@
 
 "K5003" = "Sin disponibilidad (no se encontraron categorías en el área solicitada)";
 
+"kh_uisdk_loyalty_info_add_points" = "Se añadirán %@ puntos de fidelidad al saldo de su cuenta al final del viaje";
+
+"kh_uisdk_loyalty_info_remove_points" = "Se deducirán %@ puntos de fidelidad del saldo de su cuenta al final del viaje.";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Se ha producido un error. Inténtelo de nuevo.";
 
@@ -531,11 +535,7 @@
 
 "Text.Loyalty.Info" = "Su tarjeta es necesaria para autorizar esta transacción en caso de que el precio final del viaje exceda su saldo de puntos. No se le cobrará a su cuenta si sus puntos de fidelidad cubren el precio total.";
 
-"Text.Loyalty.PointsAddInfo" = "Se añadirán %@ puntos de fidelidad al saldo de su cuenta al final del viaje";
-
 "Text.Loyalty.PointsEarnedForTrip" = "Se añadirán %1$@ puntos de fidelidad al saldo de su cuenta al final del viaje";
-
-"Text.Loyalty.PointsRemovedInfo" = "Se deducirán %@ puntos de fidelidad del saldo de su cuenta al final del viaje.";
 
 "Text.Loyalty.Title" = "Puntos de lealtad";
 

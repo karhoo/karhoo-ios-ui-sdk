@@ -78,6 +78,10 @@
 
 "K5003" = "Kon geen beschikbaarheid krijgen (geen categorieën gevonden binnen het gevraagde gebied)";
 
+"kh_uisdk_loyalty_info_add_points" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ loyaliteitspunten worden aan het einde van de rit van uw accountsaldo afgetrokken";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Er is iets misgegaan, maar we weten niet wat het was";
 
@@ -531,11 +535,7 @@
 
 "Text.Loyalty.Info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
 
-"Text.Loyalty.PointsAddInfo" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
-
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ loyaliteitspunten worden aan het einde van de rit toegevoegd aan uw accountsaldo";
-
-"Text.Loyalty.PointsRemovedInfo" = "%@ loyaliteitspunten worden aan het einde van de rit van uw accountsaldo afgetrokken";
 
 "Text.Loyalty.Title" = "Loyaliteitspunten";
 
