@@ -21,7 +21,6 @@ struct KarhooLoyaltyInformationView: View {
         HStack(spacing: UIConstants.Spacing.small) {
             Image("kh_uisdk_info_icon", bundle: .current)
                 .resizable()
-                .renderingMode(.template)
                 .foregroundColor(Color(KarhooUI.colors.primary))
                 .frame(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
             Text(viewModel.text)
