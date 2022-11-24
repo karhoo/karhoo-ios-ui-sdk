@@ -320,7 +320,7 @@ class KarhooAddressPresenterSpec: KarhooTestCase {
         
         XCTAssertNil(mockAddressView.addressCellsToShow)
         XCTAssertFalse(mockAddressView.hideEmptyDataSetCalled)
-        XCTAssertEqual("\(UITexts.Errors.noResultsFound)", mockAddressView.emptyDataSetMessageSet)
+        XCTAssertEqual("\(UITexts.AddressScreen.noResultsFound)", mockAddressView.emptyDataSetMessageSet)
     }
 
     /**
