@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-authorise";
+"adyen.submitButton" = "AUTHORISE TRANSACTION";
 
-"adyen.submitButton.formatted" = "Pre-authorise %@";
+"adyen.submitButton.formatted" = "AUTHORISE TRANSACTION";
 
 /* English: Error codes */
 "K0001" = "General request error";
@@ -150,7 +150,7 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Your final fare might be affected by tips, tolls, taxes, and other charges.";
 
-"Text.Booking.BookNow" = "BOOK NOW";
+"kh_uisdk_next" = "Next";
 
 "Text.Booking.CountryCodeSelection.Search" = "Search country/region";
 
@@ -917,3 +917,28 @@
 
 "Text.VehicleType.Standard" = "Saloon";
 
+/* Error messages for another languages will appear automatically in localizable.strings
+ files when we pull strings from common project for the first time
+ */
+
+"kh_uisdk_KP001" = "Unable to decode request body";
+
+"kh_uisdk_KP002" = "Primary org for user is not UUID";
+
+"kh_uisdk_KP003" = "Missing supply partner ID";
+
+"kh_uisdk_KP004" = "UserID is not UUID";
+
+"kh_uisdk_KP005" = "Browser information must be defined to enforce 3DS";
+
+"kh_uisdk_KP006" = "Return Url must be defined to enforce 3DS";
+
+"kh_uisdk_KP007" = "Missing trip ID";
+
+"kh_uisdk_KP008" = "Missing user";
+
+"kh_uisdk_KP009" = "Primary org is not registered";
+
+"kh_uisdk_KP010" = "Bad money amount";
+
+"kh_uisdk_KP011" = "Bad money split";

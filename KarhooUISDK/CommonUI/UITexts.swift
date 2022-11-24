@@ -219,7 +219,7 @@ public enum UITexts {
 
     /* Booking */
     public enum Booking {
-        public static let bookNow = "Text.Booking.BookNow".localized
+        public static let next = "kh_uisdk_next".localized
         public static let requestCar = "Text.Booking.RequestCar".localized
         public static let requestingCar = "Text.Booking.RequestingCar".localized
         public static let requestReceived = "Text.Booking.RequestReceived".localized
@@ -475,7 +475,9 @@ public enum UITexts {
 
 extension KarhooError {
     var localizedMessage: String {
-        return code.localized != code ? code.localized : userMessage
+        let translationPrefix = "kh_uisdk_"
+        let translationsKey = translationPrefix + code
+        return translationsKey.localized != translationsKey ? translationsKey.localized : userMessage
     }
 }
 

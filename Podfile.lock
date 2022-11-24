@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.1)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (= 1.7.0)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-3663-add-adyen-payment-errors`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -108,7 +108,6 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - KarhooSDK
     - KeychainSwift
     - Nimble
     - PhoneNumberKit
@@ -119,8 +118,16 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
+  KarhooSDK:
+    :branch: feature/MOB-3663-add-adyen-payment-errors
+    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: 5a478470ba67b3d8386fa6c1d102d7b92d77be39
+    :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
   Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
@@ -139,6 +146,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 61cda3819dc3a7d69795ce0430e1e1d53c4a4fb2
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: 400fc7bde557e863151e95c48f813ef4c648d503
+PODFILE CHECKSUM: fb0b8d58fa8c71cf75c559688895e8f75eabddc5
 
 COCOAPODS: 1.11.3

@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-autoriseren";
+"adyen.submitButton" = "TRANSACTIE GOEDKEUREN";
 
-"adyen.submitButton.formatted" = "Pre-autoriseren %@";
+"adyen.submitButton.formatted" = "TRANSACTIE GOEDKEUREN";
 
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
@@ -150,7 +150,7 @@
 /* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
 "Text.Booking.BaseFareExplanation" = "Uw uiteindelijke tarief kan worden beïnvloed door fooien, tolgelden, belastingen en andere heffingen.";
 
-"Text.Booking.BookNow" = "BOEK NU";
+"kh_uisdk_next" = "Volgende";
 
 "Text.Booking.CountryCodeSelection.Search" = "Land/regio zoeken";
 
