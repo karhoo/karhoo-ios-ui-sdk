@@ -23,17 +23,15 @@ struct KarhooBookingConfirmationView: View {
             // Icons
             HStack(spacing: 0) {
                 Image(uiImage:  UIImage.uisdkImage("kh_uisdk_check_circle"))
-                RepresentedLoadingImageView(
-                    url: viewModel.vehicleImageURL,
-                    placeholder: viewModel.vehicleImagePlaceholder
+                KarhooAsyncImage(
+                    urlString: viewModel.vehicleImageURL,
+                    frame: CGRect(
+                        x: CGFloat.zero,
+                        y: CGFloat.zero,
+                        width: UIConstants.Dimension.Icon.xxLarge,
+                        height: UIConstants.Dimension.Icon.xxLarge
+                    )
                 )
-                .frame(
-                    minWidth: 0,
-                    maxWidth: UIConstants.Dimension.Icon.xxLarge,
-                    minHeight: 0,
-                    maxHeight: UIConstants.Dimension.Icon.xxLarge
-                )
-                .background(Color.red)
             }
             
             // Address

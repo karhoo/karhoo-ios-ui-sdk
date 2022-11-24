@@ -79,23 +79,3 @@ public final class LoadingImageView: UIView {
         layer.borderWidth = 0.5
     }
 }
-
-struct RepresentedLoadingImageView: UIViewRepresentable {
-    typealias UIViewType = LoadingImageView
-    
-    var url: String
-    var placeholder: String?
-    
-    init(url: String, placeholder: String? = nil) {
-        self.url = url
-        self.placeholder = placeholder
-    }
-    
-    func makeUIView(context: Context) -> LoadingImageView {
-        return LoadingImageView()
-    }
-    
-    func updateUIView(_ uiView: LoadingImageView, context: Context) {
-        uiView.load(imageURL: url, placeholderImageName: placeholder)
-    }
-}
