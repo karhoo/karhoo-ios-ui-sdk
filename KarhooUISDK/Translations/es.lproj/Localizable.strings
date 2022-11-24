@@ -1,6 +1,6 @@
-"adyen.submitButton" = "preautorizar";
+"adyen.submitButton" = "AUTORIZAR TRANSACCIÓN";
 
-"adyen.submitButton.formatted" = "Preautorizar %@";
+"adyen.submitButton.formatted" = "AUTORIZAR TRANSACCIÓN";
 
 /* English: Error codes */
 "K0001" = "Error general";
@@ -77,6 +77,10 @@
 "K5002" = "Sin disponibilidad (no se encontró disponibilidad en el área solicitada)";
 
 "K5003" = "Sin disponibilidad (no se encontraron categorías en el área solicitada)";
+
+"kh_uisdk_loyalty_info_add_points" = "Se añadirán %@ puntos de fidelidad al saldo de su cuenta al final del viaje";
+
+"kh_uisdk_loyalty_info_remove_points" = "Se deducirán %@ puntos de fidelidad del saldo de su cuenta al final del viaje.";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Se ha producido un error. Inténtelo de nuevo.";

@@ -78,6 +78,10 @@
 
 "K5003" = "Kon geen beschikbaarheid krijgen (geen categorieën gevonden binnen het gevraagde gebied)";
 
+"kh_uisdk_loyalty_info_add_points" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ loyaliteitspunten worden aan het einde van de rit van uw accountsaldo afgetrokken";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Er is iets misgegaan, maar we weten niet wat het was";
 

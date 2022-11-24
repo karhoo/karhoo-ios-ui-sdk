@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Vorautorisieren";
+"adyen.submitButton" = "TRANSAKTION AUTORISIEREN";
 
-"adyen.submitButton.formatted" = "Vorautorisieren %@";
+"adyen.submitButton.formatted" = "TRANSAKTION AUTORISIEREN";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -77,6 +77,10 @@
 "K5002" = "Keine Verfügbarkeit (keine Verfügbarkeit im gewünschten Bereich gefunden)";
 
 "K5003" = "Keine Verfügbarkeit (keine Kategorien im gewünschten Bereich gefunden)";
+
+"kh_uisdk_loyalty_info_add_points" = "%@ Die Treuepunkte werden am Ende der Fahrt Ihrem Konto gutgeschrieben.";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ Die Treuepunkte werden am Ende der Fahrt von Ihrem Kontostand abgezogen.";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Etwas ist schief gelaufen, aber wir wissen nicht, was es war.";
