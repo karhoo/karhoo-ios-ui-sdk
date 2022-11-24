@@ -78,6 +78,10 @@
 
 "K5003" = "Impossibile ottenere la disponibilità (nessuna categoria trovata nell'area richiesta)";
 
+"kh_uisdk_loyalty_info_add_points" = "%@ punti fedeltà verranno aggiunti al saldo del tuo account alla fine della corsa";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ punti fedeltà verranno detratti dal saldo del tuo account alla fine della corsa";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Qualcosa è andato storto ma non sappiamo cosa fosse";
 
@@ -531,11 +535,7 @@
 
 "Text.Loyalty.Info" = "La tua carta è necessaria per autorizzare questa transazione nel caso in cui il prezzo finale della corsa superi il tuo saldo punti. Il tuo account non verrà addebitato se i tuoi punti fedeltà coprono l'intero prezzo.";
 
-"Text.Loyalty.PointsAddInfo" = "%@ punti fedeltà verranno aggiunti al saldo del tuo account alla fine della corsa";
-
 "Text.Loyalty.PointsEarnedForTrip" = "%1$@ punti fedeltà verranno aggiunti al saldo del tuo account al termine della corsa";
-
-"Text.Loyalty.PointsRemovedInfo" = "%@ punti fedeltà verranno detratti dal saldo del tuo account alla fine della corsa";
 
 "Text.Loyalty.Title" = "Punti fedeltà";
 
