@@ -527,7 +527,6 @@
 		7B56043627A15EEB00FC5F1C /* Collection+isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */; };
 		7B9532CB27B5642100B13FD1 /* LegalNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */; };
 		7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */; };
-		7B98323328B8BD85000C11FE /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC72122CF564E00F24CFC /* Analytics.swift */; };
 		7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F627C628DF00685B47 /* JourneyDetails.swift */; };
 		7B98323628B8BEC8000C11FE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		7B98323828B8C163000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
@@ -3888,7 +3887,6 @@
 				5C2E26142420F8AC00B1FF0C /* ViewController.swift in Sources */,
 				7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */,
 				7B98323628B8BEC8000C11FE /* Date+Extensions.swift in Sources */,
-				7B98323328B8BD85000C11FE /* Analytics.swift in Sources */,
 				5C2E26102420F8AC00B1FF0C /* AppDelegate.swift in Sources */,
 				7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */,
 				7B23A2B428ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift in Sources */,

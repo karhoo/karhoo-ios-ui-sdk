@@ -42,53 +42,53 @@ public enum AnalyticsScreen: Equatable {
     case vehicleTracking
 }
 
-final class KarhooAnalytics: Analytics {
+final public class KarhooAnalytics: Analytics {
     
     private let base: AnalyticsService
     private let emptyPayload = [String: Any]()
     private let timestampFormatter = TimestampFormatter()
 
-    init(base: AnalyticsService = Karhoo.getAnalyticsService()) {
+    public init(base: AnalyticsService = Karhoo.getAnalyticsService()) {
         self.base = base
     }
 
-    func tripStateChanged(tripState: TripInfo?) {
+    public func tripStateChanged(tripState: TripInfo?) {
         base.send(eventName: .stateChangeDisplayed,
                   payload: [Keys.tripState: tripState as Any])
     }
     
-    func fleetsShown(quoteListId: String?, amountShown: Int) {
+    public func fleetsShown(quoteListId: String?, amountShown: Int) {
         base.send(eventName: .fleetListShown, payload: [
             Keys.quoteListId: quoteListId ?? "",
             Keys.amountShown: amountShown
         ])
     }
 
-    func prebookOpened() {
+    public func prebookOpened() {
             base.send(eventName: .prebookOpened, payload: emptyPayload)
     }
 
-    func prebookSet(date: Date, timezone: String) {
+    public func prebookSet(date: Date, timezone: String) {
         let timestamp = timestampFormatter.formattedDate(date)
         base.send(eventName: .prebookTimeSet, payload: [Keys.prebookTimeSet: timestamp,
                                                         Keys.timeZone: timezone])
     }
 
-    func userCalledDriver(trip: TripInfo?) {
+    public func userCalledDriver(trip: TripInfo?) {
         base.send(eventName: .userCalledDriver, payload: [Keys.tripInfo: trip as Any])
     }
 
-    func pickupAddressSelected(locationDetails: LocationInfo) {
+    public func pickupAddressSelected(locationDetails: LocationInfo) {
         base.send(eventName: .pickupAddressSelected,
                   payload: [Keys.locationDetails: locationDetails])
     }
 
-    func destinationAddressSelected(locationDetails: LocationInfo) {
+    public func destinationAddressSelected(locationDetails: LocationInfo) {
         base.send(eventName: .destinationAddressSelected,
                   payload: [Keys.locationDetails: locationDetails])
     }
 
-    func bookingRequested(quoteId: String) {
+    public func bookingRequested(quoteId: String) {
         base.send(
             eventName: .checkoutBookingRequested,
             payload: [
@@ -97,7 +97,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
+    public func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
         base.send(
             eventName: .bookingSuccess,
             payload: [
@@ -108,7 +108,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingFailure(
+    public func bookingFailure(
         quoteId: String?,
         correlationId: String?,
         message: String,
@@ -133,7 +133,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func cardAuthorisationFailure(
+    public func cardAuthorisationFailure(
         quoteId: String?,
         errorMessage: String,
         lastFourDigits: String,
@@ -163,7 +163,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func cardAuthorisationSuccess(quoteId: String) {
+    public func cardAuthorisationSuccess(quoteId: String) {
         base.send(
             eventName: .cardAuthorisationSuccess,
             payload: [
@@ -172,7 +172,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func loyaltyStatusRequested(
+    public func loyaltyStatusRequested(
         quoteId: String?,
         correlationId: String?,
         loyaltyName: String?,
@@ -206,7 +206,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func loyaltyPreAuthSuccess(
+    public func loyaltyPreAuthSuccess(
         quoteId: String?,
         correlationId: String?,
         preauthType: LoyaltyMode
@@ -224,7 +224,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func loyaltyPreAuthFailure(
+    public func loyaltyPreAuthFailure(
         quoteId: String?,
         correlationId: String?,
         preauthType: LoyaltyMode,
@@ -251,11 +251,11 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func bookingScreenOpened() {
+    public func bookingScreenOpened() {
         base.send(eventName: .bookingScreenOpened)
     }
 
-    func checkoutOpened(_ quote: Quote) {
+    public func checkoutOpened(_ quote: Quote) {
         base.send(
             eventName: .checkoutOpened,
             payload: [
@@ -264,7 +264,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+    public func contactFleetClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         let eventName: AnalyticsConstants.EventNames
         switch page {
         case .upcomingRides:
@@ -281,7 +281,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
+    public func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         let eventName: AnalyticsConstants.EventNames
             switch page {
             case .upcomingRides: eventName = .ridesUpcomingContactDriverClicked
@@ -295,7 +295,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func quoteListOpened(_ journeyDetails: JourneyDetails) {
+    public func quoteListOpened(_ journeyDetails: JourneyDetails) {
         base.send(
             eventName: .quoteListOpened,
             payload: [
@@ -306,7 +306,7 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func trackTripOpened(tripDetails: TripInfo, isGuest: Bool) {
+    public func trackTripOpened(tripDetails: TripInfo, isGuest: Bool) {
         base.send(
             eventName: .trackTripOpened,
             payload: [
@@ -316,15 +316,15 @@ final class KarhooAnalytics: Analytics {
         )
     }
 
-    func pastTripsOpened() {
+    public func pastTripsOpened() {
         base.send(eventName: .ridesPastTripsOpened)
     }
 
-    func upcomingTripsOpened() {
+    public func upcomingTripsOpened() {
         base.send(eventName: .ridesUpcomingTripsOpened)
     }
 
-    func trackTripClicked(tripDetails: TripInfo) {
+    public func trackTripClicked(tripDetails: TripInfo) {
         base.send(
             eventName: .ridesUpcomingTrackTripClicked,
             payload: [
