@@ -272,7 +272,9 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
         case .requiresAction(let action):
             adyenDropIn?.handle(action)
         case .refused(let reason, let code):
-            finish(result: .completed(value: .didFailWithError(ErrorModel(message: reason, code: code))))
+            finish(result: .completed(value: .didFailWithError(
+                ErrorModel(message: getRefusalMessage(forCode: code) ?? "reason", code: code)
+            )))
         case .handleResult(let code):
             let error = ErrorModel(
                 message: code ?? UITexts.Errors.noDetailsAvailable,
@@ -280,5 +282,11 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             )
             finish(result: .completed(value: .didFailWithError(error)))
         }
+    }
+
+    private func getRefusalMessage(forCode code: String) -> String? {
+        let translationPrefix = "kh_uisdk_adyen_payment_error_"
+        let translationsKey = translationPrefix + code
+        return translationsKey.localized != translationsKey ? translationsKey.localized : nil
     }
 }
