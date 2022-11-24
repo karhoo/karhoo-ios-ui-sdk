@@ -300,21 +300,21 @@ extension KarhooBookingPresenter: BookingPresenter {
         ) {
             self.view?.dismiss(animated: true, completion: nil)
         }
-        
+
         let contentViewModel = KarhooBookingConfirmationViewModel(
             journeyDetails: journeyDetails,
             quote: quote,
             shouldShowLoyalty: true
         ) {
-            //self?.prebookConfirmationCompleted(result: result, trip: trip)
-            print("Show details")
+            self.view?.dismiss(animated: true, completion: nil)
+            self.prebookConfirmationCompleted(result: ScreenResult.completed(result: .rideDetails), trip: trip)
         }
-         
+
          let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
          let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
              KarhooBookingConfirmationView(viewModel: contentViewModel)
          }
-        
+
         view?.present(sheet, animated: true)
          
          

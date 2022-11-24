@@ -21,18 +21,20 @@ struct KarhooBookingConfirmationView: View {
     var body: some View {
         VStack(spacing: UIConstants.Spacing.standard, content: {
             // Icons
-            HStack(spacing: 0) {
+            HStack(alignment: .top, spacing: 0) {
                 Image(uiImage:  UIImage.uisdkImage("kh_uisdk_check_circle"))
-                KarhooAsyncImage(
-                    urlString: viewModel.vehicleImageURL,
-                    frame: CGRect(
-                        x: CGFloat.zero,
-                        y: CGFloat.zero,
-                        width: UIConstants.Dimension.Icon.xxLarge,
-                        height: UIConstants.Dimension.Icon.xxLarge
+                    .frame(
+                        width: UIConstants.Dimension.Icon.xLarge,
+                        height: UIConstants.Dimension.Icon.xLarge
                     )
-                )
+                
+                KarhooAsyncImage(urlString: viewModel.vehicleImageURL)
+                    .frame(
+                        width: 80,
+                        height: 80)
+                .offset(x: -5)
             }
+            .frame(height: UIConstants.Dimension.Icon.xxLarge)
             
             // Address
             

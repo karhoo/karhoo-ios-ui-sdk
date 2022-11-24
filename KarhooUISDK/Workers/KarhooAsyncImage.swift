@@ -11,12 +11,6 @@ import SwiftUI
 
 struct KarhooAsyncImage: View {
     var urlString: String
-    var frame: CGRect = CGRect(
-        x: CGFloat.zero,
-        y: CGFloat.zero,
-        width: UIConstants.Dimension.Icon.standard,
-        height: UIConstants.Dimension.Icon.standard
-    )
     
     @ObservedObject var imageLoader = ImageLoaderService()
     @State var image: UIImage = UIImage()
@@ -25,7 +19,6 @@ struct KarhooAsyncImage: View {
         Image(uiImage: image)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: frame.width, height: frame.height)
             .onReceive(imageLoader.$image) { image in
                 self.image = image
             }
