@@ -92,6 +92,6 @@ protocol BookingRouter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     )
 }

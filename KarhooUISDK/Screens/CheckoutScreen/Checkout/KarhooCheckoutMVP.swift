@@ -60,3 +60,8 @@ extension CheckoutView {
         set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
 }
+
+public struct KarhooCheckoutResult {
+    var tripInfo: TripInfo
+    var showTripDetails: Bool = false
+}

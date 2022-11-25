@@ -90,9 +90,9 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Trip booked
-    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: JourneyDetails) {
-        if let trip = result.completedValue() {
-            handleNewlyBooked(trip: trip,
+    private func bookingRequestCompleted(result: ScreenResult<KarhooCheckoutResult>, quote: Quote, details: JourneyDetails) {
+        if let checkoutResult = result.completedValue() {
+            handleNewlyBooked(result: checkoutResult,
                               quote: quote,
                               journeyDetails: details)
             return
@@ -110,9 +110,11 @@ final class KarhooBookingPresenter {
         populate(with: journeyDetails)
     }
 
-    private func handleNewlyBooked(trip: TripInfo,
+    private func handleNewlyBooked(result: KarhooCheckoutResult,
                                    quote: Quote,
                                    journeyDetails: JourneyDetails) {
+        let trip = result.tripInfo
+        
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
@@ -130,9 +132,13 @@ final class KarhooBookingPresenter {
         default:
             if journeyDetails.isScheduled {
                 view?.reset()
-                showPrebookConfirmation(quote: quote,
-                                        trip: trip,
-                                        journeyDetails: journeyDetails)
+                
+                if result.showTripDetails {
+                    self.prebookConfirmationCompleted(
+                        result: ScreenResult.completed(result: .rideDetails),
+                        trip: trip
+                    )
+                }
             } else {
                 view?.showAllocationScreen(trip: trip)
             }
@@ -294,41 +300,6 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     // MARK: Prebook
-    func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
-        let masterViewModel = KarhooBottomSheetViewModel(
-            title: UITexts.Booking.prebookConfirmed
-        ) {
-            self.view?.dismiss(animated: true, completion: nil)
-        }
-
-        let contentViewModel = KarhooBookingConfirmationViewModel(
-            journeyDetails: journeyDetails,
-            quote: quote,
-            shouldShowLoyalty: true
-        ) {
-            self.view?.dismiss(animated: true, completion: nil)
-            self.prebookConfirmationCompleted(result: ScreenResult.completed(result: .rideDetails), trip: trip)
-        }
-
-         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
-         let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
-             KarhooBookingConfirmationView(viewModel: contentViewModel)
-         }
-
-        view?.present(sheet, animated: true)
-         
-         
-//        let prebookConfirmation = prebookConfirmationScreenBuilder
-//            .buildPrebookConfirmationScreen(quote: quote,
-//                                            journeyDetails: journeyDetails,
-//                                            confirmationCallback: { [weak self] result in
-//                                                self?.view?.dismiss(animated: true, completion: nil)
-//                                                self?.prebookConfirmationCompleted(result: result, trip: trip)
-//            })
-//
-//        prebookConfirmation.modalTransitionStyle = .crossDissolve
-//        view?.showAsOverlay(item: prebookConfirmation, animated: true)
-    }
 
     func prebookConfirmationCompleted(result: ScreenResult<PrebookConfirmationAction>, trip: TripInfo) {
         guard let action = result.completedValue() else {

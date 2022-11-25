@@ -18,7 +18,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             quote: Quote,
             journeyDetails: JourneyDetails,
             bookingMetadata: [String: Any]?,
-            callback: @escaping ScreenResultCallback<TripInfo>
+            callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(

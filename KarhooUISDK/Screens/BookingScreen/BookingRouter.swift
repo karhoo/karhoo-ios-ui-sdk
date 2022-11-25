@@ -37,7 +37,7 @@ class KarhooBookingRouter: BookingRouter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     ) {
         guard let builder = checkoutScreenBuilder else {
             assertionFailure()

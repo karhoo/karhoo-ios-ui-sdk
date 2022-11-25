@@ -60,65 +60,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mapView.set(userMarkerVisible: true)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        let masterViewModel = KarhooBottomSheetViewModel(
-//            title: UITexts.Booking.prebookConfirmed
-//        ) {
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//        
-//        let contentViewModel = KarhooBookingConfirmationViewModel(
-//            journeyDetails: JourneyDetails(),
-//            quote: getRandomQuote(),
-//            shouldShowLoyalty: true
-//        ) {
-//            //self?.prebookConfirmationCompleted(result: result, trip: trip)
-//            print("Show details")
-//        }
-//         
-//         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
-//         let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
-//             KarhooBookingConfirmationView(viewModel: contentViewModel)
-//         }
-//        
-//        present(sheet, animated: true)
-//    }
-//    
-//    func getRandomQuote(quoteId: String = "1234",
-//                              availabilityId: String = "12345",
-//                              fleetName: String = "My Fleet",
-//                              highPrice: Int = 1000,
-//                              lowPrice: Int = 100,
-//                              qtaHighMinutes: Int = 10,
-//                              qtaLowMinutes: Int = 1,
-//                              quoteType: QuoteType = .fixed,
-//                              categoryName: String = "Standard",
-//                              currencyCode: String = "GBP",
-//                              source: QuoteSource = .market,
-//                              pickUpType: PickUpType = .default,
-//                              passengerCapacity: Int = 1,
-//                              luggageCapacity: Int = 2,
-//                              type: String = "Standard",
-//                              serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()) -> Quote {
-//        let price = QuotePrice(highPrice: Double(highPrice),
-//                               lowPrice: Double(lowPrice),
-//                               currencyCode: currencyCode,
-//                               intLowPrice: lowPrice,
-//                               intHighPrice: highPrice)
-//        let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
-//        let fleet = Fleet(name: fleetName)
-//        let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
-//        return Quote(id: quoteId,
-//                     quoteType: quoteType,
-//                     source: source,
-//                     pickUpType: pickUpType,
-//                     fleet: fleet,
-//                     vehicle: vehicle,
-//                     price: price,
-//                     validity: 1,
-//                     serviceLevelAgreements: serviceLevelAgreements ?? ServiceAgreements())
-//    }
-
     private func setUpView() {
         presenter.load(view: self)
         
