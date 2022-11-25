@@ -14,7 +14,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     private var testObject: KarhooCheckoutPresenter!
     private var mockView: MockCheckoutView = MockCheckoutView()
     private var testQuote: Quote = TestUtil.getRandomQuote(highPrice: 10)
-    private var testCallbackResult: ScreenResult<TripInfo>?
+    private var testCallbackResult: ScreenResult<KarhooCheckoutResult>?
     private var mockThreeDSecureProvider = MockThreeDSecureProvider()
     private var mockTripService = MockTripService()
     private var mockJourneyDetails = TestUtil.getRandomJourneyDetails()
@@ -253,7 +253,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
 //        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
-    private func guestBookingRequestTrip(result: ScreenResult<TripInfo>) {
+    private func guestBookingRequestTrip(result: ScreenResult<KarhooCheckoutResult>) {
         testCallbackResult = result
     }
 

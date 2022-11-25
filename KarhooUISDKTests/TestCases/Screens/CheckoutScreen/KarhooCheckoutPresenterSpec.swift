@@ -16,7 +16,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
     private var mockView: MockCheckoutView!
     private var testQuote: Quote!
     private var testJourneyDetails: JourneyDetails!
-    private var testCallbackResult: ScreenResult<TripInfo>?
+    private var testCallbackResult: ScreenResult<KarhooCheckoutResult>?
     private var mockUserService: MockUserService!
     private var mockTripService: MockTripService!
     private var mockAppStateNotifier: MockAppStateNotifier!
@@ -470,7 +470,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
 
     }
 
-    private func bookingRequestTrip(result: ScreenResult<TripInfo>) {
+    private func bookingRequestTrip(result: ScreenResult<KarhooCheckoutResult>) {
         testCallbackResult = result
     }
 
