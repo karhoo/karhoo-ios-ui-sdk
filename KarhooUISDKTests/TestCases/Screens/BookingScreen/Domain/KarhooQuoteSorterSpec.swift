@@ -8,6 +8,7 @@
 
 import KarhooSDK
 import XCTest
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class KarhooQuoteSorterSpec: KarhooTestCase {

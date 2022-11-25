@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Vorautorisieren";
+"adyen.submitButton" = "TRANSAKTION AUTORISIEREN";
 
-"adyen.submitButton.formatted" = "Vorautorisieren %@";
+"adyen.submitButton.formatted" = "TRANSAKTION AUTORISIEREN";
 
 /* English: Error codes */
 "K0001" = "Allgemeiner Anfragefehler";
@@ -20,8 +20,6 @@
 /* User errors, K1xxx */
 "K1001" = "Benutzer konnte nicht registriert werden";
 
-"K1002" = "Benutzer konnte nicht registriert werden (Benutzer existiert bereits)";
-
 "K1003" = "Benutzer konnte nicht registriert werden (ungültige Anfrage).";
 
 "K1004" = "Benutzer konnte nicht registriert werden (ungültige Telefonnummer)";
@@ -29,8 +27,6 @@
 "K1005" = "Konnte keine Benutzerdetails erhalten (ungültiges Token)";
 
 "K1006" = "Benutzerdetails konnten nicht abgerufen werden (Benutzer existiert nicht)";
-
-"K1999" = "Der Benutzer wurde erstellt, aber noch nicht autorisiert. Wir werden uns melden, sobald er aktiviert ist.";
 
 /* Locations errors, K2xxx */
 "K2001" = "Adresse konnte nicht ermittelt werden";
@@ -71,15 +67,9 @@
 
 "K4014" = "Konnte als Agent keine Reise buchen";
 
-"K4015" = "Konnte als Reisender keine Reise buchen";
-
-"k4015" = "Konnte als Reisender keine Reise buchen";
-
 "K4018" = "Die Reise konnte nicht gebucht werden, da dieses Angebot nicht mehr verfügbar ist.";
 
 "K4020" = "Konnte keine Reise mit dem ausgewählten DMS buchen";
-
-"K4025" = "Angebotspreis während der Buchung erhöht";
 
 /* Availability errors, K5xxx */
 "K5001" = "Konnte keine Schätzungen erhalten";
@@ -88,19 +78,9 @@
 
 "K5003" = "Keine Verfügbarkeit (keine Kategorien im gewünschten Bereich gefunden)";
 
-/* Authentication errors K6xxx */
-"K6001" = "E-Mail oder Passwort ungültig. Bitte versuchen Sie es erneut";
+"kh_uisdk_loyalty_info_add_points" = "%@ Die Treuepunkte werden am Ende der Fahrt Ihrem Konto gutgeschrieben.";
 
-/* KPOI errors, K7xxx */
-"K7001" = "KPOI-Anfrage konnte nicht verarbeitet werden";
-
-"K7002" = "Karhoo POI mit passender ID konnte nicht gefunden werden";
-
-"K7003" = "Konnte Karhoo POI nicht lesen";
-
-"K7004" = "Karhoo POI konnte nicht geschrieben werden";
-
-"K7005" = "Karhoo POI konnte nicht gelöscht werden";
+"kh_uisdk_loyalty_info_remove_points" = "%@ Die Treuepunkte werden am Ende der Fahrt von Ihrem Kontostand abgezogen.";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Etwas ist schief gelaufen, aber wir wissen nicht, was es war.";
@@ -234,9 +214,6 @@
 
 "Text.Booking.RequestReceived" = "Erhaltene Buchung";
 
-/* Accessibility hint for prebook feature entry point */
-"Text.Booking.ScheduleRide" = "Planen Sie die Fahrt";
-
 "Text.Booking.TrainTracking" = "Zugverfolgung";
 
 "Text.Bookings.Alert.CancellationFee.Charge" = "Ihnen wird eine Stornierungsgebühr in Rechnung gestellt, die auf %1$@ geschätzt wird.\n\nMöchten Sie fortfahren?";
@@ -314,8 +291,6 @@
 /* The title of the alert when user is forced to update ie "App Update Required" */
 "Text.Error.Alert.ForceUpdateTitle" = "Neue Version verfügbar";
 
-"Text.Error.Booking.EnterDestinationToProceed" = "Zielort eingeben, um eine Fahrt zu buchen";
-
 /* Errors */
 "Text.Error.EmailValidationError" = "Überprüfen Sie die korrekte Schreibweise Ihrer E-Mail-Adresse";
 
@@ -329,8 +304,6 @@
 
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Ups, da ist etwas schief gelaufen. Bitte versuchen Sie es erneut.";
-
-"Text.Error.NotLoggedIn" = "Sie sind nicht eingeloggt";
 
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Karte aktualisieren";
 
@@ -383,8 +356,6 @@
 
 "Text.FleetCapabilities.VehicleDetails" = "Fahrzeug-Details";
 
-"Text.Generic.All" = "Alle";
-
 "Text.Generic.Back" = "Zurück";
 
 "Text.Generic.Bookings" = "Buchungen";
@@ -411,11 +382,7 @@
 /* "Completed" */
 "Text.Generic.Completed" = "Abgeschlossen";
 
-"Text.Generic.Continue" = "Weitermachen";
-
 "Text.Generic.Destination" = "Zielort";
-
-"Text.Generic.Dismiss" = "ENTLASSEN";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Bearbeiten";
@@ -430,8 +397,6 @@
 
 /* English: "Estimated" */
 "Text.Generic.Estimated" = "Geschätzt";
-
-"Text.Generic.ETA" = "Geschätzte Ankunft";
 
 "Text.Generic.ETALong" = "Geschätzte Ankunftszeit";
 
@@ -506,8 +471,6 @@
 
 "Text.Generic.Submit" = "UNTERZEICHNUNG";
 
-"Text.Generic.Success" = "Erfolg";
-
 "Text.Generic.Surname" = "Nachname";
 
 "Text.Generic.TermsConditions" = "Geschäftsbedingungen";
@@ -517,20 +480,11 @@
 /* "Thanks for your interest" */
 "Text.Generic.Thanks" = "Danke für Ihr Interesse";
 
-/* Booker cancelled */
-"Text.Generic.TripStatus.BookerCancelled" = "Abgebrochen";
-
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Message" = "Es dauert länger als gewöhnlich, bis die Flotte einen Fahrer zuweist. Bitte warten Sie, kontaktieren Sie die Flotte oder stornieren Sie und buchen Sie bei einer anderen Flotte neu.";
 
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Verzögerung bei der Zuteilung";
-
-/* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Vom Fahrer/Versand storniert";
-
-/* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "Keine Treiber verfügbar";
 
 "Text.Generic.Unchecked" = "Nicht angekreuzt";
 
@@ -562,9 +516,6 @@
 
 /* english: requested */
 "Text.GenericTripStatus.Requested" = "Erwünscht";
-
-/* "Pending" */
-"Text.GenericTripStatus.Unknown" = "ausstehend";
 
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
@@ -615,8 +566,6 @@
 "Text.Quote.FreeCancellationPrebook" = "Kostenlose Stornierung bis zu %1$@ vor der Abholung";
 
 "Text.Quote.FreeWaitingTime" = "Kostenlose Wartezeit";
-
-"Text.Quote.Results" = "%1$@ Ergebnisse";
 
 "Text.QuoteCategory.Electric" = "Electric";
 
@@ -697,9 +646,6 @@
 
 "Text.SideMenu.Help" = "Hilfe";
 
-/* Side Menu */
-"Text.SideMenu.Login" = "Anmelden";
-
 /* "Profile" button on the side menu */
 "Text.SideMenu.Profile" = "Profil";
 
@@ -710,8 +656,6 @@
 
 /* Sign Out on the side menu */
 "Text.SideMenu.SignOut" = "Abmeldung";
-
-"Text.SideMenu.Signup" = "Registrieren";
 
 /* In app email to customer support / feedback */
 "Text.SupportMailMessage.Feedback" = "Bitte löschen Sie diese Informationen nicht, da sie uns helfen, die App zu verbessern.";
@@ -765,9 +709,6 @@
 
 "Text.Trip.CancelBookingConfirmation.Alert.Title" = "Ihre Fahrt absagen?";
 
-/* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
-"Text.Trip.CancelBookingFailed" = "Stornierung nicht bestätigt, bitte rufen Sie den Anbieter an";
-
 "Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Flotte anrufen";
 
 "Text.Trip.CancelBookingFailed.AlertMessage" = "Wir haben Probleme, Ihre Fahrt zu stornieren. Bitte kontaktieren Sie die Flotte.";
@@ -798,11 +739,6 @@
 
 /* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
 "Text.Trip.KarhooCancelled.AlertTitle" = "Problem Buchung";
-
-"Text.Trip.MessageDriver" = "Nachrichtentreiber";
-
-/* For when demand is too high and there are no drivers available */
-"Text.Trip.NoDriversAvailable" = "Keine Treiber verfügbar";
 
 /* Alert message in popup when dispatch cancels due to no drivers */
 "Text.Trip.NoDriversAvailable.AlertMessage" = "Leider ist die Nachfrage hoch. %1$@ hat keine verfügbaren Fahrer.";

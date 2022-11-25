@@ -8,7 +8,7 @@
 
 import XCTest
 import KarhooSDK
-
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class RideDetailsStackButtonPresenterSpec: KarhooTestCase {
