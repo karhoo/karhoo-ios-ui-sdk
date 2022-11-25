@@ -31,7 +31,7 @@ struct KarhooBottomSheet<Content: View>: View {
             VStack(spacing: 0.0) {
                 HStack {
                     Text(viewModel.title)
-                        .font(Font(KarhooUI.fonts.headerBold()))
+                        .font(Font(KarhooUI.fonts.title2Bold()))
                         .foregroundColor(KarhooUI.colors.text.getColor())
                     Spacer()
                         .background(Color.clear)
@@ -66,9 +66,9 @@ struct KarhooBottomSheet<Content: View>: View {
                 content()
                 .padding(
                     EdgeInsets(
-                        top: 0,
+                        top: UIConstants.Spacing.standard,
                         leading: UIConstants.Spacing.standard,
-                        bottom: 0,
+                        bottom: UIConstants.Spacing.standard,
                         trailing: UIConstants.Spacing.standard
                     )
                 )
@@ -95,7 +95,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
             }
         })
-        .colorScheme(.light) // Delete this line after dark mode modifications
+        //.colorScheme(.light) // Delete this line after dark mode modifications
         .background(
             LinearGradient(
                 colors: [

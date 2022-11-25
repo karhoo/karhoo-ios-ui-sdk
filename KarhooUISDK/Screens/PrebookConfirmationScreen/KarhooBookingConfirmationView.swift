@@ -49,9 +49,11 @@ struct KarhooBookingConfirmationView: View {
                 VStack {
                     Text(viewModel.printedTime)
                         .font(Font(KarhooUI.fonts.titleBold()))
+                        .foregroundColor(KarhooUI.colors.text.getColor())
                     
                     Text(viewModel.printedDate)
                         .font(Font(KarhooUI.fonts.bodyRegular()))
+                        .foregroundColor(KarhooUI.colors.text.getColor())
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 
@@ -62,9 +64,11 @@ struct KarhooBookingConfirmationView: View {
                 VStack {
                     Text(viewModel.printedPrice)
                         .font(Font(KarhooUI.fonts.titleBold()))
+                        .foregroundColor(KarhooUI.colors.text.getColor())
                     
                     Text(viewModel.printedPriceType)
                         .font(Font(KarhooUI.fonts.bodyRegular()))
+                        .foregroundColor(KarhooUI.colors.text.getColor())
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
             }
@@ -105,7 +109,6 @@ struct KarhooMainButton: View {
             Text(title)
                 .font(Font(KarhooUI.fonts.headerBold()))
                 .foregroundColor(KarhooUI.colors.white.getColor())
-                
         }
         .frame(
             minWidth: 0,
