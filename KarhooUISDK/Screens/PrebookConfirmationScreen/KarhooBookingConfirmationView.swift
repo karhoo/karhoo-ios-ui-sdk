@@ -28,7 +28,7 @@ struct KarhooBookingConfirmationView: View {
         VStack(spacing: UIConstants.Spacing.standard, content: {
             // Icons
             HStack(alignment: .top, spacing: 0) {
-                Image(uiImage:  UIImage.uisdkImage("kh_uisdk_check_circle"))
+                Image(uiImage: UIImage.uisdkImage("kh_uisdk_check_circle"))
                     .frame(
                         width: UIConstants.Dimension.Icon.xLarge,
                         height: UIConstants.Dimension.Icon.xLarge

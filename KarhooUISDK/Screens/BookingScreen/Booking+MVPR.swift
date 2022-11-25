@@ -78,7 +78,7 @@ protocol BookingPresenter {
 
 public enum BookingScreenResult {
     case tripAllocated(tripInfo: TripInfo)
-    case prebookConfirmed(tripInfo: TripInfo, prebookConfirmationAction: PrebookConfirmationAction)
+    case prebookConfirmed(tripInfo: TripInfo)
     case bookingFailed(error: KarhooError)
 }
 
