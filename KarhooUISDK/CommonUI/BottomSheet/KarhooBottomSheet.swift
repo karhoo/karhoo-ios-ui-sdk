@@ -95,7 +95,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
             }
         })
-        //.colorScheme(.light) // Delete this line after dark mode modifications
+        .colorScheme(.light) // Delete this line after dark mode modifications
         .background(
             LinearGradient(
                 colors: [

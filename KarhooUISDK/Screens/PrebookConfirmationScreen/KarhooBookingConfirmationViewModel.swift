@@ -15,12 +15,56 @@ protocol BookingConfirmationViewModel {
     var vehicleImagePlaceholder: String { get set }
     var journeyDetails: JourneyDetails { get set }
     var quote: Quote { get set }
-    var shouldShowLoyalty: Bool { get set }
+    var loyaltyInfo: BookingConfirmationLoyaltyInfo { get set }
     
     func dismiss()
 }
 
 extension BookingConfirmationViewModel {
+    var printedPickUpAddressLine1: String {
+        journeyDetails.originLocationDetails?.address.displayAddress ?? ""
+    }
+    
+    var printedPickUpAddressLine2: String {
+        var result = ""
+        
+        if let city = journeyDetails.originLocationDetails?.address.city {
+            result += "\(city) "
+        }
+        
+        if let postalCode = journeyDetails.originLocationDetails?.address.postalCode {
+            result += postalCode
+        }
+        
+        if let country = journeyDetails.originLocationDetails?.address.countryCode {
+            result += ", \(country)"
+        }
+        
+        return result
+    }
+    
+    var printedDropOffAddressLine1: String {
+        journeyDetails.destinationLocationDetails?.address.displayAddress ?? ""
+    }
+    
+    var printedDropOffAddressLine2: String {
+        var result = ""
+        
+        if let city = journeyDetails.destinationLocationDetails?.address.city {
+            result += "\(city) "
+        }
+        
+        if let postalCode = journeyDetails.destinationLocationDetails?.address.postalCode {
+            result += postalCode
+        }
+        
+        if let country = journeyDetails.destinationLocationDetails?.address.countryCode {
+            result += ", \(country)"
+        }
+        
+        return result
+    }
+    
     var printedDate: String {
         guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
             return ""
@@ -54,25 +98,32 @@ extension BookingConfirmationViewModel {
     }
 }
 
+protocol BookingConfirmationLoyaltyInfo {
+    var shouldShowLoyalty: Bool { get set }
+    var loyaltyPoints: Int { get set }
+    var loyaltyMode: LoyaltyMode { get set }
+}
+
 class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     var vehicleImagePlaceholder: String = "kh_uisdk_supplier_logo_placeholder"
     
     var vehicleImageURL: String = ""
     var journeyDetails: JourneyDetails
     var quote: Quote
-    var shouldShowLoyalty: Bool
+    var loyaltyInfo: BookingConfirmationLoyaltyInfo
+    
     private var callback: () -> Void
     
     init(
         journeyDetails: JourneyDetails,
         quote: Quote,
-        shouldShowLoyalty: Bool,
+        loyaltyInfo: BookingConfirmationLoyaltyInfo,
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         callback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
         self.quote = quote
-        self.shouldShowLoyalty = shouldShowLoyalty
+        self.loyaltyInfo = loyaltyInfo
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
@@ -86,4 +137,10 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
             self?.vehicleImageURL = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
+}
+
+struct KarhooBookingConfirmationLoyaltyInfo: BookingConfirmationLoyaltyInfo {
+    var shouldShowLoyalty: Bool
+    var loyaltyPoints: Int
+    var loyaltyMode: LoyaltyMode
 }

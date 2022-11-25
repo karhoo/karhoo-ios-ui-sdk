@@ -294,6 +294,9 @@ final class KarhooLoyaltyView: UIView {
 
 // MARK: - LoyaltyView
 extension KarhooLoyaltyView: LoyaltyView {
+    var currentNumberOfPointsDisplayed: Int {
+        presenter.getCurrentNumberOfPointsDisplayed()
+    }
     
     func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
         presenter.set(dataModel: dataModel, quoteId: quoteId)

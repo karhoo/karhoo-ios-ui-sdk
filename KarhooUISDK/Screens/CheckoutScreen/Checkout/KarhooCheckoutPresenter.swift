@@ -514,10 +514,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             self.closeCheckoutScreen(result: result)
         }
 
-        let contentViewModel = KarhooBookingConfirmationViewModel(
+        let slaveViewModel = KarhooBookingConfirmationViewModel(
             journeyDetails: journeyDetails,
             quote: quote,
-            shouldShowLoyalty: true
+            loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+                shouldShowLoyalty: isLoyaltyEnabled(),
+                loyaltyPoints: view?.currentLoyaltyPoints ?? 0,
+                loyaltyMode: view?.currentLoyaltyMode ?? .none
+            )
         ) {
             self.view?.dismiss(animated: true, completion: nil)
             let checkoutResult = self.updateCheckoutResponseForShowDetails(result: result)
@@ -526,7 +530,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
          let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
          let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
-             KarhooBookingConfirmationView(viewModel: contentViewModel)
+             KarhooBookingConfirmationView(viewModel: slaveViewModel)
          }
 
         view?.present(sheet, animated: true)

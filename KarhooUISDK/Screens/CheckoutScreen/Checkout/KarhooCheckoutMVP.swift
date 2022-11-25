@@ -24,6 +24,9 @@ protocol CheckoutPresenter {
 
 protocol CheckoutView: BaseViewController {
     var areTermsAndConditionsAccepted: Bool { get }
+    var currentLoyaltyMode: LoyaltyMode { get }
+    var currentLoyaltyPoints: Int { get }
+    
     func setRequestingState()
     func setRequestedState()
     func setAddFlightDetailsState()

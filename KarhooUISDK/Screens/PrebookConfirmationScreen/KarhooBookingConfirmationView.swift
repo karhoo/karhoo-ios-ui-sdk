@@ -43,6 +43,17 @@ struct KarhooBookingConfirmationView: View {
             .frame(height: UIConstants.Dimension.Icon.xxLarge)
             
             // Address
+            KarhooAddressView(
+                pickUp: KarhooAddressView.AddressLabel.init(
+                    text: viewModel.printedPickUpAddressLine1,
+                    subtext: viewModel.printedPickUpAddressLine2
+                ),
+                destination: KarhooAddressView.AddressLabel.init(
+                    text: viewModel.printedDropOffAddressLine1,
+                    subtext: viewModel.printedDropOffAddressLine2
+                ),
+                design: .borderedWithWhiteBackground
+            )
             
             // Time and Price
             HStack {
@@ -75,7 +86,13 @@ struct KarhooBookingConfirmationView: View {
             .frame(minWidth: 0, maxWidth: .infinity)
             
             // Loyalty
-            if viewModel.shouldShowLoyalty {
+            if viewModel.loyaltyInfo.shouldShowLoyalty {
+                KarhooLoyaltyInformationView.init(
+                    viewModel: KarhooLoyaltyInformationView.ViewModel.init(
+                        mode: viewModel.loyaltyInfo.loyaltyMode,
+                        pointsToBeModified: viewModel.loyaltyInfo.loyaltyPoints
+                    )
+                )
             }
             
             // Add to calendar
@@ -93,7 +110,11 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
         KarhooBookingConfirmationView(viewModel: KarhooBookingConfirmationViewModel(
             journeyDetails: JourneyDetails(),
             quote: Quote(),
-            shouldShowLoyalty: true,
+            loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+                shouldShowLoyalty: true,
+                loyaltyPoints: 25,
+                loyaltyMode: .burn
+            ),
             callback: {
                 
             }))
