@@ -38,7 +38,7 @@ target 'KarhooUISDK' do
   pod 'SwiftFormat/CLI', '~> 0.49'
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
-  pod 'Adyen', '4.7.1'
+  pod 'Adyen', '4.7.2'
   
   target 'KarhooUISDKTests' do
     inherit! :complete
