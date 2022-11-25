@@ -1,30 +1,30 @@
 PODS:
-  - Adyen (4.7.1):
-    - Adyen/Actions (= 4.7.1)
-    - Adyen/Card (= 4.7.1)
-    - Adyen/Components (= 4.7.1)
-    - Adyen/Core (= 4.7.1)
-    - Adyen/DropIn (= 4.7.1)
-    - Adyen/Encryption (= 4.7.1)
-  - Adyen/Actions (4.7.1):
+  - Adyen (4.7.2):
+    - Adyen/Actions (= 4.7.2)
+    - Adyen/Card (= 4.7.2)
+    - Adyen/Components (= 4.7.2)
+    - Adyen/Core (= 4.7.2)
+    - Adyen/DropIn (= 4.7.2)
+    - Adyen/Encryption (= 4.7.2)
+  - Adyen/Actions (4.7.2):
     - Adyen/Core
-    - Adyen3DS2 (= 2.2.4)
-  - Adyen/Card (4.7.1):
-    - Adyen/Core
-    - Adyen/Encryption
-  - Adyen/Components (4.7.1):
+    - Adyen3DS2 (= 2.2.5)
+  - Adyen/Card (4.7.2):
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Core (4.7.1):
+  - Adyen/Components (4.7.2):
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Core (4.7.2):
     - AdyenNetworking (= 1.0.0)
-  - Adyen/DropIn (4.7.1):
+  - Adyen/DropIn (4.7.2):
     - Adyen/Actions
     - Adyen/Card
     - Adyen/Components
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Encryption (4.7.1)
-  - Adyen3DS2 (2.2.4)
+  - Adyen/Encryption (4.7.2)
+  - Adyen3DS2 (2.2.5)
   - AdyenNetworking (1.0.0)
   - Braintree/Card (4.38.0):
     - Braintree/Core
@@ -63,7 +63,7 @@ PODS:
   - KarhooUISDK (1.9.4):
     - KarhooUISDK/Core (= 1.9.4)
   - KarhooUISDK/Adyen (1.9.4):
-    - Adyen (= 4.7.1)
+    - Adyen (= 4.7.2)
     - KarhooUISDK/Core
   - KarhooUISDK/Braintree (1.9.4):
     - Braintree/PaymentFlow (~> 4.37)
@@ -87,7 +87,7 @@ PODS:
   - SwiftLint (0.49.1)
 
 DEPENDENCIES:
-  - Adyen (= 4.7.1)
+  - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
   - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-3663-add-adyen-payment-errors`)
@@ -130,13 +130,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
-  Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
-  Adyen3DS2: ab81415419e1269b95ec01502d18912985806351
+  Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
+  Adyen3DS2: 48659258ad7a9ff6c212b80dcbda3e63f2b4a236
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   KarhooSDK: 1fc3b4a0481ad223c3fee97425270af735342425
-  KarhooUISDK: e844aef6e99403a5b45406fe4438252181a32bf4
+  KarhooUISDK: b01270a406e5b1018484ce79c2a604d1d1df3ccb
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
@@ -146,6 +146,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 61cda3819dc3a7d69795ce0430e1e1d53c4a4fb2
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: fb0b8d58fa8c71cf75c559688895e8f75eabddc5
+PODFILE CHECKSUM: e651df32a2ea692d0979a800263c718978db8dc1
 
 COCOAPODS: 1.11.3
