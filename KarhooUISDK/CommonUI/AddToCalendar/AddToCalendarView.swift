@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+/// View Presenting add-to-calendar option. It does not have any actual logic implemented. To add event to the calendar, please handle `viewModel.onAddAction` and use `AddToCalendarWorker`.
+/// If succeeded, set `viewModel.state` to `.added`, to change design from button, to success information label.
 struct KarhooAddToCalendarView: View {
 
     // MARK: - Nested types
@@ -47,7 +49,7 @@ struct KarhooAddToCalendarView: View {
                 viewModel.addTapped()
             },
             label: {
-                HStack(spacing: 8) {
+                HStack(spacing: UIConstants.Spacing.small) {
                     Image("kh_uisdk_calendar", bundle: .current)
                         .resizable()
                         .frame(
@@ -55,7 +57,7 @@ struct KarhooAddToCalendarView: View {
                             height: Constants.calendarIconSide
                         )
                         .foregroundColor(Color(KarhooUI.colors.accent))
-                    Text("Add to calendar")
+                    Text(UITexts.TripSummary.addToCalendar)
                         .font(Font(KarhooUI.fonts.bodyBold()))
                         .foregroundColor(Color(KarhooUI.colors.accent))
                 }
@@ -74,7 +76,7 @@ struct KarhooAddToCalendarView: View {
                     height: UIConstants.Dimension.Icon.medium
                 )
                 .foregroundColor(Color(KarhooUI.colors.white))
-            Text("TRIP ADDED TO CALENDAR")
+            Text(UITexts.TripSummary.addedToCalendar)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .foregroundColor(Color(KarhooUI.colors.white))
         }

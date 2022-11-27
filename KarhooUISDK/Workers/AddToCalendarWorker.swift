@@ -39,16 +39,12 @@ final class KarhooAddToCalendarWorker: AddToCalendarWorker {
             return false
         }
         let event = EKEvent(eventStore: eventStore)
-        event.title = "Ride to \(trip.destination?.displayAddress ?? "")"
+        event.title = String(format: UITexts.TripSummary.calendarEventTitle, trip.destination?.displayAddress ?? "")
         event.startDate = startDate
-        event.endDate = startDate.addingTimeInterval(TimeInterval(trip.tripQuote.qtaHighMinutes * 60))
-        event.notes = """
-        \(trip.origin.displayAddress) –> \(trip.destination?.displayAddress ?? "")
-        \(startDate.toString(format: .longReadable))
-        \(trip.fleetInfo.name)
-        \(trip.trainNumber)
-        \(trip.flightNumber)
-        """
+        event.endDate = startDate.addingTimeInterval(TimeInterval(trip.tripQuote.qtaHighMinutes))
+        event.addAlarm(EKAlarm(relativeOffset: -60*60))
+        event.addAlarm(EKAlarm(relativeOffset: -3*60*60))
+        event.notes = buildNotes(for: trip)
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.save(event, span: .thisEvent)
@@ -57,5 +53,30 @@ final class KarhooAddToCalendarWorker: AddToCalendarWorker {
             print("Error saving event in calendar: \(error)")
             return false
         }
+    }
+
+    private func buildNotes(for trip: TripInfo) -> String {
+        var trainNumberDescription: String {
+            guard trip.trainNumber.isNotEmpty else {
+                return ""
+            }
+            return "\(UITexts.TripSummary.trainNumber): \(trip.trainNumber)"
+        }
+        var flightNumberDescription: String {
+            guard trip.flightNumber.isNotEmpty else {
+                return ""
+            }
+            return "\(UITexts.TripSummary.flightNumber): \(trip.flightNumber)"
+        }
+
+        return """
+        \(UITexts.TripSummary.tripSummary)
+        \(trip.origin.displayAddress) –> \(trip.destination?.displayAddress ?? "")
+        \(UITexts.TripSummary.date): \(startDate.toString(format: .longReadable))
+        \(UITexts.TripSummary.fleet): \(trip.fleetInfo.name)
+        \(UITexts.TripSummary.vehicle): \(trip.vehicle.description)
+        \(trainNumber)
+        \(flightNumber)
+        """
     }
 }

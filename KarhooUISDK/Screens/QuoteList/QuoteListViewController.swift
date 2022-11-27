@@ -43,11 +43,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
                         state: .add,
                         onAddAction: { viewModel in
                             let trip = TripInfo(
-                                origin: TripLocationDetails(displayAddress: "ul. Bobrowa 12, Kraków"),
-                                destination: TripLocationDetails(displayAddress: "Pałac Kultury w Warszawie"),
+                                origin: TripLocationDetails(displayAddress: "Sample origin display address"),
+                                destination: TripLocationDetails(displayAddress: "Sample destination display address"),
                                 dateScheduled: Date().addingTimeInterval(60*60*24),
-                                quote: TripQuote(qtaHighMinutes: 60), fleetInfo: FleetInfo(name: "Karhoo MyTaxi"),
-                                trainNumber: "IC-45124"
+                                quote: TripQuote(qtaHighMinutes: 60),
+                                fleetInfo: FleetInfo(name: "Sample-Fleet-Name"),
+                                flightNumber: "Sample-Flight-Number",
+                                trainNumber: "Sample-Train-Number"
                             )
                             self.calendarWorker.addToCalendar(trip) { addedSuccessfully in
                                 if addedSuccessfully {
