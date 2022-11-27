@@ -7,3 +7,24 @@
 //
 
 import Foundation
+import SwiftUI
+
+extension KarhooAddToCalendarView {
+    class ViewModel: ObservableObject {
+
+        @Published var state: State = .add
+        var onAddAction: (ViewModel) -> Void
+
+        init(
+            state: KarhooAddToCalendarView.State = .add,
+            onAddAction: @escaping (ViewModel) -> Void
+        ) {
+            self.state = state
+            self.onAddAction = onAddAction
+        }
+
+        func addTapped() {
+            onAddAction(self)
+        }
+    }
+}

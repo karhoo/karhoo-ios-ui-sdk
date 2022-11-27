@@ -17,10 +17,27 @@ extension Optional where Wrapped == Date {
 
 extension Date {
 
+    enum KarhooDateFormat: String {
+        case iso8601
+        case longReadable
+    }
     /// Casts date to string using ISO8601 standard
-    func toString() -> String {
+    func toString(format: KarhooDateFormat = .iso8601) -> String {
+        switch format {
+        case .iso8601:
+            return getISO8601String()
+        case .longReadable:
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .full
+            return formatter.string(from: self)
+        }
+
+    }
+
+    private func getISO8601String() -> String {
         let dateString: String
-        
+
         if #available(iOS 15.0, *) {
             dateString = self.ISO8601Format()
         } else {
@@ -29,7 +46,7 @@ extension Date {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             dateString = formatter.string(from: self)
         }
-        
+
         return dateString
     }
 }

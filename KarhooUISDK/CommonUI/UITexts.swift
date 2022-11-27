@@ -384,6 +384,7 @@ public enum UITexts {
         public static let vehicle = "Text.TripSummary.Vehicle".localized
         public static let totalFare = "Text.TripSummary.TotalFare".localized
         public static let quotedPrice = "Text.TripSummary.QuotedPrice".localized
+        public static let trainNumber = "karhoo_
     }
 
     public enum TripRating {

@@ -8,6 +8,7 @@
 
 import KarhooSDK
 import UIKit
+import SwiftUI
 
 public struct KHQuoteListViewID {
     public static let prebookQuotesTitleLabel = "taxes_and_fees_included_label"
@@ -33,9 +34,33 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.alignment = .fill
         $0.spacing = UIConstants.Spacing.standard
     }
-
+    let calendarWorker = KarhooAddToCalendarWorker()
     private var headerViews: [UIView] {
         [
+            UIHostingController(
+                rootView: KarhooAddToCalendarView(
+                    viewModel: .init(
+                        state: .add,
+                        onAddAction: { viewModel in
+                            let trip = TripInfo(
+                                origin: TripLocationDetails(displayAddress: "ul. Bobrowa 12, Kraków"),
+                                destination: TripLocationDetails(displayAddress: "Pałac Kultury w Warszawie"),
+                                dateScheduled: Date().addingTimeInterval(60*60*24),
+                                quote: TripQuote(qtaHighMinutes: 60), fleetInfo: FleetInfo(name: "Karhoo MyTaxi"),
+                                trainNumber: "IC-45124"
+                            )
+                            self.calendarWorker.addToCalendar(trip) { addedSuccessfully in
+                                if addedSuccessfully {
+                                    viewModel.state = .added
+                                }
+                            }
+                        })
+                )
+            ).then {
+                $0.loadViewIfNeeded()
+                $0.view.translatesAutoresizingMaskIntoConstraints = false
+                $0.view.backgroundColor = .clear
+            }.view!,
             addressPickerView,
             buttonsStackView,
             legalDisclaimerContainer
