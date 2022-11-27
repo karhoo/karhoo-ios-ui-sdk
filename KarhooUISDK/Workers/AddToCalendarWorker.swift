@@ -72,11 +72,11 @@ final class KarhooAddToCalendarWorker: AddToCalendarWorker {
         return """
         \(UITexts.TripSummary.tripSummary)
         \(trip.origin.displayAddress) –> \(trip.destination?.displayAddress ?? "")
-        \(UITexts.TripSummary.date): \(startDate.toString(format: .longReadable))
+        \(UITexts.TripSummary.date): \(trip.dateScheduled?.toString(format: .longReadable) ?? "")
         \(UITexts.TripSummary.fleet): \(trip.fleetInfo.name)
         \(UITexts.TripSummary.vehicle): \(trip.vehicle.description)
-        \(trainNumber)
-        \(flightNumber)
+        \(trainNumberDescription)
+        \(flightNumberDescription)
         """
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 
 extension Optional where Wrapped == Date {
     
-    func toString() -> String? {
-        self?.toString()
+    func toString(format: Date.KarhooDateFormat = .iso8601) -> String {
+        self?.toString(format: format) ?? ""
     }
 }
 
