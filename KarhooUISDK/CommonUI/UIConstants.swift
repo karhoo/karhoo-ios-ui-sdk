@@ -168,7 +168,7 @@ public struct UIConstants {
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
-            // TODO: think of better names
+            // Think of better names
             /// 212 x 212
             public static let findTripSpinnerSize = CGSize(width: 212, height: 212)
             
@@ -189,6 +189,16 @@ public struct UIConstants {
 
             /// 95%
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+
+            static let addressViewDotsColumnWidth: CGFloat = 10
+
+            static let addressViewLabelHeight: CGFloat = 32
+
+            static let addressViewPadding: CGFloat = 10
+
+            static let addressViewRoundIconSide: CGFloat = 10
+
+            static let addressViewMinimumScaleFactor: CGFloat = 0.7
         }
     }
     
@@ -207,6 +217,9 @@ public struct UIConstants {
 
         /// 12
         public static let xLarge: CGFloat = 12
+        
+        /// 16
+        public static let xxLarge: CGFloat = 16
     }
     
     public struct ShadowRadius {
@@ -260,6 +273,7 @@ public struct UIConstants {
         /// 0.5
         public static let shadow: CGFloat = 0.5
 
+        /// 0.2
         static let lightShadow: CGFloat = 0.2
         
         /// 0.6

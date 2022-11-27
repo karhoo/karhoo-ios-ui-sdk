@@ -80,7 +80,7 @@ class ItemButton: UIButton {
     
     private func updateSelectedDesign() {
         let borderColor = isSelected ? KarhooUI.colors.accent.cgColor : UIColor.clear.cgColor
-        let color = isSelected ? KarhooUI.colors.lightAccent : KarhooUI.colors.background2
+        let color = isSelected ? KarhooUI.colors.lightAccent : KarhooUI.colors.border
         let tint = isSelected ? KarhooUI.colors.accent : KarhooUI.colors.text
         UIView.animate(
             withDuration: UIConstants.Duration.xShort,

@@ -32,7 +32,6 @@ class CurrencyCodeConverter {
         }
     }
 
-    
     class func quoteRangePrice(quote: Quote) -> String {
         let highPrice = CurrencyCodeConverter.formatted(amount: quote.price.intHighPrice, currencyCode: quote.price.currencyCode)
         let lowPrice = CurrencyCodeConverter.formatted(amount: quote.price.intLowPrice, currencyCode: quote.price.currencyCode)

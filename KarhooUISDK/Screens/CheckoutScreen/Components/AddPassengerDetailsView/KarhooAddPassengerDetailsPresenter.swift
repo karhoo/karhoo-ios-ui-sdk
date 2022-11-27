@@ -33,11 +33,9 @@ class KarhooAddPassengerDetailsPresenter: AddPassengerDetailsPresenter {
         
         if details == nil {
             view.resetViewState()
-        }
-        else if let details = details, !details.areValid {
+        } else if let details = details, !details.areValid {
             view.resetViewBorder()
-        }
-        else {
+        } else {
             view.updateViewState()
         }
     }

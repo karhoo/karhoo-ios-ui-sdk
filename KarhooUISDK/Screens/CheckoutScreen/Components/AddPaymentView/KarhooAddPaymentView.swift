@@ -75,7 +75,7 @@ final public class KarhooAddPaymentView: UIView, AddPaymentView {
     private var dotBorderLayer: CAShapeLayer!
     private var hasPayment: Bool = false
     
-    var quote: Quote?{
+    var quote: Quote? {
         didSet {
             guard let quote = quote else { return }
             presenter?.setQuote(quote)

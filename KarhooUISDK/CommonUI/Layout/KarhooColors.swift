@@ -50,12 +50,6 @@ public protocol KarhooColors {
 
     var background4: UIColor { get }
 
-    var background5: UIColor { get }
-
-    var background6: UIColor { get }
-
-    var background7: UIColor { get }
-
     // MARK: - Text Colors
 
     var text: UIColor { get }

@@ -26,6 +26,7 @@ internal protocol InternalScreenBuilders {
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }
     var sideMenuBuilder: SideMenuBuilder { get }
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder { get }
+    var bottomSheetScreenBuilder: BottomSheetScreenBuilder { get }
 }
 
 final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
@@ -60,6 +61,10 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
 
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder {
         return KarhooTripFeedbackViewController.KarhooTripFeedbackScreenBuilder()
+    }
+    
+    var bottomSheetScreenBuilder: BottomSheetScreenBuilder {
+        return KarhooBottomSheetScreenBuilder()
     }
 }
 

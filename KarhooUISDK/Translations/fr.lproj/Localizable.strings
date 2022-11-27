@@ -78,6 +78,10 @@
 
 "K5003" = "Impossible de trouver un devis (aucune catégorie trouvée dans la zone demandée)";
 
+"kh_uisdk_loyalty_info_add_points" = "%@ Des points de fidélité seront ajoutés au solde de votre compte à la fin de la course.";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ Les points de fidélité seront déduits du solde de votre compte à la fin de la course.";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Une erreur inconnue s’est produite. Veuillez réessayer.";
 

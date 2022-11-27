@@ -69,9 +69,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var loadingBar = LoadingBar().then {
         $0.state = .indeterminate
     }
+
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+
     private lazy var buttonsStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal

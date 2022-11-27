@@ -18,3 +18,5 @@ file_length:
 function_body_length:
   warning: 80
   error: 100
+type_name:
+  allowed_symbols: "_"

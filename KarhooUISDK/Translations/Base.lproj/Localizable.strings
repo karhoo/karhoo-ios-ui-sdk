@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-authorise";
+"adyen.submitButton" = "AUTHORISE TRANSACTION";
 
-"adyen.submitButton.formatted" = "Pre-authorise %@";
+"adyen.submitButton.formatted" = "AUTHORISE TRANSACTION";
 
 /* English: Error codes */
 "K0001" = "General request error";
@@ -77,6 +77,10 @@
 "K5002" = "Could not get availability (no availability found within requested area)";
 
 "K5003" = "Could not get availability (no categories found within requested area)";
+
+"kh_uisdk_loyalty_info_add_points" = "%@ loyalty points will be added to your account balance at the end of the ride";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Something went wrong but we don't know what it was";
@@ -621,7 +625,7 @@
 
 "Text.Quotes.FiltersLuggages" = "Luggage(s)";
 
-"Text.Quotes.FiltersPassengers" = "Passanger(s)";
+"Text.Quotes.FiltersPassengers" = "Passenger(s)";
 
 "Text.Quotes.FilterVehicleClass" = "Vehicle class";
 

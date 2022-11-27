@@ -147,7 +147,7 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
     }
 
     private func didGetUserLocation(_ location: CLLocation) {
-        if(reverseGeolocate) {
+        if reverseGeolocate {
             reverseGeoLocate(location: location)
             userLocationProvider.set(locationChangedCallback: nil)
             map?.center(on: location, zoomLevel: map?.standardZoom ?? 0)

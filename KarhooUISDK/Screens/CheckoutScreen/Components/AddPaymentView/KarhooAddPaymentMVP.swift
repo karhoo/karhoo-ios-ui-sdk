@@ -7,7 +7,7 @@
 import Foundation
 import KarhooSDK
 
-protocol AddPaymentViewDelegate {
+protocol AddPaymentViewDelegate: AnyObject {
     func didGetNonce(nonce: Nonce)
 }
 

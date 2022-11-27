@@ -9,6 +9,7 @@
 import UIKit
 import KarhooSDK
 import CoreLocation
+import SwiftUI
 
 final class KarhooBookingViewController: UIViewController, BookingView {
     
@@ -37,7 +38,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
         self.feedbackMailComposer.set(parent: self)
-
+        
         self.setUpView()
     }
 
@@ -109,7 +110,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             equalTo: view.bottomAnchor, constant: 150.0)
         bottomNotificationViewBottomConstraint.isActive = true
     }
-
+    
     private func setupMapView(reverseGeolocate: Bool) {
         mapPresenter.load(
             map: mapView,
