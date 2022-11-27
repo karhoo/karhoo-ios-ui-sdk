@@ -82,6 +82,16 @@
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ Les points de fidélité seront déduits du solde de votre compte à la fin de la course.";
 
+"kh_uisdk_trip_summary_add_to_calendar" = "Ajouter au calendrier";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "VOYAGE AJOUTÉ AU CALENDRIER";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Rouler jusqu’à %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Numéro de vol";
+
+"kh_uisdk_trip_summary_train_number" = "Numéro de train";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Une erreur inconnue s’est produite. Veuillez réessayer.";
 

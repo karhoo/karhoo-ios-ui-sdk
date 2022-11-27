@@ -82,6 +82,16 @@
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ Die Treuepunkte werden am Ende der Fahrt von Ihrem Kontostand abgezogen.";
 
+"kh_uisdk_trip_summary_add_to_calendar" = "Zum Kalender hinzufügen";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "AUSFLUG ZUM KALENDER HINZUGEFÜGT";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Fahrt nach %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Flugnummer";
+
+"kh_uisdk_trip_summary_train_number" = "Zugnummer";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Etwas ist schief gelaufen, aber wir wissen nicht, was es war.";
 
