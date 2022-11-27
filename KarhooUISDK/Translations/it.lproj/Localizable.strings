@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-autorizzare";
+"adyen.submitButton" = "AUTORIZZA LA TRANSAZIONE";
 
-"adyen.submitButton.formatted" = "Pre-autorizza %@";
+"adyen.submitButton.formatted" = "AUTORIZZA LA TRANSAZIONE";
 
 /* English: Error codes */
 "K0001" = "Errore di richiesta generale";
@@ -81,6 +81,16 @@
 "kh_uisdk_loyalty_info_add_points" = "%@ punti fedeltà verranno aggiunti al saldo del tuo account alla fine della corsa";
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ punti fedeltà verranno detratti dal saldo del tuo account alla fine della corsa";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "Aggiungi al calendario";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "VIAGGIO AGGIUNTO AL CALENDARIO";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Vai a %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Numero del volo";
+
+"kh_uisdk_trip_summary_train_number" = "Numero del treno";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Qualcosa è andato storto ma non sappiamo cosa fosse";

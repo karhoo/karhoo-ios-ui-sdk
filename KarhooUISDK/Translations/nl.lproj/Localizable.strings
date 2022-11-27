@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-autoriseren";
+"adyen.submitButton" = "TRANSACTIE GOEDKEUREN";
 
-"adyen.submitButton.formatted" = "Pre-autoriseren %@";
+"adyen.submitButton.formatted" = "TRANSACTIE GOEDKEUREN";
 
 /* English: Error codes */
 "K0001" = "Algemene fout in de aanvraag";
@@ -81,6 +81,16 @@
 "kh_uisdk_loyalty_info_add_points" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ loyaliteitspunten worden aan het einde van de rit van uw accountsaldo afgetrokken";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "Toevoegen aan agenda";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "REIS TOEGEVOEGD AAN KALENDER";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Rijd naar %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Vluchtnummer";
+
+"kh_uisdk_trip_summary_train_number" = "Trein nummer";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Er is iets misgegaan, maar we weten niet wat het was";

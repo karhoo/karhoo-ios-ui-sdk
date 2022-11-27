@@ -82,6 +82,16 @@
 
 "kh_uisdk_loyalty_info_remove_points" = "Se deducirán %@ puntos de fidelidad del saldo de su cuenta al final del viaje.";
 
+"kh_uisdk_trip_summary_add_to_calendar" = "Añadir al calendario";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "VIAJE AÑADIDO AL CALENDARIO";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Viaja a %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Número de vuelo";
+
+"kh_uisdk_trip_summary_train_number" = "Número de tren";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Se ha producido un error. Inténtelo de nuevo.";
 
