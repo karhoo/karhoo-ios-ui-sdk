@@ -216,7 +216,7 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getAirportPoiDetails() -> PoiDetails {
-        return PoiDetails(iata: getRandomString(), terminal: getRandomString(), type: .airport)
+        PoiDetails(iata: getRandomString(), terminal: getRandomString(), type: .airport)
     }
 
     class func getRandomLocationInfo(placeId: String = getRandomString(),
@@ -235,65 +235,82 @@ class TestUtil: PrimitiveUtil {
                                                   countryCode: getRandomString(),
                                                   region: getRandomString())
         
-        return LocationInfo(placeId: placeId,
-                            timeZoneIdentifier: timeZoneIdentifier,
-                            position: position,
-                            poiType: poiType,
-                            address: locationAddress,
-                            details: poiDetails)
+        return LocationInfo(
+            placeId: placeId,
+            timeZoneIdentifier: timeZoneIdentifier,
+            position: position,
+            poiType: poiType,
+            address: locationAddress,
+            details: poiDetails
+        )
     }
 
     class func getRandomDriverTrackingInfo(etaToOrigin: Int = 10,
                                            etaToDestination: Int = 10) -> DriverTrackingInfo {
-        return DriverTrackingInfo(position: TestUtil.getRandomPosition(),
-                                  direction: TestUtil.getRandomDirection(),
-                                  originEta: etaToOrigin,
-                                  destinationEta: etaToDestination)
+        DriverTrackingInfo(
+            position: TestUtil.getRandomPosition(),
+            direction: TestUtil.getRandomDirection(),
+            originEta: etaToOrigin,
+            destinationEta: etaToDestination
+        )
     }
 
-    class func getRandomTripQuote(quoteType: QuoteType = .fixed,
-                                  total: Int = getRandomInt()) -> TripQuote {
-        return TripQuote(total: total,
-                         currency: "GBP",
-                         gratuityPercent: 5,
-                         breakdown: [nil],
-                         qtaHighMinutes: 10,
-                         qtaLowMinutes: 5,
-                         type: quoteType,
-                         vehicleClass: "Saloon")
+    class func getRandomTripQuote(
+        quoteType: QuoteType = .fixed,
+        total: Int = getRandomInt()
+    ) -> TripQuote {
+        TripQuote(
+            total: total,
+            currency: "GBP",
+            gratuityPercent: 5,
+            breakdown: [nil],
+            qtaHighMinutes: 10,
+            qtaLowMinutes: 5,
+            type: quoteType,
+            vehicleClass: "Saloon"
+        )
     }
 
     class func getRandomVehicleAttributes() -> QuoteVehicle {
-        return QuoteVehicle(vehicleClass: "Saloon",
-                            passengerCapacity: Int.random(in: 0...5),
-                            luggageCapacity: Int.random(in: 0...7))
+        QuoteVehicle(
+            vehicleClass: "Saloon",
+            passengerCapacity: Int.random(in: 0...5),
+            luggageCapacity: Int.random(in: 0...7)
+        )
     }
     
     class func getRandomJourneyInfo() -> JourneyInfo {
-        return JourneyInfo(origin: CLLocation(latitude: 2000.0, longitude: -454.53),
-                           destination: CLLocation(latitude: 900.65, longitude: 874.53),
-                           date: Date())
+        JourneyInfo(
+            origin: CLLocation(latitude: 2000.0, longitude: -454.53),
+           destination: CLLocation(latitude: 900.65, longitude: 874.53),
+           date: Date()
+        )
     }
 
     class func getRandomBraintreePaymentMethod(nonce: String = getRandomString()) -> Nonce {
-        return Nonce(nonce: nonce,
-                     cardType: getRandomString(),
-                     lastFour: "1111")
+        Nonce(nonce: nonce,
+        cardType: getRandomString(),
+        lastFour: "1111"
+        )
     }
 
     class func getRandomGuestSettings(organisationId: String = getRandomString()) -> GuestSettings {
         return GuestSettings(identifier: "identifier", referer: "referer", organisationId: organisationId)
     }
 
-    class func getRandomPassengerDetails(firstName: String = getRandomString(),
-                                         lastName: String = getRandomString(),
-                                         email: String = getRandomString(),
-                                         phoneNumber: String = getRandomString(),
-                                         locale: String = getRandomString()) -> PassengerDetails {
-        return PassengerDetails(firstName: firstName,
-                                lastName: lastName,
-                                email: email,
-                                phoneNumber: phoneNumber,
-                                locale: locale)
+    class func getRandomPassengerDetails(
+        firstName: String = getRandomLabel(),
+        lastName: String = getRandomLabel(),
+        email: String = getRandomEmail(),
+        phoneNumber: String = gerRandomPhoneNumber(),
+        locale: String = getRandomString()
+    ) -> PassengerDetails {
+        PassengerDetails(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            locale: locale
+        )
     }
 }
