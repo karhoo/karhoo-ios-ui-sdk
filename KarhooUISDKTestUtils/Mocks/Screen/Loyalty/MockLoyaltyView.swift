@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockLoyaltyView: LoyaltyView {
+    public var currentNumberOfPointsDisplayed: Int = TestUtil.getRandomInt()
     public var mode: LoyaltyMode?
     public var earnText: String?
     public var burnText: String?

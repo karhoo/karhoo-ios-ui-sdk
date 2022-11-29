@@ -14,11 +14,11 @@ public class MockCall<T: KarhooCodableModel>: Call<T> {
     private var callback: ((Result<T>) -> Void)?
     public var executed: Bool = false
 
-    override init(executable: KarhooExecutable) {
+    override public init(executable: KarhooExecutable) {
         super.init(executable: executable)
     }
 
-    init() {
+    public init() {
         super.init(executable: MockExecutable())
     }
 

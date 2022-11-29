@@ -56,10 +56,15 @@ let package = Package(
                            .product(name: "BraintreeThreeDSecure", package: "braintree_ios")],
             path: "BraintreePSP"),
 
-
+        .target(
+            name: "KarhooUISDKTestUtils",
+            dependencies: [.target(name: "KarhooUISDK")],
+            path: "KarhooUISDKTestUtils"),
+        
         .testTarget(
             name: "KarhooUISDKTests",
             dependencies: [
+                .target(name: "KarhooUISDKTestUtils"),
                 .target(name: "KarhooUISDK"),
                 .target(name: "KarhooUISDKAdyen"),
                 .target(name: "KarhooUISDKBraintree"),
@@ -68,7 +73,21 @@ let package = Package(
                 .product(name: "Nimble", package: "Nimble")
                 
             ],
-            path: "KarhooUISDKTests",
+            path: "KarhooUISDKTests"),
+        
+        .testTarget(
+            name: "KarhooUISDKUITests",
+            dependencies: [
+                .target(name: "KarhooUISDKTestUtils"),
+                .target(name: "KarhooUISDK"),
+                .target(name: "KarhooUISDKAdyen"),
+                .target(name: "KarhooUISDKBraintree"),
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+                .product(name: "Quick", package: "Quick"),
+                .product(name: "Nimble", package: "Nimble")
+                
+            ],
+            path: "KarhooUISDKUITests",
             exclude: ["Info.plist"])
     ]
 )
