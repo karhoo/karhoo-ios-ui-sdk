@@ -32,7 +32,7 @@ struct KarhooLoyaltyInformationView: View {
         }
         .padding(.horizontal, UIConstants.Spacing.medium)
         .padding(.vertical, UIConstants.Spacing.small)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
         .addBorder(
             Color(KarhooUI.colors.primary),
             cornerRadius: UIConstants.CornerRadius.small

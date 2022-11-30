@@ -87,7 +87,7 @@ struct KarhooAddressView: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(UIConstants.Spacing.medium)
         .background(Color(backgroundColor))
         .addBorder(Color(borderColor), cornerRadius: cornerRadius)
@@ -96,8 +96,10 @@ struct KarhooAddressView: View {
 
     @ViewBuilder
     private var dotsColumn: some View {
-        VStack(spacing: UIConstants.Spacing.xSmall) {
-            Spacer()
+        VStack(
+            alignment: .center,
+            spacing: UIConstants.Spacing.xSmall
+        ) {
             Image("kh_uisdk_empty_circle_secondary", bundle: .current)
                 .frame(
                     width: UIConstants.Dimension.View.addressViewRoundIconSide,
@@ -107,6 +109,8 @@ struct KarhooAddressView: View {
                 VLine()
                     .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round, dash: [4, 5]))
                     .frame(width: 2)
+                    .frame(minHeight: UIConstants.Spacing.large)
+                    .fixedSize()
                     .foregroundColor(Color(KarhooUI.colors.border))
             } else {
                 Spacer()
@@ -117,7 +121,6 @@ struct KarhooAddressView: View {
                     width: UIConstants.Dimension.View.addressViewRoundIconSide,
                     height: UIConstants.Dimension.View.addressViewRoundIconSide
                 )
-            Spacer()
         }
     }
 
@@ -131,13 +134,16 @@ struct KarhooAddressView: View {
             if tags.isNotEmpty {
                 buildTagsView()
             } else {
-                Spacer(minLength: UIConstants.Spacing.medium)
+                Spacer()
+                    .frame(height: UIConstants.Spacing.medium)
             }
             AddressLabelView(
                 text: destination.text,
                 subtext: destination.subtext
             )
         }
+        .frame(maxHeight: .infinity)
+        .fixedSize()
     }
 
     @ViewBuilder
@@ -227,9 +233,13 @@ extension KarhooAddressView {
 // MARK: - Preview
 struct KarhooAddressView_Preview: PreviewProvider {
     static var previews: some View {
-        KarhooAddressView(
-            pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
-            destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom")
-        )
+        VStack {
+            Spacer()
+            KarhooAddressView(
+                pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
+                destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom"),
+                design: .bordered
+            )
+        }
     }
 }
