@@ -37,32 +37,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     let calendarWorker = KarhooAddToCalendarWorker()
     private var headerViews: [UIView] {
         [
-            UIHostingController(
-                rootView: KarhooAddToCalendarView(
-                    viewModel: .init(
-                        state: .add,
-                        onAddAction: { viewModel in
-                            let trip = TripInfo(
-                                origin: TripLocationDetails(displayAddress: "Sample origin display address"),
-                                destination: TripLocationDetails(displayAddress: "Sample destination display address"),
-                                dateScheduled: Date().addingTimeInterval(60*60*24),
-                                quote: TripQuote(qtaHighMinutes: 60),
-                                fleetInfo: FleetInfo(name: "Sample-Fleet-Name"),
-                                flightNumber: "Sample-Flight-Number",
-                                trainNumber: "Sample-Train-Number"
-                            )
-                            self.calendarWorker.addToCalendar(trip) { addedSuccessfully in
-                                if addedSuccessfully {
-                                    viewModel.state = .added
-                                }
-                            }
-                        })
-                )
-            ).then {
-                $0.loadViewIfNeeded()
-                $0.view.translatesAutoresizingMaskIntoConstraints = false
-                $0.view.backgroundColor = .clear
-            }.view!,
             addressPickerView,
             buttonsStackView,
             legalDisclaimerContainer
