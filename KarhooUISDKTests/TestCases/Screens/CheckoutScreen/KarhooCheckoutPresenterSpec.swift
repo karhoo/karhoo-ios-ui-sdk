@@ -52,7 +52,6 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
         testJourneyDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: false)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
-        
         testJourneyDetails = TestUtil.getAirportBookingDetails(originAsAirportAddress: true)
         loadTestObject()
         XCTAssertTrue(mockView.addFlightDetailsStateSet)
@@ -77,7 +76,7 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
     }
     
     /**
-     * When: The user presses "book ride"
+     * When: The user presses "Next"
      * And: They are using Adyen for payment
      * And: No booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
@@ -85,20 +84,20 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      */
     func testAdyenRequestCarAuthenticated() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
         mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.completeBookingFlow()
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockTripService.tripBookingSet?.meta.count ?? 0 == 1)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"]) // ONE STEP PAYMENT
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockTripService.tripBookingSet?.meta.count ?? 0 == 1)
+        XCTAssertNotNil(mockTripService.tripBookingSet!.meta["trip_id"]) // ONE STEP PAYMENT
         XCTAssertNil(mockTripService.tripBookingSet?.meta["key"])
     }
     
     /**
-     * When: The user presses "book ride"
+     * When: The user presses "Next"
      * And: booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should not be called
@@ -109,18 +108,18 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         mockBookingMetadata = ["key":"value"]
         loadTestObject()
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
         let nonce = Nonce(nonce: "nonce")
         mockView.paymentNonceToReturn = nonce
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
         testObject.completeBookingFlow()
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssert(mockView.setRequestingStateCalled)
+        XCTAssert(mockView.setRequestingStateCalled)
         XCTAssertFalse(mockPaymentNonceProvider.getNonceCalled)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
         let value: String? = mockTripService.tripBookingSet?.meta["key"] as? String
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(value, "value")
+        XCTAssertEqual(value, "value")
         let tripIdValue: String? = mockTripService.tripBookingSet?.meta["trip_id"] as? String
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(tripIdValue, nonce.nonce)
+        XCTAssertEqual(tripIdValue, nonce.nonce)
     }
 
     /**

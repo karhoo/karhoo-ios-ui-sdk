@@ -299,6 +299,22 @@ class TestUtil: PrimitiveUtil {
     }
 
     class func getRandomPassengerDetails(
+        firstName: String = getRandomString(),
+        lastName: String = getRandomString(),
+        email: String = getRandomString(),
+        phoneNumber: String = getRandomString(),
+        locale: String = getRandomString()
+    ) -> PassengerDetails {
+        return PassengerDetails(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            locale: locale
+        )
+    }
+
+    class func getRandomValidPassengerDetails(
         firstName: String = getRandomLabel(),
         lastName: String = getRandomLabel(),
         email: String = getRandomEmail(),
