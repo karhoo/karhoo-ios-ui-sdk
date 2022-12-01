@@ -138,17 +138,18 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
     }
 
     /**
-     * When: The user presses "book ride"
-     * And: They are not authenticated
+     * Wen: Passenger and payment are valid
+     * And: User is not authenticated
      * Then: An alert should show with failed to get user message
      * And: trip service should not be called
      * And: No Analytics event should fire
      */
     func testRequestCarNotAuthenticated() {
+        startWithValidUserAndNonce()
         mockUserService.currentUserToReturn = nil
         testObject.completeBookingFlow()
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(UITexts.Errors.somethingWentWrong, mockView.showAlertTitle)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(UITexts.Errors.getUserFail, mockView.showAlertMessage)
+        XCTAssertEqual(UITexts.Errors.somethingWentWrong, mockView.showAlertTitle)
+        XCTAssertEqual(UITexts.Errors.getUserFail, mockView.showAlertMessage)
         XCTAssertFalse(mockTripService.bookCall.executed)
         XCTAssertFalse(mockAnalytics.bookingRequestedWithDesinationCalled)
     }
@@ -467,6 +468,11 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
                                                           message: "",
                                                           userMessage: ""))
 
+    }
+
+    private func startWithValidUserAndNonce() {
+        mockView.paymentNonceToReturn = Nonce(nonce: "nonce")
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
     }
 
     private func bookingRequestTrip(result: ScreenResult<TripInfo>) {
