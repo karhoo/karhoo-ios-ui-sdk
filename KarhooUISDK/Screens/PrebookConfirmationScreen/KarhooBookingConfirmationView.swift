@@ -25,22 +25,9 @@ struct KarhooBookingConfirmationView: View {
     }
     
     var body: some View {
-        VStack(spacing: UIConstants.Spacing.standard, content: {
+        VStack(spacing: UIConstants.Spacing.standard) {
             // Icons
-            HStack(alignment: .top, spacing: 0) {
-                Image(uiImage: UIImage.uisdkImage("kh_uisdk_check_circle"))
-                    .frame(
-                        width: UIConstants.Dimension.Icon.xLarge,
-                        height: UIConstants.Dimension.Icon.xLarge
-                    )
-                
-                KarhooAsyncImage(urlString: viewModel.vehicleImageURL)
-                    .frame(
-                        width: Constants.vehicleImageSize,
-                        height: Constants.vehicleImageSize)
-                    .offset(x: Constants.vehicleImageXOffset)
-            }
-            .frame(height: UIConstants.Dimension.Icon.xxLarge)
+            iconView
             
             // Address
             KarhooAddressView(
@@ -56,39 +43,12 @@ struct KarhooBookingConfirmationView: View {
             )
             
             // Time and Price
-            HStack {
-                VStack {
-                    Text(viewModel.printedTime)
-                        .font(Font(KarhooUI.fonts.titleBold()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
-                    
-                    Text(viewModel.printedDate)
-                        .font(Font(KarhooUI.fonts.bodyRegular()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
-                }
-                .frame(minWidth: 0, maxWidth: .infinity)
-                
-                Rectangle()
-                    .fill(KarhooUI.colors.border.getColor())
-                    .frame(width: 1, height: Constants.separatorHeight, alignment: .center)
-                    
-                VStack {
-                    Text(viewModel.printedPrice)
-                        .font(Font(KarhooUI.fonts.titleBold()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
-                    
-                    Text(viewModel.printedPriceType)
-                        .font(Font(KarhooUI.fonts.bodyRegular()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
-                }
-                .frame(minWidth: 0, maxWidth: .infinity)
-            }
-            .frame(minWidth: 0, maxWidth: .infinity)
+            timeAndPriceView
             
             // Loyalty
             if viewModel.loyaltyInfo.shouldShowLoyalty {
-                KarhooLoyaltyInformationView.init(
-                    viewModel: KarhooLoyaltyInformationView.ViewModel.init(
+                KarhooLoyaltyInformationView(
+                    viewModel: KarhooLoyaltyInformationView.ViewModel(
                         mode: viewModel.loyaltyInfo.loyaltyMode,
                         pointsToBeModified: viewModel.loyaltyInfo.loyaltyPoints
                     )
@@ -101,7 +61,58 @@ struct KarhooBookingConfirmationView: View {
             KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
                 viewModel.dismiss()
             }
-        })
+        }
+        .padding(.vertical, UIConstants.Spacing.standard)
+    }
+
+    @ViewBuilder
+    private var iconView: some View {
+        HStack(alignment: .top, spacing: 0) {
+            Image(uiImage: UIImage.uisdkImage("kh_uisdk_check_circle"))
+                .frame(
+                    width: UIConstants.Dimension.Icon.xLarge,
+                    height: UIConstants.Dimension.Icon.xLarge
+                )
+
+            KarhooAsyncImage(urlString: viewModel.vehicleImageURL)
+                .frame(
+                    width: Constants.vehicleImageSize,
+                    height: Constants.vehicleImageSize)
+                .offset(x: Constants.vehicleImageXOffset)
+        }
+        .frame(height: UIConstants.Dimension.Icon.xxLarge)
+    }
+
+    @ViewBuilder
+    private var timeAndPriceView: some View {
+        HStack {
+            VStack {
+                Text(viewModel.printedTime)
+                    .font(Font(KarhooUI.fonts.titleBold()))
+                    .foregroundColor(KarhooUI.colors.text.getColor())
+
+                Text(viewModel.printedDate)
+                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .foregroundColor(KarhooUI.colors.text.getColor())
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+
+            Rectangle()
+                .fill(KarhooUI.colors.border.getColor())
+                .frame(width: 1, height: Constants.separatorHeight, alignment: .center)
+
+            VStack {
+                Text(viewModel.printedPrice)
+                    .font(Font(KarhooUI.fonts.titleBold()))
+                    .foregroundColor(KarhooUI.colors.text.getColor())
+
+                Text(viewModel.printedPriceType)
+                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .foregroundColor(KarhooUI.colors.text.getColor())
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
     }
 }
 

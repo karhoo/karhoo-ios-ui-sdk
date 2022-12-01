@@ -32,7 +32,7 @@ struct KarhooLoyaltyInformationView: View {
         }
         .padding(.horizontal, UIConstants.Spacing.medium)
         .padding(.vertical, UIConstants.Spacing.small)
-        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
         .addBorder(
             Color(KarhooUI.colors.primary),
             cornerRadius: UIConstants.CornerRadius.small
@@ -44,6 +44,11 @@ struct KarhooLoyaltyInformationView: View {
 // MARK: - Preview
 struct KarhooLoyaltyInformationView_Preview: PreviewProvider {
     static var previews: some View {
-        KarhooLoyaltyInformationView(viewModel: .init(mode: .earn, pointsToBeModified: 10))
+        VStack {
+            Spacer()
+            KarhooLoyaltyInformationView(viewModel: .init(mode: .earn, pointsToBeModified: 10))
+            Spacer()
+        }
+
     }
 }

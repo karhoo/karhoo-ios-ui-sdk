@@ -15,6 +15,15 @@ struct KarhooAddressView: View {
 
     // MARK: - Nested types
 
+    private enum Constants {
+        static var maxWidth: CGFloat { UIScreen.main.bounds.width - UIConstants.Spacing.standard * 2 }
+        static let dotsColumnWidth: CGFloat = 10
+        static let labelHeight: CGFloat = 32
+        static let padding: CGFloat = 10
+        static let roundIconSide: CGFloat = 10
+        static let minimumScaleFactor: CGFloat = 0.7
+    }
+
     enum Design {
         /// Bordered view, with SDKs `background1` color and rounded corners.
         case bordered
@@ -87,11 +96,12 @@ struct KarhooAddressView: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(UIConstants.Spacing.medium)
+        .frame(maxWidth: Constants.maxWidth, alignment: .topLeading)
         .background(Color(backgroundColor))
         .addBorder(Color(borderColor), cornerRadius: cornerRadius)
         .colorScheme(.light)
+        .layoutPriority(Double(UILayoutPriority.required.rawValue))
     }
 
     @ViewBuilder
@@ -102,8 +112,8 @@ struct KarhooAddressView: View {
         ) {
             Image("kh_uisdk_empty_circle_secondary", bundle: .current)
                 .frame(
-                    width: UIConstants.Dimension.View.addressViewRoundIconSide,
-                    height: UIConstants.Dimension.View.addressViewRoundIconSide
+                    width: Constants.roundIconSide,
+                    height: Constants.roundIconSide
                 )
             if showsLineBetweenPickUpAndDestination {
                 VLine()
@@ -118,8 +128,8 @@ struct KarhooAddressView: View {
 
             Image("kh_uisdk_empty_circle_primary", bundle: .current)
                 .frame(
-                    width: UIConstants.Dimension.View.addressViewRoundIconSide,
-                    height: UIConstants.Dimension.View.addressViewRoundIconSide
+                    width: Constants.roundIconSide,
+                    height: Constants.roundIconSide
                 )
         }
     }
@@ -142,8 +152,6 @@ struct KarhooAddressView: View {
                 subtext: destination.subtext
             )
         }
-        .frame(maxHeight: .infinity)
-        .fixedSize()
     }
 
     @ViewBuilder
@@ -152,8 +160,8 @@ struct KarhooAddressView: View {
             Text(text)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .multilineTextAlignment(.trailing)
-                .padding(.top, UIConstants.Dimension.View.addressViewPadding)
-                .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
+                .padding(.top, Constants.padding)
+                .minimumScaleFactor(Constants.minimumScaleFactor)
             Spacer()
         }
     }
@@ -186,22 +194,16 @@ extension KarhooAddressView {
             VStack(alignment: .leading, spacing: 0) {
                 Text(text)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                     .foregroundColor(Color(KarhooUI.colors.text))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(alignment: .leading)
                 if let subtext = subtext {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionBold()))
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                        .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                         .foregroundColor(Color(KarhooUI.colors.textLabel))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(alignment: .leading)
                 }
             }
-            .frame(height: UIConstants.Dimension.View.addressViewLabelHeight)
+            .frame(height: Constants.labelHeight)
         }
     }
 }

@@ -64,15 +64,8 @@ struct KarhooBottomSheet<Content: View>: View {
                 // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened,
                 // then wrap that view inside a ScrollView before injecting it into this bottom sheet
                 content()
-                .padding(
-                    EdgeInsets(
-                        top: UIConstants.Spacing.standard,
-                        leading: UIConstants.Spacing.standard,
-                        bottom: UIConstants.Spacing.standard,
-                        trailing: UIConstants.Spacing.standard
-                    )
-                )
-                
+                    .padding(UIConstants.Spacing.standard)
+
                 Spacer()
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
@@ -85,6 +78,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 )
             )
             .frame(
+                maxWidth: UIScreen.main.bounds.width,
                 maxHeight: UIScreen.main.bounds.height - getTopPadding(),
                 alignment: .bottom
             )
