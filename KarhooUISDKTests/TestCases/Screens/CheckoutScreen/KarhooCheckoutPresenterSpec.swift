@@ -174,14 +174,13 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      * And: The analytics event should be triggered
      */
     func testRequestCarCallbackSuccess() {
+        startWithValidUserAndNonce()
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
         testObject.completeBookingFlow()
-        mockPaymentNonceProvider.triggerResult(OperationResult.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
         testObject.screenHasFadedOut()
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssert(testCallbackResult?.isComplete() == true)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssert(mockAnalytics.paymentSucceedCalled)
+        XCTAssert(testCallbackResult?.isComplete() == true)
+        XCTAssert(mockAnalytics.paymentSucceedCalled)
     }
 
     /**
@@ -194,17 +193,16 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      */
     func testRequestFailed() {
         mockUserService.currentUserToReturn = TestUtil.getRandomUser()
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        startWithValidUserAndNonce()
         testObject.completeBookingFlow()
         mockPaymentNonceProvider.triggerResult(.completed(value: .nonce(nonce: Nonce(nonce: "some"))))
 
         let bookingError = TestUtil.getRandomError()
         mockTripService.bookCall.triggerFailure(bookingError)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssert(mockView.setDefaultStateCalled)
+        XCTAssert(mockView.setDefaultStateCalled)
         XCTAssertFalse(mockCardRegistrationFlow.startCalled)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(testCallbackResult?.errorValue()?.code, bookingError.code)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockAnalytics.paymentFailedCalled)
-
+        XCTAssertEqual(testCallbackResult?.errorValue()?.code, bookingError.code)
+        XCTAssertTrue(mockAnalytics.paymentFailedCalled)
     }
     
     /**
