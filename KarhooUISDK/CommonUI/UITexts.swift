@@ -38,8 +38,8 @@ public enum UITexts {
         public static let reportIssue = "kh_uisdk_report_issue".localized
         public static let rides = "kh_uisdk_rides".localized
         public static let save = "kh_uisdk_save".localized
-        public static let noMailSetUpMessage = "kh_uisdk_noEmailSetupError".localized
-        public static let noCarsAvailable = "kh_uisdk_noCarsAvailable".localized
+        public static let noMailSetUpMessage = "kh_uisdk_no_email_setup_error".localized
+        public static let noCarsAvailable = "kh_uisdk_no_cars_available".localized
         public static let gotIt = "kh_uisdk_got_it".localized
         public static let thanks = "kh_uisdk_thanks".localized
         public static let submit = "kh_uisdk_submit".localized
@@ -54,7 +54,7 @@ public enum UITexts {
     }
 
     public enum QuoteCell {
-        public static let details = "kh_uisdk_quoteCell_details".localized
+        public static let details = "kh_uisdk_quote_cell_details".localized
         public static let driverArrival = "kh_uisdk_driver_arrival".localized
     }
 
@@ -88,24 +88,24 @@ public enum UITexts {
         public static let lastName = "kh_uisdk_last_name_hint".localized
         public static let email = "kh_uisdk_email_hint".localized
         public static let mobilePhone = "kh_uisdk_mobile_phone_number_hint".localized
-        public static let signupEmailSubscribeCopy = "kh_uisdk_signupEmailSubscribeCopy".localized
-        public static let signupPendingMessage = "kh_uisdk_signupPendingMessage".localized
-        public static let forgottenPassword = "kh_uisdk_forgottenPassword".localized
+        public static let signupEmailSubscribeCopy = "kh_uisdk_signup_email_subscribe_copy".localized
+        public static let signupPendingMessage = "kh_uisdk_signup_pending_message".localized
+        public static let forgottenPassword = "kh_uisdk_forgotten_password".localized
         public static let commentOptional = "kh_uisdk_additional_comments".localized
     }
 
     /* Errors */
     public enum Errors {
-        public static let flightNumberValidatorError = "kh_uisdk_errors_flightNumberValidatorError".localized
+        public static let flightNumberValidatorError = "kh_uisdk_errors_flight_number_validator_error".localized
         public static let noDetailsAvailable = "kh_uisdk_something_went_wrong".localized
         public static let somethingWentWrong = "kh_uisdk_something_went_wrong".localized
-        public static let cantSendEmail = "kh_uisdk_errors_cantSendEmail".localized
-        public static let getUserFail = "kh_uisdk_errors_getUserFail".localized
-        public static let forceUpdateTitle = "kh_uisdk_errors_forceUpdateTitle".localized
-        public static let forceUpdateMessage = "kh_uisdk_errors_forceUpdateMessage".localized
-        public static let forceUpdateButton = "kh_uisdk_errors_forceUpdateButton".localized
-        public static let prebookingWithinTheHour = "kh_uisdk_errors_prebookingWithinTheHour".localized
-        public static let missingPaymentSDKToken = "kh_uisdk_errors_missingPaymentSDKToken".localized
+        public static let cantSendEmail = "kh_uisdk_errors_cant_send_email".localized
+        public static let getUserFail = "kh_uisdk_errors_get_user_fail".localized
+        public static let forceUpdateTitle = "kh_uisdk_errors_force_update_title".localized
+        public static let forceUpdateMessage = "kh_uisdk_errors_force_update_message".localized
+        public static let forceUpdateButton = "kh_uisdk_errors_force_update_button".localized
+        public static let prebookingWithinTheHour = "kh_uisdk_errors_prebooking_within_the_hour".localized
+        public static let missingPaymentSDKToken = "kh_uisdk_errors_missing_payment_SDK_Token".localized
         public static let noResultsFound = "kh_uisdk_results_empty".localized
         public static let missingPhoneNumber = "kh_uisdk_invalid_empty_field".localized
         public static let invalidPhoneNumber = "kh_uisdk_invalid_phone_number".localized
@@ -133,23 +133,23 @@ public enum UITexts {
     public enum PaymentError {
         public static let paymentAlertTitle = "kh_uisdk_payment_issue".localized
         public static let paymentAlertMessage = "kh_uisdk_payment_issue_message".localized
-        public static let paymentAlertUpdateCard = "kh_uisdk_payment_paymentAlertUpdateCard".localized
-        public static let noDetailsMessage = "kh_uisdk_something_went_wrong".localized
+        public static let paymentAlertUpdateCard = "kh_uisdk_payment_payment_alert_update_card".localized
+        public static let noDetailsMessage = "kh_uisdk_something_went_wrong_select_another_quote".localized
     }
 
     /* terms conditions construction */
     public enum TermsConditions {
         // 1: action 2: Supplier name, 2: "Terms and Conditions", 3: "Cancellation/Privacy Policy"
-        public static let termsConditionFullString = "kh_uisdk_termsConditionFullString".localized
+        public static let termsConditionFullString = "kh_uisdk_terms_condition_full_string".localized
         // 1: "Terms and Conditions", 2: "Privacy Policy", 3: Fleet Name, 4: "Terms and Conditions, 5: "Cancellation Policy"
-        public static let bookingTermAndConditionsFullText = "kh_uisdk_booking_terms_ios".localized
+        public static let bookingTermAndConditionsFullText = "kh_uisdk_booking_terms".localized
         
         public static let karhooTermsLink = "kh_uisdk_karhoo_general_terms_url".localized
         public static let karhooPolicyLink = "kh_uisdk_karhoo_privacy_policy_url".localized
         
         public static var termsLink = "kh_uisdk_karhoo_general_terms_url".localized
         public static var policyLink = "kh_uisdk_karhoo_privacy_policy_url".localized
-        public static let registeringAccountAction = "kh_uisdk_terms_and_conditions_registerAccountAction".localized
+        public static let registeringAccountAction = "kh_uisdk_terms_and_conditions_register_account_action".localized
         public static let termsAndConditions = "kh_uisdk_label_fleet_terms_and_conditions".localized
         public static let termsOfUse = "kh_uisdk_booking_terms_and_conditions".localized
         public static let privacyPolicy = "kh_uisdk_karhoo_privacy_policy".localized
@@ -195,37 +195,37 @@ public enum UITexts {
 
     /* Prebook */
     public enum Prebook {
-        public static let prebookPickerTitle = "kh_uisdk_prebookPickerTitle".localized
-        public static let setPrebookTime = "kh_uisdk_setPrebookTime".localized
+        public static let prebookPickerTitle = "kh_uisdk_prebook_picker_title".localized
+        public static let setPrebookTime = "kh_uisdk_set_prebook_time".localized
         public static let timeZoneMessage = "kh_uisdk_prebook_timezone_title".localized
     }
 
     /* Booking */
     public enum Booking {
         public static let bookNow = "kh_uisdk_book_now".localized
-        public static let requestCar = "kh_uisdk_requestCar".localized
-        public static let requestingCar = "kh_uisdk_requestingCar".localized
-        public static let requestReceived = "kh_uisdK_requestReceived".localized
-        public static let enterDestination = "kh_uisdk_enterDestination".localized
-        public static let baseFareExplanation = "kh_uisdk_baseFareExplanation".localized
+        public static let requestCar = "kh_uisdk_request_car".localized
+        public static let requestingCar = "kh_uisdk_requesting_car".localized
+        public static let requestReceived = "kh_uisdK_request_received".localized
+        public static let enterDestination = "kh_uisdk_enter_destination".localized
+        public static let baseFareExplanation = "kh_uisdk_base_fare_explanation".localized
         public static let baseFare = "kh_uisdk_base".localized
-        public static let prebookRideHint = "kh_uisdk_prebookPickerTitle".localized
-        public static let prebookConfirmed = "kh_uisdk_prebookConfirmed".localized
+        public static let prebookRideHint = "kh_uisdk_prebook_picker_title".localized
+        public static let prebookConfirmed = "kh_uisdk_prebook_confirmed".localized
         public static let prebookConfirmedRideDetails = "kh_uisdk_ride_details".localized
-        public static let prebookConfirmation = "kh_uisdk_prebookConfirmation".localized
+        public static let prebookConfirmation = "kh_uisdk_prebook_confirmation".localized
         public static let noAvailabilityHeader = "kh_uisdk_quotes_no_availability".localized
-        public static let noAvailabilityBody = "kh_uisdk_noAvailabilityBody".localized
-        public static let noAvailabilityLink = "kh_uisdk_noAvailabilityLink".localized
+        public static let noAvailabilityBody = "kh_uisdk_no_availability_body".localized
+        public static let noAvailabilityLink = "kh_uisdk_no_availability_link".localized
         public static let guestCheckoutPassengerDetailsTitle = "kh_uisdk_passenger_details".localized
-        public static let guestCheckoutPaymentDetailsTitle = "kh_uisdk_guestCheckoutPaymentDetailsTitle".localized
+        public static let guestCheckoutPaymentDetailsTitle = "kh_uisdk_guest_checkout_payment_details_title".localized
         public static let guestCheckoutFlightNumberPlaceholder = "kh_uisdk_flight_number".localized
         public static let estimatedInfoBox = "kh_uisdk_price_info_text_estimated".localized
         public static let meteredInfoBox = "kh_uisdk_price_info_text_metered".localized
         public static let fixedInfoBox = "kh_uisdk_price_info_text_fixed".localized
         public static let learnMore = "kh_uisdk_quote_learn_more".localized
         public static let passenger = "kh_uisdk_booking_checkout_passenger".localized
-        public static let maximumPassengers = "kh_uisdk_passengers_max_ios".localized
-        public static let maximumLuggages = "kh_uisdk_baggage_max_ios".localized
+        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
+        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
         public static let gpsTracking = "kh_uisdk_filter_gps_tracking".localized
         public static let trainTracking = "kh_uisdk_filter_train_tracking".localized
         public static let flightTracking = "kh_uisdk_filter_fight_tracking".localized
@@ -235,14 +235,14 @@ public enum UITexts {
         public static let legalNoticeLink = "kh_uisdk_legal_notice_link".localized
         public static let legalNoticeText = "kh_uisdk_legal_notice_text".localized
         public static let legalNoticeTitle = "kh_uisdk_legal_notice_title".localized
-        public static let noLocationPermissionTitle = "kh_uisdk_noLocationPermissionTitle".localized
-        public static let noLocationPermissionMessage = "kh_uisdk_noLocationPermissionMessage".localized
+        public static let noLocationPermissionTitle = "kh_uisdk_no_location_permission_title".localized
+        public static let noLocationPermissionMessage = "kh_uisdk_no_location_permission_message".localized
         public static let noLocationPermissionConfirm = "kh_uisdk_settings".localized
     }
 
     public enum Availability {
         public static let allCategory = "kh_uisdk_filter_all".localized
-        public static let noQuotesInSelectedCategory = "kh_uisdk_noQuotesInSelectedCategory".localized
+        public static let noQuotesInSelectedCategory = "kh_uisdk_no_quotes_in_selected_category".localized
         public static let noQuotesForSelectedParameters = "kh_uisdk_K3002".localized
     }
 
@@ -258,7 +258,7 @@ public enum UITexts {
         public static let title = "kh_uisdk_booking_checkout_passenger".localized
         public static let subtitle = "kh_uisdk_passengerDetails_subtitle".localized
         public static let saveAction = "kh_uisdk_save".localized
-        public static let add = "kh_uisdk_passengerDetails_addPassenger".localized
+        public static let add = "kh_uisdk_passenger_details_add_passenger".localized
     }
     
     public enum QuoteCategory {
@@ -279,7 +279,7 @@ public enum UITexts {
         public static let ecoFriendly = "kh_uisdk_filter_eco_friendly".localized
         public static let fleetCapabilities = "kh_uisdk_filter_fleet_capabilities".localized
         public static let quoteTypes = "kh_uisdk_filter_quote_types".localized
-        public static let serviceAgreements = "kh_uisdk_filter_cancellation_and_waiting_time".localized
+        public static let serviceAgreements = "kh_uisdk_filter_service_agreements".localized
     }
     
     public enum VehicleClass {
@@ -324,19 +324,19 @@ public enum UITexts {
 
     /* Trip */
     public enum Trip {
-        public static let tripStatusRequested = "kh_uisdk_tripStatusRequested".localized
-        public static let tripStatusConfirmed = "kh_uisdk_tripStatusConfirmed".localized
-        public static let tripStatusDriverEnRoute = "kh_uisdk_tripStatusDriverEnRoute".localized
+        public static let tripStatusRequested = "kh_uisdk_trip_status_requested".localized
+        public static let tripStatusConfirmed = "kh_uisdk_trip_status_confirmed".localized
+        public static let tripStatusDriverEnRoute = "kh_uisdk_trip_status_driver_en_route".localized
 
-        public static let tripStatusDriverArrived = "kh_uisdk_tripStatusDriverArrived".localized
+        public static let tripStatusDriverArrived = "kh_uisdk_trip_status_driver_arrived".localized
         public static let tripStatusPassengerOnboard = "kh_uisdk_pass_on_board".localized
-        public static let tripStatusCompleted = "kh_uisdk_tripStatusCompleted".localized
-        public static let tripStatusCancelledByUser = "kh_uisdk_tripStatusCancelledByUser".localized
-        public static let tripStatusCancelledByDispatch = "kh_uisdk_tripStatusCancelledByDispatch".localized
+        public static let tripStatusCompleted = "kh_uisdk_trip_status_completed".localized
+        public static let tripStatusCancelledByUser = "kh_uisdk_trip_status_cancelled_by_user".localized
+        public static let tripStatusCancelledByDispatch = "kh_uisdk_trip_status_cancelled_by_dispatch".localized
         
         public static let tripCancelRide = "kh_uisdk_cancel_ride".localized
-        public static let tripCancelledByDispatchAlertTitle = "kh_uisdk_tripCancelledByDispatchAlertTitle".localized
-        public static let tripCancelledByDispatchAlertMessage = "kh_uisdk_tripCancelledByDispatchAlertMessage".localized
+        public static let tripCancelledByDispatchAlertTitle = "kh_uisdk_trip_cancelled_by_dispatch_alert_title".localized
+        public static let tripCancelledByDispatchAlertMessage = "kh_uisdk_trip_cancelled_by_dispatch_alert_message".localized
         public static let tripCancelBookingConfirmationAlertTitle = "kh_uisdk_cancel_your_ride".localized
         public static let tripCancelBookingFailedAlertTitle = "kh_uisdk_difficulties_cancelling_title".localized
         public static let tripCancelBookingFailedAlertMessage = "kh_uisdk_difficulties_cancelling_message".localized
@@ -344,28 +344,28 @@ public enum UITexts {
         public static let tripCancellingActivityIndicatorText = "kh_uisdk_cancelling_ride".localized
         public static let tripContactDriver = "kh_uisdk_contact_driver".localized
         public static let tripContactFleet = "kh_uisdk_contact_fleet".localized
-        public static let tripRideOptions = "kh_uisdk_tripRideOptions".localized
+        public static let tripRideOptions = "kh_uisdk_trip_ride_options".localized
         public static let noDriversAvailableTitle = "kh_uisdk_booking_failed".localized
-        public static let noDriversAvailableMessage = "kh_uisdk_booking_failed_body_ios".localized
+        public static let noDriversAvailableMessage = "kh_uisdk_booking_failed_body".localized
         public static let arrival = "kh_uisdk_arrival".localized
-        public static let karhooCancelledAlertTitle = "kh_uisdk_karhooCancelledAlertTitle".localized
-        public static let karhooCancelledAlertMessage = "kh_uisdk_karhooCancelledAlertMessage".localized
+        public static let karhooCancelledAlertTitle = "kh_uisdk_karhoo_cancelled_alert_title".localized
+        public static let karhooCancelledAlertMessage = "kh_uisdk_karhoo_cancelled_alert_message".localized
 
-        public static let trackTripAlertTitle = "kh_uisdk_trackTripAlertTitle".localized
-        public static let trackTripAlertMessage = "kh_uisdk_trackTripAlertMessage".localized
+        public static let trackTripAlertTitle = "kh_uisdk_track_trip_alert_title".localized
+        public static let trackTripAlertMessage = "kh_uisdk_track_trip_alert_message".localized
         public static let trackTripAlertAction = "kh_uisdk_yes".localized
         public static let trackTripAlertDismissAction = "kh_uisdk_no".localized
     }
 
     public enum TripSummary {
-        public static let tripSummary = "kh_uisdk_tripSummary".localized
-        public static let paymentSummary = "kh_uisdk_paymentSummary".localized
-        public static let bookReturnRide = "kh_uisdk_bookReturnRide".localized
+        public static let tripSummary = "kh_uisdk_trip_summary".localized
+        public static let paymentSummary = "kh_uisdk_payment_summary".localized
+        public static let bookReturnRide = "kh_uisdk_book_return_ride".localized
         public static let date = "kh_uisdk_date".localized
         public static let fleet = "kh_uisdk_fleet".localized
         public static let vehicle = "kh_uisdk_vehicle".localized
-        public static let totalFare = "kh_uisdk_totalFare".localized
-        public static let quotedPrice = "kh_uisdk_quotedPrice".localized
+        public static let totalFare = "kh_uisdk_total_fare".localized
+        public static let quotedPrice = "kh_uisdk_quoted_price".localized
     }
 
     public enum TripRating {
@@ -376,27 +376,27 @@ public enum UITexts {
         static let prePobFeedbackTitle = "kh_uisdk_question_two".localized
         static let pobFeedbackTitle = "kh_uisdk_question_three".localized
         static let appFeedbackTitle = "kh_uisdk_question_four".localized
-        static let addCommentPlaceholder = "kh_uisdk_addCommentPlaceholder".localized
+        static let addCommentPlaceholder = "kh_uisdk_add_comment_placeholder".localized
     }
 
     public enum Bookings {
-        static let noTrips = "kh_uisdk_noTrips".localized
+        static let noTrips = "kh_uisdk_no_trips".localized
         static let noTripsBookedMessage = "kh_uisdk_past_rides_empty".localized
         static let newRide = "kh_uisdk_new_ride".localized
         static let trackDriver = "kh_uisdk_track_driver".localized
         static let contactDriver = "kh_uisdk_contact_driver".localized
         static let contactFleet = "kh_uisdk_contact_fleet".localized
-        static let trackTrip = "kh_uisdk_trackTrip".localized
+        static let trackTrip = "kh_uisdk_track_trip".localized
         static let cancelRide = "kh_uisdk_cancel_ride".localized
         static let reportIssue = "kh_uisdk_report_issue".localized
         static let rebookRide = "kh_uisdk_rebook_ride".localized
         static let quote = "kh_uisdk_quote".localized
         static let price = "kh_uisdk_price".localized
-        static let couldNotLoadTrips = "kh_uisdk_couldNotLoadTrips".localized
+        static let couldNotLoadTrips = "kh_uisdk_could_not_load_trips".localized
         static let priceCancelled = "kh_uisdk_cancelled".localized
         public static let cancellationSuccessAlertTitle = "kh_uisdk_cancel_ride_successful".localized
         public static let cancellationSuccessAlertMessage = "kh_uisdk_cancel_ride_successful_message".localized
-        public static let cancellationFeeCharge = "kh_uisdk_you_may_be_charged_ios".localized
+        public static let cancellationFeeCharge = "kh_uisdk_you_may_be_charged".localized
         public static let cancellationFeeContinue = "kh_uisdk_would_you_like_to_proceed".localized
         static let past = "kh_uisdk_title_page_past".localized
         static let upcoming = "kh_uisdk_title_page_upcoming".localized
@@ -408,36 +408,36 @@ public enum UITexts {
     }
     
     public enum TrackingLinks {
-        static let sandboxLink = "kh_uisdk_sandboxLink".localized
-        static let productionLink = "kh_uisdk_productionLink".localized
-        static let stagingLink = "kh_uisdk_stagingLink".localized
+        static let sandboxLink = "kh_uisdk_sandbox_link".localized
+        static let productionLink = "kh_uisdk_production_link".localized
+        static let stagingLink = "kh_uisdk_staging_link".localized
     }
 
     public enum Airport {
         static let flightNumber = "kh_uisdk_flight_number".localized
-        static let bookingMessage = "kh_uisdk_airport_bookingMessage".localized
+        static let bookingMessage = "kh_uisdk_airport_booking_message".localized
     }
 
     public enum AddressScreen {
         static let noRecentAddresses = "kh_uisdk_recents_empty".localized
-        static let noResultsFound = "kh_uisdk_something_went_wrong".localized
-        static let setOnMap = "kh_uisdk_setOnMap".localized
+        static let noResultsFound = "kh_uisdk_results_empty".localized
+        static let setOnMap = "kh_uisdk_set_on_map".localized
         static let currentLocation = "kh_uisdk_current_location".localized
     }
     
     public enum Quotes {
         static let freeCancellation = "kh_uisdk_filter_free_cancellation".localized
         static let freeCancellationPrebook = "kh_uisdk_quote_cancellation_before_pickup_ios".localized
-        static let freeCancellationASAP = "kh_uisdk_freeCancellationASAP_ios".localized
+        static let freeCancellationASAP = "kh_uisdk_free_cancellation_ASAP".localized
         static let freeCancellationAndKeyword = "kh_uisdk_quote_cancellation_and_keyword".localized
         static let freeCancellationBeforeDriverEnRoute = "kh_uisdk_quote_cancellation_before_driver_departure".localized
         static let freeWaitingTime = "kh_uisdk_filter_free_waiting_time".localized
-        static let feesAndTaxesIncluded = "Tkh_uisdk_fees_and_taxes_included".localized
-        static let result = "kh_uisdk_result_ios".localized
+        static let feesAndTaxesIncluded = "kh_uisdk_fees_and_taxes_included".localized
+        static let result = "kh_uisdk_result".localized
         static let results = "kh_uisdk_results_ios".localized
         static let driverArrivalTime = "kh_uisdk_driver_arrival".localized
         static let filter = "kh_uisdk_filter".localized
-        static let filterPageResults = "kh_uisdk_filter_page_results_ios".localized
+        static let filterPageResults = "kh_uisdk_filter_page_results".localized
         static let resetFilter = "kh_uisdk_reset_filter".localized
         static let filtersPassengers = "kh_uisdk_filter_passengers".localized
         static let filtersLuggages = "kh_uisdk_filter_luggages".localized
@@ -447,8 +447,8 @@ public enum UITexts {
     public enum Loyalty {
         static let title = "kh_uisdk_loyalty_title".localized
         static let burnTitle = "kh_uisdk_loyalty_use_points_title".localized
-        static let pointsEarnedForTrip = "kh_uisdk_loyalty_points_earned_for_trip_ios".localized
-        static let burnOnSubtitle = "kh_uisdk_loyalty_use_points_on_subtitle_ios".localized
+        static let pointsEarnedForTrip = "kh_uisdk_loyalty_points_earned_for_trip".localized
+        static let burnOnSubtitle = "kh_uisdk_loyalty_use_points_on_subtitle".localized
         static let burnOffSubtitle = "kh_uisdk_loyalty_use_points_off_subtitle".localized
         static let info = "kh_uisdk_loyalty_info".localized
         static let noAllowedToBurnPoints = "kh_uisdk_loyalty_pre_auth_not_allowed_to_burn".localized

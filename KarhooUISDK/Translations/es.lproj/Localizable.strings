@@ -76,9 +76,9 @@
 
 "kh_uisdk_add_card" = "Agregar Pago";
 
-"kh_uisdk_add_flight_details" = "Número de vuelo (Opcional)";
+"kh_uisdk_add_comment_placeholder" = "Additional comments";
 
-"kh_uisdk_addCommentPlaceholder" = "Additional comments";
+"kh_uisdk_add_flight_details" = "Número de vuelo (Opcional)";
 
 "kh_uisdk_additional_comments" = "Comentarios adicionales (Niños, Silla de ruedas, etc.)";
 
@@ -178,7 +178,7 @@
 
 "kh_uisdk_adyen_payment_error_42" = "La autenticación 3D Secure falló debido a un problema en la red o el emisor de la tarjeta. Vuelva a intentar la transacción o vuelva a intentar la transacción con un método de pago diferente.";
 
-"kh_uisdk_airport_bookingMessage" = "Por favor ingrese un número de vuelo válido";
+"kh_uisdk_airport_booking_message" = "Por favor ingrese un número de vuelo válido";
 
 "kh_uisdk_allocating_trip_one" = "Espera hasta que se te asigne un conductor";
 
@@ -196,15 +196,15 @@
 
 "kh_uisdk_back" = "Volver";
 
-"kh_uisdk_baggage_max" = "Máximo %d piezas de equipaje";
-
-"kh_uisdk_baggage_max_ios" = "Máximo %1$@ piezas de equipaje";
+"kh_uisdk_baggage_max" = "Máximo %1$@ piezas de equipaje";
 
 "kh_uisdk_base" = "Tarifa Básica";
 
-"kh_uisdk_baseFareExplanation" = "La tarifa final puede verse afectada por propinas, peajes, impuestos u otros cargos.";
+"kh_uisdk_base_fare_explanation" = "La tarifa final puede verse afectada por propinas, peajes, impuestos u otros cargos.";
 
 "kh_uisdk_book_now" = "RESERVAR AHORA";
+
+"kh_uisdk_book_return_ride" = "Reservar viaje de vuelta";
 
 "kh_uisdk_booking_car" = "Solicitar";
 
@@ -216,25 +216,21 @@
 
 "kh_uisdk_booking_checkout_title" = "Caja";
 
+"kh_uisdk_booking_confirmation" = "Reserva confirmada";
+
 "kh_uisdk_booking_details_error" = "Detalles de reserva inválidos";
 
 "kh_uisdk_booking_failed" = "No hay conductores disponibles";
 
-"kh_uisdk_booking_failed_body" = "La demanda es alta. %1 no tiene conductores disponibles en este momento";
-
-"kh_uisdk_booking_failed_body_ios" = "Lo sentimos, la demanda está siendo muy elevada. %1$@ no tiene conductores disponibles.";
+"kh_uisdk_booking_failed_body" = "Lo sentimos, la demanda es alta. %1$@ no tiene controladores disponibles.";
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "La demanda es alta en estos momentos. La flota seleccionada no tiene conductores disponibles.";
 
-"kh_uisdk_booking_terms" = "Al hacer una reserva, usted  acepta las %1$s | %2$s así como los %4$s de %3$s | %5$s de %3$s.";
+"kh_uisdk_booking_terms" = "Al hacer una reserva, usted acepta las %1$@ | %2$@ así como los %4$@ de %3$@ | %5$@ de %3$@.";
 
 "kh_uisdk_booking_terms_and_conditions" = "Condiciones de Uso";
 
-"kh_uisdk_booking_terms_ios" = "Al hacer una reserva, usted acepta las %1$@ | %2$@ así como los %4$@ de %3$@ | %5$@ de %3$@.";
-
 "kh_uisdk_bookings" = "Reservas";
-
-"kh_uisdk_bookReturnRide" = "Reservar viaje de vuelta";
 
 "kh_uisdk_call" = "LLAMAR";
 
@@ -280,7 +276,7 @@
 
 "kh_uisdk_continue_journey" = "Continuar";
 
-"kh_uisdk_couldNotLoadTrips" = "Imposible cargar viajes.";
+"kh_uisdk_could_not_load_trips" = "Imposible cargar viajes.";
 
 "kh_uisdk_country_search" = "Buscar país/región";
 
@@ -316,7 +312,7 @@
 
 "kh_uisdk_email_report_issue_message" = "Por favor, deje sus comentarios sobre un tema específico en el espacio a continuación.";
 
-"kh_uisdk_enterDestination" = "Introduce un destino para ver las flotas disponibles";
+"kh_uisdk_enter_destination" = "Introduce un destino para ver las flotas disponibles";
 
 "kh_uisdk_erase_address" = "Borrar dirección";
 
@@ -324,21 +320,21 @@
 
 "kh_uisdk_error_invalid_password" = "El correo electrónico o la contraseña que has introducido no son correctos";
 
-"kh_uisdk_errors_cantSendEmail" = "Email no enviado. Configura tu correo primero.";
+"kh_uisdk_errors_cant_send_email" = "Email no enviado. Configura tu correo primero.";
 
-"kh_uisdk_errors_flightNumberValidatorError" = "Número de vuelo";
+"kh_uisdk_errors_flight_number_validator_error" = "Número de vuelo";
 
-"kh_uisdk_errors_forceUpdateButton" = "Actualizar";
+"kh_uisdk_errors_force_update_button" = "Actualizar";
 
-"kh_uisdk_errors_forceUpdateMessage" = "Actualiza la app para continuar";
+"kh_uisdk_errors_force_update_message" = "Actualiza la app para continuar";
 
-"kh_uisdk_errors_forceUpdateTitle" = "Nueva versión disponible";
+"kh_uisdk_errors_force_update_title" = "Nueva versión disponible";
 
-"kh_uisdk_errors_getUserFail" = "Hubo un problema cargando tu perfil.";
+"kh_uisdk_errors_get_user_fail" = "Hubo un problema cargando tu perfil.";
 
-"kh_uisdk_errors_missingPaymentSDKToken" = "Error al iniciar la configuración del pago";
+"kh_uisdk_errors_missing_payment_SDK_Token" = "Error al iniciar la configuración del pago";
 
-"kh_uisdk_errors_prebookingWithinTheHour" = "Reserva realizada para la misma hora";
+"kh_uisdk_errors_prebooking_within_the_hour" = "Reserva realizada para la misma hora";
 
 "kh_uisdk_estimated_arrival_time" = "Hora de llegada estimada";
 
@@ -372,8 +368,6 @@
 
 "kh_uisdk_filter_bike" = "Bicicleta";
 
-"kh_uisdk_filter_cancellation_and_waiting_time" = "Cancelación y tiempo de espera";
-
 "kh_uisdk_filter_child_seat" = "Asiento para niños";
 
 "kh_uisdk_filter_driver_details" = "Detalles del conductor";
@@ -402,13 +396,13 @@
 
 "kh_uisdk_filter_moto" = "Moto";
 
-"kh_uisdk_filter_page_results" = "Ver todos los resultados %s";
-
-"kh_uisdk_filter_page_results_ios" = "Ver todos los resultados (%1$@)";
+"kh_uisdk_filter_page_results" = "Ver todos los resultados (%1$@)";
 
 "kh_uisdk_filter_passengers" = "Pasajero(s)";
 
 "kh_uisdk_filter_quote_types" = "Tipos de cotización";
+
+"kh_uisdk_filter_service_agreements" = "Cancelación y tiempo de espera";
 
 "kh_uisdk_filter_standard" = "Estándar";
 
@@ -444,15 +438,15 @@
 
 "kh_uisdk_flight_tracking" = "Tracking del vuelo";
 
-"kh_uisdk_forgottenPassword" = "¿Olvidaste tu contraseña?";
+"kh_uisdk_forgotten_password" = "¿Olvidaste tu contraseña?";
 
-"kh_uisdk_freeCancellationASAP_ios" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
+"kh_uisdk_free_cancellation_ASAP" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
 
 "kh_uisdk_got_it" = "Entendido";
 
 "kh_uisdk_gps_tracking" = "Seguimiento GPS";
 
-"kh_uisdk_guestCheckoutPaymentDetailsTitle" = "Métodos de pago";
+"kh_uisdk_guest_checkout_payment_details_title" = "Métodos de pago";
 
 "kh_uisdk_help" = "Ayuda";
 
@@ -552,6 +546,10 @@
 
 "kh_uisdk_K6001" = "Sin autorización";
 
+"kh_uisdk_karhoo_cancelled_alert_message" = "Karhoo canceló tu reserva";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "Cancelación";
+
 "kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
 
 "kh_uisdk_karhoo_id" = "ID Karhoo";
@@ -559,10 +557,6 @@
 "kh_uisdk_karhoo_privacy_policy" = "política de privacidad";
 
 "kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
-
-"kh_uisdk_karhooCancelledAlertMessage" = "Karhoo canceló tu reserva";
-
-"kh_uisdk_karhooCancelledAlertTitle" = "Cancelación";
 
 "kh_uisdk_KP001" = "No se puede decodificar el cuerpo de la solicitud";
 
@@ -606,13 +600,15 @@
 
 "kh_uisdk_loyalty_info" = "Su tarjeta es necesaria para autorizar esta transacción en caso de que el precio final del viaje exceda su saldo de puntos. No se le cobrará a su cuenta si sus puntos de fidelidad cubren el precio total.";
 
+"kh_uisdk_loyalty_info_add_points" = "Se añadirán %@ puntos de fidelidad al saldo de su cuenta al final del viaje";
+
+"kh_uisdk_loyalty_info_remove_points" = "Se deducirán %@ puntos de fidelidad del saldo de su cuenta al final del viaje.";
+
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Tu saldo de puntos es insuficiente";
 
 "kh_uisdk_loyalty_not_eligible_for_pre_auth" = "El modo de lealtad actual no es elegible para autorización previa";
 
-"kh_uisdk_loyalty_points_earned_for_trip" = "Se añadirán %1$s puntos de fidelidad al saldo de su cuenta al final del viaje";
-
-"kh_uisdk_loyalty_points_earned_for_trip_ios" = "Se añadirán %1$@ puntos de fidelidad al saldo de su cuenta al final del viaje";
+"kh_uisdk_loyalty_points_earned_for_trip" = "Se añadirán %1$@ puntos de fidelidad al saldo de su cuenta al final del viaje";
 
 "kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "No se le permite quemar puntos";
 
@@ -628,9 +624,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Puede habilitar sus puntos de fidelidad para pagar el viaje";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Pague %s %s con %s puntos de fidelidad";
-
-"kh_uisdk_loyalty_use_points_on_subtitle_ios" = "Paga %1$@ %2$@ con %3$@ puntos de fidelidad";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Paga %1$@ %2$@ con %3$@ puntos de fidelidad";
 
 "kh_uisdk_loyalty_use_points_title" = "Usa tus puntos";
 
@@ -664,23 +658,23 @@
 
 "kh_uisdk_no" = "No";
 
-"kh_uisdk_noAvailabilityBody" = "Ponte en %1$@ si conoces flotas locales.";
+"kh_uisdk_no_availability_body" = "Ponte en %1$@ si conoces flotas locales.";
 
-"kh_uisdk_noAvailabilityLink" = "contacto";
+"kh_uisdk_no_availability_link" = "contacto";
 
-"kh_uisdk_noCarsAvailable" = "No hay taxis disponibles en este momento. Inténtalo de nuevo mas tarde.";
+"kh_uisdk_no_cars_available" = "No hay taxis disponibles en este momento. Inténtalo de nuevo mas tarde.";
 
-"kh_uisdk_noEmailSetupError" = "Configura una cuenta de correo en tu dispositivo";
+"kh_uisdk_no_email_setup_error" = "Configura una cuenta de correo en tu dispositivo";
 
-"kh_uisdk_noLocationPermissionMessage" = "Datos de ubicación necesarios para mostrar su ubicación. Para cambiar la configuración de permisos, vaya a la pestaña de configuración de iOS y elija un nuevo valor.";
+"kh_uisdk_no_location_permission_message" = "Datos de ubicación necesarios para mostrar su ubicación. Para cambiar la configuración de permisos, vaya a la pestaña de configuración de iOS y elija un nuevo valor.";
 
-"kh_uisdk_noLocationPermissionTitle" = "Permiso necesario";
+"kh_uisdk_no_location_permission_title" = "Permiso necesario";
 
-"kh_uisdk_noQuotesInSelectedCategory" = " No hay cotizaciones para esta categoría.\nElija otra categoría.";
+"kh_uisdk_no_quotes_in_selected_category" = " No hay cotizaciones para esta categoría.\nElija otra categoría.";
+
+"kh_uisdk_no_trips" = "Sin reservas";
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificado SSL no válido";
-
-"kh_uisdk_noTrips" = "Sin reservas";
 
 "kh_uisdk_offer_expired" = "Cotización caducada";
 
@@ -698,13 +692,11 @@
 
 "kh_uisdk_passenger_details" = "Detalles del pasajero";
 
-"kh_uisdk_passengerDetails_addPassenger" = "Añadir pasajero";
+"kh_uisdk_passenger_details_add_passenger" = "Añadir pasajero";
 
 "kh_uisdk_passengerDetails_subtitle" = "Esta información permite el buen desarrollo de su carrera";
 
-"kh_uisdk_passengers_max" = "Máximo %d pasajero(s)";
-
-"kh_uisdk_passengers_max_ios" = "Máximo %1$@ pasajeros";
+"kh_uisdk_passengers_max" = "Máximo %1$@ pasajeros";
 
 "kh_uisdk_password_hint" = "Contraseña";
 
@@ -718,11 +710,11 @@
 
 "kh_uisdk_payment_issue_message" = "Hubo un problema con tu tarjeta";
 
-"kh_uisdk_payment_paymentAlertUpdateCard" = "Actualizar Pago";
+"kh_uisdk_payment_payment_alert_update_card" = "Actualizar Pago";
+
+"kh_uisdk_payment_summary" = "Recibo";
 
 "kh_uisdk_payments" = "Pagos";
-
-"kh_uisdk_paymentSummary" = "Recibo";
 
 "kh_uisdk_pending" = "Pendiente";
 
@@ -738,13 +730,13 @@
 
 "kh_uisdk_pickup_type_standby" = "Llamar conductor";
 
+"kh_uisdk_prebook_confirmation" = "Su reservación\nde: %1$@\n a: %2$@\n en: %3$@\n ha sido reservadoreservar";
+
+"kh_uisdk_prebook_confirmed" = "Viaje confirmado";
+
+"kh_uisdk_prebook_picker_title" = "Día y hora de partida";
+
 "kh_uisdk_prebook_timezone_title" = "Zona horaria (%1$@)";
-
-"kh_uisdk_prebookConfirmation" = "Su reservación\nde: %1$@\n a: %2$@\n en: %3$@\n ha sido reservadoreservar";
-
-"kh_uisdk_prebookConfirmed" = "Viaje confirmado";
-
-"kh_uisdk_prebookPickerTitle" = "Día y hora de partida";
 
 "kh_uisdk_price" = "Tarifa";
 
@@ -756,7 +748,7 @@
 
 "kh_uisdk_price_meet_and_greet" = "Dar la bienvenida";
 
-"kh_uisdk_productionLink" = "https://agent-portal.karhoo.com/follow/";
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "Perfil";
 
@@ -784,11 +776,11 @@
 
 "kh_uisdk_quote_cancellation_before_pickup_start" = "Cancelación gratuita hasta";
 
+"kh_uisdk_quote_cell_details" = "Detalles";
+
 "kh_uisdk_quote_learn_more" = "Leer más";
 
-"kh_uisdk_quoteCell_details" = "Detalles";
-
-"kh_uisdk_quotedPrice" = "Tarifa estimada";
+"kh_uisdk_quoted_price" = "Tarifa estimada";
 
 "kh_uisdk_quotes_activity_title" = "Citas";
 
@@ -832,19 +824,19 @@
 
 "kh_uisdk_report_issue" = "Reportar problema";
 
-"kh_uisdk_requestCar" = "CONFIRMAR LA RESERVA";
+"kh_uisdk_request_car" = "CONFIRMAR LA RESERVA";
+
+"kh_uisdK_request_received" = "Solicitud recibida";
 
 "kh_uisdk_requested" = "Tu viaje ha sido solicitado con %s";
 
 "kh_uisdk_requesting" = "Solicitando";
 
-"kh_uisdk_requestingCar" = "Solicitar";
-
-"kh_uisdK_requestReceived" = "Solicitud recibida";
+"kh_uisdk_requesting_car" = "Solicitar";
 
 "kh_uisdk_reset_filter" = "Restablecer filtros";
 
-"kh_uisdk_result_ios" = "%1$@ resultado(s)";
+"kh_uisdk_result" = "%1$@ resultado(s)";
 
 "kh_uisdk_results" = "resultados";
 
@@ -884,15 +876,15 @@
 
 "kh_uisdk_saloon" = "Berlina";
 
-"kh_uisdk_sandboxLink" = "https://agent-portal.sandbox.karhoo.com/follow/";
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
 
 "kh_uisdk_save" = "Salvar";
 
 "kh_uisdk_schedule_ride" = "Programe el viaje";
 
-"kh_uisdk_setOnMap" = "Establecer en el mapa";
+"kh_uisdk_set_on_map" = "Establecer en el mapa";
 
-"kh_uisdk_setPrebookTime" = "Seleccionar";
+"kh_uisdk_set_prebook_time" = "Seleccionar";
 
 "kh_uisdk_settings" = "Ajustes";
 
@@ -902,15 +894,17 @@
 
 "kh_uisdk_sign_out" = "Salir";
 
-"kh_uisdk_signupEmailSubscribeCopy" = "No deseo recibir viajes gratuitos, promociones ni ofertas";
+"kh_uisdk_signup_email_subscribe_copy" = "No deseo recibir viajes gratuitos, promociones ni ofertas";
 
-"kh_uisdk_signupPendingMessage" = "Te notificaremos por email una vez tu solicitud haya sido aceptada.";
+"kh_uisdk_signup_pending_message" = "Te notificaremos por email una vez tu solicitud haya sido aceptada.";
 
 "kh_uisdk_something_went_wrong" = "Hubo un problema";
 
+"kh_uisdk_something_went_wrong_select_another_quote" = "Algo salió mal, vuelva a intentarlo o seleccione otra cotización";
+
 "kh_uisdk_sort_by" = "Ordenar por";
 
-"kh_uisdk_stagingLink" = "https://agent-portal.stg.karhoo.net/follow/";
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
 "kh_uisdk_star_excellent" = "Fantástico";
 
@@ -940,9 +934,9 @@
 
 "kh_uisdk_temporary_message_error_codes_unknown" = "Parece que estamos teniendo problemas técnicos en este momento.";
 
-"kh_uisdk_terms_and_conditions_registerAccountAction" = "crear una cuenta de Karhoo";
+"kh_uisdk_terms_and_conditions_register_account_action" = "crear una cuenta de Karhoo";
 
-"kh_uisdk_termsConditionFullString" = "Al %1$@ con %2$@, aceptas las \n %3$@  |   %4$@";
+"kh_uisdk_terms_condition_full_string" = "Al %1$@ con %2$@, aceptas las \n %3$@  |   %4$@";
 
 "kh_uisdk_thanks" = "Muchas gracias for tu interés";
 
@@ -966,41 +960,53 @@
 
 "kh_uisdk_title_upcoming_rides_empty" = "No tienes reservas";
 
-"kh_uisdk_totalFare" = "Tarifa total";
+"kh_uisdk_total_fare" = "Tarifa total";
 
 "kh_uisdk_track_driver" = "Localizar conductor";
 
-"kh_uisdk_trackTrip" = "Seguir viaje";
+"kh_uisdk_track_trip" = "Seguir viaje";
 
-"kh_uisdk_trackTripAlertMessage" = "¿Le gustaría seguir la ubicación del vehículo?";
+"kh_uisdk_track_trip_alert_message" = "¿Le gustaría seguir la ubicación del vehículo?";
 
-"kh_uisdk_trackTripAlertTitle" = "El conductor está en camino";
+"kh_uisdk_track_trip_alert_title" = "El conductor está en camino";
 
 "kh_uisdk_train_tracking" = "Tracking del tren";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Tu reserva ha sido cancelada. Por favor ponte en contacto con nosotros.";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Cancelado por la flota";
 
 "kh_uisdk_trip_id" = "№ de reserva: %1$s";
 
 "kh_uisdk_trip_id_label" = "Trip ID";
 
-"kh_uisdk_tripCancelledByDispatchAlertMessage" = "Tu reserva ha sido cancelada. Por favor ponte en contacto con nosotros.";
+"kh_uisdk_trip_ride_options" = "Opciones";
 
-"kh_uisdk_tripRideOptions" = "Opciones";
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "Lo sentimos, la flota canceló tu reserva.";
 
-"kh_uisdk_tripStatusCancelledByDispatch" = "Lo sentimos, la flota canceló tu reserva.";
+"kh_uisdk_trip_status_cancelled_by_user" = "Has cancelado la reserva";
 
-"kh_uisdk_tripStatusCancelledByUser" = "Has cancelado la reserva";
+"kh_uisdk_trip_status_completed" = "Llegaste a tu destino";
 
-"kh_uisdk_tripStatusCompleted" = "Llegaste a tu destino";
+"kh_uisdk_trip_status_confirmed" = "Tu solicitud ha sido aceptada. \nSe te está asignando un conductor.";
 
-"kh_uisdk_tripStatusConfirmed" = "Tu solicitud ha sido aceptada. \nSe te está asignando un conductor.";
+"kh_uisdk_trip_status_driver_arrived" = "¡Tu conductor ha llegado!";
 
-"kh_uisdk_tripStatusDriverArrived" = "¡Tu conductor ha llegado!";
+"kh_uisdk_trip_status_driver_en_route" = "Tu conductor está de camino";
 
-"kh_uisdk_tripStatusDriverEnRoute" = "Tu conductor está de camino";
+"kh_uisdk_trip_status_requested" = "%1$@ está asignando un conductor. Esto puede tardar hasta 5 minutos";
 
-"kh_uisdk_tripStatusRequested" = "%1$@ está asignando un conductor. Esto puede tardar hasta 5 minutos";
+"kh_uisdk_trip_summary" = "Resumen del viaje";
 
-"kh_uisdk_tripSummary" = "Resumen del viaje";
+"kh_uisdk_trip_summary_add_to_calendar" = "Añadir al calendario";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "VIAJE AÑADIDO AL CALENDARIO";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Viaja a %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Número de vuelo";
+
+"kh_uisdk_trip_summary_train_number" = "Número de tren";
 
 "kh_uisdk_unchecked" = "Desenfrenado";
 
@@ -1022,9 +1028,7 @@
 
 "kh_uisdk_yes" = "Si";
 
-"kh_uisdk_you_may_be_charged" = "Se le cobrará una tarifa de cancelación estimada en %s .\n\n¿Le gustaría continuar?";
-
-"kh_uisdk_you_may_be_charged_ios" = "Se le cargará una tasa de cancelación estimada en %1$@.\n\n¿Quiere continuar?";
+"kh_uisdk_you_may_be_charged" = "Se le cargará una tasa de cancelación estimada en %1$@.\n\n¿Quiere continuar?";
 
 "KSDK01" = "Se ha producido un error. Inténtelo de nuevo.";
 
@@ -1046,9 +1050,5 @@
 
 "Text.SupportMailMessage.ReportIssueSubject" = "Reportar problema";
 
-"Text.Trip.CancelledByDispatch.AlertTitle" = "Cancelado por la flota";
-
 "Text.VehicleTag.Electric" = "Eléctrico";
-
-"Tkh_uisdk_fees_and_taxes_included" = "Tasas e impuestos incluidos";
 
