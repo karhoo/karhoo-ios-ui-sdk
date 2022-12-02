@@ -20,8 +20,6 @@
 /* User errors, K1xxx */
 "K1001" = "Impossible d'enregistrer l'utilisateur";
 
-"K1002" = "Impossible d'enregistrer l'utilisateur (utilisateur déjà inscrit)";
-
 "K1003" = "Impossible d'enregistrer l'utilisateur (requête non valide)";
 
 "K1004" = "Impossible d'enregistrer l'utilisateur (numéro de téléphone non valide)";
@@ -29,8 +27,6 @@
 "K1005" = "Impossible de trouver les détails de l'utilisateur (authentification non valide)";
 
 "K1006" = "Impossible de trouver les détails de l'utilisateur (utilisateur non créé)";
-
-"K1999" = "Utilisateur enregistré, nous vous contacterons par email dès que votre compte sera activé.";
 
 /* Locations errors, K2xxx */
 "K2001" = "Impossible de trouver l'adresse";
@@ -71,15 +67,9 @@
 
 "K4014" = "Impossible de compléter la commande en tant qu’Agent";
 
-"K4015" = "Impossible de compléter la commande en tant que Traveller";
-
-"k4015" = "Impossible de compléter la commande en tant que Traveller";
-
 "K4018" = "Impossible de compléter la réservation car le devis n'est plus disponible";
 
 "K4020" = "Impossible de réserver un voyage avec le DMS sélectionné";
-
-"K4025" = "Le prix de l'offre a augmenté lors de la réservation";
 
 /* Availability errors, K5xxx */
 "K5001" = "Impossible de trouver un devis";
@@ -87,20 +77,6 @@
 "K5002" = "Impossible de trouver un devis (aucune flotte trouvée dans la zone demandée)";
 
 "K5003" = "Impossible de trouver un devis (aucune catégorie trouvée dans la zone demandée)";
-
-/* Authentication errors K6xxx */
-"K6001" = "Identifiant ou mot de passe incorrect. Merci d'essayer à nouveau";
-
-/* KPOI errors, K7xxx */
-"K7001" = "Impossible de completer la requête KPOI";
-
-"K7002" = "Impossible de faire correspondre le KPOI à une identité";
-
-"K7003" = "Impossible de lire le KPOI";
-
-"K7004" = "Impossible d'écrire le KPOI";
-
-"K7005" = "Impossible d'effacer le KPOI";
 
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Une erreur inconnue s’est produite. Veuillez réessayer.";
@@ -234,9 +210,6 @@
 
 "Text.Booking.RequestReceived" = "Réservation reçue";
 
-/* Accessibility hint for prebook feature entry point */
-"Text.Booking.ScheduleRide" = "Planifier le trajet";
-
 "Text.Booking.TrainTracking" = "Suivi du n° de train";
 
 "Text.Bookings.Alert.CancellationFee.Charge" = "Des frais d'annulation estimés à %1$@ vont s'appliquer.\n\nSouhaitez-vous continuer ?";
@@ -314,8 +287,6 @@
 /* The title of the alert when user is forced to update ie "App Update Required" */
 "Text.Error.Alert.ForceUpdateTitle" = "Une mise à jour est disponible";
 
-"Text.Error.Booking.EnterDestinationToProceed" = "Entrez une destination pour procéder à la réservation";
-
 /* Errors */
 "Text.Error.EmailValidationError" = "Vérifiez que votre adresse Email est écrite correctement";
 
@@ -329,8 +300,6 @@
 
 /* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
 "Text.Error.NoDetails" = "Une erreur est survenue, veuillez réessayer plus tard.";
-
-"Text.Error.NotLoggedIn" = "Vous n'êtes pas connecté.";
 
 "Text.Error.Payment.Alert.ButtonUpdateCard" = "Modifier carte";
 
@@ -383,8 +352,6 @@
 
 "Text.FleetCapabilities.VehicleDetails" = "Détails du véhicule";
 
-"Text.Generic.All" = "Tous";
-
 "Text.Generic.Back" = "Retour";
 
 "Text.Generic.Bookings" = "Réservations";
@@ -411,11 +378,7 @@
 /* "Completed" */
 "Text.Generic.Completed" = "Completé";
 
-"Text.Generic.Continue" = "Continuer";
-
 "Text.Generic.Destination" = "Arrivée";
-
-"Text.Generic.Dismiss" = "Fermer";
 
 /* "Edit" used as a button (call to action) */
 "Text.Generic.Edit" = "Modifier";
@@ -430,8 +393,6 @@
 
 /* English: "Estimated" */
 "Text.Generic.Estimated" = "Prix estimé";
-
-"Text.Generic.ETA" = "Proximité";
 
 "Text.Generic.ETALong" = "Proximité";
 
@@ -506,8 +467,6 @@
 
 "Text.Generic.Submit" = "Envoyer";
 
-"Text.Generic.Success" = "Réussite";
-
 "Text.Generic.Surname" = "Nom";
 
 "Text.Generic.TermsConditions" = "Conditions Générales d'Utilisation";
@@ -517,20 +476,11 @@
 /* "Thanks for your interest" */
 "Text.Generic.Thanks" = "Merci de votre intérêt.";
 
-/* Booker cancelled */
-"Text.Generic.TripStatus.BookerCancelled" = "Annulation utilisateur";
-
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Message" = "L’attribution d’un véhicule prend plus de temps que prévu. Veuillez patienter, contacter la flotte partenaire, ou annuler la course et recommander avec une autre flotte.";
 
 /* "Driver Allocation Delay Title" */
 "Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Délai d’attribution";
-
-/* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Annulation par le chauffeur";
-
-/* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "Aucun chauffeur disponible";
 
 "Text.Generic.Unchecked" = "Décochée";
 
@@ -562,9 +512,6 @@
 
 /* english: requested */
 "Text.GenericTripStatus.Requested" = "Demande en cours";
-
-/* "Pending" */
-"Text.GenericTripStatus.Unknown" = "En cours";
 
 "Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/fr/requests/new";
 
@@ -615,8 +562,6 @@
 "Text.Quote.FreeCancellationPrebook" = "Annulation gratuite jusqu’à %1$@ avant la prise en charge";
 
 "Text.Quote.FreeWaitingTime" = "Attente gratuite";
-
-"Text.Quote.Results" = "%1$@ résultats";
 
 "Text.QuoteCategory.Electric" = "Électrique";
 
@@ -697,9 +642,6 @@
 
 "Text.SideMenu.Help" = "Aide";
 
-/* Side Menu */
-"Text.SideMenu.Login" = "S'identifier";
-
 /* "Profile" button on the side menu */
 "Text.SideMenu.Profile" = "Profil";
 
@@ -710,8 +652,6 @@
 
 /* Sign Out on the side menu */
 "Text.SideMenu.SignOut" = "Déconnexion";
-
-"Text.SideMenu.Signup" = "Inscription";
 
 /* In app email to customer support / feedback */
 "Text.SupportMailMessage.Feedback" = "Veuillez ne pas supprimer ces informations car elles nous aident à améliorer l'application.";
@@ -765,9 +705,6 @@
 
 "Text.Trip.CancelBookingConfirmation.Alert.Title" = "Confirmer l'annulation ?";
 
-/* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
-"Text.Trip.CancelBookingFailed" = "Annulation non confirmée. Veuillez appeler le fournisseur.";
-
 "Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Appeler le fournisseur";
 
 "Text.Trip.CancelBookingFailed.AlertMessage" = "Nous n'arrivons pas à annuler votre course. Veuillez contacter le fournisseur.";
@@ -798,11 +735,6 @@
 
 /* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
 "Text.Trip.KarhooCancelled.AlertTitle" = "Annulation par Karhoo";
-
-"Text.Trip.MessageDriver" = "Envoyer un SMS";
-
-/* For when demand is too high and there are no drivers available */
-"Text.Trip.NoDriversAvailable" = "Aucun chauffeur disponible en ce moment. Veuillez réessayer plus tard.";
 
 /* Alert message in popup when dispatch cancels due to no drivers */
 "Text.Trip.NoDriversAvailable.AlertMessage" = "La flotte a annulée votre course à cause d'un manque de chauffeurs disponibles. Veuillez réessayer plus tard.";
