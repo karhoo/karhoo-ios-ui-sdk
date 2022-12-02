@@ -254,6 +254,7 @@
 		510522EA284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		510857BB292E3EBF00EC8DA6 /* LoyaltyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BA292E3EBF00EC8DA6 /* LoyaltyInformationView.swift */; };
 		510857BE292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BD292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift */; };
+		510DBEBC2939E3A4008CE9E7 /* BookingCnfirmationSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DBEBB2939E3A4008CE9E7 /* BookingCnfirmationSnapshotSpec.swift */; };
 		51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */; };
 		5128653C2914F75200EA8934 /* QuoteListSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128653B2914F75200EA8934 /* QuoteListSnapshotSpec.swift */; };
 		5128653F2914FC9800EA8934 /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
@@ -968,6 +969,7 @@
 		51000D3E29000B5800C4C4A5 /* MockQuoteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListPresenter.swift; sourceTree = "<group>"; };
 		510857BA292E3EBF00EC8DA6 /* LoyaltyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyInformationView.swift; sourceTree = "<group>"; };
 		510857BD292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyInformationViewModel.swift; sourceTree = "<group>"; };
+		510DBEBB2939E3A4008CE9E7 /* BookingCnfirmationSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCnfirmationSnapshotSpec.swift; sourceTree = "<group>"; };
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		51218F092907CF21001B677A /* MockQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuote.swift; sourceTree = "<group>"; };
 		51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
@@ -2453,6 +2455,14 @@
 			path = LoyaltyInformation;
 			sourceTree = "<group>";
 		};
+		510DBEBA2939E37D008CE9E7 /* BookingConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				510DBEBB2939E3A4008CE9E7 /* BookingCnfirmationSnapshotSpec.swift */,
+			);
+			path = BookingConfirmation;
+			sourceTree = "<group>";
+		};
 		511A0A61283559A300D119E0 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
@@ -2639,6 +2649,7 @@
 		51CC85BB290BC1E600E5E703 /* KarhooUISDKUITests */ = {
 			isa = PBXGroup;
 			children = (
+				510DBEBA2939E37D008CE9E7 /* BookingConfirmation */,
 				51D423182913CBB5007EB705 /* QuoteList */,
 				51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */,
 				515D81872913BDF4000635AD /* SnapshotUtils.swift */,
@@ -4296,6 +4307,7 @@
 				51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */,
 				5128653C2914F75200EA8934 /* QuoteListSnapshotSpec.swift in Sources */,
 				515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */,
+				510DBEBC2939E3A4008CE9E7 /* BookingCnfirmationSnapshotSpec.swift in Sources */,
 				51D4231C2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
