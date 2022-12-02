@@ -12,6 +12,9 @@ import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class MockCheckoutView: MockBaseViewController, CheckoutView {
+    var currentLoyaltyMode: KarhooUISDK.LoyaltyMode = .none
+    var currentLoyaltyPoints: Int = 0
+    
     var setRequestedStateCalled = false
     func setRequestedState() {
         setRequestedStateCalled = true

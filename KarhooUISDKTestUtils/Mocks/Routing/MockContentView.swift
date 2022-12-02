@@ -9,14 +9,14 @@
 import Foundation
 @testable import KarhooUISDK
 
-final class MockContentView: Screen, MenuContentView {
-    var calledShowGuestMenu = false
+final public class MockContentView: Screen, MenuContentView {
+    public var calledShowGuestMenu = false
     
-    func getFlowItem() -> Screen {
+    public func getFlowItem() -> Screen {
         return self
     }
     
-    func showGuestMenu() {
+    public func showGuestMenu() {
         calledShowGuestMenu = true
     }
 }

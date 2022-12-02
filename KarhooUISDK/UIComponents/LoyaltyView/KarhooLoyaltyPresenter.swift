@@ -5,12 +5,13 @@
 //  Created by Diana Petrea on 16.11.2021.
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
+//  swiftlint:disable file_length
 
 import Foundation
 import KarhooSDK
 
 final class KarhooLoyaltyPresenter: LoyaltyPresenter {
-
+    
     enum LoyaltyState {
         case noError, earnPointsError, burnPointsError
     }
@@ -382,6 +383,17 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         if !isLoading {
             didStartLoading = false
             delegate?.didEndLoading()
+        }
+    }
+    
+    func getCurrentNumberOfPointsDisplayed() -> Int {
+        switch currentMode {
+        case .burn:
+            return viewModel?.burnAmount ?? 0
+        case .earn:
+            return viewModel?.earnAmount ?? 0
+        default:
+            return 0
         }
     }
 

@@ -15,6 +15,15 @@ struct KarhooAddressView: View {
 
     // MARK: - Nested types
 
+    private enum Constants {
+        static var maxWidth: CGFloat { UIScreen.main.bounds.width - UIConstants.Spacing.standard * 2 }
+        static let dotsColumnWidth: CGFloat = 10
+        static let labelHeight: CGFloat = 32
+        static let padding: CGFloat = 10
+        static let roundIconSide: CGFloat = 10
+        static let minimumScaleFactor: CGFloat = 0.7
+    }
+
     enum Design {
         /// Bordered view, with SDKs `background1` color and rounded corners.
         case bordered
@@ -87,26 +96,31 @@ struct KarhooAddressView: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(UIConstants.Spacing.medium)
+        .frame(maxWidth: Constants.maxWidth, alignment: .topLeading)
         .background(Color(backgroundColor))
         .addBorder(Color(borderColor), cornerRadius: cornerRadius)
         .colorScheme(.light)
+        .layoutPriority(Double(UILayoutPriority.required.rawValue))
     }
 
     @ViewBuilder
     private var dotsColumn: some View {
-        VStack(spacing: UIConstants.Spacing.xSmall) {
-            Spacer()
+        VStack(
+            alignment: .center,
+            spacing: UIConstants.Spacing.xSmall
+        ) {
             Image("kh_uisdk_empty_circle_secondary", bundle: .current)
                 .frame(
-                    width: UIConstants.Dimension.View.addressViewRoundIconSide,
-                    height: UIConstants.Dimension.View.addressViewRoundIconSide
+                    width: Constants.roundIconSide,
+                    height: Constants.roundIconSide
                 )
             if showsLineBetweenPickUpAndDestination {
                 VLine()
                     .stroke(style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round, dash: [4, 5]))
                     .frame(width: 2)
+                    .frame(minHeight: UIConstants.Spacing.large)
+                    .fixedSize()
                     .foregroundColor(Color(KarhooUI.colors.border))
             } else {
                 Spacer()
@@ -114,10 +128,9 @@ struct KarhooAddressView: View {
 
             Image("kh_uisdk_empty_circle_primary", bundle: .current)
                 .frame(
-                    width: UIConstants.Dimension.View.addressViewRoundIconSide,
-                    height: UIConstants.Dimension.View.addressViewRoundIconSide
+                    width: Constants.roundIconSide,
+                    height: Constants.roundIconSide
                 )
-            Spacer()
         }
     }
 
@@ -131,7 +144,8 @@ struct KarhooAddressView: View {
             if tags.isNotEmpty {
                 buildTagsView()
             } else {
-                Spacer(minLength: UIConstants.Spacing.medium)
+                Spacer()
+                    .frame(height: UIConstants.Spacing.medium)
             }
             AddressLabelView(
                 text: destination.text,
@@ -146,8 +160,8 @@ struct KarhooAddressView: View {
             Text(text)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .multilineTextAlignment(.trailing)
-                .padding(.top, UIConstants.Dimension.View.addressViewPadding)
-                .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
+                .padding(.top, Constants.padding)
+                .minimumScaleFactor(Constants.minimumScaleFactor)
             Spacer()
         }
     }
@@ -180,22 +194,16 @@ extension KarhooAddressView {
             VStack(alignment: .leading, spacing: 0) {
                 Text(text)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                     .foregroundColor(Color(KarhooUI.colors.text))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(alignment: .leading)
                 if let subtext = subtext {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionBold()))
-                        .lineLimit(2)
-                        .multilineTextAlignment(.leading)
-                        .minimumScaleFactor(UIConstants.Dimension.View.addressViewMinimumScaleFactor)
                         .foregroundColor(Color(KarhooUI.colors.textLabel))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(alignment: .leading)
                 }
             }
-            .frame(height: UIConstants.Dimension.View.addressViewLabelHeight)
+            .frame(height: Constants.labelHeight)
         }
     }
 }
@@ -227,9 +235,13 @@ extension KarhooAddressView {
 // MARK: - Preview
 struct KarhooAddressView_Preview: PreviewProvider {
     static var previews: some View {
-        KarhooAddressView(
-            pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
-            destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom")
-        )
+        VStack {
+            Spacer()
+            KarhooAddressView(
+                pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
+                destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom"),
+                design: .bordered
+            )
+        }
     }
 }

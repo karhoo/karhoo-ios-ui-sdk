@@ -59,7 +59,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         setupNavigationBar()
         mapView.set(userMarkerVisible: true)
     }
-
+    
     private func setUpView() {
         presenter.load(view: self)
         

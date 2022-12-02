@@ -384,10 +384,8 @@ class ViewController: UIViewController {
             case .tripAllocated(let trip):
                 bookingScreen?.openTrip(trip)
                 
-            case .prebookConfirmed(let trip, let prebookConfirmationAction):
-                if case .rideDetails = prebookConfirmationAction {
-                    bookingScreen?.openRideDetailsFor(trip)
-                }
+            case .prebookConfirmed(let trip):
+                bookingScreen?.openRideDetailsFor(trip)
                 
             default:
                 break
