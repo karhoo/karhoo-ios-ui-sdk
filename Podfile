@@ -31,7 +31,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-3663-add-adyen-payment-errors'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
 #  pod 'KarhooSDK', '1.7.0'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
