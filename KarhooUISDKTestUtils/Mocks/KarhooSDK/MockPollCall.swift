@@ -13,11 +13,11 @@ public class MockPollCall<T: KarhooCodableModel>: PollCall<T> {
 
     public let mockObservable = MockObservable<T>()
 
-    override init(pollExecutor: KarhooPollExecutor) {
+    override public init(pollExecutor: KarhooPollExecutor) {
         super.init(pollExecutor: pollExecutor)
     }
 
-    init() {
+    public init() {
         super.init(pollExecutor: MockKarhooPollExecutor())
     }
 

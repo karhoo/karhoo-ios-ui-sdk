@@ -31,7 +31,7 @@ struct KarhooBottomSheet<Content: View>: View {
             VStack(spacing: 0.0) {
                 HStack {
                     Text(viewModel.title)
-                        .font(Font(KarhooUI.fonts.headerBold()))
+                        .font(Font(KarhooUI.fonts.title2Bold()))
                         .foregroundColor(KarhooUI.colors.text.getColor())
                     Spacer()
                         .background(Color.clear)
@@ -64,15 +64,8 @@ struct KarhooBottomSheet<Content: View>: View {
                 // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened,
                 // then wrap that view inside a ScrollView before injecting it into this bottom sheet
                 content()
-                .padding(
-                    EdgeInsets(
-                        top: 0,
-                        leading: UIConstants.Spacing.standard,
-                        bottom: 0,
-                        trailing: UIConstants.Spacing.standard
-                    )
-                )
-                
+                    .padding(UIConstants.Spacing.standard)
+
                 Spacer()
                     .frame(height: getBottomPadding())
                     .animation(.easeOut(duration: UIConstants.Duration.medium))
@@ -85,6 +78,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 )
             )
             .frame(
+                maxWidth: UIScreen.main.bounds.width,
                 maxHeight: UIScreen.main.bounds.height - getTopPadding(),
                 alignment: .bottom
             )

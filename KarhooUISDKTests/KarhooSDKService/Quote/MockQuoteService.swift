@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDKTestUtils
 
 final public class MockQuoteService: QuoteService {
     public let quotesPollCall = MockPollCall<Quotes>()
