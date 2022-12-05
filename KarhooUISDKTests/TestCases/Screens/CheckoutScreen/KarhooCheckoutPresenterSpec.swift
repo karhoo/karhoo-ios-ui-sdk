@@ -175,7 +175,8 @@ class KarhooCheckoutPresenterSpec: KarhooTestCase {
      */
     func testRequestCarCallbackSuccess() {
         startWithValidUserAndNonce()
-        mockUserService.currentUserToReturn = TestUtil.getRandomUser()
+        mockUserService.currentUserToReturn = TestUtil.getRandomUser(paymentProvider: "adyen")
+        KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.adyen)
         testObject.completeBookingFlow()
         mockTripService.bookCall.triggerSuccess(TestUtil.getRandomTrip())
         testObject.screenHasFadedOut()
