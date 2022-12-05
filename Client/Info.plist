@@ -43,6 +43,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Used to add a scheduled trip to the calendar</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Get picked up from your current location</string>
 	<key>UILaunchStoryboardName</key>

@@ -82,6 +82,16 @@
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
 
+"kh_uisdk_trip_summary_add_to_calendar" = "Add to calendar";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "TRIP ADDED TO CALENDAR";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Ride to %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Flight number";
+
+"kh_uisdk_trip_summary_train_number" = "Train number";
+
 /* KSDKxxx Internal SDK */
 "KSDK01" = "Something went wrong but we don't know what it was";
 
