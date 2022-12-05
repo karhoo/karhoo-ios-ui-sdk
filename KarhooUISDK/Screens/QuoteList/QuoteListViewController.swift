@@ -34,7 +34,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.alignment = .fill
         $0.spacing = UIConstants.Spacing.standard
     }
-    let calendarWorker = KarhooAddToCalendarWorker()
+    
     private var headerViews: [UIView] {
         [
             addressPickerView,

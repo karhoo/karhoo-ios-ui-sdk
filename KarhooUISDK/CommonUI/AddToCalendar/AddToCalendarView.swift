@@ -50,7 +50,7 @@ struct KarhooAddToCalendarView: View {
             },
             label: {
                 HStack(spacing: UIConstants.Spacing.small) {
-                    Image("kh_uisdk_calendar", bundle: .current)
+                    Image(uiImage: UIImage.uisdkImage("kh_uisdk_calendar"))
                         .resizable()
                         .frame(
                             width: Constants.calendarIconSide,
@@ -69,7 +69,7 @@ struct KarhooAddToCalendarView: View {
     @ViewBuilder
     private var viewForAddedState: some View {
         HStack(spacing: 8) {
-            Image("kh_uisdk_trip_completed", bundle: .current)
+            Image(uiImage: UIImage.uisdkImage("kh_uisdk_trip_completed"))
                 .resizable()
                 .frame(
                     width: UIConstants.Dimension.Icon.medium,
