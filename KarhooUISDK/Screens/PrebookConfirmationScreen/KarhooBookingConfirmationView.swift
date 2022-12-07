@@ -56,6 +56,13 @@ struct KarhooBookingConfirmationView: View {
             }
             
             // Add to calendar
+            KarhooAddToCalendarView(
+                viewModel: KarhooAddToCalendarView.ViewModel(
+                    onAddAction: { calendarViewModel in
+                        viewModel.onAddToCalendar(viewModel: calendarViewModel)
+                    }
+                )
+            )
             
             // Done button
             KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
@@ -121,6 +128,7 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
         KarhooBookingConfirmationView(viewModel: KarhooBookingConfirmationViewModel(
             journeyDetails: JourneyDetails(),
             quote: Quote(),
+            trip: TripInfo(),
             loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,

@@ -363,6 +363,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
+            self.trip = trip
             view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
             finishBookingFlow(result: .completed(result: KarhooCheckoutResult(tripInfo: trip)))
@@ -517,6 +518,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         let slaveViewModel = KarhooBookingConfirmationViewModel(
             journeyDetails: journeyDetails,
             quote: quote,
+            trip: trip,
             loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
                 shouldShowLoyalty: isLoyaltyEnabled(),
                 loyaltyPoints: view?.currentLoyaltyPoints ?? 0,

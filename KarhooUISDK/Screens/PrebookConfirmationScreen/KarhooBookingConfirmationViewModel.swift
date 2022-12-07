@@ -15,9 +15,11 @@ protocol BookingConfirmationViewModel {
     var vehicleImagePlaceholder: String { get set }
     var journeyDetails: JourneyDetails { get set }
     var quote: Quote { get set }
+    var trip: TripInfo? { get set }
     var loyaltyInfo: BookingConfirmationLoyaltyInfo { get set }
     
     func dismiss()
+    func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
 
 extension BookingConfirmationViewModel {
@@ -110,26 +112,42 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     var vehicleImageURL: String = ""
     var journeyDetails: JourneyDetails
     var quote: Quote
+    var trip: TripInfo?
     var loyaltyInfo: BookingConfirmationLoyaltyInfo
+    var calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker()
     
     private var callback: () -> Void
     
     init(
         journeyDetails: JourneyDetails,
         quote: Quote,
+        trip: TripInfo?,
         loyaltyInfo: BookingConfirmationLoyaltyInfo,
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
+        calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker(),
         callback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
         self.quote = quote
+        self.trip = trip
         self.loyaltyInfo = loyaltyInfo
+        self.calendarWorker = calendarWorker
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
     
     func dismiss() {
         callback()
+    }
+    
+    func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel) {
+        guard let trip = trip else {
+            return
+        }
+        
+        calendarWorker.addToCalendar(trip) { success in
+            viewModel.state = success ? .added : .add
+        }
     }
     
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
