@@ -534,7 +534,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
              KarhooBookingConfirmationView(viewModel: slaveViewModel)
          }
-
+        reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
         view?.present(sheet, animated: true)
     }
     
@@ -618,6 +618,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             amount: quote.price.highPrice,
             currency: quote.price.currencyCode
         )
+    }
+    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
+        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
     }
 }
 

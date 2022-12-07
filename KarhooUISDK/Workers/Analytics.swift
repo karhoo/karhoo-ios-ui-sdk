@@ -36,6 +36,9 @@ public protocol Analytics {
     func checkoutOpened(_ quote: Quote)
     func quoteListOpened(_ journeyDetails: JourneyDetails)
     func changePaymentDetailsPressed()
+    func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String)
+    func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String)
+    func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String)
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -336,6 +339,35 @@ final class KarhooAnalytics: Analytics {
                 Keys.tripId: tripDetails.tripId
             ]
         )
+    }
+
+    func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationScreenOpened,
+            payload: [
+                Keys.date : date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
+    }
+
+    func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationAddToCalendarSelected,
+            payload: [
+                Keys.date : date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
+    }
+    func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationDetailsSelected,
+            payload: [
+                Keys.date : date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
     }
     
     private func getDescriptionForLoyaltyMode(_ type: LoyaltyMode) -> String? {

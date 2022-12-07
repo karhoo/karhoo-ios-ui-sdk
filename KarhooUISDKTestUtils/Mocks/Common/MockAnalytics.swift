@@ -172,4 +172,19 @@ public class MockAnalytics: Analytics {
     public func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         contactDriverClickedCalled = page
     }
+
+    public var rideConfirmationScreenOpenedCalled = false
+    public func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String){
+        rideConfirmationScreenOpenedCalled = true
+    }
+
+    public var rideConfirmationAddToCalendarSelectedCalled = false
+    public func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String){
+        rideConfirmationAddToCalendarSelectedCalled = true
+    }
+
+    public var rideConfirmationDetailsSelectedCalled = false
+    public func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String){
+        rideConfirmationDetailsSelectedCalled = true
+    }
 }
