@@ -826,7 +826,7 @@
 
 "kh_uisdk_request_car" = "CONFERMARE LA PRENOTAZIONE";
 
-"kh_uisdK_request_received" = "Prenotazione ricevuta";
+"kh_uisdk_request_received" = "Prenotazione ricevuta";
 
 "kh_uisdk_requested" = "Il tuo viaggio è stato richiesto con %s";
 

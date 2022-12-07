@@ -826,7 +826,7 @@
 
 "kh_uisdk_request_car" = "CONFIRM BOOKING";
 
-"kh_uisdK_request_received" = "Booking Received";
+"kh_uisdk_request_received" = "Booking Received";
 
 "kh_uisdk_requested" = "Your trip has been requested with %s";
 

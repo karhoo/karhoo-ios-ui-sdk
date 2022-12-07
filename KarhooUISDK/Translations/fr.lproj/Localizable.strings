@@ -826,7 +826,7 @@
 
 "kh_uisdk_request_car" = "VALIDER LA RÉSERVATION";
 
-"kh_uisdK_request_received" = "Commande reçue";
+"kh_uisdk_request_received" = "Commande reçue";
 
 "kh_uisdk_requested" = "Votre course avec %s a été demandée";
 

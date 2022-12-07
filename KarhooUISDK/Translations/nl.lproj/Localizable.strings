@@ -826,7 +826,7 @@
 
 "kh_uisdk_request_car" = "BOEKING BEVESTIGEN";
 
-"kh_uisdK_request_received" = "Boeking ontvangen";
+"kh_uisdk_request_received" = "Boeking ontvangen";
 
 "kh_uisdk_requested" = "Uw reis is aangevraagd met %s";
 

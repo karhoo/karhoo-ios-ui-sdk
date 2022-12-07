@@ -588,7 +588,7 @@
 
 "kh_uisdk_legal_notice_title" = "";
 
-"kh_uisdk_loading_min" = "min";
+"kh_uisdk_loading_min" = "~ min";
 
 "kh_uisdk_locale" = "es_ES";
 
@@ -826,7 +826,7 @@
 
 "kh_uisdk_request_car" = "CONFIRMAR LA RESERVA";
 
-"kh_uisdK_request_received" = "Solicitud recibida";
+"kh_uisdk_request_received" = "Solicitud recibida";
 
 "kh_uisdk_requested" = "Tu viaje ha sido solicitado con %s";
 

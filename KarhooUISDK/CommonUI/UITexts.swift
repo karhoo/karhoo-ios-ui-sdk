@@ -205,7 +205,7 @@ public enum UITexts {
         public static let bookNow = "kh_uisdk_book_now".localized
         public static let requestCar = "kh_uisdk_request_car".localized
         public static let requestingCar = "kh_uisdk_requesting_car".localized
-        public static let requestReceived = "kh_uisdK_request_received".localized
+        public static let requestReceived = "kh_uisdk_request_received".localized
         public static let enterDestination = "kh_uisdk_enter_destination".localized
         public static let baseFareExplanation = "kh_uisdk_base_fare_explanation".localized
         public static let baseFare = "kh_uisdk_base".localized
