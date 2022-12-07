@@ -109,7 +109,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         titleLabel.accessibilityIdentifier = "title_label"
         titleLabel.text = contentType.titleText
         titleLabel.font = KarhooUI.fonts.getRegularFont(withSize: 12.0)
-        titleLabel.tintColor = KarhooUI.colors.text
+        titleLabel.textColor = KarhooUI.colors.text
         addSubview(titleLabel)
         
         updateConstraints()
@@ -204,6 +204,10 @@ class KarhooTextInputView: UIView, KarhooInputView {
 
         textView.text = value
         textView.textColor = KarhooUI.colors.primaryTextColor
+    }
+    
+    func setBackgroundColor(_ color: UIColor) {
+        textView.backgroundColor = color
     }
     
     private func validateField() -> Bool {

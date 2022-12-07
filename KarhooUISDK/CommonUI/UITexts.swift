@@ -384,6 +384,11 @@ public enum UITexts {
         public static let vehicle = "Text.TripSummary.Vehicle".localized
         public static let totalFare = "Text.TripSummary.TotalFare".localized
         public static let quotedPrice = "Text.TripSummary.QuotedPrice".localized
+        public static let addToCalendar = "kh_uisdk_trip_summary_add_to_calendar".localized
+        public static let addedToCalendar = "kh_uisdk_trip_summary_added_to_calendar".localized
+        public static let calendarEventTitle = "kh_uisdk_trip_summary_calendar_event_title".localized
+        public static let trainNumber = "kh_uisdk_trip_summary_train_number".localized
+        public static let flightNumber = "kh_uisdk_trip_summary_flight_number".localized
     }
 
     public enum TripRating {
