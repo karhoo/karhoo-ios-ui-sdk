@@ -54,7 +54,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
-    var paymentNonce: Nonce?
+    private var paymentNonce: Nonce?
 
     // MARK: - Child ViewControllers
   

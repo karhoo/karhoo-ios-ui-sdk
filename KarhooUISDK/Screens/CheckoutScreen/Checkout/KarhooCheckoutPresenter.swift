@@ -228,6 +228,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
               let currentOrg = userService.getCurrentUser()?.organisations.first?.id
         else {
             view?.setDefaultState()
+            bookingRequestInProgress = false
             view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                             message: UITexts.Errors.getUserFail,
                             error: nil)
@@ -265,11 +266,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func submitGuestBooking() {
         guard let passengerDetails = view?.getPassengerDetails()
         else {
+            bookingRequestInProgress = false
             view?.setDefaultState()
             return
         }
         guard let nonce = getPaymentNonceAccordingToAuthState()
         else {
+            bookingRequestInProgress = false
             view?.retryAddPaymentMethod(showRetryAlert: false)
             return
         }
@@ -280,6 +283,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                 message: UITexts.Errors.getUserFail,
                                 error: nil)
+                bookingRequestInProgress = false
                 view?.setDefaultState()
                 return
             }
@@ -300,6 +304,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                     if error.type == .errMissingBrowserInfo {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                     } else {
+                        self?.bookingRequestInProgress = false
                         self?.showLoyaltyNonceError(error: error)
                     }
                     return
@@ -371,6 +376,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
+        bookingRequestInProgress = false
         if let trip = result.getSuccessValue() {
             view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
@@ -434,6 +440,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)
                 case .cancelledByUser:
+                    self?.bookingRequestInProgress = false
                     self?.view?.resetPaymentNonce()
                     self?.view?.setDefaultState()
                 }
@@ -443,9 +450,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
             switch result {
             case .failedToInitialisePaymentService:
+                bookingRequestInProgress = false
                 view?.setDefaultState()
                 showPSPUndefinedError()
             case .threeDSecureAuthenticationFailed:
+                bookingRequestInProgress = false
                 view?.retryAddPaymentMethod(showRetryAlert: true)
                 view?.setDefaultState()
             case .success(let threeDSecureNonce):

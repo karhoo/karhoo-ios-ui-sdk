@@ -12,24 +12,35 @@ import CoreLocation
 class PrimitiveUtil {
 
     class func getRandomLocation() -> CLLocation {
-        return CLLocation(latitude: getRandomCoordinateComponent(),
+        CLLocation(latitude: getRandomCoordinateComponent(),
                           longitude: getRandomCoordinateComponent())
     }
 
     class func getRandomCoordinateComponent() -> CLLocationDegrees {
-        return CLLocationDegrees(arc4random_uniform(1000)/10)
+        CLLocationDegrees(arc4random_uniform(1000)/10)
     }
 
     class func getRandomString() -> String {
-        return String(arc4random_uniform(1000))
+        String(arc4random_uniform(1000))
+    }
+
+    class func getRandomLabel(length: Int? = nil) -> String {
+        let digits = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let lengthOfString = length ?? Int.random(in: 3...10)
+        return String(Array(0..<lengthOfString).map { _ in digits.randomElement()! })
+    }
+
+    class func getRandomEmail() -> String {
+        getRandomLabel() + "@" + getRandomLabel() + "." + getRandomLabel()
+    }
+
+    class func gerRandomPhoneNumber() -> String {
+        let digits = "0123456789"
+        return "+4822" + String(Array(0...6).map { _ in digits.randomElement()! })
     }
 
     class func getRandomInt(lessThan: UInt32 = UInt32(INT_MAX)) -> Int {
-        return Int(arc4random_uniform(UInt32(lessThan)))
-    }
-
-    class func getRandomBool() -> Bool {
-        return Bool(truncating: Int.random(in: 0...1) as NSNumber)
+        Int(arc4random_uniform(UInt32(lessThan)))
     }
 
     class func getTestDate() -> Date { // Wednesday, 14 March 2018 16:20:44
