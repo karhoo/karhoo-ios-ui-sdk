@@ -53,4 +53,9 @@ public class KarhooTestConfiguration: KarhooUISDKConfiguration {
     public func requireSDKAuthentication(callback: @escaping () -> Void) {
         onRequiredSDKAuthentication { callback() }
     }
+
+    public var bookingMetadataToReturn: [String: Any]?
+    public var bookingMetadata: [String: Any]? {
+        bookingMetadataToReturn
+    }
 }
