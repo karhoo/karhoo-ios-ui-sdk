@@ -17,7 +17,8 @@ protocol BookingConfirmationViewModel {
     var quote: Quote { get set }
     var trip: TripInfo? { get set }
     var loyaltyInfo: BookingConfirmationLoyaltyInfo { get set }
-    
+    var printedTime: String { get }
+    var printedDate: String { get }
     func dismiss()
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
@@ -66,27 +67,7 @@ extension BookingConfirmationViewModel {
         
         return result
     }
-    
-    var printedDate: String {
-        guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
-            return ""
-        }
-        
-        let dateFormatter = KarhooDateFormatter()
-        dateFormatter.set(timeZone: originTimeZone)
-        return dateFormatter.display(shortDate: journeyDetails.scheduledDate)
-    }
-    
-    var printedTime: String {
-        guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
-            return ""
-        }
-        
-        let dateFormatter = KarhooDateFormatter()
-        dateFormatter.set(timeZone: originTimeZone)
-        return dateFormatter.display(clockTime: journeyDetails.scheduledDate)
-    }
-    
+
     var printedPrice: String {
         CurrencyCodeConverter.toPriceString(quote: quote)
     }
@@ -107,17 +88,30 @@ protocol BookingConfirmationLoyaltyInfo {
 }
 
 class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
+
+    // MARK: - Nested types
+
+    struct LoyaltyInfo: BookingConfirmationLoyaltyInfo {
+        var shouldShowLoyalty: Bool
+        var loyaltyPoints: Int
+        var loyaltyMode: LoyaltyMode
+    }
+
+    // MARK: - Properties
+
     var vehicleImagePlaceholder: String = "kh_uisdk_supplier_logo_placeholder"
-    
     var vehicleImageURL: String = ""
     var journeyDetails: JourneyDetails
     var quote: Quote
     var trip: TripInfo?
     var loyaltyInfo: BookingConfirmationLoyaltyInfo
-    var calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker()
-    
+    private let calendarWorker: AddToCalendarWorker
+    private let dateFormatter: DateFormatterType
+
     private var callback: () -> Void
-    
+
+    // MARK: - Lifecycle
+
     init(
         journeyDetails: JourneyDetails,
         quote: Quote,
@@ -125,6 +119,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         loyaltyInfo: BookingConfirmationLoyaltyInfo,
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker(),
+        dateFormatter: DateFormatterType = KarhooDateFormatter(),
         callback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
@@ -132,6 +127,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         self.trip = trip
         self.loyaltyInfo = loyaltyInfo
         self.calendarWorker = calendarWorker
+        self.dateFormatter = dateFormatter
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
@@ -149,16 +145,32 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
             viewModel.state = success ? .added : .add
         }
     }
-    
+
+    // MARK: - Get time endpoints
+
+    var printedDate: String {
+        guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
+            return ""
+        }
+        dateFormatter.set(timeZone: originTimeZone)
+
+        return dateFormatter.display(shortDate: journeyDetails.scheduledDate)
+    }
+
+    var printedTime: String {
+        guard let originTimeZone = journeyDetails.originLocationDetails?.timezone() else {
+            return ""
+        }
+        dateFormatter.set(timeZone: originTimeZone)
+
+        return dateFormatter.display(clockTime: journeyDetails.scheduledDate)
+    }
+
+    // MARK: - Helpers
+
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
         provider.getRule(for: quote) { [weak self] rule in
             self?.vehicleImageURL = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
-}
-
-struct KarhooBookingConfirmationLoyaltyInfo: BookingConfirmationLoyaltyInfo {
-    var shouldShowLoyalty: Bool
-    var loyaltyPoints: Int
-    var loyaltyMode: LoyaltyMode
 }

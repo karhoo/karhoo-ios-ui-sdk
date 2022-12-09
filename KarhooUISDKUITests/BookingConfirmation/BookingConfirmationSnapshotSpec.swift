@@ -23,9 +23,16 @@ class BookingConfirmationSnapshotSpec: QuickSpec {
             var bottomSheet: KarhooBottomSheet<KarhooBookingConfirmationView>?
             var sut: KarhooBookingConfirmationView!
             var viewModel: BookingConfirmationViewModel!
+            var mockDateFormatter: MockDateFormatterType!
 
             beforeEach {
                 KarhooUI.set(configuration: KarhooTestConfiguration())
+                mockDateFormatter = MockDateFormatterType()
+                mockDateFormatter.set(locale: Locale(identifier: "en_GB"))
+                mockDateFormatter.set(timeZone: TimeZone(identifier: "Europe/Paris")!)
+                mockDateFormatter.shortDateReturnString = "14 Dec 2023"
+                mockDateFormatter.clockTimeReturnString = "12:34"
+
                 viewModel = KarhooBookingConfirmationViewModel(
                     journeyDetails: .init(
                         originLocationDetails: .init(
@@ -37,11 +44,13 @@ class BookingConfirmationSnapshotSpec: QuickSpec {
                     ),
                     quote: .init(price: .init(highPrice: 20, lowPrice: 10, currencyCode: "EUR", net: .init(high: 22, low: 11), intLowPrice: 12, intHighPrice: 23), validity: 300),
                     trip: TripInfo(dateScheduled: .mock()),
-                    loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+                    loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
                         shouldShowLoyalty: true,
                         loyaltyPoints: 10,
                         loyaltyMode: .earn
                     ),
+                    calendarWorker: KarhooAddToCalendarWorker(dateFormatter: mockDateFormatter),
+                    dateFormatter: mockDateFormatter,
                     callback: { }
                 )
                 sut = KarhooBookingConfirmationView(viewModel: viewModel)
@@ -52,10 +61,7 @@ class BookingConfirmationSnapshotSpec: QuickSpec {
                     ),
                     content: { sut! }
                 )
-                uikitWrapper = UIHostingController(rootView: bottomSheet).then {
-                    $0.loadViewIfNeeded()
-                    $0.view.translatesAutoresizingMaskIntoConstraints = false
-                }
+                uikitWrapper = UIHostingController(rootView: bottomSheet)
             }
 
             context("when it's showned") {

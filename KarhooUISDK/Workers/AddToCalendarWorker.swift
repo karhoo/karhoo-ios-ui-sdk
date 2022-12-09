@@ -17,6 +17,13 @@ protocol AddToCalendarWorker: AnyObject {
 final class KarhooAddToCalendarWorker: AddToCalendarWorker {
 
     private let eventStore = EKEventStore()
+    private let dateFormatter: DateFormatterType
+
+    init(
+        dateFormatter: DateFormatterType = KarhooDateFormatter()
+    ) {
+        self.dateFormatter = dateFormatter
+    }
 
     func addToCalendar(_ trip: TripInfo, completion: @escaping (Bool) -> Void) {
         eventStore.requestAccess(to: .event) { [weak self] granted, error in
@@ -69,10 +76,15 @@ final class KarhooAddToCalendarWorker: AddToCalendarWorker {
             return "\(UITexts.TripSummary.flightNumber): \(trip.flightNumber)"
         }
 
+        var tripDateDescription: String {
+            dateFormatter.set(timeZone: trip.origin.timezone())
+            return dateFormatter.display(mediumStyleDate: trip.dateScheduled) + " " + dateFormatter.display(clockTime: trip.dateScheduled)
+        }
+
         return """
         \(UITexts.TripSummary.tripSummary)
         \(trip.origin.displayAddress) –> \(trip.destination?.displayAddress ?? "")
-        \(UITexts.TripSummary.date): \(trip.dateScheduled?.toString(format: .longReadable) ?? "")
+        \(UITexts.TripSummary.date): \(tripDateDescription)
         \(UITexts.TripSummary.fleet): \(trip.fleetInfo.name)
         \(UITexts.TripSummary.vehicle): \(trip.vehicle.description)
         \(trainNumberDescription)

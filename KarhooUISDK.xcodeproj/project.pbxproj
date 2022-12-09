@@ -284,6 +284,7 @@
 		5156A15A2913EF7500A70ED8 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156A1592913EF7500A70ED8 /* TestUtil.swift */; };
 		515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D81872913BDF4000635AD /* SnapshotUtils.swift */; };
 		51671F412819DFCC00F75712 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		517D6E5829437CA100232CD5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		51801A1B285B163B00EE6583 /* RadioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A1A285B163B00EE6583 /* RadioControl.swift */; };
 		51801A22285B71CA00EE6583 /* LuggageCapacityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A21285B71CA00EE6583 /* LuggageCapacityFilter.swift */; };
 		51801A24285B720100EE6583 /* PassengerCapacityFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A23285B720100EE6583 /* PassengerCapacityFilter.swift */; };
@@ -434,6 +435,8 @@
 		51EFCA8A285756270099071C /* QuoteListFiltersCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA85285756270099071C /* QuoteListFiltersCorrdinator.swift */; };
 		51EFCA8B285756270099071C /* QuoteListFiltersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA86285756270099071C /* QuoteListFiltersPresenter.swift */; };
 		51EFCA8D285756600099071C /* BorderedWOBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA8C285756600099071C /* BorderedWOBackgroundButton.swift */; };
+		51F3D2BB2942434C0005A1FB /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BA2942434C0005A1FB /* DateProvider.swift */; };
+		51F3D2BD294246180005A1FB /* MockDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BC294246180005A1FB /* MockDateProvider.swift */; };
 		51F4D56128574CA900A8DB5E /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56028574CA900A8DB5E /* UserSelectable.swift */; };
 		51F4D56328574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */; };
 		51F4D56528574CC700A8DB5E /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56428574CC700A8DB5E /* Collection+Safe.swift */; };
@@ -551,7 +554,6 @@
 		7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */; };
 		7B98323328B8BD85000C11FE /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC72122CF564E00F24CFC /* Analytics.swift */; };
 		7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F627C628DF00685B47 /* JourneyDetails.swift */; };
-		7B98323628B8BEC8000C11FE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		7B98323828B8C163000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
@@ -1067,6 +1069,8 @@
 		51EFCA86285756270099071C /* QuoteListFiltersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListFiltersPresenter.swift; sourceTree = "<group>"; };
 		51EFCA8C285756600099071C /* BorderedWOBackgroundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedWOBackgroundButton.swift; sourceTree = "<group>"; };
 		51F05F982909542C00D2BC60 /* MockQuoteListSortPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListSortPresenter.swift; sourceTree = "<group>"; };
+		51F3D2BA2942434C0005A1FB /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
+		51F3D2BC294246180005A1FB /* MockDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDateProvider.swift; sourceTree = "<group>"; };
 		51F4D56028574CA900A8DB5E /* UserSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
 		51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		51F4D56428574CC700A8DB5E /* Collection+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
@@ -1571,6 +1575,7 @@
 				09022B232239133700C4A7EE /* MockViewController.swift */,
 				51DB734728FED1BB00516343 /* JourneyInfo+mock.swift */,
 				510DBEBD293A3AE6008CE9E7 /* Date+mock.swift */,
+				51F3D2BC294246180005A1FB /* MockDateProvider.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -3015,6 +3020,7 @@
 			children = (
 				51453C6429336A5C00FBBCB5 /* AddToCalendarWorker.swift */,
 				407EC72122CF564E00F24CFC /* Analytics.swift */,
+				51F3D2BA2942434C0005A1FB /* DateProvider.swift */,
 				84CE47E9293E29AC006585F5 /* KarhooAsyncImage.swift */,
 				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
 				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
@@ -4229,6 +4235,7 @@
 				51BF1E442913D2BE0000BA7E /* MockTripSummaryInfoView.swift in Sources */,
 				51BF1E682913D2DD0000BA7E /* MockTimeScheduler.swift in Sources */,
 				51BF1E6E2913D31D0000BA7E /* MockDriverTrackingService.swift in Sources */,
+				51F3D2BD294246180005A1FB /* MockDateProvider.swift in Sources */,
 				51BF1E342913D2BE0000BA7E /* MockBookingAllocationSpinnerView.swift in Sources */,
 				51BF1E882913D3360000BA7E /* MockUserLocationProvider.swift in Sources */,
 				51BF1E992913D3480000BA7E /* MockRidesScreenBuilder.swift in Sources */,
@@ -4340,8 +4347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C2E26142420F8AC00B1FF0C /* ViewController.swift in Sources */,
+				517D6E5829437CA100232CD5 /* Date+Extensions.swift in Sources */,
 				7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */,
-				7B98323628B8BEC8000C11FE /* Date+Extensions.swift in Sources */,
 				7B98323328B8BD85000C11FE /* Analytics.swift in Sources */,
 				5C2E26102420F8AC00B1FF0C /* AppDelegate.swift in Sources */,
 				7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */,
@@ -4453,6 +4460,7 @@
 				5190F0112847858B00F7623A /* BraintreePaymentNonceProvider.swift in Sources */,
 				092005DE225B91C1001038ED /* MenuContentViewController.swift in Sources */,
 				407227A12384323F005680F5 /* BaseSelectionView.swift in Sources */,
+				51F3D2BB2942434C0005A1FB /* DateProvider.swift in Sources */,
 				09A1F88F225CBCFF00B3DBE2 /* MenuContentMVP.swift in Sources */,
 				0973872221DE77B3004BD5F9 /* NSAttributedString+Utils.swift in Sources */,
 				407EC7AA22CF564E00F24CFC /* KarhooFonts.swift in Sources */,

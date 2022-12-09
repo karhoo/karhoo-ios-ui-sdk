@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "The protocol will not be `public` from next SDK vesion")
 public protocol DateFormatterType {
     func set(timeZone: TimeZone)
     func set(locale: Locale)
@@ -40,6 +41,7 @@ public class KarhooDateFormatter: DateFormatterType {
         self.locale = locale
     }
 
+    @available(*, deprecated, message: "")
     public func display(shortStyleTime date: Date?) -> String {
         guard let date = date else {
             return ""
@@ -52,6 +54,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
+    @available(*, deprecated, message: "")
     public func display(mediumStyleDate date: Date?) -> String {
         guard let date = date else {
             return ""

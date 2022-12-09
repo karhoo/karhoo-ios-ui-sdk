@@ -46,14 +46,14 @@ struct KarhooBookingConfirmationView: View {
             timeAndPriceView
             
             // Loyalty
-            if viewModel.loyaltyInfo.shouldShowLoyalty {
+//            if viewModel.loyaltyInfo.shouldShowLoyalty {
                 KarhooLoyaltyInformationView(
                     viewModel: KarhooLoyaltyInformationView.ViewModel(
-                        mode: viewModel.loyaltyInfo.loyaltyMode,
-                        pointsToBeModified: viewModel.loyaltyInfo.loyaltyPoints
+                        mode: .earn, // viewModel.loyaltyInfo.loyaltyMode,
+                        pointsToBeModified: 10 // viewModel.loyaltyInfo.loyaltyPoints
                     )
                 )
-            }
+//            }
             
             // Add to calendar
             KarhooAddToCalendarView(
@@ -129,14 +129,16 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             trip: TripInfo(),
-            loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,
                 loyaltyMode: .burn
             ),
+            dateFormatter: KarhooDateFormatter(),
             callback: {
-                
-            }))
+
+            })
+        )
     }
 }
 

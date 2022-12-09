@@ -519,7 +519,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             journeyDetails: journeyDetails,
             quote: quote,
             trip: trip,
-            loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
                 shouldShowLoyalty: isLoyaltyEnabled(),
                 loyaltyPoints: view?.currentLoyaltyPoints ?? 0,
                 loyaltyMode: view?.currentLoyaltyMode ?? .none
