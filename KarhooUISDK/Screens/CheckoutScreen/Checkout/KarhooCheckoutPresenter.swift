@@ -4,7 +4,7 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-// swiftlint:disable file_length
+// swiftlint:disable file_length type_body_length
 import Foundation
 import KarhooSDK
 import UIKit
@@ -288,7 +288,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             
             view.getLoyaltyNonce { [weak self] result in
                 if let error = result.getErrorValue() {
-                    if error.type == .failedToGenerateNonce {
+                    if error.type == .errMissingBrowserInfo {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                     } else {
                         self?.showLoyaltyNonceError(error: error)
@@ -534,7 +534,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
              KarhooBookingConfirmationView(viewModel: slaveViewModel)
          }
-
+        reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
         view?.present(sheet, animated: true)
     }
     
@@ -618,6 +618,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             amount: quote.price.highPrice,
             currency: quote.price.currencyCode
         )
+    }
+    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
+        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
     }
 }
 
