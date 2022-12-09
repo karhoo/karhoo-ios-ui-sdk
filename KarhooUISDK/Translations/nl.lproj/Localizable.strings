@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "Er is een probleem opgetreden bij het ophalen van uw profiel.";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Probleem met het initialiseren van betalingen, neem contact op met de ondersteuning";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Probleem met het initialiseren van betalingen, neem contact op met de ondersteuning";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "Prebook kan niet binnen het huidige uur worden gemaakt.";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "Vergeten wachtwoord?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Gratis annulering tot %1$@ na reserveren";
+"kh_uisdk_free_cancellation_asap" = "Gratis annulering tot %1$@ na reserveren";
 
 "kh_uisdk_got_it" = "BEGREPEN";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Passagier toevoegen";
 
-"kh_uisdk_passengerDetails_subtitle" = "Deze informatie zorgt voor een soepel verloop van uw rit.";
+"kh_uisdk_passenger_details_subtitle" = "Deze informatie zorgt voor een soepel verloop van uw rit.";
 
 "kh_uisdk_passengers_max" = "%1$@ maximum aantal passagiers";
 

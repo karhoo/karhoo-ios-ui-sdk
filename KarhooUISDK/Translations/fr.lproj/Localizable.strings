@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "Impossible de charger le profil d'utilisateur";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Erreur d'initialisation du processus de paiement. Veuillez réessayer.";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Erreur d'initialisation du processus de paiement. Veuillez réessayer.";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "L'heure et date de la commande doit être supérieure à une heure";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "Mot de passe oublié?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Annulation sans frais jusqu'à %1$@ après la réservation";
+"kh_uisdk_free_cancellation_asap" = "Annulation sans frais jusqu'à %1$@ après la réservation";
 
 "kh_uisdk_got_it" = "OK";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Ajouter passager";
 
-"kh_uisdk_passengerDetails_subtitle" = "Ces informations permettent le bon déroulement de votre course.";
+"kh_uisdk_passenger_details_subtitle" = "Ces informations permettent le bon déroulement de votre course.";
 
 "kh_uisdk_passengers_max" = "%1$@ passagers maximum";
 

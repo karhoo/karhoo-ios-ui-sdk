@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "There was a problem getting your profile.";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Issue with initialising payments, please contact support";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Issue with initialising payments, please contact support";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "Prebook cannot be made within the current hour.";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "Forgotten password?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Free cancellation up to %1$@ after booking";
+"kh_uisdk_free_cancellation_asap" = "Free cancellation up to %1$@ after booking";
 
 "kh_uisdk_got_it" = "Got It";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Add Passenger";
 
-"kh_uisdk_passengerDetails_subtitle" = "This information allows the smooth running of your ride.";
+"kh_uisdk_passenger_details_subtitle" = "This information allows the smooth running of your ride.";
 
 "kh_uisdk_passengers_max" = "%1$@ passengers maximum";
 

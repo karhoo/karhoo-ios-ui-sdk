@@ -105,7 +105,7 @@ public enum UITexts {
         public static let forceUpdateMessage = "kh_uisdk_errors_force_update_message".localized
         public static let forceUpdateButton = "kh_uisdk_errors_force_update_button".localized
         public static let prebookingWithinTheHour = "kh_uisdk_errors_prebooking_within_the_hour".localized
-        public static let missingPaymentSDKToken = "kh_uisdk_errors_missing_payment_SDK_Token".localized
+        public static let missingPaymentSDKToken = "kh_uisdk_errors_missing_payment_sdk_token".localized
         public static let noResultsFound = "kh_uisdk_results_empty".localized
         public static let missingPhoneNumber = "kh_uisdk_invalid_empty_field".localized
         public static let invalidPhoneNumber = "kh_uisdk_invalid_phone_number".localized
@@ -256,7 +256,7 @@ public enum UITexts {
     
     public enum PassengerDetails {
         public static let title = "kh_uisdk_booking_checkout_passenger".localized
-        public static let subtitle = "kh_uisdk_passengerDetails_subtitle".localized
+        public static let subtitle = "kh_uisdk_passenger_details_subtitle".localized
         public static let saveAction = "kh_uisdk_save".localized
         public static let add = "kh_uisdk_passenger_details_add_passenger".localized
     }
@@ -428,7 +428,7 @@ public enum UITexts {
     public enum Quotes {
         static let freeCancellation = "kh_uisdk_filter_free_cancellation".localized
         static let freeCancellationPrebook = "kh_uisdk_quote_cancellation_before_pickup_ios".localized
-        static let freeCancellationASAP = "kh_uisdk_free_cancellation_ASAP".localized
+        static let freeCancellationASAP = "kh_uisdk_free_cancellation_asap".localized
         static let freeCancellationAndKeyword = "kh_uisdk_quote_cancellation_and_keyword".localized
         static let freeCancellationBeforeDriverEnRoute = "kh_uisdk_quote_cancellation_before_driver_departure".localized
         static let freeWaitingTime = "kh_uisdk_filter_free_waiting_time".localized

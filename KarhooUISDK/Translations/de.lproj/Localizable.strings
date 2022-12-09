@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "Es gab ein Problem beim Abrufen Ihres Profils.";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Problem mit der Initialisierung von Zahlungen, bitte kontaktieren Sie den Support";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Problem mit der Initialisierung von Zahlungen, bitte kontaktieren Sie den Support";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "Vormerkungen können nicht innerhalb der aktuellen Stunde vorgenommen werden.";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "Haben Sie Ihr Passwort vergessen?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
+"kh_uisdk_free_cancellation_asap" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
 
 "kh_uisdk_got_it" = "Ich hab's";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Passagier hinzufügen";
 
-"kh_uisdk_passengerDetails_subtitle" = "Diese Informationen ermöglichen einen reibungslosen Ablauf Ihrer Fahrt.";
+"kh_uisdk_passenger_details_subtitle" = "Diese Informationen ermöglichen einen reibungslosen Ablauf Ihrer Fahrt.";
 
 "kh_uisdk_passengers_max" = "%1$@ Passagiere maximal";
 

@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "Hubo un problema cargando tu perfil.";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Error al iniciar la configuración del pago";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Error al iniciar la configuración del pago";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "Reserva realizada para la misma hora";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "¿Olvidaste tu contraseña?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
+"kh_uisdk_free_cancellation_asap" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
 
 "kh_uisdk_got_it" = "Entendido";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Añadir pasajero";
 
-"kh_uisdk_passengerDetails_subtitle" = "Esta información permite el buen desarrollo de su carrera";
+"kh_uisdk_passenger_details_subtitle" = "Esta información permite el buen desarrollo de su carrera";
 
 "kh_uisdk_passengers_max" = "Máximo %1$@ pasajeros";
 

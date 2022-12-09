@@ -332,7 +332,7 @@
 
 "kh_uisdk_errors_get_user_fail" = "Si è verificato un problema durante l'acquisizione del tuo profilo.";
 
-"kh_uisdk_errors_missing_payment_SDK_Token" = "Problema con l'inizializzazione dei pagamenti, contatta l'assistenza";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Problema con l'inizializzazione dei pagamenti, contatta l'assistenza";
 
 "kh_uisdk_errors_prebooking_within_the_hour" = "La prenotazione anticipata non può essere effettuata entro l'ora corrente.";
 
@@ -440,7 +440,7 @@
 
 "kh_uisdk_forgotten_password" = "Password dimenticata?";
 
-"kh_uisdk_free_cancellation_ASAP" = "Cancellazione gratuita fino a %1$@ dopo la prenotazione";
+"kh_uisdk_free_cancellation_asap" = "Cancellazione gratuita fino a %1$@ dopo la prenotazione";
 
 "kh_uisdk_got_it" = "FATTO";
 
@@ -694,7 +694,7 @@
 
 "kh_uisdk_passenger_details_add_passenger" = "Aggiungi passeggero";
 
-"kh_uisdk_passengerDetails_subtitle" = "Queste informazioni consentono il regolare svolgimento della tua corsa.";
+"kh_uisdk_passenger_details_subtitle" = "Queste informazioni consentono il regolare svolgimento della tua corsa.";
 
 "kh_uisdk_passengers_max" = "%1$@ passeggeri massimo";
 
