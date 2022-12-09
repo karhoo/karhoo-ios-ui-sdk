@@ -28,7 +28,7 @@ struct KarhooLoyaltyInformationView: View {
                 .foregroundColor(Color(KarhooUI.colors.primary))
                 .frame(alignment: .leading)
                 .multilineTextAlignment(.leading)
-                .lineLimit(2)
+                .lineLimit(nil)
         }
         .padding(.horizontal, UIConstants.Spacing.medium)
         .padding(.vertical, UIConstants.Spacing.small)

@@ -10,29 +10,23 @@ import Foundation
 
 extension Optional where Wrapped == Date {
     
-    func toString(format: Date.KarhooDateFormat = .iso8601) -> String {
+    func toString(format: Date.DateFormat = .iso8601) -> String {
         self?.toString(format: format) ?? ""
     }
 }
 
 extension Date {
 
-    enum KarhooDateFormat: String {
+    enum DateFormat: String {
         case iso8601
-        case longReadable
     }
-    /// Casts date to string using ISO8601 standard
-    func toString(format: KarhooDateFormat = .iso8601) -> String {
+
+    /// Casts date to string using given format
+    func toString(format: DateFormat = .iso8601) -> String {
         switch format {
         case .iso8601:
             return getISO8601String()
-        case .longReadable:
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .full
-            return formatter.string(from: self)
         }
-
     }
 
     private func getISO8601String() -> String {

@@ -129,14 +129,16 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             trip: TripInfo(),
-            loyaltyInfo: KarhooBookingConfirmationLoyaltyInfo(
+            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,
                 loyaltyMode: .burn
             ),
+            dateFormatter: KarhooDateFormatter(),
             callback: {
-                
-            }))
+
+            })
+        )
     }
 }
 
@@ -145,25 +147,19 @@ struct KarhooMainButton: View {
     @State var callback: () -> Void
     
     var body: some View {
-        ZStack {
-            Text(title)
+        Button(
+            action: {
+                callback()
+            },
+            label: {
+                Text(title)
                 .font(Font(KarhooUI.fonts.headerBold()))
                 .foregroundColor(KarhooUI.colors.white.getColor())
-        }
-        .frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            minHeight: 0,
-            maxHeight: UIConstants.Dimension.Button.mainActionButtonHeight)
-        .background(KarhooUI.colors.secondary.getColor())
-        .clipShape(
-            RoundedRectangle(
-                cornerRadius: UIConstants.CornerRadius.medium,
-                style: .continuous
-            )
+                .frame(maxWidth: .infinity)
+                .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
+                .background(KarhooUI.colors.secondary.getColor())
+                .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
+            }
         )
-        .onTapGesture {
-            callback()
-        }
     }
 }
