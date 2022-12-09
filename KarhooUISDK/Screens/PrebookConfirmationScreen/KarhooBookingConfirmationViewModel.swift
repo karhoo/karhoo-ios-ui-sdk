@@ -107,7 +107,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     var loyaltyInfo: BookingConfirmationLoyaltyInfo
     private let calendarWorker: AddToCalendarWorker
     private let dateFormatter: DateFormatterType
-
+	private let analytics: Analytics
     private var callback: () -> Void
 
     // MARK: - Lifecycle
@@ -120,6 +120,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
+		analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         callback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
@@ -128,11 +129,13 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         self.loyaltyInfo = loyaltyInfo
         self.calendarWorker = calendarWorker
         self.dateFormatter = dateFormatter
+		 self.analytics = analytics
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
     
     func dismiss() {
+        reportRideConfirmationDetailsSelected()
         callback()
     }
     
@@ -140,7 +143,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         guard let trip = trip else {
             return
         }
-        
+        reportRideConfirmationAddToCalendarSelected()
         calendarWorker.addToCalendar(trip) { success in
             viewModel.state = success ? .added : .add
         }
@@ -172,5 +175,14 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         provider.getRule(for: quote) { [weak self] rule in
             self?.vehicleImageURL = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
+    }
+
+    // MARK: Analytics
+    private func reportRideConfirmationDetailsSelected(){
+        analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
+    }
+
+    private func reportRideConfirmationAddToCalendarSelected(){
+        analytics.rideConfirmationAddToCalendarSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 }

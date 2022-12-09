@@ -482,7 +482,9 @@ public enum UITexts {
 
 extension KarhooError {
     var localizedMessage: String {
-        return code.localized != code ? code.localized : userMessage
+        let translationPrefix = "kh_uisdk_"
+        let translationsKey = translationPrefix + code
+        return translationsKey.localized != translationsKey ? translationsKey.localized : userMessage
     }
 }
 
