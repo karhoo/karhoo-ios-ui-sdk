@@ -18,15 +18,15 @@ enum KarhooTextInputViewContentType {
     var placeholderText: String {
         switch self {
         case .firstname:
-            return UITexts.Generic.name // "e.g. Fatima"
+            return UITexts.User.firstName // "e.g. Fatima"
         case .surname:
-            return UITexts.Generic.surname // "e.g. Mangani"
+            return UITexts.User.lastName // "e.g. Mangani"
         case .email:
-            return UITexts.Generic.email // "e.g. thomamangani@mail.com"
+            return UITexts.User.email // "e.g. thomamangani@mail.com"
         case .phone:
-            return UITexts.Generic.phone // "e.g. +447891011123"
+            return UITexts.User.mobilePhone // "e.g. +447891011123"
         case .comment:
-            return UITexts.Generic.commentOptional
+            return UITexts.User.commentOptional
         case .poiDetails:
             return UITexts.Booking.guestCheckoutFlightNumberPlaceholder
         }
@@ -35,15 +35,15 @@ enum KarhooTextInputViewContentType {
     var titleText: String {
         switch self {
         case .firstname:
-            return UITexts.Generic.name
+            return UITexts.User.firstName
         case .surname:
-            return UITexts.Generic.surname
+            return UITexts.User.lastName
         case .email:
-            return UITexts.Generic.email
+            return UITexts.User.email
         case .phone:
-            return UITexts.Generic.phone
+            return UITexts.User.mobilePhone
         case .comment:
-            return UITexts.Generic.comment
+            return ""
         case .poiDetails:
             return UITexts.Errors.flightNumberValidatorError
         }

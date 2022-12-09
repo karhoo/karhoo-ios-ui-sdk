@@ -56,7 +56,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     private lazy var sortButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("kh_uisdk_arrow_down"), for: .normal)
-        $0.setTitle(UITexts.Generic.sortBy, for: .normal)
+        $0.setTitle(UITexts.Quotes.sortBy, for: .normal)
         $0.backgroundColor = KarhooUI.colors.white
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }

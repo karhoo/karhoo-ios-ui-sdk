@@ -153,10 +153,10 @@ final class KarhooAddressPresenter: AddressPresenter {
 
     private func configureFor(mode: AddressType?) {
         if mode == .pickup {
-            addressView?.set(title: UITexts.Generic.pickup)
+            addressView?.set(title: UITexts.AddressBar.pickupTitle)
             addressView?.set(mapPickerIcon: .mapPickUp)
         } else {
-            addressView?.set(title: UITexts.Generic.destination)
+            addressView?.set(title: UITexts.AddressBar.destinationTitle)
             addressView?.set(mapPickerIcon: .mapDropOff)
         }
     }
