@@ -21,12 +21,8 @@ extension Date {
         case iso8601
     }
 
-    /// Casts date to string using ISO8601 standard
-    func toString(
-        format: DateFormat = .iso8601,
-        locale: Locale = .current,
-        timeZone: TimeZone = .current
-    ) -> String {
+    /// Casts date to string using given format
+    func toString(format: DateFormat = .iso8601) -> String {
         switch format {
         case .iso8601:
             return getISO8601String()

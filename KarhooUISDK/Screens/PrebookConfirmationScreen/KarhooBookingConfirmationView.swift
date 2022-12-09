@@ -46,14 +46,14 @@ struct KarhooBookingConfirmationView: View {
             timeAndPriceView
             
             // Loyalty
-//            if viewModel.loyaltyInfo.shouldShowLoyalty {
+            if viewModel.loyaltyInfo.shouldShowLoyalty {
                 KarhooLoyaltyInformationView(
                     viewModel: KarhooLoyaltyInformationView.ViewModel(
-                        mode: .earn, // viewModel.loyaltyInfo.loyaltyMode,
-                        pointsToBeModified: 10 // viewModel.loyaltyInfo.loyaltyPoints
+                        mode: viewModel.loyaltyInfo.loyaltyMode,
+                        pointsToBeModified: viewModel.loyaltyInfo.loyaltyPoints
                     )
                 )
-//            }
+            }
             
             // Add to calendar
             KarhooAddToCalendarView(
