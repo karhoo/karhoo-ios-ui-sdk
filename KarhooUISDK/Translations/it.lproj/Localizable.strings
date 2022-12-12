@@ -100,22 +100,6 @@
 
 "kh_uisdk_address_picker_prebook" = "Libro";
 
-"kh_uisdk_adyen_payment_error_02" = "La transazione è stata rifiutata.";
-
-"kh_uisdk_adyen_payment_error_03" = "Referenti";
-
-"kh_uisdk_adyen_payment_error_04" = "La transazione non è andata a buon fine a causa di un errore che si è verificato da parte dell'acquirente";
-
-"kh_uisdk_adyen_payment_error_05" = "La carta utilizzata per la transazione è bloccata, quindi inutilizzabile";
-
-"kh_uisdk_adyen_payment_error_06" = "La carta utilizzata per la transazione è scaduta. Pertanto è inutilizzabile";
-
-"kh_uisdk_adyen_payment_error_07" = "Si è verificata una mancata corrispondenza dell'importo durante il processo di transazione";
-
-"kh_uisdk_adyen_payment_error_08" = "Il numero di carta specificato è errato o non valido";
-
-"kh_uisdk_adyen_payment_error_09" = "Non è possibile contattare la banca dell'acquirente per autorizzare la transazione";
-
 "kh_uisdk_adyen_payment_error_10" = "La banca dell'acquirente non supporta o non consente questo tipo di transazione";
 
 "kh_uisdk_adyen_payment_error_11" = "L'autenticazione 3D Secure non è stata eseguita o non è stata eseguita correttamente";
@@ -133,6 +117,8 @@
 "kh_uisdk_adyen_payment_error_18" = "L'acquirente ha specificato un PIN errato più di tre volte di seguito.";
 
 "kh_uisdk_adyen_payment_error_19" = "Non è possibile convalidare il numero PIN specificato.";
+
+"kh_uisdk_adyen_payment_error_2" = "La transazione è stata rifiutata.";
 
 "kh_uisdk_adyen_payment_error_20" = "I controlli del rischio pre-autorizzazione hanno portato a un punteggio di frode pari o superiore a 100. Pertanto, la transazione è stata contrassegnata come fraudolenta ed è stata rifiutata.";
 
@@ -154,6 +140,8 @@
 
 "kh_uisdk_adyen_payment_error_29" = "Il numero di prelievi consentiti per la carta shopper è stato superato.";
 
+"kh_uisdk_adyen_payment_error_3" = "Referenti";
+
 "kh_uisdk_adyen_payment_error_31" = "L'emittente ha segnalato la transazione come sospetta frode.";
 
 "kh_uisdk_adyen_payment_error_32" = "I dati dell'indirizzo inseriti dall'acquirente non sono corretti.";
@@ -172,11 +160,23 @@
 
 "kh_uisdk_adyen_payment_error_39" = "L'emittente o lo schema non è stato in grado di comunicare l'esito tramite RReq.";
 
+"kh_uisdk_adyen_payment_error_4" = "La transazione non è andata a buon fine a causa di un errore che si è verificato da parte dell'acquirente";
+
 "kh_uisdk_adyen_payment_error_40" = "Impossibile raggiungere la rete di pagamento. Riprova la transazione con un metodo di pagamento diverso.";
 
 "kh_uisdk_adyen_payment_error_41" = "È richiesto un PIN o una firma. Riprova la transazione.";
 
 "kh_uisdk_adyen_payment_error_42" = "L'autenticazione 3D Secure non è riuscita a causa di un problema nella rete della carta o nell'emittente. Riprova la transazione o riprova la transazione con un metodo di pagamento diverso.";
+
+"kh_uisdk_adyen_payment_error_5" = "La carta utilizzata per la transazione è bloccata, quindi inutilizzabile";
+
+"kh_uisdk_adyen_payment_error_6" = "La carta utilizzata per la transazione è scaduta. Pertanto è inutilizzabile";
+
+"kh_uisdk_adyen_payment_error_7" = "Si è verificata una mancata corrispondenza dell'importo durante il processo di transazione";
+
+"kh_uisdk_adyen_payment_error_8" = "Il numero di carta specificato è errato o non valido";
+
+"kh_uisdk_adyen_payment_error_9" = "Non è possibile contattare la banca dell'acquirente per autorizzare la transazione";
 
 "kh_uisdk_airport_booking_message" = "Inserisci un numero di volo valido";
 
@@ -567,6 +567,18 @@
 "kh_uisdk_KP004" = "UserID non è UUID";
 
 "kh_uisdk_KP005" = "Le informazioni del browser devono essere definite per applicare 3DS";
+
+"kh_uisdk_KP006" = "L'URL di ritorno deve essere definito per applicare 3DS";
+
+"kh_uisdk_KP007" = "ID viaggio mancante";
+
+"kh_uisdk_KP008" = "Utente mancante";
+
+"kh_uisdk_KP009" = "L'organizzazione principale non è registrata";
+
+"kh_uisdk_KP010" = "Importo di denaro cattivo";
+
+"kh_uisdk_KP011" = "Soldi cattivi divisi";
 
 "kh_uisdk_label_and" = "e";
 

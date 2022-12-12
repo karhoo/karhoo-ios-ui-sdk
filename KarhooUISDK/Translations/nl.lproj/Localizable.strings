@@ -100,22 +100,6 @@
 
 "kh_uisdk_address_picker_prebook" = "RESERVEER";
 
-"kh_uisdk_adyen_payment_error_02" = "De transactie werd geweigerd.";
-
-"kh_uisdk_adyen_payment_error_03" = "Verwijzers";
-
-"kh_uisdk_adyen_payment_error_04" = "De transactie is niet doorgegaan vanwege een fout aan de kant van de acquirer";
-
-"kh_uisdk_adyen_payment_error_05" = "De kaart die voor de transactie is gebruikt, is geblokkeerd en daarom onbruikbaar";
-
-"kh_uisdk_adyen_payment_error_06" = "De kaart die voor de transactie is gebruikt, is verlopen. Daarom is het onbruikbaar";
-
-"kh_uisdk_adyen_payment_error_07" = "Er is een niet-overeenkomend bedrag opgetreden tijdens het transactieproces";
-
-"kh_uisdk_adyen_payment_error_08" = "Het opgegeven kaartnummer is onjuist of ongeldig";
-
-"kh_uisdk_adyen_payment_error_09" = "Het is niet mogelijk om contact op te nemen met de bank van de klant om de transactie te autoriseren";
-
 "kh_uisdk_adyen_payment_error_10" = "De bank van de klant ondersteunt dit type transactie niet of staat dit niet toe";
 
 "kh_uisdk_adyen_payment_error_11" = "3D Secure-verificatie is niet uitgevoerd of is niet succesvol uitgevoerd";
@@ -133,6 +117,8 @@
 "kh_uisdk_adyen_payment_error_18" = "De shopper heeft meer dan drie keer achter elkaar een onjuiste pincode opgegeven.";
 
 "kh_uisdk_adyen_payment_error_19" = "Het is niet mogelijk om de opgegeven pincode te valideren.";
+
+"kh_uisdk_adyen_payment_error_2" = "De transactie werd geweigerd.";
 
 "kh_uisdk_adyen_payment_error_20" = "De pre-autorisatie risicocontroles resulteerden in een fraudescore van 100 of meer. Daarom werd de transactie als frauduleus gemarkeerd en geweigerd.";
 
@@ -154,6 +140,8 @@
 
 "kh_uisdk_adyen_payment_error_29" = "Het toegestane aantal opnames van de klantenkaart is overschreden.";
 
+"kh_uisdk_adyen_payment_error_3" = "Verwijzers";
+
 "kh_uisdk_adyen_payment_error_31" = "De uitgever heeft de transactie gemeld als vermoedelijke fraude.";
 
 "kh_uisdk_adyen_payment_error_32" = "De adresgegevens die de shopper heeft ingevuld zijn onjuist.";
@@ -172,11 +160,23 @@
 
 "kh_uisdk_adyen_payment_error_39" = "De emittent of het schema was niet in staat om de uitkomst via RReq te communiceren.";
 
+"kh_uisdk_adyen_payment_error_4" = "De transactie is niet doorgegaan vanwege een fout aan de kant van de acquirer";
+
 "kh_uisdk_adyen_payment_error_40" = "Het betalingsnetwerk is niet bereikbaar. Probeer de transactie opnieuw met een andere betaalmethode.";
 
 "kh_uisdk_adyen_payment_error_41" = "Een pincode of handtekening is vereist. Probeer de transactie opnieuw.";
 
 "kh_uisdk_adyen_payment_error_42" = "De 3D Secure-verificatie is mislukt vanwege een probleem met het kaartnetwerk of de uitgever. Probeer de transactie opnieuw of probeer de transactie opnieuw met een andere betaalmethode.";
+
+"kh_uisdk_adyen_payment_error_5" = "De kaart die voor de transactie is gebruikt, is geblokkeerd en daarom onbruikbaar";
+
+"kh_uisdk_adyen_payment_error_6" = "De kaart die voor de transactie is gebruikt, is verlopen. Daarom is het onbruikbaar";
+
+"kh_uisdk_adyen_payment_error_7" = "Er is een niet-overeenkomend bedrag opgetreden tijdens het transactieproces";
+
+"kh_uisdk_adyen_payment_error_8" = "Het opgegeven kaartnummer is onjuist of ongeldig";
+
+"kh_uisdk_adyen_payment_error_9" = "Het is niet mogelijk om contact op te nemen met de bank van de klant om de transactie te autoriseren";
 
 "kh_uisdk_airport_booking_message" = "Voer een geldig vluchtnummer in";
 
@@ -567,6 +567,18 @@
 "kh_uisdk_KP004" = "Gebruikers-ID is geen UUID";
 
 "kh_uisdk_KP005" = "Browserinformatie moet worden gedefinieerd om 3DS af te dwingen";
+
+"kh_uisdk_KP006" = "De retour-URL moet worden gedefinieerd om 3DS af te dwingen";
+
+"kh_uisdk_KP007" = "Reis-ID ontbreekt";
+
+"kh_uisdk_KP008" = "Ontbrekende gebruiker";
+
+"kh_uisdk_KP009" = "Primaire organisatie is niet geregistreerd";
+
+"kh_uisdk_KP010" = "Slecht geldbedrag";
+
+"kh_uisdk_KP011" = "Slechte geldverdeling";
 
 "kh_uisdk_label_and" = "en";
 

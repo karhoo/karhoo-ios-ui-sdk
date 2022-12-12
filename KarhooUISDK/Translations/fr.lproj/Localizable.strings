@@ -100,22 +100,6 @@
 
 "kh_uisdk_address_picker_prebook" = "Réserver";
 
-"kh_uisdk_adyen_payment_error_02" = "La transaction a été refusée.";
-
-"kh_uisdk_adyen_payment_error_03" = "Références";
-
-"kh_uisdk_adyen_payment_error_04" = "La transaction n’a pas eu lieu en raison d’une erreur survenue du côté de l’acquéreur";
-
-"kh_uisdk_adyen_payment_error_05" = "La carte utilisée pour la transaction est bloquée, donc inutilisable";
-
-"kh_uisdk_adyen_payment_error_06" = "La carte utilisée pour la transaction a expiré. Par conséquent, il est inutilisable";
-
-"kh_uisdk_adyen_payment_error_07" = "Une incompatibilité de montant s’est produite au cours du processus de transaction";
-
-"kh_uisdk_adyen_payment_error_08" = "Le numéro de carte spécifié est incorrect ou non valide";
-
-"kh_uisdk_adyen_payment_error_09" = "Il n’est pas possible de contacter la banque de l’acheteur pour autoriser la transaction";
-
 "kh_uisdk_adyen_payment_error_10" = "La banque de l’acheteur ne prend pas en charge ou n’autorise pas ce type de transaction";
 
 "kh_uisdk_adyen_payment_error_11" = "L’authentification 3D Secure n’a pas été exécutée ou ne s’est pas exécutée correctement";
@@ -133,6 +117,8 @@
 "kh_uisdk_adyen_payment_error_18" = "L’acheteur a spécifié un code PIN incorrect plus de trois fois de suite.";
 
 "kh_uisdk_adyen_payment_error_19" = "Il n’est pas possible de valider le code PIN spécifié.";
+
+"kh_uisdk_adyen_payment_error_2" = "La transaction a été refusée.";
 
 "kh_uisdk_adyen_payment_error_20" = "Les contrôles des risques préalables à l’autorisation ont abouti à un score de fraude de 100 ou plus. Par conséquent, la transaction a été signalée comme frauduleuse et a été refusée.";
 
@@ -154,6 +140,8 @@
 
 "kh_uisdk_adyen_payment_error_29" = "Le nombre de retraits autorisés pour la carte de l’acheteur a dépassé.";
 
+"kh_uisdk_adyen_payment_error_3" = "Références";
+
 "kh_uisdk_adyen_payment_error_31" = "L’émetteur a déclaré que la transaction était soupçonnée de fraude.";
 
 "kh_uisdk_adyen_payment_error_32" = "Les données d’adresse saisies par l’acheteur sont incorrectes.";
@@ -172,11 +160,23 @@
 
 "kh_uisdk_adyen_payment_error_39" = "L\'émetteur ou le système n\'a pas été en mesure de communiquer le résultat via RReq.";
 
+"kh_uisdk_adyen_payment_error_4" = "La transaction n’a pas eu lieu en raison d’une erreur survenue du côté de l’acquéreur";
+
 "kh_uisdk_adyen_payment_error_40" = "Le réseau de paiement n\'est pas joignable. Réessayez la transaction avec un autre mode de paiement.";
 
 "kh_uisdk_adyen_payment_error_41" = "Un NIP ou une signature est requis. Réessayez la transaction.";
 
 "kh_uisdk_adyen_payment_error_42" = "L’authentification 3D Secure a échoué en raison d’un problème au niveau du réseau de cartes ou de l’émetteur. Réessayez la transaction ou réessayez la transaction avec un autre mode de paiement.";
+
+"kh_uisdk_adyen_payment_error_5" = "La carte utilisée pour la transaction est bloquée, donc inutilisable";
+
+"kh_uisdk_adyen_payment_error_6" = "La carte utilisée pour la transaction a expiré. Par conséquent, il est inutilisable";
+
+"kh_uisdk_adyen_payment_error_7" = "Une incompatibilité de montant s’est produite au cours du processus de transaction";
+
+"kh_uisdk_adyen_payment_error_8" = "Le numéro de carte spécifié est incorrect ou non valide";
+
+"kh_uisdk_adyen_payment_error_9" = "Il n’est pas possible de contacter la banque de l’acheteur pour autoriser la transaction";
 
 "kh_uisdk_airport_booking_message" = "Veuillez entrer un numéro de vol valide";
 
@@ -567,6 +567,18 @@
 "kh_uisdk_KP004" = "UserID n’est pas UUID";
 
 "kh_uisdk_KP005" = "Les informations du navigateur doivent être définies pour appliquer 3DS";
+
+"kh_uisdk_KP006" = "L’URL de retour doit être définie pour appliquer 3DS";
+
+"kh_uisdk_KP007" = "ID de voyage manquant";
+
+"kh_uisdk_KP008" = "Utilisateur manquant";
+
+"kh_uisdk_KP009" = "L’organisation principale n’est pas enregistrée";
+
+"kh_uisdk_KP010" = "Montant irrécouvrable";
+
+"kh_uisdk_KP011" = "Mauvais partage d’argent";
 
 "kh_uisdk_label_and" = " ainsi que leurs ";
 
