@@ -484,7 +484,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             reportCardAuthorisationFailure(message: error?.message ?? "")
             view?.showAlert(
                 title: UITexts.Errors.somethingWentWrong,
-                message: error?.message ?? "", error: error
+                message: error?.localizedMessage ?? "", error: error
             )
         default: break
         }
