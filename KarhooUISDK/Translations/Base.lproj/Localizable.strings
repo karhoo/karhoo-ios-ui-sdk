@@ -100,22 +100,6 @@
 
 "kh_uisdk_address_picker_prebook" = "Book";
 
-"kh_uisdk_adyen_payment_error_02" = "The transaction was refused.";
-
-"kh_uisdk_adyen_payment_error_03" = "Referrals";
-
-"kh_uisdk_adyen_payment_error_04" = "The transaction did not go through due to an error that occurred on the acquirer\'s end";
-
-"kh_uisdk_adyen_payment_error_05" = "The card used for the transaction is blocked, therefore unusable";
-
-"kh_uisdk_adyen_payment_error_06" = "The card used for the transaction has expired. Therefore it is unusable";
-
-"kh_uisdk_adyen_payment_error_07" = "An amount mismatch occurred during the transaction process";
-
-"kh_uisdk_adyen_payment_error_08" = "The specified card number is incorrect or invalid";
-
-"kh_uisdk_adyen_payment_error_09" = "It is not possible to contact the shopper\'s bank to authorise the transaction";
-
 "kh_uisdk_adyen_payment_error_10" = "The shopper\'s bank does not support or does not allow this type of transaction";
 
 "kh_uisdk_adyen_payment_error_11" = "3D Secure authentication was not executed, or it did not execute successfully";
@@ -133,6 +117,8 @@
 "kh_uisdk_adyen_payment_error_18" = "The shopper specified an incorrect PIN more that three times in a row.";
 
 "kh_uisdk_adyen_payment_error_19" = "It is not possible to validate the specified PIN number.";
+
+"kh_uisdk_adyen_payment_error_2" = "The transaction was refused.";
 
 "kh_uisdk_adyen_payment_error_20" = "The pre-authorisation risk checks resulted in a fraud score of 100 or more. Therefore, the transaction was flagged as fraudulent, and was refused.";
 
@@ -154,6 +140,8 @@
 
 "kh_uisdk_adyen_payment_error_29" = "The number of withdrawals permitted for the shopper\'s card has exceeded.";
 
+"kh_uisdk_adyen_payment_error_3" = "Referrals";
+
 "kh_uisdk_adyen_payment_error_31" = "Issuer reported the transaction as suspected fraud.";
 
 "kh_uisdk_adyen_payment_error_32" = "The address data the shopper entered is incorrect.";
@@ -172,11 +160,23 @@
 
 "kh_uisdk_adyen_payment_error_39" = "The issuer or the scheme wasn\'t able to communicate the outcome via RReq.";
 
+"kh_uisdk_adyen_payment_error_4" = "The transaction did not go through due to an error that occurred on the acquirer\'s end";
+
 "kh_uisdk_adyen_payment_error_40" = "The payment network can\'t be reached. Retry the transaction with a different payment method.";
 
 "kh_uisdk_adyen_payment_error_41" = "A PIN or signature is required. Retry the transaction.";
 
 "kh_uisdk_adyen_payment_error_42" = "The 3D Secure authentication failed due to an issue at the card network or issuer. Retry the transaction, or retry the transaction with a different payment method.";
+
+"kh_uisdk_adyen_payment_error_5" = "The card used for the transaction is blocked, therefore unusable";
+
+"kh_uisdk_adyen_payment_error_6" = "The card used for the transaction has expired. Therefore it is unusable";
+
+"kh_uisdk_adyen_payment_error_7" = "An amount mismatch occurred during the transaction process";
+
+"kh_uisdk_adyen_payment_error_8" = "The specified card number is incorrect or invalid";
+
+"kh_uisdk_adyen_payment_error_9" = "It is not possible to contact the shopper\'s bank to authorise the transaction";
 
 "kh_uisdk_airport_booking_message" = "Please enter a valid flight number";
 
@@ -567,6 +567,18 @@
 "kh_uisdk_KP004" = "UserID is not UUID";
 
 "kh_uisdk_KP005" = "Browser information must be defined to enforce 3DS";
+
+"kh_uisdk_KP006" = "Return Url must be defined to enforce 3DS";
+
+"kh_uisdk_KP007" = "Missing trip ID";
+
+"kh_uisdk_KP008" = "Missing user";
+
+"kh_uisdk_KP009" = "Primary org is not registered";
+
+"kh_uisdk_KP010" = "Bad money amount";
+
+"kh_uisdk_KP011" = "Bad money split";
 
 "kh_uisdk_label_and" = " and to the";
 

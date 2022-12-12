@@ -100,22 +100,6 @@
 
 "kh_uisdk_address_picker_prebook" = "Buchen Sie";
 
-"kh_uisdk_adyen_payment_error_02" = "Die Transaktion wurde abgelehnt.";
-
-"kh_uisdk_adyen_payment_error_03" = "Verweise";
-
-"kh_uisdk_adyen_payment_error_04" = "Die Transaktion konnte aufgrund eines Fehlers auf Seiten des Erwerbers nicht durchgeführt werden.";
-
-"kh_uisdk_adyen_payment_error_05" = "Die für die Transaktion verwendete Karte ist gesperrt und daher unbrauchbar";
-
-"kh_uisdk_adyen_payment_error_06" = "Die Karte, die für die Transaktion verwendet wurde, ist abgelaufen. Daher ist sie unbrauchbar";
-
-"kh_uisdk_adyen_payment_error_07" = "Während des Transaktionsvorgangs ist eine Betragsinkongruenz aufgetreten";
-
-"kh_uisdk_adyen_payment_error_08" = "Die angegebene Kartennummer ist falsch oder ungültig";
-
-"kh_uisdk_adyen_payment_error_09" = "Es ist nicht möglich, die Bank des Käufers zu kontaktieren, um die Transaktion zu autorisieren.";
-
 "kh_uisdk_adyen_payment_error_10" = "Die Bank des Käufers unterstützt diese Art von Transaktion nicht oder erlaubt sie nicht.";
 
 "kh_uisdk_adyen_payment_error_11" = "Die 3D Secure-Authentifizierung wurde nicht oder nicht erfolgreich ausgeführt.";
@@ -133,6 +117,8 @@
 "kh_uisdk_adyen_payment_error_18" = "Der Kunde hat mehr als dreimal hintereinander eine falsche PIN eingegeben.";
 
 "kh_uisdk_adyen_payment_error_19" = "Es ist nicht möglich, die angegebene PIN-Nummer zu validieren.";
+
+"kh_uisdk_adyen_payment_error_2" = "Die Transaktion wurde abgelehnt.";
 
 "kh_uisdk_adyen_payment_error_20" = "Die Risikoprüfungen vor der Autorisierung ergaben einen Betrugswert von 100 oder mehr. Daher wurde die Transaktion als betrügerisch eingestuft und abgelehnt.";
 
@@ -154,6 +140,8 @@
 
 "kh_uisdk_adyen_payment_error_29" = "Die Anzahl der für die Karte des Käufers zulässigen Abhebungen wurde überschritten.";
 
+"kh_uisdk_adyen_payment_error_3" = "Verweise";
+
 "kh_uisdk_adyen_payment_error_31" = "Der Emittent meldete die Transaktion als Betrugsverdacht.";
 
 "kh_uisdk_adyen_payment_error_32" = "Die vom Käufer eingegebenen Adressdaten sind falsch.";
@@ -172,11 +160,23 @@
 
 "kh_uisdk_adyen_payment_error_39" = "Der Emittent oder das System war nicht in der Lage, das Ergebnis per RReq mitzuteilen.";
 
+"kh_uisdk_adyen_payment_error_4" = "Die Transaktion konnte aufgrund eines Fehlers auf Seiten des Erwerbers nicht durchgeführt werden.";
+
 "kh_uisdk_adyen_payment_error_40" = "Das Zahlungsnetzwerk kann nicht erreicht werden. Wiederholen Sie die Transaktion mit einer anderen Zahlungsmethode.";
 
 "kh_uisdk_adyen_payment_error_41" = "Eine PIN oder Unterschrift ist erforderlich. Wiederholen Sie die Transaktion.";
 
 "kh_uisdk_adyen_payment_error_42" = "Die 3D-Secure-Authentifizierung ist aufgrund eines Problems im Kartennetz oder beim Kartenaussteller fehlgeschlagen. Wiederholen Sie die Transaktion, oder versuchen Sie es mit einer anderen Zahlungsmethode.";
+
+"kh_uisdk_adyen_payment_error_5" = "Die für die Transaktion verwendete Karte ist gesperrt und daher unbrauchbar";
+
+"kh_uisdk_adyen_payment_error_6" = "Die Karte, die für die Transaktion verwendet wurde, ist abgelaufen. Daher ist sie unbrauchbar";
+
+"kh_uisdk_adyen_payment_error_7" = "Während des Transaktionsvorgangs ist eine Betragsinkongruenz aufgetreten";
+
+"kh_uisdk_adyen_payment_error_8" = "Die angegebene Kartennummer ist falsch oder ungültig";
+
+"kh_uisdk_adyen_payment_error_9" = "Es ist nicht möglich, die Bank des Käufers zu kontaktieren, um die Transaktion zu autorisieren.";
 
 "kh_uisdk_airport_booking_message" = "Bitte geben Sie eine gültige Flugnummer ein";
 
@@ -567,6 +567,18 @@
 "kh_uisdk_KP004" = "UserID ist nicht UUID";
 
 "kh_uisdk_KP005" = "Browser-Informationen müssen definiert werden, um 3DS zu erzwingen";
+
+"kh_uisdk_KP006" = "Return Url muss definiert werden, um 3DS zu erzwingen";
+
+"kh_uisdk_KP007" = "Fehlende Reise-ID";
+
+"kh_uisdk_KP008" = "Fehlender Benutzer";
+
+"kh_uisdk_KP009" = "Primäre Organisation ist nicht registriert";
+
+"kh_uisdk_KP010" = "Schlechter Geldbetrag";
+
+"kh_uisdk_KP011" = "Schlechte Geldaufteilung";
 
 "kh_uisdk_label_and" = "und";
 
