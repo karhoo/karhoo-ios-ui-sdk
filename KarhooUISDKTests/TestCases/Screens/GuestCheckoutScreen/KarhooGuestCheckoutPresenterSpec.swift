@@ -39,10 +39,9 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     func testThreeDSecureBraintreeSent() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.completeBookingFlow()
-
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setRequestingStateCalled)
+        XCTAssertTrue(mockView.setRequestingStateCalled)
         XCTAssertTrue(mockThreeDSecureProvider.setBaseViewControllerCalled)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.price.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: testQuote.price.highPrice))
     }
 
     /** When: 3D secure provider succeeds
@@ -52,10 +51,8 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     func testThreeDSecureProviderBraintreeSucceeds() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.completeBookingFlow()
-
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "456")))
-
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("456", mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertEqual("456", mockTripService.tripBookingSet?.paymentNonce)
     }
 
     /** When: 3D secure provider fails
@@ -65,11 +62,9 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
     func testThreeDSecureProviderBraintreeFails() {
         KarhooTestConfiguration.mockPaymentManager = MockPaymentManager(.braintree)
         testObject.completeBookingFlow()
-
         mockThreeDSecureProvider.triggerResult(.completed(value: .threeDSecureAuthenticationFailed))
-
         XCTAssertNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
     /** When: Trip service booking succeeds
@@ -84,14 +79,14 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
         
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("456", mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual("456", mockTripService.tripBookingSet?.paymentNonce)
 
         // TODO: Provide new test implementation for this case
 //        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
 
     /**
@@ -105,7 +100,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
 
         let expectedNonce = Nonce(nonce: "mock_nonce")
         
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
         testObject.completeBookingFlow()
         mockUserService.currentUserToReturn = UserInfo(nonce: expectedNonce)
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
@@ -113,14 +108,14 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
 
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         // TODO: Provide new test implementation for this case
 //        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
     
     /** When: Trip service booking succeeds for token exchange
@@ -132,7 +127,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let expectedNonce = Nonce(nonce: "mock_nonce")
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: expectedNonce,
                                                                      paymentProvider: "braintree")
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
         
         testObject.completeBookingFlow()
         mockThreeDSecureProvider.triggerResult(.completed(value: .success(nonce: "mock_nonce")))
@@ -142,14 +137,14 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
 
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(expectedNonce.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         // TODO: Provide new test implementation for this case
 //        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
     
     // MARK: Tests only for Adyen
@@ -168,18 +163,18 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
 
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         // TODO: Provide new test implementation for this case
 //        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
     }
     
     /**
-     * When: The user presses "book ride"
+     * When: The user presses "Next"
      * And: booking metadata injected into the Booking Request
      * Then: Then the screen should set to requesting state
      * And: Get nonce endpoint should be called
@@ -198,16 +193,15 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
 
         let tripBooked = TestUtil.getRandomTrip()
         mockTripService.bookCall.triggerSuccess(tripBooked)
-
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
+        XCTAssertNotNil(mockTripService.tripBookingSet)
+        XCTAssertEqual("comments", mockTripService.tripBookingSet?.comments)
+        XCTAssertEqual("flightNumber", mockTripService.tripBookingSet?.flightNumber)
+        XCTAssertEqual(mockView.paymentNonceToReturn?.nonce, mockTripService.tripBookingSet?.paymentNonce)
 
         // TODO: Provide new test implementation for this case
 //        XCTAssertEqual(tripBooked.tripId, testCallbackResult?.completedValue()?.tripId)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertTrue(mockView.setDefaultStateCalled)
-        // TODO: Fix after ONE STEP PAYMENT // XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
+        XCTAssertTrue(mockView.setDefaultStateCalled)
+        XCTAssertNotNil(mockTripService.tripBookingSet?.meta)
 //        let value: String = mockTripService.tripBookingSet?.meta["key"] as! String
 //        XCTAssertEqual(value, "value")
     }
@@ -259,7 +253,7 @@ class KarhooGuestCheckoutPresenterSpec: KarhooTestCase {
 
     private func loadTestObject() {
         mockView.paymentNonceToReturn = Nonce(nonce: "123")
-        mockView.passengerDetailsToReturn = TestUtil.getRandomPassengerDetails()
+        mockView.passengerDetailsToReturn = TestUtil.getRandomValidPassengerDetails()
         mockView.commentsToReturn = "comments"
         mockView.flightNumberToReturn = "flightNumber"
         mockUserService.currentUserToReturn = TestUtil.getRandomUser(nonce: nil)
