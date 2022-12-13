@@ -479,6 +479,12 @@ extension KarhooError {
         let translationsKey = translationPrefix + code
         return translationsKey.localized != translationsKey ? translationsKey.localized : userMessage
     }
+    
+    var localizedAdyenMessage: String {
+        let translationPrefix = "kh_uisdk_adyen_payment_error_"
+        let translationsKey = translationPrefix + code
+        return translationsKey.localized != translationsKey ? translationsKey.localized : userMessage
+    }
 }
 
 public extension String {

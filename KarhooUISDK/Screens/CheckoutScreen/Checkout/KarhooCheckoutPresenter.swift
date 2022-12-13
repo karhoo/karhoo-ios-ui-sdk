@@ -491,9 +491,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             completeBookingFlow()
         case .didFailWithError(let error):
             reportCardAuthorisationFailure(message: error?.message ?? "")
+            let currentProviderType = userService.getCurrentUser()?.paymentProvider?.provider.type ?? PaymentProviderType.unknown
+            let isAdyenPayment = currentProviderType == PaymentProviderType.adyen
+            let errorMessage = isAdyenPayment ? error?.localizedAdyenMessage : error?.localizedMessage
             view?.showAlert(
                 title: UITexts.Errors.somethingWentWrong,
-                message: error?.message ?? "", error: error
+                message: errorMessage ?? "", error: error
             )
         default: break
         }

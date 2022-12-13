@@ -273,7 +273,7 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             adyenDropIn?.handle(action)
         case .refused(let reason, let code):
             finish(result: .completed(value: .didFailWithError(
-                ErrorModel(message: getRefusalMessage(forCode: code) ?? "reason", code: code)
+                ErrorModel(message: getRefusalMessage(forCode: code) ?? reason, code: code)
             )))
         case .handleResult(let code):
             let error = ErrorModel(
