@@ -13,16 +13,18 @@ public class PrimitiveUtil {
     public init() {}
 
     public class func getRandomLocation() -> CLLocation {
-        return CLLocation(latitude: getRandomCoordinateComponent(),
-                          longitude: getRandomCoordinateComponent())
+        CLLocation(
+            latitude: getRandomCoordinateComponent(),
+            longitude: getRandomCoordinateComponent()
+        )
     }
 
     public class func getRandomCoordinateComponent() -> CLLocationDegrees {
-        return CLLocationDegrees(arc4random_uniform(1000)/10)
+        CLLocationDegrees(arc4random_uniform(1000)/10)
     }
 
     public class func getRandomString() -> String {
-        return String(arc4random_uniform(1000))
+        String(arc4random_uniform(1000))
     }
     
     public class func getRandomLabel(length: Int? = nil) -> String {
@@ -41,7 +43,7 @@ public class PrimitiveUtil {
     }
 
     public class func getRandomInt(lessThan: UInt32 = UInt32(INT_MAX)) -> Int {
-        return Int(arc4random_uniform(UInt32(lessThan)))
+        Int(arc4random_uniform(UInt32(lessThan)))
     }
 
     public class func getTestDate() -> Date { // Wednesday, 14 March 2018 16:20:44
