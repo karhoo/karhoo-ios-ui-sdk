@@ -58,4 +58,7 @@ public class KarhooTestConfiguration: KarhooUISDKConfiguration {
     public var bookingMetadata: [String: Any]? {
         bookingMetadataToReturn
     }
+
+    public var useAddToCalendarFeatureToReturn: Bool = true
+    public var useAddToCalendarFeature: Bool { useAddToCalendarFeatureToReturn }
 }

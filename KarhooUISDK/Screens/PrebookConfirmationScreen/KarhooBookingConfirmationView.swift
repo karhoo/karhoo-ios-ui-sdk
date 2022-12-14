@@ -54,15 +54,17 @@ struct KarhooBookingConfirmationView: View {
                     )
                 )
             }
-            
-            // Add to calendar
-            KarhooAddToCalendarView(
-                viewModel: KarhooAddToCalendarView.ViewModel(
-                    onAddAction: { calendarViewModel in
-                        viewModel.onAddToCalendar(viewModel: calendarViewModel)
-                    }
+
+            if viewModel.useCalendar {
+                // Add to calendar
+                KarhooAddToCalendarView(
+                    viewModel: KarhooAddToCalendarView.ViewModel(
+                        onAddAction: { calendarViewModel in
+                            viewModel.onAddToCalendar(viewModel: calendarViewModel)
+                        }
+                    )
                 )
-            )
+            }
             
             // Done button
             KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
