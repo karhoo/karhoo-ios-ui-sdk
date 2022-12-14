@@ -21,8 +21,8 @@ public struct TermsConditionsStringBuilder {
 
     func registrationTermsCopy() -> NSAttributedString {
         return attributedTermsString(context: "Karhoo",
-                                     action: UITexts.Generic.registeringAccountAction,
-                                     policyType: UITexts.Generic.cancellationPolicy,
+                                     action: UITexts.TermsConditions.registeringAccountAction,
+                                     policyType: UITexts.TermsConditions.cancellationPolicy,
                                      termsURL: TermsConditionsStringBuilder.karhooTermsURL(),
                                      policyURL: TermsConditionsStringBuilder.karhooPrivacyPolicy())
     }
@@ -42,7 +42,7 @@ public struct TermsConditionsStringBuilder {
             return NSAttributedString(string: "")
         }
 
-        let termsLink: String = UITexts.Generic.termsAndConditions
+        let termsLink: String = UITexts.TermsConditions.termsAndConditions
         let policyLink: String = policyType
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -96,10 +96,10 @@ public struct TermsConditionsStringBuilder {
         let dpTermsLink = URL(string: UITexts.TermsConditions.termsLink) ?? TermsConditionsStringBuilder.karhooTermsURL()
         let dpPolicyLink = URL(string: UITexts.TermsConditions.policyLink) ?? TermsConditionsStringBuilder.karhooPrivacyPolicy()
         
-        let dpTermsText: String = UITexts.Generic.termsOfUse
-        let dpPolicyText: String = UITexts.Generic.privacyPolicy
-        let fleetTermsText: String = UITexts.Generic.termsAndConditions
-        let fleetPolicyText: String = UITexts.Generic.cancellationPolicy
+        let dpTermsText: String = UITexts.TermsConditions.termsOfUse
+        let dpPolicyText: String = UITexts.TermsConditions.privacyPolicy
+        let fleetTermsText: String = UITexts.TermsConditions.termsAndConditions
+        let fleetPolicyText: String = UITexts.TermsConditions.cancellationPolicy
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center

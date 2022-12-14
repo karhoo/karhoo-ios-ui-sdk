@@ -8,7 +8,6 @@
 
 import KarhooSDK
 import UIKit
-import SwiftUI
 
 public struct KHQuoteListViewID {
     public static let prebookQuotesTitleLabel = "taxes_and_fees_included_label"
@@ -34,7 +33,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         $0.alignment = .fill
         $0.spacing = UIConstants.Spacing.standard
     }
-    
+
     private var headerViews: [UIView] {
         [
             addressPickerView,
@@ -45,11 +44,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private lazy var loadingBar = LoadingBar().then {
         $0.state = .indeterminate
     }
-
     private lazy var addressPickerView = KarhooComponents.shared.addressBar(journeyInfo: nil).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-
     private lazy var buttonsStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
@@ -59,7 +56,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     private lazy var sortButton = BorderedWOBackgroundButton().then {
         $0.setImage(.uisdkImage("kh_uisdk_arrow_down"), for: .normal)
-        $0.setTitle(UITexts.Generic.sortBy, for: .normal)
+        $0.setTitle(UITexts.Quotes.sortBy, for: .normal)
         $0.backgroundColor = KarhooUI.colors.white
         $0.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }

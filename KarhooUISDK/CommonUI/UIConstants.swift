@@ -168,7 +168,7 @@ public struct UIConstants {
             /// 280
             public static let sideMenuWidth: CGFloat = 280
             
-            // Think of better names
+            // TODO: think of better names
             /// 212 x 212
             public static let findTripSpinnerSize = CGSize(width: 212, height: 212)
             
@@ -210,6 +210,9 @@ public struct UIConstants {
         
         /// 16
         public static let xxLarge: CGFloat = 16
+        
+        /// 20
+        public static let xxxLarge: CGFloat = 20
     }
     
     public struct ShadowRadius {
@@ -263,7 +266,6 @@ public struct UIConstants {
         /// 0.5
         public static let shadow: CGFloat = 0.5
 
-        /// 0.2
         static let lightShadow: CGFloat = 0.2
         
         /// 0.6

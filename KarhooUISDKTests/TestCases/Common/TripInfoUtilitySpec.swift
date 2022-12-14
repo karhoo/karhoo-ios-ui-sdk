@@ -157,12 +157,4 @@ final class TripInfoUtilitySpec: KarhooTestCase {
 
         XCTAssert(TripInfoUtility.longDescription(trip: someTrip) == UITexts.Trip.tripStatusPassengerOnboard)
     }
-    
-    /**
-     * Given: Incomplete trip state
-     * Then: the trip info utility should return its respected status as a string
-     */
-    func testIncompleteTripStatusTranslation() {
-        XCTAssert(TripInfoUtility.short(tripState: .incomplete) == UITexts.GenericTripStatus.incomplete)
-    }
 }

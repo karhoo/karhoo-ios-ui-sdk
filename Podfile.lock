@@ -1,30 +1,30 @@
 PODS:
-  - Adyen (4.7.1):
-    - Adyen/Actions (= 4.7.1)
-    - Adyen/Card (= 4.7.1)
-    - Adyen/Components (= 4.7.1)
-    - Adyen/Core (= 4.7.1)
-    - Adyen/DropIn (= 4.7.1)
-    - Adyen/Encryption (= 4.7.1)
-  - Adyen/Actions (4.7.1):
+  - Adyen (4.7.2):
+    - Adyen/Actions (= 4.7.2)
+    - Adyen/Card (= 4.7.2)
+    - Adyen/Components (= 4.7.2)
+    - Adyen/Core (= 4.7.2)
+    - Adyen/DropIn (= 4.7.2)
+    - Adyen/Encryption (= 4.7.2)
+  - Adyen/Actions (4.7.2):
     - Adyen/Core
-    - Adyen3DS2 (= 2.2.4)
-  - Adyen/Card (4.7.1):
-    - Adyen/Core
-    - Adyen/Encryption
-  - Adyen/Components (4.7.1):
+    - Adyen3DS2 (= 2.2.5)
+  - Adyen/Card (4.7.2):
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Core (4.7.1):
+  - Adyen/Components (4.7.2):
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Core (4.7.2):
     - AdyenNetworking (= 1.0.0)
-  - Adyen/DropIn (4.7.1):
+  - Adyen/DropIn (4.7.2):
     - Adyen/Actions
     - Adyen/Card
     - Adyen/Components
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Encryption (4.7.1)
-  - Adyen3DS2 (2.2.4)
+  - Adyen/Encryption (4.7.2)
+  - Adyen3DS2 (2.2.5)
   - AdyenNetworking (1.0.0)
   - Braintree/Card (4.38.0):
     - Braintree/Core
@@ -57,13 +57,13 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - KarhooSDK (1.7.0):
+  - KarhooSDK (1.7.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
   - KarhooUISDK (1.9.4):
     - KarhooUISDK/Core (= 1.9.4)
   - KarhooUISDK/Adyen (1.9.4):
-    - Adyen (= 4.7.1)
+    - Adyen (= 4.7.2)
     - KarhooUISDK/Core
   - KarhooUISDK/Braintree (1.9.4):
     - Braintree/PaymentFlow (~> 4.37)
@@ -83,14 +83,14 @@ PODS:
   - Quick (5.0.1)
   - ReachabilitySwift (5.0.0)
   - SnapshotTesting (1.9.0)
-  - SwiftFormat/CLI (0.50.6)
-  - SwiftLint (0.50.1)
+  - SwiftFormat/CLI (0.50.3)
+  - SwiftLint (0.49.1)
 
 DEPENDENCIES:
-  - Adyen (= 4.7.1)
+  - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `develop`)
+  - KarhooSDK (= 1.7.1)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -108,6 +108,7 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
+    - KarhooSDK
     - KeychainSwift
     - Nimble
     - PhoneNumberKit
@@ -118,34 +119,26 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :branch: develop
-    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
-CHECKOUT OPTIONS:
-  KarhooSDK:
-    :commit: c06c2bf3cd4e8d1feaa19ea4cff4093599cd2577
-    :git: https://github.com/karhoo/karhoo-ios-sdk
-
 SPEC CHECKSUMS:
-  Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
-  Adyen3DS2: ab81415419e1269b95ec01502d18912985806351
+  Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
+  Adyen3DS2: 48659258ad7a9ff6c212b80dcbda3e63f2b4a236
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  KarhooSDK: 1fc3b4a0481ad223c3fee97425270af735342425
-  KarhooUISDK: e844aef6e99403a5b45406fe4438252181a32bf4
+  KarhooSDK: dc01c9f4fb13fd6513c98d81d8164aa7c43d2b59
+  KarhooUISDK: b01270a406e5b1018484ce79c2a604d1d1df3ccb
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
-  SwiftFormat: d89e201c4e121554de347f764e4ed780526b5173
-  SwiftLint: 6b0cf1f4d619808dbc16e4fab064ce6fc79f090b
+  SwiftFormat: 61cda3819dc3a7d69795ce0430e1e1d53c4a4fb2
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: 72ae2f939b2db4f39c6603fa828a2860d5458e95
+PODFILE CHECKSUM: f51e1b1b856dda264ec2c5edfb52964e52cb5ba9
 
 COCOAPODS: 1.11.3

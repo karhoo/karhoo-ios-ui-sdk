@@ -23,10 +23,10 @@ public class MockBookingRouter: BookingRouter {
     }
 
     private var bookingRequestCompletion: ((ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void)?
-    var routeToCheckoutCalled = false
-    var quote: Quote?
-    var journeyDetails: JourneyDetails?
-    var bookingMetadata: [String: Any]?
+    public var routeToCheckoutCalled = false
+    public var quote: Quote?
+    public var journeyDetails: JourneyDetails?
+    public var bookingMetadata: [String: Any]?
     public func routeToCheckout(
         quote: Quote,
         journeyDetails: JourneyDetails,
