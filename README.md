@@ -14,8 +14,6 @@ The UI SDK extends on our [**Network SDK**](https://github.com/karhoo/karhoo-ios
 
 For more general information about the SDKs, chechout [**the karhoo developer portal**](https://developer.karhoo.com/docs/build-apps-using-sdks)
 
-<a href="https://gph.is/g/aQqR1p2" target="_blank">Visual Demo</a>
-
 ## Installation
 
 #### CocoaPods
@@ -75,6 +73,23 @@ static let identifier = ""
 ...
 }
 ```
+
+## Issues
+
+_Looking to contribute?_
+
+### 🐛 Bugs
+
+Please file an issue for bugs, missing documentation, or unexpected behavior.
+
+### 💡 Feature Requests
+
+Please file an issue to suggest new features. Vote on feature requests by adding
+a 👍. This helps maintainers prioritize what to work on.
+
+### ❓ Questions
+
+For questions related to using the library, please re-visit a documentation first. If there are no answer, please create an issue with a label `help needed`.
 
 
 ## License
