@@ -37,7 +37,7 @@ struct KarhooBookingConfirmationView: View {
                 ),
                 destination: KarhooAddressView.AddressLabel(
                     text: viewModel.printedDropOffAddressLine1,
-                    subtext: nil //viewModel.printedDropOffAddressLine2
+                    subtext: viewModel.printedDropOffAddressLine2
                 ),
                 design: .borderedWithWhiteBackground
             )
