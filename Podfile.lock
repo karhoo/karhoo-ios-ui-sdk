@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.1)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-4464-booking-confirmation-analytics-events`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `develop`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -119,14 +119,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/MOB-4464-booking-confirmation-analytics-events
+    :branch: develop
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 41ed05076a05fc1418806a84587b933cde004942
+    :commit: c06c2bf3cd4e8d1feaa19ea4cff4093599cd2577
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -146,6 +146,6 @@ SPEC CHECKSUMS:
   SwiftFormat: d89e201c4e121554de347f764e4ed780526b5173
   SwiftLint: 6b0cf1f4d619808dbc16e4fab064ce6fc79f090b
 
-PODFILE CHECKSUM: 156377b99dfc808fe5f2e25abfdc46426bd01be1
+PODFILE CHECKSUM: 72ae2f939b2db4f39c6603fa828a2860d5458e95
 
 COCOAPODS: 1.11.3

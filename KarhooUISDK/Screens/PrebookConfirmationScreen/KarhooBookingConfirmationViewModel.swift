@@ -17,6 +17,7 @@ protocol BookingConfirmationViewModel {
     var quote: Quote { get set }
     var trip: TripInfo? { get set }
     var loyaltyInfo: BookingConfirmationLoyaltyInfo { get set }
+    var useCalendar: Bool { get }
     var printedTime: String { get }
     var printedDate: String { get }
     func dismiss()
@@ -105,6 +106,8 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     var quote: Quote
     var trip: TripInfo?
     var loyaltyInfo: BookingConfirmationLoyaltyInfo
+    let useCalendar: Bool
+
     private let calendarWorker: AddToCalendarWorker
     private let dateFormatter: DateFormatterType
 	private let analytics: Analytics
@@ -121,6 +124,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
 		analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        useCalendar: Bool = KarhooUISDKConfigurationProvider.configuration.useAddToCalendarFeature,
         callback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
@@ -129,7 +133,8 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         self.loyaltyInfo = loyaltyInfo
         self.calendarWorker = calendarWorker
         self.dateFormatter = dateFormatter
-		 self.analytics = analytics
+        self.analytics = analytics
+        self.useCalendar = useCalendar
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
