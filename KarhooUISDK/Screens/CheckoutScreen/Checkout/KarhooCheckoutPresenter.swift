@@ -30,6 +30,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
+    private var cardRegistrationFlow: CardRegistrationFlow
 
     var karhooUser: Bool = false
 
@@ -47,9 +48,10 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
+        cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         callback: @escaping ScreenResultCallback<TripInfo>
     ) {
-        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider 
+        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
@@ -57,11 +59,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
+        baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
-        self.setQuoteValidityDeadline(quote.quoteExpirationDate)
+        self.cardRegistrationFlow = cardRegistrationFlow
+        setQuoteValidityDeadline(quote.quoteExpirationDate)
     }
 
     deinit {
@@ -73,9 +76,9 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.view = view
         switch Karhoo.configuration.authenticationMethod() {
         case .karhooUser:
-            self.karhooUser = true
+            karhooUser = true
         default:
-            self.karhooUser = false
+            karhooUser = false
         }
        
         if karhooUser {
@@ -158,6 +161,8 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     func addMoreDetails() {
         if !arePassengerDetailsValid() {
             addOrEditPassengerDetails()
+        } else if areTermsAndConditionsAccepted == false {
+            view?.showTermsConditionsRequiredError()
         } else {
             view?.retryAddPaymentMethod(showRetryAlert: false)
         }
@@ -196,18 +201,22 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     // MARK: - Book
-    func bookTripPressed() {
-        guard areTermsAndConditionsAccepted else {
-            self.view?.showTermsConditionsRequiredError()
+    func completeBookingFlow() {
+        if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             return
-        }
-        
-        view?.setRequestingState()
-
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            submitGuestBooking()
+        } else if bookingRequestInProgress {
+            return
         } else {
-            submitAuthenticatedBooking()
+            guard areTermsAndConditionsAccepted else {
+                view?.showTermsConditionsRequiredError()
+                return
+            }
+            view?.setRequestingState()
+            if Karhoo.configuration.authenticationMethod().isGuest() {
+                submitGuestBooking()
+            } else {
+                submitAuthenticatedBooking()
+            }
         }
     }
 
@@ -219,6 +228,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
               let currentOrg = userService.getCurrentUser()?.organisations.first?.id
         else {
             view?.setDefaultState()
+            bookingRequestInProgress = false
             view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                             message: UITexts.Errors.getUserFail,
                             error: nil)
@@ -256,11 +266,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func submitGuestBooking() {
         guard let passengerDetails = view?.getPassengerDetails()
         else {
+            bookingRequestInProgress = false
             view?.setDefaultState()
             return
         }
         guard let nonce = getPaymentNonceAccordingToAuthState()
         else {
+            bookingRequestInProgress = false
             view?.retryAddPaymentMethod(showRetryAlert: false)
             return
         }
@@ -271,6 +283,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 view?.showAlert(title: UITexts.Errors.somethingWentWrong,
                                 message: UITexts.Errors.getUserFail,
                                 error: nil)
+                bookingRequestInProgress = false
                 view?.setDefaultState()
                 return
             }
@@ -284,13 +297,14 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
         
         if isLoyaltyEnabled(),
-            let view = self.view {
+            let view = view {
             
             view.getLoyaltyNonce { [weak self] result in
                 if let error = result.getErrorValue() {
-                    if error.type == .failedToGenerateNonce {
+                    if error.type == .errMissingBrowserInfo {
                         self?.sendBookRequest(loyaltyNonce: nil, paymentNonce: paymentNonce, passenger: passenger, flightNumber: flightNumber)
                     } else {
+                        self?.bookingRequestInProgress = false
                         self?.showLoyaltyNonceError(error: error)
                     }
                     return
@@ -362,6 +376,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
+        bookingRequestInProgress = false
         if let trip = result.getSuccessValue() {
             view?.setRequestedState()
             reportBookingSuccess(tripId: trip.tripId, quoteId: quote.id, correlationId: result.getCorrelationId())
@@ -392,16 +407,16 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         func handlePaymentNonceProviderResult(_ paymentNonceResult: PaymentNonceProviderResult) {
              switch paymentNonceResult {
              case .nonce(let nonce):
-                 self.book(paymentNonce: nonce.nonce,
+                 book(paymentNonce: nonce.nonce,
                       passenger: passengerDetails,
                       flightNumber: view?.getFlightNumber())
              case .cancelledByUser:
-                 self.view?.setDefaultState()
+                 view?.setDefaultState()
              case .failedToAddCard(let error):
-                 self.view?.setDefaultState()
-                 self.view?.show(error: error)
+                 view?.setDefaultState()
+                 view?.show(error: error)
                  default:
-                 self.view?.showAlert(title: UITexts.Generic.error,
+                 view?.showAlert(title: UITexts.Generic.error,
                                       message: UITexts.Errors.somethingWentWrong,
                                       error: nil)
                  view?.setDefaultState()
@@ -425,6 +440,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 switch result {
                 case .completed(let result): handleThreeDSecureCheck(result)
                 case .cancelledByUser:
+                    self?.bookingRequestInProgress = false
                     self?.view?.resetPaymentNonce()
                     self?.view?.setDefaultState()
                 }
@@ -434,14 +450,55 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         func handleThreeDSecureCheck(_ result: ThreeDSecureCheckResult) {
             switch result {
             case .failedToInitialisePaymentService:
+                bookingRequestInProgress = false
                 view?.setDefaultState()
                 showPSPUndefinedError()
             case .threeDSecureAuthenticationFailed:
+                bookingRequestInProgress = false
                 view?.retryAddPaymentMethod(showRetryAlert: true)
                 view?.setDefaultState()
             case .success(let threeDSecureNonce):
                 book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
             }
+        }
+    }
+    
+    func didPressPayButton(showRetryAlert: Bool) {
+        cardRegistrationFlow.setBaseView(view)
+        
+        let currencyCode = quote.price.currencyCode
+        let amount = quote.price.intHighPrice
+        let supplierPartnerId = quote.fleet.id
+        
+        cardRegistrationFlow.start(
+            cardCurrency: currencyCode,
+            amount: amount,
+            supplierPartnerId: supplierPartnerId,
+            showUpdateCardAlert: showRetryAlert,
+            callback: { [weak self] result in
+                guard let cardFlowResult = result.completedValue() else {
+                    return
+                }
+                self?.handleAddCardFlow(result: cardFlowResult)
+        })
+    }
+    
+    private func handleAddCardFlow(result: CardFlowResult) {
+        switch result {
+        case .didAddPaymentMethod(let nonce):
+            reportCardAuthorisationSuccess()
+            view?.set(nonce: nonce)
+            completeBookingFlow()
+        case .didFailWithError(let error):
+            reportCardAuthorisationFailure(message: error?.message ?? "")
+            let currentProviderType = userService.getCurrentUser()?.paymentProvider?.provider.type ?? PaymentProviderType.unknown
+            let isAdyenPayment = currentProviderType == PaymentProviderType.adyen
+            let errorMessage = isAdyenPayment ? error?.localizedAdyenMessage : error?.localizedMessage
+            view?.showAlert(
+                title: UITexts.Errors.somethingWentWrong,
+                message: errorMessage ?? "", error: error
+            )
+        default: break
         }
     }
     
@@ -465,7 +522,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func screenHasFadedOut() {
-        if let trip = self.trip {
+        if let trip = trip {
              callback(ScreenResult.completed(result: trip))
          } else {
              callback(ScreenResult.cancelled(byUser: false))
@@ -478,14 +535,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     func isKarhooUser() -> Bool {
-        return karhooUser
+        karhooUser
     }
 
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool {
         sdkConfiguration.isExplicitTermsAndConditionsConsentRequired
     }
     
-
     private func routeToBooking(result: ScreenResult<TripInfo>) {
         view?.navigationController?.popToRootViewController(animated: true) { [weak self] in
             self?.callback(result)
@@ -557,6 +613,22 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             correlationId: correlationId ?? "",
             message: message,
             lastFourDigits: retrievePaymentNonce()?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
+            date: Date(),
+            amount: quote.price.highPrice,
+            currency: quote.price.currencyCode
+        )
+    }
+    
+    private func reportCardAuthorisationSuccess() {
+        analytics.cardAuthorisationSuccess(quoteId: quote.id)
+    }
+    
+    private func reportCardAuthorisationFailure(message: String) {
+        analytics.cardAuthorisationFailure(
+            quoteId: quote.id,
+            errorMessage: message,
+            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice,

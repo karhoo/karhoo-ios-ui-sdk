@@ -17,7 +17,7 @@ class KarhooBookingRouter: BookingRouter {
 
     func routeToQuoteList(
         details: JourneyDetails,
-        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
     ) {
         guard let navigationController = viewController?.navigationController else {
             assertionFailure()

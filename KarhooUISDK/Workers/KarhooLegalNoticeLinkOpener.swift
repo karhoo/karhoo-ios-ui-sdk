@@ -22,14 +22,14 @@ final class KarhooLegalNoticeLinkOpener: LegalNoticeLinkOpener {
         self.viewControllerToPresentFrom = viewControllerToPresentFrom
     }
     
-    func openLink(link: String){
+    func openLink(link: String) {
         guard let linkType = linkParser.getLinkType(link) else {
             assertionFailure("Try to open incorrect link format in KarhooLegalNoticeLinkOpener")
             return
         }
         switch linkType {
         case .url(let url):
-            if UIApplication.shared.canOpenURL(url){
+            if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
         case .mail(let addrees):

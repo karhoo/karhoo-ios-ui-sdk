@@ -32,7 +32,7 @@ final class KarhooPopupDialogPresenter: PopupDialogPresenter {
         finishWithResult(.cancelled(byUser: true))
     }
 
-    private func finishWithResult(_ : ScreenResult<Void>) {
+    private func finishWithResult(_: ScreenResult<Void>) {
         callback(.cancelled(byUser: true))
     }
 }

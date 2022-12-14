@@ -173,9 +173,6 @@ class KarhooPhoneInputView: UIView {
             
             countryCodeButton.topAnchor.constraint(equalTo: textView.topAnchor).isActive = true
             countryCodeButton.bottomAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true
-            
-            
-           
             didSetUpConstraints = true
         }
         
@@ -204,12 +201,12 @@ class KarhooPhoneInputView: UIView {
         }
     }
     
-    private func focusPhoneNumberField(){
+    private func focusPhoneNumberField() {
         guard shouldFocusNumberInputAutomatically else { return }
         textView.becomeFirstResponder()
     }
     
-    //MARK: - Utils
+    // MARK: - Utils
     private func tintView(_ state: KarhooTextInputViewState) {
        UIView.animate(withDuration: state == .error ? 0.1 : 0.3) { [weak self] in
         self?.textView.layer.borderColor = state.color.cgColor
@@ -276,8 +273,7 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
         
         if textView.text == nil || (textView.text?.isEmpty ?? true) {
             errorLabel.text = UITexts.Errors.missingPhoneNumber
-        }
-        else {
+        } else {
             errorLabel.text = UITexts.Errors.invalidPhoneNumber
         }
         errorLabel.isHidden = false
