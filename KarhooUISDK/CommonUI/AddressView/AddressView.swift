@@ -182,7 +182,7 @@ extension KarhooAddressView {
 
     struct AddressLabel {
         let text: String
-        let subtext: String
+        let subtext: String?
     }
 
     struct AddressLabelView: View {
@@ -196,7 +196,7 @@ extension KarhooAddressView {
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                     .frame(alignment: .leading)
-                if let subtext = subtext {
+                if let subtext = subtext, subtext.isNotEmpty {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionBold()))
                         .foregroundColor(Color(KarhooUI.colors.textLabel))

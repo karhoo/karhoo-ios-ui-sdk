@@ -31,11 +31,11 @@ struct KarhooBookingConfirmationView: View {
             
             // Address
             KarhooAddressView(
-                pickUp: KarhooAddressView.AddressLabel.init(
+                pickUp: KarhooAddressView.AddressLabel(
                     text: viewModel.printedPickUpAddressLine1,
                     subtext: viewModel.printedPickUpAddressLine2
                 ),
-                destination: KarhooAddressView.AddressLabel.init(
+                destination: KarhooAddressView.AddressLabel(
                     text: viewModel.printedDropOffAddressLine1,
                     subtext: viewModel.printedDropOffAddressLine2
                 ),
