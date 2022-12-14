@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 final class MockCheckoutView: MockBaseViewController, CheckoutView {

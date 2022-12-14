@@ -139,11 +139,28 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
     
     private func setUpConstraints() {
-        _ = [mainViewContainer.topAnchor.constraint(equalTo: topAnchor, constant: verticalPadding),
-             mainViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: horizontalPadding),
-             mainViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -horizontalPadding),
-             mainViewContainer.bottomAnchor.constraint(equalTo: bottomAnchor,
-                                                       constant: -verticalPadding)].map { $0.isActive = true }
+        [
+            mainViewContainer.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: verticalPadding
+            ).then {
+                $0.priority = .defaultHigh
+            },
+            mainViewContainer.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: horizontalPadding
+            ).then {
+                $0.priority = .defaultHigh
+            },
+            mainViewContainer.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -horizontalPadding
+            ),
+            mainViewContainer.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -verticalPadding
+            )
+        ].forEach { $0.isActive = true }
         
         _ = [pickupField.topAnchor.constraint(equalTo: mainViewContainer.topAnchor),
              pickupField.leadingAnchor.constraint(equalTo: pickUpIcon.trailingAnchor, constant: 10.0),

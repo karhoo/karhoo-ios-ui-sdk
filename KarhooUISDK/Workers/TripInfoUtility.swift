@@ -56,9 +56,7 @@ public struct TripInfoUtility {
                                                  .driverEnRoute: UITexts.GenericTripStatus.enRoute,
                                                  .arrived: UITexts.GenericTripStatus.arrived,
                                                  .passengerOnBoard: UITexts.GenericTripStatus.passengerOnBoard,
-                                                 .completed: UITexts.GenericTripStatus.completed,
-                                                 .unknown: UITexts.GenericTripStatus.unkown,
-                                                 .incomplete: UITexts.GenericTripStatus.incomplete]
+                                                 .completed: UITexts.GenericTripStatus.completed]
         return tripStatuses[tripState] ?? ""
     }
 
@@ -66,7 +64,7 @@ public struct TripInfoUtility {
         let requestedState = String(format: UITexts.Trip.tripStatusRequested,
                 trip.fleetInfo.name)
 
-        let tripStatuses: [TripState: String] = [.unknown: UITexts.Trip.tripStatusUnkown,
+        let tripStatuses: [TripState: String] = [
                                                  .requested: requestedState,
                                                  .confirmed: UITexts.Trip.tripStatusConfirmed,
                                                  .driverEnRoute: UITexts.Trip.tripStatusDriverEnRoute,

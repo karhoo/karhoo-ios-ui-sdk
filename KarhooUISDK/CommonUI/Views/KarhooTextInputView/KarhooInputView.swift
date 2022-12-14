@@ -18,6 +18,7 @@ protocol KarhooInputView: UIView {
     func isFirstResponder() -> Bool
     func set(text: String?)
     func dismissKeyboard()
+    func setBackgroundColor(_ color: UIColor)
 }
 
 protocol KarhooPhoneInputViewProtocol: KarhooInputView {

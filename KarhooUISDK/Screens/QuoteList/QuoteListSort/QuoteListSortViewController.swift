@@ -40,7 +40,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
     }
     private lazy var headerLabel = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = UITexts.Generic.sortBy
+        $0.text = UITexts.Quotes.sortBy
         $0.textColor = KarhooUI.colors.text
         $0.font = KarhooUI.fonts.subtitleSemibold()
     }
