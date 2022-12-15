@@ -15,6 +15,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
+    static var useAddToCalendarFeature = true
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
@@ -33,6 +34,10 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     func analytics() -> Analytics {
         KarhooAnalytics(base: KarhooAnalitycsServiceWithNotifications())
+    }
+
+    var useAddToCalendarFeature: Bool {
+        KarhooConfig.useAddToCalendarFeature
     }
 
     func requireSDKAuthentication(callback: @escaping () -> Void) {

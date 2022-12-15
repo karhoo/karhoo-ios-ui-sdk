@@ -25,6 +25,9 @@ protocol CheckoutPresenter {
 
 protocol CheckoutView: BaseViewController {
     var areTermsAndConditionsAccepted: Bool { get }
+    var currentLoyaltyMode: LoyaltyMode { get }
+    var currentLoyaltyPoints: Int { get }
+    
     func setRequestingState()
     func setRequestedState()
     func setAddFlightDetailsState()
@@ -61,4 +64,9 @@ extension CheckoutView {
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {
         set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
+}
+
+public struct KarhooCheckoutResult {
+    var tripInfo: TripInfo
+    var showTripDetails: Bool = false
 }

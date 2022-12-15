@@ -359,6 +359,11 @@ public enum UITexts {
     }
 
     public enum TripSummary {
+        public static let addToCalendar = "kh_uisdk_trip_summary_add_to_calendar".localized
+        public static let addedToCalendar = "kh_uisdk_trip_summary_added_to_calendar".localized
+        public static let calendarEventTitle = "kh_uisdk_trip_summary_calendar_event_title".localized
+        public static let trainNumber = "kh_uisdk_trip_summary_train_number".localized
+        public static let flightNumber = "kh_uisdk_trip_summary_flight_number".localized
         public static let tripSummary = "kh_uisdk_trip_summary".localized
         public static let paymentSummary = "kh_uisdk_payment_summary".localized
         public static let bookReturnRide = "kh_uisdk_book_return_ride".localized
@@ -446,6 +451,8 @@ public enum UITexts {
     }
     
     public enum Loyalty {
+        static let loyaltyPointsRemovedInfo = "kh_uisdk_loyalty_info_remove_points".localized
+        static let loyaltyPointsAddInfo = "kh_uisdk_loyalty_info_add_points".localized
         static let title = "kh_uisdk_loyalty_title".localized
         static let burnTitle = "kh_uisdk_loyalty_use_points_title".localized
         static let pointsEarnedForTrip = "kh_uisdk_loyalty_points_earned_for_trip".localized

@@ -62,10 +62,6 @@ public final class UISDKScreenRouting: Routing {
         return internalRouting.datePickerScreenBuilder
     }
 
-    internal func prebookConfirmation() -> PrebookConfirmationScreenBuilder {
-        return internalRouting.prebookConfirmationScreenBuilder
-    }
-
     internal func tripSummary() -> TripSummaryScreenBuilder {
         return internalRouting.tripSummaryScreenBuilder
     }
@@ -80,5 +76,9 @@ public final class UISDKScreenRouting: Routing {
 
     internal func tripFeedbackScreen() -> TripFeedbackScreenBuilder {
         return internalRouting.tripFeedbackScreenBuilder
+    }
+    
+    internal func bottomSheetScreen() -> BottomSheetScreenBuilder {
+        return internalRouting.bottomSheetScreenBuilder
     }
 }

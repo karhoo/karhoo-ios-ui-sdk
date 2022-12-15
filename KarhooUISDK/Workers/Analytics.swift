@@ -35,6 +35,10 @@ public protocol Analytics {
     func bookingScreenOpened()
     func checkoutOpened(_ quote: Quote)
     func quoteListOpened(_ journeyDetails: JourneyDetails)
+    func changePaymentDetailsPressed()
+    func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String)
+    func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String)
+    func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String)
 }
 
 public enum AnalyticsScreen: Equatable {
@@ -131,6 +135,10 @@ final public class KarhooAnalytics: Analytics {
                 Keys.currency: currency
             ]
         )
+    }
+
+    public func changePaymentDetailsPressed() {
+        base.send(eventName: .changePaymentDetailsPressed)
     }
 
     public func cardAuthorisationFailure(
@@ -331,6 +339,35 @@ final public class KarhooAnalytics: Analytics {
                 Keys.tripId: tripDetails.tripId
             ]
         )
+    }
+
+    public func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationScreenOpened,
+            payload: [
+                Keys.date: date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
+    }
+
+    public func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationAddToCalendarSelected,
+            payload: [
+                Keys.date: date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
+    }
+    public func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String) {
+        base.send(
+            eventName: .rideConfirmationDetailsSelected,
+            payload: [
+                Keys.date: date.toString(),
+                Keys.tripId: tripId,
+                Keys.quoteId: quoteId
+            ])
     }
     
     private func getDescriptionForLoyaltyMode(_ type: LoyaltyMode) -> String? {

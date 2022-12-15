@@ -19,7 +19,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             quote: Quote,
             journeyDetails: JourneyDetails,
             bookingMetadata: [String: Any]?,
-            callback: @escaping ScreenResultCallback<TripInfo>
+            callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(
@@ -52,6 +52,9 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var mainStackBottomPadding: NSLayoutConstraint!
 
     var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
+    var currentLoyaltyMode: LoyaltyMode { loyaltyView.currentMode }
+    var currentLoyaltyPoints: Int { loyaltyView.currentNumberOfPointsDisplayed }
+    
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
     private var paymentNonce: Nonce?
@@ -265,7 +268,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         navigationItem.title = UITexts.Generic.checkout
     }
 
-    // TODO: Children of stack views shouldn't be anchored to their parent.
+    // Children of stack views shouldn't be anchored to their parent.
     // Set the directionalLayoutMargins of the base stack view for insets
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {

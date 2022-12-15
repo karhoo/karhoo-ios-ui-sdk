@@ -99,7 +99,7 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
         let attributedText = NSMutableAttributedString(attributedString: attributedString)
         attributedText.addAttributes(
             [NSAttributedString.Key.font: attributedLabel.font as UIFont],
-            range: NSMakeRange(0, attributedText.length)
+            range: NSRange(location: 0, length: attributedText.length)
         )
         // Create instances of NSLayoutManager, NSTextContainer and NSTextStorage
         let layoutManager = NSLayoutManager()

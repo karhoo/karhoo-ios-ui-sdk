@@ -22,7 +22,7 @@ public class MockBookingRouter: BookingRouter {
         routeToQuoteListCalled = true
     }
 
-    private var bookingRequestCompletion: ((ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void)?
+    private var bookingRequestCompletion: ((ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void)?
     public var routeToCheckoutCalled = false
     public var quote: Quote?
     public var journeyDetails: JourneyDetails?
@@ -31,7 +31,7 @@ public class MockBookingRouter: BookingRouter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     ) {
         self.quote = quote
         self.journeyDetails = journeyDetails
@@ -40,7 +40,7 @@ public class MockBookingRouter: BookingRouter {
         routeToCheckoutCalled = true
     }
 
-    public func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
+    public func triggerCheckoutScreenResult(_ result: ScreenResult<KarhooCheckoutResult>) {
         bookingRequestCompletion?(result, quote!, journeyDetails!)
     }
 }

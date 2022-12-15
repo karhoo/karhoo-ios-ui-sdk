@@ -14,7 +14,7 @@ public protocol CheckoutScreenBuilder {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        callback: @escaping ScreenResultCallback<TripInfo>
+        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> Screen
 }
 
@@ -23,7 +23,7 @@ public extension CheckoutScreenBuilder {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = nil,
-        callback: @escaping ScreenResultCallback<TripInfo>
+        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> Screen {
         
         return buildCheckoutScreen(

@@ -57,7 +57,7 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - KarhooSDK (1.7.0):
+  - KarhooSDK (1.7.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
   - KarhooUISDK (1.9.4):
@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `develop`)
+  - KarhooSDK (= 1.7.1)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -108,6 +108,7 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
+    - KarhooSDK
     - KeychainSwift
     - Nimble
     - PhoneNumberKit
@@ -118,16 +119,8 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :branch: develop
-    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
-
-CHECKOUT OPTIONS:
-  KarhooSDK:
-    :commit: c06c2bf3cd4e8d1feaa19ea4cff4093599cd2577
-    :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -135,7 +128,7 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  KarhooSDK: 1fc3b4a0481ad223c3fee97425270af735342425
+  KarhooSDK: dc01c9f4fb13fd6513c98d81d8164aa7c43d2b59
   KarhooUISDK: b01270a406e5b1018484ce79c2a604d1d1df3ccb
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
@@ -146,6 +139,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 61cda3819dc3a7d69795ce0430e1e1d53c4a4fb2
   SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: dad1927a0140027bec0e5e3b9b1050ee8d029dfb
+PODFILE CHECKSUM: f51e1b1b856dda264ec2c5edfb52964e52cb5ba9
 
 COCOAPODS: 1.11.3
