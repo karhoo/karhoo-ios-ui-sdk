@@ -21,7 +21,7 @@ public struct JourneyDetails: Equatable {
         self.originLocationDetails = originLocationDetails
     }
 
-    init(
+    public init(
         originLocationDetails: LocationInfo,
         destinationLocationDetails: LocationInfo,
         scheduledDate: Date?
