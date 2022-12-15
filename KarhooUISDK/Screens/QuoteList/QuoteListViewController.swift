@@ -120,7 +120,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -192,6 +191,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.backButtonTitle = ""
+        navigationController?.set(style: .primary)
     }
     
     // MARK: - State handling
