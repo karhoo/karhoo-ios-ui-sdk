@@ -15,6 +15,7 @@ public protocol ScreenBuilders {
     var ridesScreenBuilder: RidesListScreenBuilder { get }
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
+    var bookingConfirmationBuilder: BookingConfirmationBuilder { get }
     var tripScreenBuilder: TripScreenBuilder { get }
     var checkoutScreenBuilder: CheckoutScreenBuilder { get }
 }
@@ -68,6 +69,10 @@ public extension ScreenBuilders {
 
     var bookingScreenBuilder: BookingScreenBuilder {
         return KarhooBookingScreenBuilder()
+    }
+
+    var bookingConfirmationBuilder: BookingConfirmationBuilder {
+        return KarhooBookingConfirmationBuilder()
     }
 
     var addressBuilder: AddressScreenBuilder {
