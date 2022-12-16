@@ -56,7 +56,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
-        self.passengerDetails = passengerDetails
+        self.passengerDetails = passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
         self.paymentNonceProvider = paymentNonceProvider
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
