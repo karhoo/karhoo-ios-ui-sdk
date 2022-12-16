@@ -386,7 +386,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         bookingButton.setRequestedMode()
     }
     
-    func set(nonce: Nonce){
+    func set(nonce: Nonce) {
         paymentNonce = nonce
     }
     

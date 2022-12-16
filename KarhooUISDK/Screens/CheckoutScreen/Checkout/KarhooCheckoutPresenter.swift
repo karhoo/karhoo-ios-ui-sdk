@@ -615,6 +615,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     private func setUpBookingButtonState() {
         if TripInfoUtility.isAirportBooking(journeyDetails) {
              view?.setAddFlightDetailsState()
+             updateBookButtonWithEnabledState()
          } else {
             didAddPassengerDetails()
          }
