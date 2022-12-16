@@ -43,6 +43,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
+        passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
@@ -55,11 +56,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
+        self.passengerDetails = passengerDetails
         self.paymentNonceProvider = paymentNonceProvider
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        baseFareDialogBuilder = baseFarePopupDialogBuilder
+        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
@@ -106,6 +108,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
          view.set(quoteType: quote.quoteType.description)
          view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
+         view.setPassenger(details: passengerDetails)
          paymentNonceProvider.set(baseViewController: view)
          configureQuoteView()
      }
