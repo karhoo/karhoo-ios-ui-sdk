@@ -97,6 +97,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func screenWillAppear() {
         reportScreenOpened()
+        view?.setPassenger(details: passengerDetails)
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -108,7 +109,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
          view.set(quoteType: quote.quoteType.description)
          view.set(baseFareExplanationHidden: quote.quoteType == .fixed)
-         view.setPassenger(details: passengerDetails)
          paymentNonceProvider.set(baseViewController: view)
          configureQuoteView()
      }
@@ -598,7 +598,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view?.present(sheet, animated: true)
     }
     
-    private func updateCheckoutResponseForShowDetails(result: ScreenResult<KarhooCheckoutResult>) -> ScreenResult<KarhooCheckoutResult>{
+    private func updateCheckoutResponseForShowDetails(result: ScreenResult<KarhooCheckoutResult>) -> ScreenResult<KarhooCheckoutResult> {
         guard let trip = result.completedValue()?.tripInfo else {
             let error = ErrorModel(message: UITexts.Errors.somethingWentWrong, code: "KSDK01")
             return ScreenResult.failed(error: error)
