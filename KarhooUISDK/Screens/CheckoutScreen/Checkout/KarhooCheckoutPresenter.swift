@@ -43,6 +43,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
+        passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
@@ -55,11 +56,12 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
+        self.passengerDetails = passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
         self.paymentNonceProvider = paymentNonceProvider
         self.sdkConfiguration = sdkConfiguration
         self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        baseFareDialogBuilder = baseFarePopupDialogBuilder
+        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
@@ -95,6 +97,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
 
     func screenWillAppear() {
         reportScreenOpened()
+        view?.setPassenger(details: passengerDetails)
     }
 
      private func completeLoadingViewForKarhooUser(view: CheckoutView) {
@@ -595,7 +598,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         view?.present(sheet, animated: true)
     }
     
-    private func updateCheckoutResponseForShowDetails(result: ScreenResult<KarhooCheckoutResult>) -> ScreenResult<KarhooCheckoutResult>{
+    private func updateCheckoutResponseForShowDetails(result: ScreenResult<KarhooCheckoutResult>) -> ScreenResult<KarhooCheckoutResult> {
         guard let trip = result.completedValue()?.tripInfo else {
             let error = ErrorModel(message: UITexts.Errors.somethingWentWrong, code: "KSDK01")
             return ScreenResult.failed(error: error)
