@@ -286,6 +286,8 @@
 
 "kh_uisdk_contact_us" = "Contact";
 
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/fr/requests/new";
+
 "kh_uisdk_continue_journey" = "Continuer";
 
 "kh_uisdk_could_not_load_trips" = "Impossible de charger les courses";
@@ -359,6 +361,8 @@
 "kh_uisdk_exec" = "Berline";
 
 "kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/fr";
 
 "kh_uisdk_faretype_info_base" = "Votre dernier tarif pourrait être affecté\npar pourboires, péages, taxes et autres frais.";
 

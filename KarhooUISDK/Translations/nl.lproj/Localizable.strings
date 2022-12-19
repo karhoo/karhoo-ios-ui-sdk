@@ -286,6 +286,8 @@
 
 "kh_uisdk_contact_us" = "Contact";
 
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/nl/requests/new";
+
 "kh_uisdk_continue_journey" = "Voortzetten";
 
 "kh_uisdk_could_not_load_trips" = "Kan reizen niet laden.";
@@ -359,6 +361,8 @@
 "kh_uisdk_exec" = "directeur";
 
 "kh_uisdk_extra_capabilities" = "+ %d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/nl";
 
 "kh_uisdk_faretype_info_base" = "Uw uiteindelijke tarief kan worden beïnvloed\ndoor fooien, tolgelden, belastingen en andere heffingen.";
 

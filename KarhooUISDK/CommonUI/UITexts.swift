@@ -173,6 +173,11 @@ public enum UITexts {
         public static let feedback = "kh_uisdk_feedback".localized
         public static let about = "kh_uisdk_about".localized
     }
+    
+    public enum Help {
+        public static let faqLink = "kh_uisdk_sign_in".localized
+        public static let contactUsLink = "kh_uisdk_faq_link".localized
+    }
 
     /* Payment */
     public enum Payment {

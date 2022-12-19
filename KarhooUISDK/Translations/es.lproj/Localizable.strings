@@ -286,6 +286,8 @@
 
 "kh_uisdk_contact_us" = "Contacta con nosotros";
 
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/es/requests/new";
+
 "kh_uisdk_continue_journey" = "Continuar";
 
 "kh_uisdk_could_not_load_trips" = "Imposible cargar viajes.";
@@ -359,6 +361,8 @@
 "kh_uisdk_exec" = "Ejecutivo";
 
 "kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/es";
 
 "kh_uisdk_faretype_info_base" = "Tu tarifa final podría verse afectada\npor propinas, peajes, impuestos y otros cargos.";
 

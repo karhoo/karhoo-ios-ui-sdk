@@ -286,6 +286,8 @@
 
 "kh_uisdk_contact_us" = "Kontakt";
 
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/de/requests/new";
+
 "kh_uisdk_continue_journey" = "Weitermachen";
 
 "kh_uisdk_could_not_load_trips" = "Es konnten keine Reisen geladen werden.";
@@ -359,6 +361,8 @@
 "kh_uisdk_exec" = "Exec";
 
 "kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/de";
 
 "kh_uisdk_faretype_info_base" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden\n.";
 
