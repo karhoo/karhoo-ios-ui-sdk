@@ -35,6 +35,8 @@ struct ClientSPMApp: App {
 }
 
 final class KarhooConfig: KarhooUISDKConfiguration {
+    var useAddToCalendarFeature: Bool = false
+    
     static var auth: AuthenticationMethod = .karhooUser
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
