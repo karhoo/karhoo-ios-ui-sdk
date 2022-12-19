@@ -69,7 +69,6 @@ final class AddressViewController: UIViewController, AddressView {
                                      target: self,
                                      action: #selector(AddressViewController.close(sender:)))
         button.accessibilityIdentifier = KHAddressViewID.backButton
-        button.tintColor = KarhooUI.colors.darkGrey
         navigationItem.leftBarButtonItem = button
     }
     

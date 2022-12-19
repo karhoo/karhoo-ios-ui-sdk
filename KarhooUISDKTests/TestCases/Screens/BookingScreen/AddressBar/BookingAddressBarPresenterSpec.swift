@@ -9,6 +9,7 @@
 import XCTest
 import CoreLocation
 import KarhooSDK
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 class BookingAddressBarPresenterSpec: KarhooTestCase {

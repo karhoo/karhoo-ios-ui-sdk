@@ -18,7 +18,7 @@ jobs:
   ### Build & test job
   build-and-test:
     macos:
-      xcode: 14.0
+      xcode: 14.1
     working_directory: /Users/distiller/project/KarhooUISDK.xcworkspace
     environment:
       FASTLANE_LANE_TEST: UISDK_unit_tests
@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Decode Keys.swift
           command:
-           echo "$CLIENT_KEYS" | base64 --decode > Client/Keys.swift
+           echo "$CLIENT_KEYS_2" | base64 --decode > Client/Keys.swift
       - run:
           name: Install CocoaPods
           command: |
@@ -73,7 +73,7 @@ jobs:
           
   adhoc:
     macos:
-      xcode: 13.4.1
+      xcode: 14.1
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE_TEST: UISDK_unit_tests

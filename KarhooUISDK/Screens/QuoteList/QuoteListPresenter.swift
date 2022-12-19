@@ -71,7 +71,6 @@ final class KarhooQuoteListPresenter: QuoteListPresenter {
         subscribeToBecomeAndResignActiveNotifications()
         isViewVisible = true
         guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
-            assertionFailure("Unable to get data to upload")
             return
         }
         analytics.quoteListOpened(journeyDetails)

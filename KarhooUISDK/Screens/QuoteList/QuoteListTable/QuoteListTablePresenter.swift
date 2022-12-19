@@ -102,7 +102,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         switch state {
         case .empty(reason: .noResults):
             return "kh_uisdk_quote_list_error_no_availability"
-        case .empty(reason:  .noQuotesAfterFiltering):
+        case .empty(reason: .noQuotesAfterFiltering):
             return "kh_uisdk_quote_list_error_no_results_for_filter"
         case .empty(reason: .originAndDestinationAreTheSame):
             return "kh_quote_list_error_pickup_destination_similar"
@@ -154,7 +154,7 @@ class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
         return attrText
     }
 
-    func showNoCoverageEmail(){
+    func showNoCoverageEmail() {
         router.showNoCoverageEmail()
     }
 }

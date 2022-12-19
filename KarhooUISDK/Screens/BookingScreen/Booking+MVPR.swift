@@ -78,20 +78,20 @@ protocol BookingPresenter {
 
 public enum BookingScreenResult {
     case tripAllocated(tripInfo: TripInfo)
-    case prebookConfirmed(tripInfo: TripInfo, prebookConfirmationAction: PrebookConfirmationAction)
+    case prebookConfirmed(tripInfo: TripInfo)
     case bookingFailed(error: KarhooError)
 }
 
 protocol BookingRouter {
     func routeToQuoteList(
         details: JourneyDetails,
-        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
     )
 
     func routeToCheckout(
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     )
 }

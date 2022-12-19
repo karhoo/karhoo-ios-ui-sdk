@@ -31,7 +31,7 @@ struct KHLoyaltyViewID {
 final class KarhooLoyaltyView: UIView {
     
     private enum LoyaltyConstants {
-        static let topPaddingWithBalanceVisible : CGFloat = UIConstants.Dimension.View.largeTagHeight / 2
+        static let topPaddingWithBalanceVisible: CGFloat = UIConstants.Dimension.View.largeTagHeight / 2
         static let topPaddingWithNoBalanceVisible: CGFloat = 0
     }
     
@@ -294,6 +294,9 @@ final class KarhooLoyaltyView: UIView {
 
 // MARK: - LoyaltyView
 extension KarhooLoyaltyView: LoyaltyView {
+    var currentNumberOfPointsDisplayed: Int {
+        presenter.getCurrentNumberOfPointsDisplayed()
+    }
     
     func set(dataModel: LoyaltyViewDataModel, quoteId: String) {
         presenter.set(dataModel: dataModel, quoteId: quoteId)

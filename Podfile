@@ -32,15 +32,29 @@ end
 # UISDK framework
 target 'KarhooUISDK' do
 #  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
-  pod 'KarhooSDK', '1.7.0'
+  pod 'KarhooSDK', '1.7.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
-  pod 'Adyen', '4.7.1'
+  pod 'Adyen', '4.7.2'
   
   target 'KarhooUISDKTests' do
+    inherit! :complete
+    pod 'SnapshotTesting', '1.9.0'
+    pod 'Quick', '~> 5.0.1'
+    pod 'Nimble', '~> 10.0.0'
+  end
+
+  target 'KarhooUISDKUITests' do
+    inherit! :complete
+    pod 'SnapshotTesting', '1.9.0'
+    pod 'Quick', '~> 5.0.1'
+    pod 'Nimble', '~> 10.0.0'
+  end
+
+  target 'KarhooUISDKTestUtils' do
     inherit! :complete
   end
 end

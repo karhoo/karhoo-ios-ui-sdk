@@ -12,10 +12,6 @@ import KarhooSDK
 
 class MockAnalytics: Analytics {
     
-    var changePaymentDetailsCalled = false
-    func changePaymentDetailsPressed() {
-        changePaymentDetailsCalled = true
-    }
     func bookingRequested(quoteId: String) {
         // TODO: write tests
     }

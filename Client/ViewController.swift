@@ -339,8 +339,8 @@ class ViewController: UIViewController {
     }
     
     func showKarhoo() {
-        var journeyInfo: JourneyInfo? = nil
-        var passangerDetails: PassengerDetails? = nil
+        let journeyInfo: JourneyInfo? = nil
+        let passangerDetails: PassengerDetails? = nil
         
 //        let originLat = CLLocationDegrees(Double(51.500869))
 //        let originLon = CLLocationDegrees(Double(-0.124979))
@@ -384,10 +384,8 @@ class ViewController: UIViewController {
             case .tripAllocated(let trip):
                 bookingScreen?.openTrip(trip)
                 
-            case .prebookConfirmed(let trip, let prebookConfirmationAction):
-                if case .rideDetails = prebookConfirmationAction {
-                    bookingScreen?.openRideDetailsFor(trip)
-                }
+            case .prebookConfirmed(let trip):
+                bookingScreen?.openRideDetailsFor(trip)
                 
             default:
                 break

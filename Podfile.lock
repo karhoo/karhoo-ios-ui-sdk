@@ -1,30 +1,30 @@
 PODS:
-  - Adyen (4.7.1):
-    - Adyen/Actions (= 4.7.1)
-    - Adyen/Card (= 4.7.1)
-    - Adyen/Components (= 4.7.1)
-    - Adyen/Core (= 4.7.1)
-    - Adyen/DropIn (= 4.7.1)
-    - Adyen/Encryption (= 4.7.1)
-  - Adyen/Actions (4.7.1):
+  - Adyen (4.7.2):
+    - Adyen/Actions (= 4.7.2)
+    - Adyen/Card (= 4.7.2)
+    - Adyen/Components (= 4.7.2)
+    - Adyen/Core (= 4.7.2)
+    - Adyen/DropIn (= 4.7.2)
+    - Adyen/Encryption (= 4.7.2)
+  - Adyen/Actions (4.7.2):
     - Adyen/Core
-    - Adyen3DS2 (= 2.2.4)
-  - Adyen/Card (4.7.1):
-    - Adyen/Core
-    - Adyen/Encryption
-  - Adyen/Components (4.7.1):
+    - Adyen3DS2 (= 2.2.5)
+  - Adyen/Card (4.7.2):
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Core (4.7.1):
+  - Adyen/Components (4.7.2):
+    - Adyen/Core
+    - Adyen/Encryption
+  - Adyen/Core (4.7.2):
     - AdyenNetworking (= 1.0.0)
-  - Adyen/DropIn (4.7.1):
+  - Adyen/DropIn (4.7.2):
     - Adyen/Actions
     - Adyen/Card
     - Adyen/Components
     - Adyen/Core
     - Adyen/Encryption
-  - Adyen/Encryption (4.7.1)
-  - Adyen3DS2 (2.2.4)
+  - Adyen/Encryption (4.7.2)
+  - Adyen3DS2 (2.2.5)
   - AdyenNetworking (1.0.0)
   - Braintree/Card (4.38.0):
     - Braintree/Core
@@ -57,41 +57,47 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - KarhooSDK (1.7.0):
+  - KarhooSDK (1.7.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.9.4):
-    - KarhooUISDK/Core (= 1.9.4)
-  - KarhooUISDK/Adyen (1.9.4):
-    - Adyen (= 4.7.1)
+  - KarhooUISDK (1.10.0):
+    - KarhooUISDK/Core (= 1.10.0)
+  - KarhooUISDK/Adyen (1.10.0):
+    - Adyen (= 4.7.2)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.9.4):
+  - KarhooUISDK/Braintree (1.10.0):
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.9.4):
+  - KarhooUISDK/Core (1.10.0):
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
+  - Nimble (10.0.0)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
     - PhoneNumberKit/UIKit (= 3.3.1)
   - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
+  - Quick (5.0.1)
   - ReachabilitySwift (5.0.0)
-  - SwiftFormat/CLI (0.49.14)
-  - SwiftLint (0.48.0)
+  - SnapshotTesting (1.9.0)
+  - SwiftFormat/CLI (0.50.3)
+  - SwiftLint (0.49.1)
 
 DEPENDENCIES:
-  - Adyen (= 4.7.1)
+  - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (= 1.7.0)
+  - KarhooSDK (= 1.7.1)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
+  - Nimble (~> 10.0.0)
   - PhoneNumberKit (= 3.3.1)
+  - Quick (~> 5.0.1)
+  - SnapshotTesting (= 1.9.0)
   - SwiftFormat/CLI (~> 0.49)
   - SwiftLint (~> 0.47)
 
@@ -104,8 +110,11 @@ SPEC REPOS:
     - BraintreeDropIn
     - KarhooSDK
     - KeychainSwift
+    - Nimble
     - PhoneNumberKit
+    - Quick
     - ReachabilitySwift
+    - SnapshotTesting
     - SwiftFormat
     - SwiftLint
 
@@ -114,19 +123,22 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  Adyen: b76fe66dfbff481ceff8bad322503c3e201341bd
-  Adyen3DS2: ab81415419e1269b95ec01502d18912985806351
+  Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
+  Adyen3DS2: 48659258ad7a9ff6c212b80dcbda3e63f2b4a236
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  KarhooSDK: 1fc3b4a0481ad223c3fee97425270af735342425
-  KarhooUISDK: e844aef6e99403a5b45406fe4438252181a32bf4
+  KarhooSDK: dc01c9f4fb13fd6513c98d81d8164aa7c43d2b59
+  KarhooUISDK: 26719b9960a3f96fe365984187d4535da1ad99d4
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SwiftFormat: 09cc5eb67ae49356c4ad9a2be6a0d5a4212b61bb
-  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
+  SwiftFormat: 61cda3819dc3a7d69795ce0430e1e1d53c4a4fb2
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
-PODFILE CHECKSUM: 57507c48b502b05874c05b9f26d3b461ae5b6eea
+PODFILE CHECKSUM: f51e1b1b856dda264ec2c5edfb52964e52cb5ba9
 
 COCOAPODS: 1.11.3

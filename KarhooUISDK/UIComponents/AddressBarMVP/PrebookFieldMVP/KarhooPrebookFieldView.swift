@@ -179,6 +179,4 @@ public final class KarhooPrebookFieldView: UIView {
     private func prebookPressed(_ sender: Any) {
         actions?.prebookSelected()
     }
-
-    
 }

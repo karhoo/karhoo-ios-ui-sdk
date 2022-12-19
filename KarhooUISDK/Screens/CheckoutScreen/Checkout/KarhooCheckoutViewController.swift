@@ -8,6 +8,7 @@
 
 import UIKit
 import KarhooSDK
+import SwiftUI
 
 final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
@@ -18,7 +19,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             quote: Quote,
             journeyDetails: JourneyDetails,
             bookingMetadata: [String: Any]?,
-            callback: @escaping ScreenResultCallback<TripInfo>
+            callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> Screen {
             
             let presenter = KarhooCheckoutPresenter(
@@ -51,9 +52,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var mainStackBottomPadding: NSLayoutConstraint!
 
     var areTermsAndConditionsAccepted: Bool { termsConditionsView.isAccepted }
+    var currentLoyaltyMode: LoyaltyMode { loyaltyView.currentMode }
+    var currentLoyaltyPoints: Int { loyaltyView.currentNumberOfPointsDisplayed }
+    
     var presenter: CheckoutPresenter
     var passengerDetailsValid: Bool?
-    var paymentNonce: Nonce?
+    private var paymentNonce: Nonce?
 
     // MARK: - Child ViewControllers
   
@@ -64,6 +68,8 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     private var termsConditionsView: TermsConditionsView!
 
     private var headerView: KarhooCheckoutHeaderView!
+    
+    private var passengerViewController: PassengerCellViewController!
 
     private(set) var loyaltyView: KarhooLoyaltyView!
  
@@ -103,15 +109,6 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         poiDetailsInputText.delegate = self
         poiDetailsInputText.isHidden = true
         return poiDetailsInputText
-    }()
-    
-    private lazy var passengerDetailsAndPaymentView: KarhooAddPassengerDetailsAndPaymentView = {
-        let passengerDetailsAndPaymentView = KarhooAddPassengerDetailsAndPaymentView(baseVC: self)
-        passengerDetailsAndPaymentView.accessibilityIdentifier = "passenger_details_payment_view"
-        passengerDetailsAndPaymentView.translatesAutoresizingMaskIntoConstraints = false
-        passengerDetailsAndPaymentView.setPaymentViewActions(actions: self)
-        passengerDetailsAndPaymentView.setPassengerViewActions(actions: self)
-        return passengerDetailsAndPaymentView
     }()
     
     private lazy var container: UIView = {
@@ -206,6 +203,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(container)
+        passengerViewController = PassengerCellViewController(passengerDetails: nil, delegate: self)
         termsConditionsView = TermsConditionsView(
             isAcceptanceRequired: presenter.shouldRequireExplicitTermsAndConditionsAcceptance()
         )
@@ -222,7 +220,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passengerDetailsAndPaymentView.details = initialisePassengerDetails()
+        passengerViewController.details = initialisePassengerDetails()
         forceLightMode()
     }
     
@@ -247,7 +245,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         baseStackView.addViewToStack(view: rideInfoStackView)
         rideInfoStackView.addArrangedSubview(rideInfoView)
         baseStackView.addViewToStack(view: loyaltyView)
-        baseStackView.addViewToStack(view: passengerDetailsAndPaymentView)
+        baseStackView.addViewToStack(view: passengerViewController.view)
         baseStackView.addViewToStack(view: poiDetailsInputText)
         baseStackView.addViewToStack(view: commentsInputText)
         baseStackView.addViewToStack(view: termsConditionsView)
@@ -270,7 +268,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         navigationItem.title = UITexts.Generic.checkout
     }
 
-    // TODO: Children of stack views shouldn't be anchored to their parent.
+    // Children of stack views shouldn't be anchored to their parent.
     // Set the directionalLayoutMargins of the base stack view for insets
     // and the spacing of the base stack view for distancing the children between each other
     private func setupConstraintsForDefault() {
@@ -286,36 +284,61 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             bottom: footerView.topAnchor
         )
 
-        headerView.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
+        headerView.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
         headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: headerViewHeight).isActive = true
         
-        cancellationInfoLabel.anchor(top: headerView.bottomAnchor,
-                                     leading: baseStackView.leadingAnchor,
-                                     trailing: baseStackView.trailingAnchor,
-                                     paddingTop: standardPadding,
-                                     paddingLeft: standardPadding,
-                                     paddingRight: standardPadding,
-                                     paddingBottom: standardPadding)
+        cancellationInfoLabel.anchor(
+            top: headerView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardPadding,
+            paddingLeft: standardPadding,
+            paddingRight: standardPadding,
+            paddingBottom: standardPadding
+        )
         
-        rideInfoStackView.anchor(top: cancellationInfoLabel.bottomAnchor,
-                                 leading: baseStackView.leadingAnchor,
-                                 trailing: baseStackView.trailingAnchor,
-                                 paddingTop: smallSpacing,
-                                 paddingLeft: standardSpacing,
-                                 paddingRight: standardSpacing)
-        loyaltyView.anchor(top: rideInfoStackView.bottomAnchor, leading: rideInfoStackView.leadingAnchor, trailing: rideInfoStackView.trailingAnchor, paddingTop: standardPadding)
+        rideInfoStackView.anchor(
+            top: cancellationInfoLabel.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: smallSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+        loyaltyView.anchor(
+            top: rideInfoStackView.bottomAnchor,
+            leading: rideInfoStackView.leadingAnchor,
+            trailing: rideInfoStackView.trailingAnchor,
+            paddingTop: standardPadding
+        )
         
-        passengerDetailsAndPaymentView.anchor(top: loyaltyView.bottomAnchor,
-                                              leading: baseStackView.leadingAnchor,
-                                              trailing: baseStackView.trailingAnchor,
-                                              paddingTop: standardSpacing,
-                                              paddingLeft: standardSpacing,
-                                              paddingRight: standardSpacing,
-                                              height: passengerDetailsAndPaymentViewHeight)
+        passengerViewController.view.anchor(
+            top: loyaltyView.bottomAnchor,
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingTop: standardSpacing,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
 
-        poiDetailsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
-        commentsInputText.anchor(leading: baseStackView.leadingAnchor, trailing: baseStackView.trailingAnchor, paddingLeft: standardSpacing, paddingRight: standardSpacing)
-        
+        poiDetailsInputText.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+        commentsInputText.anchor(
+            leading: baseStackView.leadingAnchor,
+            trailing: baseStackView.trailingAnchor,
+            paddingLeft: standardSpacing,
+            paddingRight: standardSpacing
+        )
+    
         footerView.anchor(
             leading: view.leadingAnchor,
             trailing: view.trailingAnchor,
@@ -363,9 +386,12 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
         bookingButton.setRequestedMode()
     }
     
+    func set(nonce: Nonce) {
+        paymentNonce = nonce
+    }
+    
     func resetPaymentNonce() {
         paymentNonce = nil
-        passengerDetailsAndPaymentView.noPaymentMethod()
     }
     
     func setAddFlightDetailsState() {
@@ -375,19 +401,18 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String?) {
         let viewModel = QuoteViewModel(quote: quote)
-        passengerDetailsAndPaymentView.quote = quote
         headerView.set(viewModel: viewModel)
         rideInfoView.setDetails(viewModel: viewModel)
         termsConditionsView.setBookingTerms(supplier: quote.fleet.name, termsStringURL: quote.fleet.termsConditionsUrl)
         cancellationInfoLabel.text = viewModel.freeCancellationMessage
         farePriceInfoView.setInfoText(for: quote.quoteType)
-        passengerDetailsAndPaymentView.quote = quote
-        
         loyaltyView.isHidden = !showLoyalty
         if showLoyalty {
-            let loyaltyDataModel = LoyaltyViewDataModel(loyaltyId: loyaltyId ?? "",
-                                                        currency: quote.price.currencyCode,
-                                                        tripAmount: quote.price.highPrice)
+            let loyaltyDataModel = LoyaltyViewDataModel(
+                loyaltyId: loyaltyId ?? "",
+                currency: quote.price.currencyCode,
+                tripAmount: quote.price.highPrice
+            )
             loyaltyView.set(dataModel: loyaltyDataModel, quoteId: quote.id)
         }
     }
@@ -413,7 +438,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
     
     func retryAddPaymentMethod(showRetryAlert: Bool = false) {
-        passengerDetailsAndPaymentView.startRegisterCardFlow(showRetryAlert: showRetryAlert)
+        presenter.didPressPayButton(showRetryAlert: showRetryAlert)
     }
 
     // MARK: Show
@@ -426,7 +451,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     // MARK: Data management
     
     func getPassengerDetails() -> PassengerDetails? {
-        passengerDetailsAndPaymentView.details
+        passengerViewController.details
     }
     
     func getPaymentNonce() -> Nonce? {
@@ -446,7 +471,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
     }
 
     func setPassenger(details: PassengerDetails?) {
-        passengerDetailsAndPaymentView.details = details
+        passengerViewController.set(details: details)
     }
 
     // MARK: Events

@@ -13,6 +13,7 @@ import UIKit
 protocol LoyaltyView: AnyObject {
     var delegate: LoyaltyViewDelegate? { get set }
     var currentMode: LoyaltyMode { get }
+    var currentNumberOfPointsDisplayed: Int { get }
     func set(dataModel: LoyaltyViewDataModel, quoteId: String)
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
@@ -28,12 +29,14 @@ protocol LoyaltyPresenter: AnyObject {
     var presenterDelegate: LoyaltyPresenterDelegate? { get set }
     var balance: Int { get }
     func getCurrentMode() -> LoyaltyMode
+    func getCurrentNumberOfPointsDisplayed() -> Int
     func set(dataModel: LoyaltyViewDataModel, quoteId: String)
     func set(status: LoyaltyStatus)
     func updateEarnedPoints()
     func updateBurnedPoints()
     func updateLoyaltyMode(with mode: LoyaltyMode)
     func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
+    
 }
 
 protocol LoyaltyPresenterDelegate: AnyObject {

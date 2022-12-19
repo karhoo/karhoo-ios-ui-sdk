@@ -148,6 +148,18 @@ struct KarhooFonts {
     func titleItalic() -> UIFont {
         italicFont.withSize(titleSize)
     }
+    
+    func title2Regular() -> UIFont {
+        regularFont.withSize(fontSize24)
+    }
+
+    func title2Bold() -> UIFont {
+        boldFont.withSize(fontSize24)
+    }
+    
+    func title2Italic() -> UIFont {
+        italicFont.withSize(fontSize24)
+    }
 
     func subtitleRegular() -> UIFont {
         regularFont.withSize(subtitleSize)

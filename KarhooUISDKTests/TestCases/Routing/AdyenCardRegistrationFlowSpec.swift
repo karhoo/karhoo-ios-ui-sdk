@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+import KarhooUISDKTestUtils
 
 #if SWIFT_PACKAGE
 @testable import KarhooUISDKAdyen
