@@ -74,6 +74,18 @@
 
 "kh_uisdk_about" = "About";
 
+"kh_uisdk_acc_close_button" = "Close the screen";
+
+"kh_uisdk_acc_destination_address" = "Destination address";
+
+"kh_uisdk_acc_loyalty_information" = "Information";
+
+"kh_uisdk_acc_pickup_address" = "Departure address";
+
+"kh_uisdk_acc_pickup_time" = "Pick-up time";
+
+"kh_uisdk_acc_ride_details" = "Go to ride details";
+
 "kh_uisdk_add_card" = "ADD CARD";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";
@@ -192,7 +204,7 @@
 
 "kh_uisdk_arrival" = "Arrival";
 
-"kh_uisdk_arrived" = "Your %s driver has arrived";
+"kh_uisdk_arrived" = "Your %@ driver has arrived";
 
 "kh_uisdk_back" = "Back";
 
@@ -246,15 +258,15 @@
 
 "kh_uisdk_cancelled" = "Cancelled";
 
-"kh_uisdk_cancelled_by_dispatch" = "The supplier %s has cancelled your journey";
+"kh_uisdk_cancelled_by_dispatch" = "The supplier %@ has cancelled your journey";
 
-"kh_uisdk_cancelled_by_user" = "You have cancelled your ride with %s";
+"kh_uisdk_cancelled_by_user" = "You have cancelled your ride with %@";
 
 "kh_uisdk_cancelling" = "Tap and hold to cancel";
 
 "kh_uisdk_cancelling_ride" = "Cancelling";
 
-"kh_uisdk_capacity" = "%s";
+"kh_uisdk_capacity" = "%@";
 
 "kh_uisdk_card" = "Card";
 
@@ -264,7 +276,7 @@
 
 "kh_uisdk_completed" = "We hope you enjoyed your journey";
 
-"kh_uisdk_confirmed" = "Your trip has been confirmed with %s";
+"kh_uisdk_confirmed" = "Your trip has been confirmed with %@";
 
 "kh_uisdk_contact" = "CONTACT";
 
@@ -273,6 +285,8 @@
 "kh_uisdk_contact_fleet" = "Contact Fleet";
 
 "kh_uisdk_contact_us" = "Contact us";
+
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "kh_uisdk_continue_journey" = "CONTINUE";
 
@@ -292,7 +306,7 @@
 
 "kh_uisdk_dismiss" = "DISMISS";
 
-"kh_uisdk_dispatch_cancelled" = "Apologies, %s has no available drivers at the moment.";
+"kh_uisdk_dispatch_cancelled" = "Apologies, %@ has no available drivers at the moment.";
 
 "kh_uisdk_drawer_closed" = "Drawer closed";
 
@@ -300,7 +314,7 @@
 
 "kh_uisdk_driver_arrival" = "Driver arrival";
 
-"kh_uisdk_driver_en_route" = "Your %s driver is en route";
+"kh_uisdk_driver_en_route" = "Your %@ driver is en route";
 
 "kh_uisdk_edit" = "Edit";
 
@@ -347,6 +361,8 @@
 "kh_uisdk_exec" = "Exec";
 
 "kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
 "kh_uisdk_faretype_info_base" = "Your final fare might be affected\n by tips, tolls, taxes and other charges.";
 
@@ -588,7 +604,7 @@
 
 "kh_uisdk_last_name_hint" = "Last name";
 
-"kh_uisdk_last_trip_id" = "Last Trip ID: %1$s";
+"kh_uisdk_last_trip_id" = "Last Trip ID: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Last Trip ID: Not yet set";
 
@@ -840,7 +856,7 @@
 
 "kh_uisdk_request_received" = "Booking Received";
 
-"kh_uisdk_requested" = "Your trip has been requested with %s";
+"kh_uisdk_requested" = "Your trip has been requested with %@";
 
 "kh_uisdk_requesting" = "Requesting";
 
@@ -988,7 +1004,7 @@
 
 "kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Cancelled by fleet";
 
-"kh_uisdk_trip_id" = "Trip ID: %1$s";
+"kh_uisdk_trip_id" = "Trip ID: %1$@";
 
 "kh_uisdk_trip_id_label" = "Trip ID";
 

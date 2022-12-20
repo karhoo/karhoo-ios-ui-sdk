@@ -74,6 +74,18 @@
 
 "kh_uisdk_about" = "À propos";
 
+"kh_uisdk_acc_close_button" = "Fermer l’écran";
+
+"kh_uisdk_acc_destination_address" = "Adresse de destination";
+
+"kh_uisdk_acc_loyalty_information" = "Informations";
+
+"kh_uisdk_acc_pickup_address" = "Adresse de départ";
+
+"kh_uisdk_acc_pickup_time" = "Heure de prise en charge";
+
+"kh_uisdk_acc_ride_details" = "Aller aux détails du trajet";
+
 "kh_uisdk_add_card" = "Ajouter une carte";
 
 "kh_uisdk_add_comment_placeholder" = "Commentaires supplémentaires";
@@ -246,15 +258,15 @@
 
 "kh_uisdk_cancelled" = "Annulé";
 
-"kh_uisdk_cancelled_by_dispatch" = "Le fournisseur %s vient d'annuler votre course.";
+"kh_uisdk_cancelled_by_dispatch" = "Le fournisseur %@ vient d'annuler votre course.";
 
-"kh_uisdk_cancelled_by_user" = "Votre course avec %s est annulée";
+"kh_uisdk_cancelled_by_user" = "Votre course avec %@ est annulée";
 
 "kh_uisdk_cancelling" = "Appuyez et maintenez pour annuler";
 
 "kh_uisdk_cancelling_ride" = "Annulation en cours";
 
-"kh_uisdk_capacity" = "%s";
+"kh_uisdk_capacity" = "%@";
 
 "kh_uisdk_card" = "Carte";
 
@@ -264,7 +276,7 @@
 
 "kh_uisdk_completed" = "Nous espérons que vous avez passé un agréable voyage";
 
-"kh_uisdk_confirmed" = "Votre course avec %s est confirmée";
+"kh_uisdk_confirmed" = "Votre course avec %@ est confirmée";
 
 "kh_uisdk_contact" = "Contact";
 
@@ -273,6 +285,8 @@
 "kh_uisdk_contact_fleet" = "Contacter la flotte";
 
 "kh_uisdk_contact_us" = "Contact";
+
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/fr/requests/new";
 
 "kh_uisdk_continue_journey" = "Continuer";
 
@@ -292,7 +306,7 @@
 
 "kh_uisdk_dismiss" = "Fermer";
 
-"kh_uisdk_dispatch_cancelled" = "Nous sommes désolés, %s n'a aucun chauffeur disponible pour l'instant.";
+"kh_uisdk_dispatch_cancelled" = "Nous sommes désolés, %@ n'a aucun chauffeur disponible pour l'instant.";
 
 "kh_uisdk_drawer_closed" = "Ouverture du menu";
 
@@ -347,6 +361,8 @@
 "kh_uisdk_exec" = "Berline";
 
 "kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/fr";
 
 "kh_uisdk_faretype_info_base" = "Votre dernier tarif pourrait être affecté\npar pourboires, péages, taxes et autres frais.";
 
@@ -588,7 +604,7 @@
 
 "kh_uisdk_last_name_hint" = "Nom de famille";
 
-"kh_uisdk_last_trip_id" = "Référence derniere course: %1$s";
+"kh_uisdk_last_trip_id" = "Référence derniere course: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Aucune référence pour dernière course";
 
@@ -612,9 +628,9 @@
 
 "kh_uisdk_loyalty_info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final du trajet dépasse votre solde de points. Votre compte ne sera pas débité si vos points de fidélité couvrent la totalité du prix.";
 
-"kh_uisdk_loyalty_info_add_points" = "%@ Des points de fidélité seront ajoutés au solde de votre compte à la fin de la course.";
+"kh_uisdk_loyalty_info_add_points" = "%@ points de fidélité seront ajoutés au solde de votre compte à la fin de la course.";
 
-"kh_uisdk_loyalty_info_remove_points" = "%@ Les points de fidélité seront déduits du solde de votre compte à la fin de la course.";
+"kh_uisdk_loyalty_info_remove_points" = "%@ points de fidélité seront déduits du solde de votre compte à la fin de la course.";
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Votre solde de points est insuffisant";
 
@@ -840,7 +856,7 @@
 
 "kh_uisdk_request_received" = "Commande reçue";
 
-"kh_uisdk_requested" = "Votre course avec %s a été demandée";
+"kh_uisdk_requested" = "Votre course avec %@ a été demandée";
 
 "kh_uisdk_requesting" = "Demande en cours";
 
@@ -988,7 +1004,7 @@
 
 "kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Course annulée par le fournisseur";
 
-"kh_uisdk_trip_id" = "Référence course: %1$s";
+"kh_uisdk_trip_id" = "Référence course: %1$@";
 
 "kh_uisdk_trip_id_label" = "Référence Course";
 
