@@ -8,7 +8,7 @@
 import XCTest
 import CoreLocation
 import KarhooSDK
-
+import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
 // swiftlint:disable file_length
@@ -24,7 +24,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
     private var mockTripScreenBuilder: MockTripScreenBuilder!
     private var mockRideDetailsScreenBuilder: MockRideDetailsScreenBuilder!
     private var mockCheckoutScreenBuilder: MockCheckoutScreenBuilder!
-    private var mockPrebookConfirmationScreenBuilder: MockPrebookConfirmationScreenBuilder!
     private var mockAddressScreenBuilder: MockAddressScreenBuilder!
     private var mockDatePickerScreenBuilder: MockDatePickerScreenBuilder!
     private var mockRidesScreenBuilder: MockRidesScreenBuilder!
@@ -44,7 +43,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
         mockTripScreenBuilder = MockTripScreenBuilder()
         mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
         mockCheckoutScreenBuilder = MockCheckoutScreenBuilder()
-        mockPrebookConfirmationScreenBuilder = MockPrebookConfirmationScreenBuilder()
         mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
         mockAddressScreenBuilder = MockAddressScreenBuilder()
         mockDatePickerScreenBuilder = MockDatePickerScreenBuilder()
@@ -67,7 +65,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
             tripScreenBuilder: mockTripScreenBuilder,
             rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
             ridesScreenBuilder: mockRidesScreenBuilder,
-            prebookConfirmationScreenBuilder: mockPrebookConfirmationScreenBuilder,
             addressScreenBuilder: mockAddressScreenBuilder,
             datePickerScreenBuilder: mockDatePickerScreenBuilder,
             tripRatingCache: mockTripRatingCache,

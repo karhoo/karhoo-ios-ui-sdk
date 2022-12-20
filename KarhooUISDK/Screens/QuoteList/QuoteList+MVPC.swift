@@ -14,7 +14,6 @@ public enum QuoteListState {
     case fetched(quotes: [Quote])
     case empty(reason: EmptyReason)
 
-    // TODO: once all error handling tickets will be done, remove not needed error cases
     public enum EmptyReason {
         case destinationOrOriginEmpty
         case noResults

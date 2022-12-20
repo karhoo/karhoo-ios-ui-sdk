@@ -10,17 +10,28 @@ import Foundation
 
 extension Optional where Wrapped == Date {
     
-    func toString() -> String? {
-        self?.toString()
+    func toString(format: Date.DateFormat = .iso8601) -> String {
+        self?.toString(format: format) ?? ""
     }
 }
 
 extension Date {
 
-    /// Casts date to string using ISO8601 standard
-    func toString() -> String {
+    enum DateFormat: String {
+        case iso8601
+    }
+
+    /// Casts date to string using given format
+    func toString(format: DateFormat = .iso8601) -> String {
+        switch format {
+        case .iso8601:
+            return getISO8601String()
+        }
+    }
+
+    private func getISO8601String() -> String {
         let dateString: String
-        
+
         if #available(iOS 15.0, *) {
             dateString = self.ISO8601Format()
         } else {
@@ -29,7 +40,7 @@ extension Date {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             dateString = formatter.string(from: self)
         }
-        
+
         return dateString
     }
 }

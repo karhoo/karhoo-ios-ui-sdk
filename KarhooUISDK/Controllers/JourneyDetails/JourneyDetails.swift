@@ -21,6 +21,16 @@ public struct JourneyDetails: Equatable {
         self.originLocationDetails = originLocationDetails
     }
 
+    public init(
+        originLocationDetails: LocationInfo,
+        destinationLocationDetails: LocationInfo,
+        scheduledDate: Date?
+    ) {
+        self.originLocationDetails = originLocationDetails
+        self.destinationLocationDetails = destinationLocationDetails
+        self.scheduledDate = scheduledDate
+    }
+
     public var isScheduled: Bool {
         guard let scheduled = scheduledDate else {
             return false

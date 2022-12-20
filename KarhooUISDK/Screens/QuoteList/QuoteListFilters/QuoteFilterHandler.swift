@@ -62,7 +62,9 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
         quotes.filter { quoteToFilter in
             let quoteMeetsFilteringConditions: [Bool] = segregatedFilters.map { filters in
                 
-                /// The filtering logic differs depending on filter category. By default we use OR logic operator. If given quote meets any condition enlisted in category's filters, it's trated as compiling the requirements. In some cases, though, we use AND logic operator, so given quote is required to meet all conditions of the category. 
+                /// The filtering logic differs depending on filter category.
+                /// By default we use OR logic operator. If given quote meets any condition enlisted in category's filters, it's trated as compiling the requirements.
+                /// In some cases, though, we use AND logic operator, so given quote is required to meet all conditions of the category.
                 switch filters.key {
                 case .vehicleExtras, .fleetCapabilities, .serviceAgreements:
                     let categoryFitlerConditionNotMet = filters.value.first { filterOfGivenCategory in

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.9.4"
+  s.version               = "1.10.0"
   s.summary               = "Karhoo UI SDK"
   s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
   s.license               = 'BSD 2-Clause'
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Adyen' do |adyen|
     adyen.dependency    'KarhooUISDK/Core'
-    adyen.dependency    'Adyen', '4.7.1'
+    adyen.dependency    'Adyen', '4.7.2'
     adyen.source_files = 'AdyenPSP/**/*.swift'
   end
 

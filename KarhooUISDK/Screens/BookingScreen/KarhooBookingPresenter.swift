@@ -20,7 +20,6 @@ final class KarhooBookingPresenter {
     private let callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
-    private let prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
     private let datePickerScreenBuilder: DatePickerScreenBuilder
     private let ridesScreenBuilder: RidesScreenBuilder
@@ -40,7 +39,6 @@ final class KarhooBookingPresenter {
          tripScreenBuilder: TripScreenBuilder = UISDKScreenRouting.default.tripScreen(),
          rideDetailsScreenBuilder: RideDetailsScreenBuilder = UISDKScreenRouting.default.rideDetails(),
          ridesScreenBuilder: RidesScreenBuilder = UISDKScreenRouting.default.rides(),
-         prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder = UISDKScreenRouting.default.prebookConfirmation(),
          addressScreenBuilder: AddressScreenBuilder = UISDKScreenRouting.default.address(),
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
@@ -56,7 +54,6 @@ final class KarhooBookingPresenter {
         self.callback = callback
         self.tripScreenBuilder = tripScreenBuilder
         self.rideDetailsScreenBuilder = rideDetailsScreenBuilder
-        self.prebookConfirmationScreenBuilder = prebookConfirmationScreenBuilder
         self.addressScreenBuilder = addressScreenBuilder
         self.datePickerScreenBuilder = datePickerScreenBuilder
         self.ridesScreenBuilder = ridesScreenBuilder
@@ -90,9 +87,9 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Trip booked
-    private func bookingRequestCompleted(result: ScreenResult<TripInfo>, quote: Quote, details: JourneyDetails) {
-        if let trip = result.completedValue() {
-            handleNewlyBooked(trip: trip,
+    private func bookingRequestCompleted(result: ScreenResult<KarhooCheckoutResult>, quote: Quote, details: JourneyDetails) {
+        if let checkoutResult = result.completedValue() {
+            handleNewlyBooked(result: checkoutResult,
                               quote: quote,
                               journeyDetails: details)
             return
@@ -110,9 +107,11 @@ final class KarhooBookingPresenter {
         populate(with: journeyDetails)
     }
 
-    private func handleNewlyBooked(trip: TripInfo,
+    private func handleNewlyBooked(result: KarhooCheckoutResult,
                                    quote: Quote,
                                    journeyDetails: JourneyDetails) {
+        let trip = result.tripInfo
+        
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()
@@ -130,9 +129,10 @@ final class KarhooBookingPresenter {
         default:
             if journeyDetails.isScheduled {
                 view?.reset()
-                showPrebookConfirmation(quote: quote,
-                                        trip: trip,
-                                        journeyDetails: journeyDetails)
+                
+                if result.showTripDetails {
+                    finishWithResult(.completed(result: .prebookConfirmed(tripInfo: trip)))
+                }
             } else {
                 view?.showAllocationScreen(trip: trip)
             }
@@ -294,36 +294,14 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     // MARK: Prebook
-    func showPrebookConfirmation(quote: Quote, trip: TripInfo, journeyDetails: JourneyDetails) {
-        let prebookConfirmation = prebookConfirmationScreenBuilder
-            .buildPrebookConfirmationScreen(quote: quote,
-                                            journeyDetails: journeyDetails,
-                                            confirmationCallback: { [weak self] result in
-                                                self?.view?.dismiss(animated: true, completion: nil)
-                                                self?.prebookConfirmationCompleted(result: result, trip: trip)
-            })
-
-        prebookConfirmation.modalTransitionStyle = .crossDissolve
-        view?.showAsOverlay(item: prebookConfirmation, animated: true)
-    }
-
-    func prebookConfirmationCompleted(result: ScreenResult<PrebookConfirmationAction>, trip: TripInfo) {
-        guard let action = result.completedValue() else {
-            return
-        }
-
-        finishWithResult(.completed(result: .prebookConfirmed(tripInfo: trip, prebookConfirmationAction: action)))
-    }
 
     func finishWithResult(_ result: ScreenResult<BookingScreenResult>) {
         guard let callback = self.callback else {
             switch result.completedValue() {
             case .tripAllocated(let trip)?:
                 goToTripView(trip: trip)
-            case .prebookConfirmed(let trip, let action)?:
-                if case .rideDetails = action {
-                    showRideDetailsView(trip: trip)
-                }
+            case .prebookConfirmed(let trip):
+                showRideDetailsView(trip: trip)
             default:
                 break
             }

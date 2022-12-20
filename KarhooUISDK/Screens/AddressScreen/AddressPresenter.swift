@@ -95,8 +95,7 @@ final class KarhooAddressPresenter: AddressPresenter {
                 let recents = recentAddressProvider.getRecents()
                 if let recent = recents.first(where: { $0.placeId == addressViewModel?.placeId }) {
                     locationDetailsSelected(details: recent)
-                }
-                else {
+                } else {
                     handleLocationResponseError(error)
                 }
                     
@@ -153,10 +152,10 @@ final class KarhooAddressPresenter: AddressPresenter {
 
     private func configureFor(mode: AddressType?) {
         if mode == .pickup {
-            addressView?.set(title: UITexts.Generic.pickup)
+            addressView?.set(title: UITexts.AddressBar.pickupTitle)
             addressView?.set(mapPickerIcon: .mapPickUp)
         } else {
-            addressView?.set(title: UITexts.Generic.destination)
+            addressView?.set(title: UITexts.AddressBar.destinationTitle)
             addressView?.set(mapPickerIcon: .mapDropOff)
         }
     }

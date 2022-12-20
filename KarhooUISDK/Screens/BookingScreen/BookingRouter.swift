@@ -17,7 +17,7 @@ class KarhooBookingRouter: BookingRouter {
 
     func routeToQuoteList(
         details: JourneyDetails,
-        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
     ) {
         guard let navigationController = viewController?.navigationController else {
             assertionFailure()
@@ -37,7 +37,7 @@ class KarhooBookingRouter: BookingRouter {
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     ) {
         guard let builder = checkoutScreenBuilder else {
             assertionFailure()

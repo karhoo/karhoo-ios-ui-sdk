@@ -2,7 +2,8 @@
 
 "adyen.submitButton.formatted" = "Vorautorisieren %@";
 
-/* English: Error codes */
+"continue_button" = "Weiter";
+
 "K0001" = "Allgemeiner Anfragefehler";
 
 "K0002" = "Ungültiger Request-Payload";
@@ -17,10 +18,7 @@
 
 "K0007" = "Der Leistungsschalter für diese Strecke hat ausgelöst";
 
-/* User errors, K1xxx */
 "K1001" = "Benutzer konnte nicht registriert werden";
-
-"K1002" = "Benutzer konnte nicht registriert werden (Benutzer existiert bereits)";
 
 "K1003" = "Benutzer konnte nicht registriert werden (ungültige Anfrage).";
 
@@ -30,19 +28,12 @@
 
 "K1006" = "Benutzerdetails konnten nicht abgerufen werden (Benutzer existiert nicht)";
 
-"K1999" = "Der Benutzer wurde erstellt, aber noch nicht autorisiert. Wir werden uns melden, sobald er aktiviert ist.";
-
-/* Locations errors, K2xxx */
 "K2001" = "Adresse konnte nicht ermittelt werden";
 
-/* Quotes errors, K3xxx */
 "K3001" = "Konnte keine Schätzungen erhalten";
-
-"K3002" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
 
 "K3003" = "Kann keinen Kostenvoranschlag erhalten (konnte kein bestimmtes Angebot finden)";
 
-/* Bookings errors, K4xxx */
 "K4001" = "Konnte keine Reise buchen";
 
 "K4002" = "Reise konnte nicht gebucht werden - ungültiger Request Payload (erfordert mindestens 1 Satz Passagierdaten)";
@@ -71,38 +62,1002 @@
 
 "K4014" = "Konnte als Agent keine Reise buchen";
 
-"K4015" = "Konnte als Reisender keine Reise buchen";
-
-"k4015" = "Konnte als Reisender keine Reise buchen";
-
 "K4018" = "Die Reise konnte nicht gebucht werden, da dieses Angebot nicht mehr verfügbar ist.";
 
 "K4020" = "Konnte keine Reise mit dem ausgewählten DMS buchen";
 
-"K4025" = "Angebotspreis während der Buchung erhöht";
-
-/* Availability errors, K5xxx */
 "K5001" = "Konnte keine Schätzungen erhalten";
 
 "K5002" = "Keine Verfügbarkeit (keine Verfügbarkeit im gewünschten Bereich gefunden)";
 
 "K5003" = "Keine Verfügbarkeit (keine Kategorien im gewünschten Bereich gefunden)";
 
-/* Authentication errors K6xxx */
-"K6001" = "E-Mail oder Passwort ungültig. Bitte versuchen Sie es erneut";
+"kh_uisdk_about" = "Über";
 
-/* KPOI errors, K7xxx */
-"K7001" = "KPOI-Anfrage konnte nicht verarbeitet werden";
+"kh_uisdk_acc_close_button" = "Schließen Sie den Bildschirm";
 
-"K7002" = "Karhoo POI mit passender ID konnte nicht gefunden werden";
+"kh_uisdk_acc_destination_address" = "Zieladresse";
 
-"K7003" = "Konnte Karhoo POI nicht lesen";
+"kh_uisdk_acc_loyalty_information" = "Informationen";
 
-"K7004" = "Karhoo POI konnte nicht geschrieben werden";
+"kh_uisdk_acc_pickup_address" = "Adresse der Abreise";
 
-"K7005" = "Karhoo POI konnte nicht gelöscht werden";
+"kh_uisdk_acc_pickup_time" = "Uhrzeit der Abholung";
 
-/* KSDKxxx Internal SDK */
+"kh_uisdk_acc_ride_details" = "Zu den Details der Fahrt";
+
+"kh_uisdk_add_card" = "Karte hinzufügen";
+
+"kh_uisdk_add_comment_placeholder" = "Zusätzliche Bemerkungen";
+
+"kh_uisdk_add_flight_details" = "Flugnummer";
+
+"kh_uisdk_additional_comments" = "Zusätzliche Bemerkungen (Babysitz, Rollstuhl, usw.)";
+
+"kh_uisdk_address_drop_off" = "Absetzen";
+
+"kh_uisdk_address_pick_up" = "Abholen";
+
+"kh_uisdk_address_picker_add_pickup" = "Abholung hinzufügen";
+
+"kh_uisdk_address_picker_destination_title" = "Zielort";
+
+"kh_uisdk_address_picker_dropoff_booking" = "Ziel hinzufügen";
+
+"kh_uisdk_address_picker_enter_destination" = "Zielort eingeben";
+
+"kh_uisdk_address_picker_enter_pickup" = "Abholort eingeben";
+
+"kh_uisdk_address_picker_pickup_title" = "Abholung";
+
+"kh_uisdk_address_picker_prebook" = "Buchen Sie";
+
+"kh_uisdk_adyen_payment_error_10" = "Die Bank des Käufers unterstützt diese Art von Transaktion nicht oder erlaubt sie nicht.";
+
+"kh_uisdk_adyen_payment_error_11" = "Die 3D Secure-Authentifizierung wurde nicht oder nicht erfolgreich ausgeführt.";
+
+"kh_uisdk_adyen_payment_error_12" = "Die Karte hat nicht genug Geld, um den zu zahlenden Betrag zu decken";
+
+"kh_uisdk_adyen_payment_error_14" = "Möglicher Betrug.";
+
+"kh_uisdk_adyen_payment_error_15" = "Die Transaktion wurde abgebrochen.";
+
+"kh_uisdk_adyen_payment_error_16" = "Der Käufer hat die Transaktion abgebrochen, bevor sie abgeschlossen wurde.";
+
+"kh_uisdk_adyen_payment_error_17" = "Die angegebene PIN ist falsch oder ungültig.";
+
+"kh_uisdk_adyen_payment_error_18" = "Der Kunde hat mehr als dreimal hintereinander eine falsche PIN eingegeben.";
+
+"kh_uisdk_adyen_payment_error_19" = "Es ist nicht möglich, die angegebene PIN-Nummer zu validieren.";
+
+"kh_uisdk_adyen_payment_error_2" = "Die Transaktion wurde abgelehnt.";
+
+"kh_uisdk_adyen_payment_error_20" = "Die Risikoprüfungen vor der Autorisierung ergaben einen Betrugswert von 100 oder mehr. Daher wurde die Transaktion als betrügerisch eingestuft und abgelehnt.";
+
+"kh_uisdk_adyen_payment_error_21" = "Die Transaktion wurde nicht korrekt zur Bearbeitung eingereicht.";
+
+"kh_uisdk_adyen_payment_error_22" = "Die Summe der Risikoprüfungen vor und nach der Autorisierung ergab einen Betrugswert von 100 oder mehr. Daher wurde die Transaktion als betrügerisch eingestuft und abgelehnt.";
+
+"kh_uisdk_adyen_payment_error_23" = "Transaktion nicht erlaubt";
+
+"kh_uisdk_adyen_payment_error_24" = "Der angegebene CVC (Card Security Code) ist ungültig.";
+
+"kh_uisdk_adyen_payment_error_25" = "Eingeschränkte Karte";
+
+"kh_uisdk_adyen_payment_error_26" = "Widerruf der Ermächtigungsanordnung";
+
+"kh_uisdk_adyen_payment_error_27" = "Nicht allgemeiner Fehler";
+
+"kh_uisdk_adyen_payment_error_28" = "Der für die Karte des Käufers zulässige Abhebungsbetrag wurde überschritten.";
+
+"kh_uisdk_adyen_payment_error_29" = "Die Anzahl der für die Karte des Käufers zulässigen Abhebungen wurde überschritten.";
+
+"kh_uisdk_adyen_payment_error_3" = "Verweise";
+
+"kh_uisdk_adyen_payment_error_31" = "Der Emittent meldete die Transaktion als Betrugsverdacht.";
+
+"kh_uisdk_adyen_payment_error_32" = "Die vom Käufer eingegebenen Adressdaten sind falsch.";
+
+"kh_uisdk_adyen_payment_error_33" = "Die Bank des Käufers verlangt von ihm die Eingabe einer Online-PIN.";
+
+"kh_uisdk_adyen_payment_error_34" = "Die Bank des Käufers benötigt ein Girokonto, um den Kauf abzuschließen.";
+
+"kh_uisdk_adyen_payment_error_35" = "Die Bank des Käufers benötigt ein Sparkonto, um den Kauf abzuschließen.";
+
+"kh_uisdk_adyen_payment_error_36" = "Die Bank des Käufers verlangt von ihm die Eingabe einer mobilen PIN.";
+
+"kh_uisdk_adyen_payment_error_37" = "Der Käufer brach die Transaktion ab, nachdem er eine kontaktlose Zahlung versucht hatte und aufgefordert wurde, eine andere Karteneingabemethode (PIN oder Durchziehen) zu versuchen.";
+
+"kh_uisdk_adyen_payment_error_38" = "Der Emittent hat die Anfrage für die Authentifizierungsausnahme abgelehnt und verlangt eine Authentifizierung für die Transaktion. Versuchen Sie es erneut mit 3D Secure.";
+
+"kh_uisdk_adyen_payment_error_39" = "Der Emittent oder das System war nicht in der Lage, das Ergebnis per RReq mitzuteilen.";
+
+"kh_uisdk_adyen_payment_error_4" = "Die Transaktion konnte aufgrund eines Fehlers auf Seiten des Erwerbers nicht durchgeführt werden.";
+
+"kh_uisdk_adyen_payment_error_40" = "Das Zahlungsnetzwerk kann nicht erreicht werden. Wiederholen Sie die Transaktion mit einer anderen Zahlungsmethode.";
+
+"kh_uisdk_adyen_payment_error_41" = "Eine PIN oder Unterschrift ist erforderlich. Wiederholen Sie die Transaktion.";
+
+"kh_uisdk_adyen_payment_error_42" = "Die 3D-Secure-Authentifizierung ist aufgrund eines Problems im Kartennetz oder beim Kartenaussteller fehlgeschlagen. Wiederholen Sie die Transaktion, oder versuchen Sie es mit einer anderen Zahlungsmethode.";
+
+"kh_uisdk_adyen_payment_error_5" = "Die für die Transaktion verwendete Karte ist gesperrt und daher unbrauchbar";
+
+"kh_uisdk_adyen_payment_error_6" = "Die Karte, die für die Transaktion verwendet wurde, ist abgelaufen. Daher ist sie unbrauchbar";
+
+"kh_uisdk_adyen_payment_error_7" = "Während des Transaktionsvorgangs ist eine Betragsinkongruenz aufgetreten";
+
+"kh_uisdk_adyen_payment_error_8" = "Die angegebene Kartennummer ist falsch oder ungültig";
+
+"kh_uisdk_adyen_payment_error_9" = "Es ist nicht möglich, die Bank des Käufers zu kontaktieren, um die Transaktion zu autorisieren.";
+
+"kh_uisdk_airport_booking_message" = "Bitte geben Sie eine gültige Flugnummer ein";
+
+"kh_uisdk_allocating_trip_one" = "Bitte warten Sie, bis Ihnen ein Fahrer zugewiesen wird.";
+
+"kh_uisdk_allocating_trip_two" = "Dies kann einen oder zwei Augenblicke dauern.";
+
+"kh_uisdk_allocation_delay_text" = "Es dauert länger als gewöhnlich, bis die Flotte einen Fahrer zuweist. Bitte warten Sie, kontaktieren Sie die Flotte oder stornieren Sie und buchen Sie bei einer anderen Flotte neu.";
+
+"kh_uisdk_allocation_delay_title" = "Verzögerung bei der Zuteilung";
+
+"kh_uisdk_alternative" = "ALTERNATIV";
+
+"kh_uisdk_arrival" = "Anreise";
+
+"kh_uisdk_arrived" = "Ihr %@ Fahrer ist angekommen";
+
+"kh_uisdk_back" = "Zurück";
+
+"kh_uisdk_baggage_max" = "%1$@ Gepäckstücke maximal";
+
+"kh_uisdk_base" = "Grundtarif";
+
+"kh_uisdk_base_fare_explanation" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden.";
+
+"kh_uisdk_book_now" = "JETZT BUCHEN";
+
+"kh_uisdk_book_return_ride" = "Rückfahrt buchen";
+
+"kh_uisdk_booking_car" = "Fahrt buchen";
+
+"kh_uisdk_booking_checkout_add_passenger" = "Passagierdaten hinzufügen";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "Zahlung hinzufügen";
+
+"kh_uisdk_booking_checkout_passenger" = "Passagier";
+
+"kh_uisdk_booking_checkout_title" = "Zur Kasse";
+
+"kh_uisdk_booking_confirmation" = "Buchung Bestätigt";
+
+"kh_uisdk_booking_details_error" = "Ungültige Buchungsdaten";
+
+"kh_uisdk_booking_failed" = "Buchung fehlgeschlagen";
+
+"kh_uisdk_booking_failed_body" = "Leider ist die Nachfrage hoch. %1$@ hat keine verfügbaren Treiber.";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Entschuldigung, die Nachfrage ist hoch. Die ausgewählte Flotte hat keine verfügbaren Fahrer.";
+
+"kh_uisdk_booking_terms" = "Mit der Buchung erklären Sie sich mit den %1$@ | %2$@ und %3$@ %4$@ | %3$@ %5$@ einverstanden.";
+
+"kh_uisdk_booking_terms_and_conditions" = "Nutzungsbedingungen";
+
+"kh_uisdk_bookings" = "Buchungen";
+
+"kh_uisdk_call" = "ANRUFEN";
+
+"kh_uisdk_cancel" = "Abbrechen";
+
+"kh_uisdk_cancel_ride" = "Fahrt abbrechen";
+
+"kh_uisdk_cancel_ride_successful" = "Fahrtabsage erfolgreich";
+
+"kh_uisdk_cancel_ride_successful_message" = "Ihre Reise wurde erfolgreich storniert.";
+
+"kh_uisdk_cancel_your_ride" = "Ihre Fahrt absagen?";
+
+"kh_uisdk_cancelled" = "Abgebrochen";
+
+"kh_uisdk_cancelled_by_dispatch" = "Der Anbieter %@ hat Ihre Reise storniert.";
+
+"kh_uisdk_cancelled_by_user" = "Sie haben Ihre Fahrt storniert mit %@";
+
+"kh_uisdk_cancelling" = "Tippen und halten Sie zum Abbrechen";
+
+"kh_uisdk_cancelling_ride" = "Abbrechen";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "Karte";
+
+"kh_uisdk_checked" = "Geprüft";
+
+"kh_uisdk_checkout_as_guest" = "Fahrt buchen";
+
+"kh_uisdk_completed" = "Wir hoffen, Sie haben Ihre Reise genossen";
+
+"kh_uisdk_confirmed" = "Ihre Reise wurde bestätigt mit %@";
+
+"kh_uisdk_contact" = "Kontakt";
+
+"kh_uisdk_contact_driver" = "Kontakt Fahrer";
+
+"kh_uisdk_contact_fleet" = "Kontakt Flotte";
+
+"kh_uisdk_contact_us" = "Kontakt";
+
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/de/requests/new";
+
+"kh_uisdk_continue_journey" = "Weitermachen";
+
+"kh_uisdk_could_not_load_trips" = "Es konnten keine Reisen geladen werden.";
+
+"kh_uisdk_country_search" = "Land/Region suchen";
+
+"kh_uisdk_current_location" = "Aktueller Standort";
+
+"kh_uisdk_date" = "Datum";
+
+"kh_uisdk_destination_book_error" = "Sie müssen ein Ziel auswählen, bevor Sie eine Fahrt buchen";
+
+"kh_uisdk_difficulties_cancelling_message" = "Wir haben Probleme, Ihre Fahrt zu stornieren. Bitte kontaktieren Sie die Flotte.";
+
+"kh_uisdk_difficulties_cancelling_title" = "Schwierigkeiten bei der Annullierung";
+
+"kh_uisdk_dismiss" = "ENTLASSEN";
+
+"kh_uisdk_dispatch_cancelled" = "Bitte entschuldigen Sie, %@ hat im Moment keine verfügbaren Fahrer.";
+
+"kh_uisdk_drawer_closed" = "Navigation geschlossen";
+
+"kh_uisdk_drawer_open" = "Navigation offen";
+
+"kh_uisdk_driver_arrival" = "Ankunft des Fahrers";
+
+"kh_uisdk_driver_en_route" = "Ihr %@ Fahrer ist auf dem Weg";
+
+"kh_uisdk_edit" = "Bearbeiten";
+
+"kh_uisdk_electric" = "Elektrisch";
+
+"kh_uisdk_email_hint" = "E-Mail";
+
+"kh_uisdk_email_info" = "Bitte löschen Sie diese Informationen nicht, da sie uns helfen, die App zu verbessern.";
+
+"kh_uisdk_email_report_issue_message" = "Bitte nutzen Sie das folgende Feld, um ein bestimmtes Problem mit Ihrer Fahrt zu melden.";
+
+"kh_uisdk_enter_destination" = "Zielort eingeben, um verfügbare Flotten zu sehen";
+
+"kh_uisdk_erase_address" = "Adresse löschen";
+
+"kh_uisdk_error" = "Fehler";
+
+"kh_uisdk_error_invalid_password" = "Die eingegebene E-Mail oder das eingegebene Passwort sind falsch.";
+
+"kh_uisdk_errors_cant_send_email" = "Kann keine E-Mail-Nachricht senden. Konfigurieren Sie zuerst die Mail-App.";
+
+"kh_uisdk_errors_flight_number_validator_error" = "Flugnummer";
+
+"kh_uisdk_errors_force_update_button" = "Update";
+
+"kh_uisdk_errors_force_update_message" = "Bitte aktualisieren Sie die App, um fortzufahren.";
+
+"kh_uisdk_errors_force_update_title" = "Neue Version verfügbar";
+
+"kh_uisdk_errors_get_user_fail" = "Es gab ein Problem beim Abrufen Ihres Profils.";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "Problem mit der Initialisierung von Zahlungen, bitte kontaktieren Sie den Support";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "Vormerkungen können nicht innerhalb der aktuellen Stunde vorgenommen werden.";
+
+"kh_uisdk_estimated_arrival_time" = "Geschätzte Ankunftszeit";
+
+"kh_uisdk_estimated_fare" = "Geschätzter Preis";
+
+"kh_uisdk_estimated_price" = "Geschätzter Preis";
+
+"kh_uisdk_eta" = "Geschätzte Ankunft";
+
+"kh_uisdk_exec" = "Exec";
+
+"kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/de";
+
+"kh_uisdk_faretype_info_base" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden\n.";
+
+"kh_uisdk_feedback" = "Rückmeldung";
+
+"kh_uisdk_feedback_email" = "support@karhoo.com";
+
+"kh_uisdk_feedback_submitted" = "Vielen Dank für Ihr Feedback";
+
+"kh_uisdk_feedback_title" = "Bitte erzählen Sie uns mehr über Ihre Reise";
+
+"kh_uisdk_fees_and_taxes_included" = "Inklusive Steuern und Gebühren";
+
+"kh_uisdk_filter" = "Filter";
+
+"kh_uisdk_filter_all" = "Alle";
+
+"kh_uisdk_filter_berline" = "Berline";
+
+"kh_uisdk_filter_bike" = "Fahrrad";
+
+"kh_uisdk_filter_child_seat" = "Kindersitz";
+
+"kh_uisdk_filter_driver_details" = "Angaben zum Fahrer";
+
+"kh_uisdk_filter_eco_friendly" = "Umweltfreundlich";
+
+"kh_uisdk_filter_electric" = "Elektrisch";
+
+"kh_uisdk_filter_executive" = "Exekutive";
+
+"kh_uisdk_filter_fight_tracking" = "Flugverfolgung";
+
+"kh_uisdk_filter_fleet_capabilities" = "Flottenkapazitäten";
+
+"kh_uisdk_filter_free_cancellation" = "Kostenlose Stornierung";
+
+"kh_uisdk_filter_free_waiting_time" = "Kostenlose Wartezeit";
+
+"kh_uisdk_filter_gps_tracking" = "GPS-Ortung";
+
+"kh_uisdk_filter_hybrid" = "Hybrid";
+
+"kh_uisdk_filter_luggages" = "Gepäckstücke";
+
+"kh_uisdk_filter_luxury" = "Luxus";
+
+"kh_uisdk_filter_moto" = "Moto";
+
+"kh_uisdk_filter_page_results" = "Alle %1$@ Ergebnisse anzeigen";
+
+"kh_uisdk_filter_passengers" = "Passagier(e)";
+
+"kh_uisdk_filter_quote_types" = "Arten von Zitaten";
+
+"kh_uisdk_filter_service_agreements" = "Stornierung und Wartezeit";
+
+"kh_uisdk_filter_standard" = "Standard";
+
+"kh_uisdk_filter_taxi" = "Taxi";
+
+"kh_uisdk_filter_train_tracking" = "Zugverfolgung";
+
+"kh_uisdk_filter_van" = "Lieferwagen";
+
+"kh_uisdk_filter_vehicle_class" = "Fahrzeugklasse";
+
+"kh_uisdk_filter_vehicle_details" = "Fahrzeug-Details";
+
+"kh_uisdk_filter_vehicle_extras" = "Fahrzeug-Extras";
+
+"kh_uisdk_filter_vehicle_types" = "Fahrzeugtypen";
+
+"kh_uisdk_filter_wheelchair" = "Rollstuhl";
+
+"kh_uisdk_finding_your_ride" = "Ihr Fahrzeug finden...";
+
+"kh_uisdk_first_name_hint" = "Vorname";
+
+"kh_uisdk_fixed_fare" = "Fest";
+
+"kh_uisdk_fleet" = "Flotte";
+
+"kh_uisdk_fleet_recommendation_body" = "Vielen Dank, dass Sie uns einen Fuhrpark in Ihrer Nähe empfehlen. Um die Abdeckung in Ihrem Gebiet so schnell wie möglich zu erhalten, geben Sie uns bitte das Gebiet und den Namen des Transportunternehmens an.\nGebiet:\nFlottenzeit:";
+
+"kh_uisdk_fleet_recommendation_subject" = "Empfehlung für die Flotte";
+
+"kh_uisdk_flight_number" = "Flugnummer";
+
+"kh_uisdk_flight_tracking" = "Flugverfolgung";
+
+"kh_uisdk_forgotten_password" = "Haben Sie Ihr Passwort vergessen?";
+
+"kh_uisdk_free_cancellation_asap" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
+
+"kh_uisdk_got_it" = "Ich hab's";
+
+"kh_uisdk_gps_tracking" = "GPS-Ortung";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "Zahlungsarten";
+
+"kh_uisdk_help" = "Hilfe";
+
+"kh_uisdk_hours_plural.one" = "%d Stunde";
+
+"kh_uisdk_hours_plural.other" = "%d Stunde";
+
+"kh_uisdk_hours_plural.zero" = "%d Stunde";
+
+"kh_uisdk_info" = "Info";
+
+"kh_uisdk_initialised" = "Karhoo initiiert Ihre Reise";
+
+"kh_uisdk_invalid_email" = "Ungültige E-Mail";
+
+"kh_uisdk_invalid_empty_field" = "Leeres Feld nicht erlaubt";
+
+"kh_uisdk_invalid_input_value" = "Ungültiger Wert";
+
+"kh_uisdk_invalid_phone_number" = "Ungültige Telefonnummer";
+
+"kh_uisdk_K0001" = "Allgemeiner Anfragefehler.";
+
+"kh_uisdk_K0002" = "Ungültiger Request-Payload";
+
+"kh_uisdk_K0003" = "Autorisierungs-Token konnte nicht gelesen werden";
+
+"kh_uisdk_K0004" = "Für diesen Pfad ist eine Authentifizierung erforderlich";
+
+"kh_uisdk_K0005" = "Fehlende erforderliche Rolle für diese Anfrage";
+
+"kh_uisdk_K0006" = "Ratengrenze überschritten";
+
+"kh_uisdk_K0007" = "Der Leistungsschalter für diese Strecke hat ausgelöst";
+
+"kh_uisdk_K1001" = "Benutzer konnte nicht registriert werden";
+
+"kh_uisdk_K1003" = "Benutzer konnte nicht registriert werden (ungültige Anfrage).";
+
+"kh_uisdk_K1004" = "Benutzer konnte nicht registriert werden (ungültige Telefonnummer)";
+
+"kh_uisdk_K1005" = "Konnte keine Benutzerdetails erhalten (ungültiges Token)";
+
+"kh_uisdk_K1006" = "Benutzerdetails konnten nicht abgerufen werden (Benutzer existiert nicht)";
+
+"kh_uisdk_K1999" = "Der Benutzer wurde erstellt, aber noch nicht autorisiert. Wir werden uns melden, sobald er aktiviert ist.";
+
+"kh_uisdk_K2001" = "Adresse konnte nicht ermittelt werden";
+
+"kh_uisdk_K3001" = "Konnte keine Schätzungen erhalten";
+
+"kh_uisdk_K3002" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
+
+"kh_uisdk_K3003" = "Kann keinen Kostenvoranschlag erhalten (konnte kein bestimmtes Angebot finden)";
+
+"kh_uisdk_K4001" = "Konnte keine Reise buchen";
+
+"kh_uisdk_K4002" = "Reise konnte nicht gebucht werden - ungültiger Request Payload (erfordert mindestens 1 Satz Passagierdaten)";
+
+"kh_uisdk_K4003" = "Konnte keine Reise buchen (konnte kein bestimmtes Angebot finden)";
+
+"kh_uisdk_K4004" = "Reise konnte nicht gebucht werden (Versuch, ein abgelaufenes Angebot zu buchen)";
+
+"kh_uisdk_K4005" = "Konnte keine Reise buchen (Genehmigung verweigert)";
+
+"kh_uisdk_K4006" = "Reise konnte nicht gebucht werden (Vorautorisierung der Zahlung fehlgeschlagen)";
+
+"kh_uisdk_K4007" = "Kann die Reise nicht stornieren";
+
+"kh_uisdk_K4008" = "Die Reise konnte nicht storniert werden (die angegebene Reise konnte nicht gefunden werden)";
+
+"kh_uisdk_K4009" = "Reise konnte nicht storniert werden (Erlaubnis verweigert)";
+
+"kh_uisdk_K4010" = "Reise kann nicht storniert werden (bereits storniert)";
+
+"kh_uisdk_K4011" = "Konnte keine Reise bekommen";
+
+"kh_uisdk_K4012" = "Kann keine Reise abrufen (konnte die angegebene Reise nicht finden)";
+
+"kh_uisdk_K4013" = "Die Reise konnte nicht angetreten werden (Erlaubnis verweigert)";
+
+"kh_uisdk_K4014" = "Konnte als Agent keine Reise buchen";
+
+"kh_uisdk_K4015" = "Konnte als Reisender keine Reise buchen";
+
+"kh_uisdk_K4018" = "Konnte nicht buchen, da das Angebot nicht mehr verfügbar ist";
+
+"kh_uisdk_K4020" = "Konnte keine Reise mit dem ausgewählten DMS buchen";
+
+"kh_uisdk_K4025" = "Der Angebotspreis wurde bei der Buchung erhöht.";
+
+"kh_uisdk_K5001" = "Konnte keine Schätzungen erhalten";
+
+"kh_uisdk_K5002" = "Keine Verfügbarkeit (keine Verfügbarkeit im gewünschten Bereich gefunden)";
+
+"kh_uisdk_K5003" = "Keine Verfügbarkeit (keine Kategorien im gewünschten Bereich gefunden)";
+
+"kh_uisdk_K6001" = "Authentifizierung nicht möglich";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "Bei dieser Buchung ist ein Problem aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "Problem Buchung";
+
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
+
+"kh_uisdk_karhoo_id" = "Karhoo ID";
+
+"kh_uisdk_karhoo_privacy_policy" = "Datenschutzrichtlinie";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
+
+"kh_uisdk_KP001" = "Anfragekörper kann nicht dekodiert werden";
+
+"kh_uisdk_KP002" = "Primäre Org für Benutzer ist nicht UUID";
+
+"kh_uisdk_KP003" = "Fehlende Lieferpartner-ID";
+
+"kh_uisdk_KP004" = "UserID ist nicht UUID";
+
+"kh_uisdk_KP005" = "Browser-Informationen müssen definiert werden, um 3DS zu erzwingen";
+
+"kh_uisdk_KP006" = "Return Url muss definiert werden, um 3DS zu erzwingen";
+
+"kh_uisdk_KP007" = "Fehlende Reise-ID";
+
+"kh_uisdk_KP008" = "Fehlender Benutzer";
+
+"kh_uisdk_KP009" = "Primäre Organisation ist nicht registriert";
+
+"kh_uisdk_KP010" = "Schlechter Geldbetrag";
+
+"kh_uisdk_KP011" = "Schlechte Geldaufteilung";
+
+"kh_uisdk_label_and" = "und";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "Stornierungsbedingungen";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "Nutzungsbedingungen";
+
+"kh_uisdk_last_name_hint" = "Nachname";
+
+"kh_uisdk_last_trip_id" = "Letzte Reise-ID: %1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "Letzte Reise-ID: Noch nicht festgelegt";
+
+"kh_uisdk_legal_notice_label" = "Rechtlicher Hinweis";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "~ min";
+
+"kh_uisdk_locale" = "de_DE";
+
+"kh_uisdk_location_disabled" = "Bitte aktivieren Sie die Standortdienste auf Ihrem Gerät, um das volle Erlebnis zu genießen.";
+
+"kh_uisdk_location_rationale_shown" = "STANDORT_RATIONAL_ANGEZEIGT";
+
+"kh_uisdk_loyalty_balance_title" = "BILANTZ: %1$@ PUNKTE";
+
+"kh_uisdk_loyalty_info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Treuepunkte den gesamten Preis abdecken.";
+
+"kh_uisdk_loyalty_info_add_points" = "%@ Die Treuepunkte werden am Ende der Fahrt Ihrem Konto gutgeschrieben.";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ Die Treuepunkte werden am Ende der Fahrt von Ihrem Kontostand abgezogen.";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Ihr Punktesaldo ist unzureichend";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "Der derzeitige Treuemodus kommt nicht für eine Vorabgenehmigung in Frage";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "Am Ende der Fahrt werden Ihrem Kontostand %1$@ Treuepunkte gutgeschrieben";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "Sie dürfen keine Punkte verbrauchen";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "Ihr Guthaben reicht nicht aus, um diese Fahrt zu bezahlen";
+
+"kh_uisdk_loyalty_separator" = "ODER";
+
+"kh_uisdk_loyalty_title" = "Treuepunkte";
+
+"kh_uisdk_loyalty_unknown_error" = "Es ist ein Fehler aufgetreten. Um Ihre Treuepunkte zu sammeln oder zu verwenden, versuchen Sie es bitte später erneut.";
+
+"kh_uisdk_loyalty_unsupported_currency" = "Ein Fehler ist aufgetreten. Die Währung wird nicht unterstützt";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "Sie können Ihre Treuepunkte zur Bezahlung der Fahrt einsetzen";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Zahlen Sie %1$@ %2$@ mit %3$@ Treuepunkten";
+
+"kh_uisdk_loyalty_use_points_title" = "Verwenden Sie Ihre Punkte";
+
+"kh_uisdk_map_selector" = "Position der Stecknadel auf der Karte festlegen";
+
+"kh_uisdk_meeting_point" = "Treffpunkt";
+
+"kh_uisdk_metered" = "Taxameter";
+
+"kh_uisdk_min" = "Min.";
+
+"kh_uisdk_mins" = "Min.";
+
+"kh_uisdk_minutes_plurals.one" = "%d Minute";
+
+"kh_uisdk_minutes_plurals.other" = "%d Minute";
+
+"kh_uisdk_minutes_plurals.zero" = "%d Minute";
+
+"kh_uisdk_mobile_phone_number_hint" = "Nummer des Mobiltelefons";
+
+"kh_uisdk_moto" = "Moto";
+
+"kh_uisdk_mpv" = "Großraum";
+
+"kh_uisdk_network_error" = "Wir scheinen Probleme mit der Verbindung zum Netzwerk zu haben";
+
+"kh_uisdk_new_ride" = "NEUE FAHRT";
+
+"kh_uisdk_next" = "Weiter";
+
+"kh_uisdk_no" = "Nein";
+
+"kh_uisdk_no_availability_body" = "%1$@ wenn Sie Vorschläge für lokale Flotten haben.";
+
+"kh_uisdk_no_availability_link" = "Nehmen Sie Kontakt auf";
+
+"kh_uisdk_no_cars_available" = "Leider sind zur Zeit keine Fahrzeuge für Ihre Fahrt verfügbar.\n\nBitte schauen Sie bald wieder vorbei.";
+
+"kh_uisdk_no_email_setup_error" = "Bitte richten Sie ein E-Mail-Konto auf Ihrem Gerät ein";
+
+"kh_uisdk_no_location_permission_message" = "Standortdaten werden benötigt, um Ihren Standort anzuzeigen. Um die Berechtigungseinstellungen zu ändern, gehen Sie bitte zur Registerkarte iOS-Einstellungen und wählen Sie einen neuen Wert.";
+
+"kh_uisdk_no_location_permission_title" = "Erlaubnis erforderlich";
+
+"kh_uisdk_no_quotes_in_selected_category" = "Es gibt keine Angebote für diese Kategorie.\nBitte wählen Sie eine andere Kategorie.";
+
+"kh_uisdk_no_trips" = "Keine Fahrten";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "Ungültiges SSL-Zertifikat";
+
+"kh_uisdk_offer_expired" = "Zitat erloschen";
+
+"kh_uisdk_offer_expired_text" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
+
+"kh_uisdk_ok" = "OK";
+
+"kh_uisdk_origin_book_error" = "Sie müssen eine Herkunft auswählen, bevor Sie eine Fahrt buchen";
+
+"kh_uisdk_P0001" = "Abrufen der UserID aus dem Token fehlgeschlagen";
+
+"kh_uisdk_P0002" = "Anruf beim Zahlungsdienst fehlgeschlagen";
+
+"kh_uisdk_pass_on_board" = "Sie sind auf dem Weg. Gute Fahrt!";
+
+"kh_uisdk_passenger_details" = "Passagier-Details";
+
+"kh_uisdk_passenger_details_add_passenger" = "Passagier hinzufügen";
+
+"kh_uisdk_passenger_details_subtitle" = "Diese Informationen ermöglichen einen reibungslosen Ablauf Ihrer Fahrt.";
+
+"kh_uisdk_passengers_max" = "%1$@ Passagiere maximal";
+
+"kh_uisdk_password_hint" = "Passwort";
+
+"kh_uisdk_past_rides_empty" = "Sie haben noch keine Fahrten gebucht. Wir können Ihnen helfen, von A nach B zu kommen";
+
+"kh_uisdk_payment" = "Bezahlung";
+
+"kh_uisdk_payment_details" = "Zahlungsinformationen";
+
+"kh_uisdk_payment_issue" = "Zahlungsproblem";
+
+"kh_uisdk_payment_issue_message" = "Es ist ein Problem mit Ihrer Karte aufgetreten";
+
+"kh_uisdk_payment_payment_alert_update_card" = "Karte aktualisieren";
+
+"kh_uisdk_payment_summary" = "Zusammenfassung der Zahlungen";
+
+"kh_uisdk_payments" = "Zahlungen";
+
+"kh_uisdk_pending" = "ausstehend";
+
+"kh_uisdk_permission_rationale_location" = "Um Sie auf der Karte lokalisieren zu können, benötigen wir den Standort Ihres Geräts. Bitte erlauben Sie Standortberechtigungen";
+
+"kh_uisdk_permissions" = "ZULASSUNGEN";
+
+"kh_uisdk_pickup_time" = "Abholzeit";
+
+"kh_uisdk_pickup_type_curbside" = "Bordsteinkante";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "Treffen und Begrüßung";
+
+"kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_prebook_confirmation" = "Ihre Buchung\nvon: %1$@\nbis: %2$@\nam: %3$@\nwurde gebuchtBuchung";
+
+"kh_uisdk_prebook_confirmed" = "Vormerkung Bestätigt";
+
+"kh_uisdk_prebook_picker_title" = "Abholzeit vormerken";
+
+"kh_uisdk_prebook_timezone_title" = "Die Buchung wird in der Ortszeit der Abholung vorgenommen (%1$@)";
+
+"kh_uisdk_price" = "Preis";
+
+"kh_uisdk_price_info_text_estimated" = "Diese Flotte ist ein nicht reguliertes Taxi. Der Kostenvoranschlag ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.). Weitere Informationen entnehmen Sie bitte den Allgemeinen Geschäftsbedingungen der Flotte.";
+
+"kh_uisdk_price_info_text_fixed" = "Diese Flotte berechnet einen Pauschaltarif. Der Endpreis kann durch Extras (Mautgebühren, Verspätungen usw.) beeinflusst werden, bitte prüfen Sie die Allgemeinen Geschäftsbedingungen der Flotte.";
+
+"kh_uisdk_price_info_text_metered" = "Bei dieser Flotte handelt es sich um ein reguliertes Sammeltaxi. Der Kostenvoranschlag ist eine Schätzung auf der Grundlage der Reisefaktoren (Entfernung, Zeit, etc.).";
+
+"kh_uisdk_price_meet_and_greet" = "Treffen und Begrüßung";
+
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
+
+"kh_uisdk_profile" = "Profil";
+
+"kh_uisdk_Q0001" = "Abholort und Zielort können nicht identisch sein.";
+
+"kh_uisdk_question_four" = "Wie einfach war es für Sie, die App zu benutzen?";
+
+"kh_uisdk_question_one" = "Wie zufrieden waren Sie mit der Auswahl der Angebote für Ihre Reise (z. B. Flotten, Preise und ETAs)?";
+
+"kh_uisdk_question_three" = "Wie war Ihre Erfahrung im Taxi (z. B. Sauberkeit des Taxis, Streckenführung und Fahrer)? Wie einfach war es für Sie, die App zu nutzen?";
+
+"kh_uisdk_question_two" = "Wie war Ihre Erfahrung mit der Suche nach dem Abholort und dem Treffen mit dem Fahrer?";
+
+"kh_uisdk_quote" = "Zitat";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "nach der Buchung";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "und";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Kostenlose Stornierung bis der Fahrer unterwegs ist";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "vor der Abholung";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "Kostenlose Stornierung bis zu %1$@ vor der Abholung";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "Kostenlose Stornierung bis zu";
+
+"kh_uisdk_quote_cell_details" = "Details";
+
+"kh_uisdk_quote_learn_more" = "Erfahren Sie mehr";
+
+"kh_uisdk_quoted_price" = "Preisangebot";
+
+"kh_uisdk_quotes_activity_title" = "Zitate";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Bitte geben Sie sowohl die Abhol- als auch die Rückgabeadresse ein, um auf die Angebote zugreifen zu können.";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "Die Adresse für die Abholung oder Rückgabe fehlt.";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Bitte wählen Sie eine andere Zeit.";
+
+"kh_uisdk_quotes_error_no_availability_title" = "Keine Verfügbarkeit für die angefragte Zeit.";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ Nachrichtenflotten vorschlagen";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "Noch keine Flotten in diesem Gebiet";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Bitte ändern Sie Ihre Filterauswahl.";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "Keine Ergebnisse nach der Filterung.";
+
+"kh_uisdk_quotes_error_no_results_found" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Bitte ändern Sie eine der Adressen, um Zugang zu den Angeboten zu erhalten";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "Die Adressen für die Abholung und Rückgabe sind ähnlich";
+
+"kh_uisdk_quotes_no_availability" = "Wir sind hier noch nicht live! Melden Sie sich, wenn Sie Vorschläge für lokale Flotten haben.";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "Bitte wählen Sie eine andere Zeit";
+
+"kh_uisdk_quotes_no_availability_title" = "Keine Verfügbarkeit für die gewünschte Zeit";
+
+"kh_uisdk_rate_trip_label" = "Wie würden Sie Ihre Reise bewerten?";
+
+"kh_uisdk_rating_submitted" = "Vielen Dank für die Abgabe Ihrer Bewertung.";
+
+"kh_uisdk_rebook_ride" = "Rebooking-Fahrt";
+
+"kh_uisdk_recents_empty" = "Keine aktuellen Ergebnisse";
+
+"kh_uisdk_register" = "Registrieren";
+
+"kh_uisdk_report_issue" = "Ausgabe melden";
+
+"kh_uisdk_request_car" = "BUCHUNG BESTÄTIGEN";
+
+"kh_uisdk_request_received" = "Erhaltene Buchung";
+
+"kh_uisdk_requested" = "Ihre Reise wurde angefordert mit %@";
+
+"kh_uisdk_requesting" = "Anfrage an";
+
+"kh_uisdk_requesting_car" = "Fahrt buchen";
+
+"kh_uisdk_reset_filter" = "Filter zurücksetzen";
+
+"kh_uisdk_result" = "%1$@ Ergebnis(se)";
+
+"kh_uisdk_results" = "Ergebnisse";
+
+"kh_uisdk_results_empty" = "Keine Ergebnisse gefunden";
+
+"kh_uisdk_results_ios" = "%1$@ Ergebnisse";
+
+"kh_uisdk_retrieving_dropoff" = "Übergabeort ermitteln";
+
+"kh_uisdk_retrieving_pickup" = "Abholort ermitteln";
+
+"kh_uisdk_retrieving_quotes" = "Angebote abrufen";
+
+"kh_uisdk_retry" = "Wiederholen";
+
+"kh_uisdk_ride_confirmed" = "Fahrt Bestätigt";
+
+"kh_uisdk_ride_contact_details" = "Details";
+
+"kh_uisdk_ride_details" = "Details zur Fahrt";
+
+"kh_uisdk_ride_state_arrived" = "Fahrer eingetroffen";
+
+"kh_uisdk_ride_state_cancelled" = "Abgebrochen";
+
+"kh_uisdk_ride_state_completed" = "Abgeschlossen";
+
+"kh_uisdk_ride_state_confirmed" = "Bestätigt";
+
+"kh_uisdk_ride_state_der" = "Fahrer unterwegs";
+
+"kh_uisdk_ride_state_pob" = "An Bord";
+
+"kh_uisdk_ride_state_requested" = "Erwünscht";
+
+"kh_uisdk_rides" = "Fahrten";
+
+"kh_uisdk_saloon" = "Standard";
+
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
+
+"kh_uisdk_save" = "Speichern";
+
+"kh_uisdk_schedule_ride" = "Planen Sie die Fahrt";
+
+"kh_uisdk_set_on_map" = "Auf Karte setzen";
+
+"kh_uisdk_set_prebook_time" = "Abholzeit einstellen";
+
+"kh_uisdk_settings" = "Einstellungen";
+
+"kh_uisdk_sign_in" = "Anmelden";
+
+"kh_uisdk_sign_in_but" = "Anmelden";
+
+"kh_uisdk_sign_out" = "Abmeldung";
+
+"kh_uisdk_signup_email_subscribe_copy" = "Ich möchte keine Freifahrten, Werbeaktionen oder Angebote erhalten";
+
+"kh_uisdk_signup_pending_message" = "Wir werden Sie per E-Mail benachrichtigen, sobald Ihr Antrag bearbeitet wurde.";
+
+"kh_uisdk_something_went_wrong" = "Es ist ein Fehler aufgetreten.";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut oder wählen Sie ein anderes Angebot";
+
+"kh_uisdk_sort_by" = "Sortieren nach";
+
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
+
+"kh_uisdk_star_excellent" = "Ausgezeichnet";
+
+"kh_uisdk_star_fair" = "Fair";
+
+"kh_uisdk_star_good" = "Gut";
+
+"kh_uisdk_star_great" = "Großartig";
+
+"kh_uisdk_star_poor" = "Armselig";
+
+"kh_uisdk_status" = "Status";
+
+"kh_uisdk_submit" = "UNTERZEICHNUNG";
+
+"kh_uisdk_submit_button_text" = "Sagen Sie uns, warum Sie so bewertet haben?";
+
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
+
+"kh_uisdk_support_email" = "support@karhoo.com";
+
+"kh_uisdk_support_report_issue" = "Ausgabe melden";
+
+"kh_uisdk_switch_departure_destination" = "Abfahrts- und Zieladresse wechseln";
+
+"kh_uisdk_taxi" = "Taxi";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "Wir scheinen im Moment technische Probleme zu haben.";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "Ihr Karhoo-Konto erstellen";
+
+"kh_uisdk_terms_condition_full_string" = "Mit %1$@ erklären Sie sich mit %2$@ einverstanden.\n%3$@ | %4$@";
+
+"kh_uisdk_thanks" = "Danke für Ihr Interesse";
+
+"kh_uisdk_title_activity_address" = "Adresse";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "E-Mail senden";
+
+"kh_uisdk_title_activity_rides" = "Fahrten";
+
+"kh_uisdk_title_activity_threedsecure" = "3D-Sicherheit";
+
+"kh_uisdk_title_activity_trip" = "Reise";
+
+"kh_uisdk_title_dispatch_cancelled" = "Versendung abgebrochen";
+
+"kh_uisdk_title_page_past" = "Vergangene";
+
+"kh_uisdk_title_page_upcoming" = "Demnächst";
+
+"kh_uisdk_title_past_rides_empty" = "Keine vergangenen Fahrten";
+
+"kh_uisdk_title_upcoming_rides_empty" = "Sie haben keine bevorstehenden Fahrten";
+
+"kh_uisdk_total_fare" = "Gesamtpreis";
+
+"kh_uisdk_track_driver" = "Lokführer";
+
+"kh_uisdk_track_trip" = "Bahnfahrt";
+
+"kh_uisdk_track_trip_alert_message" = "Möchten Sie das Fahrzeug verfolgen?";
+
+"kh_uisdk_track_trip_alert_title" = "Der Fahrer ist auf dem Weg";
+
+"kh_uisdk_train_tracking" = "Zugverfolgung";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Ihre Buchung wurde storniert. Bitte kontaktieren Sie uns für weitere Informationen.";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Von der Flotte annulliert";
+
+"kh_uisdk_trip_id" = "Reise-ID: %1$@";
+
+"kh_uisdk_trip_id_label" = "Reise-ID";
+
+"kh_uisdk_trip_ride_options" = "Fahrten-Optionen";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "Ihre Buchung wurde storniert.";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "Sie haben die Buchung storniert";
+
+"kh_uisdk_trip_status_completed" = "Sie haben Ihr Ziel erreicht";
+
+"kh_uisdk_trip_status_confirmed" = "Ihre Buchung wurde angenommen.\nWarten Sie auf die Zuweisung eines Fahrers.";
+
+"kh_uisdk_trip_status_driver_arrived" = "Ihr Fahrer ist da!";
+
+"kh_uisdk_trip_status_driver_en_route" = "Ihr Fahrer ist auf dem Weg";
+
+"kh_uisdk_trip_status_requested" = "%1$@ weist Ihnen einen Fahrer zu. Dies kann bis zu 5 Minuten dauern.";
+
+"kh_uisdk_trip_summary" = "Zusammenfassung der Fahrt";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "Zum Kalender hinzufügen";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "AUSFLUG ZUM KALENDER HINZUGEFÜGT";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Fahrt nach %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Flugnummer";
+
+"kh_uisdk_trip_summary_train_number" = "Zugnummer";
+
+"kh_uisdk_unchecked" = "Nicht angekreuzt";
+
+"kh_uisdk_upcoming_rides_empty" = "Denken Sie daran, dass Sie ein Auto bis zu sieben Tage im Voraus buchen können.";
+
+"kh_uisdk_vehicle" = "Fahrzeug";
+
+"kh_uisdk_vehicle_bus" = "Bus";
+
+"kh_uisdk_vehicle_moto" = "Moto";
+
+"kh_uisdk_vehicle_mpv" = "Großraum";
+
+"kh_uisdk_vehicle_standard" = "Standard";
+
+"kh_uisdk_wheelchair" = "Rollstuhl";
+
+"kh_uisdk_would_you_like_to_proceed" = "Möchten Sie fortfahren?";
+
+"kh_uisdk_yes" = "Ja";
+
+"kh_uisdk_you_may_be_charged" = "Ihnen wird eine Stornierungsgebühr in Rechnung gestellt, die auf %1$@ geschätzt wird.\n\nMöchten Sie fortfahren?";
+
 "KSDK01" = "Etwas ist schief gelaufen, aber wir wissen nicht, was es war.";
 
 "KSDK02" = "Fehlende Benutzerberechtigungen";
@@ -113,807 +1068,15 @@
 
 "MPV" = "Großraum";
 
-/* Qxxxx errors */
+"pay_button_with_value" = "Transaktion autorisieren";
+
 "Q0001" = "Abholort und Zielort können nicht identisch sein.";
 
-"Text.Address.CurrentLocation" = "Aktueller Standort";
-
-"Text.Address.NoRecentAddress" = "Keine aktuellen Ergebnisse";
-
-"Text.Address.SetOnMap" = "Auf Karte setzen";
-
-/* Address Bar */
-"Text.AddressBar.AddDestination" = "Ziel hinzufügen";
-
-"Text.AddressBar.AddPickup" = "Abholung hinzufügen";
-
-"Text.AddressBar.EnterPickupLocation" = "Abholort eingeben";
-
-"Text.AddressSearch.EnterDestinationLocation" = "Zielort eingeben";
-
-/* "Flight number" used as the flight number field placeholder */
-"Text.Airport.FlightNumber" = "Flugnummer";
-
-/* Message on airport screen for encouraging user to enter as much info about airport booking as possible */
-"Text.Airport.HelpfulMessage" = "Bitte geben Sie eine gültige Flugnummer ein";
-
-/* "All" used for all categories filter on category list. Write normally as the app will uppercase the string */
-"Text.Availability.AllCategory" = "Alle";
-
-"Text.Availability.NoQuotesForSelectedParameters" = "Sofortige Buchungen sind für dieses Ziel leider nicht möglich, aber Sie können für Ihre nächste Reise im Voraus buchen!";
-
-"Text.Availability.NoQuotesInSelectedCategory" = "Es gibt keine Angebote für diese Kategorie.\nBitte wählen Sie eine andere Kategorie.";
-
-/* Base fare title */
-"Text.Booking.BaseFare" = "Grundtarif";
-
-/* "Your final fare might be affected by tips, tolls, taxes, and other charges." */
-"Text.Booking.BaseFareExplanation" = "Ihr Endpreis kann durch Trinkgelder, Mautgebühren, Steuern und andere Abgaben beeinflusst werden.";
-
-"Text.Booking.BookNow" = "JETZT BUCHEN";
-
-"Text.Booking.CountryCodeSelection.Search" = "Land/Region suchen";
-
-"Text.Booking.EnterDestination" = "Zielort eingeben, um verfügbare Flotten zu sehen";
-
-/* Checkout component */
-"Text.Booking.EstimatedInfoBox" = "Diese Flotte ist ein nicht reguliertes Taxi. Der Kostenvoranschlag ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.). Weitere Informationen entnehmen Sie bitte den Allgemeinen Geschäftsbedingungen der Flotte.";
-
-"Text.Booking.FixedInfoBox" = "Diese Flotte berechnet einen Pauschaltarif. Der Endpreis kann durch Extras (Mautgebühren, Verspätungen usw.) beeinflusst werden, bitte prüfen Sie die Allgemeinen Geschäftsbedingungen der Flotte.";
-
-"Text.Booking.FlightTracking" = "Flugverfolgung";
-
-"Text.Booking.GPSTracking" = "GPS-Ortung";
-
-"Text.Booking.GuestCheckoutFlightNumberPlaceholder" = "Flugnummer (fakultativ)";
-
-/* Guest checkout */
-"Text.Booking.GuestCheckoutPassengerDetailsTitle" = "Passagier-Details";
-
-"Text.Booking.GuestCheckoutPaymentDetailsTitle" = "Zahlungsarten";
-
-"Text.Booking.LearnMore" = "Erfahren Sie mehr";
-
-"Text.Booking.LegalNotice" = "Rechtlicher Hinweis";
-
-"Text.Booking.LegalNoticeLink" = "";
-
-"Text.Booking.LegalNoticeText" = "";
-
-"Text.Booking.LegalNoticeTitle" = "";
-
-"Text.Booking.MaximumLuggages" = "%1$@ Gepäckstücke maximal";
-
-"Text.Booking.MaximumPassengers" = "%1$@ Passagiere maximal";
-
-"Text.Booking.MeteredInfoBox" = "Bei dieser Flotte handelt es sich um ein reguliertes Sammeltaxi. Der Kostenvoranschlag ist eine Schätzung auf der Grundlage der Reisefaktoren (Entfernung, Zeit, etc.).";
-
-/* %1$@ if you have suggestions for local fleets. */
-"Text.Booking.NoAvailabilityBody" = "%1$@ wenn Sie Vorschläge für lokale Flotten haben.";
-
-/* We’re not live here yet! */
-"Text.Booking.NoAvailabilityHeader" = "Wir sind hier noch nicht live!";
-
-/* Get in touch */
-"Text.Booking.NoAvailabilityLink" = "Nehmen Sie Kontakt auf";
-
-"Text.Booking.NoLocationPermissionAlertConfirm" = "Einstellungen";
-
-"Text.Booking.NoLocationPermissionAlertMessage" = "Standortdaten werden benötigt, um Ihren Standort anzuzeigen. Um die Berechtigungseinstellungen zu ändern, gehen Sie bitte zur Registerkarte iOS-Einstellungen und wählen Sie einen neuen Wert.";
-
-"Text.Booking.NoLocationPermissionAlertTitle" = "Erlaubnis erforderlich";
-
-"Text.Booking.Passenger" = "Passagier";
-
-"Text.Booking.PassengerDetails.Add" = "Passagier hinzufügen";
-
-"Text.Booking.PassengerDetails.SaveAction" = "Speichern";
-
-"Text.Booking.PassengerDetails.Subtitle" = "Diese Informationen ermöglichen einen reibungslosen Ablauf Ihrer Fahrt.";
-
-/* Passenger Details */
-"Text.Booking.PassengerDetails.Title" = "Passagier";
-
-/* Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been booked */
-"Text.Booking.PrebookConfirmation" = "Ihre Buchung: von: %1$@\nbis: %2$@\nat: %3$@\nh wurde gebucht";
-
-/* Prebook Done, Fuzzy */
-"Text.Booking.PrebookConfirmed" = "Vormerkung Bestätigt";
-
-/* Ride Details */
-"Text.Booking.PrebookConfirmed.RideDetails" = "Details zur Fahrt";
-
-"Text.Booking.QuoteExpired" = "Grundtarif erloschen";
-
-"Text.Booking.QuoteExpiredMessage" = "Bitte wählen Sie ein neues Angebot, um mit Ihrer Buchung fortzufahren";
-
-/* Booking */
-"Text.Booking.RequestCar" = "BUCHUNG BESTÄTIGEN";
-
-"Text.Booking.RequestingCar" = "Fahrt buchen";
-
-"Text.Booking.RequestReceived" = "Erhaltene Buchung";
-
-/* Accessibility hint for prebook feature entry point */
-"Text.Booking.ScheduleRide" = "Planen Sie die Fahrt";
-
-"Text.Booking.TrainTracking" = "Zugverfolgung";
-
-"Text.Bookings.Alert.CancellationFee.Charge" = "Ihnen wird eine Stornierungsgebühr in Rechnung gestellt, die auf %1$@ geschätzt wird.\n\nMöchten Sie fortfahren?";
-
-"Text.Bookings.Alert.CancellationFee.Continue" = "Möchten Sie fortfahren?";
-
-"Text.Bookings.Alert.CancellationSuccess.Message" = "Ihre Reise wurde erfolgreich storniert.";
-
-"Text.Bookings.Alert.CancellationSuccess.Title" = "Fahrtabsage erfolgreich";
-
-/* "Cancel Ride" button action */
-"Text.Bookings.CancelRide" = "Fahrt abbrechen";
-
-/* "Contact Driver" (button action) */
-"Text.Bookings.ContactDriver" = "Kontakt Fahrer";
-
-/* "Contact Fleet" */
-"Text.Bookings.ContactFleet" = "Kontakt Fahrer";
-
-/* Generic fallback message for trip load failure */
-"Text.Bookings.CouldNotLoadTrips" = "Es konnten keine Reisen geladen werden.";
-
-"Text.Bookings.eta" = "Geschätzte Ankunft";
-
-"Text.Bookings.NewRide" = "NEUE FAHRT";
-
-/* English: "No Trips" used if the booking list screen is empty */
-"Text.Bookings.NoTrips" = "Keine Fahrten";
-
-/* used as a message on the booking screen if the user has no trips. English: "You have no booked trips yet. We can help you get from A to B" */
-"Text.Bookings.NoTripsBookedMessage" = "Sie haben noch keine Fahrten gebucht. Wir können Ihnen helfen, von A nach B zu kommen";
-
-/* "Past" used on past tabs on bookings list */
-"Text.Bookings.Past" = "Vergangene";
-
-"Text.Bookings.price" = "Preis";
-
-"Text.Bookings.Price" = "Preis";
-
-"Text.Bookings.Price.Cancelled" = "Abgebrochen";
-
-"Text.Bookings.Quote" = "Grundtarif";
-
-/* Button for rebooking a ride */
-"Text.Bookings.RebookRide" = "Erneut buchen";
-
-/* "Report Issue" Button */
-"Text.Bookings.ReportIssue" = "Ausgabe melden";
-
-/* "Track Driver" */
-"Text.Bookings.TrackDriver" = "Lokführer";
-
-/* "Track Trip" */
-"Text.Bookings.TrackTrip" = "Bahnfahrt";
-
-"Text.Bookings.TrackTrip.AlertMessage" = "Möchten Sie das Fahrzeug verfolgen?";
-
-"Text.Bookings.TrackTrip.AlertTitle" = "Der Fahrer ist auf dem Weg";
-
-"Text.Bookings.TrackTrip.DismissAction" = "Nein";
-
-"Text.Bookings.TrackTrip.TrackAction" = "Ja";
-
-/* Upcoming: used on upcoming tabs for rides, Fuzzy */
-"Text.Bookings.Upcoming" = "Demnächst";
-
-"Text.Error.Alert.CantSendEmail" = "Kann keine E-Mail-Nachricht senden. Konfigurieren Sie zuerst die Mail-App.";
-
-/* The action button on the force update alert. ie "Update" (this button takes the user to the app store) */
-"Text.Error.Alert.ForceUpdateButton" = "Update";
-
-/* The message when the user needs to update the app. ie. "Please update Karhoo to the latest version." */
-"Text.Error.Alert.ForceUpdateMessage" = "Bitte aktualisieren Sie die App, um fortzufahren.";
-
-/* The title of the alert when user is forced to update ie "App Update Required" */
-"Text.Error.Alert.ForceUpdateTitle" = "Neue Version verfügbar";
-
-"Text.Error.Booking.EnterDestinationToProceed" = "Zielort eingeben, um eine Fahrt zu buchen";
-
-/* Errors */
 "Text.Error.EmailValidationError" = "Überprüfen Sie die korrekte Schreibweise Ihrer E-Mail-Adresse";
-
-/* When the user enters an invalid flight number, Fuzzy */
-"Text.Error.FlightNumberValidationHint" = "Flugnummer";
-
-/* When fetching the user profile fails */
-"Text.Error.GetUserFails" = "Es gab ein Problem beim Abrufen Ihres Profils.";
-
-"Text.Error.LoyaltyModeNotEligibleForPreAuth" = "Der derzeitige Treuemodus kommt nicht für eine Vorabgenehmigung in Frage";
-
-/* Used to explain an unknown error. ie "Oops, something went wrong. Please try again" */
-"Text.Error.NoDetails" = "Ups, da ist etwas schief gelaufen. Bitte versuchen Sie es erneut.";
-
-"Text.Error.NotLoggedIn" = "Sie sind nicht eingeloggt";
-
-"Text.Error.Payment.Alert.ButtonUpdateCard" = "Karte aktualisieren";
-
-"Text.Error.Payment.Alert.Message" = "Wir konnten Ihre Kredit-/Debitkarte nicht autorisieren.";
-
-"Text.Error.Payment.Alert.Title" = "Problem mit der Karte";
-
-"Text.Error.Payment.NoDetails.Message" = "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut oder wählen Sie ein anderes Angebot";
-
-/* Error message when user tries to prebook within the current hour of local time */
-"Text.Error.PrebookingWithinTheHour" = "Vormerkungen können nicht innerhalb der aktuellen Stunde vorgenommen werden.";
-
-/* "Something went wrong" used as a title for error alert */
-"Text.Error.SomethingWentWrong" = "Es ist ein Fehler aufgetreten.";
-
-"Text.Error.UnkownLoyaltyError" = "Es ist ein Fehler aufgetreten. Um Ihre Treuepunkte zu sammeln oder zu verwenden, versuchen Sie es bitte später erneut.";
-
-"Text.Error.UnsupportedCurrency" = "Ein Fehler ist aufgetreten. Die Währung wird nicht unterstützt";
-
-/* Theoretical edge case where the braintree token is missing */
-"Text.Errors.failedToInitialisePaymentSetup" = "Problem mit der Initialisierung von Zahlungen, bitte kontaktieren Sie den Support";
-
-"Text.Errors.InsufficientBalanceForLoyaltyBurning" = "Ihr Guthaben reicht nicht aus, um diese Fahrt zu bezahlen";
-
-"Text.Errors.InvalidPhoneNumber" = "Ungültige Telefonnummer";
-
-"Text.Errors.MissingPhoneNumber" = "Leeres Feld nicht erlaubt";
-
-/* empty table view result */
-"Text.Errors.NoResultsFound" = "Keine Ergebnisse gefunden";
-
-"Text.FeedbackView.addComment" = "Zusätzliche Bemerkungen";
-
-"Text.FeedbackView.app" = "Wie einfach war es für Sie, die App zu benutzen?";
-
-"Text.FeedbackView.pob" = "Wie war Ihre Erfahrung im Taxi (z. B. Sauberkeit des Taxis, Streckenführung und Fahrer)? Wie einfach war es für Sie, die App zu nutzen?";
-
-"Text.FeedbackView.pre_pob" = "Wie war Ihre Erfahrung mit der Suche nach dem Abholort und dem Treffen mit dem Fahrer?";
-
-/* FeedBackView */
-"Text.FeedbackView.quote" = "Wie zufrieden waren Sie mit der Auswahl der Angebote für Ihre Reise (z. B. Flotten, Preise und ETAs)?";
-
-"Text.FleetCapabilities.DriverDetails" = "Angaben zum Fahrer";
-
-"Text.FleetCapabilities.FlightTracking" = "Flugverfolgung";
-
-"Text.FleetCapabilities.GpsTracking" = "GPS-Ortung";
-
-"Text.FleetCapabilities.TrainTracking" = "Zugverfolgung";
-
-"Text.FleetCapabilities.VehicleDetails" = "Fahrzeug-Details";
-
-"Text.Generic.All" = "Alle";
-
-"Text.Generic.Back" = "Zurück";
-
-"Text.Generic.Bookings" = "Buchungen";
-
-/* Localizable.strings,  Karhoo, ,  Copyright © 2020 Karhoo. All rights reserved.,  Generics */
-"Text.Generic.Cancel" = "Abbrechen";
-
-/* English: "cancellation policy" used as an injection in terms and conditions box when requesting a booking */
-"Text.Generic.CancellationPolicy" = "Stornierungsbedingungen";
-
-/* english "Card" (referring to payment card) */
-"Text.Generic.Card" = "Karte";
-
-"Text.Generic.Checked" = "Geprüft";
-
-"Text.Generic.Checkout" = "Zur Kasse";
 
 "Text.Generic.Close" = "Schließen";
 
-"Text.Generic.Comment" = "Kommentar";
-
-"Text.Generic.Comment.Optional" = "Zusätzliche Bemerkungen (Babysitz, Rollstuhl, usw.)";
-
-/* "Completed" */
-"Text.Generic.Completed" = "Abgeschlossen";
-
-"Text.Generic.Continue" = "Weitermachen";
-
-"Text.Generic.Destination" = "Zielort";
-
-"Text.Generic.Dismiss" = "ENTLASSEN";
-
-/* "Edit" used as a button (call to action) */
-"Text.Generic.Edit" = "Bearbeiten";
-
-"Text.Generic.Email" = "Die E-Mail-Adresse";
-
-"Text.Generic.EPrice" = "Geschätzter Preis";
-
-"Text.Generic.Error" = "Fehler";
-
-"Text.Generic.ErrorMessage" = "Ups, da ist etwas schief gelaufen";
-
-/* English: "Estimated" */
-"Text.Generic.Estimated" = "Geschätzt";
-
-"Text.Generic.ETA" = "Geschätzte Ankunft";
-
-"Text.Generic.ETALong" = "Geschätzte Ankunftszeit";
-
-/* Reference to fixed pricing.. English equivalent: "Fixed" */
-"Text.Generic.Fixed" = "Fest";
-
-/* "Got It" (generally used on alert buttons) */
-"Text.Generic.GotIt" = "Ich hab's";
-
-"Text.Generic.Locale" = "de_DE";
-
-"Text.Generic.MeetGreet" = "Treffen und Begrüßung";
-
-/* Metered fare type displayed in quotes list: English: "Metered" */
-"Text.Generic.Metered" = "Taxameter";
-
-"Text.Generic.Minutes" = "Min.";
-
-"Text.Generic.Name" = "Name";
-
-"Text.Generic.No" = "Nein";
-
-"Text.Generic.NoCarsAvailable" = "Leider sind zur Zeit keine Fahrzeuge für Ihre Fahrt verfügbar.\n\nBitte schauen Sie bald wieder vorbei.";
-
-/* The message when the user tries to send feedback but they have no mail account set up on their device: English: "Please set up a mail account on your device" */
-"Text.Generic.NoEmailSetupError" = "Bitte richten Sie ein E-Mail-Konto auf Ihrem Gerät ein";
-
-"Text.Generic.Ok" = "OK";
-
-"Text.Generic.Or" = "ODER";
-
-/* "Payment" used as a button in the side menu to reach all your payment methods */
-"Text.Generic.Payment" = "Bezahlung";
-
-/* "Payments" used as the title of the payment method screen */
-"Text.Generic.Payments" = "Zahlungen";
-
-"Text.Generic.PhoneNumber" = "Telefon-Nummer";
-
-"Text.Generic.Pickup" = "Abholung";
-
-/* English: "Pickup Time" in booking request screen */
-"Text.Generic.PickupTime" = "Abholzeit";
-
-"Text.Generic.Prebook" = "Buchen Sie";
-
-"Text.Generic.Price" = "Preis";
-
-"Text.Generic.PrivacyPolicy" = "Datenschutzrichtlinie";
-
-"Text.Generic.Register" = "Registrieren";
-
-/* english: "creating your Karhoo account". Used in terms conditions construction */
-"Text.Generic.RegisterAccountAction" = "Ihr Karhoo-Konto erstellen";
-
-/* English: "Report Issue" */
-"Text.Generic.ReportIssue" = "Ausgabe melden";
-
-/* String for when trip is initially loaded and no trip state has yet come through. "Requesting" */
-"Text.Generic.Requesting" = "Anfrage an";
-
-/* used in side menu "Rides" */
-"Text.Generic.Rides" = "Fahrten";
-
-/* "Save" used as a button (call to action) */
-"Text.Generic.Save" = "Speichern";
-
-"Text.Generic.SortBy" = "Sortieren nach";
-
-/* english: "status" */
-"Text.Generic.Status" = "Status";
-
-"Text.Generic.Submit" = "UNTERZEICHNUNG";
-
-"Text.Generic.Success" = "Erfolg";
-
-"Text.Generic.Surname" = "Nachname";
-
-"Text.Generic.TermsConditions" = "Geschäftsbedingungen";
-
-"Text.Generic.TermsOfUse" = "Nutzungsbedingungen";
-
-/* "Thanks for your interest" */
-"Text.Generic.Thanks" = "Danke für Ihr Interesse";
-
-/* Booker cancelled */
-"Text.Generic.TripStatus.BookerCancelled" = "Abgebrochen";
-
-/* "Driver Allocation Delay Title" */
-"Text.Generic.TripStatus.DriverAllocationDelay.Message" = "Es dauert länger als gewöhnlich, bis die Flotte einen Fahrer zuweist. Bitte warten Sie, kontaktieren Sie die Flotte oder stornieren Sie und buchen Sie bei einer anderen Flotte neu.";
-
-/* "Driver Allocation Delay Title" */
-"Text.Generic.TripStatus.DriverAllocationDelay.Title" = "Verzögerung bei der Zuteilung";
-
-/* Driver Cancelled */
-"Text.Generic.TripStatus.DriverCancelled" = "Vom Fahrer/Versand storniert";
-
-/* No drivers available */
-"Text.Generic.TripStatus.NoDriversAvailable" = "Keine Treiber verfügbar";
-
-"Text.Generic.Unchecked" = "Nicht angekreuzt";
-
-/* "Unkown" */
-"Text.Generic.Unknown" = "Unbekannt";
-
-"Text.Generic.Yes" = "Ja";
-
-/* Driver Arrived */
-"Text.GenericTripStatus.Arrived" = "Fahrer eingetroffen";
-
-/* "Cancelled" */
-"Text.GenericTripStatus.Cancelled" = "Abgebrochen";
-
-/* "Completed" (trip completed) */
-"Text.GenericTripStatus.Completed" = "Abgeschlossen";
-
-/* Confirmed */
-"Text.GenericTripStatus.Confirmed" = "Bestätigt";
-
-/* "Driver En Route" when a driver is en route */
-"Text.GenericTripStatus.EnRoute" = "Fahrer unterwegs";
-
-/* "Incomplete" */
-"Text.GenericTripStatus.Incomplete" = "Anhängiger Zustand";
-
-/* "On Board" */
-"Text.GenericTripStatus.PassengerOnBoard" = "An Bord";
-
-/* english: requested */
-"Text.GenericTripStatus.Requested" = "Erwünscht";
-
-/* "Pending" */
-"Text.GenericTripStatus.Unknown" = "ausstehend";
-
-"Text.Help.ContactUs.Link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
-
-"Text.Help.FAQ.Link" = "https://taxibookermobile.zendesk.com/hc/en-us";
-
-"Text.KarhooError.Q0001" = "Abholort und Zielort können nicht identisch sein.";
-
-"Text.Loyalty.BalanceTitle" = "BILANTZ: %1$@ PUNKTE";
-
-"Text.Loyalty.BurnNotAllowed" = "Sie dürfen keine Punkte verbrauchen";
-
-"Text.Loyalty.BurnOffSubtitle" = "Sie können Ihre Treuepunkte zur Bezahlung der Fahrt einsetzen";
-
-"Text.Loyalty.BurnOnSubtitle" = "Zahlen Sie %1$@ %2$@ mit %3$@ Treuepunkten";
-
-"Text.Loyalty.BurnTitle" = "Verwenden Sie Ihre Punkte";
-
-"Text.Loyalty.Info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Treuepunkte den gesamten Preis abdecken.";
-
-"Text.Loyalty.PointsEarnedForTrip" = "Am Ende der Fahrt werden Ihrem Kontostand %1$@ Treuepunkte gutgeschrieben";
-
-"Text.Loyalty.Title" = "Treuepunkte";
-
-/* "Add new card" in english used in the payments section of the app. Referring to credit / debit card */
-"Text.Payment.AddPaymentMethod" = "Zahlung hinzufügen";
-
-"Text.Payment.PaymentMethod" = "Ende der Karte";
-
-/* Prebook */
-"Text.Prebook.PrebookPickupTime" = "Abholzeit vormerken";
-
-"Text.Prebook.SetPrebook" = "Abholzeit einstellen";
-
-/* "Booking will be made in local time %1$@" please include %1$@ at the end of the translation as this is where the timezone abbreviation goes */
-"Text.Prebook.TimezoneMessage" = "Die Buchung wird in der Ortszeit der Abholung vorgenommen (%1$@)";
-
-"Text.Quote.FeesAndTaxesIncluded" = "Inklusive Steuern und Gebühren";
-
-"Text.Quote.FreeCancellation" = "Kostenlose Stornierung";
-
-"Text.Quote.FreeCancellationAndKeyword" = "und";
-
-"Text.Quote.FreeCancellationASAP" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
-
-"Text.Quote.FreeCancellationBeforeDriverEnRoute" = "Kostenlose Stornierung bis der Fahrer unterwegs ist";
-
-/* Cancellation info on quotes */
-"Text.Quote.FreeCancellationPrebook" = "Kostenlose Stornierung bis zu %1$@ vor der Abholung";
-
-"Text.Quote.FreeWaitingTime" = "Kostenlose Wartezeit";
-
-"Text.Quote.Results" = "%1$@ Ergebnisse";
-
-"Text.QuoteCategory.Electric" = "Electric";
-
-"Text.QuoteCategory.Exec" = "Exec";
-
-"Text.QuoteCategory.Executive" = "Exekutive";
-
-"Text.QuoteCategory.Moto" = "Moto";
-
-"Text.QuoteCategory.Motorcycle" = "Motorrad";
-
-"Text.QuoteCategory.MPV" = "Großraum";
-
-"Text.QuoteCategory.Saloon" = "Standard";
-
-"Text.QuoteCategory.Taxi" = "Taxi";
-
-"Text.QuoteCell.Details" = "Details";
-
-"Text.QuoteCell.DriverArrival" = "Ankunft des Fahrers";
-
-"Text.Quotes.DriverArrivalTime" = "Ankunftszeit des Fahrers";
-
-"Text.Quotes.ErrorDestinationOrOriginEmptySubtitle" = "Bitte geben Sie sowohl die Abhol- als auch die Rückgabeadresse ein, um auf die Angebote zugreifen zu können.";
-
-"Text.Quotes.ErrorDestinationOrOriginEmptyTitle" = "Die Adresse für die Abholung oder Rückgabe fehlt.";
-
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeSubtitle" = "Bitte wählen Sie eine andere Zeit.";
-
-"Text.Quotes.ErrorNoAvailabilityForTheRequestTimeTitle" = "Keine Verfügbarkeit für die angefragte Zeit.";
-
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsFullText" = "%1$@ Nachrichtenflotten vorschlagen";
-
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaContactUsLinkText" = "Kontaktieren Sie uns";
-
-"Text.Quotes.ErrorNoAvailabilityInRequestedAreaTitle" = "Noch keine Flotten in diesem Gebiet";
-
-"Text.Quotes.ErrorNoResultsForFilterSubtitle" = "Bitte ändern Sie Ihre Filterauswahl.";
-
-"Text.Quotes.ErrorNoResultsForFilterTitle" = "Keine Ergebnisse nach der Filterung.";
-
-"Text.Quotes.ErrorPickupAndDestinationSameSubtitle" = "Bitte ändern Sie eine der Adressen, um Zugang zu den Angeboten zu erhalten";
-
-"Text.Quotes.ErrorPickupAndDestinationSameTitle" = "Die Adressen für die Abholung und Rückgabe sind ähnlich";
-
-"Text.Quotes.Filter" = "Filter";
-
-"Text.Quotes.FilterEcoFriendly" = "Umweltfreundlich";
-
-"Text.Quotes.FilterFleetCapabilities" = "Flottenkapazitäten";
-
-"Text.Quotes.FilterPageResults" = "Alle %1$@ Ergebnisse anzeigen";
-
-"Text.Quotes.FilterQuoteTypes" = "Arten von Zitaten";
-
-"Text.Quotes.FilterServiceAgreements" = "Stornierung und Wartezeit";
-
-"Text.Quotes.FiltersLuggages" = "Gepäckstücke";
-
-"Text.Quotes.FiltersPassengers" = "Passagier(e)";
-
-"Text.Quotes.FilterVehicleClass" = "Fahrzeugklasse";
-
-"Text.Quotes.FilterVehicleExtras" = "Fahrzeug-Extras";
-
-"Text.Quotes.FilterVehicleType" = "Fahrzeugtypen";
-
-"Text.Quotes.ResetFilter" = "Filter zurücksetzen";
-
-"Text.Quotes.Result" = "";
-
-"Text.Quotes.Results" = "%1$@ Ergebnisse";
-
-/* Side Menu "About" section title, Fuzzy */
-"Text.SideMenu.About" = "Über";
-
-"Text.SideMenu.Feedback" = "Rückmeldung";
-
-"Text.SideMenu.Help" = "Hilfe";
-
-/* Side Menu */
-"Text.SideMenu.Login" = "Anmelden";
-
-/* "Profile" button on the side menu */
-"Text.SideMenu.Profile" = "Profil";
-
-/* Register on the side menu */
-"Text.SideMenu.Register" = "Registrieren";
-
-"Text.SideMenu.SignIn" = "Anmelden";
-
-/* Sign Out on the side menu */
-"Text.SideMenu.SignOut" = "Abmeldung";
-
-"Text.SideMenu.Signup" = "Registrieren";
-
-/* In app email to customer support / feedback */
-"Text.SupportMailMessage.Feedback" = "Bitte löschen Sie diese Informationen nicht, da sie uns helfen, die App zu verbessern.";
-
-"Text.SupportMailMessage.FeedbackEmail" = "support@karhoo.com";
-
-"Text.SupportMailMessage.FeedbackSubject" = "Rückmeldung";
-
-"Text.SupportMailMessage.NoCoverageBody" = "Vielen Dank, dass Sie uns einen Fuhrpark in Ihrer Nähe empfehlen. Um die Abdeckung in Ihrem Gebiet so schnell wie möglich zu erhalten, geben Sie uns bitte das Gebiet und den Namen des Transportunternehmens an.\nGebiet:\nFlottenzeit:";
-
-/* No coverage email */
-"Text.SupportMailMessage.NoCoverageSubject" = "Empfehlung für die Flotte";
-
-"Text.SupportMailMessage.ReportIssue" = "Bitte nutzen Sie das folgende Feld, um ein bestimmtes Problem mit Ihrer Fahrt zu melden.";
-
 "Text.SupportMailMessage.ReportIssueSubject" = "Ausgabe melden";
 
-"Text.SupportMailMessage.SupplierEmail" = "suppliers@karhoo.com";
-
-"Text.SupportMailMessage.SupportEmail" = "support@karhoo.com";
-
-/* Used in the checkout component before booking a ride */
-"Text.TermsConditions.BookingFullString" = "Mit der Buchung erklären Sie sich mit den %1$@ | %2$@ und %3$@ %4$@ | %3$@ %5$@ einverstanden.";
-
-"Text.TermsConditions.FullString" = "Mit %1$@ erklären Sie sich mit %2$@ einverstanden.\n%3$@ | %4$@";
-
-"Text.TermsConditions.KarhooPolicyLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
-
-"Text.TermsConditions.KarhooTermsLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
-
-"Text.TermsConditions.PolicyLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
-
-"Text.TermsConditions.TermsLink" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
-
-"Text.TrackingLink.production" = "https://agent-portal.karhoo.com/follow/";
-
-/* Trip Tracking Links */
-"Text.TrackingLink.sandbox" = "https://agent-portal.sandbox.karhoo.com/follow/";
-
-"Text.TrackingLink.staging" = "https://agent-portal.stg.karhoo.net/follow/";
-
-"Text.Trip.ActivityIndicator.Cancelling" = "Abbrechen";
-
-/* "Arrival" displayed on arrival box in trip */
-"Text.Trip.Arrival" = "Anreise";
-
-"Text.Trip.CallDriver" = "Kontakt Fahrer";
-
-/* Call fleet button in trip screen (English: Call Fleet) */
-"Text.Trip.CallFleet" = "Flotte anrufen";
-
-"Text.Trip.CancelBookingConfirmation.Alert.Title" = "Ihre Fahrt absagen?";
-
-/* displayed in the bookings list for an 'as soon as possible booking' prebooks show the date of the prebooks. Asaps show this. English: "ASAP Booking" */
-"Text.Trip.CancelBookingFailed" = "Stornierung nicht bestätigt, bitte rufen Sie den Anbieter an";
-
-"Text.Trip.CancelBookingFailed.AlertCallFleetButton" = "Flotte anrufen";
-
-"Text.Trip.CancelBookingFailed.AlertMessage" = "Wir haben Probleme, Ihre Fahrt zu stornieren. Bitte kontaktieren Sie die Flotte.";
-
-"Text.Trip.CancelBookingFailed.AlertTitle" = "Schwierigkeiten bei der Annullierung";
-
-"Text.Trip.CancelledByDispatch" = "Ihre Buchung wurde storniert.";
-
-"Text.Trip.CancelledByDispatch.AlertMessage" = "Ihre Buchung wurde storniert. Bitte kontaktieren Sie uns für weitere Informationen.";
-
-"Text.Trip.CancelledByDispatch.AlertTitle" = "Von der Flotte annulliert";
-
-"Text.Trip.CancelledByUser" = "Sie haben die Buchung storniert";
-
-/* Trip */
-"Text.Trip.CancelRide" = "Fahrt abbrechen";
-
-"Text.Trip.Completed" = "Sie haben Ihr Ziel erreicht";
-
-"Text.Trip.Confirmed" = "Ihre Buchung wurde angenommen.\nWarten Sie auf die Zuweisung eines Fahrers.";
-
-"Text.Trip.DriverArrived" = "Ihr Fahrer ist angekommen";
-
-"Text.Trip.DriverEnRoute" = "Ihr Fahrer ist auf dem Weg";
-
-/* alert message when karhoo cancel the trip-supposedly happens for preauth failure */
-"Text.Trip.KarhooCancelled.AlertMessage" = "Bei dieser Buchung ist ein Problem aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.";
-
-/* alert title when karhoo cancel the trip-supposedly happens for preauth failure */
-"Text.Trip.KarhooCancelled.AlertTitle" = "Problem Buchung";
-
-"Text.Trip.MessageDriver" = "Nachrichtentreiber";
-
-/* For when demand is too high and there are no drivers available */
-"Text.Trip.NoDriversAvailable" = "Keine Treiber verfügbar";
-
-/* Alert message in popup when dispatch cancels due to no drivers */
-"Text.Trip.NoDriversAvailable.AlertMessage" = "Leider ist die Nachfrage hoch. %1$@ hat keine verfügbaren Fahrer.";
-
-/* Popup title message when dispatch cancels due to no drivers */
-"Text.Trip.NoDriversAvailable.AlertTitle" = "Buchung fehlgeschlagen";
-
-"Text.Trip.PassengerOnBoard" = "Sie sind auf dem Weg. Gute Fahrt!";
-
-/* Trip Statuses */
-"Text.Trip.Requested" = "%1$@ weist Ihnen einen Fahrer zu. Dies kann bis zu 5 Minuten dauern.";
-
-/* Used as a button in the trip screen. English: "Ride Options" */
-"Text.Trip.RideOptions" = "Fahrten-Optionen";
-
-/* Please wait whilst you\'re allocated a driver */
-"Text.TripAllocation.AllocatingTripOne" = "Bitte warten Sie, bis Ihnen ein Fahrer zugewiesen wird.";
-
-/* This may take a moment or two */
-"Text.TripAllocation.AllocatingTripTwo" = "Dies kann einen oder zwei Augenblicke dauern.";
-
-"Text.TripAllocation.CancelInstruction" = "Tippen und halten Sie zum Abbrechen";
-
-"Text.TripAllocation.Cancelling" = "Abbrechen";
-
-/* Finding your ride... */
-"Text.TripAllocation.FindingYourRide" = "Ihr Fahrzeug finden...";
-
-/* Trip Rating */
-"Text.TripRating.Confirmation" = "Vielen Dank für die Abgabe Ihrer Bewertung.";
-
-"Text.TripRating.ExtraFeedback" = "Bitte erzählen Sie uns mehr";
-
-"Text.TripRating.Title" = "Wie würden Sie Ihre Reise bewerten?";
-
-/* Used for the "Book Return Ride" button on the trip summary screen */
-"Text.TripSummary.BookReturnRide" = "Rückfahrt buchen";
-
-/* "Date" */
-"Text.TripSummary.Date" = "Datum";
-
-/* Fleet */
-"Text.TripSummary.Fleet" = "Flotte";
-
-/* "Payment Summary" header used on Trip Summary Screen */
-"Text.TripSummary.PaymentSummary" = "Zusammenfassung der Zahlungen";
-
-/* "Quoted Price": used in trip summary screen when the fare is not available */
-"Text.TripSummary.QuotedPrice" = "Preisangebot";
-
-/* Total Fare */
-"Text.TripSummary.TotalFare" = "Gesamtpreis";
-
-/* "Trip Summary" header used on screen */
-"Text.TripSummary.TripSummary" = "Zusammenfassung der Fahrt";
-
-"Text.TripSummary.Vehicle" = "Fahrzeug";
-
-"Text.User.Email" = "E-Mail";
-
-"Text.User.EmailSubscription" = "Ich möchte keine Freifahrten, Werbeaktionen oder Angebote erhalten";
-
-/* User (register / login / user attributes) */
-"Text.User.FirstName" = "Vorname";
-
-/* Text used on button to trigger password reset... English: Forgotten Password? */
-"Text.User.ForgottenPassword" = "Haben Sie Ihr Passwort vergessen?";
-
-"Text.User.LastName" = "Nachname";
-
-"Text.User.MobilePhoneNumber" = "Nummer des Mobiltelefons";
-
-/* "We will notify you via email once your request has been processed." */
-"Text.User.SignupPendingMessage" = "Wir werden Sie per E-Mail benachrichtigen, sobald Ihr Antrag bearbeitet wurde.";
-
-"Text.VehicleClass.Electric" = "Electric";
-
-"Text.VehicleClass.Exec" = "Exec";
-
-"Text.VehicleClass.Luxury" = "Luxus";
-
-"Text.VehicleClass.Moto" = "Moto";
-
-"Text.VehicleClass.Motorcycle" = "Motorrad";
-
-"Text.VehicleClass.MPV" = "Großraum";
-
-"Text.VehicleClass.Saloon" = "Standard";
-
-"Text.VehicleClass.Taxi" = "Taxi";
-
-"Text.VehicleTag.ChildSeat" = "Kindersitz";
-
-/* Vehicle tags */
-"Text.VehicleTag.Electric" = "Electric";
-
-"Text.VehicleTag.Executive" = "Exekutive";
-
-"Text.VehicleTag.Hybrid" = "Hybrid";
-
-"Text.VehicleTag.Luxury" = "Luxus";
-
-"Text.VehicleTag.Taxi" = "Taxi";
-
-"Text.VehicleTag.Wheelchair" = "Rollstuhl";
-
-"Text.VehicleType.Bus" = "Bus";
-
-"Text.VehicleType.Moto" = "Moto";
-
-"Text.VehicleType.MPV" = "Großraum";
-
-"Text.VehicleType.Standard" = "Standard";
+"Text.VehicleTag.Electric" = "Elektrisch";
 

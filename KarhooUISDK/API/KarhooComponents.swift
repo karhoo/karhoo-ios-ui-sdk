@@ -21,8 +21,8 @@ public class KarhooComponents: BookingScreenComponents {
             cornerRadious: UIConstants.CornerRadius.large,
             borderLine: true,
             dropShadow: false,
-            verticalPadding: 5.0,
-            horizontalPadding: 5.0,
+            verticalPadding: 0,
+            horizontalPadding: 0,
             hidePickUpDestinationConnector: true
         )
 
@@ -39,7 +39,7 @@ public class KarhooComponents: BookingScreenComponents {
     public func quoteList(
         navigationController: UINavigationController,
         journeyDetails: JourneyDetails,
-        onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
     ) -> QuoteListCoordinator {
         KarhooQuoteListCoordinator(
             navigationController: navigationController,

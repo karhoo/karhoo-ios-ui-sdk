@@ -11,7 +11,7 @@ import KarhooSDK
 protocol CheckoutPresenter {
     func load(view: CheckoutView)
     func screenWillAppear()
-    func bookTripPressed()
+    func completeBookingFlow()
     func addOrEditPassengerDetails()
     func addMoreDetails()
     func didAddPassengerDetails()
@@ -20,10 +20,14 @@ protocol CheckoutPresenter {
     func isKarhooUser() -> Bool
     func shouldRequireExplicitTermsAndConditionsAcceptance() -> Bool
     func updateBookButtonWithEnabledState()
+    func didPressPayButton(showRetryAlert: Bool)
 }
 
 protocol CheckoutView: BaseViewController {
     var areTermsAndConditionsAccepted: Bool { get }
+    var currentLoyaltyMode: LoyaltyMode { get }
+    var currentLoyaltyPoints: Int { get }
+    
     func setRequestingState()
     func setRequestedState()
     func setAddFlightDetailsState()
@@ -35,6 +39,7 @@ protocol CheckoutView: BaseViewController {
     func set(price: String?)
     func set(quoteType: String)
     func set(baseFareExplanationHidden: Bool)
+    func set(nonce: Nonce)
     func setAsapState(qta: String?)
     func setPrebookState(timeString: String?, dateString: String?)
     func retryAddPaymentMethod(showRetryAlert: Bool)
@@ -49,14 +54,19 @@ protocol CheckoutView: BaseViewController {
 
 extension CheckoutView {
     func getComments() -> String? {
-        return nil
+        nil
     }
     
     func getFlightNumber() -> String? {
-        return nil
+        nil
     }
     
     func set(quote: Quote, showLoyalty: Bool, loyaltyId: String? = nil) {
         set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
     }
+}
+
+public struct KarhooCheckoutResult {
+    var tripInfo: TripInfo
+    var showTripDetails: Bool = false
 }

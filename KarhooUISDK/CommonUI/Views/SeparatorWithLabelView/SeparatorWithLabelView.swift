@@ -30,7 +30,7 @@ final class SeparatorWithLabelView: UIView {
     private lazy var label = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.accessibilityIdentifier = KHSeparatorWithLabelViewID.label
-        $0.text = UITexts.Generic.or.uppercased()
+        $0.text = UITexts.Loyalty.or.uppercased()
         $0.font = KarhooUI.fonts.captionRegular()
         $0.textColor = KarhooUI.colors.textLabel
     }

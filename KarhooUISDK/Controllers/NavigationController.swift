@@ -36,7 +36,7 @@ final class NavigationController: UINavigationController {
         }
     }
 
-    let style: Style
+    fileprivate(set) var style: Style
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         topViewController?.preferredStatusBarStyle ?? .default
@@ -65,11 +65,15 @@ final class NavigationController: UINavigationController {
         delegate = self
     }
 
-    private func setupDesign() {
+    fileprivate func setupDesign() {
+        let barButtonItemAppearance = UIBarButtonItem.appearance()
+        barButtonItemAppearance.setTitleTextAttributes([.foregroundColor: style.tintColor], for: .normal)
+
         let backArrow = UIImage.uisdkImage("kh_uisdk_back_arrow")
             .withRenderingMode(.alwaysTemplate)
             .withTintColor(style.tintColor)
         navigationController?.navigationBar.barTintColor = style.backgroundColor
+        navigationController?.navigationBar.tintColor = style.tintColor
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = style.backgroundColor
@@ -99,5 +103,13 @@ extension NavigationController: UINavigationControllerDelegate {
         animated: Bool
     ) {
         setNeedsStatusBarAppearanceUpdate()
+    }
+}
+
+extension UINavigationController {
+    func set(style: NavigationController.Style) {
+        let navController = self as? NavigationController
+        navController?.style = style
+        navController?.setupDesign()
     }
 }

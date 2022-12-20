@@ -15,17 +15,18 @@ public protocol ScreenBuilders {
     var ridesScreenBuilder: RidesListScreenBuilder { get }
     var rideDetailsScreenBuilder: RideDetailsScreenBuilder { get }
     var bookingScreenBuilder: BookingScreenBuilder { get }
+    var bookingConfirmationBuilder: BookingConfirmationBuilder { get }
     var tripScreenBuilder: TripScreenBuilder { get }
     var checkoutScreenBuilder: CheckoutScreenBuilder { get }
 }
 
 internal protocol InternalScreenBuilders {
     var tripSummaryScreenBuilder: TripSummaryScreenBuilder { get }
-    var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }
     var sideMenuBuilder: SideMenuBuilder { get }
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder { get }
+    var bottomSheetScreenBuilder: BottomSheetScreenBuilder { get }
 }
 
 final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
@@ -46,10 +47,6 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
         return DatePickerViewController.KarhooDatePickerScreenBuilder()
     }
 
-    var prebookConfirmationScreenBuilder: PrebookConfirmationScreenBuilder {
-        return KarhooPrebookConfirmationViewController.KarhooPrebookConfirmationScreenBuilder()
-    }
-
     var tripSummaryScreenBuilder: TripSummaryScreenBuilder {
         return TripSummaryViewController.KarhooTripSummaryScreenBuilder()
     }
@@ -61,6 +58,10 @@ final class KarhooScreenBuilders: ScreenBuilders, InternalScreenBuilders {
     var tripFeedbackScreenBuilder: TripFeedbackScreenBuilder {
         return KarhooTripFeedbackViewController.KarhooTripFeedbackScreenBuilder()
     }
+    
+    var bottomSheetScreenBuilder: BottomSheetScreenBuilder {
+        return KarhooBottomSheetScreenBuilder()
+    }
 }
 
 /* default public screen builders */
@@ -68,6 +69,10 @@ public extension ScreenBuilders {
 
     var bookingScreenBuilder: BookingScreenBuilder {
         return KarhooBookingScreenBuilder()
+    }
+
+    var bookingConfirmationBuilder: BookingConfirmationBuilder {
+        return KarhooBookingConfirmationBuilder()
     }
 
     var addressBuilder: AddressScreenBuilder {
