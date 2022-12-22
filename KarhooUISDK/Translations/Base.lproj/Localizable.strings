@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pre-authorise";
+"adyen.submitButton" = "Authorise transaction";
 
-"adyen.submitButton.formatted" = "Pre-authorise %@";
+"adyen.submitButton.formatted" = "Authorise transaction";
 
 "continue_button" = "Next";
 
@@ -112,7 +112,7 @@
 
 "kh_uisdk_address_picker_prebook" = "Book";
 
-"kh_uisdk_adyen_payment_error_10" = "The shopper\'s bank does not support or does not allow this type of transaction";
+"kh_uisdk_adyen_payment_error_10" = "The shopper's bank does not support or does not allow this type of transaction";
 
 "kh_uisdk_adyen_payment_error_11" = "3D Secure authentication was not executed, or it did not execute successfully";
 
@@ -148,9 +148,9 @@
 
 "kh_uisdk_adyen_payment_error_27" = "Non-generic error";
 
-"kh_uisdk_adyen_payment_error_28" = "The withdrawal amount permitted for the shopper\'s card has exceeded.";
+"kh_uisdk_adyen_payment_error_28" = "The withdrawal amount permitted for the shopper's card has exceeded.";
 
-"kh_uisdk_adyen_payment_error_29" = "The number of withdrawals permitted for the shopper\'s card has exceeded.";
+"kh_uisdk_adyen_payment_error_29" = "The number of withdrawals permitted for the shopper's card has exceeded.";
 
 "kh_uisdk_adyen_payment_error_3" = "Referrals";
 
@@ -158,19 +158,19 @@
 
 "kh_uisdk_adyen_payment_error_32" = "The address data the shopper entered is incorrect.";
 
-"kh_uisdk_adyen_payment_error_33" = "The shopper\'s bank requires the shopper to enter an online PIN.";
+"kh_uisdk_adyen_payment_error_33" = "The shopper's bank requires the shopper to enter an online PIN.";
 
-"kh_uisdk_adyen_payment_error_34" = "The shopper\'s bank requires a checking account to complete the purchase.";
+"kh_uisdk_adyen_payment_error_34" = "The shopper's bank requires a checking account to complete the purchase.";
 
-"kh_uisdk_adyen_payment_error_35" = "The shopper\'s bank requires a savings account to complete the purchase.";
+"kh_uisdk_adyen_payment_error_35" = "The shopper's bank requires a savings account to complete the purchase.";
 
-"kh_uisdk_adyen_payment_error_36" = "The shopper\'s bank requires the shopper to enter a mobile PIN.";
+"kh_uisdk_adyen_payment_error_36" = "The shopper's bank requires the shopper to enter a mobile PIN.";
 
 "kh_uisdk_adyen_payment_error_37" = "The shopper abandoned the transaction after they attempted a contactless payment and were prompted to try a different card entry method (PIN or swipe).";
 
 "kh_uisdk_adyen_payment_error_38" = "The issuer declined the authentication exemption request and requires authentication for the transaction. Please try again with 3D Secure.";
 
-"kh_uisdk_adyen_payment_error_39" = "The issuer or the scheme wasn\'t able to communicate the outcome via RReq.";
+"kh_uisdk_adyen_payment_error_39" = "The issuer or the scheme wasn't able to communicate the outcome via RReq.";
 
 "kh_uisdk_adyen_payment_error_4" = "The transaction did not go through due to an error that occurred on the acquirer\'s end";
 
@@ -188,7 +188,7 @@
 
 "kh_uisdk_adyen_payment_error_8" = "The specified card number is incorrect or invalid";
 
-"kh_uisdk_adyen_payment_error_9" = "It is not possible to contact the shopper\'s bank to authorise the transaction";
+"kh_uisdk_adyen_payment_error_9" = "It is not possible to contact the shopper's bank to authorise the transaction";
 
 "kh_uisdk_airport_booking_message" = "Please enter a valid flight number";
 
@@ -332,7 +332,7 @@
 
 "kh_uisdk_error" = "Error";
 
-"kh_uisdk_error_invalid_password" = "The email or password you\'ve entered is incorrect";
+"kh_uisdk_error_invalid_password" = "The email or password you've entered is incorrect";
 
 "kh_uisdk_errors_cant_send_email" = "Sorry, the email can't be sent. Please configure your email app first.";
 
@@ -636,7 +636,7 @@
 
 "kh_uisdk_loyalty_info_add_points" = "%@ loyalty points will be added to your account balance at the end of the ride";
 
-"kh_uisdk_loyalty_info_remove_points" = "%@ loyalty points will be deducted from your account balance at the end of the %@ loyalty points will be deducted from your account balance at the end of the ride";
+"kh_uisdk_loyalty_info_remove_points" = "%@ loyalty points will be deducted from your account balance at the end of the ride";
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Sorry, you don’t have enough Reward points";
 
@@ -1088,7 +1088,7 @@
 
 "Text.Generic.Close" = "Close";
 
-"Text.SupportMailMessage.ReportIssueSubject" = "Report Issue";
+"Text.SupportMailMessage.ReportIssueSubject" = "Report issue";
 
 "Text.VehicleTag.Electric" = "Electric";
 

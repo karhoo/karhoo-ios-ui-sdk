@@ -1,96 +1,96 @@
-"adyen.submitButton" = "";
+"adyen.submitButton" = "อนุมัติธุรกรรม";
 
-"adyen.submitButton.formatted" = "";
+"adyen.submitButton.formatted" = "อนุมัติธุรกรรม";
 
-"continue_button" = "";
+"continue_button" = "ถัดไป";
 
-"K0001" = "";
+"K0001" = "ข้อผิดพลาดทั่วไปเกี่ยวกับคำขอ";
 
-"K0002" = "";
+"K0002" = "เพย์โหลดคำขอไม่ถูกต้อง";
 
-"K0003" = "";
+"K0003" = "ไม่สามารถอ่านโทเค็นการตรวจสอบสิทธิ์ได้";
 
-"K0004" = "";
+"K0004" = "ต้องมีการตรวจสอบสิทธิ์สำหรับเส้นทางนี้";
 
-"K0005" = "";
+"K0005" = "ไม่มีบทบาทที่จำเป็นสำหรับคำขอนี้";
 
-"K0006" = "";
+"K0006" = "เกินขีดจำกัดอัตรา";
 
-"K0007" = "";
+"K0007" = "เบรกเกอร์ทำงานสำหรับเส้นทางนี้";
 
-"K1001" = "";
+"K1001" = "ไม่สามารถลงทะเบียนผู้ใช้";
 
-"K1003" = "";
+"K1003" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (คำขอไม่ถูกต้อง)";
 
-"K1004" = "";
+"K1004" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (หมายเลขโทรศัพท์ไม่ถูกต้อง)";
 
-"K1005" = "";
+"K1005" = "ไม่สามารถรับรายละเอียดผู้ใช้ (โทเค็นไม่ถูกต้อง)";
 
-"K1006" = "";
+"K1006" = "ไม่สามารถรับรายละเอียดผู้ใช้ (ไม่มีผู้ใช้)";
 
-"K2001" = "";
+"K2001" = "ไม่สามารถหาที่อยู่";
 
-"K3001" = "";
+"K3001" = "ไม่สามารถรับค่าประมาณได้";
 
-"K3003" = "";
+"K3003" = "ไม่สามารถรับค่าประมาณ (ไม่พบใบเสนอราคาที่ระบุ)";
 
-"K4001" = "";
+"K4001" = "จองทริปไม่ได้";
 
-"K4002" = "";
+"K4002" = "จองการเดินทางไม่ได้ - คำขอน้ำหนักบรรทุกไม่ถูกต้อง (ต้องมีรายละเอียดผู้โดยสารอย่างน้อย 1 ชุด)";
 
-"K4003" = "";
+"K4003" = "ไม่สามารถจองทริปได้ (ไม่พบใบเสนอราคาที่ระบุ)";
 
-"K4004" = "";
+"K4004" = "ไม่สามารถจองการเดินทางได้ (พยายามจองใบเสนอราคาที่หมดอายุ)";
 
-"K4005" = "";
+"K4005" = "ไม่สามารถจองทริปได้ (ถูกปฏิเสธ)";
 
-"K4006" = "";
+"K4006" = "ไม่สามารถจองการเดินทางได้ (การอนุมัติการชำระเงินล่วงหน้าล้มเหลว)";
 
-"K4007" = "";
+"K4007" = "ยกเลิกการเดินทางไม่ได้";
 
-"K4008" = "";
+"K4008" = "ยกเลิกการเดินทางไม่ได้ (ไม่พบการเดินทางที่ระบุ)";
 
-"K4009" = "";
+"K4009" = "ยกเลิกการเดินทางไม่ได้ (ถูกปฏิเสธ)";
 
-"K4010" = "";
+"K4010" = "ไม่สามารถยกเลิกการเดินทางได้ (ยกเลิกไปแล้ว)";
 
-"K4011" = "";
+"K4011" = "ยกเลิกการเดินทางไม่ได้";
 
-"K4012" = "";
+"K4012" = "ไม่สามารถเดินทางได้ (ไม่พบการเดินทางที่ระบุ)";
 
-"K4013" = "";
+"K4013" = "ไม่สามารถเดินทางได้ (ถูกปฏิเสธ)";
 
-"K4014" = "";
+"K4014" = "จองทริปเป็นตัวแทนไม่ได้";
 
-"K4018" = "";
+"K4018" = "ไม่สามารถจองทริปได้เนื่องจากไม่มีใบเสนอราคานี้แล้ว";
 
-"K4020" = "";
+"K4020" = "ไม่สามารถจองการเดินทางด้วย DMS ที่เลือกได้";
 
-"K5001" = "";
+"K5001" = "ไม่สามารถรับค่าประมาณได้";
 
-"K5002" = "";
+"K5002" = "ไม่สามารถรับห้องว่างได้ (ไม่พบห้องว่างภายในพื้นที่ที่ร้องขอ)";
 
-"K5003" = "";
+"K5003" = "ไม่สามารถหาห้องว่างได้ (ไม่พบหมวดหมู่ภายในพื้นที่ที่ร้องขอ)";
 
 "kh_uisdk_about" = "เกี่ยวกับ";
 
-"kh_uisdk_acc_close_button" = "";
+"kh_uisdk_acc_close_button" = "ปิดหน้าจอ";
 
-"kh_uisdk_acc_destination_address" = "";
+"kh_uisdk_acc_destination_address" = "ที่อยู่ปลายทาง";
 
-"kh_uisdk_acc_loyalty_information" = "";
+"kh_uisdk_acc_loyalty_information" = "รายละเอียดคนขับ";
 
-"kh_uisdk_acc_pickup_address" = "";
+"kh_uisdk_acc_pickup_address" = "ที่อยู่ขาออก";
 
-"kh_uisdk_acc_pickup_time" = "";
+"kh_uisdk_acc_pickup_time" = "เวลารับ";
 
-"kh_uisdk_acc_ride_details" = "";
+"kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
 
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 
-"kh_uisdk_add_comment_placeholder" = "";
+"kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";
 
-"kh_uisdk_add_flight_details" = "";
+"kh_uisdk_add_flight_details" = "หมายเลขเที่ยวบิน (ไม่บังคับ)";
 
 "kh_uisdk_additional_comments" = "ความคิดเห็นเพิ่มเติม (ที่นั่งเด็ก เก้าอี้รถเข็น ฯลฯ)";
 
@@ -100,7 +100,7 @@
 
 "kh_uisdk_address_picker_add_pickup" = "เพิ่มสถานที่รับ";
 
-"kh_uisdk_address_picker_destination_title" = "";
+"kh_uisdk_address_picker_destination_title" = "ตำแหน่งปลายทาง";
 
 "kh_uisdk_address_picker_dropoff_booking" = "เพิ่มตำแหน่งปลายทาง";
 
@@ -108,31 +108,31 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "ป้อนสถานที่รับ";
 
-"kh_uisdk_address_picker_pickup_title" = "";
+"kh_uisdk_address_picker_pickup_title" = "ไปรับ";
 
-"kh_uisdk_address_picker_prebook" = "";
+"kh_uisdk_address_picker_prebook" = "จอง";
 
-"kh_uisdk_adyen_payment_error_10" = "";
+"kh_uisdk_adyen_payment_error_10" = "ธนาคารของนักช้อปไม่รองรับหรือไม่อนุญาตให้ทำธุรกรรมประเภทนี้";
 
-"kh_uisdk_adyen_payment_error_11" = "";
+"kh_uisdk_adyen_payment_error_11" = "การตรวจสอบสิทธิ์ 3D Secure ไม่ได้ดำเนินการ หรือดำเนินการไม่สำเร็จ";
 
-"kh_uisdk_adyen_payment_error_12" = "";
+"kh_uisdk_adyen_payment_error_12" = "บัตรไม่มีเงินพอที่จะครอบคลุมจำนวนเงินที่ต้องชำระ";
 
-"kh_uisdk_adyen_payment_error_14" = "";
+"kh_uisdk_adyen_payment_error_14" = "การฉ้อโกงที่เป็นไปได้";
 
-"kh_uisdk_adyen_payment_error_15" = "";
+"kh_uisdk_adyen_payment_error_15" = "ธุรกรรมถูกยกเลิก";
 
-"kh_uisdk_adyen_payment_error_16" = "";
+"kh_uisdk_adyen_payment_error_16" = "นักช้อปได้ยกเลิกการทำธุรกรรมก่อนที่จะเสร็จสิ้น";
 
-"kh_uisdk_adyen_payment_error_17" = "";
+"kh_uisdk_adyen_payment_error_17" = "หมายเลขบัตรที่ระบุไม่ถูกต้องหรือไม่ถูกต้อง";
 
-"kh_uisdk_adyen_payment_error_18" = "";
+"kh_uisdk_adyen_payment_error_18" = "ผู้ซื้อระบุ PIN ที่ไม่ถูกต้องมากกว่าสามครั้งติดต่อกัน";
 
-"kh_uisdk_adyen_payment_error_19" = "";
+"kh_uisdk_adyen_payment_error_19" = "ไม่สามารถตรวจสอบหมายเลข PIN ที่ระบุได้";
 
-"kh_uisdk_adyen_payment_error_2" = "";
+"kh_uisdk_adyen_payment_error_2" = "ธุรกรรมถูกปฏิเสธ";
 
-"kh_uisdk_adyen_payment_error_20" = "";
+"kh_uisdk_adyen_payment_error_20" = "การตรวจสอบความเสี่ยงในการอนุมัติล่วงหน้าส่งผลให้มีคะแนนการฉ้อโกงตั้งแต่ 100 คะแนนขึ้นไป ดังนั้นธุรกรรมดังกล่าวจึงถูกตั้งค่าสถานะเป็นการฉ้อโกงและถูกปฏิเสธ";
 
 "kh_uisdk_adyen_payment_error_21" = "ส่งธุรกรรมสำหรับการประมวลผลไม่ถูกต้อง";
 
@@ -148,31 +148,31 @@
 
 "kh_uisdk_adyen_payment_error_27" = "ข้อผิดพลาดที่ไม่ใช่แบบทั่วไป";
 
-"kh_uisdk_adyen_payment_error_28" = "";
+"kh_uisdk_adyen_payment_error_28" = "เกินจำนวนเงินที่อนุญาตสำหรับบัตรนักช้อป";
 
-"kh_uisdk_adyen_payment_error_29" = "";
+"kh_uisdk_adyen_payment_error_29" = "จำนวนการถอนที่อนุญาตสำหรับบัตรนักช้อปเกินแล้ว";
 
-"kh_uisdk_adyen_payment_error_3" = "";
+"kh_uisdk_adyen_payment_error_3" = "การอ้างอิง";
 
 "kh_uisdk_adyen_payment_error_31" = "ผู้ออกบัตรรายงานธุรกรรมว่าอาจเป็นการฉ้อโกง";
 
-"kh_uisdk_adyen_payment_error_32" = "";
+"kh_uisdk_adyen_payment_error_32" = "ข้อมูลที่อยู่ที่นักช้อปป้อนไม่ถูกต้อง";
 
-"kh_uisdk_adyen_payment_error_33" = "";
+"kh_uisdk_adyen_payment_error_33" = "ธนาคารของนักช้อปกำหนดให้นักช็อปป้อน PIN ออนไลน์";
 
-"kh_uisdk_adyen_payment_error_34" = "";
+"kh_uisdk_adyen_payment_error_34" = "ธนาคารของนักช้อปต้องมีบัญชีเช็คเพื่อดำเนินการซื้อให้เสร็จสมบูรณ์";
 
-"kh_uisdk_adyen_payment_error_35" = "";
+"kh_uisdk_adyen_payment_error_35" = "ธนาคารของนักช้อปต้องมีบัญชีออมทรัพย์เพื่อดำเนินการซื้อให้เสร็จสมบูรณ์";
 
-"kh_uisdk_adyen_payment_error_36" = "";
+"kh_uisdk_adyen_payment_error_36" = "ธนาคารของนักช้อปกำหนดให้นักช็อปป้อน PIN มือถือ";
 
-"kh_uisdk_adyen_payment_error_37" = "";
+"kh_uisdk_adyen_payment_error_37" = "นักช้อปยกเลิกการทำธุรกรรมหลังจากพยายามชำระเงินแบบไม่ต้องสัมผัส และได้รับแจ้งให้ลองใช้วิธีการป้อนบัตรแบบอื่น (PIN หรือรูด)";
 
 "kh_uisdk_adyen_payment_error_38" = "ผู้ออกบัตรปฏิเสธคำขอยกเว้นการตรวจสอบสิทธิ์ และต้องมีการตรวจสอบสิทธิ์สำหรับธุรกรรมนี้ โปรดลองอีกครั้งด้วย 3D Secure";
 
-"kh_uisdk_adyen_payment_error_39" = "";
+"kh_uisdk_adyen_payment_error_39" = "ผู้ออกหรือโครงการไม่สามารถสื่อสารผลลัพธ์ผ่าน RReq";
 
-"kh_uisdk_adyen_payment_error_4" = "";
+"kh_uisdk_adyen_payment_error_4" = "ธุรกรรมไม่ผ่านเนื่องจากเกิดข้อผิดพลาดที่ฝั่งผู้ซื้อ";
 
 "kh_uisdk_adyen_payment_error_40" = "ไม่สามารถเชื่อมต่อกับผู้ให้บริการชำระเงินได้ โปรดลองทำธุรกรรมใหม่ด้วยวิธีการชำระเงินอื่น";
 
@@ -180,17 +180,17 @@
 
 "kh_uisdk_adyen_payment_error_42" = "ตรวจสอบสิทธิ์ 3D Secure ไม่สำเร็จเนื่องจากปัญหาที่เครือข่ายหรือผู้ออกบัตร โปรดลองทำธุรกรรมอีกครั้ง หรือลองวิธีการชำระเงินอื่น";
 
-"kh_uisdk_adyen_payment_error_5" = "";
+"kh_uisdk_adyen_payment_error_5" = "บัตรที่ใช้ทำรายการถูกบล็อค ใช้งานไม่ได้";
 
-"kh_uisdk_adyen_payment_error_6" = "";
+"kh_uisdk_adyen_payment_error_6" = "บัตรที่ใช้ทำรายการหมดอายุ จึงใช้ไม่ได้";
 
-"kh_uisdk_adyen_payment_error_7" = "";
+"kh_uisdk_adyen_payment_error_7" = "จำนวนเงินไม่ตรงกันเกิดขึ้นระหว่างกระบวนการธุรกรรม";
 
-"kh_uisdk_adyen_payment_error_8" = "";
+"kh_uisdk_adyen_payment_error_8" = "หมายเลขบัตรที่ระบุไม่ถูกต้องหรือไม่ถูกต้อง";
 
-"kh_uisdk_adyen_payment_error_9" = "";
+"kh_uisdk_adyen_payment_error_9" = "ไม่สามารถติดต่อธนาคารของนักช้อปเพื่ออนุมัติการทำธุรกรรมได้";
 
-"kh_uisdk_airport_booking_message" = "";
+"kh_uisdk_airport_booking_message" = "โปรดป้อนหมายเลขเที่ยวบินที่ถูกต้อง";
 
 "kh_uisdk_allocating_trip_one" = "โปรดรอขณะที่เรากำลังมอบหมายคนขับ";
 
@@ -286,11 +286,11 @@
 
 "kh_uisdk_contact_us" = "ติดต่อเรา";
 
-"kh_uisdk_contact_us_link" = "";
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "kh_uisdk_continue_journey" = "ดำเนินการต่อ";
 
-"kh_uisdk_could_not_load_trips" = "";
+"kh_uisdk_could_not_load_trips" = "ไม่สามารถโหลดการเดินทาง";
 
 "kh_uisdk_country_search" = "ค้นหาประเทศ/ภูมิภาค";
 
@@ -332,7 +332,7 @@
 
 "kh_uisdk_error" = "ความผิดพลาด";
 
-"kh_uisdk_error_invalid_password" = "";
+"kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
 
 "kh_uisdk_errors_cant_send_email" = "ขออภัย ไม่สามารถส่งอีเมลได้ โปรดกำหนดค่าแอปเมลของคุณก่อน";
 
@@ -360,15 +360,15 @@
 
 "kh_uisdk_exec" = "รถผู้บริหาร";
 
-"kh_uisdk_extra_capabilities" = "";
+"kh_uisdk_extra_capabilities" = "+%d";
 
-"kh_uisdk_faq_link" = "";
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
 "kh_uisdk_faretype_info_base" = "ค่าโดยสารสุดท้ายของคุณอาจได้รับผลกระทบ\nจากค่าทิป ค่าผ่านทาง ภาษี และค่าใช้จ่ายอื่นๆ";
 
 "kh_uisdk_feedback" = "ความคิดเห็น";
 
-"kh_uisdk_feedback_email" = "";
+"kh_uisdk_feedback_email" = "support@karhoo.com";
 
 "kh_uisdk_feedback_submitted" = "ขอขอบคุณที่ส่งความคิดเห็นของคุณ";
 
@@ -454,9 +454,9 @@
 
 "kh_uisdk_flight_tracking" = "การติดตามเที่ยวบิน";
 
-"kh_uisdk_forgotten_password" = "";
+"kh_uisdk_forgotten_password" = "ลืมรหัสผ่าน?";
 
-"kh_uisdk_free_cancellation_asap" = "";
+"kh_uisdk_free_cancellation_asap" = "ยกเลิกฟรีไม่เกิน %1$@ หลังการจอง";
 
 "kh_uisdk_got_it" = "เข้าใจแล้ว";
 
@@ -470,11 +470,11 @@
 
 "kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
 
-"kh_uisdk_hours_plural.one" = "";
+"kh_uisdk_hours_plural.one" = "%d ชั่วโมง";
 
-"kh_uisdk_hours_plural.other" = "";
+"kh_uisdk_hours_plural.other" = "%d ชั่วโมง";
 
-"kh_uisdk_hours_plural.zero" = "";
+"kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
 
 "kh_uisdk_info" = "ข้อมูล";
 
@@ -496,23 +496,23 @@
 
 "kh_uisdk_K0004" = "ต้องมีการตรวจสอบสิทธิ์สำหรับเส้นทางนี้";
 
-"kh_uisdk_K0005" = "";
+"kh_uisdk_K0005" = "ไม่มีบทบาทที่จำเป็นสำหรับคำขอนี้";
 
 "kh_uisdk_K0006" = "เกินขีดจำกัดอัตรา";
 
-"kh_uisdk_K0007" = "";
+"kh_uisdk_K0007" = "เบรกเกอร์ทำงานสำหรับเส้นทางนี้";
 
-"kh_uisdk_K1001" = "";
+"kh_uisdk_K1001" = "ไม่สามารถลงทะเบียนผู้ใช้";
 
-"kh_uisdk_K1003" = "";
+"kh_uisdk_K1003" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (คำขอไม่ถูกต้อง)";
 
-"kh_uisdk_K1004" = "";
+"kh_uisdk_K1004" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (หมายเลขโทรศัพท์ไม่ถูกต้อง)";
 
-"kh_uisdk_K1005" = "";
+"kh_uisdk_K1005" = "ไม่สามารถรับรายละเอียดผู้ใช้ (โทเค็นไม่ถูกต้อง)";
 
-"kh_uisdk_K1006" = "";
+"kh_uisdk_K1006" = "ไม่สามารถรับรายละเอียดผู้ใช้ (ไม่มีผู้ใช้)";
 
-"kh_uisdk_K1999" = "";
+"kh_uisdk_K1999" = "สร้างผู้ใช้แล้ว แต่ยังไม่ได้รับอนุญาต เราจะติดต่อกลับเมื่อเปิดใช้งาน";
 
 "kh_uisdk_K2001" = "ไม่สามารถหาที่อยู่";
 
@@ -530,7 +530,7 @@
 
 "kh_uisdk_K4004" = "เราไม่สามารถจองการเดินทางนี้ได้ (ราคาหมดอายุแล้ว)";
 
-"kh_uisdk_K4005" = "";
+"kh_uisdk_K4005" = "ไม่สามารถจองทริปได้ (ถูกปฏิเสธ)";
 
 "kh_uisdk_K4006" = "เราไม่สามารถจองการเดินทางนี้ได้ (ไม่สามารถกันวงเงินบัตรการชำระเงินได้)";
 
@@ -538,7 +538,7 @@
 
 "kh_uisdk_K4008" = "เราไม่สามารถยกเลิกการเดินทางได้ (ไม่พบการเดินทาง)";
 
-"kh_uisdk_K4009" = "";
+"kh_uisdk_K4009" = "ยกเลิกการเดินทางไม่ได้ (ถูกปฏิเสธ)";
 
 "kh_uisdk_K4010" = "เราไม่สามารถยกเลิกการเดินทางได้ (ยกเลิกการเดินทางแล้ว)";
 
@@ -546,11 +546,11 @@
 
 "kh_uisdk_K4012" = "ไม่สามารถหาการเดินทางได้ (ไม่พบการเดินทาง)";
 
-"kh_uisdk_K4013" = "";
+"kh_uisdk_K4013" = "ไม่สามารถเดินทางได้ (ถูกปฏิเสธ)";
 
-"kh_uisdk_K4014" = "";
+"kh_uisdk_K4014" = "จองทริปเป็นตัวแทนไม่ได้";
 
-"kh_uisdk_K4015" = "";
+"kh_uisdk_K4015" = "ไม่สามารถจองทริปในฐานะนักเดินทางได้";
 
 "kh_uisdk_K4018" = "เราไม่สามารถจองการเดินทางนี้ได้ (ราคาไม่พร้อมให้บริการแล้ว)";
 
@@ -570,17 +570,17 @@
 
 "kh_uisdk_karhoo_cancelled_alert_title" = "เกิดปัญหาในการจอง";
 
-"kh_uisdk_karhoo_general_terms_url" = "";
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
 
-"kh_uisdk_karhoo_id" = "";
+"kh_uisdk_karhoo_id" = "Karhoo ID";
 
 "kh_uisdk_karhoo_privacy_policy" = "นโยบายความเป็นส่วนตัว";
 
-"kh_uisdk_karhoo_privacy_policy_url" = "";
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
 
-"kh_uisdk_KP001" = "";
+"kh_uisdk_KP001" = "ไม่สามารถถอดรหัสเนื้อหาคำขอได้";
 
-"kh_uisdk_KP002" = "";
+"kh_uisdk_KP002" = "องค์กรหลักสำหรับผู้ใช้ไม่ใช่ UUID";
 
 "kh_uisdk_KP003" = "ไม่พบวิธีการชำระเงินเริ่มต้น";
 
@@ -588,17 +588,17 @@
 
 "kh_uisdk_KP005" = "ต้องกำหนดข้อมูลเบราว์เซอร์เพื่อบังคับใช้ 3DS";
 
-"kh_uisdk_KP006" = "";
+"kh_uisdk_KP006" = "ต้องกำหนด URL ที่ส่งคืนเพื่อบังคับใช้ 3DS";
 
-"kh_uisdk_KP007" = "";
+"kh_uisdk_KP007" = "ไม่มีรหัสการเดินทาง";
 
-"kh_uisdk_KP008" = "";
+"kh_uisdk_KP008" = "ไม่มีผู้ใช้";
 
-"kh_uisdk_KP009" = "";
+"kh_uisdk_KP009" = "องค์กรหลักไม่ได้ลงทะเบียน";
 
-"kh_uisdk_KP010" = "";
+"kh_uisdk_KP010" = "จำนวนเงินไม่ดี";
 
-"kh_uisdk_KP011" = "";
+"kh_uisdk_KP011" = "แยกเงินไม่ดี";
 
 "kh_uisdk_label_and" = "และ";
 
@@ -632,9 +632,9 @@
 
 "kh_uisdk_loyalty_info" = "เราต้องใช้บัตรของคุณเพื่ออนุมัติการทำธุรกรรมนี้เผื่อกรณีที่ราคาสุดท้ายของการเดินทางเกินยอดคะแนนสะสมของคุณ บัญชีของคุณจะไม่ถูกเรียกเก็บเงินหากคะแนนสะสมเพียงพอสำหรับค่าเดินทาง";
 
-"kh_uisdk_loyalty_info_add_points" = "";
+"kh_uisdk_loyalty_info_add_points" = "คะแนนความภักดี %@ จะเพิ่มไปยังยอดเงินในบัญชีของคุณเมื่อสิ้นสุดการเดินทาง";
 
-"kh_uisdk_loyalty_info_remove_points" = "";
+"kh_uisdk_loyalty_info_remove_points" = "คะแนนความภักดี %@ จะถูกหักออกจากยอดเงินในบัญชีของคุณเมื่อสิ้นสุดการเดินทาง";
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "ขออภัย ยอดคะแนนสะสมของคุณไม่เพียงพอ";
 
@@ -674,11 +674,11 @@
 
 "kh_uisdk_minutes_plurals.zero" = "%d นาที";
 
-"kh_uisdk_minutes_plurals.one" = "";
+"kh_uisdk_minutes_plurals.one" = "%d นาที";
 
-"kh_uisdk_minutes_plurals.other" = "";
+"kh_uisdk_minutes_plurals.other" = "%d นาที";
 
-"kh_uisdk_minutes_plurals.zero" = "";
+"kh_uisdk_minutes_plurals.zero" = "%d นาที";
 
 "kh_uisdk_mobile_phone_number_hint" = "หมายเลขโทรศัพท์มือถือ";
 
@@ -708,7 +708,7 @@
 
 "kh_uisdk_no_quotes_in_selected_category" = "ขออภัย ไม่สามารถหายานพาหนะที่พร้อมให้บริการในหมวดหมู่นี้ได้ โปรดเลือกหมวดหมู่อื่น";
 
-"kh_uisdk_no_trips" = "";
+"kh_uisdk_no_trips" = "ไม่มีการเดินทาง";
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "ใบรับรอง SSL ไม่ถูกต้อง";
 
@@ -720,7 +720,7 @@
 
 "kh_uisdk_origin_book_error" = "คุณต้องเลือกสถานที่รับเพื่อจองการเดินทาง";
 
-"kh_uisdk_P0001" = "";
+"kh_uisdk_P0001" = "ไม่สามารถเรียก UserID จาก token";
 
 "kh_uisdk_P0002" = "ไม่สามารถเชื่อมต่อกับผู้ให้บริการชำระเงินได้";
 
@@ -784,7 +784,7 @@
 
 "kh_uisdk_price_meet_and_greet" = "รอรับภายในอาคาร";
 
-"kh_uisdk_production_link" = "";
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "โปรไฟล์";
 
@@ -808,7 +808,7 @@
 
 "kh_uisdk_quote_cancellation_before_pickup_ending" = "ก่อนเวลารับ";
 
-"kh_uisdk_quote_cancellation_before_pickup_ios" = "";
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "ยกเลิกฟรีไม่เกิน %1$@ ก่อนเวลารับ";
 
 "kh_uisdk_quote_cancellation_before_pickup_start" = "ยกเลิกฟรีไม่เกิน";
 
@@ -828,15 +828,15 @@
 
 "kh_uisdk_quotes_error_no_availability_title" = "เราไม่พบยานพาหนะที่พร้อมให้บริการตามเวลาที่ระบุ";
 
-"kh_uisdk_quotes_error_no_coverage_subtitle" = "";
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ เพื่อแนะนำกองข่าว";
 
-"kh_uisdk_quotes_error_no_coverage_title" = "";
+"kh_uisdk_quotes_error_no_coverage_title" = "ยังไม่มีกองเรือในบริเวณนี้";
 
 "kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "โปรดลองตัวกรองอื่น";
 
 "kh_uisdk_quotes_error_no_results_after_filter_title" = "ไม่พบผลการค้นหาด้วยตัวกรองดังกล่าว";
 
-"kh_uisdk_quotes_error_no_results_found" = "";
+"kh_uisdk_quotes_error_no_results_found" = "ขออภัย การจองโดยเร็วยังไม่พร้อมให้บริการสำหรับจุดหมายปลายทางนี้ แต่คุณสามารถจองล่วงหน้าสำหรับการเดินทางครั้งต่อไปได้!";
 
 "kh_uisdk_quotes_error_similar_addresses_subtitle" = "สถานที่รับและสถานที่ส่งดูคล้ายกัน";
 
@@ -844,9 +844,9 @@
 
 "kh_uisdk_quotes_no_availability" = "เรายังไม่ได้ให้บริการที่นี่!";
 
-"kh_uisdk_quotes_no_availability_subtitle" = "";
+"kh_uisdk_quotes_no_availability_subtitle" = "กรุณาเลือกเวลาอื่น";
 
-"kh_uisdk_quotes_no_availability_title" = "";
+"kh_uisdk_quotes_no_availability_title" = "ไม่ว่างตามเวลาที่ขอ";
 
 "kh_uisdk_rate_trip_label" = "คุณจะให้คะแนนการเดินทางของคุณอย่างไร";
 
@@ -856,7 +856,7 @@
 
 "kh_uisdk_recents_empty" = "ไม่มีผลการค้นหาล่าสุด";
 
-"kh_uisdk_register" = "";
+"kh_uisdk_register" = "สมัครสมาชิก";
 
 "kh_uisdk_report_issue" = "รายงานปัญหา";
 
@@ -872,13 +872,13 @@
 
 "kh_uisdk_reset_filter" = "รีเซ็ตตัวกรอง";
 
-"kh_uisdk_result" = "";
+"kh_uisdk_result" = "ผลการค้นหา %1$@ รายการ";
 
 "kh_uisdk_results" = "ผลการค้นหา";
 
 "kh_uisdk_results_empty" = "ขออภัย ไม่พบผลการค้นหา";
 
-"kh_uisdk_results_ios" = "";
+"kh_uisdk_results_ios" = "%1$@ ผลลัพธ์";
 
 "kh_uisdk_retrieving_dropoff" = "กำลังเรียกดูสถานที่ส่ง";
 
@@ -912,13 +912,13 @@
 
 "kh_uisdk_saloon" = "รถเก๋ง";
 
-"kh_uisdk_sandbox_link" = "";
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
 
 "kh_uisdk_save" = "บันทึก";
 
 "kh_uisdk_schedule_ride" = "กำหนดการเดินทาง";
 
-"kh_uisdk_set_on_map" = "";
+"kh_uisdk_set_on_map" = "กำหนดบนแผนที่";
 
 "kh_uisdk_set_prebook_time" = "ตั้งเวลารับ";
 
@@ -930,9 +930,9 @@
 
 "kh_uisdk_sign_out" = "ออกจากระบบ";
 
-"kh_uisdk_signup_email_subscribe_copy" = "";
+"kh_uisdk_signup_email_subscribe_copy" = "ฉันไม่ต้องการรับการขี่ฟรี โปรโมชัน หรือข้อเสนอ";
 
-"kh_uisdk_signup_pending_message" = "";
+"kh_uisdk_signup_pending_message" = "เราจะแจ้งให้คุณทราบทางอีเมลเมื่อคำขอของคุณได้รับการประมวลผลแล้ว";
 
 "kh_uisdk_something_went_wrong" = "เกิดข้อผิดพลาด";
 
@@ -940,7 +940,7 @@
 
 "kh_uisdk_sort_by" = "จัดเรียงตาม";
 
-"kh_uisdk_staging_link" = "";
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
 "kh_uisdk_star_excellent" = "ยอดเยี่ยม";
 
@@ -958,9 +958,9 @@
 
 "kh_uisdk_submit_button_text" = "โปรดบอกเราว่าทำไมคุณถึงให้คะแนนนี้";
 
-"kh_uisdk_supplier_email" = "";
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
 
-"kh_uisdk_support_email" = "";
+"kh_uisdk_support_email" = "support@karhoo.com";
 
 "kh_uisdk_support_report_issue" = "รายงานปัญหา";
 
@@ -970,7 +970,7 @@
 
 "kh_uisdk_temporary_message_error_codes_unknown" = "ดูเหมือนว่าเราจะมีปัญหาทางเทคนิคในขณะนี้";
 
-"kh_uisdk_terms_and_conditions_register_account_action" = "";
+"kh_uisdk_terms_and_conditions_register_account_action" = "การสร้างบัญชี Karhoo ของคุณ";
 
 "kh_uisdk_terms_condition_full_string" = "เมื่อ %1$@ แสดงว่าคุณยอมรับ %2$@ ของ %3$@   |   %4$@";
 
@@ -1000,7 +1000,7 @@
 
 "kh_uisdk_track_driver" = "ติดตามคนขับ";
 
-"kh_uisdk_track_trip" = "";
+"kh_uisdk_track_trip" = "ติดตามการเดินทาง";
 
 "kh_uisdk_track_trip_alert_message" = "คุณต้องการติดตามยานพาหนะหรือไม่";
 
@@ -1034,15 +1034,15 @@
 
 "kh_uisdk_trip_summary" = "สรุปการเดินทาง";
 
-"kh_uisdk_trip_summary_add_to_calendar" = "";
+"kh_uisdk_trip_summary_add_to_calendar" = "เพิ่มในปฏิทิน";
 
-"kh_uisdk_trip_summary_added_to_calendar" = "";
+"kh_uisdk_trip_summary_added_to_calendar" = "เพิ่มการเดินทางในปฏิทินแล้ว";
 
-"kh_uisdk_trip_summary_calendar_event_title" = "";
+"kh_uisdk_trip_summary_calendar_event_title" = "ขี่ไปที่ %@";
 
-"kh_uisdk_trip_summary_flight_number" = "";
+"kh_uisdk_trip_summary_flight_number" = "เที่ยวบินหมายเลข";
 
-"kh_uisdk_trip_summary_train_number" = "";
+"kh_uisdk_trip_summary_train_number" = "หมายเลขรถไฟ";
 
 "kh_uisdk_unchecked" = "เลิกเลือกแล้ว";
 
@@ -1066,25 +1066,25 @@
 
 "kh_uisdk_you_may_be_charged" = "คุณจะถูกเรียกเก็บค่าธรรมเนียมการยกเลิกโดยประมาณจำนวน %@ \n\nคุณต้องการดำเนินการต่อหรือไม่";
 
-"KSDK01" = "";
+"KSDK01" = "มีบางอย่างผิดพลาด แต่เราไม่รู้ว่ามันคืออะไร";
 
-"KSDK02" = "";
+"KSDK02" = "ไม่มีสิทธิ์ผู้ใช้";
 
-"KSDK03" = "";
+"KSDK03" = "ผู้ใช้เข้าสู่ระบบแล้ว";
 
-"MEET_AND_GREET" = "";
+"MEET_AND_GREET" = "พบปะและทักทาย";
 
-"MPV" = "";
+"MPV" = "รถอเนกประสงค์";
 
 "pay_button_with_value" = "กันวงเงินบัตร %@";
 
-"Q0001" = "";
+"Q0001" = "รับและปลายทางไม่เหมือนกัน";
 
-"Text.Error.EmailValidationError" = "";
+"Text.Error.EmailValidationError" = "ตรวจสอบว่าที่อยู่อีเมลของคุณสะกดถูกต้อง";
 
-"Text.Generic.Close" = "";
+"Text.Generic.Close" = "ปิด";
 
-"Text.SupportMailMessage.ReportIssueSubject" = "";
+"Text.SupportMailMessage.ReportIssueSubject" = "รายงานฉบับ";
 
-"Text.VehicleTag.Electric" = "";
+"Text.VehicleTag.Electric" = "รถพลังงานไฟฟ้า";
 

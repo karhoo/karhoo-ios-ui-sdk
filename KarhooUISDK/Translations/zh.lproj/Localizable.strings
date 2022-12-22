@@ -1,96 +1,96 @@
-"adyen.submitButton" = "";
+"adyen.submitButton" = "授权交易";
 
-"adyen.submitButton.formatted" = "";
+"adyen.submitButton.formatted" = "授权交易";
 
 "continue_button" = "下一个";
 
-"K0001" = "";
+"K0001" = "一般请求错误";
 
-"K0002" = "";
+"K0002" = "无效的请求负载";
 
-"K0003" = "";
+"K0003" = "无法读取授权令牌";
 
-"K0004" = "";
+"K0004" = "此路径需要身份验证";
 
-"K0005" = "";
+"K0005" = "缺少此请求所需的角色";
 
-"K0006" = "";
+"K0006" = "已超出车费限额";
 
-"K0007" = "";
+"K0007" = "断路器已为此路线触发";
 
-"K1001" = "";
+"K1001" = "无法注册用户";
 
-"K1003" = "";
+"K1003" = "无法注册用户（无效请求）";
 
-"K1004" = "";
+"K1004" = "无法注册用户（电话号码无效）";
 
 "K1005" = "无法获取用户详细信息（令牌无效）";
 
-"K1006" = "";
+"K1006" = "无法获取用户详细信息（用户不存在）";
 
-"K2001" = "";
+"K2001" = "无法获取地址";
 
-"K3001" = "";
+"K3001" = "无法获得估算值";
 
-"K3003" = "";
+"K3003" = "无法获得估算值（找不到指定的报价）";
 
-"K4001" = "";
+"K4001" = "无法预订行程";
 
-"K4002" = "";
+"K4002" = "无法预订行程 - 无效的请求负载（需要至少一组乘客详细信息）";
 
-"K4003" = "";
+"K4003" = "无法预订行程（找不到指定的报价）";
 
-"K4004" = "";
+"K4004" = "无法预订行程（尝试预订过期报价）";
 
 "K4005" = "无法预订行程（权限被拒绝）";
 
-"K4006" = "";
+"K4006" = "无法预订行程（付款预授权失败）";
 
-"K4007" = "";
+"K4007" = "无法取消行程";
 
-"K4008" = "";
+"K4008" = "无法取消行程（找不到指定行程）";
 
-"K4009" = "";
+"K4009" = "无法取消行程（权限被拒绝）";
 
 "K4010" = "无法取消行程（已取消）";
 
-"K4011" = "";
+"K4011" = "无法出行";
 
-"K4012" = "";
+"K4012" = "无法获得行程（找不到指定行程）";
 
 "K4013" = "无法获得行程（权限被拒绝）";
 
-"K4014" = "";
+"K4014" = "无法作为代理预订旅行";
 
-"K4018" = "";
+"K4018" = "无法预订行程，因为此报价不再可用";
 
-"K4020" = "";
+"K4020" = "无法使用所选 DMS 预订行程";
 
-"K5001" = "";
+"K5001" = "无法获得估算值";
 
-"K5002" = "";
+"K5002" = "无法获得可用性（在请求的区域内找不到可用性）";
 
-"K5003" = "";
+"K5003" = "无法获得可用性（在请求的区域内未找到类别）";
 
 "kh_uisdk_about" = "关于";
 
 "kh_uisdk_acc_close_button" = "关闭屏幕";
 
-"kh_uisdk_acc_destination_address" = "";
+"kh_uisdk_acc_destination_address" = "目的地地址";
 
-"kh_uisdk_acc_loyalty_information" = "";
+"kh_uisdk_acc_loyalty_information" = "信息";
 
-"kh_uisdk_acc_pickup_address" = "";
+"kh_uisdk_acc_pickup_address" = "删除地址";
 
-"kh_uisdk_acc_pickup_time" = "";
+"kh_uisdk_acc_pickup_time" = "上车时间";
 
-"kh_uisdk_acc_ride_details" = "";
+"kh_uisdk_acc_ride_details" = "前往乘车详情";
 
 "kh_uisdk_add_card" = "添加卡片";
 
-"kh_uisdk_add_comment_placeholder" = "";
+"kh_uisdk_add_comment_placeholder" = "补充评论";
 
-"kh_uisdk_add_flight_details" = "";
+"kh_uisdk_add_flight_details" = "航班号（可选）";
 
 "kh_uisdk_additional_comments" = "附加说明（儿童座椅、轮椅等）";
 
@@ -100,7 +100,7 @@
 
 "kh_uisdk_address_picker_add_pickup" = "添加上车地点";
 
-"kh_uisdk_address_picker_destination_title" = "";
+"kh_uisdk_address_picker_destination_title" = "目的地";
 
 "kh_uisdk_address_picker_dropoff_booking" = "添加目的地";
 
@@ -110,29 +110,29 @@
 
 "kh_uisdk_address_picker_pickup_title" = "拾起";
 
-"kh_uisdk_address_picker_prebook" = "";
+"kh_uisdk_address_picker_prebook" = "预订";
 
-"kh_uisdk_adyen_payment_error_10" = "";
+"kh_uisdk_adyen_payment_error_10" = "购物者的银行不支持或不允许此类交易";
 
-"kh_uisdk_adyen_payment_error_11" = "";
+"kh_uisdk_adyen_payment_error_11" = "3D Secure 验证未执行，或未成功执行";
 
-"kh_uisdk_adyen_payment_error_12" = "";
+"kh_uisdk_adyen_payment_error_12" = "该卡没有足够的钱来支付应付金额";
 
-"kh_uisdk_adyen_payment_error_14" = "";
+"kh_uisdk_adyen_payment_error_14" = "可能的欺诈行为。";
 
 "kh_uisdk_adyen_payment_error_15" = "交易被取消。";
 
 "kh_uisdk_adyen_payment_error_16" = "购物者在完成交易之前取消了交易。";
 
-"kh_uisdk_adyen_payment_error_17" = "";
+"kh_uisdk_adyen_payment_error_17" = "指定的 PIN 不正确或无效。";
 
 "kh_uisdk_adyen_payment_error_18" = "购物者连续 3 次以上指定了错误的 PIN。";
 
-"kh_uisdk_adyen_payment_error_19" = "";
+"kh_uisdk_adyen_payment_error_19" = "无法验证指定的 PIN 码。";
 
-"kh_uisdk_adyen_payment_error_2" = "";
+"kh_uisdk_adyen_payment_error_2" = "交易被拒绝。";
 
-"kh_uisdk_adyen_payment_error_20" = "";
+"kh_uisdk_adyen_payment_error_20" = "预授权风险检查的欺诈分数为 100 分或更高。因此，该交易被标记为欺诈，并被拒绝。";
 
 "kh_uisdk_adyen_payment_error_21" = "交易未正确提交以供处理。";
 
@@ -148,19 +148,19 @@
 
 "kh_uisdk_adyen_payment_error_27" = "非一般错误";
 
-"kh_uisdk_adyen_payment_error_28" = "";
+"kh_uisdk_adyen_payment_error_28" = "已超过购物者卡允许的取款次数。";
 
 "kh_uisdk_adyen_payment_error_29" = "已超过购物者卡允许的取款次数。";
 
-"kh_uisdk_adyen_payment_error_3" = "";
+"kh_uisdk_adyen_payment_error_3" = "推荐人";
 
 "kh_uisdk_adyen_payment_error_31" = "发卡机构将该交易报告为涉嫌欺诈。";
 
-"kh_uisdk_adyen_payment_error_32" = "";
+"kh_uisdk_adyen_payment_error_32" = "购物者输入的地址数据不正确。";
 
-"kh_uisdk_adyen_payment_error_33" = "";
+"kh_uisdk_adyen_payment_error_33" = "购物者的银行要求购物者输入在线 PIN。";
 
-"kh_uisdk_adyen_payment_error_34" = "";
+"kh_uisdk_adyen_payment_error_34" = "购物者的银行需要一个支票账户才能完成购买。";
 
 "kh_uisdk_adyen_payment_error_35" = "购物者的银行需要一个储蓄账户才能完成购买。";
 
@@ -182,15 +182,15 @@
 
 "kh_uisdk_adyen_payment_error_5" = "用于交易的卡被冻结，因此无法使用";
 
-"kh_uisdk_adyen_payment_error_6" = "";
+"kh_uisdk_adyen_payment_error_6" = "用于交易的卡已过期。因此无法使用";
 
 "kh_uisdk_adyen_payment_error_7" = "交易过程中出现金额不匹配";
 
 "kh_uisdk_adyen_payment_error_8" = "指定的卡号不正确或无效";
 
-"kh_uisdk_adyen_payment_error_9" = "";
+"kh_uisdk_adyen_payment_error_9" = "无法联系购物者的银行授权交易";
 
-"kh_uisdk_airport_booking_message" = "";
+"kh_uisdk_airport_booking_message" = "请输入有效的航班号";
 
 "kh_uisdk_allocating_trip_one" = "正在为您分配司机，请稍候";
 
@@ -290,7 +290,7 @@
 
 "kh_uisdk_continue_journey" = "继续";
 
-"kh_uisdk_could_not_load_trips" = "";
+"kh_uisdk_could_not_load_trips" = "无法加载行程。";
 
 "kh_uisdk_country_search" = "搜索国家/地区";
 
@@ -332,7 +332,7 @@
 
 "kh_uisdk_error" = "错误";
 
-"kh_uisdk_error_invalid_password" = "";
+"kh_uisdk_error_invalid_password" = "您输入的电子邮件或密码不正确";
 
 "kh_uisdk_errors_cant_send_email" = "抱歉，无法发送电子邮件。请您首先配置电子邮件应用程序。";
 
@@ -362,13 +362,13 @@
 
 "kh_uisdk_extra_capabilities" = "+ %d";
 
-"kh_uisdk_faq_link" = "";
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
 "kh_uisdk_faretype_info_base" = "您的最终车费可能受到\n小费、通行费、税费和其他费用的影响。";
 
 "kh_uisdk_feedback" = "反馈";
 
-"kh_uisdk_feedback_email" = "";
+"kh_uisdk_feedback_email" = "support@karhoo.com";
 
 "kh_uisdk_feedback_submitted" = "感谢您提交反馈";
 
@@ -456,7 +456,7 @@
 
 "kh_uisdk_forgotten_password" = "忘记密码？";
 
-"kh_uisdk_free_cancellation_asap" = "";
+"kh_uisdk_free_cancellation_asap" = "预订后最多可免费取消%1$@";
 
 "kh_uisdk_got_it" = "好的";
 
@@ -470,9 +470,9 @@
 
 "kh_uisdk_hours_plural.zero" = "%d小时";
 
-"kh_uisdk_hours_plural.one" = "";
+"kh_uisdk_hours_plural.one" = "%d小时";
 
-"kh_uisdk_hours_plural.other" = "";
+"kh_uisdk_hours_plural.other" = "%d 小时";
 
 "kh_uisdk_hours_plural.zero" = "%d小时";
 
@@ -496,7 +496,7 @@
 
 "kh_uisdk_K0004" = "此路径需要身份验证";
 
-"kh_uisdk_K0005" = "";
+"kh_uisdk_K0005" = "缺少此请求所需的角色";
 
 "kh_uisdk_K0006" = "已超出车费限额";
 
@@ -504,15 +504,15 @@
 
 "kh_uisdk_K1001" = "无法注册用户";
 
-"kh_uisdk_K1003" = "";
+"kh_uisdk_K1003" = "无法注册用户（无效请求）";
 
-"kh_uisdk_K1004" = "";
+"kh_uisdk_K1004" = "无法注册用户（电话号码无效）";
 
-"kh_uisdk_K1005" = "";
+"kh_uisdk_K1005" = "无法获取用户详细信息（令牌无效）";
 
 "kh_uisdk_K1006" = "无法获取用户详细信息（用户不存在）";
 
-"kh_uisdk_K1999" = "";
+"kh_uisdk_K1999" = "用户已创建但尚未授权，启用后我们会与您联系。";
 
 "kh_uisdk_K2001" = "无法获取地址";
 
@@ -538,7 +538,7 @@
 
 "kh_uisdk_K4008" = "我们未能取消此行程（找不到行程）";
 
-"kh_uisdk_K4009" = "";
+"kh_uisdk_K4009" = "无法取消行程（权限被拒绝）";
 
 "kh_uisdk_K4010" = "我们未能取消此行程（行程此前已被取消）";
 
@@ -546,9 +546,9 @@
 
 "kh_uisdk_K4012" = "无法获取行程（找不到行程）";
 
-"kh_uisdk_K4013" = "";
+"kh_uisdk_K4013" = "无法获得行程（权限被拒绝）";
 
-"kh_uisdk_K4014" = "";
+"kh_uisdk_K4014" = "无法作为代理预订旅行";
 
 "kh_uisdk_K4015" = "无法以旅行者的身份预订旅行";
 
@@ -578,9 +578,9 @@
 
 "kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
 
-"kh_uisdk_KP001" = "";
+"kh_uisdk_KP001" = "无法解码请求正文";
 
-"kh_uisdk_KP002" = "";
+"kh_uisdk_KP002" = "用户的主要组织不是 UUID";
 
 "kh_uisdk_KP003" = "未找到默认付款方式";
 
@@ -590,15 +590,15 @@
 
 "kh_uisdk_KP006" = "必须定义浏览器信息以强制执行 3DS";
 
-"kh_uisdk_KP007" = "";
+"kh_uisdk_KP007" = "缺少行程 ID";
 
-"kh_uisdk_KP008" = "";
+"kh_uisdk_KP008" = "缺少用户";
 
-"kh_uisdk_KP009" = "";
+"kh_uisdk_KP009" = "主要组织未注册";
 
-"kh_uisdk_KP010" = "";
+"kh_uisdk_KP010" = "劣币 劣币金额";
 
-"kh_uisdk_KP011" = "";
+"kh_uisdk_KP011" = "分钱不好";
 
 "kh_uisdk_label_and" = "和";
 
@@ -614,7 +614,7 @@
 
 "kh_uisdk_legal_notice_label" = "法律声明";
 
-"kh_uisdk_legal_notice_link" = "";
+"kh_uisdk_legal_notice_link" = "zh-CN";
 
 "kh_uisdk_legal_notice_text" = "";
 
@@ -632,9 +632,9 @@
 
 "kh_uisdk_loyalty_info" = "如果行程的最终车费超过您的积分余额，则需要您的卡来授权此交易。如果您的积分足以支付车费，则不会向您的帐户收费。";
 
-"kh_uisdk_loyalty_info_add_points" = "";
+"kh_uisdk_loyalty_info_add_points" = "%@忠诚度积分将在行程结束时添加到您的帐户余额中";
 
-"kh_uisdk_loyalty_info_remove_points" = "";
+"kh_uisdk_loyalty_info_remove_points" = "%@忠诚度积分将在行程结束时从您的账户余额中扣除";
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "抱歉，您的积分余额不足";
 
@@ -674,11 +674,11 @@
 
 "kh_uisdk_minutes_plurals.zero" = "%d分钟";
 
-"kh_uisdk_minutes_plurals.one" = "";
+"kh_uisdk_minutes_plurals.one" = "%d分钟";
 
-"kh_uisdk_minutes_plurals.other" = "";
+"kh_uisdk_minutes_plurals.other" = "%d 分钟";
 
-"kh_uisdk_minutes_plurals.zero" = "";
+"kh_uisdk_minutes_plurals.zero" = "%d分钟";
 
 "kh_uisdk_mobile_phone_number_hint" = "手机号码";
 
@@ -708,7 +708,7 @@
 
 "kh_uisdk_no_quotes_in_selected_category" = "抱歉，此类别没有可用服务。 请选择其他类别。";
 
-"kh_uisdk_no_trips" = "";
+"kh_uisdk_no_trips" = "没有游乐设施";
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "无效 SSL 证书";
 
@@ -720,7 +720,7 @@
 
 "kh_uisdk_origin_book_error" = "您必须选择上车地点方可预订行程";
 
-"kh_uisdk_P0001" = "";
+"kh_uisdk_P0001" = "无法从令牌中检索用户 ID";
 
 "kh_uisdk_P0002" = "联系不到付款提供商";
 
@@ -784,7 +784,7 @@
 
 "kh_uisdk_price_meet_and_greet" = "见面和问候";
 
-"kh_uisdk_production_link" = "";
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "个人资料";
 
@@ -830,7 +830,7 @@
 
 "kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@建议新闻队";
 
-"kh_uisdk_quotes_error_no_coverage_title" = "";
+"kh_uisdk_quotes_error_no_coverage_title" = "该地区尚无车队";
 
 "kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "请尝试不同的筛选条件。";
 
@@ -844,9 +844,9 @@
 
 "kh_uisdk_quotes_no_availability" = "我们尚未在这里提供服务！";
 
-"kh_uisdk_quotes_no_availability_subtitle" = "";
+"kh_uisdk_quotes_no_availability_subtitle" = "请选择其他时间";
 
-"kh_uisdk_quotes_no_availability_title" = "";
+"kh_uisdk_quotes_no_availability_title" = "要求的时间没有空位";
 
 "kh_uisdk_rate_trip_label" = "您如何评价您的行程？";
 
@@ -856,7 +856,7 @@
 
 "kh_uisdk_recents_empty" = "没有最近的结果";
 
-"kh_uisdk_register" = "";
+"kh_uisdk_register" = "寄存器";
 
 "kh_uisdk_report_issue" = "报告问题";
 
@@ -872,7 +872,7 @@
 
 "kh_uisdk_reset_filter" = "重置筛选条件";
 
-"kh_uisdk_result" = "";
+"kh_uisdk_result" = "%1$@ 结果";
 
 "kh_uisdk_results" = "结果";
 
@@ -918,7 +918,7 @@
 
 "kh_uisdk_schedule_ride" = "安排行程";
 
-"kh_uisdk_set_on_map" = "";
+"kh_uisdk_set_on_map" = "在地图上设置";
 
 "kh_uisdk_set_prebook_time" = "设置上车时间";
 
@@ -932,7 +932,7 @@
 
 "kh_uisdk_signup_email_subscribe_copy" = "我不希望收到免费乘车、促销或优惠";
 
-"kh_uisdk_signup_pending_message" = "";
+"kh_uisdk_signup_pending_message" = "一旦您的请求得到处理，我们将通过电子邮件通知您。";
 
 "kh_uisdk_something_went_wrong" = "出问题了";
 
@@ -940,7 +940,7 @@
 
 "kh_uisdk_sort_by" = "排序方式";
 
-"kh_uisdk_staging_link" = "";
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
 "kh_uisdk_star_excellent" = "杰出";
 
@@ -958,9 +958,9 @@
 
 "kh_uisdk_submit_button_text" = "请告诉我们您为什么选择此评价";
 
-"kh_uisdk_supplier_email" = "";
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
 
-"kh_uisdk_support_email" = "";
+"kh_uisdk_support_email" = "support@karhoo.com";
 
 "kh_uisdk_support_report_issue" = "报告问题";
 
@@ -1000,7 +1000,7 @@
 
 "kh_uisdk_track_driver" = "追踪司机";
 
-"kh_uisdk_track_trip" = "";
+"kh_uisdk_track_trip" = "轨道骑行";
 
 "kh_uisdk_track_trip_alert_message" = "您希望追踪车辆吗？";
 
@@ -1034,15 +1034,15 @@
 
 "kh_uisdk_trip_summary" = "行程摘要";
 
-"kh_uisdk_trip_summary_add_to_calendar" = "";
+"kh_uisdk_trip_summary_add_to_calendar" = "添加到日历";
 
-"kh_uisdk_trip_summary_added_to_calendar" = "";
+"kh_uisdk_trip_summary_added_to_calendar" = "旅行添加到日历";
 
-"kh_uisdk_trip_summary_calendar_event_title" = "";
+"kh_uisdk_trip_summary_calendar_event_title" = "乘车前往%@";
 
-"kh_uisdk_trip_summary_flight_number" = "";
+"kh_uisdk_trip_summary_flight_number" = "航班号";
 
-"kh_uisdk_trip_summary_train_number" = "";
+"kh_uisdk_trip_summary_train_number" = "车次";
 
 "kh_uisdk_unchecked" = "未检查";
 
@@ -1066,25 +1066,25 @@
 
 "kh_uisdk_you_may_be_charged" = "您将被收取大约 %@ 的取消费用。\n\n您要继续吗？";
 
-"KSDK01" = "";
+"KSDK01" = "出了点问题，但我们不知道是什么";
 
-"KSDK02" = "";
+"KSDK02" = "缺少用户权限";
 
-"KSDK03" = "";
+"KSDK03" = "用户已登录";
 
-"MEET_AND_GREET" = "";
+"MEET_AND_GREET" = "见面和问候";
 
-"MPV" = "";
+"MPV" = "多功能车";
 
 "pay_button_with_value" = "预授权 %@";
 
-"Q0001" = "";
+"Q0001" = "接载和目的地不能相同。";
 
-"Text.Error.EmailValidationError" = "";
+"Text.Error.EmailValidationError" = "检查您的电子邮件地址是否拼写正确";
 
-"Text.Generic.Close" = "";
+"Text.Generic.Close" = "关闭";
 
-"Text.SupportMailMessage.ReportIssueSubject" = "";
+"Text.SupportMailMessage.ReportIssueSubject" = "报告问题";
 
-"Text.VehicleTag.Electric" = "";
+"Text.VehicleTag.Electric" = "电的";
 

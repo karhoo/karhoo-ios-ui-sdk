@@ -1,6 +1,6 @@
-"adyen.submitButton" = "";
+"adyen.submitButton" = "Otorisasi transaksi";
 
-"adyen.submitButton.formatted" = "";
+"adyen.submitButton.formatted" = "Otorisasi transaksi";
 
 "continue_button" = "Berikutnya";
 
@@ -10,15 +10,15 @@
 
 "K0003" = "Tidak dapat membaca token otorisasi";
 
-"K0004" = "";
+"K0004" = "Otentikasi diperlukan untuk jalur ini";
 
-"K0005" = "";
+"K0005" = "Tidak ada peran yang diperlukan untuk permintaan ini";
 
-"K0006" = "";
+"K0006" = "Batas tarif terlampaui";
 
-"K0007" = "";
+"K0007" = "Pemutus sirkuit telah dipicu untuk rute ini";
 
-"K1001" = "";
+"K1001" = "Tidak dapat mendaftarkan pengguna";
 
 "K1003" = "Tidak dapat mendaftarkan pengguna (permintaan tidak valid)";
 
@@ -26,15 +26,15 @@
 
 "K1005" = "Tidak bisa mendapatkan detail pengguna (token tidak valid)";
 
-"K1006" = "";
+"K1006" = "Tidak bisa mendapatkan detail pengguna (pengguna tidak ada)";
 
-"K2001" = "";
+"K2001" = "Tidak bisa mendapatkan alamat";
 
-"K3001" = "";
+"K3001" = "Tidak bisa mendapatkan perkiraan";
 
 "K3003" = "Tidak dapat memperoleh perkiraan (tidak dapat menemukan penawaran yang ditentukan)";
 
-"K4001" = "";
+"K4001" = "Tidak dapat memesan perjalanan";
 
 "K4002" = "Tidak dapat memesan perjalanan - payload permintaan tidak valid (memerlukan setidaknya 1 set detail penumpang)";
 
@@ -44,31 +44,31 @@
 
 "K4005" = "Tidak dapat memesan perjalanan (izin ditolak)";
 
-"K4006" = "";
+"K4006" = "Tidak dapat memesan perjalanan (pra-otorisasi pembayaran gagal)";
 
 "K4007" = "Tidak dapat membatalkan perjalanan";
 
-"K4008" = "";
+"K4008" = "Tidak dapat membatalkan perjalanan (tidak dapat menemukan perjalanan yang ditentukan)";
 
 "K4009" = "Tidak dapat membatalkan perjalanan (izin ditolak)";
 
 "K4010" = "Tidak dapat membatalkan perjalanan (sudah dibatalkan)";
 
-"K4011" = "";
+"K4011" = "Tidak bisa mendapatkan perjalanan";
 
-"K4012" = "";
+"K4012" = "Tidak bisa mendapatkan perjalanan (tidak dapat menemukan perjalanan yang ditentukan)";
 
 "K4013" = "Tidak bisa mendapatkan perjalanan (izin ditolak)";
 
 "K4014" = "Tidak dapat memesan perjalanan sebagai agen";
 
-"K4018" = "";
+"K4018" = "Tidak dapat memesan perjalanan karena penawaran ini tidak lagi tersedia";
 
-"K4020" = "";
+"K4020" = "Tidak dapat memesan perjalanan dengan DMS yang dipilih";
 
-"K5001" = "";
+"K5001" = "Tidak bisa mendapatkan perkiraan";
 
-"K5002" = "";
+"K5002" = "Tidak bisa mendapatkan ketersediaan (tidak ada ketersediaan yang ditemukan dalam area yang diminta)";
 
 "K5003" = "Tidak bisa mendapatkan ketersediaan (tidak ada kategori yang ditemukan dalam area yang diminta)";
 
@@ -76,21 +76,21 @@
 
 "kh_uisdk_acc_close_button" = "Tutup layar";
 
-"kh_uisdk_acc_destination_address" = "";
+"kh_uisdk_acc_destination_address" = "Alamat tujuan";
 
-"kh_uisdk_acc_loyalty_information" = "";
+"kh_uisdk_acc_loyalty_information" = "Informasi pengemudi";
 
-"kh_uisdk_acc_pickup_address" = "";
+"kh_uisdk_acc_pickup_address" = "Hapus alamat";
 
 "kh_uisdk_acc_pickup_time" = "Waktu penjemputan";
 
-"kh_uisdk_acc_ride_details" = "";
+"kh_uisdk_acc_ride_details" = "Pergi ke rincian perjalanan";
 
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
 
-"kh_uisdk_add_comment_placeholder" = "";
+"kh_uisdk_add_comment_placeholder" = "Komentar tambahan";
 
-"kh_uisdk_add_flight_details" = "";
+"kh_uisdk_add_flight_details" = "Nomor Penerbangan (Opsional)";
 
 "kh_uisdk_additional_comments" = "Komentar tambahan (kursi anak, kursi roda, dll.)";
 
@@ -100,7 +100,7 @@
 
 "kh_uisdk_address_picker_add_pickup" = "Tambahkan penjemputan";
 
-"kh_uisdk_address_picker_destination_title" = "";
+"kh_uisdk_address_picker_destination_title" = "Tujuan";
 
 "kh_uisdk_address_picker_dropoff_booking" = "Tambahkan tujuan";
 
@@ -110,9 +110,9 @@
 
 "kh_uisdk_address_picker_pickup_title" = "Penjemputan";
 
-"kh_uisdk_address_picker_prebook" = "";
+"kh_uisdk_address_picker_prebook" = "Pesan";
 
-"kh_uisdk_adyen_payment_error_10" = "";
+"kh_uisdk_adyen_payment_error_10" = "Bank pembeli tidak mendukung atau tidak mengizinkan jenis transaksi ini";
 
 "kh_uisdk_adyen_payment_error_11" = "Otentikasi 3D Secure tidak dijalankan, atau tidak berhasil dijalankan";
 
@@ -124,7 +124,7 @@
 
 "kh_uisdk_adyen_payment_error_16" = "Pembeli membatalkan transaksi sebelum menyelesaikannya.";
 
-"kh_uisdk_adyen_payment_error_17" = "";
+"kh_uisdk_adyen_payment_error_17" = "PIN yang ditentukan salah atau tidak valid.";
 
 "kh_uisdk_adyen_payment_error_18" = "Pembeli memasukkan PIN yang salah lebih dari tiga kali berturut-turut.";
 
@@ -148,15 +148,15 @@
 
 "kh_uisdk_adyen_payment_error_27" = "Kesalahan non-umum";
 
-"kh_uisdk_adyen_payment_error_28" = "";
+"kh_uisdk_adyen_payment_error_28" = "Jumlah penarikan yang diizinkan untuk kartu pembelanja telah terlampaui.";
 
 "kh_uisdk_adyen_payment_error_29" = "Jumlah penarikan yang diizinkan untuk kartu pembelanja telah terlampaui.";
 
-"kh_uisdk_adyen_payment_error_3" = "";
+"kh_uisdk_adyen_payment_error_3" = "Rujukan";
 
 "kh_uisdk_adyen_payment_error_31" = "Penerbit melaporkan transaksi sebagai dugaan penipuan.";
 
-"kh_uisdk_adyen_payment_error_32" = "";
+"kh_uisdk_adyen_payment_error_32" = "Data alamat yang dimasukkan pembeli salah.";
 
 "kh_uisdk_adyen_payment_error_33" = "Bank pembelanja mengharuskan pembelanja memasukkan PIN online.";
 
@@ -182,15 +182,15 @@
 
 "kh_uisdk_adyen_payment_error_5" = "Kartu yang digunakan untuk transaksi diblokir, sehingga tidak dapat digunakan";
 
-"kh_uisdk_adyen_payment_error_6" = "";
+"kh_uisdk_adyen_payment_error_6" = "Kartu yang digunakan untuk transaksi telah kedaluwarsa. Oleh karena itu tidak dapat digunakan";
 
 "kh_uisdk_adyen_payment_error_7" = "Terjadi ketidaksesuaian jumlah selama proses transaksi";
 
 "kh_uisdk_adyen_payment_error_8" = "Nomor kartu yang ditentukan salah atau tidak valid";
 
-"kh_uisdk_adyen_payment_error_9" = "";
+"kh_uisdk_adyen_payment_error_9" = "Tidak mungkin menghubungi bank pembelanja untuk mengotorisasi transaksi";
 
-"kh_uisdk_airport_booking_message" = "";
+"kh_uisdk_airport_booking_message" = "Harap masukkan nomor penerbangan yang valid";
 
 "kh_uisdk_allocating_trip_one" = "Harap tunggu pengemudi akan kami alokasikan";
 
@@ -290,7 +290,7 @@
 
 "kh_uisdk_continue_journey" = "LANJUTKAN";
 
-"kh_uisdk_could_not_load_trips" = "";
+"kh_uisdk_could_not_load_trips" = "Tidak dapat memuat perjalanan.";
 
 "kh_uisdk_country_search" = "Cari negara/wilayah";
 
@@ -332,7 +332,7 @@
 
 "kh_uisdk_error" = "Kesalahan";
 
-"kh_uisdk_error_invalid_password" = "";
+"kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
 
 "kh_uisdk_errors_cant_send_email" = "Maaf, email tidak dapat terkirim. Harap konfigurasikan aplikasi mail terlebih dahulu.";
 
@@ -362,7 +362,7 @@
 
 "kh_uisdk_extra_capabilities" = "+ %d";
 
-"kh_uisdk_faq_link" = "";
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
 "kh_uisdk_faretype_info_base" = "Tarif akhir Anda mungkin terpengaruh\n oleh tip, tol, pajak, dan biaya lainnya.";
 
@@ -456,7 +456,7 @@
 
 "kh_uisdk_forgotten_password" = "Password yang terlupakan?";
 
-"kh_uisdk_free_cancellation_asap" = "";
+"kh_uisdk_free_cancellation_asap" = "Pembatalan gratis hingga %1$@ sebelum penjemputan";
 
 "kh_uisdk_got_it" = "MENGERTI";
 
@@ -470,9 +470,9 @@
 
 "kh_uisdk_hours_plural.zero" = "%d jam";
 
-"kh_uisdk_hours_plural.one" = "";
+"kh_uisdk_hours_plural.one" = "%d jam";
 
-"kh_uisdk_hours_plural.other" = "";
+"kh_uisdk_hours_plural.other" = "%d jam";
 
 "kh_uisdk_hours_plural.zero" = "%d jam";
 
@@ -496,7 +496,7 @@
 
 "kh_uisdk_K0004" = "Autentikasi diperlukan untuk hal ini";
 
-"kh_uisdk_K0005" = "";
+"kh_uisdk_K0005" = "Tidak ada peran yang diperlukan untuk permintaan ini";
 
 "kh_uisdk_K0006" = "Batas limit terlampaui";
 
@@ -504,15 +504,15 @@
 
 "kh_uisdk_K1001" = "Tidak dapat mendaftarkan pengguna";
 
-"kh_uisdk_K1003" = "";
+"kh_uisdk_K1003" = "Tidak dapat mendaftarkan pengguna (permintaan tidak valid)";
 
-"kh_uisdk_K1004" = "";
+"kh_uisdk_K1004" = "Tidak dapat mendaftarkan pengguna (nomor telepon tidak valid)";
 
-"kh_uisdk_K1005" = "";
+"kh_uisdk_K1005" = "Tidak bisa mendapatkan detail pengguna (token tidak valid)";
 
 "kh_uisdk_K1006" = "Tidak bisa mendapatkan detail pengguna (pengguna tidak ada)";
 
-"kh_uisdk_K1999" = "";
+"kh_uisdk_K1999" = "Pengguna telah dibuat tetapi belum diotorisasi, kami akan menghubungi Anda setelah diaktifkan.";
 
 "kh_uisdk_K2001" = "Tidak bisa menemukan alamat";
 
@@ -538,7 +538,7 @@
 
 "kh_uisdk_K4008" = "Kami tidak bisa membatalkan perjalanan (perjalanan tidak ditemukan)";
 
-"kh_uisdk_K4009" = "";
+"kh_uisdk_K4009" = "Tidak dapat membatalkan perjalanan (izin ditolak)";
 
 "kh_uisdk_K4010" = "Kami tidak bisa membatalkan perjalanan (perjalanan sudah dibatalkan)";
 
@@ -546,9 +546,9 @@
 
 "kh_uisdk_K4012" = "Tidak bisa mendapatkan kendaraan (kendaraan tidak ditemukan)";
 
-"kh_uisdk_K4013" = "";
+"kh_uisdk_K4013" = "Tidak bisa mendapatkan perjalanan (izin ditolak)";
 
-"kh_uisdk_K4014" = "";
+"kh_uisdk_K4014" = "Tidak dapat memesan perjalanan sebagai agen";
 
 "kh_uisdk_K4015" = "Tidak dapat memesan perjalanan sebagai pelancong";
 
@@ -578,9 +578,9 @@
 
 "kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
 
-"kh_uisdk_KP001" = "";
+"kh_uisdk_KP001" = "Tidak dapat memecahkan kode badan permintaan";
 
-"kh_uisdk_KP002" = "";
+"kh_uisdk_KP002" = "Organisasi utama untuk pengguna bukan UUID";
 
 "kh_uisdk_KP003" = "Metode pembayaran standar tidak ditemukan";
 
@@ -588,17 +588,17 @@
 
 "kh_uisdk_KP005" = "Informasi browser harus sesuai dalam menerapkan 3DS";
 
-"kh_uisdk_KP006" = "";
+"kh_uisdk_KP006" = "Informasi browser harus ditentukan untuk menerapkan 3DS";
 
-"kh_uisdk_KP007" = "";
+"kh_uisdk_KP007" = "ID mitra pemasok tidak ada";
 
-"kh_uisdk_KP008" = "";
+"kh_uisdk_KP008" = "Izin pengguna tidak ada";
 
-"kh_uisdk_KP009" = "";
+"kh_uisdk_KP009" = "Organisasi utama untuk pengguna bukan UUID";
 
-"kh_uisdk_KP010" = "";
+"kh_uisdk_KP010" = "Jumlah uang yang buruk";
 
-"kh_uisdk_KP011" = "";
+"kh_uisdk_KP011" = "Pembagian uang yang buruk";
 
 "kh_uisdk_label_and" = "dan";
 
@@ -626,13 +626,13 @@
 
 "kh_uisdk_location_disabled" = "Harap aktifkan layanan lokasi di perangkat Anda untuk menikmati pengalaman penuh";
 
-"kh_uisdk_location_rationale_shown" = "";
+"kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ poin Reward";
 
 "kh_uisdk_loyalty_info" = "Kartu Anda diperlukan untuk mengautorisasi transaksi ini, jika harga akhir perjalanan melebihi saldo poin Anda. Akun Anda tidak akan dikenakan biaya jika poin loyalitas sudah mencukupi seluruh harga.";
 
-"kh_uisdk_loyalty_info_add_points" = "";
+"kh_uisdk_loyalty_info_add_points" = "%@ poin loyalitas akan ditambahkan ke saldo akun Anda di akhir perjalanan";
 
 "kh_uisdk_loyalty_info_remove_points" = "%@ poin loyalitas akan dikurangi dari saldo akun Anda di akhir %@ poin loyalitas akan dikurangi dari saldo akun Anda di akhir perjalanan";
 
@@ -674,7 +674,7 @@
 
 "kh_uisdk_minutes_plurals.zero" = "%d menit";
 
-"kh_uisdk_minutes_plurals.one" = "";
+"kh_uisdk_minutes_plurals.one" = "%d menit";
 
 "kh_uisdk_minutes_plurals.other" = "%d menit";
 
@@ -708,7 +708,7 @@
 
 "kh_uisdk_no_quotes_in_selected_category" = "Maaf, tidak ada ketersediaan untuk kategori ini. Silakan pilih kategori lain.";
 
-"kh_uisdk_no_trips" = "";
+"kh_uisdk_no_trips" = "Tidak ada wahana";
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Sertifikat SSL tidak valid";
 
@@ -720,7 +720,7 @@
 
 "kh_uisdk_origin_book_error" = "Anda harus memilih lokasi penjemputan sebelum memesan perjalanan";
 
-"kh_uisdk_P0001" = "";
+"kh_uisdk_P0001" = "Gagal mengambil UserID dari token";
 
 "kh_uisdk_P0002" = "Layanan pembayaran tidak terhubung";
 
@@ -784,7 +784,7 @@
 
 "kh_uisdk_price_meet_and_greet" = "Meet and greet";
 
-"kh_uisdk_production_link" = "";
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "Profil";
 
@@ -830,7 +830,7 @@
 
 "kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ untuk menyarankan armada berita";
 
-"kh_uisdk_quotes_error_no_coverage_title" = "";
+"kh_uisdk_quotes_error_no_coverage_title" = "Belum ada armada di area ini";
 
 "kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Harap coba filter yang berbeda.";
 
@@ -846,7 +846,7 @@
 
 "kh_uisdk_quotes_no_availability_subtitle" = "Silakan pilih lain waktu";
 
-"kh_uisdk_quotes_no_availability_title" = "";
+"kh_uisdk_quotes_no_availability_title" = "Tidak ada ketersediaan untuk waktu yang diminta";
 
 "kh_uisdk_rate_trip_label" = "Bagaimana Anda menilai perjalanan Anda?";
 
@@ -856,7 +856,7 @@
 
 "kh_uisdk_recents_empty" = "Tidak ada hasil terbaru";
 
-"kh_uisdk_register" = "";
+"kh_uisdk_register" = "Daftar";
 
 "kh_uisdk_report_issue" = "Laporkan masalah";
 
@@ -872,7 +872,7 @@
 
 "kh_uisdk_reset_filter" = "Setel ulang filter";
 
-"kh_uisdk_result" = "";
+"kh_uisdk_result" = "%1$@ hasil";
 
 "kh_uisdk_results" = "hasil";
 
@@ -918,7 +918,7 @@
 
 "kh_uisdk_schedule_ride" = "Jadwalkan perjalanan";
 
-"kh_uisdk_set_on_map" = "";
+"kh_uisdk_set_on_map" = "Letakkan di peta";
 
 "kh_uisdk_set_prebook_time" = "Atur waktu penjemputan";
 
@@ -932,7 +932,7 @@
 
 "kh_uisdk_signup_email_subscribe_copy" = "Saya tidak ingin menerima tumpangan, promo, atau penawaran gratis";
 
-"kh_uisdk_signup_pending_message" = "";
+"kh_uisdk_signup_pending_message" = "Kami akan memberi tahu Anda melalui email setelah permintaan Anda diproses.";
 
 "kh_uisdk_something_went_wrong" = "Ada yang tidak beres";
 
@@ -940,7 +940,7 @@
 
 "kh_uisdk_sort_by" = "Sortir dengan";
 
-"kh_uisdk_staging_link" = "";
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
 "kh_uisdk_star_excellent" = "Memuaskan";
 
@@ -958,7 +958,7 @@
 
 "kh_uisdk_submit_button_text" = "Beri tahu kami mengapa Anda memberi penilaian ini?";
 
-"kh_uisdk_supplier_email" = "";
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
 
 "kh_uisdk_support_email" = "support@karhoo.com";
 
@@ -1034,15 +1034,15 @@
 
 "kh_uisdk_trip_summary" = "Ringkasan perjalanan";
 
-"kh_uisdk_trip_summary_add_to_calendar" = "";
+"kh_uisdk_trip_summary_add_to_calendar" = "Tambahkan ke kalender";
 
-"kh_uisdk_trip_summary_added_to_calendar" = "";
+"kh_uisdk_trip_summary_added_to_calendar" = "PERJALANAN DITAMBAHKAN KE KALENDER";
 
 "kh_uisdk_trip_summary_calendar_event_title" = "Naik ke %@";
 
-"kh_uisdk_trip_summary_flight_number" = "";
+"kh_uisdk_trip_summary_flight_number" = "Nomor penerbangan";
 
-"kh_uisdk_trip_summary_train_number" = "";
+"kh_uisdk_trip_summary_train_number" = "Nomor kereta";
 
 "kh_uisdk_unchecked" = "Tidak dicentang";
 
@@ -1066,23 +1066,23 @@
 
 "kh_uisdk_you_may_be_charged" = "Anda akan dikenakan biaya pembatalan sebesar %@ .\n\nApakah Anda ingin melanjutkan?";
 
-"KSDK01" = "";
+"KSDK01" = "Ada yang salah tapi kita tidak tahu apa itu";
 
-"KSDK02" = "";
+"KSDK02" = "Izin pengguna tidak ada";
 
-"KSDK03" = "";
+"KSDK03" = "Pengguna sudah masuk";
 
-"MEET_AND_GREET" = "";
+"MEET_AND_GREET" = "Bertemu dan Menyapa";
 
-"MPV" = "";
+"MPV" = "MPV";
 
 "pay_button_with_value" = "Pra-autorisasi %@";
 
-"Q0001" = "";
+"Q0001" = "Penjemputan dan tujuan tidak boleh sama.";
 
 "Text.Error.EmailValidationError" = "Periksa alamat email Anda dieja dengan benar";
 
-"Text.Generic.Close" = "";
+"Text.Generic.Close" = "Dekat";
 
 "Text.SupportMailMessage.ReportIssueSubject" = "Laporan Issue";
 
