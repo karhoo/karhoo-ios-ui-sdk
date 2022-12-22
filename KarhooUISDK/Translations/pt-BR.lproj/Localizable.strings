@@ -1,0 +1,1094 @@
+"adyen.submitButton" = "";
+
+"adyen.submitButton.formatted" = "";
+
+"continue_button" = "";
+
+"K0001" = "";
+
+"K0002" = "";
+
+"K0003" = "";
+
+"K0004" = "";
+
+"K0005" = "";
+
+"K0006" = "";
+
+"K0007" = "";
+
+"K1001" = "";
+
+"K1003" = "";
+
+"K1004" = "";
+
+"K1005" = "";
+
+"K1006" = "";
+
+"K2001" = "";
+
+"K3001" = "";
+
+"K3003" = "";
+
+"K4001" = "";
+
+"K4002" = "";
+
+"K4003" = "";
+
+"K4004" = "";
+
+"K4005" = "";
+
+"K4006" = "";
+
+"K4007" = "";
+
+"K4008" = "";
+
+"K4009" = "";
+
+"K4010" = "";
+
+"K4011" = "";
+
+"K4012" = "";
+
+"K4013" = "";
+
+"K4014" = "";
+
+"K4018" = "";
+
+"K4020" = "";
+
+"K5001" = "";
+
+"K5002" = "";
+
+"K5003" = "";
+
+"kh_uisdk_about" = "Sobre";
+
+"kh_uisdk_acc_close_button" = "";
+
+"kh_uisdk_acc_destination_address" = "";
+
+"kh_uisdk_acc_loyalty_information" = "";
+
+"kh_uisdk_acc_pickup_address" = "";
+
+"kh_uisdk_acc_pickup_time" = "";
+
+"kh_uisdk_acc_ride_details" = "";
+
+"kh_uisdk_add_card" = "ADICIONAR CARTÃO";
+
+"kh_uisdk_add_comment_placeholder" = "";
+
+"kh_uisdk_add_flight_details" = "";
+
+"kh_uisdk_additional_comments" = "Comentários adicionais (cadeirinha de criança, cadeira de rodas, etc.)";
+
+"kh_uisdk_address_drop_off" = "Destino";
+
+"kh_uisdk_address_pick_up" = "Embarque";
+
+"kh_uisdk_address_picker_add_pickup" = "Adicionar endereço de embarque";
+
+"kh_uisdk_address_picker_destination_title" = "";
+
+"kh_uisdk_address_picker_dropoff_booking" = "Adicionar endereço de destino";
+
+"kh_uisdk_address_picker_enter_destination" = "Inserir endereço de destino";
+
+"kh_uisdk_address_picker_enter_pickup" = "Inserir endereço de embarque";
+
+"kh_uisdk_address_picker_pickup_title" = "";
+
+"kh_uisdk_address_picker_prebook" = "";
+
+"kh_uisdk_adyen_payment_error_10" = "";
+
+"kh_uisdk_adyen_payment_error_11" = "";
+
+"kh_uisdk_adyen_payment_error_12" = "";
+
+"kh_uisdk_adyen_payment_error_14" = "";
+
+"kh_uisdk_adyen_payment_error_15" = "";
+
+"kh_uisdk_adyen_payment_error_16" = "";
+
+"kh_uisdk_adyen_payment_error_17" = "";
+
+"kh_uisdk_adyen_payment_error_18" = "";
+
+"kh_uisdk_adyen_payment_error_19" = "";
+
+"kh_uisdk_adyen_payment_error_2" = "";
+
+"kh_uisdk_adyen_payment_error_20" = "";
+
+"kh_uisdk_adyen_payment_error_21" = "A transação não foi submetida corretamente para processamento.";
+
+"kh_uisdk_adyen_payment_error_22" = "Os controles de risco de pré-autorização e pós-autorização indicaram uma pontuação de fraude combinada de 100 ou mais. Por isso, a transação foi assinalada como fraudulenta e foi recusada.";
+
+"kh_uisdk_adyen_payment_error_23" = "Transação negada";
+
+"kh_uisdk_adyen_payment_error_24" = "CVC inválido (código de segurança do cartão).";
+
+"kh_uisdk_adyen_payment_error_25" = "Cartão restrito";
+
+"kh_uisdk_adyen_payment_error_26" = "Pedido de autorização revogado";
+
+"kh_uisdk_adyen_payment_error_27" = "Erro não genérico";
+
+"kh_uisdk_adyen_payment_error_28" = "";
+
+"kh_uisdk_adyen_payment_error_29" = "";
+
+"kh_uisdk_adyen_payment_error_3" = "";
+
+"kh_uisdk_adyen_payment_error_31" = "O emissor comunicou a transação como suspeita de fraude.";
+
+"kh_uisdk_adyen_payment_error_32" = "";
+
+"kh_uisdk_adyen_payment_error_33" = "";
+
+"kh_uisdk_adyen_payment_error_34" = "";
+
+"kh_uisdk_adyen_payment_error_35" = "";
+
+"kh_uisdk_adyen_payment_error_36" = "";
+
+"kh_uisdk_adyen_payment_error_37" = "";
+
+"kh_uisdk_adyen_payment_error_38" = "O emissor recusou a solicitação de isenção de autenticação e exige que esta transação seja autenticada. Tente novamente com 3D Secure.";
+
+"kh_uisdk_adyen_payment_error_39" = "";
+
+"kh_uisdk_adyen_payment_error_4" = "";
+
+"kh_uisdk_adyen_payment_error_40" = "Não é possível estabelecer uma conexão com a rede de pagamento. Tente efetuar a transação novamente, com um método de pagamento alternativo.";
+
+"kh_uisdk_adyen_payment_error_41" = "É necessário uma senha ou assinatura. Tente efetuar a transação novamente.";
+
+"kh_uisdk_adyen_payment_error_42" = "A autenticação 3D Secure falhou devido a um problema com a rede ou com o emissor. Tente efetuar a transação novamente ou tente usar um método de pagamento alternativo.";
+
+"kh_uisdk_adyen_payment_error_5" = "";
+
+"kh_uisdk_adyen_payment_error_6" = "";
+
+"kh_uisdk_adyen_payment_error_7" = "";
+
+"kh_uisdk_adyen_payment_error_8" = "";
+
+"kh_uisdk_adyen_payment_error_9" = "";
+
+"kh_uisdk_airport_booking_message" = "";
+
+"kh_uisdk_allocating_trip_one" = "Aguarde enquanto atribuímos um motorista";
+
+"kh_uisdk_allocating_trip_two" = "Isto poderá demorar alguns minutos";
+
+"kh_uisdk_allocation_delay_text" = "A frota está demorando mais do que o habitual para atribuir um motorista. Aguarde, entre em contato com a frota ou cancele e reserve novamente com uma frota diferente.";
+
+"kh_uisdk_allocation_delay_title" = "Demora na atribuição";
+
+"kh_uisdk_alternative" = "ESCOLHA UMA ALTERNATIVA";
+
+"kh_uisdk_arrival" = "Chegada";
+
+"kh_uisdk_arrived" = "O seu motorista %@ chegou";
+
+"kh_uisdk_back" = "Voltar";
+
+"kh_uisdk_baggage_max" = "Máx. de %1$@ bagagem(s)";
+
+"kh_uisdk_base" = "Tarifa base";
+
+"kh_uisdk_base_fare_explanation" = "A tarifa final pode ser afetada por gorjetas, pedágios, impostos e outros custos extra.";
+
+"kh_uisdk_book_now" = "CONFIRMAR E PAGAR";
+
+"kh_uisdk_book_return_ride" = "Reservar viagem de volta";
+
+"kh_uisdk_booking_car" = "RESERVAR VIAGEM";
+
+"kh_uisdk_booking_checkout_add_passenger" = "Adicionar detalhes dos passageiros";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "Adicionar";
+
+"kh_uisdk_booking_checkout_passenger" = "Passageiro";
+
+"kh_uisdk_booking_checkout_title" = "Checkout";
+
+"kh_uisdk_booking_confirmation" = "Reserva confirmada";
+
+"kh_uisdk_booking_details_error" = "Detalhes de reserva inválidos";
+
+"kh_uisdk_booking_failed" = "Falha na reserva";
+
+"kh_uisdk_booking_failed_body" = "Lamentamos, a procura é elevada neste momento e a %1$@ não tem motoristas disponíveis.";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Lamentamos, a demanda está elevada neste momento. A frota selecionada não possui motoristas disponíveis.";
+
+"kh_uisdk_booking_terms" = "Ao efetuar uma reserva, você aceita os %2$@ e %3$@ da %1$@ e os %3$@ e %5$@ da %4$@.";
+
+"kh_uisdk_booking_terms_and_conditions" = "Termos de Uso";
+
+"kh_uisdk_bookings" = "Reservas";
+
+"kh_uisdk_call" = "LIGAR PARA MOTORISTA";
+
+"kh_uisdk_cancel" = "CANCELAR";
+
+"kh_uisdk_cancel_ride" = "Cancelar viagem";
+
+"kh_uisdk_cancel_ride_successful" = "Sua viagem foi cancelada";
+
+"kh_uisdk_cancel_ride_successful_message" = "Sua viagem foi cancelada.";
+
+"kh_uisdk_cancel_your_ride" = "Cancelar viagem?";
+
+"kh_uisdk_cancelled" = "Cancelada";
+
+"kh_uisdk_cancelled_by_dispatch" = "A %@ cancelou sua viagem";
+
+"kh_uisdk_cancelled_by_user" = "Você cancelou sua viagem com a %@";
+
+"kh_uisdk_cancelling" = "Toque e segure para cancelar";
+
+"kh_uisdk_cancelling_ride" = "Cancelando a viagem";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "Cartão";
+
+"kh_uisdk_checked" = "Verificado";
+
+"kh_uisdk_checkout_as_guest" = "RESERVAR VIAGEM";
+
+"kh_uisdk_completed" = "Esperamos que tenha gostado da sua viagem";
+
+"kh_uisdk_confirmed" = "Sua viagem com %@ foi confirmada";
+
+"kh_uisdk_contact" = "CONTATO";
+
+"kh_uisdk_contact_driver" = "Falar com motorista";
+
+"kh_uisdk_contact_fleet" = "Entrar em contato com a frota";
+
+"kh_uisdk_contact_us" = "Fale conosco";
+
+"kh_uisdk_contact_us_link" = "";
+
+"kh_uisdk_continue_journey" = "CONTINUAR";
+
+"kh_uisdk_could_not_load_trips" = "";
+
+"kh_uisdk_country_search" = "Pesquisar país/região";
+
+"kh_uisdk_current_location" = "Selecionar localização atual";
+
+"kh_uisdk_date" = "Data";
+
+"kh_uisdk_destination_book_error" = "Selecione um destino para reservar uma viagem";
+
+"kh_uisdk_difficulties_cancelling_message" = "Estamos com dificuldades para cancelar sua viagem. Entre em contato com a frota.";
+
+"kh_uisdk_difficulties_cancelling_title" = "Dificuldades no cancelamento";
+
+"kh_uisdk_dismiss" = "FECHAR";
+
+"kh_uisdk_dispatch_cancelled" = "Lamentamos, a %@ não tem motoristas disponíveis neste momento.";
+
+"kh_uisdk_drawer_closed" = "Gaveta fechada";
+
+"kh_uisdk_drawer_open" = "Gaveta aberta";
+
+"kh_uisdk_driver_arrival" = "Chegada prev. motorista";
+
+"kh_uisdk_driver_en_route" = "O seu motorista %@ está a caminho";
+
+"kh_uisdk_edit" = "Editar";
+
+"kh_uisdk_electric" = "Elétrico";
+
+"kh_uisdk_email_hint" = "E-mail";
+
+"kh_uisdk_email_info" = "Não delete estas informações: elas nos ajudam a melhorar o app";
+
+"kh_uisdk_email_report_issue_message" = "Use o espaço abaixo para relatar um problema específico com a sua viagem.";
+
+"kh_uisdk_enter_destination" = "Inserir endereço de destino";
+
+"kh_uisdk_erase_address" = "Eliminar endereço";
+
+"kh_uisdk_error" = "Erro";
+
+"kh_uisdk_error_invalid_password" = "";
+
+"kh_uisdk_errors_cant_send_email" = "Lamentamos, não foi possível enviar o e-mail. Configure primeiro seu app de e-mail.";
+
+"kh_uisdk_errors_flight_number_validator_error" = "Número do voo";
+
+"kh_uisdk_errors_force_update_button" = "Atualizar";
+
+"kh_uisdk_errors_force_update_message" = "Atualize o app para continuar.";
+
+"kh_uisdk_errors_force_update_title" = "Nova versão disponível";
+
+"kh_uisdk_errors_get_user_fail" = "Ocorreu um problema ao carregar seu perfil.";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "Problema com a inicialização de pagamentos, entre em contato com o apoio ao cliente.";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "A pré-reserva deve ser efetuada com pelo menos uma hora de antecedência.";
+
+"kh_uisdk_estimated_arrival_time" = "Horário previsto de chegada";
+
+"kh_uisdk_estimated_fare" = "Preço estimado";
+
+"kh_uisdk_estimated_price" = "Preço estimado";
+
+"kh_uisdk_eta" = "Horário previsto de chegada";
+
+"kh_uisdk_exec" = "Executivo";
+
+"kh_uisdk_extra_capabilities" = "";
+
+"kh_uisdk_faq_link" = "";
+
+"kh_uisdk_faretype_info_base" = "A tarifa final pode ser afetada\n por gorjetas, pedágios, impostos e outros custos extra.";
+
+"kh_uisdk_feedback" = "Feedback";
+
+"kh_uisdk_feedback_email" = "";
+
+"kh_uisdk_feedback_submitted" = "Obrigado por enviar seu feedback.";
+
+"kh_uisdk_feedback_title" = "Conte mais sobre a sua viagem";
+
+"kh_uisdk_fees_and_taxes_included" = "Impostos e taxas incluídos";
+
+"kh_uisdk_filter" = "Filtro";
+
+"kh_uisdk_filter_all" = "Tudo";
+
+"kh_uisdk_filter_berline" = "Sedã";
+
+"kh_uisdk_filter_bike" = "Bicicleta";
+
+"kh_uisdk_filter_child_seat" = "Cadeirinha de criança";
+
+"kh_uisdk_filter_driver_details" = "Detalhes do motorista";
+
+"kh_uisdk_filter_eco_friendly" = "Ecológico";
+
+"kh_uisdk_filter_electric" = "Elétrico";
+
+"kh_uisdk_filter_executive" = "Executivo";
+
+"kh_uisdk_filter_fight_tracking" = "Rastreamento de voos";
+
+"kh_uisdk_filter_fleet_capabilities" = "Características";
+
+"kh_uisdk_filter_free_cancellation" = "Cancelamento gratuito";
+
+"kh_uisdk_filter_free_waiting_time" = "Tempo de espera gratuito";
+
+"kh_uisdk_filter_gps_tracking" = "Rastreamento GPS";
+
+"kh_uisdk_filter_hybrid" = "Híbrido";
+
+"kh_uisdk_filter_luggages" = "Bagagem(s)";
+
+"kh_uisdk_filter_luxury" = "Luxo";
+
+"kh_uisdk_filter_moto" = "Moto";
+
+"kh_uisdk_filter_page_results" = "Ver todos os %@ resultados";
+
+"kh_uisdk_filter_passengers" = "Passageiro(s)";
+
+"kh_uisdk_filter_quote_types" = "Tipos de cotação";
+
+"kh_uisdk_filter_service_agreements" = "Cancelamento e tempo de espera";
+
+"kh_uisdk_filter_standard" = "Standard";
+
+"kh_uisdk_filter_taxi" = "Táxi";
+
+"kh_uisdk_filter_train_tracking" = "Rastreamento de trens";
+
+"kh_uisdk_filter_van" = "Van";
+
+"kh_uisdk_filter_vehicle_class" = "Categoria do veículo";
+
+"kh_uisdk_filter_vehicle_details" = "Detalhes do veículo";
+
+"kh_uisdk_filter_vehicle_extras" = "Extras do veículo";
+
+"kh_uisdk_filter_vehicle_types" = "Tipos de veículos";
+
+"kh_uisdk_filter_wheelchair" = "Acessível para cadeira de rodas";
+
+"kh_uisdk_finding_your_ride" = "Carregando sua viagem...";
+
+"kh_uisdk_first_name_hint" = "Nome";
+
+"kh_uisdk_fixed_fare" = "Preço fixo";
+
+"kh_uisdk_fleet" = "Frota";
+
+"kh_uisdk_fleet_recommendation_body" = "Obrigado por recomendar uma frota na sua região. Para chegarmos até você o mais rápido possível, especifique a região e o nome da empresa que gostaria de recomendar.";
+
+"kh_uisdk_fleet_recommendation_subject" = "Recomendação de frota na minha região";
+
+"kh_uisdk_flight_number" = "Número do voo (opcional)";
+
+"kh_uisdk_flight_tracking" = "Rastreamento de voos";
+
+"kh_uisdk_forgotten_password" = "";
+
+"kh_uisdk_free_cancellation_asap" = "";
+
+"kh_uisdk_got_it" = "OK";
+
+"kh_uisdk_gps_tracking" = "Rastreamento GPS";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "Métodos de pagamento";
+
+"kh_uisdk_help" = "Ajuda";
+
+"kh_uisdk_hours_plural.one" = "%d hora";
+
+"kh_uisdk_hours_plural.other" = "%d horas";
+
+"kh_uisdk_hours_plural.zero" = "%d hora";
+
+"kh_uisdk_hours_plural.one" = "";
+
+"kh_uisdk_hours_plural.other" = "";
+
+"kh_uisdk_hours_plural.zero" = "";
+
+"kh_uisdk_info" = "Info";
+
+"kh_uisdk_initialised" = "Iniciando sua viagem";
+
+"kh_uisdk_invalid_email" = "E-mail inválido";
+
+"kh_uisdk_invalid_empty_field" = "Informação em falta";
+
+"kh_uisdk_invalid_input_value" = "Valor inválido";
+
+"kh_uisdk_invalid_phone_number" = "Número de telefone inválido";
+
+"kh_uisdk_K0001" = "Erro geral.";
+
+"kh_uisdk_K0002" = "Solicitação inválida";
+
+"kh_uisdk_K0003" = "Não foi possível ler o token de autorização";
+
+"kh_uisdk_K0004" = "A autenticação é necessária para este caminho";
+
+"kh_uisdk_K0005" = "";
+
+"kh_uisdk_K0006" = "Limite excedido";
+
+"kh_uisdk_K0007" = "";
+
+"kh_uisdk_K1001" = "";
+
+"kh_uisdk_K1003" = "";
+
+"kh_uisdk_K1004" = "";
+
+"kh_uisdk_K1005" = "";
+
+"kh_uisdk_K1006" = "";
+
+"kh_uisdk_K1999" = "";
+
+"kh_uisdk_K2001" = "Não foi possível acessar o endereço";
+
+"kh_uisdk_K3001" = "Não foi possível carregar as cotações";
+
+"kh_uisdk_K3002" = "Lamentamos, no momento as reservas instantâneas não estão disponíveis para este destino. Mas você pode reservar a sua próxima viagem!";
+
+"kh_uisdk_K3003" = "Não foi possível carregar a cotação";
+
+"kh_uisdk_K4001" = "Não foi possível reservar a viagem";
+
+"kh_uisdk_K4002" = "Não foi possível reservar a viagem (forneça os detalhes de pelo menos um passageiro)";
+
+"kh_uisdk_K4003" = "Não foi possível reservar a viagem (cotação não encontrada)";
+
+"kh_uisdk_K4004" = "Não foi possível reservar a viagem (cotação vencida)";
+
+"kh_uisdk_K4005" = "";
+
+"kh_uisdk_K4006" = "Não foi possível reservar a viagem (falha na pré-autorização do pagamento)";
+
+"kh_uisdk_K4007" = "Não foi possível cancelar a viagem";
+
+"kh_uisdk_K4008" = "Não foi possível cancelar a viagem (viagem não encontrada)";
+
+"kh_uisdk_K4009" = "";
+
+"kh_uisdk_K4010" = "Não foi possível cancelar a viagem (viagem já cancelada)";
+
+"kh_uisdk_K4011" = "Não foi possível obter a viagem";
+
+"kh_uisdk_K4012" = "Não foi possível obter a viagem (viagem não encontrada)";
+
+"kh_uisdk_K4013" = "";
+
+"kh_uisdk_K4014" = "";
+
+"kh_uisdk_K4015" = "";
+
+"kh_uisdk_K4018" = "Não foi possível reservar a viagem (cotação indisponível)";
+
+"kh_uisdk_K4020" = "Não foi possível reservar a viagem com o DMS selecionado";
+
+"kh_uisdk_K4025" = "O preço da cotação aumentou durante o processo de reserva.";
+
+"kh_uisdk_K5001" = "Não foi possível carregar as cotações";
+
+"kh_uisdk_K5002" = "Não foi possível obter disponibilidade (sem disponibilidade na região solicitada)";
+
+"kh_uisdk_K5003" = "Não foi possível obter disponibilidade nesta região para as categorias selecionadas";
+
+"kh_uisdk_K6001" = "Não foi possível autenticar";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "Ocorreu um problema ao efetuar esta reserva. Tente novamente ou entre em contato com o apoio ao cliente.";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "Problema na reserva";
+
+"kh_uisdk_karhoo_general_terms_url" = "";
+
+"kh_uisdk_karhoo_id" = "";
+
+"kh_uisdk_karhoo_privacy_policy" = "Política de Privacidade";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "";
+
+"kh_uisdk_KP001" = "";
+
+"kh_uisdk_KP002" = "";
+
+"kh_uisdk_KP003" = "Método de pagamento padrão não encontrado";
+
+"kh_uisdk_KP004" = "Cartão de crédito padrão não encontrado";
+
+"kh_uisdk_KP005" = "As informações do navegador devem estar definidas para aplicar o 3DS";
+
+"kh_uisdk_KP006" = "";
+
+"kh_uisdk_KP007" = "";
+
+"kh_uisdk_KP008" = "";
+
+"kh_uisdk_KP009" = "";
+
+"kh_uisdk_KP010" = "";
+
+"kh_uisdk_KP011" = "";
+
+"kh_uisdk_label_and" = "e";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "Política de Cancelamento";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "Termos e Condições";
+
+"kh_uisdk_last_name_hint" = "Sobrenome";
+
+"kh_uisdk_last_trip_id" = "ID da última viagem: %1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "ID da última viagem: a definir";
+
+"kh_uisdk_legal_notice_label" = "Aviso legal";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "~ min";
+
+"kh_uisdk_locale" = "pt_BR";
+
+"kh_uisdk_location_disabled" = "Ative as permissões de localização no seu dispositivo para aproveitar a experiência completa";
+
+"kh_uisdk_location_rationale_shown" = "";
+
+"kh_uisdk_loyalty_balance_title" = "Saldo: %@ pontos Reward";
+
+"kh_uisdk_loyalty_info" = "Precisamos dos dados do seu cartão para autorizar esta transação, caso o preço final da viagem exceda seu saldo de pontos. Caso os seus pontos de fidelidade cubram o preço total, não debitaremos nada em sua conta.";
+
+"kh_uisdk_loyalty_info_add_points" = "";
+
+"kh_uisdk_loyalty_info_remove_points" = "";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Lamentamos, o seu saldo de pontos Reward é insuficiente";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "Não é possível usar pontos Reward para pré-autorizar esta viagem";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "Ao final desta viagem, serão adicionados %1$@ pontos Reward ao seu saldo";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "Você não pode usar seus pontos Reward";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "Seu saldo de pontos Reward não é suficiente para pagar esta viagem";
+
+"kh_uisdk_loyalty_separator" = "Ou";
+
+"kh_uisdk_loyalty_title" = "Pontos Reward";
+
+"kh_uisdk_loyalty_unknown_error" = "Ocorreu um erro. Para ganhar ou usar pontos Reward, tente novamente mais tarde.";
+
+"kh_uisdk_loyalty_unsupported_currency" = "Erro: moeda não suportada";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "Você pode usar seus pontos Reward para pagar esta viagem";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Utilize %@ pontos Reward para pagar %@ %@";
+
+"kh_uisdk_loyalty_use_points_title" = "Use seus pontos Reward";
+
+"kh_uisdk_map_selector" = "Definir localização no mapa";
+
+"kh_uisdk_meeting_point" = "Ponto de encontro";
+
+"kh_uisdk_metered" = "Medido por taxímetro";
+
+"kh_uisdk_min" = "min.";
+
+"kh_uisdk_mins" = "min.";
+
+"kh_uisdk_minutes_plurals.one" = "%d minuto";
+
+"kh_uisdk_minutes_plurals.other" = "%d minutos";
+
+"kh_uisdk_minutes_plurals.zero" = "%d minuto";
+
+"kh_uisdk_minutes_plurals.one" = "";
+
+"kh_uisdk_minutes_plurals.other" = "";
+
+"kh_uisdk_minutes_plurals.zero" = "";
+
+"kh_uisdk_mobile_phone_number_hint" = "Número de celular";
+
+"kh_uisdk_moto" = "Moto";
+
+"kh_uisdk_mpv" = "Monovolume";
+
+"kh_uisdk_network_error" = "Estamos com problemas de conexão à rede";
+
+"kh_uisdk_new_ride" = "RESERVE UMA VIAGEM";
+
+"kh_uisdk_next" = "Próximo";
+
+"kh_uisdk_no" = "Não";
+
+"kh_uisdk_no_availability_body" = "%1$@ se tiver sugestões de novas frotas.";
+
+"kh_uisdk_no_availability_link" = "Fale conosco";
+
+"kh_uisdk_no_cars_available" = "Lamentamos, não há carros disponíveis neste momento. Verifique novamente em breve.";
+
+"kh_uisdk_no_email_setup_error" = "Configure uma conta de e-mail em seu dispositivo";
+
+"kh_uisdk_no_location_permission_message" = "Para exibir a sua localização, ative as permissões de localização para este app nas definições do seu dispositivo.";
+
+"kh_uisdk_no_location_permission_title" = "É preciso ativar as permissões de localização";
+
+"kh_uisdk_no_quotes_in_selected_category" = "Lamentamos, não há disponibilidade para esta categoria. Escolha outra categoria.";
+
+"kh_uisdk_no_trips" = "";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "Certificado SSL inválido";
+
+"kh_uisdk_offer_expired" = "Cotação vencida";
+
+"kh_uisdk_offer_expired_text" = "Selecione uma nova cotação para continuar com a sua reserva";
+
+"kh_uisdk_ok" = "OK";
+
+"kh_uisdk_origin_book_error" = "Selecione um local de embarque para reservar uma viagem";
+
+"kh_uisdk_P0001" = "";
+
+"kh_uisdk_P0002" = "Falha ao estabelecer conexão com o fornecedor de pagamento";
+
+"kh_uisdk_pass_on_board" = "Você está a caminho. Boa viagem!";
+
+"kh_uisdk_passenger_details" = "Detalhes do passageiro";
+
+"kh_uisdk_passenger_details_add_passenger" = "Adicionar passageiro";
+
+"kh_uisdk_passenger_details_subtitle" = "Esta informação nos ajuda a oferecer uma viagem tranquila.";
+
+"kh_uisdk_passengers_max" = "Máx. de %d passageiros";
+
+"kh_uisdk_password_hint" = "Senha";
+
+"kh_uisdk_past_rides_empty" = "Você ainda não reservou nenhuma viagem. Vamos ajudar você a chegar ao seu destino!";
+
+"kh_uisdk_payment" = "Pagamento";
+
+"kh_uisdk_payment_details" = "Detalhes do pagamento";
+
+"kh_uisdk_payment_issue" = "Erro no pagamento";
+
+"kh_uisdk_payment_issue_message" = "Ocorreu um problema com seu cartão";
+
+"kh_uisdk_payment_payment_alert_update_card" = "Atualizar cartão";
+
+"kh_uisdk_payment_summary" = "RESUMO DO PAGAMENTO";
+
+"kh_uisdk_payments" = "Pagamentos";
+
+"kh_uisdk_pending" = "Pendente";
+
+"kh_uisdk_permission_rationale_location" = "Ative as permissões de localização no seu dispositivo para nos ajudar a encontrar você";
+
+"kh_uisdk_permissions" = "AUTORIZAÇÕES";
+
+"kh_uisdk_pickup_time" = "Horário de embarque";
+
+"kh_uisdk_pickup_type_curbside" = "Kerbside";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "Recepção de boas-vindas";
+
+"kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_prebook_confirmation" = "A sua viagem\nde: %1$@ \npara: %2$@ \nàs: %3$@ \nfoi confirmada.";
+
+"kh_uisdk_prebook_confirmed" = "Pré-reserva confirmada";
+
+"kh_uisdk_prebook_picker_title" = "Horário de embarque";
+
+"kh_uisdk_prebook_timezone_title" = "A reserva será efetuada no horário local";
+
+"kh_uisdk_price" = "Preço";
+
+"kh_uisdk_price_info_text_estimated" = "Esta frota oferece táxis não regulamentados. A cotação é uma estimativa baseada em fatores como tempo e distância total. Para mais informações, consulte os Termos e Condições da frota.";
+
+"kh_uisdk_price_info_text_fixed" = "Esta frota cobra uma tarifa fixa. A tarifa final pode ser afetada por custos extras como pedágios ou atrasos. Para mais informações, consulte os Termos e Condições da frota.";
+
+"kh_uisdk_price_info_text_metered" = "Esta frota oferece táxis regulamentados com taxímetro. A cotação é uma estimativa baseada em fatores como tempo e distância total.";
+
+"kh_uisdk_price_meet_and_greet" = "Recepção de boas-vindas";
+
+"kh_uisdk_production_link" = "";
+
+"kh_uisdk_profile" = "Perfil";
+
+"kh_uisdk_Q0001" = "Os locais de embarque e de destino não podem ser os mesmos";
+
+"kh_uisdk_question_four" = "Foi fácil usar o app?";
+
+"kh_uisdk_question_one" = "Você ficou satisfeito com a seleção de cotações (por exemplo, preços, frotas, chegada prevista)?";
+
+"kh_uisdk_question_three" = "Como foi a sua experiência no veículo (por exemplo, rota, motorista e limpeza)?";
+
+"kh_uisdk_question_two" = "Como foi a sua experiência ao selecionar o local de embarque e encontrar seu motorista?";
+
+"kh_uisdk_quote" = "Fornecedor";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "após a reserva";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "e";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Cancelamento gratuito até que o motorista esteja a caminho";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "antes do embarque";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "Cancelamento gratuito até";
+
+"kh_uisdk_quote_cell_details" = "Detalhes";
+
+"kh_uisdk_quote_learn_more" = "Saiba mais";
+
+"kh_uisdk_quoted_price" = "Preço cotado";
+
+"kh_uisdk_quotes_activity_title" = "Cotações";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Insira os endereços de embarque e destino para visualizar as cotações.";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "Endereço de embarque ou destino em falta";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Selecione outro horário";
+
+"kh_uisdk_quotes_error_no_availability_title" = "Sem disponibilidade para o horário solicitado";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Selecione outros filtros.";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "Não foi possível encontrar resultados com esses filtros.";
+
+"kh_uisdk_quotes_error_no_results_found" = "";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Os locais de embarque e de destino parecem semelhantes";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "Os locais de embarque e de destino parecem semelhantes";
+
+"kh_uisdk_quotes_no_availability" = "Ainda não operamos nesta região.";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "";
+
+"kh_uisdk_quotes_no_availability_title" = "";
+
+"kh_uisdk_rate_trip_label" = "Como você avaliaria a sua viagem?";
+
+"kh_uisdk_rating_submitted" = "Obrigado pelo seu feedback.";
+
+"kh_uisdk_rebook_ride" = "Remarcar viagem";
+
+"kh_uisdk_recents_empty" = "Nenhum resultado recente";
+
+"kh_uisdk_register" = "";
+
+"kh_uisdk_report_issue" = "Relatar problema";
+
+"kh_uisdk_request_car" = "CONFIRMAR RESERVA";
+
+"kh_uisdk_request_received" = "Reserva recebida";
+
+"kh_uisdk_requested" = "Sua viagem com %@ foi solicitada";
+
+"kh_uisdk_requesting" = "Solicitando";
+
+"kh_uisdk_requesting_car" = "Reservar viagem";
+
+"kh_uisdk_reset_filter" = "Reiniciar filtros";
+
+"kh_uisdk_result" = "";
+
+"kh_uisdk_results" = "resultados";
+
+"kh_uisdk_results_empty" = "Nenhum resultado encontrado";
+
+"kh_uisdk_results_ios" = "";
+
+"kh_uisdk_retrieving_dropoff" = "Procurando a localização de destino";
+
+"kh_uisdk_retrieving_pickup" = "Procurando a localização de embarque";
+
+"kh_uisdk_retrieving_quotes" = "Carregando cotações";
+
+"kh_uisdk_retry" = "Tentar novamente";
+
+"kh_uisdk_ride_confirmed" = "Viagem confirmada";
+
+"kh_uisdk_ride_contact_details" = "Detalhes";
+
+"kh_uisdk_ride_details" = "Detalhes da viagem";
+
+"kh_uisdk_ride_state_arrived" = "Chegou";
+
+"kh_uisdk_ride_state_cancelled" = "Cancelada";
+
+"kh_uisdk_ride_state_completed" = "Concluída";
+
+"kh_uisdk_ride_state_confirmed" = "Confirmada";
+
+"kh_uisdk_ride_state_der" = "Motorista a caminho";
+
+"kh_uisdk_ride_state_pob" = "Passageiro a bordo";
+
+"kh_uisdk_ride_state_requested" = "Solicitada";
+
+"kh_uisdk_rides" = "Viagens";
+
+"kh_uisdk_saloon" = "Sedã";
+
+"kh_uisdk_sandbox_link" = "";
+
+"kh_uisdk_save" = "Guardar";
+
+"kh_uisdk_schedule_ride" = "Agendar viagem";
+
+"kh_uisdk_set_on_map" = "";
+
+"kh_uisdk_set_prebook_time" = "Definir horário de embarque";
+
+"kh_uisdk_settings" = "Configurações";
+
+"kh_uisdk_sign_in" = "Entrar";
+
+"kh_uisdk_sign_in_but" = "ENTRAR";
+
+"kh_uisdk_sign_out" = "Sair";
+
+"kh_uisdk_signup_email_subscribe_copy" = "";
+
+"kh_uisdk_signup_pending_message" = "";
+
+"kh_uisdk_something_went_wrong" = "Algo deu errado";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "Desculpe, algo deu errado. Tente novamente ou escolha outra cotação.";
+
+"kh_uisdk_sort_by" = "Ordenar por";
+
+"kh_uisdk_staging_link" = "";
+
+"kh_uisdk_star_excellent" = "Excelente";
+
+"kh_uisdk_star_fair" = "Razoável";
+
+"kh_uisdk_star_good" = "Bom";
+
+"kh_uisdk_star_great" = "Muito bom";
+
+"kh_uisdk_star_poor" = "Ruim";
+
+"kh_uisdk_status" = "Estado";
+
+"kh_uisdk_submit" = "ENVIAR";
+
+"kh_uisdk_submit_button_text" = "Conte-nos o motivo desta classificação";
+
+"kh_uisdk_supplier_email" = "";
+
+"kh_uisdk_support_email" = "";
+
+"kh_uisdk_support_report_issue" = "Relatar problema";
+
+"kh_uisdk_switch_departure_destination" = "Alterar os locais de embarque e destino";
+
+"kh_uisdk_taxi" = "Táxi";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "Estamos com problemas técnicos.";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "";
+
+"kh_uisdk_terms_condition_full_string" = "Ao %1$@, aceita os %3$@ e %4$@  da %2$@";
+
+"kh_uisdk_thanks" = "Agradecemos seu interesse";
+
+"kh_uisdk_title_activity_address" = "Endereço";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "Enviar e-mail";
+
+"kh_uisdk_title_activity_rides" = "Viagens";
+
+"kh_uisdk_title_activity_threedsecure" = "3D Secure";
+
+"kh_uisdk_title_activity_trip" = "Viagem";
+
+"kh_uisdk_title_dispatch_cancelled" = "Pedido cancelado";
+
+"kh_uisdk_title_page_past" = "Anteriores";
+
+"kh_uisdk_title_page_upcoming" = "Próximas";
+
+"kh_uisdk_title_past_rides_empty" = "Sem viagens anteriores";
+
+"kh_uisdk_title_upcoming_rides_empty" = "Sem viagens futuras";
+
+"kh_uisdk_total_fare" = "Tarifa total";
+
+"kh_uisdk_track_driver" = "Localizar motorista";
+
+"kh_uisdk_track_trip" = "";
+
+"kh_uisdk_track_trip_alert_message" = "Pretende rastrear o veículo?";
+
+"kh_uisdk_track_trip_alert_title" = "O motorista está a caminho";
+
+"kh_uisdk_train_tracking" = "Rastreamento de trens";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Sua reserva foi cancelada. Entre em contato para mais informações.";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Cancelada pela frota";
+
+"kh_uisdk_trip_id" = "ID da viagem: %1$@";
+
+"kh_uisdk_trip_id_label" = "ID da viagem";
+
+"kh_uisdk_trip_ride_options" = "Opções da viagem";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "Sua reserva foi cancelada.";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "Você cancelou a reserva";
+
+"kh_uisdk_trip_status_completed" = "Você chegou ao seu destino";
+
+"kh_uisdk_trip_status_confirmed" = "Sua reserva foi aceita. Aguardando atribuição de motorista.";
+
+"kh_uisdk_trip_status_driver_arrived" = "O seu motorista chegou!";
+
+"kh_uisdk_trip_status_driver_en_route" = "O seu motorista está a caminho";
+
+"kh_uisdk_trip_status_requested" = "Aguarde enquanto a %1$@ atribui um motorista. Isto poderá demorar até 5 minutos.";
+
+"kh_uisdk_trip_summary" = "Resumo da viagem";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "";
+
+"kh_uisdk_trip_summary_flight_number" = "";
+
+"kh_uisdk_trip_summary_train_number" = "";
+
+"kh_uisdk_unchecked" = "Desmarcado";
+
+"kh_uisdk_upcoming_rides_empty" = "Lembre-se, você pode pré-reservar uma viagem com até sete dias de antecedência.";
+
+"kh_uisdk_vehicle" = "Veículo";
+
+"kh_uisdk_vehicle_bus" = "Micro-ônibus";
+
+"kh_uisdk_vehicle_moto" = "Moto";
+
+"kh_uisdk_vehicle_mpv" = "Monovolume";
+
+"kh_uisdk_vehicle_standard" = "Standard";
+
+"kh_uisdk_wheelchair" = "Acessível para cadeira de rodas";
+
+"kh_uisdk_would_you_like_to_proceed" = "Quer continuar?";
+
+"kh_uisdk_yes" = "Sim";
+
+"kh_uisdk_you_may_be_charged" = "Será cobrada uma taxa de cancelamento, estimada em %@.\n\nQuer continuar?";
+
+"KSDK01" = "";
+
+"KSDK02" = "";
+
+"KSDK03" = "";
+
+"MEET_AND_GREET" = "";
+
+"MPV" = "";
+
+"pay_button_with_value" = "Pré-autorizar %@";
+
+"Q0001" = "";
+
+"Text.Error.EmailValidationError" = "";
+
+"Text.Generic.Close" = "";
+
+"Text.SupportMailMessage.ReportIssueSubject" = "";
+
+"Text.VehicleTag.Electric" = "";
+

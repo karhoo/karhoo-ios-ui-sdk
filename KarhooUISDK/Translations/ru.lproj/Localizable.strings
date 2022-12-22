@@ -1,0 +1,1094 @@
+"adyen.submitButton" = "";
+
+"adyen.submitButton.formatted" = "";
+
+"continue_button" = "";
+
+"K0001" = "";
+
+"K0002" = "";
+
+"K0003" = "";
+
+"K0004" = "";
+
+"K0005" = "";
+
+"K0006" = "";
+
+"K0007" = "";
+
+"K1001" = "";
+
+"K1003" = "";
+
+"K1004" = "";
+
+"K1005" = "";
+
+"K1006" = "";
+
+"K2001" = "";
+
+"K3001" = "";
+
+"K3003" = "";
+
+"K4001" = "";
+
+"K4002" = "";
+
+"K4003" = "";
+
+"K4004" = "";
+
+"K4005" = "";
+
+"K4006" = "";
+
+"K4007" = "";
+
+"K4008" = "";
+
+"K4009" = "";
+
+"K4010" = "";
+
+"K4011" = "";
+
+"K4012" = "";
+
+"K4013" = "";
+
+"K4014" = "";
+
+"K4018" = "";
+
+"K4020" = "";
+
+"K5001" = "";
+
+"K5002" = "";
+
+"K5003" = "";
+
+"kh_uisdk_about" = "О нас";
+
+"kh_uisdk_acc_close_button" = "";
+
+"kh_uisdk_acc_destination_address" = "";
+
+"kh_uisdk_acc_loyalty_information" = "";
+
+"kh_uisdk_acc_pickup_address" = "";
+
+"kh_uisdk_acc_pickup_time" = "";
+
+"kh_uisdk_acc_ride_details" = "";
+
+"kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
+
+"kh_uisdk_add_comment_placeholder" = "";
+
+"kh_uisdk_add_flight_details" = "";
+
+"kh_uisdk_additional_comments" = "Дополнительно (детское кресло, инвалидная коляска и т.д.)";
+
+"kh_uisdk_address_drop_off" = "Высадка";
+
+"kh_uisdk_address_pick_up" = "Посадка";
+
+"kh_uisdk_address_picker_add_pickup" = "Добавить место посадки";
+
+"kh_uisdk_address_picker_destination_title" = "";
+
+"kh_uisdk_address_picker_dropoff_booking" = "Добавить пункт назначения";
+
+"kh_uisdk_address_picker_enter_destination" = "Введите пункт назначения";
+
+"kh_uisdk_address_picker_enter_pickup" = "Введите место посадки";
+
+"kh_uisdk_address_picker_pickup_title" = "";
+
+"kh_uisdk_address_picker_prebook" = "";
+
+"kh_uisdk_adyen_payment_error_10" = "";
+
+"kh_uisdk_adyen_payment_error_11" = "";
+
+"kh_uisdk_adyen_payment_error_12" = "";
+
+"kh_uisdk_adyen_payment_error_14" = "";
+
+"kh_uisdk_adyen_payment_error_15" = "";
+
+"kh_uisdk_adyen_payment_error_16" = "";
+
+"kh_uisdk_adyen_payment_error_17" = "";
+
+"kh_uisdk_adyen_payment_error_18" = "";
+
+"kh_uisdk_adyen_payment_error_19" = "";
+
+"kh_uisdk_adyen_payment_error_2" = "";
+
+"kh_uisdk_adyen_payment_error_20" = "";
+
+"kh_uisdk_adyen_payment_error_21" = "Транзакция не была правильно отправлена на обработку.";
+
+"kh_uisdk_adyen_payment_error_22" = "Проверки риска перед авторизацией привели к тому, что оценка мошенничества составила 100 или более баллов. Поэтому транзакция была отменена и отмечена как мошенническая.";
+
+"kh_uisdk_adyen_payment_error_23" = "Транзакция не разрешена";
+
+"kh_uisdk_adyen_payment_error_24" = "Указанный CVC (код безопасности) недействителен.";
+
+"kh_uisdk_adyen_payment_error_25" = "Карта с ограниченным доступом";
+
+"kh_uisdk_adyen_payment_error_26" = "Отзыв приказа об авторизации";
+
+"kh_uisdk_adyen_payment_error_27" = "Необщая ошибка";
+
+"kh_uisdk_adyen_payment_error_28" = "";
+
+"kh_uisdk_adyen_payment_error_29" = "";
+
+"kh_uisdk_adyen_payment_error_3" = "";
+
+"kh_uisdk_adyen_payment_error_31" = "Эмитент отметил сделку как возможное мошенничество.";
+
+"kh_uisdk_adyen_payment_error_32" = "";
+
+"kh_uisdk_adyen_payment_error_33" = "";
+
+"kh_uisdk_adyen_payment_error_34" = "";
+
+"kh_uisdk_adyen_payment_error_35" = "";
+
+"kh_uisdk_adyen_payment_error_36" = "";
+
+"kh_uisdk_adyen_payment_error_37" = "";
+
+"kh_uisdk_adyen_payment_error_38" = "Эмитент отклонил запрос на освобождение от проверки подлинности и требует проверки подлинности для транзакции. Повторите попытку с 3D Secure.";
+
+"kh_uisdk_adyen_payment_error_39" = "";
+
+"kh_uisdk_adyen_payment_error_4" = "";
+
+"kh_uisdk_adyen_payment_error_40" = "Платежная сеть недоступна. Повторите транзакцию с другим способом оплаты.";
+
+"kh_uisdk_adyen_payment_error_41" = "Требуется PIN-код или подпись. Повторите транзакцию.";
+
+"kh_uisdk_adyen_payment_error_42" = "Аутентификация 3D Secure не удалась из-за проблемы в сети или эмитенте карты. Повторите транзакцию или повторите транзакцию с другим способом оплаты.";
+
+"kh_uisdk_adyen_payment_error_5" = "";
+
+"kh_uisdk_adyen_payment_error_6" = "";
+
+"kh_uisdk_adyen_payment_error_7" = "";
+
+"kh_uisdk_adyen_payment_error_8" = "";
+
+"kh_uisdk_adyen_payment_error_9" = "";
+
+"kh_uisdk_airport_booking_message" = "";
+
+"kh_uisdk_allocating_trip_one" = "Пожалуйста, подождите, пока мы ищем водителя";
+
+"kh_uisdk_allocating_trip_two" = "Это может занять минуту или две";
+
+"kh_uisdk_allocation_delay_text" = "Перевозчику требуется больше времени, чем обычно, чтобы найти водителя. Пожалуйста, подождите, свяжитесь с перевозчиком или отмените заказ и обратитесь к другому перевозчику.";
+
+"kh_uisdk_allocation_delay_title" = "Задержка распределения";
+
+"kh_uisdk_alternative" = "ВЫБРАТЬ АЛЬТЕРНАТИВУ";
+
+"kh_uisdk_arrival" = "Прибытие";
+
+"kh_uisdk_arrived" = "Ваш водитель %@ прибыл";
+
+"kh_uisdk_back" = "Назад";
+
+"kh_uisdk_baggage_max" = "Максимум %d багажа";
+
+"kh_uisdk_base" = "Базовый тариф";
+
+"kh_uisdk_base_fare_explanation" = "Окончательный тариф может зависеть от чаевых, налогов, дорожных и других сборов.";
+
+"kh_uisdk_book_now" = "ПОДТВЕРДИТЬ И ОПЛАТИТЬ";
+
+"kh_uisdk_book_return_ride" = "Забронировать поездку обратно";
+
+"kh_uisdk_booking_car" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
+
+"kh_uisdk_booking_checkout_add_passenger" = "Добавить информацию о пассажире";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "Добавить";
+
+"kh_uisdk_booking_checkout_passenger" = "Пассажир";
+
+"kh_uisdk_booking_checkout_title" = "Совершить покупку";
+
+"kh_uisdk_booking_confirmation" = "Бронирование подтверждено";
+
+"kh_uisdk_booking_details_error" = "Неверные данные бронирования";
+
+"kh_uisdk_booking_failed" = "Ошибка при бронировании";
+
+"kh_uisdk_booking_failed_body" = "Период высокого спроса на машины. У %1$@ нет свободных водителей.";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Период повышенного спроса. В выбранном вами перевозчике нет свободных водителей.";
+
+"kh_uisdk_booking_terms" = "Совершая бронирование, вы соглашаетесь с %1$@ | %2$@ и %3$@%4$@ | %3$@%5$@.";
+
+"kh_uisdk_booking_terms_and_conditions" = "Условия использования";
+
+"kh_uisdk_bookings" = "Бронирования";
+
+"kh_uisdk_call" = "ВЫЗОВ ВОДИТЕЛЯ";
+
+"kh_uisdk_cancel" = "ОТМЕНА";
+
+"kh_uisdk_cancel_ride" = "Отменить поездку";
+
+"kh_uisdk_cancel_ride_successful" = "Ваша поездка успешно отменена";
+
+"kh_uisdk_cancel_ride_successful_message" = "Ваша поездка успешно отменена.";
+
+"kh_uisdk_cancel_your_ride" = "Отменить поездку?";
+
+"kh_uisdk_cancelled" = "Отмена";
+
+"kh_uisdk_cancelled_by_dispatch" = "Перевозчик %@ отменил вашу поездку";
+
+"kh_uisdk_cancelled_by_user" = "Вы отменили поездку с %@";
+
+"kh_uisdk_cancelling" = "Нажмите и удерживайте, чтобы отменить";
+
+"kh_uisdk_cancelling_ride" = "Отмена поездки";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "Карта";
+
+"kh_uisdk_checked" = "Проверено";
+
+"kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
+
+"kh_uisdk_completed" = "Надеемся, вам понравилась ваша поездка!";
+
+"kh_uisdk_confirmed" = "Ваша поездка с %@ подтверждена";
+
+"kh_uisdk_contact" = "СВЯЗАТЬСЯ";
+
+"kh_uisdk_contact_driver" = "Связаться с водителем";
+
+"kh_uisdk_contact_fleet" = "Связаться с перевозчиком";
+
+"kh_uisdk_contact_us" = "Свяжитесь с нами";
+
+"kh_uisdk_contact_us_link" = "";
+
+"kh_uisdk_continue_journey" = "ПРОДОЛЖИТЬ";
+
+"kh_uisdk_could_not_load_trips" = "";
+
+"kh_uisdk_country_search" = "Страна/регион поиска";
+
+"kh_uisdk_current_location" = "Получить актуальную геолокацию";
+
+"kh_uisdk_date" = "Дата";
+
+"kh_uisdk_destination_book_error" = "Выберите пункт назначения, чтобы забронировать поездку";
+
+"kh_uisdk_difficulties_cancelling_message" = "У нас возникли проблемы с отменой поездки. Пожалуйста, свяжитесь с перевозчиком.";
+
+"kh_uisdk_difficulties_cancelling_title" = "Трудности с отменой";
+
+"kh_uisdk_dismiss" = "ОТМЕНИТЬ";
+
+"kh_uisdk_dispatch_cancelled" = "Извините, у %@ нет свободных водителей.";
+
+"kh_uisdk_drawer_closed" = "Ящик закрыт";
+
+"kh_uisdk_drawer_open" = "Ящик открыт";
+
+"kh_uisdk_driver_arrival" = "Расчетное время прибытия водителя";
+
+"kh_uisdk_driver_en_route" = "Ваш водитель из %@ в пути";
+
+"kh_uisdk_edit" = "Редактировать";
+
+"kh_uisdk_electric" = "Электромобиль";
+
+"kh_uisdk_email_hint" = "Эл. почта";
+
+"kh_uisdk_email_info" = "Пожалуйста, не удаляйте эту информацию: она помогает нам улучшить приложение.";
+
+"kh_uisdk_email_report_issue_message" = "Используйте поле ниже, чтобы сообщить о конкретной проблеме.";
+
+"kh_uisdk_enter_destination" = "Введите пункт назначения";
+
+"kh_uisdk_erase_address" = "Удалить адрес";
+
+"kh_uisdk_error" = "Ошибка";
+
+"kh_uisdk_error_invalid_password" = "";
+
+"kh_uisdk_errors_cant_send_email" = "Не удается отправить электронное сообщение. Сначала настройте почтовое приложение.";
+
+"kh_uisdk_errors_flight_number_validator_error" = "Номер рейса";
+
+"kh_uisdk_errors_force_update_button" = "Обновить";
+
+"kh_uisdk_errors_force_update_message" = "Пожалуйста, обновите приложение, чтобы продолжить.";
+
+"kh_uisdk_errors_force_update_title" = "Доступна новая версия";
+
+"kh_uisdk_errors_get_user_fail" = "Не удалось получить вашу учетную запись.";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "Проблема с инициализацией платежей, обратитесь в службу поддержки.";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "Предварительный заказ не может быть сделан в течение текущего часа.";
+
+"kh_uisdk_estimated_arrival_time" = "Ожидаемое время прибытия";
+
+"kh_uisdk_estimated_fare" = "Ориентировочная стоимость";
+
+"kh_uisdk_estimated_price" = "Ориентировочная стоимость";
+
+"kh_uisdk_eta" = "Расчетное время прибытия";
+
+"kh_uisdk_exec" = "Представительского класса";
+
+"kh_uisdk_extra_capabilities" = "";
+
+"kh_uisdk_faq_link" = "";
+
+"kh_uisdk_faretype_info_base" = "Окончательный тариф может зависеть\n от чаевых, налогов, дорожных и других сборов.";
+
+"kh_uisdk_feedback" = "Обратная связь";
+
+"kh_uisdk_feedback_email" = "";
+
+"kh_uisdk_feedback_submitted" = "Спасибо, что оставили свой отзыв";
+
+"kh_uisdk_feedback_title" = "Пожалуйста, подробнее расскажите о вашей поездке";
+
+"kh_uisdk_fees_and_taxes_included" = "Налоги и сборы включены";
+
+"kh_uisdk_filter" = "Фильтр";
+
+"kh_uisdk_filter_all" = "Все";
+
+"kh_uisdk_filter_berline" = "Седан";
+
+"kh_uisdk_filter_bike" = "Велосипед";
+
+"kh_uisdk_filter_child_seat" = "Детское сиденье";
+
+"kh_uisdk_filter_driver_details" = "Информация о водителе";
+
+"kh_uisdk_filter_eco_friendly" = "Экологичный";
+
+"kh_uisdk_filter_electric" = "Электромобиль";
+
+"kh_uisdk_filter_executive" = "Представительского класса";
+
+"kh_uisdk_filter_fight_tracking" = "Отслеживание рейсов";
+
+"kh_uisdk_filter_fleet_capabilities" = "Основные характеристики";
+
+"kh_uisdk_filter_free_cancellation" = "Бесплатная отмена";
+
+"kh_uisdk_filter_free_waiting_time" = "Бесплатное время ожидания";
+
+"kh_uisdk_filter_gps_tracking" = "GPS-трекинг";
+
+"kh_uisdk_filter_hybrid" = "Гибрид";
+
+"kh_uisdk_filter_luggages" = "Багаж";
+
+"kh_uisdk_filter_luxury" = "Люкс";
+
+"kh_uisdk_filter_moto" = "Мотоцикл";
+
+"kh_uisdk_filter_page_results" = "Просмотреть все результаты поиска %@";
+
+"kh_uisdk_filter_passengers" = "Пассажир(ы)";
+
+"kh_uisdk_filter_quote_types" = "Типы ценовых предложений";
+
+"kh_uisdk_filter_service_agreements" = "Отмена и время ожидания";
+
+"kh_uisdk_filter_standard" = "Стандарт";
+
+"kh_uisdk_filter_taxi" = "Такси";
+
+"kh_uisdk_filter_train_tracking" = "Отслеживание поездов";
+
+"kh_uisdk_filter_van" = "Микроавтобус";
+
+"kh_uisdk_filter_vehicle_class" = "Класс автомобиля";
+
+"kh_uisdk_filter_vehicle_details" = "Информация об автомобиле";
+
+"kh_uisdk_filter_vehicle_extras" = "Аксессуары для автомобиля";
+
+"kh_uisdk_filter_vehicle_types" = "Типы автомобилей";
+
+"kh_uisdk_filter_wheelchair" = "Доступен для инвалидной коляски";
+
+"kh_uisdk_finding_your_ride" = "Найдите свою поездку...";
+
+"kh_uisdk_first_name_hint" = "Имя";
+
+"kh_uisdk_fixed_fare" = "Фиксированная цена";
+
+"kh_uisdk_fleet" = "Перевозчик";
+
+"kh_uisdk_fleet_recommendation_body" = "Спасибо, что порекомендовали перевозчика в вашем районе. Чтобы мы начали работать в вашем районе как можно быстрее, пожалуйста, сообщите название района и рекомендуемого перевозчика.";
+
+"kh_uisdk_fleet_recommendation_subject" = "Рекомендация перевозчика в моем районе";
+
+"kh_uisdk_flight_number" = "Номер рейса (необязательно)";
+
+"kh_uisdk_flight_tracking" = "Отслеживание рейсов";
+
+"kh_uisdk_forgotten_password" = "";
+
+"kh_uisdk_free_cancellation_asap" = "";
+
+"kh_uisdk_got_it" = "ПОНЯТНО";
+
+"kh_uisdk_gps_tracking" = "GPS-трекинг";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "Способы оплаты";
+
+"kh_uisdk_help" = "Помощь";
+
+"kh_uisdk_hours_plural.one" = "%d час";
+
+"kh_uisdk_hours_plural.other" = "%d часов";
+
+"kh_uisdk_hours_plural.zero" = "%d час";
+
+"kh_uisdk_hours_plural.one" = "";
+
+"kh_uisdk_hours_plural.other" = "";
+
+"kh_uisdk_hours_plural.zero" = "";
+
+"kh_uisdk_info" = "Информация";
+
+"kh_uisdk_initialised" = "Karhoo инициализирует вашу поездку";
+
+"kh_uisdk_invalid_email" = "Неверный адрес электронной почты";
+
+"kh_uisdk_invalid_empty_field" = "Недостающая информация";
+
+"kh_uisdk_invalid_input_value" = "Неверное значение";
+
+"kh_uisdk_invalid_phone_number" = "Неправильный номер телефона";
+
+"kh_uisdk_K0001" = "Общая ошибка запроса.";
+
+"kh_uisdk_K0002" = "Запрос недействителен";
+
+"kh_uisdk_K0003" = "Не удалось прочитать маркер авторизации";
+
+"kh_uisdk_K0004" = "Необходима аутентификация";
+
+"kh_uisdk_K0005" = "";
+
+"kh_uisdk_K0006" = "Ограничение скорости превышено";
+
+"kh_uisdk_K0007" = "";
+
+"kh_uisdk_K1001" = "";
+
+"kh_uisdk_K1003" = "";
+
+"kh_uisdk_K1004" = "";
+
+"kh_uisdk_K1005" = "";
+
+"kh_uisdk_K1006" = "";
+
+"kh_uisdk_K1999" = "";
+
+"kh_uisdk_K2001" = "Не удалось получить адрес";
+
+"kh_uisdk_K3001" = "Не удалось загрузить предложение по ценам";
+
+"kh_uisdk_K3002" = "Приносим извинения. Быстрое бронирование в данный момент недоступно. Вы можете забронировать свою следующую поездку заранее.";
+
+"kh_uisdk_K3003" = "Не удалось загрузить предложение по цене";
+
+"kh_uisdk_K4001" = "Не удалось забронировать поездку";
+
+"kh_uisdk_K4002" = "Не удалось забронировать поездку (добавьте имя как минимум одного пассажира)";
+
+"kh_uisdk_K4003" = "Не удалось забронировать поездку (не удалось найти предложение по цене)";
+
+"kh_uisdk_K4004" = "Не удалось забронировать поездку (предложение по цене просрочено)";
+
+"kh_uisdk_K4005" = "";
+
+"kh_uisdk_K4006" = "Не удалось забронировать поездку (не удалось выполнить предварительную авторизацию платежа)";
+
+"kh_uisdk_K4007" = "Не удалось отменить поездку";
+
+"kh_uisdk_K4008" = "Не удалось отменить поездку (не удалось найти указанную поездку)";
+
+"kh_uisdk_K4009" = "";
+
+"kh_uisdk_K4010" = "Не удалось отменить поездку (уже отменена)";
+
+"kh_uisdk_K4011" = "Не удалось получить поездку";
+
+"kh_uisdk_K4012" = "Не удалось получить поездку (не удалось найти указанную поездку)";
+
+"kh_uisdk_K4013" = "";
+
+"kh_uisdk_K4014" = "";
+
+"kh_uisdk_K4015" = "";
+
+"kh_uisdk_K4018" = "Не удалось забронировать поездку (предложение по цене больше не доступно)";
+
+"kh_uisdk_K4020" = "Не удалось забронировать поездку с выбранным DMS";
+
+"kh_uisdk_K4025" = "Цена предложения увеличилась при бронировании.";
+
+"kh_uisdk_K5001" = "Не удалось загрузить предложение по ценам";
+
+"kh_uisdk_K5002" = "Услуга недоступна (услуга недоступна в запрошенном районе)";
+
+"kh_uisdk_K5003" = "Услуга недоступна в запрошенном районе для выбранных категорий";
+
+"kh_uisdk_K6001" = "Не удалось пройти аутентификацию";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "Проблема при совершении бронирования. Повторите попытку или обратитесь в службу поддержки.";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "Проблема при бронировании";
+
+"kh_uisdk_karhoo_general_terms_url" = "";
+
+"kh_uisdk_karhoo_id" = "";
+
+"kh_uisdk_karhoo_privacy_policy" = "Политика конфиденциальности";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "";
+
+"kh_uisdk_KP001" = "";
+
+"kh_uisdk_KP002" = "";
+
+"kh_uisdk_KP003" = "Метод оплаты по умолчанию не найден";
+
+"kh_uisdk_KP004" = "Кредитная карта по умолчанию не найдена";
+
+"kh_uisdk_KP005" = "Информация о браузере должна быть подтверждена 3DS-аунтификации";
+
+"kh_uisdk_KP006" = "";
+
+"kh_uisdk_KP007" = "";
+
+"kh_uisdk_KP008" = "";
+
+"kh_uisdk_KP009" = "";
+
+"kh_uisdk_KP010" = "";
+
+"kh_uisdk_KP011" = "";
+
+"kh_uisdk_label_and" = "а также";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "Правила отмены бронирования";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "Условия и положения";
+
+"kh_uisdk_last_name_hint" = "Фамилия";
+
+"kh_uisdk_last_trip_id" = "Идентификатор последней поездки: %1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "Идентификатор последней поездки: еще не установлен";
+
+"kh_uisdk_legal_notice_label" = "Официальное уведомление";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "~ мин";
+
+"kh_uisdk_locale" = "ru_RU";
+
+"kh_uisdk_location_disabled" = "Включите разрешения на определение геолокации";
+
+"kh_uisdk_location_rationale_shown" = "";
+
+"kh_uisdk_loyalty_balance_title" = "БАЛАНС: %@ БАЛЛОВ";
+
+"kh_uisdk_loyalty_info" = "Ваша карта необходима для авторизации этой транзакции на случай, если окончательная цена поездки превышает баланс баллов. С вашего счета не будет взиматься плата, если баллы лояльности покрывают всю стоимость поездки.";
+
+"kh_uisdk_loyalty_info_add_points" = "";
+
+"kh_uisdk_loyalty_info_remove_points" = "";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Ваш баланс баллов недостаточен";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "Вы не можете использовать баллы лояльности для предварительной авторизации";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "%1$@ баллов лояльности будут добавлены к балансу вашей учетной записи в конце поездки";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "Вы не можете использовать баллы лояльности";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "Баланса недостаточно для оплаты поездки";
+
+"kh_uisdk_loyalty_separator" = "ИЛИ";
+
+"kh_uisdk_loyalty_title" = "Баллы лояльности";
+
+"kh_uisdk_loyalty_unknown_error" = "Произошла ошибка. Чтобы заработать или использовать баллы лояльности, попробуйте снова.";
+
+"kh_uisdk_loyalty_unsupported_currency" = "Произошла ошибка: оплата в этой валюте невозможна";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "Вы можете использовать баллы лояльности для оплаты поездки";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Использовать %@ баллов лояльности для оплаты %@ %@ ";
+
+"kh_uisdk_loyalty_use_points_title" = "Используйте свои баллы";
+
+"kh_uisdk_map_selector" = "Установить актуальную геолокацию на карте";
+
+"kh_uisdk_meeting_point" = "Место встречи";
+
+"kh_uisdk_metered" = "По счетчику";
+
+"kh_uisdk_min" = "мин";
+
+"kh_uisdk_mins" = "минут";
+
+"kh_uisdk_minutes_plurals.one" = "%d минута";
+
+"kh_uisdk_minutes_plurals.other" = "%d минут";
+
+"kh_uisdk_minutes_plurals.zero" = "%d минута";
+
+"kh_uisdk_minutes_plurals.one" = "";
+
+"kh_uisdk_minutes_plurals.other" = "";
+
+"kh_uisdk_minutes_plurals.zero" = "";
+
+"kh_uisdk_mobile_phone_number_hint" = "Номер мобильного телефона";
+
+"kh_uisdk_moto" = "Мотоцикл";
+
+"kh_uisdk_mpv" = "Универсал";
+
+"kh_uisdk_network_error" = "У нас проблемы с подключением к сети";
+
+"kh_uisdk_new_ride" = "ЗАКАЗАТЬ ПОЕЗДКУ";
+
+"kh_uisdk_next" = "Дальше";
+
+"kh_uisdk_no" = "Нет";
+
+"kh_uisdk_no_availability_body" = "%1$@ , если у вас есть предложения по новому перевозчику.";
+
+"kh_uisdk_no_availability_link" = "Свяжитесь с нами";
+
+"kh_uisdk_no_cars_available" = "К сожалению, в настоящее время нет свободных автомобилей. Пожалуйста, проверьте еще раз в ближайшее время.";
+
+"kh_uisdk_no_email_setup_error" = "Пожалуйста, настройте учетную запись электронной почты на своем устройстве";
+
+"kh_uisdk_no_location_permission_message" = "Чтобы показать ваше местоположение, пожалуйста, включите разрешения на определение местоположения для этого приложения в настройках устройства.";
+
+"kh_uisdk_no_location_permission_title" = "Требуется разрешение";
+
+"kh_uisdk_no_quotes_in_selected_category" = "Извините, для данной категории сервис недоступен. Пожалуйста, выберите другую категорию.";
+
+"kh_uisdk_no_trips" = "";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "Неверный SSL-сертификат";
+
+"kh_uisdk_offer_expired" = "Срок действия предложения истек";
+
+"kh_uisdk_offer_expired_text" = "Пожалуйста, выберите новое предложение, чтобы продолжить бронирование";
+
+"kh_uisdk_ok" = "ОК";
+
+"kh_uisdk_origin_book_error" = "Выберите пункт назначения, чтобы забронировать поездку";
+
+"kh_uisdk_P0001" = "";
+
+"kh_uisdk_P0002" = "Не удалось дозвониться до платежного сервиса";
+
+"kh_uisdk_pass_on_board" = "Вы уже в пути. Отличной поездки!";
+
+"kh_uisdk_passenger_details" = "Информация о пассажире";
+
+"kh_uisdk_passenger_details_add_passenger" = "Добавить пассажира";
+
+"kh_uisdk_passenger_details_subtitle" = "Эта информация обеспечивает бесперебойную работу вашей поездки.";
+
+"kh_uisdk_passengers_max" = "Не более %d пассажиров";
+
+"kh_uisdk_password_hint" = "Пароль";
+
+"kh_uisdk_past_rides_empty" = "Вы пока не забронировали ни одной поездки. Мы можем помочь вам добраться от пункта А в пункт Б.";
+
+"kh_uisdk_payment" = "Оплата";
+
+"kh_uisdk_payment_details" = "Информация об оплате";
+
+"kh_uisdk_payment_issue" = "Проблема с оплатой";
+
+"kh_uisdk_payment_issue_message" = "Проблема с вашей картой";
+
+"kh_uisdk_payment_payment_alert_update_card" = "Обновите данные карты";
+
+"kh_uisdk_payment_summary" = "ОБЗОР ПЛАТЕЖА";
+
+"kh_uisdk_payments" = "Платежи";
+
+"kh_uisdk_pending" = "В ожидании";
+
+"kh_uisdk_permission_rationale_location" = "Чтобы помочь нам найти вас, разрешите доступ к геолокации на вашем мобильном устройстве";
+
+"kh_uisdk_permissions" = "РАЗРЕШЕНИЯ";
+
+"kh_uisdk_pickup_time" = "Время посадки";
+
+"kh_uisdk_pickup_type_curbside" = "У тротуара";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "Встретить в зале прилета";
+
+"kh_uisdk_pickup_type_standby" = "Ожидайте";
+
+"kh_uisdk_prebook_confirmation" = "Ваше бронирование\nот: %1$@ \nдо: %2$@ \в: %3$@ \nподтверждено";
+
+"kh_uisdk_prebook_confirmed" = "Предварительное бронирование подтверждено";
+
+"kh_uisdk_prebook_picker_title" = "Время посадки";
+
+"kh_uisdk_prebook_timezone_title" = "Бронирования совершаются по местному времени";
+
+"kh_uisdk_price" = "Цена";
+
+"kh_uisdk_price_info_text_estimated" = "Этот перевозчик не является лицензированным такси. Приблизительная сумма, рассчитанная на основе суммы факторов: время, расстояние и т. д. Пожалуйста, ознакомьтесь с Условиями и положениями перевозчика для получения дополнительной информации.";
+
+"kh_uisdk_price_info_text_fixed" = "Этот перевозчик взимает фиксированную плату за проезд. На окончательный тариф могут повлиять дополнительные услуги (пошлины, задержки и т. д.). Пожалуйста, ознакомьтесь с Условиями и положениями перевозчика.";
+
+"kh_uisdk_price_info_text_metered" = "Перевозчик предоставляет лицензированные такси со счетчиком. Приблизительная сумма, рассчитанная на основе суммы факторов: время, расстояние и т. д.";
+
+"kh_uisdk_price_meet_and_greet" = "Встретить в зале прилета";
+
+"kh_uisdk_production_link" = "";
+
+"kh_uisdk_profile" = "Профиль";
+
+"kh_uisdk_Q0001" = "Пункт отправления и пункт назначения не должны совпадать";
+
+"kh_uisdk_question_four" = "Насколько легко вам было пользоваться приложением?";
+
+"kh_uisdk_question_one" = "Насколько вы были довольны выбором предложений для вашей поездки (например, диапазон цен, перевозчики, расчетное время прибытия)?";
+
+"kh_uisdk_question_three" = "Какие впечатления вы получили в поездке (например, выбор маршрута, водитель, чистота салона)";
+
+"kh_uisdk_question_two" = "Поделитесь своими впечатлениями о поиске места посадки и встрече с водителем";
+
+"kh_uisdk_quote" = "Поставщик";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "после бронирования";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "а также";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Бесплатная отмена, если водитель еще не выехал";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "до посадки";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "Бесплатная отмена до";
+
+"kh_uisdk_quote_cell_details" = "Информация";
+
+"kh_uisdk_quote_learn_more" = "Подробнее";
+
+"kh_uisdk_quoted_price" = "Указанная цена";
+
+"kh_uisdk_quotes_activity_title" = "Предложения";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Пожалуйста, введите адреса получения и высадки, чтобы получить доступ к ценовым предложениям";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "Адрес посадки или высадки отсутствует";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Пожалуйста, выберите другое время";
+
+"kh_uisdk_quotes_error_no_availability_title" = "Нет свободных машин на запрашиваемое время";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Пожалуйста, измените выбор фильтра.";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "Нет результатов после использования фильтров.";
+
+"kh_uisdk_quotes_error_no_results_found" = "";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Адреса посадки и высадки совпадают";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "Адреса посадки и высадки совпадают";
+
+"kh_uisdk_quotes_no_availability" = "Данная услуга здесь пока не предоставляется.";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "";
+
+"kh_uisdk_quotes_no_availability_title" = "";
+
+"kh_uisdk_rate_trip_label" = "Как вы оцениваете свою поездку?";
+
+"kh_uisdk_rating_submitted" = "Благодарим вас за отзыв.";
+
+"kh_uisdk_rebook_ride" = "Перебронировать поездку";
+
+"kh_uisdk_recents_empty" = "Нет последних результатов";
+
+"kh_uisdk_register" = "";
+
+"kh_uisdk_report_issue" = "Сообщить о проблеме";
+
+"kh_uisdk_request_car" = "ПОДТВЕРДИТЬ ОПЛАТУ";
+
+"kh_uisdk_request_received" = "Бронирование получено";
+
+"kh_uisdk_requested" = "Ваша поездка с %@ запрошена";
+
+"kh_uisdk_requesting" = "Идет запрос";
+
+"kh_uisdk_requesting_car" = "Бронирование поездки";
+
+"kh_uisdk_reset_filter" = "Сбросить фильтр";
+
+"kh_uisdk_result" = "";
+
+"kh_uisdk_results" = "Результаты";
+
+"kh_uisdk_results_empty" = "Извините, результатов не найдено";
+
+"kh_uisdk_results_ios" = "";
+
+"kh_uisdk_retrieving_dropoff" = "Получение места высадки";
+
+"kh_uisdk_retrieving_pickup" = "Получение места посадки";
+
+"kh_uisdk_retrieving_quotes" = "Получение предложений";
+
+"kh_uisdk_retry" = "Повторите";
+
+"kh_uisdk_ride_confirmed" = "Поездка подтверждена";
+
+"kh_uisdk_ride_contact_details" = "Информация";
+
+"kh_uisdk_ride_details" = "Информация о поездке";
+
+"kh_uisdk_ride_state_arrived" = "Прибыл";
+
+"kh_uisdk_ride_state_cancelled" = "Отмена";
+
+"kh_uisdk_ride_state_completed" = "Завершено";
+
+"kh_uisdk_ride_state_confirmed" = "Подтверждено";
+
+"kh_uisdk_ride_state_der" = "Водитель в пути";
+
+"kh_uisdk_ride_state_pob" = "Пассажир на борту";
+
+"kh_uisdk_ride_state_requested" = "Запрошено";
+
+"kh_uisdk_rides" = "Поездки";
+
+"kh_uisdk_saloon" = "Седан";
+
+"kh_uisdk_sandbox_link" = "";
+
+"kh_uisdk_save" = "Сохранить";
+
+"kh_uisdk_schedule_ride" = "Запланировать поездку";
+
+"kh_uisdk_set_on_map" = "";
+
+"kh_uisdk_set_prebook_time" = "Добавить время посадки";
+
+"kh_uisdk_settings" = "Настройки";
+
+"kh_uisdk_sign_in" = "Войти";
+
+"kh_uisdk_sign_in_but" = "Войти";
+
+"kh_uisdk_sign_out" = "Выйти";
+
+"kh_uisdk_signup_email_subscribe_copy" = "";
+
+"kh_uisdk_signup_pending_message" = "";
+
+"kh_uisdk_something_went_wrong" = "Произошел неизвестный сбой";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "Что-то пошло не так, повторите попытку или выберите другую расчетную стоимость.";
+
+"kh_uisdk_sort_by" = "Сортировать по";
+
+"kh_uisdk_staging_link" = "";
+
+"kh_uisdk_star_excellent" = "Отлично";
+
+"kh_uisdk_star_fair" = "Удовлетворительно";
+
+"kh_uisdk_star_good" = "Хорошо";
+
+"kh_uisdk_star_great" = "Великолепно";
+
+"kh_uisdk_star_poor" = "Плохо";
+
+"kh_uisdk_status" = "Статус";
+
+"kh_uisdk_submit" = "ОТПРАВИТЬ";
+
+"kh_uisdk_submit_button_text" = "Расскажите, почему вы поставили этот рейтинг?";
+
+"kh_uisdk_supplier_email" = "";
+
+"kh_uisdk_support_email" = "";
+
+"kh_uisdk_support_report_issue" = "Сообщить о проблеме";
+
+"kh_uisdk_switch_departure_destination" = "Изменить адрес отправления и назначения";
+
+"kh_uisdk_taxi" = "Такси";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "Мы испытываем технические трудности.";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "";
+
+"kh_uisdk_terms_condition_full_string" = "%1$@ вы соглашаетесь с %2$@ %3$@ | %4$@";
+
+"kh_uisdk_thanks" = "Спасибо за ваш интерес";
+
+"kh_uisdk_title_activity_address" = "Адрес";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "Отправить эл. почту";
+
+"kh_uisdk_title_activity_rides" = "Поездки";
+
+"kh_uisdk_title_activity_threedsecure" = "3D Secure";
+
+"kh_uisdk_title_activity_trip" = "Поездка";
+
+"kh_uisdk_title_dispatch_cancelled" = "Отправка отменена";
+
+"kh_uisdk_title_page_past" = "Последняя";
+
+"kh_uisdk_title_page_upcoming" = "Предстоящие";
+
+"kh_uisdk_title_past_rides_empty" = "Нет прошлых поездок";
+
+"kh_uisdk_title_upcoming_rides_empty" = "У вас нет предстоящих поездок";
+
+"kh_uisdk_total_fare" = "Общая стоимость";
+
+"kh_uisdk_track_driver" = "Отслеживать водителя";
+
+"kh_uisdk_track_trip" = "";
+
+"kh_uisdk_track_trip_alert_message" = "Хотите следить за автомобилем?";
+
+"kh_uisdk_track_trip_alert_title" = "Водитель в пути";
+
+"kh_uisdk_train_tracking" = "Отслеживание поездов";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Бронирование отменено. Пожалуйста, свяжитесь с нами для получения дополнительной информации.";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Отменено перевозчиком";
+
+"kh_uisdk_trip_id" = "Идентификатор поездки: %1$@";
+
+"kh_uisdk_trip_id_label" = "Идентификатор поездки";
+
+"kh_uisdk_trip_ride_options" = "Варианты поездки";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "Бронирование отменено.";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "Вы отменили бронирование";
+
+"kh_uisdk_trip_status_completed" = "Вы доехали до пункта назначения";
+
+"kh_uisdk_trip_status_confirmed" = "Бронирование принято. Поиск водителя.";
+
+"kh_uisdk_trip_status_driver_arrived" = "Ваш водитель прибыл!";
+
+"kh_uisdk_trip_status_driver_en_route" = "Ваш водитель в пути";
+
+"kh_uisdk_trip_status_requested" = "%1$@ ищет водителя. Пожалуйста, ждите. Это может занять до 5 минут.";
+
+"kh_uisdk_trip_summary" = "Резюме поездки";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "";
+
+"kh_uisdk_trip_summary_flight_number" = "";
+
+"kh_uisdk_trip_summary_train_number" = "";
+
+"kh_uisdk_unchecked" = "Не проверено";
+
+"kh_uisdk_upcoming_rides_empty" = "Вы можете забронировать автомобиль за семь дней.";
+
+"kh_uisdk_vehicle" = "Транспортное средство";
+
+"kh_uisdk_vehicle_bus" = "Микроавтобус";
+
+"kh_uisdk_vehicle_moto" = "Мотоцикл";
+
+"kh_uisdk_vehicle_mpv" = "Универсал";
+
+"kh_uisdk_vehicle_standard" = "Стандарт";
+
+"kh_uisdk_wheelchair" = "Доступен для инвалидной коляски";
+
+"kh_uisdk_would_you_like_to_proceed" = "Хотите продолжить?";
+
+"kh_uisdk_yes" = "Да";
+
+"kh_uisdk_you_may_be_charged" = "С вас будет взиматься плата за отмену бронирования в размере f %@.\n\nХотите продолжить?";
+
+"KSDK01" = "";
+
+"KSDK02" = "";
+
+"KSDK03" = "";
+
+"MEET_AND_GREET" = "";
+
+"MPV" = "";
+
+"pay_button_with_value" = "Предварительная авторизация %@";
+
+"Q0001" = "";
+
+"Text.Error.EmailValidationError" = "";
+
+"Text.Generic.Close" = "";
+
+"Text.SupportMailMessage.ReportIssueSubject" = "";
+
+"Text.VehicleTag.Electric" = "";
+

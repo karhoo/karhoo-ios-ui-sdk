@@ -1,0 +1,1090 @@
+"adyen.submitButton" = "";
+
+"adyen.submitButton.formatted" = "";
+
+"continue_button" = "次";
+
+"K0001" = "";
+
+"K0002" = "";
+
+"K0003" = "";
+
+"K0004" = "";
+
+"K0005" = "";
+
+"K0006" = "";
+
+"K0007" = "";
+
+"K1001" = "";
+
+"K1003" = "";
+
+"K1004" = "";
+
+"K1005" = "";
+
+"K1006" = "";
+
+"K2001" = "";
+
+"K3001" = "";
+
+"K3003" = "";
+
+"K4001" = "";
+
+"K4002" = "";
+
+"K4003" = "";
+
+"K4004" = "";
+
+"K4005" = "";
+
+"K4006" = "";
+
+"K4007" = "";
+
+"K4008" = "";
+
+"K4009" = "";
+
+"K4010" = "";
+
+"K4011" = "";
+
+"K4012" = "";
+
+"K4013" = "";
+
+"K4014" = "";
+
+"K4018" = "";
+
+"K4020" = "";
+
+"K5001" = "";
+
+"K5002" = "";
+
+"K5003" = "";
+
+"kh_uisdk_about" = "情報";
+
+"kh_uisdk_acc_close_button" = "";
+
+"kh_uisdk_acc_destination_address" = "";
+
+"kh_uisdk_acc_loyalty_information" = "";
+
+"kh_uisdk_acc_pickup_address" = "";
+
+"kh_uisdk_acc_pickup_time" = "";
+
+"kh_uisdk_acc_ride_details" = "";
+
+"kh_uisdk_add_card" = "カードを追加";
+
+"kh_uisdk_add_comment_placeholder" = "";
+
+"kh_uisdk_add_flight_details" = "";
+
+"kh_uisdk_additional_comments" = "追加コメント（チャイルドシート、車いすなど）";
+
+"kh_uisdk_address_drop_off" = "降車";
+
+"kh_uisdk_address_pick_up" = "お迎え";
+
+"kh_uisdk_address_picker_add_pickup" = "お迎えの場所を追加";
+
+"kh_uisdk_address_picker_destination_title" = "";
+
+"kh_uisdk_address_picker_dropoff_booking" = "行き先を追加";
+
+"kh_uisdk_address_picker_enter_destination" = "目的地を入力してください";
+
+"kh_uisdk_address_picker_enter_pickup" = "お迎えの場所を入力してください";
+
+"kh_uisdk_address_picker_pickup_title" = "";
+
+"kh_uisdk_address_picker_prebook" = "";
+
+"kh_uisdk_adyen_payment_error_10" = "";
+
+"kh_uisdk_adyen_payment_error_11" = "";
+
+"kh_uisdk_adyen_payment_error_12" = "";
+
+"kh_uisdk_adyen_payment_error_14" = "";
+
+"kh_uisdk_adyen_payment_error_15" = "";
+
+"kh_uisdk_adyen_payment_error_16" = "";
+
+"kh_uisdk_adyen_payment_error_17" = "";
+
+"kh_uisdk_adyen_payment_error_18" = "";
+
+"kh_uisdk_adyen_payment_error_19" = "";
+
+"kh_uisdk_adyen_payment_error_2" = "";
+
+"kh_uisdk_adyen_payment_error_20" = "";
+
+"kh_uisdk_adyen_payment_error_21" = "取引は正しく送信されず、処理できませんでした。";
+
+"kh_uisdk_adyen_payment_error_22" = "承認前と承認後のリスクチェックの結果、不正スコアが100以上となったため、取引は拒否され不正の判定が下されました。";
+
+"kh_uisdk_adyen_payment_error_23" = "取引拒否";
+
+"kh_uisdk_adyen_payment_error_24" = "CVC（カードセキュリティコード）が無効です。";
+
+"kh_uisdk_adyen_payment_error_25" = "制限付きカード";
+
+"kh_uisdk_adyen_payment_error_26" = "認可命令の取消";
+
+"kh_uisdk_adyen_payment_error_27" = "非一般的なエラー";
+
+"kh_uisdk_adyen_payment_error_28" = "";
+
+"kh_uisdk_adyen_payment_error_29" = "";
+
+"kh_uisdk_adyen_payment_error_3" = "";
+
+"kh_uisdk_adyen_payment_error_31" = "カード発行者が、不正の疑いがある取引として報告しました。";
+
+"kh_uisdk_adyen_payment_error_32" = "";
+
+"kh_uisdk_adyen_payment_error_33" = "";
+
+"kh_uisdk_adyen_payment_error_34" = "";
+
+"kh_uisdk_adyen_payment_error_35" = "";
+
+"kh_uisdk_adyen_payment_error_36" = "";
+
+"kh_uisdk_adyen_payment_error_37" = "";
+
+"kh_uisdk_adyen_payment_error_38" = "カード発行者は認証の免除要求を拒否し、取引の認証を要求しています。3Dセキュアで再試行してください。";
+
+"kh_uisdk_adyen_payment_error_39" = "";
+
+"kh_uisdk_adyen_payment_error_4" = "";
+
+"kh_uisdk_adyen_payment_error_40" = "決済ネットワークにアクセスできません。別のお支払い方法で取引を再試行してください。";
+
+"kh_uisdk_adyen_payment_error_41" = "暗証番号または署名が必要です。取引を再試行してください。";
+
+"kh_uisdk_adyen_payment_error_42" = "カード ネットワークまたはカード発行者の問題により、3Dセキュア認証に失敗しました。取引を再試行するか、別のお支払い方法で取引を再試行してください。";
+
+"kh_uisdk_adyen_payment_error_5" = "";
+
+"kh_uisdk_adyen_payment_error_6" = "";
+
+"kh_uisdk_adyen_payment_error_7" = "";
+
+"kh_uisdk_adyen_payment_error_8" = "";
+
+"kh_uisdk_adyen_payment_error_9" = "";
+
+"kh_uisdk_airport_booking_message" = "";
+
+"kh_uisdk_allocating_trip_one" = "ドライバーが割り当てられるまでお待ちください";
+
+"kh_uisdk_allocating_trip_two" = "少々時間がかかる場合があります";
+
+"kh_uisdk_allocation_delay_text" = "乗車サービス業者の割り当てに通常よりも時間がかかっています。お待ちいただくか、業者に連絡するか、あるいはキャンセルして別の業者で再度予約してください。";
+
+"kh_uisdk_allocation_delay_title" = "割り当てに時間がかかっています";
+
+"kh_uisdk_alternative" = "別の選択肢を選ぶ";
+
+"kh_uisdk_arrival" = "到着";
+
+"kh_uisdk_arrived" = "%@のドライバーが到着しました";
+
+"kh_uisdk_back" = "戻る";
+
+"kh_uisdk_baggage_max" = "荷物：%d個まで";
+
+"kh_uisdk_base" = "基本料金";
+
+"kh_uisdk_base_fare_explanation" = "最終的な金額は、チップ、通行料、税金、その他の料金により変わる場合があります。";
+
+"kh_uisdk_book_now" = "確定して支払う";
+
+"kh_uisdk_book_return_ride" = "帰りの乗車サービスを予約";
+
+"kh_uisdk_booking_car" = "乗車サービスを予約する";
+
+"kh_uisdk_booking_checkout_add_passenger" = "乗客の情報を追加する";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "追加";
+
+"kh_uisdk_booking_checkout_passenger" = "ご乗車のお客様";
+
+"kh_uisdk_booking_checkout_title" = "チェックアウト";
+
+"kh_uisdk_booking_confirmation" = "予約確定済み";
+
+"kh_uisdk_booking_details_error" = "予約の詳細が無効です";
+
+"kh_uisdk_booking_failed" = "予約に失敗しました";
+
+"kh_uisdk_booking_failed_body" = "あいにく、現在大変混み合っています。%1$@にはドライバーの空きがありません。";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "申し訳ありませんが、現在たいへん混み合っています。選択した業者にはドライバーの空きがありません。";
+
+"kh_uisdk_booking_terms" = "予約することで、%1$@ | %2$@および%3$@%、ならびに、4$s | %3$@%5$@に同意したことになります。";
+
+"kh_uisdk_booking_terms_and_conditions" = "利用規約";
+
+"kh_uisdk_bookings" = "予約";
+
+"kh_uisdk_call" = "ドライバーに電話する";
+
+"kh_uisdk_cancel" = "キャンセル";
+
+"kh_uisdk_cancel_ride" = "乗車サービスをキャンセルする";
+
+"kh_uisdk_cancel_ride_successful" = "乗車サービスは正常にキャンセルされました";
+
+"kh_uisdk_cancel_ride_successful_message" = "乗車サービスは正常にキャンセルされました。";
+
+"kh_uisdk_cancel_your_ride" = "乗車サービスをキャンセルしますか？";
+
+"kh_uisdk_cancelled" = "キャンセルしました";
+
+"kh_uisdk_cancelled_by_dispatch" = "%@はあなたの乗車サービスをキャンセルしました";
+
+"kh_uisdk_cancelled_by_user" = "%@での乗車サービスをキャンセルしました";
+
+"kh_uisdk_cancelling" = "キャンセルするにはタップして長押しします";
+
+"kh_uisdk_cancelling_ride" = "乗車サービスのキャンセル処理中です";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "カード";
+
+"kh_uisdk_checked" = "チェック済み";
+
+"kh_uisdk_checkout_as_guest" = "乗車サービスを予約する";
+
+"kh_uisdk_completed" = "ご利用ありがとうございました";
+
+"kh_uisdk_confirmed" = "%@の乗車サービスを確定しました";
+
+"kh_uisdk_contact" = "お問い合わせ";
+
+"kh_uisdk_contact_driver" = "ドライバーに連絡する";
+
+"kh_uisdk_contact_fleet" = "業者に連絡する";
+
+"kh_uisdk_contact_us" = "お問い合わせ";
+
+"kh_uisdk_contact_us_link" = "";
+
+"kh_uisdk_continue_journey" = "続ける";
+
+"kh_uisdk_could_not_load_trips" = "";
+
+"kh_uisdk_country_search" = "国/地域を検索";
+
+"kh_uisdk_current_location" = "現在地を取得";
+
+"kh_uisdk_date" = "日付";
+
+"kh_uisdk_destination_book_error" = "乗車サービスを予約するには目的地を選択してください";
+
+"kh_uisdk_difficulties_cancelling_message" = "乗車サービスのキャンセルで問題が発生しています。業者にお問い合わせください。";
+
+"kh_uisdk_difficulties_cancelling_title" = "キャンセルができません";
+
+"kh_uisdk_dismiss" = "終了";
+
+"kh_uisdk_dispatch_cancelled" = "あいにく、 %@には現在ドライバーの空きがありません。";
+
+"kh_uisdk_drawer_closed" = "引き出しが閉まっています";
+
+"kh_uisdk_drawer_open" = "引き出しが開いています";
+
+"kh_uisdk_driver_arrival" = "ドライバー到着予定";
+
+"kh_uisdk_driver_en_route" = "%@のドライバーは移動中です";
+
+"kh_uisdk_edit" = "編集する";
+
+"kh_uisdk_electric" = "電気";
+
+"kh_uisdk_email_hint" = "メール";
+
+"kh_uisdk_email_info" = "この情報はアプリの改善に役立ちますので、削除しないでください。";
+
+"kh_uisdk_email_report_issue_message" = "今回の乗車サービスについて問題がありましたら、下のスペースからご報告ください。";
+
+"kh_uisdk_enter_destination" = "目的地を入力してください";
+
+"kh_uisdk_erase_address" = "住所を消去する";
+
+"kh_uisdk_error" = "エラー";
+
+"kh_uisdk_error_invalid_password" = "";
+
+"kh_uisdk_errors_cant_send_email" = "メールを送信できません。最初にメールアプリを設定してください。";
+
+"kh_uisdk_errors_flight_number_validator_error" = "便名";
+
+"kh_uisdk_errors_force_update_button" = "更新";
+
+"kh_uisdk_errors_force_update_message" = "続行するにはアプリを更新してください。";
+
+"kh_uisdk_errors_force_update_title" = "新しいバージョンが利用可能です";
+
+"kh_uisdk_errors_get_user_fail" = "プロファイルの取得に障害が発生しました。";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "決済初期化の問題が発生しました。サポートにお問い合わせください。";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "事前予約が、現在の時間から少なくとも1時間以上後である必要があります。";
+
+"kh_uisdk_estimated_arrival_time" = "到着予定時刻";
+
+"kh_uisdk_estimated_fare" = "見積り金額";
+
+"kh_uisdk_estimated_price" = "見積り金額";
+
+"kh_uisdk_eta" = "到着予定時刻";
+
+"kh_uisdk_exec" = "エグゼクティブ";
+
+"kh_uisdk_extra_capabilities" = "";
+
+"kh_uisdk_faq_link" = "";
+
+"kh_uisdk_faretype_info_base" = "最終的な金額は、チップ、通行料、\n税金、その他の料金により変わる場合があります。";
+
+"kh_uisdk_feedback" = "フィードバック";
+
+"kh_uisdk_feedback_email" = "";
+
+"kh_uisdk_feedback_submitted" = "フィードバックをお送りいただきありがとうございました";
+
+"kh_uisdk_feedback_title" = "今回の乗車サービスについてもう少しお聞かせください";
+
+"kh_uisdk_fees_and_taxes_included" = "税金と手数料が含まれています";
+
+"kh_uisdk_filter" = "絞り込み";
+
+"kh_uisdk_filter_all" = "すべて";
+
+"kh_uisdk_filter_berline" = "サルーン";
+
+"kh_uisdk_filter_bike" = "自転車";
+
+"kh_uisdk_filter_child_seat" = "チャイルドシート";
+
+"kh_uisdk_filter_driver_details" = "ドライバー情報";
+
+"kh_uisdk_filter_eco_friendly" = "環境にやさしい";
+
+"kh_uisdk_filter_electric" = "電気";
+
+"kh_uisdk_filter_executive" = "エグゼクティブ";
+
+"kh_uisdk_filter_fight_tracking" = "フライト追跡";
+
+"kh_uisdk_filter_fleet_capabilities" = "サービス・機能";
+
+"kh_uisdk_filter_free_cancellation" = "無料キャンセル";
+
+"kh_uisdk_filter_free_waiting_time" = "無料の待ち時間";
+
+"kh_uisdk_filter_gps_tracking" = "GPS追跡";
+
+"kh_uisdk_filter_hybrid" = "ハイブリッド";
+
+"kh_uisdk_filter_luggages" = "荷物の個数";
+
+"kh_uisdk_filter_luxury" = "ラグジュアリー";
+
+"kh_uisdk_filter_moto" = "バイク";
+
+"kh_uisdk_filter_page_results" = "%@件の検索結果をすべて表示";
+
+"kh_uisdk_filter_passengers" = "ご乗車人数";
+
+"kh_uisdk_filter_quote_types" = "見積もりの種類";
+
+"kh_uisdk_filter_service_agreements" = "キャンセルと待ち時間";
+
+"kh_uisdk_filter_standard" = "スタンダード";
+
+"kh_uisdk_filter_taxi" = "タクシー";
+
+"kh_uisdk_filter_train_tracking" = "列車の追跡";
+
+"kh_uisdk_filter_van" = "ワンボックスワゴン";
+
+"kh_uisdk_filter_vehicle_class" = "車両クラス";
+
+"kh_uisdk_filter_vehicle_details" = "車両の詳細";
+
+"kh_uisdk_filter_vehicle_extras" = "追加オプション";
+
+"kh_uisdk_filter_vehicle_types" = "車種";
+
+"kh_uisdk_filter_wheelchair" = "車いす利用可";
+
+"kh_uisdk_finding_your_ride" = "乗車サービスを探しています…";
+
+"kh_uisdk_first_name_hint" = "名";
+
+"kh_uisdk_fixed_fare" = "固定料金";
+
+"kh_uisdk_fleet" = "乗車サービス業者";
+
+"kh_uisdk_fleet_recommendation_body" = "ご利用のエリアに業者を推薦していただきありがとうございます。できるだけ早くサービスをご提供できるよう、地域と推薦する業者の名前をご指定ください。";
+
+"kh_uisdk_fleet_recommendation_subject" = "自分の地域での乗車サービス業者の推薦";
+
+"kh_uisdk_flight_number" = "便名（任意）";
+
+"kh_uisdk_flight_tracking" = "フライト追跡";
+
+"kh_uisdk_forgotten_password" = "";
+
+"kh_uisdk_free_cancellation_asap" = "";
+
+"kh_uisdk_got_it" = "了解";
+
+"kh_uisdk_gps_tracking" = "GPS追跡";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "お支払い方法";
+
+"kh_uisdk_help" = "ヘルプ";
+
+"kh_uisdk_hours_plural.other" = "%d時間";
+
+"kh_uisdk_hours_plural.zero" = "%d時間";
+
+"kh_uisdk_hours_plural.one" = "";
+
+"kh_uisdk_hours_plural.other" = "";
+
+"kh_uisdk_hours_plural.zero" = "";
+
+"kh_uisdk_info" = "情報";
+
+"kh_uisdk_initialised" = "乗車サービスを初期化中です";
+
+"kh_uisdk_invalid_email" = "メールアドレスが無効です";
+
+"kh_uisdk_invalid_empty_field" = "情報が足りません";
+
+"kh_uisdk_invalid_input_value" = "値が無効です";
+
+"kh_uisdk_invalid_phone_number" = "電話番号が無効です";
+
+"kh_uisdk_K0001" = "一般的なリクエストエラー。";
+
+"kh_uisdk_K0002" = "リクエストが無効です";
+
+"kh_uisdk_K0003" = "承認トークンを読み取れませんでした";
+
+"kh_uisdk_K0004" = "このパスには認証が必要です";
+
+"kh_uisdk_K0005" = "";
+
+"kh_uisdk_K0006" = "制限を超えました";
+
+"kh_uisdk_K0007" = "";
+
+"kh_uisdk_K1001" = "";
+
+"kh_uisdk_K1003" = "";
+
+"kh_uisdk_K1004" = "";
+
+"kh_uisdk_K1005" = "";
+
+"kh_uisdk_K1006" = "";
+
+"kh_uisdk_K1999" = "";
+
+"kh_uisdk_K2001" = "住所を取得できませんでした";
+
+"kh_uisdk_K3001" = "見積もりを読み込めませんでした";
+
+"kh_uisdk_K3002" = "あいにく、ASAP予約は現在この目的地ではご利用いただけませんが、次の乗車サービスの事前予約は可能です。";
+
+"kh_uisdk_K3003" = "見積もりを取得できませんでした";
+
+"kh_uisdk_K4001" = "この乗車サービスは予約できませんでした";
+
+"kh_uisdk_K4002" = "この乗車サービスは予約できませんでした（少なくとも1人の乗客の詳細を提供してください）";
+
+"kh_uisdk_K4003" = "この乗車サービスは予約できませんでした（指定された見積もりが見つかりませんでした）";
+
+"kh_uisdk_K4004" = "この乗車サービスは予約できませんでした（指定された見積もりは期限切れになりました）";
+
+"kh_uisdk_K4005" = "";
+
+"kh_uisdk_K4006" = "この乗車サービスは予約できませんでした（お支払いの事前承認に失敗しました）";
+
+"kh_uisdk_K4007" = "この乗車サービスはキャンセルできませんでした";
+
+"kh_uisdk_K4008" = "この乗車サービスはキャンセルできませんでした（指定された乗車サービスが見つかりませんでした）";
+
+"kh_uisdk_K4009" = "";
+
+"kh_uisdk_K4010" = "この乗車サービスはキャンセルできませんでした（すでにキャンセルされています）";
+
+"kh_uisdk_K4011" = "乗車サービスを取得できませんでした";
+
+"kh_uisdk_K4012" = "乗車サービスを取得できませんでした（指定した乗車サービスが見つかりませんでした）";
+
+"kh_uisdk_K4013" = "";
+
+"kh_uisdk_K4014" = "";
+
+"kh_uisdk_K4015" = "";
+
+"kh_uisdk_K4018" = "この乗車サービスは見積もりが無効になったため、予約できませんでした";
+
+"kh_uisdk_K4020" = "選択したDMSでは乗車サービスを予約できませんでした";
+
+"kh_uisdk_K4025" = "予約中に見積もり価格が上昇しました。";
+
+"kh_uisdk_K5001" = "見積もりを読み込めませんでした";
+
+"kh_uisdk_K5002" = "乗車サービスの空きが取得できませんでした（要求されたエリア内に空きが見つかりません）";
+
+"kh_uisdk_K5003" = "選択されたカテゴリーではこのエリアに空きがありませんでした";
+
+"kh_uisdk_K6001" = "認証できませんでした";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "この予約に障害が発生しました。再試行するか、サポートに連絡してください。";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "予約の障害";
+
+"kh_uisdk_karhoo_general_terms_url" = "";
+
+"kh_uisdk_karhoo_id" = "";
+
+"kh_uisdk_karhoo_privacy_policy" = "プライバシーポリシー";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "";
+
+"kh_uisdk_KP001" = "";
+
+"kh_uisdk_KP002" = "";
+
+"kh_uisdk_KP003" = "デフォルトのお支払い方法がありません";
+
+"kh_uisdk_KP004" = "デフォルトのクレジットカードがありません";
+
+"kh_uisdk_KP005" = "3DSを実行するには、ブラウザ情報を定義する必要があります";
+
+"kh_uisdk_KP006" = "";
+
+"kh_uisdk_KP007" = "";
+
+"kh_uisdk_KP008" = "";
+
+"kh_uisdk_KP009" = "";
+
+"kh_uisdk_KP010" = "";
+
+"kh_uisdk_KP011" = "";
+
+"kh_uisdk_label_and" = "および";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "キャンセルポリシー";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "ご利用規約";
+
+"kh_uisdk_last_name_hint" = "姓";
+
+"kh_uisdk_last_trip_id" = "前回の乗車サービスID：%1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "前回の乗車サービスID：まだ設定されていません";
+
+"kh_uisdk_legal_notice_label" = "法的通知";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "〜分";
+
+"kh_uisdk_locale" = "jp_JP";
+
+"kh_uisdk_location_disabled" = "すべての機能をご利用いただくには、デバイスの位置情報を有効にしてください";
+
+"kh_uisdk_location_rationale_shown" = "";
+
+"kh_uisdk_loyalty_balance_title" = "残高：%@ポイント";
+
+"kh_uisdk_loyalty_info" = "最終的な料金がポイント残高を上回る場合に備え、カードによる取引の承認が必要です。ポイントで全額を支払うことができる場合、請求は発生しません。";
+
+"kh_uisdk_loyalty_info_add_points" = "";
+
+"kh_uisdk_loyalty_info_remove_points" = "";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "ポイント残高が足りません";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "ポイントをこの乗車サービスの事前承認に使用することはできません";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "乗車サービス終了時に、%1$@ロイヤルティポイントがアカウントの残高に追加されます";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "ポイントは使用できません";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "残高が足りないため、ポイントでこの乗車サービスを支払うことはできません";
+
+"kh_uisdk_loyalty_separator" = "または";
+
+"kh_uisdk_loyalty_title" = "ロイヤルティポイント";
+
+"kh_uisdk_loyalty_unknown_error" = "エラーが発生しました。ロイヤルティポイントを取得または使用するには、後でもう一度お試しください。";
+
+"kh_uisdk_loyalty_unsupported_currency" = "エラーが発生しました。この通貨には対応していません。";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "ロイヤルティポイントでこの乗車サービスを支払うことができます";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "%@ロイヤルティポイントで%@%@を支払う";
+
+"kh_uisdk_loyalty_use_points_title" = "ポイントを使う";
+
+"kh_uisdk_map_selector" = "地図上にピンを設定する";
+
+"kh_uisdk_meeting_point" = "待ち合わせ場所";
+
+"kh_uisdk_metered" = "メーター制";
+
+"kh_uisdk_min" = "分";
+
+"kh_uisdk_mins" = "分";
+
+"kh_uisdk_minutes_plurals.other" = "%d分";
+
+"kh_uisdk_minutes_plurals.zero" = "%d分";
+
+"kh_uisdk_minutes_plurals.one" = "";
+
+"kh_uisdk_minutes_plurals.other" = "";
+
+"kh_uisdk_minutes_plurals.zero" = "";
+
+"kh_uisdk_mobile_phone_number_hint" = "携帯電話番号";
+
+"kh_uisdk_moto" = "バイク";
+
+"kh_uisdk_mpv" = "ミニバン";
+
+"kh_uisdk_network_error" = "ネットワークへの接続に問題があります";
+
+"kh_uisdk_new_ride" = "乗車サービスを予約する";
+
+"kh_uisdk_next" = "次";
+
+"kh_uisdk_no" = "いいえ";
+
+"kh_uisdk_no_availability_body" = "新しい乗車サービス業者のお勧めがありましたら、%1$@先までご連絡ください。";
+
+"kh_uisdk_no_availability_link" = "お問い合わせ";
+
+"kh_uisdk_no_cars_available" = "あいにく、現在ご提供できる車がありません。 しばらく後にもう一度ご確認ください。";
+
+"kh_uisdk_no_email_setup_error" = "デバイスにメールアカウントを設定してください";
+
+"kh_uisdk_no_location_permission_message" = "お客様の位置情報を表示するために、端末の設定でこのアプリの位置情報を有効にしてください。";
+
+"kh_uisdk_no_location_permission_title" = "位置情報の許可が必要です";
+
+"kh_uisdk_no_quotes_in_selected_category" = "あいにく、このカテゴリーの空きはありません。 別のカテゴリーを選択してください。";
+
+"kh_uisdk_no_trips" = "";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "SSL証明書が無効です";
+
+"kh_uisdk_offer_expired" = "見積もりの期限が切れました";
+
+"kh_uisdk_offer_expired_text" = "予約を続行するには、新しい見積もりを選択してください";
+
+"kh_uisdk_ok" = "OK";
+
+"kh_uisdk_origin_book_error" = "乗車サービスを予約するにはお迎えの場所を選択してください";
+
+"kh_uisdk_P0001" = "";
+
+"kh_uisdk_P0002" = "決済サービスにアクセスできません";
+
+"kh_uisdk_pass_on_board" = "移動中です。ご予約ありがとうございます！";
+
+"kh_uisdk_passenger_details" = "乗客の情報";
+
+"kh_uisdk_passenger_details_add_passenger" = "ご乗車のお客様を追加する";
+
+"kh_uisdk_passenger_details_subtitle" = "この情報により、スムーズな乗車サービスをご提供することができます。";
+
+"kh_uisdk_passengers_max" = "ご乗車人数 %d人まで";
+
+"kh_uisdk_password_hint" = "パスワード";
+
+"kh_uisdk_past_rides_empty" = "まだ予約した乗車サービスはありません。A地点からB地点への移動をお手伝いします！";
+
+"kh_uisdk_payment" = "お支払い";
+
+"kh_uisdk_payment_details" = "お支払い情報";
+
+"kh_uisdk_payment_issue" = "お支払いに関する問題";
+
+"kh_uisdk_payment_issue_message" = "支払い用のカードに問題があります";
+
+"kh_uisdk_payment_payment_alert_update_card" = "カードを更新";
+
+"kh_uisdk_payment_summary" = "お支払いの内容";
+
+"kh_uisdk_payments" = "お支払い";
+
+"kh_uisdk_pending" = "保留中";
+
+"kh_uisdk_permission_rationale_location" = "地図上でお客様を特定するために、ご利用のデバイスで位置情報を有効にしてください";
+
+"kh_uisdk_permissions" = "許可";
+
+"kh_uisdk_pickup_time" = "お迎え時刻";
+
+"kh_uisdk_pickup_type_curbside" = "ドライバーが車外で待機";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "空港で出迎え";
+
+"kh_uisdk_pickup_type_standby" = "お客様からドライバーに電話";
+
+"kh_uisdk_prebook_confirmation" = "予約を次の通り確定しました\n出発地：%1$@\n目的地：%2$@\n料金：%3$@";
+
+"kh_uisdk_prebook_confirmed" = "事前予約確定済み";
+
+"kh_uisdk_prebook_picker_title" = "お迎え時刻";
+
+"kh_uisdk_prebook_timezone_title" = "予約は現地時間で行われます";
+
+"kh_uisdk_price" = "料金";
+
+"kh_uisdk_price_info_text_estimated" = "この乗車サービス業者は規制対象外のタクシーです。見積もりは、時間や総距離などから算出される概算です。詳しくは、乗車サービス業者の利用条件を参照してください。";
+
+"kh_uisdk_price_info_text_fixed" = "この乗車サービス業者は定額料金です。最終的な金額は、通行料や遅延などの追加料金によって変わる場合があります。詳しくは、乗車サービス業者の利用条件を参照してください。";
+
+"kh_uisdk_price_info_text_metered" = "この乗車サービス業者は規制対象のメーター制タクシーです。見積もりは、時間や総距離などから算出される概算です。";
+
+"kh_uisdk_price_meet_and_greet" = "空港で出迎え";
+
+"kh_uisdk_production_link" = "";
+
+"kh_uisdk_profile" = "プロフィール";
+
+"kh_uisdk_Q0001" = "お迎えと降車の場所を同じにすることはできません";
+
+"kh_uisdk_question_four" = "アプリの使い方はどれくらい簡単でしたか？";
+
+"kh_uisdk_question_one" = "乗車サービスの見積もりの選択肢（業者、料金、到着予定時間など）にはどの程度満足しましたか？";
+
+"kh_uisdk_question_three" = "乗車中の感想はいかがでしたか（タクシーの清潔さ、経路案内、運転手など）？";
+
+"kh_uisdk_question_two" = "お迎えの場所の確認、またドライバーに会ったときの感想はいかがでしたか？";
+
+"kh_uisdk_quote" = "乗車サービス業者";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "予約後";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "および";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "ドライバーが出発するまで無料キャンセル可能";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "お迎え前";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "無料キャンセルの締切：";
+
+"kh_uisdk_quote_cell_details" = "詳細";
+
+"kh_uisdk_quote_learn_more" = "詳細はこちら";
+
+"kh_uisdk_quoted_price" = "見積り金額";
+
+"kh_uisdk_quotes_activity_title" = "見積もり";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "見積もりを得るには、お迎えと降車の両方の場所を入力してください";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "お迎えまたは降車の場所が入力されていません";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "別の時間を選択してください";
+
+"kh_uisdk_quotes_error_no_availability_title" = "この時間には空きがありませんでした";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "絞り込みの選択を変更してください。";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "この絞り込みでは結果が見つかりません。";
+
+"kh_uisdk_quotes_error_no_results_found" = "";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "お迎えと降車の場所が同じようです";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "お迎えと降車の場所が同じようです";
+
+"kh_uisdk_quotes_no_availability" = "ここではまだサービスをご提供していません。";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "";
+
+"kh_uisdk_quotes_no_availability_title" = "";
+
+"kh_uisdk_rate_trip_label" = "今回の乗車サービスをどのように評価しますか？";
+
+"kh_uisdk_rating_submitted" = "フィードバックをありがとうございました。";
+
+"kh_uisdk_rebook_ride" = "乗車サービスを再予約";
+
+"kh_uisdk_recents_empty" = "最近の結果はありません";
+
+"kh_uisdk_register" = "";
+
+"kh_uisdk_report_issue" = "問題を報告";
+
+"kh_uisdk_request_car" = "予約を確定する";
+
+"kh_uisdk_request_received" = "予約を受け付けました";
+
+"kh_uisdk_requested" = "%@での乗車サービスがリクエストされました";
+
+"kh_uisdk_requesting" = "リクエスト中です";
+
+"kh_uisdk_requesting_car" = "乗車サービスを予約中です";
+
+"kh_uisdk_reset_filter" = "絞り込みをリセット";
+
+"kh_uisdk_result" = "";
+
+"kh_uisdk_results" = "結果";
+
+"kh_uisdk_results_empty" = "結果が見つかりません";
+
+"kh_uisdk_results_ios" = "";
+
+"kh_uisdk_retrieving_dropoff" = "降車の場所を確認中です";
+
+"kh_uisdk_retrieving_pickup" = "お迎えの場所を確認中です";
+
+"kh_uisdk_retrieving_quotes" = "見積もりを取得中です";
+
+"kh_uisdk_retry" = "再試行";
+
+"kh_uisdk_ride_confirmed" = "乗車サービスを確定しました";
+
+"kh_uisdk_ride_contact_details" = "詳細";
+
+"kh_uisdk_ride_details" = "乗車サービスの詳細";
+
+"kh_uisdk_ride_state_arrived" = "到着済み";
+
+"kh_uisdk_ride_state_cancelled" = "キャンセル済み";
+
+"kh_uisdk_ride_state_completed" = "完了";
+
+"kh_uisdk_ride_state_confirmed" = "確定";
+
+"kh_uisdk_ride_state_der" = "移動中のドライバー";
+
+"kh_uisdk_ride_state_pob" = "乗車中";
+
+"kh_uisdk_ride_state_requested" = "リクエスト済み";
+
+"kh_uisdk_rides" = "乗車サービス";
+
+"kh_uisdk_saloon" = "サルーン";
+
+"kh_uisdk_sandbox_link" = "";
+
+"kh_uisdk_save" = "保存";
+
+"kh_uisdk_schedule_ride" = "乗車サービスを予定する";
+
+"kh_uisdk_set_on_map" = "";
+
+"kh_uisdk_set_prebook_time" = "お迎え時刻を設定する";
+
+"kh_uisdk_settings" = "設定";
+
+"kh_uisdk_sign_in" = "サインイン";
+
+"kh_uisdk_sign_in_but" = "サインイン";
+
+"kh_uisdk_sign_out" = "サインアウト";
+
+"kh_uisdk_signup_email_subscribe_copy" = "";
+
+"kh_uisdk_signup_pending_message" = "";
+
+"kh_uisdk_something_went_wrong" = "問題が発生しました";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "問題が発生しました。再試行するか、別の見積もりを選択してください。";
+
+"kh_uisdk_sort_by" = "並び替え";
+
+"kh_uisdk_staging_link" = "";
+
+"kh_uisdk_star_excellent" = "大変すばらしい";
+
+"kh_uisdk_star_fair" = "適切";
+
+"kh_uisdk_star_good" = "良い";
+
+"kh_uisdk_star_great" = "すばらしい";
+
+"kh_uisdk_star_poor" = "悪い";
+
+"kh_uisdk_status" = "ステータス";
+
+"kh_uisdk_submit" = "送信";
+
+"kh_uisdk_submit_button_text" = "このように評価した理由を教えてください";
+
+"kh_uisdk_supplier_email" = "";
+
+"kh_uisdk_support_email" = "";
+
+"kh_uisdk_support_report_issue" = "問題を報告";
+
+"kh_uisdk_switch_departure_destination" = "お迎えと降車の場所を入れ替える";
+
+"kh_uisdk_taxi" = "タクシー";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "現在、技術的な問題が発生しているようです。";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "";
+
+"kh_uisdk_terms_condition_full_string" = "%1$@によって、 %2$@に同意したことになります %3$@   |   %4$@";
+
+"kh_uisdk_thanks" = "ご関心をお寄せいただきありがとうございます";
+
+"kh_uisdk_title_activity_address" = "住所";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "メールを送る";
+
+"kh_uisdk_title_activity_rides" = "乗車サービス";
+
+"kh_uisdk_title_activity_threedsecure" = "3Dセキュア";
+
+"kh_uisdk_title_activity_trip" = "乗車サービス";
+
+"kh_uisdk_title_dispatch_cancelled" = "配車がキャンセルされました";
+
+"kh_uisdk_title_page_past" = "過去";
+
+"kh_uisdk_title_page_upcoming" = "次回";
+
+"kh_uisdk_title_past_rides_empty" = "過去の乗車サービスはありません";
+
+"kh_uisdk_title_upcoming_rides_empty" = "次回の乗車サービスはありません";
+
+"kh_uisdk_total_fare" = "料金合計";
+
+"kh_uisdk_track_driver" = "運転手を追跡";
+
+"kh_uisdk_track_trip" = "";
+
+"kh_uisdk_track_trip_alert_message" = "車両を追跡しますか？";
+
+"kh_uisdk_track_trip_alert_title" = "運転手は移動中です";
+
+"kh_uisdk_train_tracking" = "列車の追跡";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "予約はキャンセルされました。詳しくはお問い合わせください。";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "乗車サービス業者によりキャンセル";
+
+"kh_uisdk_trip_id" = "乗車サービスID： %1$@";
+
+"kh_uisdk_trip_id_label" = "乗車サービスID";
+
+"kh_uisdk_trip_ride_options" = "乗車サービスのオプション";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "予約はキャンセルされました。";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "予約をキャンセルしました";
+
+"kh_uisdk_trip_status_completed" = "目的地に到着しました";
+
+"kh_uisdk_trip_status_confirmed" = "予約が受け付けられました。 ドライバーの割り当てを待っています。";
+
+"kh_uisdk_trip_status_driver_arrived" = "ドライバーが到着しました！";
+
+"kh_uisdk_trip_status_driver_en_route" = "ドライバーは移動中です";
+
+"kh_uisdk_trip_status_requested" = "%1$@はドライバーを割り当てています。しばらくお待ち下さい。これには最大5分かかる場合があります。";
+
+"kh_uisdk_trip_summary" = "乗車サービスの概要";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "";
+
+"kh_uisdk_trip_summary_flight_number" = "";
+
+"kh_uisdk_trip_summary_train_number" = "";
+
+"kh_uisdk_unchecked" = "チェックなし";
+
+"kh_uisdk_upcoming_rides_empty" = "車の事前予約は、7日前まで可能です。";
+
+"kh_uisdk_vehicle" = "車両";
+
+"kh_uisdk_vehicle_bus" = "ミニバス";
+
+"kh_uisdk_vehicle_moto" = "バイク";
+
+"kh_uisdk_vehicle_mpv" = "ミニバン";
+
+"kh_uisdk_vehicle_standard" = "スタンダード";
+
+"kh_uisdk_wheelchair" = "車いす利用可";
+
+"kh_uisdk_would_you_like_to_proceed" = "続行しますか？";
+
+"kh_uisdk_yes" = "はい";
+
+"kh_uisdk_you_may_be_charged" = "キャンセル料のお見積もりは%@です。\n\n続行しますか？";
+
+"KSDK01" = "";
+
+"KSDK02" = "";
+
+"KSDK03" = "";
+
+"MEET_AND_GREET" = "";
+
+"MPV" = "";
+
+"pay_button_with_value" = "%@を事前承認する";
+
+"Q0001" = "";
+
+"Text.Error.EmailValidationError" = "";
+
+"Text.Generic.Close" = "";
+
+"Text.SupportMailMessage.ReportIssueSubject" = "";
+
+"Text.VehicleTag.Electric" = "";
+
