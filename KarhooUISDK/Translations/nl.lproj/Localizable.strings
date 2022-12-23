@@ -72,7 +72,7 @@
 
 "K5003" = "Kon geen beschikbaarheid krijgen (geen categorieën gevonden binnen het gevraagde gebied)";
 
-"kh_uisdk_about" = "Over";
+"kh_uisdk_about" = "Info";
 
 "kh_uisdk_acc_close_button" = "Sluit het scherm";
 
@@ -86,17 +86,17 @@
 
 "kh_uisdk_acc_ride_details" = "Ga naar ritgegevens";
 
-"kh_uisdk_add_card" = "VOEG EEN KAART TOE";
+"kh_uisdk_add_card" = "KAART TOEVOEGEN";
 
 "kh_uisdk_add_comment_placeholder" = "Aanvullende opmerkingen";
 
 "kh_uisdk_add_flight_details" = "Vluchtnummer";
 
-"kh_uisdk_additional_comments" = "Opmerkingen (babystoel, rolstoel, enz.)";
+"kh_uisdk_additional_comments" = "Opmerkingen (kinderzitje, rolstoel, etc.)";
 
 "kh_uisdk_address_drop_off" = "Afzetten";
 
-"kh_uisdk_address_pick_up" = "Oppakken";
+"kh_uisdk_address_pick_up" = "Ophalen";
 
 "kh_uisdk_address_picker_add_pickup" = "Ophaallocatie toevoegen";
 
@@ -104,9 +104,9 @@
 
 "kh_uisdk_address_picker_dropoff_booking" = "Bestemming toevoegen";
 
-"kh_uisdk_address_picker_enter_destination" = "Voer de bestemmingslocatie in";
+"kh_uisdk_address_picker_enter_destination" = "Bestemming invoeren";
 
-"kh_uisdk_address_picker_enter_pickup" = "Vul ophaallocatie in";
+"kh_uisdk_address_picker_enter_pickup" = "Ophaallocatie invoeren";
 
 "kh_uisdk_address_picker_pickup_title" = "Oppakken";
 
@@ -136,13 +136,13 @@
 
 "kh_uisdk_adyen_payment_error_21" = "De transactie is niet correct ingediend voor verwerking.";
 
-"kh_uisdk_adyen_payment_error_22" = "De som van pre-autorisatie en post-autorisatie risicocontroles resulteerde in een fraudescore van 100 of meer. Daarom werd de transactie als frauduleus gemarkeerd en geweigerd.";
+"kh_uisdk_adyen_payment_error_22" = "Risicocontroles bij het vooraf en achteraf autoriseren resulteerden in een gecombineerde fraudescore van 100 of meer. Daarom werd de transactie als frauduleus gemarkeerd en geweigerd.";
 
-"kh_uisdk_adyen_payment_error_23" = "Transactie niet toegestaan";
+"kh_uisdk_adyen_payment_error_23" = "Transactie geweigerd";
 
-"kh_uisdk_adyen_payment_error_24" = "De opgegeven CVC (kaartbeveiligingscode) is ongeldig.";
+"kh_uisdk_adyen_payment_error_24" = "Ongeldige CVC (kaartbeveiligingscode).";
 
-"kh_uisdk_adyen_payment_error_25" = "Beperkte kaart";
+"kh_uisdk_adyen_payment_error_25" = "Kaart met beperkingen";
 
 "kh_uisdk_adyen_payment_error_26" = "Intrekking van autorisatieopdracht";
 
@@ -154,7 +154,7 @@
 
 "kh_uisdk_adyen_payment_error_3" = "Verwijzers";
 
-"kh_uisdk_adyen_payment_error_31" = "De uitgever heeft de transactie gemeld als vermoedelijke fraude.";
+"kh_uisdk_adyen_payment_error_31" = "De verstrekker heeft de transactie gemeld als vermoedelijke fraude.";
 
 "kh_uisdk_adyen_payment_error_32" = "De adresgegevens die de shopper heeft ingevuld zijn onjuist.";
 
@@ -168,17 +168,17 @@
 
 "kh_uisdk_adyen_payment_error_37" = "De shopper heeft de transactie afgebroken nadat hij een contactloze betaling had geprobeerd en werd gevraagd een andere kaartinvoermethode te proberen (pincode of swipe).";
 
-"kh_uisdk_adyen_payment_error_38" = "De uitgever heeft het verzoek om vrijstelling van authenticatie afgewezen en vereist authenticatie voor de transactie. Probeer het opnieuw met 3D Secure.";
+"kh_uisdk_adyen_payment_error_38" = "De verstrekker heeft het verzoek om vrijstelling van identiteitscontrole afgewezen en vereist identiteitscontrole voor de transactie. Probeer het opnieuw met 3D Secure.";
 
 "kh_uisdk_adyen_payment_error_39" = "De emittent of het schema was niet in staat om de uitkomst via RReq te communiceren.";
 
 "kh_uisdk_adyen_payment_error_4" = "De transactie is niet doorgegaan vanwege een fout aan de kant van de acquirer";
 
-"kh_uisdk_adyen_payment_error_40" = "Het betalingsnetwerk is niet bereikbaar. Probeer de transactie opnieuw met een andere betaalmethode.";
+"kh_uisdk_adyen_payment_error_40" = "Het betalingsnetwerk is niet bereikbaar. Voer de transactie opnieuw uit met een andere betaalmethode.";
 
-"kh_uisdk_adyen_payment_error_41" = "Een pincode of handtekening is vereist. Probeer de transactie opnieuw.";
+"kh_uisdk_adyen_payment_error_41" = "Een pincode of handtekening is vereist. Voer de transactie opnieuw uit.";
 
-"kh_uisdk_adyen_payment_error_42" = "De 3D Secure-verificatie is mislukt vanwege een probleem met het kaartnetwerk of de uitgever. Probeer de transactie opnieuw of probeer de transactie opnieuw met een andere betaalmethode.";
+"kh_uisdk_adyen_payment_error_42" = "De identiteitscontrole via 3D Secure is mislukt vanwege een probleem met het netwerk of de verstrekker. Voer de transactie opnieuw uit of kies een andere betaalmethode.";
 
 "kh_uisdk_adyen_payment_error_5" = "De kaart die voor de transactie is gebruikt, is geblokkeerd en daarom onbruikbaar";
 
@@ -192,41 +192,41 @@
 
 "kh_uisdk_airport_booking_message" = "Voer een geldig vluchtnummer in";
 
-"kh_uisdk_allocating_trip_one" = "Even geduld a.u.b. u krijgt een chauffeur toegewezen";
+"kh_uisdk_allocating_trip_one" = "Even geduld, u krijgt een chauffeur toegewezen";
 
-"kh_uisdk_allocating_trip_two" = "Dit kan een moment of twee duren";
+"kh_uisdk_allocating_trip_two" = "Dit kan even duren";
 
-"kh_uisdk_allocation_delay_text" = "Het duurt langer dan normaal voordat het taxibedrijf een chauffeur heeft toegewezen. Een ogenblik geduld alstublieft, neem contact op met het taxibedrijf of annuleer en reserveer bij een ander taxibedrijf.";
+"kh_uisdk_allocation_delay_text" = "Het toewijzen van een chauffeur door de ritaanbieder duurt langer dan normaal. Blijf wachten, neem contact op met de ritaanbieder, of annuleer en boek bij een andere ritaanbieder.";
 
-"kh_uisdk_allocation_delay_title" = "Toewijzing vertraging";
+"kh_uisdk_allocation_delay_title" = "Toewijzing vertraagd";
 
-"kh_uisdk_alternative" = "ALTERNATIEF";
+"kh_uisdk_alternative" = "ALTERNATIEF KIEZEN";
 
 "kh_uisdk_arrival" = "Aankomst";
 
-"kh_uisdk_arrived" = "Uw %@ chauffeur is gearriveerd";
+"kh_uisdk_arrived" = "Uw %@-chauffeur is gearriveerd";
 
 "kh_uisdk_back" = "Terug";
 
-"kh_uisdk_baggage_max" = "%1$@ maximum aantal bagage";
+"kh_uisdk_baggage_max" = "Max. %d stuks bagage";
 
 "kh_uisdk_base" = "Basistarief";
 
-"kh_uisdk_base_fare_explanation" = "Uw uiteindelijke tarief kan worden beïnvloed door fooien, tolgelden, belastingen en andere heffingen.";
+"kh_uisdk_base_fare_explanation" = "Uw uiteindelijke tarief hangt af van fooi, tolgeld, belastingen en andere heffingen.";
 
-"kh_uisdk_book_now" = "BOEK NU";
+"kh_uisdk_book_now" = "BEVESTIGEN EN BETALEN";
 
 "kh_uisdk_book_return_ride" = "Retourrit boeken";
 
-"kh_uisdk_booking_car" = "Boek rit";
+"kh_uisdk_booking_car" = "RIT BOEKEN";
 
-"kh_uisdk_booking_checkout_add_passenger" = "Voeg passagier details toe";
+"kh_uisdk_booking_checkout_add_passenger" = "Gegevens passagier toevoegen";
 
-"kh_uisdk_booking_checkout_add_payment_method" = "Betaling toevoegen";
+"kh_uisdk_booking_checkout_add_payment_method" = "Toevoegen";
 
 "kh_uisdk_booking_checkout_passenger" = "Passagier";
 
-"kh_uisdk_booking_checkout_title" = "Uitchecken";
+"kh_uisdk_booking_checkout_title" = "Afrekenen";
 
 "kh_uisdk_booking_confirmation" = "Boeking bevestigd";
 
@@ -234,37 +234,37 @@
 
 "kh_uisdk_booking_failed" = "Boeking mislukt";
 
-"kh_uisdk_booking_failed_body" = "Sorry, de vraag is groot. %1$@ heeft geen beschikbare stuurprogramma's.";
+"kh_uisdk_booking_failed_body" = "Het is erg druk op dit moment. %1$@ heeft geen chauffeurs beschikbaar.";
 
-"kh_uisdk_booking_failed_body_no_fleet_name" = "Sorry, de vraag is groot. %1$@ momenteel geen beschikbare chauffeurs.";
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Het is erg druk op dit moment. De gekozen ritaanbieder heeft geen chauffeurs beschikbaar.";
 
-"kh_uisdk_booking_terms" = "Door een reservering te maken gaat u akkoord met de %1$@ | %2$@ en %3$@ %4$@ | %3$@ %5$@.";
+"kh_uisdk_booking_terms" = "Door te boeken gaat u akkoord met de %1$@ | %2$@ %3$@ %4$@ | %3$@ %5$@.";
 
 "kh_uisdk_booking_terms_and_conditions" = "Gebruiksvoorwaarden";
 
 "kh_uisdk_bookings" = "Boekingen";
 
-"kh_uisdk_call" = "TELEFOONGESPREK";
+"kh_uisdk_call" = "CHAUFFEUR BELLEN";
 
-"kh_uisdk_cancel" = "Annuleren";
+"kh_uisdk_cancel" = "ANNULEREN";
 
 "kh_uisdk_cancel_ride" = "Rit annuleren";
 
-"kh_uisdk_cancel_ride_successful" = "Annulering rit succesvol";
+"kh_uisdk_cancel_ride_successful" = "Uw rit is geannuleerd";
 
-"kh_uisdk_cancel_ride_successful_message" = "Uw reis is succesvol geannuleerd.";
+"kh_uisdk_cancel_ride_successful_message" = "Uw rit is geannuleerd.";
 
-"kh_uisdk_cancel_your_ride" = "Uw rit annuleren?";
+"kh_uisdk_cancel_your_ride" = "Wilt u uw rit annuleren?";
 
 "kh_uisdk_cancelled" = "Geannuleerd";
 
-"kh_uisdk_cancelled_by_dispatch" = "De leverancier %@ heeft uw reis geannuleerd";
+"kh_uisdk_cancelled_by_dispatch" = "%@ heeft uw rit geannuleerd";
 
-"kh_uisdk_cancelled_by_user" = "U heeft de reservering geannuleerd met %@";
+"kh_uisdk_cancelled_by_user" = "U hebt uw rit met %@ geannuleerd";
 
-"kh_uisdk_cancelling" = "Tik en houd vast om te annuleren";
+"kh_uisdk_cancelling" = "Houd vast om te annuleren";
 
-"kh_uisdk_cancelling_ride" = "Annuleren";
+"kh_uisdk_cancelling_ride" = "Rit annuleren";
 
 "kh_uisdk_capacity" = "%@";
 
@@ -272,83 +272,83 @@
 
 "kh_uisdk_checked" = "Gecontroleerd";
 
-"kh_uisdk_checkout_as_guest" = "Boek rit";
+"kh_uisdk_checkout_as_guest" = "RIT BOEKEN";
 
-"kh_uisdk_completed" = "We hopen dat je genoten hebt van je reis";
+"kh_uisdk_completed" = "We hopen dat uw rit naar wens was";
 
-"kh_uisdk_confirmed" = "Uw reis is bevestigd met %@";
+"kh_uisdk_confirmed" = "Uw rit met %@ is bevestigd";
 
 "kh_uisdk_contact" = "CONTACT";
 
-"kh_uisdk_contact_driver" = "Neem contact op met de chauffeur";
+"kh_uisdk_contact_driver" = "Contact opnemen met chauffeur";
 
-"kh_uisdk_contact_fleet" = "Neem contact op met Vloot";
+"kh_uisdk_contact_fleet" = "Contact opnemen met ritaanbieder";
 
-"kh_uisdk_contact_us" = "Contact";
+"kh_uisdk_contact_us" = "Contact opnemen met ons";
 
 "kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/nl/requests/new";
 
-"kh_uisdk_continue_journey" = "Voortzetten";
+"kh_uisdk_continue_journey" = "DOORGAAN";
 
 "kh_uisdk_could_not_load_trips" = "Kan reizen niet laden.";
 
 "kh_uisdk_country_search" = "Land/regio zoeken";
 
-"kh_uisdk_current_location" = "Huidige locatie";
+"kh_uisdk_current_location" = "Huidige locatie opvragen";
 
 "kh_uisdk_date" = "Datum";
 
-"kh_uisdk_destination_book_error" = "Je moet een bestemming selecteren voordat je een rit boekt";
+"kh_uisdk_destination_book_error" = "Je moet een bestemming selecteren om een rit te boeken";
 
-"kh_uisdk_difficulties_cancelling_message" = "We ondervinden problemen bij het annuleren van je rit. Neem dan contact op met de vloot.";
+"kh_uisdk_difficulties_cancelling_message" = "Er zijn problemen met het annuleren van uw rit. Neem contact op met de ritaanbieder.";
 
-"kh_uisdk_difficulties_cancelling_title" = "Moeilijkheden bij annuleren";
+"kh_uisdk_difficulties_cancelling_title" = "Problemen met annuleren";
 
-"kh_uisdk_dismiss" = "STOPPEN";
+"kh_uisdk_dismiss" = "SLUITEN";
 
-"kh_uisdk_dispatch_cancelled" = "Excuses, %@ heeft momenteel geen beschikbare stuurprogramma's.";
+"kh_uisdk_dispatch_cancelled" = "%@ heeft op dit moment helaas geen chauffeurs beschikbaar.";
 
-"kh_uisdk_drawer_closed" = "Lade gesloten";
+"kh_uisdk_drawer_closed" = "Lade dicht";
 
 "kh_uisdk_drawer_open" = "Lade open";
 
 "kh_uisdk_driver_arrival" = "Aankomst chauffeur";
 
-"kh_uisdk_driver_en_route" = "Uw %@ chauffeur is onderweg";
+"kh_uisdk_driver_en_route" = "Uw %@-chauffeur is onderweg";
 
 "kh_uisdk_edit" = "Wijzigen";
 
 "kh_uisdk_electric" = "Elektrisch";
 
-"kh_uisdk_email_hint" = "E-Mail";
+"kh_uisdk_email_hint" = "E‑mail";
 
-"kh_uisdk_email_info" = "Verwijder alstublieft deze informatie niet, omdat dit ons helpt de app te verbeteren.";
+"kh_uisdk_email_info" = "Verwijder deze informatie niet, omdat deze ons helpt de app te verbeteren.";
 
-"kh_uisdk_email_report_issue_message" = "Gebruik alstublieft de ruimte hieronder om een specifiek probleem van uw rit te melden.";
+"kh_uisdk_email_report_issue_message" = "Gebruik de ruimte hieronder om een probleem met uw rit te melden.";
 
-"kh_uisdk_enter_destination" = "Voer bestemming in om beschikbare vloten te zien";
+"kh_uisdk_enter_destination" = "Bestemming invoeren";
 
-"kh_uisdk_erase_address" = "Wis adres";
+"kh_uisdk_erase_address" = "Adres wissen";
 
 "kh_uisdk_error" = "Fout";
 
 "kh_uisdk_error_invalid_password" = "Het e-mailadres of wachtwoord dat je hebt ingevoerd, is onjuist";
 
-"kh_uisdk_errors_cant_send_email" = "Kan geen e-mailbericht verzenden. Configureer eerst de Mail-app.";
+"kh_uisdk_errors_cant_send_email" = "De e‑mail kan niet worden verstuurd. Configureer eerst uw e‑mailapp.";
 
 "kh_uisdk_errors_flight_number_validator_error" = "Vluchtnummer";
 
-"kh_uisdk_errors_force_update_button" = "BIJWERKEN";
+"kh_uisdk_errors_force_update_button" = "Bijwerken";
 
 "kh_uisdk_errors_force_update_message" = "Werk de app bij om door te gaan.";
 
 "kh_uisdk_errors_force_update_title" = "Nieuwe versie beschikbaar";
 
-"kh_uisdk_errors_get_user_fail" = "Er is een probleem opgetreden bij het ophalen van uw profiel.";
+"kh_uisdk_errors_get_user_fail" = "Er is een probleem opgetreden bij het opvragen van uw profiel.";
 
-"kh_uisdk_errors_missing_payment_sdk_token" = "Probleem met het initialiseren van betalingen, neem contact op met de ondersteuning";
+"kh_uisdk_errors_missing_payment_sdk_token" = "Probleem met het initialiseren van betalingen. Neem contact op met de helpdesk.";
 
-"kh_uisdk_errors_prebooking_within_the_hour" = "Prebook kan niet binnen het huidige uur worden gemaakt.";
+"kh_uisdk_errors_prebooking_within_the_hour" = "Vooraf boeken moet minimaal één uur van te voren worden gedaan.";
 
 "kh_uisdk_estimated_arrival_time" = "Geschatte aankomsttijd";
 
@@ -358,13 +358,13 @@
 
 "kh_uisdk_eta" = "Geschatte aankomsttijd";
 
-"kh_uisdk_exec" = "directeur";
+"kh_uisdk_exec" = "Executive";
 
 "kh_uisdk_extra_capabilities" = "+ %d";
 
 "kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/nl";
 
-"kh_uisdk_faretype_info_base" = "Uw uiteindelijke tarief kan worden beïnvloed\ndoor fooien, tolgelden, belastingen en andere heffingen.";
+"kh_uisdk_faretype_info_base" = "Uw uiteindelijke tarief hangt af van\nfooi, tolgeld, belastingen en andere heffingen.";
 
 "kh_uisdk_feedback" = "Feedback";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_feedback_submitted" = "Bedankt voor het doorgeven van uw feedback";
 
-"kh_uisdk_feedback_title" = "Vertel ons alsjeblieft meer over je reis";
+"kh_uisdk_feedback_title" = "Vertel ons meer over uw rit";
 
 "kh_uisdk_fees_and_taxes_included" = "Belastingen en toeslagen inbegrepen";
 
@@ -380,13 +380,13 @@
 
 "kh_uisdk_filter_all" = "Alle";
 
-"kh_uisdk_filter_berline" = "Berlijn";
+"kh_uisdk_filter_berline" = "Sedan";
 
 "kh_uisdk_filter_bike" = "Fiets";
 
 "kh_uisdk_filter_child_seat" = "Kinderzitje";
 
-"kh_uisdk_filter_driver_details" = "Gegevens van de bestuurder";
+"kh_uisdk_filter_driver_details" = "Gegevens chauffeur";
 
 "kh_uisdk_filter_eco_friendly" = "Milieuvriendelijk";
 
@@ -396,25 +396,25 @@
 
 "kh_uisdk_filter_fight_tracking" = "Vlucht volgen";
 
-"kh_uisdk_filter_fleet_capabilities" = "Vlootmogelijkheden";
+"kh_uisdk_filter_fleet_capabilities" = "Kenmerken";
 
 "kh_uisdk_filter_free_cancellation" = "Gratis annuleren";
 
 "kh_uisdk_filter_free_waiting_time" = "Gratis wachttijd";
 
-"kh_uisdk_filter_gps_tracking" = "GPS-tracking";
+"kh_uisdk_filter_gps_tracking" = "GPS volgen";
 
 "kh_uisdk_filter_hybrid" = "Hybride";
 
-"kh_uisdk_filter_luggages" = "Bagage";
+"kh_uisdk_filter_luggages" = "Stuks bagage";
 
 "kh_uisdk_filter_luxury" = "Luxe";
 
-"kh_uisdk_filter_moto" = "Moto";
+"kh_uisdk_filter_moto" = "Motorfiets";
 
-"kh_uisdk_filter_page_results" = "Bekijk alle %1$@ resultaten";
+"kh_uisdk_filter_page_results" = "Bekijk alle %@ resultaten";
 
-"kh_uisdk_filter_passengers" = "passagier(s)";
+"kh_uisdk_filter_passengers" = "Passagier(s)";
 
 "kh_uisdk_filter_quote_types" = "Soorten offertes";
 
@@ -430,27 +430,27 @@
 
 "kh_uisdk_filter_vehicle_class" = "Voertuigklasse";
 
-"kh_uisdk_filter_vehicle_details" = "voertuiggegevens";
+"kh_uisdk_filter_vehicle_details" = "Voertuiggegevens";
 
-"kh_uisdk_filter_vehicle_extras" = "Voertuig Extra's";
+"kh_uisdk_filter_vehicle_extras" = "Voertuigextra's";
 
-"kh_uisdk_filter_vehicle_types" = "Voertuigtypes";
+"kh_uisdk_filter_vehicle_types" = "Voertuigtypen";
 
-"kh_uisdk_filter_wheelchair" = "Rolstoel";
+"kh_uisdk_filter_wheelchair" = "Geschikt voor rolstoel";
 
-"kh_uisdk_finding_your_ride" = "Uw rit vinden...";
+"kh_uisdk_finding_your_ride" = "Uw rit zoeken…";
 
 "kh_uisdk_first_name_hint" = "Voornaam";
 
 "kh_uisdk_fixed_fare" = "Vaste prijs";
 
-"kh_uisdk_fleet" = "Vervoersbedrijf";
+"kh_uisdk_fleet" = "Ritaanbieder";
 
-"kh_uisdk_fleet_recommendation_body" = "Bedankt voor het aanbevelen van een taxibedrijf bij u in de buurt. Om zo snel mogelijk dekking in uw regio te krijgen, verzoeken wij u ons het gebied en de naam van het taxibedrijf door te geven.\nGebied:\nTaxibedrijf::";
+"kh_uisdk_fleet_recommendation_body" = "Bedankt voor het aanbevelen van een ritaanbieder bij u in de buurt. U kunt ons helpen zo snel mogelijk bij u in de buurt te zijn. Geef aan waar u bent en welk bedrijf u wilt aanbevelen.";
 
-"kh_uisdk_fleet_recommendation_subject" = "Aanbeveling taxibedrijf";
+"kh_uisdk_fleet_recommendation_subject" = "Aanbeveling voor ritaanbieder bij mij in de buurt";
 
-"kh_uisdk_flight_number" = "Vluchtnummer";
+"kh_uisdk_flight_number" = "Vluchtnummer (optioneel)";
 
 "kh_uisdk_flight_tracking" = "Vlucht volgen";
 
@@ -460,9 +460,9 @@
 
 "kh_uisdk_got_it" = "BEGREPEN";
 
-"kh_uisdk_gps_tracking" = "GPS-tracking";
+"kh_uisdk_gps_tracking" = "GPS volgen";
 
-"kh_uisdk_guest_checkout_payment_details_title" = "Betalingsmethoden";
+"kh_uisdk_guest_checkout_payment_details_title" = "Betaalmethoden";
 
 "kh_uisdk_help" = "Help";
 
@@ -472,29 +472,35 @@
 
 "kh_uisdk_hours_plural.zero" = "%d uur";
 
+"kh_uisdk_hours_plural.one" = "%d uur";
+
+"kh_uisdk_hours_plural.other" = "%d uur";
+
+"kh_uisdk_hours_plural.zero" = "%d uur";
+
 "kh_uisdk_info" = "Info";
 
-"kh_uisdk_initialised" = "Karhoo initialiseert uw reis";
+"kh_uisdk_initialised" = "rit wordt geïnitialiseerd";
 
-"kh_uisdk_invalid_email" = "Ongeldig e-mail";
+"kh_uisdk_invalid_email" = "Ongeldig e‑mailadres";
 
-"kh_uisdk_invalid_empty_field" = "Leeg veld niet toegestaan";
+"kh_uisdk_invalid_empty_field" = "Gegevens niet compleet";
 
 "kh_uisdk_invalid_input_value" = "Ongeldige waarde";
 
 "kh_uisdk_invalid_phone_number" = "Ongeldig telefoonnummer";
 
-"kh_uisdk_K0001" = "General request error.";
+"kh_uisdk_K0001" = "Algemene fout bij aanvraag.";
 
-"kh_uisdk_K0002" = "Ongeldige payload van verzoek";
+"kh_uisdk_K0002" = "Ongeldige aanvraag.";
 
-"kh_uisdk_K0003" = "Kan autorisatietoken niet lezen";
+"kh_uisdk_K0003" = "Autorisatietoken is onleesbaar";
 
-"kh_uisdk_K0004" = "Verificatie is vereist voor dit pad";
+"kh_uisdk_K0004" = "Identiteitscontrole is vereist voor dit pad";
 
 "kh_uisdk_K0005" = "Vereiste rol ontbreekt voor dit verzoek";
 
-"kh_uisdk_K0006" = "Snelheidslimiet overschreden";
+"kh_uisdk_K0006" = "Limiet overschreden";
 
 "kh_uisdk_K0007" = "Stroomonderbreker is geactiveerd voor deze route";
 
@@ -510,37 +516,37 @@
 
 "kh_uisdk_K1999" = "Gebruiker is aangemaakt maar nog niet geautoriseerd. We nemen contact met je op zodra deze is ingeschakeld.";
 
-"kh_uisdk_K2001" = "Kon adres niet krijgen";
+"kh_uisdk_K2001" = "Adres opvragen mislukt";
 
-"kh_uisdk_K3001" = "Kan geen schattingen krijgen";
+"kh_uisdk_K3001" = "Offertes laden mislukt";
 
-"kh_uisdk_K3002" = "Sorry, voor deze bestemming zijn reserveringen voor zeer korte termijn niet beschikbaar, u kunt wel reserveren voor uw volgende reis!";
+"kh_uisdk_K3002" = "Een rit die z.s.m. vertrekt boeken is op dit moment niet beschikbaar voor deze bestemming. U kunt wel alvast een latere rit boeken!";
 
-"kh_uisdk_K3003" = "Kan geen schattingen krijgen (kon gespecificeerde offerte niet vinden)";
+"kh_uisdk_K3003" = "Offerte laden mislukt";
 
-"kh_uisdk_K4001" = "Kon reis niet boeken";
+"kh_uisdk_K4001" = "We konden deze rit niet boeken";
 
-"kh_uisdk_K4002" = "Kon reis niet boeken - ongeldige lading van verzoek (minimaal 1 set passagiersgegevens vereist)";
+"kh_uisdk_K4002" = "We konden deze rit niet boeken (gegevens voor minimaal één passagier nodig)";
 
-"kh_uisdk_K4003" = "Kon reis niet boeken (kon gespecificeerde offerte niet vinden)";
+"kh_uisdk_K4003" = "We konden deze rit niet boeken (offerte niet gevonden)";
 
-"kh_uisdk_K4004" = "Kon reis niet boeken (poging om verlopen offerte te boeken)";
+"kh_uisdk_K4004" = "We konden deze rit niet boeken (offerte verlopen)";
 
 "kh_uisdk_K4005" = "Kon reis niet boeken (toestemming geweigerd)";
 
-"kh_uisdk_K4006" = "Kon reis niet boeken (pre-autorisatie betaling mislukt)";
+"kh_uisdk_K4006" = "We konden deze rit niet boeken (vooraf autoriseren van betaling is mislukt)";
 
-"kh_uisdk_K4007" = "Kon reis niet annuleren";
+"kh_uisdk_K4007" = "We konden deze rit niet annuleren";
 
-"kh_uisdk_K4008" = "Kon reis niet annuleren (kon gespecificeerde reis niet vinden)";
+"kh_uisdk_K4008" = "We konden deze rit niet annuleren (rit niet gevonden)";
 
 "kh_uisdk_K4009" = "Kan reis niet annuleren (toestemming geweigerd)";
 
-"kh_uisdk_K4010" = "Kon reis niet annuleren (al geannuleerd)";
+"kh_uisdk_K4010" = "We konden deze rit niet annuleren (rit is al geannuleerd)";
 
-"kh_uisdk_K4011" = "Kon geen reis krijgen";
+"kh_uisdk_K4011" = "Rit opvragen mislukt";
 
-"kh_uisdk_K4012" = "Kon reis niet ophalen (kon gespecificeerde reis niet vinden)";
+"kh_uisdk_K4012" = "Rit opvragen mislukt (rit niet gevonden)";
 
 "kh_uisdk_K4013" = "Kan reis niet ophalen (toestemming geweigerd)";
 
@@ -548,21 +554,21 @@
 
 "kh_uisdk_K4015" = "Kon reis niet boeken als reiziger";
 
-"kh_uisdk_K4018" = "Kon niet boeken omdat de offerte niet langer beschikbaar is";
+"kh_uisdk_K4018" = "We konden deze rit niet boeken (offerte niet langer beschikbaar)";
 
-"kh_uisdk_K4020" = "Kon reis niet boeken met het geselecteerde DMS";
+"kh_uisdk_K4020" = "We konden deze rit niet boeken met het geselecteerde DMS";
 
-"kh_uisdk_K4025" = "Offerteprijs verhoogd tijdens het boeken.";
+"kh_uisdk_K4025" = "Offerteprijs is verhoogd tijdens het boeken.";
 
-"kh_uisdk_K5001" = "Kan geen schattingen krijgen";
+"kh_uisdk_K5001" = "Offertes laden mislukt";
 
-"kh_uisdk_K5002" = "Kon geen beschikbaarheid krijgen (geen beschikbaarheid gevonden in het gevraagde gebied)";
+"kh_uisdk_K5002" = "Beschikbaarheid opvragen mislukt (niets beschikbaar in het gewenste gebied)";
 
-"kh_uisdk_K5003" = "Kon geen beschikbaarheid krijgen (geen categorieën gevonden binnen het gevraagde gebied)";
+"kh_uisdk_K5003" = "Geen beschikbare aanbieders gevonden in dit gebied voor de geselecteerde categorieën";
 
-"kh_uisdk_K6001" = "Kan niet authenticeren";
+"kh_uisdk_K6001" = "Identiteitscontrole mislukt";
 
-"kh_uisdk_karhoo_cancelled_alert_message" = "Er is een probleem opgetreden bij het maken van deze boeking. Probeer het opnieuw of neem contact op met de ondersteuning.";
+"kh_uisdk_karhoo_cancelled_alert_message" = "Er is een probleem opgetreden bij deze boeking. Probeer het opnieuw of neem contact op met de helpdesk.";
 
 "kh_uisdk_karhoo_cancelled_alert_title" = "Probleem met boeken";
 
@@ -578,9 +584,9 @@
 
 "kh_uisdk_KP002" = "Primaire organisatie voor gebruiker is geen UUID";
 
-"kh_uisdk_KP003" = "Ontbrekende leveringspartner-ID";
+"kh_uisdk_KP003" = "Standaardbetaalmethode niet gevonden";
 
-"kh_uisdk_KP004" = "Gebruikers-ID is geen UUID";
+"kh_uisdk_KP004" = "Standaardcreditcard niet gevonden";
 
 "kh_uisdk_KP005" = "Browserinformatie moet worden gedefinieerd om 3DS af te dwingen";
 
@@ -598,15 +604,15 @@
 
 "kh_uisdk_label_and" = "en";
 
-"kh_uisdk_label_fleet_cancellation_policy" = "Annuleringsvoorwaarden taxibedrijf";
+"kh_uisdk_label_fleet_cancellation_policy" = "Annuleringsvoorwaarden";
 
-"kh_uisdk_label_fleet_terms_and_conditions" = "Algemene gebruiksvoorwaarden taxibedrijf";
+"kh_uisdk_label_fleet_terms_and_conditions" = "Algemene voorwaarden";
 
 "kh_uisdk_last_name_hint" = "Achternaam";
 
-"kh_uisdk_last_trip_id" = "Laatste reis-ID: %1$@";
+"kh_uisdk_last_trip_id" = "Laatste rit-ID: %1$@";
 
-"kh_uisdk_last_trip_id_not_set" = "Laatste reis-ID: nog niet ingesteld";
+"kh_uisdk_last_trip_id_not_set" = "Laatste rit-ID: nog niet ingesteld";
 
 "kh_uisdk_legal_notice_label" = "Juridische kennisgeving";
 
@@ -620,13 +626,13 @@
 
 "kh_uisdk_locale" = "nl_NL";
 
-"kh_uisdk_location_disabled" = "Schakel locatieservices in op uw apparaat om van de volledige ervaring te genieten";
+"kh_uisdk_location_disabled" = "Schakel locatierechten in op uw apparaat om alle functionaliteit te gebruiken";
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
-"kh_uisdk_loyalty_balance_title" = "SALDO: %1$@ PUNTEN";
+"kh_uisdk_loyalty_balance_title" = "Saldo: %@ Reward-punten";
 
-"kh_uisdk_loyalty_info" = "Uw kaart is nodig om deze transactie te autoriseren in het geval dat de uiteindelijke prijs van de rit uw puntensaldo overschrijdt. Er worden geen kosten in rekening gebracht op uw account als uw loyaliteitspunten de volledige prijs dekken.";
+"kh_uisdk_loyalty_info" = "Uw kaart is nodig om deze transactie te autoriseren voor het geval de uiteindelijke ritprijs hoger is dan uw puntensaldo. Er worden geen kosten in rekening gebracht als u genoeg punten hebt voor de ritprijs.";
 
 "kh_uisdk_loyalty_info_add_points" = "Aan het einde van de rit worden %@ loyaliteitspunten toegevoegd aan uw accountsaldo";
 
@@ -634,33 +640,33 @@
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Uw puntensaldo is onvoldoende";
 
-"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "De huidige loyaliteitsmodus komt niet in aanmerking voor pre-autorisatie";
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "U kunt geen punten gebruiken om deze rit vooraf te autoriseren";
 
-"kh_uisdk_loyalty_points_earned_for_trip" = "%1$@ loyaliteitspunten worden aan het einde van de rit toegevoegd aan uw accountsaldo";
+"kh_uisdk_loyalty_points_earned_for_trip" = "Aan het eind van deze rit worden er %1$@ Reward-punten aan uw saldo toegevoegd";
 
-"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "Je mag geen punten verbranden";
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "U kunt geen punten gebruiken";
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Uw puntensaldo is niet voldoende om deze rit te betalen";
 
-"kh_uisdk_loyalty_separator" = "OF";
+"kh_uisdk_loyalty_separator" = "Of";
 
-"kh_uisdk_loyalty_title" = "Loyaliteitspunten";
+"kh_uisdk_loyalty_title" = "Reward-punten";
 
-"kh_uisdk_loyalty_unknown_error" = "Er is een fout opgetreden. Probeer het later opnieuw om loyaliteitspunten te verdienen of te gebruiken.";
+"kh_uisdk_loyalty_unknown_error" = "Er is een fout opgetreden. Probeer later opnieuw om Reward-punten te verdienen of te gebruiken.";
 
-"kh_uisdk_loyalty_unsupported_currency" = "Er is een fout opgetreden. De valuta wordt niet ondersteund";
+"kh_uisdk_loyalty_unsupported_currency" = "Fout: deze valuta wordt niet ondersteund";
 
-"kh_uisdk_loyalty_use_points_off_subtitle" = "U kunt uw loyaliteitspunten inschakelen om de rit te betalen";
+"kh_uisdk_loyalty_use_points_off_subtitle" = "U kunt Reward-punten gebruiken om deze rit te betalen";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Betaal %1$@ %2$@ met %3$@ loyaliteitspunten";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Gebruik %@ Reward-punten om %@ %@ te betalen";
 
-"kh_uisdk_loyalty_use_points_title" = "Gebruik je punten";
+"kh_uisdk_loyalty_use_points_title" = "Gebruik je Reward-punten";
 
-"kh_uisdk_map_selector" = "Op de kaart zetten";
+"kh_uisdk_map_selector" = "Speld op de kaart zetten";
 
 "kh_uisdk_meeting_point" = "Ontmoetingspunt";
 
-"kh_uisdk_metered" = "meterprijs";
+"kh_uisdk_metered" = "Meterprijs";
 
 "kh_uisdk_min" = "min";
 
@@ -668,37 +674,43 @@
 
 "kh_uisdk_minutes_plurals.one" = "%d minuut";
 
+"kh_uisdk_minutes_plurals.other" = "%d minuten";
+
+"kh_uisdk_minutes_plurals.zero" = "%d minuut";
+
+"kh_uisdk_minutes_plurals.one" = "%d minuut";
+
 "kh_uisdk_minutes_plurals.other" = "%d minuut";
 
 "kh_uisdk_minutes_plurals.zero" = "%d minuut";
 
-"kh_uisdk_mobile_phone_number_hint" = "Mobiele telefoonnummer";
+"kh_uisdk_mobile_phone_number_hint" = "Mobiel telefoonnummer";
 
-"kh_uisdk_moto" = "Moto";
+"kh_uisdk_moto" = "Motorfiets";
 
-"kh_uisdk_mpv" = "Bus";
+"kh_uisdk_mpv" = "MPV";
 
-"kh_uisdk_network_error" = "Het lijkt erop dat we problemen hebben met het verbinden met het netwerk";
+"kh_uisdk_network_error" = "Er zijn problemen met de netwerkverbinding";
 
-"kh_uisdk_new_ride" = "NIEUWE RIT";
+"kh_uisdk_new_ride" = "RIT BOEKEN";
 
 "kh_uisdk_next" = "Volgende";
 
 "kh_uisdk_no" = "Nee";
 
-"kh_uisdk_no_availability_body" = "%1$@ als u suggesties heeft voor lokale vloten.";
+"kh_uisdk_no_availability_body" = "%1$@ als u suggesties hebt voor een nieuwe ritaanbieder.";
 
-"kh_uisdk_no_availability_link" = "Neem contact op";
+"kh_uisdk_no_availability_link" = "Neem contact met ons op";
 
-"kh_uisdk_no_cars_available" = "Helaas zijn er op dit moment geen auto's beschikbaar voor je rit.\n\nControleer het binnenkort nog eens";
+"kh_uisdk_no_cars_available" = "Helaas zijn er op dit moment geen auto's beschikbaar. Probeer het binnenkort nog eens.";
 
-"kh_uisdk_no_email_setup_error" = "Stel een e-mailaccount in op uw apparaat";
+"kh_uisdk_no_email_setup_error" = "Stel een e‑mailaccount in op uw apparaat";
 
-"kh_uisdk_no_location_permission_message" = "Locatiegegevens die nodig zijn om uw locatie te tonen. Om de machtigingsinstellingen te wijzigen, gaat u naar het tabblad iOS-instellingen en kiest u een nieuwe waarde.";
+"kh_uisdk_no_location_permission_message" = "Schakel locatievoorzieningen in voor deze app in de instellingen op uw apparaat, zodat we uw locatie kunnen laten zien.";
 
-"kh_uisdk_no_location_permission_title" = "Toestemming nodig";
+"kh_uisdk_no_location_permission_title" = "Locatievoorzieningen vereist";
 
-"kh_uisdk_no_quotes_in_selected_category" = "Er zijn geen offertes voor deze categorie.\nKies een andere categorie.";
+"kh_uisdk_no_quotes_in_selected_category" = "Er is niets beschikbaar in deze categorie. Kies een andere categorie.";
 
 "kh_uisdk_no_trips" = "Geen ritten";
 
@@ -706,17 +718,17 @@
 
 "kh_uisdk_offer_expired" = "Offerte verlopen";
 
-"kh_uisdk_offer_expired_text" = "Selecteer een nieuwe offerte om door te gaan met uw boeking";
+"kh_uisdk_offer_expired_text" = "Selecteer een nieuwe offerte om door te gaan met boeken";
 
 "kh_uisdk_ok" = "OK";
 
-"kh_uisdk_origin_book_error" = "U moet een vertrekpunt selecteren voordat u een rit boekt";
+"kh_uisdk_origin_book_error" = "U moet een ophaallocatie selecteren om een rit te boeken";
 
 "kh_uisdk_P0001" = "Kan gebruikers-ID niet ophalen van token";
 
-"kh_uisdk_P0002" = "Betalingsservice bellen is mislukt";
+"kh_uisdk_P0002" = "De betalingsverstrekker is niet bereikbaar";
 
-"kh_uisdk_pass_on_board" = "Je bent op weg. Veilige rit!";
+"kh_uisdk_pass_on_board" = "U bent onderweg. Fijne rit!";
 
 "kh_uisdk_passenger_details" = "Passagiersgegevens";
 
@@ -724,81 +736,81 @@
 
 "kh_uisdk_passenger_details_subtitle" = "Deze informatie zorgt voor een soepel verloop van uw rit.";
 
-"kh_uisdk_passengers_max" = "%1$@ maximum aantal passagiers";
+"kh_uisdk_passengers_max" = "Max. %d passagiers";
 
 "kh_uisdk_password_hint" = "Wachtwoord";
 
-"kh_uisdk_past_rides_empty" = "U heeft nog geen ritten geboekt. Wij kunnen u helpen om van A naar B te komen";
+"kh_uisdk_past_rides_empty" = "U hebt nog geen ritten geboekt. Wij helpen u van A naar B!";
 
 "kh_uisdk_payment" = "Betaling";
 
-"kh_uisdk_payment_details" = "Betalingsdetails";
+"kh_uisdk_payment_details" = "Betaalgegevens";
 
-"kh_uisdk_payment_issue" = "Betalingsprobleem";
+"kh_uisdk_payment_issue" = "Probleem met betalen";
 
-"kh_uisdk_payment_issue_message" = "Er is een probleem met uw kaart";
+"kh_uisdk_payment_issue_message" = "Er is een probleem met uw betaalkaart";
 
-"kh_uisdk_payment_payment_alert_update_card" = "Update kaart";
+"kh_uisdk_payment_payment_alert_update_card" = "Kaart bijwerken";
 
-"kh_uisdk_payment_summary" = "Betalingsoverzicht";
+"kh_uisdk_payment_summary" = "BETAALOVERZICHT";
 
 "kh_uisdk_payments" = "Betalingen";
 
 "kh_uisdk_pending" = "In behandeling";
 
-"kh_uisdk_permission_rationale_location" = "Om u op de kaart te kunnen lokaliseren, moeten we de locatie van uw apparaat gebruiken. Sta locatierechten toe";
+"kh_uisdk_permission_rationale_location" = "Schakel locatierechten in op uw apparaat zodat we uw locatie kunnen bepalen";
 
-"kh_uisdk_permissions" = "RECHTEN";
+"kh_uisdk_permissions" = "TOESTEMMING";
 
-"kh_uisdk_pickup_time" = "Ophaal tijd";
+"kh_uisdk_pickup_time" = "Ophaaltijd";
 
-"kh_uisdk_pickup_type_curbside" = "Curbside";
+"kh_uisdk_pickup_type_curbside" = "Buiten";
 
-"kh_uisdk_pickup_type_meet_and_greet" = "Meet & Greet";
+"kh_uisdk_pickup_type_meet_and_greet" = "Meet & greet";
 
 "kh_uisdk_pickup_type_standby" = "Stand-by";
 
-"kh_uisdk_prebook_confirmation" = "Jouw reservering\nvan: %1$@\n naar: %2$@\n bij: %3$@\n is geboektboeking";
+"kh_uisdk_prebook_confirmation" = "Uw boeking\nvan: %1$@ \nnaar: %2$@ \nop: %3$@ \nis bevestigd";
 
-"kh_uisdk_prebook_confirmed" = "Voorboeking bevestigd";
+"kh_uisdk_prebook_confirmed" = "Boeking vooraf bevestigd";
 
-"kh_uisdk_prebook_picker_title" = "Ophaaltijd vooraf boeken";
+"kh_uisdk_prebook_picker_title" = "Ophaaltijd";
 
-"kh_uisdk_prebook_timezone_title" = "De boeking wordt gemaakt in de lokale tijd van ophalen ( %1$@ )";
+"kh_uisdk_prebook_timezone_title" = "Ritten worden geboekt op de lokale tijd";
 
 "kh_uisdk_price" = "Prijs";
 
-"kh_uisdk_price_info_text_estimated" = "Dit taxibedrijf is een niet-gereguleerde taxi. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc). Raadpleeg de algemene voorwaarden van het taxibedrijf voor meer informatie.";
+"kh_uisdk_price_info_text_estimated" = "Deze ritaanbieder heeft niet-gereguleerde taxi's. De offerte is een schatting op basis van factoren zoals tijd en totale afstand. Raadpleeg de algemene voorwaarden van de ritaanbieder voor meer informatie.";
 
-"kh_uisdk_price_info_text_fixed" = "Dit taxibedrijft rekent een vast tarief. Het uiteindelijke tarief kan worden beïnvloed door extra's (tolgeld, vertraging, enz.). Raadpleeg de algemene voorwaarden van het taxibedrijf.	";
+"kh_uisdk_price_info_text_fixed" = "Deze ritaanbieder rekent een vast tarief. Het uiteindelijke tarief hangt af van eventuele extra kosten, bijvoorbeeld voor tolgeld of vertraging. Raadpleeg de algemene voorwaarden van de ritaanbieder voor meer informatie.";
 
-"kh_uisdk_price_info_text_metered" = "Dit taxibedrijf werkt met een gereguleerde taximeter. De offerte is een schatting op basis van de reisfactoren (afstand, tijd, etc).";
+"kh_uisdk_price_info_text_metered" = "Deze ritaanbieder werkt met gereguleerde taxi's met een taximeter. De offerte is een schatting op basis van factoren zoals tijd en totale afstand.";
 
-"kh_uisdk_price_meet_and_greet" = "Meet & Greet";
+"kh_uisdk_price_meet_and_greet" = "Meet & greet";
 
 "kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "Profiel";
 
-"kh_uisdk_Q0001" = "Ophalen en bestemming kunnen niet hetzelfde zijn.";
+"kh_uisdk_Q0001" = "De ophaallocatie en afzetlocatie mogen niet hetzelfde zijn.";
 
-"kh_uisdk_question_four" = "Hoe gemakkelijk vond je het gebruik van de app?";
+"kh_uisdk_question_four" = "Hoe gemakkelijk vond u het gebruik van de app?";
 
-"kh_uisdk_question_one" = "Hoe tevreden was u met de selectie van offertes voor uw reis (bijv. Vloten, Prijzen en ETA's)?";
+"kh_uisdk_question_one" = "Hoe tevreden was u met de keuze aan offertes (bijv. prijs, aanbieders, aankomsttijden)?";
 
-"kh_uisdk_question_three" = "Hoe was uw ervaring in de taxi (bijv. netheid van de taxi, route en chauffeur)? Hoe gemakkelijk vond u het gebruik van de app?";
+"kh_uisdk_question_three" = "Wat vond u van de rit in de auto (bijv. gekozen route, chauffeur, schone auto)?";
 
-"kh_uisdk_question_two" = "Hoe was je ervaring met het vinden van de ophaallocatie en het ontmoeten van je chauffeur?";
+"kh_uisdk_question_two" = "Hoe was uw ervaring met het vinden van de ophaallocatie en het ontmoeten van uw chauffeur?";
 
-"kh_uisdk_quote" = "Citaat";
+"kh_uisdk_quote" = "De leverancier";
 
-"kh_uisdk_quote_cancellation_after_booking_ending" = "na reserveren";
+"kh_uisdk_quote_cancellation_after_booking_ending" = "na boeken";
 
 "kh_uisdk_quote_cancellation_and_keyword" = "en";
 
-"kh_uisdk_quote_cancellation_before_driver_departure" = "Gratis annuleren tot de chauffeur onderweg is";
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Gratis annuleren totdat de chauffeur onderweg is";
 
-"kh_uisdk_quote_cancellation_before_pickup_ending" = "voor ophalen";
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "vóór ophalen";
 
 "kh_uisdk_quote_cancellation_before_pickup_ios" = "Gratis annuleren tot %1$@ voor ophalen";
 
@@ -808,41 +820,41 @@
 
 "kh_uisdk_quote_learn_more" = "Meer informatie";
 
-"kh_uisdk_quoted_price" = "Prijsopgave";
+"kh_uisdk_quoted_price" = "Offertebedrag";
 
-"kh_uisdk_quotes_activity_title" = "Citaten";
+"kh_uisdk_quotes_activity_title" = "Offertes";
 
-"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Voer zowel het ophaal- als het inleveradres in om toegang te krijgen tot de aanbiedingen.";
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Voer een ophaallocatie en afzetlocatie in om offertes te bekijken";
 
-"kh_uisdk_quotes_error_missing_addresses_title" = "Ophaal- of afleveradres ontbreekt.";
+"kh_uisdk_quotes_error_missing_addresses_title" = "Ophaal- of afzetlocatie ontbreekt";
 
-"kh_uisdk_quotes_error_no_availability_subtitle" = "Gelieve een ander tijdstip te kiezen.";
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Selecteer een ander tijdstip";
 
-"kh_uisdk_quotes_error_no_availability_title" = "Geen beschikbaarheid voor de aanvraagtijd.";
+"kh_uisdk_quotes_error_no_availability_title" = "Niets beschikbaar op het gewenste tijdstip";
 
 "kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ om nieuwsvloten voor te stellen";
 
 "kh_uisdk_quotes_error_no_coverage_title" = "Nog geen vloten in dit gebied";
 
-"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Wijzig uw filterselectie.";
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Kies andere filters.";
 
-"kh_uisdk_quotes_error_no_results_after_filter_title" = "Geen resultaat na filteren.";
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "Niets gevonden met deze filters.";
 
 "kh_uisdk_quotes_error_no_results_found" = "Sorry, voor deze bestemming zijn reserveringen voor zeer korte termijn niet beschikbaar, u kunt wel reserveren voor uw volgende reis!";
 
-"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Wijzig een van de adressen om toegang te krijgen tot de offertes";
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "De ophaallocatie en afzetlocatie zijn mogelijk hetzelfde";
 
-"kh_uisdk_quotes_error_similar_addresses_title" = "Ophaal- en afleveradressen zijn vergelijkbaar";
+"kh_uisdk_quotes_error_similar_addresses_title" = "De ophaallocatie en afzetlocatie zijn mogelijk hetzelfde";
 
-"kh_uisdk_quotes_no_availability" = "We zijn hier nog niet live! Neem contact met ons op als u suggesties heeft voor lokale vloten.";
+"kh_uisdk_quotes_no_availability" = "We zijn hier nog niet actief!";
 
 "kh_uisdk_quotes_no_availability_subtitle" = "Selecteer een ander tijdstip";
 
 "kh_uisdk_quotes_no_availability_title" = "Geen beschikbaarheid voor de gevraagde tijd";
 
-"kh_uisdk_rate_trip_label" = "Hoe zou u uw reis beoordelen?";
+"kh_uisdk_rate_trip_label" = "Hoe zou u uw rit beoordelen?";
 
-"kh_uisdk_rating_submitted" = "Bedankt voor het doorgeven van uw beoordeling.";
+"kh_uisdk_rating_submitted" = "Bedankt voor uw feedback.";
 
 "kh_uisdk_rebook_ride" = "Rit opnieuw boeken";
 
@@ -856,59 +868,59 @@
 
 "kh_uisdk_request_received" = "Boeking ontvangen";
 
-"kh_uisdk_requested" = "Uw reis is aangevraagd met %@";
+"kh_uisdk_requested" = "Uw rit met %@ is aangevraagd";
 
 "kh_uisdk_requesting" = "Aanvragen";
 
 "kh_uisdk_requesting_car" = "Rit boeken";
 
-"kh_uisdk_reset_filter" = "Filters resetten";
+"kh_uisdk_reset_filter" = "Filter resetten";
 
 "kh_uisdk_result" = "%1$@ resultaat(en)";
 
-"kh_uisdk_results" = "uitslagen";
+"kh_uisdk_results" = "resultaten";
 
-"kh_uisdk_results_empty" = "Geen resultaten gevonden";
+"kh_uisdk_results_empty" = "Niets gevonden";
 
 "kh_uisdk_results_ios" = "%1$@ resultaten";
 
-"kh_uisdk_retrieving_dropoff" = "Afleverlocatie ophalen";
+"kh_uisdk_retrieving_dropoff" = "Afzetlocatie opvragen";
 
-"kh_uisdk_retrieving_pickup" = "Ophaallocatie";
+"kh_uisdk_retrieving_pickup" = "Ophaallocatie opvragen";
 
-"kh_uisdk_retrieving_quotes" = "Offertes ophalen";
+"kh_uisdk_retrieving_quotes" = "Offertes opvragen";
 
-"kh_uisdk_retry" = "opnieuw proberen";
+"kh_uisdk_retry" = "Opnieuw";
 
 "kh_uisdk_ride_confirmed" = "Rit bevestigd";
 
 "kh_uisdk_ride_contact_details" = "Details";
 
-"kh_uisdk_ride_details" = "Ritdetails";
+"kh_uisdk_ride_details" = "Ritgegevens";
 
-"kh_uisdk_ride_state_arrived" = "Chauffeur aangekomen";
+"kh_uisdk_ride_state_arrived" = "Gearriveerd";
 
 "kh_uisdk_ride_state_cancelled" = "Geannuleerd";
 
 "kh_uisdk_ride_state_completed" = "Voltooid";
 
-"kh_uisdk_ride_state_confirmed" = "bevestigd";
+"kh_uisdk_ride_state_confirmed" = "Bevestigd";
 
-"kh_uisdk_ride_state_der" = "Chauffeur is onderweg";
+"kh_uisdk_ride_state_der" = "Chauffeur onderweg";
 
-"kh_uisdk_ride_state_pob" = "Aan boord";
+"kh_uisdk_ride_state_pob" = "Passagier in de auto";
 
 "kh_uisdk_ride_state_requested" = "Aangevraagd";
 
 "kh_uisdk_rides" = "Ritten";
 
-"kh_uisdk_saloon" = "Personenwagen";
+"kh_uisdk_saloon" = "Sedan";
 
 "kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
 
-"kh_uisdk_save" = "Bewaar";
+"kh_uisdk_save" = "Bewaren";
 
-"kh_uisdk_schedule_ride" = "Plan de rit";
+"kh_uisdk_schedule_ride" = "Rit plannen";
 
 "kh_uisdk_set_on_map" = "Op kaart zetten";
 
@@ -916,39 +928,39 @@
 
 "kh_uisdk_settings" = "Instellingen";
 
-"kh_uisdk_sign_in" = "Log in";
+"kh_uisdk_sign_in" = "Inloggen";
 
-"kh_uisdk_sign_in_but" = "Log in";
+"kh_uisdk_sign_in_but" = "INLOGGEN";
 
-"kh_uisdk_sign_out" = "Afmelden";
+"kh_uisdk_sign_out" = "Uitloggen";
 
 "kh_uisdk_signup_email_subscribe_copy" = "Ik wens geen gratis ritten, promo's of aanbiedingen te ontvangen";
 
 "kh_uisdk_signup_pending_message" = "We zullen u per e-mail op de hoogte stellen zodra uw verzoek is verwerkt.";
 
-"kh_uisdk_something_went_wrong" = "Er is een fout opgetreden";
+"kh_uisdk_something_went_wrong" = "Er is iets misgegaan";
 
-"kh_uisdk_something_went_wrong_select_another_quote" = "Er is iets misgegaan, probeer het opnieuw of selecteer een andere offerte";
+"kh_uisdk_something_went_wrong_select_another_quote" = "Er is iets misgegaan. Probeer het opnieuw of selecteer een andere offerte.";
 
 "kh_uisdk_sort_by" = "Sorteer op";
 
 "kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
-"kh_uisdk_star_excellent" = "Uitstekend";
+"kh_uisdk_star_excellent" = "Voortreffelijk";
 
-"kh_uisdk_star_fair" = "Eerlijk";
+"kh_uisdk_star_fair" = "Redelijk";
 
 "kh_uisdk_star_good" = "Goed";
 
-"kh_uisdk_star_great" = "Groot";
+"kh_uisdk_star_great" = "Uitstekend";
 
-"kh_uisdk_star_poor" = "Arm";
+"kh_uisdk_star_poor" = "Slecht";
 
-"kh_uisdk_status" = "Toestand";
+"kh_uisdk_status" = "Status";
 
-"kh_uisdk_submit" = "INDIENEN";
+"kh_uisdk_submit" = "VERSTUREN";
 
-"kh_uisdk_submit_button_text" = "Vertel ons waarom je op deze manier hebt beoordeeld?";
+"kh_uisdk_submit_button_text" = "Laat ons weten waarom u deze beoordeling hebt gekozen";
 
 "kh_uisdk_supplier_email" = "leveranciers@karhoo.com";
 
@@ -956,45 +968,45 @@
 
 "kh_uisdk_support_report_issue" = "Probleem melden";
 
-"kh_uisdk_switch_departure_destination" = "Vertrek- en bestemmingsadres omwisselen";
+"kh_uisdk_switch_departure_destination" = "Ophaallocatie en afzetlocatie omwisselen";
 
 "kh_uisdk_taxi" = "Taxi";
 
-"kh_uisdk_temporary_message_error_codes_unknown" = "Het lijkt erop dat we momenteel technische problemen hebben.";
+"kh_uisdk_temporary_message_error_codes_unknown" = "Er zijn momenteel technische problemen.";
 
 "kh_uisdk_terms_and_conditions_register_account_action" = "uw Karhoo-account aanmaken";
 
-"kh_uisdk_terms_condition_full_string" = "Tegen %1$@ gaat u akkoord met %2$@ 's \n%3$@ | %4$@";
+"kh_uisdk_terms_condition_full_string" = "Door %1$@ gaat u akkoord met de %3$@ | %4$@ van %2$@";
 
 "kh_uisdk_thanks" = "Bedankt voor uw interesse";
 
 "kh_uisdk_title_activity_address" = "Adres";
 
-"kh_uisdk_title_activity_intent_chooser_send_email" = "E-mail verzenden";
+"kh_uisdk_title_activity_intent_chooser_send_email" = "E‑mail versturen";
 
 "kh_uisdk_title_activity_rides" = "Ritten";
 
-"kh_uisdk_title_activity_threedsecure" = "3D Veilig";
+"kh_uisdk_title_activity_threedsecure" = "3D Secure";
 
-"kh_uisdk_title_activity_trip" = "Reis";
+"kh_uisdk_title_activity_trip" = "Rit";
 
-"kh_uisdk_title_dispatch_cancelled" = "Verzending geannuleerd";
+"kh_uisdk_title_dispatch_cancelled" = "Uitsturen geannuleerd";
 
-"kh_uisdk_title_page_past" = "Verleden";
+"kh_uisdk_title_page_past" = "Eerdere ritten";
 
-"kh_uisdk_title_page_upcoming" = "Aankomende";
+"kh_uisdk_title_page_upcoming" = "Komende ritten";
 
 "kh_uisdk_title_past_rides_empty" = "Geen eerdere ritten";
 
-"kh_uisdk_title_upcoming_rides_empty" = "Je hebt geen aankomende ritten";
+"kh_uisdk_title_upcoming_rides_empty" = "U hebt geen komende ritten";
 
-"kh_uisdk_total_fare" = "Totale kosten";
+"kh_uisdk_total_fare" = "Totale tarief";
 
-"kh_uisdk_track_driver" = "Baanrijder";
+"kh_uisdk_track_driver" = "Chauffeur volgen";
 
 "kh_uisdk_track_trip" = "Baanrit";
 
-"kh_uisdk_track_trip_alert_message" = "Wilt u het voertuig volgen?";
+"kh_uisdk_track_trip_alert_message" = "Wilt u de auto volgen?";
 
 "kh_uisdk_track_trip_alert_title" = "De chauffeur is onderweg";
 
@@ -1002,27 +1014,27 @@
 
 "kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Uw boeking is geannuleerd. Neem contact met ons op voor meer informatie.";
 
-"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Geannuleerd door vloot";
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Geannuleerd door de ritaanbieder";
 
-"kh_uisdk_trip_id" = "Reis-ID: %1$@";
+"kh_uisdk_trip_id" = "Rit-ID: %1$@";
 
-"kh_uisdk_trip_id_label" = "Reis-ID";
+"kh_uisdk_trip_id_label" = "Rit-ID";
 
 "kh_uisdk_trip_ride_options" = "Ritopties";
 
 "kh_uisdk_trip_status_cancelled_by_dispatch" = "Uw boeking is geannuleerd.";
 
-"kh_uisdk_trip_status_cancelled_by_user" = "Je hebt de boeking geannuleerd";
+"kh_uisdk_trip_status_cancelled_by_user" = "U hebt de boeking geannuleerd";
 
-"kh_uisdk_trip_status_completed" = "Je hebt je bestemming bereikt";
+"kh_uisdk_trip_status_completed" = "U hebt uw bestemming bereikt";
 
-"kh_uisdk_trip_status_confirmed" = "Uw boeking is geaccepteerd.\nWachten tot er een chauffeur wordt toegewezen.";
+"kh_uisdk_trip_status_confirmed" = "Uw boeking is geaccepteerd. Even geduld, er wordt een chauffeur toegewezen.";
 
 "kh_uisdk_trip_status_driver_arrived" = "Uw chauffeur is gearriveerd!";
 
 "kh_uisdk_trip_status_driver_en_route" = "Uw chauffeur is onderweg";
 
-"kh_uisdk_trip_status_requested" = "%1$@ wijst u een chauffeur toe. Dit kan tot 5 minuten duren.";
+"kh_uisdk_trip_status_requested" = "Even geduld, %1$@ wijst u een chauffeur toe. Dit kan tot 5 minuten duren.";
 
 "kh_uisdk_trip_summary" = "Ritoverzicht";
 
@@ -1036,27 +1048,27 @@
 
 "kh_uisdk_trip_summary_train_number" = "Trein nummer";
 
-"kh_uisdk_unchecked" = "niet aangevinkt";
+"kh_uisdk_unchecked" = "Niet aangevinkt";
 
-"kh_uisdk_upcoming_rides_empty" = "Vergeet niet dat u een auto tot zeven dagen van tevoren kunt reserveren.";
+"kh_uisdk_upcoming_rides_empty" = "Denk eraan dat u een auto tot zeven dagen van tevoren kunt boeken.";
 
 "kh_uisdk_vehicle" = "Voertuig";
 
-"kh_uisdk_vehicle_bus" = "Bus";
+"kh_uisdk_vehicle_bus" = "Minibus";
 
-"kh_uisdk_vehicle_moto" = "Moto";
+"kh_uisdk_vehicle_moto" = "Motorfiets";
 
-"kh_uisdk_vehicle_mpv" = "Bus";
+"kh_uisdk_vehicle_mpv" = "MPV";
 
 "kh_uisdk_vehicle_standard" = "Standaard";
 
-"kh_uisdk_wheelchair" = "Rolstoel";
+"kh_uisdk_wheelchair" = "Geschikt voor rolstoel";
 
 "kh_uisdk_would_you_like_to_proceed" = "Wilt u doorgaan?";
 
 "kh_uisdk_yes" = "Ja";
 
-"kh_uisdk_you_may_be_charged" = "Er worden annuleringskosten in rekening gebracht die worden geschat op %1$@ .\n\nWilt u doorgaan?";
+"kh_uisdk_you_may_be_charged" = "Er wordt naar schatting %@ aan annuleringskosten in rekening gebracht.\n\nWilt u doorgaan?";
 
 "KSDK01" = "Er is iets misgegaan, maar we weten niet wat het was";
 

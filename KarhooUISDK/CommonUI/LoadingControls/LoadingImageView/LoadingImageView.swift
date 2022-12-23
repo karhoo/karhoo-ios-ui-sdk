@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public final class LoadingImageView: UIView {
 
