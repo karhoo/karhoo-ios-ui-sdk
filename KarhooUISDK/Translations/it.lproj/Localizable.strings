@@ -1080,7 +1080,7 @@
 
 "MPV" = "Multiposto";
 
-"pay_button_with_value" = "Pre-autorizza %@";
+"pay_button_with_value" = "Autorizza transazione";
 
 "Q0001" = "Ritiro e destinazione non possono essere gli stessi.";
 

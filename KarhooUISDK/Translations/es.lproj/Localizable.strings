@@ -238,7 +238,7 @@
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "Hay una alta demanda en estos momentos. La flota seleccionada no tiene conductores disponibles.";
 
-"kh_uisdk_booking_terms" = "Al hacer una reserva, usted acepta: %1$@ | %2$@ y %4$@ de %3$ | %5$@ de %3$.";
+"kh_uisdk_booking_terms" = "Al hacer una reserva, usted acepta: %1$@ | %2$@ y %4$@ de %3$@ | %5$@ de %3$@.";
 
 "kh_uisdk_booking_terms_and_conditions" = "Condiciones de uso";
 
@@ -1080,7 +1080,7 @@
 
 "MPV" = "Monovolumen";
 
-"pay_button_with_value" = "Preautorizar %@";
+"pay_button_with_value" = "Autorizar transacción";
 
 "Q0001" = "La recogida y el destino no pueden ser iguales.";
 

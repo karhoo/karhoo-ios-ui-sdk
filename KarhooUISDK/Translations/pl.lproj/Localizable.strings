@@ -412,7 +412,7 @@
 
 "kh_uisdk_filter_moto" = "Motocykl";
 
-"kh_uisdk_filter_page_results" = "Zobacz – liczba wszystkich wyników: %@";
+"kh_uisdk_filter_page_results" = "Zobacz – liczba wyników: %@";
 
 "kh_uisdk_filter_passengers" = "Pasażer";
 
@@ -1080,7 +1080,7 @@
 
 "MPV" = "MPV";
 
-"pay_button_with_value" = "Wstępna autoryzacja: %@";
+"pay_button_with_value" = "Autoryzacja transakcji";
 
 "Q0001" = "Miejsce odbioru i miejsce przeznaczenia nie mogą być takie same.";
 

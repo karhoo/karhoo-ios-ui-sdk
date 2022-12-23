@@ -1080,7 +1080,7 @@
 
 "MPV" = "Bus";
 
-"pay_button_with_value" = "%@ vooraf autoriseren";
+"pay_button_with_value" = "Transactie autoriseren";
 
 "Q0001" = "Ophalen en bestemming kunnen niet hetzelfde zijn.";
 

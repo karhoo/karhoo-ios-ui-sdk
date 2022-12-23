@@ -208,7 +208,7 @@
 
 "kh_uisdk_back" = "Voltar";
 
-"kh_uisdk_baggage_max" = "Máx. de %1$@ bagagem(s)";
+"kh_uisdk_baggage_max" = "Máx. de %d bagagem(s)";
 
 "kh_uisdk_base" = "Tarifa base";
 
@@ -1080,7 +1080,7 @@
 
 "MPV" = "Monovolume";
 
-"pay_button_with_value" = "Pré-autorizar %@";
+"pay_button_with_value" = "Autorizar a transacção";
 
 "Q0001" = "A recolha e o destino não podem ser os mesmos.";
 

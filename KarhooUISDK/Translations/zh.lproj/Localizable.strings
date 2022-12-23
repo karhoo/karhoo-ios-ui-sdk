@@ -1076,7 +1076,7 @@
 
 "MPV" = "多功能车";
 
-"pay_button_with_value" = "预授权 %@";
+"pay_button_with_value" = "授权交易";
 
 "Q0001" = "接载和目的地不能相同。";
 

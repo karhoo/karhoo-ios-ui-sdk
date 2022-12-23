@@ -1080,7 +1080,7 @@
 
 "MPV" = "Van";
 
-"pay_button_with_value" = "Pré-autoriser %@";
+"pay_button_with_value" = "Autoriser la transaction";
 
 "Q0001" = "Départ et destination ne peuvent pas être identiques.";
 

@@ -16,12 +16,12 @@ struct TimeFormatter {
         let minutes: Int = timeInMinutes % minutesInHour
         let hours: Int = timeInMinutes / minutesInHour
         if hours == 0 {
-            return String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes)
+            return String.localizedStringWithFormat("kh_uisdk_minutes_plurals.other".localized, minutes)
         } else if hours > 0 && minutes == 0 {
-            return String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)
+            return String.localizedStringWithFormat("kh_uisdk_hours_plural.other".localized, hours)
         } else {
-            let hoursText = String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupHours".localized, hours)
-            let minutesText = String.localizedStringWithFormat("Text.Quote.FreeCancellationBeforePickupMinutes".localized, minutes)
+            let hoursText = String.localizedStringWithFormat("kh_uisdk_hours_plural.other".localized, hours)
+            let minutesText = String.localizedStringWithFormat("kh_uisdk_minutes_plurals.other".localized, minutes)
             return "\(hoursText) \(UITexts.Quotes.freeCancellationAndKeyword) \(minutesText)"
         }
     }

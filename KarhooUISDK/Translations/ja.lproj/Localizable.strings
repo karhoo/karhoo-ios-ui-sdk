@@ -1,96 +1,96 @@
-"adyen.submitButton" = "";
+"adyen.submitButton" = "取引の承認";
 
-"adyen.submitButton.formatted" = "";
+"adyen.submitButton.formatted" = "取引の承認";
 
 "continue_button" = "次";
 
-"K0001" = "";
+"K0001" = "一般的なリクエストエラー";
 
-"K0002" = "";
+"K0002" = "無効なリクエストペイロード";
 
-"K0003" = "";
+"K0003" = "承認トークンを読み取れませんでした";
 
-"K0004" = "";
+"K0004" = "このパスには認証が必要です";
 
-"K0005" = "";
+"K0005" = "このリクエストに必要な役割がありません";
 
-"K0006" = "";
+"K0006" = "レート制限を超えました";
 
-"K0007" = "";
+"K0007" = "このルートでサーキットブレーカーがトリガーされました";
 
-"K1001" = "";
+"K1001" = "ユーザーを登録できませんでした";
 
-"K1003" = "";
+"K1003" = "ユーザーを登録できませんでした（無効なリクエスト）";
 
-"K1004" = "";
+"K1004" = "ユーザーを登録できませんでした（電話番号が無効です）";
 
-"K1005" = "";
+"K1005" = "ユーザーの詳細を取得できませんでした（無効なトークン）";
 
-"K1006" = "";
+"K1006" = "ユーザーの詳細を取得できませんでした（ユーザーが存在しません）";
 
-"K2001" = "";
+"K2001" = "アドレスを取得できませんでした";
 
-"K3001" = "";
+"K3001" = "見積もりを取得できませんでした";
 
-"K3003" = "";
+"K3003" = "見積もりを取得できませんでした（指定された見積もりが見つかりませんでした）";
 
-"K4001" = "";
+"K4001" = "旅行を予約できませんでした";
 
-"K4002" = "";
+"K4002" = "旅行を予約できませんでした-無効なリクエストペイロード（少なくとも1セットの乗客の詳細が必要です）";
 
-"K4003" = "";
+"K4003" = "旅行を予約できませんでした（指定された見積もりが見つかりませんでした）";
 
-"K4004" = "";
+"K4004" = "旅行を予約できませんでした（期限切れの見積もりを予約しようとしました）";
 
-"K4005" = "";
+"K4005" = "旅行を予約できませんでした（許可が拒否されました）";
 
-"K4006" = "";
+"K4006" = "旅行を予約できませんでした（支払いの事前承認に失敗しました）";
 
-"K4007" = "";
+"K4007" = "旅行をキャンセルできませんでした";
 
-"K4008" = "";
+"K4008" = "旅行をキャンセルできませんでした（指定された旅行が見つかりませんでした）";
 
-"K4009" = "";
+"K4009" = "旅行をキャンセルできませんでした（許可が拒否されました）";
 
-"K4010" = "";
+"K4010" = "旅行をキャンセルできませんでした（すでにキャンセルされています）";
 
-"K4011" = "";
+"K4011" = "旅行に行けませんでした";
 
-"K4012" = "";
+"K4012" = "旅行を取得できませんでした（指定された旅行が見つかりませんでした）";
 
-"K4013" = "";
+"K4013" = "旅行に行けませんでした（許可が拒否されました）";
 
-"K4014" = "";
+"K4014" = "エージェントとして旅行を予約できませんでした";
 
-"K4018" = "";
+"K4018" = "この見積もりはご利用いただけなくなったため、旅行を予約できませんでした";
 
-"K4020" = "";
+"K4020" = "選択したDMSで旅行を予約できませんでした";
 
-"K5001" = "";
+"K5001" = "見積もりを取得できませんでした";
 
-"K5002" = "";
+"K5002" = "可用性を取得できませんでした（要求されたエリア内に可用性が見つかりません）";
 
-"K5003" = "";
+"K5003" = "可用性を取得できませんでした（要求されたエリア内にカテゴリが見つかりません）";
 
 "kh_uisdk_about" = "情報";
 
-"kh_uisdk_acc_close_button" = "";
+"kh_uisdk_acc_close_button" = "画面を閉じる";
 
-"kh_uisdk_acc_destination_address" = "";
+"kh_uisdk_acc_destination_address" = "目的地";
 
-"kh_uisdk_acc_loyalty_information" = "";
+"kh_uisdk_acc_loyalty_information" = "ドライバーの情報";
 
-"kh_uisdk_acc_pickup_address" = "";
+"kh_uisdk_acc_pickup_address" = "住所を消去する";
 
-"kh_uisdk_acc_pickup_time" = "";
+"kh_uisdk_acc_pickup_time" = "お迎えの時間";
 
-"kh_uisdk_acc_ride_details" = "";
+"kh_uisdk_acc_ride_details" = "乗車の詳細に移動";
 
 "kh_uisdk_add_card" = "カードを追加";
 
-"kh_uisdk_add_comment_placeholder" = "";
+"kh_uisdk_add_comment_placeholder" = "追加コメント";
 
-"kh_uisdk_add_flight_details" = "";
+"kh_uisdk_add_flight_details" = "便名（オプション）";
 
 "kh_uisdk_additional_comments" = "追加コメント（チャイルドシート、車いすなど）";
 
@@ -100,7 +100,7 @@
 
 "kh_uisdk_address_picker_add_pickup" = "お迎えの場所を追加";
 
-"kh_uisdk_address_picker_destination_title" = "";
+"kh_uisdk_address_picker_destination_title" = "先";
 
 "kh_uisdk_address_picker_dropoff_booking" = "行き先を追加";
 
@@ -108,31 +108,31 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "お迎えの場所を入力してください";
 
-"kh_uisdk_address_picker_pickup_title" = "";
+"kh_uisdk_address_picker_pickup_title" = "選び出す";
 
-"kh_uisdk_address_picker_prebook" = "";
+"kh_uisdk_address_picker_prebook" = "予約";
 
-"kh_uisdk_adyen_payment_error_10" = "";
+"kh_uisdk_adyen_payment_error_10" = "買い物客の銀行がこの種の取引をサポートしていない、または許可していない";
 
-"kh_uisdk_adyen_payment_error_11" = "";
+"kh_uisdk_adyen_payment_error_11" = "3D セキュア認証が実行されなかった、または正常に実行されませんでした";
 
-"kh_uisdk_adyen_payment_error_12" = "";
+"kh_uisdk_adyen_payment_error_12" = "カードには、支払い可能な金額をカバーするのに十分なお金がありません";
 
-"kh_uisdk_adyen_payment_error_14" = "";
+"kh_uisdk_adyen_payment_error_14" = "詐欺の可能性あり。";
 
-"kh_uisdk_adyen_payment_error_15" = "";
+"kh_uisdk_adyen_payment_error_15" = "取引はキャンセルされました。";
 
-"kh_uisdk_adyen_payment_error_16" = "";
+"kh_uisdk_adyen_payment_error_16" = "買い物客がトランザクションを完了する前にキャンセルしました。";
 
-"kh_uisdk_adyen_payment_error_17" = "";
+"kh_uisdk_adyen_payment_error_17" = "指定された PIN が正しくないか無効です。";
 
-"kh_uisdk_adyen_payment_error_18" = "";
+"kh_uisdk_adyen_payment_error_18" = "買い物客が間違った PIN を連続して 3 回以上指定しました。";
 
-"kh_uisdk_adyen_payment_error_19" = "";
+"kh_uisdk_adyen_payment_error_19" = "指定された PIN 番号を検証することはできません。";
 
-"kh_uisdk_adyen_payment_error_2" = "";
+"kh_uisdk_adyen_payment_error_2" = "取引は拒否されました。";
 
-"kh_uisdk_adyen_payment_error_20" = "";
+"kh_uisdk_adyen_payment_error_20" = "承認前のリスク チェックの結果、不正スコアは 100 以上でした。したがって、トランザクションは不正としてフラグが立てられ、拒否されました。";
 
 "kh_uisdk_adyen_payment_error_21" = "取引は正しく送信されず、処理できませんでした。";
 
@@ -148,31 +148,31 @@
 
 "kh_uisdk_adyen_payment_error_27" = "非一般的なエラー";
 
-"kh_uisdk_adyen_payment_error_28" = "";
+"kh_uisdk_adyen_payment_error_28" = "ショッパーズカードの引き出し可能額を超えました。";
 
-"kh_uisdk_adyen_payment_error_29" = "";
+"kh_uisdk_adyen_payment_error_29" = "ショッパーズカードの引き出し可能回数を超えました。";
 
-"kh_uisdk_adyen_payment_error_3" = "";
+"kh_uisdk_adyen_payment_error_3" = "紹介";
 
 "kh_uisdk_adyen_payment_error_31" = "カード発行者が、不正の疑いがある取引として報告しました。";
 
-"kh_uisdk_adyen_payment_error_32" = "";
+"kh_uisdk_adyen_payment_error_32" = "買い物客が入力した住所データが正しくありません。";
 
-"kh_uisdk_adyen_payment_error_33" = "";
+"kh_uisdk_adyen_payment_error_33" = "買い物客の銀行は、買い物客にオンライン PIN の入力を要求します。";
 
-"kh_uisdk_adyen_payment_error_34" = "";
+"kh_uisdk_adyen_payment_error_34" = "買い物客の銀行は、購入を完了するために当座預金口座を必要とします。";
 
-"kh_uisdk_adyen_payment_error_35" = "";
+"kh_uisdk_adyen_payment_error_35" = "買い物客の銀行は、購入を完了するために普通預金口座を必要とします。";
 
-"kh_uisdk_adyen_payment_error_36" = "";
+"kh_uisdk_adyen_payment_error_36" = "買い物客の銀行は、買い物客にモバイル PIN の入力を要求します。";
 
-"kh_uisdk_adyen_payment_error_37" = "";
+"kh_uisdk_adyen_payment_error_37" = "非接触型決済を試みた後、買い物客が取引を放棄し、別のカード入力方法 (PIN またはスワイプ) を試すように求められました。";
 
 "kh_uisdk_adyen_payment_error_38" = "カード発行者は認証の免除要求を拒否し、取引の認証を要求しています。3Dセキュアで再試行してください。";
 
-"kh_uisdk_adyen_payment_error_39" = "";
+"kh_uisdk_adyen_payment_error_39" = "発行者またはスキームは、RReq を介して結果を伝えることができませんでした。";
 
-"kh_uisdk_adyen_payment_error_4" = "";
+"kh_uisdk_adyen_payment_error_4" = "アクワイアラ側でエラーが発生したため、トランザクションが完了しませんでした";
 
 "kh_uisdk_adyen_payment_error_40" = "決済ネットワークにアクセスできません。別のお支払い方法で取引を再試行してください。";
 
@@ -180,17 +180,17 @@
 
 "kh_uisdk_adyen_payment_error_42" = "カード ネットワークまたはカード発行者の問題により、3Dセキュア認証に失敗しました。取引を再試行するか、別のお支払い方法で取引を再試行してください。";
 
-"kh_uisdk_adyen_payment_error_5" = "";
+"kh_uisdk_adyen_payment_error_5" = "取引に使用したカードがブロックされているため、使用できません";
 
-"kh_uisdk_adyen_payment_error_6" = "";
+"kh_uisdk_adyen_payment_error_6" = "取引に使用したカードの有効期限が切れています。したがって使用不可です";
 
-"kh_uisdk_adyen_payment_error_7" = "";
+"kh_uisdk_adyen_payment_error_7" = "取引処理中に金額の不一致が発生しました";
 
-"kh_uisdk_adyen_payment_error_8" = "";
+"kh_uisdk_adyen_payment_error_8" = "指定されたカード番号が正しくないか無効です";
 
-"kh_uisdk_adyen_payment_error_9" = "";
+"kh_uisdk_adyen_payment_error_9" = "買い物客の銀行に連絡して取引を承認することはできません";
 
-"kh_uisdk_airport_booking_message" = "";
+"kh_uisdk_airport_booking_message" = "有効な便名を入力してください";
 
 "kh_uisdk_allocating_trip_one" = "ドライバーが割り当てられるまでお待ちください";
 
@@ -238,7 +238,7 @@
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "申し訳ありませんが、現在たいへん混み合っています。選択した業者にはドライバーの空きがありません。";
 
-"kh_uisdk_booking_terms" = "予約することで、%1$@ | %2$@および%3$@%、ならびに、4$s | %3$@%5$@に同意したことになります。";
+"kh_uisdk_booking_terms" = "予約することで、%1$@ | %2$@および%3$@、ならびに、%4$@ | %3$@%5$@に同意したことになります。";
 
 "kh_uisdk_booking_terms_and_conditions" = "利用規約";
 
@@ -286,11 +286,11 @@
 
 "kh_uisdk_contact_us" = "お問い合わせ";
 
-"kh_uisdk_contact_us_link" = "";
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
 
 "kh_uisdk_continue_journey" = "続ける";
 
-"kh_uisdk_could_not_load_trips" = "";
+"kh_uisdk_could_not_load_trips" = "旅行を読み込めませんでした。";
 
 "kh_uisdk_country_search" = "国/地域を検索";
 
@@ -332,7 +332,7 @@
 
 "kh_uisdk_error" = "エラー";
 
-"kh_uisdk_error_invalid_password" = "";
+"kh_uisdk_error_invalid_password" = "入力したメールアドレスまたはパスワードが正しくありません";
 
 "kh_uisdk_errors_cant_send_email" = "メールを送信できません。最初にメールアプリを設定してください。";
 
@@ -360,15 +360,15 @@
 
 "kh_uisdk_exec" = "エグゼクティブ";
 
-"kh_uisdk_extra_capabilities" = "";
+"kh_uisdk_extra_capabilities" = "+ %d";
 
-"kh_uisdk_faq_link" = "";
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
 
 "kh_uisdk_faretype_info_base" = "最終的な金額は、チップ、通行料、\n税金、その他の料金により変わる場合があります。";
 
 "kh_uisdk_feedback" = "フィードバック";
 
-"kh_uisdk_feedback_email" = "";
+"kh_uisdk_feedback_email" = "support@karhoo.com";
 
 "kh_uisdk_feedback_submitted" = "フィードバックをお送りいただきありがとうございました";
 
@@ -454,9 +454,9 @@
 
 "kh_uisdk_flight_tracking" = "フライト追跡";
 
-"kh_uisdk_forgotten_password" = "";
+"kh_uisdk_forgotten_password" = "パスワードを忘れました？";
 
-"kh_uisdk_free_cancellation_asap" = "";
+"kh_uisdk_free_cancellation_asap" = "予約後最大%1$@まで無料キャンセル";
 
 "kh_uisdk_got_it" = "了解";
 
@@ -470,11 +470,11 @@
 
 "kh_uisdk_hours_plural.zero" = "%d時間";
 
-"kh_uisdk_hours_plural.one" = "";
+"kh_uisdk_hours_plural.one" = "%d時間";
 
-"kh_uisdk_hours_plural.other" = "";
+"kh_uisdk_hours_plural.other" = "%d時間";
 
-"kh_uisdk_hours_plural.zero" = "";
+"kh_uisdk_hours_plural.zero" = "%d時間";
 
 "kh_uisdk_info" = "情報";
 
@@ -496,23 +496,23 @@
 
 "kh_uisdk_K0004" = "このパスには認証が必要です";
 
-"kh_uisdk_K0005" = "";
+"kh_uisdk_K0005" = "このリクエストに必要な役割がありません";
 
 "kh_uisdk_K0006" = "制限を超えました";
 
-"kh_uisdk_K0007" = "";
+"kh_uisdk_K0007" = "このルートでサーキットブレーカーがトリガーされました";
 
-"kh_uisdk_K1001" = "";
+"kh_uisdk_K1001" = "ユーザーを登録できませんでした";
 
-"kh_uisdk_K1003" = "";
+"kh_uisdk_K1003" = "ユーザーを登録できませんでした（無効なリクエスト）";
 
-"kh_uisdk_K1004" = "";
+"kh_uisdk_K1004" = "ユーザーを登録できませんでした（電話番号が無効です）";
 
-"kh_uisdk_K1005" = "";
+"kh_uisdk_K1005" = "ユーザーの詳細を取得できませんでした（無効なトークン）";
 
-"kh_uisdk_K1006" = "";
+"kh_uisdk_K1006" = "ユーザーの詳細を取得できませんでした（ユーザーが存在しません）";
 
-"kh_uisdk_K1999" = "";
+"kh_uisdk_K1999" = "ユーザーは作成されましたが、まだ承認されていません。有効になったらご連絡いたします。";
 
 "kh_uisdk_K2001" = "住所を取得できませんでした";
 
@@ -530,7 +530,7 @@
 
 "kh_uisdk_K4004" = "この乗車サービスは予約できませんでした（指定された見積もりは期限切れになりました）";
 
-"kh_uisdk_K4005" = "";
+"kh_uisdk_K4005" = "旅行を予約できませんでした（許可が拒否されました）";
 
 "kh_uisdk_K4006" = "この乗車サービスは予約できませんでした（お支払いの事前承認に失敗しました）";
 
@@ -538,7 +538,7 @@
 
 "kh_uisdk_K4008" = "この乗車サービスはキャンセルできませんでした（指定された乗車サービスが見つかりませんでした）";
 
-"kh_uisdk_K4009" = "";
+"kh_uisdk_K4009" = "旅行をキャンセルできませんでした（許可が拒否されました）";
 
 "kh_uisdk_K4010" = "この乗車サービスはキャンセルできませんでした（すでにキャンセルされています）";
 
@@ -546,11 +546,11 @@
 
 "kh_uisdk_K4012" = "乗車サービスを取得できませんでした（指定した乗車サービスが見つかりませんでした）";
 
-"kh_uisdk_K4013" = "";
+"kh_uisdk_K4013" = "旅行に行けませんでした（許可が拒否されました）";
 
-"kh_uisdk_K4014" = "";
+"kh_uisdk_K4014" = "エージェントとして旅行を予約できませんでした";
 
-"kh_uisdk_K4015" = "";
+"kh_uisdk_K4015" = "旅行者として旅行を予約できませんでした";
 
 "kh_uisdk_K4018" = "この乗車サービスは見積もりが無効になったため、予約できませんでした";
 
@@ -570,17 +570,17 @@
 
 "kh_uisdk_karhoo_cancelled_alert_title" = "予約の障害";
 
-"kh_uisdk_karhoo_general_terms_url" = "";
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
 
-"kh_uisdk_karhoo_id" = "";
+"kh_uisdk_karhoo_id" = "Karhoo ID";
 
 "kh_uisdk_karhoo_privacy_policy" = "プライバシーポリシー";
 
-"kh_uisdk_karhoo_privacy_policy_url" = "";
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
 
-"kh_uisdk_KP001" = "";
+"kh_uisdk_KP001" = "リクエスト本文をデコードできません";
 
-"kh_uisdk_KP002" = "";
+"kh_uisdk_KP002" = "ユーザーのプライマリ組織が UUID ではありません";
 
 "kh_uisdk_KP003" = "デフォルトのお支払い方法がありません";
 
@@ -588,17 +588,17 @@
 
 "kh_uisdk_KP005" = "3DSを実行するには、ブラウザ情報を定義する必要があります";
 
-"kh_uisdk_KP006" = "";
+"kh_uisdk_KP006" = "3DS を適用するには、リターン URL を定義する必要があります";
 
-"kh_uisdk_KP007" = "";
+"kh_uisdk_KP007" = "乗車 ID がありません";
 
-"kh_uisdk_KP008" = "";
+"kh_uisdk_KP008" = "ユーザー権限がありません";
 
-"kh_uisdk_KP009" = "";
+"kh_uisdk_KP009" = "ユーザーのプライマリ組織が UUID ではありません";
 
-"kh_uisdk_KP010" = "";
+"kh_uisdk_KP010" = "悪い金額";
 
-"kh_uisdk_KP011" = "";
+"kh_uisdk_KP011" = "悪い金額";
 
 "kh_uisdk_label_and" = "および";
 
@@ -626,15 +626,15 @@
 
 "kh_uisdk_location_disabled" = "すべての機能をご利用いただくには、デバイスの位置情報を有効にしてください";
 
-"kh_uisdk_location_rationale_shown" = "";
+"kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
 "kh_uisdk_loyalty_balance_title" = "残高：%@ポイント";
 
 "kh_uisdk_loyalty_info" = "最終的な料金がポイント残高を上回る場合に備え、カードによる取引の承認が必要です。ポイントで全額を支払うことができる場合、請求は発生しません。";
 
-"kh_uisdk_loyalty_info_add_points" = "";
+"kh_uisdk_loyalty_info_add_points" = "%@ロイヤルティ ポイントは、乗車終了時にアカウントの残高に追加されます";
 
-"kh_uisdk_loyalty_info_remove_points" = "";
+"kh_uisdk_loyalty_info_remove_points" = "%@ロイヤルティ ポイントは、乗車終了時にアカウントの残高から差し引かれます";
 
 "kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "ポイント残高が足りません";
 
@@ -674,11 +674,11 @@
 
 "kh_uisdk_minutes_plurals.zero" = "%d分";
 
-"kh_uisdk_minutes_plurals.one" = "";
+"kh_uisdk_minutes_plurals.one" = "%d分";
 
-"kh_uisdk_minutes_plurals.other" = "";
+"kh_uisdk_minutes_plurals.other" = "%d分";
 
-"kh_uisdk_minutes_plurals.zero" = "";
+"kh_uisdk_minutes_plurals.zero" = "%d分";
 
 "kh_uisdk_mobile_phone_number_hint" = "携帯電話番号";
 
@@ -708,7 +708,7 @@
 
 "kh_uisdk_no_quotes_in_selected_category" = "あいにく、このカテゴリーの空きはありません。 別のカテゴリーを選択してください。";
 
-"kh_uisdk_no_trips" = "";
+"kh_uisdk_no_trips" = "乗り物はありません";
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "SSL証明書が無効です";
 
@@ -720,7 +720,7 @@
 
 "kh_uisdk_origin_book_error" = "乗車サービスを予約するにはお迎えの場所を選択してください";
 
-"kh_uisdk_P0001" = "";
+"kh_uisdk_P0001" = "トークンからユーザー ID を取得できませんでした";
 
 "kh_uisdk_P0002" = "決済サービスにアクセスできません";
 
@@ -784,7 +784,7 @@
 
 "kh_uisdk_price_meet_and_greet" = "空港で出迎え";
 
-"kh_uisdk_production_link" = "";
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
 
 "kh_uisdk_profile" = "プロフィール";
 
@@ -808,7 +808,7 @@
 
 "kh_uisdk_quote_cancellation_before_pickup_ending" = "お迎え前";
 
-"kh_uisdk_quote_cancellation_before_pickup_ios" = "";
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "集荷前に最大%1$@まで無料キャンセル";
 
 "kh_uisdk_quote_cancellation_before_pickup_start" = "無料キャンセルの締切：";
 
@@ -828,15 +828,15 @@
 
 "kh_uisdk_quotes_error_no_availability_title" = "この時間には空きがありませんでした";
 
-"kh_uisdk_quotes_error_no_coverage_subtitle" = "";
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@は、ニュースフリートを提案します";
 
-"kh_uisdk_quotes_error_no_coverage_title" = "";
+"kh_uisdk_quotes_error_no_coverage_title" = "この地域にはまだ艦隊はありません";
 
 "kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "絞り込みの選択を変更してください。";
 
 "kh_uisdk_quotes_error_no_results_after_filter_title" = "この絞り込みでは結果が見つかりません。";
 
-"kh_uisdk_quotes_error_no_results_found" = "";
+"kh_uisdk_quotes_error_no_results_found" = "申し訳ありませんが、この目的地では現在、できるだけ早く予約することはできませんが、次の旅行のために事前に予約することができます。";
 
 "kh_uisdk_quotes_error_similar_addresses_subtitle" = "お迎えと降車の場所が同じようです";
 
@@ -844,9 +844,9 @@
 
 "kh_uisdk_quotes_no_availability" = "ここではまだサービスをご提供していません。";
 
-"kh_uisdk_quotes_no_availability_subtitle" = "";
+"kh_uisdk_quotes_no_availability_subtitle" = "別の時間を選択してください";
 
-"kh_uisdk_quotes_no_availability_title" = "";
+"kh_uisdk_quotes_no_availability_title" = "リクエストされた時間に空室がありません";
 
 "kh_uisdk_rate_trip_label" = "今回の乗車サービスをどのように評価しますか？";
 
@@ -856,7 +856,7 @@
 
 "kh_uisdk_recents_empty" = "最近の結果はありません";
 
-"kh_uisdk_register" = "";
+"kh_uisdk_register" = "登録";
 
 "kh_uisdk_report_issue" = "問題を報告";
 
@@ -872,13 +872,13 @@
 
 "kh_uisdk_reset_filter" = "絞り込みをリセット";
 
-"kh_uisdk_result" = "";
+"kh_uisdk_result" = "%1$@結果";
 
 "kh_uisdk_results" = "結果";
 
 "kh_uisdk_results_empty" = "結果が見つかりません";
 
-"kh_uisdk_results_ios" = "";
+"kh_uisdk_results_ios" = "%1$@の結果";
 
 "kh_uisdk_retrieving_dropoff" = "降車の場所を確認中です";
 
@@ -912,13 +912,13 @@
 
 "kh_uisdk_saloon" = "サルーン";
 
-"kh_uisdk_sandbox_link" = "";
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
 
 "kh_uisdk_save" = "保存";
 
 "kh_uisdk_schedule_ride" = "乗車サービスを予定する";
 
-"kh_uisdk_set_on_map" = "";
+"kh_uisdk_set_on_map" = "地図上に設定";
 
 "kh_uisdk_set_prebook_time" = "お迎え時刻を設定する";
 
@@ -930,9 +930,9 @@
 
 "kh_uisdk_sign_out" = "サインアウト";
 
-"kh_uisdk_signup_email_subscribe_copy" = "";
+"kh_uisdk_signup_email_subscribe_copy" = "無料の乗り物、プロモーション、オファーを受け取りたくない";
 
-"kh_uisdk_signup_pending_message" = "";
+"kh_uisdk_signup_pending_message" = "リクエストが処理され次第、メールでお知らせします。";
 
 "kh_uisdk_something_went_wrong" = "問題が発生しました";
 
@@ -940,7 +940,7 @@
 
 "kh_uisdk_sort_by" = "並び替え";
 
-"kh_uisdk_staging_link" = "";
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 
 "kh_uisdk_star_excellent" = "大変すばらしい";
 
@@ -958,9 +958,9 @@
 
 "kh_uisdk_submit_button_text" = "このように評価した理由を教えてください";
 
-"kh_uisdk_supplier_email" = "";
+"kh_uisdk_supplier_email" = "サプライヤー@karhoo.com";
 
-"kh_uisdk_support_email" = "";
+"kh_uisdk_support_email" = "support@karhoo.com";
 
 "kh_uisdk_support_report_issue" = "問題を報告";
 
@@ -970,7 +970,7 @@
 
 "kh_uisdk_temporary_message_error_codes_unknown" = "現在、技術的な問題が発生しているようです。";
 
-"kh_uisdk_terms_and_conditions_register_account_action" = "";
+"kh_uisdk_terms_and_conditions_register_account_action" = "Karhooアカウントを作成する";
 
 "kh_uisdk_terms_condition_full_string" = "%1$@によって、 %2$@に同意したことになります %3$@   |   %4$@";
 
@@ -1000,7 +1000,7 @@
 
 "kh_uisdk_track_driver" = "運転手を追跡";
 
-"kh_uisdk_track_trip" = "";
+"kh_uisdk_track_trip" = "トラックライド";
 
 "kh_uisdk_track_trip_alert_message" = "車両を追跡しますか？";
 
@@ -1034,15 +1034,15 @@
 
 "kh_uisdk_trip_summary" = "乗車サービスの概要";
 
-"kh_uisdk_trip_summary_add_to_calendar" = "";
+"kh_uisdk_trip_summary_add_to_calendar" = "カレンダーに追加";
 
-"kh_uisdk_trip_summary_added_to_calendar" = "";
+"kh_uisdk_trip_summary_added_to_calendar" = "旅行がカレンダーに追加されました";
 
-"kh_uisdk_trip_summary_calendar_event_title" = "";
+"kh_uisdk_trip_summary_calendar_event_title" = "%@まで乗車";
 
-"kh_uisdk_trip_summary_flight_number" = "";
+"kh_uisdk_trip_summary_flight_number" = "フライトナンバー";
 
-"kh_uisdk_trip_summary_train_number" = "";
+"kh_uisdk_trip_summary_train_number" = "列車番号";
 
 "kh_uisdk_unchecked" = "チェックなし";
 
@@ -1066,25 +1066,25 @@
 
 "kh_uisdk_you_may_be_charged" = "キャンセル料のお見積もりは%@です。\n\n続行しますか？";
 
-"KSDK01" = "";
+"KSDK01" = "何かがうまくいかなかったが、それが何であったかはわからない";
 
-"KSDK02" = "";
+"KSDK02" = "ユーザー権限がありません";
 
-"KSDK03" = "";
+"KSDK03" = "ユーザーはすでにログインしています";
 
-"MEET_AND_GREET" = "";
+"MEET_AND_GREET" = "会って挨拶する";
 
-"MPV" = "";
+"MPV" = "ミニバン";
 
-"pay_button_with_value" = "%@を事前承認する";
+"pay_button_with_value" = "取引を承認する";
 
-"Q0001" = "";
+"Q0001" = "ピックアップと目的地を同じにすることはできません。";
 
-"Text.Error.EmailValidationError" = "";
+"Text.Error.EmailValidationError" = "メールアドレスのスペルが正しいことを確認してください";
 
-"Text.Generic.Close" = "";
+"Text.Generic.Close" = "クローズ";
 
-"Text.SupportMailMessage.ReportIssueSubject" = "";
+"Text.SupportMailMessage.ReportIssueSubject" = "レポートの問題";
 
-"Text.VehicleTag.Electric" = "";
+"Text.VehicleTag.Electric" = "電気の";
 

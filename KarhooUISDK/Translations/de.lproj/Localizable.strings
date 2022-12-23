@@ -1080,7 +1080,7 @@
 
 "MPV" = "Großraum";
 
-"pay_button_with_value" = "%@ vorab autorisieren";
+"pay_button_with_value" = "Transaktion autorisieren";
 
 "Q0001" = "Abholort und Zielort können nicht identisch sein.";
 

@@ -1080,7 +1080,7 @@
 
 "MPV" = "Monovolume";
 
-"pay_button_with_value" = "Pré-autorizar %@";
+"pay_button_with_value" = "Autorizar a transacção";
 
 "Q0001" = "Pick up e destino não podem ser os mesmos.";
 
