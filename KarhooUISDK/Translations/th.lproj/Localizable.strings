@@ -1,0 +1,1090 @@
+"adyen.submitButton" = "อนุมัติธุรกรรม";
+
+"adyen.submitButton.formatted" = "อนุมัติธุรกรรม";
+
+"continue_button" = "ถัดไป";
+
+"K0001" = "ข้อผิดพลาดทั่วไปเกี่ยวกับคำขอ";
+
+"K0002" = "เพย์โหลดคำขอไม่ถูกต้อง";
+
+"K0003" = "ไม่สามารถอ่านโทเค็นการตรวจสอบสิทธิ์ได้";
+
+"K0004" = "ต้องมีการตรวจสอบสิทธิ์สำหรับเส้นทางนี้";
+
+"K0005" = "ไม่มีบทบาทที่จำเป็นสำหรับคำขอนี้";
+
+"K0006" = "เกินขีดจำกัดอัตรา";
+
+"K0007" = "เบรกเกอร์ทำงานสำหรับเส้นทางนี้";
+
+"K1001" = "ไม่สามารถลงทะเบียนผู้ใช้";
+
+"K1003" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (คำขอไม่ถูกต้อง)";
+
+"K1004" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (หมายเลขโทรศัพท์ไม่ถูกต้อง)";
+
+"K1005" = "ไม่สามารถรับรายละเอียดผู้ใช้ (โทเค็นไม่ถูกต้อง)";
+
+"K1006" = "ไม่สามารถรับรายละเอียดผู้ใช้ (ไม่มีผู้ใช้)";
+
+"K2001" = "ไม่สามารถหาที่อยู่";
+
+"K3001" = "ไม่สามารถรับค่าประมาณได้";
+
+"K3003" = "ไม่สามารถรับค่าประมาณ (ไม่พบใบเสนอราคาที่ระบุ)";
+
+"K4001" = "จองทริปไม่ได้";
+
+"K4002" = "จองการเดินทางไม่ได้ - คำขอน้ำหนักบรรทุกไม่ถูกต้อง (ต้องมีรายละเอียดผู้โดยสารอย่างน้อย 1 ชุด)";
+
+"K4003" = "ไม่สามารถจองทริปได้ (ไม่พบใบเสนอราคาที่ระบุ)";
+
+"K4004" = "ไม่สามารถจองการเดินทางได้ (พยายามจองใบเสนอราคาที่หมดอายุ)";
+
+"K4005" = "ไม่สามารถจองทริปได้ (ถูกปฏิเสธ)";
+
+"K4006" = "ไม่สามารถจองการเดินทางได้ (การอนุมัติการชำระเงินล่วงหน้าล้มเหลว)";
+
+"K4007" = "ยกเลิกการเดินทางไม่ได้";
+
+"K4008" = "ยกเลิกการเดินทางไม่ได้ (ไม่พบการเดินทางที่ระบุ)";
+
+"K4009" = "ยกเลิกการเดินทางไม่ได้ (ถูกปฏิเสธ)";
+
+"K4010" = "ไม่สามารถยกเลิกการเดินทางได้ (ยกเลิกไปแล้ว)";
+
+"K4011" = "ยกเลิกการเดินทางไม่ได้";
+
+"K4012" = "ไม่สามารถเดินทางได้ (ไม่พบการเดินทางที่ระบุ)";
+
+"K4013" = "ไม่สามารถเดินทางได้ (ถูกปฏิเสธ)";
+
+"K4014" = "จองทริปเป็นตัวแทนไม่ได้";
+
+"K4018" = "ไม่สามารถจองทริปได้เนื่องจากไม่มีใบเสนอราคานี้แล้ว";
+
+"K4020" = "ไม่สามารถจองการเดินทางด้วย DMS ที่เลือกได้";
+
+"K5001" = "ไม่สามารถรับค่าประมาณได้";
+
+"K5002" = "ไม่สามารถรับห้องว่างได้ (ไม่พบห้องว่างภายในพื้นที่ที่ร้องขอ)";
+
+"K5003" = "ไม่สามารถหาห้องว่างได้ (ไม่พบหมวดหมู่ภายในพื้นที่ที่ร้องขอ)";
+
+"kh_uisdk_about" = "เกี่ยวกับ";
+
+"kh_uisdk_acc_close_button" = "ปิดหน้าจอ";
+
+"kh_uisdk_acc_destination_address" = "ที่อยู่ปลายทาง";
+
+"kh_uisdk_acc_loyalty_information" = "รายละเอียดคนขับ";
+
+"kh_uisdk_acc_pickup_address" = "ที่อยู่ขาออก";
+
+"kh_uisdk_acc_pickup_time" = "เวลารับ";
+
+"kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
+
+"kh_uisdk_add_card" = "เพิ่มบัตร";
+
+"kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";
+
+"kh_uisdk_add_flight_details" = "หมายเลขเที่ยวบิน (ไม่บังคับ)";
+
+"kh_uisdk_additional_comments" = "ความคิดเห็นเพิ่มเติม (ที่นั่งเด็ก เก้าอี้รถเข็น ฯลฯ)";
+
+"kh_uisdk_address_drop_off" = "สถานที่ส่ง";
+
+"kh_uisdk_address_pick_up" = "สถานที่รับ";
+
+"kh_uisdk_address_picker_add_pickup" = "เพิ่มสถานที่รับ";
+
+"kh_uisdk_address_picker_destination_title" = "ตำแหน่งปลายทาง";
+
+"kh_uisdk_address_picker_dropoff_booking" = "เพิ่มตำแหน่งปลายทาง";
+
+"kh_uisdk_address_picker_enter_destination" = "ป้อนตำแหน่งปลายทาง";
+
+"kh_uisdk_address_picker_enter_pickup" = "ป้อนสถานที่รับ";
+
+"kh_uisdk_address_picker_pickup_title" = "ไปรับ";
+
+"kh_uisdk_address_picker_prebook" = "จอง";
+
+"kh_uisdk_adyen_payment_error_10" = "ธนาคารของนักช้อปไม่รองรับหรือไม่อนุญาตให้ทำธุรกรรมประเภทนี้";
+
+"kh_uisdk_adyen_payment_error_11" = "การตรวจสอบสิทธิ์ 3D Secure ไม่ได้ดำเนินการ หรือดำเนินการไม่สำเร็จ";
+
+"kh_uisdk_adyen_payment_error_12" = "บัตรไม่มีเงินพอที่จะครอบคลุมจำนวนเงินที่ต้องชำระ";
+
+"kh_uisdk_adyen_payment_error_14" = "การฉ้อโกงที่เป็นไปได้";
+
+"kh_uisdk_adyen_payment_error_15" = "ธุรกรรมถูกยกเลิก";
+
+"kh_uisdk_adyen_payment_error_16" = "นักช้อปได้ยกเลิกการทำธุรกรรมก่อนที่จะเสร็จสิ้น";
+
+"kh_uisdk_adyen_payment_error_17" = "หมายเลขบัตรที่ระบุไม่ถูกต้องหรือไม่ถูกต้อง";
+
+"kh_uisdk_adyen_payment_error_18" = "ผู้ซื้อระบุ PIN ที่ไม่ถูกต้องมากกว่าสามครั้งติดต่อกัน";
+
+"kh_uisdk_adyen_payment_error_19" = "ไม่สามารถตรวจสอบหมายเลข PIN ที่ระบุได้";
+
+"kh_uisdk_adyen_payment_error_2" = "ธุรกรรมถูกปฏิเสธ";
+
+"kh_uisdk_adyen_payment_error_20" = "การตรวจสอบความเสี่ยงในการอนุมัติล่วงหน้าส่งผลให้มีคะแนนการฉ้อโกงตั้งแต่ 100 คะแนนขึ้นไป ดังนั้นธุรกรรมดังกล่าวจึงถูกตั้งค่าสถานะเป็นการฉ้อโกงและถูกปฏิเสธ";
+
+"kh_uisdk_adyen_payment_error_21" = "ส่งธุรกรรมสำหรับการประมวลผลไม่ถูกต้อง";
+
+"kh_uisdk_adyen_payment_error_22" = "การตรวจสอบความเสี่ยงเพื่อกันวงเงินและหลังกันวงเงินได้ผลคะแนนการฉ้อโกงเท่ากับ 100 คะแนนขึ้นไป ดังนั้นจึงส่งผลให้ธุรกรรมดังกล่าวถูกปฏิเสธหรือรายงานว่าเป็นการฉ้อโกง";
+
+"kh_uisdk_adyen_payment_error_23" = "ธุรกรรมถูกปฏิเสธ";
+
+"kh_uisdk_adyen_payment_error_24" = "CVC (รหัสความปลอดภัยของการ์ด) ไม่ถูกต้อง";
+
+"kh_uisdk_adyen_payment_error_25" = "บัตรถูกจำกัด";
+
+"kh_uisdk_adyen_payment_error_26" = "เพิกถอนคำสั่งกันวงเงิน";
+
+"kh_uisdk_adyen_payment_error_27" = "ข้อผิดพลาดที่ไม่ใช่แบบทั่วไป";
+
+"kh_uisdk_adyen_payment_error_28" = "เกินจำนวนเงินที่อนุญาตสำหรับบัตรนักช้อป";
+
+"kh_uisdk_adyen_payment_error_29" = "จำนวนการถอนที่อนุญาตสำหรับบัตรนักช้อปเกินแล้ว";
+
+"kh_uisdk_adyen_payment_error_3" = "การอ้างอิง";
+
+"kh_uisdk_adyen_payment_error_31" = "ผู้ออกบัตรรายงานธุรกรรมว่าอาจเป็นการฉ้อโกง";
+
+"kh_uisdk_adyen_payment_error_32" = "ข้อมูลที่อยู่ที่นักช้อปป้อนไม่ถูกต้อง";
+
+"kh_uisdk_adyen_payment_error_33" = "ธนาคารของนักช้อปกำหนดให้นักช็อปป้อน PIN ออนไลน์";
+
+"kh_uisdk_adyen_payment_error_34" = "ธนาคารของนักช้อปต้องมีบัญชีเช็คเพื่อดำเนินการซื้อให้เสร็จสมบูรณ์";
+
+"kh_uisdk_adyen_payment_error_35" = "ธนาคารของนักช้อปต้องมีบัญชีออมทรัพย์เพื่อดำเนินการซื้อให้เสร็จสมบูรณ์";
+
+"kh_uisdk_adyen_payment_error_36" = "ธนาคารของนักช้อปกำหนดให้นักช็อปป้อน PIN มือถือ";
+
+"kh_uisdk_adyen_payment_error_37" = "นักช้อปยกเลิกการทำธุรกรรมหลังจากพยายามชำระเงินแบบไม่ต้องสัมผัส และได้รับแจ้งให้ลองใช้วิธีการป้อนบัตรแบบอื่น (PIN หรือรูด)";
+
+"kh_uisdk_adyen_payment_error_38" = "ผู้ออกบัตรปฏิเสธคำขอยกเว้นการตรวจสอบสิทธิ์ และต้องมีการตรวจสอบสิทธิ์สำหรับธุรกรรมนี้ โปรดลองอีกครั้งด้วย 3D Secure";
+
+"kh_uisdk_adyen_payment_error_39" = "ผู้ออกหรือโครงการไม่สามารถสื่อสารผลลัพธ์ผ่าน RReq";
+
+"kh_uisdk_adyen_payment_error_4" = "ธุรกรรมไม่ผ่านเนื่องจากเกิดข้อผิดพลาดที่ฝั่งผู้ซื้อ";
+
+"kh_uisdk_adyen_payment_error_40" = "ไม่สามารถเชื่อมต่อกับผู้ให้บริการชำระเงินได้ โปรดลองทำธุรกรรมใหม่ด้วยวิธีการชำระเงินอื่น";
+
+"kh_uisdk_adyen_payment_error_41" = "ต้องใช้ PIN หรือลายเซ็น โปรดลองทำธุรกรรมอีกครั้ง";
+
+"kh_uisdk_adyen_payment_error_42" = "ตรวจสอบสิทธิ์ 3D Secure ไม่สำเร็จเนื่องจากปัญหาที่เครือข่ายหรือผู้ออกบัตร โปรดลองทำธุรกรรมอีกครั้ง หรือลองวิธีการชำระเงินอื่น";
+
+"kh_uisdk_adyen_payment_error_5" = "บัตรที่ใช้ทำรายการถูกบล็อค ใช้งานไม่ได้";
+
+"kh_uisdk_adyen_payment_error_6" = "บัตรที่ใช้ทำรายการหมดอายุ จึงใช้ไม่ได้";
+
+"kh_uisdk_adyen_payment_error_7" = "จำนวนเงินไม่ตรงกันเกิดขึ้นระหว่างกระบวนการธุรกรรม";
+
+"kh_uisdk_adyen_payment_error_8" = "หมายเลขบัตรที่ระบุไม่ถูกต้องหรือไม่ถูกต้อง";
+
+"kh_uisdk_adyen_payment_error_9" = "ไม่สามารถติดต่อธนาคารของนักช้อปเพื่ออนุมัติการทำธุรกรรมได้";
+
+"kh_uisdk_airport_booking_message" = "โปรดป้อนหมายเลขเที่ยวบินที่ถูกต้อง";
+
+"kh_uisdk_allocating_trip_one" = "โปรดรอขณะที่เรากำลังมอบหมายคนขับ";
+
+"kh_uisdk_allocating_trip_two" = "อาจใช้เวลาสักครู่";
+
+"kh_uisdk_allocation_delay_text" = "ผู้ให้บริการโดยสารใช้เวลามอบหมายคนขับนานกว่าปกติ โปรดรอสักครู่ ติดต่อผู้ให้บริการโดยสาร หรือยกเลิกและจองใหม่กับผู้ให้บริการโดยสารรายอื่น";
+
+"kh_uisdk_allocation_delay_title" = "การมอบหมายล่าช้า";
+
+"kh_uisdk_alternative" = "เลือกตัวเลือกอื่น";
+
+"kh_uisdk_arrival" = "การมาถึง";
+
+"kh_uisdk_arrived" = "คนขับ %@ ของคุณมาถึงแล้ว";
+
+"kh_uisdk_back" = "กลับ";
+
+"kh_uisdk_baggage_max" = "สัมภาระสูงสุด %d ชิ้น";
+
+"kh_uisdk_base" = "ค่าโดยสารพื้นฐาน";
+
+"kh_uisdk_base_fare_explanation" = "ค่าโดยสารสุดท้ายของคุณอาจได้รับผลกระทบจากค่าทิป ค่าผ่านทาง ภาษี และค่าใช้จ่ายอื่นๆ";
+
+"kh_uisdk_book_now" = "ยืนยันและชำระเงิน";
+
+"kh_uisdk_book_return_ride" = "จองการเดินทางขากลับ";
+
+"kh_uisdk_booking_car" = "จองการเดินทาง";
+
+"kh_uisdk_booking_checkout_add_passenger" = "เพิ่มรายละเอียดผู้โดยสาร";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "เพิ่ม";
+
+"kh_uisdk_booking_checkout_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_booking_checkout_title" = "ชำระเงิน";
+
+"kh_uisdk_booking_confirmation" = "ยืนยันการจองแล้ว";
+
+"kh_uisdk_booking_details_error" = "รายละเอียดการจองไม่ถูกต้อง";
+
+"kh_uisdk_booking_failed" = "การจองไม่สำเร็จ";
+
+"kh_uisdk_booking_failed_body" = "ขออภัย ขณะนี้มีความต้องการสูง ทำให้ %1$@ ไม่มีคนขับที่พร้อมให้บริการ";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "ขออภัย ขณะนี้มีความต้องการสูง ผู้ให้บริการโดยสารที่คุณเลือกไม่มีคนขับที่พร้อมให้บริการ";
+
+"kh_uisdk_booking_terms" = "การจองแสดงว่าคุณยอมรับ %1$@ | %2$@ และ %3$@ %4$@ | %3$@ %5$@";
+
+"kh_uisdk_booking_terms_and_conditions" = "ข้อกำหนดการใช้งาน";
+
+"kh_uisdk_bookings" = "การจอง";
+
+"kh_uisdk_call" = "โทรหาคนขับ";
+
+"kh_uisdk_cancel" = "ยกเลิก";
+
+"kh_uisdk_cancel_ride" = "ยกเลิกการเดินทาง";
+
+"kh_uisdk_cancel_ride_successful" = "ยกเลิกการเดินทางของคุณเรียบร้อยแล้ว";
+
+"kh_uisdk_cancel_ride_successful_message" = "ยกเลิกการเดินทางของคุณเรียบร้อยแล้ว";
+
+"kh_uisdk_cancel_your_ride" = "ยกเลิกการเดินทางหรือไม่";
+
+"kh_uisdk_cancelled" = "ยกเลิกแล้ว";
+
+"kh_uisdk_cancelled_by_dispatch" = "%@ ได้ยกเลิกการเดินทางของคุณ";
+
+"kh_uisdk_cancelled_by_user" = "คุณได้ยกเลิกการเดินทางกับ %@";
+
+"kh_uisdk_cancelling" = "แตะค้างไว้เพื่อยกเลิก";
+
+"kh_uisdk_cancelling_ride" = "กำลังยกเลิกการเดินทาง";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "บัตร";
+
+"kh_uisdk_checked" = "เลือกแล้ว";
+
+"kh_uisdk_checkout_as_guest" = "จองการเดินทาง";
+
+"kh_uisdk_completed" = "เราหวังว่าคุณพอใจกับการเดินทางของคุณ";
+
+"kh_uisdk_confirmed" = "การเดินทางของคุณกับ %@ ได้รับการยืนยันแล้ว";
+
+"kh_uisdk_contact" = "การติดต่อ";
+
+"kh_uisdk_contact_driver" = "ติดต่อคนขับ";
+
+"kh_uisdk_contact_fleet" = "ติดต่อผู้ให้บริการโดยสาร";
+
+"kh_uisdk_contact_us" = "ติดต่อเรา";
+
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
+
+"kh_uisdk_continue_journey" = "ดำเนินการต่อ";
+
+"kh_uisdk_could_not_load_trips" = "ไม่สามารถโหลดการเดินทาง";
+
+"kh_uisdk_country_search" = "ค้นหาประเทศ/ภูมิภาค";
+
+"kh_uisdk_current_location" = "ดูตำแหน่งปัจจุบัน";
+
+"kh_uisdk_date" = "วันที่";
+
+"kh_uisdk_destination_book_error" = "คุณต้องเลือกตำแหน่งปลายทางก่อนจองการเดินทาง";
+
+"kh_uisdk_difficulties_cancelling_message" = "เราประสบปัญหาในการยกเลิกการเดินทางของคุณ โปรดติดต่อผู้ให้บริการโดยสาร";
+
+"kh_uisdk_difficulties_cancelling_title" = "เกิดปัญหาในการยกเลิก";
+
+"kh_uisdk_dismiss" = "ปิด";
+
+"kh_uisdk_dispatch_cancelled" = "ขออภัย %@ ไม่มีคนขับที่พร้อมให้บริการในขณะนี้";
+
+"kh_uisdk_drawer_closed" = "ลิ้นชักปิด";
+
+"kh_uisdk_drawer_open" = "ลิ้นชักเปิด";
+
+"kh_uisdk_driver_arrival" = "เวลาที่คาดว่าคนขับจะมาถึง (ETA)";
+
+"kh_uisdk_driver_en_route" = "คนขับ %@ ของคุณกำลังเดินทาง";
+
+"kh_uisdk_edit" = "แก้ไข";
+
+"kh_uisdk_electric" = "รถพลังงานไฟฟ้า";
+
+"kh_uisdk_email_hint" = "อีเมล";
+
+"kh_uisdk_email_info" = "โปรดอย่าลบข้อมูลนี้เพราะจะช่วยให้เราปรับปรุงแอปได้";
+
+"kh_uisdk_email_report_issue_message" = "ใช้พื้นที่ด้านล่างเพื่อรายงานปัญหาเกี่ยวกับการเดินทางของคุณ";
+
+"kh_uisdk_enter_destination" = "ป้อนตำแหน่งปลายทาง";
+
+"kh_uisdk_erase_address" = "ลบที่อยู่";
+
+"kh_uisdk_error" = "ความผิดพลาด";
+
+"kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
+
+"kh_uisdk_errors_cant_send_email" = "ขออภัย ไม่สามารถส่งอีเมลได้ โปรดกำหนดค่าแอปเมลของคุณก่อน";
+
+"kh_uisdk_errors_flight_number_validator_error" = "หมายเลขเที่ยวบิน";
+
+"kh_uisdk_errors_force_update_button" = "อัปเดต";
+
+"kh_uisdk_errors_force_update_message" = "โปรดอัปเดตแอปเพื่อดำเนินการต่อ";
+
+"kh_uisdk_errors_force_update_title" = "เวอร์ชันใหม่พร้อมให้ใช้งานแล้ว";
+
+"kh_uisdk_errors_get_user_fail" = "เกิดปัญหาในการรับโปรไฟล์ของคุณ";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "เกิดปัญหาในการเริ่มต้นการชำระเงิน โปรดติดต่อฝ่ายสนับสนุน";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "การจองล่วงหน้าต้องดำเนินการก่อนเวลาเดินทางอย่างน้อยหนึ่งชั่วโมง";
+
+"kh_uisdk_estimated_arrival_time" = "เวลามาถึงโดยประมาณ";
+
+"kh_uisdk_estimated_fare" = "ราคาโดยประมาณ";
+
+"kh_uisdk_estimated_price" = "ราคาโดยประมาณ";
+
+"kh_uisdk_eta" = "เวลาที่คาดว่าจะมาถึง (ETA)";
+
+"kh_uisdk_exec" = "รถผู้บริหาร";
+
+"kh_uisdk_extra_capabilities" = "+%d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
+
+"kh_uisdk_faretype_info_base" = "ค่าโดยสารสุดท้ายของคุณอาจได้รับผลกระทบ\nจากค่าทิป ค่าผ่านทาง ภาษี และค่าใช้จ่ายอื่นๆ";
+
+"kh_uisdk_feedback" = "ความคิดเห็น";
+
+"kh_uisdk_feedback_email" = "support@karhoo.com";
+
+"kh_uisdk_feedback_submitted" = "ขอขอบคุณที่ส่งความคิดเห็นของคุณ";
+
+"kh_uisdk_feedback_title" = "โปรดบอกเราเพิ่มเติมเกี่ยวกับการเดินทางของคุณ";
+
+"kh_uisdk_fees_and_taxes_included" = "รวมภาษีและค่าธรรมเนียมแล้ว";
+
+"kh_uisdk_filter" = "ตัวกรอง";
+
+"kh_uisdk_filter_all" = "ทั้งหมด";
+
+"kh_uisdk_filter_berline" = "รถเก๋ง";
+
+"kh_uisdk_filter_bike" = "รถจักรยาน";
+
+"kh_uisdk_filter_child_seat" = "ที่นั่งเด็ก";
+
+"kh_uisdk_filter_driver_details" = "รายละเอียดคนขับ";
+
+"kh_uisdk_filter_eco_friendly" = "เป็นมิตรกับสิ่งแวดล้อม";
+
+"kh_uisdk_filter_electric" = "รถพลังงานไฟฟ้า";
+
+"kh_uisdk_filter_executive" = "รถผู้บริหาร";
+
+"kh_uisdk_filter_fight_tracking" = "การติดตามเที่ยวบิน";
+
+"kh_uisdk_filter_fleet_capabilities" = "คุณสมบัติ";
+
+"kh_uisdk_filter_free_cancellation" = "ยกเลิกฟรี";
+
+"kh_uisdk_filter_free_waiting_time" = "เวลารอฟรี";
+
+"kh_uisdk_filter_gps_tracking" = "การติดตามด้วย GPS";
+
+"kh_uisdk_filter_hybrid" = "รถไฮบริด";
+
+"kh_uisdk_filter_luggages" = "จำนวนสัมภาระ";
+
+"kh_uisdk_filter_luxury" = "รถหรูหรา";
+
+"kh_uisdk_filter_moto" = "รถจักรยานยนต์";
+
+"kh_uisdk_filter_page_results" = "ดูผลการค้นหาทั้งหมด %@ รายการ";
+
+"kh_uisdk_filter_passengers" = "ผู้โดยสาร";
+
+"kh_uisdk_filter_quote_types" = "ประเภทของราคา";
+
+"kh_uisdk_filter_service_agreements" = "การยกเลิกและระยะเวลารอ";
+
+"kh_uisdk_filter_standard" = "มาตรฐาน";
+
+"kh_uisdk_filter_taxi" = "แท็กซี่";
+
+"kh_uisdk_filter_train_tracking" = "การติดตามรถไฟ";
+
+"kh_uisdk_filter_van" = "รถตู้";
+
+"kh_uisdk_filter_vehicle_class" = "ระดับยานพาหนะ";
+
+"kh_uisdk_filter_vehicle_details" = "รายละเอียดยานพาหนะ";
+
+"kh_uisdk_filter_vehicle_extras" = "อุปกรณ์เสริมสำหรับยานพาหนะ";
+
+"kh_uisdk_filter_vehicle_types" = "ประเภทยานพาหนะ";
+
+"kh_uisdk_filter_wheelchair" = "รองรับเก้าอี้รถเข็น";
+
+"kh_uisdk_finding_your_ride" = "ค้นหาการเดินทางของคุณ...";
+
+"kh_uisdk_first_name_hint" = "ชื่อจริง";
+
+"kh_uisdk_fixed_fare" = "ราคาคงที่";
+
+"kh_uisdk_fleet" = "ผู้ให้บริการโดยสาร";
+
+"kh_uisdk_fleet_recommendation_body" = "ขอขอบคุณที่แนะนำผู้ให้บริการโดยสารในพื้นที่ของคุณ โปรดระบุพื้นที่และชื่อบริษัทที่คุณต้องการแนะนำ เพื่อให้เราดำเนินการได้เร็วที่สุด";
+
+"kh_uisdk_fleet_recommendation_subject" = "คำแนะนำผู้ให้บริการโดยสารในพื้นที่ของฉัน";
+
+"kh_uisdk_flight_number" = "หมายเลขเที่ยวบิน (ไม่บังคับ)";
+
+"kh_uisdk_flight_tracking" = "การติดตามเที่ยวบิน";
+
+"kh_uisdk_forgotten_password" = "ลืมรหัสผ่าน?";
+
+"kh_uisdk_free_cancellation_asap" = "ยกเลิกฟรีไม่เกิน %1$@ หลังการจอง";
+
+"kh_uisdk_got_it" = "เข้าใจแล้ว";
+
+"kh_uisdk_gps_tracking" = "การติดตามด้วย GPS";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "วิธีการชำระเงิน";
+
+"kh_uisdk_help" = "ความช่วยเหลือ";
+
+"kh_uisdk_hours_plural.other" = "%d ชั่วโมง";
+
+"kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
+
+"kh_uisdk_hours_plural.one" = "%d ชั่วโมง";
+
+"kh_uisdk_hours_plural.other" = "%d ชั่วโมง";
+
+"kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
+
+"kh_uisdk_info" = "ข้อมูล";
+
+"kh_uisdk_initialised" = "กำลังเริ่มต้นการเดินทางของคุณ";
+
+"kh_uisdk_invalid_email" = "อีเมลไม่ถูกต้อง";
+
+"kh_uisdk_invalid_empty_field" = "ไม่มีข้อมูล";
+
+"kh_uisdk_invalid_input_value" = "ค่าไม่ถูกต้อง";
+
+"kh_uisdk_invalid_phone_number" = "หมายเลขโทรศัพท์ไม่ถูกต้อง";
+
+"kh_uisdk_K0001" = "ข้อผิดพลาดทั่วไปเกี่ยวกับคำขอ";
+
+"kh_uisdk_K0002" = "คำขอไม่ถูกต้อง";
+
+"kh_uisdk_K0003" = "ไม่สามารถอ่านโทเค็นการตรวจสอบสิทธิ์ได้";
+
+"kh_uisdk_K0004" = "ต้องมีการตรวจสอบสิทธิ์สำหรับเส้นทางนี้";
+
+"kh_uisdk_K0005" = "ไม่มีบทบาทที่จำเป็นสำหรับคำขอนี้";
+
+"kh_uisdk_K0006" = "เกินขีดจำกัดอัตรา";
+
+"kh_uisdk_K0007" = "เบรกเกอร์ทำงานสำหรับเส้นทางนี้";
+
+"kh_uisdk_K1001" = "ไม่สามารถลงทะเบียนผู้ใช้";
+
+"kh_uisdk_K1003" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (คำขอไม่ถูกต้อง)";
+
+"kh_uisdk_K1004" = "ไม่สามารถลงทะเบียนผู้ใช้ได้ (หมายเลขโทรศัพท์ไม่ถูกต้อง)";
+
+"kh_uisdk_K1005" = "ไม่สามารถรับรายละเอียดผู้ใช้ (โทเค็นไม่ถูกต้อง)";
+
+"kh_uisdk_K1006" = "ไม่สามารถรับรายละเอียดผู้ใช้ (ไม่มีผู้ใช้)";
+
+"kh_uisdk_K1999" = "สร้างผู้ใช้แล้ว แต่ยังไม่ได้รับอนุญาต เราจะติดต่อกลับเมื่อเปิดใช้งาน";
+
+"kh_uisdk_K2001" = "ไม่สามารถหาที่อยู่";
+
+"kh_uisdk_K3001" = "ไม่สามารถโหลดราคาได้";
+
+"kh_uisdk_K3002" = "ขออภัย การจองโดยเร็วยังไม่พร้อมให้บริการสำหรับจุดหมายปลายทางนี้ แต่คุณสามารถจองล่วงหน้าสำหรับการเดินทางครั้งต่อไปได้!";
+
+"kh_uisdk_K3003" = "ไม่สามารถโหลดราคาได้";
+
+"kh_uisdk_K4001" = "เราไม่สามารถจองการเดินทางนี้ได้";
+
+"kh_uisdk_K4002" = "เราไม่สามารถจองการเดินทางนี้ได้ (โปรดเพิ่มรายละเอียดผู้โดยสารอย่างน้อยหนึ่งคน)";
+
+"kh_uisdk_K4003" = "เราไม่สามารถจองการเดินทางนี้ได้ (ไม่พบราคา)";
+
+"kh_uisdk_K4004" = "เราไม่สามารถจองการเดินทางนี้ได้ (ราคาหมดอายุแล้ว)";
+
+"kh_uisdk_K4005" = "ไม่สามารถจองทริปได้ (ถูกปฏิเสธ)";
+
+"kh_uisdk_K4006" = "เราไม่สามารถจองการเดินทางนี้ได้ (ไม่สามารถกันวงเงินบัตรการชำระเงินได้)";
+
+"kh_uisdk_K4007" = "เราไม่สามารถยกเลิกการเดินทางได้";
+
+"kh_uisdk_K4008" = "เราไม่สามารถยกเลิกการเดินทางได้ (ไม่พบการเดินทาง)";
+
+"kh_uisdk_K4009" = "ยกเลิกการเดินทางไม่ได้ (ถูกปฏิเสธ)";
+
+"kh_uisdk_K4010" = "เราไม่สามารถยกเลิกการเดินทางได้ (ยกเลิกการเดินทางแล้ว)";
+
+"kh_uisdk_K4011" = "ไม่สามารถหาการเดินทางได้";
+
+"kh_uisdk_K4012" = "ไม่สามารถหาการเดินทางได้ (ไม่พบการเดินทาง)";
+
+"kh_uisdk_K4013" = "ไม่สามารถเดินทางได้ (ถูกปฏิเสธ)";
+
+"kh_uisdk_K4014" = "จองทริปเป็นตัวแทนไม่ได้";
+
+"kh_uisdk_K4015" = "ไม่สามารถจองทริปในฐานะนักเดินทางได้";
+
+"kh_uisdk_K4018" = "เราไม่สามารถจองการเดินทางนี้ได้ (ราคาไม่พร้อมให้บริการแล้ว)";
+
+"kh_uisdk_K4020" = "เราไม่สามารถจองการเดินทางนี้กับ DMS ที่เลือกได้";
+
+"kh_uisdk_K4025" = "ราคาเพิ่มขึ้นระหว่างทำการจอง";
+
+"kh_uisdk_K5001" = "ไม่สามารถโหลดราคาได้";
+
+"kh_uisdk_K5002" = "ไม่พบบริการ (ไม่พบบริการในพื้นที่ที่ต้องการ)";
+
+"kh_uisdk_K5003" = "เราไม่พบยานพาหนะที่พร้อมให้บริการในพื้นที่นี้สำหรับหมวดหมู่ที่ต้องการ";
+
+"kh_uisdk_K6001" = "ไม่สามารถตรวจสอบสิทธิ์ได้";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "เกิดปัญหาในการจองนี้ โปรดลองอีกครั้งหรือติดต่อฝ่ายสนับสนุน";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "เกิดปัญหาในการจอง";
+
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
+
+"kh_uisdk_karhoo_id" = "Karhoo ID";
+
+"kh_uisdk_karhoo_privacy_policy" = "นโยบายความเป็นส่วนตัว";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
+
+"kh_uisdk_KP001" = "ไม่สามารถถอดรหัสเนื้อหาคำขอได้";
+
+"kh_uisdk_KP002" = "องค์กรหลักสำหรับผู้ใช้ไม่ใช่ UUID";
+
+"kh_uisdk_KP003" = "ไม่พบวิธีการชำระเงินเริ่มต้น";
+
+"kh_uisdk_KP004" = "ไม่พบบัตรเครดิตเริ่มต้น";
+
+"kh_uisdk_KP005" = "ต้องกำหนดข้อมูลเบราว์เซอร์เพื่อบังคับใช้ 3DS";
+
+"kh_uisdk_KP006" = "ต้องกำหนด URL ที่ส่งคืนเพื่อบังคับใช้ 3DS";
+
+"kh_uisdk_KP007" = "ไม่มีรหัสการเดินทาง";
+
+"kh_uisdk_KP008" = "ไม่มีผู้ใช้";
+
+"kh_uisdk_KP009" = "องค์กรหลักไม่ได้ลงทะเบียน";
+
+"kh_uisdk_KP010" = "จำนวนเงินไม่ดี";
+
+"kh_uisdk_KP011" = "แยกเงินไม่ดี";
+
+"kh_uisdk_label_and" = "และ";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "นโยบายการยกเลิก";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "ข้อกำหนดและเงื่อนไข";
+
+"kh_uisdk_last_name_hint" = "นามสกุล";
+
+"kh_uisdk_last_trip_id" = "รหัสการเดินทางล่าสุด: %1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "รหัสการเดินทางล่าสุด: ยังไม่ได้ตั้งค่า";
+
+"kh_uisdk_legal_notice_label" = "ประกาศทางกฎหมาย";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "~ นาที";
+
+"kh_uisdk_locale" = "th_TH";
+
+"kh_uisdk_location_disabled" = "โปรดเปิดใช้สิทธิ์เข้าถึงตําแหน่งบนอุปกรณ์ของคุณเพื่อเพลิดเพลินกับประสบการณ์เต็มรูปแบบ";
+
+"kh_uisdk_location_rationale_shown" = "";
+
+"kh_uisdk_loyalty_balance_title" = "ยอดสะสม: %@ คะแนน";
+
+"kh_uisdk_loyalty_info" = "เราต้องใช้บัตรของคุณเพื่ออนุมัติการทำธุรกรรมนี้เผื่อกรณีที่ราคาสุดท้ายของการเดินทางเกินยอดคะแนนสะสมของคุณ บัญชีของคุณจะไม่ถูกเรียกเก็บเงินหากคะแนนสะสมเพียงพอสำหรับค่าเดินทาง";
+
+"kh_uisdk_loyalty_info_add_points" = "คะแนนความภักดี %@ จะเพิ่มไปยังยอดเงินในบัญชีของคุณเมื่อสิ้นสุดการเดินทาง";
+
+"kh_uisdk_loyalty_info_remove_points" = "คะแนนความภักดี %@ จะถูกหักออกจากยอดเงินในบัญชีของคุณเมื่อสิ้นสุดการเดินทาง";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "ขออภัย ยอดคะแนนสะสมของคุณไม่เพียงพอ";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "คุณไม่สามารถใช้คะแนนเพื่อกันวงเงินบัตรสำหรับการเดินทางนี้ได้";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "จะมีการเพิ่ม %1$@ คะแนนสะสมไปยังยอดในบัญชีของคุณเมื่อสิ้นสุดการเดินทางครั้งนี้";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "ขออภัย คุณไม่สามารถใช้คะแนนได้";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "ยอดสะสมของคุณไม่เพียงพอที่จะชำระค่าโดยสารนี้ด้วยคะแนน";
+
+"kh_uisdk_loyalty_separator" = "หรือ";
+
+"kh_uisdk_loyalty_title" = "คะแนนสะสม";
+
+"kh_uisdk_loyalty_unknown_error" = "เกิดข้อผิดพลาดขึ้น โปรดลองอีกครั้งในภายหลังหากต้องการรับหรือใช้คะแนนสะสม";
+
+"kh_uisdk_loyalty_unsupported_currency" = "ข้อผิดพลาด: ไม่รองรับสกุลเงินนี้";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "คุณสามารถใช้คะแนนสะสมเพื่อชำระค่าโดยสารนี้ได้";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "ใช้คะแนนสะสม %@ คะแนนเพื่อชำระ %@ %@";
+
+"kh_uisdk_loyalty_use_points_title" = "ใช้คะแนนของคุณ";
+
+"kh_uisdk_map_selector" = "วางหมุดบนแผนที่";
+
+"kh_uisdk_meeting_point" = "จุดนัดพบ";
+
+"kh_uisdk_metered" = "มิเตอร์";
+
+"kh_uisdk_min" = "นาที";
+
+"kh_uisdk_mins" = "นาที";
+
+"kh_uisdk_minutes_plurals.other" = "%d นาที";
+
+"kh_uisdk_minutes_plurals.zero" = "%d นาที";
+
+"kh_uisdk_minutes_plurals.one" = "%d นาที";
+
+"kh_uisdk_minutes_plurals.other" = "%d นาที";
+
+"kh_uisdk_minutes_plurals.zero" = "%d นาที";
+
+"kh_uisdk_mobile_phone_number_hint" = "หมายเลขโทรศัพท์มือถือ";
+
+"kh_uisdk_moto" = "รถจักรยานยนต์";
+
+"kh_uisdk_mpv" = "รถอเนกประสงค์";
+
+"kh_uisdk_network_error" = "เกิดปัญหาในการเชื่อมต่อกับเครือข่าย";
+
+"kh_uisdk_new_ride" = "จองการเดินทาง";
+
+"kh_uisdk_next" = "ถัดไป";
+
+"kh_uisdk_no" = "ไม่";
+
+"kh_uisdk_no_availability_body" = "%1$@หากคุณมีคำแนะนำเกี่ยวกับผู้ให้บริการโดยสารรายใหม่";
+
+"kh_uisdk_no_availability_link" = "ติดต่อเรา";
+
+"kh_uisdk_no_cars_available" = "ขออภัย ไม่มีรถที่พร้อมให้บริการในขณะนี้ โปรดตรวจสอบอีกครั้งในเร็วๆ นี้";
+
+"kh_uisdk_no_email_setup_error" = "โปรดตั้งค่าบัญชีอีเมลในอุปกรณ์ของคุณ";
+
+"kh_uisdk_no_location_permission_message" = "โปรดเปิดใช้สิทธิ์เข้าถึงตําแหน่งสำหรับแอปนี้ในการตั้งค่าอุปกรณ์ของคุณ เพื่อให้เราแสดงตำแหน่งของคุณได้";
+
+"kh_uisdk_no_location_permission_title" = "ต้องใช้สิทธิ์เข้าถึงตําแหน่ง";
+
+"kh_uisdk_no_quotes_in_selected_category" = "ขออภัย ไม่สามารถหายานพาหนะที่พร้อมให้บริการในหมวดหมู่นี้ได้ โปรดเลือกหมวดหมู่อื่น";
+
+"kh_uisdk_no_trips" = "ไม่มีการเดินทาง";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "ใบรับรอง SSL ไม่ถูกต้อง";
+
+"kh_uisdk_offer_expired" = "ราคาหมดอายุแล้ว";
+
+"kh_uisdk_offer_expired_text" = "โปรดเลือกราคาใหม่เพื่อทำการจองของคุณต่อ";
+
+"kh_uisdk_ok" = "ตกลง";
+
+"kh_uisdk_origin_book_error" = "คุณต้องเลือกสถานที่รับเพื่อจองการเดินทาง";
+
+"kh_uisdk_P0001" = "ไม่สามารถเรียก UserID จาก token";
+
+"kh_uisdk_P0002" = "ไม่สามารถเชื่อมต่อกับผู้ให้บริการชำระเงินได้";
+
+"kh_uisdk_pass_on_board" = "คุณกำลังเดินทาง ขอให้เดินทางโดยสวัสดิภาพ!";
+
+"kh_uisdk_passenger_details" = "รายละเอียดผู้โดยสาร";
+
+"kh_uisdk_passenger_details_add_passenger" = "เพิ่มผู้โดยสาร";
+
+"kh_uisdk_passenger_details_subtitle" = "ข้อมูลนี้จะช่วยให้การเดินทางราบรื่น";
+
+"kh_uisdk_passengers_max" = "ผู้โดยสารสูงสุด %d คน";
+
+"kh_uisdk_password_hint" = "รหัสผ่าน";
+
+"kh_uisdk_past_rides_empty" = "คุณยังไม่ได้จองการเดินทางใดๆ ให้เราพาคุณไปยังจุดมุ่งหมายเลย!";
+
+"kh_uisdk_payment" = "การชำระเงิน";
+
+"kh_uisdk_payment_details" = "รายละเอียดการชำระเงิน";
+
+"kh_uisdk_payment_issue" = "ปัญหาการชำระเงิน";
+
+"kh_uisdk_payment_issue_message" = "เกิดปัญหากับบัตรชำระเงินของคุณ";
+
+"kh_uisdk_payment_payment_alert_update_card" = "อัปเดตบัตร";
+
+"kh_uisdk_payment_summary" = "สรุปการชำระเงิน";
+
+"kh_uisdk_payments" = "การชำระเงิน";
+
+"kh_uisdk_pending" = "อยู่ระหว่างดำเนินการ";
+
+"kh_uisdk_permission_rationale_location" = "โปรดเปิดใช้สิทธิ์เข้าถึงตําแหน่งบนอุปกรณ์ของคุณเพื่อช่วยให้เราระบุตำแหน่งของคุณได้";
+
+"kh_uisdk_permissions" = "สิทธิ์";
+
+"kh_uisdk_pickup_time" = "เวลารับ";
+
+"kh_uisdk_pickup_type_curbside" = "รออยู่นอกอาคาร";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "รอรับภายในอาคาร";
+
+"kh_uisdk_pickup_type_standby" = "รอสแตนด์บาย";
+
+"kh_uisdk_prebook_confirmation" = "การจองของคุณ\nจาก: %1$@ \nไปยัง: %2$@ \nเวลา: %3$@ \n ได้รับการยืนยันแล้ว";
+
+"kh_uisdk_prebook_confirmed" = "ยืนยันการจองล่วงหน้าแล้ว";
+
+"kh_uisdk_prebook_picker_title" = "เวลารับ";
+
+"kh_uisdk_prebook_timezone_title" = "การจองจะดำเนินการตามเวลาท้องถิ่น";
+
+"kh_uisdk_price" = "ราคา";
+
+"kh_uisdk_price_info_text_estimated" = "ผู้ให้บริการโดยสารนี้ให้บริการรถแท็กซี่ที่ไม่มีการควบคุม ราคาที่เสนอเป็นการประมาณค่าตามปัจจัยต่างๆ เช่น เวลาและระยะทางรวม โปรดตรวจสอบข้อกำหนดและเงื่อนไขของผู้ให้บริการโดยสารเพื่อดูข้อมูลเพิ่มเติม";
+
+"kh_uisdk_price_info_text_fixed" = "ผู้ให้บริการโดยสารนี้คิดค่าโดยสารแบบคงที่ ค่าโดยสารสุดท้ายอาจได้รับผลกระทบจากค่าบริการพิเศษ เช่น ค่าผ่านทางหรือความล่าช้า โปรดตรวจสอบข้อกำหนดและเงื่อนไขของผู้ให้บริการโดยสารเพื่อดูข้อมูลเพิ่มเติม";
+
+"kh_uisdk_price_info_text_metered" = "ผู้ให้บริการโดยสารนี้ให้บริการรถแท็กซี่มิเตอร์ที่มีการควบคุม ราคาที่เสนอเป็นการประมาณค่าตามปัจจัยต่างๆ เช่น เวลาและระยะทางรวม";
+
+"kh_uisdk_price_meet_and_greet" = "รอรับภายในอาคาร";
+
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
+
+"kh_uisdk_profile" = "โปรไฟล์";
+
+"kh_uisdk_Q0001" = "สถานที่รับและสถานที่ส่งไม่สามารถเป็นที่เดียวกันได้";
+
+"kh_uisdk_question_four" = "คุณคิดว่าแอปใช้งานง่ายเพียงใด";
+
+"kh_uisdk_question_one" = "คุณพอใจกับตัวเลือกราคาสำหรับการเดินทางของคุณมากน้อยเพียงใด เช่น ราคา ผู้ให้บริการ และเวลาที่คาดว่าจะมาถึง (ETA)";
+
+"kh_uisdk_question_three" = "ประสบการณ์ของคุณระหว่างการเดินทางเป็นอย่างไรบ้าง เช่น ตัวเลือกเส้นทาง คนขับ และความสะอาด";
+
+"kh_uisdk_question_two" = "ประสบการณ์ในการหาจุดรับและพบกับคนขับรถของคุณเป็นอย่างไรบ้าง";
+
+"kh_uisdk_quote" = "ผู้ให้บริการ";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "หลังการจอง";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "และ";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "ยกเลิกฟรีจนกว่าคนขับจะออกเดินทาง";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "ก่อนเวลารับ";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "ยกเลิกฟรีไม่เกิน %1$@ ก่อนเวลารับ";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "ยกเลิกฟรีไม่เกิน";
+
+"kh_uisdk_quote_cell_details" = "รายละเอียด";
+
+"kh_uisdk_quote_learn_more" = "เรียนรู้เพิ่มเติม";
+
+"kh_uisdk_quoted_price" = "ราคาโดยประมาณ";
+
+"kh_uisdk_quotes_activity_title" = "ราคา";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "โปรดป้อนสถานที่รับและสถานที่ส่งเพื่อดูราคา";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "ไม่มีข้อมูลสถานที่รับหรือสถานที่ส่ง";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "โปรดเลือกเวลาอื่น";
+
+"kh_uisdk_quotes_error_no_availability_title" = "เราไม่พบยานพาหนะที่พร้อมให้บริการตามเวลาที่ระบุ";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ เพื่อแนะนำกองข่าว";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "ยังไม่มีกองเรือในบริเวณนี้";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "โปรดลองตัวกรองอื่น";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "ไม่พบผลการค้นหาด้วยตัวกรองดังกล่าว";
+
+"kh_uisdk_quotes_error_no_results_found" = "ขออภัย การจองโดยเร็วยังไม่พร้อมให้บริการสำหรับจุดหมายปลายทางนี้ แต่คุณสามารถจองล่วงหน้าสำหรับการเดินทางครั้งต่อไปได้!";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "สถานที่รับและสถานที่ส่งดูคล้ายกัน";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "สถานที่รับและสถานที่ส่งดูคล้ายกัน";
+
+"kh_uisdk_quotes_no_availability" = "เรายังไม่ได้ให้บริการที่นี่!";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "กรุณาเลือกเวลาอื่น";
+
+"kh_uisdk_quotes_no_availability_title" = "ไม่ว่างตามเวลาที่ขอ";
+
+"kh_uisdk_rate_trip_label" = "คุณจะให้คะแนนการเดินทางของคุณอย่างไร";
+
+"kh_uisdk_rating_submitted" = "ขอขอบคุณสำหรับความคิดเห็นของคุณ";
+
+"kh_uisdk_rebook_ride" = "จองการเดินทางอีกครั้ง";
+
+"kh_uisdk_recents_empty" = "ไม่มีผลการค้นหาล่าสุด";
+
+"kh_uisdk_register" = "สมัครสมาชิก";
+
+"kh_uisdk_report_issue" = "รายงานปัญหา";
+
+"kh_uisdk_request_car" = "ยืนยันการจอง";
+
+"kh_uisdk_request_received" = "ได้รับการจองแล้ว";
+
+"kh_uisdk_requested" = "ส่งคำขอการเดินทางของคุณกับ %@ แล้ว";
+
+"kh_uisdk_requesting" = "กำลังส่งคำขอ";
+
+"kh_uisdk_requesting_car" = "กำลังจองการเดินทาง";
+
+"kh_uisdk_reset_filter" = "รีเซ็ตตัวกรอง";
+
+"kh_uisdk_result" = "ผลการค้นหา %1$@ รายการ";
+
+"kh_uisdk_results" = "ผลการค้นหา";
+
+"kh_uisdk_results_empty" = "ขออภัย ไม่พบผลการค้นหา";
+
+"kh_uisdk_results_ios" = "%1$@ ผลลัพธ์";
+
+"kh_uisdk_retrieving_dropoff" = "กำลังเรียกดูสถานที่ส่ง";
+
+"kh_uisdk_retrieving_pickup" = "กำลังเรียกดูสถานที่รับ";
+
+"kh_uisdk_retrieving_quotes" = "กำลังเรียกดูราคา";
+
+"kh_uisdk_retry" = "ลองใหม่อีกครั้ง";
+
+"kh_uisdk_ride_confirmed" = "ยืนยันการเดินทางแล้ว";
+
+"kh_uisdk_ride_contact_details" = "รายละเอียด";
+
+"kh_uisdk_ride_details" = "รายละเอียดการเดินทาง";
+
+"kh_uisdk_ride_state_arrived" = "มาถึงแล้ว";
+
+"kh_uisdk_ride_state_cancelled" = "ยกเลิกแล้ว";
+
+"kh_uisdk_ride_state_completed" = "เสร็จสิ้น";
+
+"kh_uisdk_ride_state_confirmed" = "ยืนยันแล้ว";
+
+"kh_uisdk_ride_state_der" = "คนขับกำลังเดินทาง";
+
+"kh_uisdk_ride_state_pob" = "ผู้โดยสารอยู่บนรถ";
+
+"kh_uisdk_ride_state_requested" = "ส่งคำขอแล้ว";
+
+"kh_uisdk_rides" = "การเดินทาง";
+
+"kh_uisdk_saloon" = "รถเก๋ง";
+
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
+
+"kh_uisdk_save" = "บันทึก";
+
+"kh_uisdk_schedule_ride" = "กำหนดการเดินทาง";
+
+"kh_uisdk_set_on_map" = "กำหนดบนแผนที่";
+
+"kh_uisdk_set_prebook_time" = "ตั้งเวลารับ";
+
+"kh_uisdk_settings" = "การตั้งค่า";
+
+"kh_uisdk_sign_in" = "เข้าสู่ระบบ";
+
+"kh_uisdk_sign_in_but" = "เข้าสู่ระบบ";
+
+"kh_uisdk_sign_out" = "ออกจากระบบ";
+
+"kh_uisdk_signup_email_subscribe_copy" = "ฉันไม่ต้องการรับการขี่ฟรี โปรโมชัน หรือข้อเสนอ";
+
+"kh_uisdk_signup_pending_message" = "เราจะแจ้งให้คุณทราบทางอีเมลเมื่อคำขอของคุณได้รับการประมวลผลแล้ว";
+
+"kh_uisdk_something_went_wrong" = "เกิดข้อผิดพลาด";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "ขออภัย เกิดข้อผิดพลาด โปรดลองอีกครั้งหรือเลือกราคาอื่น";
+
+"kh_uisdk_sort_by" = "จัดเรียงตาม";
+
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
+
+"kh_uisdk_star_excellent" = "ยอดเยี่ยม";
+
+"kh_uisdk_star_fair" = "พอใช้";
+
+"kh_uisdk_star_good" = "ดี";
+
+"kh_uisdk_star_great" = "ดีมาก";
+
+"kh_uisdk_star_poor" = "แย่";
+
+"kh_uisdk_status" = "สถานะ";
+
+"kh_uisdk_submit" = "ส่ง";
+
+"kh_uisdk_submit_button_text" = "โปรดบอกเราว่าทำไมคุณถึงให้คะแนนนี้";
+
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
+
+"kh_uisdk_support_email" = "support@karhoo.com";
+
+"kh_uisdk_support_report_issue" = "รายงานปัญหา";
+
+"kh_uisdk_switch_departure_destination" = "สลับสถานที่รับและสถานที่ส่ง";
+
+"kh_uisdk_taxi" = "แท็กซี่";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "ดูเหมือนว่าเราจะมีปัญหาทางเทคนิคในขณะนี้";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "การสร้างบัญชี Karhoo ของคุณ";
+
+"kh_uisdk_terms_condition_full_string" = "เมื่อ %1$@ แสดงว่าคุณยอมรับ %2$@ ของ %3$@   |   %4$@";
+
+"kh_uisdk_thanks" = "ขอขอบคุณที่ให้ความสนใจ";
+
+"kh_uisdk_title_activity_address" = "ที่อยู่";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "ส่งอีเมล";
+
+"kh_uisdk_title_activity_rides" = "การเดินทาง";
+
+"kh_uisdk_title_activity_threedsecure" = "3D Secure";
+
+"kh_uisdk_title_activity_trip" = "การเดินทาง";
+
+"kh_uisdk_title_dispatch_cancelled" = "ยกเลิกการส่งรถออกมารับแล้ว";
+
+"kh_uisdk_title_page_past" = "ที่ผ่านมา";
+
+"kh_uisdk_title_page_upcoming" = "ที่จะกำลังจะมาถึง";
+
+"kh_uisdk_title_past_rides_empty" = "ไม่มีการเดินทางที่ผ่านมา";
+
+"kh_uisdk_title_upcoming_rides_empty" = "คุณไม่มีการเดินทางที่จะกำลังจะมาถึง";
+
+"kh_uisdk_total_fare" = "ค่าโดยสารทั้งหมด";
+
+"kh_uisdk_track_driver" = "ติดตามคนขับ";
+
+"kh_uisdk_track_trip" = "ติดตามการเดินทาง";
+
+"kh_uisdk_track_trip_alert_message" = "คุณต้องการติดตามยานพาหนะหรือไม่";
+
+"kh_uisdk_track_trip_alert_title" = "คนขับกำลังเดินทาง";
+
+"kh_uisdk_train_tracking" = "การติดตามรถไฟ";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "การเดินทางของคุณถูกยกเลิก โปรดติดต่อเราเพื่อขอข้อมูลเพิ่มเติม";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "ยกเลิกโดยผู้ให้บริการโดยสาร";
+
+"kh_uisdk_trip_id" = "รหัสการเดินทาง: %1$@";
+
+"kh_uisdk_trip_id_label" = "รหัสการเดินทาง";
+
+"kh_uisdk_trip_ride_options" = "ตัวเลือกการเดินทาง";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "การเดินทางของคุณถูกยกเลิก";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "คุณยกเลิกการจอง";
+
+"kh_uisdk_trip_status_completed" = "คุณเดินทางถึงที่หมายแล้ว";
+
+"kh_uisdk_trip_status_confirmed" = "ผู้ให้บริการตกลงรับการจองของคุณแล้ว กำลังรอมอบหมายคนขับ";
+
+"kh_uisdk_trip_status_driver_arrived" = "คนขับของคุณมาถึงแล้ว!";
+
+"kh_uisdk_trip_status_driver_en_route" = "คนขับของคุณกำลังเดินทาง";
+
+"kh_uisdk_trip_status_requested" = "โปรดรอขณะที่ %1$@ กำลังมอบหมายคนขับ ขั้นตอนนี้อาจใช้เวลาถึง 5 นาที";
+
+"kh_uisdk_trip_summary" = "สรุปการเดินทาง";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "เพิ่มในปฏิทิน";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "เพิ่มการเดินทางในปฏิทินแล้ว";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "ขี่ไปที่ %@";
+
+"kh_uisdk_trip_summary_flight_number" = "เที่ยวบินหมายเลข";
+
+"kh_uisdk_trip_summary_train_number" = "หมายเลขรถไฟ";
+
+"kh_uisdk_unchecked" = "เลิกเลือกแล้ว";
+
+"kh_uisdk_upcoming_rides_empty" = "โปรดทราบว่าคุณสามารถจองรถล่วงหน้าได้สูงสุดถึง 7 วัน";
+
+"kh_uisdk_vehicle" = "ยานพาหนะ";
+
+"kh_uisdk_vehicle_bus" = "รถมินิบัส";
+
+"kh_uisdk_vehicle_moto" = "รถจักรยานยนต์";
+
+"kh_uisdk_vehicle_mpv" = "รถอเนกประสงค์";
+
+"kh_uisdk_vehicle_standard" = "มาตรฐาน";
+
+"kh_uisdk_wheelchair" = "รองรับเก้าอี้รถเข็น";
+
+"kh_uisdk_would_you_like_to_proceed" = "คุณต้องการดำเนินการต่อหรือไม่";
+
+"kh_uisdk_yes" = "ใช่";
+
+"kh_uisdk_you_may_be_charged" = "คุณจะถูกเรียกเก็บค่าธรรมเนียมการยกเลิกโดยประมาณจำนวน %@ \n\nคุณต้องการดำเนินการต่อหรือไม่";
+
+"KSDK01" = "มีบางอย่างผิดพลาด แต่เราไม่รู้ว่ามันคืออะไร";
+
+"KSDK02" = "ไม่มีสิทธิ์ผู้ใช้";
+
+"KSDK03" = "ผู้ใช้เข้าสู่ระบบแล้ว";
+
+"MEET_AND_GREET" = "พบปะและทักทาย";
+
+"MPV" = "รถอเนกประสงค์";
+
+"pay_button_with_value" = "อนุมัติธุรกรรม";
+
+"Q0001" = "รับและปลายทางไม่เหมือนกัน";
+
+"Text.Error.EmailValidationError" = "ตรวจสอบว่าที่อยู่อีเมลของคุณสะกดถูกต้อง";
+
+"Text.Generic.Close" = "ปิด";
+
+"Text.SupportMailMessage.ReportIssueSubject" = "รายงานฉบับ";
+
+"Text.VehicleTag.Electric" = "รถพลังงานไฟฟ้า";
+

@@ -1,0 +1,1090 @@
+"adyen.submitButton" = "Otorisasi transaksi";
+
+"adyen.submitButton.formatted" = "Otorisasi transaksi";
+
+"continue_button" = "Berikutnya";
+
+"K0001" = "Kesalahan permintaan umum";
+
+"K0002" = "Payload permintaan tidak valid";
+
+"K0003" = "Tidak dapat membaca token otorisasi";
+
+"K0004" = "Otentikasi diperlukan untuk jalur ini";
+
+"K0005" = "Tidak ada peran yang diperlukan untuk permintaan ini";
+
+"K0006" = "Batas tarif terlampaui";
+
+"K0007" = "Pemutus sirkuit telah dipicu untuk rute ini";
+
+"K1001" = "Tidak dapat mendaftarkan pengguna";
+
+"K1003" = "Tidak dapat mendaftarkan pengguna (permintaan tidak valid)";
+
+"K1004" = "Tidak dapat mendaftarkan pengguna (nomor telepon tidak valid)";
+
+"K1005" = "Tidak bisa mendapatkan detail pengguna (token tidak valid)";
+
+"K1006" = "Tidak bisa mendapatkan detail pengguna (pengguna tidak ada)";
+
+"K2001" = "Tidak bisa mendapatkan alamat";
+
+"K3001" = "Tidak bisa mendapatkan perkiraan";
+
+"K3003" = "Tidak dapat memperoleh perkiraan (tidak dapat menemukan penawaran yang ditentukan)";
+
+"K4001" = "Tidak dapat memesan perjalanan";
+
+"K4002" = "Tidak dapat memesan perjalanan - payload permintaan tidak valid (memerlukan setidaknya 1 set detail penumpang)";
+
+"K4003" = "Tidak dapat memesan perjalanan (tidak dapat menemukan penawaran yang ditentukan)";
+
+"K4004" = "Tidak dapat memesan perjalanan (mencoba memesan penawaran yang kedaluwarsa)";
+
+"K4005" = "Tidak dapat memesan perjalanan (izin ditolak)";
+
+"K4006" = "Tidak dapat memesan perjalanan (pra-otorisasi pembayaran gagal)";
+
+"K4007" = "Tidak dapat membatalkan perjalanan";
+
+"K4008" = "Tidak dapat membatalkan perjalanan (tidak dapat menemukan perjalanan yang ditentukan)";
+
+"K4009" = "Tidak dapat membatalkan perjalanan (izin ditolak)";
+
+"K4010" = "Tidak dapat membatalkan perjalanan (sudah dibatalkan)";
+
+"K4011" = "Tidak bisa mendapatkan perjalanan";
+
+"K4012" = "Tidak bisa mendapatkan perjalanan (tidak dapat menemukan perjalanan yang ditentukan)";
+
+"K4013" = "Tidak bisa mendapatkan perjalanan (izin ditolak)";
+
+"K4014" = "Tidak dapat memesan perjalanan sebagai agen";
+
+"K4018" = "Tidak dapat memesan perjalanan karena penawaran ini tidak lagi tersedia";
+
+"K4020" = "Tidak dapat memesan perjalanan dengan DMS yang dipilih";
+
+"K5001" = "Tidak bisa mendapatkan perkiraan";
+
+"K5002" = "Tidak bisa mendapatkan ketersediaan (tidak ada ketersediaan yang ditemukan dalam area yang diminta)";
+
+"K5003" = "Tidak bisa mendapatkan ketersediaan (tidak ada kategori yang ditemukan dalam area yang diminta)";
+
+"kh_uisdk_about" = "Tentang";
+
+"kh_uisdk_acc_close_button" = "Tutup layar";
+
+"kh_uisdk_acc_destination_address" = "Alamat tujuan";
+
+"kh_uisdk_acc_loyalty_information" = "Informasi pengemudi";
+
+"kh_uisdk_acc_pickup_address" = "Hapus alamat";
+
+"kh_uisdk_acc_pickup_time" = "Waktu penjemputan";
+
+"kh_uisdk_acc_ride_details" = "Pergi ke rincian perjalanan";
+
+"kh_uisdk_add_card" = "TAMBAHKAN KARTU";
+
+"kh_uisdk_add_comment_placeholder" = "Komentar tambahan";
+
+"kh_uisdk_add_flight_details" = "Nomor Penerbangan (Opsional)";
+
+"kh_uisdk_additional_comments" = "Komentar tambahan (kursi anak, kursi roda, dll.)";
+
+"kh_uisdk_address_drop_off" = "Pengantaran";
+
+"kh_uisdk_address_pick_up" = "Penjemputan";
+
+"kh_uisdk_address_picker_add_pickup" = "Tambahkan penjemputan";
+
+"kh_uisdk_address_picker_destination_title" = "Tujuan";
+
+"kh_uisdk_address_picker_dropoff_booking" = "Tambahkan tujuan";
+
+"kh_uisdk_address_picker_enter_destination" = "Masukkan tujuan";
+
+"kh_uisdk_address_picker_enter_pickup" = "Masukkan lokasi penjemputan";
+
+"kh_uisdk_address_picker_pickup_title" = "Penjemputan";
+
+"kh_uisdk_address_picker_prebook" = "Pesan";
+
+"kh_uisdk_adyen_payment_error_10" = "Bank pembeli tidak mendukung atau tidak mengizinkan jenis transaksi ini";
+
+"kh_uisdk_adyen_payment_error_11" = "Otentikasi 3D Secure tidak dijalankan, atau tidak berhasil dijalankan";
+
+"kh_uisdk_adyen_payment_error_12" = "Kartu tidak memiliki cukup uang untuk menutupi jumlah yang harus dibayar";
+
+"kh_uisdk_adyen_payment_error_14" = "Kemungkinan penipuan.";
+
+"kh_uisdk_adyen_payment_error_15" = "Transaksi dibatalkan.";
+
+"kh_uisdk_adyen_payment_error_16" = "Pembeli membatalkan transaksi sebelum menyelesaikannya.";
+
+"kh_uisdk_adyen_payment_error_17" = "PIN yang ditentukan salah atau tidak valid.";
+
+"kh_uisdk_adyen_payment_error_18" = "Pembeli memasukkan PIN yang salah lebih dari tiga kali berturut-turut.";
+
+"kh_uisdk_adyen_payment_error_19" = "Tidak mungkin untuk memvalidasi nomor PIN yang ditentukan.";
+
+"kh_uisdk_adyen_payment_error_2" = "Transaksi ditolak.";
+
+"kh_uisdk_adyen_payment_error_20" = "Pemeriksaan risiko pra-otorisasi menghasilkan skor penipuan 100 atau lebih. Oleh karena itu, transaksi tersebut ditandai sebagai penipuan, dan ditolak.";
+
+"kh_uisdk_adyen_payment_error_21" = "Transaksi tidak terkirim dengan benar untuk diproses.";
+
+"kh_uisdk_adyen_payment_error_22" = "Pemeriksaan risiko pra-autorisasi dan pasca-autorisasi menghasilkan skor penipuan 100 atau lebih. Oleh karena itu, transaksi tersebut ditolak karena dianggap penipuan.";
+
+"kh_uisdk_adyen_payment_error_23" = "Transaksi ditolak";
+
+"kh_uisdk_adyen_payment_error_24" = "CVC (kode keamanan kartu) tidak valid.";
+
+"kh_uisdk_adyen_payment_error_25" = "Kartu tidak dapat digunakan";
+
+"kh_uisdk_adyen_payment_error_26" = "Pencabutan perintah autorisasi";
+
+"kh_uisdk_adyen_payment_error_27" = "Kesalahan non-umum";
+
+"kh_uisdk_adyen_payment_error_28" = "Jumlah penarikan yang diizinkan untuk kartu pembelanja telah terlampaui.";
+
+"kh_uisdk_adyen_payment_error_29" = "Jumlah penarikan yang diizinkan untuk kartu pembelanja telah terlampaui.";
+
+"kh_uisdk_adyen_payment_error_3" = "Rujukan";
+
+"kh_uisdk_adyen_payment_error_31" = "Penerbit melaporkan transaksi sebagai dugaan penipuan.";
+
+"kh_uisdk_adyen_payment_error_32" = "Data alamat yang dimasukkan pembeli salah.";
+
+"kh_uisdk_adyen_payment_error_33" = "Bank pembelanja mengharuskan pembelanja memasukkan PIN online.";
+
+"kh_uisdk_adyen_payment_error_34" = "Bank pembelanja memerlukan rekening giro untuk menyelesaikan pembelian.";
+
+"kh_uisdk_adyen_payment_error_35" = "Bank pembelanja memerlukan rekening tabungan untuk menyelesaikan pembelian.";
+
+"kh_uisdk_adyen_payment_error_36" = "Bank pembelanja mengharuskan pembelanja memasukkan PIN ponsel.";
+
+"kh_uisdk_adyen_payment_error_37" = "Pembeli mengabaikan transaksi setelah mereka mencoba pembayaran tanpa kontak dan diminta untuk mencoba metode entri kartu yang berbeda (PIN atau gesek).";
+
+"kh_uisdk_adyen_payment_error_38" = "Penerbit menolak permintaan pengecualian autentikasi dan memerlukan autentikasi untuk transaksi. Coba lagi dengan 3D Secure.";
+
+"kh_uisdk_adyen_payment_error_39" = "Penerbit atau skema tidak dapat mengomunikasikan hasilnya melalui RReq.";
+
+"kh_uisdk_adyen_payment_error_4" = "Transaksi tidak berhasil karena kesalahan yang terjadi di pihak pengakuisisi";
+
+"kh_uisdk_adyen_payment_error_40" = "Jaringan pembayaran tidak dapat dijangkau. Coba lagi transaksi dengan metode pembayaran berbeda.";
+
+"kh_uisdk_adyen_payment_error_41" = "PIN atau tanda tangan diperlukan. Coba lagi transaksi.";
+
+"kh_uisdk_adyen_payment_error_42" = "Autentikasi 3D Secure gagal karena masalah pada jaringan kartu atau penerbit. Coba lagi transaksi, atau gunakan metode pembayaran berbeda.";
+
+"kh_uisdk_adyen_payment_error_5" = "Kartu yang digunakan untuk transaksi diblokir, sehingga tidak dapat digunakan";
+
+"kh_uisdk_adyen_payment_error_6" = "Kartu yang digunakan untuk transaksi telah kedaluwarsa. Oleh karena itu tidak dapat digunakan";
+
+"kh_uisdk_adyen_payment_error_7" = "Terjadi ketidaksesuaian jumlah selama proses transaksi";
+
+"kh_uisdk_adyen_payment_error_8" = "Nomor kartu yang ditentukan salah atau tidak valid";
+
+"kh_uisdk_adyen_payment_error_9" = "Tidak mungkin menghubungi bank pembelanja untuk mengotorisasi transaksi";
+
+"kh_uisdk_airport_booking_message" = "Harap masukkan nomor penerbangan yang valid";
+
+"kh_uisdk_allocating_trip_one" = "Harap tunggu pengemudi akan kami alokasikan";
+
+"kh_uisdk_allocating_trip_two" = "Ini mungkin butuh beberapa saat";
+
+"kh_uisdk_allocation_delay_text" = "Butuh waktu lebih lama dari biasanya bagi armada untuk mengalokasikan pengemudi. Harap tunggu, hubungi armada, atau batalkan dan pesan ulang dengan armada lain.";
+
+"kh_uisdk_allocation_delay_title" = "Alokasi tertunda";
+
+"kh_uisdk_alternative" = "PILIH ALTERNATIF";
+
+"kh_uisdk_arrival" = "Kedatangan";
+
+"kh_uisdk_arrived" = "Pengemudi %@ Anda telah tiba";
+
+"kh_uisdk_back" = "Kembali";
+
+"kh_uisdk_baggage_max" = "%d bagasi maks";
+
+"kh_uisdk_base" = "Tarif dasar";
+
+"kh_uisdk_base_fare_explanation" = "Tarif akhir Anda mungkin dipengaruhi oleh tip, tol, pajak, dan biaya lainnya.";
+
+"kh_uisdk_book_now" = "KONFIRMASI DAN BAYAR";
+
+"kh_uisdk_book_return_ride" = "Pesan perjalanan pulang";
+
+"kh_uisdk_booking_car" = "PESAN PERJALANAN";
+
+"kh_uisdk_booking_checkout_add_passenger" = "Tambahkan detail penumpang";
+
+"kh_uisdk_booking_checkout_add_payment_method" = "Tambahkan";
+
+"kh_uisdk_booking_checkout_passenger" = "Penumpang";
+
+"kh_uisdk_booking_checkout_title" = "Keluar";
+
+"kh_uisdk_booking_confirmation" = "Pemesanan telah dikonfirmasi";
+
+"kh_uisdk_booking_details_error" = "Detail pemesanan tidak valid";
+
+"kh_uisdk_booking_failed" = "Pemesanan gagal";
+
+"kh_uisdk_booking_failed_body" = "Maaf, permintaan sedang tinggi. %1$@ tidak memiliki pengemudi yang tersedia.";
+
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Maaf, permintaan sedang tinggi. Armada yang Anda pilih tidak memiliki pengemudi yang tersedia.";
+
+"kh_uisdk_booking_terms" = "Dengan melakukan pemesanan, Anda menyetujui %2$@ dan %3$@ | %1$@ %3$@ %5$@ | %4$@";
+
+"kh_uisdk_booking_terms_and_conditions" = "Syarat Penggunaan";
+
+"kh_uisdk_bookings" = "Pemesanan";
+
+"kh_uisdk_call" = "PANGGIL PENGEMUDI";
+
+"kh_uisdk_cancel" = "BATALKAN";
+
+"kh_uisdk_cancel_ride" = "Batalkan Perjalanan";
+
+"kh_uisdk_cancel_ride_successful" = "Perjalanan Anda telah berhasil dibatalkan";
+
+"kh_uisdk_cancel_ride_successful_message" = "Perjalanan Anda telah berhasil dibatalkan.";
+
+"kh_uisdk_cancel_your_ride" = "Batalkan perjalanan Anda?";
+
+"kh_uisdk_cancelled" = "Dibatalkan";
+
+"kh_uisdk_cancelled_by_dispatch" = "%@ telah membatalkan perjalanan Anda";
+
+"kh_uisdk_cancelled_by_user" = "Anda telah membatalkan perjalanan dengan %@";
+
+"kh_uisdk_cancelling" = "Ketuk dan tahan untuk membatalkan";
+
+"kh_uisdk_cancelling_ride" = "Membatalkan perjalanan";
+
+"kh_uisdk_capacity" = "%@";
+
+"kh_uisdk_card" = "Kartu";
+
+"kh_uisdk_checked" = "Dicentang";
+
+"kh_uisdk_checkout_as_guest" = "PESAN PERJALANAN";
+
+"kh_uisdk_completed" = "Kami harap Anda menikmati perjalanan Anda";
+
+"kh_uisdk_confirmed" = "Perjalanan Anda telah dikonfirmasi dengan %@";
+
+"kh_uisdk_contact" = "KONTAK";
+
+"kh_uisdk_contact_driver" = "Hubungi pengemudi";
+
+"kh_uisdk_contact_fleet" = "Hubungi armada";
+
+"kh_uisdk_contact_us" = "Hubungi kami";
+
+"kh_uisdk_contact_us_link" = "https://taxibookermobile.zendesk.com/hc/en-us/requests/new";
+
+"kh_uisdk_continue_journey" = "LANJUTKAN";
+
+"kh_uisdk_could_not_load_trips" = "Tidak dapat memuat perjalanan.";
+
+"kh_uisdk_country_search" = "Cari negara/wilayah";
+
+"kh_uisdk_current_location" = "Dapatkan lokasi saat ini";
+
+"kh_uisdk_date" = "Tanggal";
+
+"kh_uisdk_destination_book_error" = "Anda harus memilih tujuan untuk memesan perjalanan";
+
+"kh_uisdk_difficulties_cancelling_message" = "Kami mengalami masalah membatalkan perjalanan Anda. Silakan hubungi armada.";
+
+"kh_uisdk_difficulties_cancelling_title" = "Kesulitan membatalkan";
+
+"kh_uisdk_dismiss" = "HENTIKAN";
+
+"kh_uisdk_dispatch_cancelled" = "Maaf, %@ tidak memiliki pengemudi yang tersedia.";
+
+"kh_uisdk_drawer_closed" = "Laci tertutup";
+
+"kh_uisdk_drawer_open" = "Laci terbuka";
+
+"kh_uisdk_driver_arrival" = "ETA pengemudi";
+
+"kh_uisdk_driver_en_route" = "Pengemudi %@ Anda dalam perjalanan";
+
+"kh_uisdk_edit" = "Edit";
+
+"kh_uisdk_electric" = "Listrik";
+
+"kh_uisdk_email_hint" = "Email";
+
+"kh_uisdk_email_info" = "Tolong jangan menghapus informasi ini karena membantu kami meningkatkan aplikasi.";
+
+"kh_uisdk_email_report_issue_message" = "Gunakan kolom di bawah untuk melaporkan masalah selama perjalanan Anda.";
+
+"kh_uisdk_enter_destination" = "Masukkan tujuan";
+
+"kh_uisdk_erase_address" = "Hapus alamat";
+
+"kh_uisdk_error" = "Kesalahan";
+
+"kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
+
+"kh_uisdk_errors_cant_send_email" = "Maaf, email tidak dapat terkirim. Harap konfigurasikan aplikasi mail terlebih dahulu.";
+
+"kh_uisdk_errors_flight_number_validator_error" = "Nomor penerbangan";
+
+"kh_uisdk_errors_force_update_button" = "Perbarui";
+
+"kh_uisdk_errors_force_update_message" = "Harap perbarui aplikasi untuk melanjutkan.";
+
+"kh_uisdk_errors_force_update_title" = "Versi baru tersedia";
+
+"kh_uisdk_errors_get_user_fail" = "Terjadi masalah saat memuat profil Anda.";
+
+"kh_uisdk_errors_missing_payment_sdk_token" = "Masalah dengan pembayaran awal, silakan hubungi dukungan.";
+
+"kh_uisdk_errors_prebooking_within_the_hour" = "Waktu pra-pemesanan setidaknya dilakukan satu jam sebelumnya.";
+
+"kh_uisdk_estimated_arrival_time" = "Perkiraan waktu tiba";
+
+"kh_uisdk_estimated_fare" = "Perkiraan harga";
+
+"kh_uisdk_estimated_price" = "Perkiraan harga";
+
+"kh_uisdk_eta" = "ETA";
+
+"kh_uisdk_exec" = "Eksekutif";
+
+"kh_uisdk_extra_capabilities" = "+ %d";
+
+"kh_uisdk_faq_link" = "https://taxibookermobile.zendesk.com/hc/en-us";
+
+"kh_uisdk_faretype_info_base" = "Tarif akhir Anda mungkin terpengaruh\n oleh tip, tol, pajak, dan biaya lainnya.";
+
+"kh_uisdk_feedback" = "Masukan";
+
+"kh_uisdk_feedback_email" = "support@karhoo.com";
+
+"kh_uisdk_feedback_submitted" = "Terima kasih telah mengirimkan masukan Anda";
+
+"kh_uisdk_feedback_title" = "Tolong, beri tahu kami lebih banyak tentang perjalanan Anda";
+
+"kh_uisdk_fees_and_taxes_included" = "Sudah termasuk pajak dan biaya";
+
+"kh_uisdk_filter" = "Filter";
+
+"kh_uisdk_filter_all" = "Semua";
+
+"kh_uisdk_filter_berline" = "Sedan";
+
+"kh_uisdk_filter_bike" = "Sepeda";
+
+"kh_uisdk_filter_child_seat" = "Tempat duduk anak";
+
+"kh_uisdk_filter_driver_details" = "Detail pengemudi";
+
+"kh_uisdk_filter_eco_friendly" = "Ramah lingkungan";
+
+"kh_uisdk_filter_electric" = "Listrik";
+
+"kh_uisdk_filter_executive" = "Eksekutif";
+
+"kh_uisdk_filter_fight_tracking" = "Pelacakan penerbangan";
+
+"kh_uisdk_filter_fleet_capabilities" = "Fitur armada";
+
+"kh_uisdk_filter_free_cancellation" = "Pembatalan gratis";
+
+"kh_uisdk_filter_free_waiting_time" = "Waktu tunggu gratis";
+
+"kh_uisdk_filter_gps_tracking" = "Pelacakan GPS";
+
+"kh_uisdk_filter_hybrid" = "Hybrid";
+
+"kh_uisdk_filter_luggages" = "Jumlah bagasi";
+
+"kh_uisdk_filter_luxury" = "Mewah";
+
+"kh_uisdk_filter_moto" = "Motor";
+
+"kh_uisdk_filter_page_results" = "Lihat semua hasil %@";
+
+"kh_uisdk_filter_passengers" = "Penumpang";
+
+"kh_uisdk_filter_quote_types" = "Jenis penawaran";
+
+"kh_uisdk_filter_service_agreements" = "Pembatalan dan waktu tunggu";
+
+"kh_uisdk_filter_standard" = "Standar";
+
+"kh_uisdk_filter_taxi" = "Taksi";
+
+"kh_uisdk_filter_train_tracking" = "Pelacakan kereta api";
+
+"kh_uisdk_filter_van" = "Mobil van";
+
+"kh_uisdk_filter_vehicle_class" = "Kelas kendaraan";
+
+"kh_uisdk_filter_vehicle_details" = "Informasi kendaraan";
+
+"kh_uisdk_filter_vehicle_extras" = "Tambahan kendaraan";
+
+"kh_uisdk_filter_vehicle_types" = "Jenis kendaraan";
+
+"kh_uisdk_filter_wheelchair" = "Bisa untuk kursi roda";
+
+"kh_uisdk_finding_your_ride" = "Menemukan kendaraan Anda...";
+
+"kh_uisdk_first_name_hint" = "Nama depan";
+
+"kh_uisdk_fixed_fare" = "Harga tetap";
+
+"kh_uisdk_fleet" = "Armada";
+
+"kh_uisdk_fleet_recommendation_body" = "Terima kasih telah merekomendasikan armada di area Anda. Untuk mendapatkan cakupan di wilayah Anda secepat mungkin, harap berikan kami area dan nama perusahaan transportasi.";
+
+"kh_uisdk_fleet_recommendation_subject" = "Rekomendasi armada di area saya";
+
+"kh_uisdk_flight_number" = "Nomor penerbangan (opsional)";
+
+"kh_uisdk_flight_tracking" = "Pelacakan penerbangan";
+
+"kh_uisdk_forgotten_password" = "Password yang terlupakan?";
+
+"kh_uisdk_free_cancellation_asap" = "Pembatalan gratis hingga %1$@ sebelum penjemputan";
+
+"kh_uisdk_got_it" = "MENGERTI";
+
+"kh_uisdk_gps_tracking" = "Pelacakan GPS";
+
+"kh_uisdk_guest_checkout_payment_details_title" = "Metode pembayaran";
+
+"kh_uisdk_help" = "Bantuan";
+
+"kh_uisdk_hours_plural.other" = "%d jam";
+
+"kh_uisdk_hours_plural.zero" = "%d jam";
+
+"kh_uisdk_hours_plural.one" = "%d jam";
+
+"kh_uisdk_hours_plural.other" = "%d jam";
+
+"kh_uisdk_hours_plural.zero" = "%d jam";
+
+"kh_uisdk_info" = "Info";
+
+"kh_uisdk_initialised" = "Karhoo sedang menginisialisasi perjalanan Anda";
+
+"kh_uisdk_invalid_email" = "Email tidak valid";
+
+"kh_uisdk_invalid_empty_field" = "Harap isi informasi ini";
+
+"kh_uisdk_invalid_input_value" = "Nilai tidak valid";
+
+"kh_uisdk_invalid_phone_number" = "Nomor telepon salah";
+
+"kh_uisdk_K0001" = "Kesalahan permintaan umum.";
+
+"kh_uisdk_K0002" = "Permintaan tidak valid";
+
+"kh_uisdk_K0003" = "Tidak bisa membaca token autorisasi";
+
+"kh_uisdk_K0004" = "Autentikasi diperlukan untuk hal ini";
+
+"kh_uisdk_K0005" = "Tidak ada peran yang diperlukan untuk permintaan ini";
+
+"kh_uisdk_K0006" = "Batas limit terlampaui";
+
+"kh_uisdk_K0007" = "Pemutus sirkuit telah dipicu untuk rute ini";
+
+"kh_uisdk_K1001" = "Tidak dapat mendaftarkan pengguna";
+
+"kh_uisdk_K1003" = "Tidak dapat mendaftarkan pengguna (permintaan tidak valid)";
+
+"kh_uisdk_K1004" = "Tidak dapat mendaftarkan pengguna (nomor telepon tidak valid)";
+
+"kh_uisdk_K1005" = "Tidak bisa mendapatkan detail pengguna (token tidak valid)";
+
+"kh_uisdk_K1006" = "Tidak bisa mendapatkan detail pengguna (pengguna tidak ada)";
+
+"kh_uisdk_K1999" = "Pengguna telah dibuat tetapi belum diotorisasi, kami akan menghubungi Anda setelah diaktifkan.";
+
+"kh_uisdk_K2001" = "Tidak bisa menemukan alamat";
+
+"kh_uisdk_K3001" = "Tidak bisa memuat penawaran";
+
+"kh_uisdk_K3002" = "Maaf, saat ini pemesanan cepat tidak tersedia untuk tujuan ini, namun Anda dapat memesan lebih awal untuk perjalanan Anda berikutnya!";
+
+"kh_uisdk_K3003" = "Tidak bisa memuat penawaran";
+
+"kh_uisdk_K4001" = "Kami tidak bisa memesan perjalanan";
+
+"kh_uisdk_K4002" = "Kami tidak bisa memesan perjalanan (harap masukkan detail untuk setidaknya satu penumpang)";
+
+"kh_uisdk_K4003" = "Kami tidak bisa memesan perjalanan (penawaran tidak ditemukan)";
+
+"kh_uisdk_K4004" = "Kami tidak bisa memesan perjalanan (penawaran sudah kedaluwarsa)";
+
+"kh_uisdk_K4005" = "Tidak dapat memesan perjalanan (izin ditolak)";
+
+"kh_uisdk_K4006" = "Kami tidak bisa memesan perjalanan (pra-autorisasi pembayaran gagal)";
+
+"kh_uisdk_K4007" = "Kami tidak bisa membatalkan perjalanan";
+
+"kh_uisdk_K4008" = "Kami tidak bisa membatalkan perjalanan (perjalanan tidak ditemukan)";
+
+"kh_uisdk_K4009" = "Tidak dapat membatalkan perjalanan (izin ditolak)";
+
+"kh_uisdk_K4010" = "Kami tidak bisa membatalkan perjalanan (perjalanan sudah dibatalkan)";
+
+"kh_uisdk_K4011" = "Tidak bisa menemukan kendaraan";
+
+"kh_uisdk_K4012" = "Tidak bisa mendapatkan kendaraan (kendaraan tidak ditemukan)";
+
+"kh_uisdk_K4013" = "Tidak bisa mendapatkan perjalanan (izin ditolak)";
+
+"kh_uisdk_K4014" = "Tidak dapat memesan perjalanan sebagai agen";
+
+"kh_uisdk_K4015" = "Tidak dapat memesan perjalanan sebagai pelancong";
+
+"kh_uisdk_K4018" = "Kami tidak bisa memesan perjalanan (penawaran tidak lagi tersedia)";
+
+"kh_uisdk_K4020" = "Tidak bisa memesan perjalanan dengan DMS yang dipilih";
+
+"kh_uisdk_K4025" = "Harga penawaran meningkat saat proses pemesanan.";
+
+"kh_uisdk_K5001" = "Tidak bisa memuat penawaran";
+
+"kh_uisdk_K5002" = "Tidak bisa memuat ketersediaan (kendaraan tidak tersedia dalam area yang diminta)";
+
+"kh_uisdk_K5003" = "Tidak ada kategori yang tersedia di area yang diminta";
+
+"kh_uisdk_K6001" = "Tidak dapat menyetujui";
+
+"kh_uisdk_karhoo_cancelled_alert_message" = "Terjadi masalah dalam pemesanan ini. Silakan coba lagi atau hubungi dukungan.";
+
+"kh_uisdk_karhoo_cancelled_alert_title" = "Masalah pemesanan";
+
+"kh_uisdk_karhoo_general_terms_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/general-terms-of-use-sdk.en-gb.html";
+
+"kh_uisdk_karhoo_id" = "ID Karhoo";
+
+"kh_uisdk_karhoo_privacy_policy" = "Kebijakan Privasi";
+
+"kh_uisdk_karhoo_privacy_policy_url" = "https://cdn.karhoo.com/s/mobile/sdk/terms/privacy-policy-sdk.en-gb.html";
+
+"kh_uisdk_KP001" = "Tidak dapat memecahkan kode badan permintaan";
+
+"kh_uisdk_KP002" = "Organisasi utama untuk pengguna bukan UUID";
+
+"kh_uisdk_KP003" = "Metode pembayaran standar tidak ditemukan";
+
+"kh_uisdk_KP004" = "Kartu kredit standar tidak ditemukan";
+
+"kh_uisdk_KP005" = "Informasi browser harus sesuai dalam menerapkan 3DS";
+
+"kh_uisdk_KP006" = "Informasi browser harus ditentukan untuk menerapkan 3DS";
+
+"kh_uisdk_KP007" = "ID mitra pemasok tidak ada";
+
+"kh_uisdk_KP008" = "Izin pengguna tidak ada";
+
+"kh_uisdk_KP009" = "Organisasi utama untuk pengguna bukan UUID";
+
+"kh_uisdk_KP010" = "Jumlah uang yang buruk";
+
+"kh_uisdk_KP011" = "Pembagian uang yang buruk";
+
+"kh_uisdk_label_and" = "dan";
+
+"kh_uisdk_label_fleet_cancellation_policy" = "Kebijakan Pembatalan";
+
+"kh_uisdk_label_fleet_terms_and_conditions" = "Syarat dan Ketentuan";
+
+"kh_uisdk_last_name_hint" = "Nama belakang";
+
+"kh_uisdk_last_trip_id" = "ID Perjalanan Terakhir: %1$@";
+
+"kh_uisdk_last_trip_id_not_set" = "ID Perjalanan Terakhir: belum ditetapkan";
+
+"kh_uisdk_legal_notice_label" = "Pemberitahuan hukum";
+
+"kh_uisdk_legal_notice_link" = "";
+
+"kh_uisdk_legal_notice_text" = "";
+
+"kh_uisdk_legal_notice_title" = "";
+
+"kh_uisdk_loading_min" = "~ menit";
+
+"kh_uisdk_locale" = "id_ID";
+
+"kh_uisdk_location_disabled" = "Harap aktifkan layanan lokasi di perangkat Anda untuk menikmati pengalaman penuh";
+
+"kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
+
+"kh_uisdk_loyalty_balance_title" = "Saldo: %@ poin Reward";
+
+"kh_uisdk_loyalty_info" = "Kartu Anda diperlukan untuk mengautorisasi transaksi ini, jika harga akhir perjalanan melebihi saldo poin Anda. Akun Anda tidak akan dikenakan biaya jika poin loyalitas sudah mencukupi seluruh harga.";
+
+"kh_uisdk_loyalty_info_add_points" = "%@ poin loyalitas akan ditambahkan ke saldo akun Anda di akhir perjalanan";
+
+"kh_uisdk_loyalty_info_remove_points" = "%@ poin loyalitas akan dikurangi dari saldo akun Anda di akhir %@ poin loyalitas akan dikurangi dari saldo akun Anda di akhir perjalanan";
+
+"kh_uisdk_loyalty_insufficient_balance_for_loyalty_burn" = "Saldo poin Reward Anda tidak mencukupi";
+
+"kh_uisdk_loyalty_not_eligible_for_pre_auth" = "Anda tidak bisa menggunakan poin untuk pra-autorisasi perjalanan ini";
+
+"kh_uisdk_loyalty_points_earned_for_trip" = "%1$@ poin Reward akan ditambahkan ke saldo Anda di akhir perjalanan";
+
+"kh_uisdk_loyalty_pre_auth_not_allowed_to_burn" = "Maaf, Anda tidak bisa menggunakan poin Reward";
+
+"kh_uisdk_loyalty_pre_auth_not_enough_points" = "Saldo Anda tidak cukup untuk membayar perjalanan ini";
+
+"kh_uisdk_loyalty_separator" = "Atau";
+
+"kh_uisdk_loyalty_title" = "Poin Reward";
+
+"kh_uisdk_loyalty_unknown_error" = "Telah terjadi kesalahan. Untuk mendapatkan atau menggunakan poin Reward Anda, silakan coba lagi nanti.";
+
+"kh_uisdk_loyalty_unsupported_currency" = "Telah terjadi kesalahan: mata uang tidak didukung";
+
+"kh_uisdk_loyalty_use_points_off_subtitle" = "Anda bisa menggunakan poin Reward untuk membayar perjalanan ini";
+
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Gunakan %@%@ poin Reward untuk membayar %@";
+
+"kh_uisdk_loyalty_use_points_title" = "Gunakan poin Anda";
+
+"kh_uisdk_map_selector" = "Setel lokasi pin di peta";
+
+"kh_uisdk_meeting_point" = "Titik pertemuan";
+
+"kh_uisdk_metered" = "Harga per meter";
+
+"kh_uisdk_min" = "menit";
+
+"kh_uisdk_mins" = "menit";
+
+"kh_uisdk_minutes_plurals.other" = "%d menit";
+
+"kh_uisdk_minutes_plurals.zero" = "%d menit";
+
+"kh_uisdk_minutes_plurals.one" = "%d menit";
+
+"kh_uisdk_minutes_plurals.other" = "%d menit";
+
+"kh_uisdk_minutes_plurals.zero" = "%d menit";
+
+"kh_uisdk_mobile_phone_number_hint" = "Nomor ponsel";
+
+"kh_uisdk_moto" = "Motor";
+
+"kh_uisdk_mpv" = "MPV";
+
+"kh_uisdk_network_error" = "Kami mengalami masalah saat terhubung ke jaringan";
+
+"kh_uisdk_new_ride" = "PERJALANAN BARU";
+
+"kh_uisdk_next" = "Berikutnya";
+
+"kh_uisdk_no" = "Tidak";
+
+"kh_uisdk_no_availability_body" = "%1$@ jika Anda memiliki saran untuk armada lokal.";
+
+"kh_uisdk_no_availability_link" = "Hubungi kami";
+
+"kh_uisdk_no_cars_available" = "Maaf, tidak ada mobil yang tersedia untuk saat ini. Silakan cek kembali secepatnya.";
+
+"kh_uisdk_no_email_setup_error" = "Silakan atur akun email di perangkat Anda";
+
+"kh_uisdk_no_location_permission_message" = "Untuk bisa melihat lokasi Anda, harap aktifkan layanan lokasi aplikasi ini di pengaturan perangkat Anda.";
+
+"kh_uisdk_no_location_permission_title" = "Aktivasi layanan lokasi diperlukan";
+
+"kh_uisdk_no_quotes_in_selected_category" = "Maaf, tidak ada ketersediaan untuk kategori ini. Silakan pilih kategori lain.";
+
+"kh_uisdk_no_trips" = "Tidak ada wahana";
+
+"kh_uisdk_notification_error_ssl_cert_invalid" = "Sertifikat SSL tidak valid";
+
+"kh_uisdk_offer_expired" = "Penawaran kedaluwarsa";
+
+"kh_uisdk_offer_expired_text" = "Silakan pilih penawaran baru untuk melanjutkan pemesanan Anda";
+
+"kh_uisdk_ok" = "OKE";
+
+"kh_uisdk_origin_book_error" = "Anda harus memilih lokasi penjemputan sebelum memesan perjalanan";
+
+"kh_uisdk_P0001" = "Gagal mengambil UserID dari token";
+
+"kh_uisdk_P0002" = "Layanan pembayaran tidak terhubung";
+
+"kh_uisdk_pass_on_board" = "Anda sedang dalam tujuan. Selamat menikmati perjalanan Anda!";
+
+"kh_uisdk_passenger_details" = "Detail penumpang";
+
+"kh_uisdk_passenger_details_add_passenger" = "Tambah penumpang";
+
+"kh_uisdk_passenger_details_subtitle" = "Informasi ini akan membantu kelancaran perjalanan Anda.";
+
+"kh_uisdk_passengers_max" = "%d penumpang maks";
+
+"kh_uisdk_password_hint" = "Kata sandi";
+
+"kh_uisdk_past_rides_empty" = "Anda belum memesan perjalanan. Kami siap mengantar ke lokasi tujuan Anda.";
+
+"kh_uisdk_payment" = "Pembayaran";
+
+"kh_uisdk_payment_details" = "Rincian Pembayaran";
+
+"kh_uisdk_payment_issue" = "Masalah pembayaran";
+
+"kh_uisdk_payment_issue_message" = "Ada masalah dengan kartu Anda";
+
+"kh_uisdk_payment_payment_alert_update_card" = "Perbarui kartu";
+
+"kh_uisdk_payment_summary" = "RINGKASAN PEMBAYARAN";
+
+"kh_uisdk_payments" = "Pembayaran";
+
+"kh_uisdk_pending" = "Tertunda";
+
+"kh_uisdk_permission_rationale_location" = "Untuk menemukan Anda di peta harap aktifkan layanan lokasi di pengaturan perangkat Anda";
+
+"kh_uisdk_permissions" = "IJIN";
+
+"kh_uisdk_pickup_time" = "Waktu penjemputan";
+
+"kh_uisdk_pickup_type_curbside" = "Kerbside";
+
+"kh_uisdk_pickup_type_meet_and_greet" = "Meet and greet";
+
+"kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_prebook_confirmation" = "Pemesanan Anda\ndari: %1$@ \nto: %2$@ \nat: %3$@ \ntelah dikonfirmasi";
+
+"kh_uisdk_prebook_confirmed" = "Pra-pemesanan telah dikonfirmasi";
+
+"kh_uisdk_prebook_picker_title" = "Waktu penjemputan";
+
+"kh_uisdk_prebook_timezone_title" = "Pemesanan akan dilakukan dalam waktu setempat";
+
+"kh_uisdk_price" = "Harga";
+
+"kh_uisdk_price_info_text_estimated" = "Armada ini adalah taksi non-regulasi. Penawaran ini adalah perkiraan harga berdasarkan jarak dan waktu. Untuk informasi selengkapnya, silakan cek Syarat dan Ketentuan armada.";
+
+"kh_uisdk_price_info_text_fixed" = "Armada ini mengenakan tarif tetap. Tarif akhir tergantung biaya tambahan seperti tol dan penundaan. Untuk informasi selengkapnya, silakan cek Syarat dan Ketentuan armada.";
+
+"kh_uisdk_price_info_text_metered" = "Armada ini adalah taksi argo teregulasi. Penawaran ini adalah perkiraan harga berdasarkan jarak dan waktu.";
+
+"kh_uisdk_price_meet_and_greet" = "Meet and greet";
+
+"kh_uisdk_production_link" = "https://agent-portal.karhoo.com/follow/";
+
+"kh_uisdk_profile" = "Profil";
+
+"kh_uisdk_Q0001" = "Penjemputan dan pengantaran tidak boleh sama";
+
+"kh_uisdk_question_four" = "Seberapa mudah Anda menggunakan aplikasi?";
+
+"kh_uisdk_question_one" = "Seberapa puas Anda dengan pilihan penawaran (mis. armada, harga, dan ETA)?";
+
+"kh_uisdk_question_three" = "Bagaimana pengalaman Anda saat berada di dalam kendaraan (misalnya kebersihan, rute dan pengemudi)?";
+
+"kh_uisdk_question_two" = "Bagaimana pengalaman Anda menemukan lokasi penjemputan dan bertemu dengan pengemudi Anda?";
+
+"kh_uisdk_quote" = "Pemasok";
+
+"kh_uisdk_quote_cancellation_after_booking_ending" = "setelah pemesanan";
+
+"kh_uisdk_quote_cancellation_and_keyword" = "dan";
+
+"kh_uisdk_quote_cancellation_before_driver_departure" = "Pembatalan gratis sampai pengemudi dalam perjalanan";
+
+"kh_uisdk_quote_cancellation_before_pickup_ending" = "sebelum penjemputan";
+
+"kh_uisdk_quote_cancellation_before_pickup_ios" = "Pembatalan gratis hingga %1$@ sebelum pengambilan";
+
+"kh_uisdk_quote_cancellation_before_pickup_start" = "Pembatalan gratis hingga";
+
+"kh_uisdk_quote_cell_details" = "Detail";
+
+"kh_uisdk_quote_learn_more" = "Selengkapnya";
+
+"kh_uisdk_quoted_price" = "Penawaran harga";
+
+"kh_uisdk_quotes_activity_title" = "Penawaran";
+
+"kh_uisdk_quotes_error_missing_addresses_subtitle" = "Harap masukkan alamat penjemputan dan pengantaran untuk melihat penawaran";
+
+"kh_uisdk_quotes_error_missing_addresses_title" = "Alamat penjemputan atau pengantaran tidak ada";
+
+"kh_uisdk_quotes_error_no_availability_subtitle" = "Silakan pilih waktu yang berbeda";
+
+"kh_uisdk_quotes_error_no_availability_title" = "Tidak ada ketersediaan untuk waktu yang diminta";
+
+"kh_uisdk_quotes_error_no_coverage_subtitle" = "%1$@ untuk menyarankan armada berita";
+
+"kh_uisdk_quotes_error_no_coverage_title" = "Belum ada armada di area ini";
+
+"kh_uisdk_quotes_error_no_results_after_filter_subtitle" = "Harap coba filter yang berbeda.";
+
+"kh_uisdk_quotes_error_no_results_after_filter_title" = "Tidak ada hasil yang ditemukan lewat filter tersebut.";
+
+"kh_uisdk_quotes_error_no_results_found" = "Maaf, pemesanan ASAP saat ini tidak tersedia untuk tujuan ini, namun Anda dapat memesan di muka untuk perjalanan Anda berikutnya!";
+
+"kh_uisdk_quotes_error_similar_addresses_subtitle" = "Lokasi penjemputan dan pengantaran tampak sama";
+
+"kh_uisdk_quotes_error_similar_addresses_title" = "Lokasi penjemputan dan pengantaran tampak sama";
+
+"kh_uisdk_quotes_no_availability" = "Kami belum ada di sini!";
+
+"kh_uisdk_quotes_no_availability_subtitle" = "Silakan pilih lain waktu";
+
+"kh_uisdk_quotes_no_availability_title" = "Tidak ada ketersediaan untuk waktu yang diminta";
+
+"kh_uisdk_rate_trip_label" = "Bagaimana Anda menilai perjalanan Anda?";
+
+"kh_uisdk_rating_submitted" = "Terima kasih atas masukan Anda.";
+
+"kh_uisdk_rebook_ride" = "Pesan ulang perjalanan";
+
+"kh_uisdk_recents_empty" = "Tidak ada hasil terbaru";
+
+"kh_uisdk_register" = "Daftar";
+
+"kh_uisdk_report_issue" = "Laporkan masalah";
+
+"kh_uisdk_request_car" = "KONFIRMASI PEMESANAN";
+
+"kh_uisdk_request_received" = "Pemesanan diterima";
+
+"kh_uisdk_requested" = "Anda telah mengatur perjalanan bersama %@";
+
+"kh_uisdk_requesting" = "Meminta";
+
+"kh_uisdk_requesting_car" = "Pemesanan perjalanan";
+
+"kh_uisdk_reset_filter" = "Setel ulang filter";
+
+"kh_uisdk_result" = "%1$@ hasil";
+
+"kh_uisdk_results" = "hasil";
+
+"kh_uisdk_results_empty" = "Maaf, tidak ada hasil yang ditemukan";
+
+"kh_uisdk_results_ios" = "%1$@ hasil";
+
+"kh_uisdk_retrieving_dropoff" = "Menemukan lokasi pengantaran";
+
+"kh_uisdk_retrieving_pickup" = "Menemukan lokasi penjemputan";
+
+"kh_uisdk_retrieving_quotes" = "Memuat ulang penawaran";
+
+"kh_uisdk_retry" = "Coba kembali";
+
+"kh_uisdk_ride_confirmed" = "Perjalanan telah dikonfirmasi";
+
+"kh_uisdk_ride_contact_details" = "Detail";
+
+"kh_uisdk_ride_details" = "Detail perjalanan";
+
+"kh_uisdk_ride_state_arrived" = "Tiba";
+
+"kh_uisdk_ride_state_cancelled" = "Dibatalkan";
+
+"kh_uisdk_ride_state_completed" = "Selesai";
+
+"kh_uisdk_ride_state_confirmed" = "Dikonfirmasi";
+
+"kh_uisdk_ride_state_der" = "Pengemudi dalam perjalanan";
+
+"kh_uisdk_ride_state_pob" = "Penumpang dalam perjalanan";
+
+"kh_uisdk_ride_state_requested" = "Diminta";
+
+"kh_uisdk_rides" = "Perjalanan";
+
+"kh_uisdk_saloon" = "Sedan";
+
+"kh_uisdk_sandbox_link" = "https://agent-portal.sandbox.karhoo.com/follow/";
+
+"kh_uisdk_save" = "Simpan";
+
+"kh_uisdk_schedule_ride" = "Jadwalkan perjalanan";
+
+"kh_uisdk_set_on_map" = "Letakkan di peta";
+
+"kh_uisdk_set_prebook_time" = "Atur waktu penjemputan";
+
+"kh_uisdk_settings" = "Pengaturan";
+
+"kh_uisdk_sign_in" = "Masuk";
+
+"kh_uisdk_sign_in_but" = "MASUK";
+
+"kh_uisdk_sign_out" = "Keluar";
+
+"kh_uisdk_signup_email_subscribe_copy" = "Saya tidak ingin menerima tumpangan, promo, atau penawaran gratis";
+
+"kh_uisdk_signup_pending_message" = "Kami akan memberi tahu Anda melalui email setelah permintaan Anda diproses.";
+
+"kh_uisdk_something_went_wrong" = "Ada yang tidak beres";
+
+"kh_uisdk_something_went_wrong_select_another_quote" = "Ada yang tidak beres, coba lagi atau pilih penawaran lain.";
+
+"kh_uisdk_sort_by" = "Sortir dengan";
+
+"kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
+
+"kh_uisdk_star_excellent" = "Memuaskan";
+
+"kh_uisdk_star_fair" = "Cukup";
+
+"kh_uisdk_star_good" = "Baik";
+
+"kh_uisdk_star_great" = "Sangat baik";
+
+"kh_uisdk_star_poor" = "Tidak baik";
+
+"kh_uisdk_status" = "Status";
+
+"kh_uisdk_submit" = "KIRIM";
+
+"kh_uisdk_submit_button_text" = "Beri tahu kami mengapa Anda memberi penilaian ini?";
+
+"kh_uisdk_supplier_email" = "suppliers@karhoo.com";
+
+"kh_uisdk_support_email" = "support@karhoo.com";
+
+"kh_uisdk_support_report_issue" = "Laporkan masalah";
+
+"kh_uisdk_switch_departure_destination" = "Tukar lokasi penjemputan dan pengantaran";
+
+"kh_uisdk_taxi" = "Taksi";
+
+"kh_uisdk_temporary_message_error_codes_unknown" = "Saat ini tampaknya kami mengalami masalah teknis.";
+
+"kh_uisdk_terms_and_conditions_register_account_action" = "membuat akun Karhoo Anda";
+
+"kh_uisdk_terms_condition_full_string" = "Dengan %1$@, Anda menyetujui %3$@   |　 %4$@   %2$@";
+
+"kh_uisdk_thanks" = "Terima kasih atas ketertarikan Anda";
+
+"kh_uisdk_title_activity_address" = "Alamat";
+
+"kh_uisdk_title_activity_intent_chooser_send_email" = "Kirim email";
+
+"kh_uisdk_title_activity_rides" = "Perjalanan";
+
+"kh_uisdk_title_activity_threedsecure" = "3D Secure";
+
+"kh_uisdk_title_activity_trip" = "Perjalanan";
+
+"kh_uisdk_title_dispatch_cancelled" = "Pengiriman dibatalkan";
+
+"kh_uisdk_title_page_past" = "Sebelumnya";
+
+"kh_uisdk_title_page_upcoming" = "Akan datang";
+
+"kh_uisdk_title_past_rides_empty" = "Tidak ada perjalanan sebelumnya";
+
+"kh_uisdk_title_upcoming_rides_empty" = "Anda tidak memiliki perjalanan yang akan datang";
+
+"kh_uisdk_total_fare" = "Tarif total";
+
+"kh_uisdk_track_driver" = "Lacak pengemudi";
+
+"kh_uisdk_track_trip" = "Lacak Perjalanan";
+
+"kh_uisdk_track_trip_alert_message" = "Apakah Anda ingin melacak kendaraan?";
+
+"kh_uisdk_track_trip_alert_title" = "Pengemudi dalam perjalanan";
+
+"kh_uisdk_train_tracking" = "Pelacakan kereta api";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Pemesanan Anda telah dibatalkan. Silahkan hubungi kami untuk informasi lebih lanjut.";
+
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Dibatalkan oleh armada";
+
+"kh_uisdk_trip_id" = "ID Perjalanan: %1$@";
+
+"kh_uisdk_trip_id_label" = "ID Perjalanan";
+
+"kh_uisdk_trip_ride_options" = "Pilihan Perjalanan";
+
+"kh_uisdk_trip_status_cancelled_by_dispatch" = "Pemesanan Anda telah dibatalkan.";
+
+"kh_uisdk_trip_status_cancelled_by_user" = "Anda telah membatalkan pemesanan";
+
+"kh_uisdk_trip_status_completed" = "Anda telah sampai di tujuan Anda";
+
+"kh_uisdk_trip_status_confirmed" = "Pemesanan Anda telah diterima. Menunggu alokasi pengemudi untuk Anda.";
+
+"kh_uisdk_trip_status_driver_arrived" = "Pengemudi Anda telah tiba!";
+
+"kh_uisdk_trip_status_driver_en_route" = "Pengemudi Anda dalam perjalanan";
+
+"kh_uisdk_trip_status_requested" = "Harap tunggu %1$@ pengemudi akan kami alokasikan. Ini bisa memakan waktu hingga 5 menit.";
+
+"kh_uisdk_trip_summary" = "Ringkasan perjalanan";
+
+"kh_uisdk_trip_summary_add_to_calendar" = "Tambahkan ke kalender";
+
+"kh_uisdk_trip_summary_added_to_calendar" = "PERJALANAN DITAMBAHKAN KE KALENDER";
+
+"kh_uisdk_trip_summary_calendar_event_title" = "Naik ke %@";
+
+"kh_uisdk_trip_summary_flight_number" = "Nomor penerbangan";
+
+"kh_uisdk_trip_summary_train_number" = "Nomor kereta";
+
+"kh_uisdk_unchecked" = "Tidak dicentang";
+
+"kh_uisdk_upcoming_rides_empty" = "Ingat, Anda dapat memesan mobil hingga tujuh hari sebelumnya.";
+
+"kh_uisdk_vehicle" = "Kendaraan";
+
+"kh_uisdk_vehicle_bus" = "Minibus";
+
+"kh_uisdk_vehicle_moto" = "Motor";
+
+"kh_uisdk_vehicle_mpv" = "MPV";
+
+"kh_uisdk_vehicle_standard" = "Standar";
+
+"kh_uisdk_wheelchair" = "Bisa untuk kursi roda";
+
+"kh_uisdk_would_you_like_to_proceed" = "Apakah Anda ingin melanjutkan?";
+
+"kh_uisdk_yes" = "Ya";
+
+"kh_uisdk_you_may_be_charged" = "Anda akan dikenakan biaya pembatalan sebesar %@ .\n\nApakah Anda ingin melanjutkan?";
+
+"KSDK01" = "Ada yang salah tapi kita tidak tahu apa itu";
+
+"KSDK02" = "Izin pengguna tidak ada";
+
+"KSDK03" = "Pengguna sudah masuk";
+
+"MEET_AND_GREET" = "Bertemu dan Menyapa";
+
+"MPV" = "MPV";
+
+"pay_button_with_value" = "Otorisasi transaksi";
+
+"Q0001" = "Penjemputan dan tujuan tidak boleh sama.";
+
+"Text.Error.EmailValidationError" = "Periksa alamat email Anda dieja dengan benar";
+
+"Text.Generic.Close" = "Dekat";
+
+"Text.SupportMailMessage.ReportIssueSubject" = "Laporan Issue";
+
+"Text.VehicleTag.Electric" = "Listrik";
+
