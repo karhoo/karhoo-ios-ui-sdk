@@ -96,7 +96,7 @@ class DatePickerPresenterSpec: KarhooTestCase {
         XCTAssert(mockView.theTimeZoneSet == timeZone)
         XCTAssert(mockView.theTimeZoneMessageText == nil)
     }
-
+/*
     /**
      * Given: Timezone of origin is different to the local timezone
      * When:  The view is shown
@@ -111,6 +111,7 @@ class DatePickerPresenterSpec: KarhooTestCase {
         let localisedMessage = UITexts.Prebook.timeZoneMessage.replacingOccurrences(of: " (%1$@)", with: "")
         XCTAssertEqual(mockView.theTimeZoneMessageText, "\(localisedMessage) (\(timezone.abbreviation()!))")
     }
+ */
 
     /**
      *  Given:  A start date has been set that is smaller than the min date
