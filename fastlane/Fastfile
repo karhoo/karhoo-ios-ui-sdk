@@ -34,7 +34,7 @@ end
       workspace: "KarhooUISDK.xcworkspace",
       scheme: "KarhooUISDKTests",
       device: "iPhone 14",
-      deployment_target_version: "16.0",
+      deployment_target_version: "13.0",
       clean: true,
       include_simulator_logs: false,
       output_types: "junit",
