@@ -204,6 +204,8 @@ extension KarhooAddressView {
                 }
             }
             .frame(height: Constants.labelHeight)
+            .accessibilityElement()
+            .accessibilityValue(Text(text + ", " + (subtext ?? "")))
         }
     }
 }

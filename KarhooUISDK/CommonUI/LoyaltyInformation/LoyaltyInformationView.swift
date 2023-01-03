@@ -22,7 +22,8 @@ struct KarhooLoyaltyInformationView: View {
             Image("kh_uisdk_info_icon", bundle: .current)
                 .resizable()
                 .foregroundColor(Color(KarhooUI.colors.primary))
-                .frame(width: UIConstants.Dimension.Icon.medium, height: UIConstants.Dimension.Icon.medium)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: UIConstants.Dimension.Icon.medium)
             Text(viewModel.text)
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .foregroundColor(Color(KarhooUI.colors.primary))
@@ -32,13 +33,11 @@ struct KarhooLoyaltyInformationView: View {
         }
         .padding(.horizontal, UIConstants.Spacing.medium)
         .padding(.vertical, UIConstants.Spacing.small)
-        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
         .addBorder(
             Color(KarhooUI.colors.primary),
             cornerRadius: UIConstants.CornerRadius.small
         )
     }
-
 }
 
 // MARK: - Preview

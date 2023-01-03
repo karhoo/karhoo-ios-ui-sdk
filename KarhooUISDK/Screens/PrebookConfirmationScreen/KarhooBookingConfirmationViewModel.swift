@@ -20,6 +20,7 @@ protocol BookingConfirmationViewModel {
     var useCalendar: Bool { get }
     var printedTime: String { get }
     var printedDate: String { get }
+    var accessibilityDate: String { get }
     func dismiss()
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
@@ -174,6 +175,9 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         return dateFormatter.display(clockTime: journeyDetails.scheduledDate)
     }
 
+    var accessibilityDate: String {
+        dateFormatter.display(fullDate: journeyDetails.scheduledDate)
+    }
     // MARK: - Helpers
 
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {

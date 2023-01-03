@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.license               = 'BSD 2-Clause'
   s.author                = { "Karhoo" => "ios@karhoo.com" }
   s.source                = { :git => "https://github.com/karhoo/karhoo-ios-ui-sdk.git", :tag => s.version }
-  s.platform              = :ios, '13.0'
-  s.ios.deployment_target = '13.0'
+  s.platform              = :ios, '14.0'
+  s.ios.deployment_target = '14.0'
   s.requires_arc          = true
   s.default_subspec = 'Core'
 
