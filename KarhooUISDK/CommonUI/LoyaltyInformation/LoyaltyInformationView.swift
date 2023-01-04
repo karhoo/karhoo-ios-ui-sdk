@@ -37,6 +37,8 @@ struct KarhooLoyaltyInformationView: View {
             Color(KarhooUI.colors.primary),
             cornerRadius: UIConstants.CornerRadius.small
         )
+        .accessibilityElement()
+        .accessibilityValue(Text(UITexts.Generic.information + ". " + viewModel.text))
     }
 }
 

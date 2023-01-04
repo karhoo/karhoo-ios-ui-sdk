@@ -48,7 +48,7 @@ struct KarhooBottomSheet<Content: View>: View {
                         width: UIConstants.Dimension.Button.standard,
                         height: UIConstants.Dimension.Button.standard
                     )
-                    .accessibilityLabel(Text(UITexts.Generic.close))
+                    .accessibilityLabel(Text(UITexts.Generic.closeTheScreen))
                 }
                 .padding(
                     EdgeInsets(

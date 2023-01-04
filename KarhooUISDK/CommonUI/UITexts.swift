@@ -51,6 +51,10 @@ public enum UITexts {
         public static let checked = "kh_uisdk_checked".localized
         public static let unchecked = "kh_uisdk_unchecked".localized
         public static let checkout = "kh_uisdk_booking_checkout_title".localized
+        public static let closeTheScreen = "kh_uisdk_close_the_screen".localized
+        public static let pickUp = "kh_uisdk_pick_up".localized
+        public static let destination = "kh_uisdk_destination".localized
+        public static let information = "kh_uisdk_information".localized
     }
 
     public enum QuoteCell {
@@ -198,6 +202,7 @@ public enum UITexts {
         public static let feedbackEmailAddress = "kh_uisdk_feedback_email".localized
     }
 
+    /* Prebook */
     /* Prebook */
     public enum Prebook {
         public static let prebookPickerTitle = "kh_uisdk_prebook_picker_title".localized
