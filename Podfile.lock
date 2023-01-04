@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (= 1.7.1)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-4528-add-a-toggle-to-keep-users-card-data`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -108,7 +108,6 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - KarhooSDK
     - KeychainSwift
     - Nimble
     - PhoneNumberKit
@@ -119,8 +118,16 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
+  KarhooSDK:
+    :branch: feature/MOB-4528-add-a-toggle-to-keep-users-card-data
+    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: b3b5642d4b91a15bf041d62848ee350e10854e46
+    :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
