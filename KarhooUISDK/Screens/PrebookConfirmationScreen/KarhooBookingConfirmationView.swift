@@ -124,6 +124,8 @@ struct KarhooBookingConfirmationView: View {
                     .multilineTextAlignment(.center)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
+            .accessibilityElement()
+            .accessibilityValue(Text(viewModel.accessibilityPrice))
         }
         .frame(minWidth: 0, maxWidth: .infinity)
     }
