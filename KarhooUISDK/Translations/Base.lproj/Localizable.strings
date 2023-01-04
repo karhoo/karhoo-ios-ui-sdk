@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Enter pickup location";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Pickup";
 
 "kh_uisdk_address_picker_prebook" = "Book";

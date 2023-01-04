@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Ophaallocatie invoeren";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Oppakken";
 
 "kh_uisdk_address_picker_prebook" = "RESERVEER";

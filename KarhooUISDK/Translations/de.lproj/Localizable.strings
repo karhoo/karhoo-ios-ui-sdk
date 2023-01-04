@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Abholort eingeben";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Abholung";
 
 "kh_uisdk_address_picker_prebook" = "Buchen Sie";

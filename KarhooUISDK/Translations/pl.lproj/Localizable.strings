@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Wprowadź punkt odbioru";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Miejsce odbioru";
 
 "kh_uisdk_address_picker_prebook" = "Rezerwuj";

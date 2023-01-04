@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Inserir endereço de recolha";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Recolha";
 
 "kh_uisdk_address_picker_prebook" = "Reservar";

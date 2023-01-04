@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "ป้อนสถานที่รับ";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "ไปรับ";
 
 "kh_uisdk_address_picker_prebook" = "จอง";

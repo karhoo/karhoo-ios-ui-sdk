@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Masukkan lokasi penjemputan";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Penjemputan";
 
 "kh_uisdk_address_picker_prebook" = "Pesan";

@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Inserisci luogo del prelievo";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Raccogliere";
 
 "kh_uisdk_address_picker_prebook" = "Libro";

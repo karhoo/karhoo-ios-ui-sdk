@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "¿Dónde se encuentra?";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Punto de partida";
 
 "kh_uisdk_address_picker_prebook" = "Reservar";

@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "お迎えの場所を入力してください";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "選び出す";
 
 "kh_uisdk_address_picker_prebook" = "予約";

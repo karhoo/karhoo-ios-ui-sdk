@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Введите место посадки";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Посадка";
 
 "kh_uisdk_address_picker_prebook" = "Забронировать";
