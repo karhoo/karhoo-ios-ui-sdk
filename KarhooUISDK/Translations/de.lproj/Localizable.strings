@@ -274,6 +274,8 @@
 
 "kh_uisdk_checkout_as_guest" = "FAHRT BUCHEN";
 
+"kh_uisdk_close_the_screen" = "Schließen Sie den Bildschirm";
+
 "kh_uisdk_completed" = "Wir hoffen, Sie haben Ihre Fahrt genossen";
 
 "kh_uisdk_confirmed" = "Ihre Fahrt mit %@ wurde bestätigt";
@@ -297,6 +299,8 @@
 "kh_uisdk_current_location" = "Aktuellen Standort ermitteln";
 
 "kh_uisdk_date" = "Datum";
+
+"kh_uisdk_destination" = "Zielort";
 
 "kh_uisdk_destination_book_error" = "Sie müssen ein Ziel auswählen, um eine Fahrt zu buchen";
 
@@ -479,6 +483,8 @@
 "kh_uisdk_hours_plural.zero" = "%d Stunde";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Informationen";
 
 "kh_uisdk_initialised" = "Karhoo initiiert Ihre Fahrt";
 
@@ -761,6 +767,8 @@
 "kh_uisdk_permission_rationale_location" = "Um Sie auf der Karte lokalisieren zu können, benötigen wir den Standort Ihres Geräts. Bitte aktivieren Sie die Berechtigungen zur Standortermittlung";
 
 "kh_uisdk_permissions" = "BERECHTIGUNGEN";
+
+"kh_uisdk_pick_up" = "Abholung";
 
 "kh_uisdk_pickup_time" = "Abholzeit";
 

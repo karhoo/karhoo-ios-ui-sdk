@@ -274,6 +274,8 @@
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAGEM";
 
+"kh_uisdk_close_the_screen" = "Fechar o ecrã";
+
 "kh_uisdk_completed" = "Esperamos que tenha gostado da sua viagem";
 
 "kh_uisdk_confirmed" = "A sua viagem com a %@ foi confirmada";
@@ -297,6 +299,8 @@
 "kh_uisdk_current_location" = "Selecionar localização atual";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_destination" = "Destino";
 
 "kh_uisdk_destination_book_error" = "Selecione um destino para reservar uma viagem";
 
@@ -479,6 +483,8 @@
 "kh_uisdk_hours_plural.zero" = "%d horas";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Informações";
 
 "kh_uisdk_initialised" = "A iniciar a sua viagem";
 
@@ -761,6 +767,8 @@
 "kh_uisdk_permission_rationale_location" = "A fim de o localizarmos no mapa, ative os serviços de localização no seu dispositivo";
 
 "kh_uisdk_permissions" = "AUTORIZAÇÕES";
+
+"kh_uisdk_pick_up" = "Pick-up";
 
 "kh_uisdk_pickup_time" = "Hora de recolha";
 

@@ -274,6 +274,8 @@
 
 "kh_uisdk_checkout_as_guest" = "จองการเดินทาง";
 
+"kh_uisdk_close_the_screen" = "ปิดหน้าจอ";
+
 "kh_uisdk_completed" = "เราหวังว่าคุณพอใจกับการเดินทางของคุณ";
 
 "kh_uisdk_confirmed" = "การเดินทางของคุณกับ %@ ได้รับการยืนยันแล้ว";
@@ -297,6 +299,8 @@
 "kh_uisdk_current_location" = "ดูตำแหน่งปัจจุบัน";
 
 "kh_uisdk_date" = "วันที่";
+
+"kh_uisdk_destination" = "ปลายทาง";
 
 "kh_uisdk_destination_book_error" = "คุณต้องเลือกตำแหน่งปลายทางก่อนจองการเดินทาง";
 
@@ -477,6 +481,8 @@
 "kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
 
 "kh_uisdk_info" = "ข้อมูล";
+
+"kh_uisdk_information" = "รายละเอียดคนขับ";
 
 "kh_uisdk_initialised" = "กำลังเริ่มต้นการเดินทางของคุณ";
 
@@ -757,6 +763,8 @@
 "kh_uisdk_permission_rationale_location" = "โปรดเปิดใช้สิทธิ์เข้าถึงตําแหน่งบนอุปกรณ์ของคุณเพื่อช่วยให้เราระบุตำแหน่งของคุณได้";
 
 "kh_uisdk_permissions" = "สิทธิ์";
+
+"kh_uisdk_pick_up" = "หยิบ";
 
 "kh_uisdk_pickup_time" = "เวลารับ";
 

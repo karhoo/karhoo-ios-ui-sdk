@@ -274,6 +274,8 @@
 
 "kh_uisdk_checkout_as_guest" = "乗車サービスを予約する";
 
+"kh_uisdk_close_the_screen" = "画面を閉じる";
+
 "kh_uisdk_completed" = "ご利用ありがとうございました";
 
 "kh_uisdk_confirmed" = "%@の乗車サービスを確定しました";
@@ -297,6 +299,8 @@
 "kh_uisdk_current_location" = "現在地を取得";
 
 "kh_uisdk_date" = "日付";
+
+"kh_uisdk_destination" = "先";
 
 "kh_uisdk_destination_book_error" = "乗車サービスを予約するには目的地を選択してください";
 
@@ -477,6 +481,8 @@
 "kh_uisdk_hours_plural.zero" = "%d時間";
 
 "kh_uisdk_info" = "情報";
+
+"kh_uisdk_information" = "ドライバーの情報";
 
 "kh_uisdk_initialised" = "乗車サービスを初期化中です";
 
@@ -757,6 +763,8 @@
 "kh_uisdk_permission_rationale_location" = "地図上でお客様を特定するために、ご利用のデバイスで位置情報を有効にしてください";
 
 "kh_uisdk_permissions" = "許可";
+
+"kh_uisdk_pick_up" = "拾う";
 
 "kh_uisdk_pickup_time" = "お迎え時刻";
 

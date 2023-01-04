@@ -274,6 +274,8 @@
 
 "kh_uisdk_checkout_as_guest" = "ZAREZERWUJ PRZEJAZD";
 
+"kh_uisdk_close_the_screen" = "Zamknij ekran";
+
 "kh_uisdk_completed" = "Mamy nadzieję, że przejazd był udany";
 
 "kh_uisdk_confirmed" = "Twój przejazd został potwierdzony przez %@";
@@ -297,6 +299,8 @@
 "kh_uisdk_current_location" = "Moja lokalizacja";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_destination" = "Cel";
 
 "kh_uisdk_destination_book_error" = "Musisz wybrać miejsce docelowe, aby zarezerwować przejazd";
 
@@ -479,6 +483,8 @@
 "kh_uisdk_hours_plural.zero" = "%d godzin";
 
 "kh_uisdk_info" = "Informacje";
+
+"kh_uisdk_information" = "Informacje";
 
 "kh_uisdk_initialised" = "Karhoo inicjuje Twoją podróż";
 
@@ -761,6 +767,8 @@
 "kh_uisdk_permission_rationale_location" = "Włącz usługi lokalizacyjne na swoim urządzeniu, abyśmy mogli Cię znaleźć";
 
 "kh_uisdk_permissions" = "UPRAWNIENIA";
+
+"kh_uisdk_pick_up" = "Pick-up";
 
 "kh_uisdk_pickup_time" = "Godzina odbioru";
 
