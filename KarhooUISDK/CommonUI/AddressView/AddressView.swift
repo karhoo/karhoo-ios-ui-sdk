@@ -36,14 +36,16 @@ struct KarhooAddressView: View {
             switch self {
             case .bordered:
                 return KarhooUI.colors.background1
-            case .borderedWithWhiteBackground, .default:
+            case .borderedWithWhiteBackground,
+                 .default:
                 return KarhooUI.colors.background2
             }
         }
 
         var borderColor: UIColor {
             switch self {
-            case .bordered, .borderedWithWhiteBackground:
+            case .bordered,
+                 .borderedWithWhiteBackground:
                 return KarhooUI.colors.border
             case .default:
                 return KarhooUI.colors.background2
