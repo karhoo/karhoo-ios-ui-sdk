@@ -13,6 +13,20 @@ struct NewCheckoutView: View {
     var presenter: NewCheckoutPresenter
 
     var body: some View {
-        Text("new checkout")
+        VStack {
+            addressView
+            Text("new checkout")
+        }
+    }
+
+    @ViewBuilder
+    private var addressView: some View {
+        KarhooAddressView(
+            pickUp: .init(text: "", subtext: ""),
+            destination: .init(text: "", subtext: ""),
+            design: .default,
+            showsLineBetweenPickUpAndDestination: true,
+            timeLabelText: "NOW"
+        )
     }
 }
