@@ -177,7 +177,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     var accessibilityDate: String {
-        dateFormatter.display(fullDate: journeyDetails.scheduledDate)
+        UITexts.Generic.pickupTime + "." + dateFormatter.display(fullDate: journeyDetails.scheduledDate)
     }
 
     var accessibilityPrice: String {
@@ -193,11 +193,11 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     // MARK: Analytics
-    private func reportRideConfirmationDetailsSelected(){
+    private func reportRideConfirmationDetailsSelected() {
         analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 
-    private func reportRideConfirmationAddToCalendarSelected(){
+    private func reportRideConfirmationAddToCalendarSelected() {
         analytics.rideConfirmationAddToCalendarSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 }
