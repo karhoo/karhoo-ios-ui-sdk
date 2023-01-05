@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Бронирование подтверждено";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Перейти к подробностям поездки";
+
 "kh_uisdk_booking_details_error" = "Неверные данные бронирования";
 
 "kh_uisdk_booking_failed" = "Ошибка при бронировании";

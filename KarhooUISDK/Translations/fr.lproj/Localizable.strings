@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Course confirmée";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Aller aux détails du trajet";
+
 "kh_uisdk_booking_details_error" = "Informations de réservation non valables";
 
 "kh_uisdk_booking_failed" = "La réservation a échoué";

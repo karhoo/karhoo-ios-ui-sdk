@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Prenotazione confermata";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Vai ai dettagli della corsa";
+
 "kh_uisdk_booking_details_error" = "Dettagli della prenotazione non validi";
 
 "kh_uisdk_booking_failed" = "Prenotazione non riuscita";

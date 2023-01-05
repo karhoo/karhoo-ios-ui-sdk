@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Rezerwacja potwierdzona";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Przejdź do szczegółów przejazdu";
+
 "kh_uisdk_booking_details_error" = "Nieprawidłowe szczegóły rezerwacji";
 
 "kh_uisdk_booking_failed" = "Rezerwacja nie powiodła się";
@@ -673,7 +675,7 @@
 
 "kh_uisdk_meeting_point" = "Miejsce spotkania";
 
-"kh_uisdk_metered" = "Na podstawie taksometru";
+"kh_uisdk_metered" = "Cena na podstawie taksometru";
 
 "kh_uisdk_min" = "min";
 

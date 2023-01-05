@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Buchung bestätigt";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Zu den Details der Fahrt";
+
 "kh_uisdk_booking_details_error" = "Ungültige Buchungsdetails";
 
 "kh_uisdk_booking_failed" = "Buchung fehlgeschlagen";

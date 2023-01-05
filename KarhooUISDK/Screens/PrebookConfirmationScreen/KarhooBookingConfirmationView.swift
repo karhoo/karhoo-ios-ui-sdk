@@ -70,6 +70,7 @@ struct KarhooBookingConfirmationView: View {
             KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
                 viewModel.dismiss()
             }
+            .accessibilityValue(Text(UITexts.Booking.prebookConfirmedRideDetailsAccessibility))
         }
         .padding(.vertical, UIConstants.Spacing.standard)
     }

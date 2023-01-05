@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Pemesanan telah dikonfirmasi";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Pergi ke rincian perjalanan";
+
 "kh_uisdk_booking_details_error" = "Detail pemesanan tidak valid";
 
 "kh_uisdk_booking_failed" = "Pemesanan gagal";

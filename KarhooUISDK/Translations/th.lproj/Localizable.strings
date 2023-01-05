@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "ยืนยันการจองแล้ว";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "ไปที่รายละเอียดการขี่";
+
 "kh_uisdk_booking_details_error" = "รายละเอียดการจองไม่ถูกต้อง";
 
 "kh_uisdk_booking_failed" = "การจองไม่สำเร็จ";

@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "输入上车地点";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "拾起";
 
 "kh_uisdk_address_picker_prebook" = "预订";
@@ -229,6 +230,8 @@
 "kh_uisdk_booking_checkout_title" = "结账";
 
 "kh_uisdk_booking_confirmation" = "预订确认";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "前往乘车详情";
 
 "kh_uisdk_booking_details_error" = "无效的预订详情";
 

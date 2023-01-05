@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Boeking bevestigd";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Ga naar ritgegevens";
+
 "kh_uisdk_booking_details_error" = "Ongeldige boekingsgegevens";
 
 "kh_uisdk_booking_failed" = "Boeking mislukt";

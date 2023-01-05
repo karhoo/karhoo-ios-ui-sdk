@@ -231,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "予約確定済み";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "乗車の詳細に移動";
+
 "kh_uisdk_booking_details_error" = "予約の詳細が無効です";
 
 "kh_uisdk_booking_failed" = "予約に失敗しました";
