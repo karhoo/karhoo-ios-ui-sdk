@@ -203,7 +203,6 @@ public enum UITexts {
     }
 
     /* Prebook */
-    /* Prebook */
     public enum Prebook {
         public static let prebookPickerTitle = "kh_uisdk_prebook_picker_title".localized
         public static let setPrebookTime = "kh_uisdk_set_prebook_time".localized
