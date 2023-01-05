@@ -20,6 +20,12 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     // MARK: - Views
 
+    private lazy var hostingController = UIHostingController(rootView: NewCheckoutView(presenter: self.presenter)).then {
+        $0.loadViewIfNeeded()
+        $0.view.translatesAutoresizingMaskIntoConstraints = false
+        $0.view.backgroundColor = .clear
+    }
+
     // MARK: - Lifecycle
 
     init() {
@@ -38,5 +44,46 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
         super.viewDidLoad()
         assert(presenter != nil, "Presented needs to be assigned using `setupBinding` method")
         presenter?.viewDidLoad()
+    }
+
+    // MARK: - Setup binding
+
+    func setupBinding(_ presenter: NewCheckoutPresenter) {
+        self.presenter = presenter
+        loadViewIfNeeded()
+    }
+
+    // MARK: - Setup view
+
+    private func setupView() {
+        setupProperties()
+        setupHierarchy()
+        setupLayout()
+    }
+
+    private func setupProperties() {
+        view = UIView()
+        view.backgroundColor = KarhooUI.colors.background1
+        forceLightMode()
+        addChild(hostingController)
+    }
+
+    private func setupHierarchy() {
+        view.addSubview(hostingController.view)
+    }
+
+    private func setupLayout() {
+        hostingController.view.anchorToSuperview()
+    }
+
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.backButtonTitle = ""
+        navigationController?.set(style: .primary)
+    }
+
+    // MARK: - State handling
+
+    private func updateState() {
     }
 }

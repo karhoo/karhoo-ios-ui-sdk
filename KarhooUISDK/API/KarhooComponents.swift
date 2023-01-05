@@ -47,6 +47,14 @@ public class KarhooComponents: BookingScreenComponents {
             onQuoteSelected: onQuoteSelected
         )
     }
+
+    func checkout(
+        navigationController: UINavigationController
+    ) -> NewCheckoutCoordinator {
+        KarhooNewCheckoutCoordinator(
+            navigationController: navigationController
+        )
+    }
     
     public func passengerDetails(details: PassengerDetails?,
                                  delegate: PassengerDetailsDelegate?,
