@@ -8,17 +8,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 protocol NewCheckoutCoordinator: KarhooUISDKSceneCoordinator {
 
 }
 
 protocol NewCheckoutViewController: BaseViewController {
-    func setupBinding(_ presenter: any NewCheckoutPresenter)
-}
-
-protocol NewCheckoutPresenter: ObservableObject {
-    func viewDidLoad()
 }
 
 protocol NewCheckoutRouter: AnyObject {

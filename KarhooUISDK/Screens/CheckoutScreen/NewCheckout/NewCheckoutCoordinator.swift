@@ -18,7 +18,7 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: NewCheckoutViewController!
-    private(set) var presenter: (any NewCheckoutPresenter)!
+    private(set) var presenter: KarhooNewCheckoutPresenter!
 
     // MARK: - Initializator
 
@@ -30,14 +30,15 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.navigationController = navigationController
-        self.viewController = KarhooNewCheckoutViewController()
+        let viewController = KarhooNewCheckoutViewController()
         self.presenter = KarhooNewCheckoutPresenter(
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata,
             callback: callback
         )
-        self.viewController.setupBinding(presenter)
+        viewController.setupBinding(presenter)
+        self.viewController = viewController
     }
 
 }

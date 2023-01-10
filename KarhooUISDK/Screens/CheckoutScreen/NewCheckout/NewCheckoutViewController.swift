@@ -14,7 +14,7 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     // MARK: - Properties
 
-    private weak var presenter: (any NewCheckoutPresenter)!
+    private weak var presenter: KarhooNewCheckoutPresenter!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
@@ -48,7 +48,7 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: any NewCheckoutPresenter) {
+    func setupBinding(_ presenter: KarhooNewCheckoutPresenter) {
         self.presenter = presenter
         loadViewIfNeeded()
     }

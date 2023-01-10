@@ -16,7 +16,8 @@ enum NewCheckoutState {
     case asap
     case scheduled
 }
-final class KarhooNewCheckoutPresenter: NewCheckoutPresenter {
+
+final class KarhooNewCheckoutPresenter: ObservableObject {
 
     // MARK: - Properties
 
