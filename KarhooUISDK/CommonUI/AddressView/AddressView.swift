@@ -22,6 +22,7 @@ struct KarhooAddressView: View {
         static let padding: CGFloat = 10
         static let roundIconSide: CGFloat = 10
         static let minimumScaleFactor: CGFloat = 0.7
+        static let timeLabelTextTopPadding: CGFloat = 20
     }
 
     enum Design {
@@ -30,14 +31,18 @@ struct KarhooAddressView: View {
         /// Bordered view, with SDKs `white` color and rounded corners.
         case borderedWithWhiteBackground
         /// Bordereless view with `white` color from SDK palette.
-        case `default`
+        case borderlessWithWhiteBackground
+        /// Bordereless view with `.clear` color.
+        case borderlessWithoutBackground
 
         var backgroundColor: UIColor {
             switch self {
             case .bordered:
                 return KarhooUI.colors.background1
+            case .borderlessWithoutBackground:
+                return .clear
             case .borderedWithWhiteBackground,
-                 .default:
+                 .borderlessWithWhiteBackground:
                 return KarhooUI.colors.background2
             }
         }
@@ -47,7 +52,9 @@ struct KarhooAddressView: View {
             case .bordered,
                  .borderedWithWhiteBackground:
                 return KarhooUI.colors.border
-            case .default:
+            case .borderlessWithoutBackground:
+                return .clear
+            default:
                 return KarhooUI.colors.background2
             }
         }
@@ -70,7 +77,7 @@ struct KarhooAddressView: View {
     init(
         pickUp: AddressLabel,
         destination: AddressLabel,
-        design: Design = .default,
+        design: Design = .borderedWithWhiteBackground,
         showsLineBetweenPickUpAndDestination: Bool = true,
         timeLabelText: String? = nil,
         tags: [Tag] = []
@@ -87,7 +94,7 @@ struct KarhooAddressView: View {
     // MARK: - Views
 
     var body: some View {
-        HStack(spacing: UIConstants.Spacing.medium) {
+        HStack(alignment: .center, spacing: UIConstants.Spacing.medium) {
             dotsColumn
             labelsColumn
             HStack(alignment: .top, spacing: 0) {
@@ -98,7 +105,6 @@ struct KarhooAddressView: View {
                 }
             }
         }
-        .padding(UIConstants.Spacing.medium)
         .frame(maxWidth: Constants.maxWidth, alignment: .topLeading)
         .background(Color(backgroundColor))
         .addBorder(Color(borderColor), cornerRadius: cornerRadius)
@@ -160,13 +166,21 @@ struct KarhooAddressView: View {
 
     @ViewBuilder
     private func buildTimeTextView(_ text: String) -> some View {
-        VStack {
-            Text(text)
-                .font(Font(KarhooUI.fonts.captionBold()))
-                .multilineTextAlignment(.trailing)
-                .padding(.top, Constants.padding)
-                .minimumScaleFactor(Constants.minimumScaleFactor)
+        HStack(spacing: 0) {
             Spacer()
+                .frame(minWidth: 1, idealWidth: 1, maxWidth: .infinity)
+                .fixedSize()
+            VStack(spacing: 0) {
+                Text(text)
+                    .font(Font(KarhooUI.fonts.bodyBold()))
+                    .multilineTextAlignment(.trailing)
+                    .fixedSize()
+                    .minimumScaleFactor(Constants.minimumScaleFactor)
+                    .padding(.top, Constants.timeLabelTextTopPadding)
+                Spacer()
+                    .frame(minHeight: 66, idealHeight: 66, maxHeight: .infinity)
+                    .fixedSize()
+            }
         }
     }
 
@@ -251,7 +265,8 @@ struct KarhooAddressView_Preview: PreviewProvider {
             KarhooAddressView(
                 pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
                 destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom"),
-                design: .bordered
+                design: .bordered,
+                timeLabelText: "NOW"
             )
         }
     }

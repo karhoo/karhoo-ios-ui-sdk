@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "BESTÄTIGEN UND BEZAHLEN";
 
+"kh_uisdk_book_pay" = "Bezahlen";
+
 "kh_uisdk_book_return_ride" = "Rückfahrt buchen";
 
 "kh_uisdk_booking_car" = "FAHRT BUCHEN";
@@ -230,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Zur Kasse";
 
 "kh_uisdk_booking_confirmation" = "Buchung bestätigt";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Zu den Details der Fahrt";
 
 "kh_uisdk_booking_details_error" = "Ungültige Buchungsdetails";
 
@@ -273,7 +277,25 @@
 
 "kh_uisdk_checked" = "Geprüft";
 
+"kh_uisdk_checkout_airport_example" = "z.B. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Eine Flugnummer hinzufügen";
+
+"kh_uisdk_checkout_airport_title" = "Flugnummer";
+
 "kh_uisdk_checkout_as_guest" = "FAHRT BUCHEN";
+
+"kh_uisdk_checkout_comments_subtitle" = "Kommentar für Ihren Fahrer";
+
+"kh_uisdk_checkout_comments_title" = "Kommentar";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Nur Buchstaben und Zahlen sind erlaubt";
+
+"kh_uisdk_checkout_train_example" = "z.B. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Eine Zugnummer hinzufügen";
+
+"kh_uisdk_checkout_train_title" = "Zugnummer";
 
 "kh_uisdk_close_the_screen" = "Schließen Sie den Bildschirm";
 
@@ -723,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Ungültiges SSL-Zertifikat";
 
+"kh_uisdk_now" = "jetzt";
+
 "kh_uisdk_offer_expired" = "Angebot abgelaufen";
 
 "kh_uisdk_offer_expired_text" = "Bitte wählen Sie ein neues Angebot aus, um mit Ihrer Buchung fortzufahren";
@@ -788,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Die Buchung wird in Ortszeit vorgenommen";
 
 "kh_uisdk_price" = "Preis";
+
+"kh_uisdk_price_bottom_sheet_title" = "Preis Details";
 
 "kh_uisdk_price_info_text_estimated" = "Diese Flotte bietet nicht regulierte Taxis. Das Angebot ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.). Weitere Informationen entnehmen Sie bitte den Allgemeinen Geschäftsbedingungen der Flotte.";
 

@@ -17,16 +17,17 @@ enum NewCheckoutState {
     case scheduled
 }
 
-final class KarhooNewCheckoutPresenter: ObservableObject {
+final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: - Properties
 
+    let quote: Quote
+    private(set) var passengerDetails: PassengerDetails!
+    private(set) var trip: TripInfo?
+
     private let callback: ScreenResultCallback<KarhooCheckoutResult>
-    private weak var view: CheckoutView?
-    private let quote: Quote
     private let journeyDetails: JourneyDetails
     private let quoteValidityWorker: QuoteValidityWorker
-    internal var passengerDetails: PassengerDetails!
     private let threeDSecureProvider: ThreeDSecureProvider?
     private let tripService: TripService
     private let userService: UserService
@@ -35,12 +36,12 @@ final class KarhooNewCheckoutPresenter: ObservableObject {
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let analytics: Analytics
     private let appStateNotifier: AppStateNotifierProtocol
-    private var trip: TripInfo?
     private var comments: String?
     private var bookingRequestInProgress: Bool = false
     private var flightDetailsScreenIsPresented: Bool = false
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
     private var cardRegistrationFlow: CardRegistrationFlow
+    private let dateFormatter: DateFormatterType
 
     // MARK: - Init & Config
 
@@ -59,6 +60,7 @@ final class KarhooNewCheckoutPresenter: ObservableObject {
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
+        dateFormatter: DateFormatterType = KarhooDateFormatter(),
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
@@ -76,12 +78,50 @@ final class KarhooNewCheckoutPresenter: ObservableObject {
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
         self.cardRegistrationFlow = cardRegistrationFlow
+        self.dateFormatter = dateFormatter
     }
 
     func viewDidLoad() {
        quoteValidityWorker.setQuoteValidityDeadline(quote) {
            // TODO: handle validity expiration
        }
+    }
+
+    // MARK: - Endpoints
+
+    func getDateScheduledDescription() -> String {
+        let date = trip?.dateScheduled ?? Date()
+        return dateFormatter.display(
+            date,
+            dateStyle: .long,
+            timeStyle: .none
+        ).uppercased()
+    }
+
+    func getPrintedPickUpAddressLine1() -> String {
+        journeyDetails.printedPickUpAddressLine1
+    }
+
+    func getPrintedPickUpAddressLine2() -> String {
+        journeyDetails.printedPickUpAddressLine2
+    }
+
+    func getPrintedDropOffAddressLine1() -> String {
+        journeyDetails.printedDropOffAddressLine1
+    }
+
+    func getPrintedDropOffAddressLine2() -> String {
+        journeyDetails.printedDropOffAddressLine2
+    }
+
+    func getTimeLabelTextDescription() -> String {
+        var scheduledTime: String {
+            guard let date = journeyDetails.scheduledDate else {
+                return ""
+            }
+            return dateFormatter.display(clockTime: date)
+        }
+        return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
     }
 
     // MARK: - Helpers

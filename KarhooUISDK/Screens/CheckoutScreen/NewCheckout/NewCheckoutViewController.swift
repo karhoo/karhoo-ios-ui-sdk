@@ -14,13 +14,13 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     // MARK: - Properties
 
-    private weak var presenter: KarhooNewCheckoutPresenter!
+    private var viewModel: KarhooNewCheckoutViewModel!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
     // MARK: - Views
 
-    private lazy var hostingController = UIHostingController(rootView: NewCheckoutView(presenter: self.presenter!)).then {
+    private lazy var hostingController = UIHostingController(rootView: NewCheckoutView(viewModel: self.viewModel!)).then {
         $0.loadViewIfNeeded()
         $0.view.translatesAutoresizingMaskIntoConstraints = false
         $0.view.backgroundColor = .clear
@@ -42,15 +42,13 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(presenter != nil, "Presented needs to be assigned using `setupBinding` method")
-        presenter?.viewDidLoad()
+        assert(viewModel != nil, "Presented needs to be assigned using `setupBinding` method")
     }
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: KarhooNewCheckoutPresenter) {
-        self.presenter = presenter
-        loadViewIfNeeded()
+    func setupBinding(_ viewModel: KarhooNewCheckoutViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: - Setup view

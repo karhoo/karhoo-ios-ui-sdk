@@ -18,6 +18,11 @@ protocol DateFormatterType {
     func display(detailStyleDate date: Date?) -> String
     func display(fullDate date: Date?) -> String
     func display(clockTime date: Date?) -> String
+    func display(
+        _ date: Date?,
+        dateStyle: DateFormatter.Style,
+        timeStyle: DateFormatter.Style
+    ) -> String
 }
 
 class KarhooDateFormatter: DateFormatterType {
@@ -38,6 +43,22 @@ class KarhooDateFormatter: DateFormatterType {
 
     func set(locale: Locale) {
         self.locale = locale
+    }
+
+    func display(
+        _ date: Date?,
+        dateStyle: DateFormatter.Style,
+        timeStyle: DateFormatter.Style
+    ) -> String {
+        guard let date = date else {
+            return ""
+        }
+
+        dateFormatter.dateStyle = dateStyle
+        dateFormatter.timeStyle = timeStyle
+        dateFormatter.timeZone = timeZone
+        dateFormatter.locale = locale
+        return dateFormatter.string(from: date)
     }
 
     func display(shortStyleTime date: Date?) -> String {

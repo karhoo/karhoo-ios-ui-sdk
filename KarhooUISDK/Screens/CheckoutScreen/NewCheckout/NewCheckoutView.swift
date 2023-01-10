@@ -10,23 +10,47 @@ import SwiftUI
 
 struct NewCheckoutView: View {
 
-    @StateObject var presenter: KarhooNewCheckoutPresenter
+    enum Constants {
+        static let addressViewHeight: CGFloat = 100
+    }
+    @StateObject var viewModel: KarhooNewCheckoutViewModel
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+            dateView
             addressView
-            Text("new checkout")
+            Spacer()
         }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 16)
+    }
+
+    @ViewBuilder
+    private var dateView: some View {
+        HStack(spacing: 0) {
+            Text(viewModel.getDateScheduledDescription())
+                .foregroundColor(Color(KarhooUI.colors.text))
+                .font(Font(KarhooUI.fonts.headerBold()))
+                .frame(maxWidth: .infinity)
+                .fixedSize()
+            Spacer()
+        }.padding(.top, UIConstants.Spacing.standard)
     }
 
     @ViewBuilder
     private var addressView: some View {
         KarhooAddressView(
-            pickUp: .init(text: "", subtext: ""),
-            destination: .init(text: "", subtext: ""),
-            design: .default,
+            pickUp: .init(
+                text: viewModel.getPrintedPickUpAddressLine1(),
+                subtext: viewModel.getPrintedPickUpAddressLine2()
+            ),
+            destination: .init(
+                text: viewModel.getPrintedDropOffAddressLine1(),
+                subtext: viewModel.getPrintedDropOffAddressLine2()
+            ),
+            design: .borderlessWithoutBackground,
             showsLineBetweenPickUpAndDestination: true,
-            timeLabelText: "NOW"
+            timeLabelText: viewModel.getTimeLabelTextDescription()
         )
     }
 }

@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "Confirmer et payer";
 
+"kh_uisdk_book_pay" = "Payer";
+
 "kh_uisdk_book_return_ride" = "Réserver la course retour";
 
 "kh_uisdk_booking_car" = "Réserver une course";
@@ -231,6 +233,8 @@
 
 "kh_uisdk_booking_confirmation" = "Course confirmée";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Aller aux détails du trajet";
+
 "kh_uisdk_booking_details_error" = "Informations de réservation non valables";
 
 "kh_uisdk_booking_failed" = "La réservation a échoué";
@@ -239,7 +243,7 @@
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez le prestataire sélectionné.";
 
-"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %2$@ and %3$@ de %1$@ ainsi que les %3$@ | %5$@ de %4$@.";
+"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %1$@ et la %2$@, ainsi que la %5$@ et les %4$@ de %3$@";
 
 "kh_uisdk_booking_terms_and_conditions" = "Conditions d'utilisation";
 
@@ -273,7 +277,25 @@
 
 "kh_uisdk_checked" = "Vérifié";
 
+"kh_uisdk_checkout_airport_example" = "p. ex. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Ajouter un numéro de vol";
+
+"kh_uisdk_checkout_airport_title" = "Numéro de vol";
+
 "kh_uisdk_checkout_as_guest" = "Réserver une course";
+
+"kh_uisdk_checkout_comments_subtitle" = "Commentez pour votre chauffeur";
+
+"kh_uisdk_checkout_comments_title" = "Commentaire";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Seules les lettres et les chiffres sont autorisés";
+
+"kh_uisdk_checkout_train_example" = "p. ex. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Ajouter un numéro de train";
+
+"kh_uisdk_checkout_train_title" = "Numéro de train";
 
 "kh_uisdk_close_the_screen" = "Fermer l’écran";
 
@@ -723,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificat SSL invalide";
 
+"kh_uisdk_now" = "Maintenant";
+
 "kh_uisdk_offer_expired" = "Offre expirée";
 
 "kh_uisdk_offer_expired_text" = "Sélectionnez une nouvelle offre pour poursuivre le véhicule";
@@ -788,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "La réservation se fait à l’heure locale";
 
 "kh_uisdk_price" = "Prix";
+
+"kh_uisdk_price_bottom_sheet_title" = "Détails des prix";
 
 "kh_uisdk_price_info_text_estimated" = "Les taxis de ce prestataire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du prestataire pour plus d'informations.";
 
