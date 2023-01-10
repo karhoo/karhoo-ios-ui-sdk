@@ -68,6 +68,6 @@ struct DetailsCellView: View {
 
 struct DetailsViewCellPreviews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(model: DetailsCellViewModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
+        DetailsCellView(model: DetailsCellViewModel(title: "Passanger", subtitle: "add details, this is excample of text containing more than 2, or even more than 3 lines. We need that kind of text for comments cell, in this case input for user is unlimited. ", iconName: "kh_uisdk_passenger"), delegate: nil)
     }
 }

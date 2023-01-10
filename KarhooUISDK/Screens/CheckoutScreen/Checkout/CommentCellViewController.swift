@@ -1,31 +1,31 @@
 //
-//  FlightNumberCellViewController.swift
+//  CommentCellViewController.swift
 //
 //
-//  Created by Bartlomiej Sopala on 05/01/2023.
+//  Created by Bartlomiej Sopala on 09/01/2023.
 //
 
 import Foundation
 import SwiftUI
 import KarhooSDK
 
-class FlightNumberCellViewController: DetailsCellViewController, AddFlightNumberPresenter {
+class CommentCellViewController: DetailsCellViewController, AddCommentPresenter {
     
     private let analyticsService: AnalyticsService
-    var flightNumber: String?
-    weak var delegate: AddFlightNumberViewDelegate?
+    var comment: String?
+    weak var delegate: AddCommentViewDelegate?
     
     init(
         analyticsService: AnalyticsService = Karhoo.getAnalyticsService(),
-        flightNumber: String?,
-        delegate: AddFlightNumberViewDelegate
+        comment: String?,
+        delegate: AddCommentViewDelegate
     ) {
         self.analyticsService = analyticsService
-        self.flightNumber = flightNumber
+        self.comment = comment
         self.delegate = delegate
         super.init(
-            rootView: DetailsCellView(model: Self.getModel(flightNumber)),
-            onTap: delegate.willUpdateFlightNumber
+            rootView: DetailsCellView(model: Self.getModel(comment)),
+            onTap: delegate.willUpdateComment
         )
         rootView.delegate = self
         self.view.accessibilityIdentifier = "passenger_details_cell_view"
@@ -35,15 +35,15 @@ class FlightNumberCellViewController: DetailsCellViewController, AddFlightNumber
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(flightNumber: String) {
-        self.flightNumber = flightNumber
-        let model = Self.getModel(flightNumber)
-        delegate?.didUpdateFlightNumber(flightNumber)
+    func set(comment: String) {
+        self.comment = comment
+        let model = Self.getModel(comment)
+        delegate?.didUpdateComment(comment)
         rootView.model.update(title: model.title, subtitle: model.subtitle)
     }
     
-    private static func getModel(_ flightNumber: String?) -> DetailsCellViewModel {
-        let subtitle = flightNumber ?? "e.g AF009"
+    private static func getModel(_ comment: String?) -> DetailsCellViewModel {
+        let subtitle = comment ?? "e.g AF009"
         return DetailsCellViewModel(
             title: UITexts.PassengerDetails.title,
             subtitle: UITexts.PassengerDetails.add,
