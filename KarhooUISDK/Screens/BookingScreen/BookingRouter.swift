@@ -46,7 +46,13 @@ class KarhooBookingRouter: BookingRouter {
         }
 
         let checkoutCoordinator = KarhooComponents.shared.checkout(
-            navigationController: navigationController
+            navigationController: navigationController,
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            callback: { result in
+                bookingRequestCompletion(result, quote, journeyDetails)
+            }
         )
 
         checkoutCoordinator.start()

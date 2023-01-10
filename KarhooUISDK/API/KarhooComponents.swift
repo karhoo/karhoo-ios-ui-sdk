@@ -49,10 +49,18 @@ public class KarhooComponents: BookingScreenComponents {
     }
 
     func checkout(
-        navigationController: UINavigationController
+        navigationController: UINavigationController,
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> NewCheckoutCoordinator {
         KarhooNewCheckoutCoordinator(
-            navigationController: navigationController
+            navigationController: navigationController,
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            callback: callback
         )
     }
     

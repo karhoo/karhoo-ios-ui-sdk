@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import KarhooSDK
 
 final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 
@@ -22,11 +23,20 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
     // MARK: - Initializator
 
     init(
-        navigationController: UINavigationController?
+        navigationController: UINavigationController?,
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.navigationController = navigationController
         self.viewController = KarhooNewCheckoutViewController()
-        self.presenter = KarhooNewCheckoutPresenter()
+        self.presenter = KarhooNewCheckoutPresenter(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            callback: callback
+        )
         self.viewController.setupBinding(presenter)
     }
 

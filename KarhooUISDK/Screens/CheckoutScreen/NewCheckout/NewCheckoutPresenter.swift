@@ -86,6 +86,9 @@ final class KarhooNewCheckoutPresenter: NewCheckoutPresenter {
     // MARK: - Helpers
 
     private var isKarhooUser: Bool {
-        Karhoo.configuration.authenticationMethod() == .karhooUser
+        switch Karhoo.configuration.authenticationMethod() {
+        case .karhooUser: return true
+        default: return false
+        }
     }
 }
