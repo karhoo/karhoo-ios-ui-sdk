@@ -18,7 +18,7 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: NewCheckoutViewController!
-    private(set) var presenter: NewCheckoutPresenter!
+    private(set) var presenter: (any NewCheckoutPresenter)!
 
     // MARK: - Initializator
 

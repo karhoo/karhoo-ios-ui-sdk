@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct NewCheckoutView: View {
+struct NewCheckoutView<Presenter>: View where Presenter: NewCheckoutPresenter {
 
-    var presenter: NewCheckoutPresenter
+    @StateObject var presenter: Presenter
 
     var body: some View {
         Text("new checkout")
