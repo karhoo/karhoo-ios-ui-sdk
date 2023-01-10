@@ -1,5 +1,5 @@
 //
-//  KarhooCommentViewMVP.swift
+//  KarhooAddFlightNumberViewMVP.swift
 //
 //
 //  Created by Bartlomiej Sopala on 05/01/2023.
@@ -8,12 +8,12 @@
 import Foundation
 import KarhooSDK
 
-protocol AddCommentViewDelegate: AnyObject {
-    func willUpdateComment()
-    func didUpdateComment(_ comment: String)
+protocol AddFlightNumberViewDelegate: AnyObject {
+    func willUpdateFlightNumber()
+    func didUpdateFlightNumber(_ flightNumber: String)
 }
 
-protocol AddCommentPresenter {
-    func set(comment: String)
+protocol AddFlightNumberPresenter {
+    func set(flightNumber: String)
 }
 
