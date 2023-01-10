@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "ป้อนสถานที่รับ";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "ไปรับ";
 
 "kh_uisdk_address_picker_prebook" = "จอง";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "ยืนยันและชำระเงิน";
 
+"kh_uisdk_book_pay" = "การชำระเงิน";
+
 "kh_uisdk_book_return_ride" = "จองการเดินทางขากลับ";
 
 "kh_uisdk_booking_car" = "จองการเดินทาง";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "ชำระเงิน";
 
 "kh_uisdk_booking_confirmation" = "ยืนยันการจองแล้ว";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "ไปที่รายละเอียดการขี่";
 
 "kh_uisdk_booking_details_error" = "รายละเอียดการจองไม่ถูกต้อง";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "เลือกแล้ว";
 
+"kh_uisdk_checkout_airport_example" = "เช่น AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "เพิ่มหมายเลขเที่ยวบิน";
+
+"kh_uisdk_checkout_airport_title" = "เที่ยวบินหมายเลข";
+
 "kh_uisdk_checkout_as_guest" = "จองการเดินทาง";
+
+"kh_uisdk_checkout_comments_subtitle" = "ความคิดเห็นสำหรับไดรเวอร์ของคุณ";
+
+"kh_uisdk_checkout_comments_title" = "ความเห็น";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "อนุญาตเฉพาะตัวอักษรและตัวเลขเท่านั้น";
+
+"kh_uisdk_checkout_train_example" = "เช่น 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "เพิ่มหมายเลขรถไฟ";
+
+"kh_uisdk_checkout_train_title" = "หมายเลขรถไฟ";
+
+"kh_uisdk_close_the_screen" = "ปิดหน้าจอ";
 
 "kh_uisdk_completed" = "เราหวังว่าคุณพอใจกับการเดินทางของคุณ";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "ดูตำแหน่งปัจจุบัน";
 
 "kh_uisdk_date" = "วันที่";
+
+"kh_uisdk_destination" = "ปลายทาง";
 
 "kh_uisdk_destination_book_error" = "คุณต้องเลือกตำแหน่งปลายทางก่อนจองการเดินทาง";
 
@@ -477,6 +504,8 @@
 "kh_uisdk_hours_plural.zero" = "%d ชั่วโมง";
 
 "kh_uisdk_info" = "ข้อมูล";
+
+"kh_uisdk_information" = "รายละเอียดคนขับ";
 
 "kh_uisdk_initialised" = "กำลังเริ่มต้นการเดินทางของคุณ";
 
@@ -757,6 +786,8 @@
 "kh_uisdk_permission_rationale_location" = "โปรดเปิดใช้สิทธิ์เข้าถึงตําแหน่งบนอุปกรณ์ของคุณเพื่อช่วยให้เราระบุตำแหน่งของคุณได้";
 
 "kh_uisdk_permissions" = "สิทธิ์";
+
+"kh_uisdk_pick_up" = "หยิบ";
 
 "kh_uisdk_pickup_time" = "เวลารับ";
 

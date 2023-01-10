@@ -43,10 +43,10 @@ class CommentCellViewController: DetailsCellViewController, AddCommentPresenter 
     }
     
     private static func getModel(_ comment: String?) -> DetailsCellViewModel {
-        let subtitle = comment ?? "e.g AF009"
+        let subtitle = comment ?? UITexts.Booking.commentsSubtitle
         return DetailsCellViewModel(
-            title: UITexts.PassengerDetails.title,
-            subtitle: UITexts.PassengerDetails.add,
+            title: UITexts.Booking.commentsTitle,
+            subtitle: subtitle,
             iconName: "kh_uisdk_passenger"
         )
     }

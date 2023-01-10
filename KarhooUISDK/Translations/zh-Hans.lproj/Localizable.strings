@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "输入上车地点";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "拾起";
 
 "kh_uisdk_address_picker_prebook" = "预订";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "确认并支付";
 
+"kh_uisdk_book_pay" = "工资";
+
 "kh_uisdk_book_return_ride" = "预订返回行程";
 
 "kh_uisdk_booking_car" = "预订行程";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "结账";
 
 "kh_uisdk_booking_confirmation" = "预订确认";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "前往乘车详情";
 
 "kh_uisdk_booking_details_error" = "无效的预订详情";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "已检查";
 
+"kh_uisdk_checkout_airport_example" = "例如AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "添加航班号";
+
+"kh_uisdk_checkout_airport_title" = "航班号";
+
 "kh_uisdk_checkout_as_guest" = "预订行程";
+
+"kh_uisdk_checkout_comments_subtitle" = "评论你的司机";
+
+"kh_uisdk_checkout_comments_title" = "评论";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "只允许字母和数字";
+
+"kh_uisdk_checkout_train_example" = "例如 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "添加车次";
+
+"kh_uisdk_checkout_train_title" = "车次";
+
+"kh_uisdk_close_the_screen" = "关闭屏幕";
 
 "kh_uisdk_completed" = "我们希望您旅途愉快";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "获取当前位置";
 
 "kh_uisdk_date" = "日期";
+
+"kh_uisdk_destination" = "目的地";
 
 "kh_uisdk_destination_book_error" = "您必须选择目的地方可预订行程";
 
@@ -477,6 +504,8 @@
 "kh_uisdk_hours_plural.zero" = "%d小时";
 
 "kh_uisdk_info" = "信息";
+
+"kh_uisdk_information" = "信息";
 
 "kh_uisdk_initialised" = "正在初始化您的行程";
 
@@ -757,6 +786,8 @@
 "kh_uisdk_permission_rationale_location" = "为了帮助我们找到您，请在您的设备上启用定位权限";
 
 "kh_uisdk_permissions" = "权限";
+
+"kh_uisdk_pick_up" = "捡起";
 
 "kh_uisdk_pickup_time" = "上车时间";
 

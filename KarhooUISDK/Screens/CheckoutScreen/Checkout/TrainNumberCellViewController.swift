@@ -43,10 +43,10 @@ class TrainNumberCellViewController: DetailsCellViewController, AddTrainNumberPr
     }
     
     private static func getModel(_ trainNumber: String?) -> DetailsCellViewModel {
-        let subtitle = trainNumber ?? "e.g AF009"
+        let subtitle = trainNumber ?? UITexts.Booking.trainSubtitle
         return DetailsCellViewModel(
-            title: UITexts.PassengerDetails.title,
-            subtitle: UITexts.PassengerDetails.add,
+            title: UITexts.Booking.trainTitle,
+            subtitle: subtitle,
             iconName: "kh_uisdk_passenger"
         )
     }

@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Abholort eingeben";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Abholung";
 
 "kh_uisdk_address_picker_prebook" = "Buchen Sie";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "BESTÄTIGEN UND BEZAHLEN";
 
+"kh_uisdk_book_pay" = "Bezahlen";
+
 "kh_uisdk_book_return_ride" = "Rückfahrt buchen";
 
 "kh_uisdk_booking_car" = "FAHRT BUCHEN";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Zur Kasse";
 
 "kh_uisdk_booking_confirmation" = "Buchung bestätigt";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Zu den Details der Fahrt";
 
 "kh_uisdk_booking_details_error" = "Ungültige Buchungsdetails";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Geprüft";
 
+"kh_uisdk_checkout_airport_example" = "z.B. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Eine Flugnummer hinzufügen";
+
+"kh_uisdk_checkout_airport_title" = "Flugnummer";
+
 "kh_uisdk_checkout_as_guest" = "FAHRT BUCHEN";
+
+"kh_uisdk_checkout_comments_subtitle" = "Kommentar für Ihren Fahrer";
+
+"kh_uisdk_checkout_comments_title" = "Kommentar";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Nur Buchstaben und Zahlen sind erlaubt";
+
+"kh_uisdk_checkout_train_example" = "z.B. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Eine Zugnummer hinzufügen";
+
+"kh_uisdk_checkout_train_title" = "Zugnummer";
+
+"kh_uisdk_close_the_screen" = "Schließen Sie den Bildschirm";
 
 "kh_uisdk_completed" = "Wir hoffen, Sie haben Ihre Fahrt genossen";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "Aktuellen Standort ermitteln";
 
 "kh_uisdk_date" = "Datum";
+
+"kh_uisdk_destination" = "Zielort";
 
 "kh_uisdk_destination_book_error" = "Sie müssen ein Ziel auswählen, um eine Fahrt zu buchen";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d Stunde";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Informationen";
 
 "kh_uisdk_initialised" = "Karhoo initiiert Ihre Fahrt";
 
@@ -761,6 +790,8 @@
 "kh_uisdk_permission_rationale_location" = "Um Sie auf der Karte lokalisieren zu können, benötigen wir den Standort Ihres Geräts. Bitte aktivieren Sie die Berechtigungen zur Standortermittlung";
 
 "kh_uisdk_permissions" = "BERECHTIGUNGEN";
+
+"kh_uisdk_pick_up" = "Abholung";
 
 "kh_uisdk_pickup_time" = "Abholzeit";
 

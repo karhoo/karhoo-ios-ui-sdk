@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Enter pickup location";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Pickup";
 
 "kh_uisdk_address_picker_prebook" = "Book";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "Confirm and pay";
 
+"kh_uisdk_book_pay" = "Pay";
+
 "kh_uisdk_book_return_ride" = "Book return ride";
 
 "kh_uisdk_booking_car" = "Book a ride";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Checkout";
 
 "kh_uisdk_booking_confirmation" = "Booking confirmed";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Go to ride details";
 
 "kh_uisdk_booking_details_error" = "Invalid booking details";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Checked";
 
+"kh_uisdk_checkout_airport_example" = "e.g AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Add a flight number";
+
+"kh_uisdk_checkout_airport_title" = "Flight number";
+
 "kh_uisdk_checkout_as_guest" = "Book a ride";
+
+"kh_uisdk_checkout_comments_subtitle" = "Comment for your driver";
+
+"kh_uisdk_checkout_comments_title" = "Comment";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Only letters and numbers are allowed";
+
+"kh_uisdk_checkout_train_example" = "e.g 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Add a train number";
+
+"kh_uisdk_checkout_train_title" = "Train number";
+
+"kh_uisdk_close_the_screen" = "Close the screen";
 
 "kh_uisdk_completed" = "We hope you enjoyed your ride";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "Get current location";
 
 "kh_uisdk_date" = "Date";
+
+"kh_uisdk_destination" = "Destination";
 
 "kh_uisdk_destination_book_error" = "You must select a destination to book a ride";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d hour";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Information";
 
 "kh_uisdk_initialised" = "Initialising your trip";
 
@@ -666,7 +695,7 @@
 
 "kh_uisdk_meeting_point" = "Meeting point";
 
-"kh_uisdk_metered" = "Metered";
+"kh_uisdk_metered" = "Metered price";
 
 "kh_uisdk_min" = "min";
 
@@ -761,6 +790,8 @@
 "kh_uisdk_permission_rationale_location" = "To help us find you, please enable location permissions on your device";
 
 "kh_uisdk_permissions" = "Permissions";
+
+"kh_uisdk_pick_up" = "Pick-up";
 
 "kh_uisdk_pickup_time" = "Pickup time";
 

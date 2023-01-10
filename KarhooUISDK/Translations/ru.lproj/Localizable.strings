@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Введите место посадки";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Посадка";
 
 "kh_uisdk_address_picker_prebook" = "Забронировать";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "ПОДТВЕРДИТЬ И ОПЛАТИТЬ";
 
+"kh_uisdk_book_pay" = "платить";
+
 "kh_uisdk_book_return_ride" = "Забронировать поездку обратно";
 
 "kh_uisdk_booking_car" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Совершить покупку";
 
 "kh_uisdk_booking_confirmation" = "Бронирование подтверждено";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Перейти к подробностям поездки";
 
 "kh_uisdk_booking_details_error" = "Неверные данные бронирования";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Проверено";
 
+"kh_uisdk_checkout_airport_example" = "например AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Добавить номер рейса";
+
+"kh_uisdk_checkout_airport_title" = "Номер рейса";
+
 "kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
+
+"kh_uisdk_checkout_comments_subtitle" = "Комментарий для вашего водителя";
+
+"kh_uisdk_checkout_comments_title" = "Комментировать";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Допускаются только буквы и цифры";
+
+"kh_uisdk_checkout_train_example" = "например 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Добавить номер поезда";
+
+"kh_uisdk_checkout_train_title" = "Номер поезда";
+
+"kh_uisdk_close_the_screen" = "Закрыть экран";
 
 "kh_uisdk_completed" = "Надеемся, вам понравилась ваша поездка!";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "Получить актуальную геолокацию";
 
 "kh_uisdk_date" = "Дата";
+
+"kh_uisdk_destination" = "Назначения";
 
 "kh_uisdk_destination_book_error" = "Выберите пункт назначения, чтобы забронировать поездку";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d часов";
 
 "kh_uisdk_info" = "Информация";
+
+"kh_uisdk_information" = "Информация";
 
 "kh_uisdk_initialised" = "Karhoo инициализирует вашу поездку";
 
@@ -761,6 +790,8 @@
 "kh_uisdk_permission_rationale_location" = "Чтобы помочь нам найти вас, разрешите доступ к геолокации на вашем мобильном устройстве";
 
 "kh_uisdk_permissions" = "РАЗРЕШЕНИЯ";
+
+"kh_uisdk_pick_up" = "Подбирать";
 
 "kh_uisdk_pickup_time" = "Время посадки";
 

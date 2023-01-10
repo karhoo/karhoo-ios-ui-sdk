@@ -43,10 +43,10 @@ class FlightNumberCellViewController: DetailsCellViewController, AddFlightNumber
     }
     
     private static func getModel(_ flightNumber: String?) -> DetailsCellViewModel {
-        let subtitle = flightNumber ?? "e.g AF009"
+        let subtitle = flightNumber ?? UITexts.Booking.flightSubtitle
         return DetailsCellViewModel(
-            title: UITexts.PassengerDetails.title,
-            subtitle: UITexts.PassengerDetails.add,
+            title: UITexts.Booking.flightTitle,
+            subtitle: subtitle,
             iconName: "kh_uisdk_passenger"
         )
     }
