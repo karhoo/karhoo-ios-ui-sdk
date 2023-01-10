@@ -47,7 +47,7 @@ class FlightNumberCellViewController: DetailsCellViewController, AddFlightNumber
         return DetailsCellViewModel(
             title: UITexts.Booking.flightTitle,
             subtitle: subtitle,
-            iconName: "kh_uisdk_passenger"
+            iconName: "kh_uisdk_flight_number"
         )
     }
 }

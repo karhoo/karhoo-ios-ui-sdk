@@ -47,7 +47,7 @@ class CommentCellViewController: DetailsCellViewController, AddCommentPresenter 
         return DetailsCellViewModel(
             title: UITexts.Booking.commentsTitle,
             subtitle: subtitle,
-            iconName: "kh_uisdk_passenger"
+            iconName: "kh_uisdk_comments"
         )
     }
 }

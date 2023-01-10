@@ -47,7 +47,7 @@ class TrainNumberCellViewController: DetailsCellViewController, AddTrainNumberPr
         return DetailsCellViewModel(
             title: UITexts.Booking.trainTitle,
             subtitle: subtitle,
-            iconName: "kh_uisdk_passenger"
+            iconName: "kh_uisdk_train_number"
         )
     }
 }
