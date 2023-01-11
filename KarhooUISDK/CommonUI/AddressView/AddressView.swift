@@ -23,6 +23,7 @@ struct KarhooAddressView: View {
         static let roundIconSide: CGFloat = 10
         static let minimumScaleFactor: CGFloat = 0.7
         static let timeLabelTextTopPadding: CGFloat = 20
+        static let timeLabelMaxWidth: CGFloat = 80
     }
 
     enum Design {
@@ -172,8 +173,10 @@ struct KarhooAddressView: View {
                 .fixedSize()
             VStack(spacing: 0) {
                 Text(text)
+                    .foregroundColor(Color(KarhooUI.colors.text))
                     .font(Font(KarhooUI.fonts.bodyBold()))
                     .multilineTextAlignment(.trailing)
+                    .frame(maxWidth: Constants.timeLabelMaxWidth)
                     .fixedSize()
                     .minimumScaleFactor(Constants.minimumScaleFactor)
                     .padding(.top, Constants.timeLabelTextTopPadding)
