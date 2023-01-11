@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Введите место посадки";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Посадка";
 
 "kh_uisdk_address_picker_prebook" = "Забронировать";
@@ -230,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Бронирование подтверждено";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Перейти к подробностям поездки";
+
 "kh_uisdk_booking_details_error" = "Неверные данные бронирования";
 
 "kh_uisdk_booking_failed" = "Ошибка при бронировании";
@@ -274,6 +277,8 @@
 
 "kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
 
+"kh_uisdk_close_the_screen" = "Закрыть экран";
+
 "kh_uisdk_completed" = "Надеемся, вам понравилась ваша поездка!";
 
 "kh_uisdk_confirmed" = "Ваша поездка с %@ подтверждена";
@@ -297,6 +302,8 @@
 "kh_uisdk_current_location" = "Получить актуальную геолокацию";
 
 "kh_uisdk_date" = "Дата";
+
+"kh_uisdk_destination" = "Назначения";
 
 "kh_uisdk_destination_book_error" = "Выберите пункт назначения, чтобы забронировать поездку";
 
@@ -479,6 +486,8 @@
 "kh_uisdk_hours_plural.zero" = "%d часов";
 
 "kh_uisdk_info" = "Информация";
+
+"kh_uisdk_information" = "Информация";
 
 "kh_uisdk_initialised" = "Karhoo инициализирует вашу поездку";
 
@@ -761,6 +770,8 @@
 "kh_uisdk_permission_rationale_location" = "Чтобы помочь нам найти вас, разрешите доступ к геолокации на вашем мобильном устройстве";
 
 "kh_uisdk_permissions" = "РАЗРЕШЕНИЯ";
+
+"kh_uisdk_pick_up" = "Подбирать";
 
 "kh_uisdk_pickup_time" = "Время посадки";
 

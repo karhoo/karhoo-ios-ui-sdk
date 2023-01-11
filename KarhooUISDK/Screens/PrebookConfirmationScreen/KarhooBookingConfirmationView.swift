@@ -70,6 +70,7 @@ struct KarhooBookingConfirmationView: View {
             KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
                 viewModel.dismiss()
             }
+            .accessibilityValue(Text(UITexts.Booking.prebookConfirmedRideDetailsAccessibility))
         }
         .padding(.vertical, UIConstants.Spacing.standard)
     }
@@ -90,6 +91,7 @@ struct KarhooBookingConfirmationView: View {
                 .offset(x: Constants.vehicleImageXOffset)
         }
         .frame(height: UIConstants.Dimension.Icon.xxLarge)
+        .accessibilityElement(children: .ignore)
     }
 
     @ViewBuilder
@@ -105,6 +107,8 @@ struct KarhooBookingConfirmationView: View {
                     .foregroundColor(KarhooUI.colors.text.getColor())
             }
             .frame(minWidth: 0, maxWidth: .infinity)
+            .accessibilityElement()
+            .accessibilityValue(Text(viewModel.accessibilityDate))
 
             Rectangle()
                 .fill(KarhooUI.colors.border.getColor())
@@ -118,8 +122,11 @@ struct KarhooBookingConfirmationView: View {
                 Text(viewModel.printedPriceType)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(KarhooUI.colors.text.getColor())
+                    .multilineTextAlignment(.center)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
+            .accessibilityElement()
+            .accessibilityValue(Text(viewModel.accessibilityPrice))
         }
         .frame(minWidth: 0, maxWidth: .infinity)
     }
@@ -155,7 +162,9 @@ struct KarhooMainButton: View {
             },
             label: {
                 Text(title)
+                .padding(.horizontal, UIConstants.Spacing.standard)
                 .font(Font(KarhooUI.fonts.headerBold()))
+                .minimumScaleFactor(0.7)
                 .foregroundColor(KarhooUI.colors.white.getColor())
                 .frame(maxWidth: .infinity)
                 .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)

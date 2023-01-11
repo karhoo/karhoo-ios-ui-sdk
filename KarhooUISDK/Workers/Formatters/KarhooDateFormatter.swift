@@ -8,8 +8,7 @@
 
 import Foundation
 
-@available(*, deprecated, message: "The protocol will not be `public` from next SDK vesion")
-public protocol DateFormatterType {
+protocol DateFormatterType {
     func set(timeZone: TimeZone)
     func set(locale: Locale)
 
@@ -21,28 +20,27 @@ public protocol DateFormatterType {
     func display(clockTime date: Date?) -> String
 }
 
-public class KarhooDateFormatter: DateFormatterType {
+class KarhooDateFormatter: DateFormatterType {
 
     private let dateFormatter = DateFormatter()
     private var timeZone: TimeZone
     private var locale: Locale
 
-    public init(timeZone: TimeZone = TimeZone.current,
+    init(timeZone: TimeZone = TimeZone.current,
                 locale: Locale = Locale.current) {
         self.locale = locale
         self.timeZone = timeZone
     }
 
-    public func set(timeZone: TimeZone) {
+    func set(timeZone: TimeZone) {
         self.timeZone = timeZone
     }
 
-    public func set(locale: Locale) {
+    func set(locale: Locale) {
         self.locale = locale
     }
 
-    @available(*, deprecated, message: "")
-    public func display(shortStyleTime date: Date?) -> String {
+    func display(shortStyleTime date: Date?) -> String {
         guard let date = date else {
             return ""
         }
@@ -54,8 +52,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
-    @available(*, deprecated, message: "")
-    public func display(mediumStyleDate date: Date?) -> String {
+    func display(mediumStyleDate date: Date?) -> String {
         guard let date = date else {
             return ""
         }
@@ -67,7 +64,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
-    public func display(shortDate date: Date?) -> String {
+    func display(shortDate date: Date?) -> String {
         guard let date = date else {
             return ""
         }
@@ -77,7 +74,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
-    public func display(detailStyleDate date: Date?) -> String {
+    func display(detailStyleDate date: Date?) -> String {
         guard let date = date else {
             return ""
         }
@@ -89,7 +86,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
-    public func display(fullDate date: Date?) -> String {
+    func display(fullDate date: Date?) -> String {
         guard let date = date else {
             return ""
         }
@@ -100,7 +97,7 @@ public class KarhooDateFormatter: DateFormatterType {
         return dateFormatter.string(from: date)
     }
 
-    public func display(clockTime date: Date?) -> String {
+    func display(clockTime date: Date?) -> String {
         guard let date = date else {
             return ""
         }

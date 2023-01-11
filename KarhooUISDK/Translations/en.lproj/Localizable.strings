@@ -231,8 +231,6 @@
 
 "kh_uisdk_booking_confirmation" = "Booking confirmed";
 
-"kh_uisdk_booking_confirmation_go_to_ride_details" = "Go to ride details";
-
 "kh_uisdk_booking_details_error" = "Invalid booking details";
 
 "kh_uisdk_booking_failed" = "Booking failed";
@@ -675,7 +673,7 @@
 
 "kh_uisdk_meeting_point" = "Meeting point";
 
-"kh_uisdk_metered" = "Metered price";
+"kh_uisdk_metered" = "Metered";
 
 "kh_uisdk_min" = "min";
 

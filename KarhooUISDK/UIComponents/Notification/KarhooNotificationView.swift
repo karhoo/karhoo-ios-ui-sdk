@@ -49,10 +49,7 @@ public final class KarhooNotificationView: UIView, NotificationView {
     }
     
     private func setUpConstraints() {
-        var bottomInset: CGFloat = 10.0
-        if #available(iOS 11.0, *), hasBottomInset {
-            bottomInset += safeAreaInsets.bottom + 50.0
-        }
+        let bottomInset: CGFloat = 10.0 + safeAreaInsets.bottom + 50.0
         _ = [titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 28.0),
              titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0),
              titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),

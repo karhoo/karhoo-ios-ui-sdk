@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "¿Dónde se encuentra?";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Punto de partida";
 
 "kh_uisdk_address_picker_prebook" = "Reservar";
@@ -230,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Reserva confirmada";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Ir a los detalles del viaje";
+
 "kh_uisdk_booking_details_error" = "Detalles de reserva no válidos";
 
 "kh_uisdk_booking_failed" = "Reserva fallida";
@@ -274,6 +277,8 @@
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAJE";
 
+"kh_uisdk_close_the_screen" = "Cierra la pantalla";
+
 "kh_uisdk_completed" = "Esperamos que haya disfrutado del viaje";
 
 "kh_uisdk_confirmed" = "Su viaje con %@ ha sido confirmado";
@@ -297,6 +302,8 @@
 "kh_uisdk_current_location" = "Seleccionar ubicación actual";
 
 "kh_uisdk_date" = "Fecha";
+
+"kh_uisdk_destination" = "Destino";
 
 "kh_uisdk_destination_book_error" = "Seleccione un destino para hacer una reserva";
 
@@ -479,6 +486,8 @@
 "kh_uisdk_hours_plural.zero" = "%d hora";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Información";
 
 "kh_uisdk_initialised" = "iniciando su viaje";
 
@@ -761,6 +770,8 @@
 "kh_uisdk_permission_rationale_location" = "Para que podamos encontrarle, active los permisos de ubicación del dispositivo.";
 
 "kh_uisdk_permissions" = "PERMISOS";
+
+"kh_uisdk_pick_up" = "Levantar";
 
 "kh_uisdk_pickup_time" = "Hora de recogida";
 

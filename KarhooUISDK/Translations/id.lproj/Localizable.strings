@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Masukkan lokasi penjemputan";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Penjemputan";
 
 "kh_uisdk_address_picker_prebook" = "Pesan";
@@ -230,6 +231,8 @@
 
 "kh_uisdk_booking_confirmation" = "Pemesanan telah dikonfirmasi";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Pergi ke rincian perjalanan";
+
 "kh_uisdk_booking_details_error" = "Detail pemesanan tidak valid";
 
 "kh_uisdk_booking_failed" = "Pemesanan gagal";
@@ -274,6 +277,8 @@
 
 "kh_uisdk_checkout_as_guest" = "PESAN PERJALANAN";
 
+"kh_uisdk_close_the_screen" = "Tutup layar";
+
 "kh_uisdk_completed" = "Kami harap Anda menikmati perjalanan Anda";
 
 "kh_uisdk_confirmed" = "Perjalanan Anda telah dikonfirmasi dengan %@";
@@ -297,6 +302,8 @@
 "kh_uisdk_current_location" = "Dapatkan lokasi saat ini";
 
 "kh_uisdk_date" = "Tanggal";
+
+"kh_uisdk_destination" = "Tujuan";
 
 "kh_uisdk_destination_book_error" = "Anda harus memilih tujuan untuk memesan perjalanan";
 
@@ -477,6 +484,8 @@
 "kh_uisdk_hours_plural.zero" = "%d jam";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Informasi pengemudi";
 
 "kh_uisdk_initialised" = "Karhoo sedang menginisialisasi perjalanan Anda";
 
@@ -757,6 +766,8 @@
 "kh_uisdk_permission_rationale_location" = "Untuk menemukan Anda di peta harap aktifkan layanan lokasi di pengaturan perangkat Anda";
 
 "kh_uisdk_permissions" = "IJIN";
+
+"kh_uisdk_pick_up" = "Menjemput";
 
 "kh_uisdk_pickup_time" = "Waktu penjemputan";
 

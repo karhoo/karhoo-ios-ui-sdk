@@ -20,6 +20,8 @@ protocol BookingConfirmationViewModel {
     var useCalendar: Bool { get }
     var printedTime: String { get }
     var printedDate: String { get }
+    var accessibilityDate: String { get }
+    var accessibilityPrice: String { get }
     func dismiss()
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
@@ -174,6 +176,14 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         return dateFormatter.display(clockTime: journeyDetails.scheduledDate)
     }
 
+    var accessibilityDate: String {
+        UITexts.Generic.pickupTime + "." + dateFormatter.display(fullDate: journeyDetails.scheduledDate)
+    }
+
+    var accessibilityPrice: String {
+        quote.quoteType.description + ", " + CurrencyCodeConverter.toPriceString(quote: quote)
+    }
+
     // MARK: - Helpers
 
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
@@ -183,11 +193,11 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     // MARK: Analytics
-    private func reportRideConfirmationDetailsSelected(){
+    private func reportRideConfirmationDetailsSelected() {
         analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 
-    private func reportRideConfirmationAddToCalendarSelected(){
+    private func reportRideConfirmationAddToCalendarSelected() {
         analytics.rideConfirmationAddToCalendarSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 }
