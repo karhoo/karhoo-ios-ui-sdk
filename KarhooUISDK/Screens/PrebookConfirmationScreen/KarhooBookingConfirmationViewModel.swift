@@ -20,53 +20,27 @@ protocol BookingConfirmationViewModel {
     var useCalendar: Bool { get }
     var printedTime: String { get }
     var printedDate: String { get }
+    var accessibilityDate: String { get }
+    var accessibilityPrice: String { get }
     func dismiss()
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
 
 extension BookingConfirmationViewModel {
     var printedPickUpAddressLine1: String {
-        journeyDetails.originLocationDetails?.address.displayAddress ?? ""
+        journeyDetails.printedPickUpAddressLine1
     }
     
     var printedPickUpAddressLine2: String {
-        var result = ""
-        
-        if let city = journeyDetails.originLocationDetails?.address.city {
-            result += "\(city) "
-        }
-        
-        if let postalCode = journeyDetails.originLocationDetails?.address.postalCode {
-            result += postalCode
-        }
-        
-        if let country = journeyDetails.originLocationDetails?.address.countryCode {
-            result += ", \(country)"
-        }
-        
-        return result
+        journeyDetails.printedPickUpAddressLine2
     }
     
     var printedDropOffAddressLine1: String {
-        journeyDetails.destinationLocationDetails?.address.displayAddress ?? ""
+        journeyDetails.printedDropOffAddressLine1
     }
     
     var printedDropOffAddressLine2: String {
-        var result = ""
-        
-        if let city = journeyDetails.destinationLocationDetails?.address.city {
-            result += "\(city) "
-        }
-        
-        if let postalCode = journeyDetails.destinationLocationDetails?.address.postalCode {
-            result += postalCode
-        }
-        
-        if let country = journeyDetails.destinationLocationDetails?.address.countryCode {
-            result += ", \(country)"
-        }
-        
-        return result
+        journeyDetails.printedDropOffAddressLine2
     }
 
     var printedPrice: String {
@@ -172,6 +146,14 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         dateFormatter.set(timeZone: originTimeZone)
 
         return dateFormatter.display(clockTime: journeyDetails.scheduledDate)
+    }
+
+    var accessibilityDate: String {
+        dateFormatter.display(fullDate: journeyDetails.scheduledDate)
+    }
+
+    var accessibilityPrice: String {
+        quote.quoteType.description + ", " + CurrencyCodeConverter.toPriceString(quote: quote)
     }
 
     // MARK: - Helpers

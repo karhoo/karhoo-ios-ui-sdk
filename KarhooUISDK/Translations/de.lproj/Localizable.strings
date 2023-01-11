@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Ungültiges SSL-Zertifikat";
 
+"kh_uisdk_now" = "jetzt";
+
 "kh_uisdk_offer_expired" = "Angebot abgelaufen";
 
 "kh_uisdk_offer_expired_text" = "Bitte wählen Sie ein neues Angebot aus, um mit Ihrer Buchung fortzufahren";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Die Buchung wird in Ortszeit vorgenommen";
 
 "kh_uisdk_price" = "Preis";
+
+"kh_uisdk_price_bottom_sheet_title" = "Preis Details";
 
 "kh_uisdk_price_info_text_estimated" = "Diese Flotte bietet nicht regulierte Taxis. Das Angebot ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.). Weitere Informationen entnehmen Sie bitte den Allgemeinen Geschäftsbedingungen der Flotte.";
 

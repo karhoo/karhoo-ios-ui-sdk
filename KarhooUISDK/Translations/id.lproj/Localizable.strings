@@ -741,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Sertifikat SSL tidak valid";
 
+"kh_uisdk_now" = "sekarang";
+
 "kh_uisdk_offer_expired" = "Penawaran kedaluwarsa";
 
 "kh_uisdk_offer_expired_text" = "Silakan pilih penawaran baru untuk melanjutkan pemesanan Anda";
@@ -806,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "Pemesanan akan dilakukan dalam waktu setempat";
 
 "kh_uisdk_price" = "Harga";
+
+"kh_uisdk_price_bottom_sheet_title" = "Detail Harga";
 
 "kh_uisdk_price_info_text_estimated" = "Armada ini adalah taksi non-regulasi. Penawaran ini adalah perkiraan harga berdasarkan jarak dan waktu. Untuk informasi selengkapnya, silakan cek Syarat dan Ketentuan armada.";
 

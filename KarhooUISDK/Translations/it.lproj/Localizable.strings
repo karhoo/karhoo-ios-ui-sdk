@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificato SSL non valido";
 
+"kh_uisdk_now" = "adesso";
+
 "kh_uisdk_offer_expired" = "Preventivo scaduto";
 
 "kh_uisdk_offer_expired_text" = "Seleziona un nuovo preventivo per continuare con la prenotazione";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Le prenotazioni sono effettuate nell’orario locale";
 
 "kh_uisdk_price" = "Prezzo";
+
+"kh_uisdk_price_bottom_sheet_title" = "Dettagli sui prezzi";
 
 "kh_uisdk_price_info_text_estimated" = "Questa flotta offre taxi non regolamentati. Il preventivo è una stima basata su fattori come tempo e distanza totale. Per ulteriori informazioni, controlla i Termini e Condizioni della flotta.";
 

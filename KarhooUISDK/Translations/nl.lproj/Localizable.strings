@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Ongeldig SSL-certificaat";
 
+"kh_uisdk_now" = "nu";
+
 "kh_uisdk_offer_expired" = "Offerte verlopen";
 
 "kh_uisdk_offer_expired_text" = "Selecteer een nieuwe offerte om door te gaan met boeken";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Ritten worden geboekt op de lokale tijd";
 
 "kh_uisdk_price" = "Prijs";
+
+"kh_uisdk_price_bottom_sheet_title" = "Prijsdetails";
 
 "kh_uisdk_price_info_text_estimated" = "Deze ritaanbieder heeft niet-gereguleerde taxi's. De offerte is een schatting op basis van factoren zoals tijd en totale afstand. Raadpleeg de algemene voorwaarden van de ritaanbieder voor meer informatie.";
 

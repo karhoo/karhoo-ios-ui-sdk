@@ -243,7 +243,7 @@
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez le prestataire sélectionné.";
 
-"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %2$@ and %3$@ de %1$@ ainsi que les %3$@ | %5$@ de %4$@.";
+"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %1$@ et la %2$@, ainsi que la %5$@ et les %4$@ de %3$@";
 
 "kh_uisdk_booking_terms_and_conditions" = "Conditions d'utilisation";
 
@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificat SSL invalide";
 
+"kh_uisdk_now" = "Maintenant";
+
 "kh_uisdk_offer_expired" = "Offre expirée";
 
 "kh_uisdk_offer_expired_text" = "Sélectionnez une nouvelle offre pour poursuivre le véhicule";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "La réservation se fait à l’heure locale";
 
 "kh_uisdk_price" = "Prix";
+
+"kh_uisdk_price_bottom_sheet_title" = "Détails des prix";
 
 "kh_uisdk_price_info_text_estimated" = "Les taxis de ce prestataire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du prestataire pour plus d'informations.";
 

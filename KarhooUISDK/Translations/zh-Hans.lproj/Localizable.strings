@@ -741,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "无效 SSL 证书";
 
+"kh_uisdk_now" = "现在";
+
 "kh_uisdk_offer_expired" = "报价已过期";
 
 "kh_uisdk_offer_expired_text" = "请选择一个新报价以继续您的预订";
@@ -806,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "预订以当地时间进行";
 
 "kh_uisdk_price" = "价格";
+
+"kh_uisdk_price_bottom_sheet_title" = "价格详情";
 
 "kh_uisdk_price_info_text_estimated" = "该行程提供商提供不受管制的出租车。报价是基于距离、时间等因素的预估。请参阅行程提供商的条款和条件了解更多信息。";
 

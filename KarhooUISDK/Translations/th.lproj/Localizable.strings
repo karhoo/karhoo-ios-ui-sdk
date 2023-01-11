@@ -741,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "ใบรับรอง SSL ไม่ถูกต้อง";
 
+"kh_uisdk_now" = "ตอนนี้";
+
 "kh_uisdk_offer_expired" = "ราคาหมดอายุแล้ว";
 
 "kh_uisdk_offer_expired_text" = "โปรดเลือกราคาใหม่เพื่อทำการจองของคุณต่อ";
@@ -806,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "การจองจะดำเนินการตามเวลาท้องถิ่น";
 
 "kh_uisdk_price" = "ราคา";
+
+"kh_uisdk_price_bottom_sheet_title" = "รายละเอียดราคา";
 
 "kh_uisdk_price_info_text_estimated" = "ผู้ให้บริการโดยสารนี้ให้บริการรถแท็กซี่ที่ไม่มีการควบคุม ราคาที่เสนอเป็นการประมาณค่าตามปัจจัยต่างๆ เช่น เวลาและระยะทางรวม โปรดตรวจสอบข้อกำหนดและเงื่อนไขของผู้ให้บริการโดยสารเพื่อดูข้อมูลเพิ่มเติม";
 

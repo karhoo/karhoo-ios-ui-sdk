@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificado SSL inválido";
 
+"kh_uisdk_now" = "agora";
+
 "kh_uisdk_offer_expired" = "Cotação expirada";
 
 "kh_uisdk_offer_expired_text" = "Selecione uma nova cotação para continuar com a sua reserva";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "A reserva será efetuada no horário local";
 
 "kh_uisdk_price" = "Preço";
+
+"kh_uisdk_price_bottom_sheet_title" = "Detalhes do preço";
 
 "kh_uisdk_price_info_text_estimated" = "Esta frota oferece táxis não regulamentados. A cotação é uma estimativa baseada em fatores como tempo e distância total. Para mais informações, consulte os Termos e Condições da frota.";
 

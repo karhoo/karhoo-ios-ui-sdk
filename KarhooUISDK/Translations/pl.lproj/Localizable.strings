@@ -745,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Nieprawidłowy certyfikat SSL";
 
+"kh_uisdk_now" = "teraz";
+
 "kh_uisdk_offer_expired" = "Oferta wygasła";
 
 "kh_uisdk_offer_expired_text" = "Wybierz nową ofertę, aby kontynuować rezerwację";
@@ -810,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Rezerwacja zostanie dokonana w czasie lokalnym";
 
 "kh_uisdk_price" = "Cena";
+
+"kh_uisdk_price_bottom_sheet_title" = "Cena Szczegóły";
 
 "kh_uisdk_price_info_text_estimated" = "Ten przewoźnik nie oferuje licencjonowanych przejazdów. Wycena jest szacunkową kwotą opartą na czynnikach podróży (odległość, czas itp.). Aby uzyskać więcej informacji, zapoznaj się z Regulaminem przewoźnika.";
 
