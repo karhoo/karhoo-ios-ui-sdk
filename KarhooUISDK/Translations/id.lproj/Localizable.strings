@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "KONFIRMASI DAN BAYAR";
 
+"kh_uisdk_book_pay" = "Bayar";
+
 "kh_uisdk_book_return_ride" = "Pesan perjalanan pulang";
 
 "kh_uisdk_booking_car" = "PESAN PERJALANAN";
@@ -230,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Keluar";
 
 "kh_uisdk_booking_confirmation" = "Pemesanan telah dikonfirmasi";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Pergi ke rincian perjalanan";
 
 "kh_uisdk_booking_details_error" = "Detail pemesanan tidak valid";
 
@@ -273,7 +277,25 @@
 
 "kh_uisdk_checked" = "Dicentang";
 
+"kh_uisdk_checkout_airport_example" = "misalnya AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Tambahkan nomor penerbangan";
+
+"kh_uisdk_checkout_airport_title" = "Nomor penerbangan";
+
 "kh_uisdk_checkout_as_guest" = "PESAN PERJALANAN";
+
+"kh_uisdk_checkout_comments_subtitle" = "Komentar untuk pengemudi Anda";
+
+"kh_uisdk_checkout_comments_title" = "Komentar";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Hanya huruf dan angka yang diperbolehkan";
+
+"kh_uisdk_checkout_train_example" = "misalnya 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Tambahkan nomor kereta";
+
+"kh_uisdk_checkout_train_title" = "Nomor kereta";
 
 "kh_uisdk_close_the_screen" = "Tutup layar";
 
@@ -719,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Sertifikat SSL tidak valid";
 
+"kh_uisdk_now" = "sekarang";
+
 "kh_uisdk_offer_expired" = "Penawaran kedaluwarsa";
 
 "kh_uisdk_offer_expired_text" = "Silakan pilih penawaran baru untuk melanjutkan pemesanan Anda";
@@ -784,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "Pemesanan akan dilakukan dalam waktu setempat";
 
 "kh_uisdk_price" = "Harga";
+
+"kh_uisdk_price_bottom_sheet_title" = "Detail Harga";
 
 "kh_uisdk_price_info_text_estimated" = "Armada ini adalah taksi non-regulasi. Penawaran ini adalah perkiraan harga berdasarkan jarak dan waktu. Untuk informasi selengkapnya, silakan cek Syarat dan Ketentuan armada.";
 

@@ -21,7 +21,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutView {
             bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> Screen {
-            
+
             let presenter = KarhooCheckoutPresenter(
                 quote: quote,
                 journeyDetails: journeyDetails,

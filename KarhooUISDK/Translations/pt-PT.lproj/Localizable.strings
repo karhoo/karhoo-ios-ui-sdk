@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "CONFIRMAR E PAGAR";
 
+"kh_uisdk_book_pay" = "Pague";
+
 "kh_uisdk_book_return_ride" = "Reservar viagem de regresso";
 
 "kh_uisdk_booking_car" = "RESERVAR VIAGEM";
@@ -230,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Checkout";
 
 "kh_uisdk_booking_confirmation" = "Reserva confirmada";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Ir para os detalhes do passeio";
 
 "kh_uisdk_booking_details_error" = "Detalhes de reserva inválidos";
 
@@ -273,7 +277,25 @@
 
 "kh_uisdk_checked" = "Verificado";
 
+"kh_uisdk_checkout_airport_example" = "e.g. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Acrescentar um número de voo";
+
+"kh_uisdk_checkout_airport_title" = "Número do vôo";
+
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAGEM";
+
+"kh_uisdk_checkout_comments_subtitle" = "Comentário para o seu motorista";
+
+"kh_uisdk_checkout_comments_title" = "Comentário";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Só são permitidas letras e números";
+
+"kh_uisdk_checkout_train_example" = "e.g. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Adicionar um número de comboio";
+
+"kh_uisdk_checkout_train_title" = "Número do comboio";
 
 "kh_uisdk_close_the_screen" = "Fechar o ecrã";
 
@@ -723,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificado SSL inválido";
 
+"kh_uisdk_now" = "agora";
+
 "kh_uisdk_offer_expired" = "Cotação expirada";
 
 "kh_uisdk_offer_expired_text" = "Selecione uma nova cotação para continuar com a sua reserva";
@@ -788,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "A reserva será efetuada no horário local";
 
 "kh_uisdk_price" = "Preço";
+
+"kh_uisdk_price_bottom_sheet_title" = "Detalhes do preço";
 
 "kh_uisdk_price_info_text_estimated" = "Esta frota oferece táxis não regulamentados. A cotação é uma estimativa baseada em fatores como tempo e distância total. Para mais informações, consulte os Termos e Condições da frota.";
 

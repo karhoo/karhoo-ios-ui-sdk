@@ -41,6 +41,7 @@ struct KarhooBookingConfirmationView: View {
                 ),
                 design: .borderedWithWhiteBackground
             )
+            .padding(UIConstants.Spacing.medium)
             
             // Time and Price
             timeAndPriceView
