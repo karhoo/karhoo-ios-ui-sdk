@@ -246,7 +246,7 @@ extension KarhooAddressView {
 
         var body: some View {
             Text(tag.title)
-                .font(Font(KarhooUI.fonts.captionBold()))
+                .font(Font(KarhooUI.fonts.bodyBold()))
                 .frame(height: 14)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 10)
