@@ -17,12 +17,21 @@ struct NewCheckoutView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            dateView
-            addressView
+            VStack(spacing: 0){
+                dateView
+                addressView
+            }
+            .padding(.horizontal, UIConstants.Spacing.standard)
+            .background(KarhooUI.colors.background2.getColor())
+            .padding(.bottom, UIConstants.Spacing.small)
+            
+            VehicleDetailsCard(
+                viewModel: viewModel.getVehicleDetailsCardViewModel()
+            )
+                
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
     }
 
     @ViewBuilder
@@ -35,6 +44,7 @@ struct NewCheckoutView: View {
                 .fixedSize()
             Spacer()
         }.padding(.top, UIConstants.Spacing.standard)
+        .background(KarhooUI.colors.background2.getColor())
     }
 
     @ViewBuilder

@@ -42,6 +42,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
     private var cardRegistrationFlow: CardRegistrationFlow
     private let dateFormatter: DateFormatterType
+    private let vehicleRuleProvider: VehicleRulesProvider
+    private var carIconUrl: String = ""
 
     // MARK: - Init & Config
 
@@ -61,6 +63,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
+        vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
@@ -79,6 +82,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.bookingMetadata = bookingMetadata
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
+        self.vehicleRuleProvider = vehicleRuleProvider
+        getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
     func viewDidLoad() {
@@ -122,6 +127,23 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             return dateFormatter.display(clockTime: date)
         }
         return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
+    }
+    
+    func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
+        VehicleDetailsCardViewModel(
+            title: quote.vehicle.getVehicleTypeText(),
+            passengerCapacity: quote.vehicle.passengerCapacity,
+            luggageCapacity: quote.vehicle.luggageCapacity,
+            fleetName: quote.fleet.name,
+            carIconUrl: carIconUrl,
+            fleetIconUrl: quote.fleet.logoUrl
+        )
+    }
+    
+    private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
+        provider.getRule(for: quote) { [weak self] rule in
+            self?.carIconUrl = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+        }
     }
 
     // MARK: - Helpers
