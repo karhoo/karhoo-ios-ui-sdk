@@ -28,6 +28,18 @@ struct NewCheckoutView: View {
             VehicleDetailsCard(
                 viewModel: viewModel.getVehicleDetailsCardViewModel()
             )
+            VStack(spacing:UIConstants.Spacing.standard) {
+                DetailsCellView(model: viewModel.passangerDetailsViewModel)
+                DetailsCellView(model: viewModel.flightNumberCellViewModel)
+                DetailsCellView(model: viewModel.trainNumberCellViewModel)
+                DetailsCellView(model: viewModel.commentCellViewModel)
+                
+            }
+            .padding(.top, UIConstants.Spacing.standard)
+            .padding(.horizontal, UIConstants.Spacing.standard)
+            
+            
+            
                 
             Spacer()
         }

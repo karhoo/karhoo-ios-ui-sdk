@@ -44,7 +44,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
     private var carIconUrl: String = ""
-
+    
+    var passangerDetailsViewModel: PassengerDetailsCellViewModel
+    var trainNumberCellViewModel: TrainNumberCellViewModel
+    var flightNumberCellViewModel: FlightNumberCellViewModel
+    var commentCellViewModel: CommentCellViewModel
     // MARK: - Init & Config
 
     init(
@@ -83,6 +87,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
+        passangerDetailsViewModel = PassengerDetailsCellViewModel()
+        trainNumberCellViewModel = TrainNumberCellViewModel()
+        flightNumberCellViewModel = FlightNumberCellViewModel()
+        commentCellViewModel = CommentCellViewModel()
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
