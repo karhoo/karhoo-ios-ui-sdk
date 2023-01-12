@@ -49,6 +49,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
+    
+    var showTrainNumberCell: Bool = false
+    var showFlightNumberCell: Bool = false
+    
     // MARK: - Init & Config
 
     init(
@@ -87,10 +91,12 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
-        passangerDetailsViewModel = PassengerDetailsCellViewModel()
-        trainNumberCellViewModel = TrainNumberCellViewModel()
-        flightNumberCellViewModel = FlightNumberCellViewModel()
-        commentCellViewModel = CommentCellViewModel()
+        passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
+        trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
+        flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
+        commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
+        showTrainNumberCell = shouldShowTrainNumberCell()
+        showFlightNumberCell = shouldShowFlightNumberCell()
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
@@ -169,4 +175,25 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         default: return false
         }
     }
+    
+    private func shouldShowTrainNumberCell() -> Bool {
+        if journeyDetails.isScheduled,
+           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking),
+           journeyDetails.originLocationDetails?.details.type == .trainStation {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func shouldShowFlightNumberCell() -> Bool {
+        if journeyDetails.isScheduled,
+           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking),
+           journeyDetails.originLocationDetails?.details.type == .airport {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

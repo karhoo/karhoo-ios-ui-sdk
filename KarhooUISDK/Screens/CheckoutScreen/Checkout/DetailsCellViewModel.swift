@@ -14,11 +14,13 @@ class DetailsCellViewModel: ObservableObject {
     @Published var title: String
     @Published var subtitle: String
     @Published var iconName: String
+    let onTap: () -> Void
     
-    init(title: String, subtitle: String, iconName: String) {
+    init(title: String, subtitle: String, iconName: String, onTap: @escaping () -> Void) {
         self.title = title
         self.subtitle = subtitle
         self.iconName = iconName
+        self.onTap = onTap
     }
     
     func update(title: String, subtitle: String) {

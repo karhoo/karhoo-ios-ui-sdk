@@ -9,11 +9,12 @@
 import Foundation
 
 class CommentCellViewModel: DetailsCellViewModel {
-    init(){
+    init(onTap: @escaping () -> Void){
         super.init(
             title: UITexts.Booking.commentsTitle,
             subtitle: UITexts.Booking.commentsSubtitle,
-            iconName: "kh_uisdk_comments"
+            iconName: "kh_uisdk_comments",
+            onTap: onTap
         )
     }
 }

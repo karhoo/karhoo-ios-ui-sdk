@@ -16,34 +16,38 @@ struct NewCheckoutView: View {
     @StateObject var viewModel: KarhooNewCheckoutViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            VStack(spacing: 0){
-                dateView
-                addressView
-            }
-            .padding(.horizontal, UIConstants.Spacing.standard)
-            .background(KarhooUI.colors.background2.getColor())
-            .padding(.bottom, UIConstants.Spacing.small)
-            
-            VehicleDetailsCard(
-                viewModel: viewModel.getVehicleDetailsCardViewModel()
-            )
-            VStack(spacing:UIConstants.Spacing.standard) {
-                DetailsCellView(model: viewModel.passangerDetailsViewModel)
-                DetailsCellView(model: viewModel.flightNumberCellViewModel)
-                DetailsCellView(model: viewModel.trainNumberCellViewModel)
-                DetailsCellView(model: viewModel.commentCellViewModel)
+
+        ScrollView {
+            VStack(spacing: 0) {
+                VStack(spacing: 0){
+                    dateView
+                    addressView
+                }
+                .padding(.horizontal, UIConstants.Spacing.standard)
+                .background(KarhooUI.colors.background2.getColor())
+                .padding(.bottom, UIConstants.Spacing.small)
                 
-            }
-            .padding(.top, UIConstants.Spacing.standard)
-            .padding(.horizontal, UIConstants.Spacing.standard)
-            
-            
-            
+                VehicleDetailsCard(
+                    viewModel: viewModel.getVehicleDetailsCardViewModel()
+                )
+                VStack(spacing:UIConstants.Spacing.standard) {
+                    DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
+                    if (viewModel.showFlightNumberCell) {
+                        DetailsCellView(viewModel: viewModel.flightNumberCellViewModel)
+                    }
+                    if (viewModel.showTrainNumberCell) {
+                        DetailsCellView(viewModel: viewModel.trainNumberCellViewModel)
+                    }
+                    DetailsCellView(viewModel: viewModel.commentCellViewModel)
+                    
+                }
+                .padding(.top, UIConstants.Spacing.standard)
+                .padding(.horizontal, UIConstants.Spacing.standard)
                 
-            Spacer()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
