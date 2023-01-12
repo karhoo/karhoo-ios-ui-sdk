@@ -43,6 +43,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private var cardRegistrationFlow: CardRegistrationFlow
     private let dateFormatter: DateFormatterType
 
+    private let paymentsWorker = KarhooNewCheckoutPaymentWorker()
+    @Published var quoteExpired: Bool = false
+
     // MARK: - Init & Config
 
     init(
@@ -81,13 +84,15 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.dateFormatter = dateFormatter
     }
 
-    func viewDidLoad() {
-       quoteValidityWorker.setQuoteValidityDeadline(quote) {
-           // TODO: handle validity expiration
-       }
+    func onAppear() {
+        quoteValidityWorker.setQuoteValidityDeadline(quote) {
+            self.quoteExpired = true
+        }
     }
 
     // MARK: - Endpoints
+
+    // MARK: Get simple data to display
 
     func getDateScheduledDescription() -> String {
         let date = trip?.dateScheduled ?? Date()
@@ -131,6 +136,77 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
     }
 
+    // MARK: Interactions
+
+    func didTapPassenger() {
+        // TODO: - handle passenger flow
+    }
+
+    func didTapOptions() {
+        // TODO: - handle options flow
+    }
+
+    func didTapFlightNumber() {
+        // TODO: - handle flight number flow
+    }
+
+    func didSetTermsAndConditions(_ termsAndConditionsSelected: Bool) {
+        // TODO: - handle t&c flow
+    }
+
+    func didTapConfirm() {
+        // MARK: - Validate & proceed with payment flow
+        guard validateIfAllRequiredDataAreProvided() else {
+            return
+        }
+    }
+
+    // MARK: - Analytics
+
+    private func reportScreenOpened() {
+        analytics.checkoutOpened(quote)
+    }
+
+    private func reportBookingEvent(quoteId: String) {
+        analytics.bookingRequested(quoteId: quoteId)
+    }
+
+    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
+        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
+    }
+
+    private func reportBookingFailure(message: String, correlationId: String?) {
+        analytics.bookingFailure(
+            quoteId: quote.id,
+            correlationId: correlationId ?? "",
+            message: message,
+            lastFourDigits: paymentsWorker.getPaymentNonce()?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
+            date: Date(),
+            amount: quote.price.highPrice,
+            currency: quote.price.currencyCode
+        )
+    }
+
+    private func reportCardAuthorisationSuccess() {
+        analytics.cardAuthorisationSuccess(quoteId: quote.id)
+    }
+
+    private func reportCardAuthorisationFailure(message: String) {
+        analytics.cardAuthorisationFailure(
+            quoteId: quote.id,
+            errorMessage: message,
+            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
+            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
+            date: Date(),
+            amount: quote.price.highPrice,
+            currency: quote.price.currencyCode
+        )
+    }
+    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
+        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
+    }
+
     // MARK: - Helpers
 
     private var isKarhooUser: Bool {
@@ -138,5 +214,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .karhooUser: return true
         default: return false
         }
+    }
+
+    // MARK: Validation
+
+    private func validateIfAllRequiredDataAreProvided() -> Bool {
+        false
     }
 }

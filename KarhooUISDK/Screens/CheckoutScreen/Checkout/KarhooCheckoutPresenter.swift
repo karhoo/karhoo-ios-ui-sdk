@@ -680,11 +680,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             currency: quote.price.currencyCode
         )
     }
-    
+
     private func reportCardAuthorisationSuccess() {
         analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
-    
+
     private func reportCardAuthorisationFailure(message: String) {
         analytics.cardAuthorisationFailure(
             quoteId: quote.id,

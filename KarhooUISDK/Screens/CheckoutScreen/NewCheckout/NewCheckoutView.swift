@@ -13,16 +13,25 @@ struct NewCheckoutView: View {
     enum Constants {
         static let addressViewHeight: CGFloat = 100
     }
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: KarhooNewCheckoutViewModel
 
     var body: some View {
         VStack(spacing: 0) {
             dateView
             addressView
+            KarhooMainButton(title: "Test") {
+            }
             Spacer()
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
+        .onAppear {
+            viewModel.onAppear()
+        }
+        .alert(isPresented: $viewModel.quoteExpired) {
+            quoteExpiredAlert
+        }
     }
 
     @ViewBuilder
@@ -51,6 +60,16 @@ struct NewCheckoutView: View {
             design: .borderlessWithoutBackground,
             showsLineBetweenPickUpAndDestination: true,
             timeLabelText: viewModel.getTimeLabelTextDescription()
+        )
+    }
+
+    private var quoteExpiredAlert: Alert {
+        Alert(
+            title: Text(UITexts.Booking.quoteExpiredTitle),
+            message: Text(UITexts.Booking.quoteExpiredMessage),
+            dismissButton: .default(Text(UITexts.Generic.ok)) {
+                presentationMode.wrappedValue.dismiss()
+            }
         )
     }
 }
