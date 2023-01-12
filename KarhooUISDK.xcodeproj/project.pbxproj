@@ -983,7 +983,6 @@
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		51218F092907CF21001B677A /* MockQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuote.swift; sourceTree = "<group>"; };
 		51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
-		51255B0D2965EF9200290A74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutViewController.swift; sourceTree = "<group>"; };
 		51255B112966EB8700290A74 /* NewCheckout+MVPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewCheckout+MVPC.swift"; sourceTree = "<group>"; };
 		51255B13296731A400290A74 /* NewCheckoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutPresenter.swift; sourceTree = "<group>"; };
@@ -1215,7 +1214,6 @@
 		7B23A2B328ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAnalyticsServiceWithNotifications.swift; sourceTree = "<group>"; };
 		7B34181D27A89E5900E2D49D /* LegalNoticeStringBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeStringBuilder.swift; sourceTree = "<group>"; };
 		7B34181F27A8B24D00E2D49D /* KarhooLegalNoticeEmailComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLegalNoticeEmailComposer.swift; sourceTree = "<group>"; };
-		7B34182427A95F0B00E2D49D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B34182627A95F0F00E2D49D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B34182727A95F0F00E2D49D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B34182827A95F1000E2D49D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -3983,10 +3981,9 @@
 			};
 			buildConfigurationList = FC8F470E21539E24007841FB /* Build configuration list for PBXProject "KarhooUISDK" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = Base;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				es,
 				fr,
@@ -4948,7 +4945,6 @@
 				518E373C2954C1D900AF0687 /* pl */,
 				518E373D2954C1DB00AF0687 /* ja */,
 				518E373E2954C1DE00AF0687 /* id */,
-				51255B0D2965EF9200290A74 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4972,7 +4968,6 @@
 		7B34182527A95F0B00E2D49D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7B34182427A95F0B00E2D49D /* en */,
 				7B34182627A95F0F00E2D49D /* nl */,
 				7B34182727A95F0F00E2D49D /* fr */,
 				7B34182827A95F1000E2D49D /* de */,

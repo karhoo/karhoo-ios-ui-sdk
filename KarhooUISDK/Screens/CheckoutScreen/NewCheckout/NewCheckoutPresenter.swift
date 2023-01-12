@@ -91,11 +91,18 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     func getDateScheduledDescription() -> String {
         let date = trip?.dateScheduled ?? Date()
-        return dateFormatter.display(
+        let dateFormatted = dateFormatter.display(
             date,
             dateStyle: .long,
             timeStyle: .none
-        ).uppercased()
+        )
+        let weekday = {
+            guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
+                return ""
+            }
+            return (Calendar.current.standaloneWeekdaySymbols[safe: weekdayIndex] ?? "") + ", "
+        }()
+        return "\(weekday)\(dateFormatted)".uppercased()
     }
 
     func getPrintedPickUpAddressLine1() -> String {

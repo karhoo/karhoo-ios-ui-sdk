@@ -64,6 +64,7 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
         view.backgroundColor = KarhooUI.colors.background1
         forceLightMode()
         addChild(hostingController)
+        setupNavigationBar()
     }
 
     private func setupHierarchy() {
@@ -77,6 +78,7 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.backButtonTitle = ""
+        navigationItem.title = UITexts.Generic.checkout
         navigationController?.set(style: .primary)
     }
 
