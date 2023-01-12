@@ -45,6 +45,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let vehicleRuleProvider: VehicleRulesProvider
     private var carIconUrl: String = ""
     
+    // MARK: - Vaiables for views
+    
+    @Published var bottomButtonText: String = UITexts.Booking.next.uppercased()
     var passangerDetailsViewModel: PassengerDetailsCellViewModel
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
@@ -195,5 +198,4 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             return false
         }
     }
-    
 }
