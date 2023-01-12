@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import KarhooSDK
 
 protocol NewCheckoutCoordinator: KarhooUISDKSceneCoordinator {
 
@@ -18,4 +19,5 @@ protocol NewCheckoutViewController: BaseViewController {
 }
 
 protocol NewCheckoutRouter: AnyObject {
+    func routeToPriceDetails(title: String, quoteType: QuoteType)
 }

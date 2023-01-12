@@ -42,7 +42,8 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(viewModel != nil, "Presented needs to be assigned using `setupBinding` method")
+        assert(viewModel != nil, "View model needs to be assigned using `setupBinding` method")
+        viewModel.viewDidLoad()
     }
 
     // MARK: - Setup binding
