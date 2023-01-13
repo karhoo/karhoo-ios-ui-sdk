@@ -23,7 +23,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     let quote: Quote
     private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo?
+    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
 
     private let callback: ScreenResultCallback<KarhooCheckoutResult>
     private let journeyDetails: JourneyDetails
@@ -158,13 +158,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
     
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
-        VehicleDetailsCardViewModel(
+        var cancelationText: String? {
+            guard let tripInfo = trip else {
+                return nil
+            }
+            return KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: tripInfo)
+        }
+        return VehicleDetailsCardViewModel(
             title: quote.vehicle.getVehicleTypeText(),
             passengerCapacity: quote.vehicle.passengerCapacity,
             luggageCapacity: quote.vehicle.luggageCapacity,
             fleetName: quote.fleet.name,
             carIconUrl: carIconUrl,
-            fleetIconUrl: quote.fleet.logoUrl
+            fleetIconUrl: quote.fleet.logoUrl,
+            cancelationText: cancelationText
         )
     }
     
