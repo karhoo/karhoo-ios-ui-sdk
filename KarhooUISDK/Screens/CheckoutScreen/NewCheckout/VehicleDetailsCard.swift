@@ -35,12 +35,10 @@ struct VehicleDetailsCard: View {
                         .font(Font(KarhooUI.fonts.captionSemibold()))
                         .foregroundColor(KarhooUI.colors.text.getColor())
                 }
-                
             }
-            Spacer()
-            
-                
-        }.padding(UIConstants.Spacing.standard)
+            Spacer()    
+        }
+        .padding(UIConstants.Spacing.standard)
         .background(KarhooUI.colors.background2.getColor())
     }
 }
@@ -58,13 +56,4 @@ struct VehicleDetailsCard_Previews: PreviewProvider {
             )
         )
     }
-}
-
-struct VehicleDetailsCardViewModel {
-    let title: String
-    let passengerCapacity: Int
-    let luggageCapacity: Int
-    let fleetName: String
-    let carIconUrl: String
-    let fleetIconUrl: String
 }

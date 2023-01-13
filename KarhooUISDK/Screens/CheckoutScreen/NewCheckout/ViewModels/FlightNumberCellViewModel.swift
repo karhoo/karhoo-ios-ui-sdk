@@ -9,7 +9,7 @@
 import Foundation
 
 class FlightNumberCellViewModel: DetailsCellViewModel {
-    init(onTap: @escaping () -> Void){
+    init(onTap: @escaping () -> Void) {
         super.init(
             title: UITexts.Booking.flightTitle,
             subtitle: UITexts.Booking.flightSubtitle,

@@ -9,7 +9,7 @@
 import Foundation
 
 class PassengerDetailsCellViewModel: DetailsCellViewModel {
-    init(onTap: @escaping () -> Void){
+    init(onTap: @escaping () -> Void) {
         super.init(
             title: UITexts.PassengerDetails.title,
             subtitle: UITexts.PassengerDetails.add,
