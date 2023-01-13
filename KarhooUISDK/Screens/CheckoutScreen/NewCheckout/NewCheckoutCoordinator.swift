@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import KarhooSDK
+import SwiftUI
 
 final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 
@@ -34,6 +35,7 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata,
+            router: self,
             callback: callback
         )
         self.viewController = KarhooNewCheckoutViewController().then {
@@ -44,5 +46,20 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 }
 
 extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
-
+    func routeToPriceDetails(title: String, quoteType: QuoteType) {
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title) { [weak self] in
+                self?.baseViewController.dismiss(animated: true, completion: nil)
+            }
+        
+        let contentViewModel = KarhooCheckoutPriceDetailsViewModel(quoteType: quoteType)
+        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
+            KarhooCheckoutPriceDetailsView(viewModel: contentViewModel)
+        }
+        
+        let viewController = UIHostingController(rootView: bottomSheet)
+        viewController.view.backgroundColor = UIColor.clear
+        viewController.modalPresentationStyle = .overFullScreen
+        baseViewController.present(viewController, animated: true, completion: nil)
+    }
 }

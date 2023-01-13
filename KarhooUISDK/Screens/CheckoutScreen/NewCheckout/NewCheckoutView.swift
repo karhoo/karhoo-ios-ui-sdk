@@ -118,7 +118,7 @@ struct NewCheckoutView: View {
                         }
                     }
                     .onTapGesture {
-                        //viewModel.showPriceDetails() method in PR on branch: origin/MOB-4441-price-details-bottom-sheet
+                        viewModel.showPriceDetails()
                     }
                     Spacer()
                     KarhooMainButton(title: viewModel.bottomButtonText) {
