@@ -20,8 +20,6 @@ struct NewCheckoutView: View {
         VStack(spacing: 0) {
             dateView
             addressView
-            KarhooMainButton(title: "Test") {
-            }
             Spacer()
         }
         .frame(maxWidth: .infinity)

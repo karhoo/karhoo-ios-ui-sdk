@@ -10,41 +10,40 @@ import Foundation
 import KarhooSDK
 import UIKit
 import SwiftUI
+import Combine
 
 enum NewCheckoutState {
     case loading
-    case asap
+    case idle
     case scheduled
 }
 
 final class KarhooNewCheckoutViewModel: ObservableObject {
 
-    // MARK: - Properties
+    // MARK: - Dependencies
 
-    let quote: Quote
-    private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo?
-
-    private let callback: ScreenResultCallback<KarhooCheckoutResult>
-    private let journeyDetails: JourneyDetails
-    private let quoteValidityWorker: QuoteValidityWorker
-    private let threeDSecureProvider: ThreeDSecureProvider?
     private let tripService: TripService
     private let userService: UserService
-    private let bookingMetadata: [String: Any]?
-    private let paymentNonceProvider: PaymentNonceProvider
-    private let sdkConfiguration: KarhooUISDKConfiguration
+    private let quoteValidityWorker: QuoteValidityWorker
     private let analytics: Analytics
-    private let appStateNotifier: AppStateNotifierProtocol
-    private var comments: String?
-    private var bookingRequestInProgress: Bool = false
-    private var flightDetailsScreenIsPresented: Bool = false
-    private let baseFareDialogBuilder: PopupDialogScreenBuilder
-    private var cardRegistrationFlow: CardRegistrationFlow
+    private let sdkConfiguration: KarhooUISDKConfiguration
+    private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
     private let dateFormatter: DateFormatterType
 
-    private let paymentsWorker = KarhooNewCheckoutPaymentWorker()
+    // MARK: - Properties
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private let quote: Quote
+    private let journeyDetails: JourneyDetails
+    private(set) var passengerDetails: PassengerDetails!
+    private(set) var trip: TripInfo?
+    private let bookingMetadata: [String: Any]?
+    private var comments: String?
+    private let callback: ScreenResultCallback<KarhooCheckoutResult>
+
     @Published var quoteExpired: Bool = false
+    var termsAndConditionsAccepted: Bool = false
 
     // MARK: - Init & Config
 
@@ -53,44 +52,42 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         quoteValidityWorker: QuoteValidityWorker = KarhooQuoteValidityWorker(),
-        threeDSecureProvider: ThreeDSecureProvider? = nil,
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
         passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        appStateNotifier: AppStateNotifierProtocol = AppStateNotifier(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
-        paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
-        cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
-        self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
         self.tripService = tripService
         self.callback = callback
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
         self.passengerDetails = passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
-        self.paymentNonceProvider = paymentNonceProvider
         self.sdkConfiguration = sdkConfiguration
-        self.appStateNotifier = appStateNotifier
         self.analytics = analytics
-        self.baseFareDialogBuilder = baseFarePopupDialogBuilder
         self.quote = quote
         self.journeyDetails = journeyDetails
         self.bookingMetadata = bookingMetadata
-        self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
     }
 
-    func onAppear() {
-        quoteValidityWorker.setQuoteValidityDeadline(quote) {
-            self.quoteExpired = true
-        }
-    }
-
     // MARK: - Endpoints
+
+    func onAppear() {
+        quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
+            self?.quoteExpired = true
+        }
+
+        paymentsWorker.statePublisher
+            .sink { [weak self] bookingState in
+                // TODO: handle booking state
+                print(bookingState)
+            }
+            .store(in: &cancellables)
+    }
 
     // MARK: Get simple data to display
 
@@ -154,11 +151,22 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         // TODO: - handle t&c flow
     }
 
+    func didSetComment(_ comment: String) {
+        // TODO: - handle comment flow
+    }
+
     func didTapConfirm() {
         // MARK: - Validate & proceed with payment flow
         guard validateIfAllRequiredDataAreProvided() else {
             return
         }
+        submitBooking()
+    }
+
+    // MARK: - Booking
+
+    private func submitBooking() {
+        paymentsWorker.performBooking()
     }
 
     // MARK: - Analytics
@@ -219,6 +227,16 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Validation
 
     private func validateIfAllRequiredDataAreProvided() -> Bool {
-        false
+        guard let details = passengerDetails,
+              details.areValid
+        else {
+            return false
+        }
+        guard paymentsWorker.isReadyToPerformPayment() else {
+            return false
+        }
+
+        return true
+
     }
 }
