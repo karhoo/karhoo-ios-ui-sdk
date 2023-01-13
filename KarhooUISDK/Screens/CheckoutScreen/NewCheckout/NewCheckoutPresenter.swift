@@ -53,6 +53,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var showTrainNumberCell: Bool = false
     var showFlightNumberCell: Bool = false
     
+    private let router: NewCheckoutRouter
+
     // MARK: - Init & Config
 
     init(
@@ -72,6 +74,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
+        router: NewCheckoutRouter,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
@@ -91,6 +94,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
+        self.router = router
         passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
         trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
         flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
@@ -104,6 +108,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
        quoteValidityWorker.setQuoteValidityDeadline(quote) {
            // TODO: handle validity expiration
        }
+        
+        // TODO: delete this. Left this here for now for testing purposes
+        showPriceDetails()
     }
 
     // MARK: - Endpoints
@@ -186,5 +193,14 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         journeyDetails.isScheduled &&
         quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking) &&
         journeyDetails.originLocationDetails?.details.type == .airport
+    }
+    // MARK: - Price Details
+    
+    /// Called when the user taps on the price details section of the screen
+    private func showPriceDetails() {
+        router.routeToPriceDetails(
+            title: UITexts.Booking.priceDetailsTitle,
+            quoteType: quote.quoteType
+        )
     }
 }

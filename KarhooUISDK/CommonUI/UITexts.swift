@@ -257,6 +257,7 @@ public enum UITexts {
         public static let flightTitle = "kh_uisdk_checkout_airport_title".localized
         public static let flightSubtitle = "kh_uisdk_checkout_airport_subtitle".localized
         public static let flightExcample = "kh_uisdk_checkout_airport_example".localized
+        public static let priceDetailsTitle = "kh_uisdk_price_bottom_sheet_title".localized
     }
 
     public enum Availability {
