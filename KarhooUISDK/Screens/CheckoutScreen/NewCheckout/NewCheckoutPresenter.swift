@@ -55,7 +55,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     
     var showTrainNumberCell: Bool = false
     var showFlightNumberCell: Bool = false
-    
+
     private let router: NewCheckoutRouter
 
     // MARK: - Init & Config
@@ -111,6 +111,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
        quoteValidityWorker.setQuoteValidityDeadline(quote) {
            // TODO: handle validity expiration
        }
+        
+        // TODO: delete this. Left this here for now for testing purposes
+        showPriceDetails()
     }
 
     // MARK: - Endpoints
@@ -213,7 +216,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - Price Details
     
     /// Called when the user taps on the price details section of the screen
-    func showPriceDetails() {
+    private func showPriceDetails() {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType

@@ -574,6 +574,8 @@
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
 		84209B47292D224000B79918 /* KarhooBookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
+		8466B365297060780064C3BC /* KarhooCheckoutPriceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466B364297060780064C3BC /* KarhooCheckoutPriceDetailsView.swift */; };
+		8466B367297060D70064C3BC /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466B366297060D70064C3BC /* KarhooCheckoutPriceDetailsViewModel.swift */; };
 		846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */; };
 		84925E26292543CD00B0C483 /* KarhooLocationPermissionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */; };
 		84C5F4EC294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F4EB294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift */; };
@@ -1254,6 +1256,8 @@
 		84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationView.swift; sourceTree = "<group>"; };
 		84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationViewModel.swift; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		8466B364297060780064C3BC /* KarhooCheckoutPriceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsView.swift; sourceTree = "<group>"; };
+		8466B366297060D70064C3BC /* KarhooCheckoutPriceDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsViewModel.swift; sourceTree = "<group>"; };
 		846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetScreenBuilder.swift; sourceTree = "<group>"; };
 		84751E73292FE97F000E98B0 /* KarhooAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAsyncImage.swift; sourceTree = "<group>"; };
 		84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLocationPermissionProvider.swift; sourceTree = "<group>"; };
@@ -3202,7 +3206,6 @@
 			isa = PBXGroup;
 			children = (
 				7B7404172970DA20000ED60A /* KarhooCheckoutPriceDetailsView.swift */,
-				7B7404182970DA21000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */,
 			);
 			path = PriceDetails;
 			sourceTree = "<group>";
@@ -4667,6 +4670,7 @@
 				6B26061E2743EDF50030DB4B /* KarhooLoyaltyViewMVP.swift in Sources */,
 				5192C0252832EB4F00D01FC8 /* LocationInfo+Extensions.swift in Sources */,
 				FC83E2A4221ECC48008FE26D /* TripSummaryViewController.swift in Sources */,
+				8466B367297060D70064C3BC /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */,
 				0991070921B83AF700BD7E6F /* TripLocationDetailsExt.swift in Sources */,
 				099106C321B8304900BD7E6F /* RecentAddressProvider.swift in Sources */,
 				0946CB5D21CBDF0400DBDD42 /* CheckoutScreenBuilder.swift in Sources */,
@@ -4812,6 +4816,7 @@
 				5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */,
 				51884C12287DA1C900E48D70 /* LoadingBar.swift in Sources */,
 				FC8F47392153DBDE007841FB /* KarhooUI.swift in Sources */,
+				8466B365297060780064C3BC /* KarhooCheckoutPriceDetailsView.swift in Sources */,
 				84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */,
 				51E405672927A36F001FB842 /* AddressView.swift in Sources */,
 				0999CBB0220DDA0300A93AF9 /* KarhooUIScreenRouting.swift in Sources */,
