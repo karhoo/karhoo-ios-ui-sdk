@@ -62,8 +62,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
-    private let paymentsWorker = KarhooNewCheckoutPaymentWorker()
+    // MARK: - Properties
+
+    private var cancellables: Set<AnyCancellable> = []
+
+    private let quote: Quote
+    private let journeyDetails: JourneyDetails
+    private(set) var passengerDetails: PassengerDetails!
+    private(set) var trip: TripInfo?
+    private let bookingMetadata: [String: Any]?
+    private var comments: String?
+    private let callback: ScreenResultCallback<KarhooCheckoutResult>
+
     @Published var quoteExpired: Bool = false
+    var termsAndConditionsAccepted: Bool = false
 
     // MARK: - Init & Config
 
@@ -286,11 +298,22 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         // TODO: - handle t&c flow
     }
 
+    func didSetComment(_ comment: String) {
+        // TODO: - handle comment flow
+    }
+
     func didTapConfirm() {
         // MARK: - Validate & proceed with payment flow
         guard validateIfAllRequiredDataAreProvided() else {
             return
         }
+        submitBooking()
+    }
+
+    // MARK: - Booking
+
+    private func submitBooking() {
+        paymentsWorker.performBooking()
     }
 
     // MARK: - Analytics
