@@ -100,28 +100,28 @@ struct KarhooBookingConfirmationView: View {
             VStack {
                 Text(viewModel.printedTime)
                     .font(Font(KarhooUI.fonts.titleBold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
 
                 Text(viewModel.printedDate)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .accessibilityElement()
             .accessibilityValue(Text(viewModel.accessibilityDate))
 
             Rectangle()
-                .fill(KarhooUI.colors.border.getColor())
+                .fill(Color(KarhooUI.colors.border))
                 .frame(width: 1, height: Constants.separatorHeight, alignment: .center)
 
             VStack {
                 Text(viewModel.printedPrice)
                     .font(Font(KarhooUI.fonts.titleBold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
 
                 Text(viewModel.printedPriceType)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
                     .multilineTextAlignment(.center)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -165,10 +165,10 @@ struct KarhooMainButton: View {
                 .padding(.horizontal, UIConstants.Spacing.standard)
                 .font(Font(KarhooUI.fonts.headerBold()))
                 .minimumScaleFactor(0.7)
-                .foregroundColor(KarhooUI.colors.white.getColor())
+                .foregroundColor(Color(KarhooUI.colors.white))
                 .frame(maxWidth: .infinity)
                 .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
-                .background(KarhooUI.colors.secondary.getColor())
+                .background(Color(KarhooUI.colors.secondary))
                 .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
             }
         )

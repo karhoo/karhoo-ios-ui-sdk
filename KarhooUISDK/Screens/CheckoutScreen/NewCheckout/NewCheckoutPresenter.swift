@@ -23,7 +23,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     let quote: Quote
     private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo?
+    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
 
     private let callback: ScreenResultCallback<KarhooCheckoutResult>
     private let journeyDetails: JourneyDetails
@@ -42,6 +42,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
     private var cardRegistrationFlow: CardRegistrationFlow
     private let dateFormatter: DateFormatterType
+    private let vehicleRuleProvider: VehicleRulesProvider
+    private var carIconUrl: String = ""
+    
+    // MARK: - Vaiables for views
+    
+    @Published var bottomButtonText: String = UITexts.Booking.next.uppercased()
+    var passangerDetailsViewModel: PassengerDetailsCellViewModel
+    var trainNumberCellViewModel: TrainNumberCellViewModel
+    var flightNumberCellViewModel: FlightNumberCellViewModel
+    var commentCellViewModel: CommentCellViewModel
+    
+    var showTrainNumberCell: Bool = false
+    var showFlightNumberCell: Bool = false
+
     private let router: NewCheckoutRouter
 
     // MARK: - Init & Config
@@ -62,6 +76,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
+        vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         router: NewCheckoutRouter,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
@@ -81,7 +96,15 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.bookingMetadata = bookingMetadata
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
+        self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
+        passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
+        trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
+        flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
+        commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
+        showTrainNumberCell = shouldShowTrainNumberCell()
+        showFlightNumberCell = shouldShowFlightNumberCell()
+        getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
     func viewDidLoad() {
@@ -136,6 +159,30 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         }
         return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
     }
+    
+    func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
+        var cancelationText: String? {
+            guard let tripInfo = trip else {
+                return nil
+            }
+            return KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: tripInfo)
+        }
+        return VehicleDetailsCardViewModel(
+            title: quote.vehicle.getVehicleTypeText(),
+            passengerCapacity: quote.vehicle.passengerCapacity,
+            luggageCapacity: quote.vehicle.luggageCapacity,
+            fleetName: quote.fleet.name,
+            carIconUrl: carIconUrl,
+            fleetIconUrl: quote.fleet.logoUrl,
+            cancelationText: cancelationText
+        )
+    }
+    
+    private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
+        provider.getRule(for: quote) { [weak self] rule in
+            self?.carIconUrl = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+        }
+    }
 
     // MARK: - Helpers
 
@@ -146,10 +193,30 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         }
     }
     
+    private func shouldShowTrainNumberCell() -> Bool {
+        if journeyDetails.isScheduled,
+           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking),
+           journeyDetails.originLocationDetails?.details.type == .trainStation {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func shouldShowFlightNumberCell() -> Bool {
+        if journeyDetails.isScheduled,
+           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking),
+           journeyDetails.originLocationDetails?.details.type == .airport {
+            return true
+        } else {
+            return false
+        }
+    }
+        
     // MARK: - Price Details
     
     /// Called when the user taps on the price details section of the screen
-    private func showPriceDetails() {
+    func showPriceDetails() {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType

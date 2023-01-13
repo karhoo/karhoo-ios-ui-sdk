@@ -27,27 +27,12 @@ final class TripMetaDataViewModel {
         displayId = trip.displayId
         flightNumber = trip.flightNumber
         status = TripInfoUtility.short(tripState: trip.state)
-        let isPrebook = trip.dateBooked != trip.dateScheduled
 
         let bookingStatusViewModel = BookingStatusViewModel(trip: trip)
         statusColor = bookingStatusViewModel.statusColor
         statusIconName = bookingStatusViewModel.imageName
 
-        switch trip.serviceAgreements?.serviceCancellation.type {
-        case .timeBeforePickup:
-            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes,
-               freeCancellationMinutes > 0 {
-                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                let messageFormat = isPrebook == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
-                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
-            } else {
-                freeCancellationMessage = nil
-            }
-        case .beforeDriverEnRoute:
-            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
-        default:
-            freeCancellationMessage = nil
-        }
+        freeCancellationMessage = KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: trip)
 
         if TripStatesGetter().getStatesForTripRequest(type: .upcoming).contains(trip.state) &&
            trip.tripQuote.type != .fixed {

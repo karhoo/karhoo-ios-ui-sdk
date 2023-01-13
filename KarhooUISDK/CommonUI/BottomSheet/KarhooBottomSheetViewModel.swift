@@ -25,7 +25,7 @@ class KarhooBottomSheetViewModel: BottomSheetViewModel {
     
     init(
         title: String,
-        backgroundColor: Color = KarhooUI.colors.background2.getColor(),
+        backgroundColor: Color = Color(KarhooUI.colors.background2),
         cornerRadius: CGFloat = UIConstants.CornerRadius.xxLarge,
         onDismissCallback: @escaping () -> Void
     ) {

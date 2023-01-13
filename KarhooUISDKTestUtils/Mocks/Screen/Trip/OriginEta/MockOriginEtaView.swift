@@ -10,6 +10,8 @@ import Foundation
 @testable import KarhooUISDK
 
 final public class MockOriginEtaView: OriginEtaView {
+    
+    public init() {}
    
     public func start(tripId: String) {}
     

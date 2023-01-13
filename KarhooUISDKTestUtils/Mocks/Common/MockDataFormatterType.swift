@@ -63,10 +63,12 @@ public class MockDateFormatterType: DateFormatterType {
         clockTimeSet = date
         return clockTimeReturnString
     }
-
-    public var customDateFormatToReturn = ""
-    public func display(_ date: Date?, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
-        fullTimeSet = date
-        return customDateFormatToReturn
+    
+    public func display(
+        _ date: Date?,
+        dateStyle: DateFormatter.Style,
+        timeStyle: DateFormatter.Style
+    ) -> String {
+        TestUtil.getRandomString()
     }
 }

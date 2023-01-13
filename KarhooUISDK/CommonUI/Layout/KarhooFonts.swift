@@ -133,6 +133,10 @@ struct KarhooFonts {
         boldFont.withSize(footnoteSize)
     }
     
+    func footnoteSemiold() -> UIFont {
+        semiboldFont.withSize(footnoteSize)
+    }
+    
     func footnoteItalic() -> UIFont {
         italicFont.withSize(footnoteSize)
     }
