@@ -32,7 +32,7 @@ struct KarhooBottomSheet<Content: View>: View {
                 HStack {
                     Text(viewModel.title)
                         .font(Font(KarhooUI.fonts.title2Bold()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
+                        .foregroundColor(Color(KarhooUI.colors.text))
                     Spacer()
                         .background(Color.clear)
                     Button {
@@ -94,8 +94,8 @@ struct KarhooBottomSheet<Content: View>: View {
         .background(
             LinearGradient(
                 colors: [
-                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.hidden),
-                    KarhooUI.colors.black.getColor().opacity(UIConstants.Alpha.enabled)
+                    Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.hidden),
+                    Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.enabled)
                 ],
                 startPoint: .top,
                 endPoint: .bottom

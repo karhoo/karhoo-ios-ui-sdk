@@ -23,16 +23,16 @@ struct DetailsCellView: View {
                 )
                 .padding(.top, UIConstants.Spacing.xSmall)
                 .padding(.bottom, UIConstants.Spacing.xSmall)
-                .foregroundColor(KarhooUI.colors.primary.getColor())
+                .foregroundColor(Color(KarhooUI.colors.primary))
             VStack(alignment: .leading) {
                 Text(viewModel.title)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
                 Text(viewModel.subtitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.footnoteRegular()))
-                    .foregroundColor(KarhooUI.colors.textLabel.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.textLabel))
             }
                 Spacer()
                 Image(uiImage:
@@ -53,12 +53,12 @@ struct DetailsCellView: View {
         .background(
             RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                 .stroke(
-                    KarhooUI.colors.border.getColor(),
+                    Color(KarhooUI.colors.border),
                     lineWidth: UIConstants.Dimension.Border.standardWidth
                 )
         ).background(
             RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                .fill(KarhooUI.colors.background2.getColor())
+                .fill(Color(KarhooUI.colors.background2))
         )
         .onTapGesture(perform: {
             delegate?.onTap() // will be removed when Old Checkout will be removed
@@ -69,6 +69,14 @@ struct DetailsCellView: View {
 
 struct DetailsViewCellPreviews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(viewModel: DetailsCellViewModel(title: "Passanger", subtitle: "add details, this is excample of text containing more than 2, or even more than 3 lines. We need that kind of text for comments cell, in this case input for user is unlimited. ", iconName: "kh_uisdk_passenger", onTap: {print("tapped")}), delegate: nil)
+        DetailsCellView(
+            viewModel: DetailsCellViewModel(
+                title: "Passanger",
+                subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                iconName: "kh_uisdk_passenger",
+                onTap: {print("tapped")}
+            ),
+            delegate: nil
+        )
     }
 }

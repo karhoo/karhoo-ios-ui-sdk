@@ -25,7 +25,7 @@ struct NewCheckoutView: View {
                         addressView
                     }
                     .padding(.horizontal, UIConstants.Spacing.standard)
-                    .background(KarhooUI.colors.background2.getColor())
+                    .background(Color(KarhooUI.colors.background2))
                     .padding(.bottom, UIConstants.Spacing.small)
                     
                     VehicleDetailsCard(
@@ -69,8 +69,9 @@ struct NewCheckoutView: View {
                 .frame(maxWidth: .infinity)
                 .fixedSize()
             Spacer()
-        }.padding(.top, UIConstants.Spacing.standard)
-        .background(KarhooUI.colors.background2.getColor())
+        }
+        .padding(.top, UIConstants.Spacing.standard)
+        .background(Color(KarhooUI.colors.background2))
     }
 
     @ViewBuilder
@@ -93,20 +94,20 @@ struct NewCheckoutView: View {
     @ViewBuilder
     private var priceView: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0){
+            VStack(spacing: 0) {
                 Spacer()
                 Color(KarhooUI.colors.border)
                     .frame(height: UIConstants.Dimension.Border.standardWidth)
                 HStack(alignment: .top, spacing: UIConstants.Spacing.standard) {
                     
-                    VStack(alignment: .leading, spacing: 0){
+                    VStack(alignment: .leading, spacing: 0) {
                         Text(viewModel.quote.quoteType.description)
                             .font(Font(KarhooUI.fonts.captionBold()))
-                            .foregroundColor(KarhooUI.colors.textLabel.getColor())
-                        HStack(spacing: UIConstants.Spacing.xSmall){
+                            .foregroundColor(Color(KarhooUI.colors.textLabel))
+                        HStack(spacing: UIConstants.Spacing.xSmall) {
                             Text(CurrencyCodeConverter.toPriceString(quote: viewModel.quote))
                                 .font(Font(KarhooUI.fonts.title2Bold()))
-                                .foregroundColor(KarhooUI.colors.text.getColor())
+                                .foregroundColor(Color(KarhooUI.colors.text))
                             Image(uiImage: .uisdkImage("kh_uisdk_help_circle")
                                 .coloured(withTint: KarhooUI.colors.text)
                             )
@@ -123,10 +124,11 @@ struct NewCheckoutView: View {
                     Spacer()
                     KarhooMainButton(title: viewModel.bottomButtonText) {
                         return
-                    }.frame(width: (geometry.size.width - 3 * UIConstants.Spacing.standard) * 0.4)
+                    }
+                    .frame(width: (geometry.size.width - 3 * UIConstants.Spacing.standard) * 0.4)
                 }
                 .padding(.all, UIConstants.Spacing.standard)
-                .background(KarhooUI.colors.background2.getColor().ignoresSafeArea())
+                .background(Color(KarhooUI.colors.background2).ignoresSafeArea())
             }
         }
     }

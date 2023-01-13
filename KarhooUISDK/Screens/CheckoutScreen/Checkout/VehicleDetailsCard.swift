@@ -20,7 +20,7 @@ struct VehicleDetailsCard: View {
                 VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                     Text(viewModel.title)
                         .font(Font(KarhooUI.fonts.headerSemibold()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
+                        .foregroundColor(Color(KarhooUI.colors.text))
                     NewVehicleCapacity(
                         passangerCapacity: viewModel.passengerCapacity,
                         luggageCapacity: viewModel.luggageCapacity
@@ -34,7 +34,7 @@ struct VehicleDetailsCard: View {
                             
                         Text(viewModel.fleetName)
                             .font(Font(KarhooUI.fonts.captionBold()))
-                            .foregroundColor(KarhooUI.colors.text.getColor())
+                            .foregroundColor(Color(KarhooUI.colors.text))
                     }
                 }
                 Spacer()
@@ -42,11 +42,11 @@ struct VehicleDetailsCard: View {
             if let cancelationText = viewModel.cancelationText {
                 Text(cancelationText)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
             }
         }
         .padding(UIConstants.Spacing.standard)
-        .background(KarhooUI.colors.background2.getColor())
+        .background(Color(KarhooUI.colors.background2))
     }
 }
 
@@ -99,13 +99,13 @@ struct NewVehicleCapacity: View {
                         )
                     Text("\(value)")
                         .font(Font(KarhooUI.fonts.footnoteSemiold()))
-                        .foregroundColor(KarhooUI.colors.text.getColor())
+                        .foregroundColor(Color(KarhooUI.colors.text))
                 }
             }
             .padding(UIConstants.Spacing.xSmall)
             .background(
                 RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xSmall)
-                    .fill(KarhooUI.colors.background1.getColor())
+                    .fill(Color(KarhooUI.colors.background1))
             )
         }
     }
