@@ -111,9 +111,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
        quoteValidityWorker.setQuoteValidityDeadline(quote) {
            // TODO: handle validity expiration
        }
-        
-        // TODO: delete this. Left this here for now for testing purposes
-        showPriceDetails()
     }
 
     // MARK: - Endpoints
@@ -165,7 +162,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             guard let tripInfo = trip else {
                 return nil
             }
-            return KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: tripInfo)
+            return KarhooFreeCancelationTextWorker.getFreeCancelationText(trip: tripInfo)
         }
         return VehicleDetailsCardViewModel(
             title: quote.vehicle.getVehicleTypeText(),
@@ -194,23 +191,15 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
     
     private func shouldShowTrainNumberCell() -> Bool {
-        if journeyDetails.isScheduled,
-           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking),
-           journeyDetails.originLocationDetails?.details.type == .trainStation {
-            return true
-        } else {
-            return false
-        }
+        journeyDetails.isScheduled &&
+        quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking) &&
+        journeyDetails.originLocationDetails?.details.type == .trainStation
     }
     
     private func shouldShowFlightNumberCell() -> Bool {
-        if journeyDetails.isScheduled,
-           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking),
-           journeyDetails.originLocationDetails?.details.type == .airport {
-            return true
-        } else {
-            return false
-        }
+        journeyDetails.isScheduled &&
+        quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking) &&
+        journeyDetails.originLocationDetails?.details.type == .airport
     }
         
     // MARK: - Price Details

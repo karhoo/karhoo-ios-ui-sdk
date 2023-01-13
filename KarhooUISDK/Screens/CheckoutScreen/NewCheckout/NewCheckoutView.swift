@@ -99,7 +99,6 @@ struct NewCheckoutView: View {
                 Color(KarhooUI.colors.border)
                     .frame(height: UIConstants.Dimension.Border.standardWidth)
                 HStack(alignment: .top, spacing: UIConstants.Spacing.standard) {
-                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text(viewModel.quote.quoteType.description)
                             .font(Font(KarhooUI.fonts.captionBold()))

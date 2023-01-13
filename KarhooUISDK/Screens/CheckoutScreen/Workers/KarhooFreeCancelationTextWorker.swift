@@ -1,5 +1,5 @@
 //
-//  KarhooFreeCancelationTextWroker.swift
+//  KarhooFreeCancelationTextWorker.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 13/01/2023.
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-class KarhooFreeCancelationTextWroker {
+class KarhooFreeCancelationTextWorker {
     static func getFreeCancelationText(trip: TripInfo) -> String? {
         let isPrebook = trip.dateBooked != trip.dateScheduled
         switch trip.serviceAgreements?.serviceCancellation.type {

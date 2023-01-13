@@ -47,6 +47,6 @@ final class RideCellViewModel {
         tripStateColor = bookingStatusViewModel.statusColor
         tripStateIconName = bookingStatusViewModel.imageName
 
-        freeCancellationMessage = KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: trip)
+        freeCancellationMessage = KarhooFreeCancelationTextWorker.getFreeCancelationText(trip: trip)
     }
 }
