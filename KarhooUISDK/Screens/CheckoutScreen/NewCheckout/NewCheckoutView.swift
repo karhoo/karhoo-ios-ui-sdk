@@ -59,8 +59,9 @@ struct NewCheckoutView: View {
                 .frame(maxWidth: .infinity)
                 .fixedSize()
             Spacer()
-        }.padding(.top, UIConstants.Spacing.standard)
-        .background(KarhooUI.colors.background2.getColor())
+        }
+        .padding(.top, UIConstants.Spacing.standard)
+        .background(Color(KarhooUI.colors.background2))
     }
 
     @ViewBuilder

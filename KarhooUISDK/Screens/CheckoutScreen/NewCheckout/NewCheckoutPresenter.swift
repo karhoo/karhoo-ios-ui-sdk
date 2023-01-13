@@ -177,23 +177,14 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
     
     private func shouldShowTrainNumberCell() -> Bool {
-        if journeyDetails.isScheduled,
-           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking),
-           journeyDetails.originLocationDetails?.details.type == .trainStation {
-            return true
-        } else {
-            return false
-        }
+        journeyDetails.isScheduled &&
+        quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking) &&
+        journeyDetails.originLocationDetails?.details.type == .trainStation
     }
     
     private func shouldShowFlightNumberCell() -> Bool {
-        if journeyDetails.isScheduled,
-           quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking),
-           journeyDetails.originLocationDetails?.details.type == .airport {
-            return true
-        } else {
-            return false
-        }
+        journeyDetails.isScheduled &&
+        quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking) &&
+        journeyDetails.originLocationDetails?.details.type == .airport
     }
-    
 }
