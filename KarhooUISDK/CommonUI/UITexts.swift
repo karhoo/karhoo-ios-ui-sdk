@@ -249,6 +249,7 @@ public enum UITexts {
         public static let noLocationPermissionTitle = "kh_uisdk_no_location_permission_title".localized
         public static let noLocationPermissionMessage = "kh_uisdk_no_location_permission_message".localized
         public static let noLocationPermissionConfirm = "kh_uisdk_settings".localized
+        public static let priceDetailsTitle = "kh_uisdk_price_bottom_sheet_title".localized
     }
 
     public enum Availability {

@@ -42,6 +42,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let baseFareDialogBuilder: PopupDialogScreenBuilder
     private var cardRegistrationFlow: CardRegistrationFlow
     private let dateFormatter: DateFormatterType
+    private let router: NewCheckoutRouter
 
     // MARK: - Init & Config
 
@@ -61,6 +62,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
+        router: NewCheckoutRouter,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.threeDSecureProvider = threeDSecureProvider ?? sdkConfiguration.paymentManager.threeDSecureProvider
@@ -79,12 +81,16 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.bookingMetadata = bookingMetadata
         self.cardRegistrationFlow = cardRegistrationFlow
         self.dateFormatter = dateFormatter
+        self.router = router
     }
 
     func viewDidLoad() {
        quoteValidityWorker.setQuoteValidityDeadline(quote) {
            // TODO: handle validity expiration
        }
+        
+        // TODO: delete this. Left this here for now for testing purposes
+        showPriceDetails()
     }
 
     // MARK: - Endpoints
@@ -138,5 +144,15 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .karhooUser: return true
         default: return false
         }
+    }
+    
+    // MARK: - Price Details
+    
+    /// Called when the user taps on the price details section of the screen
+    private func showPriceDetails() {
+        router.routeToPriceDetails(
+            title: UITexts.Booking.priceDetailsTitle,
+            quoteType: quote.quoteType
+        )
     }
 }
