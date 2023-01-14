@@ -22,34 +22,21 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: - Dependencies
 
-    let quote: Quote
-    private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
-
-    private let callback: ScreenResultCallback<KarhooCheckoutResult>
-    private let journeyDetails: JourneyDetails
     private let quoteValidityWorker: QuoteValidityWorker
-    private let threeDSecureProvider: ThreeDSecureProvider?
     private let tripService: TripService
     private let userService: UserService
-    private let quoteValidityWorker: QuoteValidityWorker
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
-    private var carIconUrl: String = ""
     
-    // MARK: - Vaiables for views
-    
-    @Published var bottomButtonText: String = UITexts.Booking.next.uppercased()
+    // MARK: - Sub view models
+
     var passangerDetailsViewModel: PassengerDetailsCellViewModel
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
-    
-    var showTrainNumberCell: Bool = false
-    var showFlightNumberCell: Bool = false
 
     private let router: NewCheckoutRouter
 
@@ -57,16 +44,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private let quote: Quote
-    private let journeyDetails: JourneyDetails
     private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo?
+    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
+    private let journeyDetails: JourneyDetails
     private let bookingMetadata: [String: Any]?
     private var comments: String?
     private let callback: ScreenResultCallback<KarhooCheckoutResult>
+    private var carIconUrl: String = ""
 
+    let quote: Quote
+    @Published var bottomButtonText = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
     var termsAndConditionsAccepted: Bool = false
+    var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
+    var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
     // MARK: - Init & Config
 
@@ -87,7 +78,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) {
         self.tripService = tripService
-        self.callback = callback
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
         self.passengerDetails = passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
@@ -99,12 +89,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
+        self.callback = callback
         passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
         trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
         flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
         commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
-        showTrainNumberCell = shouldShowTrainNumberCell()
-        showFlightNumberCell = shouldShowFlightNumberCell()
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 

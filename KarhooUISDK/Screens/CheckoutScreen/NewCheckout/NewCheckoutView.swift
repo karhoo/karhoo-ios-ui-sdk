@@ -59,7 +59,6 @@ struct NewCheckoutView: View {
             priceView
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
         .onAppear {
             viewModel.onAppear()
         }
@@ -67,7 +66,6 @@ struct NewCheckoutView: View {
             quoteExpiredAlert
         }
     }
-
 
     @ViewBuilder
     private var dateView: some View {
