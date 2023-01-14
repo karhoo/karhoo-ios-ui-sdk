@@ -17,6 +17,7 @@ struct KarhooTermsConditionsView: View {
             Toggle(isOn: $viewModel.confirmed) { EmptyView() }
                 .frame(width: 30, height: 30)
             TextView(text: $viewModel.text)
+                .frame(width: UIScreen.main.bounds.width * 0.85)
         }
     }
 }
