@@ -32,7 +32,7 @@ final class TripMetaDataViewModel {
         statusColor = bookingStatusViewModel.statusColor
         statusIconName = bookingStatusViewModel.imageName
 
-        freeCancellationMessage = KarhooFreeCancelationTextWroker.getFreeCancelationText(trip: trip)
+        freeCancellationMessage = KarhooFreeCancelationTextWorker.getFreeCancelationText(trip: trip)
 
         if TripStatesGetter().getStatesForTripRequest(type: .upcoming).contains(trip.state) &&
            trip.tripQuote.type != .fixed {
