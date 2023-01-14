@@ -37,6 +37,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
+	var termsConditionsViewModel = TermsConditionsView.ViewModel()
+    var legalNoticePresenter: LegalNoticePresenter = KarhooLegalNoticePresenter()
 
     private let router: NewCheckoutRouter
 

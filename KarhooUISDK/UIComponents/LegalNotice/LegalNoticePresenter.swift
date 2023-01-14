@@ -14,7 +14,7 @@ protocol LegalNoticePresenter {
 }
 
 class KarhooLegalNoticePresenter: LegalNoticePresenter {
-    let shouldShowView: Bool = UITexts.Booking.legalNoticeText.isNotEmpty
+    let shouldShowView: Bool = true //UITexts.Booking.legalNoticeText.isNotEmpty
     
     func openLink(link: String, handler: BaseViewController) {
         KarhooLegalNoticeLinkOpener(viewControllerToPresentFrom: handler).openLink(link: link)
