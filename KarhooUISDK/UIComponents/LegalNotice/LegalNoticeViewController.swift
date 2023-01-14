@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 public struct KHLegalNoticeViewID {
     public static let view = "legal_notice_view"
@@ -18,7 +19,7 @@ public struct KHLegalNoticeViewID {
 final class LegalNoticeViewController: UIViewController, BaseViewController {
     
     private var zeroHeightTextConstreint: NSLayoutConstraint!
-    private let shouldShowView = UITexts.Booking.legalNoticeText.isNotEmpty
+    private let shouldShowView = true // UITexts.Booking.legalNoticeText.isNotEmpty
     private let presenter: LegalNoticePresenter
 
     private lazy var legalNoticeButton: KarhooExpandViewButton = {
@@ -135,5 +136,21 @@ final class LegalNoticeViewController: UIViewController, BaseViewController {
     
     private func hideLegalNoticePressed() {
         zeroHeightTextConstreint.isActive = true
+    }
+}
+
+// LegalNoticeViewController UIViewRepresentable
+extension LegalNoticeViewController {
+    struct SwiftUIView: UIViewRepresentable {
+
+        let presenter: LegalNoticePresenter
+
+        func makeUIView(context: Context) -> UIView {
+            let viewController = LegalNoticeViewController(presenter: presenter)
+            return viewController.view
+        }
+
+        func updateUIView(_ uiView: UIView, context: Context) {
+        }
     }
 }

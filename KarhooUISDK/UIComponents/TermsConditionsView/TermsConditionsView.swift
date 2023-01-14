@@ -8,19 +8,18 @@
 
 import UIKit
 import KarhooSDK
+import SwiftUI
 
-@available(*, deprecated, message: "Public access to this protocol will be removed in next release")
-public protocol TermsConditionsViewDelegate: AnyObject {
+protocol TermsConditionsViewDelegate: AnyObject {
     func selectedRegistrationTermsConditions()
 }
 
-public struct KHTermsConditionsViewID {
-    public static let view = "terms_conditions_view"
-    public static let textView = "terms_text_view"
+struct KHTermsConditionsViewID {
+    static let view = "terms_conditions_view"
+    static let textView = "terms_text_view"
 }
 
-@available(*, deprecated, message: "Public access to this view will be removed in next release")
-public final class TermsConditionsView: UIView, UITextViewDelegate {
+final class TermsConditionsView: UIView, UITextViewDelegate {
 
     // MARK: - Nested type
 
@@ -37,7 +36,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         checkboxView.isSelected
     }
 
-    private let isAcceptanceRequired: Bool
+    private var isAcceptanceRequired: Bool
 
     // MARK: Views
 
@@ -170,5 +169,33 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
 
     private func convert(_ stringURL: String) -> URL {
         URL(string: stringURL) ?? TermsConditionsStringBuilder.karhooTermsURL()
+    }
+}
+
+// MARK: - UIViewRepresentable
+extension TermsConditionsView {
+    struct SwiftUIView: UIViewRepresentable {
+
+        let viewModel: ViewModel
+
+        func makeUIView(context: Context) -> TermsConditionsView {
+            TermsConditionsView(isAcceptanceRequired: viewModel.isAcceptanceRequired)
+        }
+
+        func updateUIView(_ uiView: TermsConditionsView, context: Context) {
+            viewModel.confirmed = uiView.isAccepted
+            uiView.isAcceptanceRequired = viewModel.isAcceptanceRequired
+            uiView.setText(viewModel.text)
+        }
+    }
+
+    class ViewModel: ObservableObject {
+        var isAcceptanceRequired: Bool { true }
+        @Published var text: NSMutableAttributedString
+        @Published var confirmed: Bool = false
+
+        init() {
+            self.text = .init(string: "test terms and conditions string")
+        }
     }
 }

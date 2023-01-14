@@ -58,6 +58,7 @@ struct NewCheckoutView: View {
             }
             priceView
         }
+
         .frame(maxWidth: .infinity)
         .onAppear {
             viewModel.onAppear()
