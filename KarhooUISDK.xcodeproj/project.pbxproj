@@ -555,6 +555,15 @@
 		7B34183827AB283400E2D49D /* KarhooMailMetaInfoComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B34183727AB283400E2D49D /* KarhooMailMetaInfoComposer.swift */; };
 		7B492615281304630051C5DD /* Bundle+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B492613281304630051C5DD /* Bundle+current.swift */; };
 		7B56043627A15EEB00FC5F1C /* Collection+isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */; };
+		7B74041C29716109000ED60A /* NewVehicleCapacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041B29716109000ED60A /* NewVehicleCapacity.swift */; };
+		7B74041F297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */; };
+		7B7404352971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */; };
+		7B7404362971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */; };
+		7B8BE762296FFF9F006AF159 /* VehicleDetailsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */; };
+		7B8BE76529705650006AF159 /* PassengerDetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76429705650006AF159 /* PassengerDetailsCellViewModel.swift */; };
+		7B8BE76729705670006AF159 /* FlightNumberCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76629705670006AF159 /* FlightNumberCellViewModel.swift */; };
+		7B8BE76929705763006AF159 /* TrainNumberCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76829705763006AF159 /* TrainNumberCellViewModel.swift */; };
+		7B8BE76B29705794006AF159 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76A29705794006AF159 /* CommentCellViewModel.swift */; };
 		7B9532CB27B5642100B13FD1 /* LegalNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */; };
 		7B9532CD27B57FEC00B13FD1 /* LegalNoticePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */; };
 		7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F627C628DF00685B47 /* JourneyDetails.swift */; };
@@ -1231,6 +1240,15 @@
 		7B492613281304630051C5DD /* Bundle+current.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+current.swift"; sourceTree = "<group>"; };
 		7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+isNotEmpty.swift"; sourceTree = "<group>"; };
 		7B68F6AF284E2ED000F2E89B /* KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B74041B29716109000ED60A /* NewVehicleCapacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVehicleCapacity.swift; sourceTree = "<group>"; };
+		7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFreeCancelationTextWorker.swift; sourceTree = "<group>"; };
+		7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsView.swift; sourceTree = "<group>"; };
+		7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsViewModel.swift; sourceTree = "<group>"; };
+		7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailsCard.swift; sourceTree = "<group>"; };
+		7B8BE76429705650006AF159 /* PassengerDetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsCellViewModel.swift; sourceTree = "<group>"; };
+		7B8BE76629705670006AF159 /* FlightNumberCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightNumberCellViewModel.swift; sourceTree = "<group>"; };
+		7B8BE76829705763006AF159 /* TrainNumberCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNumberCellViewModel.swift; sourceTree = "<group>"; };
+		7B8BE76A29705794006AF159 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
 		7B9532CA27B5642100B13FD1 /* LegalNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeViewController.swift; sourceTree = "<group>"; };
 		7B9532CC27B57FEC00B13FD1 /* LegalNoticePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticePresenter.swift; sourceTree = "<group>"; };
 		7B98323728B8C163000C11FE /* LoyalityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalityMode.swift; sourceTree = "<group>"; };
@@ -2500,6 +2518,7 @@
 		51255B0E2966EA4300290A74 /* NewCheckout */ = {
 			isa = PBXGroup;
 			children = (
+				7B8BE763297055EC006AF159 /* ViewModels */,
 				51DB016F29702C4100F7DFFD /* Workers */,
 				51255B112966EB8700290A74 /* NewCheckout+MVPC.swift */,
 				51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */,
@@ -2831,6 +2850,7 @@
 		5CBA2A5F24F5D8CC0091D783 /* CheckoutScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7B74041D297191DA000ED60A /* Workers */,
 				51255B0E2966EA4300290A74 /* NewCheckout */,
 				5CBA2A6124F5D8CC0091D783 /* Checkout */,
 				5CBA2A6824F5D8CC0091D783 /* Components */,
@@ -2850,6 +2870,7 @@
 				5CBA2A6324F5D8CC0091D783 /* KarhooCheckoutPresenter.swift */,
 				7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */,
 				7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */,
+				7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -2867,10 +2888,12 @@
 		5CBA2A6824F5D8CC0091D783 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7B7404162970D9DD000ED60A /* PriceDetails */,
 				6B5B035126D7B7DC0001B2DB /* AddPassengerDetailsView */,
 				79ACDCE926CD2F45008820B5 /* CheckoutViews */,
 				5CBA2A6924F5D8CC0091D783 /* BookingButton */,
 				5CBA2A7024F5D8CC0091D783 /* TimePrice */,
+				7B74041B29716109000ED60A /* NewVehicleCapacity.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -3187,6 +3210,34 @@
 				7B492613281304630051C5DD /* Bundle+current.swift */,
 			);
 			path = "Bundle+extensions";
+			sourceTree = "<group>";
+		};
+		7B7404162970D9DD000ED60A /* PriceDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */,
+				7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */,
+			);
+			path = PriceDetails;
+			sourceTree = "<group>";
+		};
+		7B74041D297191DA000ED60A /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		7B8BE763297055EC006AF159 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7B8BE76429705650006AF159 /* PassengerDetailsCellViewModel.swift */,
+				7B8BE76629705670006AF159 /* FlightNumberCellViewModel.swift */,
+				7B8BE76829705763006AF159 /* TrainNumberCellViewModel.swift */,
+				7B8BE76A29705794006AF159 /* CommentCellViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		84E86C4E2913EC38002B924A /* BottomSheet */ = {
@@ -4432,6 +4483,7 @@
 				FCAD1C1422088A5300C3AD1D /* PrebookConfirmationFormatter.swift in Sources */,
 				FC83E2A8221ECC52008FE26D /* TripSummaryInfoMVP.swift in Sources */,
 				09C765B021DE688100CD81AB /* DestinationSetStrategy.swift in Sources */,
+				7B8BE76929705763006AF159 /* TrainNumberCellViewModel.swift in Sources */,
 				51453C612930F22400FBBCB5 /* AddToCalendarView.swift in Sources */,
 				5C1CD0B9241A5D88004AFF7D /* TripInfoView.swift in Sources */,
 				5C6267EA252CC24500AB6CD2 /* PaymentFactory.swift in Sources */,
@@ -4488,6 +4540,7 @@
 				79793ED8270F2E2200944896 /* UIViewController+extensions.swift in Sources */,
 				5190F00B2847858600F7623A /* AdyenPaymentManager.swift in Sources */,
 				407EC7BD22CF564E00F24CFC /* ConstraintSwitcher.swift in Sources */,
+				7B8BE76729705670006AF159 /* FlightNumberCellViewModel.swift in Sources */,
 				79ACDCE626CCB5FB008820B5 /* KarhooFleetCapabilitiesDetailsView.swift in Sources */,
 				407EC79E22CF564E00F24CFC /* NotificationMVP.swift in Sources */,
 				84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */,
@@ -4562,6 +4615,7 @@
 				FC83E2A3221ECC48008FE26D /* KarhooTripSummaryPresenter.swift in Sources */,
 				407EC7B522CF564E00F24CFC /* MailComposer.swift in Sources */,
 				84E86C502913EC66002B924A /* KarhooBottomSheetViewModel.swift in Sources */,
+				7B7404352971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift in Sources */,
 				6BF304F0275FA2920016CFC5 /* FeatureFlags.swift in Sources */,
 				FC435EF72211B37A00FB6BB5 /* RidesListViewController.swift in Sources */,
 				5C4252592518D06000CCCB5D /* CardRegistrationFlow.swift in Sources */,
@@ -4682,6 +4736,7 @@
 				5C1CD0BF241A8DB8004AFF7D /* KarhooTripDetailsView.swift in Sources */,
 				FC435F012211B39A00FB6BB5 /* RideCellViewModel.swift in Sources */,
 				5C1CD0B5241A5D88004AFF7D /* DriverDetailsMVP.swift in Sources */,
+				7B8BE762296FFF9F006AF159 /* VehicleDetailsCard.swift in Sources */,
 				408AB68523507DF600B351B2 /* FareExt.swift in Sources */,
 				846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */,
 				09F60CE9226756AF00023C74 /* SideMenuHandler.swift in Sources */,
@@ -4703,10 +4758,12 @@
 				51453C632930FDA000FBBCB5 /* AddToCalendarViewModel.swift in Sources */,
 				FC83E29E221ECC1C008FE26D /* DestinationEtaMVP.swift in Sources */,
 				FC0465A52215AA05004E76FE /* NavigationControllerDelegate.swift in Sources */,
+				7B8BE76B29705794006AF159 /* CommentCellViewModel.swift in Sources */,
 				4017C46A23CCB0230081834B /* EmptyStateView.swift in Sources */,
 				51F51B4C2864EB9B00CF345E /* ItemFilterButton.swift in Sources */,
 				6B5B035726D7B83F0001B2DB /* KarhooAddPassengerDetailsMVP.swift in Sources */,
 				407EC7E722CF564E00F24CFC /* KarhooEmptyDataSetView.swift in Sources */,
+				7B74041C29716109000ED60A /* NewVehicleCapacity.swift in Sources */,
 				407EC79922CF564E00F24CFC /* KarhooStackButtonView.swift in Sources */,
 				51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */,
 				51F614DB2861B5DE00A7EC11 /* FilterView.swift in Sources */,
@@ -4722,6 +4779,7 @@
 				51F4D57328574E1C00A8DB5E /* Booking+MVPR.swift in Sources */,
 				6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */,
 				51EFCA8A285756270099071C /* QuoteListFiltersCorrdinator.swift in Sources */,
+				7B7404362971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */,
 				518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */,
 				407EC7A822CF564E00F24CFC /* NibStrings.swift in Sources */,
 				0991068121B8291A00BD7E6F /* AddressSearchProvider.swift in Sources */,
@@ -4757,6 +4815,7 @@
 				09C765C321DE688100CD81AB /* TripAllocationMVP.swift in Sources */,
 				5C7B185225310E170001CFE6 /* TouchAreaEdgeInsets.swift in Sources */,
 				51801A30285B72F000EE6583 /* QuoteTypeFilter.swift in Sources */,
+				7B74041F297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift in Sources */,
 				84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */,
 				FC705B1E221322550001036E /* PopupDialogViewController.swift in Sources */,
 				51BA1F6428355BDB001C58E4 /* PaymentManager.swift in Sources */,
@@ -4797,6 +4856,7 @@
 				FC04659F2215A6AD004E76FE /* Navigation.swift in Sources */,
 				4038DF3D2444C6E00014539B /* KarhooPhoneInputView.swift in Sources */,
 				40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */,
+				7B8BE76529705650006AF159 /* PassengerDetailsCellViewModel.swift in Sources */,
 				6B2F88F727C628DF00685B47 /* JourneyDetails.swift in Sources */,
 				510522EA284F43CE001DA60F /* (null) in Sources */,
 				09C765B621DE688100CD81AB /* KarhooBookingPresenter.swift in Sources */,

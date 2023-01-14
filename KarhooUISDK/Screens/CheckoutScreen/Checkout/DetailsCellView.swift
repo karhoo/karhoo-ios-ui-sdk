@@ -10,29 +10,29 @@ import SwiftUI
 
 struct DetailsCellView: View {
     
-    @ObservedObject var model: DetailsCellViewModel
+    @ObservedObject var viewModel: DetailsCellViewModel
     weak var delegate: DetailsCellViewControllerProtocol?
 
     var body: some View {
         Group {
             HStack(spacing: UIConstants.Spacing.small) {
-                Image(uiImage: UIImage.uisdkImage(model.iconName))
+                Image(uiImage: UIImage.uisdkImage(viewModel.iconName))
                 .frame(
                     width: UIConstants.Dimension.Icon.large,
                     height: UIConstants.Dimension.Icon.large
                 )
                 .padding(.top, UIConstants.Spacing.xSmall)
                 .padding(.bottom, UIConstants.Spacing.xSmall)
-                .foregroundColor(KarhooUI.colors.primary.getColor())
+                .foregroundColor(Color(KarhooUI.colors.primary))
             VStack(alignment: .leading) {
-                Text(model.title)
+                Text(viewModel.title)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
-                Text(model.subtitle)
+                    .foregroundColor(Color(KarhooUI.colors.text))
+                Text(viewModel.subtitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.footnoteRegular()))
-                    .foregroundColor(KarhooUI.colors.textLabel.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.textLabel))
             }
                 Spacer()
                 Image(uiImage:
@@ -53,21 +53,30 @@ struct DetailsCellView: View {
         .background(
             RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                 .stroke(
-                    KarhooUI.colors.border.getColor(),
+                    Color(KarhooUI.colors.border),
                     lineWidth: UIConstants.Dimension.Border.standardWidth
                 )
         ).background(
             RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                .fill(KarhooUI.colors.background2.getColor())
+                .fill(Color(KarhooUI.colors.background2))
         )
         .onTapGesture(perform: {
-            delegate?.onTap()
+            delegate?.onTap() // will be removed when Old Checkout will be removed
+            viewModel.onTap()
         })
     }
 }
 
 struct DetailsViewCellPreviews: PreviewProvider {
     static var previews: some View {
-        DetailsCellView(model: DetailsCellViewModel(title: "Passanger", subtitle: "add details", iconName: "kh_uisdk_passenger"), delegate: nil)
+        DetailsCellView(
+            viewModel: DetailsCellViewModel(
+                title: "Passanger",
+                subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                iconName: "kh_uisdk_passenger",
+                onTap: {print("tapped")}
+            ),
+            delegate: nil
+        )
     }
 }

@@ -175,17 +175,17 @@ final class VehicleCapacityView: UIStackView {
         alignment = .center
         distribution = .fillProportionally
         
-        baggageContentView.addSubview(baggageBackgroundView)
-        baggageBackgroundView.addSubview(baggageImageView)
-        baggageContentView.addSubview(baggageCapacityNumberCircleView)
-        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
-        addArrangedSubview(baggageContentView)
-        
         passengerCapacityContentView.addSubview(passengerCapacityBackgroundView)
         passengerCapacityBackgroundView.addSubview(passengerCapacityImageView)
         passengerCapacityContentView.addSubview(passengerCapacityCircleView)
         passengerCapacityCircleView.addSubview(passengerCapacityLabel)
         addArrangedSubview(passengerCapacityContentView)
+        
+        baggageContentView.addSubview(baggageBackgroundView)
+        baggageBackgroundView.addSubview(baggageImageView)
+        baggageContentView.addSubview(baggageCapacityNumberCircleView)
+        baggageCapacityNumberCircleView.addSubview(baggageCapacityLabel)
+        addArrangedSubview(baggageContentView)
         
         setUpConstraints()
         
