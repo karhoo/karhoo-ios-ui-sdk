@@ -69,13 +69,19 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let quote: Quote
     private let journeyDetails: JourneyDetails
     private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo?
+    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
+    private let journeyDetails: JourneyDetails
     private let bookingMetadata: [String: Any]?
     private var comments: String?
     private let callback: ScreenResultCallback<KarhooCheckoutResult>
+    private var carIconUrl: String = ""
 
+    let quote: Quote
+    @Published var bottomButtonText = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
     var termsAndConditionsAccepted: Bool = false
+    var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
+    var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
     // MARK: - Init & Config
 
