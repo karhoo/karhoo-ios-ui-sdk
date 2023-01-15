@@ -37,7 +37,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
-	var termsConditionsViewModel = TermsConditionsView.ViewModel()
+    var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticePresenter: LegalNoticePresenter = KarhooLegalNoticePresenter()
 
     private let router: NewCheckoutRouter
@@ -96,6 +96,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
         flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
         commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
+        termsConditionsViewModel = KarhooTermsConditionsViewModel(
+            supplier: quote.fleet.name,
+            termsStringURL: quote.fleet.termsConditionsUrl
+        )
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
@@ -117,7 +121,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Get simple data to display
 
     func getDateScheduledDescription() -> String {
-        let date = trip?.dateScheduled ?? Date()
+        let date = journeyDetails.scheduledDate ?? Date()
         let dateFormatted = dateFormatter.display(
             date,
             dateStyle: .long,

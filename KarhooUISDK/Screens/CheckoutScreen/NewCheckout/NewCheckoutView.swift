@@ -45,7 +45,12 @@ struct NewCheckoutView: View {
                     }
                     .padding(.top, UIConstants.Spacing.standard)
                     .padding(.horizontal, UIConstants.Spacing.standard)
-                    
+
+                    KarhooTermsConditionsView(viewModel: viewModel.termsConditionsViewModel)
+                        .padding(.vertical, UIConstants.Spacing.large)
+                        .padding(.horizontal, UIConstants.Spacing.standard)
+
+
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)

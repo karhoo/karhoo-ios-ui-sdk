@@ -48,7 +48,7 @@ public struct TermsConditionsStringBuilder {
         paragraphStyle.alignment = .center
 
         let regularAttributes: [NSAttributedString.Key: Any] = [
-            .font: KarhooUI.fonts.captionRegular(),
+            .font: KarhooUI.fonts.captionSemibold(),
             .foregroundColor: KarhooUI.colors.text
         ]
         
@@ -106,7 +106,7 @@ public struct TermsConditionsStringBuilder {
         paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
 
         let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                                .foregroundColor: KarhooUI.colors.primaryTextColor,
+                                                                .foregroundColor: KarhooUI.colors.text,
                                                                 .paragraphStyle: paragraphStyle]
 
         let dpPolicyAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
