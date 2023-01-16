@@ -36,6 +36,12 @@ struct NewCheckoutView: View {
                         VehicleDetailsCard(
                             viewModel: viewModel.getVehicleDetailsCardViewModel()
                         )
+                        
+                        if viewModel.showLoyaltyView() {
+                            // init Loyaltyview with viewModel.getLoyaltyViewModel()
+                            Rectangle().frame(width: 300, height: 200).background(Color.red)
+                        }
+                        
                         VStack(spacing: UIConstants.Spacing.standard) {
                             DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
                             if viewModel.showFlightNumberCell {
