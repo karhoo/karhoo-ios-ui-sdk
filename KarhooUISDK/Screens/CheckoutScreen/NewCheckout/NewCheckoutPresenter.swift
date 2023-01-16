@@ -38,7 +38,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
-    var legalNoticePresenter: LegalNoticePresenter = KarhooLegalNoticePresenter()
+    var legalNoticeViewModel: KarhooLegalNoticeViewModel!
 
     private let router: NewCheckoutRouter
 
@@ -100,6 +100,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        legalNoticeViewModel = KarhooLegalNoticeViewModel()
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
