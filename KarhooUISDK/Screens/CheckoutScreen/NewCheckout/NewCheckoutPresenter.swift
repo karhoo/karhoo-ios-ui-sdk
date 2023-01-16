@@ -64,27 +64,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
-    // MARK: - Properties
-
-    private var cancellables: Set<AnyCancellable> = []
-
-    private let quote: Quote
-    private let journeyDetails: JourneyDetails
-    private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
-    private let journeyDetails: JourneyDetails
-    private let bookingMetadata: [String: Any]?
-    private var comments: String?
-    private let callback: ScreenResultCallback<KarhooCheckoutResult>
-    private var carIconUrl: String = ""
-
-    let quote: Quote
-    @Published var bottomButtonText = UITexts.Booking.next.uppercased()
-    @Published var quoteExpired: Bool = false
-    var termsAndConditionsAccepted: Bool = false
-    var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
-    var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
-
     // MARK: - Init & Config
 
     init(
@@ -209,88 +188,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         provider.getRule(for: quote) { [weak self] rule in
             self?.carIconUrl = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
-    }
-
-    // MARK: Interactions
-
-    func didTapPassenger() {
-        // TODO: - handle passenger flow
-    }
-
-    func didTapOptions() {
-        // TODO: - handle options flow
-    }
-
-    func didTapFlightNumber() {
-        // TODO: - handle flight number flow
-    }
-
-    func didSetTermsAndConditions(_ termsAndConditionsSelected: Bool) {
-        // TODO: - handle t&c flow
-    }
-
-    func didSetComment(_ comment: String) {
-        // TODO: - handle comment flow
-    }
-
-    func didTapConfirm() {
-        // MARK: - Validate & proceed with payment flow
-        guard validateIfAllRequiredDataAreProvided() else {
-            return
-        }
-        submitBooking()
-    }
-
-    // MARK: - Booking
-
-    private func submitBooking() {
-        paymentsWorker.performBooking()
-    }
-
-    // MARK: - Analytics
-
-    private func reportScreenOpened() {
-        analytics.checkoutOpened(quote)
-    }
-
-    private func reportBookingEvent(quoteId: String) {
-        analytics.bookingRequested(quoteId: quoteId)
-    }
-
-    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
-    }
-
-    private func reportBookingFailure(message: String, correlationId: String?) {
-        analytics.bookingFailure(
-            quoteId: quote.id,
-            correlationId: correlationId ?? "",
-            message: message,
-            lastFourDigits: paymentsWorker.getPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
-        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
     }
 
     // MARK: Interactions
