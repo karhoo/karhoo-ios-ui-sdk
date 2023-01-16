@@ -17,6 +17,5 @@ struct KarhooLegalNoticeView: View {
             .autoDetectDataTypes(.all)
             .isSelectable(true)
             .isEditable(false)
-        )
     }
 }
