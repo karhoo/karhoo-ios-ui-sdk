@@ -70,7 +70,7 @@ struct NewCheckoutView: View {
                                                 Image("kh_uisdk_drop_down_icon", bundle: .current)
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .rotationEffect(getArrowRotationAnge())
+                                                    .rotationEffect(getArrowRotationAngle())
                                                     .foregroundColor(Color(KarhooUI.colors.accent))
                                                     .frame(
                                                         width: UIConstants.Dimension.Icon.standard,
@@ -191,7 +191,7 @@ struct NewCheckoutView: View {
 
     // MARK: - Helpers
 
-    private func getArrowRotationAnge() -> Angle {
+    private func getArrowRotationAngle() -> Angle {
         switch showLegalNotice {
         case true:
             return Angle(degrees: 180)

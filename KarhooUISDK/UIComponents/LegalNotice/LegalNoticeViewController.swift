@@ -19,7 +19,7 @@ public struct KHLegalNoticeViewID {
 final class LegalNoticeViewController: UIViewController, BaseViewController {
     
     private var zeroHeightTextConstreint: NSLayoutConstraint!
-    private let shouldShowView = true // UITexts.Booking.legalNoticeText.isNotEmpty
+    private let shouldShowView = UITexts.Booking.legalNoticeText.isNotEmpty
     private let presenter: LegalNoticePresenter
 
     private lazy var legalNoticeButton: KarhooExpandViewButton = {

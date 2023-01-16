@@ -50,7 +50,7 @@ struct LegalNoticeStringBuilder {
     }
 }
 
-private let mockLegalNoticeLink: String = "all-mobility.data.privacy@accor.com"
+private let mockLegalNoticeLink: String = "hexonec587@v3dev.com"
 private let mockLegalNotice: String = """
-The data collected are subject to processing by Accor SA for the purpose of managing your booking, getting to know you better, improving the services we provide and the customer experience. These data are sent to Accor SA, restaurants and Accor SA subcontractors. Your data may be transferred outside the European Union when this is necessary for the fulfilment or preparation of your reservation, or when appropriate and adapted guarantees have been established. You have the right to request access to your data, their rectification or erasure, to object to their processing, and to define directives concerning the processing of your data after your death by writing to the following address: all-mobility.data.privacy@accor.com. For more information on the processing of your personal data, please see our personal data protection charter.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil hexonec587@v3dev.com, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
 """
