@@ -49,10 +49,11 @@ struct TextView: View {
     ///   - shouldEditInRange: A closure that's called before an edit it applied, allowing the consumer to prevent the change
     ///   - onEditingChanged: A closure that's called after an edit has been applied
     ///   - onCommit: If this is provided, the field will automatically lose focus when the return key is pressed
-    init(_ text: Binding<String>,
-                shouldEditInRange: ((Range<String.Index>, String) -> Bool)? = nil,
-                onEditingChanged: (() -> Void)? = nil,
-                onCommit: (() -> Void)? = nil
+    init(
+        _ text: Binding<String>,
+        shouldEditInRange: ((Range<String.Index>, String) -> Bool)? = nil,
+        onEditingChanged: (() -> Void)? = nil,
+        onCommit: (() -> Void)? = nil
     ) {
         _text = Binding(
             get: { NSAttributedString(string: text.wrappedValue) },
@@ -76,9 +77,10 @@ struct TextView: View {
     ///   - text: A binding to the attributed text
     ///   - onEditingChanged: A closure that's called after an edit has been applied
     ///   - onCommit: If this is provided, the field will automatically lose focus when the return key is pressed
-    init(_ text: Binding<NSAttributedString>,
-                onEditingChanged: (() -> Void)? = nil,
-                onCommit: (() -> Void)? = nil
+    init(
+        _ text: Binding<NSAttributedString>,
+        onEditingChanged: (() -> Void)? = nil,
+        onCommit: (() -> Void)? = nil
     ) {
         _text = text
         _isEmpty = Binding(
@@ -199,11 +201,12 @@ private extension TextView.Representable {
         var onEditingChanged: (() -> Void)?
         var shouldEditInRange: ((Range<String.Index>, String) -> Bool)?
 
-        init(text: Binding<NSAttributedString>,
-             calculatedHeight: Binding<CGFloat>,
-             shouldEditInRange: ((Range<String.Index>, String) -> Bool)?,
-             onEditingChanged: (() -> Void)?,
-             onCommit: (() -> Void)?
+        init(
+            text: Binding<NSAttributedString>,
+            calculatedHeight: Binding<CGFloat>,
+            shouldEditInRange: ((Range<String.Index>, String) -> Bool)?,
+            onEditingChanged: (() -> Void)?,
+            onCommit: (() -> Void)?
         ) {
             textView = UIKitTextView()
             textView.backgroundColor = .clear
