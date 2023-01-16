@@ -135,7 +135,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
                 return ""
             }
-            return (Calendar.current.standaloneWeekdaySymbols[safe: weekdayIndex] ?? "") + ", "
+            return (Calendar.current.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
         }()
         return "\(weekday)\(dateFormatted)".uppercased()
     }
