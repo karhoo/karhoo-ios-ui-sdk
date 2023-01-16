@@ -12,52 +12,102 @@ struct NewCheckoutView: View {
 
     enum Constants {
         static let addressViewHeight: CGFloat = 100
+        static let bottomPadding: CGFloat = 80
+        static let legalNoticeViewId = "legalNoticeViewId"
     }
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: KarhooNewCheckoutViewModel
+    @State private var showLegalNotice: Bool = false
 
     var body: some View {
 
         ZStack {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
+            ScrollViewReader { scrollViewProxy in
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
-                        dateView
-                        addressView
-                    }
-                    .padding(.horizontal, UIConstants.Spacing.standard)
-                    .background(Color(KarhooUI.colors.background2))
-                    .padding(.bottom, UIConstants.Spacing.small)
-                    
-                    VehicleDetailsCard(
-                        viewModel: viewModel.getVehicleDetailsCardViewModel()
-                    )
-                    VStack(spacing: UIConstants.Spacing.standard) {
-                        DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
-                        if viewModel.showFlightNumberCell {
-                            DetailsCellView(viewModel: viewModel.flightNumberCellViewModel)
+                        VStack(spacing: 0) {
+                            dateView
+                            addressView
                         }
-                        if viewModel.showTrainNumberCell {
-                            DetailsCellView(viewModel: viewModel.trainNumberCellViewModel)
+                        .padding(.horizontal, UIConstants.Spacing.standard)
+                        .background(Color(KarhooUI.colors.background2))
+                        .padding(.bottom, UIConstants.Spacing.small)
+
+                        VehicleDetailsCard(
+                            viewModel: viewModel.getVehicleDetailsCardViewModel()
+                        )
+                        VStack(spacing: UIConstants.Spacing.standard) {
+                            DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
+                            if viewModel.showFlightNumberCell {
+                                DetailsCellView(viewModel: viewModel.flightNumberCellViewModel)
+                            }
+                            if viewModel.showTrainNumberCell {
+                                DetailsCellView(viewModel: viewModel.trainNumberCellViewModel)
+                            }
+                            DetailsCellView(viewModel: viewModel.commentCellViewModel)
+
+                            KarhooTermsConditionsView(viewModel: viewModel.termsConditionsViewModel)
+                                .padding(.vertical, UIConstants.Spacing.large)
+
+                            // Legal Notice button
+                            if viewModel.legalNoticeViewModel.shouldShowView {
+                                HStack {
+                                    Spacer()
+                                    Button(
+                                        action: {
+                                            withAnimation {
+                                                showLegalNotice.toggle()
+                                                if showLegalNotice {
+                                                    scrollViewProxy.scrollTo(Constants.legalNoticeViewId, anchor: .bottom)
+                                                }
+                                            }
+                                        },
+                                        label: {
+                                            HStack(spacing: UIConstants.Spacing.small) {
+                                                Text(UITexts.Booking.legalNotice)
+                                                    .foregroundColor(Color(KarhooUI.colors.accent))
+                                                    .font(Font(KarhooUI.fonts.captionSemibold()))
+                                                Image("kh_uisdk_drop_down_icon", bundle: .current)
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .rotationEffect(getArrowRotationAngle())
+                                                    .foregroundColor(Color(KarhooUI.colors.accent))
+                                                    .frame(
+                                                        width: UIConstants.Dimension.Icon.standard,
+                                                        height: UIConstants.Dimension.Icon.standard
+                                                    )
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+
+                            if showLegalNotice {
+                                KarhooLegalNoticeView(viewModel: viewModel.legalNoticeViewModel)
+
+                            }
+                            Spacer()
                         }
-                        DetailsCellView(viewModel: viewModel.commentCellViewModel)
-                        
+                        .padding(.top, UIConstants.Spacing.standard)
+                        .padding(.horizontal, UIConstants.Spacing.standard)
+
+                        Spacer()
                     }
-                    .padding(.top, UIConstants.Spacing.standard)
-                    .padding(.horizontal, UIConstants.Spacing.standard)
-                    
-                    Spacer()
+                    .frame(maxWidth: .infinity)
+                    .id(Constants.legalNoticeViewId)
                 }
-                .frame(maxWidth: .infinity)
+                .padding(.bottom, Constants.bottomPadding)
+                .onAppear {
+                    UIScrollView.appearance().bounces = false
+                }
+                .onDisappear {
+                    UIScrollView.appearance().bounces = true
+                }
             }
-            .onAppear {
-                UIScrollView.appearance().bounces = false
-            }
-            .onDisappear {
-                UIScrollView.appearance().bounces = true
-            }
+
             priceView
         }
+
         .frame(maxWidth: .infinity)
         .onAppear {
             viewModel.onAppear()
@@ -117,8 +167,8 @@ struct NewCheckoutView: View {
                             Image(uiImage: .uisdkImage("kh_uisdk_help_circle")
                                 .coloured(withTint: KarhooUI.colors.text)
                             )
-                                .resizable()
-                                .frame(
+                            .resizable()
+                            .frame(
                                 width: UIConstants.Dimension.Icon.medium,
                                 height: UIConstants.Dimension.Icon.medium
                             )
@@ -129,7 +179,7 @@ struct NewCheckoutView: View {
                     }
                     Spacer()
                     KarhooMainButton(title: viewModel.bottomButtonText) {
-                        return
+                        viewModel.didTapConfirm()
                     }
                     .frame(width: (geometry.size.width - 3 * UIConstants.Spacing.standard) * 0.4)
                 }
@@ -139,7 +189,18 @@ struct NewCheckoutView: View {
         }
     }
 
-	private var quoteExpiredAlert: Alert {
+    // MARK: - Helpers
+
+    private func getArrowRotationAngle() -> Angle {
+        switch showLegalNotice {
+        case true:
+            return Angle(degrees: 180)
+        case false:
+            return Angle(degrees: 0)
+        }
+    }
+
+    private var quoteExpiredAlert: Alert {
         Alert(
             title: Text(UITexts.Booking.quoteExpiredTitle),
             message: Text(UITexts.Booking.quoteExpiredMessage),
@@ -147,5 +208,5 @@ struct NewCheckoutView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         )
-	}
+    }
 }

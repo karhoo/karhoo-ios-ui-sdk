@@ -40,6 +40,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var trainNumberCellViewModel: TrainNumberCellViewModel
     var flightNumberCellViewModel: FlightNumberCellViewModel
     var commentCellViewModel: CommentCellViewModel
+    var termsConditionsViewModel: KarhooTermsConditionsViewModel
+    var legalNoticeViewModel: KarhooLegalNoticeViewModel!
 
     private let router: NewCheckoutRouter
 
@@ -97,6 +99,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
         flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
         commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
+        termsConditionsViewModel = KarhooTermsConditionsViewModel(
+            supplier: quote.fleet.name,
+            termsStringURL: quote.fleet.termsConditionsUrl
+        )
+        legalNoticeViewModel = KarhooLegalNoticeViewModel()
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
@@ -118,7 +125,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Get simple data to display
 
     func getDateScheduledDescription() -> String {
-        let date = trip?.dateScheduled ?? Date()
+        let date = journeyDetails.scheduledDate ?? Date()
         let dateFormatted = dateFormatter.display(
             date,
             dateStyle: .long,
@@ -128,7 +135,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
                 return ""
             }
-            return (Calendar.current.standaloneWeekdaySymbols[safe: weekdayIndex] ?? "") + ", "
+            return (Calendar.current.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
         }()
         return "\(weekday)\(dateFormatted)".uppercased()
     }

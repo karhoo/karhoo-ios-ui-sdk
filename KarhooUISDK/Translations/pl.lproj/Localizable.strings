@@ -251,7 +251,7 @@
 
 "kh_uisdk_call" = "POŁĄCZ Z KIEROWCĄ";
 
-"kh_uisdk_cancel" = "ANULUJ";
+"kh_uisdk_cancel" = "Anuluj";
 
 "kh_uisdk_cancel_ride" = "Anuluj przejazd";
 
@@ -977,7 +977,7 @@
 
 "kh_uisdk_something_went_wrong_select_another_quote" = "Przykro nam, coś poszło nie tak. Spróbuj ponownie lub wybierz inną ofertę.";
 
-"kh_uisdk_sort_by" = "Sortuj według";
+"kh_uisdk_sort_by" = "Sortuj";
 
 "kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 

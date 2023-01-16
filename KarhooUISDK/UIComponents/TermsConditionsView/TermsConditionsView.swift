@@ -8,19 +8,18 @@
 
 import UIKit
 import KarhooSDK
+import SwiftUI
 
-@available(*, deprecated, message: "Public access to this protocol will be removed in next release")
-public protocol TermsConditionsViewDelegate: AnyObject {
+protocol TermsConditionsViewDelegate: AnyObject {
     func selectedRegistrationTermsConditions()
 }
 
-public struct KHTermsConditionsViewID {
-    public static let view = "terms_conditions_view"
-    public static let textView = "terms_text_view"
+struct KHTermsConditionsViewID {
+    static let view = "terms_conditions_view"
+    static let textView = "terms_text_view"
 }
 
-@available(*, deprecated, message: "Public access to this view will be removed in next release")
-public final class TermsConditionsView: UIView, UITextViewDelegate {
+final class TermsConditionsView: UIView, UITextViewDelegate {
 
     // MARK: - Nested type
 
@@ -37,7 +36,7 @@ public final class TermsConditionsView: UIView, UITextViewDelegate {
         checkboxView.isSelected
     }
 
-    private let isAcceptanceRequired: Bool
+    private var isAcceptanceRequired: Bool
 
     // MARK: Views
 
