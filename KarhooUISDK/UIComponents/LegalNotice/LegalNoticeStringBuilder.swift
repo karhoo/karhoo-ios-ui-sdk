@@ -32,7 +32,14 @@ struct LegalNoticeStringBuilder {
             .paragraphStyle: paragraphStyle,
             NSAttributedString.Key(rawValue: "link"): "link"
         ]
-        let fullText = String(format: NSLocalizedString(UITexts.Booking.legalNoticeText, comment: ""), titleForLink)
+        var text: String {
+            #if DEBUG
+            mockLegalNotice
+            #else
+            UITexts.Booking.legalNoticeText
+            #endif
+        }
+        let fullText = String(format: NSLocalizedString(text, comment: ""), titleForLink)
         legalNoticeText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
         if LinkParser().canOpen(link) {
             let legalNoticeString: NSString = legalNoticeText.string as NSString
