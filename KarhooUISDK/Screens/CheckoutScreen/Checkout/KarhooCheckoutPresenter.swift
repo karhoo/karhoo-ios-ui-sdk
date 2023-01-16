@@ -204,6 +204,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
 
     // MARK: - Book
+
     func completeBookingFlow() {
         if !arePassengerDetailsValid() || getPaymentNonceAccordingToAuthState() == nil {
             return
@@ -298,7 +299,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func book(paymentNonce: String, passenger: PassengerDetails, flightNumber: String?) {
-        
         if isLoyaltyEnabled(),
             let view = view {
             
@@ -680,11 +680,11 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
             currency: quote.price.currencyCode
         )
     }
-    
+
     private func reportCardAuthorisationSuccess() {
         analytics.cardAuthorisationSuccess(quoteId: quote.id)
     }
-    
+
     private func reportCardAuthorisationFailure(message: String) {
         analytics.cardAuthorisationFailure(
             quoteId: quote.id,

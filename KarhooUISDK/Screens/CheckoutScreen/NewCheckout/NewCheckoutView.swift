@@ -13,6 +13,7 @@ struct NewCheckoutView: View {
     enum Constants {
         static let addressViewHeight: CGFloat = 100
     }
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: KarhooNewCheckoutViewModel
 
     var body: some View {
@@ -57,8 +58,14 @@ struct NewCheckoutView: View {
             }
             priceView
         }
+        .frame(maxWidth: .infinity)
+        .onAppear {
+            viewModel.onAppear()
+        }
+        .alert(isPresented: $viewModel.quoteExpired) {
+            quoteExpiredAlert
+        }
     }
-
 
     @ViewBuilder
     private var dateView: some View {
@@ -131,4 +138,14 @@ struct NewCheckoutView: View {
             }
         }
     }
+
+	private var quoteExpiredAlert: Alert {
+        Alert(
+            title: Text(UITexts.Booking.quoteExpiredTitle),
+            message: Text(UITexts.Booking.quoteExpiredMessage),
+            dismissButton: .default(Text(UITexts.Generic.ok)) {
+                presentationMode.wrappedValue.dismiss()
+            }
+        )
+	}
 }
