@@ -13,9 +13,12 @@ import SwiftUI
 import Combine
 
 enum NewCheckoutState {
+    /// Screen is locked and user's interactions are disabled. Used for crucial data loading (like payment confirmation)
     case loading
-    case idle
-    case scheduled
+    /// UI is enabled but some data's missing in order to proceed with booking, so user needs to provide them.
+    case gatheringInfo
+    /// UI is enabled and all data's in place. Scene is waiting for user's confirmation.
+    case readyToBook
 }
 
 final class KarhooNewCheckoutViewModel: ObservableObject {
