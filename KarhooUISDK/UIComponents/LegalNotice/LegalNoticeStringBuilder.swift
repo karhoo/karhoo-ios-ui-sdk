@@ -16,7 +16,7 @@ struct LegalNoticeStringBuilder {
         paragraphStyle.alignment = .left
         paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
         
-        let titleForLink: String = UITexts.Booking.legalNoticeTitle
+        let titleForLink: String = "quo voluptas nulla pariatur" // UITexts.Booking.legalNoticeTitle
         let link = UITexts.Booking.legalNoticeLink
         let legalNoticeText = NSMutableAttributedString()
         let regularAttributes: [NSAttributedString.Key: Any] = [
@@ -24,7 +24,7 @@ struct LegalNoticeStringBuilder {
             .foregroundColor: KarhooUI.colors.text,
             .paragraphStyle: paragraphStyle
         ]
-        let linkAttibutes: [NSAttributedString.Key: Any] = [
+        var linkAttibutes: [NSAttributedString.Key: Any] = [
             .font: KarhooUI.fonts.captionRegular(),
             .foregroundColor: KarhooUI.colors.accent,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
@@ -32,6 +32,9 @@ struct LegalNoticeStringBuilder {
             .paragraphStyle: paragraphStyle,
             NSAttributedString.Key(rawValue: "link"): "link"
         ]
+        if let linkUrl = URL(string: link) {
+            linkAttibutes[.link] = linkUrl
+        }
         var text: String {
             #if DEBUG
             mockLegalNotice
