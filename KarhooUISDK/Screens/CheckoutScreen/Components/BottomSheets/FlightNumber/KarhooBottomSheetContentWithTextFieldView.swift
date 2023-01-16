@@ -19,8 +19,9 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
     var body: some View {
         VStack( alignment: .leading, spacing: 0){
             Text(viewModel.viewSubtitle)
-            TextField(viewModel.textFieldHint, text: $textFieldText)
-            
+            KarhooNewTextField(textFieldText: $textFieldText, hint: viewModel.textFieldHint)
+                .padding(.bottom, UIConstants.Spacing.standard)
+                .padding(.top, UIConstants.Spacing.xLarge)
             KarhooMainButton(title: viewModel.buttonText) {
                 viewModel.didTapSave(textFieldValue: textFieldText)
             }
