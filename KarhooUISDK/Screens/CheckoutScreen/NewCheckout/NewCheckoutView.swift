@@ -179,7 +179,7 @@ struct NewCheckoutView: View {
                     }
                     Spacer()
                     KarhooMainButton(title: viewModel.bottomButtonText) {
-                        return
+                        viewModel.didTapConfirm()
                     }
                     .frame(width: (geometry.size.width - 3 * UIConstants.Spacing.standard) * 0.4)
                 }

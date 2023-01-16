@@ -171,31 +171,3 @@ final class TermsConditionsView: UIView, UITextViewDelegate {
         URL(string: stringURL) ?? TermsConditionsStringBuilder.karhooTermsURL()
     }
 }
-
-// MARK: - UIViewRepresentable
-extension TermsConditionsView {
-    struct SwiftUIView: UIViewRepresentable {
-
-        let viewModel: ViewModel
-
-        func makeUIView(context: Context) -> TermsConditionsView {
-            TermsConditionsView(isAcceptanceRequired: viewModel.isAcceptanceRequired)
-        }
-
-        func updateUIView(_ uiView: TermsConditionsView, context: Context) {
-            viewModel.confirmed = uiView.isAccepted
-            uiView.isAcceptanceRequired = viewModel.isAcceptanceRequired
-            uiView.setText(viewModel.text)
-        }
-    }
-
-    class ViewModel: ObservableObject {
-        var isAcceptanceRequired: Bool { true }
-        @Published var text: NSMutableAttributedString
-        @Published var confirmed: Bool = false
-
-        init() {
-            self.text = .init(string: "test terms and conditions string")
-        }
-    }
-}
