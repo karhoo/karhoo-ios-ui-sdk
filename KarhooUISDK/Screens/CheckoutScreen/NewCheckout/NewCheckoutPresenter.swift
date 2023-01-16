@@ -48,10 +48,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - Vaiables for views
     
     @Published var bottomButtonText: String = UITexts.Booking.next.uppercased()
-    var passangerDetailsViewModel: PassengerDetailsCellViewModel
-    var trainNumberCellViewModel: TrainNumberCellViewModel
-    var flightNumberCellViewModel: FlightNumberCellViewModel
-    var commentCellViewModel: CommentCellViewModel
+    var passangerDetailsViewModel: PassengerDetailsCellViewModel!
+    var trainNumberCellViewModel: TrainNumberCellViewModel!
+    var flightNumberCellViewModel: FlightNumberCellViewModel!
+    var commentCellViewModel: CommentCellViewModel!
     
     var showTrainNumberCell: Bool = false
     var showFlightNumberCell: Bool = false
@@ -99,8 +99,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
         passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
-        trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
-        flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
+        trainNumberCellViewModel = TrainNumberCellViewModel(onTap: showTrainNumberBottomSheet)
+        flightNumberCellViewModel = FlightNumberCellViewModel(onTap: showFlightNumberBottomSheet)
         commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
         showTrainNumberCell = shouldShowTrainNumberCell()
         showFlightNumberCell = shouldShowFlightNumberCell()
@@ -202,13 +202,29 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         journeyDetails.originLocationDetails?.details.type == .airport
     }
         
-    // MARK: - Price Details
+    // MARK: - Bottom sheets
     
     /// Called when the user taps on the price details section of the screen
     func showPriceDetails() {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType
+        )
+    }
+    
+    /// Called when the user taps on the flight number cell
+    func showFlightNumberBottomSheet() {
+        router.routeToFlightNumber(
+            title: UITexts.Booking.flightTitle,
+            flightNumber: flightNumberCellViewModel.getFlightNumber()
+        )
+    }
+    
+    /// Called when the user taps on the train number cell
+    func showTrainNumberBottomSheet() {
+        router.routeToTrainNumber(
+            title: UITexts.Booking.trainTitle,
+            trainNumber: trainNumberCellViewModel.getTrainNumber()
         )
     }
 }

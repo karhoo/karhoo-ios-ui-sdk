@@ -9,6 +9,8 @@
 import Foundation
 
 class TrainNumberCellViewModel: DetailsCellViewModel {
+    
+    private var trainNumber: String = ""
     init(onTap: @escaping () -> Void){
         super.init(
             title: UITexts.Booking.trainTitle,
@@ -16,5 +18,18 @@ class TrainNumberCellViewModel: DetailsCellViewModel {
             iconName: "kh_uisdk_train_number",
             onTap: onTap
         )
+    }
+    
+    func getTrainNumber() -> String {
+        return trainNumber
+    }
+    
+    private func getSubtitle() -> String {
+        trainNumber.isNotEmpty ? trainNumber : UITexts.Booking.trainSubtitle
+    }
+    
+    func setTrainNumber(trainNumber: String) {
+        self.trainNumber = trainNumber
+        subtitle = getSubtitle()
     }
 }

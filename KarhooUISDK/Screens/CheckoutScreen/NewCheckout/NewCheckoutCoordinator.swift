@@ -62,4 +62,58 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         viewController.modalPresentationStyle = .overFullScreen
         baseViewController.present(viewController, animated: true, completion: nil)
     }
+    
+    func routeToFlightNumber(title: String, flightNumber: String) {
+        guard let presenter = presenter else { return }
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title) { [weak self] in
+                self?.baseViewController.dismiss(animated: true, completion: nil)
+            }
+        
+        let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
+            initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
+            viewSubtitle: UITexts.Booking.flightSubtitle,
+            textFieldHint: UITexts.Booking.flightExcample
+        ){
+            [weak self] newFlightNumber in
+            self?.presenter?.flightNumberCellViewModel.setFlightNumber(flightNumber: newFlightNumber)
+            self?.baseViewController.dismiss(animated: true, completion: nil)
+            
+        }
+        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
+            KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
+        }
+        
+        let viewController = UIHostingController(rootView: bottomSheet)
+        viewController.view.backgroundColor = UIColor.clear
+        viewController.modalPresentationStyle = .overFullScreen
+        baseViewController.present(viewController, animated: true, completion: nil)
+    }
+    
+    func routeToTrainNumber(title: String, trainNumber: String) {
+        guard let presenter = presenter else { return }
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title) { [weak self] in
+                self?.baseViewController.dismiss(animated: true, completion: nil)
+            }
+        
+        let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
+            initialValueForTextField: presenter.trainNumberCellViewModel.getTrainNumber(),
+            viewSubtitle: UITexts.Booking.trainSubtitle,
+            textFieldHint: UITexts.Booking.trainExcample
+        ){
+            [weak self] newTrainNumber in
+            self?.presenter?.trainNumberCellViewModel.setTrainNumber(trainNumber: newTrainNumber)
+            self?.baseViewController.dismiss(animated: true, completion: nil)
+            
+        }
+        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
+            KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
+        }
+        
+        let viewController = UIHostingController(rootView: bottomSheet)
+        viewController.view.backgroundColor = UIColor.clear
+        viewController.modalPresentationStyle = .overFullScreen
+        baseViewController.present(viewController, animated: true, completion: nil)
+    }
 }
