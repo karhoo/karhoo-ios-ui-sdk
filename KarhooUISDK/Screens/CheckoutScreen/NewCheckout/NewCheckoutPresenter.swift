@@ -32,7 +32,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let userService: UserService
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
+    private let bookingWorker: KarhooNewCheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
     private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
@@ -110,6 +110,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        self.bookingWorker = KarhooNewCheckoutBookingWorker(quote: quote)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -119,6 +120,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - Endpoints
 
     func onAppear() {
+        reportScreenOpened()
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
             self?.quoteExpired = true
         }
@@ -217,7 +219,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - State/main flow methods
 
     private func setupBinding() {
-        paymentsWorker.$bookingState
+        bookingWorker.$bookingState
             .sink { [weak self] bookingState in
                 self?.handleBookingState(bookingState)
             }
@@ -234,6 +236,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetailsPublisher
             .sink { [weak self] passengerDetails in
                 self?.passangerDetailsViewModel.update(using: passengerDetails)
+                self?.bookingWorker.update(passengerDetails: passengerDetails)
                 self?.checkIfNeedsToUpdateState()
             }
             .store(in: &cancellables)
@@ -275,10 +278,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         withAnimation {
             state = .loading
         }
-        paymentsWorker.performBooking()
+        bookingWorker.performBooking()
     }
 
-    private func handleBookingState(_ bookingState: BookingState) {
+    private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
         switch bookingState {
         case .idle:
             break
@@ -301,46 +304,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
-    }
-
-    private func reportBookingEvent(quoteId: String) {
-        analytics.bookingRequested(quoteId: quoteId)
-    }
-
-    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
-    }
-
-    private func reportBookingFailure(message: String, correlationId: String?) {
-        analytics.bookingFailure(
-            quoteId: quote.id,
-            correlationId: correlationId ?? "",
-            message: message,
-            lastFourDigits: paymentsWorker.getPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
-        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
     }
 
     // MARK: - Helpers
@@ -414,7 +377,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         // TODO: Add Loyalty validation here
 
-        guard paymentsWorker.isReadyToPerformPayment() else {
+        guard bookingWorker.isReadyToPerformBooking() else {
             return false
         }
 
