@@ -41,18 +41,4 @@ class PassengerDetailsCellViewModel: DetailsCellViewModel {
             )
         }
     }
-
-    func update(using details: PassengerDetails?) {
-        if let details {
-            update(
-                title: details.firstName + " " + details.lastName,
-                subtitle: UITexts.Generic.edit
-            )
-        } else {
-            update(
-                title: UITexts.PassengerDetails.title,
-                subtitle: UITexts.PassengerDetails.add
-            )
-        }
-    }
 }
