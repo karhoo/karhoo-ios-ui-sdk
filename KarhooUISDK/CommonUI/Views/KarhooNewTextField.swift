@@ -53,7 +53,7 @@ struct KarhooNewTextField: View {
                 Text(errorMessage)
                     .font(Font(KarhooUI.fonts.footnoteSemiold()))
                     .foregroundColor(Color(KarhooUI.colors.error))
-                    .padding(.vertical, isTextfieldValid ? 0 : UIConstants.Spacing.medium)
+                    .padding(.top, UIConstants.Spacing.xSmall)
                     .transition(.opacity)
             }
         }
