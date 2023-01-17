@@ -94,7 +94,4 @@ protocol BookingRouter {
         bookingMetadata: [String: Any]?,
         bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     )
-
-    /// Remove additional views from navigation stack and show Booking scene
-    func showCurrentScene(completion: @escaping () -> Void)
 }
