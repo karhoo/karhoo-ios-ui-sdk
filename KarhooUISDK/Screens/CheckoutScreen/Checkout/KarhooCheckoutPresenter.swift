@@ -583,12 +583,13 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 shouldShowLoyalty: isLoyaltyEnabled(),
                 loyaltyPoints: view?.currentLoyaltyPoints ?? 0,
                 loyaltyMode: view?.currentLoyaltyMode ?? .none
-            )
-        ) {
-            self.view?.dismiss(animated: true, completion: nil)
-            let checkoutResult = self.updateCheckoutResponseForShowDetails(result: result)
-            self.closeCheckoutScreen(result: checkoutResult)
-        }
+            ),
+            onDismissCallback: { _ in
+                self.view?.dismiss(animated: true, completion: nil)
+                let checkoutResult = self.updateCheckoutResponseForShowDetails(result: result)
+                self.closeCheckoutScreen(result: checkoutResult)
+            }
+        )
 
          let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
          let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: bottomSheetViewModel) {

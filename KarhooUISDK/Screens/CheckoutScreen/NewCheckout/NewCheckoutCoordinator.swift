@@ -85,8 +85,8 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
                 quote: quote,
                 journeyDetails: journeyDetails,
                 loyaltyInfo: loyaltyInfo,
-                onDismiss: { [weak self] in
-                    self?.callback?(ScreenResult.completed(result: KarhooCheckoutResult(tripInfo: tripInfo)))
+                onDismiss: { [weak self] result in
+                    self?.callback?(result)
                     self?.routeToShowBooking()
                 }
             )
@@ -102,20 +102,25 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
     }
 
     private func routeToBookingConfirmation(
-        trip: TripInfo?,
+        trip: TripInfo,
         quote: Quote,
         journeyDetails: JourneyDetails,
         loyaltyInfo: KarhooBasicLoyaltyInfo?,
-        onDismiss: @escaping () -> Void
+        onDismiss: @escaping (ScreenResult<KarhooCheckoutResult>) -> Void
     ) {
         guard let viewController = viewController else {
             assertionFailure()
             return
         }
+        let dismissCompletion: (ScreenResult<KarhooCheckoutResult>) -> Void = { result in
+            viewController.dismiss(animated: true) {
+                onDismiss(result)
+            }
+        }
         let bottomSheetViewModel = KarhooBottomSheetViewModel(
             title: UITexts.Booking.prebookConfirmed,
             onDismissCallback: {
-                viewController.dismiss(animated: true, completion: onDismiss)
+                dismissCompletion(.completed(result: .init(tripInfo: trip)))
             }
         )
 
@@ -124,8 +129,8 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             quote: quote,
             trip: trip,
             loyaltyInfo: loyaltyInfo ?? .loyaltyDisabled(),
-            onDismissCallback: {
-                viewController.dismiss(animated: true, completion: onDismiss)
+            onDismissCallback: { result in
+                dismissCompletion(.completed(result: result))
             }
         )
 

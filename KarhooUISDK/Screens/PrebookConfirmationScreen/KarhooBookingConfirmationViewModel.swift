@@ -78,7 +78,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     private let calendarWorker: AddToCalendarWorker
     private let dateFormatter: DateFormatterType
 	private let analytics: Analytics
-    private var onDismissCallback: () -> Void
+    private var onDismissCallback: (KarhooCheckoutResult) -> Void
 
     // MARK: - Lifecycle
 
@@ -92,7 +92,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         useCalendar: Bool = KarhooUISDKConfigurationProvider.configuration.useAddToCalendarFeature,
-        onDismissCallback: @escaping () -> Void
+        onDismissCallback: @escaping (KarhooCheckoutResult) -> Void
     ) {
         self.journeyDetails = journeyDetails
         self.quote = quote
@@ -111,8 +111,12 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
     
     func dismiss() {
+        guard let tripInfo = trip else {
+            assertionFailure()
+            return
+        }
         reportRideConfirmationDetailsSelected()
-        onDismissCallback()
+        onDismissCallback(KarhooCheckoutResult(tripInfo: tripInfo, showTripDetails: true))
     }
     
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel) {

@@ -59,6 +59,16 @@ struct KarhooAddressView: View {
                 return KarhooUI.colors.background2
             }
         }
+
+        var borderPadding: CGFloat {
+            switch self {
+            case .bordered,
+                 .borderedWithWhiteBackground:
+                return UIConstants.Spacing.medium
+            default:
+                return 0
+            }
+        }
     }
 
     // MARK: - Properties
@@ -69,6 +79,7 @@ struct KarhooAddressView: View {
     private let tags: [Tag]
     private var borderColor: UIColor = KarhooUI.colors.border
     private let borderWidth: CGFloat = 1
+    private let borderPadding: CGFloat
     private var cornerRadius: CGFloat = UIConstants.CornerRadius.large
     private var backgroundColor: UIColor = KarhooUI.colors.background2
     private let showsLineBetweenPickUpAndDestination: Bool
@@ -86,6 +97,7 @@ struct KarhooAddressView: View {
         self.pickUp = pickUp
         self.destination = destination
         self.borderColor = design.borderColor
+        self.borderPadding = design.borderPadding
         self.backgroundColor = design.backgroundColor
         self.timeLabelText = timeLabelText
         self.tags = tags
@@ -106,6 +118,7 @@ struct KarhooAddressView: View {
                 }
             }
         }
+        .padding(borderPadding)
         .frame(maxWidth: Constants.maxWidth, alignment: .topLeading)
         .background(Color(backgroundColor))
         .addBorder(Color(borderColor), cornerRadius: cornerRadius)

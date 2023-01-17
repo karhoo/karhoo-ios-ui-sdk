@@ -52,7 +52,7 @@ public extension BookingConfirmationBuilder {
             quote: quote,
             trip: tripInfo,
             loyaltyInfo: loyaltyInfo ?? .loyaltyDisabled(),
-            onDismissCallback: { }
+            onDismissCallback: { _ in }
         )
 
         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()

@@ -41,7 +41,6 @@ struct KarhooBookingConfirmationView: View {
                 ),
                 design: .borderedWithWhiteBackground
             )
-            .padding(UIConstants.Spacing.medium)
             
             // Time and Price
             timeAndPriceView
@@ -147,7 +146,7 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
                 loyaltyMode: .burn
             ),
             dateFormatter: KarhooDateFormatter(),
-            onDismissCallback: { }
+            onDismissCallback: { _ in }
         ))
     }
 }
