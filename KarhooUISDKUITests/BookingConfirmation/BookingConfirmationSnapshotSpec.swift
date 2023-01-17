@@ -51,7 +51,7 @@ class BookingConfirmationSnapshotSpec: QuickSpec {
                     ),
                     calendarWorker: KarhooAddToCalendarWorker(dateFormatter: mockDateFormatter),
                     dateFormatter: mockDateFormatter,
-                    onDismissCallback: { }
+                    onDismissCallback: { _ in }
                 )
                 sut = KarhooBookingConfirmationView(viewModel: viewModel)
                 bottomSheet = KarhooBottomSheet(
