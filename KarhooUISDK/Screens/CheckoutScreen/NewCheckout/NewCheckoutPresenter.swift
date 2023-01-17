@@ -282,6 +282,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .failure(let error):
             print(error)
         case .success(let tripInfo):
+            // TODO: get & pass a proper Loyalty model
             router.routeSuccessScene(
                 with: tripInfo,
                 journeyDetails: journeyDetails,
