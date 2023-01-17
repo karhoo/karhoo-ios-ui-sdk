@@ -12,7 +12,8 @@ struct KarhooNewTextField: View {
    
     @Binding var textFieldText: String
     @Binding var isTextfieldValid: Bool
-    
+    @State private var isFirstResponder: Bool = false
+
     var hint: String
     var errorMessage: String
     
@@ -21,9 +22,9 @@ struct KarhooNewTextField: View {
             HStack{
                 TextField(hint, text: $textFieldText, onEditingChanged: { (editingChanged) in
                     if editingChanged {
-                        print("TextField focused")
+                        isFirstResponder = true
                     } else {
-                        print("TextField focus removed")
+                        isFirstResponder = false
                     }
                 })
                 .onChange(of: textFieldText) { newValue in
@@ -44,10 +45,7 @@ struct KarhooNewTextField: View {
             .padding(.vertical, UIConstants.Spacing.medium)
             .padding(.leading, UIConstants.Spacing.standard)
             .padding(.trailing, UIConstants.Spacing.small)
-            .addBorder(
-                isTextfieldValid ? Color(KarhooUI.colors.secondary) : Color(KarhooUI.colors.error),
-                cornerRadius: UIConstants.CornerRadius.medium
-            )
+            .addBorder(getBorderColor(), cornerRadius: UIConstants.CornerRadius.medium)
             
             if !isTextfieldValid {
                 Text(errorMessage)
@@ -69,5 +67,15 @@ struct KarhooNewTextField: View {
             return true
         }
         isTextfieldValid = isValid
+    }
+    
+    private func getBorderColor() -> Color {
+        if !isTextfieldValid {
+            return Color(KarhooUI.colors.error)
+        } else if isFirstResponder {
+            return Color(KarhooUI.colors.secondary)
+        } else {
+            return Color(KarhooUI.colors.border)
+        }
     }
 }
