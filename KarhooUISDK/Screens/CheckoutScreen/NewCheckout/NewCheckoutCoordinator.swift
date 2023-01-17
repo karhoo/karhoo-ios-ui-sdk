@@ -76,7 +76,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
             viewSubtitle: UITexts.Booking.flightSubtitle,
             textFieldHint: UITexts.Booking.flightExcample,
-            errorMessage: UITexts.Booking.flightError
+            errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ){
             [weak self] newFlightNumber in
             self?.presenter?.flightNumberCellViewModel.setFlightNumber(flightNumber: newFlightNumber)
@@ -104,7 +104,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             initialValueForTextField: presenter.trainNumberCellViewModel.getTrainNumber(),
             viewSubtitle: UITexts.Booking.trainSubtitle,
             textFieldHint: UITexts.Booking.trainExcample,
-            errorMessage: UITexts.Booking.trainError
+            errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ){
             [weak self] newTrainNumber in
             self?.presenter?.trainNumberCellViewModel.setTrainNumber(trainNumber: newTrainNumber)
@@ -119,6 +119,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         viewController.view.backgroundColor = UIColor.clear
         viewController.modalPresentationStyle = .overFullScreen
         baseViewController.present(viewController, animated: true, completion: nil)
+    }
 
     func routeToPassengerDetails(
         _ currentDetails: PassengerDetails?,

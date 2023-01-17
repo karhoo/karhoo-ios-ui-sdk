@@ -37,7 +37,7 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     initialValueForTextField: "",
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExcample,
-                    errorMessage: UITexts.Booking.flightError,
+                    errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
                     onSaveCallback: {newFlightNumber in return }
                 )
             )
