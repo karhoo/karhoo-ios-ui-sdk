@@ -570,31 +570,32 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
     }
     
     private func showBookingConfirmation(result: ScreenResult<KarhooCheckoutResult>) {
-        let masterViewModel = KarhooBottomSheetViewModel(
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
             title: UITexts.Booking.prebookConfirmed
         ) {
             self.view?.dismiss(animated: true, completion: nil)
             self.closeCheckoutScreen(result: result)
         }
 
-        let slaveViewModel = KarhooBookingConfirmationViewModel(
+        let confirmationViewModel = KarhooBookingConfirmationViewModel(
             journeyDetails: journeyDetails,
             quote: quote,
             trip: trip,
-            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
+            loyaltyInfo: KarhooBasicLoyaltyInfo(
                 shouldShowLoyalty: isLoyaltyEnabled(),
                 loyaltyPoints: view?.currentLoyaltyPoints ?? 0,
                 loyaltyMode: view?.currentLoyaltyMode ?? .none
-            )
-        ) {
-            self.view?.dismiss(animated: true, completion: nil)
-            let checkoutResult = self.updateCheckoutResponseForShowDetails(result: result)
-            self.closeCheckoutScreen(result: checkoutResult)
-        }
+            ),
+            onDismissCallback: { _ in
+                self.view?.dismiss(animated: true, completion: nil)
+                let checkoutResult = self.updateCheckoutResponseForShowDetails(result: result)
+                self.closeCheckoutScreen(result: checkoutResult)
+            }
+        )
 
          let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
-         let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
-             KarhooBookingConfirmationView(viewModel: slaveViewModel)
+         let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: bottomSheetViewModel) {
+             KarhooBookingConfirmationView(viewModel: confirmationViewModel)
          }
         reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
         view?.present(sheet, animated: true)

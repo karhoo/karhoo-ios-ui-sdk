@@ -34,6 +34,9 @@ struct NewCheckoutView: View {
         .alert(isPresented: $viewModel.quoteExpired) {
             quoteExpiredAlert
         }
+        .alert(isPresented: $viewModel.showError) {
+            errorAlert
+        }
     }
 
     /// The view main content without bottom price & button stack
@@ -230,6 +233,15 @@ struct NewCheckoutView: View {
             dismissButton: .default(Text(UITexts.Generic.ok)) {
                 presentationMode.wrappedValue.dismiss()
             }
+        )
+    }
+
+    private var errorAlert:  Alert {
+        let errorMessage = viewModel.errorToPresent?.message != nil ? Text(viewModel.errorToPresent!.message!) : nil
+        return Alert(
+            title: Text(viewModel.errorToPresent?.title ?? UITexts.Generic.error),
+            message: errorMessage,
+            dismissButton: .default(Text(UITexts.Generic.ok))
         )
     }
 }
