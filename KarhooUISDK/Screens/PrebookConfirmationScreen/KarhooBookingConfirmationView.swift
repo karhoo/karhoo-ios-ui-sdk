@@ -73,6 +73,9 @@ struct KarhooBookingConfirmationView: View {
             }
         }
         .padding(.vertical, UIConstants.Spacing.standard)
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
 
     @ViewBuilder

@@ -12,13 +12,15 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum NewCheckoutState {
+enum NewCheckoutState: Equatable {
     /// Screen is locked and user's interactions are disabled. Used for crucial data loading (like payment confirmation)
     case loading
     /// UI is enabled but some data's missing in order to proceed with booking, so user needs to provide them.
     case gatheringInfo
     /// UI is enabled and all data's in place. Scene is waiting for user's confirmation.
     case readyToBook
+
+    case error(title: String, message: String?)
 }
 
 final class KarhooNewCheckoutViewModel: ObservableObject {
@@ -63,7 +65,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     @Published var confirmButtonTitle = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
     @Published var state: NewCheckoutState = .loading
-    @Published var showLoadingOverview = true
+    @Published var showError = false
+    @Published var errorToPresent: (title: String?, message: String?)?
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
@@ -204,12 +207,12 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     func didTapConfirm() {
         // MARK: - Validate & proceed with payment flow
-        guard validateIfAllRequiredDataAreProvided() else {
-            withAnimation {
-                state = .gatheringInfo
-            }
-            return
-        }
+//        guard validateIfAllRequiredDataAreProvided() else {
+//            withAnimation {
+//                state = .gatheringInfo
+//            }
+//            return
+//        }
         submitBooking()
     }
 
@@ -255,6 +258,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     private func handleStateUpdate(_ state: NewCheckoutState) {
+        showError = false
         switch state {
         case .loading:
             // In this stage the view is showing loading overlay
@@ -263,6 +267,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             confirmButtonTitle = UITexts.Booking.next.uppercased()
         case .readyToBook:
             confirmButtonTitle = UITexts.Booking.pay.uppercased()
+        case .error(title: let title, message: let message):
+            showError = true
+            errorToPresent = (title: title, message: message)
         }
     }
 
@@ -280,7 +287,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .loading:
             break
         case .failure(let error):
-            print(error)
+            state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
             // TODO: get & pass a proper Loyalty model
             router.routeSuccessScene(

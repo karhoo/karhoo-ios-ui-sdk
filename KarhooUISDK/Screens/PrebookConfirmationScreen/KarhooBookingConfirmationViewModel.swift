@@ -22,6 +22,7 @@ protocol BookingConfirmationViewModel {
     var printedDate: String { get }
     var accessibilityDate: String { get }
     var accessibilityPrice: String { get }
+    func onAppear()
     func dismiss()
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel)
 }
@@ -112,6 +113,10 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         self.callback = callback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
+
+    func onAppear() {
+//        reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
+    }
     
     func dismiss() {
         reportRideConfirmationDetailsSelected()
@@ -165,6 +170,11 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     // MARK: Analytics
+
+    private func reportBookingConfirmationScreenOpened() {
+        analytics.rideConfirmationScreenOpened(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
+    }
+
     private func reportRideConfirmationDetailsSelected(){
         analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
