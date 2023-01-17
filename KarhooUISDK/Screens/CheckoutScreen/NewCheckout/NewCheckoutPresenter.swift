@@ -56,8 +56,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetailsWorker.$passengerDetails
     }
     private let journeyDetails: JourneyDetails
-    private let bookingMetadata: [String: Any]?
-    private var comments: String?
     private var carIconUrl: String = ""
 
     let quote: Quote
@@ -89,14 +87,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
+        self.bookingWorker = KarhooNewCheckoutBookingWorker(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata
+        )
+
         self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(
             details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
         )
+        
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
         self.journeyDetails = journeyDetails
-        self.bookingMetadata = bookingMetadata
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
@@ -110,7 +114,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-        self.bookingWorker = KarhooNewCheckoutBookingWorker(quote: quote)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -202,7 +205,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     func didSetComment(_ comment: String) {
-        // TODO: - handle comment flow
+        bookingWorker.update(comment: comment)
     }
 
     func didTapConfirm() {
