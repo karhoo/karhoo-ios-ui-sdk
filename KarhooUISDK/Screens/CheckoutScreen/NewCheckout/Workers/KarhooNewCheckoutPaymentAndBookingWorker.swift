@@ -20,12 +20,13 @@ enum CheckoutBookingError {
 /// This is only on concept. Feel free to adjust it if needed.
 enum BookingState {
     case idle
+    case loading
     case failure(CheckoutBookingError)
-    case success
+    case success(TripInfo)
 }
 
 protocol NewCheckoutPaymentAndBookingWorker: AnyObject {
-    var statePublisher : Published<BookingState>.Publisher { get }
+    var statePublisher: Published<BookingState>.Publisher { get }
     func isReadyToPerformPayment() -> Bool
     func performBooking()
     func getPaymentNonce() -> Nonce?
@@ -65,7 +66,7 @@ final class KarhooNewCheckoutPaymentAndBookingWorker: NewCheckoutPaymentAndBooki
     // MARK: - Endpoints
 
     func isReadyToPerformPayment() -> Bool {
-        false
+        true
     }
 
     func getPaymentNonce() -> Nonce? {
@@ -73,6 +74,10 @@ final class KarhooNewCheckoutPaymentAndBookingWorker: NewCheckoutPaymentAndBooki
     }
 
     func performBooking() {
-
+        bookingState = .loading
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.bookingState = .success(TripInfo(tripId: "asdas", passengers: Passengers(additionalPassengers: 2, passengerDetails: [], luggage: .init(total: 3))))
+//            self.bookingState = .failure(.cardAuthenticationFailure(message: "invalid_card_data"))
+        })
     }
 }

@@ -27,7 +27,15 @@ struct KarhooTermsConditionsView: View {
                         Image(viewModel.imageName, bundle: .current)
                             .resizable()
                             .foregroundColor(Color(KarhooUI.colors.border))
-                            .frame(width: Constants.imageSize.width, height: Constants.imageSize.height)
+                            .frame(
+                                width: Constants.imageSize.width,
+                                height: Constants.imageSize.height
+                            )
+                            .padding(2)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.small)
+                                    .stroke(viewModel.buttonBorderColor, lineWidth: 2)
+                            )
                     }
                 )
             }
@@ -35,6 +43,7 @@ struct KarhooTermsConditionsView: View {
             TextView($viewModel.attributedText)
                 .isEditable(false)
                 .accessibilityValue(viewModel.accessibilityText)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

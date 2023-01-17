@@ -14,8 +14,15 @@ class DetailsCellViewModel: ObservableObject {
     @Published var title: String
     @Published var subtitle: String
     @Published var iconName: String
-    let onTap: () -> Void
-    
+    var onTap: () -> Void
+
+    init() {
+        self.title = ""
+        self.subtitle = ""
+        self.iconName = ""
+        self.onTap = {}
+    }
+
     init(title: String, subtitle: String, iconName: String, onTap: @escaping () -> Void) {
         self.title = title
         self.subtitle = subtitle
