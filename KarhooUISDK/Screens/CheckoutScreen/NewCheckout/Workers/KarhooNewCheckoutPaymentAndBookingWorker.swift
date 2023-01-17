@@ -12,11 +12,6 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum CheckoutBookingError {
-    case noUser
-    case cardAuthenticationFailure(message: String?)
-}
-
 /// This is only on concept. Feel free to adjust it if needed.
 enum BookingState {
     case idle
@@ -77,7 +72,8 @@ final class KarhooNewCheckoutPaymentAndBookingWorker: NewCheckoutPaymentAndBooki
         bookingState = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
 //            self.bookingState = .success(TripInfo(tripId: "asdas", passengers: Passengers(additionalPassengers: 2, passengerDetails: [], luggage: .init(total: 3))))
-            self.bookingState = .failure(.cardAuthenticationFailure(message: "invalid_card_data"))
+
+            self.bookingState = .failure(ErrorModel(message: "something_went_wrong", code: "0231"))
         })
     }
 }
