@@ -33,8 +33,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
-    
-    // MARK: - Sub view models
+    private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
+
+    // MARK: - Nested views models
 
     var passangerDetailsViewModel: PassengerDetailsCellViewModel
     var trainNumberCellViewModel: TrainNumberCellViewModel
@@ -50,18 +51,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private(set) var passengerDetails: PassengerDetails!
-    private(set) var trip: TripInfo? // TODO: set value for trip ‼️
+    var passengerDetailsPublisher: Published<PassengerDetails?>.Publisher {
+        passengerDetailsWorker.$passengerDetails
+    }
+    private(set) var trip: TripInfo?
     private let journeyDetails: JourneyDetails
     private let bookingMetadata: [String: Any]?
     private var comments: String?
-    private let callback: ScreenResultCallback<KarhooCheckoutResult>
     private var carIconUrl: String = ""
 
     let quote: Quote
-    @Published var bottomButtonText = UITexts.Booking.next.uppercased()
+    @Published var confirmButtonTitle = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
-    var termsAndConditionsAccepted: Bool = false
+    @Published var state: NewCheckoutState = .loading
+    @Published var showLoadingOverview = true
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
     var loyaltyViewDelegate: LoyaltyViewDelegate?
@@ -81,13 +84,12 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
-        router: NewCheckoutRouter,
-        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
+        router: NewCheckoutRouter
     ) {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
-        self.passengerDetails = passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
+        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(details: passengerDetails)
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
@@ -96,17 +98,20 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
-        self.callback = callback
-        passangerDetailsViewModel = PassengerDetailsCellViewModel(onTap: { print("PassengerDetailsCell tapped") })
-        trainNumberCellViewModel = TrainNumberCellViewModel(onTap: { print("TrainNumberCell tapped") })
-        flightNumberCellViewModel = FlightNumberCellViewModel(onTap: { print("FlightNumberCell tapped") })
-        commentCellViewModel = CommentCellViewModel(onTap: { print("CommentCell tapped") })
-        termsConditionsViewModel = KarhooTermsConditionsViewModel(
+
+        self.legalNoticeViewModel = KarhooLegalNoticeViewModel()
+        self.passangerDetailsViewModel = PassengerDetailsCellViewModel()
+        self.trainNumberCellViewModel = TrainNumberCellViewModel()
+        self.flightNumberCellViewModel = FlightNumberCellViewModel()
+        self.commentCellViewModel = CommentCellViewModel()
+        self.termsConditionsViewModel = KarhooTermsConditionsViewModel(
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-        legalNoticeViewModel = KarhooLegalNoticeViewModel()
-        getImageUrl(for: quote, with: vehicleRuleProvider)
+
+        self.getImageUrl(for: quote, with: vehicleRuleProvider)
+        self.setupBinding()
+        self.setupInitialState()
         
         if isLoyaltyEnabled() {
             let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
@@ -126,13 +131,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
             self?.quoteExpired = true
         }
-
-        paymentsWorker.statePublisher
-            .sink { [weak self] bookingState in
-                // TODO: handle booking state
-                print(bookingState)
-            }
-            .store(in: &cancellables)
     }
 
     // MARK: Get simple data to display
@@ -213,20 +211,12 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: Interactions
 
-    func didTapPassenger() {
-        // TODO: - handle passenger flow
-    }
-
     func didTapOptions() {
         // TODO: - handle options flow
     }
 
     func didTapFlightNumber() {
         // TODO: - handle flight number flow
-    }
-
-    func didSetTermsAndConditions(_ termsAndConditionsSelected: Bool) {
-        // TODO: - handle t&c flow
     }
 
     func didSetComment(_ comment: String) {
@@ -236,6 +226,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     func didTapConfirm() {
         // Validate & proceed with payment flow
         guard validateIfAllRequiredDataAreProvided() else {
+            withAnimation {
+                state = .gatheringInfo
+            }
             return
         }
         
@@ -252,9 +245,63 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     }
 
-    // MARK: - Booking
+    // MARK: - State/main flow methods
+
+    private func setupBinding() {
+        paymentsWorker.$bookingState
+            .sink { [weak self] bookingState in
+                self?.handleBookingState(bookingState)
+            }
+            .store(in: &cancellables)
+
+        $state
+            .sink { [weak self] checkoutState in
+                self?.handleStateUpdate(checkoutState)
+            }
+            .store(in: &cancellables)
+
+        // Nested VMs binding
+
+        passengerDetailsPublisher
+            .sink { [weak self] passengerDetails in
+                self?.passangerDetailsViewModel.update(using: passengerDetails)
+                self?.checkIfNeedsToUpdateState()
+            }
+            .store(in: &cancellables)
+
+        if termsConditionsViewModel.showAgreementRequired {
+            termsConditionsViewModel.$confirmed
+                .sink { [weak self] _ in
+                    self?.checkIfNeedsToUpdateState()
+                }
+                .store(in: &cancellables)
+        }
+
+        passangerDetailsViewModel.onTap = { [weak self] in
+            self?.showPassengerDetails()
+        }
+    }
+
+    private func setupInitialState() {
+        state = .gatheringInfo
+    }
+
+    private func handleStateUpdate(_ state: NewCheckoutState) {
+        switch state {
+        case .loading:
+            // In this stage the view is showing loading overlay
+            confirmButtonTitle = UITexts.Booking.next.uppercased()
+        case .gatheringInfo:
+            confirmButtonTitle = UITexts.Booking.next.uppercased()
+        case .readyToBook:
+            confirmButtonTitle = UITexts.Booking.pay.uppercased()
+        }
+    }
 
     private func submitBooking() {
+        withAnimation {
+            state = .loading
+        }
         paymentsWorker.performBooking()
     }
     
@@ -262,6 +309,25 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     
     private func showBookingConfirmation() {
         // TODO: - implement
+    }
+
+    private func handleBookingState(_ bookingState: BookingState) {
+        switch bookingState {
+        case .idle:
+            break
+        case .loading:
+            break
+        case .failure(let error):
+            print(error)
+        case .success(let tripInfo):
+            // TODO: get & pass a proper Loyalty model
+            router.routeSuccessScene(
+                with: tripInfo,
+                journeyDetails: journeyDetails,
+                quote: quote,
+                loyaltyInfo: .init(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+            )
+        }
     }
 
     // MARK: - Analytics
@@ -338,6 +404,18 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         
     // MARK: - Price Details
     
+
+    // MARK: - Update nested views state
+
+    // MARK: - Routing
+
+    private func showPassengerDetails() {
+        router.routeToPassengerDetails(
+            passengerDetailsWorker.passengerDetails,
+            delegate: passengerDetailsWorker
+        )
+    }
+
     /// Called when the user taps on the price details section of the screen
     func showPriceDetails() {
         router.routeToPriceDetails(
@@ -348,12 +426,35 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: Validation
 
-    private func validateIfAllRequiredDataAreProvided() -> Bool {
-        guard let details = passengerDetails,
-              details.areValid
+    private func checkIfNeedsToUpdateState() {
+        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: false) else {
+            return
+        }
+        withAnimation {
+            state = .readyToBook
+        }
+    }
+
+    /// Validate if all required data are in place. If some data is missing, the method will trigger proper behavior, like opening the passenger details screen.
+    private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = true) -> Bool {
+        guard passengerDetailsWorker.passengerDetails?.areValid ?? false
         else {
+            if triggerAdditionalBehavior {
+                showPassengerDetails()
+            }
             return false
         }
+
+        guard !termsConditionsViewModel.isAcceptanceRequired || termsConditionsViewModel.confirmed
+        else {
+            if triggerAdditionalBehavior {
+                termsConditionsViewModel.showAgreementRequired = true
+            }
+            return false
+        }
+
+        // TODO: Add Loyalty validation here
+
         guard paymentsWorker.isReadyToPerformPayment() else {
             return false
         }

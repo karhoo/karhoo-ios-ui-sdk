@@ -20,9 +20,12 @@ class KarhooTermsConditionsViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     var isAcceptanceRequired: Bool { sdkConfiguration.isExplicitTermsAndConditionsConsentRequired }
 
+    @Published var buttonBorderColor: Color = .clear
+    @Published var showAgreementRequired = false
     @Published var attributedText: NSAttributedString = .init(string: "")
     @Published var accessibilityText: String = ""
     @Published var confirmed: Bool = false { didSet {
+        showAgreementRequired = false
         updateImageName()
     }}
     @Published var imageName: String = "kh_uisdk_checkbox_selected"
@@ -54,6 +57,13 @@ class KarhooTermsConditionsViewModel: ObservableObject {
         $confirmed
             .sink { [weak self] _ in
                 self?.updateImageName()
+            }
+            .store(in: &cancellables)
+
+        $showAgreementRequired
+            .sink { [weak self] showAgreementRequired in
+                let color = showAgreementRequired ? Color(KarhooUI.colors.error) : .clear
+                self?.buttonBorderColor = color
             }
             .store(in: &cancellables)
     }
