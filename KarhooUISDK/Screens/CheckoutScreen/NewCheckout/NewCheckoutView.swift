@@ -127,6 +127,94 @@ struct NewCheckoutView: View {
         }
     }
 
+    /// The view main content without bottom price & button stack
+    @ViewBuilder
+    private var contentView: some View {
+        ScrollViewReader { scrollViewProxy in
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        dateView
+                        addressView
+                    }
+                    .padding(.horizontal, UIConstants.Spacing.standard)
+                    .background(Color(KarhooUI.colors.background2))
+                    .padding(.bottom, UIConstants.Spacing.small)
+
+                    VehicleDetailsCard(
+                        viewModel: viewModel.getVehicleDetailsCardViewModel()
+                    )
+                    VStack(spacing: UIConstants.Spacing.standard) {
+
+                        DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
+
+                        if viewModel.showFlightNumberCell {
+                            DetailsCellView(viewModel: viewModel.flightNumberCellViewModel)
+                        }
+                        if viewModel.showTrainNumberCell {
+                            DetailsCellView(viewModel: viewModel.trainNumberCellViewModel)
+                        }
+                        DetailsCellView(viewModel: viewModel.commentCellViewModel)
+
+                        KarhooTermsConditionsView(viewModel: viewModel.termsConditionsViewModel)
+                            .padding(.vertical, UIConstants.Spacing.large)
+
+                        // Legal Notice button
+                        if viewModel.legalNoticeViewModel.shouldShowView {
+                            HStack {
+                                Spacer()
+                                Button(
+                                    action: {
+                                        withAnimation {
+                                            showLegalNotice.toggle()
+                                            if showLegalNotice {
+                                                scrollViewProxy.scrollTo(Constants.legalNoticeViewId, anchor: .bottom)
+                                            }
+                                        }
+                                    },
+                                    label: {
+                                        HStack(spacing: UIConstants.Spacing.small) {
+                                            Text(UITexts.Booking.legalNotice)
+                                                .foregroundColor(Color(KarhooUI.colors.accent))
+                                                .font(Font(KarhooUI.fonts.captionSemibold()))
+                                            Image("kh_uisdk_drop_down_icon", bundle: .current)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .rotationEffect(getArrowRotationAngle())
+                                                .foregroundColor(Color(KarhooUI.colors.accent))
+                                                .frame(
+                                                    width: UIConstants.Dimension.Icon.standard,
+                                                    height: UIConstants.Dimension.Icon.standard
+                                                )
+                                        }
+                                    }
+                                )
+                            }
+                        }
+
+                        if showLegalNotice {
+                            KarhooLegalNoticeView(viewModel: viewModel.legalNoticeViewModel)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, UIConstants.Spacing.standard)
+                    .padding(.horizontal, UIConstants.Spacing.standard)
+
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .id(Constants.legalNoticeViewId)
+            }
+            .padding(.bottom, Constants.bottomPadding)
+            .onAppear {
+                UIScrollView.appearance().bounces = false
+            }
+            .onDisappear {
+                UIScrollView.appearance().bounces = true
+            }
+        }
+    }
+
     @ViewBuilder
     private var dateView: some View {
         HStack(spacing: 0) {
