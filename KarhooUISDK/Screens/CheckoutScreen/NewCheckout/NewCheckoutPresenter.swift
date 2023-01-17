@@ -1,5 +1,5 @@
 //
-//  NewCheckoutPresenter.swift
+//  NewCheckoutViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -55,7 +55,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var passengerDetailsPublisher: Published<PassengerDetails?>.Publisher {
         passengerDetailsWorker.$passengerDetails
     }
-    private(set) var trip: TripInfo?
     private let journeyDetails: JourneyDetails
     private let bookingMetadata: [String: Any]?
     private var comments: String?
@@ -101,7 +100,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.router = router
 
         self.legalNoticeViewModel = KarhooLegalNoticeViewModel()
-        self.passangerDetailsViewModel = PassengerDetailsCellViewModel()
+        self.passangerDetailsViewModel = PassengerDetailsCellViewModel(passengerDetails: passengerDetails)
         self.trainNumberCellViewModel = TrainNumberCellViewModel()
         self.flightNumberCellViewModel = FlightNumberCellViewModel()
         self.commentCellViewModel = CommentCellViewModel()
@@ -169,10 +168,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
         var cancelationText: String? {
-            guard let tripInfo = trip else {
-                return nil
-            }
-            return KarhooFreeCancelationTextWorker.getFreeCancelationText(trip: tripInfo)
+            KarhooFreeCancelationTextWorker.getFreeCancelationText(quote: quote, journeyDetails: journeyDetails)
         }
         return VehicleDetailsCardViewModel(
             title: quote.vehicle.getVehicleTypeText(),
@@ -207,12 +203,12 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     func didTapConfirm() {
         // MARK: - Validate & proceed with payment flow
-//        guard validateIfAllRequiredDataAreProvided() else {
-//            withAnimation {
-//                state = .gatheringInfo
-//            }
-//            return
-//        }
+        guard validateIfAllRequiredDataAreProvided() else {
+            withAnimation {
+                state = .gatheringInfo
+            }
+            return
+        }
         submitBooking()
     }
 
@@ -262,7 +258,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         switch state {
         case .loading:
             // In this stage the view is showing loading overlay
-            confirmButtonTitle = UITexts.Booking.next.uppercased()
+            break
         case .gatheringInfo:
             confirmButtonTitle = UITexts.Booking.next.uppercased()
         case .readyToBook:

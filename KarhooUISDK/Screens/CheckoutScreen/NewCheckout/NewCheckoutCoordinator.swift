@@ -77,62 +77,62 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         with tripInfo: TripInfo,
         journeyDetails: JourneyDetails?,
         quote: Quote,
-        loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo
+        loyaltyInfo: KarhooBasicLoyaltyInfo
     ) {
         if let journeyDetails, journeyDetails.isScheduled {
             routeToBookingConfirmation(
                 trip: tripInfo,
                 quote: quote,
                 journeyDetails: journeyDetails,
-                loyaltyInfo: loyaltyInfo
+                loyaltyInfo: loyaltyInfo,
+                onDismiss: { [weak self] in
+                    self?.callback?(ScreenResult.completed(result: KarhooCheckoutResult(tripInfo: tripInfo)))
+                    self?.routeToShowBooking()
+                }
             )
         } else {
             callback?(ScreenResult.completed(result: KarhooCheckoutResult(tripInfo: tripInfo)))
+            routeToShowBooking()
         }
     }
 
     /// Dismiss current flow and take user back to booking map
-    func routeToShowBooking() {
-        navigationController?.popToRootViewController(animated: true, completion: {})
+    private func routeToShowBooking(completion: @escaping () -> Void = {}) {
+        navigationController?.popToRootViewController(animated: true, completion: completion)
     }
 
-    func routeToBookingConfirmation(
+    private func routeToBookingConfirmation(
         trip: TripInfo?,
         quote: Quote,
         journeyDetails: JourneyDetails,
-        loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo?
+        loyaltyInfo: KarhooBasicLoyaltyInfo?,
+        onDismiss: @escaping () -> Void
     ) {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
+        guard let viewController = viewController else {
             assertionFailure()
             return
         }
-        let masterViewModel = KarhooBottomSheetViewModel(
-            title: UITexts.Booking.prebookConfirmed
-        ) {
-            viewController.dismiss(animated: true, completion: {
-                self.routeToShowBooking()
-            })
-        }
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: UITexts.Booking.prebookConfirmed,
+            onDismissCallback: {
+                viewController.dismiss(animated: true, completion: onDismiss)
+            }
+        )
 
-        let slaveViewModel = KarhooBookingConfirmationViewModel(
+        let confirmationViewModel = KarhooBookingConfirmationViewModel(
             journeyDetails: journeyDetails,
             quote: quote,
             trip: trip,
-            loyaltyInfo: loyaltyInfo ?? .init(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
-        ) {
-            viewController.dismiss(animated: true, completion: {
-                self.routeToShowBooking()
-            })
-        }
+            loyaltyInfo: loyaltyInfo ?? .loyaltyDisabled(),
+            onDismissCallback: {
+                viewController.dismiss(animated: true, completion: onDismiss)
+            }
+        )
 
         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
-        let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: masterViewModel) {
-            KarhooBookingConfirmationView(viewModel: slaveViewModel)
+        let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: bottomSheetViewModel) {
+            KarhooBookingConfirmationView(viewModel: confirmationViewModel)
         }
-        //        reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
         viewController.present(sheet, animated: true)
     }
 }

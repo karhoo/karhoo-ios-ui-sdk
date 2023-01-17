@@ -141,16 +141,14 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             trip: TripInfo(),
-            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
+            loyaltyInfo: KarhooBasicLoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,
                 loyaltyMode: .burn
             ),
             dateFormatter: KarhooDateFormatter(),
-            callback: {
-
-            })
-        )
+            onDismissCallback: { }
+        ))
     }
 }
 

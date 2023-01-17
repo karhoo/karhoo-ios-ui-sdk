@@ -65,14 +65,6 @@ protocol BookingConfirmationLoyaltyInfo {
 
 class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
 
-    // MARK: - Nested types
-
-    struct LoyaltyInfo: BookingConfirmationLoyaltyInfo {
-        var shouldShowLoyalty: Bool
-        var loyaltyPoints: Int
-        var loyaltyMode: LoyaltyMode
-    }
-
     // MARK: - Properties
 
     var vehicleImagePlaceholder: String = "kh_uisdk_supplier_logo_placeholder"
@@ -86,7 +78,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     private let calendarWorker: AddToCalendarWorker
     private let dateFormatter: DateFormatterType
 	private let analytics: Analytics
-    private var callback: () -> Void
+    private var onDismissCallback: () -> Void
 
     // MARK: - Lifecycle
 
@@ -98,9 +90,9 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
         calendarWorker: AddToCalendarWorker = KarhooAddToCalendarWorker(),
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
-		analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         useCalendar: Bool = KarhooUISDKConfigurationProvider.configuration.useAddToCalendarFeature,
-        callback: @escaping () -> Void
+        onDismissCallback: @escaping () -> Void
     ) {
         self.journeyDetails = journeyDetails
         self.quote = quote
@@ -110,17 +102,17 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         self.dateFormatter = dateFormatter
         self.analytics = analytics
         self.useCalendar = useCalendar
-        self.callback = callback
+        self.onDismissCallback = onDismissCallback
         getImageUrl(for: quote, with: vehicleRuleProvider)
     }
 
     func onAppear() {
-//        reportBookingConfirmationScreenOpened(tripId: trip?.tripId, quoteId: quote.id)
+        reportBookingConfirmationScreenOpened()
     }
     
     func dismiss() {
         reportRideConfirmationDetailsSelected()
-        callback()
+        onDismissCallback()
     }
     
     func onAddToCalendar(viewModel: KarhooAddToCalendarView.ViewModel) {
@@ -175,11 +167,11 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
         analytics.rideConfirmationScreenOpened(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 
-    private func reportRideConfirmationDetailsSelected(){
+    private func reportRideConfirmationDetailsSelected() {
         analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 
-    private func reportRideConfirmationAddToCalendarSelected(){
+    private func reportRideConfirmationAddToCalendarSelected() {
         analytics.rideConfirmationAddToCalendarSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 }

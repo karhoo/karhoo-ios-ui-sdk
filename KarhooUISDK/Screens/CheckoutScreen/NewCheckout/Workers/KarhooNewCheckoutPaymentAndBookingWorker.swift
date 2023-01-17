@@ -71,9 +71,9 @@ final class KarhooNewCheckoutPaymentAndBookingWorker: NewCheckoutPaymentAndBooki
     func performBooking() {
         bookingState = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-//            self.bookingState = .success(TripInfo(tripId: "asdas", passengers: Passengers(additionalPassengers: 2, passengerDetails: [], luggage: .init(total: 3))))
+            self.bookingState = .success(TripInfo(tripId: "asdas", passengers: Passengers(additionalPassengers: 2, passengerDetails: [], luggage: .init(total: 3))))
 
-            self.bookingState = .failure(ErrorModel(message: "something_went_wrong", code: "0231"))
+//            self.bookingState = .failure(ErrorModel(message: "something_went_wrong", code: "0231"))
         })
     }
 }

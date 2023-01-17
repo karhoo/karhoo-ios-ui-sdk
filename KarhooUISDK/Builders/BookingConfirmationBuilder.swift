@@ -14,9 +14,7 @@ public protocol BookingConfirmationBuilder {
         journeyDetails: JourneyDetails,
         tripInfo: TripInfo,
         quote: Quote,
-        isLoyaltyFeatureEnabled: Bool,
-        isBurningPoints: Bool?,
-        numberOfPointsToDisplay: Int?
+        loyaltyInfo: KarhooBasicLoyaltyInfo?
     ) -> Screen
 }
 
@@ -30,9 +28,7 @@ public extension BookingConfirmationBuilder {
             journeyDetails: journeyDetails,
             tripInfo: tripInfo,
             quote: quote,
-            isLoyaltyFeatureEnabled: false,
-            isBurningPoints: nil,
-            numberOfPointsToDisplay: nil
+            loyaltyInfo: .loyaltyDisabled()
         )
     }
 
@@ -40,9 +36,7 @@ public extension BookingConfirmationBuilder {
         journeyDetails: JourneyDetails,
         tripInfo: TripInfo,
         quote: Quote,
-        isLoyaltyFeatureEnabled: Bool,
-        isBurningPoints: Bool?,
-        numberOfPointsToDisplay: Int?
+        loyaltyInfo: KarhooBasicLoyaltyInfo?
     ) -> Screen {
         var callToDismiss: (() -> Void)?
 
@@ -57,12 +51,8 @@ public extension BookingConfirmationBuilder {
             journeyDetails: journeyDetails,
             quote: quote,
             trip: tripInfo,
-            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
-                shouldShowLoyalty: isLoyaltyFeatureEnabled,
-                loyaltyPoints: numberOfPointsToDisplay ?? 0,
-                loyaltyMode: isBurningPoints == true ? .burn : .earn
-            ),
-            callback: { }
+            loyaltyInfo: loyaltyInfo ?? .loyaltyDisabled(),
+            onDismissCallback: { }
         )
 
         let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
