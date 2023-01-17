@@ -213,6 +213,7 @@ public enum UITexts {
     /* Booking */
     public enum Booking {
         public static let next = "kh_uisdk_next".localized
+        public static let pay = "kh_uisdk_book_pay".localized
         public static let bookNow = "kh_uisdk_book_now".localized
         public static let requestCar = "kh_uisdk_request_car".localized
         public static let requestingCar = "kh_uisdk_requesting_car".localized

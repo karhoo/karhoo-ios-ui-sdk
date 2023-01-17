@@ -9,7 +9,7 @@
 import Foundation
 
 class CommentCellViewModel: DetailsCellViewModel {
-    init(onTap: @escaping () -> Void){
+    init(onTap: @escaping () -> Void = {}) {
         super.init(
             title: UITexts.Booking.commentsTitle,
             subtitle: UITexts.Booking.commentsSubtitle,

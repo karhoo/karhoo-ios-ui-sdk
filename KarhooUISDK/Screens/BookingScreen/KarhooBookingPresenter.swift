@@ -111,7 +111,7 @@ final class KarhooBookingPresenter {
                                    quote: Quote,
                                    journeyDetails: JourneyDetails) {
         let trip = result.tripInfo
-        
+
         switch trip.state {
         case .noDriversAvailable:
             view?.reset()

@@ -23,4 +23,15 @@ protocol NewCheckoutRouter: AnyObject {
     func routeToFlightNumber(title: String, flightNumber: String)
     func routeToTrainNumber(title: String, trainNumber: String)
     
+    func routeToPassengerDetails(
+        _ currentDetails: PassengerDetails?,
+        delegate: PassengerDetailsDelegate?
+    )
+    func routeToShowBooking()
+    func routeSuccessScene(
+        with tripInfo: TripInfo,
+        journeyDetails: JourneyDetails?,
+        quote: Quote,
+        loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo
+    )
 }

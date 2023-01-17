@@ -11,7 +11,8 @@ import Foundation
 class TrainNumberCellViewModel: DetailsCellViewModel {
     
     private var trainNumber: String = ""
-    init(onTap: @escaping () -> Void){
+
+    init(onTap: @escaping () -> Void = {}) {
         super.init(
             title: UITexts.Booking.trainTitle,
             subtitle: UITexts.Booking.trainSubtitle,
