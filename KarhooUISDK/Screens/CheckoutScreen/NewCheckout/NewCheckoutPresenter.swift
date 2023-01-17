@@ -1,5 +1,5 @@
 //
-//  NewCheckoutPresenter.swift
+//  NewCheckoutViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -12,13 +12,15 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum NewCheckoutState {
+enum NewCheckoutState: Equatable {
     /// Screen is locked and user's interactions are disabled. Used for crucial data loading (like payment confirmation)
     case loading
     /// UI is enabled but some data's missing in order to proceed with booking, so user needs to provide them.
     case gatheringInfo
     /// UI is enabled and all data's in place. Scene is waiting for user's confirmation.
     case readyToBook
+
+    case error(title: String, message: String?)
 }
 
 final class KarhooNewCheckoutViewModel: ObservableObject {
@@ -30,7 +32,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let userService: UserService
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
+    private let bookingWorker: KarhooNewCheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
     private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
@@ -53,7 +55,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var passengerDetailsPublisher: Published<PassengerDetails?>.Publisher {
         passengerDetailsWorker.$passengerDetails
     }
-    private(set) var trip: TripInfo?
     private let journeyDetails: JourneyDetails
     private let bookingMetadata: [String: Any]?
     private var comments: String?
@@ -63,7 +64,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     @Published var confirmButtonTitle = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
     @Published var state: NewCheckoutState = .loading
-    @Published var showLoadingOverview = true
+    @Published var showError = false
+    @Published var errorToPresent: (title: String?, message: String?)?
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
@@ -87,7 +89,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
-        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(details: passengerDetails)
+        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(
+            details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
+        )
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
@@ -98,7 +102,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.router = router
 
         self.legalNoticeViewModel = KarhooLegalNoticeViewModel()
-        self.passangerDetailsViewModel = PassengerDetailsCellViewModel()
+        self.passangerDetailsViewModel = PassengerDetailsCellViewModel(passengerDetails: passengerDetails)
         self.trainNumberCellViewModel = TrainNumberCellViewModel()
         self.flightNumberCellViewModel = FlightNumberCellViewModel()
         self.commentCellViewModel = CommentCellViewModel()
@@ -106,6 +110,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        self.bookingWorker = KarhooNewCheckoutBookingWorker(quote: quote)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -115,6 +120,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - Endpoints
 
     func onAppear() {
+        reportScreenOpened()
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
             self?.quoteExpired = true
         }
@@ -166,10 +172,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
         var cancelationText: String? {
-            guard let tripInfo = trip else {
-                return nil
-            }
-            return KarhooFreeCancelationTextWorker.getFreeCancelationText(trip: tripInfo)
+            KarhooFreeCancelationTextWorker.getFreeCancelationText(quote: quote, journeyDetails: journeyDetails)
         }
         return VehicleDetailsCardViewModel(
             title: quote.vehicle.getVehicleTypeText(),
@@ -216,7 +219,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - State/main flow methods
 
     private func setupBinding() {
-        paymentsWorker.$bookingState
+        bookingWorker.$bookingState
             .sink { [weak self] bookingState in
                 self?.handleBookingState(bookingState)
             }
@@ -233,6 +236,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetailsPublisher
             .sink { [weak self] passengerDetails in
                 self?.passangerDetailsViewModel.update(using: passengerDetails)
+                self?.bookingWorker.update(passengerDetails: passengerDetails)
                 self?.checkIfNeedsToUpdateState()
             }
             .store(in: &cancellables)
@@ -255,14 +259,18 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     private func handleStateUpdate(_ state: NewCheckoutState) {
+        showError = false
         switch state {
         case .loading:
             // In this stage the view is showing loading overlay
-            confirmButtonTitle = UITexts.Booking.next.uppercased()
+            break
         case .gatheringInfo:
             confirmButtonTitle = UITexts.Booking.next.uppercased()
         case .readyToBook:
             confirmButtonTitle = UITexts.Booking.pay.uppercased()
+        case .error(title: let title, message: let message):
+            showError = true
+            errorToPresent = (title: title, message: message)
         }
     }
 
@@ -270,17 +278,17 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         withAnimation {
             state = .loading
         }
-        paymentsWorker.performBooking()
+        bookingWorker.performBooking()
     }
 
-    private func handleBookingState(_ bookingState: BookingState) {
+    private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
         switch bookingState {
         case .idle:
             break
         case .loading:
             break
         case .failure(let error):
-            print(error)
+            state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
             // TODO: get & pass a proper Loyalty model
             router.routeSuccessScene(
@@ -296,46 +304,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private func reportScreenOpened() {
         analytics.checkoutOpened(quote)
-    }
-
-    private func reportBookingEvent(quoteId: String) {
-        analytics.bookingRequested(quoteId: quoteId)
-    }
-
-    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
-    }
-
-    private func reportBookingFailure(message: String, correlationId: String?) {
-        analytics.bookingFailure(
-            quoteId: quote.id,
-            correlationId: correlationId ?? "",
-            message: message,
-            lastFourDigits: paymentsWorker.getPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
-        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
     }
 
     // MARK: - Helpers
@@ -409,7 +377,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         // TODO: Add Loyalty validation here
 
-        guard paymentsWorker.isReadyToPerformPayment() else {
+        guard bookingWorker.isReadyToPerformBooking() else {
             return false
         }
 

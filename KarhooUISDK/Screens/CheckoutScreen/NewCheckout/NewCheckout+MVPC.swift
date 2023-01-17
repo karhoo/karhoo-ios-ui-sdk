@@ -24,11 +24,10 @@ protocol NewCheckoutRouter: AnyObject {
         _ currentDetails: PassengerDetails?,
         delegate: PassengerDetailsDelegate?
     )
-    func routeToShowBooking()
     func routeSuccessScene(
         with tripInfo: TripInfo,
         journeyDetails: JourneyDetails?,
         quote: Quote,
-        loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo
-    )
+        loyaltyInfo: KarhooBasicLoyaltyInfo
+    ) 
 }

@@ -11,20 +11,39 @@ import KarhooSDK
 
 class KarhooFreeCancelationTextWorker {
     static func getFreeCancelationText(trip: TripInfo) -> String? {
-        let isPrebook = trip.dateBooked != trip.dateScheduled
-        switch trip.serviceAgreements?.serviceCancellation.type {
+        getFreeCancelationText(
+            serviceCancellation: trip.serviceAgreements?.serviceCancellation,
+            isScheduled: trip.dateBooked != trip.dateScheduled
+        )
+    }
+
+    static func getFreeCancelationText(quote: Quote, journeyDetails: JourneyDetails) -> String? {
+        getFreeCancelationText(
+            serviceCancellation: quote.serviceLevelAgreements?.serviceCancellation,
+            isScheduled: journeyDetails.isScheduled
+        )
+    }
+
+    static func getFreeCancelationText(serviceCancellation: ServiceCancellation?, isScheduled: Bool) -> String? {
+        switch serviceCancellation?.type {
         case .timeBeforePickup:
-            if let freeCancellationMinutes = trip.serviceAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                let messageFormat = isPrebook == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
-                return  String(format: messageFormat, timeBeforeCancel)
-            } else {
-                return nil
-            }
+            return getTimeBeforePickupText(serviceCancellation: serviceCancellation, isScheduled: isScheduled)
         case .beforeDriverEnRoute:
             return  UITexts.Quotes.freeCancellationBeforeDriverEnRoute
         default:
             return nil
         }
+    }
+
+    private static func getTimeBeforePickupText(serviceCancellation: ServiceCancellation?, isScheduled: Bool) -> String? {
+        guard
+            let freeCancellationMinutes = serviceCancellation?.minutes,
+            freeCancellationMinutes > 0
+        else {
+             return nil
+        }
+        let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+        let messageFormat = isScheduled ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
+        return String(format: messageFormat, timeBeforeCancel)
     }
 }
