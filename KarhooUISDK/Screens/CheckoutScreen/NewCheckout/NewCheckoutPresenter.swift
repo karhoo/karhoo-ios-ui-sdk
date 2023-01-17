@@ -89,7 +89,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
-        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(details: passengerDetails)
+        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(
+            details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
+        )
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
