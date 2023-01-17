@@ -9,8 +9,12 @@
 import Foundation
 import SwiftUI
 
-final class KarhooBottomSheetContentWithTextFieldViewModel {
+final class KarhooBottomSheetContentWithTextFieldViewModel: ObservableObject {
+    @Published var textFieldText: String
+    @Published var isTextfieldValid: Bool
+
     var initialValueForTextField: String
+    var errorMessage: String
     var onSaveCallback: (_ newFlightNumber: String) -> Void
 
     let viewSubtitle: String
@@ -21,12 +25,16 @@ final class KarhooBottomSheetContentWithTextFieldViewModel {
         initialValueForTextField: String,
         viewSubtitle: String,
         textFieldHint: String,
+        errorMessage: String,
         onSaveCallback:  @escaping (_ newFlightNumber: String) -> Void
     ) {
         self.initialValueForTextField = initialValueForTextField
         self.viewSubtitle = viewSubtitle
         self.textFieldHint = textFieldHint
         self.onSaveCallback = onSaveCallback
+        self.errorMessage = errorMessage
+        textFieldText = initialValueForTextField
+        isTextfieldValid = true
     }
     
     func didTapSave(textFieldValue: String){

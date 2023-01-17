@@ -254,9 +254,11 @@ public enum UITexts {
         public static let trainTitle = "kh_uisdk_checkout_train_title".localized
         public static let trainSubtitle = "kh_uisdk_checkout_train_subtitle".localized
         public static let trainExcample = "kh_uisdk_checkout_train_example".localized
+        public static let trainError = "kh_uisdk_checkout_train_error".localized
         public static let flightTitle = "kh_uisdk_checkout_airport_title".localized
         public static let flightSubtitle = "kh_uisdk_checkout_airport_subtitle".localized
         public static let flightExcample = "kh_uisdk_checkout_airport_example".localized
+        public static let flightError = "kh_uisdk_checkout_airport_error".localized
         public static let priceDetailsTitle = "kh_uisdk_price_bottom_sheet_title".localized
     }
 

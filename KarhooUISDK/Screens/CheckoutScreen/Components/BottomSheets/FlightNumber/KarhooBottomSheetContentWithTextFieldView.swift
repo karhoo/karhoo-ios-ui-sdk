@@ -10,23 +10,22 @@ import SwiftUI
 
 struct KarhooBottomSheetContentWithTextFieldView: View {
     
-    init(viewModel: KarhooBottomSheetContentWithTextFieldViewModel){
-        self.viewModel = viewModel
-        _textFieldText = State(initialValue: viewModel.initialValueForTextField)
-    }
-    private var viewModel: KarhooBottomSheetContentWithTextFieldViewModel
-    @State private var textFieldText: String
+    @StateObject var viewModel: KarhooBottomSheetContentWithTextFieldViewModel
     var body: some View {
         VStack( alignment: .leading, spacing: 0){
             Text(viewModel.viewSubtitle)
-            KarhooNewTextField(textFieldText: $textFieldText, hint: viewModel.textFieldHint)
-                .padding(.bottom, UIConstants.Spacing.standard)
-                .padding(.top, UIConstants.Spacing.xLarge)
+            KarhooNewTextField(
+                textFieldText: $viewModel.textFieldText,
+                isTextfieldValid: $viewModel.isTextfieldValid,
+                hint: viewModel.textFieldHint,
+                errorMessage: viewModel.errorMessage
+            )
+            .padding(.bottom, UIConstants.Spacing.standard)
+            .padding(.top, UIConstants.Spacing.xLarge)
             KarhooMainButton(title: viewModel.buttonText) {
-                viewModel.didTapSave(textFieldValue: textFieldText)
+                viewModel.didTapSave(textFieldValue: viewModel.textFieldText)
             }
         }
-        
     }
 }
 
@@ -38,9 +37,10 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     initialValueForTextField: "",
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExcample,
+                    errorMessage: UITexts.Booking.flightError,
                     onSaveCallback: {newFlightNumber in return }
                 )
-                )
+            )
         }
     }
 }
