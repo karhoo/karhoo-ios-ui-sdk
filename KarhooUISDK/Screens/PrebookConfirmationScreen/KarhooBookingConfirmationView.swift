@@ -158,11 +158,11 @@ struct KarhooMainButton: View {
     
     init(
         title: String,
-        isActive: Binding<Bool> = Binding.constant(true),
+        isEnabled: Binding<Bool> = Binding.constant(true),
         callback: @escaping () -> Void
     ){
         self.title = title
-        self._isEnabled = isActive
+        self._isEnabled = isEnabled
         self.callback = callback
     }
     
