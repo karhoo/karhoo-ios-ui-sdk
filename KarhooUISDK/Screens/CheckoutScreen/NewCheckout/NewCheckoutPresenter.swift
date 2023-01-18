@@ -210,7 +210,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     func didTapConfirm() {
         // MARK: - Validate & proceed with payment flow
-        guard validateIfAllRequiredDataAreProvided() else {
+        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: true) else {
             withAnimation {
                 state = .gatheringInfo
             }
@@ -287,7 +287,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
         switch bookingState {
         case .idle:
-            break
+            withAnimation {
+                state = validateIfAllRequiredDataAreProvided() ? .readyToBook : .gatheringInfo
+            }
         case .loading:
             break
         case .failure(let error):
@@ -352,7 +354,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Validation
 
     private func checkIfNeedsToUpdateState() {
-        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: false) else {
+        guard validateIfAllRequiredDataAreProvided() else {
             return
         }
         withAnimation {
@@ -361,7 +363,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     /// Validate if all required data are in place. If some data is missing, the method will trigger proper behavior, like opening the passenger details screen.
-    private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = true) -> Bool {
+    private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = false) -> Bool {
         guard passengerDetailsWorker.passengerDetails?.areValid ?? false
         else {
             if triggerAdditionalBehavior {

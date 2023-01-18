@@ -16,6 +16,9 @@ extension UIApplication {
         while let presentedViewController = topController.presentedViewController {
             topController = presentedViewController
         }
+        if let navigationController = topController as? NavigationController {
+            topController = navigationController.viewControllers.last ?? navigationController
+        }
         return topController
     }
 }

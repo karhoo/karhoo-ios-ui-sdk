@@ -68,17 +68,26 @@ final class KarhooNewCheckoutPaymentWorker: NewCheckoutPaymentWorker {
     }
 
     func getPaymentNonce(organisationId: String, completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
-        guard let user = userService.getCurrentUser() else {
+        guard
+            let user = userService.getCurrentUser(),
+            let topMostVC = UIApplication.shared.topMostViewController() as? BaseViewController
+        else {
             assertionFailure()
             return
         }
+        paymentNonceProvider.set(baseViewController: topMostVC)
         paymentNonceProvider.getPaymentNonce(
             user: user,
             organisationId: organisationId,
             quote: quote
-        ) { result in
+        ) { [weak self] result in
             switch result {
             case .completed(value: let result):
+                switch result {
+                case .nonce(nonce: let nonce):
+                    self?.paymentNonce = nonce
+                default: break
+                }
                 completion(.completed(value: result))
             case .cancelledByUser:
                 completion(.cancelledByUser)
@@ -91,6 +100,7 @@ final class KarhooNewCheckoutPaymentWorker: NewCheckoutPaymentWorker {
         addCardResultCompletion: @escaping (CardFlowResult) -> Void
     ) {
         let topMostVC = UIApplication.shared.topMostViewController() as? BaseViewController
+        self.addCardResultCompletion = addCardResultCompletion
 
         cardRegistrationFlow.setBaseView(topMostVC)
 
@@ -145,7 +155,8 @@ final class KarhooNewCheckoutPaymentWorker: NewCheckoutPaymentWorker {
             let errorMessage = isAdyenPayment ? error?.localizedAdyenMessage : error?.localizedMessage
 
             addCardResultCompletion?(.didFailWithError(ErrorModel(message: errorMessage ?? UITexts.Errors.somethingWentWrong, code: "")))
-        default: break
+        default:
+            addCardResultCompletion?(.cancelledByUser)
         }
     }
 

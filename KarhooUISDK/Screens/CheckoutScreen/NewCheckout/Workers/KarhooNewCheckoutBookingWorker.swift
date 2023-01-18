@@ -126,7 +126,6 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             }
         } else {
             guard paymentWorker.getStoredPaymentNonce() != nil else {
-                bookingState = .idle
                 requestNewPaymentMethod()
                 return
             }
@@ -200,6 +199,11 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         case .failedToInitialisePaymentService(error: let error):
             bookingState = .failure(error ?? ErrorModel.unknown())
         case .failedToAddCard(error: let error):
+            if let error {
+                bookingState = .failure(error)
+            } else {
+                bookingState = .idle
+            }
             bookingState = .failure(error ?? ErrorModel.unknown())
         case .cancelledByUser:
             bookingState = .idle
@@ -365,18 +369,6 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     // MARK: - Utils
-
-    private func mockBookingSuccess() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.bookingState = .success(
-                TripInfo(
-                    tripId: "asdas",
-                    passengers: Passengers(additionalPassengers: 2, passengerDetails: [], luggage: .init(total: 3))
-                )
-
-                //            self.bookingState = .failure(ErrorModel(message: "something_went_wrong", code: "0231"))
-            )})
-    }
 
     private func isLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
