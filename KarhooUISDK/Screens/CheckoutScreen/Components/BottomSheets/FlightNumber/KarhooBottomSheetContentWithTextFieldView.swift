@@ -23,7 +23,7 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
             )
             .padding(.bottom, UIConstants.Spacing.standard)
             .padding(.top, UIConstants.Spacing.xLarge)
-            KarhooMainButton(title: viewModel.buttonText, isActive: $viewModel.isTextfieldValid) {
+            KarhooMainButton(title: viewModel.buttonText, isEnabled: $viewModel.isTextfieldValid) {
                 viewModel.didTapSave(textFieldValue: viewModel.textFieldText)
             }
         }
