@@ -380,10 +380,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         // TODO: Add Loyalty validation here
 
-        guard bookingWorker.isReadyToPerformBooking() else {
-            return false
-        }
-
         return true
 	}
 }
