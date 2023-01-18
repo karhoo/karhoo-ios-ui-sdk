@@ -44,14 +44,14 @@ class BookingConfirmationSnapshotSpec: QuickSpec {
                     ),
                     quote: .init(price: .init(highPrice: 20, lowPrice: 10, currencyCode: "EUR", net: .init(high: 22, low: 11), intLowPrice: 12, intHighPrice: 23), validity: 300),
                     trip: TripInfo(dateScheduled: .mock()),
-                    loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
+                    loyaltyInfo: KarhooBasicLoyaltyInfo(
                         shouldShowLoyalty: true,
                         loyaltyPoints: 10,
                         loyaltyMode: .earn
                     ),
                     calendarWorker: KarhooAddToCalendarWorker(dateFormatter: mockDateFormatter),
                     dateFormatter: mockDateFormatter,
-                    callback: { }
+                    onDismissCallback: { _ in }
                 )
                 sut = KarhooBookingConfirmationView(viewModel: viewModel)
                 bottomSheet = KarhooBottomSheet(

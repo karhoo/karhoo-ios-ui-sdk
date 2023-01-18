@@ -10,13 +10,22 @@ import Foundation
 import KarhooSDK
 
 class PassengerDetailsCellViewModel: DetailsCellViewModel {
-    init(onTap: @escaping () -> Void = {}) {
-        super.init(
-            title: UITexts.PassengerDetails.title,
-            subtitle: UITexts.PassengerDetails.add,
-            iconName: "kh_uisdk_passenger",
-            onTap: onTap
-        )
+    init(
+        passengerDetails: PassengerDetails?,
+        onTap: @escaping () -> Void = {}
+    ) {
+        if let passengerDetails = passengerDetails {
+            super.init()
+            self.update(using: passengerDetails)
+            self.onTap = onTap
+        } else {
+            super.init(
+                title: UITexts.PassengerDetails.title,
+                subtitle: UITexts.PassengerDetails.add,
+                iconName: "kh_uisdk_passenger",
+                onTap: onTap
+            )
+        }
     }
 
     func update(using details: PassengerDetails?) {

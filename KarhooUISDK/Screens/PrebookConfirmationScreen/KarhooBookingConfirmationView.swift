@@ -41,7 +41,6 @@ struct KarhooBookingConfirmationView: View {
                 ),
                 design: .borderedWithWhiteBackground
             )
-            .padding(UIConstants.Spacing.medium)
             
             // Time and Price
             timeAndPriceView
@@ -73,6 +72,9 @@ struct KarhooBookingConfirmationView: View {
             }
         }
         .padding(.vertical, UIConstants.Spacing.standard)
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
 
     @ViewBuilder
@@ -138,16 +140,14 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             trip: TripInfo(),
-            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
+            loyaltyInfo: KarhooBasicLoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,
                 loyaltyMode: .burn
             ),
             dateFormatter: KarhooDateFormatter(),
-            callback: {
-
-            })
-        )
+            onDismissCallback: { _ in }
+        ))
     }
 }
 

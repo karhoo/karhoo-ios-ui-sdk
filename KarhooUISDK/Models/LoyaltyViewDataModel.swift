@@ -13,3 +13,16 @@ public struct LoyaltyViewDataModel {
     public var currency: String
     public var tripAmount: Double
 }
+
+
+public struct KarhooBasicLoyaltyInfo: BookingConfirmationLoyaltyInfo {
+    var shouldShowLoyalty: Bool
+    var loyaltyPoints: Int
+    var loyaltyMode: LoyaltyMode
+}
+
+extension KarhooBasicLoyaltyInfo {
+    static func loyaltyDisabled() -> KarhooBasicLoyaltyInfo {
+        KarhooBasicLoyaltyInfo(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+    }
+}
