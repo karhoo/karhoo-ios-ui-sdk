@@ -39,11 +39,11 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
 
     // MARK: - Properties
 
-    private var quote: Quote
-    private(set) var passengerDetails: PassengerDetails?
+    private let quote: Quote
     private let journeyDetails: JourneyDetails
+    private var passengerDetails: PassengerDetails?
     private var flightNumber: String?
-    private var comment: String? = nil
+    private var comment: String?
     private let bookingMetadata: [String: Any]?
 
     var statePublisher: Published<NewCheckoutBookingState>.Publisher { $bookingState }
@@ -74,10 +74,6 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     // MARK: - Endpoints
-
-    func isReadyToPerformBooking() -> Bool {
-        true
-    }
 
     func update(passengerDetails: PassengerDetails?) {
         self.passengerDetails = passengerDetails
@@ -145,7 +141,6 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                     switch error.type {
                     case .errMissingBrowserInfo:
                         self?.sendBookRequest(loyaltyNonce: nil)
-                        break
                     default:
                         self?.bookingState = .failure(error)
                     }
@@ -163,7 +158,24 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     // MARK: - Booking handling methods
 
     private func book(paymentNonce: String, passenger: PassengerDetails) {
-        mockBookingSuccess()
+        if isLoyaltyEnabled() {
+            loyaltyWorker.getLoyaltyNonce { [weak self] result in
+                if let error = result.getErrorValue() {
+                    if error.type == .errMissingBrowserInfo {
+                        self?.sendBookRequest(loyaltyNonce: nil)
+                    } else {
+                        self?.bookingState = .failure(error)
+                    }
+                    return
+                }
+
+                if let loyaltyNonce = result.getSuccessValue() {
+                    self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce)
+                }
+            }
+        } else {
+            sendBookRequest(loyaltyNonce: nil)
+        }
     }
 
     func handleThreeDSecureCheck(_ result: OperationResult<ThreeDSecureCheckResult>) {
