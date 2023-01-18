@@ -117,11 +117,16 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         }
 
         if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
-            guard userService.getCurrentUser() != nil else {
+            guard let user = userService.getCurrentUser(),
+                  let currentOrganisation = user.organisations.first?.id
+            else {
                 bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
                 return
             }
-            paymentWorker.threeDSecureNonceCheck(passengerDetails: passengerDetails) { [weak self] result in
+            paymentWorker.threeDSecureNonceCheck(
+                organisationId: currentOrganisation,
+                passengerDetails: passengerDetails
+            ) { [weak self] result in
                 self?.handleThreeDSecureCheck(result)
             }
         } else {

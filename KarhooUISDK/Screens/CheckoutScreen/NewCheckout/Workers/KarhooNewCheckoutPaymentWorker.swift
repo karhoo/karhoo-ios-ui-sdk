@@ -22,6 +22,7 @@ protocol NewCheckoutPaymentWorker: AnyObject {
         addCardResultCompletion: @escaping (CardFlowResult) -> Void
     )
     func threeDSecureNonceCheck(
+        organisationId: String,
         passengerDetails: PassengerDetails,
         resultCompletion: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     )
@@ -123,21 +124,37 @@ final class KarhooNewCheckoutPaymentWorker: NewCheckoutPaymentWorker {
     }
 
     func threeDSecureNonceCheck(
+        organisationId: String,
         passengerDetails: PassengerDetails,
         resultCompletion: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     ) {
-        guard let nonce = getStoredPaymentNonce() else {
-            resultCompletion(.completed(value: .failedToInitialisePaymentService))
-            return
-        }
-        threeDSecureProvider?.threeDSecureCheck(
-            nonce: nonce.nonce,
-            currencyCode: quote.price.currencyCode,
-            paymentAmount: NSDecimalNumber(value: quote.price.highPrice),
-            callback: { result in
-                resultCompletion(result)
+        getPaymentNonce(organisationId: organisationId) { result in
+            switch result {
+            case .cancelledByUser:
+                resultCompletion(.cancelledByUser)
+            case .completed(value: let getNonceResult):
+                switch getNonceResult {
+                case .threeDSecureCheckFailed:
+                    resultCompletion(.completed(value: .threeDSecureAuthenticationFailed))
+                case .failedToInitialisePaymentService:
+                    resultCompletion(.completed(value: .failedToInitialisePaymentService))
+                case .failedToAddCard:
+                    resultCompletion(.completed(value: .threeDSecureAuthenticationFailed))
+                case .cancelledByUser:
+                    resultCompletion(.cancelledByUser)
+                case .nonce(nonce: let nonce):
+                    self.paymentNonce = nonce
+                    self.threeDSecureProvider?.threeDSecureCheck(
+                        nonce: nonce.nonce,
+                        currencyCode: self.quote.price.currencyCode,
+                        paymentAmount: NSDecimalNumber(value: self.quote.price.highPrice),
+                        callback: { result in
+                            resultCompletion(result)
+                        }
+                    )
+                }
             }
-        )
+        }
     }
 
     // MARK: - Result handling
