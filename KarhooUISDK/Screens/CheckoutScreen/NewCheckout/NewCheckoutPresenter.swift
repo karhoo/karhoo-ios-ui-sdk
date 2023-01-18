@@ -343,7 +343,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     /// Called when the user taps on the price details section of the screen
-    private func showPriceDetails() {
+    func showPriceDetails() {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType
