@@ -463,7 +463,6 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
                 view?.setDefaultState()
             case .success(let threeDSecureNonce):
                 book(paymentNonce: threeDSecureNonce, passenger: passengerDetails, flightNumber: view?.getFlightNumber())
-            case .canceledByUser: break
             }
         }
     }

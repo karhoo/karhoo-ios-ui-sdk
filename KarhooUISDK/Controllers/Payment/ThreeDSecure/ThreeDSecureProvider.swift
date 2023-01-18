@@ -13,7 +13,6 @@ public enum ThreeDSecureCheckResult {
     case success(nonce: String)
     case threeDSecureAuthenticationFailed
     case failedToInitialisePaymentService
-    case canceledByUser
 }
 
 public protocol ThreeDSecureUtils {

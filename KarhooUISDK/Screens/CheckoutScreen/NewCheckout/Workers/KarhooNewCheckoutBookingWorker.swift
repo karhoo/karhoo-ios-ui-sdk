@@ -193,8 +193,6 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                     return
                 }
                 book(paymentNonce: threeDSecureNonce, passenger: passengerDetails)
-            case .canceledByUser:
-                bookingState = .idle
             }
         case .cancelledByUser:
             bookingState = .idle

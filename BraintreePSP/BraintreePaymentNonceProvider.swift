@@ -136,9 +136,6 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
                 triggerAddCardFlow(currencyCode: quote.price.currencyCode)
             case .success(let threeDSecureNonce):
                 self.callbackResult?(.completed(value: .nonce(nonce: Nonce(nonce: threeDSecureNonce))))
-            case .canceledByUser:
-                assertionFailure("this should not be the case")
-                self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             }
         }
     }
