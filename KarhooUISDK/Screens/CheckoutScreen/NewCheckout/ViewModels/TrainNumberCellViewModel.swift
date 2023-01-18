@@ -22,14 +22,14 @@ class TrainNumberCellViewModel: DetailsCellViewModel {
     }
     
     func getTrainNumber() -> String {
-        return trainNumber
+        trainNumber
     }
     
     private func getSubtitle() -> String {
         trainNumber.isNotEmpty ? trainNumber : UITexts.Booking.trainSubtitle
     }
     
-    func setTrainNumber(trainNumber: String) {
+    func setTrainNumber(_ trainNumber: String) {
         self.trainNumber = trainNumber
         subtitle = getSubtitle()
     }

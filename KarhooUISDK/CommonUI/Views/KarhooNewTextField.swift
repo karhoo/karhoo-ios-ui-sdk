@@ -14,13 +14,15 @@ struct KarhooNewTextField: View {
     @Binding var isTextfieldValid: Bool
     @State private var isFirstResponder: Bool = false
 
-    var hint: String
+    var placeholder: String
     var errorMessage: String
+    var contentType: KarhooTextInputViewContentType
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack{
-                TextField(hint, text: $textFieldText, onEditingChanged: { (editingChanged) in
+                TextField(placeholder, text: $textFieldText, onEditingChanged: { (editingChanged) in
                     if editingChanged {
                         isFirstResponder = true
                     } else {
@@ -29,7 +31,7 @@ struct KarhooNewTextField: View {
                 })
                 .onChange(of: textFieldText) { newValue in
                     withAnimation {
-                        validateTextField(newValue: newValue)
+                        isTextfieldValid = getTextFieldValidity(newValue: newValue)
                     }
                 }
                 Button {
@@ -57,16 +59,19 @@ struct KarhooNewTextField: View {
         }
     }
     
-    private func validateTextField(newValue: String) {
-        var isValid: Bool {
-            for char in newValue {
-                if !char.isLetter && !char.isNumber {
-                    return false
-                }
-            }
-            return true
+    private func getTextFieldValidity(newValue: String) -> Bool {
+        switch contentType {
+        case .email:
+            return Utils.isValidEmail(email: newValue)
+        case .phone:
+            return Utils.isValidPhoneNumber(number: newValue)
+        case .firstname, .surname:
+            return newValue != placeholder && Utils.isValidName(name: newValue)
+        case .trainNumber, .flightNumber :
+            return Utils.isAplhanumerical(newValue)
+        default:
+            return newValue != placeholder && newValue != ""
         }
-        isTextfieldValid = isValid
     }
     
     private func getBorderColor() -> Color {

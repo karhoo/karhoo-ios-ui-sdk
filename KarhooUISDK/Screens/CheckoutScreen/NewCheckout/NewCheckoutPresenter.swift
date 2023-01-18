@@ -190,14 +190,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: Interactions
 
-    func didTapOptions() {
-        // TODO: - handle options flow
-    }
-
-    func didTapFlightNumber() {
-        // TODO: - handle flight number flow
-    }
-
     func didSetComment(_ comment: String) {
         // TODO: - handle comment flow
     }
@@ -247,6 +239,14 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         passangerDetailsViewModel.onTap = { [weak self] in
             self?.showPassengerDetails()
+        }
+        
+        flightNumberCellViewModel.onTap = { [weak self] in
+            self?.showFlightNumberBottomSheet()
+        }
+        
+        trainNumberCellViewModel.onTap = { [weak self] in
+            self?.showTrainNumberBottomSheet()
         }
     }
 

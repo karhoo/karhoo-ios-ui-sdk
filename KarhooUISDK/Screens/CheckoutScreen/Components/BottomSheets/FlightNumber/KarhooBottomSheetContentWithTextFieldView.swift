@@ -12,13 +12,14 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
     
     @StateObject var viewModel: KarhooBottomSheetContentWithTextFieldViewModel
     var body: some View {
-        VStack( alignment: .leading, spacing: 0){
+        VStack( alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
             KarhooNewTextField(
                 textFieldText: $viewModel.textFieldText,
                 isTextfieldValid: $viewModel.isTextfieldValid,
-                hint: viewModel.textFieldHint,
-                errorMessage: viewModel.errorMessage
+                placeholder: viewModel.textFieldHint,
+                errorMessage: viewModel.errorMessage,
+                contentType: viewModel.contentType
             )
             .padding(.bottom, UIConstants.Spacing.standard)
             .padding(.top, UIConstants.Spacing.xLarge)
@@ -34,6 +35,7 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
         KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel(
             title: "Flight number") { }) {
                 KarhooBottomSheetContentWithTextFieldView(viewModel: .init(
+                    contentType: .flightNumber,
                     initialValueForTextField: "",
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExcample,

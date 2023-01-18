@@ -165,11 +165,11 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     // MARK: Analytics
-    private func reportRideConfirmationDetailsSelected(){
+    private func reportRideConfirmationDetailsSelected() {
         analytics.rideConfirmationDetailsSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 
-    private func reportRideConfirmationAddToCalendarSelected(){
+    private func reportRideConfirmationAddToCalendarSelected() {
         analytics.rideConfirmationAddToCalendarSelected(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }
 }

@@ -23,14 +23,14 @@ class FlightNumberCellViewModel: DetailsCellViewModel {
     }
     
     func getFlightNumber() -> String {
-        return flightNumber
+        flightNumber
     }
     
     private func getSubtitle() -> String {
         flightNumber.isNotEmpty ? flightNumber : UITexts.Booking.flightSubtitle
     }
     
-    func setFlightNumber(flightNumber: String) {
+    func setFlightNumber(_ flightNumber: String) {
         self.flightNumber = flightNumber
         subtitle = getSubtitle()
     }

@@ -73,13 +73,14 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             }
         
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
+            contentType: .flightNumber,
             initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
             viewSubtitle: UITexts.Booking.flightSubtitle,
             textFieldHint: UITexts.Booking.flightExcample,
             errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ){
             [weak self] newFlightNumber in
-            self?.presenter?.flightNumberCellViewModel.setFlightNumber(flightNumber: newFlightNumber)
+            self?.presenter?.flightNumberCellViewModel.setFlightNumber(newFlightNumber)
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
         }
@@ -101,13 +102,14 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             }
         
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
+            contentType: .trainNumber,
             initialValueForTextField: presenter.trainNumberCellViewModel.getTrainNumber(),
             viewSubtitle: UITexts.Booking.trainSubtitle,
             textFieldHint: UITexts.Booking.trainExcample,
             errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ){
             [weak self] newTrainNumber in
-            self?.presenter?.trainNumberCellViewModel.setTrainNumber(trainNumber: newTrainNumber)
+            self?.presenter?.trainNumberCellViewModel.setTrainNumber(newTrainNumber)
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
         }
