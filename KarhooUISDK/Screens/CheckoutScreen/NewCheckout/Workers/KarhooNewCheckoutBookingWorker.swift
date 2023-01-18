@@ -33,7 +33,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private let userService: UserService
     private let tripService: TripService
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let paymentWorker: KarhooNewCheckoutPaymentWorker
+    private let paymentWorker: NewCheckoutPaymentWorker
     private let loyaltyWorker: NewCheckoutLoyaltyWorker
     private let analytics: Analytics
 
@@ -71,6 +71,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         self.paymentWorker = paymentWorker
         self.loyaltyWorker = loyaltyWorker
         self.analytics = analytics
+        self.setup()
     }
 
     // MARK: - Endpoints
@@ -101,6 +102,12 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         }
     }
 
+    // MARK: - Setup methods
+
+    private func setup() {
+        paymentWorker.setup(using: quote)
+    }
+
     // MARK: - Booking initial methods
 
     private func submitGuestBooking() {
@@ -114,50 +121,56 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
                 return
             }
-            paymentWorker.threeDSecureNonceCheck(
-                quote: quote,
-                passengerDetails: passengerDetails
-            ) { result in
-                self.handleThreeDSecureCheck(result)
+            paymentWorker.threeDSecureNonceCheck(passengerDetails: passengerDetails) { [weak self] result in
+                self?.handleThreeDSecureCheck(result)
             }
         } else {
-            mockBookingSuccess()
-            guard let nonce = paymentWorker.getPaymentNonceAccordingToAuthState() else {
-                paymentWorker.requestNewPaymentMethod()
+            guard paymentWorker.getStoredPaymentNonce() != nil else {
                 bookingState = .idle
+                requestNewPaymentMethod()
                 return
             }
-            book(
-                paymentNonce: nonce.nonce,
-                passenger: passengerDetails
-            )
+            book()
         }
     }
 
     private func submitAuthenticatedBooking() {
-        if isLoyaltyEnabled() {
-            loyaltyWorker.getLoyaltyNonce { [weak self] result in
-                if let error = result.getErrorValue() {
-                    switch error.type {
-                    case .errMissingBrowserInfo:
-                        self?.sendBookRequest(loyaltyNonce: nil)
-                    default:
-                        self?.bookingState = .failure(error)
-                    }
-                } else if let loyaltyNonce = result.getSuccessValue() {
-                    self?.sendBookRequest(loyaltyNonce: loyaltyNonce.nonce)
-                } else {
-                    self?.sendBookRequest(loyaltyNonce: nil)
-                }
+        if paymentWorker.getStoredPaymentNonce() != nil {
+            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
+                getPaymentNonceAndBook()
+            } else {
+                book()
             }
         } else {
-            sendBookRequest(loyaltyNonce: nil)
+            getPaymentNonceAndBook()
         }
+    }
+
+    // MARK: - Payment handling methods
+
+    private func getPaymentNonceAndBook() {
+        guard
+            let currentOrganisation = userService.getCurrentUser()?.organisations.first?.id
+        else {
+            bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
+            return
+        }
+        paymentWorker.getPaymentNonce(
+            organisationId: currentOrganisation,
+            completion: { [weak self] result in
+                switch result {
+                case .completed(let result):
+                    self?.handleGetPaymentNonceResult(result)
+                case .cancelledByUser:
+                    self?.bookingState = .idle
+                }
+            }
+        )
     }
 
     // MARK: - Booking handling methods
 
-    private func book(paymentNonce: String, passenger: PassengerDetails) {
+    private func book() {
         if isLoyaltyEnabled() {
             loyaltyWorker.getLoyaltyNonce { [weak self] result in
                 if let error = result.getErrorValue() {
@@ -174,7 +187,22 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 }
             }
         } else {
-            sendBookRequest(loyaltyNonce: nil)
+            sendBookRequest()
+        }
+    }
+
+    func handleGetPaymentNonceResult(_ paymentNonceResult: PaymentNonceProviderResult) {
+        switch paymentNonceResult {
+        case .nonce:
+            book()
+        case .threeDSecureCheckFailed:
+            requestNewPaymentMethod(showRetryAlert: true)
+        case .failedToInitialisePaymentService(error: let error):
+            bookingState = .failure(error ?? ErrorModel.unknown())
+        case .failedToAddCard(error: let error):
+            bookingState = .failure(error ?? ErrorModel.unknown())
+        case .cancelledByUser:
+            bookingState = .idle
         }
     }
 
@@ -186,24 +214,31 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 bookingState = .failure(ErrorModel(message: UITexts.PaymentError.noDetailsMessage, code: ""))
             case .threeDSecureAuthenticationFailed:
                 bookingState = .idle
-                paymentWorker.requestNewPaymentMethod()
-            case .success(let threeDSecureNonce):
-                guard let passengerDetails = passengerDetails else {
-                    assertionFailure()
-                    return
-                }
-                book(paymentNonce: threeDSecureNonce, passenger: passengerDetails)
+                requestNewPaymentMethod()
+            case .success:
+                book()
             }
         case .cancelledByUser:
             bookingState = .idle
         }
     }
 
-    private func sendBookRequest(loyaltyNonce: String?) {
-        guard let paymentNonce = paymentWorker.getPaymentNonceAccordingToAuthState(),
+    private func handleAddNewPaymentMethod(with result: CardFlowResult) {
+        switch result {
+        case .didAddPaymentMethod:
+            performBooking()
+        case .didFailWithError(let error):
+            bookingState = .failure(error ?? ErrorModel.unknown())
+        case .cancelledByUser:
+            bookingState = .idle
+        }
+    }
+
+    private func sendBookRequest(loyaltyNonce: String? = nil) {
+        guard let paymentNonce = paymentWorker.getStoredPaymentNonce(),
               let passengerDetails = passengerDetails else {
             bookingState = .failure(ErrorModel(message: UITexts.Errors.somethingWentWrong, code: ""))
-            assertionFailure()
+            assertionFailure("At this point all required data should be already in place.")
             return
         }
         var flight: String? = flightNumber
@@ -244,6 +279,14 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         })
     }
 
+    // MARK: - Manage payment-related flow
+
+    private func requestNewPaymentMethod(showRetryAlert: Bool = false) {
+        paymentWorker.requestNewPaymentMethod(showRetryAlert: showRetryAlert) { [weak self] result in
+            self?.handleAddNewPaymentMethod(with: result)
+        }
+    }
+
     // MARK: - Booking result handling
 
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
@@ -254,7 +297,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 correlationId: result.getCorrelationId()
             )
             if result.getErrorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
-                paymentWorker.requestNewPaymentMethod(showRetryAlert: true)
+                requestNewPaymentMethod(showRetryAlert: true)
             } else {
                 bookingState = .failure(result.getErrorValue() ?? ErrorModel.unknown())
             }
@@ -297,7 +340,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             quoteId: quote.id,
             correlationId: correlationId ?? "",
             message: message,
-            lastFourDigits: paymentWorker.getPaymentNonce()?.lastFour ?? "",
+            lastFourDigits: paymentWorker.getStoredPaymentNonce()?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice,
