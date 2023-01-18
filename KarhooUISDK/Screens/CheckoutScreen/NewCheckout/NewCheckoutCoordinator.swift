@@ -122,6 +122,31 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         viewController.modalPresentationStyle = .overFullScreen
         baseViewController.present(viewController, animated: true, completion: nil)
     }
+    
+    func routeToComment(title: String, comments: String) {
+        guard let presenter = presenter else { return }
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title) { [weak self] in
+                self?.baseViewController.dismiss(animated: true, completion: nil)
+            }
+        let contentViewModel = KarhooBottomSheetCommentsViewModel(
+            initialValueForTextView: presenter.commentCellViewModel.getComment(),
+            viewSubtitle: UITexts.Booking.commentsSubtitle
+        ){
+            [weak self] comment in
+            self?.presenter?.commentCellViewModel.setComment(comment)
+            self?.baseViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
+            KarhooBottomSheetCommentsView(viewModel: contentViewModel)
+        }
+        
+        let viewController = UIHostingController(rootView: bottomSheet)
+        viewController.view.backgroundColor = UIColor.clear
+        viewController.modalPresentationStyle = .overFullScreen
+        baseViewController.present(viewController, animated: true, completion: nil)
+    }
 
     func routeToPassengerDetails(
         _ currentDetails: PassengerDetails?,
