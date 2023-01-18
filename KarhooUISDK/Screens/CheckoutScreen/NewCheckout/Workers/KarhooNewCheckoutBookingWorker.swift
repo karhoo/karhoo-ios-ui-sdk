@@ -343,6 +343,9 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     private func isKarhooUser() -> Bool {
-        sdkConfiguration.authenticationMethod().isGuest() == false
+        switch sdkConfiguration.authenticationMethod() {
+        case .karhooUser: return true
+        default: return false
+        }
     }
 }
