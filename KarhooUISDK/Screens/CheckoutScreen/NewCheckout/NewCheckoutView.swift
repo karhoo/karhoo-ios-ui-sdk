@@ -56,11 +56,17 @@ struct NewCheckoutView: View {
                     VehicleDetailsCard(
                         viewModel: viewModel.getVehicleDetailsCardViewModel()
                     )
+                    
                     VStack(spacing: UIConstants.Spacing.standard) {
 
-                        if viewModel.showLoyaltyView() {
-                            // init Loyaltyview with viewModel.getLoyaltyViewModel()
-                            Rectangle().frame(width: 300, height: 200).background(Color.red)
+                        if viewModel.showLoyaltyView(),
+                           let loyaltyViewModel = viewModel.loyaltyViewModel {
+                            SwiftUILoyaltyView(
+                                viewModel: loyaltyViewModel,
+                                quoteId: viewModel.quote.id,
+                                delegate: viewModel
+                            )
+                            .frame(height: .infinity)
                         }
                         
                         DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)

@@ -45,7 +45,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
-    var loyaltyViewModel: LoyaltyViewDataModel?
+    var loyaltyViewModel: LoyaltyViewDataModel!
 
     private let router: NewCheckoutRouter
 
@@ -69,7 +69,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     @Published var errorToPresent: (title: String?, message: String?)?
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
-    var loyaltyViewDelegate: LoyaltyViewDelegate?
+//    var loyaltyViewDelegate: LoyaltyViewDelegate?
 
     // MARK: - Init & Config
 
@@ -125,7 +125,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
                 tripAmount: quote.price.highPrice
             )
             
-            loyaltyViewDelegate = self
+//            loyaltyViewDelegate = self
         }
     }
 
