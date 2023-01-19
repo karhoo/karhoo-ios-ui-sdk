@@ -40,7 +40,7 @@ struct KarhooMaterialDesignTextField: View {
                     Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
                         .frame(
                             width: UIConstants.Dimension.Icon.standard,
-                            height:UIConstants.Dimension.Icon.standard
+                            height: UIConstants.Dimension.Icon.standard
                         )
                 }
             }

@@ -40,7 +40,7 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExample,
                     errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
-                    onSaveCallback: {newFlightNumber in return }
+                    onSaveCallback: { newFlightNumber in return }
                 )
             )
         }
