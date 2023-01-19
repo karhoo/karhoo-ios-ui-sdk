@@ -60,7 +60,7 @@ public class Utils {
         return true
     }
     
-    static func isAplhanumerical(_ text: String) -> Bool{
+    static func isAplhanumerical(_ text: String) -> Bool {
         for char in text {
             if !char.isLetter && !char.isNumber {
                 return false

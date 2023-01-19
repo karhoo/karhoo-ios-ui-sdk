@@ -1,5 +1,5 @@
 //
-//  KarhooNewTextField.swift
+//  KarhooMaterialDesignTextField.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 16/01/2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct KarhooNewTextField: View {
+struct KarhooMaterialDesignTextField: View {
    
     @Binding var textFieldText: String
     @Binding var isTextfieldValid: Bool

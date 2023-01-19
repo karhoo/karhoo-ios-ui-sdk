@@ -568,7 +568,7 @@
 		7B7404362971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */; };
 		7B7404422975449F000ED60A /* KarhooBottomSheetContentWithTextFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404402975449F000ED60A /* KarhooBottomSheetContentWithTextFieldViewModel.swift */; };
 		7B7404432975449F000ED60A /* KarhooBottomSheetContentWithTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404412975449F000ED60A /* KarhooBottomSheetContentWithTextFieldView.swift */; };
-		7B7404452975A9D5000ED60A /* KarhooNewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404442975A9D5000ED60A /* KarhooNewTextField.swift */; };
+		7B7404452975A9D5000ED60A /* KarhooMaterialDesignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404442975A9D5000ED60A /* KarhooMaterialDesignTextField.swift */; };
 		7B8BE762296FFF9F006AF159 /* VehicleDetailsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */; };
 		7B8BE76529705650006AF159 /* PassengerDetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76429705650006AF159 /* PassengerDetailsCellViewModel.swift */; };
 		7B8BE76729705670006AF159 /* FlightNumberCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76629705670006AF159 /* FlightNumberCellViewModel.swift */; };
@@ -1263,7 +1263,7 @@
 		7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsViewModel.swift; sourceTree = "<group>"; };
 		7B7404402975449F000ED60A /* KarhooBottomSheetContentWithTextFieldViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetContentWithTextFieldViewModel.swift; sourceTree = "<group>"; };
 		7B7404412975449F000ED60A /* KarhooBottomSheetContentWithTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetContentWithTextFieldView.swift; sourceTree = "<group>"; };
-		7B7404442975A9D5000ED60A /* KarhooNewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooNewTextField.swift; sourceTree = "<group>"; };
+		7B7404442975A9D5000ED60A /* KarhooMaterialDesignTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMaterialDesignTextField.swift; sourceTree = "<group>"; };
 		7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailsCard.swift; sourceTree = "<group>"; };
 		7B8BE76429705650006AF159 /* PassengerDetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsCellViewModel.swift; sourceTree = "<group>"; };
 		7B8BE76629705670006AF159 /* FlightNumberCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightNumberCellViewModel.swift; sourceTree = "<group>"; };
@@ -3076,7 +3076,7 @@
 				6BC2B3AF27B1280500218372 /* SeparatorWithLabelView */,
 				51F4D56E28574D7F00A8DB5E /* SingleSelectionListView */,
 				407EC72522CF564E00F24CFC /* StackButtonView */,
-				7B7404442975A9D5000ED60A /* KarhooNewTextField.swift */,
+				7B7404442975A9D5000ED60A /* KarhooMaterialDesignTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4599,7 +4599,7 @@
 				407EC7B022CF564E00F24CFC /* KarhooGradients.swift in Sources */,
 				407EC7CC22CF564E00F24CFC /* KarhooAddressBarFieldView.swift in Sources */,
 				6BB940542754D47800478ABD /* LoyaltyViewModel.swift in Sources */,
-				7B7404452975A9D5000ED60A /* KarhooNewTextField.swift in Sources */,
+				7B7404452975A9D5000ED60A /* KarhooMaterialDesignTextField.swift in Sources */,
 				407EC7EC22CF564E00F24CFC /* TableData.swift in Sources */,
 				79793ED8270F2E2200944896 /* UIViewController+extensions.swift in Sources */,
 				5190F00B2847858600F7623A /* AdyenPaymentManager.swift in Sources */,

@@ -14,7 +14,7 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
     var body: some View {
         VStack( alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
-            KarhooNewTextField(
+            KarhooMaterialDesignTextField(
                 textFieldText: $viewModel.textFieldText,
                 isTextfieldValid: $viewModel.isTextfieldValid,
                 placeholder: viewModel.textFieldHint,
@@ -38,7 +38,7 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     contentType: .flightNumber,
                     initialValueForTextField: "",
                     viewSubtitle: UITexts.Booking.flightSubtitle,
-                    textFieldHint: UITexts.Booking.flightExcample,
+                    textFieldHint: UITexts.Booking.flightExample,
                     errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
                     onSaveCallback: {newFlightNumber in return }
                 )
