@@ -64,6 +64,8 @@ struct KarhooAddToCalendarView: View {
                 .frame(height: Constants.height)
             }
         )
+        .accessibilityElement()
+        .accessibilityValue(UITexts.TripSummary.addToCalendar)
     }
 
     @ViewBuilder
