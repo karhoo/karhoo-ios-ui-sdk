@@ -3954,10 +3954,9 @@
 			};
 			buildConfigurationList = FC8F470E21539E24007841FB /* Build configuration list for PBXProject "KarhooUISDK" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = Base;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				es,
 				fr,
@@ -3972,6 +3971,7 @@
 				"pt-BR",
 				pl,
 				ja,
+				en,
 			);
 			mainGroup = FC8F470A21539E24007841FB;
 			productRefGroup = FC8F471521539E24007841FB /* Products */;
