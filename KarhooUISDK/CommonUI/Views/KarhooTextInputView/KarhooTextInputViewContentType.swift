@@ -14,6 +14,8 @@ enum KarhooTextInputViewContentType {
     case phone
     case comment
     case poiDetails
+    case flightNumber
+    case trainNumber
     
     var placeholderText: String {
         switch self {
@@ -29,6 +31,8 @@ enum KarhooTextInputViewContentType {
             return UITexts.User.commentOptional
         case .poiDetails:
             return UITexts.Booking.guestCheckoutFlightNumberPlaceholder
+        default:
+            return ""
         }
     }
     
@@ -46,6 +50,8 @@ enum KarhooTextInputViewContentType {
             return ""
         case .poiDetails:
             return UITexts.Errors.flightNumberValidatorError
+        default:
+            return ""
         }
     }
 

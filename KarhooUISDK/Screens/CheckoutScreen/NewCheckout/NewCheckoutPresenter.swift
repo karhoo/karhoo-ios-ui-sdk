@@ -35,6 +35,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let bookingWorker: KarhooNewCheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
+
     private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
 
     // MARK: - Nested views models
@@ -100,7 +101,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
-
         self.legalNoticeViewModel = KarhooLegalNoticeViewModel()
         self.passangerDetailsViewModel = PassengerDetailsCellViewModel(passengerDetails: passengerDetails)
         self.trainNumberCellViewModel = TrainNumberCellViewModel()
@@ -193,14 +193,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: Interactions
 
-    func didTapOptions() {
-        // TODO: - handle options flow
-    }
-
-    func didTapFlightNumber() {
-        // TODO: - handle flight number flow
-    }
-
     func didSetComment(_ comment: String) {
         // TODO: - handle comment flow
     }
@@ -251,6 +243,14 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         passangerDetailsViewModel.onTap = { [weak self] in
             self?.showPassengerDetails()
+        }
+        
+        flightNumberCellViewModel.onTap = { [weak self] in
+            self?.showFlightNumberBottomSheet()
+        }
+        
+        trainNumberCellViewModel.onTap = { [weak self] in
+            self?.showTrainNumberBottomSheet()
         }
     }
 
@@ -326,7 +326,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking) &&
         journeyDetails.originLocationDetails?.details.type == .airport
     }
-
+    
     // MARK: - Update nested views state
 
     // MARK: - Routing
@@ -343,6 +343,22 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType
+        )
+    }
+    
+    /// Called when the user taps on the flight number cell
+    func showFlightNumberBottomSheet() {
+        router.routeToFlightNumber(
+            title: UITexts.Booking.flightTitle,
+            flightNumber: flightNumberCellViewModel.getFlightNumber()
+        )
+    }
+    
+    /// Called when the user taps on the train number cell
+    func showTrainNumberBottomSheet() {
+        router.routeToTrainNumber(
+            title: UITexts.Booking.trainTitle,
+            trainNumber: trainNumberCellViewModel.getTrainNumber()
         )
     }
 

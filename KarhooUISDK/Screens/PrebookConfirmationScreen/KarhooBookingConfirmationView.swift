@@ -153,7 +153,19 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
 
 struct KarhooMainButton: View {
     @State var title: String
+    @Binding var isEnabled: Bool
     @State var callback: () -> Void
+    
+    init(
+        title: String,
+        isEnabled: Binding<Bool> = Binding.constant(true),
+        callback: @escaping () -> Void
+    ){
+        self.title = title
+        self._isEnabled = isEnabled
+        self.callback = callback
+    }
+    
     
     var body: some View {
         Button(
@@ -168,9 +180,10 @@ struct KarhooMainButton: View {
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .frame(maxWidth: .infinity)
                 .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
-                .background(Color(KarhooUI.colors.secondary))
+                .background(isEnabled ? Color(KarhooUI.colors.secondary) : Color(KarhooUI.colors.inactive))
                 .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
             }
         )
+        .disabled(!isEnabled)
     }
 }
