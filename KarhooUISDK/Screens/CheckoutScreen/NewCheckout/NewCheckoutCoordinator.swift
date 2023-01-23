@@ -74,7 +74,6 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
                 self?.baseViewController.dismiss(animated: true, completion: nil)
         }
 
-        
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
             contentType: .flightNumber,
             initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
@@ -98,7 +97,10 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
     }
     
     func routeToTrainNumber(title: String, trainNumber: String) {
-        guard let presenter = presenter else { return }
+        guard let presenter = presenter else {
+            assertionFailure("Presenter is missing")
+            return
+        }
         let bottomSheetViewModel = KarhooBottomSheetViewModel(title: title) { [weak self] in
                 self?.baseViewController.dismiss(animated: true, completion: nil)
             }
@@ -126,7 +128,10 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
     }
     
     func routeToComment(title: String, comments: String) {
-        guard let presenter = presenter else { return }
+        guard let presenter = presenter else {
+            assertionFailure("Presenter is missing")
+            return
+        }
         let bottomSheetViewModel = KarhooBottomSheetViewModel(
             title: title) { [weak self] in
                 self?.baseViewController.dismiss(animated: true, completion: nil)
@@ -134,7 +139,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         let contentViewModel = KarhooBottomSheetCommentsViewModel(
             initialValueForTextView: presenter.commentCellViewModel.getComment(),
             viewSubtitle: UITexts.Booking.commentsSubtitle
-        ){
+        ) {
             [weak self] comment in
             self?.presenter?.commentCellViewModel.setComment(comment)
             self?.baseViewController.dismiss(animated: true, completion: nil)

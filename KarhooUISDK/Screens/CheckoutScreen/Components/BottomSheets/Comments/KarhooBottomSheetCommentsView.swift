@@ -38,15 +38,15 @@ struct KarhooBottomSheetCommentsView_Previews: PreviewProvider {
         KarhooBottomSheet(
             viewModel: KarhooBottomSheetViewModel(
                 title: UITexts.Booking.commentsTitle,
-                onDismissCallback: { return })){
-                KarhooBottomSheetCommentsView(
-                    viewModel: KarhooBottomSheetCommentsViewModel(
-                        initialValueForTextView: "first \n second \n third \n 4th",
-                        viewSubtitle: UITexts.Booking.commentsSubtitle,
-                        onSaveCallback: { _ in return }
-                    )
+                onDismissCallback: { return })
+        ) {
+            KarhooBottomSheetCommentsView(
+                viewModel: KarhooBottomSheetCommentsViewModel(
+                    initialValueForTextView: "first \n second \n third \n 4th",
+                    viewSubtitle: UITexts.Booking.commentsSubtitle,
+                    onSaveCallback: { _ in return }
                 )
-            }
+            )
+        }
     }
 }
-

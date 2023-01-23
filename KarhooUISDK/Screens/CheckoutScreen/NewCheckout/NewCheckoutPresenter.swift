@@ -366,7 +366,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         )
     }
     
-    /// Called when the user taps on the coment cell
+    /// Called when the user taps on the comment cell
     private func showCommentBottomSheet() {
         router.routeToComment(
             title: UITexts.Booking.commentsTitle,

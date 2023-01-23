@@ -17,11 +17,11 @@ struct KarhooNewTextField: View {
     var placeholder: String
     var errorMessage: String
     var contentType: KarhooTextInputViewContentType
-    
+    var textFieldValidator: TextFieldValidator = KarhooTextFieldValidator()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack{
+            HStack {
                 TextField(placeholder, text: $textFieldText, onEditingChanged: { (editingChanged) in
                     if editingChanged {
                         isFirstResponder = true
@@ -31,16 +31,17 @@ struct KarhooNewTextField: View {
                 })
                 .onChange(of: textFieldText) { newValue in
                     withAnimation {
-                        isTextfieldValid = getTextFieldValidity(newValue: newValue)
+                        isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
                     }
                 }
                 Button {
                     textFieldText = ""
                 } label: {
                     Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
+                        .resizable()
                         .frame(
                             width: UIConstants.Dimension.Icon.standard,
-                            height:UIConstants.Dimension.Icon.standard
+                            height: UIConstants.Dimension.Icon.standard
                         )
                 }
             }
@@ -56,21 +57,6 @@ struct KarhooNewTextField: View {
                     .padding(.top, UIConstants.Spacing.xSmall)
                     .transition(.opacity)
             }
-        }
-    }
-    
-    private func getTextFieldValidity(newValue: String) -> Bool {
-        switch contentType {
-        case .email:
-            return Utils.isValidEmail(email: newValue)
-        case .phone:
-            return Utils.isValidPhoneNumber(number: newValue)
-        case .firstname, .surname:
-            return newValue != placeholder && Utils.isValidName(name: newValue)
-        case .trainNumber, .flightNumber :
-            return Utils.isAplhanumerical(newValue)
-        default:
-            return newValue != placeholder && newValue != ""
         }
     }
     

@@ -21,7 +21,7 @@ final class KarhooBottomSheetCommentsViewModel: ObservableObject {
     init(
         initialValueForTextView: String,
         viewSubtitle: String,
-        onSaveCallback:  @escaping (_ newFlightNumber: String) -> Void
+        onSaveCallback: @escaping (_ newFlightNumber: String) -> Void
     ) {
         self.initialValueForTextView = initialValueForTextView
         self.viewSubtitle = viewSubtitle
