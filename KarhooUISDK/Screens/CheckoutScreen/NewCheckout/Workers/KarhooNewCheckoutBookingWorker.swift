@@ -96,14 +96,14 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             if isKarhooUser() {
                 submitAuthenticatedBooking()
             } else {
-                submitGuestBooking()
+                submitGuestOrTokenExchangeBooking()
             }
         }
     }
 
     // MARK: - Booking initial methods
 
-    private func submitGuestBooking() {
+    private func submitGuestOrTokenExchangeBooking() {
         guard let passengerDetails = passengerDetails else {
             bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
             return
@@ -207,7 +207,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             return
         }
         var flight: String? = flightNumber
-        if let flightText = flight, (flightText.isEmpty || flightText == " ") {
+        if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
             flight = nil
         }
 
