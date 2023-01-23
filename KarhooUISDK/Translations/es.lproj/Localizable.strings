@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "CONFIRMAR Y PAGAR";
 
+"kh_uisdk_book_pay" = "Preste";
+
 "kh_uisdk_book_return_ride" = "Reservar viaje de vuelta";
 
 "kh_uisdk_booking_car" = "RESERVAR VIAJE";
@@ -275,7 +277,25 @@
 
 "kh_uisdk_checked" = "Comprobado";
 
+"kh_uisdk_checkout_airport_example" = "por ejemplo, AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Agregar un número de vuelo";
+
+"kh_uisdk_checkout_airport_title" = "Número de vuelo";
+
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAJE";
+
+"kh_uisdk_checkout_comments_subtitle" = "Comenta para tu conductor";
+
+"kh_uisdk_checkout_comments_title" = "Comentario";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Solo se permiten letras y números.";
+
+"kh_uisdk_checkout_train_example" = "por ejemplo, 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Añadir un número de tren";
+
+"kh_uisdk_checkout_train_title" = "Número de tren";
 
 "kh_uisdk_close_the_screen" = "Cierra la pantalla";
 
@@ -725,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificado SSL no válido";
 
+"kh_uisdk_now" = "ahora";
+
 "kh_uisdk_offer_expired" = "Estimación expirada";
 
 "kh_uisdk_offer_expired_text" = "Seleccione una nueva estimación para continuar con la reserva";
@@ -790,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "La reserva se realizará en hora local";
 
 "kh_uisdk_price" = "Tarifa";
+
+"kh_uisdk_price_bottom_sheet_title" = "Detalles de precio";
 
 "kh_uisdk_price_info_text_estimated" = "Esta flota ofrece taxis no regulados. La estimación se basa en varios factores del viaje, como la distancia y el tiempo. Para más información, consulte los Términos y condiciones de la flota.";
 

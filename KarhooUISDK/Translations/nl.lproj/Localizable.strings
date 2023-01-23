@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "BEVESTIGEN EN BETALEN";
 
+"kh_uisdk_book_pay" = "Betalen";
+
 "kh_uisdk_book_return_ride" = "Retourrit boeken";
 
 "kh_uisdk_booking_car" = "RIT BOEKEN";
@@ -275,7 +277,25 @@
 
 "kh_uisdk_checked" = "Gecontroleerd";
 
+"kh_uisdk_checkout_airport_example" = "bijv. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Voeg een vluchtnummer toe";
+
+"kh_uisdk_checkout_airport_title" = "Vluchtnummer";
+
 "kh_uisdk_checkout_as_guest" = "RIT BOEKEN";
+
+"kh_uisdk_checkout_comments_subtitle" = "Opmerking voor uw chauffeur";
+
+"kh_uisdk_checkout_comments_title" = "Opmerkingen";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Alleen letters en cijfers zijn toegestaan";
+
+"kh_uisdk_checkout_train_example" = "bijvoorbeeld 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Voeg een treinnummer toe";
+
+"kh_uisdk_checkout_train_title" = "Trein nummer";
 
 "kh_uisdk_close_the_screen" = "Sluit het scherm";
 
@@ -725,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Ongeldig SSL-certificaat";
 
+"kh_uisdk_now" = "nu";
+
 "kh_uisdk_offer_expired" = "Offerte verlopen";
 
 "kh_uisdk_offer_expired_text" = "Selecteer een nieuwe offerte om door te gaan met boeken";
@@ -790,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Ritten worden geboekt op de lokale tijd";
 
 "kh_uisdk_price" = "Prijs";
+
+"kh_uisdk_price_bottom_sheet_title" = "Prijsdetails";
 
 "kh_uisdk_price_info_text_estimated" = "Deze ritaanbieder heeft niet-gereguleerde taxi's. De offerte is een schatting op basis van factoren zoals tijd en totale afstand. Raadpleeg de algemene voorwaarden van de ritaanbieder voor meer informatie.";
 

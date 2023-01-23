@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "ยืนยันและชำระเงิน";
 
+"kh_uisdk_book_pay" = "การชำระเงิน";
+
 "kh_uisdk_book_return_ride" = "จองการเดินทางขากลับ";
 
 "kh_uisdk_booking_car" = "จองการเดินทาง";
@@ -275,7 +277,25 @@
 
 "kh_uisdk_checked" = "เลือกแล้ว";
 
+"kh_uisdk_checkout_airport_example" = "เช่น AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "เพิ่มหมายเลขเที่ยวบิน";
+
+"kh_uisdk_checkout_airport_title" = "เที่ยวบินหมายเลข";
+
 "kh_uisdk_checkout_as_guest" = "จองการเดินทาง";
+
+"kh_uisdk_checkout_comments_subtitle" = "ความคิดเห็นสำหรับไดรเวอร์ของคุณ";
+
+"kh_uisdk_checkout_comments_title" = "ความเห็น";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "อนุญาตเฉพาะตัวอักษรและตัวเลขเท่านั้น";
+
+"kh_uisdk_checkout_train_example" = "เช่น 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "เพิ่มหมายเลขรถไฟ";
+
+"kh_uisdk_checkout_train_title" = "หมายเลขรถไฟ";
 
 "kh_uisdk_close_the_screen" = "ปิดหน้าจอ";
 
@@ -721,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "ใบรับรอง SSL ไม่ถูกต้อง";
 
+"kh_uisdk_now" = "ตอนนี้";
+
 "kh_uisdk_offer_expired" = "ราคาหมดอายุแล้ว";
 
 "kh_uisdk_offer_expired_text" = "โปรดเลือกราคาใหม่เพื่อทำการจองของคุณต่อ";
@@ -786,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "การจองจะดำเนินการตามเวลาท้องถิ่น";
 
 "kh_uisdk_price" = "ราคา";
+
+"kh_uisdk_price_bottom_sheet_title" = "รายละเอียดราคา";
 
 "kh_uisdk_price_info_text_estimated" = "ผู้ให้บริการโดยสารนี้ให้บริการรถแท็กซี่ที่ไม่มีการควบคุม ราคาที่เสนอเป็นการประมาณค่าตามปัจจัยต่างๆ เช่น เวลาและระยะทางรวม โปรดตรวจสอบข้อกำหนดและเงื่อนไขของผู้ให้บริการโดยสารเพื่อดูข้อมูลเพิ่มเติม";
 
