@@ -64,6 +64,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     @Published var state: NewCheckoutState = .loading
     @Published var showError = false
     @Published var errorToPresent: (title: String?, message: String?)?
+    @Published var scrollToTermsConditions = false
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
 
@@ -244,9 +245,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             }
             .store(in: &cancellables)
 
-        if termsConditionsViewModel.showAgreementRequired {
+        if termsConditionsViewModel.isAcceptanceRequired {
             termsConditionsViewModel.$confirmed
                 .sink { [weak self] _ in
+                    self?.scrollToTermsConditions = false
                     self?.checkIfNeedsToUpdateState()
                 }
                 .store(in: &cancellables)
@@ -354,11 +356,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Validation
 
     private func checkIfNeedsToUpdateState() {
-        guard validateIfAllRequiredDataAreProvided() else {
-            return
-        }
         withAnimation {
-            state = .readyToBook
+            state = validateIfAllRequiredDataAreProvided() ? .readyToBook : .gatheringInfo
         }
     }
 
@@ -372,10 +371,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             return false
         }
 
-        guard !termsConditionsViewModel.isAcceptanceRequired || termsConditionsViewModel.confirmed
+        guard !(termsConditionsViewModel.isAcceptanceRequired) || termsConditionsViewModel.confirmed
         else {
             if triggerAdditionalBehavior {
                 termsConditionsViewModel.showAgreementRequired = true
+                scrollToTermsConditions = true
             }
             return false
         }

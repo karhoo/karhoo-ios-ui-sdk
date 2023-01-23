@@ -67,7 +67,7 @@ struct KarhooBookingConfirmationView: View {
             }
             
             // Done button
-            KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
+            KarhooMainButton(title: .constant(UITexts.Booking.prebookConfirmedRideDetails)) {
                 viewModel.dismiss()
             }
         }
@@ -152,7 +152,7 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
 }
 
 struct KarhooMainButton: View {
-    @State var title: String
+    @Binding var title: String
     @State var callback: () -> Void
     
     var body: some View {
