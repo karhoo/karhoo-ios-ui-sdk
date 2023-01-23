@@ -386,16 +386,4 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         default: return false
         }
     }
-
-    private func isLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
-    }
-
-    private func isKarhooUser() -> Bool {
-        switch sdkConfiguration.authenticationMethod() {
-        case .karhooUser: return true
-        default: return false
-        }
-    }
 }

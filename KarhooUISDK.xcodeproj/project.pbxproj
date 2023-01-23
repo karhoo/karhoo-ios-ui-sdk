@@ -288,6 +288,7 @@
 		51477AF628899B2E00C5E18B /* VehicleRulesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51477AF528899B2E00C5E18B /* VehicleRulesStore.swift */; };
 		5156A15A2913EF7500A70ED8 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156A1592913EF7500A70ED8 /* TestUtil.swift */; };
 		515BCE66297EBE910092B6E4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515BCE65297EBE910092B6E4 /* String+Extensions.swift */; };
+		515BCE68297EC83A0092B6E4 /* KarhooMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515BCE67297EC83A0092B6E4 /* KarhooMainButton.swift */; };
 		515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D81872913BDF4000635AD /* SnapshotUtils.swift */; };
 		51671F412819DFCC00F75712 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		516C16B1297468DE007F0B70 /* KarhooLegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C16B0297468DE007F0B70 /* KarhooLegalNoticeView.swift */; };
@@ -1050,6 +1051,7 @@
 		51477AF528899B2E00C5E18B /* VehicleRulesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRulesStore.swift; sourceTree = "<group>"; };
 		5156A1592913EF7500A70ED8 /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		515BCE65297EBE910092B6E4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		515BCE67297EC83A0092B6E4 /* KarhooMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMainButton.swift; sourceTree = "<group>"; };
 		515D81872913BDF4000635AD /* SnapshotUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotUtils.swift; sourceTree = "<group>"; };
 		516C16B0297468DE007F0B70 /* KarhooLegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLegalNoticeView.swift; sourceTree = "<group>"; };
 		516C16B2297468EA007F0B70 /* KarhooTermsConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTermsConditionsViewModel.swift; sourceTree = "<group>"; };
@@ -3050,6 +3052,7 @@
 				5135E56728574A1300F14A0F /* MainActionButton.swift */,
 				51C8BB292862285100B70637 /* CounterButton.swift */,
 				51F51B4B2864EB9B00CF345E /* ItemFilterButton.swift */,
+				515BCE67297EC83A0092B6E4 /* KarhooMainButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -4771,6 +4774,7 @@
 				091EA9D421AC4AA700849112 /* AccessibilityIdentifier.swift in Sources */,
 				407EC7A922CF564E00F24CFC /* AccessibilityIdentifiers.swift in Sources */,
 				FC83E2AD221EE890008FE26D /* TimeFetcher.swift in Sources */,
+				515BCE68297EC83A0092B6E4 /* KarhooMainButton.swift in Sources */,
 				407EC7E222CF564E00F24CFC /* BookingStatusViewModel.swift in Sources */,
 				407FC5F622F0A46800F74D0A /* HintTextView.swift in Sources */,
 				51801A2E285B72D200EE6583 /* FleetCapabilitiesFilter.swift in Sources */,
