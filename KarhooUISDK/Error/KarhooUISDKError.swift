@@ -39,4 +39,8 @@ public struct ErrorModel: KarhooError {
         self.message = message
         self.code = code
     }
+
+    static func unknown() -> ErrorModel {
+        ErrorModel(message: UITexts.Errors.somethingWentWrong, code: "")
+    }
 }
