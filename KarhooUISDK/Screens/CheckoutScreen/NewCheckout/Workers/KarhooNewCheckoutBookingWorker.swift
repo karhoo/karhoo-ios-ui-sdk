@@ -251,7 +251,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             return
         }
         var flight: String? = flightNumber
-        if let flightText = flight, (flightText.isEmpty || flightText == " ") {
+        if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
             flight = nil
         }
 
