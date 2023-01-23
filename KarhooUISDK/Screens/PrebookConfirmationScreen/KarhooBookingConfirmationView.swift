@@ -155,6 +155,17 @@ struct KarhooMainButton: View {
     @Binding var title: String
     @State var callback: () -> Void
     
+    init(
+        title: Binding<String>,
+        isEnabled: Binding<Bool> = Binding.constant(true),
+        callback: @escaping () -> Void
+    ){
+        self._title = title
+        self._isEnabled = isEnabled
+        self.callback = callback
+    }
+    
+    
     var body: some View {
         Button(
             action: {
@@ -168,9 +179,10 @@ struct KarhooMainButton: View {
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .frame(maxWidth: .infinity)
                 .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
-                .background(Color(KarhooUI.colors.secondary))
+                .background(isEnabled ? Color(KarhooUI.colors.secondary) : Color(KarhooUI.colors.inactive))
                 .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
             }
         )
+        .disabled(!isEnabled)
     }
 }

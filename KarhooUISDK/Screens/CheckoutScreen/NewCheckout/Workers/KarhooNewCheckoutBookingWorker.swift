@@ -97,7 +97,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
             if isKarhooUser() {
                 submitAuthenticatedBooking()
             } else {
-                submitGuestBooking()
+                submitGuestOrTokenExchangeBooking()
             }
         }
     }
@@ -110,7 +110,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
 
     // MARK: - Booking initial methods
 
-    private func submitGuestBooking() {
+    private func submitGuestOrTokenExchangeBooking() {
         guard let passengerDetails = passengerDetails else {
             bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
             return
@@ -374,6 +374,18 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     // MARK: - Utils
+
+    private func isLoyaltyEnabled() -> Bool {
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+    }
+
+    private func isKarhooUser() -> Bool {
+        switch sdkConfiguration.authenticationMethod() {
+        case .karhooUser: return true
+        default: return false
+        }
+    }
 
     private func isLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
