@@ -22,7 +22,6 @@ struct KarhooBottomSheet<Content: View>: View {
     }
    
     // MARK: - Body
-    
     var body: some View {
         ZStack {
             Spacer()
@@ -96,12 +95,9 @@ struct KarhooBottomSheet<Content: View>: View {
                 // first backround with rounded corners
                 .background(viewModel.backgroundColor.ignoresSafeArea())
                 .cornerRadius(viewModel.cornerRadius, corners: [.topLeft, .topRight])
-                //second background created to fill bottom safe area
+                // second background created to fill bottom safe area
                 .padding(.top, -viewModel.cornerRadius)
                 .background(viewModel.backgroundColor.ignoresSafeArea())
-//                .frame(
-//                    maxHeight: UIScreen.main.bounds.height - getTopPadding()
-//                )
                 .offset(x: 0, y: offset.height)
                 .onTapGesture {
                     // Do nothing. This was added to intercept touches so that they aren't picked up by the main VStack tap gesture recognizer
@@ -115,10 +111,6 @@ struct KarhooBottomSheet<Content: View>: View {
         .colorScheme(.light) // Delete this line after dark mode modifications
 
     }
-    
-    
-    
-    var body2: some View
     
     // MARK: - Helpers
     private func getBottomPadding() -> CGFloat {
@@ -150,7 +142,7 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
     }
 }
 
-struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
+struct BottomSheetWithTextField_Previews: PreviewProvider {
     static var previews: some View {
         KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel(
             title: "Flight number") { }) {
@@ -160,29 +152,11 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExample,
                     errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
-                    onSaveCallback: { newFlightNumber in return }
+                    onSaveCallback: { _ in
+                        return
+                    }
                 )
             )
         }
     }
 }
-
-
-struct RoundedCorner: Shape {
-
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape( RoundedCorner(radius: radius, corners: corners) )
-    }
-}
-
-
