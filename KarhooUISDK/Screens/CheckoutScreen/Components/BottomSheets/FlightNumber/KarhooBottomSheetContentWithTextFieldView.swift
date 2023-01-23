@@ -15,7 +15,7 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
         VStack( alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
             KarhooMaterialDesignTextField(
-                textFieldText: $viewModel.textFieldText,
+                text: $viewModel.textFieldText,
                 isTextfieldValid: $viewModel.isTextfieldValid,
                 placeholder: viewModel.textFieldHint,
                 errorMessage: viewModel.errorMessage,

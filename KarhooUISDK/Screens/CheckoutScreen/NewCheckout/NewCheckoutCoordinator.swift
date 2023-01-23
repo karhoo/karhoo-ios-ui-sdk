@@ -139,8 +139,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         let contentViewModel = KarhooBottomSheetCommentsViewModel(
             initialValueForTextView: presenter.commentCellViewModel.getComment(),
             viewSubtitle: UITexts.Booking.commentsSubtitle
-        ) {
-            [weak self] comment in
+        ) { [weak self] comment in
             self?.presenter?.commentCellViewModel.setComment(comment)
             self?.baseViewController.dismiss(animated: true, completion: nil)
         }
