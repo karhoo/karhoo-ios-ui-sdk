@@ -64,8 +64,7 @@ struct KarhooAddToCalendarView: View {
                 .frame(height: Constants.height)
             }
         )
-        .accessibilityElement()
-        .accessibilityValue(UITexts.TripSummary.addToCalendar)
+        .accessibilityLabel(Text(UITexts.TripSummary.addToCalendar))
     }
 
     @ViewBuilder
@@ -82,9 +81,11 @@ struct KarhooAddToCalendarView: View {
                 .font(Font(KarhooUI.fonts.captionBold()))
                 .foregroundColor(Color(KarhooUI.colors.white))
         }
-            .padding()
-            .frame(height: Constants.height)
-            .background(Color(KarhooUI.colors.success))
-            .cornerRadius(UIConstants.CornerRadius.medium)
+        .padding()
+        .frame(height: Constants.height)
+        .background(Color(KarhooUI.colors.success))
+        .cornerRadius(UIConstants.CornerRadius.medium)
+        .accessibilityElement(children: .ignore)
+        .accessibilityValue(UITexts.TripSummary.addedToCalendar)
     }
 }

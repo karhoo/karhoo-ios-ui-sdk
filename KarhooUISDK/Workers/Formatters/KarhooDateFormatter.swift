@@ -124,7 +124,8 @@ class KarhooDateFormatter: DateFormatterType {
         guard let date = date else {
             return ""
         }
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .none
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
         return dateFormatter.string(from: date)
