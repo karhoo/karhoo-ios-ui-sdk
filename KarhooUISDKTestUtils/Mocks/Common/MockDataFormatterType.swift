@@ -10,6 +10,14 @@ import Foundation
 @testable import KarhooUISDK
 
 public class MockDateFormatterType: DateFormatterType {
+
+    public var displayCustomDateTimeSet: Date?
+    public var displayCustomDateTimeReturnString: String = TestUtil.getRandomString()
+    public func display(_ date: Date?, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+        displayCustomDateTimeSet = date
+        return displayCustomDateTimeReturnString
+    }
+
     public init() { }
 
     public var timeZoneSet: TimeZone?

@@ -217,6 +217,8 @@
 
 "kh_uisdk_book_now" = "ПОДТВЕРДИТЬ И ОПЛАТИТЬ";
 
+"kh_uisdk_book_pay" = "платить";
+
 "kh_uisdk_book_return_ride" = "Забронировать поездку обратно";
 
 "kh_uisdk_booking_car" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
@@ -275,7 +277,25 @@
 
 "kh_uisdk_checked" = "Проверено";
 
+"kh_uisdk_checkout_airport_example" = "например AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Добавить номер рейса";
+
+"kh_uisdk_checkout_airport_title" = "Номер рейса";
+
 "kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
+
+"kh_uisdk_checkout_comments_subtitle" = "Комментарий для вашего водителя";
+
+"kh_uisdk_checkout_comments_title" = "Комментировать";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Допускаются только буквы и цифры";
+
+"kh_uisdk_checkout_train_example" = "например 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Добавить номер поезда";
+
+"kh_uisdk_checkout_train_title" = "Номер поезда";
 
 "kh_uisdk_close_the_screen" = "Закрыть экран";
 
@@ -725,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Неверный SSL-сертификат";
 
+"kh_uisdk_now" = "сейчас";
+
 "kh_uisdk_offer_expired" = "Срок действия предложения истек";
 
 "kh_uisdk_offer_expired_text" = "Пожалуйста, выберите новое предложение, чтобы продолжить бронирование";
@@ -790,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Бронирования совершаются по местному времени";
 
 "kh_uisdk_price" = "Цена";
+
+"kh_uisdk_price_bottom_sheet_title" = "Подробная информация о цене";
 
 "kh_uisdk_price_info_text_estimated" = "Этот перевозчик не является лицензированным такси. Приблизительная сумма, рассчитанная на основе суммы факторов: время, расстояние и т. д. Пожалуйста, ознакомьтесь с Условиями и положениями перевозчика для получения дополнительной информации.";
 
