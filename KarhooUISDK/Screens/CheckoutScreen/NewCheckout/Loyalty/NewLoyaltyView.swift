@@ -16,8 +16,6 @@ struct NewLoyaltyView: View {
     
     @State var burnTitle = UITexts.Loyalty.burnTitle
     @State var burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
-    @State var burnOnSubtitle = UITexts.Loyalty.burnOnSubtitle
-    @State var burnOnInfo = UITexts.Loyalty.info
 
     
     @Binding var isToggleOn: Bool
@@ -26,30 +24,27 @@ struct NewLoyaltyView: View {
     
     
     var body: some View {
-        VStack(spacing: UIConstants.Spacing.standard) {
-            ZStack{
-                VStack(alignment: .leading) {
-                    earnView
-                    orDivider
-                    burnView
-                }
-                    .padding(.all, UIConstants.Spacing.standard)
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: .leading
-                    )
-                    
-                    .addBorder(Color(KarhooUI.colors.border), cornerRadius: UIConstants.CornerRadius.medium)
-                    .background(
-                        RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                            .fill(Color(KarhooUI.colors.background2))
-                    )
-                    .alignmentGuide(VerticalAlignment.center) {
-                        $0[VerticalAlignment.top]
-                    }
-                ballanceView
+        ZStack{
+            VStack(alignment: .leading) {
+                earnInfoView
+                orDivider
+                burnInfoView
             }
-            burnInfoView
+                .padding(.all, UIConstants.Spacing.standard)
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: .leading
+                )
+                
+                .addBorder(Color(KarhooUI.colors.border), cornerRadius: UIConstants.CornerRadius.medium)
+                .background(
+                    RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
+                        .fill(Color(KarhooUI.colors.background2))
+                )
+                .alignmentGuide(VerticalAlignment.center) {
+                    $0[VerticalAlignment.top]
+                }
+            ballanceView
         }
     }
     
@@ -71,7 +66,7 @@ struct NewLoyaltyView: View {
     }
     
     @ViewBuilder
-    private var earnView: some View {
+    private var earnInfoView: some View {
         VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
             Text(title)
                 .lineLimit(2)
@@ -98,14 +93,14 @@ struct NewLoyaltyView: View {
     }
     
     @ViewBuilder
-    private var burnView: some View {
+    private var burnInfoView: some View {
         HStack {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                 Text(burnTitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
-                Text(isToggleOn ? burnOnSubtitle : burnOffSubtitle)
+                Text(burnOffSubtitle)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
             }
@@ -114,29 +109,12 @@ struct NewLoyaltyView: View {
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
         }
     }
-    @ViewBuilder
-    private var burnInfoView: some View {
-        HStack {
-            Text(burnOnInfo)
-                .font(Font(KarhooUI.fonts.bodyRegular()))
-                .foregroundColor(Color(KarhooUI.colors.white))
-                .padding(.all, UIConstants.Spacing.standard)
-            Spacer()
-                
-            
-        }
-            .frame(width: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.small)
-                    .fill(Color(KarhooUI.colors.primary))
-            )
-    }
 }
 
 
 struct NewLoyaltyView_Previews: PreviewProvider {
     @State var isToggleOn = true
     static var previews: some View {
-        NewLoyaltyView(isToggleOn: .constant(false))
+        NewLoyaltyView(isToggleOn: .constant(true))
     }
 }
