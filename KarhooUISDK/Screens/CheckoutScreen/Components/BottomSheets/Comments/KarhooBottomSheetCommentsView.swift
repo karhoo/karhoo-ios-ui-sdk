@@ -15,7 +15,7 @@ struct KarhooBottomSheetCommentsView: View {
     var body: some View {
         VStack( alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
-                .padding(.bottom, UIConstants.Spacing.xLarge)
+                .padding(.bottom, UIConstants.Spacing.standard)
             TextView($viewModel.textViewText)
                 .frame(minHeight: 50)
                 .padding(.horizontal, UIConstants.Spacing.standard)
