@@ -18,13 +18,13 @@ class KarhooTermsConditionsViewModel: ObservableObject {
     // MARK: - Properties
 
     private var cancellables: Set<AnyCancellable> = []
+    private(set) var confirmed = CurrentValueSubject<Bool, Never>(false)
     var isAcceptanceRequired: Bool { sdkConfiguration.isExplicitTermsAndConditionsConsentRequired }
 
     @Published var buttonBorderColor: Color = .clear
     @Published var showAgreementRequired = false
     @Published var attributedText: NSAttributedString = .init(string: "")
     @Published var accessibilityText: String = ""
-    @Published var confirmed: Bool = false
     @Published var imageName: String = "kh_uisdk_checkbox_unselected"
 
     // MARK: - Lifecycle
@@ -39,6 +39,12 @@ class KarhooTermsConditionsViewModel: ObservableObject {
         self.setupBinding()
     }
 
+    // MARK: - Endpoints
+
+    func didTapCheckbox() {
+        confirmed.send(!confirmed.value)
+    }
+
     // MARK: - Setup
 
     private func setBookingTerms(supplier: String?, termsStringURL: String) {
@@ -51,8 +57,8 @@ class KarhooTermsConditionsViewModel: ObservableObject {
     }
 
     private func setupBinding() {
-        $confirmed
-            .dropFirst()
+        confirmed
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.updateImageName()
                 self?.showAgreementRequired = false
@@ -89,7 +95,7 @@ class KarhooTermsConditionsViewModel: ObservableObject {
 
     private func updateImageName() {
         var newImageName: String {
-            switch confirmed {
+            switch confirmed.value {
             case true: return "kh_uisdk_checkbox_selected"
             case false: return "kh_uisdk_checkbox_unselected"
             }

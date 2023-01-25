@@ -16,7 +16,7 @@ final class KarhooBottomSheetCommentsViewModel: ObservableObject {
     let onSaveCallback: (_ newComment: String) -> Void
 
     let viewSubtitle: String
-    let buttonText = UITexts.Generic.save
+    var buttonText = UITexts.Generic.save
     
     init(
         initialValueForTextView: String,

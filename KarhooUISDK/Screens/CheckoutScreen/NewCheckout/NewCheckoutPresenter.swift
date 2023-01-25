@@ -238,7 +238,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             .store(in: &cancellables)
 
         if termsConditionsViewModel.isAcceptanceRequired {
-            termsConditionsViewModel.$confirmed
+            termsConditionsViewModel.confirmed
+                .dropFirst()
                 .sink { [weak self] _ in
                     self?.scrollToTermsConditions = false
                     self?.checkIfNeedsToUpdateState()
@@ -399,7 +400,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             return false
         }
 
-        guard !(termsConditionsViewModel.isAcceptanceRequired) || termsConditionsViewModel.confirmed
+        guard !(termsConditionsViewModel.isAcceptanceRequired) || termsConditionsViewModel.confirmed.value
         else {
             if triggerAdditionalBehavior {
                 termsConditionsViewModel.showAgreementRequired = true
