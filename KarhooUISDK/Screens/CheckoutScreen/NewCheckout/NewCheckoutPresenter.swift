@@ -255,6 +255,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         trainNumberCellViewModel.onTap = { [weak self] in
             self?.showTrainNumberBottomSheet()
         }
+        
+        commentCellViewModel.onTap = { [weak self] in
+            self?.showCommentBottomSheet()
+        }
     }
 
     private func setupInitialState() {
@@ -350,7 +354,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
     
     /// Called when the user taps on the flight number cell
-    func showFlightNumberBottomSheet() {
+    private func showFlightNumberBottomSheet() {
         router.routeToFlightNumber(
             title: UITexts.Booking.flightTitle,
             flightNumber: flightNumberCellViewModel.getFlightNumber()
@@ -358,10 +362,18 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
     
     /// Called when the user taps on the train number cell
-    func showTrainNumberBottomSheet() {
+    private func showTrainNumberBottomSheet() {
         router.routeToTrainNumber(
             title: UITexts.Booking.trainTitle,
             trainNumber: trainNumberCellViewModel.getTrainNumber()
+        )
+    }
+    
+    /// Called when the user taps on the comment cell
+    private func showCommentBottomSheet() {
+        router.routeToComment(
+            title: UITexts.Booking.commentsTitle,
+            comments: commentCellViewModel.getComment()
         )
     }
 

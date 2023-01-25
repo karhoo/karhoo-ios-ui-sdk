@@ -10,34 +10,35 @@ import SwiftUI
 
 struct KarhooMaterialDesignTextField: View {
    
-    @Binding var textFieldText: String
+    @Binding var text: String
     @Binding var isTextfieldValid: Bool
     @State private var isFirstResponder: Bool = false
 
     var placeholder: String
     var errorMessage: String
     var contentType: KarhooTextInputViewContentType
-    
+    var textFieldValidator: TextFieldValidator = KarhooTextFieldValidator()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack{
-                TextField(placeholder, text: $textFieldText, onEditingChanged: { (editingChanged) in
+            HStack {
+                TextField(placeholder, text: $text, onEditingChanged: { (editingChanged) in
                     if editingChanged {
                         isFirstResponder = true
                     } else {
                         isFirstResponder = false
                     }
                 })
-                .onChange(of: textFieldText) { newValue in
+                .onChange(of: text) { newValue in
                     withAnimation {
-                        isTextfieldValid = getTextFieldValidity(newValue: newValue)
+                        isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
                     }
                 }
                 Button {
-                    textFieldText = ""
+                    text = ""
                 } label: {
                     Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
+                        .resizable()
                         .frame(
                             width: UIConstants.Dimension.Icon.standard,
                             height: UIConstants.Dimension.Icon.standard
@@ -56,21 +57,6 @@ struct KarhooMaterialDesignTextField: View {
                     .padding(.top, UIConstants.Spacing.xSmall)
                     .transition(.opacity)
             }
-        }
-    }
-    
-    private func getTextFieldValidity(newValue: String) -> Bool {
-        switch contentType {
-        case .email:
-            return Utils.isValidEmail(email: newValue)
-        case .phone:
-            return Utils.isValidPhoneNumber(number: newValue)
-        case .firstname, .surname:
-            return newValue != placeholder && Utils.isValidName(name: newValue)
-        case .trainNumber, .flightNumber :
-            return Utils.isAplhanumerical(newValue)
-        default:
-            return newValue != placeholder && newValue != ""
         }
     }
     

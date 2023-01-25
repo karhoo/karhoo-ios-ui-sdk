@@ -73,7 +73,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
         ) { [weak self] in
                 self?.baseViewController.dismiss(animated: true, completion: nil)
         }
-        
+
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
             contentType: .flightNumber,
             initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
@@ -81,6 +81,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             textFieldHint: UITexts.Booking.flightExample,
             errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ) { [weak self] newFlightNumber in
+
             self?.presenter?.flightNumberCellViewModel.setFlightNumber(newFlightNumber)
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
@@ -96,7 +97,10 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
     }
     
     func routeToTrainNumber(title: String, trainNumber: String) {
-        guard let presenter = presenter else { return }
+        guard let presenter = presenter else {
+            assertionFailure("Presenter is missing")
+            return
+        }
         let bottomSheetViewModel = KarhooBottomSheetViewModel(title: title) { [weak self] in
                 self?.baseViewController.dismiss(animated: true, completion: nil)
             }
@@ -108,12 +112,40 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             textFieldHint: UITexts.Booking.trainExample,
             errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError
         ) { [weak self] newTrainNumber in
+
             self?.presenter?.trainNumberCellViewModel.setTrainNumber(newTrainNumber)
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
         }
         let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
             KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
+        }
+        
+        let viewController = UIHostingController(rootView: bottomSheet)
+        viewController.view.backgroundColor = UIColor.clear
+        viewController.modalPresentationStyle = .overFullScreen
+        baseViewController.present(viewController, animated: true, completion: nil)
+    }
+    
+    func routeToComment(title: String, comments: String) {
+        guard let presenter = presenter else {
+            assertionFailure("Presenter is missing")
+            return
+        }
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title) { [weak self] in
+                self?.baseViewController.dismiss(animated: true, completion: nil)
+            }
+        let contentViewModel = KarhooBottomSheetCommentsViewModel(
+            initialValueForTextView: presenter.commentCellViewModel.getComment(),
+            viewSubtitle: UITexts.Booking.commentsSubtitle
+        ) { [weak self] comment in
+            self?.presenter?.commentCellViewModel.setComment(comment)
+            self?.baseViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
+            KarhooBottomSheetCommentsView(viewModel: contentViewModel)
         }
         
         let viewController = UIHostingController(rootView: bottomSheet)
