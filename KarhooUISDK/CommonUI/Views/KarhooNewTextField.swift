@@ -22,12 +22,8 @@ struct KarhooNewTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                TextField(placeholder, text: $textFieldText, onEditingChanged: { (editingChanged) in
-                    if editingChanged {
-                        isFirstResponder = true
-                    } else {
-                        isFirstResponder = false
-                    }
+                TextField(placeholder, text: $textFieldText, onEditingChanged: { editingChanged in
+                    isFirstResponder = editingChanged
                 })
                 .onChange(of: textFieldText) { newValue in
                     withAnimation {

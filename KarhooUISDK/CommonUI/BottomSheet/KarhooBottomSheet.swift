@@ -24,41 +24,9 @@ struct KarhooBottomSheet<Content: View>: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            Spacer()
-                .background(
-                    LinearGradient(
-                        colors: [
-                            Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.hidden),
-                            Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.enabled)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .edgesIgnoringSafeArea([.all])
-                .opacity(2 - Double(offset.height / 100))
-                .gesture(
-                    DragGesture()
-                        .onChanged({ gesture in
-                            if gesture.translation.height > 0 {
-                                offset = gesture.translation
-                            }
-                        })
-                        .onEnded({ _ in
-                            if offset.height > 100 {
-                                viewModel.dismiss()
-                            } else {
-                                offset = .zero
-                            }
-                        })
-                )
-                .onTapGesture {
-                    viewModel.dismiss()
-                }
-            
+            gradientBackground
             VStack(spacing: 0) {
                 Spacer()
-                    .background(Color.clear)
                 VStack(spacing: 0) {
                     HStack {
                         Text(viewModel.title)
@@ -66,15 +34,23 @@ struct KarhooBottomSheet<Content: View>: View {
                             .foregroundColor(Color(KarhooUI.colors.text))
                         Spacer()
                             .background(Color.clear)
-                        Button {
-                            viewModel.dismiss()
-                        } label: {
-                            Image(
-                                uiImage:
-                                    UIImage.uisdkImage("kh_uisdk_cross_new")
-                                    .coloured(withTint: KarhooUI.colors.text)
-                            )
-                        }
+                        Button(
+                            action: {
+                                viewModel.dismiss()
+                            },
+                            label: {
+                                Image(
+                                    uiImage:
+                                        UIImage.uisdkImage("kh_uisdk_cross_new")
+                                        .coloured(withTint: KarhooUI.colors.text)
+                                )
+                                .resizable()
+                                .frame(
+                                    width: UIConstants.Dimension.Icon.standard,
+                                    height: UIConstants.Dimension.Icon.standard
+                                )
+                            }
+                        )
                         .frame(
                             width: UIConstants.Dimension.Button.standard,
                             height: UIConstants.Dimension.Button.standard
@@ -124,6 +100,41 @@ struct KarhooBottomSheet<Content: View>: View {
     
     private func getTopPadding() -> CGFloat {
         UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    }
+    
+    @ViewBuilder
+    private var gradientBackground: some View {
+        Spacer()
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.hidden),
+                        Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.enabled)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .edgesIgnoringSafeArea([.all])
+            .opacity(2 - Double(offset.height / 100))
+            .gesture(
+                DragGesture()
+                    .onChanged({ gesture in
+                        if gesture.translation.height > 0 {
+                            offset = gesture.translation
+                        }
+                    })
+                    .onEnded({ _ in
+                        if offset.height > 100 {
+                            viewModel.dismiss()
+                        } else {
+                            offset = .zero
+                        }
+                    })
+            )
+            .onTapGesture {
+                viewModel.dismiss()
+            }
     }
 }
 

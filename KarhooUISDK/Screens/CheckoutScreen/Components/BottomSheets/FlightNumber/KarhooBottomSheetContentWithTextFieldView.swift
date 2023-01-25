@@ -12,8 +12,10 @@ struct KarhooBottomSheetContentWithTextFieldView: View {
     
     @StateObject var viewModel: KarhooBottomSheetContentWithTextFieldViewModel
     var body: some View {
-        VStack( alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
+                .font(Font(KarhooUI.fonts.captionSemibold()))
+                .foregroundColor(Color(KarhooUI.colors.text))
             KarhooMaterialDesignTextField(
                 text: $viewModel.textFieldText,
                 isTextfieldValid: $viewModel.isTextfieldValid,

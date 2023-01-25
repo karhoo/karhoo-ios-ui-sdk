@@ -22,7 +22,7 @@ struct KarhooMaterialDesignTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                TextField(placeholder, text: $text, onEditingChanged: { (editingChanged) in
+                TextField(placeholder, text: $text, onEditingChanged: { editingChanged in
                     if editingChanged {
                         isFirstResponder = true
                     } else {

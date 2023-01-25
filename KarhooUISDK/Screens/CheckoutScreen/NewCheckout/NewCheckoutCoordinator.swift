@@ -133,7 +133,8 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             return
         }
         let bottomSheetViewModel = KarhooBottomSheetViewModel(
-            title: title) { [weak self] in
+            title: title
+        ) { [weak self] in
                 self?.baseViewController.dismiss(animated: true, completion: nil)
             }
         let contentViewModel = KarhooBottomSheetCommentsViewModel(
