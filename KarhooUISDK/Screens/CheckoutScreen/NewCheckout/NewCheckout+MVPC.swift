@@ -20,6 +20,10 @@ protocol NewCheckoutViewController: BaseViewController {
 
 protocol NewCheckoutRouter: AnyObject {
     func routeToPriceDetails(title: String, quoteType: QuoteType)
+    func routeToFlightNumber(title: String, flightNumber: String)
+    func routeToTrainNumber(title: String, trainNumber: String)
+    func routeToComment(title: String, comments: String)
+    
     func routeToPassengerDetails(
         _ currentDetails: PassengerDetails?,
         delegate: PassengerDetailsDelegate?

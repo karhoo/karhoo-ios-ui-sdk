@@ -9,6 +9,9 @@
 import Foundation
 
 class CommentCellViewModel: DetailsCellViewModel {
+    
+    private var comment: String = ""
+
     init(onTap: @escaping () -> Void = {}) {
         super.init(
             title: UITexts.Booking.commentsTitle,
@@ -16,5 +19,18 @@ class CommentCellViewModel: DetailsCellViewModel {
             iconName: "kh_uisdk_comments",
             onTap: onTap
         )
+    }
+    
+    func getComment() -> String {
+        comment
+    }
+    
+    private func getSubtitle() -> String {
+        comment.isNotEmpty ? comment : UITexts.Booking.commentsSubtitle
+    }
+    
+    func setComment(_ comment: String) {
+        self.comment = comment
+        subtitle = getSubtitle()
     }
 }

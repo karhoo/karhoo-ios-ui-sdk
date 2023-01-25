@@ -32,9 +32,10 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let userService: UserService
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let paymentsWorker = KarhooNewCheckoutPaymentAndBookingWorker()
+    private let bookingWorker: KarhooNewCheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
+
     private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
 
     // MARK: - Nested views models
@@ -57,8 +58,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetailsWorker.$passengerDetails
     }
     private let journeyDetails: JourneyDetails
-    private let bookingMetadata: [String: Any]?
-    private var comments: String?
     private var carIconUrl: String = ""
 
     let quote: Quote
@@ -91,18 +90,23 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
+        self.bookingWorker = KarhooNewCheckoutBookingWorker(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata
+        )
+
         self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(
             details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
         )
+        
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
         self.journeyDetails = journeyDetails
-        self.bookingMetadata = bookingMetadata
         self.dateFormatter = dateFormatter
         self.vehicleRuleProvider = vehicleRuleProvider
         self.router = router
-
         self.legalNoticeViewModel = KarhooLegalNoticeViewModel()
         self.passangerDetailsViewModel = PassengerDetailsCellViewModel(passengerDetails: passengerDetails)
         self.trainNumberCellViewModel = TrainNumberCellViewModel()
@@ -132,6 +136,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - Endpoints
 
     func onAppear() {
+        reportScreenOpened()
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
             self?.quoteExpired = true
         }
@@ -212,16 +217,8 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     // MARK: Interactions
 
-    func didTapOptions() {
-        // TODO: - handle options flow
-    }
-
-    func didTapFlightNumber() {
-        // TODO: - handle flight number flow
-    }
-
     func didSetComment(_ comment: String) {
-        // TODO: - handle comment flow
+        bookingWorker.update(comment: comment)
     }
 
     func didTapConfirm() {
@@ -249,7 +246,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: - State/main flow methods
 
     private func setupBinding() {
-        paymentsWorker.$bookingState
+        bookingWorker.$bookingState
             .sink { [weak self] bookingState in
                 self?.handleBookingState(bookingState)
             }
@@ -266,6 +263,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetailsPublisher
             .sink { [weak self] passengerDetails in
                 self?.passangerDetailsViewModel.update(using: passengerDetails)
+                self?.bookingWorker.update(passengerDetails: passengerDetails)
                 self?.checkIfNeedsToUpdateState()
             }
             .store(in: &cancellables)
@@ -280,6 +278,18 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         passangerDetailsViewModel.onTap = { [weak self] in
             self?.showPassengerDetails()
+        }
+        
+        flightNumberCellViewModel.onTap = { [weak self] in
+            self?.showFlightNumberBottomSheet()
+        }
+        
+        trainNumberCellViewModel.onTap = { [weak self] in
+            self?.showTrainNumberBottomSheet()
+        }
+        
+        commentCellViewModel.onTap = { [weak self] in
+            self?.showCommentBottomSheet()
         }
     }
 
@@ -307,7 +317,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         withAnimation {
             state = .loading
         }
-        paymentsWorker.performBooking()
+        bookingWorker.performBooking()
     }
     
     // MARK: - Booking Confirmation
@@ -316,7 +326,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         // TODO: - implement
     }
 
-    private func handleBookingState(_ bookingState: BookingState) {
+    private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
         switch bookingState {
         case .idle:
             break
@@ -341,46 +351,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         analytics.checkoutOpened(quote)
     }
 
-    private func reportBookingEvent(quoteId: String) {
-        analytics.bookingRequested(quoteId: quoteId)
-    }
-
-    private func reportBookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-        analytics.bookingSuccess(tripId: tripId, quoteId: quoteId, correlationId: correlationId)
-    }
-
-    private func reportBookingFailure(message: String, correlationId: String?) {
-        analytics.bookingFailure(
-            quoteId: quote.id,
-            correlationId: correlationId ?? "",
-            message: message,
-            lastFourDigits: paymentsWorker.getPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-    private func reportBookingConfirmationScreenOpened(tripId: String?, quoteId: String) {
-        analytics.rideConfirmationScreenOpened(date: Date(), tripId: tripId, quoteId: quoteId)
-    }
-
     // MARK: - Helpers
 
     private var isKarhooUser: Bool {
@@ -402,6 +372,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         journeyDetails.originLocationDetails?.details.type == .airport
     }
     
+
     private func isLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
@@ -409,7 +380,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         
     // MARK: - Price Details
     
-
     // MARK: - Update nested views state
 
     // MARK: - Routing
@@ -426,6 +396,30 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         router.routeToPriceDetails(
             title: UITexts.Booking.priceDetailsTitle,
             quoteType: quote.quoteType
+        )
+    }
+    
+    /// Called when the user taps on the flight number cell
+    private func showFlightNumberBottomSheet() {
+        router.routeToFlightNumber(
+            title: UITexts.Booking.flightTitle,
+            flightNumber: flightNumberCellViewModel.getFlightNumber()
+        )
+    }
+    
+    /// Called when the user taps on the train number cell
+    private func showTrainNumberBottomSheet() {
+        router.routeToTrainNumber(
+            title: UITexts.Booking.trainTitle,
+            trainNumber: trainNumberCellViewModel.getTrainNumber()
+        )
+    }
+    
+    /// Called when the user taps on the comment cell
+    private func showCommentBottomSheet() {
+        router.routeToComment(
+            title: UITexts.Booking.commentsTitle,
+            comments: commentCellViewModel.getComment()
         )
     }
 
@@ -459,10 +453,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         }
 
         // TODO: Add Loyalty validation here
-
-        guard paymentsWorker.isReadyToPerformPayment() else {
-            return false
-        }
 
         return true
 	}
