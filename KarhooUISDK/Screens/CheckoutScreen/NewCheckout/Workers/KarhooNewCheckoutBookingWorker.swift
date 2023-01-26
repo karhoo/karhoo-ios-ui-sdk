@@ -34,7 +34,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private let tripService: TripService
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let paymentWorker: NewCheckoutPaymentWorker
-    private let loyaltyWorker: NewCheckoutLoyaltyWorker
+    private let loyaltyWorker: LoyaltyWorker
     private let analytics: Analytics
 
     // MARK: - Properties
