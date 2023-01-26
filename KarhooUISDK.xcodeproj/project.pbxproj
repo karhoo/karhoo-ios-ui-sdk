@@ -434,7 +434,7 @@
 		51BF1E972913D3480000BA7E /* MockFeedbackScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B29522F444AA00569C55 /* MockFeedbackScreenBuilder.swift */; };
 		51BF1E982913D3480000BA7E /* MockTripScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30A221F1839008FE26D /* MockTripScreenBuilder.swift */; };
 		51BF1E992913D3480000BA7E /* MockRidesScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4397CF22615F37006BC6C4 /* MockRidesScreenBuilder.swift */; };
-		51BF4C3F2978326000BD2BA7 /* UIApplication+topMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BF4C3E2978326000BD2BA7 /* UIApplication+topMostViewController.swift */; };
+		51BF4C3F2978326000BD2BA7 /* UIApplication+TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BF4C3E2978326000BD2BA7 /* UIApplication+TopMostViewController.swift */; };
 		51C8BB2A2862285100B70637 /* CounterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C8BB292862285100B70637 /* CounterButton.swift */; };
 		51CDD5442913D7CE009C8F4F /* MockPaymentNonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CDD5432913D7CE009C8F4F /* MockPaymentNonceProvider.swift */; };
 		51CDD5462913D86B009C8F4F /* QuoteListFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */; };
@@ -1118,7 +1118,7 @@
 		51BCAFAC285782D500AFA244 /* QuoteFilterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFilterHandler.swift; sourceTree = "<group>"; };
 		51BF1DF62913D24D0000BA7E /* libKarhooUISDKTestUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKarhooUISDKTestUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		51BF1DF82913D24D0000BA7E /* KarhooUISDKTestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooUISDKTestUtils.swift; sourceTree = "<group>"; };
-		51BF4C3E2978326000BD2BA7 /* UIApplication+topMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+topMostViewController.swift"; sourceTree = "<group>"; };
+		51BF4C3E2978326000BD2BA7 /* UIApplication+TopMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopMostViewController.swift"; sourceTree = "<group>"; };
 		51C8BB292862285100B70637 /* CounterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterButton.swift; sourceTree = "<group>"; };
 		51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTestConfiguration.swift; sourceTree = "<group>"; };
 		51CC85BA290BC1E600E5E703 /* KarhooUISDKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarhooUISDKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3932,7 +3932,7 @@
 				7B492612281304630051C5DD /* Bundle+extensions */,
 				51E405682927ABA5001FB842 /* View+AddBorder.swift */,
 				51DB01722971B7C900F7DFFD /* UITextView+SwiftUI.swift */,
-				51BF4C3E2978326000BD2BA7 /* UIApplication+topMostViewController.swift */,
+				51BF4C3E2978326000BD2BA7 /* UIApplication+TopMostViewController.swift */,
 				515BCE65297EBE910092B6E4 /* String+Extensions.swift */,
 			);
 			path = Extensions;
@@ -4652,7 +4652,7 @@
 				09A1F88F225CBCFF00B3DBE2 /* MenuContentMVP.swift in Sources */,
 				0973872221DE77B3004BD5F9 /* NSAttributedString+Utils.swift in Sources */,
 				407EC7AA22CF564E00F24CFC /* KarhooFonts.swift in Sources */,
-				51BF4C3F2978326000BD2BA7 /* UIApplication+topMostViewController.swift in Sources */,
+				51BF4C3F2978326000BD2BA7 /* UIApplication+TopMostViewController.swift in Sources */,
 				FC83E29F221ECC1C008FE26D /* KarhooDestinationEtaPresenter.swift in Sources */,
 				84CE47EA293E29AC006585F5 /* KarhooAsyncImage.swift in Sources */,
 				5190F00D2847858600F7623A /* AdyenCardRegistrationFlow.swift in Sources */,
