@@ -89,16 +89,12 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     func performBooking() {
-        switch bookingState {
-        case .loading: break
-        default:
-            bookingState = .loading
-            reportBookingEvent()
-            if isKarhooUser() {
-                submitAuthenticatedBooking()
-            } else {
-                submitGuestOrTokenExchangeBooking()
-            }
+        bookingState = .loading
+        reportBookingEvent()
+        if isKarhooUser() {
+            submitAuthenticatedBooking()
+        } else {
+            submitGuestOrTokenExchangeBooking()
         }
     }
 
