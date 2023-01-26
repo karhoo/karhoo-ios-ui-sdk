@@ -19,7 +19,7 @@ final class KarhooBottomSheetContentWithTextFieldViewModel: ObservableObject {
     let onSaveCallback: (_ newFlightNumber: String) -> Void
 
     let viewSubtitle: String
-    let buttonText = UITexts.Generic.save
+    var buttonText = UITexts.Generic.save
     let textFieldHint: String
     
     init(

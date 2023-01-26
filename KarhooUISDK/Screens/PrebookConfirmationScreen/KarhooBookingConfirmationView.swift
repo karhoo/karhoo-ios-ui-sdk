@@ -67,7 +67,7 @@ struct KarhooBookingConfirmationView: View {
             }
             
             // Done button
-            KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
+            KarhooMainButton(title: .constant(UITexts.Booking.prebookConfirmedRideDetails)) {
                 viewModel.dismiss()
             }
         }
@@ -148,42 +148,5 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             dateFormatter: KarhooDateFormatter(),
             onDismissCallback: { _ in }
         ))
-    }
-}
-
-struct KarhooMainButton: View {
-    @State var title: String
-    @Binding var isEnabled: Bool
-    @State var callback: () -> Void
-    
-    init(
-        title: String,
-        isEnabled: Binding<Bool> = Binding.constant(true),
-        callback: @escaping () -> Void
-    ){
-        self.title = title
-        self._isEnabled = isEnabled
-        self.callback = callback
-    }
-    
-    
-    var body: some View {
-        Button(
-            action: {
-                callback()
-            },
-            label: {
-                Text(title)
-                .padding(.horizontal, UIConstants.Spacing.standard)
-                .font(Font(KarhooUI.fonts.headerBold()))
-                .minimumScaleFactor(0.7)
-                .foregroundColor(Color(KarhooUI.colors.white))
-                .frame(maxWidth: .infinity)
-                .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
-                .background(isEnabled ? Color(KarhooUI.colors.secondary) : Color(KarhooUI.colors.inactive))
-                .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
-            }
-        )
-        .disabled(!isEnabled)
     }
 }

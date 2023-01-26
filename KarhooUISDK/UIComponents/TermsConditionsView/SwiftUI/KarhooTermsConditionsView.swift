@@ -21,7 +21,7 @@ struct KarhooTermsConditionsView: View {
             if viewModel.isAcceptanceRequired {
                 Button(
                     action: {
-                        viewModel.confirmed.toggle()
+                        viewModel.didTapCheckbox()
                 },
                     label: {
                         Image(viewModel.imageName, bundle: .current)

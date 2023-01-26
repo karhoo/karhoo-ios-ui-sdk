@@ -25,7 +25,7 @@ struct KarhooBottomSheetCommentsView: View {
                     cornerRadius: UIConstants.CornerRadius.medium
                 )
                 .padding(.bottom, UIConstants.Spacing.large)
-            KarhooMainButton(title: viewModel.buttonText) {
+            KarhooMainButton(title: $viewModel.buttonText) {
                 viewModel.didTapSave(textFieldValue: viewModel.textViewText)
             }
         }
