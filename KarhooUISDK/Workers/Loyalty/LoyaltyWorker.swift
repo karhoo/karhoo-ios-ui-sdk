@@ -23,15 +23,15 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     private let userService: UserService
     private var loyaltyService: LoyaltyService
+    private let loyaltyPreAuthWorker: LoyaltyPreAuthWorker
     private let analytics: Analytics
 
     // MARK: - Properties
 
     // MARK: Internal properties
 
-    var isLoyaltyEnabled: Bool { get }
-    var loyaltyIdSubject: CurrentValueSubject<String?, Never> { get }
-    var currentBalanceSubject: CurrentValueSubject<Int?, Never> { get }
+    var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
+    var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
 
     // MARK: Private properties
 
@@ -40,6 +40,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     init(
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
+        loyaltyPreAuthWorker: LoyaltyPreAuthWorker = KarhooLoyaltyPreAuthWorker()
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.userService = userService
@@ -49,8 +50,17 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     // MARK: - Endpoints
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        assertionFailure()
-        completion(.failure(error: nil))
+        loyaltyPreAuthWorker(completion: completion)
+    }
+
+    // MARK: - Helpers
+
+    private func getIsLoyaltyEnabled() -> Bool {
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+    }
+    private func loyaltyId() -> String? {
+        userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
     }
 
 }
