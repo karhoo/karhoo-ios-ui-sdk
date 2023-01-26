@@ -117,14 +117,16 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
         }
-        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
-            KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
-        }
+        let contentView = KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
         
-        let viewController = UIHostingController(rootView: bottomSheet)
-        viewController.view.backgroundColor = UIColor.clear
-        viewController.modalPresentationStyle = .overFullScreen
-        baseViewController.present(viewController, animated: true, completion: nil)
+        var onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
+            self.baseViewController.dismiss(animated: true, completion: nil)
+        }
+        baseViewController.presentUsingBootomSheet(
+            title: title,
+            bottomSheetContentView: contentView,
+            onSheetDismiss: onDismiss
+        )
     }
     
     func routeToComment(title: String, comments: String) {
