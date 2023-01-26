@@ -14,6 +14,7 @@ struct NewCheckoutView: View {
         static let addressViewHeight: CGFloat = 100
         static let bottomPadding: CGFloat = 80
         static let legalNoticeViewId = "legalNoticeViewId"
+        static let termsConditionsViewId = "termsConditionsViewId"
     }
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: KarhooNewCheckoutViewModel
@@ -81,6 +82,7 @@ struct NewCheckoutView: View {
 
                         KarhooTermsConditionsView(viewModel: viewModel.termsConditionsViewModel)
                             .padding(.vertical, UIConstants.Spacing.large)
+                            .id(Constants.termsConditionsViewId)
 
                         // Legal Notice button
                         if viewModel.legalNoticeViewModel.shouldShowView {
@@ -127,6 +129,13 @@ struct NewCheckoutView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .id(Constants.legalNoticeViewId)
+                .onChange(of: viewModel.scrollToTermsConditions) { scrollToTermsConditions in
+                    if scrollToTermsConditions {
+                        withAnimation {
+                            scrollViewProxy.scrollTo(Constants.termsConditionsViewId, anchor: .bottom)
+                        }
+                    }
+                }
             }
             .padding(.bottom, Constants.bottomPadding)
             .onAppear {
@@ -199,7 +208,7 @@ struct NewCheckoutView: View {
                         viewModel.showPriceDetails()
                     }
                     Spacer()
-                    KarhooMainButton(title: viewModel.confirmButtonTitle) {
+                    KarhooMainButton(title: $viewModel.confirmButtonTitle) {
                         viewModel.didTapConfirm()
                     }
                     .frame(width: (geometry.size.width - 3 * UIConstants.Spacing.standard) * 0.4)
@@ -242,7 +251,7 @@ struct NewCheckoutView: View {
         )
     }
 
-    private var errorAlert:  Alert {
+    private var errorAlert: Alert {
         let errorMessage = viewModel.errorToPresent?.message != nil ? Text(viewModel.errorToPresent!.message!) : nil
         return Alert(
             title: Text(viewModel.errorToPresent?.title ?? UITexts.Generic.error),

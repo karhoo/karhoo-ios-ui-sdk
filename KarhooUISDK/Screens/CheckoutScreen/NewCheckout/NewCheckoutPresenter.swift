@@ -46,7 +46,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
-    var loyaltyViewModel: LoyaltyViewDataModel!
 
     private let router: NewCheckoutRouter
 
@@ -66,9 +65,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     @Published var state: NewCheckoutState = .loading
     @Published var showError = false
     @Published var errorToPresent: (title: String?, message: String?)?
+    @Published var scrollToTermsConditions = false
     var showTrainNumberCell: Bool { shouldShowTrainNumberCell() }
     var showFlightNumberCell: Bool { shouldShowFlightNumberCell() }
-//    var loyaltyViewDelegate: LoyaltyViewDelegate?
 
     // MARK: - Init & Config
 
@@ -120,17 +119,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
         self.setupInitialState()
-        
-        if isLoyaltyEnabled() {
-            let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-            loyaltyViewModel = LoyaltyViewDataModel(
-                loyaltyId: loyaltyId ?? "",
-                currency: quote.price.currencyCode,
-                tripAmount: quote.price.highPrice
-            )
-            
-//            loyaltyViewDelegate = self
-        }
     }
 
     // MARK: - Endpoints
@@ -206,14 +194,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             self?.carIconUrl = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
-    
-    func showLoyaltyView() -> Bool {
-        isLoyaltyEnabled()
-    }
-    
-    func getLoyaltyViewModel() -> LoyaltyViewDataModel? {
-        loyaltyViewModel
-    }
 
     // MARK: Interactions
 
@@ -222,25 +202,14 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     }
 
     func didTapConfirm() {
-        // Validate & proceed with payment flow
-        guard validateIfAllRequiredDataAreProvided() else {
+        // MARK: - Validate & proceed with payment flow
+        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: true) else {
             withAnimation {
                 state = .gatheringInfo
             }
             return
         }
-        
-        // Get loyalty nonce
-        
-        
-        // Submit booking
         submitBooking()
-    }
-    
-    // MARK: - Loyalty
-    
-    private func performLoyaltyPreAuth() async {
-
     }
 
     // MARK: - State/main flow methods
@@ -268,9 +237,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             }
             .store(in: &cancellables)
 
-        if termsConditionsViewModel.showAgreementRequired {
-            termsConditionsViewModel.$confirmed
+        if termsConditionsViewModel.isAcceptanceRequired {
+            termsConditionsViewModel.confirmed
+                .dropFirst()
                 .sink { [weak self] _ in
+                    self?.scrollToTermsConditions = false
                     self?.checkIfNeedsToUpdateState()
                 }
                 .store(in: &cancellables)
@@ -319,17 +290,13 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         }
         bookingWorker.performBooking()
     }
-    
-    // MARK: - Booking Confirmation
-    
-    private func showBookingConfirmation() {
-        // TODO: - implement
-    }
 
     private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
         switch bookingState {
         case .idle:
-            break
+            withAnimation {
+                state = validateIfAllRequiredDataAreProvided() ? .readyToBook : .gatheringInfo
+            }
         case .loading:
             break
         case .failure(let error):
@@ -371,14 +338,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.flightTracking) &&
         journeyDetails.originLocationDetails?.details.type == .airport
     }
-    
-
-    private func isLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
-    }
-        
-    // MARK: - Price Details
     
     // MARK: - Update nested views state
 
@@ -426,16 +385,13 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     // MARK: Validation
 
     private func checkIfNeedsToUpdateState() {
-        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: false) else {
-            return
-        }
         withAnimation {
-            state = .readyToBook
+            state = validateIfAllRequiredDataAreProvided() ? .readyToBook : .gatheringInfo
         }
     }
 
     /// Validate if all required data are in place. If some data is missing, the method will trigger proper behavior, like opening the passenger details screen.
-    private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = true) -> Bool {
+    private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = false) -> Bool {
         guard passengerDetailsWorker.passengerDetails?.areValid ?? false
         else {
             if triggerAdditionalBehavior {
@@ -444,10 +400,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             return false
         }
 
-        guard !termsConditionsViewModel.isAcceptanceRequired || termsConditionsViewModel.confirmed
+        guard !(termsConditionsViewModel.isAcceptanceRequired) || termsConditionsViewModel.confirmed.value
         else {
             if triggerAdditionalBehavior {
                 termsConditionsViewModel.showAgreementRequired = true
+                scrollToTermsConditions = true
             }
             return false
         }
@@ -456,21 +413,4 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         return true
 	}
-}
-
-extension KarhooNewCheckoutViewModel: LoyaltyViewDelegate {
-    func didChangeMode(newValue: LoyaltyMode) {
-        // Note: toggle book button enabled status if needed
-        print("LoyaltyView did change mode")
-    }
-    
-    func didStartLoading() {
-        // Note: start activity indicator here if needed
-        print("LoyaltyView did start loading")
-    }
-    
-    func didEndLoading() {
-        // Note: stop activity indicator here if needed
-        print("LoyaltyView did end loading")
-    }
 }
