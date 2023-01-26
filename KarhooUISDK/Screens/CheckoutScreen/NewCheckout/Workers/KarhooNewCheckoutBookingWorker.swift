@@ -89,12 +89,16 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     }
 
     func performBooking() {
-        bookingState = .loading
-        reportBookingEvent()
-        if isKarhooUser() {
-            submitAuthenticatedBooking()
-        } else {
-            submitGuestOrTokenExchangeBooking()
+        switch bookingState {
+        case .loading: break
+        default:
+            bookingState = .loading
+            reportBookingEvent()
+            if isKarhooUser() {
+                submitAuthenticatedBooking()
+            } else {
+                submitGuestOrTokenExchangeBooking()
+            }
         }
     }
 
@@ -231,7 +235,11 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private func handleAddNewPaymentMethod(with result: CardFlowResult) {
         switch result {
         case .didAddPaymentMethod:
-            performBooking()
+            if isKarhooUser() {
+                submitAuthenticatedBooking()
+            } else {
+                submitGuestOrTokenExchangeBooking()
+            }
         case .didFailWithError(let error):
             bookingState = .failure(error ?? ErrorModel.unknown())
         case .cancelledByUser:
