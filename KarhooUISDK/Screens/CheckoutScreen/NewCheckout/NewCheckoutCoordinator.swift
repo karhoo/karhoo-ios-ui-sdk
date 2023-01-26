@@ -49,31 +49,23 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 
 extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
     func routeToPriceDetails(title: String, quoteType: QuoteType) {
-        let bottomSheetViewModel = KarhooBottomSheetViewModel(
-            title: title
-        ) { [weak self] in
-                self?.baseViewController.dismiss(animated: true, completion: nil)
-        }
-        
         let contentViewModel = KarhooCheckoutPriceDetailsViewModel(quoteType: quoteType)
-        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
-            KarhooCheckoutPriceDetailsView(viewModel: contentViewModel)
+        let contentView = KarhooCheckoutPriceDetailsView(viewModel: contentViewModel)
+        let onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
+            self.baseViewController.dismiss(animated: true, completion: nil)
         }
-        
-        let viewController = UIHostingController(rootView: bottomSheet)
-        viewController.view.backgroundColor = UIColor.clear
-        viewController.modalPresentationStyle = .overFullScreen
-        baseViewController.present(viewController, animated: true, completion: nil)
+        baseViewController.presentUsingBootomSheet(
+            title: title,
+            bottomSheetContentView: contentView,
+            onSheetDismiss: onDismiss
+        )
     }
     
     func routeToFlightNumber(title: String, flightNumber: String) {
-        guard let presenter = presenter else { return }
-        let bottomSheetViewModel = KarhooBottomSheetViewModel(
-            title: title
-        ) { [weak self] in
-                self?.baseViewController.dismiss(animated: true, completion: nil)
+        guard let presenter = presenter else {
+            assertionFailure("Presenter is missing")
+            return
         }
-
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
             contentType: .flightNumber,
             initialValueForTextField: presenter.flightNumberCellViewModel.getFlightNumber(),
@@ -86,14 +78,15 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             self?.baseViewController.dismiss(animated: true, completion: nil)
             
         }
-        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
-            KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
+        let contentView = KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
+        let onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
+            self.baseViewController.dismiss(animated: true, completion: nil)
         }
-        
-        let viewController = UIHostingController(rootView: bottomSheet)
-        viewController.view.backgroundColor = UIColor.clear
-        viewController.modalPresentationStyle = .overFullScreen
-        baseViewController.present(viewController, animated: true, completion: nil)
+        baseViewController.presentUsingBootomSheet(
+            title: title,
+            bottomSheetContentView: contentView,
+            onSheetDismiss: onDismiss
+        )
     }
     
     func routeToTrainNumber(title: String, trainNumber: String) {
@@ -101,10 +94,6 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             assertionFailure("Presenter is missing")
             return
         }
-        let bottomSheetViewModel = KarhooBottomSheetViewModel(title: title) { [weak self] in
-                self?.baseViewController.dismiss(animated: true, completion: nil)
-            }
-        
         let contentViewModel = KarhooBottomSheetContentWithTextFieldViewModel(
             contentType: .trainNumber,
             initialValueForTextField: presenter.trainNumberCellViewModel.getTrainNumber(),
@@ -118,8 +107,7 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             
         }
         let contentView = KarhooBottomSheetContentWithTextFieldView(viewModel: contentViewModel)
-        
-        var onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
+        let onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
             self.baseViewController.dismiss(animated: true, completion: nil)
         }
         baseViewController.presentUsingBootomSheet(
@@ -134,11 +122,6 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             assertionFailure("Presenter is missing")
             return
         }
-        let bottomSheetViewModel = KarhooBottomSheetViewModel(
-            title: title
-        ) { [weak self] in
-            self?.baseViewController.dismiss(animated: true, completion: nil)
-        }
         let contentViewModel = KarhooBottomSheetCommentsViewModel(
             initialValueForTextView: presenter.commentCellViewModel.getComment(),
             viewSubtitle: UITexts.Booking.commentsSubtitle
@@ -146,15 +129,15 @@ extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
             self?.presenter?.commentCellViewModel.setComment(comment)
             self?.baseViewController.dismiss(animated: true, completion: nil)
         }
-        
-        let bottomSheet = KarhooBottomSheet(viewModel: bottomSheetViewModel) {
-            KarhooBottomSheetCommentsView(viewModel: contentViewModel)
+        let contentView = KarhooBottomSheetCommentsView(viewModel: contentViewModel)
+        let onDismiss: (_: ScreenResult<Void>) -> Void = { _ in
+            self.baseViewController.dismiss(animated: true, completion: nil)
         }
-        
-        let viewController = UIHostingController(rootView: bottomSheet)
-        viewController.view.backgroundColor = UIColor.clear
-        viewController.modalPresentationStyle = .overFullScreen
-        baseViewController.present(viewController, animated: true, completion: nil)
+        baseViewController.presentUsingBootomSheet(
+            title: title,
+            bottomSheetContentView: contentView,
+            onSheetDismiss: onDismiss
+        )
     }
 
     func routeToPassengerDetails(

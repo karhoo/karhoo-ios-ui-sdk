@@ -28,35 +28,7 @@ struct KarhooBottomSheet<Content: View>: View {
             VStack(spacing: 0) {
                 Spacer()
                 VStack(spacing: 0) {
-                    HStack {
-                        Text(viewModel.title)
-                            .font(Font(KarhooUI.fonts.title2Bold()))
-                            .foregroundColor(Color(KarhooUI.colors.text))
-                        Spacer()
-                            .background(Color.clear)
-                        Button(
-                            action: {
-                                viewModel.dismiss()
-                            },
-                            label: {
-                                Image(
-                                    uiImage:
-                                        UIImage.uisdkImage("kh_uisdk_cross_new")
-                                        .coloured(withTint: KarhooUI.colors.text)
-                                )
-                                .resizable()
-                                .frame(
-                                    width: UIConstants.Dimension.Icon.standard,
-                                    height: UIConstants.Dimension.Icon.standard
-                                )
-                            }
-                        )
-                        .frame(
-                            width: UIConstants.Dimension.Button.standard,
-                            height: UIConstants.Dimension.Button.standard
-                        )
-                        .accessibilityLabel(Text(UITexts.Generic.closeTheScreen))
-                    }
+                    header
                     .padding(
                         EdgeInsets(
                             top: UIConstants.Spacing.standard,
@@ -87,19 +59,43 @@ struct KarhooBottomSheet<Content: View>: View {
         .colorScheme(.light) // Delete this line after dark mode modifications
 
     }
-    
-    // MARK: - Helpers
-    private func getBottomPadding() -> CGFloat {
-        guard keyboard.currentHeight > 0 else {
-            let safeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
-            return safeArea
-        }
-        
-        return keyboard.currentHeight
-    }
+
     
     private func getTopPadding() -> CGFloat {
         UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    }
+    
+    @ViewBuilder
+    private var header: some View {
+        HStack {
+            Text(viewModel.title)
+                .font(Font(KarhooUI.fonts.title2Bold()))
+                .foregroundColor(Color(KarhooUI.colors.text))
+            Spacer()
+                .background(Color.clear)
+            Button(
+                action: {
+                    viewModel.dismiss()
+                },
+                label: {
+                    Image(
+                        uiImage:
+                            UIImage.uisdkImage("kh_uisdk_cross_new")
+                            .coloured(withTint: KarhooUI.colors.text)
+                    )
+                    .resizable()
+                    .frame(
+                        width: UIConstants.Dimension.Icon.standard,
+                        height: UIConstants.Dimension.Icon.standard
+                    )
+                }
+            )
+            .frame(
+                width: UIConstants.Dimension.Button.standard,
+                height: UIConstants.Dimension.Button.standard
+            )
+            .accessibilityLabel(Text(UITexts.Generic.closeTheScreen))
+        }
     }
     
     @ViewBuilder
