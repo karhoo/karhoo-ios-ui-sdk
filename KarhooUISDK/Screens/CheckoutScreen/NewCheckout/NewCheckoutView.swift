@@ -59,16 +59,6 @@ struct NewCheckoutView: View {
                     )
                     
                     VStack(spacing: UIConstants.Spacing.standard) {
-
-                        if viewModel.showLoyaltyView(),
-                           let loyaltyViewModel = viewModel.loyaltyViewModel {
-                            SwiftUILoyaltyView(
-                                viewModel: loyaltyViewModel,
-                                quoteId: viewModel.quote.id,
-                                delegate: viewModel
-                            )
-                            .frame(height: .infinity)
-                        }
                         
                         DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
 

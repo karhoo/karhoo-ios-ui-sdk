@@ -303,8 +303,8 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
         return KarhooLoyaltyPreAuthWorker(
              currentMode: currentMode,
              viewModel: viewModel,
-             quoteId: quoteIdForAnalytics,
-             getBurnAmountError: getBurnAmountError)
+             quoteId: quoteIdForAnalytics
+        )
     }
 
     private func didSetLoyaltyError(_ error: KarhooError?) {

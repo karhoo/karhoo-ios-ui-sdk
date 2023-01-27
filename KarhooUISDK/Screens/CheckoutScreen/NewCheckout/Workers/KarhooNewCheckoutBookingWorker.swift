@@ -59,7 +59,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         tripService: TripService = Karhoo.getTripService(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         paymentWorker: KarhooNewCheckoutPaymentWorker = KarhooNewCheckoutPaymentWorker(),
-        loyaltyWorker: LoyaltyWorker = KarhooLoyaltyWorker(),
+        loyaltyWorker: LoyaltyWorker? = nil,
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.quote = quote
@@ -69,7 +69,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         self.tripService = tripService
         self.sdkConfiguration = sdkConfiguration
         self.paymentWorker = paymentWorker
-        self.loyaltyWorker = loyaltyWorker
+        self.loyaltyWorker = loyaltyWorker ?? KarhooLoyaltyWorker(quote: quote)
         self.analytics = analytics
         self.setup()
     }

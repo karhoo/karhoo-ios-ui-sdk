@@ -9,25 +9,29 @@
 import KarhooSDK
 
 protocol LoyaltyPreAuthWorker {
-    func getLoyaltyPreAuthNonce(completion: @escaping  (Result<LoyaltyNonce>) -> Void)
+    func setup(
+        using currentMode: LoyaltyMode,
+        viewModel: LoyaltyViewModel,
+        quoteId: String,
+        getBurnAmountError: KarhooError?
+    )
+    func getLoyaltyPreAuthNonce(
+        completion: @escaping (Result<LoyaltyNonce>) -> Void
+    )
     func hasEnoughBalance() -> Bool
 }
 
 final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
     private let loyaltyService: LoyaltyService
     private let analytics: Analytics
-    private let currentMode: LoyaltyMode
-    private let viewModel: LoyaltyViewModel?
-    private let quoteId: String?
-    private let getBurnAmountError: KarhooError?
-    
+    private var currentMode: LoyaltyMode = .none
+    private var viewModel: LoyaltyViewModel?
+    private var quoteId: String?
+    private var getBurnAmountError: KarhooError?
+
     init(
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        currentMode: LoyaltyMode,
-        viewModel: LoyaltyViewModel?,
-        quoteId: String?,
-        getBurnAmountError: KarhooError?
     ) {
         self.loyaltyService = loyaltyService
         self.analytics = analytics
@@ -36,8 +40,22 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
         self.quoteId = quoteId
         self.getBurnAmountError = getBurnAmountError
     }
+
+    func setup(
+        using currentMode: LoyaltyMode,
+        viewModel: LoyaltyViewModel,
+        quoteId: String,
+        getBurnAmountError: KarhooError?
+    ) {
+        self.viewModel = model
+        self.quoteId = quoteId
+        self.getBurnAmountError = getBurnAmountError
+        self.currentMode = currentMode
+    }
     
-    func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+    func getLoyaltyPreAuthNonce(
+        completion: @escaping (Result<LoyaltyNonce>) -> Void
+    ) {
         if !currentMode.isEligibleForPreAuth {
             // Loyalty related web-services return slug based errors, not error code based ones
             // this error does not coincide with any error returned by the backend
