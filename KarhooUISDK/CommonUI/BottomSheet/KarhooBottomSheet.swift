@@ -23,132 +23,114 @@ struct KarhooBottomSheet<Content: View>: View {
    
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 0.0, content: {
-            Spacer()
-                .background(Color.clear)
-                .layoutPriority(Double(UILayoutPriority.defaultLow.rawValue))
-            
-            VStack(spacing: 0.0) {
-                HStack {
-                    Text(viewModel.title)
-                        .font(Font(KarhooUI.fonts.title2Bold()))
-                        .foregroundColor(Color(KarhooUI.colors.text))
-                    Spacer()
-                        .background(Color.clear)
-                    Button {
-                        viewModel.dismiss()
-                    } label: {
-                        Image(
-                            uiImage:
-                                UIImage.uisdkImage("kh_uisdk_cross_new")
-                                .coloured(withTint: KarhooUI.colors.text)
-                        )
-                    }
-                    .frame(
-                        width: UIConstants.Dimension.Button.standard,
-                        height: UIConstants.Dimension.Button.standard
-                    )
-                    .accessibilityLabel(Text(UITexts.Generic.closeTheScreen))
-                }
-                .padding(
-                    EdgeInsets(
-                        top: UIConstants.Spacing.standard,
-                        leading: UIConstants.Spacing.standard,
-                        bottom: 0,
-                        trailing: UIConstants.Spacing.small
-                    )
-                )
-                
-                // The content is not wrapped inside a ScrollView intentionally
-                // A ScrollView expands to the full height available which is not a desired outcome for all instances where this bottom sheet will be used
-                // Trying to control the height of the ScrollView with GeometryReader gives odd behaviours to the UI, so it is not recommended
-                // If the content view runs the risk of going off screen either because of the amount of content or because a keyboard needs to be opened,
-                // then wrap that view inside a ScrollView before injecting it into this bottom sheet
-                content()
-                    .padding(UIConstants.Spacing.standard)
-
+        ZStack {
+            gradientBackground
+            VStack(spacing: 0) {
                 Spacer()
-                    .frame(height: getBottomPadding())
-                    .animation(.easeOut(duration: UIConstants.Duration.medium))
+                VStack(spacing: 0) {
+                    header
+                    .padding(
+                        EdgeInsets(
+                            top: UIConstants.Spacing.standard,
+                            leading: UIConstants.Spacing.standard,
+                            bottom: 0,
+                            trailing: UIConstants.Spacing.small
+                        )
+                    )
+                    content()
+                        .padding(UIConstants.Spacing.standard)
+                }
+                // first backround with rounded corners
+                .background(viewModel.backgroundColor.ignoresSafeArea())
+                .cornerRadius(viewModel.cornerRadius, corners: [.topLeft, .topRight])
+                // second background created to fill bottom safe area
+                .padding(.top, -viewModel.cornerRadius)
+                .background(viewModel.backgroundColor.ignoresSafeArea())
+                .offset(x: 0, y: offset.height)
+                .onTapGesture {
+                    // Do nothing. This was added to intercept touches so that they aren't picked up by the main VStack tap gesture recognizer
+                    // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
+                }
             }
-            .background(viewModel.backgroundColor)
-            .clipShape(
-                RoundedRectangle(
-                    cornerRadius: viewModel.cornerRadius,
-                    style: .continuous
-                )
-            )
             .frame(
-                maxWidth: UIScreen.main.bounds.width,
-                maxHeight: UIScreen.main.bounds.height - getTopPadding(),
-                alignment: .bottom
+                maxHeight: UIScreen.main.bounds.height - getTopPadding()
             )
-            .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
-            .offset(x: 0, y: offset.height)
-            .onTapGesture {
-                // Do nothing. This was added to intercept touches so that they aren't picked up by the main VStack tap gesture recognizer
-                // .allowsHitTesting(false) does not work for SwiftUI views presented from UIKit views
-            }
-        })
+        }
         .colorScheme(.light) // Delete this line after dark mode modifications
-        .background(
-            LinearGradient(
-                colors: [
-                    Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.hidden),
-                    Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.enabled)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
-        .edgesIgnoringSafeArea([.all])
-        .opacity(2 - Double(offset.height / 100))
-        .gesture(
-            DragGesture()
-                .onChanged({ gesture in
-                    if gesture.translation.height > 0 {
-                        offset = gesture.translation
-                    }
-                })
-                .onEnded({ _ in
-                    if offset.height > 100 {
-                        viewModel.dismiss()
-                    } else {
-                        offset = .zero
-                    }
-                })
-        )
-        .onTapGesture {
-            viewModel.dismiss()
-        }
+
     }
-    
-    // MARK: - Helpers
-    private func getBottomPadding() -> CGFloat {
-        guard keyboard.currentHeight > 0 else {
-            let safeArea = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
-            return safeArea
-        }
-        
-        return keyboard.currentHeight
-    }
+
     
     private func getTopPadding() -> CGFloat {
         UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     }
-}
-
-struct KarhooBottomSheetPreviews: PreviewProvider {
-    static var previews: some View {
-        KarhooBottomSheet(
-            viewModel: KarhooBottomSheetViewModel(
-                title: "Some title",
-                onDismissCallback: {
-                })) {
-                    VStack {
-                        Text("Inner View")
-                    }
+    
+    @ViewBuilder
+    private var header: some View {
+        HStack {
+            Text(viewModel.title)
+                .font(Font(KarhooUI.fonts.title2Bold()))
+                .foregroundColor(Color(KarhooUI.colors.text))
+            Spacer()
+                .background(Color.clear)
+            Button(
+                action: {
+                    viewModel.dismiss()
+                },
+                label: {
+                    Image(
+                        uiImage:
+                            UIImage.uisdkImage("kh_uisdk_cross_new")
+                            .coloured(withTint: KarhooUI.colors.text)
+                    )
+                    .resizable()
+                    .frame(
+                        width: UIConstants.Dimension.Icon.standard,
+                        height: UIConstants.Dimension.Icon.standard
+                    )
                 }
+            )
+            .frame(
+                width: UIConstants.Dimension.Button.standard,
+                height: UIConstants.Dimension.Button.standard
+            )
+            .accessibilityLabel(Text(UITexts.Generic.closeTheScreen))
+        }
+    }
+    
+    @ViewBuilder
+    private var gradientBackground: some View {
+        Spacer()
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.hidden),
+                        Color(KarhooUI.colors.black).opacity(UIConstants.Alpha.enabled)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .edgesIgnoringSafeArea([.all])
+            .opacity(2 - Double(offset.height / 100))
+            .gesture(
+                DragGesture()
+                    .onChanged({ gesture in
+                        if gesture.translation.height > 0 {
+                            offset = gesture.translation
+                        }
+                    })
+                    .onEnded({ _ in
+                        if offset.height > 100 {
+                            viewModel.dismiss()
+                        } else {
+                            offset = .zero
+                        }
+                    })
+            )
+            .onTapGesture {
+                viewModel.dismiss()
+            }
     }
 }
 
@@ -164,5 +146,24 @@ final class KarhooBottomSheetScreenBuilder: BottomSheetScreenBuilder {
         vc.view.backgroundColor = UIColor.clear
         vc.modalPresentationStyle = .overFullScreen
         return vc
+    }
+}
+
+struct BottomSheetWithTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        KarhooBottomSheet(viewModel: KarhooBottomSheetViewModel(
+            title: "Flight number") { }) {
+                KarhooBottomSheetContentWithTextFieldView(viewModel: .init(
+                    contentType: .flightNumber,
+                    initialValueForTextField: "",
+                    viewSubtitle: UITexts.Booking.flightSubtitle,
+                    textFieldHint: UITexts.Booking.flightExample,
+                    errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
+                    onSaveCallback: { _ in
+                        return
+                    }
+                )
+            )
+        }
     }
 }

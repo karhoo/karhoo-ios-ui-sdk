@@ -8,6 +8,7 @@
 
 import UIKit
 import KarhooSDK
+import SwiftUI
 
 public protocol BaseViewController: UIViewController {
     func showAsOverlay(item: Screen, animated: Bool)
@@ -20,6 +21,11 @@ public protocol BaseViewController: UIViewController {
     func showUpdatePaymentCardAlert(updateCardSelected: @escaping () -> Void, cancelSelected: (() -> Void)?)
     func show(error: KarhooError?)
     func showLoadingOverlay(_ show: Bool)
+    func presentUsingBootomSheet<T>(
+        title: String,
+        bottomSheetContentView: @escaping @autoclosure () -> some View,
+        onSheetDismiss: @escaping (ScreenResult<T>) -> Void
+    )
 }
 
 public extension BaseViewController {
@@ -135,5 +141,24 @@ public extension BaseViewController {
         } else {
             loadingView.hide()
         }
+    }
+    
+    func presentUsingBootomSheet<T>(
+            title: String,
+            bottomSheetContentView: @escaping @autoclosure () -> some View,
+            onSheetDismiss: @escaping (ScreenResult<T>) -> Void
+    ) {
+        let bottomSheetViewModel = KarhooBottomSheetViewModel(
+            title: title,
+            onDismissCallback: {
+                onSheetDismiss(.cancelled(byUser: true))
+            }
+        )
+
+        let screenBuilder = UISDKScreenRouting.default.bottomSheetScreen()
+        let sheet = screenBuilder.buildBottomSheetScreenBuilderForUIKit(viewModel: bottomSheetViewModel) {
+            bottomSheetContentView()
+        }
+        present(sheet, animated: true)
     }
 }

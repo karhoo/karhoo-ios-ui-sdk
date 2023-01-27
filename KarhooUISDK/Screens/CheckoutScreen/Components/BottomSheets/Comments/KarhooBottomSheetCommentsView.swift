@@ -13,8 +13,10 @@ struct KarhooBottomSheetCommentsView: View {
     @StateObject var viewModel: KarhooBottomSheetCommentsViewModel
 
     var body: some View {
-        VStack( alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
+                .font(Font(KarhooUI.fonts.captionSemibold()))
+                .foregroundColor(Color(KarhooUI.colors.text))
                 .padding(.bottom, UIConstants.Spacing.standard)
             TextView($viewModel.textViewText)
                 .frame(minHeight: 50)

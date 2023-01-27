@@ -1,5 +1,5 @@
 //
-//  KarhooMaterialDesignTextField.swift
+//  KarhooNewTextField.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 16/01/2023.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct KarhooMaterialDesignTextField: View {
+struct KarhooNewTextField: View {
    
-    @Binding var text: String
+    @Binding var textFieldText: String
     @Binding var isTextfieldValid: Bool
     @State private var isFirstResponder: Bool = false
 
@@ -22,20 +22,16 @@ struct KarhooMaterialDesignTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                TextField(placeholder, text: $text, onEditingChanged: { editingChanged in
-                    if editingChanged {
-                        isFirstResponder = true
-                    } else {
-                        isFirstResponder = false
-                    }
+                TextField(placeholder, text: $textFieldText, onEditingChanged: { editingChanged in
+                    isFirstResponder = editingChanged
                 })
-                .onChange(of: text) { newValue in
+                .onChange(of: textFieldText) { newValue in
                     withAnimation {
                         isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
                     }
                 }
                 Button {
-                    text = ""
+                    textFieldText = ""
                 } label: {
                     Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
                         .resizable()
