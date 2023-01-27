@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum LoyaltyErrorType {
+public enum LoyaltyErrorType: Error {
     case none, insufficientBalance, unsupportedCurrency, unknownError
     
     var text: String {
