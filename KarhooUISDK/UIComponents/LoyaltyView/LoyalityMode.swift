@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import KarhooSDK
 
-public enum LoyaltyErrorType {
+public enum LoyaltyErrorType: KarhooError {
     case none, insufficientBalance, unsupportedCurrency, unknownError
     
     var text: String {
@@ -22,6 +23,10 @@ public enum LoyaltyErrorType {
         case .unknownError:
             return UITexts.Errors.unknownLoyaltyError
         }
+    }
+
+    var localizedMessage: String {
+        text
     }
 }
 

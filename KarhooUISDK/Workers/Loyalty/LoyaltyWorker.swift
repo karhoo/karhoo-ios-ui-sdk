@@ -11,9 +11,8 @@ import KarhooSDK
 
 protocol LoyaltyWorker: AnyObject {
     var isLoyaltyEnabled: Bool { get }
-    var loyaltyStatusSubject: CurrentValueSubject<LoyaltyStatus?, Error> { get }
-    var currentBalanceSubject: CurrentValueSubject<Int?, Never> { get }
-    func refreshStatus()
+    var modelSubject: CurrentValueSubject<LoyaltyViewModel?, Error> { get }
+    var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
 
@@ -31,10 +30,16 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     // MARK: Internal properties
 
     var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
-    var loyaltyStatusSubject = CurrentValueSubject<LoyaltyStatus?, Error>(nil)
-    var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
+    var modelSubject = CurrentValueSubject<LoyaltyViewModel?, Error>(nil)
+    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
 
     // MARK: Private properties
+
+    var canBurnSubject = CurrentValueSubject<Bool, Never>(false)
+    var canEarnSubject = CurrentValueSubject<Bool, Never>(false)
+    var earnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
+    var burnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
+    var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
 
     private let quote: Quote
     private var cancellables: Set<AnyCancellable> = []
@@ -51,42 +56,80 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         self.quote = quote
         self.userService = userService
         self.loyaltyService = loyaltyService
+        self.loyaltyPreAuthWorker = loyaltyPreAuthWorker
         self.analytics = analytics
 
-        refreshStatus()
+        setupPublishers()
+        getData()
     }
     // MARK: - Endpoints
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        if loyaltyPreAuthWorker == nil {
-
-        }
-        loyaltyPreAuthWorker?.getLoyaltyPreAuthNonce(completion: completion)
-    }
-
-    func refreshStatus() {
-        getLoyaltyStatus()
+        // Update PreAuth worker with required data
+        loyaltyPreAuthWorker.getLoyaltyPreAuthNonce(completion: completion)
     }
 
     // MARK: - Private methods
 
-    private bindPreAuthWorkerUpdate() {
-        loyaltyStatusSubject
-            .sink { [weak self] status in
-                guard let self else { return }
-                self.loyaltyPreAuthWorker.setup(
-                    using: .earn,
-                    viewModel: .init(
-                        loyaltyId: self.loyaltyId() ?? "",
-                        currency: self.quote.price.currencyCode,
-                        tripAmount: self.quote.price.highPrice
-                    ),
-                    quoteId: self.quote.id,
-                    getBurnAmountError: nil
-                )
-            }
-            .store(in: &cancellables)
+    private func getData() {
+        getLoyaltyStatus()
+        getEarnedPoints()
+        getBurnedPoints()
     }
+
+    private func setupPublishers() {
+        
+        let zippedEarnBurn = Publishers.Zip4(
+            earnPointsSubject.dropFirst(),
+            burnPointsSubject.dropFirst(),
+            canEarnSubject.dropFirst(),
+            canBurnSubject.dropFirst()
+        )
+        Publishers.Zip(
+            currentBalanceSubject.dropFirst(),
+            zippedEarnBurn
+        )
+        .sink(receiveValue: { [weak self] values in
+            let earnBurnValues = values.1
+
+            guard
+                let self,
+                let loyaltyId = self.loyaltyId(),
+                let burnAmount = earnBurnValues.1,
+                let earnAmount = earnBurnValues.0,
+                let balance = values.0
+            else {
+                return
+            }
+
+            let model = LoyaltyViewModel(
+                loyaltyId: loyaltyId,
+                currency: self.quote.price.currencyCode,
+                tripAmount: self.quote.price.highPrice,
+                canEarn: earnBurnValues.2,
+                canBurn: earnBurnValues.3,
+                burnAmount: burnAmount,
+                earnAmount: earnAmount,
+                balance: balance
+            )
+
+            self.modelSubject.send(model)
+            self.updatePreAuthWorker(using: model)
+        }
+        )
+        .store(in: &cancellables)
+    }
+
+    private func updatePreAuthWorker(using model: LoyaltyViewModel) {
+        loyaltyPreAuthWorker.setup(
+            using: modeSubject.value,
+            model: model,
+            quoteId: quote.id,
+            getBurnAmountError: nil // TODO: - what is it for?
+        )
+    }
+
+    // MARK: - BE API calls
 
     private func getLoyaltyStatus() {
         guard let id = loyaltyId() else {
@@ -103,17 +146,79 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             )
 
             guard let status = result.getSuccessValue() else {
-                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError)
-                self?.loyaltyStatusSubject.send(completion: .failure(error))
+                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                self?.modelSubject.send(completion: .failure(error))
                 return
             }
-            self?.loyaltyStatusSubject.send(status)
+            self?.currentBalanceSubject.send(status.balance)
+            self?.canEarnSubject.send(status.canBurn)
+            self?.canBurnSubject.send(status.canEarn)
+        }
+    }
+
+    private func getEarnedPoints() {
+        guard let loyaltyId = loyaltyId() else {
+            return
+        }
+
+        // Convert $ amount to minor units (cents)
+        let amount = CurrencyCodeConverter.minorUnitAmount(
+            from: quote.price.highPrice,
+            currencyCode: quote.price.currencyCode
+        )
+
+        loyaltyService.getLoyaltyEarn(
+            identifier: loyaltyId,
+            currency: quote.price.currencyCode,
+            amount: amount,
+            burnPoints: 0
+        ).execute { [weak self] result in
+
+            guard let value = result.getSuccessValue()
+            else {
+                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                self?.modelSubject.send(completion: .failure(error))
+                return
+            }
+            self?.earnPointsSubject.send(value.points)
+        }
+    }
+
+    private func getBurnedPoints() {
+        guard let loyaltyId = loyaltyId() else {
+            return
+        }
+
+        // Convert $ amount to minor units (cents)
+        let amount = CurrencyCodeConverter.minorUnitAmount(
+            from: quote.price.highPrice,
+            currencyCode: quote.price.currencyCode
+        )
+
+        loyaltyService.getLoyaltyBurn(
+            identifier: loyaltyId,
+            currency: quote.price.currencyCode,
+            amount: amount
+        ).execute { [weak self] result in
+            guard let value = result.getSuccessValue()
+            else {
+                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                self?.modelSubject.send(completion: .failure(error))
+                return
+            }
+
+            self?.burnPointsSubject.send(value.points)
+
+            self?.getHasEnougntBalance { [weak self] isBallanceSufficient in
+                if isBallanceSufficient == false {
+                    self?.modelSubject.send(completion: .failure(LoyaltyErrorType.insufficientBalance))
+                }
+            }
         }
     }
 
     // MARK: - Helpers
 
-    private func getLoyaltyDataModel(using status: )
     private func getIsLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
@@ -121,6 +226,25 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     private func loyaltyId() -> String? {
         userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+    }
+
+    private func getHasEnougntBalance(completion: @escaping (Bool) -> Void) {
+        Publishers.Zip(
+            currentBalanceSubject,
+            burnPointsSubject
+        )
+        .sink(receiveValue: {
+            value in
+                guard
+                    let balance = value.0,
+                    let burnPoints = value.1
+                else {
+                    completion(false)
+                    return
+                }
+                completion(balance >= burnPoints)
+            }
+        )
     }
 
     // MARK: - Analytics

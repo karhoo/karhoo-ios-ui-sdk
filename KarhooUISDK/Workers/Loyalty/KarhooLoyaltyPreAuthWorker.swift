@@ -11,7 +11,7 @@ import KarhooSDK
 protocol LoyaltyPreAuthWorker {
     func setup(
         using currentMode: LoyaltyMode,
-        viewModel: LoyaltyViewModel,
+        model: LoyaltyViewModel,
         quoteId: String,
         getBurnAmountError: KarhooError?
     )
@@ -28,22 +28,19 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
     private var viewModel: LoyaltyViewModel?
     private var quoteId: String?
     private var getBurnAmountError: KarhooError?
+    private var isPreparedForPreAuth = false
 
     init(
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.loyaltyService = loyaltyService
         self.analytics = analytics
-        self.currentMode = currentMode
-        self.viewModel = viewModel
-        self.quoteId = quoteId
-        self.getBurnAmountError = getBurnAmountError
     }
 
     func setup(
         using currentMode: LoyaltyMode,
-        viewModel: LoyaltyViewModel,
+        model: LoyaltyViewModel,
         quoteId: String,
         getBurnAmountError: KarhooError?
     ) {
@@ -51,11 +48,18 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
         self.quoteId = quoteId
         self.getBurnAmountError = getBurnAmountError
         self.currentMode = currentMode
+        isPreparedForPreAuth = true
     }
     
     func getLoyaltyPreAuthNonce(
         completion: @escaping (Result<LoyaltyNonce>) -> Void
     ) {
+        guard isPreparedForPreAuth else {
+            assertionFailure("Should not happeded, it's only a failsafe")
+            let error = ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+            completion(.failure(error: error, correlationId: nil))
+            return
+        }
         if !currentMode.isEligibleForPreAuth {
             // Loyalty related web-services return slug based errors, not error code based ones
             // this error does not coincide with any error returned by the backend
@@ -110,7 +114,7 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
         }
         return viewModel.balance >= viewModel.burnAmount
     }
-    
+
     // MARK: - Helpers
     
     private func canPreAuth() -> Bool {

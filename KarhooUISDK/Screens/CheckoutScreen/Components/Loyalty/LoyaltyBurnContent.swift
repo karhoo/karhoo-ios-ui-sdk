@@ -13,20 +13,23 @@ struct LoyaltyBurnContent: View {
     @State var burnTitle = UITexts.Loyalty.burnTitle
     @State var burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
     @State var burnOnSubtitle = UITexts.Loyalty.burnOnSubtitle
-    
-    HStack {
-        VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
-            Text(burnTitle)
-                .lineLimit(2)
-                .font(Font(KarhooUI.fonts.headerSemibold()))
-                .foregroundColor(Color(KarhooUI.colors.text))
-            Text(isToggleOn ? burnOnSubtitle : burnOffSubtitle)
-                .font(Font(KarhooUI.fonts.bodyRegular()))
-                .foregroundColor(Color(KarhooUI.colors.text))
+    @State var isToggleOn = false
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
+                Text(burnTitle)
+                    .lineLimit(2)
+                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .foregroundColor(Color(KarhooUI.colors.text))
+                Text(isToggleOn ? burnOnSubtitle : burnOffSubtitle)
+                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .foregroundColor(Color(KarhooUI.colors.text))
+            }
+                .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
+            Toggle("", isOn: $isToggleOn)
+                .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
         }
-            .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
-        Toggle("", isOn: $isToggleOn)
-            .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
     }
 }
 
