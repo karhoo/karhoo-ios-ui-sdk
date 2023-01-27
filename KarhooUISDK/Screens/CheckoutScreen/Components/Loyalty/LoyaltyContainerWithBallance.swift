@@ -1,5 +1,5 @@
 //
-//  LoyaltyBallanceView.swift
+//  LoyaltyContainerWithBalance.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 26/01/2023.
@@ -8,24 +8,32 @@
 
 import SwiftUI
 
-struct LoyaltyContainerWithBallance<Content: View>: View {
+struct LoyaltyContainerWithBalance<Content: View>: View {
     
-    let ballance: Int
+    let balance: Int
     @ViewBuilder let content: () -> Content
     
-    private var ballanceTitle: String {
-        String(format: NSLocalizedString(UITexts.Loyalty.balanceTitle, comment: ""), "\(ballance)")
+    private var balanceTitle: String {
+        String(format: NSLocalizedString(UITexts.Loyalty.balanceTitle, comment: ""), "\(balance)")
     }
     
     var body: some View {
         ZStack {
-            content()
+            VStack(alignment: .leading) {
+                Text(UITexts.Loyalty.title)
+                    .lineLimit(2)
+                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .foregroundColor(Color(KarhooUI.colors.text))
+                content()
+                    
+            }
                 .padding(.all, UIConstants.Spacing.standard)
+                // additional top padding to move title lower than balance view
+                .padding(.top, UIConstants.Spacing.small)
                 .frame(
                     maxWidth: .infinity,
                     alignment: .leading
                 )
-                
                 .addBorder(Color(KarhooUI.colors.border), cornerRadius: UIConstants.CornerRadius.medium)
                 .background(
                     RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
@@ -34,15 +42,15 @@ struct LoyaltyContainerWithBallance<Content: View>: View {
                 .alignmentGuide(VerticalAlignment.center) {
                     $0[VerticalAlignment.top]
                 }
-            ballanceView
+            balanceView
         }
     }
 
     @ViewBuilder
-    private var ballanceView: some View {
+    private var balanceView: some View {
         HStack {
             Spacer()
-            Text(ballanceTitle)
+            Text(balanceTitle)
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.white))
             
@@ -56,10 +64,10 @@ struct LoyaltyContainerWithBallance<Content: View>: View {
     }
 }
 
-struct LoyaltyBallanceView_Previews: PreviewProvider {
+struct LoyaltyBalanceView_Previews: PreviewProvider {
     static var previews: some View {
-        LoyaltyContainerWithBallance(
-            ballance: 1000,
+        LoyaltyContainerWithBalance(
+            balance: 1000,
             content: {
                 Text("Content")
             }

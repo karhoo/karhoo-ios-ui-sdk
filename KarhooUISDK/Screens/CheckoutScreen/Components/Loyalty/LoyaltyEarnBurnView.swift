@@ -1,5 +1,5 @@
 //
-//  NewLoyaltyView.swift
+//  LoyaltyEarnBurnView.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 23/01/2023.
@@ -8,27 +8,52 @@
 
 import SwiftUI
 
-struct NewLoyaltyView: View {
+struct LoyaltyEarnBurnView: View {
     
-    var ballance: Int = 1500
+    var viewModel = LoyaltyViewModel(
+        loyaltyId: "loyaltyId",
+        currency: "PLN",
+        tripAmount: 12.5
+    )
+    
+    init(){
+           viewModel.balance = 100
+           viewModel.canEarn = true
+    }
 
     @State var burnOnInfo = UITexts.Loyalty.info
     
-    
-    @Binding var isToggleOn: Bool
+    @State var isBurnModeOn: Bool = true
     
     var body: some View {
         VStack {
-            LoyaltyContainerWithBallance(ballance: ballance, content: {
+            LoyaltyContainerWithBalance(balance: viewModel.balance, content: {
                 VStack(alignment: .leading) {
-                    LoyaltyEarnContent(pointsEarnedForTrip: 100)
-                    orDivider
-                    LoyaltyBurnContent()
+                    if viewModel.canEarn {
+                        earnContent
+                    }
+                    if viewModel.canEarn && viewModel.canBurn {
+                        orDivider
+                    }
+                    if viewModel.canBurn {
+                        LoyaltyBurnContent(isToggleOn: $isBurnModeOn)
+                    }
                 }
             })
-            if isToggleOn {
+            if isBurnModeOn {
                 burnInfoView
             }
+        }
+    }
+    
+    @ViewBuilder
+    private var earnContent: some View {
+        let pointsEarnedText =
+        String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(viewModel.earnAmount)")
+        VStack(alignment: .leading) {
+            Text(pointsEarnedText)
+                .font(Font(KarhooUI.fonts.bodyRegular()))
+                .foregroundColor(Color(KarhooUI.colors.text))
         }
     }
     
@@ -40,7 +65,6 @@ struct NewLoyaltyView: View {
             Text(UITexts.Loyalty.or.uppercased())
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.textLabel))
-                
             Color(KarhooUI.colors.border)
                 .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
         }
@@ -64,9 +88,8 @@ struct NewLoyaltyView: View {
     }
 }
 
-struct NewLoyaltyView_Previews: PreviewProvider {
-    @State var isToggleOn = true
+struct LoyaltyEarnBurnView_Previews: PreviewProvider {
     static var previews: some View {
-        NewLoyaltyView(isToggleOn: .constant(false))
+        LoyaltyEarnBurnView()
     }
 }
