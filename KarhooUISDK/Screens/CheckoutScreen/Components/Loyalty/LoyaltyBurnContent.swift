@@ -10,15 +10,18 @@ import SwiftUI
 
 struct LoyaltyBurnContent: View {
     
-    @State var burnTitle = UITexts.Loyalty.burnTitle
-    @State var burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
-    @State var burnOnSubtitle = UITexts.Loyalty.burnOnSubtitle
-    @State var isToggleOn = false
-
+    @Binding var isToggleOn: Bool
+    private let burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
+    private let burnOnSubtitle = UITexts.Loyalty.burnOnSubtitle
+    
+    init(isToggleOn: Binding<Bool>){
+        self._isToggleOn = isToggleOn
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
-                Text(burnTitle)
+                Text(UITexts.Loyalty.burnTitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
@@ -26,15 +29,9 @@ struct LoyaltyBurnContent: View {
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
             }
-                .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
+            .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
             Toggle("", isOn: $isToggleOn)
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
         }
-    }
-}
-
-struct LoyaltyBurnContent_Previews: PreviewProvider {
-    static var previews: some View {
-        LoyaltyBurnContent()
     }
 }
