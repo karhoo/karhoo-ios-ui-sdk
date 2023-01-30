@@ -57,6 +57,8 @@ struct NewCheckoutView: View {
                     VehicleDetailsCard(
                         viewModel: viewModel.getVehicleDetailsCardViewModel()
                     )
+                    LoyaltyEarnBurnView(viewModel: viewModel.loyaltyViewModel)
+                        .padding(.horizontal, UIConstants.Spacing.standard)
                     
                     VStack(spacing: UIConstants.Spacing.standard) {
                         

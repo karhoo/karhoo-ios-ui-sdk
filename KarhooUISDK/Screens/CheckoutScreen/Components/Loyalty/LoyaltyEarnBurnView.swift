@@ -7,42 +7,38 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoyaltyEarnBurnView: View {
     
-    var viewModel = LoyaltyViewModel(
-        loyaltyId: "loyaltyId",
-        currency: "PLN",
-        tripAmount: 12.5
-    )
-    
-    init(){
-           viewModel.balance = 100
-           viewModel.canEarn = true
-    }
+    @ObservedObject var viewModel: NewLoyaltyViewModel
 
     @State var burnOnInfo = UITexts.Loyalty.info
-    
-    @State var isBurnModeOn: Bool = true
-    
+        
     var body: some View {
-        VStack {
-            LoyaltyContainerWithBalance(balance: viewModel.balance, content: {
-                VStack(alignment: .leading) {
-                    if viewModel.canEarn {
-                        earnContent
+        if let error = viewModel.error {
+            LoyaltyErrorView(errorMessage: error.text)
+                .padding(.top, UIConstants.Spacing.standard)
+        } else {
+            VStack {
+                LoyaltyContainerWithBalance(balance: viewModel.balance, content: {
+                    VStack(alignment: .leading) {
+                        if viewModel.canEarn {
+                            earnContent
+                        }
+                        if viewModel.canEarn && viewModel.canBurn {
+                            orDivider
+                        }
+                        if viewModel.canBurn {
+                            LoyaltyBurnContent(isToggleOn: $viewModel.isBurnModeOn)
+                        }
                     }
-                    if viewModel.canEarn && viewModel.canBurn {
-                        orDivider
-                    }
-                    if viewModel.canBurn {
-                        LoyaltyBurnContent(isToggleOn: $isBurnModeOn)
-                    }
+                })
+                if viewModel.isBurnModeOn {
+                    burnInfoView
                 }
-            })
-            if isBurnModeOn {
-                burnInfoView
             }
+                .padding(.top, UIConstants.Spacing.standard)
         }
     }
     
@@ -90,6 +86,90 @@ struct LoyaltyEarnBurnView: View {
 
 struct LoyaltyEarnBurnView_Previews: PreviewProvider {
     static var previews: some View {
-        LoyaltyEarnBurnView()
+        LoyaltyEarnBurnView(viewModel: NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared))
+    }
+}
+
+class NewLoyaltyViewModel: ObservableObject {
+    
+    private var cancellables: Set<AnyCancellable> = []
+    
+    @Published var error: LoyaltyErrorType? = nil
+    @Published var isBurnModeOn = false
+    
+    let worker: LoyaltyWorker
+    var currency: String
+    var tripAmount: Double
+    @Published var canEarn: Bool
+    @Published var canBurn: Bool
+    var burnAmount: Int
+    var earnAmount: Int
+    var balance: Int
+    
+    init(worker: LoyaltyWorker) {
+        self.worker = worker
+        self.currency = "PLN"
+        self.tripAmount = 15.40
+        self.canEarn = true
+        self.canBurn = true
+        self.burnAmount = 1800
+        self.earnAmount = 45
+        self.balance = 45612
+        
+        subscribe()
+    }
+    
+    private func subscribe(){
+        worker.modelSubject
+            .sink(
+                receiveCompletion: {[weak self] completion in
+                    switch completion {
+                        case .finished: print("🏁 finished")
+                    case .failure(let error): return // self?.error = error
+                    }
+                },
+                receiveValue: {[weak self] model in
+                    self?.update(withModel: model)
+                })
+            .store(in: &cancellables)
+    }
+    
+    func update(withModel: LoyaltyViewModel?) {
+        // TODO: update values
+    }
+}
+
+class TempLoyaltyWorker {
+    var loyaltyStatusSubject = CurrentValueSubject<LoyaltyViewModel?, LoyaltyErrorType>(nil)
+    
+    init(){
+        loyaltyStatusSubject.send(completion: Subscribers.Completion<LoyaltyErrorType>.failure(.unsupportedCurrency))
+    }
+}
+
+struct LoyaltyErrorView: View {
+    var errorMessage: String
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(UITexts.Loyalty.title)
+                .font(Font(KarhooUI.fonts.headerSemibold()))
+                .foregroundColor(Color(KarhooUI.colors.text))
+            Text(errorMessage)
+                .font(Font(KarhooUI.fonts.bodyBold()))
+                .foregroundColor(Color(KarhooUI.colors.textError))
+        }
+            .padding(.all, UIConstants.Spacing.standard)
+            .frame(
+                maxWidth: .infinity,
+                alignment: .leading
+            )
+            .addBorder(Color(KarhooUI.colors.error), cornerRadius: UIConstants.CornerRadius.medium)
+            .background(
+                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
+                    .fill(Color(KarhooUI.colors.background2))
+            )
+            .alignmentGuide(VerticalAlignment.center) {
+                $0[VerticalAlignment.top]
+            }
     }
 }

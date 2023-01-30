@@ -19,13 +19,11 @@ struct LoyaltyContainerWithBalance<Content: View>: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                 Text(UITexts.Loyalty.title)
-                    .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                 content()
-                    
             }
                 .padding(.all, UIConstants.Spacing.standard)
                 // additional top padding to move title lower than balance view

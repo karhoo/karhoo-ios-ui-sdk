@@ -46,6 +46,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
+    var loyaltyViewModel: NewLoyaltyViewModel
 
     private let router: NewCheckoutRouter
 
@@ -115,6 +116,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        self.loyaltyViewModel = NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
