@@ -63,16 +63,15 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         self.analytics = analytics
 
         setupPublishers()
-        getData()
     }
     // MARK: - Endpoints
 
     func setup(using quote: Quote) {
         self.quote = quote
+        getData()
     }
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        // Update PreAuth worker with required data
         loyaltyPreAuthWorker.getLoyaltyPreAuthNonce(completion: completion)
     }
 
