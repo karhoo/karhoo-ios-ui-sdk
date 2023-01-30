@@ -69,7 +69,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         self.tripService = tripService
         self.sdkConfiguration = sdkConfiguration
         self.paymentWorker = paymentWorker
-        self.loyaltyWorker = loyaltyWorker ?? KarhooLoyaltyWorker(quote: quote)
+        self.loyaltyWorker = loyaltyWorker ?? KarhooLoyaltyWorker.shared
         self.analytics = analytics
         self.setup()
     }
@@ -105,6 +105,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     // MARK: - Setup methods
 
     private func setup() {
+        loyaltyWorker.setup(using: quote)
         paymentWorker.setup(using: quote)
     }
 

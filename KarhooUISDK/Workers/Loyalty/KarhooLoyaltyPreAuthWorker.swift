@@ -15,6 +15,7 @@ protocol LoyaltyPreAuthWorker {
         quoteId: String,
         getBurnAmountError: KarhooError?
     )
+    func set(burnError: KarhooError?)
     func getLoyaltyPreAuthNonce(
         completion: @escaping (Result<LoyaltyNonce>) -> Void
     )
@@ -49,6 +50,10 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
         self.getBurnAmountError = getBurnAmountError
         self.currentMode = currentMode
         isPreparedForPreAuth = true
+    }
+
+    func set(burnError: KarhooError?) {
+        self.getBurnAmountError = burnError
     }
     
     func getLoyaltyPreAuthNonce(

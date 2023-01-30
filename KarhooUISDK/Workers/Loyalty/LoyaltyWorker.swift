@@ -13,6 +13,7 @@ protocol LoyaltyWorker: AnyObject {
     var isLoyaltyEnabled: Bool { get }
     var modelSubject: CurrentValueSubject<LoyaltyViewModel?, Error> { get }
     var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
+    func setup(using quote: Quote)
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
 }
 
@@ -29,6 +30,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     // MARK: Internal properties
 
+    static let shared = KarhooLoyaltyWorker()
+
     var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
     var modelSubject = CurrentValueSubject<LoyaltyViewModel?, Error>(nil)
     var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
@@ -41,19 +44,19 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     var burnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
     var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
 
-    private let quote: Quote
+    private var quote: Quote?
+    /// Error returned by `getBurnPoints` method, indicating the burn is not possible. It should be used to update PreAuth worker.
+    private var burnError: KarhooError?
     private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - Lifecycle
 
     init(
-        quote: Quote,
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
         loyaltyPreAuthWorker: LoyaltyPreAuthWorker = KarhooLoyaltyPreAuthWorker(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.quote = quote
         self.userService = userService
         self.loyaltyService = loyaltyService
         self.loyaltyPreAuthWorker = loyaltyPreAuthWorker
@@ -63,6 +66,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         getData()
     }
     // MARK: - Endpoints
+
+    func setup(using quote: Quote) {
+        self.quote = quote
+    }
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         // Update PreAuth worker with required data
@@ -94,6 +101,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard
                 let self,
+                let quote = self.quote,
                 let loyaltyId = self.loyaltyId(),
                 let burnAmount = earnBurnValues.1,
                 let earnAmount = earnBurnValues.0,
@@ -104,8 +112,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             let model = LoyaltyViewModel(
                 loyaltyId: loyaltyId,
-                currency: self.quote.price.currencyCode,
-                tripAmount: self.quote.price.highPrice,
+                currency: quote.price.currencyCode,
+                tripAmount: quote.price.highPrice,
                 canEarn: earnBurnValues.2,
                 canBurn: earnBurnValues.3,
                 burnAmount: burnAmount,
@@ -121,6 +129,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     private func updatePreAuthWorker(using model: LoyaltyViewModel) {
+        guard let quote else {
+            assertionFailure("Quote should be assigned before any other logic is called")
+            return
+        }
         loyaltyPreAuthWorker.setup(
             using: modeSubject.value,
             model: model,
@@ -138,7 +150,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
             self?.reportLoyaltyStatusRequested(
-                quoteId: self?.quote.id,
+                quoteId: self?.quote?.id,
                 correlationId: result.getCorrelationId(),
                 loyaltyName: id,
                 loyaltyStatus: result.getSuccessValue(),
@@ -157,7 +169,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     private func getEarnedPoints() {
-        guard let loyaltyId = loyaltyId() else {
+        guard
+            let loyaltyId = loyaltyId(),
+            let quote
+        else {
             return
         }
 
@@ -185,7 +200,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     private func getBurnedPoints() {
-        guard let loyaltyId = loyaltyId() else {
+        guard
+            let loyaltyId = loyaltyId(),
+            let quote
+        else {
             return
         }
 
@@ -203,7 +221,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             guard let value = result.getSuccessValue()
             else {
                 let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
-                self?.modelSubject.send(completion: .failure(error))
+                self?.burnError = error
+                self?.loyaltyPreAuthWorker.set(burnError: error)
+                // To be verified but seems like get burn failure should not result in loyalty failure. We just need to inform PreAuth worker the burn is not possible.
+//                self?.modelSubject.send(completion: .failure(error))
                 return
             }
 
@@ -233,8 +254,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             currentBalanceSubject,
             burnPointsSubject
         )
-        .sink(receiveValue: {
-            value in
+        .sink(receiveValue: { value in
                 guard
                     let balance = value.0,
                     let burnPoints = value.1
@@ -245,6 +265,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 completion(balance >= burnPoints)
             }
         )
+        .store(in: &cancellables)
     }
 
     // MARK: - Analytics
