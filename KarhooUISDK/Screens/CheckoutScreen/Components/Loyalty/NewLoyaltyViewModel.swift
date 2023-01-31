@@ -16,7 +16,12 @@ class NewLoyaltyViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     @Published var error: LoyaltyErrorType? = nil
-    @Published var isBurnModeOn = false
+    @Published var isBurnModeOn = false {
+        didSet {
+            updateWorkerState()
+        }
+    }
+    
     @Published var canEarn: Bool
     @Published var earnAmount: Int
     @Published var balance: Int
@@ -66,6 +71,9 @@ class NewLoyaltyViewModel: ObservableObject {
             self.tripAmount = model.tripAmount
             self.burnAmount = model.burnAmount
             self.canBurn = model.canBurn
+            if model.canEarn {
+                worker.modeSubject.send(.earn)
+            }
         }
     }
     
@@ -81,6 +89,14 @@ class NewLoyaltyViewModel: ObservableObject {
         } else {
             self.burnSectionDisabled = false
             self.error = .unknownError
+        }
+    }
+    
+    private func updateWorkerState() {
+        if isBurnModeOn {
+            worker.modeSubject.send(.burn)
+        } else if canEarn {
+            worker.modeSubject.send(.earn)
         }
     }
 }

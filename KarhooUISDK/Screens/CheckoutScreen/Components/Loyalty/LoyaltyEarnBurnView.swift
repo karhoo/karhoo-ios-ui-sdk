@@ -13,8 +13,6 @@ import KarhooSDK
 struct LoyaltyEarnBurnView: View {
     
     @ObservedObject var viewModel: NewLoyaltyViewModel
-
-    @State var burnOnInfo = UITexts.Loyalty.info
         
     var body: some View {
         if let error = viewModel.error {
@@ -101,7 +99,7 @@ struct LoyaltyEarnBurnView: View {
     @ViewBuilder
     private var burnInfoView: some View {
         HStack {
-            Text(burnOnInfo)
+            Text(UITexts.Loyalty.info)
                 .font(Font(KarhooUI.fonts.bodyRegular()))
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .padding(.all, UIConstants.Spacing.standard)
