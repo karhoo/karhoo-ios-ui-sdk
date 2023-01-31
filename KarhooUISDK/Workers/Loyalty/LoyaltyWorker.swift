@@ -157,7 +157,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             )
 
             guard let status = result.getSuccessValue() else {
-                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
                 self?.modelSubject.send(.failure(error: error))
                 return
             }
@@ -190,7 +190,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard let value = result.getSuccessValue()
             else {
-                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
                 self?.modelSubject.send(.failure(error: error, correlationId: result.getCorrelationId()))
                 return
             }
@@ -219,7 +219,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         ).execute { [weak self] result in
             guard let value = result.getSuccessValue()
             else {
-                let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
+                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
                 self?.burnError = error
                 self?.loyaltyPreAuthWorker.set(burnError: error)
                 // To be verified but seems like get burn failure should not result in loyalty failure. We just need to inform PreAuth worker the burn is not possible.
