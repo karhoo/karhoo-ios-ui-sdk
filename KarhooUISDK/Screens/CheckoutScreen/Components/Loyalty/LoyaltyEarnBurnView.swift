@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import KarhooSDK
 
 struct LoyaltyEarnBurnView: View {
     
@@ -19,7 +20,7 @@ struct LoyaltyEarnBurnView: View {
         if let error = viewModel.error {
             LoyaltyErrorView(errorMessage: error.text)
                 .padding(.top, UIConstants.Spacing.standard)
-        } else {
+        } else if viewModel.canEarn || viewModel.canBurn {
             VStack {
                 LoyaltyContainerWithBalance(balance: viewModel.balance, content: {
                     VStack(alignment: .leading) {
@@ -30,7 +31,10 @@ struct LoyaltyEarnBurnView: View {
                             orDivider
                         }
                         if viewModel.canBurn {
-                            LoyaltyBurnContent(isToggleOn: $viewModel.isBurnModeOn)
+                            if viewModel.burnSectionDisabled{
+                                Text("disabled")
+                            }
+                            burnContent
                         }
                     }
                 })
@@ -44,8 +48,11 @@ struct LoyaltyEarnBurnView: View {
     
     @ViewBuilder
     private var earnContent: some View {
-        let pointsEarnedText =
-        String(format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""), "\(viewModel.earnAmount)")
+        let pointsEarnedText = String(
+            format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
+            "\(viewModel.earnAmount)"
+        )
+        
         VStack(alignment: .leading) {
             Text(pointsEarnedText)
                 .font(Font(KarhooUI.fonts.bodyRegular()))
@@ -57,12 +64,39 @@ struct LoyaltyEarnBurnView: View {
     private var orDivider: some View {
         HStack(spacing: UIConstants.Spacing.medium) {
             Color(KarhooUI.colors.border)
+            
                 .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
             Text(UITexts.Loyalty.or.uppercased())
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.textLabel))
             Color(KarhooUI.colors.border)
                 .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
+        }
+    }
+    
+    @ViewBuilder
+    private var burnContent: some View {
+        let burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
+        let burnOnSubtitle = String(
+            format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
+            "\(viewModel.currency)",
+            "\(viewModel.burnAmount)"
+        )
+        
+        
+        HStack {
+            VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
+                Text(UITexts.Loyalty.burnTitle)
+                    .lineLimit(2)
+                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .foregroundColor(Color(KarhooUI.colors.text))
+                Text(viewModel.isBurnModeOn ? burnOnSubtitle : burnOffSubtitle)
+                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .foregroundColor(Color(KarhooUI.colors.text))
+            }
+            .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
+            Toggle("", isOn: $viewModel.isBurnModeOn)
+                .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
         }
     }
     
@@ -98,23 +132,27 @@ class NewLoyaltyViewModel: ObservableObject {
     @Published var isBurnModeOn = false
     
     let worker: LoyaltyWorker
-    var currency: String
-    var tripAmount: Double
+    
     @Published var canEarn: Bool
+    @Published var earnAmount: Int
+    @Published var balance: Int
+
+    @Published var burnSectionDisabled: Bool
     @Published var canBurn: Bool
-    var burnAmount: Int
-    var earnAmount: Int
-    var balance: Int
+    @Published var currency: String
+    @Published var tripAmount: Double
+    @Published var burnAmount: Int
     
     init(worker: LoyaltyWorker) {
         self.worker = worker
-        self.currency = "PLN"
-        self.tripAmount = 15.40
-        self.canEarn = true
-        self.canBurn = true
-        self.burnAmount = 1800
-        self.earnAmount = 45
-        self.balance = 45612
+        self.currency = ""
+        self.tripAmount = 0
+        self.canEarn = false
+        self.canBurn = false
+        self.burnSectionDisabled = false
+        self.burnAmount = 0
+        self.earnAmount = 0
+        self.balance = 0
         
         subscribe()
     }
@@ -125,8 +163,10 @@ class NewLoyaltyViewModel: ObservableObject {
                 switch result {
                 case .success(let model, _):
                     self?.update(withModel: model)
-                case .failure(let error, let correlationId):
-                    return // self?.error = error
+                case .failure(let error, _):
+                    if let error = error {
+                        self?.handleError(error)
+                    }
                 @unknown default:
                     return
                 }
@@ -134,8 +174,31 @@ class NewLoyaltyViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func update(withModel: LoyaltyViewModel?) {
-        // TODO: update values
+    private func update(withModel model: LoyaltyViewModel?) {
+        if let model = model {
+            self.balance = model.balance
+            self.earnAmount = model.earnAmount
+            self.canEarn = model.canEarn
+            self.currency = model.currency
+            self.tripAmount = model.tripAmount
+            self.burnAmount = model.burnAmount
+            self.canBurn = model.canBurn
+        }
+    }
+    
+    private func handleError(_ error: KarhooError){
+        if let loyaltyError = error as? LoyaltyErrorType{
+            switch loyaltyError {
+            case .insufficientBalance:
+                self.burnSectionDisabled = true
+            default:
+                self.burnSectionDisabled = false
+                self.error = loyaltyError
+            }
+        } else {
+            self.burnSectionDisabled = false
+            self.error = .unknownError
+        }
     }
 }
 
