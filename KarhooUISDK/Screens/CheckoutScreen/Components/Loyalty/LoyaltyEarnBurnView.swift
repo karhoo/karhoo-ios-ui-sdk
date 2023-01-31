@@ -121,16 +121,16 @@ class NewLoyaltyViewModel: ObservableObject {
     
     private func subscribe(){
         worker.modelSubject
-            .sink(
-                receiveCompletion: {[weak self] completion in
-                    switch completion {
-                        case .finished: print("🏁 finished")
-                    case .failure(let error): return // self?.error = error
+            .sink(receiveValue: { [weak self] result in
+                    switch result {
+                    case .success(let model):
+                        self?.update(withModel: model)
+                    case .failure(let error):
+                        return // self?.error = error
+                        break
                     }
-                },
-                receiveValue: {[weak self] model in
-                    self?.update(withModel: model)
-                })
+                }
+            )
             .store(in: &cancellables)
     }
     

@@ -11,7 +11,7 @@ import KarhooSDK
 
 protocol LoyaltyWorker: AnyObject {
     var isLoyaltyEnabled: Bool { get }
-    var modelSubject: CurrentValueSubject<LoyaltyViewModel?, Error> { get }
+    var modelSubject: CurrentValueSubject<Result<LoyaltyViewModel?>, Never> { get }
     var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
     func setup(using quote: Quote)
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
@@ -33,8 +33,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     static let shared = KarhooLoyaltyWorker()
 
     var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
-    var modelSubject = CurrentValueSubject<LoyaltyViewModel?, Error>(nil)
-    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
+    var modelSubject = CurrentValueSubject<Result<LoyaltyViewModel?>, Never>(.success(result: nil))
+    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.burn)
 
     // MARK: Private properties
 
@@ -86,13 +86,13 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     private func setupPublishers() {
         
         let zippedEarnBurn = Publishers.Zip4(
-            earnPointsSubject.dropFirst(),
-            burnPointsSubject.dropFirst(),
-            canEarnSubject.dropFirst(),
-            canBurnSubject.dropFirst()
+            earnPointsSubject,
+            burnPointsSubject,
+            canEarnSubject,
+            canBurnSubject
         )
         Publishers.Zip(
-            currentBalanceSubject.dropFirst(),
+            currentBalanceSubject,
             zippedEarnBurn
         )
         .sink(receiveValue: { [weak self] values in
@@ -120,7 +120,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 balance: balance
             )
 
-            self.modelSubject.send(model)
+            self.modelSubject.send(.success(result: model))
             self.updatePreAuthWorker(using: model)
         }
         )
@@ -158,7 +158,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard let status = result.getSuccessValue() else {
                 let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
-                self?.modelSubject.send(completion: .failure(error))
+                self?.modelSubject.send(.failure(error: error))
                 return
             }
             self?.currentBalanceSubject.send(status.balance)
@@ -191,7 +191,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             guard let value = result.getSuccessValue()
             else {
                 let error = result.getErrorValue() ?? ErrorModel(message: UITexts.Errors.unknownLoyaltyError, code: "")
-                self?.modelSubject.send(completion: .failure(error))
+                self?.modelSubject.send(.failure(error: error, correlationId: result.getCorrelationId()))
                 return
             }
             self?.earnPointsSubject.send(value.points)
@@ -231,7 +231,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             self?.getHasEnougntBalance { [weak self] isBallanceSufficient in
                 if isBallanceSufficient == false {
-                    self?.modelSubject.send(completion: .failure(LoyaltyErrorType.insufficientBalance))
+                    self?.modelSubject.send(.failure(error: LoyaltyErrorType.insufficientBalance))
                 }
             }
         }
