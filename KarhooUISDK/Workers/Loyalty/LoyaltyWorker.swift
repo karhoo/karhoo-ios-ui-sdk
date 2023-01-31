@@ -34,7 +34,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
     var modelSubject = CurrentValueSubject<Result<LoyaltyViewModel?>, Never>(.success(result: nil))
-    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.burn)
+    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
 
     // MARK: Private properties
 

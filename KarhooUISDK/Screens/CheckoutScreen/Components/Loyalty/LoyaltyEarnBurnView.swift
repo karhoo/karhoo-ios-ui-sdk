@@ -119,18 +119,18 @@ class NewLoyaltyViewModel: ObservableObject {
         subscribe()
     }
     
-    private func subscribe(){
+    private func subscribe() {
         worker.modelSubject
             .sink(receiveValue: { [weak self] result in
-                    switch result {
-                    case .success(let model):
-                        self?.update(withModel: model)
-                    case .failure(let error):
-                        return // self?.error = error
-                        break
-                    }
+                switch result {
+                case .success(let model, _):
+                    self?.update(withModel: model)
+                case .failure(let error, let correlationId):
+                    return // self?.error = error
+                @unknown default:
+                    return
                 }
-            )
+            })
             .store(in: &cancellables)
     }
     
