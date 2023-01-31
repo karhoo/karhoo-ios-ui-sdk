@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Wprowadź punkt odbioru";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Miejsce odbioru";
 
 "kh_uisdk_address_picker_prebook" = "Rezerwuj";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "POTWIERDŹ I ZAPŁAĆ";
 
+"kh_uisdk_book_pay" = "Płacić";
+
 "kh_uisdk_book_return_ride" = "Zarezerwuj przejazd powrotny";
 
 "kh_uisdk_booking_car" = "ZAREZERWUJ PRZEJAZD";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Opłać";
 
 "kh_uisdk_booking_confirmation" = "Rezerwacja potwierdzona";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Przejdź do szczegółów przejazdu";
 
 "kh_uisdk_booking_details_error" = "Nieprawidłowe szczegóły rezerwacji";
 
@@ -246,7 +251,7 @@
 
 "kh_uisdk_call" = "POŁĄCZ Z KIEROWCĄ";
 
-"kh_uisdk_cancel" = "ANULUJ";
+"kh_uisdk_cancel" = "Anuluj";
 
 "kh_uisdk_cancel_ride" = "Anuluj przejazd";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Sprawdzony";
 
+"kh_uisdk_checkout_airport_example" = "np. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Dodaj numer lotu";
+
+"kh_uisdk_checkout_airport_title" = "Numer lotu";
+
 "kh_uisdk_checkout_as_guest" = "ZAREZERWUJ PRZEJAZD";
+
+"kh_uisdk_checkout_comments_subtitle" = "Komentarz dla Twojego kierowcy";
+
+"kh_uisdk_checkout_comments_title" = "Komentarz";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Dozwolone są tylko litery i cyfry";
+
+"kh_uisdk_checkout_train_example" = "np. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Dodaj numer pociągu";
+
+"kh_uisdk_checkout_train_title" = "Numer pociągu";
+
+"kh_uisdk_close_the_screen" = "Zamknij ekran";
 
 "kh_uisdk_completed" = "Mamy nadzieję, że przejazd był udany";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "Moja lokalizacja";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_destination" = "Cel";
 
 "kh_uisdk_destination_book_error" = "Musisz wybrać miejsce docelowe, aby zarezerwować przejazd";
 
@@ -456,7 +483,7 @@
 
 "kh_uisdk_forgotten_password" = "Nie pamiętasz hasła?";
 
-"kh_uisdk_free_cancellation_asap" = "Bezpłatna anulacja do %1$@ po dokonaniu rezerwacji";
+"kh_uisdk_free_cancellation_asap" = "Bezpłatne anulowanie do %1$@ po dokonaniu rezerwacji";
 
 "kh_uisdk_got_it" = "ROZUMIEM";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d godzin";
 
 "kh_uisdk_info" = "Informacje";
+
+"kh_uisdk_information" = "Informacje";
 
 "kh_uisdk_initialised" = "Karhoo inicjuje Twoją podróż";
 
@@ -666,7 +695,7 @@
 
 "kh_uisdk_meeting_point" = "Miejsce spotkania";
 
-"kh_uisdk_metered" = "Na podstawie taksometru";
+"kh_uisdk_metered" = "Cena na podstawie taksometru";
 
 "kh_uisdk_min" = "min";
 
@@ -716,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Nieprawidłowy certyfikat SSL";
 
+"kh_uisdk_now" = "teraz";
+
 "kh_uisdk_offer_expired" = "Oferta wygasła";
 
 "kh_uisdk_offer_expired_text" = "Wybierz nową ofertę, aby kontynuować rezerwację";
@@ -762,6 +793,8 @@
 
 "kh_uisdk_permissions" = "UPRAWNIENIA";
 
+"kh_uisdk_pick_up" = "Pick-up";
+
 "kh_uisdk_pickup_time" = "Godzina odbioru";
 
 "kh_uisdk_pickup_type_curbside" = "Na zewnątrz";
@@ -779,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Rezerwacja zostanie dokonana w czasie lokalnym";
 
 "kh_uisdk_price" = "Cena";
+
+"kh_uisdk_price_bottom_sheet_title" = "Cena Szczegóły";
 
 "kh_uisdk_price_info_text_estimated" = "Ten przewoźnik nie oferuje licencjonowanych przejazdów. Wycena jest szacunkową kwotą opartą na czynnikach podróży (odległość, czas itp.). Aby uzyskać więcej informacji, zapoznaj się z Regulaminem przewoźnika.";
 
@@ -942,7 +977,7 @@
 
 "kh_uisdk_something_went_wrong_select_another_quote" = "Przykro nam, coś poszło nie tak. Spróbuj ponownie lub wybierz inną ofertę.";
 
-"kh_uisdk_sort_by" = "Sortuj według";
+"kh_uisdk_sort_by" = "Sortuj";
 
 "kh_uisdk_staging_link" = "https://agent-portal.stg.karhoo.net/follow/";
 

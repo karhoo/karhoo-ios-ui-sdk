@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Inserisci luogo del prelievo";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Raccogliere";
 
 "kh_uisdk_address_picker_prebook" = "Libro";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "CONFERMA E PAGA";
 
+"kh_uisdk_book_pay" = "Pagare";
+
 "kh_uisdk_book_return_ride" = "Prenota corsa di ritorno";
 
 "kh_uisdk_booking_car" = "PRENOTA CORSA";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "Checkout";
 
 "kh_uisdk_booking_confirmation" = "Prenotazione confermata";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Vai ai dettagli della corsa";
 
 "kh_uisdk_booking_details_error" = "Dettagli della prenotazione non validi";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Visualizzata";
 
+"kh_uisdk_checkout_airport_example" = "ad esempio AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Aggiungi un numero di volo";
+
+"kh_uisdk_checkout_airport_title" = "Numero del volo";
+
 "kh_uisdk_checkout_as_guest" = "PRENOTA CORSA";
+
+"kh_uisdk_checkout_comments_subtitle" = "Commenta per il tuo autista";
+
+"kh_uisdk_checkout_comments_title" = "Commento";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Sono consentiti solo lettere e numeri";
+
+"kh_uisdk_checkout_train_example" = "ad esempio 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Aggiungi un numero di treno";
+
+"kh_uisdk_checkout_train_title" = "Numero del treno";
+
+"kh_uisdk_close_the_screen" = "Chiudi lo schermo";
 
 "kh_uisdk_completed" = "Speriamo che la tua corsa sia stata piacevole";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "Ottieni posizione attuale";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_destination" = "Destinazione";
 
 "kh_uisdk_destination_book_error" = "Devi selezionare una destinazione per prenotare una corsa";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d ora";
 
 "kh_uisdk_info" = "Informazioni";
+
+"kh_uisdk_information" = "Informazioni";
 
 "kh_uisdk_initialised" = "stiamo iniziando il tuo viaggio";
 
@@ -716,6 +745,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificato SSL non valido";
 
+"kh_uisdk_now" = "adesso";
+
 "kh_uisdk_offer_expired" = "Preventivo scaduto";
 
 "kh_uisdk_offer_expired_text" = "Seleziona un nuovo preventivo per continuare con la prenotazione";
@@ -762,6 +793,8 @@
 
 "kh_uisdk_permissions" = "PERMESSI";
 
+"kh_uisdk_pick_up" = "Raccogliere";
+
 "kh_uisdk_pickup_time" = "Orario di prelievo";
 
 "kh_uisdk_pickup_type_curbside" = "Attesa all’esterno";
@@ -779,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "Le prenotazioni sono effettuate nell’orario locale";
 
 "kh_uisdk_price" = "Prezzo";
+
+"kh_uisdk_price_bottom_sheet_title" = "Dettagli sui prezzi";
 
 "kh_uisdk_price_info_text_estimated" = "Questa flotta offre taxi non regolamentati. Il preventivo è una stima basata su fattori come tempo e distanza totale. Per ulteriori informazioni, controlla i Termini e Condizioni della flotta.";
 

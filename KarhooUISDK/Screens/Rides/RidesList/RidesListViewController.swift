@@ -51,11 +51,7 @@ final class RidesListViewController: UIViewController, RidesListView {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        var bottomOffset: CGFloat = 0
-        if #available(iOS 11.0, *) {
-            bottomOffset = view.safeAreaInsets.bottom
-        }
+        let bottomOffset = view.safeAreaInsets.bottom
         let offset = bookButtonHeight + bottomOffset
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0,
                                                          width: view.frame.width,
