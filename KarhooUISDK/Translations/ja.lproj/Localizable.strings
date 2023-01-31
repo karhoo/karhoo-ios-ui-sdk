@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "お迎えの場所を入力してください";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "選び出す";
 
 "kh_uisdk_address_picker_prebook" = "予約";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "確定して支払う";
 
+"kh_uisdk_book_pay" = "支払い";
+
 "kh_uisdk_book_return_ride" = "帰りの乗車サービスを予約";
 
 "kh_uisdk_booking_car" = "乗車サービスを予約する";
@@ -229,6 +232,8 @@
 "kh_uisdk_booking_checkout_title" = "チェックアウト";
 
 "kh_uisdk_booking_confirmation" = "予約確定済み";
+
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "乗車の詳細に移動";
 
 "kh_uisdk_booking_details_error" = "予約の詳細が無効です";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "チェック済み";
 
+"kh_uisdk_checkout_airport_example" = "例: AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "フライト番号を追加";
+
+"kh_uisdk_checkout_airport_title" = "フライトナンバー";
+
 "kh_uisdk_checkout_as_guest" = "乗車サービスを予約する";
+
+"kh_uisdk_checkout_comments_subtitle" = "ドライバーへのコメント";
+
+"kh_uisdk_checkout_comments_title" = "コメント";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "文字と数字のみを使用できます";
+
+"kh_uisdk_checkout_train_example" = "例: 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "列車番号を追加";
+
+"kh_uisdk_checkout_train_title" = "列車番号";
+
+"kh_uisdk_close_the_screen" = "画面を閉じる";
 
 "kh_uisdk_completed" = "ご利用ありがとうございました";
 
@@ -297,6 +322,8 @@
 "kh_uisdk_current_location" = "現在地を取得";
 
 "kh_uisdk_date" = "日付";
+
+"kh_uisdk_destination" = "先";
 
 "kh_uisdk_destination_book_error" = "乗車サービスを予約するには目的地を選択してください";
 
@@ -477,6 +504,8 @@
 "kh_uisdk_hours_plural.zero" = "%d時間";
 
 "kh_uisdk_info" = "情報";
+
+"kh_uisdk_information" = "ドライバーの情報";
 
 "kh_uisdk_initialised" = "乗車サービスを初期化中です";
 
@@ -712,6 +741,8 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "SSL証明書が無効です";
 
+"kh_uisdk_now" = "今";
+
 "kh_uisdk_offer_expired" = "見積もりの期限が切れました";
 
 "kh_uisdk_offer_expired_text" = "予約を続行するには、新しい見積もりを選択してください";
@@ -758,6 +789,8 @@
 
 "kh_uisdk_permissions" = "許可";
 
+"kh_uisdk_pick_up" = "拾う";
+
 "kh_uisdk_pickup_time" = "お迎え時刻";
 
 "kh_uisdk_pickup_type_curbside" = "ドライバーが車外で待機";
@@ -775,6 +808,8 @@
 "kh_uisdk_prebook_timezone_title" = "予約は現地時間で行われます";
 
 "kh_uisdk_price" = "料金";
+
+"kh_uisdk_price_bottom_sheet_title" = "価格の詳細";
 
 "kh_uisdk_price_info_text_estimated" = "この乗車サービス業者は規制対象外のタクシーです。見積もりは、時間や総距離などから算出される概算です。詳しくは、乗車サービス業者の利用条件を参照してください。";
 

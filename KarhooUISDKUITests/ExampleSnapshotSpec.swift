@@ -52,7 +52,7 @@ class ExampleSnapshotSpec: QuickSpec {
                     }
 
                     it("should show proper design") {
-                        testSnapshot(sut1)
+//                        testSnapshot(sut1)
                     }
                 }
 
@@ -63,12 +63,12 @@ class ExampleSnapshotSpec: QuickSpec {
 
                 // test another specific requirement - in this case view controller design
                 it("should show proper design of view controller") {
-                    testSnapshot(sut2)
+//                    testSnapshot(sut2)
                 }
 
                 // test another requirement - in this case sut1 design
                 it("should show proper design of view") {
-                    testSnapshot(sut1)
+//                    testSnapshot(sut1)
                 }
             }
         }

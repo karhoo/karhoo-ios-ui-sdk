@@ -1,6 +1,6 @@
-"adyen.submitButton" = "Pré-autoriser";
+"adyen.submitButton" = "Autoriser la transaction";
 
-"adyen.submitButton.formatted" = "Pré-autoriser %@";
+"adyen.submitButton.formatted" = "Autoriser la transaction";
 
 "continue_button" = "Suivant";
 
@@ -108,6 +108,7 @@
 
 "kh_uisdk_address_picker_enter_pickup" = "Adresse de départ";
 
+/* depricated */
 "kh_uisdk_address_picker_pickup_title" = "Départ";
 
 "kh_uisdk_address_picker_prebook" = "Réserver";
@@ -216,6 +217,8 @@
 
 "kh_uisdk_book_now" = "Confirmer et payer";
 
+"kh_uisdk_book_pay" = "Payer";
+
 "kh_uisdk_book_return_ride" = "Réserver la course retour";
 
 "kh_uisdk_booking_car" = "Réserver une course";
@@ -230,6 +233,8 @@
 
 "kh_uisdk_booking_confirmation" = "Course confirmée";
 
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Aller aux détails du trajet";
+
 "kh_uisdk_booking_details_error" = "Informations de réservation non valables";
 
 "kh_uisdk_booking_failed" = "La réservation a échoué";
@@ -238,13 +243,13 @@
 
 "kh_uisdk_booking_failed_body_no_fleet_name" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez le prestataire sélectionné.";
 
-"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %2$@ and %3$@ de %1$@ ainsi que les %3$@ | %5$@ de %4$@.";
+"kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %1$@ et la %2$@, ainsi que la %5$@ et les %4$@ de %3$@";
 
 "kh_uisdk_booking_terms_and_conditions" = "Conditions d'utilisation";
 
 "kh_uisdk_bookings" = "Réservations";
 
-"kh_uisdk_call" = "Appeler chauffeur";
+"kh_uisdk_call" = "Appeler le chauffeur";
 
 "kh_uisdk_cancel" = "Annuler";
 
@@ -272,7 +277,27 @@
 
 "kh_uisdk_checked" = "Vérifié";
 
+"kh_uisdk_checkout_airport_example" = "p. ex. AF009";
+
+"kh_uisdk_checkout_airport_subtitle" = "Ajouter un numéro de vol";
+
+"kh_uisdk_checkout_airport_title" = "Numéro de vol";
+
 "kh_uisdk_checkout_as_guest" = "Réserver une course";
+
+"kh_uisdk_checkout_comments_subtitle" = "Commentez pour votre chauffeur";
+
+"kh_uisdk_checkout_comments_title" = "Commentaire";
+
+"kh_uisdk_checkout_error_only_letters_and_digits_allowed" = "Seules les lettres et les chiffres sont autorisés";
+
+"kh_uisdk_checkout_train_example" = "p. ex. 6809";
+
+"kh_uisdk_checkout_train_subtitle" = "Ajouter un numéro de train";
+
+"kh_uisdk_checkout_train_title" = "Numéro de train";
+
+"kh_uisdk_close_the_screen" = "Fermer l’écran";
 
 "kh_uisdk_completed" = "Nous espérons que votre course a été agréable";
 
@@ -280,7 +305,7 @@
 
 "kh_uisdk_contact" = "Contact";
 
-"kh_uisdk_contact_driver" = "Appeler chauffeur";
+"kh_uisdk_contact_driver" = "Appeler le chauffeur";
 
 "kh_uisdk_contact_fleet" = "Contacter le prestataire";
 
@@ -298,6 +323,8 @@
 
 "kh_uisdk_date" = "Date";
 
+"kh_uisdk_destination" = "Arrivée";
+
 "kh_uisdk_destination_book_error" = "Sélectionnez une destination pour réserver une course";
 
 "kh_uisdk_difficulties_cancelling_message" = "Nous avons du mal à annuler votre course. Contactez le prestataire pour en savoir plus.";
@@ -312,7 +339,7 @@
 
 "kh_uisdk_drawer_open" = "Fermeture du menu";
 
-"kh_uisdk_driver_arrival" = "Heure d'arrivée du chauffeur prévue";
+"kh_uisdk_driver_arrival" = "Arrivée prévue du chauffeur";
 
 "kh_uisdk_driver_en_route" = "Le chauffeur %@ est en route";
 
@@ -358,7 +385,7 @@
 
 "kh_uisdk_eta" = "Heure d'arrivée prévue";
 
-"kh_uisdk_exec" = "Premium";
+"kh_uisdk_exec" = "Business";
 
 "kh_uisdk_extra_capabilities" = "+%d";
 
@@ -392,9 +419,9 @@
 
 "kh_uisdk_filter_electric" = "Électrique";
 
-"kh_uisdk_filter_executive" = "Premium";
+"kh_uisdk_filter_executive" = "Business";
 
-"kh_uisdk_filter_fight_tracking" = "Suivi du vol";
+"kh_uisdk_filter_fight_tracking" = "Suivi n° de vol";
 
 "kh_uisdk_filter_fleet_capabilities" = "Options";
 
@@ -408,11 +435,11 @@
 
 "kh_uisdk_filter_luggages" = "Bagage(s)";
 
-"kh_uisdk_filter_luxury" = "Prestige";
+"kh_uisdk_filter_luxury" = "Luxe";
 
 "kh_uisdk_filter_moto" = "Moto";
 
-"kh_uisdk_filter_page_results" = "Voir les %@ résultats de recherche";
+"kh_uisdk_filter_page_results" = "Voir les %@ résultats";
 
 "kh_uisdk_filter_passengers" = "Passager(s)";
 
@@ -424,9 +451,9 @@
 
 "kh_uisdk_filter_taxi" = "Taxi";
 
-"kh_uisdk_filter_train_tracking" = "Suivi du train";
+"kh_uisdk_filter_train_tracking" = "Suivi n° de train";
 
-"kh_uisdk_filter_van" = "Monospace";
+"kh_uisdk_filter_van" = "Van";
 
 "kh_uisdk_filter_vehicle_class" = "Catégorie de véhicule";
 
@@ -452,7 +479,7 @@
 
 "kh_uisdk_flight_number" = "Numéro de vol (facultatif)";
 
-"kh_uisdk_flight_tracking" = "Suivi du vol";
+"kh_uisdk_flight_tracking" = "Suivi n° de vol";
 
 "kh_uisdk_forgotten_password" = "Mot de passe oublié?";
 
@@ -479,6 +506,8 @@
 "kh_uisdk_hours_plural.zero" = "%d heure";
 
 "kh_uisdk_info" = "Info";
+
+"kh_uisdk_information" = "Informations";
 
 "kh_uisdk_initialised" = "Initialisation de votre course";
 
@@ -716,9 +745,11 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificat SSL invalide";
 
+"kh_uisdk_now" = "Maintenant";
+
 "kh_uisdk_offer_expired" = "Offre expirée";
 
-"kh_uisdk_offer_expired_text" = "Sélectionnez une nouvelle offre pour poursuivre votre réservation";
+"kh_uisdk_offer_expired_text" = "Sélectionnez une nouvelle offre pour poursuivre le véhicule";
 
 "kh_uisdk_ok" = "Ok";
 
@@ -762,6 +793,8 @@
 
 "kh_uisdk_permissions" = "Autorisations";
 
+"kh_uisdk_pick_up" = "Adresse de départ";
+
 "kh_uisdk_pickup_time" = "Heure de départ";
 
 "kh_uisdk_pickup_type_curbside" = "Prise en charge à l'extérieur";
@@ -779,6 +812,8 @@
 "kh_uisdk_prebook_timezone_title" = "La réservation se fait à l’heure locale";
 
 "kh_uisdk_price" = "Prix";
+
+"kh_uisdk_price_bottom_sheet_title" = "Détails des prix";
 
 "kh_uisdk_price_info_text_estimated" = "Les taxis de ce prestataire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du prestataire pour plus d'informations.";
 
@@ -878,7 +913,7 @@
 
 "kh_uisdk_result" = "%1$@ résultat(s)";
 
-"kh_uisdk_results" = "Résultats";
+"kh_uisdk_results" = "résultats";
 
 "kh_uisdk_results_empty" = "Désolé, nous n’avons trouvé aucun résultat";
 
@@ -1002,15 +1037,15 @@
 
 "kh_uisdk_total_fare" = "Prix total";
 
-"kh_uisdk_track_driver" = "Suivre chauffeur";
+"kh_uisdk_track_driver" = "Suivre le véhicule";
 
-"kh_uisdk_track_trip" = "Suivre la course";
+"kh_uisdk_track_trip" = "Suivre le véhicule";
 
 "kh_uisdk_track_trip_alert_message" = "Voulez-vous suivre le véhicule ?";
 
 "kh_uisdk_track_trip_alert_title" = "Le chauffeur est en route";
 
-"kh_uisdk_train_tracking" = "Suivi du train";
+"kh_uisdk_train_tracking" = "Suivi n° de train";
 
 "kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Votre course a été annulée. Contactez-nous pour plus d'informations.";
 
@@ -1042,7 +1077,7 @@
 
 "kh_uisdk_trip_summary_added_to_calendar" = "VOYAGE AJOUTÉ AU CALENDRIER";
 
-"kh_uisdk_trip_summary_calendar_event_title" = "Rouler jusqu’à %@";
+"kh_uisdk_trip_summary_calendar_event_title" = "Taxi vers %@";
 
 "kh_uisdk_trip_summary_flight_number" = "Numéro de vol";
 

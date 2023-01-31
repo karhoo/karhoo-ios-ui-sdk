@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 
 # Standard cocoapods specs source
 source 'https://cdn.cocoapods.org/'
@@ -31,8 +31,8 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-#  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
-  pod 'KarhooSDK', '1.7.1'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+#  pod 'KarhooSDK', '1.7.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'

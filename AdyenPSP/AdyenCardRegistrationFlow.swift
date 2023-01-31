@@ -92,7 +92,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
     private var showStorePaymentMethod: Bool {
         switch Karhoo.configuration.authenticationMethod() {
         case .guest: return false
-        case .tokenExchange: return false
+        case .tokenExchange: return true
         case .karhooUser: return true
         @unknown default:
             assertionFailure()
@@ -190,7 +190,11 @@ extension AdyenCardRegistrationFlow: DropInComponentDelegate {
             userAgent: threeDSecureUtil.userAgent,
             acceptHeader: threeDSecureUtil.acceptHeader
         )
-        let request = AdyenPaymentsRequest(paymentsPayload: adyenPayload, supplyPartnerID: supplierPartnerId)
+        let request = AdyenPaymentsRequest(
+            paymentsPayload: adyenPayload,
+            consentModeSupported: showStorePaymentMethod,
+            supplyPartnerID: supplierPartnerId
+        )
         paymentService.adyenPayments(request: request).execute { [weak self] result in
             guard let self = self else { return }
 
