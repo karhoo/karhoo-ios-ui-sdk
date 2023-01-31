@@ -590,6 +590,8 @@
 		7BA696DB291BF9CF00A4A1FE /* DetailsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA696D9291BF9CF00A4A1FE /* DetailsCellView.swift */; };
 		7BA990A729780E31003E9010 /* KarhooBottomSheetCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A629780E31003E9010 /* KarhooBottomSheetCommentsView.swift */; };
 		7BA990A929780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */; };
+		7BC87EAD298988C6008C5120 /* NewLoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */; };
+		7BC87EAF29898931008C5120 /* LoyaltyErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC87EAE29898931008C5120 /* LoyaltyErrorView.swift */; };
 		7BE8B2BD2982B68D005E8495 /* LoyaltyEarnBurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */; };
 		7BE8B2BF2982B8E6005E8495 /* LoyaltyContainerWithBallance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BE2982B8E6005E8495 /* LoyaltyContainerWithBallance.swift */; };
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
@@ -1294,6 +1296,8 @@
 		7BA696D9291BF9CF00A4A1FE /* DetailsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCellView.swift; sourceTree = "<group>"; };
 		7BA990A629780E31003E9010 /* KarhooBottomSheetCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetCommentsView.swift; sourceTree = "<group>"; };
 		7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetCommentsViewModel.swift; sourceTree = "<group>"; };
+		7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoyaltyViewModel.swift; sourceTree = "<group>"; };
+		7BC87EAE29898931008C5120 /* LoyaltyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyErrorView.swift; sourceTree = "<group>"; };
 		7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyEarnBurnView.swift; sourceTree = "<group>"; };
 		7BE8B2BE2982B8E6005E8495 /* LoyaltyContainerWithBallance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyContainerWithBallance.swift; sourceTree = "<group>"; };
 		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
@@ -3355,6 +3359,8 @@
 			children = (
 				7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */,
 				7BE8B2BE2982B8E6005E8495 /* LoyaltyContainerWithBallance.swift */,
+				7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */,
+				7BC87EAE29898931008C5120 /* LoyaltyErrorView.swift */,
 			);
 			path = Loyalty;
 			sourceTree = "<group>";
@@ -4717,6 +4723,7 @@
 				407EC7C422CF564E00F24CFC /* URLOpener.swift in Sources */,
 				5CBA2A7F24F5D8CC0091D783 /* KarhooTimePriceView.swift in Sources */,
 				23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */,
+				7BC87EAD298988C6008C5120 /* NewLoyaltyViewModel.swift in Sources */,
 				403F448422F1EC92008147FC /* KarhooTripFeedbackViewController.swift in Sources */,
 				092005DC225B91C1001038ED /* SideMenuViewController.swift in Sources */,
 				5C7F6EF1233A375F0039F3E2 /* BaseView.swift in Sources */,
@@ -4993,6 +5000,7 @@
 				4010B0E0245C5E1F00E7B0F1 /* KarhooTextInputViewErrorFeedbackType.swift in Sources */,
 				09C7649321DE665000CD81AB /* BookingScreenBuilder.swift in Sources */,
 				0991070B21B83AF700BD7E6F /* Observer+Utils.swift in Sources */,
+				7BC87EAF29898931008C5120 /* LoyaltyErrorView.swift in Sources */,
 				0991068221B8291A00BD7E6F /* KarhooAddressSearchProvider.swift in Sources */,
 				09C765B521DE688100CD81AB /* BookingAddressBarPresenter.swift in Sources */,
 				51B3F0EF2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift in Sources */,
