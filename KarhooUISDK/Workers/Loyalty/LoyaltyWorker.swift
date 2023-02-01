@@ -136,7 +136,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             using: modeSubject.value,
             model: model,
             quoteId: quote.id,
-            getBurnAmountError: nil // TODO: - what is it for?
+            getBurnAmountError: burnError
         )
     }
 
@@ -163,7 +163,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             }
             self?.currentBalanceSubject.send(status.balance)
             self?.canEarnSubject.send(status.canBurn)
-            self?.canBurnSubject.send(status.canEarn)
+            self?.canBurnSubject.send(false) // status.canEarn)
         }
     }
 
@@ -221,9 +221,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             else {
                 let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
                 self?.burnError = error
+                self?.burnPointsSubject.send(0)
                 self?.loyaltyPreAuthWorker.set(burnError: error)
-                // To be verified but seems like get burn failure should not result in loyalty failure. We just need to inform PreAuth worker the burn is not possible.
-//                self?.modelSubject.send(completion: .failure(error))
                 return
             }
 
