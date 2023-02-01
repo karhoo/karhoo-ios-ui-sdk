@@ -19,7 +19,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     weak var delegate: LoyaltyViewDelegate?
     weak var presenterDelegate: LoyaltyPresenterDelegate?
 
-    private var viewModel: LoyaltyViewModel?
+    private var viewModel: LoyaltyUIModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
     private var currentMode: LoyaltyMode = .none
@@ -104,7 +104,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             self.hideLoyaltyComponent()
             return
         }
-        viewModel = LoyaltyViewModel(request: dataModel)
+        viewModel = LoyaltyUIModel(request: dataModel)
         if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: dataModel.loyaltyId) {
             self.set(status: status)
         }

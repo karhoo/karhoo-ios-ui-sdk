@@ -10,8 +10,8 @@ import Combine
 import KarhooSDK
 
 protocol LoyaltyWorker: AnyObject {
-    var isLoyaltyEnabled: Bool { get }
-    var modelSubject: CurrentValueSubject<Result<LoyaltyViewModel?>, Never> { get }
+//    var isLoyaltyEnabled: Bool { get }
+    var modelSubject: CurrentValueSubject<Result<LoyaltyUIModel?>, Never> { get }
     var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
     func setup(using quote: Quote)
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
@@ -32,8 +32,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     static let shared = KarhooLoyaltyWorker()
 
-    var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
-    var modelSubject = CurrentValueSubject<Result<LoyaltyViewModel?>, Never>(.success(result: nil))
+//    var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
+    var modelSubject = CurrentValueSubject<Result<LoyaltyUIModel?>, Never>(.success(result: nil))
     var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
 
     // MARK: Private properties
@@ -111,7 +111,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 return
             }
 
-            let model = LoyaltyViewModel(
+            let model = LoyaltyUIModel(
                 loyaltyId: loyaltyId,
                 currency: quote.price.currencyCode,
                 tripAmount: quote.price.highPrice,
@@ -128,7 +128,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         .store(in: &cancellables)
     }
 
-    private func updatePreAuthWorker(using model: LoyaltyViewModel, and mode: LoyaltyMode) {
+    private func updatePreAuthWorker(using model: LoyaltyUIModel, and mode: LoyaltyMode) {
         guard let quote else {
             assertionFailure("Quote should be assigned before any other logic is called")
             return
@@ -239,10 +239,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     // MARK: - Helpers
 
-    private func getIsLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
-    }
+//    private func getIsLoyaltyEnabled() -> Bool {
+//        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+//        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+//    }
 
     private func loyaltyId() -> String? {
         userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
@@ -250,9 +250,9 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     private func getHasEnougntBalance(completion: @escaping (Bool) -> Void) {
         Publishers.CombineLatest(currentBalanceSubject, burnPointsSubject)
-                    .filter { $0.0 != nil && $0.1 != nil }
-                    .first()
-                    .sink(receiveValue: { values in
+            .filter { $0.0 != nil && $0.1 != nil }
+            .first()
+            .sink(receiveValue: { values in
                 guard
                     let balance = values.0,
                     let burnPoints = values.1

@@ -62,7 +62,7 @@ class NewLoyaltyViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func update(withModel model: LoyaltyViewModel?) {
+    private func update(withModel model: LoyaltyUIModel?) {
         if let model = model {
             self.balance = model.balance
             self.earnAmount = model.earnAmount

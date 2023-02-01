@@ -1,5 +1,5 @@
 //
-//  LoyaltyViewModel.swift
+//  LoyaltyUIModel.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 29.11.2021.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct LoyaltyViewModel {
+/// Structure containing all required data for UI to setup and prepare for user interactions
+struct LoyaltyUIModel {
     var loyaltyId: String
     var currency: String
     var tripAmount: Double

@@ -529,7 +529,7 @@
 		6B7BE3F3271968A600682AA1 /* PassengerDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */; };
 		6BA3544F27304E400003B888 /* QuoteVehicle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */; };
 		6BA9DB692785D9700007934C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9DB682785D9700007934C /* UIConstants.swift */; };
-		6BB940542754D47800478ABD /* LoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940532754D47800478ABD /* LoyaltyViewModel.swift */; };
+		6BB940542754D47800478ABD /* LoyaltyUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940532754D47800478ABD /* LoyaltyUIModel.swift */; };
 		6BB940562754D4AC00478ABD /* LoyaltyViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */; };
 		6BC2B3B127B1283E00218372 /* SeparatorWithLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2B3B027B1283E00218372 /* SeparatorWithLabelView.swift */; };
 		6BE3695226EB34D000F0FE86 /* CountryCodeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */; };
@@ -1226,7 +1226,7 @@
 		6B7BE3F2271968A600682AA1 /* PassengerDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassengerDetails+Extensions.swift"; sourceTree = "<group>"; };
 		6BA3544E27304E400003B888 /* QuoteVehicle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteVehicle+Extensions.swift"; sourceTree = "<group>"; };
 		6BA9DB682785D9700007934C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
-		6BB940532754D47800478ABD /* LoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewModel.swift; sourceTree = "<group>"; };
+		6BB940532754D47800478ABD /* LoyaltyUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyUIModel.swift; sourceTree = "<group>"; };
 		6BB940552754D4AC00478ABD /* LoyaltyViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewDataModel.swift; sourceTree = "<group>"; };
 		6BC2B3B027B1283E00218372 /* SeparatorWithLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorWithLabelView.swift; sourceTree = "<group>"; };
 		6BE3695126EB34D000F0FE86 /* CountryCodeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelectionViewController.swift; sourceTree = "<group>"; };
@@ -3137,7 +3137,7 @@
 				5C1CD0AF241A5D88004AFF7D /* TripScreenDetailsViewModel.swift */,
 				FC435F162211B3FA00FB6BB5 /* TripMetaDataViewModel.swift */,
 				407EC78422CF564E00F24CFC /* BookingStatusViewModel.swift */,
-				6BB940532754D47800478ABD /* LoyaltyViewModel.swift */,
+				6BB940532754D47800478ABD /* LoyaltyUIModel.swift */,
 				6BF304EF275FA2920016CFC5 /* FeatureFlags.swift */,
 			);
 			path = ViewModels;
@@ -4662,7 +4662,7 @@
 				097050CF21FF27FF00E53AD2 /* KarhooUISDKConfigurationProvider.swift in Sources */,
 				407EC7B022CF564E00F24CFC /* KarhooGradients.swift in Sources */,
 				407EC7CC22CF564E00F24CFC /* KarhooAddressBarFieldView.swift in Sources */,
-				6BB940542754D47800478ABD /* LoyaltyViewModel.swift in Sources */,
+				6BB940542754D47800478ABD /* LoyaltyUIModel.swift in Sources */,
 				7B7404452975A9D5000ED60A /* KarhooMaterialDesignTextField.swift in Sources */,
 				407EC7EC22CF564E00F24CFC /* TableData.swift in Sources */,
 				79793ED8270F2E2200944896 /* UIViewController+extensions.swift in Sources */,

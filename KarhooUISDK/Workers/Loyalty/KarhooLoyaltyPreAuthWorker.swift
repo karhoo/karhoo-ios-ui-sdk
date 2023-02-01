@@ -11,7 +11,7 @@ import KarhooSDK
 protocol LoyaltyPreAuthWorker {
     func setup(
         using currentMode: LoyaltyMode,
-        model: LoyaltyViewModel,
+        model: LoyaltyUIModel,
         quoteId: String,
         getBurnAmountError: KarhooError?
     )
@@ -26,7 +26,7 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
     private let loyaltyService: LoyaltyService
     private let analytics: Analytics
     private var currentMode: LoyaltyMode = .none
-    private var viewModel: LoyaltyViewModel?
+    private var viewModel: LoyaltyUIModel?
     private var quoteId: String?
     private var getBurnAmountError: KarhooError?
     private var isPreparedForPreAuth = false
@@ -41,7 +41,7 @@ final class KarhooLoyaltyPreAuthWorker: LoyaltyPreAuthWorker {
 
     func setup(
         using currentMode: LoyaltyMode,
-        model: LoyaltyViewModel,
+        model: LoyaltyUIModel,
         quoteId: String,
         getBurnAmountError: KarhooError?
     ) {
