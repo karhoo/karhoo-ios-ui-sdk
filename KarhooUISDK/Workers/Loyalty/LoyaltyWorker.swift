@@ -249,22 +249,21 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     private func getHasEnougntBalance(completion: @escaping (Bool) -> Void) {
-        Publishers.Zip(
-            currentBalanceSubject,
-            burnPointsSubject
-        )
-        .sink(receiveValue: { value in
+        Publishers.CombineLatest(currentBalanceSubject, burnPointsSubject)
+                    .filter { $0.0 != nil && $0.1 != nil }
+                    .first()
+                    .sink(receiveValue: { values in
                 guard
-                    let balance = value.0,
-                    let burnPoints = value.1
+                    let balance = values.0,
+                    let burnPoints = values.1
                 else {
                     completion(false)
                     return
                 }
-                completion(balance >= burnPoints)
-            }
-        )
-        .store(in: &cancellables)
+                let isBalanceSufficient = balance >= burnPoints
+                completion(isBalanceSufficient)
+            })
+            .store(in: &cancellables)
     }
 
     // MARK: - Analytics

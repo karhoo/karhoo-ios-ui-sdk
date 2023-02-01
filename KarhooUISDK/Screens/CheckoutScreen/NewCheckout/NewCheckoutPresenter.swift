@@ -54,9 +54,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    var passengerDetailsPublisher: Published<PassengerDetails?>.Publisher {
-        passengerDetailsWorker.$passengerDetails
-    }
     private let journeyDetails: JourneyDetails
     private var carIconUrl: String = ""
 
@@ -231,7 +228,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         // Nested VMs binding
 
-        passengerDetailsPublisher
+        passengerDetailsWorker.passengerDetailsSubject
             .sink { [weak self] passengerDetails in
                 self?.passangerDetailsViewModel.update(using: passengerDetails)
                 self?.bookingWorker.update(passengerDetails: passengerDetails)
@@ -347,7 +344,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private func showPassengerDetails() {
         router.routeToPassengerDetails(
-            passengerDetailsWorker.passengerDetails,
+            passengerDetailsWorker.passengerDetailsSubject.value,
             delegate: passengerDetailsWorker
         )
     }
@@ -394,7 +391,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     /// Validate if all required data are in place. If some data is missing, the method will trigger proper behavior, like opening the passenger details screen.
     private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = false) -> Bool {
-        guard passengerDetailsWorker.passengerDetails?.areValid ?? false
+        guard passengerDetailsWorker.passengerDetailsSubject.value?.areValid ?? false
         else {
             if triggerAdditionalBehavior {
                 showPassengerDetails()

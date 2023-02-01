@@ -10,16 +10,16 @@ import Combine
 import KarhooSDK
 
 final class KarhooNewCheckoutPassengerDetailsWorker {
-    @Published var passengerDetails: PassengerDetails?
+    var passengerDetailsSubject: CurrentValueSubject<PassengerDetails?, Never>
 
     init(details: PassengerDetails?) {
-        self.passengerDetails = details
+        self.passengerDetailsSubject = CurrentValueSubject(details)
     }
 }
 
 extension KarhooNewCheckoutPassengerDetailsWorker: PassengerDetailsDelegate {
     func didInputPassengerDetails(result: PassengerDetailsResult) {
-        passengerDetails = result.details
+        passengerDetailsSubject.send(result.details)
     }
 
     func didCancelInput(byUser: Bool) {
