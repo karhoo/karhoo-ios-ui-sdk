@@ -35,6 +35,7 @@ struct LoyaltyEarnBurnView: View {
                 })
                 if viewModel.isBurnModeOn {
                     burnInfoView
+                        .transition(.scale)
                 }
             }
                 .padding(.top, UIConstants.Spacing.standard)
@@ -111,7 +112,7 @@ struct LoyaltyEarnBurnView: View {
                 
         }
             .background(
-                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.small)
+                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                     .fill(Color(KarhooUI.colors.primary))
             )
     }
