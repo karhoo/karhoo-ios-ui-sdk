@@ -10,7 +10,7 @@ import Combine
 import KarhooSDK
 
 protocol LoyaltyWorker: AnyObject {
-//    var isLoyaltyEnabled: Bool { get }
+    var isLoyaltyEnabled: Bool { get }
     var modelSubject: CurrentValueSubject<Result<LoyaltyUIModel?>, Never> { get }
     var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
     func setup(using quote: Quote)
@@ -32,7 +32,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     static let shared = KarhooLoyaltyWorker()
 
-//    var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
+    var isLoyaltyEnabled: Bool { getIsLoyaltyEnabled() }
     var modelSubject = CurrentValueSubject<Result<LoyaltyUIModel?>, Never>(.success(result: nil))
     var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
 
@@ -72,12 +72,17 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        guard isLoyaltyEnabled else {
+            completion(.failure(error: LoyaltyErrorType.none))
+            return
+        }
         loyaltyPreAuthWorker.getLoyaltyPreAuthNonce(completion: completion)
     }
 
     // MARK: - Private methods
 
     private func getData() {
+        guard isLoyaltyEnabled else { return }
         getLoyaltyStatus()
         getEarnedPoints()
         getBurnedPoints()
@@ -239,10 +244,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     // MARK: - Helpers
 
-//    private func getIsLoyaltyEnabled() -> Bool {
-//        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-//        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
-//    }
+    private func getIsLoyaltyEnabled() -> Bool {
+        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
+        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+    }
 
     private func loyaltyId() -> String? {
         userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id

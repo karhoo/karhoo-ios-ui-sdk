@@ -258,7 +258,7 @@
 		51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */; };
 		51255B102966EAA700290A74 /* NewCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */; };
 		51255B122966EB8700290A74 /* NewCheckout+MVPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B112966EB8700290A74 /* NewCheckout+MVPC.swift */; };
-		51255B14296731A400290A74 /* NewCheckoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B13296731A400290A74 /* NewCheckoutPresenter.swift */; };
+		51255B14296731A400290A74 /* NewCheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B13296731A400290A74 /* NewCheckoutViewModel.swift */; };
 		51255B1629673AC100290A74 /* NewCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1529673AC100290A74 /* NewCheckoutView.swift */; };
 		51255B1829673D0A00290A74 /* NewCheckoutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */; };
 		5126AAF82971DF1A00DCA748 /* UITextView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB01722971B7C900F7DFFD /* UITextView+SwiftUI.swift */; };
@@ -1011,7 +1011,7 @@
 		51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
 		51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutViewController.swift; sourceTree = "<group>"; };
 		51255B112966EB8700290A74 /* NewCheckout+MVPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewCheckout+MVPC.swift"; sourceTree = "<group>"; };
-		51255B13296731A400290A74 /* NewCheckoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutPresenter.swift; sourceTree = "<group>"; };
+		51255B13296731A400290A74 /* NewCheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutViewModel.swift; sourceTree = "<group>"; };
 		51255B1529673AC100290A74 /* NewCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutView.swift; sourceTree = "<group>"; };
 		51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutCoordinator.swift; sourceTree = "<group>"; };
 		5128653B2914F75200EA8934 /* QuoteListSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSnapshotSpec.swift; sourceTree = "<group>"; };
@@ -2569,7 +2569,7 @@
 				51DB016F29702C4100F7DFFD /* Workers */,
 				51255B112966EB8700290A74 /* NewCheckout+MVPC.swift */,
 				51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */,
-				51255B13296731A400290A74 /* NewCheckoutPresenter.swift */,
+				51255B13296731A400290A74 /* NewCheckoutViewModel.swift */,
 				51255B1529673AC100290A74 /* NewCheckoutView.swift */,
 				51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */,
 			);
@@ -4847,7 +4847,7 @@
 				FC435EEC2211B33B00FB6BB5 /* RidesMVP.swift in Sources */,
 				51F4D57028574D9100A8DB5E /* SingleSelectionListView.swift in Sources */,
 				5190F00F2847858600F7623A /* AdyenPaymentNonceProvider.swift in Sources */,
-				51255B14296731A400290A74 /* NewCheckoutPresenter.swift in Sources */,
+				51255B14296731A400290A74 /* NewCheckoutViewModel.swift in Sources */,
 				FC435F1E2211B40B00FB6BB5 /* RideDetailsStackButtonActions.swift in Sources */,
 				5C1CD0BB241A5D88004AFF7D /* TripScreenDetailsViewModel.swift in Sources */,
 				09E683232374522900BFF5B9 /* KarhooAddressMapPresenter.swift in Sources */,
@@ -5166,7 +5166,6 @@
 				518E373C2954C1D900AF0687 /* pl */,
 				518E373D2954C1DB00AF0687 /* ja */,
 				518E373E2954C1DE00AF0687 /* id */,
-				51DD460C29812B2F00E13F73 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -5183,7 +5182,6 @@
 				518E37342954C1BE00AF0687 /* pt-BR */,
 				518E37362954C1C700AF0687 /* pl */,
 				518E37382954C1CF00AF0687 /* ja */,
-				51DD460B29812B1500E13F73 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

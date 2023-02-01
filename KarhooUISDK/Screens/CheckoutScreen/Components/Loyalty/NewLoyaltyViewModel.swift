@@ -11,8 +11,13 @@ import Combine
 import KarhooSDK
 
 class NewLoyaltyViewModel: ObservableObject {
-    
-    let worker: LoyaltyWorker
+
+    // MARK: - Dependencies
+
+    private let worker: LoyaltyWorker
+
+    // MARK: - Properties
+
     private var cancellables: Set<AnyCancellable> = []
     
     @Published var error: LoyaltyErrorType?
@@ -30,7 +35,11 @@ class NewLoyaltyViewModel: ObservableObject {
     @Published var currency: String
     @Published var tripAmount: Double
     @Published var burnAmount: Int
-    
+
+    var shouldShowView: Bool { worker.isLoyaltyEnabled }
+
+    // MARK: - Lifecycle
+
     init(worker: LoyaltyWorker) {
         self.worker = worker
         self.currency = ""
@@ -44,6 +53,8 @@ class NewLoyaltyViewModel: ObservableObject {
         
         subscribe()
     }
+
+    // MARK: - Private methods
     
     private func subscribe() {
         worker.modelSubject

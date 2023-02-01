@@ -381,8 +381,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     // MARK: - Utils
 
     private func isLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+        loyaltyWorker.isLoyaltyEnabled
     }
 
     private func isKarhooUser() -> Bool {

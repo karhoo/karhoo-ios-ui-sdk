@@ -125,6 +125,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     func onAppear() {
         reportScreenOpened()
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
+            self?.showError = true
             self?.quoteExpired = true
         }
     }
@@ -301,6 +302,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .failure(let error):
             state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
+            quoteValidityWorker.invalidate()
             router.routeSuccessScene(
                 with: tripInfo,
                 journeyDetails: journeyDetails,
