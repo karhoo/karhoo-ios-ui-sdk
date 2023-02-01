@@ -52,6 +52,7 @@ struct LoyaltyEarnBurnView: View {
             Text(pointsEarnedText)
                 .font(Font(KarhooUI.fonts.bodyRegular()))
                 .foregroundColor(Color(KarhooUI.colors.text))
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
     
@@ -74,10 +75,11 @@ struct LoyaltyEarnBurnView: View {
         let burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
         let burnOnSubtitle = String(
             format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
+            "\(viewModel.tripAmount)",
             "\(viewModel.currency)",
             "\(viewModel.burnAmount)"
         )
-        var textColor = Color(viewModel.burnSectionDisabled ? KarhooUI.colors.inactive : KarhooUI.colors.text)
+        let textColor = Color(viewModel.burnSectionDisabled ? KarhooUI.colors.inactive : KarhooUI.colors.text)
 
         HStack {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
@@ -85,9 +87,11 @@ struct LoyaltyEarnBurnView: View {
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
                     .foregroundColor(textColor)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(viewModel.isBurnModeOn ? burnOnSubtitle : burnOffSubtitle)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(textColor)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
             Toggle("", isOn: $viewModel.isBurnModeOn)
@@ -103,6 +107,7 @@ struct LoyaltyEarnBurnView: View {
                 .font(Font(KarhooUI.fonts.bodyRegular()))
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .padding(.all, UIConstants.Spacing.standard)
+                .fixedSize(horizontal: false, vertical: true)
             Spacer()
                 
         }
