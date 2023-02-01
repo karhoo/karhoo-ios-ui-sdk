@@ -295,16 +295,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
 
     // MARK: - Utils
     private func hasEnoughBalance() -> Bool {
-//        let worker = getLoyaltyPreAuthWorker()
-        return false // worker.hasEnoughBalance()
+        let worker = getLoyaltyPreAuthWorker()
+        return worker.hasEnoughBalance()
     }
     
     private func getLoyaltyPreAuthWorker() -> LoyaltyPreAuthWorker {
-        return KarhooLoyaltyPreAuthWorker(
-//             currentMode: currentMode,
-//             viewModel: viewModel,
-//             quoteId: quoteIdForAnalytics
-        )
+        return KarhooLoyaltyPreAuthWorker()
     }
 
     private func didSetLoyaltyError(_ error: KarhooError?) {

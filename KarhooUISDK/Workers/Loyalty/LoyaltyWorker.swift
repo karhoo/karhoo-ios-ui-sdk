@@ -38,11 +38,11 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     // MARK: Private properties
 
-    var canBurnSubject = CurrentValueSubject<Bool, Never>(false)
-    var canEarnSubject = CurrentValueSubject<Bool, Never>(false)
-    var earnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
-    var burnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
-    var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
+    private var canBurnSubject = CurrentValueSubject<Bool, Never>(false)
+    private var canEarnSubject = CurrentValueSubject<Bool, Never>(false)
+    private var earnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
+    private var burnPointsSubject = CurrentValueSubject<Int?, Never>(nil)
+    private var currentBalanceSubject = CurrentValueSubject<Int?, Never>(nil)
 
     private var quote: Quote?
     /// Error returned by `getBurnPoints` method, indicating the burn is not possible. It should be used to update PreAuth worker.
@@ -218,10 +218,6 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             currency: quote.price.currencyCode,
             amount: amount
         ).execute { [weak self] result in
-//            let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
-//            self?.burnError = error
-//            self?.burnPointsSubject.send(0)
-//            self?.loyaltyPreAuthWorker.set(burnError: error)
             guard let value = result.getSuccessValue()
             else {
                 let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
