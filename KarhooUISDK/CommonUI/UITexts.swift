@@ -224,6 +224,7 @@ public enum UITexts {
         public static let prebookRideHint = "kh_uisdk_prebook_picker_title".localized
         public static let prebookConfirmed = "kh_uisdk_prebook_confirmed".localized
         public static let prebookConfirmedRideDetails = "kh_uisdk_ride_details".localized
+        public static let prebookConfirmedRideDetailsAccessibility =  "kh_uisdk_booking_confirmation_go_to_ride_details".localized
         public static let prebookConfirmation = "kh_uisdk_prebook_confirmation".localized
         public static let noAvailabilityHeader = "kh_uisdk_quotes_no_availability".localized
         public static let noAvailabilityBody = "kh_uisdk_no_availability_body".localized

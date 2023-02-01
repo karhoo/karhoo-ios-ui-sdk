@@ -70,6 +70,7 @@ struct KarhooBookingConfirmationView: View {
             KarhooMainButton(title: .constant(UITexts.Booking.prebookConfirmedRideDetails)) {
                 viewModel.dismiss()
             }
+            .accessibilityLabel(Text(UITexts.Booking.prebookConfirmedRideDetailsAccessibility))
         }
         .padding(.vertical, UIConstants.Spacing.standard)
         .onAppear {
@@ -85,12 +86,14 @@ struct KarhooBookingConfirmationView: View {
                     width: UIConstants.Dimension.Icon.xLarge,
                     height: UIConstants.Dimension.Icon.xLarge
                 )
+                .accessibilityElement(children: .ignore)
 
             KarhooAsyncImage(urlString: viewModel.vehicleImageURL)
                 .frame(
                     width: Constants.vehicleImageSize,
                     height: Constants.vehicleImageSize)
                 .offset(x: Constants.vehicleImageXOffset)
+                .accessibilityElement(children: .ignore)
         }
         .frame(height: UIConstants.Dimension.Icon.xxLarge)
         .accessibilityElement(children: .ignore)

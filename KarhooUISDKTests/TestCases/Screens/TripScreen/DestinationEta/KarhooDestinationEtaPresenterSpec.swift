@@ -140,7 +140,7 @@ final class KarhooDestinationEtaSpec: KarhooTestCase {
         mockDriverTrackingService.trackDriverCall.triggerPollSuccess(testDriverTrackingInfo)
 
         XCTAssertEqual(testTripId, mockTripService.trackTripStatusIdSet)
-//        XCTAssertEqual("16:31", mockDestinationEtaView.showEtaSet) KarhooDateFormatter implementation changed to use 12/24 format with/out AM/PM marks.
+//        XCTAssertEqual("16:31", mockDestinationEtaView.showEtaSet) // Disabled due to locale changes (24/12 hours format)
     }
     
     /**
