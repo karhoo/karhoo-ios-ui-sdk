@@ -60,7 +60,6 @@ struct LoyaltyEarnBurnView: View {
     private var orDivider: some View {
         HStack(spacing: UIConstants.Spacing.medium) {
             Color(KarhooUI.colors.border)
-            
                 .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
             Text(UITexts.Loyalty.or.uppercased())
                 .font(Font(KarhooUI.fonts.bodyBold()))
@@ -94,7 +93,7 @@ struct LoyaltyEarnBurnView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
-            Toggle("", isOn: $viewModel.isBurnModeOn)
+            Toggle("", isOn: $viewModel.isBurnModeOn.animation())
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
                 .disabled(viewModel.burnSectionDisabled)
         }
@@ -111,7 +110,6 @@ struct LoyaltyEarnBurnView: View {
             Spacer()
                 
         }
-        .frame(width: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: UIConstants.CornerRadius.small)
                     .fill(Color(KarhooUI.colors.primary))
