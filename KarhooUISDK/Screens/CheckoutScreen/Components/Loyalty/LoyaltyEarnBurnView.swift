@@ -35,6 +35,7 @@ struct LoyaltyEarnBurnView: View {
                 })
                 if viewModel.isBurnModeOn {
                     burnInfoView
+                        .transition(.scale)
                 }
             }
                 .padding(.top, UIConstants.Spacing.standard)
