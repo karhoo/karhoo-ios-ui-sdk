@@ -150,7 +150,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     var accessibilityDate: String {
-        dateFormatter.display(fullDate: journeyDetails.scheduledDate)
+        UITexts.Generic.pickupTime + "." + dateFormatter.display(journeyDetails.scheduledDate, dateStyle: .long, timeStyle: .short)
     }
 
     var accessibilityPrice: String {

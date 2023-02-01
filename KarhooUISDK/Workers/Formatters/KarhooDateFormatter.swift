@@ -31,8 +31,10 @@ class KarhooDateFormatter: DateFormatterType {
     private var timeZone: TimeZone
     private var locale: Locale
 
-    init(timeZone: TimeZone = TimeZone.current,
-                locale: Locale = Locale.current) {
+    init(
+        timeZone: TimeZone = TimeZone.current,
+        locale: Locale = Locale.current
+    ) {
         self.locale = locale
         self.timeZone = timeZone
     }
