@@ -254,14 +254,35 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         flightNumberCellViewModel.onTap = { [weak self] in
             self?.showFlightNumberBottomSheet()
         }
-        
+
+        flightNumberCellViewModel.flightNumberSubject
+            .dropFirst()
+            .sink{ [weak self] trainNumber in
+                self?.bookingWorker.update(flightNumber: trainNumber)
+            }
+            .store(in: &cancellables)
+
         trainNumberCellViewModel.onTap = { [weak self] in
             self?.showTrainNumberBottomSheet()
         }
+
+        trainNumberCellViewModel.trainNumberSubject
+            .dropFirst()
+            .sink{ [weak self] trainNumber in
+                self?.bookingWorker.update(trainNumber: trainNumber)
+            }
+            .store(in: &cancellables)
         
         commentCellViewModel.onTap = { [weak self] in
             self?.showCommentBottomSheet()
         }
+
+        commentCellViewModel.commentSubject
+            .dropFirst()
+            .sink{ [weak self] comment in
+                self?.bookingWorker.update(comment: comment)
+            }
+            .store(in: &cancellables)
     }
 
     private func setupInitialState() {

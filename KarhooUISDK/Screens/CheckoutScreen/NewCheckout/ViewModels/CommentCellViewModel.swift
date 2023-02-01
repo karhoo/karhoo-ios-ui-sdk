@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import Combine
 
 class CommentCellViewModel: DetailsCellViewModel {
-    
-    private var comment: String = ""
+
+    private(set)var commentSubject = CurrentValueSubject<String, Never>("")
 
     init(onTap: @escaping () -> Void = {}) {
         super.init(
@@ -22,15 +23,15 @@ class CommentCellViewModel: DetailsCellViewModel {
     }
     
     func getComment() -> String {
-        comment
+        commentSubject.value
     }
     
     private func getSubtitle() -> String {
-        comment.isNotEmpty ? comment : UITexts.Booking.commentsSubtitle
+        commentSubject.value.isNotEmpty ? commentSubject.value : UITexts.Booking.commentsSubtitle
     }
     
     func setComment(_ comment: String) {
-        self.comment = comment
+        self.commentSubject.send(comment)
         subtitle = getSubtitle()
     }
 }

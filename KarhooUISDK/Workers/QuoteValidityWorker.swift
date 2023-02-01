@@ -34,7 +34,7 @@ final class KarhooQuoteValidityWorker: QuoteValidityWorker {
         }
         self.deadlineCompletion = deadlineCompletion
         let timer = Timer.scheduledTimer(
-            withTimeInterval: 10, //validityDate.timeIntervalSinceNow,
+            withTimeInterval: validityDate.timeIntervalSinceNow,
             repeats: false
         ) { [weak self] _ in
             self?.deadlineCompletion?()

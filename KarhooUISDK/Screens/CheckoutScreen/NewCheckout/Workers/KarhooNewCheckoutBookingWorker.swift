@@ -23,6 +23,7 @@ protocol NewCheckoutBookingWorker: AnyObject {
     var statePublisher: Published<NewCheckoutBookingState>.Publisher { get }
     func performBooking()
     func update(passengerDetails: PassengerDetails?)
+    func update(trainNumber: String?)
     func update(flightNumber: String?)
 }
 
@@ -42,6 +43,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private let quote: Quote
     private let journeyDetails: JourneyDetails
     private var passengerDetails: PassengerDetails?
+    private var trainNumber: String?
     private var flightNumber: String?
     private var comment: String?
     private let bookingMetadata: [String: Any]?
@@ -82,6 +84,10 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
 
     func update(flightNumber: String?) {
         self.flightNumber = flightNumber
+    }
+
+    func update(trainNumber: String?) {
+        self.trainNumber = trainNumber
     }
 
     func update(comment: String?) {
@@ -259,6 +265,10 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
             flight = nil
         }
+        var train: String? = trainNumber
+        if let trainText = train, (trainText.isEmpty || trainText.isWhitespace) {
+            train = nil
+        }
 
         var tripBooking = TripBooking(
             quoteId: quote.id,
@@ -268,6 +278,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 luggage: Luggage(total: journeyDetails.luggagesCount)
             ),
             flightNumber: flight,
+            trainNumber: train,
             paymentNonce: paymentNonce.nonce,
             loyaltyNonce: loyaltyNonce,
             comments: comment

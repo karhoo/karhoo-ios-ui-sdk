@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import Combine
 
 class FlightNumberCellViewModel: DetailsCellViewModel {
-    
-    private var flightNumber: String = ""
+
+    private(set)var flightNumberSubject = CurrentValueSubject<String?, Never>(nil)
 
     init(onTap: @escaping () -> Void = {}) {
 
@@ -23,15 +24,18 @@ class FlightNumberCellViewModel: DetailsCellViewModel {
     }
     
     func getFlightNumber() -> String {
-        flightNumber
+        flightNumberSubject.value ?? ""
     }
     
     private func getSubtitle() -> String {
-        flightNumber.isNotEmpty ? flightNumber : UITexts.Booking.flightSubtitle
+        guard let flightNumber = flightNumberSubject.value, flightNumber.isNotEmpty else {
+            return UITexts.Booking.flightSubtitle
+        }
+        return flightNumber
     }
     
     func setFlightNumber(_ flightNumber: String) {
-        self.flightNumber = flightNumber
+        self.flightNumberSubject.send(flightNumber)
         subtitle = getSubtitle()
     }
 }
