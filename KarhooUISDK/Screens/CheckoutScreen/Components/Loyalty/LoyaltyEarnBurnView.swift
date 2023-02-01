@@ -13,7 +13,7 @@ import KarhooSDK
 struct LoyaltyEarnBurnView: View {
     
     @ObservedObject var viewModel: NewLoyaltyViewModel
-        
+
     var body: some View {
         if let error = viewModel.error {
             LoyaltyErrorView(errorMessage: error.text)
@@ -38,7 +38,7 @@ struct LoyaltyEarnBurnView: View {
                         .transition(.scale)
                 }
             }
-                .padding(.top, UIConstants.Spacing.standard)
+            .padding(.top, UIConstants.Spacing.standard)
         }
     }
     
@@ -109,12 +109,11 @@ struct LoyaltyEarnBurnView: View {
                 .padding(.all, UIConstants.Spacing.standard)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer()
-                
         }
-            .background(
-                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                    .fill(Color(KarhooUI.colors.primary))
-            )
+        .background(
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
+                .fill(Color(KarhooUI.colors.primary))
+        )
     }
 }
 

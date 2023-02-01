@@ -20,18 +20,18 @@ struct LoyaltyErrorView: View {
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.textError))
         }
-            .padding(.all, UIConstants.Spacing.standard)
-            .frame(
-                maxWidth: .infinity,
-                alignment: .leading
-            )
-            .addBorder(Color(KarhooUI.colors.error), cornerRadius: UIConstants.CornerRadius.medium)
-            .background(
-                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                    .fill(Color(KarhooUI.colors.background2))
-            )
-            .alignmentGuide(VerticalAlignment.center) {
-                $0[VerticalAlignment.top]
-            }
+        .padding(.all, UIConstants.Spacing.standard)
+        .frame(
+            maxWidth: .infinity,
+            alignment: .leading
+        )
+        .addBorder(Color(KarhooUI.colors.error), cornerRadius: UIConstants.CornerRadius.medium)
+        .background(
+            RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
+                .fill(Color(KarhooUI.colors.background2))
+        )
+        .alignmentGuide(VerticalAlignment.center) {
+            $0[VerticalAlignment.top]
+        }
     }
 }

@@ -25,21 +25,21 @@ struct LoyaltyContainerWithBalance<Content: View>: View {
                     .foregroundColor(Color(KarhooUI.colors.text))
                 content()
             }
-                .padding(.all, UIConstants.Spacing.standard)
-                // additional top padding to move title lower than balance view
-                .padding(.top, UIConstants.Spacing.small)
-                .frame(
-                    maxWidth: .infinity,
-                    alignment: .leading
-                )
-                .addBorder(Color(KarhooUI.colors.border), cornerRadius: UIConstants.CornerRadius.medium)
-                .background(
-                    RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
-                        .fill(Color(KarhooUI.colors.background2))
-                )
-                .alignmentGuide(VerticalAlignment.center) {
-                    $0[VerticalAlignment.top]
-                }
+            .padding(.all, UIConstants.Spacing.standard)
+            // additional top padding to move title lower than balance view
+            .padding(.top, UIConstants.Spacing.small)
+            .frame(
+                maxWidth: .infinity,
+                alignment: .leading
+            )
+            .addBorder(Color(KarhooUI.colors.border), cornerRadius: UIConstants.CornerRadius.medium)
+            .background(
+                RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
+                    .fill(Color(KarhooUI.colors.background2))
+            )
+            .alignmentGuide(VerticalAlignment.center) {
+                $0[VerticalAlignment.top]
+            }
             balanceView
         }
     }
