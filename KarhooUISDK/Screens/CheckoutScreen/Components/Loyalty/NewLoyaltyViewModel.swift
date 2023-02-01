@@ -15,7 +15,7 @@ class NewLoyaltyViewModel: ObservableObject {
     let worker: LoyaltyWorker
     private var cancellables: Set<AnyCancellable> = []
     
-    @Published var error: LoyaltyErrorType? = nil
+    @Published var error: LoyaltyErrorType?
     @Published var isBurnModeOn = false {
         didSet {
             updateWorkerState()
@@ -77,8 +77,8 @@ class NewLoyaltyViewModel: ObservableObject {
         }
     }
     
-    private func handleError(_ error: KarhooError){
-        if let loyaltyError = error as? LoyaltyErrorType{
+    private func handleError(_ error: KarhooError) {
+        if let loyaltyError = error as? LoyaltyErrorType {
             switch loyaltyError {
             case .insufficientBalance:
                 self.burnSectionDisabled = true

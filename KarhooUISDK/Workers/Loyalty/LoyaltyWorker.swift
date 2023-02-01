@@ -84,19 +84,21 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     private func setupPublishers() {
-        
-        let zippedEarnBurn = Publishers.Zip4(
+        /// Every time any of those values changes, the sink closure is triggered, and, as a result, the model and PreAuthWorker are updated.
+        let zippedEarnBurn = Publishers.CombineLatest4(
             earnPointsSubject,
             burnPointsSubject,
             canEarnSubject,
             canBurnSubject
         )
-        Publishers.Zip(
+        Publishers.CombineLatest3(
             currentBalanceSubject,
-            zippedEarnBurn
+            zippedEarnBurn,
+            modeSubject
         )
         .sink(receiveValue: { [weak self] values in
             let earnBurnValues = values.1
+            let mode = values.2
 
             guard
                 let self,
@@ -121,19 +123,18 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             )
 
             self.modelSubject.send(.success(result: model))
-            self.updatePreAuthWorker(using: model)
-        }
-        )
+            self.updatePreAuthWorker(using: model, and: mode)
+        })
         .store(in: &cancellables)
     }
 
-    private func updatePreAuthWorker(using model: LoyaltyViewModel) {
+    private func updatePreAuthWorker(using model: LoyaltyViewModel, and mode: LoyaltyMode) {
         guard let quote else {
             assertionFailure("Quote should be assigned before any other logic is called")
             return
         }
         loyaltyPreAuthWorker.setup(
-            using: modeSubject.value,
+            using: mode,
             model: model,
             quoteId: quote.id,
             getBurnAmountError: burnError
@@ -163,7 +164,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             }
             self?.currentBalanceSubject.send(status.balance)
             self?.canEarnSubject.send(status.canBurn)
-            self?.canBurnSubject.send(false) // status.canEarn)
+            self?.canBurnSubject.send(status.canEarn)
         }
     }
 
@@ -217,6 +218,10 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             currency: quote.price.currencyCode,
             amount: amount
         ).execute { [weak self] result in
+//            let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
+//            self?.burnError = error
+//            self?.burnPointsSubject.send(0)
+//            self?.loyaltyPreAuthWorker.set(burnError: error)
             guard let value = result.getSuccessValue()
             else {
                 let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
