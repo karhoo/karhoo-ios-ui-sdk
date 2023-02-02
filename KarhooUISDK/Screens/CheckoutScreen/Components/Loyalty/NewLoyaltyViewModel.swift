@@ -56,7 +56,7 @@ class NewLoyaltyViewModel: ObservableObject {
         self.balance = 0
         
         self.burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
-        self.burnContentTextColor = Color(KarhooUI.colors.text) Color(viewModel.burnSectionDisabled ? KarhooUI.colors.inactive : KarhooUI.colors.text)
+        self.burnContentTextColor = Color(KarhooUI.colors.text)
         
         subscribe()
     }
