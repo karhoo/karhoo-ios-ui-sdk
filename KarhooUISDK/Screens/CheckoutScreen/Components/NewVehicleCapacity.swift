@@ -25,6 +25,7 @@ struct NewVehicleCapacity: View {
             HStack {
                 Group {
                     Image(uiImage: .uisdkImage(iconName))
+                        .renderingMode(.template)
                         .frame(
                             width: UIConstants.Dimension.Icon.small,
                             height: UIConstants.Dimension.Icon.small

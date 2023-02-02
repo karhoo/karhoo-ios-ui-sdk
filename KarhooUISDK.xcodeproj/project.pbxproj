@@ -1106,6 +1106,7 @@
 		5192B4392833820B00AAAAAB /* MockPaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentManager.swift; sourceTree = "<group>"; };
 		5192C0222832DE4500D01FC8 /* UIImage+uisdkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+uisdkImage.swift"; sourceTree = "<group>"; };
 		5192C0242832EB4F00D01FC8 /* LocationInfo+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationInfo+Extensions.swift"; sourceTree = "<group>"; };
+		519A19F6298C3DCE0056D7B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51ADF0AF287C02C8000AEF87 /* UIImage+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+load.swift"; sourceTree = "<group>"; };
 		51ADF0B1287C0A72000AEF87 /* UIImageView+getImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+getImage.swift"; sourceTree = "<group>"; };
@@ -5182,6 +5183,7 @@
 				518E37342954C1BE00AF0687 /* pt-BR */,
 				518E37362954C1C700AF0687 /* pl */,
 				518E37382954C1CF00AF0687 /* ja */,
+				519A19F6298C3DCE0056D7B9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
