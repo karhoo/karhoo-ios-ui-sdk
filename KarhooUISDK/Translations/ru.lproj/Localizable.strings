@@ -687,7 +687,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Вы можете использовать баллы лояльности для оплаты поездки";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Использовать %@ баллов лояльности для оплаты %@ %@ ";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Использовать %3$@ аллов лояльности для оплаты %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Используйте свои баллы";
 

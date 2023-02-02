@@ -685,7 +685,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "คุณสามารถใช้คะแนนสะสมเพื่อชำระค่าโดยสารนี้ได้";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "ใช้คะแนนสะสม %@ คะแนนเพื่อชำระ %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "ใช้คะแนนสะสม %3$@ คะแนนเพื่อชำระ %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "ใช้คะแนนของคุณ";
 

@@ -101,7 +101,7 @@ class NewLoyaltyViewModel: ObservableObject {
             case .insufficientBalance:
                 self.burnSectionDisabled = true
                 self.burnOffSubtitle = UITexts.Errors.insufficientBalanceForLoyaltyBurning
-                self.burnContentTextColor = Color(KarhooUI.colors.inactive)
+                self.burnContentTextColor = Color(KarhooUI.colors.textLabel).opacity(UIConstants.Alpha.overlay)
             default:
                 self.burnSectionDisabled = false
                 self.error = loyaltyError

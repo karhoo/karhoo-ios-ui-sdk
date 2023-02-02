@@ -687,7 +687,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "U kunt Reward-punten gebruiken om deze rit te betalen";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Gebruik %@ Reward-punten om %@ %@ te betalen";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Gebruik %3$@ Reward-punten om %1$@ %2$@ te betalen";
 
 "kh_uisdk_loyalty_use_points_title" = "Gebruik je Reward-punten";
 

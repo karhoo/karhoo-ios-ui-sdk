@@ -687,7 +687,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "You can use Reward points to pay for this ride";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Use %@ Reward points to pay %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Use %3$@ Reward points to pay %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Use your Reward points";
 

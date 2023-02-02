@@ -687,7 +687,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Puoi usare punti Reward per pagare questa corsa";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Usa %@ punti Reward per pagare %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Usa  %3$@ punti Reward per pagare %1$@  %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Usa i tuoi punti Reward";
 
