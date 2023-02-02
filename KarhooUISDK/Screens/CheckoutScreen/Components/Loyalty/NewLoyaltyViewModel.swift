@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import KarhooSDK
+import SwiftUI
 
 class NewLoyaltyViewModel: ObservableObject {
 
@@ -36,6 +37,9 @@ class NewLoyaltyViewModel: ObservableObject {
     @Published var tripAmount: Double
     @Published var burnAmount: Int
 
+    @Published var burnOffSubtitle: String
+    @Published var burnContentTextColor: Color
+    
     var shouldShowView: Bool { worker.isLoyaltyEnabled }
 
     // MARK: - Lifecycle
@@ -50,6 +54,9 @@ class NewLoyaltyViewModel: ObservableObject {
         self.burnAmount = 0
         self.earnAmount = 0
         self.balance = 0
+        
+        self.burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
+        self.burnContentTextColor = Color(KarhooUI.colors.text) Color(viewModel.burnSectionDisabled ? KarhooUI.colors.inactive : KarhooUI.colors.text)
         
         subscribe()
     }
@@ -93,6 +100,8 @@ class NewLoyaltyViewModel: ObservableObject {
             switch loyaltyError {
             case .insufficientBalance:
                 self.burnSectionDisabled = true
+                self.burnOffSubtitle = UITexts.Errors.insufficientBalanceForLoyaltyBurning
+                self.burnContentTextColor = Color(KarhooUI.colors.inactive)
             default:
                 self.burnSectionDisabled = false
                 self.error = loyaltyError

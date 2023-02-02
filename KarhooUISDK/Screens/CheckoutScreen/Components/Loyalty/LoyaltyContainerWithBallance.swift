@@ -55,7 +55,7 @@ struct LoyaltyContainerWithBalance<Content: View>: View {
                 .padding(.vertical, UIConstants.Spacing.small)
                 .padding(.horizontal, UIConstants.Spacing.medium)
                 .background(
-                    RoundedRectangle(cornerRadius: UIConstants.CornerRadius.small)
+                    RoundedRectangle(cornerRadius: UIConstants.CornerRadius.medium)
                         .fill(Color(KarhooUI.colors.primary))
                 )
         }

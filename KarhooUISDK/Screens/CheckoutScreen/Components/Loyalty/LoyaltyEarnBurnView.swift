@@ -25,10 +25,8 @@ struct LoyaltyEarnBurnView: View {
                         if viewModel.canEarn {
                             earnContent
                         }
-                        if viewModel.canEarn && viewModel.canBurn {
-                            orDivider
-                        }
                         if viewModel.canBurn {
+                            orDivider
                             burnContent
                         }
                     }
@@ -72,25 +70,22 @@ struct LoyaltyEarnBurnView: View {
     
     @ViewBuilder
     private var burnContent: some View {
-        let burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
         let burnOnSubtitle = String(
             format: NSLocalizedString(UITexts.Loyalty.burnOnSubtitle, comment: ""),
             "\(viewModel.tripAmount)",
             "\(viewModel.currency)",
             "\(viewModel.burnAmount)"
         )
-        let textColor = Color(viewModel.burnSectionDisabled ? KarhooUI.colors.inactive : KarhooUI.colors.text)
-
         HStack {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                 Text(UITexts.Loyalty.burnTitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.headerSemibold()))
-                    .foregroundColor(textColor)
+                    .foregroundColor(viewModel.burnContentTextColor)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(viewModel.isBurnModeOn ? burnOnSubtitle : burnOffSubtitle)
+                Text(viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(textColor)
+                    .foregroundColor(viewModel.burnContentTextColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
