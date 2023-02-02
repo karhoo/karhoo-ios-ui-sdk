@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "e.g. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Acrescentar um número de voo";
+"kh_uisdk_checkout_airport_subtitle" = "Um condutor estará presente mesmo em caso de atrasos";
 
 "kh_uisdk_checkout_airport_title" = "Número de voo";
 
@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Seu saldo de pontos Reward não é suficiente para pagar esta viagem";
 
-"kh_uisdk_loyalty_separator" = "Ou";
+"kh_uisdk_loyalty_separator" = "OU";
 
 "kh_uisdk_loyalty_title" = "Pontos Reward";
 

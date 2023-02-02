@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "例如AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "添加航班号";
+"kh_uisdk_checkout_airport_subtitle" = "即使出现延误，司机也会到场";
 
 "kh_uisdk_checkout_airport_title" = "航班号";
 

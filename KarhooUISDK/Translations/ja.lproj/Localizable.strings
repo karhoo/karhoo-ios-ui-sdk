@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "例: AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "フライト番号を追加";
+"kh_uisdk_checkout_airport_subtitle" = "遅れてもドライバーが同行します";
 
 "kh_uisdk_checkout_airport_title" = "フライトナンバー";
 

@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "например AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Добавить номер рейса";
+"kh_uisdk_checkout_airport_subtitle" = "Водитель будет рядом даже в случае задержки";
 
 "kh_uisdk_checkout_airport_title" = "Номер рейса";
 

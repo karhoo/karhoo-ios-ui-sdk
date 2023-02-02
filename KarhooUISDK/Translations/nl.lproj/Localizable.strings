@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "bijv. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Voeg een vluchtnummer toe";
+"kh_uisdk_checkout_airport_subtitle" = "Ook bij vertragingen is er een chauffeur aanwezig";
 
 "kh_uisdk_checkout_airport_title" = "Vluchtnummer";
 
@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Uw puntensaldo is niet voldoende om deze rit te betalen";
 
-"kh_uisdk_loyalty_separator" = "Of";
+"kh_uisdk_loyalty_separator" = "OF";
 
 "kh_uisdk_loyalty_title" = "Reward-punten";
 

@@ -277,11 +277,9 @@
 
 "kh_uisdk_checked" = "Checked";
 
-"kh_uisdk_checkout_as_guest" = "Book a ride";
-
 "kh_uisdk_checkout_airport_example" = "e.g AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Add a flight number";
+"kh_uisdk_checkout_airport_subtitle" = "A driver will be there even in case of delays";
 
 "kh_uisdk_checkout_airport_title" = "Flight number";
 
@@ -679,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Your balance is too low to pay with Reward points for this ride";
 
-"kh_uisdk_loyalty_separator" = "Or";
+"kh_uisdk_loyalty_separator" = "OR";
 
 "kh_uisdk_loyalty_title" = "Reward points";
 

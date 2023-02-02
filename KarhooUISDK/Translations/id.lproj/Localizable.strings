@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "misalnya AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Tambahkan nomor penerbangan";
+"kh_uisdk_checkout_airport_subtitle" = "Seorang pengemudi akan berada di sana bahkan jika terjadi penundaan";
 
 "kh_uisdk_checkout_airport_title" = "Nomor penerbangan";
 
@@ -675,7 +675,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Saldo Anda tidak cukup untuk membayar perjalanan ini";
 
-"kh_uisdk_loyalty_separator" = "Atau";
+"kh_uisdk_loyalty_separator" = "ATAU";
 
 "kh_uisdk_loyalty_title" = "Poin Reward";
 

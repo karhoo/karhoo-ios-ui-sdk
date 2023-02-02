@@ -197,7 +197,7 @@
 
 "kh_uisdk_allocating_trip_two" = "Cela peut prendre quelques instants";
 
-"kh_uisdk_allocation_delay_text" = "Désolé, l’attribution d'un chauffeur prend plus de temps que prévu. Vous pouvez contacter le prestataire, annuler la course ou commander avec un autre prestataire.";
+"kh_uisdk_allocation_delay_text" = "Désolé, l’attribution d'un chauffeur prend plus de temps que prévu. Vous pouvez contacter le partenaire, annuler la course ou commander avec un autre prestataire.";
 
 "kh_uisdk_allocation_delay_title" = "Délai d’attribution";
 
@@ -241,7 +241,7 @@
 
 "kh_uisdk_booking_failed_body" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez %1$@.";
 
-"kh_uisdk_booking_failed_body_no_fleet_name" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez le prestataire sélectionné.";
+"kh_uisdk_booking_failed_body_no_fleet_name" = "Désolé, la demande est forte en ce moment : aucun chauffeur n’est disponible chez le partenaire sélectionné.";
 
 "kh_uisdk_booking_terms" = "En effectuant une réservation, vous acceptez les %1$@ et la %2$@, ainsi que la %5$@ et les %4$@ de %3$@";
 
@@ -279,13 +279,13 @@
 
 "kh_uisdk_checkout_airport_example" = "p. ex. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Ajouter un numéro de vol";
+"kh_uisdk_checkout_airport_subtitle" = "Un chauffeur sera là même en cas de retard";
 
 "kh_uisdk_checkout_airport_title" = "Numéro de vol";
 
 "kh_uisdk_checkout_as_guest" = "Réserver une course";
 
-"kh_uisdk_checkout_comments_subtitle" = "Commentez pour votre chauffeur";
+"kh_uisdk_checkout_comments_subtitle" = "Siège bébé, PMR, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Commentaire";
 
@@ -307,7 +307,7 @@
 
 "kh_uisdk_contact_driver" = "Appeler le chauffeur";
 
-"kh_uisdk_contact_fleet" = "Contacter le prestataire";
+"kh_uisdk_contact_fleet" = "Contacter le partenaire";
 
 "kh_uisdk_contact_us" = "Nous contacter";
 
@@ -327,7 +327,7 @@
 
 "kh_uisdk_destination_book_error" = "Sélectionnez une destination pour réserver une course";
 
-"kh_uisdk_difficulties_cancelling_message" = "Nous avons du mal à annuler votre course. Contactez le prestataire pour en savoir plus.";
+"kh_uisdk_difficulties_cancelling_message" = "Nous avons du mal à annuler votre course. Contactez le partenaire pour en savoir plus.";
 
 "kh_uisdk_difficulties_cancelling_title" = "Problème d'annulation";
 
@@ -471,11 +471,11 @@
 
 "kh_uisdk_fixed_fare" = "Prix fixe";
 
-"kh_uisdk_fleet" = "Prestataire";
+"kh_uisdk_fleet" = "Partenaire";
 
-"kh_uisdk_fleet_recommendation_body" = "Merci d’avoir recommandé un prestataire dans votre secteur. Pour accélérer les choses, indiquez-nous la zone et le nom du prestataire recommandé.";
+"kh_uisdk_fleet_recommendation_body" = "Merci d’avoir recommandé un partenaire dans votre secteur. Pour accélérer les choses, indiquez-nous la zone et le nom du prestataire recommandé.";
 
-"kh_uisdk_fleet_recommendation_subject" = "Prestataire recommandé dans mon secteur";
+"kh_uisdk_fleet_recommendation_subject" = "Partenaire recommandé dans mon secteur";
 
 "kh_uisdk_flight_number" = "Numéro de vol (facultatif)";
 
@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Votre solde de points Reward n'est pas suffisant pour payer cette course";
 
-"kh_uisdk_loyalty_separator" = "Ou";
+"kh_uisdk_loyalty_separator" = "OU";
 
 "kh_uisdk_loyalty_title" = "Points Reward";
 
@@ -727,7 +727,7 @@
 
 "kh_uisdk_no" = "Non";
 
-"kh_uisdk_no_availability_body" = "%1$@ pour nous recommander un nouveau prestataire.";
+"kh_uisdk_no_availability_body" = "%1$@ pour nous recommander un nouveau partenaire.";
 
 "kh_uisdk_no_availability_link" = "Nous contacter";
 
@@ -815,11 +815,11 @@
 
 "kh_uisdk_price_bottom_sheet_title" = "Détails des prix";
 
-"kh_uisdk_price_info_text_estimated" = "Les taxis de ce prestataire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du prestataire pour plus d'informations.";
+"kh_uisdk_price_info_text_estimated" = "Les taxis de ce partenaire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du partenaire pour plus d'informations.";
 
-"kh_uisdk_price_info_text_fixed" = "Ce prestataire applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), consultez les conditions générales du prestataire pour en savoir plus.";
+"kh_uisdk_price_info_text_fixed" = "Ce partenaire applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), consultez les conditions générales du prestataire pour en savoir plus.";
 
-"kh_uisdk_price_info_text_metered" = "Les taxis de ce prestataire sont équipés d’un compteur et sont réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.).";
+"kh_uisdk_price_info_text_metered" = "Les taxis de ce partenaire sont équipés d’un compteur et sont réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.).";
 
 "kh_uisdk_price_meet_and_greet" = "Accueil pancarte";
 
@@ -831,7 +831,7 @@
 
 "kh_uisdk_question_four" = "L’appli vous a-t-elle semblé facile à utiliser ?";
 
-"kh_uisdk_question_one" = "Qu’avez-vous pensé des différentes offres (ex : prix, prestataires et heure d’arrivée prévue) ?";
+"kh_uisdk_question_one" = "Qu’avez-vous pensé des différentes offres (ex : prix, partenaire et heure d’arrivée prévue) ?";
 
 "kh_uisdk_question_three" = "Comment s'est déroulé votre course (ex : propreté du véhicule, trajet et chauffeur) ?";
 
@@ -881,7 +881,7 @@
 
 "kh_uisdk_quotes_error_similar_addresses_title" = "Les adresses de destination et de départ semblent similaires";
 
-"kh_uisdk_quotes_no_availability" = "Nous n’avons pas encore de prestataire dans cette zone.";
+"kh_uisdk_quotes_no_availability" = "Nous n’avons pas encore de partenaire dans cette zone.";
 
 "kh_uisdk_quotes_no_availability_subtitle" = "Veuillez sélectionner une autre fois";
 
@@ -1049,7 +1049,7 @@
 
 "kh_uisdk_trip_cancelled_by_dispatch_alert_message" = "Votre course a été annulée. Contactez-nous pour plus d'informations.";
 
-"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Course annulée par le prestataire";
+"kh_uisdk_trip_cancelled_by_dispatch_alert_title" = "Course annulée par le partenaire";
 
 "kh_uisdk_trip_id" = "Référence course : %1$@";
 

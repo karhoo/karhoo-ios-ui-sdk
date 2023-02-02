@@ -217,7 +217,7 @@
 
 "kh_uisdk_book_now" = "POTWIERDŹ I ZAPŁAĆ";
 
-"kh_uisdk_book_pay" = "Płacić";
+"kh_uisdk_book_pay" = "Zapłać";
 
 "kh_uisdk_book_return_ride" = "Zarezerwuj przejazd powrotny";
 
@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Masz niewystarczającą liczbę punktów na opłacenie tego przejazdu";
 
-"kh_uisdk_loyalty_separator" = "Lub";
+"kh_uisdk_loyalty_separator" = "LUB";
 
 "kh_uisdk_loyalty_title" = "Punktów Reward";
 
