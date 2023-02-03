@@ -15,7 +15,7 @@ public protocol CheckoutScreenBuilder {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
-    ) -> Screen
+    ) -> KarhooUISDKSceneCoordinator
 }
 
 public extension CheckoutScreenBuilder {
@@ -24,9 +24,8 @@ public extension CheckoutScreenBuilder {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = nil,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
-    ) -> Screen {
-        
-        return buildCheckoutScreen(
+    ) -> KarhooUISDKSceneCoordinator {
+        buildCheckoutScreen(
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata,

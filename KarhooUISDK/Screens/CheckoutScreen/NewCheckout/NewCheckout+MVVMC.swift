@@ -1,5 +1,5 @@
 //
-//  NewCheckout+MVPC.swift
+//  NewCheckout+MVVMC.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -33,5 +33,10 @@ protocol NewCheckoutRouter: AnyObject {
         journeyDetails: JourneyDetails?,
         quote: Quote,
         loyaltyInfo: KarhooBasicLoyaltyInfo
-    ) 
+    )
+}
+
+public struct KarhooCheckoutResult {
+    var tripInfo: TripInfo
+    var showTripDetails: Bool = false
 }

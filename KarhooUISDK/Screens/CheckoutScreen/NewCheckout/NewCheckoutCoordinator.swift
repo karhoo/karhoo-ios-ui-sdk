@@ -13,6 +13,25 @@ import SwiftUI
 
 final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 
+    // MARK: - Nested types
+
+    class Builder: CheckoutScreenBuilder {
+        func buildCheckoutScreen(
+            quote: KarhooSDK.Quote,
+            journeyDetails: JourneyDetails,
+            bookingMetadata: [String : Any]?,
+            callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
+        ) -> KarhooUISDKSceneCoordinator {
+            KarhooNewCheckoutCoordinator(
+                navigationController: nil,
+                quote: quote,
+                journeyDetails: journeyDetails,
+                bookingMetadata: bookingMetadata,
+                callback: callback
+            )
+        }
+    }
+
     // MARK: - Properties
 
     var childCoordinators: [KarhooUISDKSceneCoordinator] = []
@@ -32,7 +51,6 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
         bookingMetadata: [String: Any]?,
         callback: @escaping (ScreenResult<KarhooCheckoutResult>) -> Void
     ) {
-        self.navigationController = navigationController
         self.presenter = KarhooNewCheckoutViewModel(
             quote: quote,
             journeyDetails: journeyDetails,
@@ -42,9 +60,12 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
         self.viewController = KarhooNewCheckoutViewController().then {
             $0.setupBinding(presenter!)
         }
+        self.navigationController = navigationController ?? NavigationController(
+            rootViewController: self.viewController,
+            style: .primary
+        )
         self.callback = callback
     }
-
 }
 
 extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
