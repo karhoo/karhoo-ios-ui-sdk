@@ -102,7 +102,7 @@ class QuoteView: UIView {
         rideDetailStackView.alignment = .leading
         rideDetailStackView.spacing = UIConstants.Spacing.xSmall
     }
-    private lazy var vehicleCapacityView = VehicleCapacityView()
+    private lazy var vehicleCapacityView = UIView() //VehicleCapacityView()
     private lazy var capacityAndPickupTypeContainer = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = KHQuoteViewID.capacityStackView
@@ -330,8 +330,8 @@ class QuoteView: UIView {
             placeholderImageName: "kh_uisdk_supplier_logo_placeholder"
         )
         fareTypeLabel.text = viewModel.fareType
-        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
-        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+//        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
+//        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         bottomImage.load(imageURL: viewModel.logoImageURL,
             placeholderImageName: "kh_uisdk_supplier_logo_placeholder")
         fleetNameLabel.text = viewModel.fleetName

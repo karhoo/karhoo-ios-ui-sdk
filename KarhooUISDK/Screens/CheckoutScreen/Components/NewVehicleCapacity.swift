@@ -8,6 +8,21 @@
 
 import SwiftUI
 
+public struct KHVehicleCapacityViewID {
+    public static let capacityView = "vehicle_capacity_view"
+    public static let baggageContentView = "baggage_content_view"
+    public static let passengerCapacityContentView = "passenger_capacity_content_view"
+    public static let baggageInfoView = "baggage_info_view"
+    public static let baggageIcon = "baggage_image"
+    public static let baggageCapacityLabel = "baggage_capacity_label"
+    public static let capacityInfoView = "capacity_info_view"
+    public static let capacityIcon = "passenger_capacity_image"
+    public static let passengerCapacityLabel = "passenger_capacity_label"
+    public static let additionalCapacityContentView = "additional_capabilities_content_view"
+    public static let additionalFleetCapabilitiesView = "additional_capabilities_view"
+    public static let additionalFleetCapabilitiesLabel = "additional_capabilities_label"
+}
+
 struct NewVehicleCapacity: View {
     var passangerCapacity: Int
     var luggageCapacity: Int

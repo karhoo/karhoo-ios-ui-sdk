@@ -48,8 +48,8 @@ public class KarhooComponents: BookingScreenComponents {
         )
     }
 
-    func checkout(
-        navigationController: UINavigationController,
+    public func checkout(
+        navigationController: UINavigationController?,
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,

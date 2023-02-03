@@ -11,8 +11,7 @@ import SwiftUI
 import Combine
 import KarhooSDK
 
-protocol NewCheckoutCoordinator: KarhooUISDKSceneCoordinator {
-
+public protocol NewCheckoutCoordinator: KarhooUISDKSceneCoordinator {
 }
 
 protocol NewCheckoutViewController: BaseViewController {

@@ -11,21 +11,24 @@ import KarhooSDK
 
 public protocol CheckoutScreenBuilder {
     func buildCheckoutScreen(
-        quote: Quote,
+        navigationController: UINavigationController?,
+        quote: KarhooSDK.Quote,
         journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]?,
+        bookingMetadata: [String : Any]?,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> KarhooUISDKSceneCoordinator
 }
 
 public extension CheckoutScreenBuilder {
     func buildCheckoutScreen(
-        quote: Quote,
+        navigationController: UINavigationController?,
+        quote: KarhooSDK.Quote,
         journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]? = nil,
+        bookingMetadata: [String : Any]? = nil,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> KarhooUISDKSceneCoordinator {
         buildCheckoutScreen(
+            navigationController: navigationController,
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata,

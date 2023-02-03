@@ -17,13 +17,14 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
 
     class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(
+            navigationController: UINavigationController?,
             quote: KarhooSDK.Quote,
             journeyDetails: JourneyDetails,
             bookingMetadata: [String : Any]?,
             callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> KarhooUISDKSceneCoordinator {
             KarhooNewCheckoutCoordinator(
-                navigationController: nil,
+                navigationController: navigationController,
                 quote: quote,
                 journeyDetails: journeyDetails,
                 bookingMetadata: bookingMetadata,

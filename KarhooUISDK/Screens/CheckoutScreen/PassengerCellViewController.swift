@@ -26,7 +26,7 @@ class PassengerCellViewController: DetailsCellViewController, AddPassengerDetail
             rootView: DetailsCellView(viewModel: Self.getModel(from: passengerDetails)),
             onTap: delegate.willUpdatePassengerDetails
         )
-        rootView.delegate = self
+//        rootView.delegate = self
         self.view.accessibilityIdentifier = "passenger_details_cell_view"
     }
     

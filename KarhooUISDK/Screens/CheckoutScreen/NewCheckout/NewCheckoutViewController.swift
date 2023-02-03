@@ -81,9 +81,4 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
         navigationItem.title = UITexts.Generic.checkout
         navigationController?.set(style: .primary)
     }
-
-    // MARK: - State handling
-
-    private func updateState() {
-    }
 }

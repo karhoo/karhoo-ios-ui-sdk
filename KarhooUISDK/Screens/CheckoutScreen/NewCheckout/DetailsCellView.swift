@@ -11,7 +11,6 @@ import SwiftUI
 struct DetailsCellView: View {
     
     @ObservedObject var viewModel: DetailsCellViewModel
-    weak var delegate: DetailsCellViewControllerProtocol?
 
     var body: some View {
         Group {
@@ -61,7 +60,6 @@ struct DetailsCellView: View {
                 .fill(Color(KarhooUI.colors.background2))
         )
         .onTapGesture(perform: {
-            delegate?.onTap() // will be removed when Old Checkout will be removed
             viewModel.onTap()
         })
     }
@@ -75,8 +73,7 @@ struct DetailsViewCellPreviews: PreviewProvider {
                 subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 iconName: "kh_uisdk_passenger",
                 onTap: {print("tapped")}
-            ),
-            delegate: nil
+            )
         )
     }
 }

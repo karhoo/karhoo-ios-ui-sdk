@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class DetailsCellViewController: UIHostingController<DetailsCellView>, DetailsCellViewControllerProtocol {
+class DetailsCellViewController: UIHostingController<DetailsCellView> {
     
     var onTap: (() -> Void)!
     
@@ -21,8 +21,4 @@ class DetailsCellViewController: UIHostingController<DetailsCellView>, DetailsCe
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-protocol DetailsCellViewControllerProtocol: AnyObject {
-    var onTap: (() -> Void)! { get }
 }

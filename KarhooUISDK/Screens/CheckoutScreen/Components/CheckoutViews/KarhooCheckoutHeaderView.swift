@@ -113,8 +113,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
         return view
     }()
     
-    private lazy var vehicleCapacityView: VehicleCapacityView = {
-        let view =  VehicleCapacityView()
+    private lazy var vehicleCapacityView: UIView = {
+        let view =  UIView()
         view.accessibilityIdentifier = KHCheckoutHeaderViewID.vehicleCapacityView
         return view
     }()
@@ -209,8 +209,8 @@ final class KarhooCheckoutHeaderView: UIStackView {
                                   placeholderImageName: "kh_uisdk_supplier_logo_placeholder")
         logoLoadingImageView.setStandardBorder()
         
-        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
-        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+//        vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
+//        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
         setVehicleTags(viewModel: viewModel)
         capacityDetailsView.set(viewModel: viewModel)
         updateConstraints()
