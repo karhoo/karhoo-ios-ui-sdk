@@ -9,7 +9,10 @@
 import Foundation
 import KarhooSDK
 
-public enum LoyaltyErrorType: KarhooError {
+@available(*, deprecated, renamed: "KarhooLoyaltyError")
+public typealias LoyaltyErrorType = KarhooLoyaltyError
+
+public enum KarhooLoyaltyError: KarhooError {
     case none, insufficientBalance, unsupportedCurrency, unknownError
     
     var text: String {
@@ -34,7 +37,7 @@ public enum LoyaltyMode {
     case none
     case earn
     case burn
-    case error(type: LoyaltyErrorType)
+    case error(type: KarhooLoyaltyError)
     
     var isError: Bool {
         self == .error(type: .unsupportedCurrency) ||
