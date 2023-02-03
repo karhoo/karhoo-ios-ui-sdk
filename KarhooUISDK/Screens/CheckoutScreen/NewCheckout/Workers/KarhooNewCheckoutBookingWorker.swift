@@ -23,6 +23,7 @@ protocol NewCheckoutBookingWorker: AnyObject {
     var statePublisher: Published<NewCheckoutBookingState>.Publisher { get }
     func performBooking()
     func update(passengerDetails: PassengerDetails?)
+    func update(trainNumber: String?)
     func update(flightNumber: String?)
 }
 
@@ -34,7 +35,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private let tripService: TripService
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let paymentWorker: NewCheckoutPaymentWorker
-    private let loyaltyWorker: NewCheckoutLoyaltyWorker
+    private let loyaltyWorker: LoyaltyWorker
     private let analytics: Analytics
 
     // MARK: - Properties
@@ -42,6 +43,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private let quote: Quote
     private let journeyDetails: JourneyDetails
     private var passengerDetails: PassengerDetails?
+    private var trainNumber: String?
     private var flightNumber: String?
     private var comment: String?
     private let bookingMetadata: [String: Any]?
@@ -59,7 +61,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         tripService: TripService = Karhoo.getTripService(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         paymentWorker: KarhooNewCheckoutPaymentWorker = KarhooNewCheckoutPaymentWorker(),
-        loyaltyWorker: NewCheckoutLoyaltyWorker = KarhooNewCheckoutLoyaltyWorker(),
+        loyaltyWorker: LoyaltyWorker? = nil,
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
         self.quote = quote
@@ -69,7 +71,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         self.tripService = tripService
         self.sdkConfiguration = sdkConfiguration
         self.paymentWorker = paymentWorker
-        self.loyaltyWorker = loyaltyWorker
+        self.loyaltyWorker = loyaltyWorker ?? KarhooLoyaltyWorker.shared
         self.analytics = analytics
         self.setup()
     }
@@ -82,6 +84,10 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
 
     func update(flightNumber: String?) {
         self.flightNumber = flightNumber
+    }
+
+    func update(trainNumber: String?) {
+        self.trainNumber = trainNumber
     }
 
     func update(comment: String?) {
@@ -105,6 +111,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     // MARK: - Setup methods
 
     private func setup() {
+        loyaltyWorker.setup(using: quote)
         paymentWorker.setup(using: quote)
     }
 
@@ -258,6 +265,10 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
             flight = nil
         }
+        var train: String? = trainNumber
+        if let trainText = train, (trainText.isEmpty || trainText.isWhitespace) {
+            train = nil
+        }
 
         var tripBooking = TripBooking(
             quoteId: quote.id,
@@ -267,6 +278,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
                 luggage: Luggage(total: journeyDetails.luggagesCount)
             ),
             flightNumber: flight,
+            trainNumber: train,
             paymentNonce: paymentNonce.nonce,
             loyaltyNonce: loyaltyNonce,
             comments: comment
@@ -380,8 +392,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     // MARK: - Utils
 
     private func isLoyaltyEnabled() -> Bool {
-        let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+        loyaltyWorker.isLoyaltyEnabled
     }
 
     private func isKarhooUser() -> Bool {

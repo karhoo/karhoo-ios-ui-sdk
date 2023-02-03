@@ -10,6 +10,7 @@ import KarhooSDK
 import Foundation
 
 protocol QuoteValidityWorker {
+    func invalidate()
     func setQuoteValidityDeadline(
         _ quote: Quote,
         deadlineCompletion: @escaping () -> Void
@@ -31,6 +32,7 @@ final class KarhooQuoteValidityWorker: QuoteValidityWorker {
         guard let validityDate = quote.quoteExpirationDate else {
             return
         }
+        self.deadlineCompletion = deadlineCompletion
         let timer = Timer.scheduledTimer(
             withTimeInterval: validityDate.timeIntervalSinceNow,
             repeats: false
@@ -42,5 +44,9 @@ final class KarhooQuoteValidityWorker: QuoteValidityWorker {
 
         RunLoop.main.add(timer, forMode: .common)
         quoteValidityTimer = timer
+    }
+
+    func invalidate() {
+        quoteValidityTimer?.invalidate()
     }
 }

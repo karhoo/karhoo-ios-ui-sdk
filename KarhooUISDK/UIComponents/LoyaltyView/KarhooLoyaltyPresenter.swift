@@ -19,7 +19,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     weak var delegate: LoyaltyViewDelegate?
     weak var presenterDelegate: LoyaltyPresenterDelegate?
 
-    private var viewModel: LoyaltyViewModel?
+    private var viewModel: LoyaltyUIModel?
     private let userService: UserService
     private var loyaltyService: LoyaltyService
     private var currentMode: LoyaltyMode = .none
@@ -104,7 +104,7 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
             self.hideLoyaltyComponent()
             return
         }
-        viewModel = LoyaltyViewModel(request: dataModel)
+        viewModel = LoyaltyUIModel(request: dataModel)
         if let status = loyaltyService.getCurrentLoyaltyStatus(identifier: dataModel.loyaltyId) {
             self.set(status: status)
         }
@@ -295,11 +295,12 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
 
     // MARK: - Utils
     private func hasEnoughBalance() -> Bool {
-        guard let viewModel = viewModel
-        else {
-            return false
-        }
-        return viewModel.balance >= viewModel.burnAmount
+        let worker = getLoyaltyPreAuthWorker()
+        return worker.hasEnoughBalance()
+    }
+    
+    private func getLoyaltyPreAuthWorker() -> LoyaltyPreAuthWorker {
+        return KarhooLoyaltyPreAuthWorker()
     }
 
     private func didSetLoyaltyError(_ error: KarhooError?) {
@@ -398,96 +399,15 @@ final class KarhooLoyaltyPresenter: LoyaltyPresenter {
     }
 
     // MARK: - Pre-Auth
-    private func canPreAuth() -> Bool {
-        guard let viewModel = viewModel,
-              currentMode.isEligibleForPreAuth
-        else {
-            return false
-        }
-
-        switch currentMode {
-        case .earn:
-            return viewModel.canEarn
-        case .burn:
-            let canProceed = viewModel.canBurn && hasEnoughBalance() && getBurnAmountError == nil
-            return canProceed
-        default:
-            return true
-        }
-    }
-
     func getLoyaltyPreAuthNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
-        if !currentMode.isEligibleForPreAuth {
-            // Loyalty related web-services return slug based errors, not error code based ones
-            // this error does not coincide with any error returned by the backend
-            // Although the message is not shown in the UISDK implementation it will serve DPs when integrating as a standalone component
-            let error = ErrorModel(message: UITexts.Errors.loyaltyModeNotEligibleForPreAuth, code: "KP005")
-            completion(.failure(error: error))
-            return
-        }
-
-        guard canPreAuth(),
-              let viewModel = viewModel
-        else {
-            let error = ErrorModel(message: UITexts.Loyalty.noAllowedToBurnPoints, code: "K002")
-            completion(Result.failure(error: error))
-            return
-        }
-
-        let flexPay = canFlexPay()
-        let points = getLoyaltyBurnPointsForPreAuth()
-        let request = LoyaltyPreAuth(
-            identifier: viewModel.loyaltyId,
-            currency: viewModel.currency,
-            points: points,
-            flexpay: flexPay, membership: ""
-        )
-
-        loyaltyService.getLoyaltyPreAuth(preAuthRequest: request).execute { [weak self] result in
-            if result.getSuccessValue() != nil, let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthSuccess(
-                    quoteId: self?.quoteIdForAnalytics,
-                    correlationId: result.getCorrelationId(),
-                    preauthType: currentMode
-                )
-            }
-            if let error = result.getErrorValue(), let currentMode = self?.currentMode {
-                self?.reportLoyaltyPreAuthFailure(
-                    quoteId: self?.quoteIdForAnalytics,
-                    correlationId: result.getCorrelationId(),
-                    preauthType: currentMode,
-                    errorSlug: error.slug,
-                    errorMessage: error.message
-                )
-            }
+        let worker = getLoyaltyPreAuthWorker()
+        worker.getLoyaltyPreAuthNonce { result in
             completion(result)
         }
     }
 
-    private func canFlexPay() -> Bool {
-        return currentMode != .burn // This will be adapted when we integrate flexPay
-    }
-
-    private func getLoyaltyBurnPointsForPreAuth() -> Int {
-        guard let viewModel = viewModel
-        else {
-            return 0
-        }
-
-        // https://karhoo.atlassian.net/wiki/spaces/PAY/pages/4343201851/Loyalty
-        return currentMode == .burn ? viewModel.burnAmount : 0
-    }
-
     // MARK: - Analytics
-
-    private func reportLoyaltyPreAuthFailure(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode, errorSlug: String?, errorMessage: String) {
-        analytics.loyaltyPreAuthFailure(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType, errorSlug: errorSlug, errorMessage: errorMessage)
-    }
-
-    private func reportLoyaltyPreAuthSuccess(quoteId: String?, correlationId: String?, preauthType: LoyaltyMode) {
-        analytics.loyaltyPreAuthSuccess(quoteId: quoteId, correlationId: correlationId, preauthType: preauthType)
-    }
-
+    
     private func reportLoyaltyStatusRequested(
         quoteId: String?,
         correlationId: String?,

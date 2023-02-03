@@ -71,12 +71,4 @@ public class MockDateFormatterType: DateFormatterType {
         clockTimeSet = date
         return clockTimeReturnString
     }
-    
-    public func display(
-        _ date: Date?,
-        dateStyle: DateFormatter.Style,
-        timeStyle: DateFormatter.Style
-    ) -> String {
-        TestUtil.getRandomString()
-    }
 }

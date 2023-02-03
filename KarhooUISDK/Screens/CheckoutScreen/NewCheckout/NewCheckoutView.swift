@@ -32,11 +32,12 @@ struct NewCheckoutView: View {
         .onAppear {
             viewModel.onAppear()
         }
-        .alert(isPresented: $viewModel.quoteExpired) {
-            quoteExpiredAlert
-        }
         .alert(isPresented: $viewModel.showError) {
-            errorAlert
+            if viewModel.quoteExpired {
+                return quoteExpiredAlert
+            } else {
+                return errorAlert
+            }
         }
     }
 
@@ -57,8 +58,13 @@ struct NewCheckoutView: View {
                     VehicleDetailsCard(
                         viewModel: viewModel.getVehicleDetailsCardViewModel()
                     )
+                    if viewModel.loyaltyViewModel.shouldShowView {
+                        LoyaltyEarnBurnView(viewModel: viewModel.loyaltyViewModel)
+                            .padding(.horizontal, UIConstants.Spacing.standard)
+                    }
+                    
                     VStack(spacing: UIConstants.Spacing.standard) {
-
+                        
                         DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
 
                         if viewModel.showFlightNumberCell {

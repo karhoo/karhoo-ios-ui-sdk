@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "เช่น AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "เพิ่มหมายเลขเที่ยวบิน";
+"kh_uisdk_checkout_airport_subtitle" = "พนักงานขับรถจะอยู่ที่นั่นแม้ในกรณีที่เกิดความล่าช้า";
 
 "kh_uisdk_checkout_airport_title" = "เที่ยวบินหมายเลข";
 
@@ -685,7 +685,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "คุณสามารถใช้คะแนนสะสมเพื่อชำระค่าโดยสารนี้ได้";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "ใช้คะแนนสะสม %@ คะแนนเพื่อชำระ %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "ใช้คะแนนสะสม %3$@ คะแนนเพื่อชำระ %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "ใช้คะแนนของคุณ";
 

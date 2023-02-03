@@ -166,7 +166,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     }
 
     // MARK: Analytics
-    
+
     private func reportBookingConfirmationScreenOpened() {
         analytics.rideConfirmationScreenOpened(date: Date(), tripId: trip?.tripId, quoteId: quote.id)
     }

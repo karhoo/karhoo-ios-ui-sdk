@@ -90,6 +90,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
         setUpBookingButtonState()
         threeDSecureProvider?.set(baseViewController: view)
         
+        // MOVED
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         let showLoyalty = isLoyaltyEnabled()
         view.set(quote: quote, showLoyalty: showLoyalty, loyaltyId: loyaltyId)
@@ -533,6 +534,7 @@ final class KarhooCheckoutPresenter: CheckoutPresenter {
          }
     }
 
+    //MOVED
     private func isLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
         return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled

@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import Combine
 
 class TrainNumberCellViewModel: DetailsCellViewModel {
-    
-    private var trainNumber: String = ""
+
+    private(set)var trainNumberSubject = CurrentValueSubject<String?, Never>(nil)
 
     init(onTap: @escaping () -> Void = {}) {
         super.init(
@@ -22,15 +23,18 @@ class TrainNumberCellViewModel: DetailsCellViewModel {
     }
     
     func getTrainNumber() -> String {
-        trainNumber
+        trainNumberSubject.value ?? ""
     }
     
     private func getSubtitle() -> String {
-        trainNumber.isNotEmpty ? trainNumber : UITexts.Booking.trainSubtitle
+        guard let trainNumber = trainNumberSubject.value, trainNumber.isNotEmpty else {
+            return UITexts.Booking.trainSubtitle
+        }
+        return trainNumber
     }
     
     func setTrainNumber(_ trainNumber: String) {
-        self.trainNumber = trainNumber
+        self.trainNumberSubject.send(trainNumber)
         subtitle = getSubtitle()
     }
 }

@@ -279,7 +279,7 @@
 
 "kh_uisdk_checkout_airport_example" = "e.g. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Acrescentar um número de voo";
+"kh_uisdk_checkout_airport_subtitle" = "Um condutor estará presente mesmo em caso de atrasos";
 
 "kh_uisdk_checkout_airport_title" = "Número do vôo";
 
@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "O seu saldo de pontos Reward não é suficiente para pagar esta viagem";
 
-"kh_uisdk_loyalty_separator" = "Ou";
+"kh_uisdk_loyalty_separator" = "OU";
 
 "kh_uisdk_loyalty_title" = "Pontos Reward";
 
@@ -687,7 +687,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Pode utilizar os seus pontos Reward para pagar esta viagem";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Utilize %@ pontos Reward para pagar %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Utilize %3$@ pontos Reward para pagar %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Utilize os seus pontos Reward";
 

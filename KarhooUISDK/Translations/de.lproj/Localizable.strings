@@ -677,7 +677,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Ihr Guthaben reicht nicht aus, um diese Fahrt mit Punkten zu bezahlen";
 
-"kh_uisdk_loyalty_separator" = "Oder";
+"kh_uisdk_loyalty_separator" = "ODER";
 
 "kh_uisdk_loyalty_title" = "Prämienpunkte";
 

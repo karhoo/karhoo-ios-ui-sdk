@@ -46,6 +46,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
+    var loyaltyViewModel: NewLoyaltyViewModel
 
     private let router: NewCheckoutRouter
 
@@ -53,9 +54,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    var passengerDetailsPublisher: Published<PassengerDetails?>.Publisher {
-        passengerDetailsWorker.$passengerDetails
-    }
     private let journeyDetails: JourneyDetails
     private var carIconUrl: String = ""
 
@@ -115,6 +113,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        self.loyaltyViewModel = NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -126,6 +125,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     func onAppear() {
         reportScreenOpened()
         quoteValidityWorker.setQuoteValidityDeadline(quote) { [weak self] in
+            self?.showError = true
             self?.quoteExpired = true
         }
     }
@@ -229,7 +229,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
         // Nested VMs binding
 
-        passengerDetailsPublisher
+        passengerDetailsWorker.passengerDetailsSubject
             .sink { [weak self] passengerDetails in
                 self?.passangerDetailsViewModel.update(using: passengerDetails)
                 self?.bookingWorker.update(passengerDetails: passengerDetails)
@@ -254,14 +254,35 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         flightNumberCellViewModel.onTap = { [weak self] in
             self?.showFlightNumberBottomSheet()
         }
-        
+
+        flightNumberCellViewModel.flightNumberSubject
+            .dropFirst()
+            .sink{ [weak self] trainNumber in
+                self?.bookingWorker.update(flightNumber: trainNumber)
+            }
+            .store(in: &cancellables)
+
         trainNumberCellViewModel.onTap = { [weak self] in
             self?.showTrainNumberBottomSheet()
         }
+
+        trainNumberCellViewModel.trainNumberSubject
+            .dropFirst()
+            .sink{ [weak self] trainNumber in
+                self?.bookingWorker.update(trainNumber: trainNumber)
+            }
+            .store(in: &cancellables)
         
         commentCellViewModel.onTap = { [weak self] in
             self?.showCommentBottomSheet()
         }
+
+        commentCellViewModel.commentSubject
+            .dropFirst()
+            .sink{ [weak self] comment in
+                self?.bookingWorker.update(comment: comment)
+            }
+            .store(in: &cancellables)
     }
 
     private func setupInitialState() {
@@ -302,7 +323,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         case .failure(let error):
             state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
-            // TODO: get & pass a proper Loyalty model
+            quoteValidityWorker.invalidate()
             router.routeSuccessScene(
                 with: tripInfo,
                 journeyDetails: journeyDetails,
@@ -345,7 +366,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     private func showPassengerDetails() {
         router.routeToPassengerDetails(
-            passengerDetailsWorker.passengerDetails,
+            passengerDetailsWorker.passengerDetailsSubject.value,
             delegate: passengerDetailsWorker
         )
     }
@@ -392,7 +413,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
 
     /// Validate if all required data are in place. If some data is missing, the method will trigger proper behavior, like opening the passenger details screen.
     private func validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: Bool = false) -> Bool {
-        guard passengerDetailsWorker.passengerDetails?.areValid ?? false
+        guard passengerDetailsWorker.passengerDetailsSubject.value?.areValid ?? false
         else {
             if triggerAdditionalBehavior {
                 showPassengerDetails()
@@ -408,8 +429,6 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             }
             return false
         }
-
-        // TODO: Add Loyalty validation here
 
         return true
 	}
