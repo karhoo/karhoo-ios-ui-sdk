@@ -25,10 +25,12 @@ struct NewVehicleCapacity: View {
             HStack {
                 Group {
                     Image(uiImage: .uisdkImage(iconName))
+                        .renderingMode(.template)
                         .frame(
                             width: UIConstants.Dimension.Icon.small,
                             height: UIConstants.Dimension.Icon.small
                         )
+                        .foregroundColor(Color(KarhooUI.colors.text))
                     Text("\(value)")
                         .font(Font(KarhooUI.fonts.footnoteSemiold()))
                         .foregroundColor(Color(KarhooUI.colors.text))
@@ -48,4 +50,3 @@ struct NewVehicleCapacity_Previews: PreviewProvider {
         NewVehicleCapacity(passangerCapacity: 5, luggageCapacity: 4)
     }
 }
-
