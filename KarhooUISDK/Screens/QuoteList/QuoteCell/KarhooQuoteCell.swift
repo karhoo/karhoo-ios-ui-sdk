@@ -8,7 +8,7 @@
 import UIKit
 import KarhooSDK
 
-class QuoteCell: UITableViewCell {
+class KarhooQuoteCell: UITableViewCell {
     
     private var quoteView: QuoteView!
     private var didSetupConstraints: Bool = false

@@ -101,7 +101,7 @@ enum FleetCapabilities: String {
     }
 }
 
-final class QuoteViewModel {
+final class KarhooQuoteViewModel {
     
     let fleetName: String
     let fleetDescription: String

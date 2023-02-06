@@ -1,5 +1,5 @@
 //
-//  CheckoutViewController.swift
+//  KarhooCheckoutViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.

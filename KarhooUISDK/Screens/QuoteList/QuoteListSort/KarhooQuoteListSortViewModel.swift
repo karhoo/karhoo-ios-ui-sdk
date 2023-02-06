@@ -1,5 +1,5 @@
 //  
-//  QuoteListSortPresenter.swift
+//  KarhooQuoteListSortPresenter.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/03/2022.
@@ -9,7 +9,7 @@
 import Foundation
 import KarhooSDK
 
-class KarhooQuoteListSortPresenter: QuoteListSortPresenter {
+class KarhooQuoteListSortViewModel: QuoteListSortViewModel {
 
     var sortOptions: [QuoteListSortOrder] {
         QuoteListSortOrder.allCases

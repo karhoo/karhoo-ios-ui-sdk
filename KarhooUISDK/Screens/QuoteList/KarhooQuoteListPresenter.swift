@@ -10,7 +10,7 @@ import KarhooSDK
 import Foundation
 import UIKit
 
-final class KarhooQuoteListPresenter: QuoteListPresenter {
+final class KarhooQuoteListViewModel: QuoteListViewModel {
 
     // MARK: - Properties
 

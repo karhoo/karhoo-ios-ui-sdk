@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 import UIKit
 
-class KarhooQuoteListTablePresenter: QuoteListTablePresenter {
+class KarhooQuoteListTableViewModel: QuoteListTableViewModel {
 
     private let router: QuoteListTableRouter
     let onQuoteSelected: (Quote) -> Void

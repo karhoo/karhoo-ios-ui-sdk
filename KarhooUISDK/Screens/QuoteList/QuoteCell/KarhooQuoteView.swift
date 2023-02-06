@@ -1,5 +1,5 @@
 //
-//  QuoteView.swift
+//  KarhooQuoteView.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.
@@ -30,7 +30,7 @@ public struct KHQuoteViewID {
     public static let fleetName = "fleet_name"
 }
 
-class QuoteView: UIView {
+class KarhooQuoteView: UIView {
 
     // MARK: - Nested types
     
@@ -102,7 +102,7 @@ class QuoteView: UIView {
         rideDetailStackView.alignment = .leading
         rideDetailStackView.spacing = UIConstants.Spacing.xSmall
     }
-    private lazy var vehicleCapacityView = QuoteVehicleCapacityView()
+    private lazy var vehicleCapacityView = KarhooQuoteVehicleCapacityView()
     private lazy var capacityAndPickupTypeContainer = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = KHQuoteViewID.capacityStackView

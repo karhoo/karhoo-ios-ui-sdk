@@ -27,7 +27,7 @@ protocol QuoteListTableViewController: BaseViewController {
 
 }
 
-protocol QuoteListTablePresenter: AnyObject {
+protocol QuoteListTableViewModel: AnyObject {
 
     var state: QuoteListState { get }
 
