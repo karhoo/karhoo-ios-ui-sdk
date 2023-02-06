@@ -32,7 +32,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let userService: UserService
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let bookingWorker: KarhooCheckoutBookingWorker
+    private let bookingWorker: CheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
 
