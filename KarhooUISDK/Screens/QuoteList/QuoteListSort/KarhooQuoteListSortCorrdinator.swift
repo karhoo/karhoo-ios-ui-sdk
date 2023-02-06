@@ -16,7 +16,7 @@ class KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: QuoteListSortViewController
-    private(set) var presenter: QuoteListSortPresenter!
+    private(set) var presenter: QuoteListSortViewModel!
     
     // MARK: - Initializator
     
@@ -27,7 +27,7 @@ class KarhooQuoteListSortCoordinator: QuoteListSortCoordinator {
     ) {
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListSortViewController()
-        self.presenter = KarhooQuoteListSortPresenter(
+        self.presenter = KarhooQuoteListSortViewModel(
             router: self,
             selectedOption: selectedOption,
             onSortOptionComfirmed: onSortOptionComfirmed

@@ -14,7 +14,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
     // MARK: - Properties
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
-    private var presenter: QuoteListSortPresenter!
+    private var presenter: QuoteListSortViewModel!
 
     // MARK: - Views
 
@@ -88,7 +88,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
 
     // MARK: - Setup business logic
 
-    func setupBinding(_ presenter: QuoteListSortPresenter) {
+    func setupBinding(_ presenter: QuoteListSortViewModel) {
         self.presenter = presenter
     }
 

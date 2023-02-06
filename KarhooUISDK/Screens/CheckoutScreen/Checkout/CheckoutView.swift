@@ -1,5 +1,5 @@
 //
-//  KarhooCheckoutView.swift
+//  CheckoutView.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct KarhooCheckoutView: View {
+struct CheckoutView: View {
 
     enum Constants {
         static let addressViewHeight: CGFloat = 100

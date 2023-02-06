@@ -18,7 +18,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Properties
 
-    private weak var presenter: QuoteListPresenter!
+    private weak var presenter: QuoteListViewModel!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
@@ -129,7 +129,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: QuoteListPresenter) {
+    func setupBinding(_ presenter: QuoteListViewModel) {
         self.presenter = presenter
         loadViewIfNeeded()
         presenter.onStateUpdated = { [weak self] state in

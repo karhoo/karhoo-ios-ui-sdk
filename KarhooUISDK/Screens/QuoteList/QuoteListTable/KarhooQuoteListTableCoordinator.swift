@@ -18,7 +18,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: QuoteListTableViewController
-    private(set) var presenter: QuoteListTablePresenter!
+    private(set) var presenter: QuoteListTableViewModel!
     private(set) var noCoverageMailComposer: FeedbackEmailComposer
 
     // MARK: - Initializator
@@ -34,7 +34,7 @@ final class KarhooQuoteListTableCoordinator: QuoteListTableCoordinator {
         noCoverageMailComposer = mailComposer
         viewController = KarhooQuoteListTableViewController()
         noCoverageMailComposer.set(parent: viewController)
-        presenter = KarhooQuoteListTablePresenter(
+        presenter = KarhooQuoteListTableViewModel(
             router: self,
             initialState: .fetched(quotes: quotes),
             onQuoteSelected: onQuoteSelected,

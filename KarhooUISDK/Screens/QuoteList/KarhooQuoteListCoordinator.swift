@@ -18,7 +18,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: QuoteListViewController!
-    private(set) var presenter: QuoteListPresenter!
+    private(set) var presenter: QuoteListViewModel!
 
     private let onQuoteSelected: (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
 
@@ -37,7 +37,7 @@ final class KarhooQuoteListCoordinator: QuoteListCoordinator {
         self.onQuoteSelected = onQuoteSelected
         self.navigationController = navigationController
         self.viewController = KarhooQuoteListViewController()
-        self.presenter = KarhooQuoteListPresenter(
+        self.presenter = KarhooQuoteListViewModel(
             journeyDetails: journeyDetails,
             router: self,
             journeyDetailsManager: KarhooJourneyDetailsManager.shared,

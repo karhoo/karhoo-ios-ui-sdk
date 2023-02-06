@@ -270,7 +270,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
 }
 
 // MARK: - JourneyDetailsObserver
-extension KarhooQuoteListPresenter: JourneyDetailsObserver {
+extension KarhooQuoteListViewModel: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)

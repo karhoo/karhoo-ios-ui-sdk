@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 
 public protocol CheckoutScreenBuilder {
-    func buildCheckoutScreen(
+    func buildCheckoutCoordinator(
         navigationController: UINavigationController?,
         quote: Quote,
         journeyDetails: JourneyDetails,
@@ -20,14 +20,14 @@ public protocol CheckoutScreenBuilder {
 }
 
 public extension CheckoutScreenBuilder {
-    func buildCheckoutScreen(
+    func buildCheckoutCoordinator(
         navigationController: UINavigationController?,
         quote: Quote,
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]? = nil,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> KarhooUISDKSceneCoordinator {
-        buildCheckoutScreen(
+        buildCheckoutCoordinator(
             navigationController: navigationController,
             quote: quote,
             journeyDetails: journeyDetails,

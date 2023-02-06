@@ -20,7 +20,7 @@ protocol QuoteListTableCoordinator: KarhooUISDKSceneCoordinator {
 
 protocol QuoteListTableViewController: BaseViewController {
 
-    func setupBinding(_ presenter: QuoteListTablePresenter)
+    func setupBinding(_ presenter: QuoteListTableViewModel)
 
     /// Assign table view header view. It's size needs to be nonzero.
     func assignHeaderView(_ view: UIView)

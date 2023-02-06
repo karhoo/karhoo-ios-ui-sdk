@@ -29,7 +29,7 @@ public struct KHVehicleCapacityViewID {
 /// NOTE: New layout created in NewVehicleCapacityView.swift
 /// Remove this file and use new one for Checkout View
 
-final class KarhooQuoteVehicleCapacityView: UIStackView {
+final class QuoteVehicleCapacityView: UIStackView {
 
     // MARK: - UI
     private lazy var baggageContentView: UIView = {
