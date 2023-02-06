@@ -1,5 +1,5 @@
 //
-//  NewVehicleCapacity.swift
+//  VehicleCapacity.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 13/01/2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NewVehicleCapacity: View {
+struct VehicleCapacity: View {
     var passangerCapacity: Int
     var luggageCapacity: Int
     var body: some View {
@@ -45,8 +45,8 @@ struct NewVehicleCapacity: View {
     }
 }
 
-struct NewVehicleCapacity_Previews: PreviewProvider {
+struct VehicleCapacity_Previews: PreviewProvider {
     static var previews: some View {
-        NewVehicleCapacity(passangerCapacity: 5, luggageCapacity: 4)
+        VehicleCapacity(passangerCapacity: 5, luggageCapacity: 4)
     }
 }

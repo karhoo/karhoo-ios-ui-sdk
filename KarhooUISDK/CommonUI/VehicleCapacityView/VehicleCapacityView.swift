@@ -7,13 +7,9 @@ import Foundation
 import UIKit
 import KarhooSDK
 
-public struct KHNewVehicleCapacityViewID {
-    public static let capacityView = "vehicle_capacity_view"
-    public static let passengerCapacityView = "passenger_capacity_view"
-    public static let baggageCapacityView = "baggage_capacity_view"
-}
 
-final class NewVehicleCapacityView: UIStackView {
+
+final class VehicleCapacityView: UIStackView {
 
     private var passengerCapacityView: IconPlusTextHorizontalView?
     private var baggageCapacityView: IconPlusTextHorizontalView?
@@ -30,7 +26,7 @@ final class NewVehicleCapacityView: UIStackView {
 
     private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
-        accessibilityIdentifier = KHNewVehicleCapacityViewID.capacityView
+        accessibilityIdentifier = KHVehicleCapacityViewID.capacityView
         backgroundColor = .clear
         axis = .horizontal
         spacing = UIConstants.Spacing.small
@@ -44,7 +40,7 @@ final class NewVehicleCapacityView: UIStackView {
         baggageCapacityView = IconPlusTextHorizontalView(
             icon: UIImage.uisdkImage("kh_uisdk_luggage_icon"),
             text: "\(value)",
-            accessibilityIdentifier: KHNewVehicleCapacityViewID.baggageCapacityView)
+            accessibilityIdentifier: KHVehicleCapacityViewID.baggageCapacityView)
         addArrangedSubview(baggageCapacityView!)
     }
 
@@ -53,7 +49,7 @@ final class NewVehicleCapacityView: UIStackView {
         passengerCapacityView = IconPlusTextHorizontalView(
             icon: UIImage.uisdkImage("kh_uisdk_passenger_capacity_icon"),
             text: "\(value)",
-            accessibilityIdentifier: KHNewVehicleCapacityViewID.passengerCapacityView)
+            accessibilityIdentifier: KHVehicleCapacityViewID.passengerCapacityView)
         addArrangedSubview(passengerCapacityView!)
     }
 }

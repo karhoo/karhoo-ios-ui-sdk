@@ -1,5 +1,5 @@
 //
-//  NewCheckoutCoordinator.swift
+//  CheckoutCoordinator.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -11,7 +11,7 @@ import UIKit
 import KarhooSDK
 import SwiftUI
 
-final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
+final class KarhooCheckoutCoordinator: CheckoutCoordinator {
 
     // MARK: - Nested types
 
@@ -23,7 +23,7 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
             bookingMetadata: [String : Any]?,
             callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> KarhooUISDKSceneCoordinator {
-            KarhooNewCheckoutCoordinator(
+            KarhooCheckoutCoordinator(
                 navigationController: navigationController,
                 quote: quote,
                 journeyDetails: journeyDetails,
@@ -38,8 +38,8 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
     var childCoordinators: [KarhooUISDKSceneCoordinator] = []
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
-    private(set) var viewController: NewCheckoutViewController!
-    private(set) var presenter: KarhooNewCheckoutViewModel?
+    private(set) var viewController: CheckoutViewController!
+    private(set) var presenter: KarhooCheckoutViewModel?
 
     private var callback: ((ScreenResult<KarhooCheckoutResult>) -> Void)?
 
@@ -52,13 +52,13 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
         bookingMetadata: [String: Any]?,
         callback: @escaping (ScreenResult<KarhooCheckoutResult>) -> Void
     ) {
-        self.presenter = KarhooNewCheckoutViewModel(
+        self.presenter = KarhooCheckoutViewModel(
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata,
             router: self
         )
-        self.viewController = KarhooNewCheckoutViewController().then {
+        self.viewController = KarhooCheckoutViewController().then {
             $0.setupBinding(presenter!)
         }
         self.navigationController = navigationController ?? NavigationController(
@@ -69,7 +69,7 @@ final class KarhooNewCheckoutCoordinator: NewCheckoutCoordinator {
     }
 }
 
-extension KarhooNewCheckoutCoordinator: NewCheckoutRouter {
+extension KarhooCheckoutCoordinator: CheckoutRouter {
     func routeToPriceDetails(title: String, quoteType: QuoteType) {
         let contentViewModel = KarhooCheckoutPriceDetailsViewModel(quoteType: quoteType)
         let contentView = KarhooCheckoutPriceDetailsView(viewModel: contentViewModel)

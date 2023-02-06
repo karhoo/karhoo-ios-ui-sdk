@@ -1,5 +1,5 @@
 //
-//  NewCheckoutViewModel.swift
+//  CheckoutViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -12,7 +12,7 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum NewCheckoutState: Equatable {
+enum CheckoutState: Equatable {
     /// Screen is locked and user's interactions are disabled. Used for crucial data loading (like payment confirmation)
     case loading
     /// UI is enabled but some data's missing in order to proceed with booking, so user needs to provide them.
@@ -23,7 +23,7 @@ enum NewCheckoutState: Equatable {
     case error(title: String, message: String?)
 }
 
-final class KarhooNewCheckoutViewModel: ObservableObject {
+final class KarhooCheckoutViewModel: ObservableObject {
 
     // MARK: - Dependencies
 
@@ -32,11 +32,11 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     private let userService: UserService
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let bookingWorker: KarhooNewCheckoutBookingWorker
+    private let bookingWorker: KarhooCheckoutBookingWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
 
-    private let passengerDetailsWorker: KarhooNewCheckoutPassengerDetailsWorker
+    private let passengerDetailsWorker: KarhooCheckoutPassengerDetailsWorker
 
     // MARK: - Nested views models
 
@@ -46,9 +46,9 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
-    var loyaltyViewModel: NewLoyaltyViewModel
+    var loyaltyViewModel: LoyaltyViewModel
 
-    private let router: NewCheckoutRouter
+    private let router: CheckoutRouter
 
     // MARK: - Properties
 
@@ -60,7 +60,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
     let quote: Quote
     @Published var confirmButtonTitle = UITexts.Booking.next.uppercased()
     @Published var quoteExpired: Bool = false
-    @Published var state: NewCheckoutState = .loading
+    @Published var state: CheckoutState = .loading
     @Published var showError = false
     @Published var errorToPresent: (title: String?, message: String?)?
     @Published var scrollToTermsConditions = false
@@ -79,21 +79,21 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
-        sdkConfiguration: KarhooUISDKConfiguration =  KarhooUISDKConfigurationProvider.configuration,
+        sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
-        router: NewCheckoutRouter
+        router: CheckoutRouter
     ) {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
-        self.bookingWorker = KarhooNewCheckoutBookingWorker(
+        self.bookingWorker = KarhooCheckoutBookingWorker(
             quote: quote,
             journeyDetails: journeyDetails,
             bookingMetadata: bookingMetadata
         )
 
-        self.passengerDetailsWorker = KarhooNewCheckoutPassengerDetailsWorker(
+        self.passengerDetailsWorker = KarhooCheckoutPassengerDetailsWorker(
             details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
         )
         
@@ -113,7 +113,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-        self.loyaltyViewModel = NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
+        self.loyaltyViewModel = LoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -289,7 +289,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         state = .gatheringInfo
     }
 
-    private func handleStateUpdate(_ state: NewCheckoutState) {
+    private func handleStateUpdate(_ state: CheckoutState) {
         showError = false
         switch state {
         case .loading:
@@ -312,7 +312,7 @@ final class KarhooNewCheckoutViewModel: ObservableObject {
         bookingWorker.performBooking()
     }
 
-    private func handleBookingState(_ bookingState: NewCheckoutBookingState) {
+    private func handleBookingState(_ bookingState: CheckoutBookingState) {
         switch bookingState {
         case .idle:
             withAnimation {

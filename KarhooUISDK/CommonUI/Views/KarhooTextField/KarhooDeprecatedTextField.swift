@@ -1,5 +1,5 @@
 //
-//  KarhooTextField.swift
+//  KarhooDeprecatedTextField.swift
 //  KarhooUI
 //
 //
@@ -22,19 +22,19 @@ protocol PhoneNumberValidatorProtocol: Validator {
     func set(countryCode: String)
 }
 
-protocol KarhooTextFieldStateDelegate: class {
+protocol KarhooDeprecatedTextFieldStateDelegate: class {
     func didChange(text: String, isValid: Bool, identifier: Int)
 }
 
-protocol KarhooTextFieldEvents: class {
+protocol KarhooDeprecatedTextFieldEvents: class {
     func fieldDidFocus(identifier: Int)
     func fieldDidUnFocus(identifier: Int)
 }
 
-final class KarhooTextField: NibLoadableView, ValidatorListener {
+final class KarhooDeprecatedTextField: NibLoadableView, ValidatorListener {
 
-    private weak var stateDelegate: KarhooTextFieldStateDelegate?
-    private weak var fieldEventsDelegate: KarhooTextFieldEvents?
+    private weak var stateDelegate: KarhooDeprecatedTextFieldStateDelegate?
+    private weak var fieldEventsDelegate: KarhooDeprecatedTextFieldEvents?
 
     private var characterLimit: Int = Int.max
     @IBOutlet private weak var placeholderLabel: UILabel?
@@ -72,11 +72,11 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
         inputField?.delegate = self
     }
 
-    func set(stateDelegate: KarhooTextFieldStateDelegate?) {
+    func set(stateDelegate: KarhooDeprecatedTextFieldStateDelegate?) {
         self.stateDelegate = stateDelegate
     }
 
-    func set(fieldEventsDelegate: KarhooTextFieldEvents?) {
+    func set(fieldEventsDelegate: KarhooDeprecatedTextFieldEvents?) {
         self.fieldEventsDelegate = fieldEventsDelegate
     }
 
@@ -214,7 +214,7 @@ final class KarhooTextField: NibLoadableView, ValidatorListener {
     }
 }
 
-extension KarhooTextField: UITextFieldDelegate {
+extension KarhooDeprecatedTextField: UITextFieldDelegate {
 
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,

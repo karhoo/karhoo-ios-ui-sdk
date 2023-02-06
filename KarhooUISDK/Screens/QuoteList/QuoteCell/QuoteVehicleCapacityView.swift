@@ -22,6 +22,8 @@ public struct KHVehicleCapacityViewID {
     public static let additionalCapacityContentView = "additional_capabilities_content_view"
     public static let additionalFleetCapabilitiesView = "additional_capabilities_view"
     public static let additionalFleetCapabilitiesLabel = "additional_capabilities_label"
+    public static let passengerCapacityView = "passenger_capacity_view"
+    public static let baggageCapacityView = "baggage_capacity_view"
 }
 
 /// NOTE: New layout created in NewVehicleCapacityView.swift

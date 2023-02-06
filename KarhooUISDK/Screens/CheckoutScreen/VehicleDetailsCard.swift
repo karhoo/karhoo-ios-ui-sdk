@@ -21,7 +21,7 @@ struct VehicleDetailsCard: View {
                     Text(viewModel.title)
                         .font(Font(KarhooUI.fonts.headerSemibold()))
                         .foregroundColor(Color(KarhooUI.colors.text))
-                    NewVehicleCapacity(
+                    VehicleCapacity(
                         passangerCapacity: viewModel.passengerCapacity,
                         luggageCapacity: viewModel.luggageCapacity
                     )

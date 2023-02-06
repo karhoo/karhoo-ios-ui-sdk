@@ -1,5 +1,5 @@
 //
-//  NewCheckoutView.swift
+//  CheckoutView.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NewCheckoutView: View {
+struct CheckoutView: View {
 
     enum Constants {
         static let addressViewHeight: CGFloat = 100
@@ -17,7 +17,7 @@ struct NewCheckoutView: View {
         static let termsConditionsViewId = "termsConditionsViewId"
     }
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel: KarhooNewCheckoutViewModel
+    @StateObject var viewModel: KarhooCheckoutViewModel
     @State private var showLegalNotice: Bool = false
 
     var body: some View {
@@ -59,7 +59,7 @@ struct NewCheckoutView: View {
                         viewModel: viewModel.getVehicleDetailsCardViewModel()
                     )
                     if viewModel.loyaltyViewModel.shouldShowView {
-                        LoyaltyEarnBurnView(viewModel: viewModel.loyaltyViewModel)
+                        LoyaltyView(viewModel: viewModel.loyaltyViewModel)
                             .padding(.horizontal, UIConstants.Spacing.standard)
                     }
                     

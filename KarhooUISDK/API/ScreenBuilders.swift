@@ -100,6 +100,6 @@ public extension ScreenBuilders {
     }
 
     func checkoutBuilder() -> CheckoutScreenBuilder {
-        return KarhooNewCheckoutCoordinator.Builder()
+        return KarhooCheckoutCoordinator.Builder()
     }
 }

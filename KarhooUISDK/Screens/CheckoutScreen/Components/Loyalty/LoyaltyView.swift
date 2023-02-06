@@ -1,5 +1,5 @@
 //
-//  LoyaltyEarnBurnView.swift
+//  LoyaltyView.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 23/01/2023.
@@ -10,9 +10,9 @@ import SwiftUI
 import Combine
 import KarhooSDK
 
-struct LoyaltyEarnBurnView: View {
+struct LoyaltyView: View {
     
-    @ObservedObject var viewModel: NewLoyaltyViewModel
+    @ObservedObject var viewModel: LoyaltyViewModel
 
     var body: some View {
         if let error = viewModel.error {
@@ -194,8 +194,8 @@ struct LoyaltyEarnBurnView: View {
 
 }
 
-struct LoyaltyEarnBurnView_Previews: PreviewProvider {
+struct LoyaltyView_Previews: PreviewProvider {
     static var previews: some View {
-        LoyaltyEarnBurnView(viewModel: NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared))
+        LoyaltyView(viewModel: LoyaltyViewModel(worker: KarhooLoyaltyWorker.shared))
     }
 }

@@ -1,5 +1,5 @@
 //
-//  NewCheckout+MVVMC.swift
+//  Checkout+MVVMC.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -11,13 +11,13 @@ import SwiftUI
 import Combine
 import KarhooSDK
 
-public protocol NewCheckoutCoordinator: KarhooUISDKSceneCoordinator {
+public protocol CheckoutCoordinator: KarhooUISDKSceneCoordinator {
 }
 
-protocol NewCheckoutViewController: BaseViewController {
+protocol CheckoutViewController: BaseViewController {
 }
 
-protocol NewCheckoutRouter: AnyObject {
+protocol CheckoutRouter: AnyObject {
     func routeToPriceDetails(title: String, quoteType: QuoteType)
     func routeToFlightNumber(title: String, flightNumber: String)
     func routeToTrainNumber(title: String, trainNumber: String)

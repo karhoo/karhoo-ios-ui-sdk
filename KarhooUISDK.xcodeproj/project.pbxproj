@@ -199,8 +199,8 @@
 		407EC7B322CF564E00F24CFC /* TermsConditionsStringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74822CF564E00F24CFC /* TermsConditionsStringBuilder.swift */; };
 		407EC7B522CF564E00F24CFC /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74B22CF564E00F24CFC /* MailComposer.swift */; };
 		407EC7B622CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */; };
-		407EC7B722CF564E00F24CFC /* KarhooTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407EC74E22CF564E00F24CFC /* KarhooTextField.xib */; };
-		407EC7B922CF564E00F24CFC /* KarhooTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75022CF564E00F24CFC /* KarhooTextField.swift */; };
+		407EC7B722CF564E00F24CFC /* KarhooDeprecatedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407EC74E22CF564E00F24CFC /* KarhooDeprecatedTextField.xib */; };
+		407EC7B922CF564E00F24CFC /* KarhooDeprecatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75022CF564E00F24CFC /* KarhooDeprecatedTextField.swift */; };
 		407EC7BB22CF564E00F24CFC /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
 		407EC7BC22CF564E00F24CFC /* ResizingSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75422CF564E00F24CFC /* ResizingSwitcher.swift */; };
 		407EC7BD22CF564E00F24CFC /* ConstraintSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75522CF564E00F24CFC /* ConstraintSwitcher.swift */; };
@@ -252,11 +252,11 @@
 		510F32AC29683EBD00EE5158 /* QuoteValidityWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F32AB29683EBD00EE5158 /* QuoteValidityWorker.swift */; };
 		511050C7294B6397003B6E37 /* BookingConfirmationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511050C6294B6397003B6E37 /* BookingConfirmationBuilder.swift */; };
 		51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */; };
-		51255B102966EAA700290A74 /* NewCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */; };
-		51255B122966EB8700290A74 /* NewCheckout+MVVMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B112966EB8700290A74 /* NewCheckout+MVVMC.swift */; };
-		51255B14296731A400290A74 /* NewCheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B13296731A400290A74 /* NewCheckoutViewModel.swift */; };
-		51255B1629673AC100290A74 /* NewCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1529673AC100290A74 /* NewCheckoutView.swift */; };
-		51255B1829673D0A00290A74 /* NewCheckoutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */; };
+		51255B102966EAA700290A74 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B0F2966EAA700290A74 /* CheckoutViewController.swift */; };
+		51255B122966EB8700290A74 /* Checkout+MVVMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B112966EB8700290A74 /* Checkout+MVVMC.swift */; };
+		51255B14296731A400290A74 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B13296731A400290A74 /* CheckoutViewModel.swift */; };
+		51255B1629673AC100290A74 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1529673AC100290A74 /* CheckoutView.swift */; };
+		51255B1829673D0A00290A74 /* CheckoutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51255B1729673D0A00290A74 /* CheckoutCoordinator.swift */; };
 		5126AAF82971DF1A00DCA748 /* UITextView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB01722971B7C900F7DFFD /* UITextView+SwiftUI.swift */; };
 		5128653C2914F75200EA8934 /* QuoteListSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5128653B2914F75200EA8934 /* QuoteListSnapshotSpec.swift */; };
 		5128653F2914FC9800EA8934 /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
@@ -325,8 +325,8 @@
 		51A1100C27AD511F00A54E76 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1100B27AD511F00A54E76 /* CheckboxView.swift */; };
 		51ADF0B0287C02C8000AEF87 /* UIImage+load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADF0AF287C02C8000AEF87 /* UIImage+load.swift */; };
 		51ADF0B2287C0A72000AEF87 /* UIImageView+getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADF0B1287C0A72000AEF87 /* UIImageView+getImage.swift */; };
-		51B3F0EF2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F0EE2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift */; };
-		51B3F0F129771FDE00EFA40E /* KarhooNewCheckoutPaymentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F0F029771FDE00EFA40E /* KarhooNewCheckoutPaymentWorker.swift */; };
+		51B3F0EF2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F0EE2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift */; };
+		51B3F0F129771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3F0F029771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift */; };
 		51BA1F6428355BDB001C58E4 /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A0A60283559A300D119E0 /* PaymentManager.swift */; };
 		51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34427AC6073008499E9 /* Swift+Then.swift */; };
 		51BAC34727AC611A008499E9 /* SwiftThenSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */; };
@@ -351,9 +351,7 @@
 		51BF1E382913D2BE0000BA7E /* MockBookingMapStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169B922819BBF00CF7E66 /* MockBookingMapStrategy.swift */; };
 		51BF1E3A2913D2BE0000BA7E /* MockPickupOnlyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169BB22819C1A00CF7E66 /* MockPickupOnlyStrategy.swift */; };
 		51BF1E3B2913D2BE0000BA7E /* (null) in Sources */ = {isa = PBXBuildFile; };
-		51BF1E3C2913D2BE0000BA7E /* MockLoyaltyViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B437CAA27469ADC0051F11C /* MockLoyaltyViewDelegate.swift */; };
 		51BF1E3D2913D2BE0000BA7E /* MockBookingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A1C285B17BB00EE6583 /* MockBookingRouter.swift */; };
-		51BF1E3E2913D2BE0000BA7E /* MockLoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B437CA82746889B0051F11C /* MockLoyaltyView.swift */; };
 		51BF1E3F2913D2BE0000BA7E /* MockDestinationEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FA221EEE82008FE26D /* MockDestinationEtaView.swift */; };
 		51BF1E402913D2BE0000BA7E /* MockAddressSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0E621BE7FF100745370 /* MockAddressSearchBar.swift */; };
 		51BF1E412913D2BE0000BA7E /* MockAddressSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0E921BE7FF100745370 /* MockAddressSearchProvider.swift */; };
@@ -435,7 +433,7 @@
 		51CDD5462913D86B009C8F4F /* QuoteListFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */; };
 		51CDD5472913D86F009C8F4F /* KarhooQuoteFilterHandlerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A15285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift */; };
 		51D4231C2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D4231B2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift */; };
-		51DB017129702C4E00F7DFFD /* KarhooNewCheckoutBookingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB017029702C4E00F7DFFD /* KarhooNewCheckoutBookingWorker.swift */; };
+		51DB017129702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB017029702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift */; };
 		51DB01762971DC5A00F7DFFD /* KarhooTermsConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB01752971DC5A00F7DFFD /* KarhooTermsConditionsView.swift */; };
 		51DD460F2982B18100E13F73 /* LoyaltyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD460E2982B18100E13F73 /* LoyaltyWorker.swift */; };
 		51E2848B278DE61F00A55FD9 /* Quote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E2848A278DE61F00A55FD9 /* Quote+Extensions.swift */; };
@@ -497,12 +495,10 @@
 		5CDACF2E23CCAC8700FD4F56 /* KarhooMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDACF2D23CCAC8700FD4F56 /* KarhooMKMapView.swift */; };
 		5CDACF3023CCB8DC00FD4F56 /* MapAnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */; };
 		5CED9268227F1CFB00E0C960 /* ScreenBuilders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */; };
-		6B26061E2743EDF50030DB4B /* LoyaltyViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26061D2743EDF50030DB4B /* LoyaltyViewDelegate.swift */; };
 		6B2633D326FCD0930027BCF5 /* CountryFlags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2633D226FCD0930027BCF5 /* CountryFlags.xcassets */; };
 		6B275DD927B25EB200B401E6 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B275DD827B25EB200B401E6 /* Double+Extensions.swift */; };
 		6B2F88F727C628DF00685B47 /* JourneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F627C628DF00685B47 /* JourneyDetails.swift */; };
 		6B2F88F927C6295D00685B47 /* JourneyDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F827C6295C00685B47 /* JourneyDetailsManager.swift */; };
-		6B437CA62746884D0051F11C /* KarhooLoyaltyPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B437CA52746884D0051F11C /* KarhooLoyaltyPresenterSpec.swift */; };
 		6B4C15A92731881A00C10EAE /* QuoteCategory+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4C15A82731881A00C10EAE /* QuoteCategory+Extensions.swift */; };
 		6B4E3253274FCB6300A345E9 /* KarhooJourneyDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E3250274FCB6300A345E9 /* KarhooJourneyDetailsManager.swift */; };
 		6B5D607D26E8E45900163EFE /* MockPassengerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D607C26E8E45900163EFE /* MockPassengerDetailsViewController.swift */; };
@@ -547,7 +543,7 @@
 		7B34183827AB283400E2D49D /* KarhooMailMetaInfoComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B34183727AB283400E2D49D /* KarhooMailMetaInfoComposer.swift */; };
 		7B492615281304630051C5DD /* Bundle+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B492613281304630051C5DD /* Bundle+current.swift */; };
 		7B56043627A15EEB00FC5F1C /* Collection+isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */; };
-		7B74041C29716109000ED60A /* NewVehicleCapacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041B29716109000ED60A /* NewVehicleCapacity.swift */; };
+		7B74041C29716109000ED60A /* VehicleCapacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041B29716109000ED60A /* VehicleCapacity.swift */; };
 		7B74041F297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */; };
 		7B7404352971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */; };
 		7B7404362971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */; };
@@ -561,14 +557,13 @@
 		7B8BE76B29705794006AF159 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BE76A29705794006AF159 /* CommentCellViewModel.swift */; };
 		7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F88F627C628DF00685B47 /* JourneyDetails.swift */; };
 		7B98323828B8C163000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
-		7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B98323728B8C163000C11FE /* LoyalityMode.swift */; };
 		7B98323A28B8D8D9000C11FE /* UITexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407EC75222CF564E00F24CFC /* UITexts.swift */; };
 		7BA696DB291BF9CF00A4A1FE /* DetailsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA696D9291BF9CF00A4A1FE /* DetailsCellView.swift */; };
 		7BA990A729780E31003E9010 /* KarhooBottomSheetCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A629780E31003E9010 /* KarhooBottomSheetCommentsView.swift */; };
 		7BA990A929780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */; };
-		7BC87EAD298988C6008C5120 /* NewLoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */; };
+		7BC87EAD298988C6008C5120 /* LoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */; };
 		7BC87EAF29898931008C5120 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		7BE8B2BD2982B68D005E8495 /* LoyaltyEarnBurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */; };
+		7BE8B2BD2982B68D005E8495 /* LoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */; };
 		7BE8B2BF2982B8E6005E8495 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
@@ -927,8 +922,8 @@
 		407EC74822CF564E00F24CFC /* TermsConditionsStringBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsConditionsStringBuilder.swift; sourceTree = "<group>"; };
 		407EC74B22CF564E00F24CFC /* MailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
 		407EC74C22CF564E00F24CFC /* KarhooFeedbackEmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooFeedbackEmailComposer.swift; sourceTree = "<group>"; };
-		407EC74E22CF564E00F24CFC /* KarhooTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KarhooTextField.xib; sourceTree = "<group>"; };
-		407EC75022CF564E00F24CFC /* KarhooTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextField.swift; sourceTree = "<group>"; };
+		407EC74E22CF564E00F24CFC /* KarhooDeprecatedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KarhooDeprecatedTextField.xib; sourceTree = "<group>"; };
+		407EC75022CF564E00F24CFC /* KarhooDeprecatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooDeprecatedTextField.swift; sourceTree = "<group>"; };
 		407EC75222CF564E00F24CFC /* UITexts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITexts.swift; sourceTree = "<group>"; };
 		407EC75422CF564E00F24CFC /* ResizingSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizingSwitcher.swift; sourceTree = "<group>"; };
 		407EC75522CF564E00F24CFC /* ConstraintSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintSwitcher.swift; sourceTree = "<group>"; };
@@ -983,11 +978,11 @@
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
 		51218F092907CF21001B677A /* MockQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuote.swift; sourceTree = "<group>"; };
 		51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSnapshotSpec.swift; sourceTree = "<group>"; };
-		51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutViewController.swift; sourceTree = "<group>"; };
-		51255B112966EB8700290A74 /* NewCheckout+MVVMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewCheckout+MVVMC.swift"; sourceTree = "<group>"; };
-		51255B13296731A400290A74 /* NewCheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutViewModel.swift; sourceTree = "<group>"; };
-		51255B1529673AC100290A74 /* NewCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutView.swift; sourceTree = "<group>"; };
-		51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCheckoutCoordinator.swift; sourceTree = "<group>"; };
+		51255B0F2966EAA700290A74 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		51255B112966EB8700290A74 /* Checkout+MVVMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Checkout+MVVMC.swift"; sourceTree = "<group>"; };
+		51255B13296731A400290A74 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		51255B1529673AC100290A74 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		51255B1729673D0A00290A74 /* CheckoutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCoordinator.swift; sourceTree = "<group>"; };
 		5128653B2914F75200EA8934 /* QuoteListSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSnapshotSpec.swift; sourceTree = "<group>"; };
 		512AD7222859ED3D00888F60 /* MockQuoteListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockQuoteListView.swift; sourceTree = "<group>"; };
 		512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFilterSpec.swift; sourceTree = "<group>"; };
@@ -1084,8 +1079,8 @@
 		51A1100B27AD511F00A54E76 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		51ADF0AF287C02C8000AEF87 /* UIImage+load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+load.swift"; sourceTree = "<group>"; };
 		51ADF0B1287C0A72000AEF87 /* UIImageView+getImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+getImage.swift"; sourceTree = "<group>"; };
-		51B3F0EE2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooNewCheckoutPassengerDetailsWorker.swift; sourceTree = "<group>"; };
-		51B3F0F029771FDE00EFA40E /* KarhooNewCheckoutPaymentWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooNewCheckoutPaymentWorker.swift; sourceTree = "<group>"; };
+		51B3F0EE2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPassengerDetailsWorker.swift; sourceTree = "<group>"; };
+		51B3F0F029771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPaymentWorker.swift; sourceTree = "<group>"; };
 		51BAC34427AC6073008499E9 /* Swift+Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Then.swift"; sourceTree = "<group>"; };
 		51BAC34627AC611A008499E9 /* SwiftThenSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftThenSpec.swift; sourceTree = "<group>"; };
 		51BCAFAC285782D500AFA244 /* QuoteFilterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFilterHandler.swift; sourceTree = "<group>"; };
@@ -1097,7 +1092,7 @@
 		51CC85BA290BC1E600E5E703 /* KarhooUISDKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarhooUISDKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CDD5432913D7CE009C8F4F /* MockPaymentNonceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPaymentNonceProvider.swift; sourceTree = "<group>"; };
 		51D4231B2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortSnapshotSpec.swift; sourceTree = "<group>"; };
-		51DB017029702C4E00F7DFFD /* KarhooNewCheckoutBookingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooNewCheckoutBookingWorker.swift; sourceTree = "<group>"; };
+		51DB017029702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutBookingWorker.swift; sourceTree = "<group>"; };
 		51DB01722971B7C900F7DFFD /* UITextView+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+SwiftUI.swift"; sourceTree = "<group>"; };
 		51DB01752971DC5A00F7DFFD /* KarhooTermsConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooTermsConditionsView.swift; sourceTree = "<group>"; };
 		51DB734728FED1BB00516343 /* JourneyInfo+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JourneyInfo+mock.swift"; sourceTree = "<group>"; };
@@ -1171,14 +1166,10 @@
 		5CDACF2D23CCAC8700FD4F56 /* KarhooMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMKMapView.swift; sourceTree = "<group>"; };
 		5CDACF2F23CCB8DC00FD4F56 /* MapAnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModel.swift; sourceTree = "<group>"; };
 		5CED9267227F1CFB00E0C960 /* ScreenBuilders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBuilders.swift; sourceTree = "<group>"; };
-		6B26061D2743EDF50030DB4B /* LoyaltyViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewDelegate.swift; sourceTree = "<group>"; };
 		6B2633D226FCD0930027BCF5 /* CountryFlags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CountryFlags.xcassets; sourceTree = "<group>"; };
 		6B275DD827B25EB200B401E6 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		6B2F88F627C628DF00685B47 /* JourneyDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetails.swift; sourceTree = "<group>"; };
 		6B2F88F827C6295C00685B47 /* JourneyDetailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsManager.swift; sourceTree = "<group>"; };
-		6B437CA52746884D0051F11C /* KarhooLoyaltyPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyPresenterSpec.swift; sourceTree = "<group>"; };
-		6B437CA82746889B0051F11C /* MockLoyaltyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoyaltyView.swift; sourceTree = "<group>"; };
-		6B437CAA27469ADC0051F11C /* MockLoyaltyViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoyaltyViewDelegate.swift; sourceTree = "<group>"; };
 		6B4C15A82731881A00C10EAE /* QuoteCategory+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuoteCategory+Extensions.swift"; sourceTree = "<group>"; };
 		6B4E3250274FCB6300A345E9 /* KarhooJourneyDetailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooJourneyDetailsManager.swift; sourceTree = "<group>"; };
 		6B5D607C26E8E45900163EFE /* MockPassengerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPassengerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -1231,7 +1222,7 @@
 		7B492613281304630051C5DD /* Bundle+current.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+current.swift"; sourceTree = "<group>"; };
 		7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+isNotEmpty.swift"; sourceTree = "<group>"; };
 		7B68F6AF284E2ED000F2E89B /* KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B74041B29716109000ED60A /* NewVehicleCapacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVehicleCapacity.swift; sourceTree = "<group>"; };
+		7B74041B29716109000ED60A /* VehicleCapacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCapacity.swift; sourceTree = "<group>"; };
 		7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFreeCancelationTextWorker.swift; sourceTree = "<group>"; };
 		7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsView.swift; sourceTree = "<group>"; };
 		7B7404342971E97B000ED60A /* KarhooCheckoutPriceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutPriceDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -1247,8 +1238,8 @@
 		7BA696D9291BF9CF00A4A1FE /* DetailsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCellView.swift; sourceTree = "<group>"; };
 		7BA990A629780E31003E9010 /* KarhooBottomSheetCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetCommentsView.swift; sourceTree = "<group>"; };
 		7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetCommentsViewModel.swift; sourceTree = "<group>"; };
-		7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoyaltyViewModel.swift; sourceTree = "<group>"; };
-		7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyEarnBurnView.swift; sourceTree = "<group>"; };
+		7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewModel.swift; sourceTree = "<group>"; };
+		7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyView.swift; sourceTree = "<group>"; };
 		82EC0334570F59225FB3162A /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
 		84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationView.swift; sourceTree = "<group>"; };
@@ -1691,7 +1682,6 @@
 				0968F0E421BE7FF100745370 /* Address */,
 				09E35D4721E5117C003E840C /* BookingScreen */,
 				090F08DB21C934EB000C7E50 /* DatePickerScreen */,
-				6B437CA72746887A0051F11C /* Loyalty */,
 				093D2E6C2224345700D5F031 /* PopupDialog */,
 				FC435F522211D34400FB6BB5 /* Rides */,
 				FC83E2E0221EED43008FE26D /* Trip */,
@@ -1856,6 +1846,7 @@
 		099106BB21B82D5200BD7E6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7B98323728B8C163000C11FE /* LoyalityMode.swift */,
 				099106BC21B82D5200BD7E6F /* Address.swift */,
 				6BE36B5C26EF8A3400F0FE86 /* Country.swift */,
 				2396A2AA255566DC007BD9E1 /* JourneyInfo.swift */,
@@ -2004,7 +1995,6 @@
 		09DCC7ED21BE7CE000DF02B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				6B437CA4274688070051F11C /* Loyalty */,
 				09DCC7EE21BE7CE000DF02B9 /* AddressScreen */,
 				09E35D5F21E5118A003E840C /* BookingScreen */,
 				FC13584521D64F2D005054AE /* CheckoutScreen */,
@@ -2196,7 +2186,7 @@
 		407EC72022CF564E00F24CFC /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				7B74041B29716109000ED60A /* NewVehicleCapacity.swift */,
+				7B74041B29716109000ED60A /* VehicleCapacity.swift */,
 				6BA9DB682785D9700007934C /* UIConstants.swift */,
 				407EC75222CF564E00F24CFC /* UITexts.swift */,
 				51715DDF292535EA00893F0F /* AddressView */,
@@ -2304,8 +2294,8 @@
 		407EC74D22CF564E00F24CFC /* KarhooTextField */ = {
 			isa = PBXGroup;
 			children = (
-				407EC74E22CF564E00F24CFC /* KarhooTextField.xib */,
-				407EC75022CF564E00F24CFC /* KarhooTextField.swift */,
+				407EC74E22CF564E00F24CFC /* KarhooDeprecatedTextField.xib */,
+				407EC75022CF564E00F24CFC /* KarhooDeprecatedTextField.swift */,
 			);
 			path = KarhooTextField;
 			sourceTree = "<group>";
@@ -2496,19 +2486,19 @@
 			path = Payments;
 			sourceTree = "<group>";
 		};
-		51255B0E2966EA4300290A74 /* NewCheckout */ = {
+		51255B0E2966EA4300290A74 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
 				51FC1214298D49D300DE9019 /* DetailsCell */,
 				7B8BE763297055EC006AF159 /* ViewModels */,
 				51DB016F29702C4100F7DFFD /* Workers */,
-				51255B112966EB8700290A74 /* NewCheckout+MVVMC.swift */,
-				51255B0F2966EAA700290A74 /* NewCheckoutViewController.swift */,
-				51255B13296731A400290A74 /* NewCheckoutViewModel.swift */,
-				51255B1529673AC100290A74 /* NewCheckoutView.swift */,
-				51255B1729673D0A00290A74 /* NewCheckoutCoordinator.swift */,
+				51255B112966EB8700290A74 /* Checkout+MVVMC.swift */,
+				51255B0F2966EAA700290A74 /* CheckoutViewController.swift */,
+				51255B13296731A400290A74 /* CheckoutViewModel.swift */,
+				51255B1529673AC100290A74 /* CheckoutView.swift */,
+				51255B1729673D0A00290A74 /* CheckoutCoordinator.swift */,
 			);
-			path = NewCheckout;
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		512AD71F2859ECEC00888F60 /* QuoteList */ = {
@@ -2729,9 +2719,9 @@
 		51DB016F29702C4100F7DFFD /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				51DB017029702C4E00F7DFFD /* KarhooNewCheckoutBookingWorker.swift */,
-				51B3F0EE2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift */,
-				51B3F0F029771FDE00EFA40E /* KarhooNewCheckoutPaymentWorker.swift */,
+				51DB017029702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift */,
+				51B3F0EE2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift */,
+				51B3F0F029771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -2865,7 +2855,7 @@
 			children = (
 				7B8BE761296FFF9F006AF159 /* VehicleDetailsCard.swift */,
 				7B74041D297191DA000ED60A /* Workers */,
-				51255B0E2966EA4300290A74 /* NewCheckout */,
+				51255B0E2966EA4300290A74 /* Checkout */,
 				5CBA2A6824F5D8CC0091D783 /* Components */,
 			);
 			name = CheckoutScreen;
@@ -2903,27 +2893,8 @@
 		6B26061A2743EC7B0030DB4B /* LoyaltyView */ = {
 			isa = PBXGroup;
 			children = (
-				6B26061D2743EDF50030DB4B /* LoyaltyViewDelegate.swift */,
-				7B98323728B8C163000C11FE /* LoyalityMode.swift */,
 			);
 			path = LoyaltyView;
-			sourceTree = "<group>";
-		};
-		6B437CA4274688070051F11C /* Loyalty */ = {
-			isa = PBXGroup;
-			children = (
-				6B437CA52746884D0051F11C /* KarhooLoyaltyPresenterSpec.swift */,
-			);
-			path = Loyalty;
-			sourceTree = "<group>";
-		};
-		6B437CA72746887A0051F11C /* Loyalty */ = {
-			isa = PBXGroup;
-			children = (
-				6B437CA82746889B0051F11C /* MockLoyaltyView.swift */,
-				6B437CAA27469ADC0051F11C /* MockLoyaltyViewDelegate.swift */,
-			);
-			path = Loyalty;
 			sourceTree = "<group>";
 		};
 		6B4E3256274FCEB000A345E9 /* JourneyDetails */ = {
@@ -3227,8 +3198,8 @@
 		7BE8B2BB2982B670005E8495 /* Loyalty */ = {
 			isa = PBXGroup;
 			children = (
-				7BE8B2BC2982B68D005E8495 /* LoyaltyEarnBurnView.swift */,
-				7BC87EAC298988C6008C5120 /* NewLoyaltyViewModel.swift */,
+				7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */,
+				7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */,
 			);
 			path = Loyalty;
 			sourceTree = "<group>";
@@ -4093,7 +4064,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC8CDD3D2208956E001F201B /* Localizable.strings in Resources */,
-				407EC7B722CF564E00F24CFC /* KarhooTextField.xib in Resources */,
+				407EC7B722CF564E00F24CFC /* KarhooDeprecatedTextField.xib in Resources */,
 				5C1CD0B6241A5D88004AFF7D /* KarhooDriverDetailsView.xib in Resources */,
 				FC83E2AB221ECC52008FE26D /* KarhooTripSummaryInfoView.xib in Resources */,
 				09C765B321DE688100CD81AB /* PrebookField.xib in Resources */,
@@ -4359,9 +4330,7 @@
 				51BF1E5E2913D2DD0000BA7E /* MockAppStateNotifier.swift in Sources */,
 				51BF1E982913D3480000BA7E /* MockTripScreenBuilder.swift in Sources */,
 				510DBEBE293A3AE6008CE9E7 /* Date+Mock.swift in Sources */,
-				51BF1E3E2913D2BE0000BA7E /* MockLoyaltyView.swift in Sources */,
 				51BF1E462913D2BE0000BA7E /* MockRideDetailsStackButtonActions.swift in Sources */,
-				51BF1E3C2913D2BE0000BA7E /* MockLoyaltyViewDelegate.swift in Sources */,
 				5156A15A2913EF7500A70ED8 /* TestUtil.swift in Sources */,
 				51BF1E092913D27F0000BA7E /* MockKarhooExecutable.swift in Sources */,
 				51BF1E3F2913D2BE0000BA7E /* MockDestinationEtaView.swift in Sources */,
@@ -4435,7 +4404,6 @@
 				517D6E5829437CA100232CD5 /* Date+Extensions.swift in Sources */,
 				7B98323428B8BDF5000C11FE /* JourneyDetails.swift in Sources */,
 				5C2E26102420F8AC00B1FF0C /* AppDelegate.swift in Sources */,
-				7B98323928B8C1A4000C11FE /* LoyalityMode.swift in Sources */,
 				7B23A2B428ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift in Sources */,
 				5C2E26122420F8AC00B1FF0C /* SceneDelegate.swift in Sources */,
 				14A5B93325C1823C00986616 /* KarhooConfig.swift in Sources */,
@@ -4508,7 +4476,7 @@
 				5135E56F28574A4100F14A0F /* QuoteListViewController.swift in Sources */,
 				51C8BB2A2862285100B70637 /* CounterButton.swift in Sources */,
 				407EC7A722CF564E00F24CFC /* KarhooColors.swift in Sources */,
-				51255B102966EAA700290A74 /* NewCheckoutViewController.swift in Sources */,
+				51255B102966EAA700290A74 /* CheckoutViewController.swift in Sources */,
 				407EC79B22CF564E00F24CFC /* QtaStringFormatter.swift in Sources */,
 				40FE0CEA22D7D28B003F65B5 /* RateButton.swift in Sources */,
 				7B56043627A15EEB00FC5F1C /* Collection+isNotEmpty.swift in Sources */,
@@ -4573,7 +4541,7 @@
 				FC435F242211B49100FB6BB5 /* RideDetailsMVP.swift in Sources */,
 				5CD9CFAA22DCAB580086E7A0 /* RatingViewMVP.swift in Sources */,
 				407EC7A522CF564E00F24CFC /* Constraints.swift in Sources */,
-				51255B1629673AC100290A74 /* NewCheckoutView.swift in Sources */,
+				51255B1629673AC100290A74 /* CheckoutView.swift in Sources */,
 				5190F00C2847858600F7623A /* AdyenResponseHandler.swift in Sources */,
 				5135E57828574A4A00F14A0F /* QuoteCell.swift in Sources */,
 				51ADF0B0287C02C8000AEF87 /* UIImage+load.swift in Sources */,
@@ -4582,7 +4550,7 @@
 				09C765B121DE688100CD81AB /* BookingMapStrategy.swift in Sources */,
 				407EC7C422CF564E00F24CFC /* URLOpener.swift in Sources */,
 				23391EAC22C65525007D704E /* AddressCellViewModel.swift in Sources */,
-				7BC87EAD298988C6008C5120 /* NewLoyaltyViewModel.swift in Sources */,
+				7BC87EAD298988C6008C5120 /* LoyaltyViewModel.swift in Sources */,
 				403F448422F1EC92008147FC /* KarhooTripFeedbackViewController.swift in Sources */,
 				092005DC225B91C1001038ED /* SideMenuViewController.swift in Sources */,
 				5C7F6EF1233A375F0039F3E2 /* BaseView.swift in Sources */,
@@ -4591,7 +4559,7 @@
 				FC435F1B2211B3FA00FB6BB5 /* TripMetaDataViewModel.swift in Sources */,
 				510522E8284F43CE001DA60F /* (null) in Sources */,
 				51671F412819DFCC00F75712 /* (null) in Sources */,
-				51255B1829673D0A00290A74 /* NewCheckoutCoordinator.swift in Sources */,
+				51255B1829673D0A00290A74 /* CheckoutCoordinator.swift in Sources */,
 				407EC7D222CF564E00F24CFC /* CurrencyCodeConverter.swift in Sources */,
 				4010B0DA2458847500E7B0F1 /* KarhooTextInputView.swift in Sources */,
 				407EC7C322CF564E00F24CFC /* TripInfoUtility.swift in Sources */,
@@ -4609,7 +4577,7 @@
 				FC435EF72211B37A00FB6BB5 /* RidesListViewController.swift in Sources */,
 				5C4252592518D06000CCCB5D /* CardRegistrationFlow.swift in Sources */,
 				407EC7BB22CF564E00F24CFC /* UITexts.swift in Sources */,
-				51DB017129702C4E00F7DFFD /* KarhooNewCheckoutBookingWorker.swift in Sources */,
+				51DB017129702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift in Sources */,
 				51DD460F2982B18100E13F73 /* LoyaltyWorker.swift in Sources */,
 				7B34181E27A89E5900E2D49D /* LegalNoticeStringBuilder.swift in Sources */,
 				09DA1A3122F1A866004C6B20 /* FeedbackButtonView.swift in Sources */,
@@ -4673,7 +4641,6 @@
 				FC435F252211B49100FB6BB5 /* RideDetailsViewController.swift in Sources */,
 				407EC7A322CF564E00F24CFC /* LoadingImageView.swift in Sources */,
 				51477AF428899B2400C5E18B /* VehicleRulesProvider.swift in Sources */,
-				6B26061E2743EDF50030DB4B /* LoyaltyViewDelegate.swift in Sources */,
 				5192C0252832EB4F00D01FC8 /* LocationInfo+Extensions.swift in Sources */,
 				FC83E2A4221ECC48008FE26D /* TripSummaryViewController.swift in Sources */,
 				0991070921B83AF700BD7E6F /* TripLocationDetailsExt.swift in Sources */,
@@ -4692,7 +4659,7 @@
 				407FC5F622F0A46800F74D0A /* HintTextView.swift in Sources */,
 				51801A2E285B72D200EE6583 /* FleetCapabilitiesFilter.swift in Sources */,
 				5190F0122847858B00F7623A /* BraintreeThreeDSecureProvider.swift in Sources */,
-				407EC7B922CF564E00F24CFC /* KarhooTextField.swift in Sources */,
+				407EC7B922CF564E00F24CFC /* KarhooDeprecatedTextField.swift in Sources */,
 				FC83E299221ECC02008FE26D /* KarhooTripAddressBarPresenter.swift in Sources */,
 				FC435F272211B49100FB6BB5 /* KarhooRideDetailsPresenter.swift in Sources */,
 				51801A24285B720100EE6583 /* PassengerCapacityFilter.swift in Sources */,
@@ -4701,7 +4668,7 @@
 				FC435EEC2211B33B00FB6BB5 /* RidesMVP.swift in Sources */,
 				51F4D57028574D9100A8DB5E /* SingleSelectionListView.swift in Sources */,
 				5190F00F2847858600F7623A /* AdyenPaymentNonceProvider.swift in Sources */,
-				51255B14296731A400290A74 /* NewCheckoutViewModel.swift in Sources */,
+				51255B14296731A400290A74 /* CheckoutViewModel.swift in Sources */,
 				FC435F1E2211B40B00FB6BB5 /* RideDetailsStackButtonActions.swift in Sources */,
 				5C1CD0BB241A5D88004AFF7D /* TripScreenDetailsViewModel.swift in Sources */,
 				09E683232374522900BFF5B9 /* KarhooAddressMapPresenter.swift in Sources */,
@@ -4740,7 +4707,7 @@
 				D8263F4E262096C30042F259 /* TimeFormatter.swift in Sources */,
 				407EC7CA22CF564E00F24CFC /* KarhooPrebookFieldView.swift in Sources */,
 				51F4D56728574CFD00A8DB5E /* UIControl+AddTouchAnimation.swift in Sources */,
-				51255B122966EB8700290A74 /* NewCheckout+MVVMC.swift in Sources */,
+				51255B122966EB8700290A74 /* Checkout+MVVMC.swift in Sources */,
 				6B2F88F927C6295D00685B47 /* JourneyDetailsManager.swift in Sources */,
 				094AE85D21C9145D0046EC3C /* DatePickerMVP.swift in Sources */,
 				516C16B3297468EA007F0B70 /* KarhooTermsConditionsViewModel.swift in Sources */,
@@ -4754,7 +4721,7 @@
 				4017C46A23CCB0230081834B /* EmptyStateView.swift in Sources */,
 				51F51B4C2864EB9B00CF345E /* ItemFilterButton.swift in Sources */,
 				407EC7E722CF564E00F24CFC /* KarhooEmptyDataSetView.swift in Sources */,
-				7B74041C29716109000ED60A /* NewVehicleCapacity.swift in Sources */,
+				7B74041C29716109000ED60A /* VehicleCapacity.swift in Sources */,
 				516C16B1297468DE007F0B70 /* KarhooLegalNoticeView.swift in Sources */,
 				407EC79922CF564E00F24CFC /* KarhooStackButtonView.swift in Sources */,
 				51BAC34527AC6073008499E9 /* Swift+Then.swift in Sources */,
@@ -4810,7 +4777,7 @@
 				84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */,
 				8466B36D2975AF580064C3BC /* KarhooLoyaltyPreAuthWorker.swift in Sources */,
 				FC705B1E221322550001036E /* PopupDialogViewController.swift in Sources */,
-				51B3F0F129771FDE00EFA40E /* KarhooNewCheckoutPaymentWorker.swift in Sources */,
+				51B3F0F129771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift in Sources */,
 				51BA1F6428355BDB001C58E4 /* PaymentManager.swift in Sources */,
 				6BC2B3B127B1283E00218372 /* SeparatorWithLabelView.swift in Sources */,
 				09C765BE21DE688100CD81AB /* KarhooTripAllocationPresenter.swift in Sources */,
@@ -4833,7 +4800,7 @@
 				407EC7CF22CF564E00F24CFC /* KarhooAddressBarView.swift in Sources */,
 				407EC7B322CF564E00F24CFC /* TermsConditionsStringBuilder.swift in Sources */,
 				FC435F3E2211BA1700FB6BB5 /* KarhooTripsSorter.swift in Sources */,
-				7BE8B2BD2982B68D005E8495 /* LoyaltyEarnBurnView.swift in Sources */,
+				7BE8B2BD2982B68D005E8495 /* LoyaltyView.swift in Sources */,
 				407EC79422CF564E00F24CFC /* Analytics.swift in Sources */,
 				092F281B22B25B0700AF8E0E /* PaymentNonceProvider.swift in Sources */,
 				0991067821B8291A00BD7E6F /* KarhooAddressSearchBar.swift in Sources */,
@@ -4848,7 +4815,7 @@
 				7BC87EAF29898931008C5120 /* (null) in Sources */,
 				0991068221B8291A00BD7E6F /* KarhooAddressSearchProvider.swift in Sources */,
 				09C765B521DE688100CD81AB /* BookingAddressBarPresenter.swift in Sources */,
-				51B3F0EF2975B0F500EFA40E /* KarhooNewCheckoutPassengerDetailsWorker.swift in Sources */,
+				51B3F0EF2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift in Sources */,
 				FC04659F2215A6AD004E76FE /* Navigation.swift in Sources */,
 				4038DF3D2444C6E00014539B /* KarhooPhoneInputView.swift in Sources */,
 				40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */,
@@ -4930,7 +4897,6 @@
 				14707CA725D54C2200CAD083 /* CancelRideBehaviourSpec.swift in Sources */,
 				14707C5525D54C2100CAD083 /* KarhooOriginEtaPresenterSpec.swift in Sources */,
 				7B34183227AAE10500E2D49D /* LinkParserTest.swift in Sources */,
-				6B437CA62746884D0051F11C /* KarhooLoyaltyPresenterSpec.swift in Sources */,
 				14707C4725D54C2100CAD083 /* KarhooRidesPresenterSpec.swift in Sources */,
 				6B5D607F26E8E60C00163EFE /* PassengerDetailsPresenterSpec.swift in Sources */,
 				14707C5225D54C2100CAD083 /* TripScreenDetailsViewModelSpec.swift in Sources */,

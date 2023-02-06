@@ -1,5 +1,5 @@
 //
-//  KarhooNewCheckoutPaymentWorker.swift
+//  KarhooCheckoutPaymentWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 12/01/2023.
@@ -12,29 +12,29 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum NewCheckoutBookingState {
+enum CheckoutBookingState {
     case idle
     case loading
     case failure(KarhooError)
     case success(TripInfo)
 }
 
-protocol NewCheckoutBookingWorker: AnyObject {
-    var statePublisher: Published<NewCheckoutBookingState>.Publisher { get }
+protocol CheckoutBookingWorker: AnyObject {
+    var statePublisher: Published<CheckoutBookingState>.Publisher { get }
     func performBooking()
     func update(passengerDetails: PassengerDetails?)
     func update(trainNumber: String?)
     func update(flightNumber: String?)
 }
 
-final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
+final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     // MARK: - Depencencies
 
     private let userService: UserService
     private let tripService: TripService
     private let sdkConfiguration: KarhooUISDKConfiguration
-    private let paymentWorker: NewCheckoutPaymentWorker
+    private let paymentWorker: CheckoutPaymentWorker
     private let loyaltyWorker: LoyaltyWorker
     private let analytics: Analytics
 
@@ -48,8 +48,8 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
     private var comment: String?
     private let bookingMetadata: [String: Any]?
 
-    var statePublisher: Published<NewCheckoutBookingState>.Publisher { $bookingState }
-    @Published var bookingState: NewCheckoutBookingState = .idle
+    var statePublisher: Published<CheckoutBookingState>.Publisher { $bookingState }
+    @Published var bookingState: CheckoutBookingState = .idle
 
     // MARK: - Lifecycle
 
@@ -60,7 +60,7 @@ final class KarhooNewCheckoutBookingWorker: NewCheckoutBookingWorker {
         userService: UserService = Karhoo.getUserService(),
         tripService: TripService = Karhoo.getTripService(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
-        paymentWorker: KarhooNewCheckoutPaymentWorker = KarhooNewCheckoutPaymentWorker(),
+        paymentWorker: KarhooCheckoutPaymentWorker = KarhooCheckoutPaymentWorker(),
         loyaltyWorker: LoyaltyWorker? = nil,
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {

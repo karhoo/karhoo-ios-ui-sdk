@@ -1,5 +1,5 @@
 //
-//  NewCheckoutViewController.swift
+//  CheckoutViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -10,17 +10,17 @@ import Foundation
 import SwiftUI
 import UIKit
 
-final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewController {
+final class KarhooCheckoutViewController: UIViewController, CheckoutViewController {
 
     // MARK: - Properties
 
-    private var viewModel: KarhooNewCheckoutViewModel!
+    private var viewModel: KarhooCheckoutViewModel!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
     // MARK: - Views
 
-    private lazy var hostingController = UIHostingController(rootView: NewCheckoutView(viewModel: self.viewModel!)).then {
+    private lazy var hostingController = UIHostingController(rootView: CheckoutView(viewModel: self.viewModel!)).then {
         $0.loadViewIfNeeded()
         $0.view.translatesAutoresizingMaskIntoConstraints = false
         $0.view.backgroundColor = .clear
@@ -47,7 +47,7 @@ final class KarhooNewCheckoutViewController: UIViewController, NewCheckoutViewCo
 
     // MARK: - Setup binding
 
-    func setupBinding(_ viewModel: KarhooNewCheckoutViewModel) {
+    func setupBinding(_ viewModel: KarhooCheckoutViewModel) {
         self.viewModel = viewModel
     }
 

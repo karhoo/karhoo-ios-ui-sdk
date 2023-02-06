@@ -1,5 +1,5 @@
 //
-//  KarhooNewCheckoutPaymentWorker.swift
+//  KarhooCheckoutPaymentWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 17/01/2023.
@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 import Combine
 
-protocol NewCheckoutPaymentWorker: AnyObject {
+protocol CheckoutPaymentWorker: AnyObject {
     func setup(using quote: Quote)
     func getStoredPaymentNonce() -> Nonce?
     func getPaymentNonce(
@@ -27,13 +27,13 @@ protocol NewCheckoutPaymentWorker: AnyObject {
         resultCompletion: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     )
 }
-extension NewCheckoutPaymentWorker {
+extension CheckoutPaymentWorker {
     func requestNewPaymentMethod(addCardResultCompletion: @escaping (CardFlowResult) -> Void) {
         requestNewPaymentMethod(showRetryAlert: false, addCardResultCompletion: addCardResultCompletion)
     }
 }
 
-final class KarhooNewCheckoutPaymentWorker: NewCheckoutPaymentWorker {
+final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
 
     private var quote: Quote!
     private let threeDSecureProvider: ThreeDSecureProvider?

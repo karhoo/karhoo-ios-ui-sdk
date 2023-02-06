@@ -54,8 +54,8 @@ public class KarhooComponents: BookingScreenComponents {
         journeyDetails: JourneyDetails,
         bookingMetadata: [String: Any]?,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
-    ) -> NewCheckoutCoordinator {
-        KarhooNewCheckoutCoordinator(
+    ) -> CheckoutCoordinator {
+        KarhooCheckoutCoordinator(
             navigationController: navigationController,
             quote: quote,
             journeyDetails: journeyDetails,
