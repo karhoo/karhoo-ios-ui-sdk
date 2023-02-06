@@ -25,6 +25,7 @@ protocol CheckoutBookingWorker: AnyObject {
     func update(passengerDetails: PassengerDetails?)
     func update(trainNumber: String?)
     func update(flightNumber: String?)
+    func update(comment: String?)
 }
 
 final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
