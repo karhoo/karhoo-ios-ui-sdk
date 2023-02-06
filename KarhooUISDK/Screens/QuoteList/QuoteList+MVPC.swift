@@ -30,10 +30,10 @@ public protocol QuoteListCoordinator: KarhooUISDKSceneCoordinator {
 
 protocol QuoteListViewController: BaseViewController {
 
-    func setupBinding(_ presenter: QuoteListPresenter)
+    func setupBinding(_ presenter: QuoteListViewModel)
 }
 
-protocol QuoteListPresenter: AnyObject {
+protocol QuoteListViewModel: AnyObject {
 
     var onStateUpdated: ((QuoteListState) -> Void)? { get set }
 

@@ -59,7 +59,7 @@ public struct UIConstants {
             public static let standard: CGFloat = 44
             
             /// 55
-            public static let large: CGFloat = 55 //e.g.: the Book button in the checkout screen
+            public static let large: CGFloat = 55
             
             /// 64
             public static let xlarge: CGFloat = 64

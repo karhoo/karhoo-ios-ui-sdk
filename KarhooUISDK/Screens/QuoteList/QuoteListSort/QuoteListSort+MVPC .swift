@@ -13,10 +13,10 @@ protocol QuoteListSortCoordinator: KarhooUISDKSceneCoordinator {
 }
 
 protocol QuoteListSortViewController: BaseViewController {
-    func setupBinding(_ presenter: QuoteListSortPresenter)
+    func setupBinding(_ presenter: QuoteListSortViewModel)
 }
 
-protocol QuoteListSortPresenter: AnyObject {
+protocol QuoteListSortViewModel: AnyObject {
     var sortOptions: [QuoteListSortOrder] { get }
     var selectedSortOption: QuoteListSortOrder { get }
     func viewDidLoad()

@@ -9,7 +9,7 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-public class MockQuoteListPresenter: QuoteListPresenter {
+public class MockQuoteListPresenter: QuoteListViewModel {
     public init() { }
 
     public var onStateUpdatedCallback: () -> Void = {}

@@ -39,7 +39,6 @@ class KarhooBookingRouter: BookingRouter {
         bookingMetadata: [String: Any]?,
         bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     ) {
-        #if DEBUG
         guard let navigationController = viewController?.navigationController else {
             assertionFailure()
             return
@@ -56,22 +55,5 @@ class KarhooBookingRouter: BookingRouter {
         )
 
         checkoutCoordinator.start()
-        #else
-        guard let builder = checkoutScreenBuilder else {
-            assertionFailure()
-            return
-        }
-        let checkoutView = builder
-            .buildCheckoutScreen(
-                quote: quote,
-                journeyDetails: journeyDetails,
-                bookingMetadata: bookingMetadata,
-                callback: { result in
-                    bookingRequestCompletion(result, quote, journeyDetails)
-                }
-            )
-
-        viewController?.push(checkoutView)
-        #endif
     }
 }
