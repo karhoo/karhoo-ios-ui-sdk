@@ -18,9 +18,9 @@ final class KarhooCheckoutCoordinator: CheckoutCoordinator {
     class Builder: CheckoutScreenBuilder {
         func buildCheckoutScreen(
             navigationController: UINavigationController?,
-            quote: KarhooSDK.Quote,
+            quote: Quote,
             journeyDetails: JourneyDetails,
-            bookingMetadata: [String : Any]?,
+            bookingMetadata: [String: Any]?,
             callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
         ) -> KarhooUISDKSceneCoordinator {
             KarhooCheckoutCoordinator(
