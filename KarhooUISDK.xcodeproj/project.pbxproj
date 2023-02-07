@@ -565,6 +565,7 @@
 		7BC87EAF29898931008C5120 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7BE8B2BD2982B68D005E8495 /* LoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */; };
 		7BE8B2BF2982B8E6005E8495 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7BEF4496299267C9008686CE /* CheckoutSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */; };
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
 		84209B47292D224000B79918 /* KarhooBookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */; };
@@ -1240,6 +1241,7 @@
 		7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBottomSheetCommentsViewModel.swift; sourceTree = "<group>"; };
 		7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewModel.swift; sourceTree = "<group>"; };
 		7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyView.swift; sourceTree = "<group>"; };
+		7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutSnapshotSpec.swift; sourceTree = "<group>"; };
 		82EC0334570F59225FB3162A /* Pods-Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Client.release.xcconfig"; path = "Target Support Files/Pods-Client/Pods-Client.release.xcconfig"; sourceTree = "<group>"; };
 		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
 		84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationView.swift; sourceTree = "<group>"; };
@@ -2690,6 +2692,7 @@
 		51CC85BB290BC1E600E5E703 /* KarhooUISDKUITests */ = {
 			isa = PBXGroup;
 			children = (
+				7BEF4494299267AE008686CE /* Checkout */,
 				510DBEBA2939E37D008CE9E7 /* BookingConfirmation */,
 				51D423182913CBB5007EB705 /* QuoteList */,
 				51219494290BDC230090E908 /* ExampleSnapshotSpec.swift */,
@@ -3202,6 +3205,14 @@
 				7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */,
 			);
 			path = Loyalty;
+			sourceTree = "<group>";
+		};
+		7BEF4494299267AE008686CE /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		84E86C4E2913EC38002B924A /* BottomSheet */ = {
@@ -4390,6 +4401,7 @@
 			files = (
 				84C5F4EC294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift in Sources */,
 				51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */,
+				7BEF4496299267C9008686CE /* CheckoutSnapshotSpec.swift in Sources */,
 				5128653C2914F75200EA8934 /* QuoteListSnapshotSpec.swift in Sources */,
 				515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */,
 				51D4231C2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift in Sources */,

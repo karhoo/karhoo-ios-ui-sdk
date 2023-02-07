@@ -46,11 +46,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     var commentCellViewModel: CommentCellViewModel
     var termsConditionsViewModel: KarhooTermsConditionsViewModel
     var legalNoticeViewModel: KarhooLegalNoticeViewModel!
-<<<<<<<< HEAD:KarhooUISDK/Screens/CheckoutScreen/Checkout/NewCheckoutViewModel.swift
-    var loyaltyViewModel: NewLoyaltyViewModel
-========
     var loyaltyViewModel: LoyaltyViewModel
->>>>>>>> feature/checkout2023:KarhooUISDK/Screens/CheckoutScreen/Checkout/KarhooCheckoutViewModel.swift
 
     private let router: CheckoutRouter
 
@@ -117,11 +113,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-<<<<<<<< HEAD:KarhooUISDK/Screens/CheckoutScreen/Checkout/NewCheckoutViewModel.swift
-        self.loyaltyViewModel = NewLoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
-========
         self.loyaltyViewModel = LoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
->>>>>>>> feature/checkout2023:KarhooUISDK/Screens/CheckoutScreen/Checkout/KarhooCheckoutViewModel.swift
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
