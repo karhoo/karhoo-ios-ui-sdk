@@ -10,6 +10,7 @@ import Quick
 import Nimble
 import SnapshotTesting
 import KarhooSDK
+import Combine
 import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
@@ -31,7 +32,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                 sut = KarhooCheckoutViewController()
             }
             
-            context("when Checkout is oponed without poi") {
+            context("when Checkout is oponed without poi and with scheduled ride") {
                 beforeEach{
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
@@ -43,12 +44,12 @@ class CheckoutSnapshotSpec: QuickSpec {
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
-                        router: NewCheckoutRouterMock()
+                        router: MockCheckoutRouter()
                     )
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)
                 }
-                it("no Flight or Train number should be visible") {
+                it("no Flight or Train number should be visible and time should be visible") {
                     testSnapshot(navigationController)
                 }
             }
@@ -66,12 +67,12 @@ class CheckoutSnapshotSpec: QuickSpec {
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
-                        router: NewCheckoutRouterMock()
+                        router: MockCheckoutRouter()
                     )
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)
                 }
-
+                
                 it("Flight number cell should be visible") {
                     testSnapshot(navigationController)
                 }
@@ -90,13 +91,49 @@ class CheckoutSnapshotSpec: QuickSpec {
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
-                        router: NewCheckoutRouterMock()
+                        router: MockCheckoutRouter()
                     )
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)
                 }
-
+                
                 it("Train number cell should be visible") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            context("when Checkout is oponed with earn + burn loyalty") {
+                beforeEach{
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name",
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate()
+                    let loyaltyWorker = MockLoyaltyWorker()
+                    viewModel = KarhooCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: MockCheckoutRouter(),
+                        loyaltyWorker: loyaltyWorker
+                    )
+                    sut.setupBinding(viewModel)
+                    
+                    let loyaltyUiModel = LoyaltyUIModel(
+                        loyaltyId: "loyaltyId",
+                        currency: "USD",
+                        tripAmount: 12.52,
+                        canEarn: true,
+                        canBurn: true,
+                        burnAmount: 150,
+                        earnAmount: 15, balance: 12345
+                    )
+                    navigationController.pushViewController(sut, animated: false)
+                    loyaltyWorker.modelSubject.send(.success(result: loyaltyUiModel))
+                    
+                }
+                it("Loyalty View should be visible") {
                     testSnapshot(navigationController)
                 }
             }
@@ -104,7 +141,7 @@ class CheckoutSnapshotSpec: QuickSpec {
     }
 }
 
-class NewCheckoutRouterMock: CheckoutRouter {
+class MockCheckoutRouter: CheckoutRouter {
     func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
         
     }
@@ -128,6 +165,14 @@ class NewCheckoutRouterMock: CheckoutRouter {
     func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
         
     }
+}
+
+class MockLoyaltyWorker: LoyaltyWorker {
     
+    var isLoyaltyEnabled: Bool = true
+    var modelSubject = CurrentValueSubject<Result<LoyaltyUIModel?>, Never>(.success(result: nil))
+    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
     
+    func setup(using quote: Quote) { }
+    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) { }
 }
