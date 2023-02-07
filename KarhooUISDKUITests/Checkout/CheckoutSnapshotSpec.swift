@@ -38,7 +38,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                         categoryName: "Category name",
                         type: "type"
                     )
-                    let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate()
                     viewModel = KarhooCheckoutViewModel(
                         quote: quote,
                         journeyDetails: journeyDetails,
@@ -61,7 +61,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                         categoryName: "Category name",
                         type: "type"
                     )
-                    let journeyDetails = JourneyDetails.mockWithPickupFromAitportAndScheduledDate()
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate(pickupPoiDetailsType: .airport)
                     viewModel = KarhooCheckoutViewModel(
                         quote: quote,
                         journeyDetails: journeyDetails,
@@ -73,6 +73,30 @@ class CheckoutSnapshotSpec: QuickSpec {
                 }
 
                 it("Flight number cell should be visible") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            context("when pickup is from train station") {
+                beforeEach {
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name with flight tracking",
+                        fleetCapability: [FleetCapabilities.CodingKeys.trainTracking.rawValue],
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate(pickupPoiDetailsType: .trainStation)
+                    viewModel = KarhooCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: NewCheckoutRouterMock()
+                    )
+                    sut.setupBinding(viewModel)
+                    navigationController.pushViewController(sut, animated: false)
+                }
+
+                it("Train number cell should be visible") {
                     testSnapshot(navigationController)
                 }
             }
