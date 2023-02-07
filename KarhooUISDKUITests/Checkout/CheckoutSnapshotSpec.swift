@@ -52,21 +52,23 @@ class CheckoutSnapshotSpec: QuickSpec {
             }
             
             context("when pickup is from airport") {
-                let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
-                quote = TestUtil.getRandomQuote(
-                    fleetName: "Fleet name 2",
-                    fleetCapability: [FleetCapabilities.flightTracking.rawValue],
-                    categoryName: "Category name",
-                    type: "type"
-                )
-                viewModel = KarhooNewCheckoutViewModel(
-                    quote: quote,
-                    journeyDetails: journeyDetails,
-                    bookingMetadata: nil,
-                    router: NewCheckoutRouterMock()
-                )
-                sut.setupBinding(viewModel)
-                navigationController.pushViewController(sut, animated: false)
+                beforeEach {
+                    let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name 2",
+                        fleetCapability: [FleetCapabilities.flightTracking.rawValue],
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    viewModel = KarhooNewCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: NewCheckoutRouterMock()
+                    )
+                    sut.setupBinding(viewModel)
+                    navigationController.pushViewController(sut, animated: false)
+                }
 
                 it("Flight number cell should be visible") {
                     testSnapshot(navigationController)
