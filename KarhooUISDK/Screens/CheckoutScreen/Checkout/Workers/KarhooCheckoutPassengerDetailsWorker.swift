@@ -9,6 +9,10 @@
 import Combine
 import KarhooSDK
 
+protocol CheckoutPassengerDetailsWorker: AnyObject, PassengerDetailsDelegate {
+    var passengerDetailsSubject: CurrentValueSubject<PassengerDetails?, Never> { get }
+}
+
 final class KarhooCheckoutPassengerDetailsWorker {
     var passengerDetailsSubject: CurrentValueSubject<PassengerDetails?, Never>
 
@@ -17,7 +21,7 @@ final class KarhooCheckoutPassengerDetailsWorker {
     }
 }
 
-extension KarhooCheckoutPassengerDetailsWorker: PassengerDetailsDelegate {
+extension KarhooCheckoutPassengerDetailsWorker: CheckoutPassengerDetailsWorker {
     func didInputPassengerDetails(result: PassengerDetailsResult) {
         passengerDetailsSubject.send(result.details)
     }

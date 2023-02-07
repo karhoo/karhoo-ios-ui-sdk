@@ -96,7 +96,7 @@ class LoyaltyViewModel: ObservableObject {
     }
     
     private func handleError(_ error: KarhooError) {
-        if let loyaltyError = error as? LoyaltyErrorType {
+        if let loyaltyError = error as? KarhooLoyaltyError {
             switch loyaltyError {
             case .insufficientBalance:
                 self.burnSectionDisabled = true

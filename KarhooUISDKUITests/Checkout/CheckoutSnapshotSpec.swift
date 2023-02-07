@@ -34,8 +34,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                 )
                 let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
                 navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                sut = KarhooNewCheckoutViewController()
-                viewModel = KarhooNewCheckoutViewModel(
+                sut = KarhooCheckoutViewController()
+                viewModel = KarhooCheckoutViewModel(
                     quote: quote,
                     journeyDetails: journeyDetails,
                     bookingMetadata: nil,
@@ -60,11 +60,11 @@ class CheckoutSnapshotSpec: QuickSpec {
                         categoryName: "Category name",
                         type: "type"
                     )
-                    viewModel = KarhooNewCheckoutViewModel(
+                    viewModel = KarhooCheckoutViewModel(
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
-                        router: NewCheckoutRouterMock()
+                        router: CheckoutRouterMock()
                     )
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)
@@ -76,32 +76,4 @@ class CheckoutSnapshotSpec: QuickSpec {
             }
         }
     }
-}
-
-class NewCheckoutRouterMock: NewCheckoutRouter {
-    func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
-        
-    }
-    
-    func routeToFlightNumber(title: String, flightNumber: String) {
-        
-    }
-    
-    func routeToTrainNumber(title: String, trainNumber: String) {
-        
-    }
-    
-    func routeToComment(title: String, comments: String) {
-        
-    }
-    
-    func routeToPassengerDetails(_ currentDetails: KarhooSDK.PassengerDetails?, delegate: KarhooUISDK.PassengerDetailsDelegate?) {
-        
-    }
-    
-    func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
-        
-    }
-    
-    
 }

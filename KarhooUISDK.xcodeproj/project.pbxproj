@@ -450,6 +450,12 @@
 		51F3D2BB2942434C0005A1FB /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BA2942434C0005A1FB /* DateProvider.swift */; };
 		51F3D2BD294246180005A1FB /* MockDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BC294246180005A1FB /* MockDateProvider.swift */; };
 		51F4CBCA29926FEE005865B5 /* CheckoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBC929926FED005865B5 /* CheckoutSpec.swift */; };
+		51F4CBCD2992BC66005865B5 /* MockCheckoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBCC2992BC66005865B5 /* MockCheckoutRouter.swift */; };
+		51F4CBCF2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBCE2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift */; };
+		51F4CBD12992BC96005865B5 /* MockLoyaltyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBD02992BC96005865B5 /* MockLoyaltyWorker.swift */; };
+		51F4CBD32992BCAD005865B5 /* MockVehicleRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBD22992BCAD005865B5 /* MockVehicleRulesProvider.swift */; };
+		51F4CBD52992BCD6005865B5 /* MockCheckoutBookingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBD42992BCD6005865B5 /* MockCheckoutBookingWorker.swift */; };
+		51F4CBD72992BCE7005865B5 /* MockQuoteValidityWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBD62992BCE7005865B5 /* MockQuoteValidityWorker.swift */; };
 		51F4D56128574CA900A8DB5E /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56028574CA900A8DB5E /* UserSelectable.swift */; };
 		51F4D56328574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */; };
 		51F4D56528574CC700A8DB5E /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56428574CC700A8DB5E /* Collection+Safe.swift */; };
@@ -1114,6 +1120,12 @@
 		51F3D2BA2942434C0005A1FB /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		51F3D2BC294246180005A1FB /* MockDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDateProvider.swift; sourceTree = "<group>"; };
 		51F4CBC929926FED005865B5 /* CheckoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutSpec.swift; sourceTree = "<group>"; };
+		51F4CBCC2992BC66005865B5 /* MockCheckoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCheckoutRouter.swift; sourceTree = "<group>"; };
+		51F4CBCE2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCheckoutPassengerDetailsWorker.swift; sourceTree = "<group>"; };
+		51F4CBD02992BC96005865B5 /* MockLoyaltyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoyaltyWorker.swift; sourceTree = "<group>"; };
+		51F4CBD22992BCAD005865B5 /* MockVehicleRulesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVehicleRulesProvider.swift; sourceTree = "<group>"; };
+		51F4CBD42992BCD6005865B5 /* MockCheckoutBookingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCheckoutBookingWorker.swift; sourceTree = "<group>"; };
+		51F4CBD62992BCE7005865B5 /* MockQuoteValidityWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteValidityWorker.swift; sourceTree = "<group>"; };
 		51F4D56028574CA900A8DB5E /* UserSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
 		51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		51F4D56428574CC700A8DB5E /* Collection+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
@@ -1604,6 +1616,8 @@
 				51DB734728FED1BB00516343 /* JourneyInfo+mock.swift */,
 				510DBEBD293A3AE6008CE9E7 /* Date+Mock.swift */,
 				51F3D2BC294246180005A1FB /* MockDateProvider.swift */,
+				51F4CBD22992BCAD005865B5 /* MockVehicleRulesProvider.swift */,
+				51F4CBD62992BCE7005865B5 /* MockQuoteValidityWorker.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1685,6 +1699,7 @@
 			children = (
 				0968F0E421BE7FF100745370 /* Address */,
 				09E35D4721E5117C003E840C /* BookingScreen */,
+				51F4CBCB2992BC51005865B5 /* Checkout */,
 				090F08DB21C934EB000C7E50 /* DatePickerScreen */,
 				093D2E6C2224345700D5F031 /* PopupDialog */,
 				FC435F522211D34400FB6BB5 /* Rides */,
@@ -2755,6 +2770,17 @@
 				51E4056B2927ABF2001FB842 /* Line.swift */,
 			);
 			path = Line;
+			sourceTree = "<group>";
+		};
+		51F4CBCB2992BC51005865B5 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				51F4CBCC2992BC66005865B5 /* MockCheckoutRouter.swift */,
+				51F4CBCE2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift */,
+				51F4CBD02992BC96005865B5 /* MockLoyaltyWorker.swift */,
+				51F4CBD42992BCD6005865B5 /* MockCheckoutBookingWorker.swift */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		51F4D56E28574D7F00A8DB5E /* SingleSelectionListView */ = {
@@ -4285,6 +4311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51F4CBD72992BCE7005865B5 /* MockQuoteValidityWorker.swift in Sources */,
 				51BF1E692913D31D0000BA7E /* MockAnalyticsService.swift in Sources */,
 				51BF1E432913D2BE0000BA7E /* MockRideCellStackButtonActions.swift in Sources */,
 				51BF1E592913D2DD0000BA7E /* MockAlertHandler.swift in Sources */,
@@ -4312,6 +4339,8 @@
 				51BF1E962913D3480000BA7E /* MockAddressScreenBuilder.swift in Sources */,
 				51BF1E952913D3480000BA7E /* MockPopupDialogScreenBuilder.swift in Sources */,
 				51BF1E062913D27F0000BA7E /* MockObservable.swift in Sources */,
+				51F4CBCF2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift in Sources */,
+				51F4CBCD2992BC66005865B5 /* MockCheckoutRouter.swift in Sources */,
 				51BF1E482913D2BE0000BA7E /* MockRidesListActions.swift in Sources */,
 				51BF1E652913D2DD0000BA7E /* MockTripsSorter.swift in Sources */,
 				51BF1E732913D3290000BA7E /* MockQuoteService.swift in Sources */,
@@ -4346,6 +4375,7 @@
 				51BF1E662913D2DD0000BA7E /* MockUserDefaults.swift in Sources */,
 				51BF1E632913D2DD0000BA7E /* MockJourneyDetailsObserver.swift in Sources */,
 				51BF1E422913D2BE0000BA7E /* MockMapViewActions.swift in Sources */,
+				51F4CBD32992BCAD005865B5 /* MockVehicleRulesProvider.swift in Sources */,
 				51BF1E712913D3220000BA7E /* MockSideMenuHandler.swift in Sources */,
 				51BF1E492913D2BE0000BA7E /* MockTripScreenDetailsView.swift in Sources */,
 				51BF1E562913D2C40000BA7E /* MockAddressMapView.swift in Sources */,
@@ -4369,6 +4399,7 @@
 				51BF1E372913D2BE0000BA7E /* MockRidesView.swift in Sources */,
 				51BF1E402913D2BE0000BA7E /* MockAddressSearchBar.swift in Sources */,
 				51BF1E852913D3360000BA7E /* JourneyInfo+mock.swift in Sources */,
+				51F4CBD12992BC96005865B5 /* MockLoyaltyWorker.swift in Sources */,
 				51BF1E4A2913D2BE0000BA7E /* MockQuoteListPresenter.swift in Sources */,
 				51BF1E502913D2BE0000BA7E /* MockRecentAddressProvider.swift in Sources */,
 				51BF1E0A2913D27F0000BA7E /* MockPollCall.swift in Sources */,
@@ -4383,6 +4414,7 @@
 				51BF1E532913D2BE0000BA7E /* MockTripSummaryView.swift in Sources */,
 				51BF1E672913D2DD0000BA7E /* MockNavigationItem.swift in Sources */,
 				51BF1E6F2913D31D0000BA7E /* MockAddressService.swift in Sources */,
+				51F4CBD52992BCD6005865B5 /* MockCheckoutBookingWorker.swift in Sources */,
 				51BF1E072913D27F0000BA7E /* MockKarhooPollExecutor.swift in Sources */,
 				51BF1E352913D2BE0000BA7E /* MockBookingView.swift in Sources */,
 				51BF1E312913D2BE0000BA7E /* MockAddressView.swift in Sources */,

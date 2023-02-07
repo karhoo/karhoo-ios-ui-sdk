@@ -73,7 +73,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
         guard isLoyaltyEnabled else {
-            completion(.failure(error: LoyaltyErrorType.none))
+            completion(.failure(error: KarhooLoyaltyError.none))
             return
         }
         loyaltyPreAuthWorker.getLoyaltyPreAuthNonce(completion: completion)
@@ -163,7 +163,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             )
 
             guard let status = result.getSuccessValue() else {
-                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
+                let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
                 self?.modelSubject.send(.failure(error: error))
                 return
             }
@@ -196,7 +196,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard let value = result.getSuccessValue()
             else {
-                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
+                let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
                 self?.modelSubject.send(.failure(error: error, correlationId: result.getCorrelationId()))
                 return
             }
@@ -225,7 +225,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         ).execute { [weak self] result in
             guard let value = result.getSuccessValue()
             else {
-                let error = result.getErrorValue() ?? LoyaltyErrorType.unknownError
+                let error = result.getErrorValue() ?? KarhooLoyaltyErrorType.unknownError
                 self?.burnError = error
                 self?.burnPointsSubject.send(0)
                 self?.loyaltyPreAuthWorker.set(burnError: error)
@@ -236,7 +236,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             self?.getHasEnougntBalance { [weak self] isBallanceSufficient in
                 if isBallanceSufficient == false {
-                    self?.modelSubject.send(.failure(error: LoyaltyErrorType.insufficientBalance))
+                    self?.modelSubject.send(.failure(error: KarhooLoyaltyError.insufficientBalance))
                 }
             }
         }
