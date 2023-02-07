@@ -17,6 +17,7 @@ public protocol KarhooUISDKSceneCoordinator: AnyObject {
 
     var childCoordinators: [KarhooUISDKSceneCoordinator] { get set }
 
+    /// Use this method to push new view onto navigation stack. It is possible only if during Coordinator's initialization you have assiged navigation controller instance. This instance will be used to push the view controller on nav stack. If you'd like to present the scene as modal, please use `navigationController` property and present it directly.
     func start()
 
     func startNested(parentViewController: BaseViewController, superview: UIView)

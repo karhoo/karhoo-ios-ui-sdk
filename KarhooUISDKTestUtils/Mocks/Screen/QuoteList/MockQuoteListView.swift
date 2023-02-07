@@ -13,7 +13,7 @@ import KarhooSDK
 final public class MockQuoteListView: UIViewController, QuoteListViewController {
     
     public var setupBindingCalled = false
-    public func setupBinding(_ presenter: QuoteListPresenter) {
+    public func setupBinding(_ presenter: QuoteListViewModel) {
         setupBindingCalled = true
     }
 
