@@ -449,6 +449,7 @@
 		51EFCA8D285756600099071C /* BorderedWOBackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA8C285756600099071C /* BorderedWOBackgroundButton.swift */; };
 		51F3D2BB2942434C0005A1FB /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BA2942434C0005A1FB /* DateProvider.swift */; };
 		51F3D2BD294246180005A1FB /* MockDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D2BC294246180005A1FB /* MockDateProvider.swift */; };
+		51F4CBCA29926FEE005865B5 /* CheckoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4CBC929926FED005865B5 /* CheckoutSpec.swift */; };
 		51F4D56128574CA900A8DB5E /* UserSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56028574CA900A8DB5E /* UserSelectable.swift */; };
 		51F4D56328574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */; };
 		51F4D56528574CC700A8DB5E /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F4D56428574CC700A8DB5E /* Collection+Safe.swift */; };
@@ -1112,6 +1113,7 @@
 		51F05F982909542C00D2BC60 /* MockQuoteListSortPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListSortPresenter.swift; sourceTree = "<group>"; };
 		51F3D2BA2942434C0005A1FB /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		51F3D2BC294246180005A1FB /* MockDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDateProvider.swift; sourceTree = "<group>"; };
+		51F4CBC929926FED005865B5 /* CheckoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutSpec.swift; sourceTree = "<group>"; };
 		51F4D56028574CA900A8DB5E /* UserSelectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectable.swift; sourceTree = "<group>"; };
 		51F4D56228574CB100A8DB5E /* KarhooUISDKSceneCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooUISDKSceneCoordinator.swift; sourceTree = "<group>"; };
 		51F4D56428574CC700A8DB5E /* Collection+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
@@ -2893,13 +2895,6 @@
 			path = AppleMapKit;
 			sourceTree = "<group>";
 		};
-		6B26061A2743EC7B0030DB4B /* LoyaltyView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoyaltyView;
-			sourceTree = "<group>";
-		};
 		6B4E3256274FCEB000A345E9 /* JourneyDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -3079,7 +3074,6 @@
 				407EC74522CF564E00F24CFC /* NibLoadableView.swift */,
 				7B34181C27A89E3B00E2D49D /* LegalNotice */,
 				407EC76322CF564E00F24CFC /* AddressBarMVP */,
-				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
 				407EC72B22CF564E00F24CFC /* Notification */,
 				407EC74622CF564E00F24CFC /* TermsConditionsView */,
 			);
@@ -3297,6 +3291,7 @@
 		FC13584521D64F2D005054AE /* CheckoutScreen */ = {
 			isa = PBXGroup;
 			children = (
+				51F4CBC929926FED005865B5 /* CheckoutSpec.swift */,
 			);
 			path = CheckoutScreen;
 			sourceTree = "<group>";
@@ -4869,6 +4864,7 @@
 				14707C5D25D54C2100CAD083 /* DatePickerPresenterSpec.swift in Sources */,
 				14707CD625D54C2200CAD083 /* BraintreePaymentNonceProviderSpec.swift in Sources */,
 				14707C9025D54C2200CAD083 /* KarhooBookingViewController+BuilderSpec.swift in Sources */,
+				51F4CBCA29926FEE005865B5 /* CheckoutSpec.swift in Sources */,
 				14707CC725D54C2200CAD083 /* KarhooTripAllocationPresenterSpec.swift in Sources */,
 				14707C3C25D54C2100CAD083 /* BookingAllocationSpinnerPresenterSpec.swift in Sources */,
 				14707C7F25D54C2100CAD083 /* BookingMapPresenterSpec.swift in Sources */,

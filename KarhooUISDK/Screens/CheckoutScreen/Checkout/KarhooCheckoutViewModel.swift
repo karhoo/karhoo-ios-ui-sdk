@@ -215,7 +215,8 @@ final class KarhooCheckoutViewModel: ObservableObject {
     // MARK: - State/main flow methods
 
     private func setupBinding() {
-        bookingWorker.statePublisher
+        bookingWorker.stateSubject
+            .dropFirst()
             .sink { [weak self] bookingState in
                 self?.handleBookingState(bookingState)
             }
