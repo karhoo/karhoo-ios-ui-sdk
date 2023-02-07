@@ -16,13 +16,13 @@ steps:
     secretEnv: ["GH_TOKEN"]
     name: eu.gcr.io/karhoo-common/karhoo-base:latest
     args:
-    - -c
-    - |
-      title=$(gh pr view $_PR_NUMBER --json title | jq -r '.title' | grep -o -E "$jira_regex")
-      if [ -z "$title" ]; then
-        echo 'No JIRA ticket is provided in the title!!'
-        echo "Expected regex: $jira_regex"
-        exit 1
-      else
-        echo "Using ticket: $title"
-      fi
+      - -c
+      - |
+        title=$(gh pr view $_PR_NUMBER --json title | jq -r '.title' | grep -o -E "$jira_regex")
+        if [ -z "$title" ]; then
+          echo 'No JIRA ticket is provided in the title!!'
+          echo "Expected regex: $jira_regex"
+          exit 1
+        else
+          echo "Using ticket: $title"
+        fi
