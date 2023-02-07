@@ -18,8 +18,8 @@ class CheckoutSnapshotSpec: QuickSpec {
     override func spec() {
         describe("Checkout") {
             var navigationController: NavigationController!
-            var sut: KarhooNewCheckoutViewController!
-            var viewModel: KarhooNewCheckoutViewModel!
+            var sut: KarhooCheckoutViewController!
+            var viewModel: KarhooCheckoutViewModel!
             var quote: Quote!
             
             beforeEach {
@@ -27,25 +27,27 @@ class CheckoutSnapshotSpec: QuickSpec {
                 let mockVC = MockViewController().then {
                     $0.loadViewIfNeeded()
                 }
-                quote = TestUtil.getRandomQuote(
-                    fleetName: "Fleet name",
-                    categoryName: "Category name",
-                    type: "type"
-                )
-                let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
                 navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                sut = KarhooNewCheckoutViewController()
-                viewModel = KarhooNewCheckoutViewModel(
-                    quote: quote,
-                    journeyDetails: journeyDetails,
-                    bookingMetadata: nil,
-                    router: NewCheckoutRouterMock()
-                )
-                sut.setupBinding(viewModel)
-                navigationController.pushViewController(sut, animated: false)
+                sut = KarhooCheckoutViewController()
             }
             
             context("when Checkout is oponed without poi") {
+                beforeEach{
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name",
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
+                    viewModel = KarhooCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: NewCheckoutRouterMock()
+                    )
+                    sut.setupBinding(viewModel)
+                    navigationController.pushViewController(sut, animated: false)
+                }
                 it("no Flight or Train number should be visible") {
                     testSnapshot(navigationController)
                 }
@@ -53,14 +55,14 @@ class CheckoutSnapshotSpec: QuickSpec {
             
             context("when pickup is from airport") {
                 beforeEach {
-                    let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
                     quote = TestUtil.getRandomQuote(
-                        fleetName: "Fleet name 2",
-                        fleetCapability: [FleetCapabilities.flightTracking.rawValue],
+                        fleetName: "Fleet name with flight tracking",
+                        fleetCapability: [FleetCapabilities.CodingKeys.flightTracking.rawValue],
                         categoryName: "Category name",
                         type: "type"
                     )
-                    viewModel = KarhooNewCheckoutViewModel(
+                    let journeyDetails = JourneyDetails.mockWithPickupFromAitportAndScheduledDate()
+                    viewModel = KarhooCheckoutViewModel(
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
@@ -78,7 +80,7 @@ class CheckoutSnapshotSpec: QuickSpec {
     }
 }
 
-class NewCheckoutRouterMock: NewCheckoutRouter {
+class NewCheckoutRouterMock: CheckoutRouter {
     func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
         
     }

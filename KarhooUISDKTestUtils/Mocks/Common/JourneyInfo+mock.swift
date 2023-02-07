@@ -66,4 +66,29 @@ extension JourneyDetails {
         details.scheduledDate = Date.mock()
         return details
     }
+    
+    static public func mockWithPickupFromAitportAndScheduledDate() -> JourneyDetails {
+        var details = JourneyDetails(originLocationDetails: .init())
+        details.destinationLocationDetails = .init()
+        let destination = JourneyInfo.mock().destination
+        details.destinationLocationDetails = LocationInfo(
+            position: Position(
+                latitude: destination!.coordinate.latitude,
+                longitude: destination!.coordinate.longitude
+            ),
+            address: .init(displayAddress: "Destination address to display")
+        )
+        let origin = JourneyInfo.mock().origin
+        details.originLocationDetails = LocationInfo(
+            position: Position(
+                latitude: origin.coordinate.latitude,
+                longitude: origin.coordinate.longitude
+            ),
+            address: .init(displayAddress: "Origin address to display"),
+            details: PoiDetails(type: .airport)
+        )
+        details.scheduledDate = Date.mock()
+
+        return details
+    }
 }
