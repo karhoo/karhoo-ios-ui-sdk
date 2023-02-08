@@ -46,6 +46,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                         bookingMetadata: nil,
                         router: MockCheckoutRouter()
                     )
+                    viewModel.legalNoticeViewModel.shouldShowView = false
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)
                 }
