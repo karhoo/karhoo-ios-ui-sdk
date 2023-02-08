@@ -528,6 +528,7 @@
 		799DC592268F66EC00A48589 /* MapAnnotationViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */; };
 		7B061C47297EE7500036049F /* KarhooTextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */; };
 		7B061C49297EFC690036049F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C48297EFC690036049F /* RoundedCorner.swift */; };
+		7B0A160A2993FD8600980E7F /* PriceDetailsSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */; };
 		7B180B0F2922C32300DB0684 /* DetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */; };
 		7B180B1129236B7200DB0684 /* DetailsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */; };
 		7B23A2B428ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23A2B328ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift */; };
@@ -1204,6 +1205,7 @@
 		79EE52EB79D3373906C3093E /* Pods-KarhooUISDK-KarhooUISDKTestUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KarhooUISDK-KarhooUISDKTestUtils.debug.xcconfig"; path = "Target Support Files/Pods-KarhooUISDK-KarhooUISDKTestUtils/Pods-KarhooUISDK-KarhooUISDKTestUtils.debug.xcconfig"; sourceTree = "<group>"; };
 		7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextFieldValidator.swift; sourceTree = "<group>"; };
 		7B061C48297EFC690036049F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
 		7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewModel.swift; sourceTree = "<group>"; };
 		7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewController.swift; sourceTree = "<group>"; };
 		7B23A2B328ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAnalyticsServiceWithNotifications.swift; sourceTree = "<group>"; };
@@ -3214,6 +3216,7 @@
 			children = (
 				7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */,
 				7B5983D52993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift */,
+				7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -4407,6 +4410,7 @@
 				51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */,
 				7BEF4496299267C9008686CE /* CheckoutSnapshotSpec.swift in Sources */,
 				5128653C2914F75200EA8934 /* QuoteListSnapshotSpec.swift in Sources */,
+				7B0A160A2993FD8600980E7F /* PriceDetailsSnapshotSpec.swift in Sources */,
 				515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */,
 				51D4231C2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift in Sources */,
 			);
