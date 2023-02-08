@@ -136,7 +136,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                 it("Loyalty View should be visible") {
                     testSnapshot(navigationController)
                 }
-            }*/
+            }
             
             context("when Checkout is oponed with T&C checkbox required") {
                 beforeEach{
@@ -157,6 +157,30 @@ class CheckoutSnapshotSpec: QuickSpec {
                     navigationController.pushViewController(sut, animated: false)
                 }
                 it("checkbox should be visible") {
+                    testSnapshot(navigationController)
+                }
+            }*/
+            
+            context("when status is readyToBook") {
+                beforeEach{
+                    KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = false
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name",
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate()
+                    viewModel = KarhooCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: MockCheckoutRouter()
+                    )
+                    sut.setupBinding(viewModel)
+                    navigationController.pushViewController(sut, animated: false)
+                    viewModel.state = .readyToBook
+                }
+                it("PAY button should be visible") {
                     testSnapshot(navigationController)
                 }
             }
