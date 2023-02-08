@@ -543,6 +543,7 @@
 		7B34183827AB283400E2D49D /* KarhooMailMetaInfoComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B34183727AB283400E2D49D /* KarhooMailMetaInfoComposer.swift */; };
 		7B492615281304630051C5DD /* Bundle+current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B492613281304630051C5DD /* Bundle+current.swift */; };
 		7B56043627A15EEB00FC5F1C /* Collection+isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */; };
+		7B5983D62993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5983D52993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift */; };
 		7B74041C29716109000ED60A /* VehicleCapacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041B29716109000ED60A /* VehicleCapacity.swift */; };
 		7B74041F297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */; };
 		7B7404352971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7404332971E97B000ED60A /* KarhooCheckoutPriceDetailsView.swift */; };
@@ -1222,6 +1223,7 @@
 		7B34183727AB283400E2D49D /* KarhooMailMetaInfoComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMailMetaInfoComposer.swift; sourceTree = "<group>"; };
 		7B492613281304630051C5DD /* Bundle+current.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+current.swift"; sourceTree = "<group>"; };
 		7B56043527A15EEB00FC5F1C /* Collection+isNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+isNotEmpty.swift"; sourceTree = "<group>"; };
+		7B5983D52993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
 		7B68F6AF284E2ED000F2E89B /* KarhooUISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KarhooUISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B74041B29716109000ED60A /* VehicleCapacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCapacity.swift; sourceTree = "<group>"; };
 		7B74041E297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFreeCancelationTextWorker.swift; sourceTree = "<group>"; };
@@ -3211,6 +3213,7 @@
 			isa = PBXGroup;
 			children = (
 				7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */,
+				7B5983D52993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -4399,6 +4402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5983D62993938B00A170C1 /* PassengerDetailsSnapshotSpec.swift in Sources */,
 				84C5F4EC294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift in Sources */,
 				51219495290BDC230090E908 /* ExampleSnapshotSpec.swift in Sources */,
 				7BEF4496299267C9008686CE /* CheckoutSnapshotSpec.swift in Sources */,

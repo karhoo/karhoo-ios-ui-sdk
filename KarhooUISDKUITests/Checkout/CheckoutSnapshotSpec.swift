@@ -32,8 +32,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                 sut = KarhooCheckoutViewController()
             }
             
-            context("when Checkout is oponed without poi and with scheduled ride") {
-                beforeEach{
+            context("when Checkout is opened without poi and with scheduled ride") {
+                beforeEach {
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
                         categoryName: "Category name",
@@ -102,8 +102,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                 }
             }
             
-            context("when Checkout is oponed with earn + burn loyalty") {
-                beforeEach{
+            context("when Checkout is opened with earn + burn loyalty") {
+                beforeEach {
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
                         categoryName: "Category name",
@@ -138,8 +138,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                 }
             }
             
-            context("when Checkout is oponed with T&C checkbox required") {
-                beforeEach{
+            context("when Checkout is opened with T&C checkbox required") {
+                beforeEach {
                     KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
@@ -161,8 +161,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                 }
             }
             
-            context("when Checkout is oponed with T&C checkbox required and user tap checkbox") {
-                beforeEach{
+            context("when Checkout is opened with T&C checkbox required and user tap checkbox") {
+                beforeEach {
                     KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
@@ -178,7 +178,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                     )
                     sut.setupBinding(viewModel)
                     viewModel.termsConditionsViewModel.didTapCheckbox()
-                    navigationController.pushViewController(sut, animated: false) 
+                    navigationController.pushViewController(sut, animated: false)
                 }
                 it("checkbox should be selected") {
                     assertSnapshot(
@@ -193,7 +193,7 @@ class CheckoutSnapshotSpec: QuickSpec {
             }
             
             context("when status is readyToBook") {
-                beforeEach{
+                beforeEach {
                     KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = false
                     quote = TestUtil.getRandomQuote(
                         fleetName: "Fleet name",
