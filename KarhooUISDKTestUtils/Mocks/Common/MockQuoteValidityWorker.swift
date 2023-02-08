@@ -11,19 +11,19 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockQuoteValidityWorker: QuoteValidityWorker {
-    init() {}
-    public var invalidateCallCount = 0
+    public init() {}
+    public var invalidateCalled = false
     public func invalidate() {
-        invalidateCallCount += 1
+        invalidateCalled = true
     }
 
-    public var setQuoteValidityDeadlineCallCount = 0
+    public var setQuoteValidityDeadlineCalled = false
     public var setQuoteValidityDeadlineReceivedArguments: (quote: Quote, deadlineCompletion: () -> Void)? = nil
     public func setQuoteValidityDeadline(
         _ quote: Quote,
         deadlineCompletion: @escaping () -> Void
     ) {
-        setQuoteValidityDeadlineCallCount += 1
+        setQuoteValidityDeadlineCalled = true
         setQuoteValidityDeadlineReceivedArguments = (quote: quote, deadlineCompletion: deadlineCompletion)
     }
 }

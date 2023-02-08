@@ -18,8 +18,8 @@ class CheckoutSnapshotSpec: QuickSpec {
     override func spec() {
         describe("Checkout") {
             var navigationController: NavigationController!
-            var sut: KarhooNewCheckoutViewController!
-            var viewModel: KarhooNewCheckoutViewModel!
+            var sut: KarhooCheckoutViewController!
+            var viewModel: KarhooCheckoutViewModel!
             var quote: Quote!
             
             beforeEach {
@@ -39,7 +39,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                     quote: quote,
                     journeyDetails: journeyDetails,
                     bookingMetadata: nil,
-                    router: NewCheckoutRouterMock()
+                    router: MockCheckoutRouter()
                 )
                 sut.setupBinding(viewModel)
                 navigationController.pushViewController(sut, animated: false)
@@ -64,7 +64,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                         quote: quote,
                         journeyDetails: journeyDetails,
                         bookingMetadata: nil,
-                        router: CheckoutRouterMock()
+                        router: MockCheckoutRouter()
                     )
                     sut.setupBinding(viewModel)
                     navigationController.pushViewController(sut, animated: false)

@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockCheckoutPassengerDetailsWorker: CheckoutPassengerDetailsWorker {
+    public init() {}
     public var passengerDetailsResult: KarhooUISDK.PassengerDetailsResult?
     public func didInputPassengerDetails(result: KarhooUISDK.PassengerDetailsResult) {
         passengerDetailsResult = result

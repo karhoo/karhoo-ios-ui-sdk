@@ -11,7 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockCheckoutBookingWorker: CheckoutBookingWorker {
-
+    public init() {}
     public var stateSubject = CurrentValueSubject<CheckoutBookingState, Never>(.idle)
 
     public var performBookingCalled = false

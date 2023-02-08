@@ -12,11 +12,17 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockLoyaltyWorker: LoyaltyWorker {
+    public init() {}
     public var isLoyaltyEnabled: Bool = false
     public var modelSubject: CurrentValueSubject<Result<LoyaltyUIModel?>, Never> = CurrentValueSubject(.success(result: nil))
     public var modeSubject: CurrentValueSubject<LoyaltyMode, Never> = CurrentValueSubject(.none)
 
     public func setup(using quote: Quote) {}
 
-    public func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {}
+    public var getLoyaltyNonceCalled = false
+    public var getLoyaltyNonceResult: Result<LoyaltyNonce> = .success(result: LoyaltyNonce(loyaltyNonce: ""), correlationId: "")
+    public func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) {
+        getLoyaltyNonceCalled = true 
+        completion(getLoyaltyNonceResult)
+    }
 }

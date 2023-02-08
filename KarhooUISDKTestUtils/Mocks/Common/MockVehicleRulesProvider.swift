@@ -11,6 +11,7 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockVehicleRulesProvider: VehicleRulesProvider {
+    public init() {}
     private(set) public var updateCalled = false
     public func update() {
         updateCalled = true

@@ -10,6 +10,8 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 public class MockCheckoutRouter: CheckoutRouter {
+    public init() {}
+    
     private(set) public var routeToPriceDetailsCalled: (title: String, quoteType: QuoteType)?
     public func routeToPriceDetails(title: String, quoteType: QuoteType) {
         routeToPriceDetailsCalled = (title, quoteType)
@@ -35,8 +37,10 @@ public class MockCheckoutRouter: CheckoutRouter {
         routeToPassengerDetailsCalled = (currentDetails, delegate)
     }
 
-    private(set) public var routeSuccessSceneCalled: (tripInfo: TripInfo, journeyDetails: JourneyDetails?, quote: Quote, loyaltyInfo: KarhooBasicLoyaltyInfo)?
+    public var routeSuccessSceneCalled = false
+    public var routeSuccessSceneCalledData: (tripInfo: TripInfo, journeyDetails: JourneyDetails?, quote: Quote, loyaltyInfo: KarhooBasicLoyaltyInfo)?
     public func routeSuccessScene(with tripInfo: TripInfo, journeyDetails: JourneyDetails?, quote: Quote, loyaltyInfo: KarhooBasicLoyaltyInfo) {
-        routeSuccessSceneCalled = (tripInfo, journeyDetails, quote, loyaltyInfo)
+        routeSuccessSceneCalled = true
+        routeSuccessSceneCalledData = (tripInfo, journeyDetails, quote, loyaltyInfo)
     }
 }

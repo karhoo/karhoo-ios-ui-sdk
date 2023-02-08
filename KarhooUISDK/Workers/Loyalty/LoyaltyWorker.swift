@@ -225,7 +225,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         ).execute { [weak self] result in
             guard let value = result.getSuccessValue()
             else {
-                let error = result.getErrorValue() ?? KarhooLoyaltyErrorType.unknownError
+                let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
                 self?.burnError = error
                 self?.burnPointsSubject.send(0)
                 self?.loyaltyPreAuthWorker.set(burnError: error)
