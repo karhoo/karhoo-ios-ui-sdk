@@ -220,6 +220,7 @@ class CheckoutSnapshotSpec: QuickSpec {
     }
 }
 
+// Will be removed when synced with unit tests
 class MockCheckoutRouter: CheckoutRouter {
     func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
         
@@ -244,14 +245,4 @@ class MockCheckoutRouter: CheckoutRouter {
     func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
         
     }
-}
-
-class MockLoyaltyWorker: LoyaltyWorker {
-    
-    var isLoyaltyEnabled: Bool = true
-    var modelSubject = CurrentValueSubject<Result<LoyaltyUIModel?>, Never>(.success(result: nil))
-    var modeSubject = CurrentValueSubject<LoyaltyMode, Never>(.none)
-    
-    func setup(using quote: Quote) { }
-    func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void) { }
 }
