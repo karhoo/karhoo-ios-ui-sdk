@@ -183,7 +183,7 @@ struct CheckoutView: View {
                 HStack(alignment: .top, spacing: UIConstants.Spacing.standard) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(viewModel.quote.quoteType.description)
-                            .font(Font(KarhooUI.fonts.captionBold()))
+                            .font(Font(KarhooUI.fonts.captionSemibold()))
                             .foregroundColor(Color(KarhooUI.colors.textLabel))
                         HStack(spacing: UIConstants.Spacing.xSmall) {
                             Text(CurrencyCodeConverter.toPriceString(quote: viewModel.quote))

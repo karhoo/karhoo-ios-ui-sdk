@@ -179,7 +179,7 @@ struct LoyaltyView: View {
             HStack {
                 Spacer()
                 Text(balanceTitle)
-                    .font(Font(KarhooUI.fonts.bodyBold()))
+                    .font(Font(KarhooUI.fonts.bodySemibold()))
                     .foregroundColor(Color(KarhooUI.colors.white))
 
                     .padding(.vertical, UIConstants.Spacing.small)

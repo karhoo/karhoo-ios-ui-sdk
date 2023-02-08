@@ -32,7 +32,7 @@ struct VehicleCapacity: View {
                         )
                         .foregroundColor(Color(KarhooUI.colors.text))
                     Text("\(value)")
-                        .font(Font(KarhooUI.fonts.footnoteSemiold()))
+                        .font(Font(KarhooUI.fonts.captionRegular()))
                         .foregroundColor(Color(KarhooUI.colors.text))
                 }
             }

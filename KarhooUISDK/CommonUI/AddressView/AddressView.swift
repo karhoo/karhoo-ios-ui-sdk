@@ -233,7 +233,7 @@ extension KarhooAddressView {
                     .frame(alignment: .leading)
                 if let subtext = subtext, subtext.isNotEmpty {
                     Text(subtext)
-                        .font(Font(KarhooUI.fonts.captionBold()))
+                        .font(Font(KarhooUI.fonts.captionRegular()))
                         .foregroundColor(Color(KarhooUI.colors.textLabel))
                         .frame(alignment: .leading)
                 }

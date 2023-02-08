@@ -33,7 +33,7 @@ struct VehicleDetailsCard: View {
                             ).scaledToFill()
                             
                         Text(viewModel.fleetName)
-                            .font(Font(KarhooUI.fonts.captionBold()))
+                            .font(Font(KarhooUI.fonts.captionRegular()))
                             .foregroundColor(Color(KarhooUI.colors.text))
                     }
                 }

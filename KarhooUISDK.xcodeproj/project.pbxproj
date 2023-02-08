@@ -2890,13 +2890,6 @@
 			path = AppleMapKit;
 			sourceTree = "<group>";
 		};
-		6B26061A2743EC7B0030DB4B /* LoyaltyView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoyaltyView;
-			sourceTree = "<group>";
-		};
 		6B4E3256274FCEB000A345E9 /* JourneyDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -3076,7 +3069,6 @@
 				407EC74522CF564E00F24CFC /* NibLoadableView.swift */,
 				7B34181C27A89E3B00E2D49D /* LegalNotice */,
 				407EC76322CF564E00F24CFC /* AddressBarMVP */,
-				6B26061A2743EC7B0030DB4B /* LoyaltyView */,
 				407EC72B22CF564E00F24CFC /* Notification */,
 				407EC74622CF564E00F24CFC /* TermsConditionsView */,
 			);
