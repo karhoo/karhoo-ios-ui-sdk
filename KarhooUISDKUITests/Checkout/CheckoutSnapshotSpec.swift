@@ -31,7 +31,7 @@ class CheckoutSnapshotSpec: QuickSpec {
                 navigationController = NavigationController(rootViewController: mockVC, style: .primary)
                 sut = KarhooCheckoutViewController()
             }
-            /*
+            
             context("when Checkout is oponed without poi and with scheduled ride") {
                 beforeEach{
                     quote = TestUtil.getRandomQuote(
@@ -159,7 +159,38 @@ class CheckoutSnapshotSpec: QuickSpec {
                 it("checkbox should be visible") {
                     testSnapshot(navigationController)
                 }
-            }*/
+            }
+            
+            context("when Checkout is oponed with T&C checkbox required and user tap checkbox") {
+                beforeEach{
+                    KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name",
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    let journeyDetails = JourneyDetails.mockWithScheduledDate()
+                    viewModel = KarhooCheckoutViewModel(
+                        quote: quote,
+                        journeyDetails: journeyDetails,
+                        bookingMetadata: nil,
+                        router: MockCheckoutRouter()
+                    )
+                    sut.setupBinding(viewModel)
+                    viewModel.termsConditionsViewModel.didTapCheckbox()
+                    navigationController.pushViewController(sut, animated: false) 
+                }
+                it("checkbox should be selected") {
+                    assertSnapshot(
+                        matching: navigationController,
+                        as: .wait(
+                            for: 1,
+                            on: .image(on: .iPhoneX)
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
+            }
             
             context("when status is readyToBook") {
                 beforeEach{
@@ -206,7 +237,7 @@ class MockCheckoutRouter: CheckoutRouter {
     }
     
     func routeToPassengerDetails(_ currentDetails: KarhooSDK.PassengerDetails?, delegate: KarhooUISDK.PassengerDetailsDelegate?) {
-
+        
     }
     
     func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
