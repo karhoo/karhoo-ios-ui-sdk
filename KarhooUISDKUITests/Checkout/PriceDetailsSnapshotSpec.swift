@@ -37,7 +37,7 @@ class PriceDetailsSnapshotSpec: QuickSpec {
                 uikitWrapper = UIHostingController(rootView: bottomSheet)
             }
             
-            context("when it's showned") {
+            context("when it's showed") {
                 it("should have a valid design") {
                     testSnapshot(uikitWrapper)
                 }

@@ -119,7 +119,6 @@ public class TestUtil: PrimitiveUtil {
 
     public class func getRandomQuote(
         quoteId: String = getRandomString(),
-        
         availabilityId: String = getRandomString(),
         fleetName: String = getRandomString(),
         fleetCapability: [String] = [],

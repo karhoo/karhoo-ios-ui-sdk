@@ -24,7 +24,7 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
             beforeEach {
                 sut = KarhooComponents().passengerDetails(details: nil, delegate: nil)
             }
-            it("empty state shoud be visible") {
+            it("should present empty form") {
                 testSnapshot(sut)
             }
         }
@@ -34,7 +34,7 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
                 let details = PassengerDetails(firstName: "First")
                 sut = KarhooComponents().passengerDetails(details: details, delegate: nil)
             }
-            it("first name shoud be visible") {
+            it("should present form with first name filled") {
                 testSnapshot(sut)
             }
         }
@@ -51,7 +51,7 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
                 )
                 sut = KarhooComponents().passengerDetails(details: details, delegate: nil)
             }
-            it("all details should be filled and save button enabled") {
+            it("should have all details and buton enabled") {
                 testSnapshot(sut)
             }
         }
