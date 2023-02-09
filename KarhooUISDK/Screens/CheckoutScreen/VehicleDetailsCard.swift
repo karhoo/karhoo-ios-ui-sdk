@@ -19,7 +19,7 @@ struct VehicleDetailsCard: View {
                     .scaledToFit()
                 VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                     Text(viewModel.title)
-                        .font(Font(KarhooUI.fonts.headerSemibold()))
+                        .font(Font(KarhooUI.fonts.bodyBold()))
                         .foregroundColor(Color(KarhooUI.colors.text))
                     VehicleCapacity(
                         passangerCapacity: viewModel.passengerCapacity,
@@ -41,7 +41,7 @@ struct VehicleDetailsCard: View {
             }
             if let cancelationText = viewModel.cancelationText {
                 Text(cancelationText)
-                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .font(Font(KarhooUI.fonts.captionRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
             }
         }
