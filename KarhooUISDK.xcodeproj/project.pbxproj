@@ -538,7 +538,6 @@
 		7B061C47297EE7500036049F /* KarhooTextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */; };
 		7B061C49297EFC690036049F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C48297EFC690036049F /* RoundedCorner.swift */; };
 		7B0A160A2993FD8600980E7F /* PriceDetailsSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */; };
-		7B0A160E2994094600980E7F /* MockLoyaltyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A160D2994094600980E7F /* MockLoyaltyWorker.swift */; };
 		7B180B0F2922C32300DB0684 /* DetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */; };
 		7B180B1129236B7200DB0684 /* DetailsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */; };
 		7B23A2B428ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23A2B328ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift */; };
@@ -1225,7 +1224,6 @@
 		7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextFieldValidator.swift; sourceTree = "<group>"; };
 		7B061C48297EFC690036049F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
-		7B0A160D2994094600980E7F /* MockLoyaltyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoyaltyWorker.swift; sourceTree = "<group>"; };
 		7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewModel.swift; sourceTree = "<group>"; };
 		7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewController.swift; sourceTree = "<group>"; };
 		7B23A2B328ACBA9500523C99 /* KarhooAnalyticsServiceWithNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAnalyticsServiceWithNotifications.swift; sourceTree = "<group>"; };
@@ -1619,6 +1617,7 @@
 				0949545B2201C2BA00D930C0 /* MockDataFormatterType.swift */,
 				09B30F682253986B007768CF /* mockImage.png */,
 				0949545421FF7CDB00D930C0 /* MockKarhooMapView.swift */,
+				51F4CBD02992BC96005865B5 /* MockLoyaltyWorker.swift */,
 				094954562201C13E00D930C0 /* MockPhoneNumberCaller.swift */,
 				FC435F6F2211D7AF00FB6BB5 /* MockStackButtonView.swift */,
 				5C3C671024603B5700C736E9 /* MockURLOpener.swift */,
@@ -1779,7 +1778,6 @@
 				09BDD18721C2C20A0074421C /* MockUserDefaults.swift */,
 				09AAEF9721C4283200A04EEC /* MockValidator.swift */,
 				09F86F7F222D60AB008C86DE /* TestBroadcaster.swift */,
-				7B0A160D2994094600980E7F /* MockLoyaltyWorker.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2789,7 +2787,6 @@
 			children = (
 				51F4CBCC2992BC66005865B5 /* MockCheckoutRouter.swift */,
 				51F4CBCE2992BC87005865B5 /* MockCheckoutPassengerDetailsWorker.swift */,
-				51F4CBD02992BC96005865B5 /* MockLoyaltyWorker.swift */,
 				51F4CBD42992BCD6005865B5 /* MockCheckoutBookingWorker.swift */,
 			);
 			path = Checkout;
@@ -4367,7 +4364,6 @@
 				51BF1E5A2913D2DD0000BA7E /* TestBroadcaster.swift in Sources */,
 				51BF1E6A2913D31D0000BA7E /* MockFareService.swift in Sources */,
 				51BF1E362913D2BE0000BA7E /* MockPickupOnlyStrategyDelegate.swift in Sources */,
-				7B0A160E2994094600980E7F /* MockLoyaltyWorker.swift in Sources */,
 				51BF1E4B2913D2BE0000BA7E /* MockQuoteListSortPresenter.swift in Sources */,
 				51BF1E3D2913D2BE0000BA7E /* MockBookingRouter.swift in Sources */,
 				51BF1E942913D3480000BA7E /* MockCheckoutScreenBuilder.swift in Sources */,
