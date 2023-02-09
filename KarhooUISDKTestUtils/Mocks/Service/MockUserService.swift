@@ -46,7 +46,7 @@ final public class MockUserService: UserService {
         return registerCall
     }
 
-    public var currentUserToReturn: UserInfo?
+    public var currentUserToReturn: UserInfo = TestUtil.getRandomUser()
     public var getCurrentUserCalled = false
     public func getCurrentUser() -> UserInfo? {
         getCurrentUserCalled = true

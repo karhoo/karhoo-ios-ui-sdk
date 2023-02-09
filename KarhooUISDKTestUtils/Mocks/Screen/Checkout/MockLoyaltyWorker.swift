@@ -17,7 +17,10 @@ public class MockLoyaltyWorker: LoyaltyWorker {
     public var modelSubject: CurrentValueSubject<Result<LoyaltyUIModel?>, Never> = CurrentValueSubject(.success(result: nil))
     public var modeSubject: CurrentValueSubject<LoyaltyMode, Never> = CurrentValueSubject(.none)
 
-    public func setup(using quote: Quote) {}
+    public var setupCalled = false
+    public func setup(using quote: Quote) {
+        setupCalled = true
+    }
 
     public var getLoyaltyNonceCalled = false
     public var getLoyaltyNonceResult: Result<LoyaltyNonce> = .success(result: LoyaltyNonce(loyaltyNonce: ""), correlationId: "")

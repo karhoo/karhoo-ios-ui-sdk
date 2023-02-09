@@ -12,11 +12,26 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum CheckoutBookingState {
+enum CheckoutBookingState: Equatable {
     case idle
     case loading
     case failure(KarhooError)
     case success(TripInfo)
+
+    static func == (lhs: CheckoutBookingState, rhs: CheckoutBookingState) -> Bool {
+        switch (lhs, rhs) {
+        case (.idle, .idle):
+            return true
+        case (.loading, .loading):
+            return true
+        case (.failure(let lhsError), .failure(let rhsError)):
+            return lhsError.localizedMessage == rhsError.localizedMessage
+        case (.success(let lhsTripInfo), .success(let rhsTripInfo)):
+            return lhsTripInfo.tripId == rhsTripInfo.tripId
+        default:
+            return false
+        }
+    }
 }
 
 protocol CheckoutBookingWorker: AnyObject {
@@ -63,7 +78,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         userService: UserService = Karhoo.getUserService(),
         tripService: TripService = Karhoo.getTripService(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
-        paymentWorker: KarhooCheckoutPaymentWorker = KarhooCheckoutPaymentWorker(),
+        paymentWorker: CheckoutPaymentWorker = KarhooCheckoutPaymentWorker(),
         loyaltyWorker: LoyaltyWorker? = nil,
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
@@ -102,7 +117,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .loading: break
         default:
             stateSubject.send(.loading)
-            reportBookingEvent()
             if isKarhooUser() {
                 submitAuthenticatedBooking()
             } else {
@@ -369,22 +383,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             correlationId: correlationId ?? "",
             message: message,
             lastFourDigits: paymentWorker.getStoredPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice,

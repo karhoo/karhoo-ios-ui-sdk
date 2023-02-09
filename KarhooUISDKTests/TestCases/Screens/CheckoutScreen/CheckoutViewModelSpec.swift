@@ -9,13 +9,12 @@
 import Combine
 import Quick
 import Nimble
-import SnapshotTesting
 import SwiftUI
 import KarhooSDK
 import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
-class CheckoutViewModelSpec: QuickSpec {
+class KarhooCheckoutViewModelSpec: QuickSpec {
 
     override func spec() {
         describe("Checkout") {

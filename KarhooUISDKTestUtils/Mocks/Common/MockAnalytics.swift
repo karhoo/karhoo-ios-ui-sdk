@@ -17,18 +17,20 @@ public class MockAnalytics: Analytics {
     public func changePaymentDetailsPressed() {
         changePaymentDetailsCalled = true
     }
+
+    public var bookingRequestedCalled = false
     public func bookingRequested(quoteId: String) {
-        // TODO: write tests
+        bookingRequestedCalled = true
     }
-    
+
+    public var bookingSuccessCalled = false
     public func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
-        // TODO: write tests
-        paymentSucceedCalled = true
+        bookingSuccessCalled = true
     }
-    
+
+    public var bookingFailureCalled = false
     public func bookingFailure(quoteId: String?, correlationId: String?, message: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {
-        // TODO: write tests
-        paymentFailedCalled = true
+        bookingFailureCalled = true
     }
     
     public func cardAuthorisationFailure(quoteId: String?, errorMessage: String, lastFourDigits: String, paymentMethodUsed: String, date: Date, amount: Double, currency: String) {

@@ -116,7 +116,7 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
             showUpdateCardAlert: showRetryAlert,
             callback: { [weak self] result in
                 guard let cardFlowResult = result.completedValue() else {
-                    assertionFailure()
+                    self?.handleAddCardFlow(result: .cancelledByUser)
                     return
                 }
                 self?.handleAddCardFlow(result: cardFlowResult)

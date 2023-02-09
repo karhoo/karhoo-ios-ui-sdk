@@ -27,9 +27,9 @@ class MockAnalytics: Analytics {
         // TODO: write tests
     }
     
-    
+    var bookingRequestedCalled = false
     func bookingRequested(quoteId: String) {
-        // TODO: write tests
+        bookingRequestedCalled = true
     }
     
     func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {
