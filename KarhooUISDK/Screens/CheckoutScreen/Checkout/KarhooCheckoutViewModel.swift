@@ -82,7 +82,8 @@ final class KarhooCheckoutViewModel: ObservableObject {
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
-        router: CheckoutRouter
+        router: CheckoutRouter,
+        loyaltyWorker: LoyaltyWorker = KarhooLoyaltyWorker.shared
     ) {
         self.tripService = tripService
         self.userService = userService
@@ -113,7 +114,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-        self.loyaltyViewModel = LoyaltyViewModel(worker: KarhooLoyaltyWorker.shared)
+        self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
 
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()

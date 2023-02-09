@@ -117,7 +117,45 @@ public class TestUtil: PrimitiveUtil {
                       licenseNumber: licenseNumber)
     }
 
-    public class func getRandomQuote(quoteId: String = getRandomString(),
+    public class func getRandomQuote(
+        quoteId: String = getRandomString(),
+        availabilityId: String = getRandomString(),
+        fleetName: String = getRandomString(),
+        fleetCapability: [String] = [],
+        highPrice: Int = 1000,
+        lowPrice: Int = 100,
+        qtaHighMinutes: Int = 10,
+        qtaLowMinutes: Int = 1,
+        quoteType: QuoteType = .fixed,
+        categoryName: String = getRandomString(),
+        currencyCode: String = "GBP",
+        source: QuoteSource = .market,
+        pickUpType: PickUpType = .default,
+        passengerCapacity: Int = 1,
+        luggageCapacity: Int = 2,
+        type: String = getRandomString(),
+        serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()
+    ) -> Quote {
+        let price = QuotePrice(highPrice: Double(highPrice),
+                               lowPrice: Double(lowPrice),
+                               currencyCode: currencyCode,
+                               intLowPrice: lowPrice,
+                               intHighPrice: highPrice)
+        let qta = QuoteQta(highMinutes: qtaHighMinutes, lowMinutes: qtaLowMinutes)
+        let fleet = Fleet(name: fleetName, capability: fleetCapability)
+        let vehicle = QuoteVehicle(vehicleClass: categoryName, type: type, qta: qta, passengerCapacity: passengerCapacity, luggageCapacity: luggageCapacity)
+        return Quote(id: quoteId,
+                     quoteType: quoteType,
+                     source: source,
+                     pickUpType: pickUpType,
+                     fleet: fleet,
+                     vehicle: vehicle,
+                     price: price,
+                     validity: 1,
+                     serviceLevelAgreements: serviceLevelAgreements ?? ServiceAgreements())
+    }
+    
+    public class func getSampleQuote(quoteId: String = getRandomString(),
                               availabilityId: String = getRandomString(),
                               fleetName: String = getRandomString(),
                               highPrice: Int = 1000,
@@ -125,13 +163,13 @@ public class TestUtil: PrimitiveUtil {
                               qtaHighMinutes: Int = 10,
                               qtaLowMinutes: Int = 1,
                               quoteType: QuoteType = .fixed,
-                              categoryName: String = getRandomString(),
+                              categoryName: String = "categoryName",
                               currencyCode: String = "GBP",
                               source: QuoteSource = .market,
                               pickUpType: PickUpType = .default,
                               passengerCapacity: Int = 1,
                               luggageCapacity: Int = 2,
-                              type: String = getRandomString(),
+                              type: String = "type",
                               serviceLevelAgreements: ServiceAgreements? = ServiceAgreements()) -> Quote {
         let price = QuotePrice(highPrice: Double(highPrice),
                                lowPrice: Double(lowPrice),
