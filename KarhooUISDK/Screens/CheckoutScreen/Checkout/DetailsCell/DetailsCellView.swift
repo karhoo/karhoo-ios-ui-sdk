@@ -26,11 +26,11 @@ struct DetailsCellView: View {
             VStack(alignment: .leading) {
                 Text(viewModel.title)
                     .lineLimit(2)
-                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .font(Font(KarhooUI.fonts.bodyBold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                 Text(viewModel.subtitle)
                     .lineLimit(2)
-                    .font(Font(KarhooUI.fonts.footnoteRegular()))
+                    .font(Font(KarhooUI.fonts.captionRegular()))
                     .foregroundColor(Color(KarhooUI.colors.textLabel))
             }
                 Spacer()

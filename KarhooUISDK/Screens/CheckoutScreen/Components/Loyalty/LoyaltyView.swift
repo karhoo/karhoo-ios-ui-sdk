@@ -49,7 +49,7 @@ struct LoyaltyView: View {
         
         VStack(alignment: .leading) {
             Text(pointsEarnedText)
-                .font(Font(KarhooUI.fonts.bodyRegular()))
+                .font(Font(KarhooUI.fonts.captionRegular()))
                 .foregroundColor(Color(KarhooUI.colors.text))
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -80,11 +80,11 @@ struct LoyaltyView: View {
             VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                 Text(UITexts.Loyalty.burnTitle)
                     .lineLimit(2)
-                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .font(Font(KarhooUI.fonts.bodyBold()))
                     .foregroundColor(viewModel.burnContentTextColor)
                     .fixedSize(horizontal: false, vertical: true)
                 Text(viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle)
-                    .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .font(Font(KarhooUI.fonts.captionRegular()))
                     .foregroundColor(viewModel.burnContentTextColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -99,7 +99,7 @@ struct LoyaltyView: View {
     private var burnInfoView: some View {
         HStack {
             Text(UITexts.Loyalty.info)
-                .font(Font(KarhooUI.fonts.bodyRegular()))
+                .font(Font(KarhooUI.fonts.captionRegular()))
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .padding(.all, UIConstants.Spacing.standard)
                 .fixedSize(horizontal: false, vertical: true)
@@ -116,7 +116,7 @@ struct LoyaltyView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text(UITexts.Loyalty.title)
-                    .font(Font(KarhooUI.fonts.headerSemibold()))
+                    .font(Font(KarhooUI.fonts.bodyBold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                 Text(errorMessage)
                     .font(Font(KarhooUI.fonts.bodyBold()))
@@ -151,7 +151,7 @@ struct LoyaltyView: View {
             ZStack {
                 VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                     Text(UITexts.Loyalty.title)
-                        .font(Font(KarhooUI.fonts.headerSemibold()))
+                        .font(Font(KarhooUI.fonts.bodyBold()))
                         .foregroundColor(Color(KarhooUI.colors.text))
                     content()
                 }
@@ -179,7 +179,7 @@ struct LoyaltyView: View {
             HStack {
                 Spacer()
                 Text(balanceTitle)
-                    .font(Font(KarhooUI.fonts.bodyBold()))
+                    .font(Font(KarhooUI.fonts.bodySemibold()))
                     .foregroundColor(Color(KarhooUI.colors.white))
 
                     .padding(.vertical, UIConstants.Spacing.small)

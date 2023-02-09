@@ -44,7 +44,7 @@ extension JourneyDetails {
         return details
     }
     
-    static public func mockWithTwoAddressesAndScheduledDate() -> JourneyDetails {
+    static public func mockWithScheduledDate(pickupPoiDetailsType: PoiDetailsType = .notSetDetailsType) -> JourneyDetails {
         var details = JourneyDetails(originLocationDetails: .init())
         details.destinationLocationDetails = .init()
         let destination = JourneyInfo.mock().destination
@@ -61,9 +61,11 @@ extension JourneyDetails {
                 latitude: origin.coordinate.latitude,
                 longitude: origin.coordinate.longitude
             ),
-            address: .init(displayAddress: "Origin address to display")
+            address: .init(displayAddress: "Origin address to display"),
+            details: PoiDetails(type: pickupPoiDetailsType)
         )
         details.scheduledDate = Date.mock()
+
         return details
     }
 }

@@ -10,6 +10,7 @@ import Quick
 import Nimble
 import SnapshotTesting
 import KarhooSDK
+import Combine
 import KarhooUISDKTestUtils
 @testable import KarhooUISDK
 
@@ -21,59 +22,171 @@ class CheckoutSnapshotSpec: QuickSpec {
             var sut: KarhooCheckoutViewController!
             var viewModel: KarhooCheckoutViewModel!
             var quote: Quote!
+            var journeyDetails: JourneyDetails!
             
             beforeEach {
                 KarhooUI.set(configuration: KarhooTestConfiguration())
                 let mockVC = MockViewController().then {
                     $0.loadViewIfNeeded()
                 }
+                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
+                sut = KarhooCheckoutViewController()
+                navigationController.pushViewController(sut, animated: false)
                 quote = TestUtil.getRandomQuote(
                     fleetName: "Fleet name",
                     categoryName: "Category name",
                     type: "type"
                 )
-                let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
-                navigationController = NavigationController(rootViewController: mockVC, style: .primary)
-                sut = KarhooCheckoutViewController()
-                viewModel = KarhooCheckoutViewModel(
-                    quote: quote,
-                    journeyDetails: journeyDetails,
-                    bookingMetadata: nil,
-                    router: MockCheckoutRouter()
-                )
-                sut.setupBinding(viewModel)
-                navigationController.pushViewController(sut, animated: false)
+                journeyDetails = JourneyDetails.mockWithScheduledDate()
             }
             
-            context("when Checkout is oponed without poi") {
-                it("no Flight or Train number should be visible") {
+            context("when Checkout is opened without poi and with scheduled ride") {
+                beforeEach {
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
+                    viewModel.legalNoticeViewModel.shouldShowView = false
+                    
+                }
+                it("should have visible time and not visible train and flight cells") {
                     testSnapshot(navigationController)
                 }
             }
             
             context("when pickup is from airport") {
                 beforeEach {
-                    let journeyDetails = JourneyDetails.mockWithTwoAddressesAndScheduledDate()
                     quote = TestUtil.getRandomQuote(
-                        fleetName: "Fleet name 2",
-                        fleetCapability: [FleetCapabilities.flightTracking.rawValue],
+                        fleetName: "Fleet name with flight tracking",
+                        fleetCapability: [FleetCapabilities.CodingKeys.flightTracking.rawValue],
                         categoryName: "Category name",
                         type: "type"
                     )
-                    viewModel = KarhooCheckoutViewModel(
-                        quote: quote,
-                        journeyDetails: journeyDetails,
-                        bookingMetadata: nil,
-                        router: MockCheckoutRouter()
-                    )
-                    sut.setupBinding(viewModel)
-                    navigationController.pushViewController(sut, animated: false)
+                    journeyDetails = JourneyDetails.mockWithScheduledDate(pickupPoiDetailsType: .airport)
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
                 }
-
-                it("Flight number cell should be visible") {
+                
+                it("should have flight number cell") {
                     testSnapshot(navigationController)
                 }
             }
+            
+            context("when pickup is from train station") {
+                beforeEach {
+                    quote = TestUtil.getRandomQuote(
+                        fleetName: "Fleet name with train tracking",
+                        fleetCapability: [FleetCapabilities.CodingKeys.trainTracking.rawValue],
+                        categoryName: "Category name",
+                        type: "type"
+                    )
+                    journeyDetails = JourneyDetails.mockWithScheduledDate(pickupPoiDetailsType: .trainStation)
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
+                }
+                
+                it("should have train number cell visible") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            context("when Checkout is opened with earn + burn loyalty") {
+                beforeEach {
+                    let loyaltyWorker = MockLoyaltyWorker()
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails, loyaltyWorker: loyaltyWorker)
+                    
+                    let loyaltyUiModel = LoyaltyUIModel(
+                        loyaltyId: "loyaltyId",
+                        currency: "USD",
+                        tripAmount: 12.52,
+                        canEarn: true,
+                        canBurn: true,
+                        burnAmount: 150,
+                        earnAmount: 15, balance: 12345
+                    )
+                    loyaltyWorker.modelSubject.send(.success(result: loyaltyUiModel))
+                    
+                }
+                it("should have valid design") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            context("when Checkout is opened with T&C checkbox required") {
+                beforeEach {
+                    KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
+                }
+                it("should have checkbox") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            context("when Checkout is opened with T&C checkbox required and user tap checkbox") {
+                beforeEach {
+                    KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = true
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
+                    viewModel.termsConditionsViewModel.didTapCheckbox()
+                }
+                it("should have selected checkbox") {
+                    assertSnapshot(
+                        matching: navigationController,
+                        as: .wait(
+                            for: 1,
+                            on: .image(on: .iPhoneX)
+                        ),
+                        named: QuickSpec.current.name
+                    )
+                }
+            }
+            
+            context("when status is readyToBook") {
+                beforeEach {
+                    KarhooTestConfiguration.isExplicitTermsAndConditionsConsentRequired = false
+                    setupSutWith(quote: quote, journeyDetails: journeyDetails)
+                    viewModel.state = .readyToBook
+                }
+                it("should have PAY button") {
+                    testSnapshot(navigationController)
+                }
+            }
+            
+            func setupSutWith(
+                quote: Quote,
+                journeyDetails: JourneyDetails,
+                loyaltyWorker: LoyaltyWorker = KarhooLoyaltyWorker.shared
+            ) {
+                viewModel = KarhooCheckoutViewModel(
+                    quote: quote,
+                    journeyDetails: journeyDetails,
+                    bookingMetadata: nil,
+                    router: MockCheckoutRouter(),
+                    loyaltyWorker: loyaltyWorker
+                )
+                sut.setupBinding(viewModel)
+            }
         }
+    }
+}
+
+// Will be removed when synced with unit tests
+class MockCheckoutRouter: CheckoutRouter {
+    func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
+        
+    }
+    
+    func routeToFlightNumber(title: String, flightNumber: String) {
+        
+    }
+    
+    func routeToTrainNumber(title: String, trainNumber: String) {
+        
+    }
+    
+    func routeToComment(title: String, comments: String) {
+        
+    }
+    
+    func routeToPassengerDetails(_ currentDetails: KarhooSDK.PassengerDetails?, delegate: KarhooUISDK.PassengerDetailsDelegate?) {
+        
+    }
+    
+    func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
+        
     }
 }
