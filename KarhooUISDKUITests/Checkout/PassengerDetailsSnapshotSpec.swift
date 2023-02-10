@@ -25,7 +25,14 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
                 sut = KarhooComponents().passengerDetails(details: nil, delegate: nil)
             }
             it("should present empty form") {
-                testSnapshot(sut)
+                assertSnapshot(
+                    matching: sut,
+                    as: .wait(
+                        for: 0.1,
+                        on: .image(on: .iPhoneX)
+                    ),
+                    named: QuickSpec.current.name
+                )
             }
         }
         
@@ -35,7 +42,14 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
                 sut = KarhooComponents().passengerDetails(details: details, delegate: nil)
             }
             it("should present form with first name filled") {
-                testSnapshot(sut)
+                assertSnapshot(
+                    matching: sut,
+                    as: .wait(
+                        for: 0.1,
+                        on: .image(on: .iPhoneX)
+                    ),
+                    named: QuickSpec.current.name
+                )
             }
         }
         
@@ -52,7 +66,14 @@ class PassengerDetailsSnapshotSpec: QuickSpec {
                 sut = KarhooComponents().passengerDetails(details: details, delegate: nil)
             }
             it("should have all details and buton enabled") {
-                testSnapshot(sut)
+                assertSnapshot(
+                    matching: sut,
+                    as: .wait(
+                        for: 0.1,
+                        on: .image(on: .iPhoneX)
+                    ),
+                    named: QuickSpec.current.name
+                )
             }
         }
     }
