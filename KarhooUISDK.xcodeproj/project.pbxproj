@@ -666,34 +666,6 @@
 			remoteGlobalIDString = FC8F471321539E24007841FB;
 			remoteInfo = KarhooUISDK;
 		};
-		518ADD9F291420CA007976E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 51BF1DF52913D24D0000BA7E;
-			remoteInfo = KarhooUISDKTestUtils;
-		};
-		518CDF2429156DA0009DDB23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
-			remoteInfo = Client;
-		};
-		518CDF2629156DA6009DDB23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
-			remoteInfo = Client;
-		};
-		51E225DB291417AA007704ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FC8F470B21539E24007841FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 51BF1DF52913D24D0000BA7E;
-			remoteInfo = KarhooUISDKTestUtils;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -3919,8 +3891,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				518CDF2729156DA6009DDB23 /* PBXTargetDependency */,
-				518ADDA0291420CA007976E1 /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKUITests;
 			productName = KarhooUISDKUITests;
@@ -3979,8 +3949,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				518CDF2529156DA0009DDB23 /* PBXTargetDependency */,
-				51E225DC291417AA007704ED /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKTests;
 			productName = KarhooUISDKTests;
@@ -4952,26 +4920,6 @@
 			isa = PBXTargetDependency;
 			target = FC8F471321539E24007841FB /* KarhooUISDK */;
 			targetProxy = 51286537291443BD00EA8934 /* PBXContainerItemProxy */;
-		};
-		518ADDA0291420CA007976E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 51BF1DF52913D24D0000BA7E /* KarhooUISDKTestUtils */;
-			targetProxy = 518ADD9F291420CA007976E1 /* PBXContainerItemProxy */;
-		};
-		518CDF2529156DA0009DDB23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
-			targetProxy = 518CDF2429156DA0009DDB23 /* PBXContainerItemProxy */;
-		};
-		518CDF2729156DA6009DDB23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
-			targetProxy = 518CDF2629156DA6009DDB23 /* PBXContainerItemProxy */;
-		};
-		51E225DC291417AA007704ED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 51BF1DF52913D24D0000BA7E /* KarhooUISDKTestUtils */;
-			targetProxy = 51E225DB291417AA007704ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
