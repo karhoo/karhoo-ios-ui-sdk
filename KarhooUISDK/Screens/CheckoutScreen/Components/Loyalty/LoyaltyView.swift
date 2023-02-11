@@ -16,7 +16,7 @@ struct LoyaltyView: View {
 
     var body: some View {
         if let error = viewModel.error {
-            LoyaltyErrorView(errorMessage: error.text)
+            KarhooLoyaltyErrorView(errorMessage: error.text)
                 .padding(.top, UIConstants.Spacing.standard)
         } else if viewModel.canEarn || viewModel.canBurn {
             VStack {
@@ -111,7 +111,7 @@ struct LoyaltyView: View {
         )
     }
     
-    private struct LoyaltyErrorView: View {
+    private struct KarhooLoyaltyErrorView: View {
         var errorMessage: String
         var body: some View {
             VStack(alignment: .leading) {

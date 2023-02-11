@@ -155,8 +155,8 @@ class CheckoutSnapshotSpec: QuickSpec {
                     quote: quote,
                     journeyDetails: journeyDetails,
                     bookingMetadata: nil,
-                    router: MockCheckoutRouter(),
-                    loyaltyWorker: loyaltyWorker
+                    loyaltyWorker: loyaltyWorker,
+                    router: MockCheckoutRouter()
                 )
                 sut.setupBinding(viewModel)
             }

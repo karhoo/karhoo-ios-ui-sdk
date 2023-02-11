@@ -36,7 +36,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
 
-    private let passengerDetailsWorker: KarhooCheckoutPassengerDetailsWorker
+    private let passengerDetailsWorker: CheckoutPassengerDetailsWorker
 
     // MARK: - Nested views models
 
@@ -78,26 +78,21 @@ final class KarhooCheckoutViewModel: ObservableObject {
         userService: UserService = Karhoo.getUserService(),
         passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
-        baseFarePopupDialogBuilder: PopupDialogScreenBuilder = UISDKScreenRouting.default.popUpDialog(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
         vehicleRuleProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
-        router: CheckoutRouter,
-        loyaltyWorker: LoyaltyWorker = KarhooLoyaltyWorker.shared
+        bookingWorkerClosure: (Quote, JourneyDetails, [String: Any]?) -> CheckoutBookingWorker = { quote, journeyDetails, bookingMetadata in
+            KarhooCheckoutBookingWorker(quote: quote, journeyDetails: journeyDetails, bookingMetadata: bookingMetadata)
+        },
+        passengerDetailsWorkerClosure: (PassengerDetails?) -> CheckoutPassengerDetailsWorker = { KarhooCheckoutPassengerDetailsWorker(details: $0) },
+        loyaltyWorker: LoyaltyWorker = KarhooLoyaltyWorker.shared,
+        router: CheckoutRouter
     ) {
         self.tripService = tripService
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
-        self.bookingWorker = KarhooCheckoutBookingWorker(
-            quote: quote,
-            journeyDetails: journeyDetails,
-            bookingMetadata: bookingMetadata
-        )
-
-        self.passengerDetailsWorker = KarhooCheckoutPassengerDetailsWorker(
-            details: passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger()
-        )
-        
+        self.bookingWorker = bookingWorkerClosure(quote, journeyDetails, bookingMetadata)
+        self.passengerDetailsWorker = passengerDetailsWorkerClosure(passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger())
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
@@ -114,8 +109,8 @@ final class KarhooCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        loyaltyWorker.setup(using: quote)
         self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
-
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
         self.setupInitialState()
@@ -129,6 +124,17 @@ final class KarhooCheckoutViewModel: ObservableObject {
             self?.showError = true
             self?.quoteExpired = true
         }
+    }
+
+    func didTapConfirm() {
+        // MARK: - Validate & proceed with payment flow
+        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: true) else {
+            withAnimation {
+                state = .gatheringInfo
+            }
+            return
+        }
+        submitBooking()
     }
 
     // MARK: Get simple data to display
@@ -196,27 +202,11 @@ final class KarhooCheckoutViewModel: ObservableObject {
         }
     }
 
-    // MARK: Interactions
-
-    func didSetComment(_ comment: String) {
-        bookingWorker.update(comment: comment)
-    }
-
-    func didTapConfirm() {
-        // MARK: - Validate & proceed with payment flow
-        guard validateIfAllRequiredDataAreProvided(triggerAdditionalBehavior: true) else {
-            withAnimation {
-                state = .gatheringInfo
-            }
-            return
-        }
-        submitBooking()
-    }
-
     // MARK: - State/main flow methods
 
     private func setupBinding() {
-        bookingWorker.statePublisher
+        bookingWorker.stateSubject
+            .dropFirst()
             .sink { [weak self] bookingState in
                 self?.handleBookingState(bookingState)
             }
@@ -342,13 +332,6 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
     // MARK: - Helpers
 
-    private var isKarhooUser: Bool {
-        switch Karhoo.configuration.authenticationMethod() {
-        case .karhooUser: return true
-        default: return false
-        }
-    }
-    
     private func shouldShowTrainNumberCell() -> Bool {
         journeyDetails.isScheduled &&
         quote.fleet.capability.compactMap({ FleetCapabilities(rawValue: $0) }).contains(.trainTracking) &&

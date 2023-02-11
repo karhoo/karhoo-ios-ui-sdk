@@ -35,13 +35,18 @@ public class MockPaymentManager: PaymentManager {
     public var nonceProvider: PaymentNonceProvider {
         nonceProviderMock
     }
+
+    public var shouldCheckThreeDSBeforeBookingToReturn: Bool? = false
     public var shouldCheckThreeDSBeforeBooking: Bool {
-        switch psp {
-            case .adyen:
-                return false
-            case .braintree:
-                return true
+        var computedValue: Bool {
+            switch psp {
+                case .adyen:
+                    return false
+                case .braintree:
+                    return true
+            }
         }
+        return shouldCheckThreeDSBeforeBookingToReturn ?? computedValue
     }
     
     public var shouldGetPaymentBeforeBooking: Bool {

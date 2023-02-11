@@ -12,15 +12,30 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum CheckoutBookingState {
+enum CheckoutBookingState: Equatable {
     case idle
     case loading
     case failure(KarhooError)
     case success(TripInfo)
+
+    static func == (lhs: CheckoutBookingState, rhs: CheckoutBookingState) -> Bool {
+        switch (lhs, rhs) {
+        case (.idle, .idle):
+            return true
+        case (.loading, .loading):
+            return true
+        case (.failure(let lhsError), .failure(let rhsError)):
+            return lhsError.localizedMessage == rhsError.localizedMessage
+        case (.success(let lhsTripInfo), .success(let rhsTripInfo)):
+            return lhsTripInfo.tripId == rhsTripInfo.tripId
+        default:
+            return false
+        }
+    }
 }
 
 protocol CheckoutBookingWorker: AnyObject {
-    var statePublisher: Published<CheckoutBookingState>.Publisher { get }
+    var stateSubject: CurrentValueSubject<CheckoutBookingState, Never> { get }
     func performBooking()
     func update(passengerDetails: PassengerDetails?)
     func update(trainNumber: String?)
@@ -49,8 +64,10 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private var comment: String?
     private let bookingMetadata: [String: Any]?
 
-    var statePublisher: Published<CheckoutBookingState>.Publisher { $bookingState }
-    @Published var bookingState: CheckoutBookingState = .idle
+    private(set) var stateSubject = CurrentValueSubject<CheckoutBookingState, Never>(.idle)
+    private var bookingState: CheckoutBookingState {
+        stateSubject.value
+    }
 
     // MARK: - Lifecycle
 
@@ -61,7 +78,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         userService: UserService = Karhoo.getUserService(),
         tripService: TripService = Karhoo.getTripService(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
-        paymentWorker: KarhooCheckoutPaymentWorker = KarhooCheckoutPaymentWorker(),
+        paymentWorker: CheckoutPaymentWorker = KarhooCheckoutPaymentWorker(),
         loyaltyWorker: LoyaltyWorker? = nil,
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
@@ -99,8 +116,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         switch bookingState {
         case .loading: break
         default:
-            bookingState = .loading
-            reportBookingEvent()
+            stateSubject.send(.loading)
             if isKarhooUser() {
                 submitAuthenticatedBooking()
             } else {
@@ -120,7 +136,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     private func submitGuestOrTokenExchangeBooking() {
         guard let passengerDetails = passengerDetails else {
-            bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
+            stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.getUserFail, code: "")))
             return
         }
 
@@ -128,7 +144,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             guard let user = userService.getCurrentUser(),
                   let currentOrganisation = user.organisations.first?.id
             else {
-                bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
+                stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.getUserFail, code: "")))
                 return
             }
             paymentWorker.threeDSecureNonceCheck(
@@ -164,7 +180,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         guard
             let currentOrganisation = userService.getCurrentUser()?.organisations.first?.id
         else {
-            bookingState = .failure(ErrorModel(message: UITexts.Errors.getUserFail, code: ""))
+            stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.getUserFail, code: "")))
             return
         }
         paymentWorker.getPaymentNonce(
@@ -174,7 +190,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
                 case .completed(let result):
                     self?.handleGetPaymentNonceResult(result)
                 case .cancelledByUser:
-                    self?.bookingState = .idle
+                    self?.stateSubject.send(.idle)
                 }
             }
         )
@@ -189,7 +205,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
                     if error.type == .errMissingBrowserInfo {
                         self?.sendBookRequest(loyaltyNonce: nil)
                     } else {
-                        self?.bookingState = .failure(error)
+                        self?.stateSubject.send(.failure(error))
                     }
                     return
                 }
@@ -210,16 +226,16 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .threeDSecureCheckFailed:
             requestNewPaymentMethod(showRetryAlert: true)
         case .failedToInitialisePaymentService(error: let error):
-            bookingState = .failure(error ?? ErrorModel.unknown())
+            stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .failedToAddCard(error: let error):
             if let error {
-                bookingState = .failure(error)
+                stateSubject.send(.failure(error))
             } else {
-                bookingState = .idle
+                stateSubject.send(.idle)
             }
-            bookingState = .failure(error ?? ErrorModel.unknown())
+            stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .cancelledByUser:
-            bookingState = .idle
+            stateSubject.send(.idle)
         }
     }
 
@@ -228,15 +244,15 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .completed(value: let result):
             switch result {
             case .failedToInitialisePaymentService:
-                bookingState = .failure(ErrorModel(message: UITexts.PaymentError.noDetailsMessage, code: ""))
+                stateSubject.send(.failure(ErrorModel(message: UITexts.PaymentError.noDetailsMessage, code: "")))
             case .threeDSecureAuthenticationFailed:
-                bookingState = .idle
+                stateSubject.send(.idle)
                 requestNewPaymentMethod()
             case .success:
                 book()
             }
         case .cancelledByUser:
-            bookingState = .idle
+            stateSubject.send(.idle)
         }
     }
 
@@ -249,16 +265,16 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
                 submitGuestOrTokenExchangeBooking()
             }
         case .didFailWithError(let error):
-            bookingState = .failure(error ?? ErrorModel.unknown())
+            stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .cancelledByUser:
-            bookingState = .idle
+            stateSubject.send(.idle)
         }
     }
 
     private func sendBookRequest(loyaltyNonce: String? = nil) {
         guard let paymentNonce = paymentWorker.getStoredPaymentNonce(),
               let passengerDetails = passengerDetails else {
-            bookingState = .failure(ErrorModel(message: UITexts.Errors.somethingWentWrong, code: ""))
+            stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.somethingWentWrong, code: "")))
             assertionFailure("At this point all required data should be already in place.")
             return
         }
@@ -317,7 +333,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
         guard let trip = result.getSuccessValue() else {
-            bookingState = .idle
+            stateSubject.send(.idle)
             reportBookingFailure(
                 message: result.getErrorValue()?.message ?? "",
                 correlationId: result.getCorrelationId()
@@ -325,25 +341,25 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             if result.getErrorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
                 requestNewPaymentMethod(showRetryAlert: true)
             } else {
-                bookingState = .failure(result.getErrorValue() ?? ErrorModel.unknown())
+                stateSubject.send(.failure(result.getErrorValue() ?? ErrorModel.unknown()))
             }
 
             return
         }
 
-        bookingState = .success(trip)
+        stateSubject.send(.success(trip))
         reportBookingSuccess(tripId: trip.tripId, correlationId: result.getCorrelationId())
     }
 
     private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
             reportBookingSuccess(tripId: trip.tripId, correlationId: result.getCorrelationId())
-            bookingState = .success(trip)
+            stateSubject.send(.success(trip))
         } else if let error = result.getErrorValue() {
             reportBookingFailure(message: error.message, correlationId: result.getCorrelationId())
-            bookingState = .failure(result.getErrorValue() ?? ErrorModel.unknown())
+            stateSubject.send(.failure(result.getErrorValue() ?? ErrorModel.unknown()))
         } else {
-            bookingState = .failure(ErrorModel.unknown())
+            stateSubject.send(.failure(ErrorModel.unknown()))
         }
     }
 
@@ -367,22 +383,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             correlationId: correlationId ?? "",
             message: message,
             lastFourDigits: paymentWorker.getStoredPaymentNonce()?.lastFour ?? "",
-            paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
-            date: Date(),
-            amount: quote.price.highPrice,
-            currency: quote.price.currencyCode
-        )
-    }
-
-    private func reportCardAuthorisationSuccess() {
-        analytics.cardAuthorisationSuccess(quoteId: quote.id)
-    }
-
-    private func reportCardAuthorisationFailure(message: String) {
-        analytics.cardAuthorisationFailure(
-            quoteId: quote.id,
-            errorMessage: message,
-            lastFourDigits: userService.getCurrentUser()?.nonce?.lastFour ?? "",
             paymentMethodUsed: String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager),
             date: Date(),
             amount: quote.price.highPrice,
