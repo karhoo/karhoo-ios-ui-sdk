@@ -42,7 +42,7 @@ public func testSnapshot<ViewController: UIViewController>(
 ) {
     guard let failureMessage = verifySnapshot(
         matching: viewController,
-        as: .image(on: .iPhoneX),
+        as: .wait(for: 0.1, on: .image(on: .iPhoneX)),
         file: file,
         testName: QuickSpec.current?.name ?? fileName,
         line: line
