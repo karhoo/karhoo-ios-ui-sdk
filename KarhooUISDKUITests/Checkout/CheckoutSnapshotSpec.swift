@@ -163,30 +163,3 @@ class CheckoutSnapshotSpec: QuickSpec {
         }
     }
 }
-
-// Will be removed when synced with unit tests
-class MockCheckoutRouter: CheckoutRouter {
-    func routeToPriceDetails(title: String, quoteType: KarhooSDK.QuoteType) {
-        
-    }
-    
-    func routeToFlightNumber(title: String, flightNumber: String) {
-        
-    }
-    
-    func routeToTrainNumber(title: String, trainNumber: String) {
-        
-    }
-    
-    func routeToComment(title: String, comments: String) {
-        
-    }
-    
-    func routeToPassengerDetails(_ currentDetails: KarhooSDK.PassengerDetails?, delegate: KarhooUISDK.PassengerDetailsDelegate?) {
-        
-    }
-    
-    func routeSuccessScene(with tripInfo: KarhooSDK.TripInfo, journeyDetails: KarhooUISDK.JourneyDetails?, quote: KarhooSDK.Quote, loyaltyInfo: KarhooUISDK.KarhooBasicLoyaltyInfo) {
-        
-    }
-}
