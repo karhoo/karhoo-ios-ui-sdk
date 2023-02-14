@@ -137,6 +137,7 @@ final class QuoteViewModel {
                                                          journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
+        self.vehicleType = Self.getVehicleTypeText(for: quote.vehicle)
         self.vehicleType = quote.vehicle.getVehicleTypeText()
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
@@ -199,7 +200,8 @@ final class QuoteViewModel {
         }
     }
 }
-extension QuoteVehicle{
+
+extension QuoteVehicle {
     func getVehicleTypeText() -> String {
         let tags = self.tags.compactMap { VehicleTag(rawValue: $0) }
         if tags.contains(.executive) {
