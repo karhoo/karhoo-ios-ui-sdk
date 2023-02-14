@@ -28,7 +28,7 @@ struct TextView: View {
     private var onCommit: (() -> Void)?
 
     var placeholderView: AnyView?
-    var foregroundColor: UIColor = .label
+    var foregroundColor: UIColor = KarhooUI.colors.text
     var autocapitalization: UITextAutocapitalizationType = .sentences
     var multilineTextAlignment: TextAlignment = .leading
     var font: UIFont = .preferredFont(forTextStyle: .body)
