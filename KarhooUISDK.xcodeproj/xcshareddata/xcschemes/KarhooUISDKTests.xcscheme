@@ -20,6 +20,20 @@
                ReferencedContainer = "container:KarhooUISDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "51CC85B9290BC1E600E5E703"
+               BuildableName = "KarhooUISDKUITests.xctest"
+               BlueprintName = "KarhooUISDKUITests"
+               ReferencedContainer = "container:KarhooUISDK.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
