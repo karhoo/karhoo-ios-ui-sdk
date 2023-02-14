@@ -189,7 +189,7 @@ class DestinationSetStrategySpec: KarhooTestCase {
 
         testObject.focusMap()
 
-        XCTAssert(mockMap.locationsToZoomTo?.count == 2)
+        XCTAssert(mockMap.locationsToZoomTo?.count == 3)
         
         assertLocationsToZoomOn(map: mockMap, details: details)
     }
