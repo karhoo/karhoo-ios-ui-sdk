@@ -27,8 +27,8 @@ extension View {
         _ text: String,
         when shouldShow: Bool,
         alignment: Alignment = .leading) -> some View {
-            
-            placeholder(when: shouldShow, alignment: alignment) { Text(text).foregroundColor(KarhooUI.colors.textLabel)}
+            placeholder(when: shouldShow, alignment: alignment) { Text(text).foregroundColor(Color(KarhooUI.colors.textLabel))
+        }
     }
     
     func placeholder<Content: View>(
