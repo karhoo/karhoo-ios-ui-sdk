@@ -22,13 +22,15 @@ struct KarhooMaterialDesignTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                TextField(placeholder, text: $text, onEditingChanged: { editingChanged in
+                TextField("", text: $text, onEditingChanged: { editingChanged in
                     if editingChanged {
                         isFirstResponder = true
                     } else {
                         isFirstResponder = false
                     }
                 })
+                .placeholder(placeholder, when: text.isEmpty)
+                .foregroundColor(Color(KarhooUI.colors.text))
                 .onChange(of: text) { newValue in
                     withAnimation {
                         isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
