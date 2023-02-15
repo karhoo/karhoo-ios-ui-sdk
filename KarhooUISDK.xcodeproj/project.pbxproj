@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -442,6 +442,7 @@
 		51E4056C2927ABF2001FB842 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E4056B2927ABF2001FB842 /* Line.swift */; };
 		51EAE7902840DE2D0033A8B1 /* KarhooTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */; };
 		51EBD5FA299D428B00FD0595 /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; };
+		51EBD5FB299D44E100FD0595 /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; platformFilter = ios; };
 		51ED5092299B935000C44BCE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ED5091299B935000C44BCE /* String+Extensions.swift */; };
 		51EFCA87285756270099071C /* QuoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA82285756270099071C /* QuoteListFilter.swift */; };
 		51EFCA88285756270099071C /* QuoteListFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA83285756270099071C /* QuoteListFiltersViewController.swift */; };
@@ -1425,6 +1426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51EBD5FB299D44E100FD0595 /* KarhooUISDK.framework in Frameworks */,
 				EF4075629BFF74F92B5CF181 /* Pods_KarhooUISDKTestUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
