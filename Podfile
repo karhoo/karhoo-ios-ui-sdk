@@ -40,22 +40,25 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.2'
-  
-  target 'KarhooUISDKTests' do
-    inherit! :complete
-    pod 'SnapshotTesting', '1.9.0'
-    pod 'Quick', '~> 5.0.1'
-    pod 'Nimble', '~> 10.0.0'
-  end
+end
 
-  target 'KarhooUISDKUITests' do
-    inherit! :complete
-    pod 'SnapshotTesting', '1.9.0'
-    pod 'Quick', '~> 5.0.1'
-    pod 'Nimble', '~> 10.0.0'
-  end
+target 'KarhooUISDKTests' do
+  inherit! :complete
+  pod 'SnapshotTesting', '1.9.0'
+  pod 'Quick', '~> 5.0.1'
+  pod 'Nimble', '~> 10.0.0'
+end
 
-  target 'KarhooUISDKTestUtils' do
-    inherit! :complete
-  end
+target 'KarhooUISDKUITests' do
+  inherit! :complete
+  pod 'SnapshotTesting', '1.9.0'
+  pod 'Quick', '~> 5.0.1'
+  pod 'Nimble', '~> 10.0.0'
+end
+
+target 'KarhooUISDKTestUtils' do
+  inherit! :complete
+  pod 'KarhooUISDK', :path => './'
+  pod 'KarhooUISDK/Adyen', :path => './'
+  pod 'KarhooUISDK/Braintree', :path => './'
 end
