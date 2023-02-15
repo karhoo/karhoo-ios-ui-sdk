@@ -31,7 +31,8 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+#  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-4493-update-architecture-settings'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.7.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'

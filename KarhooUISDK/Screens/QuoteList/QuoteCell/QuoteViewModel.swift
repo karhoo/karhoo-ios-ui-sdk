@@ -159,6 +159,9 @@ final class QuoteViewModel {
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
         case .fleet: fare = CurrencyCodeConverter.toPriceString(quote: quote)
+        @unknown default:
+            assertionFailure()
+            fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
         }
 
         self.logoImageURL = quote.fleet.logoUrl
@@ -199,7 +202,8 @@ final class QuoteViewModel {
         }
     }
 }
-extension QuoteVehicle{
+
+extension QuoteVehicle {
     func getVehicleTypeText() -> String {
         let tags = self.tags.compactMap { VehicleTag(rawValue: $0) }
         if tags.contains(.executive) {

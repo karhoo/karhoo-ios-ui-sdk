@@ -168,8 +168,8 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 return
             }
             self?.currentBalanceSubject.send(status.balance)
-            self?.canEarnSubject.send(status.canBurn)
-            self?.canBurnSubject.send(status.canEarn)
+            self?.canEarnSubject.send(status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn)
+            self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
         }
     }
 

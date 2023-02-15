@@ -9,6 +9,7 @@
 import Foundation
 import KarhooSDK
 import Combine
+import UIKit
 
 protocol CheckoutPaymentWorker: AnyObject {
     func setup(using quote: Quote)
