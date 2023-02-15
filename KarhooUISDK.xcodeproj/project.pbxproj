@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -307,8 +307,6 @@
 		518245872790A917006B791A /* KarhooColors+DefaultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245862790A917006B791A /* KarhooColors+DefaultSet.swift */; };
 		518245892790B2B0006B791A /* UIColorHexSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518245882790B2B0006B791A /* UIColorHexSpec.swift */; };
 		51884C12287DA1C900E48D70 /* LoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51884C11287DA1C900E48D70 /* LoadingBar.swift */; };
-		518ADDB0291428A0007976E1 /* libKarhooUISDKTestUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BF1DF62913D24D0000BA7E /* libKarhooUISDKTestUtils.a */; };
-		518ADDB1291428A5007976E1 /* libKarhooUISDKTestUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BF1DF62913D24D0000BA7E /* libKarhooUISDKTestUtils.a */; };
 		518D8F55278DF0BA001867C6 /* QuoteDatesHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */; };
 		5190F00B2847858600F7623A /* AdyenPaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141C924284637AC00F72E84 /* AdyenPaymentManager.swift */; };
 		5190F00C2847858600F7623A /* AdyenResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5141C9202846379200F72E84 /* AdyenResponseHandler.swift */; };
@@ -441,8 +439,6 @@
 		51E405692927ABA5001FB842 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E405682927ABA5001FB842 /* View+Extensions.swift */; };
 		51E4056C2927ABF2001FB842 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E4056B2927ABF2001FB842 /* Line.swift */; };
 		51EAE7902840DE2D0033A8B1 /* KarhooTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAE78F2840DE2D0033A8B1 /* KarhooTestCase.swift */; };
-		51EBD5FA299D428B00FD0595 /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; };
-		51EBD5FB299D44E100FD0595 /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; platformFilter = ios; };
 		51ED5092299B935000C44BCE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ED5091299B935000C44BCE /* String+Extensions.swift */; };
 		51EFCA87285756270099071C /* QuoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA82285756270099071C /* QuoteListFilter.swift */; };
 		51EFCA88285756270099071C /* QuoteListFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFCA83285756270099071C /* QuoteListFiltersViewController.swift */; };
@@ -474,7 +470,6 @@
 		51F614D72860EA2200A7EC11 /* FilterViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F614D62860EA2200A7EC11 /* FilterViewBuilder.swift */; };
 		51F614D92861B5BB00A7EC11 /* NumericFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F614D82861B5BB00A7EC11 /* NumericFilterView.swift */; };
 		51F614DB2861B5DE00A7EC11 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F614DA2861B5DE00A7EC11 /* FilterView.swift */; };
-		51F6DDBC299CF72D0058A39E /* KarhooUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F471421539E24007841FB /* KarhooUISDK.framework */; };
 		51FB611929752F01003FE5AB /* KarhooLegalNoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB611829752F01003FE5AB /* KarhooLegalNoticeViewModel.swift */; };
 		51FC1216298D533F00DE9019 /* QuoteVehicleCapacityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FC1215298D533F00DE9019 /* QuoteVehicleCapacityView.swift */; };
 		5C1CD0B0241A5D88004AFF7D /* TripOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CD0A1241A5D88004AFF7D /* TripOptionsViewModel.swift */; };
@@ -692,6 +687,20 @@
 			remoteInfo = KarhooUISDK;
 		};
 		51EBD5FE299D4E7B00FD0595 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC8F470B21539E24007841FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C2E260C2420F8AC00B1FF0C;
+			remoteInfo = Client;
+		};
+		51EBD600299D515000FD0595 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC8F470B21539E24007841FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC8F471321539E24007841FB;
+			remoteInfo = KarhooUISDK;
+		};
+		51EBD602299D532F00FD0595 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FC8F470B21539E24007841FB /* Project object */;
 			proxyType = 1;
@@ -1433,7 +1442,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51EBD5FB299D44E100FD0595 /* KarhooUISDK.framework in Frameworks */,
 				EF4075629BFF74F92B5CF181 /* Pods_KarhooUISDKTestUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1442,7 +1450,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518ADDB1291428A5007976E1 /* libKarhooUISDKTestUtils.a in Frameworks */,
 				D356B2E8B18A26FF67BF19F1 /* Pods_KarhooUISDKUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1451,7 +1458,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51F6DDBC299CF72D0058A39E /* KarhooUISDK.framework in Frameworks */,
 				128064DC340FC921934BA0C2 /* Pods_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1468,8 +1474,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51EBD5FA299D428B00FD0595 /* KarhooUISDK.framework in Frameworks */,
-				518ADDB0291428A0007976E1 /* libKarhooUISDKTestUtils.a in Frameworks */,
 				DBE107D5D918F93BE61E01C2 /* Pods_KarhooUISDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3962,6 +3966,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				51EBD603299D532F00FD0595 /* PBXTargetDependency */,
 				51202A0F29979842003D2C6F /* PBXTargetDependency */,
 			);
 			name = KarhooUISDKUITests;
@@ -3982,6 +3987,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				51EBD601299D515000FD0595 /* PBXTargetDependency */,
 			);
 			name = Client;
 			productName = Client;
@@ -5017,6 +5023,16 @@
 			isa = PBXTargetDependency;
 			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
 			targetProxy = 51EBD5FE299D4E7B00FD0595 /* PBXContainerItemProxy */;
+		};
+		51EBD601299D515000FD0595 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC8F471321539E24007841FB /* KarhooUISDK */;
+			targetProxy = 51EBD600299D515000FD0595 /* PBXContainerItemProxy */;
+		};
+		51EBD603299D532F00FD0595 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C2E260C2420F8AC00B1FF0C /* Client */;
+			targetProxy = 51EBD602299D532F00FD0595 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
