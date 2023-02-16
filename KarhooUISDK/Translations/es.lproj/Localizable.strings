@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "por ejemplo, AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Un conductor estará allí incluso en caso de retrasos.";
+"kh_uisdk_checkout_airport_subtitle" = "Un conductor le estará esperando aunque el vuelo se retrase.";
 
-"kh_uisdk_checkout_airport_title" = "Número de vuelo";
+"kh_uisdk_checkout_airport_title" = "Añadir un número de vuelo";
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAJE";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "por ejemplo, 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Añadir un número de tren";
+"kh_uisdk_checkout_train_subtitle" = "Un conductor te esperará aunque el tren se retrase.";
 
-"kh_uisdk_checkout_train_title" = "Número de tren";
+"kh_uisdk_checkout_train_title" = "Añadir un número de tren";
 
 "kh_uisdk_close_the_screen" = "Cierra la pantalla";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Seleccionar ubicación actual";
 
 "kh_uisdk_date" = "Fecha";
+
+"kh_uisdk_delete_destination_address" = "Eliminar dirección de destino";
 
 "kh_uisdk_destination" = "Destino";
 
