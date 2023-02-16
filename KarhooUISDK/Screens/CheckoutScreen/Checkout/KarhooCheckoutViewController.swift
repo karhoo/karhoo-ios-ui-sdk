@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import UIKit
+import Lottie
 
 final class KarhooCheckoutViewController: UIViewController, CheckoutViewController {
 
@@ -54,6 +55,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutViewControll
     // MARK: - Setup view
 
     private func setupView() {
+        let starAnimationView = LottieAnimationView()
         setupProperties()
         setupHierarchy()
         setupLayout()
