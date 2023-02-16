@@ -16,7 +16,7 @@ final class KarhooCheckoutCoordinator: CheckoutCoordinator {
     // MARK: - Nested types
 
     class Builder: CheckoutScreenBuilder {
-        func buildCheckoutScreen(
+        func buildCheckoutCoordinator(
             navigationController: UINavigationController?,
             quote: Quote,
             journeyDetails: JourneyDetails,

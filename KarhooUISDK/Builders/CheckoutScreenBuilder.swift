@@ -22,17 +22,15 @@ public protocol CheckoutScreenBuilder {
 
 public extension CheckoutScreenBuilder {
     func buildCheckoutCoordinator(
-        navigationController: UINavigationController?,
         quote: Quote,
         journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]? = nil,
         callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
     ) -> KarhooUISDKSceneCoordinator {
         buildCheckoutCoordinator(
-            navigationController: navigationController,
+            navigationController: nil,
             quote: quote,
             journeyDetails: journeyDetails,
-            bookingMetadata: bookingMetadata,
+            bookingMetadata: nil,
             callback: callback
         )
     }
