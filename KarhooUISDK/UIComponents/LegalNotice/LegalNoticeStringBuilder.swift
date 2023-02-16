@@ -16,7 +16,7 @@ struct LegalNoticeStringBuilder {
         paragraphStyle.alignment = .left
         paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
         
-        let titleForLink: String = "quo voluptas nulla pariatur" // UITexts.Booking.legalNoticeTitle
+        let titleForLink: String = UITexts.Booking.legalNoticeTitle
         let link = UITexts.Booking.legalNoticeLink
         let legalNoticeText = NSMutableAttributedString()
         let regularAttributes: [NSAttributedString.Key: Any] = [
@@ -36,11 +36,8 @@ struct LegalNoticeStringBuilder {
             linkAttibutes[.link] = linkUrl
         }
         var text: String {
-            #if DEBUG
-            mockLegalNotice
-            #else
+            // Replace with `mockLegalNotice` if mockd value needed.
             UITexts.Booking.legalNoticeText
-            #endif
         }
         let fullText = String(format: NSLocalizedString(text, comment: ""), titleForLink)
         legalNoticeText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
