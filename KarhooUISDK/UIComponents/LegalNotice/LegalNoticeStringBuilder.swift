@@ -5,6 +5,7 @@
 //  Created by Bartlomiej Sopala on 31/01/2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
