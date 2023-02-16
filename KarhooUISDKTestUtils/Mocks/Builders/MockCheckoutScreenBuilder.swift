@@ -15,19 +15,22 @@ final public class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
     public init() {}
 
     public var quote: Quote?
-    public var callback: ScreenResultCallback<TripInfo>?
-    public let screenInstance = Screen()
+    public var callback: ScreenResultCallback<KarhooCheckoutResult>?
+    public var screenInstance = MockCoordinator()
 
-    public func buildCheckoutScreen(quote: Quote,
-                             journeyDetails: JourneyDetails,
-                             bookingMetadata: [String: Any]?,
-                             callback: @escaping ScreenResultCallback<TripInfo>) -> Screen {
+    public func buildCheckoutCoordinator(
+        navigationController: UINavigationController?,
+        quote: KarhooSDK.Quote,
+        journeyDetails: KarhooUISDK.JourneyDetails,
+        bookingMetadata: [String : Any]?,
+        callback: @escaping KarhooUISDK.ScreenResultCallback<KarhooUISDK.KarhooCheckoutResult>
+    ) -> KarhooUISDK.KarhooUISDKSceneCoordinator {
         self.quote = quote
         self.callback = callback
         return screenInstance
     }
 
-    public func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
+    public func triggerCheckoutScreenResult(_ result: ScreenResult<KarhooCheckoutResult>) {
         callback?(result)
     }
 }

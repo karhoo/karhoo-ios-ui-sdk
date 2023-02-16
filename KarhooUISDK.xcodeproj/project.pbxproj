@@ -431,6 +431,7 @@
 		51CDD5442913D7CE009C8F4F /* MockPaymentNonceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CDD5432913D7CE009C8F4F /* MockPaymentNonceProvider.swift */; };
 		51CDD5462913D86B009C8F4F /* QuoteListFilterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */; };
 		51CDD5472913D86F009C8F4F /* KarhooQuoteFilterHandlerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A15285A0B1B00EE6583 /* KarhooQuoteFilterHandlerSpec.swift */; };
+		51CEDDDA299E924F0099CAB9 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CEDDD9299E924F0099CAB9 /* MockCoordinator.swift */; };
 		51D4231C2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D4231B2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift */; };
 		51DB017129702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB017029702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift */; };
 		51DB01762971DC5A00F7DFFD /* KarhooTermsConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB01752971DC5A00F7DFFD /* KarhooTermsConditionsView.swift */; };
@@ -1093,6 +1094,7 @@
 		51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTestConfiguration.swift; sourceTree = "<group>"; };
 		51CC85BA290BC1E600E5E703 /* KarhooUISDKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarhooUISDKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CDD5432913D7CE009C8F4F /* MockPaymentNonceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPaymentNonceProvider.swift; sourceTree = "<group>"; };
+		51CEDDD9299E924F0099CAB9 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		51D4231B2913CBDF007EB705 /* QuoteListSortSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListSortSnapshotSpec.swift; sourceTree = "<group>"; };
 		51DB017029702C4E00F7DFFD /* KarhooCheckoutBookingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCheckoutBookingWorker.swift; sourceTree = "<group>"; };
 		51DB01722971B7C900F7DFFD /* UITextView+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -1620,6 +1622,7 @@
 				51F3D2BC294246180005A1FB /* MockDateProvider.swift */,
 				51F4CBD22992BCAD005865B5 /* MockVehicleRulesProvider.swift */,
 				51F4CBD62992BCE7005865B5 /* MockQuoteValidityWorker.swift */,
+				51CEDDD9299E924F0099CAB9 /* MockCoordinator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -3945,6 +3948,7 @@
 				51CC85B7290BC1E600E5E703 /* Frameworks */,
 				51CC85B8290BC1E600E5E703 /* Resources */,
 				08D5ED5C0C53C3E62359BCF5 /* [CP] Embed Pods Frameworks */,
+				34BBAE832783C81D27CAC0B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3964,6 +3968,7 @@
 				5C2E260A2420F8AC00B1FF0C /* Frameworks */,
 				5C2E260B2420F8AC00B1FF0C /* Resources */,
 				140F235D0D0C0B7EB67C0FE0 /* [CP] Embed Pods Frameworks */,
+				8B640112863D26F571B7415F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3985,6 +3990,7 @@
 				FC8F471021539E24007841FB /* Frameworks */,
 				FC8F471221539E24007841FB /* Resources */,
 				5C8316B92469FCB200BAA926 /* SwiftLint Script */,
+				815E1413A6A4483250FB9408 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4004,6 +4010,7 @@
 				FC8F471A21539E24007841FB /* Frameworks */,
 				FC8F471B21539E24007841FB /* Resources */,
 				F8E7B9C09FA3A44C9381E865 /* [CP] Embed Pods Frameworks */,
+				E53A8DE27DE5978E431AA817 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4255,6 +4262,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		34BBAE832783C81D27CAC0B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKUITests/Pods-KarhooUISDK-KarhooUISDKUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKUITests/Pods-KarhooUISDK-KarhooUISDKUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKUITests/Pods-KarhooUISDK-KarhooUISDKUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		447563A53F504BDE6937213A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4294,6 +4318,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		815E1413A6A4483250FB9408 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK/Pods-KarhooUISDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B640112863D26F571B7415F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Client/Pods-Client-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E53A8DE27DE5978E431AA817 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KarhooUISDK-KarhooUISDKTests/Pods-KarhooUISDK-KarhooUISDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		F8E7B9C09FA3A44C9381E865 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4377,6 +4452,7 @@
 				51BF1E462913D2BE0000BA7E /* MockRideDetailsStackButtonActions.swift in Sources */,
 				5156A15A2913EF7500A70ED8 /* TestUtil.swift in Sources */,
 				51BF1E092913D27F0000BA7E /* MockKarhooExecutable.swift in Sources */,
+				51CEDDDA299E924F0099CAB9 /* MockCoordinator.swift in Sources */,
 				51BF1E3F2913D2BE0000BA7E /* MockDestinationEtaView.swift in Sources */,
 				51BF1E802913D3360000BA7E /* MockKarhooMapView.swift in Sources */,
 				51BF1E6B2913D31D0000BA7E /* MockTripService.swift in Sources */,
