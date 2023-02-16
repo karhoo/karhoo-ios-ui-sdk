@@ -4,7 +4,7 @@ platform :ios, '14.0'
 # Standard cocoapods specs source
 source 'https://cdn.cocoapods.org/'
 
-use_frameworks!
+use_frameworks! :linkage => :static
 
 post_install do |installer_representation|
   installer_representation.pods_project.targets.each do |target|
