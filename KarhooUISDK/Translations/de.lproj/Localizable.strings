@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "z.B. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Eine Flugnummer hinzufügen";
+"kh_uisdk_checkout_airport_subtitle" = "Ein Fahrer wird auf Sie warten, auch wenn der Flug Verspätung hat.";
 
-"kh_uisdk_checkout_airport_title" = "Flugnummer";
+"kh_uisdk_checkout_airport_title" = "Eine Flugnummer hinzufügen";
 
 "kh_uisdk_checkout_as_guest" = "FAHRT BUCHEN";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "z.B. 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Eine Zugnummer hinzufügen";
+"kh_uisdk_checkout_train_subtitle" = "Ein Fahrer wird auch dann auf Sie warten, wenn der Zug Verspätung hat.";
 
-"kh_uisdk_checkout_train_title" = "Zugnummer";
+"kh_uisdk_checkout_train_title" = "Zugnummer hinzufügen";
 
 "kh_uisdk_close_the_screen" = "Schließen Sie den Bildschirm";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Aktuellen Standort ermitteln";
 
 "kh_uisdk_date" = "Datum";
+
+"kh_uisdk_delete_destination_address" = "Zieladresse löschen";
 
 "kh_uisdk_destination" = "Zielort";
 

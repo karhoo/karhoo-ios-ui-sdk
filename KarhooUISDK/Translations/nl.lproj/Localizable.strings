@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "bijv. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Ook bij vertragingen is er een chauffeur aanwezig";
+"kh_uisdk_checkout_airport_subtitle" = "Een chauffeur zal op u wachten, zelfs als de vlucht vertraagd is.";
 
-"kh_uisdk_checkout_airport_title" = "Vluchtnummer";
+"kh_uisdk_checkout_airport_title" = "Een vluchtnummer toevoegen";
 
 "kh_uisdk_checkout_as_guest" = "RIT BOEKEN";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "bijvoorbeeld 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Voeg een treinnummer toe";
+"kh_uisdk_checkout_train_subtitle" = "Een machinist wacht op u, zelfs als de trein vertraging heeft.";
 
-"kh_uisdk_checkout_train_title" = "Trein nummer";
+"kh_uisdk_checkout_train_title" = "Voeg een treinnummer toe";
 
 "kh_uisdk_close_the_screen" = "Sluit het scherm";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Huidige locatie opvragen";
 
 "kh_uisdk_date" = "Datum";
+
+"kh_uisdk_delete_destination_address" = "Bestemmingsadres verwijderen";
 
 "kh_uisdk_destination" = "Bestemming";
 

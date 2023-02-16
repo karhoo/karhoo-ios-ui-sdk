@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "misalnya AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Seorang pengemudi akan berada di sana bahkan jika terjadi penundaan";
+"kh_uisdk_checkout_airport_subtitle" = "Seorang pengemudi akan menunggu Anda meskipun penerbangan ditunda.";
 
-"kh_uisdk_checkout_airport_title" = "Nomor penerbangan";
+"kh_uisdk_checkout_airport_title" = "Menambahkan nomor penerbangan";
 
 "kh_uisdk_checkout_as_guest" = "PESAN PERJALANAN";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "misalnya 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Tambahkan nomor kereta";
+"kh_uisdk_checkout_train_subtitle" = "Seorang pengemudi akan menunggu Anda meskipun kereta mengalami keterlambatan.";
 
-"kh_uisdk_checkout_train_title" = "Nomor kereta";
+"kh_uisdk_checkout_train_title" = "Menambahkan nomor kereta";
 
 "kh_uisdk_close_the_screen" = "Tutup layar";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Dapatkan lokasi saat ini";
 
 "kh_uisdk_date" = "Tanggal";
+
+"kh_uisdk_delete_destination_address" = "Hapus alamat tujuan";
 
 "kh_uisdk_destination" = "Tujuan";
 

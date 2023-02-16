@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "np. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Dodaj numer lotu";
+"kh_uisdk_checkout_airport_subtitle" = "Kierowca będzie czekał na Ciebie nawet jeśli lot będzie opóźniony.";
 
-"kh_uisdk_checkout_airport_title" = "Numer lotu";
+"kh_uisdk_checkout_airport_title" = "Dodaj numer lotu";
 
 "kh_uisdk_checkout_as_guest" = "ZAREZERWUJ PRZEJAZD";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "np. 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Dodaj numer pociągu";
+"kh_uisdk_checkout_train_subtitle" = "Kierowca będzie czekał na Ciebie nawet jeśli pociąg będzie opóźniony.";
 
-"kh_uisdk_checkout_train_title" = "Numer pociągu";
+"kh_uisdk_checkout_train_title" = "Dodaj numer pociągu";
 
 "kh_uisdk_close_the_screen" = "Zamknij ekran";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Moja lokalizacja";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_delete_destination_address" = "Usuń adres docelowy";
 
 "kh_uisdk_destination" = "Cel";
 
