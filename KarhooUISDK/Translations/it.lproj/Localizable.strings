@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "ad esempio AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Aggiungi un numero di volo";
+"kh_uisdk_checkout_airport_subtitle" = "Un autista vi aspetterà anche se il volo è in ritardo.";
 
-"kh_uisdk_checkout_airport_title" = "Numero del volo";
+"kh_uisdk_checkout_airport_title" = "Aggiungere un numero di volo";
 
 "kh_uisdk_checkout_as_guest" = "PRENOTA CORSA";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "ad esempio 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Aggiungi un numero di treno";
+"kh_uisdk_checkout_train_subtitle" = "Un autista vi aspetterà anche se il treno è in ritardo.";
 
-"kh_uisdk_checkout_train_title" = "Numero del treno";
+"kh_uisdk_checkout_train_title" = "Aggiungere un numero di treno";
 
 "kh_uisdk_close_the_screen" = "Chiudi lo schermo";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Ottieni posizione attuale";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_delete_destination_address" = "Elimina indirizzo di destinazione";
 
 "kh_uisdk_destination" = "Destinazione";
 
@@ -687,7 +689,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Puoi usare punti Reward per pagare questa corsa";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Usa %@ punti Reward per pagare %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Usa %3$@ punti Reward per pagare %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Usa i tuoi punti Reward";
 

@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "例如AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "添加航班号";
+"kh_uisdk_checkout_airport_subtitle" = "即使航班延误，也会有司机等着你。";
 
-"kh_uisdk_checkout_airport_title" = "航班号";
+"kh_uisdk_checkout_airport_title" = "添加一个航班号";
 
 "kh_uisdk_checkout_as_guest" = "预订行程";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "例如 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "添加车次";
+"kh_uisdk_checkout_train_subtitle" = "即使火车晚点，司机也会等你。";
 
-"kh_uisdk_checkout_train_title" = "车次";
+"kh_uisdk_checkout_train_title" = "添加一个火车号码";
 
 "kh_uisdk_close_the_screen" = "关闭屏幕";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "获取当前位置";
 
 "kh_uisdk_date" = "日期";
+
+"kh_uisdk_delete_destination_address" = "删除目标地址";
 
 "kh_uisdk_destination" = "目的地";
 
