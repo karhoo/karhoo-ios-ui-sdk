@@ -33,7 +33,7 @@ public enum KarhooLoyaltyError: KarhooError {
     }
 }
 
-public enum LoyaltyMode {
+public enum LoyaltyMode: Equatable {
     case none
     case earn
     case burn
@@ -65,7 +65,7 @@ public enum LoyaltyMode {
         }
     }
     
-    static func == (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+    public static func == (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true

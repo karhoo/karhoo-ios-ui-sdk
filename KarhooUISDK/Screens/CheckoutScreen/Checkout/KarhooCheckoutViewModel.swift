@@ -37,6 +37,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let vehicleRuleProvider: VehicleRulesProvider
 
     private let passengerDetailsWorker: CheckoutPassengerDetailsWorker
+    private let loyaltyWorker: LoyaltyWorker
 
     // MARK: - Nested views models
 
@@ -109,6 +110,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
+        self.loyaltyWorker = loyaltyWorker
         loyaltyWorker.setup(using: quote)
         self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
@@ -314,12 +316,26 @@ final class KarhooCheckoutViewModel: ObservableObject {
         case .failure(let error):
             state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
+            var pointsToPass: Int {
+                switch loyaltyWorker.modeSubject.value {
+                case .none, .error(type: _):
+                    return 0
+                case .earn:
+                    return loyaltyWorker.modelSubject.value.getSuccessValue()??.earnAmount ?? 0
+                case .burn:
+                    return loyaltyWorker.modelSubject.value.getSuccessValue()??.burnAmount ?? 0
+                }
+            }
             quoteValidityWorker.invalidate()
             router.routeSuccessScene(
                 with: tripInfo,
                 journeyDetails: journeyDetails,
                 quote: quote,
-                loyaltyInfo: .init(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+                loyaltyInfo: .init(
+                    shouldShowLoyalty: loyaltyWorker.isLoyaltyEnabled,
+                    loyaltyPoints: pointsToPass,
+                    loyaltyMode: loyaltyWorker.modeSubject.value
+                )
             )
         }
     }
