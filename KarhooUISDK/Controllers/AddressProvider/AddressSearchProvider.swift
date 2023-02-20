@@ -10,7 +10,7 @@ import Foundation
 import KarhooSDK
 import CoreLocation
 
-protocol AddressSearchProviderDelegate: class {
+protocol AddressSearchProviderDelegate: AnyObject {
     func searchCompleted(places: [Place])
     func useDefaultAddresses(recents: [LocationInfo])
     func searchInProgress()
