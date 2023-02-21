@@ -81,9 +81,17 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     func getBasicLoyaltyInfo() -> KarhooBasicLoyaltyInfo {
-        KarhooBasicLoyaltyInfo(
+        let loyaltyModel = modelSubject.value.getSuccessValue()
+        var points: Int {
+            switch modeSubject.value {
+            case .earn: return loyaltyModel??.earnAmount ?? 0
+            case .burn: return loyaltyModel??.burnAmount ?? 0
+            default: return 0
+            }
+        }
+        return KarhooBasicLoyaltyInfo(
             shouldShowLoyalty: isLoyaltyEnabled,
-            loyaltyPoints: modelSubject.value.getSuccessValue()??.balance ?? 0,
+            loyaltyPoints: points,
             loyaltyMode: modeSubject.value
         )
     }
