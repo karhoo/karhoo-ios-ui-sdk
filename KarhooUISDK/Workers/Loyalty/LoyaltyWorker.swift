@@ -171,22 +171,22 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         }
 
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
-//            self?.reportLoyaltyStatusRequested(
-//                quoteId: self?.quote?.id,
-//                correlationId: result.getCorrelationId(),
-//                loyaltyName: id,
-//                loyaltyStatus: result.getSuccessValue(),
-//                error: result.getErrorValue()
-//            )
-//
-//            guard let status = result.getSuccessValue() else {
+            self?.reportLoyaltyStatusRequested(
+                quoteId: self?.quote?.id,
+                correlationId: result.getCorrelationId(),
+                loyaltyName: id,
+                loyaltyStatus: result.getSuccessValue(),
+                error: result.getErrorValue()
+            )
+
+            guard let status = result.getSuccessValue() else {
                 let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
                 self?.modelSubject.send(.failure(error: error))
-//                return
-//            }
-//            self?.currentBalanceSubject.send(status.balance)
-//            self?.canEarnSubject.send(status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn)
-//            self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
+                return
+            }
+            self?.currentBalanceSubject.send(status.balance)
+            self?.canEarnSubject.send(status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn)
+            self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
         }
     }
 
