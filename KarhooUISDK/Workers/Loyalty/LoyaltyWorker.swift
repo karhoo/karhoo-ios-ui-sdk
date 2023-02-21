@@ -15,6 +15,7 @@ protocol LoyaltyWorker: AnyObject {
     var modeSubject: CurrentValueSubject<LoyaltyMode, Never> { get }
     func setup(using quote: Quote)
     func getLoyaltyNonce(completion: @escaping (Result<LoyaltyNonce>) -> Void)
+    func getBasicLoyaltyInfo() -> KarhooBasicLoyaltyInfo
 }
 
 final class KarhooLoyaltyWorker: LoyaltyWorker {
@@ -77,6 +78,22 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             return
         }
         loyaltyPreAuthWorker.getLoyaltyPreAuthNonce(completion: completion)
+    }
+
+    func getBasicLoyaltyInfo() -> KarhooBasicLoyaltyInfo {
+        let loyaltyModel = modelSubject.value.getSuccessValue()
+        var points: Int {
+            switch modeSubject.value {
+            case .earn: return loyaltyModel??.earnAmount ?? 0
+            case .burn: return loyaltyModel??.burnAmount ?? 0
+            default: return 0
+            }
+        }
+        return KarhooBasicLoyaltyInfo(
+            shouldShowLoyalty: isLoyaltyEnabled,
+            loyaltyPoints: points,
+            loyaltyMode: modeSubject.value
+        )
     }
 
     // MARK: - Private methods

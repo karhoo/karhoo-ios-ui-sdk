@@ -33,6 +33,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let bookingWorker: CheckoutBookingWorker
+    private let loyaltyWorker: LoyaltyWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
 
@@ -331,11 +332,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
                 with: tripInfo,
                 journeyDetails: journeyDetails,
                 quote: quote,
-                loyaltyInfo: .init(
-                    shouldShowLoyalty: loyaltyWorker.isLoyaltyEnabled,
-                    loyaltyPoints: pointsToPass,
-                    loyaltyMode: loyaltyWorker.modeSubject.value
-                )
+                loyaltyInfo: loyaltyWorker.getBasicLoyaltyInfo()
             )
         }
     }
