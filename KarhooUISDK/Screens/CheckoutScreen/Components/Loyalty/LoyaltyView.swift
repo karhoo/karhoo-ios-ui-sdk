@@ -196,6 +196,6 @@ struct LoyaltyView: View {
 
 struct LoyaltyView_Previews: PreviewProvider {
     static var previews: some View {
-        LoyaltyView(viewModel: LoyaltyViewModel(worker: KarhooLoyaltyWorker.shared))
+        LoyaltyView(viewModel: LoyaltyViewModel())
     }
 }

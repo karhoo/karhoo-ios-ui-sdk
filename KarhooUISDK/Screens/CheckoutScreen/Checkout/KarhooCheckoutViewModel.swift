@@ -111,7 +111,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
             termsStringURL: quote.fleet.termsConditionsUrl
         )
         self.loyaltyWorker = loyaltyWorker
-        self.loyaltyWorker.setup(using: quote)
+        loyaltyWorker.setup(using: quote)
         self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()

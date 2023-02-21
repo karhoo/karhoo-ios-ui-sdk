@@ -44,7 +44,7 @@ class LoyaltyViewModel: ObservableObject {
 
     // MARK: - Lifecycle
 
-    init(worker: LoyaltyWorker) {
+    init(worker: LoyaltyWorker = KarhooLoyaltyWorker.shared) {
         self.worker = worker
         self.currency = ""
         self.tripAmount = 0
@@ -81,20 +81,16 @@ class LoyaltyViewModel: ObservableObject {
     }
     
     private func update(withModel model: LoyaltyUIModel?) {
-        if let model = model {
-            self.balance = model.balance
-            self.earnAmount = model.earnAmount
-            self.canEarn = model.canEarn
-            self.currency = model.currency
-            self.tripAmount = model.tripAmount
-            self.burnAmount = model.burnAmount
-            self.canBurn = model.canBurn
-            if model.canEarn {
-                worker.modeSubject.send(.earn)
-            }
-        }
+        guard let model else { return }
+        balance = model.balance
+        earnAmount = model.earnAmount
+        canEarn = model.canEarn
+        currency = model.currency
+        tripAmount = model.tripAmount
+        burnAmount = model.burnAmount
+        canBurn = model.canBurn
     }
-    
+
     private func handleError(_ error: KarhooError) {
         if let loyaltyError = error as? KarhooLoyaltyError {
             switch loyaltyError {

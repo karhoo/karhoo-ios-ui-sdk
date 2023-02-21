@@ -90,7 +90,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
             }
         }
         return KarhooBasicLoyaltyInfo(
-            shouldShowLoyalty: isLoyaltyEnabled,
+            shouldShowLoyalty: isLoyaltyEnabled && modeSubject.value != .none,
             loyaltyPoints: points,
             loyaltyMode: modeSubject.value
         )
@@ -121,14 +121,14 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         .sink(receiveValue: { [weak self] values in
             let earnBurnValues = values.1
             let mode = values.2
+            let burnAmount = earnBurnValues.1 ?? 0
+            let earnAmount = earnBurnValues.0 ?? 0
+            let balance = values.0 ?? 0
 
             guard
                 let self,
                 let quote = self.quote,
-                let loyaltyId = self.loyaltyId(),
-                let burnAmount = earnBurnValues.1,
-                let earnAmount = earnBurnValues.0,
-                let balance = values.0
+                let loyaltyId = self.loyaltyId()
             else {
                 return
             }

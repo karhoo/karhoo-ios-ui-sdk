@@ -33,7 +33,7 @@ public enum KarhooLoyaltyError: KarhooError {
     }
 }
 
-public enum LoyaltyMode {
+public enum LoyaltyMode: Equatable {
     case none
     case earn
     case burn
@@ -64,23 +64,8 @@ public enum LoyaltyMode {
             }
         }
     }
-    
-    static func == (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
-        switch (lhs, rhs) {
-        case (.none, .none):
-            return true
-        case (.earn, .earn):
-            return true
-        case (.burn, .burn):
-            return true
-        case (let .error(type1), let.error(type2)):
-            return type1 == type2
-        default:
-            return false
-        }
-    }
-    
-    static func != (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
+
+    public static func != (lhs: LoyaltyMode, rhs: LoyaltyMode) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return false

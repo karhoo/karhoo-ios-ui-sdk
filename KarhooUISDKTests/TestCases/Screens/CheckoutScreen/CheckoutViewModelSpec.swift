@@ -62,6 +62,7 @@ class KarhooCheckoutViewModelSpec: QuickSpec {
             var mockPassengerDetails: PassengerDetails!
             var mockLoyaltyUIModel: LoyaltyUIModel!
             var mockTripInfo: TripInfo!
+            var mockBasicLoyaltyInfo: KarhooBasicLoyaltyInfo!
 
             var expectedError: KarhooError!
 
@@ -293,6 +294,12 @@ class KarhooCheckoutViewModelSpec: QuickSpec {
                             result: mockLoyaltyUIModel,
                             correlationId: ""
                         ))
+                        mockBasicLoyaltyInfo = .init(
+                            shouldShowLoyalty: true,
+                            loyaltyPoints: 10,
+                            loyaltyMode: .earn
+                        )
+                        mockLoyaltyWorker.getBasicLoyaltyInfoToReturn = mockBasicLoyaltyInfo
                     }
 
                     it("show have proper Loyalty data to present") {
@@ -304,6 +311,42 @@ class KarhooCheckoutViewModelSpec: QuickSpec {
                         expect(sut.loyaltyViewModel.currency).to(equal(mockLoyaltyUIModel.currency))
                         expect(sut.loyaltyViewModel.tripAmount).to(equal(mockLoyaltyUIModel.tripAmount))
                         expect(sut.loyaltyViewModel.burnAmount).to(equal(mockLoyaltyUIModel.burnAmount))
+                    }
+                    
+                    context("and when booking state is changed to .success") {
+                        beforeEach {
+                            mockBookingWoker.stateSubject.send(.success(mockTripInfo))
+                        }
+                        
+                        it ("should pass correct data to router success scene") {
+                            expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.shouldShowLoyalty).to(equal(mockLoyaltyWorker.isLoyaltyEnabled))
+                            expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.loyaltyPoints).to(equal(mockBasicLoyaltyInfo.loyaltyPoints))
+                            expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.loyaltyMode).to(equal(LoyaltyMode.earn))
+                            
+                        }
+                    }
+                    context("and when is switched to burn mode") {
+                        beforeEach {
+                            sut.loyaltyViewModel.isBurnModeOn = true
+                            mockBasicLoyaltyInfo = .init(
+                                shouldShowLoyalty: true,
+                                loyaltyPoints: 10,
+                                loyaltyMode: .burn
+                            )
+                            mockLoyaltyWorker.getBasicLoyaltyInfoToReturn = mockBasicLoyaltyInfo
+                        }
+                        context("and when booking state is changed to .success") {
+                            beforeEach {
+                                mockBookingWoker.stateSubject.send(.success(mockTripInfo))
+                            }
+                            
+                            it ("should pass correct data to router success scene") {
+                                expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.shouldShowLoyalty).to(equal(mockLoyaltyWorker.isLoyaltyEnabled))
+                                expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.loyaltyPoints).to(equal(mockBasicLoyaltyInfo.loyaltyPoints))
+                                expect(mockCheckoutRouter.routeSuccessSceneCalledData?.loyaltyInfo.loyaltyMode).to(equal(LoyaltyMode.burn))
+                                
+                            }
+                        }
                     }
 
                     context("and when there is a loyalty insufficientBalance error") {
