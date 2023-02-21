@@ -44,7 +44,7 @@ class LoyaltyViewModel: ObservableObject {
 
     // MARK: - Lifecycle
 
-    init(worker: LoyaltyWorker) {
+    init(worker: LoyaltyWorker = KarhooLoyaltyWorker.shared) {
         self.worker = worker
         self.currency = ""
         self.tripAmount = 0
@@ -89,7 +89,7 @@ class LoyaltyViewModel: ObservableObject {
             self.tripAmount = model.tripAmount
             self.burnAmount = model.burnAmount
             self.canBurn = model.canBurn
-            if model.canEarn {
+            if model.canEarn && worker.modeSubject.value == .none {
                 worker.modeSubject.send(.earn)
             }
         }
