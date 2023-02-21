@@ -33,6 +33,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let analytics: Analytics
     private let sdkConfiguration: KarhooUISDKConfiguration
     private let bookingWorker: CheckoutBookingWorker
+    private let loyaltyWorker: LoyaltyWorker
     private let dateFormatter: DateFormatterType
     private let vehicleRuleProvider: VehicleRulesProvider
 
@@ -109,7 +110,8 @@ final class KarhooCheckoutViewModel: ObservableObject {
             supplier: quote.fleet.name,
             termsStringURL: quote.fleet.termsConditionsUrl
         )
-        loyaltyWorker.setup(using: quote)
+        self.loyaltyWorker = loyaltyWorker
+        self.loyaltyWorker.setup(using: quote)
         self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
@@ -319,7 +321,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
                 with: tripInfo,
                 journeyDetails: journeyDetails,
                 quote: quote,
-                loyaltyInfo: .init(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+                loyaltyInfo: loyaltyWorker.getBasicLoyaltyInfo()
             )
         }
     }
