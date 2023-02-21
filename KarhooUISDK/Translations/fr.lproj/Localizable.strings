@@ -817,11 +817,11 @@
 
 "kh_uisdk_price_bottom_sheet_title" = "Détails des prix";
 
-"kh_uisdk_price_info_text_estimated" = "Les taxis de ce partenaire ne sont pas réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du partenaire pour plus d'informations.";
+"kh_uisdk_price_info_text_estimated" = "Les taxis de ce partenaire ne sont pas réglementés. Le prix est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.). Consultez les conditions générales du partenaire pour plus d'informations.";
 
 "kh_uisdk_price_info_text_fixed" = "Ce partenaire applique un tarif forfaitaire. Le tarif final peut être affecté par des extras (péages, retard, etc.), consultez les conditions générales du prestataire pour en savoir plus.";
 
-"kh_uisdk_price_info_text_metered" = "Les taxis de ce partenaire sont équipés d’un compteur et sont réglementés. L’offre est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.).";
+"kh_uisdk_price_info_text_metered" = "Les taxis de ce partenaire sont équipés d’un compteur et sont réglementés. Le prix est une estimation reposant sur les caractéristiques de la course (distance, temps, etc.).";
 
 "kh_uisdk_price_meet_and_greet" = "Accueil pancarte";
 
@@ -1097,7 +1097,7 @@
 
 "kh_uisdk_vehicle_mpv" = "Van";
 
-"kh_uisdk_vehicle_standard" = "Standard";
+"kh_uisdk_vehicle_standard" = "Berline";
 
 "kh_uisdk_wheelchair" = "Accessible PMR";
 
