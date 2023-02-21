@@ -28,4 +28,9 @@ public class MockLoyaltyWorker: LoyaltyWorker {
         getLoyaltyNonceCalled = true 
         completion(getLoyaltyNonceResult)
     }
+
+    public var getBasicLoyaltyInfoToReturn: KarhooUISDK.KarhooBasicLoyaltyInfo = .init(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+    public func getBasicLoyaltyInfo() -> KarhooUISDK.KarhooBasicLoyaltyInfo {
+        getBasicLoyaltyInfoToReturn
+    }
 }

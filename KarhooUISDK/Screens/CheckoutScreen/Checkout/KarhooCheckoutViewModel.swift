@@ -316,16 +316,6 @@ final class KarhooCheckoutViewModel: ObservableObject {
         case .failure(let error):
             state = .error(title: UITexts.Generic.error, message: error.localizedMessage)
         case .success(let tripInfo):
-            var pointsToPass: Int {
-                switch loyaltyWorker.modeSubject.value {
-                case .none, .error(type: _):
-                    return 0
-                case .earn:
-                    return loyaltyWorker.modelSubject.value.getSuccessValue()??.earnAmount ?? 0
-                case .burn:
-                    return loyaltyWorker.modelSubject.value.getSuccessValue()??.burnAmount ?? 0
-                }
-            }
             quoteValidityWorker.invalidate()
             router.routeSuccessScene(
                 with: tripInfo,
