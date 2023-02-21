@@ -38,7 +38,6 @@ final class KarhooCheckoutViewModel: ObservableObject {
     private let vehicleRuleProvider: VehicleRulesProvider
 
     private let passengerDetailsWorker: CheckoutPassengerDetailsWorker
-    private let loyaltyWorker: LoyaltyWorker
 
     // MARK: - Nested views models
 
