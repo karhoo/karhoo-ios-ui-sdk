@@ -18,7 +18,6 @@ struct CheckoutView: View {
     }
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: KarhooCheckoutViewModel
-    @State private var showLegalNotice: Bool = false
 
     var body: some View {
         ZStack {
@@ -83,36 +82,10 @@ struct CheckoutView: View {
                         if viewModel.legalNoticeViewModel.shouldShowView {
                             HStack {
                                 Spacer()
-                                Button(
-                                    action: {
-                                        withAnimation {
-                                            showLegalNotice.toggle()
-                                            if showLegalNotice {
-                                                scrollViewProxy.scrollTo(Constants.legalNoticeViewId, anchor: .bottom)
-                                            }
-                                        }
-                                    },
-                                    label: {
-                                        HStack(spacing: UIConstants.Spacing.small) {
-                                            Text(UITexts.Booking.legalNotice)
-                                                .foregroundColor(Color(KarhooUI.colors.accent))
-                                                .font(Font(KarhooUI.fonts.captionSemibold()))
-                                            Image("kh_uisdk_drop_down_icon", bundle: .current)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .rotationEffect(getArrowRotationAngle())
-                                                .foregroundColor(Color(KarhooUI.colors.accent))
-                                                .frame(
-                                                    width: UIConstants.Dimension.Icon.standard,
-                                                    height: UIConstants.Dimension.Icon.standard
-                                                )
-                                        }
-                                    }
-                                )
+                                Text(UITexts.Booking.legalNotice)
+                                    .foregroundColor(Color(KarhooUI.colors.accent))
+                                    .font(Font(KarhooUI.fonts.captionSemibold()))
                             }
-                        }
-
-                        if showLegalNotice {
                             KarhooLegalNoticeView(viewModel: viewModel.legalNoticeViewModel)
                         }
                         Spacer()
@@ -226,15 +199,6 @@ struct CheckoutView: View {
     }
 
     // MARK: - Helpers
-
-    private func getArrowRotationAngle() -> Angle {
-        switch showLegalNotice {
-        case true:
-            return Angle(degrees: 180)
-        case false:
-            return Angle(degrees: 0)
-        }
-    }
 
     private var quoteExpiredAlert: Alert {
         Alert(
