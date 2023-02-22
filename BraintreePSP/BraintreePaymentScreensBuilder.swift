@@ -34,21 +34,9 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
             authorization: paymentsToken.token,
             request: request,
             handler: {( _, result: BTDropInResult?, error: Error?) in
-                /// TODO: remove when Cocoapods version of Braintree will be updated
-                ///
-                /// In Braintree version < 9.0.0 property name is 'isCancelled' and strarting from v 9.0.0 is updated to 'isCanceled'.
-                /// We are using for now version 8.2.0 for Cocoapods so we need to compute this value based on Braintree version
-                var isResultCanceled: Bool? {
-                    #if SWIFT_PACKAGE
-                    result?.isCanceled
-                    #else
-                    result?.isCancelled
-                    #endif
-                }
-
                 if error != nil {
                     paymentMethodAdded?(.failed(error: error as? KarhooError))
-                } else if isResultCanceled == true {
+                } else if result?.isCanceled == true {
                     paymentMethodAdded?(.cancelled(byUser: true))
                 } else if let result = result, let method = result.paymentMethod{
                     let nonce = Nonce(nonce: method.nonce, cardType: method.type, lastFour: String(result.paymentDescription.suffix(2)))
