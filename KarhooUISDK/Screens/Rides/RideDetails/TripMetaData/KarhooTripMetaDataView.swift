@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TripMetaDataViewDelegate: class {
+protocol TripMetaDataViewDelegate: AnyObject {
     func didRateTrip(_ rate: Int)
     func didSelectFeedback()
 }

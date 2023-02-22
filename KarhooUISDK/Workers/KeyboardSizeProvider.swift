@@ -10,7 +10,7 @@ import CoreGraphics
 import Foundation
 import KarhooSDK
 
-protocol KeyboardListener: class {
+protocol KeyboardListener: AnyObject {
     func keyboard(updatedHeight: CGFloat)
 }
 

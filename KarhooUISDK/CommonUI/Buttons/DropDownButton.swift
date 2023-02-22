@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol DropDownButtonDelegate: class {
+public protocol DropDownButtonDelegate: AnyObject {
     func buttonTapped(_ value: Bool)
 }
 

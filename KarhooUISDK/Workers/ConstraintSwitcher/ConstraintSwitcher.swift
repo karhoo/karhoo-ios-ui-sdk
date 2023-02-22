@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-public protocol ConstraintSwitcher: class {
+public protocol ConstraintSwitcher: AnyObject {
     func loadConstraints(primaryConstraints: [NSLayoutConstraint],
                          primaryTag: Int,
                          secondaryConstraints: [NSLayoutConstraint],

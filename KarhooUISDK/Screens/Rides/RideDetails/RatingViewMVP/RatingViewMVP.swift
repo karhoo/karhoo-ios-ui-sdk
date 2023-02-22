@@ -21,13 +21,13 @@ protocol RatingPresenter {
     func setRating(rating: Int)
 }
 
-protocol RatingView: class {
+protocol RatingView: AnyObject {
 
     func showConfirmation(_ message: String)
     func hideStars()
     func additionalComment() -> String
 }
 
-protocol RatingViewDelegate: class {
+protocol RatingViewDelegate: AnyObject {
     func didRate(_ rating: Int)
 }
