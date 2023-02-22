@@ -69,6 +69,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     func setup(using quote: Quote) {
         self.quote = quote
+        setInitialValues()
         getData()
     }
 
@@ -97,6 +98,16 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     }
 
     // MARK: - Private methods
+
+    private func setInitialValues() {
+        modelSubject.send(.success(result: nil))
+        modeSubject.send(.none)
+        canBurnSubject.send(false)
+        canEarnSubject.send(false)
+        earnPointsSubject.send(nil)
+        burnPointsSubject.send(nil)
+        currentBalanceSubject.send(nil)
+    }
 
     private func getData() {
         guard isLoyaltyEnabled else { return }
