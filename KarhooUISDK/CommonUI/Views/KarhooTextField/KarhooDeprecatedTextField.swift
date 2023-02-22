@@ -13,7 +13,7 @@ protocol Validator {
     func set(listener: ValidatorListener?)
 }
 
-protocol ValidatorListener: class {
+protocol ValidatorListener: AnyObject {
     func valid()
     func invalid(reason: String?)
 }
@@ -22,11 +22,11 @@ protocol PhoneNumberValidatorProtocol: Validator {
     func set(countryCode: String)
 }
 
-protocol KarhooDeprecatedTextFieldStateDelegate: class {
+protocol KarhooDeprecatedTextFieldStateDelegate: AnyObject {
     func didChange(text: String, isValid: Bool, identifier: Int)
 }
 
-protocol KarhooDeprecatedTextFieldEvents: class {
+protocol KarhooDeprecatedTextFieldEvents: AnyObject {
     func fieldDidFocus(identifier: Int)
     func fieldDidUnFocus(identifier: Int)
 }
