@@ -364,7 +364,7 @@ class ViewController: UIViewController {
                     self?.handleBookingScreenResult(result: result)
                 }
             )
-        
+
         self.present(
             booking!,
             animated: true,

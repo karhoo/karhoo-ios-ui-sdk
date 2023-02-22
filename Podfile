@@ -31,7 +31,8 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'develop'
+#  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-4493-update-architecture-settings'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.7.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
@@ -39,7 +40,7 @@ target 'KarhooUISDK' do
   pod 'BraintreeDropIn', '~> 8.1'
   pod 'Braintree/PaymentFlow', '~> 4.37'
   pod 'Adyen', '4.7.2'
-  
+
   target 'KarhooUISDKTests' do
     inherit! :complete
     pod 'SnapshotTesting', '1.9.0'

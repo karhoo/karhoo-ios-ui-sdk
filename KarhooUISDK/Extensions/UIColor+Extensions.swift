@@ -86,14 +86,4 @@ extension UIColor {
             return UIColor(cgColor: properColor)
         */
     }
-
-    func getColor() -> Color {
-        Color(
-            .sRGB,
-            red: self.cgColor.components![0],
-            green: self.cgColor.components![1],
-            blue: self.cgColor.components![2],
-            opacity: 1
-        )
-    }
 }

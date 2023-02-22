@@ -11,13 +11,6 @@ import Foundation
 
 public class MockDateFormatterType: DateFormatterType {
 
-    public var displayCustomDateTimeSet: Date?
-    public var displayCustomDateTimeReturnString: String = TestUtil.getRandomString()
-    public func display(_ date: Date?, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
-        displayCustomDateTimeSet = date
-        return displayCustomDateTimeReturnString
-    }
-
     public init() { }
 
     public var timeZoneSet: TimeZone?
@@ -70,5 +63,12 @@ public class MockDateFormatterType: DateFormatterType {
     public func display(clockTime date: Date?) -> String {
         clockTimeSet = date
         return clockTimeReturnString
+    }
+
+    public var displayCustomDateTimeSet: Date?
+    public var displayCustomDateTimeReturnString: String = TestUtil.getRandomString()
+    public func display(_ date: Date?, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+        displayCustomDateTimeSet = date
+        return displayCustomDateTimeReturnString
     }
 }

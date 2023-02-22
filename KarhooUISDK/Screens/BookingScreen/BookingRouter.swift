@@ -39,20 +39,21 @@ class KarhooBookingRouter: BookingRouter {
         bookingMetadata: [String: Any]?,
         bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
     ) {
-        guard let builder = checkoutScreenBuilder else {
+        guard let navigationController = viewController?.navigationController else {
             assertionFailure()
             return
         }
-        let checkoutView = builder
-            .buildCheckoutScreen(
-                quote: quote,
-                journeyDetails: journeyDetails,
-                bookingMetadata: bookingMetadata,
-                callback: { result in
-                    bookingRequestCompletion(result, quote, journeyDetails)
-                }
-            )
 
-        viewController?.push(checkoutView)
+        let checkoutCoordinator = KarhooComponents.shared.checkout(
+            navigationController: navigationController,
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            callback: { result in
+                bookingRequestCompletion(result, quote, journeyDetails)
+            }
+        )
+
+        checkoutCoordinator.start()
     }
 }

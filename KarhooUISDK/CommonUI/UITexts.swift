@@ -55,6 +55,7 @@ public enum UITexts {
         public static let pickUp = "kh_uisdk_pick_up".localized
         public static let destination = "kh_uisdk_destination".localized
         public static let information = "kh_uisdk_information".localized
+        public static let now = "kh_uisdk_now".localized
     }
 
     public enum QuoteCell {
@@ -212,6 +213,7 @@ public enum UITexts {
     /* Booking */
     public enum Booking {
         public static let next = "kh_uisdk_next".localized
+        public static let pay = "kh_uisdk_book_pay".localized
         public static let bookNow = "kh_uisdk_book_now".localized
         public static let requestCar = "kh_uisdk_request_car".localized
         public static let requestingCar = "kh_uisdk_requesting_car".localized
@@ -249,6 +251,16 @@ public enum UITexts {
         public static let noLocationPermissionTitle = "kh_uisdk_no_location_permission_title".localized
         public static let noLocationPermissionMessage = "kh_uisdk_no_location_permission_message".localized
         public static let noLocationPermissionConfirm = "kh_uisdk_settings".localized
+        public static let commentsTitle = "kh_uisdk_checkout_comments_title".localized
+        public static let commentsSubtitle = "kh_uisdk_checkout_comments_subtitle".localized
+        public static let trainTitle = "kh_uisdk_checkout_train_title".localized
+        public static let trainSubtitle = "kh_uisdk_checkout_train_subtitle".localized
+        public static let trainExample = "kh_uisdk_checkout_train_example".localized
+        public static let flightTitle = "kh_uisdk_checkout_airport_title".localized
+        public static let flightSubtitle = "kh_uisdk_checkout_airport_subtitle".localized
+        public static let flightExample = "kh_uisdk_checkout_airport_example".localized
+        public static let priceDetailsTitle = "kh_uisdk_price_bottom_sheet_title".localized
+        public static var onlyLettersAndDigitsAllowedError = "kh_uisdk_checkout_error_only_letters_and_digits_allowed".localized
     }
 
     public enum Availability {

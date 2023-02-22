@@ -8,8 +8,21 @@
 
 import UIKit
 
+@available(*, deprecated, message: "Usege of the model no longer required")
 public struct LoyaltyViewDataModel {
     public var loyaltyId: String
     public var currency: String
     public var tripAmount: Double
+}
+
+public struct KarhooBasicLoyaltyInfo: BookingConfirmationLoyaltyInfo {
+    var shouldShowLoyalty: Bool
+    var loyaltyPoints: Int
+    var loyaltyMode: LoyaltyMode
+}
+
+extension KarhooBasicLoyaltyInfo {
+    static func loyaltyDisabled() -> KarhooBasicLoyaltyInfo {
+        KarhooBasicLoyaltyInfo(shouldShowLoyalty: false, loyaltyPoints: 0, loyaltyMode: .none)
+    }
 }

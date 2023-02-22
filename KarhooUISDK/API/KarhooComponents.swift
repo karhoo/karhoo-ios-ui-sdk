@@ -47,6 +47,22 @@ public class KarhooComponents: BookingScreenComponents {
             onQuoteSelected: onQuoteSelected
         )
     }
+
+    public func checkout(
+        navigationController: UINavigationController?,
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        callback: @escaping ScreenResultCallback<KarhooCheckoutResult>
+    ) -> CheckoutCoordinator {
+        KarhooCheckoutCoordinator(
+            navigationController: navigationController,
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: bookingMetadata,
+            callback: callback
+        )
+    }
     
     public func passengerDetails(details: PassengerDetails?,
                                  delegate: PassengerDetailsDelegate?,

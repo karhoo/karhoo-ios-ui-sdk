@@ -14,7 +14,7 @@ import KarhooSDK
 final public class MockTripService: TripService {
     public init() {}
 
-     public let bookCall = MockCall<TripInfo>()
+    public var bookCall = MockCall<TripInfo>()
     public var tripBookingSet: TripBooking?
     public func book(tripBooking: TripBooking) -> Call<TripInfo> {
         tripBookingSet = tripBooking

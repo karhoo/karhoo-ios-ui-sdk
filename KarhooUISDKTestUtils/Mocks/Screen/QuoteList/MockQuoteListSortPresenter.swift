@@ -9,7 +9,7 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-public class MockQuoteListSortPresenter: QuoteListSortPresenter {
+public class MockQuoteListSortPresenter: QuoteListSortViewModel {
 
     public init() {}
 
