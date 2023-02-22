@@ -195,6 +195,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 self?.modelSubject.send(.failure(error: error))
                 return
             }
+            self?.modeSubject.send(.earn)
             self?.currentBalanceSubject.send(status.balance)
             self?.canEarnSubject.send(status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn)
             self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
