@@ -7,7 +7,7 @@ let package = Package(
     name: "KarhooUISDK",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v14),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -26,9 +26,9 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/karhoo/karhoo-ios-sdk", exact: "1.7.1"),
         .package(url: "https://github.com/Adyen/adyen-ios", exact: "4.7.1"),
-        .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.3.0"),
+        .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.8.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit", exact: "3.3.1"),
-        .package(url: "https://github.com/braintree/braintree_ios", exact: "5.6.3"),
+        .package(url: "https://github.com/braintree/braintree_ios", exact: "5.20.1"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.9.0"),
         .package(url: "https://github.com/Quick/Quick", exact: "5.0.1"),
         .package(url: "https://github.com/Quick/Nimble", exact: "10.0.0")
