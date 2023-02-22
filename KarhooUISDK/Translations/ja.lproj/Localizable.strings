@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "例: AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "フライト番号を追加";
+"kh_uisdk_checkout_airport_subtitle" = "飛行機が遅れても運転手が待っています。";
 
-"kh_uisdk_checkout_airport_title" = "フライトナンバー";
+"kh_uisdk_checkout_airport_title" = "フライトナンバーを追加する";
 
 "kh_uisdk_checkout_as_guest" = "乗車サービスを予約する";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "例: 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "列車番号を追加";
+"kh_uisdk_checkout_train_subtitle" = "電車が遅れても運転手が待っています。";
 
-"kh_uisdk_checkout_train_title" = "列車番号";
+"kh_uisdk_checkout_train_title" = "列車番号の追加";
 
 "kh_uisdk_close_the_screen" = "画面を閉じる";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "現在地を取得";
 
 "kh_uisdk_date" = "日付";
+
+"kh_uisdk_delete_destination_address" = "宛先アドレスを削除";
 
 "kh_uisdk_destination" = "先";
 

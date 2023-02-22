@@ -209,7 +209,7 @@
 
 "kh_uisdk_back" = "Back";
 
-"kh_uisdk_baggage_max" = "%d piece(s) luggage max";
+"kh_uisdk_baggage_max" = "%d piece(s) of luggage max";
 
 "kh_uisdk_base" = "Base fare";
 
@@ -279,13 +279,13 @@
 
 "kh_uisdk_checkout_airport_example" = "e.g AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Add a flight number";
+"kh_uisdk_checkout_airport_subtitle" = "A driver will be waiting for you even if the flight is delayed.";
 
-"kh_uisdk_checkout_airport_title" = "Flight number";
+"kh_uisdk_checkout_airport_title" = "Add a flight number";
 
 "kh_uisdk_checkout_as_guest" = "Book a ride";
 
-"kh_uisdk_checkout_comments_subtitle" = "Comment for your driver";
+"kh_uisdk_checkout_comments_subtitle" = "Child seat, wheelchair access needed, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Comment";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "e.g 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Add a train number";
+"kh_uisdk_checkout_train_subtitle" = "A driver will wait for you even if the train is delayed.";
 
-"kh_uisdk_checkout_train_title" = "Train number";
+"kh_uisdk_checkout_train_title" = "Add a train number";
 
 "kh_uisdk_close_the_screen" = "Close the screen";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Get current location";
 
 "kh_uisdk_date" = "Date";
+
+"kh_uisdk_delete_destination_address" = "Delete destination address";
 
 "kh_uisdk_destination" = "Destination";
 
@@ -433,7 +435,7 @@
 
 "kh_uisdk_filter_hybrid" = "Hybrid";
 
-"kh_uisdk_filter_luggages" = "Piece(s) luggage";
+"kh_uisdk_filter_luggages" = "Piece(s) of luggage";
 
 "kh_uisdk_filter_luxury" = "Luxury";
 
@@ -677,7 +679,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "Your balance is too low to pay with Reward points for this ride";
 
-"kh_uisdk_loyalty_separator" = "Or";
+"kh_uisdk_loyalty_separator" = "OR";
 
 "kh_uisdk_loyalty_title" = "Reward points";
 
@@ -687,7 +689,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "You can use Reward points to pay for this ride";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Use %@ Reward points to pay %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Use %3$@ Reward points to pay %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Use your Reward points";
 

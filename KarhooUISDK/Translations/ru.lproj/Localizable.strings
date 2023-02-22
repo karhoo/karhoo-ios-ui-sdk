@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "например AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Добавить номер рейса";
+"kh_uisdk_checkout_airport_subtitle" = "Водитель будет ждать вас даже в случае задержки рейса.";
 
-"kh_uisdk_checkout_airport_title" = "Номер рейса";
+"kh_uisdk_checkout_airport_title" = "Добавить номер рейса";
 
 "kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "например 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Добавить номер поезда";
+"kh_uisdk_checkout_train_subtitle" = "Водитель будет ждать вас, даже если поезд задерживается.";
 
-"kh_uisdk_checkout_train_title" = "Номер поезда";
+"kh_uisdk_checkout_train_title" = "Добавить номер поезда";
 
 "kh_uisdk_close_the_screen" = "Закрыть экран";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Получить актуальную геолокацию";
 
 "kh_uisdk_date" = "Дата";
+
+"kh_uisdk_delete_destination_address" = "Удалить адрес назначения";
 
 "kh_uisdk_destination" = "Назначения";
 
@@ -687,7 +689,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Вы можете использовать баллы лояльности для оплаты поездки";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Использовать %@ баллов лояльности для оплаты %@ %@ ";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Использовать %3$@ аллов лояльности для оплаты %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Используйте свои баллы";
 

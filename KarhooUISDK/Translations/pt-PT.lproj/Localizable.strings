@@ -279,9 +279,9 @@
 
 "kh_uisdk_checkout_airport_example" = "e.g. AF009";
 
-"kh_uisdk_checkout_airport_subtitle" = "Acrescentar um número de voo";
+"kh_uisdk_checkout_airport_subtitle" = "Um motorista estará à sua espera, mesmo que o voo se atrase.";
 
-"kh_uisdk_checkout_airport_title" = "Número do vôo";
+"kh_uisdk_checkout_airport_title" = "Acrescentar um número de voo";
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAGEM";
 
@@ -293,9 +293,9 @@
 
 "kh_uisdk_checkout_train_example" = "e.g. 6809";
 
-"kh_uisdk_checkout_train_subtitle" = "Adicionar um número de comboio";
+"kh_uisdk_checkout_train_subtitle" = "Um maquinista esperará por si, mesmo que o comboio se atrase.";
 
-"kh_uisdk_checkout_train_title" = "Número do comboio";
+"kh_uisdk_checkout_train_title" = "Adicionar um número de comboio";
 
 "kh_uisdk_close_the_screen" = "Fechar o ecrã";
 
@@ -322,6 +322,8 @@
 "kh_uisdk_current_location" = "Selecionar localização atual";
 
 "kh_uisdk_date" = "Data";
+
+"kh_uisdk_delete_destination_address" = "Apagar endereço de destino";
 
 "kh_uisdk_destination" = "Destino";
 
@@ -677,7 +679,7 @@
 
 "kh_uisdk_loyalty_pre_auth_not_enough_points" = "O seu saldo de pontos Reward não é suficiente para pagar esta viagem";
 
-"kh_uisdk_loyalty_separator" = "Ou";
+"kh_uisdk_loyalty_separator" = "OU";
 
 "kh_uisdk_loyalty_title" = "Pontos Reward";
 
@@ -687,7 +689,7 @@
 
 "kh_uisdk_loyalty_use_points_off_subtitle" = "Pode utilizar os seus pontos Reward para pagar esta viagem";
 
-"kh_uisdk_loyalty_use_points_on_subtitle" = "Utilize %@ pontos Reward para pagar %@ %@";
+"kh_uisdk_loyalty_use_points_on_subtitle" = "Utilize %3$@ pontos Reward para pagar %1$@ %2$@";
 
 "kh_uisdk_loyalty_use_points_title" = "Utilize os seus pontos Reward";
 
