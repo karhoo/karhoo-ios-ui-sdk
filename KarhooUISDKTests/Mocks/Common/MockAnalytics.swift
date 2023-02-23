@@ -11,9 +11,25 @@ import KarhooSDK
 @testable import KarhooUISDK
 
 class MockAnalytics: Analytics {
-    
-    func bookingRequested(quoteId: String) {
+    func changePaymentDetailsPressed() {
         // TODO: write tests
+    }
+    
+    func rideConfirmationScreenOpened(date: Date, tripId: String?, quoteId: String) {
+        // TODO: write tests
+    }
+    
+    func rideConfirmationAddToCalendarSelected(date: Date, tripId: String?, quoteId: String) {
+        // TODO: write tests
+    }
+    
+    func rideConfirmationDetailsSelected(date: Date, tripId: String?, quoteId: String) {
+        // TODO: write tests
+    }
+    
+    var bookingRequestedCalled = false
+    func bookingRequested(quoteId: String) {
+        bookingRequestedCalled = true
     }
     
     func bookingSuccess(tripId: String, quoteId: String?, correlationId: String?) {

@@ -18,7 +18,11 @@ public class KarhooTestConfiguration: KarhooUISDKConfiguration {
     public static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
     public static var authenticationMethod: AuthenticationMethod = .karhooUser
     public static var isExplicitTermsAndConditionsConsentRequired: Bool = false
-    
+
+    public static func setGuest() {
+        KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+    }
+
     public var isExplicitTermsAndConditionsConsentRequired: Bool {
         Self.isExplicitTermsAndConditionsConsentRequired
     }

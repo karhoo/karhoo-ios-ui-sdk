@@ -67,12 +67,15 @@ struct KarhooBookingConfirmationView: View {
             }
             
             // Done button
-            KarhooMainButton(title: UITexts.Booking.prebookConfirmedRideDetails) {
+            KarhooMainButton(title: .constant(UITexts.Booking.prebookConfirmedRideDetails)) {
                 viewModel.dismiss()
             }
             .accessibilityLabel(Text(UITexts.Booking.prebookConfirmedRideDetailsAccessibility))
         }
         .padding(.vertical, UIConstants.Spacing.standard)
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
 
     @ViewBuilder
@@ -102,28 +105,28 @@ struct KarhooBookingConfirmationView: View {
             VStack {
                 Text(viewModel.printedTime)
                     .font(Font(KarhooUI.fonts.titleBold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
 
                 Text(viewModel.printedDate)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .accessibilityElement()
             .accessibilityValue(Text(viewModel.accessibilityDate))
 
             Rectangle()
-                .fill(KarhooUI.colors.border.getColor())
+                .fill(Color(KarhooUI.colors.border))
                 .frame(width: 1, height: Constants.separatorHeight, alignment: .center)
 
             VStack {
                 Text(viewModel.printedPrice)
                     .font(Font(KarhooUI.fonts.titleBold()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
 
                 Text(viewModel.printedPriceType)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(KarhooUI.colors.text.getColor())
+                    .foregroundColor(Color(KarhooUI.colors.text))
                     .multilineTextAlignment(.center)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -140,39 +143,13 @@ struct KarhooBookingConfirmationViewPreviews: PreviewProvider {
             journeyDetails: JourneyDetails(),
             quote: Quote(),
             trip: TripInfo(),
-            loyaltyInfo: KarhooBookingConfirmationViewModel.LoyaltyInfo(
+            loyaltyInfo: KarhooBasicLoyaltyInfo(
                 shouldShowLoyalty: true,
                 loyaltyPoints: 25,
                 loyaltyMode: .burn
             ),
             dateFormatter: KarhooDateFormatter(),
-            callback: {
-
-            })
-        )
-    }
-}
-
-struct KarhooMainButton: View {
-    @State var title: String
-    @State var callback: () -> Void
-    
-    var body: some View {
-        Button(
-            action: {
-                callback()
-            },
-            label: {
-                Text(title)
-                .padding(.horizontal, UIConstants.Spacing.standard)
-                .font(Font(KarhooUI.fonts.headerBold()))
-                .minimumScaleFactor(0.7)
-                .foregroundColor(KarhooUI.colors.white.getColor())
-                .frame(maxWidth: .infinity)
-                .frame(height: UIConstants.Dimension.Button.mainActionButtonHeight)
-                .background(KarhooUI.colors.secondary.getColor())
-                .addBorder(.clear, cornerRadius: UIConstants.CornerRadius.medium)
-            }
-        )
+            onDismissCallback: { _ in }
+        ))
     }
 }

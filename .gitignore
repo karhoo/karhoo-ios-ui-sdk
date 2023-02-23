@@ -77,8 +77,11 @@ fastlane/.env
 
 # access keys
 .phrase.yml
+.phrase.yaml
 Client/Keys.swift
 
 *.DS_Store
 .idea
 KarhooUISDK.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+.phrase.yml
+bitrise.yml

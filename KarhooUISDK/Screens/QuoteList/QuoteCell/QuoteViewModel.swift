@@ -137,7 +137,7 @@ final class QuoteViewModel {
                                                          journeyDetails: journeyDetails)
         self.scheduleCaption = scheduleTexts.caption
         self.scheduleMainValue = scheduleTexts.value
-        self.vehicleType = Self.getVehicleTypeText(for: quote.vehicle)
+        self.vehicleType = quote.vehicle.getVehicleTypeText()
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
 
@@ -159,6 +159,9 @@ final class QuoteViewModel {
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
         case .fleet: fare = CurrencyCodeConverter.toPriceString(quote: quote)
+        @unknown default:
+            assertionFailure()
+            fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
         }
 
         self.logoImageURL = quote.fleet.logoUrl
@@ -198,15 +201,17 @@ final class QuoteViewModel {
             return (etaCaption, etaMinutes)
         }
     }
-    
-    private static func getVehicleTypeText(for vehicle: QuoteVehicle) -> String {
-        let tags = vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
+}
+
+extension QuoteVehicle {
+    func getVehicleTypeText() -> String {
+        let tags = self.tags.compactMap { VehicleTag(rawValue: $0) }
         if tags.contains(.executive) {
             return UITexts.QuoteCategory.executive
         }
         if tags.contains(.luxury) {
             return UITexts.VehicleTag.luxury
         }
-        return vehicle.localizedVehicleType
+        return self.localizedVehicleType
     }
 }

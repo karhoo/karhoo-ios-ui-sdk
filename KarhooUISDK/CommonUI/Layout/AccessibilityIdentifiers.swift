@@ -18,20 +18,20 @@ final class AccessibilityIdentifiers: UIView {
     @IBOutlet var sideMenuProfileButtonId: [UIButton]?
     @IBOutlet var rideOptionsId: [UIButton]?
     
-    @IBOutlet var firstNameFieldId: [KarhooTextField]?
-    @IBOutlet var lastNameFieldId: [KarhooTextField]?
-    @IBOutlet var emailFieldId: [KarhooTextField]?
-    @IBOutlet var countryCodeFieldId: [KarhooTextField]?
-    @IBOutlet var mobileNumberFieldId: [KarhooTextField]?
-    @IBOutlet var passwordFieldId: [KarhooTextField]?
-    @IBOutlet var invitationCodeFieldId: [KarhooTextField]?
+    @IBOutlet var firstNameFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var lastNameFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var emailFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var countryCodeFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var mobileNumberFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var passwordFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var invitationCodeFieldId: [KarhooDeprecatedTextField]?
 
     @IBOutlet var signupCancelButtonId: [UIBarButtonItem]?
     @IBOutlet var continueSignupButtonId: [FormButton]?
     @IBOutlet var promoOfferSwitchId: [UISwitch]?
 
-    @IBOutlet var loginEmailFieldId: [KarhooTextField]?
-    @IBOutlet var loginPasswordFieldId: [KarhooTextField]?
+    @IBOutlet var loginEmailFieldId: [KarhooDeprecatedTextField]?
+    @IBOutlet var loginPasswordFieldId: [KarhooDeprecatedTextField]?
 
     @IBOutlet var loginCancelButtonId: [UIBarButtonItem]?
     @IBOutlet var loginContinueButtonId: [FormButton]?
