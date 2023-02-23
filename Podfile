@@ -23,15 +23,10 @@ install! 'cocoapods',
 
 target 'Client' do
   inherit! :search_paths
-  pod 'KarhooUISDK', :path => './'
-  pod 'KarhooUISDK/Adyen', :path => './'
-  pod 'KarhooUISDK/Braintree', :path => './'
-
 end
 
 # UISDK framework
 target 'KarhooUISDK' do
-#  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-4493-update-architecture-settings'
   pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.7.1'
   pod 'SwiftLint', '~> 0.47'
