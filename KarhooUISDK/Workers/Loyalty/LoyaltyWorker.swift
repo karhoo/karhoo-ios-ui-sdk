@@ -192,12 +192,16 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard let status = result.getSuccessValue() else {
                 let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
+                self?.modeSubject.send(.none)
+                self?.canEarnSubject.send(false)
+                self?.canBurnSubject.send(false)
                 self?.modelSubject.send(.failure(error: error))
                 return
             }
-            self?.modeSubject.send(.earn)
+            let canEarn = status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn
+            self?.modeSubject.send(canEarn ? .earn : .none)
             self?.currentBalanceSubject.send(status.balance)
-            self?.canEarnSubject.send(status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn)
+            self?.canEarnSubject.send(canEarn)
             self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
         }
     }

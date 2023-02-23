@@ -20,11 +20,11 @@ class LoyaltyViewModel: ObservableObject {
     // MARK: - Properties
 
     private var cancellables: Set<AnyCancellable> = []
-    
+
     @Published var error: KarhooLoyaltyError?
     @Published var isBurnModeOn = false {
         didSet {
-            updateWorkerState()
+            updateModeState()
         }
     }
     
@@ -83,7 +83,7 @@ class LoyaltyViewModel: ObservableObject {
     private func update(withModel model: LoyaltyUIModel?) {
         guard let model else { return }
         balance = model.balance
-        earnAmount = model.earnAmount
+        earnAmount = isBurnModeOn ? 0 : model.earnAmount
         canEarn = model.canEarn
         currency = model.currency
         tripAmount = model.tripAmount
@@ -108,11 +108,13 @@ class LoyaltyViewModel: ObservableObject {
         }
     }
     
-    private func updateWorkerState() {
-        if isBurnModeOn {
+    private func updateModeState() {
+        if isBurnModeOn && canBurn {
             worker.modeSubject.send(.burn)
         } else if canEarn {
             worker.modeSubject.send(.earn)
+        } else {
+            worker.modeSubject.send(.none)
         }
     }
 }
