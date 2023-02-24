@@ -57,19 +57,19 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
-  - KarhooSDK (1.7.1):
+  - KarhooSDK (1.7.2):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.10.1):
-    - KarhooUISDK/Core (= 1.10.1)
-  - KarhooUISDK/Adyen (1.10.1):
+  - KarhooUISDK (1.11.0):
+    - KarhooUISDK/Core (= 1.11.0)
+  - KarhooUISDK/Adyen (1.11.0):
     - Adyen (= 4.7.2)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.10.1):
+  - KarhooUISDK/Braintree (1.11.0):
     - Braintree/PaymentFlow (~> 4.37)
     - BraintreeDropIn (~> 8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.10.1):
+  - KarhooUISDK/Core (1.11.0):
     - KarhooSDK
     - PhoneNumberKit (= 3.3.1)
   - KeychainSwift (12.0.0)
@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 4.37)
   - BraintreeDropIn (~> 8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
+  - KarhooSDK (= 1.7.2)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -108,6 +108,7 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
+    - KarhooSDK
     - KeychainSwift
     - Nimble
     - PhoneNumberKit
@@ -118,16 +119,8 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :branch: master
-    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
-
-CHECKOUT OPTIONS:
-  KarhooSDK:
-    :commit: f7ff52d95c256ee2ab105ad07dbe8da411eacc34
-    :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -135,8 +128,8 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
-  KarhooSDK: dc01c9f4fb13fd6513c98d81d8164aa7c43d2b59
-  KarhooUISDK: eef82ea45e8df7680052a58b480597e11748678d
+  KarhooSDK: 0fb4e96db2bea35f77556817f6f33db00aa462de
+  KarhooUISDK: 100b0e60acbad31b444d50ae9d00f3cfc7719d2c
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
@@ -146,6 +139,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 16f04fcde066f40004f51e26bc95bc14dc377d6f
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: ad58c20bb1eecbb8a0e774470b3ea4cc09c33d9d
+PODFILE CHECKSUM: f5abe8b7cdd3712e759c1ebfbac39a2bb11a3685
 
 COCOAPODS: 1.11.3
