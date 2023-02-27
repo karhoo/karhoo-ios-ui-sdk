@@ -243,9 +243,9 @@
 		40FE0CED22D7D2D4003F65B5 /* RateButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEC22D7D2D4003F65B5 /* RateButtonViewModel.swift */; };
 		40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CEF22D7D31A003F65B5 /* KarhooRatingView.swift */; };
 		40FE0CF222D7D333003F65B5 /* KarhooRatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FE0CF122D7D333003F65B5 /* KarhooRatingPresenter.swift */; };
-		510522E8284F43CE001DA60F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		510522E9284F43CE001DA60F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		510522EA284F43CE001DA60F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		510522E8284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
+		510522E9284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
+		510522EA284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		510857BB292E3EBF00EC8DA6 /* LoyaltyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BA292E3EBF00EC8DA6 /* LoyaltyInformationView.swift */; };
 		510857BE292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BD292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift */; };
 		510DBEBE293A3AE6008CE9E7 /* Date+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DBEBD293A3AE6008CE9E7 /* Date+Mock.swift */; };
@@ -287,7 +287,7 @@
 		515BCE68297EC83A0092B6E4 /* KarhooMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515BCE67297EC83A0092B6E4 /* KarhooMainButton.swift */; };
 		515D81882913BDF4000635AD /* SnapshotUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515D81872913BDF4000635AD /* SnapshotUtils.swift */; };
 		51665D5329952D520069A636 /* MockCheckoutPaymentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51665D5229952D520069A636 /* MockCheckoutPaymentWorker.swift */; };
-		51671F412819DFCC00F75712 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		51671F412819DFCC00F75712 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		516C16B1297468DE007F0B70 /* KarhooLegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C16B0297468DE007F0B70 /* KarhooLegalNoticeView.swift */; };
 		516C16B3297468EA007F0B70 /* KarhooTermsConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C16B2297468EA007F0B70 /* KarhooTermsConditionsViewModel.swift */; };
 		51701EA9296DF8AB00194B4A /* JourneyDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51701EA8296DF8AB00194B4A /* JourneyDetails+Extensions.swift */; };
@@ -349,7 +349,7 @@
 		51BF1E372913D2BE0000BA7E /* MockRidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC435F542211D38E00FB6BB5 /* MockRidesView.swift */; };
 		51BF1E382913D2BE0000BA7E /* MockBookingMapStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169B922819BBF00CF7E66 /* MockBookingMapStrategy.swift */; };
 		51BF1E3A2913D2BE0000BA7E /* MockPickupOnlyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C169BB22819C1A00CF7E66 /* MockPickupOnlyStrategy.swift */; };
-		51BF1E3B2913D2BE0000BA7E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		51BF1E3B2913D2BE0000BA7E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		51BF1E3D2913D2BE0000BA7E /* MockBookingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51801A1C285B17BB00EE6583 /* MockBookingRouter.swift */; };
 		51BF1E3F2913D2BE0000BA7E /* MockDestinationEtaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E2FA221EEE82008FE26D /* MockDestinationEtaView.swift */; };
 		51BF1E402913D2BE0000BA7E /* MockAddressSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968F0E621BE7FF100745370 /* MockAddressSearchBar.swift */; };
@@ -403,7 +403,7 @@
 		51BF1E722913D3220000BA7E /* MockCardRegistrationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F5C2216D5AE006C48F2 /* MockCardRegistrationFlow.swift */; };
 		51BF1E732913D3290000BA7E /* MockQuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949544221FF5F0800D930C0 /* MockQuoteService.swift */; };
 		51BF1E802913D3360000BA7E /* MockKarhooMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949545421FF7CDB00D930C0 /* MockKarhooMapView.swift */; };
-		51BF1E812913D3360000BA7E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		51BF1E812913D3360000BA7E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		51BF1E822913D3360000BA7E /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F12DC622313E300024D6E9 /* MockBaseViewController.swift */; };
 		51BF1E832913D3360000BA7E /* MockDataFormatterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949545B2201C2BA00D930C0 /* MockDataFormatterType.swift */; };
 		51BF1E842913D3360000BA7E /* MockPhoneNumberCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094954562201C13E00D930C0 /* MockPhoneNumberCaller.swift */; };
@@ -416,7 +416,7 @@
 		51BF1E8B2913D3360000BA7E /* MockURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C671024603B5700C736E9 /* MockURLOpener.swift */; };
 		51BF1E8D2913D33B0000BA7E /* mockImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B30F682253986B007768CF /* mockImage.png */; };
 		51BF1E8F2913D3480000BA7E /* MockTripSummaryScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83E30C221F18F3008FE26D /* MockTripSummaryScreenBuilder.swift */; };
-		51BF1E902913D3480000BA7E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		51BF1E902913D3480000BA7E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		51BF1E912913D3480000BA7E /* MockDatePickerScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F422216D0BB006C48F2 /* MockDatePickerScreenBuilder.swift */; };
 		51BF1E922913D3480000BA7E /* MockRideDetailsScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4B92EC222E982400FE33B4 /* MockRideDetailsScreenBuilder.swift */; };
 		51BF1E932913D3480000BA7E /* MockPaymentScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC658F702216F8B7006C48F2 /* MockPaymentScreenBuilder.swift */; };
@@ -575,9 +575,9 @@
 		7BA990A729780E31003E9010 /* KarhooBottomSheetCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A629780E31003E9010 /* KarhooBottomSheetCommentsView.swift */; };
 		7BA990A929780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA990A829780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift */; };
 		7BC87EAD298988C6008C5120 /* LoyaltyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC87EAC298988C6008C5120 /* LoyaltyViewModel.swift */; };
-		7BC87EAF29898931008C5120 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7BC87EAF29898931008C5120 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7BE8B2BD2982B68D005E8495 /* LoyaltyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8B2BC2982B68D005E8495 /* LoyaltyView.swift */; };
-		7BE8B2BF2982B8E6005E8495 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7BE8B2BF2982B8E6005E8495 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7BEF4496299267C9008686CE /* CheckoutSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEF4495299267C9008686CE /* CheckoutSnapshotSpec.swift */; };
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
@@ -4333,18 +4333,18 @@
 				51BF1E6E2913D31D0000BA7E /* MockDriverTrackingService.swift in Sources */,
 				51F3D2BD294246180005A1FB /* MockDateProvider.swift in Sources */,
 				51BF1E342913D2BE0000BA7E /* MockBookingAllocationSpinnerView.swift in Sources */,
-				51BF1E902913D3480000BA7E /* BuildFile in Sources */,
-				51BF1E902913D3480000BA7E /* BuildFile in Sources */,
+				51BF1E902913D3480000BA7E /* (null) in Sources */,
+				51BF1E902913D3480000BA7E /* (null) in Sources */,
 				51BF1E882913D3360000BA7E /* MockUserLocationProvider.swift in Sources */,
 				51BF1E992913D3480000BA7E /* MockRidesScreenBuilder.swift in Sources */,
 				51BF1E452913D2BE0000BA7E /* MockTimeSinceNowProvider.swift in Sources */,
 				51BF1DF92913D24D0000BA7E /* KarhooUISDKTestUtils.swift in Sources */,
 				51BF1E862913D3360000BA7E /* MockAnalytics.swift in Sources */,
 				51BF1E4F2913D2BE0000BA7E /* MockRideDetailsView.swift in Sources */,
-				51BF1E812913D3360000BA7E /* BuildFile in Sources */,
+				51BF1E812913D3360000BA7E /* (null) in Sources */,
 				51BF1E5B2913D2DD0000BA7E /* MockCancelRideBehaviour.swift in Sources */,
 				51BF1E922913D3480000BA7E /* MockRideDetailsScreenBuilder.swift in Sources */,
-				51BF1E812913D3360000BA7E /* BuildFile in Sources */,
+				51BF1E812913D3360000BA7E /* (null) in Sources */,
 				51BF1E8A2913D3360000BA7E /* MockStackButtonView.swift in Sources */,
 				5128653F2914FC9800EA8934 /* KarhooTestConfiguration.swift in Sources */,
 				51BF1E962913D3480000BA7E /* MockAddressScreenBuilder.swift in Sources */,
@@ -4418,7 +4418,7 @@
 				51BF1E0A2913D27F0000BA7E /* MockPollCall.swift in Sources */,
 				51BF1E722913D3220000BA7E /* MockCardRegistrationFlow.swift in Sources */,
 				51BF1E8B2913D3360000BA7E /* MockURLOpener.swift in Sources */,
-				51BF1E3B2913D2BE0000BA7E /* BuildFile in Sources */,
+				51BF1E3B2913D2BE0000BA7E /* (null) in Sources */,
 				51BF1E972913D3480000BA7E /* MockFeedbackScreenBuilder.swift in Sources */,
 				51BF1E512913D2BE0000BA7E /* MockTripView.swift in Sources */,
 				51BF1E522913D2BE0000BA7E /* MockTripMetaDataView.swift in Sources */,
@@ -4583,7 +4583,7 @@
 				4010B0E2245C67F300E7B0F1 /* ErrorBannerView.swift in Sources */,
 				FC83E2AA221ECC52008FE26D /* KarhooTripSummaryInfoView.swift in Sources */,
 				6B275DD927B25EB200B401E6 /* Double+Extensions.swift in Sources */,
-				510522E9284F43CE001DA60F /* BuildFile in Sources */,
+				510522E9284F43CE001DA60F /* (null) in Sources */,
 				FC83E284221DB6B8008FE26D /* TripScreenBuilder.swift in Sources */,
 				51453C6529336A5C00FBBCB5 /* AddToCalendarWorker.swift in Sources */,
 				40E6693523D5B99E00DE63BA /* RideDetailsViewContainer.swift in Sources */,
@@ -4611,8 +4611,8 @@
 				407EC7C922CF564E00F24CFC /* PrebookFieldMVP.swift in Sources */,
 				097800A8226F4434008772E4 /* KarhooLocationService.swift in Sources */,
 				FC435F1B2211B3FA00FB6BB5 /* TripMetaDataViewModel.swift in Sources */,
-				510522E8284F43CE001DA60F /* BuildFile in Sources */,
-				51671F412819DFCC00F75712 /* BuildFile in Sources */,
+				510522E8284F43CE001DA60F /* (null) in Sources */,
+				51671F412819DFCC00F75712 /* (null) in Sources */,
 				51255B1829673D0A00290A74 /* KarhooCheckoutCoordinator.swift in Sources */,
 				407EC7D222CF564E00F24CFC /* CurrencyCodeConverter.swift in Sources */,
 				4010B0DA2458847500E7B0F1 /* KarhooTextInputView.swift in Sources */,
@@ -4682,7 +4682,7 @@
 				5192C0232832DE4500D01FC8 /* UIImage+uisdkImage.swift in Sources */,
 				FC435EF12211B35C00FB6BB5 /* TwoPageViewController.swift in Sources */,
 				84E86C522913ECAC002B924A /* KarhooBottomSheet.swift in Sources */,
-				7BE8B2BF2982B8E6005E8495 /* BuildFile in Sources */,
+				7BE8B2BF2982B8E6005E8495 /* (null) in Sources */,
 				7BA990A929780E7D003E9010 /* KarhooBottomSheetCommentsViewModel.swift in Sources */,
 				407EC7EB22CF564E00F24CFC /* TableDelegate.swift in Sources */,
 				51F614D72860EA2200A7EC11 /* FilterViewBuilder.swift in Sources */,
@@ -4867,7 +4867,7 @@
 				4010B0E0245C5E1F00E7B0F1 /* KarhooTextInputViewErrorFeedbackType.swift in Sources */,
 				09C7649321DE665000CD81AB /* BookingScreenBuilder.swift in Sources */,
 				0991070B21B83AF700BD7E6F /* Observer+Utils.swift in Sources */,
-				7BC87EAF29898931008C5120 /* BuildFile in Sources */,
+				7BC87EAF29898931008C5120 /* (null) in Sources */,
 				0991068221B8291A00BD7E6F /* KarhooAddressSearchProvider.swift in Sources */,
 				09C765B521DE688100CD81AB /* BookingAddressBarPresenter.swift in Sources */,
 				51B3F0EF2975B0F500EFA40E /* KarhooCheckoutPassengerDetailsWorker.swift in Sources */,
@@ -4876,7 +4876,7 @@
 				40FE0CF022D7D31A003F65B5 /* KarhooRatingView.swift in Sources */,
 				7B8BE76529705650006AF159 /* PassengerDetailsCellViewModel.swift in Sources */,
 				6B2F88F727C628DF00685B47 /* JourneyDetails.swift in Sources */,
-				510522EA284F43CE001DA60F /* BuildFile in Sources */,
+				510522EA284F43CE001DA60F /* (null) in Sources */,
 				09C765B621DE688100CD81AB /* KarhooBookingPresenter.swift in Sources */,
 				09C765AD21DE688100CD81AB /* KarhooBookingMapPresenter.swift in Sources */,
 				4070213C23D9E19400F82B6A /* UIView+Extensions.swift in Sources */,
@@ -5346,7 +5346,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5365,7 +5365,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 1.11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -5389,7 +5389,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = U7U4Q7YGDH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -5408,7 +5408,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 1.11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
