@@ -18,11 +18,7 @@ final class KarhooLegalNoticeViewModel: ObservableObject {
         shouldShow: Bool = UITexts.Booking.legalNoticeText.isNotEmpty,
         text: NSAttributedString = LegalNoticeStringBuilder().getLegalNotice()
     ) {
-        #if DEBUG
-        self.shouldShowView = true
-        #else
         self.shouldShowView = shouldShow
-        #endif
         self.text = text
     }
 }
