@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if url.scheme?.localizedCaseInsensitiveCompare(urlScheme) == .orderedSame {
-        //TODO: Did we use options param? It is removed in V5
             return BTAppContextSwitcher.handleOpenURL(url)
         }
         
