@@ -79,13 +79,13 @@ PODS:
   - Quick (5.0.1)
   - ReachabilitySwift (5.0.0)
   - SnapshotTesting (1.9.0)
-  - SwiftFormat/CLI (0.50.8)
+  - SwiftFormat/CLI (0.50.9)
   - SwiftLint (0.50.3)
 
 DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
-  - BraintreeDropIn (~> 9.8.0)
+  - BraintreeDropIn (from `https://github.com/braintree/braintree-ios-drop-in`, branch `fixes-title-color`)
   - KarhooSDK (= 1.7.2)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
@@ -103,7 +103,6 @@ SPEC REPOS:
     - Adyen3DS2
     - AdyenNetworking
     - Braintree
-    - BraintreeDropIn
     - KarhooSDK
     - KeychainSwift
     - Nimble
@@ -115,8 +114,16 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
+  BraintreeDropIn:
+    :branch: fixes-title-color
+    :git: https://github.com/braintree/braintree-ios-drop-in
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  BraintreeDropIn:
+    :commit: 73f1cfc659e4ab4b056b0e6ab803d64fbe949dd8
+    :git: https://github.com/braintree/braintree-ios-drop-in
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -132,9 +139,9 @@ SPEC CHECKSUMS:
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
-  SwiftFormat: 16f04fcde066f40004f51e26bc95bc14dc377d6f
+  SwiftFormat: 823c799054862ecd9143ff00de06997f5e68967c
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: 5ae6f0e806a8a2f31e0f7fde259639c126c22812
+PODFILE CHECKSUM: f30a2d433437bafaebc870aad1cf868517fefdf6
 
 COCOAPODS: 1.11.3

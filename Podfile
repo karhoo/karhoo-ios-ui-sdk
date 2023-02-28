@@ -36,7 +36,7 @@ target 'KarhooUISDK' do
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'
-  pod 'BraintreeDropIn', '~> 9.8.0'
+  pod 'BraintreeDropIn', :git => 'https://github.com/braintree/braintree-ios-drop-in', :branch => 'fixes-title-color' # '~> 9.8.0'
   pod 'Braintree/PaymentFlow', '~> 5.20.1'
   pod 'Adyen', '4.7.2'
 

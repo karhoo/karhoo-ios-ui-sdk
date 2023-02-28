@@ -57,8 +57,8 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
         uiCustomization.secondaryTextColor = KarhooUI.colors.text
         uiCustomization.formBackgroundColor = KarhooUI.colors.background2
         uiCustomization.lineColor = KarhooUI.colors.border
-//        uiCustomization.barBackgroundColor = KarhooUI.colors.primary
-//        uiCustomization.navigationBarTitleTextColor = KarhooUI.colors.white
+        uiCustomization.barBackgroundColor = KarhooUI.colors.primary
+        uiCustomization.navigationBarTitleTextColor = KarhooUI.colors.white
         uiCustomization.tintColor = KarhooUI.colors.secondary
         uiCustomization.errorForegroundColor = KarhooUI.colors.error
         uiCustomization.disabledColor = KarhooUI.colors.inactive
