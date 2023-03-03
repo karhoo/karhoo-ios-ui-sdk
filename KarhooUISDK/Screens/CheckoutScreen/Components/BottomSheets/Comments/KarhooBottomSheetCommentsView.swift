@@ -18,8 +18,9 @@ struct KarhooBottomSheetCommentsView: View {
                 .font(Font(KarhooUI.fonts.captionSemibold()))
                 .foregroundColor(Color(KarhooUI.colors.text))
                 .padding(.bottom, UIConstants.Spacing.standard)
-            TextView($viewModel.textViewText)
-                .frame(minHeight: 50)
+            TextEditor(text: $viewModel.textViewText)
+                .font(Font(KarhooUI.fonts.bodyRegular()))
+                .frame(minHeight: 50, maxHeight: 150)
                 .padding(.horizontal, UIConstants.Spacing.standard)
                 .padding(.vertical, UIConstants.Spacing.medium)
                 .addBorder(

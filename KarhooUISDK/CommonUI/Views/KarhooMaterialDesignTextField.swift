@@ -31,6 +31,7 @@ struct KarhooMaterialDesignTextField: View {
                 })
                 .placeholder(placeholder, when: text.isEmpty)
                 .foregroundColor(Color(KarhooUI.colors.text))
+                .font(Font(KarhooUI.fonts.bodyRegular()))
                 .onChange(of: text) { newValue in
                     withAnimation {
                         isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
