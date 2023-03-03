@@ -29,7 +29,7 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
     }
     private lazy var rideDetailsView = RideDetailsViewContainer()
     private lazy var trackDriverButton = MainActionButton().then {
-        $0.setTitle(UITexts.Bookings.trackDriver, for: .normal)
+        $0.setTitle(UITexts.Bookings.trackDriver.uppercased(), for: .normal)
         $0.addTarget(self, action: #selector(trackDriverTapped), for: .touchUpInside)
     }
     private lazy var loadingView = LoadingView().then {

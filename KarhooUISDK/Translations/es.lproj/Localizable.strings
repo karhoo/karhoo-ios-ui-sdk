@@ -1,6 +1,9 @@
-"adyen.submitButton" = "preautorizar";
+"adyen.submitButton" = "PREAUTORIZAR";
 
-"adyen.submitButton.formatted" = "Preautorizar %@";
+"adyen.submitButton.formatted" = "PREAUTORIZAR %@";
+
+/* Keep it as it is - DO NOT TRANSLATE IT */
+"bt_add_card" = "@string/adyen.submitButton";
 
 "continue_button" = "Siguiente";
 
