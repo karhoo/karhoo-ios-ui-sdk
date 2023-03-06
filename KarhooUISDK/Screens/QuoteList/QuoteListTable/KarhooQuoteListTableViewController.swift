@@ -104,13 +104,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleLoadingState() {
         guard viewIsOnScreen else { return }
         tableView.backgroundView = nil
-        if tableView.visibleCells.isEmpty == false && tableView.numberOfRows(inSection: 0) == 0 {
-            tableView.beginUpdates()
-            tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
-            tableView.endUpdates()
-        } else {
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 
     private func handleFetchingState() {

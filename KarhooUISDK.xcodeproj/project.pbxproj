@@ -262,7 +262,7 @@
 		5128653F2914FC9800EA8934 /* KarhooTestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA129C2840F13600B0337F /* KarhooTestConfiguration.swift */; };
 		512FB1AB2994ECE700BFA40B /* CheckoutBookingWorkerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512FB1AA2994ECE700BFA40B /* CheckoutBookingWorkerSpec.swift */; };
 		5135E56828574A1300F14A0F /* MainActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56728574A1300F14A0F /* MainActionButton.swift */; };
-		5135E56E28574A4100F14A0F /* KarhooQuoteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56928574A4100F14A0F /* KarhooQuoteListPresenter.swift */; };
+		5135E56E28574A4100F14A0F /* KarhooQuoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56928574A4100F14A0F /* KarhooQuoteListViewModel.swift */; };
 		5135E56F28574A4100F14A0F /* KarhooQuoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56A28574A4100F14A0F /* KarhooQuoteListViewController.swift */; };
 		5135E57028574A4100F14A0F /* KarhooQuoteListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56B28574A4100F14A0F /* KarhooQuoteListEmptyView.swift */; };
 		5135E57128574A4100F14A0F /* KarhooQuoteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135E56C28574A4100F14A0F /* KarhooQuoteListCoordinator.swift */; };
@@ -990,7 +990,7 @@
 		512AD7242859ED7700888F60 /* QuoteListFilterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteListFilterSpec.swift; sourceTree = "<group>"; };
 		512FB1AA2994ECE700BFA40B /* CheckoutBookingWorkerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutBookingWorkerSpec.swift; sourceTree = "<group>"; };
 		5135E56728574A1300F14A0F /* MainActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainActionButton.swift; sourceTree = "<group>"; };
-		5135E56928574A4100F14A0F /* KarhooQuoteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListPresenter.swift; sourceTree = "<group>"; };
+		5135E56928574A4100F14A0F /* KarhooQuoteListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListViewModel.swift; sourceTree = "<group>"; };
 		5135E56A28574A4100F14A0F /* KarhooQuoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListViewController.swift; sourceTree = "<group>"; };
 		5135E56B28574A4100F14A0F /* KarhooQuoteListEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListEmptyView.swift; sourceTree = "<group>"; };
 		5135E56C28574A4100F14A0F /* KarhooQuoteListCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooQuoteListCoordinator.swift; sourceTree = "<group>"; };
@@ -2585,7 +2585,7 @@
 				5135E56D28574A4100F14A0F /* QuoteList+MVPC.swift */,
 				5135E56C28574A4100F14A0F /* KarhooQuoteListCoordinator.swift */,
 				5135E56B28574A4100F14A0F /* KarhooQuoteListEmptyView.swift */,
-				5135E56928574A4100F14A0F /* KarhooQuoteListPresenter.swift */,
+				5135E56928574A4100F14A0F /* KarhooQuoteListViewModel.swift */,
 				5135E56A28574A4100F14A0F /* KarhooQuoteListViewController.swift */,
 				5161FE91284E4CD7001F87A6 /* QuoteCell */,
 				5161FE88284E4CB8001F87A6 /* QuoteListTable */,
@@ -4668,7 +4668,7 @@
 				51808505286C456A001E4940 /* FilterListView.swift in Sources */,
 				407EC79F22CF564E00F24CFC /* KarhooNotificationView.swift in Sources */,
 				0968D82122F82B8300047FCF /* TripFeedbackMVP.swift in Sources */,
-				5135E56E28574A4100F14A0F /* KarhooQuoteListPresenter.swift in Sources */,
+				5135E56E28574A4100F14A0F /* KarhooQuoteListViewModel.swift in Sources */,
 				099106C221B8304900BD7E6F /* KarhooRecentAddressProvider.swift in Sources */,
 				09C765AE21DE688100CD81AB /* PickupOnlyStrategy.swift in Sources */,
 				51701EA9296DF8AB00194B4A /* JourneyDetails+Extensions.swift in Sources */,

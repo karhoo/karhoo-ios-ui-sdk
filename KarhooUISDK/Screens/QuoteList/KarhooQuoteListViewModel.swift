@@ -157,14 +157,12 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     }
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
-        // Checkout component requires this data
         setExpirationDates(of: quotes)
-        fetchedQuotes = quotes
-        // Why order is set based on location details?
-        if journeyDetails.destinationLocationDetails != nil, journeyDetails.isScheduled {
+
+        if journeyDetails.isScheduled {
             selectedQuoteOrder = .price
         }
-        updateViewQuotes()
+        updateViewQuotes(quotes)
     }
 
     private func quoteSearchErrorResult(_ error: KarhooError?) {
@@ -209,16 +207,23 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     }
 
     private func updateViewQuotes() {
-        guard let fetchedQuotes = fetchedQuotes else { return }
+        guard let fetchedQuotes else { return }
+        updateViewQuotes(fetchedQuotes)
+    }
 
-        let quotesToShow: [Quote] = quoteFilter.filter(fetchedQuotes.all)
+    private func updateViewQuotes(_ newQuotes: Quotes) {
+        defer {
+            fetchedQuotes = newQuotes
+        }
 
-        let noQuotesForSelectedFilters = quotesToShow.isEmpty && fetchedQuotes.all.isEmpty == false
-        let noQuotesForTimeAndArea = fetchedQuotes.all.isEmpty && fetchedQuotes.status == .completed
+        let quotesToShow: [Quote] = quoteFilter.filter(newQuotes.all)
+
+        let noQuotesForSelectedFilters = quotesToShow.isEmpty && newQuotes.all.isEmpty == false
+        let noQuotesForTimeAndArea = newQuotes.all.isEmpty && newQuotes.status == .completed
 
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
-        switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, fetchedQuotes.status) {
+        switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, newQuotes.status) {
         case (true, _, _):
             let journeyDetails = journeyDetailsManager.getJourneyDetails()
             switch journeyDetails?.isScheduled {
@@ -231,10 +236,13 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
             onStateUpdated?(.fetched(quotes: sortedQuotes))
-        case (_, _, .progressing) where fetchedQuotes.all.isEmpty:
+        case (_, _, .progressing) where newQuotes.all.isEmpty:
             onStateUpdated?(.loading)
         case (_, _, _):
-            onStateUpdated?(.fetching(quotes: sortedQuotes))
+            let alreadyShownedQuotes = quoteSorter.sortQuotes(fetchedQuotes?.all ?? [], by: selectedQuoteOrder)
+            if alreadyShownedQuotes == sortedQuotes {
+                onStateUpdated?(.fetching(quotes: sortedQuotes))
+            }
         }
         onQuotesUpdated()
         handleQuoteStatus()
