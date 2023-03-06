@@ -117,11 +117,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .loading: break
         default:
             stateSubject.send(.loading)
-            if isKarhooUser() {
-                submitAuthenticatedBooking()
-            } else {
-                submitGuestOrTokenExchangeBooking()
-            }
+            submitAuthenticatedBooking()
         }
     }
 

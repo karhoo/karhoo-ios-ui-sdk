@@ -73,11 +73,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
     private func getNonce(payload: NonceRequestPayload, currencyCode: String) {
         paymentService.getNonce(nonceRequestPayload: payload).execute { [weak self] result in
-            self?.triggerAddCardFlow(currencyCode: currencyCode, showUpdateCardAlert: false)
-            // temporary (or not)
-//            switch result {
-//            case .success(let nonce, _): self?.execute3dSecureCheckOnNonce(nonce)
-//            case .failure: self?.triggerAddCardFlow(currencyCode: currencyCode, showUpdateCardAlert: true)
+            self?.triggerAddCardFlow(currencyCode: currencyCode, showUpdateCardAlert: false)    
         }
     }
 
