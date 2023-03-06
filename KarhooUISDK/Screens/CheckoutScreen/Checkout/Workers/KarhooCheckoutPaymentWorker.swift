@@ -48,7 +48,7 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
     private var addCardResultCompletion: ((CardFlowResult) -> Void)?
 
     init(
-        threeDSecureProvider: ThreeDSecureProvider? = nil,
+        threeDSecureProvider: ThreeDSecureProvider? = PaymentFactory().getThreeDSecureProvider(),
         cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         userService: UserService = Karhoo.getUserService(),
