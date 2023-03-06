@@ -153,6 +153,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.adyenGuestEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         showKarhoo()
     }
 
@@ -167,6 +168,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.braintreeGuestEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         showKarhoo()
     }
 
@@ -181,7 +183,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.adyenUserServiceEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         usernamePasswordLoginAndShowKarhoo(
             username: Keys.adyenUserServiceEmail,
             password: Keys.adyenUserServicePassword
@@ -199,6 +201,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         usernamePasswordLoginAndShowKarhoo(
             username: Keys.braintreeUserServiceEmail,
             password: Keys.braintreeUserServicePassword
@@ -213,6 +216,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.braintreeTokenEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
     
@@ -224,6 +228,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.adyenTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
     }
     
@@ -235,6 +240,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -246,6 +252,7 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     

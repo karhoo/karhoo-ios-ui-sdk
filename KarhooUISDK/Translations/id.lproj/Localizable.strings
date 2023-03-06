@@ -1,6 +1,9 @@
-"adyen.submitButton" = "Otorisasi transaksi";
+"adyen.submitButton" = "OTORISASI TRANSAKSI";
 
-"adyen.submitButton.formatted" = "Otorisasi transaksi";
+"adyen.submitButton.formatted" = "OTORISASI TRANSAKSI";
+
+/* Keep it as it is - DO NOT TRANSLATE IT */
+"bt_add_card" = "@string/adyen.submitButton";
 
 "continue_button" = "Berikutnya";
 

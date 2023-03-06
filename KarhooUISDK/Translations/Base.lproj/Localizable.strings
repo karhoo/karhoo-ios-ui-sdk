@@ -1,6 +1,9 @@
-"adyen.submitButton" = "Authorise transaction";
+"adyen.submitButton" = "AUTHORISE TRANSACTION";
 
-"adyen.submitButton.formatted" = "Authorise transaction";
+"adyen.submitButton.formatted" = "AUTHORISE TRANSACTION";
+
+/* Keep it as it is - DO NOT TRANSLATE IT */
+"bt_add_card" = "@string/adyen.submitButton";
 
 "continue_button" = "Next";
 

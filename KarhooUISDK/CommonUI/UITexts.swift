@@ -244,10 +244,6 @@ public enum UITexts {
         public static let flightTracking = "kh_uisdk_filter_fight_tracking".localized
         public static let quoteExpiredTitle = "kh_uisdk_offer_expired".localized
         public static let quoteExpiredMessage = "kh_uisdk_offer_expired_text".localized
-        public static let legalNotice = "kh_uisdk_legal_notice_label".localized
-        public static let legalNoticeLink = "kh_uisdk_legal_notice_link".localized
-        public static let legalNoticeText = "kh_uisdk_legal_notice_text".localized
-        public static let legalNoticeTitle = "kh_uisdk_legal_notice_title".localized
         public static let noLocationPermissionTitle = "kh_uisdk_no_location_permission_title".localized
         public static let noLocationPermissionMessage = "kh_uisdk_no_location_permission_message".localized
         public static let noLocationPermissionConfirm = "kh_uisdk_settings".localized
@@ -261,6 +257,18 @@ public enum UITexts {
         public static let flightExample = "kh_uisdk_checkout_airport_example".localized
         public static let priceDetailsTitle = "kh_uisdk_price_bottom_sheet_title".localized
         public static var onlyLettersAndDigitsAllowedError = "kh_uisdk_checkout_error_only_letters_and_digits_allowed".localized
+        
+        /// Override this string to change the title of the legal notice component
+        public static let legalNotice = "kh_uisdk_legal_notice_label".localized
+        
+        /// Override this string to add what should be opened when the user clicks on the legal notice text. e.g.: mailto:legal-notice@someprovider.com
+        public static let legalNoticeLink = "kh_uisdk_legal_notice_link".localized
+        
+        /// Override this string to add the text with legal information you want to display to the user
+        public static let legalNoticeText = "kh_uisdk_legal_notice_text".localized
+        
+        /// Override this string to add a title for the corresponding link
+        public static let legalNoticeTitle = "kh_uisdk_legal_notice_title".localized
     }
 
     public enum Availability {
