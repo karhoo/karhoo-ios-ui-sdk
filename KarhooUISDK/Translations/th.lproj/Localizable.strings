@@ -2,6 +2,9 @@
 
 "adyen.submitButton.formatted" = "อนุมัติธุรกรรม";
 
+/* Keep it as it is - DO NOT TRANSLATE IT */
+"bt_add_card" = "@string/adyen.submitButton";
+
 "continue_button" = "ถัดไป";
 
 "K0001" = "ข้อผิดพลาดทั่วไปเกี่ยวกับคำขอ";

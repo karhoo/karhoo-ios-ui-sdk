@@ -206,7 +206,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
     
     private func updateConfirmButtonTitle() {
         let count = presenter.resultsCountForSelectedFilters().description
-        let text = String(format: UITexts.Quotes.filterPageResults, count)
+        let text = String(format: UITexts.Quotes.filterPageResults.uppercased(), count)
         confirmButton.setTitle(text, for: .normal)
     }
 

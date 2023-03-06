@@ -32,6 +32,7 @@ struct KarhooMainButton: View {
                 Text(title)
                 .padding(.horizontal, UIConstants.Spacing.standard)
                 .font(Font(KarhooUI.fonts.headerBold()))
+                .textCase(.uppercase)
                 .minimumScaleFactor(0.7)
                 .foregroundColor(Color(KarhooUI.colors.white))
                 .frame(maxWidth: .infinity)

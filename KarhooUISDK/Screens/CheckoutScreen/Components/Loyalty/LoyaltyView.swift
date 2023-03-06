@@ -119,7 +119,7 @@ struct LoyaltyView: View {
                     .font(Font(KarhooUI.fonts.bodyBold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                 Text(errorMessage)
-                    .font(Font(KarhooUI.fonts.bodyBold()))
+                    .font(Font(KarhooUI.fonts.captionBold()))
                     .foregroundColor(Color(KarhooUI.colors.textError))
             }
             .padding(.all, UIConstants.Spacing.standard)

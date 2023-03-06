@@ -46,7 +46,7 @@ final class RidesViewController: UIViewController, RidesView {
         addChild(twoPageViewController)
 
         formButton?.delegate = self
-        formButton?.set(title: UITexts.Bookings.newRide)
+        formButton?.set(title: UITexts.Bookings.newRide.uppercased())
         formButton?.setEnabledMode()
         tabConstraintSwitcher.set(animationTime: tabAnimationTime)
         presenter.bind(view: self)

@@ -2,6 +2,9 @@
 
 "adyen.submitButton.formatted" = "取引の承認";
 
+/* Keep it as it is - DO NOT TRANSLATE IT */
+"bt_add_card" = "@string/adyen.submitButton";
+
 "continue_button" = "次";
 
 "K0001" = "一般的なリクエストエラー";
