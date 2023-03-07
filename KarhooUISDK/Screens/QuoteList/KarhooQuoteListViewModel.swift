@@ -311,7 +311,6 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
             self?.handleResult(result: result, journeyDetails: details)
         }
         onStateUpdated?(.loading)
-        fetchedQuotes = nil
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
         refreshSubscription()
     }
