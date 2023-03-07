@@ -61,9 +61,11 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
             var fallbackRule: VehicleImageRule? {
                 vehicleRules?.rules.first { $0.ruleType == .fallback }
             }
+            
             var defaultTypeRule: VehicleImageRule? {
                 vehicleRules?.rules.first { $0.type == quote.vehicle.type && $0.ruleType == .typeDefault }
             }
+            
             var anyMatchingTagRule: VehicleImageRule? {
                 var rule: VehicleImageRule?
                 let rulesWithOneTag = vehicleRules?.rules.filter { $0.tags.count == 1 }
@@ -79,13 +81,22 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
                     }
                 return rule
             }
+            
             let specificRule = vehicleRules?.rules.first { rule in
                 guard rule.ruleType == .specific else { return false }
                 let ruleTags = Set(rule.tags.map { $0.lowercased() })
                 let quoteVehicleTags = Set(quote.vehicle.tags.map { $0.lowercased() })
                 return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteVehicleTags
             }
-            let rule = (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
+            
+            var rule: VehicleImageRule? {
+                if quote.vehicle.type.lowercased() == VehicleType.moto.rawValue.lowercased() {
+                    return defaultTypeRule
+                } else {
+                    return (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
+                }
+            }
+            
             completion(rule)
         }
     }
