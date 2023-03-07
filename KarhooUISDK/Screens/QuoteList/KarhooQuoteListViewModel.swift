@@ -30,7 +30,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
-    private let quoteListPollTime: TimeInterval = 1.0
+    private let quoteListPollTime: TimeInterval = 1.2
     var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
@@ -288,6 +288,7 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        quotesObserver = nil
         quoteSearchObservable = nil
         guard let details = details else {
             return
@@ -309,6 +310,8 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
             guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
             self?.handleResult(result: result, journeyDetails: details)
         }
+        onStateUpdated?(.loading)
+        fetchedQuotes = nil
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
         refreshSubscription()
     }
