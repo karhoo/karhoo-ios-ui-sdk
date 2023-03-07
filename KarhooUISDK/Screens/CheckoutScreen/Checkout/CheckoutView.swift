@@ -85,6 +85,7 @@ struct CheckoutView: View {
                                 Text(UITexts.Booking.legalNotice)
                                     .foregroundColor(Color(KarhooUI.colors.accent))
                                     .font(Font(KarhooUI.fonts.captionSemibold()))
+                                    .multilineTextAlignment(.trailing)
                             }
                             KarhooLegalNoticeView(viewModel: viewModel.legalNoticeViewModel)
                         }
