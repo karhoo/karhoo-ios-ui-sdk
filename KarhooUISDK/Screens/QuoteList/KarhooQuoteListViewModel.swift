@@ -239,8 +239,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         case (_, _, .progressing) where newQuotes.all.isEmpty:
             onStateUpdated?(.loading)
         case (_, _, _):
-            let alreadyShownedQuotes = quoteSorter.sortQuotes(fetchedQuotes?.all ?? [], by: selectedQuoteOrder)
-            if alreadyShownedQuotes == sortedQuotes {
+            if areQuotesTheSame(fetchedQuotes?.all, newQuotes.all) == false {
                 onStateUpdated?(.fetching(quotes: sortedQuotes))
             }
         }
@@ -275,6 +274,12 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             quoteListId: quoteListId,
             amountShown: quotesCount
         )
+    }
+
+    // MARK: - Helpers
+
+    private func areQuotesTheSame(_ lhs: [Quote]?, _ rhs: [Quote]?) -> Bool {
+        lhs == rhs
     }
 }
 

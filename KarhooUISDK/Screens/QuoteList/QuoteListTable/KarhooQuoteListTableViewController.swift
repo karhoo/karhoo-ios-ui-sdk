@@ -14,7 +14,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     // MARK: - Properties
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
-    private var presenter: QuoteListTableViewModel!
+    private var viewModel: QuoteListTableViewModel!
 
     // MARK: - Views
 
@@ -48,20 +48,20 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(presenter != nil, "Presented needs to be assinged using `setupBinding` method")
-        presenter.viewDidLoad()
+        assert(viewModel != nil, "viewModel needs to be assinged using `setupBinding` method")
+        viewModel.viewDidLoad()
     }
 
     override func viewWillAppear(_ animate: Bool) {
         super.viewWillAppear(animate)
-        presenter.viewWillAppear()
+        viewModel.viewWillAppear()
     }
 
     // MARK: - Setup binding
 
-    func setupBinding(_ presenter: QuoteListTableViewModel) {
-        self.presenter = presenter
-        presenter.onQuoteListStateUpdated = { [weak self] state in
+    func setupBinding(_ viewModel: QuoteListTableViewModel) {
+        self.viewModel = viewModel
+        viewModel.onQuoteListStateUpdated = { [weak self] state in
             self?.handleState(state)
         }
     }
@@ -110,13 +110,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     private func handleFetchingState() {
         guard viewIsOnScreen else { return }
         tableView.backgroundView = nil
-        if tableView.visibleCells.isEmpty && tableView.numberOfRows(inSection: 0) > 0 {
-            tableView.beginUpdates()
-            tableView.insertSections(IndexSet(integer: 0), with: .automatic)
-            tableView.endUpdates()
-        } else {
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 
     private func handleFetchedState() {
@@ -126,7 +120,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
 
     private func handleEmptyState(_ reason: QuoteListState.EmptyReason) {
         tableView.reloadData()
-        let emptyView = QuoteListEmptyView(using: presenter.getEmptyReasonViewModel(), delegate: self)
+        let emptyView = QuoteListEmptyView(using: viewModel.getEmptyReasonViewModel(), delegate: self)
         let currentEmptyView = tableView.backgroundView as? QuoteListEmptyView
         let shouldReplaceEmptyView = currentEmptyView?.viewModel != emptyView.viewModel
         tableView.backgroundView = shouldReplaceEmptyView ? emptyView : tableView.backgroundView
@@ -135,7 +129,7 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     // MARK: - Utils
     
     private func getQuotes() -> [Quote] {
-        switch presenter.state {
+        switch viewModel.state {
         case .loading, .empty:
             return []
         case .fetching(let quotes), .fetched(let quotes):
@@ -185,12 +179,12 @@ extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDa
         guard let quote = getQuotes()[safe: indexPath.row] else {
             return
         }
-        presenter.onQuoteSelected(quote)
+        viewModel.onQuoteSelected(quote)
     }
 }
 
 extension KarhooQuoteListTableViewController: QuoteListErrorViewDelegate {
     func showNoCoverageEmail() {
-        presenter.showNoCoverageEmail()
+        viewModel.showNoCoverageEmail()
     }
 }
