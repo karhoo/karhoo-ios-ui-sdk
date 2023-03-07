@@ -273,12 +273,6 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             amountShown: quotesCount
         )
     }
-
-    // MARK: - Helpers
-
-    private func areQuotesTheSame(_ lhs: [Quote]?, _ rhs: [Quote]?) -> Bool {
-        lhs == rhs
-    }
 }
 
 // MARK: - JourneyDetailsObserver
