@@ -246,7 +246,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         default:
             hideSortAndFilterButtons = true
         }
-        setHeaderDisabled(hideSortAndFilterButtons: hideSortAndFilterButtons) { [weak self] in
+        setHeaderDisabled(
+            hideSortAndFilterButtons: hideSortAndFilterButtons,
+            hideLegalDisclaimer: true
+        ) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
         }
     }
@@ -272,7 +275,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setHeaderDisabled(
         hideSortAndFilterButtons: Bool = false,
-        hideLegalDisclaimer: Bool = false,
+        hideLegalDisclaimer: Bool = true,
         animated: Bool = true,
         completion: @escaping () -> Void = { }
     ) {

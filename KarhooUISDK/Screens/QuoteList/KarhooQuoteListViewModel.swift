@@ -239,9 +239,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         case (_, _, .progressing) where newQuotes.all.isEmpty:
             onStateUpdated?(.loading)
         case (_, _, _):
-            if areQuotesTheSame(fetchedQuotes?.all, newQuotes.all) == false {
-                onStateUpdated?(.fetching(quotes: sortedQuotes))
-            }
+            onStateUpdated?(.fetching(quotes: sortedQuotes))
         }
         onQuotesUpdated()
         handleQuoteStatus()
@@ -311,6 +309,7 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
             self?.handleResult(result: result, journeyDetails: details)
         }
         onStateUpdated?(.loading)
+        fetchedQuotes = nil
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
         refreshSubscription()
     }
