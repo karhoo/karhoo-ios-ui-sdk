@@ -68,13 +68,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             payer: payer,
             organisationId: organisationId
         )
-        getNonce(payload: nonceRequestPayload, currencyCode: quote.price.currencyCode)
-    }
-
-    private func getNonce(payload: NonceRequestPayload, currencyCode: String) {
-        paymentService.getNonce(nonceRequestPayload: payload).execute { [weak self] result in
-            self?.triggerAddCardFlow(currencyCode: currencyCode, showUpdateCardAlert: false)    
-        }
+        triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: false)
     }
 
     private func triggerAddCardFlow(currencyCode: String, showUpdateCardAlert: Bool) {
