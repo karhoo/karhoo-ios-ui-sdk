@@ -275,7 +275,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setHeaderDisabled(
         hideSortAndFilterButtons: Bool = false,
-        hideLegalDisclaimer: Bool = true,
+        hideLegalDisclaimer: Bool = false,
         animated: Bool = true,
         completion: @escaping () -> Void = { }
     ) {
