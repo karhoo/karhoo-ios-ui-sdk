@@ -30,7 +30,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     private var dateOfListReceiving: Date?
     private var isViewVisible = false
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
-    private let quoteListPollTime: TimeInterval = 1.5
+    private let quoteListPollTime: TimeInterval = 1.0
     var isSortingAvailable: Bool = true
 
     // MARK: - Lifecycle
@@ -288,6 +288,7 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        quoteSearchObservable = nil
         guard let details = details else {
             return
         }
