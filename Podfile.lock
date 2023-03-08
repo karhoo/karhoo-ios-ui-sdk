@@ -45,7 +45,7 @@ PODS:
     - Braintree/Card
   - Braintree/Venmo (5.20.1):
     - Braintree/Core
-  - BraintreeDropIn (9.8.0):
+  - BraintreeDropIn (9.8.1):
     - Braintree/ApplePay (~> 5.19)
     - Braintree/Card (~> 5.19)
     - Braintree/Core (~> 5.19)
@@ -63,7 +63,7 @@ PODS:
     - KarhooUISDK/Core
   - KarhooUISDK/Braintree (1.11.0):
     - Braintree/PaymentFlow (~> 5.20.1)
-    - BraintreeDropIn (~> 9.8.0)
+    - BraintreeDropIn (~> 9.8.1)
     - KarhooUISDK/Core
   - KarhooUISDK/Core (1.11.0):
     - KarhooSDK
@@ -79,13 +79,13 @@ PODS:
   - Quick (5.0.1)
   - ReachabilitySwift (5.0.0)
   - SnapshotTesting (1.9.0)
-  - SwiftFormat/CLI (0.50.8)
+  - SwiftFormat/CLI (0.51.1)
   - SwiftLint (0.50.3)
 
 DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
-  - BraintreeDropIn (~> 9.8.0)
+  - BraintreeDropIn (~> 9.8.1)
   - KarhooSDK (= 1.7.2)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
@@ -123,18 +123,18 @@ SPEC CHECKSUMS:
   Adyen3DS2: 48659258ad7a9ff6c212b80dcbda3e63f2b4a236
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 4a27d741d164591ac87cecfaa9a02adb8eb92422
-  BraintreeDropIn: 19d75b5aa0798224fa0501f9b362af54514b0736
+  BraintreeDropIn: 37f70975005ecf391637c998576754f6078d786c
   KarhooSDK: 0fb4e96db2bea35f77556817f6f33db00aa462de
-  KarhooUISDK: 68b80322bbc7716917e6875d0446a901efd27e1d
+  KarhooUISDK: 789adbdd814f6336b6d89d97ca24f0210a1171f9
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
-  SwiftFormat: 16f04fcde066f40004f51e26bc95bc14dc377d6f
+  SwiftFormat: f02549113d20f7aa428b346da8cfecbc841fe66d
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: 5ae6f0e806a8a2f31e0f7fde259639c126c22812
+PODFILE CHECKSUM: 627fedf43ad037938e267cfee6d93a56bf25dc2d
 
 COCOAPODS: 1.11.3

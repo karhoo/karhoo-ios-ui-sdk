@@ -30,6 +30,7 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
         flowItemCallback: ScreenResultCallback<Screen>?
     ) {
         let request = BTDropInRequest()
+        request.uiCustomization = getUiCustomization()
         guard let flowItem = BTDropInController(
             authorization: paymentsToken.token,
             request: request,
@@ -48,5 +49,20 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
             return
         }
         flowItemCallback?(.completed(result: flowItem))
+    }
+    
+    private func getUiCustomization() -> BTDropInUICustomization {
+        let uiCustomization = BTDropInUICustomization(colorScheme: .light)
+        uiCustomization.primaryTextColor = KarhooUI.colors.text
+        uiCustomization.secondaryTextColor = KarhooUI.colors.text
+        uiCustomization.formBackgroundColor = KarhooUI.colors.background2
+        uiCustomization.lineColor = KarhooUI.colors.border
+        uiCustomization.navigationBarTitleTextColor = KarhooUI.colors.text
+        uiCustomization.tintColor = KarhooUI.colors.secondary
+        uiCustomization.errorForegroundColor = KarhooUI.colors.error
+        uiCustomization.disabledColor = KarhooUI.colors.inactive
+        uiCustomization.placeholderTextColor = KarhooUI.colors.textLabel
+        uiCustomization.switchOnTintColor = KarhooUI.colors.secondary
+        return uiCustomization
     }
 }
