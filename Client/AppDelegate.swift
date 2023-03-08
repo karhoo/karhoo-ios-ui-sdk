@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         KarhooUI.set(configuration: KarhooConfig())
         #if canImport(Braintree)
-            BTAppSwitch.setReturnURLScheme(urlScheme)
+        BTAppContextSwitcher.setReturnURLScheme(urlScheme)
         #endif
 
         window = UIWindow()
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         if url.scheme?.localizedCaseInsensitiveCompare(urlScheme) == .orderedSame {
-            return BTAppSwitch.handleOpen(url, options: options)
+            return BTAppContextSwitcher.handleOpenURL(url)
         }
         
         #if canImport(Adyen)
