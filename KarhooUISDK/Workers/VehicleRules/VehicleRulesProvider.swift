@@ -90,7 +90,7 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
             }
             
             var rule: VehicleImageRule? {
-                if quote.vehicle.type.lowercased() == VehicleType.moto.rawValue.lowercased() {
+                if VehicleType(rawValue: quote.vehicle.type.uppercased()) == .moto {
                     return defaultTypeRule
                 } else {
                     return (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
