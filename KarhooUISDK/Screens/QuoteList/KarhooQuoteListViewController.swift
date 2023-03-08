@@ -18,7 +18,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Properties
 
-    private weak var presenter: QuoteListViewModel!
+    private weak var viewModel: QuoteListViewModel!
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
@@ -85,10 +85,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private lazy var tableViewCoordinator: QuoteListTableCoordinator = KarhooQuoteListTableCoordinator(
         onQuoteSelected: { [weak self] quote in
-            self?.presenter?.didSelectQuote(quote)
+            self?.viewModel?.didSelectQuote(quote)
         },
         onQuoteDetailsSelected: { [weak self] quote in
-            self?.presenter?.didSelectQuoteDetails(quote)
+            self?.viewModel?.didSelectQuoteDetails(quote)
         }
     )
 
@@ -108,14 +108,14 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(presenter != nil, "Presented needs to be assigned using `setupBinding` method")
-        presenter?.viewDidLoad()
+        assert(viewModel != nil, "Presented needs to be assigned using `setupBinding` method")
+        viewModel?.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
-        presenter?.viewWillAppear()
+        viewModel?.viewWillAppear()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -124,13 +124,13 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter?.viewWillDisappear()
+        viewModel?.viewWillDisappear()
     }
 
     // MARK: - Setup binding
 
     func setupBinding(_ presenter: QuoteListViewModel) {
-        self.presenter = presenter
+        self.viewModel = presenter
         loadViewIfNeeded()
         presenter.onStateUpdated = { [weak self] state in
             self?.handleStateUpdate(state)
@@ -219,10 +219,9 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     }
     
     private func handleLoadingState() {
+        tableViewCoordinator.updateQuoteListState(.loading)
         loadingBar.startAnimation()
-        setHeaderDisabled(hideLegalDisclaimer: true) { [weak self] in
-            self?.tableViewCoordinator.updateQuoteListState(.loading)
-        }
+        setHeaderDisabled(hideLegalDisclaimer: true)
     }
 
     private func handleFetchingState(quotes: [Quote]) {
@@ -247,7 +246,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         default:
             hideSortAndFilterButtons = true
         }
-        setHeaderDisabled(hideSortAndFilterButtons: hideSortAndFilterButtons) { [weak self] in
+        setHeaderDisabled(
+            hideSortAndFilterButtons: hideSortAndFilterButtons,
+            hideLegalDisclaimer: true
+        ) { [weak self] in
             self?.tableViewCoordinator.updateQuoteListState(.empty(reason: reason))
         }
     }
@@ -256,7 +258,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private func setHeaderEnabled(completion: @escaping () -> Void = { }) {
         buttonsStackView.isHidden = false
-        sortButton.isHidden = !presenter.isSortingAvailable
+        sortButton.isHidden = !viewModel.isSortingAvailable
         UIView.animate(
             withDuration: UIConstants.Duration.medium,
             delay: 0,
@@ -291,7 +293,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             completion: { [weak self] _ in
                 guard let self = self else { return }
                 self.buttonsStackView.isHidden = hideSortAndFilterButtons
-                self.sortButton.isHidden = !self.presenter.isSortingAvailable
+                self.sortButton.isHidden = !self.viewModel.isSortingAvailable
                 completion()
             }
         )
@@ -313,11 +315,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     @objc
     private func sortButtonTapped(_ sender: UIButton) {
-        presenter?.didSelectShowSort()
+        viewModel?.didSelectShowSort()
     }
 
     @objc
     private func filterButtonTapped(_sender: UIButton) {
-        presenter?.didSelectShowFilters()
+        viewModel?.didSelectShowFilters()
     }
 }
