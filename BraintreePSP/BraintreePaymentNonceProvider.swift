@@ -57,17 +57,6 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
                 return
             }
         }
-
-        let payer = Payer(
-            id: user.userId,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email
-        )
-        let nonceRequestPayload = NonceRequestPayload(
-            payer: payer,
-            organisationId: organisationId
-        )
         triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: false)
     }
 
