@@ -57,35 +57,15 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
                 return
             }
         }
-
-        let payer = Payer(
-            id: user.userId,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email
-        )
-        let nonceRequestPayload = NonceRequestPayload(
-            payer: payer,
-            organisationId: organisationId
-        )
-        getNonce(payload: nonceRequestPayload, currencyCode: quote.price.currencyCode)
+        triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: false)
     }
 
-    private func getNonce(payload: NonceRequestPayload, currencyCode: String) {
-        paymentService.getNonce(nonceRequestPayload: payload).execute { [weak self] result in
-            switch result {
-            case .success(let nonce, _): self?.execute3dSecureCheckOnNonce(nonce)
-            case .failure: self?.triggerAddCardFlow(currencyCode: currencyCode)
-            }
-        }
-    }
-
-    private func triggerAddCardFlow(currencyCode: String) {
+    private func triggerAddCardFlow(currencyCode: String, showUpdateCardAlert: Bool) {
         self.cardRegistrationFlow.start(
             cardCurrency: currencyCode,
             amount: 0,
             supplierPartnerId: "",
-            showUpdateCardAlert: true,
+            showUpdateCardAlert: showUpdateCardAlert,
             callback: { [weak self] result in
             switch result {
             case .completed(let addCardResult): self?.handleAddCardResult(addCardResult)
@@ -133,7 +113,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             case .failedToInitialisePaymentService:
                 self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             case .threeDSecureAuthenticationFailed:
-                triggerAddCardFlow(currencyCode: quote.price.currencyCode)
+                triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: true)
             case .success(let threeDSecureNonce):
                 self.callbackResult?(.completed(value: .nonce(nonce: Nonce(nonce: threeDSecureNonce))))
             }

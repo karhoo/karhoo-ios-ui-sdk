@@ -29,4 +29,8 @@ final class PaymentFactory {
     func nonceProvider() -> PaymentNonceProvider {
         sdkConfiguration.paymentManager.nonceProvider
     }
+    
+    func getThreeDSecureProvider() -> ThreeDSecureProvider? {
+        sdkConfiguration.paymentManager.threeDSecureProvider
+    }
 }
