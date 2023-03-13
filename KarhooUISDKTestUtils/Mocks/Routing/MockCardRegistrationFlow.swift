@@ -25,11 +25,14 @@ final public class MockCardRegistrationFlow: CardRegistrationFlow {
     public var showUpdateCardAlertSet: Bool?
     public var amountSet: Int?
     private var callback: ((OperationResult<CardFlowResult>) -> Void)?
-    public func start(cardCurrency: String,
-               amount: Int,
-               supplierPartnerId: String,
-               showUpdateCardAlert: Bool,
-               callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    
+    public func start(
+        cardCurrency: String,
+        amount: Int,
+        supplierPartnerId: String,
+        showUpdateCardAlert: Bool,
+        callback: @escaping (OperationResult<CardFlowResult>) -> Void
+    ) {
         startCalled = true
         currencyCodeSet = cardCurrency
         showUpdateCardAlertSet = showUpdateCardAlert
