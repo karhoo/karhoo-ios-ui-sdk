@@ -7,12 +7,14 @@
 
 import KarhooUISDK
 import KarhooSDK
-#if canImport(Braintree)
-import Braintree
-#endif
-#if canImport(Adyen)
-import Adyen
-#endif
+//#if canImport(KarhooBraintreePSP)
+import KarhooBraintreePSP
+import BraintreeCore
+//#endif
+//#if canImport(KarhooAdyenPSP)
+import KarhooAdyenPSP
+import AdyenActions
+//#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

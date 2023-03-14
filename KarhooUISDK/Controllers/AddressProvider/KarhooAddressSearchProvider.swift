@@ -49,7 +49,7 @@ final class KarhooAddressSearchProvider: AddressSearchProvider {
 
     private func performSearch(string: String) {
         delegate?.searchInProgress()
-        let searchCallback = { [weak self] (result: Result<Places>) in
+        let searchCallback: (Result<Places>) -> Void = { [weak self] (result: Result<Places>) in
             switch result {
             case .success(let places, _):
                 self?.searchCompleted(search: string, places: places.places)

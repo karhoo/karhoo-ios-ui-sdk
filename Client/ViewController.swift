@@ -9,12 +9,8 @@ import UIKit
 import KarhooUISDK
 import CoreLocation
 import KarhooSDK
-#if canImport(KarhooUISDKAdyen)
-import KarhooUISDKAdyen
-#endif
-#if canImport(KarhooUISDKBraintree)
-import KarhooUISDKBraintree
-#endif
+import KarhooAdyenPSP
+import KarhooBraintreePSP
 
 public let notificationEnabledUserDefaultsKey = "notifications_enabled"
 

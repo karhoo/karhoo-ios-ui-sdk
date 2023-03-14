@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NotificationCenter
 import KarhooSDK
 
 class KarhooAnalitycsServiceWithNotifications: AnalyticsService {
