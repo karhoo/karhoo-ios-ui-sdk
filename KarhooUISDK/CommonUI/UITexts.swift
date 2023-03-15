@@ -314,7 +314,7 @@ public enum UITexts {
     }
     
     public enum VehicleClass {
-        public static let saloon = "kh_uisdk_vehicle_standard".localized
+        public static let standard = "kh_uisdk_filter_standard".localized
         public static let taxi = "kh_uisdk_taxi".localized
         public static let mpv = "kh_uisdk_mpv".localized
         public static let exec = "kh_uisdk_exec".localized
