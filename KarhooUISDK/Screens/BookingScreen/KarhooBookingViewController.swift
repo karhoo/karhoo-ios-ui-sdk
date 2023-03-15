@@ -13,34 +13,27 @@ import SwiftUI
 
 final class KarhooBookingViewController: UIViewController, BookingView {
     
-    private var navigationBar: KarhooNavigationBarView!
     private var addressBar: AddressBarView!
     private var tripAllocationView: KarhooTripAllocationView!
-    private var bottomNotificationView: KarhooNotificationView!
-    private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
     private var mapView: MapView = KarhooMKMapView()
     private var bottomContainer: UIView!
     private var asapButton: MainActionButton!
-    private var laterButton: MainActionButton!
+    private var scheduleButton: MainActionButton!
     private var sideMenu: SideMenu?
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
     private let mapPresenter: BookingMapPresenter
-    private let feedbackMailComposer: FeedbackEmailComposer
     private let analyticsProvider: Analytics
 
     init(presenter: BookingPresenter,
          mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
-         feedbackMailComposer: FeedbackEmailComposer = KarhooFeedbackEmailComposer(),
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
         self.mapPresenter = mapPresenter
-        self.feedbackMailComposer = feedbackMailComposer
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
-        self.feedbackMailComposer.set(parent: self)
         
         self.setUpView()
     }
@@ -65,7 +58,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     
     private func setUpView() {
         presenter.load(view: self)
-        
+        edgesForExtendedLayout = []
         mapView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(mapView)
@@ -78,23 +71,14 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        navigationBar = KarhooNavigationBarView()
-        navigationBar.set(rightItemHidden: Karhoo.configuration.authenticationMethod().guestSettings != nil)
-        navigationBar.set(actions: self)
-        view.addSubview(navigationBar)
-        
-        _ = [navigationBar.topAnchor.constraint(equalTo: view.topAnchor),
-             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
-
         addressBar = KarhooUI.components.addressBar(journeyInfo: journeyInfo)
 
         view.insertSubview(addressBar, aboveSubview: mapView)
 
-        _ = [addressBar.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
-             addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0),
-             addressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                  constant: -10.0)].map { $0.isActive = true }
+        addressBar.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
+        addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
+        addressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                  constant: -10.0).isActive = true
         
         tripAllocationView = KarhooTripAllocationView()
         tripAllocationView.set(actions: self)
@@ -103,16 +87,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
              tripAllocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              tripAllocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              tripAllocationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
-        
-        bottomNotificationView = KarhooNotificationView(hasBottomInset: true)
-        setupBottomNotification()
-//        view.addSubview(bottomNotificationView)
-//
-//        _ = [bottomNotificationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//             bottomNotificationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
-//        bottomNotificationViewBottomConstraint = bottomNotificationView.bottomAnchor.constraint(
-//            equalTo: view.bottomAnchor, constant: 150.0)
-//        bottomNotificationViewBottomConstraint.isActive = true
     }
     
     private func setupMapView(reverseGeolocate: Bool) {
@@ -129,27 +103,19 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         )
         mapView.set(presenter: mapPresenter)
     }
-    
-    private func setupBottomNotification() {
-        let header = UITexts.Booking.noAvailabilityHeader
-        let text = UITexts.Booking.noAvailabilityBody
-        let linkText = UITexts.Booking.noAvailabilityLink
-        let body = String(format: text, linkText)
-
-        let string = NSMutableAttributedString(string: "\(header)\n\(body)")
-        string.font(KarhooUI.fonts.headerBold(), forStrings: header)
-        string.font(KarhooUI.fonts.bodyRegular(), forStrings: body)
-        string.textColor(KarhooUI.colors.neonRed, forStrings: linkText)
-        string.font(KarhooUI.fonts.bodyBold(), forStrings: linkText)
-//        bottomNotificationView?.change(title: string)
-
-//        bottomNotificationView?.addLink(linkText) { [weak self] in
-//            _ = self?.feedbackMailComposer.showNoCoverageEmail()
-//        }
-    }
 
     private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        set(leftNavigationButton: .exitIcon)
+        if !(Karhoo.configuration.authenticationMethod().guestSettings != nil) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: UITexts.Generic.rides,
+                style: .plain,
+                target: self,
+                action: #selector(rightBarButtonPressed)
+            )
+        }
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.set(style: .primary)
         navigationItem.backButtonTitle = ""
     }
 
@@ -169,12 +135,12 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
 
         // later button
-        laterButton = MainActionButton(design: .primary)
-        laterButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
+        scheduleButton = MainActionButton(design: .primary)
+        scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStack.addArrangedSubviews([asapButton, laterButton])
+        buttonsStack.addArrangedSubviews([asapButton, scheduleButton])
         buttonsStack.axis = .horizontal
         buttonsStack.spacing = UIConstants.Spacing.standard
         buttonsStack.distribution = .fillEqually
@@ -211,7 +177,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn,
                        animations: { [weak self] in
                         self?.addressBar.alpha = 0
-                        self?.navigationBar.alpha = 0
 						self?.mapView.set(focusButtonHidden: true)
             }, completion: nil)
 
@@ -224,7 +189,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     func hideAllocationScreen() {
         addressBar.alpha = 1
-        navigationBar.alpha = 1
         tripAllocationView.dismissScreen()
     }
 
@@ -233,7 +197,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func set(leftNavigationButton: NavigationBarItemIcon) {
-        navigationBar.set(leftIcon: leftNavigationButton)
+        let leftBarImageName = leftNavigationButton == .exitIcon ? "kh_uisdk_cross_new" : "kh_uisdk_menu"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.uisdkImage(leftBarImageName).withRenderingMode(.alwaysTemplate),
+            style: .plain,
+            target: self,
+            action: #selector(leftBarButtonPressed)
+        )
     }
     
     private func showNoLocationPermissionsPopUp() {
@@ -251,6 +221,20 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
         showAsOverlay(item: alertController, animated: true)
+    }
+
+    @objc
+    private func rightBarButtonPressed() {
+        openRidesList(presentationStyle: nil)
+    }
+
+    @objc
+    private func leftBarButtonPressed() {
+        if let menu = sideMenu {
+            menu.showMenu()
+        } else {
+            presenter.exitPressed()
+        }
     }
 }
 
@@ -281,21 +265,7 @@ extension KarhooBookingViewController: TripAllocationActions {
         presenter.tripCancellationFailed(trip: trip)
         setupMapView(reverseGeolocate: true)
     }
-}
 
-extension KarhooBookingViewController: NavigationBarActions {
-
-    func rightButtonPressed() {
-        openRidesList(presentationStyle: nil)
-    }
-
-    func leftButtonPressed() {
-        if let menu = sideMenu {
-            menu.showMenu()
-        } else {
-            presenter.exitPressed()
-        }
-    }
 }
 
 extension KarhooBookingViewController: BookingScreen {
