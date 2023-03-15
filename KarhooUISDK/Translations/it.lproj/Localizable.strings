@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Il tuo conducente %@ è arrivato";
 
+"kh_uisdk_asap" = "al più presto";
+
 "kh_uisdk_back" = "Indietro";
 
 "kh_uisdk_baggage_max" = "Max %d bagagli/o";
@@ -647,6 +649,8 @@
 "kh_uisdk_last_trip_id" = "ID ultima corsa: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "ID ultima corsa: non ancora impostato";
+
+"kh_uisdk_later" = "Più tardi";
 
 "kh_uisdk_legal_notice_label" = "Note legali";
 

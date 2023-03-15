@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "您的 %@ 司机已到达";
 
+"kh_uisdk_asap" = "尽快";
+
 "kh_uisdk_back" = "返回";
 
 "kh_uisdk_baggage_max" = "最多 %d 件行李";
@@ -645,6 +647,8 @@
 "kh_uisdk_last_trip_id" = "上次行程编号：%1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "上次行程编号：尚未设置";
+
+"kh_uisdk_later" = "之后";
 
 "kh_uisdk_legal_notice_label" = "法律声明";
 

@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "%@のドライバーが到着しました";
 
+"kh_uisdk_asap" = "できるだけ速くに";
+
 "kh_uisdk_back" = "戻る";
 
 "kh_uisdk_baggage_max" = "荷物：%d個まで";
@@ -645,6 +647,8 @@
 "kh_uisdk_last_trip_id" = "前回の乗車サービスID：%1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "前回の乗車サービスID：まだ設定されていません";
+
+"kh_uisdk_later" = "後で";
 
 "kh_uisdk_legal_notice_label" = "法的通知";
 

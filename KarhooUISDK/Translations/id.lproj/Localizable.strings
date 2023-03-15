@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Pengemudi %@ Anda telah tiba";
 
+"kh_uisdk_asap" = "secepat mungkin";
+
 "kh_uisdk_back" = "Kembali";
 
 "kh_uisdk_baggage_max" = "%d bagasi maks";
@@ -645,6 +647,8 @@
 "kh_uisdk_last_trip_id" = "ID Perjalanan Terakhir: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "ID Perjalanan Terakhir: belum ditetapkan";
+
+"kh_uisdk_later" = "Nanti Saja";
 
 "kh_uisdk_legal_notice_label" = "Pemberitahuan hukum";
 

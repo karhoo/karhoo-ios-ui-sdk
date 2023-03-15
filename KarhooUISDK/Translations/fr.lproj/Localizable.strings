@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Votre chauffeur %@ est arrivé";
 
+"kh_uisdk_asap" = "DÈS QUE POSSIBLE";
+
 "kh_uisdk_back" = "Retour";
 
 "kh_uisdk_baggage_max" = "%d bagage(s) max";
@@ -647,6 +649,8 @@
 "kh_uisdk_last_trip_id" = "Référence de votre dernière course : %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Référence de votre dernière course : pas encore définie";
+
+"kh_uisdk_later" = "Par la suite";
 
 "kh_uisdk_legal_notice_label" = "Mentions légales";
 

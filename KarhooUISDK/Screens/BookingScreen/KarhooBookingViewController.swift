@@ -19,6 +19,9 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var bottomNotificationView: KarhooNotificationView!
     private var bottomNotificationViewBottomConstraint: NSLayoutConstraint!
     private var mapView: MapView = KarhooMKMapView()
+    private var bottomContainer: UIView!
+    private var asapButton: MainActionButton!
+    private var laterButton: MainActionButton!
     private var sideMenu: SideMenu?
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
@@ -66,12 +69,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         mapView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(mapView)
+        setupBottomContainer()
 
         NSLayoutConstraint.activate([
             mapView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            mapView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mapView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            mapView.topAnchor.constraint(equalTo: view.topAnchor),
+            mapView.bottomAnchor.constraint(equalTo: bottomContainer.topAnchor),
+            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
         navigationBar = KarhooNavigationBarView()
@@ -147,6 +151,45 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationItem.backButtonTitle = ""
+    }
+
+    private func setupBottomContainer() {
+        // bottom container
+        bottomContainer = UIView()
+        bottomContainer.translatesAutoresizingMaskIntoConstraints = false
+        bottomContainer.backgroundColor = KarhooUI.colors.white
+        view.addSubview(bottomContainer)
+        bottomContainer.heightAnchor.constraint(equalToConstant: 100).then { $0.priority = .defaultLow }.isActive = true
+        bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        // asap button
+        asapButton = MainActionButton(design: .secondary)
+        asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
+
+        // later button
+        laterButton = MainActionButton(design: .primary)
+        laterButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
+
+        let buttonsStack = UIStackView()
+        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStack.addArrangedSubviews([asapButton, laterButton])
+        buttonsStack.axis = .horizontal
+        buttonsStack.spacing = UIConstants.Spacing.standard
+        buttonsStack.distribution = .fillEqually
+        buttonsStack.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight).isActive = true
+
+        let verticalStackView = UIStackView(arrangedSubviews: [buttonsStack])
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.axis = .vertical
+        verticalStackView.spacing = UIConstants.Spacing.standard
+
+        bottomContainer.addSubview(verticalStackView)
+        verticalStackView.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
+        verticalStackView.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: UIConstants.Spacing.standard).isActive = true
+        verticalStackView.trailingAnchor.constraint(equalTo: bottomContainer.trailingAnchor, constant: -UIConstants.Spacing.standard).isActive = true
+        verticalStackView.bottomAnchor.constraint(equalTo: bottomContainer.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.Spacing.standard).isActive = true
     }
 
     func reset() {
