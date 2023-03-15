@@ -106,13 +106,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         
         bottomNotificationView = KarhooNotificationView(hasBottomInset: true)
         setupBottomNotification()
-        view.addSubview(bottomNotificationView)
-        
-        _ = [bottomNotificationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             bottomNotificationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
-        bottomNotificationViewBottomConstraint = bottomNotificationView.bottomAnchor.constraint(
-            equalTo: view.bottomAnchor, constant: 150.0)
-        bottomNotificationViewBottomConstraint.isActive = true
+//        view.addSubview(bottomNotificationView)
+//
+//        _ = [bottomNotificationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//             bottomNotificationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
+//        bottomNotificationViewBottomConstraint = bottomNotificationView.bottomAnchor.constraint(
+//            equalTo: view.bottomAnchor, constant: 150.0)
+//        bottomNotificationViewBottomConstraint.isActive = true
     }
     
     private func setupMapView(reverseGeolocate: Bool) {
@@ -141,11 +141,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         string.font(KarhooUI.fonts.bodyRegular(), forStrings: body)
         string.textColor(KarhooUI.colors.neonRed, forStrings: linkText)
         string.font(KarhooUI.fonts.bodyBold(), forStrings: linkText)
-        bottomNotificationView?.change(title: string)
+//        bottomNotificationView?.change(title: string)
 
-        bottomNotificationView?.addLink(linkText) { [weak self] in
-            _ = self?.feedbackMailComposer.showNoCoverageEmail()
-        }
+//        bottomNotificationView?.addLink(linkText) { [weak self] in
+//            _ = self?.feedbackMailComposer.showNoCoverageEmail()
+//        }
     }
 
     private func setupNavigationBar() {
