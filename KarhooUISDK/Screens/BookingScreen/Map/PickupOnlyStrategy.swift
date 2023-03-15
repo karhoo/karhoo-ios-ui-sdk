@@ -63,9 +63,6 @@ final class PickupOnlyStrategy: PickupOnlyStrategyProtocol, BookingMapStrategy, 
 
     func start(journeyDetails: JourneyDetails?) {
         setup(journeyDetails: journeyDetails)
-        userLocationProvider.set(locationChangedCallback: { [weak self] (location: CLLocation) in
-            self?.didGetUserLocation(location)
-        })
     }
 
     private func setup(journeyDetails: JourneyDetails?) {
