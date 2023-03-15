@@ -12,6 +12,7 @@ import UIKit
 
 extension QuoteListFilters {
     enum VehicleClass: String, UserSelectable, CaseIterable, QuoteListFilter {
+        case standard
         case executive
         case luxury
 
@@ -23,6 +24,8 @@ extension QuoteListFilters {
                 return .uisdkImage("kh_uisdk_briefcase")
             case .luxury:
                 return .uisdkImage("kh_uisdk_star_empty")
+            case .standard:
+                return .uisdkImage("kh_uisdk_car")
             }
         }
 
@@ -30,11 +33,19 @@ extension QuoteListFilters {
             switch self {
             case .executive: return UITexts.VehicleTag.executive
             case .luxury: return UITexts.VehicleClass.luxury
+            case .standard: return UITexts.VehicleClass.standard
             }
         }
         
         func conditionMet(for quote: Quote) -> Bool {
-            quote.vehicle.tags.map { $0.lowercased() }.contains(rawValue)
+            switch self {
+            case .standard:
+                let tags = quote.vehicle.tags.map { $0.lowercased() }
+                let forbidTags = [VehicleClass.executive.rawValue, VehicleClass.luxury.rawValue]
+                return !tags.contains { forbidTags.contains($0) }
+            default:
+                return quote.vehicle.tags.map { $0.lowercased() }.contains(rawValue)
+            }
         }
     }
 }
