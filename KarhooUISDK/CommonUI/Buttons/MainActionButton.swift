@@ -65,6 +65,9 @@ class MainActionButton: UIButton {
         layer.cornerRadius = UIConstants.CornerRadius.xLarge
         layer.borderWidth = 1
         layer.borderColor = design.borderColor.cgColor
+        titleLabel?.minimumScaleFactor = 0.5
+        titleLabel?.numberOfLines = 2
+        titleLabel?.textAlignment = .center
         titleLabel?.font = KarhooUI.fonts.subtitleBold()
         setTitleColor(design.fontColor, for: .normal)
 
