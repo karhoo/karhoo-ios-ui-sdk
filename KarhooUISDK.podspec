@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = "KarhooUISDK"
-  s.version               = "1.11.0"
+  s.version               = "1.11.1"
   s.summary               = "Karhoo UI SDK"
   s.homepage              = "https://developer.karhoo.com/docs/build-apps-using-sdks"
   s.license               = 'BSD 2-Clause'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     core.source_files = 'KarhooUISDK/**/*.swift'
     core.exclude_files = 'KarhooUISDK/Extensions/Bundle+extensions/BundleSPM+current.swift'
     core.resource_bundles = {
-    'KarhooUISDK' => [
+    'KarhooUISDKResource' => [
         'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,stringsdict,bundle,lproj}'
     ]
   }
