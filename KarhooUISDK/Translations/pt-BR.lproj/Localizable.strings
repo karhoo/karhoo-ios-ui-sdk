@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "O seu motorista %@ chegou";
 
-"kh_uisdk_asap" = "ASAP";
+"kh_uisdk_asap_no_coverage_warning" = "As marcações ASAP não estão disponíveis no seu endereço de levantamento";
 
 "kh_uisdk_back" = "Voltar";
 

@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Uw %@-chauffeur is gearriveerd";
 
-"kh_uisdk_asap" = "zsm";
+"kh_uisdk_asap_no_coverage_warning" = "ASAP-boekingen zijn niet beschikbaar op uw ophaaladres";
 
 "kh_uisdk_back" = "Terug";
 

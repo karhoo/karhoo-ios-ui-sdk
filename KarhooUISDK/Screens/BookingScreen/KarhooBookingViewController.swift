@@ -20,6 +20,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var tripAllocationView: KarhooTripAllocationView!
     private var mapView: MapView = KarhooMKMapView()
     private var bottomContainer: UIView!
+    private var noCoverageView: NoCoverageView!
     private var asapButton: MainActionButton!
     private var scheduleButton: MainActionButton!
     private var sideMenu: SideMenu?
@@ -132,6 +133,15 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+        noCoverageView = NoCoverageView()
+        noCoverageView.isHidden = true
+        
+        presenter.hasCoverageInTheAreaPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] hasCoverage in
+                self?.setCoverageView(hasCoverage)
+            }.store(in: &cancellables)
         
         // asap button
         asapButton = MainActionButton(design: .secondary)
@@ -163,7 +173,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         buttonsStack.distribution = .fillEqually
         buttonsStack.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight).isActive = true
 
-        let verticalStackView = UIStackView(arrangedSubviews: [buttonsStack])
+        let verticalStackView = UIStackView(arrangedSubviews: [noCoverageView, buttonsStack])
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.axis = .vertical
         verticalStackView.spacing = UIConstants.Spacing.standard
@@ -238,6 +248,17 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         ))
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
         showAsOverlay(item: alertController, animated: true)
+    }
+
+    private func setCoverageView(_ hasCoverage: Bool) {
+        guard hasCoverage != noCoverageView.isHidden else { return }
+        let targetAlpha: CGFloat = hasCoverage ? 0 : 1
+
+        UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
+            self.noCoverageView.isHidden = hasCoverage
+            self.noCoverageView.alpha = targetAlpha
+            self.bottomContainer.layoutIfNeeded()
+        })
     }
 
     @objc

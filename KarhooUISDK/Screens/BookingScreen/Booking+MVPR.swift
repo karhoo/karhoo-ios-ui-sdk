@@ -46,6 +46,8 @@ internal protocol BookingView: BookingScreen {
 
 protocol BookingPresenter {
 
+    var hasCoverageInTheAreaPublisher: CurrentValueSubject<Bool, Never> { get }
+
     var isAsapEnabledPublisher: CurrentValueSubject<Bool, Never> { get }
 
     var isScheduleForLaterEnabledPublisher: CurrentValueSubject<Bool, Never> { get }

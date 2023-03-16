@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "您的 %@ 司机已到达";
 
-"kh_uisdk_asap" = "尽快";
+"kh_uisdk_asap_no_coverage_warning" = "您的上车地址无法进行 ASAP 预订";
 
 "kh_uisdk_back" = "返回";
 

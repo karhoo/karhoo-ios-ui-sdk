@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Il tuo conducente %@ è arrivato";
 
-"kh_uisdk_asap" = "al più presto";
+"kh_uisdk_asap_no_coverage_warning" = "Le prenotazioni ASAP non sono disponibili al tuo indirizzo di ritiro";
 
 "kh_uisdk_back" = "Indietro";
 
