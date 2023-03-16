@@ -71,15 +71,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        navigationBar = KarhooNavigationBarView()
-        navigationBar.set(rightItemHidden: Karhoo.configuration.authenticationMethod().guestSettings != nil)
-        navigationBar.set(actions: self)
-        view.addSubview(navigationBar)
-        
-        _ = [navigationBar.topAnchor.constraint(equalTo: view.topAnchor),
-             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)].map { $0.isActive = true }
-
         setupAddressBar()
         
         view.insertSubview(addressBar, aboveSubview: mapView)
