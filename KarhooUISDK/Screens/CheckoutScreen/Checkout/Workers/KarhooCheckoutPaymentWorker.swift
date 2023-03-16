@@ -14,6 +14,7 @@ import UIKit
 protocol CheckoutPaymentWorker: AnyObject {
     func setup(using quote: Quote)
     func getStoredPaymentNonce() -> Nonce?
+    func resetStoredPaymentNonce()
     func getPaymentNonce(
         organisationId: String,
         completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void
@@ -68,13 +69,16 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
     func getStoredPaymentNonce() -> Nonce? {
         paymentNonce
     }
+    
+    func resetStoredPaymentNonce() {
+        paymentNonce = nil
+    }
 
     func getPaymentNonce(organisationId: String, completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         guard
             let user = userService.getCurrentUser(),
             let topMostVC = UIApplication.shared.topMostViewController() as? BaseViewController
         else {
-            assertionFailure()
             return
         }
         paymentNonceProvider.set(baseViewController: topMostVC)

@@ -36,6 +36,10 @@ public class MockCheckoutPaymentWorker: CheckoutPaymentWorker {
         getPaymentNonceCalled = true
         completion(getPaymentNonceResult)
     }
+    
+    public func resetStoredPaymentNonce() {
+        storedPaymentNonce = nil
+    }
 
     public var requestNewPaymentMethodCalled = false
     public func requestNewPaymentMethod(

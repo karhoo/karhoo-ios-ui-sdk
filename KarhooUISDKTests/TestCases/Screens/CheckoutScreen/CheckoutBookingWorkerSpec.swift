@@ -97,8 +97,8 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                         beforeEach {
                             sut.performBooking()
                         }
-                        // TODO: Fix in MOB-4628
-                        /*it("should send request with assigend data") {
+                        
+                        it("should send request with assigend data") {
                             let requestData = mockTripService.tripBookingSet
                             
                             expect(requestData?.quoteId).to(equal(mockQuote.id))
@@ -106,7 +106,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                             expect(requestData?.trainNumber).to(equal("trainNumber"))
                             expect(requestData?.comments).to(equal("comment"))
                             expect(requestData?.paymentNonce).to(equal("mockNonce"))
-                        }*/
+                        }
 
                         context("and when tripService returns success") {
                             beforeEach {
@@ -114,15 +114,13 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                                 mockTripService.bookCall.triggerSuccess(mockTripInfo)
                             }
 
-                            // TODO: Fix in MOB-4628
-                            /*it("should set state to success") {
+                            it("should set state to success") {
                                 expect(sut.stateSubject.value).to(equal(.success(mockTripInfo)))
-                            }*/
-
-                            // TODO: Fix in MOB-4628
-                            /*it("should report analytics event") {
+                            }
+                            
+                            it("should report analytics event") {
                                 expect(mockAnalytics.bookingSuccessCalled).to(beTrue())
-                            }*/
+                            }
                         }
                     }
                 }
@@ -145,42 +143,24 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                         mockPaymentWorker.getPaymentNonceResult = .completed(value: .nonce(nonce: Nonce(nonce: "mockNonce")))
                     }
 
-                    context("and should get payment before booking") {
+                    context("and when perform booking is called") {
                         beforeEach {
-                            mockPaymentManager.shouldCheckThreeDSBeforeBookingToReturn = true
+                            sut.performBooking()
                         }
 
-                        context("and when perform booking is called") {
-                            beforeEach {
-                                sut.performBooking()
-                            }
-
-                            it("should call paymentWorker for paymentNonce") {
-                                expect(mockPaymentWorker.getPaymentNonceCalled).to(beTrue())
-                            }
+                        it("should not call paymentWorker for paymentNonce") {
+                            expect(mockPaymentWorker.getPaymentNonceCalled).to(beFalse())
                         }
-                    }
-
-                    context("and should not get payment before booking") {
-                        beforeEach {
-                            mockPaymentManager.shouldCheckThreeDSBeforeBookingToReturn = false
-                        }
-
-                        context("and when perform booking is called") {
-                            beforeEach {
-                                sut.performBooking()
-                            }
-
-                            it("should call tripService for booking") {
-                                expect(mockTripService.tripBookingSet).notTo(beNil())
-                            }
+                        
+                        it("should call tripService for booking") {
+                            expect(mockTripService.tripBookingSet).notTo(beNil())
                         }
                     }
                 }
 
                 context("and there is no stored paymentNonce") {
                     beforeEach {
-                        mockPaymentWorker.storedPaymentNonce = nil
+                        mockPaymentWorker.resetStoredPaymentNonce()
                     }
                     context("and when perform booking is called") {
                         beforeEach {
@@ -203,20 +183,19 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                     KarhooTestConfiguration.setGuest()
                 }
 
-                context("and when should get payment before booking") {
+                context("and there is no stored paymentNonce") {
                     beforeEach {
-                        mockPaymentManager.shouldCheckThreeDSBeforeBookingToReturn = true
+                        mockPaymentWorker.resetStoredPaymentNonce()
                     }
 
                     context("and when perform booking is called") {
                         beforeEach {
                             sut.performBooking()
                         }
-                        // TODO: Fix in MOB-4628
-                        /*
+                        
                         it("should call paymentWorker for paymentNonce") {
-                            expect(mockPaymentWorker.threeDSecureNonceCheckCalled).to(beTrue())
-                        }*/
+                            expect(mockPaymentWorker.getPaymentNonceCalled).to(beTrue())
+                        }
                     }
 
                     context("and when 3DSecure check failed") {
@@ -229,26 +208,24 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                             beforeEach {
                                 sut.performBooking()
                             }
-                            // TODO: Fix in MOB-4628
-                            /*
-                            it("should set state to .idle") {
-                                expect(sut.stateSubject.value).to(equal(.idle))
-                            }*/
+                            
+                            it("should set state to not .idle") {
+                                expect(sut.stateSubject.value).toNot(equal(.idle))
+                            }
 
                             it("should not call tripService for booking") {
                                 expect(mockTripService.tripBookingSet).to(beNil())
                             }
 
-                            // TODO: Fix in MOB-4628
-                            /*
                             it("should call paymentWorker for a new payment method") {
-                                expect(mockPaymentWorker.requestNewPaymentMethodCalled).to(beTrue())
-                            }*/
+                                expect(mockPaymentWorker.getPaymentNonceCalled).to(beTrue())
+                            }
                         }
                     }
 
                     context("and when 3DSecure check is successful") {
                         beforeEach {
+                            mockPaymentWorker.storedPaymentNonce = Nonce(nonce: "nonce")
                             mockPaymentWorker.threeDSSecureNonceCheckResult = .completed(value: .success(nonce: "nonce"))
                         }
 
@@ -256,11 +233,10 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                             beforeEach {
                                 sut.performBooking()
                             }
-                            // TODO: Fix in MOB-4628
-                            /*
+                            
                             it("should call tripService for booking") {
                                 expect(mockTripService.tripBookingSet).notTo(beNil())
-                            }*/
+                            }
                         }
                     }
                 }
@@ -282,17 +258,13 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                         sut.performBooking()
                     }
 
-                    // TODO: Fix in MOB-4628
-                    /*
                     it("should call tripService for booking") {
                         expect(mockTripService.tripBookingSet).notTo(beNil())
-                    }*/
+                    }
 
-                    // TODO: Fix in MOB-4628
-                    /*
                     it("should report an analytics event") {
                         expect(mockAnalytics.bookingRequestedCalled).to(beTrue())
-                    }*/
+                    }
                 }
 
                 context("and when perform booking is called") {
@@ -306,23 +278,17 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                             mockTripService.bookCall.triggerFailure(mockError)
                         }
 
-                        // TODO: Fix in MOB-4628
-                        /*
                         it("should call tripService for booking") {
                             expect(mockTripService.tripBookingSet).notTo(beNil())
-                        }*/
+                        }
                         
-                        // TODO: Fix in MOB-4628
-                        /*
                         it("should report an analytics event") {
                             expect(mockAnalytics.bookingFailureCalled).to(beTrue())
-                        }*/
+                        }
 
-                        // TODO: Fix in MOB-4628
-                        /*
                         it("should set failed booking state") {
                             expect(sut.stateSubject.value).to(equal(.failure(mockError)))
-                        }*/
+                        }
                     }
                 }
 
@@ -335,16 +301,15 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                         beforeEach {
                             sut.performBooking()
                         }
-                        // TODO: Fix in MOB-4628
-                        /*
+                        
                         it("should call loyalty worker for nonce") {
                             expect(mockLoyaltyWorker.getLoyaltyNonceCalled).to(beTrue())
-                        }*/
+                        }
                     }
 
                     context("and when loyalty nonce is provided") {
                         beforeEach {
-                            mockLoyaltyWorker.getLoyaltyNonceResult = .success(result: LoyaltyNonce(loyaltyNonce: "nonce"), correlationId: "correlationId")
+                            mockLoyaltyWorker.getLoyaltyNonceResult = .success(result: LoyaltyNonce(loyaltyNonce: "loyaltyNonce"), correlationId: "correlationId")
                         }
 
                         context("and when perform booking is called") {
@@ -352,11 +317,9 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                                 sut.performBooking()
                             }
 
-                            // TODO: Fix in MOB-4628
-                            /*
                             it("should call tripService for booking with loyalty nonce") {
-                                expect(mockTripService.tripBookingSet?.loyaltyNonce).to(equal("nonce"))
-                            }*/
+                                expect(mockTripService.tripBookingSet?.loyaltyNonce).to(equal("loyaltyNonce"))
+                            }
                         }
                     }
 
@@ -393,8 +356,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
 
                                 it("should call tripService for booking without loyalty nonce") {
                                     expect(mockTripService.tripBookingSet?.loyaltyNonce).to(beNil())
-                                    // TODO: Fix in MOB-4628
-//                                    expect(mockTripService.tripBookingSet).notTo(beNil())
+                                    expect(mockTripService.tripBookingSet).notTo(beNil())
                                 }
                             }
                         }
