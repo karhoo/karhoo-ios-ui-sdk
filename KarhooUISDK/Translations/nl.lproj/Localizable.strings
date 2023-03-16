@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Uw %@-chauffeur is gearriveerd";
 
+"kh_uisdk_asap" = "zsm";
+
 "kh_uisdk_back" = "Terug";
 
 "kh_uisdk_baggage_max" = "Max. %d stuks bagage";
@@ -647,6 +649,8 @@
 "kh_uisdk_last_trip_id" = "Laatste rit-ID: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Laatste rit-ID: nog niet ingesteld";
+
+"kh_uisdk_later" = "Later";
 
 "kh_uisdk_legal_notice_label" = "Juridische kennisgeving";
 

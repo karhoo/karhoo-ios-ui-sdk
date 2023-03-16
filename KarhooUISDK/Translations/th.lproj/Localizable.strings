@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "คนขับ %@ ของคุณมาถึงแล้ว";
 
+"kh_uisdk_asap" = "เร็วที่สุด";
+
 "kh_uisdk_back" = "กลับ";
 
 "kh_uisdk_baggage_max" = "สัมภาระสูงสุด %d ชิ้น";
@@ -645,6 +647,8 @@
 "kh_uisdk_last_trip_id" = "รหัสการเดินทางล่าสุด: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "รหัสการเดินทางล่าสุด: ยังไม่ได้ตั้งค่า";
+
+"kh_uisdk_later" = "ในภายหลัง";
 
 "kh_uisdk_legal_notice_label" = "ประกาศทางกฎหมาย";
 
