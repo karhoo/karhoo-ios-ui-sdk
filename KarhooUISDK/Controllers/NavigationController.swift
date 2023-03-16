@@ -66,8 +66,8 @@ final class NavigationController: UINavigationController {
     }
 
     fileprivate func setupDesign() {
-        let barButtonItemAppearance = UIBarButtonItem.appearance()
-        barButtonItemAppearance.setTitleTextAttributes([.foregroundColor: style.tintColor], for: .normal)
+        let barButtonItemAppearance = UIBarButtonItemAppearance()
+        barButtonItemAppearance.normal.titleTextAttributes = [.foregroundColor: style.tintColor]
 
         let backArrow = UIImage.uisdkImage("kh_uisdk_back_arrow")
             .withRenderingMode(.alwaysTemplate)
@@ -75,6 +75,7 @@ final class NavigationController: UINavigationController {
         navigationController?.navigationBar.barTintColor = style.backgroundColor
         navigationController?.navigationBar.tintColor = style.tintColor
         let appearance = UINavigationBarAppearance()
+        appearance.buttonAppearance = barButtonItemAppearance
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = style.backgroundColor
         appearance.shadowColor = .clear

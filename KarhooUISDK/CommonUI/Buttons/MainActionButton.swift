@@ -10,14 +10,44 @@ import UIKit
 
 class MainActionButton: UIButton {
 
+    enum Design {
+        case primary
+        case secondary
+
+        var borderColor: UIColor {
+            switch self {
+            case .primary: return .clear
+            case .secondary: return KarhooUI.colors.secondary
+            }
+        }
+
+        var fontColor: UIColor {
+            switch self {
+            case .primary: return KarhooUI.colors.white
+            case .secondary: return KarhooUI.colors.secondary
+            }
+        }
+
+        var backgroundColor: UIColor {
+            switch self {
+            case .primary: return KarhooUI.colors.secondary
+            case .secondary: return KarhooUI.colors.white
+            }
+        }
+    }
+
+    private let design: Design
+
     // MARK: - Initialization
 
-    init() {
+    init(design: Design = .primary) {
+        self.design = design
         super.init(frame: .zero)
         self.setup()
     }
     
     required init?(coder: NSCoder) {
+        self.design = .primary
         super.init(coder: coder)
         self.setup()
     }
@@ -31,11 +61,15 @@ class MainActionButton: UIButton {
 
     private func setupProperties() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = KarhooUI.colors.secondary
+        backgroundColor = design.backgroundColor
         layer.cornerRadius = UIConstants.CornerRadius.xLarge
-
+        layer.borderWidth = 1
+        layer.borderColor = design.borderColor.cgColor
+        titleLabel?.minimumScaleFactor = 0.5
+        titleLabel?.numberOfLines = 2
+        titleLabel?.textAlignment = .center
         titleLabel?.font = KarhooUI.fonts.subtitleBold()
-        setTitleColor(KarhooUI.colors.white, for: .normal)
+        setTitleColor(design.fontColor, for: .normal)
 
         addTouchAnimation()
     }

@@ -56,6 +56,8 @@ public enum UITexts {
         public static let destination = "kh_uisdk_destination".localized
         public static let information = "kh_uisdk_information".localized
         public static let now = "kh_uisdk_now".localized
+        public static let later = "kh_uisdk_later".localized
+        
     }
 
     public enum QuoteCell {

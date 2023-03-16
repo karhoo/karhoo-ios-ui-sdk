@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Your %@ driver has arrived";
 
+"kh_uisdk_asap" = "ASAP";
+
 "kh_uisdk_back" = "Back";
 
 "kh_uisdk_baggage_max" = "%d piece(s) of luggage max";
@@ -647,6 +649,8 @@
 "kh_uisdk_last_trip_id" = "Last ride ID: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Last ride ID: not yet set";
+
+"kh_uisdk_later" = "Later";
 
 "kh_uisdk_legal_notice_label" = "Legal notice";
 

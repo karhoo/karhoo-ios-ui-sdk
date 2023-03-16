@@ -210,6 +210,8 @@
 
 "kh_uisdk_arrived" = "Ваш водитель %@ прибыл";
 
+"kh_uisdk_asap" = "Срочно";
+
 "kh_uisdk_back" = "Назад";
 
 "kh_uisdk_baggage_max" = "Максимум %d багажа";
@@ -647,6 +649,8 @@
 "kh_uisdk_last_trip_id" = "Идентификатор последней поездки: %1$@";
 
 "kh_uisdk_last_trip_id_not_set" = "Идентификатор последней поездки: еще не установлен";
+
+"kh_uisdk_later" = "Позже";
 
 "kh_uisdk_legal_notice_label" = "Официальное уведомление";
 
