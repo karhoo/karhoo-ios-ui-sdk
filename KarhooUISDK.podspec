@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     core.source_files = 'KarhooUISDK/**/*.swift'
     core.exclude_files = 'KarhooUISDK/Extensions/Bundle+extensions/BundleSPM+current.swift'
     core.resource_bundles = {
-    'KarhooUISDK' => [
+    'KarhooUISDKResource' => [
         'KarhooUISDK/**/*{xib,storyboard,xcassets,strings,stringsdict,bundle,lproj}'
     ]
   }
