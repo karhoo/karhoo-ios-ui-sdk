@@ -9,6 +9,7 @@
 import CoreLocation
 import KarhooSDK
 import UIKit
+import Combine
 
 final class KarhooBookingPresenter {
 
@@ -28,6 +29,9 @@ final class KarhooBookingPresenter {
     private let paymentService: PaymentService
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
+
+    var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
+    var isScheduleForLaterEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
 
     // MARK: - Init
     init(router: BookingRouter,
@@ -189,7 +193,32 @@ extension KarhooBookingPresenter: BookingPresenter {
         })
     }
 
+    func asapRidePressed() {
+        guard let details = journeyDetailsManager.getJourneyDetails() else { return }
+        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
+            self?.showCheckoutView(
+                quote: quote,
+                journeyDetails: journeyDetails
+            )
+        }
+    }
+
+    func scheduleForLaterPressed() {
+        
+    }
+
     // MARK: Utils
+
+    private func updateAsapRideEnabled(using details: JourneyDetails) {
+        let areAllDataProvided = details.originLocationDetails != nil && details.destinationLocationDetails != nil
+        isAsapEnabledPublisher.send(areAllDataProvided)
+    }
+
+    private func updateScheduledRideEnabled(using details: JourneyDetails) {
+        let areAllDataProvided = details.originLocationDetails != nil && details.destinationLocationDetails != nil
+        isScheduleForLaterEnabledPublisher.send(areAllDataProvided)
+    }
+    
     private func fetchPaymentProvider() {
         if !Karhoo.configuration.authenticationMethod().isGuest() {
             return
@@ -382,13 +411,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        let topViewController = view?.navigationController?.topViewController
-        guard topViewController === view || topViewController is SideMenuViewController  else { return }
-        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
-            self?.showCheckoutView(
-                quote: quote,
-                journeyDetails: journeyDetails
-            )
-        }
+        updateAsapRideEnabled(using: details)
+        updateScheduledRideEnabled(using: details)
     }
 }

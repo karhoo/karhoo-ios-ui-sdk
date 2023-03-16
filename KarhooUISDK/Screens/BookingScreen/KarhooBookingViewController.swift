@@ -10,9 +10,12 @@ import UIKit
 import KarhooSDK
 import CoreLocation
 import SwiftUI
+import Combine
 
 final class KarhooBookingViewController: UIViewController, BookingView {
-    
+
+    private var cancellables: Set<AnyCancellable> = []
+
     private var addressBar: AddressBarView!
     private var tripAllocationView: KarhooTripAllocationView!
     private var mapView: MapView = KarhooMKMapView()
@@ -132,11 +135,25 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         
         // asap button
         asapButton = MainActionButton(design: .secondary)
+        asapButton.addTarget(self, action: #selector(asapRidePressed), for: .touchUpInside)
         asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
-
+        presenter.isAsapEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEnabled in
+                self?.asapButton.setEnabled(isEnabled)
+            }
+            .store(in: &cancellables)
+            
         // later button
         scheduleButton = MainActionButton(design: .primary)
+        scheduleButton.addTarget(self, action: #selector(scheduleForLaterPressed), for: .touchUpInside)
         scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
+        presenter.isScheduleForLaterEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEnabled in
+                self?.scheduleButton.setEnabled(isEnabled)
+            }
+            .store(in: &cancellables)
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -235,6 +252,14 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         } else {
             presenter.exitPressed()
         }
+    }
+
+    @objc private func asapRidePressed(_ selector: UIButton) {
+        presenter.asapRidePressed()
+    }
+
+    @objc private func scheduleForLaterPressed(_ selector: UIButton) {
+        presenter.scheduleForLaterPressed()
     }
 }
 
