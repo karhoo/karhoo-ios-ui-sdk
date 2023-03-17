@@ -77,12 +77,11 @@ public final class KarhooPrebookFieldView: UIView {
         let button = UIButton(type: .custom)
         button.accessibilityIdentifier = KHPrebookFieldID.closeButton
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.uisdkImage("kh_uisdk_cross").withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = KarhooUI.colors.text
+        button.setImage(UIImage.uisdkImage("kh_uisdk_cross_in_circle"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 4, bottom: 5, right: 4)
         return button
     }()
     
@@ -144,7 +143,8 @@ public final class KarhooPrebookFieldView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = font
-        label.textColor = KarhooUI.colors.darkGrey
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
+        label.textColor = KarhooUI.colors.text
         return label
     }
 
