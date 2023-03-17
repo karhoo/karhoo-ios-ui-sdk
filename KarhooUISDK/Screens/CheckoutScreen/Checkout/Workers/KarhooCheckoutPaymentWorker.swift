@@ -14,7 +14,7 @@ import UIKit
 protocol CheckoutPaymentWorker: AnyObject {
     func setup(using quote: Quote)
     func getStoredPaymentNonce() -> Nonce?
-    func resetStoredPaymentNonce()
+    func clearStoredPaymentNonce()
     func getPaymentNonce(
         organisationId: String,
         completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void
@@ -70,7 +70,7 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
         paymentNonce
     }
     
-    func resetStoredPaymentNonce() {
+    func clearStoredPaymentNonce() {
         paymentNonce = nil
     }
 

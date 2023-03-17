@@ -160,7 +160,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
 
                 context("and there is no stored paymentNonce") {
                     beforeEach {
-                        mockPaymentWorker.resetStoredPaymentNonce()
+                        mockPaymentWorker.clearStoredPaymentNonce()
                     }
                     context("and when perform booking is called") {
                         beforeEach {
@@ -185,7 +185,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
 
                 context("and there is no stored paymentNonce") {
                     beforeEach {
-                        mockPaymentWorker.resetStoredPaymentNonce()
+                        mockPaymentWorker.clearStoredPaymentNonce()
                     }
 
                     context("and when perform booking is called") {

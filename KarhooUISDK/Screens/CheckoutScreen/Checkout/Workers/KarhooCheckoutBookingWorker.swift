@@ -301,7 +301,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             // while for Braintree we still get a nonce and the payment is refused after the booking call is made.
             // For this scenario we need to reset the nonce and let the user restart the payment flow from scratch
             if error.type == .couldNotBookTripPaymentPreAuthFailed {
-                paymentWorker.resetStoredPaymentNonce()
+                paymentWorker.clearStoredPaymentNonce()
             }
         } else {
             stateSubject.send(.failure(ErrorModel.unknown()))

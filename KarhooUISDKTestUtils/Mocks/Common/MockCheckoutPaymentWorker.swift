@@ -37,7 +37,7 @@ public class MockCheckoutPaymentWorker: CheckoutPaymentWorker {
         completion(getPaymentNonceResult)
     }
     
-    public func resetStoredPaymentNonce() {
+    public func clearStoredPaymentNonce() {
         storedPaymentNonce = nil
     }
 
