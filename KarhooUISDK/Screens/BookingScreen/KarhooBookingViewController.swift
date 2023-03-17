@@ -250,15 +250,29 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         showAsOverlay(item: alertController, animated: true)
     }
 
-    private func setCoverageView(_ hasCoverage: Bool) {
-        guard hasCoverage != noCoverageView.isHidden else { return }
-        let targetAlpha: CGFloat = hasCoverage ? 0 : 1
+    private func setCoverageView(_ hasCoverage: Bool?) {
+        func setCoverageView(isVisible: Bool) {
+            let targetAlpha: CGFloat = isVisible ? 1 : 0
+            UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
+                self.noCoverageView.isHidden = !isVisible
+                self.noCoverageView.alpha = targetAlpha
+                self.bottomContainer.layoutIfNeeded()
+            })
+        }
 
-        UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
-            self.noCoverageView.isHidden = hasCoverage
-            self.noCoverageView.alpha = targetAlpha
-            self.bottomContainer.layoutIfNeeded()
-        })
+        // check if there is any coverage response
+        guard let hasCoverage else {
+            setCoverageView(isVisible: false)
+            return
+        }
+        // check if coverage information is alredy up to date
+        let shouldBeVisible = !hasCoverage
+        let isCurrentlyVisible = !noCoverageView.isHidden
+        guard shouldBeVisible != isCurrentlyVisible else {
+            return
+        }
+
+        setCoverageView(isVisible: !hasCoverage)
     }
 
     @objc

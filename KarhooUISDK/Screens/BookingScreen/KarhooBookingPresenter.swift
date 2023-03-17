@@ -31,7 +31,7 @@ final class KarhooBookingPresenter {
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
 
-    var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool, Never>(false)
+    var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
     var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
     var isScheduleForLaterEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
     
@@ -95,7 +95,7 @@ final class KarhooBookingPresenter {
                 self?.updateAsapRideEnabled(using: details)
             } else {
                 // Coverage check error
-                self?.hasCoverageInTheAreaPublisher.send(false)
+                self?.hasCoverageInTheAreaPublisher.send(nil)
             }
         }
     }
@@ -243,7 +243,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         }
         let canProceedWithAsapBooking = details.originLocationDetails != nil &&
         details.destinationLocationDetails != nil &&
-        hasCoverageInTheAreaPublisher.value
+        hasCoverageInTheAreaPublisher.value == true
         
         isAsapEnabledPublisher.send(canProceedWithAsapBooking)
     }
