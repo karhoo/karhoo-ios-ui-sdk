@@ -52,7 +52,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         label.accessibilityIdentifier = KHAddressBarFieldID.label
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = KarhooUI.fonts.bodyRegular()
-        label.textColor = KarhooUI.colors.darkGrey
+        label.textColor = KarhooUI.colors.text
         label.text = ""
         label.numberOfLines = 2
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -63,11 +63,9 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         clearButton.translatesAutoresizingMaskIntoConstraints = false
         clearButton.isHidden = clearButtonDisabled
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
-        clearButton.setImage(UIImage.uisdkImage("kh_uisdk_cross").withRenderingMode(.alwaysTemplate), for: .normal)
+        clearButton.setImage(UIImage.uisdkImage("kh_uisdk_cross_in_circle"), for: .normal)
         clearButton.imageView?.contentMode = .scaleAspectFit
-        let imageInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        clearButton.imageEdgeInsets = imageInsets
-        clearButton.tintColor = KarhooUI.colors.text
+        clearButton.tintColor = KarhooUI.colors.textLabel
         stackContainer.addArrangedSubview(clearButton)
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
@@ -87,7 +85,8 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
              stackContainer.bottomAnchor.constraint(equalTo: bottomAnchor,
                                                     constant: -topPadding)].map { $0.isActive = true }
         
-        _ = [clearButton.centerYAnchor.constraint(equalTo: label.centerYAnchor)].map { $0.isActive = true }
+        clearButton.widthAnchor.constraint(equalToConstant: UIConstants.Dimension.Icon.standard).isActive = true
+        clearButton.centerYAnchor.constraint(equalTo: label.centerYAnchor).isActive = true
         
         _ = [activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)].map { $0.isActive = true }

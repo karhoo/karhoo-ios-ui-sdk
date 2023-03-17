@@ -42,19 +42,23 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     private let horizontalPadding: CGFloat
     private let hidePickUpDestinationConnector: Bool
     private let destinationIconSize: CGFloat = 18.0
+    private let hidePrebookButton: Bool
 
     init(cornerRadious: CGFloat = 5.0,
          borderLine: Bool = false,
          dropShadow: Bool = true,
          verticalPadding: CGFloat = 0.0,
          horizontalPadding: CGFloat = 0.0,
-         hidePickUpDestinationConnector: Bool = false) {
+         hidePickUpDestinationConnector: Bool = false,
+         hidePrebookButton: Bool = false
+    ) {
         self.dropShadow = dropShadow
         self.borderLine = borderLine
         self.cornerRadious = cornerRadious
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
         self.hidePickUpDestinationConnector = hidePickUpDestinationConnector
+        self.hidePrebookButton = hidePrebookButton
         super.init(frame: .zero)
         self.setUpView()
     }
@@ -109,6 +113,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         mainViewContainer.addSubview(fieldsSeparatorLine)
         
         prebookField = KarhooPrebookFieldView()
+        prebookField.isHidden = hidePrebookButton
         prebookField.accessibilityIdentifier = KHAddressBarViewID.prebookField
         prebookField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         mainViewContainer.addSubview(prebookField)
@@ -116,6 +121,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         prebookSeparator = LineView(color: KarhooUI.colors.lightGrey,
                                   width: 1.0,
                                   accessibilityIdentifier: "preBookSeparator_line")
+        prebookSeparator.isHidden = hidePrebookButton
         mainViewContainer.addSubview(prebookSeparator)
 
         destinationField = KarhooAddressBarFieldView()
@@ -183,15 +189,34 @@ public class KarhooAddressBarView: UIView, AddressBarView {
              prebookField.trailingAnchor.constraint(equalTo: mainViewContainer.trailingAnchor)]
             .map { $0.isActive = true }
 
-        _ = [prebookSeparator.trailingAnchor.constraint(equalTo: prebookField.leadingAnchor),
-             prebookSeparator.leadingAnchor.constraint(equalTo: destinationField.trailingAnchor, constant: 5.0),
-             prebookSeparator.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor),
-             prebookSeparator.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor)]
-            .map { $0.isActive = true }
-
         _ = [destinationField.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor),
              destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor),
-             destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor)].map { $0.isActive = true }
+             destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor),
+             destinationField.trailingAnchor.constraint(equalTo: mainViewContainer.trailingAnchor)
+            .then { $0.priority = .defaultHigh }
+        ].map { $0.isActive = true }
+        
+        if hidePrebookButton {
+            destinationField.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor).isActive = true
+            destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor).isActive = true
+            destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor).isActive = true
+            destinationField.trailingAnchor.constraint(
+                equalTo: mainViewContainer.trailingAnchor,
+                constant: -UIConstants.Spacing.medium
+            ).isActive = true
+        } else {
+            _ = [prebookSeparator.trailingAnchor.constraint(equalTo: prebookField.leadingAnchor),
+                 prebookSeparator.leadingAnchor.constraint(equalTo: destinationField.trailingAnchor, constant: 5.0),
+                 prebookSeparator.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor),
+                 prebookSeparator.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor)]
+                .map { $0.isActive = true }
+
+            _ = [destinationField.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor),
+                 destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor),
+                 destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor)
+                .then { $0.priority = .defaultHigh }
+            ].map { $0.isActive = true }
+        }
 
         destinationIconWidthConstraint = destinationIcon.widthAnchor.constraint(equalToConstant: destinationIconSize)
         destinationIconHeightConstraint = destinationIcon.heightAnchor.constraint(equalToConstant: destinationIconSize)
@@ -304,8 +329,8 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
 
     private func prebook(isHidden: Bool) {
-        prebookField?.isHidden = isHidden
-        prebookSeparator?.isHidden = isHidden
+        prebookField?.isHidden = hidePrebookButton ? true : isHidden
+        prebookSeparator?.isHidden = hidePrebookButton ? true : isHidden
     }
 
     @objc
