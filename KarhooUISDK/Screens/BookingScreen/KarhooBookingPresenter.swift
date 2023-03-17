@@ -31,6 +31,9 @@ final class KarhooBookingPresenter {
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
 
+    private var coverageCache: [String: Bool] = [:]
+    private var coverageCheckInProgress: [String] = []
+
     var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
     var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
     var isScheduleForLaterEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
@@ -79,27 +82,40 @@ final class KarhooBookingPresenter {
     }
 
     // MARK: - Coverage
-
+    
     private func checkCoverage(using details: JourneyDetails?) {
         guard let pickUpCoordinates = details?.originLocationDetails?.position else {
             hasCoverageInTheAreaPublisher.send(nil)
             return
         }
+        
+        let latitude = String(format: "%.4f", pickUpCoordinates.latitude)
+        let longitude = String(format: "%.4f", pickUpCoordinates.longitude)
+        let cacheKey = "\(latitude),\(longitude)"
+        
+        if let cachedResult = coverageCache[cacheKey] {
+            hasCoverageInTheAreaPublisher.send(cachedResult)
+            return
+        }
+        guard !coverageCheckInProgress.contains(cacheKey) else { return }
+        coverageCheckInProgress.append(cacheKey)
+
         let coverageRequest = QuoteCoverageRequest(
-            latitude: pickUpCoordinates.latitude.description,
-            longitude: pickUpCoordinates.longitude.description
+            latitude: latitude,
+            longitude: longitude
         )
         quoteService.coverage(coverageRequest: coverageRequest).execute { [weak self] result in
             if let coverageModel = result.getSuccessValue() {
                 self?.hasCoverageInTheAreaPublisher.send(coverageModel.coverage)
                 self?.updateAsapRideEnabled(using: details)
+                self?.coverageCache[cacheKey] = coverageModel.coverage
             } else {
                 // Coverage check error. `true` used just to avoid not needed flow blocking
                 self?.hasCoverageInTheAreaPublisher.send(true)
             }
         }
     }
-
+    
     // MARK: - Checkout
     private func showCheckoutView(
         quote: Quote,
