@@ -130,41 +130,9 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     // MARK: - Booking initial methods
 
-    private func submitGuestOrTokenExchangeBooking() {
-        guard let passengerDetails = passengerDetails else {
-            stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.getUserFail, code: "")))
-            return
-        }
-
-        if sdkConfiguration.paymentManager.shouldCheckThreeDSBeforeBooking {
-            guard let user = userService.getCurrentUser(),
-                  let currentOrganisation = user.organisations.first?.id
-            else {
-                stateSubject.send(.failure(ErrorModel(message: UITexts.Errors.getUserFail, code: "")))
-                return
-            }
-            paymentWorker.threeDSecureNonceCheck(
-                organisationId: currentOrganisation,
-                passengerDetails: passengerDetails
-            ) { [weak self] result in
-                self?.handleThreeDSecureCheck(result)
-            }
-        } else {
-            guard paymentWorker.getStoredPaymentNonce() != nil else {
-                requestNewPaymentMethod()
-                return
-            }
-            book()
-        }
-    }
-
     private func submitAuthenticatedBooking() {
         if paymentWorker.getStoredPaymentNonce() != nil {
-            if sdkConfiguration.paymentManager.shouldGetPaymentBeforeBooking {
-                getPaymentNonceAndBook()
-            } else {
-                book()
-            }
+            book()
         } else {
             getPaymentNonceAndBook()
         }
@@ -255,11 +223,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func handleAddNewPaymentMethod(with result: CardFlowResult) {
         switch result {
         case .didAddPaymentMethod:
-            if isKarhooUser() {
-                submitAuthenticatedBooking()
-            } else {
-                submitGuestOrTokenExchangeBooking()
-            }
+            submitAuthenticatedBooking()
         case .didFailWithError(let error):
             stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .cancelledByUser:
@@ -309,11 +273,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         reportBookingEvent()
 
         tripService.book(tripBooking: tripBooking).execute(callback: { [weak self] result in
-            if self?.isKarhooUser() ?? false {
-                self?.handleKarhooUserBookTripResult(result)
-            } else {
-                self?.handleGuestAndTokenBookTripResult(result)
-            }
+            self?.handleBookTripResult(result)
         })
     }
 
@@ -327,33 +287,22 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     // MARK: - Booking result handling
 
-    private func handleKarhooUserBookTripResult(_ result: Result<TripInfo>) {
-        guard let trip = result.getSuccessValue() else {
-            stateSubject.send(.idle)
-            reportBookingFailure(
-                message: result.getErrorValue()?.message ?? "",
-                correlationId: result.getCorrelationId()
-            )
-            if result.getErrorValue()?.type == .couldNotBookTripPaymentPreAuthFailed {
-                requestNewPaymentMethod(showRetryAlert: true)
-            } else {
-                stateSubject.send(.failure(result.getErrorValue() ?? ErrorModel.unknown()))
-            }
-
-            return
-        }
-
-        stateSubject.send(.success(trip))
-        reportBookingSuccess(tripId: trip.tripId, correlationId: result.getCorrelationId())
-    }
-
-    private func handleGuestAndTokenBookTripResult(_ result: Result<TripInfo>) {
+    private func handleBookTripResult(_ result: Result<TripInfo>) {
         if let trip = result.getSuccessValue() {
             reportBookingSuccess(tripId: trip.tripId, correlationId: result.getCorrelationId())
             stateSubject.send(.success(trip))
         } else if let error = result.getErrorValue() {
             reportBookingFailure(message: error.message, correlationId: result.getCorrelationId())
+            
+            // Show the error to the user
             stateSubject.send(.failure(result.getErrorValue() ?? ErrorModel.unknown()))
+            
+            // Adyen pre-auth usually fails before booking,
+            // while for Braintree we still get a nonce and the payment is refused after the booking call is made.
+            // For this scenario we need to reset the nonce and let the user restart the payment flow from scratch
+            if error.type == .couldNotBookTripPaymentPreAuthFailed {
+                paymentWorker.clearStoredPaymentNonce()
+            }
         } else {
             stateSubject.send(.failure(ErrorModel.unknown()))
         }

@@ -37,9 +37,11 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
         super.setUp()
 
         mockUserService.currentUserToReturn = userInAnOrg
-        testObject = BraintreePaymentNonceProvider(paymentService: mockPaymentService,
-                                                   threeDSecureProvider: mockThreeDSecureProvider,
-                                                   cardRegistrationFlow: mockCardRegistrationFlow)
+        testObject = BraintreePaymentNonceProvider(
+            paymentService: mockPaymentService,
+            threeDSecureProvider: mockThreeDSecureProvider,
+            cardRegistrationFlow: mockCardRegistrationFlow
+        )
         testObject.set(baseViewController: mockBaseView)
     }
 
@@ -51,11 +53,14 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
     }
 
     private func loadTestObject() {
-        testObject.getPaymentNonce(user: userInAnOrg,
-                                   organisationId: mockOrganisation,
-                                   quote: mockQuote,
-                                   result: getPaymentNonceResult)
+        testObject.getPaymentNonce(
+            user: userInAnOrg,
+            organisationId: mockOrganisation,
+            quote: mockQuote,
+            result: getPaymentNonceResult
+        )
     }
+    
     /**
       * When: Setting base view
       * Then: Base view should be set on three d secure provider and card registration flow
@@ -66,18 +71,18 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
         XCTAssertTrue(mockThreeDSecureProvider.setBaseViewControllerCalled)
         XCTAssertTrue(mockCardRegistrationFlow.setBaseViewControllerCalled)
     }
+    
     /**
       * Given: Getting a nonce
       * When: intialise payment SDK succeeds
-      * Then: Get nonce should be called on payment service
+      * Then: Get nonce should NOT be called on payment service
       */
     func testSDKInitSuccess() {
         loadTestObject()
 
         mockPaymentService.paymentSDKTokenCall.triggerSuccess(PaymentSDKToken(token: "someToken"))
-        
-//      TODO: Fix in MOB-4628
-//        XCTAssertTrue(mockPaymentService.getNonceCalled)
+
+        XCTAssertFalse(mockPaymentService.getNonceCalled)
     }
 
     /**
@@ -155,7 +160,7 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
     }
 
     /**
-     * When: Getting a nonce
+     * When: Getting a nonce from a new card
      * And: Get nonce succeeds
      * Then: ThreeDSecure check should be done on nonce
      */
@@ -163,19 +168,18 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
         loadTestObject()
 
         mockPaymentService.paymentSDKTokenCall.triggerSuccess(PaymentSDKToken(token: "someToken"))
-        mockPaymentService.getNonceCall.triggerSuccess(Nonce(nonce: "some_nonce"))
-        // TODO: Fix in MOB-4628
-//        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.price.currencyCode)
-        // TODO: Fix in MOB-4628
-//        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.price.highPrice))
-        // TODO: Fix in MOB-4628
-//        XCTAssertEqual(mockThreeDSecureProvider.nonceSet, "some_nonce")
+        
+        let paymentAdded = TestUtil.getRandomBraintreePaymentMethod(nonce: "some_nonce")
+        mockCardRegistrationFlow.triggerAddCardResult(.completed(value: .didAddPaymentMethod(nonce: paymentAdded)))
+        
+        XCTAssertEqual(mockThreeDSecureProvider.currencyCodeSet, mockQuote.price.currencyCode)
+        XCTAssertEqual(mockThreeDSecureProvider.paymentAmountSet, NSDecimalNumber(value: mockQuote.price.highPrice))
+        XCTAssertEqual(mockThreeDSecureProvider.nonceSet, "some_nonce")
     }
 
     /**
      * When: Getting a nonce
      * And: ThreeDSecure check fails
-     * Then: Trip service should not book
      * And: card registration flow should trigger so user can add new payment method
      */
     func testThreeDSecureCheckFails() {
@@ -188,26 +192,5 @@ final class BraintreePaymentNonceProviderSpec: KarhooTestCase {
 
         XCTAssertEqual(mockCardRegistrationFlow.currencyCodeSet, mockQuote.price.currencyCode)
         XCTAssertTrue(mockCardRegistrationFlow.startCalled)
-        // TODO: Fix in MOB-4628
-//        XCTAssertTrue(mockCardRegistrationFlow.showUpdateCardAlertSet!)
-    }
-
-    /**
-      * When: Getting a nonce
-      * And: ThreeDSecure check succeeds
-      * Then: Trip service should book with expected nonce
-      */
-    func testThreeDSecureCheckSuccess() {
-        loadTestObject()
-
-        mockPaymentService.paymentSDKTokenCall.triggerSuccess(PaymentSDKToken(token: "someToken"))
-        mockPaymentService.getNonceCall.triggerSuccess(Nonce(nonce: "some_nonce"))
-        mockThreeDSecureProvider.triggerResult(OperationResult.completed(value: .success(nonce: "some_3dNonce")))
-        // TODO: Fix in MOB-4628
-//        switch getNonceResult! {
-//        case .nonce(let nonce): XCTAssertEqual("some_3dNonce", nonce.nonce)
-//        default:
-//            XCTFail("unexpected result")
-//        }
     }
 }

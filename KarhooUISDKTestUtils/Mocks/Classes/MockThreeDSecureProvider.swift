@@ -17,11 +17,14 @@ final public class MockThreeDSecureProvider: ThreeDSecureProvider {
     public var paymentAmountSet: NSDecimalNumber?
     public var currencyCodeSet: String?
     private var callback: ((OperationResult<ThreeDSecureCheckResult>) -> Void)?
+    
     public var threeDSecureCalled = false
-    public func threeDSecureCheck(nonce: String,
-                           currencyCode: String,
-                           paymentAmount: NSDecimalNumber,
-                           callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void) {
+    public func threeDSecureCheck(
+        nonce: String,
+        currencyCode: String,
+        paymentAmount: NSDecimalNumber,
+        callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
+    ) {
         self.nonceSet = nonce
         self.paymentAmountSet = paymentAmount
         self.currencyCodeSet = currencyCode
