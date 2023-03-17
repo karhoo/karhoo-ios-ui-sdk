@@ -86,7 +86,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `feature/MOB-4675-Add-Coverage-endpoint-in-the-network-SDK`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -115,14 +115,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: feature/MOB-4675-Add-Coverage-endpoint-in-the-network-SDK
+    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 5f64262f1562e6356e5b5c2d9a5d423303d3f7fa
+    :commit: 78b2a047ddc436f78b86d514dbdf44dd37138784
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -142,6 +142,6 @@ SPEC CHECKSUMS:
   SwiftFormat: f02549113d20f7aa428b346da8cfecbc841fe66d
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: 560252332a912278cb978bb30c98d6ec7418dec1
+PODFILE CHECKSUM: afa94f979b7df020dcd53a6cb78907f6c201e71a
 
 COCOAPODS: 1.12.0

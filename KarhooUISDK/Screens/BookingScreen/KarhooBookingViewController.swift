@@ -252,7 +252,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     private func setCoverageView(_ hasCoverage: Bool?) {
         func setCoverageView(isVisible: Bool) {
-            let targetAlpha: CGFloat = isVisible ? 1 : 0
+            let targetAlpha: CGFloat = isVisible ? UIConstants.Alpha.enabled : UIConstants.Alpha.hidden
             UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
                 self.noCoverageView.isHidden = !isVisible
                 self.noCoverageView.alpha = targetAlpha

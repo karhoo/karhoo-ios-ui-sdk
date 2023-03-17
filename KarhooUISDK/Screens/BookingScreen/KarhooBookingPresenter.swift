@@ -94,8 +94,8 @@ final class KarhooBookingPresenter {
                 self?.hasCoverageInTheAreaPublisher.send(coverageModel.coverage)
                 self?.updateAsapRideEnabled(using: details)
             } else {
-                // Coverage check error
-                self?.hasCoverageInTheAreaPublisher.send(nil)
+                // Coverage check error. `true` used just to avoid not needed flow blocking
+                self?.hasCoverageInTheAreaPublisher.send(true)
             }
         }
     }
