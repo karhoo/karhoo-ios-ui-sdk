@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Ваш водитель %@ прибыл";
 
-"kh_uisdk_asap" = "Срочно";
+"kh_uisdk_asap_no_coverage_warning" = "Заказы ASAP недоступны по вашему адресу получения";
 
 "kh_uisdk_back" = "Назад";
 

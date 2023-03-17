@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "คนขับ %@ ของคุณมาถึงแล้ว";
 
-"kh_uisdk_asap" = "เร็วที่สุด";
+"kh_uisdk_asap_no_coverage_warning" = "ไม่สามารถจอง ASAP ได้ตามที่อยู่สำหรับรับของคุณ";
 
 "kh_uisdk_back" = "กลับ";
 

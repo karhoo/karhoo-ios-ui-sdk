@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Votre chauffeur %@ est arrivé";
 
-"kh_uisdk_asap" = "DÈS QUE POSSIBLE";
+"kh_uisdk_asap_no_coverage_warning" = "Les réservations ASAP ne sont pas disponibles à votre adresse de prise en charge";
 
 "kh_uisdk_back" = "Retour";
 

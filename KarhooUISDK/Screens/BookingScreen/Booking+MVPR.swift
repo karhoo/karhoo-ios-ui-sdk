@@ -9,6 +9,7 @@
 import KarhooSDK
 import CoreLocation
 import UIKit
+import Combine
 
 /* public interface for controlling booking screen */
 
@@ -45,6 +46,12 @@ internal protocol BookingView: BookingScreen {
 
 protocol BookingPresenter {
 
+    var hasCoverageInTheAreaPublisher: CurrentValueSubject<Bool?, Never> { get }
+
+    var isAsapEnabledPublisher: CurrentValueSubject<Bool, Never> { get }
+
+    var isScheduleForLaterEnabledPublisher: CurrentValueSubject<Bool, Never> { get }
+
     func viewWillAppear()
 
     func load(view: BookingView?)
@@ -68,6 +75,10 @@ protocol BookingPresenter {
     func tripAllocated(trip: TripInfo)
 
     func exitPressed()
+
+    func asapRidePressed()
+
+    func scheduleForLaterPressed()
 
     func goToTripView(trip: TripInfo)
     

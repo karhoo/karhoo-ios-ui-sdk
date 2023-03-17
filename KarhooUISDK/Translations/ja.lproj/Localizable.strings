@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "%@のドライバーが到着しました";
 
-"kh_uisdk_asap" = "できるだけ速くに";
+"kh_uisdk_asap_no_coverage_warning" = "ASAP の予約は、ピックアップ先の住所ではご利用いただけません";
 
 "kh_uisdk_back" = "戻る";
 

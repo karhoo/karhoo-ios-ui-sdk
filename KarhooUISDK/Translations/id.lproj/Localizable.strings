@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Pengemudi %@ Anda telah tiba";
 
-"kh_uisdk_asap" = "secepat mungkin";
+"kh_uisdk_asap_no_coverage_warning" = "Pemesanan ASAP tidak tersedia di alamat penjemputan Anda";
 
 "kh_uisdk_back" = "Kembali";
 

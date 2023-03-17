@@ -9,6 +9,7 @@
 import CoreLocation
 import KarhooSDK
 import UIKit
+import Combine
 
 final class KarhooBookingPresenter {
 
@@ -25,10 +26,18 @@ final class KarhooBookingPresenter {
     private let ridesScreenBuilder: RidesScreenBuilder
     private let tripRatingCache: TripRatingCache
     private let urlOpener: URLOpener
+    private let quoteService: QuoteService
     private let paymentService: PaymentService
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
 
+    private var coverageCache: [String: Bool] = [:]
+    private var coverageCheckInProgress: [String] = []
+
+    var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
+    var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
+    var isScheduleForLaterEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
+    
     // MARK: - Init
     init(router: BookingRouter,
          journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
@@ -43,6 +52,7 @@ final class KarhooBookingPresenter {
          datePickerScreenBuilder: DatePickerScreenBuilder = UISDKScreenRouting.default.datePicker(),
          tripRatingCache: TripRatingCache = KarhooTripRatingCache(),
          urlOpener: URLOpener = KarhooURLOpener(),
+         quoteService: QuoteService = Karhoo.getQuoteService(),
          paymentService: PaymentService = Karhoo.getPaymentService(),
          vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
     ) {
@@ -59,6 +69,7 @@ final class KarhooBookingPresenter {
         self.ridesScreenBuilder = ridesScreenBuilder
         self.tripRatingCache = tripRatingCache
         self.urlOpener = urlOpener
+        self.quoteService = quoteService
         self.paymentService = paymentService
         self.vehicleRulesProvider = vehicleRulesProvider
         userService.add(observer: self)
@@ -70,6 +81,41 @@ final class KarhooBookingPresenter {
         journeyDetailsManager.remove(observer: self)
     }
 
+    // MARK: - Coverage
+    
+    private func checkCoverage(using details: JourneyDetails?) {
+        guard let pickUpCoordinates = details?.originLocationDetails?.position else {
+            hasCoverageInTheAreaPublisher.send(nil)
+            return
+        }
+        
+        let latitude = String(format: "%.4f", pickUpCoordinates.latitude)
+        let longitude = String(format: "%.4f", pickUpCoordinates.longitude)
+        let cacheKey = "\(latitude),\(longitude)"
+        
+        if let cachedResult = coverageCache[cacheKey] {
+            hasCoverageInTheAreaPublisher.send(cachedResult)
+            return
+        }
+        guard !coverageCheckInProgress.contains(cacheKey) else { return }
+        coverageCheckInProgress.append(cacheKey)
+
+        let coverageRequest = QuoteCoverageRequest(
+            latitude: latitude,
+            longitude: longitude
+        )
+        quoteService.coverage(coverageRequest: coverageRequest).execute { [weak self] result in
+            if let coverageModel = result.getSuccessValue() {
+                self?.hasCoverageInTheAreaPublisher.send(coverageModel.coverage)
+                self?.updateAsapRideEnabled(using: details)
+                self?.coverageCache[cacheKey] = coverageModel.coverage
+            } else {
+                // Coverage check error. `true` used just to avoid not needed flow blocking
+                self?.hasCoverageInTheAreaPublisher.send(true)
+            }
+        }
+    }
+    
     // MARK: - Checkout
     private func showCheckoutView(
         quote: Quote,
@@ -143,6 +189,7 @@ final class KarhooBookingPresenter {
 // MARK: - BookingDetailsObserver
 extension KarhooBookingPresenter: JourneyDetailsObserver {
     func journeyDetailsChanged(details: JourneyDetails?) {
+        checkCoverage(using: details)
         guard let details = details,
             details.originLocationDetails != nil,
             details.destinationLocationDetails != nil
@@ -189,7 +236,39 @@ extension KarhooBookingPresenter: BookingPresenter {
         })
     }
 
+    func asapRidePressed() {
+        guard let details = journeyDetailsManager.getJourneyDetails() else { return }
+        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
+            self?.showCheckoutView(
+                quote: quote,
+                journeyDetails: journeyDetails
+            )
+        }
+    }
+
+    func scheduleForLaterPressed() {
+        
+    }
+
     // MARK: Utils
+
+    private func updateAsapRideEnabled(using details: JourneyDetails?) {
+        guard let details else {
+            isAsapEnabledPublisher.send(false)
+            return
+        }
+        let canProceedWithAsapBooking = details.originLocationDetails != nil &&
+        details.destinationLocationDetails != nil &&
+        hasCoverageInTheAreaPublisher.value == true
+        
+        isAsapEnabledPublisher.send(canProceedWithAsapBooking)
+    }
+
+    private func updateScheduledRideEnabled(using details: JourneyDetails) {
+        let areAllDataProvided = details.originLocationDetails != nil && details.destinationLocationDetails != nil
+        isScheduleForLaterEnabledPublisher.send(areAllDataProvided)
+    }
+    
     private func fetchPaymentProvider() {
         if !Karhoo.configuration.authenticationMethod().isGuest() {
             return
@@ -382,13 +461,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func didProvideJourneyDetails(_ details: JourneyDetails) {
-        let topViewController = view?.navigationController?.topViewController
-        guard topViewController === view || topViewController is SideMenuViewController  else { return }
-        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
-            self?.showCheckoutView(
-                quote: quote,
-                journeyDetails: journeyDetails
-            )
-        }
+        updateAsapRideEnabled(using: details)
+        updateScheduledRideEnabled(using: details)
     }
 }

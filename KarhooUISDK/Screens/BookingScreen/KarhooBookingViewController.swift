@@ -10,13 +10,17 @@ import UIKit
 import KarhooSDK
 import CoreLocation
 import SwiftUI
+import Combine
 
 final class KarhooBookingViewController: UIViewController, BookingView {
-    
+
+    private var cancellables: Set<AnyCancellable> = []
+
     private var addressBar: AddressBarView!
     private var tripAllocationView: KarhooTripAllocationView!
     private var mapView: MapView = KarhooMKMapView()
     private var bottomContainer: UIView!
+    private var noCoverageView: NoCoverageView!
     private var asapButton: MainActionButton!
     private var scheduleButton: MainActionButton!
     private var sideMenu: SideMenu?
@@ -150,14 +154,37 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+        noCoverageView = NoCoverageView()
+        noCoverageView.isHidden = true
+        
+        presenter.hasCoverageInTheAreaPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] hasCoverage in
+                self?.setCoverageView(hasCoverage)
+            }.store(in: &cancellables)
         
         // asap button
         asapButton = MainActionButton(design: .secondary)
+        asapButton.addTarget(self, action: #selector(asapRidePressed), for: .touchUpInside)
         asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
-
+        presenter.isAsapEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEnabled in
+                self?.asapButton.setEnabled(isEnabled)
+            }
+            .store(in: &cancellables)
+            
         // later button
         scheduleButton = MainActionButton(design: .primary)
+        scheduleButton.addTarget(self, action: #selector(scheduleForLaterPressed), for: .touchUpInside)
         scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
+        presenter.isScheduleForLaterEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isEnabled in
+                self?.scheduleButton.setEnabled(isEnabled)
+            }
+            .store(in: &cancellables)
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -167,7 +194,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         buttonsStack.distribution = .fillEqually
         buttonsStack.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight).isActive = true
 
-        let verticalStackView = UIStackView(arrangedSubviews: [buttonsStack])
+        let verticalStackView = UIStackView(arrangedSubviews: [noCoverageView, buttonsStack])
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.axis = .vertical
         verticalStackView.spacing = UIConstants.Spacing.standard
@@ -244,6 +271,31 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         showAsOverlay(item: alertController, animated: true)
     }
 
+    private func setCoverageView(_ hasCoverage: Bool?) {
+        func setCoverageView(isVisible: Bool) {
+            let targetAlpha: CGFloat = isVisible ? UIConstants.Alpha.enabled : UIConstants.Alpha.hidden
+            UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
+                self.noCoverageView.isHidden = !isVisible
+                self.noCoverageView.alpha = targetAlpha
+                self.bottomContainer.layoutIfNeeded()
+            })
+        }
+
+        // check if there is any coverage response
+        guard let hasCoverage else {
+            setCoverageView(isVisible: false)
+            return
+        }
+        // check if coverage information is alredy up to date
+        let shouldBeVisible = !hasCoverage
+        let isCurrentlyVisible = !noCoverageView.isHidden
+        guard shouldBeVisible != isCurrentlyVisible else {
+            return
+        }
+
+        setCoverageView(isVisible: !hasCoverage)
+    }
+
     @objc
     private func rightBarButtonPressed() {
         openRidesList(presentationStyle: nil)
@@ -256,6 +308,14 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         } else {
             presenter.exitPressed()
         }
+    }
+
+    @objc private func asapRidePressed(_ selector: UIButton) {
+        presenter.asapRidePressed()
+    }
+
+    @objc private func scheduleForLaterPressed(_ selector: UIButton) {
+        presenter.scheduleForLaterPressed()
     }
 }
 

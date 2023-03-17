@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Ihr %@-Fahrer ist angekommen";
 
-"kh_uisdk_asap" = "ASAP";
+"kh_uisdk_asap_no_coverage_warning" = "ASAP-Buchungen sind an Ihrer Abholadresse nicht möglich";
 
 "kh_uisdk_back" = "Zurück";
 

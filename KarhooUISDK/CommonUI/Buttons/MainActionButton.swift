@@ -92,4 +92,10 @@ class MainActionButton: UIButton {
             }
         )
     }
+
+    func setEnabled(_ isEnabled: Bool) {
+        self.isEnabled = isEnabled
+        isUserInteractionEnabled = isEnabled
+        alpha = isEnabled ? UIConstants.Alpha.enabled : UIConstants.Alpha.disabled
+    }
 }
