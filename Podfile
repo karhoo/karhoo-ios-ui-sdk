@@ -31,7 +31,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'feature/MOB-4675-Add-Coverage-endpoint-in-the-network-SDK'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.7.2'
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
