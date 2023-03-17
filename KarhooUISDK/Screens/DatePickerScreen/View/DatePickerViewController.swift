@@ -14,11 +14,13 @@ final class DatePickerViewController: UIViewController, DatePickerView {
     @IBOutlet private weak var backgroundView: UIView?
     @IBOutlet private weak var datePicker: UIDatePicker?
     @IBOutlet private weak var timeZoneMessage: UILabel?
-
+    @IBOutlet private weak var pickUpLabel: UILabel!
+    @IBOutlet private weak var headerLabel: UILabel!
+    
     private let presenter: DatePickerPresenter
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        presentingViewController?.preferredStatusBarStyle ?? .default
+        presentingViewController?.preferredStatusBarStyle ?? .lightContent
     }
 
     required init(presenter: DatePickerPresenter) {
@@ -33,6 +35,13 @@ final class DatePickerViewController: UIViewController, DatePickerView {
     override func viewDidLoad() {
         super.viewDidLoad()
         forceLightMode()
+        datePickerContainerView?.applyRoundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMinYCorner],
+            radius: UIConstants.CornerRadius.xxLarge
+        )
+        headerLabel.textColor = KarhooUI.colors.text
+        pickUpLabel.font = KarhooUI.fonts.headerBold()
+        pickUpLabel.text = UITexts.Prebook.setPrebookTime.uppercased()
     }
 
     override func viewWillAppear(_ animated: Bool) {

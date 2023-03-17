@@ -43,6 +43,11 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
         if let start = startDate {
             let forced = forceToBoundries(date: start)
             initialDate = rounded(date: forced)
+        } else if
+            let journeyDetails = KarhooJourneyDetailsManager.shared.getJourneyDetails(),
+            let selectedDate = journeyDetails.scheduledDate,
+            minDate <= selectedDate {
+            initialDate = selectedDate
         } else {
             initialDate = minDate
         }

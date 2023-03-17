@@ -12,6 +12,8 @@
                 <outlet property="backgroundView" destination="QLv-ej-iNS" id="ckB-kx-G63"/>
                 <outlet property="datePicker" destination="q36-cc-70b" id="KqH-dn-Kh0"/>
                 <outlet property="datePickerContainerView" destination="edp-Jq-YCf" id="grG-ER-W4h"/>
+                <outlet property="headerLabel" destination="tH0-Ig-5c2" id="ZF9-32-9v1"/>
+                <outlet property="pickUpLabel" destination="ibm-Jb-23a" id="4I4-nV-Y2N"/>
                 <outlet property="timeZoneMessage" destination="ems-PS-A5F" id="e05-Zk-ew1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,10 +53,10 @@
                     </connections>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edp-Jq-YCf" userLabel="Container View">
-                    <rect key="frame" x="0.0" y="567" width="430" height="365"/>
+                    <rect key="frame" x="0.0" y="552" width="430" height="380"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="q36-cc-70b">
-                            <rect key="frame" x="0.0" y="60" width="430" height="215"/>
+                            <rect key="frame" x="0.0" y="62" width="430" height="215"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="215" id="477-Hk-9SA"/>
                             </constraints>
@@ -75,7 +77,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Pickup Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibm-Jb-23a">
-                            <rect key="frame" x="144" y="291" width="142" height="24"/>
+                            <rect key="frame" x="144" y="304" width="142" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -99,7 +101,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ko-Jj-7f0">
-                            <rect key="frame" x="0.0" y="267" width="430" height="56"/>
+                            <rect key="frame" x="0.0" y="288" width="430" height="56"/>
                             <accessibility key="accessibilityConfiguration" identifier="set-pickup-time-button"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="56" id="u7l-rZ-xgq"/>
@@ -109,7 +111,7 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking will be made in local time of pick up " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ems-PS-A5F">
-                            <rect key="frame" x="8" y="47" width="414" height="16"/>
+                            <rect key="frame" x="8" y="47" width="414" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -117,15 +119,16 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="6ko-Jj-7f0" secondAttribute="bottom" constant="42" id="64R-6j-SKl"/>
                         <constraint firstAttribute="trailing" secondItem="ems-PS-A5F" secondAttribute="trailing" constant="8" id="6cN-wh-9aJ"/>
                         <constraint firstItem="yGQ-RI-TNF" firstAttribute="centerY" secondItem="tH0-Ig-5c2" secondAttribute="centerY" id="97A-1c-Wfm"/>
-                        <constraint firstAttribute="bottom" secondItem="q36-cc-70b" secondAttribute="bottom" constant="90" id="B5r-eb-zaV"/>
+                        <constraint firstAttribute="bottom" secondItem="q36-cc-70b" secondAttribute="bottom" constant="103" id="B5r-eb-zaV"/>
                         <constraint firstItem="tH0-Ig-5c2" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" constant="15" id="H7d-WY-ruS"/>
                         <constraint firstItem="ems-PS-A5F" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" constant="8" id="ITz-7M-Eg8"/>
                         <constraint firstItem="dgO-xB-m0B" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" priority="250" id="K1Y-tX-JSE"/>
+                        <constraint firstItem="ibm-Jb-23a" firstAttribute="centerY" secondItem="6ko-Jj-7f0" secondAttribute="centerY" id="KuX-JH-RLD"/>
                         <constraint firstAttribute="trailing" secondItem="dgO-xB-m0B" secondAttribute="trailing" constant="8" id="M3h-lD-2LJ"/>
-                        <constraint firstAttribute="bottom" secondItem="ibm-Jb-23a" secondAttribute="bottom" constant="50" id="T5t-dM-LyE"/>
+                        <constraint firstAttribute="bottom" secondItem="6ko-Jj-7f0" secondAttribute="bottom" constant="36" id="Ppu-Db-HTK"/>
+                        <constraint firstItem="6ko-Jj-7f0" firstAttribute="centerY" secondItem="ibm-Jb-23a" secondAttribute="centerY" id="SM6-YM-gnb"/>
                         <constraint firstItem="6ko-Jj-7f0" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" id="VPI-Jb-LDP"/>
                         <constraint firstItem="q36-cc-70b" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" id="Yh1-Wj-0zd"/>
                         <constraint firstItem="dgO-xB-m0B" firstAttribute="centerY" secondItem="tH0-Ig-5c2" secondAttribute="centerY" id="dse-rd-pnB"/>
@@ -134,7 +137,7 @@
                         <constraint firstAttribute="trailing" secondItem="6ko-Jj-7f0" secondAttribute="trailing" id="nGh-Xi-M3R"/>
                         <constraint firstItem="q36-cc-70b" firstAttribute="top" secondItem="ems-PS-A5F" secondAttribute="bottom" constant="-3" id="qT3-Nb-6Ar"/>
                         <constraint firstAttribute="trailing" secondItem="yGQ-RI-TNF" secondAttribute="trailing" constant="15" id="ubU-GE-A8t"/>
-                        <constraint firstAttribute="height" constant="365" id="wEf-Aw-aZc"/>
+                        <constraint firstAttribute="height" constant="380" id="wEf-Aw-aZc"/>
                         <constraint firstItem="tH0-Ig-5c2" firstAttribute="centerX" secondItem="edp-Jq-YCf" secondAttribute="centerX" id="x8Z-Ef-chM"/>
                         <constraint firstItem="ems-PS-A5F" firstAttribute="top" secondItem="tH0-Ig-5c2" secondAttribute="bottom" constant="5" id="yQJ-sG-0Lg"/>
                     </constraints>
