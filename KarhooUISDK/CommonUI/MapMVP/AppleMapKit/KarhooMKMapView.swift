@@ -238,13 +238,12 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
                 let boundingMapRect = route.polyline.boundingMapRect
                 let mapRectWithEdgeInsets = self.mapView.mapRectThatFits(
                     boundingMapRect,
-                    edgePadding: UIConstants.View.routeOnMapEdgeInsets
+                    edgePadding: UIConstants.Dimension.View.routeOnMapEdgeInsets
                 )
                 self.mapView.setVisibleMapRect(mapRectWithEdgeInsets, animated: true)
             }
         }
     }
-
 
     func removeTripLine() {
         DispatchQueue.main.async {
