@@ -42,7 +42,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     private let horizontalPadding: CGFloat
     private let hidePickUpDestinationConnector: Bool
     private let destinationIconSize: CGFloat = 18.0
-    private let keepPrebookHidden: Bool
+    private let hidePrebookButton: Bool
 
     init(cornerRadious: CGFloat = 5.0,
          borderLine: Bool = false,
@@ -58,7 +58,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
         self.hidePickUpDestinationConnector = hidePickUpDestinationConnector
-        self.keepPrebookHidden = hidePrebookButton
+        self.hidePrebookButton = hidePrebookButton
         super.init(frame: .zero)
         self.setUpView()
     }
@@ -113,7 +113,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         mainViewContainer.addSubview(fieldsSeparatorLine)
         
         prebookField = KarhooPrebookFieldView()
-        prebookField.isHidden = keepPrebookHidden
+        prebookField.isHidden = hidePrebookButton
         prebookField.accessibilityIdentifier = KHAddressBarViewID.prebookField
         prebookField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         mainViewContainer.addSubview(prebookField)
@@ -121,7 +121,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         prebookSeparator = LineView(color: KarhooUI.colors.lightGrey,
                                   width: 1.0,
                                   accessibilityIdentifier: "preBookSeparator_line")
-        prebookSeparator.isHidden = keepPrebookHidden
+        prebookSeparator.isHidden = hidePrebookButton
         mainViewContainer.addSubview(prebookSeparator)
 
         destinationField = KarhooAddressBarFieldView()
@@ -196,7 +196,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
             .then { $0.priority = .defaultHigh }
         ].map { $0.isActive = true }
         
-        if keepPrebookHidden {
+        if hidePrebookButton {
             destinationField.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor).isActive = true
             destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor).isActive = true
             destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor).isActive = true
@@ -329,13 +329,8 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
 
     private func prebook(isHidden: Bool) {
-        guard keepPrebookHidden == false else {
-            prebookField?.isHidden = true
-            prebookSeparator?.isHidden = true
-            return
-        }
-        prebookField?.isHidden = isHidden
-        prebookSeparator?.isHidden = isHidden
+        prebookField?.isHidden = hidePrebookButton ? true : isHidden
+        prebookSeparator?.isHidden = hidePrebookButton ? true : isHidden
     }
 
     @objc
