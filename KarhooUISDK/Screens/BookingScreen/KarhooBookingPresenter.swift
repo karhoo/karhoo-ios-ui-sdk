@@ -82,7 +82,7 @@ final class KarhooBookingPresenter {
 
     private func checkCoverage(using details: JourneyDetails?) {
         guard let pickUpCoordinates = details?.originLocationDetails?.position else {
-            hasCoverageInTheAreaPublisher.send(false)
+            hasCoverageInTheAreaPublisher.send(nil)
             return
         }
         let coverageRequest = QuoteCoverageRequest(
