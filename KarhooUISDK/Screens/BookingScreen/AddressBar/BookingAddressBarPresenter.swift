@@ -107,7 +107,9 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
                     } else {
                         self?.view?.parentViewController?.dismiss(animated: true, completion: nil)
                     }
-                    self?.journeyDetailsManager.set(prebookDate: result.completedValue())
+                    if result.isComplete() {
+                        self?.journeyDetailsManager.set(prebookDate: result.completedValue())
+                    }
                 }
             )
 

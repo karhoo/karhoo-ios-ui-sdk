@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +18,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBS-cj-vqf" customClass="NibStrings" customModule="KarhooUISDK">
@@ -43,7 +43,7 @@
                     </connections>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLv-ej-iNS">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <connections>
@@ -51,10 +51,10 @@
                     </connections>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edp-Jq-YCf" userLabel="Container View">
-                    <rect key="frame" x="0.0" y="310" width="375" height="357"/>
+                    <rect key="frame" x="0.0" y="567" width="430" height="365"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="q36-cc-70b">
-                            <rect key="frame" x="0.0" y="79" width="375" height="215"/>
+                            <rect key="frame" x="0.0" y="60" width="430" height="215"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="215" id="477-Hk-9SA"/>
                             </constraints>
@@ -66,7 +66,7 @@
                             </connections>
                         </datePicker>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prebook Pickup Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH0-Ig-5c2">
-                            <rect key="frame" x="95" y="15" width="185.5" height="27"/>
+                            <rect key="frame" x="122.33333333333333" y="15" width="185.33333333333337" height="27"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="27" id="Dsh-Ex-D0y"/>
                             </constraints>
@@ -75,20 +75,20 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Pickup Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibm-Jb-23a">
-                            <rect key="frame" x="116.5" y="313" width="142" height="24"/>
+                            <rect key="frame" x="144" y="291" width="142" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_cross" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-RI-TNF">
-                            <rect key="frame" x="348" y="15" width="12" height="12"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kh_uisdk_cross_in_circle" translatesAutoresizingMaskIntoConstraints="NO" id="yGQ-RI-TNF">
+                            <rect key="frame" x="390" y="16" width="25" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="Z0t-a8-4Mk"/>
-                                <constraint firstAttribute="width" constant="12" id="iPo-l3-CQT"/>
+                                <constraint firstAttribute="height" constant="25" id="Z0t-a8-4Mk"/>
+                                <constraint firstAttribute="width" constant="25" id="iPo-l3-CQT"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-xB-m0B">
-                            <rect key="frame" x="332" y="0.0" width="43" height="44"/>
+                            <rect key="frame" x="379" y="6.6666666666666288" width="43" height="44"/>
                             <accessibility key="accessibilityConfiguration" identifier="prebook-cross-button"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="43" id="ZUj-O7-Oao"/>
@@ -99,7 +99,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ko-Jj-7f0">
-                            <rect key="frame" x="0.0" y="301" width="375" height="56"/>
+                            <rect key="frame" x="0.0" y="267" width="430" height="56"/>
                             <accessibility key="accessibilityConfiguration" identifier="set-pickup-time-button"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="56" id="u7l-rZ-xgq"/>
@@ -109,7 +109,7 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking will be made in local time of pick up " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ems-PS-A5F">
-                            <rect key="frame" x="8" y="47" width="359" height="35"/>
+                            <rect key="frame" x="8" y="47" width="414" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -117,23 +117,24 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="6ko-Jj-7f0" secondAttribute="bottom" id="64R-6j-SKl"/>
+                        <constraint firstAttribute="bottom" secondItem="6ko-Jj-7f0" secondAttribute="bottom" constant="42" id="64R-6j-SKl"/>
                         <constraint firstAttribute="trailing" secondItem="ems-PS-A5F" secondAttribute="trailing" constant="8" id="6cN-wh-9aJ"/>
-                        <constraint firstAttribute="bottom" secondItem="q36-cc-70b" secondAttribute="bottom" constant="63" id="B5r-eb-zaV"/>
+                        <constraint firstItem="yGQ-RI-TNF" firstAttribute="centerY" secondItem="tH0-Ig-5c2" secondAttribute="centerY" id="97A-1c-Wfm"/>
+                        <constraint firstAttribute="bottom" secondItem="q36-cc-70b" secondAttribute="bottom" constant="90" id="B5r-eb-zaV"/>
                         <constraint firstItem="tH0-Ig-5c2" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" constant="15" id="H7d-WY-ruS"/>
                         <constraint firstItem="ems-PS-A5F" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" constant="8" id="ITz-7M-Eg8"/>
-                        <constraint firstItem="dgO-xB-m0B" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" id="K1Y-tX-JSE"/>
-                        <constraint firstAttribute="trailing" secondItem="dgO-xB-m0B" secondAttribute="trailing" id="M3h-lD-2LJ"/>
-                        <constraint firstAttribute="bottom" secondItem="ibm-Jb-23a" secondAttribute="bottom" constant="20" id="T5t-dM-LyE"/>
+                        <constraint firstItem="dgO-xB-m0B" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" priority="250" id="K1Y-tX-JSE"/>
+                        <constraint firstAttribute="trailing" secondItem="dgO-xB-m0B" secondAttribute="trailing" constant="8" id="M3h-lD-2LJ"/>
+                        <constraint firstAttribute="bottom" secondItem="ibm-Jb-23a" secondAttribute="bottom" constant="50" id="T5t-dM-LyE"/>
                         <constraint firstItem="6ko-Jj-7f0" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" id="VPI-Jb-LDP"/>
-                        <constraint firstItem="yGQ-RI-TNF" firstAttribute="top" secondItem="edp-Jq-YCf" secondAttribute="top" constant="15" id="Xt6-O9-JZR"/>
                         <constraint firstItem="q36-cc-70b" firstAttribute="leading" secondItem="edp-Jq-YCf" secondAttribute="leading" id="Yh1-Wj-0zd"/>
+                        <constraint firstItem="dgO-xB-m0B" firstAttribute="centerY" secondItem="tH0-Ig-5c2" secondAttribute="centerY" id="dse-rd-pnB"/>
                         <constraint firstItem="ibm-Jb-23a" firstAttribute="centerX" secondItem="edp-Jq-YCf" secondAttribute="centerX" id="fXv-Lj-e2d"/>
                         <constraint firstAttribute="trailing" secondItem="q36-cc-70b" secondAttribute="trailing" id="jli-b8-Jwx"/>
                         <constraint firstAttribute="trailing" secondItem="6ko-Jj-7f0" secondAttribute="trailing" id="nGh-Xi-M3R"/>
                         <constraint firstItem="q36-cc-70b" firstAttribute="top" secondItem="ems-PS-A5F" secondAttribute="bottom" constant="-3" id="qT3-Nb-6Ar"/>
                         <constraint firstAttribute="trailing" secondItem="yGQ-RI-TNF" secondAttribute="trailing" constant="15" id="ubU-GE-A8t"/>
-                        <constraint firstAttribute="height" constant="357" id="wEf-Aw-aZc"/>
+                        <constraint firstAttribute="height" constant="365" id="wEf-Aw-aZc"/>
                         <constraint firstItem="tH0-Ig-5c2" firstAttribute="centerX" secondItem="edp-Jq-YCf" secondAttribute="centerX" id="x8Z-Ef-chM"/>
                         <constraint firstItem="ems-PS-A5F" firstAttribute="top" secondItem="tH0-Ig-5c2" secondAttribute="bottom" constant="5" id="yQJ-sG-0Lg"/>
                     </constraints>
@@ -159,6 +160,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="kh_uisdk_cross" width="24" height="24"/>
+        <image name="kh_uisdk_cross_in_circle" width="24" height="24"/>
     </resources>
 </document>

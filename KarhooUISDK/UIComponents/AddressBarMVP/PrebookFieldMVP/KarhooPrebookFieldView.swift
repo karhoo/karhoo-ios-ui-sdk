@@ -20,8 +20,7 @@ public final class KarhooPrebookFieldView: UIView {
     // MARK: - Nested types
 
     private enum Constants {
-        static var closeButtonSize: CGFloat = 35.0
-        static var preBookButtonSize: CGFloat = 35.0
+        static var preBookButtonSize: CGFloat = 34.0
     }
 
     // MARK: - Properties
@@ -47,13 +46,11 @@ public final class KarhooPrebookFieldView: UIView {
         return stackView
     }()
 
-    private lazy var dateTimeView: UIView = {
-        let view = UIView()
-        view.accessibilityIdentifier = KHPrebookFieldID.dateTimeView
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isHidden = true
-        return view
-    }()
+    private lazy var dateSelectedStack = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.spacing = UIConstants.Spacing.xSmall
+        $0.axis = .horizontal
+    }
 
     private lazy var dateTimeStackContainer: UIStackView = {
         let stackView = UIStackView()
@@ -78,10 +75,9 @@ public final class KarhooPrebookFieldView: UIView {
         button.accessibilityIdentifier = KHPrebookFieldID.closeButton
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage.uisdkImage("kh_uisdk_cross_in_circle"), for: .normal)
-        button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 4, bottom: 5, right: 4)
+        button.tintColor = KarhooUI.colors.textLabel
         return button
     }()
     
@@ -102,39 +98,41 @@ public final class KarhooPrebookFieldView: UIView {
     
     private func setupHierarchy() {
         addSubview(stackContainer)
-        addSubview(dateTimeStackContainer)
-        stackContainer.addArrangedSubview(dateTimeView)
-        stackContainer.addArrangedSubview(dateTimeView)
+        stackContainer.addArrangedSubview(dateSelectedStack)
         stackContainer.addArrangedSubview(prebookButton)
+
+        dateSelectedStack.addArrangedSubview(dateTimeStackContainer)
+        dateSelectedStack.addArrangedSubview(closeButton)
         dateTimeStackContainer.addArrangedSubview(timeLabel)
         dateTimeStackContainer.addArrangedSubview(dateLabel)
-        dateTimeView.addSubview(closeButton)
     }
     
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
         setupHierarchy()
         setUpConstraints()
+
+        dateTimeStackContainer.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(prebookPressed)
+            )
+        )
     }
     
     private func setUpConstraints() {
-        stackContainer.anchorToSuperview()
-
-        closeButton.anchor(
-            leading: dateTimeStackContainer.trailingAnchor,
-            trailing: dateTimeView.trailingAnchor,
-            width: Constants.closeButtonSize,
-            height: Constants.closeButtonSize
+        stackContainer.anchorToSuperview(
+            paddingLeading: UIConstants.Spacing.xSmall,
+            paddingTrailing: UIConstants.Spacing.small
         )
-
-        prebookButton.anchor(width: Constants.preBookButtonSize, height: Constants.preBookButtonSize)
-        dateTimeStackContainer.anchor(leading: dateTimeView.leadingAnchor, paddingLeft: 5.0)
-
-        [
-            closeButton.topAnchor.constraint(lessThanOrEqualTo: dateTimeView.topAnchor),
-            closeButton.bottomAnchor.constraint(lessThanOrEqualTo: dateTimeView.bottomAnchor),
-            dateTimeStackContainer.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)
-        ].forEach { $0.isActive = true }
+        closeButton.setDimensions(
+            height: UIConstants.Dimension.Icon.standard,
+            width: UIConstants.Dimension.Icon.standard
+        )
+        prebookButton.setDimensions(
+            height: Constants.preBookButtonSize,
+            width: Constants.preBookButtonSize
+        )
     }
 
     private func buildLabel(font: UIFont, accessibilityIdentifier: String) -> UILabel {
@@ -155,7 +153,7 @@ public final class KarhooPrebookFieldView: UIView {
     }
 
     func set(date: String, time: String?) {
-        dateTimeView.isHidden = false
+        dateSelectedStack.isHidden = false
         prebookButton.isHidden = true
         dateLabel.text = date
         timeLabel.text = time
@@ -163,7 +161,7 @@ public final class KarhooPrebookFieldView: UIView {
     }
 
     func showDefaultView() {
-        dateTimeView.isHidden = true
+        dateSelectedStack.isHidden = true
         prebookButton.isHidden = false
         actions?.prebookSet()
     }

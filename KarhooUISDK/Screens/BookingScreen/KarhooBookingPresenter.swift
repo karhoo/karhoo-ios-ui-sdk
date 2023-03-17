@@ -193,7 +193,11 @@ extension KarhooBookingPresenter: JourneyDetailsObserver {
         guard let details = details,
             details.originLocationDetails != nil,
             details.destinationLocationDetails != nil
-        else { return }
+        else {
+            isAsapEnabledPublisher.send(false)
+            isScheduleForLaterEnabledPublisher.send(false)
+            return
+        }
         didProvideJourneyDetails(details)
     }
 }
