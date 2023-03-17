@@ -75,8 +75,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        addressBar = KarhooUI.components.addressBar(journeyInfo: journeyInfo)
-
+        setupAddressBar()
+        
         view.insertSubview(addressBar, aboveSubview: mapView)
 
         addressBar.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
@@ -106,6 +106,27 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             }
         )
         mapView.set(presenter: mapPresenter)
+    }
+
+    private func setupAddressBar() {
+        let presenter = BookingAddressBarPresenter()
+        let addressBarView = KarhooAddressBarView(
+            cornerRadious: UIConstants.CornerRadius.large,
+            borderLine: true,
+            dropShadow: false,
+            verticalPadding: 0,
+            horizontalPadding: 0,
+            hidePickUpDestinationConnector: true,
+            hidePrebookButton: true
+        )
+
+        addressBarView.set(presenter: presenter)
+        presenter.load(view: addressBarView)
+        if let journey = journeyInfo {
+            KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
+        }
+        
+        addressBar = addressBarView
     }
 
     private func setupNavigationBar() {
