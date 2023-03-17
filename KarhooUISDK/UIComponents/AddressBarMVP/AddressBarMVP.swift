@@ -45,7 +45,15 @@ protocol AddressBarPresenter: JourneyDetailsObserver {
 
     func prebookSelected()
 
+    func prebookSelected(optionalDoneCallback: (() -> Void)?)
+
     func prebookCleared()
 
     func addressSwapSelected()
+}
+
+extension AddressBarPresenter {
+    func prebookSelected() {
+        prebookSelected(optionalDoneCallback: nil)
+    }
 }

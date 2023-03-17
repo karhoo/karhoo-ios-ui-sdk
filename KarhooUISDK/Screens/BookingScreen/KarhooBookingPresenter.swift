@@ -221,17 +221,11 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func asapRidePressed() {
-        guard let details = journeyDetailsManager.getJourneyDetails() else { return }
-        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
-            self?.showCheckoutView(
-                quote: quote,
-                journeyDetails: journeyDetails
-            )
-        }
+        showQuoteList()
     }
 
     func scheduleForLaterPressed() {
-        
+        showQuoteList()
     }
 
     // MARK: Utils
@@ -353,6 +347,18 @@ extension KarhooBookingPresenter: BookingPresenter {
             let tripView = tripScreenBuilder.buildTripScreen(trip: trip,
                                                                 callback: tripViewCallback)
             view?.present(tripView, animated: true, completion: nil)
+        }
+    }
+
+    // MARK: QuoteList
+
+    private func showQuoteList() {
+        guard let details = journeyDetailsManager.getJourneyDetails() else { return }
+        router.routeToQuoteList(details: details) { [weak self] quote, journeyDetails in
+            self?.showCheckoutView(
+                quote: quote,
+                journeyDetails: journeyDetails
+            )
         }
     }
 
