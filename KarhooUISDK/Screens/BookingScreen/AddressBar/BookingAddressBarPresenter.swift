@@ -90,19 +90,25 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
         }
     }
 
-    func prebookSelected() {
+    func prebookSelected(optionalDoneCallback: (() -> Void)?) {
         guard let currentBookingDetails = journeyDetailsManager.getJourneyDetails(),
             let originTimeZone = journeyDetailsManager.getJourneyDetails()?.originLocationDetails?.timezone() else {
             return
         }
-
+        
         let datePickerScreen = datePickerScreenBuilder
-            .buildDatePickerScreen(startDate: currentBookingDetails.scheduledDate,
-                                   timeZone: originTimeZone,
-                                   callback: { [weak self] result in
-                                    self?.view?.parentViewController?.dismiss(animated: true, completion: nil)
-                                    self?.journeyDetailsManager.set(prebookDate: result.completedValue())
-        })
+            .buildDatePickerScreen(
+                startDate: currentBookingDetails.scheduledDate,
+                timeZone: originTimeZone,
+                callback: { [weak self] result in
+                    self?.journeyDetailsManager.set(prebookDate: result.completedValue())
+                    var animateDismiss = true
+                    if result.isComplete(), let optionalDoneCallback {
+                        animateDismiss = false
+                        optionalDoneCallback()
+                    }
+                    self?.view?.parentViewController?.dismiss(animated: animateDismiss, completion: nil)
+                })
 
         datePickerScreen.modalPresentationStyle = .overCurrentContext
         
