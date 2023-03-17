@@ -101,14 +101,15 @@ final class BookingAddressBarPresenter: AddressBarPresenter {
                 startDate: currentBookingDetails.scheduledDate,
                 timeZone: originTimeZone,
                 callback: { [weak self] result in
-                    self?.journeyDetailsManager.set(prebookDate: result.completedValue())
-                    var animateDismiss = true
                     if result.isComplete(), let optionalDoneCallback {
-                        animateDismiss = false
                         optionalDoneCallback()
+                        self?.view?.parentViewController?.dismiss(animated: false, completion: nil)
+                    } else {
+                        self?.view?.parentViewController?.dismiss(animated: true, completion: nil)
                     }
-                    self?.view?.parentViewController?.dismiss(animated: animateDismiss, completion: nil)
-                })
+                    self?.journeyDetailsManager.set(prebookDate: result.completedValue())
+                }
+            )
 
         datePickerScreen.modalPresentationStyle = .overCurrentContext
         
