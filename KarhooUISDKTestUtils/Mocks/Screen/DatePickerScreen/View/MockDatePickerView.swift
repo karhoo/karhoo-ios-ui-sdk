@@ -37,4 +37,9 @@ final public class MockDatePickerView: MockBaseViewController, DatePickerView {
         minDateSet = min
         maxDateSet = max
     }
+    
+    public var localeSet: Locale?
+    public func set(locale: Locale) {
+        localeSet = locale
+    }
 }

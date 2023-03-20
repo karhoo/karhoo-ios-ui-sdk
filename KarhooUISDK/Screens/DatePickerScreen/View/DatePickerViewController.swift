@@ -69,6 +69,10 @@ final class DatePickerViewController: UIViewController, DatePickerView {
         datePicker?.minimumDate = min
         datePicker?.maximumDate = max
     }
+    
+    func set(locale: Locale) {
+        datePicker?.locale = locale
+    }
 
     @IBAction private func dateDidChange() {
         guard let date = datePicker?.date else {

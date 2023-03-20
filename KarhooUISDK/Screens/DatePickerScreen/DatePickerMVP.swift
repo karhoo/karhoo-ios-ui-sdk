@@ -21,6 +21,8 @@ protocol DatePickerView: BaseViewController {
     func set(timeZoneMessageText: String)
 
     func set(timeZoneMessageHidden: Bool)
+    
+    func set(locale: Locale)
 }
 
 protocol DatePickerPresenter {

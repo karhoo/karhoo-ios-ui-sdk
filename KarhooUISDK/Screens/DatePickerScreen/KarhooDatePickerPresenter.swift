@@ -56,6 +56,7 @@ final class KarhooDatePickerPresenter: DatePickerPresenter {
 
     func viewWillShow() {
         applyTimeZoneToScreen()
+        view?.set(locale: KarhooCountryParser.getSupportedLocale())
     }
 
     func set(view: DatePickerView?) {

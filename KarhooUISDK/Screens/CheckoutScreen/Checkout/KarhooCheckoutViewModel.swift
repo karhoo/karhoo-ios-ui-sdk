@@ -143,16 +143,27 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
     func getDateScheduledDescription() -> String {
         let date = journeyDetails.scheduledDate ?? Date()
+        let locale = KarhooCountryParser.getSupportedLocale()
+        dateFormatter.set(locale: locale)
+        
+        if let timezone = journeyDetails.originLocationDetails?.timezone() {
+            dateFormatter.set(timeZone: timezone)
+        }
+        
         let dateFormatted = dateFormatter.display(
             date,
             dateStyle: .long,
             timeStyle: .none
         )
+        
         let weekday = {
             guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
                 return ""
             }
-            return (Calendar.current.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
+            
+            var calendar = Calendar.current
+            calendar.locale = locale
+            return (calendar.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
         }()
         return "\(weekday)\(dateFormatted)".uppercased()
     }
@@ -180,7 +191,14 @@ final class KarhooCheckoutViewModel: ObservableObject {
             }
             return dateFormatter.display(clockTime: date)
         }
-        return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
+        
+        let nowTime = QtaStringFormatter()
+            .qtaString(
+                min: quote.vehicle.qta.lowMinutes,
+                max: quote.vehicle.qta.highMinutes
+            )
+        
+        return journeyDetails.isScheduled ? scheduledTime : nowTime
     }
     
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
