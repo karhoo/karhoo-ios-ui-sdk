@@ -35,12 +35,10 @@ final class KarhooCountryParser {
     
     static func getCountries() -> [Country] {
         let c = NSLocale.isoCountryCodes
-        let availableLocales = Bundle.main.localizations
-        let deviceLocale = Locale.current.languageCode ?? "en"
-        let locale = availableLocales.contains(deviceLocale) ? deviceLocale : "en"
+        let locale = getSupportedLocale().identifier
         
-        var prefixCodes = ["AF": "93", "AE": "971", "AL": "355", "AN": "599", "AS": "1", "AD": "376", "AO": "244", "AI": "1", "AG": "1",
-                           "AR": "54", "AM": "374", "AW": "297", "AU": "61", "AT": "43", "AZ": "994", "BS": "1", "BH": "973", "BF": "226",
+        var prefixCodes = ["AF": "93", "AE": "971", "AL": "355", "AN": "599", "AS": "1", "AD": "376", "AO": "244", "AI": "1",
+                           "AG": "1", "AR": "54", "AM": "374", "AW": "297", "AU": "61", "AT": "43", "AZ": "994", "BS": "1", "BH": "973", "BF": "226",
                            "BI": "257", "BD": "880", "BB": "1", "BY": "375", "BE": "32", "BZ": "501", "BJ": "229", "BM": "1", "BT": "975",
                            "BA": "387", "BW": "267", "BR": "55", "BG": "359", "BO": "591", "BL": "590", "BN": "673", "CC": "61", "CD": "243",
                            "CI": "225", "KH": "855", "CM": "237", "CA": "1", "CV": "238", "KY": "345", "CF": "236", "CH": "41", "CL": "56",
@@ -88,5 +86,12 @@ final class KarhooCountryParser {
     static func getCountry(countryCode: String) -> Country? {
         let all = getCountries()
         return all.first(where: { $0.code == countryCode })
+    }
+    
+    static func getSupportedLocale() -> Locale {
+        let availableLocales = Bundle.main.localizations
+        let deviceLocale = Locale.current.languageCode ?? "en"
+        let locale = availableLocales.contains(deviceLocale) ? deviceLocale : "en"
+        return Locale(identifier: locale)
     }
 }

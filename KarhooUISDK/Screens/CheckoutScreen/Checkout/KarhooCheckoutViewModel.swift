@@ -143,11 +143,17 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
     func getDateScheduledDescription() -> String {
         let date = journeyDetails.scheduledDate ?? Date()
+        
+        if let timezone = journeyDetails.originLocationDetails?.timezone() {
+            dateFormatter.set(timeZone: timezone)
+        }
+        
         let dateFormatted = dateFormatter.display(
             date,
             dateStyle: .long,
             timeStyle: .none
         )
+        
         let weekday = {
             guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
                 return ""
@@ -180,7 +186,14 @@ final class KarhooCheckoutViewModel: ObservableObject {
             }
             return dateFormatter.display(clockTime: date)
         }
-        return journeyDetails.isScheduled ? scheduledTime : UITexts.Generic.now.uppercased()
+        
+        let nowTime = QtaStringFormatter()
+            .qtaString(
+                min: quote.vehicle.qta.lowMinutes,
+                max: quote.vehicle.qta.highMinutes
+            )
+        
+        return journeyDetails.isScheduled ? scheduledTime : nowTime
     }
     
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
