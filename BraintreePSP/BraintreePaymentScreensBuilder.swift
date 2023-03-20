@@ -25,12 +25,18 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
     public init(){}
 
     public func buildAddCardScreen(
+        guestMode: Bool,
         paymentsToken: PaymentSDKToken,
         paymentMethodAdded: ScreenResultCallback<Nonce>?,
         flowItemCallback: ScreenResultCallback<Screen>?
     ) {
         let request = BTDropInRequest()
         request.uiCustomization = getUiCustomization()
+        if guestMode {
+            request.vaultCard = false
+        } else {
+            request.allowVaultCardOverride = true
+        }
         guard let flowItem = BTDropInController(
             authorization: paymentsToken.token,
             request: request,

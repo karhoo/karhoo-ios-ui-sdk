@@ -87,7 +87,9 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func buildBraintreeUI(paymentsToken: PaymentSDKToken) {
+        let isGuest = Karhoo.configuration.authenticationMethod().isGuest()
         paymentScreenBuilder.buildAddCardScreen(
+            guestMode: isGuest,
             paymentsToken: paymentsToken,
             paymentMethodAdded: { [weak self] result in
                 self?.handleBraintreeUICompletion(result)
