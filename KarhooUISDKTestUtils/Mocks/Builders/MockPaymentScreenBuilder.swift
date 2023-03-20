@@ -18,9 +18,12 @@ final public class MockPaymentScreenBuilder: PaymentScreenBuilder {
     public var paymentMethodAddedSet: ScreenResultCallback<Nonce>?
     public var flowItemCallbackSet: ScreenResultCallback<Screen>?
 
-    public func buildAddCardScreen(paymentsToken: PaymentSDKToken,
-                            paymentMethodAdded: ScreenResultCallback<Nonce>?,
-                            flowItemCallback: ScreenResultCallback<Screen>?) {
+    public func buildAddCardScreen(
+        guestMode: Bool,
+        paymentsToken: PaymentSDKToken,
+        paymentMethodAdded: ScreenResultCallback<Nonce>?,
+        flowItemCallback: ScreenResultCallback<Screen>?
+    ) {
         paymentsTokenSet = paymentsToken
         paymentMethodAddedSet = paymentMethodAdded
         flowItemCallbackSet = flowItemCallback
