@@ -143,8 +143,6 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
     func getDateScheduledDescription() -> String {
         let date = journeyDetails.scheduledDate ?? Date()
-        let locale = KarhooCountryParser.getSupportedLocale()
-        dateFormatter.set(locale: locale)
         
         if let timezone = journeyDetails.originLocationDetails?.timezone() {
             dateFormatter.set(timeZone: timezone)
@@ -160,10 +158,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
             guard let weekdayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday else {
                 return ""
             }
-            
-            var calendar = Calendar.current
-            calendar.locale = locale
-            return (calendar.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
+            return (Calendar.current.standaloneWeekdaySymbols[safe: max(weekdayIndex - 1, 0)] ?? "") + ", "
         }()
         return "\(weekday)\(dateFormatted)".uppercased()
     }

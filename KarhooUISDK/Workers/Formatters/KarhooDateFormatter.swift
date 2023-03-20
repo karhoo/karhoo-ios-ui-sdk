@@ -33,7 +33,7 @@ class KarhooDateFormatter: DateFormatterType {
 
     init(
         timeZone: TimeZone = TimeZone.current,
-        locale: Locale = Locale.current
+        locale: Locale = KarhooCountryParser.getSupportedLocale()
     ) {
         self.locale = locale
         self.timeZone = timeZone
