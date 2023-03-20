@@ -11,7 +11,7 @@ import KarhooSDK
 
 public protocol PaymentScreenBuilder {
     func buildAddCardScreen(
-        guestMode: Bool,
+        allowToSaveCard: Bool,
         paymentsToken: PaymentSDKToken,
         paymentMethodAdded: ScreenResultCallback<Nonce>?,
         flowItemCallback: ScreenResultCallback<Screen>?
