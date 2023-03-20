@@ -244,7 +244,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         showQuoteList()
     }
 
-    func scheduleForLaterPressed() {
+    func dataForScheduledRideProvided() {
         showQuoteList()
     }
 

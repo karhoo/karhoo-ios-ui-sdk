@@ -178,7 +178,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             
         // later button
         scheduleButton = MainActionButton(design: .primary)
-        scheduleButton.addTarget(self, action: #selector(scheduleForLaterPressed), for: .touchUpInside)
+        scheduleButton.addTarget(self, action: #selector(dataForScheduledRideProvided), for: .touchUpInside)
         scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
         presenter.isScheduleForLaterEnabledPublisher
             .receive(on: DispatchQueue.main)
@@ -317,7 +317,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     @objc private func scheduleForLaterPressed(_ selector: UIButton) {
         addressBarPresenter.prebookSelected { [weak self] in
-            self?.presenter.scheduleForLaterPressed()
+            self?.presenter.dataForScheduledRideProvided()
         }
     }
 }
