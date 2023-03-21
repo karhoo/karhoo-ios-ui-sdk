@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK
 
 public class BraintreePaymentManager: PaymentManager {
     public init() {}
