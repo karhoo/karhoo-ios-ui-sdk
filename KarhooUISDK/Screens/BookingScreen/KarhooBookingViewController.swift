@@ -17,6 +17,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var cancellables: Set<AnyCancellable> = []
 
     private var addressBar: AddressBarView!
+    private var addressBarPresenter: AddressBarPresenter!
     private var tripAllocationView: KarhooTripAllocationView!
     private var mapView: MapView = KarhooMKMapView()
     private var bottomContainer: UIView!
@@ -109,7 +110,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     private func setupAddressBar() {
-        let presenter = BookingAddressBarPresenter()
+        addressBarPresenter = BookingAddressBarPresenter()
         let addressBarView = KarhooAddressBarView(
             cornerRadious: UIConstants.CornerRadius.large,
             borderLine: true,
@@ -120,8 +121,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             hidePrebookButton: true
         )
 
-        addressBarView.set(presenter: presenter)
-        presenter.load(view: addressBarView)
+        addressBarView.set(presenter: addressBarPresenter)
+        addressBarPresenter.load(view: addressBarView)
         if let journey = journeyInfo {
             KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
         }
@@ -315,7 +316,9 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     @objc private func scheduleForLaterPressed(_ selector: UIButton) {
-        presenter.scheduleForLaterPressed()
+        addressBarPresenter.prebookSelected { [weak self] in
+            self?.presenter.dataForScheduledRideProvided()
+        }
     }
 }
 

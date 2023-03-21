@@ -189,6 +189,8 @@ public struct UIConstants {
 
             /// 95%
             public static let mainActionButtonPressedAffineTransform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+
+            static let routeOnMapEdgeInsets = UIEdgeInsets(top: 150, left: 50, bottom: 50, right: 50)
         }
     }
     

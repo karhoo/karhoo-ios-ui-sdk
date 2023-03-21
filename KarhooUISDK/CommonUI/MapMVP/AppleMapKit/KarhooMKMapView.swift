@@ -235,10 +235,14 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
             for route in unwrappedResponse.routes {
                 self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                let boundingMapRect = route.polyline.boundingMapRect
+                let mapRectWithEdgeInsets = self.mapView.mapRectThatFits(
+                    boundingMapRect,
+                    edgePadding: UIConstants.Dimension.View.routeOnMapEdgeInsets
+                )
+                self.mapView.setVisibleMapRect(mapRectWithEdgeInsets, animated: true)
             }
         }
-        
     }
 
     func removeTripLine() {

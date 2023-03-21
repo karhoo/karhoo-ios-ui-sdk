@@ -78,7 +78,7 @@ protocol BookingPresenter {
 
     func asapRidePressed()
 
-    func scheduleForLaterPressed()
+    func dataForScheduledRideProvided()
 
     func goToTripView(trip: TripInfo)
     
