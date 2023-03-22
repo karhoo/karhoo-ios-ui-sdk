@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import KarhooUISDK // Even if the import may not be required in some configurations, it is needed for SPM linking. Do not remove unless you are sure a new solution allowes SPM-based project/app to be compiled.
 
 public class AdyenPaymentManager: PaymentManager {
     public init() {}
