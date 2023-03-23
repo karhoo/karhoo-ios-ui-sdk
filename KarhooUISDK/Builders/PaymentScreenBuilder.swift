@@ -10,7 +10,10 @@ import Foundation
 import KarhooSDK
 
 public protocol PaymentScreenBuilder {
-    func buildAddCardScreen(paymentsToken: PaymentSDKToken,
-                            paymentMethodAdded: ScreenResultCallback<Nonce>?,
-                            flowItemCallback: ScreenResultCallback<Screen>?)
+    func buildAddCardScreen(
+        allowToSaveCard: Bool,
+        paymentsToken: PaymentSDKToken,
+        paymentMethodAdded: ScreenResultCallback<Nonce>?,
+        flowItemCallback: ScreenResultCallback<Screen>?
+    )
 }
