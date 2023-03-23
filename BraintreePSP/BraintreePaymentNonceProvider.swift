@@ -52,20 +52,29 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             switch result {
             case .success(let sdkToken, _):
                 self?.sdkToken = sdkToken
+                self?.triggerAddCardFlow(
+                    token: sdkToken,
+                    currencyCode: quote.price.currencyCode,
+                    showUpdateCardAlert: false
+                )
             case .failure:
                 self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.getErrorValue())))
                 return
             }
         }
-        triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: false)
     }
 
-    private func triggerAddCardFlow(currencyCode: String, showUpdateCardAlert: Bool) {
+    private func triggerAddCardFlow(
+        token: PaymentSDKToken?,
+        currencyCode: String,
+        showUpdateCardAlert: Bool
+    ) {
         self.cardRegistrationFlow.start(
             cardCurrency: currencyCode,
             amount: 0,
             supplierPartnerId: "",
             showUpdateCardAlert: showUpdateCardAlert,
+            dropInAuthenticationToken: token,
             callback: { [weak self] result in
             switch result {
             case .completed(let addCardResult): self?.handleAddCardResult(addCardResult)
@@ -88,7 +97,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             return
         }
 
-        guard self.sdkToken != nil else {
+        guard let authToken = self.sdkToken else {
             self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             return
         }
@@ -98,6 +107,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         }
 
         threeDSecureProvider.threeDSecureCheck(
+            authToken: authToken,
             nonce: nonce.nonce,
             currencyCode: quote.price.currencyCode,
             paymentAmount: NSDecimalNumber(value: quote.price.highPrice),
@@ -113,7 +123,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             case .failedToInitialisePaymentService:
                 self.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: nil)))
             case .threeDSecureAuthenticationFailed:
-                triggerAddCardFlow(currencyCode: quote.price.currencyCode, showUpdateCardAlert: true)
+                triggerAddCardFlow(token: sdkToken, currencyCode: quote.price.currencyCode, showUpdateCardAlert: true)
             case .success(let threeDSecureNonce):
                 self.callbackResult?(.completed(value: .nonce(nonce: Nonce(nonce: threeDSecureNonce))))
             }

@@ -117,7 +117,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .loading: break
         default:
             stateSubject.send(.loading)
-            submitAuthenticatedBooking()
+            getPaymentNonceAndBook()
         }
     }
 
@@ -126,16 +126,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func setup() {
         loyaltyWorker.setup(using: quote)
         paymentWorker.setup(using: quote)
-    }
-
-    // MARK: - Booking initial methods
-
-    private func submitAuthenticatedBooking() {
-        if paymentWorker.getStoredPaymentNonce() != nil {
-            book()
-        } else {
-            getPaymentNonceAndBook()
-        }
     }
 
     // MARK: - Payment handling methods
@@ -188,6 +178,9 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .nonce:
             book()
         case .threeDSecureCheckFailed:
+            // TODO: move allert here:
+            getPaymentNonceAndBook()
+            
             requestNewPaymentMethod(showRetryAlert: true)
         case .failedToInitialisePaymentService(error: let error):
             stateSubject.send(.failure(error ?? ErrorModel.unknown()))
@@ -223,7 +216,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func handleAddNewPaymentMethod(with result: CardFlowResult) {
         switch result {
         case .didAddPaymentMethod:
-            submitAuthenticatedBooking()
+            book()
         case .didFailWithError(let error):
             stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .cancelledByUser:
@@ -280,9 +273,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     // MARK: - Manage payment-related flow
 
     private func requestNewPaymentMethod(showRetryAlert: Bool = false) {
-        paymentWorker.requestNewPaymentMethod(showRetryAlert: showRetryAlert) { [weak self] result in
-            self?.handleAddNewPaymentMethod(with: result)
-        }
+        getPaymentNonceAndBook()
     }
 
     // MARK: - Booking result handling

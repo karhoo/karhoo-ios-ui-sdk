@@ -40,6 +40,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         amount: Int,
         supplierPartnerId: String,
         showUpdateCardAlert: Bool,
+        dropInAuthenticationToken: PaymentSDKToken?,
         callback: @escaping (OperationResult<CardFlowResult>) -> Void
     ) {
         self.callback = callback
@@ -48,6 +49,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             baseViewController?.showUpdatePaymentCardAlert(
                 updateCardSelected: { [weak self] in
                     self?.startUpdateCardFlow(
+                        token: dropInAuthenticationToken,
                         organisationId: self?.organisationId() ?? "",
                         currencyCode: cardCurrency
                     )
@@ -57,7 +59,11 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                 }
             )
         } else {
-            startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
+            startUpdateCardFlow(
+                token: dropInAuthenticationToken,
+                organisationId: organisationId(),
+                currencyCode: cardCurrency
+            )
         }
     }
 
@@ -70,20 +76,19 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         return ""
     }
 
-    private func startUpdateCardFlow(organisationId: String, currencyCode: String) {
+    private func startUpdateCardFlow(token: PaymentSDKToken?, organisationId: String, currencyCode: String) {
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: currencyCode)
-
-        paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute { [weak self] result in
-            if let token = result.getSuccessValue() {
-                self?.buildBraintreeUI(paymentsToken: token)
-            } else {
-                self?.baseViewController?.showAlert(title: UITexts.Generic.error,
-                                          message: UITexts.Errors.missingPaymentSDKToken,
-                                          error: result.getErrorValue())
-                self?.callback?(.completed(value: .didFailWithError(result.getErrorValue())))
-            }
+        guard let token = token else {
+            // TODO: check if better error exist
+            baseViewController?.showAlert(title: UITexts.Generic.error,
+                                      message: UITexts.Errors.missingPaymentSDKToken,
+                                      error: nil )
+            callback?(.completed(value: .didFailWithError(nil)))
+            return
         }
+        
+        buildBraintreeUI(paymentsToken: token)
     }
 
     private func buildBraintreeUI(paymentsToken: PaymentSDKToken) {

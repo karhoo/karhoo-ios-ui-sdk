@@ -37,41 +37,15 @@ final class BraintreeThreeDSecureProvider: NSObject, ThreeDSecureProvider, BTVie
     }
 
     func threeDSecureCheck(
+        authToken: PaymentSDKToken,
         nonce: String,
         currencyCode: String,
         paymentAmount: NSDecimalNumber,
         callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     ) {
         self.resultCallback = callback
-
-        guard let organisationId = organisationId() else {
-            resultCallback?(.completed(value: .failedToInitialisePaymentService))
-            return
-        }
-        let sdkTokenRequest = PaymentSDKTokenPayload(
-            organisationId: organisationId,
-            currency: currencyCode
-        )
-
-        paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest)
-            .execute(callback: { [weak self] result in
-                switch result {
-                case .success(let token, _):
-                    self?.start3DSecureCheck(authToken: token, nonce: nonce, amount: paymentAmount)
-                case .failure:
-                    callback(.completed(value: .failedToInitialisePaymentService))
-                    return
-                }
-            })
-    }
-
-    private func organisationId() -> String? {
-        if let guestOrg = Karhoo.configuration.authenticationMethod().guestSettings?.organisationId {
-            return guestOrg
-        } else if let userOrg = userService.getCurrentUser()?.organisations.first?.id {
-            return userOrg
-        }
-        return nil
+        
+        start3DSecureCheck(authToken: authToken, nonce: nonce, amount: paymentAmount)
     }
 
     private func start3DSecureCheck(

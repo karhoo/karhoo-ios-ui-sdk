@@ -24,10 +24,13 @@ public protocol ThreeDSecureUtils {
 
 public protocol ThreeDSecureProvider {
 
-    func threeDSecureCheck(nonce: String,
-                           currencyCode: String,
-                           paymentAmount: NSDecimalNumber,
-                           callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void)
+    func threeDSecureCheck(
+        authToken: PaymentSDKToken,
+        nonce: String,
+        currencyCode: String,
+        paymentAmount: NSDecimalNumber,
+        callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
+    )
 
     func set(baseViewController: BaseViewController)
 }

@@ -29,6 +29,7 @@ final class AdyenPaymentNonceProvider: PaymentNonceProvider {
             amount: quote.price.intHighPrice,
             supplierPartnerId: quote.fleet.id,
             showUpdateCardAlert: false,
+            dropInAuthenticationToken: nil,
             callback: { [weak self] cardFlowResult in
                 switch cardFlowResult {
                     case .cancelledByUser: result(.cancelledByUser)
