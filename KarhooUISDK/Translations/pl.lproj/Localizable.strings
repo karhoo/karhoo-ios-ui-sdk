@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Twój kierowca %@ jest na miejscu";
 
-"kh_uisdk_asap_no_coverage_warning" = "Rezerwacje ASAP nie są dostępne pod adresem odbioru.";
+"kh_uisdk_asap_no_coverage_warning" = "Rezerwacje ASAP nie są dostępne dla wybranych adresów";
 
 "kh_uisdk_back" = "Wróć";
 

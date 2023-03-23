@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Votre chauffeur %@ est arrivé";
 
-"kh_uisdk_asap_no_coverage_warning" = "Les réservations ASAP ne sont pas disponibles à votre adresse de prise en charge";
+"kh_uisdk_asap_no_coverage_warning" = "Les réservations ASAP ne sont pas disponibles pour les adresses sélectionnées";
 
 "kh_uisdk_back" = "Retour";
 
@@ -754,7 +754,7 @@
 
 "kh_uisdk_notification_error_ssl_cert_invalid" = "Certificat SSL invalide";
 
-"kh_uisdk_now" = "Maintenant";
+"kh_uisdk_now" = "maintenant";
 
 "kh_uisdk_offer_expired" = "Offre expirée";
 
