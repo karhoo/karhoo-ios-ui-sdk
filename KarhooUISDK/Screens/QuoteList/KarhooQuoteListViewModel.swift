@@ -19,6 +19,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     private var fetchedQuotes: Quotes?
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
+    private var quotesSearchForDetailsInProgress: JourneyDetails?
     private var selectedQuoteOrder: QuoteListSortOrder = .price
     private let quoteSorter: QuoteSorter
     private let quoteFilter: QuoteFilterHandler
@@ -169,6 +170,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         guard let error = error else {
             return
         }
+        quotesSearchForDetailsInProgress = nil
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
@@ -225,6 +227,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
 
         switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, newQuotes.status) {
         case (true, _, _):
+            quotesSearchForDetailsInProgress = nil
             let journeyDetails = journeyDetailsManager.getJourneyDetails()
             switch journeyDetails?.isScheduled {
             case false:
@@ -233,8 +236,10 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
                 onStateUpdated?(.empty(reason: .noResults))
             }
         case (_, true, _):
+            quotesSearchForDetailsInProgress = nil
             onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
+            quotesSearchForDetailsInProgress = nil
             onStateUpdated?(.fetched(quotes: sortedQuotes))
         case (_, _, .progressing) where newQuotes.all.isEmpty:
             onStateUpdated?(.loading)
@@ -294,16 +299,23 @@ extension KarhooQuoteListViewModel: JourneyDetailsObserver {
             dateOfListReceiving = Date()
         }
         isSortingAvailable = !details.isScheduled
-        onStateUpdated?(.loading)
-        let quoteSearch = QuoteSearch(origin: origin,
-                                      destination: destination,
-                                      dateScheduled: details.scheduledDate)
+
+        let quoteSearch = QuoteSearch(
+            origin: origin,
+            destination: destination,
+            dateScheduled: details.scheduledDate
+        )
+        guard quotesSearchForDetailsInProgress != details else {
+            // quotes for selected journey details already been requested
+            return
+        }
         quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
             guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
             self?.handleResult(result: result, journeyDetails: details)
         }
         onStateUpdated?(.loading)
         fetchedQuotes = nil
+        quotesSearchForDetailsInProgress = details
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
         refreshSubscription()
     }

@@ -100,8 +100,8 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     }
 
     private func handleLoadingState() {
-        guard viewIsOnScreen else { return }
         tableView.backgroundView = nil
+        guard viewIsOnScreen else { return }
         tableView.reloadData()
     }
 
