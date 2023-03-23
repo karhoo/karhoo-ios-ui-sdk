@@ -24,9 +24,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     // MARK: - Header views
 
-    private lazy var headerContainerView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
     private lazy var tableHeaderStackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
@@ -166,9 +163,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         ])
         legalDisclaimerContainer.addArrangedSubview(legalDisclaimerLabel)
         tableHeaderStackView.addArrangedSubviews(headerViews)
-        headerContainerView.addSubview(tableHeaderStackView)
-        view.addSubview(headerContainerView)
-        tableViewCoordinator.assignHeaderView(headerContainerView)
+        tableViewCoordinator.assignHeaderView(tableHeaderStackView)
     }
 
     private func setupLayout() {
@@ -184,7 +179,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             right: view.rightAnchor,
             height: UIConstants.Dimension.View.loadingBarHeight
         )
-        tableHeaderStackView.anchorToSuperview()
         legalDisclaimerLabel.anchorToSuperview()
     }
     

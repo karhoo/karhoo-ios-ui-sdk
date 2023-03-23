@@ -28,8 +28,6 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
         $0.accessibilityIdentifier = "table_view"
         $0.register(QuoteCell.self, forCellReuseIdentifier: String(describing: QuoteCell.self))
     }
-
-    private weak var headerView: UIView?
     
     // MARK: - Lifecycle
 
@@ -140,26 +138,22 @@ class KarhooQuoteListTableViewController: UIViewController, BaseViewController, 
     // MARK: - Scene Input methods
 
     func assignHeaderView(_ view: UIView) {
-        headerView = view
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(view)
+        view.anchorToSuperview(
+            paddingTop: UIConstants.Spacing.medium,
+            paddingLeading: UIConstants.Spacing.medium,
+            paddingTrailing: UIConstants.Spacing.medium
+        )
+        tableView.tableHeaderView = container
+        container.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
     }
 }
 
     // MARK: - TableView delegate & data source
 extension KarhooQuoteListTableViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView else { return nil }
-        let view = UIView()
-        view.addSubview(headerView)
-        headerView.anchorToSuperview(
-            paddingTop: UIConstants.Spacing.medium,
-            paddingLeading: UIConstants.Spacing.medium,
-            paddingTrailing: UIConstants.Spacing.medium,
-            paddingBottom: -UIConstants.Spacing.xSmall
-        )
-        view.layoutIfNeeded()
-        return view
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         getQuotes().count
