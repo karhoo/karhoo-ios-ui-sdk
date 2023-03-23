@@ -72,9 +72,11 @@ final class KarhooCoverageCheckWorker: CoverageCheckWorker {
         and longitude: String,
         completion: @escaping (Result<QuoteCoverage>) -> Void
     ) {
-        let latitude = String(format: "%.4f", latitude)
-        let longitude = String(format: "%.4f", longitude)
-        let cacheKey = "\(latitude),\(longitude)"
+        guard let cacheKey = getCacheKey(for: latitude, and: longitude) else {
+            assertionFailure()
+            completion(.success(result: .init(coverage: true)))
+            return
+        }
 
         if let cachedResult = coverageCache[cacheKey] {
             // Coordiantes already checked - stored result passed as a completion
@@ -98,5 +100,18 @@ final class KarhooCoverageCheckWorker: CoverageCheckWorker {
             }
             completion(result)
         }
+    }
+
+    private func getCacheKey(
+        for latitude: String,
+        and longitude: String
+    ) -> String? {
+        guard
+            let doubleLatitude = Double(latitude.replacingOccurrences(of: ",", with: ".")),
+            let doubleLongitude = Double(longitude.replacingOccurrences(of: ",", with: "."))
+        else {
+            return ""
+        }
+        return "\(String(format: "%.4f", doubleLatitude)), \(String(format: "%.4f", doubleLongitude))"
     }
 }
