@@ -12,7 +12,6 @@ import KarhooUISDK // Even if the import may not be required in some configurati
 
 public class BraintreePaymentManager: PaymentManager {
     public init() {}
-    public let threeDSecureProvider: ThreeDSecureProvider? = BraintreeThreeDSecureProvider()
     public let cardFlow: CardRegistrationFlow = BraintreeCardRegistrationFlow()
     public let nonceProvider: PaymentNonceProvider = BraintreePaymentNonceProvider()
     public func getMetaWithUpdateTripIdIfRequired(meta:[String: Any], nonce: String) -> [String: Any] {

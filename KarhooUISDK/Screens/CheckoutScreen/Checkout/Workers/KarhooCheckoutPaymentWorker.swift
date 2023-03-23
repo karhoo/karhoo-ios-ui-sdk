@@ -24,8 +24,6 @@ protocol CheckoutPaymentWorker: AnyObject {
 final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
 
     private var quote: Quote!
-    private let threeDSecureProvider: ThreeDSecureProvider?
-    private var cardRegistrationFlow: CardRegistrationFlow
     private let paymentNonceProvider: PaymentNonceProvider
     private let userService: UserService
     private let analytics: Analytics
@@ -35,14 +33,10 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
     private var addCardResultCompletion: ((CardFlowResult) -> Void)?
 
     init(
-        threeDSecureProvider: ThreeDSecureProvider? = PaymentFactory().getThreeDSecureProvider(),
-        cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         userService: UserService = Karhoo.getUserService(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.threeDSecureProvider = threeDSecureProvider
-        self.cardRegistrationFlow = cardRegistrationFlow
         self.paymentNonceProvider = paymentNonceProvider
         self.userService = userService
         self.analytics = analytics

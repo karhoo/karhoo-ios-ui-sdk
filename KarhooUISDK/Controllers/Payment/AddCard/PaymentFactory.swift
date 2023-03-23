@@ -22,15 +22,7 @@ final class PaymentFactory {
         self.sdkConfiguration = sdkConfiguration
     }
 
-    func getCardFlow() -> CardRegistrationFlow {
-        sdkConfiguration.paymentManager.cardFlow
-    }
-
     func nonceProvider() -> PaymentNonceProvider {
         sdkConfiguration.paymentManager.nonceProvider
-    }
-    
-    func getThreeDSecureProvider() -> ThreeDSecureProvider? {
-        sdkConfiguration.paymentManager.threeDSecureProvider
     }
 }

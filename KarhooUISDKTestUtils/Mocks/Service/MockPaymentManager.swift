@@ -55,7 +55,7 @@ public class CardRegistrationFlowMock: CardRegistrationFlow {
     }
     
     public var startCalled = false
-    public func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
+    public func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, dropInAuthenticationToken: KarhooSDK.PaymentSDKToken?, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
         startCalled = true
     }
 }
