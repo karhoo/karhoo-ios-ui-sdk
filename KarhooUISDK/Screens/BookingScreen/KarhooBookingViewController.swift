@@ -39,7 +39,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
-        
         self.setUpView()
     }
 
@@ -51,6 +50,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         super.viewDidLoad()
         forceLightMode()
         setupMapView(reverseGeolocate: journeyInfo == nil)
+        mapView.set(userMarkerVisible: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +58,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         presenter.viewWillAppear()
         sideMenu?.hideMenu()
         setupNavigationBar()
-        mapView.set(userMarkerVisible: true)
     }
     
     private func setUpView() {
@@ -123,9 +122,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
         addressBarView.set(presenter: addressBarPresenter)
         addressBarPresenter.load(view: addressBarView)
-        if let journey = journeyInfo {
-            KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: journey)
-        }
         
         addressBar = addressBarView
     }
@@ -376,23 +372,42 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         self.locationService = locationService
     }
     
-    public func buildBookingScreen(journeyInfo: JourneyInfo? = nil,
-                                   passengerDetails: PassengerDetails? = nil,
-                                   callback: ScreenResultCallback<BookingScreenResult>?) -> Screen {
+    public func buildBookingScreen(
+        journeyInfo: JourneyInfo? = nil,
+        passengerDetails: PassengerDetails? = nil,
+        callback: ScreenResultCallback<BookingScreenResult>?
+    ) -> Screen {
         PassengerInfo.shared.set(details: passengerDetails)
-
-        var validatedJourneyInfo: JourneyInfo?
-
-        if let date = journeyInfo?.date {
-            validatedJourneyInfo =  Date(timeIntervalSinceNow: 0).compare(date) ==
-                .orderedDescending ? nil : journeyInfo
-        } else {
-            validatedJourneyInfo = journeyInfo
+        
+        var validatedJourneyInfo: JourneyInfo? {
+            guard let origin = journeyInfo?.origin else {
+                return nil
+            }
+            
+            var isDateAllowed: Bool {
+                guard let injectedDate = journeyInfo?.date else {
+                    return false
+                }
+                return injectedDate >= Date()
+            }
+            
+            return JourneyInfo(
+                origin: origin,
+                destination: journeyInfo?.destination,
+                date: isDateAllowed ? journeyInfo?.date : nil
+            )
         }
+        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
 
         let router = KarhooBookingRouter()
-        let bookingPresenter = KarhooBookingPresenter(router: router, callback: callback)
-        let bookingViewController = KarhooBookingViewController(presenter: bookingPresenter, journeyInfo: validatedJourneyInfo)
+        let bookingPresenter = KarhooBookingPresenter(
+            router: router,
+            callback: callback
+        )
+        let bookingViewController = KarhooBookingViewController(
+            presenter: bookingPresenter,
+            journeyInfo: validatedJourneyInfo
+        )
         router.viewController = bookingViewController
         router.checkoutScreenBuilder = UISDKScreenRouting.default.checkout()
 

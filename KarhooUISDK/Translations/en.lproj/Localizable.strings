@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Your %@ driver has arrived";
 
-"kh_uisdk_asap_no_coverage_warning" = "ASAP bookings are not available at your pick up address";
+"kh_uisdk_asap_no_coverage_warning" = "ASAP bookings are not available for the selected addresses";
 
 "kh_uisdk_back" = "Back";
 
