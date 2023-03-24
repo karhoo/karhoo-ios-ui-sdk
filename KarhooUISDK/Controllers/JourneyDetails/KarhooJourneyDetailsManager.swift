@@ -77,6 +77,21 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
         return status
     }
 
+    private func set(
+        pickup: LocationInfo,
+        destination: LocationInfo?,
+        prebookDate: Date?
+    ) {
+        if status == nil {
+            status = JourneyDetails(originLocationDetails: pickup)
+        } else {
+            status?.originLocationDetails = pickup
+        }
+        status?.destinationLocationDetails = destination
+        status?.scheduledDate = prebookDate
+        broadcastState()
+    }
+
     private func broadcastState() {
         broadcaster.broadcast { [weak self] (listener: AnyObject) in
             let listener = listener as? JourneyDetailsObserver
@@ -89,19 +104,27 @@ public final class KarhooJourneyDetailsManager: JourneyDetailsManager {
             return
         }
 
-        addressService.reverseGeocode(position: desiredPickup.toPosition()).execute(callback: { [weak self] result in
-            if let newPickup = result.getSuccessValue() {
-                self?.set(pickup: newPickup)
-                self?.set(prebookDate: journeyInfo?.date)
-
-                if let destination = journeyInfo?.destination {
-                    self?.addressService.reverseGeocode(position: destination.toPosition()).execute(callback: { [weak self] result in
-                        if let newDestination = result.getSuccessValue() {
-                            self?.set(destination: newDestination)
-                        }
-                    })
-                }
+        addressService.reverseGeocode(position: desiredPickup.toPosition()).execute { [weak self] result in
+            guard let newPickup = result.getSuccessValue() else {
+                return
             }
-        })
+            if let destination = journeyInfo?.destination {
+                self?.addressService.reverseGeocode(
+                    position: destination.toPosition()
+                ).execute { [weak self] result in
+                    self?.set(
+                        pickup: newPickup,
+                        destination: result.getSuccessValue(),
+                        prebookDate: journeyInfo?.date
+                    )
+                }
+            } else {
+                self?.set(
+                    pickup: newPickup,
+                    destination: nil,
+                    prebookDate: journeyInfo?.date
+                )
+            }
+        }
     }
 }
