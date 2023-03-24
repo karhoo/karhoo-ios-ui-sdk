@@ -388,7 +388,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
                 guard let injectedDate = journeyInfo?.date else {
                     return false
                 }
-                return injectedDate >= Date()
+                return injectedDate >= Date().addingTimeInterval(60*60)
             }
             
             return JourneyInfo(
