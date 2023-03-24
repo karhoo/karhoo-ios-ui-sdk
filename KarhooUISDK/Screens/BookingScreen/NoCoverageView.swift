@@ -24,7 +24,18 @@ final class NoCoverageView: UIView {
         label.font = KarhooUI.fonts.captionBold()
         label.textColor = KarhooUI.colors.text
         label.textAlignment = .left
+        label.setContentCompressionResistancePriority(.required, for: .vertical)
+        label.text = UITexts.Booking.noCoverageForAsapRide
         return label
+    }()
+
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = UIConstants.Spacing.small
+        return stackView
     }()
 
     override init(frame: CGRect) {
@@ -40,27 +51,25 @@ final class NoCoverageView: UIView {
     private func setupView() {
         backgroundColor = KarhooUI.colors.background4
         layer.cornerRadius = UIConstants.CornerRadius.small
+        clipsToBounds = true
         setupConstraints()
-        textLabel.text = UITexts.Booking.noCoverageForAsapRide
     }
 
     private func setupConstraints() {
-        addSubview(iconImageView)
-        addSubview(textLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(iconImageView)
+        stackView.addArrangedSubview(textLabel)
 
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.Spacing.medium),
             iconImageView.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Icon.medium),
             iconImageView.widthAnchor.constraint(equalToConstant: UIConstants.Dimension.Icon.medium),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-            textLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: UIConstants.Spacing.small),
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.Spacing.small),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.Spacing.small),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.Spacing.small)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.Spacing.medium),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.Spacing.small),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.Spacing.small),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.Spacing.small)
         ])
     }
 }
