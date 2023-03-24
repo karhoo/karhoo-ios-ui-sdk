@@ -178,9 +178,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .nonce:
             book()
         case .threeDSecureCheckFailed:
-            // TODO: move allert here:
-            getPaymentNonceAndBook()
-            
             requestNewPaymentMethod(showRetryAlert: true)
         case .failedToInitialisePaymentService(error: let error):
             stateSubject.send(.failure(error ?? ErrorModel.unknown()))
@@ -204,7 +201,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
                 stateSubject.send(.failure(ErrorModel(message: UITexts.PaymentError.noDetailsMessage, code: "")))
             case .threeDSecureAuthenticationFailed:
                 stateSubject.send(.idle)
-                requestNewPaymentMethod()
+                handleGetPaymentNonceResult(.threeDSecureCheckFailed)
             case .success:
                 book()
             }
@@ -272,8 +269,21 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     // MARK: - Manage payment-related flow
 
-    private func requestNewPaymentMethod(showRetryAlert: Bool = false) {
-        getPaymentNonceAndBook()
+    private func requestNewPaymentMethod(showRetryAlert: Bool) {
+        let baseViewController = UIApplication.shared.topMostViewController() as? BaseViewController
+        if showRetryAlert {
+            baseViewController?.showUpdatePaymentCardAlert(
+                updateCardSelected: { [weak self] in
+                    self?.getPaymentNonceAndBook()
+                },
+                cancelSelected: { [weak self] in
+                    self?.handleGetPaymentNonceResult(.cancelledByUser)
+                }
+            )
+        } else {
+            getPaymentNonceAndBook()
+        }
+        
     }
 
     // MARK: - Booking result handling
