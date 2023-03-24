@@ -32,7 +32,6 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
     ) {
         let request = BTDropInRequest()
         request.uiCustomization = getUiCustomization()
-        request.cardholderNameSetting = .required
         if allowToSaveCard {
             request.allowVaultCardOverride = true
         } else {
