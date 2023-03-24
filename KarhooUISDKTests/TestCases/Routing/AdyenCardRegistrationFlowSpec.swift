@@ -68,6 +68,7 @@ final class AdyenCardRegistrationFlowSpec: KarhooTestCase {
                          amount: amount,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         
         let result = KarhooSDK.DecodableData(data: Data())

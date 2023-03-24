@@ -39,10 +39,13 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
       * Then: Payment service should get sdk token
       */
     func testGetSDKToken() {
-        testObject.threeDSecureCheck(nonce: "",
-                                     currencyCode: currencyCode,
-                                     paymentAmount: 10.0,
-                                     callback: {_ in})
+        testObject.threeDSecureCheck(
+            authToken: PaymentSDKToken(token: ""),
+            nonce: "",
+            currencyCode: currencyCode,
+            paymentAmount: 10.0,
+            callback: {_ in}
+        )
 
         XCTAssertTrue(mockPaymentService.initialisePaymentSDKCalled)
     }
@@ -54,13 +57,15 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
      */
     func testGetSDKTokenFails() {
         let error = TestUtil.getRandomError()
-        testObject.threeDSecureCheck(nonce: "",
-                                     currencyCode: currencyCode,
-                                     paymentAmount: 10.0,
-                                     callback: { _ in
-                                        self.callbackExpectation.fulfill()
-                                        
-        })
+        testObject.threeDSecureCheck(
+            authToken: PaymentSDKToken(token: ""),
+            nonce: "",
+            currencyCode: currencyCode,
+            paymentAmount: 10.0,
+            callback: { _ in
+                self.callbackExpectation.fulfill()
+            }
+        )
 
         mockPaymentService.paymentSDKTokenCall.triggerFailure(error)
         self.wait(for: [callbackExpectation], timeout: 1)
@@ -72,12 +77,15 @@ final class BraintreeThreeDSecureProviderSpec: KarhooTestCase {
      * Then: Callback should not be called
      */
     func testGetSDKTokenSuccess() {
-        testObject.threeDSecureCheck(nonce: "",
-                                     currencyCode: currencyCode,
-                                     paymentAmount: 10.0,
-                                     callback: { _ in
-                                        XCTFail("not expecting callback")
-        })
+        testObject.threeDSecureCheck(
+            authToken: PaymentSDKToken(token: ""),
+            nonce: "",
+            currencyCode: currencyCode,
+            paymentAmount: 10.0,
+            callback: { _ in
+                XCTFail("not expecting callback")
+            }
+        )
 
         mockPaymentService.paymentSDKTokenCall.triggerSuccess(PaymentSDKToken(token: "some"))
     }

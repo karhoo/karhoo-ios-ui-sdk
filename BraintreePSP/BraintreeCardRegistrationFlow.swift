@@ -79,16 +79,17 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private func startUpdateCardFlow(token: PaymentSDKToken?, organisationId: String, currencyCode: String) {
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: currencyCode)
-        guard let token = token else {
+        if let token = token {
+            buildBraintreeUI(paymentsToken: token)
+        } else {
             // TODO: check if better error exist
-            baseViewController?.showAlert(title: UITexts.Generic.error,
-                                      message: UITexts.Errors.missingPaymentSDKToken,
-                                      error: nil )
+            baseViewController?.showAlert(
+                title: UITexts.Generic.error,
+                message: UITexts.Errors.missingPaymentSDKToken,
+                error: nil
+            )
             callback?(.completed(value: .didFailWithError(nil)))
-            return
         }
-        
-        buildBraintreeUI(paymentsToken: token)
     }
 
     private func buildBraintreeUI(paymentsToken: PaymentSDKToken) {
@@ -130,7 +131,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
 
             dismissBraintreeUI()
             analyticsService.send(eventName: .userCardRegistered)
-            self.callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: braintreePaymentNonce)))
+            callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: braintreePaymentNonce)))
         }
     }
 

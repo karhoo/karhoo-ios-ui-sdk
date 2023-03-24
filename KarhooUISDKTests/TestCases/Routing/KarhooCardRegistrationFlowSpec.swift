@@ -76,6 +76,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectCancelOnUpdateCardAlert()
 
@@ -99,6 +100,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: false,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
 
         XCTAssertFalse(mockBaseViewController.showPaymentPreAuthAlertCalled)
@@ -122,6 +124,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         let error = TestUtil.getRandomError()
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
@@ -272,6 +275,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
 
