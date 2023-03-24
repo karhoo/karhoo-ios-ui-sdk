@@ -174,6 +174,7 @@ extension KarhooBookingPresenter: JourneyDetailsObserver {
         else {
             isAsapEnabledPublisher.send(false)
             isScheduleForLaterEnabledPublisher.send(false)
+            hasCoverageInTheAreaPublisher.send(nil)
             return
         }
         checkCoverage(using: details)

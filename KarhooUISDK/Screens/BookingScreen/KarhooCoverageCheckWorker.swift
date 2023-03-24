@@ -48,23 +48,24 @@ final class KarhooCoverageCheckWorker: CoverageCheckWorker {
                 }
                 switch result.getSuccessValue()?.coverage {
                 case true:
-                    completion(true)
+                    completion(Bool.random())
+//                    completion(true)
                 case false:
                     // Additional, optional check for destination coordinates coverage
                     self.getCoverage(
                         for: destination.position.latitude.description,
                         and: destination.position.longitude.description,
-                        completion: {
-                            completion($0.getSuccessValue()?.coverage ?? true)
+                        completion: { _ in
+                            completion(Bool.random())
+//                            completion($0.getSuccessValue()?.coverage ?? true)
                         }
                     )
                 default:
                     // Coverage check error. `true` used just to avoid not needed flow blocking
-                    completion(true)
+                    completion(Bool.random())
                 }
             }
         )
-        
     }
 
     private func getCoverage(

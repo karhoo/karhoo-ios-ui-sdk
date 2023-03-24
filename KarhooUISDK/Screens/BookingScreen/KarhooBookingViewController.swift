@@ -19,6 +19,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private var addressBar: AddressBarView!
     private var addressBarPresenter: AddressBarPresenter!
     private var tripAllocationView: KarhooTripAllocationView!
+    private var stackView: UIStackView!
     private var mapView: MapView = KarhooMKMapView()
     private var bottomContainer: UIView!
     private var noCoverageView: NoCoverageView!
@@ -59,25 +60,25 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         sideMenu?.hideMenu()
         setupNavigationBar()
     }
-    
+
     private func setUpView() {
         presenter.load(view: self)
         edgesForExtendedLayout = []
         mapView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubview(mapView)
+        stackView = UIStackView().then {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.spacing = 0
+            $0.axis = .vertical
+        }
+        view.addSubview(stackView)
+        stackView.anchorToSuperview()
+        stackView.addArrangedSubview(mapView)
+        
         setupBottomContainer()
-
-        NSLayoutConstraint.activate([
-            mapView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            mapView.topAnchor.constraint(equalTo: view.topAnchor),
-            mapView.bottomAnchor.constraint(equalTo: bottomContainer.topAnchor),
-            mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-
         setupAddressBar()
         
-        view.insertSubview(addressBar, aboveSubview: mapView)
+        view.insertSubview(addressBar, aboveSubview: stackView)
 
         addressBar.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
         addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
@@ -146,42 +147,23 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         bottomContainer = UIView()
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
         bottomContainer.backgroundColor = KarhooUI.colors.white
-        view.addSubview(bottomContainer)
+        bottomContainer.clipsToBounds = true
+        stackView.addArrangedSubview(bottomContainer)
+
         bottomContainer.heightAnchor.constraint(equalToConstant: 100).then { $0.priority = .defaultLow }.isActive = true
-        bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
         noCoverageView = NoCoverageView()
         noCoverageView.isHidden = true
-        
-        presenter.hasCoverageInTheAreaPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] hasCoverage in
-                self?.setCoverageView(hasCoverage)
-            }.store(in: &cancellables)
         
         // asap button
         asapButton = MainActionButton(design: .secondary)
         asapButton.addTarget(self, action: #selector(asapRidePressed), for: .touchUpInside)
         asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
-        presenter.isAsapEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isEnabled in
-                self?.asapButton.setEnabled(isEnabled)
-            }
-            .store(in: &cancellables)
-            
+
         // later button
         scheduleButton = MainActionButton(design: .primary)
         scheduleButton.addTarget(self, action: #selector(scheduleForLaterPressed), for: .touchUpInside)
         scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
-        presenter.isScheduleForLaterEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isEnabled in
-                self?.scheduleButton.setEnabled(isEnabled)
-            }
-            .store(in: &cancellables)
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
@@ -201,6 +183,26 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         verticalStackView.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: UIConstants.Spacing.standard).isActive = true
         verticalStackView.trailingAnchor.constraint(equalTo: bottomContainer.trailingAnchor, constant: -UIConstants.Spacing.standard).isActive = true
         verticalStackView.bottomAnchor.constraint(equalTo: bottomContainer.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.Spacing.standard).isActive = true
+
+        presenter.isAsapEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isAsapEnabled in
+                self?.asapButton.setEnabled(isAsapEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
+
+        presenter.isScheduleForLaterEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isScheduleForLaterEnabled in
+                self?.scheduleButton.setEnabled(isScheduleForLaterEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
+        
+        presenter.hasCoverageInTheAreaPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] hasCoverage in
+                self?.setCoverageView(hasCoverage)
+            }.store(in: &cancellables)
     }
 
     func reset() {
@@ -268,29 +270,19 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         showAsOverlay(item: alertController, animated: true)
     }
 
+    private func updateBottomContainterVisiblity() {
+        let shouldShow = presenter.isAsapEnabledPublisher.value ||
+        presenter.isScheduleForLaterEnabledPublisher.value ||
+        presenter.hasCoverageInTheAreaPublisher.value == false
+        
+        guard shouldShow != !bottomContainer.isHidden else {
+            return
+        }
+        bottomContainer.isHidden = !shouldShow
+    }
+
     private func setCoverageView(_ hasCoverage: Bool?) {
-        func setCoverageView(isVisible: Bool) {
-            let targetAlpha: CGFloat = isVisible ? UIConstants.Alpha.enabled : UIConstants.Alpha.hidden
-            UIView.animate(withDuration: UIConstants.Duration.short, delay: 0, animations: {
-                self.noCoverageView.isHidden = !isVisible
-                self.noCoverageView.alpha = targetAlpha
-                self.bottomContainer.layoutIfNeeded()
-            })
-        }
-
-        // check if there is any coverage response
-        guard let hasCoverage else {
-            setCoverageView(isVisible: false)
-            return
-        }
-        // check if coverage information is alredy up to date
-        let shouldBeVisible = !hasCoverage
-        let isCurrentlyVisible = !noCoverageView.isHidden
-        guard shouldBeVisible != isCurrentlyVisible else {
-            return
-        }
-
-        setCoverageView(isVisible: !hasCoverage)
+        noCoverageView.isHidden = hasCoverage ?? true
     }
 
     @objc
