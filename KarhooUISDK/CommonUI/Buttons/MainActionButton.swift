@@ -68,7 +68,7 @@ class MainActionButton: UIButton {
         titleLabel?.minimumScaleFactor = 0.5
         titleLabel?.numberOfLines = 2
         titleLabel?.textAlignment = .center
-        titleLabel?.font = KarhooUI.fonts.subtitleBold()
+        titleLabel?.font = KarhooUI.fonts.headerBold()
         setTitleColor(design.fontColor, for: .normal)
 
         addTouchAnimation()

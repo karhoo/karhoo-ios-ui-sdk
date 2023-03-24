@@ -15,10 +15,12 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     // MARK: - Properties
 
     private let journeyDetailsManager: JourneyDetailsManager
+    private let quoteValidityWorker: QuoteValidityWorker
     private let quoteService: QuoteService
     private var fetchedQuotes: Quotes?
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
+    private var quotesSearchForDetailsInProgress: JourneyDetails?
     private var selectedQuoteOrder: QuoteListSortOrder = .price
     private let quoteSorter: QuoteSorter
     private let quoteFilter: QuoteFilterHandler
@@ -39,6 +41,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         journeyDetails: JourneyDetails? = nil,
         router: QuoteListRouter,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
+        quoteValidityWorker: QuoteValidityWorker = KarhooQuoteValidityWorker(),
         quoteService: QuoteService = Karhoo.getQuoteService(),
         quoteSorter: QuoteSorter = KarhooQuoteSorter(),
         quoteFilter: QuoteFilterHandler = KarhooQuoteFilterHandler(),
@@ -47,6 +50,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     ) {
         self.router = router
         self.journeyDetailsManager = journeyDetailsManager
+        self.quoteValidityWorker = quoteValidityWorker
         self.quoteService = quoteService
         self.quoteSorter = quoteSorter
         self.quoteFilter = quoteFilter
@@ -76,6 +80,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         }
         analytics.quoteListOpened(journeyDetails)
         if shouldReloadQuotes() {
+            quotesSearchForDetailsInProgress = nil
             journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
         }
     }
@@ -149,6 +154,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         if notification.name == UIApplication.didBecomeActiveNotification {
             isViewVisible = true
             if shouldReloadQuotes() {
+                quotesSearchForDetailsInProgress = nil
                 journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
             }
         } else if notification.name == UIApplication.willResignActiveNotification {
@@ -157,6 +163,8 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     }
 
     private func quoteSearchSuccessResult(_ quotes: Quotes, journeyDetails: JourneyDetails) {
+        guard quotesSearchForDetailsInProgress == journeyDetails else { return }
+
         setExpirationDates(of: quotes)
 
         if journeyDetails.isScheduled {
@@ -169,6 +177,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         guard let error = error else {
             return
         }
+        quotesSearchForDetailsInProgress = nil
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
@@ -179,27 +188,81 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         default: break
         }
     }
-    
-    private func handleQuotePolling() {
-        guard let quotesValidity = fetchedQuotes?.validity else {
-            assertionFailure()
+
+    private func scheduleQuotesRefresh() {
+        quoteValidityWorker.invalidate()
+        guard let sampleQuote = fetchedQuotes?.all.first else {
             return
         }
-        let deadline = DispatchTime.now() + DispatchTimeInterval.seconds(quotesValidity)
-        dateOfListReceiving = Date().addingTimeInterval(Double(quotesValidity))
-        DispatchQueue.main.asyncAfter(deadline: deadline) {[weak self] in
-            if self?.isViewVisible == true {
-                self?.refreshSubscription()
-            } else {
-                self?.dateOfListReceiving = nil
+        dateOfListReceiving = sampleQuote.quoteExpirationDate
+        quoteValidityWorker.setQuoteValidityDeadline(
+            sampleQuote,
+            deadlineCompletion: { [weak self] in
+                if self?.isViewVisible == true {
+                    self?.getQuotes()
+                } else {
+                    self?.dateOfListReceiving = nil
+                }
             }
-        }
+        )
     }
     
-    private func handleQuoteStatus() {
-        guard fetchedQuotes?.status == .completed else { return }
+    private func getQuotes() {
+        getQuotes(using: journeyDetailsManager.getJourneyDetails())
+    }
+
+    private func getQuotes(using details: JourneyDetails?) {
+        guard let details = details else {
+            return
+        }
+        guard
+            let destination = details.destinationLocationDetails,
+            let origin = details.originLocationDetails
+        else {
+            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
+            return
+        }
+        if dateOfListReceiving == nil {
+            dateOfListReceiving = Date()
+        }
+        isSortingAvailable = !details.isScheduled
+
+        let quoteSearch = QuoteSearch(
+            origin: origin,
+            destination: destination,
+            dateScheduled: details.scheduledDate
+        )
+        guard quotesSearchForDetailsInProgress != details else {
+            // quotes for selected journey details already been requested
+            return
+        }
+
         quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        handleQuotePolling()
+        quotesObserver = nil
+        quoteSearchObservable = nil
+
+        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
+            guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
+            self?.handleResult(result: result, journeyDetails: details)
+        }
+        onStateUpdated?(.loading)
+        fetchedQuotes = nil
+        quotesSearchForDetailsInProgress = details
+        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
+        quoteSearchObservable?.subscribe(observer: quotesObserver)
+    }
+
+    private func handleQuoteStatus() {
+        guard
+            let status = fetchedQuotes?.status,
+            status == .completed || status == .progressing
+        else {
+            return
+        }
+        if fetchedQuotes?.status == .completed {
+            quoteSearchObservable?.unsubscribe(observer: quotesObserver)
+        }
+        scheduleQuotesRefresh()
     }
 
     private func setExpirationDates(of quotes: Quotes) {
@@ -225,6 +288,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
 
         switch (noQuotesForTimeAndArea, noQuotesForSelectedFilters, newQuotes.status) {
         case (true, _, _):
+            quotesSearchForDetailsInProgress = nil
             let journeyDetails = journeyDetailsManager.getJourneyDetails()
             switch journeyDetails?.isScheduled {
             case false:
@@ -233,8 +297,10 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
                 onStateUpdated?(.empty(reason: .noResults))
             }
         case (_, true, _):
+            quotesSearchForDetailsInProgress = nil
             onStateUpdated?(.empty(reason: .noQuotesAfterFiltering))
         case (_, _, .completed):
+            quotesSearchForDetailsInProgress = nil
             onStateUpdated?(.fetched(quotes: sortedQuotes))
         case (_, _, .progressing) where newQuotes.all.isEmpty:
             onStateUpdated?(.loading)
@@ -255,11 +321,6 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             break
         }
     }
-    
-    private func refreshSubscription() {
-        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        quoteSearchObservable?.subscribe(observer: quotesObserver)
-    }
 
     private func reportHowManyQuotesHasBeenShown() {
         guard
@@ -279,32 +340,6 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
 extension KarhooQuoteListViewModel: JourneyDetailsObserver {
 
     func journeyDetailsChanged(details: JourneyDetails?) {
-        quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-        quotesObserver = nil
-        quoteSearchObservable = nil
-        guard let details = details else {
-            return
-        }
-        guard let destination = details.destinationLocationDetails,
-            let origin = details.originLocationDetails else {
-            onStateUpdated?(.empty(reason: .destinationOrOriginEmpty))
-            return
-        }
-        if dateOfListReceiving == nil {
-            dateOfListReceiving = Date()
-        }
-        isSortingAvailable = !details.isScheduled
-        onStateUpdated?(.loading)
-        let quoteSearch = QuoteSearch(origin: origin,
-                                      destination: destination,
-                                      dateScheduled: details.scheduledDate)
-        quotesObserver = KarhooSDK.Observer<Quotes> { [weak self] result in
-            guard details == self?.journeyDetailsManager.getJourneyDetails() else { return }
-            self?.handleResult(result: result, journeyDetails: details)
-        }
-        onStateUpdated?(.loading)
-        fetchedQuotes = nil
-        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
-        refreshSubscription()
+        getQuotes(using: details)
     }
 }
