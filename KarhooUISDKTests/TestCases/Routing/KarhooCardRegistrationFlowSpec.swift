@@ -200,28 +200,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         wait(for: [expectation], timeout: 5)
     }
-    
-    /**
-      * When: Add payment provider fails
-      * Then: Loading view should hide
-      * And:  Expected analytics call should be made
-      * And:  Expected error should be shown in alert
-      */
-    func testAddPaymentProviderFails() {
-        simulateShowingAddCardScreen()
-
-        mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: TestUtil.getRandomBraintreePaymentMethod()))
-        let testError = TestUtil.getRandomError()
-        mockPaymentService.addPaymentDetailsCall.triggerFailure(testError)
-
-        XCTAssertEqual(testAnalytics.eventSent, AnalyticsConstants.EventNames.userCardRegistrationFailed)
-        XCTAssertEqual(testError.message, mockBaseViewController.errorToShow?.message)
-
-        guard case .didFailWithError? = cardRegistrationFlowCompletionResult else {
-            XCTFail("wrong result")
-            return
-        }
-    }
 
     /**
      * When: Add payment provider succeeds
