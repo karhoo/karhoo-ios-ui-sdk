@@ -128,7 +128,6 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             analyticsService.send(eventName: .userCardRegistrationFailed)
             self.callback?(.completed(value: .didFailWithError(error)))
         case .completed(let braintreePaymentNonce):
-
             dismissBraintreeUI()
             analyticsService.send(eventName: .userCardRegistered)
             callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: braintreePaymentNonce)))
