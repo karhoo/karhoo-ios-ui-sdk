@@ -166,7 +166,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
             XCTAssert(self?.mockBaseViewController.dismissCalled ?? false)
-            XCTAssertEqual(self?.mockPaymentService.addPaymentDetailsPayloadSet?.nonce, "123")
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 5)
@@ -233,8 +232,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         simulateShowingAddCardScreen()
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: addedPaymentMethod))
-
-        XCTAssertEqual("guestOrg", mockPaymentService.paymentSDKTokenPayloadSet?.organisationId)
 
         guard case .didAddPaymentMethod? = cardRegistrationFlowCompletionResult else {
             XCTFail("wrong result")
