@@ -242,8 +242,12 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
             XCTFail("wrong result")
             return
         }
-
-        XCTAssertFalse(mockBaseViewController.showLoadingOverlaySet!)
+        if let showLoadingOverlaySet = mockBaseViewController.showLoadingOverlaySet {
+            XCTAssertFalse(showLoadingOverlaySet)
+        } else {
+            XCTFail("value mockBaseViewController.showLoadingOverlaySet not set")
+            return
+        }
     }
 
     /**
@@ -261,7 +265,12 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         simulateShowingAddCardScreen()
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: addedPaymentMethod))
 
-        XCTAssertFalse(mockBaseViewController.showLoadingOverlaySet!)
+        if let showLoadingOverlaySet = mockBaseViewController.showLoadingOverlaySet {
+            XCTAssertFalse(showLoadingOverlaySet)
+        } else {
+            XCTFail("value mockBaseViewController.showLoadingOverlaySet not set")
+            return
+        }
         XCTAssertEqual("guestOrg", mockPaymentService.paymentSDKTokenPayloadSet?.organisationId)
 
         guard case .didAddPaymentMethod? = cardRegistrationFlowCompletionResult else {
