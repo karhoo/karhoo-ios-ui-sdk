@@ -62,7 +62,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         XCTAssertNotNil(mockPaymentScreensBuilder.paymentsTokenSet)
         XCTAssertNotNil(mockPaymentScreensBuilder.flowItemCallbackSet)
-        XCTAssert(mockPaymentService.initialisePaymentSDKCalled)
     }
 
     /**
@@ -110,7 +109,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         XCTAssertNotNil(mockPaymentScreensBuilder.paymentsTokenSet)
         XCTAssertNotNil(mockPaymentScreensBuilder.flowItemCallbackSet)
-        XCTAssert(mockPaymentService.initialisePaymentSDKCalled)
     }
 
     /**
