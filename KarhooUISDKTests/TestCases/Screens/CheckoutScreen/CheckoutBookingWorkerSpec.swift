@@ -90,7 +90,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                     beforeEach {
                         KarhooTestConfiguration.setGuest()
                         mockPaymentWorker.storedPaymentNonce = Nonce(nonce: "mockNonce")
-                        mockPaymentWorker.paymentNonceResult = PaymentNonceProviderResult.nonce(nonce: Nonce(nonce: "mockNonce"))
+                        mockPaymentWorker.getPaymentNonceResult = .completed(value: .nonce(nonce: Nonce(nonce: "mockNonce")))
                     }
 
                     context("and when perform booking is called") {
@@ -135,27 +135,6 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                     mockPassengerDetails = TestUtil.getRandomValidPassengerDetails()
                     sut.update(passengerDetails: mockPassengerDetails)
                     KarhooTestConfiguration.authenticationMethod = .karhooUser
-                }
-
-                context("and there is a stored paymentNonce") {
-                    beforeEach {
-                        mockPaymentWorker.storedPaymentNonce = Nonce(nonce: "nonce")
-                        mockPaymentWorker.getPaymentNonceResult = .completed(value: .nonce(nonce: Nonce(nonce: "mockNonce")))
-                    }
-
-                    context("and when perform booking is called") {
-                        beforeEach {
-                            sut.performBooking()
-                        }
-
-                        it("should not call paymentWorker for paymentNonce") {
-                            expect(mockPaymentWorker.getPaymentNonceCalled).to(beFalse())
-                        }
-                        
-                        it("should call tripService for booking") {
-                            expect(mockTripService.tripBookingSet).notTo(beNil())
-                        }
-                    }
                 }
 
                 context("and there is no stored paymentNonce") {
@@ -227,6 +206,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                         beforeEach {
                             mockPaymentWorker.storedPaymentNonce = Nonce(nonce: "nonce")
                             mockPaymentWorker.threeDSSecureNonceCheckResult = .completed(value: .success(nonce: "nonce"))
+                            mockPaymentWorker.getPaymentNonceResult = .completed(value: .nonce(nonce: Nonce(nonce: "mockNonce")))
                         }
 
                         context("and when perform booking is called") {
@@ -250,7 +230,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                     sut.update(passengerDetails: mockPassengerDetails)
                     KarhooTestConfiguration.setGuest()
                     mockPaymentWorker.storedPaymentNonce = Nonce(nonce: "nonce")
-                    mockPaymentWorker.paymentNonceResult = PaymentNonceProviderResult.nonce(nonce: Nonce(nonce: "nonce"))
+                    mockPaymentWorker.getPaymentNonceResult = .completed(value: .nonce(nonce: Nonce(nonce: "nonce")))
                 }
 
                 context("and when perform booking is called") {
