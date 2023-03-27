@@ -31,6 +31,7 @@ struct CheckoutView: View {
         .onAppear {
             viewModel.onAppear()
         }
+        
         .alert(isPresented: $viewModel.showError) {
             if viewModel.quoteExpired {
                 return quoteExpiredAlert

@@ -10,7 +10,22 @@ import UIKit
 
 extension UIApplication {
     func topMostViewController() -> UIViewController? {
-        guard var topController = UIApplication.shared.windows.first?.rootViewController else {
+        UIApplication.shared.windows.compactMap { window in
+            UIApplication.topViewController(of: window)
+        }.first
+    }
+
+    func topMostBaseViewController() -> BaseViewController? {
+        UIApplication.shared.windows.compactMap { window in
+            UIApplication.topViewController(of: window) as? BaseViewController
+        }.first
+    }
+
+    static private func topViewController(of window: UIWindow?) -> UIViewController? {
+        guard
+            let window,
+            var topController = window.rootViewController
+        else {
             return nil
         }
         while let presentedViewController = topController.presentedViewController {
