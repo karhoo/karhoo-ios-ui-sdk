@@ -214,7 +214,6 @@ class ViewController: UIViewController {
         KarhooConfig.onUpdateAuthentication = { callback in
             self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
         }
-        KarhooConfig.environment = Keys.braintreeTokenEnvironment
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
