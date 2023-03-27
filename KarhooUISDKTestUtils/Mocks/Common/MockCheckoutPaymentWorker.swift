@@ -14,7 +14,6 @@ public class MockCheckoutPaymentWorker: CheckoutPaymentWorker {
 
     public var quote: Quote?
     public var storedPaymentNonce: Nonce?
-    public var paymentNonceResult: PaymentNonceProviderResult?
     public var requestNewPaymentMethodResult: () -> CardFlowResult = { .cancelledByUser }
 
     public var setupCalled = false

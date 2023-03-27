@@ -13,6 +13,7 @@ import KarhooSDK
 final public class MockThreeDSecureProvider: ThreeDSecureProvider {
     public init() {}
 
+    public var authToken: PaymentSDKToken?
     public var nonceSet: String?
     public var paymentAmountSet: NSDecimalNumber?
     public var currencyCodeSet: String?
@@ -20,11 +21,13 @@ final public class MockThreeDSecureProvider: ThreeDSecureProvider {
     
     public var threeDSecureCalled = false
     public func threeDSecureCheck(
+        authToken: PaymentSDKToken,
         nonce: String,
         currencyCode: String,
         paymentAmount: NSDecimalNumber,
         callback: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
     ) {
+        self.authToken = authToken
         self.nonceSet = nonce
         self.paymentAmountSet = paymentAmount
         self.currencyCodeSet = currencyCode

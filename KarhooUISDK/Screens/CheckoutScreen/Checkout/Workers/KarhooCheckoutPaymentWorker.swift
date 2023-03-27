@@ -19,27 +19,11 @@ protocol CheckoutPaymentWorker: AnyObject {
         organisationId: String,
         completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void
     )
-    func requestNewPaymentMethod(
-        showRetryAlert: Bool,
-        addCardResultCompletion: @escaping (CardFlowResult) -> Void
-    )
-    func threeDSecureNonceCheck(
-        organisationId: String,
-        passengerDetails: PassengerDetails,
-        resultCompletion: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
-    )
-}
-extension CheckoutPaymentWorker {
-    func requestNewPaymentMethod(addCardResultCompletion: @escaping (CardFlowResult) -> Void) {
-        requestNewPaymentMethod(showRetryAlert: false, addCardResultCompletion: addCardResultCompletion)
-    }
 }
 
 final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
 
     private var quote: Quote!
-    private let threeDSecureProvider: ThreeDSecureProvider?
-    private var cardRegistrationFlow: CardRegistrationFlow
     private let paymentNonceProvider: PaymentNonceProvider
     private let userService: UserService
     private let analytics: Analytics
@@ -49,14 +33,10 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
     private var addCardResultCompletion: ((CardFlowResult) -> Void)?
 
     init(
-        threeDSecureProvider: ThreeDSecureProvider? = PaymentFactory().getThreeDSecureProvider(),
-        cardRegistrationFlow: CardRegistrationFlow = PaymentFactory().getCardFlow(),
         paymentNonceProvider: PaymentNonceProvider = PaymentFactory().nonceProvider(),
         userService: UserService = Karhoo.getUserService(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
     ) {
-        self.threeDSecureProvider = threeDSecureProvider
-        self.cardRegistrationFlow = cardRegistrationFlow
         self.paymentNonceProvider = paymentNonceProvider
         self.userService = userService
         self.analytics = analytics
@@ -97,67 +77,6 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
                 completion(.completed(value: result))
             case .cancelledByUser:
                 completion(.cancelledByUser)
-            }
-        }
-    }
-
-    func requestNewPaymentMethod(
-        showRetryAlert: Bool = false,
-        addCardResultCompletion: @escaping (CardFlowResult) -> Void
-    ) {
-        let topMostVC = UIApplication.shared.topMostViewController() as? BaseViewController
-        self.addCardResultCompletion = addCardResultCompletion
-
-        cardRegistrationFlow.setBaseView(topMostVC)
-
-        let currencyCode = quote.price.currencyCode
-        let amount = quote.price.intHighPrice
-        let supplierPartnerId = quote.fleet.id
-
-        cardRegistrationFlow.start(
-            cardCurrency: currencyCode,
-            amount: amount,
-            supplierPartnerId: supplierPartnerId,
-            showUpdateCardAlert: showRetryAlert,
-            callback: { [weak self] result in
-                guard let cardFlowResult = result.completedValue() else {
-                    self?.handleAddCardFlow(result: .cancelledByUser)
-                    return
-                }
-                self?.handleAddCardFlow(result: cardFlowResult)
-        })
-    }
-
-    func threeDSecureNonceCheck(
-        organisationId: String,
-        passengerDetails: PassengerDetails,
-        resultCompletion: @escaping (OperationResult<ThreeDSecureCheckResult>) -> Void
-    ) {
-        getPaymentNonce(organisationId: organisationId) { result in
-            switch result {
-            case .cancelledByUser:
-                resultCompletion(.cancelledByUser)
-            case .completed(value: let getNonceResult):
-                switch getNonceResult {
-                case .threeDSecureCheckFailed:
-                    resultCompletion(.completed(value: .threeDSecureAuthenticationFailed))
-                case .failedToInitialisePaymentService:
-                    resultCompletion(.completed(value: .failedToInitialisePaymentService))
-                case .failedToAddCard:
-                    resultCompletion(.completed(value: .threeDSecureAuthenticationFailed))
-                case .cancelledByUser:
-                    resultCompletion(.cancelledByUser)
-                case .nonce(nonce: let nonce):
-                    self.paymentNonce = nonce
-                    self.threeDSecureProvider?.threeDSecureCheck(
-                        nonce: nonce.nonce,
-                        currencyCode: self.quote.price.currencyCode,
-                        paymentAmount: NSDecimalNumber(value: self.quote.price.highPrice),
-                        callback: { result in
-                            resultCompletion(result)
-                        }
-                    )
-                }
             }
         }
     }

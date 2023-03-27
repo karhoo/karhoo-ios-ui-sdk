@@ -40,6 +40,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         amount: Int,
         supplierPartnerId: String,
         showUpdateCardAlert: Bool,
+        dropInAuthenticationToken: PaymentSDKToken?,
         callback: @escaping (OperationResult<CardFlowResult>) -> Void
     ) {
         self.callback = callback
@@ -48,6 +49,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             baseViewController?.showUpdatePaymentCardAlert(
                 updateCardSelected: { [weak self] in
                     self?.startUpdateCardFlow(
+                        token: dropInAuthenticationToken,
                         organisationId: self?.organisationId() ?? "",
                         currencyCode: cardCurrency
                     )
@@ -57,7 +59,11 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
                 }
             )
         } else {
-            startUpdateCardFlow(organisationId: organisationId(), currencyCode: cardCurrency)
+            startUpdateCardFlow(
+                token: dropInAuthenticationToken,
+                organisationId: organisationId(),
+                currencyCode: cardCurrency
+            )
         }
     }
 
@@ -70,19 +76,19 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
         return ""
     }
 
-    private func startUpdateCardFlow(organisationId: String, currencyCode: String) {
+    private func startUpdateCardFlow(token: PaymentSDKToken?, organisationId: String, currencyCode: String) {
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: currencyCode)
-
-        paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute { [weak self] result in
-            if let token = result.getSuccessValue() {
-                self?.buildBraintreeUI(paymentsToken: token)
-            } else {
-                self?.baseViewController?.showAlert(title: UITexts.Generic.error,
-                                          message: UITexts.Errors.missingPaymentSDKToken,
-                                          error: result.getErrorValue())
-                self?.callback?(.completed(value: .didFailWithError(result.getErrorValue())))
-            }
+        if let token = token {
+            buildBraintreeUI(paymentsToken: token)
+        } else {
+            // TODO: check if better error exist
+            baseViewController?.showAlert(
+                title: UITexts.Generic.error,
+                message: UITexts.Errors.missingPaymentSDKToken,
+                error: nil
+            )
+            callback?(.completed(value: .didFailWithError(nil)))
         }
     }
 
@@ -122,58 +128,10 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
             analyticsService.send(eventName: .userCardRegistrationFailed)
             self.callback?(.completed(value: .didFailWithError(error)))
         case .completed(let braintreePaymentNonce):
-
             dismissBraintreeUI()
-            baseViewController?.showLoadingOverlay(true)
-
-            if Karhoo.configuration.authenticationMethod().guestSettings != nil {
-                registerGuestPayer(nonce: braintreePaymentNonce)
-            } else {
-                registerKarhooPayer(nonce: braintreePaymentNonce)
-            }
+            analyticsService.send(eventName: .userCardRegistered)
+            callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: braintreePaymentNonce)))
         }
-    }
-
-    private func registerKarhooPayer(nonce: Nonce) {
-        guard let currentUser = userService.getCurrentUser() else {
-            return
-        }
-
-        let payer = Payer(id: currentUser.userId,
-                          firstName: currentUser.firstName,
-                          lastName: currentUser.lastName,
-                          email: currentUser.email)
-
-        guard let payerOrg = currentUser.organisations.first else {
-            return
-        }
-
-        let addPaymentPayload = AddPaymentDetailsPayload(nonce: nonce.nonce,
-                                                         payer: payer,
-                                                         organisationId: payerOrg.id)
-
-        paymentService
-            .addPaymentDetails(addPaymentDetailsPayload: addPaymentPayload)
-            .execute { [weak self] result in
-                self?.baseViewController?.showLoadingOverlay(false)
-
-                guard let nonce = result.getSuccessValue() else {
-                    self?.baseViewController?.show(error: result.getErrorValue())
-                    self?.analyticsService.send(eventName: .userCardRegistrationFailed)
-                    self?.callback?(OperationResult.completed(value: .didFailWithError(result.getErrorValue())))
-                    return
-                }
-
-                self?.analyticsService.send(eventName: .userCardRegistered)
-                self?.callback?(OperationResult.completed(
-                    value: .didAddPaymentMethod(nonce: nonce)))
-            }
-    }
-
-    private func registerGuestPayer(nonce: Nonce) {
-        analyticsService.send(eventName: .userCardRegistered)
-        self.baseViewController?.showLoadingOverlay(false)
-        self.callback?(OperationResult.completed(value: .didAddPaymentMethod(nonce: nonce)))
     }
 
     private func dismissBraintreeUI() {

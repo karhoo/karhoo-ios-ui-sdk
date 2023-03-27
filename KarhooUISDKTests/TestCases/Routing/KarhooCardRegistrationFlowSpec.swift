@@ -62,7 +62,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         XCTAssertNotNil(mockPaymentScreensBuilder.paymentsTokenSet)
         XCTAssertNotNil(mockPaymentScreensBuilder.flowItemCallbackSet)
-        XCTAssert(mockPaymentService.initialisePaymentSDKCalled)
     }
 
     /**
@@ -76,6 +75,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectCancelOnUpdateCardAlert()
 
@@ -99,6 +99,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: false,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
 
         XCTAssertFalse(mockBaseViewController.showPaymentPreAuthAlertCalled)
@@ -108,7 +109,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         XCTAssertNotNil(mockPaymentScreensBuilder.paymentsTokenSet)
         XCTAssertNotNil(mockPaymentScreensBuilder.flowItemCallbackSet)
-        XCTAssert(mockPaymentService.initialisePaymentSDKCalled)
     }
 
     /**
@@ -122,6 +122,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         let error = TestUtil.getRandomError()
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
@@ -164,9 +165,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         let expectation = XCTestExpectation()
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
-            XCTAssertTrue(self?.mockBaseViewController.showLoadingOverlaySet ?? false)
             XCTAssert(self?.mockBaseViewController.dismissCalled ?? false)
-            XCTAssertEqual(self?.mockPaymentService.addPaymentDetailsPayloadSet?.nonce, "123")
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 5)
@@ -199,28 +198,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
 
         wait(for: [expectation], timeout: 5)
     }
-    
-    /**
-      * When: Add payment provider fails
-      * Then: Loading view should hide
-      * And:  Expected analytics call should be made
-      * And:  Expected error should be shown in alert
-      */
-    func testAddPaymentProviderFails() {
-        simulateShowingAddCardScreen()
-
-        mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: TestUtil.getRandomBraintreePaymentMethod()))
-        let testError = TestUtil.getRandomError()
-        mockPaymentService.addPaymentDetailsCall.triggerFailure(testError)
-
-        XCTAssertEqual(testAnalytics.eventSent, AnalyticsConstants.EventNames.userCardRegistrationFailed)
-        XCTAssertEqual(testError.message, mockBaseViewController.errorToShow?.message)
-
-        guard case .didFailWithError? = cardRegistrationFlowCompletionResult else {
-            XCTFail("wrong result")
-            return
-        }
-    }
 
     /**
      * When: Add payment provider succeeds
@@ -239,8 +216,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
             XCTFail("wrong result")
             return
         }
-
-        XCTAssertFalse(mockBaseViewController.showLoadingOverlaySet!)
     }
 
     /**
@@ -258,9 +233,6 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
         simulateShowingAddCardScreen()
         mockPaymentScreensBuilder.paymentMethodAddedSet?(.completed(result: addedPaymentMethod))
 
-        XCTAssertFalse(mockBaseViewController.showLoadingOverlaySet!)
-        XCTAssertEqual("guestOrg", mockPaymentService.paymentSDKTokenPayloadSet?.organisationId)
-
         guard case .didAddPaymentMethod? = cardRegistrationFlowCompletionResult else {
             XCTFail("wrong result")
             return
@@ -272,6 +244,7 @@ final class BraintreeCardRegistrationFlowSpec: KarhooTestCase {
                          amount: 0,
                          supplierPartnerId: mockSupplierPartnerId,
                          showUpdateCardAlert: true,
+                         dropInAuthenticationToken: PaymentSDKToken(token: ""),
                          callback: cardRegistrationFlowCompletion)
         mockBaseViewController.selectUpdateCardOnAddCardAlert()
 

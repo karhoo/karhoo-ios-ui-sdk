@@ -54,6 +54,7 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         amount: Int,
         supplierPartnerId: String,
         showUpdateCardAlert: Bool,
+        dropInAuthenticationToken: PaymentSDKToken?,
         callback: @escaping (OperationResult<CardFlowResult>) -> Void
     ) {
         currencyCode = cardCurrency

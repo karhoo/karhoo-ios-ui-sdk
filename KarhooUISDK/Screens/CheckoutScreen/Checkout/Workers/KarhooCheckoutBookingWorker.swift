@@ -117,7 +117,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         case .loading: break
         default:
             stateSubject.send(.loading)
-            submitAuthenticatedBooking()
+            getPaymentNonceAndBook()
         }
     }
 
@@ -126,16 +126,6 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func setup() {
         loyaltyWorker.setup(using: quote)
         paymentWorker.setup(using: quote)
-    }
-
-    // MARK: - Booking initial methods
-
-    private func submitAuthenticatedBooking() {
-        if paymentWorker.getStoredPaymentNonce() != nil {
-            book()
-        } else {
-            getPaymentNonceAndBook()
-        }
     }
 
     // MARK: - Payment handling methods
@@ -211,7 +201,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
                 stateSubject.send(.failure(ErrorModel(message: UITexts.PaymentError.noDetailsMessage, code: "")))
             case .threeDSecureAuthenticationFailed:
                 stateSubject.send(.idle)
-                requestNewPaymentMethod()
+                handleGetPaymentNonceResult(.threeDSecureCheckFailed)
             case .success:
                 book()
             }
@@ -223,7 +213,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func handleAddNewPaymentMethod(with result: CardFlowResult) {
         switch result {
         case .didAddPaymentMethod:
-            submitAuthenticatedBooking()
+            book()
         case .didFailWithError(let error):
             stateSubject.send(.failure(error ?? ErrorModel.unknown()))
         case .cancelledByUser:
@@ -279,10 +269,21 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
 
     // MARK: - Manage payment-related flow
 
-    private func requestNewPaymentMethod(showRetryAlert: Bool = false) {
-        paymentWorker.requestNewPaymentMethod(showRetryAlert: showRetryAlert) { [weak self] result in
-            self?.handleAddNewPaymentMethod(with: result)
+    private func requestNewPaymentMethod(showRetryAlert: Bool) {
+        let baseViewController = UIApplication.shared.topMostViewController() as? BaseViewController
+        if showRetryAlert {
+            baseViewController?.showUpdatePaymentCardAlert(
+                updateCardSelected: { [weak self] in
+                    self?.getPaymentNonceAndBook()
+                },
+                cancelSelected: { [weak self] in
+                    self?.handleGetPaymentNonceResult(.cancelledByUser)
+                }
+            )
+        } else {
+            getPaymentNonceAndBook()
         }
+        
     }
 
     // MARK: - Booking result handling

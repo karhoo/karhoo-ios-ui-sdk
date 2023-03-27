@@ -12,8 +12,6 @@ import KarhooUISDK // Even if the import may not be required in some configurati
 
 public class AdyenPaymentManager: PaymentManager {
     public init() {}
-    public let threeDSecureProvider: ThreeDSecureProvider? = nil
-    public let cardFlow: CardRegistrationFlow = AdyenCardRegistrationFlow()
     public let nonceProvider: PaymentNonceProvider = AdyenPaymentNonceProvider()
     public func getMetaWithUpdateTripIdIfRequired(meta: [String: Any], nonce: String) -> [String: Any] {
         var mutableMeta = meta

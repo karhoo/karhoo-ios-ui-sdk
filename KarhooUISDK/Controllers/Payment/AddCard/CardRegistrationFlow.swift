@@ -15,6 +15,7 @@ public protocol CardRegistrationFlow {
                amount: Int,
                supplierPartnerId: String,
                showUpdateCardAlert: Bool,
+               dropInAuthenticationToken: PaymentSDKToken?, // used only in Braintree
                callback: @escaping (OperationResult<CardFlowResult>) -> Void)
 }
 
