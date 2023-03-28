@@ -411,7 +411,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(
                     hostViewController: bookingViewController,
-                    routing: MockSideMenuHandler() //sideMenuRouting
+                    routing: sideMenuRouting // MockSideMenuHandler()
                 )
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
