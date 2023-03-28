@@ -246,13 +246,22 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     }
 
     func set(leftNavigationButton: NavigationBarItemIcon) {
-        let leftBarImageName = leftNavigationButton == .exitIcon ? "kh_uisdk_cross_new" : "kh_uisdk_menu"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage.uisdkImage(leftBarImageName).withRenderingMode(.alwaysTemplate),
-            style: .plain,
-            target: self,
-            action: #selector(leftBarButtonPressed)
-        )
+        switch leftNavigationButton {
+        case .exitIcon:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage.uisdkImage("kh_uisdk_cross_new").withRenderingMode(.alwaysTemplate),
+                style: .plain,
+                target: self,
+                action: #selector(leftBarButtonPressed)
+            )
+        case .menuIcon:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "Logout",
+                style: .plain,
+                target: self,
+                action: #selector(leftBarButtonPressed)
+            )
+        }
     }
     
     private func showNoLocationPermissionsPopUp() {
@@ -411,7 +420,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(
                     hostViewController: bookingViewController,
-                    routing: sideMenuRouting // MockSideMenuHandler()
+                    routing: sideMenuRouting
                 )
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
