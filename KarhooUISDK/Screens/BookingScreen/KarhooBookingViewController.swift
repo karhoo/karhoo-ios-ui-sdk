@@ -407,17 +407,17 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
 
         let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
 
-        if let sideMenuRouting = KarhooUI.sideMenuHandler {
+//        if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(
                     hostViewController: bookingViewController,
-                    routing: sideMenuRouting
+                    routing: MockSideMenuHandler() //sideMenuRouting
                 )
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
-        } else {
-            bookingViewController.set(leftNavigationButton: .exitIcon)
-        }
+//        } else {
+//            bookingViewController.set(leftNavigationButton: .exitIcon)
+//        }
         navigationController.modalPresentationStyle = .fullScreen
         return navigationController
     }
@@ -425,6 +425,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
 
 class MockSideMenuHandler: SideMenuHandler {
     func showProfile(onViewController viewController: UIViewController) {
+        print("showProfile")
     }
     
     func showBookingsList(onViewController viewController: UIViewController) {
