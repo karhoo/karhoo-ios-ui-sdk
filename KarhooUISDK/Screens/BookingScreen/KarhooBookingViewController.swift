@@ -407,7 +407,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
 
         let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
 
-//        if let sideMenuRouting = KarhooUI.sideMenuHandler {
+        if let sideMenuRouting = KarhooUI.sideMenuHandler {
             let sideMenu = UISDKScreenRouting
                 .default.sideMenu().buildSideMenu(
                     hostViewController: bookingViewController,
@@ -415,9 +415,9 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
                 )
             bookingViewController.set(sideMenu: sideMenu)
             bookingViewController.set(leftNavigationButton: .menuIcon)
-//        } else {
-//            bookingViewController.set(leftNavigationButton: .exitIcon)
-//        }
+        } else {
+            bookingViewController.set(leftNavigationButton: .exitIcon)
+        }
         navigationController.modalPresentationStyle = .fullScreen
         return navigationController
     }
