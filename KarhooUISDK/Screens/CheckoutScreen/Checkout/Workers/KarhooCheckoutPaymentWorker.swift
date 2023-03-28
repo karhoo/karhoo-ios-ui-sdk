@@ -57,8 +57,10 @@ final class KarhooCheckoutPaymentWorker: CheckoutPaymentWorker {
     func getPaymentNonce(organisationId: String, completion: @escaping (OperationResult<PaymentNonceProviderResult>) -> Void) {
         guard
             let user = userService.getCurrentUser(),
-            let topMostVC = UIApplication.shared.topMostViewController() as? BaseViewController
+            let topMostVC = UIApplication.shared.topMostBaseViewController()
         else {
+            assertionFailure()
+            completion(.cancelledByUser)
             return
         }
         paymentNonceProvider.set(baseViewController: topMostVC)
