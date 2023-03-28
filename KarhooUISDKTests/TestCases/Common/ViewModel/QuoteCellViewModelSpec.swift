@@ -38,7 +38,7 @@ class QuoteCellViewModelSpec: KarhooTestCase {
         XCTAssertEqual(testObject.scheduleCaption, UITexts.Generic.etaLong.uppercased())
         XCTAssertEqual(testObject.scheduleMainValue, expectedEta)
         XCTAssertEqual(1, testObject.passengerCapacity)
-        XCTAssertEqual(2, testObject.baggageCapacity)
+        XCTAssertEqual(2, testObject.luggageCapacity)
         XCTAssertNil(testObject.freeCancellationMessage)
     }
 
