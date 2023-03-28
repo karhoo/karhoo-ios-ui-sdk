@@ -19,7 +19,11 @@ extension QuoteListFilters {
         var filterCategory: Category { .luggage }
 
         func conditionMet(for quote: Quote) -> Bool {
-            quote.vehicle.luggageCapacity >= value
+            guard let luggageCapacity = quote.vehicle.luggageCapacity else {
+                return false
+            }
+            
+            return luggageCapacity >= value
         }
 
         var localizedString: String { filterCategory.localized }

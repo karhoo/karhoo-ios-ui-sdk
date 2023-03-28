@@ -219,8 +219,8 @@ final class QuoteVehicleCapacityView: UIStackView {
     }
 
     // MARK: - Public
-    public func setBaggageCapacity(_ value: Int) {
-        guard value > 0 else {
+    public func setBaggageCapacity(_ value: Int?) {
+        guard let value = value else {
             baggageContentView.isHidden = true
             return
         }
@@ -228,8 +228,8 @@ final class QuoteVehicleCapacityView: UIStackView {
         baggageCapacityLabel.text = "\(value)"
     }
 
-    public func setPassengerCapacity(_ value: Int) {
-        guard value > 0 else {
+    public func setPassengerCapacity(_ value: Int?) {
+        guard let value = value else {
             passengerCapacityContentView.isHidden = true
             return
         }

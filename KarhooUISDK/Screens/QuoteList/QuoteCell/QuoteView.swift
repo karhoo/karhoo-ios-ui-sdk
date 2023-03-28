@@ -331,7 +331,7 @@ class QuoteView: UIView {
         )
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
-        vehicleCapacityView.setBaggageCapacity(viewModel.baggageCapacity)
+        vehicleCapacityView.setBaggageCapacity(viewModel.luggageCapacity)
         bottomImage.load(imageURL: viewModel.logoImageURL,
             placeholderImageName: "kh_uisdk_supplier_logo_placeholder")
         fleetNameLabel.text = viewModel.fleetName
