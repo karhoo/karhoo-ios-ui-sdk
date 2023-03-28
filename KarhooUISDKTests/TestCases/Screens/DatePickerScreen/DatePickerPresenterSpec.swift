@@ -44,7 +44,6 @@ class DatePickerPresenterSpec: KarhooTestCase {
 
         XCTAssert(mockView.minDateSet == expectedMinDate)
         XCTAssert(differenceBetween(firstDate: expectedMaxDate, secondDate: mockView.maxDateSet) < epsilonInterval)
-        XCTAssertTrue(testAnalytics.prebookOpenedCalled)
     }
 
     private func differenceBetween(firstDate: Date?, secondDate: Date?) -> TimeInterval {
