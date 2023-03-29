@@ -86,7 +86,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `MOB-4100-quote-make-passenger-luggage-nullable`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -115,14 +115,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: MOB-4100-quote-make-passenger-luggage-nullable
+    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 42c218f56415d45a8346934a012af267ed0cac21
+    :commit: 876b98dc2af30ca362a8f04d01b72497ea0f80c6
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -142,6 +142,6 @@ SPEC CHECKSUMS:
   SwiftFormat: f02549113d20f7aa428b346da8cfecbc841fe66d
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: 1a6e156c3f314f240b9f22158a0d4460fd4530e9
+PODFILE CHECKSUM: 41ed2f5569ecfbfe677d9b8e3588d1caaf0881ec
 
 COCOAPODS: 1.12.0
