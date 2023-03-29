@@ -20,7 +20,7 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     private weak var viewModel: QuoteListViewModel!
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
 
     // MARK: - Header views
 
