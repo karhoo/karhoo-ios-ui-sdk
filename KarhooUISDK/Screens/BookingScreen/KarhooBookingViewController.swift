@@ -14,6 +14,10 @@ import Combine
 
 final class KarhooBookingViewController: UIViewController, BookingView {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+
     private var cancellables: Set<AnyCancellable> = []
 
     private var addressBar: AddressBarView!
