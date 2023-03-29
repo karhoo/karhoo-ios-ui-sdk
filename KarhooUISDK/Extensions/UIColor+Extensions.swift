@@ -18,31 +18,34 @@ extension UIColor {
     }
     
     static func random() -> UIColor {
-        return UIColor(red: CGFloat(drand48()),
-                       green: CGFloat(drand48()),
-                       blue: CGFloat(drand48()),
-                       alpha: 1.0)
+        return UIColor(
+            red: .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue: .random(in: 0...1),
+            alpha: 1.0
+        )
     }
     
+    /// Accepts two formats: #ffffff and ffffff
     public convenience init(hex: String, alpha: CGFloat = 1) {
-        var hex = hex
+        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
-        if !hex.hasPrefix("#") || hex.count != 7 {
-            assertionFailure("# + six digits color code expected to decode hex value")
-            UIColor.adjustInvalidHex(&hex)
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
         }
 
-        let scanner = Scanner(string: hex)
-        scanner.scanLocation = 1  // skip #
-        
-        var rgb: UInt32 = 0
-        scanner.scanHexInt32(&rgb)
-        
+        if (cString.count) != 6 {
+            self.init(cgColor: UIColor.gray.cgColor)
+        }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
         self.init(
-            red: CGFloat((rgb & 0xFF0000) >> 16)/255.0,
-            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
-            blue: CGFloat((rgb &     0xFF)      )/255.0,
-            alpha: alpha
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(alpha)
         )
     }
 
