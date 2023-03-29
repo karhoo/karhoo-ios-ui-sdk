@@ -16,7 +16,7 @@ final class KarhooCheckoutViewController: UIViewController, CheckoutViewControll
 
     private var viewModel: KarhooCheckoutViewModel!
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
 
     // MARK: - Views
 

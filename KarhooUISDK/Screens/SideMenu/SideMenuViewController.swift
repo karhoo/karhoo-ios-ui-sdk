@@ -16,10 +16,10 @@ final class SideMenuViewController: UIViewController, SideMenu {
     @IBOutlet private weak var menuStartConstraint: NSLayoutConstraint?
 
     private(set) var hostViewController: UIViewController?
-    private(set) var menuContentViewController: UIViewController?
+    private(set) var menuContentViewController: MenuContentViewController?
 
     init(hostViewController: UIViewController,
-         contentViewController: UIViewController) {
+         contentViewController: MenuContentViewController) {
         self.hostViewController = hostViewController
         self.menuContentViewController = contentViewController
         super.init(nibName: "SideMenuViewController", bundle: .current)
@@ -50,15 +50,16 @@ final class SideMenuViewController: UIViewController, SideMenu {
     }
 
     func showMenu() {
-        view.layoutIfNeeded()
-
-        UIView.animate(withDuration: 0.25,
-                       animations: { () -> Void in
-            self.menuStartConstraint?.constant = 0
-            self.contentContainer?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self.overlay?.alpha = 1
-            self.view.layoutIfNeeded()
-        })
+        menuContentViewController?.profilePressed()
+//        view.layoutIfNeeded()
+//
+//        UIView.animate(withDuration: 0.25,
+//                       animations: { () -> Void in
+//            self.menuStartConstraint?.constant = 0
+//            self.contentContainer?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//            self.overlay?.alpha = 1
+//            self.view.layoutIfNeeded()
+//        })
     }
 
     @IBAction func hideMenu() {

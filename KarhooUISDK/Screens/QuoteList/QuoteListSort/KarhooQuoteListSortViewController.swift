@@ -13,7 +13,7 @@ class KarhooQuoteListSortViewController: UIViewController, BaseViewController, Q
 
     // MARK: - Properties
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
     private var presenter: QuoteListSortViewModel!
 
     // MARK: - Views

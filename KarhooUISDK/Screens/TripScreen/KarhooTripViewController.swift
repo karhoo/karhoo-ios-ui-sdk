@@ -328,9 +328,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         presenter.userDidCloseTrip()
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
 
     final class KarhooTripScreenBuilder: TripScreenBuilder {
         func buildTripScreen(trip: TripInfo, callback: @escaping ScreenResultCallback<TripScreenResult>) -> Screen {

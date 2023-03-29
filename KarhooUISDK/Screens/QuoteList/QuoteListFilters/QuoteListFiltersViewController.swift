@@ -13,7 +13,7 @@ class KarhooQuoteListFiltersViewController: UIViewController, BaseViewController
 
     // MARK: - Properties
 
-    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
     private var presenter: QuoteListFiltersPresenter!
 
     // MARK: - Views

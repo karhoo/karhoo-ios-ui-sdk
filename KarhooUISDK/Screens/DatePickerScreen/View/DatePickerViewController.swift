@@ -20,7 +20,7 @@ final class DatePickerViewController: UIViewController, DatePickerView {
     private let presenter: DatePickerPresenter
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        presentingViewController?.preferredStatusBarStyle ?? .lightContent
+        presentingViewController?.preferredStatusBarStyle ?? .getPrimaryStyle
     }
 
     required init(presenter: DatePickerPresenter) {

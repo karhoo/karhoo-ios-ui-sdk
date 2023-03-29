@@ -48,7 +48,7 @@ final class MenuContentViewController: UIViewController, BaseViewController, Men
         self.profileView?.removeFromSuperview()
     }
 
-    @IBAction private func profilePressed() {
+    @IBAction func profilePressed() {
         presenter.profilePressed()
     }
 
