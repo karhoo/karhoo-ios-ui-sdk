@@ -11,10 +11,18 @@ import SwiftUI
 struct VehicleCapacity: View {
     var passangerCapacity: Int
     var luggageCapacity: Int
+    var showPassengerCapacity: Bool
+    var showLuggageCapacity: Bool
+    
     var body: some View {
         HStack {
-            CapacityCard(iconName: "kh_uisdk_passenger_capacity_icon", value: passangerCapacity)
-            CapacityCard(iconName: "kh_uisdk_luggage_icon", value: luggageCapacity)
+            if showPassengerCapacity {
+                CapacityCard(iconName: "kh_uisdk_passenger_capacity_icon", value: passangerCapacity)
+            }
+            
+            if showLuggageCapacity {
+                CapacityCard(iconName: "kh_uisdk_luggage_icon", value: luggageCapacity)
+            }
         }
     }
     
@@ -47,6 +55,11 @@ struct VehicleCapacity: View {
 
 struct VehicleCapacity_Previews: PreviewProvider {
     static var previews: some View {
-        VehicleCapacity(passangerCapacity: 5, luggageCapacity: 4)
+        VehicleCapacity(
+            passangerCapacity: 5,
+            luggageCapacity: 4,
+            showPassengerCapacity: true,
+            showLuggageCapacity: true
+        )
     }
 }

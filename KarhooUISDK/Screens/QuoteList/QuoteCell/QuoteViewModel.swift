@@ -116,12 +116,12 @@ final class QuoteViewModel {
     let fareType: String
     let showPickUpLabel: Bool
     let pickUpType: String
-    let passengerCapacity: Int
-    let baggageCapacity: Int
+    let passengerCapacity: Int?
+    let luggageCapacity: Int?
     let isScheduled: Bool
 
     /// If this message is not `nil`, it should be displayed
-    let freeCancellationMessage: String?
+    private(set) var freeCancellationMessage: String?
 
     init(
         quote: Quote,
@@ -129,7 +129,7 @@ final class QuoteViewModel {
         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
     ) {
         self.passengerCapacity = quote.vehicle.passengerCapacity
-        self.baggageCapacity = quote.vehicle.luggageCapacity
+        self.luggageCapacity = quote.vehicle.luggageCapacity
         self.fleetName = quote.fleet.name
         self.fleetDescription = quote.fleet.description
         let journeyDetails = journeyDetailsManager.getJourneyDetails()
@@ -140,21 +140,6 @@ final class QuoteViewModel {
         self.vehicleType = quote.vehicle.getVehicleTypeText()
         self.vehicleTags = quote.vehicle.tags.compactMap { VehicleTag(rawValue: $0) }
         self.fleetCapabilities = quote.fleet.capability.compactMap { FleetCapabilities(rawValue: $0) }
-
-        switch quote.serviceLevelAgreements?.serviceCancellation.type {
-        case .timeBeforePickup:
-            if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
-                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
-                let messageFormat = journeyDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
-                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
-            } else {
-                freeCancellationMessage = nil
-            }
-        case .beforeDriverEnRoute:
-            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
-        default:
-            freeCancellationMessage = nil
-        }
 
         switch quote.source {
         case .market: fare =  CurrencyCodeConverter.quoteRangePrice(quote: quote)
@@ -176,6 +161,24 @@ final class QuoteViewModel {
         default: pickUpType = ""
         }
         getImageUrl(for: quote, with: vehicleRulesProvider)
+        setFreeCancellationMessage(for: quote, and: journeyDetails)
+    }
+    
+    private func setFreeCancellationMessage(for quote: Quote, and journeyDetails: JourneyDetails?) {
+        switch quote.serviceLevelAgreements?.serviceCancellation.type {
+        case .timeBeforePickup:
+            if let freeCancellationMinutes = quote.serviceLevelAgreements?.serviceCancellation.minutes, freeCancellationMinutes > 0 {
+                let timeBeforeCancel = TimeFormatter().minutesAndHours(timeInMinutes: freeCancellationMinutes)
+                let messageFormat = journeyDetails?.isScheduled == true ? UITexts.Quotes.freeCancellationPrebook : UITexts.Quotes.freeCancellationASAP
+                freeCancellationMessage = String(format: messageFormat, timeBeforeCancel)
+            } else {
+                freeCancellationMessage = nil
+            }
+        case .beforeDriverEnRoute:
+            freeCancellationMessage = UITexts.Quotes.freeCancellationBeforeDriverEnRoute
+        default:
+            freeCancellationMessage = nil
+        }
     }
 
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {

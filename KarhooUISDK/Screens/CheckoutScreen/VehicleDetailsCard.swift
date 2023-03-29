@@ -22,8 +22,10 @@ struct VehicleDetailsCard: View {
                         .font(Font(KarhooUI.fonts.bodyBold()))
                         .foregroundColor(Color(KarhooUI.colors.text))
                     VehicleCapacity(
-                        passangerCapacity: viewModel.passengerCapacity,
-                        luggageCapacity: viewModel.luggageCapacity
+                        passangerCapacity: viewModel.passengerCapacity ?? 0,
+                        luggageCapacity: viewModel.luggageCapacity ?? 0,
+                        showPassengerCapacity: viewModel.passengerCapacity != nil,
+                        showLuggageCapacity: viewModel.luggageCapacity != nil
                     )
                     HStack(spacing: UIConstants.Spacing.small) {
                         KarhooAsyncImage(urlString: viewModel.fleetIconUrl)
@@ -68,8 +70,8 @@ struct VehicleDetailsCard_Previews: PreviewProvider {
 
 struct VehicleDetailsCardViewModel {
     let title: String
-    let passengerCapacity: Int
-    let luggageCapacity: Int
+    let passengerCapacity: Int?
+    let luggageCapacity: Int?
     let fleetName: String
     let carIconUrl: String
     let fleetIconUrl: String
