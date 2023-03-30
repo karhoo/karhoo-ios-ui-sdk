@@ -35,7 +35,7 @@ target 'KarhooUISDK' do
   pod 'SwiftLint', '~> 0.47'
   pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'
-  pod 'BraintreeDropIn', '~> 9.8.1'
+  pod 'BraintreeDropIn', :git => 'https://github.com/karhoo/braintree-ios-drop-in', :branch => 'update-wording'
   pod 'Braintree/PaymentFlow', '~> 5.20.1'
   pod 'Adyen', '4.7.2'
 
