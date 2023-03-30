@@ -39,10 +39,10 @@
     {
       "identity" : "braintree-ios-drop-in",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/braintree/braintree-ios-drop-in",
+      "location" : "https://github.com/karhoo/braintree-ios-drop-in",
       "state" : {
-        "revision" : "81236a6c612f9b1ff04da6c12bc1869a859fe6fb",
-        "version" : "9.8.0"
+        "branch" : "update-wording",
+        "revision" : "8eddbad06f5d4b66cdf1fce167f3816669054067"
       }
     },
     {
