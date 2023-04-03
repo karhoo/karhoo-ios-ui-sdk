@@ -382,53 +382,56 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         passengerDetails: PassengerDetails? = nil,
         callback: ScreenResultCallback<BookingScreenResult>?
     ) -> Screen {
-        PassengerInfo.shared.set(details: passengerDetails)
+//        PassengerInfo.shared.set(details: passengerDetails)
+//
+//        var validatedJourneyInfo: JourneyInfo? {
+//            guard let origin = journeyInfo?.origin else {
+//                return nil
+//            }
+//
+//            var isDateAllowed: Bool {
+//                guard let injectedDate = journeyInfo?.date else {
+//                    return false
+//                }
+//                return injectedDate >= Date().addingTimeInterval(60*60)
+//            }
+//
+//            return JourneyInfo(
+//                origin: origin,
+//                destination: journeyInfo?.destination,
+//                date: isDateAllowed ? journeyInfo?.date : nil
+//            )
+//        }
+//        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
+//
+//        let router = KarhooBookingRouter()
+//        let bookingPresenter = KarhooBookingPresenter(
+//            router: router,
+//            callback: callback
+//        )
+//        let bookingViewController = KarhooBookingViewController(
+//            presenter: bookingPresenter,
+//            journeyInfo: validatedJourneyInfo
+//        )
+//        router.viewController = bookingViewController
+//        router.checkoutScreenBuilder = UISDKScreenRouting.default.checkout()
+//
+//        let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
+//
+//        if let sideMenuRouting = KarhooUI.sideMenuHandler {
+//            let sideMenu = UISDKScreenRouting
+//                .default.sideMenu().buildSideMenu(
+//                    hostViewController: bookingViewController,
+//                    routing: sideMenuRouting
+//                )
+//            bookingViewController.set(sideMenu: sideMenu)
+//            bookingViewController.set(leftNavigationButton: .menuIcon)
+//        } else {
+//            bookingViewController.set(leftNavigationButton: .exitIcon)
+//        }
         
-        var validatedJourneyInfo: JourneyInfo? {
-            guard let origin = journeyInfo?.origin else {
-                return nil
-            }
-            
-            var isDateAllowed: Bool {
-                guard let injectedDate = journeyInfo?.date else {
-                    return false
-                }
-                return injectedDate >= Date().addingTimeInterval(60*60)
-            }
-            
-            return JourneyInfo(
-                origin: origin,
-                destination: journeyInfo?.destination,
-                date: isDateAllowed ? journeyInfo?.date : nil
-            )
-        }
-        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
-
-        let router = KarhooBookingRouter()
-        let bookingPresenter = KarhooBookingPresenter(
-            router: router,
-            callback: callback
-        )
-        let bookingViewController = KarhooBookingViewController(
-            presenter: bookingPresenter,
-            journeyInfo: validatedJourneyInfo
-        )
-        router.viewController = bookingViewController
-        router.checkoutScreenBuilder = UISDKScreenRouting.default.checkout()
-
+        let bookingViewController = KarhooRidePlanningViewController()
         let navigationController = NavigationController(rootViewController: bookingViewController, style: .primary)
-
-        if let sideMenuRouting = KarhooUI.sideMenuHandler {
-            let sideMenu = UISDKScreenRouting
-                .default.sideMenu().buildSideMenu(
-                    hostViewController: bookingViewController,
-                    routing: sideMenuRouting
-                )
-            bookingViewController.set(sideMenu: sideMenu)
-            bookingViewController.set(leftNavigationButton: .menuIcon)
-        } else {
-            bookingViewController.set(leftNavigationButton: .exitIcon)
-        }
         navigationController.modalPresentationStyle = .fullScreen
         return navigationController
     }
