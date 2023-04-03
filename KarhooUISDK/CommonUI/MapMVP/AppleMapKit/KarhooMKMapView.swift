@@ -30,7 +30,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private var mapViewActions: MapViewActions?
     private var pins: [TripPinTags: MapAnnotationViewModel] = [:]
     private var presenter: MapPresenter?
-    private let focusButtonBottomSpace: CGFloat = -20
+    private let focusButtonBottomSpace: CGFloat = -200 // -20
     private var focusButtonBottomConstraint: NSLayoutConstraint!
 
     private var focusButton: UIButton = {
