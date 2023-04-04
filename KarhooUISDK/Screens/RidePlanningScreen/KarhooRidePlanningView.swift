@@ -16,9 +16,3 @@ struct KarhooRidePlanningView: View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
-
-struct KarhooRidePlanningView_Previews: PreviewProvider {
-    static var previews: some View {
-        KarhooRidePlanningView(viewModel: KarhooRidePlanningViewModel())
-    }
-}

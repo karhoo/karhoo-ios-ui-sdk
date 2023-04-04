@@ -13,6 +13,7 @@ public protocol RidePlanningScreenBuilder {
     func buildRidePlanningScreen(
         journeyInfo: JourneyInfo?,
         passengerDetails: PassengerDetails?,
+        bookingMetadata: [String: Any]?,
         callback: ScreenResultCallback<KarhooRidePlanningResult>?
     ) -> Screen
 }
@@ -21,11 +22,13 @@ public extension RidePlanningScreenBuilder {
     func buildRidePlanningScreen(
         journeyInfo: JourneyInfo? = nil,
         passengerDetails: PassengerDetails? = nil,
+        bookingMetadata: [String: Any]? = nil,
         callback: ScreenResultCallback<KarhooRidePlanningResult>?
     ) -> Screen {
         return buildRidePlanningScreen(
             journeyInfo: journeyInfo,
             passengerDetails: passengerDetails,
+            bookingMetadata: bookingMetadata,
             callback: callback
         )
     }

@@ -10,25 +10,6 @@ import Foundation
 import KarhooSDK
 
 final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
-    // MARK: - Nested types
-
-    class Builder: RidePlanningScreenBuilder {
-        func buildRidePlanningCoordinator(
-            navigationController: UINavigationController?,
-            journeyInfo: JourneyInfo? = nil,
-            passengerDetails: PassengerDetails? = nil,
-            bookingMetadata: [String: Any]? = nil,
-            callback: @escaping ScreenResultCallback<KarhooRidePlanningResult>
-        ) -> KarhooUISDKSceneCoordinator {
-            KarhooRidePlanningCoordinator(
-                navigationController: navigationController,
-                journeyInfo: journeyInfo,
-                passengerDetails: passengerDetails,
-                bookingMetadata: bookingMetadata,
-                callback: callback
-            )
-        }
-    }
     
     // MARK: - Properties
 
@@ -36,7 +17,7 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
     var baseViewController: BaseViewController { viewController }
     private(set) var navigationController: UINavigationController?
     private(set) var viewController: RidePlanningViewController!
-    private(set) var presenter: KarhooRidePlanningViewModel?
+    private(set) var viewModel: KarhooRidePlanningViewModel?
 
     private var callback: ((ScreenResult<KarhooRidePlanningResult>) -> Void)?
 
@@ -44,19 +25,15 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
 
     init(
         navigationController: UINavigationController?,
-        journeyInfo: JourneyInfo? = nil,
-        passengerDetails: PassengerDetails? = nil,
         bookingMetadata: [String: Any]?,
-        callback: @escaping (ScreenResult<KarhooRidePlanningResult>) -> Void
+        callback: ((ScreenResult<KarhooRidePlanningResult>) -> Void)?
     ) {
-        self.presenter = KarhooRidePlanningViewModel(
-            journeyInfo: journeyInfo,
-            passengerDetails: passengerDetails,
+        self.viewModel = KarhooRidePlanningViewModel(
             bookingMetadata: bookingMetadata,
             router: self
         )
         self.viewController = KarhooRidePlanningViewController().then {
-            $0.setupBinding(presenter!)
+            $0.setupBinding(viewModel!)
         }
         self.navigationController = navigationController ?? NavigationController(
             rootViewController: self.viewController,
@@ -67,13 +44,32 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
 }
 
 extension KarhooRidePlanningCoordinator: RidePlanningRouter {
+
+    func routeToQuoteList(
+        details: JourneyDetails,
+        onQuoteSelected: @escaping (Quote, JourneyDetails) -> Void
+    ) {
+        
+    }
+    
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, KarhooSDK.Quote, JourneyDetails) -> Void
+    ) {
+        
+    }
+    
+    func exitPressed() {
+        viewController?.dismiss(animated: true, completion: { [weak self] in
+            self?.callback?(ScreenResult.cancelled(byUser: true))
+        })
+    }
+    
     func routeToAllocationScreen() {}
     
     func routeToSideMenu() {}
     
     func routeToDatePicker() {}
-    
-    func routeToQuoteList() {}
-    
-    func routeToCheckout() {}
 }

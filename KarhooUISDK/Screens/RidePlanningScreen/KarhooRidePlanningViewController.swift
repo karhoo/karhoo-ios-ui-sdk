@@ -14,6 +14,7 @@ class KarhooRidePlanningViewController: UIViewController, RidePlanningViewContro
     // MARK: - Properties
     
     private var viewModel: KarhooRidePlanningViewModel!
+    private var sideMenu: SideMenu?
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
     
@@ -81,5 +82,38 @@ class KarhooRidePlanningViewController: UIViewController, RidePlanningViewContro
         navigationItem.backButtonTitle = ""
         navigationItem.title = UITexts.Generic.checkout
         navigationController?.set(style: .primary)
+    }
+    
+    // MARK: - Side menu
+    func set(sideMenu: SideMenu) {
+        self.sideMenu = sideMenu
+    }
+    
+    func set(leftNavigationButton: NavigationBarItemIcon) {
+        switch leftNavigationButton {
+        case .exitIcon:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage.uisdkImage("kh_uisdk_cross_new").withRenderingMode(.alwaysTemplate),
+                style: .plain,
+                target: self,
+                action: #selector(leftBarButtonPressed)
+            )
+        case .menuIcon:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "Logout",
+                style: .plain,
+                target: self,
+                action: #selector(leftBarButtonPressed)
+            )
+        }
+    }
+    
+    @objc
+    private func leftBarButtonPressed() {
+        if let menu = sideMenu {
+            menu.showMenu()
+        } else {
+            viewModel.exitPressed()
+        }
     }
 }

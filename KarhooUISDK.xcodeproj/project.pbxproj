@@ -593,6 +593,7 @@
 		846A875129DC1A7800952C81 /* KarhooRidePlanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875029DC1A7800952C81 /* KarhooRidePlanningView.swift */; };
 		846A875329DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875229DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift */; };
 		846A875529DC3E1F00952C81 /* RidePlanningScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */; };
+		846A875729DC45C600952C81 /* KarhooRidePlanningScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875629DC45C600952C81 /* KarhooRidePlanningScreenBuilder.swift */; };
 		846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */; };
 		84925E26292543CD00B0C483 /* KarhooLocationPermissionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */; };
 		84C5F4EC294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5F4EB294A06EE0060C16C /* BookingConfirmationSnapshotSpec.swift */; };
@@ -1274,6 +1275,7 @@
 		846A875029DC1A7800952C81 /* KarhooRidePlanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRidePlanningView.swift; sourceTree = "<group>"; };
 		846A875229DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMapUIViewRepresentable.swift; sourceTree = "<group>"; };
 		846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidePlanningScreenBuilder.swift; sourceTree = "<group>"; };
+		846A875629DC45C600952C81 /* KarhooRidePlanningScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRidePlanningScreenBuilder.swift; sourceTree = "<group>"; };
 		846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetScreenBuilder.swift; sourceTree = "<group>"; };
 		84751E73292FE97F000E98B0 /* KarhooAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAsyncImage.swift; sourceTree = "<group>"; };
 		84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLocationPermissionProvider.swift; sourceTree = "<group>"; };
@@ -1816,7 +1818,6 @@
 		0991065C21B8291900BD7E6F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				846A874729DC18A100952C81 /* RidePlanningScreen */,
 				0991066021B8291900BD7E6F /* AddressScreen */,
 				09C7655F21DE688000CD81AB /* BookingScreen */,
 				5CBA2A5F24F5D8CC0091D783 /* CheckoutScreen */,
@@ -1825,9 +1826,10 @@
 				5CBA2A6524F5D8CC0091D783 /* PassengerDetails */,
 				FC705B16221322220001036E /* PopupDialog */,
 				FCAD1BE922087B9100C3AD1D /* PrebookConfirmationScreen */,
+				5161FE84284E4C12001F87A6 /* QuoteList */,
+				846A874729DC18A100952C81 /* RidePlanningScreen */,
 				FC435EE42211B30F00FB6BB5 /* Rides */,
 				092005D5225B91C1001038ED /* SideMenu */,
-				5161FE84284E4C12001F87A6 /* QuoteList */,
 				403F448522F1EC97008147FC /* TripFeedbackScreen */,
 				FC83E24B221DB4C9008FE26D /* TripScreen */,
 				FC83E282221DB549008FE26D /* TripSummaryScreen */,
@@ -3253,6 +3255,7 @@
 			children = (
 				846A875229DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift */,
 				846A874C29DC1A4F00952C81 /* KarhooRidePlanningCoordinator.swift */,
+				846A875629DC45C600952C81 /* KarhooRidePlanningScreenBuilder.swift */,
 				846A875029DC1A7800952C81 /* KarhooRidePlanningView.swift */,
 				846A874E29DC1A6200952C81 /* KarhooRidePlanningViewController.swift */,
 				846A874829DC18C500952C81 /* KarhooRidePlanningViewModel.swift */,
@@ -4853,6 +4856,7 @@
 				51801A30285B72F000EE6583 /* QuoteTypeFilter.swift in Sources */,
 				7B74041F297191E7000ED60A /* KarhooFreeCancelationTextWorker.swift in Sources */,
 				84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */,
+				846A875729DC45C600952C81 /* KarhooRidePlanningScreenBuilder.swift in Sources */,
 				8466B36D2975AF580064C3BC /* KarhooLoyaltyPreAuthWorker.swift in Sources */,
 				FC705B1E221322550001036E /* PopupDialogViewController.swift in Sources */,
 				51B3F0F129771FDE00EFA40E /* KarhooCheckoutPaymentWorker.swift in Sources */,

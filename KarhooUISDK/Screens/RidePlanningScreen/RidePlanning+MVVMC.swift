@@ -13,14 +13,27 @@ public protocol RidePlanningCoordinator: KarhooUISDKSceneCoordinator {
 }
 
 protocol RidePlanningViewController: BaseViewController {
+    func set(leftNavigationButton: NavigationBarItemIcon)
+    func set(sideMenu: SideMenu)
 }
 
 protocol RidePlanningRouter: AnyObject {
+    func exitPressed()
     func routeToAllocationScreen()
     func routeToSideMenu()
     func routeToDatePicker()
-    func routeToQuoteList()
-    func routeToCheckout()
+    
+    func routeToQuoteList(
+        details: JourneyDetails,
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
+    )
+
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
+    )
 }
 
 public enum KarhooRidePlanningResult {
@@ -28,4 +41,3 @@ public enum KarhooRidePlanningResult {
     case prebookConfirmed(tripInfo: TripInfo)
     case bookingFailed(error: KarhooError)
 }
-

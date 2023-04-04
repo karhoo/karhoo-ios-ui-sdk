@@ -31,8 +31,8 @@ final class KarhooBookingPresenter {
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
 
-    private var coverageCache: [String: Bool] = [:]
-    private var coverageCheckInProgress: [String] = []
+//    private var coverageCache: [String: Bool] = [:]
+//    private var coverageCheckInProgress: [String] = []
 
     var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
     var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
