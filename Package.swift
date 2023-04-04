@@ -37,8 +37,10 @@ let package = Package(
     targets: [
         .target(
             name: "KarhooUISDK",
-            dependencies: [.product(name: "KarhooSDK", package: "karhoo-ios-sdk"),
-                           .product(name: "PhoneNumberKit", package: "PhoneNumberKit")],
+            dependencies: [
+                .product(name: "KarhooSDK", package: "karhoo-ios-sdk"),
+                .productItem(name: "PhoneNumberKit", package: "PhoneNumberKit", moduleAliases: ["PhoneNumberKit" : "PhoneNumberKitKarhoo"], condition: nil)
+            ],
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"]),
 
