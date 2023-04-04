@@ -1,0 +1,31 @@
+//
+//  RidePlanning+MVVMC.swift
+//  KarhooUISDK
+//
+//  Created by Diana Petrea on 04.04.2023.
+//  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
+//
+
+import Foundation
+import KarhooSDK
+
+public protocol RidePlanningCoordinator: KarhooUISDKSceneCoordinator {
+}
+
+protocol RidePlanningViewController: BaseViewController {
+}
+
+protocol RidePlanningRouter: AnyObject {
+    func routeToAllocationScreen()
+    func routeToSideMenu()
+    func routeToDatePicker()
+    func routeToQuoteList()
+    func routeToCheckout()
+}
+
+public enum KarhooRidePlanningResult {
+    case tripAllocated(tripInfo: TripInfo)
+    case prebookConfirmed(tripInfo: TripInfo)
+    case bookingFailed(error: KarhooError)
+}
+
