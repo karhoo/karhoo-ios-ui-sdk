@@ -20,7 +20,6 @@ protocol RidePlanningViewController: BaseViewController {
 protocol RidePlanningRouter: AnyObject {
     func exitPressed()
     func routeToAllocationScreen()
-    func routeToSideMenu()
     func routeToDatePicker()
     
     func routeToQuoteList(

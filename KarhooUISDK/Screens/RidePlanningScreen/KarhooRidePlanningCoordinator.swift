@@ -69,7 +69,5 @@ extension KarhooRidePlanningCoordinator: RidePlanningRouter {
     
     func routeToAllocationScreen() {}
     
-    func routeToSideMenu() {}
-    
     func routeToDatePicker() {}
 }
