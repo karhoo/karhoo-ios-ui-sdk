@@ -50,6 +50,7 @@ let package = Package(
                     condition: nil
                 )
             ],
+            
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"]),
 
