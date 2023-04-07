@@ -35,8 +35,7 @@ protocol RidePlanningRouter: AnyObject {
     )
 }
 
-public enum KarhooRidePlanningResult {
-    case tripAllocated(tripInfo: TripInfo)
-    case prebookConfirmed(tripInfo: TripInfo)
-    case bookingFailed(error: KarhooError)
+public struct KarhooRidePlanningResult {
+    var journeyDetails: JourneyDetails
+    var filters: [QuoteListFilter]?
 }
