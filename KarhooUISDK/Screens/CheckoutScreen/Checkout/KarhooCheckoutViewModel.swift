@@ -115,7 +115,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
         self.loyaltyViewModel = LoyaltyViewModel(worker: loyaltyWorker)
         self.getImageUrl(for: quote, with: vehicleRuleProvider)
         self.setupBinding()
-        self.setupInitialState()
+        self.checkIfNeedsToUpdateState()
     }
 
     // MARK: - Endpoints
@@ -263,7 +263,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
         flightNumberCellViewModel.flightNumberSubject
             .dropFirst()
-            .sink{ [weak self] trainNumber in
+            .sink { [weak self] trainNumber in
                 self?.bookingWorker.update(flightNumber: trainNumber)
             }
             .store(in: &cancellables)
@@ -274,7 +274,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
         trainNumberCellViewModel.trainNumberSubject
             .dropFirst()
-            .sink{ [weak self] trainNumber in
+            .sink { [weak self] trainNumber in
                 self?.bookingWorker.update(trainNumber: trainNumber)
             }
             .store(in: &cancellables)
@@ -285,7 +285,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
         commentCellViewModel.commentSubject
             .dropFirst()
-            .sink{ [weak self] comment in
+            .sink { [weak self] comment in
                 self?.bookingWorker.update(comment: comment)
             }
             .store(in: &cancellables)
