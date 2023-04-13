@@ -290,7 +290,8 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         case (true, _, _):
             quotesSearchForDetailsInProgress = nil
             let journeyDetails = journeyDetailsManager.getJourneyDetails()
-            switch journeyDetails?.isScheduled {
+            
+            switch journeyDetails?.isScheduledInMoreThanOneHour {
             case false:
                 onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
             default:

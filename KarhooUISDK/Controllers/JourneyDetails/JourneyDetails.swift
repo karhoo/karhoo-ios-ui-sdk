@@ -39,6 +39,14 @@ public struct JourneyDetails: Equatable {
         return scheduled.timeIntervalSince1970 != 0
     }
 
+    var isScheduledInMoreThanOneHour: Bool {
+        guard let scheduled = scheduledDate else {
+            return false
+        }
+        // Check if ride is planned for more then one hour ahead
+        return scheduled.timeIntervalSinceNow > 60 * 60
+    }
+
     public func reverse() -> JourneyDetails? {
 
         guard let initialDestination = self.destinationLocationDetails else {
