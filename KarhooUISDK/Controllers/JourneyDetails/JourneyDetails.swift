@@ -44,7 +44,7 @@ public struct JourneyDetails: Equatable {
             return false
         }
         // Check if ride is planned for more then one hour ahead
-        return scheduled.timeIntervalSinceNow > 60 * 60
+        return scheduled.timeIntervalSinceNow >= 60 * 60
     }
 
     public func reverse() -> JourneyDetails? {
