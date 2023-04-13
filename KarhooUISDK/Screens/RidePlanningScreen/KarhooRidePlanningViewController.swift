@@ -77,43 +77,24 @@ class KarhooRidePlanningViewController: UIViewController, RidePlanningViewContro
         hostingController.view.anchorToSuperview()
     }
 
+    // MARK: - Navigation Bar
+
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.backButtonTitle = ""
         navigationItem.title = UITexts.Generic.checkout
         navigationController?.set(style: .primary)
-    }
-    
-    // MARK: - Side menu
-    func set(sideMenu: SideMenu) {
-        self.sideMenu = sideMenu
-    }
-    
-    func set(leftNavigationButton: NavigationBarItemIcon) {
-        switch leftNavigationButton {
-        case .exitIcon:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                image: UIImage.uisdkImage("kh_uisdk_cross_new").withRenderingMode(.alwaysTemplate),
-                style: .plain,
-                target: self,
-                action: #selector(leftBarButtonPressed)
-            )
-        case .menuIcon:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                title: "Logout",
-                style: .plain,
-                target: self,
-                action: #selector(leftBarButtonPressed)
-            )
-        }
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage.uisdkImage("kh_uisdk_cross_new").withRenderingMode(.alwaysTemplate),
+            style: .plain,
+            target: self,
+            action: #selector(leftBarButtonPressed)
+        )
     }
     
     @objc
     private func leftBarButtonPressed() {
-        if let menu = sideMenu {
-            menu.showMenu()
-        } else {
-            viewModel.exitPressed()
-        }
+        viewModel.exitPressed()
     }
 }

@@ -382,7 +382,7 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         passengerDetails: PassengerDetails? = nil,
         callback: ScreenResultCallback<BookingScreenResult>?
     ) -> Screen {
-        PassengerInfo.shared.set(details: passengerDetails)
+        KarhooPassengerInfo.shared.set(details: passengerDetails)
         
         var validatedJourneyInfo: JourneyInfo? {
             guard let origin = journeyInfo?.origin else {

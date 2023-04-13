@@ -9,20 +9,64 @@
 import Foundation
 import KarhooSDK
 
-final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
+protocol MainFlowRouter {
+    func startBooking(
+        with journeyInfo: JourneyInfo?,
+        passengerDetails: PassengerDetails?,
+        filters: [QuoteListFilter]?,
+        bookingMetadata: [String: Any]?,
+        callback: ((BookingScreenResult) -> Void)?
+    )
+    
+    // TODO: Add any parameters necessary to open these screens
+    func routeToAllocationScreen()
+    func routeToRidesList()
+    func routeToTrackDriver()
+}
+
+protocol MainFlowBookingRouter {
+    func routeToRidePlanning(
+        ridePlanningCallback: @escaping (ScreenResult<KarhooRidePlanningResult>) -> Void
+    )
+    
+    func routeToQuoteList(
+        journeyDetails: JourneyDetails,
+        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
+    )
+
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        checkoutCallback: @escaping (ScreenResult<KarhooCheckoutResult>) -> Void
+    )
+    
+    func resetDataAfterBooking()
+}
+
+/// The purpose of this class is to coordinate all flows inside the SDK including the full booking drop-in, driver tracking, ride list, etc.
+final class MainFlowCoordinator: KarhooUISDKSceneCoordinator {
+    
+    // MARK: - Properties
+    
     var baseViewController: BaseViewController
     var navigationController: UINavigationController?
     var childCoordinators: [KarhooUISDKSceneCoordinator] = []
     
     private var bookingCompletion: ((BookingScreenResult) -> Void)?
     
-    static let shared = BookingFlowCoordinator()
+    static let shared = MainFlowCoordinator()
+    
+    // MARK: - Initializator
     
     private init() {
         baseViewController = KarhooRidePlanningViewController()
     }
-    
-    func start(
+}
+
+extension MainFlowCoordinator: MainFlowRouter {
+    // MARK: - Booking drop-in flow
+    func startBooking(
         with journeyInfo: JourneyInfo? = nil,
         passengerDetails: PassengerDetails? = nil,
         filters: [QuoteListFilter]? = nil,
@@ -31,23 +75,24 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
     ) {
         bookingCompletion = callback
         
-        saveInjectedData(
+        saveInjectedDataForCurrentBooking(
             journeyInfo: journeyInfo,
             passengerDetails: passengerDetails,
             filters: filters,
             bookingMetadata: bookingMetadata
         )
-        routeToRidePlanning()
+        routeToRidePlanning(ridePlanningCallback: handleRidePlanningCallback)
     }
     
-    private func saveInjectedData(
+    // MARK: Booking prep
+    private func saveInjectedDataForCurrentBooking(
         journeyInfo: JourneyInfo? = nil,
         passengerDetails: PassengerDetails? = nil,
         filters: [QuoteListFilter]? = nil,
         bookingMetadata: [String: Any]? = nil
     ) {
-        PassengerInfo.shared.set(details: passengerDetails)
-        BookingMetadata.shared.set(metadata: bookingMetadata)
+        KarhooPassengerInfo.shared.set(details: passengerDetails)
+        KarhooBookingMetadata.shared.set(metadata: bookingMetadata)
         
         var validatedJourneyInfo: JourneyInfo? {
             guard let origin = journeyInfo?.origin else {
@@ -70,13 +115,36 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
         KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
     }
     
-    private func routeToRidePlanning() {
+    // MARK: - Allocation
+    func routeToAllocationScreen() {
+        
+    }
+    
+    // MARK: - Rides list & details
+    
+    func routeToRidesList() {
+        
+    }
+    
+    // MARK: - Track driver
+    
+    func routeToTrackDriver() {
+        
+    }
+}
+
+extension MainFlowCoordinator: MainFlowBookingRouter {
+    // MARK: Ride Planning
+    
+    func routeToRidePlanning(
+        ridePlanningCallback: @escaping (ScreenResult<KarhooRidePlanningResult>) -> Void
+    ) {
         let ridePlanningCoordinator =
         KarhooRidePlanningCoordinator
             .Builder()
-            .buildRidePlanningCoordinator { [weak self] result in
-                self?.handleRidePlanningCallback(result: result)
-            }
+            .buildRidePlanningCoordinator(
+                callback: ridePlanningCallback
+            )
         
         baseViewController = ridePlanningCoordinator.baseViewController
         navigationController = ridePlanningCoordinator.navigationController
@@ -88,7 +156,7 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
     private func handleRidePlanningCallback(result: ScreenResult<KarhooRidePlanningResult>) {
         switch result {
         case .completed(let data):
-            routeToQuoteList(with: data)
+            routeToQuoteList(journeyDetails: data.journeyDetails, onQuoteSelected: onQuoteSelected)
             
         // TODO: treat other cases. Change bookingCompletion return type is necessary
         default:
@@ -96,7 +164,9 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
         }
     }
     
-    private func routeToQuoteList(with data: KarhooRidePlanningResult) {
+    // MARK: Quote list
+    
+    func routeToQuoteList(journeyDetails: JourneyDetails, onQuoteSelected: @escaping (Quote, JourneyDetails) -> Void) {
         guard let navigationController else {
             assertionFailure("Missing navigation controller required to open the quote list")
             return
@@ -105,15 +175,31 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
         // TODO: add filters to coordinator init
         let quoteListCoordinator = KarhooComponents.shared.quoteList(
             navigationController: navigationController,
-            journeyDetails: data.journeyDetails) { [weak self] quote, journeyDetails in
-                self?.routeToCheckout(with: quote, journeyDetails: journeyDetails)
-            }
+            journeyDetails: journeyDetails,
+            onQuoteSelected: onQuoteSelected
+        )
         
         addChild(quoteListCoordinator)
         quoteListCoordinator.start()
     }
     
-    private func routeToCheckout(with quote: Quote, journeyDetails: JourneyDetails) {
+    func onQuoteSelected(quote: Quote, journeyDetails: JourneyDetails) {
+        self.routeToCheckout(
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: KarhooBookingMetadata.shared.getMetadata(),
+            checkoutCallback: checkoutCallback
+        )
+    }
+    
+    // MARK: Checkout
+    
+    func routeToCheckout(
+        quote: Quote,
+        journeyDetails: JourneyDetails,
+        bookingMetadata: [String: Any]?,
+        checkoutCallback: @escaping (ScreenResult<KarhooCheckoutResult>) -> Void
+    ) {
         guard let navigationController else {
             assertionFailure("Missing navigation controller required to open the checkout")
             return
@@ -123,15 +209,17 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
             navigationController: navigationController,
             quote: quote,
             journeyDetails: journeyDetails,
-            bookingMetadata: BookingMetadata.shared.getMetadata()) { [weak self] result in
-                self?.handleCheckoutResult(result)
-            }
+            bookingMetadata: KarhooBookingMetadata.shared.getMetadata(),
+            callback: checkoutCallback
+        )
         
         addChild(checkoutCoordinator)
         checkoutCoordinator.start()
     }
     
-    private func handleCheckoutResult(_ result: ScreenResult<KarhooCheckoutResult>) {
+    private func checkoutCallback(
+        result: ScreenResult<KarhooCheckoutResult>
+    ) {
         switch result {
         case .completed(let checkoutResult):
             // TODO: properly handle this scenario
@@ -151,9 +239,10 @@ final class BookingFlowCoordinator: KarhooUISDKSceneCoordinator {
         }
     }
     
-    private func resetDataAfterBooking() {
+    // MARK: Post booking cleanup
+    func resetDataAfterBooking() {
         KarhooJourneyDetailsManager.shared.reset()
-        BookingMetadata.shared.reset()
-        SharedQuoteFilters.shared.reset()
+        KarhooBookingMetadata.shared.reset()
+        KarhooQuoteFilters.shared.reset()
     }
 }

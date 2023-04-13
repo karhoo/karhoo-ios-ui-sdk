@@ -8,9 +8,17 @@
 import Foundation
 import KarhooSDK
 
-class PassengerInfo {
+protocol PassengerInfo {
+    func getDetails() -> PassengerDetails?
+    func set(details: PassengerDetails?)
+    func getCountry() -> Country
+    func set(country: Country)
+    func currentUserAsPassenger() -> PassengerDetails?
+}
 
-    static let shared = PassengerInfo()
+class KarhooPassengerInfo: PassengerInfo {
+
+    static let shared = KarhooPassengerInfo()
 
     private var passengerDetails: PassengerDetails?
     

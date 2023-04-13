@@ -8,33 +8,49 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-struct RepresentedMapView: UIViewRepresentable {
+struct KarhooRepresentedMapView: UIViewRepresentable, RepresentedMapView {
     typealias UIViewType = KarhooMKMapView
-    var mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter()
-    var onLocationPermissionDenied: () -> Void
+    
+    // MARK: - Properties
+    
+    var mapPresenter: BookingMapPresenter
+    var journeyDetails: JourneyDetails?
+    
+    var locationPersissionDeniedSubject = PassthroughSubject<Void, Never>()
+    
+    // MARK: - Init
+    
+    init(
+        mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
+        journeyDetails: JourneyDetails? = KarhooJourneyDetailsManager.shared.getJourneyDetails()
+    ) {
+        self.mapPresenter = mapPresenter
+        self.journeyDetails = journeyDetails
+    }
+    
+    // MARK: - UIViewRepresentable
     
     func makeUIView(context: Context) -> KarhooMKMapView {
         let myView = KarhooMKMapView()
-        setupMapView(myView, reverseGeolocate: getJourneyDetails() == nil)
+        setupMapView(myView, reverseGeolocate: journeyDetails == nil)
         return myView
     }
 
     func updateUIView(_ uiView: KarhooMKMapView, context: Context) {
     }
 
+    // MARK: - Helpers
+    
     private func setupMapView(_ mapView: KarhooMKMapView, reverseGeolocate: Bool) {
         mapPresenter.load(
             map: mapView,
             reverseGeolocate: reverseGeolocate,
             onLocationPermissionDenied: {
-                self.onLocationPermissionDenied()
+                self.locationPersissionDeniedSubject.send()
             }
         )
         mapView.set(presenter: mapPresenter)
-    }
-
-    private func getJourneyDetails() -> JourneyDetails? {
-        return KarhooJourneyDetailsManager.shared.getJourneyDetails()
     }
 }

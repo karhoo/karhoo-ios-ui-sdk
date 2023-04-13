@@ -8,9 +8,15 @@
 
 import Foundation
 
-class SharedQuoteFilters {
+protocol QuoteFilters {
+    func getFilters() -> [QuoteListFilter]?
+    func set(filters: [QuoteListFilter]?)
+    func reset()
+}
+
+class KarhooQuoteFilters: QuoteFilters {
     
-    static let shared = SharedQuoteFilters()
+    static let shared = KarhooQuoteFilters()
     
     // TODO: add rest of filters (number of passengers and luggage)
     private var filters: [QuoteListFilter]?

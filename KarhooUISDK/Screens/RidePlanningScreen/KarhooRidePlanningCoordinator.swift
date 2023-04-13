@@ -21,35 +21,31 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
     
     class Builder: RidePlanningScreenBuilder {
         public func buildRidePlanningCoordinator(
+            journeyDetails: JourneyDetails? = KarhooJourneyDetailsManager.shared.getJourneyDetails(),
+            filters: [QuoteListFilter]? = KarhooQuoteFilters.shared.getFilters(),
             callback: ScreenResultCallback<KarhooRidePlanningResult>?
         ) -> KarhooUISDKSceneCoordinator {
 
+            if let journeyDetails {
+                KarhooJourneyDetailsManager.shared.silentReset(with: journeyDetails)
+            }
+            
+            KarhooQuoteFilters.shared.set(filters: filters)
+            
             let coordinator = KarhooRidePlanningCoordinator(
                 navigationController: nil,
                 callback: callback!
             )
             
             guard
-                let navigationController = coordinator.navigationController,
-                let viewController = coordinator.baseViewController as? RidePlanningViewController
+                let navigationController = coordinator.navigationController
             else {
                 assertionFailure("Missing navigation in Ride Planning coordinator")
                 return coordinator
             }
             
-            if let sideMenuRouting = KarhooUI.sideMenuHandler {
-                let sideMenu = UISDKScreenRouting
-                    .default.sideMenu().buildSideMenu(
-                        hostViewController: viewController,
-                        routing: sideMenuRouting
-                    )
-                viewController.set(sideMenu: sideMenu)
-                viewController.set(leftNavigationButton: .menuIcon)
-            } else {
-                viewController.set(leftNavigationButton: .exitIcon)
-            }
-            
             navigationController.modalPresentationStyle = .fullScreen
+            
             return coordinator
         }
     }
@@ -64,14 +60,17 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
     private var callback: ((ScreenResult<KarhooRidePlanningResult>) -> Void)?
     
     private var journeyDetailsManager: JourneyDetailsManager
+    private var filtersManager: QuoteFilters
 
     // MARK: - Initializator
-
+    /// Pass journey details and filters if using Ride Planning as an independent component
+    /// If values are passed, they will override the existing stored information for the current booking
     init(
         navigationController: UINavigationController?,
         journeyDetails: JourneyDetails? = nil,
         filters: [QuoteListFilter]? = nil,
         journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager(),
+        filtersManager: QuoteFilters = KarhooQuoteFilters.shared,
         callback: ((ScreenResult<KarhooRidePlanningResult>) -> Void)?
     ) {
         self.journeyDetailsManager = journeyDetailsManager
@@ -79,8 +78,9 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
             journeyDetailsManager.silentReset(with: journeyDetails)
         }
         
+        self.filtersManager = filtersManager
         if let filters {
-            SharedQuoteFilters.shared.set(filters: filters)
+            KarhooQuoteFilters.shared.set(filters: filters)
         }
         
         self.viewModel = KarhooRidePlanningViewModel(
@@ -98,30 +98,23 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
 }
 
 extension KarhooRidePlanningCoordinator: RidePlanningRouter {
-
-    func routeToQuoteList(
-        details: JourneyDetails,
-        onQuoteSelected: @escaping (Quote, JourneyDetails) -> Void
-    ) {
-        
-    }
-    
-    func routeToCheckout(
-        quote: Quote,
-        journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, KarhooSDK.Quote, JourneyDetails) -> Void
-    ) {
-        
-    }
-    
     func exitPressed() {
         viewController?.dismiss(animated: true, completion: { [weak self] in
             self?.callback?(ScreenResult.cancelled(byUser: true))
         })
     }
     
-    func routeToAllocationScreen() {}
-    
-    func routeToDatePicker() {}
+    func finished() {
+        guard let journeyDetails = journeyDetailsManager.getJourneyDetails() else {
+            assertionFailure("Journey details should not be nil at the end of the ride planning flow")
+            return
+        }
+        
+        let result = KarhooRidePlanningResult(
+            journeyDetails: journeyDetails,
+            filters: filtersManager.getFilters()
+        )
+        
+        callback?(ScreenResult.completed(result: result))
+    }
 }

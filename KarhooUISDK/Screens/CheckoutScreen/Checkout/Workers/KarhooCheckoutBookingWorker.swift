@@ -94,7 +94,7 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         self.setup()
         
         if let bookingMetadata {
-            BookingMetadata.shared.set(metadata: bookingMetadata)
+            KarhooBookingMetadata.shared.set(metadata: bookingMetadata)
         }
     }
 

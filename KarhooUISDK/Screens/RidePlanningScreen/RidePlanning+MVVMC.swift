@@ -8,34 +8,24 @@
 
 import Foundation
 import KarhooSDK
+import Combine
 
 public protocol RidePlanningCoordinator: KarhooUISDKSceneCoordinator {
 }
 
 protocol RidePlanningViewController: BaseViewController {
-    func set(leftNavigationButton: NavigationBarItemIcon)
-    func set(sideMenu: SideMenu)
 }
 
 protocol RidePlanningRouter: AnyObject {
     func exitPressed()
-    func routeToAllocationScreen()
-    func routeToDatePicker()
-    
-    func routeToQuoteList(
-        details: JourneyDetails,
-        onQuoteSelected: @escaping (_ quote: Quote, _ journeyDetails: JourneyDetails) -> Void
-    )
-
-    func routeToCheckout(
-        quote: Quote,
-        journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<KarhooCheckoutResult>, Quote, JourneyDetails) -> Void
-    )
+    func finished()
 }
 
 public struct KarhooRidePlanningResult {
     var journeyDetails: JourneyDetails
     var filters: [QuoteListFilter]?
+}
+
+protocol RepresentedMapView {
+    var locationPersissionDeniedSubject: PassthroughSubject<Void, Never> { get }
 }

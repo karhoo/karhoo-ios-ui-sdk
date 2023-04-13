@@ -8,8 +8,14 @@
 
 import Foundation
 
-class BookingMetadata {
-    static let shared = BookingMetadata()
+protocol BookingMetadata {
+    func getMetadata() -> [String: Any]?
+    func set(metadata: [String: Any]?)
+    func reset()
+}
+
+class KarhooBookingMetadata: BookingMetadata {
+    static let shared = KarhooBookingMetadata()
 
     private var metadata: [String: Any]?
     
