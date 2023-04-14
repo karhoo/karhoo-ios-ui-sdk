@@ -56,6 +56,7 @@ final class MainFlowCoordinator: KarhooUISDKSceneCoordinator {
     private var bookingCompletion: ((BookingScreenResult) -> Void)?
     
     static let shared = MainFlowCoordinator()
+    let bookingStorage = KarhooBookingStorage.shared
     
     // MARK: - Initializator
     
@@ -91,8 +92,9 @@ extension MainFlowCoordinator: MainFlowRouter {
         filters: [QuoteListFilter]? = nil,
         bookingMetadata: [String: Any]? = nil
     ) {
-        KarhooPassengerInfo.shared.set(details: passengerDetails)
-        KarhooBookingMetadata.shared.set(metadata: bookingMetadata)
+        
+        bookingStorage.passengerInfo.set(details: passengerDetails)
+        bookingStorage.bookingMetadata.set(metadata: bookingMetadata)
         
         var validatedJourneyInfo: JourneyInfo? {
             guard let origin = journeyInfo?.origin else {
@@ -112,7 +114,7 @@ extension MainFlowCoordinator: MainFlowRouter {
                 date: isDateAllowed ? journeyInfo?.date : nil
             )
         }
-        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
+        bookingStorage.journeyDetailsManager.setJourneyInfo(journeyInfo: validatedJourneyInfo)
     }
     
     // MARK: - Allocation
@@ -156,6 +158,7 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
     private func handleRidePlanningCallback(result: ScreenResult<KarhooRidePlanningResult>) {
         switch result {
         case .completed(let data):
+            bookingStorage.journeyDetailsManager.silentReset(with: data.journeyDetails)
             routeToQuoteList(journeyDetails: data.journeyDetails, onQuoteSelected: onQuoteSelected)
             
         // TODO: treat other cases. Change bookingCompletion return type is necessary
@@ -184,10 +187,13 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
     }
     
     func onQuoteSelected(quote: Quote, journeyDetails: JourneyDetails) {
-        self.routeToCheckout(
+        bookingStorage.journeyDetailsManager.silentReset(with: journeyDetails)
+        bookingStorage.quote = quote
+        
+        routeToCheckout(
             quote: quote,
             journeyDetails: journeyDetails,
-            bookingMetadata: KarhooBookingMetadata.shared.getMetadata(),
+            bookingMetadata: bookingStorage.bookingMetadata.getMetadata(),
             checkoutCallback: checkoutCallback
         )
     }
@@ -209,7 +215,7 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
             navigationController: navigationController,
             quote: quote,
             journeyDetails: journeyDetails,
-            bookingMetadata: KarhooBookingMetadata.shared.getMetadata(),
+            bookingMetadata: bookingMetadata,
             callback: checkoutCallback
         )
         
@@ -241,8 +247,6 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
     
     // MARK: Post booking cleanup
     func resetDataAfterBooking() {
-        KarhooJourneyDetailsManager.shared.reset()
-        KarhooBookingMetadata.shared.reset()
-        KarhooQuoteFilters.shared.reset()
+        bookingStorage.reset()
     }
 }
