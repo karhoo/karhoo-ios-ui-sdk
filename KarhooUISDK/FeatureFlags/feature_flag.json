@@ -1,14 +1,14 @@
 [
     {
-        "v": "1.11.1",
-        "feature_flags": {
+        "version": "1.11.1",
+        "flags": {
             "adyenAvailable": false,
             "newRidePlaningScreen": true,
         }
     },
     {
-        "v": "1.11.0",
-        "feature_flags": {
+        "version": "1.11.0",
+        "flags": {
             "adyenAvailable": true,
             "newRidePlaningScreen": false,
         }
