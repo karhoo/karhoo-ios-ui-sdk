@@ -11,10 +11,6 @@ import Foundation
 struct FeatureFlag: Codable {
     var adyenAvailable: Bool
     var newRidePlaningScreen: Bool
-    
-    static var defaultFlags: FeatureFlag {
-        FeatureFlag(adyenAvailable: false, newRidePlaningScreen: true)
-    }
 }
 
 struct FeatureFlagsModel: Codable {
