@@ -543,6 +543,9 @@
 		7B061C47297EE7500036049F /* KarhooTextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */; };
 		7B061C49297EFC690036049F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B061C48297EFC690036049F /* RoundedCorner.swift */; };
 		7B09365929EB41F60088B476 /* FeatureFlagsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */; };
+		7B09365B29EC66650088B476 /* FeatureFlagsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365A29EC66650088B476 /* FeatureFlagsTest.swift */; };
+		7B09365D29EC6D770088B476 /* FeatureFlagsSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365C29EC6D770088B476 /* FeatureFlagsSaver.swift */; };
+		7B09365F29EC70380088B476 /* MockFeatureFlagsSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365E29EC70380088B476 /* MockFeatureFlagsSaver.swift */; };
 		7B0A160A2993FD8600980E7F /* PriceDetailsSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */; };
 		7B180B0F2922C32300DB0684 /* DetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */; };
 		7B180B1129236B7200DB0684 /* DetailsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */; };
@@ -1219,6 +1222,9 @@
 		7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextFieldValidator.swift; sourceTree = "<group>"; };
 		7B061C48297EFC690036049F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsUpdater.swift; sourceTree = "<group>"; };
+		7B09365A29EC66650088B476 /* FeatureFlagsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsTest.swift; sourceTree = "<group>"; };
+		7B09365C29EC6D770088B476 /* FeatureFlagsSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsSaver.swift; sourceTree = "<group>"; };
+		7B09365E29EC70380088B476 /* MockFeatureFlagsSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFeatureFlagsSaver.swift; sourceTree = "<group>"; };
 		7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
 		7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewModel.swift; sourceTree = "<group>"; };
 		7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewController.swift; sourceTree = "<group>"; };
@@ -3150,6 +3156,7 @@
 				7B01326B29E840580080D8BA /* feature_flag.json */,
 				7B01326E29E842FB0080D8BA /* FeatureFlagsModel.swift */,
 				7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */,
+				7B09365C29EC6D770088B476 /* FeatureFlagsSaver.swift */,
 			);
 			path = FeatureFlags;
 			sourceTree = "<group>";
@@ -3305,6 +3312,8 @@
 				518D8F54278DF0BA001867C6 /* QuoteDatesHelperSpec.swift */,
 				7B34182F27AAB56F00E2D49D /* MailValidatorTest.swift */,
 				7B34183127AAE10400E2D49D /* LinkParserTest.swift */,
+				7B09365A29EC66650088B476 /* FeatureFlagsTest.swift */,
+				7B09365E29EC70380088B476 /* MockFeatureFlagsSaver.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -4681,6 +4690,7 @@
 				5C1CD0B4241A5D88004AFF7D /* KarhooDriverDetailsView.swift in Sources */,
 				5135E57728574A4A00F14A0F /* QuoteViewModel.swift in Sources */,
 				7BA990A729780E31003E9010 /* KarhooBottomSheetCommentsView.swift in Sources */,
+				7B09365D29EC6D770088B476 /* FeatureFlagsSaver.swift in Sources */,
 				09E683212374236100BFF5B9 /* KarhooAddressMapView.swift in Sources */,
 				5192C0232832DE4500D01FC8 /* UIImage+uisdkImage.swift in Sources */,
 				FC435EF12211B35C00FB6BB5 /* TwoPageViewController.swift in Sources */,
@@ -4946,6 +4956,7 @@
 				14707C8F25D54C2200CAD083 /* RideDetailsStackButtonPresenterSpec.swift in Sources */,
 				14707C5C25D54C2100CAD083 /* KarhooAddressSearchProviderSpec.swift in Sources */,
 				14707C7E25D54C2100CAD083 /* KarhooDateFormatterSpec.swift in Sources */,
+				7B09365F29EC70380088B476 /* MockFeatureFlagsSaver.swift in Sources */,
 				14707C3A25D54C2100CAD083 /* DestinationSetStrategySpec.swift in Sources */,
 				14707CA025D54C2200CAD083 /* KarhooTripRatingCacheSpec.swift in Sources */,
 				6B5D607D26E8E45900163EFE /* MockPassengerDetailsViewController.swift in Sources */,
@@ -4979,6 +4990,7 @@
 				14707CC525D54C2200CAD083 /* PopupDialogPresenterSpec.swift in Sources */,
 				D88BC2862620C51C00F1EA60 /* TimeFormatterSpec.swift in Sources */,
 				FC435F7A2211DDB400FB6BB5 /* RideCellViewModelSpec.swift in Sources */,
+				7B09365B29EC66650088B476 /* FeatureFlagsTest.swift in Sources */,
 				14707CA325D54C2200CAD083 /* KarhooTripMetaDataPresenterSpec.swift in Sources */,
 				14707CC625D54C2200CAD083 /* TripAddressBarPresenterSpec.swift in Sources */,
 				14707C9B25D54C2200CAD083 /* PickupOnlyStrategySpec.swift in Sources */,

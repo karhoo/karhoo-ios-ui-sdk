@@ -20,5 +20,4 @@ struct FeatureFlag: Codable {
 struct FeatureFlagsModel: Codable {
     var version: String
     var flags: FeatureFlag
-
 }
