@@ -22,13 +22,13 @@ class FeatureFlagsUpdater {
         self.featureFlagsStore = featureFlagsStore
     }
     
-    func start() {
+    func update() {
         let jsonUrl = "https://raw.githubusercontent.com/karhoo/karhoo-ios-ui-sdk/MOB-4757-feature-flag-file/KarhooUISDK/FeatureFlags/feature_flag.json"
 
         let url = URL(string: jsonUrl)!
         let decoder = JSONDecoder()
         
-        let task = URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
+        let task = URLSession.shared.dataTask(with: url) {[weak self] data, _, error in
             if let data {
                 do {
                     let flagSets = try decoder.decode([FeatureFlagsModel].self, from: data)
