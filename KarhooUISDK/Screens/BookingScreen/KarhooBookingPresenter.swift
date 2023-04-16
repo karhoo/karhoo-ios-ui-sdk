@@ -205,10 +205,32 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-        analytics.bookingScreenOpened()
-        journeyDetailsManager.remove(observer: self)
-        journeyDetailsManager.add(observer: self)
-        checkCoverage()
+        let featureFlagsProvider = KarhooFeatureFlagProvider()
+        let flags = featureFlagsProvider.get()
+        let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
+        let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
+    
+        if flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName {
+            view?.showAlert(
+                title: "Incorrect version",
+                message: "Please update app",
+                error: nil,
+                actions: [
+                    AlertAction(
+                        title: "OK",
+                        style: .default,
+                        handler: { [weak self] _ in
+                            self?.exitPressed()
+                        }
+                    )
+                ]
+            )
+        } else {
+            analytics.bookingScreenOpened()
+            journeyDetailsManager.remove(observer: self)
+            journeyDetailsManager.add(observer: self)
+            checkCoverage()
+        }
     }
 
     func viewDidDissapear() {
