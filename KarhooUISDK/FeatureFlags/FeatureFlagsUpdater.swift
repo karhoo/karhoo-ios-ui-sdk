@@ -12,14 +12,14 @@ import UIKit
 class FeatureFlagsUpdater {
     
     private let currentSdkVersion: String
-    private let featureFlagsSaver: FeatureFlagsSaver
+    private let featureFlagsStore: FeatureFlagsStore
     
     init(
         currentSdkVersion: String,
-        featureFlagsSaver: FeatureFlagsSaver = KarhooFeatureFlagsSaver()
+        featureFlagsStore: FeatureFlagsStore = KarhooFeatureFlagsStore()
     ) {
         self.currentSdkVersion = currentSdkVersion
-        self.featureFlagsSaver = featureFlagsSaver
+        self.featureFlagsStore = featureFlagsStore
     }
     
     func start() {
@@ -60,6 +60,6 @@ class FeatureFlagsUpdater {
     }
     
     private func storeFeatureFlag(_ model: FeatureFlagsModel) {
-        featureFlagsSaver.save(model)
+        featureFlagsStore.save(model)
     }
 }

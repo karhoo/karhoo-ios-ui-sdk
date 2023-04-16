@@ -58,13 +58,13 @@ class FeatureFlagsTest: KarhooTestCase {
     }
     
     private func performTestForVersions(current: String, expected: String?) {
-        let mockFeatureFlagsSaver = MockFeatureFlagsSaver()
+        let mockFeatureFlagsStore = MockFeatureFlagsStore()
         let featureFlagsUpdater = FeatureFlagsUpdater (
             currentSdkVersion: current,
-            featureFlagsSaver: mockFeatureFlagsSaver
+            featureFlagsStore: mockFeatureFlagsStore
         )
         featureFlagsUpdater.handleFlagSets(getFeatureFlagsSet())
-        XCTAssertEqual(expected, mockFeatureFlagsSaver.savedModel?.version)
+        XCTAssertEqual(expected, mockFeatureFlagsStore.savedModel?.version)
     }
     
     
