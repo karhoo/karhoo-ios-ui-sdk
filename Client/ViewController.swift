@@ -327,8 +327,20 @@ class ViewController: UIViewController {
             print("token login: \(result)")
             if result.isSuccess() {
                 self.showKarhoo()
+            } else {
+                self.showLoginErrorAllert()
             }
         }
+    }
+    
+    private func showLoginErrorAllert() {
+        let alert = UIAlertController(
+            title: "Login was unsuccessful",
+            message: "Something went wrong during the login process. Either the servers are down or, more probably, the token used is expired.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
     private func refreshTokenLogin(token: String, callback: @escaping () -> Void) {
