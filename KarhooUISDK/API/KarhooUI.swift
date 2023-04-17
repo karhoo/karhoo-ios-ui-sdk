@@ -13,7 +13,9 @@ public final class KarhooUI {
     public static var colors: KarhooColors = DefaultKarhooColors()
     public static var sideMenuHandler: SideMenuHandler?
     public static var components = KarhooComponents.shared
-    private static var fetureFlagsUpdater = FeatureFlagsUpdater(currentSdkVersion: "1.12.0")
+    private static var fetureFlagsUpdater = FeatureFlagsUpdater(
+        currentSdkVersion: KarhooConfig.uisdkVersion
+    )
 
     public static var fontFamily: FontFamily = FontFamily() {
         willSet {

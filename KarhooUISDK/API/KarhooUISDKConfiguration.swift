@@ -22,6 +22,8 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
 
     /// Return `true` if you want `Karhoo UISDK` to use `Add to calendar` feature, allowing users to add scheduled ride to the device main calendar. This feature required host app’s `info.plist` to have `Privacy - Calendars Usage Description` marked as used. If you do not want to modify your `info.plist`, or you don’t want user to see this feature, return `false`.
     var useAddToCalendarFeature: Bool { get }
+    
+    let uisdkVersion: String
 
 }
 
