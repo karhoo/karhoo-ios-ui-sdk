@@ -1212,6 +1212,7 @@
 		6F89EA0C248E5CA300F47C1B /* KarhooAddressDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAddressDisplayView.swift; sourceTree = "<group>"; };
 		79793ED7270F2E2200944896 /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
 		799DC591268F66EC00A48589 /* MapAnnotationViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationViewModelSpec.swift; sourceTree = "<group>"; };
+		7B01326B29E840580080D8BA /* feature_flag.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = feature_flag.json; sourceTree = "<group>"; };
 		7B061C46297EE7500036049F /* KarhooTextFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooTextFieldValidator.swift; sourceTree = "<group>"; };
 		7B061C48297EFC690036049F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
@@ -3139,6 +3140,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7B01326D29E842C80080D8BA /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				7B01326B29E840580080D8BA /* feature_flag.json */,
+			);
+			path = FeatureFlags;
+			sourceTree = "<group>";
+		};
 		7B34181C27A89E3B00E2D49D /* LegalNotice */ = {
 			isa = PBXGroup;
 			children = (
@@ -3783,6 +3792,7 @@
 		FC8F471621539E24007841FB /* KarhooUISDK */ = {
 			isa = PBXGroup;
 			children = (
+				7B01326D29E842C80080D8BA /* FeatureFlags */,
 				FC8F473A2153DBF1007841FB /* API */,
 				099152FF21BFDB4500B46D9F /* Assets */,
 				0991070F21B8486300BD7E6F /* Builders */,
