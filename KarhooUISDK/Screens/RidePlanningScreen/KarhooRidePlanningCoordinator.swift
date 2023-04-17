@@ -69,7 +69,7 @@ final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
         navigationController: UINavigationController?,
         journeyDetails: JourneyDetails? = nil,
         filters: [QuoteListFilter]? = nil,
-        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager(),
+        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
         filtersManager: QuoteFilters = KarhooQuoteFilters.shared,
         callback: ((ScreenResult<KarhooRidePlanningResult>) -> Void)?
     ) {

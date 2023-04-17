@@ -18,13 +18,13 @@ class KarhooBookingStorage: BookingStorage {
     // TODO: add to the list or modify these as needed during implementation
     // MARK: - Properties
     
-    let journeyDetailsManager = KarhooJourneyDetailsManager.shared
-    let passengerInfo = KarhooPassengerInfo.shared
-    let bookingMetadata = KarhooBookingMetadata.shared
-    let filters = KarhooQuoteFilters.shared
+    let journeyDetailsManager: JourneyDetailsManager
+    let passengerInfo: PassengerInfo
+    let filters: QuoteFilters
     
     var quote: Quote?
     var loyaltyInfo: KarhooBasicLoyaltyInfo?
+    var bookingMetadata: [String: Any]?
     
     // TODO: double check if these are needed. Delete if not
     var tripInfo: TripInfo?
@@ -32,14 +32,36 @@ class KarhooBookingStorage: BookingStorage {
     
     static let shared = KarhooBookingStorage()
     
+    // MARK: - Init
+    
+    init(
+        journeyDetailsManager: JourneyDetailsManager = KarhooJourneyDetailsManager.shared,
+        passengerInfo: PassengerInfo = KarhooPassengerInfo.shared,
+        filters: QuoteFilters = KarhooQuoteFilters.shared,
+        quote: Quote? = nil,
+        loyaltyInfo: KarhooBasicLoyaltyInfo? = nil,
+        bookingMetadata: [String: Any]? = nil,
+        tripInfo: TripInfo? = nil,
+        outboundTripId: String? = nil
+    ) {
+        self.journeyDetailsManager = journeyDetailsManager
+        self.passengerInfo = passengerInfo
+        self.filters = filters
+        self.quote = quote
+        self.loyaltyInfo = loyaltyInfo
+        self.bookingMetadata = bookingMetadata
+        self.tripInfo = tripInfo
+        self.outboundTripId = outboundTripId
+    }
+    
    // MARK: - BookingStorage
     func reset() {
         journeyDetailsManager.reset()
         passengerInfo.reset()
-        bookingMetadata.reset()
         filters.reset()
         quote = nil
         loyaltyInfo = nil
+        bookingMetadata = nil
         tripInfo = nil
         outboundTripId = nil
     }

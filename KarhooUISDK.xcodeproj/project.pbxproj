@@ -594,7 +594,6 @@
 		846A875329DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875229DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift */; };
 		846A875529DC3E1F00952C81 /* RidePlanningScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */; };
 		846A875929DC646900952C81 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875829DC646900952C81 /* MainFlowCoordinator.swift */; };
-		846A875B29DD98D700952C81 /* KarhooBookingMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875A29DD98D700952C81 /* KarhooBookingMetadata.swift */; };
 		846A875D29DDA03800952C81 /* KarhooQuoteFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A875C29DDA03800952C81 /* KarhooQuoteFilters.swift */; };
 		846CE970292296B8007DF262 /* BottomSheetScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */; };
 		84925E26292543CD00B0C483 /* KarhooLocationPermissionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */; };
@@ -1279,7 +1278,6 @@
 		846A875229DC1A9C00952C81 /* KarhooMapUIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooMapUIViewRepresentable.swift; sourceTree = "<group>"; };
 		846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidePlanningScreenBuilder.swift; sourceTree = "<group>"; };
 		846A875829DC646900952C81 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
-		846A875A29DD98D700952C81 /* KarhooBookingMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooBookingMetadata.swift; sourceTree = "<group>"; };
 		846A875C29DDA03800952C81 /* KarhooQuoteFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooQuoteFilters.swift; sourceTree = "<group>"; };
 		846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetScreenBuilder.swift; sourceTree = "<group>"; };
 		84751E73292FE97F000E98B0 /* KarhooAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooAsyncImage.swift; sourceTree = "<group>"; };
@@ -3273,7 +3271,6 @@
 		84BF5FFF29E7FDA30070F776 /* SharedData */ = {
 			isa = PBXGroup;
 			children = (
-				846A875A29DD98D700952C81 /* KarhooBookingMetadata.swift */,
 				5C8316C0246B6D0700BAA926 /* KarhooPassengerInfo.swift */,
 				846A875C29DDA03800952C81 /* KarhooQuoteFilters.swift */,
 			);
@@ -4762,7 +4759,6 @@
 				51801A24285B720100EE6583 /* PassengerCapacityFilter.swift in Sources */,
 				FC435F182211B3FA00FB6BB5 /* TripMetaDataMVP.swift in Sources */,
 				0916BB72236CA2300064A5D6 /* KarhooAddressMapMVP.swift in Sources */,
-				846A875B29DD98D700952C81 /* KarhooBookingMetadata.swift in Sources */,
 				FC435EEC2211B33B00FB6BB5 /* RidesMVP.swift in Sources */,
 				51F4D57028574D9100A8DB5E /* SingleSelectionListView.swift in Sources */,
 				5190F00F2847858600F7623A /* AdyenPaymentNonceProvider.swift in Sources */,

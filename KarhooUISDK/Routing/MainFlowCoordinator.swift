@@ -94,7 +94,7 @@ extension MainFlowCoordinator: MainFlowRouter {
     ) {
         
         bookingStorage.passengerInfo.set(details: passengerDetails)
-        bookingStorage.bookingMetadata.set(metadata: bookingMetadata)
+        bookingStorage.bookingMetadata = bookingMetadata
         
         var validatedJourneyInfo: JourneyInfo? {
             guard let origin = journeyInfo?.origin else {
@@ -193,7 +193,7 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
         routeToCheckout(
             quote: quote,
             journeyDetails: journeyDetails,
-            bookingMetadata: bookingStorage.bookingMetadata.getMetadata(),
+            bookingMetadata: bookingStorage.bookingMetadata,
             checkoutCallback: checkoutCallback
         )
     }
