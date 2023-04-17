@@ -14,7 +14,7 @@ public final class KarhooUI {
     public static var sideMenuHandler: SideMenuHandler?
     public static var components = KarhooComponents.shared
     private static var featureFlagsService = FeatureFlagsService(
-        currentSdkVersion: KarhooConfig.uisdkVersion
+        currentSdkVersion: karhooUiSdkVersion
     )
 
     public static var fontFamily: FontFamily = FontFamily() {

@@ -17,7 +17,6 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var paymentManager: PaymentManager!
     static var useAddToCalendarFeature = true
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
-    static let uisdkVersion = "1.12.0"
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
 
