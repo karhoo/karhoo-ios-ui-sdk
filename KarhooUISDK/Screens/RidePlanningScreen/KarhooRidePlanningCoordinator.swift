@@ -8,6 +8,7 @@
 
 import Foundation
 import KarhooSDK
+import UIKit
 
 final class KarhooRidePlanningCoordinator: RidePlanningCoordinator {
     // TODO: actually use these, they've been just copy-pasted here as a reminder
