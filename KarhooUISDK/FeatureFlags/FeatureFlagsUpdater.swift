@@ -1,5 +1,5 @@
 //
-//  FeatureFlagsUpdater.swift
+//  FeatureFlagsService.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 15/04/2023.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FeatureFlagsUpdater {
+class FeatureFlagsService {
     
     private let currentSdkVersion: String
     private let featureFlagsStore: FeatureFlagsStore
@@ -28,25 +28,26 @@ class FeatureFlagsUpdater {
         let url = URL(string: jsonUrl)!
         let decoder = JSONDecoder()
         
-        let task = URLSession.shared.dataTask(with: url) {[weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             if let data {
                 do {
                     let flagSets = try decoder.decode([FeatureFlagsModel].self, from: data)
                     self?.handleFlagSets(flagSets)
                 } catch {
-                    // TODO: Add error to analytics
+                    // TODO: Add error to logger
                 }
             } else if let error {
-                // TODO: Add error to analytics
+                // TODO: Add error to logger
+            } else {
+                // TODO: Add error to logger
             }
         }
         task.resume()
     }
     
     func handleFlagSets(_ sets: [FeatureFlagsModel]) {
-        if let selectedSet = selectProperSet(forVersion: currentSdkVersion, from: sets) {
-            storeFeatureFlag(selectedSet)
-        }
+        guard let selectedSet = selectProperSet(forVersion: currentSdkVersion, from: sets) else { return }
+        storeFeatureFlag(selectedSet)
     }
     
     private func selectProperSet(forVersion version: String, from sets: [FeatureFlagsModel]) -> FeatureFlagsModel? {

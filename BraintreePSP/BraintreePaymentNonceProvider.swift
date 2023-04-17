@@ -48,7 +48,7 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
         let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
                                                      currency: quote.price.currencyCode)
 
-        paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute {[weak self] result in
+        paymentService.initialisePaymentSDK(paymentSDKTokenPayload: sdkTokenRequest).execute { [weak self] result in
             switch result {
             case .success(let sdkToken, _):
                 self?.sdkToken = sdkToken
