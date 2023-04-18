@@ -34,7 +34,7 @@ public final class KarhooUI {
     public static func set(configuration: KarhooUISDKConfiguration) {
         Karhoo.set(configuration: configuration)
         KarhooUISDKConfigurationProvider.set(configuration)
-        fetureFlagsUpdater.update()
+        featureFlagsService.update()
     }
     
     public func screens() -> Routing {
