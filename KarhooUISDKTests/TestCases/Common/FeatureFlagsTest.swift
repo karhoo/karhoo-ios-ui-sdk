@@ -54,16 +54,16 @@ class FeatureFlagsTest: KarhooTestCase {
         //            "11.1.0"
     }
     private func getFeatureFlagsModel(withVersion version: String) -> FeatureFlagsModel {
-        return FeatureFlagsModel(version: version, flags: FeatureFlag(adyenAvailable: true, newRidePlaningScreen: true))
+        return FeatureFlagsModel(version: version, flags: FeatureFlags(adyenAvailable: true, newRidePlaningScreen: true))
     }
     
     private func performTestForVersions(current: String, expected: String?) {
         let mockFeatureFlagsStore = MockFeatureFlagsStore()
-        let featureFlagsUpdater = FeatureFlagsUpdater (
+        let featureFlagsService = featureFlagsService (
             currentSdkVersion: current,
             featureFlagsStore: mockFeatureFlagsStore
         )
-        featureFlagsUpdater.handleFlagSets(getFeatureFlagsSet())
+        featureFlagsService.handleFlagSets(getFeatureFlagsSet())
         XCTAssertEqual(expected, mockFeatureFlagsStore.savedModel?.version)
     }
     
