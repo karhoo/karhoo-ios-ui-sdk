@@ -205,31 +205,15 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-        let featureFlagsProvider = KarhooFeatureFlagProvider()
-        let flags = featureFlagsProvider.get()
-        let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
-        let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
-    
-        if flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName {
-            view?.showAlert(
-                title: "Incorrect version",
-                message: "Please update app",
-                error: nil,
-                actions: [
-                    AlertAction(
-                        title: "OK",
-                        style: .default,
-                        handler: { [weak self] _ in
-                            self?.exitPressed()
-                        }
-                    )
-                ]
-            )
-        } else {
+        if isSdkVersionSupported() {
             analytics.bookingScreenOpened()
             journeyDetailsManager.remove(observer: self)
             journeyDetailsManager.add(observer: self)
             checkCoverage()
+        } else {
+            view?.showIncorrectVersionPopup(completion: { [weak self] in
+                self?.exitPressed()
+            })
         }
     }
 
@@ -267,6 +251,15 @@ extension KarhooBookingPresenter: BookingPresenter {
         hasCoverageInTheAreaPublisher.value == true
         
         isAsapEnabledPublisher.send(canProceedWithAsapBooking)
+    }
+    
+    private func isSdkVersionSupported() -> Bool {
+        let featureFlagsProvider = KarhooFeatureFlagProvider()
+        let flags = featureFlagsProvider.get()
+        let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
+        let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
+    
+        return !(flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName)
     }
 
     private func updateScheduledRideEnabled(using details: JourneyDetails) {

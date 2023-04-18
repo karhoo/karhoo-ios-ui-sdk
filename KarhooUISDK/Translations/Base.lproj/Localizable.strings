@@ -870,6 +870,8 @@
 
 "kh_uisdk_quotes_error_missing_addresses_subtitle" = "Please enter a pickup and drop off address to see quotes";
 
+"kh_uisdk_error_incorrect_sdk_version_message" = "Please update your application before using this feature";
+
 "kh_uisdk_quotes_error_missing_addresses_title" = "Pickup or drop off address is missing";
 
 "kh_uisdk_quotes_error_no_availability_subtitle" = "Please select another time";

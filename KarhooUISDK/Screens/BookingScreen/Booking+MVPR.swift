@@ -42,6 +42,8 @@ internal protocol BookingView: BookingScreen {
     func set(leftNavigationButton: NavigationBarItemIcon)
 
     func set(sideMenu: SideMenu)
+    
+    func showIncorrectVersionPopup(completion: @escaping () -> Void)
 }
 
 protocol BookingPresenter {
