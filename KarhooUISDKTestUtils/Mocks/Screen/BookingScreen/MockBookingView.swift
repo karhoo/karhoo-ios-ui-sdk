@@ -58,6 +58,11 @@ final public class MockBookingView: MockBaseViewController, BookingView {
     public var tripToOpen: TripInfo?
     public var openRidesListCalled = false
     public var openRidesDetailsCalled = false
+    
+    public var showIncorrectVersionPopupCalled = false
+    func showIncorrectVersionPopup(completion: @escaping () -> Void) {
+        showIncorrectVersionPopupCalled = true
+    }
 }
 
 extension MockBookingView: BookingScreen {
