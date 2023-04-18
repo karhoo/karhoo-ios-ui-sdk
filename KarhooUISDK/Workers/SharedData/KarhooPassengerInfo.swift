@@ -8,14 +8,27 @@
 import Foundation
 import KarhooSDK
 
-class PassengerInfo {
+protocol PassengerInfo {
+    func getDetails() -> PassengerDetails?
+    func set(details: PassengerDetails?)
+    func getCountry() -> Country
+    func set(country: Country)
+    func currentUserAsPassenger() -> PassengerDetails?
+    func reset()
+}
 
-    static let shared = PassengerInfo()
+class KarhooPassengerInfo: PassengerInfo {
+
+    // MARK: - Properties
+    
+    static let shared = KarhooPassengerInfo()
 
     private var passengerDetails: PassengerDetails?
     
     // Note: Added it here to make it persistent without modifying the network SDK and affecting any backend logic
     private var country: Country?
+    
+    // MARK: - Passenger Details
     
     func getDetails() -> PassengerDetails? {
         return passengerDetails
@@ -24,6 +37,20 @@ class PassengerInfo {
     func set(details: PassengerDetails?) {
         passengerDetails = details
     }
+    
+    func currentUserAsPassenger() -> PassengerDetails? {
+        if Karhoo.configuration.authenticationMethod().isGuest() {
+            return nil
+        }
+
+        guard let currentUser = Karhoo.getUserService().getCurrentUser() else {
+            return nil
+        }
+
+        return PassengerDetails(user: currentUser)
+    }
+    
+    // MARK: - Country
     
     func getCountry() -> Country {
         if let selectedCountry = country {
@@ -46,16 +73,11 @@ class PassengerInfo {
         self.country = country
     }
 
-    func currentUserAsPassenger() -> PassengerDetails? {
-        if Karhoo.configuration.authenticationMethod().isGuest() {
-            return nil
-        }
-
-        guard let currentUser = Karhoo.getUserService().getCurrentUser() else {
-            return nil
-        }
-
-        return PassengerDetails(user: currentUser)
+    // MARK: - Utils
+    
+    func reset() {
+        passengerDetails = nil
+        country = nil
     }
     
     private struct Keys {

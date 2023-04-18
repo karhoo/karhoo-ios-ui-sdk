@@ -92,6 +92,10 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
         self.loyaltyWorker = loyaltyWorker
         self.analytics = analytics
         self.setup()
+        
+        if let bookingMetadata {
+            KarhooBookingStorage.shared.bookingMetadata = bookingMetadata
+        }
     }
 
     // MARK: - Endpoints

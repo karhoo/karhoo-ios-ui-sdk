@@ -301,7 +301,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         firstNameInputView.set(text: details.firstName)
         lastNameInputView.set(text: details.lastName)
         emailNameInputView.set(text: details.email)
-        mobilePhoneInputView.set(country: PassengerInfo.shared.getCountry())
+        mobilePhoneInputView.set(country: KarhooPassengerInfo.shared.getCountry())
         mobilePhoneInputView.set(text: details.phoneNumber)
         didBecomeInactive(identifier: KHPassengerDetailsViewID.mobilePhoneInputView)
         

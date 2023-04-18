@@ -77,7 +77,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
         quoteValidityWorker: QuoteValidityWorker = KarhooQuoteValidityWorker(),
         tripService: TripService = Karhoo.getTripService(),
         userService: UserService = Karhoo.getUserService(),
-        passengerDetails: PassengerDetails? = PassengerInfo.shared.getDetails(),
+        passengerDetails: PassengerDetails? = KarhooPassengerInfo.shared.getDetails(),
         analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
         sdkConfiguration: KarhooUISDKConfiguration = KarhooUISDKConfigurationProvider.configuration,
         dateFormatter: DateFormatterType = KarhooDateFormatter(),
@@ -93,7 +93,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
         self.userService = userService
         self.quoteValidityWorker = quoteValidityWorker
         self.bookingWorker = bookingWorkerClosure(quote, journeyDetails, bookingMetadata)
-        self.passengerDetailsWorker = passengerDetailsWorkerClosure(passengerDetails ?? PassengerInfo.shared.currentUserAsPassenger())
+        self.passengerDetailsWorker = passengerDetailsWorkerClosure(passengerDetails ?? KarhooPassengerInfo.shared.currentUserAsPassenger())
         self.sdkConfiguration = sdkConfiguration
         self.analytics = analytics
         self.quote = quote
