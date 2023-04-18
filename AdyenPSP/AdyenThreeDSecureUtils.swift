@@ -11,7 +11,7 @@ import KarhooUISDK
 public struct AdyenThreeDSecureUtils: ThreeDSecureUtils {
     public init() {}
     
-    public var userAgent: String {
+    public var userAgent: String {  
         "KH/UISDK/iOS/\(karhooUiSdkVersion)"
     }
     
