@@ -59,7 +59,7 @@ class FeatureFlagsTest: KarhooTestCase {
     
     private func performTestForVersions(current: String, expected: String?) {
         let mockFeatureFlagsStore = MockFeatureFlagsStore()
-        let featureFlagsService = featureFlagsService (
+        let featureFlagsService = FeatureFlagsService (
             currentSdkVersion: current,
             featureFlagsStore: mockFeatureFlagsStore
         )
