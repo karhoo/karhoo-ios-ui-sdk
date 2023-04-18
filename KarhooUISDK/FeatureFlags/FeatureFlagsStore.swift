@@ -20,7 +20,6 @@ final class KarhooFeatureFlagsStore: FeatureFlagsStore {
         .standard
     }
     
-    
     func save(_ model: FeatureFlagsModel) {
         guard let encodedModel = try? JSONEncoder().encode(model) else {
             assertionFailure()
@@ -31,7 +30,7 @@ final class KarhooFeatureFlagsStore: FeatureFlagsStore {
     
     func get() -> FeatureFlagsModel? {
         guard let data = userDefaults.data(forKey: storeKey),
-                let flags = try? JSONDecoder().decode(FeatureFlagsModel.self, from: data) else {
+        let flags = try? JSONDecoder().decode(FeatureFlagsModel.self, from: data) else {
             return nil
         }
         return flags

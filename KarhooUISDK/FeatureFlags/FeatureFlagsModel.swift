@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct FeatureFlag: Codable {
+struct FeatureFlags: Codable {
     var adyenAvailable: Bool
     var newRidePlaningScreen: Bool
 }
 
 struct FeatureFlagsModel: Codable {
     var version: String
-    var flags: FeatureFlag
+    var flags: FeatureFlags
 }

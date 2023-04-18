@@ -546,6 +546,7 @@
 		7B09365B29EC66650088B476 /* FeatureFlagsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365A29EC66650088B476 /* FeatureFlagsTest.swift */; };
 		7B09365D29EC6D770088B476 /* FeatureFlagsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365C29EC6D770088B476 /* FeatureFlagsStore.swift */; };
 		7B09365F29EC70380088B476 /* MockFeatureFlagsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09365E29EC70380088B476 /* MockFeatureFlagsStore.swift */; };
+		7B09366129ECA4A10088B476 /* KarhooFeatureFlagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B09366029ECA4A10088B476 /* KarhooFeatureFlagProvider.swift */; };
 		7B0A160A2993FD8600980E7F /* PriceDetailsSnapshotSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */; };
 		7B180B0F2922C32300DB0684 /* DetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */; };
 		7B180B1129236B7200DB0684 /* DetailsCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */; };
@@ -1225,6 +1226,7 @@
 		7B09365A29EC66650088B476 /* FeatureFlagsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsTest.swift; sourceTree = "<group>"; };
 		7B09365C29EC6D770088B476 /* FeatureFlagsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsStore.swift; sourceTree = "<group>"; };
 		7B09365E29EC70380088B476 /* MockFeatureFlagsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFeatureFlagsStore.swift; sourceTree = "<group>"; };
+		7B09366029ECA4A10088B476 /* KarhooFeatureFlagProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooFeatureFlagProvider.swift; sourceTree = "<group>"; };
 		7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailsSnapshotSpec.swift; sourceTree = "<group>"; };
 		7B180B0E2922C32300DB0684 /* DetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewModel.swift; sourceTree = "<group>"; };
 		7B180B1029236B7200DB0684 /* DetailsCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellViewController.swift; sourceTree = "<group>"; };
@@ -3157,6 +3159,7 @@
 				7B01326E29E842FB0080D8BA /* FeatureFlagsModel.swift */,
 				7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */,
 				7B09365C29EC6D770088B476 /* FeatureFlagsStore.swift */,
+				7B09366029ECA4A10088B476 /* KarhooFeatureFlagProvider.swift */,
 			);
 			path = FeatureFlags;
 			sourceTree = "<group>";
@@ -4700,6 +4703,7 @@
 				407EC7EB22CF564E00F24CFC /* TableDelegate.swift in Sources */,
 				51F614D72860EA2200A7EC11 /* FilterViewBuilder.swift in Sources */,
 				51808507286C6CA9001E4940 /* FilterListItem.swift in Sources */,
+				7B09366129ECA4A10088B476 /* KarhooFeatureFlagProvider.swift in Sources */,
 				FC83E288221DBA1B008FE26D /* TripSummaryScreenBuilder.swift in Sources */,
 				09F60CDF226623A200023C74 /* SideMenu.swift in Sources */,
 				407EC7DB22CF564E00F24CFC /* PinView.swift in Sources */,
