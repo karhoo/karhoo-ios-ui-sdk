@@ -13,6 +13,7 @@ public final class KarhooUI {
     public static var colors: KarhooColors = DefaultKarhooColors()
     public static var sideMenuHandler: SideMenuHandler?
     public static var components = KarhooComponents.shared
+    private static var fetureFlagsUpdater = FeatureFlagsUpdater(currentSdkVersion: "1.12.0")
 
     public static var fontFamily: FontFamily = FontFamily() {
         willSet {
@@ -31,6 +32,7 @@ public final class KarhooUI {
     public static func set(configuration: KarhooUISDKConfiguration) {
         Karhoo.set(configuration: configuration)
         KarhooUISDKConfigurationProvider.set(configuration)
+        fetureFlagsUpdater.update()
     }
     
     public func screens() -> Routing {
