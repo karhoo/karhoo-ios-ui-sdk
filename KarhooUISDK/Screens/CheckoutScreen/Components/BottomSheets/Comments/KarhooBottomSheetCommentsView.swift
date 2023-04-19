@@ -16,7 +16,7 @@ struct KarhooBottomSheetCommentsView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(viewModel.viewSubtitle)
                 .font(Font(KarhooUI.fonts.captionSemibold()))
-                .foregroundColor(Color(KarhooUI.colors.text))
+                .foregroundColor(Color(KarhooUI.colors.textLabel))
                 .padding(.bottom, UIConstants.Spacing.standard)
             TextEditor(text: $viewModel.textViewText)
                 .font(Font(KarhooUI.fonts.bodyRegular()))
