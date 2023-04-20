@@ -9,11 +9,15 @@
 import UIKit
 import SwiftUI
 
+@available(*, deprecated, message: "Public access to this class will be removed in next release")
 public final class LoadingImageView: UIView {
 
     private var imageView: UIImageView!
     private var activityIndicator: UIActivityIndicatorView!
-    private(set) var image: UIImage!
+    var image: UIImage? {
+        get { imageView.image }
+        set { imageView.image = newValue }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,6 +66,14 @@ public final class LoadingImageView: UIView {
     }
 
     public func load(imageURL: String, placeholderImageName: String?) {
+        load(imageURL: imageURL, placeholderImageName: placeholderImageName, completion: { _ in })
+    }
+
+    public func load(
+        imageURL: String,
+        placeholderImageName: String?,
+        completion: @escaping (UIImage?) -> Void
+    ) {
         activityIndicator?.startAnimating()
         
         imageView?.getImage(
@@ -70,6 +82,7 @@ public final class LoadingImageView: UIView {
             completion: { [weak self] image in
                 self?.image = image
                 self?.activityIndicator?.stopAnimating()
+                completion(image)
             }
         )
     }
