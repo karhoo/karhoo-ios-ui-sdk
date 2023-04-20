@@ -11,7 +11,10 @@ import KarhooSDK
 
 protocol VehicleRulesProvider: AnyObject {
     func update()
-    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void)
+    func getRule(
+        for quote: Quote,
+        completion: @escaping (VehicleImageRule?, BadgeImageRule?) -> Void
+    )
 }
 
 final class KarhooVehicleRulesProvider: VehicleRulesProvider {
@@ -24,7 +27,7 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
     }
     
     private var onRulesUpdated: ((VehicleImageRules) -> Void)?
-
+    
     init(
         quoteService: QuoteService? = Karhoo.getQuoteService(),
         store: VehicleRulesStore = KarhooVehicleRulesStore()
@@ -56,48 +59,89 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
         }
     }
     
-    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void) {
-        getRules { vehicleRules in
-            var fallbackRule: VehicleImageRule? {
-                vehicleRules?.rules.first { $0.ruleType == .fallback }
-            }
-            
-            var defaultTypeRule: VehicleImageRule? {
-                vehicleRules?.rules.first { $0.type == quote.vehicle.type && $0.ruleType == .typeDefault }
-            }
-            
-            var anyMatchingTagRule: VehicleImageRule? {
-                var rule: VehicleImageRule?
-                let rulesWithOneTag = vehicleRules?.rules.filter { $0.tags.count == 1 }
-                quote.vehicle.tags
-                    .map { $0.lowercased() }
-                    .forEach { quoteTag in
-                        guard rule == nil else { return }
-                        rule = rulesWithOneTag?.first { ruleWithOneTag in
-                            ruleWithOneTag.tags
-                                .map { $0.lowercased() }
-                                .contains(quoteTag.lowercased())
-                        }
-                    }
-                return rule
-            }
-            
-            let specificRule = vehicleRules?.rules.first { rule in
-                guard rule.ruleType == .specific else { return false }
-                let ruleTags = Set(rule.tags.map { $0.lowercased() })
-                let quoteVehicleTags = Set(quote.vehicle.tags.map { $0.lowercased() })
-                return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteVehicleTags
-            }
-            
-            var rule: VehicleImageRule? {
-                if VehicleType(rawValue: quote.vehicle.type.uppercased()) == .moto {
-                    return defaultTypeRule
-                } else {
-                    return (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
-                }
-            }
-            
-            completion(rule)
+    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?, BadgeImageRule?) -> Void) {
+        getRules { [weak self] vehicleRules in
+            let vehicleImageRule = self?.findVehicleRule(for: quote, from: vehicleRules)
+            let badgeImageRule = self?.findVehicleBadgeRule(for: quote, from: vehicleRules)
+            completion(vehicleImageRule, badgeImageRule)
         }
+    }
+    
+    private func findVehicleRule(
+        for quote: Quote,
+        from vehicleRules: VehicleImageRules?
+    ) -> VehicleImageRule? {
+        var fallbackRule: VehicleImageRule? {
+            vehicleRules?.rules.first { $0.ruleType == .fallback }
+        }
+        
+        var defaultTypeRule: VehicleImageRule? {
+            vehicleRules?.rules.first { $0.type == quote.vehicle.type && $0.ruleType == .typeDefault }
+        }
+        
+        var anyMatchingTagRule: VehicleImageRule? {
+            var rule: VehicleImageRule?
+            let rulesWithOneTag = vehicleRules?.rules.filter { $0.tags.count == 1 }
+            quote.vehicle.tags
+                .map { $0.lowercased() }
+                .forEach { quoteTag in
+                    guard rule == nil else { return }
+                    rule = rulesWithOneTag?.first { ruleWithOneTag in
+                        ruleWithOneTag.tags
+                            .map { $0.lowercased() }
+                            .contains(quoteTag.lowercased())
+                    }
+                }
+            return rule
+        }
+        
+        let specificRule = vehicleRules?.rules.first { rule in
+            guard rule.ruleType == .specific else { return false }
+            let ruleTags = Set(rule.tags.map { $0.lowercased() })
+            let quoteVehicleTags = Set(quote.vehicle.tags.map { $0.lowercased() })
+            return rule.type.lowercased() == quote.vehicle.type.lowercased() && ruleTags == quoteVehicleTags
+        }
+        
+        var rule: VehicleImageRule? {
+            if VehicleType(rawValue: quote.vehicle.type.uppercased()) == .moto {
+                return defaultTypeRule
+            } else {
+                return (specificRule ?? anyMatchingTagRule) ?? (defaultTypeRule ?? fallbackRule)
+            }
+        }
+        return rule
+    }
+    
+    private func findVehicleBadgeRule(
+        for quote: Quote,
+        from vehicleRules: VehicleImageRules?
+    ) -> BadgeImageRule? {
+        guard let vehicleImageRules = vehicleRules else {
+            return nil
+        }
+
+        func findRule(for tag: String) -> BadgeImageRule? {
+            vehicleImageRules.badges.first(where: { $0.tags.contains(tag)})
+        }
+
+        let economyTag = "economy"
+        let electricTag = "electric"
+        let hybridTag = "hybrid"
+
+        let vehicleTags = quote.vehicle.tags
+
+        if vehicleTags.contains(economyTag) {
+            return findRule(for: economyTag)
+        }
+
+        if vehicleTags.contains(electricTag) {
+            return findRule(for: electricTag)
+        }
+
+        if vehicleTags.contains(hybridTag) {
+            return findRule(for: hybridTag)
+        }
+
+        return nil
     }
 }
