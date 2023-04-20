@@ -59,8 +59,7 @@ class ItemButton: UIButton {
         setTitle(itemTitle, for: .normal)
         setImage(itemIcon, for: .normal)
         setTitleColor(KarhooUI.colors.text, for: .normal)
-        setTitleColor(KarhooUI.colors.accent, for: .selected)
-        layer.borderWidth = UIConstants.Dimension.Border.standardWidth
+        setTitleColor(KarhooUI.colors.white, for: .selected)
         layer.cornerRadius = UIConstants.CornerRadius.large
         titleLabel?.setContentCompressionResistancePriority(.required, for: .horizontal)
         adjustsImageWhenHighlighted = false
@@ -79,13 +78,11 @@ class ItemButton: UIButton {
     }
     
     private func updateSelectedDesign() {
-        let borderColor = isSelected ? KarhooUI.colors.accent.cgColor : UIColor.clear.cgColor
-        let color = isSelected ? KarhooUI.colors.lightAccent : KarhooUI.colors.border
-        let tint = isSelected ? KarhooUI.colors.accent : KarhooUI.colors.text
+        let color = isSelected ? KarhooUI.colors.accent : KarhooUI.colors.border
+        let tint = isSelected ? KarhooUI.colors.white : KarhooUI.colors.text
         UIView.animate(
             withDuration: UIConstants.Duration.xShort,
             animations: { [weak self] in
-                self?.layer.borderColor = borderColor
                 self?.backgroundColor = color
                 self?.imageView?.tintColor = tint
             }
