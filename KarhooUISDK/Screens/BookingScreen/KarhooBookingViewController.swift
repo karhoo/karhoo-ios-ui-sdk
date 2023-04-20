@@ -282,6 +282,21 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         alertController.addAction(UIAlertAction(title: UITexts.Generic.cancel, style: .cancel))
         showAsOverlay(item: alertController, animated: true)
     }
+    
+    func showIncorrectVersionPopup(completion: @escaping () -> Void) {
+        showAlert(
+            title: nil,
+            message: UITexts.Errors.errorIncorrectSdkVersionMessage,
+            error: nil,
+            actions: [
+                AlertAction(
+                    title: UITexts.Generic.ok,
+                    style: .default,
+                    handler: { _ in completion() }
+                )
+            ]
+        )
+    }
 
     private func updateBottomContainterVisiblity() {
         let shouldShow = presenter.isAsapEnabledPublisher.value ||

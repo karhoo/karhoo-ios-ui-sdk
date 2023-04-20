@@ -202,10 +202,16 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func viewWillAppear() {
-        analytics.bookingScreenOpened()
-        journeyDetailsManager.remove(observer: self)
-        journeyDetailsManager.add(observer: self)
-        checkCoverage()
+        if isSdkVersionSupported() {
+            analytics.bookingScreenOpened()
+            journeyDetailsManager.remove(observer: self)
+            journeyDetailsManager.add(observer: self)
+            checkCoverage()
+        } else {
+            view?.showIncorrectVersionPopup(completion: { [weak self] in
+                self?.exitPressed()
+            })
+        }
     }
 
     func viewDidDissapear() {
@@ -242,6 +248,15 @@ extension KarhooBookingPresenter: BookingPresenter {
         hasCoverageInTheAreaPublisher.value == true
         
         isAsapEnabledPublisher.send(canProceedWithAsapBooking)
+    }
+    
+    private func isSdkVersionSupported() -> Bool {
+        let featureFlagsProvider = KarhooFeatureFlagProvider()
+        let flags = featureFlagsProvider.get()
+        let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
+        let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
+    
+        return !(flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName)
     }
 
     private func updateScheduledRideEnabled(using details: JourneyDetails) {

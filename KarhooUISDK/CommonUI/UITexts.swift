@@ -133,7 +133,7 @@ public enum UITexts {
         static let errorNoAvailabilityInRequestedAreaContactUsFullText = "kh_uisdk_quotes_error_no_coverage_subtitle".localized
         static let errorDestinationOrOriginEmptyTitle = "kh_uisdk_quotes_error_missing_addresses_title".localized
         static let errorDestinationOrOriginEmptyMessage = "kh_uisdk_quotes_error_missing_addresses_subtitle".localized
-
+        static let errorIncorrectSdkVersionMessage = "kh_uisdk_error_incorrect_sdk_version_message".localized
     }
 
     /* Payment Error */
