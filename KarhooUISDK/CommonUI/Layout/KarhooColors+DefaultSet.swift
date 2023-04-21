@@ -23,7 +23,7 @@ public extension KarhooColors {
     }
 
     var accent: UIColor {
-        UIColor.get(lightModeColor: UIColor(hex: "#2485C2"), darkModeColor: UIColor(hex: "#5BC0EB"))
+        UIColor.get(lightModeColor: UIColor(hex: "#1A70C1"), darkModeColor: UIColor(hex: "#5BC0EB"))
     }
 
     var lightAccent: UIColor {

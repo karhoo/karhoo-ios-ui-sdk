@@ -29,7 +29,9 @@ struct KarhooMaterialDesignTextField: View {
                         isFirstResponder = false
                     }
                 })
-                .placeholder(placeholder, when: text.isEmpty)
+                .placeholder(when: text.isEmpty) {
+                    Text(placeholder).foregroundColor(Color(KarhooUI.colors.textLabel))
+                }
                 .foregroundColor(Color(KarhooUI.colors.text))
                 .font(Font(KarhooUI.fonts.bodyRegular()))
                 .onChange(of: text) { newValue in

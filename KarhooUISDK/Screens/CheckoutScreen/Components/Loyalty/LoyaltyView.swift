@@ -50,7 +50,7 @@ struct LoyaltyView: View {
         VStack(alignment: .leading) {
             Text(pointsEarnedText)
                 .font(Font(KarhooUI.fonts.captionRegular()))
-                .foregroundColor(Color(KarhooUI.colors.text))
+                .foregroundColor(Color(KarhooUI.colors.textLabel))
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
@@ -59,12 +59,12 @@ struct LoyaltyView: View {
     private var orDivider: some View {
         HStack(spacing: UIConstants.Spacing.medium) {
             Color(KarhooUI.colors.border)
-                .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
+                .frame(height: UIConstants.Dimension.Border.standardWidth)
             Text(UITexts.Loyalty.or.uppercased())
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.textLabel))
             Color(KarhooUI.colors.border)
-                .frame(width: .infinity, height: UIConstants.Dimension.Border.standardWidth)
+                .frame(height: UIConstants.Dimension.Border.standardWidth)
         }
     }
     
@@ -81,7 +81,7 @@ struct LoyaltyView: View {
                 Text(UITexts.Loyalty.burnTitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.bodyBold()))
-                    .foregroundColor(viewModel.burnContentTextColor)
+                    .foregroundColor(viewModel.burnTitleTextColor)
                     .fixedSize(horizontal: false, vertical: true)
                 Text(viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle)
                     .font(Font(KarhooUI.fonts.captionRegular()))

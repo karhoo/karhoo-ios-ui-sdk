@@ -26,6 +26,7 @@ class KarhooTermsConditionsViewModel: ObservableObject {
     @Published var attributedText: NSAttributedString = .init(string: "")
     @Published var accessibilityText: String = ""
     @Published var imageName: String = "kh_uisdk_checkbox_unselected"
+    @Published var imageTint: Color = Color(KarhooUI.colors.border)
 
     // MARK: - Lifecycle
 
@@ -60,7 +61,7 @@ class KarhooTermsConditionsViewModel: ObservableObject {
         confirmed
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.updateImageName()
+                self?.updateImage()
                 self?.showAgreementRequired = false
             }
             .store(in: &cancellables)
@@ -93,13 +94,22 @@ class KarhooTermsConditionsViewModel: ObservableObject {
         self.accessibilityText = text.string.replacingOccurrences(of: "|", with: ".")
     }
 
-    private func updateImageName() {
+    private func updateImage() {
         var newImageName: String {
             switch confirmed.value {
             case true: return "kh_uisdk_checkbox_selected"
             case false: return "kh_uisdk_checkbox_unselected"
             }
         }
+        
+        var newImageTint: Color {
+            switch confirmed.value {
+            case true: return Color(KarhooUI.colors.accent)
+            case false: return Color(KarhooUI.colors.border)
+            }
+        }
+        
         imageName = newImageName
+        imageTint = newImageTint
     }
 }

@@ -59,13 +59,11 @@ class CounterButton: UIButton {
     }
 
     private func setupProperties() {
-        layer.borderColor = KarhooUI.colors.accent.cgColor
-        layer.borderWidth = UIConstants.Dimension.Border.standardWidth
         layer.cornerRadius = UIConstants.CornerRadius.medium
         layer.masksToBounds = true
-        backgroundColor = KarhooUI.colors.lightAccent
+        backgroundColor = KarhooUI.colors.accent
         setImage(variation.image, for: .normal)
-        imageView?.tintColor = KarhooUI.colors.accent
+        imageView?.tintColor = KarhooUI.colors.white
         adjustsImageWhenHighlighted = false
         addTouchAnimation()
     }
@@ -80,10 +78,8 @@ class CounterButton: UIButton {
     // MARK: - Private
 
     private func setEnabled(_ enabled: Bool) {
-        let borderColor = enabled ? KarhooUI.colors.accent.cgColor : UIColor.clear.cgColor
-        let backgroundColor = enabled ? KarhooUI.colors.lightAccent : KarhooUI.colors.inactive
-        let imageColor = enabled ? KarhooUI.colors.accent : KarhooUI.colors.textLabel
-        layer.borderColor = borderColor
+        let backgroundColor = enabled ? KarhooUI.colors.accent : KarhooUI.colors.inactive
+        let imageColor = enabled ? KarhooUI.colors.white : KarhooUI.colors.textLabel
         self.backgroundColor = backgroundColor
         imageView?.tintColor = imageColor
         isUserInteractionEnabled = enabled

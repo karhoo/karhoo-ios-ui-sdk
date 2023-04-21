@@ -26,7 +26,8 @@ struct KarhooTermsConditionsView: View {
                     label: {
                         Image(viewModel.imageName, bundle: .current)
                             .resizable()
-                            .foregroundColor(Color(KarhooUI.colors.border))
+                            .renderingMode(.template)
+                            .foregroundColor(viewModel.imageTint)
                             .frame(
                                 width: Constants.imageSize.width,
                                 height: Constants.imageSize.height
