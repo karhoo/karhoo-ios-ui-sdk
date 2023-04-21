@@ -88,12 +88,11 @@ class QuoteView: UIView {
         logo.contentMode = .scaleAspectFill
         logo.layer.masksToBounds = true
     }
-    private lazy var badgeImageView = LoadingImageView().then {
+    private lazy var badgeImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFill
         $0.isHidden = true
         $0.layer.masksToBounds = true
-        $0.backgroundColor = .clear
     }
 
     private lazy var vehicleTypeLabel = UILabel().then {
@@ -348,12 +347,7 @@ class QuoteView: UIView {
                 self?.badgeImageView.isHidden = false
             }
         )
-        if let badgeUrl = viewModel.vehicleBadgeUrl {
-            badgeImageView.load(
-                imageURL: badgeUrl,
-                placeholderImageName: nil
-            )
-        }
+        badgeImageView.image = viewModel.vehicleBadgeImage
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.luggageCapacity)

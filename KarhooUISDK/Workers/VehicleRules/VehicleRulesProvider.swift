@@ -13,7 +13,7 @@ protocol VehicleRulesProvider: AnyObject {
     func update()
     func getRule(
         for quote: Quote,
-        completion: @escaping (VehicleImageRule?, BadgeImageRule?) -> Void
+        completion: @escaping (VehicleImageRule?) -> Void
     )
 }
 
@@ -59,11 +59,10 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
         }
     }
     
-    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?, BadgeImageRule?) -> Void) {
+    func getRule(for quote: Quote, completion: @escaping (VehicleImageRule?) -> Void) {
         getRules { [weak self] vehicleRules in
             let vehicleImageRule = self?.findVehicleRule(for: quote, from: vehicleRules)
-            let badgeImageRule = self?.findVehicleBadgeRule(for: quote, from: vehicleRules)
-            completion(vehicleImageRule, badgeImageRule)
+            completion(vehicleImageRule)
         }
     }
     
@@ -110,38 +109,5 @@ final class KarhooVehicleRulesProvider: VehicleRulesProvider {
             }
         }
         return rule
-    }
-    
-    private func findVehicleBadgeRule(
-        for quote: Quote,
-        from vehicleRules: VehicleImageRules?
-    ) -> BadgeImageRule? {
-        guard let vehicleImageRules = vehicleRules else {
-            return nil
-        }
-
-        func findRule(for tag: String) -> BadgeImageRule? {
-            vehicleImageRules.badges.first(where: { $0.tags.contains(tag)})
-        }
-
-        let economyTag = "economy"
-        let electricTag = "electric"
-        let hybridTag = "hybrid"
-
-        let vehicleTags = quote.vehicle.tags
-
-        if vehicleTags.contains(economyTag) {
-            return findRule(for: economyTag)
-        }
-
-        if vehicleTags.contains(electricTag) {
-            return findRule(for: electricTag)
-        }
-
-        if vehicleTags.contains(hybridTag) {
-            return findRule(for: hybridTag)
-        }
-
-        return nil
     }
 }

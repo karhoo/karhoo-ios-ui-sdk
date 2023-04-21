@@ -160,7 +160,7 @@ class KarhooBookingConfirmationViewModel: BookingConfirmationViewModel {
     // MARK: - Helpers
 
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
-        provider.getRule(for: quote) { [weak self] vehicleImageRule, _ in
+        provider.getRule(for: quote) { [weak self] vehicleImageRule in
             self?.vehicleImageURL = vehicleImageRule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
