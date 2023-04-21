@@ -23,6 +23,15 @@ struct KarhooMaterialDesignTextField: View {
         contentType.placeholderText
     }
     
+    private var isTitleVisible: Bool {
+        switch contentType {
+        case .firstname, .surname, .email, .phone:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topLeading) {
@@ -58,23 +67,35 @@ struct KarhooMaterialDesignTextField: View {
                 .padding(.trailing, UIConstants.Spacing.small)
                 .addBorder(getBorderColor(), cornerRadius: UIConstants.CornerRadius.medium)
                 
-                Text(title)
-                    .foregroundColor(getTitleColor())
-                    .font(Font(KarhooUI.fonts.captionRegular()))
-                    .background(Color(KarhooUI.colors.background1))
-                    .offset(
-                        x: UIConstants.Spacing.standard,
-                        y: -KarhooUI.fonts.captionRegular().pointSize / 2
-                    )
-                
+                if isTitleVisible {
+                    Text(title)
+                        .padding(
+                            EdgeInsets(
+                                top: 0,
+                                leading: UIConstants.Spacing.xSmall,
+                                bottom: 0,
+                                trailing: UIConstants.Spacing.xSmall
+                            )
+                        )
+                        .foregroundColor(getTitleColor())
+                        .font(Font(KarhooUI.fonts.captionRegular()))
+                        .background(Color(KarhooUI.colors.background2))
+                        .offset(
+                            x: UIConstants.Spacing.medium,
+                            y: -KarhooUI.fonts.captionRegular().pointSize / 2
+                        )
+                }
             }
             
             if !isTextfieldValid {
                 Text(errorMessage)
-                    .font(Font(KarhooUI.fonts.footnoteSemiold()))
+                    .font(Font(KarhooUI.fonts.footnoteRegular()))
                     .foregroundColor(Color(KarhooUI.colors.error))
                     .padding(.top, UIConstants.Spacing.xSmall)
                     .transition(.opacity)
+                    .offset(
+                        x: UIConstants.Spacing.standard
+                    )
             }
         }
     }
@@ -95,7 +116,7 @@ struct KarhooMaterialDesignTextField: View {
         } else if isFirstResponder {
             return Color(KarhooUI.colors.secondary)
         } else {
-            return Color(KarhooUI.colors.border)
+            return Color(KarhooUI.colors.textLabel)
         }
     }
 }
@@ -104,7 +125,7 @@ struct KarhooMaterialDesignTextField_Previews: PreviewProvider {
     static var previews: some View {
         KarhooMaterialDesignTextField(
             text: .constant("Some text"),
-            isTextfieldValid: .constant(false),
+            isTextfieldValid: .constant(true),
             placeholder: "Some placeholder",
             errorMessage: "Nothing to add",
             contentType: .firstname
