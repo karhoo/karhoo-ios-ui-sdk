@@ -23,11 +23,12 @@ extension UIImageView {
         }
         if let cachedImage = UIImage.cache.object(forKey: nsUrl) {
             image = cachedImage
+            completion(image)
         } else {
             UIImage.load(using: url) { [weak self] fetchedImage in
                 self?.image = fetchedImage
+                completion(fetchedImage)
             }
         }
-        completion(image)
     }
 }
