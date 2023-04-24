@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "ЗАБРОНИРОВАТЬ ПОЕЗДКУ";
 
-"kh_uisdk_checkout_comments_subtitle" = "Комментарий для вашего водителя";
+"kh_uisdk_checkout_comments_subtitle" = "Например: детское кресло, необходим доступ для инвалидной коляски и т.д.";
 
 "kh_uisdk_checkout_comments_title" = "Комментировать";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Удалить адрес";
 
 "kh_uisdk_error" = "Ошибка";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "Электронная почта или пароль, которые вы ввели, неверны";
 
@@ -811,6 +813,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Встретить в зале прилета";
 
 "kh_uisdk_pickup_type_standby" = "Ожидайте";
+
+"kh_uisdk_placeholder_email" = "например john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "например Джон";
+
+"kh_uisdk_placeholder_flight_number" = "например AF1234";
+
+"kh_uisdk_placeholder_last_name" = "например Доу";
+
+"kh_uisdk_placeholder_mobile_phone" = "например +7000000";
+
+"kh_uisdk_placeholder_train_number" = "например 3328";
 
 "kh_uisdk_prebook_confirmation" = "Ваше бронирование\nот: %1$@ \nдо: %2$@ \в: %3$@ \nподтверждено";
 

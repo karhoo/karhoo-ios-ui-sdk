@@ -100,6 +100,16 @@ public enum UITexts {
         public static let forgottenPassword = "kh_uisdk_forgotten_password".localized
         public static let commentOptional = "kh_uisdk_additional_comments".localized
     }
+    
+    /* Text field placeholders */
+    public enum Placeholder {
+        public static let firstName = "kh_uisdk_placeholder_first_name".localized
+        public static let lastName = "kh_uisdk_placeholder_last_name".localized
+        public static let email = "kh_uisdk_placeholder_email".localized
+        public static let mobilePhoneNumber = "kh_uisdk_placeholder_mobile_phone".localized
+        public static let trainNumber = "kh_uisdk_placeholder_train_number".localized
+        public static let flightNumber = "kh_uisdk_placeholder_flight_number".localized
+    }
 
     /* Errors */
     public enum Errors {

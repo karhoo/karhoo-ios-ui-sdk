@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "RIT BOEKEN";
 
-"kh_uisdk_checkout_comments_subtitle" = "Opmerking voor uw chauffeur";
+"kh_uisdk_checkout_comments_subtitle" = "Bijvoorbeeld: kinderzitje, rolstoel nodig, enz.";
 
 "kh_uisdk_checkout_comments_title" = "Opmerkingen";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Adres wissen";
 
 "kh_uisdk_error" = "Fout";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "Het e-mailadres of wachtwoord dat je hebt ingevoerd, is onjuist";
 
@@ -811,6 +813,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Meet & greet";
 
 "kh_uisdk_pickup_type_standby" = "Stand-by";
+
+"kh_uisdk_placeholder_email" = "bijv. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "bijv. John";
+
+"kh_uisdk_placeholder_flight_number" = "bijv. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "bijv. Doe";
+
+"kh_uisdk_placeholder_mobile_phone" = "bijv. +3100000000000";
+
+"kh_uisdk_placeholder_train_number" = "bijv. 1664";
 
 "kh_uisdk_prebook_confirmation" = "Uw boeking\nvan: %1$@ \nnaar: %2$@ \nop: %3$@ \nis bevestigd";
 

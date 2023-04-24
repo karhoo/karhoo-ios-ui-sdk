@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "预订行程";
 
-"kh_uisdk_checkout_comments_subtitle" = "评论你的司机";
+"kh_uisdk_checkout_comments_subtitle" = "例如：儿童座椅、需要轮椅通道等。";
 
 "kh_uisdk_checkout_comments_title" = "评论";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "删除地址";
 
 "kh_uisdk_error" = "错误";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "您输入的电子邮件或密码不正确";
 
@@ -807,6 +809,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "见面和问候";
 
 "kh_uisdk_pickup_type_standby" = "待命";
+
+"kh_uisdk_placeholder_email" = "例如john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "例如约翰";
+
+"kh_uisdk_placeholder_flight_number" = "例如AF1234";
+
+"kh_uisdk_placeholder_last_name" = "例如母鹿";
+
+"kh_uisdk_placeholder_mobile_phone" = "例如+8600000000000";
+
+"kh_uisdk_placeholder_train_number" = "例如G125";
 
 "kh_uisdk_prebook_confirmation" = "您的预订\n 从：%1$@\n 至：%2$@\n 时间：%3$@\n已确认";
 

@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "FAHRT BUCHEN";
 
-"kh_uisdk_checkout_comments_subtitle" = "Kommentar für Ihren Fahrer";
+"kh_uisdk_checkout_comments_subtitle" = "Zum Beispiel: Kindersitz, Zugang für Rollstuhlfahrer erforderlich usw.";
 
 "kh_uisdk_checkout_comments_title" = "Kommentar";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Adresse löschen";
 
 "kh_uisdk_error" = "Fehler";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "Die eingegebene E-Mail oder das eingegebene Passwort sind falsch.";
 
@@ -811,6 +813,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Meet and Greet";
 
 "kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_placeholder_email" = "z.B. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "z.B. Johannes";
+
+"kh_uisdk_placeholder_flight_number" = "z.B. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "z.B. Doe";
+
+"kh_uisdk_placeholder_mobile_phone" = "z.B. +49000000000";
+
+"kh_uisdk_placeholder_train_number" = "z.B. XYYYYZ";
 
 "kh_uisdk_prebook_confirmation" = "Ihre Buchung\nvon: %1$@\nnach: %2$@\num: %3$@\nwurde bestätigt";
 

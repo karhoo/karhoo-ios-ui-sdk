@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "PESAN PERJALANAN";
 
-"kh_uisdk_checkout_comments_subtitle" = "Komentar untuk pengemudi Anda";
+"kh_uisdk_checkout_comments_subtitle" = "Misalnya: kursi anak, akses kursi roda yang dibutuhkan, dll.";
 
 "kh_uisdk_checkout_comments_title" = "Komentar";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Hapus alamat";
 
 "kh_uisdk_error" = "Kesalahan";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
 
@@ -807,6 +809,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Meet and greet";
 
 "kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_placeholder_email" = "misalnya john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "misalnya Yohanes";
+
+"kh_uisdk_placeholder_flight_number" = "misalnya AF1234";
+
+"kh_uisdk_placeholder_last_name" = "misalnya Kelinci betina";
+
+"kh_uisdk_placeholder_mobile_phone" = "misalnya +6200000000000";
+
+"kh_uisdk_placeholder_train_number" = "misalnya IR1664";
 
 "kh_uisdk_prebook_confirmation" = "Pemesanan Anda\ndari: %1$@ \nto: %2$@ \nat: %3$@ \ntelah dikonfirmasi";
 

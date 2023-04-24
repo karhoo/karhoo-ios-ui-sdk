@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "Book a ride";
 
-"kh_uisdk_checkout_comments_subtitle" = "Child seat, wheelchair access needed, etc.";
+"kh_uisdk_checkout_comments_subtitle" = "For example: child seat, wheelchair access needed, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Comment";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Delete address";
 
 "kh_uisdk_error" = "Error";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "Please update your application before using this feature";
 
 "kh_uisdk_error_invalid_password" = "The email or password you've entered is incorrect";
 
@@ -811,6 +813,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Meet and greet";
 
 "kh_uisdk_pickup_type_standby" = "Standby";
+
+"kh_uisdk_placeholder_email" = "e.g. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "e.g. John";
+
+"kh_uisdk_placeholder_flight_number" = "e.g. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "e.g. Doe";
+
+"kh_uisdk_placeholder_mobile_phone" = "e.g. +440000000000";
+
+"kh_uisdk_placeholder_train_number" = "e.g. KingsX";
 
 "kh_uisdk_prebook_confirmation" = "Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been confirmed";
 

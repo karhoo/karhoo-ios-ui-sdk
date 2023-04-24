@@ -210,7 +210,7 @@
 
 "kh_uisdk_arrived" = "Votre chauffeur %@ est arrivé";
 
-"kh_uisdk_asap_no_coverage_warning" = "Les réservations ASAP ne sont pas disponibles pour les adresses sélectionnées";
+"kh_uisdk_asap_no_coverage_warning" = "Les réservations immédiates ne sont pas disponibles pour les adresses sélectionnées";
 
 "kh_uisdk_back" = "Retour";
 
@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "Réserver une course";
 
-"kh_uisdk_checkout_comments_subtitle" = "Siège bébé, PMR, etc.";
+"kh_uisdk_checkout_comments_subtitle" = "Par exemple: siège bébé, PMR, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Commentaire";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Effacer l’adresse";
 
 "kh_uisdk_error" = "Erreur";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "L’adresse e-mail ou le mot de passe que vous avez entré est incorrect";
 
@@ -650,7 +652,7 @@
 
 "kh_uisdk_last_trip_id_not_set" = "Référence de votre dernière course : pas encore définie";
 
-"kh_uisdk_later" = "Par la suite";
+"kh_uisdk_later" = "Plus tard";
 
 "kh_uisdk_legal_notice_label" = "Mentions légales";
 
@@ -812,6 +814,18 @@
 
 "kh_uisdk_pickup_type_standby" = "Contacter chauffeur à l’arrivée";
 
+"kh_uisdk_placeholder_email" = "p. ex. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "p. ex. John";
+
+"kh_uisdk_placeholder_flight_number" = "p. ex. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "par exemple Doe";
+
+"kh_uisdk_placeholder_mobile_phone" = "par exemple +3300000000000";
+
+"kh_uisdk_placeholder_train_number" = "p. ex. 6601";
+
 "kh_uisdk_prebook_confirmation" = "Votre réservation\nau départ de : %1$@\nà destination de : %2$@\nà : %3$@\nest confirmée";
 
 "kh_uisdk_prebook_confirmed" = "Pré-réservation confirmée";
@@ -884,7 +898,7 @@
 
 "kh_uisdk_quotes_error_no_results_after_filter_title" = "Aucun résultat associé à ces filtres.";
 
-"kh_uisdk_quotes_error_no_results_found" = "Désolé, la réservation spontanée n'est pas disponible sur cette destination, mais vous pouvez réserver à l'avance pour votre prochain voyage !";
+"kh_uisdk_quotes_error_no_results_found" = "Désolé, la réservation immédiate n'est pas disponible sur cette destination, mais vous pouvez réserver à l'avance pour votre prochain voyage !";
 
 "kh_uisdk_quotes_error_similar_addresses_subtitle" = "Les adresses de destination et de départ semblent similaires";
 

@@ -7,28 +7,61 @@
 //
 
 import SwiftUI
+import Combine
 
 struct KarhooMaterialDesignTextField: View {
    
     @Binding var text: String
     @Binding var isTextfieldValid: Bool
     @State private var isFirstResponder: Bool = false
+    
+    /// Sends back the current input type so that the main view can decide what the next input field is
+    var onSubmitSubject = PassthroughSubject<KarhooTextInputViewContentType, Never>()
 
-    var placeholder: String
+    var isMandatory: Bool = false
+    var placeholder: String?
     var errorMessage: String
     var contentType: KarhooTextInputViewContentType
     var textFieldValidator: TextFieldValidator = KarhooTextFieldValidator()
     
     private var title: String {
-        contentType.placeholderText
+        isMandatory ? "\(contentType.title)*" : contentType.title
+    }
+
+    private var mainPlaceholder: String {
+        guard let placeholder else {
+            return contentType.placeholder
+        }
+        
+        return placeholder
     }
     
-    private var isTitleVisible: Bool {
+    // Once min version is bumped to iOS 15, add specific keyboard type for .flightNumber
+    private var contentInputType: UITextContentType {
         switch contentType {
-        case .firstname, .surname, .email, .phone:
-            return true
+        case .firstname:
+            return .givenName
+        case .surname:
+            return .familyName
+        case .email:
+            return .emailAddress
+        case .phone:
+            return .telephoneNumber
+        case .poiDetails:
+            return .location
         default:
-            return false
+            return .name
+        }
+    }
+    
+    private var keyboardType: UIKeyboardType {
+        switch contentType {
+        case .email:
+            return .emailAddress
+        case .phone:
+            return .phonePad
+        default:
+            return .alphabet
         }
     }
     
@@ -36,21 +69,30 @@ struct KarhooMaterialDesignTextField: View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topLeading) {
                 HStack {
-                    TextField("", text: $text, onEditingChanged: { editingChanged in
+                    TextField(
+                        "",
+                        text: $text,
+                        onEditingChanged: { editingChanged in
                         if editingChanged {
                             isFirstResponder = true
                         } else {
                             isFirstResponder = false
                         }
+                    }, onCommit: {
+                        self.onSubmitSubject.send(contentType)
                     })
-                    .placeholder(placeholder, when: text.isEmpty)
+                    .placeholder(mainPlaceholder, when: text.isEmpty)
                     .foregroundColor(Color(KarhooUI.colors.text))
                     .font(Font(KarhooUI.fonts.bodyRegular()))
+                    .keyboardType(keyboardType)
+                    .textContentType(contentInputType)
                     .onChange(of: text) { newValue in
                         withAnimation {
                             isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
                         }
                     }
+                    .disableAutocorrection(true)
+                    
                     Button {
                         text = ""
                     } label: {
@@ -65,32 +107,45 @@ struct KarhooMaterialDesignTextField: View {
                 .padding(.vertical, UIConstants.Spacing.medium)
                 .padding(.leading, UIConstants.Spacing.standard)
                 .padding(.trailing, UIConstants.Spacing.small)
-                .addBorder(getBorderColor(), cornerRadius: UIConstants.CornerRadius.medium)
+                .addBorder(
+                    getBorderColor(),
+                    width: UIConstants.Dimension.Border.xLargeWidth,
+                    cornerRadius: UIConstants.CornerRadius.medium
+                )
                 
-                if isTitleVisible {
-                    Text(title)
-                        .padding(
-                            EdgeInsets(
-                                top: 0,
-                                leading: UIConstants.Spacing.xSmall,
-                                bottom: 0,
-                                trailing: UIConstants.Spacing.xSmall
-                            )
+                Text(title)
+                    .padding(
+                        EdgeInsets(
+                            top: 0,
+                            leading: UIConstants.Spacing.xSmall,
+                            bottom: 0,
+                            trailing: UIConstants.Spacing.xSmall
                         )
-                        .foregroundColor(getTitleColor())
-                        .font(Font(KarhooUI.fonts.captionRegular()))
-                        .background(Color(KarhooUI.colors.background2))
-                        .offset(
-                            x: UIConstants.Spacing.medium,
-                            y: -KarhooUI.fonts.captionRegular().pointSize / 2
-                        )
-                }
+                    )
+                    .foregroundColor(getTitleColor())
+                    .font(Font(KarhooUI.fonts.captionRegular()))
+                    .background(Color(KarhooUI.colors.background2))
+                    .offset(
+                        x: UIConstants.Spacing.medium,
+                        y: -KarhooUI.fonts.captionRegular().pointSize / 2
+                    )
             }
             
             if !isTextfieldValid {
                 Text(errorMessage)
                     .font(Font(KarhooUI.fonts.footnoteRegular()))
                     .foregroundColor(Color(KarhooUI.colors.error))
+                    .padding(.top, UIConstants.Spacing.xSmall)
+                    .transition(.opacity)
+                    .offset(
+                        x: UIConstants.Spacing.standard
+                    )
+            }
+            
+            if isTextfieldValid && isMandatory {
+                Text("Required")
+                    .font(Font(KarhooUI.fonts.footnoteRegular()))
+                    .foregroundColor(Color(KarhooUI.colors.textLabel))
                     .padding(.top, UIConstants.Spacing.xSmall)
                     .transition(.opacity)
                     .offset(
@@ -124,10 +179,10 @@ struct KarhooMaterialDesignTextField: View {
 struct KarhooMaterialDesignTextField_Previews: PreviewProvider {
     static var previews: some View {
         KarhooMaterialDesignTextField(
-            text: .constant("Some text"),
+            text: .constant(""),
             isTextfieldValid: .constant(true),
-            placeholder: "Some placeholder",
-            errorMessage: "Nothing to add",
+            isMandatory: true,
+            errorMessage: "Some error",
             contentType: .firstname
         )
     }
