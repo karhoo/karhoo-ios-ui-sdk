@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "Free cancellation up to %1$@ after booking";
 
+"kh_uisdk_generic_mandatory_field" = "Required";
+
 "kh_uisdk_got_it" = "Got it";
 
 "kh_uisdk_gps_tracking" = "GPS tracking";

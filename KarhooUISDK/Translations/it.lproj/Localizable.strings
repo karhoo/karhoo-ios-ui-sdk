@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "Cancellazione gratuita fino a %1$@ dopo la prenotazione";
 
+"kh_uisdk_generic_mandatory_field" = "Richiesto";
+
 "kh_uisdk_got_it" = "HO CAPITO";
 
 "kh_uisdk_gps_tracking" = "Tracciamento GPS";

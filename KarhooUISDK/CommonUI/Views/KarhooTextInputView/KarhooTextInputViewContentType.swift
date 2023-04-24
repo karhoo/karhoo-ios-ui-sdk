@@ -59,7 +59,6 @@ enum KarhooTextInputViewContentType {
     }
     
     // TODO: remove this after redoing the passenger details screen
-    
     var titleText: String {
         switch self {
         case .firstname:

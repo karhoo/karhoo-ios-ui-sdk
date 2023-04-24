@@ -57,7 +57,7 @@ public enum UITexts {
         public static let information = "kh_uisdk_information".localized
         public static let now = "kh_uisdk_now".localized
         public static let later = "kh_uisdk_later".localized
-        
+        public static let mandatoryField = "kh_uisdk_generic_mandatory_field".localized
     }
 
     public enum QuoteCell {

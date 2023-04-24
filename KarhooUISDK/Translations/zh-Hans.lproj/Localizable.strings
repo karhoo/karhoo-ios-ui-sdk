@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "预订后最多可免费取消%1$@";
 
+"kh_uisdk_generic_mandatory_field" = "需要";
+
 "kh_uisdk_got_it" = "好的";
 
 "kh_uisdk_gps_tracking" = "GPS 追踪";

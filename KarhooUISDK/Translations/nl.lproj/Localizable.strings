@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "Gratis annulering tot %1$@ na reserveren";
 
+"kh_uisdk_generic_mandatory_field" = "Nodig";
+
 "kh_uisdk_got_it" = "BEGREPEN";
 
 "kh_uisdk_gps_tracking" = "GPS volgen";

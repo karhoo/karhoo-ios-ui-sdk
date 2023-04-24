@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "Kostenlose Stornierung bis zu %1$@ nach der Buchung";
 
+"kh_uisdk_generic_mandatory_field" = "Erforderlich";
+
 "kh_uisdk_got_it" = "OK";
 
 "kh_uisdk_gps_tracking" = "GPS-Tracking";

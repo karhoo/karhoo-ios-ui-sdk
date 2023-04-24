@@ -27,6 +27,10 @@ struct KarhooMaterialDesignTextField: View {
     private var title: String {
         isMandatory ? "\(contentType.title)*" : contentType.title
     }
+    
+    private var accessibilityTitle: String {
+        isMandatory ? "\(contentType.title), \(UITexts.Generic.mandatoryField)" : contentType.title
+    }
 
     private var mainPlaceholder: String {
         guard let placeholder else {
@@ -130,6 +134,8 @@ struct KarhooMaterialDesignTextField: View {
                         y: -KarhooUI.fonts.captionRegular().pointSize / 2
                     )
             }
+            .accessibilityElement()
+            .accessibilityValue(Text(accessibilityTitle))
             
             if !isTextfieldValid {
                 Text(errorMessage)
@@ -140,10 +146,12 @@ struct KarhooMaterialDesignTextField: View {
                     .offset(
                         x: UIConstants.Spacing.standard
                     )
+                    .accessibilityElement()
+                    .accessibilityLabel(Text(errorMessage))
             }
             
             if isTextfieldValid && isMandatory {
-                Text("Required")
+                Text(UITexts.Generic.mandatoryField)
                     .font(Font(KarhooUI.fonts.footnoteRegular()))
                     .foregroundColor(Color(KarhooUI.colors.textLabel))
                     .padding(.top, UIConstants.Spacing.xSmall)
@@ -151,6 +159,8 @@ struct KarhooMaterialDesignTextField: View {
                     .offset(
                         x: UIConstants.Spacing.standard
                     )
+                    .accessibilityElement()
+                    .accessibilityValue(UITexts.Generic.mandatoryField)
             }
         }
     }

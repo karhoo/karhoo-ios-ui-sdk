@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "ยกเลิกฟรีไม่เกิน %1$@ หลังการจอง";
 
+"kh_uisdk_generic_mandatory_field" = "จำเป็นต้องมี";
+
 "kh_uisdk_got_it" = "เข้าใจแล้ว";
 
 "kh_uisdk_gps_tracking" = "การติดตามด้วย GPS";

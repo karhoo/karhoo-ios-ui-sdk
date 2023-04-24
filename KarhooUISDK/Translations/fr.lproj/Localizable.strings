@@ -494,6 +494,8 @@
 
 "kh_uisdk_free_cancellation_asap" = "Annulation sans frais jusqu'à %1$@ après la réservation";
 
+"kh_uisdk_generic_mandatory_field" = "Obligatoire";
+
 "kh_uisdk_got_it" = "Ok";
 
 "kh_uisdk_gps_tracking" = "Suivi GPS";
