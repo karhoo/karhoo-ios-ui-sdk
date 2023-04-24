@@ -113,6 +113,7 @@ final class QuoteViewModel {
     let fare: String
     let logoImageURL: String
     var vehicleImageURL: String?
+    var vehicleBadgeImage: UIImage?
     let fareType: String
     let showPickUpLabel: Bool
     let pickUpType: String
@@ -161,6 +162,7 @@ final class QuoteViewModel {
         default: pickUpType = ""
         }
         getImageUrl(for: quote, with: vehicleRulesProvider)
+        getBadgeImage(for: quote)
         setFreeCancellationMessage(for: quote, and: journeyDetails)
     }
     
@@ -182,8 +184,8 @@ final class QuoteViewModel {
     }
 
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
-        provider.getRule(for: quote) { [weak self] rule in
-            self?.vehicleImageURL = rule?.imagePath
+        provider.getRule(for: quote) { [weak self] vehicleImageRule in
+            self?.vehicleImageURL = vehicleImageRule?.imagePath
         }
     }
 
@@ -203,6 +205,21 @@ final class QuoteViewModel {
                                                             max: quote.vehicle.qta.highMinutes)
             return (etaCaption, etaMinutes)
         }
+    }
+
+    private func getBadgeImage(for quote: Quote) {
+        let vehicleTags = quote.vehicle.tags
+
+        var image: UIImage?
+        if vehicleTags.contains("economy") {
+            image = UIImage.uisdkImage("kh_uisdk_vehicle_badge_economy")
+        } else if vehicleTags.contains("electric") {
+            image = UIImage.uisdkImage("kh_uisdk_vehicle_badge_electric")
+        } else if vehicleTags.contains("hybrid") {
+            image = UIImage.uisdkImage("kh_uisdk_vehicle_badge_hybrid")
+        }
+    
+        vehicleBadgeImage = image
     }
 }
 

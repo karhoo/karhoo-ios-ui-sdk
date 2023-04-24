@@ -26,6 +26,7 @@ class CheckboxView: UIControl {
         var image: UIImage {
             switch self {
             case .selected: return .uisdkImage("kh_uisdk_checkbox_selected")
+                    .withTintColor(KarhooUI.colors.accent, renderingMode: .alwaysTemplate)
             case .unselected: return .uisdkImage("kh_uisdk_checkbox_unselected")
             }
         }

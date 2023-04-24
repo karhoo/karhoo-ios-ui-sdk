@@ -18,6 +18,7 @@ public protocol KarhooColors {
     var secondary: UIColor { get }
 
     /// The lighter variation of accent color
+    @available(*, deprecated, message: "This color has been deprecated and will be removed in a future release")
     var lightAccent: UIColor { get }
 
     /// The accent color is used for secondary category actions (links, filters)

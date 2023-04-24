@@ -37,6 +37,8 @@ class QuoteView: UIView {
     private enum CustomConstants {
         static let logoImageViewHieght: CGFloat = 60
         static let logoImageViewWidth: CGFloat = 64
+        static let badgeWidth: CGFloat = 24
+        static let badgeHeight: CGFloat = 22.6
     }
 
     // MARK: - Properties
@@ -85,6 +87,12 @@ class QuoteView: UIView {
         logo.accessibilityIdentifier = KHQuoteViewID.logoImage
         logo.contentMode = .scaleAspectFill
         logo.layer.masksToBounds = true
+    }
+    private lazy var badgeImageView = UIImageView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.contentMode = .scaleAspectFill
+        $0.isHidden = true
+        $0.layer.masksToBounds = true
     }
 
     private lazy var vehicleTypeLabel = UILabel().then {
@@ -241,6 +249,7 @@ class QuoteView: UIView {
         topContentStack.addArrangedSubview(rightContentView)
         leftContentStack.addArrangedSubview(vehicleContainerView)
         vehicleContainerView.addSubview(logoLoadingImageView)
+        vehicleContainerView.addSubview(badgeImageView)
         vehicleContainerView.addSubview(rideDetailStackView)
         rideDetailStackView.addArrangedSubview(vehicleTypeLabel)
         rideDetailStackView.addArrangedSubview(vehicleCapacityView)
@@ -278,6 +287,12 @@ class QuoteView: UIView {
             paddingRight: UIConstants.Spacing.small,
             width: CustomConstants.logoImageViewWidth,
             height: CustomConstants.logoImageViewHieght
+        )
+        badgeImageView.anchor(
+            top: logoLoadingImageView.topAnchor,
+            trailing: logoLoadingImageView.trailingAnchor,
+            width: CustomConstants.badgeWidth,
+            height: CustomConstants.badgeHeight
         )
         rideDetailStackView.anchor(
             top: vehicleContainerView.topAnchor,
@@ -327,8 +342,12 @@ class QuoteView: UIView {
         fareLabel.text = viewModel.fare
         logoLoadingImageView.load(
             imageURL: viewModel.vehicleImageURL ?? viewModel.logoImageURL,
-            placeholderImageName: "kh_uisdk_supplier_logo_placeholder"
+            placeholderImageName: "kh_uisdk_supplier_logo_placeholder",
+            completion: { [weak self] _ in
+                self?.badgeImageView.isHidden = false
+            }
         )
+        badgeImageView.image = viewModel.vehicleBadgeImage
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.luggageCapacity)

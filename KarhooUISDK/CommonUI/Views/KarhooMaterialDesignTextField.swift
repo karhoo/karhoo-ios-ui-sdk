@@ -90,12 +90,12 @@ struct KarhooMaterialDesignTextField: View {
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .keyboardType(keyboardType)
                     .textContentType(contentInputType)
+                    .disableAutocorrection(true)
                     .onChange(of: text) { newValue in
                         withAnimation {
                             isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
                         }
                     }
-                    .disableAutocorrection(true)
                     
                     Button {
                         text = ""

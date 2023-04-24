@@ -14,7 +14,7 @@ struct KarhooCheckoutPriceDetailsView: View {
     var body: some View {
         Text(viewModel.getDescriptionText())
             .font(Font(KarhooUI.fonts.bodyRegular()))
-            .foregroundColor(Color(KarhooUI.colors.text))
+            .foregroundColor(Color(KarhooUI.colors.textLabel))
             .frame(alignment: .leading)
     }
 }

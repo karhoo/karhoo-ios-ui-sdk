@@ -212,8 +212,8 @@ final class KarhooCheckoutViewModel: ObservableObject {
     }
     
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
-        provider.getRule(for: quote) { [weak self] rule in
-            self?.carIconUrl = rule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+        provider.getRule(for: quote) { [weak self] vehicleImageRule in
+            self?.carIconUrl = vehicleImageRule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
         }
     }
 

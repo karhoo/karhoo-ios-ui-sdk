@@ -38,6 +38,7 @@ class LoyaltyViewModel: ObservableObject {
     @Published var burnAmount: Int
 
     @Published var burnOffSubtitle: String
+    @Published var burnTitleTextColor: Color
     @Published var burnContentTextColor: Color
     
     var shouldShowView: Bool { worker.isLoyaltyEnabled }
@@ -56,7 +57,8 @@ class LoyaltyViewModel: ObservableObject {
         self.balance = 0
         
         self.burnOffSubtitle = UITexts.Loyalty.burnOffSubtitle
-        self.burnContentTextColor = Color(KarhooUI.colors.text)
+        self.burnTitleTextColor = Color(KarhooUI.colors.text)
+        self.burnContentTextColor = Color(KarhooUI.colors.textLabel)
         
         subscribe()
     }
@@ -97,6 +99,7 @@ class LoyaltyViewModel: ObservableObject {
             case .insufficientBalance:
                 self.burnSectionDisabled = true
                 self.burnOffSubtitle = UITexts.Errors.insufficientBalanceForLoyaltyBurning
+                self.burnTitleTextColor = Color(KarhooUI.colors.text).opacity(UIConstants.Alpha.overlay)
                 self.burnContentTextColor = Color(KarhooUI.colors.textLabel).opacity(UIConstants.Alpha.overlay)
             default:
                 self.burnSectionDisabled = false

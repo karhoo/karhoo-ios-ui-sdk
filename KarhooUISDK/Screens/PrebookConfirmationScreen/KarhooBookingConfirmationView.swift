@@ -109,7 +109,7 @@ struct KarhooBookingConfirmationView: View {
 
                 Text(viewModel.printedDate)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(Color(KarhooUI.colors.text))
+                    .foregroundColor(Color(KarhooUI.colors.textLabel))
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .accessibilityElement()
@@ -126,7 +126,7 @@ struct KarhooBookingConfirmationView: View {
 
                 Text(viewModel.printedPriceType)
                     .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .foregroundColor(Color(KarhooUI.colors.text))
+                    .foregroundColor(Color(KarhooUI.colors.textLabel))
                     .multilineTextAlignment(.center)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
