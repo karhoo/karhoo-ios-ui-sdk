@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAJE";
 
-"kh_uisdk_checkout_comments_subtitle" = "Comenta para tu conductor";
+"kh_uisdk_checkout_comments_subtitle" = "Por ejemplo: asiento para niños, necesidad de acceso en silla de ruedas, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Comentario";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Borrar dirección";
 
 "kh_uisdk_error" = "Error";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "El correo electrónico o la contraseña que has introducido no son correctos";
 
@@ -491,6 +493,8 @@
 "kh_uisdk_forgotten_password" = "¿Olvidaste tu contraseña?";
 
 "kh_uisdk_free_cancellation_asap" = "Cancelación gratuita hasta %1$@ minutos después de la reserva";
+
+"kh_uisdk_generic_mandatory_field" = "Necesario";
 
 "kh_uisdk_got_it" = "ENTENDIDO";
 
@@ -811,6 +815,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Recibimiento en el interior";
 
 "kh_uisdk_pickup_type_standby" = "Al llamar al conductor";
+
+"kh_uisdk_placeholder_email" = "p.ej. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "p.ej. John";
+
+"kh_uisdk_placeholder_flight_number" = "p.ej. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "p.ej. Gama";
+
+"kh_uisdk_placeholder_mobile_phone" = "p.ej. +34000000000";
+
+"kh_uisdk_placeholder_train_number" = "p.ej. AVE3211";
 
 "kh_uisdk_prebook_confirmation" = "Su viaje de %1$@ a %2$@ a las %3$@ ha sido confirmado";
 

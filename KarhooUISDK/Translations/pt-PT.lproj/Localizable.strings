@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "RESERVAR VIAGEM";
 
-"kh_uisdk_checkout_comments_subtitle" = "Comentário para o seu motorista";
+"kh_uisdk_checkout_comments_subtitle" = "Por exemplo: cadeira de criança, acesso de cadeira de rodas necessário, etc.";
 
 "kh_uisdk_checkout_comments_title" = "Comentário";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Eliminar endereço";
 
 "kh_uisdk_error" = "Erro";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "O e-mail ou senha que você digitou está incorreto";
 
@@ -491,6 +493,8 @@
 "kh_uisdk_forgotten_password" = "Palavra-chave esquecida?";
 
 "kh_uisdk_free_cancellation_asap" = "Cancelamento gratuito até %1$@ antes da recolha";
+
+"kh_uisdk_generic_mandatory_field" = "Obrigatório";
 
 "kh_uisdk_got_it" = "OK";
 
@@ -811,6 +815,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "Receção de boas-vindas";
 
 "kh_uisdk_pickup_type_standby" = "Motorista em espera";
+
+"kh_uisdk_placeholder_email" = "Por exemplo, john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "por exemplo, João";
+
+"kh_uisdk_placeholder_flight_number" = "por exemplo, AF1234";
+
+"kh_uisdk_placeholder_last_name" = "e.g. Corça";
+
+"kh_uisdk_placeholder_mobile_phone" = "por exemplo, +351000000000";
+
+"kh_uisdk_placeholder_train_number" = "Por exemplo, 184";
 
 "kh_uisdk_prebook_confirmation" = "A sua viagem\nde: %1$@ \npara: %2$@ \nàs: %3$@ \nfoi confirmada.";
 

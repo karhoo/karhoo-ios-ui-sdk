@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "จองการเดินทาง";
 
-"kh_uisdk_checkout_comments_subtitle" = "ความคิดเห็นสำหรับไดรเวอร์ของคุณ";
+"kh_uisdk_checkout_comments_subtitle" = "ตัวอย่างเช่น: ที่นั่งสำหรับเด็ก, ต้องใช้เก้าอี้รถเข็น ฯลฯ";
 
 "kh_uisdk_checkout_comments_title" = "ความเห็น";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "ลบที่อยู่";
 
 "kh_uisdk_error" = "ความผิดพลาด";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
 
@@ -491,6 +493,8 @@
 "kh_uisdk_forgotten_password" = "ลืมรหัสผ่าน?";
 
 "kh_uisdk_free_cancellation_asap" = "ยกเลิกฟรีไม่เกิน %1$@ หลังการจอง";
+
+"kh_uisdk_generic_mandatory_field" = "จำเป็นต้องมี";
 
 "kh_uisdk_got_it" = "เข้าใจแล้ว";
 
@@ -807,6 +811,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "รอรับภายในอาคาร";
 
 "kh_uisdk_pickup_type_standby" = "รอสแตนด์บาย";
+
+"kh_uisdk_placeholder_email" = "เช่น. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "เช่น. จอห์น";
+
+"kh_uisdk_placeholder_flight_number" = "เช่น. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "เช่น. โด";
+
+"kh_uisdk_placeholder_mobile_phone" = "เช่น. +66000000000";
+
+"kh_uisdk_placeholder_train_number" = "เช่น. 38";
 
 "kh_uisdk_prebook_confirmation" = "การจองของคุณ\nจาก: %1$@ \nไปยัง: %2$@ \nเวลา: %3$@ \n ได้รับการยืนยันแล้ว";
 

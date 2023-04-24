@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "乗車サービスを予約する";
 
-"kh_uisdk_checkout_comments_subtitle" = "ドライバーへのコメント";
+"kh_uisdk_checkout_comments_subtitle" = "例：チャイルドシート、車椅子での移動が必要など。";
 
 "kh_uisdk_checkout_comments_title" = "コメント";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "住所を消去する";
 
 "kh_uisdk_error" = "エラー";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "入力したメールアドレスまたはパスワードが正しくありません";
 
@@ -491,6 +493,8 @@
 "kh_uisdk_forgotten_password" = "パスワードを忘れました？";
 
 "kh_uisdk_free_cancellation_asap" = "予約後最大%1$@まで無料キャンセル";
+
+"kh_uisdk_generic_mandatory_field" = "必須";
 
 "kh_uisdk_got_it" = "了解";
 
@@ -807,6 +811,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "空港で出迎え";
 
 "kh_uisdk_pickup_type_standby" = "お客様からドライバーに電話";
+
+"kh_uisdk_placeholder_email" = "例えばjohn.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "例えばジョン";
+
+"kh_uisdk_placeholder_flight_number" = "例えばAF1234";
+
+"kh_uisdk_placeholder_last_name" = "例えばドウ";
+
+"kh_uisdk_placeholder_mobile_phone" = "例えば+810000000000";
+
+"kh_uisdk_placeholder_train_number" = "例えば1664";
 
 "kh_uisdk_prebook_confirmation" = "予約を次の通り確定しました\n出発地：%1$@\n目的地：%2$@\n料金：%3$@";
 
