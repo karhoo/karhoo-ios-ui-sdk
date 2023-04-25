@@ -290,7 +290,7 @@
 
 "kh_uisdk_checkout_as_guest" = "ZAREZERWUJ PRZEJAZD";
 
-"kh_uisdk_checkout_comments_subtitle" = "Komentarz dla Twojego kierowcy";
+"kh_uisdk_checkout_comments_subtitle" = "Na przykład: fotelik dziecięcy, potrzebny dostęp do wózka inwalidzkiego itp.";
 
 "kh_uisdk_checkout_comments_title" = "Komentarz";
 
@@ -365,6 +365,8 @@
 "kh_uisdk_erase_address" = "Usuń adres";
 
 "kh_uisdk_error" = "Błąd";
+
+"kh_uisdk_error_incorrect_sdk_version_message" = "";
 
 "kh_uisdk_error_invalid_password" = "Wprowadzony e-mail lub hasło jest nieprawidłowe";
 
@@ -491,6 +493,8 @@
 "kh_uisdk_forgotten_password" = "Nie pamiętasz hasła?";
 
 "kh_uisdk_free_cancellation_asap" = "Bezpłatne anulowanie do %1$@ po dokonaniu rezerwacji";
+
+"kh_uisdk_generic_mandatory_field" = "Wymagane";
 
 "kh_uisdk_got_it" = "ROZUMIEM";
 
@@ -811,6 +815,18 @@
 "kh_uisdk_pickup_type_meet_and_greet" = "W hali przylotów";
 
 "kh_uisdk_pickup_type_standby" = "Potwierdź z kierowcą";
+
+"kh_uisdk_placeholder_email" = "np. john.doe@mail.com";
+
+"kh_uisdk_placeholder_first_name" = "np. Jan";
+
+"kh_uisdk_placeholder_flight_number" = "np. AF1234";
+
+"kh_uisdk_placeholder_last_name" = "np. Doe";
+
+"kh_uisdk_placeholder_mobile_phone" = "np. +48000000000";
+
+"kh_uisdk_placeholder_train_number" = "np. IC13100";
 
 "kh_uisdk_prebook_confirmation" = "Twoja rezerwacja\nz: %1$@ \ndo: %2$@ \nat: %3$@ \nzostała potwierdzona";
 
