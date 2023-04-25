@@ -670,6 +670,8 @@
 
 "kh_uisdk_location_rationale_shown" = "";
 
+"kh_uisdk_logout" = "登出";
+
 "kh_uisdk_loyalty_balance_title" = "余额：%@ 积分";
 
 "kh_uisdk_loyalty_info" = "如果行程的最终车费超过您的积分余额，则需要您的卡来授权此交易。如果您的积分足以支付车费，则不会向您的帐户收费。";

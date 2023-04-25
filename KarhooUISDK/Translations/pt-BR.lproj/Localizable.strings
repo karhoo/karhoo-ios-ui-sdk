@@ -672,6 +672,8 @@
 
 "kh_uisdk_location_rationale_shown" = "";
 
+"kh_uisdk_logout" = "Sair";
+
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ pontos Reward";
 
 "kh_uisdk_loyalty_info" = "Precisamos dos dados do seu cartão para autorizar esta transação, caso o preço final da viagem exceda seu saldo de pontos. Caso os seus pontos de fidelidade cubram o preço total, não debitaremos nada em sua conta.";
