@@ -672,8 +672,6 @@
 
 "kh_uisdk_location_rationale_shown" = "STANDORT_RATIONAL_ANGEZEIGT";
 
-"kh_uisdk_logout" = "Abmeldung";
-
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ Prämienpunkte";
 
 "kh_uisdk_loyalty_info" = "Ihre Karte wird benötigt, um diese Transaktion zu autorisieren, falls der Endpreis der Fahrt Ihren Punktestand übersteigt. Ihr Konto wird nicht belastet, wenn Ihre Punkte den Gesamtpreis abdecken.";
