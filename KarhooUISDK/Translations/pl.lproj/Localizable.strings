@@ -672,8 +672,6 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
-"kh_uisdk_logout" = "Wyloguj";
-
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ punktów Reward";
 
 "kh_uisdk_loyalty_info" = "Twoja karta jest potrzebna do autoryzacji tej transakcji na wypadek, gdyby ostateczna cena przejazdu przekroczyła saldo punktów. Twoja karta nie zostanie obciążona, jeśli Twoje punkty lojalnościowe pokryją koszt przejazdu.";

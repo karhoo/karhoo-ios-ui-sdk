@@ -672,8 +672,6 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
-"kh_uisdk_logout" = "Disconnettersi";
-
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ punti Reward";
 
 "kh_uisdk_loyalty_info" = "La tua carta serve ad autorizzare questa transazione, in caso il prezzo finale della corsa superi il tuo saldo punti. Non addebiteremo nulla sul tuo account se i tuoi punti coprono il costo della corsa.";

@@ -670,8 +670,6 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
-"kh_uisdk_logout" = "ログアウト";
-
 "kh_uisdk_loyalty_balance_title" = "残高：%@ポイント";
 
 "kh_uisdk_loyalty_info" = "最終的な料金がポイント残高を上回る場合に備え、カードによる取引の承認が必要です。ポイントで全額を支払うことができる場合、請求は発生しません。";
