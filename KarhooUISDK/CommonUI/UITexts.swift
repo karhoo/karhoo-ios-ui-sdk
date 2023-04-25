@@ -57,7 +57,7 @@ public enum UITexts {
         public static let information = "kh_uisdk_information".localized
         public static let now = "kh_uisdk_now".localized
         public static let later = "kh_uisdk_later".localized
-        
+        public static let mandatoryField = "kh_uisdk_generic_mandatory_field".localized
     }
 
     public enum QuoteCell {
@@ -99,6 +99,16 @@ public enum UITexts {
         public static let signupPendingMessage = "kh_uisdk_signup_pending_message".localized
         public static let forgottenPassword = "kh_uisdk_forgotten_password".localized
         public static let commentOptional = "kh_uisdk_additional_comments".localized
+    }
+    
+    /* Text field placeholders */
+    public enum Placeholder {
+        public static let firstName = "kh_uisdk_placeholder_first_name".localized
+        public static let lastName = "kh_uisdk_placeholder_last_name".localized
+        public static let email = "kh_uisdk_placeholder_email".localized
+        public static let mobilePhoneNumber = "kh_uisdk_placeholder_mobile_phone".localized
+        public static let trainNumber = "kh_uisdk_placeholder_train_number".localized
+        public static let flightNumber = "kh_uisdk_placeholder_flight_number".localized
     }
 
     /* Errors */
