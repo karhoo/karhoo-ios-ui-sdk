@@ -258,7 +258,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             )
         case .menuIcon:
             navigationItem.leftBarButtonItem = UIBarButtonItem(
-                title: "Logout",
+                title: UITexts.SideMenu.signOut,
                 style: .plain,
                 target: self,
                 action: #selector(leftBarButtonPressed)
