@@ -33,11 +33,7 @@ struct KarhooMaterialDesignTextField: View {
     }
 
     private var mainPlaceholder: String {
-        guard let placeholder else {
-            return contentType.placeholder
-        }
-        
-        return placeholder
+        placeholder ?? contentType.placeholder
     }
     
     // Once min version is bumped to iOS 15, add specific keyboard type for .flightNumber
@@ -72,97 +68,117 @@ struct KarhooMaterialDesignTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topLeading) {
-                HStack {
-                    TextField(
-                        "",
-                        text: $text,
-                        onEditingChanged: { editingChanged in
-                        if editingChanged {
-                            isFirstResponder = true
-                        } else {
-                            isFirstResponder = false
-                        }
-                    }, onCommit: {
-                        self.onSubmitSubject.send(contentType)
-                    })
-                    .placeholder(mainPlaceholder, when: text.isEmpty)
-                    .foregroundColor(Color(KarhooUI.colors.text))
-                    .font(Font(KarhooUI.fonts.bodyRegular()))
-                    .keyboardType(keyboardType)
-                    .textContentType(contentInputType)
-                    .disableAutocorrection(true)
-                    .onChange(of: text) { newValue in
-                        withAnimation {
-                            isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
-                        }
-                    }
-                    
-                    Button {
-                        text = ""
-                    } label: {
-                        Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
-                            .resizable()
-                            .frame(
-                                width: UIConstants.Dimension.Icon.standard,
-                                height: UIConstants.Dimension.Icon.standard
-                            )
-                    }
-                }
-                .padding(.vertical, UIConstants.Spacing.medium)
-                .padding(.leading, UIConstants.Spacing.standard)
-                .padding(.trailing, UIConstants.Spacing.small)
-                .addBorder(
-                    getBorderColor(),
-                    width: UIConstants.Dimension.Border.xLargeWidth,
-                    cornerRadius: UIConstants.CornerRadius.medium
-                )
-                
-                Text(title)
-                    .padding(
-                        EdgeInsets(
-                            top: 0,
-                            leading: UIConstants.Spacing.xSmall,
-                            bottom: 0,
-                            trailing: UIConstants.Spacing.xSmall
-                        )
-                    )
-                    .foregroundColor(getTitleColor())
-                    .font(Font(KarhooUI.fonts.captionRegular()))
-                    .background(Color(KarhooUI.colors.background2))
-                    .offset(
-                        x: UIConstants.Spacing.medium,
-                        y: -KarhooUI.fonts.captionRegular().pointSize / 2
-                    )
+                textFieldView
+                titleView
             }
             .accessibilityElement()
             .accessibilityValue(Text(accessibilityTitle))
             
             if !isTextfieldValid {
-                Text(errorMessage)
-                    .font(Font(KarhooUI.fonts.footnoteRegular()))
-                    .foregroundColor(Color(KarhooUI.colors.error))
-                    .padding(.top, UIConstants.Spacing.xSmall)
-                    .transition(.opacity)
-                    .offset(
-                        x: UIConstants.Spacing.standard
-                    )
-                    .accessibilityElement()
-                    .accessibilityLabel(Text(errorMessage))
+                errorView
             }
             
             if isTextfieldValid && isMandatory {
-                Text(UITexts.Generic.mandatoryField)
-                    .font(Font(KarhooUI.fonts.footnoteRegular()))
-                    .foregroundColor(Color(KarhooUI.colors.textLabel))
-                    .padding(.top, UIConstants.Spacing.xSmall)
-                    .transition(.opacity)
-                    .offset(
-                        x: UIConstants.Spacing.standard
-                    )
-                    .accessibilityElement()
-                    .accessibilityValue(UITexts.Generic.mandatoryField)
+               infoView
             }
         }
+    }
+    
+    @ViewBuilder
+    private var textFieldView: some View {
+        HStack {
+            TextField(
+                "",
+                text: $text,
+                onEditingChanged: { editingChanged in
+                if editingChanged {
+                    isFirstResponder = true
+                } else {
+                    isFirstResponder = false
+                }
+            }, onCommit: {
+                self.onSubmitSubject.send(contentType)
+            })
+            .placeholder(mainPlaceholder, when: text.isEmpty)
+            .foregroundColor(Color(KarhooUI.colors.text))
+            .font(Font(KarhooUI.fonts.bodyRegular()))
+            .keyboardType(keyboardType)
+            .textContentType(contentInputType)
+            .disableAutocorrection(true)
+            .onChange(of: text) { newValue in
+                withAnimation {
+                    isTextfieldValid = textFieldValidator.getTextFieldValidity(newValue, contentType: contentType)
+                }
+            }
+            
+            // Clear text button
+            Button {
+                text = ""
+            } label: {
+                Image(uiImage: .uisdkImage("kh_uisdk_cross_in_circle"))
+                    .resizable()
+                    .frame(
+                        width: UIConstants.Dimension.Icon.standard,
+                        height: UIConstants.Dimension.Icon.standard
+                    )
+            }
+        }
+        .padding(.vertical, UIConstants.Spacing.medium)
+        .padding(.leading, UIConstants.Spacing.standard)
+        .padding(.trailing, UIConstants.Spacing.small)
+        .addBorder(
+            getBorderColor(),
+            width: UIConstants.Dimension.Border.xLargeWidth,
+            cornerRadius: UIConstants.CornerRadius.medium
+        )
+    }
+    
+    @ViewBuilder
+    private var titleView: some View {
+        Text(title)
+            .padding(
+                EdgeInsets(
+                    top: 0,
+                    leading: UIConstants.Spacing.xSmall,
+                    bottom: 0,
+                    trailing: UIConstants.Spacing.xSmall
+                )
+            )
+            .foregroundColor(getTitleColor())
+            .font(Font(KarhooUI.fonts.captionRegular()))
+            .background(Color(KarhooUI.colors.background2))
+            .offset(
+                x: UIConstants.Spacing.medium,
+                y: -KarhooUI.fonts.captionRegular().pointSize / 2
+            )
+    }
+    
+    @ViewBuilder
+    private var errorView: some View {
+        Text(errorMessage)
+            .font(Font(KarhooUI.fonts.footnoteRegular()))
+            .foregroundColor(Color(KarhooUI.colors.error))
+            .padding(.top, UIConstants.Spacing.xSmall)
+            .transition(.opacity)
+            .offset(
+                x: UIConstants.Spacing.standard
+            )
+            .accessibilityElement()
+            .accessibilityLabel(Text(errorMessage))
+    }
+    
+    @ViewBuilder
+    private var infoView: some View {
+        Text(UITexts.Generic.mandatoryField)
+            .font(Font(KarhooUI.fonts.footnoteRegular()))
+            .foregroundColor(Color(KarhooUI.colors.textLabel))
+            .padding(.top, UIConstants.Spacing.xSmall)
+            .transition(.opacity)
+            .offset(
+                x: UIConstants.Spacing.standard
+            )
+            .accessibilityElement()
+            .accessibilityValue(UITexts.Generic.mandatoryField)
     }
     
     private func getBorderColor() -> Color {
