@@ -670,6 +670,8 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
+"kh_uisdk_logout" = "Keluar";
+
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ poin Reward";
 
 "kh_uisdk_loyalty_info" = "Kartu Anda diperlukan untuk mengautorisasi transaksi ini, jika harga akhir perjalanan melebihi saldo poin Anda. Akun Anda tidak akan dikenakan biaya jika poin loyalitas sudah mencukupi seluruh harga.";

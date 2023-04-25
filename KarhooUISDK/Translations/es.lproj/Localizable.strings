@@ -672,6 +672,8 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
+"kh_uisdk_logout" = "Cerrar sesión";
+
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ puntos Reward";
 
 "kh_uisdk_loyalty_info" = "Se necesita su tarjeta para autorizar la transacción, en caso de que el precio final del viaje exceda su saldo de puntos. No se cobrará nada a la tarjeta si sus puntos cubren el precio total.";

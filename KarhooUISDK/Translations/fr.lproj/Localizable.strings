@@ -672,6 +672,8 @@
 
 "kh_uisdk_location_rationale_shown" = "EXPLICATION_LOCATION_REQUETE";
 
+"kh_uisdk_logout" = "Déconnexion";
+
 "kh_uisdk_loyalty_balance_title" = "%@ points Reward disponibles";
 
 "kh_uisdk_loyalty_info" = "Votre carte est nécessaire pour autoriser cette transaction dans le cas où le prix final de la course dépasse votre solde de points. Votre compte ne sera pas débité si vos points Reward couvrent le prix total de la course.";

@@ -672,6 +672,8 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
+"kh_uisdk_logout" = "Logout";
+
 "kh_uisdk_loyalty_balance_title" = "Balance: %@ Reward points";
 
 "kh_uisdk_loyalty_info" = "We need your card to authorise this transaction, just in case the final ride cost exceeds your points balance. Your account won’t be charged if your Reward points cover the cost of the ride.";

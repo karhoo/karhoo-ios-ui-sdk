@@ -672,6 +672,8 @@
 
 "kh_uisdk_location_rationale_shown" = "LOCATION_RATIONAL_SHOWN";
 
+"kh_uisdk_logout" = "Afmelden";
+
 "kh_uisdk_loyalty_balance_title" = "Saldo: %@ Reward-punten";
 
 "kh_uisdk_loyalty_info" = "Uw kaart is nodig om deze transactie te autoriseren voor het geval de uiteindelijke ritprijs hoger is dan uw puntensaldo. Er worden geen kosten in rekening gebracht als u genoeg punten hebt voor de ritprijs.";
