@@ -90,7 +90,7 @@ class QuoteView: UIView {
     }
     private lazy var badgeImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
         $0.isHidden = true
         $0.layer.masksToBounds = true
     }
