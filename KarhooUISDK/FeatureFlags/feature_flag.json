@@ -1,5 +1,12 @@
 [
     {
+        "version": "1.12.1",
+        "flags": {
+            "adyenAvailable": true,
+            "newRidePlaningScreen": false,
+        }
+    },
+    {
         "version": "1.11.1",
         "flags": {
             "adyenAvailable": false,
