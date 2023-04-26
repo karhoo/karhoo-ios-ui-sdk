@@ -256,7 +256,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
         let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
     
-        return !(flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName)
+        return true // !(flags?.flags.adyenAvailable == false && paymentManagerName == adyenPaymentManagerName)
     }
 
     private func updateScheduledRideEnabled(using details: JourneyDetails) {
