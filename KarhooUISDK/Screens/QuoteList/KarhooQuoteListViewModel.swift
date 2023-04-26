@@ -282,7 +282,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         let quotesToShow: [Quote] = quoteFilter.filter(newQuotes.all)
 
         let noQuotesForSelectedFilters = quotesToShow.isEmpty && newQuotes.all.isEmpty == false
-        let noQuotesForTimeAndArea = newQuotes.all.isEmpty && newQuotes.status == .completed
+        let noQuotesForTimeAndArea = true // newQuotes.all.isEmpty && newQuotes.status == .completed
 
         let sortedQuotes = quoteSorter.sortQuotes(quotesToShow, by: selectedQuoteOrder)
 
