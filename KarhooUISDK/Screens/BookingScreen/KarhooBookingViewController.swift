@@ -256,6 +256,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
                 target: self,
                 action: #selector(leftBarButtonPressed)
             )
+            let accessibilityText = "\(UITexts.Accessibility.crossIcon), \(UITexts.Accessibility.closeScreen)"
+            navigationItem.leftBarButtonItem?.accessibilityLabel = accessibilityText
         case .menuIcon:
             navigationItem.leftBarButtonItem = UIBarButtonItem(
                 title: UITexts.SideMenu.signOut,

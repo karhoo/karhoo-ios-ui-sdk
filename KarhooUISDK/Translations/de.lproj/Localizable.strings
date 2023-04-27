@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Zu den Details der Fahrt";
 
+"kh_uisdk_accessibility_icon_cross" = "Kreuz-Symbol";
+
+"kh_uisdk_accessibility_label_close_screen" = "Schließen Sie den Bildschirm";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Gesamten Eintrag löschen";
+
 "kh_uisdk_add_card" = "KARTE HINZUFÜGEN";
 
 "kh_uisdk_add_comment_placeholder" = "Zusätzliche Bemerkungen";

@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Ir para os detalhes do passeio";
 
+"kh_uisdk_accessibility_icon_cross" = "Ícone de cruz";
+
+"kh_uisdk_accessibility_label_close_screen" = "Fechar o ecrã";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Eliminar todo o registo";
+
 "kh_uisdk_add_card" = "ADICIONAR CARTÃO";
 
 "kh_uisdk_add_comment_placeholder" = "Comentários adicionais";

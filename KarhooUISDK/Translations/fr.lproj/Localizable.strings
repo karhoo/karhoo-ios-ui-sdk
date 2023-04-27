@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Aller aux détails du trajet";
 
+"kh_uisdk_accessibility_icon_cross" = "Icône en forme de croix";
+
+"kh_uisdk_accessibility_label_close_screen" = "Fermer l’écran";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Supprimer l’entrée entière";
+
 "kh_uisdk_add_card" = "Ajouter une carte";
 
 "kh_uisdk_add_comment_placeholder" = "Commentaires supplémentaires";

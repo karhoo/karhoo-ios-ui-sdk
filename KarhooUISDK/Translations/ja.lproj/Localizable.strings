@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "乗車の詳細に移動";
 
+"kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
+
+"kh_uisdk_accessibility_label_close_screen" = "画面を閉じる";
+
+"kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
+
 "kh_uisdk_add_card" = "カードを追加";
 
 "kh_uisdk_add_comment_placeholder" = "追加コメント";

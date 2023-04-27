@@ -506,6 +506,12 @@ public enum UITexts {
         static let balanceTitle = "kh_uisdk_loyalty_balance_title".localized
         static let or = "kh_uisdk_loyalty_separator".localized
     }
+    
+    public enum Accessibility {
+        static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
+        static let closeScreen = "kh_uisdk_accessibility_label_close_screen".localized
+        static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
+    }
 }
 
 extension KarhooError {
