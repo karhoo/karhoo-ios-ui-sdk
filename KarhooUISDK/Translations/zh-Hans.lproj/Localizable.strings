@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "目的地地址";
 
+"kh_uisdk_acc_icon_back" = "返回图标";
+
+"kh_uisdk_acc_icon_cross" = "十字图标";
+
+"kh_uisdk_acc_label_delete_entry" = "删除整个条目";
+
 "kh_uisdk_acc_loyalty_information" = "信息";
 
 "kh_uisdk_acc_pickup_address" = "删除地址";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "上车时间";
 
 "kh_uisdk_acc_ride_details" = "前往乘车详情";
-
-"kh_uisdk_accessibility_icon_cross" = "十字图标";
-
-"kh_uisdk_accessibility_label_close_screen" = "关闭屏幕";
-
-"kh_uisdk_accessibility_label_delete_entry" = "删除整个条目";
 
 "kh_uisdk_add_card" = "添加卡片";
 

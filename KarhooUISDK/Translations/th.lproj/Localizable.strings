@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "ที่อยู่ปลายทาง";
 
+"kh_uisdk_acc_icon_back" = "ไอคอนย้อนกลับ";
+
+"kh_uisdk_acc_icon_cross" = "ไอคอนกากบาท";
+
+"kh_uisdk_acc_label_delete_entry" = "ลบรายการทั้งหมด";
+
 "kh_uisdk_acc_loyalty_information" = "รายละเอียดคนขับ";
 
 "kh_uisdk_acc_pickup_address" = "ที่อยู่ขาออก";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "เวลารับ";
 
 "kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
-
-"kh_uisdk_accessibility_icon_cross" = "ไอคอนกากบาท";
-
-"kh_uisdk_accessibility_label_close_screen" = "ปิดหน้าจอ";
-
-"kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
 
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 

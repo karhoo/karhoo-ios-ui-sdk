@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "Destination address";
 
+"kh_uisdk_acc_icon_back" = "Back icon";
+
+"kh_uisdk_acc_icon_cross" = "Cross icon";
+
+"kh_uisdk_acc_label_delete_entry" = "Delete entire entry";
+
 "kh_uisdk_acc_loyalty_information" = "Information";
 
 "kh_uisdk_acc_pickup_address" = "Departure address";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "Pick-up time";
 
 "kh_uisdk_acc_ride_details" = "Go to ride details";
-
-"kh_uisdk_accessibility_icon_cross" = "Cross icon";
-
-"kh_uisdk_accessibility_label_close_screen" = "Close the screen";
-
-"kh_uisdk_accessibility_label_delete_entry" = "Delete entire entry";
 
 "kh_uisdk_add_card" = "Add card";
 

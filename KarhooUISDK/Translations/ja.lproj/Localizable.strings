@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "目的地";
 
+"kh_uisdk_acc_icon_back" = "戻るアイコン";
+
+"kh_uisdk_acc_icon_cross" = "十字のアイコン";
+
+"kh_uisdk_acc_label_delete_entry" = "エントリ全体を削除";
+
 "kh_uisdk_acc_loyalty_information" = "ドライバーの情報";
 
 "kh_uisdk_acc_pickup_address" = "住所を消去する";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "お迎えの時間";
 
 "kh_uisdk_acc_ride_details" = "乗車の詳細に移動";
-
-"kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
-
-"kh_uisdk_accessibility_label_close_screen" = "画面を閉じる";
-
-"kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
 
 "kh_uisdk_add_card" = "カードを追加";
 

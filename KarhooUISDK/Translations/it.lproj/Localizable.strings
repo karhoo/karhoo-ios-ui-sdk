@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "Indirizzo di destinazione";
 
+"kh_uisdk_acc_icon_back" = "Icona indietro";
+
+"kh_uisdk_acc_icon_cross" = "Icona a forma di croce";
+
+"kh_uisdk_acc_label_delete_entry" = "Elimina l'intera voce";
+
 "kh_uisdk_acc_loyalty_information" = "Informazioni";
 
 "kh_uisdk_acc_pickup_address" = "Indirizzo di partenza";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "Orario di ritiro";
 
 "kh_uisdk_acc_ride_details" = "Vai ai dettagli della corsa";
-
-"kh_uisdk_accessibility_icon_cross" = "Icona a forma di croce";
-
-"kh_uisdk_accessibility_label_close_screen" = "Chiudi lo schermo";
-
-"kh_uisdk_accessibility_label_delete_entry" = "Elimina l'intera voce";
 
 "kh_uisdk_add_card" = "AGGIUNGI CARTA";
 

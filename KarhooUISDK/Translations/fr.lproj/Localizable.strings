@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "Adresse de destination";
 
+"kh_uisdk_acc_icon_back" = "Icône Retour";
+
+"kh_uisdk_acc_icon_cross" = "Icône en forme de croix";
+
+"kh_uisdk_acc_label_delete_entry" = "Supprimer l’entrée entière";
+
 "kh_uisdk_acc_loyalty_information" = "Informations";
 
 "kh_uisdk_acc_pickup_address" = "Adresse de départ";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "Heure de prise en charge";
 
 "kh_uisdk_acc_ride_details" = "Aller aux détails du trajet";
-
-"kh_uisdk_accessibility_icon_cross" = "Icône en forme de croix";
-
-"kh_uisdk_accessibility_label_close_screen" = "Fermer l’écran";
-
-"kh_uisdk_accessibility_label_delete_entry" = "Supprimer l’entrée entière";
 
 "kh_uisdk_add_card" = "Ajouter une carte";
 

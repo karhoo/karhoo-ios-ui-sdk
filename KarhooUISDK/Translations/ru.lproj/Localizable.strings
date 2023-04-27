@@ -81,6 +81,12 @@
 
 "kh_uisdk_acc_destination_address" = "Адрес назначения";
 
+"kh_uisdk_acc_icon_back" = "Значок \"Назад\"";
+
+"kh_uisdk_acc_icon_cross" = "Значок креста";
+
+"kh_uisdk_acc_label_delete_entry" = "Удалить всю запись";
+
 "kh_uisdk_acc_loyalty_information" = "Информация";
 
 "kh_uisdk_acc_pickup_address" = "Адрес отправления";
@@ -88,12 +94,6 @@
 "kh_uisdk_acc_pickup_time" = "Время посадки";
 
 "kh_uisdk_acc_ride_details" = "Перейти к подробностям поездки";
-
-"kh_uisdk_accessibility_icon_cross" = "Значок креста";
-
-"kh_uisdk_accessibility_label_close_screen" = "Закрыть экран";
-
-"kh_uisdk_accessibility_label_delete_entry" = "Удалить всю запись";
 
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 
