@@ -89,6 +89,14 @@
 
 "kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
 
+"kh_uisdk_accessibility_icon_back" = "ไอคอนย้อนกลับ";
+
+"kh_uisdk_accessibility_icon_cross" = "ไอคอนกากบาท";
+
+"kh_uisdk_accessibility_label_close_screen" = "ปิดหน้าจอ";
+
+"kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
+
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 
 "kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";

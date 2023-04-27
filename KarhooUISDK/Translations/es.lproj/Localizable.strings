@@ -89,6 +89,14 @@
 
 "kh_uisdk_acc_ride_details" = "Ir a los detalles del viaje";
 
+"kh_uisdk_accessibility_icon_back" = "icono Atrás";
+
+"kh_uisdk_accessibility_icon_cross" = "icono de cruz";
+
+"kh_uisdk_accessibility_label_close_screen" = "Cierra la pantalla";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Eliminar toda la entrada";
+
 "kh_uisdk_add_card" = "AÑADIR TARJETA";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";

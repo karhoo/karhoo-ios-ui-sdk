@@ -89,6 +89,14 @@
 
 "kh_uisdk_acc_ride_details" = "Vai ai dettagli della corsa";
 
+"kh_uisdk_accessibility_icon_back" = "Icona indietro";
+
+"kh_uisdk_accessibility_icon_cross" = "Icona a forma di croce";
+
+"kh_uisdk_accessibility_label_close_screen" = "Chiudi lo schermo";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Elimina l'intera voce";
+
 "kh_uisdk_add_card" = "AGGIUNGI CARTA";
 
 "kh_uisdk_add_comment_placeholder" = "Commenti aggiuntivi";

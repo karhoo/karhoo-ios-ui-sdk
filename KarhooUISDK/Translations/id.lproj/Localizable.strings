@@ -89,6 +89,14 @@
 
 "kh_uisdk_acc_ride_details" = "Pergi ke rincian perjalanan";
 
+"kh_uisdk_accessibility_icon_back" = "ikon kembali";
+
+"kh_uisdk_accessibility_icon_cross" = "Ikon silang";
+
+"kh_uisdk_accessibility_label_close_screen" = "Tutup layar";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Hapus seluruh entri";
+
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
 
 "kh_uisdk_add_comment_placeholder" = "Komentar tambahan";

@@ -89,6 +89,14 @@
 
 "kh_uisdk_acc_ride_details" = "Przejdź do szczegółów przejazdu";
 
+"kh_uisdk_accessibility_icon_back" = "Ikona powrotu";
+
+"kh_uisdk_accessibility_icon_cross" = "Ikona krzyża";
+
+"kh_uisdk_accessibility_label_close_screen" = "Zamknij ekran";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Usuń cały wpis";
+
 "kh_uisdk_add_card" = "DODAJ KARTĘ";
 
 "kh_uisdk_add_comment_placeholder" = "Dodatkowe uwagi";
