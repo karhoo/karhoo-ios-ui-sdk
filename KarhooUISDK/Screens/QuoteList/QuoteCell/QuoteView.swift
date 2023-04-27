@@ -347,7 +347,8 @@ class QuoteView: UIView {
                 self?.badgeImageView.isHidden = false
             }
         )
-        badgeImageView.image = viewModel.vehicleBadgeImage
+        // remove comment to enable showing vehicle badge
+//        badgeImageView.image = viewModel.vehicleBadgeImage
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.luggageCapacity)
