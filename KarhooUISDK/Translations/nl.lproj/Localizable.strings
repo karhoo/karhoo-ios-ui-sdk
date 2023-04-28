@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Kruis pictogram";
 
-"kh_uisdk_accessibility_label_close_screen" = "Sluit het scherm";
-
 "kh_uisdk_accessibility_label_delete_entry" = "Volledige invoer verwijderen";
 
 "kh_uisdk_add_card" = "KAART TOEVOEGEN";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "Fout";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Werk uw applicatie bij voordat u deze functie gebruikt";
 
 "kh_uisdk_error_invalid_password" = "Het e-mailadres of wachtwoord dat je hebt ingevoerd, is onjuist";
 

@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Ikon silang";
 
-"kh_uisdk_accessibility_label_close_screen" = "Tutup layar";
-
 "kh_uisdk_accessibility_label_delete_entry" = "Hapus seluruh entri";
 
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "Kesalahan";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Perbarui aplikasi Anda sebelum menggunakan fitur ini";
 
 "kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
 

@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Ícone de cruz";
 
-"kh_uisdk_accessibility_label_close_screen" = "Fechar o ecrã";
-
 "kh_uisdk_accessibility_label_delete_entry" = "Eliminar todo o registo";
 
 "kh_uisdk_add_card" = "ADICIONAR CARTÃO";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "Erro";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Actualize a sua aplicação antes de utilizar esta funcionalidade";
 
 "kh_uisdk_error_invalid_password" = "O e-mail ou senha que você digitou está incorreto";
 

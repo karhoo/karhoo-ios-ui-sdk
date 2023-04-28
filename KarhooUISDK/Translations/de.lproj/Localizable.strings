@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Kreuz-Symbol";
 
-"kh_uisdk_accessibility_label_close_screen" = "Schließen Sie den Bildschirm";
-
 "kh_uisdk_accessibility_label_delete_entry" = "Gesamten Eintrag löschen";
 
 "kh_uisdk_add_card" = "KARTE HINZUFÜGEN";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "Fehler";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Bitte aktualisieren Sie Ihre Anwendung, bevor Sie diese Funktion nutzen";
 
 "kh_uisdk_error_invalid_password" = "Die eingegebene E-Mail oder das eingegebene Passwort sind falsch.";
 

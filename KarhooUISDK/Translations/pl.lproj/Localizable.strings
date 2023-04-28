@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Ikona krzyża";
 
-"kh_uisdk_accessibility_label_close_screen" = "Zamknij ekran";
-
 "kh_uisdk_accessibility_label_delete_entry" = "Usuń cały wpis";
 
 "kh_uisdk_add_card" = "DODAJ KARTĘ";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "Błąd";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Proszę zaktualizować swoją aplikację przed użyciem tej funkcji";
 
 "kh_uisdk_error_invalid_password" = "Wprowadzony e-mail lub hasło jest nieprawidłowe";
 

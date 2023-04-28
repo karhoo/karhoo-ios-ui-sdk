@@ -93,8 +93,6 @@
 
 "kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
 
-"kh_uisdk_accessibility_label_close_screen" = "画面を閉じる";
-
 "kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
 
 "kh_uisdk_add_card" = "カードを追加";
@@ -374,7 +372,7 @@
 
 "kh_uisdk_error" = "エラー";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "この機能を使用する前にアプリケーションを更新してください";
 
 "kh_uisdk_error_invalid_password" = "入力したメールアドレスまたはパスワードが正しくありません";
 

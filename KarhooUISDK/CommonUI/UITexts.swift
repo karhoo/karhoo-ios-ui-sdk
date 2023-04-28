@@ -509,7 +509,7 @@ public enum UITexts {
     
     public enum Accessibility {
         static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
-        static let closeScreen = "kh_uisdk_accessibility_label_close_screen".localized
+        static let closeScreen = "kh_uisdk_acc_close_button".localized
         static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
         static let backIcon = "kh_uisdk_accessibility_icon_back".localized
     }
