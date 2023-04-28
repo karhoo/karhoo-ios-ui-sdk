@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
 
+"kh_uisdk_accessibility_label_fleet_name" = "ชื่อกองเรือ";
+
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 
 "kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";

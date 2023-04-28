@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
 
+"kh_uisdk_accessibility_label_fleet_name" = "艦隊名";
+
 "kh_uisdk_add_card" = "カードを追加";
 
 "kh_uisdk_add_comment_placeholder" = "追加コメント";

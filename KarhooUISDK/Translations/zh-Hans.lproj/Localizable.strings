@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "删除整个条目";
 
+"kh_uisdk_accessibility_label_fleet_name" = "机队名称";
+
 "kh_uisdk_add_card" = "添加卡片";
 
 "kh_uisdk_add_comment_placeholder" = "补充评论";

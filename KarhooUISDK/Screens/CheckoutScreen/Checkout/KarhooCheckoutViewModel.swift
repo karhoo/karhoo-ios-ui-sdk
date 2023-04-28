@@ -57,6 +57,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
 
     private let journeyDetails: JourneyDetails
     private var carIconUrl: String = ""
+    private var carIconRule: VehicleImageRule?
 
     let quote: Quote
     @Published var confirmButtonTitle = UITexts.Booking.next.uppercased()
@@ -200,6 +201,11 @@ final class KarhooCheckoutViewModel: ObservableObject {
         var cancelationText: String? {
             KarhooFreeCancelationTextWorker.getFreeCancelationText(quote: quote, journeyDetails: journeyDetails)
         }
+        
+        var vehicleImageAccessibilityText: String {
+            carIconRule?.tags.first ?? quote.vehicle.tags.first ?? quote.vehicle.getVehicleTypeText()
+        }
+        
         return VehicleDetailsCardViewModel(
             title: quote.vehicle.getVehicleTypeText(),
             passengerCapacity: quote.vehicle.passengerCapacity,
@@ -207,13 +213,15 @@ final class KarhooCheckoutViewModel: ObservableObject {
             fleetName: quote.fleet.name,
             carIconUrl: carIconUrl,
             fleetIconUrl: quote.fleet.logoUrl,
-            cancelationText: cancelationText
+            cancelationText: cancelationText,
+            carImageAccessibilityText: vehicleImageAccessibilityText
         )
     }
     
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
         provider.getRule(for: quote) { [weak self] vehicleImageRule in
             self?.carIconUrl = vehicleImageRule?.imagePath ?? self?.quote.fleet.logoUrl ?? ""
+            self?.carIconRule = vehicleImageRule
         }
     }
 

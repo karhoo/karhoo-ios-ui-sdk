@@ -512,6 +512,7 @@ public enum UITexts {
         static let backIcon = "kh_uisdk_accessibility_icon_back".localized
         static let maximumPassengers = "kh_uisdk_passengers_max".localized
         static let maximumLuggages = "kh_uisdk_baggage_max".localized
+        static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
     }
 }
 

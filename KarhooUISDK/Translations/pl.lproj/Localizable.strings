@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Usuń cały wpis";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Nazwa floty";
+
 "kh_uisdk_add_card" = "DODAJ KARTĘ";
 
 "kh_uisdk_add_comment_placeholder" = "Dodatkowe uwagi";

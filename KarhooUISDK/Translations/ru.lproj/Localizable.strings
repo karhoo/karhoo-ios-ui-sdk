@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Удалить всю запись";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Название флота";
+
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 
 "kh_uisdk_add_comment_placeholder" = "Дополнительные комментарии";

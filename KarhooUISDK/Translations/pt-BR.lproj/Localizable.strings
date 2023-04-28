@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Eliminar todo o registo";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Nome da frota";
+
 "kh_uisdk_add_card" = "ADICIONAR CARTÃO";
 
 "kh_uisdk_add_comment_placeholder" = "Comentários adicionais";

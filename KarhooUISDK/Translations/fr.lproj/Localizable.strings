@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Supprimer l’entrée entière";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Nom de la flotte";
+
 "kh_uisdk_add_card" = "Ajouter une carte";
 
 "kh_uisdk_add_comment_placeholder" = "Commentaires supplémentaires";

@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Delete entire entry";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Fleet name";
+
 "kh_uisdk_add_card" = "Add card";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";

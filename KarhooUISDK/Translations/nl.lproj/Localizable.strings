@@ -95,6 +95,8 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Volledige invoer verwijderen";
 
+"kh_uisdk_accessibility_label_fleet_name" = "Vlootnaam";
+
 "kh_uisdk_add_card" = "KAART TOEVOEGEN";
 
 "kh_uisdk_add_comment_placeholder" = "Aanvullende opmerkingen";
