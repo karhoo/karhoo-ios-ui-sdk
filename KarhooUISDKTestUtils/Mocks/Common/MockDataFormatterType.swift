@@ -51,11 +51,11 @@ public class MockDateFormatterType: DateFormatterType {
         return detailStyleDateReturnString
     }
 
-    public var fullTimeSet: Date?
-    public var fullTimeReturnString: String = TestUtil.getRandomString()
+    public var fullDateSet: Date?
+    public var fullDateReturnString: String = TestUtil.getRandomString()
     public func display(fullDate date: Date?) -> String {
-        fullTimeSet = date
-        return fullTimeReturnString
+        fullDateSet = date
+        return fullDateReturnString
     }
 
     public var clockTimeSet: Date?
@@ -70,5 +70,12 @@ public class MockDateFormatterType: DateFormatterType {
     public func display(_ date: Date?, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
         displayCustomDateTimeSet = date
         return displayCustomDateTimeReturnString
+    }
+    
+    public var fullLocalizedTimeSet: Date?
+    public var fullLocalizedTimeReturnString: String = TestUtil.getRandomString()
+    public func display(fullLocalizedTime date: Date?) -> String {
+        fullLocalizedTimeSet = date
+        return fullLocalizedTimeReturnString
     }
 }
