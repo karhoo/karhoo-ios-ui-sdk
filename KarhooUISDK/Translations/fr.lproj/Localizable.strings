@@ -81,12 +81,6 @@
 
 "kh_uisdk_acc_destination_address" = "Adresse de destination";
 
-"kh_uisdk_acc_icon_back" = "Icône Retour";
-
-"kh_uisdk_acc_icon_cross" = "Icône en forme de croix";
-
-"kh_uisdk_acc_label_delete_entry" = "Supprimer l’entrée entière";
-
 "kh_uisdk_acc_loyalty_information" = "Informations";
 
 "kh_uisdk_acc_pickup_address" = "Adresse de départ";
@@ -94,6 +88,12 @@
 "kh_uisdk_acc_pickup_time" = "Heure de prise en charge";
 
 "kh_uisdk_acc_ride_details" = "Aller aux détails du trajet";
+
+"kh_uisdk_accessibility_icon_back" = "Icône Retour";
+
+"kh_uisdk_accessibility_icon_cross" = "Icône en forme de croix";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Supprimer l’entrée entière";
 
 "kh_uisdk_add_card" = "Ajouter une carte";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_error" = "Erreur";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Veuillez mettre à jour votre application avant d’utiliser cette fonctionnalité";
 
 "kh_uisdk_error_invalid_password" = "L’adresse e-mail ou le mot de passe que vous avez entré est incorrect";
 

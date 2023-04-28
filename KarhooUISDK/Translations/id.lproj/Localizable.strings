@@ -81,12 +81,6 @@
 
 "kh_uisdk_acc_destination_address" = "Alamat tujuan";
 
-"kh_uisdk_acc_icon_back" = "ikon kembali";
-
-"kh_uisdk_acc_icon_cross" = "Ikon silang";
-
-"kh_uisdk_acc_label_delete_entry" = "Hapus seluruh entri";
-
 "kh_uisdk_acc_loyalty_information" = "Informasi pengemudi";
 
 "kh_uisdk_acc_pickup_address" = "Hapus alamat";
@@ -94,6 +88,12 @@
 "kh_uisdk_acc_pickup_time" = "Waktu penjemputan";
 
 "kh_uisdk_acc_ride_details" = "Pergi ke rincian perjalanan";
+
+"kh_uisdk_accessibility_icon_back" = "ikon kembali";
+
+"kh_uisdk_accessibility_icon_cross" = "Ikon silang";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Hapus seluruh entri";
 
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_error" = "Kesalahan";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Perbarui aplikasi Anda sebelum menggunakan fitur ini";
 
 "kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
 

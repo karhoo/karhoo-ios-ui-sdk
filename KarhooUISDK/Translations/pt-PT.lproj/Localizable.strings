@@ -81,12 +81,6 @@
 
 "kh_uisdk_acc_destination_address" = "Endereço de destino";
 
-"kh_uisdk_acc_icon_back" = "Ícone de retorno";
-
-"kh_uisdk_acc_icon_cross" = "Ícone de cruz";
-
-"kh_uisdk_acc_label_delete_entry" = "Eliminar todo o registo";
-
 "kh_uisdk_acc_loyalty_information" = "Informações";
 
 "kh_uisdk_acc_pickup_address" = "Endereço de partida";
@@ -94,6 +88,12 @@
 "kh_uisdk_acc_pickup_time" = "Hora de recolha";
 
 "kh_uisdk_acc_ride_details" = "Ir para os detalhes do passeio";
+
+"kh_uisdk_accessibility_icon_back" = "Ícone de retorno";
+
+"kh_uisdk_accessibility_icon_cross" = "Ícone de cruz";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Eliminar todo o registo";
 
 "kh_uisdk_add_card" = "ADICIONAR CARTÃO";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_error" = "Erro";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Actualize a sua aplicação antes de utilizar esta funcionalidade";
 
 "kh_uisdk_error_invalid_password" = "O e-mail ou senha que você digitou está incorreto";
 

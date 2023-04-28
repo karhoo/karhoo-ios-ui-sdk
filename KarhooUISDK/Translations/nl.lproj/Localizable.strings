@@ -81,12 +81,6 @@
 
 "kh_uisdk_acc_destination_address" = "Bestemmingsadres";
 
-"kh_uisdk_acc_icon_back" = "Terug pictogram";
-
-"kh_uisdk_acc_icon_cross" = "Kruis pictogram";
-
-"kh_uisdk_acc_label_delete_entry" = "Volledige invoer verwijderen";
-
 "kh_uisdk_acc_loyalty_information" = "Informatie";
 
 "kh_uisdk_acc_pickup_address" = "Vertrek adres";
@@ -94,6 +88,12 @@
 "kh_uisdk_acc_pickup_time" = "Ophaal tijd";
 
 "kh_uisdk_acc_ride_details" = "Ga naar ritgegevens";
+
+"kh_uisdk_accessibility_icon_back" = "Terug pictogram";
+
+"kh_uisdk_accessibility_icon_cross" = "Kruis pictogram";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Volledige invoer verwijderen";
 
 "kh_uisdk_add_card" = "KAART TOEVOEGEN";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_error" = "Fout";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Werk uw applicatie bij voordat u deze functie gebruikt";
 
 "kh_uisdk_error_invalid_password" = "Het e-mailadres of wachtwoord dat je hebt ingevoerd, is onjuist";
 

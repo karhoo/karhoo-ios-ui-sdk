@@ -81,12 +81,6 @@
 
 "kh_uisdk_acc_destination_address" = "Adres docelowy";
 
-"kh_uisdk_acc_icon_back" = "Ikona powrotu";
-
-"kh_uisdk_acc_icon_cross" = "Ikona krzyża";
-
-"kh_uisdk_acc_label_delete_entry" = "Usuń cały wpis";
-
 "kh_uisdk_acc_loyalty_information" = "Informacje";
 
 "kh_uisdk_acc_pickup_address" = "Adres wyjazdu";
@@ -94,6 +88,12 @@
 "kh_uisdk_acc_pickup_time" = "Godzina odbioru";
 
 "kh_uisdk_acc_ride_details" = "Przejdź do szczegółów przejazdu";
+
+"kh_uisdk_accessibility_icon_back" = "Ikona powrotu";
+
+"kh_uisdk_accessibility_icon_cross" = "Ikona krzyża";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Usuń cały wpis";
 
 "kh_uisdk_add_card" = "DODAJ KARTĘ";
 
@@ -372,7 +372,7 @@
 
 "kh_uisdk_error" = "Błąd";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Proszę zaktualizować swoją aplikację przed użyciem tej funkcji";
 
 "kh_uisdk_error_invalid_password" = "Wprowadzony e-mail lub hasło jest nieprawidłowe";
 
