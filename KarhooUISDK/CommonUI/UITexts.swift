@@ -250,8 +250,6 @@ public enum UITexts {
         public static let fixedInfoBox = "kh_uisdk_price_info_text_fixed".localized
         public static let learnMore = "kh_uisdk_quote_learn_more".localized
         public static let passenger = "kh_uisdk_booking_checkout_passenger".localized
-        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
-        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
         public static let gpsTracking = "kh_uisdk_filter_gps_tracking".localized
         public static let trainTracking = "kh_uisdk_filter_train_tracking".localized
         public static let flightTracking = "kh_uisdk_filter_fight_tracking".localized
@@ -512,6 +510,8 @@ public enum UITexts {
         static let closeScreen = "kh_uisdk_acc_close_button".localized
         static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
         static let backIcon = "kh_uisdk_accessibility_icon_back".localized
+        static let maximumPassengers = "kh_uisdk_passengers_max".localized
+        static let maximumLuggages = "kh_uisdk_baggage_max".localized
     }
 }
 

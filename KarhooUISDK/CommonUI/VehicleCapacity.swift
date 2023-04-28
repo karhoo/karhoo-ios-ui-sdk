@@ -17,11 +17,19 @@ struct VehicleCapacity: View {
     var body: some View {
         HStack {
             if showPassengerCapacity {
-                CapacityCard(iconName: "kh_uisdk_passenger_capacity_icon", value: passangerCapacity)
+                CapacityCard(
+                    iconName: "kh_uisdk_passenger_capacity_icon",
+                    value: passangerCapacity,
+                    accessibilityLabelString: String(format: UITexts.Accessibility.maximumPassengers, passangerCapacity)
+                )
             }
             
             if showLuggageCapacity {
-                CapacityCard(iconName: "kh_uisdk_luggage_icon", value: luggageCapacity)
+                CapacityCard(
+                    iconName: "kh_uisdk_luggage_icon",
+                    value: luggageCapacity,
+                    accessibilityLabelString: String(format: UITexts.Accessibility.maximumLuggages, luggageCapacity)
+                )
             }
         }
     }
@@ -29,6 +37,7 @@ struct VehicleCapacity: View {
     struct CapacityCard: View {
         var iconName: String
         var value: Int
+        var accessibilityLabelString: String
         var body: some View {
             HStack {
                 Group {
@@ -49,6 +58,7 @@ struct VehicleCapacity: View {
                 RoundedRectangle(cornerRadius: UIConstants.CornerRadius.xSmall)
                     .fill(Color(KarhooUI.colors.background1))
             )
+            .accessibilityLabel(accessibilityLabelString)
         }
     }
 }
