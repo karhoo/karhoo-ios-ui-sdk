@@ -30,6 +30,7 @@ final class KarhooBookingPresenter {
     private let paymentService: PaymentService
     private let vehicleRulesProvider: VehicleRulesProvider
     private let router: BookingRouter
+    private let featureFlagsProvider: FeatureFlagProvider
 
     var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
     var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
@@ -51,7 +52,8 @@ final class KarhooBookingPresenter {
          urlOpener: URLOpener = KarhooURLOpener(),
          coverageCheckWorker: CoverageCheckWorker = KarhooCoverageCheckWorker(),
          paymentService: PaymentService = Karhoo.getPaymentService(),
-         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
+         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
+         featureFlagsProvider: FeatureFlagProvider = KarhooFeatureFlagProvider()
     ) {
         self.router = router
         self.userService = userService
@@ -69,6 +71,7 @@ final class KarhooBookingPresenter {
         self.coverageCheckWorker = coverageCheckWorker
         self.paymentService = paymentService
         self.vehicleRulesProvider = vehicleRulesProvider
+        self.featureFlagsProvider = featureFlagsProvider
         userService.add(observer: self)
     }
     // swiftlint:enable line_length
@@ -251,8 +254,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     private func isSdkVersionSupported() -> Bool {
-        let featureFlagsProvider = KarhooFeatureFlagProvider()
-        let flags = featureFlagsProvider.get()
+        let flags = featureFlagsProvider.getRemoteFlags()
         let adyenPaymentManagerName = "KarhooUISDK.AdyenPaymentManager"
         let paymentManagerName = String(describing: KarhooUISDKConfigurationProvider.configuration.paymentManager.self)
     

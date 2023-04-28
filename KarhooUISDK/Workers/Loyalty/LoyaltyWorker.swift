@@ -26,6 +26,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
     private let loyaltyService: LoyaltyService
     private let loyaltyPreAuthWorker: LoyaltyPreAuthWorker
     private let analytics: Analytics
+    private let featureFlagProvider: FeatureFlagProvider
 
     // MARK: - Properties
 
@@ -56,12 +57,14 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         userService: UserService = Karhoo.getUserService(),
         loyaltyService: LoyaltyService = Karhoo.getLoyaltyService(),
         loyaltyPreAuthWorker: LoyaltyPreAuthWorker = KarhooLoyaltyPreAuthWorker(),
-        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics()
+        analytics: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
+        featureFlagProvider: FeatureFlagProvider = KarhooFeatureFlagProvider()
     ) {
         self.userService = userService
         self.loyaltyService = loyaltyService
         self.loyaltyPreAuthWorker = loyaltyPreAuthWorker
         self.analytics = analytics
+        self.featureFlagProvider = featureFlagProvider
 
         setupPublishers()
     }
@@ -182,8 +185,9 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
         }
 
         loyaltyService.getLoyaltyStatus(identifier: id).execute { [weak self] result in
-            self?.reportLoyaltyStatusRequested(
-                quoteId: self?.quote?.id,
+            guard let self = self else { return }
+            self.reportLoyaltyStatusRequested(
+                quoteId: self.quote?.id,
                 correlationId: result.getCorrelationId(),
                 loyaltyName: id,
                 loyaltyStatus: result.getSuccessValue(),
@@ -192,17 +196,17 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
             guard let status = result.getSuccessValue() else {
                 let error = result.getErrorValue() ?? KarhooLoyaltyError.unknownError
-                self?.modeSubject.send(.none)
-                self?.canEarnSubject.send(false)
-                self?.canBurnSubject.send(false)
-                self?.modelSubject.send(.failure(error: error))
+                self.modeSubject.send(.none)
+                self.canEarnSubject.send(false)
+                self.canBurnSubject.send(false)
+                self.modelSubject.send(.failure(error: error))
                 return
             }
-            let canEarn = status.canEarn && LoyaltyFeatureFlags.loyaltyCanEarn
-            self?.modeSubject.send(canEarn ? .earn : .none)
-            self?.currentBalanceSubject.send(status.balance)
-            self?.canEarnSubject.send(canEarn)
-            self?.canBurnSubject.send(status.canBurn && LoyaltyFeatureFlags.loyaltyCanBurn)
+            let canEarn = status.canEarn && self.featureFlagProvider.getLoyaltyFlags().loyaltyCanEarn
+            self.modeSubject.send(canEarn ? .earn : .none)
+            self.currentBalanceSubject.send(status.balance)
+            self.canEarnSubject.send(canEarn)
+            self.canBurnSubject.send(status.canBurn && self.featureFlagProvider.getLoyaltyFlags().loyaltyCanBurn)
         }
     }
 
@@ -279,7 +283,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     private func getIsLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && LoyaltyFeatureFlags.loyaltyEnabled
+        return loyaltyId != nil && !loyaltyId!.isEmpty && featureFlagProvider.getLoyaltyFlags().loyaltyEnabled
     }
 
     private func loyaltyId() -> String? {

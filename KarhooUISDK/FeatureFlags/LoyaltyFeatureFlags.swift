@@ -9,7 +9,7 @@
 import Foundation
 
 struct LoyaltyFeatureFlags {
-    static let loyaltyEnabled = true
-    static let loyaltyCanEarn = loyaltyEnabled && true
-    static let loyaltyCanBurn = loyaltyEnabled && true
+    let loyaltyEnabled: Bool
+    let loyaltyCanEarn: Bool
+    let loyaltyCanBurn: Bool
 }

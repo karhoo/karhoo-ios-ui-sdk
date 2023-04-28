@@ -31,6 +31,7 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
     private var bookingScreenResult: BookingScreenResult?
     private var mockTripRatingCache: MockTripRatingCache = MockTripRatingCache()
     private var mockURLOpener = MockURLOpener()
+    private var featureFlagProvider: FeatureFlagProvider = MockFeatureFlagProvider()
 
     override func setUp() {
         super.setUp()
@@ -68,7 +69,8 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
             addressScreenBuilder: mockAddressScreenBuilder,
             datePickerScreenBuilder: mockDatePickerScreenBuilder,
             tripRatingCache: mockTripRatingCache,
-            urlOpener: mockURLOpener
+            urlOpener: mockURLOpener,
+            featureFlagsProvider: featureFlagProvider
         )
     }
 
