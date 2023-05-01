@@ -18,6 +18,8 @@ class CommentCellViewModel: DetailsCellViewModel {
             title: UITexts.Booking.commentsTitle,
             subtitle: UITexts.Booking.commentsSubtitle,
             iconName: "kh_uisdk_comments",
+            accessibilityTitle: UITexts.Accessibility.commentsTitle,
+            accessibilityIconName: UITexts.Accessibility.commentsIcon,
             onTap: onTap
         )
     }

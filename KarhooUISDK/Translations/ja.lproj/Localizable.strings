@@ -91,11 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "戻るアイコン";
 
+"kh_uisdk_accessibility_icon_comments" = "コメント";
+
 "kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "編集する";
+
+"kh_uisdk_accessibility_icon_flight_number" = "便名";
+
+"kh_uisdk_accessibility_icon_passenger" = "ご乗車のお客様";
+
+"kh_uisdk_accessibility_icon_train_number" = "列車番号";
+
+"kh_uisdk_accessibility_label_comments" = "コメントを追加";
 
 "kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
 
 "kh_uisdk_accessibility_label_fleet_name" = "艦隊名";
+
+"kh_uisdk_accessibility_label_flight_number" = "便名";
+
+"kh_uisdk_accessibility_label_passenger" = "ご乗車のお客様";
+
+"kh_uisdk_accessibility_label_train_number" = "列車番号";
 
 "kh_uisdk_add_card" = "カードを追加";
 

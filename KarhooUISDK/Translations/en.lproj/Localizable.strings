@@ -91,11 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "Back icon";
 
+"kh_uisdk_accessibility_icon_comments" = "Comments";
+
 "kh_uisdk_accessibility_icon_cross" = "Cross icon";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "Edit";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Flight number";
+
+"kh_uisdk_accessibility_icon_passenger" = "Passenger";
+
+"kh_uisdk_accessibility_icon_train_number" = "Train number";
+
+"kh_uisdk_accessibility_label_comments" = "Add a comment";
 
 "kh_uisdk_accessibility_label_delete_entry" = "Delete entire entry";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Fleet name";
+
+"kh_uisdk_accessibility_label_flight_number" = "Flight number";
+
+"kh_uisdk_accessibility_label_passenger" = "Passenger";
+
+"kh_uisdk_accessibility_label_train_number" = "Train number";
 
 "kh_uisdk_add_card" = "Add card";
 

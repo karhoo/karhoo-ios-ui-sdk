@@ -91,11 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "返回图标";
 
+"kh_uisdk_accessibility_icon_comments" = "注释";
+
 "kh_uisdk_accessibility_icon_cross" = "十字图标";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "编辑";
+
+"kh_uisdk_accessibility_icon_flight_number" = "航班号";
+
+"kh_uisdk_accessibility_icon_passenger" = "乘客";
+
+"kh_uisdk_accessibility_icon_train_number" = "车次";
+
+"kh_uisdk_accessibility_label_comments" = "添加评论";
 
 "kh_uisdk_accessibility_label_delete_entry" = "删除整个条目";
 
 "kh_uisdk_accessibility_label_fleet_name" = "机队名称";
+
+"kh_uisdk_accessibility_label_flight_number" = "航班号";
+
+"kh_uisdk_accessibility_label_passenger" = "乘客";
+
+"kh_uisdk_accessibility_label_train_number" = "车次";
 
 "kh_uisdk_add_card" = "添加卡片";
 

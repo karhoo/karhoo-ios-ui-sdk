@@ -513,6 +513,15 @@ public enum UITexts {
         static let maximumPassengers = "kh_uisdk_passengers_max".localized
         static let maximumLuggages = "kh_uisdk_baggage_max".localized
         static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
+        static let editArrow = "kh_uisdk_accessibility_icon_edit_arrow".localized
+        static let passengerIcon = "kh_uisdk_accessibility_icon_passenger".localized
+        static let commentsIcon = "kh_uisdk_accessibility_icon_comments".localized
+        static let flightNumberIcon = "kh_uisdk_accessibility_icon_flight_number".localized
+        static let trainNumberIcon = "kh_uisdk_accessibility_icon_train_number".localized
+        static let passengerTitle = "kh_uisdk_accessibility_label_passenger".localized
+        static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
+        static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
+        static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
     }
 }
 
@@ -537,7 +546,7 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
-    } 
+    }
     
     func firstLetterUppercased() -> String {
         guard let firstLetter = self.first?.uppercased() else {

@@ -91,11 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "ikon kembali";
 
+"kh_uisdk_accessibility_icon_comments" = "Komentar";
+
 "kh_uisdk_accessibility_icon_cross" = "Ikon silang";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "Edit";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Nomor penerbangan";
+
+"kh_uisdk_accessibility_icon_passenger" = "Penumpang";
+
+"kh_uisdk_accessibility_icon_train_number" = "Nomor kereta";
+
+"kh_uisdk_accessibility_label_comments" = "Tambahkan komentar";
 
 "kh_uisdk_accessibility_label_delete_entry" = "Hapus seluruh entri";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Nama armada";
+
+"kh_uisdk_accessibility_label_flight_number" = "Nomor penerbangan";
+
+"kh_uisdk_accessibility_label_passenger" = "Penumpang";
+
+"kh_uisdk_accessibility_label_train_number" = "Nomor kereta";
 
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
 
