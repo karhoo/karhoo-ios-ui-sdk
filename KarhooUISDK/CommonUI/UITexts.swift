@@ -522,6 +522,7 @@ public enum UITexts {
         static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
         static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
         static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
+        static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
     }
 }
 
