@@ -523,6 +523,7 @@ public enum UITexts {
         public static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
         public static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
         public static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
+        public static let quoteCard = "kh_uisdk_accessibility_label_quote_card".localized
     }
 }
 

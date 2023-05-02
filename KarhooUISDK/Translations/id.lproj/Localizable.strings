@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "Penumpang";
 
+"kh_uisdk_accessibility_label_quote_card" = "Kartu kutipan";
+
 "kh_uisdk_accessibility_label_train_number" = "Nomor kereta";
 
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";

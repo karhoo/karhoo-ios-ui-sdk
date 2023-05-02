@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "Passageiro";
 
+"kh_uisdk_accessibility_label_quote_card" = "Cartão de citação";
+
 "kh_uisdk_accessibility_label_train_number" = "Rastreamento de comboios";
 
 "kh_uisdk_add_card" = "ADICIONAR CARTÃO";

@@ -57,6 +57,7 @@ class QuoteView: UIView {
         view.layer.borderColor = KarhooUI.colors.border.cgColor
         view.backgroundColor = KarhooUI.colors.white
     }
+    
     private lazy var containerStack = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = KHQuoteViewID.containerStackView
@@ -65,6 +66,7 @@ class QuoteView: UIView {
         stack.clipsToBounds = true
         stack.layer.cornerRadius = UIConstants.CornerRadius.large
     }
+    
     private lazy var topContentContainer = UIView()
     private lazy var topContentStack = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -73,21 +75,26 @@ class QuoteView: UIView {
         stack.alignment = .fill
         stack.clipsToBounds = true
     }
+    
     private lazy var leftContentStack = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
     }
+    
     private lazy var rightContentView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     private lazy var vehicleContainerView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     private lazy var logoLoadingImageView = LoadingImageView().then { logo in
         logo.accessibilityIdentifier = KHQuoteViewID.logoImage
         logo.contentMode = .scaleAspectFill
         logo.layer.masksToBounds = true
     }
+    
     private lazy var badgeImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
@@ -103,6 +110,7 @@ class QuoteView: UIView {
         $0.numberOfLines = 0
         $0.lineBreakMode = .byWordWrapping
     }
+    
     private lazy var rideDetailStackView = UIStackView().then { rideDetailStackView in
         rideDetailStackView.translatesAutoresizingMaskIntoConstraints = false
         rideDetailStackView.accessibilityIdentifier = KHQuoteViewID.rideDetailsStackView
@@ -110,6 +118,7 @@ class QuoteView: UIView {
         rideDetailStackView.alignment = .leading
         rideDetailStackView.spacing = UIConstants.Spacing.xSmall
     }
+    
     private lazy var vehicleCapacityView = QuoteVehicleCapacityView()
     private lazy var capacityAndPickupTypeContainer = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -118,6 +127,7 @@ class QuoteView: UIView {
         stack.alignment = .leading
         stack.spacing = 10.0
     }
+    
     private lazy var detailsButton = UIButton().then { button in
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHQuoteViewID.detailsButton
@@ -131,12 +141,14 @@ class QuoteView: UIView {
         // button temporary hidden, uncomment when Qoute details page will be implemented
         button.isHidden = true
     }
+    
     private lazy var etaStack = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = KHQuoteViewID.etaStackView
         stack.axis = .vertical
         stack.alignment = .leading
     }
+    
     private lazy var etaLabel = UILabel().then { label in
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHQuoteViewID.eta
@@ -145,6 +157,7 @@ class QuoteView: UIView {
         label.font = KarhooUI.fonts.headerBold()
         label.textColor = KarhooUI.colors.text
     }
+    
     private lazy var etaDescriptionLabel = UILabel().then { label in
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHQuoteViewID.etaDescription
@@ -154,6 +167,7 @@ class QuoteView: UIView {
         label.textColor = KarhooUI.colors.text
         label.text = UITexts.QuoteCell.driverArrival
     }
+    
     private lazy var priceDetailsStack = UIStackView().then { priceDetailsStack in
         priceDetailsStack.translatesAutoresizingMaskIntoConstraints = false
         priceDetailsStack.accessibilityIdentifier = KHQuoteViewID.priceStackView
@@ -182,6 +196,7 @@ class QuoteView: UIView {
         color: KarhooUI.colors.border,
         accessibilityIdentifier: KHQuoteViewID.lineSeparator
     )
+    
     private lazy var bottomStack = UIStackView().then { stack in
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = KHQuoteViewID.bottomStack
@@ -189,15 +204,18 @@ class QuoteView: UIView {
         stack.axis = .horizontal
         stack.spacing = UIConstants.Spacing.xSmall
     }
+    
     private lazy var bottomStackContainer = UIView().then { view in
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHQuoteViewID.bottomStackContainer
         view.backgroundColor = KarhooUI.colors.background1
     }
+    
     private lazy var bottomImage = LoadingImageView().then { logo in
         logo.accessibilityIdentifier = KHQuoteViewID.logoImage
         logo.layer.masksToBounds = true
     }
+    
     private lazy var fleetNameLabel = UILabel().then { fleetName in
         fleetName.translatesAutoresizingMaskIntoConstraints = false
         fleetName.accessibilityIdentifier = KHQuoteViewID.fleetName
@@ -338,6 +356,9 @@ class QuoteView: UIView {
     func set(viewModel: QuoteViewModel) {
         self.viewModel = viewModel
         vehicleTypeLabel.text = viewModel.vehicleType
+        // Only tableview cell labels are being read by voice over when selecting an entire cell.
+        // Adding the "quote card" text to other types of controls does not achieve the same result
+        vehicleTypeLabel.accessibilityLabel = "\(UITexts.Accessibility.quoteCard), \(viewModel.vehicleType)"
         etaLabel.text = viewModel.scheduleMainValue
         fareLabel.text = viewModel.fare
         logoLoadingImageView.load(
@@ -347,6 +368,8 @@ class QuoteView: UIView {
                 self?.badgeImageView.isHidden = false
             }
         )
+        logoLoadingImageView.setAccessibilityLabel(viewModel.vehicleImageAccessibilityText)
+        
         // remove comment to enable showing vehicle badge
 //        badgeImageView.image = viewModel.vehicleBadgeImage
         fareTypeLabel.text = viewModel.fareType
