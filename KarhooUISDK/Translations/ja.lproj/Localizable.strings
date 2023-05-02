@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "乗車の詳細に移動";
 
+"kh_uisdk_accessibility_icon_back" = "戻るアイコン";
+
+"kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
+
+"kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
+
 "kh_uisdk_add_card" = "カードを追加";
 
 "kh_uisdk_add_comment_placeholder" = "追加コメント";
@@ -366,7 +372,7 @@
 
 "kh_uisdk_error" = "エラー";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "この機能を使用する前にアプリケーションを更新してください";
 
 "kh_uisdk_error_invalid_password" = "入力したメールアドレスまたはパスワードが正しくありません";
 

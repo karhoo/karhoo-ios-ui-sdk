@@ -196,6 +196,16 @@ final class KarhooCheckoutViewModel: ObservableObject {
         return journeyDetails.isScheduled ? scheduledTime : nowTime
     }
     
+    func getTimeLabelAccessibilityDescription() -> String {
+        // Return driver ETA for ASAP rides
+        guard journeyDetails.isScheduled,
+              let date = journeyDetails.scheduledDate else {
+            return getTimeLabelTextDescription()
+        }
+        
+        return dateFormatter.display(fullLocalizedTime: date)
+    }
+    
     func getVehicleDetailsCardViewModel() -> VehicleDetailsCardViewModel {
         var cancelationText: String? {
             KarhooFreeCancelationTextWorker.getFreeCancelationText(quote: quote, journeyDetails: journeyDetails)

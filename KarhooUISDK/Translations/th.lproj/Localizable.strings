@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
 
+"kh_uisdk_accessibility_icon_back" = "ไอคอนย้อนกลับ";
+
+"kh_uisdk_accessibility_icon_cross" = "ไอคอนกากบาท";
+
+"kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
+
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 
 "kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";
@@ -366,7 +372,7 @@
 
 "kh_uisdk_error" = "ความผิดพลาด";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "โปรดอัปเดตแอปพลิเคชันของคุณก่อนที่จะใช้คุณสมบัตินี้";
 
 "kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
 

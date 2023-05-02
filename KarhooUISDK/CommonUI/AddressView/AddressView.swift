@@ -76,6 +76,7 @@ struct KarhooAddressView: View {
     private let pickUp: AddressLabel
     private let destination: AddressLabel
     private let timeLabelText: String?
+    private let accessibilityTimeLabelText: String?
     private let tags: [Tag]
     private var borderColor: UIColor = KarhooUI.colors.border
     private let borderWidth: CGFloat = 1
@@ -92,6 +93,7 @@ struct KarhooAddressView: View {
         design: Design = .borderedWithWhiteBackground,
         showsLineBetweenPickUpAndDestination: Bool = true,
         timeLabelText: String? = nil,
+        accessibilityTimeLabelText: String? = nil,
         tags: [Tag] = []
     ) {
         self.pickUp = pickUp
@@ -100,6 +102,7 @@ struct KarhooAddressView: View {
         self.borderPadding = design.borderPadding
         self.backgroundColor = design.backgroundColor
         self.timeLabelText = timeLabelText
+        self.accessibilityTimeLabelText = accessibilityTimeLabelText
         self.tags = tags
         self.showsLineBetweenPickUpAndDestination = showsLineBetweenPickUpAndDestination
     }
@@ -193,6 +196,7 @@ struct KarhooAddressView: View {
                     .fixedSize()
                     .minimumScaleFactor(Constants.minimumScaleFactor)
                     .padding(.top, Constants.timeLabelTextTopPadding)
+                    .accessibilityLabel(accessibilityTimeLabelText ?? "")
                 Spacer()
                     .frame(minHeight: 66, idealHeight: 66, maxHeight: .infinity)
                     .fixedSize()

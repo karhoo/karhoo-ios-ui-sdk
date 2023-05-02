@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Ir a los detalles del viaje";
 
+"kh_uisdk_accessibility_icon_back" = "icono Atrás";
+
+"kh_uisdk_accessibility_icon_cross" = "icono de cruz";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Eliminar toda la entrada";
+
 "kh_uisdk_add_card" = "AÑADIR TARJETA";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";
@@ -366,7 +372,7 @@
 
 "kh_uisdk_error" = "Error";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Actualice su aplicación antes de usar esta función";
 
 "kh_uisdk_error_invalid_password" = "El correo electrónico o la contraseña que has introducido no son correctos";
 

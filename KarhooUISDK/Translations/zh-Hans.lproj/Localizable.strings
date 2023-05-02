@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "前往乘车详情";
 
+"kh_uisdk_accessibility_icon_back" = "返回图标";
+
+"kh_uisdk_accessibility_icon_cross" = "十字图标";
+
+"kh_uisdk_accessibility_label_delete_entry" = "删除整个条目";
+
 "kh_uisdk_add_card" = "添加卡片";
 
 "kh_uisdk_add_comment_placeholder" = "补充评论";
@@ -366,7 +372,7 @@
 
 "kh_uisdk_error" = "错误";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "请在使用此功能前更新您的应用程序";
 
 "kh_uisdk_error_invalid_password" = "您输入的电子邮件或密码不正确";
 

@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Перейти к подробностям поездки";
 
+"kh_uisdk_accessibility_icon_back" = "Значок \"Назад\"";
+
+"kh_uisdk_accessibility_icon_cross" = "Значок креста";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Удалить всю запись";
+
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 
 "kh_uisdk_add_comment_placeholder" = "Дополнительные комментарии";
@@ -366,7 +372,7 @@
 
 "kh_uisdk_error" = "Ошибка";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Пожалуйста, обновите приложение, прежде чем использовать эту функцию";
 
 "kh_uisdk_error_invalid_password" = "Электронная почта или пароль, которые вы ввели, неверны";
 
