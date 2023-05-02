@@ -91,9 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "icono Atrás";
 
+"kh_uisdk_accessibility_icon_comments" = "Comentarios";
+
 "kh_uisdk_accessibility_icon_cross" = "icono de cruz";
 
+"kh_uisdk_accessibility_icon_edit_arrow" = "Editar";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Número de vuelo";
+
+"kh_uisdk_accessibility_icon_passenger" = "Pasajero";
+
+"kh_uisdk_accessibility_icon_train_number" = "Número de tren";
+
+"kh_uisdk_accessibility_label_comments" = "Añadir un comentario";
+
 "kh_uisdk_accessibility_label_delete_entry" = "Eliminar toda la entrada";
+
+"kh_uisdk_accessibility_label_fleet_name" = "Nombre de la flota";
+
+"kh_uisdk_accessibility_label_flight_number" = "Número de vuelo";
+
+"kh_uisdk_accessibility_label_passenger" = "Pasajero";
+
+"kh_uisdk_accessibility_label_train_number" = "Número de tren";
 
 "kh_uisdk_add_card" = "AÑADIR TARJETA";
 

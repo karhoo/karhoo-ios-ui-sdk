@@ -91,9 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "Значок \"Назад\"";
 
+"kh_uisdk_accessibility_icon_comments" = "Комментарии";
+
 "kh_uisdk_accessibility_icon_cross" = "Значок креста";
 
+"kh_uisdk_accessibility_icon_edit_arrow" = "Редактировать";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Номер рейса";
+
+"kh_uisdk_accessibility_icon_passenger" = "Пассажир";
+
+"kh_uisdk_accessibility_icon_train_number" = "Номер поезда";
+
+"kh_uisdk_accessibility_label_comments" = "Добавить комментарий";
+
 "kh_uisdk_accessibility_label_delete_entry" = "Удалить всю запись";
+
+"kh_uisdk_accessibility_label_fleet_name" = "Название флота";
+
+"kh_uisdk_accessibility_label_flight_number" = "Номер рейса";
+
+"kh_uisdk_accessibility_label_passenger" = "Пассажир";
+
+"kh_uisdk_accessibility_label_train_number" = "Номер поезда";
 
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 

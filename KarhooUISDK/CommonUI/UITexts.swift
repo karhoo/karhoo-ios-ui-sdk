@@ -250,8 +250,6 @@ public enum UITexts {
         public static let fixedInfoBox = "kh_uisdk_price_info_text_fixed".localized
         public static let learnMore = "kh_uisdk_quote_learn_more".localized
         public static let passenger = "kh_uisdk_booking_checkout_passenger".localized
-        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
-        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
         public static let gpsTracking = "kh_uisdk_filter_gps_tracking".localized
         public static let trainTracking = "kh_uisdk_filter_train_tracking".localized
         public static let flightTracking = "kh_uisdk_filter_fight_tracking".localized
@@ -511,6 +509,20 @@ public enum UITexts {
         static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
         static let closeScreen = "kh_uisdk_acc_close_button".localized
         static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
+        static let backIcon = "kh_uisdk_accessibility_icon_back".localized
+        static let maximumPassengers = "kh_uisdk_passengers_max".localized
+        static let maximumLuggages = "kh_uisdk_baggage_max".localized
+        static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
+        static let editArrow = "kh_uisdk_accessibility_icon_edit_arrow".localized
+        static let passengerIcon = "kh_uisdk_accessibility_icon_passenger".localized
+        static let commentsIcon = "kh_uisdk_accessibility_icon_comments".localized
+        static let flightNumberIcon = "kh_uisdk_accessibility_icon_flight_number".localized
+        static let trainNumberIcon = "kh_uisdk_accessibility_icon_train_number".localized
+        static let passengerTitle = "kh_uisdk_accessibility_label_passenger".localized
+        static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
+        static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
+        static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
+        static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
     }
 }
 
@@ -535,7 +547,7 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
-    } 
+    }
     
     func firstLetterUppercased() -> String {
         guard let firstLetter = self.first?.uppercased() else {

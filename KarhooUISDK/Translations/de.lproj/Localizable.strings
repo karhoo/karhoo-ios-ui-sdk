@@ -91,9 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "Zurück-Symbol";
 
+"kh_uisdk_accessibility_icon_comments" = "Kommentare";
+
 "kh_uisdk_accessibility_icon_cross" = "Kreuz-Symbol";
 
+"kh_uisdk_accessibility_icon_edit_arrow" = "Bearbeiten";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Flugnummer";
+
+"kh_uisdk_accessibility_icon_passenger" = "Fahrgast";
+
+"kh_uisdk_accessibility_icon_train_number" = "Zugnummer";
+
+"kh_uisdk_accessibility_label_comments" = "Einen Kommentar hinzufügen";
+
 "kh_uisdk_accessibility_label_delete_entry" = "Gesamten Eintrag löschen";
+
+"kh_uisdk_accessibility_label_fleet_name" = "Name der Flotte";
+
+"kh_uisdk_accessibility_label_flight_number" = "Flugnummer";
+
+"kh_uisdk_accessibility_label_passenger" = "Fahrgast";
+
+"kh_uisdk_accessibility_label_train_number" = "Zugnummer";
 
 "kh_uisdk_add_card" = "KARTE HINZUFÜGEN";
 

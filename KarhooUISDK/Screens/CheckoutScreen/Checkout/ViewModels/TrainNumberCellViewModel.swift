@@ -18,6 +18,8 @@ class TrainNumberCellViewModel: DetailsCellViewModel {
             title: UITexts.Booking.trainTitle,
             subtitle: UITexts.Booking.trainSubtitle,
             iconName: "kh_uisdk_train_number",
+            accessibilityTitle: UITexts.Accessibility.trainNumberTitle,
+            accessibilityIconName: UITexts.Accessibility.trainNumberIcon,
             onTap: onTap
         )
     }

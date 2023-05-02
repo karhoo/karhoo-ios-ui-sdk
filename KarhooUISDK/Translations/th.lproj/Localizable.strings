@@ -91,9 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "ไอคอนย้อนกลับ";
 
+"kh_uisdk_accessibility_icon_comments" = "ความคิดเห็น";
+
 "kh_uisdk_accessibility_icon_cross" = "ไอคอนกากบาท";
 
+"kh_uisdk_accessibility_icon_edit_arrow" = "แก้ไข";
+
+"kh_uisdk_accessibility_icon_flight_number" = "หมายเลขเที่ยวบิน";
+
+"kh_uisdk_accessibility_icon_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_accessibility_icon_train_number" = "หมายเลขรถไฟ";
+
+"kh_uisdk_accessibility_label_comments" = "เพิ่มความคิดเห็น";
+
 "kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
+
+"kh_uisdk_accessibility_label_fleet_name" = "ชื่อกองเรือ";
+
+"kh_uisdk_accessibility_label_flight_number" = "หมายเลขเที่ยวบิน";
+
+"kh_uisdk_accessibility_label_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_accessibility_label_train_number" = "หมายเลขรถไฟ";
 
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 

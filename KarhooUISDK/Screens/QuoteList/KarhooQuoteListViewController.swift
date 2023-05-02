@@ -19,6 +19,8 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     // MARK: - Properties
 
     private weak var viewModel: QuoteListViewModel!
+    
+    private var resultsAccessibilityTitle: String?
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .getPrimaryStyle }
 
@@ -121,6 +123,12 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Set the accessibility label to a text that makes sense when selecting the back button from the checkout screen
+        // Cannot be nil or empty or else it will default to the actual label text
+        // It will be set back to the proper text on viewWillAppear
+        navigationItem.accessibilityLabel = UITexts.Accessibility.quoteListTitle
+        
         viewModel?.viewWillDisappear()
     }
 
@@ -185,6 +193,11 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.backButtonTitle = ""
+        
+        // This is set to nil on first appearance, the proper value will be added after the data is fetched
+        // Used to put back the proper accessibility label when coming back from the next screen
+        navigationItem.accessibilityLabel = resultsAccessibilityTitle
+        
         navigationController?.set(style: .primary)
     }
     
@@ -299,7 +312,10 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
             navigationItem.title = ""
         case .fetched(let quotes):
             let message = quotes.count > 1 ? UITexts.Quotes.results : UITexts.Quotes.result
-            navigationItem.title = String(format: message, quotes.count.description)
+            let title = String(format: message, quotes.count.description)
+            navigationItem.title = title
+            navigationItem.accessibilityLabel = title
+            resultsAccessibilityTitle = title
         case .empty:
             navigationItem.title = ""
         }

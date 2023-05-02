@@ -91,9 +91,29 @@
 
 "kh_uisdk_accessibility_icon_back" = "Terug pictogram";
 
+"kh_uisdk_accessibility_icon_comments" = "Opmerkingen";
+
 "kh_uisdk_accessibility_icon_cross" = "Kruis pictogram";
 
+"kh_uisdk_accessibility_icon_edit_arrow" = "Wijzigen";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Vluchtnummer";
+
+"kh_uisdk_accessibility_icon_passenger" = "Passagier";
+
+"kh_uisdk_accessibility_icon_train_number" = "Trein nummer";
+
+"kh_uisdk_accessibility_label_comments" = "Voeg een reactie toe";
+
 "kh_uisdk_accessibility_label_delete_entry" = "Volledige invoer verwijderen";
+
+"kh_uisdk_accessibility_label_fleet_name" = "Vlootnaam";
+
+"kh_uisdk_accessibility_label_flight_number" = "Vluchtnummer";
+
+"kh_uisdk_accessibility_label_passenger" = "Passagier";
+
+"kh_uisdk_accessibility_label_train_number" = "Trein nummer";
 
 "kh_uisdk_add_card" = "KAART TOEVOEGEN";
 

@@ -19,6 +19,8 @@ class FlightNumberCellViewModel: DetailsCellViewModel {
             title: UITexts.Booking.flightTitle,
             subtitle: UITexts.Booking.flightSubtitle,
             iconName: "kh_uisdk_flight_number",
+            accessibilityTitle: UITexts.Accessibility.flightNumberTitle,
+            accessibilityIconName: UITexts.Accessibility.flightNumberIcon,
             onTap: onTap
         )
     }
