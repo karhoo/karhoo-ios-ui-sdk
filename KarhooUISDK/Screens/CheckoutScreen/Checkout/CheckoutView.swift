@@ -47,6 +47,8 @@ struct CheckoutView: View {
         ScrollViewReader { scrollViewProxy in
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
+                    
+                    // Header: Date and address
                     VStack(spacing: 0) {
                         dateView
                         addressView
@@ -55,14 +57,18 @@ struct CheckoutView: View {
                     .background(Color(KarhooUI.colors.background2))
                     .padding(.bottom, UIConstants.Spacing.small)
 
+                    // Vehicle details
                     VehicleDetailsCard(
                         viewModel: viewModel.getVehicleDetailsCardViewModel()
                     )
+                    
+                    // Loyalty
                     if viewModel.loyaltyViewModel.shouldShowView {
                         LoyaltyView(viewModel: viewModel.loyaltyViewModel)
                             .padding(.horizontal, UIConstants.Spacing.standard)
                     }
                     
+                    // Passenger info, flight / train tracking, comments, T&Cs, legal notice
                     VStack(spacing: UIConstants.Spacing.standard) {
                         
                         DetailsCellView(viewModel: viewModel.passangerDetailsViewModel)
@@ -144,7 +150,8 @@ struct CheckoutView: View {
             ),
             design: .borderlessWithoutBackground,
             showsLineBetweenPickUpAndDestination: true,
-            timeLabelText: viewModel.getTimeLabelTextDescription()
+            timeLabelText: viewModel.getTimeLabelTextDescription(),
+            accessibilityTimeLabelText: viewModel.getTimeLabelAccessibilityDescription()
         )
     }
     
