@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "ご乗車のお客様";
 
+"kh_uisdk_accessibility_label_quote_card" = "見積もりカード";
+
 "kh_uisdk_accessibility_label_train_number" = "列車番号";
 
 "kh_uisdk_add_card" = "カードを追加";

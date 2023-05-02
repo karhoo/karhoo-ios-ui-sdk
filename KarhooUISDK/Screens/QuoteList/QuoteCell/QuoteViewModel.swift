@@ -113,6 +113,7 @@ final class QuoteViewModel {
     let fare: String
     let logoImageURL: String
     var vehicleImageURL: String?
+    var vehicleImageAccessibilityText: String?
     var vehicleBadgeImage: UIImage?
     let fareType: String
     let showPickUpLabel: Bool
@@ -186,6 +187,7 @@ final class QuoteViewModel {
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
         provider.getRule(for: quote) { [weak self] vehicleImageRule in
             self?.vehicleImageURL = vehicleImageRule?.imagePath
+            self?.vehicleImageAccessibilityText = vehicleImageRule?.tags.first ?? quote.vehicle.tags.first ?? quote.vehicle.getVehicleTypeText()
         }
     }
 

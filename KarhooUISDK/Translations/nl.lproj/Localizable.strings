@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "Passagier";
 
+"kh_uisdk_accessibility_label_quote_card" = "Offerte kaart";
+
 "kh_uisdk_accessibility_label_train_number" = "Trein nummer";
 
 "kh_uisdk_add_card" = "KAART TOEVOEGEN";

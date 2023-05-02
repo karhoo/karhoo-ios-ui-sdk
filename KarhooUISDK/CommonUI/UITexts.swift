@@ -506,23 +506,24 @@ public enum UITexts {
     }
     
     public enum Accessibility {
-        static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
-        static let closeScreen = "kh_uisdk_acc_close_button".localized
-        static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
-        static let backIcon = "kh_uisdk_accessibility_icon_back".localized
-        static let maximumPassengers = "kh_uisdk_passengers_max".localized
-        static let maximumLuggages = "kh_uisdk_baggage_max".localized
-        static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
-        static let editArrow = "kh_uisdk_accessibility_icon_edit_arrow".localized
-        static let passengerIcon = "kh_uisdk_accessibility_icon_passenger".localized
-        static let commentsIcon = "kh_uisdk_accessibility_icon_comments".localized
-        static let flightNumberIcon = "kh_uisdk_accessibility_icon_flight_number".localized
-        static let trainNumberIcon = "kh_uisdk_accessibility_icon_train_number".localized
-        static let passengerTitle = "kh_uisdk_accessibility_label_passenger".localized
-        static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
-        static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
-        static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
-        static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
+        public static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
+        public static let closeScreen = "kh_uisdk_acc_close_button".localized
+        public static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
+        public static let backIcon = "kh_uisdk_accessibility_icon_back".localized
+        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
+        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
+        public static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
+        public static let editArrow = "kh_uisdk_accessibility_icon_edit_arrow".localized
+        public static let passengerIcon = "kh_uisdk_accessibility_icon_passenger".localized
+        public static let commentsIcon = "kh_uisdk_accessibility_icon_comments".localized
+        public static let flightNumberIcon = "kh_uisdk_accessibility_icon_flight_number".localized
+        public static let trainNumberIcon = "kh_uisdk_accessibility_icon_train_number".localized
+        public static let passengerTitle = "kh_uisdk_accessibility_label_passenger".localized
+        public static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
+        public static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
+        public static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
+        public static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
+        public static let quoteCard = "kh_uisdk_accessibility_label_quote_card".localized
     }
 }
 

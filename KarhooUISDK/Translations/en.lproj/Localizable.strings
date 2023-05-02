@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "Passenger";
 
+"kh_uisdk_accessibility_label_quote_card" = "Quote card";
+
 "kh_uisdk_accessibility_label_train_number" = "Train number";
 
 "kh_uisdk_add_card" = "Add card";

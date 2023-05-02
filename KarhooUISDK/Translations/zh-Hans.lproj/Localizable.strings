@@ -113,6 +113,8 @@
 
 "kh_uisdk_accessibility_label_passenger" = "乘客";
 
+"kh_uisdk_accessibility_label_quote_card" = "报价卡";
+
 "kh_uisdk_accessibility_label_train_number" = "车次";
 
 "kh_uisdk_add_card" = "添加卡片";

@@ -74,7 +74,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHVehicleCapacityViewID.baggageCapacityLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.font = KarhooUI.fonts.footnoteBold()
         return label
     }()
@@ -122,7 +122,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHVehicleCapacityViewID.passengerCapacityLabel
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.font = KarhooUI.fonts.footnoteBold()
         return label
     }()
@@ -226,6 +226,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         }
         baggageContentView.isHidden = false
         baggageCapacityLabel.text = "\(value)"
+        baggageCapacityLabel.accessibilityLabel = String(format: UITexts.Accessibility.maximumLuggages, value)
     }
 
     public func setPassengerCapacity(_ value: Int?) {
@@ -235,6 +236,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         }
         passengerCapacityContentView.isHidden = false
         passengerCapacityLabel.text = "\(value)"
+        passengerCapacityLabel.accessibilityLabel = String(format: UITexts.Accessibility.maximumPassengers, value)
     }
 
     public func setAdditionalFleetCapabilities(_ value: Int) {
