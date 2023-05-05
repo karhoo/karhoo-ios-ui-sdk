@@ -524,6 +524,8 @@ public enum UITexts {
         public static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
         public static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
         public static let quoteCard = "kh_uisdk_accessibility_label_quote_card".localized
+        public static let termsAndConditionsCheckboxLabel = "kh_uisdk_accessibility_checkbox_label_terms_and_conditions".localized
+        public static let termsAndConditionsCheckboxHint = "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions".localized
     }
 }
 

@@ -89,6 +89,10 @@
 
 "kh_uisdk_acc_ride_details" = "Ir para os detalhes do passeio";
 
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Toque duas vezes para alternar";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Termos e Condições";
+
 "kh_uisdk_accessibility_icon_back" = "Ícone de retorno";
 
 "kh_uisdk_accessibility_icon_comments" = "Comentários";
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Eliminar todo o registo";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "Endereço de entrega";
+
 "kh_uisdk_accessibility_label_fleet_name" = "Nome da frota";
 
 "kh_uisdk_accessibility_label_flight_number" = "Número do voo";
 
 "kh_uisdk_accessibility_label_passenger" = "Passageiro";
+
+"kh_uisdk_accessibility_label_pickup_address" = "Endereço de levantamento";
 
 "kh_uisdk_accessibility_label_quote_card" = "Cartão de citação";
 

@@ -89,6 +89,10 @@
 
 "kh_uisdk_acc_ride_details" = "Ga naar ritgegevens";
 
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Dubbeltik om te schakelen";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Algemene gebruiksvoorwaarden taxibedrijf";
+
 "kh_uisdk_accessibility_icon_back" = "Terug pictogram";
 
 "kh_uisdk_accessibility_icon_comments" = "Opmerkingen";
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Volledige invoer verwijderen";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "Afleveradres";
+
 "kh_uisdk_accessibility_label_fleet_name" = "Vlootnaam";
 
 "kh_uisdk_accessibility_label_flight_number" = "Vluchtnummer";
 
 "kh_uisdk_accessibility_label_passenger" = "Passagier";
+
+"kh_uisdk_accessibility_label_pickup_address" = "Ophaaladres";
 
 "kh_uisdk_accessibility_label_quote_card" = "Offerte kaart";
 

@@ -89,6 +89,10 @@
 
 "kh_uisdk_acc_ride_details" = "Ir a los detalles del viaje";
 
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Toca dos veces para alternar";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Términos Generales y Política de Privacidad";
+
 "kh_uisdk_accessibility_icon_back" = "icono Atrás";
 
 "kh_uisdk_accessibility_icon_comments" = "Comentarios";
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Eliminar toda la entrada";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "dirección de entrega";
+
 "kh_uisdk_accessibility_label_fleet_name" = "Nombre de la flota";
 
 "kh_uisdk_accessibility_label_flight_number" = "Número de vuelo";
 
 "kh_uisdk_accessibility_label_passenger" = "Pasajero";
+
+"kh_uisdk_accessibility_label_pickup_address" = "Dirección de entrega";
 
 "kh_uisdk_accessibility_label_quote_card" = "Tarjeta de cotización";
 

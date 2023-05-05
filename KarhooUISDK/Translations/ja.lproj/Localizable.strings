@@ -89,6 +89,10 @@
 
 "kh_uisdk_acc_ride_details" = "乗車の詳細に移動";
 
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "ダブルタップして切り替えます";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "ご利用規約";
+
 "kh_uisdk_accessibility_icon_back" = "戻るアイコン";
 
 "kh_uisdk_accessibility_icon_comments" = "コメント";
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "エントリ全体を削除";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "ドロップオフアドレス";
+
 "kh_uisdk_accessibility_label_fleet_name" = "艦隊名";
 
 "kh_uisdk_accessibility_label_flight_number" = "便名";
 
 "kh_uisdk_accessibility_label_passenger" = "ご乗車のお客様";
+
+"kh_uisdk_accessibility_label_pickup_address" = "アドレスをピックアップ";
 
 "kh_uisdk_accessibility_label_quote_card" = "見積もりカード";
 

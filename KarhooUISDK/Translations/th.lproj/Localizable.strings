@@ -89,6 +89,10 @@
 
 "kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
 
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "แตะสองครั้งเพื่อสลับ";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "ข้อกำหนดและเงื่อนไข";
+
 "kh_uisdk_accessibility_icon_back" = "ไอคอนย้อนกลับ";
 
 "kh_uisdk_accessibility_icon_comments" = "ความคิดเห็น";
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "ลบรายการทั้งหมด";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "ที่อยู่จัดส่ง";
+
 "kh_uisdk_accessibility_label_fleet_name" = "ชื่อกองเรือ";
 
 "kh_uisdk_accessibility_label_flight_number" = "หมายเลขเที่ยวบิน";
 
 "kh_uisdk_accessibility_label_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_accessibility_label_pickup_address" = "ที่อยู่ในการรับ";
 
 "kh_uisdk_accessibility_label_quote_card" = "ใบเสนอราคา";
 

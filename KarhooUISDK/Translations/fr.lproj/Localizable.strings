@@ -87,7 +87,11 @@
 
 "kh_uisdk_acc_pickup_time" = "Heure de prise en charge";
 
-"kh_uisdk_acc_ride_details" = "Aller aux détails du trajet";
+"kh_uisdk_acc_ride_details" = "Aller au détail du trajet";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Appuyez deux fois pour basculer";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Conditions générales d'utilisation";
 
 "kh_uisdk_accessibility_icon_back" = "Icône Retour";
 
@@ -107,11 +111,15 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Supprimer l’entrée entière";
 
+"kh_uisdk_accessibility_label_drop_off_address" = "Adresse de dépôt";
+
 "kh_uisdk_accessibility_label_fleet_name" = "Nom de la flotte";
 
 "kh_uisdk_accessibility_label_flight_number" = "Numéro de vol";
 
 "kh_uisdk_accessibility_label_passenger" = "Passager";
+
+"kh_uisdk_accessibility_label_pickup_address" = "Adresse de prise en charge";
 
 "kh_uisdk_accessibility_label_quote_card" = "Carte de devis";
 
@@ -256,7 +264,7 @@
 
 "kh_uisdk_booking_car" = "Réserver une course";
 
-"kh_uisdk_booking_checkout_add_passenger" = "Ajouter les détails du passager";
+"kh_uisdk_booking_checkout_add_passenger" = "Ajouter les informations du passager";
 
 "kh_uisdk_booking_checkout_add_payment_method" = "Ajouter";
 
@@ -266,7 +274,7 @@
 
 "kh_uisdk_booking_confirmation" = "Course confirmée";
 
-"kh_uisdk_booking_confirmation_go_to_ride_details" = "Aller aux détails du trajet";
+"kh_uisdk_booking_confirmation_go_to_ride_details" = "Aller au détail du trajet";
 
 "kh_uisdk_booking_details_error" = "Informations de réservation non valables";
 
@@ -816,7 +824,7 @@
 
 "kh_uisdk_payment" = "Paiement";
 
-"kh_uisdk_payment_details" = "Détails paiement";
+"kh_uisdk_payment_details" = "Détails de paiement";
 
 "kh_uisdk_payment_issue" = "Problème de paiement";
 
