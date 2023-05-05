@@ -45,7 +45,7 @@ protocol MapView: UIView {
 
     func centerPin(hidden: Bool)
 
-    func set(centerIcon: String, tintColor: UIColor)
+    func set(centerIcon: String, tintColor: UIColor, accessibilityLabel: String)
 
     func addTripLine(pickup: CLLocation, dropoff: CLLocation)
 

@@ -36,6 +36,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     private var focusButton: UIButton = {
         var button = UIButton(type: .custom)
         button.accessibilityIdentifier = KHMapViewID.locateButtonIdentifier
+        button.accessibilityLabel = UITexts.Accessibility.mapLocateMe
         button.setImage(UIImage.uisdkImage("kh_uisdk_locate"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -54,7 +55,6 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
         backgroundCenterIcon.translatesAutoresizingMaskIntoConstraints = false
-        backgroundCenterIcon.isAccessibilityElement = true
         backgroundCenterIcon.tintColor = KarhooUI.colors.primary
         focusButton.addTarget(self, action: #selector(locatePressed), for: .touchUpInside)
 
@@ -214,6 +214,7 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     }
 
     func centerPin(hidden: Bool) {
+        backgroundCenterIcon.isAccessibilityElement = !hidden
         backgroundCenterIcon.isHidden = hidden
     }
 
@@ -256,9 +257,11 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return true
     }
 
-    func set(centerIcon: String, tintColor: UIColor) {
+    func set(centerIcon: String, tintColor: UIColor, accessibilityLabel: String) {
         foregroundCenterIcon.image = UIImage.uisdkImage(centerIcon)
         backgroundCenterIcon.tintColor = tintColor
+        foregroundCenterIcon.isAccessibilityElement = false
+        backgroundCenterIcon.accessibilityLabel = accessibilityLabel
     }
 
     private var mapDragged = false

@@ -89,6 +89,8 @@
 
 "kh_uisdk_acc_ride_details" = "前往乘车详情";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "找到我";
+
 "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "双击切换";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "条款和条件";
@@ -109,13 +111,19 @@
 
 "kh_uisdk_accessibility_label_comments" = "添加评论";
 
-"kh_uisdk_accessibility_label_delete_entry" = "删除整个条目";
+"kh_uisdk_accessibility_label_delete_entry" = "删除地址";
 
 "kh_uisdk_accessibility_label_drop_off_address" = "下车地址";
 
 "kh_uisdk_accessibility_label_fleet_name" = "机队名称";
 
 "kh_uisdk_accessibility_label_flight_number" = "航班号";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "驱动程序图钉图标";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "目的地图钉图标";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "出发图钉图标";
 
 "kh_uisdk_accessibility_label_passenger" = "乘客";
 

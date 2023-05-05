@@ -89,6 +89,8 @@
 
 "kh_uisdk_acc_ride_details" = "Pergi ke rincian perjalanan";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "Temukan saya";
+
 "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Ketuk dua kali untuk beralih";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Syarat dan Ketentuan";
@@ -109,13 +111,19 @@
 
 "kh_uisdk_accessibility_label_comments" = "Tambahkan komentar";
 
-"kh_uisdk_accessibility_label_delete_entry" = "Hapus seluruh entri";
+"kh_uisdk_accessibility_label_delete_entry" = "Hapus alamat";
 
 "kh_uisdk_accessibility_label_drop_off_address" = "Alamat pengantaran";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Nama armada";
 
 "kh_uisdk_accessibility_label_flight_number" = "Nomor penerbangan";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "Ikon pin pengemudi";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "Ikon pin tujuan";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Ikon pin keberangkatan";
 
 "kh_uisdk_accessibility_label_passenger" = "Penumpang";
 

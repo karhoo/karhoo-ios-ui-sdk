@@ -102,9 +102,17 @@ final class KarhooAddressMapView: UIView, AddressMapView {
     private func setUpView(addressType: AddressType) {
         addressDisplayView.set(addressType: addressType)
         if addressType == .pickup {
-            map.set(centerIcon: PinAsset.pickup.rawValue, tintColor: KarhooUI.colors.primary)
+            map.set(
+                centerIcon: PinAsset.pickup.rawValue,
+                tintColor: KarhooUI.colors.primary,
+                accessibilityLabel: UITexts.Accessibility.mapPickUpPin
+            )
         } else {
-            map.set(centerIcon: PinAsset.destination.rawValue, tintColor: KarhooUI.colors.secondary)
+            map.set(
+                centerIcon: PinAsset.destination.rawValue,
+                tintColor: KarhooUI.colors.secondary,
+                accessibilityLabel: UITexts.Accessibility.mapDropOffPin
+            )
         }
     }
     

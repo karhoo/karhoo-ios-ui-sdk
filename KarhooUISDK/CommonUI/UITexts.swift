@@ -526,6 +526,10 @@ public enum UITexts {
         public static let quoteCard = "kh_uisdk_accessibility_label_quote_card".localized
         public static let termsAndConditionsCheckboxLabel = "kh_uisdk_accessibility_checkbox_label_terms_and_conditions".localized
         public static let termsAndConditionsCheckboxHint = "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions".localized
+        public static let mapPickUpPin = "kh_uisdk_accessibility_label_map_pickup_pin".localized
+        public static let mapDropOffPin = "kh_uisdk_accessibility_label_map_dropoff_pin".localized
+        public static let mapDriverPin = "kh_uisdk_accessibility_label_map_driver_pin".localized
+        public static let mapLocateMe = "kh_uisdk_accessibility_button_map_locate_me".localized
     }
 }
 

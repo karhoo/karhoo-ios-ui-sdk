@@ -89,6 +89,8 @@
 
 "kh_uisdk_acc_ride_details" = "Vai ai dettagli della corsa";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "Localizzami";
+
 "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Tocca due volte per attivare/disattivare";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Termini e condizioni";
@@ -109,13 +111,19 @@
 
 "kh_uisdk_accessibility_label_comments" = "Aggiungi un commento";
 
-"kh_uisdk_accessibility_label_delete_entry" = "Elimina l'intera voce";
+"kh_uisdk_accessibility_label_delete_entry" = "Cancella indirizzo";
 
 "kh_uisdk_accessibility_label_drop_off_address" = "Indirizzo di consegna";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Nome della flotta";
 
 "kh_uisdk_accessibility_label_flight_number" = "Numero del volo";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "Icona del perno del conducente";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "Icona del perno di destinazione";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Icona del pin di partenza";
 
 "kh_uisdk_accessibility_label_passenger" = "Passeggero";
 
