@@ -450,18 +450,3 @@ public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
         return navigationController
     }
 }
-
-class MockSideMenuHandler: SideMenuHandler {
-    func showProfile(onViewController viewController: UIViewController) {
-        print("showProfile")
-    }
-    
-    func showBookingsList(onViewController viewController: UIViewController) {
-    }
-    
-    func showAbout(onViewController viewController: UIViewController) {
-    }
-    
-    func showHelp(onViewController viewController: UIViewController) {
-    }
-}

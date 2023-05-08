@@ -49,14 +49,33 @@ public class MockPaymentManager: PaymentManager {
 }
 
 public class CardRegistrationFlowMock: CardRegistrationFlow {
+    private(set) public var cardCurrencySet: String?
+    private(set) public var amountSet: Int?
+    private(set) public var supplierPartnerIdSet: String?
+    private(set) public var showUpdateCardAlertSet: Bool?
+    private(set) public var dropInAuthenticationTokenSet: KarhooSDK.PaymentSDKToken?
+    private(set) public var callbackSet: ((KarhooUISDK.OperationResult<KarhooUISDK.CardFlowResult>) -> Void)?
+    private(set) var startCalled = false
+    public func start(
+        cardCurrency: String,
+        amount: Int,
+        supplierPartnerId: String,
+        showUpdateCardAlert: Bool,
+        dropInAuthenticationToken: KarhooSDK.PaymentSDKToken?,
+        callback: @escaping (KarhooUISDK.OperationResult<KarhooUISDK.CardFlowResult>) -> Void
+    ) {
+        cardCurrencySet = cardCurrency
+        amountSet = amount
+        supplierPartnerIdSet = supplierPartnerId
+        showUpdateCardAlertSet = showUpdateCardAlert
+        dropInAuthenticationTokenSet = dropInAuthenticationToken
+        callbackSet = callback
+        startCalled = true
+    }
+    
     public var setBaseViewCalled = false
     public func setBaseView(_ baseViewController: BaseViewController?) {
         setBaseViewCalled = true
-    }
-    
-    public var startCalled = false
-    public func start(cardCurrency: String, amount: Int, supplierPartnerId: String, showUpdateCardAlert: Bool, dropInAuthenticationToken: KarhooSDK.PaymentSDKToken?, callback: @escaping (OperationResult<CardFlowResult>) -> Void) {
-        startCalled = true
     }
 }
 

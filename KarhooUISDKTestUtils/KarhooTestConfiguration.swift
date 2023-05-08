@@ -9,6 +9,7 @@
 import Foundation
 import KarhooSDK
 import UIKit
+
 @testable import KarhooUISDK
 
 public class KarhooTestConfiguration: KarhooUISDKConfiguration {

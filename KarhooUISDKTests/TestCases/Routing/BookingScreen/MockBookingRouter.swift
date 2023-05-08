@@ -13,6 +13,22 @@ import XCTest
 @testable import KarhooUISDK
 
 class MockBookingRouter: BookingRouter {
+    
+    var quote: Quote?
+    var journeyDetails: JourneyDetails?
+    var bookingMetadata: [String: Any]?
+    var routeToCheckoutCalled = false
+    func routeToCheckout(
+        quote: KarhooSDK.Quote,
+        journeyDetails: KarhooUISDK.JourneyDetails,
+        bookingMetadata: [String : Any]?,
+        bookingRequestCompletion: @escaping (KarhooUISDK.ScreenResult<KarhooUISDK.KarhooCheckoutResult>, KarhooSDK.Quote, KarhooUISDK.JourneyDetails) -> Void
+    ) {
+        self.quote = quote
+        self.journeyDetails = journeyDetails
+        self.bookingMetadata = bookingMetadata
+        routeToCheckoutCalled = true
+    }
 
     var routeToQuoteListCalled = false
     func routeToQuoteList(
@@ -20,27 +36,5 @@ class MockBookingRouter: BookingRouter {
         onQuoteSelected: @escaping (_ quote: Quote,  _ journeyDetails: JourneyDetails) -> Void
     ) {
         routeToQuoteListCalled = true
-    }
-
-    private var bookingRequestCompletion: ((ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void)?
-    var routeToCheckoutCalled = false
-    var quote: Quote?
-    var journeyDetails: JourneyDetails?
-    var bookingMetadata: [String: Any]?
-    func routeToCheckout(
-        quote: Quote,
-        journeyDetails: JourneyDetails,
-        bookingMetadata: [String: Any]?,
-        bookingRequestCompletion: @escaping (ScreenResult<TripInfo>, Quote, JourneyDetails) -> Void
-    ) {
-        self.quote = quote
-        self.journeyDetails = journeyDetails
-        self.bookingRequestCompletion = bookingRequestCompletion
-        self.bookingMetadata = bookingMetadata
-        routeToCheckoutCalled = true
-    }
-
-    func triggerCheckoutScreenResult(_ result: ScreenResult<TripInfo>) {
-        bookingRequestCompletion?(result, quote!, journeyDetails!)
     }
 }

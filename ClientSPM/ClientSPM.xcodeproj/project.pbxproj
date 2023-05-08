@@ -11,7 +11,9 @@
 		5126821528379BE3001869C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5126821428379BE3001869C9 /* ContentView.swift */; };
 		5126821728379BE7001869C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5126821628379BE7001869C9 /* Assets.xcassets */; };
 		5126821A28379BE7001869C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5126821928379BE7001869C9 /* Preview Assets.xcassets */; };
-		5126822428379BE7001869C9 /* ClientSPMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5126822328379BE7001869C9 /* ClientSPMTests.swift */; };
+		51A596CA2A09653000D2B4BA /* KarhooUISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 51A596C92A09653000D2B4BA /* KarhooUISDK */; };
+		51A596CC2A09653300D2B4BA /* KarhooUISDKAdyen in Frameworks */ = {isa = PBXBuildFile; productRef = 51A596CB2A09653300D2B4BA /* KarhooUISDKAdyen */; };
+		51A596CE2A09653600D2B4BA /* KarhooUISDKBraintree in Frameworks */ = {isa = PBXBuildFile; productRef = 51A596CD2A09653600D2B4BA /* KarhooUISDKBraintree */; };
 		7B7446482850BC86004595E2 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446472850BC86004595E2 /* Keys.swift */; };
 		7B8A9D3C2850B711003A93DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A9D3B2850B711003A93DC /* MainViewController.swift */; };
 		7B8A9D3E2850B77E003A93DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A9D3D2850B77E003A93DC /* ViewController.swift */; };
@@ -20,16 +22,6 @@
 		7B8A9D442850BB0C003A93DC /* KarhooUISDKBraintree in Frameworks */ = {isa = PBXBuildFile; productRef = 7B8A9D432850BB0C003A93DC /* KarhooUISDKBraintree */; };
 		842BE89529AF928C00C9CB6F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 842BE89729AF928C00C9CB6F /* Localizable.strings */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5126822028379BE7001869C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5126820728379BE3001869C9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5126820E28379BE3001869C9;
-			remoteInfo = ClientSPM;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5126820F28379BE3001869C9 /* ClientSPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientSPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A596CA2A09653000D2B4BA /* KarhooUISDK in Frameworks */,
+				51A596CC2A09653300D2B4BA /* KarhooUISDKAdyen in Frameworks */,
+				51A596CE2A09653600D2B4BA /* KarhooUISDKBraintree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,9 +177,13 @@
 			buildRules = (
 			);
 			dependencies = (
-				5126822128379BE7001869C9 /* PBXTargetDependency */,
 			);
 			name = ClientSPMTests;
+			packageProductDependencies = (
+				51A596C92A09653000D2B4BA /* KarhooUISDK */,
+				51A596CB2A09653300D2B4BA /* KarhooUISDKAdyen */,
+				51A596CD2A09653600D2B4BA /* KarhooUISDKBraintree */,
+			);
 			productName = ClientSPMTests;
 			productReference = 5126821F28379BE7001869C9 /* ClientSPMTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -277,19 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5126822428379BE7001869C9 /* ClientSPMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5126822128379BE7001869C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5126820E28379BE3001869C9 /* ClientSPM */;
-			targetProxy = 5126822028379BE7001869C9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		842BE89729AF928C00C9CB6F /* Localizable.strings */ = {
@@ -563,6 +553,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		51A596C92A09653000D2B4BA /* KarhooUISDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KarhooUISDK;
+		};
+		51A596CB2A09653300D2B4BA /* KarhooUISDKAdyen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KarhooUISDKAdyen;
+		};
+		51A596CD2A09653600D2B4BA /* KarhooUISDKBraintree */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KarhooUISDKBraintree;
+		};
 		7B8A9D3F2850BB0C003A93DC /* KarhooUISDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KarhooUISDK;

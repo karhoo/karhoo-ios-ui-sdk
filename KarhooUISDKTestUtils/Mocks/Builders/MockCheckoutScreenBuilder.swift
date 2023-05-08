@@ -8,7 +8,7 @@
 
 import Foundation
 import KarhooSDK
-
+import UIKit
 @testable import KarhooUISDK
 
 final public class MockCheckoutScreenBuilder: CheckoutScreenBuilder {
