@@ -61,7 +61,7 @@ final class KarhooAddressDisplayView: UIView {
         addressDisplayLabel.numberOfLines = 3
         addressDisplayLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         addressDisplayLabel.font = KarhooUI.fonts.bodyRegular()
-        addressDisplayLabel.textColor = KarhooUI.colors.darkGrey
+        addressDisplayLabel.textColor = KarhooUI.colors.text
         stackContainer.addSubview(addressDisplayLabel)
 
         addressTypeImage.anchor(leading: stackContainer.leadingAnchor, paddingLeft: 8, width: 15, height: 15)

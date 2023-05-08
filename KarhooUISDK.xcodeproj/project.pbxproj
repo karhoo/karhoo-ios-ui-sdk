@@ -3182,6 +3182,7 @@
 				7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */,
 				7B09365C29EC6D770088B476 /* FeatureFlagsStore.swift */,
 				7B09366029ECA4A10088B476 /* KarhooFeatureFlagProvider.swift */,
+				6BF304EF275FA2920016CFC5 /* LoyaltyFeatureFlags.swift */,
 			);
 			path = FeatureFlags;
 			sourceTree = "<group>";

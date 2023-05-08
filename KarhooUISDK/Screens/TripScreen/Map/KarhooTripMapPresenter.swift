@@ -15,6 +15,16 @@ enum TripPinTags: Int {
     case driverLocation = 3
 }
 
+extension TripPinTags {
+    var accessibilityLabel: String {
+        switch self {
+        case .pickup: return UITexts.Accessibility.mapPickUpPin
+        case .destination: return UITexts.Accessibility.mapDropOffPin
+        case .driverLocation: return UITexts.Accessibility.mapDriverPin
+        }
+    }
+}
+
 final class KarhooTripMapPresenter: TripMapPresenter {
 
     private weak var mapView: MapView?

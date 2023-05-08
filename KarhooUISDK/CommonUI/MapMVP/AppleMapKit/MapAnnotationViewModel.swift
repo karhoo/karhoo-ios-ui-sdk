@@ -11,13 +11,18 @@ import CoreLocation
 import MapKit
 
 final class MapAnnotationViewModel: NSObject, MKAnnotation {
+
     let backgroundIcon: UIImage
     let foregroundIcon: UIImage?
+    let tag: TripPinTags
     @objc dynamic var coordinate: CLLocationCoordinate2D
 
-    init(coordinate: CLLocationCoordinate2D,
-         tag: TripPinTags) {
+    init(
+        coordinate: CLLocationCoordinate2D,
+        tag: TripPinTags
+    ) {
         self.coordinate = coordinate
+        self.tag = tag
         switch tag {
         case .destination:
             backgroundIcon = UIImage.uisdkImage(PinAsset.background.rawValue)

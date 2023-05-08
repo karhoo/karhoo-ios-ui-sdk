@@ -89,6 +89,52 @@
 
 "kh_uisdk_acc_ride_details" = "前往乘车详情";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "找到我";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "双击切换";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "条款和条件";
+
+"kh_uisdk_accessibility_icon_back" = "返回图标";
+
+"kh_uisdk_accessibility_icon_comments" = "注释";
+
+"kh_uisdk_accessibility_icon_cross" = "十字图标";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "编辑";
+
+"kh_uisdk_accessibility_icon_flight_number" = "航班号";
+
+"kh_uisdk_accessibility_icon_passenger" = "乘客";
+
+"kh_uisdk_accessibility_icon_train_number" = "车次";
+
+"kh_uisdk_accessibility_label_comments" = "添加评论";
+
+"kh_uisdk_accessibility_label_delete_entry" = "删除地址";
+
+"kh_uisdk_accessibility_label_drop_off_address" = "下车地址";
+
+"kh_uisdk_accessibility_label_fleet_name" = "机队名称";
+
+"kh_uisdk_accessibility_label_flight_number" = "航班号";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "驱动程序图钉图标";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "目的地图钉图标";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "出发图钉图标";
+
+"kh_uisdk_accessibility_label_passenger" = "乘客";
+
+"kh_uisdk_accessibility_label_pickup_address" = "取货地址";
+
+"kh_uisdk_accessibility_label_quote_card" = "报价卡";
+
+"kh_uisdk_accessibility_label_swap_addresses" = "交换地址";
+
+"kh_uisdk_accessibility_label_train_number" = "车次";
+
 "kh_uisdk_add_card" = "添加卡片";
 
 "kh_uisdk_add_comment_placeholder" = "补充评论";
@@ -366,7 +412,7 @@
 
 "kh_uisdk_error" = "错误";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "请在使用此功能前更新您的应用程序";
 
 "kh_uisdk_error_invalid_password" = "您输入的电子邮件或密码不正确";
 

@@ -17,6 +17,7 @@ struct VehicleDetailsCard: View {
                 KarhooAsyncImage(urlString: viewModel.carIconUrl)
                     .frame(width: 80, height: 80)
                     .scaledToFit()
+                    .accessibilityLabel(viewModel.carImageAccessibilityText)
                 VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
                     Text(viewModel.title)
                         .font(Font(KarhooUI.fonts.bodyBold()))
@@ -38,6 +39,7 @@ struct VehicleDetailsCard: View {
                             .font(Font(KarhooUI.fonts.captionRegular()))
                             .foregroundColor(Color(KarhooUI.colors.text))
                     }
+                    .accessibilityLabel(viewModel.fleetNameAccessibilityText)
                 }
                 Spacer()
             }
@@ -62,7 +64,8 @@ struct VehicleDetailsCard_Previews: PreviewProvider {
                 fleetName: "Alpha Taxi",
                 carIconUrl: "kh_uisdk_supplier_logo_placeholder",
                 fleetIconUrl: "kh_uisdk_supplier_logo_placeholder",
-                cancelationText: "Free cancelaion up to 2 hours"
+                cancelationText: "Free cancelaion up to 2 hours",
+                carImageAccessibilityText: "Standard image"
             )
         )
     }
@@ -76,4 +79,9 @@ struct VehicleDetailsCardViewModel {
     let carIconUrl: String
     let fleetIconUrl: String
     let cancelationText: String?
+    let carImageAccessibilityText: String
+    
+    var fleetNameAccessibilityText: String {
+        return "\(UITexts.Accessibility.fleetName), \(fleetName)"
+    }
 }

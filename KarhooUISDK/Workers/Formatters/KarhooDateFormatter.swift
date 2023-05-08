@@ -18,6 +18,7 @@ protocol DateFormatterType {
     func display(detailStyleDate date: Date?) -> String
     func display(fullDate date: Date?) -> String
     func display(clockTime date: Date?) -> String
+    func display(fullLocalizedTime date: Date?) -> String
     func display(
         _ date: Date?,
         dateStyle: DateFormatter.Style,
@@ -129,5 +130,27 @@ class KarhooDateFormatter: DateFormatterType {
         dateFormatter.timeZone = timeZone
         dateFormatter.locale = locale
         return dateFormatter.string(from: date)
+    }
+    
+    /// Displays the time as "XX hours YY minutes" localized and in a 24h format
+    func display(fullLocalizedTime date: Date?) -> String {
+        guard let date = date else {
+            return ""
+        }
+        
+        var calendar = Calendar.current
+        calendar.timeZone = timeZone
+        calendar.locale = locale
+        
+        let hourComponent = calendar.dateComponents([.hour], from: date)
+        let minuteComponent = calendar.dateComponents([.minute], from: date)
+        let hour = DateComponentsFormatter.localizedString(from: hourComponent, unitsStyle: .full)
+        let minute = DateComponentsFormatter.localizedString(from: minuteComponent, unitsStyle: .full)
+        
+        guard let hour, let minute, hour.isNotEmpty, minute.isNotEmpty else {
+            return display(clockTime: date)
+        }
+        
+        return "\(hour) \(minute)"
     }
 }

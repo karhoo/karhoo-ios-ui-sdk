@@ -39,6 +39,8 @@ struct KarhooTermsConditionsView: View {
                             )
                     }
                 )
+                .accessibilityLabel(UITexts.Accessibility.termsAndConditionsCheckboxLabel)
+                .accessibilityHint(UITexts.Accessibility.termsAndConditionsCheckboxHint)
             }
 
             TextView($viewModel.attributedText)

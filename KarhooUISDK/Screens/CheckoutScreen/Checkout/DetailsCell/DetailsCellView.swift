@@ -23,11 +23,13 @@ struct DetailsCellView: View {
                 .padding(.top, UIConstants.Spacing.xSmall)
                 .padding(.bottom, UIConstants.Spacing.xSmall)
                 .foregroundColor(Color(KarhooUI.colors.primary))
+                .accessibilityLabel(viewModel.accessibilityIconName)
             VStack(alignment: .leading) {
                 Text(viewModel.title)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.bodyBold()))
                     .foregroundColor(Color(KarhooUI.colors.text))
+                    .accessibilityLabel(viewModel.accessibilityTitle)
                 Text(viewModel.subtitle)
                     .lineLimit(2)
                     .font(Font(KarhooUI.fonts.captionRegular()))
@@ -42,6 +44,7 @@ struct DetailsCellView: View {
                     width: UIConstants.Dimension.Icon.standard,
                     height: UIConstants.Dimension.Icon.standard
                 )
+                .accessibilityLabel(UITexts.Accessibility.editArrow)
             }
             .padding(.all, UIConstants.Spacing.standard)
             .frame(
@@ -72,6 +75,8 @@ struct DetailsViewCellPreviews: PreviewProvider {
                 title: "Passanger",
                 subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                 iconName: "kh_uisdk_passenger",
+                accessibilityTitle: "Passenger",
+                accessibilityIconName: "Passenger",
                 onTap: {print("tapped")}
             )
         )

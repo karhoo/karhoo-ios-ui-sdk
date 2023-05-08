@@ -91,4 +91,8 @@ public final class LoadingImageView: UIView {
         layer.borderColor = KarhooUI.colors.darkGrey.withAlphaComponent(0.20).cgColor
         layer.borderWidth = 0.5
     }
+    
+    func setAccessibilityLabel(_ text: String?) {
+        imageView?.accessibilityLabel = text
+    }
 }

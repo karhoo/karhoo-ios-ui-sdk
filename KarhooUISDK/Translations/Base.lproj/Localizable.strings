@@ -89,6 +89,52 @@
 
 "kh_uisdk_acc_ride_details" = "Go to ride details";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "Locate me";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Double tap to toggle";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Terms and conditions";
+
+"kh_uisdk_accessibility_icon_back" = "Back icon";
+
+"kh_uisdk_accessibility_icon_comments" = "Comments";
+
+"kh_uisdk_accessibility_icon_cross" = "Cross icon";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "Edit";
+
+"kh_uisdk_accessibility_icon_flight_number" = "Flight number";
+
+"kh_uisdk_accessibility_icon_passenger" = "Passenger";
+
+"kh_uisdk_accessibility_icon_train_number" = "Train number";
+
+"kh_uisdk_accessibility_label_comments" = "Add a comment";
+
+"kh_uisdk_accessibility_label_delete_entry" = "Delete address";
+
+"kh_uisdk_accessibility_label_drop_off_address" = "Drop off address";
+
+"kh_uisdk_accessibility_label_fleet_name" = "Fleet name";
+
+"kh_uisdk_accessibility_label_flight_number" = "Flight number";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "Driver pin icon";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "Destination pin icon";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Departure pin icon";
+
+"kh_uisdk_accessibility_label_passenger" = "Passenger";
+
+"kh_uisdk_accessibility_label_pickup_address" = "Pick-up address";
+
+"kh_uisdk_accessibility_label_quote_card" = "Quote card";
+
+"kh_uisdk_accessibility_label_swap_addresses" = "Swap addresses";
+
+"kh_uisdk_accessibility_label_train_number" = "Train number";
+
 "kh_uisdk_add_card" = "Add card";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";

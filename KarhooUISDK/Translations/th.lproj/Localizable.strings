@@ -89,6 +89,52 @@
 
 "kh_uisdk_acc_ride_details" = "ไปที่รายละเอียดการขี่";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "ค้นหาฉัน";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "แตะสองครั้งเพื่อสลับ";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "ข้อกำหนดและเงื่อนไข";
+
+"kh_uisdk_accessibility_icon_back" = "ไอคอนย้อนกลับ";
+
+"kh_uisdk_accessibility_icon_comments" = "ความคิดเห็น";
+
+"kh_uisdk_accessibility_icon_cross" = "ไอคอนกากบาท";
+
+"kh_uisdk_accessibility_icon_edit_arrow" = "แก้ไข";
+
+"kh_uisdk_accessibility_icon_flight_number" = "หมายเลขเที่ยวบิน";
+
+"kh_uisdk_accessibility_icon_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_accessibility_icon_train_number" = "หมายเลขรถไฟ";
+
+"kh_uisdk_accessibility_label_comments" = "เพิ่มความคิดเห็น";
+
+"kh_uisdk_accessibility_label_delete_entry" = "ลบที่อยู่";
+
+"kh_uisdk_accessibility_label_drop_off_address" = "ที่อยู่จัดส่ง";
+
+"kh_uisdk_accessibility_label_fleet_name" = "ชื่อกองเรือ";
+
+"kh_uisdk_accessibility_label_flight_number" = "หมายเลขเที่ยวบิน";
+
+"kh_uisdk_accessibility_label_map_driver_pin" = "ไอคอนพินไดรเวอร์";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "ไอคอนหมุดปลายทาง";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "ไอคอนขาออก";
+
+"kh_uisdk_accessibility_label_passenger" = "ผู้โดยสาร";
+
+"kh_uisdk_accessibility_label_pickup_address" = "ที่อยู่ในการรับ";
+
+"kh_uisdk_accessibility_label_quote_card" = "ใบเสนอราคา";
+
+"kh_uisdk_accessibility_label_swap_addresses" = "สลับที่อยู่";
+
+"kh_uisdk_accessibility_label_train_number" = "หมายเลขรถไฟ";
+
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 
 "kh_uisdk_add_comment_placeholder" = "ความคิดเห็นเพิ่มเติม";
@@ -366,7 +412,7 @@
 
 "kh_uisdk_error" = "ความผิดพลาด";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "";
+"kh_uisdk_error_incorrect_sdk_version_message" = "โปรดอัปเดตแอปพลิเคชันของคุณก่อนที่จะใช้คุณสมบัตินี้";
 
 "kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
 

@@ -250,8 +250,6 @@ public enum UITexts {
         public static let fixedInfoBox = "kh_uisdk_price_info_text_fixed".localized
         public static let learnMore = "kh_uisdk_quote_learn_more".localized
         public static let passenger = "kh_uisdk_booking_checkout_passenger".localized
-        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
-        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
         public static let gpsTracking = "kh_uisdk_filter_gps_tracking".localized
         public static let trainTracking = "kh_uisdk_filter_train_tracking".localized
         public static let flightTracking = "kh_uisdk_filter_fight_tracking".localized
@@ -506,6 +504,34 @@ public enum UITexts {
         static let balanceTitle = "kh_uisdk_loyalty_balance_title".localized
         static let or = "kh_uisdk_loyalty_separator".localized
     }
+    
+    public enum Accessibility {
+        public static let crossIcon = "kh_uisdk_accessibility_icon_cross".localized
+        public static let closeScreen = "kh_uisdk_acc_close_button".localized
+        public static let deleteEntry = "kh_uisdk_accessibility_label_delete_entry".localized
+        public static let backIcon = "kh_uisdk_accessibility_icon_back".localized
+        public static let maximumPassengers = "kh_uisdk_passengers_max".localized
+        public static let maximumLuggages = "kh_uisdk_baggage_max".localized
+        public static let fleetName = "kh_uisdk_accessibility_label_fleet_name".localized
+        public static let editArrow = "kh_uisdk_accessibility_icon_edit_arrow".localized
+        public static let passengerIcon = "kh_uisdk_accessibility_icon_passenger".localized
+        public static let commentsIcon = "kh_uisdk_accessibility_icon_comments".localized
+        public static let flightNumberIcon = "kh_uisdk_accessibility_icon_flight_number".localized
+        public static let trainNumberIcon = "kh_uisdk_accessibility_icon_train_number".localized
+        public static let passengerTitle = "kh_uisdk_accessibility_label_passenger".localized
+        public static let commentsTitle = "kh_uisdk_accessibility_label_comments".localized
+        public static let flightNumberTitle = "kh_uisdk_accessibility_label_flight_number".localized
+        public static let trainNumberTitle = "kh_uisdk_accessibility_label_train_number".localized
+        public static let quoteListTitle = "kh_uisdk_quotes_activity_title".localized
+        public static let quoteCard = "kh_uisdk_accessibility_label_quote_card".localized
+        public static let termsAndConditionsCheckboxLabel = "kh_uisdk_accessibility_checkbox_label_terms_and_conditions".localized
+        public static let termsAndConditionsCheckboxHint = "kh_uisdk_accessibility_checkbox_hint_terms_and_conditions".localized
+        public static let mapPickUpPin = "kh_uisdk_accessibility_label_map_pickup_pin".localized
+        public static let mapDropOffPin = "kh_uisdk_accessibility_label_map_dropoff_pin".localized
+        public static let mapDriverPin = "kh_uisdk_accessibility_label_map_driver_pin".localized
+        public static let mapLocateMe = "kh_uisdk_accessibility_button_map_locate_me".localized
+        public static let swapAddresses = "kh_uisdk_accessibility_label_swap_addresses".localized
+    }
 }
 
 extension KarhooError {
@@ -529,7 +555,7 @@ public extension String {
         } else {
             return NSLocalizedString(self, bundle: .current, comment: "")
         }
-    } 
+    }
     
     func firstLetterUppercased() -> String {
         guard let firstLetter = self.first?.uppercased() else {

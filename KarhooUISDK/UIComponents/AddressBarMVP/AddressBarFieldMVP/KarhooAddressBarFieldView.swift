@@ -60,6 +60,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
     
         clearButton = UIButton(type: .custom)
         clearButton.accessibilityIdentifier = KHAddressBarFieldID.clearButton
+        clearButton.accessibilityLabel = "\(UITexts.Accessibility.crossIcon), \(UITexts.Accessibility.deleteEntry)"
         clearButton.translatesAutoresizingMaskIntoConstraints = false
         clearButton.isHidden = clearButtonDisabled
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
@@ -68,7 +69,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         clearButton.tintColor = KarhooUI.colors.textLabel
         stackContainer.addArrangedSubview(clearButton)
         
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.accessibilityIdentifier = "activity_indicator"
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicatorView)
@@ -108,7 +109,7 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
     }
 
     func ordinaryTextColor() {
-        label?.textColor = KarhooUI.colors.darkGrey
+        label?.textColor = KarhooUI.colors.text
     }
 
     @objc

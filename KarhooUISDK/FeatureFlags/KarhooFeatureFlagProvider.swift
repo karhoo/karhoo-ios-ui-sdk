@@ -23,4 +23,13 @@ class KarhooFeatureFlagProvider: FeatureFlagProvider {
     func get() -> FeatureFlags {
         store.get()?.flags ?? FeatureFlags()
     }
+    
+    func getLoyaltyFlags() -> LoyaltyFeatureFlags {
+        let loyaltyEnabled = true
+        return LoyaltyFeatureFlags(
+            loyaltyEnabled: loyaltyEnabled,
+            loyaltyCanEarn: loyaltyEnabled && true,
+            loyaltyCanBurn: loyaltyEnabled && true
+        )
+    }
 }
