@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Перейти к подробностям поездки";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "Найди меня";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Нажмите дважды, чтобы переключить";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Условия и положения";
+
 "kh_uisdk_accessibility_icon_back" = "Значок \"Назад\"";
 
 "kh_uisdk_accessibility_icon_comments" = "Комментарии";
@@ -105,15 +111,27 @@
 
 "kh_uisdk_accessibility_label_comments" = "Добавить комментарий";
 
-"kh_uisdk_accessibility_label_delete_entry" = "Удалить всю запись";
+"kh_uisdk_accessibility_label_delete_entry" = "Удалить адрес";
+
+"kh_uisdk_accessibility_label_drop_off_address" = "Адрес доставки";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Название флота";
 
 "kh_uisdk_accessibility_label_flight_number" = "Номер рейса";
 
+"kh_uisdk_accessibility_label_map_driver_pin" = "Значок булавки водителя";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "Значок назначения";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Значок отправления";
+
 "kh_uisdk_accessibility_label_passenger" = "Пассажир";
 
+"kh_uisdk_accessibility_label_pickup_address" = "Выберите адрес";
+
 "kh_uisdk_accessibility_label_quote_card" = "Цитата карты";
+
+"kh_uisdk_accessibility_label_swap_addresses" = "Поменять адреса";
 
 "kh_uisdk_accessibility_label_train_number" = "Номер поезда";
 

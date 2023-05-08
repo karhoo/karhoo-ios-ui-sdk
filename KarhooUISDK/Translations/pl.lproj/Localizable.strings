@@ -89,6 +89,12 @@
 
 "kh_uisdk_acc_ride_details" = "Przejdź do szczegółów przejazdu";
 
+"kh_uisdk_accessibility_button_map_locate_me" = "Zlokalizuj mnie";
+
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Stuknij dwukrotnie, aby przełączyć";
+
+"kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Regulamin";
+
 "kh_uisdk_accessibility_icon_back" = "Ikona powrotu";
 
 "kh_uisdk_accessibility_icon_comments" = "Komentarze";
@@ -105,15 +111,27 @@
 
 "kh_uisdk_accessibility_label_comments" = "Dodaj komentarz";
 
-"kh_uisdk_accessibility_label_delete_entry" = "Usuń cały wpis";
+"kh_uisdk_accessibility_label_delete_entry" = "Usuń adres";
+
+"kh_uisdk_accessibility_label_drop_off_address" = "Adres odbiorcy";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Nazwa floty";
 
 "kh_uisdk_accessibility_label_flight_number" = "Numer lotu";
 
+"kh_uisdk_accessibility_label_map_driver_pin" = "Ikona pinów sterownika";
+
+"kh_uisdk_accessibility_label_map_dropoff_pin" = "Ikona pinezki docelowej";
+
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Ikona pinezki odlotu";
+
 "kh_uisdk_accessibility_label_passenger" = "Pasażer";
 
+"kh_uisdk_accessibility_label_pickup_address" = "Adres odbioru";
+
 "kh_uisdk_accessibility_label_quote_card" = "Karta cytatu";
+
+"kh_uisdk_accessibility_label_swap_addresses" = "Zamiana adresów";
 
 "kh_uisdk_accessibility_label_train_number" = "Numer pociągu";
 
