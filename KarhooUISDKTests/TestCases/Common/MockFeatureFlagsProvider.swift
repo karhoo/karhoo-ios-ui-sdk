@@ -7,3 +7,14 @@
 //
 
 import Foundation
+@testable import KarhooUISDK
+
+class MockFeatureFlagProvider: FeatureFlagProvider {
+    func getRemoteFlags() -> FeatureFlagsModel? {
+        return FeatureFlagsModel(version: "1.12.0", flags: FeatureFlags(adyenAvailable: true, newRidePlaningScreen: false))
+    }
+    
+    func getLoyaltyFlags() -> LoyaltyFeatureFlags {
+        return LoyaltyFeatureFlags(loyaltyEnabled: true, loyaltyCanEarn: true, loyaltyCanBurn: true)
+    }
+}
