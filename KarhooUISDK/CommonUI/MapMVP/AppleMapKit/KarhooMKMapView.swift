@@ -24,7 +24,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return 0.075
     }
 
-    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_pin_background_icon"))
+    private let backgroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_pin_background_icon")).then {
+        $0.accessibilityLabel = UITexts.Accessibility.mapPickUpPin
+    }
     private let foregroundCenterIcon = UIImageView(image: UIImage.uisdkImage("kh_uisdk_pin_pickup_icon"))
     private var mapView: MKMapView = MKMapView()
     private var mapViewActions: MapViewActions?
@@ -257,11 +259,9 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         return true
     }
 
-    func set(centerIcon: String, tintColor: UIColor, accessibilityLabel: String) {
+    func set(centerIcon: String, tintColor: UIColor) {
         foregroundCenterIcon.image = UIImage.uisdkImage(centerIcon)
         backgroundCenterIcon.tintColor = tintColor
-        foregroundCenterIcon.isAccessibilityElement = false
-        backgroundCenterIcon.accessibilityLabel = accessibilityLabel
     }
 
     private var mapDragged = false

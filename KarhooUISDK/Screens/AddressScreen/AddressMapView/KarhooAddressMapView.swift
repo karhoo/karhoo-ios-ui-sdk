@@ -104,14 +104,12 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         if addressType == .pickup {
             map.set(
                 centerIcon: PinAsset.pickup.rawValue,
-                tintColor: KarhooUI.colors.primary,
-                accessibilityLabel: UITexts.Accessibility.mapPickUpPin
+                tintColor: KarhooUI.colors.primary
             )
         } else {
             map.set(
                 centerIcon: PinAsset.destination.rawValue,
-                tintColor: KarhooUI.colors.secondary,
-                accessibilityLabel: UITexts.Accessibility.mapDropOffPin
+                tintColor: KarhooUI.colors.secondary
             )
         }
     }
