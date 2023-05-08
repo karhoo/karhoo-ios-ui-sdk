@@ -20,6 +20,20 @@ extension QuoteVehicle {
         
         return enumCase.title
     }
+    
+    func getVehicleImageTag(rule: VehicleImageRule?) -> String {
+        let vehicleTags = tags.map({ $0.lowercased() })
+        
+        if vehicleTags.contains("economy") {
+            return UITexts.Accessibility.vehicleLogoEconomy
+        } else if vehicleTags.contains("electric") {
+            return UITexts.Accessibility.vehicleLogoElectric
+        } else if vehicleTags.contains("hybrid") {
+            return UITexts.Accessibility.vehicleLogoHybrid
+        } else {
+            return rule?.tags.first ?? vehicleTags.first ?? getVehicleTypeText()
+        }
+    }
 }
 
 public enum VehicleType: String {
