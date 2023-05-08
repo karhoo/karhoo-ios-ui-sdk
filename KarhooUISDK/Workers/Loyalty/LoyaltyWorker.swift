@@ -202,11 +202,11 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
                 self.modelSubject.send(.failure(error: error))
                 return
             }
-            let canEarn = status.canEarn && self.featureFlagProvider.getLoyaltyFlags().loyaltyCanEarn
+            let canEarn = status.canEarn && self.featureFlagProvider.get().loyaltyCanEarn
             self.modeSubject.send(canEarn ? .earn : .none)
             self.currentBalanceSubject.send(status.balance)
             self.canEarnSubject.send(canEarn)
-            self.canBurnSubject.send(status.canBurn && self.featureFlagProvider.getLoyaltyFlags().loyaltyCanBurn)
+            self.canBurnSubject.send(status.canBurn && self.featureFlagProvider.get().loyaltyCanBurn)
         }
     }
 
@@ -283,7 +283,7 @@ final class KarhooLoyaltyWorker: LoyaltyWorker {
 
     private func getIsLoyaltyEnabled() -> Bool {
         let loyaltyId = userService.getCurrentUser()?.paymentProvider?.loyaltyProgamme.id
-        return loyaltyId != nil && !loyaltyId!.isEmpty && featureFlagProvider.getLoyaltyFlags().loyaltyEnabled
+        return loyaltyId != nil && !loyaltyId!.isEmpty && featureFlagProvider.get().loyaltyEnabled
     }
 
     private func loyaltyId() -> String? {

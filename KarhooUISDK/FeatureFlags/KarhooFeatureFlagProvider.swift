@@ -9,8 +9,7 @@
 import Foundation
 
 protocol FeatureFlagProvider {
-    func getRemoteFlags() -> FeatureFlagsModel?
-    func getLoyaltyFlags() -> LoyaltyFeatureFlags
+    func get() -> FeatureFlags
 }
 
 class KarhooFeatureFlagProvider: FeatureFlagProvider {
@@ -21,16 +20,7 @@ class KarhooFeatureFlagProvider: FeatureFlagProvider {
         self.store = store
     }
     
-    func getRemoteFlags() -> FeatureFlagsModel? {
-        store.get()
-    }
-    
-    func getLoyaltyFlags() -> LoyaltyFeatureFlags {
-        let loyaltyEnabled = true
-        return LoyaltyFeatureFlags(
-            loyaltyEnabled: loyaltyEnabled,
-            loyaltyCanEarn: loyaltyEnabled && true,
-            loyaltyCanBurn: loyaltyEnabled && true
-        )
+    func get() -> FeatureFlags {
+        store.get()?.flags ?? FeatureFlags()
     }
 }
