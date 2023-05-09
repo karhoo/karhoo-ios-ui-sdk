@@ -135,7 +135,7 @@ class QuoteListAsyncSnapshotSpec: QuickSpec {
 
             context("and when there is no available services") {
                 beforeEach {
-                    presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+                    presenterMock.onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea(isPrebook: false)))
                 }
 
                 it("should have valid design") {
