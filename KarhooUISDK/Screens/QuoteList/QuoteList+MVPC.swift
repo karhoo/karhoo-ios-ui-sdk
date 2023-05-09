@@ -17,7 +17,7 @@ public enum QuoteListState {
     public enum EmptyReason {
         case destinationOrOriginEmpty
         case noResults
-        case noAvailabilityInRequestedArea
+        case noAvailabilityInRequestedArea(isPrebook: Bool)
         case originAndDestinationAreTheSame
         case KarhooErrorQ0001
         case noQuotesAfterFiltering // error message: UITexts.Availability.noQuotesInSelectedCategory

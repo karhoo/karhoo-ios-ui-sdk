@@ -181,7 +181,12 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         switch error.type {
         case .noAvailabilityInRequestedArea:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
-            onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+            onStateUpdated?(.empty(
+                reason:
+                    .noAvailabilityInRequestedArea(
+                        isPrebook: journeyDetailsManager.getJourneyDetails()?.isScheduledInMoreThanOneHour ?? false
+                    )
+            ))
         case .originAndDestinationAreTheSame:
             quoteSearchObservable?.unsubscribe(observer: quotesObserver)
             onStateUpdated?(.empty(reason: .originAndDestinationAreTheSame))
@@ -293,7 +298,11 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             
             switch journeyDetails?.isScheduledInMoreThanOneHour {
             case false:
-                onStateUpdated?(.empty(reason: .noAvailabilityInRequestedArea))
+                onStateUpdated?(.empty(
+                    reason: .noAvailabilityInRequestedArea(
+                        isPrebook: journeyDetailsManager.getJourneyDetails()?.isScheduledInMoreThanOneHour ?? false
+                    )
+                ))
             default:
                 onStateUpdated?(.empty(reason: .noResults))
             }
