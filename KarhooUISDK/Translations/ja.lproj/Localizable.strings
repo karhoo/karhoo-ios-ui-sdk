@@ -101,9 +101,15 @@
 
 "kh_uisdk_accessibility_icon_cross" = "十字のアイコン";
 
+"kh_uisdk_accessibility_icon_economy" = "経済";
+
 "kh_uisdk_accessibility_icon_edit_arrow" = "編集する";
 
+"kh_uisdk_accessibility_icon_electric" = "電気";
+
 "kh_uisdk_accessibility_icon_flight_number" = "便名";
+
+"kh_uisdk_accessibility_icon_hybrid" = "ハイブリッド";
 
 "kh_uisdk_accessibility_icon_passenger" = "ご乗車のお客様";
 

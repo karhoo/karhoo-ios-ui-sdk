@@ -101,9 +101,15 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Kruis pictogram";
 
+"kh_uisdk_accessibility_icon_economy" = "Economie";
+
 "kh_uisdk_accessibility_icon_edit_arrow" = "Wijzigen";
 
+"kh_uisdk_accessibility_icon_electric" = "Elektrisch";
+
 "kh_uisdk_accessibility_icon_flight_number" = "Vluchtnummer";
+
+"kh_uisdk_accessibility_icon_hybrid" = "Hybride";
 
 "kh_uisdk_accessibility_icon_passenger" = "Passagier";
 

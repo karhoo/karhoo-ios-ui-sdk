@@ -101,9 +101,15 @@
 
 "kh_uisdk_accessibility_icon_cross" = "icono de cruz";
 
+"kh_uisdk_accessibility_icon_economy" = "Economía";
+
 "kh_uisdk_accessibility_icon_edit_arrow" = "Editar";
 
+"kh_uisdk_accessibility_icon_electric" = "Eléctrico";
+
 "kh_uisdk_accessibility_icon_flight_number" = "Número de vuelo";
+
+"kh_uisdk_accessibility_icon_hybrid" = "Híbrido";
 
 "kh_uisdk_accessibility_icon_passenger" = "Pasajero";
 

@@ -531,6 +531,9 @@ public enum UITexts {
         public static let mapDriverPin = "kh_uisdk_accessibility_label_map_driver_pin".localized
         public static let mapLocateMe = "kh_uisdk_accessibility_button_map_locate_me".localized
         public static let swapAddresses = "kh_uisdk_accessibility_label_swap_addresses".localized
+        public static let vehicleLogoElectric = "kh_uisdk_accessibility_icon_electric".localized
+        public static let vehicleLogoHybrid = "kh_uisdk_accessibility_icon_hybrid".localized
+        public static let vehicleLogoEconomy = "kh_uisdk_accessibility_icon_economy".localized
     }
 }
 

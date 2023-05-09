@@ -101,9 +101,15 @@
 
 "kh_uisdk_accessibility_icon_cross" = "Ikon silang";
 
+"kh_uisdk_accessibility_icon_economy" = "Ekonomi";
+
 "kh_uisdk_accessibility_icon_edit_arrow" = "Edit";
 
+"kh_uisdk_accessibility_icon_electric" = "Listrik";
+
 "kh_uisdk_accessibility_icon_flight_number" = "Nomor penerbangan";
+
+"kh_uisdk_accessibility_icon_hybrid" = "Hybrid";
 
 "kh_uisdk_accessibility_icon_passenger" = "Penumpang";
 

@@ -187,7 +187,7 @@ final class QuoteViewModel {
     private func getImageUrl(for quote: Quote, with provider: VehicleRulesProvider) {
         provider.getRule(for: quote) { [weak self] vehicleImageRule in
             self?.vehicleImageURL = vehicleImageRule?.imagePath
-            self?.vehicleImageAccessibilityText = vehicleImageRule?.tags.first ?? quote.vehicle.tags.first ?? quote.vehicle.getVehicleTypeText()
+            self?.vehicleImageAccessibilityText = quote.vehicle.getVehicleImageTag(rule: vehicleImageRule)
         }
     }
 
@@ -210,7 +210,7 @@ final class QuoteViewModel {
     }
 
     private func getBadgeImage(for quote: Quote) {
-        let vehicleTags = quote.vehicle.tags
+        let vehicleTags = quote.vehicle.tags.map({ $0.lowercased() })
 
         var image: UIImage?
         if vehicleTags.contains("economy") {

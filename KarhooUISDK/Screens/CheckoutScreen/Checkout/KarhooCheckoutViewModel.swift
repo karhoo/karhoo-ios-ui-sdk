@@ -213,7 +213,7 @@ final class KarhooCheckoutViewModel: ObservableObject {
         }
         
         var vehicleImageAccessibilityText: String {
-            carIconRule?.tags.first ?? quote.vehicle.tags.first ?? quote.vehicle.getVehicleTypeText()
+            quote.vehicle.getVehicleImageTag(rule: carIconRule)
         }
         
         return VehicleDetailsCardViewModel(
