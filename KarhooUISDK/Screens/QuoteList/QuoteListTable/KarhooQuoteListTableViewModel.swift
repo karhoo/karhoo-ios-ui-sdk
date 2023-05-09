@@ -62,7 +62,7 @@ class KarhooQuoteListTableViewModel: QuoteListTableViewModel {
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Errors.errorPickupAndDestinationSameTitle
         case .empty(reason: .noAvailabilityInRequestedArea(let isPrebook)):
-            return isPrebook ? UITexts.Booking.noCoverageForPrebookRideTitlte : UITexts.KarhooError.K3002
+            return isPrebook ? UITexts.Booking.noAvailabilityForPrebookRideTitle : UITexts.KarhooError.K3002
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterTitle
         case .empty(reason: .destinationOrOriginEmpty):
@@ -79,7 +79,7 @@ class KarhooQuoteListTableViewModel: QuoteListTableViewModel {
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Errors.errorPickupAndDestinationSameMessage
         case .empty(reason: .noAvailabilityInRequestedArea(let isPrebook)):
-            return isPrebook ? UITexts.Booking.noCoverageForPrebookSubtitle : nil // for ASAP case we are showing attributedMessageForPresentedError
+            return isPrebook ? UITexts.Booking.noAvailabilityForPrebookRideSubtitle : nil // for ASAP case we are showing attributedMessageForPresentedError
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterMessage
         case .empty(reason: .destinationOrOriginEmpty):
