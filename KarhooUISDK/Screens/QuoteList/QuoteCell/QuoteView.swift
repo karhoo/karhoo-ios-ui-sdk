@@ -369,9 +369,7 @@ class QuoteView: UIView {
             }
         )
         logoLoadingImageView.setAccessibilityLabel(viewModel.vehicleImageAccessibilityText)
-        
-        // remove comment to enable showing vehicle badge
-//        badgeImageView.image = viewModel.vehicleBadgeImage
+        badgeImageView.image = viewModel.vehicleBadgeImage
         fareTypeLabel.text = viewModel.fareType
         vehicleCapacityView.setPassengerCapacity(viewModel.passengerCapacity)
         vehicleCapacityView.setBaggageCapacity(viewModel.luggageCapacity)
