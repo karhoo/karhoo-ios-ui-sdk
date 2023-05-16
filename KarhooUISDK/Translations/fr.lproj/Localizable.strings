@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Numéro de train";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+
 "kh_uisdk_add_card" = "Ajouter une carte";
 
 "kh_uisdk_add_comment_placeholder" = "Commentaires supplémentaires";

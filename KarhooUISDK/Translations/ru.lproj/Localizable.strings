@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Номер поезда";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 
 "kh_uisdk_add_comment_placeholder" = "Дополнительные комментарии";
