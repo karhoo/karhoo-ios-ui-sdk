@@ -210,25 +210,6 @@ final class QuoteViewModel {
     }
 
     private func getBadgeImage(for quote: Quote) {
-        
-        // BUILD TEST SOLUTION
-        var testImage: UIImage?
-        let random = Int.random(in: 0...3)
-        switch random {
-        case 0:
-            testImage = UIImage.uisdkImage("kh_uisdk_vehicle_badge_economy")
-        case 1:
-            testImage = UIImage.uisdkImage("kh_uisdk_vehicle_badge_electric")
-        case 2:
-            testImage = UIImage.uisdkImage("kh_uisdk_vehicle_badge_hybrid")
-        default:
-            break
-        }
-        vehicleBadgeImage = testImage
-        return
-        // END OF TEST BUILD SOLLUTION
-        
-        
         let vehicleTags = quote.vehicle.tags.map({ $0.lowercased() })
 
         var image: UIImage?
