@@ -47,7 +47,7 @@ struct LoyaltyView: View {
             }
         }
         .accessibilityElement()
-        .accessibilityValue(viewModel.canEarn ? pointsEarnedText : UITexts.Loyalty.title)
+        .accessibilityValue(UITexts.Loyalty.title + (viewModel.canEarn ? pointsEarnedText : UITexts.Loyalty.title))
     }
     
     @ViewBuilder
@@ -109,7 +109,7 @@ struct LoyaltyView: View {
             }
             .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
             .accessibilityElement()
-            .accessibilityValue(viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle)
+            .accessibilityValue(UITexts.Loyalty.burnTitle + (viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle))
             Toggle("", isOn: $viewModel.isBurnModeOn.animation())
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
                 .disabled(viewModel.burnSectionDisabled)
