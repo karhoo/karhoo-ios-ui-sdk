@@ -235,6 +235,9 @@ extension KarhooAddressView {
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                     .frame(alignment: .leading)
+// Uncomment these lines to make the Text go on 2 lines. Prepare for other layout issues
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .lineLimit(2)
                 if let subtext = subtext, subtext.isNotEmpty {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionRegular()))
@@ -248,7 +251,9 @@ extension KarhooAddressView {
         }
 
         private var accessibilityText: Text {
-            Text(accessibilityTitle + ". " + text + ", " + (subtext ?? ""))
+            // Breaking this into 2 separate lines allows preview to build
+            let text = accessibilityTitle + ". " + text + ", " + (subtext ?? "")
+            return Text(text)
         }
     }
 }
