@@ -18,7 +18,6 @@ struct KarhooAddressView: View {
     private enum Constants {
         static var maxWidth: CGFloat { UIScreen.main.bounds.width - UIConstants.Spacing.standard * 2 }
         static let dotsColumnWidth: CGFloat = 10
-        static let labelHeight: CGFloat = 32
         static let padding: CGFloat = 10
         static let roundIconSide: CGFloat = 10
         static let minimumScaleFactor: CGFloat = 0.7
@@ -113,6 +112,7 @@ struct KarhooAddressView: View {
         HStack(alignment: .center, spacing: UIConstants.Spacing.medium) {
             dotsColumn
             labelsColumn
+                .layoutPriority(1)
             HStack(alignment: .top, spacing: 0) {
                 if let text = timeLabelText {
                     buildTimeTextView(text)
@@ -185,7 +185,7 @@ struct KarhooAddressView: View {
     private func buildTimeTextView(_ text: String) -> some View {
         HStack(spacing: 0) {
             Spacer()
-                .frame(minWidth: 1, idealWidth: 1, maxWidth: .infinity)
+                .frame(width: UIConstants.Spacing.small)
                 .fixedSize()
             VStack(spacing: 0) {
                 Text(text)
@@ -201,6 +201,9 @@ struct KarhooAddressView: View {
                     .frame(minHeight: 66, idealHeight: 66, maxHeight: .infinity)
                     .fixedSize()
             }
+            Spacer()
+                .frame(width: UIConstants.Spacing.small)
+                .fixedSize()
         }
     }
 
@@ -235,9 +238,8 @@ extension KarhooAddressView {
                     .font(Font(KarhooUI.fonts.bodyRegular()))
                     .foregroundColor(Color(KarhooUI.colors.text))
                     .frame(alignment: .leading)
-// Uncomment these lines to make the Text go on 2 lines. Prepare for other layout issues
-//                    .fixedSize(horizontal: false, vertical: true)
-//                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
                 if let subtext = subtext, subtext.isNotEmpty {
                     Text(subtext)
                         .font(Font(KarhooUI.fonts.captionRegular()))
@@ -245,7 +247,6 @@ extension KarhooAddressView {
                         .frame(alignment: .leading)
                 }
             }
-            .frame(height: Constants.labelHeight)
             .accessibilityElement()
             .accessibilityValue(accessibilityText)
         }
