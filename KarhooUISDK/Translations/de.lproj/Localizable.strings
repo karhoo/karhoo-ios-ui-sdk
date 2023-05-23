@@ -141,7 +141,7 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Zugnummer";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Status der Schaltfläche: Punkte sammeln - doppelt tippen, um die Punkte zu verwenden";
 
 /* Text to read when loyalty switch enabled */
 "kh_uisdk_accessibility_loyalty_switch_enabled" = "Schaltflächenstatus: Punkte verwenden - Doppeltippen zum Sammeln von Punkten";
