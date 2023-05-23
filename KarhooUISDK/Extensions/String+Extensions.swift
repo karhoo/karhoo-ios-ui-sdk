@@ -37,20 +37,20 @@ extension String {
     }
     
     /// Removes the substring based on the NSRegularExpression pattern provided
-    /// Throws a preconditionFailure during develoopment in case of invalid pattern
+    /// Throws an assertionFailure during develoopment in case of invalid pattern
     /// Safe to use with emoji and similar
     func removeSubstringWithRegexUsing(pattern: String) -> String {
         var regex: NSRegularExpression!
         
         do {
             regex = try NSRegularExpression(pattern: pattern)
+            // It uses the utf16 count to avoid problems with emoji and similar
+            let range = NSRange(location: 0, length: self.utf16.count)
+            let result = regex.stringByReplacingMatches(in: self, range: range, withTemplate: " ")
+            return result
         } catch {
-            preconditionFailure("Illegal regular expression: \(pattern).")
+            assertionFailure("Illegal regular expression: \(pattern).")
+            return self
         }
-        
-        // It uses the utf16 count to avoid problems with emoji and similar
-        let range = NSRange(location: 0, length: self.utf16.count)
-        let result = regex.stringByReplacingMatches(in: self, range: range, withTemplate: " ")
-        return result
     }
 }
