@@ -112,7 +112,6 @@ struct KarhooAddressView: View {
         HStack(alignment: .center, spacing: UIConstants.Spacing.medium) {
             dotsColumn
             labelsColumn
-                .layoutPriority(1)
             HStack(alignment: .top, spacing: 0) {
                 if let text = timeLabelText {
                     buildTimeTextView(text)
@@ -179,6 +178,7 @@ struct KarhooAddressView: View {
                 subtext: destination.subtext
             )
         }
+        .frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
