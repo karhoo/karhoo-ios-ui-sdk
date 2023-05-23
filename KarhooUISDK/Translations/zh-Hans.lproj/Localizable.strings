@@ -141,10 +141,10 @@
 
 "kh_uisdk_accessibility_label_train_number" = "车次";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "按钮状态：赚取积分 - 双击以使用您的积分";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "按钮状态：使用积分 - 双击赚取积分";
 
 "kh_uisdk_add_card" = "添加卡片";
 

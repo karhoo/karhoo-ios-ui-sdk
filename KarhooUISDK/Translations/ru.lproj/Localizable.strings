@@ -141,10 +141,10 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Номер поезда";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Статус кнопки: Зарабатывание баллов — нажмите дважды, чтобы использовать баллы";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Статус кнопки: использование баллов — дважды нажмите, чтобы заработать баллы";
 
 "kh_uisdk_add_card" = "ДОБАВИТЬ КАРТУ";
 

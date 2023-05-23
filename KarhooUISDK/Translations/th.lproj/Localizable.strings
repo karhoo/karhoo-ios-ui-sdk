@@ -141,10 +141,10 @@
 
 "kh_uisdk_accessibility_label_train_number" = "หมายเลขรถไฟ";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "สถานะปุ่ม: รับคะแนน - แตะสองครั้งเพื่อใช้คะแนนของคุณ";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "สถานะปุ่ม: ใช้คะแนน - แตะสองครั้งเพื่อรับคะแนน";
 
 "kh_uisdk_add_card" = "เพิ่มบัตร";
 

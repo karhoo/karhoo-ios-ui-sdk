@@ -141,10 +141,10 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Numer pociągu";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Status przycisku: Zdobywanie punktów - stuknij dwukrotnie, aby wykorzystać punkty";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Status przycisku: korzystanie z punktów - stuknij dwukrotnie, aby zdobyć punkty";
 
 "kh_uisdk_add_card" = "DODAJ KARTĘ";
 

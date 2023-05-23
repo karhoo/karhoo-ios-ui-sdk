@@ -144,7 +144,7 @@
 "kh_uisdk_accessibility_loyalty_switch_disabled" = "";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Schaltflächenstatus: Punkte verwenden - Doppeltippen zum Sammeln von Punkten";
 
 "kh_uisdk_add_card" = "KARTE HINZUFÜGEN";
 
