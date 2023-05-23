@@ -113,6 +113,7 @@ struct LoyaltyView: View {
             Toggle("", isOn: $viewModel.isBurnModeOn.animation())
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
                 .disabled(viewModel.burnSectionDisabled)
+                .accessibilityElement()
                 .accessibilityValue(
                     viewModel.isBurnModeOn
                     ? UITexts.Accessibility.loyaltySwitchEnabled
