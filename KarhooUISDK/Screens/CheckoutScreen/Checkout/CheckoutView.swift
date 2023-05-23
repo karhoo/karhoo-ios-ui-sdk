@@ -11,7 +11,6 @@ import SwiftUI
 struct CheckoutView: View {
 
     enum Constants {
-        static let addressViewHeight: CGFloat = 100
         static let bottomPadding: CGFloat = 80
         static let legalNoticeViewId = "legalNoticeViewId"
         static let termsConditionsViewId = "termsConditionsViewId"
@@ -49,7 +48,7 @@ struct CheckoutView: View {
                 VStack(spacing: 0) {
                     
                     // Header: Date and address
-                    VStack(spacing: 0) {
+                    VStack(spacing: UIConstants.Spacing.small) {
                         dateView
                         addressView
                     }
