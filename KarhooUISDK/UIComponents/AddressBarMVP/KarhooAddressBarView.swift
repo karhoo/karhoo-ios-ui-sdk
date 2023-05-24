@@ -259,7 +259,10 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
 
     public func set(pickupDisplayAddress: String?) {
-        pickupField.set(text: pickupDisplayAddress)
+        pickupField.set(
+            text: pickupDisplayAddress,
+            accessibilityText: UITexts.Accessibility.pickUpAddress + ". " + (pickupDisplayAddress ?? "")
+        )
 
         if pickupDisplayAddress != nil && pickupDisplayAddress != UITexts.AddressBar.addPickup {
             pickUpIcon.image = nil
@@ -269,7 +272,11 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
 
     public func set(destinationDisplayAddress: String?) {
-        destinationField.set(text: destinationDisplayAddress)
+        destinationField.set(
+            text: destinationDisplayAddress,
+            accessibilityText: UITexts.Accessibility.dropOffAddress + ". " + (destinationDisplayAddress ?? "")
+        )
+        
         if destinationDisplayAddress != nil && destinationDisplayAddress != UITexts.AddressBar.addDestination {
             destinationIcon.image = nil
             toggleDestinationIconSize(big: false)

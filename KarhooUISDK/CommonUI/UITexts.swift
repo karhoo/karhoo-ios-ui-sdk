@@ -536,6 +536,8 @@ public enum UITexts {
         public static let vehicleLogoElectric = "kh_uisdk_accessibility_icon_electric".localized
         public static let vehicleLogoHybrid = "kh_uisdk_accessibility_icon_hybrid".localized
         public static let vehicleLogoEconomy = "kh_uisdk_accessibility_icon_economy".localized
+        public static let pickUpAddress = "kh_uisdk_accessibility_label_pickup_address".localized
+        public static let dropOffAddress = "kh_uisdk_accessibility_label_drop_off_address".localized
     }
 }
 

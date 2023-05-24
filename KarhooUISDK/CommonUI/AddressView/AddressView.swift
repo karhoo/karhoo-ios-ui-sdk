@@ -162,7 +162,7 @@ struct KarhooAddressView: View {
     private var labelsColumn: some View {
         VStack(alignment: .leading) {
             AddressLabelView(
-                accessibilityTitle: UITexts.Generic.pickUp,
+                accessibilityTitle: UITexts.Accessibility.pickUpAddress,
                 text: pickUp.text,
                 subtext: pickUp.subtext
             )
@@ -173,7 +173,7 @@ struct KarhooAddressView: View {
                     .frame(height: UIConstants.Spacing.medium)
             }
             AddressLabelView(
-                accessibilityTitle: UITexts.Generic.destination,
+                accessibilityTitle: UITexts.Accessibility.dropOffAddress,
                 text: destination.text,
                 subtext: destination.subtext
             )
