@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "列車番号";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "ボタンのステータス: ポイントの獲得 - ポイントを使用するにはダブルタップします";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "ボタンのステータス: ポイントを使用中 - ダブルタップしてポイントを獲得します";
+
 "kh_uisdk_add_card" = "カードを追加";
 
 "kh_uisdk_add_comment_placeholder" = "追加コメント";

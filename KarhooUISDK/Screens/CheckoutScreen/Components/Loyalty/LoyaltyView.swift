@@ -22,9 +22,7 @@ struct LoyaltyView: View {
             VStack {
                 LoyaltyContainerWithBalance(balance: viewModel.balance, content: {
                     VStack(alignment: .leading) {
-                        if viewModel.canEarn {
-                            earnContent
-                        }
+                        viewOverOrSeparator
                         if viewModel.canBurn {
                             orDivider
                             burnContent
@@ -41,12 +39,33 @@ struct LoyaltyView: View {
     }
     
     @ViewBuilder
-    private var earnContent: some View {
-        let pointsEarnedText = String(
+    private var viewOverOrSeparator: some View {
+        VStack(alignment: .leading) {
+            loyaltyTitle
+            if viewModel.canEarn {
+                earnContent
+            }
+        }
+        .accessibilityElement()
+        .accessibilityValue(UITexts.Loyalty.title + (viewModel.canEarn ? "." + pointsEarnedText : ""))
+    }
+    
+    @ViewBuilder
+    private var loyaltyTitle: some View {
+        Text(UITexts.Loyalty.title)
+            .font(Font(KarhooUI.fonts.bodyBold()))
+            .foregroundColor(Color(KarhooUI.colors.text))
+    }
+    
+    private var pointsEarnedText: String {
+        String(
             format: NSLocalizedString(UITexts.Loyalty.pointsEarnedForTrip, comment: ""),
             "\(viewModel.earnAmount)"
         )
-        
+    }
+    
+    @ViewBuilder
+    private var earnContent: some View {
         VStack(alignment: .leading) {
             Text(pointsEarnedText)
                 .font(Font(KarhooUI.fonts.captionRegular()))
@@ -89,9 +108,17 @@ struct LoyaltyView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             .layoutPriority(Double(UILayoutPriority.defaultHigh.rawValue))
+            .accessibilityElement()
+            .accessibilityValue(UITexts.Loyalty.burnTitle + "." + (viewModel.isBurnModeOn ? burnOnSubtitle : viewModel.burnOffSubtitle))
             Toggle("", isOn: $viewModel.isBurnModeOn.animation())
                 .toggleStyle(SwitchToggleStyle(tint: Color(KarhooUI.colors.secondary)))
                 .disabled(viewModel.burnSectionDisabled)
+                .accessibilityElement()
+                .accessibilityValue(
+                    viewModel.isBurnModeOn
+                    ? UITexts.Accessibility.loyaltySwitchEnabled
+                    : UITexts.Accessibility.loyaltySwitchDisabled
+                )
         }
     }
     
@@ -150,9 +177,6 @@ struct LoyaltyView: View {
         var body: some View {
             ZStack {
                 VStack(alignment: .leading, spacing: UIConstants.Spacing.xSmall) {
-                    Text(UITexts.Loyalty.title)
-                        .font(Font(KarhooUI.fonts.bodyBold()))
-                        .foregroundColor(Color(KarhooUI.colors.text))
                     content()
                 }
                 .padding(.all, UIConstants.Spacing.standard)
