@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Train number";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Button status: Earning points  - double tap to use your points";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Button status: using points - double tap to earn points";
+
 "kh_uisdk_add_card" = "Add card";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";

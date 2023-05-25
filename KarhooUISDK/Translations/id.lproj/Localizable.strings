@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Nomor kereta";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Status tombol: Dapatkan poin - ketuk dua kali untuk menggunakan poin Anda";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Status tombol: menggunakan poin - ketuk dua kali untuk mendapatkan poin";
+
 "kh_uisdk_add_card" = "TAMBAHKAN KARTU";
 
 "kh_uisdk_add_comment_placeholder" = "Komentar tambahan";

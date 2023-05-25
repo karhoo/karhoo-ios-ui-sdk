@@ -141,6 +141,11 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Número de tren";
 
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Estado del botón: Ganar puntos: toque dos veces para usar sus puntos";
+
+/* Text to read when loyalty switch enabled */
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Estado del botón: Ganar puntos: toque dos veces para usar sus puntos";
+
 "kh_uisdk_add_card" = "AÑADIR TARJETA";
 
 "kh_uisdk_add_comment_placeholder" = "Additional comments";
