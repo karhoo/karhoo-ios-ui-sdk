@@ -102,9 +102,10 @@ public final class KarhooAddressBarFieldView: UIView, AddressBarFieldView {
         self.actions = actions
     }
 
-    func set(text: String?) {
+    func set(text: String?, accessibilityText: String?) {
         guard let displayText = text, text != label?.text else { return }
         label?.text = displayText
+        label?.accessibilityLabel = accessibilityText
         actions?.onFieldSet(sender: self)
     }
 

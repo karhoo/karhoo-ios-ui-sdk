@@ -12,7 +12,7 @@ protocol AddressBarFieldView {
 
     func set(actions: AddressBarFieldActions?)
 
-    func set(text: String?)
+    func set(text: String?, accessibilityText: String?)
 
     func ordinaryTextColor()
 
