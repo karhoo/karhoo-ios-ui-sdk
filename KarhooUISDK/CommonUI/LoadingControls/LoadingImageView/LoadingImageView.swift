@@ -88,7 +88,7 @@ public final class LoadingImageView: UIView {
     }
 
     public func setStandardBorder() {
-        layer.borderColor = KarhooUI.colors.darkGrey.withAlphaComponent(0.20).cgColor
+        layer.borderColor = KarhooUI.colors.text.withAlphaComponent(0.20).cgColor
         layer.borderWidth = 0.5
     }
     

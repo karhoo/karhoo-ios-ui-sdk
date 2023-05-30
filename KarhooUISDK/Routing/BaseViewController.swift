@@ -67,7 +67,7 @@ public extension BaseViewController {
         }
         let alert = UIAlertController.create(title: title, message: messageToShow, preferredStyle: .alert)
         actions.forEach { alert.addAction($0.action) }
-        alert.view.tintColor = KarhooUI.colors.darkGrey
+        alert.view.tintColor = KarhooUI.colors.text
 
         present(alert, animated: true, completion: nil)
     }
@@ -83,7 +83,7 @@ public extension BaseViewController {
                                       message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: UITexts.Generic.ok, style: .default))
-        alert.view.tintColor = KarhooUI.colors.darkGrey
+        alert.view.tintColor = KarhooUI.colors.text
 
         present(alert, animated: true, completion: nil)
     }
@@ -108,7 +108,7 @@ public extension BaseViewController {
         alert.addAction(cancelAction)
         alert.addAction(updateCardAction)
         alert.preferredAction = updateCardAction
-        alert.view.tintColor = KarhooUI.colors.darkGrey
+        alert.view.tintColor = KarhooUI.colors.text
 
         present(alert, animated: true, completion: nil)
     }

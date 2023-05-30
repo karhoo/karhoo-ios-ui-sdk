@@ -23,7 +23,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         testObject = BookingStatusViewModel(trip: completedTrip)
 
         XCTAssert(testObject.imageName == "kh_uisdk_trip_completed")
-        XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
+        XCTAssert(testObject.statusColor == KarhooUI.colors.text)
     }
 
     /**kh_uisdk_trip_cancelled")
@@ -39,7 +39,7 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         testObject = BookingStatusViewModel(trip: completedTrip)
 
         XCTAssert(testObject.imageName == "")
-        XCTAssert(testObject.statusColor == KarhooUI.colors.darkGrey)
+        XCTAssert(testObject.statusColor == KarhooUI.colors.text)
     }
     
     /**
@@ -51,6 +51,6 @@ class BookingStatusViewModelSpec: KarhooTestCase {
         testObject = BookingStatusViewModel(trip: incompleteTrip)
         
         XCTAssertEqual("kh_uisdk_trip_cancelled", testObject.imageName)
-        XCTAssertEqual(testObject.statusColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.statusColor, KarhooUI.colors.text)
     }
 }

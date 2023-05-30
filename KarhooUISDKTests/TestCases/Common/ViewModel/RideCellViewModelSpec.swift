@@ -33,7 +33,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
     }
 
     private func cancelledTripAssertions() {
-        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.text)
         XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.price, testObject.trip.farePrice())
         XCTAssertEqual(testObject.showActionButtons, false)
@@ -48,7 +48,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         let completedTrip = TestUtil.getRandomTrip(state: .completed)
         testObject = RideCellViewModel(trip: completedTrip)
 
-        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.text)
         XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_completed")
         XCTAssertEqual(testObject.price, completedTrip.farePrice())
         XCTAssertEqual(testObject.showActionButtons, false)
@@ -63,7 +63,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         let noDriversAvailableTrip = TestUtil.getRandomTrip(state: .noDriversAvailable)
         testObject = RideCellViewModel(trip: noDriversAvailableTrip)
 
-        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.text)
         XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.tripState, UITexts.GenericTripStatus.cancelled)
         XCTAssertEqual(testObject.showActionButtons, false)
@@ -80,7 +80,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         testObject = RideCellViewModel(trip: inProgressTrip)
 
         XCTAssertEqual(testObject.tripStateIconName, "")
-        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.text)
         XCTAssertEqual(testObject.showActionButtons, true)
         XCTAssertEqual(testObject.price, inProgressTrip.quotePrice())
     }
@@ -105,7 +105,7 @@ class BookingItemViewModelSpec: KarhooTestCase {
         let incompleteTrip = TestUtil.getRandomTrip(state: .incomplete)
         testObject = RideCellViewModel(trip: incompleteTrip)
 
-        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.darkGrey)
+        XCTAssertEqual(testObject.tripStateColor, KarhooUI.colors.text)
         XCTAssertEqual(testObject.tripStateIconName, "kh_uisdk_trip_cancelled")
         XCTAssertEqual(testObject.price, incompleteTrip.quotePrice())
         XCTAssertFalse(testObject.showActionButtons)

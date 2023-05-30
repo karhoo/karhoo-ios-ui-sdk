@@ -53,7 +53,7 @@ final class KarhooDestinationEtaView: UIView, DestinationEtaView {
         arrivalLabel.translatesAutoresizingMaskIntoConstraints = false
         arrivalLabel.accessibilityIdentifier = KHDestinationEtaViewID.arrivalLabel
         arrivalLabel.font = KarhooUI.fonts.captionRegular()
-        arrivalLabel.textColor = KarhooUI.colors.medGrey
+        arrivalLabel.textColor = KarhooUI.colors.textLabel
         arrivalLabel.text = UITexts.Trip.arrival
         arrivalLabel.textAlignment = .center
         containerView.addSubview(arrivalLabel)
@@ -62,7 +62,7 @@ final class KarhooDestinationEtaView: UIView, DestinationEtaView {
         etaLabel.translatesAutoresizingMaskIntoConstraints = false
         etaLabel.accessibilityIdentifier = KHDestinationEtaViewID.etaLabel
         etaLabel.font = KarhooUI.fonts.headerBold()
-        etaLabel.textColor = KarhooUI.colors.darkGrey
+        etaLabel.textColor = KarhooUI.colors.text
         etaLabel.textAlignment = .center
         containerView.addSubview(etaLabel)
         

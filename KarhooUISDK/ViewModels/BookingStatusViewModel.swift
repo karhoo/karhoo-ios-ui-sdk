@@ -15,7 +15,7 @@ final class BookingStatusViewModel {
     public let statusColor: UIColor
 
     init(trip: TripInfo) {
-        self.statusColor = KarhooUI.colors.darkGrey
+        self.statusColor = KarhooUI.colors.text
 
         if TripInfoUtility.isCancelled(trip: trip) || trip.state == .incomplete {
             self.imageName =  "kh_uisdk_trip_cancelled"

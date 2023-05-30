@@ -89,7 +89,7 @@ public class BaseSelectionView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.accessibilityIdentifier = KHBaseSelectionViewID.titleLabel
         titleLabel.font = KarhooUI.fonts.bodyRegular()
-        titleLabel.textColor = KarhooUI.colors.darkGrey
+        titleLabel.textColor = KarhooUI.colors.text
         
         addSubview(titleLabel)
         _ = [titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
