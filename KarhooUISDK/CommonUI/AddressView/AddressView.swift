@@ -160,23 +160,27 @@ struct KarhooAddressView: View {
 
     @ViewBuilder
     private var labelsColumn: some View {
-        VStack(alignment: .leading) {
-            AddressLabelView(
-                accessibilityTitle: UITexts.Accessibility.pickUpAddress,
-                text: pickUp.text,
-                subtext: pickUp.subtext
-            )
-            if tags.isNotEmpty {
-                buildTagsView()
-            } else {
-                Spacer()
-                    .frame(height: UIConstants.Spacing.medium)
+        HStack {
+            VStack(alignment: .leading) {
+                AddressLabelView(
+                    accessibilityTitle: UITexts.Accessibility.pickUpAddress,
+                    text: pickUp.text,
+                    subtext: pickUp.subtext
+                )
+                
+                if tags.isNotEmpty {
+                    buildTagsView()
+                } else {
+                    Spacer()
+                        .frame(height: UIConstants.Spacing.medium)
+                }
+                AddressLabelView(
+                    accessibilityTitle: UITexts.Accessibility.dropOffAddress,
+                    text: destination.text,
+                    subtext: destination.subtext
+                )
             }
-            AddressLabelView(
-                accessibilityTitle: UITexts.Accessibility.dropOffAddress,
-                text: destination.text,
-                subtext: destination.subtext
-            )
+            Spacer()
         }
         .frame(maxWidth: .infinity)
     }
@@ -289,8 +293,14 @@ struct KarhooAddressView_Preview: PreviewProvider {
         VStack {
             Spacer()
             KarhooAddressView(
-                pickUp: .init(text: "London City Airport, Hartmann Rd", subtext: "London E16 2PX, United Kingdom"),
-                destination: .init(text: "10 downing st westminster", subtext: "London SW1A 2AA, United Kingdom"),
+                pickUp: .init(
+                    text: "Arc de Triomphe, Pl. Charles de Gaulle",
+                    subtext: "Paris 75015"
+                ),
+                destination: .init(
+                    text: "Eiffel Tower, Champ de Mars, 5 Av. Anatole France",
+                    subtext: "Paris 75007"
+                ),
                 design: .bordered,
                 timeLabelText: "NOW"
             )
