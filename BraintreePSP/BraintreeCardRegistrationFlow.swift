@@ -77,8 +77,6 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startUpdateCardFlow(token: PaymentSDKToken?, organisationId: String, currencyCode: String) {
-        let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
-                                                     currency: currencyCode)
         if let token = token {
             buildBraintreeUI(paymentsToken: token)
         } else {
