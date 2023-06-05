@@ -313,7 +313,7 @@ extension KarhooPhoneInputView: KarhooPhoneInputViewProtocol {
         }
         
         textView.text = value
-        textView.textColor = KarhooUI.colors.primaryTextColor
+        textView.textColor = KarhooUI.colors.text
     }
     
     func setBackgroundColor(_ color: UIColor) {
@@ -347,7 +347,7 @@ extension KarhooPhoneInputView: UITextViewDelegate {
         
         tintView(.active)
         if textView.textColor == KarhooTextInputViewState.inactive.color {
-            textView.textColor = KarhooUI.colors.primaryTextColor
+            textView.textColor = KarhooUI.colors.text
             textView.text = nil
         }
         

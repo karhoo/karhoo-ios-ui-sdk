@@ -108,7 +108,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHPassengerDetailsViewID.pageTitleLabel
         label.font = KarhooUI.fonts.titleBold()
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.text = UITexts.PassengerDetails.title
         label.numberOfLines = 1
         return label

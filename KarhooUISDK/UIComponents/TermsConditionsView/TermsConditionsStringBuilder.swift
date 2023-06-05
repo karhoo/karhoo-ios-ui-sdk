@@ -87,6 +87,14 @@ public struct TermsConditionsStringBuilder {
     private func bookingAttributedTermsString(fleetName: String?,
                                               termsURL: URL,
                                               policyURL: URL) -> NSAttributedString {
+        
+        return NSAttributedString(
+            string: "https://google.com",
+            attributes: [
+                .foregroundColor: UIColor.red
+            ]
+        )
+        
         guard let fleetName = fleetName
         else {
             return NSAttributedString(string: "")
@@ -105,42 +113,57 @@ public struct TermsConditionsStringBuilder {
         paragraphStyle.alignment = .center
         paragraphStyle.lineSpacing = UIConstants.Spacing.xSmall
 
-        let regularAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                                .foregroundColor: KarhooUI.colors.text,
-                                                                .paragraphStyle: paragraphStyle]
+        let regularAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.text,
+            .paragraphStyle: paragraphStyle
+        ]
 
-        let dpPolicyAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                               .link: dpPolicyLink,
-                                                               .foregroundColor: KarhooUI.colors.primary,
-                                                               .underlineColor: KarhooUI.colors.accent,
-                                                               .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                               .paragraphStyle: paragraphStyle]
+        let dpPolicyAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .link: dpPolicyLink,
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .paragraphStyle: paragraphStyle
+        ]
 
-        let dpTermsAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                              .foregroundColor: KarhooUI.colors.primary,
-                                                              .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                              .underlineColor: KarhooUI.colors.accent,
-                                                              .link: dpTermsLink,
-                                                              .paragraphStyle: paragraphStyle]
+        let dpTermsAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: KarhooUI.colors.accent,
+            .link: dpTermsLink,
+            .paragraphStyle: paragraphStyle
+        ]
         
-        let fleetPolicyAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                               .link: policyURL,
-                                                               .foregroundColor: KarhooUI.colors.primary,
-                                                               .underlineColor: KarhooUI.colors.accent,
-                                                               .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                               .paragraphStyle: paragraphStyle]
+        let fleetPolicyAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .link: policyURL,
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .paragraphStyle: paragraphStyle
+        ]
 
-        let fleetTermsAttributes: [NSAttributedString.Key: Any] = [.font: KarhooUI.fonts.captionRegular(),
-                                                              .foregroundColor: KarhooUI.colors.primary,
-                                                              .underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                              .underlineColor: KarhooUI.colors.accent,
-                                                              .link: termsURL,
-                                                              .paragraphStyle: paragraphStyle]
+        let fleetTermsAttributes: [NSAttributedString.Key: Any] = [
+            .font: KarhooUI.fonts.captionRegular(),
+            .foregroundColor: KarhooUI.colors.accent,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: KarhooUI.colors.accent,
+            .link: termsURL,
+            .paragraphStyle: paragraphStyle
+        ]
 
         let termsText = NSMutableAttributedString()
 
-        let fullText = String(format: NSLocalizedString(UITexts.TermsConditions.bookingTermAndConditionsFullText,
-                                                        comment: ""), dpTermsText, dpPolicyText, fleetName, fleetTermsText, fleetPolicyText)
+        let fullText = String(
+            format: NSLocalizedString(
+                UITexts.TermsConditions.bookingTermAndConditionsFullText,
+                comment: ""
+            ),
+            dpTermsText, dpPolicyText, fleetName, fleetTermsText, fleetPolicyText
+        )
         
         termsText.append(NSAttributedString(string: fullText, attributes: regularAttributes))
 
