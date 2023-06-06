@@ -25,15 +25,16 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
     public init(){}
 
     public func buildAddCardScreen(
-        allowToSaveCard: Bool,
+        allowToSaveAndDeleteCard: Bool,
         paymentsToken: PaymentSDKToken,
         paymentMethodAdded: ScreenResultCallback<Nonce>?,
         flowItemCallback: ScreenResultCallback<Screen>?
     ) {
         let request = BTDropInRequest()
         request.uiCustomization = getUiCustomization()
-        if allowToSaveCard {
+        if allowToSaveAndDeleteCard {
             request.allowVaultCardOverride = true
+            request.vaultManager = true
         } else {
             request.vaultCard = false
         }
