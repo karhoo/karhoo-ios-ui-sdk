@@ -54,7 +54,7 @@ final class MetaDataView: UIView {
         titleLabel.isAccessibilityElement = true
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = titleText
-        titleLabel.textColor = KarhooUI.colors.medGrey
+        titleLabel.textColor = KarhooUI.colors.textLabel
         titleLabel.font = KarhooUI.fonts.bodyRegular()
         titleLabel.numberOfLines = 0
         
@@ -90,7 +90,7 @@ final class MetaDataView: UIView {
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.text = "Value"
         valueLabel.font = KarhooUI.fonts.bodyRegular()
-        valueLabel.textColor = KarhooUI.colors.darkGrey
+        valueLabel.textColor = KarhooUI.colors.text
         valueLabel.textAlignment = .right
         valueLabel.numberOfLines = 0
         

@@ -132,7 +132,7 @@ public final class Attributes: UIView {
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryImageTint.tintColor")
         setValue(KarhooUI.colors.secondary, forKeyPath: "secondaryImageTint.tintColor")
         setValue(KarhooUI.colors.white, forKeyPath: "whiteImageTint.tintColor")
-        setValue(KarhooUI.colors.medGrey, forKeyPath: "medGreyImageTint.tintColor")
+        setValue(KarhooUI.colors.textLabel, forKeyPath: "medGreyImageTint.tintColor")
 
         // UILabel - fonts
         setValue(KarhooUI.fonts.headerRegular(), forKeyPath: "headerRegular.font")
@@ -149,8 +149,8 @@ public final class Attributes: UIView {
         setValue(KarhooUI.fonts.subtitleBold(), forKeyPath: "subtitleBold.font")
 
         // MARK: - UILabel text colours
-        setValue(KarhooUI.colors.darkGrey, forKeyPath: "darkGreyFontColour.textColor")
-        setValue(KarhooUI.colors.medGrey, forKeyPath: "medGreyFontColour.textColor")
+        setValue(KarhooUI.colors.text, forKeyPath: "darkGreyFontColour.textColor")
+        setValue(KarhooUI.colors.textLabel, forKeyPath: "medGreyFontColour.textColor")
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryFontColour.textColor")
         setValue(KarhooUI.colors.secondary, forKeyPath: "secondaryFontColour.textColor")
 
@@ -162,7 +162,7 @@ public final class Attributes: UIView {
         setValue(KarhooUI.fonts.bodyBold(), forKeyPath: "buttonFontBodyBold.font")
 
         // UITextField palceholder color
-        setValue(KarhooUI.colors.medGrey, forKeyPath: "textfieldPlaceholderMedGrey.placeholderLabel.textColor")
+        setValue(KarhooUI.colors.textLabel, forKeyPath: "textfieldPlaceholderMedGrey.placeholderLabel.textColor")
 
         // UISwitch onTint color
         setValue(KarhooUI.colors.secondary, forKeyPath: "switchOnTintColorSecondary.onTintColor")

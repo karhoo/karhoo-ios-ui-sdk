@@ -73,12 +73,12 @@ final class TripDetailsView: UIView {
         
         supplierImage = buildSupplierImage()
         
-        supplierNameLabel = buildGenericLabel(textColor: KarhooUI.colors.darkGrey,
+        supplierNameLabel = buildGenericLabel(textColor: KarhooUI.colors.text,
                                               font: KarhooUI.fonts.headerBold(),
                                               accessibilityIdentifier: KHTripDetailsViewID.supplierNameLabel)
         detailsContainer.addSubview(supplierNameLabel)
         
-        dateLabel = buildGenericLabel(textColor: KarhooUI.colors.medGrey,
+        dateLabel = buildGenericLabel(textColor: KarhooUI.colors.textLabel,
                                       font: KarhooUI.fonts.bodyRegular(),
                                       accessibilityIdentifier: KHTripDetailsViewID.dateLabel)
         detailsContainer.addSubview(dateLabel)
@@ -86,7 +86,7 @@ final class TripDetailsView: UIView {
         pickUpDot = buildDot(color: KarhooUI.colors.primary,
                              accessibilityIdentifier: "pick_up_dot")
         
-        pickupLabel = buildGenericLabel(textColor: KarhooUI.colors.darkGrey,
+        pickupLabel = buildGenericLabel(textColor: KarhooUI.colors.text,
                                         font: KarhooUI.fonts.bodyRegular(),
                                         accessibilityIdentifier: KHTripDetailsViewID.pickupLabel)
         detailsContainer.addSubview(pickupLabel)
@@ -94,7 +94,7 @@ final class TripDetailsView: UIView {
         dropOffDot = buildDot(color: KarhooUI.colors.secondary,
                               accessibilityIdentifier: "drop_off_dot")
         
-        destinationLabel = buildGenericLabel(textColor: KarhooUI.colors.darkGrey,
+        destinationLabel = buildGenericLabel(textColor: KarhooUI.colors.text,
                                              font: KarhooUI.fonts.bodyRegular(),
                                              accessibilityIdentifier: KHTripDetailsViewID.destinationLabel)
         detailsContainer.addSubview(destinationLabel)
@@ -104,7 +104,7 @@ final class TripDetailsView: UIView {
                                  accessibilityIdentifier: "connector_line")
         detailsContainer.addSubview(connectorLine)
         
-        vehicleInformationLabel = buildGenericLabel(textColor: KarhooUI.colors.medGrey,
+        vehicleInformationLabel = buildGenericLabel(textColor: KarhooUI.colors.textLabel,
                                                     font: KarhooUI.fonts.bodyRegular(),
                                                     accessibilityIdentifier: KHTripDetailsViewID
                                                         .vehicleInformationLabel)

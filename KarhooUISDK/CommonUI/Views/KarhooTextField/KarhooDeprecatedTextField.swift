@@ -114,7 +114,7 @@ final class KarhooDeprecatedTextField: NibLoadableView, ValidatorListener {
         validIcon?.alpha = 0
         setValue(0.0, forKeyPath: "errorBorders.alpha")
         placeholderLabel?.text = initialPlaceholder
-        placeholderLabel?.textColor = KarhooUI.colors.medGrey
+        placeholderLabel?.textColor = KarhooUI.colors.textLabel
     }
 
     func setFocus() {
@@ -154,8 +154,8 @@ final class KarhooDeprecatedTextField: NibLoadableView, ValidatorListener {
 
     func valid() {
         isValid = true
-        placeholderLabel?.textColor = KarhooUI.colors.medGrey
-        inputField?.textColor = KarhooUI.colors.darkGrey
+        placeholderLabel?.textColor = KarhooUI.colors.textLabel
+        inputField?.textColor = KarhooUI.colors.text
         setValue(0.0, forKeyPath: "errorBorders.alpha")
         placeholderLabel?.text = initialPlaceholder
         invalidIcon?.alpha = 0
@@ -164,7 +164,7 @@ final class KarhooDeprecatedTextField: NibLoadableView, ValidatorListener {
 
     func invalid(reason: String?) {
         isValid = false
-        placeholderLabel?.textColor = KarhooUI.colors.darkGrey
+        placeholderLabel?.textColor = KarhooUI.colors.text
         setValue(1.0, forKeyPath: "errorBorders.alpha")
         invalidIcon?.alpha = 1
         validIcon?.alpha = 0

@@ -63,7 +63,7 @@ final class KarhooOriginEtaView: UIView, OriginEtaView {
         etaLabel.accessibilityIdentifier = KHOriginEtaViewID.etaLabel
         etaLabel.isAccessibilityElement = true
         etaLabel.font = KarhooUI.fonts.titleBold()
-        etaLabel.textColor = KarhooUI.colors.darkGrey
+        etaLabel.textColor = KarhooUI.colors.text
         etaLabel.textAlignment = .center
         containerView.addSubview(etaLabel)
         
@@ -73,7 +73,7 @@ final class KarhooOriginEtaView: UIView, OriginEtaView {
         minLabel.isAccessibilityElement = true
         minLabel.text = UITexts.Generic.minutes
         minLabel.font = KarhooUI.fonts.bodyRegular()
-        minLabel.textColor = KarhooUI.colors.medGrey
+        minLabel.textColor = KarhooUI.colors.textLabel
         minLabel.textAlignment = .center
         containerView.addSubview(minLabel)
         

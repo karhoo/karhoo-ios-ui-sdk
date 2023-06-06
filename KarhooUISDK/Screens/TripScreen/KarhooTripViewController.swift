@@ -76,7 +76,7 @@ final class KarhooTripViewController: UIViewController, TripView {
         closeButton.accessibilityIdentifier = KHKarhooTripViewID.closeButton
         closeButton.setImage(UIImage.uisdkImage("kh_uisdk_drop_down_arrow")
             .withRenderingMode(.alwaysTemplate), for: .normal)
-        closeButton.tintColor = KarhooUI.colors.darkGrey
+        closeButton.tintColor = KarhooUI.colors.text
         closeButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
         

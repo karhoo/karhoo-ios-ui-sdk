@@ -28,6 +28,7 @@ struct TextView: View {
     private var onCommit: (() -> Void)?
 
     var placeholderView: AnyView?
+    var tintColor: UIColor = KarhooUI.colors.accent
     var foregroundColor: UIColor = KarhooUI.colors.text
     var autocapitalization: UITextAutocapitalizationType = .sentences
     var multilineTextAlignment: TextAlignment = .leading
@@ -98,6 +99,7 @@ struct TextView: View {
         Representable(
             text: $text,
             calculatedHeight: $calculatedHeight,
+            tintColor: tintColor,
             foregroundColor: foregroundColor,
             autocapitalization: autocapitalization,
             multilineTextAlignment: multilineTextAlignment,
@@ -259,6 +261,7 @@ private extension TextView.Representable.Coordinator {
     func update(representable: TextView.Representable) {
         textView.attributedText = representable.text
         textView.adjustsFontForContentSizeCategory = true
+        textView.tintColor = representable.tintColor
         textView.textColor = representable.foregroundColor
         textView.autocapitalizationType = representable.autocapitalization
         textView.autocorrectionType = representable.autocorrection
@@ -474,6 +477,7 @@ private extension TextView {
         @Binding var text: NSAttributedString
         @Binding var calculatedHeight: CGFloat
 
+        let tintColor: UIColor
         let foregroundColor: UIColor
         let autocapitalization: UITextAutocapitalizationType
         var multilineTextAlignment: TextAlignment

@@ -178,9 +178,9 @@ final class RideDetailsViewController: UIViewController, RideDetailsView {
             let closeButton = CloseBarButton {
                 closeCallback(.cancelled(byUser: true))
             }
-            closeButton.tintColor = KarhooUI.colors.darkGrey
+            closeButton.tintColor = KarhooUI.colors.text
             vc.navigationItem.rightBarButtonItem = closeButton
-            navigationController.navigationBar.tintColor = KarhooUI.colors.darkGrey
+            navigationController.navigationBar.tintColor = KarhooUI.colors.text
 
             return navigationController
         }

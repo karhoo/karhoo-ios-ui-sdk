@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import KarhooSDK
 
 @testable import KarhooUISDK

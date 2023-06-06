@@ -78,12 +78,12 @@ final class RidesViewController: UIViewController, RidesView {
     func moveTabToPastBookings() {
         tabConstraintSwitcher.expand(animated: true)
         pastTabLabel?.textColor = KarhooUI.colors.accent
-        upcomingTabLabel?.textColor = KarhooUI.colors.medGrey
+        upcomingTabLabel?.textColor = KarhooUI.colors.textLabel
     }
 
     func moveTabToUpcomingBookings() {
         tabConstraintSwitcher.contract(animated: true)
-        pastTabLabel?.textColor = KarhooUI.colors.medGrey
+        pastTabLabel?.textColor = KarhooUI.colors.textLabel
         upcomingTabLabel?.textColor = KarhooUI.colors.accent
     }
 
@@ -150,10 +150,10 @@ final class RidesViewController: UIViewController, RidesView {
             let closeButton = CloseBarButton {
                 closeCallback(.cancelled(byUser: true))
             }
-            closeButton.tintColor = KarhooUI.colors.darkGrey
+            closeButton.tintColor = KarhooUI.colors.text
 
             vc.navigationItem.rightBarButtonItem = closeButton
-            navigationController.navigationBar.tintColor = KarhooUI.colors.darkGrey
+            navigationController.navigationBar.tintColor = KarhooUI.colors.text
             return navigationController
         }
     }

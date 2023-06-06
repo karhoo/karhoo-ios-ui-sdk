@@ -71,7 +71,7 @@ class AddressTableViewCell: UITableViewCell {
         addressLineOne.accessibilityLabel = KHAddressTableViewCellID.addressOne
         addressLineOne.numberOfLines = 0
         addressLineOne.font = KarhooUI.fonts.bodyRegular()
-        addressLineOne.textColor = KarhooUI.colors.darkGrey
+        addressLineOne.textColor = KarhooUI.colors.text
         stackView.addArrangedSubview(addressLineOne)
         
         addressLineTwo = UILabel()
@@ -79,7 +79,7 @@ class AddressTableViewCell: UITableViewCell {
         addressLineTwo.accessibilityLabel = KHAddressTableViewCellID.addressTwo
         addressLineTwo.numberOfLines = 0
         addressLineTwo.font = KarhooUI.fonts.captionRegular()
-        addressLineTwo.textColor = KarhooUI.colors.medGrey
+        addressLineTwo.textColor = KarhooUI.colors.textLabel
         stackView.addArrangedSubview(addressLineTwo)
     }
 

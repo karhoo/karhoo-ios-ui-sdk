@@ -39,7 +39,7 @@ final class EmptyStateView: UIView {
         emptyStateTitleLabel.numberOfLines = 0
         emptyStateTitleLabel.textAlignment = .center
         emptyStateTitleLabel.font = KarhooUI.fonts.bodyBold()
-        emptyStateTitleLabel.textColor = KarhooUI.colors.darkGrey
+        emptyStateTitleLabel.textColor = KarhooUI.colors.text
         addSubview(emptyStateTitleLabel)
         _ = [emptyStateTitleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
              emptyStateTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)].map { $0.isActive = true }
@@ -50,7 +50,7 @@ final class EmptyStateView: UIView {
         emptyStateMessageLabel.numberOfLines = 0
         emptyStateMessageLabel.textAlignment = .center
         emptyStateMessageLabel.font = KarhooUI.fonts.bodyRegular()
-        emptyStateMessageLabel.textColor = KarhooUI.colors.darkGrey
+        emptyStateMessageLabel.textColor = KarhooUI.colors.text
         addSubview(emptyStateMessageLabel)
         _ = [emptyStateMessageLabel.topAnchor.constraint(equalTo: emptyStateTitleLabel.bottomAnchor, constant: 32),
              emptyStateMessageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),

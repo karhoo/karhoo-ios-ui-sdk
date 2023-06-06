@@ -83,11 +83,11 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = KHPassengerDetailsViewID.backButton
-        button.tintColor = KarhooUI.colors.darkGrey
+        button.tintColor = KarhooUI.colors.text
         button.setImage(UIImage.uisdkImage("kh_uisdk_back_icon").withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.setTitle(UITexts.Generic.back, for: .normal)
-        button.setTitleColor(KarhooUI.colors.darkGrey, for: .normal)
+        button.setTitleColor(KarhooUI.colors.text, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: extraSmallSpacing, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -108,7 +108,7 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHPassengerDetailsViewID.pageTitleLabel
         label.font = KarhooUI.fonts.titleBold()
-        label.textColor = KarhooUI.colors.primaryTextColor
+        label.textColor = KarhooUI.colors.text
         label.text = UITexts.PassengerDetails.title
         label.numberOfLines = 1
         return label

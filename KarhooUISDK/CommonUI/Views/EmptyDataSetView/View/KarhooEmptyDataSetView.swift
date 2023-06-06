@@ -38,7 +38,7 @@ final class KarhooEmptyDataSetView: UIView, EmptyDataSetView {
         emptyMessageLabel = UILabel()
         emptyMessageLabel.accessibilityIdentifier = KHKarhooEmptyDataID.emptyMessageLabel
         emptyMessageLabel.textAlignment = .center
-        emptyMessageLabel.textColor = KarhooUI.colors.darkGrey
+        emptyMessageLabel.textColor = KarhooUI.colors.text
         emptyMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(emptyMessageLabel)
         
