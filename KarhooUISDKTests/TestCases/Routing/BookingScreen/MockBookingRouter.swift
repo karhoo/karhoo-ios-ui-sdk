@@ -13,6 +13,9 @@ import XCTest
 @testable import KarhooUISDK
 
 class MockBookingRouter: BookingRouter {
+    func routeToCheckout(quote: KarhooSDK.Quote, journeyDetails: KarhooUISDK.JourneyDetails, bookingMetadata: [String : Any]?, bookingRequestCompletion: @escaping (KarhooUISDK.ScreenResult<KarhooUISDK.KarhooCheckoutResult>, KarhooSDK.Quote, KarhooUISDK.JourneyDetails) -> Void) {
+    }
+    
 
     var routeToQuoteListCalled = false
     func routeToQuoteList(
