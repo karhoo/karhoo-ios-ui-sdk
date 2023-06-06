@@ -81,6 +81,20 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Loyalty +Earn +Burn [Braintree]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Loyalty +Earn -Burn [Braintree]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var notificationsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +112,8 @@ class ViewController: UIViewController {
         tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped), for: .touchUpInside)
+        loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped), for: .touchUpInside)
+        loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBraintreeBookingTapped), for: .touchUpInside)
         notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
     }
 
@@ -122,6 +138,8 @@ class ViewController: UIViewController {
             tokenExchangeAdyenBookingButton,
             loyaltyCanEarnTrueCanBurnTrueBookingButton,
             loyaltyCanEarnTrueCanBurnFalseBookingButton,
+            loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton,
+            loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton,
             notificationsButton
         ])
         updateNotificationButtonLabel()
@@ -251,6 +269,30 @@ class ViewController: UIViewController {
         }
         KarhooConfig.environment = Keys.loyaltyTokenEnvironment
         KarhooConfig.paymentManager = AdyenPaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
+        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
+    }
+    
+    @objc func loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenBraintreeClientId, scope: Keys.loyaltyTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
+        }
+        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
+        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
+    }
+    
+    @objc func loyaltyCanEarnTrueCanBurnFalseBraintreeBookingTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenBraintreeClientId, scope: Keys.loyaltyTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
+        }
+        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
+        KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
