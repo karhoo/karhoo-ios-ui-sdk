@@ -87,14 +87,7 @@ public struct TermsConditionsStringBuilder {
     private func bookingAttributedTermsString(fleetName: String?,
                                               termsURL: URL,
                                               policyURL: URL) -> NSAttributedString {
-        
-        return NSAttributedString(
-            string: "https://google.com",
-            attributes: [
-                .foregroundColor: UIColor.red
-            ]
-        )
-        
+
         guard let fleetName = fleetName
         else {
             return NSAttributedString(string: "")
