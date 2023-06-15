@@ -12,6 +12,11 @@ post_install do |installer_representation|
       config.build_settings[‘ONLY_ACTIVE_ARCH’] = ‘YES’
       config.build_settings[‘BUILD_LIBRARY_FOR_DISTRIBUTION’] = ‘YES’
       config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+#      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'b
+
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 11.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      end
     end
   end
 end
