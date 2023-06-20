@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import PhoneNumberKit
 import UIKit
 
 public class Utils {
     // The unicode values are possible variations for apostrophe / single quote
     private static let acceptedNameChars = ["-", "\u{0027}", "\u{2018}", "\u{2019}", ".", " "]
-    
+
     static func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
@@ -21,18 +20,11 @@ public class Utils {
     }
     
     static func isValidPhoneNumber(number: String) -> Bool {
-        if number.first != "+" {
-            return false
-        }
+        /// check if number begins with country code (+XX) and the number itself has between 3 and 10 digits.
+        let phoneNumberRegex = "^\\+\\d{1,3}[ -]?\\d{3,11}$"
+        let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
 
-        let phoneNumberKit = PhoneNumberKit()
-        do {
-            _ = try phoneNumberKit.parse(number)
-            return true
-        } catch {
-            print("Phone number invalid")
-            return false
-        }
+        return phoneNumberPredicate.evaluate(with: number.replacingOccurrences(of: " ", with: ""))
     }
 
     public static func convertToDictionary(data: Data) -> [String: Any]? {
