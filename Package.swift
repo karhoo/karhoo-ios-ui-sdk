@@ -28,7 +28,6 @@ let package = Package(
         .package(url: "https://github.com/karhoo/karhoo-ios-sdk", exact: "1.8.0"),
         .package(url: "https://github.com/Adyen/adyen-ios", exact: "4.7.1"),
         .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.8.0"),
-        .package(url: "https://github.com/marmelroy/PhoneNumberKit", exact: "3.3.1"),
         .package(url: "https://github.com/braintree/braintree_ios", exact: "5.20.1"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.9.0"),
         .package(url: "https://github.com/Quick/Quick", exact: "5.0.1"),
@@ -37,8 +36,7 @@ let package = Package(
     targets: [
         .target(
             name: "KarhooUISDK",
-            dependencies: [.product(name: "KarhooSDK", package: "karhoo-ios-sdk"),
-                           .product(name: "PhoneNumberKit", package: "PhoneNumberKit")],
+            dependencies: [.product(name: "KarhooSDK", package: "karhoo-ios-sdk")],
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"]),
 

@@ -20,7 +20,7 @@ public class Utils {
     }
     
     static func isValidPhoneNumber(number: String) -> Bool {
-        /// check if number begins with country code (+XX) and the number itself has between 3 and 10 digits.
+        /// check if number begins with country code (+XXX) and the number itself has between 2 and 10 digits.
         let phoneNumberRegex = "^\\+\\d{1,3}[ -]?\\d{3,11}$"
         let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
 

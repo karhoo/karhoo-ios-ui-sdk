@@ -38,7 +38,6 @@ target 'KarhooUISDK' do
   pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.7.2'
   pod 'SwiftLint', '~> 0.47'
-  pod 'PhoneNumberKit', '3.3.1'
   pod 'SwiftFormat/CLI', '~> 0.49'
   pod 'BraintreeDropIn', '~> 9.8.1'
   pod 'Braintree/PaymentFlow', '~> 5.20.1'
