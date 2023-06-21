@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PhoneNumberKit
 
 struct KHPhoneInputViewIdentifiers {
     static let containerStackView = "container_stack_view"
@@ -216,14 +215,7 @@ class KarhooPhoneInputView: UIView {
     
     private func validatePhoneNumber() -> Bool {
         let phoneNumber = country.phoneCode + textView.text
-        let phoneNumberKit = PhoneNumberKit()
-        do {
-            _ = try phoneNumberKit.parse(phoneNumber)
-            return true
-        } catch {
-//            print("Generic parser error")
-            return false
-        }
+        return Utils.isValidPhoneNumber(number: phoneNumber)
     }
     
     private func runValidation() {
