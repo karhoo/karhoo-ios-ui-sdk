@@ -77,8 +77,6 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     }
 
     private func startUpdateCardFlow(token: PaymentSDKToken?, organisationId: String, currencyCode: String) {
-        let sdkTokenRequest = PaymentSDKTokenPayload(organisationId: organisationId,
-                                                     currency: currencyCode)
         if let token = token {
             buildBraintreeUI(paymentsToken: token)
         } else {
@@ -95,7 +93,7 @@ public final class BraintreeCardRegistrationFlow: CardRegistrationFlow {
     private func buildBraintreeUI(paymentsToken: PaymentSDKToken) {
         let isGuest = Karhoo.configuration.authenticationMethod().isGuest()
         paymentScreenBuilder.buildAddCardScreen(
-            allowToSaveCard: !isGuest,
+            allowToSaveAndDeleteCard: !isGuest,
             paymentsToken: paymentsToken,
             paymentMethodAdded: { [weak self] result in
                 self?.handleBraintreeUICompletion(result)
