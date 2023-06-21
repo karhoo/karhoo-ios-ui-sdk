@@ -14,7 +14,7 @@ enum KarhooTextInputViewState {
     var color: UIColor {
         switch self {
         case .inactive:
-            return KarhooUI.colors.lightGrey
+            return KarhooUI.colors.textLabel
         case .active:
             return KarhooUI.colors.secondary
         case .error:
