@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "ค้นหาฉัน";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "แตะสองครั้งเพื่อสลับ";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "กดสองครั้งเพื่อยอมรับหรือปฏิเสธ";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "ข้อกำหนดและเงื่อนไข";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "ความผิดพลาด";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "โปรดอัปเดตแอปพลิเคชันของคุณก่อนที่จะใช้คุณสมบัตินี้";
+"kh_uisdk_error_incorrect_sdk_version_message" = "คุณต้องอัปเดตแอปพลิเคชันของคุณเพื่อใช้คุณลักษณะนี้";
 
 "kh_uisdk_error_invalid_password" = "อีเมลหรือรหัสผ่านที่คุณป้อนไม่ถูกต้อง";
 

@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "找到我";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "双击切换";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "按两次接受或拒绝";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "条款和条件";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "错误";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "请在使用此功能前更新您的应用程序";
+"kh_uisdk_error_incorrect_sdk_version_message" = "您必须更新您的应用程序才能使用此功能";
 
 "kh_uisdk_error_invalid_password" = "您输入的电子邮件或密码不正确";
 

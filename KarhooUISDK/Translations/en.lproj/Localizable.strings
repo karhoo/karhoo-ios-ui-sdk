@@ -79,11 +79,11 @@
 
 "kh_uisdk_acc_close_button" = "Close the screen";
 
-"kh_uisdk_acc_destination_address" = "Destination address";
+"kh_uisdk_acc_destination_address" = "Drop-off address";
 
 "kh_uisdk_acc_loyalty_information" = "Information";
 
-"kh_uisdk_acc_pickup_address" = "Departure address";
+"kh_uisdk_acc_pickup_address" = "Pick-up address";
 
 "kh_uisdk_acc_pickup_time" = "Pick-up time";
 
@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "Locate me";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Double tap to toggle";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Press twice to accept or reject";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Terms and conditions";
 
@@ -119,7 +120,7 @@
 
 "kh_uisdk_accessibility_label_delete_entry" = "Delete address";
 
-"kh_uisdk_accessibility_label_drop_off_address" = "Drop off address";
+"kh_uisdk_accessibility_label_drop_off_address" = "Drop-off address";
 
 "kh_uisdk_accessibility_label_fleet_name" = "Fleet name";
 
@@ -129,7 +130,7 @@
 
 "kh_uisdk_accessibility_label_map_dropoff_pin" = "Destination pin icon";
 
-"kh_uisdk_accessibility_label_map_pickup_pin" = "Departure pin icon";
+"kh_uisdk_accessibility_label_map_pickup_pin" = "Pick-up pin icon";
 
 "kh_uisdk_accessibility_label_passenger" = "Passenger";
 
@@ -141,10 +142,10 @@
 
 "kh_uisdk_accessibility_label_train_number" = "Train number";
 
-"kh_uisdk_accessibility_loyalty_switch_disabled" = "Button status: Earning points  - double tap to use your points";
+"kh_uisdk_accessibility_loyalty_switch_disabled" = "Button status: Earning points  - double tap to changer";
 
 /* Text to read when loyalty switch enabled */
-"kh_uisdk_accessibility_loyalty_switch_enabled" = "Button status: using points - double tap to earn points";
+"kh_uisdk_accessibility_loyalty_switch_enabled" = "Button status: use your points - double tap to change";
 
 "kh_uisdk_add_card" = "Add card";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "Error";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "Please update your application before using this feature";
+"kh_uisdk_error_incorrect_sdk_version_message" = "You must update your application in order to use this feature";
 
 "kh_uisdk_error_invalid_password" = "The email or password you've entered is incorrect";
 
