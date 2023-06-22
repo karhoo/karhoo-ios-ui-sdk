@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "私を見つける";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "ダブルタップして切り替えます";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "2 回押して承認または拒否します";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "ご利用規約";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "エラー";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "この機能を使用する前にアプリケーションを更新してください";
+"kh_uisdk_error_incorrect_sdk_version_message" = "この機能を使用するにはアプリケーションを更新する必要があります";
 
 "kh_uisdk_error_invalid_password" = "入力したメールアドレスまたはパスワードが正しくありません";
 

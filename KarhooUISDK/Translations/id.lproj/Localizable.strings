@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "Temukan saya";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Ketuk dua kali untuk beralih";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Tekan dua kali untuk menerima atau menolak";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Syarat dan Ketentuan";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "Kesalahan";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "Perbarui aplikasi Anda sebelum menggunakan fitur ini";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Anda harus memperbarui aplikasi Anda untuk menggunakan fitur ini";
 
 "kh_uisdk_error_invalid_password" = "Email atau kata sandi yang Anda masukkan salah";
 

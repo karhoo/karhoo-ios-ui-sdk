@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "Vind mij";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Dubbeltik om te schakelen";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Druk tweemaal om te accepteren of te weigeren";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Algemene gebruiksvoorwaarden taxibedrijf";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "Fout";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "Werk uw applicatie bij voordat u deze functie gebruikt";
+"kh_uisdk_error_incorrect_sdk_version_message" = "U moet uw applicatie bijwerken om deze functie te kunnen gebruiken";
 
 "kh_uisdk_error_invalid_password" = "Het e-mailadres of wachtwoord dat je hebt ingevoerd, is onjuist";
 

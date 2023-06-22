@@ -91,7 +91,8 @@
 
 "kh_uisdk_accessibility_button_map_locate_me" = "Найди меня";
 
-"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Нажмите дважды, чтобы переключить";
+/* The checkbox for Accor */
+"kh_uisdk_accessibility_checkbox_hint_terms_and_conditions" = "Нажмите дважды, чтобы принять или отклонить";
 
 "kh_uisdk_accessibility_checkbox_label_terms_and_conditions" = "Условия и положения";
 
@@ -423,7 +424,7 @@
 
 "kh_uisdk_error" = "Ошибка";
 
-"kh_uisdk_error_incorrect_sdk_version_message" = "Пожалуйста, обновите приложение, прежде чем использовать эту функцию";
+"kh_uisdk_error_incorrect_sdk_version_message" = "Вы должны обновить свое приложение, чтобы использовать эту функцию";
 
 "kh_uisdk_error_invalid_password" = "Электронная почта или пароль, которые вы ввели, неверны";
 

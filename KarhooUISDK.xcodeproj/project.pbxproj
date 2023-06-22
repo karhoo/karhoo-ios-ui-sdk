@@ -3182,7 +3182,6 @@
 				7B09365829EB41F60088B476 /* FeatureFlagsUpdater.swift */,
 				7B09365C29EC6D770088B476 /* FeatureFlagsStore.swift */,
 				7B09366029ECA4A10088B476 /* KarhooFeatureFlagProvider.swift */,
-				6BF304EF275FA2920016CFC5 /* LoyaltyFeatureFlags.swift */,
 			);
 			path = FeatureFlags;
 			sourceTree = "<group>";
@@ -5444,7 +5443,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12.3;
+				MARKETING_VERSION = 1.13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -5487,7 +5486,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12.3;
+				MARKETING_VERSION = 1.13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karhoo.KarhooUISDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
