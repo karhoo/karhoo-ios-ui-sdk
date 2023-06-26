@@ -16,8 +16,9 @@ class RadioControl: UIControl {
     private let selectedImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleAspectFit
+        $0.tintColor = KarhooUI.colors.accent
         $0.image = .uisdkImage("kh_uisdk_radio_selected")
-            .withTintColor(KarhooUI.colors.accent, renderingMode: .alwaysTemplate)
+            .withRenderingMode(.alwaysTemplate)
     }
     private let defaultImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false

@@ -92,7 +92,7 @@ class KarhooPhoneInputView: UIView {
         button.layer.cornerRadius = 3.0
         button.setTitle(KarhooCountryParser.defaultCountry.phoneCode, for: .normal)
         button.titleLabel?.font = KarhooUI.fonts.getRegularFont(withSize: 14.0)
-        button.setTitleColor(KarhooUI.colors.primaryTextColor, for: .normal)
+        button.setTitleColor(KarhooUI.colors.text, for: .normal)
         button.titleEdgeInsets = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: innerSpacing)
         button.setImage(UIImage.uisdkImage(KarhooCountryParser.defaultCountry.code), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: padding, left: -padding, bottom: padding, right: innerSpacing)
