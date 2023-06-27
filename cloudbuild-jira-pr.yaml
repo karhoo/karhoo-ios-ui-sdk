@@ -14,11 +14,11 @@ steps:
   - id: check_jira
     entrypoint: /bin/bash
     secretEnv: ["GH_TOKEN"]
-    name: eu.gcr.io/karhoo-common/karhoo-base:latest
+    name: eu.gcr.io/karhoo-common/karhoo-jira-check:1.0.0
     args:
       - -c
       - |
-        title=$(gh pr view $_PR_NUMBER --json title | jq -r '.title' | grep -o -E "$jira_regex")
+        title=$(gh pr view $_PR_NUMBER --json title -q '.title' | grep -o -E "$jira_regex")
         if [ -z "$title" ]; then
           echo 'No JIRA ticket is provided in the title!!'
           echo "Expected regex: $jira_regex"
