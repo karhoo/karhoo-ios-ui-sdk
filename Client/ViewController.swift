@@ -103,9 +103,21 @@ class ViewController: UIViewController {
         authenticatedAdyenBookingButton.addTarget(self, action: #selector(authenticatedAdyenBookingTapped), for: .touchUpInside)
         guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped), for: .touchUpInside)
         tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
-        loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
-        loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped), for: .touchUpInside)
-        loyaltyBraintreeCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyBraintreeCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
+        loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(
+            self,
+            action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped),
+            for: .touchUpInside
+        )
+        loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(
+            self,
+            action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped),
+            for: .touchUpInside
+        )
+        loyaltyBraintreeCanEarnTrueCanBurnTrueBookingButton.addTarget(
+            self,
+            action: #selector(loyaltyBraintreeCanEarnTrueCanBurnTrueBookingTapped),
+            for: .touchUpInside
+        )
         notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
     }
 
