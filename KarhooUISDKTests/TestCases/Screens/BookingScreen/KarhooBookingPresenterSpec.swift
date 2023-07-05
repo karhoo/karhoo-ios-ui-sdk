@@ -35,7 +35,7 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
 
     override func setUp() {
         super.setUp()
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
         mockBookingRouter = MockBookingRouter()
         mockAppAnalytics = MockAnalytics()
         mockJourneyDetailsManager = MockJourneyDetailsManager()

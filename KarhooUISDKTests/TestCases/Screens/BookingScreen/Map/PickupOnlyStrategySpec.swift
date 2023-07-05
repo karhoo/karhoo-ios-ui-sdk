@@ -43,7 +43,7 @@ class PickupOnlyStrategySpec: KarhooTestCase {
 
     override func tearDown() {
         super.tearDown()
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
     }
 
     /**

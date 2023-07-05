@@ -16,11 +16,15 @@ public class KarhooTestConfiguration: KarhooUISDKConfiguration {
 
     public static var guestSettings = GuestSettings(identifier: "", referer: "", organisationId: "")
     public static var tokenExchangeSettings = TokenExchangeSettings(clientId: "", scope: "")
-    public static var authenticationMethod: AuthenticationMethod = .karhooUser
+    public static var authenticationMethod: AuthenticationMethod = .tokenExchange(settings: tokenExchangeSettings)
     public static var isExplicitTermsAndConditionsConsentRequired: Bool = false
 
     public static func setGuest() {
         KarhooTestConfiguration.authenticationMethod = .guest(settings: KarhooTestConfiguration.guestSettings)
+    }
+    
+    public static func setTokenAuthentication() {
+        KarhooTestConfiguration.authenticationMethod = .tokenExchange(settings: tokenExchangeSettings)
     }
 
     public var isExplicitTermsAndConditionsConsentRequired: Bool {

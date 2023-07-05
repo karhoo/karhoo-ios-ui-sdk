@@ -33,7 +33,7 @@ class KarhooRideDetailsPresenterSpec: KarhooTestCase {
 
     override func setUp() {
         super.setUp()
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
         mockTripRatingCache.tripRatedValueToReturn = true
         testObject = KarhooRideDetailsPresenter(trip: testInitialTrip,
                                                 mailComposer: mockFeedbackMailComposer,

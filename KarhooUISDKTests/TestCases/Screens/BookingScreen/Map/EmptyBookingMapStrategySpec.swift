@@ -26,7 +26,7 @@ class EmptyBookingMapStrategySpec: KarhooTestCase {
                                              journeyDetailsManager: mockJourneyDetailsManager)
         testObject.load(map: mockMapView, onLocationPermissionDenied: nil)
 
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
     }
 
     /**
