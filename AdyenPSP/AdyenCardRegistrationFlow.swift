@@ -94,7 +94,6 @@ final class AdyenCardRegistrationFlow: CardRegistrationFlow {
         switch Karhoo.configuration.authenticationMethod() {
         case .guest: return false
         case .tokenExchange: return true
-        case .karhooUser: return true
         @unknown default:
             assertionFailure()
             return false

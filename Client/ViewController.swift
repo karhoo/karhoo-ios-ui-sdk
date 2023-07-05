@@ -22,13 +22,6 @@ class ViewController: UIViewController {
 
     private var booking: Screen?
     private let defaults = UserDefaults.standard
-
-    private lazy var authenticatedBraintreeBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Authenticated Booking Flow [Braintree]", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     private lazy var guestBraintreeBookingButton: UIButton = {
         let button = UIButton()
@@ -41,13 +34,6 @@ class ViewController: UIViewController {
     private lazy var tokenExchangeBraintreeBookingButton: UIButton = {
         let button = UIButton()
         button.setTitle("Token Exchange Booking Flow [Braintree]", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var authenticatedAdyenBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Authenticated Booking Flow [Adyen]", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -104,10 +90,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        authenticatedBraintreeBookingButton.addTarget(self, action: #selector(authenticatedBraintreeBookingTapped), for: .touchUpInside)
         guestBraintreeBookingButton.addTarget(self, action: #selector(guestBraintreeBookingTapped), for: .touchUpInside)
         tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped), for: .touchUpInside)
-        authenticatedAdyenBookingButton.addTarget(self, action: #selector(authenticatedAdyenBookingTapped), for: .touchUpInside)
         guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped), for: .touchUpInside)
         tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
@@ -130,10 +114,8 @@ class ViewController: UIViewController {
         )
         
         let stackView = UIStackView(arrangedSubviews: [
-            authenticatedBraintreeBookingButton,
             guestBraintreeBookingButton,
             tokenExchangeBraintreeBookingButton,
-            authenticatedAdyenBookingButton,
             guestAdyenBookingButton,
             tokenExchangeAdyenBookingButton,
             loyaltyCanEarnTrueCanBurnTrueBookingButton,
@@ -188,42 +170,6 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         showKarhoo()
-    }
-
-    @objc func authenticatedAdyenBookingTapped(sender: UIButton) {
-        KarhooConfig.auth = .karhooUser
-        KarhooConfig.onUpdateAuthentication = { callback in
-            self.refreshUsernamePasswordLogin(
-                username: Keys.adyenUserServiceEmail,
-                password: Keys.adyenUserServicePassword,
-                callback: callback
-            )
-        }
-        KarhooConfig.environment = Keys.adyenUserServiceEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
-        usernamePasswordLoginAndShowKarhoo(
-            username: Keys.adyenUserServiceEmail,
-            password: Keys.adyenUserServicePassword
-        )
-    }
-    
-    @objc func authenticatedBraintreeBookingTapped(sender: UIButton) {
-        KarhooConfig.auth = .karhooUser
-        KarhooConfig.onUpdateAuthentication = { callback in
-            self.refreshUsernamePasswordLogin(
-                username: Keys.braintreeUserServiceEmail,
-                password: Keys.braintreeUserServicePassword,
-                callback: callback
-            )
-        }
-        KarhooConfig.environment = Keys.braintreeUserServiceEnvironment
-        KarhooConfig.paymentManager = BraintreePaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
-        usernamePasswordLoginAndShowKarhoo(
-            username: Keys.braintreeUserServiceEmail,
-            password: Keys.braintreeUserServicePassword
-        )
     }
     
     @objc func tokenExchangeBraintreeBookingTapped(sender: UIButton) {
@@ -328,38 +274,6 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.notificationsButton.setTitle(label, for: .normal)
         }
-    }
-
-    private func usernamePasswordLoginAndShowKarhoo(username: String, password: String) {
-        let userService = Karhoo.getUserService()
-        userService.logout().execute(callback: { _ in})
-        
-        let userLogin = UserLogin(username: username,
-                                  password: password)
-        userService.login(userLogin: userLogin).execute(callback: { result in
-            print("login: \(result)")
-            if result.isSuccess() {
-                self.showKarhoo()
-            }
-        })
-    }
-    
-    private func refreshUsernamePasswordLogin(
-        username: String,
-        password: String,
-        callback: @escaping () -> Void
-    ) {
-            let userService = Karhoo.getUserService()
-            
-            let userLogin = UserLogin(username: username,
-                                      password: password)
-            userService.login(userLogin: userLogin).execute(callback: { result in
-                print("login: \(result)")
-                if result.isSuccess() {
-                    callback()
-                }
-            }
-        )
     }
 
     private func tokenLoginAndShowKarhoo(token: String) {
