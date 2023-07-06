@@ -345,11 +345,4 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
     private func isLoyaltyEnabled() -> Bool {
         loyaltyWorker.isLoyaltyEnabled
     }
-
-    private func isKarhooUser() -> Bool {
-        switch sdkConfiguration.authenticationMethod() {
-        case .karhooUser: return true
-        default: return false
-        }
-    }
 }

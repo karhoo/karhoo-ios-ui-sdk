@@ -134,7 +134,7 @@ final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
                 beforeEach {
                     mockPassengerDetails = TestUtil.getRandomValidPassengerDetails()
                     sut.update(passengerDetails: mockPassengerDetails)
-                    KarhooTestConfiguration.authenticationMethod = .karhooUser
+                    KarhooTestConfiguration.setTokenAuthentication()
                 }
 
                 context("and there is no stored paymentNonce") {

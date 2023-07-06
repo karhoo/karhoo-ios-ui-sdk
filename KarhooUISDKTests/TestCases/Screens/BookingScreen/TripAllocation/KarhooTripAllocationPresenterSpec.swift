@@ -22,7 +22,7 @@ final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
 
     override func setUp() {
         super.setUp()
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
 
         mockTripService = MockTripService()
         mockTripAllocationView = MockTripAllocationView()

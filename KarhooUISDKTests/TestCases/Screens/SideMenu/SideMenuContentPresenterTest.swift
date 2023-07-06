@@ -66,18 +66,6 @@ final class SideMenuContentPresenterTest: KarhooTestCase {
     }
     
     /**
-     * When the authentication method is a user
-     * Then the presenter won't call the side menu view's showGuestMenu method
-      */
-    func testGuestMenuIfAuthenticationMethodIsKarhooUser() {
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
-        
-        testObject.checkGuestAuthentication()
-        
-        XCTAssertFalse(mockContentView.calledShowGuestMenu)
-    }
-    
-    /**
      * When the authentication method is guest
      * Then the presenter will call the side menu view's showGuestMenu method
       */

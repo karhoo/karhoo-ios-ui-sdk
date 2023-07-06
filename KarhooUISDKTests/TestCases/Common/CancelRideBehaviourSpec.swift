@@ -32,7 +32,7 @@ class CancelRideBehaviourSpec: KarhooTestCase {
                                          alertHandler: mockAlertHandler,
                                          phoneNumberCaller: mockPhoneNumberCaller)
         
-        KarhooTestConfiguration.authenticationMethod = .karhooUser
+        KarhooTestConfiguration.setTokenAuthentication()
     }
     
     /**

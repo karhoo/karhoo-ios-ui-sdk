@@ -11,7 +11,7 @@ import KarhooUISDK
 
 final class KarhooConfig: KarhooUISDKConfiguration {
     
-    static var auth: AuthenticationMethod = .karhooUser
+    static var auth: AuthenticationMethod!
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
