@@ -215,11 +215,11 @@ class KarhooPhoneInputView: UIView {
     
     private func validatePhoneNumber() -> Bool {
         let phoneNumber = country.phoneCode + textView.text
-        return Utils.isValidPhoneNumber(number: phoneNumber)
+        return Utils.isValidPhoneNumber(number: phoneNumber, countryCode: country.code)
     }
     
     private func runValidation() {
-        if !Utils.isValidPhoneNumber(number: getInput()) {
+        if !Utils.isValidPhoneNumber(number: getInput(), countryCode: country.code) {
             showError()
         } else {
             errorLabel.isHidden = true

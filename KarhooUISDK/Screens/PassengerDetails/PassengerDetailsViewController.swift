@@ -330,6 +330,7 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     
     func didBecomeActive(identifier: String) {
         shouldMoveToNextInputViewOnReturn = true
+        updateDoneButtonEnabled()
     }
     
     func didChangeCharacterInSet(identifier: String) {

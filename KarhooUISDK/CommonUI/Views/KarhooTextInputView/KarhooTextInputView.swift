@@ -263,7 +263,7 @@ extension KarhooTextInputView: UITextViewDelegate {
         tintView(.active)
 
         if textView.textColor == KarhooTextInputViewState.inactive.color {
-            textView.textColor = KarhooUI.colors.primaryTextColor
+            textView.textColor = KarhooUI.colors.text
             textView.text = nil
         }
         

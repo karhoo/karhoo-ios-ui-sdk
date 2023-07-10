@@ -591,6 +591,8 @@
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
 		84209B47292D224000B79918 /* KarhooBookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
+		845D9D9B2A5C2DC30028B33E /* country_phone_validation_rules.json in Resources */ = {isa = PBXBuildFile; fileRef = 845D9D9A2A5C2DC30028B33E /* country_phone_validation_rules.json */; };
+		845D9D9D2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D9D9C2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift */; };
 		8466B36D2975AF580064C3BC /* KarhooLoyaltyPreAuthWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466B36C2975AF580064C3BC /* KarhooLoyaltyPreAuthWorker.swift */; };
 		846A874929DC18C500952C81 /* KarhooRidePlanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A874829DC18C500952C81 /* KarhooRidePlanningViewModel.swift */; };
 		846A874B29DC1A2400952C81 /* RidePlanning+MVVMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A874A29DC1A2400952C81 /* RidePlanning+MVVMC.swift */; };
@@ -1282,6 +1284,8 @@
 		84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationView.swift; sourceTree = "<group>"; };
 		84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationViewModel.swift; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		845D9D9A2A5C2DC30028B33E /* country_phone_validation_rules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_phone_validation_rules.json; sourceTree = "<group>"; };
+		845D9D9C2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCountryPhoneValidationRuleProvider.swift; sourceTree = "<group>"; };
 		8466B36C2975AF580064C3BC /* KarhooLoyaltyPreAuthWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooLoyaltyPreAuthWorker.swift; sourceTree = "<group>"; };
 		846A874829DC18C500952C81 /* KarhooRidePlanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooRidePlanningViewModel.swift; sourceTree = "<group>"; };
 		846A874A29DC1A2400952C81 /* RidePlanning+MVVMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RidePlanning+MVVMC.swift"; sourceTree = "<group>"; };
@@ -3069,7 +3073,7 @@
 				407EC72122CF564E00F24CFC /* Analytics.swift */,
 				51F3D2BA2942434C0005A1FB /* DateProvider.swift */,
 				84CE47E9293E29AC006585F5 /* KarhooAsyncImage.swift */,
-				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
+				845D9D972A5C2D1B0028B33E /* CountryAndPhone */,
 				6BE36B6026EF8E3B00F0FE86 /* KarhooFileManager.swift */,
 				7B34183527AB152200E2D49D /* KarhooLegalNoticeLinkOpener.swift */,
 				84925E25292543CD00B0C483 /* KarhooLocationPermissionProvider.swift */,
@@ -3277,6 +3281,16 @@
 				7B0A16092993FD8600980E7F /* PriceDetailsSnapshotSpec.swift */,
 			);
 			path = Checkout;
+			sourceTree = "<group>";
+		};
+		845D9D972A5C2D1B0028B33E /* CountryAndPhone */ = {
+			isa = PBXGroup;
+			children = (
+				845D9D9A2A5C2DC30028B33E /* country_phone_validation_rules.json */,
+				6BE36B5E26EF8DFD00F0FE86 /* KarhooCountryParser.swift */,
+				845D9D9C2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift */,
+			);
+			path = CountryAndPhone;
 			sourceTree = "<group>";
 		};
 		846A874729DC18A100952C81 /* RidePlanningScreen */ = {
@@ -4181,6 +4195,7 @@
 				FC83E2A5221ECC48008FE26D /* TripSummaryViewController.xib in Resources */,
 				407EC7C522CF564E00F24CFC /* FormButton.xib in Resources */,
 				092005DF225B91C1001038ED /* MenuContentViewController.xib in Resources */,
+				845D9D9B2A5C2DC30028B33E /* country_phone_validation_rules.json in Resources */,
 				986578A0F928780978136BC5 /* RidesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4887,6 +4902,7 @@
 				407EC7C222CF564E00F24CFC /* KeyboardSizeProvider.swift in Sources */,
 				FC83E2B2221EE920008FE26D /* Logger.swift in Sources */,
 				4010B0DE245C5DFE00E7B0F1 /* KarhooTextInputViewContentType.swift in Sources */,
+				845D9D9D2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift in Sources */,
 				5C1CD0BA241A5D88004AFF7D /* KarhooTripDetailsPresenter.swift in Sources */,
 				6BA3544F27304E400003B888 /* QuoteVehicle+Extensions.swift in Sources */,
 				5135E57E28574A5200F14A0F /* KarhooQuoteListSortViewModel.swift in Sources */,

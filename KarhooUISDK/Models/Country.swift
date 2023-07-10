@@ -40,3 +40,40 @@ public struct Country: KarhooCodableModel {
         case code
     }
 }
+
+struct CountryPhoneRule: KarhooCodableModel {
+    var countryCode: String
+    var phonePrefix: String
+    var possibleLenghtsMin: Int = 2
+    var possibleLenghtsMax: Int = 10
+    var mobileValidationRegex: String = "^\\+\\d{1,3}[ -]?\\d{3,11}$"
+    
+    init(countryCode: String) {
+        self.countryCode = countryCode
+        phonePrefix = KarhooCountryParser.countryPhonePrefixes[countryCode] ?? ""
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.countryCode = try container.decode(String.self, forKey: .countryCode)
+        self.phonePrefix = KarhooCountryParser.countryPhonePrefixes[countryCode] ?? ""
+        self.possibleLenghtsMin = try container.decode(Int.self, forKey: .possibleLenghtsMin)
+        self.possibleLenghtsMax = try container.decode(Int.self, forKey: .possibleLenghtsMax)
+        self.mobileValidationRegex = try container.decode(String.self, forKey: .mobileValidationRegex)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(countryCode, forKey: .countryCode)
+        try container.encode(possibleLenghtsMin, forKey: .possibleLenghtsMin)
+        try container.encode(possibleLenghtsMax, forKey: .possibleLenghtsMax)
+        try container.encode(mobileValidationRegex, forKey: .mobileValidationRegex)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case countryCode = "country_code"
+        case possibleLenghtsMin = "length_min"
+        case possibleLenghtsMax = "lenght_max"
+        case mobileValidationRegex = "mobile_validation_rule"
+    }
+}
