@@ -14,7 +14,7 @@ extension PassengerDetails {
         guard Utils.isValidName(name: firstName),
               Utils.isValidName(name: lastName),
               Utils.isValidEmail(email: email),
-              Utils.isValidPhoneNumber(number: phoneNumber),
+              Utils.isValidPhoneNumber(number: phoneNumber, countryCode: locale),
               !locale.isEmpty
         else {
             return false

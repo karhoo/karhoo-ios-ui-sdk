@@ -79,7 +79,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `MOB-4794-remove-karhoo-login`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -106,14 +106,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: MOB-4794-remove-karhoo-login
+    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: b8496e5d9fa5fee6f81929c77a650c5372ef0648
+    :commit: 7a9434fd9bb794be18ffed2b21ca8eb217b5597e
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -132,6 +132,6 @@ SPEC CHECKSUMS:
   SwiftFormat: b2062ab08a5c83c075e32355175c58b99e52187f
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 49e49cebb3d67af6d4476075a100c2c1ff9b5a95
+PODFILE CHECKSUM: 7c11bcef7b5690aae84e69086b93244cd8becc00
 
 COCOAPODS: 1.12.1

@@ -19,12 +19,17 @@ public class Utils {
         return emailPred.evaluate(with: email)
     }
     
-    static func isValidPhoneNumber(number: String) -> Bool {
-        /// check if number begins with country code (+XXX) and the number itself has between 2 and 10 digits.
-        let phoneNumberRegex = "^\\+\\d{1,3}[ -]?\\d{3,11}$"
-        let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
-
-        return phoneNumberPredicate.evaluate(with: number.replacingOccurrences(of: " ", with: ""))
+    static func isValidPhoneNumber(number: String, countryCode: String = "") -> Bool {
+        let rule = KarhooCountryPhoneValidationRuleProvider.shared.getRule(for: countryCode)
+        var phoneNumber = number
+        // The country specific rules defined in country_phone_validation_rules.json do not account for the prefix.
+        // The check will fail if the prefix is left in place in case of one of those countries
+        // On the other hand, any country not on the list will be compared against the default rule, which requires the prefix
+        if rule.phonePrefix.isNotEmpty, phoneNumber.starts(with: "+\(rule.phonePrefix)") {
+            phoneNumber = phoneNumber.removePrefix("+\(rule.phonePrefix)")
+        }
+        let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", rule.mobileValidationRegex)
+        return phoneNumberPredicate.evaluate(with: phoneNumber.replacingOccurrences(of: " ", with: ""))
     }
 
     public static func convertToDictionary(data: Data) -> [String: Any]? {
