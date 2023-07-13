@@ -21,3 +21,26 @@ function_body_length:
   error: 100
 type_name:
   allowed_symbols: "_"
+opt_in_rules:
+  - closure_body_length:
+      warning: 20
+      error: 50
+  - implicit_return: true
+  - anyobject_protocol: true
+  - closure_end_indentation:
+      warning: 2
+  - closure_spacing:
+      warning: 2
+  - collection_alignment: true
+  - convenience_type: true
+  - discouraged_optional_boolean: true
+  - discouraged_optional_collection: true
+  - indentation_width:
+      warning: 10
+  - implicitly_unwrapped_optional: true
+  - multiline_function_chains: true
+  - multiline_literal_brackets: true
+  - operator_usage_whitespace: true
+  - private_action: true
+  - private_outlet: true
+  - redundant_nil_coalescing: true
