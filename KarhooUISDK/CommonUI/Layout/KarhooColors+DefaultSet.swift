@@ -101,16 +101,16 @@ public extension KarhooColors {
         return  #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) // #333333
     }
 
-    var primaryDark: UIColor {
-        return UIColor(red: 199.0 / 255.0, green: 0.0, blue: 56.0 / 255.0, alpha: 1.0)
-    }
-
-    var secondaryDark: UIColor {
-        return UIColor(red: 0.0, green: 153.0 / 255.0, blue: 77.0 / 255.0, alpha: 1.0)
-    }
+//    var primaryDark: UIColor {
+//        return UIColor(red: 199.0 / 255.0, green: 0.0, blue: 56.0 / 255.0, alpha: 1.0)
+//    }
+//
+//    var secondaryDark: UIColor {
+//        return UIColor(red: 0.0, green: 153.0 / 255.0, blue: 77.0 / 255.0, alpha: 1.0)
+//    }
 
     var infoColor: UIColor {
-        return .darkGray
+        return .darkGray // #555555
     }
 
     var primaryTextColor: UIColor {
@@ -125,9 +125,9 @@ public extension KarhooColors {
         return UIColor(white: 204.0 / 255.0, alpha: 1.0)
     }
 
-    var regularGrey: UIColor {
-        return UIColor(white: 189.0 / 255.0, alpha: 1.0)
-    }
+//    var regularGrey: UIColor {
+//        return UIColor(white: 189.0 / 255.0, alpha: 1.0)
+//    }
 
     var offWhite: UIColor {
         return UIColor(white: 247.0 / 255.0, alpha: 1.0)
@@ -137,37 +137,37 @@ public extension KarhooColors {
         return  UIColor(white: 1.0, alpha: 0.95)
     }
 
-    var neonRed: UIColor {
-        return #colorLiteral(red: 0.9803921569, green: 0, blue: 0.2745098039, alpha: 1) // #FA0046
-    }
+//    var neonRed: UIColor {
+//        return #colorLiteral(red: 0.9803921569, green: 0, blue: 0.2745098039, alpha: 1) // #FA0046
+//    }
 
-    var mapTripPath: UIColor {
-        return #colorLiteral(red: 0.4431372549, green: 0.7529411765, blue: 0.9764705882, alpha: 1) // #71C0F9
-    }
+//    var mapTripPath: UIColor {
+//        return #colorLiteral(red: 0.4431372549, green: 0.7529411765, blue: 0.9764705882, alpha: 1) // #71C0F9
+//    }
 
-    var mapTripPathBorder: UIColor {
-        return #colorLiteral(red: 0.2705882353, green: 0.5882352941, blue: 0.7333333333, alpha: 1) // #4596BB
-    }
+//    var mapTripPathBorder: UIColor {
+//        return #colorLiteral(red: 0.2705882353, green: 0.5882352941, blue: 0.7333333333, alpha: 1) // #4596BB
+//    }
 
-    var guestCheckoutLightGrey: UIColor {
-        return #colorLiteral(red: 0.5294117647, green: 0.5960784314, blue: 0.6784313725, alpha: 1) // #8798AD
-    }
+//    var guestCheckoutLightGrey: UIColor {
+//        return #colorLiteral(red: 0.5294117647, green: 0.5960784314, blue: 0.6784313725, alpha: 1) // #8798AD
+//    }
+//
+//    var guestCheckoutDarkGrey: UIColor {
+//        return #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1) // #3C3C3C
+//    }
 
-    var guestCheckoutDarkGrey: UIColor {
-        return #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1) // #3C3C3C
-    }
+//    var guestCheckoutGrey: UIColor {
+//        return #colorLiteral(red: 0.6196078431, green: 0.6196078431, blue: 0.6196078431, alpha: 1) // #9E9E9E
+//    }
 
-    var guestCheckoutGrey: UIColor {
-        return #colorLiteral(red: 0.6196078431, green: 0.6196078431, blue: 0.6196078431, alpha: 1) // #9E9E9E
-    }
+//    var darkNavy: UIColor {
+//        return #colorLiteral(red: 0.1450980392, green: 0.137254902, blue: 0.2235294118, alpha: 1) // #252339
+//    }
 
-    var darkNavy: UIColor {
-        return #colorLiteral(red: 0.1450980392, green: 0.137254902, blue: 0.2235294118, alpha: 1) // #252339
-    }
-
-    var darkBlue: UIColor {
-        return #colorLiteral(red: 0.09411764706, green: 0.1019607843, blue: 0.2784313725, alpha: 1) // #181A47
-    }
+//    var darkBlue: UIColor {
+//        return #colorLiteral(red: 0.09411764706, green: 0.1019607843, blue: 0.2784313725, alpha: 1) // #181A47
+//    }
 
     var infoBackgroundColor: UIColor {
         return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
