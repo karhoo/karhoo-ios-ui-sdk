@@ -63,9 +63,9 @@ public protocol KarhooColors {
     var textError: UIColor { get }
 
     // MARK: - Depracated
-
-    @available(*, deprecated, message: "Colors are prepared to be used with Dark Mode, therefore, exact colors are no longer supported")
-    var darkGrey: UIColor { get }
+//
+//    @available(*, deprecated, message: "Colors are prepared to be used with Dark Mode, therefore, exact colors are no longer supported")
+//    var darkGrey: UIColor { get }
     
 //    @available(*, deprecated, message: "Colors are prepared to be used with Dark Mode, therefore, dark/light color variants are no longer supported")
 //    var primaryDark: UIColor { get }
@@ -73,27 +73,27 @@ public protocol KarhooColors {
 //    @available(*, deprecated, message: "Colors are prepared to be used with Dark Mode, therefore, dark/light color variants are no longer supported")
 //    var secondaryDark: UIColor { get }
 
-    /// InfoColor is used for text or icons associated with informational texts (titles, body, captions, some icons)
-    @available(*, deprecated, message: "Please use one of colors included in 'Text Colors' section")
-    var infoColor: UIColor { get }
+//    /// InfoColor is used for text or icons associated with informational texts (titles, body, captions, some icons)
+//    @available(*, deprecated, message: "Please use one of colors included in 'Text Colors' section")
+//    var infoColor: UIColor { get }
+//
+//    /// PrimaryTextColor is used for informational texts
+//    @available(*, deprecated, renamed: "text")
+//    var primaryTextColor: UIColor { get }
+//
+//    @available(*, deprecated, message: "")
+//    var medGrey: UIColor { get }
 
-    /// PrimaryTextColor is used for informational texts
-    @available(*, deprecated, renamed: "text")
-    var primaryTextColor: UIColor { get }
+//    /// The light grey is used for text backgrounds
+//    @available(*, deprecated, message: "")
+//    var lightGrey: UIColor { get }
     
-    @available(*, deprecated, message: "")
-    var medGrey: UIColor { get }
-
-    /// The light grey is used for text backgrounds
-    @available(*, deprecated, message: "")
-    var lightGrey: UIColor { get }
-    
-    /// The regular grey is used for borders for cards, line dividers and unselected and incomplete inputs
+//    /// The regular grey is used for borders for cards, line dividers and unselected and incomplete inputs
 //    @available(*, deprecated, message: "")
 //    var regularGrey: UIColor { get }
 
-    @available(*, deprecated, message: "")
-    var offWhite: UIColor { get }
+//    @available(*, deprecated, message: "")
+//    var offWhite: UIColor { get }
 
     @available(*, deprecated, message: "")
     var white95: UIColor { get }

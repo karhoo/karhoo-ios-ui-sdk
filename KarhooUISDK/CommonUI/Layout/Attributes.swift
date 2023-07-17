@@ -90,9 +90,9 @@ public final class Attributes: UIView {
 
         // MARK: - UIView colours
         setValue(KarhooUI.colors.white95, forKeyPath: "white95BackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.offWhite, forKeyPath: "offWhiteBackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.offWhite, forKeyPath: "overlayBackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.lightGrey, forKeyPath: "lightGreyBackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background1, forKeyPath: "offWhiteBackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background1, forKeyPath: "overlayBackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background3, forKeyPath: "lightGreyBackgroundColor.backgroundColor")
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryBackgroundColor.backgroundColor")
         setValue(KarhooUI.colors.secondary, forKeyPath: "secondaryBackgroundColor.backgroundColor")
 
@@ -120,7 +120,7 @@ public final class Attributes: UIView {
         })
 
         viewWithBorder?.forEach({ (view: UIView) in
-            view.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+            view.layer.borderColor = KarhooUI.colors.background3.cgColor
             view.layer.borderWidth = 1
         })
 

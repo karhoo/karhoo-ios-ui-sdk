@@ -53,7 +53,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
     private lazy var searchIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.uisdkImage("kh_uisdk_search").coloured(withTint: KarhooUI.colors.lightGrey)
+        imageView.image = UIImage.uisdkImage("kh_uisdk_search").coloured(withTint: KarhooUI.colors.inactive)
         imageView.anchor(width: standardSpacing, height: standardSpacing)
         return imageView
     }()
@@ -65,7 +65,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
         textField.clearButtonMode = .whileEditing
         textField.delegate = self
         textField.placeholder = UITexts.CountryCodeSelection.search
-        textField.textColor = KarhooUI.colors.primaryTextColor
+        textField.textColor = KarhooUI.colors.text
         textField.anchor(height: standardButtonSize)
         textField.returnKeyType = .search
         textField.addTarget(self, action: #selector(textFieldValueChanged), for: .editingChanged)
@@ -76,7 +76,7 @@ final class CountryCodeSelectionViewController: UIViewController, UITextFieldDel
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.anchor(height: separatorHeight)
-        view.backgroundColor = KarhooUI.colors.lightGrey
+        view.backgroundColor = KarhooUI.colors.border
         return view
     }()
     

@@ -203,7 +203,7 @@ class KarhooTextInputView: UIView, KarhooInputView {
         }
 
         textView.text = value
-        textView.textColor = KarhooUI.colors.primaryTextColor
+        textView.textColor = KarhooUI.colors.text
     }
     
     func setBackgroundColor(_ color: UIColor) {

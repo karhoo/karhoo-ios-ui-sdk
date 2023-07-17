@@ -97,9 +97,9 @@ public extension KarhooColors {
 
     // MARK: - Depracated
 
-    var darkGrey: UIColor {
-        return  #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) // #333333
-    }
+//    var darkGrey: UIColor {
+//        return  #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1) // #333333
+//    }
 
 //    var primaryDark: UIColor {
 //        return UIColor(red: 199.0 / 255.0, green: 0.0, blue: 56.0 / 255.0, alpha: 1.0)
@@ -108,30 +108,30 @@ public extension KarhooColors {
 //    var secondaryDark: UIColor {
 //        return UIColor(red: 0.0, green: 153.0 / 255.0, blue: 77.0 / 255.0, alpha: 1.0)
 //    }
-
-    var infoColor: UIColor {
-        return .darkGray // #555555
-    }
-
-    var primaryTextColor: UIColor {
-        return .darkGray
-    }
-
-    var medGrey: UIColor {
-        return  UIColor(white: 153.0 / 255.0, alpha: 1.0)
-    }
-
-    var lightGrey: UIColor {
-        return UIColor(white: 204.0 / 255.0, alpha: 1.0)
-    }
+//
+//    var infoColor: UIColor {
+//        return .darkGray // #555555
+//    }
+//
+//    var primaryTextColor: UIColor {
+//        return .darkGray
+//    }
+//
+//    var medGrey: UIColor {
+//        return  UIColor(white: 153.0 / 255.0, alpha: 1.0)
+//    }
+//
+//    var lightGrey: UIColor {
+//        return UIColor(white: 204.0 / 255.0, alpha: 1.0)
+//    }
 
 //    var regularGrey: UIColor {
 //        return UIColor(white: 189.0 / 255.0, alpha: 1.0)
 //    }
 
-    var offWhite: UIColor {
-        return UIColor(white: 247.0 / 255.0, alpha: 1.0)
-    }
+//    var offWhite: UIColor {
+//        return UIColor(white: 247.0 / 255.0, alpha: 1.0)
+//    }
 
     var white95: UIColor {
         return  UIColor(white: 1.0, alpha: 0.95)
@@ -169,8 +169,8 @@ public extension KarhooColors {
 //        return #colorLiteral(red: 0.09411764706, green: 0.1019607843, blue: 0.2784313725, alpha: 1) // #181A47
 //    }
 
-    var infoBackgroundColor: UIColor {
-        return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-    }
+//    var infoBackgroundColor: UIColor {
+//        return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+//    }
     
 }

@@ -46,7 +46,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHVehicleCapacityViewID.baggageInfoView
-        view.backgroundColor = KarhooUI.colors.infoBackgroundColor
+        view.backgroundColor = KarhooUI.colors.background1
         view.layer.cornerRadius = 10.0
         view.layer.masksToBounds = true
         view.anchor(width: 20.0, height: 20.0)
@@ -93,7 +93,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHVehicleCapacityViewID.capacityInfoView
-        view.backgroundColor = KarhooUI.colors.infoBackgroundColor
+        view.backgroundColor = KarhooUI.colors.background1
         view.layer.cornerRadius = 10.0
         view.layer.masksToBounds = true
         view.anchor(width: 20.0, height: 20.0)
@@ -141,7 +141,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = KHVehicleCapacityViewID.additionalFleetCapabilitiesView
-        view.backgroundColor = KarhooUI.colors.infoBackgroundColor
+        view.backgroundColor = KarhooUI.colors.background1
         view.layer.cornerRadius = 10.0
         view.anchor(width: 20.0, height: 20.0)
         view.layer.masksToBounds = true
@@ -152,7 +152,7 @@ final class QuoteVehicleCapacityView: UIStackView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = KHVehicleCapacityViewID.additionalFleetCapabilitiesLabel
-        label.textColor = KarhooUI.colors.infoColor
+        label.textColor = KarhooUI.colors.text
         label.font = KarhooUI.fonts.captionBold()
         return label
     }()

@@ -122,7 +122,8 @@ final class TripDetailsView: UIView {
         meetingPointType.maskToBounds = true
         meetingPointType.cornerRadious = true
         meetingPointType.textColor = KarhooUI.colors.white
-        meetingPointType.backgroundColor = KarhooUI.colors.darkGrey
+        // Using text color until the view is rewritten
+        meetingPointType.backgroundColor = KarhooUI.colors.text
         pickUpTypeContainer.addSubview(meetingPointType)
         
         bottomLineSeparator = LineView(color: .lightGray,
