@@ -61,9 +61,4 @@ public protocol KarhooColors {
     var textInactive: UIColor { get }
     
     var textError: UIColor { get }
-
-    // MARK: - Depracated
-
-    @available(*, deprecated, message: "")
-    var white95: UIColor { get }
 }

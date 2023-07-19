@@ -94,10 +94,4 @@ public extension KarhooColors {
     var textError: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#ED3A3A"), darkModeColor: UIColor(hex: "#E2E2E2"))
     }
-
-    // MARK: - Depracated
-
-    var white95: UIColor {
-        return  UIColor(white: 1.0, alpha: 0.95)
-    }
 }
