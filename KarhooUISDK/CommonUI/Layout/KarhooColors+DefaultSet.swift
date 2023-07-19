@@ -26,11 +26,6 @@ public extension KarhooColors {
         UIColor.get(lightModeColor: UIColor(hex: "#1A70C1"), darkModeColor: UIColor(hex: "#5BC0EB"))
     }
 
-    var lightAccent: UIColor {
-        // Same color for light and dark modes
-        UIColor(hex: "#E1F4FC")
-    }
-
     var border: UIColor {
         UIColor.get(lightModeColor: UIColor(hex: "#EBEBEB"), darkModeColor: UIColor(hex: "#2A2A2A"))
     }
