@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/karhoo/karhoo-ios-sdk",
       "state" : {
-        "branch" : "MOB-4794-remove-karhoo-login",
-        "revision" : "b8496e5d9fa5fee6f81929c77a650c5372ef0648"
+        "branch" : "master",
+        "revision" : "56b8fe62cf4b8112b901b88e1fc904495cede12e"
       }
     },
     {
