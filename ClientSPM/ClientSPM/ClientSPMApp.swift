@@ -25,9 +25,11 @@ struct ClientSPMApp: App {
 
     private func setupKarhooConfig() {
         KarhooUI.set(configuration: KarhooConfig())
-        let guestSettings = GuestSettings(identifier: "",
-                                          referer: "",
-                                          organisationId: "")
+        let guestSettings = GuestSettings(
+            identifier: "",
+            referer: "",
+            organisationId: ""
+        )
         KarhooConfig.auth = .guest(settings: guestSettings)
         KarhooConfig.environment = .sandbox
         KarhooConfig.paymentManager = AdyenPaymentManager()
