@@ -37,7 +37,13 @@ struct ClientSPMApp: App {
 final class KarhooConfig: KarhooUISDKConfiguration {
     var useAddToCalendarFeature: Bool = true
     
-    static var auth: AuthenticationMethod = .karhooUser
+    static var auth: AuthenticationMethod = .guest(
+        settings: GuestSettings(
+            identifier: "",
+            referer: "",
+            organisationId: ""
+        )
+    )
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
@@ -46,6 +52,10 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     var isExplicitTermsAndConditionsConsentRequired: Bool {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired
     }
+    
+    var paymentManager: PaymentManager {
+        KarhooConfig.paymentManager
+    }
 
     func environment() -> KarhooEnvironment {
         KarhooConfig.environment
@@ -53,10 +63,6 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     func authenticationMethod() -> AuthenticationMethod {
         KarhooConfig.auth
-    }
-    
-    var paymentManager: PaymentManager {
-        KarhooConfig.paymentManager
     }
     
     func requireSDKAuthentication(callback: @escaping () -> Void) {
