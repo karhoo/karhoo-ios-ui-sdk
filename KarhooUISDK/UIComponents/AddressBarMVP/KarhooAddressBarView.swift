@@ -98,7 +98,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         destinationIcon.contentMode = .scaleAspectFit
         mainViewContainer.addSubview(destinationIcon)
 
-        iconsConnectorLine = LineView(color: KarhooUI.colors.lightGrey,
+        iconsConnectorLine = LineView(color: KarhooUI.colors.border,
                                       width: 1.0,
                                       accessibilityIdentifier: "iconsConnector_line")
         iconsConnectorLine.isHidden = hidePickUpDestinationConnector
@@ -108,7 +108,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         pickupField.accessibilityIdentifier = KHAddressBarViewID.pickupField
         mainViewContainer.addSubview(pickupField)
 
-        fieldsSeparatorLine = LineView(color: KarhooUI.colors.lightGrey,
+        fieldsSeparatorLine = LineView(color: KarhooUI.colors.border,
                                        accessibilityIdentifier: "fieldsSeparator_line")
         mainViewContainer.addSubview(fieldsSeparatorLine)
         
@@ -118,7 +118,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         prebookField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         mainViewContainer.addSubview(prebookField)
         
-        prebookSeparator = LineView(color: KarhooUI.colors.lightGrey,
+        prebookSeparator = LineView(color: KarhooUI.colors.border,
                                   width: 1.0,
                                   accessibilityIdentifier: "preBookSeparator_line")
         prebookSeparator.isHidden = hidePrebookButton

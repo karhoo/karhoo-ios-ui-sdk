@@ -73,7 +73,7 @@ final class AddressViewController: UIViewController, AddressView {
     }
     
     private func setUpView() {
-        view.backgroundColor = KarhooUI.colors.offWhite
+        view.backgroundColor = KarhooUI.colors.background1
         view.addSubview(mainContainer)
 
         mainContainer.topAnchor.constraint(equalTo: view.topAnchor,
@@ -108,7 +108,7 @@ final class AddressViewController: UIViewController, AddressView {
         
         currentLocationView = BaseSelectionView(type: .currentLocation, identifier: "current_location_view")
         currentLocationView.delegate = self
-        currentLocationView.tintColor = KarhooUI.colors.infoColor
+        currentLocationView.tintColor = KarhooUI.colors.text
         currentLocationView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(currentLocationView)
         _ = [currentLocationView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
@@ -117,8 +117,8 @@ final class AddressViewController: UIViewController, AddressView {
         table = UITableView(frame: .zero)
         table.accessibilityIdentifier = "table_view"
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorColor = KarhooUI.colors.offWhite
-        table.backgroundColor = KarhooUI.colors.offWhite
+        table.separatorColor = KarhooUI.colors.border
+        table.backgroundColor = KarhooUI.colors.background1
         
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 50.0
@@ -134,7 +134,7 @@ final class AddressViewController: UIViewController, AddressView {
         googleLogoView = AddressGoogleLogoView()
         googleLogoView.translatesAutoresizingMaskIntoConstraints = false
         googleLogoView.accessibilityIdentifier = KHAddressViewID.googleLogoView
-        googleLogoView.backgroundColor = KarhooUI.colors.offWhite
+        googleLogoView.backgroundColor = KarhooUI.colors.background1
             
         mainContainer.addSubview(googleLogoView)
         

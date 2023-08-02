@@ -66,7 +66,7 @@ class KarhooAddressSearchBar: UIView, AddressSearchBar {
         searchContainer.translatesAutoresizingMaskIntoConstraints = false
         searchContainer.accessibilityIdentifier = "search-container"
         searchContainer.layer.cornerRadius = 4
-        searchContainer.backgroundColor = KarhooUI.colors.offWhite
+        searchContainer.backgroundColor = KarhooUI.colors.background1
         addSubview(searchContainer)
         
         _ = [searchContainer.topAnchor.constraint(equalTo: topAnchor, constant: 9.0),

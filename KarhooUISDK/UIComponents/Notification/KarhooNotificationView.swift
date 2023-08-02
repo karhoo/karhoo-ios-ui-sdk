@@ -31,7 +31,8 @@ public final class KarhooNotificationView: UIView, NotificationView {
         translatesAutoresizingMaskIntoConstraints = false
         accessibilityIdentifier = "notification_view"
         
-        backgroundColor = KarhooUI.colors.darkGrey
+        // Using text color until the view is rewritten
+        backgroundColor = KarhooUI.colors.text
         
         titleLabel = LinkLabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

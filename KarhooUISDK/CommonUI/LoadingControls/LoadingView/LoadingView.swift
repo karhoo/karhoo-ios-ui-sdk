@@ -49,7 +49,7 @@ public final class LoadingView: UIView {
         loadingLabel.textAlignment = .center
         loadingLabel.translatesAutoresizingMaskIntoConstraints = false
         loadingLabel.font = KarhooUI.fonts.bodyBold()
-        loadingLabel.textColor = KarhooUI.colors.offWhite // to be confirmed
+        loadingLabel.textColor = KarhooUI.colors.textInactive // to be confirmed
         
         addSubview(loadingLabel)
     }

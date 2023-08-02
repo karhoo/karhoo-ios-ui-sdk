@@ -17,6 +17,23 @@ extension UIColor {
         return brightness > 0.5
     }
     
+    var hexString: String {
+        let components = cgColor.components
+        
+        if components?.count == 2 {
+            let c: CGFloat = components?[0] ?? 0.0
+            let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(c * 255)), lroundf(Float(c * 255)), lroundf(Float(c * 255)))
+            return hexString
+        } else {
+            let r: CGFloat = components?[0] ?? 0.0
+            let g: CGFloat = components?[1] ?? 0.0
+            let b: CGFloat = components?[2] ?? 0.0
+
+            let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+            return hexString
+        }
+    }
+    
     static func random() -> UIColor {
         return UIColor(
             red: .random(in: 0...1),

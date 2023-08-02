@@ -9,6 +9,8 @@
 import UIKit
 import QuartzCore
 
+// Attributes are still being used for the old views of datetime selection and ride list
+// For this reason we are not removing this class for the time being
 public final class Attributes: UIView {
 
     // MARK: - UIView size
@@ -89,10 +91,12 @@ public final class Attributes: UIView {
         setValue(CGFloat(0.5), forKeyPath: "onePixelWidth.constant")
 
         // MARK: - UIView colours
-        setValue(KarhooUI.colors.white95, forKeyPath: "white95BackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.offWhite, forKeyPath: "offWhiteBackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.offWhite, forKeyPath: "overlayBackgroundColor.backgroundColor")
-        setValue(KarhooUI.colors.lightGrey, forKeyPath: "lightGreyBackgroundColor.backgroundColor")
+        // white95BackgroundColor.backgroundColor is used in TripSummaryInfoView, which should be removed at a later date during cleanup
+        // Replacing white95 with background2 until then
+        setValue(KarhooUI.colors.background2, forKeyPath: "white95BackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background1, forKeyPath: "offWhiteBackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background1, forKeyPath: "overlayBackgroundColor.backgroundColor")
+        setValue(KarhooUI.colors.background3, forKeyPath: "lightGreyBackgroundColor.backgroundColor")
         setValue(KarhooUI.colors.primary, forKeyPath: "primaryBackgroundColor.backgroundColor")
         setValue(KarhooUI.colors.secondary, forKeyPath: "secondaryBackgroundColor.backgroundColor")
 
@@ -120,7 +124,7 @@ public final class Attributes: UIView {
         })
 
         viewWithBorder?.forEach({ (view: UIView) in
-            view.layer.borderColor = KarhooUI.colors.lightGrey.cgColor
+            view.layer.borderColor = KarhooUI.colors.background3.cgColor
             view.layer.borderWidth = 1
         })
 

@@ -111,6 +111,6 @@ struct KarhooGradients {
     }
 
     private var whiteOffWhiteGradientColours: [CGColor] {
-        return [KarhooUI.colors.white.cgColor, KarhooUI.colors.offWhite.cgColor]
+        return [KarhooUI.colors.white.cgColor, KarhooUI.colors.background1.cgColor]
     }
 }

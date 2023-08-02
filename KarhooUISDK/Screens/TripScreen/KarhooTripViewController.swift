@@ -88,7 +88,8 @@ final class KarhooTripViewController: UIViewController, TripView {
         loadingOverlayView = LoadingView()
         loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
         loadingOverlayView.set(loadingText: UITexts.Trip.tripCancellingActivityIndicatorText)
-        loadingOverlayView.set(backgroundColor: KarhooUI.colors.darkGrey, alpha: overlayAlphaValue)
+        // Using text color until the view controller is rewritten
+        loadingOverlayView.set(backgroundColor: KarhooUI.colors.text, alpha: overlayAlphaValue)
         view.addSubview(loadingOverlayView)
         
         map = KarhooMKMapView()

@@ -22,7 +22,7 @@ final class CountryCodeViewModel {
     var isSelectedImage: UIImage {
         return isSelected ?
             UIImage.uisdkImage("kh_uisdk_field_success").coloured(withTint: KarhooUI.colors.primary) :
-            UIImage.uisdkImage("kh_uisdk_circle").coloured(withTint: KarhooUI.colors.infoBackgroundColor)
+            UIImage.uisdkImage("kh_uisdk_circle").coloured(withTint: KarhooUI.colors.background3)
     }
     
     var flagImage: UIImage {

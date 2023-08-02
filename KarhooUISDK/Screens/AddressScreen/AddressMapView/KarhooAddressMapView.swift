@@ -53,7 +53,7 @@ final class KarhooAddressMapView: UIView, AddressMapView {
         closeButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, width: 60, height: 60)
         
         addressDisplayView.translatesAutoresizingMaskIntoConstraints = false
-        addressDisplayView.layer.cornerRadius = Attributes.standardCornerRadius
+        addressDisplayView.layer.cornerRadius = UIConstants.CornerRadius.small
         addSubview(addressDisplayView)
         
         addressDisplayView.anchor(top: closeButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10, height: 60)

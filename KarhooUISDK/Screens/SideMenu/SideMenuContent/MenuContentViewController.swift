@@ -65,9 +65,9 @@ final class MenuContentViewController: UIViewController, BaseViewController, Men
     }
     
     private func configureColours() {
-        ridesImage?.tintColor = KarhooUI.colors.infoColor
-        profileImage?.tintColor = KarhooUI.colors.infoColor
-        aboutImage?.tintColor = KarhooUI.colors.infoColor
-        helpImage?.tintColor = KarhooUI.colors.infoColor
+        ridesImage?.tintColor = KarhooUI.colors.text
+        profileImage?.tintColor = KarhooUI.colors.text
+        aboutImage?.tintColor = KarhooUI.colors.text
+        helpImage?.tintColor = KarhooUI.colors.text
     }
 }
