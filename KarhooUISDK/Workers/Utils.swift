@@ -25,8 +25,13 @@ public class Utils {
         // The country specific rules defined in country_phone_validation_rules.json do not account for the prefix.
         // The check will fail if the prefix is left in place in case of one of those countries
         // On the other hand, any country not on the list will be compared against the default rule, which requires the prefix
-        if rule.phonePrefix.isNotEmpty, phoneNumber.starts(with: "+\(rule.phonePrefix)") {
-            phoneNumber = phoneNumber.removePrefix("+\(rule.phonePrefix)")
+        if rule.internationalPhonePrefix.isNotEmpty, phoneNumber.starts(with: "+\(rule.internationalPhonePrefix)") {
+            phoneNumber = phoneNumber.removePrefix("+\(rule.internationalPhonePrefix)")
+        }
+        
+        let nationalPrefix = rule.nationalPhonePrefix
+        if nationalPrefix.isNotEmpty, phoneNumber.starts(with: nationalPrefix) {
+            phoneNumber = phoneNumber.removePrefix(nationalPrefix)
         }
         let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", rule.mobileValidationRegex)
         return phoneNumberPredicate.evaluate(with: phoneNumber.replacingOccurrences(of: " ", with: ""))
