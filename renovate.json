@@ -1,1 +1,1 @@
-{"enabled":false,"labels":["demand-mobile","renovate"],"packageRules":[{"addLabels":["demand-mobile"],"matchDepTypes":["minor","patch","pin","digest","major"]}]}
+{"enabled":false,"labels":["mobile","renovate"],"packageRules":[{"addLabels":["mobile"],"matchDepTypes":["minor","patch","pin","digest","major"]}]}
