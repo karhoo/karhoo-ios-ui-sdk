@@ -33,7 +33,7 @@ final class KarhooCountryParser {
         return def
     }
     
-    static var countryPhonePrefixes: [String: String] {
+    static var countryPhoneInternationalPrefixes: [String: String] {
         ["AF": "93", "AE": "971", "AL": "355", "AN": "599", "AS": "1", "AD": "376", "AO": "244", "AI": "1", "AG": "1", "AR": "54",
          "AM": "374", "AW": "297", "AU": "61", "AT": "43", "AZ": "994", "BS": "1", "BH": "973", "BF": "226", "BI": "257", "BD": "880",
          "BB": "1", "BY": "375", "BE": "32", "BZ": "501", "BJ": "229", "BM": "1", "BT": "975", "BA": "387", "BW": "267", "BR": "55",
@@ -66,7 +66,7 @@ final class KarhooCountryParser {
         let c = NSLocale.isoCountryCodes
         let locale = getSupportedLocale().identifier
         
-        var prefixCodes = KarhooCountryParser.countryPhonePrefixes
+        var prefixCodes = KarhooCountryParser.countryPhoneInternationalPrefixes
 
         for (k, v) in prefixCodes {
             prefixCodes[k] = "+\(v)"
