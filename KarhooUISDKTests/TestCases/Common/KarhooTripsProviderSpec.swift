@@ -20,6 +20,7 @@ class KarhooTripsProviderSpec: KarhooTestCase {
     private var mockTimeScheduler: MockTimeScheduler!
     private var mockTripInResponse: TripInfo!
     private var mockTripResponse: [TripInfo] = []
+    
     override func setUp() {
         super.setUp()
         mockTripInResponse = TestUtil.getRandomTrip()
@@ -44,11 +45,7 @@ class KarhooTripsProviderSpec: KarhooTestCase {
       * Then: A fetch should be made
       */
     func testPollingSet() {
-        testObject = KarhooTripsProvider(reachability: mockReachability,
-                                   tripService: mockTripService,
-                                   tripRequestType: .past,
-                                   shouldPoll: true,
-                                   timer: mockTimeScheduler)
+        testObject.setShouldPoll(to: true)
 
         testObject.delegate = mockTripsProviderDelegate
         testObject.start()

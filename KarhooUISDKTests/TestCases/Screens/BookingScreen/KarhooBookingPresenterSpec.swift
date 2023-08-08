@@ -350,7 +350,7 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
      * Then: Callback should be set
      */
     func testFinishingWithCallbackSet() {
-        testObject = buildTestObject(callback: bookingScreenCallback)
+        testObject.setCallback(bookingScreenCallback)
 
         mockBookingView = MockBookingView()
         testObject.load(view: mockBookingView)

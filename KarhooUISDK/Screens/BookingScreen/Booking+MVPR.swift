@@ -87,6 +87,11 @@ protocol BookingPresenter {
     func showRideDetailsView(trip: TripInfo)
 }
 
+extension BookingPresenter {
+    // Used for late callback setting in unit tests
+    private func setCallback(_ callback: ScreenResultCallback<BookingScreenResult>?) {}
+}
+
 public enum BookingScreenResult {
     case tripAllocated(tripInfo: TripInfo)
     case prebookConfirmed(tripInfo: TripInfo)

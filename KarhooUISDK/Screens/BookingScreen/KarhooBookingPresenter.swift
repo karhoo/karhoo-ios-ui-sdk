@@ -18,7 +18,7 @@ final class KarhooBookingPresenter {
     private let userService: UserService
     private let analytics: Analytics
     private let phoneNumberCaller: PhoneNumberCallerProtocol
-    private let callback: ScreenResultCallback<BookingScreenResult>?
+    private(set) var callback: ScreenResultCallback<BookingScreenResult>?
     private let tripScreenBuilder: TripScreenBuilder
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
     private let addressScreenBuilder: AddressScreenBuilder
@@ -219,6 +219,10 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     func viewDidDissapear() {
         journeyDetailsManager.remove(observer: self)
+    }
+    
+    func setCallback(_ callback: ScreenResultCallback<BookingScreenResult>?) {
+        self.callback = callback
     }
 
     func exitPressed() {
