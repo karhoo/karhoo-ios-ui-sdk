@@ -17,6 +17,11 @@ post_install do |installer_representation|
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 11.0
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
       end
+      
+      xcconfig_path = config.base_configuration_reference.real_path
+      xcconfig = File.read(xcconfig_path)
+      xcconfig_mod = xcconfig.gsub(/DT_TOOLCHAIN_DIR/, "TOOLCHAIN_DIR")
+      File.open(xcconfig_path, "w") { |file| file << xcconfig_mod }
     end
   end
 end
