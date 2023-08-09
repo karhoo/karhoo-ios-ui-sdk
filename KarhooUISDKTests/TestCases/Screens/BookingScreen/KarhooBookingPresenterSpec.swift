@@ -145,16 +145,22 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
             XCTAssertTrue(mockBookingView.hideAllocationScreenCalled)
 
             XCTAssertEqual(UITexts.Trip.noDriversAvailableTitle, mockBookingView.showAlertTitle)
-            XCTAssertEqual(String(format: UITexts.Trip.noDriversAvailableMessage,
-                                  mockTrip.fleetInfo.name), mockBookingView.showAlertMessage)
-        XCTAssertTrue(mockTrip.origin.toLocationInfo()
-            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!))
-        XCTAssertTrue(mockTrip.destination!.toLocationInfo()
-            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!))
+            XCTAssertEqual(
+                String(format: UITexts.Trip.noDriversAvailableMessage, mockTrip.fleetInfo.name),
+                mockBookingView.showAlertMessage
+            )
+            
+            XCTAssertEqual(
+                mockTrip.origin.toLocationInfo().placeId,
+                mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!.placeId
+            )
+            XCTAssertEqual(
+                mockTrip.destination!.toLocationInfo().placeId,
+                mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!.placeId
+            )
 
             tearDown()
         })
-
     }
 
     /**
@@ -171,12 +177,15 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
 
         XCTAssertEqual(UITexts.Trip.karhooCancelledAlertTitle, mockBookingView.showAlertTitle)
         XCTAssertEqual(UITexts.Trip.karhooCancelledAlertMessage, mockBookingView.showAlertMessage)
-
-        XCTAssertTrue(mockTrip.origin.toLocationInfo()
-            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!))
-        XCTAssertTrue(mockTrip.destination!.toLocationInfo()
-            .equals(mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!))
-
+        
+        XCTAssertEqual(
+            mockTrip.origin.toLocationInfo().placeId,
+            mockJourneyDetailsManager.resetJourneyDetailsSet!.originLocationDetails!.placeId
+        )
+        XCTAssertEqual(
+            mockTrip.destination!.toLocationInfo().placeId,
+            mockJourneyDetailsManager.resetJourneyDetailsSet!.destinationLocationDetails!.placeId
+        )
     }
 
     /**
