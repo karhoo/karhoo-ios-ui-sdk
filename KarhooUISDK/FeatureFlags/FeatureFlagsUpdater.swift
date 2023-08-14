@@ -23,7 +23,7 @@ class FeatureFlagsService {
     }
     
     func update() {
-        let jsonUrl = "https://raw.githubusercontent.com/karhoo/karhoo-ios-ui-sdk/MOB-4801-deactivate-adyen/KarhooUISDK/FeatureFlags/feature_flag.json"
+        let jsonUrl = "https://raw.githubusercontent.com/karhoo/karhoo-ios-ui-sdk/master/KarhooUISDK/FeatureFlags/feature_flag.json"
 
         let url = URL(string: jsonUrl)!
         let decoder = JSONDecoder()
