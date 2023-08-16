@@ -49,20 +49,27 @@ final class KarhooAddressSearchProvider: AddressSearchProvider {
 
     private func performSearch(string: String) {
         delegate?.searchInProgress()
-        let searchCallback = { [weak self] (result: Result<Places>) in
-            switch result {
-            case .success(let places, _):
-                self?.searchCompleted(search: string, places: places.places)
-            case .failure(let error, _):
-                self?.searchFailed(search: string, error: error)
-            }
-        }
 
-        let placeSearch = PlaceSearch(position: preferredLocation?.toPosition() ?? Position(),
-                                      query: string,
-                                      sessionToken: sessionToken)
+        let placeSearch = PlaceSearch(
+            position: preferredLocation?.toPosition() ?? Position(),
+            query: string,
+            sessionToken: sessionToken
+        )
             addressService.placeSearch(placeSearch: placeSearch)
-                .execute(callback: searchCallback)
+            .execute(callback: { [weak self] (result: Result<Places>) in
+                self?.handlePlaceSearchCallback(string: string, result: result)
+            })
+    }
+    
+    private func handlePlaceSearchCallback(string: String, result: Result<Places>) {
+        switch result {
+        case .success(let places, _):
+            searchCompleted(search: string, places: places.places)
+        case .failure(let error, _):
+            searchFailed(search: string, error: error)
+        @unknown default:
+            assertionFailure("Untreated result case")
+        }
     }
 
     private func searchCompleted(search: String, places: [Place]) {

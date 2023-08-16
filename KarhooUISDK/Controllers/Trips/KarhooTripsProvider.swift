@@ -15,7 +15,7 @@ public final class KarhooTripsProvider: TripsProvider {
     private let reachability: ReachabilityProvider
     private let tripService: TripService
     private let requestType: TripsRequestType
-    private let shouldPoll: Bool
+    private(set) var shouldPoll: Bool
     private let timer: TimeScheduler
     private var itemsOffset: Int = 0
     private let pageSize: Int = 10
@@ -85,6 +85,10 @@ public final class KarhooTripsProvider: TripsProvider {
             itemsOffset = pageOffset
             loadTrips()
         }
+    }
+    
+    func setShouldPoll(to newValue: Bool) {
+        shouldPoll = newValue
     }
 }
 

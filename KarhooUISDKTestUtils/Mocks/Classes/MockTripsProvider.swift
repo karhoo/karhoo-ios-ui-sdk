@@ -38,4 +38,9 @@ final public class MockTripsProvider: TripsProvider {
     public func requestNewPage(pageOffset: Int) {
         testPage = pageOffset
     }
+    
+    var shouldPollSet = false
+    func setShouldPoll(to newValue: Bool) {
+        shouldPollSet = true
+    }
 }

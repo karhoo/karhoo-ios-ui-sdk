@@ -21,6 +21,11 @@ public protocol TripsProvider {
     var delegate: TripsProviderDelegate? { get set }
 }
 
+extension TripsProvider {
+    // Used for late shouldPoll value change in unit tests
+    private func setShouldPoll(to newValue: Bool) {}
+}
+
 public enum TripsRequestType {
     case past, upcoming
 }
