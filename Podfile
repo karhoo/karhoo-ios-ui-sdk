@@ -5,6 +5,7 @@ platform :ios, '14.0'
 source 'https://cdn.cocoapods.org/'
 
 use_frameworks!
+inhibit_all_warnings!
 
 post_install do |installer_representation|
   installer_representation.pods_project.targets.each do |target|

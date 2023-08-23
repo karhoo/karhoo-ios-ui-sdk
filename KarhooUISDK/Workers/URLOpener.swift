@@ -27,6 +27,8 @@ final public class KarhooURLOpener: URLOpener {
         case .custom:  open(URL(string: "\(UITexts.TrackingLinks.stagingLink)\(followCode)")!)
         case .production: open(URL(string: "\(UITexts.TrackingLinks.productionLink)\(followCode)")!)
         case .sandbox: return open(URL(string: "\(UITexts.TrackingLinks.sandboxLink)\(followCode)")!)
+        @unknown default:
+            print("Unknown enum value in KarhooURLOpener.openAgentPortalTracker")
         }
     }
 }

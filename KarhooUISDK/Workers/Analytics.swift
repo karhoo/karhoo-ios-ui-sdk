@@ -421,3 +421,5 @@ final public class KarhooAnalytics: Analytics {
         static let allocation = "allocation"
     }
 }
+
+// swiftlint:enable function_parameter_count
