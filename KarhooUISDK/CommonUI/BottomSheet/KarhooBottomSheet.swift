@@ -56,10 +56,9 @@ struct KarhooBottomSheet<Content: View>: View {
                 maxHeight: UIScreen.main.bounds.height - getTopPadding()
             )
         }
-        .colorScheme(.light) // Delete this line after dark mode modifications
+        .colorScheme(.light) // TODO: Delete this line after dark mode modifications
 
     }
-
     
     private func getTopPadding() -> CGFloat {
         UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0

@@ -38,6 +38,7 @@ class FeatureFlagsService {
                 }
             } else if let error {
                 // TODO: Add error to logger
+                print(error.localizedDescription)
             } else {
                 // TODO: Add error to logger
             }

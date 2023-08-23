@@ -74,7 +74,6 @@ final class KarhooBookingPresenter {
         self.featureFlagsProvider = featureFlagsProvider
         userService.add(observer: self)
     }
-    // swiftlint:enable line_length
 
     deinit {
         userService.remove(observer: self)

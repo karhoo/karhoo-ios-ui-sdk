@@ -5,6 +5,7 @@
 //  Created by Bartlomiej Sopala on 16/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
+//  swiftlint:disable type_name
 
 import Foundation
 import SwiftUI
@@ -28,7 +29,7 @@ final class KarhooBottomSheetContentWithTextFieldViewModel: ObservableObject {
         viewSubtitle: String,
         textFieldHint: String,
         errorMessage: String,
-        onSaveCallback:  @escaping (_ newFlightNumber: String) -> Void
+        onSaveCallback: @escaping (_ newFlightNumber: String) -> Void
     ) {
         self.contentType = contentType
         self.initialValueForTextField = initialValueForTextField
@@ -44,3 +45,5 @@ final class KarhooBottomSheetContentWithTextFieldViewModel: ObservableObject {
         onSaveCallback(textFieldValue)
     }
 }
+
+//  swiftlint:enable type_name
