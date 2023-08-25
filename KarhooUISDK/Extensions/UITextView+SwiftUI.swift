@@ -5,14 +5,14 @@
 //  Created by Aleksander Wedrychowski on 13/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
-// swiftlint:disable all
-
+// swiftlint:disable file_length
 
 import SwiftUI
 import UIKit
 
 /**
-The `UITextView` bridging to SwiftUI used due to inability to use `NSAttributedString` with current (iOS 14) deployment targer. Once DT is bump to iOS 15 the TextView should be removed and usage of NSAttributedString should be replaced with brand new `AttributedString`.
+The `UITextView` bridging to SwiftUI used due to inability to use `NSAttributedString` with current (iOS 14) deployment targer.
+Once DT is bump to iOS 15 the TextView should be removed and usage of NSAttributedString should be replaced with brand new `AttributedString`.
  */
 struct TextView: View {
 
@@ -132,7 +132,6 @@ struct TextView: View {
             alignment: .topLeading
         )
     }
-
 }
 
 private final class UIKitTextView: UITextView {
@@ -146,7 +145,6 @@ private final class UIKitTextView: UITextView {
     @objc private func escape(_ sender: Any) {
         resignFirstResponder()
     }
-
 }
 
 private struct RoundedTextView: View {
@@ -251,9 +249,7 @@ private extension TextView.Representable {
                 text.wrappedValue = originalText
             }
         }
-
     }
-
 }
 
 private extension TextView.Representable.Coordinator {
@@ -513,9 +509,7 @@ private extension TextView {
                 onCommit: onCommit
             )
         }
-
     }
-
 }
 
 private extension UIFont {
@@ -629,3 +623,5 @@ private extension UIFont {
         ])
     }
 }
+
+// swiftlint:enable file_length
