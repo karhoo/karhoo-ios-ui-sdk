@@ -31,8 +31,8 @@ class KarhooAnalitycsServiceWithNotifications: AnalyticsService {
                 trigger: trigger
             )
             UNUserNotificationCenter.current().add(request) { (error) in
-                if error != nil {
-                   print(error)
+                if let error = error {
+                    print(error)
                 }
              }
         }

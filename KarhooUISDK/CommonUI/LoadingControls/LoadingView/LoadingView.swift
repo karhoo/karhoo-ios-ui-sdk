@@ -38,7 +38,7 @@ public final class LoadingView: UIView {
         accessibilityIdentifier = "loading_view"
         alpha = 0.0
         
-        activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.accessibilityIdentifier = "activity_indicator"
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.startAnimating()
