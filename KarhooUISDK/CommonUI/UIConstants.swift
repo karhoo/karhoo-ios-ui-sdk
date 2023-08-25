@@ -5,7 +5,7 @@
 //  Created by Diana Petrea on 05.01.2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
-// swiftlint:disable comment_spacing nesting
+// swiftlint:disable nesting
 
 import Foundation
 import UIKit
@@ -20,25 +20,25 @@ public struct UIConstants {
         public static let xxSmall: CGFloat = 2
         
         /// 4
-        public static let xSmall: CGFloat = 4 //3...5
+        public static let xSmall: CGFloat = 4 // 3...5
         
         /// 8
-        public static let small: CGFloat = 8 //6...10
+        public static let small: CGFloat = 8 // 6...10
         
         /// 12
-        public static let medium: CGFloat = 12 //11...14
+        public static let medium: CGFloat = 12 // 11...14
         
         /// 16
-        public static let standard: CGFloat = 16 //15...21
+        public static let standard: CGFloat = 16 // 15...21
         
         /// 24
-        public static let large: CGFloat = 24 //22...28
+        public static let large: CGFloat = 24 // 22...28
         
         /// 32
-        public static let xLarge: CGFloat = 32 //29...40
+        public static let xLarge: CGFloat = 32 // 29...40
         
         /// 44
-        public static let xxLarge: CGFloat = 44 //41...56
+        public static let xxLarge: CGFloat = 44 // 41...56
         
         /// 64
         public static let xxxLarge: CGFloat = 64 // 57+
@@ -73,22 +73,22 @@ public struct UIConstants {
         
         public struct Icon {
             /// 11
-            public static let small: CGFloat = 11 //8...14
+            public static let small: CGFloat = 11 // 8...14
             
             /// 16
-            public static let medium: CGFloat = 16 //15...17
+            public static let medium: CGFloat = 16 // 15...17
             
             /// 22
-            public static let standard: CGFloat = 22 //18...26
+            public static let standard: CGFloat = 22 // 18...26
             
             /// 32
-            public static let large: CGFloat = 32 //27...39
+            public static let large: CGFloat = 32 // 27...39
             
             /// 44
-            public static let xLarge: CGFloat = 44 //44...53
+            public static let xLarge: CGFloat = 44 // 44...53
             
             /// 64
-            public static let xxLarge: CGFloat = 64 //54+
+            public static let xxLarge: CGFloat = 64 // 54+
 
             /// 120
             public static let xxxLarge: CGFloat = 120
@@ -151,7 +151,7 @@ public struct UIConstants {
             public static let headerHeight: CGFloat = 90
             
             /// 50
-            public static let rowHeight: CGFloat = 50 //includes KarhooQuoteListViewController > prebookQuotesTitleLabel height
+            public static let rowHeight: CGFloat = 50 // includes KarhooQuoteListViewController > prebookQuotesTitleLabel height
             
             /// 60
             public static let largeRowHeight: CGFloat = 60 // includes the address search bar height
@@ -173,16 +173,16 @@ public struct UIConstants {
             public static let findTripSpinnerSize = CGSize(width: 212, height: 212)
             
             /// 150
-            public static let fleetAvailabilityHeight: CGFloat = 150 //KarhooBookingViewController > bottomNotificationViewBottomConstraint
+            public static let fleetAvailabilityHeight: CGFloat = 150 // KarhooBookingViewController > bottomNotificationViewBottomConstraint
             
             /// 230
-            public static let quoteListHeight: CGFloat = 230 //QuoteListPanelLayout
+            public static let quoteListHeight: CGFloat = 230 // QuoteListPanelLayout
             
             /// 140
-            public static let quoteListTopOffset: CGFloat = 140 //QuoteListPanelLayout
+            public static let quoteListTopOffset: CGFloat = 140 // QuoteListPanelLayout
             
             /// 162
-            public static let cancelTripProgressViewWidth: CGFloat = 162 //KarhooCancelButtonView
+            public static let cancelTripProgressViewWidth: CGFloat = 162 // KarhooCancelButtonView
             
             /// 180 x 180
             public static let driverDetailsViewSize = CGSize(width: 180, height: 180)
@@ -199,7 +199,7 @@ public struct UIConstants {
         public static let xSmall: CGFloat = 2
 
         /// 4
-        public static let small: CGFloat = 4 //3...5
+        public static let small: CGFloat = 4 // 3...5
         
         /// 8
         public static let medium: CGFloat = 8
@@ -222,7 +222,7 @@ public struct UIConstants {
         public static let border: CGFloat = 0.5
     }
     
-    //Animation duration
+    // Animation duration
     public struct Duration {
         /// 0.1
         public static let xShort: Double = 0.1
@@ -242,7 +242,7 @@ public struct UIConstants {
         /// 0.1
         public static let xxSmallDelay: Double = 0.1
         
-        ///0.25
+        /// 0.25
         public static let xSmallDelay: Double = 0.25
         
         /// 0.3
@@ -290,3 +290,5 @@ public struct UIConstants {
         static let shadowAlpha: CGFloat = 0.5
     }
 }
+
+// swiftlint:enable nesting

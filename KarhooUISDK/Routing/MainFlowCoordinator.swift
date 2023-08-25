@@ -240,9 +240,9 @@ extension MainFlowCoordinator: MainFlowBookingRouter {
             self.resetDataAfterBooking()
             navigationController?.popToRootViewController(animated: true)
             
-            // TODO: treat other cases. Change bookingCompletion return type is necessary
-            default:
-                break
+        // TODO: treat other cases. Change bookingCompletion return type is necessary
+        default:
+            break
         }
     }
     

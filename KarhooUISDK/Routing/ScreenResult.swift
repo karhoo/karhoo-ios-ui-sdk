@@ -54,14 +54,14 @@ public enum ScreenResult<T> {
     }
 
     func isComplete() -> Bool {
-        if case .completed(result: _) = self {
+        if case .completed = self {
             return true
         }
         return false
     }
 
     func isCancelled() -> Bool {
-        if case .cancelled(byUser: _) = self {
+        if case .cancelled = self {
             return true
         }
         return false
@@ -75,7 +75,7 @@ public enum ScreenResult<T> {
     }
 
     func isFailure() -> Bool {
-        if case .failed(error: _) = self {
+        if case .failed = self {
             return true
         }
         return false
