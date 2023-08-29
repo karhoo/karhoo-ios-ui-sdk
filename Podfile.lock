@@ -53,19 +53,19 @@ PODS:
     - Braintree/ThreeDSecure (~> 5.19)
     - Braintree/UnionPay (~> 5.19)
     - Braintree/Venmo (~> 5.19)
-  - KarhooSDK (1.8.0):
+  - KarhooSDK (1.8.1):
     - KeychainSwift (= 12.0.0)
     - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.13.0):
-    - KarhooUISDK/Core (= 1.13.0)
-  - KarhooUISDK/Adyen (1.13.0):
+  - KarhooUISDK (1.13.1):
+    - KarhooUISDK/Core (= 1.13.1)
+  - KarhooUISDK/Adyen (1.13.1):
     - Adyen (= 4.7.2)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.13.0):
+  - KarhooUISDK/Braintree (1.13.1):
     - Braintree/PaymentFlow (~> 5.20.1)
     - BraintreeDropIn (~> 9.8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.13.0):
+  - KarhooUISDK/Core (1.13.1):
     - KarhooSDK
   - KeychainSwift (12.0.0)
   - Nimble (10.0.0)
@@ -79,7 +79,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, tag `1.8.1`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -106,15 +106,15 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
+    :tag: 1.8.1
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 7a9434fd9bb794be18ffed2b21ca8eb217b5597e
     :git: https://github.com/karhoo/karhoo-ios-sdk
+    :tag: 1.8.1
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -122,8 +122,8 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 4a27d741d164591ac87cecfaa9a02adb8eb92422
   BraintreeDropIn: 3d53945d1c0a2d050f094bbad7596e9f65a6993a
-  KarhooSDK: 0c53054fdc1347c9884deee4c8db4a3a9cf23c71
-  KarhooUISDK: 49c02abf5ca1929fcf28722593d81240e21c2298
+  KarhooSDK: 22dea4212fff3c5241944dbb9a5ebc94ea8d7e98
+  KarhooUISDK: a0bbf25f0f7a86116691c716d02295891223d55b
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
@@ -132,6 +132,6 @@ SPEC CHECKSUMS:
   SwiftFormat: b2062ab08a5c83c075e32355175c58b99e52187f
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: d0953ba94a039926c5dc0e7b41cea1d68685ec74
+PODFILE CHECKSUM: cf38654a5e8510ed542d9041b5d68b8d9cb61ea2
 
 COCOAPODS: 1.12.1

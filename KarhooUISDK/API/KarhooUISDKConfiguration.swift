@@ -9,7 +9,7 @@ import Foundation
 import KarhooSDK
 import UIKit
 
-public let karhooUiSdkVersion = "1.13.0"
+public let karhooUiSdkVersion = "1.13.1"
 
 public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     func logo() -> UIImage
