@@ -21,10 +21,18 @@ final class KarhooCountryParser {
                 return Country(name: "United Kingdom", phoneCode: "+44", code: "GB")
             }
             
-            let networkInfo = CTTelephonyNetworkInfo().subscriberCellularProvider
-    
-            guard let regionCode = networkInfo?.isoCountryCode?.uppercased() ?? NSLocale.current.regionCode  else {
-                return all.first(where: { $0.code == "GB" })!
+            // The currentInfo may come as "--" instead of nil when a SIM card is inserted in the device (it is always nil on a simulator).
+            // In this case replace it with the NSLocale.current.regionCode
+            // If all else fails, use "GB"
+            let networkInfo: [String: CTCarrier]? = CTTelephonyNetworkInfo().serviceSubscriberCellularProviders
+            let currentInfo: CTCarrier? = networkInfo?.first?.value
+            let localeRegionCode = NSLocale.current.regionCode?.uppercased() ?? "GB"
+            var regionCode = currentInfo?.isoCountryCode?.uppercased() ?? localeRegionCode
+            
+            // Fix the region code in case it's "--"
+            let countryCodePredicate = NSPredicate(format: "SELF MATCHES %@", "^[A-Z]{2}$")
+            if !countryCodePredicate.evaluate(with: regionCode) {
+                regionCode = localeRegionCode
             }
             
             _defaultCountry = all.first(where: { $0.code == regionCode }) ?? all.first(where: { $0.code == "GB" })!
