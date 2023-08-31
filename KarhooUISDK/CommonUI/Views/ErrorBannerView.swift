@@ -73,14 +73,18 @@ final class ErrorBannerView: UIView {
     
     override func updateConstraints() {
         if !didSetupConstraints {
-            
+            let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
             _ = [errorMessageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.0),
-                 errorMessageLabel.topAnchor.constraint(equalTo: topAnchor,
-                                                        constant: messageTopConstant +
-                                                            UIApplication.shared.statusBarFrame.maxY),
+                 errorMessageLabel.topAnchor.constraint(
+                    equalTo: topAnchor,
+                    constant: messageTopConstant + statusBarHeight
+                 ),
                  errorMessageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: messageBottomConstant),
-                 errorMessageLabel.trailingAnchor.constraint(lessThanOrEqualTo: dismissButton.leadingAnchor,
-                                                             constant: -20.0)].map { $0.isActive = true }
+                 errorMessageLabel.trailingAnchor.constraint(
+                    lessThanOrEqualTo: dismissButton.leadingAnchor,
+                    constant: -20.0
+                 )]
+                .map { $0.isActive = true }
             
             let buttonSize: CGFloat = 20.0
             _ = [dismissButton.widthAnchor.constraint(equalToConstant: buttonSize),
