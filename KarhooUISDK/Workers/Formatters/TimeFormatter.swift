@@ -16,12 +16,13 @@ struct TimeFormatter {
         let minutes: Int = timeInMinutes % minutesInHour
         let hours: Int = timeInMinutes / minutesInHour
         if hours == 0 {
-            if minutes == 1 {
+            if minutes == 0 {
+                return String.localizedStringWithFormat("kh_uisdk_minutes_plurals.zero".localized, minutes)
+            } else if minutes == 1 {
                 return String.localizedStringWithFormat("kh_uisdk_minutes_plurals.one".localized, minutes)
             } else {
                 return String.localizedStringWithFormat("kh_uisdk_minutes_plurals.other".localized, minutes)
             }
-            return String.localizedStringWithFormat("kh_uisdk_minutes_plurals.zero".localized, minutes)
         } else if hours > 0 && minutes == 0 {
             if hours == 1 {
                 return String.localizedStringWithFormat("kh_uisdk_hours_plural.one".localized, hours)

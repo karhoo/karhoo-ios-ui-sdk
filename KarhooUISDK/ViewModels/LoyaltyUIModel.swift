@@ -38,15 +38,4 @@ struct LoyaltyUIModel {
         self.earnAmount = earnAmount
         self.balance = balance
     }
-    
-    init(request: LoyaltyViewDataModel) {
-        self.loyaltyId = request.loyaltyId
-        self.currency = request.currency
-        self.tripAmount = request.tripAmount
-        self.canEarn = false
-        self.canBurn = false
-        self.burnAmount = 0
-        self.earnAmount = 0
-        self.balance = 0
-    }
 }
