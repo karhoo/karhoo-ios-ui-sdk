@@ -346,7 +346,7 @@ final public class KarhooAnalytics: Analytics {
             eventName: .rideConfirmationScreenOpened,
             payload: [
                 Keys.date: date.toString(),
-                Keys.tripId: tripId,
+                Keys.tripId: tripId ?? "",
                 Keys.quoteId: quoteId
             ])
     }
@@ -356,7 +356,7 @@ final public class KarhooAnalytics: Analytics {
             eventName: .rideConfirmationAddToCalendarSelected,
             payload: [
                 Keys.date: date.toString(),
-                Keys.tripId: tripId,
+                Keys.tripId: tripId ?? "",
                 Keys.quoteId: quoteId
             ])
     }
@@ -365,7 +365,7 @@ final public class KarhooAnalytics: Analytics {
             eventName: .rideConfirmationDetailsSelected,
             payload: [
                 Keys.date: date.toString(),
-                Keys.tripId: tripId,
+                Keys.tripId: tripId ?? "",
                 Keys.quoteId: quoteId
             ])
     }
@@ -421,3 +421,5 @@ final public class KarhooAnalytics: Analytics {
         static let allocation = "allocation"
     }
 }
+
+// swiftlint:enable function_parameter_count

@@ -14,8 +14,10 @@ protocol LocationPermissionProvider: AnyObject {
 }
 
 final class KarhooLocationPermissionProvider: LocationPermissionProvider {
+    let locationManager = CLLocationManager()
+    
     var isLocationPermissionGranted: Bool {
-        CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == .authorizedAlways
+        locationManager.authorizationStatus == .authorizedWhenInUse ||
+        locationManager.authorizationStatus == .authorizedAlways
     }
 }

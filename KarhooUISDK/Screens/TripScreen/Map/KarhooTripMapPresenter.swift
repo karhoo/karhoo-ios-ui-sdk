@@ -33,6 +33,7 @@ final class KarhooTripMapPresenter: TripMapPresenter {
     private let destinationAddress: TripLocationDetails?
     private var previousDriverLocation: CLLocation?
     private let locationPermissionProvider: LocationPermissionProvider
+    private let locationManager = CLLocationManager()
 
     private var onLocationPermissionDenied: (() -> Void)?
 
@@ -61,12 +62,12 @@ final class KarhooTripMapPresenter: TripMapPresenter {
         mapView?.set(minimumZoom: 0, maximumZoom: mapView?.idealMaximumZoom ?? 0)
         self.onLocationPermissionDenied = onLocationPermissionDenied
 
-        let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+        let locationAuthorizationStatus = locationManager.authorizationStatus
         switch locationAuthorizationStatus {
         case .denied, .restricted:
             onLocationPermissionDenied?()
         default:
-            CLLocationManager().requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
     }
 

@@ -5,6 +5,7 @@
 //  Created by Jeevan Thandi on 21/09/2020.
 //  Copyright © 2020 Flit Technologies Ltd. All rights reserved.
 //
+// swiftlint:disable function_parameter_count
 
 import Foundation
 import KarhooSDK
@@ -24,3 +25,5 @@ public enum CardFlowResult {
     case didFailWithError(_ error: KarhooError?)
     case cancelledByUser
 }
+
+// swiftlint:enable function_parameter_count

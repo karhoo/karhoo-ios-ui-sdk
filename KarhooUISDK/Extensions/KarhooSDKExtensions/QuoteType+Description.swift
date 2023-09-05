@@ -17,6 +17,9 @@ extension QuoteType {
             return UITexts.Generic.estimated
         case .metered:
             return UITexts.Generic.metered
+        @unknown default:
+            print("Unknown enum value in QuoteType.description")
+            return ""
         }
     }
 }

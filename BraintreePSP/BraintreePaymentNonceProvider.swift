@@ -8,7 +8,7 @@
 
 import Foundation
 import KarhooSDK
-import KarhooUISDK
+import KarhooUISDK // Even if the import may not be required in some configurations, it is needed for SPM linking. Do not remove unless you are sure a new solution allowes SPM-based project/app to be compiled.
 
 final class BraintreePaymentNonceProvider: PaymentNonceProvider {
 
@@ -59,6 +59,8 @@ final class BraintreePaymentNonceProvider: PaymentNonceProvider {
             case .failure:
                 self?.callbackResult?(.completed(value: .failedToInitialisePaymentService(error: result.getErrorValue())))
                 return
+            @unknown default:
+                print("Unknown enum value in BraintreePaymentNonceProvider.getPaymentNonce")
             }
         }
     }

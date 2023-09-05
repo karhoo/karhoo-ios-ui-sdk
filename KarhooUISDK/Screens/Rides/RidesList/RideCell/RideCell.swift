@@ -196,3 +196,5 @@ private extension RideCell {
         return view
     }
 }
+
+// swiftlint:enable function_parameter_count

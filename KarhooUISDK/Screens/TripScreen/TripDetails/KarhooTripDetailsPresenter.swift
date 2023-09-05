@@ -29,6 +29,8 @@ final class KahrooTripScreenDetailsPresenter: TripScreenDetailsPresenter {
                 self?.handleTripUpdate(trip: trip)
             case .failure(let error, _):
                 self?.tripUpdateFailed(error: error)
+            @unknown default:
+                print("Unknown enum value in KahrooTripScreenDetailsPresenter.startMonitoringTrip")
             }
         }
 

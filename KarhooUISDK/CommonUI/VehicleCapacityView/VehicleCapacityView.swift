@@ -7,8 +7,6 @@ import Foundation
 import UIKit
 import KarhooSDK
 
-
-
 final class VehicleCapacityView: UIStackView {
 
     private var passengerCapacityView: IconPlusTextHorizontalView?

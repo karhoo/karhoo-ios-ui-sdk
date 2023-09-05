@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
             if notification.request.identifier.contains(KarhooAnalitycsServiceWithNotifications.karhooNotificationIdentifierPrefix){
-                completionHandler([.alert,.badge])
+                completionHandler([.banner,.badge])
             }
     }
     

@@ -82,7 +82,11 @@ final class KarhooAddressPresenter: AddressPresenter {
         }
     }
 
-    private func locationResponseHandler(_ result: Result<LocationInfo>, saveLocation: Bool, addressViewModel: AddressCellViewModel? = nil) {
+    private func locationResponseHandler(
+        _ result: Result<LocationInfo>,
+        saveLocation: Bool,
+        addressViewModel: AddressCellViewModel? = nil
+    ) {
         switch result {
         case .success(let locationInfo, _):
             if saveLocation {
@@ -102,6 +106,8 @@ final class KarhooAddressPresenter: AddressPresenter {
             default:
                 handleLocationResponseError(error)
             }
+        @unknown default:
+            print("Unknown enum value in KarhooAddressPresenter.locationResponseHandler")
         }
     }
     

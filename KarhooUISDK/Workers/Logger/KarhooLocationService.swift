@@ -10,7 +10,8 @@ import Foundation
 import CoreLocation
 
 final public class KarhooLocationService: LocationService {
-
+    let locationManager = CLLocationManager()
+    
     public init() {}
     
     public func locationAccessEnabled() -> Bool {
@@ -18,6 +19,6 @@ final public class KarhooLocationService: LocationService {
             return false
         }
 
-        return [.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus())
+        return [.authorizedAlways, .authorizedWhenInUse].contains(locationManager.authorizationStatus)
     }
 }

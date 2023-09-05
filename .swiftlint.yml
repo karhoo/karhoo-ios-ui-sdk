@@ -1,6 +1,7 @@
 disabled_rules:
   - identifier_name
   - void_function_in_ternary
+  - todo
 trailing_whitespace:
   ignores_empty_lines: true
   ignores_comments: true

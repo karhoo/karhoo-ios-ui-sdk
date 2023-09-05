@@ -5,6 +5,7 @@
 //  Created by Bartlomiej Sopala on 16/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
+//  swiftlint:disable type_name
 
 import SwiftUI
 
@@ -42,9 +43,11 @@ struct KarhooBottomSheetContentWithTextFieldView_Previews: PreviewProvider {
                     viewSubtitle: UITexts.Booking.flightSubtitle,
                     textFieldHint: UITexts.Booking.flightExample,
                     errorMessage: UITexts.Booking.onlyLettersAndDigitsAllowedError,
-                    onSaveCallback: { newFlightNumber in return }
+                    onSaveCallback: { _ in return }
                 )
             )
         }
     }
 }
+
+//  swiftlint:enable type_name

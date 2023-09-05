@@ -9,8 +9,7 @@
 import UIKit
 import SwiftUI
 
-@available(*, deprecated, message: "Public access to this class will be removed in next release")
-public final class LoadingImageView: UIView {
+final class LoadingImageView: UIView {
 
     private var imageView: UIImageView!
     private var activityIndicator: UIActivityIndicatorView!
@@ -51,7 +50,7 @@ public final class LoadingImageView: UIView {
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.accessibilityIdentifier = "caching_activity_indicator"
-        activityIndicator.style = .gray
+        activityIndicator.style = .medium
         activityIndicator.hidesWhenStopped = true
         
         addSubview(activityIndicator)

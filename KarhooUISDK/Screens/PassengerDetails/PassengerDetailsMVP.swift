@@ -16,7 +16,7 @@ public protocol PassengerDetailsView: BaseViewController {
 }
 
 protocol PassengerDetailsActions: BaseViewController {
-    func passengerDetailsValid(_ : Bool)
+    func passengerDetailsValid(_: Bool)
 }
 
 public protocol PassengerDetailsDelegate: AnyObject {

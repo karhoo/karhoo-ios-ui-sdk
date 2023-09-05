@@ -54,7 +54,7 @@ final class EmptyMapBookingStrategy: BookingMapStrategy {
             if let location = userLocationProvider.getLastKnownLocation() {
                 journeyDetailsManager.setJourneyInfo(journeyInfo: JourneyInfo(origin: location))
             } else {
-                let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+                let locationAuthorizationStatus = locationManager.authorizationStatus
                 switch locationAuthorizationStatus {
                 case .denied, .restricted:
                     if triggerPermissionDeniedIfNeeded {
