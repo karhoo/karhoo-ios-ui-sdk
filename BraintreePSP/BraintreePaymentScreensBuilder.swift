@@ -32,6 +32,7 @@ final public class BraintreePaymentScreenBuilder: PaymentScreenBuilder {
     ) {
         let request = BTDropInRequest()
         request.uiCustomization = getUiCustomization()
+        request.applePayDisabled = true
         if allowToSaveAndDeleteCard {
             request.allowVaultCardOverride = true
             request.vaultManager = true
