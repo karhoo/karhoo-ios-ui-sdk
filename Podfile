@@ -40,7 +40,7 @@ end
 
 # UISDK framework
 target 'KarhooUISDK' do
-  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :tag => '1.8.1'
+  pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.8.1'
   pod 'SwiftLint', '~> 0.47'
   pod 'SwiftFormat/CLI', '~> 0.49'
