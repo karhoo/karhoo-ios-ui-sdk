@@ -21,6 +21,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     private var quotesObserver: KarhooSDK.Observer<Quotes>?
     private var quoteSearchObservable: KarhooSDK.Observable<Quotes>?
     private var quotesSearchForDetailsInProgress: JourneyDetails?
+    private var currentlyUsedJourneyDetails: JourneyDetails?
     private var selectedQuoteOrder: QuoteListSortOrder = .price
     private let quoteSorter: QuoteSorter
     private let quoteFilter: QuoteFilterHandler
@@ -77,7 +78,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
             return
         }
         analytics.quoteListOpened(journeyDetails)
-        if shouldReloadQuotes() {
+        if shouldReloadExpiringQuotes() || journeyDetailsChanged() {
             quotesSearchForDetailsInProgress = nil
             journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
         }
@@ -147,17 +148,21 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
-    private func shouldReloadQuotes() -> Bool {
+    private func shouldReloadExpiringQuotes() -> Bool {
         guard let fireDate = dateOfListReceiving else { return true }
         let intervalToFire = fireDate.timeIntervalSinceNow
         // NOTE: 'fireDate.timeIntervalSinceNow' is negative when list is reloading and new timer is not started yet
-        return  intervalToFire < minimumAcceptedValidityToQuoteRefresh // intervalToFire > 0 && 
+        return intervalToFire < minimumAcceptedValidityToQuoteRefresh
+    }
+    
+    private func journeyDetailsChanged() -> Bool {
+        currentlyUsedJourneyDetails != journeyDetailsManager.getJourneyDetails()
     }
 
     @objc func didChangeActivityState(_ notification: Notification) {
         if notification.name == UIApplication.didBecomeActiveNotification {
             isViewVisible = true
-            if shouldReloadQuotes() {
+            if shouldReloadExpiringQuotes() {
                 quotesSearchForDetailsInProgress = nil
                 journeyDetailsChanged(details: journeyDetailsManager.getJourneyDetails())
             }
@@ -257,6 +262,7 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         onStateUpdated?(.loading)
         fetchedQuotes = nil
         quotesSearchForDetailsInProgress = details
+        currentlyUsedJourneyDetails = details
         quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
         quoteSearchObservable?.subscribe(observer: quotesObserver)
     }
