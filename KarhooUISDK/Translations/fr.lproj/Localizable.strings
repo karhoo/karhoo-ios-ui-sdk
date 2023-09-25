@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Votre réservation\nau départ de : %1$@\nà destination de : %2$@\nà : %3$@\nest confirmée";
 
-"kh_uisdk_prebook_confirmed" = "Pré-réservation confirmée";
+"kh_uisdk_prebook_confirmed" = "Réservation confirmée";
 
 "kh_uisdk_prebook_picker_title" = "Heure de départ";
 

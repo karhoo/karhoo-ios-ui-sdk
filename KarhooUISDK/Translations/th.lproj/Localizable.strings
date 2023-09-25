@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "การติดตามรถไฟ";
 
-"kh_uisdk_filter_van" = "รถตู้";
+"kh_uisdk_filter_van" = "รถอเนกประสงค์";
 
 "kh_uisdk_filter_vehicle_class" = "ระดับยานพาหนะ";
 
@@ -884,7 +884,7 @@
 
 "kh_uisdk_prebook_confirmation" = "การจองของคุณ\nจาก: %1$@ \nไปยัง: %2$@ \nเวลา: %3$@ \n ได้รับการยืนยันแล้ว";
 
-"kh_uisdk_prebook_confirmed" = "ยืนยันการจองล่วงหน้าแล้ว";
+"kh_uisdk_prebook_confirmed" = "ยืนยันการจองแล้ว";
 
 "kh_uisdk_prebook_picker_title" = "เวลารับ";
 

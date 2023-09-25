@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Pelacakan kereta api";
 
-"kh_uisdk_filter_van" = "Mobil van";
+"kh_uisdk_filter_van" = "MPV";
 
 "kh_uisdk_filter_vehicle_class" = "Kelas kendaraan";
 
@@ -884,7 +884,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Pemesanan Anda\ndari: %1$@ \nto: %2$@ \nat: %3$@ \ntelah dikonfirmasi";
 
-"kh_uisdk_prebook_confirmed" = "Pra-pemesanan telah dikonfirmasi";
+"kh_uisdk_prebook_confirmed" = "Pemesanan dikonfirmasi";
 
 "kh_uisdk_prebook_picker_title" = "Waktu penjemputan";
 

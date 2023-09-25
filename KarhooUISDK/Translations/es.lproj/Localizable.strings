@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Seguimiento de su tren";
 
-"kh_uisdk_filter_van" = "Furgoneta";
+"kh_uisdk_filter_van" = "Monovolumen";
 
 "kh_uisdk_filter_vehicle_class" = "Clase de vehículo";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Su viaje de %1$@ a %2$@ a las %3$@ ha sido confirmado";
 
-"kh_uisdk_prebook_confirmed" = "Reserva anticipada confirmada";
+"kh_uisdk_prebook_confirmed" = "Reserva confirmada";
 
 "kh_uisdk_prebook_picker_title" = "Hora de recogida";
 

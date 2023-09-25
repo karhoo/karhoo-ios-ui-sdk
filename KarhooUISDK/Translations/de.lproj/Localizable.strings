@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Zug-Tracking";
 
-"kh_uisdk_filter_van" = "Van";
+"kh_uisdk_filter_van" = "Großraum";
 
 "kh_uisdk_filter_vehicle_class" = "Fahrzeugklasse";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Ihre Buchung\nvon: %1$@\nnach: %2$@\num: %3$@\nwurde bestätigt";
 
-"kh_uisdk_prebook_confirmed" = "Vorab-Buchung bestätigt";
+"kh_uisdk_prebook_confirmed" = "Reservierung bestätigt";
 
 "kh_uisdk_prebook_picker_title" = "Abholzeit";
 

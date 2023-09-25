@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Tracciamento treno";
 
-"kh_uisdk_filter_van" = "Pulmino";
+"kh_uisdk_filter_van" = "Multiposto";
 
 "kh_uisdk_filter_vehicle_class" = "Classe veicolo";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "La tua prenotazione\nda: %1$@\na: %2$@\nalle: %3$@\nè stata confermata";
 
-"kh_uisdk_prebook_confirmed" = "Prenotazione anticipata confermata";
+"kh_uisdk_prebook_confirmed" = "Prenotazione confermata";
 
 "kh_uisdk_prebook_picker_title" = "Orario di prelievo";
 

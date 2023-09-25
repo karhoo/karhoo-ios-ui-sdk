@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Train tracking";
 
-"kh_uisdk_filter_van" = "Van";
+"kh_uisdk_filter_van" = "MPV";
 
 "kh_uisdk_filter_vehicle_class" = "Vehicle class";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Your booking\nfrom: %1$@\nto: %2$@\nat: %3$@\nhas been confirmed";
 
-"kh_uisdk_prebook_confirmed" = "Pre-booking confirmed";
+"kh_uisdk_prebook_confirmed" = "Booking confirmed";
 
 "kh_uisdk_prebook_picker_title" = "Pickup time";
 

@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Śledzenie pociągów";
 
-"kh_uisdk_filter_van" = "Van";
+"kh_uisdk_filter_van" = "MPV";
 
 "kh_uisdk_filter_vehicle_class" = "Klasa pojazdu";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Twoja rezerwacja\nz: %1$@ \ndo: %2$@ \nat: %3$@ \nzostała potwierdzona";
 
-"kh_uisdk_prebook_confirmed" = "Rezerwacja wstępna potwierdzona";
+"kh_uisdk_prebook_confirmed" = "Rezerwacja potwierdzona";
 
 "kh_uisdk_prebook_picker_title" = "Godzina odbioru";
 

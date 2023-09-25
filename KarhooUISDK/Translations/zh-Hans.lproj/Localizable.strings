@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "火车追踪";
 
-"kh_uisdk_filter_van" = "面包车";
+"kh_uisdk_filter_van" = "多功能车";
 
 "kh_uisdk_filter_vehicle_class" = "车辆级别";
 
@@ -884,7 +884,7 @@
 
 "kh_uisdk_prebook_confirmation" = "您的预订\n 从：%1$@\n 至：%2$@\n 时间：%3$@\n已确认";
 
-"kh_uisdk_prebook_confirmed" = "提前预订已确认";
+"kh_uisdk_prebook_confirmed" = "预订确认";
 
 "kh_uisdk_prebook_picker_title" = "上车时间";
 
