@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Ваше бронирование\nот: %1$@ \nдо: %2$@ \в: %3$@ \nподтверждено";
 
-"kh_uisdk_prebook_confirmed" = "Предварительное бронирование подтверждено";
+"kh_uisdk_prebook_confirmed" = "Бронирование подтверждено";
 
 "kh_uisdk_prebook_picker_title" = "Время посадки";
 

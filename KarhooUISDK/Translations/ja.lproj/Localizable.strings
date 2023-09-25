@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "列車の追跡";
 
-"kh_uisdk_filter_van" = "ワンボックスワゴン";
+"kh_uisdk_filter_van" = "ミニバン";
 
 "kh_uisdk_filter_vehicle_class" = "車両クラス";
 
@@ -884,7 +884,7 @@
 
 "kh_uisdk_prebook_confirmation" = "予約を次の通り確定しました\n出発地：%1$@\n目的地：%2$@\n料金：%3$@";
 
-"kh_uisdk_prebook_confirmed" = "事前予約確定済み";
+"kh_uisdk_prebook_confirmed" = "予約確定";
 
 "kh_uisdk_prebook_picker_title" = "お迎え時刻";
 

@@ -520,7 +520,7 @@
 
 "kh_uisdk_filter_train_tracking" = "Trein volgen";
 
-"kh_uisdk_filter_van" = "Busje";
+"kh_uisdk_filter_van" = "Bus";
 
 "kh_uisdk_filter_vehicle_class" = "Voertuigklasse";
 
@@ -888,7 +888,7 @@
 
 "kh_uisdk_prebook_confirmation" = "Uw boeking\nvan: %1$@ \nnaar: %2$@ \nop: %3$@ \nis bevestigd";
 
-"kh_uisdk_prebook_confirmed" = "Boeking vooraf bevestigd";
+"kh_uisdk_prebook_confirmed" = "Boeking bevestigd";
 
 "kh_uisdk_prebook_picker_title" = "Ophaaltijd";
 
