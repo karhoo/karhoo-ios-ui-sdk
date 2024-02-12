@@ -13,6 +13,7 @@ public final class KarhooUI {
     public static var colors: KarhooColors = DefaultKarhooColors()
     public static var sideMenuHandler: SideMenuHandler?
     public static var components = KarhooComponents.shared
+    private static var vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider()
     private static var featureFlagsService = FeatureFlagsService(
         currentSdkVersion: karhooUiSdkVersion
     )
@@ -35,6 +36,7 @@ public final class KarhooUI {
         Karhoo.set(configuration: configuration)
         KarhooUISDKConfigurationProvider.set(configuration)
         featureFlagsService.update()
+        vehicleRulesProvider.update()
     }
     
     public func screens() -> Routing {
