@@ -53,24 +53,20 @@ PODS:
     - Braintree/ThreeDSecure (~> 5.19)
     - Braintree/UnionPay (~> 5.19)
     - Braintree/Venmo (~> 5.19)
-  - KarhooSDK (1.8.2):
-    - KeychainSwift (= 12.0.0)
-    - ReachabilitySwift (= 5.0.0)
-  - KarhooUISDK (1.13.1):
-    - KarhooUISDK/Core (= 1.13.1)
-  - KarhooUISDK/Adyen (1.13.1):
+  - KarhooSDK (1.8.3)
+  - KarhooUISDK (1.13.2):
+    - KarhooUISDK/Core (= 1.13.2)
+  - KarhooUISDK/Adyen (1.13.2):
     - Adyen (= 4.7.2)
     - KarhooUISDK/Core
-  - KarhooUISDK/Braintree (1.13.1):
+  - KarhooUISDK/Braintree (1.13.2):
     - Braintree/PaymentFlow (~> 5.20.1)
     - BraintreeDropIn (~> 9.8.1)
     - KarhooUISDK/Core
-  - KarhooUISDK/Core (1.13.1):
+  - KarhooUISDK/Core (1.13.2):
     - KarhooSDK
-  - KeychainSwift (12.0.0)
   - Nimble (10.0.0)
   - Quick (5.0.1)
-  - ReachabilitySwift (5.0.0)
   - SnapshotTesting (1.9.0)
   - SwiftFormat/CLI (0.51.6)
   - SwiftLint (0.51.0)
@@ -79,7 +75,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, tag `1.8.2`)
+  - KarhooSDK (= 1.8.3)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -96,25 +92,16 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - KeychainSwift
+    - KarhooSDK
     - Nimble
     - Quick
-    - ReachabilitySwift
     - SnapshotTesting
     - SwiftFormat
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :git: https://github.com/karhoo/karhoo-ios-sdk
-    :tag: 1.8.2
   KarhooUISDK:
     :path: "./"
-
-CHECKOUT OPTIONS:
-  KarhooSDK:
-    :git: https://github.com/karhoo/karhoo-ios-sdk
-    :tag: 1.8.2
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -122,16 +109,14 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 4a27d741d164591ac87cecfaa9a02adb8eb92422
   BraintreeDropIn: 3d53945d1c0a2d050f094bbad7596e9f65a6993a
-  KarhooSDK: e60dc7beb8f49007d8f2e44663e0c32ce6a62b4f
-  KarhooUISDK: a0bbf25f0f7a86116691c716d02295891223d55b
-  KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
+  KarhooSDK: 93c2cda6aa5087f475ead6f0b9b180ba094ada9d
+  KarhooUISDK: bb32ffca8d9f370d1c3abfd4c47d1cf8b40059a4
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
   SwiftFormat: b2062ab08a5c83c075e32355175c58b99e52187f
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 3712353708e08544a480e8004dd08c6df9ca3f71
+PODFILE CHECKSUM: ec2a2dafba80138a72dbdc1e892df8a48ba52940
 
 COCOAPODS: 1.12.1

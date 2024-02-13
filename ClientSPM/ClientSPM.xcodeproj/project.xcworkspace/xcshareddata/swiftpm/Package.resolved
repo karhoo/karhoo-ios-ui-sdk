@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Adyen/adyen-3ds2-ios",
       "state" : {
-        "revision" : "5dc03bf6133b6bc1cbde7800d4b980082e5241f9",
-        "version" : "2.2.4"
+        "revision" : "47f657579332c9d36cedd97a0d3487af2cd6d27d",
+        "version" : "2.3.3"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Adyen/adyen-ios",
       "state" : {
-        "revision" : "98f7edc8df2dbb5b0f2e9042037593e36bcdae11",
-        "version" : "4.7.1"
+        "revision" : "3f4dda50a9b37763b569f93f4e98a80f01cb3c79",
+        "version" : "4.11.2"
       }
     },
     {
@@ -77,17 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/karhoo/karhoo-ios-sdk",
       "state" : {
-        "revision" : "fe24e1b750fea895a7b53c7ea1dc266971389e92",
-        "version" : "1.8.2"
-      }
-    },
-    {
-      "identity" : "keychain-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/evgenyneu/keychain-swift",
-      "state" : {
-        "revision" : "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
-        "version" : "19.0.0"
+        "revision" : "f23f1f0bba30d398044e03465e2bb529d3b46956",
+        "version" : "1.8.3"
       }
     },
     {
@@ -106,15 +97,6 @@
       "state" : {
         "revision" : "f9d519828bb03dfc8125467d8f7b93131951124c",
         "version" : "5.0.1"
-      }
-    },
-    {
-      "identity" : "reachability.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ashleymills/Reachability.swift",
-      "state" : {
-        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
-        "version" : "5.1.0"
       }
     },
     {
