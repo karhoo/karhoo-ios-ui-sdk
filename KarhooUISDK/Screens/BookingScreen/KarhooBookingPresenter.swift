@@ -29,6 +29,7 @@ final class KarhooBookingPresenter {
     private let coverageCheckWorker: CoverageCheckWorker
     private let paymentService: PaymentService
     private let router: BookingRouter
+    private let vehicleRulesProvider: VehicleRulesProvider
     private let featureFlagsProvider: FeatureFlagProvider
 
     var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
@@ -51,6 +52,7 @@ final class KarhooBookingPresenter {
          urlOpener: URLOpener = KarhooURLOpener(),
          coverageCheckWorker: CoverageCheckWorker = KarhooCoverageCheckWorker(),
          paymentService: PaymentService = Karhoo.getPaymentService(),
+         vehicleRulesProvider: VehicleRulesProvider = KarhooVehicleRulesProvider(),
          featureFlagsProvider: FeatureFlagProvider = KarhooFeatureFlagProvider()
     ) {
         self.router = router
@@ -68,6 +70,7 @@ final class KarhooBookingPresenter {
         self.urlOpener = urlOpener
         self.coverageCheckWorker = coverageCheckWorker
         self.paymentService = paymentService
+        self.vehicleRulesProvider = vehicleRulesProvider
         self.featureFlagsProvider = featureFlagsProvider
         userService.add(observer: self)
     }
@@ -197,6 +200,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     func load(view: BookingView?) {
         self.view = view
         fetchPaymentProvider()
+        fetchVehicleRules()
     }
     
     func viewWillAppear() {
@@ -272,6 +276,10 @@ extension KarhooBookingPresenter: BookingPresenter {
 
         paymentService.getPaymentProvider().execute(callback: { _ in})
     }
+    
+    private func fetchVehicleRules() {
+            vehicleRulesProvider.update()
+        }
 
     func resetJourneyDetails() {
         journeyDetailsManager.reset()
