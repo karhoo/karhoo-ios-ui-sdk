@@ -15,12 +15,14 @@ final public class MockQuoteService: QuoteService {
      public let coverageCall = MockCall<QuoteCoverage>()
     public let verifyQuoteCall = MockCall<Quote>()
     public var quoteSearchSet: QuoteSearch?
+    public var localeSet: String?
     public var quoteCoverageSet: QuoteCoverageRequest?
     public var verifyQuoteSet: VerifyQuotePayload?
     public var vehilcleImageRulesCall = MockCall<VehicleImageRules>()
 
-    public func quotes(quoteSearch: QuoteSearch) -> PollCall<Quotes> {
+    public func quotes(quoteSearch: QuoteSearch, locale: String? = nil) -> PollCall<Quotes> {
         quoteSearchSet = quoteSearch
+        localeSet = locale
         return quotesPollCall
     }
 

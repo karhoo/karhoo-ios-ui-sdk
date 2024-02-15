@@ -75,7 +75,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `MOB-3694-add-locale-to-quote-list-request`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -100,14 +100,14 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: MOB-3694-add-locale-to-quote-list-request
+    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 09ea18c700517f0735b37834ebfe28988c93ecc5
+    :commit: bbcfc279ec7ae81f5f69555f24007ec83e4b5367
     :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
@@ -124,6 +124,6 @@ SPEC CHECKSUMS:
   SwiftFormat: b2062ab08a5c83c075e32355175c58b99e52187f
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: fb4a13620fe15efdc37b27e1caea345d1fa1315d
+PODFILE CHECKSUM: 919224cf78c73bf7dcf619bff4a16acf40667d11
 
 COCOAPODS: 1.15.2
