@@ -46,6 +46,10 @@ class KarhooPassengerInfo: PassengerInfo {
         guard let currentUser = Karhoo.getUserService().getCurrentUser() else {
             return nil
         }
+        
+        if currentUser.locale.isEmptyOrWhitespace {
+            return PassengerDetails(user: currentUser, customLocale: UITexts.Generic.locale)
+        }
 
         return PassengerDetails(user: currentUser)
     }

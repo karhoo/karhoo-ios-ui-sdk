@@ -13,6 +13,10 @@ extension String {
         replacingOccurrences(of: " ", with: "").isEmpty
     }
     
+    var isEmptyOrWhitespace: Bool {
+        self.isEmpty || self.isWhitespace
+    }
+    
     /// Removes le last instance of the duplicate
     /// - Parameters:
     ///   - caseInsensitive: provides a way to decide how strict or loose the search should be in regards to case. Default value is true
