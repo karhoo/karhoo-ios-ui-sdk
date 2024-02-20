@@ -343,7 +343,7 @@ GEM
       colored2 (~> 3.1)
       nanaimo (~> 0.3.0)
       rexml (~> 3.2.4)
-    xcov (1.7.5)
+    xcov (1.8.1)
       fastlane (>= 2.141.0, < 3.0.0)
       multipart-post
       slack-notifier
