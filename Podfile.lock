@@ -75,7 +75,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (= 1.8.3)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -92,7 +92,6 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - KarhooSDK
     - Nimble
     - Quick
     - SnapshotTesting
@@ -100,8 +99,16 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
+  KarhooSDK:
+    :branch: master
+    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
+
+CHECKOUT OPTIONS:
+  KarhooSDK:
+    :commit: c1995663abba17eb9e24a625ce2d5823958a55f4
+    :git: https://github.com/karhoo/karhoo-ios-sdk
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -117,6 +124,6 @@ SPEC CHECKSUMS:
   SwiftFormat: b2062ab08a5c83c075e32355175c58b99e52187f
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: ec2a2dafba80138a72dbdc1e892df8a48ba52940
+PODFILE CHECKSUM: 919224cf78c73bf7dcf619bff4a16acf40667d11
 
 COCOAPODS: 1.15.2
