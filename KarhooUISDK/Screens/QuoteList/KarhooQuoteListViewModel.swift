@@ -35,7 +35,8 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
     private let minimumAcceptedValidityToQuoteRefresh: TimeInterval = 120
     private let quoteListPollTime: TimeInterval = 1.2
     var isSortingAvailable: Bool = true
-
+    private let currentLocale = UITexts.Generic.locale
+    
     // MARK: - Lifecycle
 
     init(
@@ -263,7 +264,9 @@ final class KarhooQuoteListViewModel: QuoteListViewModel {
         fetchedQuotes = nil
         quotesSearchForDetailsInProgress = details
         currentlyUsedJourneyDetails = details
-        quoteSearchObservable = quoteService.quotes(quoteSearch: quoteSearch).observable(pollTime: quoteListPollTime)
+        quoteSearchObservable = quoteService
+            .quotes(quoteSearch: quoteSearch, locale: currentLocale.replacingOccurrences(of: "_", with: "-"))
+            .observable(pollTime: quoteListPollTime)
         quoteSearchObservable?.subscribe(observer: quotesObserver)
     }
 

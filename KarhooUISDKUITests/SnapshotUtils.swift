@@ -20,7 +20,7 @@ public func testSnapshot<View: UIView>(
     line: UInt = #line
 ) {
     guard view.bounds.size != .zero else {
-        fail("\(String(describing: view.self)) - size equals zero", file: file, line: line)
+        fail("\(String(describing: view.self)) - size equals zero", file: file.description, line: line)
         return
     }
     guard let failureMessage = verifySnapshot(
@@ -31,7 +31,7 @@ public func testSnapshot<View: UIView>(
         line: line
     ) else { return }
 
-    fail(failureMessage, file: file, line: line)
+    fail(failureMessage, file: file.description, line: line)
 }
 
 public func testSnapshot<ViewController: UIViewController>(
@@ -48,5 +48,5 @@ public func testSnapshot<ViewController: UIViewController>(
         line: line
     ) else { return }
 
-    fail(failureMessage, file: file, line: line)
+    fail(failureMessage, file: file.description, line: line)
 }
