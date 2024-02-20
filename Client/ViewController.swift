@@ -9,9 +9,6 @@ import UIKit
 import KarhooUISDK
 import CoreLocation
 import KarhooSDK
-#if canImport(KarhooUISDKAdyen)
-import KarhooUISDKAdyen
-#endif
 #if canImport(KarhooUISDKBraintree)
 import KarhooUISDKBraintree
 #endif
@@ -34,35 +31,6 @@ class ViewController: UIViewController {
     private lazy var tokenExchangeBraintreeBookingButton: UIButton = {
         let button = UIButton()
         button.setTitle("Token Exchange Booking Flow [Braintree]", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var guestAdyenBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Guest Booking Flow [Adyen]", for: .normal)
-        button.tintColor = .blue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    private lazy var tokenExchangeAdyenBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Token Exchange Booking Flow [Adyen]", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var loyaltyCanEarnTrueCanBurnTrueBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Loyalty +Earn +Burn [Adyen]", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var loyaltyCanEarnTrueCanBurnFalseBookingButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Loyalty +Earn -Burn [Adyen]", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -92,10 +60,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .black
         guestBraintreeBookingButton.addTarget(self, action: #selector(guestBraintreeBookingTapped), for: .touchUpInside)
         tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped), for: .touchUpInside)
-        guestAdyenBookingButton.addTarget(self, action: #selector(guestAdyenBookingTapped), for: .touchUpInside)
-        tokenExchangeAdyenBookingButton.addTarget(self, action: #selector(tokenExchangeAdyenBookingTapped), for: .touchUpInside)
-        loyaltyCanEarnTrueCanBurnTrueBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBookingTapped), for: .touchUpInside)
-        loyaltyCanEarnTrueCanBurnFalseBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBraintreeBookingTapped), for: .touchUpInside)
         notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
@@ -116,10 +80,6 @@ class ViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [
             guestBraintreeBookingButton,
             tokenExchangeBraintreeBookingButton,
-            guestAdyenBookingButton,
-            tokenExchangeAdyenBookingButton,
-            loyaltyCanEarnTrueCanBurnTrueBookingButton,
-            loyaltyCanEarnTrueCanBurnFalseBookingButton,
             loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton,
             loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton,
             notificationsButton
@@ -140,21 +100,6 @@ class ViewController: UIViewController {
             paddingRight: 20,
             paddingBottom: 20
         )
-    }
-
-    @objc func guestAdyenBookingTapped(sender: UIButton) {
-        let guestSettings = GuestSettings(identifier: Keys.adyenGuestIdentifier,
-                                          referer: Keys.referer,
-                                          organisationId: Keys.adyenGuestOrganisationId)
-        KarhooConfig.auth = .guest(settings: guestSettings)
-        KarhooConfig.onUpdateAuthentication = { callback in
-            KarhooConfig.auth = .guest(settings: guestSettings)
-            callback() // Guest profile is not able to provide new user auth
-        }
-        KarhooConfig.environment = Keys.adyenGuestEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
-        showKarhoo()
     }
 
     @objc func guestBraintreeBookingTapped(sender: UIButton) {
@@ -181,42 +126,6 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
-    }
-    
-    @objc func tokenExchangeAdyenBookingTapped(sender: UIButton) {
-        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.adyenTokenClientId, scope: Keys.adyenTokenScope)
-        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        KarhooConfig.onUpdateAuthentication = { callback in
-            self.refreshTokenLogin(token: Keys.adyenAuthToken, callback: callback)
-        }
-        KarhooConfig.environment = Keys.adyenTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
-        tokenLoginAndShowKarhoo(token: Keys.adyenAuthToken)
-    }
-    
-    @objc func loyaltyCanEarnTrueCanBurnTrueBookingTapped(sender: UIButton) {
-        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
-        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        KarhooConfig.onUpdateAuthentication = { callback in
-            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken, callback: callback)
-        }
-        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
-        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
-    }
-    
-    @objc func loyaltyCanEarnTrueCanBurnFalseBookingTapped(sender: UIButton) {
-        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.loyaltyTokenClientId, scope: Keys.loyaltyTokenScope)
-        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
-        KarhooConfig.onUpdateAuthentication = { callback in
-            self.refreshTokenLogin(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken, callback: callback)
-        }
-        KarhooConfig.environment = Keys.loyaltyTokenEnvironment
-        KarhooConfig.paymentManager = AdyenPaymentManager()
-        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
-        tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     
     @objc func loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped(sender: UIButton) {
