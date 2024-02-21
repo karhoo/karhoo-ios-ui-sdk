@@ -84,7 +84,7 @@ final class SideMenuViewController: UIViewController, SideMenu {
         let width = self.menuContainer?.frame.width ?? 0
         let animationTime = animated ? 0.25 : 0
         UIView.animate(withDuration: animationTime,
-                       animations: { () -> Void in
+                       animations: { () in
                         self.menuStartConstraint?.constant = -width
                         self.contentContainer?.transform = CGAffineTransform(scaleX: 1, y: 1)
                         self.overlay?.alpha = 0

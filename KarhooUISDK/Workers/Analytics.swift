@@ -291,9 +291,9 @@ final public class KarhooAnalytics: Analytics {
 
     public func contactDriverClicked(page: AnalyticsScreen, tripDetails: TripInfo) {
         let eventName: AnalyticsConstants.EventNames
-            switch page {
-            case .upcomingRides: eventName = .ridesUpcomingContactDriverClicked
-            case .vehicleTracking: eventName = .trackingContactDriverClicked
+        switch page {
+        case .upcomingRides: eventName = .ridesUpcomingContactDriverClicked
+        case .vehicleTracking: eventName = .trackingContactDriverClicked
         }
         base.send(
             eventName: eventName,

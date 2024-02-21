@@ -233,11 +233,11 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             return
         }
         var flight: String? = flightNumber
-        if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
+        if let flightText = flight, flightText.isEmptyOrWhitespace {
             flight = nil
         }
         var train: String? = trainNumber
-        if let trainText = train, (trainText.isEmpty || trainText.isWhitespace) {
+        if let trainText = train, trainText.isEmptyOrWhitespace {
             train = nil
         }
 
