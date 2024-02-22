@@ -8,10 +8,10 @@
 
 // swiftlint:disable weak_delegate
 
-import XCTest
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class KarhooAddressSearchProviderSpec: KarhooTestCase {

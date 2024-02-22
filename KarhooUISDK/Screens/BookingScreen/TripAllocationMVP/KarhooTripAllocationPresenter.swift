@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import KarhooSDK
 import CoreFoundation
+import KarhooSDK
 
 final class KarhooTripAllocationPresenter: TripAllocationPresenter {
 

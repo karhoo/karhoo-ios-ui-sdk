@@ -104,7 +104,7 @@ class ItemsFilterView: UIView, FilterView {
         itemsMainStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         itemButtons = []
 
-        selectableFilters.forEach { selectableFilter in
+        for selectableFilter in selectableFilters {
             var horizontalStackView: UIStackView
             let itemView = buildItemFilterButton(for: selectableFilter)
 

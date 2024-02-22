@@ -6,9 +6,9 @@
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
 import KarhooUISDKTestUtils
+import UIKit
 @testable import KarhooUISDK
 
 final class MockPassengerDetailsViewController: MockBaseViewController, PassengerDetailsView, KarhooInputViewDelegate {

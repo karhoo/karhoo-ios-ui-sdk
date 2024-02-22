@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import MapKit
 
 final class MapAnnotationViewModel: NSObject, MKAnnotation {

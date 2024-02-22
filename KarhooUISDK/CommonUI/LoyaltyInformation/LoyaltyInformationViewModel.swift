@@ -1,5 +1,5 @@
 //
-//  KarhooLoyaltyInformationViewModel.swift
+//  LoyaltyInformationViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/11/2022.

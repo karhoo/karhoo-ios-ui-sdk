@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-internal protocol BottomSheetScreenBuilder {
+protocol BottomSheetScreenBuilder {
     func buildBottomSheetScreenBuilderForUIKit(
         viewModel: BottomSheetViewModel,
         content: @escaping () -> some View

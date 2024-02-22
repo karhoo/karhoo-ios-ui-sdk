@@ -5,8 +5,8 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import KarhooUISDK
 import KarhooSDK
+import KarhooUISDK
 #if canImport(Braintree)
 import Braintree
 #endif
@@ -14,7 +14,7 @@ import Braintree
 import Adyen
 #endif
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?

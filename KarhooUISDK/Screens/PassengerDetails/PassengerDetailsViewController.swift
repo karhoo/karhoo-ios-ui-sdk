@@ -6,8 +6,8 @@
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 struct KHPassengerDetailsViewID {
     static let scrollView = "scroll_view"
@@ -309,10 +309,8 @@ final class PassengerDetailsViewController: UIViewController, PassengerDetailsVi
     }
     
     private func highlightInvalidFields() {
-        inputViews.forEach { inputView in
-            if !inputView.isValid() {
-                inputView.showError()
-            }
+        for inputView in inputViews where !inputView.isValid() {
+            inputView.showError()
         }
     }
 }
@@ -340,7 +338,7 @@ extension PassengerDetailsViewController: KarhooInputViewDelegate {
     private func getValidInputViewCount() -> Int {
         var validSet = Set<String>()
         
-        inputViews.forEach { inputView in
+        for inputView in inputViews {
             if inputView.isValid() {
                 validSet.insert(inputView.accessibilityIdentifier ?? "")
             } else {

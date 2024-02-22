@@ -43,7 +43,7 @@ target 'KarhooUISDK' do
   pod 'KarhooSDK', :git => 'https://github.com/karhoo/karhoo-ios-sdk', :branch => 'master'
 #  pod 'KarhooSDK', '1.8.3'
   pod 'SwiftLint', '~> 0.54'
-  pod 'SwiftFormat/CLI', '~> 0.49'
+  pod 'SwiftFormat/CLI' , '~> 0.53'
   pod 'BraintreeDropIn', '~> 9.8.1'
   pod 'Braintree/PaymentFlow', '~> 5.20.1'
   pod 'Adyen', '4.7.2'

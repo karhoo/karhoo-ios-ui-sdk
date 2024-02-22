@@ -1,15 +1,15 @@
 //
-//  AddressViewControllerPresenterSpec.swift
+//  KarhooAddressPresenterSpec.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import CoreLocation
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class KarhooAddressPresenterSpec: KarhooTestCase {

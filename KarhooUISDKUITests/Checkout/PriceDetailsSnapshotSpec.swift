@@ -6,12 +6,12 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import Quick
-import Nimble
-import SnapshotTesting
-import SwiftUI
 import KarhooSDK
 import KarhooUISDKTestUtils
+import Nimble
+import Quick
+import SnapshotTesting
+import SwiftUI
 @testable import KarhooUISDK
 
 class PriceDetailsSnapshotSpec: QuickSpec {

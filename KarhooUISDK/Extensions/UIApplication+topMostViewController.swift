@@ -1,5 +1,5 @@
 //
-//  UIApplication+TopMostViewController.swift
+//  UIApplication+topMostViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 18/01/2023.

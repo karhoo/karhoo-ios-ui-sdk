@@ -23,7 +23,7 @@ public final class KarhooUI {
         }
     }
 
-    internal static var fonts: KarhooFonts = KarhooFonts(family: FontFamily())
+    static var fonts: KarhooFonts = KarhooFonts(family: FontFamily())
 
     public init() {}
 

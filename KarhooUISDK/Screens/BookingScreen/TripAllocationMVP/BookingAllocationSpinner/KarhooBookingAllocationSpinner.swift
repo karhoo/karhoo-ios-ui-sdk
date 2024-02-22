@@ -1,13 +1,13 @@
 //
-//  BookingAllocationSpinner.swift
+//  KarhooBookingAllocationSpinner.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import CoreGraphics
+import UIKit
 
 public struct KHBookingAllocationSpinnerID {
     public static let spinnerImage = "spinner_image"

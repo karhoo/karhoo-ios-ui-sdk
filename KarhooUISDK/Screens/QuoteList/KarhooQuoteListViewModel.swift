@@ -1,13 +1,13 @@
 //
-//  KarhooQuoteListPresenter.swift
+//  KarhooQuoteListViewModel.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 import UIKit
 
 final class KarhooQuoteListViewModel: QuoteListViewModel {

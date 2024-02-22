@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-internal protocol SideMenuBuilder {
+protocol SideMenuBuilder {
 
     func buildSideMenu(hostViewController: UIViewController,
                        routing: SideMenuHandler) -> SideMenu

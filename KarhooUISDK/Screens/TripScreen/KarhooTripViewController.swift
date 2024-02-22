@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 import KarhooSDK
+import UIKit
 
 public struct KHKarhooTripViewID {
     public static let closeButton = "close_button"

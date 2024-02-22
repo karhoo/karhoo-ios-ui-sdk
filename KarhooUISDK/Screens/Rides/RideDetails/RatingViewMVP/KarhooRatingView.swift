@@ -1,5 +1,5 @@
 //
-//  RatingView.swift
+//  KarhooRatingView.swift
 //  KarhooUISDK
 //
 //

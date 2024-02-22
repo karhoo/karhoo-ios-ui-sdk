@@ -1,5 +1,5 @@
 //
-//  MockTripSummaryView.swift
+//  MockTripSummaryInfoView.swift
 //  KarhooTests
 //
 //

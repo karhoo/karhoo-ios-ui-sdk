@@ -91,7 +91,7 @@ class FilterListView: UIView, FilterView {
         itemsMainStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         filterItems = []
 
-        selectableFilters.forEach { selectableFilter in
+        for selectableFilter in selectableFilters {
             let itemView = buildFilterListItem(for: selectableFilter)
             itemsMainStackView.addArrangedSubview(itemView)
         }

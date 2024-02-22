@@ -1,5 +1,5 @@
 //
-//  KarhooBookingAllocationSpinnerPresenter.swift
+//  KarhooBookingAllocationPresenter.swift
 //  Karhoo
 //
 //

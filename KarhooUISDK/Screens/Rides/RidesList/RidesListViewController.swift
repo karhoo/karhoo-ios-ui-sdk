@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 final class RidesListViewController: UIViewController, RidesListView {
 
@@ -20,7 +20,7 @@ final class RidesListViewController: UIViewController, RidesListView {
     private var data: TableData<TripInfo>!
     private var source: TableDataSource<TripInfo>!
     private var delegate: TableDelegate<TripInfo>! // swiftlint:disable:this weak_delegate
-    internal var paginationEnabled: Bool
+    var paginationEnabled: Bool
 
     private let bookButtonHeight: CGFloat = 64
 

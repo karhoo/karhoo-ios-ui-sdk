@@ -19,7 +19,7 @@ class UISDKErrorFactory {
     }
 }
 
-internal struct KarhooUISDKError: KarhooUIError {
+struct KarhooUISDKError: KarhooUIError {
 
     let code: String
     let message: String

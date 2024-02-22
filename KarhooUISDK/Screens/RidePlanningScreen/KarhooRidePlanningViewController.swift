@@ -6,8 +6,8 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 class KarhooRidePlanningViewController: UIViewController, RidePlanningViewController {
 

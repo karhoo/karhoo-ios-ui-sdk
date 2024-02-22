@@ -1,5 +1,5 @@
 //
-//  QuoteListViewController.swift
+//  KarhooQuoteListViewController.swift
 //  Karhoo
 //
 //

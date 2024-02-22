@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 @testable import KarhooUISDK
 
 final public class MockTripsSorter: TripsSorter {

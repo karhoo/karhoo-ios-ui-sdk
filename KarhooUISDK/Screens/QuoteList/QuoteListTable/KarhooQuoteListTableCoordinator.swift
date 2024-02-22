@@ -1,5 +1,5 @@
 //
-//  QuoteListTableCoordinator.swift
+//  KarhooQuoteListTableCoordinator.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 06/03/2022.

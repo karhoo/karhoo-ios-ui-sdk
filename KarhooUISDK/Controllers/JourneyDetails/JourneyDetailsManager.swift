@@ -1,5 +1,5 @@
 //
-//  BookingStatus.swift
+//  JourneyDetailsManager.swift
 //  KarhooSDK
 //
 //

@@ -1,13 +1,13 @@
 //
-//  KarhooQuoteVehicleCapacityView.swift
+//  QuoteVehicleCapacityView.swift
 //  KarhooUISDK
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 public struct KHVehicleCapacityViewID {
     public static let capacityView = "vehicle_capacity_view"

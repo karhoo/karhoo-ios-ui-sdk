@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 
 #if SWIFT_PACKAGE
 @testable import KarhooUISDKBraintree

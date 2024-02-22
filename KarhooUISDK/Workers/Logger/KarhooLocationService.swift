@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 final public class KarhooLocationService: LocationService {
     let locationManager = CLLocationManager()

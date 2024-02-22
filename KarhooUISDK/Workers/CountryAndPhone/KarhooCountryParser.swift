@@ -6,8 +6,8 @@
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import CoreTelephony
+import UIKit
 
 final class KarhooCountryParser {
     

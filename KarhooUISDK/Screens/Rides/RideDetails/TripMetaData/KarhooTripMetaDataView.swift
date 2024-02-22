@@ -1,5 +1,5 @@
 //
-//  TripMetaDataView.swift
+//  KarhooTripMetaDataView.swift
 //  Karhoo
 //
 //

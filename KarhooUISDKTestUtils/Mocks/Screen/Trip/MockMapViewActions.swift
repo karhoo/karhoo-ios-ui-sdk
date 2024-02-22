@@ -1,5 +1,5 @@
 //
-//  MockMapViewDelegate.swift
+//  MockMapViewActions.swift
 //  KarhooTests
 //
 //

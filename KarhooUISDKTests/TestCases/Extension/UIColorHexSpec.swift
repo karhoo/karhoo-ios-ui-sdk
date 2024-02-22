@@ -6,11 +6,12 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
-/// Due to Swift/iOS SDK limitations there is no quick way to test expected failures if tested code uses some sort of assertion (`assetionFrailure` or `assert`). To be done when some additional testing SDK will be integrated (Quick/Nimble for instance).
+/// Due to Swift/iOS SDK limitations there is no quick way to test expected failures if tested code uses some sort of assertion (`assetionFrailure` or `assert`).
+/// To be done when some additional testing SDK will be integrated (Quick/Nimble for instance).
 class UIColorHexSpec: KarhooTestCase {
 
     func testHexInitialization() {

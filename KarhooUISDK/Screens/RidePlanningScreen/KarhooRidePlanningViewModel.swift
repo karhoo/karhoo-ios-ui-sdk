@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import SwiftUI
 import KarhooSDK
+import SwiftUI
 
 final class KarhooRidePlanningViewModel: ObservableObject {
     

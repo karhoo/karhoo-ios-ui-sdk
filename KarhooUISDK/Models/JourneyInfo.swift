@@ -1,13 +1,13 @@
 //
-//  TripInfo.swift
+//  JourneyInfo.swift
 //  KarhooUISDK
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import KarhooSDK
 
 public struct JourneyInfo: Equatable {

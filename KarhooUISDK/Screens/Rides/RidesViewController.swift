@@ -1,13 +1,13 @@
 //
-//  BookingsRootViewController.swift
+//  RidesViewController.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 final class RidesViewController: UIViewController, RidesView {
 
@@ -67,9 +67,9 @@ final class RidesViewController: UIViewController, RidesView {
     func set(pageViews: [RidesListView]) {
         twoPageViewController.set(delegate: self)
 
-        pageViews.forEach({
-            $0.set(ridesListActions: self)
-        })
+        for pageView in pageViews {
+            pageView.set(ridesListActions: self)
+        }
 
         let viewControllers = pageViews.compactMap { $0 }
         twoPageViewController.set(viewControllers: viewControllers)

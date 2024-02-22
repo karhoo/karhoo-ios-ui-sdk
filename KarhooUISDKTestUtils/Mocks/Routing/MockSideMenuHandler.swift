@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import Foundation
+import UIKit
 @testable import KarhooUISDK
 
 final public class MockSideMenuHandler: SideMenuHandler {

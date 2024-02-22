@@ -1,5 +1,5 @@
 //
-//  BraintreeCardRegistrationFlowSpec.swift
+//  KarhooCardRegistrationFlowSpec.swift
 //  KarhooTests
 //
 //
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 
 #if SWIFT_PACKAGE
 @testable import KarhooUISDKBraintree

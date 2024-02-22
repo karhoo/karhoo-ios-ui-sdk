@@ -6,8 +6,8 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import KarhooSDK
 @testable import KarhooUISDK
 

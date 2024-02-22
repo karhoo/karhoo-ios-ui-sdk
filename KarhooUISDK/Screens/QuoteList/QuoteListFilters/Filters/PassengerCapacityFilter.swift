@@ -1,5 +1,5 @@
 //
-//  PassengerCapacityModel.swift
+//  PassengerCapacityFilter.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 16/06/2022.

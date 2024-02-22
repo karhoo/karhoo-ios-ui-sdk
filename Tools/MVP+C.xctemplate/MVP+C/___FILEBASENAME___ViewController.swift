@@ -1,7 +1,7 @@
 //  ___FILEHEADER___
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 class Karhoo___VARIABLE_productName:identifier___ViewController: UIViewController, BaseViewController, ___VARIABLE_productName:identifier___ViewController {
 

@@ -1,5 +1,5 @@
 //
-//  BookingFlowCoordinator.swift
+//  MainFlowCoordinator.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 04.04.2023.

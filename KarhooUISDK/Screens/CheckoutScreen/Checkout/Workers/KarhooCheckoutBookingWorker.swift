@@ -1,16 +1,16 @@
 //
-//  KarhooCheckoutPaymentWorker.swift
+//  KarhooCheckoutBookingWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 12/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KarhooSDK
-import UIKit
 import SwiftUI
-import Combine
+import UIKit
 
 enum CheckoutBookingState: Equatable {
     case idle

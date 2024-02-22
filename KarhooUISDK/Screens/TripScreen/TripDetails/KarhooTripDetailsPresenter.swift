@@ -1,5 +1,5 @@
 //
-//  KarhooTripScreenDetailsPresenter.swift
+//  KarhooTripDetailsPresenter.swift
 //  Karhoo
 //
 //

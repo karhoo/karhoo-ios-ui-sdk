@@ -1,14 +1,14 @@
 //
-//  MockTripScreen.swift
+//  MockTripView.swift
 //  KarhooTests
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import KarhooSDK
-import CoreLocation
 @testable import KarhooUISDK
 
 final public class MockTripView: MockBaseViewController, TripView {

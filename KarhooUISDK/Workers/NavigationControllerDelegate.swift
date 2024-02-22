@@ -1,5 +1,5 @@
 //
-//  NavigationItemDelegate.swift
+//  NavigationControllerDelegate.swift
 //  Karhoo
 //
 //

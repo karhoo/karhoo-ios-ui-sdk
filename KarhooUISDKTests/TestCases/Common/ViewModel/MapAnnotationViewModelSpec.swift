@@ -7,9 +7,9 @@
 //
 
 
-import XCTest
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
+import XCTest
 
 import KarhooUISDKTestUtils
 @testable import KarhooUISDK

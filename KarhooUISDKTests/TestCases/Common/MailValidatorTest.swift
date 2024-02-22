@@ -6,9 +6,9 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import XCTest
 import KarhooUISDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class MailValidatorTest: KarhooTestCase {

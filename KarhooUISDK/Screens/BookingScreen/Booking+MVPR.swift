@@ -1,15 +1,15 @@
 //
-//  BookingMVP.swift
+//  Booking+MVPR.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import KarhooSDK
-import CoreLocation
-import UIKit
 import Combine
+import CoreLocation
+import KarhooSDK
+import UIKit
 
 /* public interface for controlling booking screen */
 
@@ -27,7 +27,7 @@ public protocol BookingScreen: BaseViewController {
 }
 
 /* internal interface for controlling booking screen */
-internal protocol BookingView: BookingScreen {
+protocol BookingView: BookingScreen {
 
     func reset()
 

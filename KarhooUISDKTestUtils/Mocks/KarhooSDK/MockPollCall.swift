@@ -1,5 +1,5 @@
 //
-//  MockKarhooPollCall.swift
+//  MockPollCall.swift
 //  KarhooTests
 //
 //

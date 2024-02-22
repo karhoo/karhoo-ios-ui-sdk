@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
@@ -152,7 +152,7 @@ final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
                                             .passengerOnBoard,
                                             .completed]
 
-        allocatedStates.forEach({ state in
+        for state in allocatedStates {
             let expectation = XCTestExpectation()
             
             testObject.startMonitoringTrip(trip: mockTrip)
@@ -171,7 +171,7 @@ final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
             wait(for: [expectation], timeout: 1)
 
             tearDown()
-        })
+        }
     }
 
     /**
@@ -187,7 +187,7 @@ final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
                                                     .driverCancelled,
                                                     .noDriversAvailable]
         
-        cancelledBySystemStates.forEach({ state in
+        for state in cancelledBySystemStates {
             let expectation = XCTestExpectation()
             
             testObject.startMonitoringTrip(trip: mockTrip)
@@ -206,7 +206,7 @@ final class KarhooTripAllocationPresenterSpec: KarhooTestCase {
             wait(for: [expectation], timeout: 1)
 
             tearDown()
-        })
+        }
     }
 
     /**

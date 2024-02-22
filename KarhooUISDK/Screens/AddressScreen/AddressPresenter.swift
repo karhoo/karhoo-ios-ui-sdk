@@ -1,18 +1,18 @@
 //
-//  KarhooAddressPresenter.swift
+//  AddressPresenter.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import KarhooSDK
 
 final class KarhooAddressPresenter: AddressPresenter {
 
-    internal let addressMode: AddressType
+    let addressMode: AddressType
     private let selectionCallback: ScreenResultCallback<LocationInfo>
     private var searchProvider: AddressSearchProvider
     private var userLocationProvider: UserLocationProvider

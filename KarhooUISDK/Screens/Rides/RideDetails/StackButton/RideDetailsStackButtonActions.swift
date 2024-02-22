@@ -1,5 +1,5 @@
 //
-//  RideDetailsStackButtonMVP.swift
+//  RideDetailsStackButtonActions.swift
 //  Karhoo
 //
 //

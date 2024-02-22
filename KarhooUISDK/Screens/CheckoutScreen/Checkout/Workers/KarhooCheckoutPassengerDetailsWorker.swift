@@ -1,5 +1,5 @@
 //
-//  KarhooNewCheckoutPassengerDetailsWorker.swift
+//  KarhooCheckoutPassengerDetailsWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 16/01/2023.

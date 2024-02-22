@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-internal protocol RidesView: AnyObject {
+protocol RidesView: AnyObject {
 
     func set(pageViews: [RidesListView])
 
@@ -19,7 +19,7 @@ internal protocol RidesView: AnyObject {
     func set(title: String)
 }
 
-internal protocol RidesPresenter {
+protocol RidesPresenter {
 
     func bind(view: RidesView)
 

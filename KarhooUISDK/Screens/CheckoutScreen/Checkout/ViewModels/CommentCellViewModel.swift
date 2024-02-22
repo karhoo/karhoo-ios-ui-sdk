@@ -6,8 +6,8 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class CommentCellViewModel: DetailsCellViewModel {
 

@@ -1,15 +1,15 @@
 //
-//  PopupDialogBuilder.swift
+//  PopupDialogScreenBuilder.swift
 //  KarhooUISDK
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import KarhooSDK
-import CoreLocation
 
-internal protocol PopupDialogScreenBuilder {
+protocol PopupDialogScreenBuilder {
     func buildPopupDialogScreen(callback: @escaping ScreenResultCallback<Void>) -> Screen
 }

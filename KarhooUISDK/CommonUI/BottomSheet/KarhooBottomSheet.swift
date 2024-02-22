@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  KarhooBottomSheet.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 03.11.2022.

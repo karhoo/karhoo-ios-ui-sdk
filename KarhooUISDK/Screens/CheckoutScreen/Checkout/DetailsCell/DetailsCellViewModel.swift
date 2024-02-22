@@ -1,5 +1,5 @@
 //
-//  DetailsCellModel.swift
+//  DetailsCellViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 14/11/2022.

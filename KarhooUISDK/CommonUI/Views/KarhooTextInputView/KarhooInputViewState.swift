@@ -1,5 +1,5 @@
 //
-//  KarhooInputViewError.swift
+//  KarhooInputViewState.swift
 //  KarhooUISDK
 //
 //  Copyright © 2020 Karhoo All rights reserved.

@@ -5,8 +5,8 @@
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
-import UIKit
 import KarhooSDK
+import UIKit
 
 enum VehicleTag: String {
     case electric, hybrid, wheelchair, childSeat, taxi, executive, luxury

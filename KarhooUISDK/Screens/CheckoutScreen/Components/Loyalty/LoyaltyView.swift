@@ -6,9 +6,9 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import KarhooSDK
+import SwiftUI
 
 struct LoyaltyView: View {
     
@@ -205,7 +205,6 @@ struct LoyaltyView: View {
                 Text(balanceTitle)
                     .font(Font(KarhooUI.fonts.bodySemibold()))
                     .foregroundColor(Color(KarhooUI.colors.white))
-
                     .padding(.vertical, UIConstants.Spacing.small)
                     .padding(.horizontal, UIConstants.Spacing.medium)
                     .background(

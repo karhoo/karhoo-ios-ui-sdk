@@ -13,7 +13,7 @@ public final class LoadingView: UIView {
     private var loadingLabel: UILabel!
     private var activityIndicatorView: UIActivityIndicatorView!
     private let animationDuration = 0.2
-    internal var shouldHideWhenAlphaZero: Bool = false
+    var shouldHideWhenAlphaZero: Bool = false
     private var backgroundAlpha: CGFloat?
     private var didSetupConstraints: Bool = false
     

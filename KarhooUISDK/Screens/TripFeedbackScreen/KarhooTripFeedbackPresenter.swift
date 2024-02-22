@@ -1,5 +1,5 @@
 //
-//  KarhooFeedbackPresenter.swift
+//  KarhooTripFeedbackPresenter.swift
 //  KarhooUISDK
 //
 //
@@ -11,7 +11,7 @@ import KarhooSDK
 
 final class KarhooTripFeedbackPresenter: TripFeedbackPresenter {
     
-    internal var feedbackPayload = [[String: Any]]()
+    var feedbackPayload = [[String: Any]]()
     private let analyticsService: AnalyticsService
     private let tripId: String
     private let resultCallback: ScreenResultCallback<Void>

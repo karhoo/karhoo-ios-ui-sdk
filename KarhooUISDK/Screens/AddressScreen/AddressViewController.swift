@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
+import UIKit
 
 public struct KHAddressViewID {
     public static let searchBarView = "search_bar"

@@ -1,5 +1,5 @@
 //
-//  TestAnalytics.swift
+//  MockAnalytics.swift
 //  Karhoo
 //
 //

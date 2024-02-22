@@ -1,5 +1,5 @@
 //
-//  MockBookingDetailsObserver.swift
+//  MockJourneyDetailsObserver.swift
 //  KarhooTests
 //
 //

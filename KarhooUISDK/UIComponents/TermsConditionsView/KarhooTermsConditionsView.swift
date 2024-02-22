@@ -6,8 +6,8 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct KarhooTermsConditionsView: View {
 

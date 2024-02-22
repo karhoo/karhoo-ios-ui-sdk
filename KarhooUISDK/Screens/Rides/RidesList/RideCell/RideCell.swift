@@ -7,8 +7,8 @@
 //
 // swiftlint:disable function_parameter_count
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 final class RideCell: UITableViewCell {
     

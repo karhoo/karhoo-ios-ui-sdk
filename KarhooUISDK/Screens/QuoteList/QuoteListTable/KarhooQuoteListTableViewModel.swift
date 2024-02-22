@@ -1,5 +1,5 @@
 //
-//  QuoteListTablePresenter.swift
+//  KarhooQuoteListTableViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/02/2022.
@@ -79,7 +79,8 @@ class KarhooQuoteListTableViewModel: QuoteListTableViewModel {
         case .empty(reason: .originAndDestinationAreTheSame):
             return UITexts.Errors.errorPickupAndDestinationSameMessage
         case .empty(reason: .noAvailabilityInRequestedArea(let isPrebook)):
-            return isPrebook ? UITexts.Booking.noAvailabilityForPrebookRideSubtitle : nil // for ASAP case we are showing attributedMessageForPresentedError
+            // for ASAP case we are showing attributedMessageForPresentedError
+            return isPrebook ? UITexts.Booking.noAvailabilityForPrebookRideSubtitle : nil
         case .empty(reason: .noQuotesAfterFiltering):
             return UITexts.Errors.errorNoResultsForFilterMessage
         case .empty(reason: .destinationOrOriginEmpty):

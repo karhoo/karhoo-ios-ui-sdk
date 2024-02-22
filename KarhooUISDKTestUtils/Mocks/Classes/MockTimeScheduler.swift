@@ -1,5 +1,5 @@
 //
-//  TestTimeScheduler.swift
+//  MockTimeScheduler.swift
 //  KarhooTests
 //
 //

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import KarhooSDK
-import CoreLocation
 
 public protocol RidesListScreenBuilder {
     func buildRidesListScreen(sortOrder: ComparisonResult,

@@ -7,11 +7,11 @@
 ////
 //
 import Foundation
-import XCTest
-import UIKit
-import SnapshotTesting
 import Nimble
 import Quick
+import SnapshotTesting
+import UIKit
+import XCTest
 
 public func testSnapshot<View: UIView>(
     _ view: View,

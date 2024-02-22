@@ -1,5 +1,5 @@
 //
-//  BookingsRootPresenter.swift
+//  KarhooRidesPresenter.swift
 //  Karhoo
 //
 //

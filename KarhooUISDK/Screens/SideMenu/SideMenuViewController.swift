@@ -1,5 +1,5 @@
 //
-//  SideMenuContoller.swift
+//  SideMenuViewController.swift
 //  SideMenu
 //
 //

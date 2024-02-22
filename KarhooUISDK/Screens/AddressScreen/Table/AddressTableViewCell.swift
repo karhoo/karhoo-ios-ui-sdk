@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 public struct KHAddressTableViewCellID {
     public static let icon = "icon_image"

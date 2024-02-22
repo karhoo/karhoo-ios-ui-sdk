@@ -1,5 +1,5 @@
 //
-//  FeatureFlagsService.swift
+//  FeatureFlagsUpdater.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 15/04/2023.

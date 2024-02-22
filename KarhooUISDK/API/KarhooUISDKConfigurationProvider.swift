@@ -1,5 +1,5 @@
 //
-//  UISDKSettings.swift
+//  KarhooUISDKConfigurationProvider.swift
 //  KarhooUISDK
 //
 //

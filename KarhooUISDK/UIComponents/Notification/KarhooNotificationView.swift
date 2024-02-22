@@ -1,5 +1,5 @@
 //
-//  KarhooNotificationsView.swift
+//  KarhooNotificationView.swift
 //  Karhoo
 //
 //

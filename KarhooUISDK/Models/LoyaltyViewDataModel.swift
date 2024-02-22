@@ -1,5 +1,5 @@
 //
-//  LoyaltyViewRequest.swift
+//  LoyaltyViewDataModel.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 29.11.2021.

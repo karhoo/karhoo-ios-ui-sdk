@@ -1,5 +1,5 @@
 //
-//  UINAvigationController+navigationCompletions.swift
+//  UINavigationController+navigationCompletions.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 09/03/2022.

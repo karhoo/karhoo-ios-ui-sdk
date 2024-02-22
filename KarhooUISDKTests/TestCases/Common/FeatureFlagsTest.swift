@@ -6,10 +6,10 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import XCTest
 import Foundation
 import KarhooUISDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class FeatureFlagsTest: KarhooTestCase {

@@ -1,5 +1,5 @@
 //
-//  SharedQuoteFilters.swift
+//  KarhooQuoteFilters.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 05.04.2023.

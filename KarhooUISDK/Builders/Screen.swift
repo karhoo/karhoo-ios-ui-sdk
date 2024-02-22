@@ -1,5 +1,5 @@
 //
-//  UIFactory.swift
+//  Screen.swift
 //  KarhooUISDK
 //
 //

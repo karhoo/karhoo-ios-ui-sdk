@@ -47,7 +47,8 @@ final class KarhooBookingMapPresenter: BookingMapPresenter {
         reverseGeolocate: Bool = true,
         onLocationPermissionDenied: (() -> Void)?) {
             self.onLocationPermissionDenied = onLocationPermissionDenied
-            [pickupOnlyStrategy, destinationSetStrategy, emptyBookingStrategy].forEach { strategy in
+            let strategies = [pickupOnlyStrategy, destinationSetStrategy, emptyBookingStrategy]
+            for strategy in strategies {
                 strategy.load(
                     map: map,
                     reverseGeolocate: reverseGeolocate,

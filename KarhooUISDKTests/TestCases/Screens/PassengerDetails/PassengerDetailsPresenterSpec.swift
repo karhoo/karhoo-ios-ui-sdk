@@ -6,9 +6,9 @@
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class PassengerDetailsPresenterSpec: KarhooTestCase {

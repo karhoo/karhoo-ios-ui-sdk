@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
 
 final class BookingAddressBarPresenter: AddressBarPresenter {
 

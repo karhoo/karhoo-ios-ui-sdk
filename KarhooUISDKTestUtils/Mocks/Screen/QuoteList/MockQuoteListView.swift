@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
 
 final public class MockQuoteListView: UIViewController, QuoteListViewController {

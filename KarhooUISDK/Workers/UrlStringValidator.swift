@@ -1,5 +1,5 @@
 //
-//  UrlValidator.swift
+//  UrlStringValidator.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 02/02/2022.

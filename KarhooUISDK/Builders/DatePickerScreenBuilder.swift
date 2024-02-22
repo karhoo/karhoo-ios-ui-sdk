@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal protocol DatePickerScreenBuilder {
+protocol DatePickerScreenBuilder {
     func buildDatePickerScreen(startDate: Date?,
                                timeZone: TimeZone,
                                callback: @escaping ScreenResultCallback<Date>) -> Screen

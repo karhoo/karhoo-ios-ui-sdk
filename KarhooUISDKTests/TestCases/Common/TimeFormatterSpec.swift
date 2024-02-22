@@ -6,8 +6,8 @@
 //  Copyright © 2021 Flit Technologies Ltd. All rights reserved.
 //
 
-import XCTest
 import Foundation
+import XCTest
 
 import KarhooUISDKTestUtils
 @testable import KarhooUISDK

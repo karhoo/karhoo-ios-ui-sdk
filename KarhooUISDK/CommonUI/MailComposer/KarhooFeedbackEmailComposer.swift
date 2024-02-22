@@ -1,14 +1,14 @@
 //
-//  MailComposer.swift
+//  KarhooFeedbackEmailComposer.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
 import MessageUI
+import UIKit
 
 public protocol FeedbackEmailComposer: AnyObject {
     func showFeedbackMail() -> Bool

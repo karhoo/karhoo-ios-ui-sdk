@@ -6,8 +6,8 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import CoreLocation.CLLocationManager
+import Foundation
 
 protocol LocationPermissionProvider: AnyObject {
     var isLocationPermissionGranted: Bool { get }

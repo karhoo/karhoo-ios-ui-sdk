@@ -1,5 +1,5 @@
 //
-//  FeedbackScreenBuilder.swift
+//  TripFeedbackScreenBuilder.swift
 //  KarhooUISDK
 //
 //
