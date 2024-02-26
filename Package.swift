@@ -68,7 +68,6 @@ let package = Package(
                 .target(name: "KarhooUISDK"),
                 .target(name: "KarhooUISDKAdyen"),
                 .target(name: "KarhooUISDKBraintree"),
-                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 .product(name: "Quick", package: "Quick"),
                 .product(name: "Nimble", package: "Nimble")
                 
