@@ -248,7 +248,6 @@
 		510522EA284F43CE001DA60F /* (null) in Sources */ = {isa = PBXBuildFile; };
 		510857BB292E3EBF00EC8DA6 /* LoyaltyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BA292E3EBF00EC8DA6 /* LoyaltyInformationView.swift */; };
 		510857BE292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510857BD292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift */; };
-		510DBEBE293A3AE6008CE9E7 /* Date+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DBEBD293A3AE6008CE9E7 /* Date+Mock.swift */; };
 		510F32AC29683EBD00EE5158 /* QuoteValidityWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F32AB29683EBD00EE5158 /* QuoteValidityWorker.swift */; };
 		511050C7294B6397003B6E37 /* BookingConfirmationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511050C6294B6397003B6E37 /* BookingConfirmationBuilder.swift */; };
 		511FA18629D457BB00B88112 /* UIStatusBarStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511FA18529D457BB00B88112 /* UIStatusBarStyle+Extensions.swift */; };
@@ -993,7 +992,6 @@
 		51000D3E29000B5800C4C4A5 /* MockQuoteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteListPresenter.swift; sourceTree = "<group>"; };
 		510857BA292E3EBF00EC8DA6 /* LoyaltyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyInformationView.swift; sourceTree = "<group>"; };
 		510857BD292E5A9E00EC8DA6 /* LoyaltyInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyInformationViewModel.swift; sourceTree = "<group>"; };
-		510DBEBD293A3AE6008CE9E7 /* Date+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Mock.swift"; sourceTree = "<group>"; };
 		510F32AB29683EBD00EE5158 /* QuoteValidityWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteValidityWorker.swift; sourceTree = "<group>"; };
 		511050C6294B6397003B6E37 /* BookingConfirmationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingConfirmationBuilder.swift; sourceTree = "<group>"; };
 		511A0A60283559A300D119E0 /* PaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
@@ -1653,7 +1651,6 @@
 				0949545D2201C3E900D930C0 /* MockUserLocationProvider.swift */,
 				09022B232239133700C4A7EE /* MockViewController.swift */,
 				51DB734728FED1BB00516343 /* JourneyInfo+mock.swift */,
-				510DBEBD293A3AE6008CE9E7 /* Date+Mock.swift */,
 				51F3D2BC294246180005A1FB /* MockDateProvider.swift */,
 				51F4CBD22992BCAD005865B5 /* MockVehicleRulesProvider.swift */,
 				51F4CBD62992BCE7005865B5 /* MockQuoteValidityWorker.swift */,
@@ -4472,7 +4469,6 @@
 				51BF1E892913D3360000BA7E /* MockViewController.swift in Sources */,
 				51BF1E5E2913D2DD0000BA7E /* MockAppStateNotifier.swift in Sources */,
 				51BF1E982913D3480000BA7E /* MockTripScreenBuilder.swift in Sources */,
-				510DBEBE293A3AE6008CE9E7 /* Date+Mock.swift in Sources */,
 				51BF1E462913D2BE0000BA7E /* MockRideDetailsStackButtonActions.swift in Sources */,
 				5156A15A2913EF7500A70ED8 /* TestUtil.swift in Sources */,
 				51BF1E092913D27F0000BA7E /* MockKarhooExecutable.swift in Sources */,
