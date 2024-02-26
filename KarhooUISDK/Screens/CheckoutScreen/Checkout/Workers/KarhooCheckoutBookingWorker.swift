@@ -1,16 +1,16 @@
 //
-//  KarhooCheckoutPaymentWorker.swift
+//  KarhooCheckoutBookingWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 12/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KarhooSDK
-import UIKit
 import SwiftUI
-import Combine
+import UIKit
 
 enum CheckoutBookingState: Equatable {
     case idle
@@ -233,11 +233,11 @@ final class KarhooCheckoutBookingWorker: CheckoutBookingWorker {
             return
         }
         var flight: String? = flightNumber
-        if let flightText = flight, (flightText.isEmpty || flightText.isWhitespace) {
+        if let flightText = flight, flightText.isEmptyOrWhitespace {
             flight = nil
         }
         var train: String? = trainNumber
-        if let trainText = train, (trainText.isEmpty || trainText.isWhitespace) {
+        if let trainText = train, trainText.isEmptyOrWhitespace {
             train = nil
         }
 

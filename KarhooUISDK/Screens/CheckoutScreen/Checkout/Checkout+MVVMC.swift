@@ -6,10 +6,10 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
-import SwiftUI
 import Combine
+import Foundation
 import KarhooSDK
+import SwiftUI
 
 public protocol CheckoutCoordinator: KarhooUISDKSceneCoordinator {
 }

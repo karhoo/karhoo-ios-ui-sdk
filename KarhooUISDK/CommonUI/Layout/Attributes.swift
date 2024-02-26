@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import QuartzCore
+import UIKit
 
 // Attributes are still being used for the old views of datetime selection and ride list
 // For this reason we are not removing this class for the time being

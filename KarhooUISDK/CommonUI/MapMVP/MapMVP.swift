@@ -7,8 +7,8 @@
 //
 
 import CoreLocation
-import UIKit
 import KarhooSDK
+import UIKit
 
 protocol MapView: UIView {
 

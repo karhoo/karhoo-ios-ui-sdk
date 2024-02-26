@@ -6,8 +6,8 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import EventKit
+import Foundation
 import KarhooSDK
 
 protocol AddToCalendarWorker: AnyObject {

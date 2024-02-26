@@ -1,5 +1,5 @@
 //
-//  MockBookingStatus.swift
+//  MockJourneyDetailsManager.swift
 //  Karhoo
 //
 //

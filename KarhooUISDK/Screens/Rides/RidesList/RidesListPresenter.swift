@@ -1,5 +1,5 @@
 //
-//  BookingsListPresenter.swift
+//  RidesListPresenter.swift
 //  Karhoo
 //
 //
@@ -13,7 +13,7 @@ final class KarhooRidesListPresenter: RidesListPresenter, TripsProviderDelegate 
     private let tripsSorter: TripsSorter
     private var tripsProvider: TripsProvider
     private weak var ridesListView: RidesListView?
-    internal var listOfTrips: [TripInfo] = []
+    var listOfTrips: [TripInfo] = []
     private let rideDetailsScreenBuilder: RideDetailsScreenBuilder
 
     init(tripsSorter: TripsSorter = KarhooTripsSorter(sortOrder: .orderedSame),

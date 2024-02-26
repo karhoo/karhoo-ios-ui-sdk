@@ -20,7 +20,7 @@ public protocol ScreenBuilders {
     var checkoutScreenBuilder: CheckoutScreenBuilder { get }
 }
 
-internal protocol InternalScreenBuilders {
+protocol InternalScreenBuilders {
     var tripSummaryScreenBuilder: TripSummaryScreenBuilder { get }
     var datePickerScreenBuilder: DatePickerScreenBuilder { get }
     var popupDialogScreenBuilder: PopupDialogScreenBuilder { get }

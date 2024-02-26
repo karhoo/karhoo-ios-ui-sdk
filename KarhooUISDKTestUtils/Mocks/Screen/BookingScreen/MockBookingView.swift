@@ -1,5 +1,5 @@
 //
-//  TestBookingScreen.swift
+//  MockBookingView.swift
 //  Karhoo
 //
 //

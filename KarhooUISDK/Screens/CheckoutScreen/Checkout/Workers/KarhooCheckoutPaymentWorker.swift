@@ -6,9 +6,9 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KarhooSDK
-import Combine
 import UIKit
 
 protocol CheckoutPaymentWorker: AnyObject {

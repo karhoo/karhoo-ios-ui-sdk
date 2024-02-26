@@ -6,8 +6,8 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 import UIKit
 
 protocol QuoteListTableCoordinator: KarhooUISDKSceneCoordinator {

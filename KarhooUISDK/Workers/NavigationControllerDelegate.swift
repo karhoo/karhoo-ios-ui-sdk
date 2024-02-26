@@ -1,5 +1,5 @@
 //
-//  NavigationItemDelegate.swift
+//  NavigationControllerDelegate.swift
 //  Karhoo
 //
 //
@@ -86,9 +86,9 @@ private final class ModalAnimation: NSObject, UIViewControllerAnimatedTransition
             to.view.frame = hiddenFrame
 
             UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
-                                       animations: { () -> Void in
+                                       animations: { () in
                 to.view.frame = transitionContext.finalFrame(for: to)
-            }, completion: { (completed: Bool) -> Void in
+            }, completion: { (completed: Bool) in
                 transitionContext.completeTransition(completed)
             })
         } else {
@@ -97,9 +97,9 @@ private final class ModalAnimation: NSObject, UIViewControllerAnimatedTransition
             containerView.addSubview(from.view)
 
             UIView.animate(withDuration: transitionDuration(using: transitionContext),
-                           animations: { () -> Void in
+                           animations: { () in
                 from.view.frame = hiddenFrame
-            }, completion: { (completed: Bool) -> Void in
+            }, completion: { (completed: Bool) in
                 transitionContext.completeTransition(completed)
             })
         }

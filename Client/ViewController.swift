@@ -5,10 +5,10 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
-import KarhooUISDK
 import CoreLocation
 import KarhooSDK
+import KarhooUISDK
+import UIKit
 #if canImport(KarhooUISDKBraintree)
 import KarhooUISDKBraintree
 #endif

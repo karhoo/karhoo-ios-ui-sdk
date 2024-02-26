@@ -1,5 +1,5 @@
 //
-//  UIControl+addTouchAnimation.swift
+//  UIControl+AddTouchAnimation.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 28/03/2022.

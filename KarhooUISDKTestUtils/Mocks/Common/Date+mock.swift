@@ -1,5 +1,5 @@
 //
-//  Date+Mock.swift
+//  Date+mock.swift
 //  KarhooUISDKTestUtils
 //
 //  Created by Aleksander Wedrychowski on 02/12/2022.

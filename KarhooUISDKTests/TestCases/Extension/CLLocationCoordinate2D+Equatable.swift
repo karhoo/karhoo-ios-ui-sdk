@@ -6,8 +6,8 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 extension CLLocationCoordinate2D: Equatable {
     static public func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {

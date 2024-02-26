@@ -6,10 +6,10 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 final class KarhooTripPresenterSpec: KarhooTestCase {
@@ -84,7 +84,7 @@ final class KarhooTripPresenterSpec: KarhooTestCase {
     func testTripAndDriverLocationUpdatesDriverEnRoute() {
         let driverCanBeTrackedStates: [TripState] = [.driverEnRoute, .arrived, .passengerOnBoard]
         
-        driverCanBeTrackedStates.forEach { (state) in
+        for state in driverCanBeTrackedStates {
             testObject = nil
           
             simulateShowingScreen(tripState: state)

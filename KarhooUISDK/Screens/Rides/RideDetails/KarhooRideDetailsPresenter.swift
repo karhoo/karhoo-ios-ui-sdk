@@ -1,17 +1,17 @@
 //
-//  RideDetailsPresenter.swift
+//  KarhooRideDetailsPresenter.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 
 final class KarhooRideDetailsPresenter: RideDetailsPresenter {
 
-    internal var trip: TripInfo
+    var trip: TripInfo
     private let mailComposer: FeedbackEmailComposer
     private let tripService: TripService
     private var cancelRideBehaviour: CancelRideBehaviourProtocol?

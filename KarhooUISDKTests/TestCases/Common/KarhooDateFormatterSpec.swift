@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
+import KarhooUISDKTestUtils
 import XCTest
 @testable import KarhooUISDK
-import KarhooUISDKTestUtils
 
 // NOTE: These tests are assuming the simulator's region is set to UK - not USA.
 class KarhooDateFormatterSpec: KarhooTestCase {

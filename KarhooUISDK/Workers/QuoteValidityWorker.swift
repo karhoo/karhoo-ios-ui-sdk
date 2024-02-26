@@ -6,8 +6,8 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 
 protocol QuoteValidityWorker {
     func invalidate()

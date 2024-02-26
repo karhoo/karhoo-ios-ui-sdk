@@ -4,8 +4,8 @@
 //
 
 import Foundation
-import UIKit
 import KarhooSDK
+import UIKit
 
 final class VehicleCapacityView: UIStackView {
 

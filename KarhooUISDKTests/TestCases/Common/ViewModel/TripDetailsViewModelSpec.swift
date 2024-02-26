@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class TripDetailsViewModelSpec: KarhooTestCase {
@@ -38,7 +38,8 @@ class TripDetailsViewModelSpec: KarhooTestCase {
       * Then: The vehicle model and registration should be shown
       */
     func testViewModelShowsVehicleRegistration() {
-        [TripState.driverEnRoute, TripState.arrived, TripState.passengerOnBoard, TripState.completed].forEach { state in
+        let states = [TripState.driverEnRoute, TripState.arrived, TripState.passengerOnBoard, TripState.completed]
+        for state in states {
             let trip = TestUtil.getRandomTrip(dateSet: true, state: state)
             testObject = TripDetailsViewModel(trip: trip)
             XCTAssertEqual(testObject.vehicleInformation,

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class TripMetaDataViewModelSpec: KarhooTestCase {
@@ -81,13 +81,13 @@ class TripMetaDataViewModelSpec: KarhooTestCase {
     func testUpcomingRideQuote() {
         let states = TripStatesGetter().getStatesForTripRequest(type: .upcoming)
 
-        states.forEach({ state in
+        for state in states {
             let quote = TestUtil.getRandomTripQuote(quoteType: .fixed, total: 1000)
             let upcomingTrip = TestUtil.getRandomTrip(state: state, quote: quote)
             testObject = TripMetaDataViewModel(trip: upcomingTrip)
             XCTAssertTrue(testObject.baseFareHidden)
             XCTAssertEqual(testObject.price, "£10.00")
-        })
+        }
     }
 
     /**
@@ -99,13 +99,13 @@ class TripMetaDataViewModelSpec: KarhooTestCase {
     func testUpcomingRideBaseFareQuote() {
         let states = TripStatesGetter().getStatesForTripRequest(type: .upcoming)
 
-        states.forEach({ state in
+        for state in states {
             let quote = TestUtil.getRandomTripQuote(quoteType: .estimated, total: 1000)
             let upcomingTrip = TestUtil.getRandomTrip(state: state, quote: quote)
             testObject = TripMetaDataViewModel(trip: upcomingTrip)
             XCTAssertFalse(testObject.baseFareHidden)
             XCTAssertEqual(testObject.price, "£10.00")
-        })
+        }
     }
 
     /**

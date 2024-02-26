@@ -6,8 +6,8 @@
 //  Copyright © 2016 Bespoke Code AB. All rights reserved.
 //
 
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 private typealias LoadConstraintsArgumentTuple =

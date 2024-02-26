@@ -305,7 +305,7 @@ extension KarhooTextInputView: UITextViewDelegate {
         return true
     }
     
-    internal func textViewDidChange(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: frame.width, height: .infinity)
         textView.sizeThatFits(size)
         delegate?.didChangeCharacterInSet(identifier: accessibilityIdentifier!)

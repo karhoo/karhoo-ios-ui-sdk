@@ -1,13 +1,13 @@
 //
-//  MockMapView.swift
+//  MockKarhooMapView.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import CoreLocation
+import UIKit
 @testable import KarhooUISDK
 
 final public class MockKarhooMapView: UIView, MapView {

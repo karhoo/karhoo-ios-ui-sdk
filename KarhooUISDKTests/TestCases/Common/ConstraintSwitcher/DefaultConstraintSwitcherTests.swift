@@ -266,7 +266,7 @@ class DefaultConstraintSwitcherTests: KarhooTestCase {
 
     fileprivate func constraintsActive(_ constraints: [NSLayoutConstraint]) -> Bool {
         var allActive = true
-        constraints.forEach { (constraint: NSLayoutConstraint) in
+        for constraint in constraints {
             if constraint.isActive == false {
                 allActive = false
             }

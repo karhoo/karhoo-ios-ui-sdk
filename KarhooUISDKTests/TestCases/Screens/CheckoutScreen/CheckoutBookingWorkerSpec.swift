@@ -7,11 +7,11 @@
 //
 
 import Combine
-import Quick
-import Nimble
-import SwiftUI
 import KarhooSDK
 import KarhooUISDKTestUtils
+import Nimble
+import Quick
+import SwiftUI
 @testable import KarhooUISDK
 
 final class KarhooCheckoutBookingWorkerSpec: QuickSpec {

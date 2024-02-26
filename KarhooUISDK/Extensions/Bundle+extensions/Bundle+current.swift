@@ -1,11 +1,11 @@
 //
-//  Bundle+Utils.swift
+//  Bundle+current.swift
 //  KarhooUISDK
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 extension Bundle {
     public static var current: Bundle {

@@ -1,14 +1,14 @@
 //
-//  KarhooBookingStatusSpec.swift
+//  KarhooJourneyDetailsManagerSpec.swift
 //  KarhooSDK
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class KarhooJourneyDetailsManagerSpec: KarhooTestCase {

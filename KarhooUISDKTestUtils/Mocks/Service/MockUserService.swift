@@ -1,5 +1,5 @@
 //
-//  MockUserServiceMockUserService.swift
+//  MockUserService.swift
 //  Karhoo
 //
 //

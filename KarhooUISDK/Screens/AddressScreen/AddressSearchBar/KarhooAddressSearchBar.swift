@@ -1,5 +1,5 @@
 //
-//  AddressSearchBar.swift
+//  KarhooAddressSearchBar.swift
 //  Karhoo
 //
 //

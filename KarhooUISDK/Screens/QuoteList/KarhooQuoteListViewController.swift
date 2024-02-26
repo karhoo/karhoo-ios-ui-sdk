@@ -1,5 +1,5 @@
 //
-//  QuoteListViewController.swift
+//  KarhooQuoteListViewController.swift
 //  Karhoo
 //
 //
@@ -115,10 +115,6 @@ final class KarhooQuoteListViewController: UIViewController, BaseViewController,
         super.viewWillAppear(animated)
         setupNavigationBar()
         viewModel?.viewWillAppear()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

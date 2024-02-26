@@ -1,5 +1,5 @@
 //
-//  TestMailComposer.swift
+//  MockFeedbackMailComposter.swift
 //  Karhoo
 //
 //

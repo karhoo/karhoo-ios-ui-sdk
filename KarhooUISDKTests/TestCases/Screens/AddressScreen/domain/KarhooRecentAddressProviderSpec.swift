@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class KarhooRecentAddressProviderSpec: KarhooTestCase {
@@ -95,7 +95,7 @@ class KarhooRecentAddressProviderSpec: KarhooTestCase {
         let recents = testObject.getRecents()
 
         XCTAssert(recents.count == 1)
-        recents.forEach { (location: LocationInfo) in
+        for location in recents {
             XCTAssert(location.placeId == testAddress.placeId)
         }
     }

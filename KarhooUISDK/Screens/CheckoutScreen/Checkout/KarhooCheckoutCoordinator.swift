@@ -1,5 +1,5 @@
 //
-//  CheckoutCoordinator.swift
+//  KarhooCheckoutCoordinator.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import UIKit
 import KarhooSDK
 import SwiftUI
+import UIKit
 
 final class KarhooCheckoutCoordinator: CheckoutCoordinator {
 

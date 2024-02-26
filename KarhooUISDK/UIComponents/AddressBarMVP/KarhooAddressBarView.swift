@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
-import KarhooSDK
 import CoreLocation
+import KarhooSDK
+import UIKit
 
 public struct KHAddressBarViewID {
     public static let pickUpIcon = "pickUp_icon"

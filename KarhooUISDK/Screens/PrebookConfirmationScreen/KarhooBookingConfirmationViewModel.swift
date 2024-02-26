@@ -1,5 +1,5 @@
 //
-//  BookingConfirmationViewModel.swift
+//  KarhooBookingConfirmationViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 18.11.2022.

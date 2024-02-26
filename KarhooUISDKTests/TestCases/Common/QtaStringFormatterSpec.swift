@@ -6,10 +6,10 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import Foundation
 import KarhooUISDK
 import KarhooUISDKTestUtils
+import XCTest
 
 final class QtaStringFormatterSpec: KarhooTestCase {
 

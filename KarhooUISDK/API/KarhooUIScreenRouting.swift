@@ -62,27 +62,28 @@ public final class UISDKScreenRouting: Routing {
     public func bookingConfirmation() -> BookingConfirmationBuilder {
         return routing.bookingConfirmationBuilder
     }
-    internal func datePicker() -> DatePickerScreenBuilder {
+    
+    func datePicker() -> DatePickerScreenBuilder {
         return internalRouting.datePickerScreenBuilder
     }
 
-    internal func tripSummary() -> TripSummaryScreenBuilder {
+    func tripSummary() -> TripSummaryScreenBuilder {
         return internalRouting.tripSummaryScreenBuilder
     }
 
-    internal func sideMenu() -> SideMenuBuilder {
+    func sideMenu() -> SideMenuBuilder {
         return internalRouting.sideMenuBuilder
     }
 
-    internal func popUpDialog() -> PopupDialogScreenBuilder {
+    func popUpDialog() -> PopupDialogScreenBuilder {
         return internalRouting.popupDialogScreenBuilder
     }
 
-    internal func tripFeedbackScreen() -> TripFeedbackScreenBuilder {
+    func tripFeedbackScreen() -> TripFeedbackScreenBuilder {
         return internalRouting.tripFeedbackScreenBuilder
     }
     
-    internal func bottomSheetScreen() -> BottomSheetScreenBuilder {
+    func bottomSheetScreen() -> BottomSheetScreenBuilder {
         return internalRouting.bottomSheetScreenBuilder
     }
 }

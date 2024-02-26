@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class EmptyBookingMapStrategySpec: KarhooTestCase {

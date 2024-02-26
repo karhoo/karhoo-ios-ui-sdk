@@ -1,5 +1,6 @@
 --acronyms 
 --allman false
+--anonymousforeach ignore
 --assetliterals visual-width
 --beforemarks 
 --binarygrouping 4,8
@@ -37,7 +38,7 @@
 --markcategories true
 --markextensions always
 --marktypes always
---maxwidth 140
+--maxwidth 200
 --modifierorder 
 --nevertrailing 
 --nospaceoperators 

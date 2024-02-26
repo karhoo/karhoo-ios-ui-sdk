@@ -1,5 +1,5 @@
 //
-//  KarhooFeedbackView.swift
+//  KarhooTripFeedbackViewController.swift
 //  KarhooUISDK
 //
 //

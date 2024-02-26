@@ -6,9 +6,9 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 struct KarhooRepresentedMapView: UIViewRepresentable, RepresentedMapView {
     typealias UIViewType = KarhooMKMapView

@@ -1,5 +1,5 @@
 //
-//  KarhooAnalitycsServiceWithNotifications.swift
+//  KarhooAnalyticsServiceWithNotifications.swift
 //  Client
 //
 //  Created by Bartlomiej Sopala on 17/08/2022.

@@ -1,14 +1,14 @@
 //
-//  KarhooTripSummaryInfoPresenterSpec.swift
+//  KarhooTripSummaryPresenterSpec.swift
 //  KarhooTests
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class KarhooTripSummaryPresenterSpec: KarhooTestCase {

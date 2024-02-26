@@ -42,9 +42,9 @@ struct QuoteDatesHelper {
     private static var expirationDates: [String: Date] = [:]
 
     static func setExpirationDate(of quotes: Quotes) {
-        quotes.all.forEach {
+        for item in quotes.all {
             setExpirationDate(
-                of: $0,
+                of: item,
                 date: Date().addingTimeInterval(TimeInterval(quotes.validity))
             )
         }

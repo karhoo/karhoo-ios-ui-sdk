@@ -1,13 +1,13 @@
 //
-//  UIView+extension.swift
+//  UIView+Extensions.swift
 //  TripVIew
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import CoreGraphics
+import UIKit
 
 extension UIView {
  

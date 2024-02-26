@@ -1,5 +1,5 @@
 //
-//  CheckoutPriceDetailsView.swift
+//  KarhooCheckoutPriceDetailsView.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 12.01.2023.

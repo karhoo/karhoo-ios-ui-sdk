@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 final class KarhooDestinationEtaSpec: KarhooTestCase {
@@ -176,7 +176,7 @@ final class KarhooDestinationEtaSpec: KarhooTestCase {
                                        .unknown,
                                        .completed]
         
-        testStates.forEach { (state) in
+        for state in testStates {
             mockTripService.trackTripStatusCall.triggerPollSuccess(state)
             
             XCTAssertTrue(mockDestinationEtaView.hideEtaCalled)

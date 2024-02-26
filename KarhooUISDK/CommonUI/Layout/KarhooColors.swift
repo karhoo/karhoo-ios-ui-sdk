@@ -1,5 +1,5 @@
 //
-//  KarhooUI.colors.swift
+//  KarhooColors.swift
 //  Karhoo
 //
 //

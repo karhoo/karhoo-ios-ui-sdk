@@ -1,5 +1,5 @@
 //
-//  StackBaseView.swift
+//  BaseStackView.swift
 //  DetailRatingView
 //
 //

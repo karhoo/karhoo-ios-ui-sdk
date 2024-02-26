@@ -1,16 +1,16 @@
 //
-//  QuoteListSnapshotSpec2.swift
+//  QuoteListSnapshotSpec.swift
 //  KarhooUISDKUITests
 //
 //  Created by Aleksander Wedrychowski on 04/11/2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import Quick
-import Nimble
-import SnapshotTesting
 import KarhooSDK
 import KarhooUISDKTestUtils
+import Nimble
+import Quick
+import SnapshotTesting
 @testable import KarhooUISDK
 
 class QuoteListSnapshotSpec: QuickSpec {

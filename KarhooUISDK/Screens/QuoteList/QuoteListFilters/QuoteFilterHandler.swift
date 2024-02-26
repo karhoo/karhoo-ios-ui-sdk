@@ -1,5 +1,5 @@
 //
-//  QuoteListFilterModelHandler.swift
+//  QuoteFilterHandler.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 13/06/2022.
@@ -45,7 +45,7 @@ class KarhooQuoteFilterHandler: QuoteFilterHandler {
 
     private func segregate(_ filters: [QuoteListFilter]) -> [QuoteListFilters.Category: [QuoteListFilter]] {
         var segregatedFilters: [QuoteListFilters.Category: [QuoteListFilter]] = [:]
-        filters.forEach { filter in
+        for filter in filters {
             if segregatedFilters[filter.filterCategory] != nil {
                 segregatedFilters[filter.filterCategory]?.append(filter)
             } else {

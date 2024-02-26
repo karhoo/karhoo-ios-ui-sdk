@@ -1,5 +1,5 @@
 //
-//  UIImage+getImage.swift
+//  UIImage+load.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 11/07/2022.

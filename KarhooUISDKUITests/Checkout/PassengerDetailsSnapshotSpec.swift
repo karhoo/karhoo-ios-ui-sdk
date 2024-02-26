@@ -6,12 +6,12 @@
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
-import Quick
-import Nimble
-import SnapshotTesting
 import KarhooSDK
 import KarhooUISDK
 import KarhooUISDKTestUtils
+import Nimble
+import Quick
+import SnapshotTesting
 @testable import KarhooUISDK
 
 class PassengerDetailsSnapshotSpec: QuickSpec {

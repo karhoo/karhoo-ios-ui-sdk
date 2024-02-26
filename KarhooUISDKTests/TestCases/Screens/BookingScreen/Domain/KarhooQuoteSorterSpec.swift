@@ -7,8 +7,8 @@
 //
 
 import KarhooSDK
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 final class KarhooQuoteSorterSpec: KarhooTestCase {

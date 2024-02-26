@@ -17,7 +17,7 @@ extension String {
         self.isEmpty || self.isWhitespace
     }
     
-    /// Removes le last instance of the duplicate
+    /// Removes the last instance of the duplicate
     /// - Parameters:
     ///   - caseInsensitive: provides a way to decide how strict or loose the search should be in regards to case. Default value is true
     ///   - prettify: when set to true the method also removes any remaining extra commas and spaces using the " +, +" pattern. Default value is true

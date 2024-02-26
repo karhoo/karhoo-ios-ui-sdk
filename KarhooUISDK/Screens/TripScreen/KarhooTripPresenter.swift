@@ -1,13 +1,13 @@
 //
-//  TripViewPresenter.swift
+//  KarhooTripPresenter.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import KarhooSDK
 import Foundation
+import KarhooSDK
 
 final class KarhooTripPresenter: TripPresenter,
                                  CancelRideDelegate {

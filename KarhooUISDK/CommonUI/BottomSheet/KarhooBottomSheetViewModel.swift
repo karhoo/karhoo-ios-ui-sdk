@@ -1,5 +1,5 @@
 //
-//  BottomSheetMPV.swift
+//  KarhooBottomSheetViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 03.11.2022.

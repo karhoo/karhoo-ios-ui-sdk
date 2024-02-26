@@ -6,8 +6,8 @@
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import SwiftUI
 import KarhooSDK
+import SwiftUI
 
 struct KarhooBookingConfirmationView: View {
     enum Constants {

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import KarhooSDK
-import Foundation
 import CoreGraphics
+import Foundation
+import KarhooSDK
 
 final class KarhooDestinationEtaPresenter: DestinationEtaPresenter {
 

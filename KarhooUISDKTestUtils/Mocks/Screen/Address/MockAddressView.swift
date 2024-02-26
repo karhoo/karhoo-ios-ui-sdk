@@ -1,5 +1,5 @@
 //
-//  MockAddressScreen.swift
+//  MockAddressView.swift
 //  KarhooTests
 //
 //

@@ -1,5 +1,5 @@
 //
-//  PopupDialogPresenter.swift
+//  PopupDialogMVP.swift
 //  Karhoo
 //
 //

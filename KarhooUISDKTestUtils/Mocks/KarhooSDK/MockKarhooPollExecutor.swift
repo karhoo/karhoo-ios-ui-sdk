@@ -1,5 +1,5 @@
 //
-//  MockKarhooPollableExecutor.swift
+//  MockKarhooPollExecutor.swift
 //  KarhooTests
 //
 //

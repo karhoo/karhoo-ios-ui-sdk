@@ -1,5 +1,5 @@
 //
-//  BookingAllocationMVP.swift
+//  TripAllocationMVP.swift
 //  Karhoo
 //
 //

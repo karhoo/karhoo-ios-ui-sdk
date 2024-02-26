@@ -1,5 +1,5 @@
 //
-//  3DSecureProvider.swift
+//  ThreeDSecureProvider.swift
 //  KarhooUISDK
 //
 //

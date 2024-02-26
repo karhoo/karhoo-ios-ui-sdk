@@ -1,13 +1,13 @@
 //
-//  KarhooURLOpener.swift
+//  URLOpener.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 public protocol URLOpener {
     func open(_: URL)

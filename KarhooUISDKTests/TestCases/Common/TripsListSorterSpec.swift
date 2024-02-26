@@ -6,9 +6,9 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooUISDK
 import KarhooUISDKTestUtils
+import XCTest
 
 class TripsListSorterSpec: KarhooTestCase {
 

@@ -1,5 +1,5 @@
 //
-//  MockKarhooObservable.swift
+//  MockObservable.swift
 //  KarhooTests
 //
 //

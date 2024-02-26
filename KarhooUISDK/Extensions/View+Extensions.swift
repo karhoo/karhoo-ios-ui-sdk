@@ -1,5 +1,5 @@
 //
-//  View+addBorder.swift
+//  View+Extensions.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 18/11/2022.

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import KarhooSDK
+import UIKit
 
 public protocol CheckoutScreenBuilder {
     func buildCheckoutCoordinator(

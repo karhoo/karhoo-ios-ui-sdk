@@ -1,5 +1,5 @@
 //
-//  BaseViewSpec.swift
+//  BaseViewControllerSpec.swift
 //  KarhooUISDKTests
 //
 //
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 private class SomeBaseView: MockViewController, BaseViewController {}

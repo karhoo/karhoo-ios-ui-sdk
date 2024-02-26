@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import KarhooSDK
+import UIKit
 
 struct FilterViewBuilder {
     var filters: [QuoteListFilter]

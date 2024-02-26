@@ -1,16 +1,16 @@
 //
-//  CheckoutViewModel.swift
+//  KarhooCheckoutViewModel.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 05/01/2023.
 //  Copyright © 2023 Flit Technologies Ltd. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KarhooSDK
-import UIKit
 import SwiftUI
-import Combine
+import UIKit
 
 enum CheckoutState: Equatable {
     /// Screen is locked and user's interactions are disabled. Used for crucial data loading (like payment confirmation)

@@ -1,5 +1,5 @@
 //
-//  MockDatePickerScreenFactory.swift
+//  MockDatePickerScreenBuilder.swift
 //  KarhooTests
 //
 //

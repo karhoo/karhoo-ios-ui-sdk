@@ -1,15 +1,15 @@
 //
-//  MockBaseView.swift
+//  MockBaseViewController.swift
 //  KarhooUISDKTests
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
-import UIKit
 import Foundation
-@testable import KarhooUISDK
 import KarhooSDK
+import UIKit
+@testable import KarhooUISDK
 
 open class MockBaseViewController: UIViewController, BaseViewController {
 

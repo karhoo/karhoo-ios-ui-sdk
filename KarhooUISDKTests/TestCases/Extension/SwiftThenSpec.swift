@@ -13,8 +13,8 @@
 //  Created by 전수열 on 12/24/15.
 //  Copyright © 2015 Suyeol Jeon. All rights reserved.
 //
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 struct TestThenUserModel {

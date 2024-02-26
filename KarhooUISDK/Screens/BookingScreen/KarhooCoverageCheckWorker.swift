@@ -1,5 +1,5 @@
 //
-//  KarhooCoverageCheckService.swift
+//  KarhooCoverageCheckWorker.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 22/03/2023.

@@ -5,8 +5,8 @@
 //  Created by Aleksander Wedrychowski on 20/05/2022.
 //
 
-import SwiftUI
 import KarhooUISDK
+import SwiftUI
 
 struct ContentView: View {
     var body: some View {

@@ -1,14 +1,14 @@
 //
-//  KarhooLegalNoticeMailComposer.swift
+//  KarhooLegalNoticeEmailComposer.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 01/02/2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
 import MessageUI
+import UIKit
 
 public protocol KarhooLegalNoticeMailComposerProtocol: AnyObject {
     func sendLegalNoticeMail(addrees: String) -> Bool

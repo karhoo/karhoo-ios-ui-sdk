@@ -1,13 +1,13 @@
 //
-//  BookingDetailsViewController.swift
+//  RideDetailsViewController.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 final class RideDetailsViewController: UIViewController, RideDetailsView {
 

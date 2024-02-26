@@ -8,13 +8,17 @@
 
 import Foundation
 import KarhooSDK
-import KarhooUISDK // Even if the import may not be required in some configurations, it is needed for SPM linking. Do not remove unless you are sure a new solution allowes SPM-based project/app to be compiled.
+
+// Even if the import may not be required in some configurations, it is needed for SPM linking. Do not remove unless you
+// are sure a new solution allowes SPM-based project/app to be compiled.
+import KarhooUISDK
+
 #if canImport(Adyen)
 import Adyen
 #endif
 #if canImport(AdyenDropIn)
-import AdyenDropIn
 import AdyenActions
+import AdyenDropIn
 #endif
 
 

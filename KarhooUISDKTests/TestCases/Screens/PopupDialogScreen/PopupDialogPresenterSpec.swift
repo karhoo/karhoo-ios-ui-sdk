@@ -1,13 +1,13 @@
 //
-//  BaseFarePopupDialogPresenterSpec.swift
+//  PopupDialogPresenterSpec.swift
 //  KarhooTests
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 class PopupDialogPresenterSpec: KarhooTestCase {

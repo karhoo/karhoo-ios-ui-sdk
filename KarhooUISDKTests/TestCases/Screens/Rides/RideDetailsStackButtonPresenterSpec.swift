@@ -1,14 +1,14 @@
 //
-//  BookingDetailsButtonPresenterSpec.swift
+//  RideDetailsStackButtonPresenterSpec.swift
 //  Karhoo
 //
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
-import XCTest
 import KarhooSDK
 import KarhooUISDKTestUtils
+import XCTest
 @testable import KarhooUISDK
 
 final class RideDetailsStackButtonPresenterSpec: KarhooTestCase {
@@ -85,9 +85,9 @@ final class RideDetailsStackButtonPresenterSpec: KarhooTestCase {
     func testPastTrip() {
         let pastStates = TripStatesGetter().getStatesForTripRequest(type: .past)
 
-        pastStates.forEach({ state in
+        for state in pastStates {
             testLoadingWithTripState(state)
-        })
+        }
     }
 
     private func testLoadingWithTripState(_ tripState: TripState) {

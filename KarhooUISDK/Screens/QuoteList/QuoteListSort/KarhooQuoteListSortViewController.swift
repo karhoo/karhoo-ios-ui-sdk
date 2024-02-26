@@ -1,13 +1,13 @@
 //  
-//  QuoteListSortViewController.swift
+//  KarhooQuoteListSortViewController.swift
 //  KarhooUISDK
 //
 //  Created by Aleksander Wedrychowski on 23/03/2022.
 //  Copyright © 2022 Flit Technologies Ltd. All rights reserved.
 //
 
-import UIKit
 import KarhooSDK
+import UIKit
 
 class KarhooQuoteListSortViewController: UIViewController, BaseViewController, QuoteListSortViewController {
 

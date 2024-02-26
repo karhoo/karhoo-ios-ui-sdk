@@ -1,5 +1,5 @@
 //
-//  MockRidesListVIew.swift
+//  MockRidesListView.swift
 //  KarhooTests
 //
 //

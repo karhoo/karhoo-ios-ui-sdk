@@ -1,5 +1,5 @@
 //
-//  BaseFarePopupDialogPresenter.swift
+//  KarhooPopupDialogPresenter.swift
 //  Karhoo
 //
 //

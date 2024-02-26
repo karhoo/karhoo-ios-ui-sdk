@@ -1,5 +1,5 @@
 //
-//  TripScreenDetails.swift
+//  TripDetailsMVP.swift
 //  Karhoo
 //
 //

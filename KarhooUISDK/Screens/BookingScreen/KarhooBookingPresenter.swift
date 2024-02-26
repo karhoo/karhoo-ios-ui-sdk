@@ -6,10 +6,10 @@
 //  Copyright © 2020 Karhoo All rights reserved.
 //
 
+import Combine
 import CoreLocation
 import KarhooSDK
 import UIKit
-import Combine
 
 final class KarhooBookingPresenter {
 

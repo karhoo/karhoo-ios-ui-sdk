@@ -1,5 +1,5 @@
 //
-//  LoyaltyContainerWithBalance.swift
+//  LoyaltyContainerWithBallance.swift
 //  KarhooUISDK
 //
 //  Created by Bartlomiej Sopala on 26/01/2023.
@@ -51,7 +51,6 @@ struct LoyaltyContainerWithBalance<Content: View>: View {
             Text(balanceTitle)
                 .font(Font(KarhooUI.fonts.bodyBold()))
                 .foregroundColor(Color(KarhooUI.colors.white))
-            
                 .padding(.vertical, UIConstants.Spacing.small)
                 .padding(.horizontal, UIConstants.Spacing.medium)
                 .background(

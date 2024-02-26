@@ -5,10 +5,10 @@
 //
 //  Copyright © 2020 Karhoo All rights reserved.
 //
-import UIKit
 import CoreGraphics
 import Foundation
 import KarhooSDK
+import UIKit
 
 protocol KeyboardListener: AnyObject {
     func keyboard(updatedHeight: CGFloat)

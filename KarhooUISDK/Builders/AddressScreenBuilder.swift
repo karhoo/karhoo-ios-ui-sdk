@@ -1,14 +1,14 @@
 //
-//  AddressScreenFactory.swift
+//  AddressScreenBuilder.swift
 //  KarhooUISDK
 //
 //
 //  Copyright © 2020 Karhoo. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import KarhooSDK
-import CoreLocation
 
 public protocol AddressScreenBuilder {
     func buildAddressScreen(locationBias: CLLocation?,
