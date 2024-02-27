@@ -53,6 +53,15 @@ PODS:
     - Braintree/ThreeDSecure (~> 5.19)
     - Braintree/UnionPay (~> 5.19)
     - Braintree/Venmo (~> 5.19)
+  - CwlCatchException (2.1.2):
+    - CwlCatchExceptionSupport (~> 2.1.2)
+  - CwlCatchExceptionSupport (2.1.2)
+  - CwlMachBadInstructionHandler (2.1.2)
+  - CwlPosixPreconditionTesting (2.1.2)
+  - CwlPreconditionTesting (2.1.2):
+    - CwlCatchException (~> 2.1.2)
+    - CwlMachBadInstructionHandler (~> 2.1.2)
+    - CwlPosixPreconditionTesting (~> 2.1.2)
   - KarhooSDK (1.8.3)
   - KarhooUISDK (1.13.2):
     - KarhooUISDK/Core (= 1.13.2)
@@ -65,8 +74,9 @@ PODS:
     - KarhooUISDK/Core
   - KarhooUISDK/Core (1.13.2):
     - KarhooSDK
-  - Nimble (10.0.0)
-  - Quick (5.0.1)
+  - Nimble (13.2.1):
+    - CwlPreconditionTesting (~> 2.1.0)
+  - Quick (7.4.0)
   - SnapshotTesting (1.9.0)
   - SwiftFormat/CLI (0.53.2)
   - SwiftLint (0.54.0)
@@ -79,8 +89,8 @@ DEPENDENCIES:
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
-  - Nimble (~> 10.0.0)
-  - Quick (~> 5.0.1)
+  - Nimble (from `https://github.com/Quick/Nimble`, tag `v13.2.1`)
+  - Quick (~> 7.4)
   - SnapshotTesting (= 1.9.0)
   - SwiftFormat/CLI (~> 0.53)
   - SwiftLint (~> 0.54)
@@ -92,7 +102,11 @@ SPEC REPOS:
     - AdyenNetworking
     - Braintree
     - BraintreeDropIn
-    - Nimble
+    - CwlCatchException
+    - CwlCatchExceptionSupport
+    - CwlMachBadInstructionHandler
+    - CwlPosixPreconditionTesting
+    - CwlPreconditionTesting
     - Quick
     - SnapshotTesting
     - SwiftFormat
@@ -104,11 +118,17 @@ EXTERNAL SOURCES:
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
+  Nimble:
+    :git: https://github.com/Quick/Nimble
+    :tag: v13.2.1
 
 CHECKOUT OPTIONS:
   KarhooSDK:
     :commit: 5702c782e3f02e186b6f9e8f655b246da548a80f
     :git: https://github.com/karhoo/karhoo-ios-sdk
+  Nimble:
+    :git: https://github.com/Quick/Nimble
+    :tag: v13.2.1
 
 SPEC CHECKSUMS:
   Adyen: 2b1ff574b46d7af43717869859c686b843b8d772
@@ -116,14 +136,19 @@ SPEC CHECKSUMS:
   AdyenNetworking: 14567bd00c00ba2e2580a904708c7ba5f010b1f9
   Braintree: 4a27d741d164591ac87cecfaa9a02adb8eb92422
   BraintreeDropIn: 3d53945d1c0a2d050f094bbad7596e9f65a6993a
+  CwlCatchException: 76542d5ea479c79ce16ddd6e7bc9d42c7ec63300
+  CwlCatchExceptionSupport: 42bf8c5e4e5e663f51100ddfa68caf7cfcf64ab6
+  CwlMachBadInstructionHandler: b982c7e3e44fcfa1c680e8046f6bba35f3476d65
+  CwlPosixPreconditionTesting: 4011f0660c0be460b088d10bcfdf351c7e036ac4
+  CwlPreconditionTesting: 23ed728f2acc2d774fb59101123c943ce0119107
   KarhooSDK: 93c2cda6aa5087f475ead6f0b9b180ba094ada9d
   KarhooUISDK: bb32ffca8d9f370d1c3abfd4c47d1cf8b40059a4
-  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
-  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
+  Nimble: 036a4cd1b987630be09cbffd6cda452290e94282
+  Quick: d0f6d66a9342b1ffe5f161a81a662a4dbfe74692
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
   SwiftFormat: 19cf302c4ecf4f8c64d394d57589beb145debed5
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
 
-PODFILE CHECKSUM: e0725ddf2fbb933982d13b151a8338460f51f1c7
+PODFILE CHECKSUM: 72901f5721b023cf1ec81093f7369b747949c438
 
 COCOAPODS: 1.15.2

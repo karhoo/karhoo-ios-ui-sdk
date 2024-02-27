@@ -16,7 +16,7 @@ import SnapshotTesting
 
 class CheckoutSnapshotSpec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         describe("Checkout") {
             var navigationController: NavigationController!
             var sut: KarhooCheckoutViewController!

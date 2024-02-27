@@ -15,7 +15,7 @@ import SnapshotTesting
 
 class QuoteListSnapshotSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("QuoteList") {
 
             var navigationController: NavigationController!
@@ -97,7 +97,7 @@ class QuoteListSnapshotSpec: QuickSpec {
 
 class QuoteListAsyncSnapshotSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("QuoteList") {
 
             var navigationController: NavigationController!

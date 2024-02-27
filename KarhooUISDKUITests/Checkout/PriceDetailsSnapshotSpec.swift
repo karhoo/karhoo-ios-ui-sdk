@@ -15,7 +15,7 @@ import SwiftUI
 @testable import KarhooUISDK
 
 class PriceDetailsSnapshotSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         
         describe("PriceDetails") {
             var uikitWrapper: UIViewController!

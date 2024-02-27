@@ -16,7 +16,7 @@ import SwiftUI
 
 class BookingConfirmationSnapshotSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("BookingConfirmation") {
             var uikitWrapper: UIViewController!

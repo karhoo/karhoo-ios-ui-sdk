@@ -16,7 +16,7 @@ import SwiftUI
 
 class KarhooCheckoutViewModelSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("Checkout") {
 
             // MARK: - Helpers
