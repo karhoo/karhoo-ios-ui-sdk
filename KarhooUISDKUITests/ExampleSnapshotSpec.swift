@@ -15,7 +15,7 @@ import XCTest
 
 class ExampleSnapshotSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         /// Define feature/method/view that is tested
         describe("Feature name") {

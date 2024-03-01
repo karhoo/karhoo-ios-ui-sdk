@@ -26,6 +26,11 @@ post_install do |installer_representation|
   end
 end
 
+def test_pods
+  pod 'Quick', '~> 7.4'
+  pod 'Nimble', :git => 'https://github.com/Quick/Nimble', :tag => 'v13.2.1'
+end
+
 # suppress error of duplicate uuids on pod install: https://github.com/ivpusic/react-native-image-crop-picker/issues/680
 install! 'cocoapods',
          :deterministic_uuids => false
@@ -50,16 +55,13 @@ target 'KarhooUISDK' do
 
   target 'KarhooUISDKTests' do
     inherit! :complete
-    pod 'SnapshotTesting', '1.9.0'
-    pod 'Quick', '~> 5.0.1'
-    pod 'Nimble', '~> 10.0.0'
+    test_pods
   end
 
   target 'KarhooUISDKUITests' do
     inherit! :complete
     pod 'SnapshotTesting', '1.9.0'
-    pod 'Quick', '~> 5.0.1'
-    pod 'Nimble', '~> 10.0.0'
+    test_pods
   end
 
   target 'KarhooUISDKTestUtils' do

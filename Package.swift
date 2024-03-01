@@ -30,8 +30,8 @@ let package = Package(
         .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.8.0"),
         .package(url: "https://github.com/braintree/braintree_ios", exact: "5.20.1"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.9.0"),
-        .package(url: "https://github.com/Quick/Quick", exact: "5.0.1"),
-        .package(url: "https://github.com/Quick/Nimble", exact: "10.0.0")
+        .package(url: "https://github.com/Quick/Quick", exact: "7.4.0"),
+        .package(url: "https://github.com/Quick/Nimble", exact: "13.2.1")
     ],
     targets: [
         .target(
@@ -68,7 +68,6 @@ let package = Package(
                 .target(name: "KarhooUISDK"),
                 .target(name: "KarhooUISDKAdyen"),
                 .target(name: "KarhooUISDKBraintree"),
-                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 .product(name: "Quick", package: "Quick"),
                 .product(name: "Nimble", package: "Nimble")
                 

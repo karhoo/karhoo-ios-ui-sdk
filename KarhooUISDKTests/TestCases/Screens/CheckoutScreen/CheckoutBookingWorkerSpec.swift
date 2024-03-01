@@ -16,7 +16,7 @@ import SwiftUI
 
 final class KarhooCheckoutBookingWorkerSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("KarhooCheckoutBookingWorker") {
             var mockUserService: MockUserService!
             var mockTripService: MockTripService!

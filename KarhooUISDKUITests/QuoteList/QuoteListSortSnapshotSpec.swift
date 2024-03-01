@@ -15,7 +15,7 @@ import SnapshotTesting
 
 class QuoteListSortSnapshotSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
 
         describe("QuoteListSort") {
             var quoteListSortCoordinator: KarhooQuoteListSortCoordinator!

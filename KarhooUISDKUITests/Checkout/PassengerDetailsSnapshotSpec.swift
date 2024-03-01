@@ -16,7 +16,7 @@ import SnapshotTesting
 
 class PassengerDetailsSnapshotSpec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         
         var sut: PassengerDetailsView!
         

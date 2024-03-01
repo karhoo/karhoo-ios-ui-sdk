@@ -15,4 +15,9 @@ public class MockDateProvider: DateProvider {
     public var now: Date { .mock() }
 }
 
-
+public extension Date {
+    ///  2025-12-02 14:51:06 CET
+    static func mock() -> Date {
+        Date(timeIntervalSince1970: 1764683466.0)
+    }
+}
