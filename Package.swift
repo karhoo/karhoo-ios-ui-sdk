@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/karhoo/karhoo-ios-sdk", branch: "master"),
+        .package(url: "https://github.com/karhoo/karhoo-ios-sdk", branch: "MOB-4907-privacy-manifest"),
 //        .package(url: "https://github.com/karhoo/karhoo-ios-sdk", exact: "1.8.3"),
         .package(url: "https://github.com/Adyen/adyen-ios", exact: "4.11.2"),
         .package(url: "https://github.com/braintree/braintree-ios-drop-in", exact: "9.8.0"),
@@ -39,7 +39,10 @@ let package = Package(
             dependencies: [.product(name: "KarhooSDK", package: "karhoo-ios-sdk")],
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"],
-            resources: [.process("Workers/CountryAndPhone/country_phone_validation_rules.json")]),
+            resources: [
+                .process("Workers/CountryAndPhone/country_phone_validation_rules.json"),
+                .copy("PrivacyInfo.xcprivacy")
+            ]),
 
         .target(
             name: "KarhooUISDKAdyen",
