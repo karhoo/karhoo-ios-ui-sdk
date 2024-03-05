@@ -85,7 +85,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `MOB-4907-privacy-manifest`)
+  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -114,7 +114,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   KarhooSDK:
-    :branch: MOB-4907-privacy-manifest
+    :branch: master
     :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
@@ -124,7 +124,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KarhooSDK:
-    :commit: 33d029e33caba2c1a99efa1046ca27c40bc1c768
+    :commit: f4eac994fc73c645c9b0092adcdce138ddbd93ea
     :git: https://github.com/karhoo/karhoo-ios-sdk
   Nimble:
     :git: https://github.com/Quick/Nimble
@@ -149,6 +149,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 19cf302c4ecf4f8c64d394d57589beb145debed5
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
 
-PODFILE CHECKSUM: 05d136dc8ebdedf5063eb4533feeaa973fd9e9f1
+PODFILE CHECKSUM: e388d7a4c1bdf41b454fa834716af7bf595734f3
 
 COCOAPODS: 1.15.2
