@@ -590,6 +590,7 @@
 		84011F57291978A40009D858 /* SwiftUIKeyboardAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */; };
 		84209B46292D224000B79918 /* KarhooBookingConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */; };
 		84209B47292D224000B79918 /* KarhooBookingConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */; };
+		84427AEB2B960BC400DBE7D5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 84427AEA2B960BC400DBE7D5 /* PrivacyInfo.xcprivacy */; };
 		84491B1A287F04BC00552722 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84491B19287F04BC00552722 /* Date+Extensions.swift */; };
 		845D9D9B2A5C2DC30028B33E /* country_phone_validation_rules.json in Resources */ = {isa = PBXBuildFile; fileRef = 845D9D9A2A5C2DC30028B33E /* country_phone_validation_rules.json */; };
 		845D9D9D2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D9D9C2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift */; };
@@ -1279,6 +1280,7 @@
 		84011F56291978A40009D858 /* SwiftUIKeyboardAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKeyboardAdaptor.swift; sourceTree = "<group>"; };
 		84209B44292D224000B79918 /* KarhooBookingConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationView.swift; sourceTree = "<group>"; };
 		84209B45292D224000B79918 /* KarhooBookingConfirmationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarhooBookingConfirmationViewModel.swift; sourceTree = "<group>"; };
+		84427AEA2B960BC400DBE7D5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		84491B19287F04BC00552722 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		845D9D9A2A5C2DC30028B33E /* country_phone_validation_rules.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_phone_validation_rules.json; sourceTree = "<group>"; };
 		845D9D9C2A5C33140028B33E /* KarhooCountryPhoneValidationRuleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarhooCountryPhoneValidationRuleProvider.swift; sourceTree = "<group>"; };
@@ -3884,6 +3886,7 @@
 				6BDB6C24274FC0E6006DDF1C /* UIComponents */,
 				6BB94050274FE91100478ABD /* ViewModels */,
 				6BDB6C21274E88E4006DDF1C /* Workers */,
+				84427AEA2B960BC400DBE7D5 /* PrivacyInfo.xcprivacy */,
 			);
 			path = KarhooUISDK;
 			sourceTree = "<group>";
@@ -4190,6 +4193,7 @@
 				FC83E2A6221ECC52008FE26D /* TripSummaryHeaderView.xib in Resources */,
 				092005E0225B91C1001038ED /* SideMenuViewController.xib in Resources */,
 				407EC7DC22CF564E00F24CFC /* PinView.xib in Resources */,
+				84427AEB2B960BC400DBE7D5 /* PrivacyInfo.xcprivacy in Resources */,
 				FC83E2A5221ECC48008FE26D /* TripSummaryViewController.xib in Resources */,
 				407EC7C522CF564E00F24CFC /* FormButton.xib in Resources */,
 				092005DF225B91C1001038ED /* MenuContentViewController.xib in Resources */,

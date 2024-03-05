@@ -39,7 +39,10 @@ let package = Package(
             dependencies: [.product(name: "KarhooSDK", package: "karhoo-ios-sdk")],
             path: "KarhooUISDK",
             exclude: ["Extensions/Bundle+extensions/Bundle+current.swift", "Info.plist"],
-            resources: [.process("Workers/CountryAndPhone/country_phone_validation_rules.json")]),
+            resources: [
+                .process("Workers/CountryAndPhone/country_phone_validation_rules.json"),
+                .copy("PrivacyInfo.xcprivacy")
+            ]),
 
         .target(
             name: "KarhooUISDKAdyen",

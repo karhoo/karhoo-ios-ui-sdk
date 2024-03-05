@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.platform              = :ios, '14.0'
   s.ios.deployment_target = '14.0'
   s.requires_arc          = true
+  s.resource_bundles      = {'KarhooUISDK' => ['KarhooUISDK/PrivacyInfo.xcprivacy']}
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
