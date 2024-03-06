@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/karhoo/karhoo-ios-sdk",
       "state" : {
-        "branch" : "MOB-4907-privacy-manifest",
-        "revision" : "33d029e33caba2c1a99efa1046ca27c40bc1c768"
+        "revision" : "94833520c40c92364f92fef450bf00584241d5bb",
+        "version" : "1.8.4"
       }
     },
     {
