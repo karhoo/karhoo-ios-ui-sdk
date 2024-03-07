@@ -1,2 +1,5 @@
 # Demand Mobile
-*          @karhoo/mobile
+*                        @karhoo/mobile
+
+# Cloudops
+/cloudbuild-jira-pr.yaml @karhoo/cloudops
