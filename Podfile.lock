@@ -62,7 +62,7 @@ PODS:
     - CwlCatchException (~> 2.1.2)
     - CwlMachBadInstructionHandler (~> 2.1.2)
     - CwlPosixPreconditionTesting (~> 2.1.2)
-  - KarhooSDK (1.8.3)
+  - KarhooSDK (1.8.4)
   - KarhooUISDK (1.13.2):
     - KarhooUISDK/Core (= 1.13.2)
   - KarhooUISDK/Adyen (1.13.2):
@@ -85,7 +85,7 @@ DEPENDENCIES:
   - Adyen (= 4.7.2)
   - Braintree/PaymentFlow (~> 5.20.1)
   - BraintreeDropIn (~> 9.8.1)
-  - KarhooSDK (from `https://github.com/karhoo/karhoo-ios-sdk`, branch `master`)
+  - KarhooSDK (= 1.8.4)
   - KarhooUISDK (from `./`)
   - KarhooUISDK/Adyen (from `./`)
   - KarhooUISDK/Braintree (from `./`)
@@ -107,15 +107,13 @@ SPEC REPOS:
     - CwlMachBadInstructionHandler
     - CwlPosixPreconditionTesting
     - CwlPreconditionTesting
+    - KarhooSDK
     - Quick
     - SnapshotTesting
     - SwiftFormat
     - SwiftLint
 
 EXTERNAL SOURCES:
-  KarhooSDK:
-    :branch: master
-    :git: https://github.com/karhoo/karhoo-ios-sdk
   KarhooUISDK:
     :path: "./"
   Nimble:
@@ -123,9 +121,6 @@ EXTERNAL SOURCES:
     :tag: v13.2.1
 
 CHECKOUT OPTIONS:
-  KarhooSDK:
-    :commit: f4eac994fc73c645c9b0092adcdce138ddbd93ea
-    :git: https://github.com/karhoo/karhoo-ios-sdk
   Nimble:
     :git: https://github.com/Quick/Nimble
     :tag: v13.2.1
@@ -141,7 +136,7 @@ SPEC CHECKSUMS:
   CwlMachBadInstructionHandler: b982c7e3e44fcfa1c680e8046f6bba35f3476d65
   CwlPosixPreconditionTesting: 4011f0660c0be460b088d10bcfdf351c7e036ac4
   CwlPreconditionTesting: 23ed728f2acc2d774fb59101123c943ce0119107
-  KarhooSDK: ecb1c2da9e88b9e5cea4b3ee448a1972462f5378
+  KarhooSDK: 4ce53499ed1dfb4d71dc355abdfb36ecf945db5c
   KarhooUISDK: 3b2854da4c02600dcb468486e7c8a67487ea610a
   Nimble: 036a4cd1b987630be09cbffd6cda452290e94282
   Quick: d0f6d66a9342b1ffe5f161a81a662a4dbfe74692
@@ -149,6 +144,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 19cf302c4ecf4f8c64d394d57589beb145debed5
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
 
-PODFILE CHECKSUM: e388d7a4c1bdf41b454fa834716af7bf595734f3
+PODFILE CHECKSUM: b0c1ab06c50751caa476f9f8513ae106ad28cf8a
 
 COCOAPODS: 1.15.2
