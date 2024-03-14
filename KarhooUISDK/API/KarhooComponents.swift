@@ -80,15 +80,36 @@ public class KarhooComponents: BookingScreenComponents {
         presenter: BookingMapPresenter? = nil,
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView {
+        let validatedJourneyInfo = validatedJourneyInfo(journeyInfo)
+        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
         let mapPresenter = presenter ?? KarhooBookingMapPresenter()
         let mapView = KarhooMKMapView()
         mapPresenter.load(
             map: mapView,
-            reverseGeolocate: journeyInfo == nil,
+            reverseGeolocate: validatedJourneyInfo == nil,
             onLocationPermissionDenied: onLocationPermissionDenied
         )
         mapView.set(presenter: mapPresenter)
         mapView.set(userMarkerVisible: true)
         return mapView
+    }
+    
+    private func validatedJourneyInfo(_ journeyInfo: JourneyInfo?) -> JourneyInfo? {
+        guard let origin = journeyInfo?.origin else {
+            return nil
+        }
+        
+        var isDateAllowed: Bool {
+            guard let injectedDate = journeyInfo?.date else {
+                return false
+            }
+            return injectedDate >= Date().addingTimeInterval(60*60)
+        }
+        
+        return JourneyInfo(
+            origin: origin,
+            destination: journeyInfo?.destination,
+            date: isDateAllowed ? journeyInfo?.date : nil
+        )
     }
 }
