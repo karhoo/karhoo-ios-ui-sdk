@@ -278,6 +278,19 @@ class ViewController: UIViewController {
                 
             case .tripAllocated(let trip):
                 bookingScreen?.openTrip(trip)
+//                let provider = UISDKScreenRouting.default.tripScreen()
+//                let trackDriverScreen = provider.buildTripScreen(trip: trip) { [weak self] result in
+//                    self?.booking?.dismiss(animated: true, completion: nil)
+//                    switch result {
+//                    case .completed(let result):
+//                        break
+//                    case .cancelled(let byUser):
+//                        break
+//                    case .failed(let error):
+//                        break
+//                    }
+//                }
+//                booking?.present(trackDriverScreen, animated: true, completion: nil)
                 
             case .prebookConfirmed(let trip):
                 bookingScreen?.openRideDetailsFor(trip)
