@@ -17,10 +17,12 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var paymentManager: PaymentManager!
     static var useAddToCalendarFeature = true
     static var enablePrebookRides = true
+    static var disableCallDriverOrFleetOption = false
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
     var enablePrebookRides: Bool { KarhooConfig.enablePrebookRides }
+    var disableCallDriverOrFleetOption: Bool { KarhooConfig.disableCallDriverOrFleetOption }
 
     func environment() -> KarhooEnvironment {
         KarhooConfig.environment

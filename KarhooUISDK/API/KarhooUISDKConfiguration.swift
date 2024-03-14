@@ -28,6 +28,8 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     var useAddToCalendarFeature: Bool { get }
     
     var enablePrebookRides: Bool { get }
+    
+    var disableCallDriverOrFleetOption: Bool { get }
 }
 
 public extension KarhooUISDKConfiguration {
@@ -43,4 +45,6 @@ public extension KarhooUISDKConfiguration {
     var bookingMetadata: [String: Any]? { nil }
     
     var enablePrebookRides: Bool { true }
+    
+    var disableCallDriverOrFleetOption: Bool { false }
 }
