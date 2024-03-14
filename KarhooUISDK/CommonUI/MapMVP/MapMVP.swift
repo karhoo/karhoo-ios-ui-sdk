@@ -10,7 +10,7 @@ import CoreLocation
 import KarhooSDK
 import UIKit
 
-protocol MapView: UIView {
+public protocol MapView: UIView {
 
     var standardZoom: Float { get }
     var idealMaximumZoom: Float { get }
@@ -63,7 +63,7 @@ protocol MapView: UIView {
 }
 
 /* optional MapView methods */
-extension MapView {
+public extension MapView {
     func addTripLine(pickup: CLLocation, dropoff: CLLocation) {}
     
     func draw(polyline: String) {}
@@ -77,7 +77,7 @@ extension MapView {
     func set(minimumZoom: Float, maximumZoom: Float) {}
 }
 
-protocol MapViewActions: AnyObject {
+public protocol MapViewActions: AnyObject {
 
     func userStartedMovingTheMap()
 
@@ -87,7 +87,7 @@ protocol MapViewActions: AnyObject {
 }
 
 // Optional Map View action methods
-extension MapViewActions {
+public extension MapViewActions {
 
     func mapGestureDetected() {}
 
@@ -96,16 +96,16 @@ extension MapViewActions {
     func userStartedMovingTheMap() {}
 }
 
-protocol MapPresenter {
+public protocol MapPresenter {
     func locatePressed()
 	func focusMap()
 }
 
-extension MapPresenter {
+public extension MapPresenter {
     func focusMap() {}
 }
 
-protocol BookingMapPresenter: MapPresenter {
+public protocol BookingMapPresenter: MapPresenter {
     func load(
         map: MapView?,
         reverseGeolocate: Bool,

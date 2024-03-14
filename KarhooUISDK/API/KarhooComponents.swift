@@ -74,4 +74,21 @@ public class KarhooComponents: BookingScreenComponents {
         detailsViewController.enableBackOption = enableBackOption
         return detailsViewController
     }
+    
+    public func bookingMap(
+        journeyDetails: JourneyDetails? = nil,
+        presenter: BookingMapPresenter? = nil,
+        onLocationPermissionDenied: (() -> Void)?
+    ) -> MapView {
+        let mapPresenter = presenter ?? KarhooBookingMapPresenter()
+        let mapView = KarhooMKMapView()
+        mapPresenter.load(
+            map: mapView,
+            reverseGeolocate: journeyDetails == nil,
+            onLocationPermissionDenied: onLocationPermissionDenied
+        )
+        mapView.set(presenter: mapPresenter)
+        mapView.set(userMarkerVisible: true)
+        return mapView
+    }
 }
