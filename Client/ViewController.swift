@@ -116,6 +116,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.enablePrebookRides = true
         KarhooConfig.disableCallDriverOrFleetOption = false
+        KarhooConfig.excludedFilterCategories = []
         showKarhoo()
     }
     
@@ -129,6 +130,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.enablePrebookRides = false
         KarhooConfig.disableCallDriverOrFleetOption = true
+        KarhooConfig.excludedFilterCategories = [.fleetCapabilities]
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
     
@@ -143,6 +145,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.enablePrebookRides = true
         KarhooConfig.disableCallDriverOrFleetOption = false
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -157,6 +160,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.enablePrebookRides = true
         KarhooConfig.disableCallDriverOrFleetOption = false
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     

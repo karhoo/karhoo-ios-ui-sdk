@@ -18,11 +18,13 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var useAddToCalendarFeature = true
     static var enablePrebookRides = true
     static var disableCallDriverOrFleetOption = false
+    static var excludedFilterCategories = [QuoteListFilters.Category]()
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
     var enablePrebookRides: Bool { KarhooConfig.enablePrebookRides }
     var disableCallDriverOrFleetOption: Bool { KarhooConfig.disableCallDriverOrFleetOption }
+    var excludedFilterCategories: [QuoteListFilters.Category] { KarhooConfig.excludedFilterCategories }
 
     func environment() -> KarhooEnvironment {
         KarhooConfig.environment

@@ -14,40 +14,103 @@ struct FilterViewBuilder {
     var filters: [QuoteListFilter]
     
     func buildFilterViews() -> [UIView] {
-        [
-            buildPassengersFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
-            buildLuggagesFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildVehicleTypeFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildVehicleClassFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildVehicleExtrasFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildEcoFriendlyFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildFleetCapabilitiesFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildQuoteTypesFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
-            buildLineSeparator(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
-            buildServiceAgreementsFilterView(),
-            SeparatorView(fixedHeight: UIConstants.Spacing.medium)
-        ]
+        var result = [UIView]()
+        
+        for category in QuoteListFilters.Category.sortedAll {
+            switch category {
+            case .passengers:
+                if !isCategoryExcluded(.passengers) {
+                    result.append(contentsOf: [
+                        buildPassengersFilterView(),
+                        SeparatorView(fixedHeight: UIConstants.Spacing.standard)
+                    ])
+                    if isCategoryExcluded(.luggage) {
+                        result.append(buildLineSeparator())
+                    }
+                }
+            case .luggage:
+                if !isCategoryExcluded(.luggage) {
+                    result.append(contentsOf: [
+                        buildLuggagesFilterView(),
+                        SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+                        buildLineSeparator()
+                    ])
+                }
+            default:
+                if !isCategoryExcluded(category) {
+                    result.append(contentsOf: [
+                        SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+                        getProperViewFor(category),
+                        SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+                        buildLineSeparator()
+                    ])
+                }
+            }
+        }
+        
+        return result
+        
+//        [
+//            buildPassengersFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.standard),
+//            buildLuggagesFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildVehicleTypeFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildVehicleClassFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildVehicleExtrasFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildEcoFriendlyFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildFleetCapabilitiesFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildQuoteTypesFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.xLarge),
+//            buildLineSeparator(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium),
+//            buildServiceAgreementsFilterView(),
+//            SeparatorView(fixedHeight: UIConstants.Spacing.medium)
+//        ]
+    }
+    
+    private func isCategoryExcluded(_ category: QuoteListFilters.Category) -> Bool {
+        KarhooUISDKConfigurationProvider.configuration.excludedFilterCategories.contains(category)
+    }
+    
+    private func getProperViewFor(_ category: QuoteListFilters.Category) -> UIView {
+        switch category {
+        case.passengers:
+            return buildPassengersFilterView()
+        case .luggage:
+            return buildLuggagesFilterView()
+        case .vehicleType:
+            return buildVehicleTypeFilterView()
+        case .vehicleClass:
+            return buildVehicleClassFilterView()
+        case .vehicleExtras:
+            return buildVehicleExtrasFilterView()
+        case .ecoFriendly:
+            return buildEcoFriendlyFilterView()
+        case .fleetCapabilities:
+            return buildFleetCapabilitiesFilterView()
+        case .quoteTypes:
+            return buildQuoteTypesFilterView()
+        case .serviceAgreements:
+            return buildServiceAgreementsFilterView()
+        }
     }
 
     private func buildLineSeparator() -> UIView {
