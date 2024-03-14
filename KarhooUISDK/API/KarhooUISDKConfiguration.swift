@@ -26,6 +26,8 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     /// This feature required host app’s `info.plist` to have `Privacy - Calendars Usage Description` marked as used.
     /// If you do not want to modify your `info.plist`, or you don’t want user to see this feature, return `false`.
     var useAddToCalendarFeature: Bool { get }
+    
+    var enablePrebookRides: Bool { get }
 }
 
 public extension KarhooUISDKConfiguration {
@@ -39,4 +41,6 @@ public extension KarhooUISDKConfiguration {
     var isExplicitTermsAndConditionsConsentRequired: Bool { false }
     
     var bookingMetadata: [String: Any]? { nil }
+    
+    var enablePrebookRides: Bool { true }
 }
