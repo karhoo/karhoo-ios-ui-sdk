@@ -90,7 +90,7 @@ public class KarhooComponents: BookingScreenComponents {
             onLocationPermissionDenied: onLocationPermissionDenied
         )
         mapView.set(presenter: mapPresenter)
-        mapView.set(userMarkerVisible: validatedJourneyInfo != nil)
+        mapView.set(userMarkerVisible: true)
         return mapView
     }
     
