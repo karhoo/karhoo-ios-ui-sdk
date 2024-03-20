@@ -1939,13 +1939,15 @@
 			isa = PBXGroup;
 			children = (
 				0991071121B8486300BD7E6F /* AddressScreenBuilder.swift */,
-				09C7649221DE665000CD81AB /* BookingScreenBuilder.swift */,
 				511050C6294B6397003B6E37 /* BookingConfirmationBuilder.swift */,
+				09C7649221DE665000CD81AB /* BookingScreenBuilder.swift */,
+				846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */,
 				0946CB5C21CBDF0400DBDD42 /* CheckoutScreenBuilder.swift */,
 				094AE85321C913020046EC3C /* DatePickerScreenBuilder.swift */,
 				FC997268221C0C8900D476E1 /* PaymentScreenBuilder.swift */,
 				FC705B14221321650001036E /* PopupDialogScreenBuilder.swift */,
 				FC046594221484E2004E76FE /* RideDetailsScreenBuilder.swift */,
+				846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */,
 				FC705B0E22130B990001036E /* RidesListScreenBuilder.swift */,
 				FC705B0C2212DE6E0001036E /* RidesScreenBuilder.swift */,
 				0991071021B8486300BD7E6F /* Screen.swift */,
@@ -1953,8 +1955,6 @@
 				09D8B29322F3491F00569C55 /* TripFeedbackScreenBuilder.swift */,
 				FC83E283221DB6B8008FE26D /* TripScreenBuilder.swift */,
 				FC83E287221DBA1B008FE26D /* TripSummaryScreenBuilder.swift */,
-				846CE96F292296B8007DF262 /* BottomSheetScreenBuilder.swift */,
-				846A875429DC3E1F00952C81 /* RidePlanningScreenBuilder.swift */,
 			);
 			path = Builders;
 			sourceTree = "<group>";

@@ -35,6 +35,26 @@ public class KarhooComponents: BookingScreenComponents {
 
         return addressBarView
     }
+    
+    public func mapView(
+        journeyInfo: JourneyInfo?,
+        onLocationPermissionDenied: (() -> Void)?
+    ) -> MapView {
+        let validatedJourneyInfo = journeyInfo.validatedOrNilJourneyInfo
+        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
+
+        let mapPresenter = KarhooBookingMapPresenter()
+        let mapView = KarhooMKMapView()
+        mapPresenter.load(
+            map: mapView,
+            reverseGeolocate: validatedJourneyInfo == nil,
+            onLocationPermissionDenied: onLocationPermissionDenied
+        )
+        mapView.set(presenter: mapPresenter)
+        mapView.set(userMarkerVisible: true)
+        return mapView
+
+    }
 
     public func quoteList(
         navigationController: UINavigationController,

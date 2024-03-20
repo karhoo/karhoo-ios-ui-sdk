@@ -230,8 +230,10 @@ class ViewController: UIViewController {
 //        let destLat = CLLocationDegrees(Double(51.502159))
 //        let destLon = CLLocationDegrees(Double(-0.142040))
 //
-//        journeyInfo = JourneyInfo(origin: CLLocation(latitude: originLat, longitude: originLon),
-//                                                     destination: CLLocation(latitude: destLat, longitude: destLon))
+//        journeyInfo = JourneyInfo(
+//            origin: CLLocation(latitude: originLat, longitude: originLon),
+//            destination: CLLocation(latitude: destLat, longitude: destLon)
+//        )
 //
 //        passangerDetails = PassengerDetails(firstName: "Name",
 //                            lastName: "Lastname",

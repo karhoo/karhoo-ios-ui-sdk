@@ -97,24 +97,7 @@ extension MainFlowCoordinator: MainFlowRouter {
         bookingStorage.passengerInfo.set(details: passengerDetails)
         bookingStorage.bookingMetadata = bookingMetadata
         
-        var validatedJourneyInfo: JourneyInfo? {
-            guard let origin = journeyInfo?.origin else {
-                return nil
-            }
-            
-            var isDateAllowed: Bool {
-                guard let injectedDate = journeyInfo?.date else {
-                    return false
-                }
-                return injectedDate >= Date().addingTimeInterval(60*60)
-            }
-            
-            return JourneyInfo(
-                origin: origin,
-                destination: journeyInfo?.destination,
-                date: isDateAllowed ? journeyInfo?.date : nil
-            )
-        }
+        let validatedJourneyInfo = journeyInfo.validatedOrNilJourneyInfo
         bookingStorage.journeyDetailsManager.setJourneyInfo(journeyInfo: validatedJourneyInfo)
     }
     

@@ -10,7 +10,7 @@ import CoreLocation
 import KarhooSDK
 import UIKit
 
-protocol MapView: UIView {
+public protocol MapView: UIView {
 
     var standardZoom: Float { get }
     var idealMaximumZoom: Float { get }
@@ -77,7 +77,7 @@ extension MapView {
     func set(minimumZoom: Float, maximumZoom: Float) {}
 }
 
-protocol MapViewActions: AnyObject {
+public protocol MapViewActions: AnyObject {
 
     func userStartedMovingTheMap()
 
@@ -96,7 +96,7 @@ extension MapViewActions {
     func userStartedMovingTheMap() {}
 }
 
-protocol MapPresenter {
+public protocol MapPresenter {
     func locatePressed()
 	func focusMap()
 }

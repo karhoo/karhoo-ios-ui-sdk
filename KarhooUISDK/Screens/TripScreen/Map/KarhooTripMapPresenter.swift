@@ -9,7 +9,7 @@
 import CoreLocation
 import KarhooSDK
 
-enum TripPinTags: Int {
+public enum TripPinTags: Int {
     case pickup = 1
     case destination = 2
     case driverLocation = 3
