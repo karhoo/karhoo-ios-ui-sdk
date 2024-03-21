@@ -35,3 +35,10 @@ public protocol BookingScreenComponents {
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView
 }
+
+public protocol BookingMapScreenBuilder {
+    func buildBookingMapView(
+        journeyInfo: JourneyInfo,
+        callback: ScreenResultCallback<BookingMapScreenResult>?
+    ) -> Screen
+}

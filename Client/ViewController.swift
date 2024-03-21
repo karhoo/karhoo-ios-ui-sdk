@@ -49,6 +49,13 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var bookingFlowAsComponentsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Token exchange [Braintree] [Screens as components]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var notificationsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +69,7 @@ class ViewController: UIViewController {
         tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBraintreeBookingTapped), for: .touchUpInside)
+        bookingFlowAsComponentsButton.addTarget(self, action: #selector(bookingFlowAsComponentsTapped), for: .touchUpInside)
         notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
     }
 
@@ -82,6 +90,7 @@ class ViewController: UIViewController {
             tokenExchangeBraintreeBookingButton,
             loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton,
             loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton,
+            bookingFlowAsComponentsButton,
             notificationsButton
         ])
         updateNotificationButtonLabel()
@@ -150,6 +159,10 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
+    }
+    
+    @objc func bookingFlowAsComponentsTapped(sender: UIButton) {
+        
     }
     
     // MARK: Notifications

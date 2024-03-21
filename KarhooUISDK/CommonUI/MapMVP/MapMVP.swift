@@ -60,6 +60,8 @@ public protocol MapView: UIView {
     func set(minimumZoom: Float, maximumZoom: Float)
 
 	func set(focusButtonHidden: Bool)
+    
+    func focusMap()
 }
 
 /* optional MapView methods */
