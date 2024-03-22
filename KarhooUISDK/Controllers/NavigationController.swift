@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-final class NavigationController: UINavigationController {
+public final class NavigationController: UINavigationController {
 
-    enum Style {
+    public enum Style {
         /// Style uses primary color as bar tint color
         case primary
         /// Style uses background color as bar tint color
@@ -38,11 +38,11 @@ final class NavigationController: UINavigationController {
 
     fileprivate(set) var style: Style
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
         topViewController?.preferredStatusBarStyle ?? .default
     }
 
-    init(rootViewController: UIViewController, style: Style) {
+    public init(rootViewController: UIViewController, style: Style) {
         self.style = style
         super.init(rootViewController: rootViewController)
     }
@@ -51,12 +51,12 @@ final class NavigationController: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func loadView() {
+    public override func loadView() {
         super.loadView()
         setupDesign()
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
     }
@@ -98,7 +98,7 @@ final class NavigationController: UINavigationController {
 }
 
 extension NavigationController: UINavigationControllerDelegate {
-    func navigationController(
+    public func navigationController(
         _ navigationController: UINavigationController,
         willShow viewController: UIViewController,
         animated: Bool

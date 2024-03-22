@@ -36,6 +36,6 @@ protocol CheckoutRouter: AnyObject {
 }
 
 public struct KarhooCheckoutResult {
-    var tripInfo: TripInfo
-    var showTripDetails: Bool = false
+    public var tripInfo: TripInfo
+    public var showTripDetails: Bool = false
 }

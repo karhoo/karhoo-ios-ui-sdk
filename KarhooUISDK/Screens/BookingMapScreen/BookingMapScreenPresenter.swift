@@ -89,10 +89,8 @@ final class KarhooBookingMapScreenPresenter: BookingMapScreenPresenter {
     }
     
     private func completeWithResult() {
-        view?.dismiss(animated: true, completion: { [weak self] in
-            let result = self?.journeyDetailsManager.getJourneyDetails()
-            self?.callback?(ScreenResult.completed(result: BookingMapScreenResult(journeyDetails: result)))
-        })
+        let result = journeyDetailsManager.getJourneyDetails()
+        callback?(ScreenResult.completed(result: BookingMapScreenResult(journeyDetails: result)))
     }
     
     // MARK: - Coverage

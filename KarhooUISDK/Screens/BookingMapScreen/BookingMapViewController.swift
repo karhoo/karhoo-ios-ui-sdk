@@ -38,7 +38,6 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
-        self.setUpView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -48,6 +47,7 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
     // MARK: - Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpView()
         forceLightMode()
         mapView.set(userMarkerVisible: true)
     }

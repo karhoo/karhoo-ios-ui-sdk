@@ -29,5 +29,5 @@ public protocol BookingMapScreenPresenter {
 }
 
 public struct BookingMapScreenResult {
-    var journeyDetails: JourneyDetails?
+    public var journeyDetails: JourneyDetails?
 }
