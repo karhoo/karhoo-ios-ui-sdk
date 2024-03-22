@@ -9,6 +9,7 @@
 import CoreLocation
 import Foundation
 import KarhooSDK
+import UIKit
 
 public protocol BookingScreenBuilder {
     func buildBookingScreen(

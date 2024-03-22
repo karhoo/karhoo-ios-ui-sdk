@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import KarhooSDK
+import UIKit
 
 final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
     

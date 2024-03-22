@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 public protocol BookingMapScreen: BaseViewController {
     func showIncorrectVersionPopup(completion: @escaping () -> Void)
