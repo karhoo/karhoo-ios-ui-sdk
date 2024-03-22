@@ -1844,8 +1844,8 @@
 		0991065C21B8291900BD7E6F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				84E8AF402BAAFF1900722C8A /* BookingMapScreen */,
 				0991066021B8291900BD7E6F /* AddressScreen */,
+				84E8AF402BAAFF1900722C8A /* BookingMapScreen */,
 				09C7655F21DE688000CD81AB /* BookingScreen */,
 				5CBA2A5F24F5D8CC0091D783 /* CheckoutScreen */,
 				6BE3695026EB34AD00F0FE86 /* CountryCodeSelectionScreen */,
