@@ -19,7 +19,11 @@ public class MockBaseView: UIView, BaseView {
 }
 
 final public class MockAddressBarView: MockBaseView, AddressBarView {
-
+    public var optionalPrebookSelectedCallback: (() -> Void)?
+    public func prebookSelected(optionalDoneCallback: (() -> Void)?) {
+        optionalPrebookSelectedCallback = optionalDoneCallback
+    }
+    
     public var prebookDateStringSet: String?
     public var prebookTimeStringSet: String?
     public func set(prebookDate: String, prebookTime: String) {
