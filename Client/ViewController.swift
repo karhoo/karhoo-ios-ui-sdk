@@ -324,17 +324,17 @@ class ViewController: UIViewController {
     // MARK: - Booking flow as components, not drop-in
     var componentsNavigation: UINavigationController? = nil
     private func showKarhooComponents() {
-        var journeyInfo: JourneyInfo? = nil
+        let journeyInfo: JourneyInfo? = nil
         
-        let originLat = CLLocationDegrees(Double(51.500869))
-        let originLon = CLLocationDegrees(Double(-0.124979))
-        let destLat = CLLocationDegrees(Double(51.502159))
-        let destLon = CLLocationDegrees(Double(-0.142040))
-
-        journeyInfo = JourneyInfo(
-            origin: CLLocation(latitude: originLat, longitude: originLon),
-            destination: CLLocation(latitude: destLat, longitude: destLon)
-        )
+//        let originLat = CLLocationDegrees(Double(51.500869))
+//        let originLon = CLLocationDegrees(Double(-0.124979))
+//        let destLat = CLLocationDegrees(Double(51.502159))
+//        let destLon = CLLocationDegrees(Double(-0.142040))
+//
+//        journeyInfo = JourneyInfo(
+//            origin: CLLocation(latitude: originLat, longitude: originLon),
+//            destination: CLLocation(latitude: destLat, longitude: destLon)
+//        )
         
         let ridePlanningVC = KarhooComponents.shared.bookingMapView(
             journeyInfo: journeyInfo
@@ -389,6 +389,9 @@ class ViewController: UIViewController {
         let trackDriver = KarhooComponents.shared.followDriver(
             tripInfo: tripInfo
         ) { [weak self] screenResult in
+            // Reset journey details for the next round of testing
+            KarhooJourneyDetailsManager.shared.reset()
+            
                 switch screenResult {
                 case .completed(let result):
                     switch result {
