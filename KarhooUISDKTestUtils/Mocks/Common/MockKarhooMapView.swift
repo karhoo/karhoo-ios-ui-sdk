@@ -11,6 +11,10 @@ import UIKit
 @testable import KarhooUISDK
 
 final public class MockKarhooMapView: UIView, MapView {
+    public var shouldFocusMap = false
+    public func focusMap() {
+        shouldFocusMap = true
+    }
 
     public func set(presenter: MapPresenter) {}
 

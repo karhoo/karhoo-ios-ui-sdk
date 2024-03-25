@@ -268,6 +268,10 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
     @objc private func didDragMap(_ sender: UIGestureRecognizer) {
         mapDragged = true
     }
+    
+    func focusMap() {
+        presenter?.focusMap()
+    }
 }
 
 extension KarhooMKMapView: MKMapViewDelegate {

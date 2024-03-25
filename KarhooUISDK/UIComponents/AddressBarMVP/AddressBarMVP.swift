@@ -33,6 +33,8 @@ public protocol AddressBarView: BaseView {
     func hidePickupSpinner()
 
     func setDisplayTripState()
+    
+    func prebookSelected(optionalDoneCallback: (() -> Void)?)
 }
 
 protocol AddressBarPresenter: JourneyDetailsObserver {

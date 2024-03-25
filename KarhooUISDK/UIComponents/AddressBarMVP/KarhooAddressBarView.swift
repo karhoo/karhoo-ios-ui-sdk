@@ -336,6 +336,10 @@ public class KarhooAddressBarView: UIView, AddressBarView {
         layer.shadowPath = nil
         setNeedsDisplay()
     }
+    
+    public func prebookSelected(optionalDoneCallback: (() -> Void)?) {
+        presenter?.prebookSelected(optionalDoneCallback: optionalDoneCallback)
+    }
 }
 
 extension KarhooAddressBarView: AddressBarFieldActions {

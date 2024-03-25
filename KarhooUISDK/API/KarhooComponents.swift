@@ -35,6 +35,39 @@ public class KarhooComponents: BookingScreenComponents {
 
         return addressBarView
     }
+    
+    public func mapView(
+        journeyInfo: JourneyInfo?,
+        onLocationPermissionDenied: (() -> Void)?
+    ) -> MapView {
+        let validatedJourneyInfo = journeyInfo.validatedOrNilJourneyInfo
+        KarhooJourneyDetailsManager.shared.setJourneyInfo(journeyInfo: validatedJourneyInfo)
+
+        let mapPresenter = KarhooBookingMapPresenter()
+        let mapView = KarhooMKMapView()
+        mapPresenter.load(
+            map: mapView,
+            reverseGeolocate: validatedJourneyInfo == nil,
+            onLocationPermissionDenied: onLocationPermissionDenied
+        )
+        mapView.set(presenter: mapPresenter)
+        mapView.set(userMarkerVisible: true)
+        return mapView
+
+    }
+    
+    public func bookingMapView(
+        journeyInfo: JourneyInfo?,
+        callback: ScreenResultCallback<BookingMapScreenResult>?
+    ) -> Screen {
+        let presenter = KarhooBookingMapScreenPresenter(callback: callback)
+        let viewController = KarhooBookingMapViewController(
+            presenter: presenter,
+            journeyInfo: journeyInfo
+        )
+        
+        return viewController
+    }
 
     public func quoteList(
         navigationController: UINavigationController,
@@ -64,14 +97,22 @@ public class KarhooComponents: BookingScreenComponents {
         )
     }
     
-    public func passengerDetails(details: PassengerDetails?,
-                                 delegate: PassengerDetailsDelegate?,
-                                 enableBackOption: Bool = true) -> PassengerDetailsView {
-        
+    public func passengerDetails(
+        details: PassengerDetails?,
+        delegate: PassengerDetailsDelegate?,
+        enableBackOption: Bool = true
+    ) -> PassengerDetailsView {
         let detailsViewController = PassengerDetailsViewController()
         detailsViewController.details = details
         detailsViewController.delegate = delegate
         detailsViewController.enableBackOption = enableBackOption
         return detailsViewController
+    }
+    
+    public func followDriver(
+        tripInfo: TripInfo,
+        callback: @escaping ScreenResultCallback<TripScreenResult>
+    ) -> Screen {
+        UISDKScreenRouting.default.tripScreen().buildTripScreen(trip: tripInfo, callback: callback)
     }
 }

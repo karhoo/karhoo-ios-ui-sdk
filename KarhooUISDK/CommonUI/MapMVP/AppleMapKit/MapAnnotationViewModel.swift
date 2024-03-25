@@ -10,12 +10,12 @@ import CoreLocation
 import Foundation
 import MapKit
 
-final class MapAnnotationViewModel: NSObject, MKAnnotation {
+public final class MapAnnotationViewModel: NSObject, MKAnnotation {
 
     let backgroundIcon: UIImage
     let foregroundIcon: UIImage?
     let tag: TripPinTags
-    @objc dynamic var coordinate: CLLocationCoordinate2D
+    @objc dynamic public var coordinate: CLLocationCoordinate2D
 
     init(
         coordinate: CLLocationCoordinate2D,

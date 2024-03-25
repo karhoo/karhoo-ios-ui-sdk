@@ -49,6 +49,13 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var bookingFlowAsComponentsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Token exchange [Braintree] [Components]", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var notificationsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +69,7 @@ class ViewController: UIViewController {
         tokenExchangeBraintreeBookingButton.addTarget(self, action: #selector(tokenExchangeBraintreeBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnTrueBraintreeBookingTapped), for: .touchUpInside)
         loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton.addTarget(self, action: #selector(loyaltyCanEarnTrueCanBurnFalseBraintreeBookingTapped), for: .touchUpInside)
+        bookingFlowAsComponentsButton.addTarget(self, action: #selector(bookingFlowAsComponentsTapped), for: .touchUpInside)
         notificationsButton.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
     }
 
@@ -82,6 +90,7 @@ class ViewController: UIViewController {
             tokenExchangeBraintreeBookingButton,
             loyaltyCanEarnTrueCanBurnTrueBraintreeBookingButton,
             loyaltyCanEarnTrueCanBurnFalseBraintreeBookingButton,
+            bookingFlowAsComponentsButton,
             notificationsButton
         ])
         updateNotificationButtonLabel()
@@ -152,6 +161,17 @@ class ViewController: UIViewController {
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     
+    @objc func bookingFlowAsComponentsTapped(sender: UIButton) {
+        let tokenExchangeSettings = TokenExchangeSettings(clientId: Keys.braintreeTokenClientId, scope: Keys.braintreeTokenScope)
+        KarhooConfig.auth = .tokenExchange(settings: tokenExchangeSettings)
+        KarhooConfig.onUpdateAuthentication = { callback in
+            self.refreshTokenLogin(token: Keys.braintreeAuthToken, callback: callback)
+        }
+        KarhooConfig.paymentManager = BraintreePaymentManager()
+        KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
+        tokenLoginAndShowComponents(token: Keys.braintreeAuthToken)
+    }
+    
     // MARK: Notifications
     
     @objc func notificationsButtonTapped(sender: UIButton){
@@ -198,6 +218,19 @@ class ViewController: UIViewController {
         }
     }
     
+    private func tokenLoginAndShowComponents(token: String) {
+        let authService = Karhoo.getAuthService()
+        
+        authService.login(token: token).execute { result in
+            print("token login: \(result)")
+            if result.isSuccess() {
+                self.showKarhooComponents()
+            } else {
+                self.showLoginErrorAllert()
+            }
+        }
+    }
+    
     private func showLoginErrorAllert() {
         let alert = UIAlertController(
             title: "Login was unsuccessful",
@@ -230,8 +263,10 @@ class ViewController: UIViewController {
 //        let destLat = CLLocationDegrees(Double(51.502159))
 //        let destLon = CLLocationDegrees(Double(-0.142040))
 //
-//        journeyInfo = JourneyInfo(origin: CLLocation(latitude: originLat, longitude: originLon),
-//                                                     destination: CLLocation(latitude: destLat, longitude: destLon))
+//        journeyInfo = JourneyInfo(
+//            origin: CLLocation(latitude: originLat, longitude: originLon),
+//            destination: CLLocation(latitude: destLat, longitude: destLon)
+//        )
 //
 //        passangerDetails = PassengerDetails(firstName: "Name",
 //                            lastName: "Lastname",
@@ -284,5 +319,90 @@ class ViewController: UIViewController {
         }
 
         Karhoo.getUserService().logout().execute { _ in callback() }
+    }
+    
+    // MARK: - Booking flow as components, not drop-in
+    var componentsNavigation: UINavigationController? = nil
+    private func showKarhooComponents() {
+        var journeyInfo: JourneyInfo? = nil
+        
+        let originLat = CLLocationDegrees(Double(51.500869))
+        let originLon = CLLocationDegrees(Double(-0.124979))
+        let destLat = CLLocationDegrees(Double(51.502159))
+        let destLon = CLLocationDegrees(Double(-0.142040))
+
+        journeyInfo = JourneyInfo(
+            origin: CLLocation(latitude: originLat, longitude: originLon),
+            destination: CLLocation(latitude: destLat, longitude: destLon)
+        )
+        
+        let ridePlanningVC = KarhooComponents.shared.bookingMapView(
+            journeyInfo: journeyInfo
+        ) { [weak self] screenResult in
+                switch screenResult {
+                case .completed(let result):
+                    if let details = result.journeyDetails {
+                        self?.ridePlanningSelected(journeyDetails: details)
+                    }
+                default:
+                    break
+                }
+            }
+        
+        componentsNavigation = NavigationController(rootViewController: ridePlanningVC, style: .primary)
+        componentsNavigation!.modalPresentationStyle = .fullScreen
+        self.present(componentsNavigation!, animated: true, completion: nil)
+    }
+    
+    private func ridePlanningSelected(journeyDetails: KarhooUISDK.JourneyDetails) {
+        let quoteList = KarhooComponents.shared.quoteList(
+            navigationController: componentsNavigation!,
+            journeyDetails: journeyDetails
+        ) { [weak self] quote, journeyDetails in
+                self?.quoteSelected(journeyDetails: journeyDetails, quote: quote)
+            }
+        
+        componentsNavigation?.pushViewController(quoteList.baseViewController, animated: true)
+    }
+    
+    private func quoteSelected(journeyDetails: KarhooUISDK.JourneyDetails, quote: Quote) {
+        let checkout = KarhooComponents.shared.checkout(
+            navigationController: componentsNavigation!,
+            quote: quote,
+            journeyDetails: journeyDetails,
+            bookingMetadata: nil
+        ) { [weak self] screenResult in
+                switch screenResult {
+                case .completed(let result):
+                    // Wait for driver allocation before moving on to the next screen
+                    // Use TripService().trackTrip(identifier: String) -> PollCall<TripInfo>
+                    self?.tripBooked(tripInfo: result.tripInfo)
+                default:
+                    break
+                }
+            }
+        
+        componentsNavigation?.pushViewController(checkout.baseViewController, animated: true)
+    }
+    
+    private func tripBooked(tripInfo: TripInfo) {
+        let trackDriver = KarhooComponents.shared.followDriver(
+            tripInfo: tripInfo
+        ) { [weak self] screenResult in
+                switch screenResult {
+                case .completed(let result):
+                    switch result {
+                    case .rebookTrip(let journeyDetails):
+                        print("Rebook trip")
+                        self?.dismiss(animated: true, completion: nil)
+                    case .closed:
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                default:
+                    break
+                }
+            }
+        
+        componentsNavigation?.present(trackDriver, animated: true)
     }
 }
