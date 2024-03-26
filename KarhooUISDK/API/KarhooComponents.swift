@@ -13,8 +13,8 @@ import UIKit
 public class KarhooComponents: BookingScreenComponents {
 
     public static let shared = KarhooComponents()
-
-    public func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView {
+    
+    public func addressBar(journeyInfo: JourneyInfo?, hidePrebook: Bool) -> AddressBarView {
         let presenter = BookingAddressBarPresenter()
 
         let addressBarView = KarhooAddressBarView(
@@ -23,7 +23,8 @@ public class KarhooComponents: BookingScreenComponents {
             dropShadow: false,
             verticalPadding: 0,
             horizontalPadding: 0,
-            hidePickUpDestinationConnector: true
+            hidePickUpDestinationConnector: true,
+            hidePrebookButton: hidePrebook
         )
 
         addressBarView.set(presenter: presenter)
@@ -34,6 +35,10 @@ public class KarhooComponents: BookingScreenComponents {
         }
 
         return addressBarView
+    }
+
+    public func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView {
+        addressBar(journeyInfo: journeyInfo, hidePrebook: false)
     }
     
     public func mapView(

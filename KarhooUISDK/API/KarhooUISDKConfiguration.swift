@@ -9,7 +9,7 @@ import Foundation
 import KarhooSDK
 import UIKit
 
-public let karhooUiSdkVersion = "1.13.2"
+public let karhooUiSdkVersion = "1.13.4"
 
 public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     func logo() -> UIImage
@@ -26,6 +26,8 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     /// This feature required host app’s `info.plist` to have `Privacy - Calendars Usage Description` marked as used.
     /// If you do not want to modify your `info.plist`, or you don’t want user to see this feature, return `false`.
     var useAddToCalendarFeature: Bool { get }
+    
+    var disablePrebookRides: Bool { get }
 }
 
 public extension KarhooUISDKConfiguration {
@@ -39,4 +41,6 @@ public extension KarhooUISDKConfiguration {
     var isExplicitTermsAndConditionsConsentRequired: Bool { false }
     
     var bookingMetadata: [String: Any]? { nil }
+    
+    var disablePrebookRides: Bool { false }
 }

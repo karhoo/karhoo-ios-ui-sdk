@@ -34,6 +34,11 @@ public protocol BookingScreenComponents {
     /// Contains fields to display the origin and destination addresses as well as a way to select a DateTime for the ride
     func addressBar(journeyInfo: JourneyInfo?) -> AddressBarView
     
+    /// Returns the view that serves as the address selection entry point
+    /// Contains fields to display the origin and destination addresses as well as a way to select a DateTime for the ride
+    /// Set 'hidePrebook' as false to limit the user option to asap rides only
+    func addressBar(journeyInfo: JourneyInfo?, hidePrebook: Bool) -> AddressBarView
+    
     /// Returns just the map view. When a JourneyInfo object is provided, it will display origin and/or destination pins accordingly
     func mapView(
         journeyInfo: JourneyInfo?,

@@ -171,7 +171,10 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStack.addArrangedSubviews([asapButton, scheduleButton])
+        buttonsStack.addArrangedSubview(asapButton)
+        if !KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
+            buttonsStack.addArrangedSubview(scheduleButton)
+        }
         buttonsStack.axis = .horizontal
         buttonsStack.spacing = UIConstants.Spacing.standard
         buttonsStack.distribution = .fillEqually
