@@ -394,6 +394,9 @@ class ViewController: UIViewController {
         let trackDriver = KarhooComponents.shared.followDriver(
             tripInfo: tripInfo
         ) { [weak self] screenResult in
+            // Reset journey details for the next round of testing
+            KarhooJourneyDetailsManager.shared.reset()
+            
                 switch screenResult {
                 case .completed(let result):
                     switch result {
