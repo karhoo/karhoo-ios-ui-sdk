@@ -16,6 +16,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
     static var useAddToCalendarFeature = true
+    static var disablePrebookRides = false
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
@@ -38,6 +39,10 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     var useAddToCalendarFeature: Bool {
         KarhooConfig.useAddToCalendarFeature
+    }
+    
+    var disablePrebookRides: Bool {
+        KarhooConfig.disablePrebookRides
     }
 
     func requireSDKAuthentication(callback: @escaping () -> Void) {

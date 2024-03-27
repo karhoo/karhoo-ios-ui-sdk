@@ -183,7 +183,7 @@ public class KarhooAddressBarView: UIView, AddressBarView {
             .then { $0.priority = .defaultHigh }
         ].map { $0.isActive = true }
         
-        if hidePrebookButton {
+        if hidePrebookButton || KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
             destinationField.topAnchor.constraint(equalTo: fieldsSeparatorLine.bottomAnchor).isActive = true
             destinationField.bottomAnchor.constraint(equalTo: mainViewContainer.bottomAnchor).isActive = true
             destinationField.leadingAnchor.constraint(equalTo: pickupField.leadingAnchor).isActive = true
@@ -323,8 +323,13 @@ public class KarhooAddressBarView: UIView, AddressBarView {
     }
 
     private func prebook(isHidden: Bool) {
-        prebookField?.isHidden = hidePrebookButton ? true : isHidden
-        prebookSeparator?.isHidden = hidePrebookButton ? true : isHidden
+        if KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
+            prebookField?.isHidden = true
+            prebookSeparator?.isHidden = true
+        } else {
+            prebookField?.isHidden = hidePrebookButton ? true : isHidden
+            prebookSeparator?.isHidden = hidePrebookButton ? true : isHidden
+        }
     }
 
     @objc

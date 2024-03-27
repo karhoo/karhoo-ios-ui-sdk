@@ -139,7 +139,7 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
     
     // MARK: - Address
     private func setupAddressBar() {
-        addressView = KarhooComponents.shared.addressBar(journeyInfo: journeyInfo)
+        addressView = KarhooComponents.shared.addressBar(journeyInfo: journeyInfo, hidePrebook: true)
     }
     
     // MARK: - Map
@@ -198,7 +198,10 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
 
         let buttonsStack = UIStackView()
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStack.addArrangedSubviews([asapButton, scheduleButton])
+        buttonsStack.addArrangedSubview(asapButton)
+        if !KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
+            buttonsStack.addArrangedSubview(scheduleButton)
+        }
         buttonsStack.axis = .horizontal
         buttonsStack.spacing = UIConstants.Spacing.standard
         buttonsStack.distribution = .fillEqually
