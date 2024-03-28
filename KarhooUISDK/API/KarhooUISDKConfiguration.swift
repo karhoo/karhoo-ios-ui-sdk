@@ -28,6 +28,8 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     var useAddToCalendarFeature: Bool { get }
     
     var disablePrebookRides: Bool { get }
+    
+    var excludedFilterCategories: [QuoteListFilters.Category] { get }
 }
 
 public extension KarhooUISDKConfiguration {
@@ -43,4 +45,6 @@ public extension KarhooUISDKConfiguration {
     var bookingMetadata: [String: Any]? { nil }
     
     var disablePrebookRides: Bool { false }
+    
+    var excludedFilterCategories: [QuoteListFilters.Category] { [] }
 }

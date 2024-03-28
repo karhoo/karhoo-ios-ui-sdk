@@ -17,6 +17,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var paymentManager: PaymentManager!
     static var useAddToCalendarFeature = true
     static var disablePrebookRides = false
+    static var excludedFilterCategories = [QuoteListFilters.Category]()
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
@@ -43,6 +44,10 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     
     var disablePrebookRides: Bool {
         KarhooConfig.disablePrebookRides
+    }
+    
+    var excludedFilterCategories: [QuoteListFilters.Category] {
+        KarhooConfig.excludedFilterCategories
     }
 
     func requireSDKAuthentication(callback: @escaping () -> Void) {

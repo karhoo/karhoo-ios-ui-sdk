@@ -124,6 +124,7 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = false
+        KarhooConfig.excludedFilterCategories = []
         showKarhoo()
     }
     
@@ -136,6 +137,7 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = false
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
     
@@ -149,6 +151,7 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.disablePrebookRides = false
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -162,6 +165,7 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.disablePrebookRides = false
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     
@@ -174,6 +178,7 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = true
+        KarhooConfig.excludedFilterCategories = []
         tokenLoginAndShowComponents(token: Keys.braintreeAuthToken)
     }
     
