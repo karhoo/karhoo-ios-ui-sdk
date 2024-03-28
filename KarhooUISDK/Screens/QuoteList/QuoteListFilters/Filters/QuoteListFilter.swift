@@ -33,13 +33,13 @@ extension QuoteListNumericFilter {
     var isInDefaultState: Bool { value == defaultValue}
 }
 
-enum QuoteListFilters {
+public enum QuoteListFilters {
     static let defaultPassengersCount = 1
     static let defaultLuggagesCount = 0
 }
 
 extension QuoteListFilters {
-    enum Category: String {
+    public enum Category: String {
         case luggage
         case passengers
         case vehicleType
@@ -84,6 +84,26 @@ extension QuoteListFilters {
             case .fleetCapabilities: return .multi
             case .serviceAgreements: return .multi
             case .quoteTypes: return .multi
+            }
+        }
+        
+        static let all: [QuoteListFilters.Category] = [.passengers, .luggage, .vehicleType, .vehicleClass, .vehicleExtras, .ecoFriendly, .fleetCapabilities, .quoteTypes, .serviceAgreements]
+        
+        static var sortedAll: [QuoteListFilters.Category] {
+            all.sorted(by: { $0.sortOrder < $1.sortOrder })
+        }
+        
+        var sortOrder: Int {
+            switch self {
+            case .luggage: return 2
+            case .passengers: return 1
+            case .vehicleType: return 3
+            case .vehicleClass: return 4
+            case .vehicleExtras: return 5
+            case .ecoFriendly: return 6
+            case .fleetCapabilities: return 7
+            case .serviceAgreements: return 9
+            case .quoteTypes: return 8
             }
         }
     }
