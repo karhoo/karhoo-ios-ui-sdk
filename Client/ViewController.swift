@@ -125,6 +125,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = false
         KarhooConfig.excludedFilterCategories = []
+        KarhooConfig.disableCallDriverOrFleetFeature = false
         showKarhoo()
     }
     
@@ -138,6 +139,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = false
         KarhooConfig.excludedFilterCategories = []
+        KarhooConfig.disableCallDriverOrFleetFeature = false
         tokenLoginAndShowKarhoo(token: Keys.braintreeAuthToken)
     }
     
@@ -152,6 +154,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.disablePrebookRides = false
         KarhooConfig.excludedFilterCategories = []
+        KarhooConfig.disableCallDriverOrFleetFeature = false
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnTrueAuthToken)
     }
     
@@ -166,6 +169,7 @@ class ViewController: UIViewController {
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = true
         KarhooConfig.disablePrebookRides = false
         KarhooConfig.excludedFilterCategories = []
+        KarhooConfig.disableCallDriverOrFleetFeature = false
         tokenLoginAndShowKarhoo(token: Keys.loyaltyCanEarnTrueCanBurnFalseAuthToken)
     }
     
@@ -178,7 +182,8 @@ class ViewController: UIViewController {
         KarhooConfig.paymentManager = BraintreePaymentManager()
         KarhooConfig.isExplicitTermsAndConditionsApprovalRequired = false
         KarhooConfig.disablePrebookRides = true
-        KarhooConfig.excludedFilterCategories = []
+        KarhooConfig.excludedFilterCategories = [.fleetCapabilities]
+        KarhooConfig.disableCallDriverOrFleetFeature = true
         tokenLoginAndShowComponents(token: Keys.braintreeAuthToken)
     }
     
@@ -399,6 +404,9 @@ class ViewController: UIViewController {
         let trackDriver = KarhooComponents.shared.followDriver(
             tripInfo: tripInfo
         ) { [weak self] screenResult in
+            // For testig purposes, reset journey details
+            KarhooJourneyDetailsManager.shared.reset()
+            
                 switch screenResult {
                 case .completed(let result):
                     switch result {

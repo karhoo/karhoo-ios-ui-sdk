@@ -20,7 +20,6 @@ final class KarhooStackButtonView: UIView, StackButtonView {
     private var buttonTwo: UIButton!
     private var buttonTwoWidthConstraint: NSLayoutConstraint!
     private var topLine: LineView!
-    private var separatorLine: LineView!
     private var containerStackView: UIStackView!
 
     var buttonOneAction: (() -> Void)?
@@ -80,13 +79,18 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         containerStackView = UIStackView()
         containerStackView.accessibilityIdentifier = "container_stack"
         containerStackView.axis = .horizontal
+        containerStackView.backgroundColor = .lightGray
+        containerStackView.distribution = .fillEqually
+        containerStackView.spacing = UIConstants.Spacing.xxxSmall
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerStackView)
         
         _ = [containerStackView.topAnchor.constraint(equalTo: topLine.bottomAnchor),
              containerStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
              containerStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-             containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)].map { $0.isActive = true}
+             containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+             containerStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0)
+        ].map { $0.isActive = true}
         
         buttonOne = UIButton(type: .custom)
         buttonOne.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +101,7 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonOne.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonOne.addTarget(self, action: #selector(buttonOnePressed), for: .touchUpInside)
         buttonOne.setTitleColor(KarhooUI.colors.accent, for: .normal)
+        buttonOne.backgroundColor = KarhooUI.colors.background2
         
         buttonTwo = UIButton(type: .custom)
         buttonTwo.translatesAutoresizingMaskIntoConstraints = false
@@ -106,15 +111,9 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonTwo.titleLabel?.font = KarhooUI.fonts.bodyRegular()
         buttonTwo.addTarget(self, action: #selector(buttonTwoPressed), for: .touchUpInside)
         buttonTwo.setTitleColor(KarhooUI.colors.accent, for: .normal)
+        buttonTwo.backgroundColor = KarhooUI.colors.background2
         
-        separatorLine = LineView(color: .lightGray,
-                                 width: 1.0,
-                                 accessibilityIdentifier: "separator_line")
-        separatorLine.isHidden = true
-        addSubview(separatorLine)
-        separatorLine.heightAnchor.constraint(greaterThanOrEqualToConstant: 50.0).isActive = true
         containerStackView.addArrangedSubview(buttonOne)
-        containerStackView.addArrangedSubview(separatorLine)
         containerStackView.addArrangedSubview(buttonTwo)
     }
 
@@ -136,7 +135,6 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonOneText = buttonText
         buttonOneAction = action
         buttonTwo?.isHidden = true
-        separatorLine.isHidden = true
         buttonTwoAction = nil
     }
 
@@ -148,7 +146,6 @@ final class KarhooStackButtonView: UIView, StackButtonView {
         buttonTwoAction = secondButtonAction
 
         buttonTwo?.isHidden = false
-        separatorLine.isHidden = false
     }
 
     @objc
