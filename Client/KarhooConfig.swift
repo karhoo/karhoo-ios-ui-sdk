@@ -18,6 +18,7 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var useAddToCalendarFeature = true
     static var disablePrebookRides = false
     static var excludedFilterCategories = [QuoteListFilters.Category]()
+    static var disableCallDriverOrFleetFeature = false
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool { KarhooConfig.isExplicitTermsAndConditionsApprovalRequired }
@@ -49,6 +50,11 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     var excludedFilterCategories: [QuoteListFilters.Category] {
         KarhooConfig.excludedFilterCategories
     }
+    
+    var disableCallDriverOrFleetFeature: Bool {
+        KarhooConfig.disableCallDriverOrFleetFeature
+    }
+
 
     func requireSDKAuthentication(callback: @escaping () -> Void) {
         print("Client: KarhooConfig.requireSDKAuthentication started")

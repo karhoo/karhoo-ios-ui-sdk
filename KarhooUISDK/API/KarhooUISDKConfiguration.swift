@@ -30,6 +30,9 @@ public protocol KarhooUISDKConfiguration: KarhooSDKConfiguration {
     var disablePrebookRides: Bool { get }
     
     var excludedFilterCategories: [QuoteListFilters.Category] { get }
+    
+    var disableCallDriverOrFleetFeature: Bool { get }
+
 }
 
 public extension KarhooUISDKConfiguration {
@@ -47,4 +50,6 @@ public extension KarhooUISDKConfiguration {
     var disablePrebookRides: Bool { false }
     
     var excludedFilterCategories: [QuoteListFilters.Category] { [] }
+    
+    var disableCallDriverOrFleetFeature: Bool { false }
 }

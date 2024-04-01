@@ -56,26 +56,36 @@ final class RideDetailsStackButtonPresenter {
     }
 
     private func setupUpAndComingTrip() {
-        let buttonText = isFleetCall ? UITexts.Bookings.contactFleet : UITexts.Bookings.contactDriver
-        let phoneNumber = isFleetCall ? self.trip.fleetInfo.phoneNumber : self.trip.vehicle.driver.phoneNumber
-        view?.set(
-            firstButtonText: UITexts.Bookings.cancelRide,
-            firstButtonAction: { [weak self] in
+        if !KarhooUISDKConfigurationProvider.configuration.disableCallDriverOrFleetFeature {
+            let buttonText = isFleetCall ? UITexts.Bookings.contactFleet : UITexts.Bookings.contactDriver
+            let phoneNumber = isFleetCall ? self.trip.fleetInfo.phoneNumber : self.trip.vehicle.driver.phoneNumber
+            view?.set(
+                firstButtonText: UITexts.Bookings.cancelRide,
+                firstButtonAction: { [weak self] in
+                    self?.rideDetailsStackButtonActions?.cancelRide()
+                },
+                secondButtonText: buttonText,
+                secondButtonAction: { [weak self] in
+                    self?.contact(phoneNumber)
+                }
+            )
+        } else {
+            view?.set(buttonText: UITexts.Bookings.cancelRide, action: { [weak self] in
                 self?.rideDetailsStackButtonActions?.cancelRide()
-            },
-            secondButtonText: buttonText,
-            secondButtonAction: { [weak self] in
-                self?.contact(phoneNumber)
-            }
-        )
+            })
+        }
     }
 
     private func setupPastTrip() {
-        view?.set(firstButtonText: UITexts.Bookings.reportIssue, firstButtonAction: { [weak self] in
-            self?.reportIssue()
-        }, secondButtonText: UITexts.Bookings.rebookRide, secondButtonAction: { [weak self] in
-            self?.rideDetailsStackButtonActions?.rebookRide()
-        })
+        view?.set(
+            firstButtonText: UITexts.Bookings.reportIssue,
+            firstButtonAction: { [weak self] in
+                self?.reportIssue()
+            },
+            secondButtonText: UITexts.Bookings.rebookRide, 
+            secondButtonAction: { [weak self] in
+                self?.rideDetailsStackButtonActions?.rebookRide()
+            })
     }
 
     private func contact(_ phoneNumber: String) {
