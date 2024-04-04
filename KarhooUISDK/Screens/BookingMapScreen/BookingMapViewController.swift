@@ -18,12 +18,7 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
     // MARK: - Views
     private var presenter: BookingMapScreenPresenter!
     private var stackView: UIStackView!
-    private var addressView: AddressBarView!
-    private var mapView: MapView!
-    private var bottomContainer: UIView!
-    private var noCoverageView: NoCoverageView!
-    private var asapButton: MainActionButton!
-    private var scheduleButton: MainActionButton!
+    private var bookingMapView: BookingMapView!
     private var journeyInfo: JourneyInfo?
     private let analyticsProvider: Analytics
     
@@ -50,7 +45,6 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         super.viewDidLoad()
         self.setUpView()
         forceLightMode()
-        mapView.set(userMarkerVisible: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,26 +66,40 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         view.addSubview(stackView)
         stackView.anchorToSuperview()
         
-        setupMapView()
-        stackView.addArrangedSubview(mapView)
+        bookingMapView = KarhooBookingMapView(
+            journeyInfo: journeyInfo,
+            onAsapRidePressed: { [weak self] in
+                self?.presenter.asapRidePressed()
+            },
+            onPrebookRidePressed: { [weak self] in
+                self?.presenter.prebookRidePressed()
+            },
+            onLocationPermissionDenied: { [weak self] in
+                self?.showNoLocationPermissionsPopUp()
+            }).then {
+                $0.translatesAutoresizingMaskIntoConstraints = false
+            }
+        stackView.addArrangedSubview(bookingMapView)
         
-        setupBottomContainer()
-        
-        setupAddressBar()
-        view.insertSubview(addressView, aboveSubview: stackView)
-        
-        addressView.topAnchor.constraint(
-            equalTo: view.topAnchor,
-            constant: UIConstants.Spacing.standard
-        ).isActive = true
-        addressView.leadingAnchor.constraint(
-            equalTo: view.leadingAnchor,
-            constant: 10.0
-        ).isActive = true
-        addressView.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor,
-            constant: -10.0
-        ).isActive = true
+        presenter.isAsapEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isAsapEnabled in
+                self?.bookingMapView.asapButtonEnabled(isAsapEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
+
+        presenter.isScheduleForLaterEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isScheduleForLaterEnabled in
+                self?.bookingMapView.prebookButtonEnabled(isScheduleForLaterEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
+
+        presenter.hasCoverageInTheAreaPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] hasCoverage in
+                self?.setCoverageView(hasCoverage)
+            }.store(in: &cancellables)
     }
     
     // MARK: - Navigation bar
@@ -137,20 +145,7 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         presenter.showRidesList(presentationStyle: presentationStyle)
     }
     
-    // MARK: - Address
-    private func setupAddressBar() {
-        addressView = KarhooComponents.shared.addressBar(journeyInfo: journeyInfo, hidePrebook: true)
-    }
-    
     // MARK: - Map
-    private func setupMapView() {
-        mapView = KarhooComponents.shared.mapView(
-            journeyInfo: journeyInfo,
-            onLocationPermissionDenied: { [weak self] in
-            self?.showNoLocationPermissionsPopUp()
-        })
-    }
-    
     private func showNoLocationPermissionsPopUp() {
         let alertController = UIAlertController(
             title: UITexts.Booking.noLocationPermissionTitle,
@@ -169,102 +164,21 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
     }
     
     func focusMap() {
-        mapView.focusMap()
+        bookingMapView.focusMap()
     }
     
-    // MARK: - Bottom container setup
-    private func setupBottomContainer() {
-        // bottom container
-        bottomContainer = UIView()
-        bottomContainer.translatesAutoresizingMaskIntoConstraints = false
-        bottomContainer.backgroundColor = KarhooUI.colors.white
-        bottomContainer.clipsToBounds = true
-        stackView.addArrangedSubview(bottomContainer)
-
-        bottomContainer.heightAnchor.constraint(equalToConstant: 100).then { $0.priority = .defaultLow }.isActive = true
-
-        noCoverageView = NoCoverageView()
-        noCoverageView.isHidden = true
-        
-        // asap button
-        asapButton = MainActionButton(design: .secondary)
-        asapButton.addTarget(self, action: #selector(asapRidePressed), for: .touchUpInside)
-        asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
-
-        // later button
-        scheduleButton = MainActionButton(design: .primary)
-        scheduleButton.addTarget(self, action: #selector(prebookRidePressed), for: .touchUpInside)
-        scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
-
-        let buttonsStack = UIStackView()
-        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStack.addArrangedSubview(asapButton)
-        if !KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
-            buttonsStack.addArrangedSubview(scheduleButton)
-        }
-        buttonsStack.axis = .horizontal
-        buttonsStack.spacing = UIConstants.Spacing.standard
-        buttonsStack.distribution = .fillEqually
-        buttonsStack.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight).isActive = true
-
-        let verticalStackView = UIStackView(arrangedSubviews: [noCoverageView, buttonsStack])
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.axis = .vertical
-        verticalStackView.spacing = UIConstants.Spacing.standard
-
-        bottomContainer.addSubview(verticalStackView)
-        verticalStackView.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: UIConstants.Spacing.standard).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: bottomContainer.trailingAnchor, constant: -UIConstants.Spacing.standard).isActive = true
-        verticalStackView.bottomAnchor.constraint(equalTo: bottomContainer.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.Spacing.standard).isActive = true
-
-        presenter.isAsapEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isAsapEnabled in
-                self?.asapButton.setEnabled(isAsapEnabled)
-                self?.updateBottomContainterVisiblity()
-            }.store(in: &cancellables)
-
-        presenter.isScheduleForLaterEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isScheduleForLaterEnabled in
-                self?.scheduleButton.setEnabled(isScheduleForLaterEnabled)
-                self?.updateBottomContainterVisiblity()
-            }.store(in: &cancellables)
-        
-        presenter.hasCoverageInTheAreaPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] hasCoverage in
-                self?.setCoverageView(hasCoverage)
-            }.store(in: &cancellables)
-    }
-    
+    // MARK: - Bottom container
     private func updateBottomContainterVisiblity() {
         let shouldShow = presenter.isAsapEnabledPublisher.value ||
         presenter.isScheduleForLaterEnabledPublisher.value ||
         presenter.hasCoverageInTheAreaPublisher.value == false
-        
-        guard shouldShow != !bottomContainer.isHidden else {
-            return
-        }
-        bottomContainer.isHidden = !shouldShow
-    }
-    
-    // MARK: - Asap / prebook
-    
-    @objc private func asapRidePressed(_ selector: UIButton) {
-        presenter.asapRidePressed()
-    }
-    
-    @objc private func prebookRidePressed(_ selector: UIButton) {
-        addressView.prebookSelected { [weak self] in
-            self?.presenter.prebookRidePressed()
-        }
+
+        bookingMapView.bottomContainterVisible(shouldShow)
     }
     
     // MARK: - Coverage
     private func setCoverageView(_ hasCoverage: Bool?) {
-        noCoverageView.isHidden = hasCoverage ?? true
+        bookingMapView.coverageViewVisible(hasCoverage ?? true)
     }
     
     // MARK: - Utils

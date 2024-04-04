@@ -16,6 +16,14 @@ public protocol BookingMapScreen: BaseViewController {
     func focusMap()
 }
 
+protocol BookingMapView: BaseView {
+    func focusMap()
+    func asapButtonEnabled(_ enabled: Bool)
+    func prebookButtonEnabled(_ enabled: Bool)
+    func bottomContainterVisible(_ visible: Bool)
+    func coverageViewVisible(_ visible: Bool)
+}
+
 public protocol BookingMapScreenPresenter {
     var hasCoverageInTheAreaPublisher: CurrentValueSubject<Bool?, Never> { get }
     var isAsapEnabledPublisher: CurrentValueSubject<Bool, Never> { get }
