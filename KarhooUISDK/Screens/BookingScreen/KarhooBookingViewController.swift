@@ -18,27 +18,18 @@ final class KarhooBookingViewController: UIViewController, BookingView {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private var addressBar: AddressBarView!
-    private var addressBarPresenter: AddressBarPresenter!
     private var tripAllocationView: KarhooTripAllocationView!
     private var stackView: UIStackView!
-    private var mapView: MapView = KarhooMKMapView()
-    private var bottomContainer: UIView!
-    private var noCoverageView: NoCoverageView!
-    private var asapButton: MainActionButton!
-    private var scheduleButton: MainActionButton!
     private var sideMenu: SideMenu?
     private var journeyInfo: JourneyInfo?
     private let presenter: BookingPresenter
-    private let mapPresenter: BookingMapPresenter
     private let analyticsProvider: Analytics
+    private var bookingMapView: BookingMapView!
 
     init(presenter: BookingPresenter,
-         mapPresenter: BookingMapPresenter = KarhooBookingMapPresenter(),
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
         self.presenter = presenter
-        self.mapPresenter = mapPresenter
         self.analyticsProvider = analyticsProvider
         self.journeyInfo = journeyInfo
         super.init(nibName: nil, bundle: nil)
@@ -52,8 +43,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     override func viewDidLoad() {
         super.viewDidLoad()
         forceLightMode()
-        setupMapView(reverseGeolocate: journeyInfo == nil)
-        mapView.set(userMarkerVisible: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +55,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private func setUpView() {
         presenter.load(view: self)
         edgesForExtendedLayout = []
-        mapView.translatesAutoresizingMaskIntoConstraints = false
 
         stackView = UIStackView().then {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -75,17 +63,44 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         }
         view.addSubview(stackView)
         stackView.anchorToSuperview()
-        stackView.addArrangedSubview(mapView)
         
-        setupBottomContainer()
-        setupAddressBar()
+        bookingMapView = KarhooBookingMapView(
+            journeyInfo: journeyInfo,
+            onAsapRidePressed: { [weak self] in
+                self?.presenter.asapRidePressed()
+            },
+            onPrebookRidePressed: { [weak self] in
+                self?.presenter.dataForScheduledRideProvided()
+            },
+            onLocationPermissionDenied: { [weak self] in
+                guard self?.tripAllocationView.alpha != 1 else {
+                    return
+                }
+                self?.showNoLocationPermissionsPopUp()
+            }).then {
+                $0.translatesAutoresizingMaskIntoConstraints = false
+            }
+        stackView.addArrangedSubview(bookingMapView)
         
-        view.insertSubview(addressBar, aboveSubview: stackView)
+        presenter.isAsapEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isAsapEnabled in
+                self?.bookingMapView.set(asapButtonEnabled: isAsapEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
 
-        addressBar.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
-        addressBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
-        addressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                  constant: -10.0).isActive = true
+        presenter.isScheduleForLaterEnabledPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isScheduleForLaterEnabled in
+                self?.bookingMapView.set(prebookButtonEnabled: isScheduleForLaterEnabled)
+                self?.updateBottomContainterVisiblity()
+            }.store(in: &cancellables)
+
+        presenter.hasCoverageInTheAreaPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] hasCoverage in
+                self?.setCoverageView(hasCoverage)
+            }.store(in: &cancellables)
         
         tripAllocationView = KarhooTripAllocationView()
         tripAllocationView.set(actions: self)
@@ -94,39 +109,6 @@ final class KarhooBookingViewController: UIViewController, BookingView {
              tripAllocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
              tripAllocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
              tripAllocationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
-    }
-    
-    private func setupMapView(reverseGeolocate: Bool) {
-        mapPresenter.load(
-            map: mapView,
-            reverseGeolocate: reverseGeolocate,
-            onLocationPermissionDenied: { [weak self] in
-                // Do not show pop up when allocation view is visible
-                guard self?.tripAllocationView.alpha != 1 else {
-                    return
-                }
-                self?.showNoLocationPermissionsPopUp()
-            }
-        )
-        mapView.set(presenter: mapPresenter)
-    }
-
-    private func setupAddressBar() {
-        addressBarPresenter = BookingAddressBarPresenter()
-        let addressBarView = KarhooAddressBarView(
-            cornerRadious: UIConstants.CornerRadius.large,
-            borderLine: true,
-            dropShadow: false,
-            verticalPadding: 0,
-            horizontalPadding: 0,
-            hidePickUpDestinationConnector: true,
-            hidePrebookButton: true
-        )
-
-        addressBarView.set(presenter: addressBarPresenter)
-        addressBarPresenter.load(view: addressBarView)
-        
-        addressBar = addressBarView
     }
 
     private func setupNavigationBar() {
@@ -146,79 +128,13 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         navigationItem.backButtonTitle = ""
     }
 
-    private func setupBottomContainer() {
-        // bottom container
-        bottomContainer = UIView()
-        bottomContainer.translatesAutoresizingMaskIntoConstraints = false
-        bottomContainer.backgroundColor = KarhooUI.colors.white
-        bottomContainer.clipsToBounds = true
-        stackView.addArrangedSubview(bottomContainer)
-
-        bottomContainer.heightAnchor.constraint(equalToConstant: 100).then { $0.priority = .defaultLow }.isActive = true
-
-        noCoverageView = NoCoverageView()
-        noCoverageView.isHidden = true
-        
-        // asap button
-        asapButton = MainActionButton(design: .secondary)
-        asapButton.addTarget(self, action: #selector(asapRidePressed), for: .touchUpInside)
-        asapButton.setTitle(UITexts.Generic.now.uppercased(), for: .normal)
-
-        // later button
-        scheduleButton = MainActionButton(design: .primary)
-        scheduleButton.addTarget(self, action: #selector(scheduleForLaterPressed), for: .touchUpInside)
-        scheduleButton.setTitle(UITexts.Generic.later.uppercased(), for: .normal)
-
-        let buttonsStack = UIStackView()
-        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStack.addArrangedSubview(asapButton)
-        if !KarhooUISDKConfigurationProvider.configuration.disablePrebookRides {
-            buttonsStack.addArrangedSubview(scheduleButton)
-        }
-        buttonsStack.axis = .horizontal
-        buttonsStack.spacing = UIConstants.Spacing.standard
-        buttonsStack.distribution = .fillEqually
-        buttonsStack.heightAnchor.constraint(equalToConstant: UIConstants.Dimension.Button.mainActionButtonHeight).isActive = true
-
-        let verticalStackView = UIStackView(arrangedSubviews: [noCoverageView, buttonsStack])
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.axis = .vertical
-        verticalStackView.spacing = UIConstants.Spacing.standard
-
-        bottomContainer.addSubview(verticalStackView)
-        verticalStackView.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: UIConstants.Spacing.standard).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: UIConstants.Spacing.standard).isActive = true
-        verticalStackView.trailingAnchor.constraint(equalTo: bottomContainer.trailingAnchor, constant: -UIConstants.Spacing.standard).isActive = true
-        verticalStackView.bottomAnchor.constraint(equalTo: bottomContainer.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.Spacing.standard).isActive = true
-
-        presenter.isAsapEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isAsapEnabled in
-                self?.asapButton.setEnabled(isAsapEnabled)
-                self?.updateBottomContainterVisiblity()
-            }.store(in: &cancellables)
-
-        presenter.isScheduleForLaterEnabledPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] isScheduleForLaterEnabled in
-                self?.scheduleButton.setEnabled(isScheduleForLaterEnabled)
-                self?.updateBottomContainterVisiblity()
-            }.store(in: &cancellables)
-        
-        presenter.hasCoverageInTheAreaPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] hasCoverage in
-                self?.setCoverageView(hasCoverage)
-            }.store(in: &cancellables)
-    }
-
     func reset() {
         presenter.resetJourneyDetails()
     }
 
     func resetAndLocate() {
         presenter.resetJourneyDetails()
-        mapPresenter.focusMap()
+        bookingMapView.focusMap()
     }
 
     func set(journeyDetails: JourneyDetails) {
@@ -230,19 +146,18 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     func showAllocationScreen(trip: TripInfo) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn,
                        animations: { [weak self] in
-                        self?.addressBar.alpha = 0
-						self?.mapView.set(focusButtonHidden: true)
+            self?.bookingMapView.set(addressBarVisible: false)
+            self?.bookingMapView.set(focusButtonVisible: false)
             }, completion: nil)
 
         tripAllocationView?.presentScreen(forTrip: trip)
 
         let location = trip.origin.position.toCLLocation()
-        mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
-        mapView.removeTripLine()
+        bookingMapView.prepareForAllocation(location: location)
     }
 
     func hideAllocationScreen() {
-        addressBar.alpha = 1
+        bookingMapView.set(addressBarVisible: true)
         tripAllocationView.dismissScreen()
     }
 
@@ -308,14 +223,11 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         presenter.isScheduleForLaterEnabledPublisher.value ||
         presenter.hasCoverageInTheAreaPublisher.value == false
         
-        guard shouldShow != !bottomContainer.isHidden else {
-            return
-        }
-        bottomContainer.isHidden = !shouldShow
+        bookingMapView.set(bottomContainterVisible: shouldShow)
     }
 
     private func setCoverageView(_ hasCoverage: Bool?) {
-        noCoverageView.isHidden = hasCoverage ?? true
+        bookingMapView.set(coverageViewVisible: hasCoverage ?? true)
     }
 
     @objc
@@ -331,44 +243,34 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             presenter.exitPressed()
         }
     }
-
-    @objc private func asapRidePressed(_ selector: UIButton) {
-        presenter.asapRidePressed()
-    }
-
-    @objc private func scheduleForLaterPressed(_ selector: UIButton) {
-        addressBarPresenter.prebookSelected { [weak self] in
-            self?.presenter.dataForScheduledRideProvided()
-        }
-    }
 }
 
 extension KarhooBookingViewController: TripAllocationActions {
 
     func userSuccessfullyCancelledTrip() {
         presenter.tripSuccessfullyCancelled()
-        setupMapView(reverseGeolocate: true)
+        bookingMapView.set(reverseGeolocate: true)
     }
 
     func tripAllocated(trip: TripInfo) {
         presenter.tripAllocated(trip: trip)
-        setupMapView(reverseGeolocate: true)
+        bookingMapView.set(reverseGeolocate: true)
     }
 
     func tripCancelledBySystem(trip: TripInfo) {
         presenter.tripCancelledBySystem(trip: trip)
-        setupMapView(reverseGeolocate: true)
+        bookingMapView.set(reverseGeolocate: true)
     }
     
     func tripDriverAllocationDelayed(trip: TripInfo) {
         presenter.tripDriverAllocationDelayed(trip: trip)
-        setupMapView(reverseGeolocate: true)
+        bookingMapView.set(reverseGeolocate: true)
     }
     
     func cancelTripFailed(error: KarhooError?,
                           trip: TripInfo) {
         presenter.tripCancellationFailed(trip: trip)
-        setupMapView(reverseGeolocate: true)
+        bookingMapView.set(reverseGeolocate: true)
     }
 
 }

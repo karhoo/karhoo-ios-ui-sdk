@@ -84,14 +84,14 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         presenter.isAsapEnabledPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isAsapEnabled in
-                self?.bookingMapView.asapButtonEnabled(isAsapEnabled)
+                self?.bookingMapView.set(asapButtonEnabled: isAsapEnabled)
                 self?.updateBottomContainterVisiblity()
             }.store(in: &cancellables)
 
         presenter.isScheduleForLaterEnabledPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isScheduleForLaterEnabled in
-                self?.bookingMapView.prebookButtonEnabled(isScheduleForLaterEnabled)
+                self?.bookingMapView.set(prebookButtonEnabled: isScheduleForLaterEnabled)
                 self?.updateBottomContainterVisiblity()
             }.store(in: &cancellables)
 
@@ -173,12 +173,12 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
         presenter.isScheduleForLaterEnabledPublisher.value ||
         presenter.hasCoverageInTheAreaPublisher.value == false
 
-        bookingMapView.bottomContainterVisible(shouldShow)
+        bookingMapView.set(bottomContainterVisible: shouldShow)
     }
     
     // MARK: - Coverage
     private func setCoverageView(_ hasCoverage: Bool?) {
-        bookingMapView.coverageViewVisible(hasCoverage ?? true)
+        bookingMapView.set(coverageViewVisible: hasCoverage ?? true)
     }
     
     // MARK: - Utils

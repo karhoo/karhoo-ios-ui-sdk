@@ -42,6 +42,7 @@ public protocol BookingScreenComponents {
     /// Returns just the map view. When a JourneyInfo object is provided, it will display origin and/or destination pins accordingly
     func mapView(
         journeyInfo: JourneyInfo?,
+        reverseGeolocate: Bool?,
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView
     

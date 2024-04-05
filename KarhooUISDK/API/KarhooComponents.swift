@@ -43,6 +43,7 @@ public class KarhooComponents: BookingScreenComponents {
     
     public func mapView(
         journeyInfo: JourneyInfo?,
+        reverseGeolocate: Bool? = nil,
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView {
         let validatedJourneyInfo = journeyInfo.validatedOrNilJourneyInfo
@@ -52,7 +53,7 @@ public class KarhooComponents: BookingScreenComponents {
         let mapView = KarhooMKMapView()
         mapPresenter.load(
             map: mapView,
-            reverseGeolocate: validatedJourneyInfo == nil,
+            reverseGeolocate: reverseGeolocate ?? (validatedJourneyInfo == nil),
             onLocationPermissionDenied: onLocationPermissionDenied
         )
         mapView.set(presenter: mapPresenter)

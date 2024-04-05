@@ -8,9 +8,11 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 final class KarhooBookingMapView: UIStackView, BookingMapView {
     
+    // MARK: - Views
     private var addressView: AddressBarView!
     private var mapView: MapView!
     private var bottomContainer: UIView!
@@ -23,6 +25,7 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
     private let onAsapRidePressed: (() -> Void)
     private let onPrebookRidePressed: (() -> Void)
     
+    // MARK: - Lifecycle
     init(
         journeyInfo: JourneyInfo?,
         onAsapRidePressed: @escaping (() -> Void),
@@ -42,17 +45,20 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup view
     func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
         spacing = 0
         axis = .vertical
-        backgroundColor = .red
         contentMode = .scaleAspectFill
+        distribution = .fill
 
         setupMapView()
         addArrangedSubview(mapView)
+        mapView.set(userMarkerVisible: true)
         
         setupBottomContainer()
+        addArrangedSubview(bottomContainer)
         
         setupAddressBar()
         insertSubview(addressView, aboveSubview: self)
@@ -69,7 +75,6 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
             equalTo: trailingAnchor,
             constant: -10.0
         ).isActive = true
-        mapView.set(userMarkerVisible: true)
         
         layoutIfNeeded()
     }
@@ -87,8 +92,14 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         }
     }
     
-    func focusMap() {
-        mapView.focusMap()
+    func set(reverseGeolocate: Bool) {
+        mapView = KarhooComponents.shared.mapView(
+            journeyInfo: journeyInfo,
+            reverseGeolocate: reverseGeolocate,
+            onLocationPermissionDenied: onLocationPermissionDenied
+        ).then {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
     private func setupBottomContainer() {
@@ -97,7 +108,6 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
         bottomContainer.backgroundColor = KarhooUI.colors.white
         bottomContainer.clipsToBounds = true
-        addArrangedSubview(bottomContainer)
 
         bottomContainer.heightAnchor.constraint(equalToConstant: 100).then { $0.priority = .defaultLow }.isActive = true
 
@@ -137,6 +147,27 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         verticalStackView.bottomAnchor.constraint(equalTo: bottomContainer.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.Spacing.standard).isActive = true
     }
     
+    // MARK: - Address bar
+    func set(addressBarVisible visible: Bool) {
+        addressView.isHidden = !visible
+    }
+    
+    // MARK: - Map
+    func focusMap() {
+        mapView.focusMap()
+    }
+    
+    func set(focusButtonVisible visible: Bool) {
+        mapView.set(focusButtonHidden: !visible)
+    }
+    
+    func prepareForAllocation(location: CLLocation) {
+        mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
+        mapView.removeTripLine()
+        bottomContainer.isHidden = true
+    }
+    
+    // MARK: - Bottom container
     @objc private func asapRidePressed(_ selector: UIButton) {
         onAsapRidePressed()
     }
@@ -147,22 +178,22 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         }
     }
     
-    func asapButtonEnabled(_ enabled: Bool) {
+    func set(asapButtonEnabled enabled: Bool) {
         asapButton.setEnabled(enabled)
     }
     
-    func prebookButtonEnabled(_ enabled: Bool) {
+    func set(prebookButtonEnabled enabled: Bool) {
         scheduleButton.setEnabled(enabled)
     }
     
-    func bottomContainterVisible(_ visible: Bool) {
+    func set(bottomContainterVisible visible: Bool) {
         guard visible != !bottomContainer.isHidden else {
             return
         }
         bottomContainer.isHidden = !visible
     }
     
-    func coverageViewVisible(_ visible: Bool) {
+    func set(coverageViewVisible visible: Bool) {
         noCoverageView.isHidden = visible
     }
 }

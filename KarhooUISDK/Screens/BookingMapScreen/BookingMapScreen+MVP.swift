@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import UIKit
+import CoreLocation
 
 public protocol BookingMapScreen: BaseViewController {
     func showIncorrectVersionPopup(completion: @escaping () -> Void)
@@ -18,10 +19,14 @@ public protocol BookingMapScreen: BaseViewController {
 
 protocol BookingMapView: BaseView {
     func focusMap()
-    func asapButtonEnabled(_ enabled: Bool)
-    func prebookButtonEnabled(_ enabled: Bool)
-    func bottomContainterVisible(_ visible: Bool)
-    func coverageViewVisible(_ visible: Bool)
+    func prepareForAllocation(location: CLLocation)
+    func set(reverseGeolocate: Bool)
+    func set(addressBarVisible visible: Bool)
+    func set(asapButtonEnabled enabled: Bool)
+    func set(prebookButtonEnabled enabled: Bool)
+    func set(bottomContainterVisible visible: Bool)
+    func set(coverageViewVisible visible: Bool)
+    func set(focusButtonVisible visible: Bool)
 }
 
 public protocol BookingMapScreenPresenter {
