@@ -35,6 +35,7 @@ final class KarhooBookingPresenter {
     var hasCoverageInTheAreaPublisher = CurrentValueSubject<Bool?, Never>(nil)
     var isAsapEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
     var isScheduleForLaterEnabledPublisher = CurrentValueSubject<Bool, Never>(false)
+    var isAllocationViewVisible: Bool = false
     
     // MARK: - Init
     init(router: BookingRouter,
@@ -90,6 +91,9 @@ final class KarhooBookingPresenter {
             completion: { [weak self] hasCoverage in
                 self?.hasCoverageInTheAreaPublisher.send(hasCoverage)
                 self?.updateAsapRideEnabled(using: details)
+                if let journeyDetails = details {
+                    self?.updateScheduledRideEnabled(using: journeyDetails)
+                }
             }
         )
     }
@@ -158,6 +162,7 @@ final class KarhooBookingPresenter {
                     finishWithResult(.completed(result: .prebookConfirmed(tripInfo: trip)))
                 }
             } else {
+                isAllocationViewVisible = true
                 view?.showAllocationScreen(trip: trip)
             }
         }
@@ -251,7 +256,8 @@ extension KarhooBookingPresenter: BookingPresenter {
         }
         let canProceedWithAsapBooking = details.originLocationDetails != nil &&
         details.destinationLocationDetails != nil &&
-        hasCoverageInTheAreaPublisher.value == true
+        hasCoverageInTheAreaPublisher.value == true &&
+        !isAllocationViewVisible
         
         isAsapEnabledPublisher.send(canProceedWithAsapBooking)
     }
@@ -265,7 +271,11 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     private func updateScheduledRideEnabled(using details: JourneyDetails) {
-        let areAllDataProvided = details.originLocationDetails != nil && details.destinationLocationDetails != nil
+        let areAllDataProvided =
+        details.originLocationDetails != nil &&
+        details.destinationLocationDetails != nil &&
+        !isAllocationViewVisible
+        
         isScheduleForLaterEnabledPublisher.send(areAllDataProvided)
     }
     
@@ -295,6 +305,7 @@ extension KarhooBookingPresenter: BookingPresenter {
 
     // MARK: Trip cancellation
     func tripCancelledBySystem(trip: TripInfo) {
+        isAllocationViewVisible = false
         resetJourneyDetails()
 
         switch trip.state {
@@ -316,6 +327,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
 
     func tripCancellationFailed(trip: TripInfo) {
+        isAllocationViewVisible = false
         let callFleet = UITexts.Trip.tripCancelBookingFailedAlertCallFleetButton
 
         view?.showAlert(title: UITexts.Trip.tripCancelBookingFailedAlertTitle,
@@ -335,10 +347,12 @@ extension KarhooBookingPresenter: BookingPresenter {
         view?.showAlert(title: UITexts.Bookings.cancellationSuccessAlertTitle,
                         message: UITexts.Bookings.cancellationSuccessAlertMessage,
                         error: nil)
+        isAllocationViewVisible = false
     }
     
     // MARK: Trip allocation
     func tripDriverAllocationDelayed(trip: TripInfo) {
+        isAllocationViewVisible = false
         view?.showAlert(title: UITexts.GenericTripStatus.driverAllocationDelayTitle,
                         message: UITexts.GenericTripStatus.driverAllocationDelayMessage,
                         error: nil,
@@ -350,6 +364,7 @@ extension KarhooBookingPresenter: BookingPresenter {
     }
     
     func tripAllocated(trip: TripInfo) {
+        isAllocationViewVisible = false
         view?.reset()
         view?.hideAllocationScreen()
         finishWithResult(.completed(result: .tripAllocated(tripInfo: trip)))
