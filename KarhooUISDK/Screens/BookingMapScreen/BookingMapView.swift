@@ -164,6 +164,7 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
     func prepareForAllocation(location: CLLocation) {
         mapView.center(on: location, zoomLevel: mapView.idealMaximumZoom)
         mapView.removeTripLine()
+        layoutIfNeeded()
     }
     
     // MARK: - Bottom container

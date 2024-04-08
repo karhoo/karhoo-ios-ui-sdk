@@ -1987,8 +1987,7 @@
 				09C7658221DE688000CD81AB /* AddressBar */,
 				09C7657B21DE688000CD81AB /* Map */,
 				09C7658821DE688000CD81AB /* TripAllocationMVP */,
-				51B919C929C3712800F2AA50 /* NoCoverageView.swift */,
-				51F4121D29CB0E74006CA4DA /* KarhooCoverageCheckWorker.swift */,
+				84C0766B2BC4555000FCD6C8 /* Coverage */,
 			);
 			path = BookingScreen;
 			sourceTree = "<group>";
@@ -3321,6 +3320,15 @@
 				846A875C29DDA03800952C81 /* KarhooQuoteFilters.swift */,
 			);
 			path = SharedData;
+			sourceTree = "<group>";
+		};
+		84C0766B2BC4555000FCD6C8 /* Coverage */ = {
+			isa = PBXGroup;
+			children = (
+				51B919C929C3712800F2AA50 /* NoCoverageView.swift */,
+				51F4121D29CB0E74006CA4DA /* KarhooCoverageCheckWorker.swift */,
+			);
+			path = Coverage;
 			sourceTree = "<group>";
 		};
 		84E86C4E2913EC38002B924A /* BottomSheet */ = {
