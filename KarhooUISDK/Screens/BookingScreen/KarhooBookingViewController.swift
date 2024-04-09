@@ -26,6 +26,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private let analyticsProvider: Analytics
     private var bookingMapView: BookingMapView!
 
+    // MARK: - Lifecycle
     init(presenter: BookingPresenter,
          analyticsProvider: Analytics = KarhooUISDKConfigurationProvider.configuration.analytics(),
          journeyInfo: JourneyInfo? = nil) {
@@ -52,6 +53,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         setupNavigationBar()
     }
 
+    // MARK: - Setup views
     private func setUpView() {
         presenter.load(view: self)
         edgesForExtendedLayout = []
@@ -82,6 +84,17 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             }
         stackView.addArrangedSubview(bookingMapView)
         
+        setupPublishers()
+        
+        tripAllocationView = KarhooComponents.shared.allocationView(delegate: self) as? KarhooTripAllocationView
+        view.addSubview(tripAllocationView)
+        _ = [tripAllocationView.topAnchor.constraint(equalTo: view.topAnchor),
+             tripAllocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+             tripAllocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+             tripAllocationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
+    }
+    
+    private func setupPublishers() {
         presenter.isAsapEnabledPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isAsapEnabled in
@@ -101,16 +114,9 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             .sink { [weak self] hasCoverage in
                 self?.setCoverageView(hasCoverage)
             }.store(in: &cancellables)
-        
-        tripAllocationView = KarhooTripAllocationView()
-        tripAllocationView.set(actions: self)
-        view.addSubview(tripAllocationView)
-        _ = [tripAllocationView.topAnchor.constraint(equalTo: view.topAnchor),
-             tripAllocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             tripAllocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-             tripAllocationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].map { $0.isActive = true }
     }
 
+    // MARK: - Navigation bar
     private func setupNavigationBar() {
         if navigationItem.leftBarButtonItem == nil {
             set(leftNavigationButton: .exitIcon)
@@ -128,6 +134,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         navigationItem.backButtonTitle = ""
     }
 
+    // MARK: - Journey Details
     func reset() {
         presenter.resetJourneyDetails()
     }
@@ -143,6 +150,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         }
     }
 
+    // MARK: - Allocation
     func showAllocationScreen(trip: TripInfo) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn,
                        animations: { [weak self] in
@@ -161,6 +169,7 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         tripAllocationView.dismissScreen()
     }
 
+    // MARK: - Side menu
     func set(sideMenu: SideMenu) {
         self.sideMenu = sideMenu
     }
@@ -186,6 +195,21 @@ final class KarhooBookingViewController: UIViewController, BookingView {
         }
     }
     
+    @objc
+    private func rightBarButtonPressed() {
+        openRidesList(presentationStyle: nil)
+    }
+
+    @objc
+    private func leftBarButtonPressed() {
+        if let menu = sideMenu {
+            menu.showMenu()
+        } else {
+            presenter.exitPressed()
+        }
+    }
+    
+    // MARK: - Utils
     private func showNoLocationPermissionsPopUp() {
         let alertController = UIAlertController(
             title: UITexts.Booking.noLocationPermissionTitle,
@@ -217,7 +241,8 @@ final class KarhooBookingViewController: UIViewController, BookingView {
             ]
         )
     }
-
+    
+    // MARK: - Bottom container
     private func updateBottomContainterVisiblity() {
         let shouldShow = presenter.isAsapEnabledPublisher.value ||
         presenter.isScheduleForLaterEnabledPublisher.value ||
@@ -229,22 +254,9 @@ final class KarhooBookingViewController: UIViewController, BookingView {
     private func setCoverageView(_ hasCoverage: Bool?) {
         bookingMapView.set(coverageViewVisible: hasCoverage ?? true)
     }
-
-    @objc
-    private func rightBarButtonPressed() {
-        openRidesList(presentationStyle: nil)
-    }
-
-    @objc
-    private func leftBarButtonPressed() {
-        if let menu = sideMenu {
-            menu.showMenu()
-        } else {
-            presenter.exitPressed()
-        }
-    }
 }
 
+// MARK: - Allocation delegate
 extension KarhooBookingViewController: TripAllocationActions {
 
     func userSuccessfullyCancelledTrip() {
@@ -275,6 +287,7 @@ extension KarhooBookingViewController: TripAllocationActions {
 
 }
 
+// MARK: - Booking next steps
 extension KarhooBookingViewController: BookingScreen {
 
     func openRidesList(presentationStyle: UIModalPresentationStyle?) {
@@ -290,7 +303,7 @@ extension KarhooBookingViewController: BookingScreen {
     }
 }
 
-// MARK: Builder
+// MARK: - Builder
 public final class KarhooBookingScreenBuilder: BookingScreenBuilder {
 
     private let locationService: LocationService

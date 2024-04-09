@@ -81,6 +81,10 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
             }
         stackView.addArrangedSubview(bookingMapView)
         
+        setupPublishers()
+    }
+    
+    private func setupPublishers() {
         presenter.isAsapEnabledPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isAsapEnabled in
@@ -195,5 +199,27 @@ final class KarhooBookingMapViewController: UIViewController, BookingMapScreen {
                 )
             ]
         )
+    }
+    
+    // MARK: - Allocation
+    func prepareForAllocation(with trip: TripInfo) {
+        DispatchQueue.main.async {
+            self.bookingMapView.set(addressBarVisible: false)
+            self.bookingMapView.set(focusButtonVisible: false)
+            self.presenter.isAsapEnabledPublisher.send(false)
+            self.presenter.isScheduleForLaterEnabledPublisher.send(false)
+            self.presenter.hasCoverageInTheAreaPublisher.send(nil)
+        }
+        
+        let location = trip.origin.position.toCLLocation()
+        self.bookingMapView.prepareForAllocation(location: location)
+    }
+    
+    func resetPrepareForAllocation() {
+        DispatchQueue.main.async {
+            self.bookingMapView.set(addressBarVisible: true)
+            self.bookingMapView.set(focusButtonVisible: true)
+        }
+        KarhooJourneyDetailsManager.shared.reset()
     }
 }

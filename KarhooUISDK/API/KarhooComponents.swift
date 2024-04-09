@@ -121,4 +121,10 @@ public class KarhooComponents: BookingScreenComponents {
     ) -> Screen {
         UISDKScreenRouting.default.tripScreen().buildTripScreen(trip: tripInfo, callback: callback)
     }
+    
+    public func allocationView(delegate: TripAllocationActions) -> TripAllocationView {
+        let tripAllocationView = KarhooTripAllocationView()
+        tripAllocationView.set(actions: delegate)
+        return tripAllocationView
+    }
 }

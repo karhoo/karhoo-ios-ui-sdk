@@ -8,7 +8,7 @@
 
 import KarhooSDK
 
-protocol TripAllocationView {
+public protocol TripAllocationView: BaseView {
     func tripAllocated(trip: TripInfo)
 
     func tripCancellationRequestSucceeded()
@@ -24,6 +24,8 @@ protocol TripAllocationView {
     func resetCancelButtonProgress()
     
     func set(actions: TripAllocationActions)
+    
+    func dismissScreen()
 }
 
 protocol TripAllocationPresenter {
@@ -35,7 +37,7 @@ protocol TripAllocationPresenter {
     func stopMonitoringTrip()
 }
 
-protocol TripAllocationActions: AnyObject {
+public protocol TripAllocationActions: AnyObject {
 
     func cancelTripFailed(error: KarhooError?, trip: TripInfo)
     

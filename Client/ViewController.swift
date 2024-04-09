@@ -338,6 +338,9 @@ class ViewController: UIViewController {
     
     // MARK: - Booking flow as components, not drop-in
     var componentsNavigation: UINavigationController? = nil
+    var ridePlanningVC: BookingMapScreen!
+    var allocationView: TripAllocationView!
+    var trackDriver: UIViewController!
     private func showKarhooComponents() {
         let journeyInfo: JourneyInfo? = nil
         
@@ -351,7 +354,7 @@ class ViewController: UIViewController {
 //            destination: CLLocation(latitude: destLat, longitude: destLon)
 //        )
         
-        let ridePlanningVC = KarhooComponents.shared.bookingMapView(
+        ridePlanningVC = KarhooComponents.shared.bookingMapView(
             journeyInfo: journeyInfo
         ) { [weak self] screenResult in
                 switch screenResult {
@@ -362,9 +365,9 @@ class ViewController: UIViewController {
                 default:
                     break
                 }
-            }
+        } as? BookingMapScreen
         
-        componentsNavigation = NavigationController(rootViewController: ridePlanningVC, style: .primary)
+        componentsNavigation = NavigationController(rootViewController: ridePlanningVC!, style: .primary)
         componentsNavigation!.modalPresentationStyle = .fullScreen
         self.present(componentsNavigation!, animated: true, completion: nil)
     }
@@ -389,9 +392,7 @@ class ViewController: UIViewController {
         ) { [weak self] screenResult in
                 switch screenResult {
                 case .completed(let result):
-                    // Wait for driver allocation before moving on to the next screen
-                    // Use TripService().trackTrip(identifier: String) -> PollCall<TripInfo>
-                    self?.tripBooked(tripInfo: result.tripInfo)
+                    self?.allocation(trip: result.tripInfo)
                 default:
                     break
                 }
@@ -400,8 +401,21 @@ class ViewController: UIViewController {
         componentsNavigation?.pushViewController(checkout.baseViewController, animated: true)
     }
     
+    private func allocation(trip: TripInfo) {
+        // Init and pin the view to another view controller
+        allocationView = KarhooComponents.shared.allocationView(delegate: self)
+        ridePlanningVC.view.addSubview(allocationView!)
+        allocationView.anchorToSuperview()
+        
+        // If the chosen view controller is the BookingMapScreen, use this method to hide the address bar, reset the map, and hide the bottom view with the NOW / LATER buttons. It's not mandatory, but it makes the UI look cleaner
+        ridePlanningVC.prepareForAllocation(with: trip)
+        
+        // Set the alpha of the view to 1, animate the spinner, and start observing the trip status to know when it was allocated
+        allocationView.presentScreen(forTrip: trip)
+    }
+    
     private func tripBooked(tripInfo: TripInfo) {
-        let trackDriver = KarhooComponents.shared.followDriver(
+        trackDriver = KarhooComponents.shared.followDriver(
             tripInfo: tripInfo
         ) { [weak self] screenResult in
             // For testig purposes, reset journey details
@@ -412,9 +426,9 @@ class ViewController: UIViewController {
                     switch result {
                     case .rebookTrip(let journeyDetails):
                         print("Rebook trip")
-                        self?.dismiss(animated: true, completion: nil)
+                        self?.closeFollowDriver()
                     case .closed:
-                        self?.dismiss(animated: true, completion: nil)
+                        self?.closeFollowDriver()
                     }
                 default:
                     break
@@ -422,5 +436,45 @@ class ViewController: UIViewController {
             }
         
         componentsNavigation?.present(trackDriver, animated: true)
+    }
+    
+    private func closeFollowDriver() {
+        trackDriver.dismiss(animated: true)
+        componentsNavigation?.popToRootViewController(animated: true)
+    }
+}
+
+extension ViewController: TripAllocationActions {
+    func cancelTripFailed(error: KarhooSDK.KarhooError?, trip: KarhooSDK.TripInfo) {
+        resetPostAllocation()
+        componentsNavigation?.popToRootViewController(animated: true)
+    }
+    
+    func tripAllocated(trip: KarhooSDK.TripInfo) {
+        resetPostAllocation()
+        tripBooked(tripInfo: trip)
+    }
+    
+    func tripCancelledBySystem(trip: KarhooSDK.TripInfo) {
+        resetPostAllocation()
+        componentsNavigation?.popToRootViewController(animated: true)
+    }
+    
+    func tripDriverAllocationDelayed(trip: KarhooSDK.TripInfo) {
+        resetPostAllocation()
+        // A delay in allocation does not mean it's cancelled. Show an alert to warn the user of the delay, or simply do nothing and wait for tripAllocated(:) to be triggered.
+        tripBooked(tripInfo: trip)
+    }
+    
+    func userSuccessfullyCancelledTrip() {
+        resetPostAllocation()
+        componentsNavigation?.popToRootViewController(animated: true)
+    }
+    
+    private func resetPostAllocation() {
+        // Set the view alpha to 0, stop monitoring the trip status
+        allocationView.dismissScreen()
+        // Show the address bar and whatever other necessary UI
+        ridePlanningVC.resetPrepareForAllocation()
     }
 }

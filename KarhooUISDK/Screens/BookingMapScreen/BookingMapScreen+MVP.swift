@@ -10,11 +10,21 @@ import Foundation
 import Combine
 import UIKit
 import CoreLocation
+import KarhooSDK
 
 public protocol BookingMapScreen: BaseViewController {
     func showIncorrectVersionPopup(completion: @escaping () -> Void)
     func openRidesList(presentationStyle: UIModalPresentationStyle?)
     func focusMap()
+    
+    /// Use these methods in case of presenting the TripAllocationView as an overlay over the BookingMapScreen
+    func prepareForAllocation(with trip: TripInfo)
+    func resetPrepareForAllocation()
+}
+
+extension BookingMapScreen {
+    func prepareForAllocation(with trip: TripInfo) {}
+    func resetPrepareForAllocation() {}
 }
 
 protocol BookingMapView: BaseView {

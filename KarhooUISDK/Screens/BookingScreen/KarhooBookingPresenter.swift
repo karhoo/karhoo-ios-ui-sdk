@@ -163,7 +163,7 @@ final class KarhooBookingPresenter {
     }
 }
 
-// MARK: - BookingDetailsObserver
+// MARK: - JourneyDetailsObserver
 extension KarhooBookingPresenter: JourneyDetailsObserver {
     func journeyDetailsChanged(details: JourneyDetails?) {
         guard let details = details,
@@ -219,6 +219,7 @@ extension KarhooBookingPresenter: BookingPresenter {
         journeyDetailsManager.remove(observer: self)
     }
     
+    // MARK: Output
     func setCallback(_ callback: ScreenResultCallback<BookingScreenResult>?) {
         self.callback = callback
     }
