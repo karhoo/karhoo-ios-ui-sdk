@@ -1,16 +1,16 @@
 //
-//  BookingMap+MVP.swift
+//  BookingMapScreen+MVP.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 20.03.2024.
 //  Copyright © 2024 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import Combine
-import UIKit
 import CoreLocation
+import Foundation
 import KarhooSDK
+import UIKit
 
 public protocol BookingMapScreen: BaseViewController {
     func showIncorrectVersionPopup(completion: @escaping () -> Void)

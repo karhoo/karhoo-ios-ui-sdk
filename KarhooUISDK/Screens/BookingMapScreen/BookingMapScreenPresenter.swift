@@ -1,13 +1,13 @@
 //
-//  BookingMapPresenter.swift
+//  BookingMapScreenPresenter.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 20.03.2024.
 //  Copyright © 2024 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 import KarhooSDK
 import UIKit
 

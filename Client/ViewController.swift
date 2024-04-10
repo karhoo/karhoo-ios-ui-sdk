@@ -407,7 +407,9 @@ class ViewController: UIViewController {
         ridePlanningVC.view.addSubview(allocationView!)
         allocationView.anchorToSuperview()
         
-        // If the chosen view controller is the BookingMapScreen, use this method to hide the address bar, reset the map, and hide the bottom view with the NOW / LATER buttons. It's not mandatory, but it makes the UI look cleaner
+        // If the chosen view controller is the BookingMapScreen, use this method to hide the address bar, reset the map, 
+        // and hide the bottom view with the NOW / LATER buttons.
+        // It's not mandatory, but it makes the UI look cleaner
         ridePlanningVC.prepareForAllocation(with: trip)
         
         // Set the alpha of the view to 1, animate the spinner, and start observing the trip status to know when it was allocated
@@ -418,13 +420,12 @@ class ViewController: UIViewController {
         trackDriver = KarhooComponents.shared.followDriver(
             tripInfo: tripInfo
         ) { [weak self] screenResult in
-            // For testig purposes, reset journey details
             KarhooJourneyDetailsManager.shared.reset()
             
                 switch screenResult {
                 case .completed(let result):
                     switch result {
-                    case .rebookTrip(let journeyDetails):
+                    case .rebookTrip(_ ): // param type: JourneyDetails
                         print("Rebook trip")
                         self?.closeFollowDriver()
                     case .closed:
@@ -474,7 +475,7 @@ extension ViewController: TripAllocationActions {
     private func resetPostAllocation() {
         // Set the view alpha to 0, stop monitoring the trip status
         allocationView.dismissScreen()
-        // Show the address bar and whatever other necessary UI
+        // Show the address bar and whatever other necessary UI to start the booking process again
         ridePlanningVC.resetPrepareForAllocation()
     }
 }

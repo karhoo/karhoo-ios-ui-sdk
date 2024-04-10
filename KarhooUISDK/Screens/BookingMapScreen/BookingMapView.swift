@@ -6,9 +6,9 @@
 //  Copyright © 2024 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import Combine
 import CoreLocation
+import Foundation
 import UIKit
 
 final class KarhooBookingMapView: UIStackView, BookingMapView {
@@ -39,7 +39,6 @@ final class KarhooBookingMapView: UIStackView, BookingMapView {
         self.onPrebookRidePressed = onPrebookRidePressed
         super.init(frame: .zero)
         setUpView()
-       
     }
     
     required init(coder: NSCoder) {
