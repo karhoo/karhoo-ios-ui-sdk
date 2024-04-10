@@ -24,8 +24,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
     private var mockTripScreenBuilder: MockTripScreenBuilder!
     private var mockRideDetailsScreenBuilder: MockRideDetailsScreenBuilder!
     private var mockCheckoutScreenBuilder: MockCheckoutScreenBuilder!
-    private var mockAddressScreenBuilder: MockAddressScreenBuilder!
-    private var mockDatePickerScreenBuilder: MockDatePickerScreenBuilder!
     private var mockRidesScreenBuilder: MockRidesScreenBuilder!
     private var mockCardRegistrationFlow: MockCardRegistrationFlow!
     private var bookingScreenResult: BookingScreenResult?
@@ -45,8 +43,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
         mockRideDetailsScreenBuilder = MockRideDetailsScreenBuilder()
         mockCheckoutScreenBuilder = MockCheckoutScreenBuilder()
         mockJourneyDetailsManager.journeyDetailsToReturn = TestUtil.getRandomJourneyDetails()
-        mockAddressScreenBuilder = MockAddressScreenBuilder()
-        mockDatePickerScreenBuilder = MockDatePickerScreenBuilder()
         mockRidesScreenBuilder = MockRidesScreenBuilder()
         mockCardRegistrationFlow = MockCardRegistrationFlow()
         testObject = buildTestObject(callback: nil)
@@ -66,8 +62,6 @@ final class KarhooBookingPresenterSpec: KarhooTestCase {
             tripScreenBuilder: mockTripScreenBuilder,
             rideDetailsScreenBuilder: mockRideDetailsScreenBuilder,
             ridesScreenBuilder: mockRidesScreenBuilder,
-            addressScreenBuilder: mockAddressScreenBuilder,
-            datePickerScreenBuilder: mockDatePickerScreenBuilder,
             tripRatingCache: mockTripRatingCache,
             urlOpener: mockURLOpener,
             featureFlagsProvider: featureFlagProvider

@@ -9,9 +9,15 @@
 import KarhooSDK
 @testable import KarhooUISDK
 
-final public class MockTripAllocationView: TripAllocationView {
-    public init() {}
-
+final public class MockTripAllocationView: UIView, TripAllocationView {
+    
+    public init() {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     public var tripDriverAllocationDelayedCalled = false
 
     public var actionsSet: TripAllocationActions?
@@ -55,5 +61,10 @@ final public class MockTripAllocationView: TripAllocationView {
     
     public func tripDriverAllocationDelayed(trip: TripInfo) {
         tripDriverAllocationDelayedCalled = true
+    }
+    
+    public var screenDismissed = false
+    public func dismissScreen() {
+        screenDismissed = true
     }
 }
