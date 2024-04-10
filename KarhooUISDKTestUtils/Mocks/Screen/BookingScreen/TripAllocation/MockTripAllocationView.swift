@@ -7,6 +7,7 @@
 //
 
 import KarhooSDK
+import UIKit
 @testable import KarhooUISDK
 
 final public class MockTripAllocationView: UIView, TripAllocationView {
