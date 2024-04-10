@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import CoreLocation
+import UIKit
 
 final class KarhooBookingMapView: UIStackView, BookingMapView {
     
