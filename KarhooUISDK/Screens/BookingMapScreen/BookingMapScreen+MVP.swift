@@ -1,19 +1,42 @@
 //
-//  BookingMap+MVP.swift
+//  BookingMapScreen+MVP.swift
 //  KarhooUISDK
 //
 //  Created by Diana Petrea on 20.03.2024.
 //  Copyright © 2024 Flit Technologies Ltd. All rights reserved.
 //
 
-import Foundation
 import Combine
+import CoreLocation
+import Foundation
+import KarhooSDK
 import UIKit
 
 public protocol BookingMapScreen: BaseViewController {
     func showIncorrectVersionPopup(completion: @escaping () -> Void)
     func openRidesList(presentationStyle: UIModalPresentationStyle?)
     func focusMap()
+    
+    /// Use these methods in case of presenting the TripAllocationView as an overlay over the BookingMapScreen
+    func prepareForAllocation(with trip: TripInfo)
+    func resetPrepareForAllocation()
+}
+
+extension BookingMapScreen {
+    func prepareForAllocation(with trip: TripInfo) {}
+    func resetPrepareForAllocation() {}
+}
+
+protocol BookingMapView: BaseView {
+    func focusMap()
+    func prepareForAllocation(location: CLLocation)
+    func set(reverseGeolocate: Bool)
+    func set(addressBarVisible visible: Bool)
+    func set(asapButtonEnabled enabled: Bool)
+    func set(prebookButtonEnabled enabled: Bool)
+    func set(bottomContainterVisible visible: Bool)
+    func set(coverageViewVisible visible: Bool)
+    func set(focusButtonVisible visible: Bool)
 }
 
 public protocol BookingMapScreenPresenter {

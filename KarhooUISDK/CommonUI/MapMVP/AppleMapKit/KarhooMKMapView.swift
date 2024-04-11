@@ -140,9 +140,13 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
 
     func center(on: CLLocation, zoomLevel: Float) {
         let span = MKCoordinateSpan(latitudeDelta: Double(zoomLevel), longitudeDelta: Double(zoomLevel))
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: on.coordinate.latitude,
-                                                                       longitude: on.coordinate.longitude),
-                                        span: span)
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: on.coordinate.latitude,
+                longitude: on.coordinate.longitude
+            ),
+            span: span
+        )
 
         DispatchQueue.main.async {
             self.mapView.setRegion(region, animated: true)
@@ -254,8 +258,10 @@ final class KarhooMKMapView: UIView, MapView, UIGestureRecognizerDelegate {
         }
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
         return true
     }
 

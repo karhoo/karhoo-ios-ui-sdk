@@ -49,6 +49,7 @@ final class KarhooTripAllocationView: UIView, TripAllocationView {
     private func setUpView() {
         translatesAutoresizingMaskIntoConstraints = false
         alpha = 0
+        backgroundColor = .black.withAlphaComponent(0.6)
         presenter = KarhooTripAllocationPresenter(view: self)
         
         loadingSpinnerView = KarhooBookingAllocationSpinner()

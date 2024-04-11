@@ -43,6 +43,7 @@ public class KarhooComponents: BookingScreenComponents {
     
     public func mapView(
         journeyInfo: JourneyInfo?,
+        reverseGeolocate: Bool? = nil,
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView {
         let validatedJourneyInfo = journeyInfo.validatedOrNilJourneyInfo
@@ -52,7 +53,7 @@ public class KarhooComponents: BookingScreenComponents {
         let mapView = KarhooMKMapView()
         mapPresenter.load(
             map: mapView,
-            reverseGeolocate: validatedJourneyInfo == nil,
+            reverseGeolocate: reverseGeolocate ?? (validatedJourneyInfo == nil),
             onLocationPermissionDenied: onLocationPermissionDenied
         )
         mapView.set(presenter: mapPresenter)
@@ -119,5 +120,11 @@ public class KarhooComponents: BookingScreenComponents {
         callback: @escaping ScreenResultCallback<TripScreenResult>
     ) -> Screen {
         UISDKScreenRouting.default.tripScreen().buildTripScreen(trip: tripInfo, callback: callback)
+    }
+    
+    public func allocationView(delegate: TripAllocationActions) -> TripAllocationView {
+        let tripAllocationView = KarhooTripAllocationView()
+        tripAllocationView.set(actions: delegate)
+        return tripAllocationView
     }
 }

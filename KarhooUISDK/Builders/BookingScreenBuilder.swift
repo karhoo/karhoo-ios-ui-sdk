@@ -42,6 +42,7 @@ public protocol BookingScreenComponents {
     /// Returns just the map view. When a JourneyInfo object is provided, it will display origin and/or destination pins accordingly
     func mapView(
         journeyInfo: JourneyInfo?,
+        reverseGeolocate: Bool?,
         onLocationPermissionDenied: (() -> Void)?
     ) -> MapView
     
@@ -83,4 +84,9 @@ public protocol BookingScreenComponents {
         tripInfo: TripInfo,
         callback: @escaping ScreenResultCallback<TripScreenResult>
     ) -> Screen
+    
+    /// Returns an overlay with a spinner and a cancel button that monitors the trip allocation status
+    /// Implement the TripAllocationActions methods to handle allocation success / failure / cancellation
+    /// Use allocationView.presentScreen(forTrip: TripInfo) to modally present the allocation view
+    func allocationView(delegate: TripAllocationActions) -> TripAllocationView
 }

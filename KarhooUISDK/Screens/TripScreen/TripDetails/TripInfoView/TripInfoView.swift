@@ -189,7 +189,6 @@ extension TripInfoView {
     }
     
     public func setLicensePlateNumber(_ licensePlate: String) {
-        print("\(licensePlate)")
         vehicleLicense.setTitle(licensePlate)
     }
     

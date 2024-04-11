@@ -33,7 +33,7 @@ final class KarhooBookingAllocationSpinner: UIView, BookingAllocationSpinnerView
     private func setUpView() {
         accessibilityIdentifier = "allocation_spinner_view"
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.black.withAlphaComponent(0.70)
+//        backgroundColor = UIColor.black.withAlphaComponent(0.70)
         alpha = 0
         presenter = KarhooBookingAllocationSpinnerPresenter(view: self)
         
