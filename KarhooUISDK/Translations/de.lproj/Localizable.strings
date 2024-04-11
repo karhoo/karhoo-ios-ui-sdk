@@ -896,13 +896,13 @@
 
 "kh_uisdk_price" = "Preis";
 
-"kh_uisdk_price_bottom_sheet_title" = "Preis Details";
+"kh_uisdk_price_bottom_sheet_title" = "Preisinformation";
 
 "kh_uisdk_price_info_text_estimated" = "Diese Flotte bietet nicht regulierte Taxis. Das Angebot ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.). Weitere Informationen entnehmen Sie bitte den Allgemeinen Geschäftsbedingungen der Flotte.";
 
 "kh_uisdk_price_info_text_fixed" = "Diese Flotte berechnet einen Pauschaltarif. Der Endpreis kann durch Extras (Mautgebühren, Verspätungen usw.) beeinflusst werden. Bitte prüfen Sie die Allgemeinen Geschäftsbedingungen der Flotte.";
 
-"kh_uisdk_price_info_text_metered" = "Diese Flotte bietet regulierte Taxis mit Taxameter. Das Angebot ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.).";
+"kh_uisdk_price_info_text_metered" = "Diese Fahrzeuge bietet regulierte Taxis mit Taxameter. Das Angebot ist eine Schätzung auf der Grundlage der Fahrtfaktoren (Entfernung, Zeit usw.).";
 
 "kh_uisdk_price_meet_and_greet" = "Meet and Greet";
 
