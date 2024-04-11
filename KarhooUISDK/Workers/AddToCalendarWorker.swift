@@ -26,17 +26,55 @@ final class KarhooAddToCalendarWorker: AddToCalendarWorker {
     }
 
     func addToCalendar(_ trip: TripInfo, completion: @escaping (Bool) -> Void) {
-        eventStore.requestAccess(to: .event) { [weak self] granted, error in
-            guard let self = self, granted, error == nil else {
-                DispatchQueue.main.async {
-                    completion(false)
+        if #available(iOS 17.0, *) {
+            eventStore.requestWriteOnlyAccessToEvents { [weak self] granted, error in
+                guard let self = self else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
                 }
-                return
+                self.handleCalendarAccessResponse(
+                    trip: trip,
+                    granted: granted,
+                    error: error,
+                    completion: completion
+                )
             }
-            let result = self.createEvent(trip)
+            
+        } else {
+            eventStore.requestAccess(to: .event) { [weak self] granted, error in
+                guard let self = self else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
+                }
+                self.handleCalendarAccessResponse(
+                    trip: trip,
+                    granted: granted,
+                    error: error,
+                    completion: completion
+                )
+            }
+        }
+    }
+    
+    private func handleCalendarAccessResponse(
+        trip: TripInfo,
+        granted: Bool,
+        error: Error?,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard granted, error == nil else {
             DispatchQueue.main.async {
-                completion(result)
+                completion(false)
             }
+            return
+        }
+        let result = self.createEvent(trip)
+        DispatchQueue.main.async {
+            completion(result)
         }
     }
 
