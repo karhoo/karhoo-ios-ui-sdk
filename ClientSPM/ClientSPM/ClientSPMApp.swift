@@ -49,6 +49,9 @@ final class KarhooConfig: KarhooUISDKConfiguration {
     static var environment: KarhooEnvironment = .sandbox
     static var isExplicitTermsAndConditionsApprovalRequired: Bool = false
     static var paymentManager: PaymentManager!
+    static var disablePrebookRides = false
+    static var excludedFilterCategories = [QuoteListFilters.Category]()
+    static var disableCallDriverOrFleetFeature = false
     static var onUpdateAuthentication: (@escaping () -> Void) -> Void = { $0() }
 
     var isExplicitTermsAndConditionsConsentRequired: Bool {
@@ -65,6 +68,18 @@ final class KarhooConfig: KarhooUISDKConfiguration {
 
     func authenticationMethod() -> AuthenticationMethod {
         KarhooConfig.auth
+    }
+    
+    var disablePrebookRides: Bool {
+        KarhooConfig.disablePrebookRides
+    }
+    
+    var excludedFilterCategories: [QuoteListFilters.Category] {
+        KarhooConfig.excludedFilterCategories
+    }
+    
+    var disableCallDriverOrFleetFeature: Bool {
+        KarhooConfig.disableCallDriverOrFleetFeature
     }
     
     func requireSDKAuthentication(callback: @escaping () -> Void) {
