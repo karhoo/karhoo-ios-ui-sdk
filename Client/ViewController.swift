@@ -392,7 +392,12 @@ class ViewController: UIViewController {
         ) { [weak self] screenResult in
                 switch screenResult {
                 case .completed(let result):
-                    self?.allocation(trip: result.tripInfo)
+                    if KarhooJourneyDetailsManager.shared.getJourneyDetails()?.isScheduled ?? false {
+                        KarhooJourneyDetailsManager.shared.reset()
+                        self?.componentsNavigation?.popToRootViewController(animated: true)
+                    } else {
+                        self?.allocation(trip: result.tripInfo)
+                    }
                 default:
                     break
                 }
